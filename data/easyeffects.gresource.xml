@@ -33,6 +33,7 @@
         <file>ui/multiband_gate.ui</file>
         <file>ui/pipe_info.ui</file>
         <file>ui/pitch.ui</file>
+        <file>ui/preferences_window.ui</file>
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>
         <file>ui/reverb.ui</file>
@@ -42,5 +43,6 @@
         <file>ui/stereo_tools.ui</file>
         <file>icons/scalable/status/ee-arrow-down-symbolic.svg</file>
         <file>icons/scalable/status/ee-square-symbolic.svg</file>
+        <file>icons/scalable/status/ee-spectrum-symbolic.svg</file>
     </gresource>
 </gresources>

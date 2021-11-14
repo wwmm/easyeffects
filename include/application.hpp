@@ -25,6 +25,7 @@
 #include <string>
 #include "config.h"
 #include "pipe_manager.hpp"
+#include "preferences_window.hpp"
 #include "presets_manager.hpp"
 #include "stream_input_effects.hpp"
 #include "stream_output_effects.hpp"

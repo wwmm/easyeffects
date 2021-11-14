@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
+    <menu id="primary_menu">
+        <section>
+            <item>
+                <attribute name="label" translatable="yes">_Preferences</attribute>
+                <attribute name="action">app.preferences</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">_Documentation</attribute>
+                <attribute name="action">app.help</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">_About EasyEffects</attribute>
+                <attribute name="action">app.about</attribute>
+            </item>
+        </section>
+    </menu>
+
     <template class="ApplicationWindow" parent="AdwApplicationWindow">
         <property name="title">EasyEffects</property>
         <property name="content">
@@ -40,18 +57,14 @@
                         </child>
 
                         <child type="end">
-                            <object class="GtkMenuButton" id="settings_popover_button">
-                                <property name="tooltip_text" translatable="yes">Settings</property>
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="icon_name">format-justify-fill-symbolic</property>
-                                <property name="popover">settings_menu</property>
+                            <object class="GtkMenuButton" id="primary_menu_button">
+                                <property name="menu-model">primary_menu</property>
+                                <property name="icon-name">open-menu-symbolic</property>
                                 <accessibility>
-                                    <property name="label" translatable="yes">Settings Menu</property>
+                                    <property name="label" translatable="yes">Primary Menu</property>
                                 </accessibility>
                             </object>
                         </child>
-
                     </object>
                 </child>
 
@@ -69,49 +82,5 @@
                 </accessibility>
             </object>
         </property>
-
-        <object class="GtkPopover" id="settings_menu">
-            <property name="autohide">1</property>
-            <accessibility>
-                <property name="label" translatable="yes">Settings Menu</property>
-            </accessibility>
-            <child>
-                <object class="GtkBox">
-                    <property name="margin-start">6</property>
-                    <property name="margin-end">6</property>
-                    <property name="margin-top">6</property>
-                    <property name="margin-bottom">6</property>
-                    <property name="spacing">12</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                        <object class="GtkLabel">
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="label" translatable="yes">Settings</property>
-                        </object>
-                    </child>
-                    <child>
-                        <object class="GtkBox">
-                            <property name="spacing">18</property>
-                            <child>
-                                <object class="GtkStackSidebar">
-                                    <property name="halign">center</property>
-                                    <property name="stack">stack_menu_settings</property>
-                                </object>
-                            </child>
-                            <child>
-                                <object class="GtkStack" id="stack_menu_settings">
-                                    <property name="hexpand">1</property>
-                                    <property name="hhomogeneous">0</property>
-                                    <property name="vhomogeneous">0</property>
-                                    <property name="transition_duration">250</property>
-                                    <property name="transition_type">slide-up-down</property>
-                                </object>
-                            </child>
-                        </object>
-                    </child>
-                </object>
-            </child>
-        </object>
     </template>
 </interface>

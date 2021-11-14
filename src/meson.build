@@ -77,6 +77,7 @@ easyeffects_sources = [
 	'plot.cpp',
 	'plugin_base.cpp',
 	'plugin_ui_base.cpp',
+	'preferences_window.cpp',
 	'presets_menu_ui.cpp',
 	'presets_manager.cpp',
 	'reverb.cpp',

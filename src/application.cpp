@@ -143,7 +143,7 @@ void application_class_init(ApplicationClass* klass) {
   application_class->startup = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
 
-    std::array<GActionEntry, 4> entries{};
+    std::array<GActionEntry, 5> entries{};
 
     entries[0] = {
         "quit",
@@ -159,9 +159,11 @@ void application_class_init(ApplicationClass* klass) {
 
     entries[2] = {"about",
                   [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                    std::array<const char*, 2> authors = {"Wellington Wallace", nullptr};
+
                     gtk_show_about_dialog(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name",
                                           "EasyEffects", "version", VERSION, "comments",
-                                          _("Audio effects for PipeWire applications"), "authors", "Wellington Wallace",
+                                          _("Audio effects for PipeWire applications"), "authors", authors.data(),
                                           "logo-icon-name", "easyeffects", "license-type", GTK_LICENSE_GPL_3_0,
                                           "website", "https://github.com/wwmm/easyeffects", nullptr);
                   },
@@ -182,6 +184,16 @@ void application_class_init(ApplicationClass* klass) {
 
                       g_settings_set_boolean(self->settings, "window-fullscreen", 1);
                     }
+                  },
+                  nullptr, nullptr, nullptr};
+
+    entries[4] = {"preferences",
+                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                    auto* preferences = ui::preferences_window::create();
+
+                    gtk_window_set_transient_for(GTK_WINDOW(preferences),
+                                                 GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+                    gtk_window_present(GTK_WINDOW(preferences));
                   },
                   nullptr, nullptr, nullptr};
 

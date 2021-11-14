@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="ee-spectrum-symbolic.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="48.5"
+     inkscape:cx="7.9896907"
+     inkscape:cy="8"
+     inkscape:window-width="2560"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M 0.02696778,7.9590838 H 4.0269678 V 16.02239 H 0.02696778 Z"
+     style="stroke-width:0.7099;marker:none"
+     color="#000000"
+     overflow="visible"
+     fill="#474747"
+     id="path2" />
+  <path
+     d="m 5.9385067,0.03045187 h 4 V 16.04011 h -4 z"
+     style="stroke-width:1.0003;marker:none"
+     color="#000000"
+     overflow="visible"
+     fill="#474747"
+     id="path2-3" />
+  <path
+     d="m 12.025571,5.1441802 h 4 V 16.050258 h -4 z"
+     style="stroke-width:0.825609;marker:none"
+     color="#000000"
+     overflow="visible"
+     fill="#474747"
+     id="path2-6" />
+</svg>
