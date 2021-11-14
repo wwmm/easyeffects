@@ -9,6 +9,9 @@ auto constexpr log_tag = "preferences_window: ";
 struct _PreferencesWindow {
   AdwPreferencesWindow parent_instance{};
 
+  GtkSwitch *enable_autostart = nullptr, *process_all_inputs = nullptr, *process_all_outputs = nullptr,
+            *theme_switch = nullptr, *shutdown_on_window_close = nullptr, *use_cubic_volumes = nullptr;
+
   GSettings* settings = nullptr;
 };
 
@@ -19,19 +22,12 @@ void preferences_window_class_init(PreferencesWindowClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/preferences_window.ui");
 
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, stack);
-
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, output_scrolled_window);
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, output_listview);
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, output_name);
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, output_search);
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, last_used_output);
-
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, input_scrolled_window);
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, input_listview);
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, input_name);
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, input_search);
-  //   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, last_used_input);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, enable_autostart);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, process_all_inputs);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, process_all_outputs);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, theme_switch);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, shutdown_on_window_close);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, use_cubic_volumes);
 
   //   gtk_widget_class_bind_template_callback(widget_class, create_preset);
   //   gtk_widget_class_bind_template_callback(widget_class, import_output_preset);
@@ -43,8 +39,12 @@ void preferences_window_init(PreferencesWindow* self) {
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  //   gtk_label_set_text(self->last_used_output, g_settings_get_string(self->settings, "last-used-output-preset"));
-  //   gtk_label_set_text(self->last_used_input, g_settings_get_string(self->settings, "last-used-input-preset"));
+  g_settings_bind(self->settings, "use-dark-theme", self->theme_switch, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "process-all-inputs", self->process_all_inputs, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "process-all-outputs", self->process_all_outputs, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "shutdown-on-window-close", self->shutdown_on_window_close, "active",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "use-cubic-volumes", self->use_cubic_volumes, "active", G_SETTINGS_BIND_DEFAULT);
 
   //   g_signal_connect(self->settings, "changed::last-used-output-preset",
   //                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {

@@ -143,7 +143,7 @@ void application_class_init(ApplicationClass* klass) {
   application_class->startup = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
 
-    std::array<GActionEntry, 5> entries{};
+    std::array<GActionEntry, 6> entries{};
 
     entries[0] = {
         "quit",
@@ -194,6 +194,14 @@ void application_class_init(ApplicationClass* klass) {
                     gtk_window_set_transient_for(GTK_WINDOW(preferences),
                                                  GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
                     gtk_window_present(GTK_WINDOW(preferences));
+                  },
+                  nullptr, nullptr, nullptr};
+
+    entries[5] = {"reset",
+                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                    auto* self = EE_APP(gapp);
+
+                    g_settings_reset(self->settings, "");
                   },
                   nullptr, nullptr, nullptr};
 

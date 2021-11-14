@@ -6,8 +6,16 @@
                 <attribute name="label" translatable="yes">_Preferences</attribute>
                 <attribute name="action">app.preferences</attribute>
             </item>
+        </section>
+        <section>
             <item>
-                <attribute name="label" translatable="yes">_Documentation</attribute>
+                <attribute name="label" translatable="yes">_Reset Settings</attribute>
+                <attribute name="action">app.reset</attribute>
+            </item>
+        </section>
+        <section>
+            <item>
+                <attribute name="label" translatable="yes">_Manual</attribute>
                 <attribute name="action">app.help</attribute>
             </item>
             <item>

@@ -6,6 +6,90 @@
                 <property name="title" translatable="yes">_General</property>
                 <property name="use-underline">True</property>
 
+                <child>
+                    <object class="AdwPreferencesGroup">
+                        <property name="title" translatable="yes">Service</property>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Start Service at Login</property>
+
+                                <child>
+                                    <object class="GtkSwitch" id="enable_autostart">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Shutdown on Window Close</property>
+
+                                <child>
+                                    <object class="GtkSwitch" id="shutdown_on_window_close">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwPreferencesGroup">
+                        <property name="title" translatable="yes">Audio</property>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Process All Outputs</property>
+
+                                <child>
+                                    <object class="GtkSwitch" id="process_all_outputs">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Process All Inputs</property>
+
+                                <child>
+                                    <object class="GtkSwitch" id="process_all_inputs">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Use Cubic Volume</property>
+
+                                <child>
+                                    <object class="GtkSwitch" id="use_cubic_volumes">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwPreferencesGroup">
+                        <property name="title" translatable="yes">Style</property>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Use Dark Theme</property>
+
+                                <child>
+                                    <object class="GtkSwitch" id="theme_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
 

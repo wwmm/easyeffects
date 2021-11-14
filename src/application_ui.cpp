@@ -46,6 +46,14 @@ struct _ApplicationWindow {
 
 G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)
 
+void init_theme_color(ApplicationWindow* self) {
+  if (g_settings_get_boolean(self->settings, "use-dark-theme") == 0) {
+    adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_FORCE_LIGHT);
+  } else {
+    adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_FORCE_DARK);
+  }
+}
+
 void constructed(GObject* object) {
   auto* self = EE_APP_WINDOW(object);
 
@@ -155,13 +163,17 @@ void application_window_init(ApplicationWindow* self) {
   self->maximized = false;
   self->fullscreen = false;
 
-  adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_PREFER_LIGHT);
-
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
+
+  init_theme_color(self);
 
   self->presetsMenu = presets_menu::create();
 
   gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->presetsMenu));
+
+  g_signal_connect(self->settings, "changed::use-dark-theme",
+                   G_CALLBACK(+[](GSettings* settings, char* key, ApplicationWindow* self) { init_theme_color(self); }),
+                   self);
 }
 
 auto create(GApplication* gapp) -> ApplicationWindow* {
