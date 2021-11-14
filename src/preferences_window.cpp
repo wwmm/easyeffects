@@ -22,6 +22,8 @@ struct _PreferencesWindow {
 
   GSettings* settings = nullptr;
   GSettings* settings_spectrum = nullptr;
+
+  std::vector<gulong> gconnections_spectrum;
 };
 
 G_DEFINE_TYPE(PreferencesWindow, preferences_window, ADW_TYPE_PREFERENCES_WINDOW)
@@ -63,6 +65,34 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> 
   return 0;
 }
 
+void on_spectrum_color_set(PreferencesWindow* self, GtkColorButton* button) {
+  GdkRGBA rgba;
+
+  gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(button), &rgba);
+
+  g_settings_set(self->settings_spectrum, "color", "(dddd)", rgba.red, rgba.green, rgba.blue, rgba.alpha);
+}
+
+void on_spectrum_axis_color_set(PreferencesWindow* self, GtkColorButton* button) {
+  GdkRGBA rgba;
+
+  gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(button), &rgba);
+
+  g_settings_set(self->settings_spectrum, "color-axis-labels", "(dddd)", rgba.red, rgba.green, rgba.blue, rgba.alpha);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_PREFERENCES_WINDOW(object);
+
+  for (auto& handler_id : self->gconnections_spectrum) {
+    g_signal_handler_disconnect(self->settings_spectrum, handler_id);
+  }
+
+  util::debug(log_tag + "destroyed"s);
+
+  G_OBJECT_CLASS(preferences_window_parent_class)->dispose(object);
+}
+
 void preferences_window_class_init(PreferencesWindowClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
@@ -88,6 +118,8 @@ void preferences_window_class_init(PreferencesWindowClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_maximum_frequency);
 
   gtk_widget_class_bind_template_callback(widget_class, on_enable_autostart);
+  gtk_widget_class_bind_template_callback(widget_class, on_spectrum_color_set);
+  gtk_widget_class_bind_template_callback(widget_class, on_spectrum_axis_color_set);
 }
 
 void preferences_window_init(PreferencesWindow* self) {
@@ -102,26 +134,13 @@ void preferences_window_init(PreferencesWindow* self) {
                         static_cast<gboolean>(std::filesystem::is_regular_file(
                             g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));
 
-  GdkRGBA rgba;
-  std::array<double, 4> color{};
+  auto color = util::gsettings_get_color(self->settings_spectrum, "color");
 
-  g_settings_get(self->settings_spectrum, "color", "(dddd)", &color[0], &color[1], &color[2], &color[3]);
+  gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_color_button), &color);
 
-  rgba.red = static_cast<float>(color[0]);
-  rgba.green = static_cast<float>(color[1]);
-  rgba.blue = static_cast<float>(color[2]);
-  rgba.alpha = static_cast<float>(color[3]);
+  color = util::gsettings_get_color(self->settings_spectrum, "color-axis-labels");
 
-  gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_color_button), &rgba);
-
-  g_settings_get(self->settings_spectrum, "color-axis-labels", "(dddd)", &color[0], &color[1], &color[2], &color[3]);
-
-  rgba.red = static_cast<float>(color[0]);
-  rgba.green = static_cast<float>(color[1]);
-  rgba.blue = static_cast<float>(color[2]);
-  rgba.alpha = static_cast<float>(color[3]);
-
-  gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_axis_color_button), &rgba);
+  gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_axis_color_button), &color);
 
   // general section gsettings bindings
 
@@ -176,6 +195,26 @@ void preferences_window_init(PreferencesWindow* self) {
         }
       },
       nullptr, nullptr);
+
+  // Spectrum gsettings signals connections
+
+  self->gconnections_spectrum.push_back(
+      g_signal_connect(self->settings_spectrum, "changed::color",
+                       G_CALLBACK((+[](GSettings* settings, char* key, PreferencesWindow* self) {
+                         auto color = util::gsettings_get_color(self->settings_spectrum, key);
+
+                         gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_color_button), &color);
+                       })),
+                       self));
+
+  self->gconnections_spectrum.push_back(
+      g_signal_connect(self->settings_spectrum, "changed::color-axis-labels",
+                       G_CALLBACK((+[](GSettings* settings, char* key, PreferencesWindow* self) {
+                         auto color = util::gsettings_get_color(self->settings_spectrum, key);
+
+                         gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_axis_color_button), &color);
+                       })),
+                       self));
 }
 
 auto create() -> PreferencesWindow* {

@@ -243,6 +243,7 @@
                                     <object class="GtkColorButton" id="spectrum_color_button">
                                         <property name="valign">center</property>
                                         <property name="use-alpha">True</property>
+                                        <signal name="color-set" handler="on_spectrum_color_set" object="PreferencesWindow" />
                                     </object>
                                 </child>
                             </object>
@@ -256,6 +257,7 @@
                                     <object class="GtkColorButton" id="spectrum_axis_color_button">
                                         <property name="valign">center</property>
                                         <property name="use-alpha">True</property>
+                                        <signal name="color-set" handler="on_spectrum_axis_color_set" object="PreferencesWindow" />
                                     </object>
                                 </child>
                             </object>

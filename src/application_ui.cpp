@@ -44,6 +44,8 @@ struct _ApplicationWindow {
   GSettings* settings = nullptr;
 
   GApplication* gapp = nullptr;
+
+  std::vector<gulong> gconnections;
 };
 
 G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)
@@ -125,6 +127,10 @@ void unrealize(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_APP_WINDOW(object);
 
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
+
   g_settings_set_int(self->settings, "window-width", self->width);
   g_settings_set_int(self->settings, "window-height", self->height);
   g_settings_set_boolean(self->settings, "window-maximized", static_cast<gboolean>(self->maximized));
@@ -176,9 +182,9 @@ void application_window_init(ApplicationWindow* self) {
 
   g_settings_bind(self->settings, "bypass", self->bypass_button, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_signal_connect(self->settings, "changed::use-dark-theme",
-                   G_CALLBACK(+[](GSettings* settings, char* key, ApplicationWindow* self) { init_theme_color(self); }),
-                   self);
+  self->gconnections.push_back(g_signal_connect(
+      self->settings, "changed::use-dark-theme",
+      G_CALLBACK(+[](GSettings* settings, char* key, ApplicationWindow* self) { init_theme_color(self); }), self));
 }
 
 auto create(GApplication* gapp) -> ApplicationWindow* {

@@ -92,6 +92,8 @@ auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string>;
 
 auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<const gchar*>;
 
+auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA;
+
 }  // namespace util
 
 #endif

@@ -209,4 +209,18 @@ auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::ve
   return output;
 }
 
+auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA {
+  GdkRGBA rgba;
+  std::array<double, 4> color{};
+
+  g_settings_get(settings, key, "(dddd)", &color[0], &color[1], &color[2], &color[3]);
+
+  rgba.red = static_cast<float>(color[0]);
+  rgba.green = static_cast<float>(color[1]);
+  rgba.blue = static_cast<float>(color[2]);
+  rgba.alpha = static_cast<float>(color[3]);
+
+  return rgba;
+}
+
 }  // namespace util
