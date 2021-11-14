@@ -55,7 +55,7 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
   const auto* widget_name = gtk_widget_get_name(GTK_WIDGET(button));
 
   GtkText* preset_name_box = nullptr;
-  PresetType preset_type;
+  PresetType preset_type{};
 
   if (g_strcmp0(widget_name, "output_preset") == 0) {
     preset_name_box = self->output_name;
