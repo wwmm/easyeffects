@@ -65,7 +65,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::ToggleButton* bypass_button = nullptr;
   Gtk::Stack *stack = nullptr, *stack_menu_settings = nullptr;
   Gtk::MenuButton* presets_menu_button = nullptr;
   Gtk::ToggleButton *toggle_output = nullptr, *toggle_input = nullptr, *toggle_pipe_info = nullptr;

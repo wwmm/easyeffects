@@ -32,6 +32,8 @@ struct _ApplicationWindow {
 
   GtkMenuButton* presets_menu_button = nullptr;
 
+  GtkToggleButton* bypass_button = nullptr;
+
   ui::presets_menu::PresetsMenu* presetsMenu = nullptr;
 
   int width = -1;
@@ -153,6 +155,7 @@ void application_window_class_init(ApplicationWindowClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, presets_menu_button);
+  gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, bypass_button);
 }
 
 void application_window_init(ApplicationWindow* self) {
@@ -170,6 +173,8 @@ void application_window_init(ApplicationWindow* self) {
   self->presetsMenu = presets_menu::create();
 
   gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->presetsMenu));
+
+  g_settings_bind(self->settings, "bypass", self->bypass_button, "active", G_SETTINGS_BIND_DEFAULT);
 
   g_signal_connect(self->settings, "changed::use-dark-theme",
                    G_CALLBACK(+[](GSettings* settings, char* key, ApplicationWindow* self) { init_theme_color(self); }),
@@ -193,7 +198,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   stack = builder->get_widget<Gtk::Stack>("stack");
   stack_menu_settings = builder->get_widget<Gtk::Stack>("stack_menu_settings");
   presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
-  bypass_button = builder->get_widget<Gtk::ToggleButton>("bypass_button");
   toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
   toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
   toggle_pipe_info = builder->get_widget<Gtk::ToggleButton>("toggle_pipe_info");
@@ -228,24 +232,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
       stack->get_pages()->select_item(2, true);
     }
   });
-
-  // binding properties to gsettings keys
-
-  // settings->bind("use-dark-theme", Gtk::Settings::get_default().get(), "gtk_application_prefer_dark_theme");
-  settings->bind("bypass", bypass_button, "active");
-
-  // restore window size
-
-  if (settings->get_boolean("window-maximized")) {
-    maximize();
-  } else {
-    const auto window_width = settings->get_int("window-width");
-    const auto window_height = settings->get_int("window-height");
-
-    if (window_width > 0 && window_height > 0) {
-      set_default_size(window_width, window_height);
-    }
-  }
 }
 
 ApplicationUi::~ApplicationUi() {
@@ -257,8 +243,6 @@ ApplicationUi::~ApplicationUi() {
 }
 
 auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
-  adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_PREFER_LIGHT);
-
   const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/application_window.ui");
 
   return Gtk::Builder::get_widget_derived<ApplicationUi>(builder, "ApplicationUi", app_this);
