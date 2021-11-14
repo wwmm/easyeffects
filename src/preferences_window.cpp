@@ -11,13 +11,17 @@ struct _PreferencesWindow {
 
   GtkSwitch *enable_autostart = nullptr, *process_all_inputs = nullptr, *process_all_outputs = nullptr,
             *theme_switch = nullptr, *shutdown_on_window_close = nullptr, *use_cubic_volumes = nullptr,
-            *spectrum_show = nullptr, *fill = nullptr, *spectrum_show_bar_border = nullptr;
+            *spectrum_show = nullptr, *spectrum_fill = nullptr, *spectrum_show_bar_border = nullptr;
 
   GtkColorButton *spectrum_color_button = nullptr, *spectrum_axis_color_button = nullptr;
 
   GtkComboBoxText* spectrum_type = nullptr;
 
+  GtkSpinButton *spectrum_n_points = nullptr, *spectrum_height = nullptr, *spectrum_line_width = nullptr,
+                *spectrum_minimum_frequency = nullptr, *spectrum_maximum_frequency = nullptr;
+
   GSettings* settings = nullptr;
+  GSettings* settings_spectrum = nullptr;
 };
 
 G_DEFINE_TYPE(PreferencesWindow, preferences_window, ADW_TYPE_PREFERENCES_WINDOW)
@@ -71,6 +75,18 @@ void preferences_window_class_init(PreferencesWindowClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, shutdown_on_window_close);
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, use_cubic_volumes);
 
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_show);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_type);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_fill);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_n_points);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_line_width);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_height);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_show_bar_border);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_color_button);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_axis_color_button);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_minimum_frequency);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, spectrum_maximum_frequency);
+
   gtk_widget_class_bind_template_callback(widget_class, on_enable_autostart);
 }
 
@@ -78,6 +94,9 @@ void preferences_window_init(PreferencesWindow* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->settings_spectrum = g_settings_new("com.github.wwmm.easyeffects.spectrum");
+
+  // general section gsettings bindings
 
   g_settings_bind(self->settings, "use-dark-theme", self->theme_switch, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "process-all-inputs", self->process_all_inputs, "active", G_SETTINGS_BIND_DEFAULT);
@@ -85,6 +104,21 @@ void preferences_window_init(PreferencesWindow* self) {
   g_settings_bind(self->settings, "shutdown-on-window-close", self->shutdown_on_window_close, "active",
                   G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "use-cubic-volumes", self->use_cubic_volumes, "active", G_SETTINGS_BIND_DEFAULT);
+
+  // spectrum section gsettings bindings
+
+  g_settings_bind(self->settings_spectrum, "show", self->spectrum_show, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings_spectrum, "fill", self->spectrum_fill, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings_spectrum, "show-bar-border", self->spectrum_show_bar_border, "active",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings_spectrum, "n-points", gtk_spin_button_get_adjustment(self->spectrum_n_points), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings_spectrum, "height", gtk_spin_button_get_adjustment(self->spectrum_height), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings_spectrum, "line-width", gtk_spin_button_get_adjustment(self->spectrum_line_width),
+                  "value", G_SETTINGS_BIND_DEFAULT);
+
+  // initializing some widgets
 
   gtk_switch_set_active(self->enable_autostart,
                         static_cast<gboolean>(std::filesystem::is_regular_file(
