@@ -111,12 +111,44 @@ void preferences_window_init(PreferencesWindow* self) {
   g_settings_bind(self->settings_spectrum, "fill", self->spectrum_fill, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings_spectrum, "show-bar-border", self->spectrum_show_bar_border, "active",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings_spectrum, "n-points", gtk_spin_button_get_adjustment(self->spectrum_n_points), "value",
                   G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings_spectrum, "height", gtk_spin_button_get_adjustment(self->spectrum_height), "value",
                   G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings_spectrum, "line-width", gtk_spin_button_get_adjustment(self->spectrum_line_width),
                   "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings_spectrum, "minimum-frequency",
+                  gtk_spin_button_get_adjustment(self->spectrum_minimum_frequency), "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings_spectrum, "maximum-frequency",
+                  gtk_spin_button_get_adjustment(self->spectrum_maximum_frequency), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind_with_mapping(
+      self->settings_spectrum, "type", self->spectrum_type, "active", G_SETTINGS_BIND_DEFAULT,
+      +[](GValue* value, GVariant* variant, gpointer user_data) {
+        const auto* v = g_variant_get_string(variant, nullptr);
+
+        if (g_strcmp0(v, "Bars") == 0) {
+          g_value_set_int(value, 0);
+        } else if (g_strcmp0(v, "Lines") == 0) {
+          g_value_set_int(value, 1);
+        }
+
+        return 1;
+      },
+      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+        switch (g_value_get_int(value)) {
+          case 0:
+            return g_variant_new_string("Bars");
+
+          case 1:
+            return g_variant_new_string("Lines");
+
+          default:
+            return g_variant_new_string("Bars");
+        }
+      },
+      nullptr, nullptr);
 
   // initializing some widgets
 
