@@ -250,7 +250,7 @@
 
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Axis</property>
+                                <property name="title" translatable="yes">Axis Labels</property>
 
                                 <child>
                                     <object class="GtkColorButton" id="spectrum_axis_color_button">

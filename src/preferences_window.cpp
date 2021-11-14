@@ -96,6 +96,33 @@ void preferences_window_init(PreferencesWindow* self) {
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
   self->settings_spectrum = g_settings_new("com.github.wwmm.easyeffects.spectrum");
 
+  // initializing some widgets
+
+  gtk_switch_set_active(self->enable_autostart,
+                        static_cast<gboolean>(std::filesystem::is_regular_file(
+                            g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));
+
+  GdkRGBA rgba;
+  std::array<double, 4> color{};
+
+  g_settings_get(self->settings_spectrum, "color", "(dddd)", &color[0], &color[1], &color[2], &color[3]);
+
+  rgba.red = static_cast<float>(color[0]);
+  rgba.green = static_cast<float>(color[1]);
+  rgba.blue = static_cast<float>(color[2]);
+  rgba.alpha = static_cast<float>(color[3]);
+
+  gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_color_button), &rgba);
+
+  g_settings_get(self->settings_spectrum, "color-axis-labels", "(dddd)", &color[0], &color[1], &color[2], &color[3]);
+
+  rgba.red = static_cast<float>(color[0]);
+  rgba.green = static_cast<float>(color[1]);
+  rgba.blue = static_cast<float>(color[2]);
+  rgba.alpha = static_cast<float>(color[3]);
+
+  gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_axis_color_button), &rgba);
+
   // general section gsettings bindings
 
   g_settings_bind(self->settings, "use-dark-theme", self->theme_switch, "active", G_SETTINGS_BIND_DEFAULT);
@@ -149,12 +176,6 @@ void preferences_window_init(PreferencesWindow* self) {
         }
       },
       nullptr, nullptr);
-
-  // initializing some widgets
-
-  gtk_switch_set_active(self->enable_autostart,
-                        static_cast<gboolean>(std::filesystem::is_regular_file(
-                            g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));
 }
 
 auto create() -> PreferencesWindow* {
