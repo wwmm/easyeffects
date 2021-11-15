@@ -163,6 +163,9 @@ void preferences_window_init(PreferencesWindow* self) {
 
   // connecting some widgets signals
 
+  prepare_spinbutton<"px">(self->spectrum_height);
+  prepare_spinbutton<"px">(self->spectrum_line_width);
+
   g_signal_connect(
       self->spectrum_minimum_frequency, "output",
       G_CALLBACK(+[](GtkSpinButton* button, gpointer user_data) { return parse_spinbutton_output(button, "Hz"); }),

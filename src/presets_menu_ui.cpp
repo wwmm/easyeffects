@@ -53,20 +53,14 @@ struct _PresetsMenu {
 
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
 
+template <PresetType preset_type>
 void create_preset(PresetsMenu* self, GtkButton* button) {
-  const auto* widget_name = gtk_widget_get_name(GTK_WIDGET(button));
-
   GtkText* preset_name_box = nullptr;
-  PresetType preset_type{};
 
-  if (g_strcmp0(widget_name, "output_preset") == 0) {
+  if constexpr (preset_type == PresetType::output) {
     preset_name_box = self->output_name;
-
-    preset_type = PresetType::output;
-  } else if (g_strcmp0(widget_name, "input_preset") == 0) {
+  } else if constexpr (preset_type == PresetType::input) {
     preset_name_box = self->input_name;
-
-    preset_type = PresetType::input;
   }
 
   auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(preset_name_box)), -1));
@@ -92,7 +86,16 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
   self->application->presets_manager->add(preset_type, name);
 }
 
-void import_preset(PresetsMenu* self, PresetType preset_type) {
+void create_output_preset(PresetsMenu* self, GtkButton* button) {
+  create_preset<PresetType::output>(self, button);
+}
+
+void create_input_preset(PresetsMenu* self, GtkButton* button) {
+  create_preset<PresetType::input>(self, button);
+}
+
+template <PresetType preset_type>
+void import_preset(PresetsMenu* self) {
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
 
   auto* dialog = gtk_file_chooser_native_new(_("Import Preset"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"),
@@ -105,28 +108,15 @@ void import_preset(PresetsMenu* self, PresetType preset_type) {
 
   gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
 
-  switch (preset_type) {
-    case PresetType::output: {
-      g_object_set_data(G_OBJECT(dialog), "preset-type", const_cast<char*>("output"));
-      break;
-    }
-    case PresetType::input: {
-      g_object_set_data(G_OBJECT(dialog), "preset-type", const_cast<char*>("input"));
-      break;
-    }
-  }
-
   g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, PresetsMenu* self) {
                      if (response == GTK_RESPONSE_ACCEPT) {
                        auto* chooser = GTK_FILE_CHOOSER(dialog);
                        auto* file = gtk_file_chooser_get_file(chooser);
                        auto* path = g_file_get_path(file);
 
-                       auto preset_type = static_cast<char*>(g_object_get_data(G_OBJECT(dialog), "preset-type"));
-
-                       if (g_strcmp0(preset_type, "output") == 0) {
+                       if constexpr (preset_type == PresetType::output) {
                          self->application->presets_manager->import(PresetType::output, path);
-                       } else if (g_strcmp0(preset_type, "input") == 0) {
+                       } else if constexpr (preset_type == PresetType::input) {
                          self->application->presets_manager->import(PresetType::input, path);
                        }
 
@@ -142,14 +132,15 @@ void import_preset(PresetsMenu* self, PresetType preset_type) {
 }
 
 void import_output_preset(PresetsMenu* self, GtkButton* button) {
-  import_preset(self, PresetType::output);
+  import_preset<PresetType::output>(self);
 }
 
 void import_input_preset(PresetsMenu* self, GtkButton* button) {
-  import_preset(self, PresetType::input);
+  import_preset<PresetType::input>(self);
 }
 
-void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_type, GtkStringList* string_list) {
+template <PresetType preset_type>
+void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* string_list) {
   for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
     gtk_string_list_append(string_list, name.c_str());
   }
@@ -162,15 +153,10 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
 
   gtk_filter_list_model_set_incremental(filter_model, 1);
 
-  switch (preset_type) {
-    case PresetType::output: {
-      g_object_bind_property(self->output_search, "text", filter, "search", G_BINDING_DEFAULT);
-      break;
-    }
-    case PresetType::input: {
-      g_object_bind_property(self->input_search, "text", filter, "search", G_BINDING_DEFAULT);
-      break;
-    }
+  if constexpr (preset_type == PresetType::output) {
+    g_object_bind_property(self->output_search, "text", filter, "search", G_BINDING_DEFAULT);
+  } else if constexpr (preset_type == PresetType::input) {
+    g_object_bind_property(self->input_search, "text", filter, "search", G_BINDING_DEFAULT);
   }
 
   // sorter
@@ -189,17 +175,6 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
 
   auto* factory = gtk_signal_list_item_factory_new();
 
-  switch (preset_type) {
-    case PresetType::output: {
-      g_object_set_data(G_OBJECT(factory), "preset-type", const_cast<char*>("output"));
-      break;
-    }
-    case PresetType::input: {
-      g_object_set_data(G_OBJECT(factory), "preset-type", const_cast<char*>("input"));
-      break;
-    }
-  }
-
   // setting the factory callbacks
 
   g_signal_connect(
@@ -211,15 +186,10 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
         auto* save = gtk_builder_get_object(builder, "save");
         auto* remove = gtk_builder_get_object(builder, "remove");
 
-        auto preset_type = g_object_get_data(G_OBJECT(factory), "preset-type");
-
         g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
         g_object_set_data(G_OBJECT(item), "apply", apply);
         g_object_set_data(G_OBJECT(item), "save", save);
         g_object_set_data(G_OBJECT(item), "remove", remove);
-        g_object_set_data(G_OBJECT(apply), "preset-type", preset_type);
-        g_object_set_data(G_OBJECT(save), "preset-type", preset_type);
-        g_object_set_data(G_OBJECT(remove), "preset-type", preset_type);
 
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
@@ -228,13 +198,12 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
                            auto self = static_cast<PresetsMenu*>(user_data);
 
                            auto* preset_name = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-name"));
-                           auto preset_type = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-type"));
 
-                           if (g_strcmp0(preset_type, "output") == 0) {
+                           if constexpr (preset_type == PresetType::output) {
                              self->application->presets_manager->load_preset_file(PresetType::output, preset_name);
 
                              g_settings_set_string(self->settings, "last-used-output-preset", preset_name);
-                           } else if (g_strcmp0(preset_type, "input") == 0) {
+                           } else if constexpr (preset_type == PresetType::input) {
                              self->application->presets_manager->load_preset_file(PresetType::input, preset_name);
 
                              g_settings_set_string(self->settings, "last-used-input-preset", preset_name);
@@ -246,11 +215,10 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
                            auto self = static_cast<PresetsMenu*>(user_data);
 
                            auto* preset_name = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-name"));
-                           auto preset_type = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-type"));
 
-                           if (g_strcmp0(preset_type, "output") == 0) {
+                           if constexpr (preset_type == PresetType::output) {
                              self->application->presets_manager->save_preset_file(PresetType::output, preset_name);
-                           } else if (g_strcmp0(preset_type, "input") == 0) {
+                           } else if constexpr (preset_type == PresetType::input) {
                              self->application->presets_manager->save_preset_file(PresetType::input, preset_name);
                            }
                          }),
@@ -260,11 +228,10 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
                            auto self = static_cast<PresetsMenu*>(user_data);
 
                            auto* preset_name = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-name"));
-                           auto preset_type = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-type"));
 
-                           if (g_strcmp0(preset_type, "output") == 0) {
+                           if constexpr (preset_type == PresetType::output) {
                              self->application->presets_manager->remove(PresetType::output, preset_name);
-                           } else if (g_strcmp0(preset_type, "input") == 0) {
+                           } else if constexpr (preset_type == PresetType::input) {
                              self->application->presets_manager->remove(PresetType::input, preset_name);
                            }
                          }),
@@ -326,8 +293,8 @@ void reset_menu_button_label(PresetsMenu* self) {
 void setup(PresetsMenu* self, app::Application* application) {
   self->application = application;
 
-  setup_listview(self, self->output_listview, PresetType::output, self->output_string_list);
-  setup_listview(self, self->input_listview, PresetType::input, self->input_string_list);
+  setup_listview<PresetType::output>(self, self->output_listview, self->output_string_list);
+  setup_listview<PresetType::input>(self, self->input_listview, self->input_string_list);
 
   reset_menu_button_label(self);
 
@@ -455,7 +422,8 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_search);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_input);
 
-  gtk_widget_class_bind_template_callback(widget_class, create_preset);
+  gtk_widget_class_bind_template_callback(widget_class, create_output_preset);
+  gtk_widget_class_bind_template_callback(widget_class, create_input_preset);
   gtk_widget_class_bind_template_callback(widget_class, import_output_preset);
   gtk_widget_class_bind_template_callback(widget_class, import_input_preset);
 }

@@ -63,8 +63,7 @@
                                                                 <property name="halign">center</property>
                                                                 <property name="valign">center</property>
                                                                 <property name="icon_name">list-add-symbolic</property>
-                                                                <property name="name">output_preset</property>
-                                                                <signal name="clicked" handler="create_preset" object="PresetsMenu" />
+                                                                <signal name="clicked" handler="create_output_preset" object="PresetsMenu" />
                                                                 <style>
                                                                     <class name="suggested-action" />
                                                                 </style>
@@ -180,8 +179,7 @@
                                                                 <property name="halign">center</property>
                                                                 <property name="valign">center</property>
                                                                 <property name="icon_name">list-add-symbolic</property>
-                                                                <property name="name">input_preset</property>
-                                                                <signal name="clicked" handler="create_preset" object="PresetsMenu" />
+                                                                <signal name="clicked" handler="create_input_preset" object="PresetsMenu" />
                                                                 <style>
                                                                     <class name="suggested-action" />
                                                                 </style>

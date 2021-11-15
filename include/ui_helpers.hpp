@@ -22,6 +22,7 @@
 #include <adwaita.h>
 #include <fmt/core.h>
 #include <algorithm>
+#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -31,6 +32,24 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
 
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int;
 
-void prepare_spinbutton(GtkSpinButton* button, const char* unit);
+template <size_t N>
+struct StringLiteralWrapper {
+  constexpr StringLiteralWrapper(const char (&str)[N]) : msg(std::to_array(str)) {}
+
+  std::array<char, N> msg;
+};
+
+template <StringLiteralWrapper sl_wrapper>
+void prepare_spinbutton(GtkSpinButton* button) {
+  g_signal_connect(button, "output", G_CALLBACK(+[](GtkSpinButton* button, gpointer user_data) {
+                     return parse_spinbutton_output(button, sl_wrapper.msg.data());
+                   }),
+                   nullptr);
+
+  g_signal_connect(button, "input", G_CALLBACK(+[](GtkSpinButton* button, gdouble* new_value, gpointer user_data) {
+                     return parse_spinbutton_input(button, new_value);
+                   }),
+                   nullptr);
+}
 
 }  // namespace ui

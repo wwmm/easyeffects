@@ -31,20 +31,4 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
   return GTK_INPUT_ERROR;
 }
 
-void prepare_spinbutton(GtkSpinButton* button, const char* unit) {
-  g_object_set_data(G_OBJECT(button), "unit", const_cast<char*>(unit));
-
-  g_signal_connect(button, "output", G_CALLBACK(+[](GtkSpinButton* button, gpointer user_data) {
-                     auto unit = static_cast<char*>(g_object_get_data(G_OBJECT(button), "unit"));
-
-                     return parse_spinbutton_output(button, unit);
-                   }),
-                   nullptr);
-
-  g_signal_connect(button, "input", G_CALLBACK(+[](GtkSpinButton* button, gdouble* new_value, gpointer user_data) {
-                     return parse_spinbutton_input(button, new_value);
-                   }),
-                   nullptr);
-}
-
 }  // namespace ui
