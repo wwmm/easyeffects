@@ -1,4 +1,14 @@
 <interface>
+    <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="spectrum_n_points" />
+            <widget name="spectrum_height" />
+            <widget name="spectrum_line_width" />
+            <widget name="spectrum_minimum_frequency" />
+            <widget name="spectrum_maximum_frequency" />
+        </widgets>
+    </object>
     <template class="PreferencesWindow" parent="AdwPreferencesWindow">
         <child>
             <object class="AdwPreferencesPage">
@@ -143,7 +153,6 @@
                                     <object class="GtkSpinButton" id="spectrum_n_points">
                                         <property name="valign">center</property>
                                         <property name="digits">0</property>
-                                        <property name="width-chars">10</property>
                                         <property name="update-policy">if-valid</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
@@ -166,7 +175,6 @@
                                     <object class="GtkSpinButton" id="spectrum_height">
                                         <property name="valign">center</property>
                                         <property name="digits">0</property>
-                                        <property name="width-chars">10</property>
                                         <property name="update-policy">if-valid</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
@@ -189,7 +197,6 @@
                                 <child>
                                     <object class="GtkSpinButton" id="spectrum_line_width">
                                         <property name="valign">center</property>
-                                        <property name="width-chars">10</property>
                                         <property name="update-policy">if-valid</property>
                                         <property name="digits">1</property>
                                         <property name="adjustment">

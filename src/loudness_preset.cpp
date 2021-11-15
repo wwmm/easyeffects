@@ -44,9 +44,9 @@ void LoudnessPreset::load(const nlohmann::json& json, const std::string& section
 
   update_key<double>(json.at(section).at("loudness"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("loudness"), settings, "fft", "fft");
+  update_key<gchar*>(json.at(section).at("loudness"), settings, "fft", "fft");
 
-  update_string_key(json.at(section).at("loudness"), settings, "std", "std");
+  update_key<gchar*>(json.at(section).at("loudness"), settings, "std", "std");
 
   update_key<double>(json.at(section).at("loudness"), settings, "volume", "volume");
 }

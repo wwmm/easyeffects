@@ -40,5 +40,5 @@ void RNNoisePreset::load(const nlohmann::json& json, const std::string& section,
 
   update_key<double>(json.at(section).at("rnnoise"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("rnnoise"), settings, "model-path", "model-path");
+  update_key<gchar*>(json.at(section).at("rnnoise"), settings, "model-path", "model-path");
 }

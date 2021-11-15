@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PLUGIN_PRESET_BASE_HPP
-#define PLUGIN_PRESET_BASE_HPP
+#pragma once
 
 #include <gio/gio.h>
 #include <nlohmann/json.hpp>
@@ -91,7 +90,7 @@ class PluginPresetBase {
     } else if constexpr (std::is_same_v<T, gchar*>) {
       gsize* length = nullptr;
 
-      value = g_variant_get_string(variant, length);
+      value = const_cast<gchar*>(g_variant_get_string(variant, length));
     }
 
     g_variant_unref(variant);
@@ -104,7 +103,13 @@ class PluginPresetBase {
                   GSettings* settings,
                   const std::string& key,
                   const std::string& json_key) {
-    const T new_value = json.value(json_key, get_default<T>(settings, key));
+    T new_value;
+
+    if constexpr (!std::is_same_v<T, gchar*>) {
+      new_value = json.value(json_key, get_default<T>(settings, key));
+    } else {
+      new_value = const_cast<gchar*>(json.value(json_key, get_default<T>(settings, key)).c_str());
+    }
 
     T current_value;
 
@@ -131,19 +136,6 @@ class PluginPresetBase {
     }
   }
 
-  void update_string_key(const nlohmann::json& json,
-                         GSettings* settings,
-                         const Glib::ustring& key,
-                         const std::string& json_key) {
-    // const auto& current_value = settings->get_string(key);
-
-    // const Glib::ustring& new_value = json.value(json_key, get_default<std::string>(settings, key));
-
-    // if (current_value != new_value) {
-    //   settings->set_string(key, new_value);
-    // }
-  }
-
  private:
   /*
     Very naive test for equal values...
@@ -152,11 +144,9 @@ class PluginPresetBase {
   template <typename T>
   auto is_different(const T& a, const T& b) -> bool {
     if constexpr (std::is_same_v<T, gchar*>) {
-      return static_cast<bool>(g_strcmp0(a, b) == 0);
+      return static_cast<bool>(g_strcmp0(a, b) != 0);
     }
 
     return a != b;
   }
 };
-
-#endif

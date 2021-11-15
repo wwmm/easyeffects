@@ -78,7 +78,7 @@ void CompressorPreset::load(const nlohmann::json& json, const std::string& secti
 
   update_key<double>(json.at(section).at("compressor"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("compressor"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at("compressor"), settings, "mode", "mode");
 
   update_key<double>(json.at(section).at("compressor"), settings, "attack", "attack");
 
@@ -98,11 +98,11 @@ void CompressorPreset::load(const nlohmann::json& json, const std::string& secti
 
   update_key<double>(json.at(section).at("compressor"), settings, "boost-amount", "boost-amount");
 
-  update_string_key(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-type", "type");
+  update_key<gchar*>(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-type", "type");
 
-  update_string_key(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-mode", "mode");
+  update_key<gchar*>(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-mode", "mode");
 
-  update_string_key(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-source", "source");
+  update_key<gchar*>(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-source", "source");
 
   update_key<double>(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-preamp", "preamp");
 
@@ -110,11 +110,11 @@ void CompressorPreset::load(const nlohmann::json& json, const std::string& secti
 
   update_key<double>(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-lookahead", "lookahead");
 
-  update_string_key(json.at(section).at("compressor"), settings, "hpf-mode", "hpf-mode");
+  update_key<gchar*>(json.at(section).at("compressor"), settings, "hpf-mode", "hpf-mode");
 
   update_key<double>(json.at(section).at("compressor"), settings, "hpf-frequency", "hpf-frequency");
 
-  update_string_key(json.at(section).at("compressor"), settings, "lpf-mode", "lpf-mode");
+  update_key<gchar*>(json.at(section).at("compressor"), settings, "lpf-mode", "lpf-mode");
 
   update_key<double>(json.at(section).at("compressor"), settings, "lpf-frequency", "lpf-frequency");
 }

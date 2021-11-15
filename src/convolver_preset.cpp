@@ -42,7 +42,7 @@ void ConvolverPreset::load(const nlohmann::json& json, const std::string& sectio
 
   update_key<double>(json.at(section).at("convolver"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("convolver"), settings, "kernel-path", "kernel-path");
+  update_key<gchar*>(json.at(section).at("convolver"), settings, "kernel-path", "kernel-path");
 
   update_key<int>(json.at(section).at("convolver"), settings, "ir-width", "ir-width");
 }

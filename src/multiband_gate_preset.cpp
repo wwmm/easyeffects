@@ -140,7 +140,7 @@ void MultibandGatePreset::load(const nlohmann::json& json, const std::string& se
 
   update_key<double>(json.at(section).at("multiband_gate"), settings, "freq2", "freq2");
 
-  update_string_key(json.at(section).at("multiband_gate"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at("multiband_gate"), settings, "mode", "mode");
 
   // sub band
 
@@ -158,7 +158,7 @@ void MultibandGatePreset::load(const nlohmann::json& json, const std::string& se
 
   update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "knee0", "knee");
 
-  update_string_key(json.at(section).at("multiband_gate").at("subband"), settings, "detection0", "detection");
+  update_key<gchar*>(json.at(section).at("multiband_gate").at("subband"), settings, "detection0", "detection");
 
   update_key<bool>(json.at(section).at("multiband_gate").at("subband"), settings, "bypass0", "bypass");
 
@@ -180,7 +180,7 @@ void MultibandGatePreset::load(const nlohmann::json& json, const std::string& se
 
   update_key<double>(json.at(section).at("multiband_gate").at("lowband"), settings, "knee1", "knee");
 
-  update_string_key(json.at(section).at("multiband_gate").at("lowband"), settings, "detection1", "detection");
+  update_key<gchar*>(json.at(section).at("multiband_gate").at("lowband"), settings, "detection1", "detection");
 
   update_key<bool>(json.at(section).at("multiband_gate").at("lowband"), settings, "bypass1", "bypass");
 
@@ -202,7 +202,7 @@ void MultibandGatePreset::load(const nlohmann::json& json, const std::string& se
 
   update_key<double>(json.at(section).at("multiband_gate").at("midband"), settings, "knee2", "knee");
 
-  update_string_key(json.at(section).at("multiband_gate").at("midband"), settings, "detection2", "detection");
+  update_key<gchar*>(json.at(section).at("multiband_gate").at("midband"), settings, "detection2", "detection");
 
   update_key<bool>(json.at(section).at("multiband_gate").at("midband"), settings, "bypass2", "bypass");
 
@@ -224,7 +224,7 @@ void MultibandGatePreset::load(const nlohmann::json& json, const std::string& se
 
   update_key<double>(json.at(section).at("multiband_gate").at("highband"), settings, "knee3", "knee");
 
-  update_string_key(json.at(section).at("multiband_gate").at("highband"), settings, "detection3", "detection");
+  update_key<gchar*>(json.at(section).at("multiband_gate").at("highband"), settings, "detection3", "detection");
 
   update_key<bool>(json.at(section).at("multiband_gate").at("highband"), settings, "bypass3", "bypass");
 

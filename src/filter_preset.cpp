@@ -50,7 +50,7 @@ void FilterPreset::load(const nlohmann::json& json, const std::string& section, 
 
   update_key<double>(json.at(section).at("filter"), settings, "resonance", "resonance");
 
-  update_string_key(json.at(section).at("filter"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at("filter"), settings, "mode", "mode");
 
   update_key<double>(json.at(section).at("filter"), settings, "inertia", "inertia");
 }

@@ -64,11 +64,11 @@ void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSett
 }
 
 void LimiterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
-  update_string_key(json.at(section).at("limiter"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at("limiter"), settings, "mode", "mode");
 
-  update_string_key(json.at(section).at("limiter"), settings, "oversampling", "oversampling");
+  update_key<gchar*>(json.at(section).at("limiter"), settings, "oversampling", "oversampling");
 
-  update_string_key(json.at(section).at("limiter"), settings, "dithering", "dithering");
+  update_key<gchar*>(json.at(section).at("limiter"), settings, "dithering", "dithering");
 
   update_key<double>(json.at(section).at("limiter"), settings, "input-gain", "input-gain");
 

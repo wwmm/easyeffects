@@ -84,7 +84,7 @@ void StereoToolsPreset::load(const nlohmann::json& json, const std::string& sect
 
   update_key<bool>(json.at(section).at("stereo_tools"), settings, "phaser", "phaser");
 
-  update_string_key(json.at(section).at("stereo_tools"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at("stereo_tools"), settings, "mode", "mode");
 
   update_key<double>(json.at(section).at("stereo_tools"), settings, "slev", "side-level");
 

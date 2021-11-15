@@ -1,3 +1,22 @@
+/*
+ *  Copyright © 2017-2022 Wellington Wallace
+ *
+ *  This file is part of EasyEffects.
+ *
+ *  EasyEffects is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  EasyEffects is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "preferences_window.hpp"
 
 namespace ui::preferences_window {
@@ -141,6 +160,52 @@ void preferences_window_init(PreferencesWindow* self) {
   color = util::gsettings_get_color(self->settings_spectrum, "color-axis-labels");
 
   gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_axis_color_button), &color);
+
+  // connecting some widgets signals
+
+  g_signal_connect(
+      self->spectrum_minimum_frequency, "output",
+      G_CALLBACK(+[](GtkSpinButton* button, gpointer user_data) { return parse_spinbutton_output(button, "Hz"); }),
+      nullptr);
+
+  g_signal_connect(self->spectrum_minimum_frequency, "input",
+                   G_CALLBACK(+[](GtkSpinButton* button, gdouble* new_value, PreferencesWindow* self) {
+                     const auto parse_result = parse_spinbutton_input(self->spectrum_minimum_frequency, new_value);
+
+                     if (parse_result != GTK_INPUT_ERROR) {
+                       const auto max_freq =
+                           static_cast<double>(g_settings_get_int(self->settings_spectrum, "maximum-frequency"));
+
+                       if (const auto valid_min_freq = max_freq - 100.0; *new_value > valid_min_freq) {
+                         *new_value = valid_min_freq;
+                       }
+                     }
+
+                     return parse_result;
+                   }),
+                   self);
+
+  g_signal_connect(
+      self->spectrum_maximum_frequency, "output",
+      G_CALLBACK(+[](GtkSpinButton* button, gpointer user_data) { return parse_spinbutton_output(button, "Hz"); }),
+      nullptr);
+
+  g_signal_connect(self->spectrum_maximum_frequency, "input",
+                   G_CALLBACK(+[](GtkSpinButton* button, gdouble* new_value, PreferencesWindow* self) {
+                     const auto parse_result = parse_spinbutton_input(self->spectrum_maximum_frequency, new_value);
+
+                     if (parse_result != GTK_INPUT_ERROR) {
+                       const auto min_freq =
+                           static_cast<double>(g_settings_get_int(self->settings_spectrum, "minimum-frequency"));
+
+                       if (const auto valid_max_freq = min_freq + 100.0; *new_value < valid_max_freq) {
+                         *new_value = valid_max_freq;
+                       }
+                     }
+
+                     return parse_result;
+                   }),
+                   self);
 
   // general section gsettings bindings
 

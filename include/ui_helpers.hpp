@@ -20,22 +20,17 @@
 #pragma once
 
 #include <adwaita.h>
-#include <filesystem>
-#include <fstream>
+#include <fmt/core.h>
+#include <algorithm>
+#include <sstream>
 #include <string>
-#include "ui_helpers.hpp"
-#include "util.hpp"
 
-namespace ui::preferences_window {
+namespace ui {
 
-G_BEGIN_DECLS
+auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
 
-#define EE_TYPE_PREFERENCES_WINDOW (preferences_window_get_type())
+auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int;
 
-G_DECLARE_FINAL_TYPE(PreferencesWindow, preferences_window, EE, PREFERENCES_WINDOW, AdwPreferencesWindow)
+void prepare_spinbutton(GtkSpinButton* button, const char* unit);
 
-G_END_DECLS
-
-auto create() -> PreferencesWindow*;
-
-}  // namespace ui::preferences_window
+}  // namespace ui

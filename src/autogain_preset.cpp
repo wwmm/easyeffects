@@ -44,5 +44,5 @@ void AutoGainPreset::load(const nlohmann::json& json, const std::string& section
 
   update_key<double>(json.at(section).at("autogain"), settings, "target", "target");
 
-  update_string_key(json.at(section).at("autogain"), settings, "reference", "reference");
+  update_key<gchar*>(json.at(section).at("autogain"), settings, "reference", "reference");
 }

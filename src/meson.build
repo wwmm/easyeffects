@@ -97,6 +97,7 @@ easyeffects_sources = [
 	'stream_input_effects_ui.cpp',
 	'stream_input_effects.cpp',
 	'test_signals.cpp',
+	'ui_helpers.cpp',
 	'util.cpp',
 	gresources
 ]
@@ -125,7 +126,8 @@ easyeffects_deps = [
 	dependency('samplerate'),
 	dependency('rubberband'),
 	dependency('speexdsp'),
-	dependency('nlohmann_json', required: true),
+	dependency('nlohmann_json'),
+	dependency('fmt'),
 	dependency('threads'),
 	tbb,
 	zita_convolver,

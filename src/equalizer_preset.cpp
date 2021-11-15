@@ -94,7 +94,7 @@ void EqualizerPreset::load(const nlohmann::json& json, const std::string& sectio
 
   update_key<double>(json.at(section).at("equalizer"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("equalizer"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at("equalizer"), settings, "mode", "mode");
 
   update_key<int>(json.at(section).at("equalizer"), settings, "num-bands", "num-bands");
 
@@ -115,11 +115,11 @@ void EqualizerPreset::load_channel(const nlohmann::json& json, GSettings* settin
   for (int n = 0; n < nbands; n++) {
     const auto bandn = "band" + std::to_string(n);
 
-    update_string_key(json.at(bandn), settings, bandn + "-type", "type");
+    update_key<gchar*>(json.at(bandn), settings, bandn + "-type", "type");
 
-    update_string_key(json.at(bandn), settings, bandn + "-mode", "mode");
+    update_key<gchar*>(json.at(bandn), settings, bandn + "-mode", "mode");
 
-    update_string_key(json.at(bandn), settings, bandn + "-slope", "slope");
+    update_key<gchar*>(json.at(bandn), settings, bandn + "-slope", "slope");
 
     update_key<bool>(json.at(bandn), settings, bandn + "-solo", "solo");
 

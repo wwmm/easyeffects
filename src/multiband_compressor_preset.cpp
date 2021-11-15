@@ -121,9 +121,9 @@ void MultibandCompressorPreset::load(const nlohmann::json& json, const std::stri
 
   update_key<double>(json.at(section).at("multiband_compressor"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("multiband_compressor"), settings, "compressor-mode", "compressor-mode");
+  update_key<gchar*>(json.at(section).at("multiband_compressor"), settings, "compressor-mode", "compressor-mode");
 
-  update_string_key(json.at(section).at("multiband_compressor"), settings, "envelope-boost", "envelope-boost");
+  update_key<gchar*>(json.at(section).at("multiband_compressor"), settings, "envelope-boost", "envelope-boost");
 
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = std::to_string(n);
@@ -162,17 +162,17 @@ void MultibandCompressorPreset::load(const nlohmann::json& json, const std::stri
 
     update_key<double>(json.at(section).at("multiband_compressor").at(bandn), settings, "makeup" + nstr, "makeup");
 
-    update_string_key(json.at(section).at("multiband_compressor").at(bandn), settings, "compression-mode" + nstr,
-                      "compression-mode");
+    update_key<gchar*>(json.at(section).at("multiband_compressor").at(bandn), settings, "compression-mode" + nstr,
+                       "compression-mode");
 
     update_key<bool>(json.at(section).at("multiband_compressor").at(bandn), settings, "external-sidechain" + nstr,
                      "external-sidechain");
 
-    update_string_key(json.at(section).at("multiband_compressor").at(bandn), settings, "sidechain-mode" + nstr,
-                      "sidechain-mode");
+    update_key<gchar*>(json.at(section).at("multiband_compressor").at(bandn), settings, "sidechain-mode" + nstr,
+                       "sidechain-mode");
 
-    update_string_key(json.at(section).at("multiband_compressor").at(bandn), settings, "sidechain-source" + nstr,
-                      "sidechain-source");
+    update_key<gchar*>(json.at(section).at("multiband_compressor").at(bandn), settings, "sidechain-source" + nstr,
+                       "sidechain-source");
 
     update_key<double>(json.at(section).at("multiband_compressor").at(bandn), settings, "sidechain-lookahead" + nstr,
                        "sidechain-lookahead");

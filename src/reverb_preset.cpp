@@ -56,7 +56,7 @@ void ReverbPreset::load(const nlohmann::json& json, const std::string& section, 
 
   update_key<double>(json.at(section).at("reverb"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("reverb"), settings, "room-size", "room-size");
+  update_key<gchar*>(json.at(section).at("reverb"), settings, "room-size", "room-size");
 
   update_key<double>(json.at(section).at("reverb"), settings, "decay-time", "decay-time");
 

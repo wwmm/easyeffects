@@ -62,9 +62,9 @@ void DeesserPreset::load(const nlohmann::json& json, const std::string& section,
 
   update_key<double>(json.at(section).at("deesser"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("deesser"), settings, "detection", "detection");
+  update_key<gchar*>(json.at(section).at("deesser"), settings, "detection", "detection");
 
-  update_string_key(json.at(section).at("deesser"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at("deesser"), settings, "mode", "mode");
 
   update_key<double>(json.at(section).at("deesser"), settings, "threshold", "threshold");
 

@@ -56,9 +56,9 @@ void GatePreset::load(const nlohmann::json& json, const std::string& section, GS
 
   update_key<double>(json.at(section).at("gate"), settings, "output-gain", "output-gain");
 
-  update_string_key(json.at(section).at("gate"), settings, "detection", "detection");
+  update_key<gchar*>(json.at(section).at("gate"), settings, "detection", "detection");
 
-  update_string_key(json.at(section).at("gate"), settings, "stereo-link", "stereo-link");
+  update_key<gchar*>(json.at(section).at("gate"), settings, "stereo-link", "stereo-link");
 
   update_key<double>(json.at(section).at("gate"), settings, "range", "range");
 
