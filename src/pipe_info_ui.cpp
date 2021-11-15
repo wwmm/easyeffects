@@ -44,7 +44,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     if (node.media_class == pm->media_class_sink) {
       output_devices_model->append(NodeInfoHolder::create(node));
-    } else if (node.media_class == pm->media_class_source) {
+    } else if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
       input_devices_model->append(NodeInfoHolder::create(node));
     }
   }
