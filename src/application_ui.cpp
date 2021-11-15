@@ -82,6 +82,15 @@ auto setup_icon_theme() -> GtkIconTheme* {
   return icon_theme;
 }
 
+void apply_css_style() {
+  auto* provider = gtk_css_provider_new();
+
+  gtk_css_provider_load_from_resource(provider, "/com/github/wwmm/easyeffects/ui/custom.css");
+
+  gtk_style_context_add_provider_for_display(gdk_display_get_default(), GTK_STYLE_PROVIDER(provider),
+                                             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+}
+
 void constructed(GObject* object) {
   auto* self = EE_APP_WINDOW(object);
 
@@ -223,8 +232,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Application* application)
     : Gtk::ApplicationWindow(cobject), app(application), settings(app->settings) {
-  apply_css_style("custom.css");
-
   // loading builder widgets
 
   stack = builder->get_widget<Gtk::Stack>("stack");
@@ -233,10 +240,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
   toggle_pipe_info = builder->get_widget<Gtk::ToggleButton>("toggle_pipe_info");
 
-  auto icon_theme = setup_icon_theme();
-
-  soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get(), icon_theme);
-  sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get(), icon_theme);
+  // soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get(), icon_theme);
+  // sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get(), icon_theme);
   // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get(), app->presets_manager.get());
 
   soe_ui->set_transient_window(this);
@@ -275,37 +280,4 @@ auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
   const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/application_window.ui");
 
   return Gtk::Builder::get_widget_derived<ApplicationUi>(builder, "ApplicationUi", app_this);
-}
-
-void ApplicationUi::apply_css_style(const std::string& css_file_name) {
-  auto provider = Gtk::CssProvider::create();
-
-  provider->load_from_resource("/com/github/wwmm/easyeffects/ui/" + css_file_name);
-
-  const auto display = Gdk::Display::get_default();
-  const auto priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
-
-  Gtk::StyleContext::add_provider_for_display(display, provider, priority);
-}
-
-auto ApplicationUi::setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme> {
-  try {
-    Glib::RefPtr<Gtk::IconTheme> ic_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
-
-    const auto icon_theme_name = ic_theme->get_theme_name();
-
-    if (icon_theme_name.empty()) {
-      util::debug("application_ui: Icon Theme detected, but the name is empty");
-    } else {
-      util::debug("application_ui: Icon Theme " + icon_theme_name.raw() + " detected");
-    }
-
-    ic_theme->add_resource_path("/com/github/wwmm/easyeffects/icons");
-
-    return ic_theme;
-  } catch (...) {
-    util::warning("application_ui: can't retrieve the icon theme in use on the system. App icons won't be shown.");
-
-    return nullptr;
-  }
 }
