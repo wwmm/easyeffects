@@ -239,7 +239,7 @@ void application_class_init(ApplicationClass* klass) {
     g_object_unref(self->sie_settings);
     g_object_unref(self->soe_settings);
 
-    // Making sure some destructors are called. I have no idea why this is not happening automatically
+    // Making sure some destructors are called. I have no idea why this is not happening automatically...
 
     self->pm = nullptr;
     self->presets_manager = nullptr;

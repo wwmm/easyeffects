@@ -45,6 +45,8 @@ struct _ApplicationWindow {
 
   GApplication* gapp = nullptr;
 
+  GtkIconTheme* icon_theme = nullptr;
+
   std::vector<gulong> gconnections;
 };
 
@@ -56,6 +58,28 @@ void init_theme_color(ApplicationWindow* self) {
   } else {
     adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_FORCE_DARK);
   }
+}
+
+auto setup_icon_theme() -> GtkIconTheme* {
+  auto* icon_theme = gtk_icon_theme_get_for_display(gdk_display_get_default());
+
+  if (icon_theme == nullptr) {
+    util::warning(log_tag + "can't retrieve the icon theme in use on the system. App icons won't be shown."s);
+
+    return nullptr;
+  }
+
+  auto* name = gtk_icon_theme_get_theme_name(icon_theme);
+
+  if (name == nullptr) {
+    util::debug(log_tag + "Icon Theme detected, but the name is empty"s);
+  } else {
+    util::debug(log_tag + "Icon Theme "s + name + " detected"s);
+  }
+
+  gtk_icon_theme_add_resource_path(icon_theme, "/com/github/wwmm/easyeffects/icons");
+
+  return icon_theme;
 }
 
 void constructed(GObject* object) {
@@ -176,6 +200,8 @@ void application_window_init(ApplicationWindow* self) {
 
   init_theme_color(self);
 
+  self->icon_theme = setup_icon_theme();
+
   self->presetsMenu = presets_menu::create();
 
   gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->presetsMenu));
@@ -202,7 +228,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // loading builder widgets
 
   stack = builder->get_widget<Gtk::Stack>("stack");
-  stack_menu_settings = builder->get_widget<Gtk::Stack>("stack_menu_settings");
   presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
   toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
   toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
