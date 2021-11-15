@@ -30,6 +30,9 @@ struct _ApplicationWindow {
 
   AdwViewStack* stack = nullptr;
 
+  AdwViewStackPage *stack_page_stream_output = nullptr, *stack_page_stream_input = nullptr,
+                   *stack_page_pipewire = nullptr;
+
   GtkMenuButton* presets_menu_button = nullptr;
 
   GtkToggleButton* bypass_button = nullptr;
@@ -193,6 +196,9 @@ void application_window_class_init(ApplicationWindowClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/application_window.ui");
 
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack);
+  gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack_page_stream_output);
+  gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack_page_stream_input);
+  gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack_page_pipewire);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, presets_menu_button);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, bypass_button);
 }
@@ -208,6 +214,8 @@ void application_window_init(ApplicationWindow* self) {
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
   init_theme_color(self);
+
+  apply_css_style();
 
   self->icon_theme = setup_icon_theme();
 
@@ -235,7 +243,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // loading builder widgets
 
   stack = builder->get_widget<Gtk::Stack>("stack");
-  presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
   toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
   toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
   toggle_pipe_info = builder->get_widget<Gtk::ToggleButton>("toggle_pipe_info");
