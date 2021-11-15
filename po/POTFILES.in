@@ -36,7 +36,6 @@ data/ui/presets_menu.ui
 data/ui/reverb.ui
 data/ui/rnnoise.ui
 data/ui/spectrum.ui
-data/ui/spectrum_settings.ui
 data/ui/stereo_tools.ui
 include/effects_base_ui.hpp
 src/application.cpp
@@ -48,7 +47,6 @@ src/pipe_info_ui.cpp
 src/preferences_window.cpp
 src/presets_menu_ui.cpp
 src/rnnoise_ui.cpp
-src/spectrum_settings_ui.cpp
 src/spectrum_ui.cpp
 src/stream_output_effects_ui.cpp
 src/stream_input_effects_ui.cpp

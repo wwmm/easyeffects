@@ -41,7 +41,6 @@ auto create(GApplication* gapp) -> ApplicationWindow*;
 #include "pipe_info_ui.hpp"
 #include "pipe_manager.hpp"
 
-#include "spectrum_settings_ui.hpp"
 #include "stream_input_effects_ui.hpp"
 #include "stream_output_effects_ui.hpp"
 
