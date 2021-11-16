@@ -19,51 +19,6 @@
 
 #include "spectrum_ui.hpp"
 
-namespace ui::spectrum_ui {
-
-using namespace std::string_literals;
-
-auto constexpr log_tag = "spectrum_ui: ";
-
-struct _SpectrumUi {
-  GtkBox parent_instance{};
-
-  GSettings* settings = nullptr;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
-};
-
-G_DEFINE_TYPE(SpectrumUi, spectrum_ui, GTK_TYPE_WIDGET)
-
-void spectrum_ui_class_init(SpectrumUiClass* klass) {
-  //   auto* object_class = G_OBJECT_CLASS(klass);
-  auto* widget_class = GTK_WIDGET_CLASS(klass);
-
-  //   object_class->dispose = dispose;
-
-  //   widget_class->show = show;
-
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/spectrum.ui");
-
-  // gtk_widget_class_bind_template_child(widget_class, SpectrumUi, stack);
-
-  //   gtk_widget_class_bind_template_child(widget_class, SpectrumUi, output_scrolled_window);
-}
-
-void spectrum_ui_init(SpectrumUi* self) {
-  gtk_widget_init_template(GTK_WIDGET(self));
-
-  self->settings = g_settings_new("com.github.wwmm.easyeffects.spectrum");
-}
-
-auto create() -> SpectrumUi* {
-  return static_cast<SpectrumUi*>(g_object_new(EE_TYPE_SPECTRUM_UI, nullptr));
-}
-
-}  // namespace ui::spectrum_ui
-
 SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::DrawingArea(cobject), settings(Gio::Settings::create("com.github.wwmm.easyeffects.spectrum")) {
   plot = std::make_unique<Plot>(this);

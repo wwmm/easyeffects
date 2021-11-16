@@ -11,6 +11,7 @@ easyeffects_sources = [
 	'bass_loudness.cpp',
 	'bass_loudness_preset.cpp',
 	'bass_loudness_ui.cpp',
+	'chart.cpp',
 	'compressor.cpp',
 	'compressor_preset.cpp',
 	'compressor_ui.cpp',

@@ -22,20 +22,6 @@
 #include <adwaita.h>
 #include "plot.hpp"
 
-namespace ui::spectrum_ui {
-
-G_BEGIN_DECLS
-
-#define EE_TYPE_SPECTRUM_UI (spectrum_ui_get_type())
-
-G_DECLARE_FINAL_TYPE(SpectrumUi, spectrum_ui, EE, SPECTRUM_UI, GtkWidget)
-
-G_END_DECLS
-
-auto create() -> SpectrumUi*;
-
-}  // namespace ui::spectrum_ui
-
 #include <giomm.h>
 #include <memory>
 
