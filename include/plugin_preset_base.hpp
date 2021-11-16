@@ -108,8 +108,8 @@ class PluginPresetBase {
     if constexpr (!std::is_same_v<T, gchar*>) {
       new_value = json.value(json_key, get_default<T>(settings, key));
     } else {
-      std::string teste = json.value(json_key, get_default<T>(settings, key));
-      new_value = g_strdup(teste.c_str());
+      std::string tmp = json.value(json_key, get_default<T>(settings, key));
+      new_value = g_strdup(tmp.c_str());
     }
 
     T current_value;

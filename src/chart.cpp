@@ -9,8 +9,6 @@ auto constexpr log_tag = "chart: ";
 struct _Chart {
   GtkBox parent_instance{};
 
-  GSettings* settings = nullptr;
-
   std::vector<sigc::connection> connections;
 
   std::vector<gulong> gconnections;
@@ -52,8 +50,6 @@ void chart_class_init(ChartClass* klass) {
 
 void chart_init(Chart* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
-
-  self->settings = g_settings_new("com.github.wwmm.easyeffects.spectrum");
 }
 
 auto create() -> Chart* {
