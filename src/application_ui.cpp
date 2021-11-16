@@ -30,14 +30,14 @@ struct _ApplicationWindow {
 
   AdwViewStack* stack = nullptr;
 
-  AdwViewStackPage *stack_page_stream_output = nullptr, *stack_page_stream_input = nullptr,
-                   *stack_page_pipewire = nullptr;
-
   GtkMenuButton* presets_menu_button = nullptr;
 
   GtkToggleButton* bypass_button = nullptr;
 
   ui::presets_menu::PresetsMenu* presetsMenu = nullptr;
+  ui::effects_box::EffectsBox* soe_ui = nullptr;
+  ui::effects_box::EffectsBox* sie_ui = nullptr;
+  ui::pipe_manager_box::PipeManagerBox* pm_box = nullptr;
 
   int width = -1;
   int height = -1;
@@ -196,9 +196,6 @@ void application_window_class_init(ApplicationWindowClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/application_window.ui");
 
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack);
-  gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack_page_stream_output);
-  gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack_page_stream_input);
-  gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack_page_pipewire);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, presets_menu_button);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, bypass_button);
 }
@@ -219,7 +216,18 @@ void application_window_init(ApplicationWindow* self) {
 
   self->icon_theme = setup_icon_theme();
 
-  self->presetsMenu = presets_menu::create();
+  self->presetsMenu = ui::presets_menu::create();
+  self->soe_ui = ui::effects_box::create();
+  self->sie_ui = ui::effects_box::create();
+  self->pm_box = ui::pipe_manager_box::create();
+
+  auto* soe_ui_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->soe_ui), "stream_output", _("Output"));
+  auto* sie_ui_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->sie_ui), "stream_input", _("Input"));
+  auto* pm_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->pm_box), "page_pipewire", _("PipeWire"));
+
+  adw_view_stack_page_set_icon_name(soe_ui_page, "audio-speakers-symbolic");
+  adw_view_stack_page_set_icon_name(sie_ui_page, "audio-input-microphone-symbolic");
+  adw_view_stack_page_set_icon_name(pm_box_page, "network-server-symbolic");
 
   gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->presetsMenu));
 
@@ -243,9 +251,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // loading builder widgets
 
   stack = builder->get_widget<Gtk::Stack>("stack");
-  toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
-  toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
-  toggle_pipe_info = builder->get_widget<Gtk::ToggleButton>("toggle_pipe_info");
 
   // soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get(), icon_theme);
   // sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get(), icon_theme);
@@ -253,26 +258,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   soe_ui->set_transient_window(this);
   sie_ui->set_transient_window(this);
-
-  // signals
-
-  toggle_output->signal_toggled().connect([&, this]() {
-    if (toggle_output->get_active()) {
-      stack->get_pages()->select_item(0, true);
-    }
-  });
-
-  toggle_input->signal_toggled().connect([&, this]() {
-    if (toggle_input->get_active()) {
-      stack->get_pages()->select_item(1, true);
-    }
-  });
-
-  toggle_pipe_info->signal_toggled().connect([&, this]() {
-    if (toggle_pipe_info->get_active()) {
-      stack->get_pages()->select_item(2, true);
-    }
-  });
 }
 
 ApplicationUi::~ApplicationUi() {

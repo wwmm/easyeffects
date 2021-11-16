@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="easyeffects">
+    <template class="EffectsBox" parent="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="hexpand">1</property>
+        <property name="vexpand">1</property>
+        <child>
+            <object class="GtkBox" id="box_spectrum">
+                <property name="hexpand">1</property>
+            </object>
+        </child>
+
+        <child>
+            <object class="AdwViewStack" id="stack">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+                <child>
+                    <object class="AdwViewStackPage" id="stack_page_players">
+                        <property name="name">page_players</property>
+                        <property name="title" translatable="yes">Players</property>
+                        <property name="icon-name">multimedia-player-symbolic</property>
+                        <property name="child">
+                            <object class="GtkLabel">
+                                <property name="label">players</property>
+                            </object>
+                        </property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwViewStackPage" id="stack_page_plugins">
+                        <property name="name">page_plugins</property>
+                        <property name="title" translatable="yes">Plugins</property>
+                        <property name="icon-name">application-x-addon-symbolic</property>
+                        <property name="child">
+                            <object class="GtkLabel">
+                                <property name="label">plugins</property>
+                            </object>
+                        </property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="AdwHeaderBar">
+                <property name="centering-policy">strict</property>
+                <property name="show-end-title-buttons">0</property>
+
+                <property name="title-widget">
+                    <object class="AdwViewSwitcher">
+                        <property name="stack">stack</property>
+                    </object>
+                </property>
+
+                <child>
+                    <object class="GtkLabel" id="device_state">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="label"></property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="latency_status">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="label"></property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="spacing">3</property>
+                        <child>
+                            <object class="GtkLabel" id="global_output_level_left">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width_chars">4</property>
+                                <property name="label">0</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkLabel" id="global_output_level_right">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="width_chars">4</property>
+                                <property name="label">0</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label">dB</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkImage" id="saturation_icon">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="opacity">0</property>
+                                <property name="icon_name">dialog-warning-symbolic</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child type="end">
+                    <object class="GtkMenuButton" id="menubutton_blocklist">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="direction">up</property>
+                        <property name="popover">popover_blocklist</property>
+                        <property name="label" translatable="yes">Blocklist</property>
+                    </object>
+                </child>
+
+                <child type="end">
+                    <object class="GtkToggleButton" id="toggle_listen_mic">
+                        <property name="visible">False</property>
+                        <child>
+                            <object class="GtkBox">
+                                <property name="halign">center</property>
+                                <property name="spacing">3</property>
+                                <child>
+                                    <object class="GtkImage">
+                                        <property name="icon-name">audio-input-microphone-symbolic</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkImage">
+                                        <property name="icon-name">media-playlist-consecutive-symbolic</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkImage">
+                                        <property name="icon-name">audio-speakers-symbolic</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </template>
+
+    <object class="GtkPopover" id="popover_blocklist">
+        <property name="autohide">1</property>
+        <child>
+            <object class="GtkBox">
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
+                <property name="spacing">12</property>
+                <property name="orientation">vertical</property>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                        <property name="css-name">entry</property>
+                        <child>
+                            <object class="GtkText" id="blocklist_player_name">
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                                <property name="placeholder_text" translatable="yes">Player Name</property>
+                                <property name="accessible_role">text-box</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Player Name</property>
+                                </accessibility>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkButton" id="button_add_to_blocklist">
+                                <property name="margin-top">3</property>
+                                <property name="margin-bottom">3</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="icon_name">list-add-symbolic</property>
+                                <style>
+                                    <class name="suggested-action" />
+                                </style>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Add to Blocklist</property>
+                                </accessibility>
+                            </object>
+                        </child>
+                        <style>
+                            <class name="entry" />
+                        </style>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkFrame">
+                        <child>
+                            <object class="GtkScrolledWindow" id="blocklist_scrolled_window">
+                                <property name="propagate_natural_width">1</property>
+                                <property name="propagate_natural_height">1</property>
+                                <child>
+                                    <object class="GtkListView" id="listview_blocklist">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
+                                        <property name="show-separators">1</property>
+                                        <style>
+                                            <class name="rich-list" />
+                                        </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Blocklisted Applications List</property>
+                                        </accessibility>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkLabel" id="show_blocklisted_apps_label">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Show Blocklisted Players</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSwitch" id="show_blocklisted_apps">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <accessibility>
+                                    <relation name="labelled-by">show_blocklisted_apps_label</relation>
+                                </accessibility>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+
+    <object class="GtkPopover" id="popover_plugins">
+        <property name="autohide">1</property>
+        <child>
+            <object class="GtkBox">
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
+                <property name="spacing">12</property>
+                <property name="orientation">vertical</property>
+
+                <child>
+                    <object class="GtkSearchEntry" id="entry_plugins_search">
+                        <property name="valign">start</property>
+                        <property name="hexpand">1</property>
+                        <property name="placeholder_text" translatable="yes">Search</property>
+                        <accessibility>
+                            <property name="label" translatable="yes">Search Plugin</property>
+                        </accessibility>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkFrame">
+                        <child>
+                            <object class="GtkScrolledWindow" id="scrolled_window_plugins">
+                                <property name="propagate_natural_width">1</property>
+                                <property name="propagate_natural_height">1</property>
+                                <child>
+                                    <object class="GtkListView" id="listview_plugins">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
+                                        <property name="show-separators">1</property>
+                                        <style>
+                                            <class name="rich-list" />
+                                        </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Plugins List</property>
+                                        </accessibility>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

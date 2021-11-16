@@ -80,44 +80,6 @@
                     <object class="AdwViewStack" id="stack">
                         <property name="hexpand">1</property>
                         <property name="vexpand">1</property>
-                        <child>
-                            <object class="AdwViewStackPage" id="stack_page_stream_output">
-                                <property name="name">page_stream_output</property>
-                                <property name="title" translatable="yes">Output</property>
-                                <property name="icon-name">audio-speakers-symbolic</property>
-                                <property name="child">
-                                    <object class="GtkLabel">
-                                        <property name="label">output</property>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="AdwViewStackPage" id="stack_page_stream_input">
-                                <property name="name">page_stream_input</property>
-                                <property name="title" translatable="yes">Input</property>
-                                <property name="icon-name">audio-input-microphone-symbolic</property>
-                                <property name="child">
-                                    <object class="GtkLabel">
-                                        <property name="label">input</property>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="AdwViewStackPage" id="stack_page_pipewire">
-                                <property name="name">page_pipewire</property>
-                                <property name="title" translatable="yes">PipeWire</property>
-                                <property name="icon-name">network-server-symbolic</property>
-                                <property name="child">
-                                    <object class="GtkLabel">
-                                        <property name="label">pipewire</property>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
                     </object>
                 </child>
 

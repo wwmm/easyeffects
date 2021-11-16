@@ -18,6 +18,7 @@
         <file>ui/delay.ui</file>
         <file>ui/echo_canceller.ui</file>
         <file>ui/effects_base.ui</file>
+        <file>ui/effects_box.ui</file>
         <file>ui/equalizer.ui</file>
         <file>ui/equalizer_band.ui</file>
         <file>ui/exciter.ui</file>
@@ -31,6 +32,7 @@
         <file>ui/multiband_compressor_band.ui</file>
         <file>ui/multiband_gate.ui</file>
         <file>ui/pipe_info.ui</file>
+        <file>ui/pipe_manager_box.ui</file>
         <file>ui/pitch.ui</file>
         <file>ui/preferences_window.ui</file>
         <file>ui/preset_row.ui</file>

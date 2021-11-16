@@ -20,6 +20,8 @@
 #pragma once
 
 #include <adwaita.h>
+#include "effects_box.hpp"
+#include "pipe_manager_box.hpp"
 #include "presets_menu_ui.hpp"
 
 namespace ui::application_window {
@@ -63,7 +65,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::Stack* stack = nullptr;
-  Gtk::ToggleButton *toggle_output = nullptr, *toggle_input = nullptr, *toggle_pipe_info = nullptr;
 
   std::vector<sigc::connection> connections;
 
