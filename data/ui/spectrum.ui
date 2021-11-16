@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkDrawingArea" id="drawing_area">
+    <template class="SpectrumUi" parent="GtkWidget">
         <property name="hexpand">1</property>
-        <property name="content-height">100</property>
-    </object>
+        <property name="height-request">100</property>
+    </template>
 </interface>

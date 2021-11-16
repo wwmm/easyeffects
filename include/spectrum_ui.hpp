@@ -17,12 +17,28 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef SPECTRUM_UI_HPP
-#define SPECTRUM_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include "plot.hpp"
+
+namespace ui::spectrum_ui {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_SPECTRUM_UI (spectrum_ui_get_type())
+
+G_DECLARE_FINAL_TYPE(SpectrumUi, spectrum_ui, EE, SPECTRUM_UI, GtkWidget)
+
+G_END_DECLS
+
+auto create() -> SpectrumUi*;
+
+}  // namespace ui::spectrum_ui
 
 #include <giomm.h>
 #include <memory>
-#include "plot.hpp"
+
 #include "util.hpp"
 
 class SpectrumUi : public Gtk::DrawingArea {
@@ -61,5 +77,3 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   void init_frequency_labels_color();
 };
-
-#endif

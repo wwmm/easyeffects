@@ -22,6 +22,7 @@
 #include <adwaita.h>
 #include "application.hpp"
 #include "effects_base.hpp"
+#include "spectrum_ui.hpp"
 
 namespace ui::effects_box {
 

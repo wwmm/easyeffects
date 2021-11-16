@@ -11,6 +11,8 @@ struct _EffectsBox {
 
   AdwViewStack* stack = nullptr;
 
+  ui::spectrum_ui::SpectrumUi* spectrum = nullptr;
+
   GSettings* settings = nullptr;
 
   app::Application* application = nullptr;
@@ -54,6 +56,10 @@ void effects_box_class_init(EffectsBoxClass* klass) {
 
 void effects_box_init(EffectsBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->spectrum = ui::spectrum_ui::create();
+
+  gtk_box_insert_child_after(GTK_BOX(self), GTK_WIDGET(self->spectrum), nullptr);
 }
 
 auto create() -> EffectsBox* {
