@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include <adwaita.h>
 #include "plot.hpp"
 
 #include <giomm.h>

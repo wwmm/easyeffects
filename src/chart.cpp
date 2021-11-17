@@ -5,7 +5,7 @@ namespace ui::chart {
 struct _Chart {
   GtkBox parent_instance{};
 
-  bool draw_bar_border, fill_bars;
+  bool draw_bar_border, fill_bars, is_visible;
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
@@ -82,6 +82,10 @@ void set_y_unit(Chart* self, const std::string& value) {
 
 void set_margin(Chart* self, const double& v) {
   self->margin = v;
+}
+
+auto get_is_visible(Chart* self) -> bool {
+  return self->is_visible;
 }
 
 void init_axes(Chart* self) {
@@ -355,6 +359,7 @@ void chart_init(Chart* self) {
 
   self->draw_bar_border = true;
   self->fill_bars = true;
+  self->is_visible = false;
   self->x_axis_height = 0;
   self->n_x_decimals = 1;
   self->n_y_decimals = 1;
@@ -377,6 +382,12 @@ void chart_init(Chart* self) {
   self->controller_motion = gtk_event_controller_motion_new();
 
   g_signal_connect(self->controller_motion, "motion", G_CALLBACK(on_pointer_motion), self);
+
+  g_signal_connect(GTK_WIDGET(self), "hide",
+                   G_CALLBACK(+[](GtkWidget* widget, Chart* self) { self->is_visible = false; }), self);
+
+  g_signal_connect(GTK_WIDGET(self), "show",
+                   G_CALLBACK(+[](GtkWidget* widget, Chart* self) { self->is_visible = true; }), self);
 
   gtk_widget_add_controller(GTK_WIDGET(self), self->controller_motion);
 }

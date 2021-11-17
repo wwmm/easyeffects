@@ -70,6 +70,8 @@ void set_y_unit(Chart* self, const std::string& value);
 
 void set_margin(Chart* self, const double& v);
 
+auto get_is_visible(Chart* self) -> bool;
+
 auto create() -> Chart*;
 
 }  // namespace ui::chart
