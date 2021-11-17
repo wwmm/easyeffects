@@ -174,15 +174,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->reverb->post_messages = true;
   effects_base->rnnoise->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
-
-  auto set_latency = [=, this](const auto& v) {
-    latency_status->set_text(Glib::ustring::format(std::setprecision(1), std::fixed, v) + " ms" +
-                             Glib::ustring(5, ' '));
-  };
-
-  set_latency(effects_base->get_pipeline_latency());
-
-  connections.push_back(effects_base->pipeline_latency.connect(set_latency));
 }
 
 EffectsBaseUi::~EffectsBaseUi() {

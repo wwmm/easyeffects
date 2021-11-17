@@ -21,9 +21,11 @@ struct _EffectsBox {
 
   EffectsBase* effects_base;
 
+  bool schedule_signal_idle;
+
   uint spectrum_rate, spectrum_n_bands;
 
-  float global_output_level_left, global_output_level_right;
+  float global_output_level_left, global_output_level_right, pipeline_latency_ms;
 
   std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
 
@@ -209,10 +211,16 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
     }
   }
 
+  // output level
+
   self->connections.push_back(
       self->effects_base->output_level->output_level.connect([=](const float& left, const float& right) {
         self->global_output_level_left = left;
         self->global_output_level_right = right;
+
+        if (!self->schedule_signal_idle) {
+          return;
+        }
 
         g_idle_add((GSourceFunc) +
                        [](EffectsBox* self) {
@@ -229,9 +237,15 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
                    self);
       }));
 
+  // spectrum array
+
   self->connections.push_back(
       self->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<float> magnitudes) {
         if (!ui::chart::get_is_visible(self->spectrum_chart)) {
+          return;
+        }
+
+        if (!self->schedule_signal_idle) {
           return;
         }
 
@@ -294,7 +308,43 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   self->effects_base->output_level->post_messages = true;
   self->effects_base->spectrum->post_messages = true;
 
-  self->effects_base->spectrum->bypass = false;
+  // pipeline latency
+
+  gtk_label_set_text(self->latency_status,
+                     fmt::format("     {0:.1f} ms", self->effects_base->get_pipeline_latency()).c_str());
+
+  self->connections.push_back(self->effects_base->pipeline_latency.connect([=](const float& v) {
+    self->pipeline_latency_ms = v;
+
+    if (!self->schedule_signal_idle) {
+      return;
+    }
+
+    g_idle_add((GSourceFunc) +
+                   [](EffectsBox* self) {
+                     gtk_label_set_text(self->latency_status,
+                                        fmt::format("     {0:.1f} ms", self->pipeline_latency_ms).c_str());
+
+                     return G_SOURCE_REMOVE;
+                   },
+               self);
+  }));
+}
+
+void realize(GtkWidget* widget) {
+  auto* self = EE_EFFECTS_BOX(widget);
+
+  self->schedule_signal_idle = true;
+
+  GTK_WIDGET_CLASS(effects_box_parent_class)->realize(widget);
+}
+
+void unroot(GtkWidget* widget) {
+  auto* self = EE_EFFECTS_BOX(widget);
+
+  self->schedule_signal_idle = false;
+
+  GTK_WIDGET_CLASS(effects_box_parent_class)->unroot(widget);
 }
 
 void dispose(GObject* object) {
@@ -321,6 +371,9 @@ void effects_box_class_init(EffectsBoxClass* klass) {
 
   object_class->dispose = dispose;
 
+  widget_class->realize = realize;
+  widget_class->unroot = unroot;
+
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/effects_box.ui");
 
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, stack);
@@ -332,6 +385,8 @@ void effects_box_class_init(EffectsBoxClass* klass) {
 
 void effects_box_init(EffectsBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->schedule_signal_idle = false;
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
   self->settings_spectrum = g_settings_new("com.github.wwmm.easyeffects.spectrum");
