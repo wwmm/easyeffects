@@ -145,7 +145,7 @@
                         <property name="valign">center</property>
                         <property name="spacing">3</property>
                         <child>
-                            <object class="GtkLabel" id="global_output_level_left">
+                            <object class="GtkLabel" id="label_global_output_level_left">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="width_chars">4</property>
@@ -156,7 +156,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="global_output_level_right">
+                            <object class="GtkLabel" id="label_global_output_level_right">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="width_chars">4</property>

@@ -11,7 +11,7 @@ struct _EffectsBox {
 
   AdwViewStack* stack;
 
-  GtkLabel *device_state, *latency_status;
+  GtkLabel *device_state, *latency_status, *label_global_output_level_left, *label_global_output_level_right;
 
   ui::chart::Chart* spectrum_chart;
 
@@ -22,6 +22,8 @@ struct _EffectsBox {
   EffectsBase* effects_base;
 
   uint spectrum_rate, spectrum_n_bands;
+
+  float global_output_level_left, global_output_level_right;
 
   std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
 
@@ -208,6 +210,26 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   }
 
   self->connections.push_back(
+      self->effects_base->output_level->output_level.connect([=](const float& left, const float& right) {
+        self->global_output_level_left = left;
+        self->global_output_level_right = right;
+
+        g_idle_add((GSourceFunc) +
+                       [](EffectsBox* self) {
+                         ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
+
+                         gtk_label_set_text(self->label_global_output_level_left,
+                                            fmt::format("{0:.0f}", self->global_output_level_left).c_str());
+
+                         gtk_label_set_text(self->label_global_output_level_right,
+                                            fmt::format("{0:.0f}", self->global_output_level_right).c_str());
+
+                         return G_SOURCE_REMOVE;
+                       },
+                   self);
+      }));
+
+  self->connections.push_back(
       self->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<float> magnitudes) {
         if (!ui::chart::get_is_visible(self->spectrum_chart)) {
           return;
@@ -269,6 +291,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
                    self);
       }));
 
+  self->effects_base->output_level->post_messages = true;
   self->effects_base->spectrum->post_messages = true;
 
   self->effects_base->spectrum->bypass = false;
@@ -303,6 +326,8 @@ void effects_box_class_init(EffectsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, stack);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, device_state);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, latency_status);
+  gtk_widget_class_bind_template_child(widget_class, EffectsBox, label_global_output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, EffectsBox, label_global_output_level_right);
 }
 
 void effects_box_init(EffectsBox* self) {

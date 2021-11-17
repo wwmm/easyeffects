@@ -120,6 +120,14 @@ void init_axes(Chart* self) {
 }
 
 void set_data(Chart* self, const std::vector<float>& x, const std::vector<float>& y) {
+  if (self == nullptr) {
+    return;
+  }
+
+  if (!self->is_visible) {
+    return;
+  }
+
   self->original_x = x;
   self->original_y = y;
 
@@ -345,10 +353,19 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
   cairo_destroy(ctx);
 }
 
+void unroot(GtkWidget* widget) {
+  auto* self = EE_CHART(widget);
+
+  self->is_visible = false;
+
+  GTK_WIDGET_CLASS(chart_parent_class)->unmap(widget);
+}
+
 void chart_class_init(ChartClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   widget_class->snapshot = snapshot;
+  widget_class->unroot = unroot;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/chart.ui");
 }

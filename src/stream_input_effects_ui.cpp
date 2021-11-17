@@ -47,30 +47,11 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
     }
   }
 
-  connections.push_back(
-      sie->output_level->output_level.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_new_output_level_db)));
-
   connections.push_back(sie->pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_added)));
   connections.push_back(
       sie->pm->stream_input_changed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_changed)));
   connections.push_back(
       sie->pm->stream_input_removed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_removed)));
-
-  connections.push_back(sie->pm->source_changed.connect([&](const auto nd_info) {
-    // nd_info is a reference of a copy previously made
-
-    if (nd_info.id == sie->pm->ee_source_node.id) {
-      const auto v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                           static_cast<float>(sie->pm->ee_source_node.rate) * 0.001F);
-
-      device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
-    }
-  }));
-
-  const auto v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                       static_cast<float>(sie->pm->ee_source_node.rate) * 0.001F);
-
-  device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
 }
 
 StreamInputEffectsUi::~StreamInputEffectsUi() {
