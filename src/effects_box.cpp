@@ -164,20 +164,43 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
     }
   }
 
-  self->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<float> data) {
-    if (!ui::chart::get_is_visible(self->spectrum_chart)) {
-      return;
-    }
+  self->connections.push_back(
+      self->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<float> magnitudes) {
+        if (!ui::chart::get_is_visible(self->spectrum_chart)) {
+          return;
+        }
 
-    // util::warning(std::to_string(n_points));
+        if (self->spectrum_rate != rate || self->spectrum_n_bands != n_bands) {
+          self->spectrum_rate = rate;
+          self->spectrum_n_bands = n_bands;
 
-    if (self->spectrum_rate != rate || self->spectrum_n_bands != n_bands) {
-      self->spectrum_rate = rate;
-      self->spectrum_n_bands = n_bands;
+          init_spectrum_frequency_axis(self);
+        }
 
-      init_spectrum_frequency_axis(self);
-    }
-  });
+        std::ranges::fill(self->spectrum_mag, 0.0F);
+        std::ranges::fill(self->spectrum_bin_count, 0U);
+
+        // reducing the amount of data so we can plot them
+
+        for (size_t j = 0U; j < self->spectrum_freqs.size(); j++) {
+          for (size_t n = 0U; n < self->spectrum_x_axis.size(); n++) {
+            if (n > 0U) {
+              if (self->spectrum_freqs[j] <= self->spectrum_x_axis[n] &&
+                  self->spectrum_freqs[j] > self->spectrum_x_axis[n - 1U]) {
+                self->spectrum_mag[n] += magnitudes[j];
+
+                self->spectrum_bin_count[n]++;
+              }
+            } else {
+              if (self->spectrum_freqs[j] <= self->spectrum_x_axis[n]) {
+                self->spectrum_mag[n] += magnitudes[j];
+
+                self->spectrum_bin_count[n]++;
+              }
+            }
+          }
+        }
+      }));
 
   self->effects_base->spectrum->post_messages = gtk_widget_get_visible(GTK_WIDGET(self->spectrum_chart)) != 0;
 
@@ -189,13 +212,13 @@ void dispose(GObject* object) {
 
   self->effects_base->spectrum->post_messages = false;
 
-  g_object_unref(self->settings);
-  g_object_unref(self->app_settings);
-  g_object_unref(self->settings_spectrum);
-
   for (auto& c : self->connections) {
     c.disconnect();
   }
+
+  g_object_unref(self->settings);
+  g_object_unref(self->app_settings);
+  g_object_unref(self->settings_spectrum);
 
   util::debug(log_tag + "destroyed"s);
 
@@ -211,17 +234,6 @@ void effects_box_class_init(EffectsBoxClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/effects_box.ui");
 
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, stack);
-
-  //   gtk_widget_class_bind_template_child(widget_class, EffectsBox, output_scrolled_window);
-  //   gtk_widget_class_bind_template_child(widget_class, EffectsBox, output_listview);
-  //   gtk_widget_class_bind_template_child(widget_class, EffectsBox, output_name);
-  //   gtk_widget_class_bind_template_child(widget_class, EffectsBox, output_search);
-  //   gtk_widget_class_bind_template_child(widget_class, EffectsBox, last_used_output);
-
-  //   gtk_widget_class_bind_template_callback(widget_class, create_output_preset);
-  //   gtk_widget_class_bind_template_callback(widget_class, create_input_preset);
-  //   gtk_widget_class_bind_template_callback(widget_class, import_output_preset);
-  //   gtk_widget_class_bind_template_callback(widget_class, import_input_preset);
 }
 
 void effects_box_init(EffectsBox* self) {

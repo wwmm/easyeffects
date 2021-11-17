@@ -50,205 +50,11 @@ void update_bypass_state(Application* self) {
   util::info(log_tag + ((state) != 0 ? "enabling"s : "disabling"s) + " global bypass"s);
 }
 
-void application_class_init(ApplicationClass* klass) {
-  auto* application_class = G_APPLICATION_CLASS(klass);
+void on_startup(GApplication* gapp) {
+  G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
 
-  application_class->command_line = [](GApplication* gapp, GApplicationCommandLine* cmdline) {
-    auto* self = EE_APP(gapp);
-    auto* options = g_application_command_line_get_options_dict(cmdline);
+  auto* self = EE_APP(gapp);
 
-    if (g_variant_dict_contains(options, "quit") != 0) {
-      hide_all_windows(gapp);
-
-      g_application_quit(G_APPLICATION(gapp));
-    } else if (g_variant_dict_contains(options, "load-preset") != 0) {
-      const char* name = nullptr;
-
-      if (g_variant_dict_lookup(options, "load-preset", "&s", &name) != 0) {
-        if (self->presets_manager->preset_file_exists(PresetType::input, name)) {
-          self->presets_manager->load_preset_file(PresetType::input, name);
-        }
-
-        if (self->presets_manager->preset_file_exists(PresetType::output, name)) {
-          self->presets_manager->load_preset_file(PresetType::output, name);
-        }
-      }
-    } else if (g_variant_dict_contains(options, "reset") != 0) {
-      g_settings_reset(self->settings, "");
-
-      util::info(log_tag + "All settings were reset"s);
-    } else if (g_variant_dict_contains(options, "hide-window") != 0) {
-      hide_all_windows(gapp);
-
-      util::info(log_tag + "Hiding the window..."s);
-    } else if (g_variant_dict_contains(options, "bypass") != 0) {
-      if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
-        if (bypass_arg == 1) {
-          g_settings_set_boolean(self->settings, "bypass", 1);
-        } else if (bypass_arg == 2) {
-          g_settings_set_boolean(self->settings, "bypass", 0);
-        }
-      }
-    } else {
-      g_application_activate(gapp);
-    }
-
-    return G_APPLICATION_CLASS(application_parent_class)->command_line(gapp, cmdline);
-  };
-
-  application_class->handle_local_options = [](GApplication* gapp, GVariantDict* options) {
-    if (options == nullptr) {
-      return -1;
-    }
-
-    auto* self = EE_APP(gapp);
-
-    if (self->presets_manager == nullptr) {
-      self->presets_manager = std::make_unique<PresetsManager>();
-    }
-
-    if (g_variant_dict_contains(options, "presets") != 0) {
-      std::string list;
-
-      for (const auto& name : self->presets_manager->get_names(PresetType::output)) {
-        list += name + ",";
-      }
-
-      std::clog << _("Output Presets: ") + list << std::endl;
-
-      list = "";
-
-      for (const auto& name : self->presets_manager->get_names(PresetType::input)) {
-        list += name + ",";
-      }
-
-      std::clog << _("Input Presets: ") + list << std::endl;
-
-      return EXIT_SUCCESS;
-    }
-
-    if (g_variant_dict_contains(options, "bypass") != 0) {
-      if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
-        if (bypass_arg == 3) {
-          std::clog << g_settings_get_boolean(self->settings, "bypass") << std::endl;
-
-          return EXIT_SUCCESS;
-        }
-      }
-    }
-
-    return -1;
-  };
-
-  application_class->startup = [](GApplication* gapp) {
-    G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
-
-    std::array<GActionEntry, 6> entries{};
-
-    entries[0] = {
-        "quit",
-        [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
-        nullptr, nullptr, nullptr};
-
-    entries[1] = {"help",
-                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                    gtk_show_uri(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "help:easyeffects",
-                                 GDK_CURRENT_TIME);
-                  },
-                  nullptr, nullptr, nullptr};
-
-    entries[2] = {"about",
-                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                    std::array<const char*, 2> authors = {"Wellington Wallace", nullptr};
-
-                    gtk_show_about_dialog(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name",
-                                          "EasyEffects", "version", VERSION, "comments",
-                                          _("Audio effects for PipeWire applications"), "authors", authors.data(),
-                                          "logo-icon-name", "easyeffects", "license-type", GTK_LICENSE_GPL_3_0,
-                                          "website", "https://github.com/wwmm/easyeffects", nullptr);
-                  },
-                  nullptr, nullptr, nullptr};
-
-    entries[3] = {"fullscreen",
-                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                    auto* self = EE_APP(gapp);
-
-                    auto state = g_settings_get_boolean(self->settings, "window-fullscreen") != 0;
-
-                    if (state) {
-                      gtk_window_unfullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
-
-                      g_settings_set_boolean(self->settings, "window-fullscreen", 0);
-                    } else {
-                      gtk_window_fullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
-
-                      g_settings_set_boolean(self->settings, "window-fullscreen", 1);
-                    }
-                  },
-                  nullptr, nullptr, nullptr};
-
-    entries[4] = {"preferences",
-                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                    auto* preferences = ui::preferences_window::create();
-
-                    gtk_window_set_transient_for(GTK_WINDOW(preferences),
-                                                 GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
-                    gtk_window_present(GTK_WINDOW(preferences));
-                  },
-                  nullptr, nullptr, nullptr};
-
-    entries[5] = {"reset",
-                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                    auto* self = EE_APP(gapp);
-
-                    g_settings_reset(self->settings, "");
-                  },
-                  nullptr, nullptr, nullptr};
-
-    g_action_map_add_action_entries(G_ACTION_MAP(gapp), entries.data(), entries.size(), gapp);
-
-    std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
-    std::array<const char*, 2> help_accels = {"F1", nullptr};
-    std::array<const char*, 2> fullscreen_accels = {"F11", nullptr};
-
-    gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.quit", quit_accels.data());
-    gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.help", help_accels.data());
-    gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.fullscreen", fullscreen_accels.data());
-
-    if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
-      g_application_hold(gapp);
-    }
-  };
-
-  application_class->activate = [](GApplication* gapp) {
-    if (gtk_application_get_active_window(GTK_APPLICATION(gapp)) == nullptr) {
-      G_APPLICATION_CLASS(application_parent_class)->activate(gapp);
-
-      auto* window = ui::application_window::create(gapp);
-
-      gtk_window_present(GTK_WINDOW(window));
-    }
-  };
-
-  application_class->shutdown = [](GApplication* gapp) {
-    G_APPLICATION_CLASS(application_parent_class)->shutdown(gapp);
-
-    auto* self = EE_APP(gapp);
-
-    g_object_unref(self->settings);
-    g_object_unref(self->sie_settings);
-    g_object_unref(self->soe_settings);
-
-    // Making sure some destructors are called. I have no idea why this is not happening automatically...
-
-    self->pm = nullptr;
-    self->presets_manager = nullptr;
-
-    util::debug(log_tag + "shutting down..."s);
-  };
-}
-
-void application_init(Application* self) {
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
   self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
@@ -420,7 +226,204 @@ void application_init(Application* self) {
                    self);
 
   update_bypass_state(self);
+
+  std::array<GActionEntry, 6> entries{};
+
+  entries[0] = {
+      "quit", [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
+      nullptr, nullptr, nullptr};
+
+  entries[1] = {"help",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  gtk_show_uri(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "help:easyeffects",
+                               GDK_CURRENT_TIME);
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[2] = {"about",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  std::array<const char*, 2> authors = {"Wellington Wallace", nullptr};
+
+                  gtk_show_about_dialog(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name",
+                                        "EasyEffects", "version", VERSION, "comments",
+                                        _("Audio effects for PipeWire applications"), "authors", authors.data(),
+                                        "logo-icon-name", "easyeffects", "license-type", GTK_LICENSE_GPL_3_0, "website",
+                                        "https://github.com/wwmm/easyeffects", nullptr);
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[3] = {"fullscreen",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  auto* self = EE_APP(gapp);
+
+                  auto state = g_settings_get_boolean(self->settings, "window-fullscreen") != 0;
+
+                  if (state) {
+                    gtk_window_unfullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+
+                    g_settings_set_boolean(self->settings, "window-fullscreen", 0);
+                  } else {
+                    gtk_window_fullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+
+                    g_settings_set_boolean(self->settings, "window-fullscreen", 1);
+                  }
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[4] = {"preferences",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  auto* preferences = ui::preferences_window::create();
+
+                  gtk_window_set_transient_for(GTK_WINDOW(preferences),
+                                               GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+                  gtk_window_present(GTK_WINDOW(preferences));
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[5] = {"reset",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  auto* self = EE_APP(gapp);
+
+                  g_settings_reset(self->settings, "");
+                },
+                nullptr, nullptr, nullptr};
+
+  g_action_map_add_action_entries(G_ACTION_MAP(gapp), entries.data(), entries.size(), gapp);
+
+  std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
+  std::array<const char*, 2> help_accels = {"F1", nullptr};
+  std::array<const char*, 2> fullscreen_accels = {"F11", nullptr};
+
+  gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.quit", quit_accels.data());
+  gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.help", help_accels.data());
+  gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.fullscreen", fullscreen_accels.data());
+
+  if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
+    g_application_hold(gapp);
+  }
 }
+
+void application_class_init(ApplicationClass* klass) {
+  auto* application_class = G_APPLICATION_CLASS(klass);
+
+  application_class->command_line = [](GApplication* gapp, GApplicationCommandLine* cmdline) {
+    auto* self = EE_APP(gapp);
+    auto* options = g_application_command_line_get_options_dict(cmdline);
+
+    if (g_variant_dict_contains(options, "quit") != 0) {
+      hide_all_windows(gapp);
+
+      g_application_quit(G_APPLICATION(gapp));
+    } else if (g_variant_dict_contains(options, "load-preset") != 0) {
+      const char* name = nullptr;
+
+      if (g_variant_dict_lookup(options, "load-preset", "&s", &name) != 0) {
+        if (self->presets_manager->preset_file_exists(PresetType::input, name)) {
+          self->presets_manager->load_preset_file(PresetType::input, name);
+        }
+
+        if (self->presets_manager->preset_file_exists(PresetType::output, name)) {
+          self->presets_manager->load_preset_file(PresetType::output, name);
+        }
+      }
+    } else if (g_variant_dict_contains(options, "reset") != 0) {
+      g_settings_reset(self->settings, "");
+
+      util::info(log_tag + "All settings were reset"s);
+    } else if (g_variant_dict_contains(options, "hide-window") != 0) {
+      hide_all_windows(gapp);
+
+      util::info(log_tag + "Hiding the window..."s);
+    } else if (g_variant_dict_contains(options, "bypass") != 0) {
+      if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
+        if (bypass_arg == 1) {
+          g_settings_set_boolean(self->settings, "bypass", 1);
+        } else if (bypass_arg == 2) {
+          g_settings_set_boolean(self->settings, "bypass", 0);
+        }
+      }
+    } else {
+      g_application_activate(gapp);
+    }
+
+    return G_APPLICATION_CLASS(application_parent_class)->command_line(gapp, cmdline);
+  };
+
+  application_class->handle_local_options = [](GApplication* gapp, GVariantDict* options) {
+    if (options == nullptr) {
+      return -1;
+    }
+
+    auto* self = EE_APP(gapp);
+
+    if (self->presets_manager == nullptr) {
+      self->presets_manager = std::make_unique<PresetsManager>();
+    }
+
+    if (g_variant_dict_contains(options, "presets") != 0) {
+      std::string list;
+
+      for (const auto& name : self->presets_manager->get_names(PresetType::output)) {
+        list += name + ",";
+      }
+
+      std::clog << _("Output Presets: ") + list << std::endl;
+
+      list = "";
+
+      for (const auto& name : self->presets_manager->get_names(PresetType::input)) {
+        list += name + ",";
+      }
+
+      std::clog << _("Input Presets: ") + list << std::endl;
+
+      return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "bypass") != 0) {
+      if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
+        if (bypass_arg == 3) {
+          std::clog << g_settings_get_boolean(self->settings, "bypass") << std::endl;
+
+          return EXIT_SUCCESS;
+        }
+      }
+    }
+
+    return -1;
+  };
+
+  application_class->startup = on_startup;
+
+  application_class->activate = [](GApplication* gapp) {
+    if (gtk_application_get_active_window(GTK_APPLICATION(gapp)) == nullptr) {
+      G_APPLICATION_CLASS(application_parent_class)->activate(gapp);
+
+      auto* window = ui::application_window::create(gapp);
+
+      gtk_window_present(GTK_WINDOW(window));
+    }
+  };
+
+  application_class->shutdown = [](GApplication* gapp) {
+    G_APPLICATION_CLASS(application_parent_class)->shutdown(gapp);
+
+    auto* self = EE_APP(gapp);
+
+    g_object_unref(self->settings);
+    g_object_unref(self->sie_settings);
+    g_object_unref(self->soe_settings);
+
+    // Making sure some destructors are called. I have no idea why this is not happening automatically...
+
+    self->pm = nullptr;
+    self->presets_manager = nullptr;
+
+    util::debug(log_tag + "shutting down..."s);
+  };
+}
+
+void application_init(Application* self) {}
 
 auto application_new() -> GApplication* {
   g_set_application_name("EasyEffects");
