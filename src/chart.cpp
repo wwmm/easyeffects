@@ -128,8 +128,6 @@ void set_data(Chart* self, const std::vector<float>& x, const std::vector<float>
   gtk_widget_queue_draw(GTK_WIDGET(self));
 }
 
-// auto draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) -> int{}
-
 void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y, Chart* self) {
   const int width = gtk_widget_get_allocated_width(GTK_WIDGET(self));
   const int height = gtk_widget_get_allocated_height(GTK_WIDGET(self));
