@@ -20,11 +20,13 @@
 #pragma once
 
 #include <adwaita.h>
+#include <fmt/core.h>
 #include <sigc++/sigc++.h>
 #include <algorithm>
 #include <ranges>
 #include <string>
 #include <vector>
+#include "util.hpp"
 
 namespace ui::chart {
 
