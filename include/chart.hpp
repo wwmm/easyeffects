@@ -21,6 +21,8 @@
 
 #include <adwaita.h>
 #include <sigc++/sigc++.h>
+#include <algorithm>
+#include <ranges>
 #include <string>
 #include <vector>
 
@@ -33,6 +35,38 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE(Chart, chart, EE, CHART, GtkWidget)
 
 G_END_DECLS
+
+enum class ChartType { bar, line };
+
+enum class ChartScale { linear, logarithmic };
+
+void set_plot_type(Chart* self, const ChartType& value);
+
+void set_plot_scale(Chart* self, const ChartScale& value);
+
+void set_data(Chart* self, const std::vector<float>& x, const std::vector<float>& y);
+
+void set_background_color(Chart* self, GdkRGBA color);
+
+void set_color(Chart* self, GdkRGBA color);
+
+void set_axis_labels_color(Chart* self, GdkRGBA color);
+
+void set_line_width(Chart* self, const float& value);
+
+void set_draw_bar_border(Chart* self, const bool& v);
+
+void set_fill_bars(Chart* self, const bool& v);
+
+void set_n_x_decimals(Chart* self, const int& v);
+
+void set_n_y_decimals(Chart* self, const int& v);
+
+void set_x_unit(Chart* self, const std::string& value);
+
+void set_y_unit(Chart* self, const std::string& value);
+
+void set_margin(Chart* self, const double& v);
 
 auto create() -> Chart*;
 

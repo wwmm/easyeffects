@@ -28,27 +28,26 @@ auto constexpr log_tag = "application_ui: ";
 struct _ApplicationWindow {
   AdwWindow parent_instance{};
 
-  AdwViewStack* stack = nullptr;
+  AdwViewStack* stack;
 
-  GtkMenuButton* presets_menu_button = nullptr;
+  GtkMenuButton* presets_menu_button;
 
-  GtkToggleButton* bypass_button = nullptr;
+  GtkToggleButton* bypass_button;
 
-  ui::presets_menu::PresetsMenu* presetsMenu = nullptr;
-  ui::effects_box::EffectsBox* soe_ui = nullptr;
-  ui::effects_box::EffectsBox* sie_ui = nullptr;
-  ui::pipe_manager_box::PipeManagerBox* pm_box = nullptr;
+  ui::presets_menu::PresetsMenu* presetsMenu;
+  ui::effects_box::EffectsBox* soe_ui;
+  ui::effects_box::EffectsBox* sie_ui;
+  ui::pipe_manager_box::PipeManagerBox* pm_box;
 
-  int width = -1;
-  int height = -1;
-  bool maximized = false;
-  bool fullscreen = false;
+  int width, height;
+  bool maximized;
+  bool fullscreen;
 
-  GSettings* settings = nullptr;
+  GSettings* settings;
 
-  GApplication* gapp = nullptr;
+  GApplication* gapp;
 
-  GtkIconTheme* icon_theme = nullptr;
+  GtkIconTheme* icon_theme;
 
   std::vector<gulong> gconnections;
 };
@@ -151,6 +150,9 @@ void realize(GtkWidget* widget) {
   self->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
 
   ui::presets_menu::setup(self->presetsMenu, app::EE_APP(self->gapp));
+  ui::effects_box::setup(self->soe_ui, app::EE_APP(self->gapp), PipelineType::output);
+  ui::effects_box::setup(self->sie_ui, app::EE_APP(self->gapp), PipelineType::input);
+  ui::pipe_manager_box::setup(self->pm_box, app::EE_APP(self->gapp));
 }
 
 void unrealize(GtkWidget* widget) {

@@ -19,24 +19,4 @@
 
 #pragma once
 
-#include <adwaita.h>
-#include "application.hpp"
-#include "chart.hpp"
-#include "effects_base.hpp"
-#include "pipeline_type.hpp"
-
-namespace ui::effects_box {
-
-G_BEGIN_DECLS
-
-#define EE_TYPE_EFFECTS_BOX (effects_box_get_type())
-
-G_DECLARE_FINAL_TYPE(EffectsBox, effects_box, EE, EFFECTS_BOX, GtkBox)
-
-G_END_DECLS
-
-auto create() -> EffectsBox*;
-
-void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type);
-
-}  // namespace ui::effects_box
+enum class PipelineType { input, output };

@@ -28,19 +28,17 @@ auto constexpr log_tag = "preferences_window: ";
 struct _PreferencesWindow {
   AdwPreferencesWindow parent_instance{};
 
-  GtkSwitch *enable_autostart = nullptr, *process_all_inputs = nullptr, *process_all_outputs = nullptr,
-            *theme_switch = nullptr, *shutdown_on_window_close = nullptr, *use_cubic_volumes = nullptr,
-            *spectrum_show = nullptr, *spectrum_fill = nullptr, *spectrum_show_bar_border = nullptr;
+  GtkSwitch *enable_autostart, *process_all_inputs, *process_all_outputs, *theme_switch, *shutdown_on_window_close,
+      *use_cubic_volumes, *spectrum_show, *spectrum_fill, *spectrum_show_bar_border;
 
-  GtkColorButton *spectrum_color_button = nullptr, *spectrum_axis_color_button = nullptr;
+  GtkColorButton *spectrum_color_button, *spectrum_axis_color_button;
 
-  GtkComboBoxText* spectrum_type = nullptr;
+  GtkComboBoxText* spectrum_type;
 
-  GtkSpinButton *spectrum_n_points = nullptr, *spectrum_height = nullptr, *spectrum_line_width = nullptr,
-                *spectrum_minimum_frequency = nullptr, *spectrum_maximum_frequency = nullptr;
+  GtkSpinButton *spectrum_n_points, *spectrum_height, *spectrum_line_width, *spectrum_minimum_frequency,
+      *spectrum_maximum_frequency;
 
-  GSettings* settings = nullptr;
-  GSettings* settings_spectrum = nullptr;
+  GSettings *settings, *settings_spectrum;
 
   std::vector<gulong> gconnections_spectrum;
 };

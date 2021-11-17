@@ -28,23 +28,23 @@ auto constexpr log_tag = "presets_menu_ui: ";
 struct _PresetsMenu {
   GtkPopover parent_instance{};
 
-  AdwViewStack* stack = nullptr;
+  AdwViewStack* stack;
 
-  GtkScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
+  GtkScrolledWindow *output_scrolled_window, *input_scrolled_window;
 
-  GtkListView *output_listview = nullptr, *input_listview = nullptr;
+  GtkListView *output_listview, *input_listview;
 
-  GtkText *output_name = nullptr, *input_name = nullptr;
+  GtkText *output_name, *input_name;
 
-  GtkSearchEntry *output_search = nullptr, *input_search = nullptr;
+  GtkSearchEntry *output_search, *input_search;
 
-  GtkLabel *last_used_output = nullptr, *last_used_input = nullptr;
+  GtkLabel *last_used_output, *last_used_input;
 
-  GtkStringList *output_string_list = nullptr, *input_string_list = nullptr;
+  GtkStringList *output_string_list, *input_string_list;
 
-  GSettings* settings = nullptr;
+  GSettings* settings;
 
-  app::Application* application = nullptr;
+  app::Application* application;
 
   std::vector<sigc::connection> connections;
 

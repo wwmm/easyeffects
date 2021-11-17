@@ -17,9 +17,6 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PRESET_TYPE_HPP
-#define PRESET_TYPE_HPP
+#pragma once
 
 enum class PresetType { input, output };
-
-#endif

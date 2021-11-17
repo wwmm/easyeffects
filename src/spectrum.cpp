@@ -116,21 +116,6 @@ void Spectrum::process(std::span<float>& left_in,
   if (notification_dt >= notification_time_window) {
     notification_dt = 0.0F;
 
-    struct Data {
-      Spectrum* self;
-      const std::vector<float> output;
-    };
-
-    Data data{this, output};
-
-    g_idle_add((GSourceFunc) +
-                   [](gpointer user_data) {
-                     auto* d = static_cast<Data*>(user_data);
-
-                     d->self->power.emit(d->self->rate, d->output.size(), d->output);
-
-                     return G_SOURCE_REMOVE;
-                   },
-               &data);
+    power.emit(rate, output.size(), output);
   }
 }

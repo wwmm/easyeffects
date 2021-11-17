@@ -43,9 +43,9 @@ G_END_DECLS
 struct _Application {
   AdwApplication parent_instance{};
 
-  GSettings* settings = nullptr;
-  GSettings* soe_settings = nullptr;
-  GSettings* sie_settings = nullptr;
+  GSettings* settings;
+  GSettings* soe_settings;
+  GSettings* sie_settings;
 
   std::unique_ptr<PipeManager> pm;
   std::unique_ptr<StreamOutputEffects> soe;
