@@ -11,6 +11,8 @@ struct _EffectsBox {
 
   AdwViewStack* stack;
 
+  GtkLabel *device_state, *latency_status;
+
   ui::chart::Chart* spectrum_chart;
 
   GSettings *settings, *settings_spectrum, *app_settings;
@@ -166,12 +168,40 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
+      auto set_device_state_label = [=]() {
+        auto source_rate = static_cast<float>(application->pm->ee_source_node.rate) * 0.001F;
+
+        gtk_label_set_text(self->device_state, fmt::format("{0:.1f} kHz", source_rate).c_str());
+      };
+
+      set_device_state_label();
+
+      self->connections.push_back(application->pm->source_changed.connect([=](const auto nd_info) {
+        if (nd_info.id == application->pm->ee_source_node.id) {
+          set_device_state_label();
+        }
+      }));
+
       break;
     }
     case PipelineType::output: {
       self->effects_base = static_cast<EffectsBase*>(self->application->soe.get());
 
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
+
+      auto set_device_state_label = [=]() {
+        auto sink_rate = static_cast<float>(application->pm->ee_sink_node.rate) * 0.001F;
+
+        gtk_label_set_text(self->device_state, fmt::format("{0:.1f} kHz", sink_rate).c_str());
+      };
+
+      set_device_state_label();
+
+      self->connections.push_back(application->pm->sink_changed.connect([=](const auto nd_info) {
+        if (nd_info.id == application->pm->ee_sink_node.id) {
+          set_device_state_label();
+        }
+      }));
 
       break;
     }
@@ -271,6 +301,8 @@ void effects_box_class_init(EffectsBoxClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/effects_box.ui");
 
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, stack);
+  gtk_widget_class_bind_template_child(widget_class, EffectsBox, device_state);
+  gtk_widget_class_bind_template_child(widget_class, EffectsBox, latency_status);
 }
 
 void effects_box_init(EffectsBox* self) {
