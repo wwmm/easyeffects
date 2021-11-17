@@ -138,10 +138,23 @@ void setup_spectrum(EffectsBox* self) {
                      } else if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Lines") == 0) {
                        ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::line);
                      }
-
-                     util::warning("connected");
                    })),
                    self);
+
+  g_signal_connect(
+      self->settings_spectrum, "changed::n-points",
+      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
+      self);
+
+  g_signal_connect(
+      self->settings_spectrum, "changed::minimum-frequency",
+      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
+      self);
+
+  g_signal_connect(
+      self->settings_spectrum, "changed::maximum-frequency",
+      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
+      self);
 }
 
 void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type) {
@@ -200,9 +213,33 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
             }
           }
         }
+
+        for (size_t n = 0U; n < self->spectrum_bin_count.size(); n++) {
+          if (self->spectrum_bin_count[n] == 0U && n > 0U) {
+            self->spectrum_mag[n] = self->spectrum_mag[n - 1U];
+          }
+        }
+
+        std::ranges::for_each(self->spectrum_mag, [](auto& v) {
+          v = 10.0F * std::log10(v);
+
+          if (!std::isinf(v)) {
+            v = (v > util::minimum_db_level) ? v : util::minimum_db_level;
+          } else {
+            v = util::minimum_db_level;
+          }
+        });
+
+        g_idle_add((GSourceFunc) +
+                       [](EffectsBox* self) {
+                         ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
+
+                         return G_SOURCE_REMOVE;
+                       },
+                   self);
       }));
 
-  self->effects_base->spectrum->post_messages = gtk_widget_get_visible(GTK_WIDGET(self->spectrum_chart)) != 0;
+  self->effects_base->spectrum->post_messages = true;
 
   self->effects_base->spectrum->bypass = false;
 }

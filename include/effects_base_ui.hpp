@@ -47,7 +47,6 @@
 #include "preset_type.hpp"
 #include "reverb_ui.hpp"
 #include "rnnoise_ui.hpp"
-#include "spectrum_ui.hpp"
 #include "stereo_tools_ui.hpp"
 
 class EffectsBaseUi {
@@ -91,8 +90,6 @@ class EffectsBaseUi {
   Gtk::Stack* stack_top = nullptr;
 
   Gtk::Window* transient_window = nullptr;
-
-  SpectrumUi* spectrum_ui = nullptr;
 
   PipeManager* pm = nullptr;
 

@@ -24,7 +24,6 @@
 #include "chart.hpp"
 #include "effects_base.hpp"
 #include "pipeline_type.hpp"
-#include "spectrum_ui.hpp"
 
 namespace ui::effects_box {
 

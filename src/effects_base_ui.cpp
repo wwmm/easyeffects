@@ -74,12 +74,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   settings->signal_changed("plugins").connect([&, this](const auto& key) { add_plugins_to_stack_plugins(); });
 
-  // spectrum
-
-  auto* box_spectrum = builder->get_widget<Gtk::Box>("box_spectrum");
-
-  spectrum_ui = SpectrumUi::add_to_box(box_spectrum);
-
   // gsettings
 
   settings->bind("show-blocklisted-apps", show_blocklisted_apps, "active");
@@ -179,7 +173,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->pitch->post_messages = true;
   effects_base->reverb->post_messages = true;
   effects_base->rnnoise->post_messages = true;
-  effects_base->spectrum->post_messages = spectrum_ui->get_visible();
   effects_base->stereo_tools->post_messages = true;
 
   auto set_latency = [=, this](const auto& v) {

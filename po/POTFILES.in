@@ -50,6 +50,5 @@ src/pipe_manager_box.cpp
 src/preferences_window.cpp
 src/presets_menu_ui.cpp
 src/rnnoise_ui.cpp
-src/spectrum_ui.cpp
 src/stream_output_effects_ui.cpp
 src/stream_input_effects_ui.cpp

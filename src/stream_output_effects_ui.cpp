@@ -36,8 +36,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   connections.push_back(
       soe->output_level->output_level.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_new_output_level_db)));
 
-  connections.push_back(soe->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
-
   connections.push_back(
       soe->pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_added)));
   connections.push_back(

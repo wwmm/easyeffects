@@ -209,7 +209,7 @@ auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& heigh
   */
 
   for (size_t n = 0U; n < labels.size() - 1; n++) {
-    const auto msg = fmt::format("x = {0:.{1}f} {2}", labels[n], self->n_x_decimals, self->x_unit);
+    const auto msg = fmt::format("{0:.{1}f} {2}", labels[n], self->n_x_decimals, self->x_unit);
 
     auto* layout = gtk_widget_create_pango_layout(GTK_WIDGET(self), msg.c_str());
 
@@ -226,7 +226,7 @@ auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& heigh
     cairo_move_to(ctx, self->margin * width + static_cast<double>(n) * labels_offset,
                   static_cast<double>(height - text_height));
 
-    pango_cairo_layout_path(ctx, layout);
+    pango_cairo_show_layout(ctx, layout);
 
     g_object_unref(layout);
 
@@ -336,8 +336,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
       cairo_move_to(ctx, static_cast<double>(static_cast<float>(width) - static_cast<float>(text_width)), 0);
 
-      // layout->show_in_cairo_context(ctx);
-      pango_cairo_layout_path(ctx, layout);
+      pango_cairo_show_layout(ctx, layout);
 
       g_object_unref(layout);
     }
@@ -359,7 +358,7 @@ void chart_init(Chart* self) {
 
   self->draw_bar_border = true;
   self->fill_bars = true;
-  self->is_visible = false;
+  self->is_visible = true;
   self->x_axis_height = 0;
   self->n_x_decimals = 1;
   self->n_y_decimals = 1;

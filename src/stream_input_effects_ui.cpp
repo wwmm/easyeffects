@@ -50,8 +50,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   connections.push_back(
       sie->output_level->output_level.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_new_output_level_db)));
 
-  connections.push_back(sie->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
-
   connections.push_back(sie->pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_added)));
   connections.push_back(
       sie->pm->stream_input_changed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_changed)));

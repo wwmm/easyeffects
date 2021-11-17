@@ -83,7 +83,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   setup_dropdown_kernels(dropdown_kernel_1, string_list);
   setup_dropdown_kernels(dropdown_kernel_2, string_list);
 
-  plot = std::make_unique<Plot>(drawing_area);
+  // plot = std::make_unique<Plot>(drawing_area);
 
   popover_import->signal_show().connect([=, this]() {
     int height = static_cast<int>(0.5F * static_cast<float>(get_allocated_height()));
@@ -769,23 +769,23 @@ void ConvolverUi::plot_waveform() {
     return;
   }
 
-  plot->set_plot_type(PlotType::line);
+  // plot->set_plot_type(PlotType::line);
 
-  plot->set_plot_scale(PlotScale::linear);
+  // plot->set_plot_scale(PlotScale::linear);
 
-  plot->set_fill_bars(false);
+  // plot->set_fill_bars(false);
 
-  plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
+  // plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
 
-  plot->set_x_unit("s");
-  plot->set_n_x_decimals(2);
-  plot->set_n_y_decimals(2);
+  // plot->set_x_unit("s");
+  // plot->set_n_x_decimals(2);
+  // plot->set_n_y_decimals(2);
 
-  if (check_left->get_active()) {
-    plot->set_data(time_axis, left_mag);
-  } else if (check_right->get_active()) {
-    plot->set_data(time_axis, right_mag);
-  }
+  // if (check_left->get_active()) {
+  //   plot->set_data(time_axis, left_mag);
+  // } else if (check_right->get_active()) {
+  //   plot->set_data(time_axis, right_mag);
+  // }
 }
 
 void ConvolverUi::plot_fft() {
@@ -793,23 +793,23 @@ void ConvolverUi::plot_fft() {
     return;
   }
 
-  plot->set_plot_type(PlotType::line);
+  // plot->set_plot_type(PlotType::line);
 
-  plot->set_plot_scale(PlotScale::logarithmic);
+  // plot->set_plot_scale(PlotScale::logarithmic);
 
-  plot->set_fill_bars(false);
+  // plot->set_fill_bars(false);
 
-  plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
+  // plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
 
-  plot->set_x_unit("Hz");
-  plot->set_n_x_decimals(0);
-  plot->set_n_y_decimals(2);
+  // plot->set_x_unit("Hz");
+  // plot->set_n_x_decimals(0);
+  // plot->set_n_y_decimals(2);
 
-  if (check_left->get_active()) {
-    plot->set_data(freq_axis, left_spectrum);
-  } else if (check_right->get_active()) {
-    plot->set_data(freq_axis, right_spectrum);
-  }
+  // if (check_left->get_active()) {
+  //   plot->set_data(freq_axis, left_spectrum);
+  // } else if (check_right->get_active()) {
+  //   plot->set_data(freq_axis, right_spectrum);
+  // }
 }
 
 auto ConvolverUi::read_kernel(const std::string& file_name) -> std::tuple<int, std::vector<float>, std::vector<float>> {

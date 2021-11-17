@@ -30,7 +30,6 @@
 #include <ranges>
 #include <sndfile.hh>
 #include <tuple>
-#include "plot.hpp"
 #include "plugin_ui_base.hpp"
 #include "resampler.hpp"
 
@@ -97,7 +96,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Glib::RefPtr<Gtk::StringList> string_list;
 
-  std::unique_ptr<Plot> plot;
+  // std::unique_ptr<Plot> plot;
 
   Glib::RefPtr<Gio::Settings> spectrum_settings;
 
