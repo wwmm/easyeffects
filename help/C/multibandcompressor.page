@@ -143,7 +143,9 @@
                 <title>
                     <em style="strong" its:withinText="nested">Release Threshold</em>
                 </title>
-                <p>Relative to the Attack Threshold that sets up the Threshold of the Release Time.</p>
+                <p>Sets up the Threshold of the Release Time, calculated by summing the Release Threshold to the Attack Threshold.</p>
+                <p>If the Sidechain level is above that Threshold, the compressor uses the Release Time for the releasing stage. Otherwise the Attack Time is used in place of Release Time.</p>
+                <p>For example, with -10 dB Attack Threshold and -60 dB Release Threshold, if the Sidechain is above <code its:withinText="nested">-10 + (-60) = -70 db</code>, the Release Time is used for the gain restoration. If the Sidechain is below -70 db, the Attack Time is used for the gain restoration.</p>
             </item>
             <item>
                 <title>
@@ -196,7 +198,7 @@
                     <item>
                         <p>
                             <em style="strong">Uniform</em>
-                            - The Compressor reacts according to the signal processed by an Uniform filter.
+                            - The Compressor reacts according to the loudness measured by the average of the absolute amplitude.
                         </p>
                     </item>
                 </list>
@@ -267,7 +269,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Reactivity</em>
                 </title>
-                <p>Reactivity of the Sidechain signal of the selected band.</p>
+                <p>The time that defines the number of samples used to process the Sidechain in RMS, Uniform and Low-Pass modes. Higher the value, more smooth the compression.</p>
             </item>
             <item>
                 <title>

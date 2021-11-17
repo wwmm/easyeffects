@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [6.1.5]
+
 ### Added
 
 - It is now possible to combine impulse responses in the Convolver interface. A new impulse file is generated and it
