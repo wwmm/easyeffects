@@ -129,7 +129,7 @@
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Reduction</em>
+                    <em style="strong" its:withinText="nested">Max Reduction</em>
                 </title>
                 <p>The maximum level of gain reduction to apply when the band signal is below the Threshold.</p>
             </item>
