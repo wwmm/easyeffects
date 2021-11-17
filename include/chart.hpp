@@ -54,7 +54,7 @@ void set_color(Chart* self, GdkRGBA color);
 
 void set_axis_labels_color(Chart* self, GdkRGBA color);
 
-void set_line_width(Chart* self, const float& value);
+void set_line_width(Chart* self, const double& value);
 
 void set_draw_bar_border(Chart* self, const bool& v);
 

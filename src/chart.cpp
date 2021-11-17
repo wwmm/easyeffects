@@ -2,10 +2,6 @@
 
 namespace ui::chart {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "chart: ";
-
 struct _Chart {
   GtkBox parent_instance{};
 
@@ -13,9 +9,9 @@ struct _Chart {
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
-  double mouse_y, mouse_x, margin;
+  double mouse_y, mouse_x, margin, line_width;
 
-  float x_min, x_max, y_min, y_max, line_width;
+  float x_min, x_max, y_min, y_max;
 
   GdkRGBA background_color, color, color_axis_labels, gradient_color;
 
@@ -56,7 +52,7 @@ void set_axis_labels_color(Chart* self, GdkRGBA color) {
   self->color_axis_labels = color;
 }
 
-void set_line_width(Chart* self, const float& value) {
+void set_line_width(Chart* self, const double& value) {
   self->line_width = value;
 }
 

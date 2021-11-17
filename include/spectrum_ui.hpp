@@ -55,11 +55,5 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   std::vector<uint> spectrum_bin_count;
 
-  void init_color();
-
-  void init_type();
-
   void init_frequency_axis();
-
-  void init_frequency_labels_color();
 };

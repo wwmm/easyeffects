@@ -25,14 +25,6 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   // signals connection
 
-  connections.push_back(settings->signal_changed("color").connect([&](const auto& key) { init_color(); }));
-
-  connections.push_back(
-      settings->signal_changed("color-axis-labels").connect([&](const auto& key) { init_frequency_labels_color(); }));
-
-  connections.push_back(settings->signal_changed("height").connect(
-      [&](const auto& key) { set_content_height(settings->get_int("height")); }));
-
   connections.push_back(settings->signal_changed("n-points").connect([&](const auto& key) { init_frequency_axis(); }));
 
   connections.push_back(
@@ -40,41 +32,6 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   connections.push_back(
       settings->signal_changed("maximum-frequency").connect([&](const auto& key) { init_frequency_axis(); }));
-
-  connections.push_back(settings->signal_changed("type").connect([&](const auto& key) { init_type(); }));
-
-  connections.push_back(settings->signal_changed("fill").connect(
-      [&](const auto& key) { plot->set_fill_bars(settings->get_boolean(key)); }));
-
-  connections.push_back(settings->signal_changed("show-bar-border").connect([&](const auto& key) {
-    plot->set_draw_bar_border(settings->get_boolean(key));
-  }));
-
-  connections.push_back(settings->signal_changed("line-width").connect([&](const auto& key) {
-    plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
-  }));
-
-  settings->bind("show", this, "visible", Gio::Settings::BindFlags::GET);
-
-  init_color();
-  init_frequency_labels_color();
-  init_type();
-
-  plot->set_fill_bars(settings->get_boolean("fill"));
-
-  plot->set_draw_bar_border(settings->get_boolean("show-bar-border"));
-
-  plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
-
-  plot->set_x_unit("Hz");
-  plot->set_y_unit("dB");
-
-  plot->set_n_x_decimals(0);
-  plot->set_n_y_decimals(1);
-
-  plot->set_margin(0);
-
-  set_content_height(settings->get_int("height"));
 }
 
 SpectrumUi::~SpectrumUi() {
@@ -171,23 +128,6 @@ void SpectrumUi::on_new_spectrum(uint rate, uint n_bands, std::vector<float> mag
   plot->set_data(spectrum_x_axis, spectrum_mag);
 }
 
-void SpectrumUi::init_color() {
-  Glib::Variant<std::vector<double>> v;
-
-  settings->get_value("color", v);
-
-  plot->set_color(static_cast<float>(v.get()[0]), static_cast<float>(v.get()[1]), static_cast<float>(v.get()[2]),
-                  static_cast<float>(v.get()[3]));
-}
-
-void SpectrumUi::init_type() {
-  if (settings->get_string("type") == "Bars") {
-    plot->set_plot_type(PlotType::bar);
-  } else if (settings->get_string("type") == "Lines") {
-    plot->set_plot_type(PlotType::line);
-  }
-}
-
 void SpectrumUi::init_frequency_axis() {
   spectrum_freqs.resize(n_bands);
 
@@ -211,13 +151,4 @@ void SpectrumUi::init_frequency_axis() {
 
     spectrum_bin_count.resize(x_axis_size);
   }
-}
-
-void SpectrumUi::init_frequency_labels_color() {
-  Glib::Variant<std::vector<double>> v;
-
-  settings->get_value("color-axis-labels", v);
-
-  plot->set_axis_labels_color(static_cast<float>(v.get()[0]), static_cast<float>(v.get()[1]),
-                              static_cast<float>(v.get()[2]), static_cast<float>(v.get()[3]));
 }
