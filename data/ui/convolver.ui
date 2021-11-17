@@ -511,7 +511,7 @@
                         <property name="input_purpose">name</property>
                         <property name="accessible_role">text-box</property>
                         <accessibility>
-                            <property name="label" translatable="yes">Combined kernel Name</property>
+                            <property name="label" translatable="yes">Combined Kernel Name</property>
                         </accessibility>
                     </object>
                 </child>
