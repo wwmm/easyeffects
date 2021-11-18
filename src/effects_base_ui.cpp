@@ -42,11 +42,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   latency_status = builder->get_widget<Gtk::Label>("latency_status");
   saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
   listview_players = builder->get_widget<Gtk::ListView>("listview_players");
-  menubutton_blocklist = builder->get_widget<Gtk::MenuButton>("menubutton_blocklist");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
-  toggle_players = builder->get_widget<Gtk::ToggleButton>("toggle_players");
-  toggle_plugins = builder->get_widget<Gtk::ToggleButton>("toggle_plugins");
-  toggle_plugins_icon = builder->get_widget<Gtk::Image>("toggle_plugins_icon");
   toggle_listen_mic = builder->get_widget<Gtk::ToggleButton>("toggle_listen_mic");
 
   popover_blocklist = builder->get_widget<Gtk::Popover>("popover_blocklist");
@@ -79,32 +75,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   settings->bind("show-blocklisted-apps", show_blocklisted_apps, "active");
 
   // signals connections
-
-  stack_top->connect_property_changed("visible-child", [=, this]() {
-    const auto name = stack_top->get_visible_child_name();
-
-    menubutton_blocklist->set_visible(name == "page_players");
-  });
-
-  toggle_players->signal_toggled().connect([&, this]() {
-    if (toggle_players->get_active()) {
-      stack_top->get_pages()->select_item(0, true);
-    }
-  });
-
-  // fallback toggle_plugins_icon for Plasma DE (issues #1047 and #1050)
-
-  if (icon_theme != nullptr) {
-    if (!icon_theme->has_icon(toggle_plugins_icon->get_icon_name())) {
-      toggle_plugins_icon->set_from_icon_name("extension-symbolic");
-    }
-  }
-
-  toggle_plugins->signal_toggled().connect([&, this]() {
-    if (toggle_plugins->get_active()) {
-      stack_top->get_pages()->select_item(1, true);
-    }
-  });
 
   button_add_to_blocklist->signal_clicked().connect([=, this]() {
     if (add_new_blocklist_entry(blocklist_player_name->get_text())) {

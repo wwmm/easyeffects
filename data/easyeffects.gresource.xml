@@ -4,6 +4,7 @@
         <file>ui/custom.css</file>
         <file>ui/application_window.ui</file>
         <file>ui/app_info.ui</file>
+        <file>ui/apps_box.ui</file>
         <file>ui/autogain.ui</file>
         <file>ui/autoload_row.ui</file>
         <file>ui/bass_enhancer.ui</file>
@@ -35,14 +36,16 @@
         <file>ui/pipe_info.ui</file>
         <file>ui/pipe_manager_box.ui</file>
         <file>ui/pitch.ui</file>
+        <file>ui/plugins_box.ui</file>
         <file>ui/preferences_window.ui</file>
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>
         <file>ui/reverb.ui</file>
         <file>ui/rnnoise.ui</file>
         <file>ui/stereo_tools.ui</file>
-        <file>icons/scalable/status/ee-arrow-down-symbolic.svg</file>
-        <file>icons/scalable/status/ee-square-symbolic.svg</file>
-        <file>icons/scalable/status/ee-spectrum-symbolic.svg</file>
+        <file>icons/scalable/emblems/ee-arrow-down-symbolic.svg</file>
+        <file>icons/scalable/emblems/ee-square-symbolic.svg</file>
+        <file>icons/scalable/emblems/ee-spectrum-symbolic.svg</file>
+        <file>icons/scalable/emblems/ee-plugins-symbolic.svg</file>
     </gresource>
 </gresources>

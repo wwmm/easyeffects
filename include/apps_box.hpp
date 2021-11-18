@@ -21,24 +21,20 @@
 
 #include <adwaita.h>
 #include "application.hpp"
-#include "apps_box.hpp"
-#include "chart.hpp"
-#include "effects_base.hpp"
 #include "pipeline_type.hpp"
-#include "plugins_box.hpp"
 
-namespace ui::effects_box {
+namespace ui::apps_box {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_EFFECTS_BOX (effects_box_get_type())
+#define EE_TYPE_APPS_BOX (apps_box_get_type())
 
-G_DECLARE_FINAL_TYPE(EffectsBox, effects_box, EE, EFFECTS_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(AppsBox, apps_box, EE, APPS_BOX, GtkBox)
 
 G_END_DECLS
 
-auto create() -> EffectsBox*;
+auto create() -> AppsBox*;
 
-void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type);
+void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type);
 
-}  // namespace ui::effects_box
+}  // namespace ui::apps_box

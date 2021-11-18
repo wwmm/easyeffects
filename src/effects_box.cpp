@@ -11,15 +11,27 @@ struct _EffectsBox {
 
   AdwViewStack* stack;
 
+  AdwViewStackPage *apps_box_page, *plugins_box_page;
+
   GtkLabel *device_state, *latency_status, *label_global_output_level_left, *label_global_output_level_right;
 
+  GtkToggleButton* toggle_listen_mic;
+
+  GtkMenuButton* menubutton_blocklist;
+
   ui::chart::Chart* spectrum_chart;
+
+  ui::apps_box::AppsBox* appsBox;
+
+  ui::plugins_box::PluginsBox* pluginsBox;
 
   GSettings *settings, *settings_spectrum, *app_settings;
 
   app::Application* application;
 
   EffectsBase* effects_base;
+
+  PipelineType pipeline_type;
 
   bool schedule_signal_idle;
 
@@ -162,15 +174,29 @@ void setup_spectrum(EffectsBox* self) {
       G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
       self);
 }
+void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget* stack) {
+  const auto* name = adw_view_stack_get_visible_child_name(ADW_VIEW_STACK(stack));
+
+  gtk_widget_set_visible(GTK_WIDGET(self->menubutton_blocklist), static_cast<gboolean>(g_strcmp0(name, "apps") == 0));
+
+  if (self->pipeline_type == PipelineType::input) {
+    gtk_widget_set_visible(GTK_WIDGET(self->toggle_listen_mic), static_cast<gboolean>(g_strcmp0(name, "plugins") == 0));
+  }
+}
 
 void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type) {
   self->application = application;
+  self->pipeline_type = pipeline_type;
 
   switch (pipeline_type) {
     case PipelineType::input: {
+      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+
       self->effects_base = static_cast<EffectsBase*>(self->application->sie.get());
 
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+      self->apps_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->appsBox), "apps", _("Recorders"));
+
+      adw_view_stack_page_set_icon_name(self->apps_box_page, "media-record-symbolic");
 
       auto set_device_state_label = [=]() {
         auto source_rate = static_cast<float>(application->pm->ee_source_node.rate) * 0.001F;
@@ -189,9 +215,13 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
       break;
     }
     case PipelineType::output: {
+      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
+
       self->effects_base = static_cast<EffectsBase*>(self->application->soe.get());
 
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
+      self->apps_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->appsBox), "apps", _("Players"));
+
+      adw_view_stack_page_set_icon_name(self->apps_box_page, "multimedia-player-symbolic");
 
       auto set_device_state_label = [=]() {
         auto sink_rate = static_cast<float>(application->pm->ee_sink_node.rate) * 0.001F;
@@ -210,6 +240,12 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
       break;
     }
   }
+
+  self->plugins_box_page =
+      adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->pluginsBox), "plugins", _("Plugins"));
+
+  // "ee-plugins-symbolic" is just Adwaita's "application-x-addon-symbolic.svg" renamed
+  adw_view_stack_page_set_icon_name(self->plugins_box_page, "ee-plugins-symbolic");
 
   // output level
 
@@ -381,6 +417,10 @@ void effects_box_class_init(EffectsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, latency_status);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, label_global_output_level_left);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, label_global_output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, EffectsBox, toggle_listen_mic);
+  gtk_widget_class_bind_template_child(widget_class, EffectsBox, menubutton_blocklist);
+
+  gtk_widget_class_bind_template_callback(widget_class, stack_visible_child_changed);
 }
 
 void effects_box_init(EffectsBox* self) {
@@ -392,6 +432,9 @@ void effects_box_init(EffectsBox* self) {
   self->settings_spectrum = g_settings_new("com.github.wwmm.easyeffects.spectrum");
 
   self->spectrum_chart = ui::chart::create();
+
+  self->appsBox = ui::apps_box::create();
+  self->pluginsBox = ui::plugins_box::create();
 
   setup_spectrum(self);
 

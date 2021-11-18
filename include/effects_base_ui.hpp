@@ -77,13 +77,13 @@ class EffectsBaseUi {
 
   Glib::RefPtr<Gtk::IconTheme> icon_theme;
 
-  Gtk::Image *saturation_icon = nullptr, *toggle_plugins_icon = nullptr;
+  Gtk::Image* saturation_icon = nullptr;
 
   Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
 
   Gtk::Label *device_state = nullptr, *latency_status = nullptr;
 
-  Gtk::ToggleButton *toggle_players = nullptr, *toggle_plugins = nullptr, *toggle_listen_mic = nullptr;
+  Gtk::ToggleButton* toggle_listen_mic = nullptr;
 
   Gtk::Stack* stack_plugins = nullptr;
 
@@ -117,7 +117,7 @@ class EffectsBaseUi {
 
   Gtk::ScrolledWindow *blocklist_scrolled_window = nullptr, *scrolled_window_plugins = nullptr;
 
-  Gtk::MenuButton *menubutton_blocklist = nullptr, *menubutton_select_plugin = nullptr;
+  Gtk::MenuButton* menubutton_select_plugin = nullptr;
 
   Gtk::Popover *popover_blocklist = nullptr, *popover_plugins = nullptr;
 

@@ -27,18 +27,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
                                            StreamInputEffects* sie_ptr,
                                            const std::string& schema)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, std::move(icon_ptr), sie_ptr, schema), sie(sie_ptr) {
-  auto* toggle_players_icon = dynamic_cast<Gtk::Image*>(toggle_players->get_child()->get_first_child());
-  auto* toggle_players_label = dynamic_cast<Gtk::Label*>(toggle_players_icon->get_next_sibling());
-
-  toggle_players_icon->set_from_icon_name("media-record-symbolic");
-  toggle_players_label->set_text(_("Recorders"));
-
-  stack_top->connect_property_changed("visible-child", [=, this]() {
-    const auto child_name = stack_top->get_visible_child_name();
-
-    toggle_listen_mic->set_visible(child_name != "page_players");
-  });
-
   toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
 
   for (const auto& [ts, node] : pm->node_map) {

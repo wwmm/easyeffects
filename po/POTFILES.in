@@ -3,6 +3,7 @@ data/com.github.wwmm.easyeffects.desktop.in
 data/schemas/com.github.wwmm.easyeffects.gschema.xml
 data/ui/app_info.ui
 data/ui/application_window.ui
+data/ui/apps_box.ui
 data/ui/autogain.ui
 data/ui/autoload_row.ui
 data/ui/bass_enhancer.ui
@@ -32,6 +33,7 @@ data/ui/multiband_gate.ui
 data/ui/pipe_info.ui
 data/ui/pipe_manager_box.ui
 data/ui/pitch.ui
+data/ui/plugins_box.ui
 data/ui/preferences_window.ui
 data/ui/preset_row.ui
 data/ui/presets_menu.ui
