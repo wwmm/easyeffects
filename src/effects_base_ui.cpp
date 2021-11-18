@@ -1314,24 +1314,6 @@ void EffectsBaseUi::on_app_changed(const util::time_point ts) {
   }
 }
 
-void EffectsBaseUi::on_app_removed(const util::time_point ts) {
-  for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-    if (all_players_model->get_item(n)->ts == ts) {
-      for (guint i = 0U; i < players_model->get_n_items(); i++) {
-        if (players_model->get_item(i)->ts == ts) {
-          players_model->remove(i);
-
-          break;
-        }
-      }
-
-      all_players_model->remove(n);
-
-      break;
-    }
-  }
-}
-
 void EffectsBaseUi::on_new_output_level_db(const float& left, const float& right) {
   global_output_level_left->set_text(((left > 0.0) ? "+" : "") +
                                      Glib::ustring::format(std::setprecision(0), std::fixed, left));

@@ -38,6 +38,8 @@ struct _EffectsBox {
 
   GtkMenuButton* menubutton_blocklist;
 
+  GtkImage* saturation_icon;
+
   ui::chart::Chart* spectrum_chart;
 
   ui::apps_box::AppsBox* appsBox;
@@ -272,29 +274,33 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   // output level
 
-  self->connections.push_back(
-      self->effects_base->output_level->output_level.connect([=](const float& left, const float& right) {
-        self->global_output_level_left = left;
-        self->global_output_level_right = right;
+  self->connections.push_back(self->effects_base->output_level->output_level.connect([=](const float& left,
+                                                                                         const float& right) {
+    self->global_output_level_left = left;
+    self->global_output_level_right = right;
 
-        if (!self->schedule_signal_idle) {
-          return;
-        }
+    if (!self->schedule_signal_idle) {
+      return;
+    }
 
-        g_idle_add((GSourceFunc) +
-                       [](EffectsBox* self) {
-                         ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
+    g_idle_add((GSourceFunc) +
+                   [](EffectsBox* self) {
+                     ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
 
-                         gtk_label_set_text(self->label_global_output_level_left,
-                                            fmt::format("{0:.0f}", self->global_output_level_left).c_str());
+                     gtk_label_set_text(self->label_global_output_level_left,
+                                        fmt::format("{0:.0f}", self->global_output_level_left).c_str());
 
-                         gtk_label_set_text(self->label_global_output_level_right,
-                                            fmt::format("{0:.0f}", self->global_output_level_right).c_str());
+                     gtk_label_set_text(self->label_global_output_level_right,
+                                        fmt::format("{0:.0f}", self->global_output_level_right).c_str());
 
-                         return G_SOURCE_REMOVE;
-                       },
-                   self);
-      }));
+                     gtk_widget_set_opacity(
+                         GTK_WIDGET(self->saturation_icon),
+                         (self->global_output_level_left > 0.0 || self->global_output_level_right > 0.0) ? 1.0 : 0.0);
+
+                     return G_SOURCE_REMOVE;
+                   },
+               self);
+  }));
 
   // spectrum array
 
@@ -446,6 +452,7 @@ void effects_box_class_init(EffectsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, label_global_output_level_right);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, toggle_listen_mic);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, menubutton_blocklist);
+  gtk_widget_class_bind_template_child(widget_class, EffectsBox, saturation_icon);
 
   gtk_widget_class_bind_template_callback(widget_class, stack_visible_child_changed);
 }

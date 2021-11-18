@@ -186,10 +186,6 @@ void apps_box_class_init(AppsBoxClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/apps_box.ui");
 
   gtk_widget_class_bind_template_child(widget_class, AppsBox, listview);
-  //   gtk_widget_class_bind_template_child(widget_class, AppsBox, device_state);
-  //   gtk_widget_class_bind_template_child(widget_class, AppsBox, latency_status);
-  //   gtk_widget_class_bind_template_child(widget_class, AppsBox, label_global_output_level_left);
-  //   gtk_widget_class_bind_template_child(widget_class, AppsBox, label_global_output_level_right);
 }
 
 void apps_box_init(AppsBox* self) {
