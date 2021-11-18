@@ -44,6 +44,8 @@ struct _EffectsBox {
   std::vector<uint> spectrum_bin_count;
 
   std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections_spectrum;
 };
 
 G_DEFINE_TYPE(EffectsBox, effects_box, GTK_TYPE_BOX)
@@ -109,70 +111,71 @@ void setup_spectrum(EffectsBox* self) {
 
   g_settings_bind(self->settings_spectrum, "show", self->spectrum_chart, "visible", G_SETTINGS_BIND_GET);
 
-  g_signal_connect(
+  self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::color", G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_color(self->spectrum_chart, util::gsettings_get_color(self->settings_spectrum, key));
       })),
-      self);
+      self));
 
-  g_signal_connect(self->settings_spectrum, "changed::color-axis-labels",
-                   G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
-                     ui::chart::set_axis_labels_color(self->spectrum_chart,
-                                                      util::gsettings_get_color(self->settings_spectrum, key));
-                   })),
-                   self);
+  self->gconnections_spectrum.push_back(g_signal_connect(
+      self->settings_spectrum, "changed::color-axis-labels",
+      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+        ui::chart::set_axis_labels_color(self->spectrum_chart, util::gsettings_get_color(self->settings_spectrum, key));
+      })),
+      self));
 
-  g_signal_connect(
+  self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::fill", G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
       })),
-      self);
+      self));
 
-  g_signal_connect(self->settings_spectrum, "changed::show-bar-border",
-                   G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
-                     ui::chart::set_draw_bar_border(self->spectrum_chart,
-                                                    g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
-                   })),
-                   self);
+  self->gconnections_spectrum.push_back(
+      g_signal_connect(self->settings_spectrum, "changed::show-bar-border",
+                       G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+                         ui::chart::set_draw_bar_border(self->spectrum_chart,
+                                                        g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
+                       })),
+                       self));
 
-  g_signal_connect(self->settings_spectrum, "changed::line-width",
-                   G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
-                     ui::chart::set_line_width(self->spectrum_chart,
-                                               g_settings_get_double(self->settings_spectrum, "line-width"));
-                   })),
-                   self);
+  self->gconnections_spectrum.push_back(g_signal_connect(
+      self->settings_spectrum, "changed::line-width",
+      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+        ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, "line-width"));
+      })),
+      self));
 
-  g_signal_connect(self->settings_spectrum, "changed::height",
-                   G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
-                     gtk_widget_set_size_request(GTK_WIDGET(self->spectrum_chart), -1,
-                                                 g_settings_get_int(self->settings_spectrum, "height"));
-                   })),
-                   self);
+  self->gconnections_spectrum.push_back(g_signal_connect(
+      self->settings_spectrum, "changed::height", G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+        gtk_widget_set_size_request(GTK_WIDGET(self->spectrum_chart), -1,
+                                    g_settings_get_int(self->settings_spectrum, "height"));
+      })),
+      self));
 
-  g_signal_connect(self->settings_spectrum, "changed::type",
-                   G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
-                     if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Bars") == 0) {
-                       ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::bar);
-                     } else if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Lines") == 0) {
-                       ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::line);
-                     }
-                   })),
-                   self);
+  self->gconnections_spectrum.push_back(g_signal_connect(
+      self->settings_spectrum, "changed::type", G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+        if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Bars") == 0) {
+          ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::bar);
+        } else if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Lines") == 0) {
+          ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::line);
+        }
+      })),
+      self));
 
-  g_signal_connect(
+  self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::n-points",
       G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
-      self);
+      self));
 
-  g_signal_connect(
+  self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::minimum-frequency",
       G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
-      self);
+      self));
 
-  g_signal_connect(
+  self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::maximum-frequency",
       G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
-      self);
+      self));
 }
 void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget* stack) {
   const auto* name = adw_view_stack_get_visible_child_name(ADW_VIEW_STACK(stack));
@@ -390,6 +393,10 @@ void dispose(GObject* object) {
 
   for (auto& c : self->connections) {
     c.disconnect();
+  }
+
+  for (auto& handler_id : self->gconnections_spectrum) {
+    g_signal_handler_disconnect(self->settings_spectrum, handler_id);
   }
 
   g_object_unref(self->settings);

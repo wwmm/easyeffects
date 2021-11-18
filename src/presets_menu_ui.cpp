@@ -47,6 +47,8 @@ struct _PresetsMenu {
   app::Application* application;
 
   std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
 };
 
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
@@ -387,6 +389,10 @@ void dispose(GObject* object) {
     c.disconnect();
   }
 
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
+
   g_object_unref(self->settings);
 
   util::debug(log_tag + "destroyed"s);
@@ -435,21 +441,23 @@ void presets_menu_init(PresetsMenu* self) {
   gtk_label_set_text(self->last_used_output, g_settings_get_string(self->settings, "last-used-output-preset"));
   gtk_label_set_text(self->last_used_input, g_settings_get_string(self->settings, "last-used-input-preset"));
 
-  g_signal_connect(self->settings, "changed::last-used-output-preset",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<PresetsMenu*>(user_data);
+  self->gconnections.push_back(g_signal_connect(self->settings, "changed::last-used-output-preset",
+                                                G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                                  auto self = static_cast<PresetsMenu*>(user_data);
 
-                     gtk_label_set_text(self->last_used_output, g_settings_get_string(settings, key));
-                   }),
-                   self);
+                                                  gtk_label_set_text(self->last_used_output,
+                                                                     g_settings_get_string(settings, key));
+                                                }),
+                                                self));
 
-  g_signal_connect(self->settings, "changed::last-used-input-preset",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<PresetsMenu*>(user_data);
+  self->gconnections.push_back(g_signal_connect(self->settings, "changed::last-used-input-preset",
+                                                G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                                  auto self = static_cast<PresetsMenu*>(user_data);
 
-                     gtk_label_set_text(self->last_used_input, g_settings_get_string(settings, key));
-                   }),
-                   self);
+                                                  gtk_label_set_text(self->last_used_input,
+                                                                     g_settings_get_string(settings, key));
+                                                }),
+                                                self));
 }
 
 auto create() -> PresetsMenu* {

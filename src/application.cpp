@@ -227,77 +227,6 @@ void on_startup(GApplication* gapp) {
 
   update_bypass_state(self);
 
-  std::array<GActionEntry, 6> entries{};
-
-  entries[0] = {
-      "quit", [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
-      nullptr, nullptr, nullptr};
-
-  entries[1] = {"help",
-                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  gtk_show_uri(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "help:easyeffects",
-                               GDK_CURRENT_TIME);
-                },
-                nullptr, nullptr, nullptr};
-
-  entries[2] = {"about",
-                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  std::array<const char*, 2> authors = {"Wellington Wallace", nullptr};
-
-                  gtk_show_about_dialog(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name",
-                                        "EasyEffects", "version", VERSION, "comments",
-                                        _("Audio effects for PipeWire applications"), "authors", authors.data(),
-                                        "logo-icon-name", "easyeffects", "license-type", GTK_LICENSE_GPL_3_0, "website",
-                                        "https://github.com/wwmm/easyeffects", nullptr);
-                },
-                nullptr, nullptr, nullptr};
-
-  entries[3] = {"fullscreen",
-                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  auto* self = EE_APP(gapp);
-
-                  auto state = g_settings_get_boolean(self->settings, "window-fullscreen") != 0;
-
-                  if (state) {
-                    gtk_window_unfullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
-
-                    g_settings_set_boolean(self->settings, "window-fullscreen", 0);
-                  } else {
-                    gtk_window_fullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
-
-                    g_settings_set_boolean(self->settings, "window-fullscreen", 1);
-                  }
-                },
-                nullptr, nullptr, nullptr};
-
-  entries[4] = {"preferences",
-                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  auto* preferences = ui::preferences_window::create();
-
-                  gtk_window_set_transient_for(GTK_WINDOW(preferences),
-                                               GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
-                  gtk_window_present(GTK_WINDOW(preferences));
-                },
-                nullptr, nullptr, nullptr};
-
-  entries[5] = {"reset",
-                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  auto* self = EE_APP(gapp);
-
-                  g_settings_reset(self->settings, "");
-                },
-                nullptr, nullptr, nullptr};
-
-  g_action_map_add_action_entries(G_ACTION_MAP(gapp), entries.data(), entries.size(), gapp);
-
-  std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
-  std::array<const char*, 2> help_accels = {"F1", nullptr};
-  std::array<const char*, 2> fullscreen_accels = {"F11", nullptr};
-
-  gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.quit", quit_accels.data());
-  gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.help", help_accels.data());
-  gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.fullscreen", fullscreen_accels.data());
-
   if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
     g_application_hold(gapp);
   }
@@ -423,7 +352,78 @@ void application_class_init(ApplicationClass* klass) {
   };
 }
 
-void application_init(Application* self) {}
+void application_init(Application* self) {
+  std::array<GActionEntry, 6> entries{};
+
+  entries[0] = {
+      "quit", [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
+      nullptr, nullptr, nullptr};
+
+  entries[1] = {"help",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  gtk_show_uri(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "help:easyeffects",
+                               GDK_CURRENT_TIME);
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[2] = {"about",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  std::array<const char*, 2> authors = {"Wellington Wallace", nullptr};
+
+                  gtk_show_about_dialog(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name",
+                                        "EasyEffects", "version", VERSION, "comments",
+                                        _("Audio effects for PipeWire applications"), "authors", authors.data(),
+                                        "logo-icon-name", "easyeffects", "license-type", GTK_LICENSE_GPL_3_0, "website",
+                                        "https://github.com/wwmm/easyeffects", nullptr);
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[3] = {"fullscreen",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  auto* self = EE_APP(gapp);
+
+                  auto state = g_settings_get_boolean(self->settings, "window-fullscreen") != 0;
+
+                  if (state) {
+                    gtk_window_unfullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+
+                    g_settings_set_boolean(self->settings, "window-fullscreen", 0);
+                  } else {
+                    gtk_window_fullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+
+                    g_settings_set_boolean(self->settings, "window-fullscreen", 1);
+                  }
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[4] = {"preferences",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  auto* preferences = ui::preferences_window::create();
+
+                  gtk_window_set_transient_for(GTK_WINDOW(preferences),
+                                               GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+                  gtk_window_present(GTK_WINDOW(preferences));
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[5] = {"reset",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  auto* self = EE_APP(gapp);
+
+                  g_settings_reset(self->settings, "");
+                },
+                nullptr, nullptr, nullptr};
+
+  g_action_map_add_action_entries(G_ACTION_MAP(self), entries.data(), entries.size(), self);
+
+  std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
+  std::array<const char*, 2> help_accels = {"F1", nullptr};
+  std::array<const char*, 2> fullscreen_accels = {"F11", nullptr};
+
+  gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", quit_accels.data());
+  gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", help_accels.data());
+  gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.fullscreen", fullscreen_accels.data());
+}
 
 auto application_new() -> GApplication* {
   g_set_application_name("EasyEffects");

@@ -101,17 +101,25 @@ void on_spectrum_axis_color_set(PreferencesWindow* self, GtkColorButton* button)
 void dispose(GObject* object) {
   auto* self = EE_PREFERENCES_WINDOW(object);
 
+  gtk_window_set_application(GTK_WINDOW(self), nullptr);
+
   for (auto& handler_id : self->gconnections_spectrum) {
     g_signal_handler_disconnect(self->settings_spectrum, handler_id);
   }
 
-  util::debug(log_tag + "destroyed"s);
+  g_object_unref(self->settings);
+  g_object_unref(self->settings_spectrum);
+
+  util::debug(log_tag + "disposed"s);
 
   G_OBJECT_CLASS(preferences_window_parent_class)->dispose(object);
 }
 
 void preferences_window_class_init(PreferencesWindowClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/preferences_window.ui");
 
