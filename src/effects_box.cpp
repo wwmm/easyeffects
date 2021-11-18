@@ -1,3 +1,22 @@
+/*
+ *  Copyright © 2017-2022 Wellington Wallace
+ *
+ *  This file is part of EasyEffects.
+ *
+ *  EasyEffects is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  EasyEffects is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "effects_box.hpp"
 
 namespace ui::effects_box {
@@ -112,70 +131,66 @@ void setup_spectrum(EffectsBox* self) {
   g_settings_bind(self->settings_spectrum, "show", self->spectrum_chart, "visible", G_SETTINGS_BIND_GET);
 
   self->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::color", G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+      self->settings_spectrum, "changed::color", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_color(self->spectrum_chart, util::gsettings_get_color(self->settings_spectrum, key));
-      })),
+      }),
       self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::color-axis-labels",
-      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_axis_labels_color(self->spectrum_chart, util::gsettings_get_color(self->settings_spectrum, key));
-      })),
+      }),
       self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::fill", G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+      self->settings_spectrum, "changed::fill", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
-      })),
+      }),
       self));
 
   self->gconnections_spectrum.push_back(
       g_signal_connect(self->settings_spectrum, "changed::show-bar-border",
-                       G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+                       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
                          ui::chart::set_draw_bar_border(self->spectrum_chart,
                                                         g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
-                       })),
+                       }),
                        self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::line-width",
-      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+      self->settings_spectrum, "changed::line-width", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, "line-width"));
-      })),
+      }),
       self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::height", G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+      self->settings_spectrum, "changed::height", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         gtk_widget_set_size_request(GTK_WIDGET(self->spectrum_chart), -1,
                                     g_settings_get_int(self->settings_spectrum, "height"));
-      })),
+      }),
       self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::type", G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) {
+      self->settings_spectrum, "changed::type", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Bars") == 0) {
           ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::bar);
         } else if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Lines") == 0) {
           ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::line);
         }
-      })),
+      }),
       self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::n-points",
-      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
-      self));
+      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::minimum-frequency",
-      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
-      self));
+      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::maximum-frequency",
-      G_CALLBACK((+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); })),
-      self));
+      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
 }
 void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget* stack) {
   const auto* name = adw_view_stack_get_visible_child_name(ADW_VIEW_STACK(stack));
@@ -249,6 +264,11 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   // "ee-plugins-symbolic" is just Adwaita's "application-x-addon-symbolic.svg" renamed
   adw_view_stack_page_set_icon_name(self->plugins_box_page, "ee-plugins-symbolic");
+
+  // setting up the boxes we added t othe stack
+
+  ui::apps_box::setup(self->appsBox, application, pipeline_type);
+  ui::plugins_box::setup(self->pluginsBox, application, pipeline_type);
 
   // output level
 

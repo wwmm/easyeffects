@@ -19,27 +19,35 @@
 
 #pragma once
 
-#include <adwaita.h>
-#include <ranges>
-#include "application.hpp"
-#include "node_info_holder.hpp"
-#include "pipeline_type.hpp"
-#include "plugin_name.hpp"
+#include <gtk/gtk.h>
+#include "pipe_manager.hpp"
 
-namespace ui::apps_box {
+namespace ui::holders {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_APPS_BOX (apps_box_get_type())
+#define EE_TYPE_NODE_INFO_HOLDER (node_info_holder_get_type())
 
-G_DECLARE_FINAL_TYPE(AppsBox, apps_box, EE, APPS_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(NodeInfoHolder, node_info_holder, EE, NODE_INFO_HOLDER, GObject)
 
 G_END_DECLS
 
-auto create() -> AppsBox*;
+struct _NodeInfoHolder {
+  GObject parent_instance;
 
-void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type);
+  util::time_point ts;
 
-void on_app_added(const NodeInfo& node_info);
+  uint id = SPA_ID_INVALID;
 
-}  // namespace ui::apps_box
+  uint device_id = SPA_ID_INVALID;
+
+  std::string name;
+
+  std::string media_class;
+
+  sigc::signal<void(const NodeInfo)> info_updated;
+};
+
+auto create(const NodeInfo& info) -> NodeInfoHolder*;
+
+}  // namespace ui::holders

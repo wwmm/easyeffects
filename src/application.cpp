@@ -402,6 +402,8 @@ void application_init(Application* self) {
 
                   gtk_window_set_transient_for(GTK_WINDOW(preferences),
                                                GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+
+                  gtk_window_set_modal(GTK_WINDOW(preferences), 1);
                   gtk_window_present(GTK_WINDOW(preferences));
                 },
                 nullptr, nullptr, nullptr};

@@ -70,6 +70,7 @@ easyeffects_sources = [
 	'multiband_gate.cpp',
 	'multiband_gate_preset.cpp',
 	'multiband_gate_ui.cpp',
+	'node_info_holder.cpp',
 	'output_level.cpp',
 	'pipe_info_ui.cpp',
 	'pipe_manager.cpp',

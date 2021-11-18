@@ -101,8 +101,6 @@ void on_spectrum_axis_color_set(PreferencesWindow* self, GtkColorButton* button)
 void dispose(GObject* object) {
   auto* self = EE_PREFERENCES_WINDOW(object);
 
-  gtk_window_set_application(GTK_WINDOW(self), nullptr);
-
   for (auto& handler_id : self->gconnections_spectrum) {
     g_signal_handler_disconnect(self->settings_spectrum, handler_id);
   }
@@ -274,20 +272,20 @@ void preferences_window_init(PreferencesWindow* self) {
 
   self->gconnections_spectrum.push_back(
       g_signal_connect(self->settings_spectrum, "changed::color",
-                       G_CALLBACK((+[](GSettings* settings, char* key, PreferencesWindow* self) {
-                         auto color = util::gsettings_get_color(self->settings_spectrum, key);
+                       G_CALLBACK(+[](GSettings* settings, char* key, PreferencesWindow* self) {
+                         auto color = util::gsettings_get_color(settings, key);
 
                          gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_color_button), &color);
-                       })),
+                       }),
                        self));
 
   self->gconnections_spectrum.push_back(
       g_signal_connect(self->settings_spectrum, "changed::color-axis-labels",
-                       G_CALLBACK((+[](GSettings* settings, char* key, PreferencesWindow* self) {
-                         auto color = util::gsettings_get_color(self->settings_spectrum, key);
+                       G_CALLBACK(+[](GSettings* settings, char* key, PreferencesWindow* self) {
+                         auto color = util::gsettings_get_color(settings, key);
 
                          gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->spectrum_axis_color_button), &color);
-                       })),
+                       }),
                        self));
 }
 

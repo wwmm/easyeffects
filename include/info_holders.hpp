@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef INFO_HOLDERS_HPP
-#define INFO_HOLDERS_HPP
+#pragma once
 
 #include "pipe_manager.hpp"
 
@@ -80,5 +79,3 @@ class PresetsAutoloadingHolder : public Glib::Object {
  protected:
   PresetsAutoloadingHolder(std::string device, std::string device_profile, std::string preset_name);
 };
-
-#endif
