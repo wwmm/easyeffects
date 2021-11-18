@@ -27,18 +27,8 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              StreamOutputEffects* soe_ptr,
                                              const std::string& schema)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, std::move(icon_ptr), soe_ptr, schema), soe(soe_ptr) {
-  for (const auto& [ts, node] : pm->node_map) {
-    if (node.media_class == pm->media_class_output_stream) {
-      on_app_added(node);
-    }
-  }
-
-  connections.push_back(
-      soe->pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_added)));
   connections.push_back(
       soe->pm->stream_output_changed.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_changed)));
-  connections.push_back(
-      soe->pm->stream_output_removed.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_removed)));
 }
 
 StreamOutputEffectsUi::~StreamOutputEffectsUi() {

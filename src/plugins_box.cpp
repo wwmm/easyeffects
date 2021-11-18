@@ -67,7 +67,7 @@ void dispose(GObject* object) {
     c.disconnect();
   }
 
-  util::debug(log_tag + "destroyed"s);
+  util::debug(log_tag + "disposed"s);
 
   G_OBJECT_CLASS(plugins_box_parent_class)->dispose(object);
 }

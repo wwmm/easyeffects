@@ -40,6 +40,4 @@ auto create() -> AppsBox*;
 
 void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type);
 
-void on_app_added(const NodeInfo& node_info);
-
 }  // namespace ui::apps_box

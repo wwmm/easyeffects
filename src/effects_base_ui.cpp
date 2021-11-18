@@ -1304,24 +1304,6 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   });
 }
 
-void EffectsBaseUi::on_app_added(const NodeInfo node_info) {
-  // do not add the same stream twice
-
-  for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-    if (all_players_model->get_item(n)->ts == node_info.timestamp) {
-      return;
-    }
-  }
-
-  auto node_info_holder = NodeInfoHolder::create(node_info);
-
-  all_players_model->append(node_info_holder);
-
-  if (settings->get_boolean("show-blocklisted-apps") || !app_is_blocklisted(node_info.name)) {
-    players_model->append(node_info_holder);
-  }
-}
-
 void EffectsBaseUi::on_app_changed(const util::time_point ts) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
     if (auto holder = players_model->get_item(n); holder->ts == ts) {

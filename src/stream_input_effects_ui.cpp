@@ -29,17 +29,8 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, std::move(icon_ptr), sie_ptr, schema), sie(sie_ptr) {
   toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
 
-  for (const auto& [ts, node] : pm->node_map) {
-    if (node.media_class == pm->media_class_input_stream) {
-      on_app_added(node);
-    }
-  }
-
-  connections.push_back(sie->pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_added)));
   connections.push_back(
       sie->pm->stream_input_changed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_changed)));
-  connections.push_back(
-      sie->pm->stream_input_removed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_removed)));
 }
 
 StreamInputEffectsUi::~StreamInputEffectsUi() {

@@ -175,7 +175,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "destroyed"s);
+  util::debug(log_tag + "disposed"s);
 
   G_OBJECT_CLASS(application_window_parent_class)->dispose(object);
 }

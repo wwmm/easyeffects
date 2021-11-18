@@ -51,22 +51,6 @@ auto app_is_blocklisted(AppsBox* self, const std::string& name) -> bool {
   return std::ranges::find(list, name) != list.end();
 }
 
-void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type) {
-  self->application = application;
-  self->pipeline_type = pipeline_type;
-
-  switch (pipeline_type) {
-    case PipelineType::input:
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
-
-      break;
-    case PipelineType::output:
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
-
-      break;
-  }
-}
-
 void on_app_added(AppsBox* self, const NodeInfo& node_info) {
   // do not add the same stream twice
 
@@ -86,6 +70,75 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
   if (g_settings_get_boolean(self->settings, "show-blocklisted-apps") != 0 ||
       !app_is_blocklisted(self, node_info.name)) {
     g_list_store_append(self->apps_model, holder);
+  }
+}
+
+void on_app_removed(AppsBox* self, const util::time_point ts) {
+  for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+    auto* holder =
+        static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
+
+    if (holder->ts == ts) {
+      g_list_store_remove(self->all_apps_model, n);
+
+      break;
+    }
+  }
+
+  for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
+    auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
+
+    if (holder->ts == ts) {
+      g_list_store_remove(self->apps_model, n);
+
+      break;
+    }
+  }
+}
+
+void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type) {
+  self->application = application;
+  self->pipeline_type = pipeline_type;
+
+  switch (pipeline_type) {
+    case PipelineType::input: {
+      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
+
+      auto* pm = application->sie->pm;
+
+      for (const auto& [ts, node] : pm->node_map) {
+        if (node.media_class == pm->media_class_input_stream) {
+          on_app_added(self, node);
+        }
+      }
+
+      self->connections.push_back(
+          application->sie->pm->stream_input_added.connect([=](const NodeInfo& info) { on_app_added(self, info); }));
+
+      self->connections.push_back(application->sie->pm->stream_input_removed.connect(
+          [=](const util::time_point ts) { on_app_removed(self, ts); }));
+
+      break;
+    }
+    case PipelineType::output: {
+      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+
+      auto* pm = application->soe->pm;
+
+      for (const auto& [ts, node] : pm->node_map) {
+        if (node.media_class == pm->media_class_output_stream) {
+          on_app_added(self, node);
+        }
+      }
+
+      self->connections.push_back(
+          pm->stream_output_added.connect([=](const NodeInfo& info) { on_app_added(self, info); }));
+
+      self->connections.push_back(application->soe->pm->stream_output_removed.connect(
+          [=](const util::time_point ts) { on_app_removed(self, ts); }));
+
+      break;
+    }
   }
 }
 
@@ -116,7 +169,7 @@ void dispose(GObject* object) {
   g_object_unref(self->all_apps_model);
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "destroyed"s);
+  util::debug(log_tag + "disposed"s);
 
   G_OBJECT_CLASS(apps_box_parent_class)->dispose(object);
 }
