@@ -113,6 +113,7 @@
                 <child type="end">
                     <object class="GtkToggleButton" id="toggle_listen_mic">
                         <property name="visible">False</property>
+                        <signal name="toggled" handler="on_listen_mic_toggled" object="EffectsBox" />
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">center</property>

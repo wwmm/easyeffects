@@ -204,6 +204,10 @@ void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget*
   }
 }
 
+void on_listen_mic_toggled(EffectsBox* self, GtkToggleButton* button) {
+  self->application->sie->set_listen_to_mic(gtk_toggle_button_get_active(button) != 0);
+}
+
 void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type) {
   self->application = application;
   self->pipeline_type = pipeline_type;
@@ -455,6 +459,7 @@ void effects_box_class_init(EffectsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, saturation_icon);
 
   gtk_widget_class_bind_template_callback(widget_class, stack_visible_child_changed);
+  gtk_widget_class_bind_template_callback(widget_class, on_listen_mic_toggled);
 }
 
 void effects_box_init(EffectsBox* self) {

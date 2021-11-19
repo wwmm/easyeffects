@@ -40,10 +40,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
   device_state = builder->get_widget<Gtk::Label>("device_state");
   latency_status = builder->get_widget<Gtk::Label>("latency_status");
-  saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
   listview_players = builder->get_widget<Gtk::ListView>("listview_players");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
-  toggle_listen_mic = builder->get_widget<Gtk::ToggleButton>("toggle_listen_mic");
 
   popover_blocklist = builder->get_widget<Gtk::Popover>("popover_blocklist");
   blocklist_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("blocklist_scrolled_window");
@@ -1312,18 +1310,6 @@ void EffectsBaseUi::on_app_changed(const util::time_point ts) {
       }
     }
   }
-}
-
-void EffectsBaseUi::on_new_output_level_db(const float& left, const float& right) {
-  global_output_level_left->set_text(((left > 0.0) ? "+" : "") +
-                                     Glib::ustring::format(std::setprecision(0), std::fixed, left));
-
-  global_output_level_right->set_text(((right > 0.0) ? "+" : "") +
-                                      Glib::ustring::format(std::setprecision(0), std::fixed, right));
-
-  // saturation icon notification
-
-  saturation_icon->set_opacity((left > 0.0 || right > 0.0) ? 1.0 : 0.0);
 }
 
 auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::ustring {

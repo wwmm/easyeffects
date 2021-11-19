@@ -96,6 +96,20 @@ void on_app_removed(AppsBox* self, const util::time_point ts) {
   }
 }
 
+void on_app_changed(AppsBox* self, const util::time_point ts) {
+  for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
+    auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
+
+    if (holder->ts == ts) {
+      if (auto node_it = self->application->pm->node_map.find(ts); node_it != self->application->pm->node_map.end()) {
+        holder->info_updated.emit(node_it->second);
+
+        return;
+      }
+    }
+  }
+}
+
 void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type) {
   self->application = application;
   self->pipeline_type = pipeline_type;
@@ -118,6 +132,9 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->connections.push_back(application->sie->pm->stream_input_removed.connect(
           [=](const util::time_point ts) { on_app_removed(self, ts); }));
 
+      self->connections.push_back(application->sie->pm->stream_input_changed.connect(
+          [=](const util::time_point ts) { on_app_changed(self, ts); }));
+
       break;
     }
     case PipelineType::output: {
@@ -136,6 +153,9 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
       self->connections.push_back(application->soe->pm->stream_output_removed.connect(
           [=](const util::time_point ts) { on_app_removed(self, ts); }));
+
+      self->connections.push_back(application->soe->pm->stream_output_changed.connect(
+          [=](const util::time_point ts) { on_app_changed(self, ts); }));
 
       break;
     }

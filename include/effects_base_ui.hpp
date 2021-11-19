@@ -77,13 +77,9 @@ class EffectsBaseUi {
 
   Glib::RefPtr<Gtk::IconTheme> icon_theme;
 
-  Gtk::Image* saturation_icon = nullptr;
-
   Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
 
   Gtk::Label *device_state = nullptr, *latency_status = nullptr;
-
-  Gtk::ToggleButton* toggle_listen_mic = nullptr;
 
   Gtk::Stack* stack_plugins = nullptr;
 
@@ -98,8 +94,6 @@ class EffectsBaseUi {
   void on_app_changed(util::time_point ts);
 
   auto icon_available(const Glib::ustring& icon_name) -> bool;
-
-  void on_new_output_level_db(const float& left, const float& right);
 
   static auto node_state_to_ustring(const pw_node_state& state) -> Glib::ustring;
 
@@ -156,7 +150,7 @@ class EffectsBaseUi {
      useful to restore the enabled state when the app is removed from the blocklist
   */
 
-  std::map<uint, bool> enabled_app_list;
+  std::unordered_map<uint, bool> enabled_app_list;
 
   void add_plugins_to_stack_plugins();
 
