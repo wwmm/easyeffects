@@ -215,6 +215,7 @@
                     <object class="GtkScale" id="volume">
                         <property name="hexpand">1</property>
                         <property name="valign">center</property>
+                        <property name="sensitive" bind-source="mute" bind-property="active" bind-flags="sync-create|invert-boolean" />
                         <property name="adjustment">
                             <object class="GtkAdjustment">
                                 <property name="lower">0</property>

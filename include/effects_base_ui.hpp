@@ -95,8 +95,6 @@ class EffectsBaseUi {
 
   auto icon_available(const Glib::ustring& icon_name) -> bool;
 
-  static auto node_state_to_ustring(const pw_node_state& state) -> Glib::ustring;
-
  private:
   Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr, *listview_plugins = nullptr,
                 *listview_selected_plugins = nullptr;
@@ -169,10 +167,6 @@ class EffectsBaseUi {
   auto add_new_blocklist_entry(const Glib::ustring& name) -> bool;
 
   void remove_blocklist_entry(const Glib::ustring& name);
-
-  void connect_stream(const uint& id, const std::string& media_class);
-
-  void disconnect_stream(const uint& id, const std::string& media_class);
 };
 
 #endif

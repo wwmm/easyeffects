@@ -573,44 +573,18 @@ void EffectsBaseUi::setup_listview_players() {
 
     list_item->set_data("app_icon", b->get_widget<Gtk::Image>("app_icon"));
     list_item->set_data("blocklist", b->get_widget<Gtk::CheckButton>("blocklist"));
-    list_item->set_data("state", b->get_widget<Gtk::Label>("state"));
-    list_item->set_data("mute", b->get_widget<Gtk::ToggleButton>("mute"));
 
     list_item->set_child(*top_box);
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const state = static_cast<Gtk::Label*>(list_item->get_data("state"));
     auto* const app_icon = static_cast<Gtk::Image*>(list_item->get_data("app_icon"));
-    auto* const mute = static_cast<Gtk::ToggleButton*>(list_item->get_data("mute"));
     auto* const blocklist = static_cast<Gtk::CheckButton*>(list_item->get_data("blocklist"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-    const auto timestamp = holder->ts;
-    const auto stream_id = holder->id;
     const auto app_name = holder->name;
     const auto media_class = holder->media_class;
-
-    auto connection_mute = mute->signal_toggled().connect([=, this]() {
-      const auto state = mute->get_active();
-
-      if (state) {
-        mute->property_icon_name().set_value("audio-volume-muted-symbolic");
-
-        // scale_volume->set_sensitive(false);
-      } else {
-        mute->property_icon_name().set_value("audio-volume-high-symbolic");
-
-        // scale_volume->set_sensitive(true);
-      }
-
-      if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
-        if (node_it->second.proxy != nullptr) {
-          PipeManager::set_node_mute(node_it->second.proxy, state);
-        }
-      }
-    });
 
     auto connection_blocklist_checkbutton = blocklist->signal_toggled().connect([=, this]() {
       if (blocklist->get_active()) {
@@ -624,12 +598,9 @@ void EffectsBaseUi::setup_listview_players() {
       // Stream connection/disconnection will be done in blocklist items signal changed
     });
 
-    auto* pointer_connection_mute = new sigc::connection(connection_mute);
     auto* pointer_connection_blocklist_checkbutton = new sigc::connection(connection_blocklist_checkbutton);
 
     auto application_info_update = [=, this](const NodeInfo node_info) {
-      state->set_text(node_state_to_ustring(node_info.state));
-
       // set the blocklist checkbutton
 
       pointer_connection_blocklist_checkbutton->block();
@@ -669,27 +640,7 @@ void EffectsBaseUi::setup_listview_players() {
       } else {
         app_icon->set_visible(false);
       }
-
-      // set the mute button
-
-      pointer_connection_mute->block();
-
-      if (node_info.mute) {
-        mute->property_icon_name().set_value("audio-volume-muted-symbolic");
-
-        // scale_volume->set_sensitive(false);
-      } else {
-        mute->property_icon_name().set_value("audio-volume-high-symbolic");
-
-        // scale_volume->set_sensitive(true);
-      }
-
-      mute->set_active(node_info.mute);
-
-      pointer_connection_mute->unblock();
     };
-
-    list_item->set_data("connection_mute", pointer_connection_mute, Glib::destroy_notify_delete<sigc::connection>);
 
     list_item->set_data("connection_blocklist_checkbutton", pointer_connection_blocklist_checkbutton,
                         Glib::destroy_notify_delete<sigc::connection>);
@@ -707,22 +658,6 @@ void EffectsBaseUi::setup_listview_players() {
       }
     }
   });
-}
-
-void EffectsBaseUi::connect_stream(const uint& id, const std::string& media_class) {
-  if (media_class == pm->media_class_output_stream) {
-    pm->connect_stream_output(id);
-  } else if (media_class == pm->media_class_input_stream) {
-    pm->connect_stream_input(id);
-  }
-}
-
-void EffectsBaseUi::disconnect_stream(const uint& id, const std::string& media_class) {
-  if (media_class == pm->media_class_output_stream) {
-    pm->disconnect_stream_output(id);
-  } else if (media_class == pm->media_class_input_stream) {
-    pm->disconnect_stream_input(id);
-  }
 }
 
 void EffectsBaseUi::setup_listview_blocklist() {
@@ -752,7 +687,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
 
       if (app_is_blocklisted(holder->name)) {
         if (app_is_enabled) {
-          disconnect_stream(holder->id, holder->media_class);
+          // disconnect_stream(holder->id, holder->media_class);
         }
 
         if (show_blocklisted_apps) {
@@ -764,10 +699,10 @@ void EffectsBaseUi::setup_listview_blocklist() {
 
           try {
             if (enabled_app_list.at(holder->id)) {
-              connect_stream(holder->id, holder->media_class);
+              // connect_stream(holder->id, holder->media_class);
             }
           } catch (...) {
-            connect_stream(holder->id, holder->media_class);
+            // connect_stream(holder->id, holder->media_class);
 
             util::warning("effects_base_ui: can't retrieve enabled state of node " + std::to_string(holder->id));
 
@@ -1201,23 +1136,6 @@ void EffectsBaseUi::on_app_changed(const util::time_point ts) {
         holder->info_updated.emit(node_it->second);
       }
     }
-  }
-}
-
-auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::ustring {
-  switch (state) {
-    case PW_NODE_STATE_RUNNING:
-      return _("running");
-    case PW_NODE_STATE_SUSPENDED:
-      return _("suspended");
-    case PW_NODE_STATE_IDLE:
-      return _("idle");
-    case PW_NODE_STATE_CREATING:
-      return _("creating");
-    case PW_NODE_STATE_ERROR:
-      return _("error");
-    default:
-      return _("unknown");
   }
 }
 

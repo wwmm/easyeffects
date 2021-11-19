@@ -166,10 +166,12 @@ void setup_listview(AppsBox* self) {
         auto* enable = gtk_builder_get_object(builder, "enable");
         auto* app_icon = gtk_builder_get_object(builder, "app_icon");
         auto* volume = gtk_builder_get_object(builder, "volume");
+        auto* mute = gtk_builder_get_object(builder, "mute");
 
         g_object_set_data(G_OBJECT(item), "enable", enable);
         g_object_set_data(G_OBJECT(item), "app_icon", app_icon);
         g_object_set_data(G_OBJECT(item), "volume", volume);
+        g_object_set_data(G_OBJECT(item), "mute", mute);
         g_object_set_data(G_OBJECT(item), "app_name", gtk_builder_get_object(builder, "app_name"));
         g_object_set_data(G_OBJECT(item), "media_name", gtk_builder_get_object(builder, "media_name"));
         g_object_set_data(G_OBJECT(item), "rate", gtk_builder_get_object(builder, "rate"));
@@ -226,8 +228,31 @@ void setup_listview(AppsBox* self) {
             }),
             self);
 
+        auto handler_id_mute = g_signal_connect(
+            mute, "toggled", G_CALLBACK(+[](GtkToggleButton* btn, AppsBox* self) {
+              if (auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_object_get_data(G_OBJECT(btn), "holder"));
+                  holder != nullptr) {
+                const auto state = gtk_toggle_button_get_active(btn);
+
+                if (state) {
+                  gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-muted-symbolic");
+                } else {
+                  gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-high-symbolic");
+                }
+
+                if (const auto node_it = self->application->pm->node_map.find(holder->ts);
+                    node_it != self->application->pm->node_map.end()) {
+                  if (node_it->second.proxy != nullptr) {
+                    PipeManager::set_node_mute(node_it->second.proxy, state);
+                  }
+                }
+              }
+            }),
+            self);
+
         g_object_set_data(G_OBJECT(enable), "handler-id", GUINT_TO_POINTER(handler_id_enable));
         g_object_set_data(G_OBJECT(volume), "handler-id", GUINT_TO_POINTER(handler_id_volume));
+        g_object_set_data(G_OBJECT(mute), "handler-id", GUINT_TO_POINTER(handler_id_mute));
 
         g_object_unref(builder);
       }),
@@ -245,9 +270,11 @@ void setup_listview(AppsBox* self) {
         auto* latency = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "latency"));
         auto* state = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "state"));
         auto* volume = static_cast<GtkScale*>(g_object_get_data(G_OBJECT(item), "volume"));
+        auto* mute = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "mute"));
 
         auto handler_id_enable = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(enable), "handler-id"));
         auto handler_id_volume = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(volume), "handler-id"));
+        auto handler_id_mute = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(mute), "handler-id"));
 
         auto child_item = gtk_list_item_get_item(item);
 
@@ -255,11 +282,7 @@ void setup_listview(AppsBox* self) {
 
         g_object_set_data(G_OBJECT(enable), "holder", child_item);
         g_object_set_data(G_OBJECT(volume), "holder", child_item);
-
-        const auto timestamp = holder->ts;
-        const auto stream_id = holder->id;
-        const auto app_name = holder->name;
-        const auto media_class = holder->media_class;
+        g_object_set_data(G_OBJECT(mute), "holder", child_item);
 
         auto application_info_update = [=](const NodeInfo& node_info) {
           if (node_info.state == PW_NODE_STATE_CREATING) {
@@ -300,11 +323,25 @@ void setup_listview(AppsBox* self) {
           }
 
           g_signal_handler_unblock(volume, handler_id_volume);
+
+          // updating the mute button state
+
+          g_signal_handler_block(mute, handler_id_mute);
+
+          if (node_info.mute) {
+            gtk_button_set_icon_name(GTK_BUTTON(mute), "audio-volume-muted-symbolic");
+          } else {
+            gtk_button_set_icon_name(GTK_BUTTON(mute), "audio-volume-high-symbolic");
+          }
+
+          gtk_toggle_button_set_active(mute, node_info.mute);
+
+          g_signal_handler_unblock(mute, handler_id_mute);
         };
 
         // Update the app info ui for the very first time Needed for interface initialization in service mode
 
-        if (const auto node_it = self->application->pm->node_map.find(timestamp);
+        if (const auto node_it = self->application->pm->node_map.find(holder->ts);
             node_it != self->application->pm->node_map.end()) {
           application_info_update(node_it->second);
         }
@@ -318,6 +355,7 @@ void setup_listview(AppsBox* self) {
                    G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
                      auto* enable = static_cast<GtkSwitch*>(g_object_get_data(G_OBJECT(item), "enable"));
                      auto* volume = static_cast<GtkScale*>(g_object_get_data(G_OBJECT(item), "volume"));
+                     auto* mute = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "mute"));
 
                      auto* holder = static_cast<ui::holders::NodeInfoHolder*>(gtk_list_item_get_item(item));
 
@@ -326,6 +364,7 @@ void setup_listview(AppsBox* self) {
                      g_object_set_data(G_OBJECT(enable), "handler-id", nullptr);
                      g_object_set_data(G_OBJECT(enable), "holder", nullptr);
                      g_object_set_data(G_OBJECT(volume), "holder", nullptr);
+                     g_object_set_data(G_OBJECT(mute), "holder", nullptr);
                    }),
                    self);
 
