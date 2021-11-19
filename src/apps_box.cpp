@@ -110,6 +110,68 @@ void on_app_changed(AppsBox* self, const util::time_point ts) {
   }
 }
 
+void setup_listview(AppsBox* self) {
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->apps_model));
+
+  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
+
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(
+      factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, AppsBox* self) {
+        auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/app_info.ui");
+
+        auto* top_box = gtk_builder_get_object(builder, "top_box");
+        auto* enable = gtk_builder_get_object(builder, "enable");
+        auto* app_icon = gtk_builder_get_object(builder, "app_icon");
+        auto* app_name = gtk_builder_get_object(builder, "app_name");
+        auto* media_name = gtk_builder_get_object(builder, "media_name");
+
+        g_object_set_data(G_OBJECT(item), "enable", enable);
+        g_object_set_data(G_OBJECT(item), "app_icon", app_icon);
+        g_object_set_data(G_OBJECT(item), "app_name", app_name);
+        g_object_set_data(G_OBJECT(item), "media_name", media_name);
+
+        gtk_list_item_set_activatable(item, 0);
+        gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+
+        g_signal_connect(enable, "state-set",
+                         G_CALLBACK(+[](GtkSwitch* btn, gboolean state, AppsBox* self) { util::warning("enable"); }),
+                         self);
+      }),
+      self);
+
+  g_signal_connect(factory, "bind",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
+                     auto* enable = static_cast<GtkSwitch*>(g_object_get_data(G_OBJECT(item), "enable"));
+                     auto* app_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "app_icon"));
+                     auto* app_name_label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "app_name"));
+                     auto* media_name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "media_name"));
+
+                     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(gtk_list_item_get_item(item));
+
+                     const auto timestamp = holder->ts;
+                     const auto stream_id = holder->id;
+                     const auto app_name = holder->name;
+                     const auto media_class = holder->media_class;
+
+                     auto application_info_update = [=](const NodeInfo& node_info) {
+                       //  g_signal_handler_block();
+                     };
+
+                     auto connection_info = holder->info_updated.connect(application_info_update);
+                   }),
+                   self);
+
+  gtk_list_view_set_factory(self->listview, factory);
+
+  g_object_unref(factory);
+}
+
 void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type) {
   self->application = application;
   self->pipeline_type = pipeline_type;
@@ -185,8 +247,7 @@ void dispose(GObject* object) {
     c.disconnect();
   }
 
-  g_object_unref(self->apps_model);
-  g_object_unref(self->all_apps_model);
+  g_object_unref(self->all_apps_model);  // do not do this to self->apps_model. It is owned by the listview
   g_object_unref(self->settings);
 
   util::debug(log_tag + "disposed"s);
@@ -215,6 +276,8 @@ void apps_box_init(AppsBox* self) {
 
   self->apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->all_apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
+
+  setup_listview(self);
 }
 
 auto create() -> AppsBox* {
