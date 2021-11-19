@@ -105,6 +105,8 @@ void dispose(GObject* object) {
     g_signal_handler_disconnect(self->settings_spectrum, handler_id);
   }
 
+  self->gconnections_spectrum.clear();
+
   g_object_unref(self->settings);
   g_object_unref(self->settings_spectrum);
 

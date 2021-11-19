@@ -613,35 +613,6 @@ void EffectsBaseUi::setup_listview_players() {
     const auto app_name = holder->name;
     const auto media_class = holder->media_class;
 
-    auto connection_enable = enable->signal_state_set().connect(
-        [=, this](const auto& state) {
-          if (!app_is_blocklisted(app_name)) {
-            (state) ? connect_stream(stream_id, media_class) : disconnect_stream(stream_id, media_class);
-
-            enabled_app_list.insert_or_assign(stream_id, state);
-          }
-
-          // no need to trigger an info_updated signal here because
-          // PipeWire will do it on stream connection/disconnection
-
-          return false;
-        },
-        false);
-
-    auto connection_volume = volume->signal_value_changed().connect([=, this]() {
-      if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
-        if (node_it->second.proxy != nullptr) {
-          auto vol = static_cast<float>(volume->get_value()) / 100.0F;
-
-          if (app_settings->get_boolean("use-cubic-volumes")) {
-            vol = vol * vol * vol;
-          }
-
-          PipeManager::set_node_volume(node_it->second.proxy, node_it->second.n_volume_channels, vol);
-        }
-      }
-    });
-
     auto connection_mute = mute->signal_toggled().connect([=, this]() {
       const auto state = mute->get_active();
 
@@ -674,50 +645,28 @@ void EffectsBaseUi::setup_listview_players() {
       // Stream connection/disconnection will be done in blocklist items signal changed
     });
 
-    auto* pointer_connection_enable = new sigc::connection(connection_enable);
-    auto* pointer_connection_volume = new sigc::connection(connection_volume);
     auto* pointer_connection_mute = new sigc::connection(connection_mute);
     auto* pointer_connection_blocklist_checkbutton = new sigc::connection(connection_blocklist_checkbutton);
 
     auto application_info_update = [=, this](const NodeInfo node_info) {
-      if (node_info.state == PW_NODE_STATE_CREATING) {
-        // PW_NODE_STATE_CREATING is useless and does not give any meaningful info,
-        // therefore skip it
-        return;
-      }
-
-      app_name_label->set_text(node_info.name);
-      media_name->set_text(node_info.media_name);
       format->set_text(node_info.format);
       rate->set_text(Glib::ustring::format(node_info.rate) + " Hz");
       channels->set_text(Glib::ustring::format(node_info.n_volume_channels));
       latency->set_text(Glib::ustring::format(std::setprecision(2), std::fixed, node_info.latency) + " s");
       state->set_text(node_state_to_ustring(node_info.state));
 
-      // set the enable switch
-
-      pointer_connection_enable->block();
-
-      const auto is_enabled = pm->stream_is_connected(node_info.id, node_info.media_class);
-      const auto is_blocklisted = app_is_blocklisted(node_info.name);
-
-      enable->set_sensitive(is_enabled || !is_blocklisted);
-      enable->set_active(is_enabled);
-
-      pointer_connection_enable->unblock();
-
       // set the blocklist checkbutton
 
       pointer_connection_blocklist_checkbutton->block();
 
-      blocklist->set_active(is_blocklisted);
+      // blocklist->set_active(is_blocklisted);
 
       pointer_connection_blocklist_checkbutton->unblock();
 
       // save app "enabled state" only the first time when it is not present in the enabled_app_list map
 
       if (enabled_app_list.find(node_info.id) == enabled_app_list.end()) {
-        enabled_app_list.insert({node_info.id, is_enabled});
+        // enabled_app_list.insert({node_info.id, is_enabled});
       }
 
       // set the icon name
@@ -745,20 +694,6 @@ void EffectsBaseUi::setup_listview_players() {
       } else {
         app_icon->set_visible(false);
       }
-
-      // set the volume slider
-
-      pointer_connection_volume->block();
-
-      scale_volume->set_sensitive(true);
-
-      if (app_settings->get_boolean("use-cubic-volumes")) {
-        volume->set_value(100.0 * std::cbrt(static_cast<double>(node_info.volume)));
-      } else {
-        volume->set_value(100.0 * static_cast<double>(node_info.volume));
-      }
-
-      pointer_connection_volume->unblock();
 
       // set the mute button
 
@@ -789,10 +724,6 @@ void EffectsBaseUi::setup_listview_players() {
     // connect the app info update lambda to holder info_updated signal
 
     auto connection_info = holder->info_updated.connect(application_info_update);
-
-    list_item->set_data("connection_enable", pointer_connection_enable, Glib::destroy_notify_delete<sigc::connection>);
-
-    list_item->set_data("connection_volume", pointer_connection_volume, Glib::destroy_notify_delete<sigc::connection>);
 
     list_item->set_data("connection_mute", pointer_connection_mute, Glib::destroy_notify_delete<sigc::connection>);
 

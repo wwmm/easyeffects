@@ -236,6 +236,8 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
                            }
                          }),
                          user_data);
+
+        g_object_unref(builder);
       }),
       self);
 
@@ -392,6 +394,9 @@ void dispose(GObject* object) {
   for (auto& handler_id : self->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
+
+  self->connections.clear();
+  self->gconnections.clear();
 
   g_object_unref(self->settings);
 

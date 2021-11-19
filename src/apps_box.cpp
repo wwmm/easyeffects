@@ -36,9 +36,11 @@ struct _AppsBox {
 
   bool schedule_signal_idle;
 
-  GSettings* settings;
+  GSettings *settings, *app_settings;
 
   PipelineType pipeline_type;
+
+  std::unordered_map<uint, bool> enabled_app_list;
 
   std::vector<sigc::connection> connections;
 };
@@ -79,6 +81,8 @@ void on_app_removed(AppsBox* self, const util::time_point ts) {
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
     if (holder->ts == ts) {
+      holder->info_updated.clear();  // Disconnecting all the slots before removing the holder from the model
+
       g_list_store_remove(self->all_apps_model, n);
 
       break;
@@ -110,6 +114,22 @@ void on_app_changed(AppsBox* self, const util::time_point ts) {
   }
 }
 
+void connect_stream(AppsBox* self, const uint& id, const std::string& media_class) {
+  if (media_class == self->application->pm->media_class_output_stream) {
+    self->application->pm->connect_stream_output(id);
+  } else if (media_class == self->application->pm->media_class_input_stream) {
+    self->application->pm->connect_stream_input(id);
+  }
+}
+
+void disconnect_stream(AppsBox* self, const uint& id, const std::string& media_class) {
+  if (media_class == self->application->pm->media_class_output_stream) {
+    self->application->pm->disconnect_stream_output(id);
+  } else if (media_class == self->application->pm->media_class_input_stream) {
+    self->application->pm->disconnect_stream_input(id);
+  }
+}
+
 void setup_listview(AppsBox* self) {
   auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->apps_model));
 
@@ -130,40 +150,139 @@ void setup_listview(AppsBox* self) {
         auto* app_icon = gtk_builder_get_object(builder, "app_icon");
         auto* app_name = gtk_builder_get_object(builder, "app_name");
         auto* media_name = gtk_builder_get_object(builder, "media_name");
+        auto* volume = gtk_builder_get_object(builder, "volume");
 
         g_object_set_data(G_OBJECT(item), "enable", enable);
         g_object_set_data(G_OBJECT(item), "app_icon", app_icon);
         g_object_set_data(G_OBJECT(item), "app_name", app_name);
         g_object_set_data(G_OBJECT(item), "media_name", media_name);
+        g_object_set_data(G_OBJECT(item), "volume", volume);
 
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
 
-        g_signal_connect(enable, "state-set",
-                         G_CALLBACK(+[](GtkSwitch* btn, gboolean state, AppsBox* self) { util::warning("enable"); }),
-                         self);
+        auto handler_id_enable = g_signal_connect(
+            enable, "state-set", G_CALLBACK(+[](GtkSwitch* btn, gboolean state, AppsBox* self) {
+              if (auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_object_get_data(G_OBJECT(btn), "holder"));
+                  holder != nullptr) {
+                const auto stream_id = holder->id;
+                const auto media_class = holder->media_class;
+
+                if (!app_is_blocklisted(self, holder->name)) {
+                  (state) ? connect_stream(self, stream_id, media_class)
+                          : disconnect_stream(self, stream_id, media_class);
+
+                  self->enabled_app_list.insert_or_assign(stream_id, state);
+                }
+              }
+            }),
+            self);
+
+        auto handler_id_volume = g_signal_connect(
+            volume, "value-changed", G_CALLBACK(+[](GtkRange* scale, AppsBox* self) {
+              auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_object_get_data(G_OBJECT(scale), "holder"));
+
+              if (holder != nullptr) {
+                const auto node_it = self->application->pm->node_map.find(holder->ts);
+
+                if (node_it != self->application->pm->node_map.end()) {
+                  if (node_it->second.proxy != nullptr) {
+                    auto vol = static_cast<float>(gtk_range_get_value(GTK_RANGE(scale))) / 100.0F;
+
+                    if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
+                      vol = vol * vol * vol;
+                    }
+
+                    PipeManager::set_node_volume(node_it->second.proxy, node_it->second.n_volume_channels, vol);
+                  }
+                }
+              }
+            }),
+            self);
+
+        g_object_set_data(G_OBJECT(enable), "handler-id", GUINT_TO_POINTER(handler_id_enable));
+        g_object_set_data(G_OBJECT(volume), "handler-id", GUINT_TO_POINTER(handler_id_volume));
+
+        g_object_unref(builder);
       }),
       self);
 
-  g_signal_connect(factory, "bind",
+  g_signal_connect(
+      factory, "bind", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, AppsBox* self) {
+        auto* enable = static_cast<GtkSwitch*>(g_object_get_data(G_OBJECT(item), "enable"));
+        auto* app_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "app_icon"));
+        auto* app_name_label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "app_name"));
+        auto* media_name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "media_name"));
+        auto* volume = static_cast<GtkScale*>(g_object_get_data(G_OBJECT(item), "volume"));
+
+        auto handler_id_enable = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(enable), "handler-id"));
+        auto handler_id_volume = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(volume), "handler-id"));
+
+        auto child_item = gtk_list_item_get_item(item);
+
+        auto* holder = static_cast<ui::holders::NodeInfoHolder*>(child_item);
+
+        g_object_set_data(G_OBJECT(enable), "holder", child_item);
+        g_object_set_data(G_OBJECT(volume), "holder", child_item);
+
+        const auto timestamp = holder->ts;
+        const auto stream_id = holder->id;
+        const auto app_name = holder->name;
+        const auto media_class = holder->media_class;
+
+        auto application_info_update = [=](const NodeInfo& node_info) {
+          if (node_info.state == PW_NODE_STATE_CREATING) {
+            // PW_NODE_STATE_CREATING is useless and does not give any meaningful info, therefore skip it
+            return;
+          }
+
+          gtk_label_set_text(app_name_label, node_info.name.c_str());
+          gtk_label_set_text(media_name, node_info.media_name.c_str());
+
+          // updating the enable switch
+
+          g_signal_handler_block(enable, handler_id_enable);
+
+          const auto is_enabled = self->application->pm->stream_is_connected(node_info.id, node_info.media_class);
+          const auto is_blocklisted = app_is_blocklisted(self, node_info.name);
+
+          gtk_widget_set_sensitive(GTK_WIDGET(enable), is_enabled || !is_blocklisted);
+          gtk_switch_set_active(enable, is_enabled);
+
+          g_signal_handler_unblock(enable, handler_id_enable);
+
+          // updating the volume scale
+
+          g_signal_handler_block(volume, handler_id_volume);
+
+          gtk_widget_set_sensitive(GTK_WIDGET(volume), true);
+
+          if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
+            gtk_range_set_value(GTK_RANGE(volume), 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
+          } else {
+            gtk_range_set_value(GTK_RANGE(volume), 100.0 * static_cast<double>(node_info.volume));
+          }
+
+          g_signal_handler_unblock(volume, handler_id_volume);
+        };
+
+        // A call to holder->info_updated.clear() will be made in the unbind signal
+        holder->info_updated.connect(application_info_update);
+      }),
+      self);
+
+  g_signal_connect(factory, "unbind",
                    G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
                      auto* enable = static_cast<GtkSwitch*>(g_object_get_data(G_OBJECT(item), "enable"));
-                     auto* app_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "app_icon"));
-                     auto* app_name_label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "app_name"));
-                     auto* media_name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "media_name"));
+                     auto* volume = static_cast<GtkScale*>(g_object_get_data(G_OBJECT(item), "volume"));
 
                      auto* holder = static_cast<ui::holders::NodeInfoHolder*>(gtk_list_item_get_item(item));
 
-                     const auto timestamp = holder->ts;
-                     const auto stream_id = holder->id;
-                     const auto app_name = holder->name;
-                     const auto media_class = holder->media_class;
+                     holder->info_updated.clear();
 
-                     auto application_info_update = [=](const NodeInfo& node_info) {
-                       //  g_signal_handler_block();
-                     };
-
-                     auto connection_info = holder->info_updated.connect(application_info_update);
+                     g_object_set_data(G_OBJECT(enable), "handler-id", nullptr);
+                     g_object_set_data(G_OBJECT(enable), "holder", nullptr);
+                     g_object_set_data(G_OBJECT(volume), "holder", nullptr);
                    }),
                    self);
 
@@ -247,8 +366,11 @@ void dispose(GObject* object) {
     c.disconnect();
   }
 
+  self->connections.clear();
+
   g_object_unref(self->all_apps_model);  // do not do this to self->apps_model. It is owned by the listview
   g_object_unref(self->settings);
+  g_object_unref(self->app_settings);
 
   util::debug(log_tag + "disposed"s);
 
@@ -274,8 +396,12 @@ void apps_box_init(AppsBox* self) {
 
   self->schedule_signal_idle = false;
 
+  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+
   self->apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->all_apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
+
+  self->enabled_app_list = std::unordered_map<uint, bool>();  // Private gtk structures are weird. We have to do this.
 
   setup_listview(self);
 }

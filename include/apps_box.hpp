@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include <ranges>
+#include <unordered_map>
 #include "application.hpp"
 #include "node_info_holder.hpp"
 #include "pipeline_type.hpp"
