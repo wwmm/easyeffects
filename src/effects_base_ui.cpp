@@ -571,40 +571,19 @@ void EffectsBaseUi::setup_listview_players() {
 
     auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
-    list_item->set_data("enable", b->get_widget<Gtk::Switch>("enable"));
     list_item->set_data("app_icon", b->get_widget<Gtk::Image>("app_icon"));
-    list_item->set_data("app_name", b->get_widget<Gtk::Label>("app_name"));
-    list_item->set_data("media_name", b->get_widget<Gtk::Label>("media_name"));
     list_item->set_data("blocklist", b->get_widget<Gtk::CheckButton>("blocklist"));
-    list_item->set_data("format", b->get_widget<Gtk::Label>("format"));
-    list_item->set_data("rate", b->get_widget<Gtk::Label>("rate"));
-    list_item->set_data("channels", b->get_widget<Gtk::Label>("channels"));
-    list_item->set_data("latency", b->get_widget<Gtk::Label>("latency"));
     list_item->set_data("state", b->get_widget<Gtk::Label>("state"));
     list_item->set_data("mute", b->get_widget<Gtk::ToggleButton>("mute"));
-    list_item->set_data("scale_volume", b->get_widget<Gtk::Scale>("scale_volume"));
-    list_item->set_data("volume", b->get_object<Gtk::Adjustment>("volume").get());
 
     list_item->set_child(*top_box);
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const app_name_label = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
-    auto* const media_name = static_cast<Gtk::Label*>(list_item->get_data("media_name"));
-    auto* const format = static_cast<Gtk::Label*>(list_item->get_data("format"));
-    auto* const rate = static_cast<Gtk::Label*>(list_item->get_data("rate"));
-    auto* const channels = static_cast<Gtk::Label*>(list_item->get_data("channels"));
-    auto* const latency = static_cast<Gtk::Label*>(list_item->get_data("latency"));
     auto* const state = static_cast<Gtk::Label*>(list_item->get_data("state"));
-    auto* const enable = static_cast<Gtk::Switch*>(list_item->get_data("enable"));
     auto* const app_icon = static_cast<Gtk::Image*>(list_item->get_data("app_icon"));
-    auto* const scale_volume = static_cast<Gtk::Scale*>(list_item->get_data("scale_volume"));
-    auto* const volume = static_cast<Gtk::Adjustment*>(list_item->get_data("volume"));
     auto* const mute = static_cast<Gtk::ToggleButton*>(list_item->get_data("mute"));
     auto* const blocklist = static_cast<Gtk::CheckButton*>(list_item->get_data("blocklist"));
-
-    scale_volume->set_format_value_func(
-        [=](const auto& v) { return Glib::ustring::format(static_cast<int>(v)) + " %"; });
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
@@ -619,11 +598,11 @@ void EffectsBaseUi::setup_listview_players() {
       if (state) {
         mute->property_icon_name().set_value("audio-volume-muted-symbolic");
 
-        scale_volume->set_sensitive(false);
+        // scale_volume->set_sensitive(false);
       } else {
         mute->property_icon_name().set_value("audio-volume-high-symbolic");
 
-        scale_volume->set_sensitive(true);
+        // scale_volume->set_sensitive(true);
       }
 
       if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
@@ -635,7 +614,7 @@ void EffectsBaseUi::setup_listview_players() {
 
     auto connection_blocklist_checkbutton = blocklist->signal_toggled().connect([=, this]() {
       if (blocklist->get_active()) {
-        enabled_app_list.insert_or_assign(stream_id, enable->get_active());
+        // enabled_app_list.insert_or_assign(stream_id, enable->get_active());
 
         add_new_blocklist_entry(app_name);
       } else {
@@ -649,10 +628,6 @@ void EffectsBaseUi::setup_listview_players() {
     auto* pointer_connection_blocklist_checkbutton = new sigc::connection(connection_blocklist_checkbutton);
 
     auto application_info_update = [=, this](const NodeInfo node_info) {
-      format->set_text(node_info.format);
-      rate->set_text(Glib::ustring::format(node_info.rate) + " Hz");
-      channels->set_text(Glib::ustring::format(node_info.n_volume_channels));
-      latency->set_text(Glib::ustring::format(std::setprecision(2), std::fixed, node_info.latency) + " s");
       state->set_text(node_state_to_ustring(node_info.state));
 
       // set the blocklist checkbutton
@@ -702,11 +677,11 @@ void EffectsBaseUi::setup_listview_players() {
       if (node_info.mute) {
         mute->property_icon_name().set_value("audio-volume-muted-symbolic");
 
-        scale_volume->set_sensitive(false);
+        // scale_volume->set_sensitive(false);
       } else {
         mute->property_icon_name().set_value("audio-volume-high-symbolic");
 
-        scale_volume->set_sensitive(true);
+        // scale_volume->set_sensitive(true);
       }
 
       mute->set_active(node_info.mute);
@@ -714,23 +689,9 @@ void EffectsBaseUi::setup_listview_players() {
       pointer_connection_mute->unblock();
     };
 
-    // update the app info ui for the very first time,
-    // needed for interface initialization in service mode
-
-    if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
-      application_info_update(node_it->second);
-    }
-
-    // connect the app info update lambda to holder info_updated signal
-
-    auto connection_info = holder->info_updated.connect(application_info_update);
-
     list_item->set_data("connection_mute", pointer_connection_mute, Glib::destroy_notify_delete<sigc::connection>);
 
     list_item->set_data("connection_blocklist_checkbutton", pointer_connection_blocklist_checkbutton,
-                        Glib::destroy_notify_delete<sigc::connection>);
-
-    list_item->set_data("connection_info", new sigc::connection(connection_info),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 

@@ -130,6 +130,23 @@ void disconnect_stream(AppsBox* self, const uint& id, const std::string& media_c
   }
 }
 
+auto node_state_to_char_pointer(const pw_node_state& state) -> const char* {
+  switch (state) {
+    case PW_NODE_STATE_RUNNING:
+      return _("running");
+    case PW_NODE_STATE_SUSPENDED:
+      return _("suspended");
+    case PW_NODE_STATE_IDLE:
+      return _("idle");
+    case PW_NODE_STATE_CREATING:
+      return _("creating");
+    case PW_NODE_STATE_ERROR:
+      return _("error");
+    default:
+      return _("unknown");
+  }
+}
+
 void setup_listview(AppsBox* self) {
   auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->apps_model));
 
@@ -148,18 +165,27 @@ void setup_listview(AppsBox* self) {
         auto* top_box = gtk_builder_get_object(builder, "top_box");
         auto* enable = gtk_builder_get_object(builder, "enable");
         auto* app_icon = gtk_builder_get_object(builder, "app_icon");
-        auto* app_name = gtk_builder_get_object(builder, "app_name");
-        auto* media_name = gtk_builder_get_object(builder, "media_name");
         auto* volume = gtk_builder_get_object(builder, "volume");
 
         g_object_set_data(G_OBJECT(item), "enable", enable);
         g_object_set_data(G_OBJECT(item), "app_icon", app_icon);
-        g_object_set_data(G_OBJECT(item), "app_name", app_name);
-        g_object_set_data(G_OBJECT(item), "media_name", media_name);
         g_object_set_data(G_OBJECT(item), "volume", volume);
+        g_object_set_data(G_OBJECT(item), "app_name", gtk_builder_get_object(builder, "app_name"));
+        g_object_set_data(G_OBJECT(item), "media_name", gtk_builder_get_object(builder, "media_name"));
+        g_object_set_data(G_OBJECT(item), "rate", gtk_builder_get_object(builder, "rate"));
+        g_object_set_data(G_OBJECT(item), "channels", gtk_builder_get_object(builder, "channels"));
+        g_object_set_data(G_OBJECT(item), "format", gtk_builder_get_object(builder, "format"));
+        g_object_set_data(G_OBJECT(item), "latency", gtk_builder_get_object(builder, "latency"));
+        g_object_set_data(G_OBJECT(item), "state", gtk_builder_get_object(builder, "state"));
 
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+
+        gtk_scale_set_format_value_func(GTK_SCALE(volume),
+                                        (GtkScaleFormatValueFunc)(+[](GtkScale* scale, double value) {
+                                          return g_strdup(fmt::format("{0:.0f} %", value).c_str());
+                                        }),
+                                        nullptr, nullptr);
 
         auto handler_id_enable = g_signal_connect(
             enable, "state-set", G_CALLBACK(+[](GtkSwitch* btn, gboolean state, AppsBox* self) {
@@ -213,6 +239,11 @@ void setup_listview(AppsBox* self) {
         auto* app_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "app_icon"));
         auto* app_name_label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "app_name"));
         auto* media_name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "media_name"));
+        auto* format = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "format"));
+        auto* rate = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "rate"));
+        auto* channels = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "channels"));
+        auto* latency = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "latency"));
+        auto* state = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "state"));
         auto* volume = static_cast<GtkScale*>(g_object_get_data(G_OBJECT(item), "volume"));
 
         auto handler_id_enable = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(enable), "handler-id"));
@@ -238,6 +269,11 @@ void setup_listview(AppsBox* self) {
 
           gtk_label_set_text(app_name_label, node_info.name.c_str());
           gtk_label_set_text(media_name, node_info.media_name.c_str());
+          gtk_label_set_text(format, node_info.format.c_str());
+          gtk_label_set_text(rate, fmt::format("{0:d} Hz", node_info.rate).c_str());
+          gtk_label_set_text(channels, fmt::format("{0:d}", node_info.n_volume_channels).c_str());
+          gtk_label_set_text(latency, fmt::format("{0:.0f} ms", 1000.0F * node_info.latency).c_str());
+          gtk_label_set_text(state, node_state_to_char_pointer(node_info.state));
 
           // updating the enable switch
 
@@ -265,6 +301,13 @@ void setup_listview(AppsBox* self) {
 
           g_signal_handler_unblock(volume, handler_id_volume);
         };
+
+        // Update the app info ui for the very first time Needed for interface initialization in service mode
+
+        if (const auto node_it = self->application->pm->node_map.find(timestamp);
+            node_it != self->application->pm->node_map.end()) {
+          application_info_update(node_it->second);
+        }
 
         // A call to holder->info_updated.clear() will be made in the unbind signal
         holder->info_updated.connect(application_info_update);

@@ -20,6 +20,7 @@
 #pragma once
 
 #include <adwaita.h>
+#include <fmt/core.h>
 #include <ranges>
 #include <unordered_map>
 #include "application.hpp"
