@@ -40,6 +40,8 @@ struct _EffectsBox {
 
   GtkImage* saturation_icon;
 
+  GtkIconTheme* icon_theme;
+
   ui::chart::Chart* spectrum_chart;
 
   ui::apps_box::AppsBox* appsBox;
@@ -208,9 +210,10 @@ void on_listen_mic_toggled(EffectsBox* self, GtkToggleButton* button) {
   self->application->sie->set_listen_to_mic(gtk_toggle_button_get_active(button) != 0);
 }
 
-void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type) {
+void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme) {
   self->application = application;
   self->pipeline_type = pipeline_type;
+  self->icon_theme = icon_theme;
 
   switch (pipeline_type) {
     case PipelineType::input: {
@@ -273,7 +276,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   // setting up the boxes we added t othe stack
 
-  ui::apps_box::setup(self->appsBox, application, pipeline_type);
+  ui::apps_box::setup(self->appsBox, application, pipeline_type, icon_theme);
   ui::plugins_box::setup(self->pluginsBox, application, pipeline_type);
 
   // output level

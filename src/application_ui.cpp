@@ -148,8 +148,8 @@ void realize(GtkWidget* widget) {
   self->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
 
   ui::presets_menu::setup(self->presetsMenu, app::EE_APP(self->gapp));
-  ui::effects_box::setup(self->soe_ui, app::EE_APP(self->gapp), PipelineType::output);
-  ui::effects_box::setup(self->sie_ui, app::EE_APP(self->gapp), PipelineType::input);
+  ui::effects_box::setup(self->soe_ui, app::EE_APP(self->gapp), PipelineType::output, self->icon_theme);
+  ui::effects_box::setup(self->sie_ui, app::EE_APP(self->gapp), PipelineType::input, self->icon_theme);
   ui::pipe_manager_box::setup(self->pm_box, app::EE_APP(self->gapp));
 }
 

@@ -21,7 +21,9 @@
 
 #include <adwaita.h>
 #include <fmt/core.h>
+#include <algorithm>
 #include <ranges>
+#include <string>
 #include <unordered_map>
 #include "application.hpp"
 #include "node_info_holder.hpp"
@@ -40,6 +42,6 @@ G_END_DECLS
 
 auto create() -> AppsBox*;
 
-void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type);
+void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme);
 
 }  // namespace ui::apps_box

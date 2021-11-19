@@ -39,6 +39,6 @@ G_END_DECLS
 
 auto create() -> EffectsBox*;
 
-void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type);
+void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme);
 
 }  // namespace ui::effects_box

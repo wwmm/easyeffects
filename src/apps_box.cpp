@@ -30,6 +30,8 @@ struct _AppsBox {
 
   GtkListView* listview;
 
+  GtkIconTheme* icon_theme;
+
   app::Application* application;
 
   GListStore *apps_model, *all_apps_model;
@@ -147,6 +149,62 @@ auto node_state_to_char_pointer(const pw_node_state& state) -> const char* {
   }
 }
 
+auto get_app_icon_name(const NodeInfo& node_info) -> std::string {
+  // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
+
+  static const std::map<std::string, std::string> icon_map{
+      {"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}};
+
+  std::string icon_name;
+
+  if (!node_info.app_icon_name.empty()) {
+    icon_name = node_info.app_icon_name;
+  } else if (!node_info.media_icon_name.empty()) {
+    icon_name = node_info.media_icon_name;
+  } else if (!node_info.name.empty()) {
+    icon_name = node_info.name;
+
+    // get lowercase name so if it changes in the future, we have a chance to pick the same index
+
+    std::transform(icon_name.begin(), icon_name.end(), icon_name.begin(),
+                   [](unsigned char c) { return std::tolower(c); });
+  }
+
+  try {
+    return icon_map.at(icon_name);
+  } catch (...) {
+    return icon_name;
+  }
+}
+
+auto icon_available(AppsBox* self, const std::string& icon_name) -> bool {
+  if (gtk_icon_theme_has_icon(self->icon_theme, icon_name.c_str()) != 0) {
+    return true;
+  }
+
+  // The icon object can't loopup icons in pixmaps directories, so we check their existence there also.
+
+  static const auto pixmaps_dirs = {"/usr/share/pixmaps", "/usr/local/share/pixmaps"};
+
+  for (const auto& dir : pixmaps_dirs) {
+    try {
+      for (std::filesystem::directory_iterator it{dir}; it != std::filesystem::directory_iterator{}; ++it) {
+        if (std::filesystem::is_regular_file(it->status())) {
+          if (it->path().stem().string() == icon_name) {
+            util::debug(log_tag + icon_name + " icon name not included in the icon theme, but found in " + dir);
+
+            return true;
+          }
+        }
+      }
+    } catch (...) {
+      util::debug(log_tag + "cannot lookup application icon "s + icon_name + " in "s + dir);
+    }
+  }
+
+  return false;
+}
+
 void setup_listview(AppsBox* self) {
   auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->apps_model));
 
@@ -164,14 +222,13 @@ void setup_listview(AppsBox* self) {
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
         auto* enable = gtk_builder_get_object(builder, "enable");
-        auto* app_icon = gtk_builder_get_object(builder, "app_icon");
         auto* volume = gtk_builder_get_object(builder, "volume");
         auto* mute = gtk_builder_get_object(builder, "mute");
 
         g_object_set_data(G_OBJECT(item), "enable", enable);
-        g_object_set_data(G_OBJECT(item), "app_icon", app_icon);
         g_object_set_data(G_OBJECT(item), "volume", volume);
         g_object_set_data(G_OBJECT(item), "mute", mute);
+        g_object_set_data(G_OBJECT(item), "app_icon", gtk_builder_get_object(builder, "app_icon"));
         g_object_set_data(G_OBJECT(item), "app_name", gtk_builder_get_object(builder, "app_name"));
         g_object_set_data(G_OBJECT(item), "media_name", gtk_builder_get_object(builder, "media_name"));
         g_object_set_data(G_OBJECT(item), "rate", gtk_builder_get_object(builder, "rate"));
@@ -337,6 +394,28 @@ void setup_listview(AppsBox* self) {
           gtk_toggle_button_set_active(mute, node_info.mute);
 
           g_signal_handler_unblock(mute, handler_id_mute);
+
+          // set the icon name
+
+          if (self->icon_theme != nullptr) {
+            if (const auto icon_name = get_app_icon_name(node_info); !icon_name.empty()) {
+              if (icon_available(self, icon_name)) {
+                gtk_widget_set_visible(GTK_WIDGET(app_icon), 1);
+
+                gtk_image_set_from_icon_name(app_icon, icon_name.c_str());
+              } else {
+                gtk_widget_set_visible(GTK_WIDGET(app_icon), 0);
+
+                util::warning(log_tag + icon_name + " icon name not installed in the " +
+                              gtk_icon_theme_get_theme_name(self->icon_theme) + " icon theme in use. " +
+                              "The application icon has been hidden.");
+              }
+            } else {
+              gtk_widget_set_visible(GTK_WIDGET(app_icon), 0);
+            }
+          } else {
+            gtk_widget_set_visible(GTK_WIDGET(app_icon), 0);
+          }
         };
 
         // Update the app info ui for the very first time Needed for interface initialization in service mode
@@ -373,9 +452,10 @@ void setup_listview(AppsBox* self) {
   g_object_unref(factory);
 }
 
-void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type) {
+void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme) {
   self->application = application;
   self->pipeline_type = pipeline_type;
+  self->icon_theme = icon_theme;
 
   switch (pipeline_type) {
     case PipelineType::input: {

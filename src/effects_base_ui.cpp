@@ -571,14 +571,12 @@ void EffectsBaseUi::setup_listview_players() {
 
     auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
-    list_item->set_data("app_icon", b->get_widget<Gtk::Image>("app_icon"));
     list_item->set_data("blocklist", b->get_widget<Gtk::CheckButton>("blocklist"));
 
     list_item->set_child(*top_box);
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const app_icon = static_cast<Gtk::Image*>(list_item->get_data("app_icon"));
     auto* const blocklist = static_cast<Gtk::CheckButton*>(list_item->get_data("blocklist"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
@@ -613,32 +611,6 @@ void EffectsBaseUi::setup_listview_players() {
 
       if (enabled_app_list.find(node_info.id) == enabled_app_list.end()) {
         // enabled_app_list.insert({node_info.id, is_enabled});
-      }
-
-      // set the icon name
-
-      if (icon_theme != nullptr) {
-        if (const auto icon_name = get_app_icon_name(node_info); !icon_name.empty()) {
-          if (app_icon->get_icon_name() != icon_name) {
-            // app icon changed or not set, so we try to update it
-
-            if (icon_available(icon_name)) {
-              app_icon->set_visible(true);
-            } else {
-              app_icon->set_visible(false);
-
-              util::warning(log_tag + icon_name.raw() + " icon name not installed in the " +
-                            icon_theme->get_theme_name().raw() + " icon theme in use. " +
-                            "The application icon has been hidden.");
-            }
-
-            app_icon->set_from_icon_name(icon_name);
-          }
-        } else {
-          app_icon->set_visible(false);
-        }
-      } else {
-        app_icon->set_visible(false);
       }
     };
 
