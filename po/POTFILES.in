@@ -34,6 +34,7 @@ data/ui/pipe_info.ui
 data/ui/pipe_manager_box.ui
 data/ui/pitch.ui
 data/ui/plugins_box.ui
+data/ui/plugins_menu.ui
 data/ui/preferences_window.ui
 data/ui/preset_row.ui
 data/ui/presets_menu.ui
@@ -51,6 +52,7 @@ src/pipe_info_ui.cpp
 src/pipe_manager_box.cpp
 src/preferences_window.cpp
 src/presets_menu.cpp
+src/plugins_menu.cpp
 src/rnnoise_ui.cpp
 src/stream_output_effects_ui.cpp
 src/stream_input_effects_ui.cpp

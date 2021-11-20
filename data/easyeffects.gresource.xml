@@ -38,6 +38,7 @@
         <file>ui/pipe_manager_box.ui</file>
         <file>ui/pitch.ui</file>
         <file>ui/plugins_box.ui</file>
+        <file>ui/plugins_menu.ui</file>
         <file>ui/preferences_window.ui</file>
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>

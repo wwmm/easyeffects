@@ -82,6 +82,7 @@ easyeffects_sources = [
 	'plugin_base.cpp',
 	'plugins_box.cpp',
 	'plugin_ui_base.cpp',
+	'plugins_menu.cpp',
 	'preferences_window.cpp',
 	'presets_menu.cpp',
 	'presets_manager.cpp',

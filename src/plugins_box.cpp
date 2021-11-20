@@ -28,13 +28,21 @@ auto constexpr log_tag = "plugins_box: ";
 struct _PluginsBox {
   GtkBox parent_instance{};
 
+  GtkMenuButton* menubutton_plugins;
+
+  ui::plugins_menu::PluginsMenu* plugins_menu;
+
   app::Application* application;
 
   bool schedule_signal_idle;
 
   PipelineType pipeline_type;
 
+  GSettings* settings;
+
   std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
 };
 
 G_DEFINE_TYPE(PluginsBox, plugins_box, GTK_TYPE_BOX)
@@ -42,6 +50,21 @@ G_DEFINE_TYPE(PluginsBox, plugins_box, GTK_TYPE_BOX)
 void setup(PluginsBox* self, app::Application* application, PipelineType pipeline_type) {
   self->application = application;
   self->pipeline_type = pipeline_type;
+
+  switch (pipeline_type) {
+    case PipelineType::input: {
+      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
+
+      break;
+    }
+    case PipelineType::output: {
+      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+
+      break;
+    }
+  }
+
+  ui::plugins_menu::setup(self->plugins_menu, application);
 }
 
 void realize(GtkWidget* widget) {
@@ -67,7 +90,14 @@ void dispose(GObject* object) {
     c.disconnect();
   }
 
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
+
   self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
 
   util::debug(log_tag + "disposed"s);
 
@@ -85,17 +115,17 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/plugins_box.ui");
 
-  //   gtk_widget_class_bind_template_child(widget_class, PluginsBox, stack);
-  //   gtk_widget_class_bind_template_child(widget_class, PluginsBox, device_state);
-  //   gtk_widget_class_bind_template_child(widget_class, PluginsBox, latency_status);
-  //   gtk_widget_class_bind_template_child(widget_class, PluginsBox, label_global_output_level_left);
-  //   gtk_widget_class_bind_template_child(widget_class, PluginsBox, label_global_output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, menubutton_plugins);
 }
 
 void plugins_box_init(PluginsBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->schedule_signal_idle = false;
+
+  self->plugins_menu = ui::plugins_menu::create();
+
+  gtk_menu_button_set_popover(self->menubutton_plugins, GTK_WIDGET(self->plugins_menu));
 }
 
 auto create() -> PluginsBox* {

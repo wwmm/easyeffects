@@ -20,22 +20,22 @@
 #pragma once
 
 #include <adwaita.h>
+#include <string>
 #include "application.hpp"
-#include "pipeline_type.hpp"
-#include "plugins_menu.hpp"
+#include "util.hpp"
 
-namespace ui::plugins_box {
+namespace ui::plugins_menu {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_PLUGINS_BOX (plugins_box_get_type())
+#define EE_TYPE_PLUGINS_MENU (plugins_menu_get_type())
 
-G_DECLARE_FINAL_TYPE(PluginsBox, plugins_box, EE, PLUGINS_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(PluginsMenu, plugins_menu, EE, PLUGINS_MENU, GtkPopover)
 
 G_END_DECLS
 
-auto create() -> PluginsBox*;
+auto create() -> PluginsMenu*;
 
-void setup(PluginsBox* self, app::Application* application, PipelineType pipeline_type);
+void setup(PluginsMenu* self, app::Application* application);
 
-}  // namespace ui::plugins_box
+}  // namespace ui::plugins_menu
