@@ -26,7 +26,7 @@ using namespace std::string_literals;
 auto constexpr log_tag = "preferences_window: ";
 
 struct _PreferencesWindow {
-  AdwPreferencesWindow parent_instance{};
+  AdwPreferencesWindow parent_instance;
 
   GtkSwitch *enable_autostart, *process_all_inputs, *process_all_outputs, *theme_switch, *shutdown_on_window_close,
       *use_cubic_volumes, *spectrum_show, *spectrum_fill, *spectrum_show_bar_border;

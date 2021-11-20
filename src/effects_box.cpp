@@ -26,7 +26,7 @@ using namespace std::string_literals;
 auto constexpr log_tag = "effects_box: ";
 
 struct _EffectsBox {
-  GtkBox parent_instance{};
+  GtkBox parent_instance;
 
   AdwViewStack* stack;
 

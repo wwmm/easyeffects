@@ -26,28 +26,28 @@ using namespace std::string_literals;
 auto constexpr log_tag = "application_ui: ";
 
 struct _ApplicationWindow {
-  AdwWindow parent_instance{};
+  AdwWindow parent_instance;
 
-  AdwViewStack* stack{};
+  AdwViewStack* stack;
 
-  GtkMenuButton* presets_menu_button{};
+  GtkMenuButton* presets_menu_button;
 
-  GtkToggleButton* bypass_button{};
+  GtkToggleButton* bypass_button;
 
-  ui::presets_menu::PresetsMenu* presetsMenu{};
-  ui::effects_box::EffectsBox* soe_ui{};
-  ui::effects_box::EffectsBox* sie_ui{};
-  ui::pipe_manager_box::PipeManagerBox* pm_box{};
+  ui::presets_menu::PresetsMenu* presetsMenu;
+  ui::effects_box::EffectsBox* soe_ui;
+  ui::effects_box::EffectsBox* sie_ui;
+  ui::pipe_manager_box::PipeManagerBox* pm_box;
 
-  int width{}, height{};
-  bool maximized{};
-  bool fullscreen{};
+  int width, height;
+  bool maximized;
+  bool fullscreen;
 
-  GSettings* settings{};
+  GSettings* settings;
 
-  GApplication* gapp{};
+  GApplication* gapp;
 
-  GtkIconTheme* icon_theme{};
+  GtkIconTheme* icon_theme;
 };
 
 G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)

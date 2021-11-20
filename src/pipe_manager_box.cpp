@@ -7,11 +7,11 @@ using namespace std::string_literals;
 auto constexpr log_tag = "pipe_manager_box: ";
 
 struct _PipeManagerBox {
-  GtkBox parent_instance{};
+  GtkBox parent_instance;
 
-  GSettings* settings = nullptr;
+  GSettings* settings;
 
-  app::Application* application = nullptr;
+  app::Application* application;
 
   std::vector<sigc::connection> connections;
 

@@ -41,7 +41,7 @@ G_DECLARE_FINAL_TYPE(Application, application, EE, APP, AdwApplication)
 G_END_DECLS
 
 struct _Application {
-  AdwApplication parent_instance{};
+  AdwApplication parent_instance;
 
   GSettings* settings;
   GSettings* soe_settings;

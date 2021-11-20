@@ -21,7 +21,9 @@
 
 #include <adwaita.h>
 #include <string>
+#include <unordered_map>
 #include "application.hpp"
+#include "pipeline_type.hpp"
 #include "util.hpp"
 
 namespace ui::plugins_menu {
@@ -36,6 +38,6 @@ G_END_DECLS
 
 auto create() -> PluginsMenu*;
 
-void setup(PluginsMenu* self, app::Application* application);
+void setup(PluginsMenu* self, app::Application* application, PipelineType pipeline_type);
 
 }  // namespace ui::plugins_menu

@@ -26,7 +26,7 @@ using namespace std::string_literals;
 auto constexpr log_tag = "presets_menu: ";
 
 struct _PresetsMenu {
-  GtkPopover parent_instance{};
+  GtkPopover parent_instance;
 
   AdwViewStack* stack;
 

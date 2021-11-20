@@ -73,14 +73,6 @@ class EffectsBaseUi {
   Glib::RefPtr<Gio::Settings> settings;
   Glib::RefPtr<Gio::Settings> app_settings;
 
-  // The Icon Theme object is needed to lookup app icon names
-
-  Glib::RefPtr<Gtk::IconTheme> icon_theme;
-
-  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
-
-  Gtk::Label *device_state = nullptr, *latency_status = nullptr;
-
   Gtk::Stack* stack_plugins = nullptr;
 
   Gtk::Stack* stack_top = nullptr;
@@ -92,43 +84,15 @@ class EffectsBaseUi {
   std::vector<sigc::connection> connections;
 
  private:
-  Gtk::ListView *listview_plugins = nullptr, *listview_selected_plugins = nullptr;
+  Gtk::ListView* listview_selected_plugins = nullptr;
 
   Gtk::ScrolledWindow* scrolled_window_plugins = nullptr;
 
-  Gtk::MenuButton* menubutton_select_plugin = nullptr;
-
   Gtk::Popover* popover_plugins = nullptr;
-
-  Gtk::SearchEntry* entry_plugins_search = nullptr;
 
   Glib::RefPtr<NodeInfoHolder> players_holder;
 
-  Glib::RefPtr<Gtk::StringList> plugins, selected_plugins;
-
-  std::map<Glib::ustring, Glib::ustring> plugins_names{{plugin_name::autogain, _("Autogain")},
-                                                       {plugin_name::bass_enhancer, _("Bass Enhancer")},
-                                                       {plugin_name::bass_loudness, _("Bass Loudness")},
-                                                       {plugin_name::compressor, _("Compressor")},
-                                                       {plugin_name::convolver, _("Convolver")},
-                                                       {plugin_name::crossfeed, _("Crossfeed")},
-                                                       {plugin_name::crystalizer, _("Crystalizer")},
-                                                       {plugin_name::deesser, _("Deesser")},
-                                                       {plugin_name::delay, _("Delay")},
-                                                       {plugin_name::echo_canceller, _("Echo Canceller")},
-                                                       {plugin_name::equalizer, _("Equalizer")},
-                                                       {plugin_name::exciter, _("Exciter")},
-                                                       {plugin_name::filter, _("Filter")},
-                                                       {plugin_name::gate, _("Gate")},
-                                                       {plugin_name::limiter, _("Limiter")},
-                                                       {plugin_name::loudness, _("Loudness")},
-                                                       {plugin_name::maximizer, _("Maximizer")},
-                                                       {plugin_name::multiband_compressor, _("Multiband Compressor")},
-                                                       {plugin_name::multiband_gate, _("Multiband Gate")},
-                                                       {plugin_name::pitch, _("Pitch")},
-                                                       {plugin_name::reverb, _("Reverberation")},
-                                                       {plugin_name::rnnoise, _("Noise Reduction")},
-                                                       {plugin_name::stereo_tools, _("Stereo Tools")}};
+  Glib::RefPtr<Gtk::StringList> selected_plugins;
 
   /*
     enabled_app_list map saves the "enabled state" of processed apps regardless of their presence in the blocklist,
@@ -138,8 +102,6 @@ class EffectsBaseUi {
   std::unordered_map<uint, bool> enabled_app_list;
 
   void add_plugins_to_stack_plugins();
-
-  void setup_listview_plugins();
 
   void setup_listview_selected_plugins();
 };

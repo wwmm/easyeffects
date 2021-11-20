@@ -26,7 +26,7 @@ using namespace std::string_literals;
 auto constexpr log_tag = "plugins_box: ";
 
 struct _PluginsBox {
-  GtkBox parent_instance{};
+  GtkBox parent_instance;
 
   GtkMenuButton* menubutton_plugins;
 
@@ -64,7 +64,7 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
     }
   }
 
-  ui::plugins_menu::setup(self->plugins_menu, application);
+  ui::plugins_menu::setup(self->plugins_menu, application, pipeline_type);
 }
 
 void realize(GtkWidget* widget) {

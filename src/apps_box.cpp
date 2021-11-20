@@ -26,7 +26,7 @@ using namespace std::string_literals;
 auto constexpr log_tag = "apps_box: ";
 
 struct _AppsBox {
-  GtkBox parent_instance{};
+  GtkBox parent_instance;
 
   GtkListView* listview;
 

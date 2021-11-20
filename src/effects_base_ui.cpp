@@ -27,30 +27,21 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       schema(schema),
       settings(Gio::Settings::create(schema)),
       app_settings(Gio::Settings::create("com.github.wwmm.easyeffects")),
-      icon_theme(std::move(icon_ptr)),
       pm(effects_base->pm),
-      plugins(Gtk::StringList::create({"initial_value"})),
       selected_plugins(Gtk::StringList::create({"initial_value"})) {
   // loading builder widgets
 
-  global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
-  global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
-  device_state = builder->get_widget<Gtk::Label>("device_state");
-  latency_status = builder->get_widget<Gtk::Label>("latency_status");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
 
   popover_plugins = builder->get_widget<Gtk::Popover>("popover_plugins");
   scrolled_window_plugins = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window_plugins");
-  listview_plugins = builder->get_widget<Gtk::ListView>("listview_plugins");
   listview_selected_plugins = builder->get_widget<Gtk::ListView>("listview_selected_plugins");
-  entry_plugins_search = builder->get_widget<Gtk::SearchEntry>("entry_plugins_search");
   stack_plugins = builder->get_widget<Gtk::Stack>("stack_plugins");
 
   add_plugins_to_stack_plugins();
 
   // configuring widgets
 
-  setup_listview_plugins();
   setup_listview_selected_plugins();
 
   settings->signal_changed("plugins").connect([&, this](const auto& key) { add_plugins_to_stack_plugins(); });
@@ -502,115 +493,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   }
 }
 
-void EffectsBaseUi::setup_listview_plugins() {
-  plugins->remove(0);
-
-  for (const auto& translated_name : std::views::values(plugins_names)) {
-    plugins->append(translated_name);
-  }
-
-  // filter
-
-  auto filter =
-      Gtk::StringFilter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  auto filter_model = Gtk::FilterListModel::create(plugins, filter);
-
-  filter_model->set_incremental(true);
-
-  Glib::Binding::bind_property(entry_plugins_search->property_text(), filter->property_search());
-
-  // sorter
-
-  const auto sorter =
-      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  const auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
-
-  // setting the listview model and factory
-
-  listview_plugins->set_model(Gtk::NoSelection::create(sort_list_model));
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview_plugins->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const btn = Gtk::make_managed<Gtk::Button>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    btn->set_icon_name("list-add-symbolic");
-
-    box->append(*label);
-    box->append(*btn);
-
-    list_item->set_data("name", label);
-    list_item->set_data("add", btn);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const add = static_cast<Gtk::Button*>(list_item->get_data("add"));
-
-    const auto translated_name = list_item->get_item()->get_property<Glib::ustring>("string");
-
-    Glib::ustring key_name;
-
-    for (const auto& [key, value] : plugins_names) {
-      if (translated_name == value) {
-        key_name = key;
-      }
-    }
-
-    label->set_text(translated_name);
-
-    add->update_property(Gtk::Accessible::Property::LABEL,
-                         util::glib_value(Glib::ustring(_("Add")) + " " + translated_name));
-
-    auto connection_add = add->signal_clicked().connect([=, this]() {
-      auto list = settings->get_string_array("plugins");
-
-      if (std::ranges::find(list, key_name) != list.end()) {
-        return;
-      }
-
-      static const auto limiter_plugins = {plugin_name::limiter, plugin_name::maximizer};
-
-      if (!list.empty() && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
-                                       [&](const auto& str) { return str == list.at(list.size() - 1U); })) {
-        // If the user is careful protecting his/her device with a plugin of
-        // type limiter at the last position of the filter chain, we follow
-        // this behaviour inserting the new plugin at the second last position
-
-        list.insert(list.cend() - 1U, key_name);
-      } else {
-        list.push_back(key_name);
-      }
-
-      settings->set_string_array("plugins", list);
-    });
-
-    list_item->set_data("connection_add", new sigc::connection(connection_add),
-                        Glib::destroy_notify_delete<sigc::connection>);
-  });
-
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_add"))) {
-      connection->disconnect();
-
-      list_item->set_data("connection_add", nullptr);
-    }
-  });
-}
-
 void EffectsBaseUi::setup_listview_selected_plugins() {
   selected_plugins->remove(0);
 
@@ -803,10 +685,10 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto* const plugin_icon = static_cast<Gtk::Image*>(list_item->get_data("plugin_icon"));
 
     const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
-    const auto translated_name = plugins_names[name];
+    // const auto translated_name = plugins_names[name];
 
     label->set_name(name);
-    label->set_text(translated_name);
+    // label->set_text(translated_name);
 
     const auto selected_plugins_list = settings->get_string_array("plugins");
 
@@ -819,8 +701,8 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
       plugin_icon->set_from_icon_name("ee-arrow-down-symbolic");
     }
 
-    remove->update_property(Gtk::Accessible::Property::LABEL,
-                            util::glib_value(Glib::ustring(_("Remove")) + " " + translated_name));
+    // remove->update_property(Gtk::Accessible::Property::LABEL,
+    //                         util::glib_value(Glib::ustring(_("Remove")) + " " + translated_name));
 
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");

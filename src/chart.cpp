@@ -22,7 +22,7 @@
 namespace ui::chart {
 
 struct _Chart {
-  GtkBox parent_instance{};
+  GtkBox parent_instance;
 
   bool draw_bar_border, fill_bars, is_visible;
 

@@ -26,7 +26,7 @@ using namespace std::string_literals;
 auto constexpr log_tag = "blocklist_menu: ";
 
 struct _BlocklistMenu {
-  GtkPopover parent_instance{};
+  GtkPopover parent_instance;
 
   GtkScrolledWindow* scrolled_window;
 
