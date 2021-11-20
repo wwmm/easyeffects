@@ -223,4 +223,40 @@ auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA {
   return rgba;
 }
 
+auto add_new_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag) -> bool {
+  if (name.empty()) {
+    return false;
+  }
+
+  using namespace std::string_literals;
+
+  auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
+
+  if (std::any_of(list.cbegin(), list.cend(), [&](const auto& str) { return str == name; })) {
+    util::debug(log_tag + "entry already present in the list"s);
+
+    return false;
+  }
+
+  list.push_back(name);
+
+  g_settings_set_strv(settings, "blocklist", util::make_gchar_pointer_vector(list).data());
+
+  util::debug(log_tag + "new entry has been added to the blocklist"s);
+
+  return true;
+}
+
+void remove_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag) {
+  using namespace std::string_literals;
+
+  auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
+
+  list.erase(std::remove_if(list.begin(), list.end(), [=](const auto& a) { return a == name; }), list.end());
+
+  g_settings_set_strv(settings, "blocklist", util::make_gchar_pointer_vector(list).data());
+
+  util::debug(log_tag + "an entry has been removed from the blocklist"s);
+}
+
 }  // namespace util

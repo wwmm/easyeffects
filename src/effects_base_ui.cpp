@@ -29,9 +29,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       app_settings(Gio::Settings::create("com.github.wwmm.easyeffects")),
       icon_theme(std::move(icon_ptr)),
       pm(effects_base->pm),
-      players_model(Gio::ListStore<NodeInfoHolder>::create()),
-      all_players_model(Gio::ListStore<NodeInfoHolder>::create()),
-      blocklist(Gtk::StringList::create({"initial_value"})),
       plugins(Gtk::StringList::create({"initial_value"})),
       selected_plugins(Gtk::StringList::create({"initial_value"})) {
   // loading builder widgets
@@ -40,15 +37,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
   device_state = builder->get_widget<Gtk::Label>("device_state");
   latency_status = builder->get_widget<Gtk::Label>("latency_status");
-  listview_players = builder->get_widget<Gtk::ListView>("listview_players");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
-
-  popover_blocklist = builder->get_widget<Gtk::Popover>("popover_blocklist");
-  blocklist_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("blocklist_scrolled_window");
-  blocklist_player_name = builder->get_widget<Gtk::Text>("blocklist_player_name");
-  button_add_to_blocklist = builder->get_widget<Gtk::Button>("button_add_to_blocklist");
-  show_blocklisted_apps = builder->get_widget<Gtk::Switch>("show_blocklisted_apps");
-  listview_blocklist = builder->get_widget<Gtk::ListView>("listview_blocklist");
 
   popover_plugins = builder->get_widget<Gtk::Popover>("popover_plugins");
   scrolled_window_plugins = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window_plugins");
@@ -61,53 +50,12 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   // configuring widgets
 
-  setup_listview_players();
   setup_listview_plugins();
   setup_listview_selected_plugins();
 
   settings->signal_changed("plugins").connect([&, this](const auto& key) { add_plugins_to_stack_plugins(); });
 
-  // gsettings
-
-  settings->bind("show-blocklisted-apps", show_blocklisted_apps, "active");
-
   // signals connections
-
-  button_add_to_blocklist->signal_clicked().connect([=, this]() {
-    if (add_new_blocklist_entry(blocklist_player_name->get_text())) {
-      blocklist_player_name->set_text("");
-    }
-  });
-
-  show_blocklisted_apps->signal_state_set().connect(
-      [=, this](const auto& state) {
-        players_model->remove_all();
-
-        listview_players->set_model(nullptr);
-
-        if (state) {
-          for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-            players_model->append(all_players_model->get_item(n));
-          }
-        } else {
-          for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-            if (auto holder = all_players_model->get_item(n); !app_is_blocklisted(holder->name)) {
-              players_model->append(holder);
-            }
-          }
-        }
-
-        listview_players->set_model(Gtk::NoSelection::create(players_model));
-
-        return false;
-      },
-      false);
-
-  popover_blocklist->signal_show().connect([=, this]() {
-    const int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
-
-    blocklist_scrolled_window->set_max_content_height(height);
-  });
 
   popover_plugins->signal_show().connect([=, this]() {
     const int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
@@ -554,82 +502,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   }
 }
 
-void EffectsBaseUi::setup_listview_players() {
-  // setting the listview model and factory
-
-  listview_players->set_model(Gtk::NoSelection::create(players_model));
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview_players->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/app_info.ui");
-
-    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
-
-    list_item->set_data("blocklist", b->get_widget<Gtk::CheckButton>("blocklist"));
-
-    list_item->set_child(*top_box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const blocklist = static_cast<Gtk::CheckButton*>(list_item->get_data("blocklist"));
-
-    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
-
-    const auto app_name = holder->name;
-
-    auto connection_blocklist_checkbutton = blocklist->signal_toggled().connect([=, this]() {
-      if (blocklist->get_active()) {
-        // enabled_app_list.insert_or_assign(stream_id, enable->get_active());
-
-        add_new_blocklist_entry(app_name);
-      } else {
-        remove_blocklist_entry(app_name);
-      }
-
-      // Stream connection/disconnection will be done in blocklist items signal changed
-    });
-
-    auto* pointer_connection_blocklist_checkbutton = new sigc::connection(connection_blocklist_checkbutton);
-
-    auto application_info_update = [=, this](const NodeInfo node_info) {
-      // set the blocklist checkbutton
-
-      pointer_connection_blocklist_checkbutton->block();
-
-      // blocklist->set_active(is_blocklisted);
-
-      pointer_connection_blocklist_checkbutton->unblock();
-
-      // save app "enabled state" only the first time when it is not present in the enabled_app_list map
-
-      if (enabled_app_list.find(node_info.id) == enabled_app_list.end()) {
-        // enabled_app_list.insert({node_info.id, is_enabled});
-      }
-    };
-
-    list_item->set_data("connection_blocklist_checkbutton", pointer_connection_blocklist_checkbutton,
-                        Glib::destroy_notify_delete<sigc::connection>);
-  });
-
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto connections_list = {"connection_enable", "connection_volume", "connection_mute",
-                                   "connection_blocklist_checkbutton", "connection_info"};
-
-    for (const auto* conn : connections_list) {
-      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
-        connection->disconnect();
-
-        list_item->set_data(conn, nullptr);
-      }
-    }
-  });
-}
-
 void EffectsBaseUi::setup_listview_plugins() {
   plugins->remove(0);
 
@@ -974,44 +846,6 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
       }
     }
   });
-}
-
-auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {
-  const auto bl = settings->get_string_array("blocklist");
-
-  return std::ranges::find(bl, name) != bl.end();
-}
-
-auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
-  if (name.empty()) {
-    return false;
-  }
-
-  auto bl = settings->get_string_array("blocklist");
-
-  if (std::any_of(bl.cbegin(), bl.cend(), [&](const auto& str) { return str == name; })) {
-    util::debug(log_tag + "entry already present in the list");
-
-    return false;
-  }
-
-  bl.push_back(name);
-
-  settings->set_string_array("blocklist", bl);
-
-  util::debug(log_tag + "new entry has been added to the blocklist");
-
-  return true;
-}
-
-void EffectsBaseUi::remove_blocklist_entry(const Glib::ustring& name) {
-  auto bl = settings->get_string_array("blocklist");
-
-  bl.erase(std::remove_if(bl.begin(), bl.end(), [=](const auto& a) { return a == name; }), bl.end());
-
-  settings->set_string_array("blocklist", bl);
-
-  util::debug(log_tag + "an entry has been removed from the blocklist");
 }
 
 void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {

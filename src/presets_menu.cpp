@@ -248,7 +248,7 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
       self);
 
   g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
                      auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
                      auto* apply = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "apply"));
                      auto* save = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "save"));

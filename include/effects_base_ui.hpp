@@ -92,28 +92,19 @@ class EffectsBaseUi {
   std::vector<sigc::connection> connections;
 
  private:
-  Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr, *listview_plugins = nullptr,
-                *listview_selected_plugins = nullptr;
+  Gtk::ListView *listview_plugins = nullptr, *listview_selected_plugins = nullptr;
 
-  Gtk::Switch* show_blocklisted_apps = nullptr;
-
-  Gtk::Button* button_add_to_blocklist = nullptr;
-
-  Gtk::Text* blocklist_player_name = nullptr;
-
-  Gtk::ScrolledWindow *blocklist_scrolled_window = nullptr, *scrolled_window_plugins = nullptr;
+  Gtk::ScrolledWindow* scrolled_window_plugins = nullptr;
 
   Gtk::MenuButton* menubutton_select_plugin = nullptr;
 
-  Gtk::Popover *popover_blocklist = nullptr, *popover_plugins = nullptr;
+  Gtk::Popover* popover_plugins = nullptr;
 
   Gtk::SearchEntry* entry_plugins_search = nullptr;
 
   Glib::RefPtr<NodeInfoHolder> players_holder;
 
-  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model, all_players_model;
-
-  Glib::RefPtr<Gtk::StringList> blocklist, plugins, selected_plugins;
+  Glib::RefPtr<Gtk::StringList> plugins, selected_plugins;
 
   std::map<Glib::ustring, Glib::ustring> plugins_names{{plugin_name::autogain, _("Autogain")},
                                                        {plugin_name::bass_enhancer, _("Bass Enhancer")},
@@ -148,17 +139,9 @@ class EffectsBaseUi {
 
   void add_plugins_to_stack_plugins();
 
-  void setup_listview_players();
-
   void setup_listview_plugins();
 
   void setup_listview_selected_plugins();
-
-  auto app_is_blocklisted(const Glib::ustring& name) -> bool;
-
-  auto add_new_blocklist_entry(const Glib::ustring& name) -> bool;
-
-  void remove_blocklist_entry(const Glib::ustring& name);
 };
 
 #endif

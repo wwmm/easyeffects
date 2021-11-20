@@ -226,10 +226,12 @@ void setup_listview(AppsBox* self) {
         auto* enable = gtk_builder_get_object(builder, "enable");
         auto* volume = gtk_builder_get_object(builder, "volume");
         auto* mute = gtk_builder_get_object(builder, "mute");
+        auto* blocklist = gtk_builder_get_object(builder, "blocklist");
 
         g_object_set_data(G_OBJECT(item), "enable", enable);
         g_object_set_data(G_OBJECT(item), "volume", volume);
         g_object_set_data(G_OBJECT(item), "mute", mute);
+        g_object_set_data(G_OBJECT(item), "blocklist", blocklist);
         g_object_set_data(G_OBJECT(item), "app_icon", gtk_builder_get_object(builder, "app_icon"));
         g_object_set_data(G_OBJECT(item), "app_name", gtk_builder_get_object(builder, "app_name"));
         g_object_set_data(G_OBJECT(item), "media_name", gtk_builder_get_object(builder, "media_name"));
@@ -238,6 +240,8 @@ void setup_listview(AppsBox* self) {
         g_object_set_data(G_OBJECT(item), "format", gtk_builder_get_object(builder, "format"));
         g_object_set_data(G_OBJECT(item), "latency", gtk_builder_get_object(builder, "latency"));
         g_object_set_data(G_OBJECT(item), "state", gtk_builder_get_object(builder, "state"));
+
+        g_object_set_data(G_OBJECT(blocklist), "enable", enable);
 
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
@@ -309,9 +313,29 @@ void setup_listview(AppsBox* self) {
             }),
             self);
 
+        auto handler_id_blocklist = g_signal_connect(
+            blocklist, "toggled", G_CALLBACK(+[](GtkCheckButton* btn, AppsBox* self) {
+              if (auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_object_get_data(G_OBJECT(btn), "holder"));
+                  holder != nullptr) {
+                const auto state = gtk_check_button_get_active(btn);
+
+                if (state) {
+                  auto* enable = GTK_SWITCH(g_object_get_data(G_OBJECT(btn), "enable"));
+
+                  self->enabled_app_list.insert_or_assign(holder->id, gtk_switch_get_active(enable));
+
+                  util::add_new_blocklist_entry(self->settings, holder->name, log_tag);
+                } else {
+                  util::remove_blocklist_entry(self->settings, holder->name, log_tag);
+                }
+              }
+            }),
+            self);
+
         g_object_set_data(G_OBJECT(enable), "handler-id", GUINT_TO_POINTER(handler_id_enable));
         g_object_set_data(G_OBJECT(volume), "handler-id", GUINT_TO_POINTER(handler_id_volume));
         g_object_set_data(G_OBJECT(mute), "handler-id", GUINT_TO_POINTER(handler_id_mute));
+        g_object_set_data(G_OBJECT(blocklist), "handler-id", GUINT_TO_POINTER(handler_id_blocklist));
 
         g_object_unref(builder);
       }),
@@ -330,16 +354,19 @@ void setup_listview(AppsBox* self) {
         auto* state = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "state"));
         auto* volume = static_cast<GtkScale*>(g_object_get_data(G_OBJECT(item), "volume"));
         auto* mute = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "mute"));
+        auto* blocklist = static_cast<GtkCheckButton*>(g_object_get_data(G_OBJECT(item), "blocklist"));
 
         auto handler_id_enable = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(enable), "handler-id"));
         auto handler_id_volume = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(volume), "handler-id"));
         auto handler_id_mute = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(mute), "handler-id"));
+        auto handler_id_blocklist = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(blocklist), "handler-id"));
 
         auto child_item = gtk_list_item_get_item(item);
 
         g_object_set_data(G_OBJECT(enable), "holder", child_item);
         g_object_set_data(G_OBJECT(volume), "holder", child_item);
         g_object_set_data(G_OBJECT(mute), "holder", child_item);
+        g_object_set_data(G_OBJECT(blocklist), "holder", child_item);
 
         auto* holder = static_cast<ui::holders::NodeInfoHolder*>(child_item);
 
@@ -408,15 +435,29 @@ void setup_listview(AppsBox* self) {
               } else {
                 gtk_widget_set_visible(GTK_WIDGET(app_icon), 0);
 
-                util::warning(log_tag + icon_name + " icon name not installed in the " +
-                              gtk_icon_theme_get_theme_name(self->icon_theme) + " icon theme in use. " +
-                              "The application icon has been hidden.");
+                util::debug(log_tag + icon_name + " icon name not installed in the " +
+                            gtk_icon_theme_get_theme_name(self->icon_theme) + " icon theme in use. " +
+                            "The application icon has been hidden.");
               }
             } else {
               gtk_widget_set_visible(GTK_WIDGET(app_icon), 0);
             }
           } else {
             gtk_widget_set_visible(GTK_WIDGET(app_icon), 0);
+          }
+
+          // updating the blocklist button state
+
+          g_signal_handler_block(blocklist, handler_id_blocklist);
+
+          gtk_check_button_set_active(blocklist, static_cast<gboolean>(is_blocklisted));
+
+          g_signal_handler_unblock(blocklist, handler_id_blocklist);
+
+          // save app "enabled state" only the first time when it is not present in the enabled_app_list map
+
+          if (self->enabled_app_list.find(node_info.id) == self->enabled_app_list.end()) {
+            self->enabled_app_list.insert({node_info.id, is_enabled});
           }
         };
 
@@ -437,6 +478,7 @@ void setup_listview(AppsBox* self) {
                      auto* enable = static_cast<GtkSwitch*>(g_object_get_data(G_OBJECT(item), "enable"));
                      auto* volume = static_cast<GtkScale*>(g_object_get_data(G_OBJECT(item), "volume"));
                      auto* mute = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "mute"));
+                     auto* blocklist = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "blocklist"));
 
                      auto* holder = static_cast<ui::holders::NodeInfoHolder*>(gtk_list_item_get_item(item));
 
@@ -446,6 +488,8 @@ void setup_listview(AppsBox* self) {
                      g_object_set_data(G_OBJECT(enable), "holder", nullptr);
                      g_object_set_data(G_OBJECT(volume), "holder", nullptr);
                      g_object_set_data(G_OBJECT(mute), "holder", nullptr);
+                     g_object_set_data(G_OBJECT(blocklist), "holder", nullptr);
+                     g_object_set_data(G_OBJECT(blocklist), "enable", nullptr);
                    }),
                    self);
 
@@ -546,6 +590,29 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
             }
 
             g_list_store_append(self->apps_model, holder);
+          }
+        }
+      }),
+      self));
+
+  self->gconnections.push_back(g_signal_connect(
+      self->settings, "changed::show-blocklisted-apps", G_CALLBACK(+[](GSettings* settings, char* key, AppsBox* self) {
+        const auto show_blocklisted_apps = g_settings_get_boolean(self->settings, "show-blocklisted-apps") != 0;
+
+        g_list_store_remove_all(self->apps_model);
+
+        if (show_blocklisted_apps) {
+          for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+            g_list_store_append(self->apps_model, g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
+          }
+        } else {
+          for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+            auto* holder =
+                static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
+
+            if (!app_is_blocklisted(self, holder->name)) {
+              g_list_store_append(self->apps_model, g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
+            }
           }
         }
       }),

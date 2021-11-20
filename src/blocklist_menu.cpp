@@ -49,6 +49,15 @@ struct _BlocklistMenu {
 
 G_DEFINE_TYPE(BlocklistMenu, blocklist_menu, GTK_TYPE_POPOVER)
 
+void on_add_to_blocklist(BlocklistMenu* self, GtkButton* button) {
+  auto status =
+      util::add_new_blocklist_entry(self->settings, gtk_editable_get_text(GTK_EDITABLE(self->app_name)), log_tag);
+
+  if (status) {
+    gtk_editable_set_text(GTK_EDITABLE(self->app_name), "");
+  }
+}
+
 void on_show_blocklisted_apps(GtkSwitch* btn, gboolean state, BlocklistMenu* self) {}
 
 void setup_listview(BlocklistMenu* self) {
@@ -212,6 +221,7 @@ void blocklist_menu_class_init(BlocklistMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, show_blocklisted_apps);
 
   gtk_widget_class_bind_template_callback(widget_class, on_show_blocklisted_apps);
+  gtk_widget_class_bind_template_callback(widget_class, on_add_to_blocklist);
 }
 
 void blocklist_menu_init(BlocklistMenu* self) {

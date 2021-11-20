@@ -34,6 +34,7 @@
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="icon_name">list-add-symbolic</property>
+                                <signal name="clicked" handler="on_add_to_blocklist" object="BlocklistMenu" />
                                 <style>
                                     <class name="suggested-action" />
                                 </style>
