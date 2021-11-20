@@ -120,7 +120,7 @@ void setup_listview(BlocklistMenu* self) {
                      auto* btn_remove = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "remove"));
 
                      auto* child_item = gtk_list_item_get_item(item);
-                     auto string_object = GTK_STRING_OBJECT(child_item);
+                     auto* string_object = GTK_STRING_OBJECT(child_item);
 
                      g_object_set_data(G_OBJECT(btn_remove), "string-object", string_object);
 

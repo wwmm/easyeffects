@@ -45,6 +45,8 @@ struct _AppsBox {
   std::unordered_map<uint, bool> enabled_app_list;
 
   std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
 };
 
 G_DEFINE_TYPE(AppsBox, apps_box, GTK_TYPE_BOX)
@@ -503,6 +505,51 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       break;
     }
   }
+
+  // updating the list when changes are made to the blocklist
+
+  self->gconnections.push_back(g_signal_connect(
+      self->settings, "changed::blocklist", G_CALLBACK(+[](GSettings* settings, char* key, AppsBox* self) {
+        const auto show_blocklisted_apps = g_settings_get_boolean(self->settings, "show-blocklisted-apps") != 0;
+
+        g_list_store_remove_all(self->apps_model);
+
+        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+          auto* holder =
+              static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
+
+          const auto app_is_enabled = self->application->pm->stream_is_connected(holder->id, holder->media_class);
+
+          if (app_is_blocklisted(self, holder->name)) {
+            if (app_is_enabled) {
+              disconnect_stream(self, holder->id, holder->media_class);
+            }
+
+            if (show_blocklisted_apps) {
+              g_list_store_append(self->apps_model, holder);
+            }
+          } else {
+            if (!app_is_enabled) {
+              // Try to restore the previous enabled state, if needed
+
+              try {
+                if (self->enabled_app_list.at(holder->id)) {
+                  connect_stream(self, holder->id, holder->media_class);
+                }
+              } catch (...) {
+                connect_stream(self, holder->id, holder->media_class);
+
+                util::warning(log_tag + "can't retrieve enabled state of node "s + std::to_string(holder->id));
+
+                self->enabled_app_list.insert({holder->id, true});
+              }
+            }
+
+            g_list_store_append(self->apps_model, holder);
+          }
+        }
+      }),
+      self));
 }
 
 void realize(GtkWidget* widget) {
@@ -528,7 +575,12 @@ void dispose(GObject* object) {
     c.disconnect();
   }
 
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
+
   self->connections.clear();
+  self->gconnections.clear();
 
   g_object_unref(self->all_apps_model);  // do not do this to self->apps_model. It is owned by the listview
   g_object_unref(self->settings);
