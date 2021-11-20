@@ -30,6 +30,10 @@ struct _PluginsBox {
 
   GtkMenuButton* menubutton_plugins;
 
+  GtkListView* listview;
+
+  AdwViewStack* stack;
+
   ui::plugins_menu::PluginsMenu* plugins_menu;
 
   app::Application* application;
@@ -37,6 +41,8 @@ struct _PluginsBox {
   bool schedule_signal_idle;
 
   PipelineType pipeline_type;
+
+  GtkStringList* string_list;
 
   GSettings* settings;
 
@@ -46,6 +52,86 @@ struct _PluginsBox {
 };
 
 G_DEFINE_TYPE(PluginsBox, plugins_box, GTK_TYPE_BOX)
+
+void setup_listview(PluginsBox* self) {
+  if (const auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins")); !list.empty()) {
+    for (const auto& name : list) {
+      gtk_string_list_append(self->string_list, name.c_str());
+    }
+
+    // showing the first plugin in the list by default
+
+    const auto* selected_name = gtk_string_list_get_string(self->string_list, 0);
+
+    for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;
+         child = gtk_widget_get_next_sibling(GTK_WIDGET(self->stack))) {
+      if (adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child)) == selected_name) {
+        adw_view_stack_set_visible_child(self->stack, child);
+
+        break;
+      }
+    }
+  }
+
+  self->gconnections.push_back(g_signal_connect(
+      self->settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, PluginsBox* self) {
+        if (const auto glist = g_settings_get_strv(settings, key); glist != nullptr) {
+          gtk_string_list_splice(self->string_list, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list)),
+                                 glist);
+
+          const auto list = util::gchar_array_to_vector(glist);
+
+          if (!list.empty()) {
+            auto* visible_child = adw_view_stack_get_visible_child(self->stack);
+
+            if (visible_child == nullptr) {
+              return;
+            }
+
+            auto* visible_page_name = adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(visible_child));
+
+            if (std::ranges::find(list, visible_page_name) == list.end()) {
+              gtk_selection_model_select_item(gtk_list_view_get_model(self->listview), 0, 1);
+
+              for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;
+                   child = gtk_widget_get_next_sibling(GTK_WIDGET(self->stack))) {
+                if (adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child)) == list[0]) {
+                  adw_view_stack_set_visible_child(self->stack, child);
+
+                  break;
+                }
+              }
+            } else {
+              for (size_t m = 0U; m < list.size(); m++) {
+                if (list[m] == visible_page_name) {
+                  gtk_selection_model_select_item(gtk_list_view_get_model(self->listview), m, 1);
+
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }),
+      self));
+
+  // setting the listview model and factory
+
+  auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->string_list));
+  // auto* selection = gtk_single_selection_new(G_LIST_MODEL(adw_view_stack_get_pages(self->stack)));
+
+  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
+
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  gtk_list_view_set_factory(self->listview, factory);
+
+  g_object_unref(factory);
+}
 
 void setup(PluginsBox* self, app::Application* application, PipelineType pipeline_type) {
   self->application = application;
@@ -65,6 +151,8 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
   }
 
   ui::plugins_menu::setup(self->plugins_menu, application, pipeline_type);
+
+  setup_listview(self);
 }
 
 void realize(GtkWidget* widget) {
@@ -116,12 +204,16 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/plugins_box.ui");
 
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, menubutton_plugins);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, listview);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, stack);
 }
 
 void plugins_box_init(PluginsBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->schedule_signal_idle = false;
+
+  self->string_list = gtk_string_list_new(nullptr);
 
   self->plugins_menu = ui::plugins_menu::create();
 

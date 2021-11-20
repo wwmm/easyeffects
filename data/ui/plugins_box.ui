@@ -24,7 +24,7 @@
                     <object class="GtkScrolledWindow">
                         <property name="propagate-natural-width">1</property>
                         <child>
-                            <object class="GtkListView" id="listview_selected_plugins">
+                            <object class="GtkListView" id="listview">
                                 <property name="vexpand">1</property>
                                 <style>
                                     <class name="navigation-sidebar" />
@@ -48,7 +48,7 @@
         <child>
             <object class="GtkScrolledWindow">
                 <child>
-                    <object class="AdwViewStack" id="stack_plugins">
+                    <object class="AdwViewStack" id="stack">
                         <property name="hhomogeneous">0</property>
                         <property name="vhomogeneous">0</property>
                     </object>

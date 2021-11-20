@@ -192,6 +192,8 @@ auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string> {
     }
   }
 
+  g_strfreev(gchar_array);
+
   return output;
 }
 

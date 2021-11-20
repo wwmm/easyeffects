@@ -494,60 +494,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 }
 
 void EffectsBaseUi::setup_listview_selected_plugins() {
-  selected_plugins->remove(0);
-
-  if (!settings->get_string_array("plugins").empty()) {
-    for (const auto& name : settings->get_string_array("plugins")) {
-      selected_plugins->append(name);
-    }
-
-    // showing the first plugin in the list by default
-
-    const auto selected_name = selected_plugins->get_string(0);
-
-    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-      if (stack_plugins->get_page(*child)->get_name() == selected_name) {
-        stack_plugins->set_visible_child(*child);
-
-        break;
-      }
-    }
-  }
-
-  settings->signal_changed("plugins").connect([=, this](const auto& key) {
-    const auto list = settings->get_string_array(key);
-
-    selected_plugins->splice(0, selected_plugins->get_n_items(), list);
-
-    if (!list.empty()) {
-      auto* visible_child = stack_plugins->get_visible_child();
-
-      if (visible_child == nullptr) {
-        return;
-      }
-
-      const auto visible_page_name = stack_plugins->get_page(*visible_child)->get_name();
-
-      if (std::ranges::find(list, visible_page_name) == list.end()) {
-        listview_selected_plugins->get_model()->select_item(0, true);
-
-        for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-          if (stack_plugins->get_page(*child)->get_name() == list[0]) {
-            stack_plugins->set_visible_child(*child);
-          }
-        }
-      } else {
-        for (size_t m = 0U; m < list.size(); m++) {
-          if (list[m] == visible_page_name) {
-            listview_selected_plugins->get_model()->select_item(m, true);
-
-            break;
-          }
-        }
-      }
-    }
-  });
-
   // setting the listview model and factory
 
   listview_selected_plugins->set_model(Gtk::SingleSelection::create(selected_plugins));
