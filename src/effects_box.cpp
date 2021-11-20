@@ -155,13 +155,13 @@ void setup_spectrum(EffectsBox* self) {
       }),
       self));
 
-  self->gconnections_spectrum.push_back(
-      g_signal_connect(self->settings_spectrum, "changed::show-bar-border",
-                       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-                         ui::chart::set_draw_bar_border(self->spectrum_chart,
-                                                        g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
-                       }),
-                       self));
+  self->gconnections_spectrum.push_back(g_signal_connect(
+      self->settings_spectrum, "changed::show-bar-border",
+      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
+        ui::chart::set_draw_bar_border(self->spectrum_chart,
+                                       g_settings_get_boolean(self->settings_spectrum, "show-bar-border") != 0);
+      }),
+      self));
 
   self->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::line-width", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
