@@ -34,6 +34,8 @@ struct _BlocklistMenu {
 
   GtkText* app_name;
 
+  GtkSwitch* show_blocklisted_apps;
+
   GtkStringList* string_list;
 
   GSettings* settings;
@@ -46,6 +48,8 @@ struct _BlocklistMenu {
 };
 
 G_DEFINE_TYPE(BlocklistMenu, blocklist_menu, GTK_TYPE_POPOVER)
+
+void on_show_blocklisted_apps(GtkSwitch* btn, gboolean state, BlocklistMenu* self) {}
 
 void setup_listview(BlocklistMenu* self) {
   for (auto& name : util::gchar_array_to_vector(g_settings_get_strv(self->settings, "blocklist"))) {
@@ -151,6 +155,9 @@ void setup(BlocklistMenu* self, app::Application* application, PipelineType pipe
     }
   }
 
+  g_settings_bind(self->settings, "show-blocklisted-apps", self->show_blocklisted_apps, "active",
+                  G_SETTINGS_BIND_DEFAULT);
+
   setup_listview(self);
 }
 
@@ -202,8 +209,9 @@ void blocklist_menu_class_init(BlocklistMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, listview);
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, app_name);
+  gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, show_blocklisted_apps);
 
-  //   gtk_widget_class_bind_template_callback(widget_class, create_output_preset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_blocklisted_apps);
 }
 
 void blocklist_menu_init(BlocklistMenu* self) {

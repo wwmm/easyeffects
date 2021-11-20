@@ -87,6 +87,7 @@
                             <object class="GtkSwitch" id="show_blocklisted_apps">
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
+                                <signal name="state-set" handler="on_show_blocklisted_apps" object="BlocklistMenu" />
                                 <accessibility>
                                     <relation name="labelled-by">show_blocklisted_apps_label</relation>
                                 </accessibility>

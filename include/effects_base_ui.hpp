@@ -150,8 +150,6 @@ class EffectsBaseUi {
 
   void setup_listview_players();
 
-  void setup_listview_blocklist();
-
   void setup_listview_plugins();
 
   void setup_listview_selected_plugins();

@@ -62,7 +62,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   // configuring widgets
 
   setup_listview_players();
-  setup_listview_blocklist();
   setup_listview_plugins();
   setup_listview_selected_plugins();
 
@@ -627,129 +626,6 @@ void EffectsBaseUi::setup_listview_players() {
 
         list_item->set_data(conn, nullptr);
       }
-    }
-  });
-}
-
-void EffectsBaseUi::setup_listview_blocklist() {
-  blocklist->remove(0);
-
-  for (const auto& name : settings->get_string_array("blocklist")) {
-    blocklist->append(name);
-  }
-
-  settings->signal_changed("blocklist").connect([=, this](const auto& key) {
-    const auto list = settings->get_string_array(key);
-
-    blocklist->splice(0, blocklist->get_n_items(), list);
-  });
-
-  blocklist->signal_items_changed().connect([=, this](const guint& position, const guint& removed, const guint& added) {
-    const auto show_blocklisted_apps = settings->get_boolean("show-blocklisted-apps");
-
-    players_model->remove_all();
-
-    listview_players->set_model(nullptr);
-
-    for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-      auto holder = all_players_model->get_item(n);
-
-      const auto app_is_enabled = pm->stream_is_connected(holder->id, holder->media_class);
-
-      if (app_is_blocklisted(holder->name)) {
-        if (app_is_enabled) {
-          // disconnect_stream(holder->id, holder->media_class);
-        }
-
-        if (show_blocklisted_apps) {
-          players_model->append(holder);
-        }
-      } else {
-        if (!app_is_enabled) {
-          // Try to restore the previous enabled state, if needed
-
-          try {
-            if (enabled_app_list.at(holder->id)) {
-              // connect_stream(holder->id, holder->media_class);
-            }
-          } catch (...) {
-            // connect_stream(holder->id, holder->media_class);
-
-            util::warning("effects_base_ui: can't retrieve enabled state of node " + std::to_string(holder->id));
-
-            enabled_app_list.insert({holder->id, true});
-          }
-        }
-
-        players_model->append(holder);
-      }
-    }
-
-    listview_players->set_model(Gtk::NoSelection::create(players_model));
-  });
-
-  // sorter
-
-  const auto sorter =
-      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  const auto sort_list_model = Gtk::SortListModel::create(blocklist, sorter);
-
-  // setting the listview model and factory
-
-  listview_blocklist->set_model(Gtk::NoSelection::create(sort_list_model));
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview_blocklist->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const btn = Gtk::make_managed<Gtk::Button>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    btn->set_icon_name("user-trash-symbolic");
-
-    box->append(*label);
-    box->append(*btn);
-
-    list_item->set_data("name", label);
-    list_item->set_data("remove", btn);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
-
-    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
-
-    label->set_text(name);
-
-    auto connection_remove = remove->signal_clicked().connect([=, this]() {
-      auto list = settings->get_string_array("blocklist");
-
-      list.erase(std::remove_if(list.begin(), list.end(), [=](const auto& player_name) { return player_name == name; }),
-                 list.end());
-
-      settings->set_string_array("blocklist", list);
-    });
-
-    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
-                        Glib::destroy_notify_delete<sigc::connection>);
-  });
-
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
-      connection->disconnect();
-
-      list_item->set_data("connection_remove", nullptr);
     }
   });
 }
