@@ -335,11 +335,11 @@ void setup_listview(AppsBox* self) {
 
         auto child_item = gtk_list_item_get_item(item);
 
-        auto* holder = static_cast<ui::holders::NodeInfoHolder*>(child_item);
-
         g_object_set_data(G_OBJECT(enable), "holder", child_item);
         g_object_set_data(G_OBJECT(volume), "holder", child_item);
         g_object_set_data(G_OBJECT(mute), "holder", child_item);
+
+        auto* holder = static_cast<ui::holders::NodeInfoHolder*>(child_item);
 
         auto application_info_update = [=](const NodeInfo& node_info) {
           if (node_info.state == PW_NODE_STATE_CREATING) {

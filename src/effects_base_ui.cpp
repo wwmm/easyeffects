@@ -582,7 +582,6 @@ void EffectsBaseUi::setup_listview_players() {
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
     const auto app_name = holder->name;
-    const auto media_class = holder->media_class;
 
     auto connection_blocklist_checkbutton = blocklist->signal_toggled().connect([=, this]() {
       if (blocklist->get_active()) {
@@ -1099,68 +1098,6 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
       }
     }
   });
-}
-
-void EffectsBaseUi::on_app_changed(const util::time_point ts) {
-  for (guint n = 0U; n < players_model->get_n_items(); n++) {
-    if (auto holder = players_model->get_item(n); holder->ts == ts) {
-      if (const auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
-        holder->info_updated.emit(node_it->second);
-      }
-    }
-  }
-}
-
-auto EffectsBaseUi::get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring {
-  // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
-  static const std::map<Glib::ustring, Glib::ustring> icon_map{
-      {"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}};
-
-  Glib::ustring icon_name;
-
-  if (!node_info.app_icon_name.empty()) {
-    icon_name = node_info.app_icon_name;
-  } else if (!node_info.media_icon_name.empty()) {
-    icon_name = node_info.media_icon_name;
-  } else if (!node_info.name.empty()) {
-    // get lowercase name so if it changes in the future, we have a chance to pick the same index
-    icon_name = Glib::ustring(node_info.name).lowercase();
-  }
-
-  try {
-    return icon_map.at(icon_name);
-  } catch (...) {
-    return icon_name;
-  }
-}
-
-auto EffectsBaseUi::icon_available(const Glib::ustring& icon_name) -> bool {
-  if (icon_theme->has_icon(icon_name)) {
-    return true;
-  }
-
-  // the icon object can't loopup icons in pixmaps directories,
-  // so we check their existence there also
-
-  static const auto pixmaps_dirs = {"/usr/share/pixmaps", "/usr/local/share/pixmaps"};
-
-  for (const auto& dir : pixmaps_dirs) {
-    try {
-      for (std::filesystem::directory_iterator it{dir}; it != std::filesystem::directory_iterator{}; ++it) {
-        if (std::filesystem::is_regular_file(it->status())) {
-          if (it->path().stem().c_str() == icon_name) {
-            util::debug(log_tag + icon_name.raw() + " icon name not included in the icon theme, but found in " + dir);
-
-            return true;
-          }
-        }
-      }
-    } catch (...) {
-      util::debug(log_tag + "cannot lookup application icon " + icon_name.raw() + " in " + dir);
-    }
-  }
-
-  return false;
 }
 
 auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {

@@ -17,13 +17,13 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "presets_menu_ui.hpp"
+#include "presets_menu.hpp"
 
 namespace ui::presets_menu {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "presets_menu_ui: ";
+auto constexpr log_tag = "presets_menu: ";
 
 struct _PresetsMenu {
   GtkPopover parent_instance{};

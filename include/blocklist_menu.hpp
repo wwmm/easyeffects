@@ -20,26 +20,22 @@
 #pragma once
 
 #include <adwaita.h>
+#include <string>
 #include "application.hpp"
-#include "apps_box.hpp"
-#include "blocklist_menu.hpp"
-#include "chart.hpp"
-#include "effects_base.hpp"
 #include "pipeline_type.hpp"
-#include "plugins_box.hpp"
 
-namespace ui::effects_box {
+namespace ui::blocklist_menu {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_EFFECTS_BOX (effects_box_get_type())
+#define EE_TYPE_BLOCKLIST_MENU (blocklist_menu_get_type())
 
-G_DECLARE_FINAL_TYPE(EffectsBox, effects_box, EE, EFFECTS_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(BlocklistMenu, blocklist_menu, EE, BLOCKLIST_MENU, GtkPopover)
 
 G_END_DECLS
 
-auto create() -> EffectsBox*;
+auto create() -> BlocklistMenu*;
 
-void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme);
+void setup(BlocklistMenu* self, app::Application* application, PipelineType pipeline_type);
 
-}  // namespace ui::effects_box
+}  // namespace ui::blocklist_menu

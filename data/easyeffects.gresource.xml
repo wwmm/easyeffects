@@ -9,6 +9,7 @@
         <file>ui/autoload_row.ui</file>
         <file>ui/bass_enhancer.ui</file>
         <file>ui/bass_loudness.ui</file>
+        <file>ui/blocklist_menu.ui</file>
         <file>ui/chart.ui</file>
         <file>ui/client_info.ui</file>
         <file>ui/compressor.ui</file>

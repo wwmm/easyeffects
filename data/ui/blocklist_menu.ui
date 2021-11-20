@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="easyeffects">
+    <template class="BlocklistMenu" parent="GtkPopover">
+        <child>
+            <object class="GtkBox" id="top_box">
+                <property name="orientation">vertical</property>
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkBox">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                        <property name="css-name">entry</property>
+                        <child>
+                            <object class="GtkText" id="app_name">
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                                <property name="placeholder_text" translatable="yes">Application Name</property>
+                                <property name="accessible_role">text-box</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Application Name</property>
+                                </accessibility>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkButton">
+                                <property name="margin-top">3</property>
+                                <property name="margin-bottom">3</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="icon_name">list-add-symbolic</property>
+                                <style>
+                                    <class name="suggested-action" />
+                                </style>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Add to Blocklist</property>
+                                </accessibility>
+                            </object>
+                        </child>
+                        <style>
+                            <class name="entry" />
+                        </style>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkFrame">
+                        <child>
+                            <object class="GtkScrolledWindow" id="scrolled_window">
+                                <property name="propagate_natural_width">1</property>
+                                <property name="propagate_natural_height">1</property>
+                                <child>
+                                    <object class="GtkListView" id="listview">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
+                                        <property name="show-separators">1</property>
+                                        <style>
+                                            <class name="rich-list" />
+                                        </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Blocklisted Applications List</property>
+                                        </accessibility>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkLabel" id="show_blocklisted_apps_label">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Show Blocklisted Applications</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSwitch" id="show_blocklisted_apps">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <accessibility>
+                                    <relation name="labelled-by">show_blocklisted_apps_label</relation>
+                                </accessibility>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </template>
+</interface>

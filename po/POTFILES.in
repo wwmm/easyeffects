@@ -50,7 +50,7 @@ src/equalizer_ui.cpp
 src/pipe_info_ui.cpp
 src/pipe_manager_box.cpp
 src/preferences_window.cpp
-src/presets_menu_ui.cpp
+src/presets_menu.cpp
 src/rnnoise_ui.cpp
 src/stream_output_effects_ui.cpp
 src/stream_input_effects_ui.cpp

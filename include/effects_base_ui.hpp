@@ -91,10 +91,6 @@ class EffectsBaseUi {
 
   std::vector<sigc::connection> connections;
 
-  void on_app_changed(util::time_point ts);
-
-  auto icon_available(const Glib::ustring& icon_name) -> bool;
-
  private:
   Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr, *listview_plugins = nullptr,
                 *listview_selected_plugins = nullptr;
@@ -159,8 +155,6 @@ class EffectsBaseUi {
   void setup_listview_plugins();
 
   void setup_listview_selected_plugins();
-
-  static auto get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring;
 
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
 

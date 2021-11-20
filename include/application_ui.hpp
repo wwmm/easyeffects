@@ -22,7 +22,7 @@
 #include <adwaita.h>
 #include "effects_box.hpp"
 #include "pipe_manager_box.hpp"
-#include "presets_menu_ui.hpp"
+#include "presets_menu.hpp"
 
 namespace ui::application_window {
 

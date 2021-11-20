@@ -48,6 +48,8 @@ struct _EffectsBox {
 
   ui::plugins_box::PluginsBox* pluginsBox;
 
+  ui::blocklist_menu::BlocklistMenu* blocklist_menu;
+
   GSettings *settings, *settings_spectrum, *app_settings;
 
   app::Application* application;
@@ -278,6 +280,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   ui::apps_box::setup(self->appsBox, application, pipeline_type, icon_theme);
   ui::plugins_box::setup(self->pluginsBox, application, pipeline_type);
+  ui::blocklist_menu::setup(self->blocklist_menu, application, pipeline_type);
 
   // output level
 
@@ -480,6 +483,9 @@ void effects_box_init(EffectsBox* self) {
 
   self->appsBox = ui::apps_box::create();
   self->pluginsBox = ui::plugins_box::create();
+  self->blocklist_menu = ui::blocklist_menu::create();
+
+  gtk_menu_button_set_popover(self->menubutton_blocklist, GTK_WIDGET(self->blocklist_menu));
 
   setup_spectrum(self);
 
