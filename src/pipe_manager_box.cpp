@@ -205,6 +205,38 @@ void setup_listview_clients(PipeManagerBox* self) {
   g_object_unref(factory);
 }
 
+template <PresetType preset_type>
+void setup_listview_autoloading(PipeManagerBox* self) {
+  GListStore* model;
+  GtkListView* listview;
+
+  if constexpr (preset_type == PresetType::output) {
+    model = self->autoloading_output_model;
+
+    listview = self->listview_autoloading_output;
+  } else if constexpr (preset_type == PresetType::input) {
+    model = self->autoloading_output_model;
+
+    listview = self->listview_autoloading_input;
+  }
+
+  const auto profiles = self->application->presets_manager->get_autoload_profiles(preset_type);
+
+  for (const auto& json : profiles) {
+    const auto device = json.value("device", "");
+    const auto device_profile = json.value("device-profile", "");
+    const auto preset_name = json.value("preset-name", "");
+
+    g_list_store_append(model, ui::holders::create(device, device_profile, preset_name));
+  }
+
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(model));
+
+  gtk_list_view_set_model(listview, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
+}
+
 void setup(PipeManagerBox* self, app::Application* application) {
   self->application = application;
 
@@ -233,6 +265,9 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   setup_listview_modules(self);
   setup_listview_clients(self);
+
+  setup_listview_autoloading<PresetType::input>(self);
+  setup_listview_autoloading<PresetType::output>(self);
 
   // signals related to device insertion/removal
 
