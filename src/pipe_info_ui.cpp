@@ -37,55 +37,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       autoloading_input_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
       output_presets_string_list(Gtk::StringList::create({"initial_value"})),
       input_presets_string_list(Gtk::StringList::create({"initial_value"})) {
-  for (const auto& [ts, node] : pm->node_map) {
-    if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
-      continue;
-    }
-
-    if (node.media_class == pm->media_class_sink) {
-      output_devices_model->append(NodeInfoHolder::create(node));
-    } else if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
-      input_devices_model->append(NodeInfoHolder::create(node));
-    }
-  }
-
-  stack = builder->get_widget<Gtk::Stack>("stack");
-
-  use_default_input = builder->get_widget<Gtk::Switch>("use_default_input");
-  use_default_output = builder->get_widget<Gtk::Switch>("use_default_output");
-  enable_test_signal = builder->get_widget<Gtk::Switch>("enable_test_signal");
-
-  dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
-  dropdown_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_output_devices");
-  dropdown_autoloading_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_output_devices");
-  dropdown_autoloading_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_input_devices");
-  dropdown_autoloading_output_presets = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_output_presets");
-  dropdown_autoloading_input_presets = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_input_presets");
-
-  listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
-  listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
-  listview_autoloading_output = builder->get_widget<Gtk::ListView>("listview_autoloading_output");
-  listview_autoloading_input = builder->get_widget<Gtk::ListView>("listview_autoloading_input");
-
-  autoloading_add_input_profile = builder->get_widget<Gtk::Button>("autoloading_add_input_profile");
-  autoloading_add_output_profile = builder->get_widget<Gtk::Button>("autoloading_add_output_profile");
-
-  header_version = builder->get_widget<Gtk::Label>("header_version");
-  library_version = builder->get_widget<Gtk::Label>("library_version");
-  quantum = builder->get_widget<Gtk::Label>("quantum");
-  max_quantum = builder->get_widget<Gtk::Label>("max_quantum");
-  min_quantum = builder->get_widget<Gtk::Label>("min_quantum");
-  server_rate = builder->get_widget<Gtk::Label>("server_rate");
-
-  spinbutton_test_signal_frequency = builder->get_widget<Gtk::SpinButton>("spinbutton_test_signal_frequency");
-
-  checkbutton_channel_left = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_left");
-  checkbutton_channel_right = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_right");
-  checkbutton_channel_both = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_both");
-  checkbutton_signal_sine = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_sine");
-  checkbutton_signal_gaussian = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_gaussian");
-  // checkbutton_signal_pink = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_pink");
-
   setup_dropdown_devices(dropdown_input_devices, input_devices_model);
   setup_dropdown_devices(dropdown_output_devices, output_devices_model);
 
@@ -467,13 +418,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
         autoloading_input_model->splice(0, autoloading_input_model->get_n_items(), list);
       }));
-
-  header_version->set_text(pm->header_version);
-  library_version->set_text(pm->library_version);
-  server_rate->set_text(Glib::ustring::format(std::stoi(pm->default_clock_rate)) + " Hz");
-  min_quantum->set_text(Glib::ustring::format(std::stoi(pm->default_min_quantum)));
-  max_quantum->set_text(Glib::ustring::format(std::stoi(pm->default_max_quantum)));
-  quantum->set_text(Glib::ustring::format(std::stoi(pm->default_quantum)));
 
   update_modules_info();
   update_clients_info();

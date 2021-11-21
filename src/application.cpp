@@ -418,7 +418,7 @@ void application_init(Application* self) {
 
   g_action_map_add_action_entries(G_ACTION_MAP(self), entries.data(), entries.size(), self);
 
-  std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
+  std::array<const char*, 3> quit_accels = {"<Ctrl>Q", "<Ctrl>W", nullptr};
   std::array<const char*, 2> help_accels = {"F1", nullptr};
   std::array<const char*, 2> fullscreen_accels = {"F11", nullptr};
 

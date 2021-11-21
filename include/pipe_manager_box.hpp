@@ -21,6 +21,8 @@
 
 #include <adwaita.h>
 #include "application.hpp"
+#include "node_info_holder.hpp"
+#include "test_signals.hpp"
 
 namespace ui::pipe_manager_box {
 
