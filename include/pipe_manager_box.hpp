@@ -23,6 +23,7 @@
 #include "application.hpp"
 #include "node_info_holder.hpp"
 #include "test_signals.hpp"
+#include "ui_helpers.hpp"
 
 namespace ui::pipe_manager_box {
 

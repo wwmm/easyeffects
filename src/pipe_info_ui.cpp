@@ -221,37 +221,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     presets_manager->add_autoload(PresetType::input, preset_name, holder->name, device_profile);
   });
 
-  spinbutton_test_signal_frequency->signal_output().connect(
-      [=, this]() { return parse_spinbutton_output(spinbutton_test_signal_frequency, "Hz"); }, true);
-
-  spinbutton_test_signal_frequency->signal_input().connect(
-      [=, this](double& new_value) { return parse_spinbutton_input(spinbutton_test_signal_frequency, new_value); },
-      true);
-
-  spinbutton_test_signal_frequency->signal_value_changed().connect(
-      [=, this]() { ts->set_frequency(static_cast<float>(spinbutton_test_signal_frequency->get_value())); });
-
-  checkbutton_channel_left->signal_toggled().connect([&, this]() {
-    if (checkbutton_channel_left->get_active()) {
-      ts->create_left_channel = true;
-      ts->create_right_channel = false;
-    }
-  });
-
-  checkbutton_channel_right->signal_toggled().connect([&, this]() {
-    if (checkbutton_channel_right->get_active()) {
-      ts->create_left_channel = false;
-      ts->create_right_channel = true;
-    }
-  });
-
-  checkbutton_channel_both->signal_toggled().connect([&, this]() {
-    if (checkbutton_channel_both->get_active()) {
-      ts->create_left_channel = true;
-      ts->create_right_channel = true;
-    }
-  });
-
   checkbutton_signal_sine->signal_toggled().connect([&, this]() {
     if (checkbutton_signal_sine->get_active()) {
       ts->signal_type = TestSignalType::sine_wave;

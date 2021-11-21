@@ -530,175 +530,121 @@
                         <property name="name">page_test_signals</property>
                         <property name="title" translatable="yes">Test Signal</property>
                         <property name="child">
-                            <object class="GtkGrid">
-                                <property name="row-spacing">6</property>
-                                <property name="column-spacing">6</property>
+                            <object class="AdwPreferencesPage">
                                 <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">end</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Enable</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSwitch" id="enable_test_signal">
-                                        <property name="halign">start</property>
-                                        <property name="valign">center</property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                        <accessibility>
-                                            <property name="label" translatable="yes">Enable Test Signal</property>
-                                        </accessibility>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">end</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Channel</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkBox">
-                                        <property name="halign">start</property>
-                                        <property name="homogeneous">1</property>
+                                    <object class="AdwPreferencesGroup">
+                                        <property name="title" translatable="yes">State</property>
                                         <child>
-                                            <object class="GtkCheckButton" id="checkbutton_channel_left">
-                                                <property name="valign">end</property>
-                                                <property name="halign">center</property>
-                                                <property name="label" translatable="yes">Left</property>
-                                                <accessibility>
-                                                    <property name="label" translatable="yes">Left Channel</property>
-                                                </accessibility>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Enabled</property>
+
+                                                <child>
+                                                    <object class="GtkSwitch" id="enable_test_signal">
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
-
-                                        <child>
-                                            <object class="GtkCheckButton" id="checkbutton_channel_right">
-                                                <property name="valign">start</property>
-                                                <property name="halign">center</property>
-                                                <property name="group">checkbutton_channel_left</property>
-                                                <property name="label" translatable="yes">Right</property>
-                                                <accessibility>
-                                                    <property name="label" translatable="yes">Right Channel</property>
-                                                </accessibility>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkCheckButton" id="checkbutton_channel_both">
-                                                <property name="valign">start</property>
-                                                <property name="halign">center</property>
-                                                <property name="group">checkbutton_channel_left</property>
-                                                <property name="label" translatable="yes">Both</property>
-                                                <property name="active">1</property>
-                                                <accessibility>
-                                                    <property name="label" translatable="yes">Both Channels</property>
-                                                </accessibility>
-                                            </object>
-                                        </child>
-
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">1</property>
-                                        </layout>
                                     </object>
                                 </child>
 
                                 <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">end</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Signal</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">2</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkBox">
-                                        <property name="halign">start</property>
-                                        <property name="homogeneous">1</property>
+                                    <object class="AdwPreferencesGroup">
+                                        <property name="title" translatable="yes">Output Channel</property>
                                         <child>
-                                            <object class="GtkCheckButton" id="checkbutton_signal_sine">
-                                                <property name="valign">end</property>
-                                                <property name="halign">center</property>
-                                                <property name="label" translatable="yes">Sine Wave</property>
-                                                <property name="active">1</property>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Channel</property>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_channel_left">
+                                                        <property name="label" translatable="yes">Left</property>
+                                                        <signal name="toggled" handler="on_checkbutton_channel_left" object="PipeManagerBox" />
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Left Channel</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_channel_right">
+                                                        <property name="group">checkbutton_channel_left</property>
+                                                        <property name="label" translatable="yes">Right</property>
+                                                        <signal name="toggled" handler="on_checkbutton_channel_right" object="PipeManagerBox" />
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Right Channel</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_channel_both">
+                                                        <property name="group">checkbutton_channel_left</property>
+                                                        <property name="label" translatable="yes">Both</property>
+                                                        <property name="active">1</property>
+                                                        <signal name="toggled" handler="on_checkbutton_channel_both" object="PipeManagerBox" />
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Both Channels</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
+                                    </object>
+                                </child>
 
+                                <child>
+                                    <object class="AdwPreferencesGroup">
+                                        <property name="title" translatable="yes">Waveform</property>
                                         <child>
-                                            <object class="GtkCheckButton" id="checkbutton_signal_gaussian">
-                                                <property name="valign">start</property>
-                                                <property name="halign">center</property>
-                                                <property name="group">checkbutton_signal_sine</property>
-                                                <property name="label" translatable="yes">White Noise</property>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Type</property>
+
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_signal_sine">
+                                                        <property name="label" translatable="yes">Sine Wave</property>
+                                                        <property name="active">1</property>
+                                                        <signal name="toggled" handler="on_checkbutton_signal_sine" object="PipeManagerBox" />
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_signal_gaussian">
+                                                        <property name="group">checkbutton_signal_sine</property>
+                                                        <property name="label" translatable="yes">White Noise</property>
+                                                        <signal name="toggled" handler="on_checkbutton_signal_gaussian" object="PipeManagerBox" />
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
-
-                                        <!-- <child>
-                                            <object class="GtkCheckButton" id="checkbutton_signal_pink">
-                                                <property name="valign">start</property>
-                                                <property name="halign">center</property>
-                                                <property name="group">checkbutton_signal_sine</property>
-                                                <property name="label" translatable="yes">Pink Noise</property>
-                                            </object>
-                                        </child> -->
-
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">2</property>
-                                        </layout>
                                     </object>
                                 </child>
 
+                                <child>
+                                    <object class="AdwPreferencesGroup">
+                                        <property name="title" translatable="yes">Frequency</property>
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Value</property>
 
-                                <child>
-                                    <object class="GtkLabel" id="frequency_label">
-                                        <property name="halign">end</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Frequency</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">3</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="spinbutton_test_signal_frequency">
-                                        <property name="halign">start</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">20</property>
-                                                <property name="upper">22000</property>
-                                                <property name="value">1000</property>
-                                                <property name="step-increment">1</property>
-                                                <property name="page-increment">100</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="spinbutton_test_signal_frequency">
+                                                        <property name="valign">center</property>
+                                                        <property name="sensitive" bind-source="checkbutton_signal_sine" bind-property="active" bind-flags="sync-create" />
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">20</property>
+                                                                <property name="upper">22000</property>
+                                                                <property name="value">1000</property>
+                                                                <property name="step-increment">1</property>
+                                                                <property name="page-increment">100</property>
+                                                            </object>
+                                                        </property>
+                                                        <property name="digits">0</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="width-chars">10</property>
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <property name="digits">0</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="width-chars">10</property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">3</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">frequency_label</relation>
-                                        </accessibility>
+                                        </child>
                                     </object>
                                 </child>
                             </object>

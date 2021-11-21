@@ -24,9 +24,6 @@ struct _PipeManagerBox {
 
   GtkSpinButton* spinbutton_test_signal_frequency;
 
-  GtkCheckButton *checkbutton_channel_left, *checkbutton_channel_right, *checkbutton_channel_both,
-      *checkbutton_signal_sine, *checkbutton_signal_gaussian;
-
   GListStore *input_devices_model, *output_devices_model;
 
   GtkStringList *input_presets_string_list, *output_presets_string_list;
@@ -43,6 +40,40 @@ struct _PipeManagerBox {
 };
 
 G_DEFINE_TYPE(PipeManagerBox, pipe_manager_box, GTK_TYPE_BOX)
+
+void on_checkbutton_channel_left(PipeManagerBox* self, GtkCheckButton* btn) {
+  if (gtk_check_button_get_active(btn)) {
+    self->ts->create_left_channel = true;
+    self->ts->create_right_channel = false;
+  }
+}
+
+void on_checkbutton_channel_right(PipeManagerBox* self, GtkCheckButton* btn) {
+  if (gtk_check_button_get_active(btn)) {
+    self->ts->create_left_channel = false;
+    self->ts->create_right_channel = true;
+  }
+}
+
+void on_checkbutton_channel_both(PipeManagerBox* self, GtkCheckButton* btn) {
+  if (gtk_check_button_get_active(btn)) {
+    self->ts->create_left_channel = true;
+    self->ts->create_right_channel = true;
+  }
+}
+
+void on_checkbutton_signal_sine(PipeManagerBox* self, GtkCheckButton* btn) {
+  if (gtk_check_button_get_active(btn)) {
+    self->ts->signal_type = TestSignalType::sine_wave;
+    self->ts->sine_phase = 0.0F;
+  }
+}
+
+void on_checkbutton_signal_gaussian(PipeManagerBox* self, GtkCheckButton* btn) {
+  if (gtk_check_button_get_active(btn)) {
+    self->ts->signal_type = TestSignalType::gaussian;
+  }
+}
 
 void setup(PipeManagerBox* self, app::Application* application) {
   self->application = application;
@@ -140,14 +171,11 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, spinbutton_test_signal_frequency);
 
-  gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, checkbutton_channel_left);
-  gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, checkbutton_channel_right);
-  gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, checkbutton_channel_both);
-  gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, checkbutton_signal_sine);
-  gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, checkbutton_signal_gaussian);
-
-  //   gtk_widget_class_bind_template_callback(widget_class, import_output_preset);
-  //   gtk_widget_class_bind_template_callback(widget_class, import_input_preset);
+  gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_channel_left);
+  gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_channel_right);
+  gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_channel_both);
+  gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_signal_sine);
+  gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_signal_gaussian);
 }
 
 void pipe_manager_box_init(PipeManagerBox* self) {
@@ -161,6 +189,14 @@ void pipe_manager_box_init(PipeManagerBox* self) {
 
   self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+
+  prepare_spinbutton<"Hz">(self->spinbutton_test_signal_frequency);
+
+  g_signal_connect(self->spinbutton_test_signal_frequency, "value-changed",
+                   G_CALLBACK(+[](GtkSpinButton* btn, PipeManagerBox* self) {
+                     self->ts->set_frequency(static_cast<float>(gtk_spin_button_get_value(btn)));
+                   }),
+                   self);
 }
 
 auto create() -> PipeManagerBox* {
