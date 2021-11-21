@@ -22,6 +22,92 @@
                 <property name="margin-bottom">6</property>
                 <child>
                     <object class="GtkStackPage">
+                        <property name="name">page_genera</property>
+                        <property name="title" translatable="yes">General</property>
+                        <property name="child">
+                            <object class="GtkScrolledWindow">
+                                <child>
+                                    <object class="AdwPreferencesPage">
+                                        <child>
+                                            <object class="AdwPreferencesGroup">
+                                                <property name="title" translatable="yes">Input Device</property>
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Use Default</property>
+                                                        <property name="activatable_widget">use_default_input</property>
+                                                        <child>
+                                                            <object class="GtkSwitch" id="use_default_input">
+                                                                <property name="valign">center</property>
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Use Default Input</property>
+                                                                </accessibility>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Name</property>
+                                                        <child>
+                                                            <object class="GtkDropDown" id="dropdown_input_devices">
+                                                                <property name="valign">center</property>
+                                                                <property name="sensitive" bind-source="use_default_input" bind-property="active" bind-flags="sync-create" />
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Custom Input Device</property>
+                                                                </accessibility>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwPreferencesGroup">
+                                                <property name="title" translatable="yes">Output Device</property>
+
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Use Default</property>
+                                                        <property name="activatable_widget">use_default_output</property>
+                                                        <child>
+                                                            <object class="GtkSwitch" id="use_default_output">
+                                                                <property name="valign">center</property>
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Use Default Output</property>
+                                                                </accessibility>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Name</property>
+
+                                                        <child>
+                                                            <object class="GtkDropDown" id="dropdown_output_devices">
+                                                                <property name="valign">center</property>
+                                                                <property name="sensitive" bind-source="use_default_output" bind-property="active" bind-flags="sync-create" />
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Custom Output Device</property>
+                                                                </accessibility>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkStackPage">
                         <property name="name">page_general</property>
                         <property name="title" translatable="yes">General</property>
                         <property name="child">
@@ -32,97 +118,6 @@
                                         <property name="valign">start</property>
                                         <property name="row-spacing">12</property>
                                         <property name="column-spacing">6</property>
-                                        <child>
-                                            <object class="GtkLabel" id="use_default_input_label">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Use Default Input</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">0</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkSwitch" id="use_default_input">
-                                                <property name="halign">start</property>
-                                                <property name="valign">center</property>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">0</property>
-                                                </layout>
-                                                <accessibility>
-                                                    <relation name="labelled-by">use_default_input_label</relation>
-                                                </accessibility>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel" id="use_default_output_label">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Use Default Output</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">1</property>
-                                                </layout>
-                                                <accessibility>
-                                                    <relation name="labelled-by">use_default_output_label</relation>
-                                                </accessibility>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkSwitch" id="use_default_output">
-                                                <property name="halign">start</property>
-                                                <property name="valign">center</property>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">1</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel" id="dropdown_input_devices_label">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Input Device</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">2</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkDropDown" id="dropdown_input_devices">
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">2</property>
-                                                </layout>
-                                                <accessibility>
-                                                    <relation name="labelled-by">dropdown_input_devices_label</relation>
-                                                </accessibility>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel" id="dropdown_output_devices_label">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Output Device</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">3</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkDropDown" id="dropdown_output_devices">
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">3</property>
-                                                </layout>
-                                                <accessibility>
-                                                    <relation name="labelled-by">dropdown_output_devices_label</relation>
-                                                </accessibility>
-                                            </object>
-                                        </child>
 
                                         <child>
                                             <object class="GtkLabel">

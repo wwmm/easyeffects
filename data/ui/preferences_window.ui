@@ -22,7 +22,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Start Service at Login</property>
-
+                                <property name="activatable_widget">enable_autostart</property>
                                 <child>
                                     <object class="GtkSwitch" id="enable_autostart">
                                         <property name="valign">center</property>
@@ -35,7 +35,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Shutdown on Window Close</property>
-
+                                <property name="activatable_widget">shutdown_on_window_close</property>
                                 <child>
                                     <object class="GtkSwitch" id="shutdown_on_window_close">
                                         <property name="valign">center</property>
@@ -52,7 +52,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Process All Outputs</property>
-
+                                <property name="activatable_widget">process_all_outputs</property>
                                 <child>
                                     <object class="GtkSwitch" id="process_all_outputs">
                                         <property name="valign">center</property>
@@ -63,7 +63,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Process All Inputs</property>
-
+                                <property name="activatable_widget">process_all_inputs</property>
                                 <child>
                                     <object class="GtkSwitch" id="process_all_inputs">
                                         <property name="valign">center</property>
@@ -74,7 +74,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Use Cubic Volume</property>
-
+                                <property name="activatable_widget">use_cubic_volumes</property>
                                 <child>
                                     <object class="GtkSwitch" id="use_cubic_volumes">
                                         <property name="valign">center</property>
@@ -91,7 +91,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Use Dark Theme</property>
-
+                                <property name="activatable_widget">theme_switch</property>
                                 <child>
                                     <object class="GtkSwitch" id="theme_switch">
                                         <property name="valign">center</property>
@@ -115,7 +115,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Enabled</property>
-
+                                <property name="activatable_widget">spectrum_show</property>
                                 <child>
                                     <object class="GtkSwitch" id="spectrum_show">
                                         <property name="valign">center</property>
@@ -216,7 +216,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Fill</property>
-
+                                <property name="activatable_widget">spectrum_fill</property>
                                 <child>
                                     <object class="GtkSwitch" id="spectrum_fill">
                                         <property name="valign">center</property>
@@ -228,7 +228,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Show Bars Border</property>
-
+                                <property name="activatable_widget">spectrum_show_bar_border</property>
                                 <child>
                                     <object class="GtkSwitch" id="spectrum_show_bar_border">
                                         <property name="valign">center</property>
