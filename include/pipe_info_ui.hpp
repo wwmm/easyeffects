@@ -52,15 +52,6 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::Stack* stack = nullptr;
 
-  Gtk::Switch* use_default_input = nullptr;
-
-  Gtk::Switch* use_default_output = nullptr;
-
-  Gtk::Switch* enable_test_signal = nullptr;
-
-  Gtk::Label *header_version = nullptr, *library_version = nullptr, *server_rate = nullptr, *max_quantum = nullptr,
-             *min_quantum = nullptr, *quantum = nullptr;
-
   Gtk::DropDown* dropdown_input_devices = nullptr;
 
   Gtk::DropDown* dropdown_output_devices = nullptr;
@@ -73,10 +64,6 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::DropDown* dropdown_autoloading_input_presets = nullptr;
 
-  Gtk::ListView* listview_modules = nullptr;
-
-  Gtk::ListView* listview_clients = nullptr;
-
   Gtk::ListView* listview_autoloading_output = nullptr;
 
   Gtk::ListView* listview_autoloading_input = nullptr;
@@ -85,39 +72,17 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::Button* autoloading_add_input_profile = nullptr;
 
-  Gtk::SpinButton* spinbutton_test_signal_frequency = nullptr;
-
-  Gtk::CheckButton* checkbutton_channel_left = nullptr;
-
-  Gtk::CheckButton* checkbutton_channel_right = nullptr;
-
-  Gtk::CheckButton* checkbutton_channel_both = nullptr;
-
-  Gtk::CheckButton* checkbutton_signal_sine = nullptr;
-
-  Gtk::CheckButton* checkbutton_signal_gaussian = nullptr;
-
-  // Gtk::CheckButton* checkbutton_signal_pink = nullptr;
-
   Glib::RefPtr<Gio::Settings> sie_settings;
 
   Glib::RefPtr<Gio::Settings> soe_settings;
 
   Glib::RefPtr<NodeInfoHolder> input_devices_holder, output_devices_holder;
 
-  Glib::RefPtr<ModuleInfoHolder> modules_holder;
-
-  Glib::RefPtr<ClientInfoHolder> clients_holder;
-
   Glib::RefPtr<PresetsAutoloadingHolder> autoloading_output_holder;
 
   Glib::RefPtr<PresetsAutoloadingHolder> autoloading_input_holder;
 
   Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> input_devices_model, output_devices_model;
-
-  Glib::RefPtr<Gio::ListStore<ModuleInfoHolder>> modules_model;
-
-  Glib::RefPtr<Gio::ListStore<ClientInfoHolder>> clients_model;
 
   Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>> autoloading_output_model;
 
@@ -133,19 +98,9 @@ class PipeInfoUi : public Gtk::Box {
 
   void setup_dropdown_presets(PresetType preset_type, const Glib::RefPtr<Gtk::StringList>& string_list);
 
-  void setup_listview_modules();
-
-  void setup_listview_clients();
-
   void setup_listview_autoloading(PresetType preset_type,
                                   Gtk::ListView* listview,
                                   const Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>>& model);
-
-  void update_modules_info();
-
-  void update_clients_info();
-
-  void on_stack_visible_child_changed();
 };
 
 #endif

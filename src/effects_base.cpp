@@ -125,88 +125,97 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     plugins_latency[key] = 0.0F;
   }
 
-  compressor->latency.connect([=, this](const auto& v) {
+  connections.push_back(compressor->latency.connect([=, this](const auto& v) {
     plugins_latency[compressor->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  convolver->latency.connect([=, this](const auto& v) {
+  connections.push_back(convolver->latency.connect([=, this](const auto& v) {
     plugins_latency[convolver->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  crystalizer->latency.connect([=, this](const auto& v) {
+  connections.push_back(crystalizer->latency.connect([=, this](const auto& v) {
     plugins_latency[crystalizer->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  delay->latency.connect([=, this](const auto& v) {
+  connections.push_back(delay->latency.connect([=, this](const auto& v) {
     plugins_latency[delay->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  echo_canceller->latency.connect([=, this](const auto& v) {
+  connections.push_back(echo_canceller->latency.connect([=, this](const auto& v) {
     plugins_latency[echo_canceller->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  equalizer->latency.connect([=, this](const auto& v) {
+  connections.push_back(equalizer->latency.connect([=, this](const auto& v) {
     plugins_latency[equalizer->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  loudness->latency.connect([=, this](const auto& v) {
+  connections.push_back(loudness->latency.connect([=, this](const auto& v) {
     plugins_latency[loudness->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  limiter->latency.connect([=, this](const auto& v) {
+  connections.push_back(limiter->latency.connect([=, this](const auto& v) {
     plugins_latency[limiter->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  maximizer->latency.connect([=, this](const auto& v) {
+  connections.push_back(maximizer->latency.connect([=, this](const auto& v) {
     plugins_latency[maximizer->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  multiband_compressor->latency.connect([=, this](const auto& v) {
+  connections.push_back(multiband_compressor->latency.connect([=, this](const auto& v) {
     plugins_latency[multiband_compressor->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  pitch->latency.connect([=, this](const auto& v) {
+  connections.push_back(pitch->latency.connect([=, this](const auto& v) {
     plugins_latency[pitch->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  rnnoise->latency.connect([=, this](const auto& v) {
+  connections.push_back(rnnoise->latency.connect([=, this](const auto& v) {
     plugins_latency[rnnoise->name] = v;
 
     broadcast_pipeline_latency();
-  });
+  }));
 
-  g_signal_connect(settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<EffectsBase*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::plugins",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<EffectsBase*>(user_data);
 
-                     self->broadcast_pipeline_latency();
-                   }),
-                   this);
+                                            self->broadcast_pipeline_latency();
+                                          }),
+                                          this));
 }
 
 EffectsBase::~EffectsBase() {
   util::debug("effects_base: destroyed");
+
+  for (auto& c : connections) {
+    c.disconnect();
+  }
+
+  for (auto& handler_id : gconnections) {
+    g_signal_handler_disconnect(settings, handler_id);
+  }
 
   g_object_unref(settings);
 }
@@ -238,5 +247,5 @@ void EffectsBase::broadcast_pipeline_latency() {
 
   util::debug(log_tag + "pipeline latency: " + std::to_string(latency_value) + " ms");
 
-  Glib::signal_idle().connect_once([=, this] { pipeline_latency.emit(latency_value); });
+  pipeline_latency.emit(latency_value);
 }

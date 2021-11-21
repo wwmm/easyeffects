@@ -221,7 +221,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
     case PipelineType::input: {
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
-      self->effects_base = static_cast<EffectsBase*>(self->application->sie.get());
+      self->effects_base = static_cast<EffectsBase*>(self->application->sie);
 
       self->apps_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->appsBox), "apps", _("Recorders"));
 
@@ -246,7 +246,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
     case PipelineType::output: {
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
 
-      self->effects_base = static_cast<EffectsBase*>(self->application->soe.get());
+      self->effects_base = static_cast<EffectsBase*>(self->application->soe);
 
       self->apps_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->appsBox), "apps", _("Players"));
 

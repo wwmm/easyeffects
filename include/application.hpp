@@ -21,7 +21,6 @@
 
 #include <adwaita.h>
 #include <glib/gi18n.h>
-#include <memory>
 #include <string>
 #include "config.h"
 #include "pipe_manager.hpp"
@@ -47,10 +46,14 @@ struct _Application {
   GSettings* soe_settings;
   GSettings* sie_settings;
 
-  std::unique_ptr<PipeManager> pm;
-  std::unique_ptr<StreamOutputEffects> soe;
-  std::unique_ptr<StreamInputEffects> sie;
-  std::unique_ptr<PresetsManager> presets_manager;
+  PipeManager* pm;
+  StreamOutputEffects* soe;
+  StreamInputEffects* sie;
+  PresetsManager* presets_manager;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections, gconnections_sie, gconnections_soe;
 };
 
 auto application_new() -> GApplication*;

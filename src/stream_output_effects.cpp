@@ -61,51 +61,52 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     }
   }
 
-  pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
-  pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed));
+  connections.push_back(pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added)));
+  connections.push_back(pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed)));
 
   connect_filters();
 
-  g_signal_connect(settings, "changed::output-device",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<StreamOutputEffects*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::output-device",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<StreamOutputEffects*>(user_data);
 
-                     const auto name = std::string(g_settings_get_string(settings, key));
+                                            const auto name = std::string(g_settings_get_string(settings, key));
 
-                     if (name.empty()) {
-                       return;
-                     }
+                                            if (name.empty()) {
+                                              return;
+                                            }
 
-                     for (const auto& [ts, node] : self->pm->node_map) {
-                       if (node.name == name) {
-                         self->pm->output_device = node;
+                                            for (const auto& [ts, node] : self->pm->node_map) {
+                                              if (node.name == name) {
+                                                self->pm->output_device = node;
 
-                         if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
-                           g_settings_set_boolean(self->global_settings, "bypass", 0);
+                                                if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
+                                                  g_settings_set_boolean(self->global_settings, "bypass", 0);
 
-                           return;  // filter connected through update_bypass_state
-                         }
+                                                  return;  // filter connected through update_bypass_state
+                                                }
 
-                         self->set_bypass(false);
+                                                self->set_bypass(false);
 
-                         break;
-                       }
-                     }
-                   }),
-                   this);
+                                                break;
+                                              }
+                                            }
+                                          }),
+                                          this));
 
-  g_signal_connect(settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<StreamOutputEffects*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::plugins",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<StreamOutputEffects*>(user_data);
 
-                     if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
-                       g_settings_set_boolean(self->global_settings, "bypass", 0);
+                                            if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
+                                              g_settings_set_boolean(self->global_settings, "bypass", 0);
 
-                       return;  // filter connected through update_bypass_state
-                     }
+                                              return;  // filter connected through update_bypass_state
+                                            }
 
-                     self->set_bypass(false);
-                   }),
-                   this);
+                                            self->set_bypass(false);
+                                          }),
+                                          this));
 }
 
 StreamOutputEffects::~StreamOutputEffects() {

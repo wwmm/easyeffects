@@ -59,15 +59,15 @@ void on_startup(GApplication* gapp) {
   self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
-  self->pm = std::make_unique<PipeManager>();
-  self->soe = std::make_unique<StreamOutputEffects>(self->pm.get());
-  self->sie = std::make_unique<StreamInputEffects>(self->pm.get());
+  self->pm = new PipeManager();
+  self->soe = new StreamOutputEffects(self->pm);
+  self->sie = new StreamInputEffects(self->pm);
 
   if (self->presets_manager == nullptr) {
-    self->presets_manager = std::make_unique<PresetsManager>();
+    self->presets_manager = new PresetsManager();
   }
 
-  self->pm->new_default_sink.connect([=](const NodeInfo node) {
+  self->connections.push_back(self->pm->new_default_sink.connect([=](const NodeInfo node) {
     util::debug("new default output device: " + node.name);
 
     if (g_settings_get_boolean(self->soe_settings, "use-default-output-device") != 0) {
@@ -79,9 +79,9 @@ void on_startup(GApplication* gapp) {
       g_settings_set_string(self->soe_settings, "output-device", "");
       g_settings_set_string(self->soe_settings, "output-device", node.name.c_str());
     }
-  });
+  }));
 
-  self->pm->new_default_source.connect([=](const NodeInfo node) {
+  self->connections.push_back(self->pm->new_default_source.connect([=](const NodeInfo node) {
     util::debug("new default input device: " + node.name);
 
     if (g_settings_get_boolean(self->sie_settings, "use-default-input-device") != 0) {
@@ -93,9 +93,9 @@ void on_startup(GApplication* gapp) {
       g_settings_set_string(self->sie_settings, "input-device", "");
       g_settings_set_string(self->sie_settings, "input-device", node.name.c_str());
     }
-  });
+  }));
 
-  self->pm->device_input_route_changed.connect([=](const DeviceInfo device) {
+  self->connections.push_back(self->pm->device_input_route_changed.connect([=](const DeviceInfo device) {
     if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
       return;
     }
@@ -121,9 +121,9 @@ void on_startup(GApplication* gapp) {
     } else {
       util::debug(log_tag + "input autoloading: could not find the target node"s);
     }
-  });
+  }));
 
-  self->pm->device_output_route_changed.connect([=](const DeviceInfo device) {
+  self->connections.push_back(self->pm->device_output_route_changed.connect([=](const DeviceInfo device) {
     if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
       return;
     }
@@ -151,79 +151,79 @@ void on_startup(GApplication* gapp) {
     } else {
       util::debug(log_tag + "output autoloading: could not find the target node"s);
     }
-  });
+  }));
 
-  g_signal_connect(self->soe_settings, "changed::output-device",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Application*>(user_data);
+  self->gconnections_soe.push_back(g_signal_connect(
+      self->soe_settings, "changed::output-device", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<Application*>(user_data);
 
-                     const auto name = std::string(g_settings_get_string(settings, key));
+        const auto name = std::string(g_settings_get_string(settings, key));
 
-                     if (name.empty()) {
-                       return;
-                     }
+        if (name.empty()) {
+          return;
+        }
 
-                     uint device_id = SPA_ID_INVALID;
+        uint device_id = SPA_ID_INVALID;
 
-                     for (const auto& [ts, node] : self->pm->node_map) {
-                       if (node.name == name) {
-                         device_id = node.device_id;
+        for (const auto& [ts, node] : self->pm->node_map) {
+          if (node.name == name) {
+            device_id = node.device_id;
 
-                         break;
-                       }
-                     }
+            break;
+          }
+        }
 
-                     if (device_id != SPA_ID_INVALID) {
-                       for (const auto& device : self->pm->list_devices) {
-                         if (device.id == device_id) {
-                           self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
+        if (device_id != SPA_ID_INVALID) {
+          for (const auto& device : self->pm->list_devices) {
+            if (device.id == device_id) {
+              self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
 
-                           break;
-                         }
-                       }
-                     }
-                   }),
-                   self);
+              break;
+            }
+          }
+        }
+      }),
+      self));
 
-  g_signal_connect(self->sie_settings, "changed::input-device",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Application*>(user_data);
+  self->gconnections_sie.push_back(g_signal_connect(
+      self->sie_settings, "changed::input-device", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<Application*>(user_data);
 
-                     const auto name = std::string(g_settings_get_string(settings, key));
+        const auto name = std::string(g_settings_get_string(settings, key));
 
-                     if (name.empty()) {
-                       return;
-                     }
+        if (name.empty()) {
+          return;
+        }
 
-                     uint device_id = SPA_ID_INVALID;
+        uint device_id = SPA_ID_INVALID;
 
-                     for (const auto& [ts, node] : self->pm->node_map) {
-                       if (node.name == name) {
-                         device_id = node.device_id;
+        for (const auto& [ts, node] : self->pm->node_map) {
+          if (node.name == name) {
+            device_id = node.device_id;
 
-                         break;
-                       }
-                     }
+            break;
+          }
+        }
 
-                     if (device_id != SPA_ID_INVALID) {
-                       for (const auto& device : self->pm->list_devices) {
-                         if (device.id == device_id) {
-                           self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
+        if (device_id != SPA_ID_INVALID) {
+          for (const auto& device : self->pm->list_devices) {
+            if (device.id == device_id) {
+              self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
 
-                           break;
-                         }
-                       }
-                     }
-                   }),
-                   self);
+              break;
+            }
+          }
+        }
+      }),
+      self));
 
-  g_signal_connect(self->settings, "changed::bypass",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Application*>(user_data);
+  self->gconnections.push_back(g_signal_connect(self->settings, "changed::bypass",
+                                                G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                                  auto self = static_cast<Application*>(user_data);
 
-                     update_bypass_state(self);
-                   }),
-                   self);
+                                                  update_bypass_state(self);
+                                                }),
+                                                self));
 
   update_bypass_state(self);
 
@@ -286,7 +286,7 @@ void application_class_init(ApplicationClass* klass) {
     auto* self = EE_APP(gapp);
 
     if (self->presets_manager == nullptr) {
-      self->presets_manager = std::make_unique<PresetsManager>();
+      self->presets_manager = new PresetsManager();
     }
 
     if (g_variant_dict_contains(options, "presets") != 0) {
@@ -339,14 +339,34 @@ void application_class_init(ApplicationClass* klass) {
 
     auto* self = EE_APP(gapp);
 
+    for (auto& c : self->connections) {
+      c.disconnect();
+    }
+
+    for (auto& handler_id : self->gconnections) {
+      g_signal_handler_disconnect(self->settings, handler_id);
+    }
+
+    for (auto& handler_id : self->gconnections_sie) {
+      g_signal_handler_disconnect(self->sie_settings, handler_id);
+    }
+
+    for (auto& handler_id : self->gconnections_soe) {
+      g_signal_handler_disconnect(self->soe_settings, handler_id);
+    }
+
+    self->connections.clear();
+    self->gconnections_sie.clear();
+    self->gconnections_soe.clear();
+
     g_object_unref(self->settings);
     g_object_unref(self->sie_settings);
     g_object_unref(self->soe_settings);
 
-    // Making sure some destructors are called. I have no idea why this is not happening automatically...
-
-    self->pm = nullptr;
-    self->presets_manager = nullptr;
+    delete self->presets_manager;
+    delete self->sie;
+    delete self->soe;
+    delete self->pm;
 
     util::debug(log_tag + "shutting down..."s);
   };

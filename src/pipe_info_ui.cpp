@@ -31,8 +31,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       soe_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs")),
       input_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
       output_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
-      modules_model(Gio::ListStore<ModuleInfoHolder>::create()),
-      clients_model(Gio::ListStore<ClientInfoHolder>::create()),
       autoloading_output_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
       autoloading_input_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
       output_presets_string_list(Gtk::StringList::create({"initial_value"})),
@@ -48,9 +46,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   setup_listview_autoloading(PresetType::input, listview_autoloading_input, autoloading_input_model);
   setup_listview_autoloading(PresetType::output, listview_autoloading_output, autoloading_output_model);
-
-  setup_listview_modules();
-  setup_listview_clients();
 
   dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
     if (dropdown_input_devices->get_selected_item() == nullptr) {
@@ -106,47 +101,45 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
   }
 
-  stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
+  // use_default_input->property_active().signal_changed().connect([=, this]() {
+  //   if (use_default_input->get_active()) {
+  //     sie_settings->set_string("input-device", pm->default_input_device.name);
 
-  use_default_input->property_active().signal_changed().connect([=, this]() {
-    if (use_default_input->get_active()) {
-      sie_settings->set_string("input-device", pm->default_input_device.name);
+  //     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
 
-      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
+  //     if (holder != nullptr) {
+  //       if (holder->name != pm->default_input_device.name) {
+  //         for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+  //           if (input_devices_model->get_item(n)->name == pm->default_input_device.name) {
+  //             dropdown_input_devices->set_selected(n);
 
-      if (holder != nullptr) {
-        if (holder->name != pm->default_input_device.name) {
-          for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
-            if (input_devices_model->get_item(n)->name == pm->default_input_device.name) {
-              dropdown_input_devices->set_selected(n);
+  //             break;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // });
 
-              break;
-            }
-          }
-        }
-      }
-    }
-  });
+  // use_default_output->property_active().signal_changed().connect([=, this]() {
+  //   if (use_default_output->get_active()) {
+  //     soe_settings->set_string("output-device", pm->default_output_device.name);
 
-  use_default_output->property_active().signal_changed().connect([=, this]() {
-    if (use_default_output->get_active()) {
-      soe_settings->set_string("output-device", pm->default_output_device.name);
+  //     auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
 
-      auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
+  //     if (holder_selected != nullptr) {
+  //       if (holder_selected->name != pm->default_output_device.name) {
+  //         for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
+  //           if (output_devices_model->get_item(n)->name == pm->default_output_device.name) {
+  //             dropdown_output_devices->set_selected(n);
 
-      if (holder_selected != nullptr) {
-        if (holder_selected->name != pm->default_output_device.name) {
-          for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
-            if (output_devices_model->get_item(n)->name == pm->default_output_device.name) {
-              dropdown_output_devices->set_selected(n);
-
-              break;
-            }
-          }
-        }
-      }
-    }
-  });
+  //             break;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // });
 
   autoloading_add_output_profile->signal_clicked().connect([=, this]() {
     if (dropdown_autoloading_output_devices->get_selected_item() == nullptr) {
@@ -351,9 +344,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
         autoloading_input_model->splice(0, autoloading_input_model->get_n_items(), list);
       }));
-
-  update_modules_info();
-  update_clients_info();
 }
 
 PipeInfoUi::~PipeInfoUi() {
@@ -564,107 +554,4 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
       list_item->set_data("connection_remove", nullptr);
     }
   });
-}
-
-void PipeInfoUi::setup_listview_modules() {
-  // setting the listview model and factory
-
-  listview_modules->set_model(Gtk::NoSelection::create(modules_model));
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview_modules->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/module_info.ui");
-
-    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
-
-    list_item->set_data("id", b->get_widget<Gtk::Label>("id"));
-    list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
-    list_item->set_data("description", b->get_widget<Gtk::Label>("description"));
-
-    list_item->set_child(*top_box);
-  });
-
-  factory->signal_bind().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const id = static_cast<Gtk::Label*>(list_item->get_data("id"));
-    auto* const name = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const description = static_cast<Gtk::Label*>(list_item->get_data("description"));
-
-    auto holder = std::dynamic_pointer_cast<ModuleInfoHolder>(list_item->get_item());
-
-    id->set_text(Glib::ustring::format(holder->info.id));
-    name->set_text(holder->info.name);
-    description->set_text(holder->info.description);
-  });
-}
-
-void PipeInfoUi::setup_listview_clients() {
-  // setting the listview model and factory
-
-  listview_clients->set_model(Gtk::NoSelection::create(clients_model));
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview_clients->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/client_info.ui");
-
-    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
-
-    list_item->set_data("id", b->get_widget<Gtk::Label>("id"));
-    list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
-    list_item->set_data("api", b->get_widget<Gtk::Label>("api"));
-    list_item->set_data("access", b->get_widget<Gtk::Label>("access"));
-
-    list_item->set_child(*top_box);
-  });
-
-  factory->signal_bind().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const id = static_cast<Gtk::Label*>(list_item->get_data("id"));
-    auto* const name = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const api = static_cast<Gtk::Label*>(list_item->get_data("api"));
-    auto* const access = static_cast<Gtk::Label*>(list_item->get_data("access"));
-
-    auto holder = std::dynamic_pointer_cast<ClientInfoHolder>(list_item->get_item());
-
-    id->set_text(Glib::ustring::format(holder->info.id));
-    name->set_text(holder->info.name);
-    api->set_text(holder->info.api);
-    access->set_text(holder->info.access);
-  });
-}
-
-void PipeInfoUi::update_modules_info() {
-  std::vector<Glib::RefPtr<ModuleInfoHolder>> values;
-
-  for (const auto& info : pm->list_modules) {
-    values.push_back(ModuleInfoHolder::create(info));
-  }
-
-  modules_model->splice(0, modules_model->get_n_items(), values);
-}
-
-void PipeInfoUi::update_clients_info() {
-  std::vector<Glib::RefPtr<ClientInfoHolder>> values;
-
-  for (const auto& info : pm->list_clients) {
-    values.push_back(ClientInfoHolder::create(info));
-  }
-
-  clients_model->splice(0, clients_model->get_n_items(), values);
-}
-
-void PipeInfoUi::on_stack_visible_child_changed() {
-  if (const auto name = stack->get_visible_child_name(); name == "page_modules") {
-    update_modules_info();
-  } else if (name == "page_clients") {
-    update_clients_info();
-  }
 }

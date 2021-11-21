@@ -100,6 +100,10 @@ class EffectsBase {
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
 
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+
   void activate_filters();
 
   void deactivate_filters();

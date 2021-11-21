@@ -90,6 +90,25 @@ void update_modules_info(PipeManagerBox* self) {
                       (gpointer*)(values.data()), values.size());
 }
 
+void update_clients_info(PipeManagerBox* self) {
+  std::vector<ui::holders::ClientInfoHolder*> values;
+
+  for (const auto& info : self->application->pm->list_clients) {
+    values.push_back(ui::holders::create(info));
+  }
+
+  g_list_store_splice(self->clients_model, 0, g_list_model_get_n_items(G_LIST_MODEL(self->clients_model)),
+                      (gpointer*)(values.data()), values.size());
+}
+
+void on_stack_visible_child_changed(PipeManagerBox* self, GParamSpec* pspec, GtkWidget* stack) {
+  if (const auto name = gtk_stack_get_visible_child_name(GTK_STACK(stack)); g_strcmp0(name, "page_modules") == 0) {
+    update_modules_info(self);
+  } else if (g_strcmp0(name, "page_clients") == 0) {
+    update_clients_info(self);
+  }
+}
+
 void setup_listview_modules(PipeManagerBox* self) {
   auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->modules_model));
 
@@ -137,10 +156,60 @@ void setup_listview_modules(PipeManagerBox* self) {
   g_object_unref(factory);
 }
 
+void setup_listview_clients(PipeManagerBox* self) {
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->clients_model));
+
+  gtk_list_view_set_model(self->listview_clients, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
+
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(factory, "setup",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+                     auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/client_info.ui");
+
+                     auto* top_box = gtk_builder_get_object(builder, "top_box");
+
+                     g_object_set_data(G_OBJECT(item), "id", gtk_builder_get_object(builder, "id"));
+                     g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
+                     g_object_set_data(G_OBJECT(item), "api", gtk_builder_get_object(builder, "api"));
+                     g_object_set_data(G_OBJECT(item), "access", gtk_builder_get_object(builder, "access"));
+
+                     gtk_list_item_set_activatable(item, 0);
+                     gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+
+                     g_object_unref(builder);
+                   }),
+                   self);
+
+  g_signal_connect(factory, "bind",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+                     auto* id = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "id"));
+                     auto* name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+                     auto* api = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "api"));
+                     auto* access = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "access"));
+
+                     auto* holder = static_cast<ui::holders::ClientInfoHolder*>(gtk_list_item_get_item(item));
+
+                     gtk_label_set_text(id, std::to_string(holder->id).c_str());
+                     gtk_label_set_text(name, holder->name.c_str());
+                     gtk_label_set_text(api, holder->api.c_str());
+                     gtk_label_set_text(access, holder->access.c_str());
+                   }),
+                   self);
+
+  gtk_list_view_set_factory(self->listview_clients, factory);
+
+  g_object_unref(factory);
+}
+
 void setup(PipeManagerBox* self, app::Application* application) {
   self->application = application;
 
-  auto pm = application->pm.get();
+  auto pm = application->pm;
 
   self->ts = new TestSignals(pm);
 
@@ -164,8 +233,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   gtk_label_set_text(self->quantum, pm->default_quantum.c_str());
 
   setup_listview_modules(self);
-
-  update_modules_info(self);
+  setup_listview_clients(self);
 }
 
 void dispose(GObject* object) {
@@ -243,6 +311,7 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_channel_both);
   gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_signal_sine);
   gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_signal_gaussian);
+  gtk_widget_class_bind_template_callback(widget_class, on_stack_visible_child_changed);
 }
 
 void pipe_manager_box_init(PipeManagerBox* self) {

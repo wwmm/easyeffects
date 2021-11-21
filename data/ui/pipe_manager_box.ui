@@ -20,6 +20,7 @@
                 <property name="margin-end">6</property>
                 <property name="margin-top">6</property>
                 <property name="margin-bottom">6</property>
+                <signal name="notify::visible-child" handler="on_stack_visible_child_changed" object="PipeManagerBox" />
                 <child>
                     <object class="GtkStackPage">
                         <property name="name">page_general</property>
