@@ -39,6 +39,15 @@ void client_info_holder_class_init(ClientInfoHolderClass* klass) {
 
 void client_info_holder_init(ClientInfoHolder* self) {
   self->id = SPA_ID_INVALID;
+
+  /*
+    gtk is doing something weird when initializing the structures "_***"
+    if we do not do something like the one below we may segfault if info.name and similar are empty
+  */
+
+  self->name = " ";
+  self->api = " ";
+  self->access = " ";
 }
 
 auto create(const ClientInfo& info) -> ClientInfoHolder* {

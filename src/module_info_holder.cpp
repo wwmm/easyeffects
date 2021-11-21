@@ -42,9 +42,9 @@ void module_info_holder_init(ModuleInfoHolder* self) {
   self->id = SPA_ID_INVALID;
 
   /*
-    gtk is goind something weird when initializing _ModuleInfoHolder
-    if we do not do something like the one below we may segfault if info.descrition and similars are empty
-   */
+    gtk is doing something weird when initializing the structures "_***"
+    if we do not do something like the one below we may segfault if info.descrition and similar are empty
+  */
 
   self->name = " ";
   self->description = " ";

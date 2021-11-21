@@ -40,6 +40,14 @@ void node_info_holder_class_init(NodeInfoHolderClass* klass) {
 void node_info_holder_init(NodeInfoHolder* self) {
   self->id = SPA_ID_INVALID;
   self->device_id = SPA_ID_INVALID;
+
+  /*
+    gtk is doing something weird when initializing the structures "_***"
+    if we do not do something like the one below we may segfault if info.name and similar are empty
+  */
+
+  self->name = " ";
+  self->media_class = " ";
 }
 
 auto create(const NodeInfo& info) -> NodeInfoHolder* {
