@@ -24,6 +24,7 @@
 #include <unordered_map>
 #include "application.hpp"
 #include "pipeline_type.hpp"
+#include "plugin_name.hpp"
 #include "util.hpp"
 
 namespace ui::plugins_menu {

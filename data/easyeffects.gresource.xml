@@ -37,6 +37,7 @@
         <file>ui/pipe_info.ui</file>
         <file>ui/pipe_manager_box.ui</file>
         <file>ui/pitch.ui</file>
+        <file>ui/plugin_row.ui</file>
         <file>ui/plugins_box.ui</file>
         <file>ui/plugins_menu.ui</file>
         <file>ui/preferences_window.ui</file>
@@ -49,5 +50,6 @@
         <file>icons/scalable/emblems/ee-square-symbolic.svg</file>
         <file>icons/scalable/emblems/ee-spectrum-symbolic.svg</file>
         <file>icons/scalable/emblems/ee-plugins-symbolic.svg</file>
+        <file>icons/scalable/emblems/ee-drag-handle-symbolic.svg</file>
     </gresource>
 </gresources>

@@ -33,9 +33,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
 
-  popover_plugins = builder->get_widget<Gtk::Popover>("popover_plugins");
-  scrolled_window_plugins = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window_plugins");
-  listview_selected_plugins = builder->get_widget<Gtk::ListView>("listview_selected_plugins");
   stack_plugins = builder->get_widget<Gtk::Stack>("stack_plugins");
 
   add_plugins_to_stack_plugins();
@@ -45,14 +42,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   setup_listview_selected_plugins();
 
   settings->signal_changed("plugins").connect([&, this](const auto& key) { add_plugins_to_stack_plugins(); });
-
-  // signals connections
-
-  popover_plugins->signal_show().connect([=, this]() {
-    const int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
-
-    scrolled_window_plugins->set_max_content_height(height);
-  });
 
   // enabling notifications
 
@@ -494,10 +483,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 }
 
 void EffectsBaseUi::setup_listview_selected_plugins() {
-  // setting the listview model and factory
-
-  listview_selected_plugins->set_model(Gtk::SingleSelection::create(selected_plugins));
-
   auto factory = Gtk::SignalListItemFactory::create();
 
   listview_selected_plugins->set_factory(factory);
@@ -514,163 +499,6 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
         stack_plugins->set_visible_child(*child);
 
         return;
-      }
-    }
-  });
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const remove = Gtk::make_managed<Gtk::Button>();
-    auto* const drag_handle = Gtk::make_managed<Gtk::Image>();
-    auto* const plugin_icon = Gtk::make_managed<Gtk::Image>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    remove->set_icon_name("edit-delete-symbolic");
-    remove->set_css_classes({"flat"});
-
-    drag_handle->set_from_icon_name("view-app-grid-symbolic");
-
-    // it is Adwaita folder-download-symbolic icon renamed
-    plugin_icon->set_from_icon_name("ee-arrow-down-symbolic");
-
-    plugin_icon->set_margin_start(6);
-    plugin_icon->set_margin_end(6);
-
-    box->set_spacing(6);
-    box->append(*plugin_icon);
-    box->append(*label);
-    box->append(*remove);
-    box->append(*drag_handle);
-
-    remove->set_opacity(0.0);
-    drag_handle->set_opacity(0.0);
-
-    auto controller = Gtk::EventControllerMotion::create();
-
-    controller->signal_enter().connect([=](const double& x, const double& y) {
-      remove->set_opacity(1.0);
-      drag_handle->set_opacity(1.0);
-    });
-
-    controller->signal_leave().connect([=]() {
-      remove->set_opacity(0.0);
-      drag_handle->set_opacity(0.0);
-    });
-
-    box->add_controller(controller);
-
-    // drag and drop
-
-    auto drag_source = Gtk::DragSource::create();
-    auto drop_target = Gtk::DropTarget::create(Glib::Value<Glib::ustring>::value_type(), Gdk::DragAction::MOVE);
-
-    drag_source->set_actions(Gdk::DragAction::MOVE);
-
-    drag_source->signal_prepare().connect(
-        [=](const double& x, const double& y) {
-          const auto paintable = Gtk::WidgetPaintable::create(*box);
-
-          drag_source->set_icon(paintable, 0, 0);
-
-          return Gdk::ContentProvider::create(util::glib_value(label->get_name()));
-        },
-        false);
-
-    drop_target->signal_drop().connect(
-        [=, this](const Glib::ValueBase& v, const double& x, const double& y) {
-          Glib::Value<Glib::ustring> name_value;
-
-          name_value.init(v.gobj());
-
-          const auto src = name_value.get();
-          const auto dst = label->get_name();
-
-          if (src != dst) {
-            auto list = settings->get_string_array("plugins");
-
-            const auto iter_src = std::ranges::find(list, src);
-            auto iter_dst = std::ranges::find(list, dst);
-
-            const auto insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;
-
-            list.erase(iter_src);
-
-            iter_dst = std::ranges::find(list, dst);
-
-            list.insert(((insert_after) ? (iter_dst + 1) : iter_dst), src);
-
-            Glib::signal_idle().connect_once([=, this] { settings->set_string_array("plugins", list); });
-
-            return true;
-          }
-
-          return false;
-        },
-        false);
-
-    drag_handle->add_controller(drag_source);
-    box->add_controller(drop_target);
-
-    // setting list_item data
-
-    list_item->set_data("name", label);
-    list_item->set_data("remove", remove);
-    list_item->set_data("plugin_icon", plugin_icon);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
-    auto* const plugin_icon = static_cast<Gtk::Image*>(list_item->get_data("plugin_icon"));
-
-    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
-    // const auto translated_name = plugins_names[name];
-
-    label->set_name(name);
-    // label->set_text(translated_name);
-
-    const auto selected_plugins_list = settings->get_string_array("plugins");
-
-    if (const auto iter_name = std::ranges::find(selected_plugins_list, name);
-        (iter_name == selected_plugins_list.begin() && iter_name != selected_plugins_list.end() - 2) ||
-        iter_name == selected_plugins_list.end() - 1) {
-      // it is Adwaita media-playback-stop-symbolic icon renamed
-      plugin_icon->set_from_icon_name("ee-square-symbolic");
-    } else {
-      plugin_icon->set_from_icon_name("ee-arrow-down-symbolic");
-    }
-
-    // remove->update_property(Gtk::Accessible::Property::LABEL,
-    //                         util::glib_value(Glib::ustring(_("Remove")) + " " + translated_name));
-
-    auto connection_remove = remove->signal_clicked().connect([=, this]() {
-      auto list = settings->get_string_array("plugins");
-
-      list.erase(std::remove_if(list.begin(), list.end(), [=](const auto& plugin_name) { return plugin_name == name; }),
-                 list.end());
-
-      settings->set_string_array("plugins", list);
-    });
-
-    // setting list_item data
-
-    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
-                        Glib::destroy_notify_delete<sigc::connection>);
-  });
-
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_remove"}) {
-      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
-        connection->disconnect();
-
-        list_item->set_data(conn, nullptr);
       }
     }
   });

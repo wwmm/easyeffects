@@ -86,10 +86,6 @@ class EffectsBaseUi {
  private:
   Gtk::ListView* listview_selected_plugins = nullptr;
 
-  Gtk::ScrolledWindow* scrolled_window_plugins = nullptr;
-
-  Gtk::Popover* popover_plugins = nullptr;
-
   Glib::RefPtr<NodeInfoHolder> players_holder;
 
   Glib::RefPtr<Gtk::StringList> selected_plugins;

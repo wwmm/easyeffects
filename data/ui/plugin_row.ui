@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="easyeffects">
+    <object class="GtkBox" id="top_box">
+        <property name="spacing">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <child>
+            <object class="GtkImage" id="plugin_icon">
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="icon_name">ee-arrow-down-symbolic</property>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkLabel" id="name">
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="hexpand">1</property>
+                <property name="label">Name</property>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkButton" id="remove">
+                <property name="tooltip_text" translatable="yes">Remove this plugin</property>
+                <property name="valign">center</property>
+                <property name="opacity">0</property>
+                <property name="icon_name">user-trash-symbolic</property>
+                <style>
+                    <class name="flat" />
+                </style>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkImage" id="drag_handle">
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="opacity">0</property>
+                <property name="icon_name">ee-drag-handle-symbolic</property>
+            </object>
+        </child>
+    </object>
+</interface>

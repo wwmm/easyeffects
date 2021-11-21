@@ -128,6 +128,175 @@ void setup_listview(PluginsBox* self) {
 
   // setting the factory callbacks
 
+  g_signal_connect(
+      factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PluginsBox* self) {
+        auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/plugin_row.ui");
+
+        auto* top_box = gtk_builder_get_object(builder, "top_box");
+        auto* plugin_icon = gtk_builder_get_object(builder, "plugin_icon");
+        auto* remove = gtk_builder_get_object(builder, "remove");
+        auto* drag_handle = gtk_builder_get_object(builder, "drag_handle");
+
+        g_object_set_data(G_OBJECT(item), "top_box", top_box);
+        g_object_set_data(G_OBJECT(item), "plugin_icon", plugin_icon);
+        g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
+        g_object_set_data(G_OBJECT(item), "remove", remove);
+        g_object_set_data(G_OBJECT(item), "drag_handle", drag_handle);
+
+        gtk_list_item_set_activatable(item, 0);
+        gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+
+        g_object_unref(builder);
+
+        // showing/hiding icons based on wether the mouse is over the plugin row
+
+        auto* controller = gtk_event_controller_motion_new();
+
+        g_object_set_data(G_OBJECT(controller), "remove", remove);
+        g_object_set_data(G_OBJECT(controller), "drag_handle", drag_handle);
+
+        g_signal_connect(controller, "enter",
+                         G_CALLBACK(+[](GtkEventControllerMotion* controller, gdouble x, gdouble y, PluginsBox* self) {
+                           gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "remove")), 1.0);
+                           gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "drag_handle")),
+                                                  1.0);
+                         }),
+                         self);
+
+        g_signal_connect(controller, "leave", G_CALLBACK(+[](GtkEventControllerMotion* controller, PluginsBox* self) {
+                           gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "remove")), 0.0);
+                           gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "drag_handle")),
+                                                  0.0);
+                         }),
+                         self);
+
+        gtk_widget_add_controller(GTK_WIDGET(top_box), controller);
+
+        // Configuring row drag and drop
+
+        auto* drag_source = gtk_drag_source_new();
+
+        gtk_drag_source_set_actions(drag_source, GDK_ACTION_MOVE);
+
+        g_object_set_data(G_OBJECT(drag_source), "top_box", top_box);
+
+        g_signal_connect(
+            drag_source, "prepare", G_CALLBACK(+[](GtkDragSource* source, double x, double y, PluginsBox* self) {
+              auto* top_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(source), "top_box"));
+
+              auto* paintable = gtk_widget_paintable_new(GTK_WIDGET(top_box));
+
+              gtk_drag_source_set_icon(source, paintable, 0, 0);
+
+              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(top_box), "string-object"));
+                  string_object != nullptr) {
+                auto* plugin_name = gtk_string_object_get_string(string_object);
+
+                return gdk_content_provider_new_typed(G_TYPE_STRING, plugin_name);
+              }
+
+              return gdk_content_provider_new_typed(G_TYPE_STRING, "");
+            }),
+            self);
+
+        auto* drop_target = gtk_drop_target_new(G_TYPE_STRING, GDK_ACTION_MOVE);
+
+        g_object_set_data(G_OBJECT(drop_target), "top_box", top_box);
+
+        g_signal_connect(
+            drop_target, "drop",
+            G_CALLBACK(+[](GtkDropTarget* target, const GValue* value, double x, double y, PluginsBox* self) {
+              if (!G_VALUE_HOLDS(value, G_TYPE_STRING)) {
+                return false;
+              }
+
+              auto* top_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(target), "top_box"));
+
+              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(top_box), "string-object"));
+                  string_object != nullptr) {
+                auto* dst = gtk_string_object_get_string(string_object);
+
+                auto* src = g_value_get_string(value);
+
+                if (g_strcmp0(src, dst) != 0) {
+                  auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
+
+                  auto iter_src = std::ranges::find(list, src);
+                  auto iter_dst = std::ranges::find(list, dst);
+
+                  auto insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;
+
+                  list.erase(iter_src);
+
+                  iter_dst = std::ranges::find(list, dst);
+
+                  list.insert(((insert_after) ? (iter_dst + 1) : iter_dst), src);
+
+                  g_settings_set_strv(self->settings, "plugins", util::make_gchar_pointer_vector(list).data());
+
+                  return true;
+                }
+
+                return false;
+              }
+
+              return false;
+            }),
+            self);
+
+        gtk_widget_add_controller(GTK_WIDGET(drag_handle), GTK_EVENT_CONTROLLER(drag_source));
+        gtk_widget_add_controller(GTK_WIDGET(top_box), GTK_EVENT_CONTROLLER(drop_target));
+
+        g_signal_connect(
+            remove, "clicked", G_CALLBACK(+[](GtkButton* btn, PluginsBox* self) {
+              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(btn), "string-object"));
+                  string_object != nullptr) {
+                auto* name = gtk_string_object_get_string(string_object);
+
+                auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
+
+                list.erase(std::remove_if(list.begin(), list.end(),
+                                          [=](const auto& plugin_name) { return plugin_name == name; }),
+                           list.end());
+
+                g_settings_set_strv(self->settings, "plugins", util::make_gchar_pointer_vector(list).data());
+              }
+            }),
+            self);
+      }),
+      self);
+
+  g_signal_connect(factory, "bind",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PluginsBox* self) {
+                     auto* top_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(item), "top_box"));
+                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+                     auto* remove = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "remove"));
+                     auto* plugin_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "plugin_icon"));
+
+                     auto* child_item = gtk_list_item_get_item(item);
+                     auto* string_object = GTK_STRING_OBJECT(child_item);
+
+                     g_object_set_data(G_OBJECT(top_box), "string-object", string_object);
+                     g_object_set_data(G_OBJECT(remove), "string-object", string_object);
+
+                     auto* name = gtk_string_object_get_string(GTK_STRING_OBJECT(child_item));
+
+                     gtk_label_set_text(label, plugin_name::translated[name].c_str());
+
+                     gtk_accessible_update_property(GTK_ACCESSIBLE(remove), GTK_ACCESSIBLE_PROPERTY_LABEL,
+                                                    (_("Remove") + " "s + plugin_name::translated[name]).c_str(), -1);
+
+                     const auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
+
+                     if (const auto iter_name = std::ranges::find(list, name);
+                         (iter_name == list.begin() && iter_name != list.end() - 2) || iter_name == list.end() - 1) {
+                       gtk_image_set_from_icon_name(plugin_icon, "ee-square-symbolic");
+                     } else {
+                       gtk_image_set_from_icon_name(plugin_icon, "ee-arrow-down-symbolic");
+                     }
+                   }),
+                   self);
+
   gtk_list_view_set_factory(self->listview, factory);
 
   g_object_unref(factory);

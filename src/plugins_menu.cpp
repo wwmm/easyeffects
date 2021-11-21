@@ -40,8 +40,6 @@ struct _PluginsMenu {
 
   app::Application* application;
 
-  std::unordered_map<std::string, std::string> plugins_names;
-
   std::vector<sigc::connection> connections;
 
   std::vector<gulong> gconnections;
@@ -50,7 +48,7 @@ struct _PluginsMenu {
 G_DEFINE_TYPE(PluginsMenu, plugins_menu, GTK_TYPE_POPOVER)
 
 void setup_listview(PluginsMenu* self) {
-  for (const auto& translated_name : std::views::values(self->plugins_names)) {
+  for (const auto& translated_name : std::views::values(plugin_name::translated)) {
     gtk_string_list_append(self->string_list, translated_name.c_str());
   }
 
@@ -108,7 +106,7 @@ void setup_listview(PluginsMenu* self) {
 
                 std::string key_name;
 
-                for (const auto& [key, value] : self->plugins_names) {
+                for (const auto& [key, value] : plugin_name::translated) {
                   if (translated_name == value) {
                     key_name = key;
 
@@ -242,31 +240,6 @@ void plugins_menu_init(PluginsMenu* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->string_list = gtk_string_list_new(nullptr);
-
-  self->plugins_names =
-      std::unordered_map<std::string, std::string>({{plugin_name::autogain, _("Autogain")},
-                                                    {plugin_name::bass_enhancer, _("Bass Enhancer")},
-                                                    {plugin_name::bass_loudness, _("Bass Loudness")},
-                                                    {plugin_name::compressor, _("Compressor")},
-                                                    {plugin_name::convolver, _("Convolver")},
-                                                    {plugin_name::crossfeed, _("Crossfeed")},
-                                                    {plugin_name::crystalizer, _("Crystalizer")},
-                                                    {plugin_name::deesser, _("Deesser")},
-                                                    {plugin_name::delay, _("Delay")},
-                                                    {plugin_name::echo_canceller, _("Echo Canceller")},
-                                                    {plugin_name::equalizer, _("Equalizer")},
-                                                    {plugin_name::exciter, _("Exciter")},
-                                                    {plugin_name::filter, _("Filter")},
-                                                    {plugin_name::gate, _("Gate")},
-                                                    {plugin_name::limiter, _("Limiter")},
-                                                    {plugin_name::loudness, _("Loudness")},
-                                                    {plugin_name::maximizer, _("Maximizer")},
-                                                    {plugin_name::multiband_compressor, _("Multiband Compressor")},
-                                                    {plugin_name::multiband_gate, _("Multiband Gate")},
-                                                    {plugin_name::pitch, _("Pitch")},
-                                                    {plugin_name::reverb, _("Reverberation")},
-                                                    {plugin_name::rnnoise, _("Noise Reduction")},
-                                                    {plugin_name::stereo_tools, _("Stereo Tools")}});
 }
 
 auto create() -> PluginsMenu* {
