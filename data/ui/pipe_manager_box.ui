@@ -22,7 +22,7 @@
                 <property name="margin-bottom">6</property>
                 <child>
                     <object class="GtkStackPage">
-                        <property name="name">page_genera</property>
+                        <property name="name">page_general</property>
                         <property name="title" translatable="yes">General</property>
                         <property name="child">
                             <object class="GtkScrolledWindow">
@@ -66,7 +66,6 @@
                                         <child>
                                             <object class="AdwPreferencesGroup">
                                                 <property name="title" translatable="yes">Output Device</property>
-
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Use Default</property>
@@ -85,7 +84,6 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Name</property>
-
                                                         <child>
                                                             <object class="GtkDropDown" id="dropdown_output_devices">
                                                                 <property name="valign">center</property>
@@ -99,161 +97,76 @@
                                                 </child>
                                             </object>
                                         </child>
-                                    </object>
-                                </child>
-                            </object>
-                        </property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkStackPage">
-                        <property name="name">page_general</property>
-                        <property name="title" translatable="yes">General</property>
-                        <property name="child">
-                            <object class="GtkScrolledWindow">
-                                <child>
-                                    <object class="GtkGrid">
-                                        <property name="halign">start</property>
-                                        <property name="valign">start</property>
-                                        <property name="row-spacing">12</property>
-                                        <property name="column-spacing">6</property>
 
                                         <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Header Version</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">4</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="header_version">
-                                                <property name="halign">start</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">4</property>
-                                                </layout>
-                                            </object>
-                                        </child>
+                                            <object class="AdwPreferencesGroup">
+                                                <property name="title" translatable="yes">Server Information</property>
 
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Library Version</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">5</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="library_version">
-                                                <property name="halign">start</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">5</property>
-                                                </layout>
-                                            </object>
-                                        </child>
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Header Version</property>
+                                                        <child>
+                                                            <object class="GtkLabel" id="header_version">
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
 
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Sampling Rate</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">6</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="server_rate">
-                                                <property name="halign">start</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">6</property>
-                                                </layout>
-                                            </object>
-                                        </child>
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Library Version</property>
+                                                        <child>
+                                                            <object class="GtkLabel" id="library_version">
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
 
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Minimum Quantum</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">7</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="min_quantum">
-                                                <property name="halign">start</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">7</property>
-                                                </layout>
-                                            </object>
-                                        </child>
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Sampling Rate</property>
+                                                        <child>
+                                                            <object class="GtkLabel" id="server_rate">
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
 
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Maximum Quantum</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">8</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="max_quantum">
-                                                <property name="halign">start</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">8</property>
-                                                </layout>
-                                            </object>
-                                        </child>
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Minimum Quantum</property>
+                                                        <child>
+                                                            <object class="GtkLabel" id="min_quantum">
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
 
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Default Quantum</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">9</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="quantum">
-                                                <property name="halign">start</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">9</property>
-                                                </layout>
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Maximum Quantum</property>
+                                                        <child>
+                                                            <object class="GtkLabel" id="max_quantum">
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Default Quantum</property>
+                                                        <child>
+                                                            <object class="GtkLabel" id="quantum">
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
                                     </object>
