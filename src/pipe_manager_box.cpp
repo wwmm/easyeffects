@@ -24,7 +24,7 @@ struct _PipeManagerBox {
 
   GtkSpinButton* spinbutton_test_signal_frequency;
 
-  GListStore *input_devices_model, *output_devices_model;
+  GListStore *input_devices_model, *output_devices_model, *modules_model, *clients_model;
 
   GtkStringList *input_presets_string_list, *output_presets_string_list;
 
@@ -40,6 +40,10 @@ struct _PipeManagerBox {
 };
 
 G_DEFINE_TYPE(PipeManagerBox, pipe_manager_box, GTK_TYPE_BOX)
+
+void on_enable_test_signal(PipeManagerBox* self, gboolean state, GtkSwitch* btn) {
+  self->ts->set_state(state != 0);
+}
 
 void on_checkbutton_channel_left(PipeManagerBox* self, GtkCheckButton* btn) {
   if (gtk_check_button_get_active(btn)) {
@@ -75,6 +79,64 @@ void on_checkbutton_signal_gaussian(PipeManagerBox* self, GtkCheckButton* btn) {
   }
 }
 
+void update_modules_info(PipeManagerBox* self) {
+  std::vector<ui::holders::ModuleInfoHolder*> values;
+
+  for (const auto& info : self->application->pm->list_modules) {
+    values.push_back(ui::holders::create(info));
+  }
+
+  g_list_store_splice(self->modules_model, 0, g_list_model_get_n_items(G_LIST_MODEL(self->modules_model)),
+                      (gpointer*)(values.data()), values.size());
+}
+
+void setup_listview_modules(PipeManagerBox* self) {
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->modules_model));
+
+  gtk_list_view_set_model(self->listview_modules, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
+
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(factory, "setup",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+                     auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/module_info.ui");
+
+                     auto* top_box = gtk_builder_get_object(builder, "top_box");
+
+                     g_object_set_data(G_OBJECT(item), "id", gtk_builder_get_object(builder, "id"));
+                     g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
+                     g_object_set_data(G_OBJECT(item), "description", gtk_builder_get_object(builder, "description"));
+
+                     gtk_list_item_set_activatable(item, 0);
+                     gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+
+                     g_object_unref(builder);
+                   }),
+                   self);
+
+  g_signal_connect(factory, "bind",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+                     auto* id = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "id"));
+                     auto* name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+                     auto* description = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "description"));
+
+                     auto* holder = static_cast<ui::holders::ModuleInfoHolder*>(gtk_list_item_get_item(item));
+
+                     gtk_label_set_text(id, std::to_string(holder->id).c_str());
+                     gtk_label_set_text(name, holder->name.c_str());
+                     gtk_label_set_text(description, holder->description.c_str());
+                   }),
+                   self);
+
+  gtk_list_view_set_factory(self->listview_modules, factory);
+
+  g_object_unref(factory);
+}
+
 void setup(PipeManagerBox* self, app::Application* application) {
   self->application = application;
 
@@ -100,6 +162,10 @@ void setup(PipeManagerBox* self, app::Application* application) {
   gtk_label_set_text(self->min_quantum, pm->default_min_quantum.c_str());
   gtk_label_set_text(self->max_quantum, pm->default_max_quantum.c_str());
   gtk_label_set_text(self->quantum, pm->default_quantum.c_str());
+
+  setup_listview_modules(self);
+
+  update_modules_info(self);
 }
 
 void dispose(GObject* object) {
@@ -171,6 +237,7 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, spinbutton_test_signal_frequency);
 
+  gtk_widget_class_bind_template_callback(widget_class, on_enable_test_signal);
   gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_channel_left);
   gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_channel_right);
   gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_channel_both);
@@ -186,11 +253,19 @@ void pipe_manager_box_init(PipeManagerBox* self) {
 
   self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->output_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
+  self->modules_model = g_list_store_new(ui::holders::module_info_holder_get_type());
+  self->clients_model = g_list_store_new(ui::holders::client_info_holder_get_type());
 
   self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
   prepare_spinbutton<"Hz">(self->spinbutton_test_signal_frequency);
+
+  g_settings_bind(self->sie_settings, "use-default-input-device", self->use_default_input, "active",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->soe_settings, "use-default-output-device", self->use_default_output, "active",
+                  G_SETTINGS_BIND_DEFAULT);
 
   g_signal_connect(self->spinbutton_test_signal_frequency, "value-changed",
                    G_CALLBACK(+[](GtkSpinButton* btn, PipeManagerBox* self) {

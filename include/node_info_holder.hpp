@@ -37,9 +37,9 @@ struct _NodeInfoHolder {
 
   util::time_point ts;
 
-  uint id = SPA_ID_INVALID;
+  uint id;
 
-  uint device_id = SPA_ID_INVALID;
+  uint device_id;
 
   std::string name;
 

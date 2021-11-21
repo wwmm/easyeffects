@@ -148,9 +148,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
   });
 
-  enable_test_signal->property_active().signal_changed().connect(
-      [=, this]() { ts->set_state(enable_test_signal->get_active()); });
-
   autoloading_add_output_profile->signal_clicked().connect([=, this]() {
     if (dropdown_autoloading_output_devices->get_selected_item() == nullptr) {
       return;
@@ -220,39 +217,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     presets_manager->add_autoload(PresetType::input, preset_name, holder->name, device_profile);
   });
-
-  checkbutton_signal_sine->signal_toggled().connect([&, this]() {
-    if (checkbutton_signal_sine->get_active()) {
-      ts->signal_type = TestSignalType::sine_wave;
-      ts->sine_phase = 0.0F;
-
-      spinbutton_test_signal_frequency->set_sensitive(true);
-    }
-  });
-
-  checkbutton_signal_gaussian->signal_toggled().connect([&, this]() {
-    if (checkbutton_signal_gaussian->get_active()) {
-      ts->signal_type = TestSignalType::gaussian;
-
-      spinbutton_test_signal_frequency->set_sensitive(false);
-    }
-  });
-
-  // checkbutton_signal_pink->signal_toggled().connect([&, this]() {
-  //   if (checkbutton_signal_pink->get_active()) {
-  //     ts->signal_type = TestSignalType::pink;
-
-  //     spinbutton_test_signal_frequency->set_sensitive(false);
-  //   }
-  // });
-
-  sie_settings->bind("use-default-input-device", use_default_input, "active");
-  sie_settings->bind("use-default-input-device", dropdown_input_devices, "sensitive",
-                     Gio::Settings::BindFlags::INVERT_BOOLEAN);
-
-  soe_settings->bind("use-default-output-device", use_default_output, "active");
-  soe_settings->bind("use-default-output-device", dropdown_output_devices, "sensitive",
-                     Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
   connections.push_back(pm->sink_added.connect([=, this](const NodeInfo info) {
     for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {

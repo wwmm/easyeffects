@@ -19,26 +19,33 @@
 
 #pragma once
 
-#include <adwaita.h>
-#include "application.hpp"
-#include "client_info_holder.hpp"
-#include "module_info_holder.hpp"
-#include "node_info_holder.hpp"
-#include "test_signals.hpp"
-#include "ui_helpers.hpp"
+#include <gtk/gtk.h>
+#include "pipe_manager.hpp"
 
-namespace ui::pipe_manager_box {
+namespace ui::holders {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_PIPE_MANAGER_BOX (pipe_manager_box_get_type())
+#define EE_TYPE_MODULE_INFO_HOLDER (module_info_holder_get_type())
 
-G_DECLARE_FINAL_TYPE(PipeManagerBox, pipe_manager_box, EE, PIPE_MANAGER_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(ModuleInfoHolder, module_info_holder, EE, MODULE_INFO_HOLDER, GObject)
 
 G_END_DECLS
 
-auto create() -> PipeManagerBox*;
+struct _ModuleInfoHolder {
+  GObject parent_instance;
 
-void setup(PipeManagerBox* self, app::Application* application);
+  uint id;
 
-}  // namespace ui::pipe_manager_box
+  std::string name;
+
+  std::string description;
+
+  std::string filename;
+
+  sigc::signal<void(const ModuleInfo)> info_updated;
+};
+
+auto create(const ModuleInfo& info) -> ModuleInfoHolder*;
+
+}  // namespace ui::holders

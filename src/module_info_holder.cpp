@@ -17,39 +17,47 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "node_info_holder.hpp"
+#include "module_info_holder.hpp"
+#include <string>
 
 namespace ui::holders {
 
-G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
+G_DEFINE_TYPE(ModuleInfoHolder, module_info_holder, G_TYPE_OBJECT);
 
-void node_info_holder_finalize(GObject* object) {
-  auto* self = EE_NODE_INFO_HOLDER(object);
+void module_info_holder_finalize(GObject* object) {
+  auto* self = EE_MODULE_INFO_HOLDER(object);
 
   self->info_updated.clear();
 
-  G_OBJECT_CLASS(node_info_holder_parent_class)->finalize(object);
+  G_OBJECT_CLASS(module_info_holder_parent_class)->finalize(object);
 }
 
-void node_info_holder_class_init(NodeInfoHolderClass* klass) {
+void module_info_holder_class_init(ModuleInfoHolderClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
 
-  object_class->finalize = node_info_holder_finalize;
+  object_class->finalize = module_info_holder_finalize;
 }
 
-void node_info_holder_init(NodeInfoHolder* self) {
+void module_info_holder_init(ModuleInfoHolder* self) {
   self->id = SPA_ID_INVALID;
-  self->device_id = SPA_ID_INVALID;
+
+  /*
+    gtk is goind something weird when initializing _ModuleInfoHolder
+    if we do not do something like the one below we may segfault if info.descrition and similars are empty
+   */
+
+  self->name = " ";
+  self->description = " ";
+  self->filename = " ";
 }
 
-auto create(const NodeInfo& info) -> NodeInfoHolder* {
-  auto* holder = static_cast<NodeInfoHolder*>(g_object_new(EE_TYPE_NODE_INFO_HOLDER, nullptr));
+auto create(const ModuleInfo& info) -> ModuleInfoHolder* {
+  auto* holder = static_cast<ModuleInfoHolder*>(g_object_new(EE_TYPE_MODULE_INFO_HOLDER, nullptr));
 
-  holder->ts = info.timestamp;
   holder->id = info.id;
-  holder->device_id = info.device_id;
   holder->name = info.name;
-  holder->media_class = info.media_class;
+  holder->description = info.description;
+  holder->filename = info.filename;
 
   return holder;
 }

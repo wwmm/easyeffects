@@ -449,6 +449,7 @@
                                                 <child>
                                                     <object class="GtkSwitch" id="enable_test_signal">
                                                         <property name="valign">center</property>
+                                                        <signal name="state-set" handler="on_enable_test_signal" object="PipeManagerBox" />
                                                     </object>
                                                 </child>
                                             </object>

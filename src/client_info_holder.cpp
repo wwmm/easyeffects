@@ -17,39 +17,37 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "node_info_holder.hpp"
+#include "client_info_holder.hpp"
 
 namespace ui::holders {
 
-G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
+G_DEFINE_TYPE(ClientInfoHolder, client_info_holder, G_TYPE_OBJECT);
 
-void node_info_holder_finalize(GObject* object) {
-  auto* self = EE_NODE_INFO_HOLDER(object);
+void client_info_holder_finalize(GObject* object) {
+  auto* self = EE_CLIENT_INFO_HOLDER(object);
 
   self->info_updated.clear();
 
-  G_OBJECT_CLASS(node_info_holder_parent_class)->finalize(object);
+  G_OBJECT_CLASS(client_info_holder_parent_class)->finalize(object);
 }
 
-void node_info_holder_class_init(NodeInfoHolderClass* klass) {
+void client_info_holder_class_init(ClientInfoHolderClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
 
-  object_class->finalize = node_info_holder_finalize;
+  object_class->finalize = client_info_holder_finalize;
 }
 
-void node_info_holder_init(NodeInfoHolder* self) {
+void client_info_holder_init(ClientInfoHolder* self) {
   self->id = SPA_ID_INVALID;
-  self->device_id = SPA_ID_INVALID;
 }
 
-auto create(const NodeInfo& info) -> NodeInfoHolder* {
-  auto* holder = static_cast<NodeInfoHolder*>(g_object_new(EE_TYPE_NODE_INFO_HOLDER, nullptr));
+auto create(const ClientInfo& info) -> ClientInfoHolder* {
+  auto* holder = static_cast<ClientInfoHolder*>(g_object_new(EE_TYPE_CLIENT_INFO_HOLDER, nullptr));
 
-  holder->ts = info.timestamp;
   holder->id = info.id;
-  holder->device_id = info.device_id;
   holder->name = info.name;
-  holder->media_class = info.media_class;
+  holder->api = info.api;
+  holder->access = info.access;
 
   return holder;
 }
