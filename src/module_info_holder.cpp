@@ -18,7 +18,6 @@
  */
 
 #include "module_info_holder.hpp"
-#include <string>
 
 namespace ui::holders {
 

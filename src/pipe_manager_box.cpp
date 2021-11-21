@@ -9,8 +9,6 @@ auto constexpr log_tag = "pipe_manager_box: ";
 struct _PipeManagerBox {
   GtkBox parent_instance;
 
-  AdwViewStack* stack;
-
   GtkSwitch *use_default_input, *use_default_output, *enable_test_signal;
 
   Gtk::DropDown *dropdown_input_devices, *dropdown_output_devices, *dropdown_autoloading_output_devices,
@@ -24,7 +22,8 @@ struct _PipeManagerBox {
 
   GtkSpinButton* spinbutton_test_signal_frequency;
 
-  GListStore *input_devices_model, *output_devices_model, *modules_model, *clients_model;
+  GListStore *input_devices_model, *output_devices_model, *modules_model, *clients_model, *autoloading_input_model,
+      *autoloading_output_model;
 
   GtkStringList *input_presets_string_list, *output_presets_string_list;
 
@@ -234,6 +233,158 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   setup_listview_modules(self);
   setup_listview_clients(self);
+
+  // signals related to device insertion/removal
+
+  self->connections.push_back(pm->sink_added.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
+      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n))
+              ->id == info.id) {
+        return;
+      }
+    }
+
+    g_list_store_append(self->output_devices_model, ui::holders::create(info));
+  }));
+
+  self->connections.push_back(pm->sink_removed.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
+      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n))
+              ->id == info.id) {
+        g_list_store_remove(self->output_devices_model, n);
+
+        return;
+      }
+    }
+  }));
+
+  self->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
+              ->id == info.id) {
+        return;
+      }
+    }
+
+    g_list_store_append(self->input_devices_model, ui::holders::create(info));
+  }));
+
+  self->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
+              ->id == info.id) {
+        g_list_store_remove(self->input_devices_model, n);
+
+        return;
+      }
+    }
+  }));
+
+  // signals related to presets creation/destruction
+
+  self->connections.push_back(
+      application->presets_manager->user_output_preset_created.connect([=](const std::string& preset_name) {
+        if (preset_name.empty()) {
+          util::warning(log_tag + "can't retrieve information about the preset file"s);
+
+          return;
+        }
+
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_presets_string_list)); n++) {
+          if (gtk_string_list_get_string(self->output_presets_string_list, n) == preset_name) {
+            return;
+          }
+        }
+
+        gtk_string_list_append(self->output_presets_string_list, preset_name.c_str());
+      }));
+
+  self->connections.push_back(
+      application->presets_manager->user_output_preset_removed.connect([=](const std::string& preset_name) {
+        if (preset_name.empty()) {
+          util::warning(log_tag + "can't retrieve information about the preset file"s);
+
+          return;
+        }
+
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_presets_string_list)); n++) {
+          if (gtk_string_list_get_string(self->output_presets_string_list, n) == preset_name) {
+            gtk_string_list_remove(self->output_presets_string_list, n);
+
+            return;
+          }
+        }
+      }));
+
+  self->connections.push_back(
+      application->presets_manager->user_input_preset_created.connect([=](const std::string& preset_name) {
+        if (preset_name.empty()) {
+          util::warning(log_tag + "can't retrieve information about the preset file"s);
+
+          return;
+        }
+
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_presets_string_list)); n++) {
+          if (gtk_string_list_get_string(self->input_presets_string_list, n) == preset_name) {
+            return;
+          }
+        }
+
+        gtk_string_list_append(self->input_presets_string_list, preset_name.c_str());
+      }));
+
+  self->connections.push_back(
+      application->presets_manager->user_input_preset_removed.connect([=](const std::string& preset_name) {
+        if (preset_name.empty()) {
+          util::warning(log_tag + "can't retrieve information about the preset file"s);
+
+          return;
+        }
+
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_presets_string_list)); n++) {
+          if (gtk_string_list_get_string(self->input_presets_string_list, n) == preset_name) {
+            gtk_string_list_remove(self->input_presets_string_list, n);
+
+            return;
+          }
+        }
+      }));
+
+  // signals related to autoload profiles
+
+  self->connections.push_back(application->presets_manager->autoload_input_profiles_changed.connect(
+      [=](const std::vector<nlohmann::json>& profiles) {
+        std::vector<ui::holders::PresetsAutoloadingHolder*> list;
+
+        for (const auto& json : profiles) {
+          const auto device = json.value("device", "");
+          const auto device_profile = json.value("device-profile", "");
+          const auto preset_name = json.value("preset-name", "");
+
+          list.push_back(ui::holders::create(device, device_profile, preset_name));
+        }
+
+        g_list_store_splice(self->autoloading_input_model, 0,
+                            g_list_model_get_n_items(G_LIST_MODEL(self->autoloading_input_model)),
+                            (gpointer*)(list.data()), list.size());
+      }));
+
+  self->connections.push_back(application->presets_manager->autoload_output_profiles_changed.connect(
+      [=](const std::vector<nlohmann::json>& profiles) {
+        std::vector<ui::holders::PresetsAutoloadingHolder*> list;
+
+        for (const auto& json : profiles) {
+          const auto device = json.value("device", "");
+          const auto device_profile = json.value("device-profile", "");
+          const auto preset_name = json.value("preset-name", "");
+
+          list.push_back(ui::holders::create(device, device_profile, preset_name));
+        }
+
+        g_list_store_splice(self->autoloading_output_model, 0,
+                            g_list_model_get_n_items(G_LIST_MODEL(self->autoloading_output_model)),
+                            (gpointer*)(list.data()), list.size());
+      }));
 }
 
 void dispose(GObject* object) {
@@ -274,8 +425,6 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
   //   widget_class->show = show;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/pipe_manager_box.ui");
-
-  gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, stack);
 
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, use_default_input);
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, use_default_output);
@@ -324,6 +473,8 @@ void pipe_manager_box_init(PipeManagerBox* self) {
   self->output_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->modules_model = g_list_store_new(ui::holders::module_info_holder_get_type());
   self->clients_model = g_list_store_new(ui::holders::client_info_holder_get_type());
+  self->autoloading_input_model = g_list_store_new(ui::holders::presets_autoloading_holder_get_type());
+  self->autoloading_output_model = g_list_store_new(ui::holders::presets_autoloading_holder_get_type());
 
   self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
