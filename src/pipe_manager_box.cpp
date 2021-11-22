@@ -215,7 +215,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
     listview = self->listview_autoloading_output;
   } else if constexpr (preset_type == PresetType::input) {
-    model = self->autoloading_output_model;
+    model = self->autoloading_input_model;
 
     listview = self->listview_autoloading_input;
   }
@@ -235,6 +235,68 @@ void setup_listview_autoloading(PipeManagerBox* self) {
   gtk_list_view_set_model(listview, GTK_SELECTION_MODEL(selection));
 
   g_object_unref(selection);
+
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(
+      factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+        auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/autoload_row.ui");
+
+        auto* top_box = gtk_builder_get_object(builder, "top_box");
+
+        g_object_set_data(G_OBJECT(item), "device", gtk_builder_get_object(builder, "device"));
+        g_object_set_data(G_OBJECT(item), "device_profile", gtk_builder_get_object(builder, "device_profile"));
+        g_object_set_data(G_OBJECT(item), "preset_name", gtk_builder_get_object(builder, "preset_name"));
+        auto* remove = gtk_builder_get_object(builder, "remove");
+
+        g_object_set_data(G_OBJECT(item), "remove", remove);
+
+        gtk_list_item_set_activatable(item, 0);
+        gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+
+        g_object_unref(builder);
+
+        g_signal_connect(
+            remove, "clicked", G_CALLBACK(+[](GtkButton* btn, PipeManagerBox* self) {
+              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(btn), "string-object"));
+                  string_object != nullptr) {
+                if (auto* holder =
+                        static_cast<ui::holders::PresetsAutoloadingHolder*>(g_object_get_data(G_OBJECT(btn), "holder"));
+                    holder != nullptr) {
+                  self->application->presets_manager->remove_autoload(preset_type, holder->preset_name, holder->device,
+                                                                      holder->device_profile);
+                }
+              }
+            }),
+            self);
+      }),
+      self);
+
+  g_signal_connect(
+      factory, "bind", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+        auto* device = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "device"));
+        auto* device_profile = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "device_profile"));
+        auto* preset_name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "preset_name"));
+        auto* remove = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "remove"));
+
+        auto* holder = static_cast<ui::holders::PresetsAutoloadingHolder*>(gtk_list_item_get_item(item));
+
+        g_object_set_data(G_OBJECT(remove), "holder", holder);
+
+        gtk_label_set_text(device, holder->device.c_str());
+        gtk_label_set_text(device_profile, holder->device_profile.c_str());
+        gtk_label_set_text(preset_name, holder->preset_name.c_str());
+
+        gtk_accessible_update_property(GTK_ACCESSIBLE(remove), GTK_ACCESSIBLE_PROPERTY_LABEL,
+                                       (_("Remove Autoloading Preset") + " "s + holder->preset_name).c_str(), -1);
+      }),
+      self);
+
+  gtk_list_view_set_factory(listview, factory);
+
+  g_object_unref(factory);
 }
 
 void setup(PipeManagerBox* self, app::Application* application) {
