@@ -475,6 +475,77 @@ void setup(PipeManagerBox* self, app::Application* application) {
   setup_dropdown_presets<PresetType::input>(self);
   setup_dropdown_presets<PresetType::output>(self);
 
+  /*
+    This connection is being done here after initializing the dropdowns to avoid unnecessary emittions while EE is
+    initializing
+  */
+
+  g_signal_connect(self->dropdown_input_devices, "notify::selected-item",
+                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, PipeManagerBox* self) {
+                     if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
+                       auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
+
+                       g_settings_set_string(self->sie_settings, "input-device", holder->name.c_str());
+                     }
+                   }),
+                   self);
+
+  g_signal_connect(self->dropdown_output_devices, "notify::selected-item",
+                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, PipeManagerBox* self) {
+                     if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
+                       auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
+
+                       g_settings_set_string(self->soe_settings, "output-device", holder->name.c_str());
+                     }
+                   }),
+                   self);
+
+  // initializing the custom device selection dropdowns to the previoulsly used device
+
+  {
+    auto* holder_selected =
+        static_cast<ui::holders::NodeInfoHolder*>(gtk_drop_down_get_selected_item(self->dropdown_input_devices));
+
+    if (holder_selected != nullptr) {
+      const auto input_device_name = g_settings_get_string(self->sie_settings, "input-device");
+
+      if (holder_selected->name != input_device_name) {
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+          auto item = static_cast<ui::holders::NodeInfoHolder*>(
+              g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+          if (item->name == input_device_name) {
+            gtk_drop_down_set_selected(self->dropdown_input_devices, n);
+
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  {
+    auto* holder_selected =
+        static_cast<ui::holders::NodeInfoHolder*>(gtk_drop_down_get_selected_item(self->dropdown_output_devices));
+
+    if (holder_selected != nullptr) {
+      const auto output_device_name = g_settings_get_string(self->soe_settings, "output-device");
+
+      if (holder_selected->name != output_device_name) {
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
+          auto item = static_cast<ui::holders::NodeInfoHolder*>(
+              g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
+
+          if (item->name == output_device_name) {
+            gtk_drop_down_set_selected(self->dropdown_output_devices, n);
+
+            break;
+          }
+        }
+      }
+    }
+  }
+
   // signals related to device insertion/removal
 
   self->connections.push_back(pm->sink_added.connect([=](const NodeInfo info) {
@@ -740,15 +811,65 @@ void pipe_manager_box_init(PipeManagerBox* self) {
                    }),
                    self);
 
-  g_signal_connect(self->dropdown_input_devices, "notify::selected-item",
-                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, GtkListItem* item, PipeManagerBox* self) {
-                     if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
-                       auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
+  g_signal_connect(
+      self->use_default_input, "notify::active",
+      G_CALLBACK(+[](GtkSwitch* btn, GParamSpec* pspec, PipeManagerBox* self) {
+        if (gtk_switch_get_active(btn) != 0) {
+          g_settings_set_string(self->sie_settings, "input-device",
+                                self->application->pm->default_input_device.name.c_str());
 
-                       g_settings_set_string(self->sie_settings, "input-device", holder->name.c_str());
-                     }
-                   }),
-                   self);
+          auto* holder =
+              static_cast<ui::holders::NodeInfoHolder*>(gtk_drop_down_get_selected_item(self->dropdown_input_devices));
+
+          if (holder == nullptr) {
+            return;
+          }
+
+          if (holder->name != self->application->pm->default_input_device.name) {
+            for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+              auto item = static_cast<ui::holders::NodeInfoHolder*>(
+                  g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+              if (item->name == self->application->pm->default_input_device.name) {
+                gtk_drop_down_set_selected(self->dropdown_input_devices, n);
+
+                break;
+              }
+            }
+          }
+        }
+      }),
+      self);
+
+  g_signal_connect(
+      self->use_default_output, "notify::active",
+      G_CALLBACK(+[](GtkSwitch* btn, GParamSpec* pspec, PipeManagerBox* self) {
+        if (gtk_switch_get_active(btn) != 0) {
+          g_settings_set_string(self->soe_settings, "output-device",
+                                self->application->pm->default_output_device.name.c_str());
+
+          auto* holder =
+              static_cast<ui::holders::NodeInfoHolder*>(gtk_drop_down_get_selected_item(self->dropdown_output_devices));
+
+          if (holder == nullptr) {
+            return;
+          }
+
+          if (holder->name != self->application->pm->default_output_device.name) {
+            for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
+              auto item = static_cast<ui::holders::NodeInfoHolder*>(
+                  g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
+
+              if (item->name == self->application->pm->default_output_device.name) {
+                gtk_drop_down_set_selected(self->dropdown_output_devices, n);
+
+                break;
+              }
+            }
+          }
+        }
+      }),
+      self);
 }
 
 auto create() -> PipeManagerBox* {

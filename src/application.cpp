@@ -72,7 +72,7 @@ void on_startup(GApplication* gapp) {
 
     if (g_settings_get_boolean(self->soe_settings, "use-default-output-device") != 0) {
       /*
-        Depending on the hardware headphones can cause a node recreation here the id and the name are kept.
+        Depending on the hardware headphones can cause a node recreation where the id and the name are kept.
         So we clear the key to force the callbacks to be called
       */
 
@@ -86,7 +86,7 @@ void on_startup(GApplication* gapp) {
 
     if (g_settings_get_boolean(self->sie_settings, "use-default-input-device") != 0) {
       /*
-        Depending on the hardware microphones can cause a node recreation hwere the id and the name are kept.
+        Depending on the hardware microphones can cause a node recreation where the id and the name are kept.
         So we clear the key to force the callbacks to be called
       */
 
