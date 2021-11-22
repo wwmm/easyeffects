@@ -35,12 +35,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       autoloading_input_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
       output_presets_string_list(Gtk::StringList::create({"initial_value"})),
       input_presets_string_list(Gtk::StringList::create({"initial_value"})) {
-  setup_dropdown_devices(dropdown_input_devices, input_devices_model);
-  setup_dropdown_devices(dropdown_output_devices, output_devices_model);
-
-  setup_dropdown_devices(dropdown_autoloading_input_devices, input_devices_model);
-  setup_dropdown_devices(dropdown_autoloading_output_devices, output_devices_model);
-
   dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
     if (dropdown_input_devices->get_selected_item() == nullptr) {
       return;
@@ -222,57 +216,4 @@ auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm, PresetsManager
   stack->add(*ui, "pipe_info");
 
   return ui;
-}
-
-void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
-                                        const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model) {
-  // setting the dropdown model and factory
-
-  const auto selection_model = Gtk::SingleSelection::create(model);
-
-  dropdown->set_model(selection_model);
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  dropdown->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const icon = Gtk::make_managed<Gtk::Image>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    icon->set_from_icon_name("emblem-system-symbolic");
-
-    box->set_spacing(6);
-    box->append(*icon);
-    box->append(*label);
-
-    // setting list_item data
-
-    list_item->set_data("name", label);
-    list_item->set_data("icon", icon);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const icon = static_cast<Gtk::Image*>(list_item->get_data("icon"));
-
-    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
-
-    if (holder->media_class == pm->media_class_sink) {
-      icon->set_from_icon_name("audio-card-symbolic");
-    } else if (holder->media_class == pm->media_class_source) {
-      icon->set_from_icon_name("audio-input-microphone-symbolic");
-    }
-
-    label->set_name(holder->name);
-    label->set_text(holder->name);
-  });
 }

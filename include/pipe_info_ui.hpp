@@ -93,8 +93,6 @@ class PipeInfoUi : public Gtk::Box {
   Glib::RefPtr<Gtk::StringList> input_presets_string_list;
 
   std::vector<sigc::connection> connections;
-
-  void setup_dropdown_devices(Gtk::DropDown* dropdown, const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model);
 };
 
 #endif

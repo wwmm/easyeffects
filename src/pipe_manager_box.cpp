@@ -23,7 +23,7 @@ struct _PipeManagerBox {
   GtkSpinButton* spinbutton_test_signal_frequency;
 
   GListStore *input_devices_model, *output_devices_model, *modules_model, *clients_model, *autoloading_input_model,
-      *autoloading_output_model;
+      *autoloading_output_model, *autoloading_input_devices_model, *autoloading_output_devices_model;
 
   GtkStringList *input_presets_string_list, *output_presets_string_list;
 
@@ -324,7 +324,7 @@ void setup_dropdown_presets(PipeManagerBox* self) {
 
   auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(string_list), GTK_SORTER(sorter));
 
-  // setting the listview model and factory
+  // setting the dropdown model and factory
 
   auto* selection = gtk_single_selection_new(G_LIST_MODEL(sorter_model));
 
@@ -369,6 +369,63 @@ void setup_dropdown_presets(PipeManagerBox* self) {
   g_object_unref(factory);
 }
 
+void setup_dropdown_devices(PipeManagerBox* self, GtkDropDown* dropdown, GListStore* model) {
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(factory, "setup",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+                     auto* box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+                     auto* label = gtk_label_new(nullptr);
+                     auto* icon = gtk_image_new();
+
+                     gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
+                     gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
+
+                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(icon));
+                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
+
+                     gtk_list_item_set_child(item, GTK_WIDGET(box));
+
+                     g_object_set_data(G_OBJECT(item), "name", label);
+                     g_object_set_data(G_OBJECT(item), "icon", icon);
+                   }),
+                   self);
+
+  g_signal_connect(factory, "bind",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+                     auto* icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "icon"));
+
+                     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(gtk_list_item_get_item(item));
+
+                     if (holder->media_class == self->application->pm->media_class_sink) {
+                       gtk_image_set_from_icon_name(icon, "audio-card-symbolic");
+                     } else if (holder->media_class == self->application->pm->media_class_source) {
+                       gtk_image_set_from_icon_name(icon, "audio-input-microphone-symbolic");
+                     }
+
+                     gtk_label_set_text(label, holder->name.c_str());
+                   }),
+                   self);
+
+  gtk_drop_down_set_factory(dropdown, factory);
+
+  g_object_unref(factory);
+
+  /*
+    DropDowns knows how to deal with GtkStringList. But we are passing a custom holder and no expression was set. So
+    we have to set the model after configuring the factory. Why this was not a problem with gtkmm I have no idea...
+  */
+
+  auto* selection = gtk_single_selection_new(G_LIST_MODEL(model));
+
+  gtk_drop_down_set_model(dropdown, G_LIST_MODEL(model));
+
+  g_object_unref(selection);
+}
+
 void setup(PipeManagerBox* self, app::Application* application) {
   self->application = application;
 
@@ -383,8 +440,10 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
     if (node.media_class == pm->media_class_sink) {
       g_list_store_append(self->output_devices_model, ui::holders::create(node));
+      g_list_store_append(self->autoloading_output_devices_model, ui::holders::create(node));
     } else if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
       g_list_store_append(self->input_devices_model, ui::holders::create(node));
+      g_list_store_append(self->autoloading_input_devices_model, ui::holders::create(node));
     }
   }
 
@@ -401,6 +460,12 @@ void setup(PipeManagerBox* self, app::Application* application) {
   setup_listview_autoloading<PresetType::input>(self);
   setup_listview_autoloading<PresetType::output>(self);
 
+  setup_dropdown_devices(self, self->dropdown_input_devices, self->input_devices_model);
+  setup_dropdown_devices(self, self->dropdown_output_devices, self->output_devices_model);
+
+  setup_dropdown_devices(self, self->dropdown_autoloading_input_devices, self->autoloading_input_devices_model);
+  setup_dropdown_devices(self, self->dropdown_autoloading_output_devices, self->autoloading_output_devices_model);
+
   setup_dropdown_presets<PresetType::input>(self);
   setup_dropdown_presets<PresetType::output>(self);
 
@@ -415,6 +480,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
     }
 
     g_list_store_append(self->output_devices_model, ui::holders::create(info));
+    g_list_store_append(self->autoloading_output_devices_model, ui::holders::create(info));
   }));
 
   self->connections.push_back(pm->sink_removed.connect([=](const NodeInfo info) {
@@ -422,6 +488,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n))
               ->id == info.id) {
         g_list_store_remove(self->output_devices_model, n);
+        g_list_store_remove(self->autoloading_output_devices_model, n);
 
         return;
       }
@@ -437,6 +504,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
     }
 
     g_list_store_append(self->input_devices_model, ui::holders::create(info));
+    g_list_store_append(self->autoloading_input_devices_model, ui::holders::create(info));
   }));
 
   self->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
@@ -444,6 +512,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
               ->id == info.id) {
         g_list_store_remove(self->input_devices_model, n);
+        g_list_store_remove(self->autoloading_input_devices_model, n);
 
         return;
       }
@@ -643,6 +712,8 @@ void pipe_manager_box_init(PipeManagerBox* self) {
   self->output_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->modules_model = g_list_store_new(ui::holders::module_info_holder_get_type());
   self->clients_model = g_list_store_new(ui::holders::client_info_holder_get_type());
+  self->autoloading_input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
+  self->autoloading_output_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->autoloading_input_model = g_list_store_new(ui::holders::presets_autoloading_holder_get_type());
   self->autoloading_output_model = g_list_store_new(ui::holders::presets_autoloading_holder_get_type());
 
