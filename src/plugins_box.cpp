@@ -115,15 +115,6 @@ void setup_listview(PluginsBox* self) {
       }),
       self));
 
-  // setting the listview model and factory
-
-  auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->string_list));
-  // auto* selection = gtk_single_selection_new(G_LIST_MODEL(adw_view_stack_get_pages(self->stack)));
-
-  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
-
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -300,6 +291,15 @@ void setup_listview(PluginsBox* self) {
   gtk_list_view_set_factory(self->listview, factory);
 
   g_object_unref(factory);
+
+  // setting the listview model
+
+  auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->string_list));
+  // auto* selection = gtk_single_selection_new(G_LIST_MODEL(adw_view_stack_get_pages(self->stack)));
+
+  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
 }
 
 void setup(PluginsBox* self, app::Application* application, PipelineType pipeline_type) {

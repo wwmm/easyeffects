@@ -109,12 +109,6 @@ void on_stack_visible_child_changed(PipeManagerBox* self, GParamSpec* pspec, Gtk
 }
 
 void setup_listview_modules(PipeManagerBox* self) {
-  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->modules_model));
-
-  gtk_list_view_set_model(self->listview_modules, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
-
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -153,15 +147,17 @@ void setup_listview_modules(PipeManagerBox* self) {
   gtk_list_view_set_factory(self->listview_modules, factory);
 
   g_object_unref(factory);
+
+  // setting the model
+
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->modules_model));
+
+  gtk_list_view_set_model(self->listview_modules, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
 }
 
 void setup_listview_clients(PipeManagerBox* self) {
-  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->clients_model));
-
-  gtk_list_view_set_model(self->listview_clients, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
-
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -203,6 +199,14 @@ void setup_listview_clients(PipeManagerBox* self) {
   gtk_list_view_set_factory(self->listview_clients, factory);
 
   g_object_unref(factory);
+
+  // setting the model
+
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->clients_model));
+
+  gtk_list_view_set_model(self->listview_clients, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
 }
 
 template <PresetType preset_type>
@@ -219,22 +223,6 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
     listview = self->listview_autoloading_input;
   }
-
-  const auto profiles = self->application->presets_manager->get_autoload_profiles(preset_type);
-
-  for (const auto& json : profiles) {
-    const auto device = json.value("device", "");
-    const auto device_profile = json.value("device-profile", "");
-    const auto preset_name = json.value("preset-name", "");
-
-    g_list_store_append(model, ui::holders::create(device, device_profile, preset_name));
-  }
-
-  auto* selection = gtk_no_selection_new(G_LIST_MODEL(model));
-
-  gtk_list_view_set_model(listview, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
 
   auto* factory = gtk_signal_list_item_factory_new();
 
@@ -297,6 +285,24 @@ void setup_listview_autoloading(PipeManagerBox* self) {
   gtk_list_view_set_factory(listview, factory);
 
   g_object_unref(factory);
+
+  // setting the model
+
+  const auto profiles = self->application->presets_manager->get_autoload_profiles(preset_type);
+
+  for (const auto& json : profiles) {
+    const auto device = json.value("device", "");
+    const auto device_profile = json.value("device-profile", "");
+    const auto preset_name = json.value("preset-name", "");
+
+    g_list_store_append(model, ui::holders::create(device, device_profile, preset_name));
+  }
+
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(model));
+
+  gtk_list_view_set_model(listview, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
 }
 
 template <PresetType preset_type>
@@ -313,24 +319,6 @@ void setup_dropdown_presets(PipeManagerBox* self) {
 
     string_list = self->input_presets_string_list;
   }
-
-  for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
-    gtk_string_list_append(string_list, name.c_str());
-  }
-
-  // sorter
-
-  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(string_list), GTK_SORTER(sorter));
-
-  // setting the dropdown model and factory
-
-  auto* selection = gtk_single_selection_new(G_LIST_MODEL(sorter_model));
-
-  gtk_drop_down_set_model(dropdown, G_LIST_MODEL(selection));
-
-  g_object_unref(selection);
 
   auto* factory = gtk_signal_list_item_factory_new();
 
@@ -367,6 +355,24 @@ void setup_dropdown_presets(PipeManagerBox* self) {
   gtk_drop_down_set_factory(dropdown, factory);
 
   g_object_unref(factory);
+
+  for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
+    gtk_string_list_append(string_list, name.c_str());
+  }
+
+  // sorter
+
+  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
+
+  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(string_list), GTK_SORTER(sorter));
+
+  // setting the dropdown model
+
+  auto* selection = gtk_single_selection_new(G_LIST_MODEL(sorter_model));
+
+  gtk_drop_down_set_model(dropdown, G_LIST_MODEL(selection));
+
+  g_object_unref(selection);
 }
 
 void setup_dropdown_devices(PipeManagerBox* self, GtkDropDown* dropdown, GListStore* model) {
@@ -415,7 +421,7 @@ void setup_dropdown_devices(PipeManagerBox* self, GtkDropDown* dropdown, GListSt
   g_object_unref(factory);
 
   /*
-    DropDowns knows how to deal with GtkStringList. But we are passing a custom holder and no expression was set. So
+    DropDowns know how to deal with GtkStringList. But we are passing a custom holder and no expression was set. So
     we have to set the model after configuring the factory. Why this was not a problem with gtkmm I have no idea...
   */
 

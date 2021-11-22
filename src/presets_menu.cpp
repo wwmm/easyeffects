@@ -141,38 +141,6 @@ void import_input_preset(PresetsMenu* self, GtkButton* button) {
 
 template <PresetType preset_type>
 void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* string_list) {
-  for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
-    gtk_string_list_append(string_list, name.c_str());
-  }
-
-  // filter
-
-  auto* filter = gtk_string_filter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* filter_model = gtk_filter_list_model_new(G_LIST_MODEL(string_list), GTK_FILTER(filter));
-
-  gtk_filter_list_model_set_incremental(filter_model, 1);
-
-  if constexpr (preset_type == PresetType::output) {
-    g_object_bind_property(self->output_search, "text", filter, "search", G_BINDING_DEFAULT);
-  } else if constexpr (preset_type == PresetType::input) {
-    g_object_bind_property(self->input_search, "text", filter, "search", G_BINDING_DEFAULT);
-  }
-
-  // sorter
-
-  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(filter_model), GTK_SORTER(sorter));
-
-  // setting the listview model and factory
-
-  auto* selection = gtk_no_selection_new(G_LIST_MODEL(sorter_model));
-
-  gtk_list_view_set_model(listview, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
-
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -269,6 +237,38 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
   gtk_list_view_set_factory(listview, factory);
 
   g_object_unref(factory);
+
+  for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
+    gtk_string_list_append(string_list, name.c_str());
+  }
+
+  // filter
+
+  auto* filter = gtk_string_filter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
+
+  auto* filter_model = gtk_filter_list_model_new(G_LIST_MODEL(string_list), GTK_FILTER(filter));
+
+  gtk_filter_list_model_set_incremental(filter_model, 1);
+
+  if constexpr (preset_type == PresetType::output) {
+    g_object_bind_property(self->output_search, "text", filter, "search", G_BINDING_DEFAULT);
+  } else if constexpr (preset_type == PresetType::input) {
+    g_object_bind_property(self->input_search, "text", filter, "search", G_BINDING_DEFAULT);
+  }
+
+  // sorter
+
+  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
+
+  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(filter_model), GTK_SORTER(sorter));
+
+  // setting the listview model
+
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(sorter_model));
+
+  gtk_list_view_set_model(listview, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
 }
 
 void reset_menu_button_label(PresetsMenu* self) {

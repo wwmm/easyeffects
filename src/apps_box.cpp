@@ -208,12 +208,6 @@ auto icon_available(AppsBox* self, const std::string& icon_name) -> bool {
 }
 
 void setup_listview(AppsBox* self) {
-  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->apps_model));
-
-  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
-
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -496,6 +490,14 @@ void setup_listview(AppsBox* self) {
   gtk_list_view_set_factory(self->listview, factory);
 
   g_object_unref(factory);
+
+  // setting the model
+
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->apps_model));
+
+  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
 }
 
 void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme) {
