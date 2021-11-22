@@ -11,7 +11,7 @@ struct _PipeManagerBox {
 
   GtkSwitch *use_default_input, *use_default_output, *enable_test_signal;
 
-  Gtk::DropDown *dropdown_input_devices, *dropdown_output_devices, *dropdown_autoloading_output_devices,
+  GtkDropDown *dropdown_input_devices, *dropdown_output_devices, *dropdown_autoloading_output_devices,
       *dropdown_autoloading_input_devices, *dropdown_autoloading_output_presets, *dropdown_autoloading_input_presets;
 
   GtkListView *listview_modules, *listview_clients, *listview_autoloading_output, *listview_autoloading_input;
@@ -299,6 +299,76 @@ void setup_listview_autoloading(PipeManagerBox* self) {
   g_object_unref(factory);
 }
 
+template <PresetType preset_type>
+void setup_dropdown_presets(PipeManagerBox* self) {
+  GtkDropDown* dropdown;
+  GtkStringList* string_list;
+
+  if constexpr (preset_type == PresetType::output) {
+    dropdown = self->dropdown_autoloading_output_presets;
+
+    string_list = self->output_presets_string_list;
+  } else if constexpr (preset_type == PresetType::input) {
+    dropdown = self->dropdown_autoloading_input_presets;
+
+    string_list = self->input_presets_string_list;
+  }
+
+  for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
+    gtk_string_list_append(string_list, name.c_str());
+  }
+
+  // sorter
+
+  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
+
+  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(string_list), GTK_SORTER(sorter));
+
+  // setting the listview model and factory
+
+  auto* selection = gtk_single_selection_new(G_LIST_MODEL(sorter_model));
+
+  gtk_drop_down_set_model(dropdown, G_LIST_MODEL(selection));
+
+  g_object_unref(selection);
+
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(factory, "setup",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+                     auto* box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+                     auto* label = gtk_label_new(nullptr);
+                     auto* icon = gtk_image_new_from_icon_name("emblem-system-symbolic");
+
+                     gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
+                     gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
+
+                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(icon));
+                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
+
+                     gtk_list_item_set_child(item, GTK_WIDGET(box));
+
+                     g_object_set_data(G_OBJECT(item), "name", label);
+                   }),
+                   self);
+
+  g_signal_connect(factory, "bind",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
+                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+
+                     auto* name = gtk_string_object_get_string(GTK_STRING_OBJECT(gtk_list_item_get_item(item)));
+
+                     gtk_label_set_text(label, name);
+                   }),
+                   self);
+
+  gtk_drop_down_set_factory(dropdown, factory);
+
+  g_object_unref(factory);
+}
+
 void setup(PipeManagerBox* self, app::Application* application) {
   self->application = application;
 
@@ -330,6 +400,9 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   setup_listview_autoloading<PresetType::input>(self);
   setup_listview_autoloading<PresetType::output>(self);
+
+  setup_dropdown_presets<PresetType::input>(self);
+  setup_dropdown_presets<PresetType::output>(self);
 
   // signals related to device insertion/removal
 

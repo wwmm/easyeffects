@@ -41,9 +41,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   setup_dropdown_devices(dropdown_autoloading_input_devices, input_devices_model);
   setup_dropdown_devices(dropdown_autoloading_output_devices, output_devices_model);
 
-  setup_dropdown_presets(PresetType::input, input_presets_string_list);
-  setup_dropdown_presets(PresetType::output, output_presets_string_list);
-
   dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
     if (dropdown_input_devices->get_selected_item() == nullptr) {
       return;
@@ -277,75 +274,5 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
 
     label->set_name(holder->name);
     label->set_text(holder->name);
-  });
-}
-
-void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefPtr<Gtk::StringList>& string_list) {
-  Gtk::DropDown* dropdown = nullptr;
-
-  switch (preset_type) {
-    case PresetType::input:
-      dropdown = dropdown_autoloading_input_presets;
-
-      break;
-    case PresetType::output:
-      dropdown = dropdown_autoloading_output_presets;
-
-      break;
-  }
-
-  string_list->remove(0);
-
-  for (const auto& name : presets_manager->get_names(preset_type)) {
-    string_list->append(name);
-  }
-
-  // sorter
-
-  const auto sorter =
-      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  const auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
-
-  // setting the dropdown model and factory
-
-  const auto selection_model = Gtk::SingleSelection::create(sort_list_model);
-
-  dropdown->set_model(selection_model);
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  dropdown->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const icon = Gtk::make_managed<Gtk::Image>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    icon->set_from_icon_name("emblem-system-symbolic");
-
-    box->set_spacing(6);
-    box->append(*icon);
-    box->append(*label);
-
-    // setting list_item data
-
-    list_item->set_data("name", label);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-
-    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
-
-    label->set_name(name);
-    label->set_text(name);
   });
 }
