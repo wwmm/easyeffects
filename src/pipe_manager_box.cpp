@@ -739,6 +739,16 @@ void pipe_manager_box_init(PipeManagerBox* self) {
                      self->ts->set_frequency(static_cast<float>(gtk_spin_button_get_value(btn)));
                    }),
                    self);
+
+  g_signal_connect(self->dropdown_input_devices, "notify::selected-item",
+                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, GtkListItem* item, PipeManagerBox* self) {
+                     if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
+                       auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
+
+                       g_settings_set_string(self->sie_settings, "input-device", holder->name.c_str());
+                     }
+                   }),
+                   self);
 }
 
 auto create() -> PipeManagerBox* {

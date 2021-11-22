@@ -53,7 +53,7 @@
                                                         <child>
                                                             <object class="GtkDropDown" id="dropdown_input_devices">
                                                                 <property name="valign">center</property>
-                                                                <property name="sensitive" bind-source="use_default_input" bind-property="active" bind-flags="sync-create" />
+                                                                <property name="sensitive" bind-source="use_default_input" bind-property="active" bind-flags="sync-create|invert-boolean" />
                                                                 <accessibility>
                                                                     <property name="label" translatable="yes">Custom Input Device</property>
                                                                 </accessibility>
@@ -88,7 +88,7 @@
                                                         <child>
                                                             <object class="GtkDropDown" id="dropdown_output_devices">
                                                                 <property name="valign">center</property>
-                                                                <property name="sensitive" bind-source="use_default_output" bind-property="active" bind-flags="sync-create" />
+                                                                <property name="sensitive" bind-source="use_default_output" bind-property="active" bind-flags="sync-create|invert-boolean" />
                                                                 <accessibility>
                                                                     <property name="label" translatable="yes">Custom Output Device</property>
                                                                 </accessibility>
