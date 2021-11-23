@@ -75,7 +75,6 @@ easyeffects_sources = [
 	'multiband_gate_ui.cpp',
 	'node_info_holder.cpp',
 	'output_level.cpp',
-	'pipe_info_ui.cpp',
 	'pipe_manager.cpp',
 	'pipe_manager_box.cpp',
 	'pitch.cpp',

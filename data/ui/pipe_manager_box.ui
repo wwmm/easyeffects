@@ -239,6 +239,7 @@
                                                                         <property name="halign">center</property>
                                                                         <property name="valign">center</property>
                                                                         <property name="icon_name">list-add-symbolic</property>
+                                                                        <signal name="clicked" handler="on_autoloading_add_output_profile" object="PipeManagerBox" />
                                                                         <layout>
                                                                             <property name="column">1</property>
                                                                             <property name="row">0</property>
@@ -325,6 +326,7 @@
                                                                         <property name="halign">center</property>
                                                                         <property name="valign">center</property>
                                                                         <property name="icon_name">list-add-symbolic</property>
+                                                                        <signal name="clicked" handler="on_autoloading_add_input_profile" object="PipeManagerBox" />
                                                                         <layout>
                                                                             <property name="column">1</property>
                                                                             <property name="row">0</property>

@@ -30,7 +30,6 @@ data/ui/module_info.ui
 data/ui/multiband_compressor.ui
 data/ui/multiband_compressor_band.ui
 data/ui/multiband_gate.ui
-data/ui/pipe_info.ui
 data/ui/pipe_manager_box.ui
 data/ui/pitch.ui
 data/ui/plugins_box.ui
@@ -48,7 +47,6 @@ src/convolver_ui.cpp
 src/effects_base_ui.cpp
 src/effects_box.cpp
 src/equalizer_ui.cpp
-src/pipe_info_ui.cpp
 src/pipe_manager_box.cpp
 src/preferences_window.cpp
 src/presets_menu.cpp

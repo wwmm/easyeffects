@@ -165,7 +165,7 @@ PresetsManager::PresetsManager()
 
   g_object_unref(gfile);
 
-  gfile = g_file_new_for_path(autoload_input_dir.c_str());
+  gfile = g_file_new_for_path(autoload_output_dir.c_str());
 
   autoload_output_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);
 

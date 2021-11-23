@@ -78,6 +78,84 @@ void on_checkbutton_signal_gaussian(PipeManagerBox* self, GtkCheckButton* btn) {
   }
 }
 
+void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
+  auto* holder = static_cast<ui::holders::NodeInfoHolder*>(
+      gtk_drop_down_get_selected_item(self->dropdown_autoloading_input_devices));
+
+  if (holder == nullptr) {
+    return;
+  }
+
+  std::string device_profile;
+
+  for (const auto& device : self->application->pm->list_devices) {
+    if (device.id == holder->device_id) {
+      device_profile = device.input_route_name;
+
+      break;
+    }
+  }
+
+  // first we remove any autoloading profile associated to the target device so that our ui is updated
+
+  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->autoloading_input_model)); n++) {
+    auto item = static_cast<ui::holders::PresetsAutoloadingHolder*>(
+        g_list_model_get_item(G_LIST_MODEL(self->autoloading_input_model), n));
+
+    if (holder->name == item->device && device_profile == item->device_profile) {
+      self->application->presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device,
+                                                          item->device_profile);
+
+      break;
+    }
+  }
+
+  auto selected_preset = gtk_drop_down_get_selected_item(self->dropdown_autoloading_input_presets);
+
+  auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
+
+  self->application->presets_manager->add_autoload(PresetType::input, preset_name, holder->name, device_profile);
+}
+
+void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
+  auto* holder = static_cast<ui::holders::NodeInfoHolder*>(
+      gtk_drop_down_get_selected_item(self->dropdown_autoloading_output_devices));
+
+  if (holder == nullptr) {
+    return;
+  }
+
+  std::string device_profile;
+
+  for (const auto& device : self->application->pm->list_devices) {
+    if (device.id == holder->device_id) {
+      device_profile = device.output_route_name;
+
+      break;
+    }
+  }
+
+  // first we remove any autoloading profile associated to the target device so that our ui is updated
+
+  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->autoloading_output_model)); n++) {
+    auto item = static_cast<ui::holders::PresetsAutoloadingHolder*>(
+        g_list_model_get_item(G_LIST_MODEL(self->autoloading_output_model), n));
+
+    if (holder->name == item->device && device_profile == item->device_profile) {
+      self->application->presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device,
+                                                          item->device_profile);
+
+      break;
+    }
+  }
+
+  auto selected_preset = gtk_drop_down_get_selected_item(self->dropdown_autoloading_output_presets);
+
+  auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
+
+  self->application->presets_manager->add_autoload(PresetType::output, preset_name, holder->name, device_profile);
+}
+
 void update_modules_info(PipeManagerBox* self) {
   std::vector<ui::holders::ModuleInfoHolder*> values;
 
@@ -246,19 +324,15 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
         g_object_unref(builder);
 
-        g_signal_connect(
-            remove, "clicked", G_CALLBACK(+[](GtkButton* btn, PipeManagerBox* self) {
-              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(btn), "string-object"));
-                  string_object != nullptr) {
-                if (auto* holder =
-                        static_cast<ui::holders::PresetsAutoloadingHolder*>(g_object_get_data(G_OBJECT(btn), "holder"));
-                    holder != nullptr) {
-                  self->application->presets_manager->remove_autoload(preset_type, holder->preset_name, holder->device,
-                                                                      holder->device_profile);
-                }
-              }
-            }),
-            self);
+        g_signal_connect(remove, "clicked", G_CALLBACK(+[](GtkButton* btn, PipeManagerBox* self) {
+                           if (auto* holder = static_cast<ui::holders::PresetsAutoloadingHolder*>(
+                                   g_object_get_data(G_OBJECT(btn), "holder"));
+                               holder != nullptr) {
+                             self->application->presets_manager->remove_autoload(
+                                 preset_type, holder->preset_name, holder->device, holder->device_profile);
+                           }
+                         }),
+                         self);
       }),
       self);
 
@@ -777,6 +851,8 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_signal_sine);
   gtk_widget_class_bind_template_callback(widget_class, on_checkbutton_signal_gaussian);
   gtk_widget_class_bind_template_callback(widget_class, on_stack_visible_child_changed);
+  gtk_widget_class_bind_template_callback(widget_class, on_autoloading_add_input_profile);
+  gtk_widget_class_bind_template_callback(widget_class, on_autoloading_add_output_profile);
 }
 
 void pipe_manager_box_init(PipeManagerBox* self) {
