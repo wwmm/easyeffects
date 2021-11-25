@@ -172,13 +172,11 @@ void on_destroy_node_proxy(void* data) {
     } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
       const auto node_ts = nd->nd_info.timestamp;
 
-      Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_removed.emit(node_ts); });
-      // pm->stream_output_removed.emit(node_ts);
+      pm->stream_output_removed.emit(node_ts);
     } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
       const auto node_ts = nd->nd_info.timestamp;
 
-      Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_removed.emit(node_ts); });
-      // pm->stream_input_removed.emit(node_ts);
+      pm->stream_input_removed.emit(node_ts);
     }
 
     util::debug(PipeManager::log_tag + nd->nd_info.media_class + " " + nd->nd_info.name + " was removed");
@@ -212,19 +210,19 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       if (nd->nd_info.media_class == pm->media_class_source) {
         const auto nd_info_copy = nd->nd_info;
 
-        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_removed.emit(nd_info_copy); });
+        pm->source_removed.emit(nd_info_copy);
       } else if (nd->nd_info.media_class == pm->media_class_sink) {
         const auto nd_info_copy = nd->nd_info;
 
-        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_removed.emit(nd_info_copy); });
+        pm->sink_removed.emit(nd_info_copy);
       } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
         const auto node_ts = nd->nd_info.timestamp;
 
-        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_removed.emit(node_ts); });
+        pm->stream_output_removed.emit(node_ts);
       } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
         const auto node_ts = nd->nd_info.timestamp;
 
-        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_removed.emit(node_ts); });
+        pm->stream_input_removed.emit(node_ts);
       }
 
       util::debug(PipeManager::log_tag + " monitor stream " + nd->nd_info.media_class + " " + nd->nd_info.name +
@@ -327,18 +325,18 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       const auto node_ts = nd->nd_info.timestamp;
 
       if (nd->nd_info.media_class == pm->media_class_output_stream) {
-        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_changed.emit(node_ts); });
+        pm->stream_output_changed.emit(node_ts);
       } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_changed.emit(node_ts); });
+        pm->stream_input_changed.emit(node_ts);
       }
     } else if (nd->nd_info.media_class == pm->media_class_source) {
       const auto nd_info_copy = nd->nd_info;
 
-      Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
+      pm->source_changed.emit(nd_info_copy);
     } else if (nd->nd_info.media_class == pm->media_class_sink) {
       const auto nd_info_copy = nd->nd_info;
 
-      Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_changed.emit(nd_info_copy); });
+      pm->sink_changed.emit(nd_info_copy);
     }
   }
 
