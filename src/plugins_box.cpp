@@ -53,6 +53,62 @@ struct _PluginsBox {
 
 G_DEFINE_TYPE(PluginsBox, plugins_box, GTK_TYPE_BOX)
 
+template <PipelineType pipeline_type>
+void add_plugins_to_stack(PluginsBox* self) {
+  std::string path;
+
+  if constexpr (pipeline_type == PipelineType::input) {
+    path = "/com/github/wwmm/easyeffects/streaminputs/";
+  } else if constexpr (pipeline_type == PipelineType::output) {
+    path = "/com/github/wwmm/easyeffects/streamoutputs/";
+  }
+
+  std::replace(path.begin(), path.end(), '.', '/');
+
+  // removing plugins that are not in the list
+
+  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
+    auto found = false;
+
+    for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"))) {
+      if (name == adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child))) {
+        found = true;
+
+        break;
+      }
+    }
+
+    auto* next_child = gtk_widget_get_next_sibling(GTK_WIDGET(child));
+
+    if (!found) {
+      adw_view_stack_remove(self->stack, child);
+    }
+
+    child = next_child;
+  }
+
+  // Adding to the stack the plugins in the list that are not there yet
+
+  for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"))) {
+    auto found = false;
+
+    for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
+      if (name == adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child))) {
+        found = true;
+
+        break;
+      }
+    }
+
+    if (found) {
+      continue;
+    }
+
+    if (name == plugin_name::autogain) {
+    }
+  }
+}
+
 void setup_listview(PluginsBox* self) {
   if (const auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins")); !list.empty()) {
     for (const auto& name : list) {
@@ -64,7 +120,7 @@ void setup_listview(PluginsBox* self) {
     const auto* selected_name = gtk_string_list_get_string(self->string_list, 0);
 
     for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;
-         child = gtk_widget_get_next_sibling(GTK_WIDGET(self->stack))) {
+         child = gtk_widget_get_next_sibling(GTK_WIDGET(child))) {
       if (adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child)) == selected_name) {
         adw_view_stack_set_visible_child(self->stack, child);
 
@@ -94,7 +150,7 @@ void setup_listview(PluginsBox* self) {
               gtk_selection_model_select_item(gtk_list_view_get_model(self->listview), 0, 1);
 
               for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;
-                   child = gtk_widget_get_next_sibling(GTK_WIDGET(self->stack))) {
+                   child = gtk_widget_get_next_sibling(GTK_WIDGET(child))) {
                 if (adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child)) == list[0]) {
                   adw_view_stack_set_visible_child(self->stack, child);
 
@@ -310,10 +366,14 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
     case PipelineType::input: {
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
 
+      add_plugins_to_stack<PipelineType::input>(self);
+
       break;
     }
     case PipelineType::output: {
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+
+      add_plugins_to_stack<PipelineType::output>(self);
 
       break;
     }

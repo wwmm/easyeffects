@@ -36,8 +36,6 @@ struct _AppsBox {
 
   GListStore *apps_model, *all_apps_model;
 
-  bool schedule_signal_idle;
-
   GSettings *settings, *app_settings;
 
   PipelineType pipeline_type;
@@ -79,7 +77,7 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
   }
 }
 
-void on_app_removed(AppsBox* self, const util::time_point ts) {
+void on_app_removed(AppsBox* self, const long ts) {
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
     auto* holder =
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
@@ -104,7 +102,7 @@ void on_app_removed(AppsBox* self, const util::time_point ts) {
   }
 }
 
-void on_app_changed(AppsBox* self, const util::time_point ts) {
+void on_app_changed(AppsBox* self, const long ts) {
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
@@ -520,11 +518,11 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->connections.push_back(
           application->sie->pm->stream_input_added.connect([=](const NodeInfo& info) { on_app_added(self, info); }));
 
-      self->connections.push_back(application->sie->pm->stream_input_removed.connect(
-          [=](const util::time_point ts) { on_app_removed(self, ts); }));
+      self->connections.push_back(
+          application->sie->pm->stream_input_removed.connect([=](const long ts) { on_app_removed(self, ts); }));
 
-      self->connections.push_back(application->sie->pm->stream_input_changed.connect(
-          [=](const util::time_point ts) { on_app_changed(self, ts); }));
+      self->connections.push_back(
+          application->sie->pm->stream_input_changed.connect([=](const long ts) { on_app_changed(self, ts); }));
 
       break;
     }
@@ -542,11 +540,11 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->connections.push_back(
           pm->stream_output_added.connect([=](const NodeInfo& info) { on_app_added(self, info); }));
 
-      self->connections.push_back(application->soe->pm->stream_output_removed.connect(
-          [=](const util::time_point ts) { on_app_removed(self, ts); }));
+      self->connections.push_back(
+          application->soe->pm->stream_output_removed.connect([=](const long ts) { on_app_removed(self, ts); }));
 
       self->connections.push_back(application->soe->pm->stream_output_changed.connect(
-          [=](const util::time_point ts) { on_app_changed(self, ts); }));
+          [=](const long ts) { util::idle_add([=]() { on_app_changed(self, ts); }); }));
 
       break;
     }
@@ -621,22 +619,6 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self));
 }
 
-void realize(GtkWidget* widget) {
-  auto* self = ui::apps_box::EE_APPS_BOX(widget);
-
-  self->schedule_signal_idle = true;
-
-  GTK_WIDGET_CLASS(apps_box_parent_class)->realize(widget);
-}
-
-void unroot(GtkWidget* widget) {
-  auto* self = EE_APPS_BOX(widget);
-
-  self->schedule_signal_idle = false;
-
-  GTK_WIDGET_CLASS(apps_box_parent_class)->unroot(widget);
-}
-
 void dispose(GObject* object) {
   auto* self = EE_APPS_BOX(object);
 
@@ -666,9 +648,6 @@ void apps_box_class_init(AppsBoxClass* klass) {
 
   object_class->dispose = dispose;
 
-  widget_class->realize = realize;
-  widget_class->unroot = unroot;
-
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/apps_box.ui");
 
   gtk_widget_class_bind_template_child(widget_class, AppsBox, listview);
@@ -676,8 +655,6 @@ void apps_box_class_init(AppsBoxClass* klass) {
 
 void apps_box_init(AppsBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
-
-  self->schedule_signal_idle = false;
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
 

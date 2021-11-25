@@ -25,7 +25,7 @@
 
 class NodeInfoHolder : public Glib::Object {
  public:
-  util::time_point ts;
+  long ts;
 
   uint id = SPA_ID_INVALID;
 
@@ -41,41 +41,4 @@ class NodeInfoHolder : public Glib::Object {
 
  protected:
   NodeInfoHolder(NodeInfo info);
-};
-
-class ModuleInfoHolder : public Glib::Object {
- public:
-  ModuleInfo info;
-
-  static auto create(ModuleInfo info) -> Glib::RefPtr<ModuleInfoHolder>;
-
-  sigc::signal<void(ModuleInfo)> info_updated;
-
- protected:
-  ModuleInfoHolder(ModuleInfo info);
-};
-
-class ClientInfoHolder : public Glib::Object {
- public:
-  ClientInfo info;
-
-  static auto create(ClientInfo info) -> Glib::RefPtr<ClientInfoHolder>;
-
-  sigc::signal<void(ClientInfo)> info_updated;
-
- protected:
-  ClientInfoHolder(ClientInfo info);
-};
-
-class PresetsAutoloadingHolder : public Glib::Object {
- public:
-  std::string device;
-  std::string device_profile;
-  std::string preset_name;
-
-  static auto create(const std::string& device, const std::string& device_profile, const std::string& preset_name)
-      -> Glib::RefPtr<PresetsAutoloadingHolder>;
-
- protected:
-  PresetsAutoloadingHolder(std::string device, std::string device_profile, std::string preset_name);
 };

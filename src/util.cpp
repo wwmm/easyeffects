@@ -183,6 +183,10 @@ auto timestamp_str(const time_point ts) -> std::string {
   return std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count());
 }
 
+auto timepoint_to_long(time_point ts) -> long {
+  return std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count();
+}
+
 auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string> {
   std::vector<std::string> output;
 
@@ -259,6 +263,26 @@ void remove_blocklist_entry(GSettings* settings, const std::string& name, const 
   g_settings_set_strv(settings, "blocklist", util::make_gchar_pointer_vector(list).data());
 
   util::debug(log_tag + "an entry has been removed from the blocklist"s);
+}
+
+void idle_add(std::function<void()> cb) {
+  struct Data {
+    std::function<void()> cb;
+  };
+
+  auto d = new Data();
+
+  d->cb = cb;
+
+  g_idle_add((GSourceFunc) +
+                 [](Data* d) {
+                   d->cb();
+
+                   delete d;
+
+                   return G_SOURCE_REMOVE;
+                 },
+             d);
 }
 
 }  // namespace util

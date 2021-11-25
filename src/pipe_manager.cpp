@@ -164,19 +164,21 @@ void on_destroy_node_proxy(void* data) {
     if (nd->nd_info.media_class == pm->media_class_source) {
       const auto nd_info_copy = nd->nd_info;
 
-      Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_removed.emit(nd_info_copy); });
+      pm->source_removed.emit(nd_info_copy);
     } else if (nd->nd_info.media_class == pm->media_class_sink) {
       const auto nd_info_copy = nd->nd_info;
 
-      Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_removed.emit(nd_info_copy); });
+      pm->sink_removed.emit(nd_info_copy);
     } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
       const auto node_ts = nd->nd_info.timestamp;
 
       Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_removed.emit(node_ts); });
+      // pm->stream_output_removed.emit(node_ts);
     } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
       const auto node_ts = nd->nd_info.timestamp;
 
       Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_removed.emit(node_ts); });
+      // pm->stream_input_removed.emit(node_ts);
     }
 
     util::debug(PipeManager::log_tag + nd->nd_info.media_class + " " + nd->nd_info.name + " was removed");
@@ -894,7 +896,7 @@ void on_registry_global(void* data,
 
         nd->proxy = proxy;
         nd->pm = pm;
-        nd->nd_info.timestamp = std::chrono::system_clock::now();
+        nd->nd_info.timestamp = util::timepoint_to_long(std::chrono::system_clock::now());
         nd->nd_info.proxy = proxy;
         nd->nd_info.id = id;
         nd->nd_info.media_class = media_class;
@@ -917,7 +919,7 @@ void on_registry_global(void* data,
         if (!success) {
           util::warning(PipeManager::log_tag + "Cannot insert node " + std::to_string(id) + " " + name +
                         " into the node map because there's already an existing timestamp " +
-                        util::timestamp_str(nd->nd_info.timestamp));
+                        std::to_string(nd->nd_info.timestamp));
 
           return;
         }
@@ -941,7 +943,7 @@ void on_registry_global(void* data,
         }
 
         util::debug(PipeManager::log_tag + media_class + " " + std::to_string(id) + " " + nd->nd_info.name +
-                    " with timestamp " + util::timestamp_str(nd->nd_info.timestamp) + " was added");
+                    " with timestamp " + std::to_string(nd->nd_info.timestamp) + " was added");
       }
     }
 
@@ -1240,12 +1242,12 @@ PipeManager::PipeManager() {
         ee_sink_node = node;
 
         util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + std::to_string(node.id) +
-                    " and timestamp " + util::timestamp_str(node.timestamp));
+                    " and timestamp " + std::to_string(node.timestamp));
       } else if (ee_source_node.name.empty() && node.name == ee_source_name) {
         ee_source_node = node;
 
         util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + std::to_string(node.id) +
-                    " and timestamp " + util::timestamp_str(node.timestamp));
+                    " and timestamp " + std::to_string(node.timestamp));
       }
     }
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);

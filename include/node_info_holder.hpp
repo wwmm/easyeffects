@@ -35,7 +35,7 @@ G_END_DECLS
 struct _NodeInfoHolder {
   GObject parent_instance;
 
-  util::time_point ts;
+  long ts;
 
   uint id;
 

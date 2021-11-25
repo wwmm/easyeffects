@@ -25,6 +25,7 @@
 #include <gtkmm.h>
 #include <chrono>
 #include <cmath>
+#include <functional>
 #include <iostream>
 #include <string>
 #include <thread>
@@ -75,6 +76,8 @@ auto remove_filename_extension(const std::string& basename) -> std::string;
 
 auto timestamp_str(time_point ts) -> std::string;
 
+auto timepoint_to_long(time_point ts) -> long;
+
 void print_thread_id();
 
 template <typename T>
@@ -97,6 +100,8 @@ auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA;
 auto add_new_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag) -> bool;
 
 void remove_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag);
+
+void idle_add(std::function<void()> cb);
 
 }  // namespace util
 
