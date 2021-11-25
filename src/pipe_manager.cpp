@@ -164,19 +164,19 @@ void on_destroy_node_proxy(void* data) {
     if (nd->nd_info.media_class == pm->media_class_source) {
       const auto nd_info_copy = nd->nd_info;
 
-      pm->source_removed.emit(nd_info_copy);
+      util::idle_add([=]() { pm->source_removed.emit(nd_info_copy); });
     } else if (nd->nd_info.media_class == pm->media_class_sink) {
       const auto nd_info_copy = nd->nd_info;
 
-      pm->sink_removed.emit(nd_info_copy);
+      util::idle_add([=]() { pm->sink_removed.emit(nd_info_copy); });
     } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
       const auto node_ts = nd->nd_info.timestamp;
 
-      pm->stream_output_removed.emit(node_ts);
+      util::idle_add([=]() { pm->stream_output_removed.emit(node_ts); });
     } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
       const auto node_ts = nd->nd_info.timestamp;
 
-      pm->stream_input_removed.emit(node_ts);
+      util::idle_add([=]() { pm->stream_input_removed.emit(node_ts); });
     }
 
     util::debug(PipeManager::log_tag + nd->nd_info.media_class + " " + nd->nd_info.name + " was removed");
@@ -210,19 +210,19 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       if (nd->nd_info.media_class == pm->media_class_source) {
         const auto nd_info_copy = nd->nd_info;
 
-        pm->source_removed.emit(nd_info_copy);
+        util::idle_add([=]() { pm->source_removed.emit(nd_info_copy); });
       } else if (nd->nd_info.media_class == pm->media_class_sink) {
         const auto nd_info_copy = nd->nd_info;
 
-        pm->sink_removed.emit(nd_info_copy);
+        util::idle_add([=]() { pm->sink_removed.emit(nd_info_copy); });
       } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
         const auto node_ts = nd->nd_info.timestamp;
 
-        pm->stream_output_removed.emit(node_ts);
+        util::idle_add([=]() { pm->stream_output_removed.emit(node_ts); });
       } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
         const auto node_ts = nd->nd_info.timestamp;
 
-        pm->stream_input_removed.emit(node_ts);
+        util::idle_add([=]() { pm->stream_input_removed.emit(node_ts); });
       }
 
       util::debug(PipeManager::log_tag + " monitor stream " + nd->nd_info.media_class + " " + nd->nd_info.name +
@@ -325,18 +325,18 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       const auto node_ts = nd->nd_info.timestamp;
 
       if (nd->nd_info.media_class == pm->media_class_output_stream) {
-        pm->stream_output_changed.emit(node_ts);
+        util::idle_add([=]() { pm->stream_output_changed.emit(node_ts); });
       } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-        pm->stream_input_changed.emit(node_ts);
+        util::idle_add([=]() { pm->stream_input_changed.emit(node_ts); });
       }
     } else if (nd->nd_info.media_class == pm->media_class_source) {
       const auto nd_info_copy = nd->nd_info;
 
-      pm->source_changed.emit(nd_info_copy);
+      util::idle_add([=]() { pm->source_changed.emit(nd_info_copy); });
     } else if (nd->nd_info.media_class == pm->media_class_sink) {
       const auto nd_info_copy = nd->nd_info;
 
-      pm->sink_changed.emit(nd_info_copy);
+      util::idle_add([=]() { pm->sink_changed.emit(nd_info_copy); });
     }
   }
 
@@ -480,11 +480,11 @@ void on_node_event_param(void* object,
       if (nd->nd_info.media_class == pm->media_class_output_stream) {
         const auto node_ts = ts;
 
-        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_changed.emit(node_ts); });
+        util::idle_add([pm, node_ts] { pm->stream_output_changed.emit(node_ts); });
       } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
         const auto node_ts = ts;
 
-        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_changed.emit(node_ts); });
+        util::idle_add([pm, node_ts] { pm->stream_input_changed.emit(node_ts); });
       } else if (nd->nd_info.media_class == pm->media_class_virtual_source) {
         const auto nd_info_copy = nd->nd_info;
 
@@ -492,7 +492,7 @@ void on_node_event_param(void* object,
           pm->ee_source_node = nd_info_copy;
         }
 
-        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
+        util::idle_add([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
       } else if (nd->nd_info.media_class == pm->media_class_sink) {
         const auto nd_info_copy = nd->nd_info;
 
@@ -500,7 +500,7 @@ void on_node_event_param(void* object,
           pm->ee_sink_node = nd_info_copy;
         }
 
-        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_changed.emit(nd_info_copy); });
+        util::idle_add([pm, nd_info_copy] { pm->sink_changed.emit(nd_info_copy); });
       }
     }
   }
@@ -518,7 +518,7 @@ void on_link_info(void* object, const struct pw_link_info* info) {
 
       link_copy = l;
 
-      Glib::signal_idle().connect_once([pm, link_copy] { pm->link_changed.emit(link_copy); });
+      util::idle_add([pm, link_copy] { pm->link_changed.emit(link_copy); });
 
       // util::warning(pw_link_state_as_string(l.state));
 
@@ -677,14 +677,14 @@ void on_device_event_param(void* object,
               device.input_route_name = name;
               device.input_route_available = available;
 
-              Glib::signal_idle().connect_once([pm, device] { pm->device_input_route_changed.emit(device); });
+              util::idle_add([pm, device] { pm->device_input_route_changed.emit(device); });
             }
           } else if (direction == SPA_DIRECTION_OUTPUT) {
             if (name != device.output_route_name || available != device.output_route_available) {
               device.output_route_name = name;
               device.output_route_available = available;
 
-              Glib::signal_idle().connect_once([pm, device] { pm->device_output_route_changed.emit(device); });
+              util::idle_add([pm, device] { pm->device_output_route_changed.emit(device); });
             }
           }
 
@@ -737,7 +737,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
           auto node_copy = node;
 
-          Glib::signal_idle().connect_once([pm, node_copy] { pm->new_default_sink.emit(node_copy); });
+          util::idle_add([pm, node_copy] { pm->new_default_sink.emit(node_copy); });
         }
 
         break;
@@ -763,7 +763,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
           auto node_copy = node;
 
-          Glib::signal_idle().connect_once([pm, node_copy] { pm->new_default_source.emit(node_copy); });
+          util::idle_add([pm, node_copy] { pm->new_default_source.emit(node_copy); });
         }
 
         break;
@@ -931,13 +931,13 @@ void on_registry_global(void* data,
         const auto nd_info_copy = nd->nd_info;
 
         if (media_class == pm->media_class_source && name != pm->ee_source_name) {
-          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_added.emit(nd_info_copy); });
+          util::idle_add([pm, nd_info_copy] { pm->source_added.emit(nd_info_copy); });
         } else if (media_class == pm->media_class_sink && name != pm->ee_sink_name) {
-          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
+          util::idle_add([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
         } else if (media_class == pm->media_class_output_stream) {
-          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_output_added.emit(nd_info_copy); });
+          util::idle_add([pm, nd_info_copy] { pm->stream_output_added.emit(nd_info_copy); });
         } else if (media_class == pm->media_class_input_stream) {
-          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_input_added.emit(nd_info_copy); });
+          util::idle_add([pm, nd_info_copy] { pm->stream_input_added.emit(nd_info_copy); });
         }
 
         util::debug(PipeManager::log_tag + media_class + " " + std::to_string(id) + " " + nd->nd_info.name +
