@@ -38,22 +38,3 @@ auto create() -> AutogainBox*;
 void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::string& schema_path);
 
 }  // namespace ui::autogain_box
-
-#include "plugin_ui_base.hpp"
-
-class AutoGainUi : public Gtk::Box, public PluginUiBase {
- public:
-  AutoGainUi(BaseObjectType* cobject,
-             const Glib::RefPtr<Gtk::Builder>& builder,
-             const std::string& schema,
-             const std::string& schema_path);
-  AutoGainUi(const AutoGainUi&) = delete;
-  auto operator=(const AutoGainUi&) -> AutoGainUi& = delete;
-  AutoGainUi(const AutoGainUi&&) = delete;
-  auto operator=(const AutoGainUi&&) -> AutoGainUi& = delete;
-  ~AutoGainUi() override;
-
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> AutoGainUi*;
-
-  void reset() override;
-};

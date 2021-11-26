@@ -73,6 +73,41 @@ void on_reset(AutogainBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, "reference");
 }
 
+void update_level(GtkLevelBar* w_left,
+                  GtkLabel* w_left_label,
+                  GtkLevelBar* w_right,
+                  GtkLabel* w_right_label,
+                  const float& left,
+                  const float& right) {
+  if (auto db_value = util::db_to_linear(left); left >= -99.0) {
+    if (db_value < 0.0) {
+      db_value = 0.0;
+    } else if (db_value > 1.0) {
+      db_value = 1.0;
+    }
+
+    gtk_level_bar_set_value(w_left, db_value);
+    gtk_label_set_text(w_left_label, fmt::format("{0:.0f}", left).c_str());
+  } else {
+    gtk_level_bar_set_value(w_left, 0.0);
+    gtk_label_set_text(w_left_label, "-99");
+  }
+
+  if (auto db_value = util::db_to_linear(right); right >= -99.0) {
+    if (db_value < 0.0) {
+      db_value = 0.0;
+    } else if (db_value > 1.0) {
+      db_value = 1.0;
+    }
+
+    gtk_level_bar_set_value(w_right, db_value);
+    gtk_label_set_text(w_right_label, fmt::format("{0:.0f}", right).c_str());
+  } else {
+    gtk_level_bar_set_value(w_right, 0.0);
+    gtk_label_set_text(w_right_label, "-99");
+  }
+}
+
 void on_reset_history(AutogainBox* self, GtkButton* btn) {
   // it is ugly but will ensure that third party tools are able to reset this plugin history
 
@@ -86,6 +121,16 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   autogain->post_messages = true;
   autogain->bypass = false;
+
+  self->connections.push_back(autogain->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(autogain->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
 
   self->connections.push_back(autogain->results.connect(
       [=](const double& loudness, const double& gain, const double& momentary, const double& shortterm,
@@ -236,42 +281,3 @@ auto create() -> AutogainBox* {
 }
 
 }  // namespace ui::autogain_box
-
-AutoGainUi::AutoGainUi(BaseObjectType* cobject,
-                       const Glib::RefPtr<Gtk::Builder>& builder,
-                       const std::string& schema,
-                       const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::autogain;
-
-  // loading builder widgets
-
-  setup_input_output_gain(builder);
-}
-
-AutoGainUi::~AutoGainUi() {
-  util::debug(name + " ui destroyed");
-}
-
-auto AutoGainUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> AutoGainUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autogain.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<AutoGainUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.autogain", schema_path + "autogain/");
-
-  stack->add(*ui, plugin_name::autogain);
-
-  return ui;
-}
-
-void AutoGainUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("target");
-
-  settings->reset("reference");
-}

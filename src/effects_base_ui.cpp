@@ -180,10 +180,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
     }
 
     if (name == plugin_name::autogain) {
-      auto* const autogain_ui = AutoGainUi::add_to_stack(stack_plugins, path);
-
-      effects_base->autogain->input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level));
-      effects_base->autogain->output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level));
+      // effects_base->autogain->input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level));
+      // effects_base->autogain->output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level));
     } else if (name == plugin_name::bass_enhancer) {
       auto* const bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
 
