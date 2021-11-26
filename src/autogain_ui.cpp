@@ -112,6 +112,11 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
         gtk_label_set_text(self->lra_label, fmt::format("{0:.0f}", range).c_str());
       }));
 
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "target", gtk_spin_button_get_adjustment(self->target), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
