@@ -55,36 +55,40 @@ G_DEFINE_TYPE(PluginsBox, plugins_box, GTK_TYPE_BOX)
 
 template <PipelineType pipeline_type>
 void add_plugins_to_stack(PluginsBox* self) {
-  std::string path;
+  std::string schema_path;
+  EffectsBase* effects_base;
 
   if constexpr (pipeline_type == PipelineType::input) {
-    path = "/com/github/wwmm/easyeffects/streaminputs/";
+    schema_path = "/com/github/wwmm/easyeffects/streaminputs/";
+
+    effects_base = self->application->sie;
   } else if constexpr (pipeline_type == PipelineType::output) {
-    path = "/com/github/wwmm/easyeffects/streamoutputs/";
+    schema_path = "/com/github/wwmm/easyeffects/streamoutputs/";
+
+    effects_base = self->application->soe;
   }
 
-  std::replace(path.begin(), path.end(), '.', '/');
+  std::replace(schema_path.begin(), schema_path.end(), '.', '/');
 
   // removing plugins that are not in the list
 
-  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
-    auto found = false;
+  std::vector<AdwViewStackPage*> pages_to_remove;
 
-    for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"))) {
-      if (name == adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child))) {
-        found = true;
+  auto pages = G_LIST_MODEL(adw_view_stack_get_pages(self->stack));
 
-        break;
-      }
+  for (guint n = 0; n < g_list_model_get_n_items(pages); n++) {
+    auto page = ADW_VIEW_STACK_PAGE(g_list_model_get_item(pages, n));
+    auto page_name = adw_view_stack_page_get_name(page);
+
+    auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
+
+    if (std::ranges::find(list, page_name) == list.end()) {
+      pages_to_remove.push_back(page);
     }
+  }
 
-    auto* next_child = gtk_widget_get_next_sibling(GTK_WIDGET(child));
-
-    if (!found) {
-      adw_view_stack_remove(self->stack, child);
-    }
-
-    child = next_child;
+  for (auto page : pages_to_remove) {
+    adw_view_stack_remove(self->stack, GTK_WIDGET(page));
   }
 
   // Adding to the stack the plugins in the list that are not there yet
@@ -92,8 +96,10 @@ void add_plugins_to_stack(PluginsBox* self) {
   for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"))) {
     auto found = false;
 
-    for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
-      if (name == adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child))) {
+    auto pages = G_LIST_MODEL(adw_view_stack_get_pages(self->stack));
+
+    for (guint n = 0; n < g_list_model_get_n_items(pages); n++) {
+      if (name == adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(g_list_model_get_item(pages, n)))) {
         found = true;
 
         break;
@@ -105,6 +111,11 @@ void add_plugins_to_stack(PluginsBox* self) {
     }
 
     if (name == plugin_name::autogain) {
+      auto* box = ui::autogain_box::create();
+
+      ui::autogain_box::setup(box, effects_base->autogain, schema_path + "autogain/");
+
+      adw_view_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::autogain);
     }
   }
 }
@@ -119,10 +130,13 @@ void setup_listview(PluginsBox* self) {
 
     const auto* selected_name = gtk_string_list_get_string(self->string_list, 0);
 
-    for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;
-         child = gtk_widget_get_next_sibling(GTK_WIDGET(child))) {
-      if (adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child)) == selected_name) {
-        adw_view_stack_set_visible_child(self->stack, child);
+    auto pages = G_LIST_MODEL(adw_view_stack_get_pages(self->stack));
+
+    for (guint n = 0; n < g_list_model_get_n_items(pages); n++) {
+      auto page = ADW_VIEW_STACK_PAGE(g_list_model_get_item(pages, n));
+
+      if (selected_name == adw_view_stack_page_get_name(page)) {
+        adw_view_stack_set_visible_child(self->stack, GTK_WIDGET(page));
 
         break;
       }
@@ -149,10 +163,13 @@ void setup_listview(PluginsBox* self) {
             if (std::ranges::find(list, visible_page_name) == list.end()) {
               gtk_selection_model_select_item(gtk_list_view_get_model(self->listview), 0, 1);
 
-              for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;
-                   child = gtk_widget_get_next_sibling(GTK_WIDGET(child))) {
-                if (adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(child)) == list[0]) {
-                  adw_view_stack_set_visible_child(self->stack, child);
+              auto pages = G_LIST_MODEL(adw_view_stack_get_pages(self->stack));
+
+              for (guint n = 0; n < g_list_model_get_n_items(pages); n++) {
+                auto page = ADW_VIEW_STACK_PAGE(g_list_model_get_item(pages, n));
+
+                if (list[0] == adw_view_stack_page_get_name(page)) {
+                  adw_view_stack_set_visible_child(self->stack, GTK_WIDGET(page));
 
                   break;
                 }

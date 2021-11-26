@@ -17,8 +17,27 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef AUTOGAIN_UI_HPP
-#define AUTOGAIN_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::autogain_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_AUTOGAIN_BOX (autogain_box_get_type())
+
+G_DECLARE_FINAL_TYPE(AutogainBox, autogain_box, EE, AUTOGAIN_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> AutogainBox*;
+
+void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::string& schema_path);
+
+}  // namespace ui::autogain_box
 
 #include "plugin_ui_base.hpp"
 
@@ -36,28 +55,12 @@ class AutoGainUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> AutoGainUi*;
 
-  void on_new_results(const double& loudness,
-                      const double& gain,
-                      const double& momentary,
-                      const double& shortterm,
-                      const double& integrated,
-                      const double& relative,
-                      const double& range);
-
   void reset() override;
 
  private:
   Gtk::SpinButton* target = nullptr;
 
-  Gtk::LevelBar *m_level = nullptr, *s_level = nullptr, *i_level = nullptr, *r_level = nullptr, *g_level = nullptr,
-                *l_level = nullptr, *lra_level = nullptr;
-
-  Gtk::Label *m_label = nullptr, *s_label = nullptr, *i_label = nullptr, *r_label = nullptr, *g_label = nullptr,
-             *l_label = nullptr, *lra_label = nullptr;
-
   Gtk::Button* reset_history = nullptr;
 
   Gtk::ComboBoxText* reference = nullptr;
 };
-
-#endif

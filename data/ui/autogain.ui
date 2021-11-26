@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="AutogainBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkGrid">
                 <property name="halign">center</property>
@@ -25,7 +24,7 @@
                     </object>
                 </child>
                 <child>
-                    <object class="GtkSpinButton" id="spinbutton_target">
+                    <object class="GtkSpinButton" id="target">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="width-chars">10</property>
@@ -92,7 +91,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkButton" id="reset">
+                            <object class="GtkButton" id="reset_history">
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Reset History</property>
                             </object>
@@ -533,7 +532,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>
