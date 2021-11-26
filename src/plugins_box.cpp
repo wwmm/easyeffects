@@ -113,7 +113,7 @@ void add_plugins_to_stack(PluginsBox* self) {
     if (name == plugin_name::autogain) {
       auto* box = ui::autogain_box::create();
 
-      ui::autogain_box::setup(box, effects_base->autogain, schema_path + "autogain/");
+      ui::autogain_box::setup(box, effects_base->autogain, schema_path + plugin_name::autogain + "/");
 
       adw_view_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::autogain);
     }

@@ -57,6 +57,28 @@ struct _AutogainBox {
 
 G_DEFINE_TYPE(AutogainBox, autogain_box, GTK_TYPE_BOX)
 
+void on_bypass(AutogainBox* self, GtkToggleButton* btn) {
+  self->autogain->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(AutogainBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "target");
+
+  g_settings_reset(self->settings, "reference");
+}
+
+void on_reset_history(AutogainBox* self, GtkButton* btn) {
+  // it is ugly but will ensure that third party tools are able to reset this plugin history
+
+  g_settings_set_boolean(self->settings, "reset-history", !g_settings_get_boolean(self->settings, "reset-history"));
+}
+
 void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::string& schema_path) {
   self->autogain = autogain;
 
@@ -64,11 +86,6 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   autogain->post_messages = true;
   autogain->bypass = false;
-
-  g_signal_connect(self->bypass, "toggled", G_CALLBACK(+[](GtkToggleButton* btn, AutogainBox* self) {
-                     self->autogain->bypass = gtk_toggle_button_get_active(btn);
-                   }),
-                   self);
 
   self->connections.push_back(autogain->results.connect(
       [=](const double& loudness, const double& gain, const double& momentary, const double& shortterm,
@@ -94,6 +111,43 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
         gtk_level_bar_set_value(self->lra_level, util::db_to_linear(range));
         gtk_label_set_text(self->lra_label, fmt::format("{0:.0f}", range).c_str());
       }));
+
+  g_settings_bind(self->settings, "target", gtk_spin_button_get_adjustment(self->target), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind_with_mapping(
+      self->settings, "reference", self->reference, "active", G_SETTINGS_BIND_DEFAULT,
+      +[](GValue* value, GVariant* variant, gpointer user_data) {
+        const auto* v = g_variant_get_string(variant, nullptr);
+
+        if (g_strcmp0(v, "Momentary") == 0) {
+          g_value_set_int(value, 0);
+        } else if (g_strcmp0(v, "Shortterm") == 0) {
+          g_value_set_int(value, 1);
+        } else if (g_strcmp0(v, "Integrated") == 0) {
+          g_value_set_int(value, 2);
+        } else if (g_strcmp0(v, "Geometric Mean") == 0) {
+          g_value_set_int(value, 3);
+        }
+
+        return 1;
+      },
+      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+        switch (g_value_get_int(value)) {
+          case 0:
+            return g_variant_new_string("Momentary");
+
+          case 1:
+            return g_variant_new_string("Shortterm");
+
+          case 2:
+            return g_variant_new_string("Integrated");
+
+          default:
+            return g_variant_new_string("Geometric Mean");
+        }
+      },
+      nullptr, nullptr);
 }
 
 void dispose(GObject* object) {
@@ -159,6 +213,11 @@ void autogain_box_class_init(AutogainBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, g_label);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, l_label);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, lra_label);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_reset_history);
 }
 
 void autogain_box_init(AutogainBox* self) {
@@ -173,42 +232,6 @@ auto create() -> AutogainBox* {
 
 }  // namespace ui::autogain_box
 
-namespace {
-
-auto reference_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Momentary") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Shortterm") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Integrated") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "Geometric Mean") == 0) {
-    g_value_set_int(value, 3);
-  }
-
-  return 1;
-}
-
-auto int_to_reference_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Momentary");
-
-    case 1:
-      return g_variant_new_string("Shortterm");
-
-    case 2:
-      return g_variant_new_string("Integrated");
-
-    default:
-      return g_variant_new_string("Geometric Mean");
-  }
-}
-
-}  // namespace
-
 AutoGainUi::AutoGainUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& builder,
                        const std::string& schema,
@@ -217,24 +240,6 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   name = plugin_name::autogain;
 
   // loading builder widgets
-
-  reset_history = builder->get_widget<Gtk::Button>("reset");
-
-  target = builder->get_widget<Gtk::SpinButton>("spinbutton_target");
-
-  reference = builder->get_widget<Gtk::ComboBoxText>("reference");
-
-  // gsettings bindings
-
-  settings->bind("target", target->get_adjustment().get(), "value");
-
-  g_settings_bind_with_mapping(settings->gobj(), "reference", reference->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               reference_enum_to_int, int_to_reference_enum, nullptr, nullptr);
-
-  // it is ugly but will ensure that third party tools are able to reset this plugin history
-
-  reset_history->signal_clicked().connect(
-      [=, this]() { settings->set_boolean("reset-history", !settings->get_boolean("reset-history")); });
 
   setup_input_output_gain(builder);
 }

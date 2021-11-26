@@ -56,11 +56,4 @@ class AutoGainUi : public Gtk::Box, public PluginUiBase {
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> AutoGainUi*;
 
   void reset() override;
-
- private:
-  Gtk::SpinButton* target = nullptr;
-
-  Gtk::Button* reset_history = nullptr;
-
-  Gtk::ComboBoxText* reference = nullptr;
 };

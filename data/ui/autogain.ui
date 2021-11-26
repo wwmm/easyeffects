@@ -88,12 +88,14 @@
                             <object class="GtkToggleButton" id="bypass">
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Bypass</property>
+                                <signal name="toggled" handler="on_bypass" object="AutogainBox" />
                             </object>
                         </child>
                         <child>
                             <object class="GtkButton" id="reset_history">
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Reset History</property>
+                                <signal name="clicked" handler="on_reset_history" object="AutogainBox" />
                             </object>
                         </child>
                         <layout>
@@ -504,6 +506,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="AutogainBox" />
                     </object>
                 </child>
 
