@@ -48,7 +48,7 @@
         <child>
             <object class="GtkScrolledWindow">
                 <child>
-                    <object class="AdwViewStack" id="stack">
+                    <object class="GtkStack" id="stack">
                         <property name="hhomogeneous">0</property>
                         <property name="vhomogeneous">0</property>
                     </object>

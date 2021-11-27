@@ -98,8 +98,6 @@ class EffectsBaseUi {
   std::unordered_map<uint, bool> enabled_app_list;
 
   void add_plugins_to_stack_plugins();
-
-  void setup_listview_selected_plugins();
 };
 
 #endif

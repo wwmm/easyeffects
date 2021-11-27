@@ -32,7 +32,7 @@ struct _PluginsBox {
 
   GtkListView* listview;
 
-  AdwViewStack* stack;
+  GtkStack* stack;
 
   ui::plugins_menu::PluginsMenu* plugins_menu;
 
@@ -70,130 +70,48 @@ void add_plugins_to_stack(PluginsBox* self) {
 
   std::replace(schema_path.begin(), schema_path.end(), '.', '/');
 
-  // removing plugins that are not in the list
+  // saving the current visible page name for later usage
 
-  std::vector<AdwViewStackPage*> pages_to_remove;
+  auto* visible_page_name = gtk_stack_get_visible_child_name(self->stack);
 
-  auto pages = G_LIST_MODEL(adw_view_stack_get_pages(self->stack));
+  // removing all plugins
 
-  for (guint n = 0; n < g_list_model_get_n_items(pages); n++) {
-    auto page = ADW_VIEW_STACK_PAGE(g_list_model_get_item(pages, n));
-    auto page_name = adw_view_stack_page_get_name(page);
+  for (auto child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
+    auto* next_child = gtk_widget_get_next_sibling(child);
 
-    auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
+    gtk_stack_remove(self->stack, child);
 
-    if (std::ranges::find(list, page_name) == list.end()) {
-      pages_to_remove.push_back(page);
-    }
-  }
-
-  for (auto page : pages_to_remove) {
-    adw_view_stack_remove(self->stack, GTK_WIDGET(page));
+    child = next_child;
   }
 
   // Adding to the stack the plugins in the list that are not there yet
 
-  for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"))) {
-    auto found = false;
+  auto plugins_list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
 
-    auto pages = G_LIST_MODEL(adw_view_stack_get_pages(self->stack));
-
-    for (guint n = 0; n < g_list_model_get_n_items(pages); n++) {
-      if (name == adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(g_list_model_get_item(pages, n)))) {
-        found = true;
-
-        break;
-      }
-    }
-
-    if (found) {
-      continue;
-    }
-
+  for (const auto& name : plugins_list) {
     if (name == plugin_name::autogain) {
       auto* box = ui::autogain_box::create();
 
       ui::autogain_box::setup(box, effects_base->autogain, schema_path + plugin_name::autogain + "/");
 
-      adw_view_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::autogain);
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::autogain);
     } else if (name == plugin_name::bass_enhancer) {
       auto* box = ui::bass_enhancer_box::create();
 
       ui::bass_enhancer_box::setup(box, effects_base->bass_enhancer, schema_path + "bassenhancer/");
 
-      adw_view_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::bass_enhancer);
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::bass_enhancer);
+    }
+  }
+
+  if (visible_page_name != nullptr) {
+    if (std::ranges::find(plugins_list, visible_page_name) != plugins_list.end()) {
+      gtk_stack_set_visible_child_name(self->stack, visible_page_name);
     }
   }
 }
 
 void setup_listview(PluginsBox* self) {
-  if (const auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins")); !list.empty()) {
-    for (const auto& name : list) {
-      gtk_string_list_append(self->string_list, name.c_str());
-    }
-
-    // showing the first plugin in the list by default
-
-    const auto* selected_name = gtk_string_list_get_string(self->string_list, 0);
-
-    auto pages = G_LIST_MODEL(adw_view_stack_get_pages(self->stack));
-
-    for (guint n = 0; n < g_list_model_get_n_items(pages); n++) {
-      auto page = ADW_VIEW_STACK_PAGE(g_list_model_get_item(pages, n));
-
-      if (selected_name == adw_view_stack_page_get_name(page)) {
-        adw_view_stack_set_visible_child(self->stack, GTK_WIDGET(page));
-
-        break;
-      }
-    }
-  }
-
-  self->gconnections.push_back(g_signal_connect(
-      self->settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, PluginsBox* self) {
-        if (const auto glist = g_settings_get_strv(settings, key); glist != nullptr) {
-          gtk_string_list_splice(self->string_list, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list)),
-                                 glist);
-
-          const auto list = util::gchar_array_to_vector(glist);
-
-          if (!list.empty()) {
-            auto* visible_child = adw_view_stack_get_visible_child(self->stack);
-
-            if (visible_child == nullptr) {
-              return;
-            }
-
-            auto* visible_page_name = adw_view_stack_page_get_name(ADW_VIEW_STACK_PAGE(visible_child));
-
-            if (std::ranges::find(list, visible_page_name) == list.end()) {
-              gtk_selection_model_select_item(gtk_list_view_get_model(self->listview), 0, 1);
-
-              auto pages = G_LIST_MODEL(adw_view_stack_get_pages(self->stack));
-
-              for (guint n = 0; n < g_list_model_get_n_items(pages); n++) {
-                auto page = ADW_VIEW_STACK_PAGE(g_list_model_get_item(pages, n));
-
-                if (list[0] == adw_view_stack_page_get_name(page)) {
-                  adw_view_stack_set_visible_child(self->stack, GTK_WIDGET(page));
-
-                  break;
-                }
-              }
-            } else {
-              for (size_t m = 0U; m < list.size(); m++) {
-                if (list[m] == visible_page_name) {
-                  gtk_selection_model_select_item(gtk_list_view_get_model(self->listview), m, 1);
-
-                  break;
-                }
-              }
-            }
-          }
-        }
-      }),
-      self));
-
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -213,7 +131,6 @@ void setup_listview(PluginsBox* self) {
         g_object_set_data(G_OBJECT(item), "remove", remove);
         g_object_set_data(G_OBJECT(item), "drag_handle", drag_handle);
 
-        gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
 
         g_object_unref(builder);
@@ -258,10 +175,8 @@ void setup_listview(PluginsBox* self) {
 
               gtk_drag_source_set_icon(source, paintable, 0, 0);
 
-              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(top_box), "string-object"));
-                  string_object != nullptr) {
-                auto* plugin_name = gtk_string_object_get_string(string_object);
-
+              if (auto* plugin_name = static_cast<const char*>(g_object_get_data(G_OBJECT(top_box), "page-name"));
+                  plugin_name != nullptr) {
                 return gdk_content_provider_new_typed(G_TYPE_STRING, plugin_name);
               }
 
@@ -282,10 +197,8 @@ void setup_listview(PluginsBox* self) {
 
               auto* top_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(target), "top_box"));
 
-              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(top_box), "string-object"));
-                  string_object != nullptr) {
-                auto* dst = gtk_string_object_get_string(string_object);
-
+              if (auto* dst = static_cast<const char*>(g_object_get_data(G_OBJECT(top_box), "page-name"));
+                  dst != nullptr) {
                 auto* src = g_value_get_string(value);
 
                 if (g_strcmp0(src, dst) != 0) {
@@ -317,22 +230,20 @@ void setup_listview(PluginsBox* self) {
         gtk_widget_add_controller(GTK_WIDGET(drag_handle), GTK_EVENT_CONTROLLER(drag_source));
         gtk_widget_add_controller(GTK_WIDGET(top_box), GTK_EVENT_CONTROLLER(drop_target));
 
-        g_signal_connect(
-            remove, "clicked", G_CALLBACK(+[](GtkButton* btn, PluginsBox* self) {
-              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(btn), "string-object"));
-                  string_object != nullptr) {
-                auto* name = gtk_string_object_get_string(string_object);
+        g_signal_connect(remove, "clicked", G_CALLBACK(+[](GtkButton* btn, PluginsBox* self) {
+                           if (auto* name = static_cast<const char*>(g_object_get_data(G_OBJECT(btn), "page-name"));
+                               name != nullptr) {
+                             auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
 
-                auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
+                             list.erase(std::remove_if(list.begin(), list.end(),
+                                                       [=](const auto& plugin_name) { return plugin_name == name; }),
+                                        list.end());
 
-                list.erase(std::remove_if(list.begin(), list.end(),
-                                          [=](const auto& plugin_name) { return plugin_name == name; }),
-                           list.end());
-
-                g_settings_set_strv(self->settings, "plugins", util::make_gchar_pointer_vector(list).data());
-              }
-            }),
-            self);
+                             g_settings_set_strv(self->settings, "plugins",
+                                                 util::make_gchar_pointer_vector(list).data());
+                           }
+                         }),
+                         self);
       }),
       self);
 
@@ -344,12 +255,12 @@ void setup_listview(PluginsBox* self) {
                      auto* plugin_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "plugin_icon"));
 
                      auto* child_item = gtk_list_item_get_item(item);
-                     auto* string_object = GTK_STRING_OBJECT(child_item);
 
-                     g_object_set_data(G_OBJECT(top_box), "string-object", string_object);
-                     g_object_set_data(G_OBJECT(remove), "string-object", string_object);
+                     auto page = GTK_STACK_PAGE(child_item);
+                     auto name = gtk_stack_page_get_name(page);
 
-                     auto* name = gtk_string_object_get_string(GTK_STRING_OBJECT(child_item));
+                     g_object_set_data(G_OBJECT(top_box), "page-name", const_cast<char*>(name));
+                     g_object_set_data(G_OBJECT(remove), "page-name", const_cast<char*>(name));
 
                      gtk_label_set_text(label, plugin_name::translated[name].c_str());
 
@@ -373,10 +284,9 @@ void setup_listview(PluginsBox* self) {
 
   // setting the listview model
 
-  auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->string_list));
-  // auto* selection = gtk_single_selection_new(G_LIST_MODEL(adw_view_stack_get_pages(self->stack)));
+  auto* selection = gtk_stack_get_pages(self->stack);
 
-  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
+  gtk_list_view_set_model(self->listview, selection);
 
   g_object_unref(selection);
 }
@@ -391,12 +301,24 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
 
       add_plugins_to_stack<PipelineType::input>(self);
 
+      self->gconnections.push_back(g_signal_connect(self->settings, "changed::plugins",
+                                                    G_CALLBACK(+[](GSettings* settings, char* key, PluginsBox* self) {
+                                                      add_plugins_to_stack<PipelineType::input>(self);
+                                                    }),
+                                                    self));
+
       break;
     }
     case PipelineType::output: {
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
       add_plugins_to_stack<PipelineType::output>(self);
+
+      self->gconnections.push_back(g_signal_connect(self->settings, "changed::plugins",
+                                                    G_CALLBACK(+[](GSettings* settings, char* key, PluginsBox* self) {
+                                                      add_plugins_to_stack<PipelineType::output>(self);
+                                                    }),
+                                                    self));
 
       break;
     }

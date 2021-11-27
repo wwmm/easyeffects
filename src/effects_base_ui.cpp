@@ -37,16 +37,10 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   add_plugins_to_stack_plugins();
 
-  // configuring widgets
-
-  setup_listview_selected_plugins();
-
   settings->signal_changed("plugins").connect([&, this](const auto& key) { add_plugins_to_stack_plugins(); });
 
   // enabling notifications
 
-  effects_base->autogain->post_messages = true;
-  effects_base->bass_enhancer->post_messages = true;
   effects_base->bass_loudness->post_messages = true;
   effects_base->compressor->post_messages = true;
   effects_base->convolver->post_messages = true;
@@ -80,8 +74,6 @@ EffectsBaseUi::~EffectsBaseUi() {
 
   // do not send notifications when the window is closed
 
-  effects_base->autogain->post_messages = false;
-  effects_base->bass_enhancer->post_messages = false;
   effects_base->bass_loudness->post_messages = false;
   effects_base->compressor->post_messages = false;
   effects_base->convolver->post_messages = false;
@@ -108,8 +100,6 @@ EffectsBaseUi::~EffectsBaseUi() {
 
   // disabling bypass when closing the window
 
-  effects_base->autogain->bypass = false;
-  effects_base->bass_enhancer->bypass = false;
   effects_base->bass_loudness->bypass = false;
   effects_base->compressor->bypass = false;
   effects_base->convolver->bypass = false;
@@ -455,28 +445,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->stereo_tools->bypass = false;
     }
   }
-}
-
-void EffectsBaseUi::setup_listview_selected_plugins() {
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview_selected_plugins->set_factory(factory);
-
-  // setting the item selection callback
-
-  listview_selected_plugins->get_model()->signal_selection_changed().connect([&](guint position, guint n_items) {
-    auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview_selected_plugins->get_model());
-
-    const auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
-
-    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-      if (stack_plugins->get_page(*child)->get_name() == selected_name) {
-        stack_plugins->set_visible_child(*child);
-
-        return;
-      }
-    }
-  });
 }
 
 void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {
