@@ -53,6 +53,22 @@ void prepare_spinbutton(GtkSpinButton* button) {
                    nullptr);
 }
 
+template <StringLiteralWrapper sl_wrapper>
+void prepare_scale(GtkScale* scale) {
+  gtk_scale_set_format_value_func(
+      scale,
+      (GtkScaleFormatValueFunc) +
+          [](GtkScale* scale, double value, gpointer user_data) {
+            auto precision = gtk_scale_get_digits(scale);
+            auto unit = sl_wrapper.msg.data();
+
+            using namespace std::string_literals;
+
+            auto text = fmt::format("{0:.{1}f}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
+          },
+      nullptr, nullptr);
+}
+
 void update_level(GtkLevelBar* w_left,
                   GtkLabel* w_left_label,
                   GtkLevelBar* w_right,

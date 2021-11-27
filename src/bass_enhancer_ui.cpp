@@ -19,87 +19,185 @@
 
 #include "bass_enhancer_ui.hpp"
 
-BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
-                               const Glib::RefPtr<Gtk::Builder>& builder,
-                               const std::string& schema,
-                               const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::bass_enhancer;
+namespace ui::bass_enhancer_box {
 
-  // loading builder widgets
+using namespace std::string_literals;
 
-  harmonics_levelbar = builder->get_widget<Gtk::LevelBar>("harmonics_levelbar");
-  harmonics_levelbar_label = builder->get_widget<Gtk::Label>("harmonics_levelbar_label");
-  floor_active = builder->get_widget<Gtk::ToggleButton>("floor_active");
-  listen = builder->get_widget<Gtk::ToggleButton>("listen");
-  floor = builder->get_widget<Gtk::SpinButton>("floor");
-  amount = builder->get_widget<Gtk::SpinButton>("amount");
-  harmonics = builder->get_widget<Gtk::SpinButton>("harmonics");
-  scope = builder->get_widget<Gtk::SpinButton>("scope");
-  blend = builder->get_widget<Gtk::Scale>("blend");
+auto constexpr log_tag = "bass_enhancer_box: ";
 
-  // gsettings bindings
+struct _BassEnhancerBox {
+  GtkBox parent_instance;
 
-  settings->bind("amount", amount->get_adjustment().get(), "value");
-  settings->bind("harmonics", harmonics->get_adjustment().get(), "value");
-  settings->bind("scope", scope->get_adjustment().get(), "value");
-  settings->bind("floor", floor->get_adjustment().get(), "value");
-  settings->bind("blend", blend->get_adjustment().get(), "value");
-  settings->bind("listen", listen, "active");
-  settings->bind("floor-active", floor_active, "active");
-  settings->bind("floor-active", floor, "sensitive", Gio::Settings::BindFlags::GET);
+  GtkScale *input_gain, *output_gain;
 
-  prepare_scale(blend);
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  prepare_spinbutton(amount, "dB");
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  prepare_spinbutton(scope, "Hz");
-  prepare_spinbutton(floor, "Hz");
+  GtkToggleButton* bypass;
 
-  prepare_spinbutton(harmonics);
+  GtkLevelBar* harmonics_levelbar;
 
-  setup_input_output_gain(builder);
+  GtkLabel* harmonics_levelbar_label;
+
+  GtkSpinButton *floor, *amount, *harmonics, *scope;
+
+  GtkScale* blend;
+
+  GtkToggleButton *floor_active, *listen;
+
+  GSettings* settings;
+
+  std::shared_ptr<BassEnhancer> bass_enhancer;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(BassEnhancerBox, bass_enhancer_box, GTK_TYPE_BOX)
+
+void on_bypass(BassEnhancerBox* self, GtkToggleButton* btn) {
+  self->bass_enhancer->bypass = gtk_toggle_button_get_active(btn);
 }
 
-BassEnhancerUi::~BassEnhancerUi() {
-  util::debug(name + " ui destroyed");
+void on_reset(BassEnhancerBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "amount");
+
+  g_settings_reset(self->settings, "harmonics");
+
+  g_settings_reset(self->settings, "scope");
+
+  g_settings_reset(self->settings, "floor");
+
+  g_settings_reset(self->settings, "blend");
+
+  g_settings_reset(self->settings, "floor-active");
+
+  g_settings_reset(self->settings, "listen");
 }
 
-auto BassEnhancerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> BassEnhancerUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/bass_enhancer.ui");
+void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, const std::string& schema_path) {
+  self->bass_enhancer = bass_enhancer;
 
-  auto* const ui = Gtk::Builder::get_widget_derived<BassEnhancerUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.bassenhancer", schema_path + "bassenhancer/");
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassenhancer", schema_path.c_str());
 
-  stack->add(*ui, plugin_name::bass_enhancer);
+  bass_enhancer->post_messages = true;
+  bass_enhancer->bypass = false;
 
-  return ui;
+  self->connections.push_back(bass_enhancer->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(bass_enhancer->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(bass_enhancer->harmonics.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->harmonics_levelbar, value);
+    gtk_label_set_text(self->harmonics_levelbar_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "amount", gtk_spin_button_get_adjustment(self->amount), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "harmonics", gtk_spin_button_get_adjustment(self->harmonics), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "scope", gtk_spin_button_get_adjustment(self->scope), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "floor", gtk_spin_button_get_adjustment(self->floor), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "blend", gtk_range_get_adjustment(GTK_RANGE(self->blend)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "floor-active", self->floor_active, "active", G_SETTINGS_BIND_DEFAULT);
 }
 
-void BassEnhancerUi::reset() {
-  bypass->set_active(false);
+void dispose(GObject* object) {
+  auto* self = EE_BASS_ENHANCER_BOX(object);
 
-  settings->reset("input-gain");
+  self->bass_enhancer->post_messages = false;
+  self->bass_enhancer->bypass = false;
 
-  settings->reset("output-gain");
+  for (auto& c : self->connections) {
+    c.disconnect();
+  }
 
-  settings->reset("amount");
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
 
-  settings->reset("harmonics");
+  self->connections.clear();
+  self->gconnections.clear();
 
-  settings->reset("scope");
+  g_object_unref(self->settings);
 
-  settings->reset("floor");
+  util::debug(log_tag + "disposed"s);
 
-  settings->reset("blend");
-
-  settings->reset("floor-active");
-
-  settings->reset("listen");
+  G_OBJECT_CLASS(bass_enhancer_box_parent_class)->dispose(object);
 }
 
-void BassEnhancerUi::on_new_harmonics_level(const double& value) {
-  harmonics_levelbar->set_value(value);
+void bass_enhancer_box_class_init(BassEnhancerBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-  harmonics_levelbar_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+  object_class->dispose = dispose;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/bass_enhancer.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, harmonics_levelbar_label);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, harmonics_levelbar);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, floor);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, amount);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, harmonics);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, scope);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, blend);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, floor_active);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, listen);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
+
+void bass_enhancer_box_init(BassEnhancerBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  prepare_spinbutton<"dB">(self->amount);
+  prepare_spinbutton<"Hz">(self->scope);
+  prepare_spinbutton<"Hz">(self->floor);
+  prepare_spinbutton<"">(self->harmonics);
+
+  prepare_scale<"">(self->blend);
+}
+
+auto create() -> BassEnhancerBox* {
+  return static_cast<BassEnhancerBox*>(g_object_new(EE_TYPE_BASS_ENHANCER_BOX, nullptr));
+}
+
+}  // namespace ui::bass_enhancer_box

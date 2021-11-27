@@ -17,39 +17,26 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef BASS_ENHANCER_UI_HPP
-#define BASS_ENHANCER_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::bass_enhancer_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_BASS_ENHANCER_BOX (bass_enhancer_box_get_type())
+
+G_DECLARE_FINAL_TYPE(BassEnhancerBox, bass_enhancer_box, EE, BASS_ENHANCER_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> BassEnhancerBox*;
+
+void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, const std::string& schema_path);
+
+}  // namespace ui::bass_enhancer_box
 
 #include "plugin_ui_base.hpp"
-
-class BassEnhancerUi : public Gtk::Box, public PluginUiBase {
- public:
-  BassEnhancerUi(BaseObjectType* cobject,
-                 const Glib::RefPtr<Gtk::Builder>& builder,
-                 const std::string& schema,
-                 const std::string& schema_path);
-  BassEnhancerUi(const BassEnhancerUi&) = delete;
-  auto operator=(const BassEnhancerUi&) -> BassEnhancerUi& = delete;
-  BassEnhancerUi(const BassEnhancerUi&&) = delete;
-  auto operator=(const BassEnhancerUi&&) -> BassEnhancerUi& = delete;
-  ~BassEnhancerUi() override;
-
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> BassEnhancerUi*;
-
-  void on_new_harmonics_level(const double& value);
-
-  void reset() override;
-
- private:
-  Gtk::LevelBar* harmonics_levelbar = nullptr;
-
-  Gtk::Label* harmonics_levelbar_label = nullptr;
-
-  Gtk::SpinButton *floor = nullptr, *amount = nullptr, *harmonics = nullptr, *scope = nullptr;
-
-  Gtk::Scale* blend = nullptr;
-
-  Gtk::ToggleButton *floor_active = nullptr, *listen = nullptr;
-};
-
-#endif

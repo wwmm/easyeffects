@@ -179,21 +179,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       continue;
     }
 
-    if (name == plugin_name::bass_enhancer) {
-      auto* const bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
-
-      bass_enhancer_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->bass_enhancer->bypass = bass_enhancer_ui->bypass->get_active(); });
-
-      effects_base->bass_enhancer->input_level.connect(
-          sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_input_level));
-      effects_base->bass_enhancer->output_level.connect(
-          sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level));
-      effects_base->bass_enhancer->harmonics.connect(
-          sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level));
-
-      effects_base->bass_enhancer->bypass = false;
-    } else if (name == plugin_name::bass_loudness) {
+    if (name == plugin_name::bass_loudness) {
       auto* const bass_loudness_ui = BassLoudnessUi::add_to_stack(stack_plugins, path);
 
       bass_loudness_ui->bypass->signal_toggled().connect(

@@ -116,6 +116,12 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::autogain_box::setup(box, effects_base->autogain, schema_path + plugin_name::autogain + "/");
 
       adw_view_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::autogain);
+    } else if (name == plugin_name::bass_enhancer) {
+      auto* box = ui::bass_enhancer_box::create();
+
+      ui::bass_enhancer_box::setup(box, effects_base->bass_enhancer, schema_path + "bassenhancer/");
+
+      adw_view_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::bass_enhancer);
     }
   }
 }
