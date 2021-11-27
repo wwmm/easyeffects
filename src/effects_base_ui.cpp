@@ -179,10 +179,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       continue;
     }
 
-    if (name == plugin_name::autogain) {
-      // effects_base->autogain->input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level));
-      // effects_base->autogain->output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level));
-    } else if (name == plugin_name::bass_enhancer) {
+    if (name == plugin_name::bass_enhancer) {
       auto* const bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
 
       bass_enhancer_ui->bypass->signal_toggled().connect(

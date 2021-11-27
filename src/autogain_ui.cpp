@@ -73,41 +73,6 @@ void on_reset(AutogainBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, "reference");
 }
 
-void update_level(GtkLevelBar* w_left,
-                  GtkLabel* w_left_label,
-                  GtkLevelBar* w_right,
-                  GtkLabel* w_right_label,
-                  const float& left,
-                  const float& right) {
-  if (auto db_value = util::db_to_linear(left); left >= -99.0) {
-    if (db_value < 0.0) {
-      db_value = 0.0;
-    } else if (db_value > 1.0) {
-      db_value = 1.0;
-    }
-
-    gtk_level_bar_set_value(w_left, db_value);
-    gtk_label_set_text(w_left_label, fmt::format("{0:.0f}", left).c_str());
-  } else {
-    gtk_level_bar_set_value(w_left, 0.0);
-    gtk_label_set_text(w_left_label, "-99");
-  }
-
-  if (auto db_value = util::db_to_linear(right); right >= -99.0) {
-    if (db_value < 0.0) {
-      db_value = 0.0;
-    } else if (db_value > 1.0) {
-      db_value = 1.0;
-    }
-
-    gtk_level_bar_set_value(w_right, db_value);
-    gtk_label_set_text(w_right_label, fmt::format("{0:.0f}", right).c_str());
-  } else {
-    gtk_level_bar_set_value(w_right, 0.0);
-    gtk_label_set_text(w_right_label, "-99");
-  }
-}
-
 void on_reset_history(AutogainBox* self, GtkButton* btn) {
   // it is ugly but will ensure that third party tools are able to reset this plugin history
 

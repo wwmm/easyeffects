@@ -95,6 +95,8 @@ void on_app_removed(AppsBox* self, const long ts) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
     if (holder->ts == ts) {
+      holder->info_updated.clear();  // Disconnecting all the slots before removing the holder from the model
+
       g_list_store_remove(self->apps_model, n);
 
       break;

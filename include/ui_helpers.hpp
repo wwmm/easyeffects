@@ -25,6 +25,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "util.hpp"
 
 namespace ui {
 
@@ -51,5 +52,12 @@ void prepare_spinbutton(GtkSpinButton* button) {
                    }),
                    nullptr);
 }
+
+void update_level(GtkLevelBar* w_left,
+                  GtkLabel* w_left_label,
+                  GtkLevelBar* w_right,
+                  GtkLabel* w_right_label,
+                  const float& left,
+                  const float& right);
 
 }  // namespace ui
