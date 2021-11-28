@@ -217,7 +217,11 @@ void Crystalizer::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+    util::idle_add([=, this]() {
+      if (!latency.empty()) {
+        latency.emit(latency_value);
+      }
+    });
 
     spa_process_latency_info latency_info{};
 
