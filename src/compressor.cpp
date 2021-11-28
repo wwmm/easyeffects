@@ -148,6 +148,10 @@ void Compressor::process(std::span<float>& left_in,
                    [](gpointer user_data) {
                      auto* self = static_cast<Compressor*>(user_data);
 
+                     if (self->latency.empty()) {
+                       return G_SOURCE_REMOVE;
+                     }
+
                      self->latency.emit(self->latency_port_value);
 
                      return G_SOURCE_REMOVE;
@@ -183,6 +187,11 @@ void Compressor::process(std::span<float>& left_in,
       g_idle_add((GSourceFunc) +
                      [](gpointer user_data) {
                        auto* self = static_cast<Compressor*>(user_data);
+
+                       if (self->reduction.empty() || self->sidechain.empty() || self->curve.empty() ||
+                           self->envelope.empty()) {
+                         return G_SOURCE_REMOVE;
+                       }
 
                        self->reduction.emit(self->reduction_port_value);
                        self->sidechain.emit(self->sidechain_port_value);

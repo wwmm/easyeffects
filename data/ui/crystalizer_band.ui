@@ -50,6 +50,7 @@
                 <property name="draw-value">1</property>
                 <property name="digits">0</property>
                 <property name="value-pos">bottom</property>
+                <property name="sensitive" bind-source="band_mute" bind-property="active" bind-flags="sync-create|invert-boolean" />
                 <property name="adjustment">
                     <object class="GtkAdjustment">
                         <property name="lower">-40</property>

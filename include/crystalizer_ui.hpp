@@ -17,8 +17,27 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef CRYSTALIZER_UI_HPP
-#define CRYSTALIZER_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::crystalizer_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_CRYSTALIZER_BOX (crystalizer_box_get_type())
+
+G_DECLARE_FINAL_TYPE(CrystalizerBox, crystalizer_box, EE, CRYSTALIZER_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> CrystalizerBox*;
+
+void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const std::string& schema_path);
+
+}  // namespace ui::crystalizer_box
 
 #include "plugin_ui_base.hpp"
 
@@ -36,12 +55,8 @@ class CrystalizerUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrystalizerUi*;
 
-  void reset() override;
-
  private:
   Gtk::Box* bands_box = nullptr;
 
   void build_bands(const int& nbands);
 };
-
-#endif

@@ -271,6 +271,10 @@ void AutoGain::process(std::span<float>& left_in,
                      [](gpointer user_data) {
                        auto* self = static_cast<AutoGain*>(user_data);
 
+                       if (self->results.empty()) {
+                         return G_SOURCE_REMOVE;
+                       }
+
                        self->results.emit(self->loudness, self->internal_output_gain, self->momentary, self->shortterm,
                                           self->global, self->relative, self->range);
 

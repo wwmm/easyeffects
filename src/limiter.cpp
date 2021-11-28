@@ -136,6 +136,10 @@ void Limiter::process(std::span<float>& left_in,
                    [](gpointer user_data) {
                      auto* self = static_cast<Limiter*>(user_data);
 
+                     if (self->latency.empty()) {
+                       return G_SOURCE_REMOVE;
+                     }
+
                      self->latency.emit(self->latency_port_value);
 
                      return G_SOURCE_REMOVE;
@@ -171,6 +175,11 @@ void Limiter::process(std::span<float>& left_in,
       g_idle_add((GSourceFunc) +
                      [](gpointer user_data) {
                        auto* self = static_cast<Limiter*>(user_data);
+
+                       if (self->gain_left.empty() || self->gain_right.empty() || self->sidechain_left.empty() ||
+                           self->sidechain_right.empty()) {
+                         return G_SOURCE_REMOVE;
+                       }
 
                        self->gain_left.emit(self->gain_l_port_value);
                        self->gain_right.emit(self->gain_r_port_value);

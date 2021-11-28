@@ -197,6 +197,10 @@ void RNNoise::process(std::span<float>& left_in,
                    [](gpointer user_data) {
                      auto* self = static_cast<RNNoise*>(user_data);
 
+                     if (self->latency.empty()) {
+                       return G_SOURCE_REMOVE;
+                     }
+
                      self->latency.emit(self->latency_value);
 
                      return G_SOURCE_REMOVE;

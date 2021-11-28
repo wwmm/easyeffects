@@ -189,6 +189,12 @@ void MultibandGate::process(std::span<float>& left_in,
                      [](gpointer user_data) {
                        auto* self = static_cast<MultibandGate*>(user_data);
 
+                       if (self->output0.empty() || self->output1.empty() || self->output2.empty() ||
+                           self->output3.empty() || self->gating0.empty() || self->gating1.empty() ||
+                           self->gating2.empty() || self->gating3.empty()) {
+                         return G_SOURCE_REMOVE;
+                       }
+
                        self->output0.emit(self->output0_port_value);
                        self->output1.emit(self->output1_port_value);
                        self->output2.emit(self->output2_port_value);

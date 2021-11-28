@@ -168,6 +168,10 @@ void MultibandCompressor::process(std::span<float>& left_in,
                    [](gpointer user_data) {
                      auto* self = static_cast<MultibandCompressor*>(user_data);
 
+                     if (self->latency.empty()) {
+                       return G_SOURCE_REMOVE;
+                     }
+
                      self->latency.emit(self->latency_port_value);
 
                      return G_SOURCE_REMOVE;
@@ -207,6 +211,11 @@ void MultibandCompressor::process(std::span<float>& left_in,
       g_idle_add((GSourceFunc) +
                      [](gpointer user_data) {
                        auto* self = static_cast<MultibandCompressor*>(user_data);
+
+                       if (self->frequency_range.empty() || self->envelope.empty() || self->curve.empty() ||
+                           self->reduction.empty()) {
+                         return G_SOURCE_REMOVE;
+                       }
 
                        self->frequency_range.emit(self->frequency_range_end_port_array);
                        self->envelope.emit(self->envelope_port_array);

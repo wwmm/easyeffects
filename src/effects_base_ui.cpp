@@ -220,17 +220,17 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->crossfeed->bypass = false;
     } else if (name == plugin_name::crystalizer) {
-      auto* const crystalizer_ui = CrystalizerUi::add_to_stack(stack_plugins, path);
+      // auto* const crystalizer_ui = CrystalizerUi::add_to_stack(stack_plugins, path);
 
-      crystalizer_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->crystalizer->bypass = crystalizer_ui->bypass->get_active(); });
+      // crystalizer_ui->bypass->signal_toggled().connect(
+      //     [=, this]() { effects_base->crystalizer->bypass = crystalizer_ui->bypass->get_active(); });
 
-      effects_base->crystalizer->input_level.connect(
-          sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_input_level));
-      effects_base->crystalizer->output_level.connect(
-          sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_output_level));
+      // effects_base->crystalizer->input_level.connect(
+      //     sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_input_level));
+      // effects_base->crystalizer->output_level.connect(
+      //     sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_output_level));
 
-      effects_base->crystalizer->bypass = false;
+      // effects_base->crystalizer->bypass = false;
     } else if (name == plugin_name::deesser) {
       auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 
