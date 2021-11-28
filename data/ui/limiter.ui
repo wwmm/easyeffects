@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="LimiterBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
+                <signal name="toggled" handler="on_bypass" object="LimiterBox" />
             </object>
         </child>
 
@@ -467,6 +467,7 @@
                         <child>
                             <object class="GtkDropDown" id="dropdown_input_devices">
                                 <property name="valign">center</property>
+                                <property name="sensitive" bind-source="external_sidechain" bind-property="active" bind-flags="sync-create" />
                                 <accessibility>
                                     <property name="label" translatable="yes">External Sidechain Source</property>
                                 </accessibility>
@@ -512,6 +513,7 @@
                                 <property name="width-chars">10</property>
                                 <property name="digits">2</property>
                                 <property name="update-policy">if-valid</property>
+                                <property name="sensitive" bind-source="alr" bind-property="active" bind-flags="sync-create" />
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">0.1</property>
@@ -547,6 +549,7 @@
                                 <property name="width-chars">10</property>
                                 <property name="digits">2</property>
                                 <property name="update-policy">if-valid</property>
+                                <property name="sensitive" bind-source="alr" bind-property="active" bind-flags="sync-create" />
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">10</property>
@@ -582,6 +585,7 @@
                                 <property name="width-chars">10</property>
                                 <property name="digits">1</property>
                                 <property name="update-policy">if-valid</property>
+                                <property name="sensitive" bind-source="alr" bind-property="active" bind-flags="sync-create" />
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">-12</property>
@@ -624,7 +628,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="gain_left_label">
+                            <object class="GtkLabel" id="gain_left">
                                 <property name="halign">center</property>
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
@@ -651,7 +655,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="gain_right_label">
+                            <object class="GtkLabel" id="gain_right">
                                 <property name="halign">center</property>
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
@@ -678,7 +682,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="sidechain_left_label">
+                            <object class="GtkLabel" id="sidechain_left">
                                 <property name="halign">center</property>
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
@@ -705,7 +709,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="sidechain_right_label">
+                            <object class="GtkLabel" id="sidechain_right">
                                 <property name="halign">center</property>
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
@@ -904,6 +908,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="LimiterBox" />
                     </object>
                 </child>
 
@@ -932,7 +937,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

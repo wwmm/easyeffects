@@ -304,6 +304,12 @@ void PluginBase::notify() {
   const auto output_peak_db_r = util::linear_to_db(output_peak_right);
 
   util::idle_add([=, this]() {
+    // Some crashes were happening when finishing the applications. This seems to fix them
+
+    if (input_level.empty() || output_level.empty()) {
+      return;
+    }
+
     input_level.emit(input_peak_db_l, input_peak_db_r);
     output_level.emit(output_peak_db_l, output_peak_db_r);
   });

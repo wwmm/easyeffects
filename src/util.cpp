@@ -276,6 +276,14 @@ void idle_add(std::function<void()> cb) {
 
   g_idle_add((GSourceFunc) +
                  [](Data* d) {
+                   if (d == nullptr) {
+                     return G_SOURCE_REMOVE;
+                   }
+
+                   if (d->cb == nullptr) {
+                     return G_SOURCE_REMOVE;
+                   }
+
                    d->cb();
 
                    delete d;

@@ -24,6 +24,7 @@
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
 #include "exciter_ui.hpp"
+#include "limiter_ui.hpp"
 #include "pipeline_type.hpp"
 #include "plugins_menu.hpp"
 

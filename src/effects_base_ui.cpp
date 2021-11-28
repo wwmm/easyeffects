@@ -298,22 +298,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->gate->gating.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_gating));
 
       effects_base->gate->bypass = false;
-    } else if (name == plugin_name::limiter) {
-      auto* const limiter_ui = LimiterUi::add_to_stack(stack_plugins, path);
-
-      limiter_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->limiter->bypass = limiter_ui->bypass->get_active(); });
-
-      limiter_ui->set_pipe_manager_ptr(pm);
-
-      effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
-      effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
-      effects_base->limiter->gain_left.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_left_gain));
-      effects_base->limiter->gain_right.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_right_gain));
-      effects_base->limiter->sidechain_left.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_left_sidechain));
-      effects_base->limiter->sidechain_right.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_right_sidechain));
-
-      effects_base->limiter->bypass = false;
     } else if (name == plugin_name::loudness) {
       auto* const loudness_ui = LoudnessUi::add_to_stack(stack_plugins, path);
 

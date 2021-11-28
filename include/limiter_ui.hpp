@@ -17,55 +17,25 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef LIMITER_UI_HPP
-#define LIMITER_UI_HPP
+#pragma once
 
-#include "info_holders.hpp"
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "node_info_holder.hpp"
+#include "ui_helpers.hpp"
 
-class LimiterUi : public Gtk::Box, public PluginUiBase {
- public:
-  LimiterUi(BaseObjectType* cobject,
-            const Glib::RefPtr<Gtk::Builder>& builder,
-            const std::string& schema,
-            const std::string& schema_path);
-  LimiterUi(const LimiterUi&) = delete;
-  auto operator=(const LimiterUi&) -> LimiterUi& = delete;
-  LimiterUi(const LimiterUi&&) = delete;
-  auto operator=(const LimiterUi&&) -> LimiterUi& = delete;
-  ~LimiterUi() override;
+namespace ui::limiter_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi*;
+G_BEGIN_DECLS
 
-  void on_new_left_gain(const float& value);
-  void on_new_right_gain(const float& value);
-  void on_new_left_sidechain(const float& value);
-  void on_new_right_sidechain(const float& value);
+#define EE_TYPE_LIMITER_BOX (limiter_box_get_type())
 
-  void set_pipe_manager_ptr(PipeManager* pipe_manager);
+G_DECLARE_FINAL_TYPE(LimiterBox, limiter_box, EE, LIMITER_BOX, GtkBox)
 
-  void reset() override;
+G_END_DECLS
 
- private:
-  Gtk::ComboBoxText *mode = nullptr, *oversampling = nullptr, *dither = nullptr;
+auto create() -> LimiterBox*;
 
-  Gtk::SpinButton *sc_preamp = nullptr, *lookahead = nullptr, *attack = nullptr, *release = nullptr,
-                  *threshold = nullptr, *stereo_link = nullptr, *alr_attack = nullptr, *alr_release = nullptr,
-                  *alr_knee = nullptr;
+void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string& schema_path, PipeManager* pm);
 
-  Gtk::CheckButton* boost = nullptr;
-
-  Gtk::ToggleButton *alr = nullptr, *external_sidechain = nullptr;
-
-  Gtk::Label *gain_left = nullptr, *gain_right = nullptr, *sidechain_left = nullptr, *sidechain_right = nullptr;
-
-  Gtk::DropDown* dropdown_input_devices = nullptr;
-
-  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> input_devices_model;
-
-  PipeManager* pm = nullptr;
-
-  void setup_dropdown_input_devices();
-};
-
-#endif
+}  // namespace ui::limiter_box

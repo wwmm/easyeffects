@@ -273,7 +273,6 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   self->plugins_box_page =
       adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->pluginsBox), "plugins", _("Plugins"));
 
-  // "ee-plugins-symbolic" is just Adwaita's "application-x-addon-symbolic.svg" renamed
   adw_view_stack_page_set_icon_name(self->plugins_box_page, "ee-plugins-symbolic");
 
   // setting up the boxes we added t othe stack
