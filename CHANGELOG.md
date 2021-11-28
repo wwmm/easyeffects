@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.
+
 ## [6.1.5]
 
 ### Added
