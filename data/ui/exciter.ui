@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="ExciterBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkBox">
                 <property name="spacing">24</property>
@@ -17,6 +16,7 @@
                 <child>
                     <object class="GtkToggleButton" id="bypass">
                         <property name="label" translatable="yes">Bypass</property>
+                        <signal name="toggled" handler="on_bypass" object="ExciterBox" />
                     </object>
                 </child>
                 <child>
@@ -223,6 +223,7 @@
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
+                        <property name="sensitive" bind-source="ceil_active" bind-property="active" bind-flags="sync-create" />
                         <property name="adjustment">
                             <object class="GtkAdjustment">
                                 <property name="lower">10000</property>
@@ -457,6 +458,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="ExciterBox" />
                     </object>
                 </child>
 
@@ -485,7 +487,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

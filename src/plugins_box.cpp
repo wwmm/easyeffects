@@ -101,6 +101,12 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::bass_enhancer_box::setup(box, effects_base->bass_enhancer, schema_path + "bassenhancer/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::bass_enhancer);
+    } else if (name == plugin_name::exciter) {
+      auto* box = ui::exciter_box::create();
+
+      ui::exciter_box::setup(box, effects_base->exciter, schema_path + plugin_name::exciter + "/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::exciter);
     }
   }
 

@@ -17,8 +17,27 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef EXCITER_UI_HPP
-#define EXCITER_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::exciter_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_EXCITER_BOX (exciter_box_get_type())
+
+G_DECLARE_FINAL_TYPE(ExciterBox, exciter_box, EE, EXCITER_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> ExciterBox*;
+
+void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string& schema_path);
+
+}  // namespace ui::exciter_box
 
 #include "plugin_ui_base.hpp"
 
@@ -51,5 +70,3 @@ class ExciterUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::ToggleButton *ceil_active = nullptr, *listen = nullptr;
 };
-
-#endif
