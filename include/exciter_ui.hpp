@@ -38,35 +38,3 @@ auto create() -> ExciterBox*;
 void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string& schema_path);
 
 }  // namespace ui::exciter_box
-
-#include "plugin_ui_base.hpp"
-
-class ExciterUi : public Gtk::Box, public PluginUiBase {
- public:
-  ExciterUi(BaseObjectType* cobject,
-            const Glib::RefPtr<Gtk::Builder>& builder,
-            const std::string& schema,
-            const std::string& schema_path);
-  ExciterUi(const ExciterUi&) = delete;
-  auto operator=(const ExciterUi&) -> ExciterUi& = delete;
-  ExciterUi(const ExciterUi&&) = delete;
-  auto operator=(const ExciterUi&&) -> ExciterUi& = delete;
-  ~ExciterUi() override;
-
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ExciterUi*;
-
-  void on_new_harmonics_level(const double& value);
-
-  void reset() override;
-
- private:
-  Gtk::LevelBar* harmonics_levelbar = nullptr;
-
-  Gtk::Label* harmonics_levelbar_label = nullptr;
-
-  Gtk::SpinButton *ceil = nullptr, *amount = nullptr, *harmonics = nullptr, *scope = nullptr;
-
-  Gtk::Scale* blend = nullptr;
-
-  Gtk::ToggleButton *ceil_active = nullptr, *listen = nullptr;
-};

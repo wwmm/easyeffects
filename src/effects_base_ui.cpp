@@ -277,17 +277,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
 
       effects_base->equalizer->bypass = false;
-    } else if (name == plugin_name::exciter) {
-      auto* const exciter_ui = ExciterUi::add_to_stack(stack_plugins, path);
-
-      exciter_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->exciter->bypass = exciter_ui->bypass->get_active(); });
-
-      effects_base->exciter->input_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_input_level));
-      effects_base->exciter->output_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_output_level));
-      effects_base->exciter->harmonics.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_harmonics_level));
-
-      effects_base->exciter->bypass = false;
     } else if (name == plugin_name::filter) {
       auto* const filter_ui = FilterUi::add_to_stack(stack_plugins, path);
 
