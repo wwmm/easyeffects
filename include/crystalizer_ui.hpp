@@ -38,25 +38,3 @@ auto create() -> CrystalizerBox*;
 void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const std::string& schema_path);
 
 }  // namespace ui::crystalizer_box
-
-#include "plugin_ui_base.hpp"
-
-class CrystalizerUi : public Gtk::Box, public PluginUiBase {
- public:
-  CrystalizerUi(BaseObjectType* cobject,
-                const Glib::RefPtr<Gtk::Builder>& builder,
-                const std::string& schema,
-                const std::string& schema_path);
-  CrystalizerUi(const CrystalizerUi&) = delete;
-  auto operator=(const CrystalizerUi&) -> CrystalizerUi& = delete;
-  CrystalizerUi(const CrystalizerUi&&) = delete;
-  auto operator=(const CrystalizerUi&&) -> CrystalizerUi& = delete;
-  ~CrystalizerUi() override;
-
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrystalizerUi*;
-
- private:
-  Gtk::Box* bands_box = nullptr;
-
-  void build_bands(const int& nbands);
-};
