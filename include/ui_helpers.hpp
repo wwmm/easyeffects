@@ -65,6 +65,8 @@ void prepare_scale(GtkScale* scale) {
             using namespace std::string_literals;
 
             auto text = fmt::format("{0:.{1}f}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
+
+            return g_strdup(text.c_str());
           },
       nullptr, nullptr);
 }

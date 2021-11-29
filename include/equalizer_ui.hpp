@@ -17,8 +17,31 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef EQUALIZER_UI_HPP
-#define EQUALIZER_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include "application.hpp"
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::equalizer_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_EQUALIZER_BOX (equalizer_box_get_type())
+
+G_DECLARE_FINAL_TYPE(EqualizerBox, equalizer_box, EE, EQUALIZER_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> EqualizerBox*;
+
+void setup(EqualizerBox* self,
+           std::shared_ptr<Equalizer> equalizer,
+           const std::string& schema_path,
+           app::Application* application);
+
+}  // namespace ui::equalizer_box
 
 #include <glibmm/i18n.h>
 #include <filesystem>
@@ -67,8 +90,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EqualizerUi*;
 
-  void reset() override;
-
  private:
   int max_bands = 32;
 
@@ -103,7 +124,7 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
 
   void on_import_apo_preset_clicked();
 
-  bool parse_apo_preamp(const std::string& line, double &preamp);
+  bool parse_apo_preamp(const std::string& line, double& preamp);
 
   auto parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool;
 
@@ -115,5 +136,3 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
       {"LS", FilterType::LOW_SHELF},       {"LSC", FilterType::LOW_SHELF_xdB}, {"HS", FilterType::HIGH_SHELF},
       {"HSC", FilterType::HIGH_SHELF_xdB}, {"NO", FilterType::NOTCH},          {"AP", FilterType::ALL_PASS}};
 };
-
-#endif

@@ -219,18 +219,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->crossfeed->output_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_output_level));
 
       effects_base->crossfeed->bypass = false;
-    } else if (name == plugin_name::crystalizer) {
-      // auto* const crystalizer_ui = CrystalizerUi::add_to_stack(stack_plugins, path);
-
-      // crystalizer_ui->bypass->signal_toggled().connect(
-      //     [=, this]() { effects_base->crystalizer->bypass = crystalizer_ui->bypass->get_active(); });
-
-      // effects_base->crystalizer->input_level.connect(
-      //     sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_input_level));
-      // effects_base->crystalizer->output_level.connect(
-      //     sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_output_level));
-
-      // effects_base->crystalizer->bypass = false;
     } else if (name == plugin_name::deesser) {
       auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 
@@ -266,17 +254,17 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->echo_canceller->bypass = false;
     } else if (name == plugin_name::equalizer) {
-      auto* const equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
+      // auto* const equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
 
-      equalizer_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->equalizer->bypass = equalizer_ui->bypass->get_active(); });
+      // equalizer_ui->bypass->signal_toggled().connect(
+      //     [=, this]() { effects_base->equalizer->bypass = equalizer_ui->bypass->get_active(); });
 
-      equalizer_ui->set_transient_window(transient_window);
+      // equalizer_ui->set_transient_window(transient_window);
 
-      effects_base->equalizer->input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level));
-      effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
+      // effects_base->equalizer->input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level));
+      // effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
 
-      effects_base->equalizer->bypass = false;
+      // effects_base->equalizer->bypass = false;
     } else if (name == plugin_name::filter) {
       auto* const filter_ui = FilterUi::add_to_stack(stack_plugins, path);
 

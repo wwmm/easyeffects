@@ -113,6 +113,13 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::exciter_box::setup(box, effects_base->exciter, schema_path + plugin_name::exciter + "/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::exciter);
+    } else if (name == plugin_name::equalizer) {
+      auto* box = ui::equalizer_box::create();
+
+      ui::equalizer_box::setup(box, effects_base->equalizer, schema_path + plugin_name::equalizer + "/",
+                               self->application);
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::equalizer);
     } else if (name == plugin_name::limiter) {
       auto* box = ui::limiter_box::create();
 
