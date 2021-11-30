@@ -25,6 +25,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "string_literal_wrapper.hpp"
 #include "util.hpp"
 
 namespace ui {
@@ -32,13 +33,6 @@ namespace ui {
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
 
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int;
-
-template <size_t N>
-struct StringLiteralWrapper {
-  constexpr StringLiteralWrapper(const char (&str)[N]) : msg(std::to_array(str)) {}
-
-  std::array<char, N> msg;
-};
 
 template <StringLiteralWrapper sl_wrapper>
 void prepare_spinbutton(GtkSpinButton* button) {

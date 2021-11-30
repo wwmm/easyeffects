@@ -20,6 +20,8 @@
 #ifndef EQUALIZER_HPP
 #define EQUALIZER_HPP
 
+#include <utility>
+#include "equalizer_tags.hpp"
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
@@ -54,13 +56,41 @@ class Equalizer : public PluginBase {
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
-  const uint max_bands = 32U;
+  static constexpr uint max_bands = 32U;
 
   uint latency_n_frames = 0U;
 
   std::vector<gulong> gconnections_split;
 
   void bind_band(const int& index);
+
+  template <size_t n>
+  void bind_band() {
+    using namespace tags::equalizer;
+
+    lv2_wrapper->bind_key_enum<fml[n]>(settings_left, band_mode[n]);
+
+    lv2_wrapper->bind_key_enum<ftl[n]>(settings_left, band_type[n]);
+
+    lv2_wrapper->bind_key_double<fl[n]>(settings_left, band_frequency[n]);
+
+    lv2_wrapper->bind_key_double<ql[n]>(settings_left, band_q[n]);
+
+    // right channel
+
+    lv2_wrapper->bind_key_enum<fmr[n]>(settings_right, band_mode[n]);
+
+    lv2_wrapper->bind_key_enum<ftr[n]>(settings_right, band_type[n]);
+
+    lv2_wrapper->bind_key_double<fr[n]>(settings_right, band_frequency[n]);
+
+    lv2_wrapper->bind_key_double<qr[n]>(settings_right, band_q[n]);
+  }
+
+  template <size_t... Ns>
+  void bind_bands(std::index_sequence<Ns...>) {
+    (bind_band<Ns>(), ...);
+  }
 };
 
 #endif

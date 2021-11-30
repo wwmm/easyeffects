@@ -103,6 +103,8 @@ void remove_blocklist_entry(GSettings* settings, const std::string& name, const 
 
 void idle_add(std::function<void()> cb);
 
+void generate_tags(const int& N, const std::string& start_string, const std::string& end_string);
+
 }  // namespace util
 
 #endif

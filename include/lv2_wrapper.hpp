@@ -32,6 +32,7 @@
 #include <array>
 #include <span>
 #include <unordered_map>
+#include "string_literal_wrapper.hpp"
 #include "util.hpp"
 
 namespace lv2 {
@@ -104,6 +105,36 @@ class Lv2Wrapper {
   void bind_key_enum(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol);
 
   void bind_key_int(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol);
+
+  template <StringLiteralWrapper sl_wrapper>
+  void bind_key_double(GSettings* settings, const std::string& gsettings_key) {
+    set_control_port_value(sl_wrapper.msg.data(),
+                           static_cast<float>(g_settings_get_double(settings, gsettings_key.c_str())));
+
+    g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+                     G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                       auto self = static_cast<Lv2Wrapper*>(user_data);
+
+                       self->set_control_port_value(sl_wrapper.msg.data(),
+                                                    static_cast<float>(g_settings_get_double(settings, key)));
+                     }),
+                     this);
+  }
+
+  template <StringLiteralWrapper sl_wrapper>
+  void bind_key_enum(GSettings* settings, const std::string& gsettings_key) {
+    set_control_port_value(sl_wrapper.msg.data(),
+                           static_cast<float>(g_settings_get_enum(settings, gsettings_key.c_str())));
+
+    g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+                     G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                       auto self = static_cast<Lv2Wrapper*>(user_data);
+
+                       self->set_control_port_value(sl_wrapper.msg.data(),
+                                                    static_cast<float>(g_settings_get_enum(settings, key)));
+                     }),
+                     this);
+  }
 
  private:
   const std::string log_tag = "lv2_wrapper: ";

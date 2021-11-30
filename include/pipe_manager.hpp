@@ -215,20 +215,10 @@ class PipeManager {
 
   NodeInfo output_device, input_device;
 
-  std::array<std::string, 14U> blocklist_node_name = {"EasyEffects",
-                                                      "easyeffects",
-                                                      "easyeffects_soe",
-                                                      "easyeffects_sie",
-                                                      "EasyEffectsWebrtcProbe",
-                                                      "pavucontrol",
-                                                      "PulseAudio Volume Control",
-                                                      "libcanberra",
-                                                      "gsd-media-keys",
-                                                      "GNOME Shell",
-                                                      "speech-dispatcher",
-                                                      "speech-dispatcher-dummy",
-                                                      "Mutter",
-                                                      "gameoverlayui"};
+  constexpr static auto blocklist_node_name = std::to_array(
+      {"EasyEffects", "easyeffects", "easyeffects_soe", "easyeffects_sie", "EasyEffectsWebrtcProbe", "pavucontrol",
+       "PulseAudio Volume Control", "libcanberra", "gsd-media-keys", "GNOME Shell", "speech-dispatcher",
+       "speech-dispatcher-dummy", "speech-dispatcher-espeak-ng", "Mutter", "gameoverlayui"});
 
   std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
 

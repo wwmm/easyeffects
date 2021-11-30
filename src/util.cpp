@@ -293,4 +293,28 @@ void idle_add(std::function<void()> cb) {
              d);
 }
 
+void generate_tags(const int& N, const std::string& start_string, const std::string& end_string) {
+  size_t max_tag_size = 0;
+  std::string body = "{";
+  std::string msg = "constexpr char tag_array[][";
+
+  for (int n = 0; n < N; n++) {
+    auto n_str = std::to_string(n);
+
+    auto tag = "\"" + start_string + n_str + end_string + "\"";
+
+    body += "{" + tag + "}";
+
+    if (n < N - 1) {
+      body += ", ";
+    }
+
+    max_tag_size = (tag.size() > max_tag_size) ? tag.size() : max_tag_size;
+  }
+
+  msg += std::to_string(max_tag_size) + "] = " + body + "};";
+
+  warning(msg);
+}
+
 }  // namespace util

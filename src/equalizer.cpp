@@ -38,9 +38,14 @@ Equalizer::Equalizer(const std::string& tag,
 
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
-  for (uint n = 0U; n < max_bands; n++) {
-    bind_band(static_cast<int>(n));
-  }
+  // util::generate_tags(max_bands, "band", "-mode");
+  // util::generate_tags(max_bands, "fml_", "");
+
+  // for (uint n = 0U; n < max_bands; n++) {
+  //   bind_band(static_cast<int>(n));
+  // }
+
+  bind_bands(std::make_index_sequence<max_bands>());
 
   g_signal_connect(settings, "changed::num-bands", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<Equalizer*>(user_data);
@@ -269,17 +274,11 @@ void Equalizer::bind_band(const int& index) {
 
   // left channel
 
-  lv2_wrapper->bind_key_enum(settings_left, "band" + istr + "-type", "ftl_" + istr);
-
-  lv2_wrapper->bind_key_enum(settings_left, "band" + istr + "-mode", "fml_" + istr);
-
   lv2_wrapper->bind_key_enum(settings_left, "band" + istr + "-slope", "sl_" + istr);
 
   lv2_wrapper->bind_key_bool(settings_left, "band" + istr + "-solo", "xsl_" + istr);
 
   lv2_wrapper->bind_key_bool(settings_left, "band" + istr + "-mute", "xml_" + istr);
-
-  lv2_wrapper->bind_key_double(settings_left, "band" + istr + "-frequency", "fl_" + istr);
 
   lv2_wrapper->bind_key_double(settings_left, "band" + istr + "-q", "ql_" + istr);
 
@@ -287,17 +286,11 @@ void Equalizer::bind_band(const int& index) {
 
   // right channel
 
-  lv2_wrapper->bind_key_enum(settings_right, "band" + istr + "-type", "ftr_" + istr);
-
-  lv2_wrapper->bind_key_enum(settings_right, "band" + istr + "-mode", "fmr_" + istr);
-
   lv2_wrapper->bind_key_enum(settings_right, "band" + istr + "-slope", "sr_" + istr);
 
   lv2_wrapper->bind_key_bool(settings_right, "band" + istr + "-solo", "xsr_" + istr);
 
   lv2_wrapper->bind_key_bool(settings_right, "band" + istr + "-mute", "xmr_" + istr);
-
-  lv2_wrapper->bind_key_double(settings_right, "band" + istr + "-frequency", "fr_" + istr);
 
   lv2_wrapper->bind_key_double(settings_right, "band" + istr + "-q", "qr_" + istr);
 

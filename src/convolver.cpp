@@ -121,7 +121,11 @@ void Convolver::setup() {
     plugin realtime thread we send it to the main thread through Glib::signal_idle().connect_once
   */
 
-  Glib::signal_idle().connect_once([&, this] {
+  util::idle_add([&, this] {
+    if (ready) {
+      return;
+    }
+
     blocksize = n_samples;
 
     n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;

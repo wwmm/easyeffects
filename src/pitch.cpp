@@ -134,7 +134,11 @@ void Pitch::setup() {
    RubberBand initialization is slow. It is better to do it outside of the plugin realtime thread
  */
 
-  Glib::signal_idle().connect_once([&, this] {
+  util::idle_add([&, this] {
+    if (rubberband_ready) {
+      return;
+    }
+
     init_stretcher();
 
     std::scoped_lock<std::mutex> lock(data_mutex);
