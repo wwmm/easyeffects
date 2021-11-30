@@ -404,6 +404,9 @@ void Lv2Wrapper::bind_key_bool(GSettings* settings, const std::string& gsettings
                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<Lv2Wrapper*>(user_data);
 
+                     util::warning(key);
+                     util::warning(self->map_key_symbol[key]);
+
                      self->set_control_port_value(self->map_key_symbol[key],
                                                   static_cast<float>(g_settings_get_boolean(settings, key)));
                    }),

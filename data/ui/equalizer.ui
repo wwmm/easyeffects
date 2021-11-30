@@ -20,6 +20,7 @@
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="stack">stack</property>
+                                <property name="visible" bind-source="split_channels" bind-property="active" bind-flags="sync-create" />
                             </object>
                         </child>
 

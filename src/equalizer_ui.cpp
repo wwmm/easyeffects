@@ -250,67 +250,6 @@ void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& spli
     } else {
       // unified mode
 
-      /*
-        When in unified mode we want settings applied to the left channel to be propagated to the right channel
-        database
-      */
-
-      self->gconnections_left.push_back(
-          g_signal_connect(self->settings_left, ("changed::"s + bandn + "-gain"s).c_str(),
-                           G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                             g_settings_set_double(self->settings_right, key, g_settings_get_double(settings, key));
-                           }),
-                           self));
-
-      self->gconnections_left.push_back(
-          g_signal_connect(self->settings_left, ("changed::"s + bandn + "-frequency"s).c_str(),
-                           G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                             g_settings_set_double(self->settings_right, key, g_settings_get_double(settings, key));
-                           }),
-                           self));
-
-      self->gconnections_left.push_back(
-          g_signal_connect(self->settings_left, ("changed::"s + bandn + "-q"s).c_str(),
-                           G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                             g_settings_set_double(self->settings_right, key, g_settings_get_double(settings, key));
-                           }),
-                           self));
-
-      self->gconnections_left.push_back(
-          g_signal_connect(self->settings_left, ("changed::"s + bandn + "-type"s).c_str(),
-                           G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                             g_settings_set_enum(self->settings_right, key, g_settings_get_enum(settings, key));
-                           }),
-                           self));
-
-      self->gconnections_left.push_back(
-          g_signal_connect(self->settings_left, ("changed::"s + bandn + "-mode"s).c_str(),
-                           G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                             g_settings_set_enum(self->settings_right, key, g_settings_get_enum(settings, key));
-                           }),
-                           self));
-
-      self->gconnections_left.push_back(
-          g_signal_connect(self->settings_left, ("changed::"s + bandn + "-slope"s).c_str(),
-                           G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                             g_settings_set_enum(self->settings_right, key, g_settings_get_enum(settings, key));
-                           }),
-                           self));
-
-      self->gconnections_left.push_back(
-          g_signal_connect(self->settings_left, ("changed::"s + bandn + "-solo"s).c_str(),
-                           G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                             g_settings_set_boolean(self->settings_right, key, g_settings_get_boolean(settings, key));
-                           }),
-                           self));
-
-      self->gconnections_left.push_back(
-          g_signal_connect(self->settings_left, ("changed::"s + bandn + "-mute"s).c_str(),
-                           G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                             g_settings_set_boolean(self->settings_right, key, g_settings_get_boolean(settings, key));
-                           }),
-                           self));
-
       // The left channel reset has to be applied to both channels when not in split mode
 
       g_signal_connect(reset_frequency, "clicked", G_CALLBACK(+[](GtkButton* btn, EqualizerBox* self) {
@@ -511,14 +450,23 @@ void build_all_bands(EqualizerBox* self) {
     g_signal_handler_disconnect(self->settings_right, handler_id);
   }
 
-  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->bands_box_left)); child != nullptr;
-       child = gtk_widget_get_next_sibling(GTK_WIDGET(child))) {
+  self->gconnections_left.clear();
+  self->gconnections_right.clear();
+
+  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->bands_box_left)); child != nullptr;) {
+    auto* next_child = gtk_widget_get_next_sibling(child);
+
     gtk_box_remove(self->bands_box_left, child);
+
+    child = next_child;
   }
 
-  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->bands_box_right)); child != nullptr;
-       child = gtk_widget_get_next_sibling(GTK_WIDGET(child))) {
+  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->bands_box_right)); child != nullptr;) {
+    auto* next_child = gtk_widget_get_next_sibling(child);
+
     gtk_box_remove(self->bands_box_right, child);
+
+    child = next_child;
   }
 
   const auto split = g_settings_get_boolean(self->settings, "split-channels") != 0;
@@ -603,6 +551,18 @@ void setup(EqualizerBox* self,
         }
       },
       nullptr, nullptr);
+
+  self->gconnections.push_back(g_signal_connect(
+      self->settings, "changed::num-bands",
+      G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self); }), self));
+
+  self->gconnections.push_back(g_signal_connect(self->settings, "changed::split-channels",
+                                                G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
+                                                  gtk_stack_set_visible_child_name(self->stack, "page_left_channel");
+
+                                                  build_all_bands(self);
+                                                }),
+                                                self));
 }
 
 void dispose(GObject* object) {
@@ -703,8 +663,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   // signals connections
 
-  nbands->signal_value_changed().connect(sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
-
   // reset equalizer
   reset_button->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::reset));
 
@@ -717,28 +675,15 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   connections.push_back(settings->signal_changed("split-channels").connect([=, this](const auto& sc) {
     stack->set_visible_child("page_left_channel");
 
-    on_nbands_changed();
+    // on_nbands_changed();
   }));
 
   // gsettings bindings
 
   settings->bind("num-bands", nbands->get_adjustment().get(), "value");
   settings->bind("split-channels", split_channels, "active");
-  settings->bind("split-channels", stack_switcher, "visible", Gio::Settings::BindFlags::GET);
 
   setup_input_output_gain(builder);
-
-  // explicitly invoke the method to build equalizer bands (fixes #843)
-  // if the preset num-bands value is equal to the default schema value
-  // otherwise it's automatically invoked at startup by the functor on signal_value_changed
-
-  Glib::Variant<gint32> default_nbands;
-
-  settings->get_default_value("num-bands", default_nbands);
-
-  if (default_nbands.get() == settings->get_int("num-bands")) {
-    on_nbands_changed();
-  }
 }
 
 EqualizerUi::~EqualizerUi() {
@@ -747,32 +692,6 @@ EqualizerUi::~EqualizerUi() {
   }
 
   util::debug(name + " ui destroyed");
-}
-
-void EqualizerUi::on_nbands_changed() {
-  for (auto& c : connections_bands) {
-    c.disconnect();
-  }
-
-  for (auto* child = bands_box_left->get_last_child(); child != nullptr; child = bands_box_left->get_last_child()) {
-    bands_box_left->remove(*child);
-  }
-
-  for (auto* child = bands_box_right->get_last_child(); child != nullptr; child = bands_box_right->get_last_child()) {
-    bands_box_right->remove(*child);
-  }
-
-  connections_bands.clear();
-
-  const auto split = settings->get_boolean("split-channels");
-
-  const auto nb = nbands->get_value_as_int();
-
-  build_bands(bands_box_left, settings_left, nb, split);
-
-  if (split) {
-    build_bands(bands_box_right, settings_right, nb, split);
-  }
 }
 
 void EqualizerUi::build_bands(Gtk::Box* bands_box,

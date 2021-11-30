@@ -19,6 +19,8 @@
 
 #include "equalizer.hpp"
 
+using namespace std::string_literals;
+
 Equalizer::Equalizer(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
@@ -43,28 +45,40 @@ Equalizer::Equalizer(const std::string& tag,
   g_signal_connect(settings, "changed::num-bands", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<Equalizer*>(user_data);
 
-                     const uint& nbands = g_settings_get_int(settings, key);
+                     const uint nbands = g_settings_get_int(settings, key);
+
+                     const bool split = g_settings_get_boolean(settings, "split-channels") == 1;
 
                      for (uint n = 0U; n < self->max_bands; n++) {
                        const auto bandn = "band" + std::to_string(n);
 
                        if (n < nbands) {
                          g_settings_set_enum(self->settings_left, (bandn + "-type").c_str(), 1);
-                         g_settings_set_enum(self->settings_right, (bandn + "-type").c_str(), 1);
+
+                         if (split) {
+                           g_settings_set_enum(self->settings_right, (bandn + "-type").c_str(), 1);
+                         }
                        } else {
                          // turn off unused bands
                          g_settings_set_enum(self->settings_left, (bandn + "-type").c_str(), 0);
-                         g_settings_set_enum(self->settings_right, (bandn + "-type").c_str(), 0);
+
+                         if (split) {
+                           g_settings_set_enum(self->settings_right, (bandn + "-type").c_str(), 0);
+                         }
                        }
                      }
                    }),
                    this);
 
   g_signal_connect(
-      settings, "changed::split-channels", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<Equalizer*>(user_data);
-
+      settings, "changed::split-channels", G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
         if (g_settings_get_boolean(settings, key) == 1) {
+          for (auto& handler_id : self->gconnections_split) {
+            g_signal_handler_disconnect(self->settings_left, handler_id);
+          }
+
+          self->gconnections_split.clear();
+
           return;
         }
 
@@ -94,6 +108,67 @@ Equalizer::Equalizer(const std::string& tag,
 
           g_settings_set_double(self->settings_right, (bandn + "-q").c_str(),
                                 g_settings_get_double(self->settings_left, (bandn + "-q").c_str()));
+
+          /*
+            When in unified mode we want settings applied to the left channel to be propagated to the right channel
+            database
+          */
+
+          self->gconnections_split.push_back(
+              g_signal_connect(self->settings_left, ("changed::"s + bandn + "-gain"s).c_str(),
+                               G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                                 g_settings_set_double(self->settings_right, key, g_settings_get_double(settings, key));
+                               }),
+                               self));
+
+          self->gconnections_split.push_back(
+              g_signal_connect(self->settings_left, ("changed::"s + bandn + "-frequency"s).c_str(),
+                               G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                                 g_settings_set_double(self->settings_right, key, g_settings_get_double(settings, key));
+                               }),
+                               self));
+
+          self->gconnections_split.push_back(
+              g_signal_connect(self->settings_left, ("changed::"s + bandn + "-q"s).c_str(),
+                               G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                                 g_settings_set_double(self->settings_right, key, g_settings_get_double(settings, key));
+                               }),
+                               self));
+
+          self->gconnections_split.push_back(
+              g_signal_connect(self->settings_left, ("changed::"s + bandn + "-type"s).c_str(),
+                               G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                                 g_settings_set_enum(self->settings_right, key, g_settings_get_enum(settings, key));
+                               }),
+                               self));
+
+          self->gconnections_split.push_back(
+              g_signal_connect(self->settings_left, ("changed::"s + bandn + "-mode"s).c_str(),
+                               G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                                 g_settings_set_enum(self->settings_right, key, g_settings_get_enum(settings, key));
+                               }),
+                               self));
+
+          self->gconnections_split.push_back(
+              g_signal_connect(self->settings_left, ("changed::"s + bandn + "-slope"s).c_str(),
+                               G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                                 g_settings_set_enum(self->settings_right, key, g_settings_get_enum(settings, key));
+                               }),
+                               self));
+
+          self->gconnections_split.push_back(g_signal_connect(
+              self->settings_left, ("changed::"s + bandn + "-solo"s).c_str(),
+              G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                g_settings_set_boolean(self->settings_right, key, g_settings_get_boolean(settings, key));
+              }),
+              self));
+
+          self->gconnections_split.push_back(g_signal_connect(
+              self->settings_left, ("changed::"s + bandn + "-mute"s).c_str(),
+              G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                g_settings_set_boolean(self->settings_right, key, g_settings_get_boolean(settings, key));
+              }),
+              self));
         }
       }),
       this);
@@ -105,6 +180,12 @@ Equalizer::~Equalizer() {
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  for (auto& handler_id : this->gconnections_split) {
+    g_signal_handler_disconnect(this->settings_left, handler_id);
+  }
+
+  this->gconnections_split.clear();
 
   util::debug(log_tag + name + " destroyed");
 }
@@ -153,7 +234,7 @@ void Equalizer::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
+    util::idle_add([=, this]() { latency.emit(latency_port_value); });
 
     spa_process_latency_info latency_info{};
 

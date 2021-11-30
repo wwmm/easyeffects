@@ -111,8 +111,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
 
   std::vector<sigc::connection> connections_bands;
 
-  void on_nbands_changed();
-
   void build_bands(Gtk::Box* bands_box,
                    const Glib::RefPtr<Gio::Settings>& cfg,
                    const int& nbands,
