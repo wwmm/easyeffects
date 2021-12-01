@@ -20,6 +20,7 @@
 #ifndef EQUALIZER_PRESET_HPP
 #define EQUALIZER_PRESET_HPP
 
+#include "equalizer_tags.hpp"
 #include "plugin_preset_base.hpp"
 
 class EqualizerPreset : public PluginPresetBase {

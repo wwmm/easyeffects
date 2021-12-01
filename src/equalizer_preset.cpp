@@ -19,6 +19,8 @@
 
 #include "equalizer_preset.hpp"
 
+using namespace tags::equalizer;
+
 EqualizerPreset::EqualizerPreset()
     : input_settings_left(g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer.channel",
                                                    "/com/github/wwmm/easyeffects/streaminputs/equalizer/leftchannel/")),
@@ -69,23 +71,23 @@ void EqualizerPreset::save(nlohmann::json& json, const std::string& section, GSe
 
 void EqualizerPreset::save_channel(nlohmann::json& json, GSettings* settings, const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    const auto bandn = "band" + std::to_string(n);
+    const auto bandn = band_id[n];
 
-    json[bandn]["type"] = g_settings_get_string(settings, (bandn + "-type").c_str());
+    json[bandn]["type"] = g_settings_get_string(settings, band_type[n]);
 
-    json[bandn]["mode"] = g_settings_get_string(settings, (bandn + "-mode").c_str());
+    json[bandn]["mode"] = g_settings_get_string(settings, band_mode[n]);
 
-    json[bandn]["slope"] = g_settings_get_string(settings, (bandn + "-slope").c_str());
+    json[bandn]["slope"] = g_settings_get_string(settings, band_slope[n]);
 
-    json[bandn]["solo"] = g_settings_get_boolean(settings, (bandn + "-solo").c_str()) != 0;
+    json[bandn]["solo"] = g_settings_get_boolean(settings, band_solo[n]) != 0;
 
-    json[bandn]["mute"] = g_settings_get_boolean(settings, (bandn + "-mute").c_str()) != 0;
+    json[bandn]["mute"] = g_settings_get_boolean(settings, band_mute[n]) != 0;
 
-    json[bandn]["gain"] = g_settings_get_double(settings, (bandn + "-gain").c_str());
+    json[bandn]["gain"] = g_settings_get_double(settings, band_gain[n]);
 
-    json[bandn]["frequency"] = g_settings_get_double(settings, (bandn + "-frequency").c_str());
+    json[bandn]["frequency"] = g_settings_get_double(settings, band_frequency[n]);
 
-    json[bandn]["q"] = g_settings_get_double(settings, (bandn + "-q").c_str());
+    json[bandn]["q"] = g_settings_get_double(settings, band_q[n]);
   }
 }
 
@@ -115,20 +117,20 @@ void EqualizerPreset::load_channel(const nlohmann::json& json, GSettings* settin
   for (int n = 0; n < nbands; n++) {
     const auto bandn = "band" + std::to_string(n);
 
-    update_key<gchar*>(json.at(bandn), settings, bandn + "-type", "type");
+    update_key<gchar*>(json.at(bandn), settings, band_type[n], "type");
 
-    update_key<gchar*>(json.at(bandn), settings, bandn + "-mode", "mode");
+    update_key<gchar*>(json.at(bandn), settings, band_mode[n], "mode");
 
-    update_key<gchar*>(json.at(bandn), settings, bandn + "-slope", "slope");
+    update_key<gchar*>(json.at(bandn), settings, band_slope[n], "slope");
 
-    update_key<bool>(json.at(bandn), settings, bandn + "-solo", "solo");
+    update_key<bool>(json.at(bandn), settings, band_solo[n], "solo");
 
-    update_key<bool>(json.at(bandn), settings, bandn + "-mute", "mute");
+    update_key<bool>(json.at(bandn), settings, band_mute[n], "mute");
 
-    update_key<double>(json.at(bandn), settings, bandn + "-gain", "gain");
+    update_key<double>(json.at(bandn), settings, band_gain[n], "gain");
 
-    update_key<double>(json.at(bandn), settings, bandn + "-frequency", "frequency");
+    update_key<double>(json.at(bandn), settings, band_frequency[n], "frequency");
 
-    update_key<double>(json.at(bandn), settings, bandn + "-q", "q");
+    update_key<double>(json.at(bandn), settings, band_q[n], "q");
   }
 }

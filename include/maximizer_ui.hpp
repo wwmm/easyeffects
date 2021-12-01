@@ -17,35 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef MAXIMIZER_UI_HPP
-#define MAXIMIZER_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class MaximizerUi : public Gtk::Box, public PluginUiBase {
- public:
-  MaximizerUi(BaseObjectType* cobject,
-              const Glib::RefPtr<Gtk::Builder>& builder,
-              const std::string& schema,
-              const std::string& schema_path);
-  MaximizerUi(const MaximizerUi&) = delete;
-  auto operator=(const MaximizerUi&) -> MaximizerUi& = delete;
-  MaximizerUi(const MaximizerUi&&) = delete;
-  auto operator=(const MaximizerUi&&) -> MaximizerUi& = delete;
-  ~MaximizerUi() override;
+namespace ui::maximizer_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MaximizerUi*;
+G_BEGIN_DECLS
 
-  void on_new_reduction(const double& value);
+#define EE_TYPE_MAXIMIZER_BOX (maximizer_box_get_type())
 
-  void reset() override;
+G_DECLARE_FINAL_TYPE(MaximizerBox, maximizer_box, EE, MAXIMIZER_BOX, GtkBox)
 
- private:
-  Gtk::SpinButton *release = nullptr, *threshold = nullptr, *ceiling = nullptr;
+G_END_DECLS
 
-  Gtk::LevelBar* reduction_levelbar = nullptr;
+auto create() -> MaximizerBox*;
 
-  Gtk::Label* reduction_label = nullptr;
-};
+void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::string& schema_path);
 
-#endif
+}  // namespace ui::maximizer_box

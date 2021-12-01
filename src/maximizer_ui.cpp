@@ -19,65 +19,159 @@
 
 #include "maximizer_ui.hpp"
 
-MaximizerUi::MaximizerUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& schema,
-                         const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::maximizer;
+namespace ui::maximizer_box {
 
-  // loading builder widgets
+using namespace std::string_literals;
 
-  reduction_levelbar = builder->get_widget<Gtk::LevelBar>("reduction_levelbar");
-  release = builder->get_widget<Gtk::SpinButton>("release");
-  threshold = builder->get_widget<Gtk::SpinButton>("threshold");
-  ceiling = builder->get_widget<Gtk::SpinButton>("ceiling");
-  reduction_label = builder->get_widget<Gtk::Label>("reduction_label");
+auto constexpr log_tag = "maximizer_box: ";
 
-  // gsettings bindings
+struct _MaximizerBox {
+  GtkBox parent_instance;
 
-  settings->bind("ceiling", ceiling->get_adjustment().get(), "value");
-  settings->bind("release", release->get_adjustment().get(), "value");
-  settings->bind("threshold", threshold->get_adjustment().get(), "value");
+  GtkScale *input_gain, *output_gain;
 
-  prepare_spinbutton(threshold, "dB");
-  prepare_spinbutton(ceiling, "dB");
-  prepare_spinbutton(release, "ms");
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  setup_input_output_gain(builder);
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkSpinButton *release, *threshold, *ceiling;
+
+  GtkLevelBar* reduction_levelbar;
+
+  GtkLabel* reduction_label;
+
+  GSettings* settings;
+
+  std::shared_ptr<Maximizer> maximizer;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(MaximizerBox, maximizer_box, GTK_TYPE_BOX)
+
+void on_bypass(MaximizerBox* self, GtkToggleButton* btn) {
+  self->maximizer->bypass = gtk_toggle_button_get_active(btn);
 }
 
-MaximizerUi::~MaximizerUi() {
-  util::debug(name + " ui destroyed");
+void on_reset(MaximizerBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "release");
+
+  g_settings_reset(self->settings, "ceiling");
+
+  g_settings_reset(self->settings, "threshold");
 }
 
-auto MaximizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MaximizerUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/maximizer.ui");
+void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::string& schema_path) {
+  self->maximizer = maximizer;
 
-  auto* const ui = Gtk::Builder::get_widget_derived<MaximizerUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.maximizer", schema_path + "maximizer/");
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.maximizer", schema_path.c_str());
 
-  stack->add(*ui, plugin_name::maximizer);
+  maximizer->post_messages = true;
+  maximizer->bypass = false;
 
-  return ui;
+  self->connections.push_back(maximizer->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(maximizer->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(maximizer->reduction.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->reduction_levelbar, value);
+    gtk_label_set_text(self->reduction_label, fmt::format("{0:.0f}", value).c_str());
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "ceiling", gtk_spin_button_get_adjustment(self->ceiling), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
-void MaximizerUi::reset() {
-  bypass->set_active(false);
+void dispose(GObject* object) {
+  auto* self = EE_MAXIMIZER_BOX(object);
 
-  settings->reset("input-gain");
+  self->maximizer->post_messages = false;
+  self->maximizer->bypass = false;
 
-  settings->reset("output-gain");
+  for (auto& c : self->connections) {
+    c.disconnect();
+  }
 
-  settings->reset("release");
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
 
-  settings->reset("ceiling");
+  self->connections.clear();
+  self->gconnections.clear();
 
-  settings->reset("threshold");
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(maximizer_box_parent_class)->dispose(object);
 }
 
-void MaximizerUi::on_new_reduction(const double& value) {
-  reduction_levelbar->set_value(value);
+void maximizer_box_class_init(MaximizerBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-  reduction_label->set_text(level_to_localized_string(value, 0));
+  object_class->dispose = dispose;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/maximizer.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, release);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, threshold);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, ceiling);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, reduction_levelbar);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, reduction_label);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
+
+void maximizer_box_init(MaximizerBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  prepare_spinbutton<"dB">(self->threshold);
+  prepare_spinbutton<"dB">(self->ceiling);
+  prepare_spinbutton<"ms">(self->release);
+}
+
+auto create() -> MaximizerBox* {
+  return static_cast<MaximizerBox*>(g_object_new(EE_TYPE_MAXIMIZER_BOX, nullptr));
+}
+
+}  // namespace ui::maximizer_box

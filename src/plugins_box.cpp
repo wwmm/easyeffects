@@ -127,6 +127,12 @@ void add_plugins_to_stack(PluginsBox* self) {
                              self->application->pm);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::limiter);
+    } else if (name == plugin_name::maximizer) {
+      auto* box = ui::maximizer_box::create();
+
+      ui::maximizer_box::setup(box, effects_base->maximizer, schema_path + plugin_name::maximizer + "/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::maximizer);
     }
   }
 

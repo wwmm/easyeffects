@@ -285,16 +285,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->loudness->bypass = false;
     } else if (name == plugin_name::maximizer) {
-      auto* const maximizer_ui = MaximizerUi::add_to_stack(stack_plugins, path);
+      // auto* const maximizer_ui = MaximizerUi::add_to_stack(stack_plugins, path);
 
-      maximizer_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->maximizer->bypass = maximizer_ui->bypass->get_active(); });
+      // maximizer_ui->bypass->signal_toggled().connect(
+      //     [=, this]() { effects_base->maximizer->bypass = maximizer_ui->bypass->get_active(); });
 
-      effects_base->maximizer->input_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level));
-      effects_base->maximizer->output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level));
-      effects_base->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction));
+      // effects_base->maximizer->input_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level));
+      // effects_base->maximizer->output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level));
+      // effects_base->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction));
 
-      effects_base->maximizer->bypass = false;
+      // effects_base->maximizer->bypass = false;
     } else if (name == plugin_name::multiband_compressor) {
       auto* const multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
 
