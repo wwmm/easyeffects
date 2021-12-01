@@ -29,19 +29,19 @@ BassEnhancer::BassEnhancer(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/BassEnhancer is not installed");
   }
 
-  lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
+  lv2_wrapper->bind_key_double_db<"amount", "amount">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "harmonics", "drive");
+  lv2_wrapper->bind_key_double<"drive", "harmonics">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "scope", "freq");
+  lv2_wrapper->bind_key_double<"freq", "scope">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "floor", "floor");
+  lv2_wrapper->bind_key_double<"floor", "floor">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "blend", "blend");
+  lv2_wrapper->bind_key_double<"blend", "blend">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "floor-active", "floor_active");
+  lv2_wrapper->bind_key_bool<"floor_active", "floor-active">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "listen", "listen");
+  lv2_wrapper->bind_key_bool<"listen", "listen">(settings);
 
   setup_input_output_gain();
 }
@@ -95,7 +95,7 @@ void BassEnhancer::process(std::span<float>& left_in,
 
       harmonics_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("meter_drive"));
 
-      Glib::signal_idle().connect_once([=, this] { harmonics.emit(harmonics_port_value); });
+      util::idle_add([=, this] { harmonics.emit(harmonics_port_value); });
 
       notify();
 

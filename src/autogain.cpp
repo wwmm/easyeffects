@@ -131,6 +131,10 @@ void AutoGain::setup() {
   data_mutex.unlock();
 
   mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
+    if (ebur128_ready) {
+      return;
+    }
+
     if (2 * n_samples != data.size()) {
       data.resize(n_samples * 2);
     }

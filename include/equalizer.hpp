@@ -66,31 +66,31 @@ class Equalizer : public PluginBase {
   constexpr void bind_band() {
     using namespace tags::equalizer;
 
-    lv2_wrapper->bind_key_enum<ftl[n]>(settings_left, band_type[n]);
-    lv2_wrapper->bind_key_enum<fml[n]>(settings_left, band_mode[n]);
-    lv2_wrapper->bind_key_enum<sl[n]>(settings_left, band_slope[n]);
+    lv2_wrapper->bind_key_enum<ftl[n], band_type[n]>(settings_left);
+    lv2_wrapper->bind_key_enum<fml[n], band_mode[n]>(settings_left);
+    lv2_wrapper->bind_key_enum<sl[n], band_slope[n]>(settings_left);
 
-    lv2_wrapper->bind_key_bool<xsl[n]>(settings_left, band_solo[n]);
-    lv2_wrapper->bind_key_bool<xml[n]>(settings_left, band_mute[n]);
+    lv2_wrapper->bind_key_bool<xsl[n], band_solo[n]>(settings_left);
+    lv2_wrapper->bind_key_bool<xml[n], band_mute[n]>(settings_left);
 
-    lv2_wrapper->bind_key_double<fl[n]>(settings_left, band_frequency[n]);
-    lv2_wrapper->bind_key_double<ql[n]>(settings_left, band_q[n]);
+    lv2_wrapper->bind_key_double<fl[n], band_frequency[n]>(settings_left);
+    lv2_wrapper->bind_key_double<ql[n], band_q[n]>(settings_left);
 
-    lv2_wrapper->bind_key_double_db<gl[n]>(settings_left, band_gain[n]);
+    lv2_wrapper->bind_key_double_db<gl[n], band_gain[n]>(settings_left);
 
     // right channel
 
-    lv2_wrapper->bind_key_enum<ftr[n]>(settings_right, band_type[n]);
-    lv2_wrapper->bind_key_enum<fmr[n]>(settings_right, band_mode[n]);
-    lv2_wrapper->bind_key_enum<sr[n]>(settings_right, band_slope[n]);
+    lv2_wrapper->bind_key_enum<ftr[n], band_type[n]>(settings_right);
+    lv2_wrapper->bind_key_enum<fmr[n], band_mode[n]>(settings_right);
+    lv2_wrapper->bind_key_enum<sr[n], band_slope[n]>(settings_right);
 
-    lv2_wrapper->bind_key_bool<xsr[n]>(settings_right, band_solo[n]);
-    lv2_wrapper->bind_key_bool<xmr[n]>(settings_right, band_mute[n]);
+    lv2_wrapper->bind_key_bool<xsr[n], band_solo[n]>(settings_right);
+    lv2_wrapper->bind_key_bool<xmr[n], band_mute[n]>(settings_right);
 
-    lv2_wrapper->bind_key_double<fr[n]>(settings_right, band_frequency[n]);
-    lv2_wrapper->bind_key_double<qr[n]>(settings_right, band_q[n]);
+    lv2_wrapper->bind_key_double<fr[n], band_frequency[n]>(settings_right);
+    lv2_wrapper->bind_key_double<qr[n], band_q[n]>(settings_right);
 
-    lv2_wrapper->bind_key_double_db<gr[n]>(settings_right, band_gain[n]);
+    lv2_wrapper->bind_key_double_db<gr[n], band_gain[n]>(settings_right);
   }
 
   template <size_t... Ns>

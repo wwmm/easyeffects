@@ -19,9 +19,16 @@
 
 #pragma once
 
+#include <array>
+
 namespace tags::equalizer {
 
 // bands
+
+constexpr auto band_id = std::to_array(
+    {"band0",  "band1",  "band2",  "band3",  "band4",  "band5",  "band6",  "band7",  "band8",  "band9",  "band10",
+     "band11", "band12", "band13", "band14", "band15", "band16", "band17", "band18", "band19", "band20", "band21",
+     "band22", "band23", "band24", "band25", "band26", "band27", "band28", "band29", "band30", "band31"});
 
 constexpr char band_type[][13] = {{"band0-type"},  {"band1-type"},  {"band2-type"},  {"band3-type"},  {"band4-type"},
                                   {"band5-type"},  {"band6-type"},  {"band7-type"},  {"band8-type"},  {"band9-type"},

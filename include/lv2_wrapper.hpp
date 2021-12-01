@@ -37,6 +37,8 @@
 
 namespace lv2 {
 
+using namespace std::string_literals;
+
 enum PortType { TYPE_CONTROL, TYPE_AUDIO };
 
 struct Port {
@@ -106,78 +108,78 @@ class Lv2Wrapper {
 
   void bind_key_int(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol);
 
-  template <StringLiteralWrapper sl_wrapper>
-  void bind_key_bool(GSettings* settings, const std::string& gsettings_key) {
-    set_control_port_value(sl_wrapper.msg.data(),
-                           static_cast<float>(g_settings_get_boolean(settings, gsettings_key.c_str())));
+  template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
+  void bind_key_bool(GSettings* settings) {
+    set_control_port_value(key_wrapper.msg.data(),
+                           static_cast<float>(g_settings_get_boolean(settings, gkey_wrapper.msg.data())));
 
-    g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+    g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto self = static_cast<Lv2Wrapper*>(user_data);
 
-                       self->set_control_port_value(sl_wrapper.msg.data(),
+                       self->set_control_port_value(key_wrapper.msg.data(),
                                                     static_cast<float>(g_settings_get_boolean(settings, key)));
                      }),
                      this);
   }
 
-  template <StringLiteralWrapper sl_wrapper>
-  void bind_key_enum(GSettings* settings, const std::string& gsettings_key) {
-    set_control_port_value(sl_wrapper.msg.data(),
-                           static_cast<float>(g_settings_get_enum(settings, gsettings_key.c_str())));
+  template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
+  void bind_key_enum(GSettings* settings) {
+    set_control_port_value(key_wrapper.msg.data(),
+                           static_cast<float>(g_settings_get_enum(settings, gkey_wrapper.msg.data())));
 
-    g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+    g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto self = static_cast<Lv2Wrapper*>(user_data);
 
-                       self->set_control_port_value(sl_wrapper.msg.data(),
+                       self->set_control_port_value(key_wrapper.msg.data(),
                                                     static_cast<float>(g_settings_get_enum(settings, key)));
                      }),
                      this);
   }
 
-  template <StringLiteralWrapper sl_wrapper>
-  void bind_key_int(GSettings* settings, const std::string& gsettings_key) {
-    set_control_port_value(sl_wrapper.msg.data(),
-                           static_cast<float>(g_settings_get_int(settings, gsettings_key.c_str())));
+  template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
+  void bind_key_int(GSettings* settings) {
+    set_control_port_value(key_wrapper.msg.data(),
+                           static_cast<float>(g_settings_get_int(settings, gkey_wrapper.msg.data())));
 
-    g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+    g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto self = static_cast<Lv2Wrapper*>(user_data);
 
-                       self->set_control_port_value(sl_wrapper.msg.data(),
+                       self->set_control_port_value(key_wrapper.msg.data(),
                                                     static_cast<float>(g_settings_get_int(settings, key)));
                      }),
                      this);
   }
 
-  template <StringLiteralWrapper sl_wrapper>
-  void bind_key_double(GSettings* settings, const std::string& gsettings_key) {
-    set_control_port_value(sl_wrapper.msg.data(),
-                           static_cast<float>(g_settings_get_double(settings, gsettings_key.c_str())));
+  template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
+  void bind_key_double(GSettings* settings) {
+    set_control_port_value(key_wrapper.msg.data(),
+                           static_cast<float>(g_settings_get_double(settings, gkey_wrapper.msg.data())));
 
-    g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+    g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto self = static_cast<Lv2Wrapper*>(user_data);
 
-                       self->set_control_port_value(sl_wrapper.msg.data(),
+                       self->set_control_port_value(key_wrapper.msg.data(),
                                                     static_cast<float>(g_settings_get_double(settings, key)));
                      }),
                      this);
   }
 
-  template <StringLiteralWrapper sl_wrapper>
-  void bind_key_double_db(GSettings* settings, const std::string& gsettings_key) {
+  template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
+  void bind_key_double_db(GSettings* settings) {
     set_control_port_value(
-        sl_wrapper.msg.data(),
-        static_cast<float>(util::db_to_linear(g_settings_get_double(settings, gsettings_key.c_str()))));
+        key_wrapper.msg.data(),
+        static_cast<float>(util::db_to_linear(g_settings_get_double(settings, gkey_wrapper.msg.data()))));
 
-    g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+    g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto self = static_cast<Lv2Wrapper*>(user_data);
 
                        self->set_control_port_value(
-                           sl_wrapper.msg.data(),
+                           key_wrapper.msg.data(),
                            static_cast<float>(util::db_to_linear(g_settings_get_double(settings, key))));
                      }),
                      this);

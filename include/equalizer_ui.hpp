@@ -22,6 +22,7 @@
 #include <adwaita.h>
 #include "application.hpp"
 #include "effects_base.hpp"
+#include "equalizer_tags.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::equalizer_box {
@@ -110,11 +111,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
   Gtk::ComboBoxText* mode = nullptr;
 
   std::vector<sigc::connection> connections_bands;
-
-  void build_bands(Gtk::Box* bands_box,
-                   const Glib::RefPtr<Gio::Settings>& cfg,
-                   const int& nbands,
-                   const bool& split_mode);
 
   void on_flat_response();
 

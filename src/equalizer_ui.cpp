@@ -58,11 +58,6 @@ static std::unordered_map<std::string, FilterType> const FilterTypeMap = {
     {"LS", FilterType::LOW_SHELF},       {"LSC", FilterType::LOW_SHELF_xdB}, {"HS", FilterType::HIGH_SHELF},
     {"HSC", FilterType::HIGH_SHELF_xdB}, {"NO", FilterType::NOTCH},          {"AP", FilterType::ALL_PASS}};
 
-static std::array<const char*, max_bands> band_tag{
-    "band0",  "band1",  "band2",  "band3",  "band4",  "band5",  "band6",  "band7",  "band8",  "band9",  "band10",
-    "band11", "band12", "band13", "band14", "band15", "band16", "band17", "band18", "band19", "band20", "band21",
-    "band22", "band23", "band24", "band25", "band26", "band27", "band28", "band29", "band30", "band31"};
-
 struct _EqualizerBox {
   GtkBox parent_instance;
 
@@ -110,30 +105,30 @@ void on_reset(EqualizerBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, "num-bands");
   g_settings_reset(self->settings, "split-channels");
 
-  for (int n = 0; n < max_bands; n++) {
-    const auto bandn = "band" + std::to_string(n);
+  using namespace tags::equalizer;
 
+  for (int n = 0; n < max_bands; n++) {
     // left channel
 
-    g_settings_reset(self->settings_left, (bandn + "-gain").c_str());
-    g_settings_reset(self->settings_left, (bandn + "-frequency").c_str());
-    g_settings_reset(self->settings_left, (bandn + "-q").c_str());
-    g_settings_reset(self->settings_left, (bandn + "-type").c_str());
-    g_settings_reset(self->settings_left, (bandn + "-mode").c_str());
-    g_settings_reset(self->settings_left, (bandn + "-slope").c_str());
-    g_settings_reset(self->settings_left, (bandn + "-solo").c_str());
-    g_settings_reset(self->settings_left, (bandn + "-mute").c_str());
+    g_settings_reset(self->settings_left, band_gain[n]);
+    g_settings_reset(self->settings_left, band_frequency[n]);
+    g_settings_reset(self->settings_left, band_q[n]);
+    g_settings_reset(self->settings_left, band_type[n]);
+    g_settings_reset(self->settings_left, band_mode[n]);
+    g_settings_reset(self->settings_left, band_slope[n]);
+    g_settings_reset(self->settings_left, band_solo[n]);
+    g_settings_reset(self->settings_left, band_mute[n]);
 
     // right channel
 
-    g_settings_reset(self->settings_right, (bandn + "-gain").c_str());
-    g_settings_reset(self->settings_right, (bandn + "-frequency").c_str());
-    g_settings_reset(self->settings_right, (bandn + "-q").c_str());
-    g_settings_reset(self->settings_right, (bandn + "-type").c_str());
-    g_settings_reset(self->settings_right, (bandn + "-mode").c_str());
-    g_settings_reset(self->settings_right, (bandn + "-slope").c_str());
-    g_settings_reset(self->settings_right, (bandn + "-solo").c_str());
-    g_settings_reset(self->settings_right, (bandn + "-mute").c_str());
+    g_settings_reset(self->settings_right, band_gain[n]);
+    g_settings_reset(self->settings_right, band_frequency[n]);
+    g_settings_reset(self->settings_right, band_q[n]);
+    g_settings_reset(self->settings_right, band_type[n]);
+    g_settings_reset(self->settings_right, band_mode[n]);
+    g_settings_reset(self->settings_right, band_slope[n]);
+    g_settings_reset(self->settings_right, band_solo[n]);
+    g_settings_reset(self->settings_right, band_mute[n]);
   }
 }
 
@@ -156,7 +151,7 @@ void on_update_quality_width(GtkSpinButton* band_frequency,
 template <Channel channel>
 void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& split_mode) {
   for (int n = 0; n < nbands; n++) {
-    auto bandn = const_cast<char*>(band_tag[n]);
+    auto bandn = const_cast<char*>(tags::equalizer::band_id[n]);
 
     auto* builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
 
@@ -635,8 +630,6 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
 
 void equalizer_box_init(EqualizerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
-
-  // prepare_spinbutton<"">(self->nbands);
 }
 
 auto create() -> EqualizerBox* {
@@ -664,26 +657,11 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   // signals connections
 
   // reset equalizer
-  reset_button->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::reset));
-
   flat_response->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
 
   calculate_freqs->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
 
   import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
-
-  connections.push_back(settings->signal_changed("split-channels").connect([=, this](const auto& sc) {
-    stack->set_visible_child("page_left_channel");
-
-    // on_nbands_changed();
-  }));
-
-  // gsettings bindings
-
-  settings->bind("num-bands", nbands->get_adjustment().get(), "value");
-  settings->bind("split-channels", split_channels, "active");
-
-  setup_input_output_gain(builder);
 }
 
 EqualizerUi::~EqualizerUi() {
@@ -692,19 +670,6 @@ EqualizerUi::~EqualizerUi() {
   }
 
   util::debug(name + " ui destroyed");
-}
-
-void EqualizerUi::build_bands(Gtk::Box* bands_box,
-                              const Glib::RefPtr<Gio::Settings>& cfg,
-                              const int& nbands,
-                              const bool& split_mode) {
-  for (int n = 0; n < nbands; n++) {
-    const auto bandn = "band" + std::to_string(n);
-
-    const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
-
-    // connections
-  }
 }
 
 void EqualizerUi::on_flat_response() {

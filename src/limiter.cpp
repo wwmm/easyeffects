@@ -45,35 +45,35 @@ Limiter::Limiter(const std::string& tag,
                    }),
                    this);
 
-  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+  lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "oversampling", "ovs");
+  lv2_wrapper->bind_key_enum<"ovs", "oversampling">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "dithering", "dith");
+  lv2_wrapper->bind_key_enum<"dith", "dithering">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "lookahead", "lk");
+  lv2_wrapper->bind_key_double<"lk", "lookahead">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "attack", "at");
+  lv2_wrapper->bind_key_double<"at", "attack">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "release", "rt");
+  lv2_wrapper->bind_key_double<"rt", "release">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold", "th");
+  lv2_wrapper->bind_key_double_db<"th", "threshold">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "gain-boost", "boost");
+  lv2_wrapper->bind_key_bool<"boost", "gain-boost">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp", "scp");
+  lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "stereo-link", "slink");
+  lv2_wrapper->bind_key_double<"slink", "stereo-link">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "alr", "alr");
+  lv2_wrapper->bind_key_bool<"alr", "alr">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "alr-attack", "alr_at");
+  lv2_wrapper->bind_key_double<"alr_at", "alr-attack">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "alr-release", "alr_rt");
+  lv2_wrapper->bind_key_double<"alr_rt", "alr-release">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "alr-knee", "knee");
+  lv2_wrapper->bind_key_double_db<"knee", "alr-knee">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "external-sidechain", "extsc");
+  lv2_wrapper->bind_key_bool<"extsc", "external-sidechain">(settings);
 
   setup_input_output_gain();
 }
