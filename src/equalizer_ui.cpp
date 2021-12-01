@@ -22,6 +22,7 @@
 namespace ui::equalizer_box {
 
 using namespace std::string_literals;
+using namespace tags::equalizer;
 
 auto constexpr log_tag = "equalizer_box: ";
 
@@ -81,6 +82,8 @@ struct _EqualizerBox {
 
   GSettings *settings, *settings_left, *settings_right;
 
+  app::Application* application;
+
   std::shared_ptr<Equalizer> equalizer;
 
   std::vector<sigc::connection> connections;
@@ -105,8 +108,6 @@ void on_reset(EqualizerBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, "num-bands");
   g_settings_reset(self->settings, "split-channels");
 
-  using namespace tags::equalizer;
-
   for (int n = 0; n < max_bands; n++) {
     // left channel
 
@@ -130,6 +131,253 @@ void on_reset(EqualizerBox* self, GtkButton* btn) {
     g_settings_reset(self->settings_right, band_solo[n]);
     g_settings_reset(self->settings_right, band_mute[n]);
   }
+}
+
+void on_flat_response(EqualizerBox* self, GtkButton* btn) {
+  for (int n = 0; n < max_bands; n++) {
+    g_settings_reset(self->settings_left, band_gain[n]);
+
+    g_settings_reset(self->settings_right, band_gain[n]);
+  }
+}
+
+void on_calculate_frequencies(EqualizerBox* self, GtkButton* btn) {
+  static const double min_freq = 20.0;
+  static const double max_freq = 20000.0;
+
+  double freq0 = min_freq;
+  double freq1 = 0.0;
+
+  const auto nbands = g_settings_get_int(self->settings, "num-bands");
+
+  // code taken from gstreamer equalizer sources: gstiirequalizer.c
+  // function: gst_iir_equalizer_compute_frequencies
+
+  const double step = std::pow(max_freq / min_freq, 1.0 / static_cast<double>(nbands));
+
+  for (int n = 0; n < nbands; n++) {
+    freq1 = freq0 * step;
+
+    const double freq = freq0 + 0.5 * (freq1 - freq0);
+    const double width = freq1 - freq0;
+    const double q = freq / width;
+
+    // std::cout << n << "\t" << freq << "\t" << width << std::endl;
+
+    g_settings_set_double(self->settings_left, band_frequency[n], freq);
+    g_settings_set_double(self->settings_left, band_q[n], q);
+
+    g_settings_set_double(self->settings_right, band_frequency[n], freq);
+    g_settings_set_double(self->settings_right, band_q[n], q);
+
+    freq0 = freq1;
+  }
+}
+
+// returns false if we cannot parse given line successfully
+auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
+  std::smatch matches;
+
+  static const auto i = std::regex::icase;
+
+  std::regex_search(line, matches, std::regex(R"(preamp:\s*+([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
+
+  if (matches.size() != 2U) {
+    return false;
+  }
+
+  preamp = std::stod(matches.str(1));
+
+  return true;
+}
+
+// returns false if we cannot parse given line successfully
+auto parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
+  std::smatch matches;
+
+  static const auto i = std::regex::icase;
+
+  // get filter type
+
+  std::regex_search(line, matches, std::regex(R"(filter\s++\d*+:\s*+on\s++([a-z]++))", i));
+
+  if (matches.size() != 2U) {
+    return false;
+  }
+
+  try {
+    filter.type = FilterTypeMap.at(matches.str(1));
+  } catch (...) {
+    return false;
+  }
+
+  // get center frequency
+
+  std::regex_search(line, matches, std::regex(R"(fc\s++(\d++(?:,\d++)*+(?:\.\d++)*+)\s*+hz)", i));
+
+  if (matches.size() != 2U) {
+    return false;
+  }
+
+  // frequency could have a comma as thousands separator to be removed
+
+  filter.freq = std::stof(std::regex_replace(matches.str(1), std::regex(","), ""));
+
+  // get slope
+
+  if ((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
+    std::regex_search(line, matches,
+                      std::regex(R"(filter\s++\d*+:\s*+on\s++[a-z]++\s++([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
+
+    // _xdB variants require the dB parameter
+
+    if (((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB)) != 0U) && (matches.size() != 2U)) {
+      return false;
+    }
+
+    if (matches.size() == 2U) {
+      // we satisfied the condition, now assign the paramater if given
+
+      filter.slope_dB = std::stof(matches.str(1));
+    }
+  }
+
+  // get gain
+
+  if ((filter.type & (PEAKING | LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
+    std::regex_search(line, matches, std::regex(R"(gain\s++([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
+
+    // all Shelf types (i.e. all above except for Peaking) require the gain parameter
+
+    if (((filter.type & PEAKING) == 0U) && (matches.size() != 2U)) {
+      return false;
+    }
+
+    if (matches.size() == 2U) {
+      filter.gain = std::stof(matches.str(1));
+    }
+  }
+
+  // get quality factor
+  if ((filter.type & (PEAKING | LOW_PASS_Q | HIGH_PASS_Q | LOW_SHELF_xdB | HIGH_SHELF_xdB | NOTCH | ALL_PASS)) != 0U) {
+    std::regex_search(line, matches, std::regex(R"(q\s++(\d++(?:\.\d++)*+))", i));
+
+    // Peaking and All-Pass filter types require the quality factor parameter
+
+    if (((filter.type & (PEAKING | ALL_PASS)) != 0U) && (matches.size() != 2U)) {
+      return false;
+    }
+
+    if (matches.size() == 2U) {
+      filter.quality_factor = std::stof(matches.str(1));
+    }
+  }
+
+  return true;
+}
+
+void import_apo_preset(EqualizerBox* self, const std::string& file_path) {
+  std::filesystem::path p{file_path};
+
+  if (std::filesystem::is_regular_file(p)) {
+    std::ifstream eq_file;
+    std::vector<struct ImportedBand> bands;
+    double preamp = 0.0;
+
+    eq_file.open(p.c_str());
+
+    if (eq_file.is_open()) {
+      std::string line;
+
+      while (getline(eq_file, line)) {
+        struct ImportedBand filter {};
+
+        if (!parse_apo_preamp(line, preamp)) {
+          if (parse_apo_filter(line, filter)) {
+            bands.push_back(filter);
+          }
+        }
+      }
+    }
+
+    eq_file.close();
+
+    if (bands.empty()) {
+      return;
+    }
+
+    g_settings_set_int(self->settings, "num-bands", bands.size());
+    g_settings_set_double(self->settings, "input-gain", preamp);
+
+    for (int n = 0; n < max_bands; n++) {
+      if (n < static_cast<int>(bands.size())) {
+        g_settings_set_string(self->settings, band_mode[n], "APO (DR)");
+
+        if (g_settings_get_boolean(self->settings, "split-channels") == 0) {
+          g_settings_set_string(self->settings_left, band_type[n], "Bell");
+          g_settings_set_double(self->settings_left, band_gain[n], bands[n].gain);
+          g_settings_set_double(self->settings_left, band_frequency[n], bands[n].freq);
+          g_settings_set_double(self->settings_left, band_q[n], bands[n].quality_factor);
+
+          g_settings_set_string(self->settings_right, band_type[n], "Bell");
+          g_settings_set_double(self->settings_right, band_gain[n], bands[n].gain);
+          g_settings_set_double(self->settings_right, band_frequency[n], bands[n].freq);
+          g_settings_set_double(self->settings_right, band_q[n], bands[n].quality_factor);
+        } else {
+          /*
+            The code below allows users to load different APO presets for each channel
+          */
+
+          if (g_strcmp0(gtk_stack_get_visible_child_name(self->stack), "page_left_channel") == 0) {
+            g_settings_set_string(self->settings_left, band_type[n], "Bell");
+            g_settings_set_double(self->settings_left, band_gain[n], bands[n].gain);
+            g_settings_set_double(self->settings_left, band_frequency[n], bands[n].freq);
+            g_settings_set_double(self->settings_left, band_q[n], bands[n].quality_factor);
+          } else {
+            g_settings_set_string(self->settings_right, band_type[n], "Bell");
+            g_settings_set_double(self->settings_right, band_gain[n], bands[n].gain);
+            g_settings_set_double(self->settings_right, band_frequency[n], bands[n].freq);
+            g_settings_set_double(self->settings_right, band_q[n], bands[n].quality_factor);
+          }
+        }
+      } else {
+        g_settings_set_string(self->settings_left, band_type[n], "Off");
+        g_settings_set_string(self->settings_right, band_type[n], "Off");
+      }
+    }
+  }
+}
+
+void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
+
+  auto* dialog = gtk_file_chooser_native_new(_("Import APO Preset File"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN,
+                                             _("Open"), _("Cancel"));
+
+  auto* filter = gtk_file_filter_new();
+
+  gtk_file_filter_add_pattern(filter, "*.txt");
+  gtk_file_filter_set_name(filter, _("APO Presets"));
+
+  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+
+  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, EqualizerBox* self) {
+                     if (response == GTK_RESPONSE_ACCEPT) {
+                       auto* chooser = GTK_FILE_CHOOSER(dialog);
+                       auto* file = gtk_file_chooser_get_file(chooser);
+                       auto* path = g_file_get_path(file);
+
+                       import_apo_preset(self, path);
+
+                       g_object_unref(file);
+                     }
+
+                     g_object_unref(dialog);
+                   }),
+                   self);
+
+  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
+  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
 }
 
 void on_update_quality_width(GtkSpinButton* band_frequency,
@@ -481,6 +729,8 @@ void setup(EqualizerBox* self,
            app::Application* application) {
   self->equalizer = equalizer;
 
+  self->application = application;
+
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer", schema_path.c_str());
 
   self->settings_left =
@@ -626,6 +876,10 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_flat_response);
+  gtk_widget_class_bind_template_callback(widget_class, on_calculate_frequencies);
+  gtk_widget_class_bind_template_callback(widget_class, on_import_apo_preset_clicked);
 }
 
 void equalizer_box_init(EqualizerBox* self) {
@@ -637,297 +891,3 @@ auto create() -> EqualizerBox* {
 }
 
 }  // namespace ui::equalizer_box
-
-EqualizerUi::EqualizerUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& schema,
-                         const std::string& schema_path,
-                         const std::string& schema_channel,
-                         const std::string& schema_channel_left_path,
-                         const std::string& schema_channel_right_path)
-    : Gtk::Box(cobject),
-      PluginUiBase(builder, schema, schema_path),
-      settings_left(Gio::Settings::create(schema_channel, schema_channel_left_path)),
-      settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)) {
-  name = plugin_name::equalizer;
-
-  stack = builder->get_widget<Gtk::Stack>("stack");
-  stack_switcher = builder->get_widget<Gtk::StackSwitcher>("stack_switcher");
-
-  // signals connections
-
-  // reset equalizer
-  flat_response->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
-
-  calculate_freqs->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
-
-  import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
-}
-
-EqualizerUi::~EqualizerUi() {
-  for (auto& c : connections_bands) {
-    c.disconnect();
-  }
-
-  util::debug(name + " ui destroyed");
-}
-
-void EqualizerUi::on_flat_response() {
-  for (int n = 0; n < max_bands; n++) {
-    const auto bandn = "band" + std::to_string(n);
-
-    // left channel
-
-    settings_left->reset(bandn + "-gain");
-
-    // right channel
-
-    settings_right->reset(bandn + "-gain");
-  }
-}
-
-void EqualizerUi::on_calculate_frequencies() {
-  static const double min_freq = 20.0;
-  static const double max_freq = 20000.0;
-
-  double freq0 = min_freq;
-  double freq1 = 0.0;
-
-  const auto nbands = settings->get_int("num-bands");
-
-  // code taken from gstreamer equalizer sources: gstiirequalizer.c
-  // function: gst_iir_equalizer_compute_frequencies
-
-  const double step = std::pow(max_freq / min_freq, 1.0 / static_cast<double>(nbands));
-
-  auto config_band = [&](const auto& cfg, const auto& n, const auto& freq, const auto& q) {
-    const auto bandn = "band" + std::to_string(n);
-
-    cfg->set_double(bandn + "-frequency", freq);
-
-    cfg->set_double(bandn + "-q", q);
-  };
-
-  for (int n = 0; n < nbands; n++) {
-    freq1 = freq0 * step;
-
-    const double freq = freq0 + 0.5 * (freq1 - freq0);
-    const double width = freq1 - freq0;
-    const double q = freq / width;
-
-    // std::cout << n << "\t" << freq << "\t" << width << std::endl;
-
-    config_band(settings_left, n, freq, q);
-    config_band(settings_right, n, freq, q);
-
-    freq0 = freq1;
-  }
-}
-
-void EqualizerUi::on_import_apo_preset_clicked() {
-  Glib::RefPtr<Gtk::FileChooserNative> dialog;
-
-  if (transient_window != nullptr) {
-    dialog = Gtk::FileChooserNative::create(_("Import APO Preset File"), *transient_window,
-                                            Gtk::FileChooser::Action::OPEN, _("Open"), _("Cancel"));
-  } else {
-    dialog = Gtk::FileChooserNative::create(_("Import APO Preset File"), Gtk::FileChooser::Action::OPEN, _("Open"),
-                                            _("Cancel"));
-  }
-
-  auto dialog_filter = Gtk::FileFilter::create();
-
-  dialog_filter->set_name(_("APO Presets"));
-  dialog_filter->add_pattern("*.txt");
-
-  dialog->add_filter(dialog_filter);
-
-  dialog->signal_response().connect([=, this](const auto& response_id) {
-    switch (response_id) {
-      case Gtk::ResponseType::ACCEPT: {
-        import_apo_preset(dialog->get_file()->get_path());
-
-        break;
-      }
-      default:
-        break;
-    }
-  });
-
-  dialog->set_modal(true);
-  dialog->show();
-}
-
-// returns false if we cannot parse given line successfully
-bool EqualizerUi::parse_apo_preamp(const std::string& line, double& preamp) {
-  std::smatch matches;
-
-  static const auto i = std::regex::icase;
-
-  std::regex_search(line, matches, std::regex(R"(preamp:\s*+([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
-
-  if (matches.size() != 2U) {
-    return false;
-  }
-
-  preamp = std::stod(matches.str(1));
-
-  return true;
-}
-
-// returns false if we cannot parse given line successfully
-
-auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
-  std::smatch matches;
-
-  static const auto i = std::regex::icase;
-
-  // get filter type
-
-  std::regex_search(line, matches, std::regex(R"(filter\s++\d*+:\s*+on\s++([a-z]++))", i));
-
-  if (matches.size() != 2U) {
-    return false;
-  }
-
-  try {
-    filter.type = EqualizerUi::FilterTypeMap.at(matches.str(1));
-  } catch (...) {
-    return false;
-  }
-
-  // get center frequency
-
-  std::regex_search(line, matches, std::regex(R"(fc\s++(\d++(?:,\d++)*+(?:\.\d++)*+)\s*+hz)", i));
-
-  if (matches.size() != 2U) {
-    return false;
-  }
-
-  // frequency could have a comma as thousands separator to be removed
-
-  filter.freq = std::stof(std::regex_replace(matches.str(1), std::regex(","), ""));
-
-  // get slope
-
-  if ((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
-    std::regex_search(line, matches,
-                      std::regex(R"(filter\s++\d*+:\s*+on\s++[a-z]++\s++([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
-
-    // _xdB variants require the dB parameter
-
-    if (((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB)) != 0U) && (matches.size() != 2U)) {
-      return false;
-    }
-
-    if (matches.size() == 2U) {
-      // we satisfied the condition, now assign the paramater if given
-
-      filter.slope_dB = std::stof(matches.str(1));
-    }
-  }
-
-  // get gain
-
-  if ((filter.type & (PEAKING | LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
-    std::regex_search(line, matches, std::regex(R"(gain\s++([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
-
-    // all Shelf types (i.e. all above except for Peaking) require the gain parameter
-
-    if (((filter.type & PEAKING) == 0U) && (matches.size() != 2U)) {
-      return false;
-    }
-
-    if (matches.size() == 2U) {
-      filter.gain = std::stof(matches.str(1));
-    }
-  }
-
-  // get quality factor
-  if ((filter.type & (PEAKING | LOW_PASS_Q | HIGH_PASS_Q | LOW_SHELF_xdB | HIGH_SHELF_xdB | NOTCH | ALL_PASS)) != 0U) {
-    std::regex_search(line, matches, std::regex(R"(q\s++(\d++(?:\.\d++)*+))", i));
-
-    // Peaking and All-Pass filter types require the quality factor parameter
-
-    if (((filter.type & (PEAKING | ALL_PASS)) != 0U) && (matches.size() != 2U)) {
-      return false;
-    }
-
-    if (matches.size() == 2U) {
-      filter.quality_factor = std::stof(matches.str(1));
-    }
-  }
-
-  return true;
-}
-
-void EqualizerUi::import_apo_preset(const std::string& file_path) {
-  std::filesystem::path p{file_path};
-
-  if (std::filesystem::is_regular_file(p)) {
-    std::ifstream eq_file;
-    std::vector<struct ImportedBand> bands;
-    double preamp = 0.0;
-
-    eq_file.open(p.c_str());
-
-    if (eq_file.is_open()) {
-      std::string line;
-
-      while (getline(eq_file, line)) {
-        struct ImportedBand filter {};
-
-        if (!parse_apo_preamp(line, preamp)) {
-          if (parse_apo_filter(line, filter)) {
-            bands.push_back(filter);
-          }
-        }
-      }
-    }
-
-    eq_file.close();
-
-    if (bands.empty()) {
-      return;
-    }
-
-    settings->set_int("num-bands", bands.size());
-    settings->set_double("input-gain", preamp);
-
-    for (int n = 0; n < max_bands; n++) {
-      const auto bandn = "band" + std::to_string(n);
-
-      if (n < static_cast<int>(bands.size())) {
-        settings_left->set_string(bandn + "-mode", "APO (DR)");
-
-        if (!settings->get_boolean("split-channels")) {
-          settings_left->set_string(bandn + "-type", "Bell");
-          settings_left->set_double(bandn + "-gain", bands[n].gain);
-          settings_left->set_double(bandn + "-frequency", bands[n].freq);
-          settings_left->set_double(bandn + "-q", bands[n].quality_factor);
-
-          settings_right->set_string(bandn + "-type", "Bell");
-          settings_right->set_double(bandn + "-gain", bands[n].gain);
-          settings_right->set_double(bandn + "-frequency", bands[n].freq);
-          settings_right->set_double(bandn + "-q", bands[n].quality_factor);
-        } else {
-          if (stack->get_visible_child_name() == "page_left_channel") {
-            settings_left->set_string(bandn + "-type", "Bell");
-            settings_left->set_double(bandn + "-gain", bands[n].gain);
-            settings_left->set_double(bandn + "-frequency", bands[n].freq);
-            settings_left->set_double(bandn + "-q", bands[n].quality_factor);
-          } else {
-            settings_right->set_string(bandn + "-type", "Bell");
-            settings_right->set_double(bandn + "-gain", bands[n].gain);
-            settings_right->set_double(bandn + "-frequency", bands[n].freq);
-            settings_right->set_double(bandn + "-q", bands[n].quality_factor);
-          }
-        }
-      } else {
-        settings_left->set_string(bandn + "-type", "Off");
-
-        settings_right->set_string(bandn + "-type", "Off");
-      }
-    }
-  }
-}

@@ -231,9 +231,6 @@ void plugins_menu_class_init(PluginsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PluginsMenu, scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PluginsMenu, listview);
   gtk_widget_class_bind_template_child(widget_class, PluginsMenu, plugins_search);
-
-  //   gtk_widget_class_bind_template_callback(widget_class, on_show_pluginsed_apps);
-  //   gtk_widget_class_bind_template_callback(widget_class, on_add_to_plugins);
 }
 
 void plugins_menu_init(PluginsMenu* self) {

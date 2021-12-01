@@ -155,6 +155,7 @@
                             <object class="GtkButton" id="flat_response">
                                 <property name="label" translatable="yes">Flat Response</property>
                                 <property name="valign">center</property>
+                                <signal name="clicked" handler="on_flat_response" object="EqualizerBox" />
                             </object>
                         </child>
 
@@ -162,6 +163,7 @@
                             <object class="GtkButton" id="calculate_freqs">
                                 <property name="label" translatable="yes">Calculate Frequencies</property>
                                 <property name="valign">center</property>
+                                <signal name="clicked" handler="on_calculate_frequencies" object="EqualizerBox" />
                             </object>
                         </child>
 
@@ -169,6 +171,7 @@
                             <object class="GtkButton" id="import_apo">
                                 <property name="label" translatable="yes">Load APO Preset</property>
                                 <property name="valign">center</property>
+                                <signal name="clicked" handler="on_import_apo_preset_clicked" object="EqualizerBox" />
                             </object>
                         </child>
                     </object>

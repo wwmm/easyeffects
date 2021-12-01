@@ -253,18 +253,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*echo_canceller_ui, &EchoCancellerUi::on_new_output_level));
 
       effects_base->echo_canceller->bypass = false;
-    } else if (name == plugin_name::equalizer) {
-      // auto* const equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
-
-      // equalizer_ui->bypass->signal_toggled().connect(
-      //     [=, this]() { effects_base->equalizer->bypass = equalizer_ui->bypass->get_active(); });
-
-      // equalizer_ui->set_transient_window(transient_window);
-
-      // effects_base->equalizer->input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level));
-      // effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
-
-      // effects_base->equalizer->bypass = false;
     } else if (name == plugin_name::filter) {
       auto* const filter_ui = FilterUi::add_to_stack(stack_plugins, path);
 
@@ -414,9 +402,7 @@ void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {
   for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
     const auto page = stack_plugins->get_page(*child);
 
-    if (page->get_name() == plugin_name::equalizer) {
-      dynamic_cast<EqualizerUi*>(child)->set_transient_window(transient_window);
-    } else if (page->get_name() == plugin_name::rnnoise) {
+    if (page->get_name() == plugin_name::rnnoise) {
       dynamic_cast<RNNoiseUi*>(child)->set_transient_window(transient_window);
     } else if (page->get_name() == plugin_name::convolver) {
       dynamic_cast<ConvolverUi*>(child)->set_transient_window(transient_window);
