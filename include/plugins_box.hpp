@@ -23,6 +23,7 @@
 #include "application.hpp"
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
+#include "crossfeed_ui.hpp"
 #include "crystalizer_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"

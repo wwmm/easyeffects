@@ -209,16 +209,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->convolver->output_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level));
 
       effects_base->convolver->bypass = false;
-    } else if (name == plugin_name::crossfeed) {
-      auto* const crossfeed_ui = CrossfeedUi::add_to_stack(stack_plugins, path);
-
-      crossfeed_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->crossfeed->bypass = crossfeed_ui->bypass->get_active(); });
-
-      effects_base->crossfeed->input_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_input_level));
-      effects_base->crossfeed->output_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_output_level));
-
-      effects_base->crossfeed->bypass = false;
     } else if (name == plugin_name::deesser) {
       auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 
@@ -284,17 +274,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->loudness->output_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level));
 
       effects_base->loudness->bypass = false;
-    } else if (name == plugin_name::maximizer) {
-      // auto* const maximizer_ui = MaximizerUi::add_to_stack(stack_plugins, path);
-
-      // maximizer_ui->bypass->signal_toggled().connect(
-      //     [=, this]() { effects_base->maximizer->bypass = maximizer_ui->bypass->get_active(); });
-
-      // effects_base->maximizer->input_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level));
-      // effects_base->maximizer->output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level));
-      // effects_base->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction));
-
-      // effects_base->maximizer->bypass = false;
     } else if (name == plugin_name::multiband_compressor) {
       auto* const multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
 

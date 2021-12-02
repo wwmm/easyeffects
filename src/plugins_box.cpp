@@ -101,6 +101,12 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::bass_enhancer_box::setup(box, effects_base->bass_enhancer, schema_path + "bassenhancer/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::bass_enhancer);
+    } else if (name == plugin_name::crossfeed) {
+      auto* box = ui::crossfeed_box::create();
+
+      ui::crossfeed_box::setup(box, effects_base->crossfeed, schema_path + plugin_name::crossfeed + "/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::crossfeed);
     } else if (name == plugin_name::crystalizer) {
       auto* box = ui::crystalizer_box::create();
 

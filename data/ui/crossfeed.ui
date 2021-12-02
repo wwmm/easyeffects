@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="CrossfeedBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
+                <signal name="toggled" handler="on_bypass" object="CrossfeedBox" />
             </object>
         </child>
 
@@ -25,20 +25,21 @@
                 <child>
                     <object class="GtkButton" id="preset_cmoy">
                         <property name="label" translatable="yes">Cmoy</property>
+                        <signal name="clicked" handler="on_preset_cmoy" object="CrossfeedBox" />
                     </object>
                 </child>
 
                 <child>
                     <object class="GtkButton" id="preset_default">
                         <property name="label" translatable="yes">Default</property>
+                        <signal name="clicked" handler="on_preset_default" object="CrossfeedBox" />
                     </object>
                 </child>
 
                 <child>
                     <object class="GtkButton" id="preset_jmeier">
                         <property name="label" translatable="yes">Jmeier</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
+                        <signal name="clicked" handler="on_preset_jmeier" object="CrossfeedBox" />
                     </object>
                 </child>
             </object>
@@ -305,6 +306,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="CrossfeedBox" />
                     </object>
                 </child>
 
@@ -333,7 +335,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

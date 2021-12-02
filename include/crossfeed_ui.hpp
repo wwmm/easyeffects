@@ -17,33 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef CROSSFEED_UI_HPP
-#define CROSSFEED_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class CrossfeedUi : public Gtk::Box, public PluginUiBase {
- public:
-  CrossfeedUi(BaseObjectType* cobject,
-              const Glib::RefPtr<Gtk::Builder>& builder,
-              const std::string& schema,
-              const std::string& schema_path);
-  CrossfeedUi(const CrossfeedUi&) = delete;
-  auto operator=(const CrossfeedUi&) -> CrossfeedUi& = delete;
-  CrossfeedUi(const CrossfeedUi&&) = delete;
-  auto operator=(const CrossfeedUi&&) -> CrossfeedUi& = delete;
-  ~CrossfeedUi() override;
+namespace ui::crossfeed_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrossfeedUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_CROSSFEED_BOX (crossfeed_box_get_type())
 
- private:
-  Gtk::SpinButton *fcut = nullptr, *feed = nullptr;
+G_DECLARE_FINAL_TYPE(CrossfeedBox, crossfeed_box, EE, CROSSFEED_BOX, GtkBox)
 
-  Gtk::Button *preset_cmoy = nullptr, *preset_default = nullptr, *preset_jmeier = nullptr;
+G_END_DECLS
 
-  void init_presets_buttons();
-};
+auto create() -> CrossfeedBox*;
 
-#endif
+void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::string& schema_path);
+
+}  // namespace ui::crossfeed_box
