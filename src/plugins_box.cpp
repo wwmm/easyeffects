@@ -101,6 +101,13 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::bass_enhancer_box::setup(box, effects_base->bass_enhancer, schema_path + "bassenhancer/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::bass_enhancer);
+    } else if (name == plugin_name::convolver) {
+      auto* box = ui::convolver_box::create();
+
+      ui::convolver_box::setup(box, effects_base->convolver, schema_path + plugin_name::convolver + "/",
+                               self->application);
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::convolver);
     } else if (name == plugin_name::crossfeed) {
       auto* box = ui::crossfeed_box::create();
 

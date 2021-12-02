@@ -198,17 +198,17 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->compressor->bypass = false;
     } else if (name == plugin_name::convolver) {
-      auto* const convolver_ui = ConvolverUi::add_to_stack(stack_plugins, path);
+      // auto* const convolver_ui = ConvolverUi::add_to_stack(stack_plugins, path);
 
-      convolver_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->convolver->bypass = convolver_ui->bypass->get_active(); });
+      // convolver_ui->bypass->signal_toggled().connect(
+      //     [=, this]() { effects_base->convolver->bypass = convolver_ui->bypass->get_active(); });
 
-      convolver_ui->set_transient_window(transient_window);
+      // convolver_ui->set_transient_window(transient_window);
 
-      effects_base->convolver->input_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_input_level));
-      effects_base->convolver->output_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level));
+      // effects_base->convolver->input_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_input_level));
+      // effects_base->convolver->output_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level));
 
-      effects_base->convolver->bypass = false;
+      // effects_base->convolver->bypass = false;
     } else if (name == plugin_name::deesser) {
       auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 

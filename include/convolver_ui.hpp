@@ -17,11 +17,10 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef CONVOLVER_UI_HPP
-#define CONVOLVER_UI_HPP
+#pragma once
 
+#include <adwaita.h>
 #include <fftw3.h>
-#include <glibmm/i18n.h>
 #include <algorithm>
 #include <execution>
 #include <filesystem>
@@ -30,8 +29,33 @@
 #include <ranges>
 #include <sndfile.hh>
 #include <tuple>
-#include "plugin_ui_base.hpp"
+#include "application.hpp"
+#include "convolver_menu_impulses.hpp"
+#include "effects_base.hpp"
 #include "resampler.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::convolver_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_CONVOLVER_BOX (convolver_box_get_type())
+
+G_DECLARE_FINAL_TYPE(ConvolverBox, convolver_box, EE, CONVOLVER_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> ConvolverBox*;
+
+void setup(ConvolverBox* self,
+           std::shared_ptr<Convolver> convolver,
+           const std::string& schema_path,
+           app::Application* application);
+
+}  // namespace ui::convolver_box
+
+#include <glibmm/i18n.h>
+#include "plugin_ui_base.hpp"
 
 class ConvolverUi : public Gtk::Box, public PluginUiBase {
  public:
@@ -47,20 +71,12 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ConvolverUi*;
 
-  void reset() override;
-
  private:
   const std::string log_tag = "convolver_ui: ";
 
   const std::string irs_ext = ".irs";
 
   Gtk::SpinButton* ir_width = nullptr;
-
-  Gtk::ListView* listview = nullptr;
-
-  Gtk::ScrolledWindow* scrolled_window = nullptr;
-
-  Gtk::Button* import = nullptr;
 
   Gtk::Button* button_combine_kernels = nullptr;
 
@@ -73,11 +89,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::CheckButton *check_left = nullptr, *check_right = nullptr;
 
-  Gtk::SearchEntry* entry_search = nullptr;
-
   Gtk::Entry* combined_kernel_name = nullptr;
-
-  Gtk::Popover* popover_import = nullptr;
 
   Gtk::Popover* popover_combine = nullptr;
 
@@ -88,8 +100,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   Gtk::Spinner* spinner_combine_kernel = nullptr;
 
   std::filesystem::path irs_dir;
-
-  Glib::RefPtr<Gio::FileMonitor> folder_monitor;
 
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
@@ -104,17 +114,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   std::vector<std::thread> mythreads;
 
-  void setup_listview();
-
   static void setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list);
-
-  auto get_irs_names() -> std::vector<Glib::ustring>;
-
-  void import_irs_file(const std::string& file_path);
-
-  void remove_irs_file(const std::string& name);
-
-  void on_import_irs_clicked();
 
   void get_irs_info();
 
@@ -132,5 +132,3 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 };
-
-#endif

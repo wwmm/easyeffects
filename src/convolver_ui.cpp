@@ -19,14 +19,248 @@
 
 #include "convolver_ui.hpp"
 
+namespace ui::convolver_box {
+
+using namespace std::string_literals;
+
+auto constexpr log_tag = "convolver_box: ";
+auto constexpr irs_ext = ".irs";
+
+static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
+
+struct _ConvolverBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkMenuButton* menu_button_impulses;
+
+  GtkLabel *label_file_name, *label_sampling_rate, *label_samples, *label_duration;
+
+  GtkSpinButton* ir_width;
+
+  GtkCheckButton *check_left, *check_right;
+
+  GtkToggleButton* show_fft;
+
+  GtkEntry* combined_kernel_name;
+
+  ui::convolver_menu_impulses::ConvolverMenuImpulses* impulses_menu;
+
+  GSettings* settings;
+
+  GFileMonitor* folder_monitor;
+
+  app::Application* application;
+
+  std::shared_ptr<Convolver> convolver;
+
+  std::mutex lock_guard_irs_info;
+
+  std::vector<float> left_mag, right_mag, time_axis, left_spectrum, right_spectrum, freq_axis;
+
+  std::vector<std::thread> mythreads;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(ConvolverBox, convolver_box, GTK_TYPE_BOX)
+
+void on_bypass(ConvolverBox* self, GtkToggleButton* btn) {
+  self->convolver->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(ConvolverBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "kernel-path");
+
+  g_settings_reset(self->settings, "ir-width");
+}
+
+void setup(ConvolverBox* self,
+           std::shared_ptr<Convolver> convolver,
+           const std::string& schema_path,
+           app::Application* application) {
+  self->convolver = convolver;
+  self->application = application;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.convolver", schema_path.c_str());
+
+  convolver->post_messages = true;
+  convolver->bypass = false;
+
+  ui::convolver_menu_impulses::setup(self->impulses_menu, schema_path, application);
+
+  self->connections.push_back(convolver->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(convolver->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "ir-width", gtk_spin_button_get_adjustment(self->ir_width), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_CONVOLVER_BOX(object);
+
+  self->convolver->post_messages = false;
+  self->convolver->bypass = false;
+
+  g_file_monitor_cancel(self->folder_monitor);
+
+  for (auto& t : self->mythreads) {
+    t.join();
+  }
+
+  self->mythreads.clear();
+
+  for (auto& c : self->connections) {
+    c.disconnect();
+  }
+
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
+
+  self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(convolver_box_parent_class)->dispose(object);
+}
+
+void convolver_box_class_init(ConvolverBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/convolver.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, menu_button_impulses);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, label_file_name);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, label_sampling_rate);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, label_samples);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, label_duration);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, ir_width);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, check_left);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, check_right);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, show_fft);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, combined_kernel_name);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
+}
+
+void convolver_box_init(ConvolverBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  prepare_spinbutton<"%">(self->ir_width);
+
+  self->impulses_menu = ui::convolver_menu_impulses::create();
+
+  gtk_menu_button_set_popover(self->menu_button_impulses, GTK_WIDGET(self->impulses_menu));
+
+  // irs dir
+
+  if (!std::filesystem::is_directory(irs_dir)) {
+    if (std::filesystem::create_directories(irs_dir)) {
+      util::debug(log_tag + "irs directory created: "s + irs_dir.string());
+    } else {
+      util::warning(log_tag + "failed to create irs directory: "s + irs_dir.string());
+    }
+  } else {
+    util::debug(log_tag + "irs directory already exists: "s + irs_dir.string());
+  }
+
+  auto gfile = g_file_new_for_path(irs_dir.c_str());
+
+  self->folder_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);
+
+  g_signal_connect(self->folder_monitor, "changed",
+                   G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
+                                  ConvolverBox* self) {
+                     const auto irs_filename = util::remove_filename_extension(g_file_get_basename(file));
+
+                     if (irs_filename.empty()) {
+                       util::warning(log_tag + "can't retrieve information about irs file"s);
+
+                       return;
+                     }
+
+                     switch (event_type) {
+                       case G_FILE_MONITOR_EVENT_CREATED: {
+                         ui::convolver_menu_impulses::append_to_string_list(self->impulses_menu, irs_filename);
+
+                         break;
+                       }
+
+                       case G_FILE_MONITOR_EVENT_DELETED: {
+                         ui::convolver_menu_impulses::remove_from_string_list(self->impulses_menu, irs_filename);
+
+                         break;
+                       }
+
+                       default:
+                         break;
+                     }
+                   }),
+                   self);
+
+  g_object_unref(gfile);
+}
+
+auto create() -> ConvolverBox* {
+  return static_cast<ConvolverBox*>(g_object_new(EE_TYPE_CONVOLVER_BOX, nullptr));
+}
+
+}  // namespace ui::convolver_box
+
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& schema,
                          const std::string& schema_path)
     : Gtk::Box(cobject),
       PluginUiBase(builder, schema, schema_path),
-      irs_dir(Glib::get_user_config_dir() + "/easyeffects/irs"),
-      string_list(Gtk::StringList::create({"initial_value"})),
       spectrum_settings(Gio::Settings::create("com.github.wwmm.easyeffects.spectrum")) {
   name = plugin_name::convolver;
 
@@ -48,14 +282,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   prepare_spinbutton(ir_width);
 
-  listview = builder->get_widget<Gtk::ListView>("listview");
-
-  scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window");
-
-  import = builder->get_widget<Gtk::Button>("import");
   button_combine_kernels = builder->get_widget<Gtk::Button>("button_combine_kernels");
 
-  popover_import = builder->get_widget<Gtk::Popover>("popover_import");
   popover_combine = builder->get_widget<Gtk::Popover>("popover_combine");
 
   dropdown_kernel_1 = builder->get_widget<Gtk::DropDown>("dropdown_kernel_1");
@@ -72,26 +300,14 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   drawing_area = builder->get_widget<Gtk::DrawingArea>("drawing_area");
 
-  entry_search = builder->get_widget<Gtk::SearchEntry>("entry_search");
-
   combined_kernel_name = builder->get_widget<Gtk::Entry>("combined_kernel_name");
 
   spinner_combine_kernel = builder->get_widget<Gtk::Spinner>("spinner_combine_kernel");
-
-  setup_listview();
 
   setup_dropdown_kernels(dropdown_kernel_1, string_list);
   setup_dropdown_kernels(dropdown_kernel_2, string_list);
 
   // plot = std::make_unique<Plot>(drawing_area);
-
-  popover_import->signal_show().connect([=, this]() {
-    int height = static_cast<int>(0.5F * static_cast<float>(get_allocated_height()));
-
-    scrolled_window->set_max_content_height(height);
-  });
-
-  import->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
 
   button_combine_kernels->signal_clicked().connect([=, this]() {
     if (string_list->get_n_items() == 0) {
@@ -146,12 +362,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   show_fft->signal_toggled().connect([=, this]() { (show_fft->get_active()) ? plot_fft() : plot_waveform(); });
 
-  // gsettings bindings
-
-  settings->bind("ir-width", ir_width->get_adjustment().get(), "value");
-
-  setup_input_output_gain(builder);
-
   // Reading the current configured irs file
 
   mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
@@ -171,172 +381,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
       get_irs_info();
     });
   }));
-
-  folder_monitor = Gio::File::create_for_path(irs_dir.string())->monitor_directory();
-
-  folder_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        const auto irs_filename = util::remove_filename_extension(file->get_basename());
-
-        if (irs_filename.empty()) {
-          util::warning(log_tag + "can't retrieve information about irs file");
-
-          return;
-        }
-
-        switch (event) {
-          case Gio::FileMonitor::Event::CREATED: {
-            for (guint n = 0; n < string_list->get_n_items(); n++) {
-              if (string_list->get_string(n).raw() == irs_filename) {
-                return;
-              }
-            }
-
-            string_list->append(irs_filename);
-
-            break;
-          }
-          case Gio::FileMonitor::Event::DELETED: {
-            for (guint n = 0; n < string_list->get_n_items(); n++) {
-              if (string_list->get_string(n).raw() == irs_filename) {
-                string_list->remove(n);
-
-                break;
-              }
-            }
-
-            break;
-          }
-          default:
-            break;
-        }
-      });
 }
 
 ConvolverUi::~ConvolverUi() {
-  for (auto& t : mythreads) {
-    t.join();
-  }
-
-  mythreads.clear();
-
   util::debug(name + " ui destroyed");
-}
-
-auto ConvolverUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ConvolverUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/convolver.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<ConvolverUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.convolver", schema_path + "convolver/");
-
-  stack->add(*ui, plugin_name::convolver);
-
-  return ui;
-}
-
-void ConvolverUi::setup_listview() {
-  string_list->remove(0);
-
-  for (const auto& name : get_irs_names()) {
-    string_list->append(name);
-  }
-
-  // filter
-
-  auto filter =
-      Gtk::StringFilter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  auto filter_model = Gtk::FilterListModel::create(string_list, filter);
-
-  filter_model->set_incremental(true);
-
-  Glib::Binding::bind_property(entry_search->property_text(), filter->property_search());
-
-  // sorter
-
-  const auto sorter =
-      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  const auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
-
-  // setting the listview model and factory
-
-  listview->set_model(Gtk::NoSelection::create(sort_list_model));
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const load = Gtk::make_managed<Gtk::Button>();
-    auto* const remove = Gtk::make_managed<Gtk::Button>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    load->set_label(_("Load"));
-
-    remove->set_icon_name("user-trash-symbolic");
-
-    box->set_spacing(6);
-    box->append(*label);
-    box->append(*load);
-    box->append(*remove);
-
-    list_item->set_data("name", label);
-    list_item->set_data("load", load);
-    list_item->set_data("remove", remove);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const load = static_cast<Gtk::Button*>(list_item->get_data("load"));
-    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
-
-    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
-
-    label->set_text(name);
-
-    load->update_property(Gtk::Accessible::Property::LABEL,
-                          util::glib_value(Glib::ustring(_("Load Impulse")) + " " + name));
-
-    remove->update_property(Gtk::Accessible::Property::LABEL,
-                            util::glib_value(Glib::ustring(_("Remove Impulse")) + " " + name));
-
-    auto connection_load = load->signal_clicked().connect([=, this]() {
-      const auto irs_file = irs_dir / std::filesystem::path{name + irs_ext};
-
-      settings->set_string("kernel-path", irs_file.c_str());
-    });
-
-    auto connection_remove = remove->signal_clicked().connect([=, this]() { remove_irs_file(name.raw()); });
-
-    list_item->set_data("connection_load", new sigc::connection(connection_load),
-                        Glib::destroy_notify_delete<sigc::connection>);
-
-    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
-                        Glib::destroy_notify_delete<sigc::connection>);
-  });
-
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_load"))) {
-      connection->disconnect();
-
-      list_item->set_data("connection_load", nullptr);
-    }
-
-    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
-      connection->disconnect();
-
-      list_item->set_data("connection_remove", nullptr);
-    }
-  });
 }
 
 void ConvolverUi::setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list) {
@@ -388,100 +436,6 @@ void ConvolverUi::setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::Re
     label->set_name(name);
     label->set_text(name);
   });
-}
-
-void ConvolverUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("kernel-path");
-
-  settings->reset("ir-width");
-}
-
-auto ConvolverUi::get_irs_names() -> std::vector<Glib::ustring> {
-  std::vector<Glib::ustring> names;
-
-  for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; ++it) {
-    if (std::filesystem::is_regular_file(it->status())) {
-      if (it->path().extension().c_str() == irs_ext) {
-        names.push_back(it->path().stem().string());
-      }
-    }
-  }
-
-  return names;
-}
-
-void ConvolverUi::import_irs_file(const std::string& file_path) {
-  std::filesystem::path p{file_path};
-
-  if (std::filesystem::is_regular_file(p)) {
-    if (SndfileHandle file = SndfileHandle(file_path.c_str()); file.channels() != 2 || file.frames() == 0) {
-      util::warning(log_tag + " Only stereo impulse files are supported!");
-      util::warning(log_tag + file_path + " loading failed");
-
-      return;
-    }
-
-    auto out_path = irs_dir / p.filename();
-
-    out_path.replace_extension(irs_ext);
-
-    std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
-
-    util::debug(log_tag + "imported irs file to: " + out_path.string());
-  } else {
-    util::warning(log_tag + p.string() + " is not a file!");
-  }
-}
-
-void ConvolverUi::remove_irs_file(const std::string& name) {
-  const auto irs_file = irs_dir / std::filesystem::path{name + irs_ext};
-
-  if (std::filesystem::exists(irs_file)) {
-    std::filesystem::remove(irs_file);
-
-    util::debug(log_tag + "removed irs file: " + irs_file.string());
-  }
-}
-
-void ConvolverUi::on_import_irs_clicked() {
-  Glib::RefPtr<Gtk::FileChooserNative> dialog;
-
-  if (transient_window != nullptr) {
-    dialog = Gtk::FileChooserNative::create(_("Import Impulse File"), *transient_window, Gtk::FileChooser::Action::OPEN,
-                                            _("Open"), _("Cancel"));
-  } else {
-    dialog = Gtk::FileChooserNative::create(_("Import Impulse File"), Gtk::FileChooser::Action::OPEN, _("Open"),
-                                            _("Cancel"));
-  }
-
-  auto dialog_filter = Gtk::FileFilter::create();
-
-  dialog_filter->set_name(_("Impulse Response"));
-  dialog_filter->add_pattern("*.irs");
-  dialog_filter->add_pattern("*.wav");
-
-  dialog->add_filter(dialog_filter);
-
-  dialog->signal_response().connect([=, this](const auto& response_id) {
-    switch (response_id) {
-      case Gtk::ResponseType::ACCEPT: {
-        import_irs_file(dialog->get_file()->get_path());
-
-        break;
-      }
-      default:
-        break;
-    }
-  });
-
-  dialog->set_modal(true);
-  dialog->show();
 }
 
 void ConvolverUi::get_irs_info() {

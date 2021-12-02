@@ -20,31 +20,26 @@
 #pragma once
 
 #include <adwaita.h>
+#include <filesystem>
+#include <sndfile.hh>
 #include "application.hpp"
-#include "autogain_ui.hpp"
-#include "bass_enhancer_ui.hpp"
-#include "convolver_ui.hpp"
-#include "crossfeed_ui.hpp"
-#include "crystalizer_ui.hpp"
-#include "equalizer_ui.hpp"
-#include "exciter_ui.hpp"
-#include "limiter_ui.hpp"
-#include "maximizer_ui.hpp"
-#include "pipeline_type.hpp"
-#include "plugins_menu.hpp"
 
-namespace ui::plugins_box {
+namespace ui::convolver_menu_impulses {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_PLUGINS_BOX (plugins_box_get_type())
+#define EE_TYPE_CONVOLVER_MENU_IMPULSES (convolver_menu_impulses_get_type())
 
-G_DECLARE_FINAL_TYPE(PluginsBox, plugins_box, EE, PLUGINS_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(ConvolverMenuImpulses, convolver_menu_impulses, EE, CONVOLVER_MENU_IMPULSES, GtkPopover)
 
 G_END_DECLS
 
-auto create() -> PluginsBox*;
+auto create() -> ConvolverMenuImpulses*;
 
-void setup(PluginsBox* self, app::Application* application, PipelineType pipeline_type);
+void setup(ConvolverMenuImpulses* self, const std::string& schema_path, app::Application* application);
 
-}  // namespace ui::plugins_box
+void append_to_string_list(ConvolverMenuImpulses* self, const std::string& irs_filename);
+
+void remove_from_string_list(ConvolverMenuImpulses* self, const std::string& irs_filename);
+
+}  // namespace ui::convolver_menu_impulses

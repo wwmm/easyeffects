@@ -19,6 +19,7 @@ easyeffects_sources = [
 	'compressor_preset.cpp',
 	'compressor_ui.cpp',
 	'convolver.cpp',
+	'convolver_menu_impulses.cpp',
 	'convolver_preset.cpp',
 	'convolver_ui.cpp',
 	'crossfeed.cpp',

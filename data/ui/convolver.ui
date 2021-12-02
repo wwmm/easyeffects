@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="ConvolverBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
+                <signal name="toggled" handler="on_bypass" object="ConvolverBox" />
             </object>
         </child>
 
@@ -69,10 +69,9 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkMenuButton">
+                            <object class="GtkMenuButton" id="menu_button_impulses">
                                 <property name="valign">center</property>
                                 <property name="direction">left</property>
-                                <property name="popover">popover_import</property>
                                 <property name="label" translatable="yes">Impulses</property>
                             </object>
                         </child>
@@ -382,6 +381,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="ConvolverBox" />
                     </object>
                 </child>
 
@@ -410,63 +410,7 @@
                 </child>
             </object>
         </child>
-    </object>
-
-    <object class="GtkPopover" id="popover_import">
-        <property name="autohide">1</property>
-        <child>
-            <object class="GtkBox">
-                <property name="margin-start">6</property>
-                <property name="margin-end">6</property>
-                <property name="margin-top">6</property>
-                <property name="margin-bottom">6</property>
-                <property name="spacing">12</property>
-                <property name="orientation">vertical</property>
-
-                <child>
-                    <object class="GtkButton" id="import">
-                        <property name="halign">center</property>
-                        <property name="label" translatable="yes">Import Impulse</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkSearchEntry" id="entry_search">
-                        <property name="valign">start</property>
-                        <property name="hexpand">1</property>
-                        <property name="placeholder_text" translatable="yes">Search</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Search Impulse File</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkFrame">
-                        <child>
-                            <object class="GtkScrolledWindow" id="scrolled_window">
-                                <property name="propagate_natural_width">1</property>
-                                <property name="propagate_natural_height">1</property>
-                                <child>
-                                    <object class="GtkListView" id="listview">
-                                        <property name="hexpand">1</property>
-                                        <property name="vexpand">1</property>
-                                        <property name="show-separators">1</property>
-                                        <style>
-                                            <class name="rich-list" />
-                                        </style>
-                                        <accessibility>
-                                            <property name="label" translatable="yes">Impulse Files List</property>
-                                        </accessibility>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-            </object>
-        </child>
-    </object>
+    </template>
 
     <object class="GtkPopover" id="popover_combine">
         <property name="autohide">0</property>
