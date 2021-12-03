@@ -11,6 +11,7 @@ data/ui/client_info.ui
 data/ui/compressor.ui
 data/ui/convolver.ui
 data/ui/convolver_menu_impulses.ui
+data/ui/convolver_menu_combine.ui
 data/ui/crossfeed.ui
 data/ui/crystalizer.ui
 data/ui/crystalizer_band.ui
@@ -46,6 +47,7 @@ src/application.cpp
 src/application_ui.cpp
 src/convolver_ui.cpp
 src/convolver_menu_impulses.cpp
+src/convolver_menu_combine.cpp
 src/effects_base_ui.cpp
 src/effects_box.cpp
 src/equalizer_ui.cpp

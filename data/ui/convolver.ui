@@ -77,10 +77,9 @@
                         </child>
 
                         <child>
-                            <object class="GtkMenuButton">
+                            <object class="GtkMenuButton" id="menu_button_combine">
                                 <property name="valign">center</property>
                                 <property name="direction">left</property>
-                                <property name="popover">popover_combine</property>
                                 <property name="label" translatable="yes">Combine</property>
                             </object>
                         </child>
@@ -411,88 +410,6 @@
             </object>
         </child>
     </template>
-
-    <object class="GtkPopover" id="popover_combine">
-        <property name="autohide">0</property>
-        <child>
-            <object class="GtkBox">
-                <property name="margin-start">6</property>
-                <property name="margin-end">6</property>
-                <property name="margin-top">6</property>
-                <property name="margin-bottom">6</property>
-                <property name="spacing">12</property>
-                <property name="orientation">vertical</property>
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="label" translatable="yes">Combine Impulse Responses</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkDropDown" id="dropdown_kernel_1">
-                        <property name="enable-search">1</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">First Kernel</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkDropDown" id="dropdown_kernel_2">
-                        <property name="enable-search">1</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Second Kernel</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkEntry" id="combined_kernel_name">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                        <property name="placeholder_text" translatable="yes">Output File Name</property>
-                        <property name="input_purpose">name</property>
-                        <property name="accessible_role">text-box</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Combined Kernel Name</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-
-                <child>
-                    <object class="GtkBox">
-                        <property name="hexpand">1</property>
-                        <property name="vexpand">0</property>
-                        <property name="layout-manager">
-                            <object class="GtkBinLayout"></object>
-                        </property>
-
-                        <child>
-                            <object class="GtkButton" id="button_combine_kernels">
-                                <property name="valign">center</property>
-                                <property name="halign">center</property>
-                                <property name="label" translatable="yes">Combine</property>
-                                <accessibility>
-                                    <property name="label" translatable="yes">Combine</property>
-                                </accessibility>
-                                <style>
-                                    <class name="suggested-action" />
-                                </style>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkSpinner" id="spinner_combine_kernel">
-                                <property name="halign">start</property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-            </object>
-        </child>
-    </object>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

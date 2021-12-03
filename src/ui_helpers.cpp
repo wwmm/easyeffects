@@ -66,4 +66,24 @@ void update_level(GtkLevelBar* w_left,
   }
 }
 
+void append_to_string_list(GtkStringList* string_list, const std::string& name) {
+  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(string_list)); n++) {
+    if (gtk_string_list_get_string(string_list, n) == name) {
+      return;
+    }
+  }
+
+  gtk_string_list_append(string_list, name.c_str());
+}
+
+void remove_from_string_list(GtkStringList* string_list, const std::string& name) {
+  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(string_list)); n++) {
+    if (gtk_string_list_get_string(string_list, n) == name) {
+      gtk_string_list_remove(string_list, n);
+
+      return;
+    }
+  }
+}
+
 }  // namespace ui

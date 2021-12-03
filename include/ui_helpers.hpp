@@ -72,4 +72,8 @@ void update_level(GtkLevelBar* w_left,
                   const float& left,
                   const float& right);
 
+void append_to_string_list(GtkStringList* string_list, const std::string& name);
+
+void remove_from_string_list(GtkStringList* string_list, const std::string& name);
+
 }  // namespace ui

@@ -317,4 +317,18 @@ void generate_tags(const int& N, const std::string& start_string, const std::str
   warning(msg);
 }
 
+auto get_files_name(std::filesystem::path dir_path, const std::string& ext) -> std::vector<std::string> {
+  std::vector<std::string> names;
+
+  for (std::filesystem::directory_iterator it{dir_path}; it != std::filesystem::directory_iterator{}; ++it) {
+    if (std::filesystem::is_regular_file(it->status())) {
+      if (it->path().extension() == ext) {
+        names.push_back(it->path().stem().string());
+      }
+    }
+  }
+
+  return names;
+}
+
 }  // namespace util

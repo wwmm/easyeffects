@@ -39,7 +39,7 @@ struct _ConvolverBox {
 
   GtkToggleButton* bypass;
 
-  GtkMenuButton* menu_button_impulses;
+  GtkMenuButton *menu_button_impulses, *menu_button_combine;
 
   GtkLabel *label_file_name, *label_sampling_rate, *label_samples, *label_duration;
 
@@ -49,9 +49,8 @@ struct _ConvolverBox {
 
   GtkToggleButton* show_fft;
 
-  GtkEntry* combined_kernel_name;
-
   ui::convolver_menu_impulses::ConvolverMenuImpulses* impulses_menu;
+  ui::convolver_menu_combine::ConvolverMenuCombine* combine_menu;
 
   GSettings* settings;
 
@@ -177,6 +176,7 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, bypass);
 
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, menu_button_impulses);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, menu_button_combine);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, label_file_name);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, label_sampling_rate);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, label_samples);
@@ -185,7 +185,6 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, check_left);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, check_right);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, show_fft);
-  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, combined_kernel_name);
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
@@ -197,8 +196,10 @@ void convolver_box_init(ConvolverBox* self) {
   prepare_spinbutton<"%">(self->ir_width);
 
   self->impulses_menu = ui::convolver_menu_impulses::create();
+  self->combine_menu = ui::convolver_menu_combine::create();
 
   gtk_menu_button_set_popover(self->menu_button_impulses, GTK_WIDGET(self->impulses_menu));
+  gtk_menu_button_set_popover(self->menu_button_combine, GTK_WIDGET(self->combine_menu));
 
   // irs dir
 
@@ -230,12 +231,14 @@ void convolver_box_init(ConvolverBox* self) {
                      switch (event_type) {
                        case G_FILE_MONITOR_EVENT_CREATED: {
                          ui::convolver_menu_impulses::append_to_string_list(self->impulses_menu, irs_filename);
+                         ui::convolver_menu_combine::append_to_string_list(self->combine_menu, irs_filename);
 
                          break;
                        }
 
                        case G_FILE_MONITOR_EVENT_DELETED: {
                          ui::convolver_menu_impulses::remove_from_string_list(self->impulses_menu, irs_filename);
+                         ui::convolver_menu_combine::remove_from_string_list(self->combine_menu, irs_filename);
 
                          break;
                        }
@@ -264,31 +267,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
       spectrum_settings(Gio::Settings::create("com.github.wwmm.easyeffects.spectrum")) {
   name = plugin_name::convolver;
 
-  // irs dir
-
-  if (!std::filesystem::is_directory(irs_dir)) {
-    if (std::filesystem::create_directories(irs_dir)) {
-      util::debug(log_tag + "irs directory created: " + irs_dir.string());
-    } else {
-      util::warning(log_tag + "failed to create irs directory: " + irs_dir.string());
-    }
-  } else {
-    util::debug(log_tag + "irs directory already exists: " + irs_dir.string());
-  }
-
-  // loading builder widgets
-
-  ir_width = builder->get_widget<Gtk::SpinButton>("ir_width");
-
-  prepare_spinbutton(ir_width);
-
-  button_combine_kernels = builder->get_widget<Gtk::Button>("button_combine_kernels");
-
-  popover_combine = builder->get_widget<Gtk::Popover>("popover_combine");
-
-  dropdown_kernel_1 = builder->get_widget<Gtk::DropDown>("dropdown_kernel_1");
-  dropdown_kernel_2 = builder->get_widget<Gtk::DropDown>("dropdown_kernel_2");
-
   show_fft = builder->get_widget<Gtk::ToggleButton>("show_fft");
   check_left = builder->get_widget<Gtk::CheckButton>("check_left");
   check_right = builder->get_widget<Gtk::CheckButton>("check_right");
@@ -300,53 +278,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   drawing_area = builder->get_widget<Gtk::DrawingArea>("drawing_area");
 
-  combined_kernel_name = builder->get_widget<Gtk::Entry>("combined_kernel_name");
-
-  spinner_combine_kernel = builder->get_widget<Gtk::Spinner>("spinner_combine_kernel");
-
-  setup_dropdown_kernels(dropdown_kernel_1, string_list);
-  setup_dropdown_kernels(dropdown_kernel_2, string_list);
-
   // plot = std::make_unique<Plot>(drawing_area);
-
-  button_combine_kernels->signal_clicked().connect([=, this]() {
-    if (string_list->get_n_items() == 0) {
-      return;
-    }
-
-    spinner_combine_kernel->start();
-
-    const auto kernel_1_name = dropdown_kernel_1->get_selected_item()->get_property<Glib::ustring>("string").raw();
-    const auto kernel_2_name = dropdown_kernel_2->get_selected_item()->get_property<Glib::ustring>("string").raw();
-
-    auto output_file_name = combined_kernel_name->get_text();
-
-    if (output_file_name.empty() || output_file_name.find_first_of("\\/") != Glib::ustring::npos) {
-      util::debug(log_tag + " combined IR filename is empty or has illegal characters.");
-
-      combined_kernel_name->set_css_classes({"error"});
-
-      combined_kernel_name->grab_focus();
-
-      spinner_combine_kernel->stop();
-    } else {
-      // Truncate filename if longer than 100 characters
-
-      if (output_file_name.length() > 100U) {
-        output_file_name.resize(100U);
-      }
-
-      combined_kernel_name->remove_css_class("error");
-
-      /*
-        The current code convolving the impulse responses is doing direct convolution. It can be very slow depending on
-        the size of each kernel. So we do not want to do it in the main thread.
-      */
-
-      mythreads.emplace_back(  // Using emplace_back here makes sense
-          [=, this]() { combine_kernels(kernel_1_name, kernel_2_name, output_file_name); });
-    }
-  });
 
   check_left->signal_toggled().connect([&, this]() {
     if (check_left->get_active()) {
@@ -387,57 +319,6 @@ ConvolverUi::~ConvolverUi() {
   util::debug(name + " ui destroyed");
 }
 
-void ConvolverUi::setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list) {
-  // set the search expression
-
-  dropdown->set_expression(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  // sorter
-
-  const auto sorter =
-      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  const auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
-
-  // setting the dropdown model and factory
-
-  const auto selection_model = Gtk::SingleSelection::create(sort_list_model);
-
-  dropdown->set_model(selection_model);
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  dropdown->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    box->set_spacing(6);
-    box->append(*label);
-
-    // setting list_item data
-
-    list_item->set_data("name", label);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-
-    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
-
-    label->set_name(name);
-    label->set_text(name);
-  });
-}
-
 void ConvolverUi::get_irs_info() {
   const auto path = settings->get_string("kernel-path");
 
@@ -447,7 +328,7 @@ void ConvolverUi::get_irs_info() {
     return;
   }
 
-  auto [rate, kernel_L, kernel_R] = read_kernel(path);
+  auto [rate, kernel_L, kernel_R] = ui::convolver::read_kernel(log_tag, irs_dir, irs_ext, path);
 
   if (rate == 0) {
     // warning user that there is a problem
@@ -764,142 +645,4 @@ void ConvolverUi::plot_fft() {
   // } else if (check_right->get_active()) {
   //   plot->set_data(freq_axis, right_spectrum);
   // }
-}
-
-auto ConvolverUi::read_kernel(const std::string& file_name) -> std::tuple<int, std::vector<float>, std::vector<float>> {
-  int rate = 0;
-  std::vector<float> buffer;
-  std::vector<float> kernel_L;
-  std::vector<float> kernel_R;
-
-  auto file_path = irs_dir / std::filesystem::path{file_name};
-
-  util::debug(log_tag + "reading the impulse file: " + file_path.string());
-
-  if (file_path.extension() != irs_ext) {
-    file_path += irs_ext;
-  }
-
-  if (!std::filesystem::exists(file_path)) {
-    util::debug(log_tag + "file: " + file_path.string() + " does not exist");
-
-    return std::make_tuple(rate, kernel_L, kernel_R);
-  }
-
-  auto sndfile = SndfileHandle(file_path.string());
-
-  if (sndfile.channels() != 2 || sndfile.frames() == 0) {
-    util::warning(log_tag + name + " Only stereo impulse responses are supported.");
-    util::warning(log_tag + name + " The impulse file was not loaded!");
-
-    return std::make_tuple(rate, kernel_L, kernel_R);
-  }
-
-  buffer.resize(sndfile.frames() * sndfile.channels());
-  kernel_L.resize(sndfile.frames());
-  kernel_R.resize(sndfile.frames());
-
-  sndfile.readf(buffer.data(), sndfile.frames());
-
-  for (size_t n = 0U; n < kernel_L.size(); n++) {
-    kernel_L[n] = buffer[2U * n];
-    kernel_R[n] = buffer[2U * n + 1U];
-  }
-
-  rate = sndfile.samplerate();
-
-  return std::make_tuple(rate, kernel_L, kernel_R);
-}
-
-void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
-                                  const std::string& kernel_2_name,
-                                  const std::string& output_file_name) {
-  if (output_file_name.empty()) {
-    // The method combine_kernels run in a secondary thread. But the widgets have to be used in the main thread.
-    Glib::signal_idle().connect_once([=, this] { spinner_combine_kernel->stop(); });
-
-    return;
-  }
-
-  auto [rate1, kernel_1_L, kernel_1_R] = read_kernel(kernel_1_name);
-  auto [rate2, kernel_2_L, kernel_2_R] = read_kernel(kernel_2_name);
-
-  if (rate1 == 0 || rate2 == 0) {
-    Glib::signal_idle().connect_once([=, this] { spinner_combine_kernel->stop(); });
-
-    return;
-  }
-
-  if (rate1 > rate2) {
-    util::debug(log_tag + name + " resampling the kernel " + kernel_2_name + " to " + std::to_string(rate1) + " Hz");
-
-    auto resampler = std::make_unique<Resampler>(rate2, rate1);
-
-    kernel_2_L = resampler->process(kernel_2_L, true);
-
-    resampler = std::make_unique<Resampler>(rate2, rate1);
-
-    kernel_2_R = resampler->process(kernel_2_R, true);
-  } else if (rate2 > rate1) {
-    util::debug(log_tag + name + " resampling the kernel " + kernel_1_name + " to " + std::to_string(rate2) + " Hz");
-
-    auto resampler = std::make_unique<Resampler>(rate1, rate2);
-
-    kernel_1_L = resampler->process(kernel_1_L, true);
-
-    resampler = std::make_unique<Resampler>(rate1, rate2);
-
-    kernel_1_R = resampler->process(kernel_1_R, true);
-  }
-
-  std::vector<float> kernel_L(kernel_1_L.size() + kernel_2_L.size() - 1);
-  std::vector<float> kernel_R(kernel_1_R.size() + kernel_2_R.size() - 1);
-
-  // As the convolution is commutative we change the order based on which will run faster.
-
-  if (kernel_1_L.size() > kernel_2_L.size()) {
-    direct_conv(kernel_1_L, kernel_2_L, kernel_L);
-    direct_conv(kernel_1_R, kernel_2_R, kernel_R);
-  } else {
-    direct_conv(kernel_2_L, kernel_1_L, kernel_L);
-    direct_conv(kernel_2_R, kernel_1_R, kernel_R);
-  }
-
-  std::vector<float> buffer(kernel_L.size() * 2);  // 2 channels interleaved
-
-  for (size_t n = 0; n < kernel_L.size(); n++) {
-    buffer[2 * n] = kernel_L[n];
-    buffer[2 * n + 1] = kernel_R[n];
-  }
-
-  const auto output_file_path = irs_dir / std::filesystem::path{output_file_name + irs_ext};
-
-  auto mode = SFM_WRITE;
-  auto format = SF_FORMAT_WAV | SF_FORMAT_PCM_32;
-  auto n_channels = 2;
-  auto rate = (rate1 > rate2) ? rate1 : rate2;
-
-  auto sndfile = SndfileHandle(output_file_path.string(), mode, format, n_channels, rate);
-
-  sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
-
-  util::debug(log_tag + name + " combined kernel saved: " + output_file_path.string());
-
-  Glib::signal_idle().connect_once([=, this] { spinner_combine_kernel->stop(); });
-}
-
-void ConvolverUi::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  std::vector<size_t> indices(c.size());
-
-  std::iota(indices.begin(), indices.end(), 0);
-
-  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), [&](size_t n) {
-    c[n] = 0.0F;
-
-    for (uint m = 0U; m < b.size(); m++) {
-      if (n - m >= 0U && n - m < a.size() - 1U) {
-        c[n] += b[m] * a[n - m];
-      }
-    }
-  });
 }

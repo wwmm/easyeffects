@@ -15,6 +15,7 @@
         <file>ui/compressor.ui</file>
         <file>ui/convolver.ui</file>
         <file>ui/convolver_menu_impulses.ui</file>
+        <file>ui/convolver_menu_combine.ui</file>
         <file>ui/crossfeed.ui</file>
         <file>ui/crystalizer.ui</file>
         <file>ui/crystalizer_band.ui</file>

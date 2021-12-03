@@ -22,17 +22,13 @@
 #include <adwaita.h>
 #include <fftw3.h>
 #include <algorithm>
-#include <execution>
-#include <filesystem>
 #include <mutex>
 #include <numbers>
 #include <ranges>
-#include <sndfile.hh>
-#include <tuple>
 #include "application.hpp"
+#include "convolver_menu_combine.hpp"
 #include "convolver_menu_impulses.hpp"
 #include "effects_base.hpp"
-#include "resampler.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::convolver_box {
@@ -78,8 +74,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::SpinButton* ir_width = nullptr;
 
-  Gtk::Button* button_combine_kernels = nullptr;
-
   Gtk::DrawingArea* drawing_area = nullptr;
 
   Gtk::Label *label_file_name = nullptr, *label_sampling_rate = nullptr, *label_samples = nullptr,
@@ -88,16 +82,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   Gtk::ToggleButton* show_fft = nullptr;
 
   Gtk::CheckButton *check_left = nullptr, *check_right = nullptr;
-
-  Gtk::Entry* combined_kernel_name = nullptr;
-
-  Gtk::Popover* popover_combine = nullptr;
-
-  Gtk::DropDown* dropdown_kernel_1 = nullptr;
-
-  Gtk::DropDown* dropdown_kernel_2 = nullptr;
-
-  Gtk::Spinner* spinner_combine_kernel = nullptr;
 
   std::filesystem::path irs_dir;
 
@@ -114,8 +98,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   std::vector<std::thread> mythreads;
 
-  static void setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list);
-
   void get_irs_info();
 
   void get_irs_spectrum(const int& rate);
@@ -123,12 +105,4 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   void plot_waveform();
 
   void plot_fft();
-
-  auto read_kernel(const std::string& file_name) -> std::tuple<int, std::vector<float>, std::vector<float>>;
-
-  void combine_kernels(const std::string& kernel_1_name,
-                       const std::string& kernel_2_name,
-                       const std::string& output_file_name);
-
-  static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 };

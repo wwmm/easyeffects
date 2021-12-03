@@ -31,8 +31,6 @@ static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/i
 struct _ConvolverMenuImpulses {
   GtkBox parent_instance;
 
-  GtkToggleButton* bypass;
-
   GtkScrolledWindow* scrolled_window;
 
   GtkListView* listview;
@@ -46,46 +44,16 @@ struct _ConvolverMenuImpulses {
   GSettings* settings;
 
   app::Application* application;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
 };
 
 G_DEFINE_TYPE(ConvolverMenuImpulses, convolver_menu_impulses, GTK_TYPE_POPOVER)
 
-auto get_irs_names() -> std::vector<std::string> {
-  std::vector<std::string> names;
-
-  for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; ++it) {
-    if (std::filesystem::is_regular_file(it->status())) {
-      if (it->path().extension() == irs_ext) {
-        names.push_back(it->path().stem().string());
-      }
-    }
-  }
-
-  return names;
-}
-
 void append_to_string_list(ConvolverMenuImpulses* self, const std::string& irs_filename) {
-  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
-    if (gtk_string_list_get_string(self->string_list, n) == irs_filename) {
-      return;
-    }
-  }
-
-  gtk_string_list_append(self->string_list, irs_filename.c_str());
+  ui::append_to_string_list(self->string_list, irs_filename);
 }
 
 void remove_from_string_list(ConvolverMenuImpulses* self, const std::string& irs_filename) {
-  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
-    if (gtk_string_list_get_string(self->string_list, n) == irs_filename) {
-      gtk_string_list_remove(self->string_list, n);
-
-      return;
-    }
-  }
+  ui::remove_from_string_list(self->string_list, irs_filename);
 }
 
 void import_irs_file(const std::string& file_path) {
@@ -189,7 +157,7 @@ void setup_listview(ConvolverMenuImpulses* self) {
 
                                           auto irs_file = irs_dir / std::filesystem::path{name};
 
-                                          irs_file /= irs_ext;
+                                          irs_file += irs_ext;
 
                                           g_settings_set_string(self->settings, "kernel-path", irs_file.c_str());
                                         }
@@ -237,7 +205,7 @@ void setup_listview(ConvolverMenuImpulses* self) {
 
   g_object_unref(factory);
 
-  for (const auto& name : get_irs_names()) {
+  for (const auto& name : util::get_files_name(irs_dir, irs_ext)) {
     gtk_string_list_append(self->string_list, name.c_str());
   }
 
@@ -291,17 +259,6 @@ void show(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_CONVOLVER_MENU_IMPULSES(object);
 
-  for (auto& c : self->connections) {
-    c.disconnect();
-  }
-
-  for (auto& handler_id : self->gconnections) {
-    g_signal_handler_disconnect(self->settings, handler_id);
-  }
-
-  self->connections.clear();
-  self->gconnections.clear();
-
   g_object_unref(self->settings);
 
   util::debug(log_tag + "disposed"s);
@@ -323,7 +280,6 @@ void convolver_menu_impulses_class_init(ConvolverMenuImpulsesClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuImpulses, scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuImpulses, listview);
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuImpulses, entry_search);
-  //   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuImpulses, show_blocklisted_apps);
 
   gtk_widget_class_bind_template_callback(widget_class, on_import_irs_clicked);
 }
