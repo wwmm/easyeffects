@@ -26,6 +26,7 @@
 #include <numbers>
 #include <ranges>
 #include "application.hpp"
+#include "chart.hpp"
 #include "convolver_menu_combine.hpp"
 #include "convolver_menu_impulses.hpp"
 #include "effects_base.hpp"
@@ -100,9 +101,5 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   void get_irs_info();
 
-  void get_irs_spectrum(const int& rate);
-
   void plot_waveform();
-
-  void plot_fft();
 };

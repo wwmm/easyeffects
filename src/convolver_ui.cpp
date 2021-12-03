@@ -49,8 +49,13 @@ struct _ConvolverBox {
 
   GtkToggleButton* show_fft;
 
+  GtkBox* chart_box;
+
   ui::convolver_menu_impulses::ConvolverMenuImpulses* impulses_menu;
+
   ui::convolver_menu_combine::ConvolverMenuCombine* combine_menu;
+
+  ui::chart::Chart* chart;
 
   GSettings* settings;
 
@@ -89,6 +94,240 @@ void on_reset(ConvolverBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, "ir-width");
 }
 
+void plot_fft(ConvolverBox* self) {
+  if (self->freq_axis.empty() || self->left_spectrum.empty() || self->right_spectrum.empty()) {
+    return;
+  }
+
+  ui::chart::set_plot_type(self->chart, ui::chart::ChartType::line);
+  ui::chart::set_plot_scale(self->chart, ui::chart::ChartScale::logarithmic);
+  ui::chart::set_fill_bars(self->chart, false);
+  ui::chart::set_line_width(self->chart, 2.0);
+  ui::chart::set_n_x_decimals(self->chart, 0);
+  ui::chart::set_n_y_decimals(self->chart, 2);
+  ui::chart::set_x_unit(self->chart, "Hz");
+
+  if (gtk_check_button_get_active(self->check_left) != 0) {
+    ui::chart::set_data(self->chart, self->freq_axis, self->left_spectrum);
+  } else if (gtk_check_button_get_active(self->check_right) != 0) {
+    ui::chart::set_data(self->chart, self->freq_axis, self->right_spectrum);
+  }
+}
+
+void on_show_fft(ConvolverBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    plot_fft(self);
+  } else {
+    // plot_waveform(self);
+  }
+}
+
+void on_show_channel(ConvolverBox* self, GtkCheckButton* btn) {
+  if (gtk_check_button_get_active(btn) != 0) {
+    on_show_fft(self, self->show_fft);
+  }
+}
+
+void get_irs_spectrum(ConvolverBox* self, const int& rate) {
+  if (self->left_mag.empty() || self->right_mag.empty() || self->left_mag.size() != self->right_mag.size()) {
+    util::debug(log_tag + " aborting the impulse fft calculation..."s);
+
+    return;
+  }
+
+  util::debug(log_tag + " calculating the impulse fft..."s);
+
+  self->left_spectrum.resize(self->left_mag.size() / 2U + 1U);
+  self->right_spectrum.resize(self->right_mag.size() / 2U + 1U);
+
+  auto real_input = self->left_mag;
+
+  for (uint n = 0U; n < real_input.size(); n++) {
+    // https://en.wikipedia.org/wiki/Hann_function
+
+    const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
+                                            static_cast<float>(real_input.size() - 1U)));
+
+    real_input[n] *= w;
+  }
+
+  auto* complex_output = fftwf_alloc_complex(real_input.size());
+
+  auto* plan =
+      fftwf_plan_dft_r2c_1d(static_cast<int>(real_input.size()), real_input.data(), complex_output, FFTW_ESTIMATE);
+
+  fftwf_execute(plan);
+
+  for (uint i = 0U; i < self->left_spectrum.size(); i++) {
+    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+
+    sqr /= static_cast<float>(self->left_spectrum.size() * self->left_spectrum.size());
+
+    self->left_spectrum[i] = sqr;
+  }
+
+  // right channel fft
+
+  real_input = self->right_mag;
+
+  for (uint n = 0U; n < real_input.size(); n++) {
+    // https://en.wikipedia.org/wiki/Hann_function
+
+    const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
+                                            static_cast<float>(real_input.size() - 1U)));
+
+    real_input[n] *= w;
+  }
+
+  fftwf_execute(plan);
+
+  for (uint i = 0U; i < self->right_spectrum.size(); i++) {
+    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+
+    sqr /= static_cast<float>(self->right_spectrum.size() * self->right_spectrum.size());
+
+    self->right_spectrum[i] = sqr;
+  }
+
+  // cleaning
+
+  if (complex_output != nullptr) {
+    fftwf_free(complex_output);
+  }
+
+  fftwf_destroy_plan(plan);
+
+  // initializing the frequency axis
+
+  self->freq_axis.resize(self->left_spectrum.size());
+
+  for (uint n = 0U; n < self->left_spectrum.size(); n++) {
+    self->freq_axis[n] =
+        0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(self->left_spectrum.size());
+  }
+
+  size_t bin_size =
+      (gtk_widget_get_width(GTK_WIDGET(self->chart)) > 0) ? gtk_widget_get_width(GTK_WIDGET(self->chart)) : 100;
+
+  // initializing the logarithmic frequency axis
+
+  const auto log_axis = util::logspace(20.0F, 22000.0F, bin_size);
+  // const auto log_axis = util::logspace(20.0F, 22000.0F, freq_axis.size());
+  // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
+
+  std::vector<float> l(log_axis.size());
+  std::vector<float> r(log_axis.size());
+  std::vector<uint> bin_count(log_axis.size());
+
+  std::ranges::fill(l, 0.0F);
+  std::ranges::fill(r, 0.0F);
+  std::ranges::fill(bin_count, 0U);
+
+  // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
+
+  for (size_t j = 0U; j < self->freq_axis.size(); j++) {
+    for (size_t n = 0U; n < log_axis.size(); n++) {
+      if (n > 0U) {
+        if (self->freq_axis[j] <= log_axis[n] && self->freq_axis[j] > log_axis[n - 1U]) {
+          l[n] += self->left_spectrum[j];
+          r[n] += self->right_spectrum[j];
+
+          bin_count[n]++;
+        }
+      } else {
+        if (self->freq_axis[j] <= log_axis[n]) {
+          l[n] += self->left_spectrum[j];
+          r[n] += self->right_spectrum[j];
+
+          bin_count[n]++;
+        }
+      }
+    }
+  }
+
+  // fillint empty bins with their neighbors value
+
+  for (size_t n = 0U; n < bin_count.size(); n++) {
+    if (bin_count[n] == 0U && n > 0U) {
+      l[n] = l[n - 1U];
+      r[n] = r[n - 1U];
+    }
+  }
+
+  self->freq_axis = log_axis;
+  self->left_spectrum = l;
+  self->right_spectrum = r;
+
+  // find min and max values
+
+  const auto fft_min_left = std::ranges::min(self->left_spectrum);
+  const auto fft_max_left = std::ranges::max(self->left_spectrum);
+
+  const auto fft_min_right = std::ranges::min(self->right_spectrum);
+  const auto fft_max_right = std::ranges::max(self->right_spectrum);
+
+  // rescaling between 0 and 1
+
+  for (uint n = 0; n < self->left_spectrum.size(); n++) {
+    self->left_spectrum[n] = (self->left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
+    self->right_spectrum[n] = (self->right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
+  }
+
+  util::idle_add([=]() {
+    if (!ui::chart::get_is_visible(self->chart)) {
+      return;
+    }
+
+    if (gtk_toggle_button_get_active(self->show_fft) != 0) {
+      plot_fft(self);
+    }
+  });
+}
+
+void get_irs_info(ConvolverBox* self) {
+  const std::string path = g_settings_get_string(self->settings, "kernel-path");
+
+  if (path.empty()) {
+    util::warning(log_tag + ": irs file path is null."s);
+
+    return;
+  }
+
+  auto [rate, kernel_L, kernel_R] = ui::convolver::read_kernel(log_tag, irs_dir, irs_ext, path);
+
+  if (rate == 0) {
+    // warning the user that there is a problem
+
+    util::idle_add([=]() {
+      if (!ui::chart::get_is_visible(self->chart)) {
+        return;
+      }
+
+      gtk_label_set_text(self->label_sampling_rate, _("Failed"));
+      gtk_label_set_text(self->label_samples, _("Failed"));
+      gtk_label_set_text(self->label_sampling_rate, _("Failed"));
+      gtk_label_set_text(self->label_file_name, _("Could Not Load The Impulse File"));
+    });
+
+    return;
+  }
+
+  const float dt = 1.0F / static_cast<float>(rate);
+
+  const float duration = (static_cast<float>(kernel_L.size()) - 1.0F) * dt;
+
+  self->time_axis.resize(kernel_L.size());
+
+  self->left_mag = kernel_L;
+  self->right_mag = kernel_R;
+
+  for (size_t n = 0; n < self->time_axis.size(); n++) {
+    self->time_axis[n] = static_cast<float>(n) * dt;
+  }
+
+  get_irs_spectrum(self, rate);
+}
+
 void setup(ConvolverBox* self,
            std::shared_ptr<Convolver> convolver,
            const std::string& schema_path,
@@ -103,6 +342,14 @@ void setup(ConvolverBox* self,
 
   ui::convolver_menu_impulses::setup(self->impulses_menu, schema_path, application);
 
+  // Reading the current configured irs file
+
+  self->mythreads.emplace_back([=]() {  // Using emplace_back here makes sense
+    std::scoped_lock<std::mutex> lock(self->lock_guard_irs_info);
+
+    get_irs_info(self);
+  });
+
   self->connections.push_back(convolver->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
@@ -112,6 +359,16 @@ void setup(ConvolverBox* self,
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
+
+  self->gconnections.push_back(g_signal_connect(self->settings, "changed::kernel-path",
+                                                G_CALLBACK(+[](GSettings* settings, char* key, ConvolverBox* self) {
+                                                  self->mythreads.emplace_back([=]() {
+                                                    std::scoped_lock<std::mutex> lock(self->lock_guard_irs_info);
+
+                                                    get_irs_info(self);
+                                                  });
+                                                }),
+                                                self));
 
   g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
                   G_SETTINGS_BIND_DEFAULT);
@@ -185,9 +442,12 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, check_left);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, check_right);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, show_fft);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, chart_box);
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_fft);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_channel);
 }
 
 void convolver_box_init(ConvolverBox* self) {
@@ -195,11 +455,18 @@ void convolver_box_init(ConvolverBox* self) {
 
   prepare_spinbutton<"%">(self->ir_width);
 
+  self->chart = ui::chart::create();
+
+  gtk_widget_set_vexpand(GTK_WIDGET(self->chart), 1);
+
   self->impulses_menu = ui::convolver_menu_impulses::create();
   self->combine_menu = ui::convolver_menu_combine::create();
 
   gtk_menu_button_set_popover(self->menu_button_impulses, GTK_WIDGET(self->impulses_menu));
   gtk_menu_button_set_popover(self->menu_button_combine, GTK_WIDGET(self->combine_menu));
+
+  gtk_box_insert_child_after(self->chart_box, GTK_WIDGET(self->chart),
+                             gtk_widget_get_first_child(GTK_WIDGET(self->chart_box)));
 
   // irs dir
 
@@ -212,6 +479,8 @@ void convolver_box_init(ConvolverBox* self) {
   } else {
     util::debug(log_tag + "irs directory already exists: "s + irs_dir.string());
   }
+
+  // setting some signals
 
   auto gfile = g_file_new_for_path(irs_dir.c_str());
 
@@ -267,32 +536,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
       spectrum_settings(Gio::Settings::create("com.github.wwmm.easyeffects.spectrum")) {
   name = plugin_name::convolver;
 
-  show_fft = builder->get_widget<Gtk::ToggleButton>("show_fft");
-  check_left = builder->get_widget<Gtk::CheckButton>("check_left");
-  check_right = builder->get_widget<Gtk::CheckButton>("check_right");
-
   label_sampling_rate = builder->get_widget<Gtk::Label>("label_sampling_rate");
   label_samples = builder->get_widget<Gtk::Label>("label_samples");
   label_duration = builder->get_widget<Gtk::Label>("label_duration");
   label_file_name = builder->get_widget<Gtk::Label>("label_file_name");
-
-  drawing_area = builder->get_widget<Gtk::DrawingArea>("drawing_area");
-
-  // plot = std::make_unique<Plot>(drawing_area);
-
-  check_left->signal_toggled().connect([&, this]() {
-    if (check_left->get_active()) {
-      (show_fft->get_active()) ? plot_fft() : plot_waveform();
-    }
-  });
-
-  check_right->signal_toggled().connect([&, this]() {
-    if (check_right->get_active()) {
-      (show_fft->get_active()) ? plot_fft() : plot_waveform();
-    }
-  });
-
-  show_fft->signal_toggled().connect([=, this]() { (show_fft->get_active()) ? plot_fft() : plot_waveform(); });
 
   // Reading the current configured irs file
 
@@ -360,7 +607,7 @@ void ConvolverUi::get_irs_info() {
     time_axis[n] = static_cast<float>(n) * dt;
   }
 
-  get_irs_spectrum(rate);
+  // get_irs_spectrum(rate);
 
   size_t bin_size = (drawing_area->get_width() > 0) ? time_axis.size() / drawing_area->get_width() : 0;
 
@@ -447,158 +694,6 @@ void ConvolverUi::get_irs_info() {
   }));
 }
 
-void ConvolverUi::get_irs_spectrum(const int& rate) {
-  if (left_mag.empty() || right_mag.empty() || left_mag.size() != right_mag.size()) {
-    util::debug(log_tag + name + " aborting the impulse fft calculation...");
-
-    return;
-  }
-
-  util::debug(log_tag + name + " calculating the impulse fft...");
-
-  left_spectrum.resize(left_mag.size() / 2U + 1U);
-  right_spectrum.resize(right_mag.size() / 2U + 1U);
-
-  auto real_input = left_mag;
-
-  for (uint n = 0U; n < real_input.size(); n++) {
-    // https://en.wikipedia.org/wiki/Hann_function
-
-    const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
-                                            static_cast<float>(real_input.size() - 1U)));
-
-    real_input[n] *= w;
-  }
-
-  auto* complex_output = fftwf_alloc_complex(real_input.size());
-
-  auto* plan =
-      fftwf_plan_dft_r2c_1d(static_cast<int>(real_input.size()), real_input.data(), complex_output, FFTW_ESTIMATE);
-
-  fftwf_execute(plan);
-
-  for (uint i = 0U; i < left_spectrum.size(); i++) {
-    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
-
-    sqr /= static_cast<float>(left_spectrum.size() * left_spectrum.size());
-
-    left_spectrum[i] = sqr;
-  }
-
-  // right channel fft
-
-  real_input = right_mag;
-
-  for (uint n = 0U; n < real_input.size(); n++) {
-    // https://en.wikipedia.org/wiki/Hann_function
-
-    const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
-                                            static_cast<float>(real_input.size() - 1U)));
-
-    real_input[n] *= w;
-  }
-
-  fftwf_execute(plan);
-
-  for (uint i = 0U; i < right_spectrum.size(); i++) {
-    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
-
-    sqr /= static_cast<float>(right_spectrum.size() * right_spectrum.size());
-
-    right_spectrum[i] = sqr;
-  }
-
-  // cleaning
-
-  if (complex_output != nullptr) {
-    fftwf_free(complex_output);
-  }
-
-  fftwf_destroy_plan(plan);
-
-  // initializing the frequency axis
-
-  freq_axis.resize(left_spectrum.size());
-
-  for (uint n = 0U; n < left_spectrum.size(); n++) {
-    freq_axis[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(left_spectrum.size());
-  }
-
-  size_t bin_size = (drawing_area->get_width() > 0) ? drawing_area->get_width() : 100;
-
-  // initializing the logarithmic frequency axis
-
-  const auto log_axis = util::logspace(20.0F, 22000.0F, bin_size);
-  // const auto log_axis = util::logspace(20.0F, 22000.0F, freq_axis.size());
-  // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
-
-  std::vector<float> l(log_axis.size());
-  std::vector<float> r(log_axis.size());
-  std::vector<uint> bin_count(log_axis.size());
-
-  std::ranges::fill(l, 0.0F);
-  std::ranges::fill(r, 0.0F);
-  std::ranges::fill(bin_count, 0U);
-
-  // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
-
-  for (size_t j = 0U; j < freq_axis.size(); j++) {
-    for (size_t n = 0U; n < log_axis.size(); n++) {
-      if (n > 0U) {
-        if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1U]) {
-          l[n] += left_spectrum[j];
-          r[n] += right_spectrum[j];
-
-          bin_count[n]++;
-        }
-      } else {
-        if (freq_axis[j] <= log_axis[n]) {
-          l[n] += left_spectrum[j];
-          r[n] += right_spectrum[j];
-
-          bin_count[n]++;
-        }
-      }
-    }
-  }
-
-  // fillint empty bins with their neighbors value
-
-  for (size_t n = 0U; n < bin_count.size(); n++) {
-    if (bin_count[n] == 0U && n > 0U) {
-      l[n] = l[n - 1U];
-      r[n] = r[n - 1U];
-    }
-  }
-
-  freq_axis = log_axis;
-  left_spectrum = l;
-  right_spectrum = r;
-
-  // find min and max values
-
-  const auto fft_min_left = std::ranges::min(left_spectrum);
-  const auto fft_max_left = std::ranges::max(left_spectrum);
-
-  const auto fft_min_right = std::ranges::min(right_spectrum);
-  const auto fft_max_right = std::ranges::max(right_spectrum);
-
-  // rescaling between 0 and 1
-
-  for (uint n = 0; n < left_spectrum.size(); n++) {
-    left_spectrum[n] = (left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
-    right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
-  }
-
-  connections.push_back(Glib::signal_idle().connect([=, this]() {
-    if (show_fft->get_active()) {
-      plot_fft();
-    }
-
-    return false;
-  }));
-}
-
 void ConvolverUi::plot_waveform() {
   if (time_axis.empty() || left_spectrum.empty() || right_spectrum.empty()) {
     return;
@@ -620,29 +715,5 @@ void ConvolverUi::plot_waveform() {
   //   plot->set_data(time_axis, left_mag);
   // } else if (check_right->get_active()) {
   //   plot->set_data(time_axis, right_mag);
-  // }
-}
-
-void ConvolverUi::plot_fft() {
-  if (freq_axis.empty() || left_spectrum.empty() || right_spectrum.empty()) {
-    return;
-  }
-
-  // plot->set_plot_type(PlotType::line);
-
-  // plot->set_plot_scale(PlotScale::logarithmic);
-
-  // plot->set_fill_bars(false);
-
-  // plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
-
-  // plot->set_x_unit("Hz");
-  // plot->set_n_x_decimals(0);
-  // plot->set_n_y_decimals(2);
-
-  // if (check_left->get_active()) {
-  //   plot->set_data(freq_axis, left_spectrum);
-  // } else if (check_right->get_active()) {
-  //   plot->set_data(freq_axis, right_spectrum);
   // }
 }

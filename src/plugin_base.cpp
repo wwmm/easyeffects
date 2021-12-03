@@ -173,6 +173,12 @@ PluginBase::~PluginBase() {
     spa_hook_remove(&listener);
   }
 
+  for (auto& handler_id : gconnections) {
+    g_signal_handler_disconnect(settings, handler_id);
+  }
+
+  gconnections.clear();
+
   g_object_unref(settings);
 }
 

@@ -32,56 +32,57 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
-  g_signal_connect(settings, "changed::ir-width", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Convolver*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::ir-width",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Convolver*>(user_data);
 
-                     self->ir_width = g_settings_get_int(self->settings, key);
+                                            self->ir_width = g_settings_get_int(self->settings, key);
 
-                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                     if (self->kernel_is_initialized) {
-                       self->kernel_L = self->original_kernel_L;
-                       self->kernel_R = self->original_kernel_R;
+                                            if (self->kernel_is_initialized) {
+                                              self->kernel_L = self->original_kernel_L;
+                                              self->kernel_R = self->original_kernel_R;
 
-                       self->set_kernel_stereo_width();
-                       self->apply_kernel_autogain();
-                     }
-                   }),
-                   this);
+                                              self->set_kernel_stereo_width();
+                                              self->apply_kernel_autogain();
+                                            }
+                                          }),
+                                          this));
 
-  g_signal_connect(settings, "changed::kernel-path",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Convolver*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::kernel-path",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Convolver*>(user_data);
 
-                     if (self->n_samples == 0U || self->rate == 0U) {
-                       return;
-                     }
+                                            if (self->n_samples == 0U || self->rate == 0U) {
+                                              return;
+                                            }
 
-                     self->data_mutex.lock();
+                                            self->data_mutex.lock();
 
-                     self->ready = false;
+                                            self->ready = false;
 
-                     self->data_mutex.unlock();
+                                            self->data_mutex.unlock();
 
-                     self->read_kernel_file();
+                                            self->read_kernel_file();
 
-                     if (self->kernel_is_initialized) {
-                       self->kernel_L = self->original_kernel_L;
-                       self->kernel_R = self->original_kernel_R;
+                                            if (self->kernel_is_initialized) {
+                                              self->kernel_L = self->original_kernel_L;
+                                              self->kernel_R = self->original_kernel_R;
 
-                       self->set_kernel_stereo_width();
-                       self->apply_kernel_autogain();
+                                              self->set_kernel_stereo_width();
+                                              self->apply_kernel_autogain();
 
-                       self->setup_zita();
+                                              self->setup_zita();
 
-                       self->data_mutex.lock();
+                                              self->data_mutex.lock();
 
-                       self->ready = self->kernel_is_initialized && self->zita_ready;
+                                              self->ready = self->kernel_is_initialized && self->zita_ready;
 
-                       self->data_mutex.unlock();
-                     }
-                   }),
-                   this);
+                                              self->data_mutex.unlock();
+                                            }
+                                          }),
+                                          this));
 
   setup_input_output_gain();
 }

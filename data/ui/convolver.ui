@@ -25,7 +25,7 @@
         </child>
 
         <child>
-            <object class="GtkBox">
+            <object class="GtkBox" id="chart_box">
                 <property name="spacing">12</property>
                 <child>
                     <object class="GtkBox">
@@ -37,6 +37,7 @@
                                 <property name="halign">center</property>
                                 <property name="active">1</property>
                                 <property name="label" translatable="yes">L</property>
+                                <signal name="toggled" handler="on_show_channel" object="ConvolverBox" />
                                 <accessibility>
                                     <property name="label" translatable="yes">Left Channel</property>
                                 </accessibility>
@@ -49,18 +50,12 @@
                                 <property name="halign">center</property>
                                 <property name="group">check_left</property>
                                 <property name="label" translatable="yes">R</property>
+                                <signal name="toggled" handler="on_show_channel" object="ConvolverBox" />
                                 <accessibility>
                                     <property name="label" translatable="yes">Right Channel</property>
                                 </accessibility>
                             </object>
                         </child>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkDrawingArea" id="drawing_area">
-                        <property name="hexpand">1</property>
-                        <property name="content-height">100</property>
                     </object>
                 </child>
 
@@ -117,6 +112,7 @@
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Spectrum</property>
+                                <signal name="toggled" handler="on_show_fft" object="ConvolverBox" />
                             </object>
                         </child>
                     </object>
