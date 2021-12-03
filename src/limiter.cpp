@@ -29,21 +29,21 @@ Limiter::Limiter(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_limiter_stereo is not installed");
   }
 
-  g_signal_connect(settings, "changed::external-sidechain",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Limiter*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::external-sidechain",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Limiter*>(user_data);
 
-                     self->update_sidechain_links(key);
-                   }),
-                   this);
+                                            self->update_sidechain_links(key);
+                                          }),
+                                          this));
 
-  g_signal_connect(settings, "changed::sidechain-input-device",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Limiter*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::sidechain-input-device",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Limiter*>(user_data);
 
-                     self->update_sidechain_links(key);
-                   }),
-                   this);
+                                            self->update_sidechain_links(key);
+                                          }),
+                                          this));
 
   lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 

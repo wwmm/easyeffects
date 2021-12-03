@@ -29,13 +29,13 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_mb_compressor_stereo is not installed");
   }
 
-  g_signal_connect(settings, "changed::sidechain-input-device",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<MultibandCompressor*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::sidechain-input-device",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<MultibandCompressor*>(user_data);
 
-                     self->update_sidechain_links(key);
-                   }),
-                   this);
+                                            self->update_sidechain_links(key);
+                                          }),
+                                          this));
 
   lv2_wrapper->bind_key_enum(settings, "compressor-mode", "mode");
 
@@ -44,13 +44,13 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = std::to_string(n);
 
-    g_signal_connect(settings, "changed::external-sidechain",
-                     G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                       auto self = static_cast<MultibandCompressor*>(user_data);
+    gconnections.push_back(g_signal_connect(settings, "changed::external-sidechain",
+                                            G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                              auto self = static_cast<MultibandCompressor*>(user_data);
 
-                       self->update_sidechain_links(key);
-                     }),
-                     this);
+                                              self->update_sidechain_links(key);
+                                            }),
+                                            this));
 
     lv2_wrapper->bind_key_bool(settings, "external-sidechain" + nstr, "sce_" + nstr);
 

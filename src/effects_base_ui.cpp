@@ -383,8 +383,6 @@ void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {
 
     if (page->get_name() == plugin_name::rnnoise) {
       dynamic_cast<RNNoiseUi*>(child)->set_transient_window(transient_window);
-    } else if (page->get_name() == plugin_name::convolver) {
-      dynamic_cast<ConvolverUi*>(child)->set_transient_window(transient_window);
     }
   }
 }

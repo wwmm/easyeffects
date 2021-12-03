@@ -274,39 +274,39 @@ void Crystalizer::bind_band(const int& n) {
 
   using namespace std::string_literals;
 
-  g_signal_connect(settings, ("changed::"s + "intensity-"s + bandn).c_str(),
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Crystalizer*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, ("changed::"s + "intensity-"s + bandn).c_str(),
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Crystalizer*>(user_data);
 
-                     auto s_key = std::string(key);
+                                            auto s_key = std::string(key);
 
-                     int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
+                                            int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
 
-                     self->band_intensity.at(index) = g_settings_get_double(settings, key) != 0;
-                   }),
-                   this);
+                                            self->band_intensity.at(index) = g_settings_get_double(settings, key) != 0;
+                                          }),
+                                          this));
 
-  g_signal_connect(settings, ("changed::"s + "mute-"s + bandn).c_str(),
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Crystalizer*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, ("changed::"s + "mute-"s + bandn).c_str(),
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Crystalizer*>(user_data);
 
-                     auto s_key = std::string(key);
+                                            auto s_key = std::string(key);
 
-                     int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
+                                            int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
 
-                     self->band_mute.at(index) = g_settings_get_boolean(settings, key) != 0;
-                   }),
-                   this);
+                                            self->band_mute.at(index) = g_settings_get_boolean(settings, key) != 0;
+                                          }),
+                                          this));
 
-  g_signal_connect(settings, ("changed::"s + "bypass-"s + bandn).c_str(),
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Crystalizer*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, ("changed::"s + "bypass-"s + bandn).c_str(),
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Crystalizer*>(user_data);
 
-                     auto s_key = std::string(key);
+                                            auto s_key = std::string(key);
 
-                     int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
+                                            int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
 
-                     self->band_bypass.at(index) = g_settings_get_boolean(settings, key) != 0;
-                   }),
-                   this);
+                                            self->band_bypass.at(index) = g_settings_get_boolean(settings, key) != 0;
+                                          }),
+                                          this));
 }

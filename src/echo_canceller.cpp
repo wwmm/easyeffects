@@ -24,28 +24,29 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                              const std::string& schema_path,
                              PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::echo_canceller, schema, schema_path, pipe_manager, true) {
-  g_signal_connect(settings, "changed::frame-size", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<EchoCanceller*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::frame-size",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<EchoCanceller*>(user_data);
 
-                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                     self->blocksize_ms = g_settings_get_int(settings, key);
+                                            self->blocksize_ms = g_settings_get_int(settings, key);
 
-                     self->init_speex();
-                   }),
-                   this);
+                                            self->init_speex();
+                                          }),
+                                          this));
 
-  g_signal_connect(settings, "changed::filter-length",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<EchoCanceller*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::filter-length",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<EchoCanceller*>(user_data);
 
-                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                     self->filter_length_ms = g_settings_get_int(settings, key);
+                                            self->filter_length_ms = g_settings_get_int(settings, key);
 
-                     self->init_speex();
-                   }),
-                   this);
+                                            self->init_speex();
+                                          }),
+                                          this));
 
   setup_input_output_gain();
 }

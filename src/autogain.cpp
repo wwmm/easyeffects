@@ -28,41 +28,43 @@ AutoGain::AutoGain(const std::string& tag,
 
   reference = parse_reference_key(std::string(g_settings_get_string(settings, "reference")));
 
-  g_signal_connect(settings, "changed::target", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<AutoGain*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::target",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<AutoGain*>(user_data);
 
-                     self->target = g_settings_get_double(settings, key);
-                   }),
-                   this);
+                                            self->target = g_settings_get_double(settings, key);
+                                          }),
+                                          this));
 
-  g_signal_connect(settings, "changed::reset-history",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<AutoGain*>(user_data);
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::reset-history", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<AutoGain*>(user_data);
 
-                     self->mythreads.emplace_back([self]() {  // Using emplace_back here makes sense
-                       self->data_mutex.lock();
+        self->mythreads.emplace_back([self]() {  // Using emplace_back here makes sense
+          self->data_mutex.lock();
 
-                       self->ebur128_ready = false;
+          self->ebur128_ready = false;
 
-                       self->data_mutex.unlock();
+          self->data_mutex.unlock();
 
-                       auto status = self->init_ebur128();
+          auto status = self->init_ebur128();
 
-                       self->data_mutex.lock();
+          self->data_mutex.lock();
 
-                       self->ebur128_ready = status;
+          self->ebur128_ready = status;
 
-                       self->data_mutex.unlock();
-                     });
-                   }),
-                   this);
+          self->data_mutex.unlock();
+        });
+      }),
+      this));
 
-  g_signal_connect(settings, "changed::reference", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<AutoGain*>(user_data);
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::reference", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<AutoGain*>(user_data);
 
-                     self->reference = parse_reference_key(std::string(g_settings_get_string(settings, key)));
-                   }),
-                   this);
+        self->reference = parse_reference_key(std::string(g_settings_get_string(settings, key)));
+      }),
+      this));
 
   setup_input_output_gain();
 }

@@ -114,11 +114,31 @@ void plot_fft(ConvolverBox* self) {
   }
 }
 
+void plot_waveform(ConvolverBox* self) {
+  if (self->time_axis.empty() || self->left_spectrum.empty() || self->right_spectrum.empty()) {
+    return;
+  }
+
+  ui::chart::set_plot_type(self->chart, ui::chart::ChartType::line);
+  ui::chart::set_plot_scale(self->chart, ui::chart::ChartScale::linear);
+  ui::chart::set_fill_bars(self->chart, false);
+  ui::chart::set_line_width(self->chart, 2.0);
+  ui::chart::set_n_x_decimals(self->chart, 2);
+  ui::chart::set_n_y_decimals(self->chart, 2);
+  ui::chart::set_x_unit(self->chart, "s");
+
+  if (gtk_check_button_get_active(self->check_left) != 0) {
+    ui::chart::set_data(self->chart, self->time_axis, self->left_mag);
+  } else if (gtk_check_button_get_active(self->check_right) != 0) {
+    ui::chart::set_data(self->chart, self->time_axis, self->right_mag);
+  }
+}
+
 void on_show_fft(ConvolverBox* self, GtkToggleButton* btn) {
   if (gtk_toggle_button_get_active(btn) != 0) {
     plot_fft(self);
   } else {
-    // plot_waveform(self);
+    plot_waveform(self);
   }
 }
 
@@ -326,6 +346,93 @@ void get_irs_info(ConvolverBox* self) {
   }
 
   get_irs_spectrum(self, rate);
+
+  size_t bin_size = (gtk_widget_get_width(GTK_WIDGET(self->chart)) > 0)
+                        ? self->time_axis.size() / gtk_widget_get_width(GTK_WIDGET(self->chart))
+                        : 0;
+
+  if (bin_size > 0) {
+    // decimating the data so we can draw it
+
+    std::vector<float> t;
+    std::vector<float> l;
+    std::vector<float> r;
+    std::vector<float> bin_x;
+    std::vector<float> bin_l_y;
+    std::vector<float> bin_r_y;
+
+    for (size_t n = 0; n < self->time_axis.size(); n++) {
+      bin_x.push_back(self->time_axis[n]);
+
+      bin_l_y.push_back(self->left_mag[n]);
+      bin_r_y.push_back(self->right_mag[n]);
+
+      if (bin_x.size() == bin_size) {
+        const auto [min, max] = std::ranges::minmax_element(bin_l_y);
+
+        t.push_back(bin_x[min - bin_l_y.begin()]);
+        t.push_back(bin_x[max - bin_l_y.begin()]);
+
+        l.push_back(*min);
+        l.push_back(*max);
+
+        const auto [minr, maxr] = std::ranges::minmax_element(bin_r_y);
+
+        r.push_back(*minr);
+        r.push_back(*maxr);
+
+        bin_x.resize(0);
+        bin_l_y.resize(0);
+        bin_r_y.resize(0);
+      }
+    }
+
+    self->time_axis = t;
+    self->left_mag = l;
+    self->right_mag = r;
+  }
+
+  self->time_axis.shrink_to_fit();
+  self->left_mag.shrink_to_fit();
+  self->right_mag.shrink_to_fit();
+
+  // find min and max values
+
+  const auto min_left = std::ranges::min(self->left_mag);
+  const auto max_left = std::ranges::max(self->left_mag);
+
+  const auto min_right = std::ranges::min(self->right_mag);
+  const auto max_right = std::ranges::max(self->right_mag);
+
+  // rescaling between 0 and 1
+
+  for (size_t n = 0U; n < self->left_mag.size(); n++) {
+    self->left_mag[n] = (self->left_mag[n] - min_left) / (max_left - min_left);
+    self->right_mag[n] = (self->right_mag[n] - min_right) / (max_right - min_right);
+  }
+
+  // updating interface with ir file info
+
+  auto rate_copy = rate;
+  auto n_samples = kernel_L.size();
+
+  util::idle_add([=]() {
+    if (!ui::chart::get_is_visible(self->chart)) {
+      return;
+    }
+
+    gtk_label_set_text(self->label_sampling_rate, fmt::format("{0:d} Hz", rate_copy).c_str());
+    gtk_label_set_text(self->label_samples, fmt::format("{0:d}", n_samples).c_str());
+    gtk_label_set_text(self->label_duration, fmt::format("{0:.3f}", duration).c_str());
+
+    const auto fpath = std::filesystem::path{path};
+
+    gtk_label_set_text(self->label_file_name, fpath.stem().c_str());
+
+    if (gtk_toggle_button_get_active(self->show_fft) == 0) {
+      plot_waveform(self);
+    }
+  });
 }
 
 void setup(ConvolverBox* self,
@@ -526,194 +633,3 @@ auto create() -> ConvolverBox* {
 }
 
 }  // namespace ui::convolver_box
-
-ConvolverUi::ConvolverUi(BaseObjectType* cobject,
-                         const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& schema,
-                         const std::string& schema_path)
-    : Gtk::Box(cobject),
-      PluginUiBase(builder, schema, schema_path),
-      spectrum_settings(Gio::Settings::create("com.github.wwmm.easyeffects.spectrum")) {
-  name = plugin_name::convolver;
-
-  label_sampling_rate = builder->get_widget<Gtk::Label>("label_sampling_rate");
-  label_samples = builder->get_widget<Gtk::Label>("label_samples");
-  label_duration = builder->get_widget<Gtk::Label>("label_duration");
-  label_file_name = builder->get_widget<Gtk::Label>("label_file_name");
-
-  // Reading the current configured irs file
-
-  mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
-    std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
-
-    get_irs_info();
-  });
-
-  /* this is necessary to update the interface with the irs info when a preset
-     is loaded
-  */
-
-  connections.push_back(settings->signal_changed("kernel-path").connect([=, this](const auto& key) {
-    mythreads.emplace_back([this]() {
-      std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
-
-      get_irs_info();
-    });
-  }));
-}
-
-ConvolverUi::~ConvolverUi() {
-  util::debug(name + " ui destroyed");
-}
-
-void ConvolverUi::get_irs_info() {
-  const auto path = settings->get_string("kernel-path");
-
-  if (path.empty()) {
-    util::warning(log_tag + name + ": irs file path is null.");
-
-    return;
-  }
-
-  auto [rate, kernel_L, kernel_R] = ui::convolver::read_kernel(log_tag, irs_dir, irs_ext, path);
-
-  if (rate == 0) {
-    // warning user that there is a problem
-
-    connections.push_back(Glib::signal_idle().connect([=, this]() {
-      label_sampling_rate->set_text(_("Failed"));
-      label_samples->set_text(_("Failed"));
-
-      label_duration->set_text(_("Failed"));
-
-      label_file_name->set_text(_("Could Not Load The Impulse File"));
-
-      return false;
-    }));
-
-    return;
-  }
-
-  const float dt = 1.0F / static_cast<float>(rate);
-
-  const float duration = (static_cast<float>(kernel_L.size()) - 1.0F) * dt;
-
-  time_axis.resize(kernel_L.size());
-
-  left_mag = kernel_L;
-  right_mag = kernel_R;
-
-  for (size_t n = 0; n < time_axis.size(); n++) {
-    time_axis[n] = static_cast<float>(n) * dt;
-  }
-
-  // get_irs_spectrum(rate);
-
-  size_t bin_size = (drawing_area->get_width() > 0) ? time_axis.size() / drawing_area->get_width() : 0;
-
-  if (bin_size > 0) {
-    // decimating the data so we can draw it
-
-    std::vector<float> t;
-    std::vector<float> l;
-    std::vector<float> r;
-    std::vector<float> bin_x;
-    std::vector<float> bin_l_y;
-    std::vector<float> bin_r_y;
-
-    for (size_t n = 0; n < time_axis.size(); n++) {
-      bin_x.push_back(time_axis[n]);
-
-      bin_l_y.push_back(left_mag[n]);
-      bin_r_y.push_back(right_mag[n]);
-
-      if (bin_x.size() == bin_size) {
-        const auto [min, max] = std::ranges::minmax_element(bin_l_y);
-
-        t.push_back(bin_x[min - bin_l_y.begin()]);
-        t.push_back(bin_x[max - bin_l_y.begin()]);
-
-        l.push_back(*min);
-        l.push_back(*max);
-
-        const auto [minr, maxr] = std::ranges::minmax_element(bin_r_y);
-
-        r.push_back(*minr);
-        r.push_back(*maxr);
-
-        bin_x.resize(0);
-        bin_l_y.resize(0);
-        bin_r_y.resize(0);
-      }
-    }
-
-    time_axis = t;
-    left_mag = l;
-    right_mag = r;
-  }
-
-  time_axis.shrink_to_fit();
-  left_mag.shrink_to_fit();
-  right_mag.shrink_to_fit();
-
-  // find min and max values
-
-  const auto min_left = std::ranges::min(left_mag);
-  const auto max_left = std::ranges::max(left_mag);
-
-  const auto min_right = std::ranges::min(right_mag);
-  const auto max_right = std::ranges::max(right_mag);
-
-  // rescaling between 0 and 1
-
-  for (size_t n = 0U; n < left_mag.size(); n++) {
-    left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
-    right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
-  }
-
-  // updating interface with ir file info
-
-  auto rate_copy = rate;
-  auto n_samples = kernel_L.size();
-
-  connections.push_back(Glib::signal_idle().connect([=, this]() {
-    label_sampling_rate->set_text(Glib::ustring::format(rate_copy) + " Hz");
-    label_samples->set_text(Glib::ustring::format(n_samples));
-
-    label_duration->set_text(level_to_localized_string(duration, 3) + " s");
-
-    const auto fpath = std::filesystem::path{path.raw()};
-
-    label_file_name->set_text(fpath.stem().c_str());
-
-    if (!show_fft->get_active()) {
-      plot_waveform();
-    }
-
-    return false;
-  }));
-}
-
-void ConvolverUi::plot_waveform() {
-  if (time_axis.empty() || left_spectrum.empty() || right_spectrum.empty()) {
-    return;
-  }
-
-  // plot->set_plot_type(PlotType::line);
-
-  // plot->set_plot_scale(PlotScale::linear);
-
-  // plot->set_fill_bars(false);
-
-  // plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
-
-  // plot->set_x_unit("s");
-  // plot->set_n_x_decimals(2);
-  // plot->set_n_y_decimals(2);
-
-  // if (check_left->get_active()) {
-  //   plot->set_data(time_axis, left_mag);
-  // } else if (check_right->get_active()) {
-  //   plot->set_data(time_axis, right_mag);
-  // }
-}

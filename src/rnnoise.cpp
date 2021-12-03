@@ -27,27 +27,28 @@ RNNoise::RNNoise(const std::string& tag,
   data_L.reserve(blocksize);
   data_R.reserve(blocksize);
 
-  g_signal_connect(settings, "changed::model-path", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<RNNoise*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::model-path",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<RNNoise*>(user_data);
 
-                     self->data_mutex.lock();
+                                            self->data_mutex.lock();
 
-                     self->rnnoise_ready = false;
+                                            self->rnnoise_ready = false;
 
-                     self->data_mutex.unlock();
+                                            self->data_mutex.unlock();
 
-                     self->free_rnnoise();
+                                            self->free_rnnoise();
 
-                     auto* m = self->get_model_from_file();
+                                            auto* m = self->get_model_from_file();
 
-                     self->model = m;
+                                            self->model = m;
 
-                     self->state_left = rnnoise_create(self->model);
-                     self->state_right = rnnoise_create(self->model);
+                                            self->state_left = rnnoise_create(self->model);
+                                            self->state_right = rnnoise_create(self->model);
 
-                     self->rnnoise_ready = true;
-                   }),
-                   this);
+                                            self->rnnoise_ready = true;
+                                          }),
+                                          this));
 
   setup_input_output_gain();
 

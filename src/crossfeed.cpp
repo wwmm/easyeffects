@@ -28,24 +28,25 @@ Crossfeed::Crossfeed(const std::string& tag,
 
   bs2b.set_level_feed(10 * static_cast<int>(g_settings_get_double(settings, "feed")));
 
-  g_signal_connect(settings, "changed::external-sidechain",
-                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Crossfeed*>(user_data);
+  gconnections.push_back(g_signal_connect(settings, "changed::fcut",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Crossfeed*>(user_data);
 
-                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                     self->bs2b.set_level_fcut(g_settings_get_int(settings, key));
-                   }),
-                   this);
+                                            self->bs2b.set_level_fcut(g_settings_get_int(settings, key));
+                                          }),
+                                          this));
 
-  g_signal_connect(settings, "changed::feed", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Crossfeed*>(user_data);
+  gconnections.push_back(
+      g_signal_connect(settings, "changed::feed", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                         auto self = static_cast<Crossfeed*>(user_data);
 
-                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+                         std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                     self->bs2b.set_level_feed(10 * static_cast<int>(g_settings_get_double(settings, key)));
-                   }),
-                   this);
+                         self->bs2b.set_level_feed(10 * static_cast<int>(g_settings_get_double(settings, key)));
+                       }),
+                       this));
 
   setup_input_output_gain();
 }
