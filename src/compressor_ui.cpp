@@ -114,6 +114,18 @@ void on_reset(CompressorBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, "lpf-frequency");
 }
 
+gboolean set_dropdown_sensitive(CompressorBox* self, int active_id) {
+  if (self->sidechain_type == nullptr) {
+    return 0;
+  }
+
+  if (g_strcmp0(gtk_combo_box_text_get_active_text(self->sidechain_type), "External") == 0) {
+    return 1;
+  }
+
+  return 0;
+}
+
 void setup(CompressorBox* self,
            std::shared_ptr<Compressor> compressor,
            const std::string& schema_path,
@@ -434,6 +446,7 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, set_dropdown_sensitive);
 }
 
 void compressor_box_init(CompressorBox* self) {
@@ -486,14 +499,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   });
 
   setup_dropdown_input_devices();
-
-  // gsettings bindings
-
-  connections.push_back(settings->signal_changed("sidechain-type").connect([=, this](const auto& key) {
-    dropdown_input_devices->set_sensitive(settings->get_string(key) == "External");
-  }));
-
-  dropdown_input_devices->set_sensitive(settings->get_string("sidechain-type") == "External");
 
   // set boost spinbuttons sensitivity on compression mode
 

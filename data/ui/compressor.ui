@@ -552,6 +552,11 @@
                                             <object class="GtkDropDown" id="dropdown_input_devices">
                                                 <property name="valign">center</property>
                                                 <property name="margin-end">6</property>
+                                                <binding name="sensitive">
+                                                    <closure type="gboolean" function="set_dropdown_sensitive">
+                                                        <lookup name="active">sidechain_type</lookup>
+                                                    </closure>
+                                                </binding>
                                                 <layout>
                                                     <property name="column">1</property>
                                                     <property name="row">2</property>
