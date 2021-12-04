@@ -1,4 +1,4 @@
-<interface>
+<interface domain="easyeffects">
     <template class="GtkListItem">
         <property name="child">
             <object class="GtkBox">

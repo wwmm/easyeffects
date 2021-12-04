@@ -25,7 +25,7 @@ enum { PROP_0, PROP_TS, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS };
 
 G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
 
-void set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
+void node_info_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
   auto* self = EE_NODE_INFO_HOLDER(object);
 
   switch (prop_id) {
@@ -50,7 +50,7 @@ void set_property(GObject* object, guint prop_id, const GValue* value, GParamSpe
   }
 }
 
-void get_property(GObject* object, guint prop_id, GValue* value, GParamSpec* pspec) {
+void node_info_get_property(GObject* object, guint prop_id, GValue* value, GParamSpec* pspec) {
   auto* self = EE_NODE_INFO_HOLDER(object);
 
   switch (prop_id) {
@@ -87,8 +87,8 @@ void node_info_holder_class_init(NodeInfoHolderClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
 
   object_class->finalize = node_info_holder_finalize;
-  object_class->set_property = set_property;
-  object_class->get_property = get_property;
+  object_class->set_property = node_info_set_property;
+  object_class->get_property = node_info_get_property;
 
   g_object_class_install_property(object_class, PROP_TS,
                                   g_param_spec_long("timestamp", "Timestamp", "Timestamp", G_MINLONG, G_MAXLONG,

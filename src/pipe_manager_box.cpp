@@ -187,47 +187,6 @@ void on_stack_visible_child_changed(PipeManagerBox* self, GParamSpec* pspec, Gtk
 }
 
 void setup_listview_modules(PipeManagerBox* self) {
-  auto* factory = gtk_signal_list_item_factory_new();
-
-  // setting the factory callbacks
-
-  g_signal_connect(factory, "setup",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-                     auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/module_info.ui");
-
-                     auto* top_box = gtk_builder_get_object(builder, "top_box");
-
-                     g_object_set_data(G_OBJECT(item), "id", gtk_builder_get_object(builder, "id"));
-                     g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
-                     g_object_set_data(G_OBJECT(item), "description", gtk_builder_get_object(builder, "description"));
-
-                     gtk_list_item_set_activatable(item, 0);
-                     gtk_list_item_set_child(item, GTK_WIDGET(top_box));
-
-                     g_object_unref(builder);
-                   }),
-                   self);
-
-  g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-                     auto* id = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "id"));
-                     auto* name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
-                     auto* description = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "description"));
-
-                     auto* holder = static_cast<ui::holders::ModuleInfoHolder*>(gtk_list_item_get_item(item));
-
-                     gtk_label_set_text(id, std::to_string(holder->id).c_str());
-                     gtk_label_set_text(name, holder->name.c_str());
-                     gtk_label_set_text(description, holder->description.c_str());
-                   }),
-                   self);
-
-  gtk_list_view_set_factory(self->listview_modules, factory);
-
-  g_object_unref(factory);
-
-  // setting the model
-
   auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->modules_model));
 
   gtk_list_view_set_model(self->listview_modules, GTK_SELECTION_MODEL(selection));
@@ -236,50 +195,6 @@ void setup_listview_modules(PipeManagerBox* self) {
 }
 
 void setup_listview_clients(PipeManagerBox* self) {
-  auto* factory = gtk_signal_list_item_factory_new();
-
-  // setting the factory callbacks
-
-  g_signal_connect(factory, "setup",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-                     auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/client_info.ui");
-
-                     auto* top_box = gtk_builder_get_object(builder, "top_box");
-
-                     g_object_set_data(G_OBJECT(item), "id", gtk_builder_get_object(builder, "id"));
-                     g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
-                     g_object_set_data(G_OBJECT(item), "api", gtk_builder_get_object(builder, "api"));
-                     g_object_set_data(G_OBJECT(item), "access", gtk_builder_get_object(builder, "access"));
-
-                     gtk_list_item_set_activatable(item, 0);
-                     gtk_list_item_set_child(item, GTK_WIDGET(top_box));
-
-                     g_object_unref(builder);
-                   }),
-                   self);
-
-  g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-                     auto* id = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "id"));
-                     auto* name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
-                     auto* api = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "api"));
-                     auto* access = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "access"));
-
-                     auto* holder = static_cast<ui::holders::ClientInfoHolder*>(gtk_list_item_get_item(item));
-
-                     gtk_label_set_text(id, std::to_string(holder->id).c_str());
-                     gtk_label_set_text(name, holder->name.c_str());
-                     gtk_label_set_text(api, holder->api.c_str());
-                     gtk_label_set_text(access, holder->access.c_str());
-                   }),
-                   self);
-
-  gtk_list_view_set_factory(self->listview_clients, factory);
-
-  g_object_unref(factory);
-
-  // setting the model
-
   auto* selection = gtk_no_selection_new(G_LIST_MODEL(self->clients_model));
 
   gtk_list_view_set_model(self->listview_clients, GTK_SELECTION_MODEL(selection));

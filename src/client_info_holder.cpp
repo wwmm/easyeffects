@@ -21,7 +21,53 @@
 
 namespace ui::holders {
 
+enum { PROP_0, PROP_ID, PROP_NAME, PROP_API, PROP_ACCESS };
+
 G_DEFINE_TYPE(ClientInfoHolder, client_info_holder, G_TYPE_OBJECT);
+
+void client_info_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
+  auto* self = EE_CLIENT_INFO_HOLDER(object);
+
+  switch (prop_id) {
+    case PROP_ID:
+      self->id = g_value_get_uint(value);
+      break;
+    case PROP_NAME:
+      self->name = g_value_get_string(value);
+      break;
+    case PROP_API:
+      self->api = g_value_get_string(value);
+      break;
+    case PROP_ACCESS:
+      self->access = g_value_get_string(value);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+      break;
+  }
+}
+
+void client_info_get_property(GObject* object, guint prop_id, GValue* value, GParamSpec* pspec) {
+  auto* self = EE_CLIENT_INFO_HOLDER(object);
+
+  switch (prop_id) {
+    case PROP_ID:
+      g_value_set_uint(value, self->id);
+      break;
+    case PROP_NAME:
+      g_value_set_string(value, self->name.c_str());
+      break;
+    case PROP_API:
+      g_value_set_string(value, self->api.c_str());
+      break;
+    case PROP_ACCESS:
+      g_value_set_string(value, self->access.c_str());
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+      break;
+  }
+}
 
 void client_info_holder_finalize(GObject* object) {
   auto* self = EE_CLIENT_INFO_HOLDER(object);
@@ -35,6 +81,21 @@ void client_info_holder_class_init(ClientInfoHolderClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
 
   object_class->finalize = client_info_holder_finalize;
+  object_class->set_property = client_info_set_property;
+  object_class->get_property = client_info_get_property;
+
+  g_object_class_install_property(
+      object_class, PROP_ID,
+      g_param_spec_uint("id", "Id", "Id", G_MININT, G_MAXUINT, SPA_ID_INVALID, G_PARAM_READWRITE));
+
+  g_object_class_install_property(object_class, PROP_NAME,
+                                  g_param_spec_string("name", "Name", "Name", nullptr, G_PARAM_READWRITE));
+
+  g_object_class_install_property(object_class, PROP_API,
+                                  g_param_spec_string("api", "API", "API", nullptr, G_PARAM_READWRITE));
+
+  g_object_class_install_property(object_class, PROP_ACCESS,
+                                  g_param_spec_string("access", "Access", "Access", nullptr, G_PARAM_READWRITE));
 }
 
 void client_info_holder_init(ClientInfoHolder* self) {

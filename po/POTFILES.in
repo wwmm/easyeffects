@@ -7,7 +7,6 @@ data/ui/apps_box.ui
 data/ui/autogain.ui
 data/ui/autoload_row.ui
 data/ui/bass_enhancer.ui
-data/ui/client_info.ui
 data/ui/compressor.ui
 data/ui/convolver.ui
 data/ui/convolver_menu_impulses.ui
@@ -24,11 +23,15 @@ data/ui/equalizer.ui
 data/ui/equalizer_band.ui
 data/ui/exciter.ui
 data/ui/filter.ui
+data/ui/factory_clients_listview.ui
+data/ui/factory_input_device_dropdown.ui
+data/ui/factory_modules_listview.ui
+data/ui/factory_output_device_dropdown.ui
+data/ui/factory_presets_dropdown.ui
 data/ui/gate.ui
 data/ui/limiter.ui
 data/ui/loudness.ui
 data/ui/maximizer.ui
-data/ui/module_info.ui
 data/ui/multiband_compressor.ui
 data/ui/multiband_compressor_band.ui
 data/ui/multiband_gate.ui

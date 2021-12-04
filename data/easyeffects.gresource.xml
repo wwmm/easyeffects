@@ -11,7 +11,6 @@
         <file>ui/bass_loudness.ui</file>
         <file>ui/blocklist_menu.ui</file>
         <file>ui/chart.ui</file>
-        <file>ui/client_info.ui</file>
         <file>ui/compressor.ui</file>
         <file>ui/convolver.ui</file>
         <file>ui/convolver_menu_impulses.ui</file>
@@ -27,7 +26,9 @@
         <file>ui/equalizer.ui</file>
         <file>ui/equalizer_band.ui</file>
         <file>ui/exciter.ui</file>
+        <file>ui/factory_clients_listview.ui</file>
         <file>ui/factory_input_device_dropdown.ui</file>
+        <file>ui/factory_modules_listview.ui</file>
         <file>ui/factory_output_device_dropdown.ui</file>
         <file>ui/factory_presets_dropdown.ui</file>
         <file>ui/filter.ui</file>
@@ -35,7 +36,6 @@
         <file>ui/limiter.ui</file>
         <file>ui/loudness.ui</file>
         <file>ui/maximizer.ui</file>
-        <file>ui/module_info.ui</file>
         <file>ui/multiband_compressor.ui</file>
         <file>ui/multiband_compressor_band.ui</file>
         <file>ui/multiband_gate.ui</file>
