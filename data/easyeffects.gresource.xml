@@ -27,6 +27,9 @@
         <file>ui/equalizer.ui</file>
         <file>ui/equalizer_band.ui</file>
         <file>ui/exciter.ui</file>
+        <file>ui/factory_input_device_dropdown.ui</file>
+        <file>ui/factory_output_device_dropdown.ui</file>
+        <file>ui/factory_presets_dropdown.ui</file>
         <file>ui/filter.ui</file>
         <file>ui/gate.ui</file>
         <file>ui/limiter.ui</file>

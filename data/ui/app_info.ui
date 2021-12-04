@@ -28,7 +28,6 @@
 
                 <child>
                     <object class="GtkImage" id="app_icon">
-                        <property name="visible">False</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="icon_size">large</property>

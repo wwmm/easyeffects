@@ -21,7 +21,59 @@
 
 namespace ui::holders {
 
+enum { PROP_0, PROP_TS, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS };
+
 G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
+
+void set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
+  auto* self = EE_NODE_INFO_HOLDER(object);
+
+  switch (prop_id) {
+    case PROP_TS:
+      self->ts = g_value_get_long(value);
+      break;
+    case PROP_ID:
+      self->id = g_value_get_uint(value);
+      break;
+    case PROP_DEVICE_ID:
+      self->device_id = g_value_get_uint(value);
+      break;
+    case PROP_NAME:
+      self->name = g_value_get_string(value);
+      break;
+    case PROP_MEDIA_CLASS:
+      self->media_class = g_value_get_string(value);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+      break;
+  }
+}
+
+void get_property(GObject* object, guint prop_id, GValue* value, GParamSpec* pspec) {
+  auto* self = EE_NODE_INFO_HOLDER(object);
+
+  switch (prop_id) {
+    case PROP_TS:
+      g_value_set_long(value, self->ts);
+      break;
+    case PROP_ID:
+      g_value_set_uint(value, self->id);
+      break;
+    case PROP_DEVICE_ID:
+      g_value_set_uint(value, self->device_id);
+      break;
+    case PROP_NAME:
+      g_value_set_string(value, self->name.c_str());
+      break;
+    case PROP_MEDIA_CLASS:
+      g_value_set_string(value, self->media_class.c_str());
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+      break;
+  }
+}
 
 void node_info_holder_finalize(GObject* object) {
   auto* self = EE_NODE_INFO_HOLDER(object);
@@ -35,6 +87,27 @@ void node_info_holder_class_init(NodeInfoHolderClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
 
   object_class->finalize = node_info_holder_finalize;
+  object_class->set_property = set_property;
+  object_class->get_property = get_property;
+
+  g_object_class_install_property(object_class, PROP_TS,
+                                  g_param_spec_long("timestamp", "Timestamp", "Timestamp", G_MINLONG, G_MAXLONG,
+                                                    SPA_ID_INVALID, G_PARAM_READWRITE));
+
+  g_object_class_install_property(
+      object_class, PROP_ID,
+      g_param_spec_uint("id", "Id", "Id", G_MININT, G_MAXUINT, SPA_ID_INVALID, G_PARAM_READWRITE));
+
+  g_object_class_install_property(
+      object_class, PROP_DEVICE_ID,
+      g_param_spec_uint("device-id", "Device Id", "Device Id", G_MININT, G_MAXUINT, SPA_ID_INVALID, G_PARAM_READWRITE));
+
+  g_object_class_install_property(object_class, PROP_NAME,
+                                  g_param_spec_string("name", "Name", "Name", nullptr, G_PARAM_READWRITE));
+
+  g_object_class_install_property(
+      object_class, PROP_MEDIA_CLASS,
+      g_param_spec_string("media-class", "Media Class", "Media Class", nullptr, G_PARAM_READWRITE));
 }
 
 void node_info_holder_init(NodeInfoHolder* self) {

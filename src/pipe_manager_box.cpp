@@ -394,42 +394,6 @@ void setup_dropdown_presets(PipeManagerBox* self) {
     string_list = self->input_presets_string_list;
   }
 
-  auto* factory = gtk_signal_list_item_factory_new();
-
-  // setting the factory callbacks
-
-  g_signal_connect(factory, "setup",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-                     auto* box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-                     auto* label = gtk_label_new(nullptr);
-                     auto* icon = gtk_image_new_from_icon_name("emblem-system-symbolic");
-
-                     gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
-                     gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
-
-                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(icon));
-                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
-
-                     gtk_list_item_set_child(item, GTK_WIDGET(box));
-
-                     g_object_set_data(G_OBJECT(item), "name", label);
-                   }),
-                   self);
-
-  g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
-
-                     auto* name = gtk_string_object_get_string(GTK_STRING_OBJECT(gtk_list_item_get_item(item)));
-
-                     gtk_label_set_text(label, name);
-                   }),
-                   self);
-
-  gtk_drop_down_set_factory(dropdown, factory);
-
-  g_object_unref(factory);
-
   for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
     gtk_string_list_append(string_list, name.c_str());
   }
@@ -450,55 +414,6 @@ void setup_dropdown_presets(PipeManagerBox* self) {
 }
 
 void setup_dropdown_devices(PipeManagerBox* self, GtkDropDown* dropdown, GListStore* model) {
-  auto* factory = gtk_signal_list_item_factory_new();
-
-  // setting the factory callbacks
-
-  g_signal_connect(factory, "setup",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-                     auto* box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-                     auto* label = gtk_label_new(nullptr);
-                     auto* icon = gtk_image_new();
-
-                     gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
-                     gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
-
-                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(icon));
-                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
-
-                     gtk_list_item_set_child(item, GTK_WIDGET(box));
-
-                     g_object_set_data(G_OBJECT(item), "name", label);
-                     g_object_set_data(G_OBJECT(item), "icon", icon);
-                   }),
-                   self);
-
-  g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
-                     auto* icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "icon"));
-
-                     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(gtk_list_item_get_item(item));
-
-                     if (holder->media_class == self->application->pm->media_class_sink) {
-                       gtk_image_set_from_icon_name(icon, "audio-card-symbolic");
-                     } else if (holder->media_class == self->application->pm->media_class_source) {
-                       gtk_image_set_from_icon_name(icon, "audio-input-microphone-symbolic");
-                     }
-
-                     gtk_label_set_text(label, holder->name.c_str());
-                   }),
-                   self);
-
-  gtk_drop_down_set_factory(dropdown, factory);
-
-  g_object_unref(factory);
-
-  /*
-    DropDowns know how to deal with GtkStringList. But we are passing a custom holder and no expression was set. So
-    we have to set the model after configuring the factory. Why this was not a problem with gtkmm I have no idea...
-  */
-
   auto* selection = gtk_single_selection_new(G_LIST_MODEL(model));
 
   gtk_drop_down_set_model(dropdown, G_LIST_MODEL(model));

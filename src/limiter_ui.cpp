@@ -107,48 +107,17 @@ void on_reset(LimiterBox* self, GtkButton* btn) {
 }
 
 void setup_dropdown_input_device(LimiterBox* self) {
-  auto* factory = gtk_signal_list_item_factory_new();
-
-  // setting the factory callbacks
-
-  g_signal_connect(factory, "setup",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, LimiterBox* self) {
-                     auto* box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-                     auto* label = gtk_label_new(nullptr);
-                     auto* icon = gtk_image_new_from_icon_name("audio-input-microphone-symbolic");
-
-                     gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
-                     gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
-
-                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(icon));
-                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
-
-                     gtk_list_item_set_child(item, GTK_WIDGET(box));
-
-                     g_object_set_data(G_OBJECT(item), "name", label);
-                   }),
-                   self);
-
-  g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, LimiterBox* self) {
-                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
-
-                     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(gtk_list_item_get_item(item));
-
-                     gtk_label_set_text(label, holder->name.c_str());
-                   }),
-                   self);
-
-  gtk_drop_down_set_factory(self->dropdown_input_devices, factory);
-
-  g_object_unref(factory);
-
-  /*
-    DropDowns know how to deal with GtkStringList. But we are passing a custom holder and no expression was set. So
-    we have to set the model after configuring the factory. Why this was not a problem with gtkmm I have no idea...
-  */
-
   auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->input_devices_model));
+
+  g_signal_connect(self->dropdown_input_devices, "notify::selected-item",
+                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, LimiterBox* self) {
+                     if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
+                       auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
+
+                       g_settings_set_string(self->settings, "sidechain-input-device", holder->name.c_str());
+                     }
+                   }),
+                   self);
 
   gtk_drop_down_set_model(self->dropdown_input_devices, G_LIST_MODEL(self->input_devices_model));
 

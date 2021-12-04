@@ -54,6 +54,11 @@
                                                             <object class="GtkDropDown" id="dropdown_input_devices">
                                                                 <property name="valign">center</property>
                                                                 <property name="sensitive" bind-source="use_default_input" bind-property="active" bind-flags="sync-create|invert-boolean" />
+                                                                <property name="factory">
+                                                                    <object class="GtkBuilderListItemFactory">
+                                                                        <property name="resource">/com/github/wwmm/easyeffects/ui/factory_input_device_dropdown.ui</property>
+                                                                    </object>
+                                                                </property>
                                                                 <accessibility>
                                                                     <property name="label" translatable="yes">Custom Input Device</property>
                                                                 </accessibility>
@@ -89,6 +94,11 @@
                                                             <object class="GtkDropDown" id="dropdown_output_devices">
                                                                 <property name="valign">center</property>
                                                                 <property name="sensitive" bind-source="use_default_output" bind-property="active" bind-flags="sync-create|invert-boolean" />
+                                                                <property name="factory">
+                                                                    <object class="GtkBuilderListItemFactory">
+                                                                        <property name="resource">/com/github/wwmm/easyeffects/ui/factory_output_device_dropdown.ui</property>
+                                                                    </object>
+                                                                </property>
                                                                 <accessibility>
                                                                     <property name="label" translatable="yes">Custom Output Device</property>
                                                                 </accessibility>
@@ -211,6 +221,11 @@
                                                                 <property name="column-spacing">6</property>
                                                                 <child>
                                                                     <object class="GtkDropDown" id="dropdown_autoloading_output_devices">
+                                                                        <property name="factory">
+                                                                            <object class="GtkBuilderListItemFactory">
+                                                                                <property name="resource">/com/github/wwmm/easyeffects/ui/factory_output_device_dropdown.ui</property>
+                                                                            </object>
+                                                                        </property>
                                                                         <layout>
                                                                             <property name="column">0</property>
                                                                             <property name="row">0</property>
@@ -223,6 +238,11 @@
 
                                                                 <child>
                                                                     <object class="GtkDropDown" id="dropdown_autoloading_output_presets">
+                                                                        <property name="factory">
+                                                                            <object class="GtkBuilderListItemFactory">
+                                                                                <property name="resource">/com/github/wwmm/easyeffects/ui/factory_presets_dropdown.ui</property>
+                                                                            </object>
+                                                                        </property>
                                                                         <layout>
                                                                             <property name="column">0</property>
                                                                             <property name="row">1</property>
@@ -298,6 +318,11 @@
                                                                 <property name="column-spacing">6</property>
                                                                 <child>
                                                                     <object class="GtkDropDown" id="dropdown_autoloading_input_devices">
+                                                                        <property name="factory">
+                                                                            <object class="GtkBuilderListItemFactory">
+                                                                                <property name="resource">/com/github/wwmm/easyeffects/ui/factory_input_device_dropdown.ui</property>
+                                                                            </object>
+                                                                        </property>
                                                                         <layout>
                                                                             <property name="column">0</property>
                                                                             <property name="row">0</property>
