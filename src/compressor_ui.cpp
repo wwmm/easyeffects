@@ -19,177 +19,450 @@
 
 #include "compressor_ui.hpp"
 
-namespace {
+namespace ui::compressor_box {
 
-auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+using namespace std::string_literals;
 
-  if (g_strcmp0(v, "Downward") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Upward") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Boosting") == 0) {
-    g_value_set_int(value, 2);
-  }
+auto constexpr log_tag = "compressor_box: ";
 
-  return 1;
+struct _CompressorBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkLabel *gain_label, *sidechain_label, *curve_label, *envelope_label;
+
+  GtkSpinButton *attack, *release, *release_threshold, *threshold, *knee, *ratio, *makeup, *boost_threshold,
+      *boost_amount, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
+
+  GtkComboBoxText *compression_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode;
+
+  GtkToggleButton* listen = nullptr;
+
+  GtkDropDown* dropdown_input_devices = nullptr;
+
+  GListStore* input_devices_model;
+
+  GSettings* settings;
+
+  std::shared_ptr<Compressor> compressor;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(CompressorBox, compressor_box, GTK_TYPE_BOX)
+
+void on_bypass(CompressorBox* self, GtkToggleButton* btn) {
+  self->compressor->bypass = gtk_toggle_button_get_active(btn);
 }
 
-auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Downward");
+void on_reset(CompressorBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
 
-    case 1:
-      return g_variant_new_string("Upward");
+  g_settings_reset(self->settings, "input-gain");
 
-    case 2:
-      return g_variant_new_string("Boosting");
+  g_settings_reset(self->settings, "output-gain");
 
-    default:
-      return g_variant_new_string("Downward");
-  }
+  g_settings_reset(self->settings, "mode");
+
+  g_settings_reset(self->settings, "attack");
+
+  g_settings_reset(self->settings, "release");
+
+  g_settings_reset(self->settings, "release-threshold");
+
+  g_settings_reset(self->settings, "threshold");
+
+  g_settings_reset(self->settings, "ratio");
+
+  g_settings_reset(self->settings, "knee");
+
+  g_settings_reset(self->settings, "makeup");
+
+  g_settings_reset(self->settings, "boost-threshold");
+
+  g_settings_reset(self->settings, "sidechain-listen");
+
+  g_settings_reset(self->settings, "sidechain-type");
+
+  g_settings_reset(self->settings, "sidechain-mode");
+
+  g_settings_reset(self->settings, "sidechain-source");
+
+  g_settings_reset(self->settings, "sidechain-preamp");
+
+  g_settings_reset(self->settings, "sidechain-reactivity");
+
+  g_settings_reset(self->settings, "sidechain-lookahead");
+
+  g_settings_reset(self->settings, "sidechain-input-device");
+
+  g_settings_reset(self->settings, "hpf-mode");
+
+  g_settings_reset(self->settings, "hpf-frequency");
+
+  g_settings_reset(self->settings, "lpf-mode");
+
+  g_settings_reset(self->settings, "lpf-frequency");
 }
 
-auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+void setup(CompressorBox* self,
+           std::shared_ptr<Compressor> compressor,
+           const std::string& schema_path,
+           PipeManager* pm) {
+  self->compressor = compressor;
 
-  if (g_strcmp0(v, "Feed-forward") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Feed-back") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "External") == 0) {
-    g_value_set_int(value, 2);
-  }
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.compressor", schema_path.c_str());
 
-  return 1;
+  compressor->post_messages = true;
+  compressor->bypass = false;
+
+  self->connections.push_back(compressor->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(compressor->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(compressor->reduction.connect([=](const double& value) {
+    gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->connections.push_back(compressor->envelope.connect([=](const double& value) {
+    gtk_label_set_text(self->envelope_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->connections.push_back(compressor->sidechain.connect([=](const double& value) {
+    gtk_label_set_text(self->sidechain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->connections.push_back(compressor->curve.connect([=](const double& value) {
+    gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "knee", gtk_spin_button_get_adjustment(self->knee), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "makeup", gtk_spin_button_get_adjustment(self->makeup), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "ratio", gtk_spin_button_get_adjustment(self->ratio), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sidechain-preamp", gtk_spin_button_get_adjustment(self->preamp), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sidechain-reactivity", gtk_spin_button_get_adjustment(self->reactivity), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sidechain-lookahead", gtk_spin_button_get_adjustment(self->lookahead), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "release-threshold", gtk_spin_button_get_adjustment(self->release_threshold), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "boost-threshold", gtk_spin_button_get_adjustment(self->boost_threshold), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "boost-amount", gtk_spin_button_get_adjustment(self->boost_amount), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "hpf-frequency", gtk_spin_button_get_adjustment(self->hpf_freq), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "lpf-frequency", gtk_spin_button_get_adjustment(self->lpf_freq), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sidechain-listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind_with_mapping(
+      self->settings, "mode", self->compression_mode, "active", G_SETTINGS_BIND_DEFAULT,
+      +[](GValue* value, GVariant* variant, gpointer user_data) {
+        const auto* v = g_variant_get_string(variant, nullptr);
+
+        if (g_strcmp0(v, "Downward") == 0) {
+          g_value_set_int(value, 0);
+        } else if (g_strcmp0(v, "Upward") == 0) {
+          g_value_set_int(value, 1);
+        } else if (g_strcmp0(v, "Boosting") == 0) {
+          g_value_set_int(value, 2);
+        }
+
+        return 1;
+      },
+      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+        switch (g_value_get_int(value)) {
+          case 0:
+            return g_variant_new_string("Downward");
+          case 1:
+            return g_variant_new_string("Upward");
+          case 2:
+            return g_variant_new_string("Boosting");
+          default:
+            return g_variant_new_string("Downward");
+        }
+      },
+      nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      self->settings, "sidechain-type", self->sidechain_type, "active", G_SETTINGS_BIND_DEFAULT,
+      +[](GValue* value, GVariant* variant, gpointer user_data) {
+        const auto* v = g_variant_get_string(variant, nullptr);
+
+        if (g_strcmp0(v, "Feed-forward") == 0) {
+          g_value_set_int(value, 0);
+        } else if (g_strcmp0(v, "Feed-back") == 0) {
+          g_value_set_int(value, 1);
+        } else if (g_strcmp0(v, "External") == 0) {
+          g_value_set_int(value, 2);
+        }
+
+        return 1;
+      },
+      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+        switch (g_value_get_int(value)) {
+          case 0:
+            return g_variant_new_string("Feed-forward");
+          case 1:
+            return g_variant_new_string("Feed-back");
+          case 2:
+            return g_variant_new_string("External");
+          default:
+            return g_variant_new_string("Feed-forward");
+        }
+      },
+      nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      self->settings, "sidechain-mode", self->sidechain_mode, "active", G_SETTINGS_BIND_DEFAULT,
+      +[](GValue* value, GVariant* variant, gpointer user_data) {
+        const auto* v = g_variant_get_string(variant, nullptr);
+
+        if (g_strcmp0(v, "Peak") == 0) {
+          g_value_set_int(value, 0);
+        } else if (g_strcmp0(v, "RMS") == 0) {
+          g_value_set_int(value, 1);
+        } else if (g_strcmp0(v, "Low-Pass") == 0) {
+          g_value_set_int(value, 2);
+        } else if (g_strcmp0(v, "Uniform") == 0) {
+          g_value_set_int(value, 3);
+        }
+
+        return 1;
+      },
+      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+        switch (g_value_get_int(value)) {
+          case 0:
+            return g_variant_new_string("Peak");
+          case 1:
+            return g_variant_new_string("RMS");
+          case 2:
+            return g_variant_new_string("Low-Pass");
+          case 3:
+            return g_variant_new_string("Uniform");
+          default:
+            return g_variant_new_string("RMS");
+        }
+      },
+      nullptr, nullptr);
+
+  g_settings_bind_with_mapping(
+      self->settings, "sidechain-source", self->sidechain_source, "active", G_SETTINGS_BIND_DEFAULT,
+      +[](GValue* value, GVariant* variant, gpointer user_data) {
+        const auto* v = g_variant_get_string(variant, nullptr);
+
+        if (g_strcmp0(v, "Middle") == 0) {
+          g_value_set_int(value, 0);
+        } else if (g_strcmp0(v, "Side") == 0) {
+          g_value_set_int(value, 1);
+        } else if (g_strcmp0(v, "Left") == 0) {
+          g_value_set_int(value, 2);
+        } else if (g_strcmp0(v, "Right") == 0) {
+          g_value_set_int(value, 3);
+        }
+
+        return 1;
+      },
+      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+        switch (g_value_get_int(value)) {
+          case 0:
+            return g_variant_new_string("Middle");
+          case 1:
+            return g_variant_new_string("Side");
+          case 2:
+            return g_variant_new_string("Left");
+          case 3:
+            return g_variant_new_string("Right");
+          default:
+            return g_variant_new_string("Middle");
+        }
+      },
+      nullptr, nullptr);
+
+  auto filter_mode_enum_to_int = +[](GValue* value, GVariant* variant, gpointer user_data) {
+    const auto* v = g_variant_get_string(variant, nullptr);
+
+    if (g_strcmp0(v, "off") == 0) {
+      g_value_set_int(value, 0);
+    } else if (g_strcmp0(v, "12 dB/oct") == 0) {
+      g_value_set_int(value, 1);
+    } else if (g_strcmp0(v, "24 dB/oct") == 0) {
+      g_value_set_int(value, 2);
+    } else if (g_strcmp0(v, "36 dB/oct") == 0) {
+      g_value_set_int(value, 3);
+    }
+
+    return 1;
+  };
+
+  auto int_to_filter_mode_enum = +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+    switch (g_value_get_int(value)) {
+      case 0:
+        return g_variant_new_string("off");
+      case 1:
+        return g_variant_new_string("12 dB/oct");
+      case 2:
+        return g_variant_new_string("24 dB/oct");
+      case 3:
+        return g_variant_new_string("36 dB/oct");
+      default:
+        return g_variant_new_string("off");
+    }
+  };
+
+  g_settings_bind_with_mapping(self->settings, "hpf-mode", self->hpf_mode, "active", G_SETTINGS_BIND_DEFAULT,
+                               filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(self->settings, "lpf-mode", self->lpf_mode, "active", G_SETTINGS_BIND_DEFAULT,
+                               filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
 }
 
-auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Feed-forward");
+void dispose(GObject* object) {
+  auto* self = EE_COMPRESSOR_BOX(object);
 
-    case 1:
-      return g_variant_new_string("Feed-back");
+  self->compressor->post_messages = false;
+  self->compressor->bypass = false;
 
-    case 2:
-      return g_variant_new_string("External");
-
-    default:
-      return g_variant_new_string("Feed-forward");
-  }
-}
-
-auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Peak") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "RMS") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Low-Pass") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "Uniform") == 0) {
-    g_value_set_int(value, 3);
+  for (auto& c : self->connections) {
+    c.disconnect();
   }
 
-  return 1;
-}
-
-auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Peak");
-
-    case 1:
-      return g_variant_new_string("RMS");
-
-    case 2:
-      return g_variant_new_string("Low-Pass");
-
-    case 3:
-      return g_variant_new_string("Uniform");
-
-    default:
-      return g_variant_new_string("RMS");
-  }
-}
-
-auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Middle") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Side") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Left") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "Right") == 0) {
-    g_value_set_int(value, 3);
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  return 1;
+  self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(compressor_box_parent_class)->dispose(object);
 }
 
-auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Middle");
+void compressor_box_class_init(CompressorBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-    case 1:
-      return g_variant_new_string("Side");
+  object_class->dispose = dispose;
 
-    case 2:
-      return g_variant_new_string("Left");
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/compressor.ui");
 
-    case 3:
-      return g_variant_new_string("Right");
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_level_right_label);
 
-    default:
-      return g_variant_new_string("Middle");
-  }
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, gain_label);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, sidechain_label);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, curve_label);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, envelope_label);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, attack);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, release);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, release_threshold);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, threshold);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, knee);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, ratio);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, makeup);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, boost_threshold);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, boost_amount);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, preamp);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, reactivity);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, lookahead);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, hpf_freq);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, lpf_freq);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, compression_mode);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, sidechain_type);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, sidechain_mode);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, sidechain_source);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, lpf_mode);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, hpf_mode);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, listen);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
-auto filter_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+void compressor_box_init(CompressorBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
 
-  if (g_strcmp0(v, "off") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "12 dB/oct") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "24 dB/oct") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "36 dB/oct") == 0) {
-    g_value_set_int(value, 3);
-  }
+  self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
 
-  return 1;
+  prepare_spinbutton<"dB">(self->threshold);
+  prepare_spinbutton<"dB">(self->release_threshold);
+  prepare_spinbutton<"dB">(self->boost_threshold);
+  prepare_spinbutton<"dB">(self->boost_amount);
+  prepare_spinbutton<"dB">(self->knee);
+  prepare_spinbutton<"dB">(self->makeup);
+  prepare_spinbutton<"dB">(self->preamp);
+  prepare_spinbutton<"Hz">(self->hpf_freq);
+  prepare_spinbutton<"Hz">(self->lpf_freq);
+  prepare_spinbutton<"ms">(self->attack);
+  prepare_spinbutton<"ms">(self->release);
+  prepare_spinbutton<"ms">(self->lookahead);
+  prepare_spinbutton<"ms">(self->reactivity);
+
+  prepare_spinbutton<"">(self->ratio);
 }
 
-auto int_to_filter_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("off");
-
-    case 1:
-      return g_variant_new_string("12 dB/oct");
-
-    case 2:
-      return g_variant_new_string("24 dB/oct");
-
-    case 3:
-      return g_variant_new_string("36 dB/oct");
-
-    default:
-      return g_variant_new_string("off");
-  }
+auto create() -> CompressorBox* {
+  return static_cast<CompressorBox*>(g_object_new(EE_TYPE_COMPRESSOR_BOX, nullptr));
 }
 
-}  // namespace
+}  // namespace ui::compressor_box
 
 CompressorUi::CompressorUi(BaseObjectType* cobject,
                            const Glib::RefPtr<Gtk::Builder>& builder,
@@ -201,35 +474,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   name = plugin_name::compressor;
 
   // loading builder widgets
-
-  attack = builder->get_widget<Gtk::SpinButton>("attack");
-  knee = builder->get_widget<Gtk::SpinButton>("knee");
-  makeup = builder->get_widget<Gtk::SpinButton>("makeup");
-  ratio = builder->get_widget<Gtk::SpinButton>("ratio");
-  release = builder->get_widget<Gtk::SpinButton>("release");
-  threshold = builder->get_widget<Gtk::SpinButton>("threshold");
-  preamp = builder->get_widget<Gtk::SpinButton>("preamp");
-  reactivity = builder->get_widget<Gtk::SpinButton>("reactivity");
-  lookahead = builder->get_widget<Gtk::SpinButton>("lookahead");
-  release_threshold = builder->get_widget<Gtk::SpinButton>("release_threshold");
-  boost_threshold = builder->get_widget<Gtk::SpinButton>("boost_threshold");
-  boost_amount = builder->get_widget<Gtk::SpinButton>("boost_amount");
-  hpf_freq = builder->get_widget<Gtk::SpinButton>("hpf_freq");
-  lpf_freq = builder->get_widget<Gtk::SpinButton>("lpf_freq");
-
-  compression_mode = builder->get_widget<Gtk::ComboBoxText>("compression_mode");
-  sidechain_type = builder->get_widget<Gtk::ComboBoxText>("sidechain_type");
-  sidechain_mode = builder->get_widget<Gtk::ComboBoxText>("sidechain_mode");
-  sidechain_source = builder->get_widget<Gtk::ComboBoxText>("sidechain_source");
-  hpf_mode = builder->get_widget<Gtk::ComboBoxText>("hpf_mode");
-  lpf_mode = builder->get_widget<Gtk::ComboBoxText>("lpf_mode");
-
-  listen = builder->get_widget<Gtk::ToggleButton>("listen");
-
-  reduction_label = builder->get_widget<Gtk::Label>("gain_label");
-  sidechain_label = builder->get_widget<Gtk::Label>("sidechain_label");
-  curve_label = builder->get_widget<Gtk::Label>("curve_label");
-  envelope_label = builder->get_widget<Gtk::Label>("envelope_label");
 
   dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
 
@@ -245,68 +489,9 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("attack", attack->get_adjustment().get(), "value");
-  settings->bind("knee", knee->get_adjustment().get(), "value");
-  settings->bind("makeup", makeup->get_adjustment().get(), "value");
-  settings->bind("ratio", ratio->get_adjustment().get(), "value");
-  settings->bind("release", release->get_adjustment().get(), "value");
-  settings->bind("threshold", threshold->get_adjustment().get(), "value");
-  settings->bind("sidechain-listen", listen, "active");
-  settings->bind("sidechain-preamp", preamp->get_adjustment().get(), "value");
-  settings->bind("sidechain-reactivity", reactivity->get_adjustment().get(), "value");
-  settings->bind("sidechain-lookahead", lookahead->get_adjustment().get(), "value");
-  settings->bind("release-threshold", release_threshold->get_adjustment().get(), "value");
-  settings->bind("boost-threshold", boost_threshold->get_adjustment().get(), "value");
-  settings->bind("boost-amount", boost_amount->get_adjustment().get(), "value");
-  settings->bind("hpf-frequency", hpf_freq->get_adjustment().get(), "value");
-  settings->bind("lpf-frequency", lpf_freq->get_adjustment().get(), "value");
-
-  g_settings_bind_with_mapping(settings->gobj(), "mode", compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "sidechain-type", sidechain_type->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, sidechain_type_enum_to_int, int_to_sidechain_type_enum, nullptr,
-                               nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "sidechain-mode", sidechain_mode->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int, int_to_sidechain_mode_enum, nullptr,
-                               nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "sidechain-source", sidechain_source->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, sidechain_source_enum_to_int, int_to_sidechain_source_enum,
-                               nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "hpf-mode", hpf_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "lpf-mode", lpf_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
-
   connections.push_back(settings->signal_changed("sidechain-type").connect([=, this](const auto& key) {
     dropdown_input_devices->set_sensitive(settings->get_string(key) == "External");
   }));
-
-  // prepare widgets
-
-  prepare_spinbutton(threshold, "dB");
-  prepare_spinbutton(attack, "ms");
-
-  prepare_spinbutton(release_threshold, "dB");
-  prepare_spinbutton(release, "ms");
-
-  prepare_spinbutton(boost_threshold, "dB");
-  prepare_spinbutton(boost_amount, "dB");
-  prepare_spinbutton(knee, "dB");
-  prepare_spinbutton(makeup, "dB");
-
-  prepare_spinbutton(preamp, "dB");
-  prepare_spinbutton(lookahead, "ms");
-  prepare_spinbutton(reactivity, "ms");
-
-  prepare_spinbutton(hpf_freq, "Hz");
-  prepare_spinbutton(lpf_freq, "Hz");
-
-  prepare_spinbutton(ratio);
 
   dropdown_input_devices->set_sensitive(settings->get_string("sidechain-type") == "External");
 
@@ -341,82 +526,16 @@ CompressorUi::~CompressorUi() {
   util::debug(name + " ui destroyed");
 }
 
-auto CompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/compressor.ui");
+// auto CompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi* {
+//   const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/compressor.ui");
 
-  auto* const ui = Gtk::Builder::get_widget_derived<CompressorUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.compressor", schema_path + "compressor/");
+//   auto* const ui = Gtk::Builder::get_widget_derived<CompressorUi>(
+//       builder, "top_box", "com.github.wwmm.easyeffects.compressor", schema_path + "compressor/");
 
-  stack->add(*ui, plugin_name::compressor);
+//   stack->add(*ui, plugin_name::compressor);
 
-  return ui;
-}
-
-void CompressorUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("mode");
-
-  settings->reset("attack");
-
-  settings->reset("release");
-
-  settings->reset("release-threshold");
-
-  settings->reset("threshold");
-
-  settings->reset("ratio");
-
-  settings->reset("knee");
-
-  settings->reset("makeup");
-
-  settings->reset("boost-threshold");
-
-  settings->reset("sidechain-listen");
-
-  settings->reset("sidechain-type");
-
-  settings->reset("sidechain-mode");
-
-  settings->reset("sidechain-source");
-
-  settings->reset("sidechain-preamp");
-
-  settings->reset("sidechain-reactivity");
-
-  settings->reset("sidechain-lookahead");
-
-  settings->reset("sidechain-input-device");
-
-  settings->reset("hpf-mode");
-
-  settings->reset("hpf-frequency");
-
-  settings->reset("lpf-mode");
-
-  settings->reset("lpf-frequency");
-}
-
-void CompressorUi::on_new_reduction(const float& value) {
-  reduction_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void CompressorUi::on_new_envelope(const float& value) {
-  envelope_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void CompressorUi::on_new_sidechain(const float& value) {
-  sidechain_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void CompressorUi::on_new_curve(const float& value) {
-  curve_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
+//   return ui;
+// }
 
 void CompressorUi::setup_dropdown_input_devices() {
   // setting the dropdown model and factory

@@ -17,8 +17,31 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef COMPRESSOR_UI_HPP
-#define COMPRESSOR_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "node_info_holder.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::compressor_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_COMPRESSOR_BOX (compressor_box_get_type())
+
+G_DECLARE_FINAL_TYPE(CompressorBox, compressor_box, EE, COMPRESSOR_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> CompressorBox*;
+
+void setup(CompressorBox* self,
+           std::shared_ptr<Compressor> compressor,
+           const std::string& schema_path,
+           PipeManager* pm);
+
+}  // namespace ui::compressor_box
 
 #include "info_holders.hpp"
 #include "plugin_ui_base.hpp"
@@ -37,17 +60,7 @@ class CompressorUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi*;
 
-  void on_new_reduction(const float& value);
-
-  void on_new_envelope(const float& value);
-
-  void on_new_sidechain(const float& value);
-
-  void on_new_curve(const float& value);
-
   void set_pipe_manager_ptr(PipeManager* pipe_manager);
-
-  void reset() override;
 
  private:
   Gtk::SpinButton *attack = nullptr, *release = nullptr, *release_threshold = nullptr, *threshold = nullptr,
@@ -70,5 +83,3 @@ class CompressorUi : public Gtk::Box, public PluginUiBase {
 
   void setup_dropdown_input_devices();
 };
-
-#endif

@@ -182,33 +182,23 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->bass_loudness->bypass = false;
     } else if (name == plugin_name::compressor) {
-      auto* const compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
+      // auto* const compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
 
-      compressor_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->compressor->bypass = compressor_ui->bypass->get_active(); });
+      // compressor_ui->bypass->signal_toggled().connect(
+      //     [=, this]() { effects_base->compressor->bypass = compressor_ui->bypass->get_active(); });
 
-      compressor_ui->set_pipe_manager_ptr(pm);
+      // compressor_ui->set_pipe_manager_ptr(pm);
 
-      effects_base->compressor->input_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level));
-      effects_base->compressor->output_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level));
-      effects_base->compressor->reduction.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction));
-      effects_base->compressor->envelope.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_envelope));
-      effects_base->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain));
-      effects_base->compressor->curve.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve));
+      // effects_base->compressor->input_level.connect(sigc::mem_fun(*compressor_ui,
+      // &CompressorUi::on_new_input_level));
+      // effects_base->compressor->output_level.connect(sigc::mem_fun(*compressor_ui,
+      // &CompressorUi::on_new_output_level)); effects_base->compressor->reduction.connect(sigc::mem_fun(*compressor_ui,
+      // &CompressorUi::on_new_reduction)); effects_base->compressor->envelope.connect(sigc::mem_fun(*compressor_ui,
+      // &CompressorUi::on_new_envelope)); effects_base->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui,
+      // &CompressorUi::on_new_sidechain)); effects_base->compressor->curve.connect(sigc::mem_fun(*compressor_ui,
+      // &CompressorUi::on_new_curve));
 
-      effects_base->compressor->bypass = false;
-    } else if (name == plugin_name::convolver) {
-      // auto* const convolver_ui = ConvolverUi::add_to_stack(stack_plugins, path);
-
-      // convolver_ui->bypass->signal_toggled().connect(
-      //     [=, this]() { effects_base->convolver->bypass = convolver_ui->bypass->get_active(); });
-
-      // convolver_ui->set_transient_window(transient_window);
-
-      // effects_base->convolver->input_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_input_level));
-      // effects_base->convolver->output_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level));
-
-      // effects_base->convolver->bypass = false;
+      // effects_base->compressor->bypass = false;
     } else if (name == plugin_name::deesser) {
       auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 
