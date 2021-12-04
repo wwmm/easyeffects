@@ -32,8 +32,6 @@ struct _PluginsMenu {
 
   GtkListView* listview;
 
-  GtkSearchEntry* plugins_search;
-
   GtkStringList* string_list;
 
   GSettings* settings;
@@ -138,30 +136,6 @@ void setup_listview(PluginsMenu* self) {
   for (const auto& translated_name : std::views::values(plugin_name::translated)) {
     gtk_string_list_append(self->string_list, translated_name.c_str());
   }
-
-  // filter
-
-  auto* filter = gtk_string_filter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* filter_model = gtk_filter_list_model_new(G_LIST_MODEL(self->string_list), GTK_FILTER(filter));
-
-  gtk_filter_list_model_set_incremental(filter_model, 1);
-
-  g_object_bind_property(self->plugins_search, "text", filter, "search", G_BINDING_DEFAULT);
-
-  // sorter
-
-  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(filter_model), GTK_SORTER(sorter));
-
-  // setting the listview model
-
-  auto* selection = gtk_no_selection_new(G_LIST_MODEL(sorter_model));
-
-  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
 }
 
 void setup(PluginsMenu* self, app::Application* application, PipelineType pipeline_type) {
@@ -228,15 +202,14 @@ void plugins_menu_class_init(PluginsMenuClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/plugins_menu.ui");
 
+  gtk_widget_class_bind_template_child(widget_class, PluginsMenu, string_list);
+
   gtk_widget_class_bind_template_child(widget_class, PluginsMenu, scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PluginsMenu, listview);
-  gtk_widget_class_bind_template_child(widget_class, PluginsMenu, plugins_search);
 }
 
 void plugins_menu_init(PluginsMenu* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
-
-  self->string_list = gtk_string_list_new(nullptr);
 }
 
 auto create() -> PluginsMenu* {
