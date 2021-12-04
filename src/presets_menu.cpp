@@ -36,8 +36,6 @@ struct _PresetsMenu {
 
   GtkText *output_name, *input_name;
 
-  GtkSearchEntry *output_search, *input_search;
-
   GtkLabel *last_used_output, *last_used_input;
 
   GtkStringList *output_string_list, *input_string_list;
@@ -241,34 +239,6 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
   for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
     gtk_string_list_append(string_list, name.c_str());
   }
-
-  // filter
-
-  auto* filter = gtk_string_filter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* filter_model = gtk_filter_list_model_new(G_LIST_MODEL(string_list), GTK_FILTER(filter));
-
-  gtk_filter_list_model_set_incremental(filter_model, 1);
-
-  if constexpr (preset_type == PresetType::output) {
-    g_object_bind_property(self->output_search, "text", filter, "search", G_BINDING_DEFAULT);
-  } else if constexpr (preset_type == PresetType::input) {
-    g_object_bind_property(self->input_search, "text", filter, "search", G_BINDING_DEFAULT);
-  }
-
-  // sorter
-
-  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(filter_model), GTK_SORTER(sorter));
-
-  // setting the listview model
-
-  auto* selection = gtk_no_selection_new(G_LIST_MODEL(sorter_model));
-
-  gtk_list_view_set_model(listview, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
 }
 
 void reset_menu_button_label(PresetsMenu* self) {
@@ -421,18 +391,19 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/presets_menu.ui");
 
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_string_list);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_string_list);
+
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, stack);
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_listview);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_name);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_search);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_output);
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_listview);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_name);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_search);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_input);
 
   gtk_widget_class_bind_template_callback(widget_class, create_output_preset);
@@ -443,9 +414,6 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
 void presets_menu_init(PresetsMenu* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
-
-  self->output_string_list = gtk_string_list_new(nullptr);
-  self->input_string_list = gtk_string_list_new(nullptr);
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
