@@ -230,6 +230,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
         g_object_set_data(G_OBJECT(item), "device", gtk_builder_get_object(builder, "device"));
         g_object_set_data(G_OBJECT(item), "device_profile", gtk_builder_get_object(builder, "device_profile"));
         g_object_set_data(G_OBJECT(item), "preset_name", gtk_builder_get_object(builder, "preset_name"));
+
         auto* remove = gtk_builder_get_object(builder, "remove");
 
         g_object_set_data(G_OBJECT(item), "remove", remove);

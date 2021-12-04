@@ -132,20 +132,6 @@ void setup_listview(BlocklistMenu* self) {
                                g_settings_get_strv(settings, key));
       }),
       self));
-
-  // sorter
-
-  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(self->string_list), GTK_SORTER(sorter));
-
-  // setting the listview model and factory
-
-  auto* selection = gtk_no_selection_new(G_LIST_MODEL(sorter_model));
-
-  gtk_list_view_set_model(self->listview, GTK_SELECTION_MODEL(selection));
-
-  g_object_unref(selection);
 }
 
 void setup(BlocklistMenu* self, app::Application* application, PipelineType pipeline_type) {
@@ -215,6 +201,8 @@ void blocklist_menu_class_init(BlocklistMenuClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/blocklist_menu.ui");
 
+  gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, string_list);
+
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, listview);
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, app_name);
@@ -226,8 +214,6 @@ void blocklist_menu_class_init(BlocklistMenuClass* klass) {
 
 void blocklist_menu_init(BlocklistMenu* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
-
-  self->string_list = gtk_string_list_new(nullptr);
 }
 
 auto create() -> BlocklistMenu* {
