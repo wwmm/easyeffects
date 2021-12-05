@@ -29,11 +29,11 @@ BassLoudness::BassLoudness(const std::string& tag,
     util::debug(log_tag + "http://drobilla.net/plugins/mda/Loudness is not installed");
   }
 
-  lv2_wrapper->bind_key_double_db(settings, "loudness", "loudness");
+  lv2_wrapper->bind_key_double_db<"loudness", "loudness">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "output", "output");
+  lv2_wrapper->bind_key_double_db<"output", "output">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "link", "link");
+  lv2_wrapper->bind_key_double_db<"link", "link">(settings);
 
   setup_input_output_gain();
 }

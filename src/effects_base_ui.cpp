@@ -74,21 +74,12 @@ EffectsBaseUi::~EffectsBaseUi() {
 
   // do not send notifications when the window is closed
 
-  effects_base->bass_loudness->post_messages = false;
-  effects_base->compressor->post_messages = false;
-  effects_base->convolver->post_messages = false;
-  effects_base->crossfeed->post_messages = false;
-  effects_base->crystalizer->post_messages = false;
   effects_base->deesser->post_messages = false;
   effects_base->delay->post_messages = false;
   effects_base->echo_canceller->post_messages = false;
-  effects_base->equalizer->post_messages = false;
-  effects_base->exciter->post_messages = false;
   effects_base->filter->post_messages = false;
   effects_base->gate->post_messages = false;
-  effects_base->limiter->post_messages = false;
   effects_base->loudness->post_messages = false;
-  effects_base->maximizer->post_messages = false;
   effects_base->multiband_compressor->post_messages = false;
   effects_base->multiband_gate->post_messages = false;
   effects_base->output_level->post_messages = false;
@@ -100,21 +91,12 @@ EffectsBaseUi::~EffectsBaseUi() {
 
   // disabling bypass when closing the window
 
-  effects_base->bass_loudness->bypass = false;
-  effects_base->compressor->bypass = false;
-  effects_base->convolver->bypass = false;
-  effects_base->crossfeed->bypass = false;
-  effects_base->crystalizer->bypass = false;
   effects_base->deesser->bypass = false;
   effects_base->delay->bypass = false;
   effects_base->echo_canceller->bypass = false;
-  effects_base->equalizer->bypass = false;
-  effects_base->exciter->bypass = false;
   effects_base->filter->bypass = false;
   effects_base->gate->bypass = false;
-  effects_base->limiter->bypass = false;
   effects_base->loudness->bypass = false;
-  effects_base->maximizer->bypass = false;
   effects_base->multiband_compressor->bypass = false;
   effects_base->multiband_gate->bypass = false;
   effects_base->output_level->bypass = false;
@@ -169,37 +151,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       continue;
     }
 
-    if (name == plugin_name::bass_loudness) {
-      auto* const bass_loudness_ui = BassLoudnessUi::add_to_stack(stack_plugins, path);
-
-      bass_loudness_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->bass_loudness->bypass = bass_loudness_ui->bypass->get_active(); });
-
-      effects_base->bass_loudness->input_level.connect(
-          sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_input_level));
-      effects_base->bass_loudness->output_level.connect(
-          sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_output_level));
-
-      effects_base->bass_loudness->bypass = false;
-    } else if (name == plugin_name::compressor) {
-      // auto* const compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
-
-      // compressor_ui->bypass->signal_toggled().connect(
-      //     [=, this]() { effects_base->compressor->bypass = compressor_ui->bypass->get_active(); });
-
-      // compressor_ui->set_pipe_manager_ptr(pm);
-
-      // effects_base->compressor->input_level.connect(sigc::mem_fun(*compressor_ui,
-      // &CompressorUi::on_new_input_level));
-      // effects_base->compressor->output_level.connect(sigc::mem_fun(*compressor_ui,
-      // &CompressorUi::on_new_output_level)); effects_base->compressor->reduction.connect(sigc::mem_fun(*compressor_ui,
-      // &CompressorUi::on_new_reduction)); effects_base->compressor->envelope.connect(sigc::mem_fun(*compressor_ui,
-      // &CompressorUi::on_new_envelope)); effects_base->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui,
-      // &CompressorUi::on_new_sidechain)); effects_base->compressor->curve.connect(sigc::mem_fun(*compressor_ui,
-      // &CompressorUi::on_new_curve));
-
-      // effects_base->compressor->bypass = false;
-    } else if (name == plugin_name::deesser) {
+    if (name == plugin_name::deesser) {
       auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 
       deesser_ui->bypass->signal_toggled().connect(

@@ -562,20 +562,24 @@
                                             <object class="GtkDropDown" id="dropdown_input_devices">
                                                 <property name="valign">center</property>
                                                 <property name="margin-end">6</property>
+
                                                 <binding name="sensitive">
                                                     <closure type="gboolean" function="set_dropdown_sensitive">
                                                         <lookup name="active">sidechain_type</lookup>
                                                     </closure>
                                                 </binding>
+
                                                 <property name="factory">
                                                     <object class="GtkBuilderListItemFactory">
                                                         <property name="resource">/com/github/wwmm/easyeffects/ui/factory_input_device_dropdown.ui</property>
                                                     </object>
                                                 </property>
+
                                                 <layout>
                                                     <property name="column">1</property>
                                                     <property name="row">2</property>
                                                 </layout>
+
                                                 <accessibility>
                                                     <property name="label" translatable="yes">Input Device</property>
                                                 </accessibility>

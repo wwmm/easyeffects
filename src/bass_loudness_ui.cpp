@@ -19,59 +19,149 @@
 
 #include "bass_loudness_ui.hpp"
 
-BassLoudnessUi::BassLoudnessUi(BaseObjectType* cobject,
-                               const Glib::RefPtr<Gtk::Builder>& builder,
-                               const std::string& schema,
-                               const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::bass_loudness;
+namespace ui::bass_loudness_box {
 
-  // loading builder widgets
+using namespace std::string_literals;
 
-  loudness = builder->get_widget<Gtk::SpinButton>("loudness");
-  output = builder->get_widget<Gtk::SpinButton>("output");
-  link = builder->get_widget<Gtk::SpinButton>("link");
+auto constexpr log_tag = "bass_loudness_box: ";
 
-  // gsettings bindings
+struct _BassLoudnessBox {
+  GtkBox parent_instance;
 
-  settings->bind("loudness", loudness->get_adjustment().get(), "value");
-  settings->bind("output", output->get_adjustment().get(), "value");
-  settings->bind("link", link->get_adjustment().get(), "value");
+  GtkScale *input_gain, *output_gain;
 
-  prepare_spinbutton(loudness, "dB");
-  prepare_spinbutton(output, "dB");
-  prepare_spinbutton(link, "dB");
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  setup_input_output_gain(builder);
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkSpinButton *loudness, *output, *link;
+
+  GSettings* settings;
+
+  std::shared_ptr<BassLoudness> bass_loudness;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(BassLoudnessBox, bass_loudness_box, GTK_TYPE_BOX)
+
+void on_bypass(BassLoudnessBox* self, GtkToggleButton* btn) {
+  self->bass_loudness->bypass = gtk_toggle_button_get_active(btn);
 }
 
-BassLoudnessUi::~BassLoudnessUi() {
-  util::debug(name + " ui destroyed");
+void on_reset(BassLoudnessBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "loudness");
+
+  g_settings_reset(self->settings, "output");
+
+  g_settings_reset(self->settings, "link");
 }
 
-auto BassLoudnessUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> BassLoudnessUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/bass_loudness.ui");
+void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, const std::string& schema_path) {
+  self->bass_loudness = bass_loudness;
 
-  auto* const ui = Gtk::Builder::get_widget_derived<BassLoudnessUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.bassloudness", schema_path + "bassloudness/");
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassloudness", schema_path.c_str());
 
-  stack->add(*ui, plugin_name::bass_loudness);
+  bass_loudness->post_messages = true;
+  bass_loudness->bypass = false;
 
-  return ui;
+  self->connections.push_back(bass_loudness->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(bass_loudness->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "loudness", gtk_spin_button_get_adjustment(self->loudness), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "output", gtk_spin_button_get_adjustment(self->output), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "link", gtk_spin_button_get_adjustment(self->link), "value", G_SETTINGS_BIND_DEFAULT);
 }
 
-void BassLoudnessUi::reset() {
-  bypass->set_active(false);
+void dispose(GObject* object) {
+  auto* self = EE_BASS_LOUDNESS_BOX(object);
 
-  settings->reset("input-gain");
+  self->bass_loudness->post_messages = false;
+  self->bass_loudness->bypass = false;
 
-  settings->reset("output-gain");
+  for (auto& c : self->connections) {
+    c.disconnect();
+  }
 
-  settings->reset("loudness");
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
 
-  settings->reset("output");
+  self->connections.clear();
+  self->gconnections.clear();
 
-  settings->reset("link");
+  g_object_unref(self->settings);
 
-  settings->reset("listen");
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(bass_loudness_box_parent_class)->dispose(object);
 }
+
+void bass_loudness_box_class_init(BassLoudnessBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/bass_loudness.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, loudness);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, link);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
+}
+
+void bass_loudness_box_init(BassLoudnessBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  prepare_spinbutton<"dB">(self->loudness);
+  prepare_spinbutton<"dB">(self->output);
+  prepare_spinbutton<"dB">(self->link);
+}
+
+auto create() -> BassLoudnessBox* {
+  return static_cast<BassLoudnessBox*>(g_object_new(EE_TYPE_BASS_LOUDNESS_BOX, nullptr));
+}
+
+}  // namespace ui::bass_loudness_box

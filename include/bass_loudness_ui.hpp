@@ -17,29 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef BASS_LOUDNESS_UI_HPP
-#define BASS_LOUDNESS_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class BassLoudnessUi : public Gtk::Box, public PluginUiBase {
- public:
-  BassLoudnessUi(BaseObjectType* cobject,
-                 const Glib::RefPtr<Gtk::Builder>& builder,
-                 const std::string& schema,
-                 const std::string& schema_path);
-  BassLoudnessUi(const BassLoudnessUi&) = delete;
-  auto operator=(const BassLoudnessUi&) -> BassLoudnessUi& = delete;
-  BassLoudnessUi(const BassLoudnessUi&&) = delete;
-  auto operator=(const BassLoudnessUi&&) -> BassLoudnessUi& = delete;
-  ~BassLoudnessUi() override;
+namespace ui::bass_loudness_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> BassLoudnessUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_BASS_LOUDNESS_BOX (bass_loudness_box_get_type())
 
- private:
-  Gtk::SpinButton *loudness = nullptr, *output = nullptr, *link = nullptr;
-};
+G_DECLARE_FINAL_TYPE(BassLoudnessBox, bass_loudness_box, EE, BASS_LOUDNESS_BOX, GtkBox)
 
-#endif
+G_END_DECLS
+
+auto create() -> BassLoudnessBox*;
+
+void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, const std::string& schema_path);
+
+}  // namespace ui::bass_loudness_box

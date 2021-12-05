@@ -58,8 +58,6 @@ void on_add_to_blocklist(BlocklistMenu* self, GtkButton* button) {
   }
 }
 
-void on_show_blocklisted_apps(GtkSwitch* btn, gboolean state, BlocklistMenu* self) {}
-
 void setup_listview(BlocklistMenu* self) {
   auto* factory = gtk_signal_list_item_factory_new();
 
@@ -208,7 +206,6 @@ void blocklist_menu_class_init(BlocklistMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, app_name);
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, show_blocklisted_apps);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_show_blocklisted_apps);
   gtk_widget_class_bind_template_callback(widget_class, on_add_to_blocklist);
 }
 

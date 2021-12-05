@@ -1,5 +1,6 @@
 <interface domain="easyeffects">
     <template class="GtkListItem">
+        <property name="activatable">0</property>
         <property name="child">
             <object class="GtkBox">
                 <child>
