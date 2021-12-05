@@ -22,18 +22,18 @@
                 <property name="margin-top">6</property>
                 <property name="halign">center</property>
                 <items>
-                    <item translatable="yes">12dB/oct Lowpass</item>
-                    <item translatable="yes">24dB/oct Lowpass</item>
-                    <item translatable="yes">36dB/oct Lowpass</item>
-                    <item translatable="yes">12dB/oct Highpass</item>
-                    <item translatable="yes">24dB/oct Highpass</item>
-                    <item translatable="yes">36dB/oct Highpass</item>
-                    <item translatable="yes">6dB/oct Bandpass</item>
-                    <item translatable="yes">12dB/oct Bandpass</item>
-                    <item translatable="yes">18dB/oct Bandpass</item>
-                    <item translatable="yes">6dB/oct Bandreject</item>
-                    <item translatable="yes">12dB/oct Bandreject</item>
-                    <item translatable="yes">18dB/oct Bandreject</item>
+                    <item translatable="yes" id="12dB/oct Lowpass">12dB/oct Lowpass</item>
+                    <item translatable="yes" id="24dB/oct Lowpass">24dB/oct Lowpass</item>
+                    <item translatable="yes" id="36dB/oct Lowpass">36dB/oct Lowpass</item>
+                    <item translatable="yes" id="12dB/oct Highpass">12dB/oct Highpass</item>
+                    <item translatable="yes" id="24dB/oct Highpass">24dB/oct Highpass</item>
+                    <item translatable="yes" id="36dB/oct Highpass">36dB/oct Highpass</item>
+                    <item translatable="yes" id="6dB/oct Bandpass">6dB/oct Bandpass</item>
+                    <item translatable="yes" id="12dB/oct Bandpass">12dB/oct Bandpass</item>
+                    <item translatable="yes" id="18dB/oct Bandpass">18dB/oct Bandpass</item>
+                    <item translatable="yes" id="6dB/oct Bandreject">6dB/oct Bandreject</item>
+                    <item translatable="yes" id="12dB/oct Bandreject">12dB/oct Bandreject</item>
+                    <item translatable="yes" id="18dB/oct Bandreject">18dB/oct Bandreject</item>
                 </items>
                 <accessibility>
                     <property name="label">Filter Mode</property>

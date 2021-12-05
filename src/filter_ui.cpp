@@ -103,70 +103,7 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
   g_settings_bind(self->settings, "inertia", gtk_spin_button_get_adjustment(self->inertia), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(
-      self->settings, "mode", self->mode, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
-
-        if (g_strcmp0(v, "12dB/oct Lowpass") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "24dB/oct Lowpass") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "36dB/oct Lowpass") == 0) {
-          g_value_set_int(value, 2);
-        } else if (g_strcmp0(v, "12dB/oct Highpass") == 0) {
-          g_value_set_int(value, 3);
-        } else if (g_strcmp0(v, "24dB/oct Highpass") == 0) {
-          g_value_set_int(value, 4);
-        } else if (g_strcmp0(v, "36dB/oct Highpass") == 0) {
-          g_value_set_int(value, 5);
-        } else if (g_strcmp0(v, "6dB/oct Bandpass") == 0) {
-          g_value_set_int(value, 6);
-        } else if (g_strcmp0(v, "12dB/oct Bandpass") == 0) {
-          g_value_set_int(value, 7);
-        } else if (g_strcmp0(v, "18dB/oct Bandpass") == 0) {
-          g_value_set_int(value, 8);
-        } else if (g_strcmp0(v, "6dB/oct Bandreject") == 0) {
-          g_value_set_int(value, 9);
-        } else if (g_strcmp0(v, "12dB/oct Bandreject") == 0) {
-          g_value_set_int(value, 10);
-        } else if (g_strcmp0(v, "18dB/oct Bandreject") == 0) {
-          g_value_set_int(value, 11);
-        }
-
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("12dB/oct Lowpass");
-          case 1:
-            return g_variant_new_string("24dB/oct Lowpass");
-          case 2:
-            return g_variant_new_string("36dB/oct Lowpass");
-          case 3:
-            return g_variant_new_string("12dB/oct Highpass");
-          case 4:
-            return g_variant_new_string("24dB/oct Highpass");
-          case 5:
-            return g_variant_new_string("36dB/oct Highpass");
-          case 6:
-            return g_variant_new_string("6dB/oct Bandpass");
-          case 7:
-            return g_variant_new_string("12dB/oct Bandpass");
-          case 8:
-            return g_variant_new_string("18dB/oct Bandpass");
-          case 9:
-            return g_variant_new_string("6dB/oct Bandreject");
-          case 10:
-            return g_variant_new_string("12dB/oct Bandreject");
-          case 11:
-            return g_variant_new_string("18dB/oct Bandreject");
-          default:
-            return g_variant_new_string("12dB/oct Lowpass");
-        }
-      },
-      nullptr, nullptr);
+  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
