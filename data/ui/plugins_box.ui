@@ -26,6 +26,7 @@
                         <child>
                             <object class="GtkListView" id="listview">
                                 <property name="vexpand">1</property>
+                                <property name="model" bind-source="stack" bind-property="pages" bind-flags="sync-create" />
                                 <style>
                                     <class name="navigation-sidebar" />
                                 </style>

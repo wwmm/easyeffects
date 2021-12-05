@@ -333,14 +333,6 @@ void setup_listview(PluginsBox* self) {
   gtk_list_view_set_factory(self->listview, factory);
 
   g_object_unref(factory);
-
-  // setting the listview model
-
-  auto* selection = gtk_stack_get_pages(self->stack);
-
-  gtk_list_view_set_model(self->listview, selection);
-
-  g_object_unref(selection);
 }
 
 void setup(PluginsBox* self, app::Application* application, PipelineType pipeline_type) {
