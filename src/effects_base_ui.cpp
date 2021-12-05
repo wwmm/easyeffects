@@ -112,45 +112,9 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   std::replace(path.begin(), path.end(), '.', '/');
 
-  // removing plugins that are not in the list
-
-  for (auto* child = stack_plugins->get_first_child(); child != nullptr;) {
-    auto found = false;
-
-    for (const auto& name : settings->get_string_array("plugins")) {
-      if (name == stack_plugins->get_page(*child)->get_name()) {
-        found = true;
-
-        break;
-      }
-    }
-
-    auto* next_child = child->get_next_sibling();
-
-    if (!found) {
-      stack_plugins->remove(*child);
-    }
-
-    child = next_child;
-  }
-
   // Adding to the stack the plugins in the list that are not there yet
 
   for (const auto& name : settings->get_string_array("plugins")) {
-    auto found = false;
-
-    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-      if (name == stack_plugins->get_page(*child)->get_name()) {
-        found = true;
-
-        break;
-      }
-    }
-
-    if (found) {
-      continue;
-    }
-
     if (name == plugin_name::deesser) {
       auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 
@@ -175,16 +139,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*echo_canceller_ui, &EchoCancellerUi::on_new_output_level));
 
       effects_base->echo_canceller->bypass = false;
-    } else if (name == plugin_name::filter) {
-      auto* const filter_ui = FilterUi::add_to_stack(stack_plugins, path);
-
-      filter_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->filter->bypass = filter_ui->bypass->get_active(); });
-
-      effects_base->filter->input_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level));
-      effects_base->filter->output_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level));
-
-      effects_base->filter->bypass = false;
     } else if (name == plugin_name::gate) {
       auto* const gate_ui = GateUi::add_to_stack(stack_plugins, path);
 

@@ -17,31 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef FILTER_UI_HPP
-#define FILTER_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class FilterUi : public Gtk::Box, public PluginUiBase {
- public:
-  FilterUi(BaseObjectType* cobject,
-           const Glib::RefPtr<Gtk::Builder>& builder,
-           const std::string& schema,
-           const std::string& schema_path);
-  FilterUi(const FilterUi&) = delete;
-  auto operator=(const FilterUi&) -> FilterUi& = delete;
-  FilterUi(const FilterUi&&) = delete;
-  auto operator=(const FilterUi&&) -> FilterUi& = delete;
-  ~FilterUi() override;
+namespace ui::filter_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> FilterUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_FILTER_BOX (filter_box_get_type())
 
- private:
-  Gtk::ComboBoxText* mode = nullptr;
+G_DECLARE_FINAL_TYPE(FilterBox, filter_box, EE, FILTER_BOX, GtkBox)
 
-  Gtk::SpinButton *frequency = nullptr, *resonance = nullptr, *inertia = nullptr;
-};
+G_END_DECLS
 
-#endif
+auto create() -> FilterBox*;
+
+void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path);
+
+}  // namespace ui::filter_box

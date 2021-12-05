@@ -19,142 +19,220 @@
 
 #include "filter_ui.hpp"
 
-namespace {
+namespace ui::filter_box {
 
-auto filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+using namespace std::string_literals;
 
-  if (g_strcmp0(v, "12dB/oct Lowpass") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "24dB/oct Lowpass") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "36dB/oct Lowpass") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "12dB/oct Highpass") == 0) {
-    g_value_set_int(value, 3);
-  } else if (g_strcmp0(v, "24dB/oct Highpass") == 0) {
-    g_value_set_int(value, 4);
-  } else if (g_strcmp0(v, "36dB/oct Highpass") == 0) {
-    g_value_set_int(value, 5);
-  } else if (g_strcmp0(v, "6dB/oct Bandpass") == 0) {
-    g_value_set_int(value, 6);
-  } else if (g_strcmp0(v, "12dB/oct Bandpass") == 0) {
-    g_value_set_int(value, 7);
-  } else if (g_strcmp0(v, "18dB/oct Bandpass") == 0) {
-    g_value_set_int(value, 8);
-  } else if (g_strcmp0(v, "6dB/oct Bandreject") == 0) {
-    g_value_set_int(value, 9);
-  } else if (g_strcmp0(v, "12dB/oct Bandreject") == 0) {
-    g_value_set_int(value, 10);
-  } else if (g_strcmp0(v, "18dB/oct Bandreject") == 0) {
-    g_value_set_int(value, 11);
+auto constexpr log_tag = "filter_box: ";
+
+struct _FilterBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkComboBoxText* mode;
+
+  GtkSpinButton *frequency, *resonance, *inertia;
+
+  GSettings* settings;
+
+  std::shared_ptr<Filter> filter;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(FilterBox, filter_box, GTK_TYPE_BOX)
+
+void on_bypass(FilterBox* self, GtkToggleButton* btn) {
+  self->filter->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(FilterBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "frequency");
+
+  g_settings_reset(self->settings, "resonance");
+
+  g_settings_reset(self->settings, "mode");
+
+  g_settings_reset(self->settings, "inertia");
+}
+
+void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path) {
+  self->filter = filter;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.filter", schema_path.c_str());
+
+  filter->post_messages = true;
+  filter->bypass = false;
+
+  self->connections.push_back(filter->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(filter->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "frequency", gtk_spin_button_get_adjustment(self->frequency), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "resonance", gtk_spin_button_get_adjustment(self->resonance), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "inertia", gtk_spin_button_get_adjustment(self->inertia), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind_with_mapping(
+      self->settings, "mode", self->mode, "active", G_SETTINGS_BIND_DEFAULT,
+      +[](GValue* value, GVariant* variant, gpointer user_data) {
+        const auto* v = g_variant_get_string(variant, nullptr);
+
+        if (g_strcmp0(v, "12dB/oct Lowpass") == 0) {
+          g_value_set_int(value, 0);
+        } else if (g_strcmp0(v, "24dB/oct Lowpass") == 0) {
+          g_value_set_int(value, 1);
+        } else if (g_strcmp0(v, "36dB/oct Lowpass") == 0) {
+          g_value_set_int(value, 2);
+        } else if (g_strcmp0(v, "12dB/oct Highpass") == 0) {
+          g_value_set_int(value, 3);
+        } else if (g_strcmp0(v, "24dB/oct Highpass") == 0) {
+          g_value_set_int(value, 4);
+        } else if (g_strcmp0(v, "36dB/oct Highpass") == 0) {
+          g_value_set_int(value, 5);
+        } else if (g_strcmp0(v, "6dB/oct Bandpass") == 0) {
+          g_value_set_int(value, 6);
+        } else if (g_strcmp0(v, "12dB/oct Bandpass") == 0) {
+          g_value_set_int(value, 7);
+        } else if (g_strcmp0(v, "18dB/oct Bandpass") == 0) {
+          g_value_set_int(value, 8);
+        } else if (g_strcmp0(v, "6dB/oct Bandreject") == 0) {
+          g_value_set_int(value, 9);
+        } else if (g_strcmp0(v, "12dB/oct Bandreject") == 0) {
+          g_value_set_int(value, 10);
+        } else if (g_strcmp0(v, "18dB/oct Bandreject") == 0) {
+          g_value_set_int(value, 11);
+        }
+
+        return 1;
+      },
+      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+        switch (g_value_get_int(value)) {
+          case 0:
+            return g_variant_new_string("12dB/oct Lowpass");
+          case 1:
+            return g_variant_new_string("24dB/oct Lowpass");
+          case 2:
+            return g_variant_new_string("36dB/oct Lowpass");
+          case 3:
+            return g_variant_new_string("12dB/oct Highpass");
+          case 4:
+            return g_variant_new_string("24dB/oct Highpass");
+          case 5:
+            return g_variant_new_string("36dB/oct Highpass");
+          case 6:
+            return g_variant_new_string("6dB/oct Bandpass");
+          case 7:
+            return g_variant_new_string("12dB/oct Bandpass");
+          case 8:
+            return g_variant_new_string("18dB/oct Bandpass");
+          case 9:
+            return g_variant_new_string("6dB/oct Bandreject");
+          case 10:
+            return g_variant_new_string("12dB/oct Bandreject");
+          case 11:
+            return g_variant_new_string("18dB/oct Bandreject");
+          default:
+            return g_variant_new_string("12dB/oct Lowpass");
+        }
+      },
+      nullptr, nullptr);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_FILTER_BOX(object);
+
+  self->filter->post_messages = false;
+  self->filter->bypass = false;
+
+  for (auto& c : self->connections) {
+    c.disconnect();
   }
 
-  return 1;
-}
-
-auto int_to_filter_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("12dB/oct Lowpass");
-
-    case 1:
-      return g_variant_new_string("24dB/oct Lowpass");
-
-    case 2:
-      return g_variant_new_string("36dB/oct Lowpass");
-
-    case 3:
-      return g_variant_new_string("12dB/oct Highpass");
-
-    case 4:
-      return g_variant_new_string("24dB/oct Highpass");
-
-    case 5:
-      return g_variant_new_string("36dB/oct Highpass");
-
-    case 6:
-      return g_variant_new_string("6dB/oct Bandpass");
-
-    case 7:
-      return g_variant_new_string("12dB/oct Bandpass");
-
-    case 8:
-      return g_variant_new_string("18dB/oct Bandpass");
-
-    case 9:
-      return g_variant_new_string("6dB/oct Bandreject");
-
-    case 10:
-      return g_variant_new_string("12dB/oct Bandreject");
-
-    case 11:
-      return g_variant_new_string("18dB/oct Bandreject");
-
-    default:
-      return g_variant_new_string("12dB/oct Lowpass");
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
   }
+
+  self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(filter_box_parent_class)->dispose(object);
 }
 
-}  // namespace
+void filter_box_class_init(FilterBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-FilterUi::FilterUi(BaseObjectType* cobject,
-                   const Glib::RefPtr<Gtk::Builder>& builder,
-                   const std::string& schema,
-                   const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::filter;
+  object_class->dispose = dispose;
 
-  // loading builder widgets
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/filter.ui");
 
-  frequency = builder->get_widget<Gtk::SpinButton>("frequency");
-  resonance = builder->get_widget<Gtk::SpinButton>("resonance");
-  inertia = builder->get_widget<Gtk::SpinButton>("inertia");
-  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, output_level_right_label);
 
-  // gsettings bindings
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, bypass);
 
-  settings->bind("frequency", frequency->get_adjustment().get(), "value");
-  settings->bind("resonance", resonance->get_adjustment().get(), "value");
-  settings->bind("inertia", inertia->get_adjustment().get(), "value");
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, mode);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, frequency);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, resonance);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, inertia);
 
-  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               filter_enum_to_int, int_to_filter_enum, nullptr, nullptr);
-
-  prepare_spinbutton(resonance, "dB");
-  prepare_spinbutton(frequency, "Hz");
-  prepare_spinbutton(inertia, "ms");
-
-  setup_input_output_gain(builder);
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
-FilterUi::~FilterUi() {
-  util::debug(name + " ui destroyed");
+void filter_box_init(FilterBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  prepare_spinbutton<"dB">(self->frequency);
+  prepare_spinbutton<"Hz">(self->resonance);
+  prepare_spinbutton<"Hz">(self->inertia);
 }
 
-auto FilterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> FilterUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/filter.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<FilterUi>(builder, "top_box", "com.github.wwmm.easyeffects.filter",
-                                                              schema_path + "filter/");
-
-  stack->add(*ui, plugin_name::filter);
-
-  return ui;
+auto create() -> FilterBox* {
+  return static_cast<FilterBox*>(g_object_new(EE_TYPE_FILTER_BOX, nullptr));
 }
 
-void FilterUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("frequency");
-
-  settings->reset("resonance");
-
-  settings->reset("mode");
-
-  settings->reset("inertia");
-}
+}  // namespace ui::filter_box

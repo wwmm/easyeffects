@@ -31,6 +31,7 @@
 #include "delay_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
+#include "filter_ui.hpp"
 #include "limiter_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "pipeline_type.hpp"

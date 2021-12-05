@@ -153,6 +153,12 @@ void add_plugins_to_stack(PluginsBox* self) {
                                self->application);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::equalizer);
+    } else if (name == plugin_name::filter) {
+      auto* box = ui::filter_box::create();
+
+      ui::filter_box::setup(box, effects_base->filter, schema_path + plugin_name::filter + "/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::filter);
     } else if (name == plugin_name::limiter) {
       auto* box = ui::limiter_box::create();
 
