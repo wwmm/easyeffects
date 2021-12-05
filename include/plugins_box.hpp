@@ -28,6 +28,7 @@
 #include "convolver_ui.hpp"
 #include "crossfeed_ui.hpp"
 #include "crystalizer_ui.hpp"
+#include "delay_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
 #include "limiter_ui.hpp"

@@ -163,16 +163,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->deesser->detected.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected));
 
       effects_base->deesser->bypass = false;
-    } else if (name == plugin_name::delay) {
-      auto* const delay_ui = DelayUi::add_to_stack(stack_plugins, path);
-
-      delay_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->delay->bypass = delay_ui->bypass->get_active(); });
-
-      effects_base->delay->input_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level));
-      effects_base->delay->output_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level));
-
-      effects_base->delay->bypass = false;
     } else if (name == plugin_name::echo_canceller) {
       auto* const echo_canceller_ui = EchoCancellerUi::add_to_stack(stack_plugins, path);
 

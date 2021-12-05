@@ -17,29 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef DELAY_UI_HPP
-#define DELAY_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class DelayUi : public Gtk::Box, public PluginUiBase {
- public:
-  DelayUi(BaseObjectType* cobject,
-          const Glib::RefPtr<Gtk::Builder>& builder,
-          const std::string& schema,
-          const std::string& schema_path);
-  DelayUi(const DelayUi&) = delete;
-  auto operator=(const DelayUi&) -> DelayUi& = delete;
-  DelayUi(const DelayUi&&) = delete;
-  auto operator=(const DelayUi&&) -> DelayUi& = delete;
-  ~DelayUi() override;
+namespace ui::delay_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DelayUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_DELAY_BOX (delay_box_get_type())
 
- private:
-  Gtk::SpinButton *time_l = nullptr, *time_r = nullptr;
-};
+G_DECLARE_FINAL_TYPE(DelayBox, delay_box, EE, DELAY_BOX, GtkBox)
 
-#endif
+G_END_DECLS
+
+auto create() -> DelayBox*;
+
+void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& schema_path);
+
+}  // namespace ui::delay_box

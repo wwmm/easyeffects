@@ -19,52 +19,145 @@
 
 #include "delay_ui.hpp"
 
-DelayUi::DelayUi(BaseObjectType* cobject,
-                 const Glib::RefPtr<Gtk::Builder>& builder,
-                 const std::string& schema,
-                 const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::delay;
+namespace ui::delay_box {
 
-  // loading glade widgets
+using namespace std::string_literals;
 
-  time_l = builder->get_widget<Gtk::SpinButton>("time_l");
-  time_r = builder->get_widget<Gtk::SpinButton>("time_r");
+auto constexpr log_tag = "delay_box: ";
 
-  // gsettings bindings
+struct _DelayBox {
+  GtkBox parent_instance;
 
-  settings->bind("time-l", time_l->get_adjustment().get(), "value");
-  settings->bind("time-r", time_r->get_adjustment().get(), "value");
+  GtkScale *input_gain, *output_gain;
 
-  prepare_spinbutton(time_l, "ms");
-  prepare_spinbutton(time_r, "ms");
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  setup_input_output_gain(builder);
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkSpinButton *time_l, *time_r;
+
+  GtkToggleButton *floor_active, *listen;
+
+  GSettings* settings;
+
+  std::shared_ptr<Delay> delay;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(DelayBox, delay_box, GTK_TYPE_BOX)
+
+void on_bypass(DelayBox* self, GtkToggleButton* btn) {
+  self->delay->bypass = gtk_toggle_button_get_active(btn);
 }
 
-DelayUi::~DelayUi() {
-  util::debug(name + " ui destroyed");
+void on_reset(DelayBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "time-l");
+
+  g_settings_reset(self->settings, "time-r");
 }
 
-auto DelayUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DelayUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/delay.ui");
+void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& schema_path) {
+  self->delay = delay;
 
-  auto* const ui = Gtk::Builder::get_widget_derived<DelayUi>(builder, "top_box", "com.github.wwmm.easyeffects.delay",
-                                                             schema_path + "delay/");
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.delay", schema_path.c_str());
 
-  stack->add(*ui, plugin_name::delay);
+  delay->post_messages = true;
+  delay->bypass = false;
 
-  return ui;
+  self->connections.push_back(delay->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(delay->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "time-l", gtk_spin_button_get_adjustment(self->time_l), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "time-r", gtk_spin_button_get_adjustment(self->time_r), "value",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
-void DelayUi::reset() {
-  bypass->set_active(false);
+void dispose(GObject* object) {
+  auto* self = EE_DELAY_BOX(object);
 
-  settings->reset("input-gain");
+  self->delay->post_messages = false;
+  self->delay->bypass = false;
 
-  settings->reset("output-gain");
+  for (auto& c : self->connections) {
+    c.disconnect();
+  }
 
-  settings->reset("time-l");
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
 
-  settings->reset("time-r");
+  self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(delay_box_parent_class)->dispose(object);
 }
+
+void delay_box_class_init(DelayBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/delay.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, time_l);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, time_r);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
+}
+
+void delay_box_init(DelayBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  prepare_spinbutton<"ms">(self->time_l);
+  prepare_spinbutton<"ms">(self->time_r);
+}
+
+auto create() -> DelayBox* {
+  return static_cast<DelayBox*>(g_object_new(EE_TYPE_DELAY_BOX, nullptr));
+}
+
+}  // namespace ui::delay_box
