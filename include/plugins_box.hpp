@@ -33,6 +33,7 @@
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
 #include "limiter_ui.hpp"
+#include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "pipeline_type.hpp"
 #include "plugins_menu.hpp"

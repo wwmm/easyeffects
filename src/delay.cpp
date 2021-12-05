@@ -32,8 +32,8 @@ Delay::Delay(const std::string& tag,
   lv2_wrapper->set_control_port_value("mode_l", 2);
   lv2_wrapper->set_control_port_value("mode_r", 2);
 
-  lv2_wrapper->bind_key_double(settings, "time-l", "time_l");
-  lv2_wrapper->bind_key_double(settings, "time-r", "time_r");
+  lv2_wrapper->bind_key_double<"time_l", "time-l">(settings);
+  lv2_wrapper->bind_key_double<"time_r", "time-r">(settings);
 
   setup_input_output_gain();
 }

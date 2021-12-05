@@ -166,6 +166,12 @@ void add_plugins_to_stack(PluginsBox* self) {
                              self->application->pm);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::limiter);
+    } else if (name == plugin_name::loudness) {
+      auto* box = ui::loudness_box::create();
+
+      ui::loudness_box::setup(box, effects_base->loudness, schema_path + plugin_name::loudness + "/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::loudness);
     } else if (name == plugin_name::maximizer) {
       auto* box = ui::maximizer_box::create();
 

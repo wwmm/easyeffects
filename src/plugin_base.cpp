@@ -169,6 +169,8 @@ PluginBase::PluginBase(std::string tag,
 }
 
 PluginBase::~PluginBase() {
+  post_messages = false;
+
   if (listener.link.next != nullptr || listener.link.prev != nullptr) {
     spa_hook_remove(&listener);
   }
@@ -310,9 +312,9 @@ void PluginBase::notify() {
   const auto output_peak_db_r = util::linear_to_db(output_peak_right);
 
   util::idle_add([=, this]() {
-    // Some crashes were happening when finishing the applications. This seems to fix them
+    // The application was hanging when we finished it. This seems to fix the problem.
 
-    if (input_level.empty() || output_level.empty()) {
+    if (!post_messages) {
       return;
     }
 

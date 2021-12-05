@@ -19,149 +19,147 @@
 
 #include "loudness_ui.hpp"
 
-namespace {
+namespace ui::loudness_box {
 
-auto fft_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+using namespace std::string_literals;
 
-  if (g_strcmp0(v, "256") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "512") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "1024") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "2048") == 0) {
-    g_value_set_int(value, 3);
-  } else if (g_strcmp0(v, "4096") == 0) {
-    g_value_set_int(value, 4);
-  } else if (g_strcmp0(v, "8192") == 0) {
-    g_value_set_int(value, 5);
-  } else if (g_strcmp0(v, "16384") == 0) {
-    g_value_set_int(value, 6);
+auto constexpr log_tag = "loudness_box: ";
+
+struct _LoudnessBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkComboBoxText *fft_size, *standard;
+
+  GtkSpinButton* volume;
+
+  GSettings* settings;
+
+  std::shared_ptr<Loudness> loudness;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(LoudnessBox, loudness_box, GTK_TYPE_BOX)
+
+void on_bypass(LoudnessBox* self, GtkToggleButton* btn) {
+  self->loudness->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(LoudnessBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "fft");
+
+  g_settings_reset(self->settings, "std");
+
+  g_settings_reset(self->settings, "volume");
+}
+
+void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::string& schema_path) {
+  self->loudness = loudness;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.loudness", schema_path.c_str());
+
+  loudness->post_messages = true;
+  loudness->bypass = false;
+
+  self->connections.push_back(loudness->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(loudness->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "volume", gtk_spin_button_get_adjustment(self->volume), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "fft", self->fft_size, "active-id", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "std", self->standard, "active-id", G_SETTINGS_BIND_DEFAULT);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_LOUDNESS_BOX(object);
+
+  self->loudness->post_messages = false;
+  self->loudness->bypass = false;
+
+  for (auto& c : self->connections) {
+    c.disconnect();
   }
 
-  return 1;
-}
-
-auto int_to_fft_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("256");
-
-    case 1:
-      return g_variant_new_string("512");
-
-    case 2:
-      return g_variant_new_string("1024");
-
-    case 3:
-      return g_variant_new_string("2048");
-
-    case 4:
-      return g_variant_new_string("4096");
-
-    case 5:
-      return g_variant_new_string("8192");
-
-    case 6:
-      return g_variant_new_string("16384");
-
-    default:
-      return g_variant_new_string("4096");
-  }
-}
-
-auto standard_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Flat") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "ISO226-2003") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Fletcher-Munson") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "Robinson-Dadson") == 0) {
-    g_value_set_int(value, 3);
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  return 1;
+  self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(loudness_box_parent_class)->dispose(object);
 }
 
-auto int_to_standard_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Flat");
+void loudness_box_class_init(LoudnessBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-    case 1:
-      return g_variant_new_string("ISO226-2003");
+  object_class->dispose = dispose;
 
-    case 2:
-      return g_variant_new_string("Fletcher-Munson");
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/loudness.ui");
 
-    case 3:
-      return g_variant_new_string("Robinson-Dadson");
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_level_right_label);
 
-    default:
-      return g_variant_new_string("ISO226-2003");
-  }
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, volume);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, standard);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, fft_size);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
-}  // namespace
+void loudness_box_init(LoudnessBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
 
-LoudnessUi::LoudnessUi(BaseObjectType* cobject,
-                       const Glib::RefPtr<Gtk::Builder>& builder,
-                       const std::string& schema,
-                       const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::loudness;
-
-  // loading builder widgets
-
-  standard = builder->get_widget<Gtk::ComboBoxText>("standard");
-  fft_size = builder->get_widget<Gtk::ComboBoxText>("fft_size");
-
-  volume = builder->get_widget<Gtk::SpinButton>("volume");
-
-  // gsettings bindings
-
-  settings->bind("volume", volume->get_adjustment().get(), "value");
-
-  g_settings_bind_with_mapping(settings->gobj(), "fft", fft_size->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               fft_size_enum_to_int, int_to_fft_size_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "std", standard->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               standard_enum_to_int, int_to_standard_enum, nullptr, nullptr);
-
-  prepare_spinbutton(volume, "dB");
-
-  setup_input_output_gain(builder);
+  prepare_spinbutton<"dB">(self->volume);
 }
 
-LoudnessUi::~LoudnessUi() {
-  util::debug(name + " ui destroyed");
+auto create() -> LoudnessBox* {
+  return static_cast<LoudnessBox*>(g_object_new(EE_TYPE_LOUDNESS_BOX, nullptr));
 }
 
-auto LoudnessUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LoudnessUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/loudness.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<LoudnessUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.loudness", schema_path + "loudness/");
-
-  stack->add(*ui, plugin_name::loudness);
-
-  return ui;
-}
-
-void LoudnessUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("fft");
-
-  settings->reset("std");
-
-  settings->reset("volume");
-}
+}  // namespace ui::loudness_box

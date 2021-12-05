@@ -150,16 +150,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->gate->gating.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_gating));
 
       effects_base->gate->bypass = false;
-    } else if (name == plugin_name::loudness) {
-      auto* const loudness_ui = LoudnessUi::add_to_stack(stack_plugins, path);
-
-      loudness_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->loudness->bypass = loudness_ui->bypass->get_active(); });
-
-      effects_base->loudness->input_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_input_level));
-      effects_base->loudness->output_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level));
-
-      effects_base->loudness->bypass = false;
     } else if (name == plugin_name::multiband_compressor) {
       auto* const multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
 

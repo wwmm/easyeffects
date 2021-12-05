@@ -45,47 +45,47 @@ Compressor::Compressor(const std::string& tag,
                                           }),
                                           this));
 
-  lv2_wrapper->bind_key_enum(settings, "mode", "cm");
+  lv2_wrapper->bind_key_enum<"cm", "mode">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "sidechain-type", "sct");
+  lv2_wrapper->bind_key_enum<"sct", "sidechain-type">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "sidechain-mode", "scm");
+  lv2_wrapper->bind_key_enum<"scm", "sidechain-mode">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "sidechain-source", "scs");
+  lv2_wrapper->bind_key_enum<"scs", "sidechain-source">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "hpf-mode", "shpm");
+  lv2_wrapper->bind_key_enum<"shpm", "hpf-mode">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "lpf-mode", "slpm");
+  lv2_wrapper->bind_key_enum<"slpm", "lpf-mode">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "sidechain-listen", "scl");
+  lv2_wrapper->bind_key_bool<"scl", "sidechain-listen">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "attack", "at");
+  lv2_wrapper->bind_key_double<"at", "attack">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "release", "rt");
+  lv2_wrapper->bind_key_double<"rt", "release">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "ratio", "cr");
+  lv2_wrapper->bind_key_double<"cr", "ratio">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "sidechain-reactivity", "scr");
+  lv2_wrapper->bind_key_double<"scr", "sidechain-reactivity">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "sidechain-lookahead", "sla");
+  lv2_wrapper->bind_key_double<"sla", "sidechain-lookahead">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "hpf-frequency", "shpf");
+  lv2_wrapper->bind_key_double<"shpf", "hpf-frequency">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "lpf-frequency", "slpf");
+  lv2_wrapper->bind_key_double<"slpf", "lpf-frequency">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "release-threshold", "rrl");
+  lv2_wrapper->bind_key_double_db<"rrl", "release-threshold">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "boost-threshold", "bth");
+  lv2_wrapper->bind_key_double_db<"bth", "boost-threshold">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "boost-amount", "bsa");
+  lv2_wrapper->bind_key_double_db<"bsa", "boost-amount">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold", "al");
+  lv2_wrapper->bind_key_double_db<"al", "threshold">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "knee", "kn");
+  lv2_wrapper->bind_key_double_db<"kn", "knee">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "makeup", "mk");
+  lv2_wrapper->bind_key_double_db<"mk", "makeup">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp", "scp");
+  lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
 
   setup_input_output_gain();
 }

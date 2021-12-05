@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="LoudnessBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
+                <signal name="toggled" handler="on_bypass" object="LoudnessBox" />
             </object>
         </child>
 
@@ -37,10 +37,10 @@
                             <object class="GtkComboBoxText" id="standard">
                                 <property name="halign">center</property>
                                 <items>
-                                    <item translatable="yes">Flat</item>
-                                    <item>ISO 226:2003</item>
-                                    <item>Fletcher-Munson</item>
-                                    <item>Robinson-Dadson</item>
+                                    <item translatable="yes" id="Flat">Flat</item>
+                                    <item id="ISO226-2003">ISO 226:2003</item>
+                                    <item id="Fletcher-Munson">Fletcher-Munson</item>
+                                    <item id="Robinson-Dadson">Robinson-Dadson</item>
                                 </items>
                                 <accessibility>
                                     <relation name="labelled-by">standard_label</relation>
@@ -64,13 +64,13 @@
                             <object class="GtkComboBoxText" id="fft_size">
                                 <property name="halign">center</property>
                                 <items>
-                                    <item>256</item>
-                                    <item>512</item>
-                                    <item>1024</item>
-                                    <item>2048</item>
-                                    <item>4096</item>
-                                    <item>8192</item>
-                                    <item>16384</item>
+                                    <item id="256">256</item>
+                                    <item id="512">512</item>
+                                    <item id="1024">1024</item>
+                                    <item id="2048">2048</item>
+                                    <item id="4096">4096</item>
+                                    <item id="8192">8192</item>
+                                    <item id="16384">16384</item>
                                 </items>
                                 <accessibility>
                                     <property name="label" translatable="yes">Fast Fourier Transform Size</property>
@@ -296,6 +296,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="LoudnessBox" />
                     </object>
                 </child>
 
@@ -324,7 +325,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

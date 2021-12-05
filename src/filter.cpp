@@ -29,11 +29,11 @@ Filter::Filter(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Filter is not installed");
   }
 
-  lv2_wrapper->bind_key_double(settings, "frequency", "freq");
+  lv2_wrapper->bind_key_double<"freq", "frequency">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "resonance", "res");
+  lv2_wrapper->bind_key_double_db<"res", "resonance">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+  lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
   setup_input_output_gain();
 }

@@ -17,31 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef LOUDNESS_UI_HPP
-#define LOUDNESS_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class LoudnessUi : public Gtk::Box, public PluginUiBase {
- public:
-  LoudnessUi(BaseObjectType* cobject,
-             const Glib::RefPtr<Gtk::Builder>& builder,
-             const std::string& schema,
-             const std::string& schema_path);
-  LoudnessUi(const LoudnessUi&) = delete;
-  auto operator=(const LoudnessUi&) -> LoudnessUi& = delete;
-  LoudnessUi(const LoudnessUi&&) = delete;
-  auto operator=(const LoudnessUi&&) -> LoudnessUi& = delete;
-  ~LoudnessUi() override;
+namespace ui::loudness_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LoudnessUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_LOUDNESS_BOX (loudness_box_get_type())
 
- private:
-  Gtk::ComboBoxText *fft_size = nullptr, *standard = nullptr;
+G_DECLARE_FINAL_TYPE(LoudnessBox, loudness_box, EE, LOUDNESS_BOX, GtkBox)
 
-  Gtk::SpinButton* volume = nullptr;
-};
+G_END_DECLS
 
-#endif
+auto create() -> LoudnessBox*;
+
+void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::string& schema_path);
+
+}  // namespace ui::loudness_box

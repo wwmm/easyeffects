@@ -29,11 +29,11 @@ Maximizer::Maximizer(const std::string& tag,
     util::debug(log_tag + "urn:zamaudio:ZaMaximX2 is not installed");
   }
 
-  lv2_wrapper->bind_key_double(settings, "threshold", "thresh");
+  lv2_wrapper->bind_key_double<"thresh", "threshold">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "ceiling", "ceil");
+  lv2_wrapper->bind_key_double<"ceil", "ceiling">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "release", "rel");
+  lv2_wrapper->bind_key_double<"rel", "release">(settings);
 
   setup_input_output_gain();
 }
