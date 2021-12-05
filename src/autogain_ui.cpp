@@ -130,39 +130,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
   g_settings_bind(self->settings, "target", gtk_spin_button_get_adjustment(self->target), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(
-      self->settings, "reference", self->reference, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
-
-        if (g_strcmp0(v, "Momentary") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "Shortterm") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "Integrated") == 0) {
-          g_value_set_int(value, 2);
-        } else if (g_strcmp0(v, "Geometric Mean") == 0) {
-          g_value_set_int(value, 3);
-        }
-
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("Momentary");
-
-          case 1:
-            return g_variant_new_string("Shortterm");
-
-          case 2:
-            return g_variant_new_string("Integrated");
-
-          default:
-            return g_variant_new_string("Geometric Mean");
-        }
-      },
-      nullptr, nullptr);
+  g_settings_bind(self->settings, "reference", self->reference, "active-id", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
