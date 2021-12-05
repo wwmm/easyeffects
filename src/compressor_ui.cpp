@@ -119,7 +119,7 @@ gboolean set_dropdown_sensitive(CompressorBox* self, int active_id) {
     return 0;
   }
 
-  if (g_strcmp0(gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->sidechain_type)), "external") == 0) {
+  if (g_strcmp0(gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->sidechain_type)), "External") == 0) {
     return 1;
   }
 
@@ -133,9 +133,9 @@ gboolean set_boost_threshold_sensitive(CompressorBox* self, int active_id) {
 
   auto* text = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->compression_mode));
 
-  if (g_strcmp0(text, "downward_mode") == 0 || g_strcmp0(text, "boosting_mode") == 0) {
+  if (g_strcmp0(text, "Downward") == 0 || g_strcmp0(text, "Boosting") == 0) {
     return 0;
-  } else if (g_strcmp0(text, "upward_mode") == 0) {
+  } else if (g_strcmp0(text, "Upward") == 0) {
     return 1;
   }
 
@@ -149,9 +149,9 @@ gboolean set_boost_amount_sensitive(CompressorBox* self, int active_id) {
 
   auto* text = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->compression_mode));
 
-  if (g_strcmp0(text, "downward_mode") == 0 || g_strcmp0(text, "upward_mode") == 0) {
+  if (g_strcmp0(text, "Downward") == 0 || g_strcmp0(text, "Upward") == 0) {
     return 0;
-  } else if (g_strcmp0(text, "boosting_mode") == 0) {
+  } else if (g_strcmp0(text, "Boosting") == 0) {
     return 1;
   }
 
@@ -295,166 +295,17 @@ void setup(CompressorBox* self,
 
   g_settings_bind(self->settings, "sidechain-listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(
-      self->settings, "mode", self->compression_mode, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
+  g_settings_bind(self->settings, "mode", self->compression_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-        if (g_strcmp0(v, "Downward") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "Upward") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "Boosting") == 0) {
-          g_value_set_int(value, 2);
-        }
+  g_settings_bind(self->settings, "sidechain-type", self->sidechain_type, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("Downward");
-          case 1:
-            return g_variant_new_string("Upward");
-          case 2:
-            return g_variant_new_string("Boosting");
-          default:
-            return g_variant_new_string("Downward");
-        }
-      },
-      nullptr, nullptr);
+  g_settings_bind(self->settings, "sidechain-mode", self->sidechain_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(
-      self->settings, "sidechain-type", self->sidechain_type, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
+  g_settings_bind(self->settings, "sidechain-source", self->sidechain_source, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-        if (g_strcmp0(v, "Feed-forward") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "Feed-back") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "External") == 0) {
-          g_value_set_int(value, 2);
-        }
+  g_settings_bind(self->settings, "hpf-mode", self->hpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("Feed-forward");
-          case 1:
-            return g_variant_new_string("Feed-back");
-          case 2:
-            return g_variant_new_string("External");
-          default:
-            return g_variant_new_string("Feed-forward");
-        }
-      },
-      nullptr, nullptr);
-
-  g_settings_bind_with_mapping(
-      self->settings, "sidechain-mode", self->sidechain_mode, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
-
-        if (g_strcmp0(v, "Peak") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "RMS") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "Low-Pass") == 0) {
-          g_value_set_int(value, 2);
-        } else if (g_strcmp0(v, "Uniform") == 0) {
-          g_value_set_int(value, 3);
-        }
-
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("Peak");
-          case 1:
-            return g_variant_new_string("RMS");
-          case 2:
-            return g_variant_new_string("Low-Pass");
-          case 3:
-            return g_variant_new_string("Uniform");
-          default:
-            return g_variant_new_string("RMS");
-        }
-      },
-      nullptr, nullptr);
-
-  g_settings_bind_with_mapping(
-      self->settings, "sidechain-source", self->sidechain_source, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
-
-        if (g_strcmp0(v, "Middle") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "Side") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "Left") == 0) {
-          g_value_set_int(value, 2);
-        } else if (g_strcmp0(v, "Right") == 0) {
-          g_value_set_int(value, 3);
-        }
-
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("Middle");
-          case 1:
-            return g_variant_new_string("Side");
-          case 2:
-            return g_variant_new_string("Left");
-          case 3:
-            return g_variant_new_string("Right");
-          default:
-            return g_variant_new_string("Middle");
-        }
-      },
-      nullptr, nullptr);
-
-  auto filter_mode_enum_to_int = +[](GValue* value, GVariant* variant, gpointer user_data) {
-    const auto* v = g_variant_get_string(variant, nullptr);
-
-    if (g_strcmp0(v, "off") == 0) {
-      g_value_set_int(value, 0);
-    } else if (g_strcmp0(v, "12 dB/oct") == 0) {
-      g_value_set_int(value, 1);
-    } else if (g_strcmp0(v, "24 dB/oct") == 0) {
-      g_value_set_int(value, 2);
-    } else if (g_strcmp0(v, "36 dB/oct") == 0) {
-      g_value_set_int(value, 3);
-    }
-
-    return 1;
-  };
-
-  auto int_to_filter_mode_enum = +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-    switch (g_value_get_int(value)) {
-      case 0:
-        return g_variant_new_string("off");
-      case 1:
-        return g_variant_new_string("12 dB/oct");
-      case 2:
-        return g_variant_new_string("24 dB/oct");
-      case 3:
-        return g_variant_new_string("36 dB/oct");
-      default:
-        return g_variant_new_string("off");
-    }
-  };
-
-  g_settings_bind_with_mapping(self->settings, "hpf-mode", self->hpf_mode, "active", G_SETTINGS_BIND_DEFAULT,
-                               filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(self->settings, "lpf-mode", self->lpf_mode, "active", G_SETTINGS_BIND_DEFAULT,
-                               filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
+  g_settings_bind(self->settings, "lpf-mode", self->lpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {

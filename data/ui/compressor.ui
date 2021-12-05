@@ -58,9 +58,9 @@
                                             <object class="GtkComboBoxText" id="compression_mode">
                                                 <property name="halign">center</property>
                                                 <items>
-                                                    <item id="downward_mode" translatable="yes">Downward</item>
-                                                    <item id="upward_mode" translatable="yes">Upward</item>
-                                                    <item id="boosting_mode" translatable="yes">Boosting</item>
+                                                    <item id="Downward" translatable="yes">Downward</item>
+                                                    <item id="Upward" translatable="yes">Upward</item>
+                                                    <item id="Boosting" translatable="yes">Boosting</item>
                                                 </items>
                                                 <layout>
                                                     <property name="column">0</property>
@@ -444,10 +444,10 @@
                                                 <child>
                                                     <object class="GtkComboBoxText" id="sidechain_mode">
                                                         <items>
-                                                            <item translatable="yes">Peak</item>
-                                                            <item translatable="yes">RMS</item>
-                                                            <item translatable="yes">Low-Pass</item>
-                                                            <item translatable="yes">Uniform</item>
+                                                            <item translatable="yes" id="Peak">Peak</item>
+                                                            <item translatable="yes" id="RMS">RMS</item>
+                                                            <item translatable="yes" id="Low-Pass">Low-Pass</item>
+                                                            <item translatable="yes" id="Uniform">Uniform</item>
                                                         </items>
                                                         <layout>
                                                             <property name="column">0</property>
@@ -482,10 +482,10 @@
                                                 <child>
                                                     <object class="GtkComboBoxText" id="sidechain_source">
                                                         <items>
-                                                            <item translatable="yes">Middle</item>
-                                                            <item translatable="yes">Side</item>
-                                                            <item translatable="yes">Left</item>
-                                                            <item translatable="yes">Right</item>
+                                                            <item translatable="yes" id="Middle">Middle</item>
+                                                            <item translatable="yes" id="Side">Side</item>
+                                                            <item translatable="yes" id="Left">Left</item>
+                                                            <item translatable="yes" id="Right">Right</item>
                                                         </items>
                                                         <layout>
                                                             <property name="column">2</property>
@@ -545,9 +545,9 @@
                                                 <property name="valign">center</property>
                                                 <property name="margin-end">6</property>
                                                 <items>
-                                                    <item id="feed_forward" translatable="yes">Feed-forward</item>
-                                                    <item id="feed_back" translatable="yes">Feed-back</item>
-                                                    <item id="external" translatable="yes">External</item>
+                                                    <item id="Feed-forward" translatable="yes">Feed-forward</item>
+                                                    <item id="Feed-back" translatable="yes">Feed-back</item>
+                                                    <item id="External" translatable="yes">External</item>
                                                 </items>
                                                 <layout>
                                                     <property name="column">1</property>
@@ -755,10 +755,10 @@
                                         <property name="margin-bottom">6</property>
                                         <property name="margin-end">6</property>
                                         <items>
-                                            <item translatable="yes">Off</item>
-                                            <item>12 dB/oct</item>
-                                            <item>24 dB/oct</item>
-                                            <item>36 dB/oct</item>
+                                            <item translatable="yes" id="off">Off</item>
+                                            <item translatable="yes" id="12 dB/oct">12 dB/oct</item>
+                                            <item translatable="yes" id="24 dB/oct">24 dB/oct</item>
+                                            <item translatable="yes" id="36 dB/oct">36 dB/oct</item>
                                         </items>
                                         <layout>
                                             <property name="column">1</property>
@@ -811,10 +811,10 @@
                                         <property name="margin-bottom">6</property>
                                         <property name="margin-start">6</property>
                                         <items>
-                                            <item translatable="yes">Off</item>
-                                            <item>12 dB/oct</item>
-                                            <item>24 dB/oct</item>
-                                            <item>36 dB/oct</item>
+                                            <item translatable="yes" id="off">Off</item>
+                                            <item translatable="yes" id="12 dB/oct">12 dB/oct</item>
+                                            <item translatable="yes" id="24 dB/oct">24 dB/oct</item>
+                                            <item translatable="yes" id="36 dB/oct">36 dB/oct</item>
                                         </items>
                                         <layout>
                                             <property name="column">2</property>
