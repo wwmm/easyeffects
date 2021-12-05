@@ -119,11 +119,61 @@ gboolean set_dropdown_sensitive(CompressorBox* self, int active_id) {
     return 0;
   }
 
-  if (g_strcmp0(gtk_combo_box_text_get_active_text(self->sidechain_type), "External") == 0) {
+  if (g_strcmp0(gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->sidechain_type)), "external") == 0) {
     return 1;
   }
 
   return 0;
+}
+
+gboolean set_boost_threshold_sensitive(CompressorBox* self, int active_id) {
+  if (self->compression_mode == nullptr) {
+    return 0;
+  }
+
+  auto* text = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->compression_mode));
+
+  if (g_strcmp0(text, "downward_mode") == 0 || g_strcmp0(text, "boosting_mode") == 0) {
+    return 0;
+  } else if (g_strcmp0(text, "upward_mode") == 0) {
+    return 1;
+  }
+
+  return 1;
+}
+
+gboolean set_boost_amount_sensitive(CompressorBox* self, int active_id) {
+  if (self->compression_mode == nullptr) {
+    return 0;
+  }
+
+  auto* text = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->compression_mode));
+
+  if (g_strcmp0(text, "downward_mode") == 0 || g_strcmp0(text, "upward_mode") == 0) {
+    return 0;
+  } else if (g_strcmp0(text, "boosting_mode") == 0) {
+    return 1;
+  }
+
+  return 1;
+}
+
+void setup_dropdown_input_device(CompressorBox* self) {
+  auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->input_devices_model));
+
+  g_signal_connect(self->dropdown_input_devices, "notify::selected-item",
+                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, CompressorBox* self) {
+                     if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
+                       auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
+
+                       g_settings_set_string(self->settings, "sidechain-input-device", holder->name.c_str());
+                     }
+                   }),
+                   self);
+
+  gtk_drop_down_set_model(self->dropdown_input_devices, G_LIST_MODEL(self->input_devices_model));
+
+  g_object_unref(selection);
 }
 
 void setup(CompressorBox* self,
@@ -136,6 +186,18 @@ void setup(CompressorBox* self,
 
   compressor->post_messages = true;
   compressor->bypass = false;
+
+  setup_dropdown_input_device(self);
+
+  for (const auto& [ts, node] : pm->node_map) {
+    if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
+      continue;
+    }
+
+    if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
+      g_list_store_append(self->input_devices_model, ui::holders::create(node));
+    }
+  }
 
   self->connections.push_back(compressor->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -161,6 +223,28 @@ void setup(CompressorBox* self,
 
   self->connections.push_back(compressor->curve.connect([=](const double& value) {
     gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
+              ->id == info.id) {
+        return;
+      }
+    }
+
+    g_list_store_append(self->input_devices_model, ui::holders::create(info));
+  }));
+
+  self->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
+              ->id == info.id) {
+        g_list_store_remove(self->input_devices_model, n);
+
+        return;
+      }
+    }
   }));
 
   g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
@@ -443,10 +527,13 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, lpf_mode);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, hpf_mode);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, listen);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, dropdown_input_devices);
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, set_dropdown_sensitive);
+  gtk_widget_class_bind_template_callback(widget_class, set_boost_threshold_sensitive);
+  gtk_widget_class_bind_template_callback(widget_class, set_boost_amount_sensitive);
 }
 
 void compressor_box_init(CompressorBox* self) {
@@ -476,144 +563,3 @@ auto create() -> CompressorBox* {
 }
 
 }  // namespace ui::compressor_box
-
-CompressorUi::CompressorUi(BaseObjectType* cobject,
-                           const Glib::RefPtr<Gtk::Builder>& builder,
-                           const std::string& schema,
-                           const std::string& schema_path)
-    : Gtk::Box(cobject),
-      PluginUiBase(builder, schema, schema_path),
-      input_devices_model(Gio::ListStore<NodeInfoHolder>::create()) {
-  name = plugin_name::compressor;
-
-  // loading builder widgets
-
-  dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
-
-  dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
-    if (auto item = dropdown_input_devices->get_selected_item(); item != nullptr) {
-      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(item);
-
-      settings->set_string("sidechain-input-device", holder->name);
-    }
-  });
-
-  setup_dropdown_input_devices();
-
-  // set boost spinbuttons sensitivity on compression mode
-
-  auto set_boost_spinbuttons_sensitivity = [=, this]() {
-    const auto row_id = compression_mode->get_active_id();
-
-    if (row_id == "downward_mode") {
-      boost_threshold->set_sensitive(false);
-      boost_amount->set_sensitive(false);
-    } else if (row_id == "upward_mode") {
-      boost_threshold->set_sensitive(true);
-      boost_amount->set_sensitive(false);
-    } else if (row_id == "boosting_mode") {
-      boost_threshold->set_sensitive(false);
-      boost_amount->set_sensitive(true);
-    } else {
-      boost_threshold->set_sensitive(true);
-      boost_amount->set_sensitive(true);
-    }
-  };
-
-  set_boost_spinbuttons_sensitivity();
-
-  compression_mode->signal_changed().connect(set_boost_spinbuttons_sensitivity);
-
-  setup_input_output_gain(builder);
-}
-
-CompressorUi::~CompressorUi() {
-  util::debug(name + " ui destroyed");
-}
-
-// auto CompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi* {
-//   const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/compressor.ui");
-
-//   auto* const ui = Gtk::Builder::get_widget_derived<CompressorUi>(
-//       builder, "top_box", "com.github.wwmm.easyeffects.compressor", schema_path + "compressor/");
-
-//   stack->add(*ui, plugin_name::compressor);
-
-//   return ui;
-// }
-
-void CompressorUi::setup_dropdown_input_devices() {
-  // setting the dropdown model and factory
-
-  auto selection_model = Gtk::SingleSelection::create(input_devices_model);
-
-  dropdown_input_devices->set_model(selection_model);
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  dropdown_input_devices->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const icon = Gtk::make_managed<Gtk::Image>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    icon->set_from_icon_name("audio-input-microphone-symbolic");
-
-    box->set_spacing(6);
-    box->append(*icon);
-    box->append(*label);
-
-    // setting list_item data
-
-    list_item->set_data("name", label);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-
-    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
-
-    label->set_name(holder->name);
-    label->set_text(holder->name);
-  });
-}
-
-void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
-  pm = pipe_manager;
-
-  input_devices_model->append(NodeInfoHolder::create(pm->ee_source_node));
-
-  for (const auto& [ts, node] : pm->node_map) {
-    if (node.media_class == pm->media_class_source) {
-      input_devices_model->append(NodeInfoHolder::create(node));
-    }
-  }
-
-  connections.push_back(pm->source_added.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
-      if (input_devices_model->get_item(n)->id == info.id) {
-        return;
-      }
-    }
-
-    input_devices_model->append(NodeInfoHolder::create(info));
-  }));
-
-  connections.push_back(pm->source_removed.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
-      if (input_devices_model->get_item(n)->id == info.id) {
-        input_devices_model->remove(n);
-
-        return;
-      }
-    }
-  }));
-}

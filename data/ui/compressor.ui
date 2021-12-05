@@ -87,6 +87,11 @@
                                                 <property name="width-chars">10</property>
                                                 <property name="digits">1</property>
                                                 <property name="update-policy">if-valid</property>
+                                                <binding name="sensitive">
+                                                    <closure type="gboolean" function="set_boost_threshold_sensitive">
+                                                        <lookup name="active">compression_mode</lookup>
+                                                    </closure>
+                                                </binding>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
                                                         <property name="lower">-120</property>
@@ -121,6 +126,11 @@
                                                 <property name="width-chars">10</property>
                                                 <property name="digits">1</property>
                                                 <property name="update-policy">if-valid</property>
+                                                <binding name="sensitive">
+                                                    <closure type="gboolean" function="set_boost_amount_sensitive">
+                                                        <lookup name="active">compression_mode</lookup>
+                                                    </closure>
+                                                </binding>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
                                                         <property name="lower">0</property>
@@ -535,9 +545,9 @@
                                                 <property name="valign">center</property>
                                                 <property name="margin-end">6</property>
                                                 <items>
-                                                    <item translatable="yes">Feed-forward</item>
-                                                    <item translatable="yes">Feed-back</item>
-                                                    <item translatable="yes">External</item>
+                                                    <item id="feed_forward" translatable="yes">Feed-forward</item>
+                                                    <item id="feed_back" translatable="yes">Feed-back</item>
+                                                    <item id="external" translatable="yes">External</item>
                                                 </items>
                                                 <layout>
                                                     <property name="column">1</property>
@@ -557,6 +567,11 @@
                                                         <lookup name="active">sidechain_type</lookup>
                                                     </closure>
                                                 </binding>
+                                                <property name="factory">
+                                                    <object class="GtkBuilderListItemFactory">
+                                                        <property name="resource">/com/github/wwmm/easyeffects/ui/factory_input_device_dropdown.ui</property>
+                                                    </object>
+                                                </property>
                                                 <layout>
                                                     <property name="column">1</property>
                                                     <property name="row">2</property>

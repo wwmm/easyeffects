@@ -72,7 +72,8 @@ void add_plugins_to_stack(PluginsBox* self) {
 
   // saving the current visible page name for later usage
 
-  auto* visible_page_name = gtk_stack_get_visible_child_name(self->stack);
+  std::string visible_page_name =
+      (gtk_stack_get_visible_child_name(self->stack) != nullptr) ? gtk_stack_get_visible_child_name(self->stack) : "";
 
   // removing all plugins
 
@@ -156,10 +157,8 @@ void add_plugins_to_stack(PluginsBox* self) {
     }
   }
 
-  if (visible_page_name != nullptr) {
-    if (std::ranges::find(plugins_list, visible_page_name) != plugins_list.end()) {
-      gtk_stack_set_visible_child_name(self->stack, visible_page_name);
-    }
+  if (std::ranges::find(plugins_list, visible_page_name) != plugins_list.end()) {
+    gtk_stack_set_visible_child_name(self->stack, visible_page_name.c_str());
   }
 }
 
