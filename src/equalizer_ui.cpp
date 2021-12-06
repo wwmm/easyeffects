@@ -380,22 +380,6 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
   gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
 }
 
-void on_update_quality_width(GtkSpinButton* band_frequency,
-                             GtkSpinButton* band_quality,
-                             GtkLabel* band_quality_label,
-                             GtkLabel* band_width) {
-  const auto q = gtk_spin_button_get_value(band_quality);
-
-  gtk_label_set_text(band_quality_label, fmt::format("Q {0:.2f}", q).c_str());
-
-  if (q > 0.0) {
-    const auto f = gtk_spin_button_get_value(band_frequency);
-    gtk_label_set_text(band_width, fmt::format("{0:.1f} Hz", f / q).c_str());
-  } else {
-    gtk_label_set_text(band_width, _("infinity"));
-  }
-}
-
 template <Channel channel>
 void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& split_mode) {
   GSettings* settings;
@@ -412,31 +396,6 @@ void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& spli
   }
 
   for (int n = 0; n < nbands; n++) {
-    // g_signal_connect(band_frequency, "value-changed", G_CALLBACK(+[](GtkSpinButton* btn, EqualizerBox* self) {
-    //                    auto* band_quality = GTK_SPIN_BUTTON(g_object_get_data(G_OBJECT(btn), "band-quality"));
-    //                    auto* band_quality_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-quality-label"));
-    //                    auto* band_width = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-width"));
-    //                    auto* band_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-label"));
-
-    //                    on_update_quality_width(btn, band_quality, band_quality_label, band_width);
-
-    //                    if (const auto f = gtk_spin_button_get_value(btn); f > 1000.0) {
-    //                      gtk_label_set_text(band_label, fmt::format("{0:.1f} kHz", f / 1000.0).c_str());
-    //                    } else {
-    //                      gtk_label_set_text(band_label, fmt::format("{0:.0f} Hz", f).c_str());
-    //                    }
-    //                  }),
-    //                  self);
-
-    // g_signal_connect(band_quality, "value-changed", G_CALLBACK(+[](GtkSpinButton* btn, EqualizerBox* self) {
-    //                    auto* band_frequency = GTK_SPIN_BUTTON(g_object_get_data(G_OBJECT(btn), "band-frequency"));
-    //                    auto* band_quality_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-quality-label"));
-    //                    auto* band_width = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-width"));
-
-    //                    on_update_quality_width(band_frequency, btn, band_quality_label, band_width);
-    //                  }),
-    //                  self);
-
     auto band_box = ui::equalizer_band_box::create();
 
     ui::equalizer_band_box::setup(band_box, settings, n);
@@ -610,8 +569,6 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_flat_response);
   gtk_widget_class_bind_template_callback(widget_class, on_calculate_frequencies);
   gtk_widget_class_bind_template_callback(widget_class, on_import_apo_preset_clicked);
-
-  // gtk_widget_class_bind_template_callback(widget_class, set_band_scale_sensitive);
 }
 
 void equalizer_box_init(EqualizerBox* self) {

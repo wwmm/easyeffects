@@ -89,7 +89,7 @@
                                                 <property name="update-policy">if-valid</property>
                                                 <binding name="sensitive">
                                                     <closure type="gboolean" function="set_boost_threshold_sensitive">
-                                                        <lookup name="active">compression_mode</lookup>
+                                                        <lookup name="active-id">compression_mode</lookup>
                                                     </closure>
                                                 </binding>
                                                 <property name="adjustment">
@@ -128,7 +128,7 @@
                                                 <property name="update-policy">if-valid</property>
                                                 <binding name="sensitive">
                                                     <closure type="gboolean" function="set_boost_amount_sensitive">
-                                                        <lookup name="active">compression_mode</lookup>
+                                                        <lookup name="active-id">compression_mode</lookup>
                                                     </closure>
                                                 </binding>
                                                 <property name="adjustment">
@@ -565,7 +565,7 @@
 
                                                 <binding name="sensitive">
                                                     <closure type="gboolean" function="set_dropdown_sensitive">
-                                                        <lookup name="active">sidechain_type</lookup>
+                                                        <lookup name="active-id">sidechain_type</lookup>
                                                     </closure>
                                                 </binding>
 

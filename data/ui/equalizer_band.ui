@@ -33,6 +33,13 @@
             <object class="GtkLabel" id="band_quality_label">
                 <property name="width-chars">10</property>
                 <property name="label">Q</property>
+
+                <binding name="label">
+                    <closure type="gchararray" function="set_band_quality_label">
+                        <lookup name="value">band_quality</lookup>
+                    </closure>
+                </binding>
+
                 <style>
                     <class name="dim-label" />
                 </style>
@@ -51,7 +58,7 @@
 
                 <binding name="sensitive">
                     <closure type="gboolean" function="set_band_scale_sensitive">
-                        <lookup name="active">band_type</lookup>
+                        <lookup name="active-id">band_type</lookup>
                     </closure>
                 </binding>
 
@@ -63,6 +70,7 @@
                         <property name="page-increment">0.1</property>
                     </object>
                 </property>
+
                 <accessibility>
                     <relation name="labelled-by">band_label</relation>
                 </accessibility>
@@ -237,7 +245,13 @@
 
                                 <child>
                                     <object class="GtkLabel" id="band_width">
-                                        <property name="label">w</property>
+                                        <binding name="label">
+                                            <closure type="gchararray" function="set_band_width_label">
+                                                <lookup name="value">band_quality</lookup>
+                                                <lookup name="value">band_frequency</lookup>
+                                            </closure>
+                                        </binding>
+
                                         <style>
                                             <class name="dim-label" />
                                         </style>

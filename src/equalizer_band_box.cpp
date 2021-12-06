@@ -30,8 +30,6 @@ struct _EqualizerBandBox {
 
   GtkComboBoxText *band_type, *band_mode, *band_slope;
 
-  GtkLabel *band_label, *band_width, *band_quality_label;
-
   GtkButton *reset_frequency, *reset_quality;
 
   GtkToggleButton *band_solo, *band_mute;
@@ -52,10 +50,6 @@ struct _EqualizerBandBox {
 G_DEFINE_TYPE(EqualizerBandBox, equalizer_band_box, GTK_TYPE_BOX)
 
 auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
-  if (self->band_frequency == nullptr) {
-    return nullptr;
-  }
-
   if (value > 1000.0) {
     return g_strdup(fmt::format("{0:.1f} kHz", value / 1000.0).c_str());
   } else {
@@ -63,34 +57,25 @@ auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
   }
 }
 
-auto set_band_scale_sensitive(EqualizerBandBox* self, int active_id) -> gboolean {
-  if (self->band_type == nullptr) {
-    return 0;
+auto set_band_quality_label(EqualizerBandBox* self, double value) -> const char* {
+  return g_strdup(fmt::format("Q {0:.2f}", value).c_str());
+}
+
+auto set_band_width_label(EqualizerBandBox* self, double quality, double frequency) -> const char* {
+  if (quality > 0.0) {
+    return g_strdup(fmt::format("{0:.1f} Hz", frequency / quality).c_str());
+  } else {
+    return _("infinity");
   }
+}
 
-  auto text = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->band_type));
-
-  if (g_strcmp0(text, "Off") == 0 || g_strcmp0(text, "Hi-pass") == 0 || g_strcmp0(text, "Lo-pass") == 0) {
+auto set_band_scale_sensitive(EqualizerBandBox* self, const char* active_id) -> gboolean {
+  if (g_strcmp0(active_id, "Off") == 0 || g_strcmp0(active_id, "Hi-pass") == 0 ||
+      g_strcmp0(active_id, "Lo-pass") == 0) {
     return 0;
   }
 
   return 1;
-}
-
-void on_update_quality_width(GtkSpinButton* band_frequency,
-                             GtkSpinButton* band_quality,
-                             GtkLabel* band_quality_label,
-                             GtkLabel* band_width) {
-  const auto q = gtk_spin_button_get_value(band_quality);
-
-  gtk_label_set_text(band_quality_label, fmt::format("Q {0:.2f}", q).c_str());
-
-  if (q > 0.0) {
-    const auto f = gtk_spin_button_get_value(band_frequency);
-    gtk_label_set_text(band_width, fmt::format("{0:.1f} Hz", f / q).c_str());
-  } else {
-    gtk_label_set_text(band_width, _("infinity"));
-  }
 }
 
 void setup(EqualizerBandBox* self, GSettings* settings, int index) {
@@ -157,9 +142,6 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_type);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_mode);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_slope);
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_label);
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_width);
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_quality_label);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, reset_frequency);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, reset_quality);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_solo);
@@ -170,6 +152,8 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
 
   gtk_widget_class_bind_template_callback(widget_class, set_band_scale_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_band_label);
+  gtk_widget_class_bind_template_callback(widget_class, set_band_quality_label);
+  gtk_widget_class_bind_template_callback(widget_class, set_band_width_label);
 }
 
 void equalizer_band_box_init(EqualizerBandBox* self) {

@@ -114,44 +114,28 @@ void on_reset(CompressorBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, "lpf-frequency");
 }
 
-gboolean set_dropdown_sensitive(CompressorBox* self, int active_id) {
-  if (self->sidechain_type == nullptr) {
-    return 0;
-  }
-
-  if (g_strcmp0(gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->sidechain_type)), "External") == 0) {
+gboolean set_dropdown_sensitive(CompressorBox* self, const char* active_id) {
+  if (g_strcmp0(active_id, "External") == 0) {
     return 1;
   }
 
   return 0;
 }
 
-gboolean set_boost_threshold_sensitive(CompressorBox* self, int active_id) {
-  if (self->compression_mode == nullptr) {
+gboolean set_boost_threshold_sensitive(CompressorBox* self, const char* active_id) {
+  if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Boosting") == 0) {
     return 0;
-  }
-
-  auto* text = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->compression_mode));
-
-  if (g_strcmp0(text, "Downward") == 0 || g_strcmp0(text, "Boosting") == 0) {
-    return 0;
-  } else if (g_strcmp0(text, "Upward") == 0) {
+  } else if (g_strcmp0(active_id, "Upward") == 0) {
     return 1;
   }
 
   return 1;
 }
 
-gboolean set_boost_amount_sensitive(CompressorBox* self, int active_id) {
-  if (self->compression_mode == nullptr) {
+gboolean set_boost_amount_sensitive(CompressorBox* self, const char* active_id) {
+  if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Upward") == 0) {
     return 0;
-  }
-
-  auto* text = gtk_combo_box_get_active_id(GTK_COMBO_BOX(self->compression_mode));
-
-  if (g_strcmp0(text, "Downward") == 0 || g_strcmp0(text, "Upward") == 0) {
-    return 0;
-  } else if (g_strcmp0(text, "Boosting") == 0) {
+  } else if (g_strcmp0(active_id, "Boosting") == 0) {
     return 1;
   }
 
