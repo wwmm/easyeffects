@@ -223,6 +223,7 @@
                                     <object class="GtkButton" id="reset_frequency">
                                         <property name="label" translatable="yes">Reset</property>
                                         <property name="halign">center</property>
+                                        <signal name="clicked" handler="on_reset_frequency" object="EqualizerBandBox" />
                                         <accessibility>
                                             <relation name="labelled-by">band_frequency_label</relation>
                                         </accessibility>
@@ -294,6 +295,7 @@
                                     <object class="GtkButton" id="reset_quality">
                                         <property name="label" translatable="yes">Reset</property>
                                         <property name="halign">center</property>
+                                        <signal name="clicked" handler="on_reset_quality" object="EqualizerBandBox" />
                                         <accessibility>
                                             <relation name="labelled-by">band_quality_spinbutton_label</relation>
                                         </accessibility>

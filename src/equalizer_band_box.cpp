@@ -42,12 +42,18 @@ struct _EqualizerBandBox {
 
   int index;
 
-  std::vector<sigc::connection> connections;
-
   std::vector<gulong> gconnections;
 };
 
 G_DEFINE_TYPE(EqualizerBandBox, equalizer_band_box, GTK_TYPE_BOX)
+
+void on_reset_quality(EqualizerBandBox* self, GtkButton* btn) {
+  g_settings_reset(self->settings, tags::equalizer::band_q[self->index]);
+}
+
+void on_reset_frequency(EqualizerBandBox* self, GtkButton* btn) {
+  g_settings_reset(self->settings, tags::equalizer::band_frequency[self->index]);
+}
 
 auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
   if (value > 1000.0) {
@@ -82,16 +88,6 @@ void setup(EqualizerBandBox* self, GSettings* settings, int index) {
   self->index = index;
   self->settings = settings;
 
-  g_signal_connect(self->reset_frequency, "clicked", G_CALLBACK(+[](GtkButton* btn, EqualizerBandBox* self) {
-                     g_settings_reset(self->settings, tags::equalizer::band_frequency[self->index]);
-                   }),
-                   self);
-
-  g_signal_connect(self->reset_quality, "clicked", G_CALLBACK(+[](GtkButton* btn, EqualizerBandBox* self) {
-                     g_settings_reset(self->settings, tags::equalizer::band_q[self->index]);
-                   }),
-                   self);
-
   g_settings_bind(settings, tags::equalizer::band_gain[index], gtk_range_get_adjustment(GTK_RANGE(self->band_scale)),
                   "value", G_SETTINGS_BIND_DEFAULT);
 
@@ -115,15 +111,10 @@ void setup(EqualizerBandBox* self, GSettings* settings, int index) {
 void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BAND_BOX(object);
 
-  for (auto& c : self->connections) {
-    c.disconnect();
-  }
-
   for (auto& handler_id : self->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
   self->gconnections.clear();
 
   util::debug(log_tag + "index: "s + std::to_string(self->index) + " disposed"s);
@@ -150,6 +141,8 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_frequency);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_quality);
 
+  gtk_widget_class_bind_template_callback(widget_class, on_reset_quality);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset_frequency);
   gtk_widget_class_bind_template_callback(widget_class, set_band_scale_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_band_label);
   gtk_widget_class_bind_template_callback(widget_class, set_band_quality_label);
