@@ -20,28 +20,22 @@
 #pragma once
 
 #include <adwaita.h>
-#include <regex>
-#include "application.hpp"
-#include "effects_base.hpp"
-#include "equalizer_band_box.hpp"
+#include <glib/gi18n.h>
 #include "equalizer_tags.hpp"
 #include "ui_helpers.hpp"
 
-namespace ui::equalizer_box {
+namespace ui::equalizer_band_box {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_EQUALIZER_BOX (equalizer_box_get_type())
+#define EE_TYPE_EQUALIZER_BAND_BOX (equalizer_band_box_get_type())
 
-G_DECLARE_FINAL_TYPE(EqualizerBox, equalizer_box, EE, EQUALIZER_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(EqualizerBandBox, equalizer_band_box, EE, EQUALIZER_BAND_BOX, GtkBox)
 
 G_END_DECLS
 
-auto create() -> EqualizerBox*;
+auto create() -> EqualizerBandBox*;
 
-void setup(EqualizerBox* self,
-           std::shared_ptr<Equalizer> equalizer,
-           const std::string& schema_path,
-           app::Application* application);
+void setup(EqualizerBandBox* self, GSettings* settings, int index);
 
-}  // namespace ui::equalizer_box
+}  // namespace ui::equalizer_band_box

@@ -60,7 +60,7 @@ class Equalizer : public PluginBase {
 
   uint latency_n_frames = 0U;
 
-  std::vector<gulong> gconnections_split;
+  std::vector<gulong> gconnections_unified;
 
   template <size_t n>
   constexpr void bind_band() {

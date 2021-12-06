@@ -398,287 +398,48 @@ void on_update_quality_width(GtkSpinButton* band_frequency,
 
 template <Channel channel>
 void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& split_mode) {
+  GSettings* settings;
+  GtkBox* bands_box;
+
+  if constexpr (channel == Channel::left) {
+    settings = self->settings_left;
+
+    bands_box = self->bands_box_left;
+  } else if constexpr (channel == Channel::right) {
+    settings = self->settings_right;
+
+    bands_box = self->bands_box_right;
+  }
+
   for (int n = 0; n < nbands; n++) {
-    auto bandn = const_cast<char*>(tags::equalizer::band_id[n]);
+    // g_signal_connect(band_frequency, "value-changed", G_CALLBACK(+[](GtkSpinButton* btn, EqualizerBox* self) {
+    //                    auto* band_quality = GTK_SPIN_BUTTON(g_object_get_data(G_OBJECT(btn), "band-quality"));
+    //                    auto* band_quality_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-quality-label"));
+    //                    auto* band_width = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-width"));
+    //                    auto* band_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-label"));
 
-    auto* builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
+    //                    on_update_quality_width(btn, band_quality, band_quality_label, band_width);
 
-    auto* band_box = GTK_BOX(gtk_builder_get_object(builder, "band_box"));
+    //                    if (const auto f = gtk_spin_button_get_value(btn); f > 1000.0) {
+    //                      gtk_label_set_text(band_label, fmt::format("{0:.1f} kHz", f / 1000.0).c_str());
+    //                    } else {
+    //                      gtk_label_set_text(band_label, fmt::format("{0:.0f} Hz", f).c_str());
+    //                    }
+    //                  }),
+    //                  self);
 
-    auto* band_type = GTK_COMBO_BOX_TEXT(gtk_builder_get_object(builder, "band_type"));
-    auto* band_mode = GTK_COMBO_BOX_TEXT(gtk_builder_get_object(builder, "band_mode"));
-    auto* band_slope = GTK_COMBO_BOX_TEXT(gtk_builder_get_object(builder, "band_slope"));
+    // g_signal_connect(band_quality, "value-changed", G_CALLBACK(+[](GtkSpinButton* btn, EqualizerBox* self) {
+    //                    auto* band_frequency = GTK_SPIN_BUTTON(g_object_get_data(G_OBJECT(btn), "band-frequency"));
+    //                    auto* band_quality_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-quality-label"));
+    //                    auto* band_width = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-width"));
 
-    auto* band_label = GTK_LABEL(gtk_builder_get_object(builder, "band_label"));
-    auto* band_width = GTK_LABEL(gtk_builder_get_object(builder, "band_width"));
-    auto* band_quality_label = GTK_LABEL(gtk_builder_get_object(builder, "band_quality_label"));
+    //                    on_update_quality_width(band_frequency, btn, band_quality_label, band_width);
+    //                  }),
+    //                  self);
 
-    auto* reset_frequency = GTK_BUTTON(gtk_builder_get_object(builder, "reset_frequency"));
-    auto* reset_quality = GTK_BUTTON(gtk_builder_get_object(builder, "reset_quality"));
+    auto band_box = ui::equalizer_band_box::create();
 
-    auto* band_solo = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder, "band_solo"));
-    auto* band_mute = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder, "band_mute"));
-
-    auto* band_scale = GTK_SCALE(gtk_builder_get_object(builder, "band_scale"));
-
-    auto* band_frequency = GTK_SPIN_BUTTON(gtk_builder_get_object(builder, "band_frequency"));
-    auto* band_quality = GTK_SPIN_BUTTON(gtk_builder_get_object(builder, "band_quality"));
-
-    prepare_scale<"">(band_scale);
-
-    prepare_spinbutton<"Hz">(band_frequency);
-    prepare_spinbutton<"">(band_quality);
-
-    g_object_set_data(G_OBJECT(reset_frequency), "bandn", bandn);
-    g_object_set_data(G_OBJECT(reset_quality), "bandn", bandn);
-
-    g_object_set_data(G_OBJECT(band_type), "band-scale", band_scale);
-
-    g_object_set_data(G_OBJECT(band_frequency), "band-quality", band_quality);
-    g_object_set_data(G_OBJECT(band_frequency), "band-quality-label", band_quality_label);
-    g_object_set_data(G_OBJECT(band_frequency), "band-width", band_width);
-    g_object_set_data(G_OBJECT(band_frequency), "band-label", band_label);
-
-    g_object_set_data(G_OBJECT(band_quality), "band-frequency", band_quality);
-    g_object_set_data(G_OBJECT(band_quality), "band-quality-label", band_quality_label);
-    g_object_set_data(G_OBJECT(band_quality), "band-width", band_width);
-
-    g_signal_connect(band_frequency, "value-changed", G_CALLBACK(+[](GtkSpinButton* btn, EqualizerBox* self) {
-                       auto* band_quality = GTK_SPIN_BUTTON(g_object_get_data(G_OBJECT(btn), "band-quality"));
-                       auto* band_quality_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-quality-label"));
-                       auto* band_width = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-width"));
-                       auto* band_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-label"));
-
-                       on_update_quality_width(btn, band_quality, band_quality_label, band_width);
-
-                       if (const auto f = gtk_spin_button_get_value(btn); f > 1000.0) {
-                         gtk_label_set_text(band_label, fmt::format("{0:.1f} kHz", f / 1000.0).c_str());
-                       } else {
-                         gtk_label_set_text(band_label, fmt::format("{0:.0f} Hz", f).c_str());
-                       }
-                     }),
-                     self);
-
-    g_signal_connect(band_quality, "value-changed", G_CALLBACK(+[](GtkSpinButton* btn, EqualizerBox* self) {
-                       auto* band_frequency = GTK_SPIN_BUTTON(g_object_get_data(G_OBJECT(btn), "band-frequency"));
-                       auto* band_quality_label = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-quality-label"));
-                       auto* band_width = GTK_LABEL(g_object_get_data(G_OBJECT(btn), "band-width"));
-
-                       on_update_quality_width(band_frequency, btn, band_quality_label, band_width);
-                     }),
-                     self);
-
-    if (split_mode) {
-      g_signal_connect(reset_frequency, "clicked", G_CALLBACK(+[](GtkButton* btn, EqualizerBox* self) {
-                         auto bandn = static_cast<const char*>(g_object_get_data(G_OBJECT(btn), "bandn"));
-
-                         if constexpr (channel == Channel::left) {
-                           g_settings_reset(self->settings_left, (bandn + "-frequency"s).c_str());
-                         } else if constexpr (channel == Channel::right) {
-                           g_settings_reset(self->settings_right, (bandn + "-frequency"s).c_str());
-                         }
-                       }),
-                       self);
-
-      g_signal_connect(reset_quality, "clicked", G_CALLBACK(+[](GtkButton* btn, EqualizerBox* self) {
-                         auto bandn = static_cast<const char*>(g_object_get_data(G_OBJECT(btn), "bandn"));
-
-                         if constexpr (channel == Channel::left) {
-                           g_settings_reset(self->settings_left, (bandn + "-q"s).c_str());
-                         } else if constexpr (channel == Channel::right) {
-                           g_settings_reset(self->settings_right, (bandn + "-q"s).c_str());
-                         }
-                       }),
-                       self);
-    } else {
-      // unified mode
-
-      // The left channel reset has to be applied to both channels when not in split mode
-
-      g_signal_connect(reset_frequency, "clicked", G_CALLBACK(+[](GtkButton* btn, EqualizerBox* self) {
-                         auto bandn = static_cast<const char*>(g_object_get_data(G_OBJECT(btn), "bandn"));
-
-                         g_settings_reset(self->settings_left, (bandn + "-frequency"s).c_str());
-                         g_settings_reset(self->settings_right, (bandn + "-frequency"s).c_str());
-                       }),
-                       self);
-
-      g_signal_connect(reset_quality, "clicked", G_CALLBACK(+[](GtkButton* btn, EqualizerBox* self) {
-                         auto bandn = static_cast<const char*>(g_object_get_data(G_OBJECT(btn), "bandn"));
-
-                         g_settings_reset(self->settings_left, (bandn + "-q"s).c_str());
-                         g_settings_reset(self->settings_right, (bandn + "-q"s).c_str());
-                       }),
-                       self);
-    }
-
-    g_signal_connect(band_type, "changed", G_CALLBACK(+[](GtkComboBox* btn, EqualizerBox* self) {
-                       // disable gain scale if type is "Off", "Hi-pass" or "Lo-pass"
-
-                       const auto row = gtk_combo_box_get_active(btn);
-
-                       auto* band_scale = GTK_WIDGET(g_object_get_data(G_OBJECT(btn), "band-scale"));
-
-                       gtk_widget_set_sensitive(
-                           band_scale, static_cast<gboolean>((row == 0 || row == 2 || row == 4) ? false : true));
-                     }),
-                     self);
-
-    GSettings* settings;
-    GtkBox* bands_box;
-
-    if constexpr (channel == Channel::left) {
-      settings = self->settings_left;
-
-      bands_box = self->bands_box_left;
-    } else if constexpr (channel == Channel::right) {
-      settings = self->settings_right;
-
-      bands_box = self->bands_box_right;
-    }
-
-    g_settings_bind(settings, (bandn + "-gain"s).c_str(), gtk_range_get_adjustment(GTK_RANGE(band_scale)), "value",
-                    G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind(settings, (bandn + "-frequency"s).c_str(), gtk_spin_button_get_adjustment(band_frequency), "value",
-                    G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind(settings, (bandn + "-q"s).c_str(), gtk_spin_button_get_adjustment(band_quality), "value",
-                    G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind(settings, (bandn + "-solo"s).c_str(), band_solo, "active", G_SETTINGS_BIND_DEFAULT);
-    g_settings_bind(settings, (bandn + "-mute"s).c_str(), band_mute, "active", G_SETTINGS_BIND_DEFAULT);
-
-    g_settings_bind_with_mapping(
-        settings, (bandn + "-type"s).c_str(), band_type, "active", G_SETTINGS_BIND_DEFAULT,
-        +[](GValue* value, GVariant* variant, gpointer user_data) {
-          const auto* v = g_variant_get_string(variant, nullptr);
-
-          if (g_strcmp0(v, "Off") == 0) {
-            g_value_set_int(value, 0);
-          } else if (g_strcmp0(v, "Bell") == 0) {
-            g_value_set_int(value, 1);
-          } else if (g_strcmp0(v, "Hi-pass") == 0) {
-            g_value_set_int(value, 2);
-          } else if (g_strcmp0(v, "Hi-shelf") == 0) {
-            g_value_set_int(value, 3);
-          } else if (g_strcmp0(v, "Lo-pass") == 0) {
-            g_value_set_int(value, 4);
-          } else if (g_strcmp0(v, "Lo-shelf") == 0) {
-            g_value_set_int(value, 5);
-          } else if (g_strcmp0(v, "Notch") == 0) {
-            g_value_set_int(value, 6);
-          } else if (g_strcmp0(v, "Resonance") == 0) {
-            g_value_set_int(value, 7);
-          } else if (g_strcmp0(v, "Allpass") == 0) {
-            g_value_set_int(value, 8);
-          }
-
-          return 1;
-        },
-        +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-          switch (g_value_get_int(value)) {
-            case 0:
-              return g_variant_new_string("Off");
-            case 1:
-              return g_variant_new_string("Bell");
-            case 2:
-              return g_variant_new_string("Hi-pass");
-            case 3:
-              return g_variant_new_string("Hi-shelf");
-            case 4:
-              return g_variant_new_string("Lo-pass");
-            case 5:
-              return g_variant_new_string("Lo-shelf");
-            case 6:
-              return g_variant_new_string("Notch");
-            case 7:
-              return g_variant_new_string("Resonance");
-            case 8:
-              return g_variant_new_string("Allpass");
-            default:
-              return g_variant_new_string("Bell");
-          }
-        },
-        nullptr, nullptr);
-
-    g_settings_bind_with_mapping(
-        settings, (bandn + "-mode"s).c_str(), band_mode, "active", G_SETTINGS_BIND_DEFAULT,
-        +[](GValue* value, GVariant* variant, gpointer user_data) {
-          const auto* v = g_variant_get_string(variant, nullptr);
-
-          if (g_strcmp0(v, "RLC (BT)") == 0) {
-            g_value_set_int(value, 0);
-          } else if (g_strcmp0(v, "RLC (MT)") == 0) {
-            g_value_set_int(value, 1);
-          } else if (g_strcmp0(v, "BWC (BT)") == 0) {
-            g_value_set_int(value, 2);
-          } else if (g_strcmp0(v, "BWC (MT)") == 0) {
-            g_value_set_int(value, 3);
-          } else if (g_strcmp0(v, "LRX (BT)") == 0) {
-            g_value_set_int(value, 4);
-          } else if (g_strcmp0(v, "LRX (MT)") == 0) {
-            g_value_set_int(value, 5);
-          } else if (g_strcmp0(v, "APO (DR)") == 0) {
-            g_value_set_int(value, 6);
-          }
-
-          return 1;
-        },
-        +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-          switch (g_value_get_int(value)) {
-            case 0:
-              return g_variant_new_string("RLC (BT)");
-            case 1:
-              return g_variant_new_string("RLC (MT)");
-            case 2:
-              return g_variant_new_string("BWC (BT)");
-            case 3:
-              return g_variant_new_string("BWC (MT)");
-            case 4:
-              return g_variant_new_string("LRX (BT)");
-            case 5:
-              return g_variant_new_string("LRX (MT)");
-            case 6:
-              return g_variant_new_string("APO (DR)");
-            default:
-              return g_variant_new_string("RLC (BT)");
-          }
-        },
-        nullptr, nullptr);
-
-    g_settings_bind_with_mapping(
-        settings, (bandn + "-slope"s).c_str(), band_slope, "active", G_SETTINGS_BIND_DEFAULT,
-        +[](GValue* value, GVariant* variant, gpointer user_data) {
-          const auto* v = g_variant_get_string(variant, nullptr);
-
-          if (g_strcmp0(v, "x1") == 0) {
-            g_value_set_int(value, 0);
-          } else if (g_strcmp0(v, "x2") == 0) {
-            g_value_set_int(value, 1);
-          } else if (g_strcmp0(v, "x3") == 0) {
-            g_value_set_int(value, 2);
-          } else if (g_strcmp0(v, "x4") == 0) {
-            g_value_set_int(value, 3);
-          }
-
-          return 1;
-        },
-        +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-          switch (g_value_get_int(value)) {
-            case 0:
-              return g_variant_new_string("x1");
-            case 1:
-              return g_variant_new_string("x2");
-            case 2:
-              return g_variant_new_string("x3");
-            case 3:
-              return g_variant_new_string("x4");
-            default:
-              return g_variant_new_string("x1");
-          }
-        },
-        nullptr, nullptr);
+    ui::equalizer_band_box::setup(band_box, settings, n);
 
     gtk_box_append(bands_box, GTK_WIDGET(band_box));
   }
@@ -764,38 +525,7 @@ void setup(EqualizerBox* self,
 
   g_settings_bind(self->settings, "split-channels", self->split_channels, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(
-      self->settings, "mode", self->mode, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
-
-        if (g_strcmp0(v, "IIR") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "FIR") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "FFT") == 0) {
-          g_value_set_int(value, 2);
-        } else if (g_strcmp0(v, "SPM") == 0) {
-          g_value_set_int(value, 3);
-        }
-
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("IIR");
-          case 1:
-            return g_variant_new_string("FIR");
-          case 2:
-            return g_variant_new_string("FFT");
-          case 3:
-            return g_variant_new_string("SPM");
-          default:
-            return g_variant_new_string("IIR");
-        }
-      },
-      nullptr, nullptr);
+  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
   self->gconnections.push_back(g_signal_connect(
       self->settings, "changed::num-bands",
@@ -880,6 +610,8 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_flat_response);
   gtk_widget_class_bind_template_callback(widget_class, on_calculate_frequencies);
   gtk_widget_class_bind_template_callback(widget_class, on_import_apo_preset_clicked);
+
+  // gtk_widget_class_bind_template_callback(widget_class, set_band_scale_sensitive);
 }
 
 void equalizer_box_init(EqualizerBox* self) {

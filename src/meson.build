@@ -42,6 +42,7 @@ easyeffects_sources = [
 	'effects_base_ui.cpp',
 	'effects_base.cpp',
 	'effects_box.cpp',
+	'equalizer_band_box.cpp',
 	'equalizer.cpp',
 	'equalizer_preset.cpp',
 	'equalizer_ui.cpp',

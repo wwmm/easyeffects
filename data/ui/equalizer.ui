@@ -119,10 +119,10 @@
                                     <object class="GtkComboBoxText" id="mode">
                                         <property name="hexpand">1</property>
                                         <items>
-                                            <item>IIR</item>
-                                            <item>FIR</item>
-                                            <item>FFT</item>
-                                            <item>SPM</item>
+                                            <item translatable="yes" id="IIR">IIR</item>
+                                            <item translatable="yes" id="FIR">FIR</item>
+                                            <item translatable="yes" id="FFT">FFT</item>
+                                            <item translatable="yes" id="SPM">SPM</item>
                                         </items>
                                         <layout>
                                             <property name="column">1</property>

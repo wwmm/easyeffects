@@ -53,6 +53,7 @@ src/convolver_menu_impulses.cpp
 src/convolver_menu_combine.cpp
 src/effects_base_ui.cpp
 src/effects_box.cpp
+src/equalizer_band_box.cpp
 src/equalizer_ui.cpp
 src/pipe_manager_box.cpp
 src/preferences_window.cpp
