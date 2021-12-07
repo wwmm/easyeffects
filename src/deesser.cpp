@@ -70,7 +70,10 @@ void Deesser::setup() {
   }
 
   lv2_wrapper->set_n_samples(n_samples);
-  lv2_wrapper->create_instance(rate);
+
+  if (lv2_wrapper->get_rate() != rate) {
+    lv2_wrapper->create_instance(rate);
+  }
 }
 
 void Deesser::process(std::span<float>& left_in,

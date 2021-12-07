@@ -21,6 +21,9 @@
 
 namespace lv2 {
 
+constexpr auto min_quantum = 32;
+constexpr auto max_quantum = 8192;
+
 auto lv2_printf(LV2_Log_Handle handle, LV2_URID type, const char* format, ...) -> int {
   va_list args;
 
@@ -165,6 +168,8 @@ void Lv2Wrapper::create_ports() {
 }
 
 auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
+  this->rate = rate;
+
   if (instance != nullptr) {
     deactivate();
 
@@ -198,9 +203,9 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
   auto options = std::to_array<LV2_Options_Option>(
       {{LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate), sizeof(float), map_urid(LV2_ATOM__Float), &rate},
        {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__minBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
-        &n_samples},
+        &min_quantum},
        {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__maxBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
-        &n_samples},
+        &max_quantum},
        {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__nominalBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
         &n_samples},
        {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}});
@@ -306,6 +311,10 @@ void Lv2Wrapper::set_n_samples(const uint& value) {
 
 auto Lv2Wrapper::get_n_samples() const -> uint {
   return this->n_samples;
+}
+
+auto Lv2Wrapper::get_rate() const -> uint {
+  return this->rate;
 }
 
 void Lv2Wrapper::activate() {

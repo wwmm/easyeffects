@@ -74,6 +74,8 @@ class Lv2Wrapper {
 
   [[nodiscard]] auto get_n_samples() const -> uint;
 
+  [[nodiscard]] auto get_rate() const -> uint;
+
   void connect_data_ports(std::span<float>& left_in,
                           std::span<float>& right_in,
                           std::span<float>& left_out,
@@ -201,6 +203,8 @@ class Lv2Wrapper {
   uint n_audio_out = 0U;
 
   uint n_samples = 0U;
+
+  uint rate = 0U;
 
   std::vector<Port> ports;
 
