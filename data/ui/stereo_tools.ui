@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="StereoToolsBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
+                <signal name="toggled" handler="on_bypass" object="StereoToolsBox" />
             </object>
         </child>
 
@@ -133,13 +133,13 @@
                                     <object class="GtkComboBoxText" id="mode">
                                         <property name="halign">center</property>
                                         <items>
-                                            <item translatable="yes">LR &gt; LR (Stereo Default)</item>
-                                            <item translatable="yes">LR &gt; MS (Stereo to Mid-Side)</item>
-                                            <item translatable="yes">MS &gt; LR (Mid-Side to Stereo)</item>
-                                            <item translatable="yes">LR &gt; LL (Mono Left Channel)</item>
-                                            <item translatable="yes">LR &gt; RR (Mono Right Channel)</item>
-                                            <item translatable="yes">LR &gt; L+R (Mono Sum L+R)</item>
-                                            <item translatable="yes">LR &gt; RL (Stereo Flip Channels)</item>
+                                            <item translatable="yes" id="LR > LR (Stereo Default)">LR &gt; LR (Stereo Default)</item>
+                                            <item translatable="yes" id="LR > MS (Stereo to Mid-Side)">LR &gt; MS (Stereo to Mid-Side)</item>
+                                            <item translatable="yes" id="MS > LR (Mid-Side to Stereo)">MS &gt; LR (Mid-Side to Stereo)</item>
+                                            <item translatable="yes" id="LR > LL (Mono Left Channel)">LR &gt; LL (Mono Left Channel)</item>
+                                            <item translatable="yes" id="LR > RR (Mono Right Channel)">LR &gt; RR (Mono Right Channel)</item>
+                                            <item translatable="yes" id="LR > L+R (Mono Sum L+R)">LR &gt; L+R (Mono Sum L+R)</item>
+                                            <item translatable="yes" id="LR > RL (Stereo Flip Channels)">LR &gt; RL (Stereo Flip Channels)</item>
                                         </items>
                                         <accessibility>
                                             <property name="label" translatable="yes">Stereo Mode</property>
@@ -716,6 +716,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="StereoToolsBox" />
                     </object>
                 </child>
 
@@ -744,7 +745,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

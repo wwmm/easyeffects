@@ -184,6 +184,12 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::reverb_box::setup(box, effects_base->reverb, schema_path + plugin_name::reverb + "/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::reverb);
+    } else if (name == plugin_name::stereo_tools) {
+      auto* box = ui::stereo_tools_box::create();
+
+      ui::stereo_tools_box::setup(box, effects_base->stereo_tools, schema_path + "stereotools/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::stereo_tools);
     }
   }
 

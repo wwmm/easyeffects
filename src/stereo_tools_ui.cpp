@@ -19,174 +19,230 @@
 
 #include "stereo_tools_ui.hpp"
 
-namespace {
+namespace ui::stereo_tools_box {
 
-auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+using namespace std::string_literals;
 
-  if (g_strcmp0(v, "LR > LR (Stereo Default)") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "LR > MS (Stereo to Mid-Side)") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "MS > LR (Mid-Side to Stereo)") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "LR > LL (Mono Left Channel)") == 0) {
-    g_value_set_int(value, 3);
-  } else if (g_strcmp0(v, "LR > RR (Mono Right Channel)") == 0) {
-    g_value_set_int(value, 4);
-  } else if (g_strcmp0(v, "LR > L+R (Mono Sum L+R)") == 0) {
-    g_value_set_int(value, 5);
-  } else if (g_strcmp0(v, "LR > RL (Stereo Flip Channels)") == 0) {
-    g_value_set_int(value, 6);
+auto constexpr log_tag = "stereo_tools_box: ";
+
+struct _StereoToolsBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkComboBoxText* mode;
+
+  GtkSpinButton *balance_in, *balance_out, *slev, *sbal, *mlev, *mpan, *stereo_base, *delay, *sc_level, *stereo_phase;
+
+  GtkToggleButton *softclip, *mutel, *muter, *phasel, *phaser;
+
+  GSettings* settings;
+
+  std::shared_ptr<StereoTools> stereo_tools;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(StereoToolsBox, stereo_tools_box, GTK_TYPE_BOX)
+
+void on_bypass(StereoToolsBox* self, GtkToggleButton* btn) {
+  self->stereo_tools->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(StereoToolsBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "balance-in");
+
+  g_settings_reset(self->settings, "balance-out");
+
+  g_settings_reset(self->settings, "softclip");
+
+  g_settings_reset(self->settings, "mutel");
+
+  g_settings_reset(self->settings, "muter");
+
+  g_settings_reset(self->settings, "phasel");
+
+  g_settings_reset(self->settings, "phaser");
+
+  g_settings_reset(self->settings, "mode");
+
+  g_settings_reset(self->settings, "slev");
+
+  g_settings_reset(self->settings, "sbal");
+
+  g_settings_reset(self->settings, "mlev");
+
+  g_settings_reset(self->settings, "mpan");
+
+  g_settings_reset(self->settings, "stereo-base");
+
+  g_settings_reset(self->settings, "delay");
+
+  g_settings_reset(self->settings, "sc-level");
+
+  g_settings_reset(self->settings, "stereo-phase");
+}
+
+void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, const std::string& schema_path) {
+  self->stereo_tools = stereo_tools;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.stereotools", schema_path.c_str());
+
+  stereo_tools->post_messages = true;
+  stereo_tools->bypass = false;
+
+  self->connections.push_back(stereo_tools->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(stereo_tools->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "balance-in", gtk_spin_button_get_adjustment(self->balance_in), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "balance-out", gtk_spin_button_get_adjustment(self->balance_out), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "slev", gtk_spin_button_get_adjustment(self->slev), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sbal", gtk_spin_button_get_adjustment(self->sbal), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "mlev", gtk_spin_button_get_adjustment(self->mlev), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "mpan", gtk_spin_button_get_adjustment(self->mpan), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "stereo-base", gtk_spin_button_get_adjustment(self->stereo_base), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "delay", gtk_spin_button_get_adjustment(self->delay), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sc-level", gtk_spin_button_get_adjustment(self->sc_level), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "stereo-phase", gtk_spin_button_get_adjustment(self->stereo_phase), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "softclip", self->softclip, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "mutel", self->mutel, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "muter", self->muter, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "phasel", self->phasel, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "phaser", self->phaser, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_STEREO_TOOLS_BOX(object);
+
+  self->stereo_tools->post_messages = false;
+  self->stereo_tools->bypass = false;
+
+  for (auto& c : self->connections) {
+    c.disconnect();
   }
 
-  return 1;
-}
-
-auto int_to_stereo_tools_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("LR > LR (Stereo Default)");
-
-    case 1:
-      return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
-
-    case 2:
-      return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
-
-    case 3:
-      return g_variant_new_string("LR > LL (Mono Left Channel)");
-
-    case 4:
-      return g_variant_new_string("LR > RR (Mono Right Channel)");
-
-    case 5:
-      return g_variant_new_string("LR > L+R (Mono Sum L+R)");
-
-    case 6:
-      return g_variant_new_string("LR > RL (Stereo Flip Channels)");
-
-    default:
-      return g_variant_new_string("LR > LR (Stereo Default)");
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
   }
+
+  self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(stereo_tools_box_parent_class)->dispose(object);
 }
 
-}  // namespace
+void stereo_tools_box_class_init(StereoToolsBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
-                             const Glib::RefPtr<Gtk::Builder>& builder,
-                             const std::string& schema,
-                             const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::stereo_tools;
+  object_class->dispose = dispose;
 
-  // loading glade widgets
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/stereo_tools.ui");
 
-  balance_in = builder->get_widget<Gtk::SpinButton>("balance_in");
-  balance_out = builder->get_widget<Gtk::SpinButton>("balance_out");
-  slev = builder->get_widget<Gtk::SpinButton>("slev");
-  sbal = builder->get_widget<Gtk::SpinButton>("sbal");
-  mlev = builder->get_widget<Gtk::SpinButton>("mlev");
-  mpan = builder->get_widget<Gtk::SpinButton>("mpan");
-  stereo_base = builder->get_widget<Gtk::SpinButton>("stereo_base");
-  delay = builder->get_widget<Gtk::SpinButton>("delay");
-  sc_level = builder->get_widget<Gtk::SpinButton>("sc_level");
-  stereo_phase = builder->get_widget<Gtk::SpinButton>("stereo_phase");
-  softclip = builder->get_widget<Gtk::ToggleButton>("softclip");
-  mutel = builder->get_widget<Gtk::ToggleButton>("mutel");
-  muter = builder->get_widget<Gtk::ToggleButton>("muter");
-  phasel = builder->get_widget<Gtk::ToggleButton>("phasel");
-  phaser = builder->get_widget<Gtk::ToggleButton>("phaser");
-  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_level_right_label);
 
-  // gsettings bindings
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, bypass);
 
-  settings->bind("softclip", softclip, "active");
-  settings->bind("mutel", mutel, "active");
-  settings->bind("muter", muter, "active");
-  settings->bind("phasel", phasel, "active");
-  settings->bind("phaser", phaser, "active");
-  settings->bind("balance-in", balance_in->get_adjustment().get(), "value");
-  settings->bind("balance-out", balance_out->get_adjustment().get(), "value");
-  settings->bind("slev", slev->get_adjustment().get(), "value");
-  settings->bind("sbal", sbal->get_adjustment().get(), "value");
-  settings->bind("mlev", mlev->get_adjustment().get(), "value");
-  settings->bind("mpan", mpan->get_adjustment().get(), "value");
-  settings->bind("stereo-base", stereo_base->get_adjustment().get(), "value");
-  settings->bind("delay", delay->get_adjustment().get(), "value");
-  settings->bind("sc-level", sc_level->get_adjustment().get(), "value");
-  settings->bind("stereo-phase", stereo_phase->get_adjustment().get(), "value");
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, mode);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, balance_in);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, balance_out);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, slev);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, sbal);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, mlev);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, mpan);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, stereo_base);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, delay);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, sc_level);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, stereo_phase);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, softclip);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, mutel);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, muter);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, phasel);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, phaser);
 
-  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
-
-  prepare_spinbutton(slev, "dB");
-  prepare_spinbutton(mlev, "dB");
-
-  prepare_spinbutton(delay, "ms");
-
-  prepare_spinbutton(balance_in);
-  prepare_spinbutton(balance_out);
-  prepare_spinbutton(sc_level);
-  prepare_spinbutton(sbal);
-  prepare_spinbutton(mpan);
-  prepare_spinbutton(stereo_base);
-  prepare_spinbutton(stereo_phase);
-
-  setup_input_output_gain(builder);
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
-StereoToolsUi::~StereoToolsUi() {
-  util::debug(name + " ui destroyed");
+void stereo_tools_box_init(StereoToolsBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  prepare_spinbutton<"dB">(self->slev);
+  prepare_spinbutton<"dB">(self->mlev);
+  prepare_spinbutton<"ms">(self->delay);
+
+  prepare_spinbutton<"">(self->balance_in);
+  prepare_spinbutton<"">(self->balance_out);
+  prepare_spinbutton<"">(self->sc_level);
+  prepare_spinbutton<"">(self->sbal);
+  prepare_spinbutton<"">(self->mpan);
+  prepare_spinbutton<"">(self->stereo_base);
+  prepare_spinbutton<"">(self->stereo_phase);
 }
 
-auto StereoToolsUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/stereo_tools.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<StereoToolsUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.stereotools", schema_path + "stereotools/");
-
-  stack->add(*ui, plugin_name::stereo_tools);
-
-  return ui;
+auto create() -> StereoToolsBox* {
+  return static_cast<StereoToolsBox*>(g_object_new(EE_TYPE_STEREO_TOOLS_BOX, nullptr));
 }
 
-void StereoToolsUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("balance-in");
-
-  settings->reset("balance-out");
-
-  settings->reset("softclip");
-
-  settings->reset("mutel");
-
-  settings->reset("muter");
-
-  settings->reset("phasel");
-
-  settings->reset("phaser");
-
-  settings->reset("mode");
-
-  settings->reset("slev");
-
-  settings->reset("sbal");
-
-  settings->reset("mlev");
-
-  settings->reset("mpan");
-
-  settings->reset("stereo-base");
-
-  settings->reset("delay");
-
-  settings->reset("sc-level");
-
-  settings->reset("stereo-phase");
-}
+}  // namespace ui::stereo_tools_box

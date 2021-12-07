@@ -225,18 +225,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->rnnoise->output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level));
 
       effects_base->rnnoise->bypass = false;
-    } else if (name == plugin_name::stereo_tools) {
-      auto* const stereo_tools_ui = StereoToolsUi::add_to_stack(stack_plugins, path);
-
-      stereo_tools_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->stereo_tools->bypass = stereo_tools_ui->bypass->get_active(); });
-
-      effects_base->stereo_tools->input_level.connect(
-          sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_input_level));
-      effects_base->stereo_tools->output_level.connect(
-          sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_output_level));
-
-      effects_base->stereo_tools->bypass = false;
     }
   }
 }

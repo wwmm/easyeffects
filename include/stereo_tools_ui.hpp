@@ -17,35 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef STEREO_TOOLS_UI_HPP
-#define STEREO_TOOLS_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class StereoToolsUi : public Gtk::Box, public PluginUiBase {
- public:
-  StereoToolsUi(BaseObjectType* cobject,
-                const Glib::RefPtr<Gtk::Builder>& builder,
-                const std::string& schema,
-                const std::string& schema_path);
-  StereoToolsUi(const StereoToolsUi&) = delete;
-  auto operator=(const StereoToolsUi&) -> StereoToolsUi& = delete;
-  StereoToolsUi(const StereoToolsUi&&) = delete;
-  auto operator=(const StereoToolsUi&&) -> StereoToolsUi& = delete;
-  ~StereoToolsUi() override;
+namespace ui::stereo_tools_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_STEREO_TOOLS_BOX (stereo_tools_box_get_type())
 
- private:
-  Gtk::SpinButton *balance_in = nullptr, *balance_out = nullptr, *slev = nullptr, *sbal = nullptr, *mlev = nullptr,
-                  *mpan = nullptr, *stereo_base = nullptr, *delay = nullptr, *sc_level = nullptr,
-                  *stereo_phase = nullptr;
+G_DECLARE_FINAL_TYPE(StereoToolsBox, stereo_tools_box, EE, STEREO_TOOLS_BOX, GtkBox)
 
-  Gtk::ComboBoxText* mode = nullptr;
+G_END_DECLS
 
-  Gtk::ToggleButton *softclip = nullptr, *mutel = nullptr, *muter = nullptr, *phasel = nullptr, *phaser = nullptr;
-};
+auto create() -> StereoToolsBox*;
 
-#endif
+void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, const std::string& schema_path);
+
+}  // namespace ui::stereo_tools_box
