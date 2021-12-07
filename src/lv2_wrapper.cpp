@@ -212,9 +212,8 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
-  const auto features =
-      std::to_array<const LV2_Feature*>({&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options,
-                                         &static_features[0], &static_features[1], nullptr});
+  const auto features = std::to_array<const LV2_Feature*>(
+      {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, &static_features[0], nullptr});
 
   instance = lilv_plugin_instantiate(plugin, rate, features.data());
 

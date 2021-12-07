@@ -212,8 +212,7 @@ class Lv2Wrapper {
   std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
   std::unordered_map<std::string, std::string> map_key_symbol;
 
-  const std::array<const LV2_Feature, 2U> static_features{
-      {{LV2_BUF_SIZE__fixedBlockLength, nullptr}, {LV2_BUF_SIZE__boundedBlockLength, nullptr}}};
+  const std::array<const LV2_Feature, 1U> static_features{{{LV2_BUF_SIZE__boundedBlockLength, nullptr}}};
 
   void check_required_features();
 
