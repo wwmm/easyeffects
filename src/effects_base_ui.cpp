@@ -213,16 +213,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->pitch->output_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level));
 
       effects_base->pitch->bypass = false;
-    } else if (name == plugin_name::reverb) {
-      auto* const reverb_ui = ReverbUi::add_to_stack(stack_plugins, path);
-
-      reverb_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->reverb->bypass = reverb_ui->bypass->get_active(); });
-
-      effects_base->reverb->input_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level));
-      effects_base->reverb->output_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level));
-
-      effects_base->reverb->bypass = false;
     } else if (name == plugin_name::rnnoise) {
       auto* const rnnoise_ui = RNNoiseUi::add_to_stack(stack_plugins, path);
 

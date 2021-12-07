@@ -29,23 +29,23 @@ Reverb::Reverb(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Reverb is not installed");
   }
 
-  lv2_wrapper->bind_key_double(settings, "decay-time", "decay_time");
+  lv2_wrapper->bind_key_double<"decay_time", "decay-time">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "hf-damp", "hf_damp");
+  lv2_wrapper->bind_key_double<"hf_damp", "hf-damp">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "diffusion", "diffusion");
+  lv2_wrapper->bind_key_double<"diffusion", "diffusion">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "predelay", "predelay");
+  lv2_wrapper->bind_key_double<"predelay", "predelay">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "bass-cut", "bass_cut");
+  lv2_wrapper->bind_key_double<"bass_cut", "bass-cut">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "treble-cut", "treble_cut");
+  lv2_wrapper->bind_key_double<"treble_cut", "treble-cut">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
+  lv2_wrapper->bind_key_double_db<"amount", "amount">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "dry", "dry");
+  lv2_wrapper->bind_key_double_db<"dry", "dry">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "room-size", "room_size");
+  lv2_wrapper->bind_key_enum<"room_size", "room-size">(settings);
 
   setup_input_output_gain();
 }

@@ -37,6 +37,7 @@
 #include "maximizer_ui.hpp"
 #include "pipeline_type.hpp"
 #include "plugins_menu.hpp"
+#include "reverb_ui.hpp"
 
 namespace ui::plugins_box {
 

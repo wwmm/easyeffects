@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="ReverbBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkBox">
                 <property name="halign">center</property>
@@ -23,6 +22,7 @@
                 <child>
                     <object class="GtkToggleButton" id="bypass">
                         <property name="label" translatable="yes">Bypass</property>
+                        <signal name="toggled" handler="on_bypass" object="ReverbBox" />
                     </object>
                 </child>
             </object>
@@ -80,12 +80,12 @@
                             <object class="GtkComboBoxText" id="room_size">
                                 <property name="halign">center</property>
                                 <items>
-                                    <item translatable="yes">Small</item>
-                                    <item translatable="yes">Medium</item>
-                                    <item translatable="yes">Large</item>
-                                    <item translatable="yes">Tunnel</item>
-                                    <item translatable="yes">Large/smooth</item>
-                                    <item translatable="yes">Experimental</item>
+                                    <item translatable="yes" id="Small">Small</item>
+                                    <item translatable="yes" id="Medium">Medium</item>
+                                    <item translatable="yes" id="Large">Large</item>
+                                    <item translatable="yes" id="Tunnel-like">Tunnel</item>
+                                    <item translatable="yes" id="Large/smooth">Large/smooth</item>
+                                    <item translatable="yes" id="Experimental">Experimental</item>
                                 </items>
                                 <accessibility>
                                     <relation name="labelled-by">room_size_label</relation>
@@ -528,6 +528,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="ReverbBox" />
                     </object>
                 </child>
 
@@ -556,7 +557,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkPopover" id="popover_presets">
         <property name="autohide">1</property>
@@ -575,12 +576,14 @@
                         <child>
                             <object class="GtkButton" id="preset_ambience">
                                 <property name="label" translatable="yes">Ambience</property>
+                                <signal name="clicked" handler="on_preset_ambience" object="ReverbBox" />
                             </object>
                         </child>
 
                         <child>
                             <object class="GtkButton" id="preset_empty_walls">
                                 <property name="label" translatable="yes">Empty Walls</property>
+                                <signal name="clicked" handler="on_preset_empty_walls" object="ReverbBox" />
                             </object>
                         </child>
                     </object>
@@ -593,12 +596,14 @@
                         <child>
                             <object class="GtkButton" id="preset_room">
                                 <property name="label" translatable="yes">Room</property>
+                                <signal name="clicked" handler="on_preset_room" object="ReverbBox" />
                             </object>
                         </child>
 
                         <child>
                             <object class="GtkButton" id="preset_large_empty_hall">
                                 <property name="label" translatable="yes">Large Empty Hall</property>
+                                <signal name="clicked" handler="on_preset_ambience" object="ReverbBox" />
                             </object>
                         </child>
                     </object>
@@ -611,12 +616,14 @@
                         <child>
                             <object class="GtkButton" id="preset_disco">
                                 <property name="label" translatable="yes">Disco</property>
+                                <signal name="clicked" handler="on_preset_disco" object="ReverbBox" />
                             </object>
                         </child>
 
                         <child>
                             <object class="GtkButton" id="preset_large_occupied_hall">
                                 <property name="label" translatable="yes">Large Occupied Hall</property>
+                                <signal name="clicked" handler="on_preset_large_occupied_hall" object="ReverbBox" />
                             </object>
                         </child>
                     </object>

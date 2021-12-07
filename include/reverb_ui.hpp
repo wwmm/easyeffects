@@ -17,37 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef REVERB_UI_HPP
-#define REVERB_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class ReverbUi : public Gtk::Box, public PluginUiBase {
- public:
-  ReverbUi(BaseObjectType* cobject,
-           const Glib::RefPtr<Gtk::Builder>& builder,
-           const std::string& schema,
-           const std::string& schema_path);
-  ReverbUi(const ReverbUi&) = delete;
-  auto operator=(const ReverbUi&) -> ReverbUi& = delete;
-  ReverbUi(const ReverbUi&&) = delete;
-  auto operator=(const ReverbUi&&) -> ReverbUi& = delete;
-  ~ReverbUi() override;
+namespace ui::reverb_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ReverbUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_REVERB_BOX (reverb_box_get_type())
 
- private:
-  Gtk::SpinButton *predelay = nullptr, *decay_time = nullptr, *diffusion = nullptr, *amount = nullptr, *dry = nullptr,
-                  *hf_damp = nullptr, *bass_cut = nullptr, *treble_cut = nullptr;
+G_DECLARE_FINAL_TYPE(ReverbBox, reverb_box, EE, REVERB_BOX, GtkBox)
 
-  Gtk::ComboBoxText* room_size = nullptr;
+G_END_DECLS
 
-  Gtk::Button *preset_room = nullptr, *preset_empty_walls = nullptr, *preset_ambience = nullptr,
-              *preset_large_empty_hall = nullptr, *preset_disco = nullptr, *preset_large_occupied_hall = nullptr;
+auto create() -> ReverbBox*;
 
-  void init_presets_buttons();
-};
+void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& schema_path);
 
-#endif
+}  // namespace ui::reverb_box
