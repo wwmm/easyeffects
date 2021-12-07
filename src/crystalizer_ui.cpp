@@ -141,6 +141,8 @@ void build_bands(CrystalizerBox* self) {
     }
 
     gtk_box_append(self->bands_box, GTK_WIDGET(band_box));
+
+    g_object_unref(builder);
   }
 }
 
