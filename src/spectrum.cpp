@@ -116,7 +116,7 @@ void Spectrum::process(std::span<float>& left_in,
   if (notification_dt >= notification_time_window) {
     notification_dt = 0.0F;
 
-    util::idle_add([=]() {
+    util::idle_add([=, this]() {
       if (!post_messages) {
         return;
       }

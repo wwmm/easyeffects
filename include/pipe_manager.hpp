@@ -62,7 +62,7 @@ struct NodeInfo {
 
   int priority = -1;
 
-  pw_node_state state;
+  pw_node_state state = PW_NODE_STATE_IDLE;
 
   bool mute = false;
 
@@ -94,7 +94,7 @@ struct LinkInfo {
 
   bool passive = false;  // does not cause the graph to be runnable
 
-  pw_link_state state;
+  pw_link_state state = PW_LINK_STATE_UNLINKED;
 };
 
 struct PortInfo {
