@@ -179,6 +179,8 @@ class PipeManager {
   pw_registry* registry = nullptr;
   pw_metadata* metadata = nullptr;
 
+  bool exiting = false;
+
   spa_hook metadata_listener{};
 
   /*
@@ -294,8 +296,6 @@ class PipeManager {
   sigc::signal<void(const LinkInfo)> link_changed;
 
  private:
-  bool context_ready = false;
-
   pw_context* context = nullptr;
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 

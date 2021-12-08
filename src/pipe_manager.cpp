@@ -161,22 +161,24 @@ void on_destroy_node_proxy(void* data) {
 
     pm->node_map.erase(node_it);
 
-    if (nd->nd_info.media_class == pm->media_class_source) {
-      const auto nd_info_copy = nd->nd_info;
+    if (!pm->exiting) {
+      if (nd->nd_info.media_class == pm->media_class_source) {
+        const auto nd_info_copy = nd->nd_info;
 
-      util::idle_add([=]() { pm->source_removed.emit(nd_info_copy); });
-    } else if (nd->nd_info.media_class == pm->media_class_sink) {
-      const auto nd_info_copy = nd->nd_info;
+        util::idle_add([=]() { pm->source_removed.emit(nd_info_copy); });
+      } else if (nd->nd_info.media_class == pm->media_class_sink) {
+        const auto nd_info_copy = nd->nd_info;
 
-      util::idle_add([=]() { pm->sink_removed.emit(nd_info_copy); });
-    } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
-      const auto node_ts = nd->nd_info.timestamp;
+        util::idle_add([=]() { pm->sink_removed.emit(nd_info_copy); });
+      } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
+        const auto node_ts = nd->nd_info.timestamp;
 
-      util::idle_add([=]() { pm->stream_output_removed.emit(node_ts); });
-    } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-      const auto node_ts = nd->nd_info.timestamp;
+        util::idle_add([=]() { pm->stream_output_removed.emit(node_ts); });
+      } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
+        const auto node_ts = nd->nd_info.timestamp;
 
-      util::idle_add([=]() { pm->stream_input_removed.emit(node_ts); });
+        util::idle_add([=]() { pm->stream_input_removed.emit(node_ts); });
+      }
     }
 
     util::debug(PipeManager::log_tag + nd->nd_info.media_class + " " + nd->nd_info.name + " was removed");
@@ -1252,6 +1254,8 @@ PipeManager::PipeManager() {
 }
 
 PipeManager::~PipeManager() {
+  exiting = true;
+
   lock();
 
   spa_hook_remove(&registry_listener);

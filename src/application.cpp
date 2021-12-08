@@ -368,6 +368,11 @@ void application_class_init(ApplicationClass* klass) {
     delete self->soe;
     delete self->pm;
 
+    self->presets_manager = nullptr;
+    self->sie = nullptr;
+    self->soe = nullptr;
+    self->pm = nullptr;
+
     util::debug(log_tag + "shutting down..."s);
   };
 }
