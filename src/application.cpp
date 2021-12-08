@@ -363,6 +363,8 @@ void application_class_init(ApplicationClass* klass) {
     g_object_unref(self->sie_settings);
     g_object_unref(self->soe_settings);
 
+    PipeManager::exiting = true;
+
     delete self->presets_manager;
     delete self->sie;
     delete self->soe;

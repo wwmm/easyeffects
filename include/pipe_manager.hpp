@@ -179,7 +179,7 @@ class PipeManager {
   pw_registry* registry = nullptr;
   pw_metadata* metadata = nullptr;
 
-  bool exiting = false;
+  inline static bool exiting = false;
 
   spa_hook metadata_listener{};
 
@@ -273,8 +273,8 @@ class PipeManager {
 
   sigc::signal<void(const NodeInfo)> stream_output_added;
   sigc::signal<void(const NodeInfo)> stream_input_added;
-  sigc::signal<void(const long)> stream_output_changed;
-  sigc::signal<void(const long)> stream_input_changed;
+  sigc::signal<void(const NodeInfo)> stream_output_changed;
+  sigc::signal<void(const NodeInfo)> stream_input_changed;
   sigc::signal<void(const long)> stream_output_removed;
   sigc::signal<void(const long)> stream_input_removed;
 

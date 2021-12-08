@@ -104,16 +104,14 @@ void on_app_removed(AppsBox* self, const long ts) {
   }
 }
 
-void on_app_changed(AppsBox* self, const long ts) {
+void on_app_changed(AppsBox* self, const NodeInfo node_info) {
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
-    if (holder->ts == ts) {
-      if (auto node_it = self->application->pm->node_map.find(ts); node_it != self->application->pm->node_map.end()) {
-        holder->info_updated.emit(node_it->second);
+    if (holder->ts == node_info.timestamp) {
+      holder->info_updated.emit(node_info);
 
-        return;
-      }
+      return;
     }
   }
 }
@@ -364,7 +362,7 @@ void setup_listview(AppsBox* self) {
 
         auto* holder = static_cast<ui::holders::NodeInfoHolder*>(child_item);
 
-        auto application_info_update = [=](const NodeInfo& node_info) {
+        auto application_info_update = [=](const NodeInfo node_info) {
           if (node_info.state == PW_NODE_STATE_CREATING) {
             // PW_NODE_STATE_CREATING is useless and does not give any meaningful info, therefore skip it
             return;
@@ -523,8 +521,8 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->connections.push_back(
           application->sie->pm->stream_input_removed.connect([=](const long ts) { on_app_removed(self, ts); }));
 
-      self->connections.push_back(
-          application->sie->pm->stream_input_changed.connect([=](const long ts) { on_app_changed(self, ts); }));
+      self->connections.push_back(application->sie->pm->stream_input_changed.connect(
+          [=](const NodeInfo node_info) { on_app_changed(self, node_info); }));
 
       break;
     }
@@ -545,8 +543,8 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->connections.push_back(
           application->soe->pm->stream_output_removed.connect([=](const long ts) { on_app_removed(self, ts); }));
 
-      self->connections.push_back(
-          application->soe->pm->stream_output_changed.connect([=](const long ts) { on_app_changed(self, ts); }));
+      self->connections.push_back(application->soe->pm->stream_output_changed.connect(
+          [=](const NodeInfo node_info) { on_app_changed(self, node_info); }));
 
       break;
     }
