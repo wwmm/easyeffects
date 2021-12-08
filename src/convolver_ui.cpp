@@ -489,7 +489,6 @@ void setup(ConvolverBox* self,
 void dispose(GObject* object) {
   auto* self = EE_CONVOLVER_BOX(object);
 
-  self->convolver->post_messages = false;
   self->convolver->bypass = false;
 
   g_file_monitor_cancel(self->folder_monitor);

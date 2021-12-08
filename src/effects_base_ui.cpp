@@ -41,28 +41,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   // enabling notifications
 
-  effects_base->bass_loudness->post_messages = true;
-  effects_base->compressor->post_messages = true;
-  effects_base->convolver->post_messages = true;
-  effects_base->crossfeed->post_messages = true;
-  effects_base->crystalizer->post_messages = true;
-  effects_base->deesser->post_messages = true;
-  effects_base->delay->post_messages = true;
-  effects_base->echo_canceller->post_messages = true;
-  effects_base->equalizer->post_messages = true;
-  effects_base->exciter->post_messages = true;
-  effects_base->filter->post_messages = true;
-  effects_base->gate->post_messages = true;
-  effects_base->limiter->post_messages = true;
-  effects_base->loudness->post_messages = true;
-  effects_base->maximizer->post_messages = true;
-  effects_base->multiband_compressor->post_messages = true;
-  effects_base->multiband_gate->post_messages = true;
-  effects_base->output_level->post_messages = true;
-  effects_base->pitch->post_messages = true;
-  effects_base->reverb->post_messages = true;
-  effects_base->rnnoise->post_messages = true;
-  effects_base->stereo_tools->post_messages = true;
+  PluginBase::post_messages = true;
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -74,20 +53,7 @@ EffectsBaseUi::~EffectsBaseUi() {
 
   // do not send notifications when the window is closed
 
-  effects_base->deesser->post_messages = false;
-  effects_base->delay->post_messages = false;
-  effects_base->echo_canceller->post_messages = false;
-  effects_base->filter->post_messages = false;
-  effects_base->gate->post_messages = false;
-  effects_base->loudness->post_messages = false;
-  effects_base->multiband_compressor->post_messages = false;
-  effects_base->multiband_gate->post_messages = false;
-  effects_base->output_level->post_messages = false;
-  effects_base->pitch->post_messages = false;
-  effects_base->reverb->post_messages = false;
-  effects_base->rnnoise->post_messages = false;
-  effects_base->spectrum->post_messages = false;
-  effects_base->stereo_tools->post_messages = false;
+  PluginBase::post_messages = false;
 
   // disabling bypass when closing the window
 
@@ -103,8 +69,9 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->pitch->bypass = false;
   effects_base->reverb->bypass = false;
   effects_base->rnnoise->bypass = false;
-  effects_base->spectrum->bypass = false;
   effects_base->stereo_tools->bypass = false;
+
+  effects_base->spectrum->bypass = true;
 }
 
 void EffectsBaseUi::add_plugins_to_stack_plugins() {

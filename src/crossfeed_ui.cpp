@@ -110,7 +110,6 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 void dispose(GObject* object) {
   auto* self = EE_CROSSFEED_BOX(object);
 
-  self->crossfeed->post_messages = false;
   self->crossfeed->bypass = false;
 
   for (auto& c : self->connections) {

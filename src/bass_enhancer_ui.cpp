@@ -129,7 +129,6 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 void dispose(GObject* object) {
   auto* self = EE_BASS_ENHANCER_BOX(object);
 
-  self->bass_enhancer->post_messages = false;
   self->bass_enhancer->bypass = false;
 
   for (auto& c : self->connections) {

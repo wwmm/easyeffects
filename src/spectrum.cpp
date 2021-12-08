@@ -38,7 +38,7 @@ Spectrum::Spectrum(const std::string& tag,
 
                      std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                     self->post_messages = g_settings_get_boolean(settings, key) != 0;
+                     self->bypass = g_settings_get_boolean(settings, key) != 0;
                    }),
                    this);
 }
@@ -76,7 +76,7 @@ void Spectrum::process(std::span<float>& left_in,
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  if (!post_messages || !fftw_ready) {
+  if (bypass || !post_messages || !fftw_ready) {
     return;
   }
 
@@ -116,6 +116,12 @@ void Spectrum::process(std::span<float>& left_in,
   if (notification_dt >= notification_time_window) {
     notification_dt = 0.0F;
 
-    power.emit(rate, output.size(), output);
+    util::idle_add([=]() {
+      if (!post_messages) {
+        return;
+      }
+
+      power.emit(rate, output.size(), output);
+    });
   }
 }

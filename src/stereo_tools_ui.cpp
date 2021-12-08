@@ -162,7 +162,6 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 void dispose(GObject* object) {
   auto* self = EE_STEREO_TOOLS_BOX(object);
 
-  self->stereo_tools->post_messages = false;
   self->stereo_tools->bypass = false;
 
   for (auto& c : self->connections) {

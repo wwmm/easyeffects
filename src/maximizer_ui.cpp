@@ -110,7 +110,6 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 void dispose(GObject* object) {
   auto* self = EE_MAXIMIZER_BOX(object);
 
-  self->maximizer->post_messages = false;
   self->maximizer->bypass = false;
 
   for (auto& c : self->connections) {

@@ -136,7 +136,6 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 void dispose(GObject* object) {
   auto* self = EE_AUTOGAIN_BOX(object);
 
-  self->autogain->post_messages = false;
   self->autogain->bypass = false;
 
   for (auto& c : self->connections) {

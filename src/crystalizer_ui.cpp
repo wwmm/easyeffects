@@ -175,7 +175,6 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 void dispose(GObject* object) {
   auto* self = EE_CRYSTALIZER_BOX(object);
 
-  self->crystalizer->post_messages = false;
   self->crystalizer->bypass = false;
 
   for (auto& c : self->connections) {

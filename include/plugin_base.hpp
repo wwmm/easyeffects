@@ -79,7 +79,7 @@ class PluginBase {
 
   bool connected_to_pw = false;
 
-  bool post_messages = false;
+  inline static bool post_messages;
 
   [[nodiscard]] auto get_node_id() const -> uint;
 

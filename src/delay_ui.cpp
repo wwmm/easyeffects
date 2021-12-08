@@ -100,7 +100,6 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 void dispose(GObject* object) {
   auto* self = EE_DELAY_BOX(object);
 
-  self->delay->post_messages = false;
   self->delay->bypass = false;
 
   for (auto& c : self->connections) {

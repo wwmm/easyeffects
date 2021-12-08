@@ -60,8 +60,8 @@ class EffectsBase {
 
   PipeManager* pm = nullptr;
 
-  std::unique_ptr<OutputLevel> output_level;
-  std::unique_ptr<Spectrum> spectrum;
+  std::shared_ptr<OutputLevel> output_level;
+  std::shared_ptr<Spectrum> spectrum;
 
   std::shared_ptr<AutoGain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;

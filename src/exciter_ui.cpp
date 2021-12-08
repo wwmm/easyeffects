@@ -128,7 +128,6 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 void dispose(GObject* object) {
   auto* self = EE_EXCITER_BOX(object);
 
-  self->exciter->post_messages = false;
   self->exciter->bypass = false;
 
   for (auto& c : self->connections) {

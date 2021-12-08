@@ -443,7 +443,6 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 void dispose(GObject* object) {
   auto* self = EE_LIMITER_BOX(object);
 
-  self->limiter->post_messages = false;
   self->limiter->bypass = false;
 
   for (auto& c : self->connections) {

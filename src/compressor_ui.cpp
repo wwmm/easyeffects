@@ -295,7 +295,6 @@ void setup(CompressorBox* self,
 void dispose(GObject* object) {
   auto* self = EE_COMPRESSOR_BOX(object);
 
-  self->compressor->post_messages = false;
   self->compressor->bypass = false;
 
   for (auto& c : self->connections) {

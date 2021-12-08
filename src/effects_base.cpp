@@ -76,7 +76,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
                                                    path + "multibandgate/", pm);
 
   output_level =
-      std::make_unique<OutputLevel>(log_tag, "com.github.wwmm.easyeffects.outputlevel", path + "outputlevel/", pm);
+      std::make_shared<OutputLevel>(log_tag, "com.github.wwmm.easyeffects.outputlevel", path + "outputlevel/", pm);
 
   pitch = std::make_shared<Pitch>(log_tag, "com.github.wwmm.easyeffects.pitch", path + "pitch/", pm);
 
@@ -84,7 +84,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   rnnoise = std::make_shared<RNNoise>(log_tag, "com.github.wwmm.easyeffects.rnnoise", path + "rnnoise/", pm);
 
-  spectrum = std::make_unique<Spectrum>(log_tag, "com.github.wwmm.easyeffects.spectrum",
+  spectrum = std::make_shared<Spectrum>(log_tag, "com.github.wwmm.easyeffects.spectrum",
                                         "/com/github/wwmm/easyeffects/spectrum/", pm);
   stereo_tools =
       std::make_shared<StereoTools>(log_tag, "com.github.wwmm.easyeffects.stereotools", path + "stereotools/", pm);
@@ -207,8 +207,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 }
 
 EffectsBase::~EffectsBase() {
-  util::debug("effects_base: destroyed");
-
   for (auto& c : connections) {
     c.disconnect();
   }
@@ -218,6 +216,8 @@ EffectsBase::~EffectsBase() {
   }
 
   g_object_unref(settings);
+
+  util::debug("effects_base: destroyed");
 }
 
 void EffectsBase::activate_filters() {

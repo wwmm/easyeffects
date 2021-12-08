@@ -109,7 +109,6 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 void dispose(GObject* object) {
   auto* self = EE_FILTER_BOX(object);
 
-  self->filter->post_messages = false;
   self->filter->bypass = false;
 
   for (auto& c : self->connections) {

@@ -102,7 +102,6 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
 void dispose(GObject* object) {
   auto* self = EE_BASS_LOUDNESS_BOX(object);
 
-  self->bass_loudness->post_messages = false;
   self->bass_loudness->bypass = false;
 
   for (auto& c : self->connections) {

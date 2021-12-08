@@ -370,13 +370,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
           }
         });
 
-        g_idle_add((GSourceFunc) +
-                       [](EffectsBox* self) {
-                         ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
-
-                         return G_SOURCE_REMOVE;
-                       },
-                   self);
+        ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
       }));
 
   self->effects_base->output_level->post_messages = true;
@@ -424,7 +418,7 @@ void unroot(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_EFFECTS_BOX(object);
 
-  self->effects_base->spectrum->post_messages = false;
+  self->effects_base->spectrum->bypass = true;
 
   for (auto& c : self->connections) {
     c.disconnect();
@@ -490,10 +484,13 @@ void effects_box_init(EffectsBox* self) {
 
   gtk_box_insert_child_after(GTK_BOX(self), GTK_WIDGET(self->spectrum_chart), nullptr);
 
-  g_signal_connect(GTK_WIDGET(self->spectrum_chart), "hide", G_CALLBACK(+[](GtkWidget* widget, EffectsBox* self) {
-                     self->effects_base->spectrum->post_messages = false;
-                   }),
-                   self);
+  g_signal_connect(
+      GTK_WIDGET(self->spectrum_chart), "show",
+      G_CALLBACK(+[](GtkWidget* widget, EffectsBox* self) { self->effects_base->spectrum->bypass = false; }), self);
+
+  g_signal_connect(
+      GTK_WIDGET(self->spectrum_chart), "hide",
+      G_CALLBACK(+[](GtkWidget* widget, EffectsBox* self) { self->effects_base->spectrum->bypass = true; }), self);
 }
 
 auto create() -> EffectsBox* {

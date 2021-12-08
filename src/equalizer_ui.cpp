@@ -502,7 +502,6 @@ void setup(EqualizerBox* self,
 void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BOX(object);
 
-  self->equalizer->post_messages = false;
   self->equalizer->bypass = false;
 
   for (auto& c : self->connections) {

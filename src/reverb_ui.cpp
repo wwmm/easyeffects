@@ -205,7 +205,6 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 void dispose(GObject* object) {
   auto* self = EE_REVERB_BOX(object);
 
-  self->reverb->post_messages = false;
   self->reverb->bypass = false;
 
   for (auto& c : self->connections) {
