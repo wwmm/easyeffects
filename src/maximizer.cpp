@@ -94,7 +94,13 @@ void Maximizer::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
+    util::idle_add([=, this]() {
+      if (!post_messages) {
+        return;
+      }
+
+      latency.emit(latency_port_value);
+    });
 
     spa_process_latency_info latency_info{};
 
@@ -121,7 +127,7 @@ void Maximizer::process(std::span<float>& left_in,
 
       reduction_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gr"));
 
-      Glib::signal_idle().connect_once([=, this] {
+      util::idle_add([=, this]() {
         if (!post_messages) {
           return;
         }

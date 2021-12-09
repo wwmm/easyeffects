@@ -99,7 +99,13 @@ void Gate::process(std::span<float>& left_in,
 
       gating_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating"));
 
-      Glib::signal_idle().connect_once([=, this] { gating.emit(gating_port_value); });
+      util::idle_add([=, this]() {
+        if (!post_messages) {
+          return;
+        }
+
+        gating.emit(gating_port_value);
+      });
 
       notify();
 

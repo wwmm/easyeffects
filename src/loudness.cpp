@@ -92,7 +92,13 @@ void Loudness::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
+    util::idle_add([=, this]() {
+      if (!post_messages) {
+        return;
+      }
+
+      latency.emit(latency_port_value);
+    });
 
     spa_process_latency_info latency_info{};
 

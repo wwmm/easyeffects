@@ -165,10 +165,20 @@ void MultibandCompressor::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
+    util::idle_add([=, this]() {
+      if (!post_messages) {
+        return;
+      }
+
+      latency.emit(latency_port_value);
+    });
 
     g_idle_add((GSourceFunc) +
                    [](gpointer user_data) {
+                     if (!post_messages) {
+                       return G_SOURCE_REMOVE;
+                     }
+
                      auto* self = static_cast<MultibandCompressor*>(user_data);
 
                      if (self->latency.empty()) {
@@ -213,6 +223,10 @@ void MultibandCompressor::process(std::span<float>& left_in,
 
       g_idle_add((GSourceFunc) +
                      [](gpointer user_data) {
+                       if (!post_messages) {
+                         return G_SOURCE_REMOVE;
+                       }
+
                        auto* self = static_cast<MultibandCompressor*>(user_data);
 
                        if (self->frequency_range.empty() || self->envelope.empty() || self->curve.empty() ||
