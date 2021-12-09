@@ -21,6 +21,10 @@
 
 namespace ui::chart {
 
+using namespace std::string_literals;
+
+auto constexpr log_tag = "chart_box: ";
+
 struct _Chart {
   GtkBox parent_instance;
 
@@ -380,8 +384,24 @@ void unroot(GtkWidget* widget) {
   GTK_WIDGET_CLASS(chart_parent_class)->unmap(widget);
 }
 
+void dispose(GObject* object) {
+  auto* self = EE_CHART(object);
+
+  self->x_axis.clear();
+  self->y_axis.clear();
+  self->original_x.clear();
+  self->original_y.clear();
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(chart_parent_class)->dispose(object);
+}
+
 void chart_class_init(ChartClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
 
   widget_class->snapshot = snapshot;
   widget_class->unroot = unroot;

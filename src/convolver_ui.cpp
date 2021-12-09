@@ -493,6 +493,8 @@ void dispose(GObject* object) {
 
   g_file_monitor_cancel(self->folder_monitor);
 
+  g_object_unref(self->folder_monitor);
+
   for (auto& t : self->mythreads) {
     t.join();
   }

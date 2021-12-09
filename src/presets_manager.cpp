@@ -191,6 +191,10 @@ PresetsManager::~PresetsManager() {
   g_file_monitor_cancel(autoload_input_monitor);
   g_file_monitor_cancel(autoload_output_monitor);
 
+  g_object_unref(user_output_monitor);
+  g_object_unref(user_input_monitor);
+  g_object_unref(autoload_input_monitor);
+  g_object_unref(autoload_output_monitor);
   g_object_unref(settings);
   g_object_unref(sie_settings);
   g_object_unref(soe_settings);
