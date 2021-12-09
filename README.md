@@ -89,6 +89,7 @@ You can help me to keep developing EasyEffects through donations. Any amount wil
 - [openSUSE](https://software.opensuse.org/package/easyeffects)
 - [NixOS](https://search.nixos.org/packages?channel=unstable&show=easyeffects&query=easyeffects)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/easyeffects)
+- [Fedora](https://src.fedoraproject.org/rpms/easyeffects)
 
 <!--
 - [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/easyeffects/template)
@@ -115,6 +116,10 @@ If your distribution does not yet include packages required to build EasyEffects
 ### Installing from source
 
 See the wiki: [Installing from Source](https://github.com/wwmm/easyeffects/wiki/Installation-from-Source), for detailed instructions.
+
+### Nightly Flatpak
+
+A nightly Flatpak is available, see the [installation instructions](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#nightly-flatpak).
 
 ## Documentation
 
