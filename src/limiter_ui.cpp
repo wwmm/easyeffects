@@ -25,6 +25,17 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "limiter_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<Limiter> limiter;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _LimiterBox {
   GtkBox parent_instance;
 
@@ -53,17 +64,13 @@ struct _LimiterBox {
 
   GSettings* settings;
 
-  std::shared_ptr<Limiter> limiter;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(LimiterBox, limiter_box, GTK_TYPE_BOX)
 
 void on_bypass(LimiterBox* self, GtkToggleButton* btn) {
-  self->limiter->bypass = gtk_toggle_button_get_active(btn);
+  self->data->limiter->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(LimiterBox* self, GtkButton* btn) {
@@ -125,7 +132,7 @@ void setup_dropdown_input_device(LimiterBox* self) {
 }
 
 void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string& schema_path, PipeManager* pm) {
-  self->limiter = limiter;
+  self->data->limiter = limiter;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.limiter", schema_path.c_str());
 
@@ -144,33 +151,33 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
     }
   }
 
-  self->connections.push_back(limiter->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(limiter->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(limiter->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(limiter->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
 
-  self->connections.push_back(limiter->gain_left.connect([=](const double& value) {
+  self->data->connections.push_back(limiter->gain_left.connect([=](const double& value) {
     gtk_label_set_text(self->gain_left, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
 
-  self->connections.push_back(limiter->gain_right.connect([=](const double& value) {
+  self->data->connections.push_back(limiter->gain_right.connect([=](const double& value) {
     gtk_label_set_text(self->gain_right, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
 
-  self->connections.push_back(limiter->sidechain_left.connect([=](const double& value) {
+  self->data->connections.push_back(limiter->sidechain_left.connect([=](const double& value) {
     gtk_label_set_text(self->sidechain_left, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
 
-  self->connections.push_back(limiter->sidechain_right.connect([=](const double& value) {
+  self->data->connections.push_back(limiter->sidechain_right.connect([=](const double& value) {
     gtk_label_set_text(self->sidechain_right, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
 
-  self->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
+  self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
               ->id == info.id) {
@@ -181,7 +188,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
     g_list_store_append(self->input_devices_model, ui::holders::create(info));
   }));
 
-  self->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
+  self->data->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
               ->id == info.id) {
@@ -240,18 +247,18 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 void dispose(GObject* object) {
   auto* self = EE_LIMITER_BOX(object);
 
-  self->limiter->bypass = false;
+  self->data->limiter->bypass = false;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -260,11 +267,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(limiter_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_LIMITER_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(limiter_box_parent_class)->finalize(object);
+}
+
 void limiter_box_class_init(LimiterBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/limiter.ui");
 
@@ -308,6 +326,8 @@ void limiter_box_class_init(LimiterBoxClass* klass) {
 
 void limiter_box_init(LimiterBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
 

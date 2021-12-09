@@ -25,6 +25,17 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "reverb_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<Reverb> reverb;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _ReverbBox {
   GtkBox parent_instance;
 
@@ -42,17 +53,13 @@ struct _ReverbBox {
 
   GSettings* settings;
 
-  std::shared_ptr<Reverb> reverb;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(ReverbBox, reverb_box, GTK_TYPE_BOX)
 
 void on_bypass(ReverbBox* self, GtkToggleButton* btn) {
-  self->reverb->bypass = gtk_toggle_button_get_active(btn);
+  self->data->reverb->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(ReverbBox* self, GtkButton* btn) {
@@ -154,19 +161,19 @@ void on_preset_large_occupied_hall(ReverbBox* self, GtkButton* btn) {
 }
 
 void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& schema_path) {
-  self->reverb = reverb;
+  self->data->reverb = reverb;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.reverb", schema_path.c_str());
 
   reverb->post_messages = true;
   reverb->bypass = false;
 
-  self->connections.push_back(reverb->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(reverb->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(reverb->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(reverb->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
@@ -205,18 +212,18 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 void dispose(GObject* object) {
   auto* self = EE_REVERB_BOX(object);
 
-  self->reverb->bypass = false;
+  self->data->reverb->bypass = false;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -225,11 +232,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(reverb_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_REVERB_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(reverb_box_parent_class)->finalize(object);
+}
+
 void reverb_box_class_init(ReverbBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/reverb.ui");
 
@@ -268,6 +286,8 @@ void reverb_box_class_init(ReverbBoxClass* klass) {
 
 void reverb_box_init(ReverbBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   prepare_spinbutton<"dB">(self->amount);
   prepare_spinbutton<"dB">(self->dry);

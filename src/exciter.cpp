@@ -98,7 +98,13 @@ void Exciter::process(std::span<float>& left_in,
 
       harmonics_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("meter_drive"));
 
-      util::idle_add([=, this] { harmonics.emit(harmonics_port_value); });
+      util::idle_add([=, this] {
+        if (!post_messages) {
+          return;
+        }
+
+        harmonics.emit(harmonics_port_value);
+      });
 
       notify();
 

@@ -25,6 +25,17 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "exciter_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<Exciter> exciter;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _ExciterBox {
   GtkBox parent_instance;
 
@@ -48,17 +59,13 @@ struct _ExciterBox {
 
   GSettings* settings;
 
-  std::shared_ptr<Exciter> exciter;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(ExciterBox, exciter_box, GTK_TYPE_BOX)
 
 void on_bypass(ExciterBox* self, GtkToggleButton* btn) {
-  self->exciter->bypass = gtk_toggle_button_get_active(btn);
+  self->data->exciter->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(ExciterBox* self, GtkButton* btn) {
@@ -84,24 +91,24 @@ void on_reset(ExciterBox* self, GtkButton* btn) {
 }
 
 void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string& schema_path) {
-  self->exciter = exciter;
+  self->data->exciter = exciter;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.exciter", schema_path.c_str());
 
   exciter->post_messages = true;
   exciter->bypass = false;
 
-  self->connections.push_back(exciter->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(exciter->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(exciter->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(exciter->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
 
-  self->connections.push_back(exciter->harmonics.connect([=](const double& value) {
+  self->data->connections.push_back(exciter->harmonics.connect([=](const double& value) {
     gtk_level_bar_set_value(self->harmonics_levelbar, value);
     gtk_label_set_text(self->harmonics_levelbar_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
@@ -128,18 +135,18 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 void dispose(GObject* object) {
   auto* self = EE_EXCITER_BOX(object);
 
-  self->exciter->bypass = false;
+  self->data->exciter->bypass = false;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -148,11 +155,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(exciter_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_EXCITER_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(exciter_box_parent_class)->finalize(object);
+}
+
 void exciter_box_class_init(ExciterBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/exciter.ui");
 
@@ -185,6 +203,8 @@ void exciter_box_class_init(ExciterBoxClass* klass) {
 
 void exciter_box_init(ExciterBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   prepare_spinbutton<"dB">(self->amount);
   prepare_spinbutton<"Hz">(self->scope);
