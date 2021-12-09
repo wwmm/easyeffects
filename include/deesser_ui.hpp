@@ -17,41 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef DEESSER_UI_HPP
-#define DEESSER_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class DeesserUi : public Gtk::Box, public PluginUiBase {
- public:
-  DeesserUi(BaseObjectType* cobject,
-            const Glib::RefPtr<Gtk::Builder>& builder,
-            const std::string& schema,
-            const std::string& schema_path);
-  DeesserUi(const DeesserUi&) = delete;
-  auto operator=(const DeesserUi&) -> DeesserUi& = delete;
-  DeesserUi(const DeesserUi&&) = delete;
-  auto operator=(const DeesserUi&&) -> DeesserUi& = delete;
-  ~DeesserUi() override;
+namespace ui::deesser_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DeesserUi*;
+G_BEGIN_DECLS
 
-  void on_new_compression(const double& value);
-  void on_new_detected(const double& value);
+#define EE_TYPE_DEESSER_BOX (deesser_box_get_type())
 
-  void reset() override;
+G_DECLARE_FINAL_TYPE(DeesserBox, deesser_box, EE, DEESSER_BOX, GtkBox)
 
- private:
-  Gtk::SpinButton *f1_freq = nullptr, *f2_freq = nullptr, *f1_level = nullptr, *f2_level = nullptr, *f2_q = nullptr,
-                  *threshold = nullptr, *ratio = nullptr, *laxity = nullptr, *makeup = nullptr;
+G_END_DECLS
 
-  Gtk::LevelBar *compression = nullptr, *detected = nullptr;
+auto create() -> DeesserBox*;
 
-  Gtk::Label *compression_label = nullptr, *detected_label = nullptr;
+void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string& schema_path);
 
-  Gtk::ComboBoxText *detection = nullptr, *mode = nullptr;
-
-  Gtk::ToggleButton* sc_listen = nullptr;
-};
-
-#endif
+}  // namespace ui::deesser_box

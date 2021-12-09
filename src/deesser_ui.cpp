@@ -19,178 +19,225 @@
 
 #include "deesser_ui.hpp"
 
-namespace {
+namespace ui::deesser_box {
 
-auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+using namespace std::string_literals;
 
-  if (g_strcmp0(v, "RMS") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Peak") == 0) {
-    g_value_set_int(value, 1);
+auto constexpr log_tag = "deesser_box: ";
+
+struct _DeesserBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkLevelBar *compression, *detected;
+
+  GtkLabel *compression_label, *detected_label;
+
+  GtkSpinButton *f1_freq, *f2_freq, *f1_level, *f2_level, *f2_q, *threshold, *ratio, *laxity, *makeup;
+
+  GtkToggleButton* sc_listen;
+
+  Gtk::ComboBoxText *detection, *mode;
+
+  GSettings* settings;
+
+  std::shared_ptr<Deesser> deesser;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(DeesserBox, deesser_box, GTK_TYPE_BOX)
+
+void on_bypass(DeesserBox* self, GtkToggleButton* btn) {
+  self->deesser->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(DeesserBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "detection");
+
+  g_settings_reset(self->settings, "mode");
+
+  g_settings_reset(self->settings, "threshold");
+
+  g_settings_reset(self->settings, "ratio");
+
+  g_settings_reset(self->settings, "laxity");
+
+  g_settings_reset(self->settings, "makeup");
+
+  g_settings_reset(self->settings, "f1-freq");
+
+  g_settings_reset(self->settings, "f2-freq");
+
+  g_settings_reset(self->settings, "f1-level");
+
+  g_settings_reset(self->settings, "f2-level");
+
+  g_settings_reset(self->settings, "f2-q");
+
+  g_settings_reset(self->settings, "sc-listen");
+}
+
+void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string& schema_path) {
+  self->deesser = deesser;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.deesser", schema_path.c_str());
+
+  deesser->post_messages = true;
+  deesser->bypass = false;
+
+  self->connections.push_back(deesser->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(deesser->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(deesser->detected.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->compression, 1.0 - value);
+    gtk_label_set_text(self->compression_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->connections.push_back(deesser->compression.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->detected, value);
+    gtk_label_set_text(self->detected_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "makeup", gtk_spin_button_get_adjustment(self->makeup), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "ratio", gtk_spin_button_get_adjustment(self->ratio), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "f1-freq", gtk_spin_button_get_adjustment(self->f1_freq), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "f2-freq", gtk_spin_button_get_adjustment(self->f2_freq), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "f1-level", gtk_spin_button_get_adjustment(self->f1_level), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "f2-level", gtk_spin_button_get_adjustment(self->f2_level), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "f2-q", gtk_spin_button_get_adjustment(self->f2_q), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "laxity", gtk_spin_button_get_adjustment(self->laxity), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sc-listen", self->sc_listen, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "detection", self->detection, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_DEESSER_BOX(object);
+
+  self->deesser->bypass = false;
+
+  for (auto& c : self->connections) {
+    c.disconnect();
   }
 
-  return 1;
-}
-
-auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("RMS");
-
-    case 1:
-      return g_variant_new_string("Peak");
-
-    default:
-      return g_variant_new_string("RMS");
-  }
-}
-
-auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Wide") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Split") == 0) {
-    g_value_set_int(value, 1);
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  return 1;
+  self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(deesser_box_parent_class)->dispose(object);
 }
 
-auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Wide");
+void deesser_box_class_init(DeesserBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-    case 1:
-      return g_variant_new_string("Split");
+  object_class->dispose = dispose;
 
-    default:
-      return g_variant_new_string("Wide");
-  }
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/deesser.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, compression);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, compression_label);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, detected);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, detected_label);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, sc_listen);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, detection);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, mode);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, f1_freq);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, f2_freq);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, f1_level);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, f2_level);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, f2_q);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, threshold);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, ratio);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, laxity);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, makeup);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
-}  // namespace
+void deesser_box_init(DeesserBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
 
-DeesserUi::DeesserUi(BaseObjectType* cobject,
-                     const Glib::RefPtr<Gtk::Builder>& builder,
-                     const std::string& schema,
-                     const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::deesser;
-
-  // loading builder widgets
-
-  makeup = builder->get_widget<Gtk::SpinButton>("makeup");
-  ratio = builder->get_widget<Gtk::SpinButton>("ratio");
-  threshold = builder->get_widget<Gtk::SpinButton>("threshold");
-  ratio = builder->get_widget<Gtk::SpinButton>("ratio");
-  f1_freq = builder->get_widget<Gtk::SpinButton>("f1_freq");
-  f2_freq = builder->get_widget<Gtk::SpinButton>("f2_freq");
-  f1_level = builder->get_widget<Gtk::SpinButton>("f1_level");
-  f2_level = builder->get_widget<Gtk::SpinButton>("f2_level");
-  f2_q = builder->get_widget<Gtk::SpinButton>("f2_q");
-  laxity = builder->get_widget<Gtk::SpinButton>("laxity");
-
-  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
-  detection = builder->get_widget<Gtk::ComboBoxText>("detection");
-
-  compression = builder->get_widget<Gtk::LevelBar>("compression");
-  detected = builder->get_widget<Gtk::LevelBar>("detected");
-
-  compression_label = builder->get_widget<Gtk::Label>("compression_label");
-  detected_label = builder->get_widget<Gtk::Label>("detected_label");
-
-  sc_listen = builder->get_widget<Gtk::ToggleButton>("sc_listen");
-
-  // gsettings bindings
-
-  settings->bind("sc-listen", sc_listen, "active");
-  settings->bind("makeup", makeup->get_adjustment().get(), "value");
-  settings->bind("ratio", ratio->get_adjustment().get(), "value");
-  settings->bind("threshold", threshold->get_adjustment().get(), "value");
-  settings->bind("f1-freq", f1_freq->get_adjustment().get(), "value");
-  settings->bind("f2-freq", f2_freq->get_adjustment().get(), "value");
-  settings->bind("f1-level", f1_level->get_adjustment().get(), "value");
-  settings->bind("f2-level", f2_level->get_adjustment().get(), "value");
-  settings->bind("f2-q", f2_q->get_adjustment().get(), "value");
-  settings->bind("laxity", laxity->get_adjustment().get(), "value");
-
-  g_settings_bind_with_mapping(settings->gobj(), "detection", detection->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
-
-  prepare_spinbutton(makeup, "dB");
-  prepare_spinbutton(threshold, "dB");
-  prepare_spinbutton(f1_level, "dB");
-  prepare_spinbutton(f2_level, "dB");
-
-  prepare_spinbutton(f1_freq, "Hz");
-  prepare_spinbutton(f2_freq, "Hz");
-
-  prepare_spinbutton(f2_q);
-
-  setup_input_output_gain(builder);
+  prepare_spinbutton<"dB">(self->makeup);
+  prepare_spinbutton<"dB">(self->threshold);
+  prepare_spinbutton<"dB">(self->f1_level);
+  prepare_spinbutton<"dB">(self->f2_level);
+  prepare_spinbutton<"Hz">(self->f1_freq);
+  prepare_spinbutton<"Hz">(self->f2_freq);
+  prepare_spinbutton<"">(self->f2_q);
 }
 
-DeesserUi::~DeesserUi() {
-  util::debug(name + " ui destroyed");
+auto create() -> DeesserBox* {
+  return static_cast<DeesserBox*>(g_object_new(EE_TYPE_DEESSER_BOX, nullptr));
 }
 
-auto DeesserUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DeesserUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/deesser.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<DeesserUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.deesser", schema_path + "deesser/");
-
-  stack->add(*ui, plugin_name::deesser);
-
-  return ui;
-}
-
-void DeesserUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("detection");
-
-  settings->reset("mode");
-
-  settings->reset("threshold");
-
-  settings->reset("ratio");
-
-  settings->reset("laxity");
-
-  settings->reset("makeup");
-
-  settings->reset("f1-freq");
-
-  settings->reset("f2-freq");
-
-  settings->reset("f1-level");
-
-  settings->reset("f2-level");
-
-  settings->reset("f2-q");
-
-  settings->reset("sc-listen");
-}
-
-void DeesserUi::on_new_compression(const double& value) {
-  compression->set_value(1.0 - value);
-
-  compression_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void DeesserUi::on_new_detected(const double& value) {
-  detected->set_value(value);
-
-  detected_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
+}  // namespace ui::deesser_box

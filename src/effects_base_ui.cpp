@@ -82,19 +82,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // Adding to the stack the plugins in the list that are not there yet
 
   for (const auto& name : settings->get_string_array("plugins")) {
-    if (name == plugin_name::deesser) {
-      auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
-
-      deesser_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->deesser->bypass = deesser_ui->bypass->get_active(); });
-
-      effects_base->deesser->input_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_input_level));
-      effects_base->deesser->output_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_output_level));
-      effects_base->deesser->compression.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression));
-      effects_base->deesser->detected.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected));
-
-      effects_base->deesser->bypass = false;
-    } else if (name == plugin_name::echo_canceller) {
+    if (name == plugin_name::echo_canceller) {
       auto* const echo_canceller_ui = EchoCancellerUi::add_to_stack(stack_plugins, path);
 
       echo_canceller_ui->bypass->signal_toggled().connect(

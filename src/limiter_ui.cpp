@@ -199,245 +199,42 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   g_settings_bind(self->settings, "sidechain-preamp", gtk_spin_button_get_adjustment(self->sc_preamp), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "lookahead", gtk_spin_button_get_adjustment(self->lookahead), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "stereo-link", gtk_spin_button_get_adjustment(self->stereo_link), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "alr-attack", gtk_spin_button_get_adjustment(self->alr_attack), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "alr-release", gtk_spin_button_get_adjustment(self->alr_release), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "alr-knee", gtk_spin_button_get_adjustment(self->alr_knee), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "gain-boost", self->gain_boost, "active", G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "external-sidechain", self->external_sidechain, "active", G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "alr", self->alr, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind_with_mapping(
-      self->settings, "mode", self->mode, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
+  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-        if (g_strcmp0(v, "Herm Thin") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "Herm Wide") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "Herm Tail") == 0) {
-          g_value_set_int(value, 2);
-        } else if (g_strcmp0(v, "Herm Duck") == 0) {
-          g_value_set_int(value, 3);
-        } else if (g_strcmp0(v, "Exp Thin") == 0) {
-          g_value_set_int(value, 4);
-        } else if (g_strcmp0(v, "Exp Wide") == 0) {
-          g_value_set_int(value, 5);
-        } else if (g_strcmp0(v, "Exp Tail") == 0) {
-          g_value_set_int(value, 6);
-        } else if (g_strcmp0(v, "Exp Duck") == 0) {
-          g_value_set_int(value, 7);
-        } else if (g_strcmp0(v, "Line Thin") == 0) {
-          g_value_set_int(value, 8);
-        } else if (g_strcmp0(v, "Line Wide") == 0) {
-          g_value_set_int(value, 9);
-        } else if (g_strcmp0(v, "Line Tail") == 0) {
-          g_value_set_int(value, 10);
-        } else if (g_strcmp0(v, "Line Duck") == 0) {
-          g_value_set_int(value, 11);
-        }
+  g_settings_bind(self->settings, "oversampling", self->oversampling, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("Herm Thin");
-          case 1:
-            return g_variant_new_string("Herm Wide");
-          case 2:
-            return g_variant_new_string("Herm Tail");
-          case 3:
-            return g_variant_new_string("Herm Duck");
-          case 4:
-            return g_variant_new_string("Exp Thin");
-          case 5:
-            return g_variant_new_string("Exp Wide");
-          case 6:
-            return g_variant_new_string("Exp Tail");
-          case 7:
-            return g_variant_new_string("Exp Duck");
-          case 8:
-            return g_variant_new_string("Line Thin");
-          case 9:
-            return g_variant_new_string("Line Wide");
-          case 10:
-            return g_variant_new_string("Line Tail");
-          case 11:
-            return g_variant_new_string("Line Duck");
-          default:
-            return g_variant_new_string("Herm Thin");
-        }
-      },
-      nullptr, nullptr);
-
-  g_settings_bind_with_mapping(
-      self->settings, "oversampling", self->oversampling, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
-
-        if (g_strcmp0(v, "None") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "Half x2(2L)") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "Half x2(3L)") == 0) {
-          g_value_set_int(value, 2);
-        } else if (g_strcmp0(v, "Half x3(2L)") == 0) {
-          g_value_set_int(value, 3);
-        } else if (g_strcmp0(v, "Half x3(3L)") == 0) {
-          g_value_set_int(value, 4);
-        } else if (g_strcmp0(v, "Half x4(2L)") == 0) {
-          g_value_set_int(value, 5);
-        } else if (g_strcmp0(v, "Half x4(3L)") == 0) {
-          g_value_set_int(value, 6);
-        } else if (g_strcmp0(v, "Half x6(2L)") == 0) {
-          g_value_set_int(value, 7);
-        } else if (g_strcmp0(v, "Half x6(3L)") == 0) {
-          g_value_set_int(value, 8);
-        } else if (g_strcmp0(v, "Half x8(2L)") == 0) {
-          g_value_set_int(value, 9);
-        } else if (g_strcmp0(v, "Half x8(3L)") == 0) {
-          g_value_set_int(value, 10);
-        } else if (g_strcmp0(v, "Full x2(2L)") == 0) {
-          g_value_set_int(value, 11);
-        } else if (g_strcmp0(v, "Full x2(3L)") == 0) {
-          g_value_set_int(value, 12);
-        } else if (g_strcmp0(v, "Full x3(2L)") == 0) {
-          g_value_set_int(value, 13);
-        } else if (g_strcmp0(v, "Full x3(3L)") == 0) {
-          g_value_set_int(value, 14);
-        } else if (g_strcmp0(v, "Full x4(2L)") == 0) {
-          g_value_set_int(value, 15);
-        } else if (g_strcmp0(v, "Full x4(3L)") == 0) {
-          g_value_set_int(value, 16);
-        } else if (g_strcmp0(v, "Full x6(2L)") == 0) {
-          g_value_set_int(value, 17);
-        } else if (g_strcmp0(v, "Full x6(3L)") == 0) {
-          g_value_set_int(value, 18);
-        } else if (g_strcmp0(v, "Full x8(2L)") == 0) {
-          g_value_set_int(value, 19);
-        } else if (g_strcmp0(v, "Full x8(3L)") == 0) {
-          g_value_set_int(value, 20);
-        }
-
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("None");
-          case 1:
-            return g_variant_new_string("Half x2(2L)");
-          case 2:
-            return g_variant_new_string("Half x2(3L)");
-          case 3:
-            return g_variant_new_string("Half x3(2L)");
-          case 4:
-            return g_variant_new_string("Half x3(3L)");
-          case 5:
-            return g_variant_new_string("Half x4(2L)");
-          case 6:
-            return g_variant_new_string("Half x4(3L)");
-          case 7:
-            return g_variant_new_string("Half x6(2L)");
-          case 8:
-            return g_variant_new_string("Half x6(3L)");
-          case 9:
-            return g_variant_new_string("Half x8(2L)");
-          case 10:
-            return g_variant_new_string("Half x8(3L)");
-          case 11:
-            return g_variant_new_string("Full x2(2L)");
-          case 12:
-            return g_variant_new_string("Full x2(3L)");
-          case 13:
-            return g_variant_new_string("Full x3(2L)");
-          case 14:
-            return g_variant_new_string("Full x3(3L)");
-          case 15:
-            return g_variant_new_string("Full x4(2L)");
-          case 16:
-            return g_variant_new_string("Full x4(3L)");
-          case 17:
-            return g_variant_new_string("Full x6(2L)");
-          case 18:
-            return g_variant_new_string("Full x6(3L)");
-          case 19:
-            return g_variant_new_string("Full x8(2L)");
-          case 20:
-            return g_variant_new_string("Full x8(3L)");
-          default:
-            return g_variant_new_string("None");
-        }
-      },
-      nullptr, nullptr);
-
-  g_settings_bind_with_mapping(
-      self->settings, "dithering", self->dither, "active", G_SETTINGS_BIND_DEFAULT,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        const auto* v = g_variant_get_string(variant, nullptr);
-
-        if (g_strcmp0(v, "None") == 0) {
-          g_value_set_int(value, 0);
-        } else if (g_strcmp0(v, "7bit") == 0) {
-          g_value_set_int(value, 1);
-        } else if (g_strcmp0(v, "8bit") == 0) {
-          g_value_set_int(value, 2);
-        } else if (g_strcmp0(v, "11bit") == 0) {
-          g_value_set_int(value, 3);
-        } else if (g_strcmp0(v, "12bit") == 0) {
-          g_value_set_int(value, 4);
-        } else if (g_strcmp0(v, "15bit") == 0) {
-          g_value_set_int(value, 5);
-        } else if (g_strcmp0(v, "16bit") == 0) {
-          g_value_set_int(value, 6);
-        } else if (g_strcmp0(v, "23bit") == 0) {
-          g_value_set_int(value, 7);
-        } else if (g_strcmp0(v, "24bit") == 0) {
-          g_value_set_int(value, 8);
-        }
-
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        switch (g_value_get_int(value)) {
-          case 0:
-            return g_variant_new_string("None");
-          case 1:
-            return g_variant_new_string("7bit");
-          case 2:
-            return g_variant_new_string("8bit");
-          case 3:
-            return g_variant_new_string("11bit");
-          case 4:
-            return g_variant_new_string("12bit");
-          case 5:
-            return g_variant_new_string("15bit");
-          case 6:
-            return g_variant_new_string("16bit");
-          case 7:
-            return g_variant_new_string("23bit");
-          case 8:
-            return g_variant_new_string("24bit");
-          default:
-            return g_variant_new_string("None");
-        }
-      },
-      nullptr, nullptr);
+  g_settings_bind(self->settings, "dithering", self->dither, "active-id", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {

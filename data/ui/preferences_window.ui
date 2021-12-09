@@ -137,8 +137,8 @@
                                     <object class="GtkComboBoxText" id="spectrum_type">
                                         <property name="valign">center</property>
                                         <items>
-                                            <item translatable="yes">Bars</item>
-                                            <item translatable="yes">Lines</item>
+                                            <item translatable="yes" id="Bars">Bars</item>
+                                            <item translatable="yes" id="Lines">Lines</item>
                                         </items>
                                     </object>
                                 </child>

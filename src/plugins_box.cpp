@@ -134,6 +134,12 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::crystalizer_box::setup(box, effects_base->crystalizer, schema_path + plugin_name::crystalizer + "/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::crystalizer);
+    } else if (name == plugin_name::deesser) {
+      auto* box = ui::deesser_box::create();
+
+      ui::deesser_box::setup(box, effects_base->deesser, schema_path + plugin_name::deesser + "/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::deesser);
     } else if (name == plugin_name::delay) {
       auto* box = ui::delay_box::create();
 

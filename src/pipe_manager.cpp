@@ -1440,6 +1440,12 @@ PipeManager::~PipeManager() {
 
   util::debug(log_tag + "Destroying PipeWire loop...");
   pw_thread_loop_destroy(thread_loop);
+
+  for (auto& [ts, node] : node_map) {
+    if (node.proxy != nullptr) {
+      pw_proxy_destroy(node.proxy);
+    }
+  }
 }
 
 auto PipeManager::node_map_at_id(const uint& id) -> NodeInfo& {

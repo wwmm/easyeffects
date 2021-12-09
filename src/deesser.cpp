@@ -29,29 +29,29 @@ Deesser::Deesser(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Deesser is not installed");
   }
 
-  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+  lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "detection", "detection");
+  lv2_wrapper->bind_key_enum<"detection", "detection">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "ratio", "ratio");
+  lv2_wrapper->bind_key_double<"ratio", "ratio">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "f1-freq", "f1_freq");
+  lv2_wrapper->bind_key_double<"f1_freq", "f1-freq">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "f2-freq", "f2_freq");
+  lv2_wrapper->bind_key_double<"f2_freq", "f2-freq">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "f2-q", "f2_q");
+  lv2_wrapper->bind_key_double<"f2_q", "f2-q">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold", "threshold");
+  lv2_wrapper->bind_key_double_db<"threshold", "threshold">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "makeup", "makeup");
+  lv2_wrapper->bind_key_double_db<"makeup", "makeup">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "f1-level", "f1_level");
+  lv2_wrapper->bind_key_double_db<"f1_level", "f1-level">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "f2-level", "f2_level");
+  lv2_wrapper->bind_key_double_db<"f2_level", "f2-level">(settings);
 
-  lv2_wrapper->bind_key_int(settings, "laxity", "laxity");
+  lv2_wrapper->bind_key_int<"laxity", "laxity">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "sc-listen", "sc_listen");
+  lv2_wrapper->bind_key_bool<"sc_listen", "sc-listen">(settings);
 
   setup_input_output_gain();
 }
