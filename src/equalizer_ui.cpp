@@ -59,6 +59,19 @@ static std::unordered_map<std::string, FilterType> const FilterTypeMap = {
     {"LS", FilterType::LOW_SHELF},       {"LSC", FilterType::LOW_SHELF_xdB}, {"HS", FilterType::HIGH_SHELF},
     {"HSC", FilterType::HIGH_SHELF_xdB}, {"NO", FilterType::NOTCH},          {"AP", FilterType::ALL_PASS}};
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  app::Application* application;
+
+  std::shared_ptr<Equalizer> equalizer;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections, gconnections_left, gconnections_right;
+};
+
 struct _EqualizerBox {
   GtkBox parent_instance;
 
@@ -82,19 +95,13 @@ struct _EqualizerBox {
 
   GSettings *settings, *settings_left, *settings_right;
 
-  app::Application* application;
-
-  std::shared_ptr<Equalizer> equalizer;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections, gconnections_left, gconnections_right;
+  Data* data;
 };
 
 G_DEFINE_TYPE(EqualizerBox, equalizer_box, GTK_TYPE_BOX)
 
 void on_bypass(EqualizerBox* self, GtkToggleButton* btn) {
-  self->equalizer->bypass = gtk_toggle_button_get_active(btn);
+  self->data->equalizer->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(EqualizerBox* self, GtkButton* btn) {
@@ -349,7 +356,7 @@ void import_apo_preset(EqualizerBox* self, const std::string& file_path) {
 }
 
 void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
-  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
   auto* dialog = gtk_file_chooser_native_new(_("Import APO Preset File"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN,
                                              _("Open"), _("Cancel"));
@@ -405,16 +412,16 @@ void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& spli
 }
 
 void build_all_bands(EqualizerBox* self) {
-  for (auto& handler_id : self->gconnections_left) {
+  for (auto& handler_id : self->data->gconnections_left) {
     g_signal_handler_disconnect(self->settings_left, handler_id);
   }
 
-  for (auto& handler_id : self->gconnections_right) {
+  for (auto& handler_id : self->data->gconnections_right) {
     g_signal_handler_disconnect(self->settings_right, handler_id);
   }
 
-  self->gconnections_left.clear();
-  self->gconnections_right.clear();
+  self->data->gconnections_left.clear();
+  self->data->gconnections_right.clear();
 
   for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->bands_box_left)); child != nullptr;) {
     auto* next_child = gtk_widget_get_next_sibling(child);
@@ -447,9 +454,9 @@ void setup(EqualizerBox* self,
            std::shared_ptr<Equalizer> equalizer,
            const std::string& schema_path,
            app::Application* application) {
-  self->equalizer = equalizer;
+  self->data->equalizer = equalizer;
 
-  self->application = application;
+  self->data->application = application;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer", schema_path.c_str());
 
@@ -464,12 +471,12 @@ void setup(EqualizerBox* self,
 
   build_all_bands(self);
 
-  self->connections.push_back(equalizer->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(equalizer->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(equalizer->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(equalizer->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
@@ -486,44 +493,44 @@ void setup(EqualizerBox* self,
 
   g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-  self->gconnections.push_back(g_signal_connect(
+  self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::num-bands",
       G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self); }), self));
 
-  self->gconnections.push_back(g_signal_connect(self->settings, "changed::split-channels",
-                                                G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
-                                                  gtk_stack_set_visible_child_name(self->stack, "page_left_channel");
+  self->data->gconnections.push_back(g_signal_connect(
+      self->settings, "changed::split-channels", G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
+        gtk_stack_set_visible_child_name(self->stack, "page_left_channel");
 
-                                                  build_all_bands(self);
-                                                }),
-                                                self));
+        build_all_bands(self);
+      }),
+      self));
 }
 
 void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BOX(object);
 
-  self->equalizer->bypass = false;
+  self->data->equalizer->bypass = false;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  for (auto& handler_id : self->gconnections_left) {
+  for (auto& handler_id : self->data->gconnections_left) {
     g_signal_handler_disconnect(self->settings_left, handler_id);
   }
 
-  for (auto& handler_id : self->gconnections_right) {
+  for (auto& handler_id : self->data->gconnections_right) {
     g_signal_handler_disconnect(self->settings_right, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
-  self->gconnections_left.clear();
-  self->gconnections_right.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
+  self->data->gconnections_left.clear();
+  self->data->gconnections_right.clear();
 
   g_object_unref(self->settings);
   g_object_unref(self->settings_left);
@@ -534,11 +541,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(equalizer_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_EQUALIZER_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(equalizer_box_parent_class)->finalize(object);
+}
+
 void equalizer_box_class_init(EqualizerBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/equalizer.ui");
 
@@ -572,6 +590,8 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
 
 void equalizer_box_init(EqualizerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 }
 
 auto create() -> EqualizerBox* {

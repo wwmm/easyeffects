@@ -25,6 +25,17 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "echo_canceller_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<EchoCanceller> echo_canceller;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _EchoCancellerBox {
   GtkBox parent_instance;
 
@@ -40,17 +51,13 @@ struct _EchoCancellerBox {
 
   GSettings* settings;
 
-  std::shared_ptr<EchoCanceller> echo_canceller;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(EchoCancellerBox, echo_canceller_box, GTK_TYPE_BOX)
 
 void on_bypass(EchoCancellerBox* self, GtkToggleButton* btn) {
-  self->echo_canceller->bypass = gtk_toggle_button_get_active(btn);
+  self->data->echo_canceller->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(EchoCancellerBox* self, GtkButton* btn) {
@@ -66,19 +73,19 @@ void on_reset(EchoCancellerBox* self, GtkButton* btn) {
 }
 
 void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller, const std::string& schema_path) {
-  self->echo_canceller = echo_canceller;
+  self->data->echo_canceller = echo_canceller;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.echocanceller", schema_path.c_str());
 
   echo_canceller->post_messages = true;
   echo_canceller->bypass = false;
 
-  self->connections.push_back(echo_canceller->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(echo_canceller->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(echo_canceller->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(echo_canceller->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
@@ -98,18 +105,18 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 void dispose(GObject* object) {
   auto* self = EE_ECHO_CANCELLER_BOX(object);
 
-  self->echo_canceller->bypass = false;
+  self->data->echo_canceller->bypass = false;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -118,11 +125,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(echo_canceller_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_ECHO_CANCELLER_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(echo_canceller_box_parent_class)->finalize(object);
+}
+
 void echo_canceller_box_class_init(EchoCancellerBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/echo_canceller.ui");
 
@@ -148,6 +166,8 @@ void echo_canceller_box_class_init(EchoCancellerBoxClass* klass) {
 
 void echo_canceller_box_init(EchoCancellerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   prepare_spinbutton<"ms">(self->filter_length);
   prepare_spinbutton<"ms">(self->frame_size);
