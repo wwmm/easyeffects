@@ -25,6 +25,15 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "equalizer_band_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  int index;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _EqualizerBandBox {
   GtkBox parent_instance;
 
@@ -40,19 +49,17 @@ struct _EqualizerBandBox {
 
   GSettings* settings;
 
-  int index;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(EqualizerBandBox, equalizer_band_box, GTK_TYPE_BOX)
 
 void on_reset_quality(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_q[self->index]);
+  g_settings_reset(self->settings, tags::equalizer::band_q[self->data->index]);
 }
 
 void on_reset_frequency(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_frequency[self->index]);
+  g_settings_reset(self->settings, tags::equalizer::band_frequency[self->data->index]);
 }
 
 auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
@@ -85,7 +92,7 @@ auto set_band_scale_sensitive(EqualizerBandBox* self, const char* active_id) -> 
 }
 
 void setup(EqualizerBandBox* self, GSettings* settings, int index) {
-  self->index = index;
+  self->data->index = index;
   self->settings = settings;
 
   g_settings_bind(settings, tags::equalizer::band_gain[index], gtk_range_get_adjustment(GTK_RANGE(self->band_scale)),
@@ -111,15 +118,25 @@ void setup(EqualizerBandBox* self, GSettings* settings, int index) {
 void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BAND_BOX(object);
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->gconnections.clear();
+  self->data->gconnections.clear();
 
-  util::debug(log_tag + "index: "s + std::to_string(self->index) + " disposed"s);
+  util::debug(log_tag + "index: "s + std::to_string(self->data->index) + " disposed"s);
 
   G_OBJECT_CLASS(equalizer_band_box_parent_class)->dispose(object);
+}
+
+void finalize(GObject* object) {
+  auto* self = EE_EQUALIZER_BAND_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(equalizer_band_box_parent_class)->finalize(object);
 }
 
 void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
@@ -127,6 +144,7 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
 
@@ -151,6 +169,8 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
 
 void equalizer_band_box_init(EqualizerBandBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   prepare_scale<"">(self->band_scale);
 

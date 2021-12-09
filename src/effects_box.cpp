@@ -25,6 +25,31 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "effects_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  app::Application* application;
+
+  EffectsBase* effects_base;
+
+  PipelineType pipeline_type;
+
+  bool schedule_signal_idle;
+
+  uint spectrum_rate, spectrum_n_bands;
+
+  float global_output_level_left, global_output_level_right, pipeline_latency_ms;
+
+  std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
+
+  std::vector<uint> spectrum_bin_count;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections_spectrum;
+};
+
 struct _EffectsBox {
   GtkBox parent_instance;
 
@@ -52,38 +77,20 @@ struct _EffectsBox {
 
   GSettings *settings, *settings_spectrum, *app_settings;
 
-  app::Application* application;
-
-  EffectsBase* effects_base;
-
-  PipelineType pipeline_type;
-
-  bool schedule_signal_idle;
-
-  uint spectrum_rate, spectrum_n_bands;
-
-  float global_output_level_left, global_output_level_right, pipeline_latency_ms;
-
-  std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
-
-  std::vector<uint> spectrum_bin_count;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections_spectrum;
+  Data* data;
 };
 
 G_DEFINE_TYPE(EffectsBox, effects_box, GTK_TYPE_BOX)
 
 void init_spectrum_frequency_axis(EffectsBox* self) {
-  self->spectrum_freqs.resize(self->spectrum_n_bands);
+  self->data->spectrum_freqs.resize(self->data->spectrum_n_bands);
 
-  for (uint n = 0U; n < self->spectrum_n_bands; n++) {
-    self->spectrum_freqs[n] = 0.5F * static_cast<float>(self->spectrum_rate) * static_cast<float>(n) /
-                              static_cast<float>(self->spectrum_n_bands);
+  for (uint n = 0U; n < self->data->spectrum_n_bands; n++) {
+    self->data->spectrum_freqs[n] = 0.5F * static_cast<float>(self->data->spectrum_rate) * static_cast<float>(n) /
+                                    static_cast<float>(self->data->spectrum_n_bands);
   }
 
-  if (!self->spectrum_freqs.empty()) {
+  if (!self->data->spectrum_freqs.empty()) {
     const auto min_freq = static_cast<float>(g_settings_get_int(self->settings_spectrum, "minimum-frequency"));
     const auto max_freq = static_cast<float>(g_settings_get_int(self->settings_spectrum, "maximum-frequency"));
 
@@ -91,19 +98,20 @@ void init_spectrum_frequency_axis(EffectsBox* self) {
       return;
     }
 
-    self->spectrum_x_axis = util::logspace(min_freq, max_freq, g_settings_get_int(self->settings_spectrum, "n-points"));
+    self->data->spectrum_x_axis =
+        util::logspace(min_freq, max_freq, g_settings_get_int(self->settings_spectrum, "n-points"));
 
-    const auto x_axis_size = self->spectrum_x_axis.size();
+    const auto x_axis_size = self->data->spectrum_x_axis.size();
 
-    self->spectrum_mag.resize(x_axis_size);
+    self->data->spectrum_mag.resize(x_axis_size);
 
-    self->spectrum_bin_count.resize(x_axis_size);
+    self->data->spectrum_bin_count.resize(x_axis_size);
   }
 }
 
 void setup_spectrum(EffectsBox* self) {
-  self->spectrum_rate = 0U;
-  self->spectrum_n_bands = 0U;
+  self->data->spectrum_rate = 0U;
+  self->data->spectrum_n_bands = 0U;
 
   ui::chart::set_color(self->spectrum_chart, util::gsettings_get_color(self->settings_spectrum, "color"));
 
@@ -136,26 +144,26 @@ void setup_spectrum(EffectsBox* self) {
 
   g_settings_bind(self->settings_spectrum, "show", self->spectrum_chart, "visible", G_SETTINGS_BIND_GET);
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::color", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_color(self->spectrum_chart, util::gsettings_get_color(self->settings_spectrum, key));
       }),
       self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::color-axis-labels",
       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_axis_labels_color(self->spectrum_chart, util::gsettings_get_color(self->settings_spectrum, key));
       }),
       self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::fill", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
       }),
       self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::show-bar-border",
       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_draw_bar_border(self->spectrum_chart,
@@ -163,20 +171,20 @@ void setup_spectrum(EffectsBox* self) {
       }),
       self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::line-width", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, "line-width"));
       }),
       self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::height", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         gtk_widget_set_size_request(GTK_WIDGET(self->spectrum_chart), -1,
                                     g_settings_get_int(self->settings_spectrum, "height"));
       }),
       self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::type", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Bars") == 0) {
           ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::bar);
@@ -186,15 +194,15 @@ void setup_spectrum(EffectsBox* self) {
       }),
       self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::n-points",
       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::minimum-frequency",
       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
 
-  self->gconnections_spectrum.push_back(g_signal_connect(
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::maximum-frequency",
       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
 }
@@ -203,25 +211,25 @@ void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget*
 
   gtk_widget_set_visible(GTK_WIDGET(self->menubutton_blocklist), static_cast<gboolean>(g_strcmp0(name, "apps") == 0));
 
-  if (self->pipeline_type == PipelineType::input) {
+  if (self->data->pipeline_type == PipelineType::input) {
     gtk_widget_set_visible(GTK_WIDGET(self->toggle_listen_mic), static_cast<gboolean>(g_strcmp0(name, "plugins") == 0));
   }
 }
 
 void on_listen_mic_toggled(EffectsBox* self, GtkToggleButton* button) {
-  self->application->sie->set_listen_to_mic(gtk_toggle_button_get_active(button) != 0);
+  self->data->application->sie->set_listen_to_mic(gtk_toggle_button_get_active(button) != 0);
 }
 
 void setup(EffectsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme) {
-  self->application = application;
-  self->pipeline_type = pipeline_type;
+  self->data->application = application;
+  self->data->pipeline_type = pipeline_type;
   self->icon_theme = icon_theme;
 
   switch (pipeline_type) {
     case PipelineType::input: {
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
-      self->effects_base = static_cast<EffectsBase*>(self->application->sie);
+      self->data->effects_base = static_cast<EffectsBase*>(self->data->application->sie);
 
       self->apps_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->appsBox), "apps", _("Recorders"));
 
@@ -235,7 +243,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
       set_device_state_label();
 
-      self->connections.push_back(application->pm->source_changed.connect([=](const auto nd_info) {
+      self->data->connections.push_back(application->pm->source_changed.connect([=](const auto nd_info) {
         if (nd_info.id == application->pm->ee_source_node.id) {
           set_device_state_label();
         }
@@ -246,7 +254,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
     case PipelineType::output: {
       self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
 
-      self->effects_base = static_cast<EffectsBase*>(self->application->soe);
+      self->data->effects_base = static_cast<EffectsBase*>(self->data->application->soe);
 
       self->apps_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->appsBox), "apps", _("Players"));
 
@@ -260,7 +268,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
       set_device_state_label();
 
-      self->connections.push_back(application->pm->sink_changed.connect([=](const auto nd_info) {
+      self->data->connections.push_back(application->pm->sink_changed.connect([=](const auto nd_info) {
         if (nd_info.id == application->pm->ee_sink_node.id) {
           set_device_state_label();
         }
@@ -283,84 +291,87 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   // output level
 
-  self->connections.push_back(self->effects_base->output_level->output_level.connect([=](const float& left,
-                                                                                         const float& right) {
-    self->global_output_level_left = left;
-    self->global_output_level_right = right;
+  self->data->connections.push_back(
+      self->data->effects_base->output_level->output_level.connect([=](const float& left, const float& right) {
+        self->data->global_output_level_left = left;
+        self->data->global_output_level_right = right;
 
-    if (!self->schedule_signal_idle) {
-      return;
-    }
+        if (!self->data->schedule_signal_idle) {
+          return;
+        }
 
-    g_idle_add((GSourceFunc) +
-                   [](EffectsBox* self) {
-                     ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
+        g_idle_add((GSourceFunc) +
+                       [](EffectsBox* self) {
+                         ui::chart::set_data(self->spectrum_chart, self->data->spectrum_x_axis,
+                                             self->data->spectrum_mag);
 
-                     gtk_label_set_text(self->label_global_output_level_left,
-                                        fmt::format("{0:.0f}", self->global_output_level_left).c_str());
+                         gtk_label_set_text(self->label_global_output_level_left,
+                                            fmt::format("{0:.0f}", self->data->global_output_level_left).c_str());
 
-                     gtk_label_set_text(self->label_global_output_level_right,
-                                        fmt::format("{0:.0f}", self->global_output_level_right).c_str());
+                         gtk_label_set_text(self->label_global_output_level_right,
+                                            fmt::format("{0:.0f}", self->data->global_output_level_right).c_str());
 
-                     gtk_widget_set_opacity(
-                         GTK_WIDGET(self->saturation_icon),
-                         (self->global_output_level_left > 0.0 || self->global_output_level_right > 0.0) ? 1.0 : 0.0);
+                         gtk_widget_set_opacity(
+                             GTK_WIDGET(self->saturation_icon),
+                             (self->data->global_output_level_left > 0.0 || self->data->global_output_level_right > 0.0)
+                                 ? 1.0
+                                 : 0.0);
 
-                     return G_SOURCE_REMOVE;
-                   },
-               self);
-  }));
+                         return G_SOURCE_REMOVE;
+                       },
+                   self);
+      }));
 
   // spectrum array
 
-  self->connections.push_back(
-      self->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<float> magnitudes) {
+  self->data->connections.push_back(
+      self->data->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<float> magnitudes) {
         if (!ui::chart::get_is_visible(self->spectrum_chart)) {
           return;
         }
 
-        if (!self->schedule_signal_idle) {
+        if (!self->data->schedule_signal_idle) {
           return;
         }
 
-        if (self->spectrum_rate != rate || self->spectrum_n_bands != n_bands) {
-          self->spectrum_rate = rate;
-          self->spectrum_n_bands = n_bands;
+        if (self->data->spectrum_rate != rate || self->data->spectrum_n_bands != n_bands) {
+          self->data->spectrum_rate = rate;
+          self->data->spectrum_n_bands = n_bands;
 
           init_spectrum_frequency_axis(self);
         }
 
-        std::ranges::fill(self->spectrum_mag, 0.0F);
-        std::ranges::fill(self->spectrum_bin_count, 0U);
+        std::ranges::fill(self->data->spectrum_mag, 0.0F);
+        std::ranges::fill(self->data->spectrum_bin_count, 0U);
 
         // reducing the amount of data so we can plot them
 
-        for (size_t j = 0U; j < self->spectrum_freqs.size(); j++) {
-          for (size_t n = 0U; n < self->spectrum_x_axis.size(); n++) {
+        for (size_t j = 0U; j < self->data->spectrum_freqs.size(); j++) {
+          for (size_t n = 0U; n < self->data->spectrum_x_axis.size(); n++) {
             if (n > 0U) {
-              if (self->spectrum_freqs[j] <= self->spectrum_x_axis[n] &&
-                  self->spectrum_freqs[j] > self->spectrum_x_axis[n - 1U]) {
-                self->spectrum_mag[n] += magnitudes[j];
+              if (self->data->spectrum_freqs[j] <= self->data->spectrum_x_axis[n] &&
+                  self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n - 1U]) {
+                self->data->spectrum_mag[n] += magnitudes[j];
 
-                self->spectrum_bin_count[n]++;
+                self->data->spectrum_bin_count[n]++;
               }
             } else {
-              if (self->spectrum_freqs[j] <= self->spectrum_x_axis[n]) {
-                self->spectrum_mag[n] += magnitudes[j];
+              if (self->data->spectrum_freqs[j] <= self->data->spectrum_x_axis[n]) {
+                self->data->spectrum_mag[n] += magnitudes[j];
 
-                self->spectrum_bin_count[n]++;
+                self->data->spectrum_bin_count[n]++;
               }
             }
           }
         }
 
-        for (size_t n = 0U; n < self->spectrum_bin_count.size(); n++) {
-          if (self->spectrum_bin_count[n] == 0U && n > 0U) {
-            self->spectrum_mag[n] = self->spectrum_mag[n - 1U];
+        for (size_t n = 0U; n < self->data->spectrum_bin_count.size(); n++) {
+          if (self->data->spectrum_bin_count[n] == 0U && n > 0U) {
+            self->data->spectrum_mag[n] = self->data->spectrum_mag[n - 1U];
           }
         }
 
-        std::ranges::for_each(self->spectrum_mag, [](auto& v) {
+        std::ranges::for_each(self->data->spectrum_mag, [](auto& v) {
           v = 10.0F * std::log10(v);
 
           if (!std::isinf(v)) {
@@ -370,25 +381,25 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
           }
         });
 
-        ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
+        ui::chart::set_data(self->spectrum_chart, self->data->spectrum_x_axis, self->data->spectrum_mag);
       }));
 
   // pipeline latency
 
   gtk_label_set_text(self->latency_status,
-                     fmt::format("     {0:.1f} ms", self->effects_base->get_pipeline_latency()).c_str());
+                     fmt::format("     {0:.1f} ms", self->data->effects_base->get_pipeline_latency()).c_str());
 
-  self->connections.push_back(self->effects_base->pipeline_latency.connect([=](const float& v) {
-    self->pipeline_latency_ms = v;
+  self->data->connections.push_back(self->data->effects_base->pipeline_latency.connect([=](const float& v) {
+    self->data->pipeline_latency_ms = v;
 
-    if (!self->schedule_signal_idle) {
+    if (!self->data->schedule_signal_idle) {
       return;
     }
 
     g_idle_add((GSourceFunc) +
                    [](EffectsBox* self) {
                      gtk_label_set_text(self->latency_status,
-                                        fmt::format("     {0:.1f} ms", self->pipeline_latency_ms).c_str());
+                                        fmt::format("     {0:.1f} ms", self->data->pipeline_latency_ms).c_str());
 
                      return G_SOURCE_REMOVE;
                    },
@@ -399,13 +410,13 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   PluginBase::post_messages = true;
 
-  self->effects_base->spectrum->bypass = !g_settings_get_boolean(self->settings_spectrum, "show");
+  self->data->effects_base->spectrum->bypass = !g_settings_get_boolean(self->settings_spectrum, "show");
 }
 
 void realize(GtkWidget* widget) {
   auto* self = EE_EFFECTS_BOX(widget);
 
-  self->schedule_signal_idle = true;
+  self->data->schedule_signal_idle = true;
 
   GTK_WIDGET_CLASS(effects_box_parent_class)->realize(widget);
 }
@@ -413,7 +424,7 @@ void realize(GtkWidget* widget) {
 void unroot(GtkWidget* widget) {
   auto* self = EE_EFFECTS_BOX(widget);
 
-  self->schedule_signal_idle = false;
+  self->data->schedule_signal_idle = false;
 
   GTK_WIDGET_CLASS(effects_box_parent_class)->unroot(widget);
 }
@@ -421,18 +432,18 @@ void unroot(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_EFFECTS_BOX(object);
 
-  self->effects_base->spectrum->bypass = true;
+  self->data->effects_base->spectrum->bypass = true;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections_spectrum) {
+  for (auto& handler_id : self->data->gconnections_spectrum) {
     g_signal_handler_disconnect(self->settings_spectrum, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections_spectrum.clear();
+  self->data->connections.clear();
+  self->data->gconnections_spectrum.clear();
 
   g_object_unref(self->settings);
   g_object_unref(self->app_settings);
@@ -443,11 +454,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(effects_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_EFFECTS_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(effects_box_parent_class)->finalize(object);
+}
+
 void effects_box_class_init(EffectsBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   widget_class->realize = realize;
   widget_class->unroot = unroot;
@@ -470,7 +492,9 @@ void effects_box_class_init(EffectsBoxClass* klass) {
 void effects_box_init(EffectsBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
-  self->schedule_signal_idle = false;
+  self->data = new Data();
+
+  self->data->schedule_signal_idle = false;
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
   self->settings_spectrum = g_settings_new("com.github.wwmm.easyeffects.spectrum");
@@ -487,13 +511,15 @@ void effects_box_init(EffectsBox* self) {
 
   gtk_box_insert_child_after(GTK_BOX(self), GTK_WIDGET(self->spectrum_chart), nullptr);
 
-  g_signal_connect(
-      GTK_WIDGET(self->spectrum_chart), "show",
-      G_CALLBACK(+[](GtkWidget* widget, EffectsBox* self) { self->effects_base->spectrum->bypass = false; }), self);
+  g_signal_connect(GTK_WIDGET(self->spectrum_chart), "show", G_CALLBACK(+[](GtkWidget* widget, EffectsBox* self) {
+                     self->data->effects_base->spectrum->bypass = false;
+                   }),
+                   self);
 
-  g_signal_connect(
-      GTK_WIDGET(self->spectrum_chart), "hide",
-      G_CALLBACK(+[](GtkWidget* widget, EffectsBox* self) { self->effects_base->spectrum->bypass = true; }), self);
+  g_signal_connect(GTK_WIDGET(self->spectrum_chart), "hide", G_CALLBACK(+[](GtkWidget* widget, EffectsBox* self) {
+                     self->data->effects_base->spectrum->bypass = true;
+                   }),
+                   self);
 }
 
 auto create() -> EffectsBox* {

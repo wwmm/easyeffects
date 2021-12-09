@@ -6,6 +6,19 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "pipe_manager_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  app::Application* application;
+
+  std::unique_ptr<TestSignals> ts;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections_sie, gconnections_soe;
+};
+
 struct _PipeManagerBox {
   GtkBox parent_instance;
 
@@ -29,52 +42,46 @@ struct _PipeManagerBox {
 
   GSettings *sie_settings, *soe_settings;
 
-  app::Application* application;
-
-  TestSignals* ts;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections_sie, gconnections_soe;
+  Data* data;
 };
 
 G_DEFINE_TYPE(PipeManagerBox, pipe_manager_box, GTK_TYPE_BOX)
 
 void on_enable_test_signal(PipeManagerBox* self, gboolean state, GtkSwitch* btn) {
-  self->ts->set_state(state != 0);
+  self->data->ts->set_state(state != 0);
 }
 
 void on_checkbutton_channel_left(PipeManagerBox* self, GtkCheckButton* btn) {
   if (gtk_check_button_get_active(btn)) {
-    self->ts->create_left_channel = true;
-    self->ts->create_right_channel = false;
+    self->data->ts->create_left_channel = true;
+    self->data->ts->create_right_channel = false;
   }
 }
 
 void on_checkbutton_channel_right(PipeManagerBox* self, GtkCheckButton* btn) {
   if (gtk_check_button_get_active(btn)) {
-    self->ts->create_left_channel = false;
-    self->ts->create_right_channel = true;
+    self->data->ts->create_left_channel = false;
+    self->data->ts->create_right_channel = true;
   }
 }
 
 void on_checkbutton_channel_both(PipeManagerBox* self, GtkCheckButton* btn) {
   if (gtk_check_button_get_active(btn)) {
-    self->ts->create_left_channel = true;
-    self->ts->create_right_channel = true;
+    self->data->ts->create_left_channel = true;
+    self->data->ts->create_right_channel = true;
   }
 }
 
 void on_checkbutton_signal_sine(PipeManagerBox* self, GtkCheckButton* btn) {
   if (gtk_check_button_get_active(btn)) {
-    self->ts->signal_type = TestSignalType::sine_wave;
-    self->ts->sine_phase = 0.0F;
+    self->data->ts->signal_type = TestSignalType::sine_wave;
+    self->data->ts->sine_phase = 0.0F;
   }
 }
 
 void on_checkbutton_signal_gaussian(PipeManagerBox* self, GtkCheckButton* btn) {
   if (gtk_check_button_get_active(btn)) {
-    self->ts->signal_type = TestSignalType::gaussian;
+    self->data->ts->signal_type = TestSignalType::gaussian;
   }
 }
 
@@ -88,7 +95,7 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
 
   std::string device_profile;
 
-  for (const auto& device : self->application->pm->list_devices) {
+  for (const auto& device : self->data->application->pm->list_devices) {
     if (device.id == holder->device_id) {
       device_profile = device.input_route_name;
 
@@ -103,8 +110,8 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
         g_list_model_get_item(G_LIST_MODEL(self->autoloading_input_model), n));
 
     if (holder->name == item->device && device_profile == item->device_profile) {
-      self->application->presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device,
-                                                          item->device_profile);
+      self->data->application->presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device,
+                                                                item->device_profile);
 
       break;
     }
@@ -114,7 +121,7 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
 
   auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
 
-  self->application->presets_manager->add_autoload(PresetType::input, preset_name, holder->name, device_profile);
+  self->data->application->presets_manager->add_autoload(PresetType::input, preset_name, holder->name, device_profile);
 }
 
 void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
@@ -127,7 +134,7 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
 
   std::string device_profile;
 
-  for (const auto& device : self->application->pm->list_devices) {
+  for (const auto& device : self->data->application->pm->list_devices) {
     if (device.id == holder->device_id) {
       device_profile = device.output_route_name;
 
@@ -142,8 +149,8 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
         g_list_model_get_item(G_LIST_MODEL(self->autoloading_output_model), n));
 
     if (holder->name == item->device && device_profile == item->device_profile) {
-      self->application->presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device,
-                                                          item->device_profile);
+      self->data->application->presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device,
+                                                                item->device_profile);
 
       break;
     }
@@ -153,13 +160,13 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
 
   auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
 
-  self->application->presets_manager->add_autoload(PresetType::output, preset_name, holder->name, device_profile);
+  self->data->application->presets_manager->add_autoload(PresetType::output, preset_name, holder->name, device_profile);
 }
 
 void update_modules_info(PipeManagerBox* self) {
   std::vector<ui::holders::ModuleInfoHolder*> values;
 
-  for (const auto& info : self->application->pm->list_modules) {
+  for (const auto& info : self->data->application->pm->list_modules) {
     values.push_back(ui::holders::create(info));
   }
 
@@ -170,7 +177,7 @@ void update_modules_info(PipeManagerBox* self) {
 void update_clients_info(PipeManagerBox* self) {
   std::vector<ui::holders::ClientInfoHolder*> values;
 
-  for (const auto& info : self->application->pm->list_clients) {
+  for (const auto& info : self->data->application->pm->list_clients) {
     values.push_back(ui::holders::create(info));
   }
 
@@ -244,7 +251,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
                            if (auto* holder = static_cast<ui::holders::PresetsAutoloadingHolder*>(
                                    g_object_get_data(G_OBJECT(btn), "holder"));
                                holder != nullptr) {
-                             self->application->presets_manager->remove_autoload(
+                             self->data->application->presets_manager->remove_autoload(
                                  preset_type, holder->preset_name, holder->device, holder->device_profile);
                            }
                          }),
@@ -278,7 +285,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
   // setting the model
 
-  const auto profiles = self->application->presets_manager->get_autoload_profiles(preset_type);
+  const auto profiles = self->data->application->presets_manager->get_autoload_profiles(preset_type);
 
   for (const auto& json : profiles) {
     const auto device = json.value("device", "");
@@ -310,7 +317,7 @@ void setup_dropdown_presets(PipeManagerBox* self) {
     string_list = self->input_presets_string_list;
   }
 
-  for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
+  for (const auto& name : self->data->application->presets_manager->get_names(preset_type)) {
     gtk_string_list_append(string_list, name.c_str());
   }
 
@@ -338,11 +345,11 @@ void setup_dropdown_devices(PipeManagerBox* self, GtkDropDown* dropdown, GListSt
 }
 
 void setup(PipeManagerBox* self, app::Application* application) {
-  self->application = application;
+  self->data->application = application;
 
   auto pm = application->pm;
 
-  self->ts = new TestSignals(pm);
+  self->data->ts = std::make_unique<TestSignals>(pm);
 
   for (const auto& [ts, node] : pm->node_map) {
     if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
@@ -453,7 +460,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   // signals related to device insertion/removal
 
-  self->connections.push_back(pm->sink_added.connect([=](const NodeInfo info) {
+  self->data->connections.push_back(pm->sink_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n))
               ->id == info.id) {
@@ -465,7 +472,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
     g_list_store_append(self->autoloading_output_devices_model, ui::holders::create(info));
   }));
 
-  self->connections.push_back(pm->sink_removed.connect([=](const NodeInfo info) {
+  self->data->connections.push_back(pm->sink_removed.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n))
               ->id == info.id) {
@@ -477,7 +484,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
     }
   }));
 
-  self->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
+  self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
               ->id == info.id) {
@@ -489,7 +496,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
     g_list_store_append(self->autoloading_input_devices_model, ui::holders::create(info));
   }));
 
-  self->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
+  self->data->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
               ->id == info.id) {
@@ -503,7 +510,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   // signals related to presets creation/destruction
 
-  self->connections.push_back(
+  self->data->connections.push_back(
       application->presets_manager->user_output_preset_created.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
           util::warning(log_tag + "can't retrieve information about the preset file"s);
@@ -520,7 +527,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
         gtk_string_list_append(self->output_presets_string_list, preset_name.c_str());
       }));
 
-  self->connections.push_back(
+  self->data->connections.push_back(
       application->presets_manager->user_output_preset_removed.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
           util::warning(log_tag + "can't retrieve information about the preset file"s);
@@ -537,7 +544,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
         }
       }));
 
-  self->connections.push_back(
+  self->data->connections.push_back(
       application->presets_manager->user_input_preset_created.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
           util::warning(log_tag + "can't retrieve information about the preset file"s);
@@ -554,7 +561,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
         gtk_string_list_append(self->input_presets_string_list, preset_name.c_str());
       }));
 
-  self->connections.push_back(
+  self->data->connections.push_back(
       application->presets_manager->user_input_preset_removed.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
           util::warning(log_tag + "can't retrieve information about the preset file"s);
@@ -573,7 +580,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   // signals related to autoload profiles
 
-  self->connections.push_back(application->presets_manager->autoload_input_profiles_changed.connect(
+  self->data->connections.push_back(application->presets_manager->autoload_input_profiles_changed.connect(
       [=](const std::vector<nlohmann::json>& profiles) {
         std::vector<ui::holders::PresetsAutoloadingHolder*> list;
 
@@ -590,7 +597,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
                             (gpointer*)(list.data()), list.size());
       }));
 
-  self->connections.push_back(application->presets_manager->autoload_output_profiles_changed.connect(
+  self->data->connections.push_back(application->presets_manager->autoload_output_profiles_changed.connect(
       [=](const std::vector<nlohmann::json>& profiles) {
         std::vector<ui::holders::PresetsAutoloadingHolder*> list;
 
@@ -611,30 +618,38 @@ void setup(PipeManagerBox* self, app::Application* application) {
 void dispose(GObject* object) {
   auto* self = EE_PIPE_MANAGER_BOX(object);
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections_sie) {
+  for (auto& handler_id : self->data->gconnections_sie) {
     g_signal_handler_disconnect(self->sie_settings, handler_id);
   }
 
-  for (auto& handler_id : self->gconnections_soe) {
+  for (auto& handler_id : self->data->gconnections_soe) {
     g_signal_handler_disconnect(self->soe_settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections_sie.clear();
-  self->gconnections_soe.clear();
+  self->data->connections.clear();
+  self->data->gconnections_sie.clear();
+  self->data->gconnections_soe.clear();
 
   g_object_unref(self->sie_settings);
   g_object_unref(self->soe_settings);
 
-  delete self->ts;
-
   util::debug(log_tag + "disposed"s);
 
   G_OBJECT_CLASS(pipe_manager_box_parent_class)->dispose(object);
+}
+
+void finalize(GObject* object) {
+  auto* self = EE_PIPE_MANAGER_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(pipe_manager_box_parent_class)->finalize(object);
 }
 
 void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
@@ -642,8 +657,7 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
-
-  //   widget_class->show = show;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/pipe_manager_box.ui");
 
@@ -689,6 +703,8 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
 void pipe_manager_box_init(PipeManagerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
+  self->data = new Data();
+
   self->input_presets_string_list = gtk_string_list_new(nullptr);
   self->output_presets_string_list = gtk_string_list_new(nullptr);
 
@@ -714,7 +730,7 @@ void pipe_manager_box_init(PipeManagerBox* self) {
 
   g_signal_connect(self->spinbutton_test_signal_frequency, "value-changed",
                    G_CALLBACK(+[](GtkSpinButton* btn, PipeManagerBox* self) {
-                     self->ts->set_frequency(static_cast<float>(gtk_spin_button_get_value(btn)));
+                     self->data->ts->set_frequency(static_cast<float>(gtk_spin_button_get_value(btn)));
                    }),
                    self);
 
@@ -723,7 +739,7 @@ void pipe_manager_box_init(PipeManagerBox* self) {
       G_CALLBACK(+[](GtkSwitch* btn, GParamSpec* pspec, PipeManagerBox* self) {
         if (gtk_switch_get_active(btn) != 0) {
           g_settings_set_string(self->sie_settings, "input-device",
-                                self->application->pm->default_input_device.name.c_str());
+                                self->data->application->pm->default_input_device.name.c_str());
 
           auto* holder =
               static_cast<ui::holders::NodeInfoHolder*>(gtk_drop_down_get_selected_item(self->dropdown_input_devices));
@@ -732,12 +748,12 @@ void pipe_manager_box_init(PipeManagerBox* self) {
             return;
           }
 
-          if (holder->name != self->application->pm->default_input_device.name) {
+          if (holder->name != self->data->application->pm->default_input_device.name) {
             for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
               auto item = static_cast<ui::holders::NodeInfoHolder*>(
                   g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
 
-              if (item->name == self->application->pm->default_input_device.name) {
+              if (item->name == self->data->application->pm->default_input_device.name) {
                 gtk_drop_down_set_selected(self->dropdown_input_devices, n);
 
                 break;
@@ -753,7 +769,7 @@ void pipe_manager_box_init(PipeManagerBox* self) {
       G_CALLBACK(+[](GtkSwitch* btn, GParamSpec* pspec, PipeManagerBox* self) {
         if (gtk_switch_get_active(btn) != 0) {
           g_settings_set_string(self->soe_settings, "output-device",
-                                self->application->pm->default_output_device.name.c_str());
+                                self->data->application->pm->default_output_device.name.c_str());
 
           auto* holder =
               static_cast<ui::holders::NodeInfoHolder*>(gtk_drop_down_get_selected_item(self->dropdown_output_devices));
@@ -762,12 +778,12 @@ void pipe_manager_box_init(PipeManagerBox* self) {
             return;
           }
 
-          if (holder->name != self->application->pm->default_output_device.name) {
+          if (holder->name != self->data->application->pm->default_output_device.name) {
             for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
               auto item = static_cast<ui::holders::NodeInfoHolder*>(
                   g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
 
-              if (item->name == self->application->pm->default_output_device.name) {
+              if (item->name == self->data->application->pm->default_output_device.name) {
                 gtk_drop_down_set_selected(self->dropdown_output_devices, n);
 
                 break;

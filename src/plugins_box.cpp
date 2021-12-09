@@ -25,6 +25,21 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "plugins_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  bool schedule_signal_idle;
+
+  app::Application* application;
+
+  PipelineType pipeline_type;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _PluginsBox {
   GtkBox parent_instance;
 
@@ -36,19 +51,11 @@ struct _PluginsBox {
 
   ui::plugins_menu::PluginsMenu* plugins_menu;
 
-  app::Application* application;
-
-  bool schedule_signal_idle;
-
-  PipelineType pipeline_type;
-
   GtkStringList* string_list;
 
   GSettings* settings;
 
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(PluginsBox, plugins_box, GTK_TYPE_BOX)
@@ -61,11 +68,11 @@ void add_plugins_to_stack(PluginsBox* self) {
   if constexpr (pipeline_type == PipelineType::input) {
     schema_path = "/com/github/wwmm/easyeffects/streaminputs/";
 
-    effects_base = self->application->sie;
+    effects_base = self->data->application->sie;
   } else if constexpr (pipeline_type == PipelineType::output) {
     schema_path = "/com/github/wwmm/easyeffects/streamoutputs/";
 
-    effects_base = self->application->soe;
+    effects_base = self->data->application->soe;
   }
 
   std::replace(schema_path.begin(), schema_path.end(), '.', '/');
@@ -112,14 +119,14 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto* box = ui::compressor_box::create();
 
       ui::compressor_box::setup(box, effects_base->compressor, schema_path + plugin_name::compressor + "/",
-                                self->application->pm);
+                                self->data->application->pm);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::compressor);
     } else if (name == plugin_name::convolver) {
       auto* box = ui::convolver_box::create();
 
       ui::convolver_box::setup(box, effects_base->convolver, schema_path + plugin_name::convolver + "/",
-                               self->application);
+                               self->data->application);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::convolver);
     } else if (name == plugin_name::crossfeed) {
@@ -162,7 +169,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto* box = ui::equalizer_box::create();
 
       ui::equalizer_box::setup(box, effects_base->equalizer, schema_path + plugin_name::equalizer + "/",
-                               self->application);
+                               self->data->application);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::equalizer);
     } else if (name == plugin_name::filter) {
@@ -175,7 +182,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto* box = ui::limiter_box::create();
 
       ui::limiter_box::setup(box, effects_base->limiter, schema_path + plugin_name::limiter + "/",
-                             self->application->pm);
+                             self->data->application->pm);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::limiter);
     } else if (name == plugin_name::loudness) {
@@ -383,8 +390,8 @@ void setup_listview(PluginsBox* self) {
 }
 
 void setup(PluginsBox* self, app::Application* application, PipelineType pipeline_type) {
-  self->application = application;
-  self->pipeline_type = pipeline_type;
+  self->data->application = application;
+  self->data->pipeline_type = pipeline_type;
 
   switch (pipeline_type) {
     case PipelineType::input: {
@@ -392,11 +399,11 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
 
       add_plugins_to_stack<PipelineType::input>(self);
 
-      self->gconnections.push_back(g_signal_connect(self->settings, "changed::plugins",
-                                                    G_CALLBACK(+[](GSettings* settings, char* key, PluginsBox* self) {
-                                                      add_plugins_to_stack<PipelineType::input>(self);
-                                                    }),
-                                                    self));
+      self->data->gconnections.push_back(g_signal_connect(
+          self->settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, PluginsBox* self) {
+            add_plugins_to_stack<PipelineType::input>(self);
+          }),
+          self));
 
       break;
     }
@@ -405,11 +412,11 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
 
       add_plugins_to_stack<PipelineType::output>(self);
 
-      self->gconnections.push_back(g_signal_connect(self->settings, "changed::plugins",
-                                                    G_CALLBACK(+[](GSettings* settings, char* key, PluginsBox* self) {
-                                                      add_plugins_to_stack<PipelineType::output>(self);
-                                                    }),
-                                                    self));
+      self->data->gconnections.push_back(g_signal_connect(
+          self->settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, PluginsBox* self) {
+            add_plugins_to_stack<PipelineType::output>(self);
+          }),
+          self));
 
       break;
     }
@@ -423,7 +430,7 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
 void realize(GtkWidget* widget) {
   auto* self = EE_PLUGINS_BOX(widget);
 
-  self->schedule_signal_idle = true;
+  self->data->schedule_signal_idle = true;
 
   GTK_WIDGET_CLASS(plugins_box_parent_class)->realize(widget);
 }
@@ -431,7 +438,7 @@ void realize(GtkWidget* widget) {
 void unroot(GtkWidget* widget) {
   auto* self = EE_PLUGINS_BOX(widget);
 
-  self->schedule_signal_idle = false;
+  self->data->schedule_signal_idle = false;
 
   GTK_WIDGET_CLASS(plugins_box_parent_class)->unroot(widget);
 }
@@ -439,16 +446,16 @@ void unroot(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_PLUGINS_BOX(object);
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -457,11 +464,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(plugins_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_PLUGINS_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(plugins_box_parent_class)->finalize(object);
+}
+
 void plugins_box_class_init(PluginsBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   widget_class->realize = realize;
   widget_class->unroot = unroot;
@@ -476,7 +494,9 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
 void plugins_box_init(PluginsBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
-  self->schedule_signal_idle = false;
+  self->data = new Data();
+
+  self->data->schedule_signal_idle = false;
 
   self->string_list = gtk_string_list_new(nullptr);
 
