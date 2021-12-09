@@ -25,6 +25,21 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "apps_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  PipelineType pipeline_type;
+
+  app::Application* application;
+
+  std::unordered_map<uint, bool> enabled_app_list;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _AppsBox {
   GtkBox parent_instance;
 
@@ -32,19 +47,11 @@ struct _AppsBox {
 
   GtkIconTheme* icon_theme;
 
-  app::Application* application;
-
   GListStore *apps_model, *all_apps_model;
 
   GSettings *settings, *app_settings;
 
-  PipelineType pipeline_type;
-
-  std::unordered_map<uint, bool> enabled_app_list;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(AppsBox, apps_box, GTK_TYPE_BOX)
@@ -117,18 +124,18 @@ void on_app_changed(AppsBox* self, const NodeInfo node_info) {
 }
 
 void connect_stream(AppsBox* self, const uint& id, const std::string& media_class) {
-  if (media_class == self->application->pm->media_class_output_stream) {
-    self->application->pm->connect_stream_output(id);
-  } else if (media_class == self->application->pm->media_class_input_stream) {
-    self->application->pm->connect_stream_input(id);
+  if (media_class == self->data->application->pm->media_class_output_stream) {
+    self->data->application->pm->connect_stream_output(id);
+  } else if (media_class == self->data->application->pm->media_class_input_stream) {
+    self->data->application->pm->connect_stream_input(id);
   }
 }
 
 void disconnect_stream(AppsBox* self, const uint& id, const std::string& media_class) {
-  if (media_class == self->application->pm->media_class_output_stream) {
-    self->application->pm->disconnect_stream_output(id);
-  } else if (media_class == self->application->pm->media_class_input_stream) {
-    self->application->pm->disconnect_stream_input(id);
+  if (media_class == self->data->application->pm->media_class_output_stream) {
+    self->data->application->pm->disconnect_stream_output(id);
+  } else if (media_class == self->data->application->pm->media_class_input_stream) {
+    self->data->application->pm->disconnect_stream_input(id);
   }
 }
 
@@ -255,7 +262,7 @@ void setup_listview(AppsBox* self) {
                   (state) ? connect_stream(self, stream_id, media_class)
                           : disconnect_stream(self, stream_id, media_class);
 
-                  self->enabled_app_list.insert_or_assign(stream_id, state);
+                  self->data->enabled_app_list.insert_or_assign(stream_id, state);
                 }
               }
             }),
@@ -266,9 +273,9 @@ void setup_listview(AppsBox* self) {
               auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_object_get_data(G_OBJECT(scale), "holder"));
 
               if (holder != nullptr) {
-                const auto node_it = self->application->pm->node_map.find(holder->ts);
+                const auto node_it = self->data->application->pm->node_map.find(holder->ts);
 
-                if (node_it != self->application->pm->node_map.end()) {
+                if (node_it != self->data->application->pm->node_map.end()) {
                   if (node_it->second.proxy != nullptr) {
                     auto vol = static_cast<float>(gtk_range_get_value(GTK_RANGE(scale))) / 100.0F;
 
@@ -295,8 +302,8 @@ void setup_listview(AppsBox* self) {
                   gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-high-symbolic");
                 }
 
-                if (const auto node_it = self->application->pm->node_map.find(holder->ts);
-                    node_it != self->application->pm->node_map.end()) {
+                if (const auto node_it = self->data->application->pm->node_map.find(holder->ts);
+                    node_it != self->data->application->pm->node_map.end()) {
                   if (node_it->second.proxy != nullptr) {
                     PipeManager::set_node_mute(node_it->second.proxy, state);
                   }
@@ -314,7 +321,7 @@ void setup_listview(AppsBox* self) {
                 if (state) {
                   auto* enable = GTK_SWITCH(g_object_get_data(G_OBJECT(btn), "enable"));
 
-                  self->enabled_app_list.insert_or_assign(holder->id, gtk_switch_get_active(enable));
+                  self->data->enabled_app_list.insert_or_assign(holder->id, gtk_switch_get_active(enable));
 
                   util::add_new_blocklist_entry(self->settings, holder->name, log_tag);
                 } else {
@@ -380,7 +387,7 @@ void setup_listview(AppsBox* self) {
 
           g_signal_handler_block(enable, handler_id_enable);
 
-          const auto is_enabled = self->application->pm->stream_is_connected(node_info.id, node_info.media_class);
+          const auto is_enabled = self->data->application->pm->stream_is_connected(node_info.id, node_info.media_class);
           const auto is_blocklisted = app_is_blocklisted(self, node_info.name);
 
           gtk_widget_set_sensitive(GTK_WIDGET(enable), is_enabled || !is_blocklisted);
@@ -448,15 +455,15 @@ void setup_listview(AppsBox* self) {
 
           // save app "enabled state" only the first time when it is not present in the enabled_app_list map
 
-          if (self->enabled_app_list.find(node_info.id) == self->enabled_app_list.end()) {
-            self->enabled_app_list.insert({node_info.id, is_enabled});
+          if (self->data->enabled_app_list.find(node_info.id) == self->data->enabled_app_list.end()) {
+            self->data->enabled_app_list.insert({node_info.id, is_enabled});
           }
         };
 
         // Update the app info ui for the very first time Needed for interface initialization in service mode
 
-        if (const auto node_it = self->application->pm->node_map.find(holder->ts);
-            node_it != self->application->pm->node_map.end()) {
+        if (const auto node_it = self->data->application->pm->node_map.find(holder->ts);
+            node_it != self->data->application->pm->node_map.end()) {
           application_info_update(node_it->second);
         }
 
@@ -499,8 +506,8 @@ void setup_listview(AppsBox* self) {
 }
 
 void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme) {
-  self->application = application;
-  self->pipeline_type = pipeline_type;
+  self->data->application = application;
+  self->data->pipeline_type = pipeline_type;
   self->icon_theme = icon_theme;
 
   switch (pipeline_type) {
@@ -515,13 +522,13 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
         }
       }
 
-      self->connections.push_back(
+      self->data->connections.push_back(
           application->sie->pm->stream_input_added.connect([=](const NodeInfo info) { on_app_added(self, info); }));
 
-      self->connections.push_back(
+      self->data->connections.push_back(
           application->sie->pm->stream_input_removed.connect([=](const long ts) { on_app_removed(self, ts); }));
 
-      self->connections.push_back(application->sie->pm->stream_input_changed.connect(
+      self->data->connections.push_back(application->sie->pm->stream_input_changed.connect(
           [=](const NodeInfo node_info) { on_app_changed(self, node_info); }));
 
       break;
@@ -537,13 +544,13 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
         }
       }
 
-      self->connections.push_back(
+      self->data->connections.push_back(
           pm->stream_output_added.connect([=](const NodeInfo info) { on_app_added(self, info); }));
 
-      self->connections.push_back(
+      self->data->connections.push_back(
           application->soe->pm->stream_output_removed.connect([=](const long ts) { on_app_removed(self, ts); }));
 
-      self->connections.push_back(application->soe->pm->stream_output_changed.connect(
+      self->data->connections.push_back(application->soe->pm->stream_output_changed.connect(
           [=](const NodeInfo node_info) { on_app_changed(self, node_info); }));
 
       break;
@@ -552,7 +559,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
   // updating the list when changes are made to the blocklist
 
-  self->gconnections.push_back(g_signal_connect(
+  self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::blocklist", G_CALLBACK(+[](GSettings* settings, char* key, AppsBox* self) {
         const auto show_blocklisted_apps = g_settings_get_boolean(self->settings, "show-blocklisted-apps") != 0;
 
@@ -562,7 +569,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
           auto* holder =
               static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
-          const auto app_is_enabled = self->application->pm->stream_is_connected(holder->id, holder->media_class);
+          const auto app_is_enabled = self->data->application->pm->stream_is_connected(holder->id, holder->media_class);
 
           if (app_is_blocklisted(self, holder->name)) {
             if (app_is_enabled) {
@@ -577,7 +584,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
               // Try to restore the previous enabled state, if needed
 
               try {
-                if (self->enabled_app_list.at(holder->id)) {
+                if (self->data->enabled_app_list.at(holder->id)) {
                   connect_stream(self, holder->id, holder->media_class);
                 }
               } catch (...) {
@@ -585,7 +592,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
                 util::warning(log_tag + "can't retrieve enabled state of node "s + std::to_string(holder->id));
 
-                self->enabled_app_list.insert({holder->id, true});
+                self->data->enabled_app_list.insert({holder->id, true});
               }
             }
 
@@ -595,7 +602,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       }),
       self));
 
-  self->gconnections.push_back(g_signal_connect(
+  self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::show-blocklisted-apps", G_CALLBACK(+[](GSettings* settings, char* key, AppsBox* self) {
         const auto show_blocklisted_apps = g_settings_get_boolean(self->settings, "show-blocklisted-apps") != 0;
 
@@ -622,16 +629,16 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 void dispose(GObject* object) {
   auto* self = EE_APPS_BOX(object);
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->all_apps_model);  // do not do this to self->apps_model. It is owned by the listview
   g_object_unref(self->settings);
@@ -642,11 +649,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(apps_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_APPS_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(apps_box_parent_class)->finalize(object);
+}
+
 void apps_box_class_init(AppsBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/apps_box.ui");
 
@@ -656,12 +674,12 @@ void apps_box_class_init(AppsBoxClass* klass) {
 void apps_box_init(AppsBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
+  self->data = new Data();
+
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
 
   self->apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->all_apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
-
-  self->enabled_app_list = std::unordered_map<uint, bool>();  // Private gtk structures are weird. We have to do this.
 
   setup_listview(self);
 }

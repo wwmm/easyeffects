@@ -25,6 +25,17 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "blocklist_menu: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  app::Application* application;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _BlocklistMenu {
   GtkPopover parent_instance;
 
@@ -40,11 +51,7 @@ struct _BlocklistMenu {
 
   GSettings* settings;
 
-  app::Application* application;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(BlocklistMenu, blocklist_menu, GTK_TYPE_POPOVER)
@@ -124,7 +131,7 @@ void setup_listview(BlocklistMenu* self) {
     gtk_string_list_append(self->string_list, name.c_str());
   }
 
-  self->gconnections.push_back(g_signal_connect(
+  self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::blocklist", G_CALLBACK(+[](GSettings* settings, char* key, BlocklistMenu* self) {
         gtk_string_list_splice(self->string_list, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list)),
                                g_settings_get_strv(settings, key));
@@ -133,7 +140,7 @@ void setup_listview(BlocklistMenu* self) {
 }
 
 void setup(BlocklistMenu* self, app::Application* application, PipelineType pipeline_type) {
-  self->application = application;
+  self->data->application = application;
 
   switch (pipeline_type) {
     case PipelineType::input: {
@@ -157,7 +164,7 @@ void setup(BlocklistMenu* self, app::Application* application, PipelineType pipe
 void show(GtkWidget* widget) {
   auto* self = EE_BLOCKLIST_MENU(widget);
 
-  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
   auto active_window_height = gtk_widget_get_allocated_height(GTK_WIDGET(active_window));
 
@@ -171,16 +178,16 @@ void show(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_BLOCKLIST_MENU(object);
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -189,11 +196,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(blocklist_menu_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_BLOCKLIST_MENU(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(blocklist_menu_parent_class)->finalize(object);
+}
+
 void blocklist_menu_class_init(BlocklistMenuClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   widget_class->show = show;
 
@@ -211,6 +229,8 @@ void blocklist_menu_class_init(BlocklistMenuClass* klass) {
 
 void blocklist_menu_init(BlocklistMenu* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 }
 
 auto create() -> BlocklistMenu* {

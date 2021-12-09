@@ -25,6 +25,19 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "application_ui: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  int width, height;
+
+  bool maximized, fullscreen;
+
+  GApplication* gapp;
+
+  GtkIconTheme* icon_theme;
+};
+
 struct _ApplicationWindow {
   AdwWindow parent_instance;
 
@@ -39,15 +52,9 @@ struct _ApplicationWindow {
   ui::effects_box::EffectsBox* sie_ui;
   ui::pipe_manager_box::PipeManagerBox* pm_box;
 
-  int width, height;
-  bool maximized;
-  bool fullscreen;
-
   GSettings* settings;
 
-  GApplication* gapp;
-
-  GtkIconTheme* icon_theme;
+  Data* data;
 };
 
 G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)
@@ -94,18 +101,18 @@ void apply_css_style() {
 void constructed(GObject* object) {
   auto* self = EE_APP_WINDOW(object);
 
-  self->maximized = g_settings_get_boolean(self->settings, "window-maximized") != 0;
-  self->fullscreen = g_settings_get_boolean(self->settings, "window-fullscreen") != 0;
-  self->width = g_settings_get_int(self->settings, "window-width");
-  self->height = g_settings_get_int(self->settings, "window-height");
+  self->data->maximized = g_settings_get_boolean(self->settings, "window-maximized") != 0;
+  self->data->fullscreen = g_settings_get_boolean(self->settings, "window-fullscreen") != 0;
+  self->data->width = g_settings_get_int(self->settings, "window-width");
+  self->data->height = g_settings_get_int(self->settings, "window-height");
 
-  gtk_window_set_default_size(GTK_WINDOW(self), self->width, self->height);
+  gtk_window_set_default_size(GTK_WINDOW(self), self->data->width, self->data->height);
 
-  if (self->maximized) {
+  if (self->data->maximized) {
     gtk_window_maximize(GTK_WINDOW(self));
   }
 
-  if (self->fullscreen) {
+  if (self->data->fullscreen) {
     gtk_window_fullscreen(GTK_WINDOW(self));
   }
 
@@ -117,8 +124,8 @@ void size_allocate(GtkWidget* widget, int width, int height, int baseline) {
 
   GTK_WIDGET_CLASS(application_window_parent_class)->size_allocate(widget, width, height, baseline);
 
-  if (!self->maximized && !self->fullscreen) {
-    gtk_window_get_default_size(GTK_WINDOW(self), &self->width, &self->height);
+  if (!self->data->maximized && !self->data->fullscreen) {
+    gtk_window_get_default_size(GTK_WINDOW(self), &self->data->width, &self->data->height);
   }
 }
 
@@ -129,8 +136,8 @@ void surface_state_changed(GtkWidget* widget) {
 
   new_state = gdk_toplevel_get_state(GDK_TOPLEVEL(gtk_native_get_surface(GTK_NATIVE(widget))));
 
-  self->maximized = (new_state & GDK_TOPLEVEL_STATE_MAXIMIZED) != 0;
-  self->fullscreen = (new_state & GDK_TOPLEVEL_STATE_FULLSCREEN) != 0;
+  self->data->maximized = (new_state & GDK_TOPLEVEL_STATE_MAXIMIZED) != 0;
+  self->data->fullscreen = (new_state & GDK_TOPLEVEL_STATE_FULLSCREEN) != 0;
 }
 
 void realize(GtkWidget* widget) {
@@ -145,12 +152,12 @@ void realize(GtkWidget* widget) {
     Getting the gapp pointer here because it is not defined when "init" is called
   */
 
-  self->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
+  self->data->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
 
-  ui::presets_menu::setup(self->presetsMenu, app::EE_APP(self->gapp));
-  ui::effects_box::setup(self->soe_ui, app::EE_APP(self->gapp), PipelineType::output, self->icon_theme);
-  ui::effects_box::setup(self->sie_ui, app::EE_APP(self->gapp), PipelineType::input, self->icon_theme);
-  ui::pipe_manager_box::setup(self->pm_box, app::EE_APP(self->gapp));
+  ui::presets_menu::setup(self->presetsMenu, app::EE_APP(self->data->gapp));
+  ui::effects_box::setup(self->soe_ui, app::EE_APP(self->data->gapp), PipelineType::output, self->data->icon_theme);
+  ui::effects_box::setup(self->sie_ui, app::EE_APP(self->data->gapp), PipelineType::input, self->data->icon_theme);
+  ui::pipe_manager_box::setup(self->pm_box, app::EE_APP(self->data->gapp));
 }
 
 void unrealize(GtkWidget* widget) {
@@ -163,14 +170,14 @@ void unrealize(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_APP_WINDOW(object);
 
-  g_settings_set_int(self->settings, "window-width", self->width);
-  g_settings_set_int(self->settings, "window-height", self->height);
-  g_settings_set_boolean(self->settings, "window-maximized", static_cast<gboolean>(self->maximized));
-  g_settings_set_boolean(self->settings, "window-fullscreen", static_cast<gboolean>(self->fullscreen));
+  g_settings_set_int(self->settings, "window-width", self->data->width);
+  g_settings_set_int(self->settings, "window-height", self->data->height);
+  g_settings_set_boolean(self->settings, "window-maximized", static_cast<gboolean>(self->data->maximized));
+  g_settings_set_boolean(self->settings, "window-fullscreen", static_cast<gboolean>(self->data->fullscreen));
 
   if (g_settings_get_boolean(self->settings, "shutdown-on-window-close") != 0 &&
-      (g_application_get_flags(self->gapp) & G_APPLICATION_IS_SERVICE) != 0) {
-    g_application_release(self->gapp);
+      (g_application_get_flags(self->data->gapp) & G_APPLICATION_IS_SERVICE) != 0) {
+    g_application_release(self->data->gapp);
   }
 
   g_object_unref(self->settings);
@@ -180,12 +187,23 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(application_window_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_APP_WINDOW(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(application_window_parent_class)->finalize(object);
+}
+
 void application_window_class_init(ApplicationWindowClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->constructed = constructed;
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   widget_class->size_allocate = size_allocate;
   widget_class->realize = realize;
@@ -201,10 +219,12 @@ void application_window_class_init(ApplicationWindowClass* klass) {
 void application_window_init(ApplicationWindow* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
-  self->width = -1;
-  self->height = -1;
-  self->maximized = false;
-  self->fullscreen = false;
+  self->data = new Data();
+
+  self->data->width = -1;
+  self->data->height = -1;
+  self->data->maximized = false;
+  self->data->fullscreen = false;
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
@@ -212,7 +232,7 @@ void application_window_init(ApplicationWindow* self) {
 
   apply_css_style();
 
-  self->icon_theme = setup_icon_theme();
+  self->data->icon_theme = setup_icon_theme();
 
   self->presetsMenu = ui::presets_menu::create();
   self->soe_ui = ui::effects_box::create();

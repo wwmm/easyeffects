@@ -373,9 +373,6 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
         ui::chart::set_data(self->spectrum_chart, self->spectrum_x_axis, self->spectrum_mag);
       }));
 
-  self->effects_base->output_level->post_messages = true;
-  self->effects_base->spectrum->post_messages = true;
-
   // pipeline latency
 
   gtk_label_set_text(self->latency_status,
@@ -397,6 +394,12 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
                    },
                self);
   }));
+
+  // As we are showing the window we want the filters to send notifications about level meters, etc
+
+  PluginBase::post_messages = true;
+
+  self->effects_base->spectrum->bypass = !g_settings_get_boolean(self->settings_spectrum, "show");
 }
 
 void realize(GtkWidget* widget) {
