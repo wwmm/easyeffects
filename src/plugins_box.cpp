@@ -146,6 +146,12 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::delay_box::setup(box, effects_base->delay, schema_path + plugin_name::delay + "/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::delay);
+    } else if (name == plugin_name::echo_canceller) {
+      auto* box = ui::echo_canceller_box::create();
+
+      ui::echo_canceller_box::setup(box, effects_base->echo_canceller, schema_path + "echocanceller/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::echo_canceller);
     } else if (name == plugin_name::exciter) {
       auto* box = ui::exciter_box::create();
 

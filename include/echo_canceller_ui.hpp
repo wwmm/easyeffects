@@ -17,29 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef ECHO_CANCELLER_UI_HPP
-#define ECHO_CANCELLER_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class EchoCancellerUi : public Gtk::Box, public PluginUiBase {
- public:
-  EchoCancellerUi(BaseObjectType* cobject,
-                  const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& schema,
-                  const std::string& schema_path);
-  EchoCancellerUi(const EchoCancellerUi&) = delete;
-  auto operator=(const EchoCancellerUi&) -> EchoCancellerUi& = delete;
-  EchoCancellerUi(const EchoCancellerUi&&) = delete;
-  auto operator=(const EchoCancellerUi&&) -> EchoCancellerUi& = delete;
-  ~EchoCancellerUi() override;
+namespace ui::echo_canceller_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EchoCancellerUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_ECHO_CANCELLER_BOX (echo_canceller_box_get_type())
 
- private:
-  Gtk::SpinButton *frame_size = nullptr, *filter_length = nullptr;
-};
+G_DECLARE_FINAL_TYPE(EchoCancellerBox, echo_canceller_box, EE, ECHO_CANCELLER_BOX, GtkBox)
 
-#endif
+G_END_DECLS
+
+auto create() -> EchoCancellerBox*;
+
+void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller, const std::string& schema_path);
+
+}  // namespace ui::echo_canceller_box

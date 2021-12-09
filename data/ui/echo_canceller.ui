@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="EchoCancellerBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
+                <signal name="toggled" handler="on_bypass" object="EchoCancellerBox" />
             </object>
         </child>
 
@@ -277,6 +277,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="EchoCancellerBox" />
                     </object>
                 </child>
 
@@ -305,7 +306,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

@@ -82,19 +82,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // Adding to the stack the plugins in the list that are not there yet
 
   for (const auto& name : settings->get_string_array("plugins")) {
-    if (name == plugin_name::echo_canceller) {
-      auto* const echo_canceller_ui = EchoCancellerUi::add_to_stack(stack_plugins, path);
-
-      echo_canceller_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->echo_canceller->bypass = echo_canceller_ui->bypass->get_active(); });
-
-      effects_base->echo_canceller->input_level.connect(
-          sigc::mem_fun(*echo_canceller_ui, &EchoCancellerUi::on_new_input_level));
-      effects_base->echo_canceller->output_level.connect(
-          sigc::mem_fun(*echo_canceller_ui, &EchoCancellerUi::on_new_output_level));
-
-      effects_base->echo_canceller->bypass = false;
-    } else if (name == plugin_name::gate) {
+    if (name == plugin_name::gate) {
       auto* const gate_ui = GateUi::add_to_stack(stack_plugins, path);
 
       gate_ui->bypass->signal_toggled().connect(

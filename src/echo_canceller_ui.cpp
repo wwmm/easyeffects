@@ -19,52 +19,142 @@
 
 #include "echo_canceller_ui.hpp"
 
-EchoCancellerUi::EchoCancellerUi(BaseObjectType* cobject,
-                                 const Glib::RefPtr<Gtk::Builder>& builder,
-                                 const std::string& schema,
-                                 const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::echo_canceller;
+namespace ui::echo_canceller_box {
 
-  // loading builder widgets
+using namespace std::string_literals;
 
-  frame_size = builder->get_widget<Gtk::SpinButton>("frame_size");
-  filter_length = builder->get_widget<Gtk::SpinButton>("filter_length");
+auto constexpr log_tag = "echo_canceller_box: ";
 
-  // gsettings bindings
+struct _EchoCancellerBox {
+  GtkBox parent_instance;
 
-  settings->bind("frame-size", frame_size->get_adjustment().get(), "value");
-  settings->bind("filter-length", filter_length->get_adjustment().get(), "value");
+  GtkScale *input_gain, *output_gain;
 
-  prepare_spinbutton(frame_size, "ms");
-  prepare_spinbutton(filter_length, "ms");
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  setup_input_output_gain(builder);
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkSpinButton *frame_size, *filter_length;
+
+  GSettings* settings;
+
+  std::shared_ptr<EchoCanceller> echo_canceller;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+G_DEFINE_TYPE(EchoCancellerBox, echo_canceller_box, GTK_TYPE_BOX)
+
+void on_bypass(EchoCancellerBox* self, GtkToggleButton* btn) {
+  self->echo_canceller->bypass = gtk_toggle_button_get_active(btn);
 }
 
-EchoCancellerUi::~EchoCancellerUi() {
-  util::debug(name + " ui destroyed");
+void on_reset(EchoCancellerBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "frame-size");
+
+  g_settings_reset(self->settings, "filter-length");
 }
 
-auto EchoCancellerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EchoCancellerUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/echo_canceller.ui");
+void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller, const std::string& schema_path) {
+  self->echo_canceller = echo_canceller;
 
-  auto* const ui = Gtk::Builder::get_widget_derived<EchoCancellerUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.echocanceller", schema_path + "echocanceller/");
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.echocanceller", schema_path.c_str());
 
-  stack->add(*ui, plugin_name::echo_canceller);
+  echo_canceller->post_messages = true;
+  echo_canceller->bypass = false;
 
-  return ui;
+  self->connections.push_back(echo_canceller->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->connections.push_back(echo_canceller->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "frame-size", gtk_spin_button_get_adjustment(self->frame_size), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "filter-length", gtk_spin_button_get_adjustment(self->filter_length), "value",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
-void EchoCancellerUi::reset() {
-  bypass->set_active(false);
+void dispose(GObject* object) {
+  auto* self = EE_ECHO_CANCELLER_BOX(object);
 
-  settings->reset("input-gain");
+  self->echo_canceller->bypass = false;
 
-  settings->reset("output-gain");
+  for (auto& c : self->connections) {
+    c.disconnect();
+  }
 
-  settings->reset("frame-size");
+  for (auto& handler_id : self->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
 
-  settings->reset("filter-length");
+  self->connections.clear();
+  self->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(echo_canceller_box_parent_class)->dispose(object);
 }
+
+void echo_canceller_box_class_init(EchoCancellerBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/echo_canceller.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, frame_size);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, filter_length);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
+}
+
+void echo_canceller_box_init(EchoCancellerBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  prepare_spinbutton<"ms">(self->filter_length);
+  prepare_spinbutton<"ms">(self->frame_size);
+}
+
+auto create() -> EchoCancellerBox* {
+  return static_cast<EchoCancellerBox*>(g_object_new(EE_TYPE_ECHO_CANCELLER_BOX, nullptr));
+}
+
+}  // namespace ui::echo_canceller_box

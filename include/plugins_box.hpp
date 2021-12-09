@@ -30,6 +30,7 @@
 #include "crystalizer_ui.hpp"
 #include "deesser_ui.hpp"
 #include "delay_ui.hpp"
+#include "echo_canceller_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
