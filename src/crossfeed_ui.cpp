@@ -25,6 +25,17 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "crossfeed_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<Crossfeed> crossfeed;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _CrossfeedBox {
   GtkBox parent_instance;
 
@@ -40,17 +51,13 @@ struct _CrossfeedBox {
 
   GSettings* settings;
 
-  std::shared_ptr<Crossfeed> crossfeed;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(CrossfeedBox, crossfeed_box, GTK_TYPE_BOX)
 
 void on_bypass(CrossfeedBox* self, GtkToggleButton* btn) {
-  self->crossfeed->bypass = gtk_toggle_button_get_active(btn);
+  self->data->crossfeed->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(CrossfeedBox* self, GtkButton* btn) {
@@ -81,19 +88,19 @@ void on_preset_jmeier(CrossfeedBox* self, GtkButton* btn) {
 }
 
 void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::string& schema_path) {
-  self->crossfeed = crossfeed;
+  self->data->crossfeed = crossfeed;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crossfeed", schema_path.c_str());
 
   crossfeed->post_messages = true;
   crossfeed->bypass = false;
 
-  self->connections.push_back(crossfeed->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(crossfeed->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(crossfeed->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(crossfeed->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
@@ -110,18 +117,18 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 void dispose(GObject* object) {
   auto* self = EE_CROSSFEED_BOX(object);
 
-  self->crossfeed->bypass = false;
+  self->data->crossfeed->bypass = false;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -130,11 +137,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(crossfeed_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_CROSSFEED_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(crossfeed_box_parent_class)->finalize(object);
+}
+
 void crossfeed_box_class_init(CrossfeedBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/crossfeed.ui");
 
@@ -164,6 +182,8 @@ void crossfeed_box_class_init(CrossfeedBoxClass* klass) {
 
 void crossfeed_box_init(CrossfeedBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   prepare_spinbutton<"Hz">(self->fcut);
   prepare_spinbutton<"dB">(self->feed);
