@@ -27,6 +27,17 @@ auto constexpr log_tag = "crystalizer_box: ";
 
 constexpr uint nbands = 13U;
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<Crystalizer> crystalizer;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _CrystalizerBox {
   GtkBox parent_instance;
 
@@ -42,17 +53,13 @@ struct _CrystalizerBox {
 
   GSettings* settings;
 
-  std::shared_ptr<Crystalizer> crystalizer;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(CrystalizerBox, crystalizer_box, GTK_TYPE_BOX)
 
 void on_bypass(CrystalizerBox* self, GtkToggleButton* btn) {
-  self->crystalizer->bypass = gtk_toggle_button_get_active(btn);
+  self->data->crystalizer->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(CrystalizerBox* self, GtkButton* btn) {
@@ -147,7 +154,7 @@ void build_bands(CrystalizerBox* self) {
 }
 
 void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const std::string& schema_path) {
-  self->crystalizer = crystalizer;
+  self->data->crystalizer = crystalizer;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crystalizer", schema_path.c_str());
 
@@ -156,12 +163,12 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   build_bands(self);
 
-  self->connections.push_back(crystalizer->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(crystalizer->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(crystalizer->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(crystalizer->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
@@ -175,18 +182,18 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 void dispose(GObject* object) {
   auto* self = EE_CRYSTALIZER_BOX(object);
 
-  self->crystalizer->bypass = false;
+  self->data->crystalizer->bypass = false;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -195,11 +202,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(crystalizer_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_CRYSTALIZER_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(crystalizer_box_parent_class)->finalize(object);
+}
+
 void crystalizer_box_class_init(CrystalizerBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/crystalizer.ui");
 
@@ -224,6 +242,8 @@ void crystalizer_box_class_init(CrystalizerBoxClass* klass) {
 
 void crystalizer_box_init(CrystalizerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 }
 
 auto create() -> CrystalizerBox* {
