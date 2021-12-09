@@ -161,7 +161,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalize"s);
+  util::debug(log_tag + "finalized"s);
 
   G_OBJECT_CLASS(bass_enhancer_box_parent_class)->finalize(object);
 }
