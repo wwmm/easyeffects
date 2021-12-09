@@ -28,6 +28,22 @@ auto constexpr irs_ext = ".irs";
 
 static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
 
+/*
+  It is super weird having to do this... I know... But for some reason GTK does not destroy the widget structure even
+  when it is removed from its parent container the cooresponding reference count goes to zero... Who knows why...
+  THe problem is that because of this the vector destructors are never called. And whenever the convolver is removed
+  and added again our memory usage gets big quickly. This Data structure is a workaround for that. By calling delete on
+  it when the widget is finalized we force that memory to be freed. It is unbelievable I am being forced to do
+  something like this...
+*/
+
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::vector<float> left_mag, right_mag, time_axis, left_spectrum, right_spectrum, freq_axis;
+};
+
 struct _ConvolverBox {
   GtkBox parent_instance;
 
@@ -67,13 +83,13 @@ struct _ConvolverBox {
 
   std::mutex lock_guard_irs_info;
 
-  std::vector<float> left_mag, right_mag, time_axis, left_spectrum, right_spectrum, freq_axis;
-
   std::vector<std::thread> mythreads;
 
   std::vector<sigc::connection> connections;
 
   std::vector<gulong> gconnections;
+
+  Data* data;
 };
 
 G_DEFINE_TYPE(ConvolverBox, convolver_box, GTK_TYPE_BOX)
@@ -95,7 +111,7 @@ void on_reset(ConvolverBox* self, GtkButton* btn) {
 }
 
 void plot_fft(ConvolverBox* self) {
-  if (self->freq_axis.empty() || self->left_spectrum.empty() || self->right_spectrum.empty()) {
+  if (self->data->freq_axis.empty() || self->data->left_spectrum.empty() || self->data->right_spectrum.empty()) {
     return;
   }
 
@@ -108,14 +124,14 @@ void plot_fft(ConvolverBox* self) {
   ui::chart::set_x_unit(self->chart, "Hz");
 
   if (gtk_check_button_get_active(self->check_left) != 0) {
-    ui::chart::set_data(self->chart, self->freq_axis, self->left_spectrum);
+    ui::chart::set_data(self->chart, self->data->freq_axis, self->data->left_spectrum);
   } else if (gtk_check_button_get_active(self->check_right) != 0) {
-    ui::chart::set_data(self->chart, self->freq_axis, self->right_spectrum);
+    ui::chart::set_data(self->chart, self->data->freq_axis, self->data->right_spectrum);
   }
 }
 
 void plot_waveform(ConvolverBox* self) {
-  if (self->time_axis.empty() || self->left_spectrum.empty() || self->right_spectrum.empty()) {
+  if (self->data->time_axis.empty() || self->data->left_spectrum.empty() || self->data->right_spectrum.empty()) {
     return;
   }
 
@@ -128,9 +144,9 @@ void plot_waveform(ConvolverBox* self) {
   ui::chart::set_x_unit(self->chart, "s");
 
   if (gtk_check_button_get_active(self->check_left) != 0) {
-    ui::chart::set_data(self->chart, self->time_axis, self->left_mag);
+    ui::chart::set_data(self->chart, self->data->time_axis, self->data->left_mag);
   } else if (gtk_check_button_get_active(self->check_right) != 0) {
-    ui::chart::set_data(self->chart, self->time_axis, self->right_mag);
+    ui::chart::set_data(self->chart, self->data->time_axis, self->data->right_mag);
   }
 }
 
@@ -149,7 +165,8 @@ void on_show_channel(ConvolverBox* self, GtkCheckButton* btn) {
 }
 
 void get_irs_spectrum(ConvolverBox* self, const int& rate) {
-  if (self->left_mag.empty() || self->right_mag.empty() || self->left_mag.size() != self->right_mag.size()) {
+  if (self->data->left_mag.empty() || self->data->right_mag.empty() ||
+      self->data->left_mag.size() != self->data->right_mag.size()) {
     util::debug(log_tag + " aborting the impulse fft calculation..."s);
 
     return;
@@ -157,10 +174,10 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   util::debug(log_tag + " calculating the impulse fft..."s);
 
-  self->left_spectrum.resize(self->left_mag.size() / 2U + 1U);
-  self->right_spectrum.resize(self->right_mag.size() / 2U + 1U);
+  self->data->left_spectrum.resize(self->data->left_mag.size() / 2U + 1U);
+  self->data->right_spectrum.resize(self->data->right_mag.size() / 2U + 1U);
 
-  auto real_input = self->left_mag;
+  auto real_input = self->data->left_mag;
 
   for (uint n = 0U; n < real_input.size(); n++) {
     // https://en.wikipedia.org/wiki/Hann_function
@@ -178,17 +195,17 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   fftwf_execute(plan);
 
-  for (uint i = 0U; i < self->left_spectrum.size(); i++) {
+  for (uint i = 0U; i < self->data->left_spectrum.size(); i++) {
     float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
-    sqr /= static_cast<float>(self->left_spectrum.size() * self->left_spectrum.size());
+    sqr /= static_cast<float>(self->data->left_spectrum.size() * self->data->left_spectrum.size());
 
-    self->left_spectrum[i] = sqr;
+    self->data->left_spectrum[i] = sqr;
   }
 
   // right channel fft
 
-  real_input = self->right_mag;
+  real_input = self->data->right_mag;
 
   for (uint n = 0U; n < real_input.size(); n++) {
     // https://en.wikipedia.org/wiki/Hann_function
@@ -201,12 +218,12 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   fftwf_execute(plan);
 
-  for (uint i = 0U; i < self->right_spectrum.size(); i++) {
+  for (uint i = 0U; i < self->data->right_spectrum.size(); i++) {
     float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
-    sqr /= static_cast<float>(self->right_spectrum.size() * self->right_spectrum.size());
+    sqr /= static_cast<float>(self->data->right_spectrum.size() * self->data->right_spectrum.size());
 
-    self->right_spectrum[i] = sqr;
+    self->data->right_spectrum[i] = sqr;
   }
 
   // cleaning
@@ -219,11 +236,11 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   // initializing the frequency axis
 
-  self->freq_axis.resize(self->left_spectrum.size());
+  self->data->freq_axis.resize(self->data->left_spectrum.size());
 
-  for (uint n = 0U; n < self->left_spectrum.size(); n++) {
-    self->freq_axis[n] =
-        0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(self->left_spectrum.size());
+  for (uint n = 0U; n < self->data->left_spectrum.size(); n++) {
+    self->data->freq_axis[n] =
+        0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(self->data->left_spectrum.size());
   }
 
   size_t bin_size =
@@ -245,19 +262,19 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
 
-  for (size_t j = 0U; j < self->freq_axis.size(); j++) {
+  for (size_t j = 0U; j < self->data->freq_axis.size(); j++) {
     for (size_t n = 0U; n < log_axis.size(); n++) {
       if (n > 0U) {
-        if (self->freq_axis[j] <= log_axis[n] && self->freq_axis[j] > log_axis[n - 1U]) {
-          l[n] += self->left_spectrum[j];
-          r[n] += self->right_spectrum[j];
+        if (self->data->freq_axis[j] <= log_axis[n] && self->data->freq_axis[j] > log_axis[n - 1U]) {
+          l[n] += self->data->left_spectrum[j];
+          r[n] += self->data->right_spectrum[j];
 
           bin_count[n]++;
         }
       } else {
-        if (self->freq_axis[j] <= log_axis[n]) {
-          l[n] += self->left_spectrum[j];
-          r[n] += self->right_spectrum[j];
+        if (self->data->freq_axis[j] <= log_axis[n]) {
+          l[n] += self->data->left_spectrum[j];
+          r[n] += self->data->right_spectrum[j];
 
           bin_count[n]++;
         }
@@ -274,23 +291,23 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
     }
   }
 
-  self->freq_axis = log_axis;
-  self->left_spectrum = l;
-  self->right_spectrum = r;
+  self->data->freq_axis = log_axis;
+  self->data->left_spectrum = l;
+  self->data->right_spectrum = r;
 
   // find min and max values
 
-  const auto fft_min_left = std::ranges::min(self->left_spectrum);
-  const auto fft_max_left = std::ranges::max(self->left_spectrum);
+  const auto fft_min_left = std::ranges::min(self->data->left_spectrum);
+  const auto fft_max_left = std::ranges::max(self->data->left_spectrum);
 
-  const auto fft_min_right = std::ranges::min(self->right_spectrum);
-  const auto fft_max_right = std::ranges::max(self->right_spectrum);
+  const auto fft_min_right = std::ranges::min(self->data->right_spectrum);
+  const auto fft_max_right = std::ranges::max(self->data->right_spectrum);
 
   // rescaling between 0 and 1
 
-  for (uint n = 0; n < self->left_spectrum.size(); n++) {
-    self->left_spectrum[n] = (self->left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
-    self->right_spectrum[n] = (self->right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
+  for (uint n = 0; n < self->data->left_spectrum.size(); n++) {
+    self->data->left_spectrum[n] = (self->data->left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
+    self->data->right_spectrum[n] = (self->data->right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }
 
   util::idle_add([=]() {
@@ -336,19 +353,19 @@ void get_irs_info(ConvolverBox* self) {
 
   const float duration = (static_cast<float>(kernel_L.size()) - 1.0F) * dt;
 
-  self->time_axis.resize(kernel_L.size());
+  self->data->time_axis.resize(kernel_L.size());
 
-  self->left_mag = kernel_L;
-  self->right_mag = kernel_R;
+  self->data->left_mag = kernel_L;
+  self->data->right_mag = kernel_R;
 
-  for (size_t n = 0; n < self->time_axis.size(); n++) {
-    self->time_axis[n] = static_cast<float>(n) * dt;
+  for (size_t n = 0; n < self->data->time_axis.size(); n++) {
+    self->data->time_axis[n] = static_cast<float>(n) * dt;
   }
 
   get_irs_spectrum(self, rate);
 
   size_t bin_size = (gtk_widget_get_width(GTK_WIDGET(self->chart)) > 0)
-                        ? self->time_axis.size() / gtk_widget_get_width(GTK_WIDGET(self->chart))
+                        ? self->data->time_axis.size() / gtk_widget_get_width(GTK_WIDGET(self->chart))
                         : 0;
 
   if (bin_size > 0) {
@@ -361,11 +378,11 @@ void get_irs_info(ConvolverBox* self) {
     std::vector<float> bin_l_y;
     std::vector<float> bin_r_y;
 
-    for (size_t n = 0; n < self->time_axis.size(); n++) {
-      bin_x.push_back(self->time_axis[n]);
+    for (size_t n = 0; n < self->data->time_axis.size(); n++) {
+      bin_x.push_back(self->data->time_axis[n]);
 
-      bin_l_y.push_back(self->left_mag[n]);
-      bin_r_y.push_back(self->right_mag[n]);
+      bin_l_y.push_back(self->data->left_mag[n]);
+      bin_r_y.push_back(self->data->right_mag[n]);
 
       if (bin_x.size() == bin_size) {
         const auto [min, max] = std::ranges::minmax_element(bin_l_y);
@@ -387,28 +404,28 @@ void get_irs_info(ConvolverBox* self) {
       }
     }
 
-    self->time_axis = t;
-    self->left_mag = l;
-    self->right_mag = r;
+    self->data->time_axis = t;
+    self->data->left_mag = l;
+    self->data->right_mag = r;
   }
 
-  self->time_axis.shrink_to_fit();
-  self->left_mag.shrink_to_fit();
-  self->right_mag.shrink_to_fit();
+  self->data->time_axis.shrink_to_fit();
+  self->data->left_mag.shrink_to_fit();
+  self->data->right_mag.shrink_to_fit();
 
   // find min and max values
 
-  const auto min_left = std::ranges::min(self->left_mag);
-  const auto max_left = std::ranges::max(self->left_mag);
+  const auto min_left = std::ranges::min(self->data->left_mag);
+  const auto max_left = std::ranges::max(self->data->left_mag);
 
-  const auto min_right = std::ranges::min(self->right_mag);
-  const auto max_right = std::ranges::max(self->right_mag);
+  const auto min_right = std::ranges::min(self->data->right_mag);
+  const auto max_right = std::ranges::max(self->data->right_mag);
 
   // rescaling between 0 and 1
 
-  for (size_t n = 0U; n < self->left_mag.size(); n++) {
-    self->left_mag[n] = (self->left_mag[n] - min_left) / (max_left - min_left);
-    self->right_mag[n] = (self->right_mag[n] - min_right) / (max_right - min_right);
+  for (size_t n = 0U; n < self->data->left_mag.size(); n++) {
+    self->data->left_mag[n] = (self->data->left_mag[n] - min_left) / (max_left - min_left);
+    self->data->right_mag[n] = (self->data->right_mag[n] - min_right) / (max_right - min_right);
   }
 
   // updating interface with ir file info
@@ -449,14 +466,6 @@ void setup(ConvolverBox* self,
 
   ui::convolver_menu_impulses::setup(self->impulses_menu, schema_path, application);
 
-  // Reading the current configured irs file
-
-  self->mythreads.emplace_back([=]() {  // Using emplace_back here makes sense
-    std::scoped_lock<std::mutex> lock(self->lock_guard_irs_info);
-
-    get_irs_info(self);
-  });
-
   self->connections.push_back(convolver->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
@@ -489,8 +498,6 @@ void setup(ConvolverBox* self,
 void dispose(GObject* object) {
   auto* self = EE_CONVOLVER_BOX(object);
 
-  self->convolver->bypass = false;
-
   g_file_monitor_cancel(self->folder_monitor);
 
   g_object_unref(self->folder_monitor);
@@ -519,11 +526,28 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(convolver_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_CONVOLVER_BOX(object);
+
+  delete self->data;
+
+  for (auto& t : self->mythreads) {
+    t.join();
+  }
+
+  self->mythreads.clear();
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(convolver_box_parent_class)->finalize(object);
+}
+
 void convolver_box_class_init(ConvolverBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/convolver.ui");
 
@@ -560,6 +584,8 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
 
 void convolver_box_init(ConvolverBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   prepare_spinbutton<"%">(self->ir_width);
 
@@ -627,6 +653,20 @@ void convolver_box_init(ConvolverBox* self) {
                    self);
 
   g_object_unref(gfile);
+
+  g_signal_connect(GTK_WIDGET(self), "realize", G_CALLBACK(+[](GtkWidget* widget, ConvolverBox* self) {
+                     /*
+                       Reading the current configured irs file. We do this here because we need some widgets to be ready
+                       when the impulse response file information is available
+                     */
+
+                     self->mythreads.emplace_back([=]() {  // Using emplace_back here makes sense
+                       std::scoped_lock<std::mutex> lock(self->lock_guard_irs_info);
+
+                       get_irs_info(self);
+                     });
+                   }),
+                   self);
 }
 
 auto create() -> ConvolverBox* {
