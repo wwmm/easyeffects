@@ -31,7 +31,7 @@ static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/i
 /*
   It is super weird having to do this... I know... But for some reason GTK does not destroy the widget structure even
   when it is removed from its parent container the cooresponding reference count goes to zero... Who knows why...
-  THe problem is that because of this the vector destructors are never called. And whenever the convolver is removed
+  The problem is that because of this the vector destructors are never called. And whenever the convolver is removed
   and added again our memory usage gets big quickly. This Data structure is a workaround for that. By calling delete on
   it when the widget is finalized we force that memory to be freed. It is unbelievable I am being forced to do
   something like this...
@@ -40,6 +40,18 @@ static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/i
 struct Data {
  public:
   ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  app::Application* application;
+
+  std::shared_ptr<Convolver> convolver;
+
+  std::mutex lock_guard_irs_info;
+
+  std::vector<std::thread> mythreads;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
 
   std::vector<float> left_mag, right_mag, time_axis, left_spectrum, right_spectrum, freq_axis;
 };
@@ -77,25 +89,13 @@ struct _ConvolverBox {
 
   GFileMonitor* folder_monitor;
 
-  app::Application* application;
-
-  std::shared_ptr<Convolver> convolver;
-
-  std::mutex lock_guard_irs_info;
-
-  std::vector<std::thread> mythreads;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
-
   Data* data;
 };
 
 G_DEFINE_TYPE(ConvolverBox, convolver_box, GTK_TYPE_BOX)
 
 void on_bypass(ConvolverBox* self, GtkToggleButton* btn) {
-  self->convolver->bypass = gtk_toggle_button_get_active(btn);
+  self->data->convolver->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(ConvolverBox* self, GtkButton* btn) {
@@ -456,8 +456,8 @@ void setup(ConvolverBox* self,
            std::shared_ptr<Convolver> convolver,
            const std::string& schema_path,
            app::Application* application) {
-  self->convolver = convolver;
-  self->application = application;
+  self->data->convolver = convolver;
+  self->data->application = application;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.convolver", schema_path.c_str());
 
@@ -466,25 +466,25 @@ void setup(ConvolverBox* self,
 
   ui::convolver_menu_impulses::setup(self->impulses_menu, schema_path, application);
 
-  self->connections.push_back(convolver->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(convolver->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(convolver->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(convolver->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
 
-  self->gconnections.push_back(g_signal_connect(self->settings, "changed::kernel-path",
-                                                G_CALLBACK(+[](GSettings* settings, char* key, ConvolverBox* self) {
-                                                  self->mythreads.emplace_back([=]() {
-                                                    std::scoped_lock<std::mutex> lock(self->lock_guard_irs_info);
+  self->data->gconnections.push_back(g_signal_connect(
+      self->settings, "changed::kernel-path", G_CALLBACK(+[](GSettings* settings, char* key, ConvolverBox* self) {
+        self->data->mythreads.emplace_back([=]() {
+          std::scoped_lock<std::mutex> lock(self->data->lock_guard_irs_info);
 
-                                                    get_irs_info(self);
-                                                  });
-                                                }),
-                                                self));
+          get_irs_info(self);
+        });
+      }),
+      self));
 
   g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
                   G_SETTINGS_BIND_DEFAULT);
@@ -502,22 +502,22 @@ void dispose(GObject* object) {
 
   g_object_unref(self->folder_monitor);
 
-  for (auto& t : self->mythreads) {
+  for (auto& t : self->data->mythreads) {
     t.join();
   }
 
-  self->mythreads.clear();
+  self->data->mythreads.clear();
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -529,13 +529,13 @@ void dispose(GObject* object) {
 void finalize(GObject* object) {
   auto* self = EE_CONVOLVER_BOX(object);
 
-  delete self->data;
-
-  for (auto& t : self->mythreads) {
+  for (auto& t : self->data->mythreads) {
     t.join();
   }
 
-  self->mythreads.clear();
+  self->data->mythreads.clear();
+
+  delete self->data;
 
   util::debug(log_tag + "finalized"s);
 
@@ -660,8 +660,8 @@ void convolver_box_init(ConvolverBox* self) {
                        when the impulse response file information is available
                      */
 
-                     self->mythreads.emplace_back([=]() {  // Using emplace_back here makes sense
-                       std::scoped_lock<std::mutex> lock(self->lock_guard_irs_info);
+                     self->data->mythreads.emplace_back([=]() {  // Using emplace_back here makes sense
+                       std::scoped_lock<std::mutex> lock(self->data->lock_guard_irs_info);
 
                        get_irs_info(self);
                      });

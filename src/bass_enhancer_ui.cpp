@@ -25,6 +25,17 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "bass_enhancer_box: ";
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<BassEnhancer> bass_enhancer;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _BassEnhancerBox {
   GtkBox parent_instance;
 
@@ -48,17 +59,13 @@ struct _BassEnhancerBox {
 
   GSettings* settings;
 
-  std::shared_ptr<BassEnhancer> bass_enhancer;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(BassEnhancerBox, bass_enhancer_box, GTK_TYPE_BOX)
 
 void on_bypass(BassEnhancerBox* self, GtkToggleButton* btn) {
-  self->bass_enhancer->bypass = gtk_toggle_button_get_active(btn);
+  self->data->bass_enhancer->bypass = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(BassEnhancerBox* self, GtkButton* btn) {
@@ -84,24 +91,24 @@ void on_reset(BassEnhancerBox* self, GtkButton* btn) {
 }
 
 void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, const std::string& schema_path) {
-  self->bass_enhancer = bass_enhancer;
+  self->data->bass_enhancer = bass_enhancer;
 
   self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassenhancer", schema_path.c_str());
 
   bass_enhancer->post_messages = true;
   bass_enhancer->bypass = false;
 
-  self->connections.push_back(bass_enhancer->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(bass_enhancer->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                  self->input_level_right_label, left, right);
   }));
 
-  self->connections.push_back(bass_enhancer->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(bass_enhancer->output_level.connect([=](const float& left, const float& right) {
     update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                  self->output_level_right_label, left, right);
   }));
 
-  self->connections.push_back(bass_enhancer->harmonics.connect([=](const double& value) {
+  self->data->connections.push_back(bass_enhancer->harmonics.connect([=](const double& value) {
     gtk_level_bar_set_value(self->harmonics_levelbar, value);
     gtk_label_set_text(self->harmonics_levelbar_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
@@ -129,18 +136,18 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 void dispose(GObject* object) {
   auto* self = EE_BASS_ENHANCER_BOX(object);
 
-  self->bass_enhancer->bypass = false;
+  self->data->bass_enhancer->bypass = false;
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
 
@@ -149,11 +156,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(bass_enhancer_box_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_BASS_ENHANCER_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalize"s);
+
+  G_OBJECT_CLASS(bass_enhancer_box_parent_class)->finalize(object);
+}
+
 void bass_enhancer_box_class_init(BassEnhancerBoxClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/bass_enhancer.ui");
 
@@ -186,6 +204,8 @@ void bass_enhancer_box_class_init(BassEnhancerBoxClass* klass) {
 
 void bass_enhancer_box_init(BassEnhancerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   prepare_spinbutton<"dB">(self->amount);
   prepare_spinbutton<"Hz">(self->scope);

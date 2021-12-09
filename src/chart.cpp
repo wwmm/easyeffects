@@ -50,6 +50,8 @@ struct Data {
 
   ChartScale chart_scale;
 
+  GdkRGBA background_color, color, color_axis_labels, gradient_color;
+
   std::string x_unit, y_unit;
 
   std::vector<float> original_x, original_y, y_axis, x_axis;
@@ -57,8 +59,6 @@ struct Data {
 
 struct _Chart {
   GtkBox parent_instance;
-
-  GdkRGBA background_color, color, color_axis_labels, gradient_color;
 
   GtkEventController* controller_motion;
 
@@ -76,15 +76,15 @@ void set_plot_scale(Chart* self, const ChartScale& value) {
 }
 
 void set_background_color(Chart* self, GdkRGBA color) {
-  self->background_color = color;
+  self->data->background_color = color;
 }
 
 void set_color(Chart* self, GdkRGBA color) {
-  self->color = color;
+  self->data->color = color;
 }
 
 void set_axis_labels_color(Chart* self, GdkRGBA color) {
-  self->color_axis_labels = color;
+  self->data->color_axis_labels = color;
 }
 
 void set_line_width(Chart* self, const double& value) {
@@ -248,8 +248,8 @@ auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& heigh
     }
   }
 
-  cairo_set_source_rgba(ctx, self->color_axis_labels.red, self->color_axis_labels.green, self->color_axis_labels.blue,
-                        self->color_axis_labels.alpha);
+  cairo_set_source_rgba(ctx, self->data->color_axis_labels.red, self->data->color_axis_labels.green,
+                        self->data->color_axis_labels.blue, self->data->color_axis_labels.alpha);
 
   /*
     There is no space left in the window to show the last label. So we skip it
@@ -293,7 +293,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
   auto widget_rectangle = GRAPHENE_RECT_INIT(0.0F, 0.0F, static_cast<float>(width), static_cast<float>(height));
 
-  gtk_snapshot_append_color(snapshot, &self->background_color, &widget_rectangle);
+  gtk_snapshot_append_color(snapshot, &self->data->background_color, &widget_rectangle);
 
   auto* ctx = gtk_snapshot_append_cairo(snapshot, &widget_rectangle);
 
@@ -310,7 +310,8 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
     int usable_height = static_cast<int>(height - self->data->margin * height) - self->data->x_axis_height;
 
-    cairo_set_source_rgba(ctx, self->color.red, self->color.green, self->color.blue, self->color.alpha);
+    cairo_set_source_rgba(ctx, self->data->color.red, self->data->color.green, self->data->color.blue,
+                          self->data->color.alpha);
 
     switch (self->data->chart_type) {
       case ChartType::bar: {
@@ -445,10 +446,10 @@ void chart_init(Chart* self) {
   self->data->x_max = 1.0F;
   self->data->y_max = 1.0F;
 
-  self->background_color = GdkRGBA{0.0F, 0.0F, 0.0F, 1.0F};
-  self->color = GdkRGBA{1.0F, 1.0F, 1.0F, 1.0F};
-  self->color_axis_labels = GdkRGBA{1.0F, 1.0F, 1.0F, 1.0F};
-  self->gradient_color = GdkRGBA{1.0F, 1.0F, 1.0F, 1.0F};
+  self->data->background_color = GdkRGBA{0.0F, 0.0F, 0.0F, 1.0F};
+  self->data->color = GdkRGBA{1.0F, 1.0F, 1.0F, 1.0F};
+  self->data->color_axis_labels = GdkRGBA{1.0F, 1.0F, 1.0F, 1.0F};
+  self->data->gradient_color = GdkRGBA{1.0F, 1.0F, 1.0F, 1.0F};
 
   self->data->chart_type = ChartType::bar;
   self->data->chart_scale = ChartScale::logarithmic;
