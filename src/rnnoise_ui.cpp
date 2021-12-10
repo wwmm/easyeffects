@@ -59,6 +59,8 @@ struct _RNNoiseBox {
 
   GtkStringList* string_list;
 
+  GtkSingleSelection* selection_model;
+
   GSettings* settings;
 
   GFileMonitor* folder_monitor;
@@ -93,15 +95,13 @@ gboolean set_model_delete_button_visibility(GtkListItem* item, const char* name)
 void on_remove_model_file(GtkListItem* item, GtkButton* btn) {
   std::string name = gtk_string_object_get_string(GTK_STRING_OBJECT(gtk_list_item_get_item(item)));
 
-  util::warning(name);
+  const auto model_file = model_dir / std::filesystem::path{name.c_str() + rnnn_ext};
 
-  // const auto model_file = model_dir / std::filesystem::path{name.c_str() + rnnn_ext};
+  if (std::filesystem::exists(model_file)) {
+    std::filesystem::remove(model_file);
 
-  // if (std::filesystem::exists(model_file)) {
-  //   std::filesystem::remove(model_file);
-
-  //   util::debug(log_tag + "removed model file: "s + model_file.string());
-  // }
+    util::debug(log_tag + "removed model file: "s + model_file.string());
+  }
 }
 
 void import_model_file(const std::string& file_path) {
@@ -169,7 +169,7 @@ void setup(RNNoiseBox* self,
   self->data->rnnoise = rnnoise;
   self->data->application = application;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassenhancer", schema_path.c_str());
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.rnnoise", schema_path.c_str());
 
   rnnoise->post_messages = true;
   rnnoise->bypass = false;
@@ -190,12 +190,64 @@ void setup(RNNoiseBox* self,
                   G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind_with_mapping(
+      self->settings, "model-path", self->selection_model, "selected", G_SETTINGS_BIND_DEFAULT,
+      +[](GValue* value, GVariant* variant, gpointer user_data) {
+        auto self = EE_RNNOISE_BOX(user_data);
+
+        const auto* v = g_variant_get_string(variant, nullptr);
+
+        auto path = std::filesystem::path{v};
+
+        auto gsettings_model_name = path.stem();
+
+        int standard_model_id = 0;
+
+        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->selection_model)); n++) {
+          auto model_name = gtk_string_object_get_string(
+              GTK_STRING_OBJECT(g_list_model_get_item(G_LIST_MODEL(self->selection_model), n)));
+
+          if (gsettings_model_name == model_name) {
+            g_value_set_uint(value, n);
+          } else if (model_name == default_model_name) {
+            standard_model_id = n;
+          }
+        }
+
+        if (gsettings_model_name.empty()) {
+          g_value_set_uint(value, standard_model_id);
+        }
+
+        return 1;
+      },
+      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+        auto self = EE_RNNOISE_BOX(user_data);
+
+        auto string_object =
+            GTK_STRING_OBJECT(gtk_single_selection_get_selected_item(GTK_SINGLE_SELECTION(self->selection_model)));
+
+        std::string name = gtk_string_object_get_string(string_object);
+
+        if (name == default_model_name) {
+          return g_variant_new_string("");
+        }
+
+        const auto model_file = model_dir / std::filesystem::path{name + rnnn_ext};
+
+        return g_variant_new_string(model_file.c_str());
+      },
+      self, nullptr);
 }
 
 void dispose(GObject* object) {
   auto* self = EE_RNNOISE_BOX(object);
 
   self->data->rnnoise->bypass = false;
+
+  g_file_monitor_cancel(self->folder_monitor);
+
+  g_object_unref(self->folder_monitor);
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -248,6 +300,7 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, bypass);
 
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, string_list);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, selection_model);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, listview);
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
@@ -332,49 +385,3 @@ auto create() -> RNNoiseBox* {
 }
 
 }  // namespace ui::rnnoise_box
-
-RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
-                     const Glib::RefPtr<Gtk::Builder>& builder,
-                     const std::string& schema,
-                     const std::string& schema_path)
-    : Gtk::Box(cobject),
-      PluginUiBase(builder, schema, schema_path),
-      default_model_name(_("Standard Model")),
-      string_list(Gtk::StringList::create({default_model_name})),
-      model_dir(Glib::get_user_config_dir() + "/easyeffects/rnnoise") {
-  name = plugin_name::rnnoise;
-
-  // loading builder widgets
-
-  model_list_frame = builder->get_widget<Gtk::Frame>("model_list_frame");
-
-  active_model_name = builder->get_widget<Gtk::Label>("active_model_name");
-
-  // gsettings bindings
-
-  // connections.push_back(
-  //     settings->signal_changed("model-path").connect([=, this](const auto& key) { set_active_model_label(); }));
-
-  setup_listview();
-}
-
-RNNoiseUi::~RNNoiseUi() {
-  util::debug(name + " ui destroyed");
-}
-
-void RNNoiseUi::setup_listview() {
-  // selection callback
-
-  listview->get_model()->signal_selection_changed().connect(
-      [&, this](const guint& position, const guint& n_items) { on_selection_changed(); });
-}
-
-void RNNoiseUi::on_selection_changed() {
-  auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
-
-  const auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
-
-  const auto model_file = model_dir / std::filesystem::path{selected_name.c_str() + rnnn_ext};
-
-  settings->set_string("model-path", model_file.c_str());
-}

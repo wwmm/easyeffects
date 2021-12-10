@@ -61,8 +61,6 @@ class EffectsBaseUi {
   auto operator=(const EffectsBaseUi&&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
-  void set_transient_window(Gtk::Window* transient_window);
-
  protected:
   EffectsBase* effects_base = nullptr;
 

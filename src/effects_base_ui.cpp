@@ -145,30 +145,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->pitch->output_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level));
 
       effects_base->pitch->bypass = false;
-    } else if (name == plugin_name::rnnoise) {
-      // auto* const rnnoise_ui = RNNoiseUi::add_to_stack(stack_plugins, path);
-
-      // rnnoise_ui->bypass->signal_toggled().connect(
-      //     [=, this]() { effects_base->rnnoise->bypass = rnnoise_ui->bypass->get_active(); });
-
-      // rnnoise_ui->set_transient_window(transient_window);
-
-      // effects_base->rnnoise->input_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_input_level));
-      // effects_base->rnnoise->output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level));
-
-      // effects_base->rnnoise->bypass = false;
-    }
-  }
-}
-
-void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {
-  this->transient_window = transient_window;
-
-  for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-    const auto page = stack_plugins->get_page(*child);
-
-    if (page->get_name() == plugin_name::rnnoise) {
-      dynamic_cast<RNNoiseUi*>(child)->set_transient_window(transient_window);
     }
   }
 }

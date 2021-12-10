@@ -49,6 +49,13 @@ auto constexpr irs_ext = ".irs";
 
 static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
 
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::vector<std::thread> mythreads;
+};
+
 struct _ConvolverMenuCombine {
   GtkBox parent_instance;
 
@@ -60,7 +67,7 @@ struct _ConvolverMenuCombine {
 
   GtkStringList *string_list_1, *string_list_2;
 
-  std::vector<std::thread> mythreads;
+  Data* data;
 };
 
 G_DEFINE_TYPE(ConvolverMenuCombine, convolver_menu_combine, GTK_TYPE_POPOVER)
@@ -208,7 +215,7 @@ void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
       the size of each kernel. So we do not want to do it in the main thread.
     */
 
-    self->mythreads.emplace_back(  // Using emplace_back here makes sense
+    self->data->mythreads.emplace_back(  // Using emplace_back here makes sense
         [=]() { combine_kernels(self, kernel_1_name, kernel_2_name, output_name); });
   }
 }
@@ -268,15 +275,25 @@ void setup_dropdown(ConvolverMenuCombine* self, GtkDropDown* dropdown, GtkString
 void dispose(GObject* object) {
   auto* self = EE_CONVOLVER_MENU_COMBINE(object);
 
-  for (auto& t : self->mythreads) {
+  for (auto& t : self->data->mythreads) {
     t.join();
   }
 
-  self->mythreads.clear();
+  self->data->mythreads.clear();
 
   util::debug(log_tag + "disposed"s);
 
   G_OBJECT_CLASS(convolver_menu_combine_parent_class)->dispose(object);
+}
+
+void finalize(GObject* object) {
+  auto* self = EE_CONVOLVER_MENU_COMBINE(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(convolver_menu_combine_parent_class)->finalize(object);
 }
 
 void convolver_menu_combine_class_init(ConvolverMenuCombineClass* klass) {
@@ -284,6 +301,7 @@ void convolver_menu_combine_class_init(ConvolverMenuCombineClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class,
                                               "/com/github/wwmm/easyeffects/ui/convolver_menu_combine.ui");
@@ -298,6 +316,8 @@ void convolver_menu_combine_class_init(ConvolverMenuCombineClass* klass) {
 
 void convolver_menu_combine_init(ConvolverMenuCombine* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   self->string_list_1 = gtk_string_list_new(nullptr);
   self->string_list_2 = gtk_string_list_new(nullptr);

@@ -247,12 +247,16 @@ auto RNNoise::get_model_from_file() -> RNNModel* {
 
   if (const auto path = std::string(g_settings_get_string(settings, "model-path")); !path.empty()) {
     if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
-      util::debug("rnnoise plugin: loading model from file: " + path);
+      util::debug(log_tag + name + " loading model from file: " + path);
 
       m = rnnoise_model_from_file(f);
 
       fclose(f);
     }
+  }
+
+  if (m == nullptr) {
+    util::debug(log_tag + name + " using the default model");
   }
 
   return m;
