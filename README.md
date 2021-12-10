@@ -5,8 +5,8 @@
 
 Audio effects for PipeWire applications.
 
-This application used to be called PulseEffects but it was renamed to EasyEffects after we started to use GTK4 and
-replaced GStreamer by native PipeWire filters.
+This application was formerly known as PulseEffects, but it was renamed to EasyEffects after it started to use GTK4 and
+GStreamer usage was replaced by native PipeWire filters.
 
 ![](images/easyeffects_players.png)
 ![](images/easyeffects_plugins.png)
@@ -39,8 +39,9 @@ replaced GStreamer by native PipeWire filters.
 - Stereo tools
 
 The user has full control over the effects order. Just use the up/down arrows
-next to the plugin label at the left side. To be able to use all plugins you
-must have the following installed in your system:
+next to the effect labels on the left side.
+
+To be able to use all of the effects, you must have the following installed on your system:
 
 - [Linux Studio plugins](http://lsp-plug.in/?page=home). Version 1.1.24 or higher.
 - [Calf Studio plugins](https://calf-studio-gear.org/). Version 0.90.1 or higher.
@@ -78,12 +79,14 @@ You can help me to keep developing EasyEffects through donations. Any amount wil
 
 ## Changelog
 
-- For information about changes between versions take a look at our
+- For information about changes between versions, take a look at our
   [changelog](https://github.com/wwmm/easyeffects/blob/master/CHANGELOG.md)
 
 ## Installation
 
-### Distribution packages
+### Distribution-specific packages
+
+These Linux distributions have EasyEffects packages:
 
 - [Arch Linux](https://www.archlinux.org/packages/community/x86_64/easyeffects/) / [AUR Git version](https://aur.archlinux.org/packages/easyeffects-git/)
 - [openSUSE](https://software.opensuse.org/package/easyeffects)
@@ -107,29 +110,31 @@ find more information about these in the
 
 ### Flatpak
 
+Alternatively, click here to install via Flatpak:
+
 <a href='https://flathub.org/apps/details/com.github.wwmm.easyeffects'><img width='240' alt='Download EasyEffects on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
-Flatpak packages support most Linux distributions and are sandboxed. EasyEffects Flatpak also includes all available plugins.
+Flatpak packages support most Linux distributions and are sandboxed. The EasyEffects Flatpak package also includes all available plugins.
 
-If your distribution does not yet include packages required to build EasyEffects Flatpak is a convenient option.
+If your distribution does not yet include packages required to build EasyEffects, Flatpak is a convenient option.
+
+#### Nightly Flatpak
+
+A nightly Flatpak package is also available, to provide the latest changes. See the [installation instructions](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#nightly-flatpak).
 
 ### Installing from source
 
-See the wiki: [Installing from Source](https://github.com/wwmm/easyeffects/wiki/Installation-from-Source), for detailed instructions.
-
-### Nightly Flatpak
-
-A nightly Flatpak is available, see the [installation instructions](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#nightly-flatpak).
+To install from source, see the wiki's [Installing from Source](https://github.com/wwmm/easyeffects/wiki/Installation-from-Source) article for detailed instructions.
 
 ## Documentation
 
-EasyEffects documentation can be read inside the GUI installing
-[yelp](https://gitlab.gnome.org/GNOME/yelp) package.
+EasyEffects documentation can be read inside the GUI if the
+[yelp](https://gitlab.gnome.org/GNOME/yelp) package is installed.
 
 ## Frequently asked questions
 
 Take a look at our [FAQ](https://github.com/wwmm/easyeffects/wiki/FAQ) to see
-if you are facing a known problem.
+if you are facing a known issue.
 
 ## Command-line options
 
@@ -147,12 +152,8 @@ See the wiki: [Reporting Bugs](https://github.com/wwmm/easyeffects/wiki/Reportin
 
 ## Translating EasyEffects
 
-See the wiki: [Translating EasyEffects](https://github.com/wwmm/easyeffects/wiki/Translating-EasyEffects), for detailed instructions.
+See the wiki's [Translating EasyEffects](https://github.com/wwmm/easyeffects/wiki/Translating-EasyEffects) article for detailed instructions.
 
 ## License
 
-EasyEffects is licensed under GNU General Public License version 3. See [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE.md).
-
-```
-
-```
+EasyEffects is licensed under GNU General Public License version 3. See the [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE.md).
