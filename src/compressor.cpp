@@ -220,7 +220,7 @@ void Compressor::process(std::span<float>& left_in,
   }
 }
 
-void Compressor::update_sidechain_links(const Glib::ustring& key) {
+void Compressor::update_sidechain_links(const std::string& key) {
   if (g_strcmp0(g_settings_get_string(settings, "sidechain-type"), "External") == 0) {
     const auto device_name = std::string(g_settings_get_string(settings, "sidechain-input-device"));
 

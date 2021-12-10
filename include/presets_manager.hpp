@@ -65,17 +65,17 @@ class PresetsManager {
 
   auto get_names(const PresetType& preset_type) -> std::vector<std::string>;
 
-  auto search_names(std::filesystem::directory_iterator& it) -> std::vector<Glib::ustring>;
+  auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
 
   void add(const PresetType& preset_type, const std::string& name);
 
-  void save_preset_file(const PresetType& preset_type, const Glib::ustring& name);
+  void save_preset_file(const PresetType& preset_type, const std::string& name);
 
   void write_plugins_preset(const PresetType& preset_type,
                             const std::vector<std::string>& plugins,
                             nlohmann::json& json);
 
-  void remove(const PresetType& preset_type, const Glib::ustring& name);
+  void remove(const PresetType& preset_type, const std::string& name);
 
   void load_preset_file(const PresetType& preset_type, const std::string& name);
 
@@ -102,7 +102,7 @@ class PresetsManager {
 
   auto get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json>;
 
-  auto preset_file_exists(const PresetType& preset_type, const Glib::ustring& name) -> bool;
+  auto preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool;
 
   sigc::signal<void(const std::string& preset_name)> user_output_preset_created;
   sigc::signal<void(const std::string& preset_name)> user_output_preset_removed;

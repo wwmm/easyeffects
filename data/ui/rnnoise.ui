@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="RNNoiseBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkBox">
                 <property name="spacing">24</property>
@@ -19,11 +18,13 @@
                         <property name="valign">center</property>
                         <property name="icon_name">document-open-symbolic</property>
                         <property name="label" translatable="yes">Import Model</property>
+                        <signal name="clicked" handler="on_import_model_clicked" object="RNNoiseBox" />
                     </object>
                 </child>
                 <child>
                     <object class="GtkToggleButton" id="bypass">
                         <property name="label" translatable="yes">Bypass</property>
+                        <signal name="toggled" handler="on_bypass" object="RNNoiseBox" />
                     </object>
                 </child>
             </object>
@@ -44,6 +45,38 @@
                                 <property name="hexpand">1</property>
                                 <property name="vexpand">1</property>
                                 <property name="show-separators">1</property>
+
+                                <property name="model">
+                                    <object class="GtkSingleSelection" id="selection_model">
+                                        <property name="model">
+                                            <object class="GtkSortListModel">
+                                                <property name="model">
+                                                    <object class="GtkStringList" id="string_list">
+                                                        <items>
+                                                            <item translatable="yes">Standard Model</item>
+                                                        </items>
+                                                    </object>
+                                                </property>
+
+                                                <property name="sorter">
+                                                    <object class="GtkStringSorter">
+                                                        <property name="expression">
+                                                            <lookup name="string" type="GtkStringObject"></lookup>
+                                                        </property>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </property>
+
+
+                                <property name="factory">
+                                    <object class="GtkBuilderListItemFactory">
+                                        <property name="resource">/com/github/wwmm/easyeffects/ui/factory_rnnoise_listview.ui</property>
+                                    </object>
+                                </property>
+
                                 <style>
                                     <class name="rich-list" />
                                 </style>
@@ -71,6 +104,13 @@
                     <object class="GtkLabel" id="active_model_name">
                         <property name="halign">start</property>
                         <property name="label" translatable="yes">Standard RNNoise Model</property>
+
+                        <binding name="label">
+                            <lookup name="string" type="GtkStringObject">
+                                <lookup name="selected-item">selection_model</lookup>
+                            </lookup>
+                        </binding>
+
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -261,6 +301,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="RNNoiseBox" />
                     </object>
                 </child>
 
@@ -289,7 +330,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

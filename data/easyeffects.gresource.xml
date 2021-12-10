@@ -31,6 +31,7 @@
         <file>ui/factory_modules_listview.ui</file>
         <file>ui/factory_output_device_dropdown.ui</file>
         <file>ui/factory_presets_dropdown.ui</file>
+        <file>ui/factory_rnnoise_listview.ui</file>
         <file>ui/filter.ui</file>
         <file>ui/gate.ui</file>
         <file>ui/limiter.ui</file>

@@ -250,7 +250,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
   }
 }
 
-void MultibandCompressor::update_sidechain_links(const Glib::ustring& key) {
+void MultibandCompressor::update_sidechain_links(const std::string& key) {
   auto external_sidechain_enabled = false;
 
   for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {

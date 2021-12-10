@@ -209,6 +209,13 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::reverb_box::setup(box, effects_base->reverb, schema_path + plugin_name::reverb + "/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::reverb);
+    } else if (name == plugin_name::rnnoise) {
+      auto* box = ui::rnnoise_box::create();
+
+      ui::rnnoise_box::setup(box, effects_base->rnnoise, schema_path + plugin_name::rnnoise + "/",
+                             self->data->application);
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::rnnoise);
     } else if (name == plugin_name::stereo_tools) {
       auto* box = ui::stereo_tools_box::create();
 

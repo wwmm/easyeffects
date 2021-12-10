@@ -17,11 +17,34 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef RNNOISE_UI_HPP
-#define RNNOISE_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include <filesystem>
+#include "application.hpp"
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::rnnoise_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_RNNOISE_BOX (rnnoise_box_get_type())
+
+G_DECLARE_FINAL_TYPE(RNNoiseBox, rnnoise_box, EE, RNNOISE_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> RNNoiseBox*;
+
+void setup(RNNoiseBox* self,
+           std::shared_ptr<RNNoise> rnnoise,
+           const std::string& schema_path,
+           app::Application* application);
+
+}  // namespace ui::rnnoise_box
 
 #include <glibmm/i18n.h>
-#include <filesystem>
 #include "plugin_ui_base.hpp"
 
 class RNNoiseUi : public Gtk::Box, public PluginUiBase {
@@ -37,8 +60,6 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
   ~RNNoiseUi() override;
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi*;
-
-  void reset() override;
 
  private:
   inline static const std::string log_tag = "rnnoise_ui: ";
@@ -63,17 +84,5 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
 
   void setup_listview();
 
-  void on_import_model_clicked();
-
   void on_selection_changed();
-
-  void import_model_file(const std::string& file_path);
-
-  auto get_model_names() -> std::vector<Glib::ustring>;
-
-  void remove_model_file(const Glib::ustring& name);
-
-  void set_active_model_label();
 };
-
-#endif

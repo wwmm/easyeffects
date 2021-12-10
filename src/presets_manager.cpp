@@ -254,8 +254,8 @@ auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<std
   return names;
 }
 
-auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> std::vector<Glib::ustring> {
-  std::vector<Glib::ustring> names;
+auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string> {
+  std::vector<std::string> names;
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
@@ -346,7 +346,7 @@ void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
   }
 }
 
-void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib::ustring& name) {
+void PresetsManager::save_preset_file(const PresetType& preset_type, const std::string& name) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
@@ -457,7 +457,7 @@ void PresetsManager::write_plugins_preset(const PresetType& preset_type,
   }
 }
 
-void PresetsManager::remove(const PresetType& preset_type, const Glib::ustring& name) {
+void PresetsManager::remove(const PresetType& preset_type, const std::string& name) {
   std::filesystem::path preset_file;
 
   const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
@@ -805,7 +805,7 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
   }
 }
 
-auto PresetsManager::preset_file_exists(const PresetType& preset_type, const Glib::ustring& name) -> bool {
+auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool {
   std::filesystem::path input_file;
   std::vector<std::filesystem::path> conf_dirs;
 

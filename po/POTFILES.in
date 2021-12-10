@@ -28,6 +28,7 @@ data/ui/factory_input_device_dropdown.ui
 data/ui/factory_modules_listview.ui
 data/ui/factory_output_device_dropdown.ui
 data/ui/factory_presets_dropdown.ui
+data/ui/factory_rnnoise_listview.ui
 data/ui/gate.ui
 data/ui/limiter.ui
 data/ui/loudness.ui

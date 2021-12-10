@@ -19,6 +19,320 @@
 
 #include "rnnoise_ui.hpp"
 
+namespace ui::rnnoise_box {
+
+using namespace std::string_literals;
+
+auto constexpr log_tag = "rnnoise_box: ";
+
+static const std::string rnnn_ext = ".rnnn";
+
+static const std::string default_model_name = _("Standard Model");
+
+static std::filesystem::path model_dir = g_get_user_config_dir() + "/easyeffects/rnnoise"s;
+
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  app::Application* application;
+
+  std::shared_ptr<RNNoise> rnnoise;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+struct _RNNoiseBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkListView* listview;
+
+  GtkStringList* string_list;
+
+  GSettings* settings;
+
+  GFileMonitor* folder_monitor;
+
+  Data* data;
+};
+
+G_DEFINE_TYPE(RNNoiseBox, rnnoise_box, GTK_TYPE_BOX)
+
+void on_bypass(RNNoiseBox* self, GtkToggleButton* btn) {
+  self->data->rnnoise->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(RNNoiseBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "model-path");
+}
+
+gboolean set_model_delete_button_visibility(GtkListItem* item, const char* name) {
+  if (name == default_model_name) {
+    return 0;
+  }
+
+  return 1;
+}
+
+void on_remove_model_file(GtkListItem* item, GtkButton* btn) {
+  std::string name = gtk_string_object_get_string(GTK_STRING_OBJECT(gtk_list_item_get_item(item)));
+
+  util::warning(name);
+
+  // const auto model_file = model_dir / std::filesystem::path{name.c_str() + rnnn_ext};
+
+  // if (std::filesystem::exists(model_file)) {
+  //   std::filesystem::remove(model_file);
+
+  //   util::debug(log_tag + "removed model file: "s + model_file.string());
+  // }
+}
+
+void import_model_file(const std::string& file_path) {
+  std::filesystem::path p{file_path};
+
+  if (std::filesystem::is_regular_file(p)) {
+    auto out_path = model_dir / p.filename();
+
+    out_path.replace_extension(rnnn_ext);
+
+    std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+
+    util::debug(log_tag + "imported model file to: "s + out_path.string());
+  } else {
+    util::warning(log_tag + p.string() + " is not a file!");
+  }
+}
+
+void on_import_model_clicked(RNNoiseBox* self, GtkButton* btn) {
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
+
+  auto* dialog = gtk_file_chooser_native_new(_("Import Model File"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN,
+                                             _("Open"), _("Cancel"));
+
+  auto* filter = gtk_file_filter_new();
+
+  gtk_file_filter_set_name(filter, _("RNNoise Models"));
+  gtk_file_filter_add_pattern(filter, "*.rnnn");
+
+  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+
+  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, RNNoiseBox* self) {
+                     if (response == GTK_RESPONSE_ACCEPT) {
+                       auto* chooser = GTK_FILE_CHOOSER(dialog);
+                       auto* file = gtk_file_chooser_get_file(chooser);
+                       auto* path = g_file_get_path(file);
+
+                       import_model_file(path);
+
+                       g_object_unref(file);
+                     }
+
+                     g_object_unref(dialog);
+                   }),
+                   self);
+
+  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
+  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
+}
+
+void setup_listview(RNNoiseBox* self) {
+  for (const auto& name : util::get_files_name(model_dir, rnnn_ext)) {
+    gtk_string_list_append(self->string_list, name.c_str());
+  }
+
+  if (g_list_model_get_n_items(G_LIST_MODEL(self->string_list)) == 0) {
+    g_settings_set_string(self->settings, "model-path", "");
+  }
+}
+
+void setup(RNNoiseBox* self,
+           std::shared_ptr<RNNoise> rnnoise,
+           const std::string& schema_path,
+           app::Application* application) {
+  self->data->rnnoise = rnnoise;
+  self->data->application = application;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassenhancer", schema_path.c_str());
+
+  rnnoise->post_messages = true;
+  rnnoise->bypass = false;
+
+  setup_listview(self);
+
+  self->data->connections.push_back(rnnoise->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->data->connections.push_back(rnnoise->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_RNNOISE_BOX(object);
+
+  self->data->rnnoise->bypass = false;
+
+  for (auto& c : self->data->connections) {
+    c.disconnect();
+  }
+
+  for (auto& handler_id : self->data->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
+
+  self->data->connections.clear();
+  self->data->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(rnnoise_box_parent_class)->dispose(object);
+}
+
+void finalize(GObject* object) {
+  auto* self = EE_RNNOISE_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(rnnoise_box_parent_class)->finalize(object);
+}
+
+void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
+  object_class->finalize = finalize;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/rnnoise.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, string_list);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, listview);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_import_model_clicked);
+  gtk_widget_class_bind_template_callback(widget_class, on_remove_model_file);
+  gtk_widget_class_bind_template_callback(widget_class, set_model_delete_button_visibility);
+}
+
+void rnnoise_box_init(RNNoiseBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
+
+  // model dir
+
+  if (!std::filesystem::is_directory(model_dir)) {
+    if (std::filesystem::create_directories(model_dir)) {
+      util::debug(log_tag + "model directory created: "s + model_dir.string());
+    } else {
+      util::warning(log_tag + "failed to create model directory: "s + model_dir.string());
+    }
+  } else {
+    util::debug(log_tag + "model directory already exists: "s + model_dir.string());
+  }
+
+  auto gfile = g_file_new_for_path(model_dir.c_str());
+
+  self->folder_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);
+
+  g_signal_connect(self->folder_monitor, "changed",
+                   G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
+                                  RNNoiseBox* self) {
+                     const auto rnn_filename = util::remove_filename_extension(g_file_get_basename(file));
+
+                     if (rnn_filename.empty()) {
+                       util::warning(log_tag + "can't retrieve information about the rnn file"s);
+
+                       return;
+                     }
+
+                     switch (event_type) {
+                       case G_FILE_MONITOR_EVENT_CREATED: {
+                         for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
+                           if (rnn_filename == gtk_string_list_get_string(self->string_list, n)) {
+                             return;
+                           }
+                         }
+
+                         gtk_string_list_append(self->string_list, rnn_filename.c_str());
+
+                         break;
+                       }
+
+                       case G_FILE_MONITOR_EVENT_DELETED: {
+                         for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
+                           if (rnn_filename == gtk_string_list_get_string(self->string_list, n)) {
+                             gtk_string_list_remove(self->string_list, n);
+
+                             // Workaround for GTK not calling the listview signal_selection_changed (issue #1110)
+
+                             //  on_selection_changed();
+
+                             return;
+                           }
+                         }
+
+                         break;
+                       }
+
+                       default:
+                         break;
+                     }
+                   }),
+                   self);
+
+  g_object_unref(gfile);
+}
+
+auto create() -> RNNoiseBox* {
+  return static_cast<RNNoiseBox*>(g_object_new(EE_TYPE_RNNOISE_BOX, nullptr));
+}
+
+}  // namespace ui::rnnoise_box
+
 RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      const std::string& schema,
@@ -34,283 +348,25 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
 
   model_list_frame = builder->get_widget<Gtk::Frame>("model_list_frame");
 
-  listview = builder->get_widget<Gtk::ListView>("listview");
-
-  import_model = builder->get_widget<Gtk::Button>("import_model");
-
   active_model_name = builder->get_widget<Gtk::Label>("active_model_name");
-
-  // signals connection
-
-  import_model->signal_clicked().connect(sigc::mem_fun(*this, &RNNoiseUi::on_import_model_clicked));
 
   // gsettings bindings
 
-  connections.push_back(
-      settings->signal_changed("model-path").connect([=, this](const auto& key) { set_active_model_label(); }));
-
-  // model dir
-
-  if (!std::filesystem::is_directory(model_dir)) {
-    if (std::filesystem::create_directories(model_dir)) {
-      util::debug(log_tag + "model directory created: " + model_dir.string());
-    } else {
-      util::warning(log_tag + "failed to create model directory: " + model_dir.string());
-    }
-  } else {
-    util::debug(log_tag + "model directory already exists: " + model_dir.string());
-  }
-
-  setup_input_output_gain(builder);
+  // connections.push_back(
+  //     settings->signal_changed("model-path").connect([=, this](const auto& key) { set_active_model_label(); }));
 
   setup_listview();
-
-  set_active_model_label();
-
-  folder_monitor = Gio::File::create_for_path(model_dir.string())->monitor_directory();
-
-  folder_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        const auto rnn_filename = util::remove_filename_extension(file->get_basename());
-
-        if (rnn_filename.empty()) {
-          util::warning(log_tag + "can't retrieve information about the rnn file");
-
-          return;
-        }
-
-        switch (event) {
-          case Gio::FileMonitor::Event::CREATED: {
-            for (guint n = 0; n < string_list->get_n_items(); n++) {
-              if (string_list->get_string(n).raw() == rnn_filename) {
-                return;
-              }
-            }
-
-            string_list->append(rnn_filename);
-
-            break;
-          }
-          case Gio::FileMonitor::Event::DELETED: {
-            for (guint n = 0; n < string_list->get_n_items(); n++) {
-              if (string_list->get_string(n).raw() == rnn_filename) {
-                string_list->remove(n);
-
-                // Workaround for GTK not calling the listview signal_selection_changed (issue #1110)
-
-                on_selection_changed();
-
-                break;
-              }
-            }
-
-            break;
-          }
-          default:
-            break;
-        }
-      });
 }
 
 RNNoiseUi::~RNNoiseUi() {
   util::debug(name + " ui destroyed");
-
-  folder_monitor->cancel();
-}
-
-auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/rnnoise.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<RNNoiseUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.rnnoise", schema_path + "rnnoise/");
-
-  stack->add(*ui, plugin_name::rnnoise);
-
-  return ui;
 }
 
 void RNNoiseUi::setup_listview() {
-  const auto names = get_model_names();
-
-  for (const auto& name : names) {
-    string_list->append(name);
-  }
-
-  if (names.empty()) {
-    settings->set_string("model-path", "");
-  }
-
-  // sorter
-
-  const auto sorter =
-      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  const auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
-
-  // setting the listview model and factory
-
-  listview->set_model(Gtk::SingleSelection::create(sort_list_model));
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const remove = Gtk::make_managed<Gtk::Button>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    remove->set_icon_name("user-trash-symbolic");
-
-    box->set_spacing(6);
-    box->append(*label);
-    box->append(*remove);
-
-    list_item->set_data("name", label);
-    list_item->set_data("remove", remove);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
-
-    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
-
-    label->set_text(name);
-
-    remove->update_property(Gtk::Accessible::Property::LABEL,
-                            util::glib_value(Glib::ustring(_("Remove Model")) + " " + name));
-
-    if (name == default_model_name) {
-      remove->hide();
-    }
-
-    auto connection_remove = remove->signal_clicked().connect([=, this]() { remove_model_file(name); });
-
-    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
-                        Glib::destroy_notify_delete<sigc::connection>);
-  });
-
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
-      connection->disconnect();
-
-      list_item->set_data("connection_remove", nullptr);
-    }
-  });
-
   // selection callback
 
   listview->get_model()->signal_selection_changed().connect(
       [&, this](const guint& position, const guint& n_items) { on_selection_changed(); });
-
-  // initializing selecting the row that corresponds to the saved model
-
-  // const auto* model_path = settings->get_string("model-path");
-
-  // const Glib::ustring saved_name = std::filesystem::path{model_path}.stem().c_str();
-
-  // auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
-
-  // for (guint n = 0U; n < single->get_n_items(); n++) {
-  //   if (single->get_object(n)->get_property<Glib::ustring>("string") == saved_name) {
-  //     single->select_item(n, true);
-  //   }
-  // }
-}
-
-void RNNoiseUi::on_import_model_clicked() {
-  Glib::RefPtr<Gtk::FileChooserNative> dialog;
-
-  if (transient_window != nullptr) {
-    dialog = Gtk::FileChooserNative::create(_("Import Model File"), *transient_window, Gtk::FileChooser::Action::OPEN,
-                                            _("Open"), _("Cancel"));
-  } else {
-    dialog =
-        Gtk::FileChooserNative::create(_("Import Model File"), Gtk::FileChooser::Action::OPEN, _("Open"), _("Cancel"));
-  }
-
-  auto dialog_filter = Gtk::FileFilter::create();
-
-  dialog_filter->set_name(_("RNNoise Models"));
-  dialog_filter->add_pattern("*.rnnn");
-
-  dialog->add_filter(dialog_filter);
-
-  dialog->signal_response().connect([=, this](const auto& response_id) {
-    switch (response_id) {
-      case Gtk::ResponseType::ACCEPT: {
-        import_model_file(dialog->get_file()->get_path());
-
-        break;
-      }
-      default:
-        break;
-    }
-  });
-
-  dialog->set_modal(true);
-  dialog->show();
-}
-
-void RNNoiseUi::import_model_file(const std::string& file_path) {
-  std::filesystem::path p{file_path};
-
-  if (std::filesystem::is_regular_file(p)) {
-    auto out_path = model_dir / p.filename();
-
-    out_path.replace_extension(rnnn_ext);
-
-    std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
-
-    util::debug(log_tag + "imported model file to: " + out_path.string());
-  } else {
-    util::warning(log_tag + p.string() + " is not a file!");
-  }
-}
-
-auto RNNoiseUi::get_model_names() -> std::vector<Glib::ustring> {
-  std::filesystem::directory_iterator it{model_dir};
-  std::vector<Glib::ustring> names;
-
-  while (it != std::filesystem::directory_iterator{}) {
-    if (std::filesystem::is_regular_file(it->status())) {
-      if (it->path().extension().c_str() == rnnn_ext) {
-        names.push_back(it->path().stem().c_str());
-      }
-    }
-
-    ++it;
-  }
-
-  return names;
-}
-
-void RNNoiseUi::remove_model_file(const Glib::ustring& name) {
-  const auto model_file = model_dir / std::filesystem::path{name.c_str() + rnnn_ext};
-
-  if (std::filesystem::exists(model_file)) {
-    std::filesystem::remove(model_file);
-
-    util::debug(log_tag + "removed model file: " + model_file.string());
-  }
-}
-
-void RNNoiseUi::set_active_model_label() {
-  const auto path = std::filesystem::path{settings->get_string("model-path")};
-
-  if (settings->get_string("model-path").empty()) {
-    active_model_name->set_text(default_model_name);
-  } else {
-    active_model_name->set_text(path.stem().string());
-  }
 }
 
 void RNNoiseUi::on_selection_changed() {
@@ -321,14 +377,4 @@ void RNNoiseUi::on_selection_changed() {
   const auto model_file = model_dir / std::filesystem::path{selected_name.c_str() + rnnn_ext};
 
   settings->set_string("model-path", model_file.c_str());
-}
-
-void RNNoiseUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("model-path");
 }
