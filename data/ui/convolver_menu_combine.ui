@@ -20,6 +20,31 @@
                 <child>
                     <object class="GtkDropDown" id="dropdown_kernel_1">
                         <property name="enable-search">1</property>
+
+                        <property name="model">
+                            <object class="GtkSingleSelection">
+                                <property name="model">
+                                    <object class="GtkSortListModel">
+                                        <property name="model">
+                                            <object class="GtkStringList" id="string_list_1"></object>
+                                        </property>
+
+                                        <property name="sorter">
+                                            <object class="GtkStringSorter">
+                                                <property name="expression">
+                                                    <lookup name="string" type="GtkStringObject"></lookup>
+                                                </property>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </property>
+                            </object>
+                        </property>
+
+                        <property name="expression">
+                            <lookup name="string" type="GtkStringObject"></lookup>
+                        </property>
+
                         <accessibility>
                             <property name="label" translatable="yes">First Kernel</property>
                         </accessibility>
@@ -29,6 +54,31 @@
                 <child>
                     <object class="GtkDropDown" id="dropdown_kernel_2">
                         <property name="enable-search">1</property>
+
+                        <property name="model">
+                            <object class="GtkSingleSelection">
+                                <property name="model">
+                                    <object class="GtkSortListModel">
+                                        <property name="model">
+                                            <object class="GtkStringList" id="string_list_2"></object>
+                                        </property>
+
+                                        <property name="sorter">
+                                            <object class="GtkStringSorter">
+                                                <property name="expression">
+                                                    <lookup name="string" type="GtkStringObject"></lookup>
+                                                </property>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </property>
+                            </object>
+                        </property>
+
+                        <property name="expression">
+                            <lookup name="string" type="GtkStringObject"></lookup>
+                        </property>
+
                         <accessibility>
                             <property name="label" translatable="yes">Second Kernel</property>
                         </accessibility>

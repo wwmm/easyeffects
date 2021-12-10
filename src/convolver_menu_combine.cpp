@@ -220,58 +220,6 @@ void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
   }
 }
 
-void setup_dropdown(ConvolverMenuCombine* self, GtkDropDown* dropdown, GtkStringList* string_list) {
-  auto* factory = gtk_signal_list_item_factory_new();
-
-  // setting the factory callbacks
-
-  g_signal_connect(factory, "setup",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, ConvolverMenuCombine* self) {
-                     auto* box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-                     auto* label = gtk_label_new(nullptr);
-
-                     gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
-                     gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
-
-                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
-
-                     gtk_list_item_set_child(item, GTK_WIDGET(box));
-
-                     g_object_set_data(G_OBJECT(item), "name", label);
-                   }),
-                   self);
-
-  g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, ConvolverMenuCombine* self) {
-                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
-
-                     auto* name = gtk_string_object_get_string(GTK_STRING_OBJECT(gtk_list_item_get_item(item)));
-
-                     gtk_label_set_text(label, name);
-                   }),
-                   self);
-
-  gtk_drop_down_set_factory(dropdown, factory);
-
-  g_object_unref(factory);
-
-  // sorter
-
-  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-
-  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(string_list), GTK_SORTER(sorter));
-
-  // setting the dropdown model
-
-  auto* selection = gtk_single_selection_new(G_LIST_MODEL(sorter_model));
-
-  gtk_drop_down_set_model(dropdown, G_LIST_MODEL(selection));
-
-  g_object_unref(selection);
-
-  gtk_drop_down_set_expression(dropdown, gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
-}
-
 void dispose(GObject* object) {
   auto* self = EE_CONVOLVER_MENU_COMBINE(object);
 
@@ -306,6 +254,8 @@ void convolver_menu_combine_class_init(ConvolverMenuCombineClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class,
                                               "/com/github/wwmm/easyeffects/ui/convolver_menu_combine.ui");
 
+  gtk_widget_class_bind_template_child(widget_class, ConvolverMenuCombine, string_list_1);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverMenuCombine, string_list_2);
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuCombine, dropdown_kernel_1);
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuCombine, dropdown_kernel_2);
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuCombine, output_kernel_name);
@@ -319,16 +269,10 @@ void convolver_menu_combine_init(ConvolverMenuCombine* self) {
 
   self->data = new Data();
 
-  self->string_list_1 = gtk_string_list_new(nullptr);
-  self->string_list_2 = gtk_string_list_new(nullptr);
-
   for (const auto& name : util::get_files_name(irs_dir, irs_ext)) {
     gtk_string_list_append(self->string_list_1, name.c_str());
     gtk_string_list_append(self->string_list_2, name.c_str());
   }
-
-  setup_dropdown(self, self->dropdown_kernel_1, self->string_list_1);
-  setup_dropdown(self, self->dropdown_kernel_2, self->string_list_2);
 }
 
 auto create() -> ConvolverMenuCombine* {
