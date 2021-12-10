@@ -178,6 +178,12 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::filter_box::setup(box, effects_base->filter, schema_path + plugin_name::filter + "/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::filter);
+    } else if (name == plugin_name::gate) {
+      auto* box = ui::gate_box::create();
+
+      ui::gate_box::setup(box, effects_base->gate, schema_path + plugin_name::gate + "/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::gate);
     } else if (name == plugin_name::limiter) {
       auto* box = ui::limiter_box::create();
 

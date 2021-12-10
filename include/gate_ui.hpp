@@ -17,38 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef GATE_UI_HPP
-#define GATE_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class GateUi : public Gtk::Box, public PluginUiBase {
- public:
-  GateUi(BaseObjectType* cobject,
-         const Glib::RefPtr<Gtk::Builder>& builder,
-         const std::string& schema,
-         const std::string& schema_path);
-  GateUi(const GateUi&) = delete;
-  auto operator=(const GateUi&) -> GateUi& = delete;
-  GateUi(const GateUi&&) = delete;
-  auto operator=(const GateUi&&) -> GateUi& = delete;
-  ~GateUi() override;
+namespace ui::gate_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> GateUi*;
+G_BEGIN_DECLS
 
-  void on_new_gating(const double& value);
+#define EE_TYPE_GATE_BOX (gate_box_get_type())
 
-  void reset() override;
+G_DECLARE_FINAL_TYPE(GateBox, gate_box, EE, GATE_BOX, GtkBox)
 
- private:
-  Gtk::SpinButton *attack = nullptr, *release = nullptr, *threshold = nullptr, *knee = nullptr, *ratio = nullptr,
-                  *range = nullptr, *makeup = nullptr;
+G_END_DECLS
 
-  Gtk::LevelBar* gating = nullptr;
+auto create() -> GateBox*;
 
-  Gtk::Label* gating_label = nullptr;
+void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path);
 
-  Gtk::ComboBoxText *detection = nullptr, *stereo_link = nullptr;
-};
-
-#endif
+}  // namespace ui::gate_box

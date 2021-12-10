@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="GateBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
+                <signal name="toggled" handler="on_bypass" object="GateBox" />
             </object>
         </child>
 
@@ -34,8 +34,8 @@
                         <child>
                             <object class="GtkComboBoxText" id="detection">
                                 <items>
-                                    <item translatable="yes">RMS</item>
-                                    <item translatable="yes">Peak</item>
+                                    <item translatable="yes" id="RMS">RMS</item>
+                                    <item translatable="yes" id="Peak">Peak</item>
                                 </items>
                                 <accessibility>
                                     <relation name="labelled-by">detection_label</relation>
@@ -89,8 +89,8 @@
                         <child>
                             <object class="GtkComboBoxText" id="stereo_link">
                                 <items>
-                                    <item translatable="yes">Average</item>
-                                    <item translatable="yes">Maximum</item>
+                                    <item translatable="yes" id="Average">Average</item>
+                                    <item translatable="yes" id="Maximum">Maximum</item>
                                 </items>
                                 <accessibility>
                                     <relation name="labelled-by">stereo_link_label</relation>
@@ -529,6 +529,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="GateBox" />
                     </object>
                 </child>
 
@@ -557,7 +558,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

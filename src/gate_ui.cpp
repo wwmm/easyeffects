@@ -19,155 +19,219 @@
 
 #include "gate_ui.hpp"
 
-namespace {
+namespace ui::gate_box {
 
-auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+using namespace std::string_literals;
 
-  if (g_strcmp0(v, "RMS") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Peak") == 0) {
-    g_value_set_int(value, 1);
+auto constexpr log_tag = "gate_box: ";
+
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<Gate> gate;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+struct _GateBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkLevelBar* gating;
+
+  GtkLabel* gating_label;
+
+  GtkSpinButton *attack, *release, *threshold, *knee, *ratio, *range, *makeup;
+
+  GtkComboBoxText *detection, *stereo_link;
+
+  GSettings* settings;
+
+  Data* data;
+};
+
+G_DEFINE_TYPE(GateBox, gate_box, GTK_TYPE_BOX)
+
+void on_bypass(GateBox* self, GtkToggleButton* btn) {
+  self->data->gate->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(GateBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "detection");
+
+  g_settings_reset(self->settings, "stereo-link");
+
+  g_settings_reset(self->settings, "range");
+
+  g_settings_reset(self->settings, "attack");
+
+  g_settings_reset(self->settings, "release");
+
+  g_settings_reset(self->settings, "threshold");
+
+  g_settings_reset(self->settings, "ratio");
+
+  g_settings_reset(self->settings, "knee");
+
+  g_settings_reset(self->settings, "makeup");
+}
+
+void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path) {
+  self->data->gate = gate;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.gate", schema_path.c_str());
+
+  gate->post_messages = true;
+  gate->bypass = false;
+
+  self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->data->connections.push_back(gate->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  self->data->connections.push_back(gate->gating.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->gating, 1.0 - value);
+    gtk_label_set_text(self->gating_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "range", gtk_spin_button_get_adjustment(self->range), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "knee", gtk_spin_button_get_adjustment(self->knee), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "makeup", gtk_spin_button_get_adjustment(self->makeup), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "ratio", gtk_spin_button_get_adjustment(self->ratio), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "detection", self->detection, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "stereo-link", self->stereo_link, "active-id", G_SETTINGS_BIND_DEFAULT);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_GATE_BOX(object);
+
+  self->data->gate->bypass = false;
+
+  for (auto& c : self->data->connections) {
+    c.disconnect();
   }
 
-  return 1;
-}
-
-auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("RMS");
-
-    case 1:
-      return g_variant_new_string("Peak");
-
-    default:
-      return g_variant_new_string("RMS");
-  }
-}
-
-auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Average") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Maximum") == 0) {
-    g_value_set_int(value, 1);
+  for (auto& handler_id : self->data->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  return 1;
+  self->data->connections.clear();
+  self->data->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(gate_box_parent_class)->dispose(object);
 }
 
-auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Average");
+void finalize(GObject* object) {
+  auto* self = EE_GATE_BOX(object);
 
-    case 1:
-      return g_variant_new_string("Maximum");
+  delete self->data;
 
-    default:
-      return g_variant_new_string("Average");
-  }
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(gate_box_parent_class)->finalize(object);
 }
 
-}  // namespace
+void gate_box_class_init(GateBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-GateUi::GateUi(BaseObjectType* cobject,
-               const Glib::RefPtr<Gtk::Builder>& builder,
-               const std::string& schema,
-               const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::gate;
+  object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
-  // loading builder widgets
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/gate.ui");
 
-  attack = builder->get_widget<Gtk::SpinButton>("attack");
-  knee = builder->get_widget<Gtk::SpinButton>("knee");
-  makeup = builder->get_widget<Gtk::SpinButton>("makeup");
-  range = builder->get_widget<Gtk::SpinButton>("range");
-  ratio = builder->get_widget<Gtk::SpinButton>("ratio");
-  release = builder->get_widget<Gtk::SpinButton>("release");
-  threshold = builder->get_widget<Gtk::SpinButton>("threshold");
+  gtk_widget_class_bind_template_child(widget_class, GateBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_right_label);
 
-  detection = builder->get_widget<Gtk::ComboBoxText>("detection");
-  stereo_link = builder->get_widget<Gtk::ComboBoxText>("stereo_link");
+  gtk_widget_class_bind_template_child(widget_class, GateBox, bypass);
 
-  gating = builder->get_widget<Gtk::LevelBar>("gating");
-  gating_label = builder->get_widget<Gtk::Label>("gating_label");
+  gtk_widget_class_bind_template_child(widget_class, GateBox, gating);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, gating_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, attack);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, release);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, threshold);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, knee);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, ratio);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, range);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, makeup);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, detection);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, stereo_link);
 
-  // gsettings bindings
-
-  settings->bind("attack", attack->get_adjustment().get(), "value");
-  settings->bind("knee", knee->get_adjustment().get(), "value");
-  settings->bind("makeup", makeup->get_adjustment().get(), "value");
-  settings->bind("range", range->get_adjustment().get(), "value");
-  settings->bind("ratio", ratio->get_adjustment().get(), "value");
-  settings->bind("release", release->get_adjustment().get(), "value");
-  settings->bind("threshold", threshold->get_adjustment().get(), "value");
-
-  g_settings_bind_with_mapping(settings->gobj(), "detection", detection->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "stereo-link", stereo_link->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               stereo_link_enum_to_int, int_to_stereo_link_enum, nullptr, nullptr);
-
-  prepare_spinbutton(attack, "ms");
-  prepare_spinbutton(release, "ms");
-
-  prepare_spinbutton(range, "dB");
-  prepare_spinbutton(threshold, "dB");
-  prepare_spinbutton(knee, "dB");
-  prepare_spinbutton(makeup, "dB");
-
-  prepare_spinbutton(ratio);
-
-  setup_input_output_gain(builder);
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
-GateUi::~GateUi() {
-  util::debug(name + " ui destroyed");
+void gate_box_init(GateBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
+
+  prepare_spinbutton<"dB">(self->range);
+  prepare_spinbutton<"dB">(self->threshold);
+  prepare_spinbutton<"dB">(self->knee);
+  prepare_spinbutton<"dB">(self->makeup);
+  prepare_spinbutton<"ms">(self->attack);
+  prepare_spinbutton<"ms">(self->release);
+  prepare_spinbutton<"">(self->ratio);
 }
 
-auto GateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> GateUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/gate.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<GateUi>(builder, "top_box", "com.github.wwmm.easyeffects.gate",
-                                                            schema_path + "gate/");
-
-  stack->add(*ui, plugin_name::gate);
-
-  return ui;
+auto create() -> GateBox* {
+  return static_cast<GateBox*>(g_object_new(EE_TYPE_GATE_BOX, nullptr));
 }
 
-void GateUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("detection");
-
-  settings->reset("stereo-link");
-
-  settings->reset("range");
-
-  settings->reset("attack");
-
-  settings->reset("release");
-
-  settings->reset("threshold");
-
-  settings->reset("ratio");
-
-  settings->reset("knee");
-
-  settings->reset("makeup");
-}
-
-void GateUi::on_new_gating(const double& value) {
-  gating->set_value(1.0 - value);
-
-  gating_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
+}  // namespace ui::gate_box

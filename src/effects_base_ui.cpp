@@ -82,18 +82,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // Adding to the stack the plugins in the list that are not there yet
 
   for (const auto& name : settings->get_string_array("plugins")) {
-    if (name == plugin_name::gate) {
-      auto* const gate_ui = GateUi::add_to_stack(stack_plugins, path);
-
-      gate_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->gate->bypass = gate_ui->bypass->get_active(); });
-
-      effects_base->gate->input_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level));
-      effects_base->gate->output_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_output_level));
-      effects_base->gate->gating.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_gating));
-
-      effects_base->gate->bypass = false;
-    } else if (name == plugin_name::multiband_compressor) {
+    if (name == plugin_name::multiband_compressor) {
       auto* const multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
 
       multiband_compressor_ui->bypass->signal_toggled().connect(
