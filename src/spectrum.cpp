@@ -38,7 +38,7 @@ Spectrum::Spectrum(const std::string& tag,
 
                      std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                     self->bypass = g_settings_get_boolean(settings, key) != 0;
+                     self->bypass = g_settings_get_boolean(settings, key) == 0;
                    }),
                    this);
 }

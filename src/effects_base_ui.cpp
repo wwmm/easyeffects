@@ -135,16 +135,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3));
 
       effects_base->multiband_gate->bypass = false;
-    } else if (name == plugin_name::pitch) {
-      auto* const pitch_ui = PitchUi::add_to_stack(stack_plugins, path);
-
-      pitch_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->pitch->bypass = pitch_ui->bypass->get_active(); });
-
-      effects_base->pitch->input_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_input_level));
-      effects_base->pitch->output_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level));
-
-      effects_base->pitch->bypass = false;
     }
   }
 }

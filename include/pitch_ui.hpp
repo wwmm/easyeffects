@@ -17,31 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PITCH_UI_HPP
-#define PITCH_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class PitchUi : public Gtk::Box, public PluginUiBase {
- public:
-  PitchUi(BaseObjectType* cobject,
-          const Glib::RefPtr<Gtk::Builder>& builder,
-          const std::string& schema,
-          const std::string& schema_path);
-  PitchUi(const PitchUi&) = delete;
-  auto operator=(const PitchUi&) -> PitchUi& = delete;
-  PitchUi(const PitchUi&&) = delete;
-  auto operator=(const PitchUi&&) -> PitchUi& = delete;
-  ~PitchUi() override;
+namespace ui::pitch_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> PitchUi*;
+G_BEGIN_DECLS
 
-  void reset() override;
+#define EE_TYPE_PITCH_BOX (pitch_box_get_type())
 
- private:
-  Gtk::ToggleButton *faster = nullptr, *formant_preserving = nullptr;
+G_DECLARE_FINAL_TYPE(PitchBox, pitch_box, EE, PITCH_BOX, GtkBox)
 
-  Gtk::SpinButton *cents = nullptr, *crispness = nullptr, *semitones = nullptr, *octaves = nullptr;
-};
+G_END_DECLS
 
-#endif
+auto create() -> PitchBox*;
+
+void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& schema_path);
+
+}  // namespace ui::pitch_box

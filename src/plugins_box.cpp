@@ -203,6 +203,12 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::maximizer_box::setup(box, effects_base->maximizer, schema_path + plugin_name::maximizer + "/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::maximizer);
+    } else if (name == plugin_name::pitch) {
+      auto* box = ui::pitch_box::create();
+
+      ui::pitch_box::setup(box, effects_base->pitch, schema_path + plugin_name::pitch + "/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::pitch);
     } else if (name == plugin_name::reverb) {
       auto* box = ui::reverb_box::create();
 

@@ -19,73 +19,188 @@
 
 #include "pitch_ui.hpp"
 
-PitchUi::PitchUi(BaseObjectType* cobject,
-                 const Glib::RefPtr<Gtk::Builder>& builder,
-                 const std::string& schema,
-                 const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::pitch;
+namespace ui::pitch_box {
 
-  // loading builder widgets
+using namespace std::string_literals;
 
-  crispness = builder->get_widget<Gtk::SpinButton>("crispness");
-  cents = builder->get_widget<Gtk::SpinButton>("cents");
-  semitones = builder->get_widget<Gtk::SpinButton>("semitones");
-  octaves = builder->get_widget<Gtk::SpinButton>("octaves");
+auto constexpr log_tag = "pitch_box: ";
 
-  faster = builder->get_widget<Gtk::ToggleButton>("faster");
-  formant_preserving = builder->get_widget<Gtk::ToggleButton>("formant_preserving");
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
 
-  // gsettings bindings
+  std::shared_ptr<Pitch> pitch;
 
-  settings->bind("cents", cents->get_adjustment().get(), "value");
-  settings->bind("crispness", crispness->get_adjustment().get(), "value");
-  settings->bind("semitones", semitones->get_adjustment().get(), "value");
-  settings->bind("octaves", octaves->get_adjustment().get(), "value");
-  settings->bind("faster", faster, "active");
-  settings->bind("formant-preserving", formant_preserving, "active");
+  std::vector<sigc::connection> connections;
 
-  // prepare widgets
+  std::vector<gulong> gconnections;
+};
 
-  prepare_spinbutton(crispness);
-  prepare_spinbutton(cents);
-  prepare_spinbutton(semitones);
-  prepare_spinbutton(octaves);
+struct _PitchBox {
+  GtkBox parent_instance;
 
-  setup_input_output_gain(builder);
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkSpinButton *cents, *crispness, *semitones, *octaves;
+
+  GtkToggleButton *faster, *formant_preserving;
+
+  GSettings* settings;
+
+  Data* data;
+};
+
+G_DEFINE_TYPE(PitchBox, pitch_box, GTK_TYPE_BOX)
+
+void on_bypass(PitchBox* self, GtkToggleButton* btn) {
+  self->data->pitch->bypass = gtk_toggle_button_get_active(btn);
 }
 
-PitchUi::~PitchUi() {
-  util::debug(name + " ui destroyed");
+void on_reset(PitchBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "cents");
+
+  g_settings_reset(self->settings, "semitones");
+
+  g_settings_reset(self->settings, "octaves");
+
+  g_settings_reset(self->settings, "crispness");
+
+  g_settings_reset(self->settings, "formant-preserving");
+
+  g_settings_reset(self->settings, "faster");
 }
 
-auto PitchUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> PitchUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pitch.ui");
+void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& schema_path) {
+  self->data->pitch = pitch;
 
-  auto* const ui = Gtk::Builder::get_widget_derived<PitchUi>(builder, "top_box", "com.github.wwmm.easyeffects.pitch",
-                                                             schema_path + "pitch/");
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.pitch", schema_path.c_str());
 
-  stack->add(*ui, plugin_name::pitch);
+  pitch->post_messages = true;
+  pitch->bypass = false;
 
-  return ui;
+  self->data->connections.push_back(pitch->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->data->connections.push_back(pitch->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "cents", gtk_spin_button_get_adjustment(self->cents), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "crispness", gtk_spin_button_get_adjustment(self->crispness), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "semitones", gtk_spin_button_get_adjustment(self->semitones), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "octaves", gtk_spin_button_get_adjustment(self->octaves), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "faster", self->faster, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "formant-preserving", self->formant_preserving, "active", G_SETTINGS_BIND_DEFAULT);
 }
 
-void PitchUi::reset() {
-  bypass->set_active(false);
+void dispose(GObject* object) {
+  auto* self = EE_PITCH_BOX(object);
 
-  settings->reset("input-gain");
+  self->data->pitch->bypass = false;
 
-  settings->reset("output-gain");
+  for (auto& c : self->data->connections) {
+    c.disconnect();
+  }
 
-  settings->reset("cents");
+  for (auto& handler_id : self->data->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
 
-  settings->reset("semitones");
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
-  settings->reset("octaves");
+  g_object_unref(self->settings);
 
-  settings->reset("crispness");
+  util::debug(log_tag + "disposed"s);
 
-  settings->reset("formant-preserving");
-
-  settings->reset("faster");
+  G_OBJECT_CLASS(pitch_box_parent_class)->dispose(object);
 }
+
+void finalize(GObject* object) {
+  auto* self = EE_PITCH_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(pitch_box_parent_class)->finalize(object);
+}
+
+void pitch_box_class_init(PitchBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
+  object_class->finalize = finalize;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/pitch.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, cents);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, crispness);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, semitones);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, octaves);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, faster);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, formant_preserving);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
+}
+
+void pitch_box_init(PitchBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
+
+  prepare_spinbutton<"">(self->crispness);
+  prepare_spinbutton<"">(self->cents);
+  prepare_spinbutton<"">(self->semitones);
+  prepare_spinbutton<"">(self->octaves);
+}
+
+auto create() -> PitchBox* {
+  return static_cast<PitchBox*>(g_object_new(EE_TYPE_PITCH_BOX, nullptr));
+}
+
+}  // namespace ui::pitch_box

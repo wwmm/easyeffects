@@ -39,6 +39,7 @@
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "pipeline_type.hpp"
+#include "pitch_ui.hpp"
 #include "plugins_menu.hpp"
 #include "reverb_ui.hpp"
 #include "rnnoise_ui.hpp"
