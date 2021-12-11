@@ -30,34 +30,18 @@ constexpr int max_bands = 32U;
 
 enum Channel { left, right };
 
-enum FilterType : const unsigned int {
-  PEAKING = 1U,
-  LOW_PASS = 1U << 1U,
-  LOW_PASS_Q = 1U << 2U,
-  HIGH_PASS = 1U << 3U,
-  HIGH_PASS_Q = 1U << 4U,
-  BAND_PASS = 1U << 5U,
-  LOW_SHELF = 1U << 6U,
-  LOW_SHELF_xdB = 1U << 7U,
-  HIGH_SHELF = 1U << 8U,
-  HIGH_SHELF_xdB = 1U << 9U,
-  NOTCH = 1U << 10U,
-  ALL_PASS = 1U << 11U
+struct APO_Band {
+  std::string type;
+  float freq = 1000.0f;
+  float gain = 0.0f;
+  float quality = (1.0f / std::numbers::sqrt2_v<float>);
 };
 
-struct ImportedBand {
-  unsigned int type;
-  float freq;
-  float gain;
-  float quality_factor;
-  float slope_dB;
-};
-
-static std::unordered_map<std::string, FilterType> const FilterTypeMap = {
-    {"PK", FilterType::PEAKING},         {"LP", FilterType::LOW_PASS},       {"LPQ", FilterType::LOW_PASS_Q},
-    {"HP", FilterType::HIGH_PASS},       {"HPQ", FilterType::HIGH_PASS_Q},   {"BP", FilterType::BAND_PASS},
-    {"LS", FilterType::LOW_SHELF},       {"LSC", FilterType::LOW_SHELF_xdB}, {"HS", FilterType::HIGH_SHELF},
-    {"HSC", FilterType::HIGH_SHELF_xdB}, {"NO", FilterType::NOTCH},          {"AP", FilterType::ALL_PASS}};
+std::unordered_map<std::string, std::string> const FilterTypeMap = {
+    {"PK", "Bell"},          {"MODAL", "Bell"},  {"PEQ", "Bell"},     {"LP", "Lo-pass"},      {"LPQ", "Lo-pass"},
+    {"HP", "Hi-pass"},       {"HPQ", "Hi-pass"}, {"LS", "Lo-shelf"},  {"LSC", "Lo-shelf"},    {"LS 6DB", "Lo-shelf"},
+    {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"}, {"HS 6DB", "Hi-shelf"}, {"HS 12DB", "Hi-shelf"},
+    {"NO", "Notch"},         {"AP", "Allpass"}};
 
 struct Data {
  public:
@@ -181,13 +165,12 @@ void on_calculate_frequencies(EqualizerBox* self, GtkButton* btn) {
   }
 }
 
-// returns false if we cannot parse given line successfully
 auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
   std::smatch matches;
 
-  static const auto i = std::regex::icase;
+  static const auto re_preamp = std::regex(R"(preamp\s*+:\s*+([+-]?+\d++(?:\.\d++)?+)\s*+db)", std::regex::icase);
 
-  std::regex_search(line, matches, std::regex(R"(preamp:\s*+([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
+  std::regex_search(line, matches, re_preamp);
 
   if (matches.size() != 2U) {
     return false;
@@ -198,159 +181,207 @@ auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
   return true;
 }
 
-// returns false if we cannot parse given line successfully
-auto parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
+auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::string {
   std::smatch matches;
 
-  static const auto i = std::regex::icase;
+  static const auto re_filter =
+      std::regex(R"(filter\s*+\d*+\s*+:\s*+on\s++([a-z]++(?:\s++(?:6|12)db)?+))", std::regex::icase);
 
-  // get filter type
-
-  std::regex_search(line, matches, std::regex(R"(filter\s++\d*+:\s*+on\s++([a-z]++))", i));
+  std::regex_search(line, matches, re_filter);
 
   if (matches.size() != 2U) {
-    return false;
+    return "";
   }
+
+  // Possible multiple whitespaces are replaced by a single space
+  auto apo_filter = std::regex_replace(matches.str(1), std::regex(R"(\s++)"), " ");
+
+  // Filter string needed in uppercase for unordered_map
+  std::transform(apo_filter.begin(), apo_filter.end(), apo_filter.begin(),
+                 [](unsigned char c) { return std::toupper(c); });
 
   try {
-    filter.type = FilterTypeMap.at(matches.str(1));
+    filter.type = FilterTypeMap.at(apo_filter);
   } catch (...) {
-    return false;
+    filter.type = "Off";
   }
 
-  // get center frequency
+  return apo_filter;
+}
 
-  std::regex_search(line, matches, std::regex(R"(fc\s++(\d++(?:,\d++)*+(?:\.\d++)*+)\s*+hz)", i));
+auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bool {
+  std::smatch matches;
+
+  static const auto re_freq = std::regex(R"(fc\s++(\d++(?:,\d++)?+(?:\.\d++)?+)\s*+hz)", std::regex::icase);
+
+  std::regex_search(line, matches, re_freq);
 
   if (matches.size() != 2U) {
     return false;
   }
 
-  // frequency could have a comma as thousands separator to be removed
-
+  // Frequency could have a comma as thousands separator
+  // to be removed for the correct float conversion.
   filter.freq = std::stof(std::regex_replace(matches.str(1), std::regex(","), ""));
 
-  // get slope
+  return true;
+}
 
-  if ((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
-    std::regex_search(line, matches,
-                      std::regex(R"(filter\s++\d*+:\s*+on\s++[a-z]++\s++([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
+auto parse_apo_gain(const std::string& line, struct APO_Band& filter) -> bool {
+  std::smatch matches;
 
-    // _xdB variants require the dB parameter
+  static const auto re_gain = std::regex(R"(gain\s++([+-]?+\d++(?:\.\d++)?+)\s*+db)", std::regex::icase);
 
-    if (((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB)) != 0U) && (matches.size() != 2U)) {
-      return false;
-    }
+  std::regex_search(line, matches, re_gain);
 
-    if (matches.size() == 2U) {
-      // we satisfied the condition, now assign the paramater if given
-
-      filter.slope_dB = std::stof(matches.str(1));
-    }
+  if (matches.size() != 2U) {
+    return false;
   }
 
-  // get gain
+  filter.gain = std::stof(matches.str(1));
 
-  if ((filter.type & (PEAKING | LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
-    std::regex_search(line, matches, std::regex(R"(gain\s++([+-]?+\d++(?:\.\d++)*+)\s*+db)", i));
+  return true;
+}
 
-    // all Shelf types (i.e. all above except for Peaking) require the gain parameter
+auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool {
+  std::smatch matches;
 
-    if (((filter.type & PEAKING) == 0U) && (matches.size() != 2U)) {
-      return false;
-    }
+  static const auto re_quality = std::regex(R"(q\s++(\d++(?:\.\d++)?+))", std::regex::icase);
 
-    if (matches.size() == 2U) {
-      filter.gain = std::stof(matches.str(1));
-    }
+  std::regex_search(line, matches, re_quality);
+
+  if (matches.size() != 2U) {
+    return false;
   }
 
-  // get quality factor
-  if ((filter.type & (PEAKING | LOW_PASS_Q | HIGH_PASS_Q | LOW_SHELF_xdB | HIGH_SHELF_xdB | NOTCH | ALL_PASS)) != 0U) {
-    std::regex_search(line, matches, std::regex(R"(q\s++(\d++(?:\.\d++)*+))", i));
+  filter.quality = std::stof(matches.str(1));
 
-    // Peaking and All-Pass filter types require the quality factor parameter
+  return true;
+}
 
-    if (((filter.type & (PEAKING | ALL_PASS)) != 0U) && (matches.size() != 2U)) {
-      return false;
-    }
+auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
+  std::string filter_type = parse_apo_filter(line, filter);
 
-    if (matches.size() == 2U) {
-      filter.quality_factor = std::stof(matches.str(1));
-    }
+  if (filter_type.empty()) {
+    return false;
   }
 
+  // The configuration line refers to an existing APO filter, so we try to get the other parameters.
+  parse_apo_frequency(line, filter);
+
+  // Inspired by funtion "para_equalizer_ui::import_rew_file(const LSPString*)"
+  // inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
+  // https://github.com/sadko4u/lsp-plugins
+  if (filter_type == "PK" || filter_type == "MODAL" || filter_type == "PEQ") {
+    parse_apo_gain(line, filter);
+
+    parse_apo_quality(line, filter);
+  } else if (filter_type == "LP" || filter_type == "LPQ" || filter_type == "HP" || filter_type == "HPQ") {
+    parse_apo_quality(line, filter);
+  } else if (filter_type == "LS" || filter_type == "LSC" || filter_type == "HS" || filter_type == "HSC") {
+    parse_apo_gain(line, filter);
+
+    if (!parse_apo_quality(line, filter)) {
+      filter.quality = 2.0f / 3.0f;
+    }
+  } else if (filter_type == "LS 6DB") {
+    filter.freq = filter.freq * 2.0f / 3.0f;
+    filter.quality = std::numbers::sqrt2_v<float> / 3.0f;
+
+    parse_apo_gain(line, filter);
+  } else if (filter_type == "LS 12DB") {
+    filter.freq = filter.freq * 3.0f / 2.0f;
+
+    parse_apo_gain(line, filter);
+  } else if (filter_type == "HS 6DB") {
+    filter.freq = filter.freq / (1.0f / std::numbers::sqrt2_v<float>);
+    filter.quality = std::numbers::sqrt2_v<float> / 3.0f;
+
+    parse_apo_gain(line, filter);
+  } else if (filter_type == "HS 12DB") {
+    filter.freq = filter.freq * (1.0f / std::numbers::sqrt2_v<float>);
+
+    parse_apo_gain(line, filter);
+  } else if (filter_type == "NO") {
+    if (!parse_apo_quality(line, filter)) {
+      filter.quality = 100.0f / 3.0f;
+    }
+  } else if (filter_type == "AP") {
+    parse_apo_quality(line, filter);
+  }
+
+  // If the APO filter type is different than the ones specified above,
+  // it's set as Off since it's not supported by LSP Equalizer.
+  // Default values are assumed.
   return true;
 }
 
 void import_apo_preset(EqualizerBox* self, const std::string& file_path) {
   std::filesystem::path p{file_path};
 
-  if (std::filesystem::is_regular_file(p)) {
-    std::ifstream eq_file;
-    std::vector<struct ImportedBand> bands;
-    double preamp = 0.0;
+  if (!std::filesystem::is_regular_file(p)) {
+    return;
+  }
 
-    eq_file.open(p.c_str());
+  std::ifstream eq_file;
+  eq_file.open(p.c_str());
 
-    if (eq_file.is_open()) {
-      std::string line;
+  std::vector<struct APO_Band> bands;
+  double preamp = 0.0;
 
-      while (getline(eq_file, line)) {
-        struct ImportedBand filter {};
-
-        if (!parse_apo_preamp(line, preamp)) {
-          if (parse_apo_filter(line, filter)) {
-            bands.push_back(filter);
-          }
-        }
-      }
-    }
-
-    eq_file.close();
-
-    if (bands.empty()) {
-      return;
-    }
-
-    g_settings_set_int(self->settings, "num-bands", bands.size());
-    g_settings_set_double(self->settings, "input-gain", preamp);
-
-    for (int n = 0; n < max_bands; n++) {
-      if (n < static_cast<int>(bands.size())) {
-        g_settings_set_string(self->settings, band_mode[n], "APO (DR)");
-
-        if (g_settings_get_boolean(self->settings, "split-channels") == 0) {
-          g_settings_set_string(self->settings_left, band_type[n], "Bell");
-          g_settings_set_double(self->settings_left, band_gain[n], bands[n].gain);
-          g_settings_set_double(self->settings_left, band_frequency[n], bands[n].freq);
-          g_settings_set_double(self->settings_left, band_q[n], bands[n].quality_factor);
-
-          g_settings_set_string(self->settings_right, band_type[n], "Bell");
-          g_settings_set_double(self->settings_right, band_gain[n], bands[n].gain);
-          g_settings_set_double(self->settings_right, band_frequency[n], bands[n].freq);
-          g_settings_set_double(self->settings_right, band_q[n], bands[n].quality_factor);
-        } else {
-          /*
-            The code below allows users to load different APO presets for each channel
-          */
-
-          if (g_strcmp0(gtk_stack_get_visible_child_name(self->stack), "page_left_channel") == 0) {
-            g_settings_set_string(self->settings_left, band_type[n], "Bell");
-            g_settings_set_double(self->settings_left, band_gain[n], bands[n].gain);
-            g_settings_set_double(self->settings_left, band_frequency[n], bands[n].freq);
-            g_settings_set_double(self->settings_left, band_q[n], bands[n].quality_factor);
-          } else {
-            g_settings_set_string(self->settings_right, band_type[n], "Bell");
-            g_settings_set_double(self->settings_right, band_gain[n], bands[n].gain);
-            g_settings_set_double(self->settings_right, band_frequency[n], bands[n].freq);
-            g_settings_set_double(self->settings_right, band_q[n], bands[n].quality_factor);
-          }
-        }
+  if (eq_file.is_open()) {
+    for (std::string line; getline(eq_file, line);) {
+      if (struct APO_Band filter; parse_apo_config_line(line, filter)) {
+        bands.push_back(filter);
       } else {
-        g_settings_set_string(self->settings_left, band_type[n], "Off");
-        g_settings_set_string(self->settings_right, band_type[n], "Off");
+        parse_apo_preamp(line, preamp);
       }
+    }
+  }
+
+  eq_file.close();
+
+  if (bands.empty()) {
+    return;
+  }
+
+  // Apply APO parameters obtained
+  g_settings_set_int(self->settings, "num-bands", static_cast<int>(bands.size()));
+  g_settings_set_double(self->settings, "input-gain", preamp);
+
+  std::vector<GSettings*> settings_channels;
+
+  // Whether to apply the parameters to both channels or the selected one only
+  if (g_settings_get_boolean(self->settings, "split-channels") == 0) {
+    settings_channels.push_back(self->settings_left);
+    settings_channels.push_back(self->settings_right);
+    util::debug(log_tag + "apo preset applied both left and right channels"s);
+  } else if (g_strcmp0(gtk_stack_get_visible_child_name(self->stack), "page_left_channel") == 0) {
+    settings_channels.push_back(self->settings_left);
+    util::debug(log_tag + "apo preset applied left channel"s);
+  } else {
+    settings_channels.push_back(self->settings_right);
+    util::debug(log_tag + "apo preset applied right channel"s);
+  }
+
+  for (int n = 0, apo_bands = static_cast<int>(bands.size()); n < max_bands; n++) {
+    for (auto* channel : settings_channels) {
+      if (n < apo_bands) {
+        g_settings_set_string(channel, band_type[n], bands[n].type.c_str());
+        g_settings_set_double(channel, band_frequency[n], bands[n].freq);
+        g_settings_set_double(channel, band_gain[n], bands[n].gain);
+        g_settings_set_double(channel, band_q[n], bands[n].quality);
+      } else {
+        g_settings_set_string(channel, band_type[n], "Off");
+        g_settings_reset(channel, band_frequency[n]);
+        g_settings_reset(channel, band_gain[n]);
+        g_settings_reset(channel, band_q[n]);
+      }
+
+      g_settings_reset(channel, band_mode[n]);
+      g_settings_reset(channel, band_slope[n]);
+      g_settings_reset(channel, band_solo[n]);
+      g_settings_reset(channel, band_mute[n]);
     }
   }
 }
