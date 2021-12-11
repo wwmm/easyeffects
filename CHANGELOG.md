@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- Equalizer APO preset import feature has been improved to apply not only the Bell filter, but also other supported
+  ones (at the moment only the Bandpass filter is not available in LSP plugin).
+
 ### Fixed
 
 - More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.
