@@ -188,6 +188,8 @@ void setup(MultibandCompressorBox* self,
   g_settings_bind(self->settings, "enable-band5", self->enable_band5, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "enable-band6", self->enable_band6, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "enable-band7", self->enable_band7, "active", G_SETTINGS_BIND_DEFAULT);
+
+  util::generate_tags(8, "compression-mode", "");
 }
 
 void dispose(GObject* object) {

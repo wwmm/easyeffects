@@ -89,10 +89,12 @@ void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
   self->data->index = index;
   self->settings = settings;
 
-  const auto nstr = std::to_string(index);
+  using namespace tags::multiband_compressor;
 
-  g_settings_bind(self->settings, ("compression-mode" + nstr).c_str(), self->compression_mode, "active-id",
+  g_settings_bind(self->settings, band_compression_mode[index], self->compression_mode, "active-id",
                   G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, band_mute[index], self->mute, "active", G_SETTINGS_BIND_DEFAULT);
 
   // g_settings_bind(settings, tags::multiband_compressor::band_gain[index],
   //                 gtk_range_get_adjustment(GTK_RANGE(self->band_scale)), "value", G_SETTINGS_BIND_DEFAULT);

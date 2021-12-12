@@ -19,27 +19,17 @@
 
 #pragma once
 
-#include <adwaita.h>
-#include <glib/gi18n.h>
-#include "multiband_compressor_tags.hpp"
-#include "ui_helpers.hpp"
+#include <array>
 
-namespace ui::multiband_compressor_band_box {
+namespace tags::multiband_compressor {
 
-G_BEGIN_DECLS
+// bands
 
-#define EE_TYPE_MULTIBAND_COMPRESSOR_BAND_BOX (multiband_compressor_band_box_get_type())
+constexpr char band_mute[][7] = {{"mute0"}, {"mute1"}, {"mute2"}, {"mute3"},
+                                 {"mute4"}, {"mute5"}, {"mute6"}, {"mute7"}};
 
-G_DECLARE_FINAL_TYPE(MultibandCompressorBandBox,
-                     multiband_compressor_band_box,
-                     EE,
-                     MULTIBAND_COMPRESSOR_BAND_BOX,
-                     GtkBox)
+constexpr char band_compression_mode[][19] = {{"compression-mode0"}, {"compression-mode1"}, {"compression-mode2"},
+                                              {"compression-mode3"}, {"compression-mode4"}, {"compression-mode5"},
+                                              {"compression-mode6"}, {"compression-mode7"}};
 
-G_END_DECLS
-
-auto create() -> MultibandCompressorBandBox*;
-
-void setup(MultibandCompressorBandBox* self, GSettings* settings, int index);
-
-}  // namespace ui::multiband_compressor_band_box
+}  // namespace tags::multiband_compressor
