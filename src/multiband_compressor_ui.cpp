@@ -49,6 +49,8 @@ struct _MultibandCompressorBox {
 
   GtkToggleButton* bypass;
 
+  GtkStack* stack;
+
   GtkComboBoxText *compressor_mode, *envelope_boost;
 
   GtkDropDown* dropdown_input_devices;
@@ -70,6 +72,16 @@ void on_reset(MultibandCompressorBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
   util::reset_all_keys(self->settings);
+}
+
+void create_bands(MultibandCompressorBox* self) {
+  for (uint n = 1U; n < n_bands; n++) {
+    auto band_box = ui::multiband_compressor_band_box::create();
+
+    ui::multiband_compressor_band_box::setup(band_box, self->settings, n);
+
+    gtk_stack_add_child(self->stack, GTK_WIDGET(band_box));
+  }
 }
 
 void setup_dropdown_input_device(MultibandCompressorBox* self) {
@@ -102,6 +114,8 @@ void setup(MultibandCompressorBox* self,
   multiband_compressor->bypass = false;
 
   setup_dropdown_input_device(self);
+
+  create_bands(self);
 
   for (const auto& [ts, node] : pm->node_map) {
     if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
@@ -212,6 +226,7 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, bypass);
 
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, stack);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, compressor_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, envelope_boost);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, dropdown_input_devices);

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="MultibandCompressorBandBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">24</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkGrid">
                 <property name="halign">center</property>
@@ -875,8 +874,7 @@
                 </child>
             </object>
         </child>
-
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>

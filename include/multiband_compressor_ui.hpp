@@ -21,13 +21,8 @@
 
 #include <adwaita.h>
 #include "effects_base.hpp"
+#include "multiband_compressor_band_box.hpp"
 #include "node_info_holder.hpp"
-#include "ui_helpers.hpp"
-
-#pragma once
-
-#include <adwaita.h>
-#include "effects_base.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::multiband_compressor_box {
