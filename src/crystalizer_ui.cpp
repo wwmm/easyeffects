@@ -65,19 +65,7 @@ void on_bypass(CrystalizerBox* self, GtkToggleButton* btn) {
 void on_reset(CrystalizerBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  for (uint n = 0; n < nbands; n++) {
-    const auto bandn = "band" + std::to_string(n);
-
-    g_settings_reset(self->settings, ("intensity-" + bandn).c_str());
-
-    g_settings_reset(self->settings, ("mute-" + bandn).c_str());
-
-    g_settings_reset(self->settings, ("bypass-" + bandn).c_str());
-  }
+  util::reset_all_keys(self->settings);
 }
 
 void build_bands(CrystalizerBox* self) {

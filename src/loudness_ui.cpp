@@ -65,15 +65,7 @@ void on_bypass(LoudnessBox* self, GtkToggleButton* btn) {
 void on_reset(LoudnessBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "fft");
-
-  g_settings_reset(self->settings, "std");
-
-  g_settings_reset(self->settings, "volume");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::string& schema_path) {

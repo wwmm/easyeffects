@@ -71,13 +71,7 @@ void on_bypass(AutogainBox* self, GtkToggleButton* btn) {
 void on_reset(AutogainBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "target");
-
-  g_settings_reset(self->settings, "reference");
+  util::reset_all_keys(self->settings);
 }
 
 void on_reset_history(AutogainBox* self, GtkButton* btn) {

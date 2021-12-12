@@ -101,13 +101,7 @@ void on_bypass(ConvolverBox* self, GtkToggleButton* btn) {
 void on_reset(ConvolverBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "kernel-path");
-
-  g_settings_reset(self->settings, "ir-width");
+  util::reset_all_keys(self->settings);
 }
 
 void plot_fft(ConvolverBox* self) {

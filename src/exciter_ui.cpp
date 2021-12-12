@@ -71,23 +71,7 @@ void on_bypass(ExciterBox* self, GtkToggleButton* btn) {
 void on_reset(ExciterBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "amount");
-
-  g_settings_reset(self->settings, "harmonics");
-
-  g_settings_reset(self->settings, "scope");
-
-  g_settings_reset(self->settings, "ceil");
-
-  g_settings_reset(self->settings, "blend");
-
-  g_settings_reset(self->settings, "ceil-active");
-
-  g_settings_reset(self->settings, "listen");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string& schema_path) {

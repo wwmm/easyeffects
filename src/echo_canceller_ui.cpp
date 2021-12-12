@@ -63,13 +63,7 @@ void on_bypass(EchoCancellerBox* self, GtkToggleButton* btn) {
 void on_reset(EchoCancellerBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "frame-size");
-
-  g_settings_reset(self->settings, "filter-length");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller, const std::string& schema_path) {

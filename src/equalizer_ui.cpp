@@ -91,37 +91,9 @@ void on_bypass(EqualizerBox* self, GtkToggleButton* btn) {
 void on_reset(EqualizerBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "mode");
-  g_settings_reset(self->settings, "num-bands");
-  g_settings_reset(self->settings, "split-channels");
-
-  for (int n = 0; n < max_bands; n++) {
-    // left channel
-
-    g_settings_reset(self->settings_left, band_gain[n]);
-    g_settings_reset(self->settings_left, band_frequency[n]);
-    g_settings_reset(self->settings_left, band_q[n]);
-    g_settings_reset(self->settings_left, band_type[n]);
-    g_settings_reset(self->settings_left, band_mode[n]);
-    g_settings_reset(self->settings_left, band_slope[n]);
-    g_settings_reset(self->settings_left, band_solo[n]);
-    g_settings_reset(self->settings_left, band_mute[n]);
-
-    // right channel
-
-    g_settings_reset(self->settings_right, band_gain[n]);
-    g_settings_reset(self->settings_right, band_frequency[n]);
-    g_settings_reset(self->settings_right, band_q[n]);
-    g_settings_reset(self->settings_right, band_type[n]);
-    g_settings_reset(self->settings_right, band_mode[n]);
-    g_settings_reset(self->settings_right, band_slope[n]);
-    g_settings_reset(self->settings_right, band_solo[n]);
-    g_settings_reset(self->settings_right, band_mute[n]);
-  }
+  util::reset_all_keys(self->settings);
+  util::reset_all_keys(self->settings_left);
+  util::reset_all_keys(self->settings_right);
 }
 
 void on_flat_response(EqualizerBox* self, GtkButton* btn) {
@@ -355,13 +327,10 @@ void import_apo_preset(EqualizerBox* self, const std::string& file_path) {
   if (g_settings_get_boolean(self->settings, "split-channels") == 0) {
     settings_channels.push_back(self->settings_left);
     settings_channels.push_back(self->settings_right);
-    util::debug(log_tag + "apo preset applied both left and right channels"s);
   } else if (g_strcmp0(gtk_stack_get_visible_child_name(self->stack), "page_left_channel") == 0) {
     settings_channels.push_back(self->settings_left);
-    util::debug(log_tag + "apo preset applied left channel"s);
   } else {
     settings_channels.push_back(self->settings_right);
-    util::debug(log_tag + "apo preset applied right channel"s);
   }
 
   for (int n = 0, apo_bands = static_cast<int>(bands.size()); n < max_bands; n++) {

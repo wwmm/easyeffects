@@ -71,33 +71,7 @@ void on_bypass(DeesserBox* self, GtkToggleButton* btn) {
 void on_reset(DeesserBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "detection");
-
-  g_settings_reset(self->settings, "mode");
-
-  g_settings_reset(self->settings, "threshold");
-
-  g_settings_reset(self->settings, "ratio");
-
-  g_settings_reset(self->settings, "laxity");
-
-  g_settings_reset(self->settings, "makeup");
-
-  g_settings_reset(self->settings, "f1-freq");
-
-  g_settings_reset(self->settings, "f2-freq");
-
-  g_settings_reset(self->settings, "f1-level");
-
-  g_settings_reset(self->settings, "f2-level");
-
-  g_settings_reset(self->settings, "f2-q");
-
-  g_settings_reset(self->settings, "sc-listen");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string& schema_path) {

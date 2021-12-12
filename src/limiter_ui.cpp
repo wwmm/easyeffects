@@ -76,41 +76,7 @@ void on_bypass(LimiterBox* self, GtkToggleButton* btn) {
 void on_reset(LimiterBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "mode");
-
-  g_settings_reset(self->settings, "oversampling");
-
-  g_settings_reset(self->settings, "dither");
-
-  g_settings_reset(self->settings, "sidechain-preamp");
-
-  g_settings_reset(self->settings, "lookahead");
-
-  g_settings_reset(self->settings, "attack");
-
-  g_settings_reset(self->settings, "release");
-
-  g_settings_reset(self->settings, "threshold");
-
-  g_settings_reset(self->settings, "gain-boost");
-
-  g_settings_reset(self->settings, "stereo-link");
-
-  g_settings_reset(self->settings, "alr");
-
-  g_settings_reset(self->settings, "alr-attack");
-
-  g_settings_reset(self->settings, "alr-release");
-
-  g_settings_reset(self->settings, "alr-knee");
-
-  g_settings_reset(self->settings, "external-sidechain");
-
-  g_settings_reset(self->settings, "sidechain-input-device");
+  util::reset_all_keys(self->settings);
 }
 
 void setup_dropdown_input_device(LimiterBox* self) {

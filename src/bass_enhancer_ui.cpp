@@ -71,23 +71,7 @@ void on_bypass(BassEnhancerBox* self, GtkToggleButton* btn) {
 void on_reset(BassEnhancerBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "amount");
-
-  g_settings_reset(self->settings, "harmonics");
-
-  g_settings_reset(self->settings, "scope");
-
-  g_settings_reset(self->settings, "floor");
-
-  g_settings_reset(self->settings, "blend");
-
-  g_settings_reset(self->settings, "floor-active");
-
-  g_settings_reset(self->settings, "listen");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, const std::string& schema_path) {

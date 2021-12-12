@@ -63,15 +63,7 @@ void on_bypass(BassLoudnessBox* self, GtkToggleButton* btn) {
 void on_reset(BassLoudnessBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "loudness");
-
-  g_settings_reset(self->settings, "output");
-
-  g_settings_reset(self->settings, "link");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, const std::string& schema_path) {

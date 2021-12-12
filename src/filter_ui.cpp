@@ -65,17 +65,7 @@ void on_bypass(FilterBox* self, GtkToggleButton* btn) {
 void on_reset(FilterBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "frequency");
-
-  g_settings_reset(self->settings, "resonance");
-
-  g_settings_reset(self->settings, "mode");
-
-  g_settings_reset(self->settings, "inertia");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path) {

@@ -63,13 +63,7 @@ void on_bypass(CrossfeedBox* self, GtkToggleButton* btn) {
 void on_reset(CrossfeedBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "fcut");
-
-  g_settings_reset(self->settings, "feed");
+  util::reset_all_keys(self->settings);
 }
 
 void on_preset_cmoy(CrossfeedBox* self, GtkButton* btn) {

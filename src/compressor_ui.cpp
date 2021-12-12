@@ -74,51 +74,7 @@ void on_bypass(CompressorBox* self, GtkToggleButton* btn) {
 void on_reset(CompressorBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "mode");
-
-  g_settings_reset(self->settings, "attack");
-
-  g_settings_reset(self->settings, "release");
-
-  g_settings_reset(self->settings, "release-threshold");
-
-  g_settings_reset(self->settings, "threshold");
-
-  g_settings_reset(self->settings, "ratio");
-
-  g_settings_reset(self->settings, "knee");
-
-  g_settings_reset(self->settings, "makeup");
-
-  g_settings_reset(self->settings, "boost-threshold");
-
-  g_settings_reset(self->settings, "sidechain-listen");
-
-  g_settings_reset(self->settings, "sidechain-type");
-
-  g_settings_reset(self->settings, "sidechain-mode");
-
-  g_settings_reset(self->settings, "sidechain-source");
-
-  g_settings_reset(self->settings, "sidechain-preamp");
-
-  g_settings_reset(self->settings, "sidechain-reactivity");
-
-  g_settings_reset(self->settings, "sidechain-lookahead");
-
-  g_settings_reset(self->settings, "sidechain-input-device");
-
-  g_settings_reset(self->settings, "hpf-mode");
-
-  g_settings_reset(self->settings, "hpf-frequency");
-
-  g_settings_reset(self->settings, "lpf-mode");
-
-  g_settings_reset(self->settings, "lpf-frequency");
+  util::reset_all_keys(self->settings);
 }
 
 gboolean set_dropdown_sensitive(CompressorBox* self, const char* active_id) {

@@ -69,71 +69,7 @@ void on_bypass(MultibandCompressorBox* self, GtkToggleButton* btn) {
 void on_reset(MultibandCompressorBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "compressor-mode");
-
-  g_settings_reset(self->settings, "envelope-boost");
-
-  g_settings_reset(self->settings, "sidechain-input-device");
-
-  for (uint n = 0U; n < n_bands; n++) {
-    const auto nstr = std::to_string(n);
-
-    if (n > 0U) {
-      g_settings_reset(self->settings, ("enable-band" + nstr).c_str());
-
-      g_settings_reset(self->settings, ("split-frequency" + nstr).c_str());
-    }
-
-    g_settings_reset(self->settings, ("compressor-enable" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("solo" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("mute" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("attack-threshold" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("attack-time" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("release-threshold" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("release-time" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("ratio" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("knee" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("makeup" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("compression-mode" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("external-sidechain" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-mode" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-source" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-lookahead" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-reactivity" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-preamp" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-custom-lowcut-filter" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-custom-highcut-filter" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-lowcut-frequency" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("sidechain-highcut-frequency" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("boost-threshold" + nstr).c_str());
-
-    g_settings_reset(self->settings, ("boost-amount" + nstr).c_str());
-  }
+  util::reset_all_keys(self->settings);
 }
 
 void setup_dropdown_input_device(MultibandCompressorBox* self) {

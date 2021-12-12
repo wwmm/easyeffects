@@ -77,11 +77,7 @@ void on_bypass(RNNoiseBox* self, GtkToggleButton* btn) {
 void on_reset(RNNoiseBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "model-path");
+  util::reset_all_keys(self->settings);
 }
 
 gboolean set_model_delete_button_visibility(GtkListItem* item, const char* name) {

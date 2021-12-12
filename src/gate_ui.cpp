@@ -69,27 +69,7 @@ void on_bypass(GateBox* self, GtkToggleButton* btn) {
 void on_reset(GateBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "detection");
-
-  g_settings_reset(self->settings, "stereo-link");
-
-  g_settings_reset(self->settings, "range");
-
-  g_settings_reset(self->settings, "attack");
-
-  g_settings_reset(self->settings, "release");
-
-  g_settings_reset(self->settings, "threshold");
-
-  g_settings_reset(self->settings, "ratio");
-
-  g_settings_reset(self->settings, "knee");
-
-  g_settings_reset(self->settings, "makeup");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path) {

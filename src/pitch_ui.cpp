@@ -65,21 +65,7 @@ void on_bypass(PitchBox* self, GtkToggleButton* btn) {
 void on_reset(PitchBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "cents");
-
-  g_settings_reset(self->settings, "semitones");
-
-  g_settings_reset(self->settings, "octaves");
-
-  g_settings_reset(self->settings, "crispness");
-
-  g_settings_reset(self->settings, "formant-preserving");
-
-  g_settings_reset(self->settings, "faster");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& schema_path) {

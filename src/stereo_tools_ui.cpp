@@ -67,41 +67,7 @@ void on_bypass(StereoToolsBox* self, GtkToggleButton* btn) {
 void on_reset(StereoToolsBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "balance-in");
-
-  g_settings_reset(self->settings, "balance-out");
-
-  g_settings_reset(self->settings, "softclip");
-
-  g_settings_reset(self->settings, "mutel");
-
-  g_settings_reset(self->settings, "muter");
-
-  g_settings_reset(self->settings, "phasel");
-
-  g_settings_reset(self->settings, "phaser");
-
-  g_settings_reset(self->settings, "mode");
-
-  g_settings_reset(self->settings, "slev");
-
-  g_settings_reset(self->settings, "sbal");
-
-  g_settings_reset(self->settings, "mlev");
-
-  g_settings_reset(self->settings, "mpan");
-
-  g_settings_reset(self->settings, "stereo-base");
-
-  g_settings_reset(self->settings, "delay");
-
-  g_settings_reset(self->settings, "sc-level");
-
-  g_settings_reset(self->settings, "stereo-phase");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, const std::string& schema_path) {

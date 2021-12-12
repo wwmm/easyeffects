@@ -108,6 +108,8 @@ void generate_tags(const int& N, const std::string& start_string, const std::str
 
 auto get_files_name(std::filesystem::path dir_path, const std::string& ext) -> std::vector<std::string>;
 
+void reset_all_keys(GSettings* settings);
+
 template <typename T>
 void print_type(T v) {
   warning(typeid(v).name());

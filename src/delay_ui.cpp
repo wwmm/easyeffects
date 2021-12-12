@@ -65,13 +65,7 @@ void on_bypass(DelayBox* self, GtkToggleButton* btn) {
 void on_reset(DelayBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "time-l");
-
-  g_settings_reset(self->settings, "time-r");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& schema_path) {

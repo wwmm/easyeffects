@@ -67,15 +67,7 @@ void on_bypass(MaximizerBox* self, GtkToggleButton* btn) {
 void on_reset(MaximizerBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "release");
-
-  g_settings_reset(self->settings, "ceiling");
-
-  g_settings_reset(self->settings, "threshold");
+  util::reset_all_keys(self->settings);
 }
 
 void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::string& schema_path) {

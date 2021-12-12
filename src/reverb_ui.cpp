@@ -65,27 +65,7 @@ void on_bypass(ReverbBox* self, GtkToggleButton* btn) {
 void on_reset(ReverbBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
 
-  g_settings_reset(self->settings, "input-gain");
-
-  g_settings_reset(self->settings, "output-gain");
-
-  g_settings_reset(self->settings, "room-size");
-
-  g_settings_reset(self->settings, "decay-time");
-
-  g_settings_reset(self->settings, "hf-damp");
-
-  g_settings_reset(self->settings, "diffusion");
-
-  g_settings_reset(self->settings, "amount");
-
-  g_settings_reset(self->settings, "dry");
-
-  g_settings_reset(self->settings, "predelay");
-
-  g_settings_reset(self->settings, "bass-cut");
-
-  g_settings_reset(self->settings, "treble-cut");
+  util::reset_all_keys(self->settings);
 }
 
 void on_preset_room(ReverbBox* self, GtkButton* btn) {
