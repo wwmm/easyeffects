@@ -83,28 +83,29 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   for (const auto& name : settings->get_string_array("plugins")) {
     if (name == plugin_name::multiband_compressor) {
-      auto* const multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
+      //   auto* const multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
 
-      multiband_compressor_ui->bypass->signal_toggled().connect(
-          [=, this]() { effects_base->multiband_compressor->bypass = multiband_compressor_ui->bypass->get_active(); });
+      //   multiband_compressor_ui->bypass->signal_toggled().connect(
+      //       [=, this]() { effects_base->multiband_compressor->bypass = multiband_compressor_ui->bypass->get_active();
+      //       });
 
-      multiband_compressor_ui->set_pipe_manager_ptr(pm);
+      //   multiband_compressor_ui->set_pipe_manager_ptr(pm);
 
-      effects_base->multiband_compressor->input_level.connect(
-          sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_input_level));
-      effects_base->multiband_compressor->output_level.connect(
-          sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output_level));
+      //   effects_base->multiband_compressor->input_level.connect(
+      //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_input_level));
+      //   effects_base->multiband_compressor->output_level.connect(
+      //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output_level));
 
-      effects_base->multiband_compressor->frequency_range.connect(
-          sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_frequency_range));
-      effects_base->multiband_compressor->envelope.connect(
-          sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_envelope));
-      effects_base->multiband_compressor->curve.connect(
-          sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_curve));
-      effects_base->multiband_compressor->reduction.connect(
-          sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_reduction));
+      //   effects_base->multiband_compressor->frequency_range.connect(
+      //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_frequency_range));
+      //   effects_base->multiband_compressor->envelope.connect(
+      //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_envelope));
+      //   effects_base->multiband_compressor->curve.connect(
+      //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_curve));
+      //   effects_base->multiband_compressor->reduction.connect(
+      //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_reduction));
 
-      effects_base->multiband_compressor->bypass = false;
+      //   effects_base->multiband_compressor->bypass = false;
     } else if (name == plugin_name::multiband_gate) {
       auto* const multiband_gate_ui = MultibandGateUi::add_to_stack(stack_plugins, path);
 

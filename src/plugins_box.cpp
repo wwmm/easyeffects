@@ -203,6 +203,13 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::maximizer_box::setup(box, effects_base->maximizer, schema_path + plugin_name::maximizer + "/");
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::maximizer);
+    } else if (name == plugin_name::multiband_compressor) {
+      auto* box = ui::multiband_compressor_box::create();
+
+      ui::multiband_compressor_box::setup(box, effects_base->multiband_compressor, schema_path + "multibandcompressor/",
+                                          self->data->application->pm);
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::multiband_compressor);
     } else if (name == plugin_name::pitch) {
       auto* box = ui::pitch_box::create();
 

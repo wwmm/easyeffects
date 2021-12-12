@@ -19,6 +19,337 @@
 
 #include "multiband_compressor_ui.hpp"
 
+namespace ui::multiband_compressor_box {
+
+using namespace std::string_literals;
+
+auto constexpr log_tag = "multiband_compressor_box: ";
+
+constexpr uint n_bands = 8U;
+
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<MultibandCompressor> multiband_compressor;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+struct _MultibandCompressorBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkComboBoxText *compressor_mode, *envelope_boost;
+
+  GtkDropDown* dropdown_input_devices;
+
+  GListStore* input_devices_model;
+
+  GSettings* settings;
+
+  Data* data;
+};
+
+G_DEFINE_TYPE(MultibandCompressorBox, multiband_compressor_box, GTK_TYPE_BOX)
+
+void on_bypass(MultibandCompressorBox* self, GtkToggleButton* btn) {
+  self->data->multiband_compressor->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(MultibandCompressorBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  g_settings_reset(self->settings, "input-gain");
+
+  g_settings_reset(self->settings, "output-gain");
+
+  g_settings_reset(self->settings, "compressor-mode");
+
+  g_settings_reset(self->settings, "envelope-boost");
+
+  g_settings_reset(self->settings, "sidechain-input-device");
+
+  for (uint n = 0U; n < n_bands; n++) {
+    const auto nstr = std::to_string(n);
+
+    if (n > 0U) {
+      g_settings_reset(self->settings, ("enable-band" + nstr).c_str());
+
+      g_settings_reset(self->settings, ("split-frequency" + nstr).c_str());
+    }
+
+    g_settings_reset(self->settings, ("compressor-enable" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("solo" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("mute" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("attack-threshold" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("attack-time" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("release-threshold" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("release-time" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("ratio" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("knee" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("makeup" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("compression-mode" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("external-sidechain" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-mode" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-source" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-lookahead" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-reactivity" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-preamp" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-custom-lowcut-filter" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-custom-highcut-filter" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-lowcut-frequency" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("sidechain-highcut-frequency" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("boost-threshold" + nstr).c_str());
+
+    g_settings_reset(self->settings, ("boost-amount" + nstr).c_str());
+  }
+}
+
+void setup_dropdown_input_device(MultibandCompressorBox* self) {
+  auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->input_devices_model));
+
+  g_signal_connect(self->dropdown_input_devices, "notify::selected-item",
+                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, MultibandCompressorBox* self) {
+                     if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
+                       auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
+
+                       g_settings_set_string(self->settings, "sidechain-input-device", holder->name.c_str());
+                     }
+                   }),
+                   self);
+
+  gtk_drop_down_set_model(self->dropdown_input_devices, G_LIST_MODEL(self->input_devices_model));
+
+  g_object_unref(selection);
+}
+
+void setup(MultibandCompressorBox* self,
+           std::shared_ptr<MultibandCompressor> multiband_compressor,
+           const std::string& schema_path,
+           PipeManager* pm) {
+  self->data->multiband_compressor = multiband_compressor;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandcompressor", schema_path.c_str());
+
+  multiband_compressor->post_messages = true;
+  multiband_compressor->bypass = false;
+
+  setup_dropdown_input_device(self);
+
+  for (const auto& [ts, node] : pm->node_map) {
+    if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
+      continue;
+    }
+
+    if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
+      g_list_store_append(self->input_devices_model, ui::holders::create(node));
+    }
+  }
+
+  self->data->connections.push_back(
+      multiband_compressor->input_level.connect([=](const float& left, const float& right) {
+        update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                     self->input_level_right_label, left, right);
+      }));
+
+  self->data->connections.push_back(
+      multiband_compressor->output_level.connect([=](const float& left, const float& right) {
+        update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                     self->output_level_right_label, left, right);
+      }));
+
+  // self->data->connections.push_back(multiband_compressor->gain_left.connect([=](const double& value) {
+  //   gtk_label_set_text(self->gain_left, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  // }));
+
+  self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
+              ->id == info.id) {
+        return;
+      }
+    }
+
+    g_list_store_append(self->input_devices_model, ui::holders::create(info));
+  }));
+
+  self->data->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
+              ->id == info.id) {
+        g_list_store_remove(self->input_devices_model, n);
+
+        return;
+      }
+    }
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "sidechain-preamp", gtk_spin_button_get_adjustment(self->sc_preamp), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "lookahead", gtk_spin_button_get_adjustment(self->lookahead), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "stereo-link", gtk_spin_button_get_adjustment(self->stereo_link), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "alr-attack", gtk_spin_button_get_adjustment(self->alr_attack), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "alr-release", gtk_spin_button_get_adjustment(self->alr_release), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "alr-knee", gtk_spin_button_get_adjustment(self->alr_knee), "value",
+  //                 G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "gain-boost", self->gain_boost, "active", G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "external-sidechain", self->external_sidechain, "active", G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "alr", self->alr, "active", G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "oversampling", self->oversampling, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  // g_settings_bind(self->settings, "dithering", self->dither, "active-id", G_SETTINGS_BIND_DEFAULT);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_MULTIBAND_COMPRESSOR_BOX(object);
+
+  self->data->multiband_compressor->bypass = false;
+
+  for (auto& c : self->data->connections) {
+    c.disconnect();
+  }
+
+  for (auto& handler_id : self->data->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
+  }
+
+  self->data->connections.clear();
+  self->data->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(multiband_compressor_box_parent_class)->dispose(object);
+}
+
+void finalize(GObject* object) {
+  auto* self = EE_MULTIBAND_COMPRESSOR_BOX(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(multiband_compressor_box_parent_class)->finalize(object);
+}
+
+void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
+  object_class->finalize = finalize;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_level_right_label);
+
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, bypass);
+
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, compressor_mode);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, envelope_boost);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, dropdown_input_devices);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
+}
+
+void multiband_compressor_box_init(MultibandCompressorBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
+
+  self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
+
+  // prepare_spinbutton<"dB">(self->sc_preamp);
+  // prepare_spinbutton<"dB">(self->threshold);
+  // prepare_spinbutton<"dB">(self->alr_knee);
+  // prepare_spinbutton<"ms">(self->lookahead);
+  // prepare_spinbutton<"ms">(self->attack);
+  // prepare_spinbutton<"ms">(self->release);
+  // prepare_spinbutton<"ms">(self->alr_attack);
+  // prepare_spinbutton<"ms">(self->alr_release);
+  // prepare_spinbutton<"%">(self->stereo_link);
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+}
+
+auto create() -> MultibandCompressorBox* {
+  return static_cast<MultibandCompressorBox*>(g_object_new(EE_TYPE_MULTIBAND_COMPRESSOR_BOX, nullptr));
+}
+
+}  // namespace ui::multiband_compressor_box
+
 namespace {
 
 auto compressor_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -254,9 +585,9 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   for (uint n = 1U; n < n_bands; n++) {
     const auto nstr = std::to_string(n);
 
-    auto* const enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
+    // auto* const enable_band = builder->get_widget<Gtk::CheckButton>("enable_band"+ nstr).c_str());
 
-    settings->bind("enable-band" + nstr, enable_band, "active");
+    // settings->bind("enable-band"+ nstr).c_str(), enable_band, "active");
   }
 
   prepare_bands();
@@ -268,16 +599,17 @@ MultibandCompressorUi::~MultibandCompressorUi() {
   util::debug(name + " ui destroyed");
 }
 
-auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
+// auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi*
+// {
+//   const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
 
-  auto* const ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.multibandcompressor", schema_path + "multibandcompressor/");
+//   auto* const ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
+//       builder, "top_box", "com.github.wwmm.easyeffects.multibandcompressor", schema_path + "multibandcompressor/");
 
-  stack->add(*ui, plugin_name::multiband_compressor);
+//   stack->add(*ui, plugin_name::multiband_compressor);
 
-  return ui;
-}
+//   return ui;
+// }
 
 void MultibandCompressorUi::prepare_bands() {
   for (uint n = 0U; n < n_bands; n++) {
@@ -289,7 +621,7 @@ void MultibandCompressorUi::prepare_bands() {
     if (n > 0U) {
       auto* const split_frequency = builder->get_widget<Gtk::SpinButton>("split_frequency");
 
-      settings->bind("split-frequency" + nstr, split_frequency->get_adjustment().get(), "value");
+      // settings->bind("split-frequency"+ nstr).c_str(), split_frequency->get_adjustment().get(), "value");
 
       prepare_spinbutton(split_frequency, "Hz");
     } else {
@@ -364,61 +696,66 @@ void MultibandCompressorUi::prepare_bands() {
 
     // gsettings bindings
 
-    settings->bind("compressor-enable" + nstr, band_bypass, "active", Gio::Settings::BindFlags::INVERT_BOOLEAN);
+    // settings->bind("compressor-enable"+ nstr).c_str(), band_bypass, "active",
+    // Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
-    settings->bind("mute" + nstr, mute, "active");
+    // settings->bind("mute"+ nstr).c_str(), mute, "active");
 
-    settings->bind("solo" + nstr, solo, "active");
+    // settings->bind("solo"+ nstr).c_str(), solo, "active");
 
-    settings->bind("sidechain-custom-lowcut-filter" + nstr, lowcut_filter, "active");
+    // settings->bind("sidechain-custom-lowcut-filter"+ nstr).c_str(), lowcut_filter, "active");
 
-    settings->bind("sidechain-custom-highcut-filter" + nstr, highcut_filter, "active");
+    // settings->bind("sidechain-custom-highcut-filter"+ nstr).c_str(), highcut_filter, "active");
 
-    settings->bind("sidechain-lowcut-frequency" + nstr, lowcut_filter_frequency->get_adjustment().get(), "value");
+    // settings->bind("sidechain-lowcut-frequency"+ nstr).c_str(), lowcut_filter_frequency->get_adjustment().get(),
+    // "value");
 
-    settings->bind("sidechain-highcut-frequency" + nstr, highcut_filter_frequency->get_adjustment().get(), "value");
+    // settings->bind("sidechain-highcut-frequency"+ nstr).c_str(), highcut_filter_frequency->get_adjustment().get(),
+    // "value");
 
-    settings->bind("attack-time" + nstr, attack_time->get_adjustment().get(), "value");
+    // settings->bind("attack-time"+ nstr).c_str(), attack_time->get_adjustment().get(), "value");
 
-    settings->bind("attack-threshold" + nstr, attack_threshold->get_adjustment().get(), "value");
+    // settings->bind("attack-threshold"+ nstr).c_str(), attack_threshold->get_adjustment().get(), "value");
 
-    settings->bind("release-time" + nstr, release_time->get_adjustment().get(), "value");
+    // settings->bind("release-time"+ nstr).c_str(), release_time->get_adjustment().get(), "value");
 
-    settings->bind("release-threshold" + nstr, release_threshold->get_adjustment().get(), "value");
+    // settings->bind("release-threshold"+ nstr).c_str(), release_threshold->get_adjustment().get(), "value");
 
-    settings->bind("ratio" + nstr, ratio->get_adjustment().get(), "value");
+    // settings->bind("ratio"+ nstr).c_str(), ratio->get_adjustment().get(), "value");
 
-    settings->bind("knee" + nstr, knee->get_adjustment().get(), "value");
+    // settings->bind("knee"+ nstr).c_str(), knee->get_adjustment().get(), "value");
 
-    settings->bind("makeup" + nstr, makeup->get_adjustment().get(), "value");
+    // settings->bind("makeup"+ nstr).c_str(), makeup->get_adjustment().get(), "value");
 
-    settings->bind("external-sidechain" + nstr, external_sidechain, "active");
+    // settings->bind("external-sidechain"+ nstr).c_str(), external_sidechain, "active");
 
-    settings->bind("sidechain-preamp" + nstr, sidechain_preamp->get_adjustment().get(), "value");
+    // settings->bind("sidechain-preamp"+ nstr).c_str(), sidechain_preamp->get_adjustment().get(), "value");
 
-    settings->bind("sidechain-reactivity" + nstr, sidechain_reactivity->get_adjustment().get(), "value");
+    // settings->bind("sidechain-reactivity"+ nstr).c_str(), sidechain_reactivity->get_adjustment().get(), "value");
 
-    settings->bind("sidechain-lookahead" + nstr, sidechain_lookahead->get_adjustment().get(), "value");
+    // settings->bind("sidechain-lookahead"+ nstr).c_str(), sidechain_lookahead->get_adjustment().get(), "value");
 
-    settings->bind("boost-amount" + nstr, boost_amount->get_adjustment().get(), "value");
+    // settings->bind("boost-amount"+ nstr).c_str(), boost_amount->get_adjustment().get(), "value");
 
-    settings->bind("boost-threshold" + nstr, boost_threshold->get_adjustment().get(), "value");
+    // settings->bind("boost-threshold"+ nstr).c_str(), boost_threshold->get_adjustment().get(), "value");
 
-    g_settings_bind_with_mapping(settings->gobj(), std::string("compression-mode" + nstr).c_str(),
-                                 compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                                 compression_mode_enum_to_int, int_to_compression_mode_enum, nullptr, nullptr);
+    // g_settings_bind_with_mapping(settings->gobj(), std::string("compression-mode"+ nstr).c_str()).c_str(),
+    //                              compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+    //                              compression_mode_enum_to_int, int_to_compression_mode_enum, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-mode" + nstr).c_str(), sidechain_mode->gobj(),
-                                 "active", G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
-                                 int_to_sidechain_mode_enum, nullptr, nullptr);
+    // g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-mode"+ nstr).c_str()).c_str(),
+    // sidechain_mode->gobj(),
+    //                              "active", G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
+    //                              int_to_sidechain_mode_enum, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-source" + nstr).c_str(),
-                                 sidechain_source->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                                 sidechain_source_enum_to_int, int_to_sidechain_source_enum, nullptr, nullptr);
+    // g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-source"+ nstr).c_str()).c_str(),
+    //                              sidechain_source->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+    //                              sidechain_source_enum_to_int, int_to_sidechain_source_enum, nullptr, nullptr);
 
-    connections.push_back(settings->signal_changed("external-sidechain" + nstr).connect([=, this](const auto& key) {
-      set_dropdown_input_devices_sensitivity();
-    }));
+    // connections.push_back(settings->signal_changed("external-sidechain"+ nstr).c_str()).connect([=, this](const auto&
+    // key) {
+    //   set_dropdown_input_devices_sensitivity();
+    // }));
 
     // prepare widgets
 
@@ -478,77 +815,7 @@ void MultibandCompressorUi::prepare_bands() {
 
     auto* const top_box = builder->get_widget<Gtk::Box>("top_box");
 
-    stack->add(*top_box, "band" + nstr);
-  }
-}
-
-void MultibandCompressorUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("compressor-mode");
-
-  settings->reset("envelope-boost");
-
-  settings->reset("sidechain-input-device");
-
-  for (uint n = 0U; n < n_bands; n++) {
-    const auto nstr = std::to_string(n);
-
-    if (n > 0U) {
-      settings->reset("enable-band" + nstr);
-
-      settings->reset("split-frequency" + nstr);
-    }
-
-    settings->reset("compressor-enable" + nstr);
-
-    settings->reset("solo" + nstr);
-
-    settings->reset("mute" + nstr);
-
-    settings->reset("attack-threshold" + nstr);
-
-    settings->reset("attack-time" + nstr);
-
-    settings->reset("release-threshold" + nstr);
-
-    settings->reset("release-time" + nstr);
-
-    settings->reset("ratio" + nstr);
-
-    settings->reset("knee" + nstr);
-
-    settings->reset("makeup" + nstr);
-
-    settings->reset("compression-mode" + nstr);
-
-    settings->reset("external-sidechain" + nstr);
-
-    settings->reset("sidechain-mode" + nstr);
-
-    settings->reset("sidechain-source" + nstr);
-
-    settings->reset("sidechain-lookahead" + nstr);
-
-    settings->reset("sidechain-reactivity" + nstr);
-
-    settings->reset("sidechain-preamp" + nstr);
-
-    settings->reset("sidechain-custom-lowcut-filter" + nstr);
-
-    settings->reset("sidechain-custom-highcut-filter" + nstr);
-
-    settings->reset("sidechain-lowcut-frequency" + nstr);
-
-    settings->reset("sidechain-highcut-frequency" + nstr);
-
-    settings->reset("boost-threshold" + nstr);
-
-    settings->reset("boost-amount" + nstr);
+    // stack->add(*top_box, "band"+ nstr).c_str());
   }
 }
 

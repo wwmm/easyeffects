@@ -17,8 +17,37 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef MULTIBAND_COMPRESSOR_UI_HPP
-#define MULTIBAND_COMPRESSOR_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "node_info_holder.hpp"
+#include "ui_helpers.hpp"
+
+#pragma once
+
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
+
+namespace ui::multiband_compressor_box {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_MULTIBAND_COMPRESSOR_BOX (multiband_compressor_box_get_type())
+
+G_DECLARE_FINAL_TYPE(MultibandCompressorBox, multiband_compressor_box, EE, MULTIBAND_COMPRESSOR_BOX, GtkBox)
+
+G_END_DECLS
+
+auto create() -> MultibandCompressorBox*;
+
+void setup(MultibandCompressorBox* self,
+           std::shared_ptr<MultibandCompressor> multiband_compressor,
+           const std::string& schema_path,
+           PipeManager* pm);
+
+}  // namespace ui::multiband_compressor_box
 
 #include "info_holders.hpp"
 #include "plugin_ui_base.hpp"
@@ -48,8 +77,6 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
   void on_new_reduction(const std::array<float, n_bands>& values);
 
   void set_pipe_manager_ptr(PipeManager* pipe_manager);
-
-  void reset() override;
 
  private:
   Gtk::ComboBoxText *compressor_mode = nullptr, *envelope_boost = nullptr;
@@ -81,5 +108,3 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   void set_dropdown_input_devices_sensitivity();
 };
-
-#endif

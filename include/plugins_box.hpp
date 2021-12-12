@@ -38,6 +38,7 @@
 #include "limiter_ui.hpp"
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
+#include "multiband_compressor_ui.hpp"
 #include "pipeline_type.hpp"
 #include "pitch_ui.hpp"
 #include "plugins_menu.hpp"
