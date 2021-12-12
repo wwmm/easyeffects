@@ -51,8 +51,8 @@
                                     <object class="GtkComboBoxText" id="compressor_mode">
                                         <property name="halign">center</property>
                                         <items>
-                                            <item translatable="yes">Classic</item>
-                                            <item translatable="yes">Modern</item>
+                                            <item translatable="yes" id="Classic">Classic</item>
+                                            <item translatable="yes" id="Modern">Modern</item>
                                         </items>
                                         <layout>
                                             <property name="column">0</property>
@@ -77,11 +77,11 @@
                                     <object class="GtkComboBoxText" id="envelope_boost">
                                         <property name="halign">center</property>
                                         <items>
-                                            <item translatable="yes">None</item>
-                                            <item translatable="yes">Pink BT</item>
-                                            <item translatable="yes">Pink MT</item>
-                                            <item translatable="yes">Brown BT</item>
-                                            <item translatable="yes">Brown MT</item>
+                                            <item translatable="yes" id="None">None</item>
+                                            <item translatable="yes" id="Pink BT">Pink BT</item>
+                                            <item translatable="yes" id="Pink MT">Pink MT</item>
+                                            <item translatable="yes" id="Brown BT">Brown BT</item>
+                                            <item translatable="yes" id="Brown MT">Brown MT</item>
                                         </items>
                                         <layout>
                                             <property name="column">1</property>
@@ -105,10 +105,18 @@
                                 <child>
                                     <object class="GtkDropDown" id="dropdown_input_devices">
                                         <property name="halign">center</property>
+
+                                        <property name="factory">
+                                            <object class="GtkBuilderListItemFactory">
+                                                <property name="resource">/com/github/wwmm/easyeffects/ui/factory_input_device_dropdown.ui</property>
+                                            </object>
+                                        </property>
+
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">1</property>
                                         </layout>
+
                                         <accessibility>
                                             <property name="label" translatable="yes">External Sidechain Source</property>
                                         </accessibility>

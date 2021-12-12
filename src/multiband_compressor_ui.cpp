@@ -189,10 +189,6 @@ void setup(MultibandCompressorBox* self,
                      self->output_level_right_label, left, right);
       }));
 
-  // self->data->connections.push_back(multiband_compressor->gain_left.connect([=](const double& value) {
-  //   gtk_label_set_text(self->gain_left, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-  // }));
-
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
       if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
@@ -220,44 +216,9 @@ void setup(MultibandCompressorBox* self,
   g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(self->settings, "sidechain-preamp", gtk_spin_button_get_adjustment(self->sc_preamp), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "compressor-mode", self->compressor_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(self->settings, "lookahead", gtk_spin_button_get_adjustment(self->lookahead), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "stereo-link", gtk_spin_button_get_adjustment(self->stereo_link), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "alr-attack", gtk_spin_button_get_adjustment(self->alr_attack), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "alr-release", gtk_spin_button_get_adjustment(self->alr_release), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "alr-knee", gtk_spin_button_get_adjustment(self->alr_knee), "value",
-  //                 G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "gain-boost", self->gain_boost, "active", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "external-sidechain", self->external_sidechain, "active", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "alr", self->alr, "active", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "oversampling", self->oversampling, "active-id", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(self->settings, "dithering", self->dither, "active-id", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "envelope-boost", self->envelope_boost, "active-id", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -330,16 +291,6 @@ void multiband_compressor_box_init(MultibandCompressorBox* self) {
 
   self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
 
-  // prepare_spinbutton<"dB">(self->sc_preamp);
-  // prepare_spinbutton<"dB">(self->threshold);
-  // prepare_spinbutton<"dB">(self->alr_knee);
-  // prepare_spinbutton<"ms">(self->lookahead);
-  // prepare_spinbutton<"ms">(self->attack);
-  // prepare_spinbutton<"ms">(self->release);
-  // prepare_spinbutton<"ms">(self->alr_attack);
-  // prepare_spinbutton<"ms">(self->alr_release);
-  // prepare_spinbutton<"%">(self->stereo_link);
-
   prepare_scale<"dB">(self->input_gain);
   prepare_scale<"dB">(self->output_gain);
 }
@@ -351,73 +302,6 @@ auto create() -> MultibandCompressorBox* {
 }  // namespace ui::multiband_compressor_box
 
 namespace {
-
-auto compressor_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Classic") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Modern") == 0) {
-    g_value_set_int(value, 1);
-  }
-
-  return 1;
-}
-
-auto int_to_compressor_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Classic");
-
-    case 1:
-      return g_variant_new_string("Modern");
-
-    default:
-      return g_variant_new_string("Classic");
-  }
-}
-
-auto envelope_boost_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "None") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Pink BT") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Pink MT") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "Brown BT") == 0) {
-    g_value_set_int(value, 3);
-  } else if (g_strcmp0(v, "Brown MT") == 0) {
-    g_value_set_int(value, 4);
-  }
-
-  return 1;
-}
-
-auto int_to_envelope_boost_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("None");
-
-    case 1:
-      return g_variant_new_string("Pink BT");
-
-    case 2:
-      return g_variant_new_string("Pink MT");
-
-    case 3:
-      return g_variant_new_string("Brown BT");
-
-    case 4:
-      return g_variant_new_string("Brown MT");
-
-    default:
-      return g_variant_new_string("None");
-  }
-}
 
 auto compression_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
@@ -569,16 +453,6 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   setup_dropdown_input_devices();
 
   set_dropdown_input_devices_sensitivity();
-
-  // gsettings bindings
-
-  g_settings_bind_with_mapping(settings->gobj(), "compressor-mode", compressor_mode->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, compressor_mode_enum_to_int, int_to_compressor_mode_enum,
-                               nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "envelope-boost", envelope_boost->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum, nullptr,
-                               nullptr);
 
   // setup band checkbuttons
 
@@ -898,36 +772,4 @@ void MultibandCompressorUi::set_dropdown_input_devices_sensitivity() {
   }
 
   dropdown_input_devices->set_sensitive(false);
-}
-
-void MultibandCompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
-  pm = pipe_manager;
-
-  input_devices_model->append(NodeInfoHolder::create(pm->ee_source_node));
-
-  for (const auto& [ts, node] : pm->node_map) {
-    if (node.media_class == pm->media_class_source) {
-      input_devices_model->append(NodeInfoHolder::create(node));
-    }
-  }
-
-  connections.push_back(pm->source_added.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
-      if (input_devices_model->get_item(n)->id == info.id) {
-        return;
-      }
-    }
-
-    input_devices_model->append(NodeInfoHolder::create(info));
-  }));
-
-  connections.push_back(pm->source_removed.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
-      if (input_devices_model->get_item(n)->id == info.id) {
-        input_devices_model->remove(n);
-
-        return;
-      }
-    }
-  }));
 }

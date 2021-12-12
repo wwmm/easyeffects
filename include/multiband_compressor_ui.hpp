@@ -76,8 +76,6 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   void on_new_reduction(const std::array<float, n_bands>& values);
 
-  void set_pipe_manager_ptr(PipeManager* pipe_manager);
-
  private:
   Gtk::ComboBoxText *compressor_mode = nullptr, *envelope_boost = nullptr;
 
