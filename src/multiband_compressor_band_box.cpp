@@ -37,15 +37,19 @@ struct Data {
 struct _MultibandCompressorBandBox {
   GtkBox parent_instance;
 
-  GtkComboBoxText *band_type, *band_mode, *band_slope;
+  GtkToggleButton *bypass, *mute, *solo;
 
-  GtkButton *reset_frequency, *reset_quality;
+  GtkLabel *end_label, *gain_label, *envelope_label, *curve_label;
 
-  GtkToggleButton *band_solo, *band_mute;
+  GtkSpinButton *split_frequency, *lowcut_filter_frequency, *highcut_filter_frequency, *attack_time, *attack_threshold,
+      *release_time, *release_threshold, *ratio, *knee, *makeup, *sidechain_preamp, *sidechain_reactivity,
+      *sidechain_lookahead, *boost_amount, *boost_threshold;
 
-  GtkScale* band_scale;
+  GtkCheckButton *lowcut_filter, *highcut_filter;
 
-  GtkSpinButton *band_frequency, *band_quality;
+  GtkComboBoxText* compression_mode;
+
+  GtkBox* split_frequency_box;
 
   GSettings* settings;
 
@@ -62,38 +66,33 @@ void on_reset_frequency(MultibandCompressorBandBox* self, GtkButton* btn) {
   // g_settings_reset(self->settings, tags::multiband_compressor::band_frequency[self->data->index]);
 }
 
-auto set_band_label(MultibandCompressorBandBox* self, double value) -> const char* {
-  if (value > 1000.0) {
-    return g_strdup(fmt::format("{0:.1f} kHz", value / 1000.0).c_str());
-  } else {
-    return g_strdup(fmt::format("{0:.1f} Hz", value).c_str());
-  }
-}
-
-auto set_band_quality_label(MultibandCompressorBandBox* self, double value) -> const char* {
-  return g_strdup(fmt::format("Q {0:.2f}", value).c_str());
-}
-
-auto set_band_width_label(MultibandCompressorBandBox* self, double quality, double frequency) -> const char* {
-  if (quality > 0.0) {
-    return g_strdup(fmt::format("{0:.1f} Hz", frequency / quality).c_str());
-  } else {
-    return _("infinity");
-  }
-}
-
-auto set_band_scale_sensitive(MultibandCompressorBandBox* self, const char* active_id) -> gboolean {
-  if (g_strcmp0(active_id, "Off") == 0 || g_strcmp0(active_id, "Hi-pass") == 0 ||
-      g_strcmp0(active_id, "Lo-pass") == 0) {
+gboolean set_boost_threshold_sensitive(MultibandCompressorBandBox* self, const char* active_id) {
+  if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Boosting") == 0) {
     return 0;
+  } else if (g_strcmp0(active_id, "Upward") == 0) {
+    return 1;
   }
 
   return 1;
 }
 
+gboolean set_boost_amount_sensitive(MultibandCompressorBandBox* self, const char* active_id) {
+  if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Upward") == 0) {
+    return 0;
+  } else if (g_strcmp0(active_id, "Boosting") == 0) {
+    return 1;
+  }
+
+  return 1;
+}
 void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
   self->data->index = index;
   self->settings = settings;
+
+  const auto nstr = std::to_string(index);
+
+  g_settings_bind(self->settings, ("compression-mode" + nstr).c_str(), self->compression_mode, "active-id",
+                  G_SETTINGS_BIND_DEFAULT);
 
   // g_settings_bind(settings, tags::multiband_compressor::band_gain[index],
   //                 gtk_range_get_adjustment(GTK_RANGE(self->band_scale)), "value", G_SETTINGS_BIND_DEFAULT);
@@ -154,23 +153,35 @@ void multiband_compressor_band_box_class_init(MultibandCompressorBandBoxClass* k
   gtk_widget_class_set_template_from_resource(widget_class,
                                               "/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, band_type);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, band_mode);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, band_slope);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, reset_frequency);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, reset_quality);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, band_solo);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, band_mute);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, band_scale);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, band_frequency);
-  // gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, band_quality);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, bypass);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, mute);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, solo);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, end_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, gain_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, envelope_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, curve_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, split_frequency);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, split_frequency_box);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, lowcut_filter);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, highcut_filter);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, lowcut_filter_frequency);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, highcut_filter_frequency);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, attack_time);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, attack_threshold);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, release_time);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, release_threshold);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, ratio);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, knee);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, makeup);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, sidechain_preamp);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, sidechain_reactivity);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, sidechain_lookahead);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, boost_amount);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, boost_threshold);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, compression_mode);
 
-  // gtk_widget_class_bind_template_callback(widget_class, on_reset_quality);
-  // gtk_widget_class_bind_template_callback(widget_class, on_reset_frequency);
-  // gtk_widget_class_bind_template_callback(widget_class, set_band_scale_sensitive);
-  // gtk_widget_class_bind_template_callback(widget_class, set_band_label);
-  // gtk_widget_class_bind_template_callback(widget_class, set_band_quality_label);
-  // gtk_widget_class_bind_template_callback(widget_class, set_band_width_label);
+  gtk_widget_class_bind_template_callback(widget_class, set_boost_amount_sensitive);
+  gtk_widget_class_bind_template_callback(widget_class, set_boost_threshold_sensitive);
 }
 
 void multiband_compressor_band_box_init(MultibandCompressorBandBox* self) {
@@ -178,10 +189,21 @@ void multiband_compressor_band_box_init(MultibandCompressorBandBox* self) {
 
   self->data = new Data();
 
-  // prepare_scale<"">(self->band_scale);
+  prepare_spinbutton<"Hz">(self->lowcut_filter_frequency);
+  prepare_spinbutton<"Hz">(self->highcut_filter_frequency);
+  prepare_spinbutton<"ms">(self->attack_time);
+  prepare_spinbutton<"ms">(self->release_time);
+  prepare_spinbutton<"ms">(self->sidechain_reactivity);
+  prepare_spinbutton<"ms">(self->sidechain_lookahead);
+  prepare_spinbutton<"dB">(self->attack_threshold);
+  prepare_spinbutton<"dB">(self->release_threshold);
+  prepare_spinbutton<"dB">(self->knee);
+  prepare_spinbutton<"dB">(self->makeup);
+  prepare_spinbutton<"dB">(self->sidechain_preamp);
+  prepare_spinbutton<"dB">(self->boost_amount);
+  prepare_spinbutton<"dB">(self->boost_threshold);
 
-  // prepare_spinbutton<"Hz">(self->band_frequency);
-  // prepare_spinbutton<"">(self->band_quality);
+  prepare_spinbutton<"">(self->ratio);
 }
 
 auto create() -> MultibandCompressorBandBox* {

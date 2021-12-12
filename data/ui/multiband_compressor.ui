@@ -149,9 +149,13 @@
                                 <property name="valign">center</property>
                                 <property name="selection-mode">single</property>
                                 <property name="show-separators">1</property>
+                                <signal name="row-selected" handler="on_listbox_row_selected" object="MultibandCompressorBox" />
+
+
                                 <accessibility>
                                     <property name="label" translatable="yes">Bands List</property>
                                 </accessibility>
+
                                 <child>
                                     <object class="GtkListBoxRow">
                                         <child>

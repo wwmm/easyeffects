@@ -51,6 +51,9 @@ struct _MultibandCompressorBox {
 
   GtkStack* stack;
 
+  GtkCheckButton *enable_band1, *enable_band2, *enable_band3, *enable_band4, *enable_band5, *enable_band6,
+      *enable_band7;
+
   GtkComboBoxText *compressor_mode, *envelope_boost;
 
   GtkDropDown* dropdown_input_devices;
@@ -74,13 +77,21 @@ void on_reset(MultibandCompressorBox* self, GtkButton* btn) {
   util::reset_all_keys(self->settings);
 }
 
+void on_listbox_row_selected(MultibandCompressorBox* self, GtkListBoxRow* row, GtkListBox* listbox) {
+  if (auto* selected_row = gtk_list_box_get_selected_row(listbox); selected_row != nullptr) {
+    if (auto index = gtk_list_box_row_get_index(selected_row); index != -1) {
+      gtk_stack_set_visible_child_name(self->stack, ("band" + std::to_string(index)).c_str());
+    }
+  }
+}
+
 void create_bands(MultibandCompressorBox* self) {
-  for (uint n = 1U; n < n_bands; n++) {
+  for (uint n = 0; n < n_bands; n++) {
     auto band_box = ui::multiband_compressor_band_box::create();
 
     ui::multiband_compressor_band_box::setup(band_box, self->settings, n);
 
-    gtk_stack_add_child(self->stack, GTK_WIDGET(band_box));
+    gtk_stack_add_named(self->stack, GTK_WIDGET(band_box), ("band" + std::to_string(n)).c_str());
   }
 }
 
@@ -169,6 +180,14 @@ void setup(MultibandCompressorBox* self,
   g_settings_bind(self->settings, "compressor-mode", self->compressor_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "envelope-boost", self->envelope_boost, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "enable-band1", self->enable_band1, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "enable-band2", self->enable_band2, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "enable-band3", self->enable_band3, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "enable-band4", self->enable_band4, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "enable-band5", self->enable_band5, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "enable-band6", self->enable_band6, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "enable-band7", self->enable_band7, "active", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -227,12 +246,20 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, bypass);
 
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, stack);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band4);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band5);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band6);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band7);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, compressor_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, envelope_boost);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, dropdown_input_devices);
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_listbox_row_selected);
 }
 
 void multiband_compressor_box_init(MultibandCompressorBox* self) {
@@ -253,37 +280,6 @@ auto create() -> MultibandCompressorBox* {
 }  // namespace ui::multiband_compressor_box
 
 namespace {
-
-auto compression_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Downward") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Upward") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Boosting") == 0) {
-    g_value_set_int(value, 2);
-  }
-
-  return 1;
-}
-
-auto int_to_compression_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Downward");
-
-    case 1:
-      return g_variant_new_string("Upward");
-
-    case 2:
-      return g_variant_new_string("Boosting");
-
-    default:
-      return g_variant_new_string("Downward");
-  }
-}
 
 auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
@@ -372,32 +368,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   stack = builder->get_widget<Gtk::Stack>("stack");
 
-  listbox = builder->get_widget<Gtk::ListBox>("listbox");
-
-  listbox->select_row(*listbox->get_row_at_index(0));
-
-  listbox->signal_selected_rows_changed().connect([=, this]() {
-    // some core dumps happened here
-    // checking pointer and int row integrity might fix them
-
-    if (const auto* selected_row = listbox->get_selected_row(); selected_row != nullptr) {
-      if (const auto row = selected_row->get_index(); row > -1) {
-        stack->set_visible_child("band" + std::to_string(row));
-      }
-    }
-  });
-
   set_dropdown_input_devices_sensitivity();
-
-  // setup band checkbuttons
-
-  for (uint n = 1U; n < n_bands; n++) {
-    const auto nstr = std::to_string(n);
-
-    // auto* const enable_band = builder->get_widget<Gtk::CheckButton>("enable_band"+ nstr).c_str());
-
-    // settings->bind("enable-band"+ nstr).c_str(), enable_band, "active");
-  }
 
   prepare_bands();
 }
@@ -434,54 +405,6 @@ void MultibandCompressorUi::prepare_bands() {
     }
 
     // loading builder widgets
-
-    bands_end.at(n) = builder->get_widget<Gtk::Label>("band_end");
-
-    bands_gain_label.at(n) = builder->get_widget<Gtk::Label>("band_gain_label");
-
-    bands_envelope_label.at(n) = builder->get_widget<Gtk::Label>("band_envelope_label");
-
-    bands_curve_label.at(n) = builder->get_widget<Gtk::Label>("band_curve_label");
-
-    auto* const band_bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
-
-    auto* const mute = builder->get_widget<Gtk::ToggleButton>("mute");
-
-    auto* const solo = builder->get_widget<Gtk::ToggleButton>("solo");
-
-    auto* const lowcut_filter = builder->get_widget<Gtk::CheckButton>("lowcut_filter");
-
-    auto* const highcut_filter = builder->get_widget<Gtk::CheckButton>("highcut_filter");
-
-    auto* const lowcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("lowcut_filter_frequency");
-
-    auto* const highcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("highcut_filter_frequency");
-
-    auto* const attack_time = builder->get_widget<Gtk::SpinButton>("attack_time");
-
-    auto* const attack_threshold = builder->get_widget<Gtk::SpinButton>("attack_threshold");
-
-    auto* const release_time = builder->get_widget<Gtk::SpinButton>("release_time");
-
-    auto* const release_threshold = builder->get_widget<Gtk::SpinButton>("release_threshold");
-
-    auto* const ratio = builder->get_widget<Gtk::SpinButton>("ratio");
-
-    auto* const knee = builder->get_widget<Gtk::SpinButton>("knee");
-
-    auto* const makeup = builder->get_widget<Gtk::SpinButton>("makeup");
-
-    auto* const sidechain_preamp = builder->get_widget<Gtk::SpinButton>("sidechain_preamp");
-
-    auto* const sidechain_reactivity = builder->get_widget<Gtk::SpinButton>("sidechain_reactivity");
-
-    auto* const sidechain_lookahead = builder->get_widget<Gtk::SpinButton>("sidechain_lookahead");
-
-    auto* const boost_amount = builder->get_widget<Gtk::SpinButton>("boost_amount");
-
-    auto* const boost_threshold = builder->get_widget<Gtk::SpinButton>("boost_threshold");
-
-    auto* const compression_mode = builder->get_widget<Gtk::ComboBoxText>("compression_mode");
 
     auto* const sidechain_mode = builder->get_widget<Gtk::ComboBoxText>("sidechain_mode");
 
@@ -534,10 +457,6 @@ void MultibandCompressorUi::prepare_bands() {
 
     // settings->bind("boost-threshold"+ nstr).c_str(), boost_threshold->get_adjustment().get(), "value");
 
-    // g_settings_bind_with_mapping(settings->gobj(), std::string("compression-mode"+ nstr).c_str()).c_str(),
-    //                              compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-    //                              compression_mode_enum_to_int, int_to_compression_mode_enum, nullptr, nullptr);
-
     // g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-mode"+ nstr).c_str()).c_str(),
     // sidechain_mode->gobj(),
     //                              "active", G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
@@ -551,66 +470,6 @@ void MultibandCompressorUi::prepare_bands() {
     // key) {
     //   set_dropdown_input_devices_sensitivity();
     // }));
-
-    // prepare widgets
-
-    prepare_spinbutton(lowcut_filter_frequency, "Hz");
-
-    prepare_spinbutton(highcut_filter_frequency, "Hz");
-
-    prepare_spinbutton(attack_time, "ms");
-
-    prepare_spinbutton(attack_threshold, "db");
-
-    prepare_spinbutton(release_time, "ms");
-
-    prepare_spinbutton(release_threshold, "db");
-
-    prepare_spinbutton(ratio);
-
-    prepare_spinbutton(knee, "db");
-
-    prepare_spinbutton(makeup, "db");
-
-    prepare_spinbutton(sidechain_preamp, "db");
-
-    prepare_spinbutton(sidechain_reactivity, "ms");
-
-    prepare_spinbutton(sidechain_lookahead, "ms");
-
-    prepare_spinbutton(boost_amount, "db");
-
-    prepare_spinbutton(boost_threshold, "db");
-
-    // set boost spinbuttons sensitivity on compression mode
-
-    auto set_boost_spinbuttons_sensitivity = [=, this]() {
-      const auto row_id = compression_mode->get_active_id();
-
-      if (row_id == "downward_mode") {
-        boost_threshold->set_sensitive(false);
-        boost_amount->set_sensitive(false);
-      } else if (row_id == "upward_mode") {
-        boost_threshold->set_sensitive(true);
-        boost_amount->set_sensitive(false);
-      } else if (row_id == "boosting_mode") {
-        boost_threshold->set_sensitive(false);
-        boost_amount->set_sensitive(true);
-      } else {
-        boost_threshold->set_sensitive(true);
-        boost_amount->set_sensitive(true);
-      }
-    };
-
-    set_boost_spinbuttons_sensitivity();
-
-    compression_mode->signal_changed().connect(set_boost_spinbuttons_sensitivity);
-
-    // add to stack
-
-    auto* const top_box = builder->get_widget<Gtk::Box>("top_box");
-
-    // stack->add(*top_box, "band"+ nstr).c_str());
   }
 }
 

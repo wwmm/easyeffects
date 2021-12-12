@@ -71,7 +71,7 @@
                             <property name="row">1</property>
                         </layout>
                         <child>
-                            <object class="GtkLabel" id="band_end">
+                            <object class="GtkLabel" id="end_label">
                                 <property name="label">24000</property>
                             </object>
                         </child>
@@ -96,9 +96,9 @@
                     <object class="GtkComboBoxText" id="compression_mode">
                         <property name="halign">center</property>
                         <items>
-                            <item id="downward_mode" translatable="yes">Downward</item>
-                            <item id="upward_mode" translatable="yes">Upward</item>
-                            <item id="boosting_mode" translatable="yes">Boosting</item>
+                            <item id="Downward" translatable="yes">Downward</item>
+                            <item id="Upward" translatable="yes">Upward</item>
+                            <item id="Boosting" translatable="yes">Boosting</item>
                         </items>
                         <layout>
                             <property name="column">2</property>
@@ -732,6 +732,13 @@
                                         <property name="width-chars">10</property>
                                         <property name="digits">1</property>
                                         <property name="update-policy">if-valid</property>
+
+                                        <binding name="sensitive">
+                                            <closure type="gboolean" function="set_boost_amount_sensitive">
+                                                <lookup name="active-id">compression_mode</lookup>
+                                            </closure>
+                                        </binding>
+
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
                                                 <property name="lower">0</property>
@@ -741,10 +748,12 @@
                                                 <property name="page-increment">1</property>
                                             </object>
                                         </property>
+
                                         <layout>
                                             <property name="column">3</property>
                                             <property name="row">1</property>
                                         </layout>
+
                                         <accessibility>
                                             <relation name="labelled-by">boost_amount_label</relation>
                                         </accessibility>
@@ -767,6 +776,13 @@
                                         <property name="width-chars">10</property>
                                         <property name="digits">1</property>
                                         <property name="update-policy">if-valid</property>
+
+                                        <binding name="sensitive">
+                                            <closure type="gboolean" function="set_boost_threshold_sensitive">
+                                                <lookup name="active-id">compression_mode</lookup>
+                                            </closure>
+                                        </binding>
+
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
                                                 <property name="lower">-120</property>
@@ -776,10 +792,12 @@
                                                 <property name="page-increment">1</property>
                                             </object>
                                         </property>
+
                                         <layout>
                                             <property name="column">4</property>
                                             <property name="row">1</property>
                                         </layout>
+
                                         <accessibility>
                                             <relation name="labelled-by">boost_threshold_label</relation>
                                         </accessibility>
@@ -809,7 +827,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="band_gain_label">
+                            <object class="GtkLabel" id="gain_label">
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
@@ -834,7 +852,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="band_envelope_label">
+                            <object class="GtkLabel" id="envelope_label">
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
@@ -859,7 +877,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="band_curve_label">
+                            <object class="GtkLabel" id="curve_label">
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
