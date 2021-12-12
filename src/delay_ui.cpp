@@ -167,6 +167,9 @@ void delay_box_init(DelayBox* self) {
 
   prepare_spinbutton<"ms">(self->time_l);
   prepare_spinbutton<"ms">(self->time_r);
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> DelayBox* {

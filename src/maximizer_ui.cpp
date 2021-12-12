@@ -176,6 +176,9 @@ void maximizer_box_init(MaximizerBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"dB">(self->threshold);
   prepare_spinbutton<"dB">(self->ceiling);
   prepare_spinbutton<"ms">(self->release);

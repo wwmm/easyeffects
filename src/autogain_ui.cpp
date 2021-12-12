@@ -220,6 +220,9 @@ void autogain_box_init(AutogainBox* self) {
   self->data = new Data();
 
   prepare_spinbutton<"dB">(self->target);
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> AutogainBox* {

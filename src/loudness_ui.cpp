@@ -166,6 +166,9 @@ void loudness_box_init(LoudnessBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"dB">(self->volume);
 }
 

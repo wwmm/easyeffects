@@ -311,6 +311,9 @@ void rnnoise_box_init(RNNoiseBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   // model dir
 
   if (!std::filesystem::is_directory(model_dir)) {

@@ -181,6 +181,9 @@ void crossfeed_box_init(CrossfeedBox* self) {
 
   prepare_spinbutton<"Hz">(self->fcut);
   prepare_spinbutton<"dB">(self->feed);
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> CrossfeedBox* {

@@ -165,6 +165,9 @@ void echo_canceller_box_init(EchoCancellerBox* self) {
 
   prepare_spinbutton<"ms">(self->filter_length);
   prepare_spinbutton<"ms">(self->frame_size);
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> EchoCancellerBox* {

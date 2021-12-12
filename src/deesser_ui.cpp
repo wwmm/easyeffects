@@ -228,6 +228,9 @@ void deesser_box_init(DeesserBox* self) {
   prepare_spinbutton<"Hz">(self->f1_freq);
   prepare_spinbutton<"Hz">(self->f2_freq);
   prepare_spinbutton<"">(self->f2_q);
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> DeesserBox* {

@@ -232,6 +232,9 @@ void crystalizer_box_init(CrystalizerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->data = new Data();
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> CrystalizerBox* {

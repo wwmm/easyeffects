@@ -297,6 +297,9 @@ void limiter_box_init(LimiterBox* self) {
 
   self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"dB">(self->sc_preamp);
   prepare_spinbutton<"dB">(self->threshold);
   prepare_spinbutton<"dB">(self->alr_knee);

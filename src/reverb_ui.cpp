@@ -269,6 +269,9 @@ void reverb_box_init(ReverbBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"dB">(self->amount);
   prepare_spinbutton<"dB">(self->dry);
   prepare_spinbutton<"Hz">(self->hf_damp);

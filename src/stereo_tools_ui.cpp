@@ -213,6 +213,9 @@ void stereo_tools_box_init(StereoToolsBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"dB">(self->slev);
   prepare_spinbutton<"dB">(self->mlev);
   prepare_spinbutton<"ms">(self->delay);

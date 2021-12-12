@@ -583,6 +583,9 @@ void convolver_box_init(ConvolverBox* self) {
 
   prepare_spinbutton<"%">(self->ir_width);
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   self->chart = ui::chart::create();
 
   gtk_widget_set_vexpand(GTK_WIDGET(self->chart), 1);

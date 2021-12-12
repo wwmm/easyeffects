@@ -592,6 +592,9 @@ void equalizer_box_init(EqualizerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->data = new Data();
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> EqualizerBox* {

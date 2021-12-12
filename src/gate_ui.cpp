@@ -201,6 +201,9 @@ void gate_box_init(GateBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"dB">(self->range);
   prepare_spinbutton<"dB">(self->threshold);
   prepare_spinbutton<"dB">(self->knee);

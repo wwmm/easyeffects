@@ -197,6 +197,8 @@ void bass_enhancer_box_init(BassEnhancerBox* self) {
   prepare_spinbutton<"">(self->harmonics);
 
   prepare_scale<"">(self->blend);
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> BassEnhancerBox* {

@@ -179,6 +179,9 @@ void pitch_box_init(PitchBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"">(self->crispness);
   prepare_spinbutton<"">(self->cents);
   prepare_spinbutton<"">(self->semitones);

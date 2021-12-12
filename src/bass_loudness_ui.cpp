@@ -169,6 +169,9 @@ void bass_loudness_box_init(BassLoudnessBox* self) {
   prepare_spinbutton<"dB">(self->loudness);
   prepare_spinbutton<"dB">(self->output);
   prepare_spinbutton<"dB">(self->link);
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
 }
 
 auto create() -> BassLoudnessBox* {

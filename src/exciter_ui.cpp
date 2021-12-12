@@ -190,6 +190,9 @@ void exciter_box_init(ExciterBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"dB">(self->amount);
   prepare_spinbutton<"Hz">(self->scope);
   prepare_spinbutton<"Hz">(self->ceil);

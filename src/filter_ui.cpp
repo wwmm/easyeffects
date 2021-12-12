@@ -172,6 +172,9 @@ void filter_box_init(FilterBox* self) {
 
   self->data = new Data();
 
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
   prepare_spinbutton<"dB">(self->frequency);
   prepare_spinbutton<"Hz">(self->resonance);
   prepare_spinbutton<"Hz">(self->inertia);
