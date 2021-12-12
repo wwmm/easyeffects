@@ -102,7 +102,5 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   void prepare_bands();
 
-  void setup_dropdown_input_devices();
-
   void set_dropdown_input_devices_sensitivity();
 };

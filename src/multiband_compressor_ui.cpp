@@ -419,10 +419,6 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  compressor_mode = builder->get_widget<Gtk::ComboBoxText>("compressor_mode");
-
-  envelope_boost = builder->get_widget<Gtk::ComboBoxText>("envelope_boost");
-
   stack = builder->get_widget<Gtk::Stack>("stack");
 
   listbox = builder->get_widget<Gtk::ListBox>("listbox");
@@ -440,18 +436,6 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
     }
   });
 
-  dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
-
-  dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
-    if (auto item = dropdown_input_devices->get_selected_item(); item != nullptr) {
-      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(item);
-
-      settings->set_string("sidechain-input-device", holder->name);
-    }
-  });
-
-  setup_dropdown_input_devices();
-
   set_dropdown_input_devices_sensitivity();
 
   // setup band checkbuttons
@@ -465,25 +449,11 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   }
 
   prepare_bands();
-
-  setup_input_output_gain(builder);
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {
   util::debug(name + " ui destroyed");
 }
-
-// auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi*
-// {
-//   const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
-
-//   auto* const ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
-//       builder, "top_box", "com.github.wwmm.easyeffects.multibandcompressor", schema_path + "multibandcompressor/");
-
-//   stack->add(*ui, plugin_name::multiband_compressor);
-
-//   return ui;
-// }
 
 void MultibandCompressorUi::prepare_bands() {
   for (uint n = 0U; n < n_bands; n++) {
@@ -715,51 +685,6 @@ void MultibandCompressorUi::on_new_reduction(const std::array<float, n_bands>& v
   for (size_t n = 0U; n < values.size(); n++) {
     bands_gain_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
-}
-
-void MultibandCompressorUi::setup_dropdown_input_devices() {
-  // setting the dropdown model and factory
-
-  auto selection_model = Gtk::SingleSelection::create(input_devices_model);
-
-  dropdown_input_devices->set_model(selection_model);
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  dropdown_input_devices->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
-    auto* const label = Gtk::make_managed<Gtk::Label>();
-    auto* const icon = Gtk::make_managed<Gtk::Image>();
-
-    label->set_hexpand(true);
-    label->set_halign(Gtk::Align::START);
-
-    icon->set_from_icon_name("audio-input-microphone-symbolic");
-
-    box->set_spacing(6);
-    box->append(*icon);
-    box->append(*label);
-
-    // setting list_item data
-
-    list_item->set_data("name", label);
-    list_item->set_data("icon", icon);
-
-    list_item->set_child(*box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-
-    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
-
-    label->set_name(holder->name);
-    label->set_text(holder->name);
-  });
 }
 
 void MultibandCompressorUi::set_dropdown_input_devices_sensitivity() {
