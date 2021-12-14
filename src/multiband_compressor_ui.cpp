@@ -188,8 +188,6 @@ void setup(MultibandCompressorBox* self,
   g_settings_bind(self->settings, "enable-band5", self->enable_band5, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "enable-band6", self->enable_band6, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "enable-band7", self->enable_band7, "active", G_SETTINGS_BIND_DEFAULT);
-
-  util::generate_tags(8, "compression-mode", "");
 }
 
 void dispose(GObject* object) {
@@ -281,82 +279,6 @@ auto create() -> MultibandCompressorBox* {
 
 }  // namespace ui::multiband_compressor_box
 
-namespace {
-
-auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Peak") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "RMS") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Low-Pass") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "Uniform") == 0) {
-    g_value_set_int(value, 3);
-  }
-
-  return 1;
-}
-
-auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Peak");
-
-    case 1:
-      return g_variant_new_string("RMS");
-
-    case 2:
-      return g_variant_new_string("Low-Pass");
-
-    case 3:
-      return g_variant_new_string("Uniform");
-
-    default:
-      return g_variant_new_string("RMS");
-  }
-}
-
-auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "Middle") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Side") == 0) {
-    g_value_set_int(value, 1);
-  } else if (g_strcmp0(v, "Left") == 0) {
-    g_value_set_int(value, 2);
-  } else if (g_strcmp0(v, "Right") == 0) {
-    g_value_set_int(value, 3);
-  }
-
-  return 1;
-}
-
-auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("Middle");
-
-    case 1:
-      return g_variant_new_string("Side");
-
-    case 2:
-      return g_variant_new_string("Left");
-
-    case 3:
-      return g_variant_new_string("Right");
-
-    default:
-      return g_variant_new_string("Middle");
-  }
-}
-
-}  // namespace
-
 MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& builder,
                                              const std::string& schema,
@@ -386,87 +308,7 @@ void MultibandCompressorUi::prepare_bands() {
     const auto builder =
         Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
-    if (n > 0U) {
-      auto* const split_frequency = builder->get_widget<Gtk::SpinButton>("split_frequency");
-
-      // settings->bind("split-frequency"+ nstr).c_str(), split_frequency->get_adjustment().get(), "value");
-
-      prepare_spinbutton(split_frequency, "Hz");
-    } else {
-      // removing split frequency from band 0
-
-      auto* const sf_box = builder->get_widget<Gtk::Box>("split_frequency_box");
-
-      for (auto* child = sf_box->get_last_child(); child != nullptr; child = sf_box->get_last_child()) {
-        sf_box->remove(*child);
-      }
-
-      auto sf_label = Gtk::Label("0 Hz", Gtk::Align::CENTER);
-
-      sf_box->append(sf_label);
-    }
-
-    // loading builder widgets
-
-    auto* const sidechain_mode = builder->get_widget<Gtk::ComboBoxText>("sidechain_mode");
-
-    auto* const sidechain_source = builder->get_widget<Gtk::ComboBoxText>("sidechain_source");
-
-    auto* const external_sidechain = builder->get_widget<Gtk::ToggleButton>("external_sidechain");
-
     // gsettings bindings
-
-    // settings->bind("compressor-enable"+ nstr).c_str(), band_bypass, "active",
-    // Gio::Settings::BindFlags::INVERT_BOOLEAN);
-
-    // settings->bind("mute"+ nstr).c_str(), mute, "active");
-
-    // settings->bind("solo"+ nstr).c_str(), solo, "active");
-
-    // settings->bind("sidechain-custom-lowcut-filter"+ nstr).c_str(), lowcut_filter, "active");
-
-    // settings->bind("sidechain-custom-highcut-filter"+ nstr).c_str(), highcut_filter, "active");
-
-    // settings->bind("sidechain-lowcut-frequency"+ nstr).c_str(), lowcut_filter_frequency->get_adjustment().get(),
-    // "value");
-
-    // settings->bind("sidechain-highcut-frequency"+ nstr).c_str(), highcut_filter_frequency->get_adjustment().get(),
-    // "value");
-
-    // settings->bind("attack-time"+ nstr).c_str(), attack_time->get_adjustment().get(), "value");
-
-    // settings->bind("attack-threshold"+ nstr).c_str(), attack_threshold->get_adjustment().get(), "value");
-
-    // settings->bind("release-time"+ nstr).c_str(), release_time->get_adjustment().get(), "value");
-
-    // settings->bind("release-threshold"+ nstr).c_str(), release_threshold->get_adjustment().get(), "value");
-
-    // settings->bind("ratio"+ nstr).c_str(), ratio->get_adjustment().get(), "value");
-
-    // settings->bind("knee"+ nstr).c_str(), knee->get_adjustment().get(), "value");
-
-    // settings->bind("makeup"+ nstr).c_str(), makeup->get_adjustment().get(), "value");
-
-    // settings->bind("external-sidechain"+ nstr).c_str(), external_sidechain, "active");
-
-    // settings->bind("sidechain-preamp"+ nstr).c_str(), sidechain_preamp->get_adjustment().get(), "value");
-
-    // settings->bind("sidechain-reactivity"+ nstr).c_str(), sidechain_reactivity->get_adjustment().get(), "value");
-
-    // settings->bind("sidechain-lookahead"+ nstr).c_str(), sidechain_lookahead->get_adjustment().get(), "value");
-
-    // settings->bind("boost-amount"+ nstr).c_str(), boost_amount->get_adjustment().get(), "value");
-
-    // settings->bind("boost-threshold"+ nstr).c_str(), boost_threshold->get_adjustment().get(), "value");
-
-    // g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-mode"+ nstr).c_str()).c_str(),
-    // sidechain_mode->gobj(),
-    //                              "active", G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
-    //                              int_to_sidechain_mode_enum, nullptr, nullptr);
-
-    // g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-source"+ nstr).c_str()).c_str(),
-    //                              sidechain_source->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-    //                              sidechain_source_enum_to_int, int_to_sidechain_source_enum, nullptr, nullptr);
 
     // connections.push_back(settings->signal_changed("external-sidechain"+ nstr).c_str()).connect([=, this](const auto&
     // key) {

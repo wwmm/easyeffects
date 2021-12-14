@@ -457,10 +457,10 @@
                                     <object class="GtkComboBoxText" id="sidechain_mode">
                                         <property name="halign">center</property>
                                         <items>
-                                            <item translatable="yes">Peak</item>
-                                            <item translatable="yes">RMS</item>
-                                            <item translatable="yes">Low-Pass</item>
-                                            <item translatable="yes">Uniform</item>
+                                            <item translatable="yes" id="Peak">Peak</item>
+                                            <item translatable="yes" id="RMS">RMS</item>
+                                            <item translatable="yes" id="Low-Pass">Low-Pass</item>
+                                            <item translatable="yes" id="Uniform">Uniform</item>
                                         </items>
                                         <layout>
                                             <property name="column">0</property>
@@ -485,10 +485,10 @@
                                     <object class="GtkComboBoxText" id="sidechain_source">
                                         <property name="halign">center</property>
                                         <items>
-                                            <item translatable="yes">Middle</item>
-                                            <item translatable="yes">Side</item>
-                                            <item translatable="yes">Left</item>
-                                            <item translatable="yes">Right</item>
+                                            <item translatable="yes" id="Middle">Middle</item>
+                                            <item translatable="yes" id="Side">Side</item>
+                                            <item translatable="yes" id="Left">Left</item>
+                                            <item translatable="yes" id="Right">Right</item>
                                         </items>
                                         <layout>
                                             <property name="column">1</property>

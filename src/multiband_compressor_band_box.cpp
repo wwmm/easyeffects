@@ -45,9 +45,9 @@ struct _MultibandCompressorBandBox {
       *release_time, *release_threshold, *ratio, *knee, *makeup, *sidechain_preamp, *sidechain_reactivity,
       *sidechain_lookahead, *boost_amount, *boost_threshold;
 
-  GtkCheckButton *lowcut_filter, *highcut_filter;
+  GtkCheckButton *lowcut_filter, *highcut_filter, *external_sidechain;
 
-  GtkComboBoxText* compression_mode;
+  GtkComboBoxText *compression_mode, *sidechain_mode, *sidechain_source;
 
   GtkBox* split_frequency_box;
 
@@ -91,34 +91,88 @@ void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
 
   using namespace tags::multiband_compressor;
 
+  if (index > 0) {
+    g_settings_bind(settings, band_split_frequency[index], gtk_spin_button_get_adjustment(self->split_frequency),
+                    "value", G_SETTINGS_BIND_DEFAULT);
+  } else {
+    // removing split frequency from band 0
+
+    for (auto* child = gtk_widget_get_last_child(GTK_WIDGET(self->split_frequency_box)); child != nullptr;
+         child = gtk_widget_get_last_child(GTK_WIDGET(self->split_frequency_box))) {
+      gtk_box_remove(self->split_frequency_box, child);
+    }
+
+    auto* label = gtk_label_new("0 Hz");
+
+    gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_CENTER);
+
+    gtk_box_append(self->split_frequency_box, GTK_WIDGET(label));
+  }
+
   g_settings_bind(self->settings, band_compression_mode[index], self->compression_mode, "active-id",
                   G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(self->settings, band_compressor_enable[index], self->bypass, "active",
+                  G_SETTINGS_BIND_INVERT_BOOLEAN);
+
   g_settings_bind(self->settings, band_mute[index], self->mute, "active", G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(settings, tags::multiband_compressor::band_gain[index],
-  //                 gtk_range_get_adjustment(GTK_RANGE(self->band_scale)), "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_solo[index], self->solo, "active", G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(settings, tags::multiband_compressor::band_frequency[index],
-  //                 gtk_spin_button_get_adjustment(self->band_frequency), "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_lowcut_filter[index], self->lowcut_filter, "active", G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(settings, tags::multiband_compressor::band_q[index],
-  //                 gtk_spin_button_get_adjustment(self->band_quality), "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_highcut_filter[index], self->highcut_filter, "active", G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(settings, tags::multiband_compressor::band_solo[index], self->band_solo, "active",
-  //                 G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_external_sidechain[index], self->external_sidechain, "active",
+                  G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(settings, tags::multiband_compressor::band_mute[index], self->band_mute, "active",
-  //                 G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_sidechain_mode[index], self->sidechain_mode, "active-id",
+                  G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(settings, tags::multiband_compressor::band_type[index], self->band_type, "active-id",
-  //                 G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_sidechain_source[index], self->sidechain_source, "active-id",
+                  G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(settings, tags::multiband_compressor::band_mode[index], self->band_mode, "active-id",
-  //                 G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, band_lowcut_filter_frequency[index],
+                  gtk_spin_button_get_adjustment(self->lowcut_filter_frequency), "value", G_SETTINGS_BIND_DEFAULT);
 
-  // g_settings_bind(settings, tags::multiband_compressor::band_slope[index], self->band_slope, "active-id",
-  //                 G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, band_highcut_filter_frequency[index],
+                  gtk_spin_button_get_adjustment(self->highcut_filter_frequency), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_attack_time[index], gtk_spin_button_get_adjustment(self->attack_time), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_attack_threshold[index], gtk_spin_button_get_adjustment(self->attack_threshold),
+                  "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_release_time[index], gtk_spin_button_get_adjustment(self->release_time), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_release_threshold[index], gtk_spin_button_get_adjustment(self->release_threshold),
+                  "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_ratio[index], gtk_spin_button_get_adjustment(self->ratio), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_knee[index], gtk_spin_button_get_adjustment(self->knee), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_makeup[index], gtk_spin_button_get_adjustment(self->makeup), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_sidechain_preamp[index], gtk_spin_button_get_adjustment(self->sidechain_preamp),
+                  "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_sidechain_reactivity[index],
+                  gtk_spin_button_get_adjustment(self->sidechain_reactivity), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_sidechain_lookahead[index], gtk_spin_button_get_adjustment(self->sidechain_lookahead),
+                  "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_boost_amount[index], gtk_spin_button_get_adjustment(self->boost_amount), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_boost_threshold[index], gtk_spin_button_get_adjustment(self->boost_threshold), "value",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -158,6 +212,7 @@ void multiband_compressor_band_box_class_init(MultibandCompressorBandBoxClass* k
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, bypass);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, mute);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, solo);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, external_sidechain);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, end_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, gain_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, envelope_label);
@@ -181,6 +236,8 @@ void multiband_compressor_band_box_class_init(MultibandCompressorBandBoxClass* k
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, boost_amount);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, boost_threshold);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, compression_mode);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, sidechain_mode);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, sidechain_source);
 
   gtk_widget_class_bind_template_callback(widget_class, set_boost_amount_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_threshold_sensitive);
@@ -193,6 +250,7 @@ void multiband_compressor_band_box_init(MultibandCompressorBandBox* self) {
 
   prepare_spinbutton<"Hz">(self->lowcut_filter_frequency);
   prepare_spinbutton<"Hz">(self->highcut_filter_frequency);
+  prepare_spinbutton<"Hz">(self->split_frequency);
   prepare_spinbutton<"ms">(self->attack_time);
   prepare_spinbutton<"ms">(self->release_time);
   prepare_spinbutton<"ms">(self->sidechain_reactivity);
