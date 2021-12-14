@@ -20,6 +20,7 @@
 #ifndef EFFECTS_BASE_HPP
 #define EFFECTS_BASE_HPP
 
+#include <set>
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "bass_loudness.hpp"

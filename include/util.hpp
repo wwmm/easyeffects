@@ -20,9 +20,9 @@
 #ifndef UTIL_HPP
 #define UTIL_HPP
 
+#include <gdk/gdk.h>
 #include <glib-object.h>
 #include <glib.h>
-#include <gtkmm.h>
 #include <chrono>
 #include <cmath>
 #include <filesystem>
@@ -81,18 +81,7 @@ auto timepoint_to_long(time_point ts) -> long;
 
 void print_thread_id();
 
-template <typename T>
-auto glib_value(const T& cppvalue) -> Glib::Value<T> {
-  Glib::Value<T> gval;
-
-  gval.init(Glib::Value<T>::value_type());
-
-  gval.set(cppvalue);
-
-  return gval;
-}
-
-auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string>;
+auto gchar_array_to_vector(gchar** gchar_array, const bool free_data = true) -> std::vector<std::string>;
 
 auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<const gchar*>;
 

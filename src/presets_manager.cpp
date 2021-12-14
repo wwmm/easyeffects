@@ -54,9 +54,10 @@ PresetsManager::PresetsManager()
       stereo_tools(std::make_unique<StereoToolsPreset>()) {
   // system presets directories provided by Glib
 
-  for (const auto& scd : Glib::get_system_config_dirs()) {
-    system_input_dir.emplace_back(scd + "/easyeffects/input");  // it should be fine to use emplace_back in these cases
-    system_output_dir.emplace_back(scd + "/easyeffects/output");
+  for (auto scd = g_get_system_config_dirs(); *scd != nullptr; scd++) {
+    system_input_dir.emplace_back(std::string(*scd) +
+                                  "/easyeffects/input");  // it should be fine to use emplace_back in these cases
+    system_output_dir.emplace_back(std::string(*scd) + "/easyeffects/output");
   }
 
   // add "/etc" to system config folders array and remove duplicates

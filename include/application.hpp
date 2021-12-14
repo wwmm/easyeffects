@@ -61,23 +61,3 @@ auto application_new() -> GApplication*;
 void hide_all_windows(GApplication* app);
 
 }  // namespace app
-
-class Application : public Gtk::Application {
- public:
-  Application();
-  Application(const Application&) = delete;
-  auto operator=(const Application&) -> Application& = delete;
-  Application(const Application&&) = delete;
-  auto operator=(const Application&&) -> Application& = delete;
-  ~Application() override;
-
-  static auto create() -> Glib::RefPtr<Application>;
-
-  Glib::RefPtr<Gio::Settings> settings;
-  Glib::RefPtr<Gio::Settings> soe_settings;
-  Glib::RefPtr<Gio::Settings> sie_settings;
-
-  std::unique_ptr<StreamOutputEffects> soe;
-  std::unique_ptr<StreamInputEffects> sie;
-  std::unique_ptr<PresetsManager> presets_manager;
-};

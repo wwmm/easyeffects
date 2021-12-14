@@ -55,7 +55,7 @@ struct _DeesserBox {
 
   GtkToggleButton* sc_listen;
 
-  Gtk::ComboBoxText *detection, *mode;
+  GtkComboBoxText *detection, *mode;
 
   GSettings* settings;
 

@@ -187,7 +187,7 @@ auto timepoint_to_long(time_point ts) -> long {
   return std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count();
 }
 
-auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string> {
+auto gchar_array_to_vector(gchar** gchar_array, const bool free_data) -> std::vector<std::string> {
   std::vector<std::string> output;
 
   if (gchar_array != nullptr) {
@@ -196,7 +196,9 @@ auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string> {
     }
   }
 
-  g_strfreev(gchar_array);
+  if (free_data) {
+    g_strfreev(gchar_array);
+  }
 
   return output;
 }

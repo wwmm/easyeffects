@@ -20,7 +20,6 @@
 #ifndef LV2_WRAPPER_HPP
 #define LV2_WRAPPER_HPP
 
-#include <giomm.h>
 #include <lilv/lilv.h>
 #include <lv2/atom/atom.h>
 #include <lv2/buf-size/buf-size.h>
