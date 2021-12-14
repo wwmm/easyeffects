@@ -19,11 +19,12 @@
 
 #pragma once
 
-#include <array>
-
 namespace tags::multiband_compressor {
 
-// bands
+// gsettings keys tags
+
+constexpr char band_enable[][14] = {{"enable-band0"}, {"enable-band1"}, {"enable-band2"}, {"enable-band3"},
+                                    {"enable-band4"}, {"enable-band5"}, {"enable-band6"}, {"enable-band7"}};
 
 constexpr char band_compression_mode[][19] = {{"compression-mode0"}, {"compression-mode1"}, {"compression-mode2"},
                                               {"compression-mode3"}, {"compression-mode4"}, {"compression-mode5"},
@@ -116,5 +117,61 @@ constexpr char band_boost_amount[][15] = {{"boost-amount0"}, {"boost-amount1"}, 
 constexpr char band_boost_threshold[][18] = {{"boost-threshold0"}, {"boost-threshold1"}, {"boost-threshold2"},
                                              {"boost-threshold3"}, {"boost-threshold4"}, {"boost-threshold5"},
                                              {"boost-threshold6"}, {"boost-threshold7"}};
+
+// LSP port tags
+
+constexpr char sce[][7] = {{"sce_0"}, {"sce_1"}, {"sce_2"}, {"sce_3"}, {"sce_4"}, {"sce_5"}, {"sce_6"}, {"sce_7"}};
+
+constexpr char cbe[][7] = {{"cbe_0"}, {"cbe_1"}, {"cbe_2"}, {"cbe_3"}, {"cbe_4"}, {"cbe_5"}, {"cbe_6"}, {"cbe_7"}};
+
+constexpr char sf[][6] = {{"sf_0"}, {"sf_1"}, {"sf_2"}, {"sf_3"}, {"sf_4"}, {"sf_5"}, {"sf_6"}, {"sf_7"}};
+
+constexpr char scs[][7] = {{"scs_0"}, {"scs_1"}, {"scs_2"}, {"scs_3"}, {"scs_4"}, {"scs_5"}, {"scs_6"}, {"scs_7"}};
+
+constexpr char scm[][7] = {{"scm_0"}, {"scm_1"}, {"scm_2"}, {"scm_3"}, {"scm_4"}, {"scm_5"}, {"scm_6"}, {"scm_7"}};
+
+constexpr char sla[][7] = {{"sla_0"}, {"sla_1"}, {"sla_2"}, {"sla_3"}, {"sla_4"}, {"sla_5"}, {"sla_6"}, {"sla_7"}};
+
+constexpr char scr[][7] = {{"scr_0"}, {"scr_1"}, {"scr_2"}, {"scr_3"}, {"scr_4"}, {"scr_5"}, {"scr_6"}, {"scr_7"}};
+
+constexpr char scp[][7] = {{"scp_0"}, {"scp_1"}, {"scp_2"}, {"scp_3"}, {"scp_4"}, {"scp_5"}, {"scp_6"}, {"scp_7"}};
+
+constexpr char sclc[][8] = {{"sclc_0"}, {"sclc_1"}, {"sclc_2"}, {"sclc_3"},
+                            {"sclc_4"}, {"sclc_5"}, {"sclc_6"}, {"sclc_7"}};
+
+constexpr char schc[][8] = {{"schc_0"}, {"schc_1"}, {"schc_2"}, {"schc_3"},
+                            {"schc_4"}, {"schc_5"}, {"schc_6"}, {"schc_7"}};
+
+constexpr char sclf[][8] = {{"sclf_0"}, {"sclf_1"}, {"sclf_2"}, {"sclf_3"},
+                            {"sclf_4"}, {"sclf_5"}, {"sclf_6"}, {"sclf_7"}};
+
+constexpr char schf[][8] = {{"schf_0"}, {"schf_1"}, {"schf_2"}, {"schf_3"},
+                            {"schf_4"}, {"schf_5"}, {"schf_6"}, {"schf_7"}};
+
+constexpr char cm[][6] = {{"cm_0"}, {"cm_1"}, {"cm_2"}, {"cm_3"}, {"cm_4"}, {"cm_5"}, {"cm_6"}, {"cm_7"}};
+
+constexpr char ce[][6] = {{"ce_0"}, {"ce_1"}, {"ce_2"}, {"ce_3"}, {"ce_4"}, {"ce_5"}, {"ce_6"}, {"ce_7"}};
+
+constexpr char bs[][6] = {{"bs_0"}, {"bs_1"}, {"bs_2"}, {"bs_3"}, {"bs_4"}, {"bs_5"}, {"bs_6"}, {"bs_7"}};
+
+constexpr char bm[][6] = {{"bm_0"}, {"bm_1"}, {"bm_2"}, {"bm_3"}, {"bm_4"}, {"bm_5"}, {"bm_6"}, {"bm_7"}};
+
+constexpr char al[][6] = {{"al_0"}, {"al_1"}, {"al_2"}, {"al_3"}, {"al_4"}, {"al_5"}, {"al_6"}, {"al_7"}};
+
+constexpr char at[][6] = {{"at_0"}, {"at_1"}, {"at_2"}, {"at_3"}, {"at_4"}, {"at_5"}, {"at_6"}, {"at_7"}};
+
+constexpr char rrl[][7] = {{"rrl_0"}, {"rrl_1"}, {"rrl_2"}, {"rrl_3"}, {"rrl_4"}, {"rrl_5"}, {"rrl_6"}, {"rrl_7"}};
+
+constexpr char rt[][6] = {{"rt_0"}, {"rt_1"}, {"rt_2"}, {"rt_3"}, {"rt_4"}, {"rt_5"}, {"rt_6"}, {"rt_7"}};
+
+constexpr char cr[][6] = {{"cr_0"}, {"cr_1"}, {"cr_2"}, {"cr_3"}, {"cr_4"}, {"cr_5"}, {"cr_6"}, {"cr_7"}};
+
+constexpr char kn[][6] = {{"kn_0"}, {"kn_1"}, {"kn_2"}, {"kn_3"}, {"kn_4"}, {"kn_5"}, {"kn_6"}, {"kn_7"}};
+
+constexpr char bth[][7] = {{"bth_0"}, {"bth_1"}, {"bth_2"}, {"bth_3"}, {"bth_4"}, {"bth_5"}, {"bth_6"}, {"bth_7"}};
+
+constexpr char bsa[][7] = {{"bsa_0"}, {"bsa_1"}, {"bsa_2"}, {"bsa_3"}, {"bsa_4"}, {"bsa_5"}, {"bsa_6"}, {"bsa_7"}};
+
+constexpr char mk[][6] = {{"mk_0"}, {"mk_1"}, {"mk_2"}, {"mk_3"}, {"mk_4"}, {"mk_5"}, {"mk_6"}, {"mk_7"}};
 
 }  // namespace tags::multiband_compressor

@@ -37,73 +37,11 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
                                           }),
                                           this));
 
-  lv2_wrapper->bind_key_enum(settings, "compressor-mode", "mode");
+  lv2_wrapper->bind_key_enum<"mode", "compressor-mode">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "envelope-boost", "envb");
+  lv2_wrapper->bind_key_enum<"envb", "envelope-boost">(settings);
 
-  for (uint n = 0U; n < n_bands; n++) {
-    const auto nstr = std::to_string(n);
-
-    gconnections.push_back(g_signal_connect(settings, "changed::external-sidechain",
-                                            G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                              auto self = static_cast<MultibandCompressor*>(user_data);
-
-                                              self->update_sidechain_links(key);
-                                            }),
-                                            this));
-
-    lv2_wrapper->bind_key_bool(settings, "external-sidechain" + nstr, "sce_" + nstr);
-
-    if (n > 0U) {
-      lv2_wrapper->bind_key_bool(settings, "enable-band" + nstr, "cbe_" + nstr);
-
-      lv2_wrapper->bind_key_double(settings, "split-frequency" + nstr, "sf_" + nstr);
-    }
-
-    lv2_wrapper->bind_key_enum(settings, "sidechain-source" + nstr, "scs_" + nstr);
-
-    lv2_wrapper->bind_key_enum(settings, "sidechain-mode" + nstr, "scm_" + nstr);
-
-    lv2_wrapper->bind_key_double(settings, "sidechain-lookahead" + nstr, "sla_" + nstr);
-
-    lv2_wrapper->bind_key_double(settings, "sidechain-reactivity" + nstr, "scr_" + nstr);
-
-    lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp" + nstr, "scp_" + nstr);
-
-    lv2_wrapper->bind_key_bool(settings, "sidechain-custom-lowcut-filter" + nstr, "sclc_" + nstr);
-
-    lv2_wrapper->bind_key_bool(settings, "sidechain-custom-highcut-filter" + nstr, "schc_" + nstr);
-
-    lv2_wrapper->bind_key_double(settings, "sidechain-lowcut-frequency" + nstr, "sclf_" + nstr);
-
-    lv2_wrapper->bind_key_double(settings, "sidechain-highcut-frequency" + nstr, "schf_" + nstr);
-
-    lv2_wrapper->bind_key_enum(settings, "compression-mode" + nstr, "cm_" + nstr);
-
-    lv2_wrapper->bind_key_bool(settings, "compressor-enable" + nstr, "ce_" + nstr);
-
-    lv2_wrapper->bind_key_bool(settings, "solo" + nstr, "bs_" + nstr);
-
-    lv2_wrapper->bind_key_bool(settings, "mute" + nstr, "bm_" + nstr);
-
-    lv2_wrapper->bind_key_double_db(settings, "attack-threshold" + nstr, "al_" + nstr);
-
-    lv2_wrapper->bind_key_double(settings, "attack-time" + nstr, "at_" + nstr);
-
-    lv2_wrapper->bind_key_double_db(settings, "release-threshold" + nstr, "rrl_" + nstr);
-
-    lv2_wrapper->bind_key_double(settings, "release-time" + nstr, "rt_" + nstr);
-
-    lv2_wrapper->bind_key_double(settings, "ratio" + nstr, "cr_" + nstr);
-
-    lv2_wrapper->bind_key_double_db(settings, "knee" + nstr, "kn_" + nstr);
-
-    lv2_wrapper->bind_key_double_db(settings, "boost-threshold" + nstr, "bth_" + nstr);
-
-    lv2_wrapper->bind_key_double_db(settings, "boost-amount" + nstr, "bsa_" + nstr);
-
-    lv2_wrapper->bind_key_double_db(settings, "makeup" + nstr, "mk_" + nstr);
-  }
+  bind_bands(std::make_index_sequence<n_bands>());
 
   setup_input_output_gain();
 }
