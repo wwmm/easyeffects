@@ -58,14 +58,6 @@ struct _MultibandCompressorBandBox {
 
 G_DEFINE_TYPE(MultibandCompressorBandBox, multiband_compressor_band_box, GTK_TYPE_BOX)
 
-void on_reset_quality(MultibandCompressorBandBox* self, GtkButton* btn) {
-  // g_settings_reset(self->settings, tags::multiband_compressor::band_q[self->data->index]);
-}
-
-void on_reset_frequency(MultibandCompressorBandBox* self, GtkButton* btn) {
-  // g_settings_reset(self->settings, tags::multiband_compressor::band_frequency[self->data->index]);
-}
-
 gboolean set_boost_threshold_sensitive(MultibandCompressorBandBox* self, const char* active_id) {
   if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Boosting") == 0) {
     return 0;
@@ -85,6 +77,23 @@ gboolean set_boost_amount_sensitive(MultibandCompressorBandBox* self, const char
 
   return 1;
 }
+
+void set_end_label(MultibandCompressorBandBox* self, const float& value) {
+  gtk_label_set_text(self->end_label, fmt::format("{0:.0f}", value).c_str());
+}
+
+void set_envelope_label(MultibandCompressorBandBox* self, const float& value) {
+  gtk_label_set_text(self->envelope_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+}
+
+void set_curve_label(MultibandCompressorBandBox* self, const float& value) {
+  gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+}
+
+void set_gain_label(MultibandCompressorBandBox* self, const float& value) {
+  gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+}
+
 void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
   self->data->index = index;
   self->settings = settings;

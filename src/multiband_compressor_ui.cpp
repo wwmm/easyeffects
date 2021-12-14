@@ -62,6 +62,8 @@ struct _MultibandCompressorBox {
 
   GSettings* settings;
 
+  std::array<ui::multiband_compressor_band_box::MultibandCompressorBandBox*, n_bands> bands;
+
   Data* data;
 };
 
@@ -85,6 +87,18 @@ void on_listbox_row_selected(MultibandCompressorBox* self, GtkListBoxRow* row, G
   }
 }
 
+void set_dropdown_input_devices_sensitivity(MultibandCompressorBox* self) {
+  for (uint n = 0U; n < n_bands; n++) {
+    if (g_settings_get_boolean(self->settings, tags::multiband_compressor::band_external_sidechain[n]) != 0) {
+      gtk_widget_set_sensitive(GTK_WIDGET(self->dropdown_input_devices), 1);
+
+      return;
+    }
+  }
+
+  gtk_widget_set_sensitive(GTK_WIDGET(self->dropdown_input_devices), 0);
+}
+
 void create_bands(MultibandCompressorBox* self) {
   for (uint n = 0; n < n_bands; n++) {
     auto band_box = ui::multiband_compressor_band_box::create();
@@ -92,6 +106,15 @@ void create_bands(MultibandCompressorBox* self) {
     ui::multiband_compressor_band_box::setup(band_box, self->settings, n);
 
     gtk_stack_add_named(self->stack, GTK_WIDGET(band_box), ("band" + std::to_string(n)).c_str());
+
+    self->bands[n] = band_box;
+
+    self->data->gconnections.push_back(g_signal_connect(
+        self->settings, ("changed::"s + tags::multiband_compressor::band_external_sidechain[n]).c_str(),
+        G_CALLBACK(+[](GSettings* settings, char* key, MultibandCompressorBox* self) {
+          set_dropdown_input_devices_sensitivity(self);
+        }),
+        self));
   }
 }
 
@@ -126,6 +149,8 @@ void setup(MultibandCompressorBox* self,
 
   setup_dropdown_input_device(self);
 
+  set_dropdown_input_devices_sensitivity(self);
+
   create_bands(self);
 
   for (const auto& [ts, node] : pm->node_map) {
@@ -148,6 +173,33 @@ void setup(MultibandCompressorBox* self,
       multiband_compressor->output_level.connect([=](const float& left, const float& right) {
         update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                      self->output_level_right_label, left, right);
+      }));
+
+  self->data->connections.push_back(
+      multiband_compressor->frequency_range.connect([=](const std::array<float, n_bands>& values) {
+        for (size_t n = 0U; n < values.size(); n++) {
+          ui::multiband_compressor_band_box::set_end_label(self->bands[n], values[n]);
+        }
+      }));
+
+  self->data->connections.push_back(
+      multiband_compressor->envelope.connect([=](const std::array<float, n_bands>& values) {
+        for (size_t n = 0U; n < values.size(); n++) {
+          ui::multiband_compressor_band_box::set_envelope_label(self->bands[n], values[n]);
+        }
+      }));
+
+  self->data->connections.push_back(multiband_compressor->curve.connect([=](const std::array<float, n_bands>& values) {
+    for (size_t n = 0U; n < values.size(); n++) {
+      ui::multiband_compressor_band_box::set_curve_label(self->bands[n], values[n]);
+    }
+  }));
+
+  self->data->connections.push_back(
+      multiband_compressor->reduction.connect([=](const std::array<float, n_bands>& values) {
+        for (size_t n = 0U; n < values.size(); n++) {
+          ui::multiband_compressor_band_box::set_gain_label(self->bands[n], values[n]);
+        }
       }));
 
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
@@ -278,77 +330,3 @@ auto create() -> MultibandCompressorBox* {
 }
 
 }  // namespace ui::multiband_compressor_box
-
-MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
-                                             const Glib::RefPtr<Gtk::Builder>& builder,
-                                             const std::string& schema,
-                                             const std::string& schema_path)
-    : Gtk::Box(cobject),
-      PluginUiBase(builder, schema, schema_path),
-      input_devices_model(Gio::ListStore<NodeInfoHolder>::create()) {
-  name = plugin_name::multiband_compressor;
-
-  // loading builder widgets
-
-  stack = builder->get_widget<Gtk::Stack>("stack");
-
-  set_dropdown_input_devices_sensitivity();
-
-  prepare_bands();
-}
-
-MultibandCompressorUi::~MultibandCompressorUi() {
-  util::debug(name + " ui destroyed");
-}
-
-void MultibandCompressorUi::prepare_bands() {
-  for (uint n = 0U; n < n_bands; n++) {
-    const auto nstr = std::to_string(n);
-
-    const auto builder =
-        Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
-
-    // gsettings bindings
-
-    // connections.push_back(settings->signal_changed("external-sidechain"+ nstr).c_str()).connect([=, this](const auto&
-    // key) {
-    //   set_dropdown_input_devices_sensitivity();
-    // }));
-  }
-}
-
-void MultibandCompressorUi::on_new_frequency_range(const std::array<float, n_bands>& values) {
-  for (size_t n = 0U; n < values.size(); n++) {
-    bands_end.at(n)->set_text(level_to_localized_string(values.at(n), 0));
-  }
-}
-
-void MultibandCompressorUi::on_new_envelope(const std::array<float, n_bands>& values) {
-  for (size_t n = 0U; n < values.size(); n++) {
-    bands_envelope_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
-  }
-}
-
-void MultibandCompressorUi::on_new_curve(const std::array<float, n_bands>& values) {
-  for (size_t n = 0U; n < values.size(); n++) {
-    bands_curve_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
-  }
-}
-
-void MultibandCompressorUi::on_new_reduction(const std::array<float, n_bands>& values) {
-  for (size_t n = 0U; n < values.size(); n++) {
-    bands_gain_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
-  }
-}
-
-void MultibandCompressorUi::set_dropdown_input_devices_sensitivity() {
-  for (uint n = 0U; n < n_bands; n++) {
-    if (settings->get_boolean("external-sidechain" + std::to_string(n))) {
-      dropdown_input_devices->set_sensitive(true);
-
-      return;
-    }
-  }
-
-  dropdown_input_devices->set_sensitive(false);
-}

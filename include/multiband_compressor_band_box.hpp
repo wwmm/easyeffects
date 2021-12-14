@@ -42,4 +42,12 @@ auto create() -> MultibandCompressorBandBox*;
 
 void setup(MultibandCompressorBandBox* self, GSettings* settings, int index);
 
+void set_end_label(MultibandCompressorBandBox* self, const float& value);
+
+void set_envelope_label(MultibandCompressorBandBox* self, const float& value);
+
+void set_curve_label(MultibandCompressorBandBox* self, const float& value);
+
+void set_gain_label(MultibandCompressorBandBox* self, const float& value);
+
 }  // namespace ui::multiband_compressor_band_box

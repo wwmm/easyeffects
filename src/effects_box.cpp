@@ -432,6 +432,8 @@ void unroot(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_EFFECTS_BOX(object);
 
+  PluginBase::post_messages = false;
+
   self->data->effects_base->spectrum->bypass = true;
 
   for (auto& c : self->data->connections) {
