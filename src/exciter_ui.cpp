@@ -97,10 +97,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
     gtk_label_set_text(self->harmonics_levelbar_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "amount", gtk_spin_button_get_adjustment(self->amount), "value",
                   G_SETTINGS_BIND_DEFAULT);
@@ -190,8 +187,7 @@ void exciter_box_init(ExciterBox* self) {
 
   self->data = new Data();
 
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 
   prepare_spinbutton<"dB">(self->amount);
   prepare_spinbutton<"Hz">(self->scope);

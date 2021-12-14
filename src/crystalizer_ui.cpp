@@ -161,10 +161,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
                  self->output_level_right_label, left, right);
   }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 }
 
 void dispose(GObject* object) {
@@ -233,8 +230,7 @@ void crystalizer_box_init(CrystalizerBox* self) {
 
   self->data = new Data();
 
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 }
 
 auto create() -> CrystalizerBox* {

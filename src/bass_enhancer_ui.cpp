@@ -97,24 +97,11 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
     gtk_label_set_text(self->harmonics_levelbar_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  g_settings_bind(self->settings, "amount", gtk_spin_button_get_adjustment(self->amount), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "harmonics", gtk_spin_button_get_adjustment(self->harmonics), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "scope", gtk_spin_button_get_adjustment(self->scope), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "floor", gtk_spin_button_get_adjustment(self->floor), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "blend", gtk_range_get_adjustment(GTK_RANGE(self->blend)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "floor-active", self->floor_active, "active", G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"amount", "harmonics", "scope", "floor", "blend", "listen", "floor-active">(
+      self->settings, self->amount, self->harmonics, self->scope, self->floor, self->blend, self->listen,
+      self->floor_active);
 }
 
 void dispose(GObject* object) {
@@ -192,13 +179,12 @@ void bass_enhancer_box_init(BassEnhancerBox* self) {
   self->data = new Data();
 
   prepare_spinbutton<"dB">(self->amount);
-  prepare_spinbutton<"Hz">(self->scope);
-  prepare_spinbutton<"Hz">(self->floor);
+  prepare_spinbuttons<"Hz">(self->scope, self->floor);
   prepare_spinbutton<"">(self->harmonics);
 
   prepare_scale<"">(self->blend);
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 }
 
 auto create() -> BassEnhancerBox* {

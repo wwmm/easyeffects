@@ -123,15 +123,9 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
         gtk_label_set_text(self->lra_label, fmt::format("{0:.0f}", range).c_str());
       }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  g_settings_bind(self->settings, "target", gtk_spin_button_get_adjustment(self->target), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "reference", self->reference, "active-id", G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"target", "reference">(self->settings, self->target, self->reference);
 }
 
 void dispose(GObject* object) {
@@ -219,10 +213,9 @@ void autogain_box_init(AutogainBox* self) {
 
   self->data = new Data();
 
-  prepare_spinbutton<"dB">(self->target);
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+  prepare_spinbutton<"dB">(self->target);
 }
 
 auto create() -> AutogainBox* {

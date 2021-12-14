@@ -194,10 +194,7 @@ void setup(CompressorBox* self,
     }
   }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
                   G_SETTINGS_BIND_DEFAULT);
@@ -351,24 +348,16 @@ void compressor_box_init(CompressorBox* self) {
 
   self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
 
-  prepare_spinbutton<"dB">(self->threshold);
-  prepare_spinbutton<"dB">(self->release_threshold);
-  prepare_spinbutton<"dB">(self->boost_threshold);
-  prepare_spinbutton<"dB">(self->boost_amount);
-  prepare_spinbutton<"dB">(self->knee);
-  prepare_spinbutton<"dB">(self->makeup);
-  prepare_spinbutton<"dB">(self->preamp);
-  prepare_spinbutton<"Hz">(self->hpf_freq);
-  prepare_spinbutton<"Hz">(self->lpf_freq);
-  prepare_spinbutton<"ms">(self->attack);
-  prepare_spinbutton<"ms">(self->release);
-  prepare_spinbutton<"ms">(self->lookahead);
-  prepare_spinbutton<"ms">(self->reactivity);
+  prepare_spinbuttons<"dB">(self->threshold, self->release_threshold, self->boost_threshold, self->boost_amount,
+                            self->knee, self->makeup, self->preamp);
+
+  prepare_spinbuttons<"Hz">(self->hpf_freq, self->lpf_freq);
+
+  prepare_spinbuttons<"ms">(self->attack, self->release, self->lookahead, self->reactivity);
 
   prepare_spinbutton<"">(self->ratio);
 
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 }
 
 auto create() -> CompressorBox* {

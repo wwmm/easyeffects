@@ -84,18 +84,9 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
                  self->output_level_right_label, left, right);
   }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  g_settings_bind(self->settings, "loudness", gtk_spin_button_get_adjustment(self->loudness), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "output", gtk_spin_button_get_adjustment(self->output), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "link", gtk_spin_button_get_adjustment(self->link), "value", G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"loudness", "output", "link">(self->settings, self->loudness, self->output, self->link);
 }
 
 void dispose(GObject* object) {
@@ -166,12 +157,9 @@ void bass_loudness_box_init(BassLoudnessBox* self) {
 
   self->data = new Data();
 
-  prepare_spinbutton<"dB">(self->loudness);
-  prepare_spinbutton<"dB">(self->output);
-  prepare_spinbutton<"dB">(self->link);
+  prepare_spinbuttons<"dB">(self->loudness, self->output, self->link);
 
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 }
 
 auto create() -> BassLoudnessBox* {

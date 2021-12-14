@@ -135,10 +135,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
     gtk_label_set_text(self->gating3_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   gsettings_bind_widgets<"freq0", "freq1", "freq2">(self->settings, self->freq0, self->freq1, self->freq2);
 
@@ -300,8 +297,7 @@ void multiband_gate_box_init(MultibandGateBox* self) {
 
   self->data = new Data();
 
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 
   prepare_spinbuttons<"dB">(self->range0, self->range1, self->range2, self->range3);
   prepare_spinbuttons<"dB">(self->threshold0, self->threshold1, self->threshold2, self->threshold3);

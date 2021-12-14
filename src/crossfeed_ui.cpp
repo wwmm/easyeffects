@@ -99,10 +99,7 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
                  self->output_level_right_label, left, right);
   }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "fcut", gtk_spin_button_get_adjustment(self->fcut), "value", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "feed", gtk_spin_button_get_adjustment(self->feed), "value", G_SETTINGS_BIND_DEFAULT);
@@ -182,8 +179,7 @@ void crossfeed_box_init(CrossfeedBox* self) {
   prepare_spinbutton<"Hz">(self->fcut);
   prepare_spinbutton<"dB">(self->feed);
 
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 }
 
 auto create() -> CrossfeedBox* {

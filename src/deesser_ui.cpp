@@ -102,10 +102,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
     gtk_label_set_text(self->detected_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
   }));
 
-  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "makeup", gtk_spin_button_get_adjustment(self->makeup), "value",
                   G_SETTINGS_BIND_DEFAULT);
@@ -229,8 +226,7 @@ void deesser_box_init(DeesserBox* self) {
   prepare_spinbutton<"Hz">(self->f2_freq);
   prepare_spinbutton<"">(self->f2_q);
 
-  prepare_scale<"dB">(self->input_gain);
-  prepare_scale<"dB">(self->output_gain);
+  prepare_scales<"dB">(self->input_gain, self->output_gain);
 }
 
 auto create() -> DeesserBox* {
