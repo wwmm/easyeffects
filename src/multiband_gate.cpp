@@ -29,101 +29,101 @@ MultibandGate::MultibandGate(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/MultibandGate is not installed");
   }
 
-  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+  lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "freq0", "freq0");
+  lv2_wrapper->bind_key_double<"freq0", "freq0">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "freq1", "freq1");
+  lv2_wrapper->bind_key_double<"freq1", "freq1">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "freq2", "freq2");
+  lv2_wrapper->bind_key_double<"freq2", "freq2">(settings);
 
   // sub band
 
-  lv2_wrapper->bind_key_double_db(settings, "range0", "range0");
+  lv2_wrapper->bind_key_double_db<"range0", "range0">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold0", "threshold0");
+  lv2_wrapper->bind_key_double_db<"threshold0", "threshold0">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "makeup0", "makeup0");
+  lv2_wrapper->bind_key_double_db<"makeup0", "makeup0">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "knee0", "knee0");
+  lv2_wrapper->bind_key_double_db<"knee0", "knee0">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "ratio0", "ratio0");
+  lv2_wrapper->bind_key_double<"ratio0", "ratio0">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "attack0", "attack0");
+  lv2_wrapper->bind_key_double<"attack0", "attack0">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "release0", "release0");
+  lv2_wrapper->bind_key_double<"release0", "release0">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "detection0", "detection0");
+  lv2_wrapper->bind_key_enum<"detection0", "detection0">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "bypass0", "bypass0");
+  lv2_wrapper->bind_key_bool<"bypass0", "bypass0">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "solo0", "solo0");
+  lv2_wrapper->bind_key_bool<"solo0", "solo0">(settings);
 
   // low band
 
-  lv2_wrapper->bind_key_double_db(settings, "range1", "range1");
+  lv2_wrapper->bind_key_double_db<"range1", "range1">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold1", "threshold1");
+  lv2_wrapper->bind_key_double_db<"threshold1", "threshold1">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "makeup1", "makeup1");
+  lv2_wrapper->bind_key_double_db<"makeup1", "makeup1">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "knee1", "knee1");
+  lv2_wrapper->bind_key_double_db<"knee1", "knee1">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "ratio1", "ratio1");
+  lv2_wrapper->bind_key_double<"ratio1", "ratio1">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "attack1", "attack1");
+  lv2_wrapper->bind_key_double<"attack1", "attack1">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "release1", "release1");
+  lv2_wrapper->bind_key_double<"release1", "release1">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "detection1", "detection1");
+  lv2_wrapper->bind_key_enum<"detection1", "detection1">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "bypass1", "bypass1");
+  lv2_wrapper->bind_key_bool<"bypass1", "bypass1">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "solo1", "solo1");
+  lv2_wrapper->bind_key_bool<"solo1", "solo1">(settings);
 
   // mid band
 
-  lv2_wrapper->bind_key_double_db(settings, "range2", "range2");
+  lv2_wrapper->bind_key_double_db<"range2", "range2">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold2", "threshold2");
+  lv2_wrapper->bind_key_double_db<"threshold2", "threshold2">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "makeup2", "makeup2");
+  lv2_wrapper->bind_key_double_db<"makeup2", "makeup2">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "knee2", "knee2");
+  lv2_wrapper->bind_key_double_db<"knee2", "knee2">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "ratio2", "ratio2");
+  lv2_wrapper->bind_key_double<"ratio2", "ratio2">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "attack2", "attack2");
+  lv2_wrapper->bind_key_double<"attack2", "attack2">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "release2", "release2");
+  lv2_wrapper->bind_key_double<"release2", "release2">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "detection2", "detection2");
+  lv2_wrapper->bind_key_enum<"detection2", "detection2">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "bypass2", "bypass2");
+  lv2_wrapper->bind_key_bool<"bypass2", "bypass2">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "solo2", "solo2");
+  lv2_wrapper->bind_key_bool<"solo2", "solo2">(settings);
 
   // high band
 
-  lv2_wrapper->bind_key_double_db(settings, "range3", "range3");
+  lv2_wrapper->bind_key_double_db<"range3", "range3">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold3", "threshold3");
+  lv2_wrapper->bind_key_double_db<"threshold3", "threshold3">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "makeup3", "makeup3");
+  lv2_wrapper->bind_key_double_db<"makeup3", "makeup3">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "knee3", "knee3");
+  lv2_wrapper->bind_key_double_db<"knee3", "knee3">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "ratio3", "ratio3");
+  lv2_wrapper->bind_key_double<"ratio3", "ratio3">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "attack3", "attack3");
+  lv2_wrapper->bind_key_double<"attack3", "attack3">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "release3", "release3");
+  lv2_wrapper->bind_key_double<"release3", "release3">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "detection3", "detection3");
+  lv2_wrapper->bind_key_enum<"detection3", "detection3">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "bypass3", "bypass3");
+  lv2_wrapper->bind_key_bool<"bypass3", "bypass3">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "solo3", "solo3");
+  lv2_wrapper->bind_key_bool<"solo3", "solo3">(settings);
 
   setup_input_output_gain();
 }

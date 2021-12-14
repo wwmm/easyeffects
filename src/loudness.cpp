@@ -29,10 +29,10 @@ Loudness::Loudness(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/loud_comp_stereo is not installed");
   }
 
-  lv2_wrapper->bind_key_enum(settings, "std", "std");
-  lv2_wrapper->bind_key_enum(settings, "fft", "fft");
+  lv2_wrapper->bind_key_enum<"std", "std">(settings);
+  lv2_wrapper->bind_key_enum<"fft", "fft">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "volume", "volume");
+  lv2_wrapper->bind_key_double<"volume", "volume">(settings);
 
   setup_input_output_gain();
 }

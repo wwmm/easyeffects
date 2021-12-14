@@ -99,16 +99,6 @@ class Lv2Wrapper {
 
   auto has_instance() -> bool;
 
-  void bind_key_double(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol);
-
-  void bind_key_double_db(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol);
-
-  void bind_key_bool(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol);
-
-  void bind_key_enum(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol);
-
-  void bind_key_int(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol);
-
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_bool(GSettings* settings) {
     set_control_port_value(key_wrapper.msg.data(),

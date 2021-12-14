@@ -29,37 +29,37 @@ StereoTools::StereoTools(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/StereoTools is not installed");
   }
 
-  lv2_wrapper->bind_key_double(settings, "balance-in", "balance_in");
+  lv2_wrapper->bind_key_double<"balance_in", "balance-in">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "balance-out", "balance_out");
+  lv2_wrapper->bind_key_double<"balance_out", "balance-out">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "sbal", "sbal");
+  lv2_wrapper->bind_key_double<"sbal", "sbal">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "mpan", "mpan");
+  lv2_wrapper->bind_key_double<"mpan", "mpan">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "stereo-base", "stereo_base");
+  lv2_wrapper->bind_key_double<"stereo_base", "stereo-base">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "delay", "delay");
+  lv2_wrapper->bind_key_double<"delay", "delay">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "sc-level", "sc_level");
+  lv2_wrapper->bind_key_double<"sc_level", "sc-level">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "stereo-phase", "stereo_phase");
+  lv2_wrapper->bind_key_double<"stereo_phase", "stereo-phase">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "slev", "slev");
+  lv2_wrapper->bind_key_double_db<"slev", "slev">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "mlev", "mlev");
+  lv2_wrapper->bind_key_double_db<"mlev", "mlev">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "softclip", "softclip");
+  lv2_wrapper->bind_key_bool<"softclip", "softclip">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "mutel", "mutel");
+  lv2_wrapper->bind_key_bool<"mutel", "mutel">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "muter", "muter");
+  lv2_wrapper->bind_key_bool<"muter", "muter">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "phasel", "phasel");
+  lv2_wrapper->bind_key_bool<"phasel", "phasel">(settings);
 
-  lv2_wrapper->bind_key_bool(settings, "phaser", "phaser");
+  lv2_wrapper->bind_key_bool<"phaser", "phaser">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+  lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
   setup_input_output_gain();
 }

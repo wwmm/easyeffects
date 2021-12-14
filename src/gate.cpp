@@ -26,23 +26,23 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Gate is not installed");
   }
 
-  lv2_wrapper->bind_key_enum(settings, "detection", "detection");
+  lv2_wrapper->bind_key_enum<"detection", "detection">(settings);
 
-  lv2_wrapper->bind_key_enum(settings, "stereo-link", "stereo_link");
+  lv2_wrapper->bind_key_enum<"stereo_link", "stereo-link">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "attack", "attack");
+  lv2_wrapper->bind_key_double<"attack", "attack">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "release", "release");
+  lv2_wrapper->bind_key_double<"release", "release">(settings);
 
-  lv2_wrapper->bind_key_double(settings, "ratio", "ratio");
+  lv2_wrapper->bind_key_double<"ratio", "ratio">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "range", "range");
+  lv2_wrapper->bind_key_double_db<"range", "range">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold", "threshold");
+  lv2_wrapper->bind_key_double_db<"threshold", "threshold">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "knee", "knee");
+  lv2_wrapper->bind_key_double_db<"knee", "knee">(settings);
 
-  lv2_wrapper->bind_key_double_db(settings, "makeup", "makeup");
+  lv2_wrapper->bind_key_double_db<"makeup", "makeup">(settings);
 
   setup_input_output_gain();
 }
