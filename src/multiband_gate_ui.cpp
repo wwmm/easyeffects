@@ -19,395 +19,302 @@
 
 #include "multiband_gate_ui.hpp"
 
-namespace {
+namespace ui::multiband_gate_box {
 
-auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
+using namespace std::string_literals;
 
-  if (g_strcmp0(v, "RMS") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "Peak") == 0) {
-    g_value_set_int(value, 1);
+auto constexpr log_tag = "multiband_gate_box: ";
+
+struct Data {
+ public:
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  std::shared_ptr<MultibandGate> multiband_gate;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
+struct _MultibandGateBox {
+  GtkBox parent_instance;
+
+  GtkScale *input_gain, *output_gain;
+
+  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+
+  GtkToggleButton* bypass;
+
+  GtkLevelBar *output0, *output1, *output2, *output3, *gating0, *gating1, *gating2, *gating3;
+
+  GtkLabel *output0_label, *output1_label, *output2_label, *output3_label, *gating0_label, *gating1_label,
+      *gating2_label, *gating3_label;
+
+  GtkSpinButton *freq0, *freq1, *freq2, *range0, *range1, *range2, *range3, *attack0, *attack1, *attack2, *attack3,
+      *release0, *release1, *release2, *release3, *threshold0, *threshold1, *threshold2, *threshold3, *knee0, *knee1,
+      *knee2, *knee3, *ratio0, *ratio1, *ratio2, *ratio3, *makeup0, *makeup1, *makeup2, *makeup3;
+
+  GtkComboBoxText *mode, *detection0, *detection1, *detection2, *detection3;
+
+  GtkToggleButton *bypass0, *bypass1, *bypass2, *bypass3, *solo0, *solo1, *solo2, *solo3;
+
+  GSettings* settings;
+
+  Data* data;
+};
+
+G_DEFINE_TYPE(MultibandGateBox, multiband_gate_box, GTK_TYPE_BOX)
+
+void on_bypass(MultibandGateBox* self, GtkToggleButton* btn) {
+  self->data->multiband_gate->bypass = gtk_toggle_button_get_active(btn);
+}
+
+void on_reset(MultibandGateBox* self, GtkButton* btn) {
+  gtk_toggle_button_set_active(self->bypass, 0);
+
+  util::reset_all_keys(self->settings);
+}
+
+void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate, const std::string& schema_path) {
+  self->data->multiband_gate = multiband_gate;
+
+  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandgate", schema_path.c_str());
+
+  multiband_gate->post_messages = true;
+  multiband_gate->bypass = false;
+
+  self->data->connections.push_back(multiband_gate->input_level.connect([=](const float& left, const float& right) {
+    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                 self->input_level_right_label, left, right);
+  }));
+
+  self->data->connections.push_back(multiband_gate->output_level.connect([=](const float& left, const float& right) {
+    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                 self->output_level_right_label, left, right);
+  }));
+
+  self->data->connections.push_back(multiband_gate->output0.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->output0, value);
+    gtk_label_set_text(self->output0_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->data->connections.push_back(multiband_gate->output1.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->output1, value);
+    gtk_label_set_text(self->output1_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->data->connections.push_back(multiband_gate->output2.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->output2, value);
+    gtk_label_set_text(self->output2_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->data->connections.push_back(multiband_gate->output3.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->output3, value);
+    gtk_label_set_text(self->output3_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->data->connections.push_back(multiband_gate->gating0.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->gating0, 1.0 - value);
+    gtk_label_set_text(self->gating0_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->data->connections.push_back(multiband_gate->gating1.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->gating1, 1.0 - value);
+    gtk_label_set_text(self->gating1_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->data->connections.push_back(multiband_gate->gating2.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->gating2, 1.0 - value);
+    gtk_label_set_text(self->gating2_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  self->data->connections.push_back(multiband_gate->gating3.connect([=](const double& value) {
+    gtk_level_bar_set_value(self->gating3, 1.0 - value);
+    gtk_label_set_text(self->gating3_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+  }));
+
+  g_settings_bind(self->settings, "input-gain", gtk_range_get_adjustment(GTK_RANGE(self->input_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "output-gain", gtk_range_get_adjustment(GTK_RANGE(self->output_gain)), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  gsettings_bind_widgets<"freq0", "freq1", "freq2">(self->settings, self->freq0, self->freq1, self->freq2);
+
+  gsettings_bind_widgets<"threshold0", "threshold1", "threshold2", "threshold3">(
+      self->settings, self->threshold0, self->threshold1, self->threshold2, self->threshold3);
+
+  gsettings_bind_widgets<"ratio0", "ratio1", "ratio2", "ratio3">(self->settings, self->ratio0, self->ratio1,
+                                                                 self->ratio2, self->ratio3);
+
+  gsettings_bind_widgets<"range0", "range1", "range2", "range3">(self->settings, self->range0, self->range1,
+                                                                 self->range2, self->range3);
+
+  gsettings_bind_widgets<"bypass0", "bypass1", "bypass2", "bypass3">(self->settings, self->bypass0, self->bypass1,
+                                                                     self->bypass2, self->bypass3);
+
+  gsettings_bind_widgets<"solo0", "solo1", "solo2", "solo3">(self->settings, self->solo0, self->solo1, self->solo2,
+                                                             self->solo3);
+
+  gsettings_bind_widgets<"attack0", "attack1", "attack2", "attack3">(self->settings, self->attack0, self->attack1,
+                                                                     self->attack2, self->attack3);
+
+  gsettings_bind_widgets<"release0", "release1", "release2", "release3">(self->settings, self->release0, self->release1,
+                                                                         self->release2, self->release3);
+
+  gsettings_bind_widgets<"makeup0", "makeup1", "makeup2", "makeup3">(self->settings, self->makeup0, self->makeup1,
+                                                                     self->makeup2, self->makeup3);
+
+  gsettings_bind_widgets<"knee0", "knee1", "knee2", "knee3">(self->settings, self->knee0, self->knee1, self->knee2,
+                                                             self->knee3);
+
+  gsettings_bind_widget(self->settings, "mode", self->mode);
+
+  gsettings_bind_widgets<"detection0", "detection1", "detection2", "detection3">(
+      self->settings, self->detection0, self->detection1, self->detection2, self->detection3);
+}
+
+void dispose(GObject* object) {
+  auto* self = EE_MULTIBAND_GATE_BOX(object);
+
+  self->data->multiband_gate->bypass = false;
+
+  for (auto& c : self->data->connections) {
+    c.disconnect();
   }
 
-  return 1;
-}
-
-auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("RMS");
-
-    case 1:
-      return g_variant_new_string("Peak");
-
-    default:
-      return g_variant_new_string("RMS");
-  }
-}
-
-auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (g_strcmp0(v, "LR4") == 0) {
-    g_value_set_int(value, 0);
-  } else if (g_strcmp0(v, "LR8") == 0) {
-    g_value_set_int(value, 1);
+  for (auto& handler_id : self->data->gconnections) {
+    g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  return 1;
+  self->data->connections.clear();
+  self->data->gconnections.clear();
+
+  g_object_unref(self->settings);
+
+  util::debug(log_tag + "disposed"s);
+
+  G_OBJECT_CLASS(multiband_gate_box_parent_class)->dispose(object);
 }
 
-auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  switch (g_value_get_int(value)) {
-    case 0:
-      return g_variant_new_string("LR4");
+void finalize(GObject* object) {
+  auto* self = EE_MULTIBAND_GATE_BOX(object);
 
-    default:
-      return g_variant_new_string("LR8");
-  }
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(multiband_gate_box_parent_class)->finalize(object);
 }
 
-}  // namespace
+void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
-                                 const Glib::RefPtr<Gtk::Builder>& builder,
-                                 const std::string& schema,
-                                 const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = plugin_name::multiband_gate;
+  object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
-  // loading builder widgets
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/multiband_gate.ui");
 
-  freq0 = builder->get_widget<Gtk::SpinButton>("freq0");
-  freq1 = builder->get_widget<Gtk::SpinButton>("freq1");
-  freq2 = builder->get_widget<Gtk::SpinButton>("freq2");
-  threshold0 = builder->get_widget<Gtk::SpinButton>("threshold0");
-  threshold1 = builder->get_widget<Gtk::SpinButton>("threshold1");
-  threshold2 = builder->get_widget<Gtk::SpinButton>("threshold2");
-  threshold3 = builder->get_widget<Gtk::SpinButton>("threshold3");
-  ratio0 = builder->get_widget<Gtk::SpinButton>("ratio0");
-  ratio1 = builder->get_widget<Gtk::SpinButton>("ratio1");
-  ratio2 = builder->get_widget<Gtk::SpinButton>("ratio2");
-  ratio3 = builder->get_widget<Gtk::SpinButton>("ratio3");
-  range0 = builder->get_widget<Gtk::SpinButton>("range0");
-  range1 = builder->get_widget<Gtk::SpinButton>("range1");
-  range2 = builder->get_widget<Gtk::SpinButton>("range2");
-  range3 = builder->get_widget<Gtk::SpinButton>("range3");
-  attack0 = builder->get_widget<Gtk::SpinButton>("attack0");
-  attack1 = builder->get_widget<Gtk::SpinButton>("attack1");
-  attack2 = builder->get_widget<Gtk::SpinButton>("attack2");
-  attack3 = builder->get_widget<Gtk::SpinButton>("attack3");
-  release0 = builder->get_widget<Gtk::SpinButton>("release0");
-  release1 = builder->get_widget<Gtk::SpinButton>("release1");
-  release2 = builder->get_widget<Gtk::SpinButton>("release2");
-  release3 = builder->get_widget<Gtk::SpinButton>("release3");
-  makeup0 = builder->get_widget<Gtk::SpinButton>("makeup0");
-  makeup1 = builder->get_widget<Gtk::SpinButton>("makeup1");
-  makeup2 = builder->get_widget<Gtk::SpinButton>("makeup2");
-  makeup3 = builder->get_widget<Gtk::SpinButton>("makeup3");
-  knee0 = builder->get_widget<Gtk::SpinButton>("knee0");
-  knee1 = builder->get_widget<Gtk::SpinButton>("knee1");
-  knee2 = builder->get_widget<Gtk::SpinButton>("knee2");
-  knee3 = builder->get_widget<Gtk::SpinButton>("knee3");
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_gain);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_gain);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_level_left);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_level_right);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_level_left);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_level_right);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_level_left_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_level_right_label);
 
-  bypass0 = builder->get_widget<Gtk::ToggleButton>("bypass0");
-  bypass1 = builder->get_widget<Gtk::ToggleButton>("bypass1");
-  bypass2 = builder->get_widget<Gtk::ToggleButton>("bypass2");
-  bypass3 = builder->get_widget<Gtk::ToggleButton>("bypass3");
-  solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
-  solo1 = builder->get_widget<Gtk::ToggleButton>("solo1");
-  solo2 = builder->get_widget<Gtk::ToggleButton>("solo2");
-  solo3 = builder->get_widget<Gtk::ToggleButton>("solo3");
-  solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, bypass);
 
-  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
-  detection0 = builder->get_widget<Gtk::ComboBoxText>("detection0");
-  detection1 = builder->get_widget<Gtk::ComboBoxText>("detection1");
-  detection2 = builder->get_widget<Gtk::ComboBoxText>("detection2");
-  detection3 = builder->get_widget<Gtk::ComboBoxText>("detection3");
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gating0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gating1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gating2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gating3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output0_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output1_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output2_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output3_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gating0_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gating1_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gating2_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gating3_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, freq0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, freq1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, freq2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, range0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, range1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, range2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, range3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, attack0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, attack1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, attack2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, attack3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, release0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, release1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, release2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, release3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, threshold0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, threshold1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, threshold2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, threshold3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, knee0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, knee1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, knee2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, knee3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, ratio0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, ratio1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, ratio2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, ratio3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, makeup0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, makeup1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, makeup2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, makeup3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, bypass0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, bypass1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, bypass2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, bypass3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, solo0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, solo1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, solo2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, solo3);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, mode);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, detection0);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, detection1);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, detection2);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, detection3);
 
-  output0 = builder->get_widget<Gtk::LevelBar>("output0");
-  output1 = builder->get_widget<Gtk::LevelBar>("output1");
-  output2 = builder->get_widget<Gtk::LevelBar>("output2");
-  output3 = builder->get_widget<Gtk::LevelBar>("output3");
-  gating0 = builder->get_widget<Gtk::LevelBar>("gating0");
-  gating1 = builder->get_widget<Gtk::LevelBar>("gating1");
-  gating2 = builder->get_widget<Gtk::LevelBar>("gating2");
-  gating3 = builder->get_widget<Gtk::LevelBar>("gating3");
-
-  output0_label = builder->get_widget<Gtk::Label>("output0_label");
-  output1_label = builder->get_widget<Gtk::Label>("output1_label");
-  output2_label = builder->get_widget<Gtk::Label>("output2_label");
-  output3_label = builder->get_widget<Gtk::Label>("output3_label");
-  gating0_label = builder->get_widget<Gtk::Label>("gating0_label");
-  gating1_label = builder->get_widget<Gtk::Label>("gating1_label");
-  gating2_label = builder->get_widget<Gtk::Label>("gating2_label");
-  gating3_label = builder->get_widget<Gtk::Label>("gating3_label");
-
-  // gsettings bindings
-
-  settings->bind("freq0", freq0->get_adjustment().get(), "value");
-  settings->bind("freq1", freq1->get_adjustment().get(), "value");
-  settings->bind("freq2", freq2->get_adjustment().get(), "value");
-  settings->bind("threshold0", threshold0->get_adjustment().get(), "value");
-  settings->bind("threshold1", threshold1->get_adjustment().get(), "value");
-  settings->bind("threshold2", threshold2->get_adjustment().get(), "value");
-  settings->bind("threshold3", threshold3->get_adjustment().get(), "value");
-  settings->bind("ratio0", ratio0->get_adjustment().get(), "value");
-  settings->bind("ratio1", ratio1->get_adjustment().get(), "value");
-  settings->bind("ratio2", ratio2->get_adjustment().get(), "value");
-  settings->bind("ratio3", ratio3->get_adjustment().get(), "value");
-  settings->bind("range0", range0->get_adjustment().get(), "value");
-  settings->bind("range1", range1->get_adjustment().get(), "value");
-  settings->bind("range2", range2->get_adjustment().get(), "value");
-  settings->bind("range3", range3->get_adjustment().get(), "value");
-  settings->bind("attack0", attack0->get_adjustment().get(), "value");
-  settings->bind("attack1", attack1->get_adjustment().get(), "value");
-  settings->bind("attack2", attack2->get_adjustment().get(), "value");
-  settings->bind("attack3", attack3->get_adjustment().get(), "value");
-  settings->bind("release0", release0->get_adjustment().get(), "value");
-  settings->bind("release1", release1->get_adjustment().get(), "value");
-  settings->bind("release2", release2->get_adjustment().get(), "value");
-  settings->bind("release3", release3->get_adjustment().get(), "value");
-  settings->bind("makeup0", makeup0->get_adjustment().get(), "value");
-  settings->bind("makeup1", makeup1->get_adjustment().get(), "value");
-  settings->bind("makeup2", makeup2->get_adjustment().get(), "value");
-  settings->bind("makeup3", makeup3->get_adjustment().get(), "value");
-  settings->bind("knee0", knee0->get_adjustment().get(), "value");
-  settings->bind("knee1", knee1->get_adjustment().get(), "value");
-  settings->bind("knee2", knee2->get_adjustment().get(), "value");
-  settings->bind("knee3", knee3->get_adjustment().get(), "value");
-
-  settings->bind("bypass0", bypass0, "active");
-  settings->bind("bypass1", bypass1, "active");
-  settings->bind("bypass2", bypass2, "active");
-  settings->bind("bypass3", bypass3, "active");
-  settings->bind("solo0", solo0, "active");
-  settings->bind("solo1", solo1, "active");
-  settings->bind("solo2", solo2, "active");
-  settings->bind("solo3", solo3, "active");
-
-  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "detection0", detection0->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "detection1", detection1->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "detection2", detection2->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  prepare_spinbutton(range0, "dB");
-  prepare_spinbutton(range1, "dB");
-  prepare_spinbutton(range2, "dB");
-  prepare_spinbutton(range3, "dB");
-
-  prepare_spinbutton(attack0, "ms");
-  prepare_spinbutton(attack1, "ms");
-  prepare_spinbutton(attack2, "ms");
-  prepare_spinbutton(attack3, "ms");
-
-  prepare_spinbutton(threshold0, "dB");
-  prepare_spinbutton(threshold1, "dB");
-  prepare_spinbutton(threshold2, "dB");
-  prepare_spinbutton(threshold3, "dB");
-
-  prepare_spinbutton(knee0, "dB");
-  prepare_spinbutton(knee1, "dB");
-  prepare_spinbutton(knee2, "dB");
-  prepare_spinbutton(knee3, "dB");
-
-  prepare_spinbutton(makeup0, "dB");
-  prepare_spinbutton(makeup1, "dB");
-  prepare_spinbutton(makeup2, "dB");
-  prepare_spinbutton(makeup3, "dB");
-
-  prepare_spinbutton(release0, "ms");
-  prepare_spinbutton(release1, "ms");
-  prepare_spinbutton(release2, "ms");
-  prepare_spinbutton(release3, "ms");
-
-  prepare_spinbutton(freq0, "Hz");
-  prepare_spinbutton(freq1, "Hz");
-  prepare_spinbutton(freq2, "Hz");
-
-  prepare_spinbutton(ratio0);
-  prepare_spinbutton(ratio1);
-  prepare_spinbutton(ratio2);
-  prepare_spinbutton(ratio3);
-
-  setup_input_output_gain(builder);
+  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
-MultibandGateUi::~MultibandGateUi() {
-  util::debug(name + " ui destroyed");
+void multiband_gate_box_init(MultibandGateBox* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
+
+  prepare_scale<"dB">(self->input_gain);
+  prepare_scale<"dB">(self->output_gain);
+
+  prepare_spinbuttons<"dB">(self->range0, self->range1, self->range2, self->range3);
+  prepare_spinbuttons<"dB">(self->threshold0, self->threshold1, self->threshold2, self->threshold3);
+  prepare_spinbuttons<"dB">(self->knee0, self->knee1, self->knee2, self->knee3);
+  prepare_spinbuttons<"dB">(self->makeup0, self->makeup1, self->makeup2, self->makeup3);
+  prepare_spinbuttons<"Hz">(self->freq0, self->freq1, self->freq2);
+  prepare_spinbuttons<"ms">(self->attack0, self->attack1, self->attack2, self->attack3);
+  prepare_spinbuttons<"ms">(self->release0, self->release1, self->release2, self->release3);
+  prepare_spinbuttons<"">(self->ratio0, self->ratio1, self->ratio2, self->ratio3);
 }
 
-auto MultibandGateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandGateUi* {
-  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_gate.ui");
-
-  auto* const ui = Gtk::Builder::get_widget_derived<MultibandGateUi>(
-      builder, "top_box", "com.github.wwmm.easyeffects.multibandgate", schema_path + "multibandgate/");
-
-  stack->add(*ui, plugin_name::multiband_gate);
-
-  return ui;
+auto create() -> MultibandGateBox* {
+  return static_cast<MultibandGateBox*>(g_object_new(EE_TYPE_MULTIBAND_GATE_BOX, nullptr));
 }
 
-void MultibandGateUi::reset() {
-  bypass->set_active(false);
-
-  settings->reset("input-gain");
-
-  settings->reset("output-gain");
-
-  settings->reset("freq0");
-
-  settings->reset("freq1");
-
-  settings->reset("freq2");
-
-  settings->reset("mode");
-
-  // sub band
-
-  settings->reset("range0");
-
-  settings->reset("threshold0");
-
-  settings->reset("ratio0");
-
-  settings->reset("attack0");
-
-  settings->reset("release0");
-
-  settings->reset("makeup0");
-
-  settings->reset("knee0");
-
-  settings->reset("detection0");
-
-  settings->reset("bypass0");
-
-  settings->reset("solo0");
-
-  // low band
-
-  settings->reset("range1");
-
-  settings->reset("threshold1");
-
-  settings->reset("ratio1");
-
-  settings->reset("attack1");
-
-  settings->reset("release1");
-
-  settings->reset("makeup1");
-
-  settings->reset("knee1");
-
-  settings->reset("detection1");
-
-  settings->reset("bypass1");
-
-  settings->reset("solo1");
-
-  // mid band
-
-  settings->reset("range2");
-
-  settings->reset("threshold2");
-
-  settings->reset("ratio2");
-
-  settings->reset("attack2");
-
-  settings->reset("release2");
-
-  settings->reset("makeup2");
-
-  settings->reset("knee2");
-
-  settings->reset("detection2");
-
-  settings->reset("bypass2");
-
-  settings->reset("solo2");
-
-  // high band
-
-  settings->reset("range3");
-
-  settings->reset("threshold3");
-
-  settings->reset("ratio3");
-
-  settings->reset("attack3");
-
-  settings->reset("release3");
-
-  settings->reset("makeup3");
-
-  settings->reset("knee3");
-
-  settings->reset("detection3");
-
-  settings->reset("bypass3");
-
-  settings->reset("solo3");
-}
-
-void MultibandGateUi::on_new_output0(const double& value) {
-  output0->set_value(value);
-
-  output0_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandGateUi::on_new_output1(const double& value) {
-  output1->set_value(value);
-
-  output1_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandGateUi::on_new_output2(const double& value) {
-  output2->set_value(value);
-
-  output2_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandGateUi::on_new_output3(const double& value) {
-  output3->set_value(value);
-
-  output3_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandGateUi::on_new_gating0(const double& value) {
-  gating0->set_value(1.0 - value);
-
-  gating0_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandGateUi::on_new_gating1(const double& value) {
-  gating1->set_value(1.0 - value);
-
-  gating1_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandGateUi::on_new_gating2(const double& value) {
-  gating2->set_value(1.0 - value);
-
-  gating2_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandGateUi::on_new_gating3(const double& value) {
-  gating3->set_value(1.0 - value);
-
-  gating3_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
+}  // namespace ui::multiband_gate_box

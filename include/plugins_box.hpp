@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include <adwaita.h>
 #include "application.hpp"
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
@@ -39,6 +38,7 @@
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "multiband_compressor_ui.hpp"
+#include "multiband_gate_ui.hpp"
 #include "pipeline_type.hpp"
 #include "pitch_ui.hpp"
 #include "plugins_menu.hpp"

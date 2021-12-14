@@ -34,6 +34,17 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
 
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int;
 
+void update_level(GtkLevelBar* w_left,
+                  GtkLabel* w_left_label,
+                  GtkLevelBar* w_right,
+                  GtkLabel* w_right_label,
+                  const float& left,
+                  const float& right);
+
+void append_to_string_list(GtkStringList* string_list, const std::string& name);
+
+void remove_from_string_list(GtkStringList* string_list, const std::string& name);
+
 template <StringLiteralWrapper sl_wrapper>
 void prepare_spinbutton(GtkSpinButton* button) {
   g_signal_connect(button, "output", G_CALLBACK(+[](GtkSpinButton* button, gpointer user_data) {
@@ -65,15 +76,35 @@ void prepare_scale(GtkScale* scale) {
       nullptr, nullptr);
 }
 
-void update_level(GtkLevelBar* w_left,
-                  GtkLabel* w_left_label,
-                  GtkLevelBar* w_right,
-                  GtkLabel* w_right_label,
-                  const float& left,
-                  const float& right);
+template <StringLiteralWrapper key_wrapper, typename... Targs>
+void prepare_spinbuttons(Targs... button) {
+  (prepare_spinbutton<key_wrapper>(button), ...);
+}
 
-void append_to_string_list(GtkStringList* string_list, const std::string& name);
+template <typename T>
+void gsettings_bind_widget(GSettings* settings,
+                           const char* key,
+                           T widget,
+                           GSettingsBindFlags flags = G_SETTINGS_BIND_DEFAULT) {
+  static_assert(std::is_same_v<T, GtkSpinButton*> || std::is_same_v<T, GtkToggleButton*> ||
+                std::is_same_v<T, GtkComboBoxText*>);
 
-void remove_from_string_list(GtkStringList* string_list, const std::string& name);
+  if constexpr (std::is_same_v<T, GtkSpinButton*>) {
+    g_settings_bind(settings, key, gtk_spin_button_get_adjustment(widget), "value", flags);
+  }
+
+  if constexpr (std::is_same_v<T, GtkToggleButton*>) {
+    g_settings_bind(settings, key, widget, "active", flags);
+  }
+
+  if constexpr (std::is_same_v<T, GtkComboBoxText*>) {
+    g_settings_bind(settings, key, widget, "active-id", flags);
+  }
+}
+
+template <StringLiteralWrapper... key_wrapper, typename... Targs>
+void gsettings_bind_widgets(GSettings* settings, Targs... widget) {
+  (gsettings_bind_widget(settings, key_wrapper.msg.data(), widget), ...);
+}
 
 }  // namespace ui

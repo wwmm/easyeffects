@@ -17,65 +17,24 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef MULTIBAND_GATE_UI_HPP
-#define MULTIBAND_GATE_UI_HPP
+#pragma once
 
-#include "plugin_ui_base.hpp"
+#include <adwaita.h>
+#include "effects_base.hpp"
+#include "ui_helpers.hpp"
 
-class MultibandGateUi : public Gtk::Box, public PluginUiBase {
- public:
-  MultibandGateUi(BaseObjectType* cobject,
-                  const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& schema,
-                  const std::string& schema_path);
-  MultibandGateUi(const MultibandGateUi&) = delete;
-  auto operator=(const MultibandGateUi&) -> MultibandGateUi& = delete;
-  MultibandGateUi(const MultibandGateUi&&) = delete;
-  auto operator=(const MultibandGateUi&&) -> MultibandGateUi& = delete;
-  ~MultibandGateUi() override;
+namespace ui::multiband_gate_box {
 
-  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandGateUi*;
+G_BEGIN_DECLS
 
-  void on_new_output0(const double& value);
-  void on_new_output1(const double& value);
-  void on_new_output2(const double& value);
-  void on_new_output3(const double& value);
+#define EE_TYPE_MULTIBAND_GATE_BOX (multiband_gate_box_get_type())
 
-  void on_new_gating0(const double& value);
-  void on_new_gating1(const double& value);
-  void on_new_gating2(const double& value);
-  void on_new_gating3(const double& value);
+G_DECLARE_FINAL_TYPE(MultibandGateBox, multiband_gate_box, EE, MULTIBAND_GATE_BOX, GtkBox)
 
-  void reset() override;
+G_END_DECLS
 
- private:
-  Gtk::SpinButton *freq0 = nullptr, *freq1 = nullptr, *freq2 = nullptr;
+auto create() -> MultibandGateBox*;
 
-  Gtk::SpinButton *range0 = nullptr, *attack0 = nullptr, *release0 = nullptr, *threshold0 = nullptr, *knee0 = nullptr,
-                  *ratio0 = nullptr, *makeup0 = nullptr;
+void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate, const std::string& schema_path);
 
-  Gtk::SpinButton *range1 = nullptr, *attack1 = nullptr, *release1 = nullptr, *threshold1 = nullptr, *knee1 = nullptr,
-                  *ratio1 = nullptr, *makeup1 = nullptr;
-
-  Gtk::SpinButton *range2 = nullptr, *attack2 = nullptr, *release2 = nullptr, *threshold2 = nullptr, *knee2 = nullptr,
-                  *ratio2 = nullptr, *makeup2 = nullptr;
-
-  Gtk::SpinButton *range3 = nullptr, *attack3 = nullptr, *release3 = nullptr, *threshold3 = nullptr, *knee3 = nullptr,
-                  *ratio3 = nullptr, *makeup3 = nullptr;
-
-  Gtk::LevelBar *output0 = nullptr, *output1 = nullptr, *output2 = nullptr, *output3 = nullptr;
-
-  Gtk::Label *output0_label = nullptr, *output1_label = nullptr, *output2_label = nullptr, *output3_label = nullptr;
-
-  Gtk::LevelBar *gating0 = nullptr, *gating1 = nullptr, *gating2 = nullptr, *gating3 = nullptr;
-
-  Gtk::Label *gating0_label = nullptr, *gating1_label = nullptr, *gating2_label = nullptr, *gating3_label = nullptr;
-
-  Gtk::ComboBoxText *mode = nullptr, *detection0 = nullptr, *detection1 = nullptr, *detection2 = nullptr,
-                    *detection3 = nullptr;
-
-  Gtk::ToggleButton *bypass0 = nullptr, *bypass1 = nullptr, *bypass2 = nullptr, *bypass3 = nullptr, *solo0 = nullptr,
-                    *solo1 = nullptr, *solo2 = nullptr, *solo3 = nullptr;
-};
-
-#endif
+}  // namespace ui::multiband_gate_box

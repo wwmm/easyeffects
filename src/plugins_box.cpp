@@ -210,6 +210,12 @@ void add_plugins_to_stack(PluginsBox* self) {
                                           self->data->application->pm);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::multiband_compressor);
+    } else if (name == plugin_name::multiband_gate) {
+      auto* box = ui::multiband_gate_box::create();
+
+      ui::multiband_gate_box::setup(box, effects_base->multiband_gate, schema_path + "multibandgate/");
+
+      gtk_stack_add_named(self->stack, GTK_WIDGET(box), plugin_name::multiband_gate);
     } else if (name == plugin_name::pitch) {
       auto* box = ui::pitch_box::create();
 

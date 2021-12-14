@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="MultibandGateBox" parent="GtkBox">
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
+                <signal name="toggled" handler="on_bypass" object="MultibandGateBox" />
             </object>
         </child>
 
@@ -36,8 +36,8 @@
                         <child>
                             <object class="GtkComboBoxText" id="mode">
                                 <items>
-                                    <item>LR4</item>
-                                    <item>LR8</item>
+                                    <item translatable="yes" id="LR4">LR4</item>
+                                    <item translatable="yes" id="LR8">LR8</item>
                                 </items>
                                 <accessibility>
                                     <property name="label" translatable="yes">Split Mode</property>
@@ -200,8 +200,8 @@
                                         <child>
                                             <object class="GtkComboBoxText" id="detection0">
                                                 <items>
-                                                    <item translatable="yes">RMS</item>
-                                                    <item translatable="yes">Peak</item>
+                                                    <item translatable="yes" id="RMS">RMS</item>
+                                                    <item translatable="yes" id="Peak">Peak</item>
                                                 </items>
                                                 <accessibility>
                                                     <property name="label" translatable="yes">Band 1 Detection</property>
@@ -560,8 +560,8 @@
                                         <child>
                                             <object class="GtkComboBoxText" id="detection1">
                                                 <items>
-                                                    <item translatable="yes">RMS</item>
-                                                    <item translatable="yes">Peak</item>
+                                                    <item translatable="yes" id="RMS">RMS</item>
+                                                    <item translatable="yes" id="Peak">Peak</item>
                                                 </items>
                                                 <accessibility>
                                                     <property name="label" translatable="yes">Band 2 Detection</property>
@@ -920,8 +920,8 @@
                                         <child>
                                             <object class="GtkComboBoxText" id="detection2">
                                                 <items>
-                                                    <item translatable="yes">RMS</item>
-                                                    <item translatable="yes">Peak</item>
+                                                    <item translatable="yes" id="RMS">RMS</item>
+                                                    <item translatable="yes" id="Peak">Peak</item>
                                                 </items>
                                                 <accessibility>
                                                     <property name="label" translatable="yes">Band 3 Detection</property>
@@ -1280,8 +1280,8 @@
                                         <child>
                                             <object class="GtkComboBoxText" id="detection3">
                                                 <items>
-                                                    <item translatable="yes">RMS</item>
-                                                    <item translatable="yes">Peak</item>
+                                                    <item translatable="yes" id="RMS">RMS</item>
+                                                    <item translatable="yes" id="Peak">Peak</item>
                                                 </items>
                                                 <accessibility>
                                                     <property name="label" translatable="yes">Band 4 Detection</property>
@@ -1789,6 +1789,7 @@
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset</property>
+                        <signal name="clicked" handler="on_reset" object="MultibandGateBox" />
                     </object>
                 </child>
 
@@ -1817,7 +1818,7 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>
