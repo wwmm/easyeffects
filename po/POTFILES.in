@@ -46,7 +46,6 @@ data/ui/presets_menu.ui
 data/ui/reverb.ui
 data/ui/rnnoise.ui
 data/ui/stereo_tools.ui
-include/effects_base_ui.hpp
 src/application.cpp
 src/application_ui.cpp
 src/convolver_ui.cpp
@@ -60,5 +59,3 @@ src/preferences_window.cpp
 src/presets_menu.cpp
 src/plugins_menu.cpp
 src/rnnoise_ui.cpp
-src/stream_output_effects_ui.cpp
-src/stream_input_effects_ui.cpp
