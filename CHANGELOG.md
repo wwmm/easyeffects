@@ -9,6 +9,8 @@
 - Equalizer APO preset import feature has been improved to apply not only the Bell filter, but also other supported
   ones (at the moment only the Bandpass filter is not available in LSP plugin).
 - The `Reset All Settings` function in our menu should work in Flatpak now.
+- We have a new option that allows the user to disable our menus `autohide`. This may help to workaround some bugs
+  Popover menus currently have on gtk4.
 
 ### Fixed
 
