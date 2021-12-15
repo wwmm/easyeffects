@@ -251,6 +251,8 @@ void application_window_init(ApplicationWindow* self) {
 
   g_settings_bind(self->settings, "bypass", self->bypass_button, "active", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(self->settings, "autohide-popovers", self->presetsMenu, "autohide", G_SETTINGS_BIND_DEFAULT);
+
   g_signal_connect(self->settings, "changed::use-dark-theme",
                    G_CALLBACK(+[](GSettings* settings, char* key, ApplicationWindow* self) { init_theme_color(self); }),
                    self);

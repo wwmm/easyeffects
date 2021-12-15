@@ -47,7 +47,9 @@ struct _EqualizerBandBox {
 
   GtkSpinButton *band_frequency, *band_quality;
 
-  GSettings* settings;
+  GtkPopover* popover_menu;
+
+  GSettings *settings, *app_settings;
 
   Data* data;
 };
@@ -124,6 +126,8 @@ void dispose(GObject* object) {
 
   self->data->gconnections.clear();
 
+  g_object_unref(self->app_settings);
+
   util::debug(log_tag + "index: "s + std::to_string(self->data->index) + " disposed"s);
 
   G_OBJECT_CLASS(equalizer_band_box_parent_class)->dispose(object);
@@ -158,6 +162,7 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_scale);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_frequency);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_quality);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, popover_menu);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset_quality);
   gtk_widget_class_bind_template_callback(widget_class, on_reset_frequency);
@@ -171,6 +176,10 @@ void equalizer_band_box_init(EqualizerBandBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->data = new Data();
+
+  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+
+  g_settings_bind(self->app_settings, "autohide-popovers", self->popover_menu, "autohide", G_SETTINGS_BIND_DEFAULT);
 
   prepare_scale<"">(self->band_scale);
 

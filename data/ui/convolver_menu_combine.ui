@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
     <template class="ConvolverMenuCombine" parent="GtkPopover">
-        <property name="autohide">0</property>
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>

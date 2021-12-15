@@ -79,7 +79,6 @@
     </template>
 
     <object class="GtkPopover" id="popover_menu">
-        <property name="autohide">0</property>
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>

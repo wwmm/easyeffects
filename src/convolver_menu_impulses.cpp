@@ -41,7 +41,7 @@ struct _ConvolverMenuImpulses {
 
   GtkStringList* string_list;
 
-  GSettings* settings;
+  GSettings *settings, *app_settings;
 
   app::Application* application;
 };
@@ -260,6 +260,7 @@ void dispose(GObject* object) {
   auto* self = EE_CONVOLVER_MENU_IMPULSES(object);
 
   g_object_unref(self->settings);
+  g_object_unref(self->app_settings);
 
   util::debug(log_tag + "disposed"s);
 
@@ -288,6 +289,10 @@ void convolver_menu_impulses_init(ConvolverMenuImpulses* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->string_list = gtk_string_list_new(nullptr);
+
+  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+
+  g_settings_bind(self->app_settings, "autohide-popovers", self, "autohide", G_SETTINGS_BIND_DEFAULT);
 }
 
 auto create() -> ConvolverMenuImpulses* {

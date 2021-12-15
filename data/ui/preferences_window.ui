@@ -99,6 +99,18 @@
                                 </child>
                             </object>
                         </child>
+
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Hide Menus on Outside Clicks</property>
+                                <property name="activatable_widget">autohide_popovers</property>
+                                <child>
+                                    <object class="GtkSwitch" id="autohide_popovers">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>

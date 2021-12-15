@@ -29,7 +29,7 @@ struct _PreferencesWindow {
   AdwPreferencesWindow parent_instance;
 
   GtkSwitch *enable_autostart, *process_all_inputs, *process_all_outputs, *theme_switch, *shutdown_on_window_close,
-      *use_cubic_volumes, *spectrum_show, *spectrum_fill, *spectrum_show_bar_border;
+      *use_cubic_volumes, *spectrum_show, *spectrum_fill, *spectrum_show_bar_border, *autohide_popovers;
 
   GtkColorButton *spectrum_color_button, *spectrum_axis_color_button;
 
@@ -127,6 +127,7 @@ void preferences_window_class_init(PreferencesWindowClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, process_all_inputs);
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, process_all_outputs);
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, theme_switch);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, autohide_popovers);
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, shutdown_on_window_close);
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, use_cubic_volumes);
 
@@ -169,8 +170,7 @@ void preferences_window_init(PreferencesWindow* self) {
 
   // connecting some widgets signals
 
-  prepare_spinbutton<"px">(self->spectrum_height);
-  prepare_spinbutton<"px">(self->spectrum_line_width);
+  prepare_spinbuttons<"px">(self->spectrum_height, self->spectrum_line_width);
 
   g_signal_connect(
       self->spectrum_minimum_frequency, "output",
@@ -218,12 +218,10 @@ void preferences_window_init(PreferencesWindow* self) {
 
   // general section gsettings bindings
 
-  g_settings_bind(self->settings, "use-dark-theme", self->theme_switch, "active", G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "process-all-inputs", self->process_all_inputs, "active", G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "process-all-outputs", self->process_all_outputs, "active", G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "shutdown-on-window-close", self->shutdown_on_window_close, "active",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "use-cubic-volumes", self->use_cubic_volumes, "active", G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
+                         "use-cubic-volumes", "autohide-popovers">(
+      self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
+      self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers);
 
   // spectrum section gsettings bindings
 

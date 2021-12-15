@@ -67,6 +67,8 @@ struct _ConvolverMenuCombine {
 
   GtkStringList *string_list_1, *string_list_2;
 
+  GSettings* app_settings;
+
   Data* data;
 };
 
@@ -229,6 +231,8 @@ void dispose(GObject* object) {
 
   self->data->mythreads.clear();
 
+  g_object_unref(self->app_settings);
+
   util::debug(log_tag + "disposed"s);
 
   G_OBJECT_CLASS(convolver_menu_combine_parent_class)->dispose(object);
@@ -273,6 +277,10 @@ void convolver_menu_combine_init(ConvolverMenuCombine* self) {
     gtk_string_list_append(self->string_list_1, name.c_str());
     gtk_string_list_append(self->string_list_2, name.c_str());
   }
+
+  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+
+  g_settings_bind(self->app_settings, "autohide-popovers", self, "autohide", G_SETTINGS_BIND_DEFAULT);
 }
 
 auto create() -> ConvolverMenuCombine* {
