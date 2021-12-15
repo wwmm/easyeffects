@@ -90,6 +90,8 @@ class EffectsBase {
 
   auto get_pipeline_latency() -> float;
 
+  void reset_settings();
+
   sigc::signal<void(const float&)> pipeline_latency;
 
  protected:

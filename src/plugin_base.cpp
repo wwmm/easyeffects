@@ -184,6 +184,10 @@ PluginBase::~PluginBase() {
   g_object_unref(settings);
 }
 
+void PluginBase::reset_settings() {
+  util::reset_all_keys(settings);
+}
+
 auto PluginBase::connect_to_pw() -> bool {
   auto success = false;
 

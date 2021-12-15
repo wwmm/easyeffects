@@ -439,7 +439,10 @@ void application_init(Application* self) {
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
                   auto* self = EE_APP(gapp);
 
-                  g_settings_reset(self->settings, "");
+                  util::reset_all_keys(self->settings);
+
+                  self->soe->reset_settings();
+                  self->sie->reset_settings();
                 },
                 nullptr, nullptr, nullptr};
 

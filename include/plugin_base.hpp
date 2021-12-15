@@ -89,6 +89,8 @@ class PluginBase {
 
   void disconnect_from_pw();
 
+  void reset_settings();
+
   virtual void setup();
 
   virtual void process(std::span<float>& left_in,

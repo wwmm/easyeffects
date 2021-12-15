@@ -4,12 +4,21 @@
 
 ### Added
 
+- LibAdwaita is used to create some parts of our window and for handling the switching between dark and light themes.
+- The settings menu has been redesigned using LibAdwaita widgets.
 - Equalizer APO preset import feature has been improved to apply not only the Bell filter, but also other supported
   ones (at the moment only the Bandpass filter is not available in LSP plugin).
+- The `Reset All Settings` function in our menu should work in Flatpak now.
 
 ### Fixed
 
 - More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.
+
+### Note to packagers
+
+- The fmt library is a new dependency https://github.com/fmtlib/fmt. At least while the c++ compilers do not implement
+  its features. This is expected to happen in the next years.
+- GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly.
 
 ## [6.1.5]
 

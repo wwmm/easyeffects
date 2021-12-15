@@ -220,6 +220,16 @@ EffectsBase::~EffectsBase() {
   util::debug("effects_base: destroyed");
 }
 
+void EffectsBase::reset_settings() {
+  util::reset_all_keys(settings);
+
+  spectrum->reset_settings();
+
+  for (auto& plugin : plugins | std::views::values) {
+    plugin->reset_settings();
+  }
+}
+
 void EffectsBase::activate_filters() {
   for (auto& plugin : plugins | std::views::values) {
     plugin->set_active(true);
