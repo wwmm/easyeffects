@@ -19,19 +19,20 @@
 
 #pragma once
 
-#include "preferences_general.hpp"
-#include "preferences_spectrum.hpp"
+#include <adwaita.h>
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
-namespace ui::preferences::window {
+namespace ui::preferences::spectrum {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_PREFERENCES_WINDOW (preferences_window_get_type())
+#define EE_TYPE_PREFERENCES_SPECTRUM (preferences_spectrum_get_type())
 
-G_DECLARE_FINAL_TYPE(PreferencesWindow, preferences_window, EE, PREFERENCES_WINDOW, AdwPreferencesWindow)
+G_DECLARE_FINAL_TYPE(PreferencesSpectrum, preferences_spectrum, EE, PREFERENCES_SPECTRUM, AdwPreferencesPage)
 
 G_END_DECLS
 
-auto create() -> PreferencesWindow*;
+auto create() -> PreferencesSpectrum*;
 
-}  // namespace ui::preferences::window
+}  // namespace ui::preferences::spectrum

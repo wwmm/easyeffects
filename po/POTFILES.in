@@ -40,6 +40,8 @@ data/ui/pipe_manager_box.ui
 data/ui/pitch.ui
 data/ui/plugins_box.ui
 data/ui/plugins_menu.ui
+data/ui/preferences_general.ui
+data/ui/preferences_spectrum.ui
 data/ui/preferences_window.ui
 data/ui/preset_row.ui
 data/ui/presets_menu.ui
@@ -55,6 +57,8 @@ src/effects_box.cpp
 src/equalizer_band_box.cpp
 src/equalizer_ui.cpp
 src/pipe_manager_box.cpp
+src/preferences_general.cpp
+src/preferences_spectrum.cpp
 src/preferences_window.cpp
 src/presets_menu.cpp
 src/plugins_menu.cpp

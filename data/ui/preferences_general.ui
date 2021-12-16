@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="easyeffects">
+    <template class="PreferencesGeneral" parent="AdwPreferencesPage">
+        <property name="icon_name">preferences-system-symbolic</property>
+        <property name="title" translatable="yes">_General</property>
+        <property name="use-underline">True</property>
+
+        <child>
+            <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Service</property>
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Start Service at Login</property>
+                        <property name="activatable_widget">enable_autostart</property>
+                        <child>
+                            <object class="GtkSwitch" id="enable_autostart">
+                                <property name="valign">center</property>
+                                <signal name="state-set" handler="on_enable_autostart" />
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Shutdown on Window Close</property>
+                        <property name="activatable_widget">shutdown_on_window_close</property>
+                        <child>
+                            <object class="GtkSwitch" id="shutdown_on_window_close">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Audio</property>
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Process All Outputs</property>
+                        <property name="activatable_widget">process_all_outputs</property>
+                        <child>
+                            <object class="GtkSwitch" id="process_all_outputs">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Process All Inputs</property>
+                        <property name="activatable_widget">process_all_inputs</property>
+                        <child>
+                            <object class="GtkSwitch" id="process_all_inputs">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Use Cubic Volume</property>
+                        <property name="activatable_widget">use_cubic_volumes</property>
+                        <child>
+                            <object class="GtkSwitch" id="use_cubic_volumes">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Style</property>
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Use Dark Theme</property>
+                        <property name="activatable_widget">theme_switch</property>
+                        <child>
+                            <object class="GtkSwitch" id="theme_switch">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Hide Menus on Outside Clicks</property>
+                        <property name="activatable_widget">autohide_popovers</property>
+                        <child>
+                            <object class="GtkSwitch" id="autohide_popovers">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </template>
+</interface>

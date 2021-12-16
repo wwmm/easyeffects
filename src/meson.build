@@ -86,6 +86,8 @@ easyeffects_sources = [
 	'plugin_base.cpp',
 	'plugins_box.cpp',
 	'plugins_menu.cpp',
+	'preferences_general.cpp',
+	'preferences_spectrum.cpp',
 	'preferences_window.cpp',
 	'presets_autoloading_holder.cpp',
 	'presets_menu.cpp',
