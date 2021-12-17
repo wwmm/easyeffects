@@ -1,0 +1,33 @@
+From 5980950dbae82c6a03b38b8e66e07a8b29068a00 Mon Sep 17 00:00:00 2001
+From: AsavarTzeth <asavartzeth@gmail.com>
+Date: Thu, 19 Jul 2018 21:55:38 +0200
+Subject: [PATCH] Fix makefile
+
+- ldconfig should not be called by Makefile
+- Add missing symlink for major version of lib
+---
+ source/Makefile | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/source/Makefile b/source/Makefile
+index 776c067..a15bea9 100644
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -34,7 +34,6 @@ VERSION = $(MAJVERS).$(MINVERS)
+ CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+ CPPFLAGS += -DENABLE_VECTOR_MODE 
+ CXXFLAGS += -fPIC -Wall -ffast-math -funroll-loops -O2
+-CXXFLAGS += -march=native
+ LDLFAGS += 
+ LDLIBS +=
+ 
+@@ -56,8 +55,8 @@ install:	$(ZITA-CONVOLVER_MIN)
+ 	install -d $(DESTDIR)$(LIBDIR)
+ 	install -m 644 $(ZITA-CONVOLVER_H) $(DESTDIR)$(INCDIR)
+ 	install -m 755 $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(LIBDIR)
+-	ldconfig
+ 	ln -sf $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-CONVOLVER_SO)
++	ln -sf $(ZITA-CONVOLVER_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-CONVOLVER_MAJ)
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)$(INCDIR)/$(ZITA-CONVOLVER_H)

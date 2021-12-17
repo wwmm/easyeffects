@@ -52,3 +52,18 @@ debian/*
 
 ppastats
 .autobuild
+
+# exclude most of flatpak directory
+util/flatpak/*
+!util/flatpak
+!util/flatpak/com.github.wwmm.easyeffects.json
+!util/flatpak/patch
+!util/flatpak/easyeffects-wrapper.sh
+!util/flatpak/shared-modules
+# include patch files
+!util/flatpak/patch/bs2b/001-fix-automake-dist-lzma.patch
+!util/flatpak/patch/easyeffects/001-fix-about-page-icon.patch
+!util/flatpak/patch/easyeffects/002-fix-desktop-file.patch
+!util/flatpak/patch/easyeffects/003-libportal-autostart.patch
+!util/flatpak/patch/zita-convolver/0001-Fix-makefile.patch
+

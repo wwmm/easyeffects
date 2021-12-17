@@ -1,0 +1,43 @@
+From 1eba69fef4c800289485bee3544660e9baa45de6 Mon Sep 17 00:00:00 2001
+From: Vincent Chernin <38842733+vchernin@users.noreply.github.com>
+Date: Thu, 26 Aug 2021 10:45:37 -0700
+Subject: [PATCH 1/2] Rename the Exec line to launch the wrapper script.
+This was the only way I could get a wrapper script to launch from using the app launcher (i.e. triggering the desktop file.)
+
+---
+ data/com.github.wwmm.easyeffects.desktop.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/com.github.wwmm.easyeffects.desktop.in b/data/com.github.wwmm.easyeffects.desktop.in
+index 69912196..8c210e53 100644
+--- a/data/com.github.wwmm.easyeffects.desktop.in
++++ b/data/com.github.wwmm.easyeffects.desktop.in
+@@ -4,7 +4,7 @@ GenericName=Equalizer, Compressor and Other Audio Effects
+ Comment=Audio Effects for PipeWire Applications
+ Keywords=limiter;compressor;reverberation;equalizer;autovolume;
+ Categories=GTK;AudioVideo;Audio;
+-Exec=easyeffects
++Exec=easyeffects-wrapper
+ # Translators: This is an icon name, don't translate!
+ Icon=easyeffects
+ StartupNotify=true
+
+From df4cc6bb435c9a4694c6a807154609e9af4fe65f Mon Sep 17 00:00:00 2001
+From: Vincent Chernin <38842733+vchernin@users.noreply.github.com>
+Date: Thu, 26 Aug 2021 10:46:01 -0700
+Subject: [PATCH 2/2] Update com.github.wwmm.easyeffects.service.in
+
+---
+ data/com.github.wwmm.easyeffects.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/com.github.wwmm.easyeffects.service.in b/data/com.github.wwmm.easyeffects.service.in
+index 0493f584..9e56bc6b 100644
+--- a/data/com.github.wwmm.easyeffects.service.in
++++ b/data/com.github.wwmm.easyeffects.service.in
+@@ -1,3 +1,3 @@
+ [D-BUS Service]
+ Name=com.github.wwmm.easyeffects
+-Exec=@bindir@/easyeffects --gapplication-service
++Exec=@bindir@/easyeffects-wrapper --gapplication-service
+
