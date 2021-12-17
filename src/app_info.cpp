@@ -31,6 +31,8 @@ struct Data {
 
   app::Application* application;
 
+  NodeInfo info;
+
   gulong handler_id_enable, handler_id_volume, handler_id_mute, handler_id_blocklist;
 
   std::unordered_map<uint, bool> enabled_app_list;
@@ -155,13 +157,62 @@ void disconnect_stream(AppInfo* self, const uint& id, const std::string& media_c
   }
 }
 
-void on_enable(AppInfo* self, gboolean state, GtkSwitch* btn) {}
+void on_enable(AppInfo* self, gboolean state, GtkSwitch* btn) {
+  if (!app_is_blocklisted(self, self->data->info.name)) {
+    (state) ? connect_stream(self, self->data->info.id, self->data->info.media_class)
+            : disconnect_stream(self, self->data->info.id, self->data->info.media_class);
+
+    self->data->enabled_app_list.insert_or_assign(self->data->info.id, state);
+  }
+}
+
+void on_volume_changed(AppInfo* self, GtkRange* scale) {
+  auto vol = static_cast<float>(gtk_range_get_value(GTK_RANGE(scale))) / 100.0F;
+
+  if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
+    vol = vol * vol * vol;
+  }
+
+  if (self->data->info.proxy != nullptr) {
+    PipeManager::set_node_volume(self->data->info.proxy, self->data->info.n_volume_channels, vol);
+  }
+}
+
+void on_mute(AppInfo* self, GtkToggleButton* btn) {
+  const auto state = gtk_toggle_button_get_active(btn);
+
+  if (state) {
+    gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-muted-symbolic");
+  } else {
+    gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-high-symbolic");
+  }
+
+  if (self->data->info.proxy != nullptr) {
+    PipeManager::set_node_mute(self->data->info.proxy, state);
+  }
+}
+
+void on_blocklist(AppInfo* self, GtkCheckButton* btn) {
+  const auto state = gtk_check_button_get_active(btn);
+
+  if (state) {
+    auto* enable = GTK_SWITCH(g_object_get_data(G_OBJECT(btn), "enable"));
+
+    self->data->enabled_app_list.insert_or_assign(self->data->info.id, gtk_switch_get_active(enable));
+
+    util::add_new_blocklist_entry(self->settings, self->data->info.name, log_tag);
+  } else {
+    util::remove_blocklist_entry(self->settings, self->data->info.name, log_tag);
+  }
+}
 
 void update(AppInfo* self, const NodeInfo node_info) {
   if (node_info.state == PW_NODE_STATE_CREATING) {
     // PW_NODE_STATE_CREATING is useless and does not give any meaningful info, therefore skip it
     return;
   }
+
+  self->data->info = node_info;
 
   gtk_label_set_text(self->app_name, node_info.name.c_str());
   gtk_label_set_text(self->media_name, node_info.media_name.c_str());
