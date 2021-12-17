@@ -578,6 +578,18 @@ void convolver_box_init(ConvolverBox* self) {
 
   self->data = new Data();
 
+  // irs dir
+
+  if (!std::filesystem::is_directory(irs_dir)) {
+    if (std::filesystem::create_directories(irs_dir)) {
+      util::debug(log_tag + "irs directory created: "s + irs_dir.string());
+    } else {
+      util::warning(log_tag + "failed to create irs directory: "s + irs_dir.string());
+    }
+  } else {
+    util::debug(log_tag + "irs directory already exists: "s + irs_dir.string());
+  }
+
   prepare_spinbutton<"%">(self->ir_width);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
@@ -594,18 +606,6 @@ void convolver_box_init(ConvolverBox* self) {
 
   gtk_box_insert_child_after(self->chart_box, GTK_WIDGET(self->chart),
                              gtk_widget_get_first_child(GTK_WIDGET(self->chart_box)));
-
-  // irs dir
-
-  if (!std::filesystem::is_directory(irs_dir)) {
-    if (std::filesystem::create_directories(irs_dir)) {
-      util::debug(log_tag + "irs directory created: "s + irs_dir.string());
-    } else {
-      util::warning(log_tag + "failed to create irs directory: "s + irs_dir.string());
-    }
-  } else {
-    util::debug(log_tag + "irs directory already exists: "s + irs_dir.string());
-  }
 
   // setting some signals
 
