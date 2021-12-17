@@ -292,7 +292,11 @@ void setup_listview_autoloading(PipeManagerBox* self) {
     const auto device_profile = json.value("device-profile", "");
     const auto preset_name = json.value("preset-name", "");
 
-    g_list_store_append(model, ui::holders::create(device, device_profile, preset_name));
+    auto* holder = ui::holders::create(device, device_profile, preset_name);
+
+    g_list_store_append(model, holder);
+
+    g_object_unref(holder);
   }
 
   auto* selection = gtk_no_selection_new(G_LIST_MODEL(model));
@@ -357,11 +361,19 @@ void setup(PipeManagerBox* self, app::Application* application) {
     }
 
     if (node.media_class == pm->media_class_sink) {
-      g_list_store_append(self->output_devices_model, ui::holders::create(node));
-      g_list_store_append(self->autoloading_output_devices_model, ui::holders::create(node));
+      auto holder = ui::holders::create(node);
+
+      g_list_store_append(self->output_devices_model, holder);
+      g_list_store_append(self->autoloading_output_devices_model, holder);
+
+      g_object_unref(holder);
     } else if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
-      g_list_store_append(self->input_devices_model, ui::holders::create(node));
-      g_list_store_append(self->autoloading_input_devices_model, ui::holders::create(node));
+      auto holder = ui::holders::create(node);
+
+      g_list_store_append(self->input_devices_model, holder);
+      g_list_store_append(self->autoloading_input_devices_model, holder);
+
+      g_object_unref(holder);
     }
   }
 
@@ -462,49 +474,81 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   self->data->connections.push_back(pm->sink_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
-      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n))
-              ->id == info.id) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
+
+      if (holder->id == info.id) {
+        g_object_unref(holder);
+
         return;
       }
+
+      g_object_unref(holder);
     }
 
-    g_list_store_append(self->output_devices_model, ui::holders::create(info));
-    g_list_store_append(self->autoloading_output_devices_model, ui::holders::create(info));
+    auto holder = ui::holders::create(info);
+
+    g_list_store_append(self->output_devices_model, holder);
+    g_list_store_append(self->autoloading_output_devices_model, holder);
+
+    g_object_unref(holder);
   }));
 
   self->data->connections.push_back(pm->sink_removed.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
-      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n))
-              ->id == info.id) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
+
+      if (holder->id == info.id) {
         g_list_store_remove(self->output_devices_model, n);
         g_list_store_remove(self->autoloading_output_devices_model, n);
 
+        g_object_unref(holder);
+
         return;
       }
+
+      g_object_unref(holder);
     }
   }));
 
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
-      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
-              ->id == info.id) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+      if (holder->id == info.id) {
+        g_object_unref(holder);
+
         return;
       }
+
+      g_object_unref(holder);
     }
 
-    g_list_store_append(self->input_devices_model, ui::holders::create(info));
-    g_list_store_append(self->autoloading_input_devices_model, ui::holders::create(info));
+    auto holder = ui::holders::create(info);
+
+    g_list_store_append(self->input_devices_model, holder);
+    g_list_store_append(self->autoloading_input_devices_model, holder);
+
+    g_object_unref(holder);
   }));
 
   self->data->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
-      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
-              ->id == info.id) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+      if (holder->id == info.id) {
         g_list_store_remove(self->input_devices_model, n);
         g_list_store_remove(self->autoloading_input_devices_model, n);
 
+        g_object_unref(holder);
+
         return;
       }
+
+      g_object_unref(holder);
     }
   }));
 

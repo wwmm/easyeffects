@@ -142,7 +142,11 @@ void setup(CompressorBox* self,
     }
 
     if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
-      g_list_store_append(self->input_devices_model, ui::holders::create(node));
+      auto holder = ui::holders::create(node);
+
+      g_list_store_append(self->input_devices_model, holder);
+
+      g_object_unref(holder);
     }
   }
 
@@ -174,23 +178,39 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
-      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
-              ->id == info.id) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+      if (holder->id == info.id) {
+        g_object_unref(holder);
+
         return;
       }
+
+      g_object_unref(holder);
     }
 
-    g_list_store_append(self->input_devices_model, ui::holders::create(info));
+    auto holder = ui::holders::create(info);
+
+    g_list_store_append(self->input_devices_model, holder);
+
+    g_object_unref(holder);
   }));
 
   self->data->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
-      if (static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n))
-              ->id == info.id) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+      if (holder->id == info.id) {
         g_list_store_remove(self->input_devices_model, n);
+
+        g_object_unref(holder);
 
         return;
       }
+
+      g_object_unref(holder);
     }
   }));
 

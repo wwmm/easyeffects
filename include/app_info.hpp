@@ -20,27 +20,24 @@
 #pragma once
 
 #include <adwaita.h>
-#include <algorithm>
-#include <ranges>
-#include <string>
-#include <unordered_map>
-#include "app_info.hpp"
+#include <fmt/core.h>
 #include "application.hpp"
-#include "pipeline_type.hpp"
-#include "plugin_name.hpp"
+#include "node_info_holder.hpp"
 
-namespace ui::apps_box {
+namespace ui::app_info {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_APPS_BOX (apps_box_get_type())
+#define EE_TYPE_APP_INFO (app_info_get_type())
 
-G_DECLARE_FINAL_TYPE(AppsBox, apps_box, EE, APPS_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(AppInfo, app_info, EE, APP_INFO, GtkBox)
 
 G_END_DECLS
 
-auto create() -> AppsBox*;
+auto create() -> AppInfo*;
 
-void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme);
+void setup(AppInfo* self, app::Application* application, GSettings* settings, GtkIconTheme* icon_theme);
 
-}  // namespace ui::apps_box
+void update(AppInfo* self, const NodeInfo node_info);
+
+}  // namespace ui::app_info

@@ -337,17 +337,18 @@ void import_apo_preset(EqualizerBox* self, const std::string& file_path) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
         g_settings_set_string(channel, band_type[n], bands[n].type.c_str());
+        g_settings_set_string(channel, band_mode[n], "APO (DR)");
         g_settings_set_double(channel, band_frequency[n], bands[n].freq);
         g_settings_set_double(channel, band_gain[n], bands[n].gain);
         g_settings_set_double(channel, band_q[n], bands[n].quality);
       } else {
         g_settings_set_string(channel, band_type[n], "Off");
+        g_settings_reset(channel, band_mode[n]);
         g_settings_reset(channel, band_frequency[n]);
         g_settings_reset(channel, band_gain[n]);
         g_settings_reset(channel, band_q[n]);
       }
 
-      g_settings_reset(channel, band_mode[n]);
       g_settings_reset(channel, band_slope[n]);
       g_settings_reset(channel, band_solo[n]);
       g_settings_reset(channel, band_mute[n]);

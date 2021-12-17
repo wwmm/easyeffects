@@ -21,6 +21,10 @@
 
 namespace ui::holders {
 
+using namespace std::string_literals;
+
+auto constexpr log_tag = "node holder: ";
+
 enum { PROP_0, PROP_TS, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS };
 
 G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
@@ -79,6 +83,8 @@ void node_info_holder_finalize(GObject* object) {
   auto* self = EE_NODE_INFO_HOLDER(object);
 
   self->info_updated.clear();
+
+  util::debug(log_tag + std::to_string(self->id) + ", " + self->name + " finalized");
 
   G_OBJECT_CLASS(node_info_holder_parent_class)->finalize(object);
 }

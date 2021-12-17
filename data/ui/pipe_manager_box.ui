@@ -497,10 +497,10 @@
 
                                 <child>
                                     <object class="AdwPreferencesGroup">
-                                        <property name="title" translatable="yes">Output Channel</property>
+                                        <property name="title" translatable="yes">Properties</property>
                                         <child>
                                             <object class="AdwActionRow">
-                                                <property name="title" translatable="yes">Channel</property>
+                                                <property name="title" translatable="yes">Channels</property>
                                                 <child>
                                                     <object class="GtkCheckButton" id="checkbutton_channel_left">
                                                         <property name="label" translatable="yes">Left</property>
@@ -535,15 +535,10 @@
                                                 </child>
                                             </object>
                                         </child>
-                                    </object>
-                                </child>
 
-                                <child>
-                                    <object class="AdwPreferencesGroup">
-                                        <property name="title" translatable="yes">Waveform</property>
                                         <child>
                                             <object class="AdwActionRow">
-                                                <property name="title" translatable="yes">Type</property>
+                                                <property name="title" translatable="yes">Waveform</property>
 
                                                 <child>
                                                     <object class="GtkCheckButton" id="checkbutton_signal_sine">
@@ -562,15 +557,10 @@
                                                 </child>
                                             </object>
                                         </child>
-                                    </object>
-                                </child>
 
-                                <child>
-                                    <object class="AdwPreferencesGroup">
-                                        <property name="title" translatable="yes">Frequency</property>
                                         <child>
                                             <object class="AdwActionRow">
-                                                <property name="title" translatable="yes">Value</property>
+                                                <property name="title" translatable="yes">Frequency</property>
 
                                                 <child>
                                                     <object class="GtkSpinButton" id="spinbutton_test_signal_frequency">

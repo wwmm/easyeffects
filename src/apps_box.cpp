@@ -29,8 +29,6 @@ struct Data {
  public:
   ~Data() { util::debug(log_tag + "data struct destroyed"s); }
 
-  PipelineType pipeline_type;
-
   app::Application* application;
 
   std::unordered_map<uint, bool> enabled_app_list;
@@ -70,8 +68,12 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
     if (holder->ts == node_info.timestamp) {
+      g_object_unref(holder);
+
       return;
     }
+
+    g_object_unref(holder);
   }
 
   auto* holder = ui::holders::create(node_info);
@@ -82,6 +84,14 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
       !app_is_blocklisted(self, node_info.name)) {
     g_list_store_append(self->apps_model, holder);
   }
+
+  /*
+    As g_list_store_append calls increases the object reference count we remove the one added by g_object_new in the
+    object creation. The reference added by g_list_store_append will be removed by an additional call to g_object_unref
+    after g_list_store_remove is called
+  */
+
+  g_object_unref(holder);
 }
 
 void on_app_removed(AppsBox* self, const long ts) {
@@ -94,8 +104,12 @@ void on_app_removed(AppsBox* self, const long ts) {
 
       g_list_store_remove(self->all_apps_model, n);
 
+      g_object_unref(holder);
+
       break;
     }
+
+    g_object_unref(holder);
   }
 
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
@@ -106,8 +120,12 @@ void on_app_removed(AppsBox* self, const long ts) {
 
       g_list_store_remove(self->apps_model, n);
 
+      g_object_unref(holder);
+
       break;
     }
+
+    g_object_unref(holder);
   }
 }
 
@@ -118,8 +136,12 @@ void on_app_changed(AppsBox* self, const NodeInfo node_info) {
     if (holder->ts == node_info.timestamp) {
       holder->info_updated.emit(node_info);
 
+      g_object_unref(holder);
+
       return;
     }
+
+    g_object_unref(holder);
   }
 }
 
@@ -507,7 +529,6 @@ void setup_listview(AppsBox* self) {
 
 void setup(AppsBox* self, app::Application* application, PipelineType pipeline_type, GtkIconTheme* icon_theme) {
   self->data->application = application;
-  self->data->pipeline_type = pipeline_type;
   self->icon_theme = icon_theme;
 
   switch (pipeline_type) {
@@ -569,6 +590,8 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
           auto* holder =
               static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
+          g_object_unref(holder);
+
           const auto app_is_enabled = self->data->application->pm->stream_is_connected(holder->id, holder->media_class);
 
           if (app_is_blocklisted(self, holder->name)) {
@@ -610,15 +633,25 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
         if (show_blocklisted_apps) {
           for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
-            g_list_store_append(self->apps_model, g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
+            auto item = g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n);
+
+            g_object_unref(item);
+
+            g_list_store_append(self->apps_model, item);
           }
         } else {
           for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
             auto* holder =
                 static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
+            g_object_unref(holder);
+
             if (!app_is_blocklisted(self, holder->name)) {
-              g_list_store_append(self->apps_model, g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
+              auto item = g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n);
+
+              g_object_unref(item);
+
+              g_list_store_append(self->apps_model, item);
             }
           }
         }
