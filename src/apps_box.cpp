@@ -590,8 +590,6 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
           auto* holder =
               static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
-          g_object_unref(holder);
-
           const auto app_is_enabled = self->data->application->pm->stream_is_connected(holder->id, holder->media_class);
 
           if (app_is_blocklisted(self, holder->name)) {
@@ -621,6 +619,8 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
             g_list_store_append(self->apps_model, holder);
           }
+
+          g_object_unref(holder);
         }
       }),
       self));
