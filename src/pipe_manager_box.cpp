@@ -172,6 +172,10 @@ void update_modules_info(PipeManagerBox* self) {
 
   g_list_store_splice(self->modules_model, 0, g_list_model_get_n_items(G_LIST_MODEL(self->modules_model)),
                       (gpointer*)(values.data()), values.size());
+
+  for (auto* holder : values) {
+    g_object_unref(holder);
+  }
 }
 
 void update_clients_info(PipeManagerBox* self) {
@@ -183,6 +187,10 @@ void update_clients_info(PipeManagerBox* self) {
 
   g_list_store_splice(self->clients_model, 0, g_list_model_get_n_items(G_LIST_MODEL(self->clients_model)),
                       (gpointer*)(values.data()), values.size());
+
+  for (auto* holder : values) {
+    g_object_unref(holder);
+  }
 }
 
 void on_stack_visible_child_changed(PipeManagerBox* self, GParamSpec* pspec, GtkWidget* stack) {
@@ -639,6 +647,10 @@ void setup(PipeManagerBox* self, app::Application* application) {
         g_list_store_splice(self->autoloading_input_model, 0,
                             g_list_model_get_n_items(G_LIST_MODEL(self->autoloading_input_model)),
                             (gpointer*)(list.data()), list.size());
+
+        for (auto* holder : list) {
+          g_object_unref(holder);
+        }
       }));
 
   self->data->connections.push_back(application->presets_manager->autoload_output_profiles_changed.connect(
@@ -656,6 +668,10 @@ void setup(PipeManagerBox* self, app::Application* application) {
         g_list_store_splice(self->autoloading_output_model, 0,
                             g_list_model_get_n_items(G_LIST_MODEL(self->autoloading_output_model)),
                             (gpointer*)(list.data()), list.size());
+
+        for (auto* holder : list) {
+          g_object_unref(holder);
+        }
       }));
 }
 

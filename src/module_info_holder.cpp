@@ -21,6 +21,10 @@
 
 namespace ui::holders {
 
+using namespace std::string_literals;
+
+auto constexpr log_tag = "module holder: ";
+
 enum { PROP_0, PROP_ID, PROP_NAME, PROP_DESCRIPTION, PROP_FILENAME };
 
 G_DEFINE_TYPE(ModuleInfoHolder, module_info_holder, G_TYPE_OBJECT);
@@ -73,6 +77,8 @@ void module_info_holder_finalize(GObject* object) {
   auto* self = EE_MODULE_INFO_HOLDER(object);
 
   self->info_updated.clear();
+
+  util::debug(log_tag + std::to_string(self->id) + ", " + self->name + " finalized");
 
   G_OBJECT_CLASS(module_info_holder_parent_class)->finalize(object);
 }
