@@ -35,7 +35,7 @@ struct Data {
 
   gulong handler_id_enable, handler_id_volume, handler_id_mute, handler_id_blocklist;
 
-  std::unordered_map<uint, bool> enabled_app_list;
+  std::unordered_map<uint, bool>* enabled_app_list;
 };
 
 struct _AppInfo {
@@ -157,16 +157,16 @@ void disconnect_stream(AppInfo* self, const uint& id, const std::string& media_c
   }
 }
 
-void on_enable(AppInfo* self, gboolean state, GtkSwitch* btn) {
+void on_enable(GtkSwitch* btn, gboolean state, AppInfo* self) {
   if (!app_is_blocklisted(self, self->data->info.name)) {
     (state) ? connect_stream(self, self->data->info.id, self->data->info.media_class)
             : disconnect_stream(self, self->data->info.id, self->data->info.media_class);
 
-    self->data->enabled_app_list.insert_or_assign(self->data->info.id, state);
+    self->data->enabled_app_list->insert_or_assign(self->data->info.id, state);
   }
 }
 
-void on_volume_changed(AppInfo* self, GtkRange* scale) {
+void on_volume_changed(GtkRange* scale, AppInfo* self) {
   auto vol = static_cast<float>(gtk_range_get_value(GTK_RANGE(scale))) / 100.0F;
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
@@ -178,7 +178,7 @@ void on_volume_changed(AppInfo* self, GtkRange* scale) {
   }
 }
 
-void on_mute(AppInfo* self, GtkToggleButton* btn) {
+void on_mute(GtkToggleButton* btn, AppInfo* self) {
   const auto state = gtk_toggle_button_get_active(btn);
 
   if (state) {
@@ -192,13 +192,11 @@ void on_mute(AppInfo* self, GtkToggleButton* btn) {
   }
 }
 
-void on_blocklist(AppInfo* self, GtkCheckButton* btn) {
+void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
   const auto state = gtk_check_button_get_active(btn);
 
   if (state) {
-    auto* enable = GTK_SWITCH(g_object_get_data(G_OBJECT(btn), "enable"));
-
-    self->data->enabled_app_list.insert_or_assign(self->data->info.id, gtk_switch_get_active(enable));
+    self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_switch_get_active(self->enable));
 
     util::add_new_blocklist_entry(self->settings, self->data->info.name, log_tag);
   } else {
@@ -237,8 +235,6 @@ void update(AppInfo* self, const NodeInfo node_info) {
   // updating the volume scale
 
   g_signal_handler_block(self->volume, self->data->handler_id_volume);
-
-  gtk_widget_set_sensitive(GTK_WIDGET(self->volume), true);
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
     gtk_range_set_value(GTK_RANGE(self->volume), 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
@@ -294,13 +290,20 @@ void update(AppInfo* self, const NodeInfo node_info) {
 
   // save app "enabled state" only the first time when it is not present in the enabled_app_list map
 
-  if (self->data->enabled_app_list.find(node_info.id) == self->data->enabled_app_list.end()) {
-    self->data->enabled_app_list.insert({node_info.id, is_enabled});
+  if (self->data->enabled_app_list->find(node_info.id) == self->data->enabled_app_list->end()) {
+    self->data->enabled_app_list->insert({node_info.id, is_enabled});
   }
 }
 
-void setup(AppInfo* self, app::Application* application, GSettings* settings, GtkIconTheme* icon_theme) {
+void setup(AppInfo* self,
+           app::Application* application,
+           GSettings* settings,
+           GtkIconTheme* icon_theme,
+           std::unordered_map<uint, bool>& enabled_app_list) {
+  self->data->application = application;
   self->settings = settings;
+  self->icon_theme = icon_theme;
+  self->data->enabled_app_list = &enabled_app_list;
 }
 
 void dispose(GObject* object) {
@@ -308,7 +311,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->app_settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug(log_tag + self->data->info.name + " disposed"s);
 
   G_OBJECT_CLASS(app_info_parent_class)->dispose(object);
 }
@@ -316,9 +319,9 @@ void dispose(GObject* object) {
 void finalize(GObject* object) {
   auto* self = EE_APP_INFO(object);
 
-  delete self->data;
+  util::debug(log_tag + self->data->info.name + " finalized"s);
 
-  util::debug(log_tag + "finalized"s);
+  delete self->data;
 
   G_OBJECT_CLASS(app_info_parent_class)->finalize(object);
 }
@@ -352,6 +355,11 @@ void app_info_init(AppInfo* self) {
   self->data = new Data();
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+
+  self->data->handler_id_enable = g_signal_connect(self->enable, "state-set", G_CALLBACK(on_enable), self);
+  self->data->handler_id_volume = g_signal_connect(self->volume, "value-changed", G_CALLBACK(on_volume_changed), self);
+  self->data->handler_id_mute = g_signal_connect(self->mute, "toggled", G_CALLBACK(on_mute), self);
+  self->data->handler_id_blocklist = g_signal_connect(self->blocklist, "toggled", G_CALLBACK(on_blocklist), self);
 }
 
 auto create() -> AppInfo* {

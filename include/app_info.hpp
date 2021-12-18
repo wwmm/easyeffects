@@ -36,7 +36,11 @@ G_END_DECLS
 
 auto create() -> AppInfo*;
 
-void setup(AppInfo* self, app::Application* application, GSettings* settings, GtkIconTheme* icon_theme);
+void setup(AppInfo* self,
+           app::Application* application,
+           GSettings* settings,
+           GtkIconTheme* icon_theme,
+           std::unordered_map<uint, bool>& enabled_app_list);
 
 void update(AppInfo* self, const NodeInfo node_info);
 

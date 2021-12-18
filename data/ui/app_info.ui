@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkBox" id="top_box">
+    <template class="AppInfo" parent="GtkBox">
         <property name="hexpand">1</property>
         <property name="vexpand">1</property>
         <property name="margin-start">6</property>
@@ -246,5 +246,5 @@
                 </child>
             </object>
         </child>
-    </object>
+    </template>
 </interface>

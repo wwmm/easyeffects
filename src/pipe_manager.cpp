@@ -309,7 +309,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
 
     if (const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME)) {
-      if (media_icon_name == nd->nd_info.media_icon_name) {
+      if (media_icon_name != nd->nd_info.media_icon_name) {
         nd->nd_info.media_icon_name = media_icon_name;
 
         app_info_ui_changed = true;
@@ -321,7 +321,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
 
     if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
-      if (media_name == nd->nd_info.media_name) {
+      if (media_name != nd->nd_info.media_name) {
         nd->nd_info.media_name = media_name;
 
         app_info_ui_changed = true;
