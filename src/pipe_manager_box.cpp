@@ -453,6 +453,8 @@ void setup(PipeManagerBox* self, app::Application* application) {
           }
         }
       }
+
+      g_free(input_device_name);
     }
   }
 
@@ -475,6 +477,8 @@ void setup(PipeManagerBox* self, app::Application* application) {
           }
         }
       }
+
+      g_free(output_device_name);
     }
   }
 

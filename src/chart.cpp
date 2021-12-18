@@ -213,13 +213,28 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y,
   }
 }
 
-auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& height) -> int {
-  /*
-     Initial value for the offset between labels. For it has been found based on trial and error. It would be good
-     to have a better procedure to estimate the "good" separation value between labels
-  */
+auto draw_unit(Chart* self, cairo_t* ctx, const int& width, const int& height, const std::string& unit) {
+  auto* layout = gtk_widget_create_pango_layout(GTK_WIDGET(self), unit.c_str());
 
-  double labels_offset = 120;
+  auto* description = pango_font_description_from_string("monospace bold");
+
+  pango_layout_set_font_description(layout, description);
+  pango_font_description_free(description);
+
+  int text_width = 0;
+  int text_height = 0;
+
+  pango_layout_get_pixel_size(layout, &text_width, &text_height);
+
+  cairo_move_to(ctx, width - text_width, static_cast<double>(height - text_height));
+
+  pango_cairo_show_layout(ctx, layout);
+
+  g_object_unref(layout);
+}
+
+auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& height) -> int {
+  double labels_offset = 0.1 * width;
 
   int n_x_labels = static_cast<int>(std::ceil((width - 2 * self->data->margin * width) / labels_offset)) + 1;
 
@@ -251,12 +266,14 @@ auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& heigh
   cairo_set_source_rgba(ctx, self->data->color_axis_labels.red, self->data->color_axis_labels.green,
                         self->data->color_axis_labels.blue, self->data->color_axis_labels.alpha);
 
+  draw_unit(self, ctx, width, height, self->data->x_unit);
+
   /*
     There is no space left in the window to show the last label. So we skip it
   */
 
   for (size_t n = 0U; n < labels.size() - 1; n++) {
-    const auto msg = fmt::format("{0:.{1}f} {2}", labels[n], self->data->n_x_decimals, self->data->x_unit);
+    const auto msg = fmt::format("{0:.{1}f}", labels[n], self->data->n_x_decimals);
 
     auto* layout = gtk_widget_create_pango_layout(GTK_WIDGET(self), msg.c_str());
 
