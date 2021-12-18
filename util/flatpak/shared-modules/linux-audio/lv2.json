@@ -1,0 +1,26 @@
+{
+    "name": "lv2",
+    "buildsystem": "simple",
+    "build-commands": [
+        "python3 ./waf configure --prefix=$FLATPAK_DEST --lv2dir=$FLATPAK_DEST/lib/lv2 --copy-headers",
+        "python3 ./waf build -j $FLATPAK_BUILDER_N_JOBS",
+        "python3 ./waf install"
+    ],
+    "cleanup": [
+        "/bin",
+        "/include",
+        "/lib/pkgconfig",
+        "/share"
+    ],
+    "sources": [
+        {
+            "type": "archive",
+            "url": "https://lv2plug.in/spec/lv2-1.18.2.tar.bz2",
+            "sha256": "4e891fbc744c05855beb5dfa82e822b14917dd66e98f82b8230dbd1c7ab2e05e"
+        }
+    ],
+    "post-install": [
+        "install -Dm644 -t $FLATPAK_DEST/share/licenses/lv2 COPYING",
+        "ln -sf lv2.pc $FLATPAK_DEST/lib/pkgconfig/lv2core.pc"
+    ]
+}
