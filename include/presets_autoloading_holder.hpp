@@ -20,7 +20,7 @@
 #pragma once
 
 #include <gtk/gtk.h>
-#include <iostream>
+#include "util.hpp"
 
 namespace ui::holders {
 
@@ -32,14 +32,19 @@ G_DECLARE_FINAL_TYPE(PresetsAutoloadingHolder, presets_autoloading_holder, EE, P
 
 G_END_DECLS
 
-struct _PresetsAutoloadingHolder {
-  GObject parent_instance;
-
+struct PresetsAutoLoadingData {
+ public:
   std::string device;
 
   std::string device_profile;
 
   std::string preset_name;
+};
+
+struct _PresetsAutoloadingHolder {
+  GObject parent_instance;
+
+  PresetsAutoLoadingData* data;
 };
 
 auto create(const std::string& device, const std::string& device_profile, const std::string& preset_name)

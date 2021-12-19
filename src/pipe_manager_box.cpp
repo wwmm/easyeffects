@@ -109,9 +109,9 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
     auto item = static_cast<ui::holders::PresetsAutoloadingHolder*>(
         g_list_model_get_item(G_LIST_MODEL(self->autoloading_input_model), n));
 
-    if (holder->info->name == item->device && device_profile == item->device_profile) {
-      self->data->application->presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device,
-                                                                item->device_profile);
+    if (holder->info->name == item->data->device && device_profile == item->data->device_profile) {
+      self->data->application->presets_manager->remove_autoload(PresetType::input, item->data->preset_name,
+                                                                item->data->device, item->data->device_profile);
 
       break;
     }
@@ -149,9 +149,9 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
     auto item = static_cast<ui::holders::PresetsAutoloadingHolder*>(
         g_list_model_get_item(G_LIST_MODEL(self->autoloading_output_model), n));
 
-    if (holder->info->name == item->device && device_profile == item->device_profile) {
-      self->data->application->presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device,
-                                                                item->device_profile);
+    if (holder->info->name == item->data->device && device_profile == item->data->device_profile) {
+      self->data->application->presets_manager->remove_autoload(PresetType::output, item->data->preset_name,
+                                                                item->data->device, item->data->device_profile);
 
       break;
     }
@@ -257,15 +257,16 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
         g_object_unref(builder);
 
-        g_signal_connect(remove, "clicked", G_CALLBACK(+[](GtkButton* btn, PipeManagerBox* self) {
-                           if (auto* holder = static_cast<ui::holders::PresetsAutoloadingHolder*>(
-                                   g_object_get_data(G_OBJECT(btn), "holder"));
-                               holder != nullptr) {
-                             self->data->application->presets_manager->remove_autoload(
-                                 preset_type, holder->preset_name, holder->device, holder->device_profile);
-                           }
-                         }),
-                         self);
+        g_signal_connect(
+            remove, "clicked", G_CALLBACK(+[](GtkButton* btn, PipeManagerBox* self) {
+              if (auto* holder =
+                      static_cast<ui::holders::PresetsAutoloadingHolder*>(g_object_get_data(G_OBJECT(btn), "holder"));
+                  holder != nullptr) {
+                self->data->application->presets_manager->remove_autoload(
+                    preset_type, holder->data->preset_name, holder->data->device, holder->data->device_profile);
+              }
+            }),
+            self);
       }),
       self);
 
@@ -280,12 +281,12 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
         g_object_set_data(G_OBJECT(remove), "holder", holder);
 
-        gtk_label_set_text(device, holder->device.c_str());
-        gtk_label_set_text(device_profile, holder->device_profile.c_str());
-        gtk_label_set_text(preset_name, holder->preset_name.c_str());
+        gtk_label_set_text(device, holder->data->device.c_str());
+        gtk_label_set_text(device_profile, holder->data->device_profile.c_str());
+        gtk_label_set_text(preset_name, holder->data->preset_name.c_str());
 
         gtk_accessible_update_property(GTK_ACCESSIBLE(remove), GTK_ACCESSIBLE_PROPERTY_LABEL,
-                                       (_("Remove Autoloading Preset") + " "s + holder->preset_name).c_str(), -1);
+                                       (_("Remove Autoloading Preset") + " "s + holder->data->preset_name).c_str(), -1);
       }),
       self);
 

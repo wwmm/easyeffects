@@ -21,28 +21,39 @@
 
 namespace ui::holders {
 
+using namespace std::string_literals;
+
+auto constexpr log_tag = "presets autoloading holder: ";
+
 G_DEFINE_TYPE(PresetsAutoloadingHolder, presets_autoloading_holder, G_TYPE_OBJECT);
 
-void presets_autoloading_holder_class_init(PresetsAutoloadingHolderClass* klass) {}
+void presets_autoloading_holder_finalize(GObject* object) {
+  auto* self = EE_PRESETS_AUTOLOADING_HOLDER(object);
+
+  util::debug(log_tag + self->data->device + ", " + self->data->preset_name + " finalized");
+
+  delete self->data;
+
+  G_OBJECT_CLASS(presets_autoloading_holder_parent_class)->finalize(object);
+}
+
+void presets_autoloading_holder_class_init(PresetsAutoloadingHolderClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
+
+  object_class->finalize = presets_autoloading_holder_finalize;
+}
 
 void presets_autoloading_holder_init(PresetsAutoloadingHolder* self) {
-  /*
-    gtk is doing something weird when initializing the structures "_***"
-    if we do not do something like the one below we may segfault if info.device and similar are empty
-  */
-
-  self->device = " ";
-  self->device_profile = " ";
-  self->preset_name = " ";
+  self->data = new PresetsAutoLoadingData();
 }
 
 auto create(const std::string& device, const std::string& device_profile, const std::string& preset_name)
     -> PresetsAutoloadingHolder* {
   auto* holder = static_cast<PresetsAutoloadingHolder*>(g_object_new(EE_TYPE_PRESETS_AUTOLOADING_HOLDER, nullptr));
 
-  holder->device = device;
-  holder->device_profile = device_profile;
-  holder->preset_name = preset_name;
+  holder->data->device = device;
+  holder->data->device_profile = device_profile;
+  holder->data->preset_name = preset_name;
 
   return holder;
 }
