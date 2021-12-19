@@ -1381,6 +1381,8 @@ PipeManager::PipeManager() {
   proxy_stream_output_sink = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
 
+  pw_properties_free(props_sink);
+
   // loading our source
 
   pw_properties* props_source = pw_properties_new(nullptr, nullptr);
@@ -1394,6 +1396,8 @@ PipeManager::PipeManager() {
 
   proxy_stream_input_source = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
+
+  pw_properties_free(props_source);
 
   sync_wait_unlock();
 
@@ -1602,6 +1606,8 @@ auto PipeManager::link_nodes(const uint& output_node_id,
 
         auto* proxy = static_cast<pw_proxy*>(
             pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0));
+
+        pw_properties_free(props);
 
         if (proxy == nullptr) {
           util::warning(log_tag + "failed to link the node " + std::to_string(output_node_id) + " to " +

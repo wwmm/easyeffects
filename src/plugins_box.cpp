@@ -51,8 +51,6 @@ struct _PluginsBox {
 
   ui::plugins_menu::PluginsMenu* plugins_menu;
 
-  GtkStringList* string_list;
-
   GSettings* settings;
 
   Data* data;
@@ -529,8 +527,6 @@ void plugins_box_init(PluginsBox* self) {
   self->data = new Data();
 
   self->data->schedule_signal_idle = false;
-
-  self->string_list = gtk_string_list_new(nullptr);
 
   self->plugins_menu = ui::plugins_menu::create();
 
