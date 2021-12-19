@@ -113,7 +113,7 @@ void setup_dropdown_input_device(CompressorBox* self) {
                      if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
                        auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
 
-                       g_settings_set_string(self->settings, "sidechain-input-device", holder->name.c_str());
+                       g_settings_set_string(self->settings, "sidechain-input-device", holder->info->name.c_str());
                      }
                    }),
                    self);
@@ -181,7 +181,7 @@ void setup(CompressorBox* self,
       auto* holder =
           static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
 
-      if (holder->id == info.id) {
+      if (holder->info->id == info.id) {
         g_object_unref(holder);
 
         return;
@@ -202,7 +202,7 @@ void setup(CompressorBox* self,
       auto* holder =
           static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
 
-      if (holder->id == info.id) {
+      if (holder->info->id == info.id) {
         g_list_store_remove(self->input_devices_model, n);
 
         g_object_unref(holder);

@@ -96,7 +96,7 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    if (device.id == holder->device_id) {
+    if (device.id == holder->info->device_id) {
       device_profile = device.input_route_name;
 
       break;
@@ -109,7 +109,7 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
     auto item = static_cast<ui::holders::PresetsAutoloadingHolder*>(
         g_list_model_get_item(G_LIST_MODEL(self->autoloading_input_model), n));
 
-    if (holder->name == item->device && device_profile == item->device_profile) {
+    if (holder->info->name == item->device && device_profile == item->device_profile) {
       self->data->application->presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device,
                                                                 item->device_profile);
 
@@ -121,7 +121,8 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
 
   auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
 
-  self->data->application->presets_manager->add_autoload(PresetType::input, preset_name, holder->name, device_profile);
+  self->data->application->presets_manager->add_autoload(PresetType::input, preset_name, holder->info->name,
+                                                         device_profile);
 }
 
 void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
@@ -135,7 +136,7 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    if (device.id == holder->device_id) {
+    if (device.id == holder->info->device_id) {
       device_profile = device.output_route_name;
 
       break;
@@ -148,7 +149,7 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
     auto item = static_cast<ui::holders::PresetsAutoloadingHolder*>(
         g_list_model_get_item(G_LIST_MODEL(self->autoloading_output_model), n));
 
-    if (holder->name == item->device && device_profile == item->device_profile) {
+    if (holder->info->name == item->device && device_profile == item->device_profile) {
       self->data->application->presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device,
                                                                 item->device_profile);
 
@@ -160,7 +161,8 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
 
   auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
 
-  self->data->application->presets_manager->add_autoload(PresetType::output, preset_name, holder->name, device_profile);
+  self->data->application->presets_manager->add_autoload(PresetType::output, preset_name, holder->info->name,
+                                                         device_profile);
 }
 
 void update_modules_info(PipeManagerBox* self) {
@@ -417,7 +419,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
                      if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
                        auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
 
-                       g_settings_set_string(self->sie_settings, "input-device", holder->name.c_str());
+                       g_settings_set_string(self->sie_settings, "input-device", holder->info->name.c_str());
                      }
                    }),
                    self);
@@ -427,7 +429,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
                      if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
                        auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
 
-                       g_settings_set_string(self->soe_settings, "output-device", holder->name.c_str());
+                       g_settings_set_string(self->soe_settings, "output-device", holder->info->name.c_str());
                      }
                    }),
                    self);
@@ -441,12 +443,12 @@ void setup(PipeManagerBox* self, app::Application* application) {
     if (holder_selected != nullptr) {
       const auto input_device_name = util::gsettings_get_string(self->sie_settings, "input-device");
 
-      if (holder_selected->name != input_device_name) {
+      if (holder_selected->info->name != input_device_name) {
         for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
           auto item = static_cast<ui::holders::NodeInfoHolder*>(
               g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
 
-          if (item->name == input_device_name) {
+          if (item->info->name == input_device_name) {
             gtk_drop_down_set_selected(self->dropdown_input_devices, n);
 
             break;
@@ -463,12 +465,12 @@ void setup(PipeManagerBox* self, app::Application* application) {
     if (holder_selected != nullptr) {
       const auto output_device_name = util::gsettings_get_string(self->soe_settings, "output-device");
 
-      if (holder_selected->name != output_device_name) {
+      if (holder_selected->info->name != output_device_name) {
         for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
           auto item = static_cast<ui::holders::NodeInfoHolder*>(
               g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
 
-          if (item->name == output_device_name) {
+          if (item->info->name == output_device_name) {
             gtk_drop_down_set_selected(self->dropdown_output_devices, n);
 
             break;
@@ -485,7 +487,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
       auto* holder =
           static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
 
-      if (holder->id == info.id) {
+      if (holder->info->id == info.id) {
         g_object_unref(holder);
 
         return;
@@ -507,7 +509,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
       auto* holder =
           static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
 
-      if (holder->id == info.id) {
+      if (holder->info->id == info.id) {
         g_list_store_remove(self->output_devices_model, n);
         g_list_store_remove(self->autoloading_output_devices_model, n);
 
@@ -525,7 +527,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
       auto* holder =
           static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
 
-      if (holder->id == info.id) {
+      if (holder->info->id == info.id) {
         g_object_unref(holder);
 
         return;
@@ -547,7 +549,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
       auto* holder =
           static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
 
-      if (holder->id == info.id) {
+      if (holder->info->id == info.id) {
         g_list_store_remove(self->input_devices_model, n);
         g_list_store_remove(self->autoloading_input_devices_model, n);
 
@@ -808,12 +810,12 @@ void pipe_manager_box_init(PipeManagerBox* self) {
             return;
           }
 
-          if (holder->name != self->data->application->pm->default_input_device.name) {
+          if (holder->info->name != self->data->application->pm->default_input_device.name) {
             for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
               auto item = static_cast<ui::holders::NodeInfoHolder*>(
                   g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
 
-              if (item->name == self->data->application->pm->default_input_device.name) {
+              if (item->info->name == self->data->application->pm->default_input_device.name) {
                 gtk_drop_down_set_selected(self->dropdown_input_devices, n);
 
                 break;
@@ -838,12 +840,12 @@ void pipe_manager_box_init(PipeManagerBox* self) {
             return;
           }
 
-          if (holder->name != self->data->application->pm->default_output_device.name) {
+          if (holder->info->name != self->data->application->pm->default_output_device.name) {
             for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
               auto item = static_cast<ui::holders::NodeInfoHolder*>(
                   g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
 
-              if (item->name == self->data->application->pm->default_output_device.name) {
+              if (item->info->name == self->data->application->pm->default_output_device.name) {
                 gtk_drop_down_set_selected(self->dropdown_output_devices, n);
 
                 break;

@@ -34,16 +34,16 @@ void client_info_set_property(GObject* object, guint prop_id, const GValue* valu
 
   switch (prop_id) {
     case PROP_ID:
-      self->id = g_value_get_uint(value);
+      self->info->id = g_value_get_uint(value);
       break;
     case PROP_NAME:
-      self->name = g_value_get_string(value);
+      self->info->name = g_value_get_string(value);
       break;
     case PROP_API:
-      self->api = g_value_get_string(value);
+      self->info->api = g_value_get_string(value);
       break;
     case PROP_ACCESS:
-      self->access = g_value_get_string(value);
+      self->info->access = g_value_get_string(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -56,16 +56,16 @@ void client_info_get_property(GObject* object, guint prop_id, GValue* value, GPa
 
   switch (prop_id) {
     case PROP_ID:
-      g_value_set_uint(value, self->id);
+      g_value_set_uint(value, self->info->id);
       break;
     case PROP_NAME:
-      g_value_set_string(value, self->name.c_str());
+      g_value_set_string(value, self->info->name.c_str());
       break;
     case PROP_API:
-      g_value_set_string(value, self->api.c_str());
+      g_value_set_string(value, self->info->api.c_str());
       break;
     case PROP_ACCESS:
-      g_value_set_string(value, self->access.c_str());
+      g_value_set_string(value, self->info->access.c_str());
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -78,7 +78,9 @@ void client_info_holder_finalize(GObject* object) {
 
   self->info_updated.clear();
 
-  util::debug(log_tag + std::to_string(self->id) + ", " + self->name + " finalized");
+  util::debug(log_tag + std::to_string(self->info->id) + ", " + self->info->name + " finalized");
+
+  delete self->info;
 
   G_OBJECT_CLASS(client_info_holder_parent_class)->finalize(object);
 }
@@ -105,25 +107,16 @@ void client_info_holder_class_init(ClientInfoHolderClass* klass) {
 }
 
 void client_info_holder_init(ClientInfoHolder* self) {
-  self->id = SPA_ID_INVALID;
-
-  /*
-    gtk is doing something weird when initializing the structures "_***"
-    if we do not do something like the one below we may segfault if info.name and similar are empty
-  */
-
-  self->name = " ";
-  self->api = " ";
-  self->access = " ";
+  self->info = new ClientInfo();
 }
 
 auto create(const ClientInfo& info) -> ClientInfoHolder* {
   auto* holder = static_cast<ClientInfoHolder*>(g_object_new(EE_TYPE_CLIENT_INFO_HOLDER, nullptr));
 
-  holder->id = info.id;
-  holder->name = info.name;
-  holder->api = info.api;
-  holder->access = info.access;
+  holder->info->id = info.id;
+  holder->info->name = info.name;
+  holder->info->api = info.api;
+  holder->info->access = info.access;
 
   return holder;
 }

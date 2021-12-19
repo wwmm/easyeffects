@@ -35,15 +35,7 @@ G_END_DECLS
 struct _NodeInfoHolder {
   GObject parent_instance;
 
-  long ts;
-
-  uint id;
-
-  uint device_id;
-
-  std::string name;
-
-  std::string media_class;
+  NodeInfo* info;
 
   sigc::signal<void(const NodeInfo)> info_updated;
 };

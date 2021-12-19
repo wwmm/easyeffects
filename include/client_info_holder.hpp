@@ -35,13 +35,7 @@ G_END_DECLS
 struct _ClientInfoHolder {
   GObject parent_instance;
 
-  uint id;
-
-  std::string name;
-
-  std::string api;
-
-  std::string access;
+  ClientInfo* info;
 
   sigc::signal<void(const ClientInfo)> info_updated;
 };

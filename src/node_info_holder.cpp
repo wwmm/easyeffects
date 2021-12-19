@@ -34,19 +34,19 @@ void node_info_set_property(GObject* object, guint prop_id, const GValue* value,
 
   switch (prop_id) {
     case PROP_TS:
-      self->ts = g_value_get_long(value);
+      self->info->timestamp = g_value_get_long(value);
       break;
     case PROP_ID:
-      self->id = g_value_get_uint(value);
+      self->info->id = g_value_get_uint(value);
       break;
     case PROP_DEVICE_ID:
-      self->device_id = g_value_get_uint(value);
+      self->info->device_id = g_value_get_uint(value);
       break;
     case PROP_NAME:
-      self->name = g_value_get_string(value);
+      self->info->name = g_value_get_string(value);
       break;
     case PROP_MEDIA_CLASS:
-      self->media_class = g_value_get_string(value);
+      self->info->media_class = g_value_get_string(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -59,19 +59,19 @@ void node_info_get_property(GObject* object, guint prop_id, GValue* value, GPara
 
   switch (prop_id) {
     case PROP_TS:
-      g_value_set_long(value, self->ts);
+      g_value_set_long(value, self->info->timestamp);
       break;
     case PROP_ID:
-      g_value_set_uint(value, self->id);
+      g_value_set_uint(value, self->info->id);
       break;
     case PROP_DEVICE_ID:
-      g_value_set_uint(value, self->device_id);
+      g_value_set_uint(value, self->info->device_id);
       break;
     case PROP_NAME:
-      g_value_set_string(value, self->name.c_str());
+      g_value_set_string(value, self->info->name.c_str());
       break;
     case PROP_MEDIA_CLASS:
-      g_value_set_string(value, self->media_class.c_str());
+      g_value_set_string(value, self->info->media_class.c_str());
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -84,7 +84,9 @@ void node_info_holder_finalize(GObject* object) {
 
   self->info_updated.clear();
 
-  util::debug(log_tag + std::to_string(self->id) + ", " + self->name + " finalized");
+  util::debug(log_tag + std::to_string(self->info->id) + ", " + self->info->name + " finalized");
+
+  delete self->info;
 
   G_OBJECT_CLASS(node_info_holder_parent_class)->finalize(object);
 }
@@ -117,26 +119,13 @@ void node_info_holder_class_init(NodeInfoHolderClass* klass) {
 }
 
 void node_info_holder_init(NodeInfoHolder* self) {
-  self->id = SPA_ID_INVALID;
-  self->device_id = SPA_ID_INVALID;
-
-  /*
-    gtk is doing something weird when initializing the structures "_***"
-    if we do not do something like the one below we may segfault if info.name and similar are empty
-  */
-
-  self->name = " ";
-  self->media_class = " ";
+  self->info = new NodeInfo();
 }
 
 auto create(const NodeInfo& info) -> NodeInfoHolder* {
   auto* holder = static_cast<NodeInfoHolder*>(g_object_new(EE_TYPE_NODE_INFO_HOLDER, nullptr));
 
-  holder->ts = info.timestamp;
-  holder->id = info.id;
-  holder->device_id = info.device_id;
-  holder->name = info.name;
-  holder->media_class = info.media_class;
+  *holder->info = info;
 
   return holder;
 }

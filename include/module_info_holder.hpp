@@ -35,13 +35,7 @@ G_END_DECLS
 struct _ModuleInfoHolder {
   GObject parent_instance;
 
-  uint id;
-
-  std::string name;
-
-  std::string description;
-
-  std::string filename;
+  ModuleInfo* info;
 
   sigc::signal<void(const ModuleInfo)> info_updated;
 };

@@ -67,7 +67,7 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
     auto* holder =
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
-    if (holder->ts == node_info.timestamp) {
+    if (holder->info->timestamp == node_info.timestamp) {
       g_object_unref(holder);
 
       return;
@@ -99,7 +99,7 @@ void on_app_removed(AppsBox* self, const long ts) {
     auto* holder =
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
-    if (holder->ts == ts) {
+    if (holder->info->timestamp == ts) {
       holder->info_updated.clear();  // Disconnecting all the slots before removing the holder from the model
 
       g_list_store_remove(self->all_apps_model, n);
@@ -115,7 +115,7 @@ void on_app_removed(AppsBox* self, const long ts) {
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
-    if (holder->ts == ts) {
+    if (holder->info->timestamp == ts) {
       holder->info_updated.clear();  // Disconnecting all the slots before removing the holder from the model
 
       g_list_store_remove(self->apps_model, n);
@@ -133,7 +133,7 @@ void on_app_changed(AppsBox* self, const NodeInfo node_info) {
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
-    if (holder->ts == node_info.timestamp) {
+    if (holder->info->timestamp == node_info.timestamp) {
       holder->info_updated.emit(node_info);
 
       g_object_unref(holder);
@@ -190,7 +190,7 @@ void setup_listview(AppsBox* self) {
 
         // Update the app info ui for the very first time Needed for interface initialization in service mode
 
-        if (const auto node_it = self->data->application->pm->node_map.find(holder->ts);
+        if (const auto node_it = self->data->application->pm->node_map.find(holder->info->timestamp);
             node_it != self->data->application->pm->node_map.end()) {
           ui::app_info::update(app_info, node_it->second);
         }
@@ -285,11 +285,12 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
           auto* holder =
               static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
-          const auto app_is_enabled = self->data->application->pm->stream_is_connected(holder->id, holder->media_class);
+          const auto app_is_enabled =
+              self->data->application->pm->stream_is_connected(holder->info->id, holder->info->media_class);
 
-          if (app_is_blocklisted(self, holder->name)) {
+          if (app_is_blocklisted(self, holder->info->name)) {
             if (app_is_enabled) {
-              disconnect_stream(self, holder->id, holder->media_class);
+              disconnect_stream(self, holder->info->id, holder->info->media_class);
             }
 
             if (show_blocklisted_apps) {
@@ -300,15 +301,15 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
               // Try to restore the previous enabled state, if needed
 
               try {
-                if (self->data->enabled_app_list.at(holder->id)) {
-                  connect_stream(self, holder->id, holder->media_class);
+                if (self->data->enabled_app_list.at(holder->info->id)) {
+                  connect_stream(self, holder->info->id, holder->info->media_class);
                 }
               } catch (...) {
-                connect_stream(self, holder->id, holder->media_class);
+                connect_stream(self, holder->info->id, holder->info->media_class);
 
-                util::warning(log_tag + "can't retrieve enabled state of node "s + std::to_string(holder->id));
+                util::warning(log_tag + "can't retrieve enabled state of node "s + std::to_string(holder->info->id));
 
-                self->data->enabled_app_list.insert({holder->id, true});
+                self->data->enabled_app_list.insert({holder->info->id, true});
               }
             }
 
@@ -341,7 +342,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
             g_object_unref(holder);
 
-            if (!app_is_blocklisted(self, holder->name)) {
+            if (!app_is_blocklisted(self, holder->info->name)) {
               auto item = g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n);
 
               g_object_unref(item);

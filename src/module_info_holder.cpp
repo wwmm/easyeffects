@@ -34,16 +34,16 @@ void module_info_set_property(GObject* object, guint prop_id, const GValue* valu
 
   switch (prop_id) {
     case PROP_ID:
-      self->id = g_value_get_uint(value);
+      self->info->id = g_value_get_uint(value);
       break;
     case PROP_NAME:
-      self->name = g_value_get_string(value);
+      self->info->name = g_value_get_string(value);
       break;
     case PROP_DESCRIPTION:
-      self->description = g_value_get_string(value);
+      self->info->description = g_value_get_string(value);
       break;
     case PROP_FILENAME:
-      self->filename = g_value_get_string(value);
+      self->info->filename = g_value_get_string(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -56,16 +56,16 @@ void module_info_get_property(GObject* object, guint prop_id, GValue* value, GPa
 
   switch (prop_id) {
     case PROP_ID:
-      g_value_set_uint(value, self->id);
+      g_value_set_uint(value, self->info->id);
       break;
     case PROP_NAME:
-      g_value_set_string(value, self->name.c_str());
+      g_value_set_string(value, self->info->name.c_str());
       break;
     case PROP_DESCRIPTION:
-      g_value_set_string(value, self->description.c_str());
+      g_value_set_string(value, self->info->description.c_str());
       break;
     case PROP_FILENAME:
-      g_value_set_string(value, self->filename.c_str());
+      g_value_set_string(value, self->info->filename.c_str());
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -78,7 +78,9 @@ void module_info_holder_finalize(GObject* object) {
 
   self->info_updated.clear();
 
-  util::debug(log_tag + std::to_string(self->id) + ", " + self->name + " finalized");
+  util::debug(log_tag + std::to_string(self->info->id) + ", " + self->info->name + " finalized");
+
+  delete self->info;
 
   G_OBJECT_CLASS(module_info_holder_parent_class)->finalize(object);
 }
@@ -107,25 +109,16 @@ void module_info_holder_class_init(ModuleInfoHolderClass* klass) {
 }
 
 void module_info_holder_init(ModuleInfoHolder* self) {
-  self->id = SPA_ID_INVALID;
-
-  /*
-    gtk is doing something weird when initializing the structures "_***"
-    if we do not do something like the one below we may segfault if info.descrition and similar are empty
-  */
-
-  self->name = " ";
-  self->description = " ";
-  self->filename = " ";
+  self->info = new ModuleInfo();
 }
 
 auto create(const ModuleInfo& info) -> ModuleInfoHolder* {
   auto* holder = static_cast<ModuleInfoHolder*>(g_object_new(EE_TYPE_MODULE_INFO_HOLDER, nullptr));
 
-  holder->id = info.id;
-  holder->name = info.name;
-  holder->description = info.description;
-  holder->filename = info.filename;
+  holder->info->id = info.id;
+  holder->info->name = info.name;
+  holder->info->description = info.description;
+  holder->info->filename = info.filename;
 
   return holder;
 }
