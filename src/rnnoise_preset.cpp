@@ -32,7 +32,7 @@ void RNNoisePreset::save(nlohmann::json& json, const std::string& section, GSett
 
   json[section]["rnnoise"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["rnnoise"]["model-path"] = g_settings_get_string(settings, "model-path");
+  json[section]["rnnoise"]["model-path"] = util::gsettings_get_string(settings, "model-path");
 }
 
 void RNNoisePreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {

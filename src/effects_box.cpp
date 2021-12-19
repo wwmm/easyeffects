@@ -136,9 +136,11 @@ void setup_spectrum(EffectsBox* self) {
   gtk_widget_set_size_request(GTK_WIDGET(self->spectrum_chart), -1,
                               g_settings_get_int(self->settings_spectrum, "height"));
 
-  if (g_strcmp0(g_settings_get_string(self->settings_spectrum, "type"), "Bars") == 0) {
+  auto chart_type = util::gsettings_get_string(self->settings_spectrum, "type");
+
+  if (chart_type == "Bars") {
     ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::bar);
-  } else if (g_strcmp0(g_settings_get_string(self->settings_spectrum, "type"), "Lines") == 0) {
+  } else if (chart_type == "Lines") {
     ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::line);
   }
 
@@ -186,9 +188,11 @@ void setup_spectrum(EffectsBox* self) {
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::type", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Bars") == 0) {
+        auto chart_type = util::gsettings_get_string(self->settings_spectrum, key);
+
+        if (chart_type == "Bars") {
           ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::bar);
-        } else if (g_strcmp0(g_settings_get_string(self->settings_spectrum, key), "Lines") == 0) {
+        } else if (chart_type == "Lines") {
           ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::line);
         }
       }),

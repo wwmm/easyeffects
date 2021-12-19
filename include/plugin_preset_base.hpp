@@ -133,10 +133,12 @@ class PluginPresetBase {
         g_settings_set_boolean(settings, key.c_str(), new_value);
       } else if constexpr (std::is_same_v<T, gchar*>) {
         g_settings_set_string(settings, key.c_str(), new_value);
-
-        g_free(new_value);
-        g_free(current_value);
       }
+    }
+
+    if constexpr (std::is_same_v<T, gchar*>) {
+      g_free(new_value);
+      g_free(current_value);
     }
   }
 

@@ -34,7 +34,7 @@ void AutoGainPreset::save(nlohmann::json& json, const std::string& section, GSet
 
   json[section]["autogain"]["target"] = g_settings_get_double(settings, "target");
 
-  json[section]["autogain"]["reference"] = g_settings_get_string(settings, "reference");
+  json[section]["autogain"]["reference"] = util::gsettings_get_string(settings, "reference");
 }
 
 void AutoGainPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {

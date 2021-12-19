@@ -32,9 +32,9 @@ void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& se
 
   json[section]["multiband_compressor"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["multiband_compressor"]["compressor-mode"] = g_settings_get_string(settings, "compressor-mode");
+  json[section]["multiband_compressor"]["compressor-mode"] = util::gsettings_get_string(settings, "compressor-mode");
 
-  json[section]["multiband_compressor"]["envelope-boost"] = g_settings_get_string(settings, "envelope-boost");
+  json[section]["multiband_compressor"]["envelope-boost"] = util::gsettings_get_string(settings, "envelope-boost");
 
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = std::to_string(n);
@@ -76,16 +76,16 @@ void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& se
     json[section]["multiband_compressor"][bandn]["makeup"] = g_settings_get_double(settings, ("makeup" + nstr).c_str());
 
     json[section]["multiband_compressor"][bandn]["compression-mode"] =
-        g_settings_get_string(settings, ("compression-mode" + nstr).c_str());
+        util::gsettings_get_string(settings, ("compression-mode" + nstr).c_str());
 
     json[section]["multiband_compressor"][bandn]["external-sidechain"] =
         g_settings_get_boolean(settings, ("external-sidechain" + nstr).c_str()) != 0;
 
     json[section]["multiband_compressor"][bandn]["sidechain-mode"] =
-        g_settings_get_string(settings, ("sidechain-mode" + nstr).c_str());
+        util::gsettings_get_string(settings, ("sidechain-mode" + nstr).c_str());
 
     json[section]["multiband_compressor"][bandn]["sidechain-source"] =
-        g_settings_get_string(settings, ("sidechain-source" + nstr).c_str());
+        util::gsettings_get_string(settings, ("sidechain-source" + nstr).c_str());
 
     json[section]["multiband_compressor"][bandn]["sidechain-lookahead"] =
         g_settings_get_double(settings, ("sidechain-lookahead" + nstr).c_str());

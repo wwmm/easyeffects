@@ -290,7 +290,7 @@ void Convolver::process(std::span<float>& left_in,
 void Convolver::read_kernel_file() {
   kernel_is_initialized = false;
 
-  const auto path = std::string(g_settings_get_string(settings, "kernel-path"));
+  const auto path = util::gsettings_get_string(settings, "kernel-path");
 
   if (path.empty()) {
     util::warning(log_tag + name + ": irs file path is null. Entering passthrough mode...");

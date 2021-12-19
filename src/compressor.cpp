@@ -221,8 +221,8 @@ void Compressor::process(std::span<float>& left_in,
 }
 
 void Compressor::update_sidechain_links(const std::string& key) {
-  if (g_strcmp0(g_settings_get_string(settings, "sidechain-type"), "External") == 0) {
-    const auto device_name = std::string(g_settings_get_string(settings, "sidechain-input-device"));
+  if (util::gsettings_get_string(settings, "sidechain-type") == "External") {
+    const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
 
     NodeInfo input_device = pm->ee_source_node;
 

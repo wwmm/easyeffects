@@ -439,7 +439,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
         static_cast<ui::holders::NodeInfoHolder*>(gtk_drop_down_get_selected_item(self->dropdown_input_devices));
 
     if (holder_selected != nullptr) {
-      const auto input_device_name = g_settings_get_string(self->sie_settings, "input-device");
+      const auto input_device_name = util::gsettings_get_string(self->sie_settings, "input-device");
 
       if (holder_selected->name != input_device_name) {
         for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
@@ -453,8 +453,6 @@ void setup(PipeManagerBox* self, app::Application* application) {
           }
         }
       }
-
-      g_free(input_device_name);
     }
   }
 
@@ -463,7 +461,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
         static_cast<ui::holders::NodeInfoHolder*>(gtk_drop_down_get_selected_item(self->dropdown_output_devices));
 
     if (holder_selected != nullptr) {
-      const auto output_device_name = g_settings_get_string(self->soe_settings, "output-device");
+      const auto output_device_name = util::gsettings_get_string(self->soe_settings, "output-device");
 
       if (holder_selected->name != output_device_name) {
         for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
@@ -477,8 +475,6 @@ void setup(PipeManagerBox* self, app::Application* application) {
           }
         }
       }
-
-      g_free(output_device_name);
     }
   }
 

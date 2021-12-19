@@ -32,9 +32,9 @@ void GatePreset::save(nlohmann::json& json, const std::string& section, GSetting
 
   json[section]["gate"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["gate"]["detection"] = g_settings_get_string(settings, "detection");
+  json[section]["gate"]["detection"] = util::gsettings_get_string(settings, "detection");
 
-  json[section]["gate"]["stereo-link"] = g_settings_get_string(settings, "stereo-link");
+  json[section]["gate"]["stereo-link"] = util::gsettings_get_string(settings, "stereo-link");
 
   json[section]["gate"]["range"] = g_settings_get_double(settings, "range");
 

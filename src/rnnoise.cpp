@@ -245,7 +245,7 @@ void RNNoise::process(std::span<float>& left_in,
 auto RNNoise::get_model_from_file() -> RNNModel* {
   RNNModel* m = nullptr;
 
-  if (const auto path = std::string(g_settings_get_string(settings, "model-path")); !path.empty()) {
+  if (const auto path = util::gsettings_get_string(settings, "model-path"); !path.empty()) {
     if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
       util::debug(log_tag + name + " loading model from file: " + path);
 

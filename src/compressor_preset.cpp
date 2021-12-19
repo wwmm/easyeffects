@@ -32,7 +32,7 @@ void CompressorPreset::save(nlohmann::json& json, const std::string& section, GS
 
   json[section]["compressor"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["compressor"]["mode"] = g_settings_get_string(settings, "mode");
+  json[section]["compressor"]["mode"] = util::gsettings_get_string(settings, "mode");
 
   json[section]["compressor"]["attack"] = g_settings_get_double(settings, "attack");
 
@@ -52,11 +52,11 @@ void CompressorPreset::save(nlohmann::json& json, const std::string& section, GS
 
   json[section]["compressor"]["boost-amount"] = g_settings_get_double(settings, "boost-amount");
 
-  json[section]["compressor"]["sidechain"]["type"] = g_settings_get_string(settings, "sidechain-type");
+  json[section]["compressor"]["sidechain"]["type"] = util::gsettings_get_string(settings, "sidechain-type");
 
-  json[section]["compressor"]["sidechain"]["mode"] = g_settings_get_string(settings, "sidechain-mode");
+  json[section]["compressor"]["sidechain"]["mode"] = util::gsettings_get_string(settings, "sidechain-mode");
 
-  json[section]["compressor"]["sidechain"]["source"] = g_settings_get_string(settings, "sidechain-source");
+  json[section]["compressor"]["sidechain"]["source"] = util::gsettings_get_string(settings, "sidechain-source");
 
   json[section]["compressor"]["sidechain"]["preamp"] = g_settings_get_double(settings, "sidechain-preamp");
 
@@ -64,11 +64,11 @@ void CompressorPreset::save(nlohmann::json& json, const std::string& section, GS
 
   json[section]["compressor"]["sidechain"]["lookahead"] = g_settings_get_double(settings, "sidechain-lookahead");
 
-  json[section]["compressor"]["hpf-mode"] = g_settings_get_string(settings, "hpf-mode");
+  json[section]["compressor"]["hpf-mode"] = util::gsettings_get_string(settings, "hpf-mode");
 
   json[section]["compressor"]["hpf-frequency"] = g_settings_get_double(settings, "hpf-frequency");
 
-  json[section]["compressor"]["lpf-mode"] = g_settings_get_string(settings, "lpf-mode");
+  json[section]["compressor"]["lpf-mode"] = util::gsettings_get_string(settings, "lpf-mode");
 
   json[section]["compressor"]["lpf-frequency"] = g_settings_get_double(settings, "lpf-frequency");
 }

@@ -113,7 +113,9 @@ void on_startup(GApplication* gapp) {
     }
 
     if (target_node.id != SPA_ID_INVALID) {
-      if (target_node.name == g_settings_get_string(self->sie_settings, "input-device")) {
+      auto name = util::gsettings_get_string(self->sie_settings, "input-device");
+
+      if (target_node.name == name) {
         self->presets_manager->autoload(PresetType::input, target_node.name, device.input_route_name);
       } else {
         util::debug(log_tag + "input autoloading: the target node name does not match the input device name"s);
@@ -143,7 +145,9 @@ void on_startup(GApplication* gapp) {
     }
 
     if (target_node.id != SPA_ID_INVALID) {
-      if (target_node.name == g_settings_get_string(self->soe_settings, "output-device")) {
+      auto name = util::gsettings_get_string(self->soe_settings, "output-device");
+
+      if (target_node.name == name) {
         self->presets_manager->autoload(PresetType::output, target_node.name, device.output_route_name);
       } else {
         util::debug(log_tag + "output autoloading: the target node name does not match the output device name"s);
@@ -157,7 +161,7 @@ void on_startup(GApplication* gapp) {
       self->soe_settings, "changed::output-device", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto self = static_cast<Application*>(user_data);
 
-        const auto name = std::string(g_settings_get_string(settings, key));
+        const auto name = util::gsettings_get_string(settings, key);
 
         if (name.empty()) {
           return;
@@ -189,7 +193,7 @@ void on_startup(GApplication* gapp) {
       self->sie_settings, "changed::input-device", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto self = static_cast<Application*>(user_data);
 
-        const auto name = std::string(g_settings_get_string(settings, key));
+        const auto name = util::gsettings_get_string(settings, key);
 
         if (name.empty()) {
           return;

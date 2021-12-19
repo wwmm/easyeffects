@@ -32,9 +32,9 @@ void DeesserPreset::save(nlohmann::json& json, const std::string& section, GSett
 
   json[section]["deesser"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["deesser"]["detection"] = g_settings_get_string(settings, "detection");
+  json[section]["deesser"]["detection"] = util::gsettings_get_string(settings, "detection");
 
-  json[section]["deesser"]["mode"] = g_settings_get_string(settings, "mode");
+  json[section]["deesser"]["mode"] = util::gsettings_get_string(settings, "mode");
 
   json[section]["deesser"]["threshold"] = g_settings_get_double(settings, "threshold");
 

@@ -26,7 +26,7 @@ AutoGain::AutoGain(const std::string& tag,
     : PluginBase(tag, plugin_name::autogain, schema, schema_path, pipe_manager) {
   target = g_settings_get_double(settings, "target");
 
-  reference = parse_reference_key(std::string(g_settings_get_string(settings, "reference")));
+  reference = parse_reference_key(util::gsettings_get_string(settings, "reference"));
 
   gconnections.push_back(g_signal_connect(settings, "changed::target",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
@@ -62,7 +62,7 @@ AutoGain::AutoGain(const std::string& tag,
       settings, "changed::reference", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto self = static_cast<AutoGain*>(user_data);
 
-        self->reference = parse_reference_key(std::string(g_settings_get_string(settings, key)));
+        self->reference = parse_reference_key(util::gsettings_get_string(settings, key));
       }),
       this));
 

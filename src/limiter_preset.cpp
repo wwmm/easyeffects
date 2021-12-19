@@ -28,11 +28,11 @@ LimiterPreset::LimiterPreset() {
 }
 
 void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
-  json[section]["limiter"]["mode"] = g_settings_get_string(settings, "mode");
+  json[section]["limiter"]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section]["limiter"]["oversampling"] = g_settings_get_string(settings, "oversampling");
+  json[section]["limiter"]["oversampling"] = util::gsettings_get_string(settings, "oversampling");
 
-  json[section]["limiter"]["dithering"] = g_settings_get_string(settings, "dithering");
+  json[section]["limiter"]["dithering"] = util::gsettings_get_string(settings, "dithering");
 
   json[section]["limiter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 

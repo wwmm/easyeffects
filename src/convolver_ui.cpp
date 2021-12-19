@@ -316,7 +316,7 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 }
 
 void get_irs_info(ConvolverBox* self) {
-  const std::string path = g_settings_get_string(self->settings, "kernel-path");
+  const std::string path = util::gsettings_get_string(self->settings, "kernel-path");
 
   if (path.empty()) {
     util::warning(log_tag + ": irs file path is null."s);

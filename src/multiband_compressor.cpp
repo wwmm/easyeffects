@@ -198,7 +198,7 @@ void MultibandCompressor::update_sidechain_links(const std::string& key) {
   }
 
   if (external_sidechain_enabled) {
-    const auto device_name = std::string(g_settings_get_string(settings, "sidechain-input-device"));
+    const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
 
     NodeInfo input_device = pm->ee_source_node;
 

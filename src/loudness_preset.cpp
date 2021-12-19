@@ -32,9 +32,9 @@ void LoudnessPreset::save(nlohmann::json& json, const std::string& section, GSet
 
   json[section]["loudness"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["loudness"]["fft"] = g_settings_get_string(settings, "fft");
+  json[section]["loudness"]["fft"] = util::gsettings_get_string(settings, "fft");
 
-  json[section]["loudness"]["std"] = g_settings_get_string(settings, "std");
+  json[section]["loudness"]["std"] = util::gsettings_get_string(settings, "std");
 
   json[section]["loudness"]["volume"] = g_settings_get_double(settings, "volume");
 }

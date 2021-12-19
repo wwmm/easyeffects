@@ -28,7 +28,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   } else {
     auto found = false;
 
-    const auto input_device = std::string(g_settings_get_string(settings, "input-device"));
+    const auto input_device = util::gsettings_get_string(settings, "input-device");
 
     if (input_device != pm->ee_source_name) {
       for (const auto& [ts, node] : pm->node_map) {
@@ -70,7 +70,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<StreamInputEffects*>(user_data);
 
-                                            const auto name = std::string(g_settings_get_string(settings, key));
+                                            const auto name = util::gsettings_get_string(settings, key);
 
                                             if (name.empty()) {
                                               return;

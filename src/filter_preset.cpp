@@ -36,7 +36,7 @@ void FilterPreset::save(nlohmann::json& json, const std::string& section, GSetti
 
   json[section]["filter"]["resonance"] = g_settings_get_double(settings, "resonance");
 
-  json[section]["filter"]["mode"] = g_settings_get_string(settings, "mode");
+  json[section]["filter"]["mode"] = util::gsettings_get_string(settings, "mode");
 
   json[section]["filter"]["inertia"] = g_settings_get_double(settings, "inertia");
 }

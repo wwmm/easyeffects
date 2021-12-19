@@ -1026,7 +1026,7 @@ void on_registry_global(void* data,
         auto* proxy =
             static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
 
-        auto* const nd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
+        auto* nd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
 
         nd->proxy = proxy;
         nd->pm = pm;

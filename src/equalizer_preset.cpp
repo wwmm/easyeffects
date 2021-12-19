@@ -52,7 +52,7 @@ void EqualizerPreset::save(nlohmann::json& json, const std::string& section, GSe
 
   json[section]["equalizer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["equalizer"]["mode"] = g_settings_get_string(settings, "mode");
+  json[section]["equalizer"]["mode"] = util::gsettings_get_string(settings, "mode");
 
   json[section]["equalizer"]["split-channels"] = g_settings_get_boolean(settings, "split-channels") != 0;
 
@@ -73,11 +73,11 @@ void EqualizerPreset::save_channel(nlohmann::json& json, GSettings* settings, co
   for (int n = 0; n < nbands; n++) {
     const auto bandn = band_id[n];
 
-    json[bandn]["type"] = g_settings_get_string(settings, band_type[n]);
+    json[bandn]["type"] = util::gsettings_get_string(settings, band_type[n]);
 
-    json[bandn]["mode"] = g_settings_get_string(settings, band_mode[n]);
+    json[bandn]["mode"] = util::gsettings_get_string(settings, band_mode[n]);
 
-    json[bandn]["slope"] = g_settings_get_string(settings, band_slope[n]);
+    json[bandn]["slope"] = util::gsettings_get_string(settings, band_slope[n]);
 
     json[bandn]["solo"] = g_settings_get_boolean(settings, band_solo[n]) != 0;
 

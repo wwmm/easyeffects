@@ -32,7 +32,7 @@ void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSe
 
   json[section]["convolver"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["convolver"]["kernel-path"] = g_settings_get_string(settings, "kernel-path");
+  json[section]["convolver"]["kernel-path"] = util::gsettings_get_string(settings, "kernel-path");
 
   json[section]["convolver"]["ir-width"] = g_settings_get_int(settings, "ir-width");
 }

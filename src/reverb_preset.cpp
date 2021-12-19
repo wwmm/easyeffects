@@ -32,7 +32,7 @@ void ReverbPreset::save(nlohmann::json& json, const std::string& section, GSetti
 
   json[section]["reverb"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["reverb"]["room-size"] = g_settings_get_string(settings, "room-size");
+  json[section]["reverb"]["room-size"] = util::gsettings_get_string(settings, "room-size");
 
   json[section]["reverb"]["decay-time"] = g_settings_get_double(settings, "decay-time");
 

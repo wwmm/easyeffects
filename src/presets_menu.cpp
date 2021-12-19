@@ -253,27 +253,15 @@ void reset_menu_button_label(PresetsMenu* self) {
   }
 
   for (const auto& name : names_input) {
-    auto* s = g_settings_get_string(self->settings, "last-used-input-preset");
-
-    if (name == s) {
-      g_free(s);
-
+    if (name == util::gsettings_get_string(self->settings, "last-used-input-preset")) {
       return;
     }
-
-    g_free(s);
   }
 
   for (const auto& name : names_output) {
-    auto* s = g_settings_get_string(self->settings, "last-used-output-preset");
-
-    if (name == s) {
-      g_free(s);
-
+    if (name == util::gsettings_get_string(self->settings, "last-used-output-preset")) {
       return;
     }
-
-    g_free(s);
   }
 
   g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
@@ -429,24 +417,17 @@ void presets_menu_init(PresetsMenu* self) {
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  auto* last_output = g_settings_get_string(self->settings, "last-used-output-preset");
-  auto* last_input = g_settings_get_string(self->settings, "last-used-input-preset");
-
-  gtk_label_set_text(self->last_used_output, last_output);
-  gtk_label_set_text(self->last_used_input, last_input);
-
-  g_free(last_output);
-  g_free(last_input);
+  gtk_label_set_text(self->last_used_output,
+                     util::gsettings_get_string(self->settings, "last-used-output-preset").c_str());
+  gtk_label_set_text(self->last_used_input,
+                     util::gsettings_get_string(self->settings, "last-used-input-preset").c_str());
 
   self->gconnections.push_back(g_signal_connect(self->settings, "changed::last-used-output-preset",
                                                 G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                                   auto self = static_cast<PresetsMenu*>(user_data);
 
-                                                  auto* s = g_settings_get_string(settings, key);
-
-                                                  gtk_label_set_text(self->last_used_output, s);
-
-                                                  g_free(s);
+                                                  gtk_label_set_text(self->last_used_output,
+                                                                     util::gsettings_get_string(settings, key).c_str());
                                                 }),
                                                 self));
 
@@ -454,11 +435,8 @@ void presets_menu_init(PresetsMenu* self) {
                                                 G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                                   auto self = static_cast<PresetsMenu*>(user_data);
 
-                                                  auto* s = g_settings_get_string(settings, key);
-
-                                                  gtk_label_set_text(self->last_used_input, s);
-
-                                                  g_free(s);
+                                                  gtk_label_set_text(self->last_used_input,
+                                                                     util::gsettings_get_string(settings, key).c_str());
                                                 }),
                                                 self));
 }

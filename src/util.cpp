@@ -231,6 +231,16 @@ auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA {
   return rgba;
 }
 
+auto gsettings_get_string(GSettings* settings, const char* key) -> std::string {
+  auto* s = g_settings_get_string(settings, key);
+
+  std::string output = s;
+
+  g_free(s);
+
+  return output;
+}
+
 auto add_new_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag) -> bool {
   if (name.empty()) {
     return false;

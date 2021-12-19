@@ -87,6 +87,8 @@ auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::ve
 
 auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA;
 
+auto gsettings_get_string(GSettings* settings, const char* key) -> std::string;
+
 auto add_new_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag) -> bool;
 
 void remove_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag);

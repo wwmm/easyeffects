@@ -46,7 +46,7 @@ void StereoToolsPreset::save(nlohmann::json& json, const std::string& section, G
 
   json[section]["stereo_tools"]["phaser"] = g_settings_get_boolean(settings, "phaser") != 0;
 
-  json[section]["stereo_tools"]["mode"] = g_settings_get_string(settings, "mode");
+  json[section]["stereo_tools"]["mode"] = util::gsettings_get_string(settings, "mode");
 
   json[section]["stereo_tools"]["side-level"] = g_settings_get_double(settings, "slev");
 

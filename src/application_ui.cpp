@@ -82,6 +82,8 @@ auto setup_icon_theme() -> GtkIconTheme* {
     util::debug(log_tag + "Icon Theme detected, but the name is empty"s);
   } else {
     util::debug(log_tag + "Icon Theme "s + name + " detected"s);
+
+    g_free(name);
   }
 
   gtk_icon_theme_add_resource_path(icon_theme, "/com/github/wwmm/easyeffects/icons");
