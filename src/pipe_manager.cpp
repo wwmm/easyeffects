@@ -30,7 +30,7 @@ struct node_data {
 
   PipeManager* pm = nullptr;
 
-  NodeInfo nd_info;
+  NodeInfo* nd_info;
 };
 
 struct proxy_data {
@@ -152,8 +152,8 @@ void on_destroy_node_proxy(void* data) {
 
   auto* const pm = nd->pm;
 
-  if (auto node_it = pm->node_map.find(nd->nd_info.timestamp); node_it != pm->node_map.end()) {
-    nd->nd_info.proxy = nullptr;
+  if (auto node_it = pm->node_map.find(nd->nd_info->timestamp); node_it != pm->node_map.end()) {
+    nd->nd_info->proxy = nullptr;
 
     node_it->second.proxy = nullptr;
 
@@ -162,8 +162,8 @@ void on_destroy_node_proxy(void* data) {
     pm->node_map.erase(node_it);
 
     if (!pm->exiting) {
-      if (nd->nd_info.media_class == pm->media_class_source) {
-        const auto nd_info_copy = nd->nd_info;
+      if (nd->nd_info->media_class == pm->media_class_source) {
+        const auto nd_info_copy = *nd->nd_info;
 
         util::idle_add([=]() {
           if (PipeManager::exiting) {
@@ -172,8 +172,8 @@ void on_destroy_node_proxy(void* data) {
 
           pm->source_removed.emit(nd_info_copy);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_sink) {
-        const auto nd_info_copy = nd->nd_info;
+      } else if (nd->nd_info->media_class == pm->media_class_sink) {
+        const auto nd_info_copy = *nd->nd_info;
 
         util::idle_add([=]() {
           if (PipeManager::exiting) {
@@ -182,8 +182,8 @@ void on_destroy_node_proxy(void* data) {
 
           pm->sink_removed.emit(nd_info_copy);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
-        const auto node_ts = nd->nd_info.timestamp;
+      } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
+        const auto node_ts = nd->nd_info->timestamp;
 
         util::idle_add([=]() {
           if (PipeManager::exiting) {
@@ -192,8 +192,8 @@ void on_destroy_node_proxy(void* data) {
 
           pm->stream_output_removed.emit(node_ts);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-        const auto node_ts = nd->nd_info.timestamp;
+      } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+        const auto node_ts = nd->nd_info->timestamp;
 
         util::idle_add([=]() {
           if (PipeManager::exiting) {
@@ -205,7 +205,9 @@ void on_destroy_node_proxy(void* data) {
       }
     }
 
-    util::debug(PipeManager::log_tag + nd->nd_info.media_class + " " + nd->nd_info.name + " was removed");
+    util::debug(PipeManager::log_tag + nd->nd_info->media_class + " " + nd->nd_info->name + " was removed");
+
+    delete nd->nd_info;
   }
 }
 
@@ -218,7 +220,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   auto* const pm = nd->pm;
 
-  if (auto node_it = pm->node_map.find(nd->nd_info.timestamp); node_it != pm->node_map.end()) {
+  if (auto node_it = pm->node_map.find(nd->nd_info->timestamp); node_it != pm->node_map.end()) {
     if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_MONITOR), "true") == 0) {
       /*
         This is a workaround for issue #1128.
@@ -229,7 +231,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         and remove them accordingly.
       */
 
-      nd->nd_info.proxy = nullptr;
+      nd->nd_info->proxy = nullptr;
 
       node_it->second.proxy = nullptr;
 
@@ -237,8 +239,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       pm->node_map.erase(node_it);
 
-      if (nd->nd_info.media_class == pm->media_class_source) {
-        const auto nd_info_copy = nd->nd_info;
+      if (nd->nd_info->media_class == pm->media_class_source) {
+        const auto nd_info_copy = *nd->nd_info;
 
         util::idle_add([=]() {
           if (PipeManager::exiting) {
@@ -247,8 +249,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
           pm->source_removed.emit(nd_info_copy);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_sink) {
-        const auto nd_info_copy = nd->nd_info;
+      } else if (nd->nd_info->media_class == pm->media_class_sink) {
+        const auto nd_info_copy = *nd->nd_info;
 
         util::idle_add([=]() {
           if (PipeManager::exiting) {
@@ -257,8 +259,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
           pm->sink_removed.emit(nd_info_copy);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
-        const auto node_ts = nd->nd_info.timestamp;
+      } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
+        const auto node_ts = nd->nd_info->timestamp;
 
         util::idle_add([=]() {
           if (PipeManager::exiting) {
@@ -267,8 +269,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
           pm->stream_output_removed.emit(node_ts);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-        const auto node_ts = nd->nd_info.timestamp;
+      } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+        const auto node_ts = nd->nd_info->timestamp;
 
         util::idle_add([=]() {
           if (PipeManager::exiting) {
@@ -279,7 +281,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         });
       }
 
-      util::debug(PipeManager::log_tag + " monitor stream " + nd->nd_info.media_class + " " + nd->nd_info.name +
+      util::debug(PipeManager::log_tag + " monitor stream " + nd->nd_info->media_class + " " + nd->nd_info->name +
                   " was removed");
 
       return;
@@ -287,42 +289,42 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     auto app_info_ui_changed = false;
 
-    if (info->state != nd->nd_info.state) {
-      nd->nd_info.state = info->state;
+    if (info->state != nd->nd_info->state) {
+      nd->nd_info->state = info->state;
 
       app_info_ui_changed = true;
     }
 
-    nd->nd_info.n_input_ports = static_cast<int>(info->n_input_ports);
-    nd->nd_info.n_output_ports = static_cast<int>(info->n_output_ports);
+    nd->nd_info->n_input_ports = static_cast<int>(info->n_input_ports);
+    nd->nd_info->n_output_ports = static_cast<int>(info->n_output_ports);
 
     if (const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION)) {
-      nd->nd_info.priority = std::stoi(prio_session);
+      nd->nd_info->priority = std::stoi(prio_session);
     }
 
     if (const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME)) {
-      if (app_icon_name != nd->nd_info.app_icon_name) {
-        nd->nd_info.app_icon_name = app_icon_name;
+      if (app_icon_name != nd->nd_info->app_icon_name) {
+        nd->nd_info->app_icon_name = app_icon_name;
 
         app_info_ui_changed = true;
       }
     }
 
     if (const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME)) {
-      if (media_icon_name != nd->nd_info.media_icon_name) {
-        nd->nd_info.media_icon_name = media_icon_name;
+      if (media_icon_name != nd->nd_info->media_icon_name) {
+        nd->nd_info->media_icon_name = media_icon_name;
 
         app_info_ui_changed = true;
       }
     }
 
     if (const auto* device_icon_name = spa_dict_lookup(info->props, PW_KEY_DEVICE_ICON_NAME)) {
-      nd->nd_info.device_icon_name = device_icon_name;
+      nd->nd_info->device_icon_name = device_icon_name;
     }
 
     if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
-      if (media_name != nd->nd_info.media_name) {
-        nd->nd_info.media_name = media_name;
+      if (media_name != nd->nd_info->media_name) {
+        nd->nd_info->media_name = media_name;
 
         app_info_ui_changed = true;
       }
@@ -335,24 +337,24 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       const auto rate_str = str.substr(delimiter_pos + 1);
 
-      if (auto rate = std::stoi(rate_str); rate != nd->nd_info.rate) {
-        nd->nd_info.rate = rate;
+      if (auto rate = std::stoi(rate_str); rate != nd->nd_info->rate) {
+        nd->nd_info->rate = rate;
 
         app_info_ui_changed = true;
       }
 
       const auto latency_str = str.substr(0, delimiter_pos);
 
-      if (auto latency = (std::stof(latency_str) / static_cast<float>(nd->nd_info.rate));
-          latency != nd->nd_info.latency) {
-        nd->nd_info.latency = latency;
+      if (auto latency = (std::stof(latency_str) / static_cast<float>(nd->nd_info->rate));
+          latency != nd->nd_info->latency) {
+        nd->nd_info->latency = latency;
 
         app_info_ui_changed = true;
       }
     }
 
     if (const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID)) {
-      nd->nd_info.device_id = std::stoi(device_id);
+      nd->nd_info->device_id = std::stoi(device_id);
     }
 
     if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
@@ -370,15 +372,15 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     // update NodeInfo inside map
 
-    node_it->second = nd->nd_info;
+    node_it->second = *nd->nd_info;
 
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy
 
     if (app_info_ui_changed) {
-      const auto nd_info_copy = nd->nd_info;
+      const auto nd_info_copy = *nd->nd_info;
 
-      if (nd->nd_info.media_class == pm->media_class_output_stream) {
+      if (nd->nd_info->media_class == pm->media_class_output_stream) {
         util::idle_add([=]() {
           if (PipeManager::exiting) {
             return;
@@ -386,7 +388,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
           pm->stream_output_changed.emit(nd_info_copy);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
+      } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
         util::idle_add([=]() {
           if (PipeManager::exiting) {
             return;
@@ -395,8 +397,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
           pm->stream_input_changed.emit(nd_info_copy);
         });
       }
-    } else if (nd->nd_info.media_class == pm->media_class_source) {
-      const auto nd_info_copy = nd->nd_info;
+    } else if (nd->nd_info->media_class == pm->media_class_source) {
+      const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([=]() {
         if (PipeManager::exiting) {
@@ -405,8 +407,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
         pm->source_changed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info.media_class == pm->media_class_sink) {
-      const auto nd_info_copy = nd->nd_info;
+    } else if (nd->nd_info->media_class == pm->media_class_sink) {
+      const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([=]() {
         if (PipeManager::exiting) {
@@ -440,7 +442,7 @@ void on_node_event_param(void* object,
     spa_pod_prop* pod_prop = nullptr;
     auto* obj = (spa_pod_object*)param;
 
-    const auto ts = nd->nd_info.timestamp;
+    const auto ts = nd->nd_info->timestamp;
 
     auto notify = false;
 
@@ -478,10 +480,10 @@ void on_node_event_param(void* object,
                   break;
               }
 
-              if (format_str != nd->nd_info.format) {
+              if (format_str != nd->nd_info->format) {
                 node_it->second.format = format_str;
 
-                nd->nd_info.format = format_str;
+                nd->nd_info->format = format_str;
 
                 notify = true;
               }
@@ -494,11 +496,11 @@ void on_node_event_param(void* object,
           int rate = 1;
 
           if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
-            if (rate != nd->nd_info.rate) {
+            if (rate != nd->nd_info->rate) {
               if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
                 node_it->second.rate = rate;
 
-                nd->nd_info.rate = rate;
+                nd->nd_info->rate = rate;
 
                 notify = true;
               }
@@ -511,11 +513,11 @@ void on_node_event_param(void* object,
           auto v = false;
 
           if (spa_pod_get_bool(&pod_prop->value, &v) == 0) {
-            if (v != nd->nd_info.mute) {
+            if (v != nd->nd_info->mute) {
               if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
                 node_it->second.mute = v;
 
-                nd->nd_info.mute = v;
+                nd->nd_info->mute = v;
 
                 notify = true;
               }
@@ -537,12 +539,12 @@ void on_node_event_param(void* object,
               max = std::max(volumes.at(i++), max);
             }
 
-            if (n_volumes != nd->nd_info.n_volume_channels || max != nd->nd_info.volume) {
+            if (n_volumes != nd->nd_info->n_volume_channels || max != nd->nd_info->volume) {
               node_it->second.n_volume_channels = n_volumes;
               node_it->second.volume = max;
 
-              nd->nd_info.n_volume_channels = n_volumes;
-              nd->nd_info.volume = max;
+              nd->nd_info->n_volume_channels = n_volumes;
+              nd->nd_info->volume = max;
 
               notify = true;
             }
@@ -559,8 +561,8 @@ void on_node_event_param(void* object,
       // sometimes PipeWire destroys the pointer before signal_idle is called,
       // therefore we make a copy
 
-      if (nd->nd_info.media_class == pm->media_class_output_stream) {
-        const auto nd_info_copy = nd->nd_info;
+      if (nd->nd_info->media_class == pm->media_class_output_stream) {
+        const auto nd_info_copy = *nd->nd_info;
 
         util::idle_add([pm, nd_info_copy] {
           if (PipeManager::exiting) {
@@ -569,8 +571,8 @@ void on_node_event_param(void* object,
 
           pm->stream_output_changed.emit(nd_info_copy);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-        const auto nd_info_copy = nd->nd_info;
+      } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+        const auto nd_info_copy = *nd->nd_info;
 
         util::idle_add([pm, nd_info_copy] {
           if (PipeManager::exiting) {
@@ -579,8 +581,8 @@ void on_node_event_param(void* object,
 
           pm->stream_input_changed.emit(nd_info_copy);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_virtual_source) {
-        const auto nd_info_copy = nd->nd_info;
+      } else if (nd->nd_info->media_class == pm->media_class_virtual_source) {
+        const auto nd_info_copy = *nd->nd_info;
 
         if (nd_info_copy.id == pm->ee_source_node.id) {
           pm->ee_source_node = nd_info_copy;
@@ -593,8 +595,8 @@ void on_node_event_param(void* object,
 
           pm->source_changed.emit(nd_info_copy);
         });
-      } else if (nd->nd_info.media_class == pm->media_class_sink) {
-        const auto nd_info_copy = nd->nd_info;
+      } else if (nd->nd_info->media_class == pm->media_class_sink) {
+        const auto nd_info_copy = *nd->nd_info;
 
         if (nd_info_copy.id == pm->ee_sink_node.id) {
           pm->ee_sink_node = nd_info_copy;
@@ -1030,30 +1032,33 @@ void on_registry_global(void* data,
 
         nd->proxy = proxy;
         nd->pm = pm;
-        nd->nd_info.timestamp = util::timepoint_to_long(std::chrono::system_clock::now());
-        nd->nd_info.proxy = proxy;
-        nd->nd_info.id = id;
-        nd->nd_info.media_class = media_class;
-        nd->nd_info.name = name;
+
+        nd->nd_info = new NodeInfo();
+
+        nd->nd_info->timestamp = util::timepoint_to_long(std::chrono::system_clock::now());
+        nd->nd_info->proxy = proxy;
+        nd->nd_info->id = id;
+        nd->nd_info->media_class = media_class;
+        nd->nd_info->name = name;
 
         if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
-          nd->nd_info.description = node_description;
+          nd->nd_info->description = node_description;
         }
 
         if (const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION)) {
-          nd->nd_info.priority = std::stoi(prio_session);
+          nd->nd_info->priority = std::stoi(prio_session);
         }
 
         if (const auto* device_id = spa_dict_lookup(props, PW_KEY_DEVICE_ID)) {
-          nd->nd_info.device_id = std::stoi(device_id);
+          nd->nd_info->device_id = std::stoi(device_id);
         }
 
-        const auto [node_it, success] = pm->node_map.insert({nd->nd_info.timestamp, nd->nd_info});
+        const auto [node_it, success] = pm->node_map.insert({nd->nd_info->timestamp, *nd->nd_info});
 
         if (!success) {
           util::warning(PipeManager::log_tag + "Cannot insert node " + std::to_string(id) + " " + name +
                         " into the node map because there's already an existing timestamp " +
-                        std::to_string(nd->nd_info.timestamp));
+                        std::to_string(nd->nd_info->timestamp));
 
           return;
         }
@@ -1064,7 +1069,7 @@ void on_registry_global(void* data,
         // sometimes PipeWire destroys the pointer before signal_idle is called,
         // therefore we make a copy of NodeInfo
 
-        const auto nd_info_copy = nd->nd_info;
+        const auto nd_info_copy = *nd->nd_info;
 
         if (media_class == pm->media_class_source && name != pm->ee_source_name) {
           util::idle_add([pm, nd_info_copy] {
@@ -1100,8 +1105,8 @@ void on_registry_global(void* data,
           });
         }
 
-        util::debug(PipeManager::log_tag + media_class + " " + std::to_string(id) + " " + nd->nd_info.name +
-                    " with timestamp " + std::to_string(nd->nd_info.timestamp) + " was added");
+        util::debug(PipeManager::log_tag + media_class + " " + std::to_string(id) + " " + nd->nd_info->name +
+                    " with timestamp " + std::to_string(nd->nd_info->timestamp) + " was added");
       }
     }
 

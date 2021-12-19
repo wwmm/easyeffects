@@ -39,6 +39,13 @@ G_DECLARE_FINAL_TYPE(Application, application, EE, APP, AdwApplication)
 
 G_END_DECLS
 
+struct Data {
+ public:
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections, gconnections_sie, gconnections_soe;
+};
+
 struct _Application {
   AdwApplication parent_instance;
 
@@ -51,9 +58,7 @@ struct _Application {
   StreamInputEffects* sie;
   PresetsManager* presets_manager;
 
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections, gconnections_sie, gconnections_soe;
+  Data* data;
 };
 
 auto application_new() -> GApplication*;

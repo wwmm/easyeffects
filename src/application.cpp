@@ -55,6 +55,8 @@ void on_startup(GApplication* gapp) {
 
   auto* self = EE_APP(gapp);
 
+  self->data = new Data();
+
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
   self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
@@ -67,7 +69,7 @@ void on_startup(GApplication* gapp) {
     self->presets_manager = new PresetsManager();
   }
 
-  self->connections.push_back(self->pm->new_default_sink.connect([=](const NodeInfo node) {
+  self->data->connections.push_back(self->pm->new_default_sink.connect([=](const NodeInfo node) {
     util::debug("new default output device: " + node.name);
 
     if (g_settings_get_boolean(self->soe_settings, "use-default-output-device") != 0) {
@@ -81,7 +83,7 @@ void on_startup(GApplication* gapp) {
     }
   }));
 
-  self->connections.push_back(self->pm->new_default_source.connect([=](const NodeInfo node) {
+  self->data->connections.push_back(self->pm->new_default_source.connect([=](const NodeInfo node) {
     util::debug("new default input device: " + node.name);
 
     if (g_settings_get_boolean(self->sie_settings, "use-default-input-device") != 0) {
@@ -95,7 +97,7 @@ void on_startup(GApplication* gapp) {
     }
   }));
 
-  self->connections.push_back(self->pm->device_input_route_changed.connect([=](const DeviceInfo device) {
+  self->data->connections.push_back(self->pm->device_input_route_changed.connect([=](const DeviceInfo device) {
     if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
       return;
     }
@@ -125,7 +127,7 @@ void on_startup(GApplication* gapp) {
     }
   }));
 
-  self->connections.push_back(self->pm->device_output_route_changed.connect([=](const DeviceInfo device) {
+  self->data->connections.push_back(self->pm->device_output_route_changed.connect([=](const DeviceInfo device) {
     if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
       return;
     }
@@ -157,7 +159,7 @@ void on_startup(GApplication* gapp) {
     }
   }));
 
-  self->gconnections_soe.push_back(g_signal_connect(
+  self->data->gconnections_soe.push_back(g_signal_connect(
       self->soe_settings, "changed::output-device", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto self = static_cast<Application*>(user_data);
 
@@ -189,7 +191,7 @@ void on_startup(GApplication* gapp) {
       }),
       self));
 
-  self->gconnections_sie.push_back(g_signal_connect(
+  self->data->gconnections_sie.push_back(g_signal_connect(
       self->sie_settings, "changed::input-device", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto self = static_cast<Application*>(user_data);
 
@@ -221,13 +223,13 @@ void on_startup(GApplication* gapp) {
       }),
       self));
 
-  self->gconnections.push_back(g_signal_connect(self->settings, "changed::bypass",
-                                                G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                                  auto self = static_cast<Application*>(user_data);
+  self->data->gconnections.push_back(g_signal_connect(
+      self->settings, "changed::bypass", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<Application*>(user_data);
 
-                                                  update_bypass_state(self);
-                                                }),
-                                                self));
+        update_bypass_state(self);
+      }),
+      self));
 
   update_bypass_state(self);
 
@@ -343,25 +345,25 @@ void application_class_init(ApplicationClass* klass) {
 
     auto* self = EE_APP(gapp);
 
-    for (auto& c : self->connections) {
+    for (auto& c : self->data->connections) {
       c.disconnect();
     }
 
-    for (auto& handler_id : self->gconnections) {
+    for (auto& handler_id : self->data->gconnections) {
       g_signal_handler_disconnect(self->settings, handler_id);
     }
 
-    for (auto& handler_id : self->gconnections_sie) {
+    for (auto& handler_id : self->data->gconnections_sie) {
       g_signal_handler_disconnect(self->sie_settings, handler_id);
     }
 
-    for (auto& handler_id : self->gconnections_soe) {
+    for (auto& handler_id : self->data->gconnections_soe) {
       g_signal_handler_disconnect(self->soe_settings, handler_id);
     }
 
-    self->connections.clear();
-    self->gconnections_sie.clear();
-    self->gconnections_soe.clear();
+    self->data->connections.clear();
+    self->data->gconnections_sie.clear();
+    self->data->gconnections_soe.clear();
 
     g_object_unref(self->settings);
     g_object_unref(self->sie_settings);
@@ -369,11 +371,13 @@ void application_class_init(ApplicationClass* klass) {
 
     PipeManager::exiting = true;
 
+    delete self->data;
     delete self->presets_manager;
     delete self->sie;
     delete self->soe;
     delete self->pm;
 
+    self->data = nullptr;
     self->presets_manager = nullptr;
     self->sie = nullptr;
     self->soe = nullptr;
