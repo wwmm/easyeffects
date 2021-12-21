@@ -204,8 +204,6 @@ auto PluginBase::connect_to_pw() -> bool {
   if (connected_to_pw) {
     do {
       node_id = pw_filter_get_node_id(filter);
-
-      // std::this_thread::sleep_for(std::chrono::milliseconds(1));
     } while (node_id == SPA_ID_INVALID);
 
     /*
@@ -215,7 +213,7 @@ auto PluginBase::connect_to_pw() -> bool {
 
     do {
       std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    } while (pm->get_node_ports_info(node_id).size() != n_ports);
+    } while (pm->count_node_ports(node_id) != n_ports);
 
     initialize_listener();
 

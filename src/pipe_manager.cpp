@@ -1537,16 +1537,16 @@ void PipeManager::set_node_mute(pw_proxy* proxy, const bool& state) {
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
 
-auto PipeManager::get_node_ports_info(const uint& node_id) -> std::vector<PortInfo> {
-  std::vector<PortInfo> list;
+auto PipeManager::count_node_ports(const uint& node_id) -> uint {
+  uint count = 0;
 
   for (const auto& port : list_ports) {
     if (port.node_id == node_id) {
-      list.push_back(port);
+      count++;
     }
   }
 
-  return list;
+  return count;
 }
 
 auto PipeManager::link_nodes(const uint& output_node_id,
