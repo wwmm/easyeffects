@@ -244,6 +244,8 @@ class PipeManager {
 
   static void set_node_mute(pw_proxy* proxy, const bool& state);
 
+  auto get_node_ports_info(const uint& node_id) -> std::vector<PortInfo>;
+
   /*
     Links the output ports of the node output_node_id to the input ports of the node input_node_id
   */

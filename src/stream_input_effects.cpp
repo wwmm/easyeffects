@@ -180,11 +180,11 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   if (!list.empty()) {
     for (const auto& name : list) {
-      if (name.empty()) {
+      if (!plugins.contains(name)) {
         continue;
       }
 
-      if ((!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true) {
+      if (!plugins[name]->connected_to_pw ? plugins[name]->connect_to_pw() : true) {
         next_node_id = plugins[name]->get_node_id();
 
         const auto links = pm->link_nodes(prev_node_id, next_node_id);
@@ -208,7 +208,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
     // checking if we have to link the echo_canceller probe to the output device
 
     for (const auto& name : list) {
-      if (name.empty()) {
+      if (!plugins.contains(name)) {
         continue;
       }
 

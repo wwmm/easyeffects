@@ -142,6 +142,8 @@ PluginBase::PluginBase(std::string tag,
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
   if (enable_probe) {
+    n_ports += 2;
+
     // probe left input
 
     auto* props_left = pw_properties_new(nullptr, nullptr);
@@ -203,8 +205,17 @@ auto PluginBase::connect_to_pw() -> bool {
     do {
       node_id = pw_filter_get_node_id(filter);
 
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+      // std::this_thread::sleep_for(std::chrono::milliseconds(1));
     } while (node_id == SPA_ID_INVALID);
+
+    /*
+      The filter we link in our pipeline have at least 4 ports. Some have six. Before we try to link filters we have to
+      wait until the information about their ports is available in PipeManager's list_ports vector.
+    */
+
+    do {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    } while (pm->get_node_ports_info(node_id).size() != n_ports);
 
     initialize_listener();
 

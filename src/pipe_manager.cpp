@@ -1439,6 +1439,12 @@ PipeManager::~PipeManager() {
   util::debug(log_tag + "Destroying PipeWire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
 
+  for (auto& [ts, node] : node_map) {
+    if (node.proxy != nullptr) {
+      pw_proxy_destroy(node.proxy);
+    }
+  }
+
   util::debug(log_tag + "Disconnecting PipeWire core...");
   pw_core_disconnect(core);
 
@@ -1449,12 +1455,6 @@ PipeManager::~PipeManager() {
 
   util::debug(log_tag + "Destroying PipeWire loop...");
   pw_thread_loop_destroy(thread_loop);
-
-  for (auto& [ts, node] : node_map) {
-    if (node.proxy != nullptr) {
-      pw_proxy_destroy(node.proxy);
-    }
-  }
 }
 
 auto PipeManager::node_map_at_id(const uint& id) -> NodeInfo& {
@@ -1537,6 +1537,18 @@ void PipeManager::set_node_mute(pw_proxy* proxy, const bool& state) {
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
 
+auto PipeManager::get_node_ports_info(const uint& node_id) -> std::vector<PortInfo> {
+  std::vector<PortInfo> list;
+
+  for (const auto& port : list_ports) {
+    if (port.node_id == node_id) {
+      list.push_back(port);
+    }
+  }
+
+  return list;
+}
+
 auto PipeManager::link_nodes(const uint& output_node_id,
                              const uint& input_node_id,
                              const bool& probe_link,
@@ -1570,6 +1582,18 @@ auto PipeManager::link_nodes(const uint& output_node_id,
         }
       }
     }
+  }
+
+  if (list_input_ports.size() == 0) {
+    util::debug(log_tag + "node " + std::to_string(input_node_id) + " has no input ports yet. Aborting the link");
+
+    return list;
+  }
+
+  if (list_output_ports.size() == 0) {
+    util::debug(log_tag + "node " + std::to_string(output_node_id) + " has no input ports yet. Aborting the link");
+
+    return list;
   }
 
   for (const auto& outp : list_output_ports) {

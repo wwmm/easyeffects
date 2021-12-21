@@ -121,6 +121,8 @@ class PluginBase {
 
   data pf_data = {};
 
+  uint n_ports = 4;
+
   float input_gain = 1.0F;
   float output_gain = 1.0F;
 
