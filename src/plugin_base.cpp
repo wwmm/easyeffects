@@ -195,6 +195,8 @@ auto PluginBase::connect_to_pw() -> bool {
 
   pm->lock();
 
+  connected_to_pw = false;
+
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) == 0) {
     connected_to_pw = true;
   }
@@ -244,9 +246,17 @@ void PluginBase::disconnect_from_pw() {
 
   set_active(false);
 
+  if (listener.link.next != nullptr || listener.link.prev != nullptr) {
+    spa_hook_remove(&listener);
+  }
+
   pw_filter_disconnect(filter);
 
+  connected_to_pw = false;
+
   pm->sync_wait_unlock();
+
+  node_id = SPA_ID_INVALID;
 }
 
 void PluginBase::setup() {}

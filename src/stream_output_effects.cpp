@@ -245,12 +245,23 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 }
 
 void StreamOutputEffects::disconnect_filters() {
-  std::set<uint> list;
+  std::set<uint> link_id_list;
+
+  const auto selected_plugins_list =
+      (bypass) ? std::vector<std::string>() : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
 
   for (const auto& plugin : plugins | std::views::values) {
     for (const auto& link : pm->list_links) {
       if (link.input_node_id == plugin->get_node_id() || link.output_node_id == plugin->get_node_id()) {
-        list.insert(link.id);
+        link_id_list.insert(link.id);
+      }
+    }
+
+    if (plugin->connected_to_pw) {
+      if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
+        util::debug(log_tag + "disconnecting the " + plugin->name + " filter from PipeWire");
+
+        plugin->disconnect_from_pw();
       }
     }
   }
@@ -258,11 +269,11 @@ void StreamOutputEffects::disconnect_filters() {
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
         link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id()) {
-      list.insert(link.id);
+      link_id_list.insert(link.id);
     }
   }
 
-  for (const auto& id : list) {
+  for (const auto& id : link_id_list) {
     pm->destroy_object(static_cast<int>(id));
   }
 
