@@ -1,0 +1,4 @@
+leak:libEGL_mesa*
+leak:libfontconfig*
+leak:libsigc*
+leak:libglib-2*

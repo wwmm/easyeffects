@@ -1,3 +1,5 @@
 meson _build --prefix=/tmp/ee -Db_sanitize=address,undefined
 
 G_SLICE=always-malloc G_DEBUG=gc-friendly ./easyeffects
+
+export LSAN_OPTIONS="print_suppressions=false:suppressions=/path/to/blender-lsan-suppressions.txt"
