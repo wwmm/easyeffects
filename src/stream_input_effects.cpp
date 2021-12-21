@@ -120,9 +120,7 @@ void StreamInputEffects::on_app_added(const NodeInfo node_info) {
 
   const auto is_blocklisted = std::ranges::find(blocklist, node_info.name) != blocklist.end();
 
-  if (is_blocklisted) {
-    pm->disconnect_stream_input(node_info.id);
-  } else if (g_settings_get_boolean(global_settings, "process-all-inputs") != 0) {
+  if (g_settings_get_boolean(global_settings, "process-all-inputs") != 0 && !is_blocklisted) {
     pm->connect_stream_input(node_info.id);
   }
 }

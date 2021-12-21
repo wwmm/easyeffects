@@ -120,9 +120,7 @@ void StreamOutputEffects::on_app_added(const NodeInfo node_info) {
 
   const auto is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
 
-  if (is_blocklisted) {
-    pm->disconnect_stream_output(node_info.id);
-  } else if (g_settings_get_boolean(global_settings, "process-all-outputs") != 0) {
+  if (g_settings_get_boolean(global_settings, "process-all-outputs") != 0 && !is_blocklisted) {
     pm->connect_stream_output(node_info.id);
   }
 }

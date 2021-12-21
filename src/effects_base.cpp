@@ -161,14 +161,14 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     broadcast_pipeline_latency();
   }));
 
-  connections.push_back(loudness->latency.connect([=, this](const auto& v) {
-    plugins_latency[loudness->name] = v;
+  connections.push_back(limiter->latency.connect([=, this](const auto& v) {
+    plugins_latency[limiter->name] = v;
 
     broadcast_pipeline_latency();
   }));
 
-  connections.push_back(limiter->latency.connect([=, this](const auto& v) {
-    plugins_latency[limiter->name] = v;
+  connections.push_back(loudness->latency.connect([=, this](const auto& v) {
+    plugins_latency[loudness->name] = v;
 
     broadcast_pipeline_latency();
   }));

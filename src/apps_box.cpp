@@ -307,7 +307,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
               } catch (...) {
                 connect_stream(self, holder->info->id, holder->info->media_class);
 
-                util::warning(log_tag + "can't retrieve enabled state of node "s + std::to_string(holder->info->id));
+                util::warning(log_tag + "can't retrieve enabled state of node "s + holder->info->name);
 
                 self->data->enabled_app_list.insert({holder->info->id, true});
               }
