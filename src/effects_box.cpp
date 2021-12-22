@@ -120,6 +120,9 @@ void setup_spectrum(EffectsBox* self) {
 
   ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
 
+  ui::chart::set_rounded_bars(self->spectrum_chart,
+                              g_settings_get_boolean(self->settings_spectrum, "rounded-bars") != 0);
+
   ui::chart::set_draw_bar_border(self->spectrum_chart,
                                  g_settings_get_boolean(self->settings_spectrum, "show-bar-border") != 0);
 
@@ -161,28 +164,34 @@ void setup_spectrum(EffectsBox* self) {
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::fill", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
+        ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
+      }),
+      self));
+
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
+      self->settings_spectrum, "changed::rounded-bars",
+      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
+        ui::chart::set_rounded_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
       }),
       self));
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::show-bar-border",
       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        ui::chart::set_draw_bar_border(self->spectrum_chart,
-                                       g_settings_get_boolean(self->settings_spectrum, "show-bar-border") != 0);
+        ui::chart::set_draw_bar_border(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
       }),
       self));
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::line-width", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, "line-width"));
+        ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, key));
       }),
       self));
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::height", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         gtk_widget_set_size_request(GTK_WIDGET(self->spectrum_chart), -1,
-                                    g_settings_get_int(self->settings_spectrum, "height"));
+                                    g_settings_get_int(self->settings_spectrum, key));
       }),
       self));
 

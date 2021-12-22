@@ -14,6 +14,9 @@
         <key name="show-bar-border" type="b">
             <default>true</default>
         </key>
+        <key name="rounded-bars" type="b">
+            <default>false</default>
+        </key>
         <key name="n-points" type="i">
             <range min="2" max="1000" />
             <default>100</default>
