@@ -35,7 +35,7 @@ struct Data {
 struct _PreferencesSpectrum {
   AdwPreferencesPage parent_instance;
 
-  GtkSwitch *show, *fill, *show_bar_border;
+  GtkSwitch *show, *fill, *show_bar_border, *rounded_bars;
 
   GtkColorButton *color_button, *axis_color_button;
 
@@ -108,6 +108,7 @@ void preferences_spectrum_class_init(PreferencesSpectrumClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, line_width);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, height);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, show_bar_border);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, rounded_bars);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, color_button);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, axis_color_button);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, minimum_frequency);
@@ -186,6 +187,7 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
 
   g_settings_bind(self->settings, "show", self->show, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "fill", self->fill, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "rounded-bars", self->rounded_bars, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "show-bar-border", self->show_bar_border, "active", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "n-points", gtk_spin_button_get_adjustment(self->n_points), "value",

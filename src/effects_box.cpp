@@ -120,6 +120,9 @@ void setup_spectrum(EffectsBox* self) {
 
   ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
 
+  ui::chart::set_rounded_bars(self->spectrum_chart,
+                              g_settings_get_boolean(self->settings_spectrum, "rounded-bars") != 0);
+
   ui::chart::set_draw_bar_border(self->spectrum_chart,
                                  g_settings_get_boolean(self->settings_spectrum, "show-bar-border") != 0);
 
@@ -161,28 +164,34 @@ void setup_spectrum(EffectsBox* self) {
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::fill", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
+        ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
+      }),
+      self));
+
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
+      self->settings_spectrum, "changed::rounded-bars",
+      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
+        ui::chart::set_rounded_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
       }),
       self));
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::show-bar-border",
       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        ui::chart::set_draw_bar_border(self->spectrum_chart,
-                                       g_settings_get_boolean(self->settings_spectrum, "show-bar-border") != 0);
+        ui::chart::set_draw_bar_border(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
       }),
       self));
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::line-width", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, "line-width"));
+        ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, key));
       }),
       self));
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::height", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         gtk_widget_set_size_request(GTK_WIDGET(self->spectrum_chart), -1,
-                                    g_settings_get_int(self->settings_spectrum, "height"));
+                                    g_settings_get_int(self->settings_spectrum, key));
       }),
       self));
 
@@ -306,9 +315,6 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
         g_idle_add((GSourceFunc) +
                        [](EffectsBox* self) {
-                         ui::chart::set_data(self->spectrum_chart, self->data->spectrum_x_axis,
-                                             self->data->spectrum_mag);
-
                          gtk_label_set_text(self->label_global_output_level_left,
                                             fmt::format("{0:.0f}", self->data->global_output_level_left).c_str());
 
@@ -350,21 +356,26 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
         // reducing the amount of data so we can plot them
 
-        for (size_t j = 0U; j < self->data->spectrum_freqs.size(); j++) {
-          for (size_t n = 0U; n < self->data->spectrum_x_axis.size(); n++) {
+        size_t last_j = 0;
+
+        for (size_t n = 0U; n < self->data->spectrum_x_axis.size(); n++) {
+          for (size_t j = last_j; j < self->data->spectrum_freqs.size(); j++) {
+            if (self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n]) {
+              last_j = j;
+
+              break;
+            }
+
             if (n > 0U) {
-              if (self->data->spectrum_freqs[j] <= self->data->spectrum_x_axis[n] &&
-                  self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n - 1U]) {
+              if (self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n - 1U]) {
                 self->data->spectrum_mag[n] += magnitudes[j];
 
                 self->data->spectrum_bin_count[n]++;
               }
             } else {
-              if (self->data->spectrum_freqs[j] <= self->data->spectrum_x_axis[n]) {
-                self->data->spectrum_mag[n] += magnitudes[j];
+              self->data->spectrum_mag[n] += magnitudes[j];
 
-                self->data->spectrum_bin_count[n]++;
-              }
+              self->data->spectrum_bin_count[n]++;
             }
           }
         }

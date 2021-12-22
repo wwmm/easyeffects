@@ -28,15 +28,6 @@ auto constexpr irs_ext = ".irs";
 
 static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
 
-/*
-  It is super weird having to do this... I know... But for some reason GTK does not destroy the widget structure even
-  when it is removed from its parent container the cooresponding reference count goes to zero... Who knows why...
-  The problem is that because of this the vector destructors are never called. And whenever the convolver is removed
-  and added again our memory usage gets big quickly. This Data structure is a workaround for that. By calling delete on
-  it when the widget is finalized we force that memory to be freed. It is unbelievable I am being forced to do
-  something like this...
-*/
-
 struct Data {
  public:
   ~Data() { util::debug(log_tag + "data struct destroyed"s); }

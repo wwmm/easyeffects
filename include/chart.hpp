@@ -58,6 +58,8 @@ void set_line_width(Chart* self, const double& value);
 
 void set_draw_bar_border(Chart* self, const bool& v);
 
+void set_rounded_bars(Chart* self, const bool& v);
+
 void set_fill_bars(Chart* self, const bool& v);
 
 void set_n_x_decimals(Chart* self, const int& v);

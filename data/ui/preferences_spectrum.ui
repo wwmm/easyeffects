@@ -131,6 +131,19 @@
                         </child>
                     </object>
                 </child>
+
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Rounded Bars</property>
+                        <property name="activatable_widget">rounded_bars</property>
+                        <property name="sensitive" bind-source="fill" bind-property="active" bind-flags="sync-create|invert-boolean" />
+                        <child>
+                            <object class="GtkSwitch" id="rounded_bars">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
 

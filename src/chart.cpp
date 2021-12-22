@@ -25,20 +25,11 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "chart_box: ";
 
-/*
-  It is super weird having to do this... I know... But for some reason GTK does not destroy the widget structure even
-  when it is removed from its parent container the cooresponding reference count goes to zero... Who knows why...
-  THe problem is that because of this the vector destructors are never called. And whenever the convolver is removed
-  and added again our memory usage gets big quickly. This Data structure is a workaround for that. By calling delete on
-  it when the widget is finalized we force that memory to be freed. It is unbelievable I am being forced to do
-  something like this...
-*/
-
 struct Data {
  public:
   ~Data() { util::debug(log_tag + "data struct destroyed"s); }
 
-  bool draw_bar_border, fill_bars, is_visible;
+  bool draw_bar_border, fill_bars, is_visible, rounded_bars;
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
@@ -93,6 +84,10 @@ void set_line_width(Chart* self, const double& value) {
 
 void set_draw_bar_border(Chart* self, const bool& v) {
   self->data->draw_bar_border = v;
+}
+
+void set_rounded_bars(Chart* self, const bool& v) {
+  self->data->rounded_bars = v;
 }
 
 void set_fill_bars(Chart* self, const bool& v) {
@@ -335,14 +330,34 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         for (uint n = 0U; n < n_points; n++) {
           double bar_height = static_cast<double>(usable_height) * self->data->y_axis[n];
 
+          float rect_x = objects_x[n];
+          float rect_y = self->data->margin * height + static_cast<float>(usable_height) - bar_height;
+          float rect_height = bar_height;
+          float rect_width = static_cast<float>(width) / static_cast<float>(n_points);
+
           if (self->data->draw_bar_border) {
-            cairo_rectangle(
-                ctx, objects_x[n], self->data->margin * height + static_cast<double>(usable_height) - bar_height,
-                static_cast<double>(width) / static_cast<double>(n_points) - self->data->line_width, bar_height);
+            rect_width -= self->data->line_width;
+          }
+
+          auto bar_rectangle = GRAPHENE_RECT_INIT(rect_x, rect_y, rect_width, rect_height);
+
+          if (self->data->fill_bars) {
+            gtk_snapshot_append_color(snapshot, &self->data->color, &bar_rectangle);
           } else {
-            cairo_rectangle(ctx, objects_x[n],
-                            self->data->margin * height + static_cast<double>(usable_height) - bar_height,
-                            static_cast<double>(width) / static_cast<double>(n_points), bar_height);
+            float lw = static_cast<float>(self->data->line_width);
+
+            auto border_width = std::to_array({lw, lw, lw, lw});
+
+            float radius = (self->data->rounded_bars) ? 10.0F : 0.0F;
+
+            GskRoundedRect outline;
+
+            gsk_rounded_rect_init_from_rect(&outline, &bar_rectangle, radius);
+
+            auto border_color =
+                std::to_array({self->data->color, self->data->color, self->data->color, self->data->color});
+
+            gtk_snapshot_append_border(snapshot, &outline, border_width.data(), border_color.data());
           }
         }
 
