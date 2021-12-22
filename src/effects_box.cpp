@@ -306,9 +306,6 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
         g_idle_add((GSourceFunc) +
                        [](EffectsBox* self) {
-                         ui::chart::set_data(self->spectrum_chart, self->data->spectrum_x_axis,
-                                             self->data->spectrum_mag);
-
                          gtk_label_set_text(self->label_global_output_level_left,
                                             fmt::format("{0:.0f}", self->data->global_output_level_left).c_str());
 
@@ -350,21 +347,26 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
         // reducing the amount of data so we can plot them
 
-        for (size_t j = 0U; j < self->data->spectrum_freqs.size(); j++) {
-          for (size_t n = 0U; n < self->data->spectrum_x_axis.size(); n++) {
+        size_t last_j = 0;
+
+        for (size_t n = 0U; n < self->data->spectrum_x_axis.size(); n++) {
+          for (size_t j = last_j; j < self->data->spectrum_freqs.size(); j++) {
+            if (self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n]) {
+              last_j = j;
+
+              break;
+            }
+
             if (n > 0U) {
-              if (self->data->spectrum_freqs[j] <= self->data->spectrum_x_axis[n] &&
-                  self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n - 1U]) {
+              if (self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n - 1U]) {
                 self->data->spectrum_mag[n] += magnitudes[j];
 
                 self->data->spectrum_bin_count[n]++;
               }
             } else {
-              if (self->data->spectrum_freqs[j] <= self->data->spectrum_x_axis[n]) {
-                self->data->spectrum_mag[n] += magnitudes[j];
+              self->data->spectrum_mag[n] += magnitudes[j];
 
-                self->data->spectrum_bin_count[n]++;
-              }
+              self->data->spectrum_bin_count[n]++;
             }
           }
         }
