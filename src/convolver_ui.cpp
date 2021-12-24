@@ -235,7 +235,6 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   const auto log_axis = util::logspace(20.0F, 22000.0F, bin_size);
   // const auto log_axis = util::logspace(20.0F, 22000.0F, freq_axis.size());
-  // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
   std::vector<float> l(log_axis.size());
   std::vector<float> r(log_axis.size());
@@ -243,36 +242,28 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   std::ranges::fill(l, 0.0F);
   std::ranges::fill(r, 0.0F);
-  std::ranges::fill(bin_count, 0U);
 
   // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
 
-  for (size_t j = 0U; j < self->data->freq_axis.size(); j++) {
-    for (size_t n = 0U; n < log_axis.size(); n++) {
+  size_t last_j = 0;
+
+  for (size_t n = 0U; n < log_axis.size(); n++) {
+    for (size_t j = last_j; j < self->data->freq_axis.size(); j++) {
+      if (self->data->freq_axis[j] > log_axis[n]) {
+        last_j = j;
+
+        break;
+      }
+
       if (n > 0U) {
-        if (self->data->freq_axis[j] <= log_axis[n] && self->data->freq_axis[j] > log_axis[n - 1U]) {
+        if (self->data->freq_axis[j] > log_axis[n - 1U]) {
           l[n] += self->data->left_spectrum[j];
           r[n] += self->data->right_spectrum[j];
-
-          bin_count[n]++;
         }
       } else {
-        if (self->data->freq_axis[j] <= log_axis[n]) {
-          l[n] += self->data->left_spectrum[j];
-          r[n] += self->data->right_spectrum[j];
-
-          bin_count[n]++;
-        }
+        l[n] += self->data->left_spectrum[j];
+        r[n] += self->data->right_spectrum[j];
       }
-    }
-  }
-
-  // fillint empty bins with their neighbors value
-
-  for (size_t n = 0U; n < bin_count.size(); n++) {
-    if (bin_count[n] == 0U && n > 0U) {
-      l[n] = l[n - 1U];
-      r[n] = r[n - 1U];
     }
   }
 

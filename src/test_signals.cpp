@@ -154,6 +154,8 @@ TestSignals::~TestSignals() {
 
   pw_filter_disconnect(filter);
 
+  pw_filter_destroy(filter);
+
   pm->sync_wait_unlock();
 }
 

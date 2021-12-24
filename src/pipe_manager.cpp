@@ -1439,21 +1439,18 @@ PipeManager::~PipeManager() {
   util::debug(log_tag + "Destroying PipeWire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
 
-  for (auto& [ts, node] : node_map) {
-    if (node.proxy != nullptr) {
-      pw_proxy_destroy(node.proxy);
-    }
-  }
-
   util::debug(log_tag + "Disconnecting PipeWire core...");
   pw_core_disconnect(core);
 
-  util::debug(log_tag + "Destroying PipeWire context...");
-  pw_context_destroy(context);
-
   unlock();
 
-  util::debug(log_tag + "Destroying PipeWire loop...");
+  util::debug(log_tag + "Stopping PipeWire's loop...");
+  pw_thread_loop_stop(thread_loop);
+
+  util::debug(log_tag + "Destroying PipeWire's context...");
+  pw_context_destroy(context);
+
+  util::debug(log_tag + "Destroying PipeWire's loop...");
   pw_thread_loop_destroy(thread_loop);
 }
 
