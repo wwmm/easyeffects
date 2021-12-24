@@ -364,14 +364,6 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
               last_j = j;
 
               break;
-            }
-
-            if (n > 0U) {
-              if (self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n - 1U]) {
-                self->data->spectrum_mag[n] += magnitudes[j];
-
-                self->data->spectrum_bin_count[n]++;
-              }
             } else {
               self->data->spectrum_mag[n] += magnitudes[j];
 
@@ -381,7 +373,11 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
         }
 
         for (size_t n = 0U; n < self->data->spectrum_bin_count.size(); n++) {
-          if (self->data->spectrum_bin_count[n] == 0U && n > 0U) {
+          if (self->data->spectrum_bin_count[n] != 0U) {
+            continue;
+          }
+
+          if (n > 0U && n < self->data->spectrum_bin_count.size() + 1) {
             self->data->spectrum_mag[n] = self->data->spectrum_mag[n - 1U];
           }
         }

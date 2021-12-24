@@ -177,6 +177,8 @@ PluginBase::~PluginBase() {
     spa_hook_remove(&listener);
   }
 
+  pw_filter_destroy(filter);
+
   for (auto& handler_id : gconnections) {
     g_signal_handler_disconnect(settings, handler_id);
   }
@@ -191,42 +193,53 @@ void PluginBase::reset_settings() {
 }
 
 auto PluginBase::connect_to_pw() -> bool {
-  auto success = false;
+  connected_to_pw = false;
+
+  /*
+    I still do not understand why we have to lock the main loop before using pw_filter_get_state after a call to
+    pw_filter_connect...
+  */
 
   pm->lock();
 
-  connected_to_pw = false;
-
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) == 0) {
-    connected_to_pw = true;
-  }
+    pm->sync_wait_unlock();
 
-  pm->sync_wait_unlock();
+    while (pw_filter_get_state(filter, nullptr) != PW_FILTER_STATE_PAUSED) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
 
-  if (connected_to_pw) {
-    do {
+    node_id = pw_filter_get_node_id(filter);
+
+    while (node_id == SPA_ID_INVALID) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
       node_id = pw_filter_get_node_id(filter);
-    } while (node_id == SPA_ID_INVALID);
+    }
 
     /*
       The filter we link in our pipeline have at least 4 ports. Some have six. Before we try to link filters we have to
       wait until the information about their ports is available in PipeManager's list_ports vector.
     */
 
-    do {
+    while (pm->count_node_ports(node_id) != n_ports) {
       std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    } while (pm->count_node_ports(node_id) != n_ports);
+    }
 
     initialize_listener();
 
-    success = true;
+    connected_to_pw = true;
 
     util::debug(log_tag + name + " successfully connected to PipeWire graph");
-  } else {
-    util::error(log_tag + name + " cannot connect the filter to PipeWire!");
+
+    return true;
   }
 
-  return success;
+  pm->unlock();
+
+  util::warning(log_tag + name + " cannot connect the filter to PipeWire!");
+
+  return false;
 }
 
 void PluginBase::initialize_listener() {
