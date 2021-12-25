@@ -66,7 +66,7 @@ struct _ConvolverBox {
 
   GtkCheckButton *check_left, *check_right;
 
-  GtkToggleButton* show_fft;
+  GtkToggleButton *show_fft, *enable_log_scale;
 
   GtkBox* chart_box;
 
@@ -100,18 +100,25 @@ void plot_fft(ConvolverBox* self) {
     return;
   }
 
-  ui::chart::set_plot_type(self->chart, ui::chart::ChartType::line);
-  ui::chart::set_plot_scale(self->chart, ui::chart::ChartScale::logarithmic);
+  ui::chart::set_chart_type(self->chart, ui::chart::ChartType::line);
   ui::chart::set_fill_bars(self->chart, false);
   ui::chart::set_line_width(self->chart, 2.0);
   ui::chart::set_n_x_decimals(self->chart, 0);
   ui::chart::set_n_y_decimals(self->chart, 2);
   ui::chart::set_x_unit(self->chart, "Hz");
 
+  if (gtk_toggle_button_get_active(self->enable_log_scale) != 0) {
+    ui::chart::set_chart_scale(self->chart, ui::chart::ChartScale::logarithmic);
+  } else {
+    ui::chart::set_chart_scale(self->chart, ui::chart::ChartScale::linear);
+  }
+
+  ui::chart::set_x_data(self->chart, self->data->freq_axis);
+
   if (gtk_check_button_get_active(self->check_left) != 0) {
-    ui::chart::set_data(self->chart, self->data->freq_axis, self->data->left_spectrum);
+    ui::chart::set_y_data(self->chart, self->data->left_spectrum);
   } else if (gtk_check_button_get_active(self->check_right) != 0) {
-    ui::chart::set_data(self->chart, self->data->freq_axis, self->data->right_spectrum);
+    ui::chart::set_y_data(self->chart, self->data->right_spectrum);
   }
 }
 
@@ -120,18 +127,20 @@ void plot_waveform(ConvolverBox* self) {
     return;
   }
 
-  ui::chart::set_plot_type(self->chart, ui::chart::ChartType::line);
-  ui::chart::set_plot_scale(self->chart, ui::chart::ChartScale::linear);
+  ui::chart::set_chart_type(self->chart, ui::chart::ChartType::line);
+  ui::chart::set_chart_scale(self->chart, ui::chart::ChartScale::linear);
   ui::chart::set_fill_bars(self->chart, false);
   ui::chart::set_line_width(self->chart, 2.0);
   ui::chart::set_n_x_decimals(self->chart, 2);
   ui::chart::set_n_y_decimals(self->chart, 2);
   ui::chart::set_x_unit(self->chart, "s");
 
+  ui::chart::set_x_data(self->chart, self->data->time_axis);
+
   if (gtk_check_button_get_active(self->check_left) != 0) {
-    ui::chart::set_data(self->chart, self->data->time_axis, self->data->left_mag);
+    ui::chart::set_y_data(self->chart, self->data->left_mag);
   } else if (gtk_check_button_get_active(self->check_right) != 0) {
-    ui::chart::set_data(self->chart, self->data->time_axis, self->data->right_mag);
+    ui::chart::set_y_data(self->chart, self->data->right_mag);
   }
 }
 
@@ -147,6 +156,10 @@ void on_show_channel(ConvolverBox* self, GtkCheckButton* btn) {
   if (gtk_check_button_get_active(btn) != 0) {
     on_show_fft(self, self->show_fft);
   }
+}
+
+void on_enable_log_scale(ConvolverBox* self, GtkToggleButton* btn) {
+  plot_fft(self);
 }
 
 void get_irs_spectrum(ConvolverBox* self, const int& rate) {
@@ -223,22 +236,33 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   self->data->freq_axis.resize(self->data->left_spectrum.size());
 
-  for (uint n = 0U; n < self->data->left_spectrum.size(); n++) {
+  for (uint n = 0U; n < self->data->freq_axis.size(); n++) {
     self->data->freq_axis[n] =
-        0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(self->data->left_spectrum.size());
+        0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(self->data->freq_axis.size());
   }
 
+  // removing the DC component at f = 0 Hz
+
+  self->data->freq_axis.erase(self->data->freq_axis.begin());
+  self->data->left_spectrum.erase(self->data->left_spectrum.begin());
+  self->data->right_spectrum.erase(self->data->right_spectrum.begin());
+
   size_t bin_size =
-      (gtk_widget_get_width(GTK_WIDGET(self->chart)) > 0) ? gtk_widget_get_width(GTK_WIDGET(self->chart)) : 100;
+      (gtk_widget_get_width(GTK_WIDGET(self->chart)) > 0) ? gtk_widget_get_width(GTK_WIDGET(self->chart)) : 500;
 
   // initializing the logarithmic frequency axis
 
-  const auto log_axis = util::logspace(20.0F, 22000.0F, bin_size);
-  // const auto log_axis = util::logspace(20.0F, 22000.0F, freq_axis.size());
+  float max_freq = std::ranges::max(self->data->freq_axis);
+  float min_freq = std::ranges::min(self->data->freq_axis);
+
+  util::debug(log_tag + "min fft frequency: "s + std::to_string(min_freq));
+  util::debug(log_tag + "max fft frequency: "s + std::to_string(max_freq));
+
+  const auto log_axis = util::logspace(min_freq, max_freq, bin_size);
+  // const auto log_axis = util::logspace(20.0F, 22000.0F, self->data->freq_axis.size());
 
   std::vector<float> l(log_axis.size());
   std::vector<float> r(log_axis.size());
-  std::vector<uint> bin_count(log_axis.size());
 
   std::ranges::fill(l, 0.0F);
   std::ranges::fill(r, 0.0F);
@@ -253,13 +277,6 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
         last_j = j;
 
         break;
-      }
-
-      if (n > 0U) {
-        if (self->data->freq_axis[j] > log_axis[n - 1U]) {
-          l[n] += self->data->left_spectrum[j];
-          r[n] += self->data->right_spectrum[j];
-        }
       } else {
         l[n] += self->data->left_spectrum[j];
         r[n] += self->data->right_spectrum[j];
@@ -547,12 +564,14 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, check_left);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, check_right);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, show_fft);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, enable_log_scale);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, chart_box);
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_fft);
   gtk_widget_class_bind_template_callback(widget_class, on_show_channel);
+  gtk_widget_class_bind_template_callback(widget_class, on_enable_log_scale);
 }
 
 void convolver_box_init(ConvolverBox* self) {

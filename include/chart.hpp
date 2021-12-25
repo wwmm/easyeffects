@@ -42,11 +42,13 @@ enum class ChartType { bar, line };
 
 enum class ChartScale { linear, logarithmic };
 
-void set_plot_type(Chart* self, const ChartType& value);
+void set_chart_type(Chart* self, const ChartType& value);
 
-void set_plot_scale(Chart* self, const ChartScale& value);
+void set_chart_scale(Chart* self, const ChartScale& value);
 
-void set_data(Chart* self, const std::vector<float>& x, const std::vector<float>& y);
+void set_x_data(Chart* self, const std::vector<float>& x);
+
+void set_y_data(Chart* self, const std::vector<float>& y);
 
 void set_background_color(Chart* self, GdkRGBA color);
 

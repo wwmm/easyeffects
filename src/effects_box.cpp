@@ -106,6 +106,8 @@ void init_spectrum_frequency_axis(EffectsBox* self) {
     self->data->spectrum_mag.resize(x_axis_size);
 
     self->data->spectrum_bin_count.resize(x_axis_size);
+
+    ui::chart::set_x_data(self->spectrum_chart, self->data->spectrum_x_axis);
   }
 }
 
@@ -128,6 +130,8 @@ void setup_spectrum(EffectsBox* self) {
 
   ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, "line-width"));
 
+  ui::chart::set_chart_scale(self->spectrum_chart, ui::chart::ChartScale::logarithmic);
+
   ui::chart::set_x_unit(self->spectrum_chart, "Hz");
   ui::chart::set_y_unit(self->spectrum_chart, "dB");
 
@@ -142,9 +146,9 @@ void setup_spectrum(EffectsBox* self) {
   auto chart_type = util::gsettings_get_string(self->settings_spectrum, "type");
 
   if (chart_type == "Bars") {
-    ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::bar);
+    ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::bar);
   } else if (chart_type == "Lines") {
-    ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::line);
+    ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::line);
   }
 
   g_settings_bind(self->settings_spectrum, "show", self->spectrum_chart, "visible", G_SETTINGS_BIND_GET);
@@ -200,9 +204,9 @@ void setup_spectrum(EffectsBox* self) {
         auto chart_type = util::gsettings_get_string(self->settings_spectrum, key);
 
         if (chart_type == "Bars") {
-          ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::bar);
+          ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::bar);
         } else if (chart_type == "Lines") {
-          ui::chart::set_plot_type(self->spectrum_chart, chart::ChartType::line);
+          ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::line);
         }
       }),
       self));
@@ -392,7 +396,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
           }
         });
 
-        ui::chart::set_data(self->spectrum_chart, self->data->spectrum_x_axis, self->data->spectrum_mag);
+        ui::chart::set_y_data(self->spectrum_chart, self->data->spectrum_mag);
       }));
 
   // As we are showing the window we want the filters to send notifications about level meters, etc
