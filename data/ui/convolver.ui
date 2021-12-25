@@ -115,6 +115,16 @@
                                 <signal name="toggled" handler="on_show_fft" object="ConvolverBox" />
                             </object>
                         </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="enable_log_scale">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Log Scale</property>
+                                <property name="visible" bind-source="show_fft" bind-property="active" bind-flags="sync-create" />
+                                <signal name="toggled" handler="on_enable_log_scale" object="ConvolverBox" />
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>

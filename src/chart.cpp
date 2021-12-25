@@ -37,6 +37,8 @@ struct Data {
 
   float x_min, x_max, y_min, y_max;
 
+  float x_min_log, x_max_log;
+
   ChartType chart_type;
 
   ChartScale chart_scale;
@@ -45,7 +47,7 @@ struct Data {
 
   std::string x_unit, y_unit;
 
-  std::vector<float> original_x, original_y, y_axis, x_axis;
+  std::vector<float> y_axis, x_axis, x_axis_log, objects_x;
 };
 
 struct _Chart {
@@ -58,11 +60,11 @@ struct _Chart {
 
 G_DEFINE_TYPE(Chart, chart, GTK_TYPE_WIDGET)
 
-void set_plot_type(Chart* self, const ChartType& value) {
+void set_chart_type(Chart* self, const ChartType& value) {
   self->data->chart_type = value;
 }
 
-void set_plot_scale(Chart* self, const ChartScale& value) {
+void set_chart_scale(Chart* self, const ChartScale& value) {
   self->data->chart_scale = value;
 }
 
@@ -118,51 +120,51 @@ auto get_is_visible(Chart* self) -> bool {
   return self->data->is_visible;
 }
 
-void init_axes(Chart* self) {
-  if (self->data->original_x.empty() || self->data->original_y.empty()) {
+void set_x_data(Chart* self, const std::vector<float>& x) {
+  if (self == nullptr || x.empty()) {
     return;
   }
 
-  self->data->x_min = std::ranges::min(self->data->original_x);
-  self->data->x_max = std::ranges::max(self->data->original_x);
+  self->data->x_axis = x;
 
-  self->data->y_min = std::ranges::min(self->data->original_y);
-  self->data->y_max = std::ranges::max(self->data->original_y);
+  self->data->x_min = std::ranges::min(x);
+  self->data->x_max = std::ranges::max(x);
 
-  self->data->x_axis.resize(0);
-  self->data->y_axis.resize(0);
+  self->data->objects_x.resize(x.size());
 
-  for (const auto& v : self->data->original_x) {
-    if (v >= self->data->x_min && v <= self->data->x_max) {
-      self->data->x_axis.push_back(v);
-    }
+  self->data->x_min_log = std::log10(self->data->x_min);
+  self->data->x_max_log = std::log10(self->data->x_max);
+
+  self->data->x_axis_log.resize(x.size());
+
+  for (size_t n = 0; n < self->data->x_axis_log.size(); n++) {
+    self->data->x_axis_log[n] = std::log10(self->data->x_axis[n]);
   }
 
-  for (const auto& v : self->data->original_y) {
-    if (v >= self->data->y_min && v <= self->data->y_max) {
-      self->data->y_axis.push_back(v);
-    }
+  // making each x value a number between 0 and 1
+
+  std::ranges::for_each(self->data->x_axis,
+                        [&](auto& v) { v = (v - self->data->x_min) / (self->data->x_max - self->data->x_min); });
+
+  std::ranges::for_each(self->data->x_axis_log, [&](auto& v) {
+    v = (v - self->data->x_min_log) / (self->data->x_max_log - self->data->x_min_log);
+  });
+}
+
+void set_y_data(Chart* self, const std::vector<float>& y) {
+  if (self == nullptr || y.empty()) {
+    return;
   }
+
+  self->data->y_axis = y;
+
+  self->data->y_min = std::ranges::min(y);
+  self->data->y_max = std::ranges::max(y);
 
   // making each y value a number between 0 and 1
 
   std::ranges::for_each(self->data->y_axis,
                         [&](auto& v) { v = (v - self->data->y_min) / (self->data->y_max - self->data->y_min); });
-}
-
-void set_data(Chart* self, const std::vector<float>& x, const std::vector<float>& y) {
-  if (self == nullptr) {
-    return;
-  }
-
-  if (!self->data->is_visible) {
-    return;
-  }
-
-  self->data->original_x = x;
-  self->data->original_y = y;
-
-  init_axes(self);
 
   gtk_widget_queue_draw(GTK_WIDGET(self));
 }
@@ -175,20 +177,19 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y,
 
   if (y < height - self->data->x_axis_height && y > self->data->margin * height && x > self->data->margin * width &&
       x < width - self->data->margin * width) {
+    // At least for now the y axis is always linear
+
+    self->data->mouse_y =
+        (usable_height - y) / usable_height * (self->data->y_max - self->data->y_min) + self->data->y_min;
+
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
-        const double& x_min_log = std::log10(self->data->x_min);
-        const double& x_max_log = std::log10(self->data->x_max);
-
         const double& mouse_x_log = (x - self->data->margin * width) /
                                         static_cast<double>(width - 2 * self->data->margin * width) *
-                                        (x_max_log - x_min_log) +
-                                    x_min_log;
+                                        (self->data->x_max_log - self->data->x_min_log) +
+                                    self->data->x_min_log;
 
         self->data->mouse_x = std::pow(10.0, mouse_x_log);  // exp10 does not exist on FreeBSD
-
-        self->data->mouse_y =
-            (usable_height - y) / usable_height * (self->data->y_max - self->data->y_min) + self->data->y_min;
 
         break;
       }
@@ -197,8 +198,6 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y,
                                   static_cast<double>(width - 2 * self->data->margin * width) *
                                   (self->data->x_max - self->data->x_min) +
                               self->data->x_min;
-
-        self->data->mouse_y = (self->data->y_max - self->data->y_min) * (usable_height - y) / usable_height;
 
         break;
       }
@@ -310,17 +309,30 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
   auto* ctx = gtk_snapshot_append_cairo(snapshot, &widget_rectangle);
 
   if (const auto n_points = self->data->y_axis.size(); n_points > 0) {
-    const auto objects_x = util::linspace(
-        static_cast<float>(self->data->line_width + self->data->margin * width),
-        static_cast<float>(static_cast<float>(width) - self->data->line_width - self->data->margin * width), n_points);
+    double usable_width = width - 2 * (self->data->line_width + self->data->margin * width);
 
-    if (objects_x.empty()) {
-      return;
+    int usable_height = static_cast<int>(height - self->data->margin * height) - self->data->x_axis_height;
+
+    switch (self->data->chart_scale) {
+      case ChartScale::logarithmic: {
+        for (size_t n = 0; n < n_points; n++) {
+          self->data->objects_x[n] =
+              usable_width * self->data->x_axis_log[n] + self->data->line_width + self->data->margin * width;
+        }
+
+        break;
+      }
+      case ChartScale::linear: {
+        for (size_t n = 0; n < n_points; n++) {
+          self->data->objects_x[n] =
+              usable_width * self->data->x_axis[n] + self->data->line_width + self->data->margin * width;
+        }
+
+        break;
+      }
     }
 
     self->data->x_axis_height = draw_x_labels(self, ctx, width, height);
-
-    int usable_height = static_cast<int>(height - self->data->margin * height) - self->data->x_axis_height;
 
     cairo_set_source_rgba(ctx, self->data->color.red, self->data->color.green, self->data->color.blue,
                           self->data->color.alpha);
@@ -330,7 +342,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         for (uint n = 0U; n < n_points; n++) {
           double bar_height = static_cast<double>(usable_height) * self->data->y_axis[n];
 
-          float rect_x = objects_x[n];
+          float rect_x = self->data->objects_x[n];
           float rect_y = self->data->margin * height + static_cast<float>(usable_height) - bar_height;
           float rect_height = bar_height;
           float rect_width = static_cast<float>(width) / static_cast<float>(n_points);
@@ -370,21 +382,23 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         } else {
           const auto point_height = self->data->y_axis.front() * static_cast<float>(usable_height);
 
-          cairo_move_to(ctx, objects_x.front(),
+          cairo_move_to(ctx, self->data->objects_x.front(),
                         self->data->margin * height + static_cast<float>(usable_height) - point_height);
         }
 
         for (uint n = 0U; n < n_points - 1U; n++) {
           const auto next_point_height = self->data->y_axis[n + 1] * static_cast<float>(usable_height);
 
-          cairo_line_to(ctx, objects_x[n + 1],
+          cairo_line_to(ctx, self->data->objects_x[n + 1],
                         self->data->margin * height + static_cast<float>(usable_height) - next_point_height);
         }
 
         if (self->data->fill_bars) {
-          cairo_line_to(ctx, objects_x.back(), self->data->margin * height + static_cast<float>(usable_height));
+          cairo_line_to(ctx, self->data->objects_x.back(),
+                        self->data->margin * height + static_cast<float>(usable_height));
 
-          cairo_move_to(ctx, objects_x.back(), self->data->margin * height + static_cast<float>(usable_height));
+          cairo_move_to(ctx, self->data->objects_x.back(),
+                        self->data->margin * height + static_cast<float>(usable_height));
 
           cairo_close_path(ctx);
         }
