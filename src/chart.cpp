@@ -33,7 +33,7 @@ struct Data {
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
-  double mouse_y, mouse_x, margin, line_width;
+  float mouse_y, mouse_x, margin, line_width;
 
   float x_min, x_max, y_min, y_max;
 
@@ -207,7 +207,7 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y,
   }
 }
 
-auto draw_unit(Chart* self, cairo_t* ctx, const int& width, const int& height, const std::string& unit) {
+auto draw_unit(Chart* self, GtkSnapshot* snapshot, const int& width, const int& height, const std::string& unit) {
   auto* layout = gtk_widget_create_pango_layout(GTK_WIDGET(self), unit.c_str());
 
   auto* description = pango_font_description_from_string("monospace bold");
@@ -220,15 +220,21 @@ auto draw_unit(Chart* self, cairo_t* ctx, const int& width, const int& height, c
 
   pango_layout_get_pixel_size(layout, &text_width, &text_height);
 
-  cairo_move_to(ctx, width - text_width, static_cast<double>(height - text_height));
+  gtk_snapshot_save(snapshot);
 
-  pango_cairo_show_layout(ctx, layout);
+  auto point = GRAPHENE_POINT_INIT(static_cast<float>(width - text_width), static_cast<float>(height - text_height));
+
+  gtk_snapshot_translate(snapshot, &point);
+
+  gtk_snapshot_append_layout(snapshot, layout, &self->data->color_axis_labels);
+
+  gtk_snapshot_restore(snapshot);
 
   g_object_unref(layout);
 }
 
-auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& height) -> int {
-  double labels_offset = 0.1 * width;
+auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const int& height) -> int {
+  float labels_offset = 0.1 * width;
 
   int n_x_labels = static_cast<int>(std::ceil((width - 2 * self->data->margin * width) / labels_offset)) + 1;
 
@@ -257,10 +263,7 @@ auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& heigh
     }
   }
 
-  cairo_set_source_rgba(ctx, self->data->color_axis_labels.red, self->data->color_axis_labels.green,
-                        self->data->color_axis_labels.blue, self->data->color_axis_labels.alpha);
-
-  draw_unit(self, ctx, width, height, self->data->x_unit);
+  draw_unit(self, snapshot, width, height, self->data->x_unit);
 
   /*
     There is no space left in the window to show the last label. So we skip it
@@ -281,10 +284,16 @@ auto draw_x_labels(Chart* self, cairo_t* ctx, const int& width, const int& heigh
 
     pango_layout_get_pixel_size(layout, &text_width, &text_height);
 
-    cairo_move_to(ctx, self->data->margin * width + static_cast<double>(n) * labels_offset,
-                  static_cast<double>(height - text_height));
+    gtk_snapshot_save(snapshot);
 
-    pango_cairo_show_layout(ctx, layout);
+    auto point =
+        GRAPHENE_POINT_INIT(self->data->margin * width + n * labels_offset, static_cast<float>(height - text_height));
+
+    gtk_snapshot_translate(snapshot, &point);
+
+    gtk_snapshot_append_layout(snapshot, layout, &self->data->color_axis_labels);
+
+    gtk_snapshot_restore(snapshot);
 
     g_object_unref(layout);
 
@@ -305,8 +314,6 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
   auto widget_rectangle = GRAPHENE_RECT_INIT(0.0F, 0.0F, static_cast<float>(width), static_cast<float>(height));
 
   gtk_snapshot_append_color(snapshot, &self->data->background_color, &widget_rectangle);
-
-  auto* ctx = gtk_snapshot_append_cairo(snapshot, &widget_rectangle);
 
   if (const auto n_points = self->data->y_axis.size(); n_points > 0) {
     double usable_width = width - 2 * (self->data->line_width + self->data->margin * width);
@@ -332,10 +339,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
       }
     }
 
-    self->data->x_axis_height = draw_x_labels(self, ctx, width, height);
-
-    cairo_set_source_rgba(ctx, self->data->color.red, self->data->color.green, self->data->color.blue,
-                          self->data->color.alpha);
+    self->data->x_axis_height = draw_x_labels(self, snapshot, width, height);
 
     switch (self->data->chart_type) {
       case ChartType::bar: {
@@ -376,6 +380,11 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         break;
       }
       case ChartType::line: {
+        auto* ctx = gtk_snapshot_append_cairo(snapshot, &widget_rectangle);
+
+        cairo_set_source_rgba(ctx, self->data->color.red, self->data->color.green, self->data->color.blue,
+                              self->data->color.alpha);
+
         if (self->data->fill_bars) {
           cairo_move_to(ctx, self->data->margin * width,
                         self->data->margin * height + static_cast<float>(usable_height));
@@ -403,16 +412,18 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
           cairo_close_path(ctx);
         }
 
+        cairo_set_line_width(ctx, self->data->line_width);
+
+        if (self->data->fill_bars) {
+          cairo_fill(ctx);
+        } else {
+          cairo_stroke(ctx);
+        }
+
+        cairo_destroy(ctx);
+
         break;
       }
-    }
-
-    cairo_set_line_width(ctx, self->data->line_width);
-
-    if (self->data->fill_bars) {
-      cairo_fill(ctx);
-    } else {
-      cairo_stroke(ctx);
     }
 
     if (gtk_event_controller_motion_contains_pointer(GTK_EVENT_CONTROLLER_MOTION(self->controller_motion)) != 0) {
@@ -432,15 +443,19 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
       pango_layout_get_pixel_size(layout, &text_width, &text_height);
 
-      cairo_move_to(ctx, static_cast<double>(static_cast<float>(width) - static_cast<float>(text_width)), 0);
+      gtk_snapshot_save(snapshot);
 
-      pango_cairo_show_layout(ctx, layout);
+      auto point = GRAPHENE_POINT_INIT(static_cast<float>(width) - static_cast<float>(text_width), 0.0F);
+
+      gtk_snapshot_translate(snapshot, &point);
+
+      gtk_snapshot_append_layout(snapshot, layout, &self->data->color);
+
+      gtk_snapshot_restore(snapshot);
 
       g_object_unref(layout);
     }
   }
-
-  cairo_destroy(ctx);
 }
 
 void unroot(GtkWidget* widget) {
