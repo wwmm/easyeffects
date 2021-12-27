@@ -357,18 +357,22 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
           auto bar_rectangle = GRAPHENE_RECT_INIT(rect_x, rect_y, rect_width, rect_height);
 
+          float radius = (self->data->rounded_bars) ? 5.0F : 0.0F;
+
+          GskRoundedRect outline;
+
+          gsk_rounded_rect_init_from_rect(&outline, &bar_rectangle, radius);
+
           if (self->data->fill_bars) {
-            gtk_snapshot_append_color(snapshot, &self->data->color, &bar_rectangle);
+            gtk_snapshot_push_rounded_clip(snapshot, &outline);
+
+            gtk_snapshot_append_color(snapshot, &self->data->color, &outline.bounds);
+
+            gtk_snapshot_pop(snapshot);
           } else {
             float lw = static_cast<float>(self->data->line_width);
 
             auto border_width = std::to_array({lw, lw, lw, lw});
-
-            float radius = (self->data->rounded_bars) ? 10.0F : 0.0F;
-
-            GskRoundedRect outline;
-
-            gsk_rounded_rect_init_from_rect(&outline, &bar_rectangle, radius);
 
             auto border_color =
                 std::to_array({self->data->color, self->data->color, self->data->color, self->data->color});
