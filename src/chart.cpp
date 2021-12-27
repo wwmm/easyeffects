@@ -161,10 +161,14 @@ void set_y_data(Chart* self, const std::vector<float>& y) {
   self->data->y_min = std::ranges::min(y);
   self->data->y_max = std::ranges::max(y);
 
-  // making each y value a number between 0 and 1
+  if (std::fabs(self->data->y_max - self->data->y_min) < 0.00001F) {
+    std::ranges::fill(self->data->y_axis, 0.0F);
+  } else {
+    // making each y value a number between 0 and 1
 
-  std::ranges::for_each(self->data->y_axis,
-                        [&](auto& v) { v = (v - self->data->y_min) / (self->data->y_max - self->data->y_min); });
+    std::ranges::for_each(self->data->y_axis,
+                          [&](auto& v) { v = (v - self->data->y_min) / (self->data->y_max - self->data->y_min); });
+  }
 
   gtk_widget_queue_draw(GTK_WIDGET(self));
 }
@@ -358,6 +362,8 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
           auto bar_rectangle = GRAPHENE_RECT_INIT(rect_x, rect_y, rect_width, rect_height);
 
           float radius = (self->data->rounded_bars) ? 5.0F : 0.0F;
+
+          // auto bar_rectangle = GRAPHENE_RECT_INIT(rect_x - radius, rect_y - radius, rect_width, rect_width);
 
           GskRoundedRect outline;
 
