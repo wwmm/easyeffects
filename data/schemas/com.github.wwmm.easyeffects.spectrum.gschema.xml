@@ -3,6 +3,7 @@
     <enum id="com.github.wwmm.easyeffects.spectrum.type.enum">
         <value nick="Bars" value="0" />
         <value nick="Lines" value="1" />
+        <value nick="Dots" value="2" />
     </enum>
     <schema id="com.github.wwmm.easyeffects.spectrum" path="/com/github/wwmm/easyeffects/spectrum/">
         <key name="show" type="b">
@@ -14,11 +15,11 @@
         <key name="show-bar-border" type="b">
             <default>true</default>
         </key>
-        <key name="rounded-bars" type="b">
+        <key name="rounded-corners" type="b">
             <default>false</default>
         </key>
         <key name="n-points" type="i">
-            <range min="2" max="1000" />
+            <range min="2" max="2048" />
             <default>100</default>
         </key>
         <key name="line-width" type="d">

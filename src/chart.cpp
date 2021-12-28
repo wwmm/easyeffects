@@ -29,7 +29,7 @@ struct Data {
  public:
   ~Data() { util::debug(log_tag + "data struct destroyed"s); }
 
-  bool draw_bar_border, fill_bars, is_visible, rounded_bars;
+  bool draw_bar_border, fill_bars, is_visible, rounded_corners;
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
@@ -88,8 +88,8 @@ void set_draw_bar_border(Chart* self, const bool& v) {
   self->data->draw_bar_border = v;
 }
 
-void set_rounded_bars(Chart* self, const bool& v) {
-  self->data->rounded_bars = v;
+void set_rounded_corners(Chart* self, const bool& v) {
+  self->data->rounded_corners = v;
 }
 
 void set_fill_bars(Chart* self, const bool& v) {
@@ -348,7 +348,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
     switch (self->data->chart_type) {
       case ChartType::bar: {
         for (uint n = 0U; n < n_points; n++) {
-          double bar_height = static_cast<double>(usable_height) * self->data->y_axis[n];
+          float bar_height = static_cast<double>(usable_height) * self->data->y_axis[n];
 
           float rect_x = self->data->objects_x[n];
           float rect_y = self->data->margin * height + static_cast<float>(usable_height) - bar_height;
@@ -361,9 +361,47 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
           auto bar_rectangle = GRAPHENE_RECT_INIT(rect_x, rect_y, rect_width, rect_height);
 
-          float radius = (self->data->rounded_bars) ? 5.0F : 0.0F;
+          float radius = (self->data->rounded_corners) ? 5.0F : 0.0F;
 
-          // auto bar_rectangle = GRAPHENE_RECT_INIT(rect_x - radius, rect_y - radius, rect_width, rect_width);
+          GskRoundedRect outline;
+
+          gsk_rounded_rect_init_from_rect(&outline, &bar_rectangle, radius);
+
+          if (self->data->fill_bars) {
+            gtk_snapshot_push_rounded_clip(snapshot, &outline);
+
+            gtk_snapshot_append_color(snapshot, &self->data->color, &outline.bounds);
+
+            gtk_snapshot_pop(snapshot);
+          } else {
+            float lw = static_cast<float>(self->data->line_width);
+
+            auto border_width = std::to_array({lw, lw, lw, lw});
+
+            auto border_color =
+                std::to_array({self->data->color, self->data->color, self->data->color, self->data->color});
+
+            gtk_snapshot_append_border(snapshot, &outline, border_width.data(), border_color.data());
+          }
+        }
+
+        break;
+      }
+      case ChartType::dots: {
+        for (uint n = 0U; n < n_points; n++) {
+          float dot_y = static_cast<double>(usable_height) * self->data->y_axis[n];
+
+          float rect_x = self->data->objects_x[n];
+          float rect_y = self->data->margin * height + static_cast<float>(usable_height) - dot_y;
+          float rect_width = static_cast<float>(width) / static_cast<float>(n_points);
+
+          if (self->data->draw_bar_border) {
+            rect_width -= self->data->line_width;
+          }
+
+          float radius = (self->data->rounded_corners) ? 5.0F : 0.0F;
+
+          auto bar_rectangle = GRAPHENE_RECT_INIT(rect_x - radius, rect_y - radius, rect_width, rect_width);
 
           GskRoundedRect outline;
 

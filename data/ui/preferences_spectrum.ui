@@ -34,6 +34,7 @@
                                 <items>
                                     <item translatable="yes" id="Bars">Bars</item>
                                     <item translatable="yes" id="Lines">Lines</item>
+                                    <item translatable="yes" id="Dots">Dots</item>
                                 </items>
                             </object>
                         </child>
@@ -52,7 +53,7 @@
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">2</property>
-                                        <property name="upper">1000</property>
+                                        <property name="upper">2048</property>
                                         <property name="step-increment">1</property>
                                         <property name="page-increment">10</property>
                                     </object>
@@ -134,10 +135,10 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Rounded Bars</property>
-                        <property name="activatable_widget">rounded_bars</property>
+                        <property name="title" translatable="yes">Rounded Corners</property>
+                        <property name="activatable_widget">rounded_corners</property>
                         <child>
-                            <object class="GtkSwitch" id="rounded_bars">
+                            <object class="GtkSwitch" id="rounded_corners">
                                 <property name="valign">center</property>
                             </object>
                         </child>
