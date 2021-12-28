@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-15 15:31-0300\n"
+"POT-Creation-Date: 2021-12-28 12:15-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -105,11 +105,11 @@ msgstr "Pridať na zoznam blokovaných"
 msgid "Format"
 msgstr "Formát"
 
-#: data/ui/app_info.ui:109 data/ui/convolver.ui:131
+#: data/ui/app_info.ui:109 data/ui/convolver.ui:141
 msgid "Rate"
 msgstr "Kmitočet"
 
-#: data/ui/app_info.ui:131
+#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:503
 msgid "Channels"
 msgstr "Kanály"
 
@@ -118,7 +118,7 @@ msgid "Latency"
 msgstr "Odozva"
 
 #: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:482
-#: data/ui/preferences_window.ui:114
+#: data/ui/preferences_spectrum.ui:9
 msgid "State"
 msgstr "Stav"
 
@@ -152,8 +152,8 @@ msgid "_About EasyEffects"
 msgstr "Vstupné efekty"
 
 #: data/ui/application_window.ui:48 data/ui/reverb.ui:18
-#: src/presets_menu.cpp:105 src/presets_menu.cpp:249 src/presets_menu.cpp:250
-#: src/presets_menu.cpp:267 src/presets_menu.cpp:268
+#: src/presets_menu.cpp:112 src/presets_menu.cpp:256 src/presets_menu.cpp:257
+#: src/presets_menu.cpp:274 src/presets_menu.cpp:275
 msgid "Presets"
 msgstr "Predvoľby"
 
@@ -242,7 +242,7 @@ msgid "Output Gain"
 msgstr "Výstupný Zisk"
 
 #: data/ui/autogain.ui:342 data/ui/bass_enhancer.ui:264
-#: data/ui/compressor.ui:512 data/ui/compressor.ui:994 data/ui/convolver.ui:212
+#: data/ui/compressor.ui:512 data/ui/compressor.ui:994 data/ui/convolver.ui:222
 #: data/ui/crossfeed.ui:142 data/ui/crystalizer.ui:40 data/ui/deesser.ui:418
 #: data/ui/delay.ui:109 data/ui/echo_canceller.ui:113 data/ui/equalizer.ui:197
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
@@ -250,12 +250,12 @@ msgstr "Výstupný Zisk"
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
 #: data/ui/pipe_manager_box.ui:308 data/ui/pitch.ui:198 data/ui/reverb.ui:364
 #: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
-#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:243
+#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
 msgid "Input"
 msgstr "Vstup"
 
 #: data/ui/autogain.ui:361 data/ui/bass_enhancer.ui:283
-#: data/ui/compressor.ui:1013 data/ui/convolver.ui:231 data/ui/crossfeed.ui:161
+#: data/ui/compressor.ui:1013 data/ui/convolver.ui:241 data/ui/crossfeed.ui:161
 #: data/ui/crystalizer.ui:59 data/ui/deesser.ui:437 data/ui/delay.ui:128
 #: data/ui/echo_canceller.ui:132 data/ui/equalizer.ui:216
 #: data/ui/exciter.ui:283 data/ui/filter.ui:192 data/ui/gate.ui:354
@@ -268,7 +268,7 @@ msgid "Plugin Input Gain"
 msgstr "Výstupný Zisk"
 
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:348
-#: data/ui/compressor.ui:1078 data/ui/convolver.ui:296 data/ui/crossfeed.ui:226
+#: data/ui/compressor.ui:1078 data/ui/convolver.ui:306 data/ui/crossfeed.ui:226
 #: data/ui/crystalizer.ui:124 data/ui/deesser.ui:502 data/ui/delay.ui:193
 #: data/ui/echo_canceller.ui:197 data/ui/equalizer.ui:281
 #: data/ui/exciter.ui:348 data/ui/filter.ui:257 data/ui/gate.ui:419
@@ -278,12 +278,12 @@ msgstr "Výstupný Zisk"
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
 #: data/ui/pipe_manager_box.ui:211 data/ui/pitch.ui:282 data/ui/reverb.ui:448
 #: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
-#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:242
+#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
 msgid "Output"
 msgstr "Výstup"
 
 #: data/ui/autogain.ui:445 data/ui/bass_enhancer.ui:367
-#: data/ui/compressor.ui:1097 data/ui/convolver.ui:315 data/ui/crossfeed.ui:245
+#: data/ui/compressor.ui:1097 data/ui/convolver.ui:325 data/ui/crossfeed.ui:245
 #: data/ui/crystalizer.ui:143 data/ui/deesser.ui:521 data/ui/delay.ui:212
 #: data/ui/echo_canceller.ui:216 data/ui/equalizer.ui:300
 #: data/ui/exciter.ui:367 data/ui/filter.ui:276 data/ui/gate.ui:438
@@ -296,10 +296,10 @@ msgid "Plugin Output Gain"
 msgstr "Výstupný Zisk"
 
 #: data/ui/autogain.ui:508 data/ui/bass_enhancer.ui:461
-#: data/ui/compressor.ui:1160 data/ui/convolver.ui:378 data/ui/crossfeed.ui:308
+#: data/ui/compressor.ui:1160 data/ui/convolver.ui:388 data/ui/crossfeed.ui:308
 #: data/ui/crystalizer.ui:198 data/ui/deesser.ui:644 data/ui/delay.ui:275
 #: data/ui/echo_canceller.ui:279 data/ui/equalizer.ui:363
-#: data/ui/equalizer_band.ui:224 data/ui/equalizer_band.ui:296
+#: data/ui/equalizer_band.ui:223 data/ui/equalizer_band.ui:295
 #: data/ui/exciter.ui:460 data/ui/filter.ui:339 data/ui/gate.ui:531
 #: data/ui/limiter.ui:915 data/ui/loudness.ui:298 data/ui/maximizer.ui:343
 #: data/ui/multiband_compressor.ui:556 data/ui/multiband_gate.ui:1791
@@ -309,7 +309,7 @@ msgid "Reset"
 msgstr "Obnoviť pôvodné hodnoty"
 
 #: data/ui/autogain.ui:522 data/ui/bass_enhancer.ui:475
-#: data/ui/compressor.ui:1174 data/ui/convolver.ui:392 data/ui/crossfeed.ui:322
+#: data/ui/compressor.ui:1174 data/ui/convolver.ui:402 data/ui/crossfeed.ui:322
 #: data/ui/deesser.ui:658 data/ui/delay.ui:289 data/ui/echo_canceller.ui:293
 #: data/ui/equalizer.ui:377 data/ui/exciter.ui:474 data/ui/filter.ui:353
 #: data/ui/gate.ui:545 data/ui/limiter.ui:929 data/ui/loudness.ui:312
@@ -380,7 +380,7 @@ msgid "Compressor"
 msgstr "Kompresor"
 
 #: data/ui/compressor.ui:50 data/ui/compressor.ui:437 data/ui/compressor.ui:732
-#: data/ui/deesser.ui:65 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:131
+#: data/ui/deesser.ui:65 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:130
 #: data/ui/limiter.ui:45 data/ui/multiband_compressor_band.ui:449
 #: data/ui/multiband_gate.ui:33
 msgid "Mode"
@@ -542,8 +542,7 @@ msgstr "Pravý"
 msgid "Sidechain Source"
 msgstr "Postranný reťazec"
 
-#: data/ui/compressor.ui:524 data/ui/equalizer_band.ui:99
-#: data/ui/pipe_manager_box.ui:546
+#: data/ui/compressor.ui:524 data/ui/equalizer_band.ui:98
 msgid "Type"
 msgstr "Typ"
 
@@ -593,13 +592,13 @@ msgstr "Postranný reťazec"
 msgid "High-Pass"
 msgstr "Horné pásmo"
 
-#: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:198 data/ui/filter.ui:53
-#: data/ui/pipe_manager_box.ui:570
+#: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
+#: data/ui/pipe_manager_box.ui:563
 msgid "Frequency"
 msgstr "Frekvencia"
 
 #: data/ui/compressor.ui:758 data/ui/compressor.ui:814
-#: data/ui/equalizer_band.ui:109
+#: data/ui/equalizer_band.ui:108
 msgid "Off"
 msgstr "Vyp"
 
@@ -666,8 +665,8 @@ msgstr "Rozdeliť kanály"
 msgid "Impulses"
 msgstr "Odpoveď impulzu"
 
-#: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:114
-#: data/ui/convolver_menu_combine.ui:117
+#: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:113
+#: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
 msgstr ""
 
@@ -679,11 +678,16 @@ msgstr "Šírka sterea"
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: data/ui/convolver.ui:153
+#: data/ui/convolver.ui:123
+#, fuzzy
+msgid "Log Scale"
+msgstr "Mierka"
+
+#: data/ui/convolver.ui:163
 msgid "Samples"
 msgstr "Vzorky"
 
-#: data/ui/convolver.ui:175
+#: data/ui/convolver.ui:185
 msgid "Duration"
 msgstr "Trvanie"
 
@@ -707,25 +711,25 @@ msgstr "Načítať súbor impulzu"
 msgid "Impulse Files List"
 msgstr "Načítať súbor impulzu"
 
-#: data/ui/convolver_menu_combine.ui:16
+#: data/ui/convolver_menu_combine.ui:15
 #, fuzzy
 msgid "Combine Impulse Responses"
 msgstr "Odpoveď impulzu"
 
-#: data/ui/convolver_menu_combine.ui:49
+#: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
 msgstr ""
 
-#: data/ui/convolver_menu_combine.ui:83
+#: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
 msgstr ""
 
-#: data/ui/convolver_menu_combine.ui:92
+#: data/ui/convolver_menu_combine.ui:91
 #, fuzzy
 msgid "Output File Name"
 msgstr "Výstup"
 
-#: data/ui/convolver_menu_combine.ui:96
+#: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
 msgstr ""
 
@@ -749,7 +753,7 @@ msgstr "Zrezanie"
 msgid "Feed"
 msgstr "Kanál"
 
-#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:322
+#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:321
 #: data/ui/multiband_compressor_band.ui:136 data/ui/stereo_tools.ui:169
 #: data/ui/stereo_tools.ui:194
 msgid "Mute"
@@ -842,11 +846,11 @@ msgstr ""
 msgid "Used Plugins List"
 msgstr ""
 
-#: data/ui/effects_base.ui:141 src/effects_box.cpp:259
+#: data/ui/effects_base.ui:141 src/effects_box.cpp:280
 msgid "Players"
 msgstr ""
 
-#: data/ui/effects_base.ui:163 src/effects_box.cpp:282
+#: data/ui/effects_base.ui:163 src/effects_box.cpp:303
 msgid "Plugins"
 msgstr ""
 
@@ -912,111 +916,111 @@ msgstr "Vypočítať frekvencie"
 msgid "Load APO Preset"
 msgstr "APO predvoľby"
 
-#: data/ui/equalizer_band.ui:110
+#: data/ui/equalizer_band.ui:109
 msgid "Bell"
 msgstr "Zvonček"
 
-#: data/ui/equalizer_band.ui:111
+#: data/ui/equalizer_band.ui:110
 msgid "High Pass"
 msgstr "Horné pásmo"
 
-#: data/ui/equalizer_band.ui:112
+#: data/ui/equalizer_band.ui:111
 msgid "High Shelf"
 msgstr "Horný prah"
 
-#: data/ui/equalizer_band.ui:113
+#: data/ui/equalizer_band.ui:112
 msgid "Low Pass"
 msgstr "Spodné pásmo"
 
-#: data/ui/equalizer_band.ui:114
+#: data/ui/equalizer_band.ui:113
 msgid "Low Shelf"
 msgstr "Spodný prah"
 
-#: data/ui/equalizer_band.ui:115
+#: data/ui/equalizer_band.ui:114
 msgid "Notch"
 msgstr "Zárez"
 
-#: data/ui/equalizer_band.ui:116 data/ui/filter.ui:88
+#: data/ui/equalizer_band.ui:115 data/ui/filter.ui:88
 msgid "Resonance"
 msgstr "Rezonancia"
 
-#: data/ui/equalizer_band.ui:117
+#: data/ui/equalizer_band.ui:116
 #, fuzzy
 msgid "All Pass"
 msgstr "Dolné Pásmo"
 
-#: data/ui/equalizer_band.ui:124
+#: data/ui/equalizer_band.ui:123
 #, fuzzy
 msgid "Band Type"
 msgstr "Premostiť"
 
-#: data/ui/equalizer_band.ui:141
+#: data/ui/equalizer_band.ui:140
 msgid "RLC (BT)"
 msgstr "RLC (BT)"
 
-#: data/ui/equalizer_band.ui:142
+#: data/ui/equalizer_band.ui:141
 msgid "RLC (MT)"
 msgstr "RLC (MT)"
 
-#: data/ui/equalizer_band.ui:143
+#: data/ui/equalizer_band.ui:142
 msgid "BWC (BT)"
 msgstr "BWC (BT)"
 
-#: data/ui/equalizer_band.ui:144
+#: data/ui/equalizer_band.ui:143
 msgid "BWC (MT)"
 msgstr "BWC (MT)"
 
-#: data/ui/equalizer_band.ui:145
+#: data/ui/equalizer_band.ui:144
 msgid "LRX (BT)"
 msgstr "LRX (BT)"
 
-#: data/ui/equalizer_band.ui:146
+#: data/ui/equalizer_band.ui:145
 msgid "LRX (MT)"
 msgstr "LRX (MT)"
 
-#: data/ui/equalizer_band.ui:147
+#: data/ui/equalizer_band.ui:146
 msgid "APO (DR)"
 msgstr "APO (DR)"
 
-#: data/ui/equalizer_band.ui:154
+#: data/ui/equalizer_band.ui:153
 #, fuzzy
 msgid "Band Mode"
 msgstr "Pásma"
 
-#: data/ui/equalizer_band.ui:161
+#: data/ui/equalizer_band.ui:160
 msgid "Slope"
 msgstr "Sklon"
 
-#: data/ui/equalizer_band.ui:171
+#: data/ui/equalizer_band.ui:170
 msgid "x1"
 msgstr ""
 
-#: data/ui/equalizer_band.ui:172
+#: data/ui/equalizer_band.ui:171
 msgid "x2"
 msgstr ""
 
-#: data/ui/equalizer_band.ui:173
+#: data/ui/equalizer_band.ui:172
 msgid "x3"
 msgstr ""
 
-#: data/ui/equalizer_band.ui:174
+#: data/ui/equalizer_band.ui:173
 msgid "x4"
 msgstr ""
 
-#: data/ui/equalizer_band.ui:181
+#: data/ui/equalizer_band.ui:180
 #, fuzzy
 msgid "Band Slope"
 msgstr "Sklon"
 
-#: data/ui/equalizer_band.ui:243
+#: data/ui/equalizer_band.ui:242
 msgid "Width"
 msgstr "Šírka"
 
-#: data/ui/equalizer_band.ui:270
+#: data/ui/equalizer_band.ui:269
 msgid "Quality"
 msgstr "Kvalita"
 
-#: data/ui/equalizer_band.ui:316 data/ui/multiband_compressor_band.ui:146
+#: data/ui/equalizer_band.ui:315 data/ui/multiband_compressor_band.ui:146
 #: data/ui/multiband_gate.ui:193 data/ui/multiband_gate.ui:553
 #: data/ui/multiband_gate.ui:913 data/ui/multiband_gate.ui:1273
 msgid "Solo"
@@ -1122,7 +1126,7 @@ msgstr "Spojenie sterea"
 msgid "Average"
 msgstr "Priemerná"
 
-#: data/ui/gate.ui:93 data/ui/preferences_window.ui:303
+#: data/ui/gate.ui:93 data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
 msgstr "Maximálna"
 
@@ -1933,20 +1937,14 @@ msgstr "Klienti"
 msgid "Test Signal"
 msgstr "Skúšobné signály"
 
-#: data/ui/pipe_manager_box.ui:485 data/ui/preferences_window.ui:117
+#: data/ui/pipe_manager_box.ui:485 data/ui/preferences_spectrum.ui:12
 #, fuzzy
 msgid "Enabled"
 msgstr "Povolené"
 
 #: data/ui/pipe_manager_box.ui:500
-#, fuzzy
-msgid "Output Channel"
-msgstr "Výstupný Zisk"
-
-#: data/ui/pipe_manager_box.ui:503
-#, fuzzy
-msgid "Channel"
-msgstr "Kanály"
+msgid "Properties"
+msgstr ""
 
 #: data/ui/pipe_manager_box.ui:528
 msgid "Both"
@@ -1957,23 +1955,18 @@ msgstr ""
 msgid "Both Channels"
 msgstr "Kanály"
 
-#: data/ui/pipe_manager_box.ui:543
+#: data/ui/pipe_manager_box.ui:541
 msgid "Waveform"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:550
+#: data/ui/pipe_manager_box.ui:545
 #, fuzzy
 msgid "Sine Wave"
 msgstr "Sínusová tabuľka"
 
-#: data/ui/pipe_manager_box.ui:559
+#: data/ui/pipe_manager_box.ui:554
 msgid "White Noise"
 msgstr "Biely šum"
-
-#: data/ui/pipe_manager_box.ui:573
-#, fuzzy
-msgid "Value"
-msgstr "Spodná hranica"
 
 #: data/ui/pitch.ui:17
 msgid "Faster"
@@ -1999,104 +1992,116 @@ msgstr "Oktávy"
 msgid "Crispness"
 msgstr "Krehkosť"
 
-#: data/ui/preferences_window.ui:16
+#: data/ui/preferences_general.ui:5
 #, fuzzy
 msgid "_General"
 msgstr "Všeobecné"
 
-#: data/ui/preferences_window.ui:21
+#: data/ui/preferences_general.ui:10
 #, fuzzy
 msgid "Service"
 msgstr "Server"
 
-#: data/ui/preferences_window.ui:24
+#: data/ui/preferences_general.ui:13
 msgid "Start Service at Login"
 msgstr "Spustiť službu pri prihlásení"
 
-#: data/ui/preferences_window.ui:37
+#: data/ui/preferences_general.ui:26
 msgid "Shutdown on Window Close"
 msgstr ""
 
-#: data/ui/preferences_window.ui:51
+#: data/ui/preferences_general.ui:40
 msgid "Audio"
 msgstr ""
 
-#: data/ui/preferences_window.ui:54
+#: data/ui/preferences_general.ui:43
 msgid "Process All Outputs"
 msgstr "Spracovať všetky výstupy"
 
-#: data/ui/preferences_window.ui:65
+#: data/ui/preferences_general.ui:54
 msgid "Process All Inputs"
 msgstr "Spracovať všetky vstupy"
 
-#: data/ui/preferences_window.ui:76
+#: data/ui/preferences_general.ui:65
 msgid "Use Cubic Volume"
 msgstr ""
 
-#: data/ui/preferences_window.ui:90 data/ui/preferences_window.ui:131
+#: data/ui/preferences_general.ui:79 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_window.ui:93
+#: data/ui/preferences_general.ui:82
 msgid "Use Dark Theme"
 msgstr "Použiť tmavý motív"
 
-#: data/ui/preferences_window.ui:110
+#: data/ui/preferences_general.ui:94
+msgid "Hide Menus on Outside Clicks"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:5
 #, fuzzy
 msgid "_Spectrum"
 msgstr "Spektrum"
 
-#: data/ui/preferences_window.ui:134
+#: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
 msgstr ""
 
-#: data/ui/preferences_window.ui:140
+#: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
 msgstr "Pruhy"
 
-#: data/ui/preferences_window.ui:141
+#: data/ui/preferences_spectrum.ui:36
 msgid "Lines"
 msgstr "Čiary"
 
-#: data/ui/preferences_window.ui:150
+#: data/ui/preferences_spectrum.ui:37
+msgid "Dots"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:46
 msgid "Points"
 msgstr "Body"
 
-#: data/ui/preferences_window.ui:172
+#: data/ui/preferences_spectrum.ui:68
 msgid "Height"
 msgstr "Výška"
 
-#: data/ui/preferences_window.ui:195
+#: data/ui/preferences_spectrum.ui:91
 msgid "Line Width"
 msgstr "Šírka čiary"
 
-#: data/ui/preferences_window.ui:218
+#: data/ui/preferences_spectrum.ui:114
 msgid "Fill"
 msgstr "Výplň"
 
-#: data/ui/preferences_window.ui:230
+#: data/ui/preferences_spectrum.ui:126
 msgid "Show Bars Border"
 msgstr ""
 
-#: data/ui/preferences_window.ui:244
+#: data/ui/preferences_spectrum.ui:138
+msgid "Rounded Corners"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:152
 #, fuzzy
 msgid "Color"
 msgstr "Farba osi"
 
-#: data/ui/preferences_window.ui:247
+#: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
 msgstr ""
 
-#: data/ui/preferences_window.ui:261
+#: data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
 msgstr ""
 
-#: data/ui/preferences_window.ui:277
+#: data/ui/preferences_spectrum.ui:185
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frekvencia"
 
-#: data/ui/preferences_window.ui:280
+#: data/ui/preferences_spectrum.ui:188
 #, fuzzy
 msgid "Minimum"
 msgstr "Maximálna"
@@ -2380,56 +2385,56 @@ msgstr "Základ sterea"
 msgid "Stereo Phase"
 msgstr "Fáza sterea"
 
-#: src/application.cpp:299
+#: src/application.cpp:305
 msgid "Output Presets: "
 msgstr "Výstupné predvoľby: "
 
-#: src/application.cpp:307
+#: src/application.cpp:313
 msgid "Input Presets: "
 msgstr "Vstupné predvoľby: "
 
-#: src/application.cpp:402
+#: src/application.cpp:410
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pre aplikácie využívajúce PulseAudio"
 
-#: src/application.cpp:467
+#: src/application.cpp:475
 #, fuzzy
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Ukončiť PulseEffect. Užitočné pre beh v režime služby."
 
-#: src/application.cpp:470
+#: src/application.cpp:478
 #, fuzzy
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Načítať predvoľby. Napr.: pulseeffects -l music"
 
-#: src/application.cpp:473
+#: src/application.cpp:481
 #, fuzzy
 msgid "Reset EasyEffects."
 msgstr "Obnoviť PulseEffects"
 
-#: src/application.cpp:476
+#: src/application.cpp:484
 msgid "Hide the Window."
 msgstr "Skryť okno"
 
-#: src/application.cpp:479
+#: src/application.cpp:487
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globálne premostenie. 1 pre zapnutie, 2 pre vypnutie, 3 pre získanie stavu"
 
-#: src/application.cpp:482
+#: src/application.cpp:490
 msgid "Show available presets."
 msgstr "Zobraziť dostupné ~redvoľby"
 
-#: src/application_ui.cpp:244
+#: src/application_ui.cpp:246
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/convolver_ui.cpp:337 src/convolver_ui.cpp:338 src/convolver_ui.cpp:339
+#: src/convolver_ui.cpp:336 src/convolver_ui.cpp:337 src/convolver_ui.cpp:338
 msgid "Failed"
 msgstr "Zlyhalo"
 
-#: src/convolver_ui.cpp:340
+#: src/convolver_ui.cpp:339
 msgid "Could Not Load The Impulse File"
 msgstr "Nedá sa načítať súbor s impulzom"
 
@@ -2437,13 +2442,13 @@ msgstr "Nedá sa načítať súbor s impulzom"
 msgid "Import Impulse File"
 msgstr "Načítať súbor impulzu"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:362
-#: src/presets_menu.cpp:99 src/rnnoise_ui.cpp:123
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:362
-#: src/presets_menu.cpp:100 src/rnnoise_ui.cpp:123
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
 msgid "Cancel"
 msgstr "Zrušiť"
 
@@ -2461,29 +2466,29 @@ msgstr "Odpoveď impulzu"
 msgid "Remove Impulse"
 msgstr "Importovať impulz"
 
-#: src/effects_box.cpp:234
+#: src/effects_box.cpp:255
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/equalizer_band_box.cpp:81
+#: src/equalizer_band_box.cpp:83
 msgid "infinity"
 msgstr "nekonečno"
 
-#: src/equalizer_ui.cpp:361
+#: src/equalizer_ui.cpp:362
 msgid "Import APO Preset File"
 msgstr "Načítať APO predvoľbu"
 
-#: src/equalizer_ui.cpp:367
+#: src/equalizer_ui.cpp:368
 msgid "APO Presets"
 msgstr "APO predvoľby"
 
-#: src/pipe_manager_box.cpp:278
+#: src/pipe_manager_box.cpp:289
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Odstrániť predvoľbu"
 
-#: src/presets_menu.cpp:99
+#: src/presets_menu.cpp:106
 #, fuzzy
 msgid "Import Preset"
 msgstr "Načítať predvoľbu"
@@ -2500,6 +2505,18 @@ msgstr "Importovať model zo súboru"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Štandardný model RNNoise"
+
+#, fuzzy
+#~ msgid "Output Channel"
+#~ msgstr "Výstupný Zisk"
+
+#, fuzzy
+#~ msgid "Channel"
+#~ msgstr "Kanály"
+
+#, fuzzy
+#~ msgid "Value"
+#~ msgstr "Spodná hranica"
 
 #, fuzzy
 #~ msgid "Output Effects"
@@ -2928,9 +2945,6 @@ msgstr "Štandardný model RNNoise"
 #, fuzzy
 #~ msgid "Gain Detection"
 #~ msgstr "Redukcia zosilnenia"
-
-#~ msgid "Scale"
-#~ msgstr "Mierka"
 
 #~ msgid "Exponent"
 #~ msgstr "Exponent"

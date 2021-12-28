@@ -38,7 +38,7 @@ G_DECLARE_FINAL_TYPE(Chart, chart, EE, CHART, GtkWidget)
 
 G_END_DECLS
 
-enum class ChartType { bar, line };
+enum class ChartType { bar, line, dots };
 
 enum class ChartScale { linear, logarithmic };
 
@@ -60,7 +60,7 @@ void set_line_width(Chart* self, const double& value);
 
 void set_draw_bar_border(Chart* self, const bool& v);
 
-void set_rounded_bars(Chart* self, const bool& v);
+void set_rounded_corners(Chart* self, const bool& v);
 
 void set_fill_bars(Chart* self, const bool& v);
 

@@ -122,8 +122,8 @@ void setup_spectrum(EffectsBox* self) {
 
   ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
 
-  ui::chart::set_rounded_bars(self->spectrum_chart,
-                              g_settings_get_boolean(self->settings_spectrum, "rounded-bars") != 0);
+  ui::chart::set_rounded_corners(self->spectrum_chart,
+                                 g_settings_get_boolean(self->settings_spectrum, "rounded-corners") != 0);
 
   ui::chart::set_draw_bar_border(self->spectrum_chart,
                                  g_settings_get_boolean(self->settings_spectrum, "show-bar-border") != 0);
@@ -149,6 +149,8 @@ void setup_spectrum(EffectsBox* self) {
     ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::bar);
   } else if (chart_type == "Lines") {
     ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::line);
+  } else if (chart_type == "Dots") {
+    ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::dots);
   }
 
   g_settings_bind(self->settings_spectrum, "show", self->spectrum_chart, "visible", G_SETTINGS_BIND_GET);
@@ -173,9 +175,9 @@ void setup_spectrum(EffectsBox* self) {
       self));
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::rounded-bars",
+      self->settings_spectrum, "changed::rounded-corners",
       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        ui::chart::set_rounded_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
+        ui::chart::set_rounded_corners(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
       }),
       self));
 
@@ -207,6 +209,8 @@ void setup_spectrum(EffectsBox* self) {
           ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::bar);
         } else if (chart_type == "Lines") {
           ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::line);
+        } else if (chart_type == "Dots") {
+          ui::chart::set_chart_type(self->spectrum_chart, chart::ChartType::dots);
         }
       }),
       self));
