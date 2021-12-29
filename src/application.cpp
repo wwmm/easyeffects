@@ -388,7 +388,7 @@ void application_class_init(ApplicationClass* klass) {
 }
 
 void application_init(Application* self) {
-  std::array<GActionEntry, 7> entries{};
+  std::array<GActionEntry, 8> entries{};
 
   entries[0] = {
       "quit", [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
@@ -468,13 +468,20 @@ void application_init(Application* self) {
                 },
                 nullptr, nullptr, nullptr};
 
+  entries[7] = {"hide_windows",
+                [](GSimpleAction* action, GVariant* parameter, gpointer app) { hide_all_windows(G_APPLICATION(app)); },
+                nullptr, nullptr, nullptr};
+
   g_action_map_add_action_entries(G_ACTION_MAP(self), entries.data(), entries.size(), self);
 
-  std::array<const char*, 3> quit_accels = {"<Ctrl>Q", "<Ctrl>W", nullptr};
+  std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
+  std::array<const char*, 2> hide_windows_accels = {"<Ctrl>W", nullptr};
+
   std::array<const char*, 2> help_accels = {"F1", nullptr};
   std::array<const char*, 2> fullscreen_accels = {"F11", nullptr};
 
   gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", quit_accels.data());
+  gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.hide_windows", hide_windows_accels.data());
   gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", help_accels.data());
   gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.fullscreen", fullscreen_accels.data());
 }

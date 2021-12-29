@@ -19,15 +19,22 @@
 
                         <child>
                             <object class="GtkShortcutsShortcut">
-                                <property name="accelerator">&lt;Ctrl&gt;q</property>
-                                <property name="title" translatable="yes">Close Window/Quit EasyEffects</property>
+                                <property name="accelerator">F11</property>
+                                <property name="title" translatable="yes">Fullscreen/Restore from fullscreen</property>
                             </object>
                         </child>
 
                         <child>
                             <object class="GtkShortcutsShortcut">
-                                <property name="accelerator">F11</property>
-                                <property name="title" translatable="yes">Fullscreen/Restore from fullscreen</property>
+                                <property name="accelerator">&lt;Ctrl&gt;w</property>
+                                <property name="title" translatable="yes">Close the Window</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkShortcutsShortcut">
+                                <property name="accelerator">&lt;Ctrl&gt;q</property>
+                                <property name="title" translatable="yes">Quit EasyEffects</property>
                             </object>
                         </child>
                     </object>
