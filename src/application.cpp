@@ -388,7 +388,7 @@ void application_class_init(ApplicationClass* klass) {
 }
 
 void application_init(Application* self) {
-  std::array<GActionEntry, 6> entries{};
+  std::array<GActionEntry, 7> entries{};
 
   entries[0] = {
       "quit", [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
@@ -438,7 +438,6 @@ void application_init(Application* self) {
                   gtk_window_set_transient_for(GTK_WINDOW(preferences),
                                                GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
 
-                  gtk_window_set_modal(GTK_WINDOW(preferences), 1);
                   gtk_window_present(GTK_WINDOW(preferences));
                 },
                 nullptr, nullptr, nullptr};
@@ -451,6 +450,21 @@ void application_init(Application* self) {
 
                   self->soe->reset_settings();
                   self->sie->reset_settings();
+                },
+                nullptr, nullptr, nullptr};
+
+  entries[6] = {"shortcuts",
+                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/shortcuts.ui");
+
+                  auto* window = GTK_SHORTCUTS_WINDOW(gtk_builder_get_object(builder, "window"));
+
+                  gtk_window_set_transient_for(GTK_WINDOW(window),
+                                               GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+
+                  gtk_window_present(GTK_WINDOW(window));
+
+                  g_object_unref(builder);
                 },
                 nullptr, nullptr, nullptr};
 

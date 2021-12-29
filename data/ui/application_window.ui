@@ -6,6 +6,14 @@
                 <attribute name="label" translatable="yes">_Preferences</attribute>
                 <attribute name="action">app.preferences</attribute>
             </item>
+            <item>
+                <attribute name="label" translatable="yes">_Manual</attribute>
+                <attribute name="action">app.help</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">_Shortcuts</attribute>
+                <attribute name="action">app.shortcuts</attribute>
+            </item>
         </section>
         <section>
             <item>
@@ -14,10 +22,6 @@
             </item>
         </section>
         <section>
-            <item>
-                <attribute name="label" translatable="yes">_Manual</attribute>
-                <attribute name="action">app.help</attribute>
-            </item>
             <item>
                 <attribute name="label" translatable="yes">_About EasyEffects</attribute>
                 <attribute name="action">app.about</attribute>
