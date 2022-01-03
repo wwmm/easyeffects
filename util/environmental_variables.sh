@@ -2,7 +2,6 @@
 
 export GSETTINGS_SCHEMA_DIR=../../data/schemas/
 export G_MESSAGES_DEBUG=easyeffects
-export GST_DEBUG_FILE=/tmp/gst_ee_log.txt
 export ASAN_OPTIONS="detect_stack_use_after_return=1:check_initialization_order=1"
 export LSAN_OPTIONS="print_suppressions=true:suppressions=../../util/sanitizer.supp"
 

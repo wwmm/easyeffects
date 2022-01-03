@@ -126,6 +126,12 @@ void StreamInputEffects::on_app_added(const NodeInfo node_info) {
 }
 
 void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
+  // We are not interested in the other link states
+
+  if (link_info.state != PW_LINK_STATE_ACTIVE && link_info.state != PW_LINK_STATE_PAUSED) {
+    return;
+  }
+
   if (pm->default_input_device.id == pm->ee_source_node.id) {
     return;
   }

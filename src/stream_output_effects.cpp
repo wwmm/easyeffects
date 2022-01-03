@@ -126,6 +126,12 @@ void StreamOutputEffects::on_app_added(const NodeInfo node_info) {
 }
 
 void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
+  // We are not interested in the other link states
+
+  if (link_info.state != PW_LINK_STATE_ACTIVE && link_info.state != PW_LINK_STATE_PAUSED) {
+    return;
+  }
+
   /*
     If bypass is enabled do not touch the plugin pipeline
   */
