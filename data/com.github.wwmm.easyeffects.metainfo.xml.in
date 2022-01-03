@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2017 Patrik Nilsson -->
-<component type="desktop">
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
   <id>com.github.wwmm.easyeffects.desktop</id>
   <name>EasyEffects</name>
+  <summary>Audio Effects for PipeWire Applications</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
-  <summary>Audio Effects for PipeWire Applications</summary>
   <developer_name>Wellington Wallace</developer_name>
   <description>
     <p>EasyEffects is an advanced audio manipulation tool. It includes an equalizer, limiter, compressor and a reverberation tool, just to mention a few. To complement this there is also a built in spectrum analyzer.</p>
@@ -18,225 +17,178 @@
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
   <url type="help">https://github.com/wwmm/easyeffects/blob/master/README.md</url>
+  <translation type="gettext">EasyEffects</translation>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_players.png</image>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_players.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_plugins.png</image>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_plugins.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/convolver.png</image>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/convolver.png</image>
     </screenshot>
   </screenshots>
   <releases>
-    <release version="6.2.0" date="2021-12-29"/>
-    <release version="6.1.5" date="2021-11-17"/>
-    <release version="6.1.4" date="2021-10-16"/>
-    <release version="6.1.3" date="2021-10-03"/>
-    <release version="6.1.2" date="2021-09-20"/>
-    <release version="6.1.1" date="2021-09-17"/>
-    <release version="6.1.0" date="2021-08-17"/>
-    <release version="6.0.3" date="2021-07-16"/>
-    <release version="6.0.2" date="2021-07-11"/>
-    <release version="6.0.1" date="2021-07-09"/>
-    <release version="6.0.0" date="2021-07-07"/>
-    <release version="5.0.1" date="2021-02-19"/>
-    <release version="5.0.0" date="2021-01-20"/>
-    <release version="4.8.4" date="2020-12-21"/>
-    <release version="4.8.3" date="2020-12-03"/>
-    <release version="4.8.2" date="2020-09-21"/>
-    <release version="4.8.1" date="2020-09-18"/>
-    <release version="4.8.0" date="2020-08-15"/>
-    <release version="4.7.3" date="2020-06-16"/>
-    <release version="4.7.2" date="2020-03-22"/>
-    <release version="4.7.1" date="2019-01-14"/>
-    <release version="4.7.0" date="2019-12-25"/>
-    <release version="4.6.9" date="2019-11-28"/>
-    <release version="4.6.8" date="2019-09-16"/>
-    <release version="4.6.7" date="2019-09-10"/>
-    <release version="4.6.6" date="2019-08-04"/>
-    <release version="4.6.5" date="2019-06-23"/>
-    <release version="4.6.4" date="2019-06-19"/>
-    <release version="4.6.3" date="2019-06-02"/>
-    <release version="4.6.2" date="2019-05-30"/>
-    <release version="4.6.1" date="2019-05-22"/>
-    <release version="4.6.0" date="2019-04-28"/>
-    <release version="4.5.9" date="2019-04-13"/>
-    <release version="4.5.8" date="2019-03-21"/>
-    <release version="4.5.7" date="2019-03-19"/>
-    <release version="4.5.6" date="2019-03-13"/>
-    <release version="4.5.5" date="2019-03-06"/>
-    <release version="4.5.4" date="2019-03-03"/>
-    <release version="4.5.3" date="2019-02-27"/>
-    <release version="4.5.2" date="2019-02-24"/>
-    <release version="4.5.0" date="2019-02-10"/>
-    <release version="4.4.7" date="2019-01-21"/>
-    <release version="4.4.6" date="2019-01-09"/>
-    <release version="4.4.5" date="2019-01-04"/>
-    <release version="4.4.4" date="2018-12-31"/>
-    <release version="4.4.3" date="2018-12-30"/>
-    <release version="4.4.2" date="2018-12-30"/>
-    <release version="4.4.1" date="2018-12-03"/>
-    <release version="4.4.0" date="2018-10-31"/>
-    <release version="4.3.9" date="2018-10-24"/>
-    <release version="4.3.8" date="2018-10-16"/>
-    <release version="4.3.7" date="2018-09-25"/>
-    <release version="4.3.6" date="2018-09-25"/>
-    <release version="4.3.5" date="2018-09-16"/>
-    <release version="4.3.4" date="2018-09-01"/>
-    <release version="4.3.3" date="2018-08-31"/>
-    <release version="4.3.2" date="2018-08-30"/>
-    <release version="4.3.1" date="2018-08-28"/>
-    <release version="4.3.0" date="2018-08-28"/>
-    <release version="4.2.9" date="2018-08-26"/>
-    <release version="4.2.8" date="2018-08-14"/>
-    <release version="4.2.7" date="2018-08-12"/>
-    <release version="4.2.6" date="2018-08-10"/>
-    <release version="4.2.5" date="2018-08-09"/>
-    <release version="4.2.4" date="2018-08-05"/>
-    <release version="4.2.3" date="2018-07-30"/>
-    <release version="4.2.2" date="2018-07-29"/>
-    <release version="4.2.1" date="2018-07-28"/>
-    <release version="4.2.0" date="2018-07-24"/>
-    <release version="4.1.9" date="2018-07-18"/>
-    <release version="4.1.8" date="2018-07-16"/>
-    <release version="4.1.7" date="2018-07-14"/>
-    <release version="4.1.6" date="2018-07-14"/>
-    <release version="4.1.5" date="2018-07-13"/>
-    <release version="4.1.4" date="2018-07-13"/>
-    <release version="4.1.3" date="2018-07-06"/>
-    <release version="4.1.2" date="2018-07-01"/>
-    <release version="4.1.1" date="2018-06-27"/>
-    <release version="4.1.0" date="2018-06-24"/>
-    <release version="4.0.9" date="2018-06-24"/>
-    <release version="4.0.8" date="2018-06-19"/>
-    <release version="4.0.7" date="2018-06-17"/>
-    <release version="4.0.6" date="2018-06-16"/>
-    <release version="4.0.5" date="2018-06-15"/>
-    <release version="4.0.4" date="2018-06-12"/>
-    <release version="4.0.3" date="2018-06-12"/>
-    <release version="4.0.2" date="2018-06-08"/>
-    <release version="4.0.1" date="2018-06-04"/>
-    <release version="4.0.0" date="2018-06-03"/>
-    <release version="3.2.3" date="2018-04-21"/>
-    <release version="3.2.2" date="2018-04-20"/>
-    <release version="3.2.1" date="2018-03-01"/>
-    <release version="3.2.0" date="2018-02-04"/>
-    <release version="3.1.9" date="2018-01-30"/>
-    <release version="3.1.8" date="2018-01-30"/>
-    <release version="3.1.7" date="2018-01-23"/>
-    <release version="3.1.6" date="2017-12-31"/>
-    <release version="3.1.5" date="2017-12-25"/>
-    <release version="3.1.4" date="2017-12-18"/>
-    <release version="3.1.3" date="2017-12-13"/>
-    <release version="3.1.2" date="2017-12-12"/>
-    <release version="3.1.1" date="2017-12-09"/>
-    <release version="3.1.0" date="2017-12-09"/>
-    <release version="3.0.9" date="2017-11-28"/>
-    <release version="3.0.8" date="2017-11-16"/>
-    <release version="3.0.7" date="2017-11-11"/>
-    <release version="3.0.6" date="2017-10-31"/>
-    <release version="3.0.5" date="2017-10-22"/>
-    <release version="3.0.4" date="2017-10-22"/>
-    <release version="3.0.3" date="2017-10-21"/>
-    <release version="3.0.2" date="2017-10-21"/>
-    <release version="3.0.1" date="2017-10-14"/>
-    <release version="3.0.0" date="2017-09-21"/>
-    <release version="2.3.6" date="2017-09-01"/>
-    <release version="2.3.5" date="2017-08-25"/>
-    <release version="2.3.4" date="2017-08-25"/>
-    <release version="2.3.3" date="2017-08-22"/>
-    <release version="2.3.2" date="2017-08-21"/>
-    <release version="2.3.1" date="2017-08-20"/>
-    <release version="2.3.0" date="2017-08-20"/>
-    <release version="2.2.1" date="2017-08-15"/>
-    <release version="2.2.0" date="2017-08-15"/>
-    <release version="2.1.2" date="2017-07-29"/>
-    <release version="2.1.1" date="2017-07-23"/>
-    <release version="2.1.0" date="2017-07-17"/>
-    <release version="2.0.9" date="2017-07-16"/>
-    <release version="2.0.8" date="2017-07-15"/>
-    <release version="2.0.7" date="2017-07-11"/>
-    <release version="2.0.6" date="2017-07-08"/>
-    <release version="2.0.5" date="2017-07-07"/>
-    <release version="2.0.4" date="2017-07-07"/>
-    <release version="2.0.3" date="2017-07-04"/>
-    <release version="2.0.2" date="2017-07-02"/>
-    <release version="2.0.1" date="2017-07-01"/>
-    <release version="2.0.0" date="2017-06-30"/>
-    <release version="1.6.7" date="2017-06-26"/>
-    <release version="1.6.6" date="2017-06-25"/>
-    <release version="1.6.5" date="2017-06-24"/>
-    <release version="1.6.4" date="2017-06-22"/>
-    <release version="1.6.3" date="2017-06-20"/>
-    <release version="1.6.2" date="2017-06-18"/>
-    <release version="1.6.1" date="2017-06-17"/>
-    <release version="1.6.0" date="2017-06-15"/>
-    <release version="1.5.8" date="2017-06-13"/>
-    <release version="1.5.7" date="2017-06-11"/>
-    <release version="1.5.6" date="2017-06-10"/>
-    <release version="1.5.5" date="2017-06-08"/>
-    <release version="1.5.4" date="2017-06-08"/>
-    <release version="1.5.3" date="2017-06-06"/>
-    <release version="1.5.2" date="2017-06-06"/>
-    <release version="1.5.1" date="2017-06-04"/>
-    <release version="1.5.0" date="2017-06-04"/>
-    <release version="1.4.8" date="2017-06-03"/>
-    <release version="1.4.7" date="2017-06-01"/>
-    <release version="1.4.6" date="2017-05-30"/>
-    <release version="1.4.5" date="2017-05-30"/>
-    <release version="1.4.4" date="2017-05-28"/>
-    <release version="1.4.3" date="2017-05-27"/>
-    <release version="1.4.2" date="2017-05-27"/>
-    <release version="1.4.1" date="2017-05-25"/>
-    <release version="1.4.0" date="2017-05-23"/>
-    <release version="1.3.6" date="2017-05-20"/>
-    <release version="1.3.5" date="2017-05-20"/>
-    <release version="1.3.4" date="2017-05-20"/>
-    <release version="1.3.3" date="2017-05-18"/>
-    <release version="1.3.2" date="2017-05-16"/>
-    <release version="1.3.1" date="2017-05-12"/>
-    <release version="1.3.0" date="2017-05-10"/>
-    <release version="1.2.9" date="2017-05-09"/>
-    <release version="1.2.8" date="2017-05-06"/>
-    <release version="1.2.7" date="2017-05-02"/>
-    <release version="1.2.6" date="2017-05-01"/>
-    <release version="1.2.5" date="2017-04-25"/>
-    <release version="1.2.4" date="2017-04-23"/>
-    <release version="1.2.3" date="2017-04-23"/>
-    <release version="1.2.2" date="2017-04-23"/>
-    <release version="1.2.1" date="2017-04-22"/>
-    <release version="1.2.0" date="2017-04-21"/>
-    <release version="1.1.9" date="2017-04-21"/>
-    <release version="1.1.8" date="2017-04-20"/>
-    <release version="1.1.7" date="2017-04-20"/>
-    <release version="1.1.6" date="2017-04-19"/>
-    <release version="1.1.5" date="2017-04-18"/>
-    <release version="1.1.4" date="2017-04-17"/>
-    <release version="1.1.3" date="2017-04-14"/>
-    <release version="1.1.2" date="2017-04-14"/>
-    <release version="1.1.1" date="2017-04-13"/>
-    <release version="1.1.0" date="2017-04-11"/>
-    <release version="1.0.9" date="2017-04-09"/>
-    <release version="1.0.8" date="2017-04-07"/>
-    <release version="1.0.7" date="2017-03-28"/>
-    <release version="1.0.6" date="2017-03-28"/>
-    <release version="1.0.5" date="2017-03-28"/>
-    <release version="1.0.4" date="2017-03-27"/>
-    <release version="1.0.3" date="2017-03-27"/>
-    <release version="1.0.2" date="2017-03-25"/>
-    <release version="1.0.1" date="2017-03-25"/>
-    <release version="1.0" date="2017-03-25"/>
-    <release version="0.9" date="2017-03-24"/>
-    <release version="0.8" date="2017-03-23"/>
-    <release version="0.7" date="2017-03-23"/>
-    <release version="0.6" date="2017-03-23"/>
-    <release version="0.5" date="2017-03-23"/>
-    <release version="0.4" date="2017-03-23"/>
-    <release version="0.3" date="2017-03-23"/>
-    <release version="0.2" date="2017-03-23"/>
-    <release version="0.1" date="2017-03-21"/>
+    <release type="stable" version="6.1.5" date="2021-11-17T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>It is now possible to combine impulse responses in the Convolver interface. A new impulse file is generated and it should be visible in the impulse list.</li>
+          <li>Improved `x axis` drawings in our plots. Now the number of labels is adjusted dynamically depending on our window width.</li>
+          <li>The documentation has been updated reflecting the new EasyEffects features. Old references about PulseEffects have been removed. The documentation button has been added in the menu section.</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest value rather than resetting to the previous one.</li>
+          <li>The application window now remembers the maximized state and restores it on the next opening event.</li>
+        </ul>
+        <p>The `tbb` library is a new dependency https://www.threadingbuildingblocks.org</p>
+      </description>
+    </release>
+    <release type="stable" version="6.1.4" date="2021-10-16T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>The Limiter and the Multiband Compressor plugins can now use an optional external sidechain.</li>
+          <li>The Autogain plugin now allows the user to select which Loudness is used as reference for the volume correction.</li>
+          <li>The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification" parameter.</li>
+          <li>Optional Cubic Volume can be enabled in General Settings.</li>
+        </ul>
+      </description>
+    </release>
+    <release type="stable" version="6.1.3" date="2021-10-03T00:00:00Z">
+      <description>
+        <p>This release adds the following feature:</p>
+        <ul>
+          <li>PipeWire monitor streams are now excluded and removed from the applications list.</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Hopefully crashes like the one reported at [1172](https://github.com/wwmm/easyeffects/issues/1172) are fixed.</li>
+          <li>Prevented a case in which Spectrum was crashing.</li>
+          <li>Pavucontrol is not added anymore to input applications list on systems with localization different than English.</li>
+        </ul>
+      </description>
+    </release>
+    <release type="stable" version="6.1.2" date="2021-09-20T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the</li>
+          <li>built-in PipeWire session manager. More information at issue [1144](https://github.com/wwmm/easyeffects/issues/1144).</li>
+        </ul>
+      </description>
+    </release>
+    <release type="stable" version="6.1.1" date="2021-09-17T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>When trying to add an autoloading profile for a device already in the list its target preset will be updated. This way we can change the profile preset without having to remove and recreating it.</li>
+          <li>The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more information see issue [1051](https://github.com/wwmm/easyeffects/issues/1051).</li>
+          <li>If the Limiter or the Maximizer are set in the last position of the plugin stack, new plugins are added at the second to last position in order to prevent hardware damage on eventually high output level.</li>
+          <li>Removing an application from the blocklist, its previous enabled state is restored.</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Sometimes when removing imported models from the noise reduction plugin the current used model was not properly updated. This should be fixed now.</li>
+          <li>When editing presets files in an external editor, duplicated entries won't be shown in our presets menu.</li>
+          <li>Now the blocklist is correctly set when switching presets.</li>
+          <li>Now the status of the global bypass button is correctly updated when changing plugin stack.</li>
+          <li>Missing icons on the system should not be shown inside the application info UI</li>
+          <li>Some icons not showing in Plasma DE with Breeze icon theme should appear now.</li>
+        </ul>
+      </description>
+    </release>
+    <release type="stable" version="6.1.0" date="2021-08-17T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Updated Chinese translation.</li>
+          <li>Updated Italian translation.</li>
+          <li>Added support for the compressor parameter `Boost Amount`</li>
+          <li>The multiband compressor plugin now uses the stereo multiband compressor plugin from Linux Studio Plugins instead of the one from Calf Studio.</li>
+          <li>The limiter plugin now uses the stereo limiter plugin from Linux Studio Plugins instead of the one from Calf Studio.</li>
+          <li>LV2 filters now are spawned in PipeWire graph only when loaded the first time. Once loaded, they remain connected until EasyEffects shutdown.</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>The echo canceller sampling rate is now properly set.</li>
+          <li>The threshold parameter from the deesser plugin is now saved to the preset file.</li>
+          <li>Improved band splitting for crystalizer with new default intensity values.</li>
+          <li>Depending on the input gain or output gain values the corresponding level bars could not be aligned.</li>
+          <li>When adding more equalizer bands they are set to `Bell` instead of `Off`.</li>
+          <li>Equalizer APO presets loading is now working properly on locales different than C.</li>
+          <li>Improved linking management between port filter nodes in PipeWire.</li>
+          <li>The crystalizer plugin signal amplification was too high before. It should be within more reasonable levels now.</li>
+        </ul>
+      </description>
+    </release>
+    <release type="stable" version="6.0.3" date="2021-07-16T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Improved the resampler used in the plugins that require one(like the rnnoise plugin)</li>
+          <li>Updated translations</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Setting multiple autoloading presets should be fine now</li>
+          <li>Transient windows are now properly set for some plugins dialogs</li>
+          <li>The convolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when only one was available in the menu https://github.com/wwmm/easyeffects/issues/1011</li>
+          <li>Fixed a bug that could make the pitch plugin to not be properly initialized</li>
+          <li>The saturation warning should not displace its neighbor widgets anymore</li>
+          <li>Fixed the locale in a few widgets</li>
+          <li>Fixed wrong alignment in a few widgets</li>
+        </ul>
+      </description>
+    </release>
+    <release type="stable" version="6.0.2" date="2021-07-11T00:00:00Z">
+      <description>
+        <p>This release adds the following feature:</p>
+        <ul>
+          <li>The Loudness plugin is being used again for the reasons described at https://github.com/wwmm/easyeffects/issues/820. This means that http://drobilla.net/plugins/mda/Loudness is an optional dependency again.</li>
+        </ul>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Fixed a segmentation fault that happened when optional dependencies were not installed</li>
+        </ul>
+      </description>
+    </release>
+    <release type="stable" version="6.0.1" date="2021-07-09T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Improved equalizer interface.</li>
+          <li>Now we use a sidechain LSP compressor that allows the user to select and external source as the sidechain input.</li>
+          <li>We now support the LSP compressor `Boosting` mode.</li>
+          <li>When `split-channels` is enabled in the equalizer the imported APO preset will be applied only to the channel being visualized in the window. This will allow to import different presets for each channel instead of just settings the same values to both.</li>
+        </ul>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Fixed some segmentation faults that could happen when creating a preset autoloading profile or removing presets</li>
+        </ul>
+      </description>
+    </release>
+    <release type="stable" version="6.0.0" date="2021-07-07T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about everything here.</li>
+          <li>The following are just the most import ones. People interested on the journey that got us here can take</li>
+          <li>a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/wwmm/easyeffects/issues/874.</li>
+        </ul>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>The application and its repository have been renamed from PulseEffects to `EasyEffects`</li>
+          <li>gtkmm3 was replaced by gtkmm4</li>
+          <li>Gstreamer was replaced by native PipeWire filters.</li>
+          <li>Many features were reimplemented from scratch. The preset autoloading is one example. Another remarkable change will be seen in the plugins selection menu. Now the user can show in the window only the plugins that he/she wants to use.</li>
+        </ul>
+        <p>Boost is no longer a dependency. The price paid for that was a little change in our presets structures. With some patience it is possible to edit PulseEffects presets in a text editor and make them work in EasyEffects. Hopefully someone will come up with a script for this in the feature.</p>
+        <p>New libraries are being used and some of the librarires that were optional before are now required</p>
+      </description>
+    </release>
   </releases>
   <content_rating type="oars-1.0">
     <content_attribute id="violence-cartoon">none</content_attribute>
@@ -260,6 +212,4 @@
     <content_attribute id="money-purchasing">none</content_attribute>
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
-  <update_contact>contact_AT_hembas.se</update_contact>
-  <translation type="gettext">EasyEffects</translation>
 </component>
