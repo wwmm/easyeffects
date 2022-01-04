@@ -184,7 +184,20 @@ sed -i 's/^Released:/###/' "${CHANGELOG_FILE}"
 sed -i "1i # Changelog" "${CHANGELOG_FILE}"
 
 log_info "Copying NEWS to metainfo file"
-appstreamcli news-to-metainfo --format=text "${NEWS_FILE}" "${METAINFO_FILE}"
+
+# need to remove URLs as under certain conditions URLs are not permitted in AppStream release notes.
+# only some implementations will actually fail validation an AppStream file on this, though.
+# this only effects the outputted metainfo file, not news or changelog
+
+touch "${REPO_DIR}/util/NEWS_TEMP}"
+
+cp "${NEWS_FILE}" "${REPO_DIR}/util/NEWS_TEMP}"
+
+sed -i 's!http[s]\?://\S*!!g' "${REPO_DIR}/util/NEWS_TEMP}"
+
+appstreamcli news-to-metainfo --format=text "${REPO_DIR}/util/NEWS_TEMP}" "${METAINFO_FILE}"
+
+rm "${REPO_DIR}/util/NEWS_TEMP}"
 
 log_info "appstreamcli validation"
 
