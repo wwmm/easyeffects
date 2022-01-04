@@ -1,4 +1,22 @@
 # Changelog
+## 6.2.0
+              
+### 2022-01-04
+
+### Features:
+- LibAdwaita is used to create some parts of our window and for handling the switching between dark and light themes.
+- The settings menu has been redesigned using LibAdwaita widgets.
+- Equalizer APO preset import feature has been improved to apply not only the Bell filter, but also other supported ones (at the moment only the Bandpass filter is not available in LSP plugin).
+- The `Reset All Settings` function in our menu should work in Flatpak now.
+- We have a new option that allows the user to disable our menus `autohide`. This may help to workaround some bugs Popover menus currently have on gtk4.
+
+### Bugfixes:
+- More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.
+
+### Notes:
+- The fmt library is a new dependency https://github.com/fmtlib/fmt. At least while the c++ compilers do not implement its features. This is expected to happen in the next years.
+- GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly.
+
 ## 6.1.5
               
 ### 2021-11-17
