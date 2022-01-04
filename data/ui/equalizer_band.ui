@@ -137,13 +137,13 @@
                         <child>
                             <object class="GtkComboBoxText" id="band_mode">
                                 <items>
-                                    <item translatable="yes" id="RLC (BT)">RLC (BT)</item>
-                                    <item translatable="yes" id="RLC (MT)">RLC (MT)</item>
-                                    <item translatable="yes" id="BWC (BT)">BWC (BT)</item>
-                                    <item translatable="yes" id="BWC (MT)">BWC (MT)</item>
-                                    <item translatable="yes" id="LRX (BT)">LRX (BT)</item>
-                                    <item translatable="yes" id="LRX (MT)">LRX (MT)</item>
-                                    <item translatable="yes" id="APO (DR)">APO (DR)</item>
+                                    <item id="RLC (BT)">RLC (BT)</item>
+                                    <item id="RLC (MT)">RLC (MT)</item>
+                                    <item id="BWC (BT)">BWC (BT)</item>
+                                    <item id="BWC (MT)">BWC (MT)</item>
+                                    <item id="LRX (BT)">LRX (BT)</item>
+                                    <item id="LRX (MT)">LRX (MT)</item>
+                                    <item id="APO (DR)">APO (DR)</item>
                                 </items>
                                 <layout>
                                     <property name="column">1</property>
@@ -167,10 +167,10 @@
                         <child>
                             <object class="GtkComboBoxText" id="band_slope">
                                 <items>
-                                    <item translatable="yes" id="x1">x1</item>
-                                    <item translatable="yes" id="x2">x2</item>
-                                    <item translatable="yes" id="x3">x3</item>
-                                    <item translatable="yes" id="x4">x4</item>
+                                    <item id="x1">x1</item>
+                                    <item id="x2">x2</item>
+                                    <item id="x3">x3</item>
+                                    <item id="x4">x4</item>
                                 </items>
                                 <layout>
                                     <property name="column">2</property>

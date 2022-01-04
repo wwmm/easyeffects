@@ -141,15 +141,15 @@
                                         <property name="hexpand">1</property>
                                         <property name="valign">center</property>
                                         <items>
-                                            <item translatable="yes" id="None">None</item>
-                                            <item translatable="yes" id="7bit">7bit</item>
-                                            <item translatable="yes" id="8bit">8bit</item>
-                                            <item translatable="yes" id="11bit">11bit</item>
-                                            <item translatable="yes" id="12bit">12bit</item>
-                                            <item translatable="yes" id="15bit">15bit</item>
-                                            <item translatable="yes" id="16bit">16bit</item>
-                                            <item translatable="yes" id="23bit">23bit</item>
-                                            <item translatable="yes" id="24bit">24bit</item>
+                                            <item id="None">None</item>
+                                            <item id="7bit">7bit</item>
+                                            <item id="8bit">8bit</item>
+                                            <item id="11bit">11bit</item>
+                                            <item id="12bit">12bit</item>
+                                            <item id="15bit">15bit</item>
+                                            <item id="16bit">16bit</item>
+                                            <item id="23bit">23bit</item>
+                                            <item id="24bit">24bit</item>
                                         </items>
                                         <layout>
                                             <property name="column">1</property>
