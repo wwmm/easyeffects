@@ -43,7 +43,7 @@
           <li>When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest value rather than resetting to the previous one.</li>
           <li>The application window now remembers the maximized state and restores it on the next opening event.</li>
         </ul>
-        <p>The `tbb` library is a new dependency https://www.threadingbuildingblocks.org</p>
+        <p>The `tbb` library is a new dependency</p>
       </description>
     </release>
     <release type="stable" version="6.1.4" date="2021-10-16T00:00:00Z">
@@ -65,7 +65,7 @@
         </ul>
         <p>This release fixes the following bugs:</p>
         <ul>
-          <li>Hopefully crashes like the one reported at [1172](https://github.com/wwmm/easyeffects/issues/1172) are fixed.</li>
+          <li>Hopefully crashes like the one reported at [1172]( are fixed.</li>
           <li>Prevented a case in which Spectrum was crashing.</li>
           <li>Pavucontrol is not added anymore to input applications list on systems with localization different than English.</li>
         </ul>
@@ -76,7 +76,7 @@
         <p>This release adds the following features:</p>
         <ul>
           <li>Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the</li>
-          <li>built-in PipeWire session manager. More information at issue [1144](https://github.com/wwmm/easyeffects/issues/1144).</li>
+          <li>built-in PipeWire session manager. More information at issue [1144](</li>
         </ul>
       </description>
     </release>
@@ -85,7 +85,7 @@
         <p>This release adds the following features:</p>
         <ul>
           <li>When trying to add an autoloading profile for a device already in the list its target preset will be updated. This way we can change the profile preset without having to remove and recreating it.</li>
-          <li>The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more information see issue [1051](https://github.com/wwmm/easyeffects/issues/1051).</li>
+          <li>The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more information see issue [1051](</li>
           <li>If the Limiter or the Maximizer are set in the last position of the plugin stack, new plugins are added at the second to last position in order to prevent hardware damage on eventually high output level.</li>
           <li>Removing an application from the blocklist, its previous enabled state is restored.</li>
         </ul>
@@ -135,7 +135,7 @@
         <ul>
           <li>Setting multiple autoloading presets should be fine now</li>
           <li>Transient windows are now properly set for some plugins dialogs</li>
-          <li>The convolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when only one was available in the menu https://github.com/wwmm/easyeffects/issues/1011</li>
+          <li>The convolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when only one was available in the menu</li>
           <li>Fixed a bug that could make the pitch plugin to not be properly initialized</li>
           <li>The saturation warning should not displace its neighbor widgets anymore</li>
           <li>Fixed the locale in a few widgets</li>
@@ -147,7 +147,7 @@
       <description>
         <p>This release adds the following feature:</p>
         <ul>
-          <li>The Loudness plugin is being used again for the reasons described at https://github.com/wwmm/easyeffects/issues/820. This means that http://drobilla.net/plugins/mda/Loudness is an optional dependency again.</li>
+          <li>The Loudness plugin is being used again for the reasons described at  This means that  is an optional dependency again.</li>
         </ul>
         <p>This release fixes the following bug:</p>
         <ul>
@@ -176,7 +176,7 @@
         <ul>
           <li>This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about everything here.</li>
           <li>The following are just the most import ones. People interested on the journey that got us here can take</li>
-          <li>a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/wwmm/easyeffects/issues/874.</li>
+          <li>a look at  and</li>
         </ul>
         <p>This release adds the following features:</p>
         <ul>
