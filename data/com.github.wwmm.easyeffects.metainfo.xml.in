@@ -20,13 +20,16 @@
   <translation type="gettext">EasyEffects</translation>
   <screenshots>
     <screenshot type="default">
-      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_players.png</image>
+      <caption>The main page showing two audio output apps</caption>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects-light-screenshot-1.png</image>
     </screenshot>
     <screenshot>
-      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_plugins.png</image>
+      <caption>The bass enhancer page showing audio controls</caption>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects-light-screenshot-2.png</image>
     </screenshot>
     <screenshot>
-      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/convolver.png</image>
+      <caption>The convolver page showing audio controls</caption>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects-light-screenshot-3.png</image>
     </screenshot>
   </screenshots>
   <releases>

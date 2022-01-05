@@ -8,9 +8,13 @@ Audio effects for PipeWire applications.
 This application was formerly known as PulseEffects, but it was renamed to EasyEffects after it started to use GTK4 and
 GStreamer usage was replaced by native PipeWire filters.
 
-![](images/easyeffects_players.png)
-![](images/easyeffects_plugins.png)
-![](images/convolver.png)
+![GitHub Light](images/easyeffects-light-screenshot-1.png#gh-light-mode-only)
+![GitHub Light](images/easyeffects-light-screenshot-2.png#gh-light-mode-only)
+![GitHub Light](images/easyeffects-light-screenshot-3.png#gh-light-mode-only)
+
+![GitHub Dark](images/easyeffects-dark-screenshot-1.png#gh-dark-mode-only)
+![GitHub Dark](images/easyeffects-dark-screenshot-2.png#gh-dark-mode-only)
+![GitHub Dark](images/easyeffects-dark-screenshot-3.png#gh-dark-mode-only)
 
 ## Effects available
 
