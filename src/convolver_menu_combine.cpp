@@ -185,13 +185,18 @@ void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
     return;
   }
 
+  auto dropdown_1_selection = gtk_drop_down_get_selected_item(self->dropdown_kernel_1);
+  auto dropdown_2_selection = gtk_drop_down_get_selected_item(self->dropdown_kernel_2);
+
+  if (dropdown_1_selection == nullptr || dropdown_2_selection == nullptr) {
+    return;
+  }
+
   gtk_spinner_start(self->spinner);
 
-  const auto kernel_1_name =
-      gtk_string_object_get_string(GTK_STRING_OBJECT(gtk_drop_down_get_selected_item(self->dropdown_kernel_1)));
+  const auto kernel_1_name = gtk_string_object_get_string(GTK_STRING_OBJECT(dropdown_1_selection));
 
-  const auto kernel_2_name =
-      gtk_string_object_get_string(GTK_STRING_OBJECT(gtk_drop_down_get_selected_item(self->dropdown_kernel_2)));
+  const auto kernel_2_name = gtk_string_object_get_string(GTK_STRING_OBJECT(dropdown_2_selection));
 
   std::string output_name = gtk_editable_get_text(GTK_EDITABLE(self->output_kernel_name));
 

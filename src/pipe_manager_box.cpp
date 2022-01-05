@@ -119,6 +119,10 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
 
   auto selected_preset = gtk_drop_down_get_selected_item(self->dropdown_autoloading_input_presets);
 
+  if (selected_preset == nullptr) {
+    return;
+  }
+
   auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
 
   self->data->application->presets_manager->add_autoload(PresetType::input, preset_name, holder->info->name,
@@ -158,6 +162,10 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
   }
 
   auto selected_preset = gtk_drop_down_get_selected_item(self->dropdown_autoloading_output_presets);
+
+  if (selected_preset == nullptr) {
+    return;
+  }
 
   auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
 
