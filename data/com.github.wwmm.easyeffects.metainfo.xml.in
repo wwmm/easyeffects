@@ -30,6 +30,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="6.2.1" date="2022-01-05T00:00:00Z">
+      <description>
+        <p>This release adds the following feature:</p>
+        <ul>
+          <li>-</li>
+        </ul>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Fixed a bug where setting a equalizer band `quality` to `zero` would lead to an application crash.</li>
+        </ul>
+        <p>-</p>
+      </description>
+    </release>
     <release type="stable" version="6.2.0" date="2022-01-04T00:00:00Z">
       <description>
         <p>This release adds the following features:</p>

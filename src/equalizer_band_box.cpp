@@ -80,7 +80,7 @@ auto set_band_width_label(EqualizerBandBox* self, double quality, double frequen
   if (quality > 0.0) {
     return g_strdup(fmt::format("{0:.1f} Hz", frequency / quality).c_str());
   } else {
-    return _("infinity");
+    return g_strdup(_("infinity"));
   }
 }
 

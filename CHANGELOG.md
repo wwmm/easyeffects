@@ -1,4 +1,17 @@
 # Changelog
+## 6.2.1
+              
+### 2022-01-05
+
+### Features:
+- 
+
+### Bugfixes:
+- Fixed a bug where setting a equalizer band `quality` to `zero` would lead to an application crash.
+
+### Notes:
+- 
+
 ## 6.2.0
               
 ### 2022-01-04
