@@ -6,7 +6,7 @@ Features:
 - 
 
 Bugfixes:
-- 
+- Fixed a bug where trying to create an autoloading profile without having presets caused the application to crash.
 
 Notes:
 - 
