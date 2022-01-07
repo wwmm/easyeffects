@@ -11,10 +11,11 @@ body:
   attributes:
     label: What package are you using?
     options:
-      - Arch Official (easyeffects)
+      - Arch (easyeffects)
       - AUR (easyeffects-git)
       - Fedora
       - Flatpak (Flathub)
+      - Flatpak Nightly (Flathub-beta)
       - Gentoo
       - NixOS
       - openSUSE
@@ -24,7 +25,7 @@ body:
 - type: input
   attributes:
     label: Distribution
-    placeholder: "e.g. Arch Linux, Fedora 34 or Ubuntu 20.04"
+    placeholder: "e.g. Arch Linux, Fedora 35 or Ubuntu 20.04"
   validations:
     required: true
 - type: textarea
