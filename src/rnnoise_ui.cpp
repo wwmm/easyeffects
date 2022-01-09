@@ -198,8 +198,11 @@ void setup(RNNoiseBox* self,
         int standard_model_id = 0;
 
         for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->selection_model)); n++) {
-          auto model_name = gtk_string_object_get_string(
-              GTK_STRING_OBJECT(g_list_model_get_item(G_LIST_MODEL(self->selection_model), n)));
+          auto item = g_list_model_get_item(G_LIST_MODEL(self->selection_model), n);
+
+          std::string model_name = gtk_string_object_get_string(GTK_STRING_OBJECT(item));
+
+          g_object_unref(item);
 
           if (gsettings_model_name == model_name) {
             g_value_set_uint(value, n);

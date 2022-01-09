@@ -113,8 +113,12 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
       self->data->application->presets_manager->remove_autoload(PresetType::input, item->data->preset_name,
                                                                 item->data->device, item->data->device_profile);
 
+      g_object_unref(item);
+
       break;
     }
+
+    g_object_unref(item);
   }
 
   auto selected_preset = gtk_drop_down_get_selected_item(self->dropdown_autoloading_input_presets);
@@ -157,8 +161,12 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
       self->data->application->presets_manager->remove_autoload(PresetType::output, item->data->preset_name,
                                                                 item->data->device, item->data->device_profile);
 
+      g_object_unref(item);
+
       break;
     }
+
+    g_object_unref(item);
   }
 
   auto selected_preset = gtk_drop_down_get_selected_item(self->dropdown_autoloading_output_presets);
@@ -460,8 +468,12 @@ void setup(PipeManagerBox* self, app::Application* application) {
           if (item->info->name == input_device_name) {
             gtk_drop_down_set_selected(self->dropdown_input_devices, n);
 
+            g_object_unref(item);
+
             break;
           }
+
+          g_object_unref(item);
         }
       }
     }
@@ -482,8 +494,12 @@ void setup(PipeManagerBox* self, app::Application* application) {
           if (item->info->name == output_device_name) {
             gtk_drop_down_set_selected(self->dropdown_output_devices, n);
 
+            g_object_unref(item);
+
             break;
           }
+
+          g_object_unref(item);
         }
       }
     }
@@ -827,8 +843,12 @@ void pipe_manager_box_init(PipeManagerBox* self) {
               if (item->info->name == self->data->application->pm->default_input_device.name) {
                 gtk_drop_down_set_selected(self->dropdown_input_devices, n);
 
+                g_object_unref(item);
+
                 break;
               }
+
+              g_object_unref(item);
             }
           }
         }
@@ -857,8 +877,12 @@ void pipe_manager_box_init(PipeManagerBox* self) {
               if (item->info->name == self->data->application->pm->default_output_device.name) {
                 gtk_drop_down_set_selected(self->dropdown_output_devices, n);
 
+                g_object_unref(item);
+
                 break;
               }
+
+              g_object_unref(item);
             }
           }
         }
