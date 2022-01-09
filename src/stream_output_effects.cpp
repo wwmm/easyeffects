@@ -153,7 +153,9 @@ void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
   }
 
   if (!want_to_play) {
-    disconnect_filters();
+    if (!list_proxies.empty()) {
+      disconnect_filters();
+    }
 
     return;
   }
