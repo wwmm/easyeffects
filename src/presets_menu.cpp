@@ -125,6 +125,8 @@ void import_preset(PresetsMenu* self) {
                          self->data->application->presets_manager->import(PresetType::input, path);
                        }
 
+                       g_free(path);
+
                        g_object_unref(file);
                      }
 

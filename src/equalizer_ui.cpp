@@ -377,6 +377,8 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
                        import_apo_preset(self, path);
 
+                       g_free(path);
+
                        g_object_unref(file);
                      }
 

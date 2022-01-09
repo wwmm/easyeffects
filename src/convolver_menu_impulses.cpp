@@ -102,6 +102,8 @@ void on_import_irs_clicked(ConvolverMenuImpulses* self, GtkButton* btn) {
 
                        import_irs_file(path);
 
+                       g_free(path);
+
                        g_object_unref(file);
                      }
 

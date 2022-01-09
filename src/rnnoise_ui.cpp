@@ -137,6 +137,8 @@ void on_import_model_clicked(RNNoiseBox* self, GtkButton* btn) {
 
                        import_model_file(path);
 
+                       g_free(path);
+
                        g_object_unref(file);
                      }
 
