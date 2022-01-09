@@ -126,35 +126,35 @@ auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
 }
 
 void AutoGain::setup() {
-  data_mutex.lock();
+  if (2 * n_samples != data.size()) {
+    data.resize(n_samples * 2);
+  }
 
-  ebur128_ready = false;
+  if (rate != old_rate) {
+    data_mutex.lock();
 
-  data_mutex.unlock();
+    ebur128_ready = false;
 
-  mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
-    if (ebur128_ready) {
-      return;
-    }
+    data_mutex.unlock();
 
-    if (2 * n_samples != data.size()) {
-      data.resize(n_samples * 2);
-    }
+    mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
+      if (ebur128_ready) {
+        return;
+      }
 
-    auto status = true;
+      auto status = true;
 
-    if (rate != old_rate) {
       old_rate = rate;
 
       status = init_ebur128();
-    }
 
-    data_mutex.lock();
+      data_mutex.lock();
 
-    ebur128_ready = status;
+      ebur128_ready = status;
 
-    data_mutex.unlock();
-  });
+      data_mutex.unlock();
+    });
+  }
 }
 
 void AutoGain::process(std::span<float>& left_in,
