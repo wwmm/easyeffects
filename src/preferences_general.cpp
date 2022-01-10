@@ -29,7 +29,7 @@ struct _PreferencesGeneral {
   AdwPreferencesPage parent_instance;
 
   GtkSwitch *enable_autostart, *process_all_inputs, *process_all_outputs, *theme_switch, *shutdown_on_window_close,
-      *use_cubic_volumes, *autohide_popovers;
+      *use_cubic_volumes, *autohide_popovers, *reset_volume_on_startup;
 
   GSettings* settings;
 };
@@ -98,6 +98,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, autohide_popovers);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, shutdown_on_window_close);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, use_cubic_volumes);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, reset_volume_on_startup);
 
   gtk_widget_class_bind_template_callback(widget_class, on_enable_autostart);
 }
@@ -114,9 +115,9 @@ void preferences_general_init(PreferencesGeneral* self) {
                             g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));
 
   gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
-                         "use-cubic-volumes", "autohide-popovers">(
+                         "use-cubic-volumes", "autohide-popovers", "reset-volume-on-startup">(
       self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
-      self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers);
+      self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->reset_volume_on_startup);
 }
 
 auto create() -> PreferencesGeneral* {

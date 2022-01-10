@@ -40,5 +40,8 @@
         <key name="autohide-popovers" type="b">
             <default>true</default>
         </key>
+        <key name="reset-volume-on-startup" type="b">
+            <default>false</default>
+        </key>
     </schema>
 </schemalist>

@@ -208,7 +208,7 @@ void Convolver::process(std::span<float>& left_in,
       }
     }
 
-    // copying the precessed samples to the output buffers
+    // copying the processed samples to the output buffers
 
     if (deque_out_L.size() >= left_out.size()) {
       for (float& v : left_out) {

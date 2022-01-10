@@ -69,6 +69,14 @@ void on_startup(GApplication* gapp) {
     self->presets_manager = new PresetsManager();
   }
 
+  if (g_settings_get_boolean(self->settings, "reset-volume-on-startup") != 0) {
+    PipeManager::set_node_mute(self->pm->ee_source_node.proxy, false);
+    PipeManager::set_node_volume(self->pm->ee_source_node.proxy, self->pm->ee_source_node.n_volume_channels, 1.0);
+
+    PipeManager::set_node_mute(self->pm->ee_sink_node.proxy, false);
+    PipeManager::set_node_volume(self->pm->ee_sink_node.proxy, self->pm->ee_sink_node.n_volume_channels, 1.0);
+  }
+
   self->data->connections.push_back(self->pm->new_default_sink.connect([=](const NodeInfo node) {
     util::debug("new default output device: " + node.name);
 
