@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-04 10:59+0100\n"
-"PO-Revision-Date: 2022-01-10 04:33+0000\n"
+"PO-Revision-Date: 2022-01-11 15:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "easyeffects/main/nb_NO/>\n"
@@ -535,45 +535,45 @@ msgstr ""
 
 #: data/ui/compressor.ui:719
 msgid "High-Pass"
-msgstr ""
+msgstr "Høypass"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
 #: data/ui/pipe_manager_box.ui:563
 msgid "Frequency"
-msgstr ""
+msgstr "Frekvens"
 
 #: data/ui/compressor.ui:758 data/ui/compressor.ui:814
 #: data/ui/equalizer_band.ui:108
 msgid "Off"
-msgstr ""
+msgstr "Av"
 
 #: data/ui/compressor.ui:759 data/ui/compressor.ui:815
 msgid "12 dB/oct"
-msgstr ""
+msgstr "12 dB/okt"
 
 #: data/ui/compressor.ui:760 data/ui/compressor.ui:816
 msgid "24 dB/oct"
-msgstr ""
+msgstr "24 dB/okt"
 
 #: data/ui/compressor.ui:761 data/ui/compressor.ui:817
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 dB/okt"
 
 #: data/ui/compressor.ui:768
 msgid "High-Pass Filter Mode"
-msgstr ""
+msgstr "Høypassfilter-modus"
 
 #: data/ui/compressor.ui:794 data/ui/compressor.ui:850
 msgid "High-Pass Filter Frequency"
-msgstr ""
+msgstr "Høypassfilter-frekvens"
 
 #: data/ui/compressor.ui:824
 msgid "Low-Pass Filter Mode"
-msgstr ""
+msgstr "Lavpassfilter-modus"
 
 #: data/ui/compressor.ui:876
 msgid "Gain"
-msgstr ""
+msgstr "Forsterkning"
 
 #: data/ui/compressor.ui:903
 msgid "Envelope"
@@ -585,40 +585,40 @@ msgstr ""
 
 #: data/ui/convolver.ui:39
 msgid "L"
-msgstr ""
+msgstr "V"
 
 #: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:509
 msgid "Left Channel"
-msgstr ""
+msgstr "Venstre kanal"
 
 #: data/ui/convolver.ui:52
 msgid "R"
-msgstr ""
+msgstr "H"
 
 #: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:520
 msgid "Right Channel"
-msgstr ""
+msgstr "Høyre kanal"
 
 #: data/ui/convolver.ui:70
 msgid "Impulses"
-msgstr ""
+msgstr "Impulser"
 
 #: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Kombiner"
 
 #: data/ui/convolver.ui:85
 msgid "Stereo Width"
-msgstr ""
+msgstr "Stereobredde"
 
 #: data/ui/convolver.ui:114
 msgid "Spectrum"
-msgstr ""
+msgstr "Spektrum"
 
 #: data/ui/convolver.ui:123
 msgid "Log Scale"
-msgstr ""
+msgstr "Log-skala"
 
 #: data/ui/convolver.ui:163
 msgid "Samples"
@@ -626,7 +626,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:185
 msgid "Duration"
-msgstr ""
+msgstr "Varighet"
 
 #: data/ui/convolver_menu_combine.ui:15
 msgid "Combine Impulse Responses"
@@ -642,7 +642,7 @@ msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr ""
+msgstr "Utdata-filnavn"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
@@ -655,7 +655,7 @@ msgstr ""
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
 msgid "Search"
-msgstr ""
+msgstr "Søk"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
@@ -671,7 +671,7 @@ msgstr ""
 
 #: data/ui/crossfeed.ui:34
 msgid "Default"
-msgstr ""
+msgstr "Forvalg"
 
 #: data/ui/crossfeed.ui:41
 msgid "Jmeier"
@@ -693,11 +693,11 @@ msgstr ""
 
 #: data/ui/deesser.ui:41 data/ui/gate.ui:30
 msgid "Detection"
-msgstr ""
+msgstr "Oppdagelse"
 
 #: data/ui/deesser.ui:72
 msgid "Wide"
-msgstr ""
+msgstr "Bred"
 
 #: data/ui/deesser.ui:73
 msgid "Split"
@@ -753,11 +753,11 @@ msgstr ""
 
 #: data/ui/deesser.ui:610 data/ui/maximizer.ui:307
 msgid "Reduction"
-msgstr ""
+msgstr "Reduksjon"
 
 #: data/ui/echo_canceller.ui:28
 msgid "Frame Size"
-msgstr ""
+msgstr "Rammestørrelse"
 
 #: data/ui/echo_canceller.ui:63
 msgid "Filter Length"
@@ -765,11 +765,11 @@ msgstr ""
 
 #: data/ui/effects_box.ui:108
 msgid "Blocklist"
-msgstr ""
+msgstr "Svarteliste"
 
 #: data/ui/equalizer.ui:77
 msgid "Bands"
-msgstr ""
+msgstr "Bånd"
 
 #: data/ui/equalizer.ui:122
 msgid "IIR"
@@ -829,7 +829,7 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:115 data/ui/filter.ui:88
 msgid "Resonance"
-msgstr ""
+msgstr "Resonans"
 
 #: data/ui/equalizer_band.ui:116
 msgid "All Pass"
@@ -853,11 +853,11 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:242
 msgid "Width"
-msgstr ""
+msgstr "Bredde"
 
 #: data/ui/equalizer_band.ui:269
 msgid "Quality"
-msgstr ""
+msgstr "Kvalitet"
 
 #: data/ui/equalizer_band.ui:315 data/ui/multiband_compressor_band.ui:146
 #: data/ui/multiband_gate.ui:193 data/ui/multiband_gate.ui:553
@@ -878,23 +878,23 @@ msgstr ""
 #: data/ui/pipe_manager_box.ui:92 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: data/ui/factory_clients_listview.ui:71
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:99
 msgid "Access"
-msgstr ""
+msgstr "Tilgang"
 
 #: data/ui/factory_modules_listview.ui:71
 msgid "Description"
-msgstr ""
+msgstr "Beskrivelse"
 
 #: data/ui/factory_rnnoise_listview.ui:23
 msgid "Remove this model file"
-msgstr ""
+msgstr "Fjern denne modellfilen"
 
 #: data/ui/filter.ui:25
 msgid "12dB/oct Lowpass"
@@ -960,11 +960,11 @@ msgstr ""
 
 #: data/ui/gate.ui:92
 msgid "Average"
-msgstr ""
+msgstr "Gjennomsnitt"
 
 #: data/ui/gate.ui:93 data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
-msgstr ""
+msgstr "Maksimum"
 
 #: data/ui/gate.ui:497 data/ui/multiband_gate.ui:502
 #: data/ui/multiband_gate.ui:862 data/ui/multiband_gate.ui:1222
@@ -974,7 +974,7 @@ msgstr ""
 
 #: data/ui/limiter.ui:57
 msgid "Oversampling"
-msgstr ""
+msgstr "Oversampling"
 
 #: data/ui/limiter.ui:69
 msgid "Dither"
@@ -1030,7 +1030,7 @@ msgstr ""
 
 #: data/ui/limiter.ui:108 data/ui/multiband_compressor.ui:80
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: data/ui/limiter.ui:109
 msgid "Half x2(2L)"
@@ -1194,11 +1194,11 @@ msgstr ""
 
 #: data/ui/multiband_compressor.ui:54
 msgid "Classic"
-msgstr ""
+msgstr "Klassisk"
 
 #: data/ui/multiband_compressor.ui:55
 msgid "Modern"
-msgstr ""
+msgstr "Moderne"
 
 #: data/ui/multiband_compressor.ui:69
 msgid "Sidechain Boost"
@@ -1226,43 +1226,43 @@ msgstr ""
 
 #: data/ui/multiband_compressor.ui:165
 msgid "Band 1"
-msgstr ""
+msgstr "Bånd 1"
 
 #: data/ui/multiband_compressor.ui:182
 msgid "Band 2"
-msgstr ""
+msgstr "Bånd 2"
 
 #: data/ui/multiband_compressor.ui:209
 msgid "Band 3"
-msgstr ""
+msgstr "Bånd 3"
 
 #: data/ui/multiband_compressor.ui:236
 msgid "Band 4"
-msgstr ""
+msgstr "Bånd 4"
 
 #: data/ui/multiband_compressor.ui:263
 msgid "Band 5"
-msgstr ""
+msgstr "Bånd 5"
 
 #: data/ui/multiband_compressor.ui:290
 msgid "Band 6"
-msgstr ""
+msgstr "Bånd 6"
 
 #: data/ui/multiband_compressor.ui:317
 msgid "Band 7"
-msgstr ""
+msgstr "Bånd 7"
 
 #: data/ui/multiband_compressor.ui:344
 msgid "Band 8"
-msgstr ""
+msgstr "Bånd 8"
 
 #: data/ui/multiband_compressor_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "Bånd-start"
 
 #: data/ui/multiband_compressor_band.ui:57
 msgid "Band End"
-msgstr ""
+msgstr "Bånd-slutt"
 
 #: data/ui/multiband_compressor_band.ui:108
 msgid "Band Compression Mode"
@@ -1514,35 +1514,36 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: data/ui/pipe_manager_box.ui:37 data/ui/pipe_manager_box.ui:77
 msgid "Use Default"
-msgstr ""
+msgstr "Bruk forvalg"
 
 #: data/ui/pipe_manager_box.ui:43
+#, fuzzy
 msgid "Use Default Input"
-msgstr ""
+msgstr "Bruk forvalgt inngang"
 
 #: data/ui/pipe_manager_box.ui:63
 msgid "Custom Input Device"
-msgstr ""
+msgstr "Egendefinert inngangsenhet"
 
 #: data/ui/pipe_manager_box.ui:74
 msgid "Output Device"
-msgstr ""
+msgstr "Utgangsenhet"
 
 #: data/ui/pipe_manager_box.ui:83
 msgid "Use Default Output"
-msgstr ""
+msgstr "Bruk forvalgt utgang"
 
 #: data/ui/pipe_manager_box.ui:103
 msgid "Custom Output Device"
-msgstr ""
+msgstr "Egendefinert utgangsenhet"
 
 #: data/ui/pipe_manager_box.ui:114
 msgid "Server Information"
-msgstr ""
+msgstr "Tjenerinfo"
 
 #: data/ui/pipe_manager_box.ui:118
 msgid "Header Version"
@@ -1550,7 +1551,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:129
 msgid "Library Version"
-msgstr ""
+msgstr "Biblioteksversjon"
 
 #: data/ui/pipe_manager_box.ui:140
 msgid "Sampling Rate"
@@ -1574,15 +1575,15 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:234
 msgid "Output Devices"
-msgstr ""
+msgstr "Utgangsenheter"
 
 #: data/ui/pipe_manager_box.ui:251
 msgid "Output Presets"
-msgstr ""
+msgstr "Utgangsforhåndsinnstillinger"
 
 #: data/ui/pipe_manager_box.ui:258 data/ui/pipe_manager_box.ui:350
 msgid "Create Association"
-msgstr ""
+msgstr "Opprett tilknytning"
 
 #: data/ui/pipe_manager_box.ui:272
 msgid "Add Autoloading Output Preset"
@@ -1594,11 +1595,11 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:331
 msgid "Input Devices"
-msgstr ""
+msgstr "Inngangsenheter"
 
 #: data/ui/pipe_manager_box.ui:343
 msgid "Input Presets"
-msgstr ""
+msgstr "Inngangsforhåndsinnstillinger"
 
 #: data/ui/pipe_manager_box.ui:364
 msgid "Add Autoloading Input Preset"
@@ -1610,55 +1611,57 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:413
 msgid "Modules"
-msgstr ""
+msgstr "Moduler"
 
 #: data/ui/pipe_manager_box.ui:431
+#, fuzzy
 msgid "Modules List"
-msgstr ""
+msgstr "Modulliste"
 
 #: data/ui/pipe_manager_box.ui:445
 msgid "Clients"
-msgstr ""
+msgstr "Klienter"
 
 #: data/ui/pipe_manager_box.ui:463
+#, fuzzy
 msgid "Clients List"
-msgstr ""
+msgstr "Klientliste"
 
 #: data/ui/pipe_manager_box.ui:477
 msgid "Test Signal"
-msgstr ""
+msgstr "Testsignal"
 
 #: data/ui/pipe_manager_box.ui:485 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
-msgstr ""
+msgstr "Påskrudd"
 
 #: data/ui/pipe_manager_box.ui:500
 msgid "Properties"
-msgstr ""
+msgstr "Egenskaper"
 
 #: data/ui/pipe_manager_box.ui:528
 msgid "Both"
-msgstr ""
+msgstr "Begge"
 
 #: data/ui/pipe_manager_box.ui:532
 msgid "Both Channels"
-msgstr ""
+msgstr "Begge kanaler"
 
 #: data/ui/pipe_manager_box.ui:541
 msgid "Waveform"
-msgstr ""
+msgstr "Bølgeform"
 
 #: data/ui/pipe_manager_box.ui:545
 msgid "Sine Wave"
-msgstr ""
+msgstr "Sinusbølge"
 
 #: data/ui/pipe_manager_box.ui:554
 msgid "White Noise"
-msgstr ""
+msgstr "Hvit støy"
 
 #: data/ui/pitch.ui:17
 msgid "Faster"
-msgstr ""
+msgstr "Raskere"
 
 #: data/ui/pitch.ui:23
 msgid "Preserve Formant"
@@ -1674,7 +1677,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:114
 msgid "Octaves"
-msgstr ""
+msgstr "Oktaver"
 
 #: data/ui/pitch.ui:148
 msgid "Crispness"
@@ -1682,11 +1685,11 @@ msgstr ""
 
 #: data/ui/plugin_row.ui:26
 msgid "Remove this plugin"
-msgstr ""
+msgstr "Fjern dette programtillegget"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Plugin"
-msgstr ""
+msgstr "Legg til programtillegg"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
@@ -1702,11 +1705,11 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
-msgstr ""
+msgstr "_Generelt"
 
 #: data/ui/preferences_general.ui:10
 msgid "Service"
-msgstr ""
+msgstr "Tjeneste"
 
 #: data/ui/preferences_general.ui:13
 msgid "Start Service at Login"
@@ -1718,7 +1721,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
-msgstr ""
+msgstr "Lyd"
 
 #: data/ui/preferences_general.ui:43
 msgid "Process All Outputs"
@@ -1734,11 +1737,11 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:79 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "Stil"
 
 #: data/ui/preferences_general.ui:82
 msgid "Use Dark Theme"
-msgstr ""
+msgstr "Ifør mørk drakt"
 
 #: data/ui/preferences_general.ui:94
 msgid "Hide Menus on Outside Clicks"
@@ -1746,19 +1749,19 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
-msgstr ""
+msgstr "_Spektrum"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Form"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
-msgstr ""
+msgstr "Bjelker"
 
 #: data/ui/preferences_spectrum.ui:36
 msgid "Lines"
-msgstr ""
+msgstr "Linjer"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Dots"
@@ -1770,11 +1773,11 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:68
 msgid "Height"
-msgstr ""
+msgstr "Høyde"
 
 #: data/ui/preferences_spectrum.ui:91
 msgid "Line Width"
-msgstr ""
+msgstr "Linjebredde"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Fill"
@@ -1790,7 +1793,7 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:152
 msgid "Color"
-msgstr ""
+msgstr "Farge"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
@@ -1822,7 +1825,7 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:28
 msgid "Speakers"
-msgstr ""
+msgstr "Høyttalere"
 
 #: data/ui/presets_menu.ui:54
 msgid "New Output Preset Name"
@@ -1830,7 +1833,7 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:62 data/ui/presets_menu.ui:215
 msgid "Create Preset"
-msgstr ""
+msgstr "Opprett forhåndsinnstilling"
 
 #: data/ui/presets_menu.ui:76 data/ui/presets_menu.ui:229
 msgid "Import Presets"
@@ -1882,7 +1885,7 @@ msgstr ""
 
 #: data/ui/reverb.ui:86
 msgid "Tunnel"
-msgstr ""
+msgstr "Tunnel"
 
 #: data/ui/reverb.ui:87
 msgid "Large/smooth"
@@ -1978,7 +1981,7 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "Oversikt"
 
 #: data/ui/shortcuts.ui:16
 msgid "Open the EasyEffects Manual"
@@ -1990,15 +1993,15 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "Lukk vinduet"
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit EasyEffects"
-msgstr ""
+msgstr "Avslutt EasyEffects"
 
 #: data/ui/stereo_tools.ui:50 data/ui/stereo_tools.ui:391
 msgid "Balance"
-msgstr ""
+msgstr "Balanse"
 
 #: data/ui/stereo_tools.ui:77
 msgid "Input Balance"
@@ -2046,11 +2049,11 @@ msgstr ""
 
 #: data/ui/stereo_tools.ui:145
 msgid "Stereo Mode"
-msgstr ""
+msgstr "Stereomodus"
 
 #: data/ui/stereo_tools.ui:178 data/ui/stereo_tools.ui:203
 msgid "Invert Phase"
-msgstr ""
+msgstr "Inverter fase"
 
 #: data/ui/stereo_tools.ui:230
 msgid "Side Level"
@@ -2150,7 +2153,7 @@ msgstr ""
 
 #: src/application_ui.cpp:246
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:85
 msgid "Import Impulse File"
@@ -2164,7 +2167,7 @@ msgstr ""
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: src/convolver_menu_impulses.cpp:90
 msgid "Impulse Response"
@@ -2223,8 +2226,9 @@ msgid "Import Preset"
 msgstr ""
 
 #: src/rnnoise_ui.cpp:122
+#, fuzzy
 msgid "Import Model File"
-msgstr ""
+msgstr "Importer modellfil"
 
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
