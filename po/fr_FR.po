@@ -531,7 +531,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr ""
+msgstr "Égaliseur, Compresseur et autres effets audio"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
@@ -544,19 +544,19 @@ msgstr "Préréglage"
 
 #: data/ui/app_info.ui:69 data/ui/blocklist_menu.ui:42
 msgid "Add to Blocklist"
-msgstr ""
+msgstr "Ajouter à la liste de blocage"
 
 #: data/ui/app_info.ui:87
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: data/ui/app_info.ui:109 data/ui/convolver.ui:141
 msgid "Rate"
-msgstr ""
+msgstr "Taux"
 
 #: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:503
 msgid "Channels"
-msgstr ""
+msgstr "Canaux"
 
 #: data/ui/app_info.ui:153
 msgid "Latency"
@@ -568,47 +568,43 @@ msgid "State"
 msgstr ""
 
 #: data/ui/app_info.ui:208
-#, fuzzy
 msgid "Mute Application"
-msgstr "Calibration"
+msgstr "Couper le son de l'application"
 
 #: data/ui/app_info.ui:243
-#, fuzzy
 msgid "Application Volume"
-msgstr "Calibration"
+msgstr "Volume de l'application"
 
 #: data/ui/application_window.ui:6
 msgid "_Preferences"
-msgstr ""
+msgstr "_Préférences"
 
 #: data/ui/application_window.ui:10
 msgid "_Manual"
-msgstr ""
+msgstr "_Manuel"
 
 #: data/ui/application_window.ui:14
 msgid "_Shortcuts"
-msgstr ""
+msgstr "_Raccourcis"
 
 #: data/ui/application_window.ui:20
-#, fuzzy
 msgid "_Reset Settings"
-msgstr "Paramètres"
+msgstr "_Réinitialiser les paramètres"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About EasyEffects"
-msgstr "EasyEffects"
+msgstr "_À propos de EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
 #: src/presets_menu.cpp:112 src/presets_menu.cpp:258 src/presets_menu.cpp:259
-#: src/presets_menu.cpp:276 src/presets_menu.cpp:277
+#: src/presets_menu.cpp:276 src/presets_menu.cpp:277 src/presets_menu.cpp:256
+#: src/presets_menu.cpp:257 src/presets_menu.cpp:274 src/presets_menu.cpp:275
 msgid "Presets"
 msgstr "Préréglage"
 
 #: data/ui/application_window.ui:54
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Préréglage"
+msgstr "Menu des préréglages"
 
 #: data/ui/application_window.ui:61 data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -616,42 +612,39 @@ msgstr ""
 
 #: data/ui/application_window.ui:76
 msgid "Primary Menu"
-msgstr ""
+msgstr "Menu principal"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "EasyEffects Window"
-msgstr "EasyEffects"
+msgstr "Fenêtre de EasyEffects"
 
 #: data/ui/apps_box.ui:19
-#, fuzzy
 msgid "Applications List"
-msgstr "Calibration"
+msgstr "Liste des applications"
 
 #: data/ui/autogain.ui:19
-#, fuzzy
 msgid "Target"
-msgstr "Cible [dB]"
+msgstr "Cible"
 
 #: data/ui/autogain.ui:53
 msgid "Reference"
-msgstr ""
+msgstr "Référence"
 
 #: data/ui/autogain.ui:65 data/ui/autogain.ui:120
 msgid "Momentary"
-msgstr ""
+msgstr "Temporaire"
 
 #: data/ui/autogain.ui:66 data/ui/autogain.ui:150
 msgid "Short-Term"
-msgstr ""
+msgstr "Court-terme"
 
 #: data/ui/autogain.ui:67 data/ui/autogain.ui:180
 msgid "Integrated"
-msgstr ""
+msgstr "Intégré"
 
 #: data/ui/autogain.ui:68
 msgid "Geometric Mean"
-msgstr ""
+msgstr "Moyenne géométrique"
 
 #: data/ui/autogain.ui:90 data/ui/bass_enhancer.ui:18
 #: data/ui/bass_loudness.ui:14 data/ui/compressor.ui:13 data/ui/convolver.ui:14
@@ -666,28 +659,27 @@ msgstr ""
 #: data/ui/pitch.ui:29 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
 #: data/ui/stereo_tools.ui:13
 msgid "Bypass"
-msgstr ""
+msgstr "Ignorer"
 
 #: data/ui/autogain.ui:97
 msgid "Reset History"
-msgstr ""
+msgstr "Réinitialiser l'historique"
 
 #: data/ui/autogain.ui:210
 msgid "Relative"
-msgstr ""
+msgstr "Relatif"
 
 #: data/ui/autogain.ui:240
 msgid "Range"
-msgstr ""
+msgstr "Gamme"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
 msgid "Loudness"
-msgstr ""
+msgstr "Volume"
 
 #: data/ui/autogain.ui:305
-#, fuzzy
 msgid "Output Gain"
-msgstr "Gain d'entrée [dB]"
+msgstr "Gain de sortie"
 
 #: data/ui/autogain.ui:342 data/ui/bass_enhancer.ui:264
 #: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
@@ -771,9 +763,8 @@ msgid "Using"
 msgstr ""
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
-#, fuzzy
 msgid "Device"
-msgstr "Limiteur d'entrée"
+msgstr "Périphérique"
 
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
 #: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
@@ -782,23 +773,22 @@ msgstr "Limiteur d'entrée"
 msgid "Name"
 msgstr ""
 
-#: data/ui/autoload_row.ui:62
+#: data/ui/autoload_row.ui:39
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
-#: data/ui/autoload_row.ui:86
-#, fuzzy
+#: data/ui/autoload_row.ui:63
 msgid "Preset"
 msgstr "Préréglage"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:87 src/plugins_box.cpp:404
 msgid "Remove"
-msgstr ""
+msgstr "Supprimer"
 
 #: data/ui/bass_enhancer.ui:24 data/ui/compressor.ui:465 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:24
 msgid "Listen"
-msgstr ""
+msgstr "Écouter"
 
 #: data/ui/bass_enhancer.ui:36 data/ui/exciter.ui:36
 msgid "Blend Harmonics"
@@ -835,12 +825,11 @@ msgstr ""
 
 #: data/ui/bass_loudness.ui:95
 msgid "Link"
-msgstr ""
+msgstr "Lien"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
-#, fuzzy
 msgid "Application Name"
-msgstr "Calibration"
+msgstr "Nom de l'application"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Blocklisted Applications List"
@@ -860,7 +849,7 @@ msgstr "Compresseur"
 #: data/ui/limiter.ui:45 data/ui/multiband_compressor_band.ui:449
 #: data/ui/multiband_gate.ui:33
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 #: data/ui/compressor.ui:61 data/ui/multiband_compressor_band.ui:99
 msgid "Downward"
@@ -875,9 +864,8 @@ msgid "Boosting"
 msgstr ""
 
 #: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:88
-#, fuzzy
 msgid "Compression Mode"
-msgstr "Aucune compression"
+msgstr "Mode de compression"
 
 #: data/ui/compressor.ui:77 data/ui/multiband_compressor_band.ui:765
 #, fuzzy
@@ -905,9 +893,8 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate.ui:293
 #: data/ui/multiband_gate.ui:653 data/ui/multiband_gate.ui:1013
 #: data/ui/multiband_gate.ui:1373
-#, fuzzy
 msgid "Threshold"
-msgstr "Seuil [dB]"
+msgstr "Seuil"
 
 #: data/ui/compressor.ui:210 data/ui/multiband_compressor_band.ui:222
 #, fuzzy
@@ -942,9 +929,8 @@ msgstr "Seuil [dB]"
 #: data/ui/multiband_compressor_band.ui:309 data/ui/multiband_gate.ui:327
 #: data/ui/multiband_gate.ui:687 data/ui/multiband_gate.ui:1047
 #: data/ui/multiband_gate.ui:1407
-#, fuzzy
 msgid "Ratio"
-msgstr "Ratio [n:1]"
+msgstr "Ratio"
 
 #: data/ui/compressor.ui:337 data/ui/gate.ui:253 data/ui/limiter.ui:579
 #: data/ui/multiband_compressor_band.ui:347 data/ui/multiband_gate.ui:362
@@ -1006,21 +992,20 @@ msgid "Middle"
 msgstr "Niveau"
 
 #: data/ui/compressor.ui:486 data/ui/multiband_compressor_band.ui:489
-#, fuzzy
 msgid "Side"
-msgstr "Gain d'entrée [dB]"
+msgstr "Côté"
 
 #: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
 #: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:506
 #: data/ui/stereo_tools.ui:159
 msgid "Left"
-msgstr ""
+msgstr "Gauche"
 
 #: data/ui/compressor.ui:488 data/ui/delay.ui:61 data/ui/equalizer.ui:49
 #: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:517
 #: data/ui/stereo_tools.ui:214
 msgid "Right"
-msgstr ""
+msgstr "Droit"
 
 #: data/ui/compressor.ui:495 data/ui/multiband_compressor.ui:98
 #: data/ui/multiband_compressor_band.ui:498
@@ -1030,7 +1015,7 @@ msgstr "Gain d'entrée [dB]"
 
 #: data/ui/compressor.ui:524 data/ui/equalizer_band.ui:98
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: data/ui/compressor.ui:548
 msgid "Feed-forward"
@@ -1043,7 +1028,7 @@ msgstr "Coudée [dB]"
 
 #: data/ui/compressor.ui:550
 msgid "External"
-msgstr ""
+msgstr "Externe"
 
 #: data/ui/compressor.ui:557
 #, fuzzy
@@ -1062,7 +1047,7 @@ msgstr "Calibration"
 
 #: data/ui/compressor.ui:629 data/ui/multiband_compressor_band.ui:654
 msgid "Reactivity"
-msgstr ""
+msgstr "Réactivité"
 
 #: data/ui/compressor.ui:666 data/ui/limiter.ui:221
 #: data/ui/multiband_compressor_band.ui:688
@@ -1088,7 +1073,7 @@ msgstr "Fréquence [Hz]"
 #: data/ui/compressor.ui:758 data/ui/compressor.ui:814
 #: data/ui/equalizer_band.ui:108
 msgid "Off"
-msgstr ""
+msgstr "Désactivé"
 
 #: data/ui/compressor.ui:759 data/ui/compressor.ui:815
 msgid "12 dB/oct"
@@ -2389,11 +2374,11 @@ msgstr ""
 msgid "Process All Outputs"
 msgstr ""
 
-#: data/ui/preferences_general.ui:55
+#: data/ui/preferences_general.ui:55 data/ui/preferences_general.ui:54
 msgid "Process All Inputs"
 msgstr ""
 
-#: data/ui/preferences_general.ui:67
+#: data/ui/preferences_general.ui:67 data/ui/preferences_general.ui:65
 msgid "Use Cubic Volume"
 msgstr ""
 
@@ -2402,14 +2387,15 @@ msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
 #: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:79
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:96 data/ui/preferences_general.ui:82
 msgid "Use Dark Theme"
 msgstr "Utiliser thème sombre"
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:108 data/ui/preferences_general.ui:94
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -2483,6 +2469,7 @@ msgid "Minimum"
 msgstr "Fréquence [Hz]"
 
 #: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
+#: src/convolver_menu_impulses.cpp:135
 msgid "Load"
 msgstr ""
 
@@ -2824,43 +2811,43 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/application.cpp:313
+#: src/application.cpp:313 src/application.cpp:305
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Préréglage"
 
-#: src/application.cpp:321
+#: src/application.cpp:321 src/application.cpp:313
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Ouvrir préréglage"
 
-#: src/application.cpp:418
+#: src/application.cpp:418 src/application.cpp:410
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Effets audio pour applications PulseAudio"
 
-#: src/application.cpp:504
+#: src/application.cpp:504 src/application.cpp:496
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:507
+#: src/application.cpp:507 src/application.cpp:499
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/application.cpp:510
+#: src/application.cpp:510 src/application.cpp:502
 #, fuzzy
 msgid "Reset EasyEffects."
 msgstr "EasyEffects"
 
-#: src/application.cpp:513
+#: src/application.cpp:513 src/application.cpp:505
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:516
+#: src/application.cpp:516 src/application.cpp:508
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:519
+#: src/application.cpp:519 src/application.cpp:511
 msgid "Show available presets."
 msgstr ""
 
@@ -2889,12 +2876,12 @@ msgstr "Amélioration audio"
 msgid "Impulse Response"
 msgstr "Réponse plane"
 
-#: src/convolver_menu_impulses.cpp:199
+#: src/convolver_menu_impulses.cpp:199 src/convolver_menu_impulses.cpp:197
 #, fuzzy
 msgid "Load Impulse"
 msgstr "Réponse plane"
 
-#: src/convolver_menu_impulses.cpp:202
+#: src/convolver_menu_impulses.cpp:202 src/convolver_menu_impulses.cpp:200
 #, fuzzy
 msgid "Remove Impulse"
 msgstr "Réponse plane"
@@ -2933,7 +2920,8 @@ msgstr "Ouvrir préréglage"
 msgid "APO Presets"
 msgstr "Préréglage"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:308 src/pipe_manager_box.cpp:305
+#: src/pipe_manager_box.cpp:289
 msgid "Remove Autoloading Preset"
 msgstr ""
 
