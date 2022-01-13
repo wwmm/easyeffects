@@ -61,6 +61,30 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     }
   }
 
+  connections.push_back(pm->sink_added.connect([=, this](const NodeInfo node) {
+    if (g_settings_get_boolean(settings, "use-default-output-device") == 0) {
+      if (node.name == util::gsettings_get_string(settings, "output-device")) {
+        pm->output_device = node;
+
+        if (g_settings_get_boolean(global_settings, "bypass") != 0) {
+          g_settings_set_boolean(global_settings, "bypass", 0);
+
+          return;  // filter connected through update_bypass_state
+        }
+
+        set_bypass(false);
+      }
+    }
+  }));
+
+  connections.push_back(pm->sink_removed.connect([=](const NodeInfo node) {
+    if (g_settings_get_boolean(settings, "use-default-output-device") == 0) {
+      if (node.name == util::gsettings_get_string(settings, "output-device")) {
+        pm->output_device.id = SPA_ID_INVALID;
+      }
+    }
+  }));
+
   connections.push_back(pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added)));
   connections.push_back(pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed)));
 
