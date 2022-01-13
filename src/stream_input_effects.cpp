@@ -77,7 +77,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     }
   }));
 
-  connections.push_back(pm->source_removed.connect([=](const NodeInfo node) {
+  connections.push_back(pm->source_removed.connect([=, this](const NodeInfo node) {
     if (g_settings_get_boolean(settings, "use-default-input-device") == 0) {
       if (node.name == util::gsettings_get_string(settings, "input-device")) {
         pm->input_device.id = SPA_ID_INVALID;

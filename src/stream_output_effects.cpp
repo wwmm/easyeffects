@@ -77,7 +77,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     }
   }));
 
-  connections.push_back(pm->sink_removed.connect([=](const NodeInfo node) {
+  connections.push_back(pm->sink_removed.connect([=, this](const NodeInfo node) {
     if (g_settings_get_boolean(settings, "use-default-output-device") == 0) {
       if (node.name == util::gsettings_get_string(settings, "output-device")) {
         pm->output_device.id = SPA_ID_INVALID;
