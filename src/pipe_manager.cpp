@@ -990,11 +990,13 @@ void on_registry_global(void* data,
 
         if (g_strcmp0(key_media_category, "Filter") == 0) {
           const auto* key_node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
+          std::string description(key_node_description);
+          if (description.length() > 3) {
+            if (g_strcmp0(description.substr(0, 2).c_str(), "ee_") == 0) {
+              const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
-          if (g_strcmp0(key_node_description, "easyeffects_filter") == 0) {
-            const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
-
-            util::debug(PipeManager::log_tag + "Filter " + node_name + ", id = " + std::to_string(id) + ", was added");
+              util::debug(PipeManager::log_tag + "Filter " + node_name + ", id = " + std::to_string(id) + ", was added");
+          	}
           }
         }
       }
