@@ -14,7 +14,7 @@
                 <child>
                     <object class="GtkLabel">
                         <binding name="label">
-                            <lookup name="name" type="NodeInfoHolder">
+                            <lookup name="description" type="NodeInfoHolder">
                                 <lookup name="item">GtkListItem</lookup>
                             </lookup>
                         </binding>

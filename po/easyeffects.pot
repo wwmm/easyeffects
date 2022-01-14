@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 12:55-0300\n"
+"POT-Creation-Date: 2022-01-14 11:44-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -746,15 +746,22 @@ msgstr ""
 msgid "Device"
 msgstr ""
 
-#: data/ui/autoload_row.ui:39
+#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
+#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
+#: data/ui/pipe_manager_box.ui:92 data/ui/presets_menu.ui:50
+#: data/ui/presets_menu.ui:203
+msgid "Name"
+msgstr ""
+
+#: data/ui/autoload_row.ui:62
 msgid "Profile"
 msgstr ""
 
-#: data/ui/autoload_row.ui:63
+#: data/ui/autoload_row.ui:86
 msgid "Preset"
 msgstr ""
 
-#: data/ui/autoload_row.ui:87 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
 msgid "Remove"
 msgstr ""
 
@@ -1350,13 +1357,6 @@ msgstr ""
 
 #: data/ui/exciter.ui:242
 msgid "Ceil Value"
-msgstr ""
-
-#: data/ui/factory_clients_listview.ui:43
-#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
-#: data/ui/pipe_manager_box.ui:92 data/ui/presets_menu.ui:50
-#: data/ui/presets_menu.ui:203
-msgid "Name"
 msgstr ""
 
 #: data/ui/factory_clients_listview.ui:71
@@ -2693,7 +2693,7 @@ msgstr ""
 msgid "APO Presets"
 msgstr ""
 
-#: src/pipe_manager_box.cpp:305
+#: src/pipe_manager_box.cpp:308
 msgid "Remove Autoloading Preset"
 msgstr ""
 

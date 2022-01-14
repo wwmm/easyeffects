@@ -662,6 +662,7 @@ void PresetsManager::import(const PresetType& preset_type, const std::string& fi
 void PresetsManager::add_autoload(const PresetType& preset_type,
                                   const std::string& preset_name,
                                   const std::string& device_name,
+                                  const std::string& device_description,
                                   const std::string& device_profile) {
   nlohmann::json json;
 
@@ -679,6 +680,7 @@ void PresetsManager::add_autoload(const PresetType& preset_type,
   std::ofstream o(output_file.c_str());
 
   json["device"] = device_name;
+  json["device-description"] = device_description;
   json["device-profile"] = device_profile;
   json["preset-name"] = preset_name;
 

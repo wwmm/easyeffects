@@ -34,11 +34,7 @@ G_END_DECLS
 
 struct PresetsAutoLoadingData {
  public:
-  std::string device;
-
-  std::string device_profile;
-
-  std::string preset_name;
+  std::string device, device_description, device_profile, preset_name;
 };
 
 struct _PresetsAutoloadingHolder {
@@ -47,7 +43,9 @@ struct _PresetsAutoloadingHolder {
   PresetsAutoLoadingData* data;
 };
 
-auto create(const std::string& device, const std::string& device_profile, const std::string& preset_name)
-    -> PresetsAutoloadingHolder*;
+auto create(const std::string& device,
+            const std::string& device_description,
+            const std::string& device_profile,
+            const std::string& preset_name) -> PresetsAutoloadingHolder*;
 
 }  // namespace ui::holders

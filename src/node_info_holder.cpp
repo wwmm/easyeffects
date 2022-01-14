@@ -25,7 +25,7 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "node holder: ";
 
-enum { PROP_0, PROP_TS, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS };
+enum { PROP_0, PROP_TS, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS, PROP_DESCRIPTION };
 
 G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
 
@@ -47,6 +47,9 @@ void node_info_set_property(GObject* object, guint prop_id, const GValue* value,
       break;
     case PROP_MEDIA_CLASS:
       self->info->media_class = g_value_get_string(value);
+      break;
+    case PROP_DESCRIPTION:
+      self->info->description = g_value_get_string(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -72,6 +75,9 @@ void node_info_get_property(GObject* object, guint prop_id, GValue* value, GPara
       break;
     case PROP_MEDIA_CLASS:
       g_value_set_string(value, self->info->media_class.c_str());
+      break;
+    case PROP_DESCRIPTION:
+      g_value_set_string(value, self->info->description.c_str());
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -116,6 +122,10 @@ void node_info_holder_class_init(NodeInfoHolderClass* klass) {
   g_object_class_install_property(
       object_class, PROP_MEDIA_CLASS,
       g_param_spec_string("media-class", "Media Class", "Media Class", nullptr, G_PARAM_READWRITE));
+
+  g_object_class_install_property(
+      object_class, PROP_DESCRIPTION,
+      g_param_spec_string("description", "Description", "Description", nullptr, G_PARAM_READWRITE));
 }
 
 void node_info_holder_init(NodeInfoHolder* self) {

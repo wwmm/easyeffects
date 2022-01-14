@@ -47,11 +47,14 @@ void presets_autoloading_holder_init(PresetsAutoloadingHolder* self) {
   self->data = new PresetsAutoLoadingData();
 }
 
-auto create(const std::string& device, const std::string& device_profile, const std::string& preset_name)
-    -> PresetsAutoloadingHolder* {
+auto create(const std::string& device,
+            const std::string& device_description,
+            const std::string& device_profile,
+            const std::string& preset_name) -> PresetsAutoloadingHolder* {
   auto* holder = static_cast<PresetsAutoloadingHolder*>(g_object_new(EE_TYPE_PRESETS_AUTOLOADING_HOLDER, nullptr));
 
   holder->data->device = device;
+  holder->data->device_description = device_description;
   holder->data->device_profile = device_profile;
   holder->data->preset_name = preset_name;
 

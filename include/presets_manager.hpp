@@ -88,6 +88,7 @@ class PresetsManager {
   void add_autoload(const PresetType& preset_type,
                     const std::string& preset_name,
                     const std::string& device_name,
+                    const std::string& device_description,
                     const std::string& device_profile);
 
   void remove_autoload(const PresetType& preset_type,

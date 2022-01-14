@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 12:55-0300\n"
+"POT-Creation-Date: 2022-01-14 11:44-0300\n"
 "PO-Revision-Date: 2022-01-04 12:10+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -750,15 +750,22 @@ msgstr "Libreria"
 msgid "Device"
 msgstr "Dispositivo Audio"
 
-#: data/ui/autoload_row.ui:39
+#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
+#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
+#: data/ui/pipe_manager_box.ui:92 data/ui/presets_menu.ui:50
+#: data/ui/presets_menu.ui:203
+msgid "Name"
+msgstr "Nome"
+
+#: data/ui/autoload_row.ui:62
 msgid "Profile"
 msgstr "Profilo Dispositivo"
 
-#: data/ui/autoload_row.ui:63
+#: data/ui/autoload_row.ui:86
 msgid "Preset"
 msgstr "Profilo EasyEffects"
 
-#: data/ui/autoload_row.ui:87 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
 msgid "Remove"
 msgstr "Rimuovi"
 
@@ -1355,13 +1362,6 @@ msgstr "Limite Superiore"
 #: data/ui/exciter.ui:242
 msgid "Ceil Value"
 msgstr "Valore Limite Superiore"
-
-#: data/ui/factory_clients_listview.ui:43
-#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
-#: data/ui/pipe_manager_box.ui:92 data/ui/presets_menu.ui:50
-#: data/ui/presets_menu.ui:203
-msgid "Name"
-msgstr "Nome"
 
 #: data/ui/factory_clients_listview.ui:71
 msgid "API"
@@ -2698,7 +2698,7 @@ msgstr "Importa File Profilo APO"
 msgid "APO Presets"
 msgstr "Profili APO"
 
-#: src/pipe_manager_box.cpp:305
+#: src/pipe_manager_box.cpp:308
 msgid "Remove Autoloading Preset"
 msgstr "Rimuovi Profilo di Auto Caricamento"
 

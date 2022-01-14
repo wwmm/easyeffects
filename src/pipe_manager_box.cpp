@@ -130,7 +130,7 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
   auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
 
   self->data->application->presets_manager->add_autoload(PresetType::input, preset_name, holder->info->name,
-                                                         device_profile);
+                                                         holder->info->description, device_profile);
 }
 
 void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
@@ -178,7 +178,7 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
   auto* preset_name = gtk_string_object_get_string(GTK_STRING_OBJECT(selected_preset));
 
   self->data->application->presets_manager->add_autoload(PresetType::output, preset_name, holder->info->name,
-                                                         device_profile);
+                                                         holder->info->description, device_profile);
 }
 
 void update_modules_info(PipeManagerBox* self) {
@@ -261,6 +261,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
         auto* top_box = gtk_builder_get_object(builder, "top_box");
 
         g_object_set_data(G_OBJECT(item), "device", gtk_builder_get_object(builder, "device"));
+        g_object_set_data(G_OBJECT(item), "device_description", gtk_builder_get_object(builder, "device_description"));
         g_object_set_data(G_OBJECT(item), "device_profile", gtk_builder_get_object(builder, "device_profile"));
         g_object_set_data(G_OBJECT(item), "preset_name", gtk_builder_get_object(builder, "preset_name"));
 
@@ -289,6 +290,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
   g_signal_connect(
       factory, "bind", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
         auto* device = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "device"));
+        auto* device_description = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "device_description"));
         auto* device_profile = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "device_profile"));
         auto* preset_name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "preset_name"));
         auto* remove = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "remove"));
@@ -298,6 +300,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
         g_object_set_data(G_OBJECT(remove), "holder", holder);
 
         gtk_label_set_text(device, holder->data->device.c_str());
+        gtk_label_set_text(device_description, holder->data->device_description.c_str());
         gtk_label_set_text(device_profile, holder->data->device_profile.c_str());
         gtk_label_set_text(preset_name, holder->data->preset_name.c_str());
 
@@ -316,10 +319,11 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
   for (const auto& json : profiles) {
     const auto device = json.value("device", "");
+    const auto device_description = json.value("device-description", "");
     const auto device_profile = json.value("device-profile", "");
     const auto preset_name = json.value("preset-name", "");
 
-    auto* holder = ui::holders::create(device, device_profile, preset_name);
+    auto* holder = ui::holders::create(device, device_description, device_profile, preset_name);
 
     g_list_store_append(model, holder);
 
@@ -665,10 +669,11 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
         for (const auto& json : profiles) {
           const auto device = json.value("device", "");
+          const auto device_description = json.value("device-description", "");
           const auto device_profile = json.value("device-profile", "");
           const auto preset_name = json.value("preset-name", "");
 
-          list.push_back(ui::holders::create(device, device_profile, preset_name));
+          list.push_back(ui::holders::create(device, device_description, device_profile, preset_name));
         }
 
         g_list_store_splice(self->autoloading_input_model, 0,
@@ -686,10 +691,11 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
         for (const auto& json : profiles) {
           const auto device = json.value("device", "");
+          const auto device_description = json.value("device-description", "");
           const auto device_profile = json.value("device-profile", "");
           const auto preset_name = json.value("preset-name", "");
 
-          list.push_back(ui::holders::create(device, device_profile, preset_name));
+          list.push_back(ui::holders::create(device, device_description, device_profile, preset_name));
         }
 
         g_list_store_splice(self->autoloading_output_model, 0,

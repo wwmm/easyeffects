@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 12:55-0300\n"
+"POT-Creation-Date: 2022-01-14 11:44-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -782,16 +782,23 @@ msgstr ""
 msgid "Device"
 msgstr "Omezovač vstupu"
 
-#: data/ui/autoload_row.ui:39
+#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
+#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
+#: data/ui/pipe_manager_box.ui:92 data/ui/presets_menu.ui:50
+#: data/ui/presets_menu.ui:203
+msgid "Name"
+msgstr "Název"
+
+#: data/ui/autoload_row.ui:62
 msgid "Profile"
 msgstr ""
 
-#: data/ui/autoload_row.ui:63
+#: data/ui/autoload_row.ui:86
 #, fuzzy
 msgid "Preset"
 msgstr "Přednastavení"
 
-#: data/ui/autoload_row.ui:87 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
 msgid "Remove"
 msgstr ""
 
@@ -1438,13 +1445,6 @@ msgstr "Strop"
 #: data/ui/exciter.ui:242
 msgid "Ceil Value"
 msgstr ""
-
-#: data/ui/factory_clients_listview.ui:43
-#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
-#: data/ui/pipe_manager_box.ui:92 data/ui/presets_menu.ui:50
-#: data/ui/presets_menu.ui:203
-msgid "Name"
-msgstr "Název"
 
 #: data/ui/factory_clients_listview.ui:71
 msgid "API"
@@ -2927,7 +2927,7 @@ msgstr "Zavést APO přednastavení"
 msgid "APO Presets"
 msgstr "APO Přednastavení"
 
-#: src/pipe_manager_box.cpp:305
+#: src/pipe_manager_box.cpp:308
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Odstranit tento soubor s přednastavením"
