@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -688,6 +688,7 @@ msgid "Range"
 msgstr ""
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr ""
 
@@ -860,7 +861,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Programy"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -2989,6 +2990,98 @@ msgstr "Importuj profile"
 msgid "RNNoise Models"
 msgstr "Kompresor"
 
+#: include/plugin_name.hpp:81
+#, fuzzy
+msgid "Autogain"
+msgstr "Wzmocnienie wej."
+
+#: include/plugin_name.hpp:82
+msgid "Bass Enhancer"
+msgstr "Wzmacniacz basów"
+
+#: include/plugin_name.hpp:83
+msgid "Bass Loudness"
+msgstr ""
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr ""
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr "Crossfeed"
+
+#: include/plugin_name.hpp:87
+#, fuzzy
+msgid "Crystalizer"
+msgstr "Resetuj korektor"
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr "De-Esser"
+
+#: include/plugin_name.hpp:89
+#, fuzzy
+msgid "Delay"
+msgstr "Przedopóźnienie"
+
+#: include/plugin_name.hpp:90
+msgid "Echo Canceller"
+msgstr "Usuwanie echa"
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr "Korektor"
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr "Exciter"
+
+#: include/plugin_name.hpp:93
+msgid "Filter"
+msgstr "Filtr"
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr "Bramka"
+
+#: include/plugin_name.hpp:95
+msgid "Limiter"
+msgstr "Limiter"
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr "Maximizer"
+
+#: include/plugin_name.hpp:98
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Kompresor"
+
+#: include/plugin_name.hpp:99
+#, fuzzy
+msgid "Multiband Gate"
+msgstr "Kompresor"
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr "Wysokość"
+
+#: include/plugin_name.hpp:101
+#, fuzzy
+msgid "Reverberation"
+msgstr "Pogłos"
+
+#: include/plugin_name.hpp:102
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Redukcja wzmocnienia"
+
+#: include/plugin_name.hpp:103
+#, fuzzy
+msgid "Stereo Tools"
+msgstr "Powiązanie stereo"
+
 #, fuzzy
 #~ msgid "Output Channel"
 #~ msgstr "Wzmocnienie wej."
@@ -3037,63 +3130,6 @@ msgstr "Kompresor"
 
 #~ msgid "Spectrum Color"
 #~ msgstr "Kolor widma"
-
-#, fuzzy
-#~ msgid "Autogain"
-#~ msgstr "Wzmocnienie wej."
-
-#~ msgid "Bass Enhancer"
-#~ msgstr "Wzmacniacz basów"
-
-#~ msgid "Crossfeed"
-#~ msgstr "Crossfeed"
-
-#, fuzzy
-#~ msgid "Crystalizer"
-#~ msgstr "Resetuj korektor"
-
-#~ msgid "Deesser"
-#~ msgstr "De-Esser"
-
-#, fuzzy
-#~ msgid "Delay"
-#~ msgstr "Przedopóźnienie"
-
-#~ msgid "Echo Canceller"
-#~ msgstr "Usuwanie echa"
-
-#~ msgid "Equalizer"
-#~ msgstr "Korektor"
-
-#~ msgid "Exciter"
-#~ msgstr "Exciter"
-
-#~ msgid "Filter"
-#~ msgstr "Filtr"
-
-#~ msgid "Gate"
-#~ msgstr "Bramka"
-
-#~ msgid "Limiter"
-#~ msgstr "Limiter"
-
-#~ msgid "Maximizer"
-#~ msgstr "Maximizer"
-
-#, fuzzy
-#~ msgid "Multiband Compressor"
-#~ msgstr "Kompresor"
-
-#~ msgid "Pitch"
-#~ msgstr "Wysokość"
-
-#, fuzzy
-#~ msgid "Noise Reduction"
-#~ msgstr "Redukcja wzmocnienia"
-
-#, fuzzy
-#~ msgid "Stereo Tools"
-#~ msgstr "Powiązanie stereo"
 
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"

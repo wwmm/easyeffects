@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -656,6 +656,7 @@ msgid "Range"
 msgstr ""
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr ""
 
@@ -819,7 +820,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr ""
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr ""
 
@@ -2711,4 +2712,88 @@ msgstr ""
 
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
+msgstr ""
+
+#: include/plugin_name.hpp:81
+msgid "Autogain"
+msgstr ""
+
+#: include/plugin_name.hpp:82
+msgid "Bass Enhancer"
+msgstr ""
+
+#: include/plugin_name.hpp:83
+msgid "Bass Loudness"
+msgstr ""
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr ""
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr ""
+
+#: include/plugin_name.hpp:87
+msgid "Crystalizer"
+msgstr ""
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr ""
+
+#: include/plugin_name.hpp:89
+msgid "Delay"
+msgstr ""
+
+#: include/plugin_name.hpp:90
+msgid "Echo Canceller"
+msgstr ""
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr ""
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr ""
+
+#: include/plugin_name.hpp:93
+msgid "Filter"
+msgstr ""
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr ""
+
+#: include/plugin_name.hpp:95
+msgid "Limiter"
+msgstr ""
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr ""
+
+#: include/plugin_name.hpp:98
+msgid "Multiband Compressor"
+msgstr ""
+
+#: include/plugin_name.hpp:99
+msgid "Multiband Gate"
+msgstr ""
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr ""
+
+#: include/plugin_name.hpp:101
+msgid "Reverberation"
+msgstr ""
+
+#: include/plugin_name.hpp:102
+msgid "Noise Reduction"
+msgstr ""
+
+#: include/plugin_name.hpp:103
+msgid "Stereo Tools"
 msgstr ""

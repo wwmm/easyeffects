@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -687,6 +687,7 @@ msgid "Range"
 msgstr "Rozsah"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "Hlasitosť"
 
@@ -856,7 +857,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Zobraziť aplikácie zo zoznamu blokovaných na hlavnej karte"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -2938,6 +2939,93 @@ msgstr "Importovať model zo súboru"
 msgid "RNNoise Models"
 msgstr "Štandardný model RNNoise"
 
+#: include/plugin_name.hpp:81
+#, fuzzy
+msgid "Autogain"
+msgstr "Automatická hlasitosť"
+
+#: include/plugin_name.hpp:82
+msgid "Bass Enhancer"
+msgstr "Vylepšovač hĺbok"
+
+#: include/plugin_name.hpp:83
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Hlasitosť"
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr "Zbaľovač"
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr "Prelínanie kanálov"
+
+#: include/plugin_name.hpp:87
+msgid "Crystalizer"
+msgstr "Kryštalizátor"
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr "Deesser"
+
+#: include/plugin_name.hpp:89
+msgid "Delay"
+msgstr "Oneskorenie"
+
+#: include/plugin_name.hpp:90
+msgid "Echo Canceller"
+msgstr "Rušenie ozveny"
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr "Ekvalizér"
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr "Budič"
+
+#: include/plugin_name.hpp:93
+msgid "Filter"
+msgstr "Filter"
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr "Brána"
+
+#: include/plugin_name.hpp:95
+msgid "Limiter"
+msgstr "Obmedzovač"
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr "Zosilňovač"
+
+#: include/plugin_name.hpp:98
+msgid "Multiband Compressor"
+msgstr "Viacpásmový kompresor"
+
+#: include/plugin_name.hpp:99
+msgid "Multiband Gate"
+msgstr "Viacpásmová brána"
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr "Výška tónu"
+
+#: include/plugin_name.hpp:101
+#, fuzzy
+msgid "Reverberation"
+msgstr "Ozvena (reverb)"
+
+#: include/plugin_name.hpp:102
+msgid "Noise Reduction"
+msgstr "Redukcia šumu"
+
+#: include/plugin_name.hpp:103
+msgid "Stereo Tools"
+msgstr "Stereo nástroje"
+
 #~ msgid "RLC (BT)"
 #~ msgstr "RLC (BT)"
 
@@ -3015,68 +3103,6 @@ msgstr "Štandardný model RNNoise"
 
 #~ msgid "Spectrum Color"
 #~ msgstr "Farba spektra"
-
-#, fuzzy
-#~ msgid "Autogain"
-#~ msgstr "Automatická hlasitosť"
-
-#~ msgid "Bass Enhancer"
-#~ msgstr "Vylepšovač hĺbok"
-
-#, fuzzy
-#~ msgid "Bass Loudness"
-#~ msgstr "Hlasitosť"
-
-#~ msgid "Convolver"
-#~ msgstr "Zbaľovač"
-
-#~ msgid "Crossfeed"
-#~ msgstr "Prelínanie kanálov"
-
-#~ msgid "Crystalizer"
-#~ msgstr "Kryštalizátor"
-
-#~ msgid "Deesser"
-#~ msgstr "Deesser"
-
-#~ msgid "Delay"
-#~ msgstr "Oneskorenie"
-
-#~ msgid "Echo Canceller"
-#~ msgstr "Rušenie ozveny"
-
-#~ msgid "Equalizer"
-#~ msgstr "Ekvalizér"
-
-#~ msgid "Exciter"
-#~ msgstr "Budič"
-
-#~ msgid "Filter"
-#~ msgstr "Filter"
-
-#~ msgid "Gate"
-#~ msgstr "Brána"
-
-#~ msgid "Limiter"
-#~ msgstr "Obmedzovač"
-
-#~ msgid "Maximizer"
-#~ msgstr "Zosilňovač"
-
-#~ msgid "Multiband Compressor"
-#~ msgstr "Viacpásmový kompresor"
-
-#~ msgid "Multiband Gate"
-#~ msgstr "Viacpásmová brána"
-
-#~ msgid "Pitch"
-#~ msgstr "Výška tónu"
-
-#~ msgid "Noise Reduction"
-#~ msgstr "Redukcia šumu"
-
-#~ msgid "Stereo Tools"
-#~ msgstr "Stereo nástroje"
 
 #, fuzzy
 #~ msgid "Remove Model"

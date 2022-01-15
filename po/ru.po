@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2021-08-11 02:19+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -693,6 +693,7 @@ msgid "Range"
 msgstr "Диапазон"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -872,7 +873,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Приложения"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Компрессор"
 
@@ -2954,6 +2955,97 @@ msgstr "Импортировать импульс"
 msgid "RNNoise Models"
 msgstr "Активная модель"
 
+#: include/plugin_name.hpp:81
+#, fuzzy
+msgid "Autogain"
+msgstr "Контроль громкости по EBU R 128"
+
+# Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
+# «Бас-Энхансер» или «Глубокий бас»
+#: include/plugin_name.hpp:82
+msgid "Bass Enhancer"
+msgstr "Усиление басов (бас-энхансер)"
+
+#: include/plugin_name.hpp:83
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Громкость"
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr "Конвольвер"
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr "Перекрестная подача"
+
+#: include/plugin_name.hpp:87
+msgid "Crystalizer"
+msgstr "Кристаллизатор"
+
+# http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr "Антишипение (деэссер)"
+
+#: include/plugin_name.hpp:89
+msgid "Delay"
+msgstr "Задержка"
+
+#: include/plugin_name.hpp:90
+msgid "Echo Canceller"
+msgstr "Эхо и шумо подавление"
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr "Эквалайзер"
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr "Генератор"
+
+#: include/plugin_name.hpp:93
+msgid "Filter"
+msgstr "Фильтр"
+
+# http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr "Шумовые ворота (гейт)"
+
+#: include/plugin_name.hpp:95
+msgid "Limiter"
+msgstr "Ограничитель уровня звука (лимитер)"
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr "Максимизатор"
+
+#: include/plugin_name.hpp:98
+msgid "Multiband Compressor"
+msgstr "Многополосный компрессор"
+
+#: include/plugin_name.hpp:99
+msgid "Multiband Gate"
+msgstr "Многополосные шумовые ворота"
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr "Высота тона"
+
+#: include/plugin_name.hpp:101
+#, fuzzy
+msgid "Reverberation"
+msgstr "Ревербация"
+
+#: include/plugin_name.hpp:102
+msgid "Noise Reduction"
+msgstr "Подавление шума"
+
+#: include/plugin_name.hpp:103
+msgid "Stereo Tools"
+msgstr "Стереокорректоры"
+
 #~ msgid "LR4"
 #~ msgstr "LR4"
 
@@ -3007,72 +3099,6 @@ msgstr "Активная модель"
 
 #~ msgid "Spectrum Color"
 #~ msgstr "Цвет спектра"
-
-#, fuzzy
-#~ msgid "Autogain"
-#~ msgstr "Контроль громкости по EBU R 128"
-
-# Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
-# «Бас-Энхансер» или «Глубокий бас»
-#~ msgid "Bass Enhancer"
-#~ msgstr "Усиление басов (бас-энхансер)"
-
-#, fuzzy
-#~ msgid "Bass Loudness"
-#~ msgstr "Громкость"
-
-#~ msgid "Convolver"
-#~ msgstr "Конвольвер"
-
-#~ msgid "Crossfeed"
-#~ msgstr "Перекрестная подача"
-
-#~ msgid "Crystalizer"
-#~ msgstr "Кристаллизатор"
-
-# http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
-#~ msgid "Deesser"
-#~ msgstr "Антишипение (деэссер)"
-
-#~ msgid "Delay"
-#~ msgstr "Задержка"
-
-#~ msgid "Echo Canceller"
-#~ msgstr "Эхо и шумо подавление"
-
-#~ msgid "Equalizer"
-#~ msgstr "Эквалайзер"
-
-#~ msgid "Exciter"
-#~ msgstr "Генератор"
-
-#~ msgid "Filter"
-#~ msgstr "Фильтр"
-
-# http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
-#~ msgid "Gate"
-#~ msgstr "Шумовые ворота (гейт)"
-
-#~ msgid "Limiter"
-#~ msgstr "Ограничитель уровня звука (лимитер)"
-
-#~ msgid "Maximizer"
-#~ msgstr "Максимизатор"
-
-#~ msgid "Multiband Compressor"
-#~ msgstr "Многополосный компрессор"
-
-#~ msgid "Multiband Gate"
-#~ msgstr "Многополосные шумовые ворота"
-
-#~ msgid "Pitch"
-#~ msgstr "Высота тона"
-
-#~ msgid "Noise Reduction"
-#~ msgstr "Подавление шума"
-
-#~ msgid "Stereo Tools"
-#~ msgstr "Стереокорректоры"
 
 #, fuzzy
 #~ msgid "Remove Model"

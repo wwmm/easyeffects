@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2022-01-15 15:15+0000\n"
 "Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -676,6 +676,7 @@ msgid "Range"
 msgstr ""
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr ""
 
@@ -839,7 +840,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Visa blocklistade applikationer"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Kompressor"
 
@@ -2875,6 +2876,102 @@ msgstr "Platt respons"
 msgid "RNNoise Models"
 msgstr "Ingen komprimering"
 
+#: include/plugin_name.hpp:81
+#, fuzzy
+msgid "Autogain"
+msgstr "Ingångsförstärkning (dB)"
+
+#: include/plugin_name.hpp:82
+#, fuzzy
+msgid "Bass Enhancer"
+msgstr "Ljudförstärkare"
+
+#: include/plugin_name.hpp:83
+msgid "Bass Loudness"
+msgstr ""
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr ""
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr ""
+
+#: include/plugin_name.hpp:87
+#, fuzzy
+msgid "Crystalizer"
+msgstr "Utjämnare"
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr ""
+
+#: include/plugin_name.hpp:89
+#, fuzzy
+msgid "Delay"
+msgstr "Release (ms)"
+
+#: include/plugin_name.hpp:90
+#, fuzzy
+msgid "Echo Canceller"
+msgstr "Ljudförstärkare"
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr "Utjämnare"
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr ""
+
+#: include/plugin_name.hpp:93
+#, fuzzy
+msgid "Filter"
+msgstr "Filter typ"
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr ""
+
+#: include/plugin_name.hpp:95
+#, fuzzy
+msgid "Limiter"
+msgstr "Gränsvärde (dB)"
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr ""
+
+#: include/plugin_name.hpp:98
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Kompressor"
+
+#: include/plugin_name.hpp:99
+#, fuzzy
+msgid "Multiband Gate"
+msgstr "Kompressor"
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr ""
+
+#: include/plugin_name.hpp:101
+#, fuzzy
+msgid "Reverberation"
+msgstr "Efterljud (eko)"
+
+#: include/plugin_name.hpp:102
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Förstärkningsreducering"
+
+#: include/plugin_name.hpp:103
+#, fuzzy
+msgid "Stereo Tools"
+msgstr "Ljudförstärkare"
+
 #, fuzzy
 #~ msgid "Output Channel"
 #~ msgstr "Ingångsförstärkning (dB)"
@@ -2921,53 +3018,6 @@ msgstr "Ingen komprimering"
 #, fuzzy
 #~ msgid "Spectrum Color"
 #~ msgstr "Spektrum"
-
-#, fuzzy
-#~ msgid "Autogain"
-#~ msgstr "Ingångsförstärkning (dB)"
-
-#, fuzzy
-#~ msgid "Bass Enhancer"
-#~ msgstr "Ljudförstärkare"
-
-#, fuzzy
-#~ msgid "Crystalizer"
-#~ msgstr "Utjämnare"
-
-#, fuzzy
-#~ msgid "Delay"
-#~ msgstr "Release (ms)"
-
-#, fuzzy
-#~ msgid "Echo Canceller"
-#~ msgstr "Ljudförstärkare"
-
-#~ msgid "Equalizer"
-#~ msgstr "Utjämnare"
-
-#, fuzzy
-#~ msgid "Filter"
-#~ msgstr "Filter typ"
-
-#, fuzzy
-#~ msgid "Limiter"
-#~ msgstr "Gränsvärde (dB)"
-
-#, fuzzy
-#~ msgid "Multiband Compressor"
-#~ msgstr "Kompressor"
-
-#, fuzzy
-#~ msgid "Multiband Gate"
-#~ msgstr "Kompressor"
-
-#, fuzzy
-#~ msgid "Noise Reduction"
-#~ msgstr "Förstärkningsreducering"
-
-#, fuzzy
-#~ msgid "Stereo Tools"
-#~ msgstr "Ljudförstärkare"
 
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"

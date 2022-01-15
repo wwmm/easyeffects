@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2022-01-15 15:15+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -39,16 +39,18 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects は、高度なオーディオ操作ツールです。イコライザー、リミッター、コンプレッサー、リバーブツールなどが含まれていますが、これらはほんの"
-"一部です。さらに、スペクトラムアナライザーもあります。"
+"EasyEffects は、高度なオーディオ操作ツールです。イコライザー、リミッター、コ"
+"ンプレッサー、リバーブツールなどが含まれていますが、これらはほんの一部です。"
+"さらに、スペクトラムアナライザーもあります。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects は、PulseEffects の後継版です。EasyEffects は PipeWire のオーディオサーバーのみ対応しています。"
-"PulseAudio をお使いの場合、代わりに PulseEffects をお使いください。"
+"EasyEffects は、PulseEffects の後継版です。EasyEffects は PipeWire のオーディ"
+"オサーバーのみ対応しています。PulseAudio をお使いの場合、代わりに "
+"PulseEffects をお使いください。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -56,8 +58,9 @@ msgid ""
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"EasyEffects はデフォルトの PipeWire サウンドサーバーを使用しているので、ほとんどのアプリケーションで動作します。サポートされているす"
-"べてのアプリケーションは、メインウィンドウに表示され、それぞれ個別に有効にすることができます。"
+"EasyEffects はデフォルトの PipeWire サウンドサーバーを使用しているので、ほと"
+"んどのアプリケーションで動作します。サポートされているすべてのアプリケーショ"
+"ンは、メインウィンドウに表示され、それぞれ個別に有効にすることができます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -65,8 +68,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"EasyEffects は、音の出力を操作するだけでなく、マイクなどの入力デバイスにもエフェクトをかけることができます。例えば、音声録音の時に便利ですが、"
-"音声会話の時にも効果を発揮します。"
+"EasyEffects は、音の出力を操作するだけでなく、マイクなどの入力デバイスにもエ"
+"フェクトをかけることができます。例えば、音声録音の時に便利ですが、音声会話の"
+"時にも効果を発揮します。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 msgid ""
@@ -74,7 +78,8 @@ msgid ""
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
 msgstr ""
-"EasyEffects を起動すると、前回のセッションで使用した設定を適用します。また、現在のすべての設定をプロファイルとして保存することもできます。"
+"EasyEffects を起動すると、前回のセッションで使用した設定を適用します。また、"
+"現在のすべての設定をプロファイルとして保存することもできます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
@@ -99,7 +104,9 @@ msgstr "このリリースでは、以下のバグが修正されています:"
 msgid ""
 "Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
 "an application crash."
-msgstr "イコライザーバンドの「品質」を「0」に設定するとアプリケーションがクラッシュするバグを修正しました。"
+msgstr ""
+"イコライザーバンドの「品質」を「0」に設定するとアプリケーションがクラッシュす"
+"るバグを修正しました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
@@ -118,7 +125,9 @@ msgstr "このリリースでは、以下の機能が追加されています:"
 msgid ""
 "LibAdwaita is used to create some parts of our window and for handling the "
 "switching between dark and light themes."
-msgstr "LibAdwaita は、ウィンドウの一部を作成したり、ダークテーマとライトテーマを切り替えるために使用されます。"
+msgstr ""
+"LibAdwaita は、ウィンドウの一部を作成したり、ダークテーマとライトテーマを切り"
+"替えるために使用されます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
@@ -128,52 +137,65 @@ msgstr "設定メニューは、LibAdwaita ウィジェットを使用して再�
 msgid ""
 "Equalizer APO preset import feature has been improved to apply not only the "
 "Bell filter, but also other supported ones"
-msgstr "イコライザー APO のプリセットインポート機能で、ベルフィルターだけでなく、対応する他のフィルターも適用できるよう改善しました"
+msgstr ""
+"イコライザー APO のプリセットインポート機能で、ベルフィルターだけでなく、対応"
+"する他のフィルターも適用できるよう改善しました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
 "The `Reset All Settings` function in our menu should work in Flatpak now."
-msgstr "メニューの「すべての設定をリセット」機能が Flatpak でも動作するようにしました。"
+msgstr ""
+"メニューの「すべての設定をリセット」機能が Flatpak でも動作するようにしまし"
+"た。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid ""
 "We have a new option that allows the user to disable our menus `autohide`. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
 msgstr ""
-"メニューの 「自動非表示」を無効にすることができる新しいオプションを用意しました。これにより、現在 gtk4 "
-"で抱えているポップオーバーメニュー関連のバグを回避できるかもしれません。"
+"メニューの 「自動非表示」を無効にすることができる新しいオプションを用意しまし"
+"た。これにより、現在 gtk4 で抱えているポップオーバーメニュー関連のバグを回避"
+"できるかもしれません。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 msgid ""
 "More robust parsing to import APO presets saved with comma as thousands "
 "separator in central frequency band."
-msgstr "中央の周波数帯でカンマを千の区切りとして保存された APO プリセットを読み込むための解析がより強力になりました。"
+msgstr ""
+"中央の周波数帯でカンマを千の区切りとして保存された APO プリセットを読み込むた"
+"めの解析がより強力になりました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
 "The fmt library is a new dependency At least while the c++ compilers do not "
 "implement its features. This is expected to happen in the next years."
 msgstr ""
-"fmt ライブラリは、少なくとも c++ コンパイラがその機能を実装していない間は新しい依存関係にあります。これは今後数年のうちに実現すると思われます。"
+"fmt ライブラリは、少なくとも c++ コンパイラがその機能を実装していない間は新し"
+"い依存関係にあります。これは今後数年のうちに実現すると思われます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
 "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
-msgstr "GTKMM と GLIBMM はもう依存関係にありません。現在は gtk4 を直接使用しています。"
+msgstr ""
+"GTKMM と GLIBMM はもう依存関係にありません。現在は gtk4 を直接使用していま"
+"す。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
 msgstr ""
-"コンボルバーインターフェースでインパルスレスポンスを組み合わせることができるようになりました。新しいインパルスファイルが生成され、インパルスリストに表示さ"
-"れます。"
+"コンボルバーインターフェースでインパルスレスポンスを組み合わせることができる"
+"ようになりました。新しいインパルスファイルが生成され、インパルスリストに表示"
+"されます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "Improved `x axis` drawings in our plots. Now the number of labels is "
 "adjusted dynamically depending on our window width."
-msgstr "プロットの「x 軸」の描画を改善しました。ウィンドウの幅に応じてラベルの数が動的に調整されるようになりました。"
+msgstr ""
+"プロットの「x 軸」の描画を改善しました。ウィンドウの幅に応じてラベルの数が動"
+"的に調整されるようになりました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 msgid ""
@@ -181,8 +203,9 @@ msgid ""
 "Old references about PulseEffects have been removed. The documentation "
 "button has been added in the menu section."
 msgstr ""
-"ドキュメントが EasyEffects の新機能を反映して更新されました。PulseEffects "
-"に関する古い文献は削除されました。メニューセクションにドキュメントボタンが追加されました。"
+"ドキュメントが EasyEffects の新機能を反映して更新されました。PulseEffects に"
+"関する古い文献は削除されました。メニューセクションにドキュメントボタンが追加"
+"されました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:95
@@ -674,6 +697,7 @@ msgid "Range"
 msgstr "範囲"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "ラウドネス"
 
@@ -837,7 +861,7 @@ msgstr "ブロックリストのアプリケーション一覧"
 msgid "Show Blocklisted Applications"
 msgstr "ブロックリストのアプリケーションを表示"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "コンプレッサー"
 
@@ -2729,4 +2753,92 @@ msgstr ""
 
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
+msgstr ""
+
+#: include/plugin_name.hpp:81
+msgid "Autogain"
+msgstr ""
+
+#: include/plugin_name.hpp:82
+msgid "Bass Enhancer"
+msgstr ""
+
+#: include/plugin_name.hpp:83
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "ラウドネス"
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr ""
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr ""
+
+#: include/plugin_name.hpp:87
+msgid "Crystalizer"
+msgstr ""
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr ""
+
+#: include/plugin_name.hpp:89
+msgid "Delay"
+msgstr ""
+
+#: include/plugin_name.hpp:90
+msgid "Echo Canceller"
+msgstr ""
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr ""
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr ""
+
+#: include/plugin_name.hpp:93
+#, fuzzy
+msgid "Filter"
+msgstr "フィルター長"
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr ""
+
+#: include/plugin_name.hpp:95
+msgid "Limiter"
+msgstr ""
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr ""
+
+#: include/plugin_name.hpp:98
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "コンプレッサー"
+
+#: include/plugin_name.hpp:99
+msgid "Multiband Gate"
+msgstr ""
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr ""
+
+#: include/plugin_name.hpp:101
+msgid "Reverberation"
+msgstr ""
+
+#: include/plugin_name.hpp:102
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "減少"
+
+#: include/plugin_name.hpp:103
+msgid "Stereo Tools"
 msgstr ""

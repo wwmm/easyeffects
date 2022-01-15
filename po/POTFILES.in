@@ -65,3 +65,4 @@ src/plugins_box.cpp
 src/plugins_menu.cpp
 src/presets_menu.cpp
 src/rnnoise_ui.cpp
+include/plugin_name.hpp

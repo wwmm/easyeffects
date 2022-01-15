@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2022-01-15 15:15+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -89,7 +89,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr "La scheda principale che mostra il flusso in uscita di due applicazioni"
+msgstr ""
+"La scheda principale che mostra il flusso in uscita di due applicazioni"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
@@ -151,7 +152,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
 "The `Reset All Settings` function in our menu should work in Flatpak now."
-msgstr "L'opzione `Reset Preferenze` nel menu adesso funziona anche in Flatpak."
+msgstr ""
+"L'opzione `Reset Preferenze` nel menu adesso funziona anche in Flatpak."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid ""
@@ -402,7 +404,8 @@ msgstr "Traduzione Italiana aggiornata."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid "Added support for the compressor parameter `Boost Amount`"
-msgstr "Aggiunto il supporto al parametro `Quantità Incremento` del Compressore"
+msgstr ""
+"Aggiunto il supporto al parametro `Quantità Incremento` del Compressore"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
 msgid ""
@@ -798,6 +801,7 @@ msgid "Range"
 msgstr "Gamma"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "Loudness"
 
@@ -961,7 +965,7 @@ msgstr "Lista delle App Escluse"
 msgid "Show Blocklisted Applications"
 msgstr "Mostra Applicazioni Escluse"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Compressore"
 
@@ -2855,6 +2859,100 @@ msgstr "Importa File Modello"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
+
+#: include/plugin_name.hpp:81
+msgid "Autogain"
+msgstr ""
+
+#: include/plugin_name.hpp:82
+#, fuzzy
+msgid "Bass Enhancer"
+msgstr "Bilanciamento"
+
+#: include/plugin_name.hpp:83
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Loudness"
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr ""
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr ""
+
+#: include/plugin_name.hpp:87
+msgid "Crystalizer"
+msgstr ""
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr ""
+
+#: include/plugin_name.hpp:89
+#, fuzzy
+msgid "Delay"
+msgstr "Pre Ritardo"
+
+#: include/plugin_name.hpp:90
+#, fuzzy
+msgid "Echo Canceller"
+msgstr "Annulla"
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr ""
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr ""
+
+#: include/plugin_name.hpp:93
+#, fuzzy
+msgid "Filter"
+msgstr "Lunghezza Filtro"
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr ""
+
+#: include/plugin_name.hpp:95
+msgid "Limiter"
+msgstr ""
+
+#: include/plugin_name.hpp:97
+#, fuzzy
+msgid "Maximizer"
+msgstr "Massima"
+
+#: include/plugin_name.hpp:98
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Compressore"
+
+#: include/plugin_name.hpp:99
+msgid "Multiband Gate"
+msgstr ""
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr ""
+
+#: include/plugin_name.hpp:101
+#, fuzzy
+msgid "Reverberation"
+msgstr "Informazioni Server"
+
+#: include/plugin_name.hpp:102
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Riduzione"
+
+#: include/plugin_name.hpp:103
+#, fuzzy
+msgid "Stereo Tools"
+msgstr "Modalità Stereo"
 
 #~ msgid "RLC (BT)"
 #~ msgstr "RLC (BT)"

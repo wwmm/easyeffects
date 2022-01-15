@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2021-03-25 22:09+0100\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: \n"
@@ -686,6 +686,7 @@ msgid "Range"
 msgstr "Intervalo"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "Sonoridade"
 
@@ -857,7 +858,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Mostrar aplicacións bloqueadas na lapela principal"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Compresor"
 
@@ -2934,6 +2935,93 @@ msgstr "Importar ficheiro de modelo"
 msgid "RNNoise Models"
 msgstr "Modelo RNNoise estándar"
 
+#: include/plugin_name.hpp:81
+#, fuzzy
+msgid "Autogain"
+msgstr "Ganancia automática"
+
+#: include/plugin_name.hpp:82
+msgid "Bass Enhancer"
+msgstr "Mellora de baixos"
+
+#: include/plugin_name.hpp:83
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Sonoridade"
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr "Convolución"
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr "Crossfeed"
+
+#: include/plugin_name.hpp:87
+msgid "Crystalizer"
+msgstr "Cristalizador"
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr "Deesser"
+
+#: include/plugin_name.hpp:89
+msgid "Delay"
+msgstr "Delonga"
+
+#: include/plugin_name.hpp:90
+msgid "Echo Canceller"
+msgstr "Cancelador de cco"
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr "Ecualizador"
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr "Excitación"
+
+#: include/plugin_name.hpp:93
+msgid "Filter"
+msgstr "Filtro"
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr "Porta"
+
+#: include/plugin_name.hpp:95
+msgid "Limiter"
+msgstr "Limitador"
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr "Maximizador"
+
+#: include/plugin_name.hpp:98
+msgid "Multiband Compressor"
+msgstr "Compresor multibanda"
+
+#: include/plugin_name.hpp:99
+msgid "Multiband Gate"
+msgstr "Porta multibanda"
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr "Ton"
+
+#: include/plugin_name.hpp:101
+#, fuzzy
+msgid "Reverberation"
+msgstr "Reverberación"
+
+#: include/plugin_name.hpp:102
+msgid "Noise Reduction"
+msgstr "Redución de ruído"
+
+#: include/plugin_name.hpp:103
+msgid "Stereo Tools"
+msgstr "Ferramentas de estéreo"
+
 #~ msgid "RLC (BT)"
 #~ msgstr "RLC (BT)"
 
@@ -3010,68 +3098,6 @@ msgstr "Modelo RNNoise estándar"
 
 #~ msgid "Spectrum Color"
 #~ msgstr "Cor do espectro"
-
-#, fuzzy
-#~ msgid "Autogain"
-#~ msgstr "Ganancia automática"
-
-#~ msgid "Bass Enhancer"
-#~ msgstr "Mellora de baixos"
-
-#, fuzzy
-#~ msgid "Bass Loudness"
-#~ msgstr "Sonoridade"
-
-#~ msgid "Convolver"
-#~ msgstr "Convolución"
-
-#~ msgid "Crossfeed"
-#~ msgstr "Crossfeed"
-
-#~ msgid "Crystalizer"
-#~ msgstr "Cristalizador"
-
-#~ msgid "Deesser"
-#~ msgstr "Deesser"
-
-#~ msgid "Delay"
-#~ msgstr "Delonga"
-
-#~ msgid "Echo Canceller"
-#~ msgstr "Cancelador de cco"
-
-#~ msgid "Equalizer"
-#~ msgstr "Ecualizador"
-
-#~ msgid "Exciter"
-#~ msgstr "Excitación"
-
-#~ msgid "Filter"
-#~ msgstr "Filtro"
-
-#~ msgid "Gate"
-#~ msgstr "Porta"
-
-#~ msgid "Limiter"
-#~ msgstr "Limitador"
-
-#~ msgid "Maximizer"
-#~ msgstr "Maximizador"
-
-#~ msgid "Multiband Compressor"
-#~ msgstr "Compresor multibanda"
-
-#~ msgid "Multiband Gate"
-#~ msgstr "Porta multibanda"
-
-#~ msgid "Pitch"
-#~ msgstr "Ton"
-
-#~ msgid "Noise Reduction"
-#~ msgstr "Redución de ruído"
-
-#~ msgid "Stereo Tools"
-#~ msgstr "Ferramentas de estéreo"
 
 #, fuzzy
 #~ msgid "Remove Model"

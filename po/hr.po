@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -690,6 +690,7 @@ msgid "Range"
 msgstr "Raspon"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "Glasnoća"
 
@@ -861,7 +862,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Aplikacije"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -2992,6 +2993,99 @@ msgstr "Učitaj impuls datoteku"
 msgid "RNNoise Models"
 msgstr "Kompresija"
 
+#: include/plugin_name.hpp:81
+#, fuzzy
+msgid "Autogain"
+msgstr "Automatsko pojačavanje"
+
+#: include/plugin_name.hpp:82
+msgid "Bass Enhancer"
+msgstr "Pojačanje basa"
+
+#: include/plugin_name.hpp:83
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Glasnoća"
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr "Konvolver"
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr "Križno spajanje"
+
+#: include/plugin_name.hpp:87
+#, fuzzy
+msgid "Crystalizer"
+msgstr "Kristalizator"
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr "De-esiranje"
+
+#: include/plugin_name.hpp:89
+msgid "Delay"
+msgstr "Kašnjenje"
+
+#: include/plugin_name.hpp:90
+msgid "Echo Canceller"
+msgstr "Poništenje jeke"
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr "Ekvalizator"
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr "Uzbuđivač"
+
+#: include/plugin_name.hpp:93
+#, fuzzy
+msgid "Filter"
+msgstr "Filter"
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr "Vrata"
+
+#: include/plugin_name.hpp:95
+msgid "Limiter"
+msgstr "Graničnik"
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr "Maksimizer"
+
+#: include/plugin_name.hpp:98
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Višerasponski kompresor"
+
+#: include/plugin_name.hpp:99
+#, fuzzy
+msgid "Multiband Gate"
+msgstr "Višerasponska vrata"
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr "Visina"
+
+#: include/plugin_name.hpp:101
+#, fuzzy
+msgid "Reverberation"
+msgstr "Reverberacija"
+
+#: include/plugin_name.hpp:102
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Ograničenje pojačanja"
+
+#: include/plugin_name.hpp:103
+#, fuzzy
+msgid "Stereo Tools"
+msgstr "Stereo alati"
+
 #, fuzzy
 #~ msgid "Output Channel"
 #~ msgstr "Pojačanje ulaza"
@@ -3041,74 +3135,6 @@ msgstr "Kompresija"
 #, fuzzy
 #~ msgid "Spectrum Color"
 #~ msgstr "Boja spektra"
-
-#, fuzzy
-#~ msgid "Autogain"
-#~ msgstr "Automatsko pojačavanje"
-
-#~ msgid "Bass Enhancer"
-#~ msgstr "Pojačanje basa"
-
-#, fuzzy
-#~ msgid "Bass Loudness"
-#~ msgstr "Glasnoća"
-
-#~ msgid "Convolver"
-#~ msgstr "Konvolver"
-
-#~ msgid "Crossfeed"
-#~ msgstr "Križno spajanje"
-
-#, fuzzy
-#~ msgid "Crystalizer"
-#~ msgstr "Kristalizator"
-
-#~ msgid "Deesser"
-#~ msgstr "De-esiranje"
-
-#~ msgid "Delay"
-#~ msgstr "Kašnjenje"
-
-#~ msgid "Echo Canceller"
-#~ msgstr "Poništenje jeke"
-
-#~ msgid "Equalizer"
-#~ msgstr "Ekvalizator"
-
-#~ msgid "Exciter"
-#~ msgstr "Uzbuđivač"
-
-#, fuzzy
-#~ msgid "Filter"
-#~ msgstr "Filter"
-
-#~ msgid "Gate"
-#~ msgstr "Vrata"
-
-#~ msgid "Limiter"
-#~ msgstr "Graničnik"
-
-#~ msgid "Maximizer"
-#~ msgstr "Maksimizer"
-
-#, fuzzy
-#~ msgid "Multiband Compressor"
-#~ msgstr "Višerasponski kompresor"
-
-#, fuzzy
-#~ msgid "Multiband Gate"
-#~ msgstr "Višerasponska vrata"
-
-#~ msgid "Pitch"
-#~ msgstr "Visina"
-
-#, fuzzy
-#~ msgid "Noise Reduction"
-#~ msgstr "Ograničenje pojačanja"
-
-#, fuzzy
-#~ msgid "Stereo Tools"
-#~ msgstr "Stereo alati"
 
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"

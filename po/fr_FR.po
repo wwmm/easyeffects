@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-14 11:44-0300\n"
+"POT-Creation-Date: 2022-01-15 12:34-0300\n"
 "PO-Revision-Date: 2021-08-10 17:08-0700\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -597,8 +597,7 @@ msgstr "_À propos de EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
 #: src/presets_menu.cpp:112 src/presets_menu.cpp:258 src/presets_menu.cpp:259
-#: src/presets_menu.cpp:276 src/presets_menu.cpp:277 src/presets_menu.cpp:256
-#: src/presets_menu.cpp:257 src/presets_menu.cpp:274 src/presets_menu.cpp:275
+#: src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
 msgstr "Préréglage"
 
@@ -674,6 +673,7 @@ msgid "Range"
 msgstr "Gamme"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "Volume"
 
@@ -773,15 +773,15 @@ msgstr "Périphérique"
 msgid "Name"
 msgstr ""
 
-#: data/ui/autoload_row.ui:39
+#: data/ui/autoload_row.ui:62
 msgid "Profile"
 msgstr "Profil"
 
-#: data/ui/autoload_row.ui:63
+#: data/ui/autoload_row.ui:86
 msgid "Preset"
 msgstr "Préréglage"
 
-#: data/ui/autoload_row.ui:87 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -840,7 +840,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Calibration"
 
-#: data/ui/compressor.ui:38
+#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Compresseur"
 
@@ -2374,11 +2374,11 @@ msgstr ""
 msgid "Process All Outputs"
 msgstr ""
 
-#: data/ui/preferences_general.ui:55 data/ui/preferences_general.ui:54
+#: data/ui/preferences_general.ui:55
 msgid "Process All Inputs"
 msgstr ""
 
-#: data/ui/preferences_general.ui:67 data/ui/preferences_general.ui:65
+#: data/ui/preferences_general.ui:67
 msgid "Use Cubic Volume"
 msgstr ""
 
@@ -2387,15 +2387,14 @@ msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
 #: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
-#: data/ui/preferences_general.ui:79
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:96 data/ui/preferences_general.ui:82
+#: data/ui/preferences_general.ui:96
 msgid "Use Dark Theme"
 msgstr "Utiliser thème sombre"
 
-#: data/ui/preferences_general.ui:108 data/ui/preferences_general.ui:94
+#: data/ui/preferences_general.ui:108
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -2469,7 +2468,6 @@ msgid "Minimum"
 msgstr "Fréquence [Hz]"
 
 #: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
-#: src/convolver_menu_impulses.cpp:135
 msgid "Load"
 msgstr ""
 
@@ -2811,43 +2809,43 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/application.cpp:313 src/application.cpp:305
+#: src/application.cpp:313
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Préréglage"
 
-#: src/application.cpp:321 src/application.cpp:313
+#: src/application.cpp:321
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Ouvrir préréglage"
 
-#: src/application.cpp:418 src/application.cpp:410
+#: src/application.cpp:418
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Effets audio pour applications PulseAudio"
 
-#: src/application.cpp:504 src/application.cpp:496
+#: src/application.cpp:504
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:507 src/application.cpp:499
+#: src/application.cpp:507
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/application.cpp:510 src/application.cpp:502
+#: src/application.cpp:510
 #, fuzzy
 msgid "Reset EasyEffects."
 msgstr "EasyEffects"
 
-#: src/application.cpp:513 src/application.cpp:505
+#: src/application.cpp:513
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:516 src/application.cpp:508
+#: src/application.cpp:516
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:519 src/application.cpp:511
+#: src/application.cpp:519
 msgid "Show available presets."
 msgstr ""
 
@@ -2876,12 +2874,12 @@ msgstr "Amélioration audio"
 msgid "Impulse Response"
 msgstr "Réponse plane"
 
-#: src/convolver_menu_impulses.cpp:199 src/convolver_menu_impulses.cpp:197
+#: src/convolver_menu_impulses.cpp:199
 #, fuzzy
 msgid "Load Impulse"
 msgstr "Réponse plane"
 
-#: src/convolver_menu_impulses.cpp:202 src/convolver_menu_impulses.cpp:200
+#: src/convolver_menu_impulses.cpp:202
 #, fuzzy
 msgid "Remove Impulse"
 msgstr "Réponse plane"
@@ -2920,8 +2918,7 @@ msgstr "Ouvrir préréglage"
 msgid "APO Presets"
 msgstr "Préréglage"
 
-#: src/pipe_manager_box.cpp:308 src/pipe_manager_box.cpp:305
-#: src/pipe_manager_box.cpp:289
+#: src/pipe_manager_box.cpp:308
 msgid "Remove Autoloading Preset"
 msgstr ""
 
@@ -2943,6 +2940,102 @@ msgstr "Réponse plane"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Aucune compression"
+
+#: include/plugin_name.hpp:81
+#, fuzzy
+msgid "Autogain"
+msgstr "Gain d'entrée [dB]"
+
+#: include/plugin_name.hpp:82
+#, fuzzy
+msgid "Bass Enhancer"
+msgstr "Amélioration audio"
+
+#: include/plugin_name.hpp:83
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Volume"
+
+#: include/plugin_name.hpp:85
+msgid "Convolver"
+msgstr ""
+
+#: include/plugin_name.hpp:86
+msgid "Crossfeed"
+msgstr ""
+
+#: include/plugin_name.hpp:87
+#, fuzzy
+msgid "Crystalizer"
+msgstr "Égaliseur"
+
+#: include/plugin_name.hpp:88
+msgid "Deesser"
+msgstr ""
+
+#: include/plugin_name.hpp:89
+#, fuzzy
+msgid "Delay"
+msgstr "Relâche [ms]"
+
+#: include/plugin_name.hpp:90
+#, fuzzy
+msgid "Echo Canceller"
+msgstr "Amélioration audio"
+
+#: include/plugin_name.hpp:91
+msgid "Equalizer"
+msgstr "Égaliseur"
+
+#: include/plugin_name.hpp:92
+msgid "Exciter"
+msgstr ""
+
+#: include/plugin_name.hpp:93
+msgid "Filter"
+msgstr ""
+
+#: include/plugin_name.hpp:94
+msgid "Gate"
+msgstr ""
+
+#: include/plugin_name.hpp:95
+#, fuzzy
+msgid "Limiter"
+msgstr "Limite [dB]"
+
+#: include/plugin_name.hpp:97
+msgid "Maximizer"
+msgstr ""
+
+#: include/plugin_name.hpp:98
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Compresseur"
+
+#: include/plugin_name.hpp:99
+#, fuzzy
+msgid "Multiband Gate"
+msgstr "Compresseur"
+
+#: include/plugin_name.hpp:100
+msgid "Pitch"
+msgstr ""
+
+#: include/plugin_name.hpp:101
+#, fuzzy
+msgid "Reverberation"
+msgstr "Réverberation"
+
+#: include/plugin_name.hpp:102
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Réduction de gain"
+
+#: include/plugin_name.hpp:103
+#, fuzzy
+msgid "Stereo Tools"
+msgstr "Amélioration audio"
 
 #, fuzzy
 #~ msgid "Output Channel"
@@ -2986,49 +3079,6 @@ msgstr "Aucune compression"
 #, fuzzy
 #~ msgid "Spectrum Color"
 #~ msgstr "Spectromètre"
-
-#, fuzzy
-#~ msgid "Autogain"
-#~ msgstr "Gain d'entrée [dB]"
-
-#, fuzzy
-#~ msgid "Bass Enhancer"
-#~ msgstr "Amélioration audio"
-
-#, fuzzy
-#~ msgid "Crystalizer"
-#~ msgstr "Égaliseur"
-
-#, fuzzy
-#~ msgid "Delay"
-#~ msgstr "Relâche [ms]"
-
-#, fuzzy
-#~ msgid "Echo Canceller"
-#~ msgstr "Amélioration audio"
-
-#~ msgid "Equalizer"
-#~ msgstr "Égaliseur"
-
-#, fuzzy
-#~ msgid "Limiter"
-#~ msgstr "Limite [dB]"
-
-#, fuzzy
-#~ msgid "Multiband Compressor"
-#~ msgstr "Compresseur"
-
-#, fuzzy
-#~ msgid "Multiband Gate"
-#~ msgstr "Compresseur"
-
-#, fuzzy
-#~ msgid "Noise Reduction"
-#~ msgstr "Réduction de gain"
-
-#, fuzzy
-#~ msgid "Stereo Tools"
-#~ msgstr "Amélioration audio"
 
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"
