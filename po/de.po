@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-14 11:44-0300\n"
-"PO-Revision-Date: 2021-07-07 17:28+0200\n"
-"Last-Translator: David Keller <davidkeller@tuta.io>\n"
-"Language-Team: Bleuzen, BlobCodes\n"
+"PO-Revision-Date: 2022-01-15 04:26+0000\n"
+"Last-Translator: Tim Schneeberger <thebone.main@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
+"de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -48,9 +49,11 @@ msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects ist der Nachfolger von PulseEffects. EasyEffects unterstützt nur "
+"den Audioserver von PipeWire. PulseAudio-Nutzer sollte stattdessen "
+"PulseEffects verwenden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
@@ -58,7 +61,7 @@ msgid ""
 msgstr ""
 "Da EasyEffects den Standard PulseAudio Sound Server benutzt, funktioniert es "
 "mit so ziemlich allen Anwendungen. Alle unterstützten Anwendungen werden im "
-"Hauptfenster angezeigt, wo diese individuell Ein-/Ausgeschaltet werden "
+"Hauptfenster angezeigt, wo diese individuell ein-/ausgeschaltet werden "
 "können."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
@@ -83,22 +86,22 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Die Hauptseite mit zwei Audioausgabe-Apps"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Die Bassverstärkerseite mit den Audiosteuerelementen"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Die Convolverseite mit den Audiosteuerelementen"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
 msgid "This release fixes the following bug:"
-msgstr ""
+msgstr "Diese Version behebt den folgenden Fehler:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
@@ -2169,9 +2172,8 @@ msgid "Custom Output Device"
 msgstr "Ausgabegerät"
 
 #: data/ui/pipe_manager_box.ui:114
-#, fuzzy
 msgid "Server Information"
-msgstr "Nachhall"
+msgstr "Serverinformation"
 
 #: data/ui/pipe_manager_box.ui:118
 msgid "Header Version"
@@ -2202,14 +2204,12 @@ msgid "Presets Autoloading"
 msgstr "Presets automatisch laden"
 
 #: data/ui/pipe_manager_box.ui:234
-#, fuzzy
 msgid "Output Devices"
-msgstr "Ausgabegerät"
+msgstr "Ausgabegeräte"
 
 #: data/ui/pipe_manager_box.ui:251
-#, fuzzy
 msgid "Output Presets"
-msgstr "Ausgabe-Presets: "
+msgstr "Ausgabe-Presets"
 
 #: data/ui/pipe_manager_box.ui:258 data/ui/pipe_manager_box.ui:350
 msgid "Create Association"
@@ -2220,9 +2220,8 @@ msgid "Add Autoloading Output Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:292
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "Ausgabe-Presets: "
+msgstr "Ausgabe-Presets für das automatische Laden"
 
 #: data/ui/pipe_manager_box.ui:331
 #, fuzzy
@@ -2230,62 +2229,56 @@ msgid "Input Devices"
 msgstr "Eingabegerät"
 
 #: data/ui/pipe_manager_box.ui:343
-#, fuzzy
 msgid "Input Presets"
-msgstr "Eingangs-Presets: "
+msgstr "Eingangs-Presets"
 
 #: data/ui/pipe_manager_box.ui:364
 msgid "Add Autoloading Input Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:383
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "Eingangs-Presets: "
+msgstr "Eingabe der Presets für das automatische Laden"
 
 #: data/ui/pipe_manager_box.ui:413
 msgid "Modules"
 msgstr "Module"
 
 #: data/ui/pipe_manager_box.ui:431
-#, fuzzy
 msgid "Modules List"
-msgstr "Module"
+msgstr "Modulliste"
 
 #: data/ui/pipe_manager_box.ui:445
 msgid "Clients"
-msgstr "Clients"
+msgstr "Clienten"
 
 #: data/ui/pipe_manager_box.ui:463
-#, fuzzy
 msgid "Clients List"
-msgstr "Clients"
+msgstr "Client-Liste"
 
 #: data/ui/pipe_manager_box.ui:477
 msgid "Test Signal"
 msgstr "Testsignal"
 
 #: data/ui/pipe_manager_box.ui:485 data/ui/preferences_spectrum.ui:12
-#, fuzzy
 msgid "Enabled"
-msgstr "Aktivieren"
+msgstr "Aktiviert"
 
 #: data/ui/pipe_manager_box.ui:500
 msgid "Properties"
-msgstr ""
+msgstr "Eigenschaften"
 
 #: data/ui/pipe_manager_box.ui:528
 msgid "Both"
 msgstr "Beide"
 
 #: data/ui/pipe_manager_box.ui:532
-#, fuzzy
 msgid "Both Channels"
-msgstr "Kanäle"
+msgstr "Beide Kanäle"
 
 #: data/ui/pipe_manager_box.ui:541
 msgid "Waveform"
-msgstr ""
+msgstr "Schwingungsverlauf"
 
 #: data/ui/pipe_manager_box.ui:545
 msgid "Sine Wave"
@@ -2320,9 +2313,8 @@ msgid "Crispness"
 msgstr "Klarheit"
 
 #: data/ui/plugin_row.ui:26
-#, fuzzy
 msgid "Remove this plugin"
-msgstr "Diese Preset-Datei entfernen"
+msgstr "Dieses Plugin entfernen"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Plugin"
@@ -2330,27 +2322,23 @@ msgstr "Plugin hinzufügen"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
-msgstr ""
+msgstr "Benutzte Plugins"
 
 #: data/ui/plugins_menu.ui:19
-#, fuzzy
 msgid "Search Plugin"
-msgstr "Suche"
+msgstr "Suche Plugin"
 
 #: data/ui/plugins_menu.ui:74
-#, fuzzy
 msgid "Plugins List"
-msgstr "Plugins"
+msgstr "Pluginliste"
 
 #: data/ui/preferences_general.ui:5
-#, fuzzy
 msgid "_General"
-msgstr "Allgemein"
+msgstr "_Allgemein"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Gerät"
+msgstr "Dienst"
 
 #: data/ui/preferences_general.ui:13
 msgid "Start Service at Login"
@@ -2358,11 +2346,11 @@ msgstr "Dienst beim Login starten"
 
 #: data/ui/preferences_general.ui:26
 msgid "Shutdown on Window Close"
-msgstr ""
+msgstr "Beim Schließen des Fensters herunterfahren"
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
 msgid "Process All Outputs"
@@ -2374,7 +2362,7 @@ msgstr "Alle Eingänge verarbeiten"
 
 #: data/ui/preferences_general.ui:67
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "Verwende kubische Lautstärke"
 
 #: data/ui/preferences_general.ui:79
 msgid "Reset Our Devices Volume on Startup"
@@ -2382,7 +2370,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "Stil"
 
 #: data/ui/preferences_general.ui:96
 msgid "Use Dark Theme"
@@ -2393,13 +2381,12 @@ msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:5
-#, fuzzy
 msgid "_Spectrum"
-msgstr "Spektrum"
+msgstr "_Spektrum"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Form"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
@@ -2435,25 +2422,23 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Abgerundete Ecken"
 
 #: data/ui/preferences_spectrum.ui:152
-#, fuzzy
 msgid "Color"
-msgstr "Achsenfarbe"
+msgstr "Farbe"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
-msgstr ""
+msgstr "Linien und Leisten"
 
 #: data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
-msgstr ""
+msgstr "Achsentitel"
 
 #: data/ui/preferences_spectrum.ui:185
-#, fuzzy
 msgid "Frequency Range"
-msgstr "Frequenz"
+msgstr "Frequenzspanne"
 
 #: data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
@@ -2476,9 +2461,8 @@ msgid "Speakers"
 msgstr "Lautsprecher"
 
 #: data/ui/presets_menu.ui:54
-#, fuzzy
 msgid "New Output Preset Name"
-msgstr "Ausgabe-Presets: "
+msgstr "Neuer Ausgabe-Presetname"
 
 #: data/ui/presets_menu.ui:62 data/ui/presets_menu.ui:215
 msgid "Create Preset"
@@ -2489,33 +2473,28 @@ msgid "Import Presets"
 msgstr "Presets importieren"
 
 #: data/ui/presets_menu.ui:94
-#, fuzzy
 msgid "Search Output Preset"
-msgstr "Ausgabe-Presets: "
+msgstr "Ausgabe-Preset suchen"
 
 #: data/ui/presets_menu.ui:155
-#, fuzzy
 msgid "Output Presets List"
-msgstr "Ausgabe-Presets: "
+msgstr "Ausgabe-Presets"
 
 #: data/ui/presets_menu.ui:181
 msgid "Microphone"
 msgstr "Mikrofon"
 
 #: data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "New Input Preset Name"
-msgstr "Eingangs-Presets: "
+msgstr "Neuer Eingabe-Presetname"
 
 #: data/ui/presets_menu.ui:247
-#, fuzzy
 msgid "Search Input Preset"
-msgstr "Eingangs-Presets: "
+msgstr "Eingabe-Preset suchen"
 
 #: data/ui/presets_menu.ui:308
-#, fuzzy
 msgid "Input Presets List"
-msgstr "Eingangs-Presets: "
+msgstr "Eingabe-Presetliste"
 
 #: data/ui/reverb.ui:43
 msgid "High Frequency Damping"
@@ -2622,9 +2601,8 @@ msgid "Models"
 msgstr "Modelle"
 
 #: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
-#, fuzzy
 msgid "Standard Model"
-msgstr "Standard RNNoise-Modell"
+msgstr "Standard-Modell"
 
 #: data/ui/rnnoise.ui:84
 #, fuzzy
@@ -2645,41 +2623,36 @@ msgid "Overview"
 msgstr "Gerät"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the EasyEffects Manual"
-msgstr "EasyEffects zurücksetzen."
+msgstr "Öffne die EasyEffects Bedinungsanleitung"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Vollbildschirm/Vom Vollbildschirm wiederherstellen"
 
 #: data/ui/shortcuts.ui:30
-#, fuzzy
 msgid "Close the Window"
-msgstr "Fenster verstecken."
+msgstr "Fenster schließen"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit EasyEffects"
-msgstr "Über EasyEffects"
+msgstr "EasyEffects beenden"
 
 #: data/ui/stereo_tools.ui:50 data/ui/stereo_tools.ui:391
 msgid "Balance"
 msgstr "Balance"
 
 #: data/ui/stereo_tools.ui:77
-#, fuzzy
 msgid "Input Balance"
-msgstr "Balance"
+msgstr "Eingangsverstärkung"
 
 #: data/ui/stereo_tools.ui:86
 msgid "Softclip"
 msgstr "Softclip"
 
 #: data/ui/stereo_tools.ui:114
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Softclip"
+msgstr "Softclip-Stufe"
 
 #: data/ui/stereo_tools.ui:126
 msgid "Stereo Matrix"

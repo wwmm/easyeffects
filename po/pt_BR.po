@@ -26,11 +26,9 @@ msgstr ""
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
+msgstr "Efeitos de Áudio para Programas que Utilizam PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
@@ -549,9 +547,8 @@ msgid "\"Presets\""
 msgstr "\"Predefinições\""
 
 #: data/ui/app_info.ui:69 data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Blocklist"
-msgstr "Lista Negra"
+msgstr "Adicionar à Lista de Bloqueio"
 
 #: data/ui/app_info.ui:87
 msgid "Format"
@@ -575,75 +572,73 @@ msgid "State"
 msgstr "Estado"
 
 #: data/ui/app_info.ui:208
-#, fuzzy
 msgid "Mute Application"
-msgstr "Aplicativos"
+msgstr "Silenciar o Aplicativo"
 
 #: data/ui/app_info.ui:243
-#, fuzzy
 msgid "Application Volume"
-msgstr "Aplicativos"
+msgstr "Volume do Aplicativo"
 
 #: data/ui/application_window.ui:6
+#, fuzzy
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferências"
 
 #: data/ui/application_window.ui:10
+#, fuzzy
 msgid "_Manual"
-msgstr ""
+msgstr "_Manual"
 
 #: data/ui/application_window.ui:14
-#, fuzzy
 msgid "_Shortcuts"
-msgstr "Curto Prazo"
+msgstr "_Atalhos"
 
 #: data/ui/application_window.ui:20
-#, fuzzy
 msgid "_Reset Settings"
-msgstr "Configurações"
+msgstr "_Redefinir as Configurações"
 
 #: data/ui/application_window.ui:26
 #, fuzzy
 msgid "_About EasyEffects"
-msgstr "EasyEffects"
+msgstr "_Sobre EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
 #: src/presets_menu.cpp:112 src/presets_menu.cpp:258 src/presets_menu.cpp:259
-#: src/presets_menu.cpp:276 src/presets_menu.cpp:277
+#: src/presets_menu.cpp:276 src/presets_menu.cpp:277 src/presets_menu.cpp:256
+#: src/presets_menu.cpp:257 src/presets_menu.cpp:274 src/presets_menu.cpp:275
 msgid "Presets"
 msgstr "Predefinições"
 
 #: data/ui/application_window.ui:54
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Predefinições"
+msgstr "Menu de Predefinições"
 
 #: data/ui/application_window.ui:61 data/ui/application_window.ui:66
 #, fuzzy
 msgid "Global Bypass"
-msgstr "Ignorar"
+msgstr "Bypass Global"
 
 #: data/ui/application_window.ui:76
+#, fuzzy
 msgid "Primary Menu"
-msgstr ""
+msgstr "Menu Principal"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "EasyEffects Window"
-msgstr "EasyEffects"
+msgstr "Janela do EasyEffects"
 
 #: data/ui/apps_box.ui:19
-#, fuzzy
 msgid "Applications List"
-msgstr "Aplicativos"
+msgstr "Lista de Aplicativos"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
 msgstr "Alvo"
 
 #: data/ui/autogain.ui:53
+#, fuzzy
 msgid "Reference"
-msgstr ""
+msgstr "Referência"
 
 #: data/ui/autogain.ui:65 data/ui/autogain.ui:120
 msgid "Momentary"
@@ -792,16 +787,17 @@ msgstr "Dispositivo de Entrada"
 msgid "Name"
 msgstr "Nome"
 
-#: data/ui/autoload_row.ui:62
+#: data/ui/autoload_row.ui:62 data/ui/autoload_row.ui:39
 msgid "Profile"
 msgstr ""
 
-#: data/ui/autoload_row.ui:86
+#: data/ui/autoload_row.ui:86 data/ui/autoload_row.ui:63
 #, fuzzy
 msgid "Preset"
 msgstr "Predefinições"
 
 #: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:87
 msgid "Remove"
 msgstr ""
 
@@ -2406,11 +2402,11 @@ msgstr ""
 msgid "Process All Outputs"
 msgstr "Processar Todas as Saídas"
 
-#: data/ui/preferences_general.ui:55
+#: data/ui/preferences_general.ui:55 data/ui/preferences_general.ui:54
 msgid "Process All Inputs"
 msgstr "Processar Todas as Entradas"
 
-#: data/ui/preferences_general.ui:67
+#: data/ui/preferences_general.ui:67 data/ui/preferences_general.ui:65
 msgid "Use Cubic Volume"
 msgstr ""
 
@@ -2419,14 +2415,15 @@ msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
 #: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:79
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:96 data/ui/preferences_general.ui:82
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:108 data/ui/preferences_general.ui:94
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -2498,6 +2495,7 @@ msgid "Minimum"
 msgstr "Máximo"
 
 #: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
+#: src/convolver_menu_impulses.cpp:135
 msgid "Load"
 msgstr ""
 
@@ -2824,40 +2822,40 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/application.cpp:313
+#: src/application.cpp:313 src/application.cpp:305
 msgid "Output Presets: "
 msgstr "Predefinições de Saída: "
 
-#: src/application.cpp:321
+#: src/application.cpp:321 src/application.cpp:313
 msgid "Input Presets: "
 msgstr "Predefinições de Entrada: "
 
-#: src/application.cpp:418
+#: src/application.cpp:418 src/application.cpp:410
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: src/application.cpp:504
+#: src/application.cpp:504 src/application.cpp:496
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Sair do EasyEffects. Útil quando executando em modo de serviço."
 
-#: src/application.cpp:507
+#: src/application.cpp:507 src/application.cpp:499
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
 
-#: src/application.cpp:510
+#: src/application.cpp:510 src/application.cpp:502
 msgid "Reset EasyEffects."
 msgstr "Redefinir o EasyEffects."
 
-#: src/application.cpp:513
+#: src/application.cpp:513 src/application.cpp:505
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:516
+#: src/application.cpp:516 src/application.cpp:508
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:519
+#: src/application.cpp:519 src/application.cpp:511
 msgid "Show available presets."
 msgstr "Mostrar predefinições disponíveis."
 
@@ -2883,12 +2881,12 @@ msgstr "Cancelar"
 msgid "Impulse Response"
 msgstr "Resposta de Impulso"
 
-#: src/convolver_menu_impulses.cpp:199
+#: src/convolver_menu_impulses.cpp:199 src/convolver_menu_impulses.cpp:197
 #, fuzzy
 msgid "Load Impulse"
 msgstr "Resposta de Impulso"
 
-#: src/convolver_menu_impulses.cpp:202
+#: src/convolver_menu_impulses.cpp:202 src/convolver_menu_impulses.cpp:200
 #, fuzzy
 msgid "Remove Impulse"
 msgstr "Importar Impulso"
@@ -2928,7 +2926,8 @@ msgstr "Importar Predefinições"
 msgid "APO Presets"
 msgstr "Predefinições"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:308 src/pipe_manager_box.cpp:305
+#: src/pipe_manager_box.cpp:289
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Remover este arquivo de predefinição"

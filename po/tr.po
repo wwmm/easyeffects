@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-10 13:00-0300\n"
-"PO-Revision-Date: 2019-09-13 19:47+0300\n"
-"Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
-"Language-Team: Turkish <teknomobil@yandex.com>\n"
+"PO-Revision-Date: 2022-01-10 04:32+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
+"tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/ui/application.glade:41 src/calibration_ui.cpp:39
 #: src/calibration_ui.cpp:164
@@ -374,7 +375,7 @@ msgstr "Giriş Kazancı"
 
 #: data/ui/limiter.glade:182
 msgid "Limit"
-msgstr "Limit"
+msgstr "Sınır"
 
 #: data/ui/limiter.glade:237 data/ui/compressor.glade:373
 #: data/ui/multiband_compressor.glade:534
@@ -1427,7 +1428,7 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"EasyEffects, varsayılan PulseAudio ses sunucusunu kullandığından, "
+"EasyEffects, öntanımlı PulseAudio ses sunucusunu kullandığından, "
 "kullandığınız uygulamaların tümü olmasa da çoğu ile çalışacaktır. "
 "Desteklenen tüm uygulamalar, her birinin ayrı ayrı etkinleştirilebileceği "
 "ana pencerede sunulur."

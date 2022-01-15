@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-15 15:31-0300\n"
-"PO-Revision-Date: 2021-12-22 12:21+0100\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2022-01-11 15:04+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
+"da/>\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
-"Last-Translator: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: da\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -630,7 +631,7 @@ msgstr "Impulser"
 #: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:114
 #: data/ui/convolver_menu_combine.ui:117
 msgid "Combine"
-msgstr "Kompiner"
+msgstr "Kombiner"
 
 #: data/ui/convolver.ui:85
 msgid "Stereo Width"
