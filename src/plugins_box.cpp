@@ -27,6 +27,12 @@ auto constexpr log_tag = "plugins_box: ";
 
 struct Data {
  public:
+  Data() {
+    using namespace plugin_name;
+
+    this->translated = get_translated();
+  }
+
   ~Data() { util::debug(log_tag + "data struct destroyed"s); }
 
   bool schedule_signal_idle;
@@ -34,6 +40,8 @@ struct Data {
   app::Application* application;
 
   PipelineType pipeline_type;
+
+  std::map<std::string, std::string> translated;
 
   std::vector<sigc::connection> connections;
 
@@ -398,10 +406,10 @@ void setup_listview(PluginsBox* self) {
                      g_object_set_data(G_OBJECT(top_box), "page-name", const_cast<char*>(name));
                      g_object_set_data(G_OBJECT(remove), "page-name", const_cast<char*>(name));
 
-                     gtk_label_set_text(label, plugin_name::translated[name].c_str());
+                     gtk_label_set_text(label, self->data->translated[name].c_str());
 
                      gtk_accessible_update_property(GTK_ACCESSIBLE(remove), GTK_ACCESSIBLE_PROPERTY_LABEL,
-                                                    (_("Remove") + " "s + plugin_name::translated[name]).c_str(), -1);
+                                                    (_("Remove") + " "s + self->data->translated[name]).c_str(), -1);
 
                      const auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
 

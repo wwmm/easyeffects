@@ -25,6 +25,27 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "plugins_menu: ";
 
+struct Data {
+ public:
+  Data() {
+    using namespace plugin_name;
+
+    this->translated = get_translated();
+  }
+
+  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+
+  bool schedule_signal_idle;
+
+  app::Application* application;
+
+  std::map<std::string, std::string> translated;
+
+  std::vector<sigc::connection> connections;
+
+  std::vector<gulong> gconnections;
+};
+
 struct _PluginsMenu {
   GtkPopover parent_instance;
 
@@ -36,11 +57,7 @@ struct _PluginsMenu {
 
   GSettings *settings, *app_settings;
 
-  app::Application* application;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections;
+  Data* data;
 };
 
 G_DEFINE_TYPE(PluginsMenu, plugins_menu, GTK_TYPE_POPOVER)
@@ -76,7 +93,7 @@ void setup_listview(PluginsMenu* self) {
 
                 std::string key_name;
 
-                for (const auto& [key, value] : plugin_name::translated) {
+                for (const auto& [key, value] : self->data->translated) {
                   if (translated_name == value) {
                     key_name = key;
 
@@ -133,13 +150,13 @@ void setup_listview(PluginsMenu* self) {
 
   g_object_unref(factory);
 
-  for (const auto& translated_name : std::views::values(plugin_name::translated)) {
+  for (const auto& translated_name : std::views::values(self->data->translated)) {
     gtk_string_list_append(self->string_list, translated_name.c_str());
   }
 }
 
 void setup(PluginsMenu* self, app::Application* application, PipelineType pipeline_type) {
-  self->application = application;
+  self->data->application = application;
 
   switch (pipeline_type) {
     case PipelineType::input: {
@@ -160,7 +177,7 @@ void setup(PluginsMenu* self, app::Application* application, PipelineType pipeli
 void show(GtkWidget* widget) {
   auto* self = EE_PLUGINS_MENU(widget);
 
-  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
   auto active_window_height = gtk_widget_get_allocated_height(GTK_WIDGET(active_window));
 
@@ -174,16 +191,16 @@ void show(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_PLUGINS_MENU(object);
 
-  for (auto& c : self->connections) {
+  for (auto& c : self->data->connections) {
     c.disconnect();
   }
 
-  for (auto& handler_id : self->gconnections) {
+  for (auto& handler_id : self->data->gconnections) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  self->connections.clear();
-  self->gconnections.clear();
+  self->data->connections.clear();
+  self->data->gconnections.clear();
 
   g_object_unref(self->settings);
   g_object_unref(self->app_settings);
@@ -193,11 +210,22 @@ void dispose(GObject* object) {
   G_OBJECT_CLASS(plugins_menu_parent_class)->dispose(object);
 }
 
+void finalize(GObject* object) {
+  auto* self = EE_PLUGINS_MENU(object);
+
+  delete self->data;
+
+  util::debug(log_tag + "finalized"s);
+
+  G_OBJECT_CLASS(plugins_menu_parent_class)->finalize(object);
+}
+
 void plugins_menu_class_init(PluginsMenuClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   object_class->dispose = dispose;
+  object_class->finalize = finalize;
 
   widget_class->show = show;
 
@@ -211,6 +239,8 @@ void plugins_menu_class_init(PluginsMenuClass* klass) {
 
 void plugins_menu_init(PluginsMenu* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->data = new Data();
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
 

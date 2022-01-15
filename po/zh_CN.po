@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-15 12:34-0300\n"
+"POT-Creation-Date: 2022-01-15 15:43-0300\n"
 "PO-Revision-Date: 2022-01-15 15:15+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -674,8 +674,7 @@ msgstr "相对值"
 msgid "Range"
 msgstr "范围"
 
-#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
-#: include/plugin_name.hpp:96
+#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
 msgid "Loudness"
 msgstr "响度"
 
@@ -783,7 +782,7 @@ msgstr "概述"
 msgid "Preset"
 msgstr "预设"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
 msgid "Remove"
 msgstr "删除"
 
@@ -842,7 +841,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr ""
 
-#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
+#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
 msgstr "压缩器"
 
@@ -2871,7 +2870,91 @@ msgstr "APO 预设"
 msgid "Remove Autoloading Preset"
 msgstr "自动加载预设"
 
-#: src/plugins_menu.cpp:128
+#: src/plugin_name.cpp:25
+msgid "Autogain"
+msgstr "自动增益"
+
+#: src/plugin_name.cpp:26
+msgid "Bass Enhancer"
+msgstr "低音增强"
+
+#: src/plugin_name.cpp:27
+msgid "Bass Loudness"
+msgstr "低音响度"
+
+#: src/plugin_name.cpp:29
+msgid "Convolver"
+msgstr "卷积混响器"
+
+#: src/plugin_name.cpp:30
+msgid "Crossfeed"
+msgstr "交叉反馈"
+
+#: src/plugin_name.cpp:31
+msgid "Crystalizer"
+msgstr ""
+
+#: src/plugin_name.cpp:32
+msgid "Deesser"
+msgstr "齿音消除"
+
+#: src/plugin_name.cpp:33
+msgid "Delay"
+msgstr "延迟"
+
+#: src/plugin_name.cpp:34
+msgid "Echo Canceller"
+msgstr "回音消除"
+
+#: src/plugin_name.cpp:35
+msgid "Equalizer"
+msgstr "均衡器"
+
+#: src/plugin_name.cpp:36
+msgid "Exciter"
+msgstr "激励器"
+
+#: src/plugin_name.cpp:37
+msgid "Filter"
+msgstr "过滤器"
+
+#: src/plugin_name.cpp:38
+msgid "Gate"
+msgstr "门限"
+
+#: src/plugin_name.cpp:39
+msgid "Limiter"
+msgstr "限幅器"
+
+#: src/plugin_name.cpp:41
+msgid "Maximizer"
+msgstr "放大器"
+
+#: src/plugin_name.cpp:42
+msgid "Multiband Compressor"
+msgstr "多频段压缩器"
+
+#: src/plugin_name.cpp:43
+msgid "Multiband Gate"
+msgstr "多频段门限"
+
+#: src/plugin_name.cpp:44
+msgid "Pitch"
+msgstr "音高"
+
+#: src/plugin_name.cpp:45
+msgid "Reverberation"
+msgstr "混响"
+
+#: src/plugin_name.cpp:46
+msgid "Noise Reduction"
+msgstr "降噪"
+
+#: src/plugin_name.cpp:47
+msgid "Stereo Tools"
+msgstr "立体声工具"
+
+#: src/plugins_menu.cpp:145
 msgid "Add"
 msgstr ""
 
@@ -2888,90 +2971,6 @@ msgstr "导入模型"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "标准 RNNoise 模型"
-
-#: include/plugin_name.hpp:81
-msgid "Autogain"
-msgstr "自动增益"
-
-#: include/plugin_name.hpp:82
-msgid "Bass Enhancer"
-msgstr "低音增强"
-
-#: include/plugin_name.hpp:83
-msgid "Bass Loudness"
-msgstr "低音响度"
-
-#: include/plugin_name.hpp:85
-msgid "Convolver"
-msgstr "卷积混响器"
-
-#: include/plugin_name.hpp:86
-msgid "Crossfeed"
-msgstr "交叉反馈"
-
-#: include/plugin_name.hpp:87
-msgid "Crystalizer"
-msgstr ""
-
-#: include/plugin_name.hpp:88
-msgid "Deesser"
-msgstr "齿音消除"
-
-#: include/plugin_name.hpp:89
-msgid "Delay"
-msgstr "延迟"
-
-#: include/plugin_name.hpp:90
-msgid "Echo Canceller"
-msgstr "回音消除"
-
-#: include/plugin_name.hpp:91
-msgid "Equalizer"
-msgstr "均衡器"
-
-#: include/plugin_name.hpp:92
-msgid "Exciter"
-msgstr "激励器"
-
-#: include/plugin_name.hpp:93
-msgid "Filter"
-msgstr "过滤器"
-
-#: include/plugin_name.hpp:94
-msgid "Gate"
-msgstr "门限"
-
-#: include/plugin_name.hpp:95
-msgid "Limiter"
-msgstr "限幅器"
-
-#: include/plugin_name.hpp:97
-msgid "Maximizer"
-msgstr "放大器"
-
-#: include/plugin_name.hpp:98
-msgid "Multiband Compressor"
-msgstr "多频段压缩器"
-
-#: include/plugin_name.hpp:99
-msgid "Multiband Gate"
-msgstr "多频段门限"
-
-#: include/plugin_name.hpp:100
-msgid "Pitch"
-msgstr "音高"
-
-#: include/plugin_name.hpp:101
-msgid "Reverberation"
-msgstr "混响"
-
-#: include/plugin_name.hpp:102
-msgid "Noise Reduction"
-msgstr "降噪"
-
-#: include/plugin_name.hpp:103
-msgid "Stereo Tools"
-msgstr "立体声工具"
 
 #~ msgid "Set the volume and turn on/off effects"
 #~ msgstr "设置音量和 打开/关闭音效"

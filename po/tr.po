@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-15 12:34-0300\n"
+"POT-Creation-Date: 2022-01-15 15:43-0300\n"
 "PO-Revision-Date: 2022-01-15 17:41+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -130,7 +130,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
-msgstr "Ayarlar menüsü, LibAdwaita widget'ları kullanılarak yeniden tasarlandı."
+msgstr ""
+"Ayarlar menüsü, LibAdwaita widget'ları kullanılarak yeniden tasarlandı."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 msgid ""
@@ -684,8 +685,7 @@ msgstr "Göreceli"
 msgid "Range"
 msgstr "Sınır"
 
-#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
-#: include/plugin_name.hpp:96
+#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
 msgid "Loudness"
 msgstr "Yüksek Ses"
 
@@ -794,7 +794,7 @@ msgstr "Profil"
 msgid "Preset"
 msgstr "Ön Ayarlar"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -852,7 +852,7 @@ msgstr "Kara Listeye Alınan Uygulamalar Listesi"
 msgid "Show Blocklisted Applications"
 msgstr "Kara Listeye Alınan Uygulamaları Göster"
 
-#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
+#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
 msgstr "Sıkıştırıcı"
 
@@ -2831,7 +2831,93 @@ msgstr "APO Ön Ayarları"
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/plugins_menu.cpp:128
+#: src/plugin_name.cpp:25
+#, fuzzy
+msgid "Autogain"
+msgstr "Otomatik Kazanç"
+
+#: src/plugin_name.cpp:26
+msgid "Bass Enhancer"
+msgstr "Bas Yükseltici"
+
+#: src/plugin_name.cpp:27
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Yüksek Ses"
+
+#: src/plugin_name.cpp:29
+msgid "Convolver"
+msgstr "Sarsıcı"
+
+#: src/plugin_name.cpp:30
+msgid "Crossfeed"
+msgstr "Çapraz Besleme"
+
+#: src/plugin_name.cpp:31
+msgid "Crystalizer"
+msgstr "Kristalleştirici"
+
+#: src/plugin_name.cpp:32
+msgid "Deesser"
+msgstr "Deesser"
+
+#: src/plugin_name.cpp:33
+msgid "Delay"
+msgstr "Gecikme"
+
+#: src/plugin_name.cpp:34
+msgid "Echo Canceller"
+msgstr "Yankı Önleyici"
+
+#: src/plugin_name.cpp:35
+msgid "Equalizer"
+msgstr "Ekolayzır"
+
+#: src/plugin_name.cpp:36
+msgid "Exciter"
+msgstr "Uyarıcı"
+
+#: src/plugin_name.cpp:37
+msgid "Filter"
+msgstr "Süzgeç"
+
+#: src/plugin_name.cpp:38
+msgid "Gate"
+msgstr "Aralık"
+
+#: src/plugin_name.cpp:39
+msgid "Limiter"
+msgstr "Sınırlayıcı"
+
+#: src/plugin_name.cpp:41
+msgid "Maximizer"
+msgstr "Yükseltici"
+
+#: src/plugin_name.cpp:42
+msgid "Multiband Compressor"
+msgstr "Çoklu Bant Şıkıştırıcı"
+
+#: src/plugin_name.cpp:43
+msgid "Multiband Gate"
+msgstr "Çoklu Bant Geçitleme"
+
+#: src/plugin_name.cpp:44
+msgid "Pitch"
+msgstr "Perde"
+
+#: src/plugin_name.cpp:45
+msgid "Reverberation"
+msgstr "Yankılanma"
+
+#: src/plugin_name.cpp:46
+msgid "Noise Reduction"
+msgstr "Gürültü Azaltma"
+
+#: src/plugin_name.cpp:47
+msgid "Stereo Tools"
+msgstr "Stereo Araçları"
+
+#: src/plugins_menu.cpp:145
 msgid "Add"
 msgstr ""
 
@@ -2846,92 +2932,6 @@ msgstr "Model Dosyasını İçe Aktar"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr ""
-
-#: include/plugin_name.hpp:81
-#, fuzzy
-msgid "Autogain"
-msgstr "Otomatik Kazanç"
-
-#: include/plugin_name.hpp:82
-msgid "Bass Enhancer"
-msgstr "Bas Yükseltici"
-
-#: include/plugin_name.hpp:83
-#, fuzzy
-msgid "Bass Loudness"
-msgstr "Yüksek Ses"
-
-#: include/plugin_name.hpp:85
-msgid "Convolver"
-msgstr "Sarsıcı"
-
-#: include/plugin_name.hpp:86
-msgid "Crossfeed"
-msgstr "Çapraz Besleme"
-
-#: include/plugin_name.hpp:87
-msgid "Crystalizer"
-msgstr "Kristalleştirici"
-
-#: include/plugin_name.hpp:88
-msgid "Deesser"
-msgstr "Deesser"
-
-#: include/plugin_name.hpp:89
-msgid "Delay"
-msgstr "Gecikme"
-
-#: include/plugin_name.hpp:90
-msgid "Echo Canceller"
-msgstr "Yankı Önleyici"
-
-#: include/plugin_name.hpp:91
-msgid "Equalizer"
-msgstr "Ekolayzır"
-
-#: include/plugin_name.hpp:92
-msgid "Exciter"
-msgstr "Uyarıcı"
-
-#: include/plugin_name.hpp:93
-msgid "Filter"
-msgstr "Süzgeç"
-
-#: include/plugin_name.hpp:94
-msgid "Gate"
-msgstr "Aralık"
-
-#: include/plugin_name.hpp:95
-msgid "Limiter"
-msgstr "Sınırlayıcı"
-
-#: include/plugin_name.hpp:97
-msgid "Maximizer"
-msgstr "Yükseltici"
-
-#: include/plugin_name.hpp:98
-msgid "Multiband Compressor"
-msgstr "Çoklu Bant Şıkıştırıcı"
-
-#: include/plugin_name.hpp:99
-msgid "Multiband Gate"
-msgstr "Çoklu Bant Geçitleme"
-
-#: include/plugin_name.hpp:100
-msgid "Pitch"
-msgstr "Perde"
-
-#: include/plugin_name.hpp:101
-msgid "Reverberation"
-msgstr "Yankılanma"
-
-#: include/plugin_name.hpp:102
-msgid "Noise Reduction"
-msgstr "Gürültü Azaltma"
-
-#: include/plugin_name.hpp:103
-msgid "Stereo Tools"
-msgstr "Stereo Araçları"
 
 #~ msgid "Help"
 #~ msgstr "Yardım"

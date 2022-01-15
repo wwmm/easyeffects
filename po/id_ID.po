@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-15 12:34-0300\n"
+"POT-Creation-Date: 2022-01-15 15:43-0300\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -685,8 +685,7 @@ msgstr "Relatif"
 msgid "Range"
 msgstr "Rentang"
 
-#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
-#: include/plugin_name.hpp:96
+#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
 msgid "Loudness"
 msgstr "Kelantangan"
 
@@ -797,7 +796,7 @@ msgstr ""
 msgid "Preset"
 msgstr "Preset"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
 msgid "Remove"
 msgstr ""
 
@@ -858,7 +857,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Aplikasi"
 
-#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
+#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -2935,7 +2934,96 @@ msgstr "Preset"
 msgid "Remove Autoloading Preset"
 msgstr "Hapus Berkas Preset Ini"
 
-#: src/plugins_menu.cpp:128
+#: src/plugin_name.cpp:25
+#, fuzzy
+msgid "Autogain"
+msgstr "Gain Otomatis"
+
+#: src/plugin_name.cpp:26
+msgid "Bass Enhancer"
+msgstr "Penguat Bass"
+
+#: src/plugin_name.cpp:27
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Kelantangan"
+
+#: src/plugin_name.cpp:29
+msgid "Convolver"
+msgstr "Konvolver"
+
+#: src/plugin_name.cpp:30
+msgid "Crossfeed"
+msgstr "Crossfeed"
+
+#: src/plugin_name.cpp:31
+msgid "Crystalizer"
+msgstr "Pengkristal Suara"
+
+#: src/plugin_name.cpp:32
+msgid "Deesser"
+msgstr "Penghilang Desis"
+
+#: src/plugin_name.cpp:33
+#, fuzzy
+msgid "Delay"
+msgstr "Penundaan"
+
+#: src/plugin_name.cpp:34
+msgid "Echo Canceller"
+msgstr "Penghilang Gema"
+
+#: src/plugin_name.cpp:35
+msgid "Equalizer"
+msgstr "Ekualiser"
+
+#: src/plugin_name.cpp:36
+msgid "Exciter"
+msgstr "Penguat Frekuensi Tinggi"
+
+#: src/plugin_name.cpp:37
+msgid "Filter"
+msgstr "Filter"
+
+#: src/plugin_name.cpp:38
+msgid "Gate"
+msgstr "Gate"
+
+#: src/plugin_name.cpp:39
+msgid "Limiter"
+msgstr "Pembatas"
+
+#: src/plugin_name.cpp:41
+msgid "Maximizer"
+msgstr "Pemaksimal Gain"
+
+#: src/plugin_name.cpp:42
+msgid "Multiband Compressor"
+msgstr "Kompresor Multiband"
+
+#: src/plugin_name.cpp:43
+msgid "Multiband Gate"
+msgstr "Multiband Gate"
+
+#: src/plugin_name.cpp:44
+msgid "Pitch"
+msgstr "Nada"
+
+#: src/plugin_name.cpp:45
+#, fuzzy
+msgid "Reverberation"
+msgstr "Penggemaan"
+
+#: src/plugin_name.cpp:46
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Pengurangan Kuatan"
+
+#: src/plugin_name.cpp:47
+msgid "Stereo Tools"
+msgstr "Pengolah Stereo"
+
+#: src/plugins_menu.cpp:145
 msgid "Add"
 msgstr ""
 
@@ -2953,95 +3041,6 @@ msgstr "Muat Berkas Impuls"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Modus Agresif"
-
-#: include/plugin_name.hpp:81
-#, fuzzy
-msgid "Autogain"
-msgstr "Gain Otomatis"
-
-#: include/plugin_name.hpp:82
-msgid "Bass Enhancer"
-msgstr "Penguat Bass"
-
-#: include/plugin_name.hpp:83
-#, fuzzy
-msgid "Bass Loudness"
-msgstr "Kelantangan"
-
-#: include/plugin_name.hpp:85
-msgid "Convolver"
-msgstr "Konvolver"
-
-#: include/plugin_name.hpp:86
-msgid "Crossfeed"
-msgstr "Crossfeed"
-
-#: include/plugin_name.hpp:87
-msgid "Crystalizer"
-msgstr "Pengkristal Suara"
-
-#: include/plugin_name.hpp:88
-msgid "Deesser"
-msgstr "Penghilang Desis"
-
-#: include/plugin_name.hpp:89
-#, fuzzy
-msgid "Delay"
-msgstr "Penundaan"
-
-#: include/plugin_name.hpp:90
-msgid "Echo Canceller"
-msgstr "Penghilang Gema"
-
-#: include/plugin_name.hpp:91
-msgid "Equalizer"
-msgstr "Ekualiser"
-
-#: include/plugin_name.hpp:92
-msgid "Exciter"
-msgstr "Penguat Frekuensi Tinggi"
-
-#: include/plugin_name.hpp:93
-msgid "Filter"
-msgstr "Filter"
-
-#: include/plugin_name.hpp:94
-msgid "Gate"
-msgstr "Gate"
-
-#: include/plugin_name.hpp:95
-msgid "Limiter"
-msgstr "Pembatas"
-
-#: include/plugin_name.hpp:97
-msgid "Maximizer"
-msgstr "Pemaksimal Gain"
-
-#: include/plugin_name.hpp:98
-msgid "Multiband Compressor"
-msgstr "Kompresor Multiband"
-
-#: include/plugin_name.hpp:99
-msgid "Multiband Gate"
-msgstr "Multiband Gate"
-
-#: include/plugin_name.hpp:100
-msgid "Pitch"
-msgstr "Nada"
-
-#: include/plugin_name.hpp:101
-#, fuzzy
-msgid "Reverberation"
-msgstr "Penggemaan"
-
-#: include/plugin_name.hpp:102
-#, fuzzy
-msgid "Noise Reduction"
-msgstr "Pengurangan Kuatan"
-
-#: include/plugin_name.hpp:103
-msgid "Stereo Tools"
-msgstr "Pengolah Stereo"
 
 #~ msgid "LR4"
 #~ msgstr "LR4"

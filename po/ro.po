@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-15 12:34-0300\n"
+"POT-Creation-Date: 2022-01-15 15:43-0300\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -683,8 +683,7 @@ msgstr "Relativ"
 msgid "Range"
 msgstr "Gamă"
 
-#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
-#: include/plugin_name.hpp:96
+#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
 msgid "Loudness"
 msgstr "Intensitate"
 
@@ -794,7 +793,7 @@ msgstr ""
 msgid "Preset"
 msgstr "Presetări"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
 msgid "Remove"
 msgstr ""
 
@@ -856,7 +855,7 @@ msgstr "Arată programele din Lista de Blocare în Fila Principală"
 msgid "Show Blocklisted Applications"
 msgstr "Arată programele din Lista de Blocare în Fila Principală"
 
-#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
+#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
 msgstr "Compresor"
 
@@ -2900,7 +2899,93 @@ msgstr "Presetări APO"
 msgid "Remove Autoloading Preset"
 msgstr "Șterge fișierul de presetări"
 
-#: src/plugins_menu.cpp:128
+#: src/plugin_name.cpp:25
+#, fuzzy
+msgid "Autogain"
+msgstr "Auto Gain"
+
+#: src/plugin_name.cpp:26
+msgid "Bass Enhancer"
+msgstr "Amplificator Bass"
+
+#: src/plugin_name.cpp:27
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Intensitate"
+
+#: src/plugin_name.cpp:29
+msgid "Convolver"
+msgstr "Convolver"
+
+#: src/plugin_name.cpp:30
+msgid "Crossfeed"
+msgstr "Crossfeed"
+
+#: src/plugin_name.cpp:31
+msgid "Crystalizer"
+msgstr "Cristalizator"
+
+#: src/plugin_name.cpp:32
+msgid "Deesser"
+msgstr "Deesser"
+
+#: src/plugin_name.cpp:33
+msgid "Delay"
+msgstr "Întârziere"
+
+#: src/plugin_name.cpp:34
+msgid "Echo Canceller"
+msgstr "Anulator de Ecou"
+
+#: src/plugin_name.cpp:35
+msgid "Equalizer"
+msgstr "Egalizator"
+
+#: src/plugin_name.cpp:36
+msgid "Exciter"
+msgstr "Excitator"
+
+#: src/plugin_name.cpp:37
+msgid "Filter"
+msgstr "Filtru"
+
+#: src/plugin_name.cpp:38
+msgid "Gate"
+msgstr "Gate"
+
+#: src/plugin_name.cpp:39
+msgid "Limiter"
+msgstr "Limitator"
+
+#: src/plugin_name.cpp:41
+msgid "Maximizer"
+msgstr "Maximizator"
+
+#: src/plugin_name.cpp:42
+msgid "Multiband Compressor"
+msgstr "Compresor Multiband"
+
+#: src/plugin_name.cpp:43
+msgid "Multiband Gate"
+msgstr "Multiband Gate"
+
+#: src/plugin_name.cpp:44
+msgid "Pitch"
+msgstr "Pitch"
+
+#: src/plugin_name.cpp:45
+msgid "Reverberation"
+msgstr "Reverberație"
+
+#: src/plugin_name.cpp:46
+msgid "Noise Reduction"
+msgstr "Reducere Zgomot"
+
+#: src/plugin_name.cpp:47
+msgid "Stereo Tools"
+msgstr "Unelte Stereo"
+
+#: src/plugins_menu.cpp:145
 msgid "Add"
 msgstr ""
 
@@ -2917,92 +3002,6 @@ msgstr "Importă Fișier de Model"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Model Standard RNNoise"
-
-#: include/plugin_name.hpp:81
-#, fuzzy
-msgid "Autogain"
-msgstr "Auto Gain"
-
-#: include/plugin_name.hpp:82
-msgid "Bass Enhancer"
-msgstr "Amplificator Bass"
-
-#: include/plugin_name.hpp:83
-#, fuzzy
-msgid "Bass Loudness"
-msgstr "Intensitate"
-
-#: include/plugin_name.hpp:85
-msgid "Convolver"
-msgstr "Convolver"
-
-#: include/plugin_name.hpp:86
-msgid "Crossfeed"
-msgstr "Crossfeed"
-
-#: include/plugin_name.hpp:87
-msgid "Crystalizer"
-msgstr "Cristalizator"
-
-#: include/plugin_name.hpp:88
-msgid "Deesser"
-msgstr "Deesser"
-
-#: include/plugin_name.hpp:89
-msgid "Delay"
-msgstr "Întârziere"
-
-#: include/plugin_name.hpp:90
-msgid "Echo Canceller"
-msgstr "Anulator de Ecou"
-
-#: include/plugin_name.hpp:91
-msgid "Equalizer"
-msgstr "Egalizator"
-
-#: include/plugin_name.hpp:92
-msgid "Exciter"
-msgstr "Excitator"
-
-#: include/plugin_name.hpp:93
-msgid "Filter"
-msgstr "Filtru"
-
-#: include/plugin_name.hpp:94
-msgid "Gate"
-msgstr "Gate"
-
-#: include/plugin_name.hpp:95
-msgid "Limiter"
-msgstr "Limitator"
-
-#: include/plugin_name.hpp:97
-msgid "Maximizer"
-msgstr "Maximizator"
-
-#: include/plugin_name.hpp:98
-msgid "Multiband Compressor"
-msgstr "Compresor Multiband"
-
-#: include/plugin_name.hpp:99
-msgid "Multiband Gate"
-msgstr "Multiband Gate"
-
-#: include/plugin_name.hpp:100
-msgid "Pitch"
-msgstr "Pitch"
-
-#: include/plugin_name.hpp:101
-msgid "Reverberation"
-msgstr "Reverberație"
-
-#: include/plugin_name.hpp:102
-msgid "Noise Reduction"
-msgstr "Reducere Zgomot"
-
-#: include/plugin_name.hpp:103
-msgid "Stereo Tools"
-msgstr "Unelte Stereo"
 
 #~ msgid "Set the volume and turn on/off effects"
 #~ msgstr "Setează volumul și pornește/oprește efectele"

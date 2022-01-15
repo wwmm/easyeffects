@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-15 12:34-0300\n"
+"POT-Creation-Date: 2022-01-15 15:43-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -687,8 +687,7 @@ msgstr "Relativní"
 msgid "Range"
 msgstr "Rozsah"
 
-#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
-#: include/plugin_name.hpp:96
+#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
 msgid "Loudness"
 msgstr "Hlasitost"
 
@@ -799,7 +798,7 @@ msgstr ""
 msgid "Preset"
 msgstr "Přednastavení"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
 msgid "Remove"
 msgstr ""
 
@@ -860,7 +859,7 @@ msgstr ""
 msgid "Show Blocklisted Applications"
 msgstr "Zobrazit Aplikace z Blocklistu na Hlavní Kartě"
 
-#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
+#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -2933,7 +2932,95 @@ msgstr "APO Přednastavení"
 msgid "Remove Autoloading Preset"
 msgstr "Odstranit tento soubor s přednastavením"
 
-#: src/plugins_menu.cpp:128
+#: src/plugin_name.cpp:25
+#, fuzzy
+msgid "Autogain"
+msgstr "Automatické zesílení"
+
+#: src/plugin_name.cpp:26
+msgid "Bass Enhancer"
+msgstr "Zlepšovač hloubek"
+
+#: src/plugin_name.cpp:27
+#, fuzzy
+msgid "Bass Loudness"
+msgstr "Hlasitost"
+
+#: src/plugin_name.cpp:29
+msgid "Convolver"
+msgstr "Svinovač"
+
+#: src/plugin_name.cpp:30
+msgid "Crossfeed"
+msgstr "Prolínání kanálů"
+
+#: src/plugin_name.cpp:31
+msgid "Crystalizer"
+msgstr "Krystalizátor"
+
+#: src/plugin_name.cpp:32
+msgid "Deesser"
+msgstr "Odstraňovač sykotu"
+
+#: src/plugin_name.cpp:33
+msgid "Delay"
+msgstr "Zpoždění"
+
+#: src/plugin_name.cpp:34
+msgid "Echo Canceller"
+msgstr "Potlačovač echa"
+
+#: src/plugin_name.cpp:35
+msgid "Equalizer"
+msgstr "Ekvalizér"
+
+#: src/plugin_name.cpp:36
+msgid "Exciter"
+msgstr "Zvukový budič"
+
+#: src/plugin_name.cpp:37
+msgid "Filter"
+msgstr "Filtr"
+
+#: src/plugin_name.cpp:38
+msgid "Gate"
+msgstr "Brána"
+
+#: src/plugin_name.cpp:39
+msgid "Limiter"
+msgstr "Omezovač"
+
+#: src/plugin_name.cpp:41
+msgid "Maximizer"
+msgstr "Zvětšovač"
+
+#: src/plugin_name.cpp:42
+msgid "Multiband Compressor"
+msgstr "Vícepásmový kompresor"
+
+#: src/plugin_name.cpp:43
+msgid "Multiband Gate"
+msgstr "Vícepásmová brána"
+
+#: src/plugin_name.cpp:44
+msgid "Pitch"
+msgstr "Výška tónu"
+
+#: src/plugin_name.cpp:45
+#, fuzzy
+msgid "Reverberation"
+msgstr "Dozvuk"
+
+#: src/plugin_name.cpp:46
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Zmenšení zesílení"
+
+#: src/plugin_name.cpp:47
+msgid "Stereo Tools"
+msgstr "Nástroje sterea"
+
+#: src/plugins_menu.cpp:145
 msgid "Add"
 msgstr ""
 
@@ -2951,94 +3038,6 @@ msgstr "Zavést soubor s impulsem"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Agresivní režim"
-
-#: include/plugin_name.hpp:81
-#, fuzzy
-msgid "Autogain"
-msgstr "Automatické zesílení"
-
-#: include/plugin_name.hpp:82
-msgid "Bass Enhancer"
-msgstr "Zlepšovač hloubek"
-
-#: include/plugin_name.hpp:83
-#, fuzzy
-msgid "Bass Loudness"
-msgstr "Hlasitost"
-
-#: include/plugin_name.hpp:85
-msgid "Convolver"
-msgstr "Svinovač"
-
-#: include/plugin_name.hpp:86
-msgid "Crossfeed"
-msgstr "Prolínání kanálů"
-
-#: include/plugin_name.hpp:87
-msgid "Crystalizer"
-msgstr "Krystalizátor"
-
-#: include/plugin_name.hpp:88
-msgid "Deesser"
-msgstr "Odstraňovač sykotu"
-
-#: include/plugin_name.hpp:89
-msgid "Delay"
-msgstr "Zpoždění"
-
-#: include/plugin_name.hpp:90
-msgid "Echo Canceller"
-msgstr "Potlačovač echa"
-
-#: include/plugin_name.hpp:91
-msgid "Equalizer"
-msgstr "Ekvalizér"
-
-#: include/plugin_name.hpp:92
-msgid "Exciter"
-msgstr "Zvukový budič"
-
-#: include/plugin_name.hpp:93
-msgid "Filter"
-msgstr "Filtr"
-
-#: include/plugin_name.hpp:94
-msgid "Gate"
-msgstr "Brána"
-
-#: include/plugin_name.hpp:95
-msgid "Limiter"
-msgstr "Omezovač"
-
-#: include/plugin_name.hpp:97
-msgid "Maximizer"
-msgstr "Zvětšovač"
-
-#: include/plugin_name.hpp:98
-msgid "Multiband Compressor"
-msgstr "Vícepásmový kompresor"
-
-#: include/plugin_name.hpp:99
-msgid "Multiband Gate"
-msgstr "Vícepásmová brána"
-
-#: include/plugin_name.hpp:100
-msgid "Pitch"
-msgstr "Výška tónu"
-
-#: include/plugin_name.hpp:101
-#, fuzzy
-msgid "Reverberation"
-msgstr "Dozvuk"
-
-#: include/plugin_name.hpp:102
-#, fuzzy
-msgid "Noise Reduction"
-msgstr "Zmenšení zesílení"
-
-#: include/plugin_name.hpp:103
-msgid "Stereo Tools"
-msgstr "Nástroje sterea"
 
 #~ msgid "RLC (BT)"
 #~ msgstr "RLC (BT)"

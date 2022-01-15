@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-15 12:34-0300\n"
+"POT-Creation-Date: 2022-01-15 15:43-0300\n"
 "PO-Revision-Date: 2022-01-11 15:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -661,8 +661,7 @@ msgstr "Relativ"
 msgid "Range"
 msgstr ""
 
-#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27
-#: include/plugin_name.hpp:96
+#: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
 msgid "Loudness"
 msgstr ""
 
@@ -769,7 +768,7 @@ msgstr "Profil"
 msgid "Preset"
 msgstr ""
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
 msgid "Remove"
 msgstr "Fjern"
 
@@ -828,7 +827,7 @@ msgstr "Svartelistede programmer"
 msgid "Show Blocklisted Applications"
 msgstr "Vis svartelistede programmer"
 
-#: data/ui/compressor.ui:38 include/plugin_name.hpp:84
+#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
 msgstr "Kompressor"
 
@@ -2709,7 +2708,98 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr ""
 
-#: src/plugins_menu.cpp:128
+#: src/plugin_name.cpp:25
+msgid "Autogain"
+msgstr ""
+
+#: src/plugin_name.cpp:26
+#, fuzzy
+msgid "Bass Enhancer"
+msgstr "Balanse"
+
+#: src/plugin_name.cpp:27
+msgid "Bass Loudness"
+msgstr ""
+
+#: src/plugin_name.cpp:29
+msgid "Convolver"
+msgstr ""
+
+#: src/plugin_name.cpp:30
+msgid "Crossfeed"
+msgstr ""
+
+#: src/plugin_name.cpp:31
+msgid "Crystalizer"
+msgstr ""
+
+#: src/plugin_name.cpp:32
+msgid "Deesser"
+msgstr ""
+
+#: src/plugin_name.cpp:33
+msgid "Delay"
+msgstr ""
+
+#: src/plugin_name.cpp:34
+#, fuzzy
+msgid "Echo Canceller"
+msgstr "Avbryt"
+
+#: src/plugin_name.cpp:35
+msgid "Equalizer"
+msgstr ""
+
+#: src/plugin_name.cpp:36
+msgid "Exciter"
+msgstr ""
+
+#: src/plugin_name.cpp:37
+msgid "Filter"
+msgstr ""
+
+#: src/plugin_name.cpp:38
+msgid "Gate"
+msgstr ""
+
+#: src/plugin_name.cpp:39
+msgid "Limiter"
+msgstr ""
+
+#: src/plugin_name.cpp:41
+#, fuzzy
+msgid "Maximizer"
+msgstr "Maksimum"
+
+#: src/plugin_name.cpp:42
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Kompressor"
+
+#: src/plugin_name.cpp:43
+msgid "Multiband Gate"
+msgstr ""
+
+#: src/plugin_name.cpp:44
+msgid "Pitch"
+msgstr ""
+
+#: src/plugin_name.cpp:45
+#, fuzzy
+msgid "Reverberation"
+msgstr "Tjenerinfo"
+
+#: src/plugin_name.cpp:46
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Reduksjon"
+
+#: src/plugin_name.cpp:47
+#, fuzzy
+msgid "Stereo Tools"
+msgstr "Stereomodus"
+
+#: src/plugins_menu.cpp:145
 msgid "Add"
 msgstr ""
 
@@ -2725,94 +2815,3 @@ msgstr "Importer modellfil"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr ""
-
-#: include/plugin_name.hpp:81
-msgid "Autogain"
-msgstr ""
-
-#: include/plugin_name.hpp:82
-#, fuzzy
-msgid "Bass Enhancer"
-msgstr "Balanse"
-
-#: include/plugin_name.hpp:83
-msgid "Bass Loudness"
-msgstr ""
-
-#: include/plugin_name.hpp:85
-msgid "Convolver"
-msgstr ""
-
-#: include/plugin_name.hpp:86
-msgid "Crossfeed"
-msgstr ""
-
-#: include/plugin_name.hpp:87
-msgid "Crystalizer"
-msgstr ""
-
-#: include/plugin_name.hpp:88
-msgid "Deesser"
-msgstr ""
-
-#: include/plugin_name.hpp:89
-msgid "Delay"
-msgstr ""
-
-#: include/plugin_name.hpp:90
-#, fuzzy
-msgid "Echo Canceller"
-msgstr "Avbryt"
-
-#: include/plugin_name.hpp:91
-msgid "Equalizer"
-msgstr ""
-
-#: include/plugin_name.hpp:92
-msgid "Exciter"
-msgstr ""
-
-#: include/plugin_name.hpp:93
-msgid "Filter"
-msgstr ""
-
-#: include/plugin_name.hpp:94
-msgid "Gate"
-msgstr ""
-
-#: include/plugin_name.hpp:95
-msgid "Limiter"
-msgstr ""
-
-#: include/plugin_name.hpp:97
-#, fuzzy
-msgid "Maximizer"
-msgstr "Maksimum"
-
-#: include/plugin_name.hpp:98
-#, fuzzy
-msgid "Multiband Compressor"
-msgstr "Kompressor"
-
-#: include/plugin_name.hpp:99
-msgid "Multiband Gate"
-msgstr ""
-
-#: include/plugin_name.hpp:100
-msgid "Pitch"
-msgstr ""
-
-#: include/plugin_name.hpp:101
-#, fuzzy
-msgid "Reverberation"
-msgstr "Tjenerinfo"
-
-#: include/plugin_name.hpp:102
-#, fuzzy
-msgid "Noise Reduction"
-msgstr "Reduksjon"
-
-#: include/plugin_name.hpp:103
-#, fuzzy
-msgid "Stereo Tools"
-msgstr "Stereomodus"
