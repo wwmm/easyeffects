@@ -8,26 +8,26 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-14 11:44-0300\n"
-"PO-Revision-Date: 2017-10-14 10:20+0200\n"
-"Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2022-01-15 15:15+0000\n"
+"Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
+"sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Ljudeffekter för PulseAudio applikationer"
+msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
@@ -52,13 +52,12 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Eftersom EasyEffects använder sig av standard PulseAudio som ljudserver "
+"Eftersom EasyEffects använder sig av standard PipeWire som ljudserver "
 "stödjer den de flesta, om inte alla, program du använder. Alla applikationer "
 "som stöds presenteras i huvudfönstret, där var och en kan aktiveras "
 "individuellt."
@@ -543,9 +542,8 @@ msgstr ""
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
-#, fuzzy
 msgid "\"Presets\""
-msgstr "Profiler"
+msgstr "\"Förinställningar\""
 
 #: data/ui/app_info.ui:69 data/ui/blocklist_menu.ui:42
 msgid "Add to Blocklist"
@@ -573,14 +571,12 @@ msgid "State"
 msgstr ""
 
 #: data/ui/app_info.ui:208
-#, fuzzy
 msgid "Mute Application"
-msgstr "Program"
+msgstr "Tysta applikationen"
 
 #: data/ui/app_info.ui:243
-#, fuzzy
 msgid "Application Volume"
-msgstr "Program"
+msgstr "Applikationsvolym"
 
 #: data/ui/application_window.ui:6
 msgid "_Preferences"
@@ -595,14 +591,12 @@ msgid "_Shortcuts"
 msgstr ""
 
 #: data/ui/application_window.ui:20
-#, fuzzy
 msgid "_Reset Settings"
-msgstr "Inställningar"
+msgstr "_Återställ inställningar"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About EasyEffects"
-msgstr "EasyEffects"
+msgstr "_Om EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
 #: src/presets_menu.cpp:112 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -611,9 +605,8 @@ msgid "Presets"
 msgstr "Profiler"
 
 #: data/ui/application_window.ui:54
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Profiler"
+msgstr "Förinställningsmeny"
 
 #: data/ui/application_window.ui:61 data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -624,17 +617,14 @@ msgid "Primary Menu"
 msgstr ""
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "EasyEffects Window"
-msgstr "EasyEffects"
+msgstr "EasyEffects-fönster"
 
 #: data/ui/apps_box.ui:19
-#, fuzzy
 msgid "Applications List"
-msgstr "Program"
+msgstr "Applikationslista"
 
 #: data/ui/autogain.ui:19
-#, fuzzy
 msgid "Target"
 msgstr "Målvärde (dB)"
 
@@ -674,9 +664,8 @@ msgid "Bypass"
 msgstr ""
 
 #: data/ui/autogain.ui:97
-#, fuzzy
 msgid "Reset History"
-msgstr "Återställ kvalitet"
+msgstr "Återställ historik"
 
 #: data/ui/autogain.ui:210
 msgid "Relative"
@@ -691,9 +680,8 @@ msgid "Loudness"
 msgstr ""
 
 #: data/ui/autogain.ui:305
-#, fuzzy
 msgid "Output Gain"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Utgångsförstärkning (dB)"
 
 #: data/ui/autogain.ui:342 data/ui/bass_enhancer.ui:264
 #: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
@@ -718,9 +706,8 @@ msgstr "Ingång"
 #: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
 #: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:217 data/ui/reverb.ui:383
 #: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
-#, fuzzy
 msgid "Plugin Input Gain"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Plugin ingångsförstärkning (dB)"
 
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:348
 #: data/ui/bass_loudness.ui:61 data/ui/bass_loudness.ui:228
@@ -747,9 +734,8 @@ msgstr "Utgång"
 #: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
 #: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:301 data/ui/reverb.ui:467
 #: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
-#, fuzzy
 msgid "Plugin Output Gain"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Plugin utgångsförstärkning (dB)"
 
 #: data/ui/autogain.ui:508 data/ui/bass_enhancer.ui:461
 #: data/ui/bass_loudness.ui:310 data/ui/compressor.ui:1160
@@ -774,12 +760,11 @@ msgstr "Återställ"
 #: data/ui/pitch.ui:378 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
 #: data/ui/stereo_tools.ui:732
 msgid "Using"
-msgstr ""
+msgstr "Använder"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
-#, fuzzy
 msgid "Device"
-msgstr "Ingångs-begränsning"
+msgstr "Enhet"
 
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
 #: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
@@ -790,21 +775,20 @@ msgstr "Namn"
 
 #: data/ui/autoload_row.ui:62
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: data/ui/autoload_row.ui:86
-#, fuzzy
 msgid "Preset"
-msgstr "Profiler"
+msgstr "Förinställning"
 
 #: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
 msgid "Remove"
-msgstr ""
+msgstr "Ta bort"
 
 #: data/ui/bass_enhancer.ui:24 data/ui/compressor.ui:465 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:24
 msgid "Listen"
-msgstr ""
+msgstr "Lyssna"
 
 #: data/ui/bass_enhancer.ui:36 data/ui/exciter.ui:36
 msgid "Blend Harmonics"
@@ -844,18 +828,16 @@ msgid "Link"
 msgstr ""
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
-#, fuzzy
 msgid "Application Name"
-msgstr "Program"
+msgstr "Applikationsnamn"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Blocklisted Applications List"
 msgstr ""
 
 #: data/ui/blocklist_menu.ui:102
-#, fuzzy
 msgid "Show Blocklisted Applications"
-msgstr "Program"
+msgstr "Visa blocklistade applikationer"
 
 #: data/ui/compressor.ui:38
 msgid "Compressor"
@@ -881,14 +863,12 @@ msgid "Boosting"
 msgstr ""
 
 #: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:88
-#, fuzzy
 msgid "Compression Mode"
-msgstr "Ingen komprimering"
+msgstr "Komprimeringsläge"
 
 #: data/ui/compressor.ui:77 data/ui/multiband_compressor_band.ui:765
-#, fuzzy
 msgid "Boost Threshold"
-msgstr "Tröskelvärde (dB)"
+msgstr "Tröskelvärde för förstärkning (dB)"
 
 #: data/ui/compressor.ui:116 data/ui/multiband_compressor_band.ui:721
 msgid "Boost Amount"
@@ -898,7 +878,6 @@ msgstr ""
 #: data/ui/limiter.ui:506 data/ui/multiband_compressor_band.ui:186
 #: data/ui/multiband_gate.ui:223 data/ui/multiband_gate.ui:583
 #: data/ui/multiband_gate.ui:943 data/ui/multiband_gate.ui:1303
-#, fuzzy
 msgid "Attack"
 msgstr "Attack (ms)"
 
@@ -911,44 +890,37 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate.ui:293
 #: data/ui/multiband_gate.ui:653 data/ui/multiband_gate.ui:1013
 #: data/ui/multiband_gate.ui:1373
-#, fuzzy
 msgid "Threshold"
 msgstr "Tröskelvärde (dB)"
 
 #: data/ui/compressor.ui:210 data/ui/multiband_compressor_band.ui:222
-#, fuzzy
 msgid "Attack Time"
-msgstr "Attack (ms)"
+msgstr "Attacktid (ms)"
 
 #: data/ui/compressor.ui:233 data/ui/multiband_compressor_band.ui:247
-#, fuzzy
 msgid "Attack Threshold"
-msgstr "Tröskelvärde (dB)"
+msgstr "Tröskelvärde för attack (dB)"
 
 #: data/ui/compressor.ui:240 data/ui/gate.ui:149 data/ui/limiter.ui:307
 #: data/ui/limiter.ui:543 data/ui/maximizer.ui:95
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate.ui:258
 #: data/ui/multiband_gate.ui:618 data/ui/multiband_gate.ui:978
 #: data/ui/multiband_gate.ui:1338
-#, fuzzy
 msgid "Release"
-msgstr "Release (s)"
+msgstr "Släpp (s)"
 
 #: data/ui/compressor.ui:267 data/ui/multiband_compressor_band.ui:274
-#, fuzzy
 msgid "Release Time"
-msgstr "Release (s)"
+msgstr "Tid för frisläppning (s)"
 
 #: data/ui/compressor.ui:292 data/ui/multiband_compressor_band.ui:302
-#, fuzzy
 msgid "Release Threshold"
-msgstr "Tröskelvärde (dB)"
+msgstr "Tröskelvärde för frisläppning (dB)"
 
 #: data/ui/compressor.ui:299 data/ui/deesser.ui:334 data/ui/gate.ui:218
 #: data/ui/multiband_compressor_band.ui:309 data/ui/multiband_gate.ui:327
 #: data/ui/multiband_gate.ui:687 data/ui/multiband_gate.ui:1047
 #: data/ui/multiband_gate.ui:1407
-#, fuzzy
 msgid "Ratio"
 msgstr "Förhållande (n:1)"
 
@@ -964,21 +936,19 @@ msgstr "Knee-värde (dB)"
 #: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate.ui:396
 #: data/ui/multiband_gate.ui:756 data/ui/multiband_gate.ui:1116
 #: data/ui/multiband_gate.ui:1476
-#, fuzzy
 msgid "Makeup"
 msgstr "Makeup (dB)"
 
 #: data/ui/compressor.ui:418 data/ui/compressor.ui:930
-#, fuzzy
 msgid "Sidechain"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Sidokedja"
 
 #: data/ui/compressor.ui:447 data/ui/deesser.ui:49 data/ui/gate.ui:38
 #: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:204
 #: data/ui/multiband_gate.ui:564 data/ui/multiband_gate.ui:924
 #: data/ui/multiband_gate.ui:1284
 msgid "Peak"
-msgstr "Peak"
+msgstr "Topp"
 
 #: data/ui/compressor.ui:448 data/ui/deesser.ui:48 data/ui/gate.ui:37
 #: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:203
@@ -989,7 +959,6 @@ msgstr ""
 
 #: data/ui/compressor.ui:449 data/ui/compressor.ui:801
 #: data/ui/multiband_compressor_band.ui:462
-#, fuzzy
 msgid "Low-Pass"
 msgstr "Lågpass"
 
@@ -998,23 +967,20 @@ msgid "Uniform"
 msgstr ""
 
 #: data/ui/compressor.ui:457 data/ui/multiband_compressor_band.ui:470
-#, fuzzy
 msgid "Sidechain Mode"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Sidokedjeläge"
 
 #: data/ui/compressor.ui:475 data/ui/multiband_compressor_band.ui:477
 msgid "Source"
 msgstr ""
 
 #: data/ui/compressor.ui:485 data/ui/multiband_compressor_band.ui:488
-#, fuzzy
 msgid "Middle"
-msgstr "Nivå"
+msgstr "Mitten"
 
 #: data/ui/compressor.ui:486 data/ui/multiband_compressor_band.ui:489
-#, fuzzy
 msgid "Side"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Sida"
 
 #: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
 #: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:506
@@ -1030,9 +996,8 @@ msgstr ""
 
 #: data/ui/compressor.ui:495 data/ui/multiband_compressor.ui:98
 #: data/ui/multiband_compressor_band.ui:498
-#, fuzzy
 msgid "Sidechain Source"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Sidokedjekälla"
 
 #: data/ui/compressor.ui:524 data/ui/equalizer_band.ui:98
 msgid "Type"
@@ -1043,28 +1008,24 @@ msgid "Feed-forward"
 msgstr ""
 
 #: data/ui/compressor.ui:549
-#, fuzzy
 msgid "Feed-back"
-msgstr "Knee-värde (dB)"
+msgstr "Respons"
 
 #: data/ui/compressor.ui:550
 msgid "External"
 msgstr ""
 
 #: data/ui/compressor.ui:557
-#, fuzzy
 msgid "Sidechain Type"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Typ av sidokedja"
 
 #: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
-#, fuzzy
 msgid "Input Device"
-msgstr "Ingångs-begränsning"
+msgstr "Ingångsenhet"
 
 #: data/ui/compressor.ui:592
-#, fuzzy
 msgid "PreAmplification"
-msgstr "Program"
+msgstr "Förförstärkning"
 
 #: data/ui/compressor.ui:629 data/ui/multiband_compressor_band.ui:654
 msgid "Reactivity"
@@ -1076,18 +1037,15 @@ msgid "Lookahead"
 msgstr ""
 
 #: data/ui/compressor.ui:709
-#, fuzzy
 msgid "Sidechain Filters"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Sidokedjefilter"
 
 #: data/ui/compressor.ui:719
-#, fuzzy
 msgid "High-Pass"
 msgstr "Högpass"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
 #: data/ui/pipe_manager_box.ui:563
-#, fuzzy
 msgid "Frequency"
 msgstr "Frekvens (Hz)"
 
@@ -1109,24 +1067,20 @@ msgid "36 dB/oct"
 msgstr ""
 
 #: data/ui/compressor.ui:768
-#, fuzzy
 msgid "High-Pass Filter Mode"
-msgstr "Högpass"
+msgstr "Högpassfilterläge"
 
 #: data/ui/compressor.ui:794 data/ui/compressor.ui:850
-#, fuzzy
 msgid "High-Pass Filter Frequency"
-msgstr "Återställ frekvens"
+msgstr "Högpassfilterfrekvens"
 
 #: data/ui/compressor.ui:824
-#, fuzzy
 msgid "Low-Pass Filter Mode"
-msgstr "Högpass"
+msgstr "Lågpassfilterläge"
 
 #: data/ui/compressor.ui:876
-#, fuzzy
 msgid "Gain"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Förstärkning"
 
 #: data/ui/compressor.ui:903
 msgid "Envelope"
@@ -1141,23 +1095,20 @@ msgid "L"
 msgstr "V"
 
 #: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:509
-#, fuzzy
 msgid "Left Channel"
-msgstr "Kanaler"
+msgstr "Vänster kanal"
 
 #: data/ui/convolver.ui:52
 msgid "R"
 msgstr "H"
 
 #: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:520
-#, fuzzy
 msgid "Right Channel"
-msgstr "Kanaler"
+msgstr "Höger kanal"
 
 #: data/ui/convolver.ui:70
-#, fuzzy
 msgid "Impulses"
-msgstr "Platt respons"
+msgstr "Impulser"
 
 #: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
@@ -1165,9 +1116,8 @@ msgid "Combine"
 msgstr ""
 
 #: data/ui/convolver.ui:85
-#, fuzzy
 msgid "Stereo Width"
-msgstr "Ljudförstärkare"
+msgstr "Stereobredd"
 
 #: data/ui/convolver.ui:114
 msgid "Spectrum"
@@ -1178,19 +1128,16 @@ msgid "Log Scale"
 msgstr ""
 
 #: data/ui/convolver.ui:163
-#, fuzzy
 msgid "Samples"
-msgstr "Resampler"
+msgstr "Prover"
 
 #: data/ui/convolver.ui:185
-#, fuzzy
 msgid "Duration"
-msgstr "Kalibrering"
+msgstr "Varaktighet"
 
 #: data/ui/convolver_menu_combine.ui:15
-#, fuzzy
 msgid "Combine Impulse Responses"
-msgstr "Platt respons"
+msgstr "Kombinera impulssvar"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
@@ -1201,18 +1148,16 @@ msgid "Second Kernel"
 msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:91
-#, fuzzy
 msgid "Output File Name"
-msgstr "Utgång"
+msgstr "Utdatafilnamn"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
 msgstr ""
 
 #: data/ui/convolver_menu_impulses.ui:16
-#, fuzzy
 msgid "Import Impulse"
-msgstr "Platt respons"
+msgstr "Importera impuls"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
@@ -1220,14 +1165,12 @@ msgid "Search"
 msgstr ""
 
 #: data/ui/convolver_menu_impulses.ui:27
-#, fuzzy
 msgid "Search Impulse File"
-msgstr "Platt respons"
+msgstr "Sök impulsfil"
 
 #: data/ui/convolver_menu_impulses.ui:47
-#, fuzzy
 msgid "Impulse Files List"
-msgstr "Platt respons"
+msgstr "Lista över impulsfiler"
 
 #: data/ui/crossfeed.ui:27
 msgid "Cmoy"
@@ -1242,14 +1185,12 @@ msgid "Jmeier"
 msgstr ""
 
 #: data/ui/crossfeed.ui:57
-#, fuzzy
 msgid "Cutoff"
-msgstr "Cut-off (Hz)"
+msgstr "Gräns (Hz)"
 
 #: data/ui/crossfeed.ui:92
-#, fuzzy
 msgid "Feed"
-msgstr "Knee-värde (dB)"
+msgstr "Mata (dB)"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:321
 #: data/ui/multiband_compressor_band.ui:136 data/ui/stereo_tools.ui:169
@@ -1258,9 +1199,8 @@ msgid "Mute"
 msgstr ""
 
 #: data/ui/deesser.ui:41 data/ui/gate.ui:30
-#, fuzzy
 msgid "Detection"
-msgstr "Försvagning"
+msgstr "Upptäckt"
 
 #: data/ui/deesser.ui:72
 msgid "Wide"
@@ -1275,73 +1215,60 @@ msgid "F1 Split"
 msgstr ""
 
 #: data/ui/deesser.ui:109
-#, fuzzy
 msgid "Frequency 1 Split"
-msgstr "Frekvens (Hz)"
+msgstr "Frekvens 1 delning (Hz)"
 
 #: data/ui/deesser.ui:122
-#, fuzzy
 msgid "F2 Peak"
-msgstr "Peak"
+msgstr "F2 topp"
 
 #: data/ui/deesser.ui:142
-#, fuzzy
 msgid "Frequency 2 Peak"
-msgstr "Frekvens (Hz)"
+msgstr "Frekvens 2 topp (Hz)"
 
 #: data/ui/deesser.ui:160
-#, fuzzy
 msgid "F1 Gain"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "F1 förstärkning (dB)"
 
 #: data/ui/deesser.ui:188
-#, fuzzy
 msgid "Frequency 1 Gain"
-msgstr "Frekvens (Hz)"
+msgstr "Frekvens 1 förstärkning (Hz)"
 
 #: data/ui/deesser.ui:195
-#, fuzzy
 msgid "F2 Level"
-msgstr "Nivå"
+msgstr "F2 nivå"
 
 #: data/ui/deesser.ui:223
-#, fuzzy
 msgid "Frequency 2 Level"
-msgstr "Frekvens (Hz)"
+msgstr "Frekvens 2 nivå (Hz)"
 
 #: data/ui/deesser.ui:230
-#, fuzzy
 msgid "F2 Peak Q"
-msgstr "Peak"
+msgstr "F2 topp Q"
 
 #: data/ui/deesser.ui:258
-#, fuzzy
 msgid "Frequency 2 Peak Q"
-msgstr "Frekvens (Hz)"
+msgstr "Frekvens 2 topp Q"
 
 #: data/ui/deesser.ui:265
 msgid "Laxity"
 msgstr ""
 
 #: data/ui/deesser.ui:580
-#, fuzzy
 msgid "Detected"
-msgstr "Försvagning"
+msgstr "Upptäckt"
 
 #: data/ui/deesser.ui:610 data/ui/maximizer.ui:307
-#, fuzzy
 msgid "Reduction"
-msgstr "Förstärkningsreducering"
+msgstr "Reduktion"
 
 #: data/ui/echo_canceller.ui:28
-#, fuzzy
 msgid "Frame Size"
-msgstr "Rumsstorlek"
+msgstr "Ramstorlek"
 
 #: data/ui/echo_canceller.ui:63
-#, fuzzy
 msgid "Filter Length"
-msgstr "Filter typ"
+msgstr "Filterlängd"
 
 #: data/ui/effects_box.ui:108
 msgid "Blocklist"
@@ -1368,9 +1295,8 @@ msgid "SPM"
 msgstr ""
 
 #: data/ui/equalizer.ui:150
-#, fuzzy
 msgid "Split Channels"
-msgstr "Kanaler"
+msgstr "Delade kanaler"
 
 #: data/ui/equalizer.ui:156
 msgid "Flat Response"
@@ -1381,22 +1307,20 @@ msgid "Calculate Frequencies"
 msgstr ""
 
 #: data/ui/equalizer.ui:172
-#, fuzzy
 msgid "Load APO Preset"
-msgstr "Profiler"
+msgstr "Ladda APO-förinställning"
 
 #: data/ui/equalizer_band.ui:109
 msgid "Bell"
 msgstr ""
 
 #: data/ui/equalizer_band.ui:110
-#, fuzzy
 msgid "High Pass"
 msgstr "Högpass"
 
 #: data/ui/equalizer_band.ui:111
 msgid "High Shelf"
-msgstr "High Shelf"
+msgstr "Hög hylla"
 
 #: data/ui/equalizer_band.ui:112
 msgid "Low Pass"
@@ -1404,7 +1328,7 @@ msgstr "Lågpass"
 
 #: data/ui/equalizer_band.ui:113
 msgid "Low Shelf"
-msgstr "Low Shelf"
+msgstr "Låg hylla"
 
 #: data/ui/equalizer_band.ui:114
 msgid "Notch"
@@ -1415,19 +1339,16 @@ msgid "Resonance"
 msgstr ""
 
 #: data/ui/equalizer_band.ui:116
-#, fuzzy
 msgid "All Pass"
 msgstr "Lågpass"
 
 #: data/ui/equalizer_band.ui:123
-#, fuzzy
 msgid "Band Type"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Bandtyp"
 
 #: data/ui/equalizer_band.ui:153
-#, fuzzy
 msgid "Band Mode"
-msgstr "Makeup (dB)"
+msgstr "Bandläge"
 
 #: data/ui/equalizer_band.ui:160
 msgid "Slope"
@@ -1452,9 +1373,8 @@ msgid "Solo"
 msgstr ""
 
 #: data/ui/exciter.ui:213
-#, fuzzy
 msgid "Ceil"
-msgstr "Gränsvärde (dB)"
+msgstr "Tak (dB)"
 
 #: data/ui/exciter.ui:242
 msgid "Ceil Value"
@@ -1469,14 +1389,12 @@ msgid "Access"
 msgstr ""
 
 #: data/ui/factory_modules_listview.ui:71
-#, fuzzy
 msgid "Description"
-msgstr "Försvagning"
+msgstr "Beskrivning"
 
 #: data/ui/factory_rnnoise_listview.ui:23
-#, fuzzy
 msgid "Remove this model file"
-msgstr "Ingen komprimering"
+msgstr "Ta bort denna modellfil"
 
 #: data/ui/filter.ui:25
 msgid "12dB/oct Lowpass"
@@ -1533,14 +1451,12 @@ msgstr ""
 #: data/ui/gate.ui:54 data/ui/multiband_gate.ui:429
 #: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1149
 #: data/ui/multiband_gate.ui:1509
-#, fuzzy
 msgid "Max Reduction"
-msgstr "Förstärkningsreducering"
+msgstr "Maximal minskning"
 
 #: data/ui/gate.ui:85 data/ui/limiter.ui:419
-#, fuzzy
 msgid "Stereo Link"
-msgstr "Ljudförstärkare"
+msgstr "Stereolänk"
 
 #: data/ui/gate.ui:92
 msgid "Average"
@@ -1597,19 +1513,16 @@ msgid "Exp Duck"
 msgstr ""
 
 #: data/ui/limiter.ui:89
-#, fuzzy
 msgid "Line Thin"
-msgstr "Bredd"
+msgstr "Linje tunn"
 
 #: data/ui/limiter.ui:90
-#, fuzzy
 msgid "Line Wide"
-msgstr "Bredd"
+msgstr "Linje bred"
 
 #: data/ui/limiter.ui:91
-#, fuzzy
 msgid "Line Tail"
-msgstr "Bredd"
+msgstr "Linje svans"
 
 #: data/ui/limiter.ui:92
 msgid "Line Duck"
@@ -1704,32 +1617,28 @@ msgid "SC PreAmp"
 msgstr ""
 
 #: data/ui/limiter.ui:208 data/ui/multiband_compressor_band.ui:647
-#, fuzzy
 msgid "Sidechain PreAmplification"
-msgstr "Program"
+msgstr "Sidokedjeförförstärkning"
 
 #: data/ui/limiter.ui:401
 msgid "Boost"
 msgstr ""
 
 #: data/ui/limiter.ui:464 data/ui/multiband_compressor_band.ui:116
-#, fuzzy
 msgid "External Sidechain"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Extern sidokedja"
 
 #: data/ui/limiter.ui:477 data/ui/multiband_compressor.ui:121
 msgid "External Sidechain Source"
 msgstr ""
 
 #: data/ui/limiter.ui:496
-#, fuzzy
 msgid "Auto Leveling"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Automatisk utjämning"
 
 #: data/ui/limiter.ui:536
-#, fuzzy
 msgid "Auto Leveling Attack"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Automatisk utjämningsattack"
 
 #: data/ui/limiter.ui:572
 #, fuzzy
@@ -2838,14 +2747,12 @@ msgid "unknown"
 msgstr ""
 
 #: src/application.cpp:313
-#, fuzzy
 msgid "Output Presets: "
-msgstr "Profiler"
+msgstr "Utgångsförinställningar: "
 
 #: src/application.cpp:321
-#, fuzzy
 msgid "Input Presets: "
-msgstr "Öppna förinställning"
+msgstr "Ingångsförinställningar: "
 
 #: src/application.cpp:418
 #, fuzzy
@@ -2861,9 +2768,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
 #: src/application.cpp:510
-#, fuzzy
 msgid "Reset EasyEffects."
-msgstr "EasyEffects"
+msgstr "Återställ EasyEffects."
 
 #: src/application.cpp:513
 msgid "Hide the Window."
