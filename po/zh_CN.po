@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-12 11:52+0200\n"
-"PO-Revision-Date: 2021-08-02 11:43+0800\n"
-"Last-Translator: eternal <www.eternalhui@gmail.com>\n"
-"Language-Team: Chinese - China <null>\n"
+"PO-Revision-Date: 2022-01-15 15:15+0000\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 40.0\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -259,12 +260,10 @@ msgid "Using"
 msgstr "使用"
 
 #: data/ui/autoload_row.ui:15 data/ui/compressor.ui:471
-#, fuzzy
 msgid "Device"
 msgstr "设备"
 
 #: data/ui/autoload_row.ui:38
-#, fuzzy
 msgid "Profile"
 msgstr "概述"
 
@@ -325,7 +324,6 @@ msgid "API"
 msgstr "API"
 
 #: data/ui/client_info.ui:81
-#, fuzzy
 msgid "Access"
 msgstr "访问"
 
@@ -1040,7 +1038,6 @@ msgid "Presets Autoloading"
 msgstr "自动加载预设"
 
 #: data/ui/pipe_info.ui:308 data/ui/pipe_info.ui:382
-#, fuzzy
 msgid "Create Association"
 msgstr "创建关联"
 
@@ -1062,8 +1059,6 @@ msgid "Enable"
 msgstr "启用"
 
 #: data/ui/pipe_info.ui:517
-#, fuzzy
-#| msgid "Channels"
 msgid "Channel"
 msgstr "声道"
 
