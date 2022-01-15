@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-15 12:34-0300\n"
-"PO-Revision-Date: 2022-01-10 04:32+0000\n"
+"PO-Revision-Date: 2022-01-15 17:41+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -26,22 +26,20 @@ msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "PulseAudio Uygulamaları için Ses Efektleri"
+msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects gelişmiş bir ses işleme aracıdır. Bir ekolayzır, sınırlayıcı, "
+"EasyEffects gelişmiş bir ses işleme aracıdır. Ekolayzır, sınırlayıcı, "
 "sıkıştırıcı ve yankılanma araçları içerir. Bunları tamamlamak için ayrıca "
 "bir spektrum analizörü bulunmaktadır."
 
@@ -50,18 +48,20 @@ msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects, PulseEffects'in devamıdır. EasyEffects yalnızca PipeWire'ın ses "
+"sunucusunu destekler. PulseAudio kullanıcıları bunun yerine PulseEffects "
+"kullanmalıdır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"EasyEffects, öntanımlı PulseAudio ses sunucusunu kullandığından, "
-"kullandığınız uygulamaların tümü olmasa da çoğu ile çalışacaktır. "
-"Desteklenen tüm uygulamalar, her birinin ayrı ayrı etkinleştirilebileceği "
-"ana pencerede sunulur."
+"EasyEffects, öntanımlı PipeWire ses sunucusunu kullandığından, kullandığınız "
+"uygulamaların tümü olmasa da çoğu ile çalışacaktır. Desteklenen tüm "
+"uygulamalar, her birinin ayrı ayrı etkinleştirilebileceği ana pencerede "
+"sunulur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -84,22 +84,22 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "İki ses çıkışı uygulamasını gösteren ana sayfa"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Ses denetimlerini gösteren bas yükseltici sayfası"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Ses denetimlerini gösteren sarsıcı sayfası"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
 msgid "This release fixes the following bug:"
-msgstr ""
+msgstr "Bu sürüm aşağıdaki hatayı düzeltir:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
@@ -118,17 +118,19 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "This release adds the following features:"
-msgstr ""
+msgstr "Bu sürüm aşağıdaki özellikleri ekler:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid ""
 "LibAdwaita is used to create some parts of our window and for handling the "
 "switching between dark and light themes."
 msgstr ""
+"LibAdwaita, penceremizin bazı bölümlerini oluşturmak ve koyu ile açık "
+"temalar arasında geçiş yapmak için kullanılır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
-msgstr ""
+msgstr "Ayarlar menüsü, LibAdwaita widget'ları kullanılarak yeniden tasarlandı."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 msgid ""
@@ -163,6 +165,7 @@ msgstr ""
 msgid ""
 "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
 msgstr ""
+"GTKMM ve GLIBMM artık bir bağımlılık değil. Artık doğrudan gtk4 kullanıyoruz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
@@ -189,7 +192,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:143
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
 msgid "This release fixes the following bugs:"
-msgstr ""
+msgstr "Bu sürüm aşağıdaki hataları düzeltir:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
 msgid ""
@@ -232,7 +235,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:91
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:177
 msgid "This release adds the following feature:"
-msgstr ""
+msgstr "Bu sürüm aşağıdaki özelliği ekler:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:93
 msgid ""
@@ -253,6 +256,8 @@ msgid ""
 "Pavucontrol is not added anymore to input applications list on systems with "
 "localization different than English."
 msgstr ""
+"İngilizce'den farklı yerelleştirmeye sahip sistemlerde giriş uygulamaları "
+"listesine Pavucontrol artık eklenmiyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:107
 msgid ""
@@ -325,11 +330,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
 msgid "Updated Chinese translation."
-msgstr ""
+msgstr "Çince çeviri güncellendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid "Updated Italian translation."
-msgstr ""
+msgstr "İtalyanca çeviri güncellendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid "Added support for the compressor parameter `Boost Amount`"
@@ -403,7 +408,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
 msgid "Updated translations"
-msgstr ""
+msgstr "Çeviriler güncellendi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
 msgid "Setting multiple autoloading presets should be fine now"
@@ -431,11 +436,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid "Fixed the locale in a few widgets"
-msgstr ""
+msgstr "Birkaç widget'ta yerel ayar düzeltildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
 msgid "Fixed wrong alignment in a few widgets"
-msgstr ""
+msgstr "Birkaç widget'ta yanlış hizalama düzeltildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:179
 msgid ""
@@ -451,7 +456,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
 msgid "Improved equalizer interface."
-msgstr ""
+msgstr "Ekolayzır arayüzü iyileştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:192
 msgid ""
@@ -498,14 +503,16 @@ msgid ""
 "The application and its repository have been renamed from PulseEffects to "
 "`EasyEffects`"
 msgstr ""
+"Uygulama ve deposu, PulseEffects'ten `EasyEffects` olarak yeniden "
+"adlandırıldı"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
 msgid "gtkmm3 was replaced by gtkmm4"
-msgstr ""
+msgstr "gtkmm3, gtkmm4 ile değiştirildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid "Gstreamer was replaced by native PipeWire filters."
-msgstr ""
+msgstr "Gstreamer, yerel PipeWire süzgeçleriyle değiştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
 msgid ""
@@ -528,6 +535,8 @@ msgid ""
 "New libraries are being used and some of the librarires that were optional "
 "before are now required"
 msgstr ""
+"Yeni kütüphaneler kullanılıyor ve daha önce isteğe bağlı olan "
+"kütüphanelerden bazıları artık gerekli"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -544,9 +553,8 @@ msgid "\"Presets\""
 msgstr "\"Ön Ayarlar\""
 
 #: data/ui/app_info.ui:69 data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Blocklist"
-msgstr "Karaliste"
+msgstr "Kara Listeye Ekle"
 
 #: data/ui/app_info.ui:87
 msgid "Format"
@@ -570,36 +578,32 @@ msgid "State"
 msgstr "Durum"
 
 #: data/ui/app_info.ui:208
-#, fuzzy
 msgid "Mute Application"
-msgstr "Uygulamalar"
+msgstr "Uygulamayı Sessize Al"
 
 #: data/ui/app_info.ui:243
-#, fuzzy
 msgid "Application Volume"
-msgstr "Uygulamalar"
+msgstr "Uygulama Ses Seviyesi"
 
 #: data/ui/application_window.ui:6
 msgid "_Preferences"
-msgstr ""
+msgstr "_Tercihler"
 
 #: data/ui/application_window.ui:10
 msgid "_Manual"
-msgstr ""
+msgstr "_Kılavuz"
 
 #: data/ui/application_window.ui:14
 msgid "_Shortcuts"
-msgstr ""
+msgstr "Kısa_yollar"
 
 #: data/ui/application_window.ui:20
-#, fuzzy
 msgid "_Reset Settings"
-msgstr "Ayarlar"
+msgstr "Ayarları _Sıfırla"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About EasyEffects"
-msgstr "EasyEffects"
+msgstr "EasyEffects _Hakkında"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
 #: src/presets_menu.cpp:112 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -608,9 +612,8 @@ msgid "Presets"
 msgstr "Ön Ayarlar"
 
 #: data/ui/application_window.ui:54
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Ön Ayarlar"
+msgstr "Ön Ayarlar Menüsü"
 
 #: data/ui/application_window.ui:61 data/ui/application_window.ui:66
 #, fuzzy
@@ -619,17 +622,15 @@ msgstr "Atla"
 
 #: data/ui/application_window.ui:76
 msgid "Primary Menu"
-msgstr ""
+msgstr "Ana Menü"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "EasyEffects Window"
-msgstr "EasyEffects"
+msgstr "EasyEffects Penceresi"
 
 #: data/ui/apps_box.ui:19
-#, fuzzy
 msgid "Applications List"
-msgstr "Uygulamalar"
+msgstr "Uygulama Listesi"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -654,7 +655,7 @@ msgstr "Tümleşik"
 
 #: data/ui/autogain.ui:68
 msgid "Geometric Mean"
-msgstr ""
+msgstr "Geometrik Ortalama"
 
 #: data/ui/autogain.ui:90 data/ui/bass_enhancer.ui:18
 #: data/ui/bass_loudness.ui:14 data/ui/compressor.ui:13 data/ui/convolver.ui:14
@@ -689,9 +690,8 @@ msgid "Loudness"
 msgstr "Yüksek Ses"
 
 #: data/ui/autogain.ui:305
-#, fuzzy
 msgid "Output Gain"
-msgstr "Giriş Kazancı"
+msgstr "Çıkış Kazancı"
 
 #: data/ui/autogain.ui:342 data/ui/bass_enhancer.ui:264
 #: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
@@ -776,7 +776,7 @@ msgstr ""
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
 msgid "Device"
-msgstr ""
+msgstr "Aygıt"
 
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
 #: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
@@ -787,7 +787,7 @@ msgstr "İsim"
 
 #: data/ui/autoload_row.ui:62
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: data/ui/autoload_row.ui:86
 #, fuzzy
@@ -796,7 +796,7 @@ msgstr "Ön Ayarlar"
 
 #: data/ui/autoload_row.ui:110 src/plugins_box.cpp:404
 msgid "Remove"
-msgstr ""
+msgstr "Kaldır"
 
 #: data/ui/bass_enhancer.ui:24 data/ui/compressor.ui:465 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:24
@@ -833,26 +833,24 @@ msgid "Floor"
 msgstr "Zemin"
 
 #: data/ui/bass_enhancer.ui:242
-#, fuzzy
 msgid "Floor Value"
-msgstr "Zemin"
+msgstr "Zemin Değeri"
 
 #: data/ui/bass_loudness.ui:95
 msgid "Link"
 msgstr "Bağ"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
-#, fuzzy
 msgid "Application Name"
-msgstr "Uygulamalar"
+msgstr "Uygulama Adı"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Blocklisted Applications List"
-msgstr ""
+msgstr "Kara Listeye Alınan Uygulamalar Listesi"
 
 #: data/ui/blocklist_menu.ui:102
 msgid "Show Blocklisted Applications"
-msgstr ""
+msgstr "Kara Listeye Alınan Uygulamaları Göster"
 
 #: data/ui/compressor.ui:38 include/plugin_name.hpp:84
 msgid "Compressor"
@@ -1044,9 +1042,8 @@ msgid "Sidechain Type"
 msgstr "Yanzincir"
 
 #: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
-#, fuzzy
 msgid "Input Device"
-msgstr "Giriş Efektleri"
+msgstr "Giriş Aygıtı"
 
 #: data/ui/compressor.ui:592
 #, fuzzy
@@ -1068,7 +1065,6 @@ msgid "Sidechain Filters"
 msgstr "Yanzincir"
 
 #: data/ui/compressor.ui:719
-#, fuzzy
 msgid "High-Pass"
 msgstr "Yüksek Geçiş"
 
@@ -1083,19 +1079,16 @@ msgid "Off"
 msgstr "Kapalı"
 
 #: data/ui/compressor.ui:759 data/ui/compressor.ui:815
-#, fuzzy
 msgid "12 dB/oct"
-msgstr "12dB/oct Düşük geçiş"
+msgstr "12 dB/oct"
 
 #: data/ui/compressor.ui:760 data/ui/compressor.ui:816
-#, fuzzy
 msgid "24 dB/oct"
-msgstr "24dB/oct Düşük geçiş"
+msgstr "24 dB/oct"
 
 #: data/ui/compressor.ui:761 data/ui/compressor.ui:817
-#, fuzzy
 msgid "36 dB/oct"
-msgstr "36dB/oct Düşük geçiş"
+msgstr "36 dB/oct"
 
 #: data/ui/compressor.ui:768
 #, fuzzy
@@ -1130,18 +1123,16 @@ msgid "L"
 msgstr "L"
 
 #: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:509
-#, fuzzy
 msgid "Left Channel"
-msgstr "Kanallar"
+msgstr "Sol Kanal"
 
 #: data/ui/convolver.ui:52
 msgid "R"
 msgstr "R"
 
 #: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:520
-#, fuzzy
 msgid "Right Channel"
-msgstr "Kanalları Böl"
+msgstr "Sağ Kanal"
 
 #: data/ui/convolver.ui:70
 #, fuzzy
@@ -1202,7 +1193,7 @@ msgstr "Dürtü Dosyasını İçeri Al"
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
 msgid "Search"
-msgstr ""
+msgstr "Ara"
 
 #: data/ui/convolver_menu_impulses.ui:27
 #, fuzzy
@@ -1320,13 +1311,12 @@ msgid "Frame Size"
 msgstr "Çerçeve Boyutu"
 
 #: data/ui/echo_canceller.ui:63
-#, fuzzy
 msgid "Filter Length"
-msgstr "Süzgeç"
+msgstr "Süzgeç Uzunluğu"
 
 #: data/ui/effects_box.ui:108
 msgid "Blocklist"
-msgstr "Karaliste"
+msgstr "Kara Liste"
 
 #: data/ui/equalizer.ui:77
 msgid "Bands"
@@ -1346,7 +1336,7 @@ msgstr "FFT"
 
 #: data/ui/equalizer.ui:125
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:150
 msgid "Split Channels"
@@ -1362,7 +1352,7 @@ msgstr "Frekansları Hesapla"
 
 #: data/ui/equalizer.ui:172
 msgid "Load APO Preset"
-msgstr ""
+msgstr "APO Ön Ayarını Yükle"
 
 #: data/ui/equalizer_band.ui:109
 msgid "Bell"
@@ -1398,23 +1388,20 @@ msgid "All Pass"
 msgstr "Düşük Geçiş"
 
 #: data/ui/equalizer_band.ui:123
-#, fuzzy
 msgid "Band Type"
-msgstr "Tür"
+msgstr "Bant Türü"
 
 #: data/ui/equalizer_band.ui:153
-#, fuzzy
 msgid "Band Mode"
-msgstr "Kip"
+msgstr "Bant Kipi"
 
 #: data/ui/equalizer_band.ui:160
 msgid "Slope"
 msgstr "Eğim"
 
 #: data/ui/equalizer_band.ui:180
-#, fuzzy
 msgid "Band Slope"
-msgstr "Eğim"
+msgstr "Bant Eğimi"
 
 #: data/ui/equalizer_band.ui:242
 msgid "Width"
@@ -1441,21 +1428,19 @@ msgstr ""
 
 #: data/ui/factory_clients_listview.ui:71
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:99
 msgid "Access"
 msgstr ""
 
 #: data/ui/factory_modules_listview.ui:71
-#, fuzzy
 msgid "Description"
-msgstr "Keşif"
+msgstr "Açıklama"
 
 #: data/ui/factory_rnnoise_listview.ui:23
-#, fuzzy
 msgid "Remove this model file"
-msgstr "Hazır ayar dosyasını kaldır"
+msgstr "Bu model dosyasını kaldır"
 
 #: data/ui/filter.ui:25
 msgid "12dB/oct Lowpass"
@@ -1739,11 +1724,11 @@ msgstr "Yanzincir"
 
 #: data/ui/loudness.ui:32
 msgid "Standard"
-msgstr ""
+msgstr "Standart"
 
 #: data/ui/loudness.ui:40
 msgid "Flat"
-msgstr ""
+msgstr "Düz"
 
 #: data/ui/loudness.ui:59
 #, fuzzy
@@ -1755,27 +1740,24 @@ msgid "Fast Fourier Transform Size"
 msgstr ""
 
 #: data/ui/loudness.ui:89
-#, fuzzy
 msgid "Output Volume"
-msgstr "Çıkış"
+msgstr "Çıkış Ses Seviyesi"
 
 #: data/ui/maximizer.ui:62
 msgid "Ceiling"
 msgstr "Tavan"
 
 #: data/ui/multiband_compressor.ui:43
-#, fuzzy
 msgid "Operating Mode"
-msgstr "Sıkıştırma Kipi"
+msgstr "Çalışma Kipi"
 
 #: data/ui/multiband_compressor.ui:54
 msgid "Classic"
-msgstr ""
+msgstr "Klasik"
 
 #: data/ui/multiband_compressor.ui:55
-#, fuzzy
 msgid "Modern"
-msgstr "Kip"
+msgstr "Çağdaş"
 
 #: data/ui/multiband_compressor.ui:69
 #, fuzzy
@@ -1799,49 +1781,40 @@ msgid "Brown MT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:156
-#, fuzzy
 msgid "Bands List"
-msgstr "Bantlar"
+msgstr "Bant Listesi"
 
 #: data/ui/multiband_compressor.ui:165
-#, fuzzy
 msgid "Band 1"
-msgstr "Bantlar"
+msgstr "Bant 1"
 
 #: data/ui/multiband_compressor.ui:182
-#, fuzzy
 msgid "Band 2"
-msgstr "Bantlar"
+msgstr "Bant 2"
 
 #: data/ui/multiband_compressor.ui:209
-#, fuzzy
 msgid "Band 3"
-msgstr "Bantlar"
+msgstr "Bant 3"
 
 #: data/ui/multiband_compressor.ui:236
-#, fuzzy
 msgid "Band 4"
-msgstr "Bantlar"
+msgstr "Bant 4"
 
 #: data/ui/multiband_compressor.ui:263
-#, fuzzy
 msgid "Band 5"
-msgstr "Bantlar"
+msgstr "Bant 5"
 
 #: data/ui/multiband_compressor.ui:290
-#, fuzzy
 msgid "Band 6"
-msgstr "Bantlar"
+msgstr "Bant 6"
 
 #: data/ui/multiband_compressor.ui:317
-#, fuzzy
 msgid "Band 7"
-msgstr "Bantlar"
+msgstr "Bant 7"
 
 #: data/ui/multiband_compressor.ui:344
-#, fuzzy
 msgid "Band 8"
-msgstr "Bantlar"
+msgstr "Bant 8"
 
 #: data/ui/multiband_compressor_band.ui:18
 msgid "Band Start"
@@ -1853,9 +1826,8 @@ msgid "Band End"
 msgstr "Bantlar"
 
 #: data/ui/multiband_compressor_band.ui:108
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Sıkıştırma Kipi"
+msgstr "Bant Sıkıştırma Kipi"
 
 #: data/ui/multiband_compressor_band.ui:126
 #, fuzzy
@@ -1891,18 +1863,16 @@ msgid "PreAmp"
 msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:826
-#, fuzzy
 msgid "Band Gain"
-msgstr "Giriş Kazancı"
+msgstr "Bant Kazancı"
 
 #: data/ui/multiband_compressor_band.ui:851
 msgid "Band Envelope"
 msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:876
-#, fuzzy
 msgid "Band Curve"
-msgstr "Eğri"
+msgstr "Bant Eğrisi"
 
 #: data/ui/multiband_gate.ui:43
 #, fuzzy
@@ -2149,47 +2119,40 @@ msgid "Use Default"
 msgstr "Öntanımlıyı Kullan"
 
 #: data/ui/pipe_manager_box.ui:43
-#, fuzzy
 msgid "Use Default Input"
-msgstr "Öntanımlıyı Kullan"
+msgstr "Öntanımlı Girişi Kullan"
 
 #: data/ui/pipe_manager_box.ui:63
 msgid "Custom Input Device"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:74
-#, fuzzy
 msgid "Output Device"
-msgstr "Çıkış Efektleri"
+msgstr "Çıkış Aygıtı"
 
 #: data/ui/pipe_manager_box.ui:83
-#, fuzzy
 msgid "Use Default Output"
-msgstr "Öntanımlıyı Kullan"
+msgstr "Öntanımlı Çıkışı Kullan"
 
 #: data/ui/pipe_manager_box.ui:103
 msgid "Custom Output Device"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:114
-#, fuzzy
 msgid "Server Information"
-msgstr "Yankılanma"
+msgstr "Sunucu Bilgileri"
 
 #: data/ui/pipe_manager_box.ui:118
-#, fuzzy
 msgid "Header Version"
-msgstr "Sürüm"
+msgstr "Başlık Sürümü"
 
 #: data/ui/pipe_manager_box.ui:129
-#, fuzzy
 msgid "Library Version"
-msgstr "Sürüm"
+msgstr "Kütüphane Sürümü"
 
 #: data/ui/pipe_manager_box.ui:140
-#, fuzzy
 msgid "Sampling Rate"
-msgstr "Öntanımlı Örnekleme Hızı"
+msgstr "Örnekleme Hızı"
 
 #: data/ui/pipe_manager_box.ui:151
 msgid "Minimum Quantum"
@@ -2210,14 +2173,12 @@ msgid "Presets Autoloading"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:234
-#, fuzzy
 msgid "Output Devices"
-msgstr "Çıkış Efektleri"
+msgstr "Çıkış Aygıtları"
 
 #: data/ui/pipe_manager_box.ui:251
-#, fuzzy
 msgid "Output Presets"
-msgstr "Çıkış Ön Ayarları: "
+msgstr "Çıkış Ön Ayarları"
 
 #: data/ui/pipe_manager_box.ui:258 data/ui/pipe_manager_box.ui:350
 msgid "Create Association"
@@ -2228,51 +2189,44 @@ msgid "Add Autoloading Output Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:292
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "Çıkış Ön Ayarları: "
+msgstr "Çıkış Otomatik Yükleme Ön Ayarları Listesi"
 
 #: data/ui/pipe_manager_box.ui:331
-#, fuzzy
 msgid "Input Devices"
-msgstr "Giriş Efektleri"
+msgstr "Giriş Aygıtları"
 
 #: data/ui/pipe_manager_box.ui:343
-#, fuzzy
 msgid "Input Presets"
-msgstr "Giriş Ön Ayarları: "
+msgstr "Giriş Ön Ayarları"
 
 #: data/ui/pipe_manager_box.ui:364
 msgid "Add Autoloading Input Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:383
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "Giriş Ön Ayarları: "
+msgstr "Giriş Otomatik Yükleme Ön Ayarları Listesi"
 
 #: data/ui/pipe_manager_box.ui:413
 msgid "Modules"
 msgstr "Modüller"
 
 #: data/ui/pipe_manager_box.ui:431
-#, fuzzy
 msgid "Modules List"
-msgstr "Modüller"
+msgstr "Modül Listesi"
 
 #: data/ui/pipe_manager_box.ui:445
 msgid "Clients"
 msgstr "İstemciler"
 
 #: data/ui/pipe_manager_box.ui:463
-#, fuzzy
 msgid "Clients List"
-msgstr "İstemciler"
+msgstr "İstemci Listesi"
 
 #: data/ui/pipe_manager_box.ui:477
-#, fuzzy
 msgid "Test Signal"
-msgstr "Test Sinyalleri"
+msgstr "Test Sinyali"
 
 #: data/ui/pipe_manager_box.ui:485 data/ui/preferences_spectrum.ui:12
 #, fuzzy
@@ -2288,18 +2242,16 @@ msgid "Both"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:532
-#, fuzzy
 msgid "Both Channels"
-msgstr "Kanallar"
+msgstr "Her İki Kanal"
 
 #: data/ui/pipe_manager_box.ui:541
 msgid "Waveform"
-msgstr ""
+msgstr "Dalga Biçimi"
 
 #: data/ui/pipe_manager_box.ui:545
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Sinüs Tablosu"
+msgstr "Sinüs Dalgası"
 
 #: data/ui/pipe_manager_box.ui:554
 msgid "White Noise"
@@ -2330,35 +2282,32 @@ msgid "Crispness"
 msgstr "Canlılık"
 
 #: data/ui/plugin_row.ui:26
-#, fuzzy
 msgid "Remove this plugin"
-msgstr "Hazır ayar dosyasını kaldır"
+msgstr "Bu eklentiyi kaldır"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Plugin"
-msgstr ""
+msgstr "Eklenti Ekle"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
-msgstr ""
+msgstr "Kullanılan Eklentiler Listesi"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr ""
+msgstr "Eklenti Ara"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "Eklenti Listesi"
 
 #: data/ui/preferences_general.ui:5
-#, fuzzy
 msgid "_General"
-msgstr "Genel"
+msgstr "_Genel"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Sunucu"
+msgstr "Hizmet"
 
 #: data/ui/preferences_general.ui:13
 msgid "Start Service at Login"
@@ -2370,7 +2319,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
-msgstr ""
+msgstr "Ses"
 
 #: data/ui/preferences_general.ui:43
 msgid "Process All Outputs"
@@ -2401,17 +2350,16 @@ msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:5
-#, fuzzy
 msgid "_Spectrum"
-msgstr "Spektrum"
+msgstr "_Spektrum"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Şekil"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
-msgstr "Barlar"
+msgstr "Çubuklar"
 
 #: data/ui/preferences_spectrum.ui:36
 msgid "Lines"
@@ -2419,7 +2367,7 @@ msgstr "Çizgiler"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Dots"
-msgstr ""
+msgstr "Noktalar"
 
 #: data/ui/preferences_spectrum.ui:46
 msgid "Points"
@@ -2443,19 +2391,19 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Yuvarlatılmış Köşeler"
 
 #: data/ui/preferences_spectrum.ui:152
 msgid "Color"
-msgstr ""
+msgstr "Renk"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
-msgstr ""
+msgstr "Çizgiler ve Çubuklar"
 
 #: data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
-msgstr ""
+msgstr "Eksen Etiketleri"
 
 #: data/ui/preferences_spectrum.ui:185
 #, fuzzy
@@ -2463,9 +2411,8 @@ msgid "Frequency Range"
 msgstr "Sıklık"
 
 #: data/ui/preferences_spectrum.ui:188
-#, fuzzy
 msgid "Minimum"
-msgstr "Azami"
+msgstr "Asgari"
 
 #: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
 msgid "Load"
@@ -2481,12 +2428,11 @@ msgstr "Hazır ayar dosyasını kaldır"
 
 #: data/ui/presets_menu.ui:28
 msgid "Speakers"
-msgstr ""
+msgstr "Hoparlörler"
 
 #: data/ui/presets_menu.ui:54
-#, fuzzy
 msgid "New Output Preset Name"
-msgstr "Çıkış Ön Ayarları: "
+msgstr "Yeni Çıkış Ön Ayarı Adı"
 
 #: data/ui/presets_menu.ui:62 data/ui/presets_menu.ui:215
 msgid "Create Preset"
@@ -2497,34 +2443,28 @@ msgid "Import Presets"
 msgstr "Önayarları İçe Aktar"
 
 #: data/ui/presets_menu.ui:94
-#, fuzzy
 msgid "Search Output Preset"
-msgstr "Çıkış Ön Ayarları: "
+msgstr "Çıkış Ön Ayarı Ara"
 
 #: data/ui/presets_menu.ui:155
-#, fuzzy
 msgid "Output Presets List"
-msgstr "Çıkış Ön Ayarları: "
+msgstr "Çıkış Ön Ayarları Listesi"
 
 #: data/ui/presets_menu.ui:181
-#, fuzzy
 msgid "Microphone"
-msgstr "Mikrofon Kalibrasyonu"
+msgstr "Mikrofon"
 
 #: data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "New Input Preset Name"
-msgstr "Giriş Ön Ayarları: "
+msgstr "Yeni Giriş Ön Ayarı Adı"
 
 #: data/ui/presets_menu.ui:247
-#, fuzzy
 msgid "Search Input Preset"
-msgstr "Giriş Ön Ayarları: "
+msgstr "Giriş Ön Ayarı Ara"
 
 #: data/ui/presets_menu.ui:308
-#, fuzzy
 msgid "Input Presets List"
-msgstr "Giriş Ön Ayarları: "
+msgstr "Giriş Ön Ayarları Listesi"
 
 #: data/ui/reverb.ui:43
 msgid "High Frequency Damping"
@@ -2628,22 +2568,20 @@ msgid "Import Model"
 msgstr "Dürtü Dosyasını İçeri Al"
 
 #: data/ui/rnnoise.ui:35
-#, fuzzy
 msgid "Models"
-msgstr "Kip"
+msgstr "Modeller"
 
 #: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
 msgid "Standard Model"
-msgstr ""
+msgstr "Standart Model"
 
 #: data/ui/rnnoise.ui:84
 msgid "RNNoise Models List"
 msgstr ""
 
 #: data/ui/rnnoise.ui:100
-#, fuzzy
 msgid "Active Model"
-msgstr "Agresif Kip"
+msgstr "Etkin Model"
 
 #: data/ui/rnnoise.ui:106
 msgid "Standard RNNoise Model"
@@ -2651,34 +2589,31 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "Genel Görünüm"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the EasyEffects Manual"
-msgstr "EasyEffects’i Sıfırla."
+msgstr "EasyEffects Kılavuzunu Aç"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Tam ekran/Tam ekrandan geri yükle"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "Pencereyi Kapat"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit EasyEffects"
-msgstr "EasyEffects"
+msgstr "EasyEffects'ten Çık"
 
 #: data/ui/stereo_tools.ui:50 data/ui/stereo_tools.ui:391
 msgid "Balance"
 msgstr "Denge"
 
 #: data/ui/stereo_tools.ui:77
-#, fuzzy
 msgid "Input Balance"
-msgstr "Denge"
+msgstr "Giriş Dengesi"
 
 #: data/ui/stereo_tools.ui:86
 msgid "Softclip"
@@ -2747,9 +2682,8 @@ msgid "Middle Panorama"
 msgstr "Orta Panorama"
 
 #: data/ui/stereo_tools.ui:418
-#, fuzzy
 msgid "Output Balance"
-msgstr "Denge"
+msgstr "Çıkış Dengesi"
 
 #: data/ui/stereo_tools.ui:427
 msgid "Delay L/R"
@@ -2770,15 +2704,15 @@ msgstr "Stereo Faz"
 
 #: src/app_info.cpp:68
 msgid "running"
-msgstr ""
+msgstr "çalışıyor"
 
 #: src/app_info.cpp:70
 msgid "suspended"
-msgstr ""
+msgstr "askıya alındı"
 
 #: src/app_info.cpp:72
 msgid "idle"
-msgstr ""
+msgstr "boşta"
 
 #: src/app_info.cpp:74
 #, fuzzy
@@ -2787,11 +2721,11 @@ msgstr "Geçitleme"
 
 #: src/app_info.cpp:76
 msgid "error"
-msgstr ""
+msgstr "hata"
 
 #: src/app_info.cpp:78
 msgid "unknown"
-msgstr ""
+msgstr "bilinmiyor"
 
 #: src/application.cpp:313
 msgid "Output Presets: "
@@ -2802,9 +2736,8 @@ msgid "Input Presets: "
 msgstr "Giriş Ön Ayarları: "
 
 #: src/application.cpp:418
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "PulseAudio uygulamaları için ses efektleri"
+msgstr "PipeWire uygulamaları için ses efektleri"
 
 #: src/application.cpp:504
 msgid "Quit EasyEffects. Useful when running in service mode."
@@ -2820,7 +2753,7 @@ msgstr "EasyEffects’i Sıfırla."
 
 #: src/application.cpp:513
 msgid "Hide the Window."
-msgstr ""
+msgstr "Pencereyi Gizle."
 
 #: src/application.cpp:516
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -2871,9 +2804,8 @@ msgid "Could Not Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
 #: src/effects_box.cpp:255
-#, fuzzy
 msgid "Recorders"
-msgstr "Kenar"
+msgstr "Kaydediciler"
 
 #: src/effects_box.cpp:280
 msgid "Players"
@@ -2888,33 +2820,28 @@ msgid "infinity"
 msgstr "sonsuzluk"
 
 #: src/equalizer_ui.cpp:362
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "Önayarları İçe Aktar"
+msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
 #: src/equalizer_ui.cpp:368
-#, fuzzy
 msgid "APO Presets"
-msgstr "Ön Ayarlar"
+msgstr "APO Ön Ayarları"
 
 #: src/pipe_manager_box.cpp:308
-#, fuzzy
 msgid "Remove Autoloading Preset"
-msgstr "Hazır ayar dosyasını kaldır"
+msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
 #: src/plugins_menu.cpp:128
 msgid "Add"
 msgstr ""
 
 #: src/presets_menu.cpp:106
-#, fuzzy
 msgid "Import Preset"
-msgstr "Önayarları İçe Aktar"
+msgstr "Ön Ayarı İçe Aktar"
 
 #: src/rnnoise_ui.cpp:122
-#, fuzzy
 msgid "Import Model File"
-msgstr "Dürtü Dosyasını İçe Aktar"
+msgstr "Model Dosyasını İçe Aktar"
 
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
@@ -2999,9 +2926,8 @@ msgid "Reverberation"
 msgstr "Yankılanma"
 
 #: include/plugin_name.hpp:102
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Kazanç Azaltma"
+msgstr "Gürültü Azaltma"
 
 #: include/plugin_name.hpp:103
 msgid "Stereo Tools"

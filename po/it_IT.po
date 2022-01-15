@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-15 12:34-0300\n"
-"PO-Revision-Date: 2022-01-15 15:15+0000\n"
+"PO-Revision-Date: 2022-01-15 17:41+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -663,7 +663,7 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limitatore;compressore;riverbero;equalizzatore;autovolume;"
+msgstr "limiter;compressore;riverbero;equalizzatore;autovolume;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
@@ -2862,97 +2862,87 @@ msgstr "Modelli RNNoise"
 
 #: include/plugin_name.hpp:81
 msgid "Autogain"
-msgstr ""
+msgstr "Auto Guadagno"
 
 #: include/plugin_name.hpp:82
-#, fuzzy
 msgid "Bass Enhancer"
-msgstr "Bilanciamento"
+msgstr "Enfasi Bassi"
 
 #: include/plugin_name.hpp:83
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Loudness"
+msgstr "Loudness Bassi"
 
 #: include/plugin_name.hpp:85
 msgid "Convolver"
-msgstr ""
+msgstr "Convolver"
 
 #: include/plugin_name.hpp:86
 msgid "Crossfeed"
-msgstr ""
+msgstr "Crossfeed"
 
 #: include/plugin_name.hpp:87
 msgid "Crystalizer"
-msgstr ""
+msgstr "Crystalizer"
 
 #: include/plugin_name.hpp:88
 msgid "Deesser"
-msgstr ""
+msgstr "Deesser"
 
 #: include/plugin_name.hpp:89
-#, fuzzy
 msgid "Delay"
-msgstr "Pre Ritardo"
+msgstr "Delay"
 
 #: include/plugin_name.hpp:90
-#, fuzzy
 msgid "Echo Canceller"
-msgstr "Annulla"
+msgstr "Rimozione Eco"
 
 #: include/plugin_name.hpp:91
 msgid "Equalizer"
-msgstr ""
+msgstr "Equalizzatore"
 
 #: include/plugin_name.hpp:92
 msgid "Exciter"
-msgstr ""
+msgstr "Exciter"
 
 #: include/plugin_name.hpp:93
-#, fuzzy
 msgid "Filter"
-msgstr "Lunghezza Filtro"
+msgstr "Filtro"
 
 #: include/plugin_name.hpp:94
 msgid "Gate"
-msgstr ""
+msgstr "Gate"
 
 #: include/plugin_name.hpp:95
 msgid "Limiter"
-msgstr ""
+msgstr "Limiter"
 
 #: include/plugin_name.hpp:97
-#, fuzzy
 msgid "Maximizer"
-msgstr "Massima"
+msgstr "Maximizer"
 
 #: include/plugin_name.hpp:98
-#, fuzzy
 msgid "Multiband Compressor"
-msgstr "Compressore"
+msgstr "Compressore Multibanda"
 
 #: include/plugin_name.hpp:99
 msgid "Multiband Gate"
-msgstr ""
+msgstr "Gate Multibanda"
 
 #: include/plugin_name.hpp:100
 msgid "Pitch"
-msgstr ""
+msgstr "Intonazione"
 
 #: include/plugin_name.hpp:101
-#, fuzzy
 msgid "Reverberation"
-msgstr "Informazioni Server"
+msgstr "Riverbero"
 
 #: include/plugin_name.hpp:102
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Riduzione"
+msgstr "Riduzione Rumore"
 
 #: include/plugin_name.hpp:103
-#, fuzzy
 msgid "Stereo Tools"
-msgstr "Modalità Stereo"
+msgstr "Strumenti Stereo"
 
 #~ msgid "RLC (BT)"
 #~ msgstr "RLC (BT)"
