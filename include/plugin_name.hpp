@@ -23,7 +23,7 @@
 #include <glib/gi18n.h>
 #include <array>
 #include <iostream>
-#include <unordered_map>
+#include <map>
 
 namespace plugin_name {
 
@@ -78,29 +78,29 @@ constexpr auto list = std::to_array(
      delay,     echo_canceller,       equalizer,      exciter,    filter,    gate,      limiter,     loudness,
      maximizer, multiband_compressor, multiband_gate, pitch,      reverb,    rnnoise,   stereo_tools});
 
-static std::unordered_map<std::string, std::string> translated = {{autogain, _("Autogain")},
-                                                                  {bass_enhancer, _("Bass Enhancer")},
-                                                                  {bass_loudness, _("Bass Loudness")},
-                                                                  {compressor, _("Compressor")},
-                                                                  {convolver, _("Convolver")},
-                                                                  {crossfeed, _("Crossfeed")},
-                                                                  {crystalizer, _("Crystalizer")},
-                                                                  {deesser, _("Deesser")},
-                                                                  {delay, _("Delay")},
-                                                                  {echo_canceller, _("Echo Canceller")},
-                                                                  {equalizer, _("Equalizer")},
-                                                                  {exciter, _("Exciter")},
-                                                                  {filter, _("Filter")},
-                                                                  {gate, _("Gate")},
-                                                                  {limiter, _("Limiter")},
-                                                                  {loudness, _("Loudness")},
-                                                                  {maximizer, _("Maximizer")},
-                                                                  {multiband_compressor, _("Multiband Compressor")},
-                                                                  {multiband_gate, _("Multiband Gate")},
-                                                                  {pitch, _("Pitch")},
-                                                                  {reverb, _("Reverberation")},
-                                                                  {rnnoise, _("Noise Reduction")},
-                                                                  {stereo_tools, _("Stereo Tools")}};
+static std::map<std::string, std::string> translated = {{autogain, _("Autogain")},
+                                                        {bass_enhancer, _("Bass Enhancer")},
+                                                        {bass_loudness, _("Bass Loudness")},
+                                                        {compressor, _("Compressor")},
+                                                        {convolver, _("Convolver")},
+                                                        {crossfeed, _("Crossfeed")},
+                                                        {crystalizer, _("Crystalizer")},
+                                                        {deesser, _("Deesser")},
+                                                        {delay, _("Delay")},
+                                                        {echo_canceller, _("Echo Canceller")},
+                                                        {equalizer, _("Equalizer")},
+                                                        {exciter, _("Exciter")},
+                                                        {filter, _("Filter")},
+                                                        {gate, _("Gate")},
+                                                        {limiter, _("Limiter")},
+                                                        {loudness, _("Loudness")},
+                                                        {maximizer, _("Maximizer")},
+                                                        {multiband_compressor, _("Multiband Compressor")},
+                                                        {multiband_gate, _("Multiband Gate")},
+                                                        {pitch, _("Pitch")},
+                                                        {reverb, _("Reverberation")},
+                                                        {rnnoise, _("Noise Reduction")},
+                                                        {stereo_tools, _("Stereo Tools")}};
 
 }  // namespace plugin_name
 
