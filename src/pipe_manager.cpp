@@ -1343,6 +1343,7 @@ PipeManager::PipeManager() {
 
   pw_properties* props_context = pw_properties_new(nullptr, nullptr);
 
+  pw_properties_set(props_context, PW_KEY_CONFIG_NAME, "client-rt.conf");
   pw_properties_set(props_context, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_context, PW_KEY_MEDIA_CATEGORY, "Manager");
   pw_properties_set(props_context, PW_KEY_MEDIA_ROLE, "Music");
