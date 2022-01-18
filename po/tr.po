@@ -686,6 +686,7 @@ msgid "Range"
 msgstr "Sınır"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "Yüksek Ses"
 
@@ -794,7 +795,7 @@ msgstr "Profil"
 msgid "Preset"
 msgstr "Ön Ayarlar"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412 src/plugins_box.cpp:404
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -852,7 +853,7 @@ msgstr "Kara Listeye Alınan Uygulamalar Listesi"
 msgid "Show Blocklisted Applications"
 msgstr "Kara Listeye Alınan Uygulamaları Göster"
 
-#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
+#: data/ui/compressor.ui:38 src/plugin_name.cpp:28 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Sıkıştırıcı"
 
@@ -2765,7 +2766,7 @@ msgstr "Kullanılabilir hazır ayarları göster."
 
 #: src/application_ui.cpp:246
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:85
 msgid "Import Impulse File"
@@ -2809,11 +2810,11 @@ msgstr "Kaydediciler"
 
 #: src/effects_box.cpp:280
 msgid "Players"
-msgstr ""
+msgstr "Oynatıcılar"
 
 #: src/effects_box.cpp:303
 msgid "Plugins"
-msgstr ""
+msgstr "Eklentiler"
 
 #: src/equalizer_band_box.cpp:83
 msgid "infinity"
@@ -2831,95 +2832,95 @@ msgstr "APO Ön Ayarları"
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/plugin_name.cpp:25
+#: src/plugin_name.cpp:25 include/plugin_name.hpp:81
 #, fuzzy
 msgid "Autogain"
 msgstr "Otomatik Kazanç"
 
-#: src/plugin_name.cpp:26
+#: src/plugin_name.cpp:26 include/plugin_name.hpp:82
 msgid "Bass Enhancer"
 msgstr "Bas Yükseltici"
 
-#: src/plugin_name.cpp:27
+#: src/plugin_name.cpp:27 include/plugin_name.hpp:83
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Yüksek Ses"
 
-#: src/plugin_name.cpp:29
+#: src/plugin_name.cpp:29 include/plugin_name.hpp:85
 msgid "Convolver"
 msgstr "Sarsıcı"
 
-#: src/plugin_name.cpp:30
+#: src/plugin_name.cpp:30 include/plugin_name.hpp:86
 msgid "Crossfeed"
 msgstr "Çapraz Besleme"
 
-#: src/plugin_name.cpp:31
+#: src/plugin_name.cpp:31 include/plugin_name.hpp:87
 msgid "Crystalizer"
 msgstr "Kristalleştirici"
 
-#: src/plugin_name.cpp:32
+#: src/plugin_name.cpp:32 include/plugin_name.hpp:88
 msgid "Deesser"
 msgstr "Deesser"
 
-#: src/plugin_name.cpp:33
+#: src/plugin_name.cpp:33 include/plugin_name.hpp:89
 msgid "Delay"
 msgstr "Gecikme"
 
-#: src/plugin_name.cpp:34
+#: src/plugin_name.cpp:34 include/plugin_name.hpp:90
 msgid "Echo Canceller"
 msgstr "Yankı Önleyici"
 
-#: src/plugin_name.cpp:35
+#: src/plugin_name.cpp:35 include/plugin_name.hpp:91
 msgid "Equalizer"
 msgstr "Ekolayzır"
 
-#: src/plugin_name.cpp:36
+#: src/plugin_name.cpp:36 include/plugin_name.hpp:92
 msgid "Exciter"
 msgstr "Uyarıcı"
 
-#: src/plugin_name.cpp:37
+#: src/plugin_name.cpp:37 include/plugin_name.hpp:93
 msgid "Filter"
 msgstr "Süzgeç"
 
-#: src/plugin_name.cpp:38
+#: src/plugin_name.cpp:38 include/plugin_name.hpp:94
 msgid "Gate"
 msgstr "Aralık"
 
-#: src/plugin_name.cpp:39
+#: src/plugin_name.cpp:39 include/plugin_name.hpp:95
 msgid "Limiter"
 msgstr "Sınırlayıcı"
 
-#: src/plugin_name.cpp:41
+#: src/plugin_name.cpp:41 include/plugin_name.hpp:97
 msgid "Maximizer"
 msgstr "Yükseltici"
 
-#: src/plugin_name.cpp:42
+#: src/plugin_name.cpp:42 include/plugin_name.hpp:98
 msgid "Multiband Compressor"
 msgstr "Çoklu Bant Şıkıştırıcı"
 
-#: src/plugin_name.cpp:43
+#: src/plugin_name.cpp:43 include/plugin_name.hpp:99
 msgid "Multiband Gate"
 msgstr "Çoklu Bant Geçitleme"
 
-#: src/plugin_name.cpp:44
+#: src/plugin_name.cpp:44 include/plugin_name.hpp:100
 msgid "Pitch"
 msgstr "Perde"
 
-#: src/plugin_name.cpp:45
+#: src/plugin_name.cpp:45 include/plugin_name.hpp:101
 msgid "Reverberation"
 msgstr "Yankılanma"
 
-#: src/plugin_name.cpp:46
+#: src/plugin_name.cpp:46 include/plugin_name.hpp:102
 msgid "Noise Reduction"
 msgstr "Gürültü Azaltma"
 
-#: src/plugin_name.cpp:47
+#: src/plugin_name.cpp:47 include/plugin_name.hpp:103
 msgid "Stereo Tools"
 msgstr "Stereo Araçları"
 
-#: src/plugins_menu.cpp:145
+#: src/plugins_menu.cpp:128
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: src/presets_menu.cpp:106
 msgid "Import Preset"
