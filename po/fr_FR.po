@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-15 15:43-0300\n"
-"PO-Revision-Date: 2021-08-10 17:08-0700\n"
-"Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2022-01-18 10:56+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
+"fr/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -30,7 +31,7 @@ msgstr "Effets audio pour applications PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -3019,7 +3020,7 @@ msgstr "Amélioration audio"
 
 #: src/plugins_menu.cpp:145
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: src/presets_menu.cpp:106
 #, fuzzy
