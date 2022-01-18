@@ -8,27 +8,26 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-15 15:43-0300\n"
-"PO-Revision-Date: 2019-01-17 18:30+0700\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2022-01-18 10:56+0000\n"
+"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
+"main/id/>\n"
 "Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Penerap Efek Suara untuk Aplikasi Berbasis Pulseaudio"
+msgstr "Efek Audio untuk Aplikasi PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
@@ -1615,88 +1614,87 @@ msgstr ""
 
 #: data/ui/limiter.ui:110
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "Setengah x2(3L)"
 
 #: data/ui/limiter.ui:111
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "Setengah x3(2L)"
 
 #: data/ui/limiter.ui:112
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "Setengah x3(3L)"
 
 #: data/ui/limiter.ui:113
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "Setengah x4(2L)"
 
 #: data/ui/limiter.ui:114
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "Setengah x4(3L)"
 
 #: data/ui/limiter.ui:115
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "Setengah x6(2L)"
 
 #: data/ui/limiter.ui:116
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "Setengah x6(3L)"
 
 #: data/ui/limiter.ui:117
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "Setengah x8(2L)"
 
 #: data/ui/limiter.ui:118
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "Setengah x8(3L)"
 
 #: data/ui/limiter.ui:119
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "Penuh x2(2L)"
 
 #: data/ui/limiter.ui:120
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "Penuh x2(3L)"
 
 #: data/ui/limiter.ui:121
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "Penuh x3(2L)"
 
 #: data/ui/limiter.ui:122
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "Penuh x3(3L)"
 
 #: data/ui/limiter.ui:123
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "Penuh x4(2L)"
 
 #: data/ui/limiter.ui:124
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "Penuh x4(3L)"
 
 #: data/ui/limiter.ui:125
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "Penuh x6(2L)"
 
 #: data/ui/limiter.ui:126
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "Penuh x6(3L)"
 
 #: data/ui/limiter.ui:127
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "Penuh x8(2L)"
 
 #: data/ui/limiter.ui:128
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "Penuh x8(3L)"
 
 #: data/ui/limiter.ui:179
 msgid "SC PreAmp"
-msgstr ""
+msgstr "SC PreAmp"
 
 #: data/ui/limiter.ui:208 data/ui/multiband_compressor_band.ui:647
-#, fuzzy
 msgid "Sidechain PreAmplification"
-msgstr "Pra-Amplifikasi"
+msgstr "Pra-Amplifikasi Sidechain"
 
 #: data/ui/limiter.ui:401
 msgid "Boost"
@@ -1742,54 +1740,48 @@ msgid "Gain Right"
 msgstr "Kanan"
 
 #: data/ui/limiter.ui:686
-#, fuzzy
 msgid "Sidechain Left"
-msgstr "Sidechain"
+msgstr "Sidechain Kiri"
 
 #: data/ui/limiter.ui:713
-#, fuzzy
 msgid "Sidechain Right"
-msgstr "Sidechain"
+msgstr "Sidechain Kanan"
 
 #: data/ui/loudness.ui:32
 msgid "Standard"
-msgstr ""
+msgstr "Standar"
 
 #: data/ui/loudness.ui:40
 msgid "Flat"
-msgstr ""
+msgstr "Datar"
 
 #: data/ui/loudness.ui:59
-#, fuzzy
 msgid "FFT Size"
-msgstr "Ukuran Bingkai"
+msgstr "Ukuran FFT"
 
 #: data/ui/loudness.ui:76
 msgid "Fast Fourier Transform Size"
 msgstr ""
 
 #: data/ui/loudness.ui:89
-#, fuzzy
 msgid "Output Volume"
-msgstr "Output"
+msgstr "Volume Keluaran"
 
 #: data/ui/maximizer.ui:62
 msgid "Ceiling"
 msgstr "Langit-langit"
 
 #: data/ui/multiband_compressor.ui:43
-#, fuzzy
 msgid "Operating Mode"
-msgstr "Muat Impuls"
+msgstr "Mode Operasi"
 
 #: data/ui/multiband_compressor.ui:54
 msgid "Classic"
-msgstr ""
+msgstr "Klasik"
 
 #: data/ui/multiband_compressor.ui:55
-#, fuzzy
 msgid "Modern"
-msgstr "Modus"
+msgstr "Modern"
 
 #: data/ui/multiband_compressor.ui:69
 #, fuzzy
@@ -1798,112 +1790,95 @@ msgstr "Sidechain"
 
 #: data/ui/multiband_compressor.ui:81
 msgid "Pink BT"
-msgstr ""
+msgstr "BT Pink"
 
 #: data/ui/multiband_compressor.ui:82
 msgid "Pink MT"
-msgstr ""
+msgstr "MT Pink"
 
 #: data/ui/multiband_compressor.ui:83
 msgid "Brown BT"
-msgstr ""
+msgstr "BT Coklat"
 
 #: data/ui/multiband_compressor.ui:84
 msgid "Brown MT"
-msgstr ""
+msgstr "MT Coklat"
 
 #: data/ui/multiband_compressor.ui:156
-#, fuzzy
 msgid "Bands List"
-msgstr "Jumlah Band"
+msgstr "Daftar Band"
 
 #: data/ui/multiband_compressor.ui:165
-#, fuzzy
 msgid "Band 1"
-msgstr "Jumlah Band"
+msgstr "Band 1"
 
 #: data/ui/multiband_compressor.ui:182
-#, fuzzy
 msgid "Band 2"
-msgstr "Jumlah Band"
+msgstr "Band 2"
 
 #: data/ui/multiband_compressor.ui:209
-#, fuzzy
 msgid "Band 3"
-msgstr "Jumlah Band"
+msgstr "Band 3"
 
 #: data/ui/multiband_compressor.ui:236
-#, fuzzy
 msgid "Band 4"
-msgstr "Jumlah Band"
+msgstr "Band 4"
 
 #: data/ui/multiband_compressor.ui:263
-#, fuzzy
 msgid "Band 5"
-msgstr "Jumlah Band"
+msgstr "Band 5"
 
 #: data/ui/multiband_compressor.ui:290
-#, fuzzy
 msgid "Band 6"
-msgstr "Jumlah Band"
+msgstr "Band 6"
 
 #: data/ui/multiband_compressor.ui:317
-#, fuzzy
 msgid "Band 7"
-msgstr "Jumlah Band"
+msgstr "Band 7"
 
 #: data/ui/multiband_compressor.ui:344
-#, fuzzy
 msgid "Band 8"
-msgstr "Jumlah Band"
+msgstr "Band 8"
 
 #: data/ui/multiband_compressor_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "Mulai Band"
 
 #: data/ui/multiband_compressor_band.ui:57
-#, fuzzy
 msgid "Band End"
-msgstr "Jumlah Band"
+msgstr "Akhir Band"
 
 #: data/ui/multiband_compressor_band.ui:108
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Modus Kompresi"
+msgstr "Mode Kompresi Band"
 
 #: data/ui/multiband_compressor_band.ui:126
-#, fuzzy
 msgid "Band Bypass"
-msgstr "Bypass"
+msgstr "Bypass Band"
 
 #: data/ui/multiband_compressor_band.ui:431
-#, fuzzy
 msgid "Band Sidechain Options"
-msgstr "Sidechain"
+msgstr "Opsi Sidechain Band"
 
 #: data/ui/multiband_compressor_band.ui:523
-#, fuzzy
 msgid "Low-Cut Filter"
-msgstr "Filter"
+msgstr "Filter Low-Cut"
 
 #: data/ui/multiband_compressor_band.ui:551
-#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Filter"
+msgstr "Frekuensi Filter Low-Cut"
 
 #: data/ui/multiband_compressor_band.ui:576
-#, fuzzy
 msgid "High-Cut Filter"
-msgstr "Filter High Pass"
+msgstr "Filter High-Cut"
 
 #: data/ui/multiband_compressor_band.ui:604
-#, fuzzy
 msgid "High-Cut Filter Frequency"
-msgstr "Filter High Pass"
+msgstr "Frekuensi Filter High-Cut"
 
 #: data/ui/multiband_compressor_band.ui:620
 msgid "PreAmp"
-msgstr ""
+msgstr "PreAmp"
 
 #: data/ui/multiband_compressor_band.ui:826
 #, fuzzy
@@ -2244,9 +2219,8 @@ msgid "Output Devices"
 msgstr "Gain Input"
 
 #: data/ui/pipe_manager_box.ui:251
-#, fuzzy
 msgid "Output Presets"
-msgstr "Preset Output:"
+msgstr "Preset Output"
 
 #: data/ui/pipe_manager_box.ui:258 data/ui/pipe_manager_box.ui:350
 msgid "Create Association"
@@ -2257,9 +2231,8 @@ msgid "Add Autoloading Output Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:292
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "Preset Output:"
+msgstr "Daftar Keluaran Preset Otomatis"
 
 #: data/ui/pipe_manager_box.ui:331
 #, fuzzy
@@ -2514,9 +2487,8 @@ msgid "Speakers"
 msgstr ""
 
 #: data/ui/presets_menu.ui:54
-#, fuzzy
 msgid "New Output Preset Name"
-msgstr "Preset Output:"
+msgstr "Nama Preset Keluaran Baru"
 
 #: data/ui/presets_menu.ui:62 data/ui/presets_menu.ui:215
 msgid "Create Preset"
@@ -2527,14 +2499,12 @@ msgid "Import Presets"
 msgstr "Muat Preset"
 
 #: data/ui/presets_menu.ui:94
-#, fuzzy
 msgid "Search Output Preset"
-msgstr "Preset Output:"
+msgstr "Cari Preset Keluaran"
 
 #: data/ui/presets_menu.ui:155
-#, fuzzy
 msgid "Output Presets List"
-msgstr "Preset Output:"
+msgstr "Daftar Preset Keluaran"
 
 #: data/ui/presets_menu.ui:181
 #, fuzzy
@@ -2825,9 +2795,8 @@ msgid "unknown"
 msgstr ""
 
 #: src/application.cpp:313
-#, fuzzy
 msgid "Output Presets: "
-msgstr "Preset Output:"
+msgstr "Preset Keluaran: "
 
 #: src/application.cpp:321
 #, fuzzy
@@ -3038,9 +3007,8 @@ msgid "Import Model File"
 msgstr "Muat Berkas Impuls"
 
 #: src/rnnoise_ui.cpp:127
-#, fuzzy
 msgid "RNNoise Models"
-msgstr "Modus Agresif"
+msgstr "Model RNNoise"
 
 #~ msgid "LR4"
 #~ msgstr "LR4"

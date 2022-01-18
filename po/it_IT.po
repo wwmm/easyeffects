@@ -801,6 +801,7 @@ msgid "Range"
 msgstr "Gamma"
 
 #: data/ui/autogain.ui:273 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
+#: include/plugin_name.hpp:96
 msgid "Loudness"
 msgstr "Loudness"
 
@@ -906,7 +907,7 @@ msgstr "Profilo Dispositivo"
 msgid "Preset"
 msgstr "Profilo EasyEffects"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
+#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412 src/plugins_box.cpp:404
 msgid "Remove"
 msgstr "Rimuovi"
 
@@ -964,7 +965,7 @@ msgstr "Lista delle App Escluse"
 msgid "Show Blocklisted Applications"
 msgstr "Mostra Applicazioni Escluse"
 
-#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
+#: data/ui/compressor.ui:38 src/plugin_name.cpp:28 include/plugin_name.hpp:84
 msgid "Compressor"
 msgstr "Compressore"
 
@@ -2843,91 +2844,91 @@ msgstr "Profili APO"
 msgid "Remove Autoloading Preset"
 msgstr "Rimuovi Profilo di Auto Caricamento"
 
-#: src/plugin_name.cpp:25
+#: src/plugin_name.cpp:25 include/plugin_name.hpp:81
 msgid "Autogain"
 msgstr "Auto Guadagno"
 
-#: src/plugin_name.cpp:26
+#: src/plugin_name.cpp:26 include/plugin_name.hpp:82
 msgid "Bass Enhancer"
 msgstr "Enfasi Bassi"
 
-#: src/plugin_name.cpp:27
+#: src/plugin_name.cpp:27 include/plugin_name.hpp:83
 msgid "Bass Loudness"
 msgstr "Loudness Bassi"
 
-#: src/plugin_name.cpp:29
+#: src/plugin_name.cpp:29 include/plugin_name.hpp:85
 msgid "Convolver"
 msgstr "Convolver"
 
-#: src/plugin_name.cpp:30
+#: src/plugin_name.cpp:30 include/plugin_name.hpp:86
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: src/plugin_name.cpp:31
+#: src/plugin_name.cpp:31 include/plugin_name.hpp:87
 msgid "Crystalizer"
 msgstr "Crystalizer"
 
-#: src/plugin_name.cpp:32
+#: src/plugin_name.cpp:32 include/plugin_name.hpp:88
 msgid "Deesser"
 msgstr "Deesser"
 
-#: src/plugin_name.cpp:33
+#: src/plugin_name.cpp:33 include/plugin_name.hpp:89
 msgid "Delay"
 msgstr "Delay"
 
-#: src/plugin_name.cpp:34
+#: src/plugin_name.cpp:34 include/plugin_name.hpp:90
 msgid "Echo Canceller"
 msgstr "Rimozione Eco"
 
-#: src/plugin_name.cpp:35
+#: src/plugin_name.cpp:35 include/plugin_name.hpp:91
 msgid "Equalizer"
 msgstr "Equalizzatore"
 
-#: src/plugin_name.cpp:36
+#: src/plugin_name.cpp:36 include/plugin_name.hpp:92
 msgid "Exciter"
 msgstr "Exciter"
 
-#: src/plugin_name.cpp:37
+#: src/plugin_name.cpp:37 include/plugin_name.hpp:93
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/plugin_name.cpp:38
+#: src/plugin_name.cpp:38 include/plugin_name.hpp:94
 msgid "Gate"
 msgstr "Gate"
 
-#: src/plugin_name.cpp:39
+#: src/plugin_name.cpp:39 include/plugin_name.hpp:95
 msgid "Limiter"
 msgstr "Limiter"
 
-#: src/plugin_name.cpp:41
+#: src/plugin_name.cpp:41 include/plugin_name.hpp:97
 msgid "Maximizer"
 msgstr "Maximizer"
 
-#: src/plugin_name.cpp:42
+#: src/plugin_name.cpp:42 include/plugin_name.hpp:98
 msgid "Multiband Compressor"
 msgstr "Compressore Multibanda"
 
-#: src/plugin_name.cpp:43
+#: src/plugin_name.cpp:43 include/plugin_name.hpp:99
 msgid "Multiband Gate"
 msgstr "Gate Multibanda"
 
-#: src/plugin_name.cpp:44
+#: src/plugin_name.cpp:44 include/plugin_name.hpp:100
 msgid "Pitch"
 msgstr "Intonazione"
 
-#: src/plugin_name.cpp:45
+#: src/plugin_name.cpp:45 include/plugin_name.hpp:101
 msgid "Reverberation"
 msgstr "Riverbero"
 
-#: src/plugin_name.cpp:46
+#: src/plugin_name.cpp:46 include/plugin_name.hpp:102
 msgid "Noise Reduction"
 msgstr "Riduzione Rumore"
 
-#: src/plugin_name.cpp:47
+#: src/plugin_name.cpp:47 include/plugin_name.hpp:103
 msgid "Stereo Tools"
 msgstr "Strumenti Stereo"
 
-#: src/plugins_menu.cpp:145
+#: src/plugins_menu.cpp:145 src/plugins_menu.cpp:128
 msgid "Add"
 msgstr "Aggiungi"
 
