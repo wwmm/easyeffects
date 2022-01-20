@@ -32,6 +32,7 @@
 
                 <child type="start">
                     <object class="GtkBox">
+                        <property name="spacing">3</property>
                         <child>
                             <object class="GtkLabel" id="device_state">
                                 <property name="halign">start</property>
