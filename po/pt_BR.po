@@ -9,20 +9,20 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-15 15:43-0300\n"
-"PO-Revision-Date: 2019-09-10 12:56-0300\n"
-"Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
-"Language-Team: Portuguese <>\n"
+"PO-Revision-Date: 2022-01-20 08:55+0000\n"
+"Last-Translator: Wellington Wallace <wellingtonwallace@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.11-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
@@ -36,7 +36,6 @@ msgid "Wellington Wallace"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
@@ -51,60 +50,60 @@ msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects é o sucessor do PulseEffects. EasyEffects suporta apenas o "
+"PipeWire como servidor de áudio. Os usuários do PulseAudio devem usar o "
+"PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Como o EasyEffects usa o servidor de áudio padrão PulseAudio ele irá "
-"funcionar com a maioria das aplicações que você usa, senão todas. Todos os "
-"aplicativos suportados estão presentes na janela principal, onde cada uma "
-"pode ser habilitada individualmente."
+"Como o EasyEffects usa o servidor de som PipeWire, ele funcionará com a "
+"maioria, se não todos os aplicativos que você usa. Todos os aplicativos "
+"suportados são apresentados na janela principal, onde cada um pode ser "
+"ativado individualmente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Além de manipular saída de som o EasyEffects também é capaz de aplicar "
-"efeitos em dispositivos de entrada, como um microfone. Isto é útil, por "
-"exemplo, em gravação de áudio mas também funciona em conversas."
+"Além de manipular a saída de som, o EasyEffects é capaz de aplicar efeitos a "
+"um dispositivo de entrada, como um microfone. Isso é, por exemplo, útil na "
+"gravação de áudio, mas também funciona bem durante conversas de voz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
 msgstr ""
-"Quando inicializado, o EasyEffects irá convenientemente lembrar das "
-"configurações utilizadas na última sessão. Também é possível salvar todas as "
-"configurações\n"
-"como perfis."
+"Quando o EasyEffects for iniciado, ele lembrará convenientemente a "
+"configuração usada na última sessão. Também é possível salvar todas as "
+"configurações atuais como perfis."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "A página principal mostrando dois aplicativos de saída de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "A página do aprimoramento de graves mostrando controles de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "A página do convolver mostrando os controles de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
+#, fuzzy
 msgid "This release fixes the following bug:"
-msgstr ""
+msgstr "Esta versão corrige o seguinte bug:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
@@ -645,7 +644,6 @@ msgid "Momentary"
 msgstr "Momentâneo"
 
 #: data/ui/autogain.ui:66 data/ui/autogain.ui:150
-#, fuzzy
 msgid "Short-Term"
 msgstr "Curto Prazo"
 
@@ -654,9 +652,8 @@ msgid "Integrated"
 msgstr "Integrada"
 
 #: data/ui/autogain.ui:68
-#, fuzzy
 msgid "Geometric Mean"
-msgstr "Usar Gradiente"
+msgstr "Média Geométrica"
 
 #: data/ui/autogain.ui:90 data/ui/bass_enhancer.ui:18
 #: data/ui/bass_loudness.ui:14 data/ui/compressor.ui:13 data/ui/convolver.ui:14
@@ -690,9 +687,8 @@ msgid "Loudness"
 msgstr "Sonoridade"
 
 #: data/ui/autogain.ui:305
-#, fuzzy
 msgid "Output Gain"
-msgstr "Ganho de Entrada"
+msgstr "Ganho de Saída"
 
 #: data/ui/autogain.ui:342 data/ui/bass_enhancer.ui:264
 #: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
@@ -719,7 +715,7 @@ msgstr "Entrada"
 #: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
 #, fuzzy
 msgid "Plugin Input Gain"
-msgstr "Ganho de Entrada"
+msgstr "Ganho de Entrada do Plugin"
 
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:348
 #: data/ui/bass_loudness.ui:61 data/ui/bass_loudness.ui:228
@@ -748,7 +744,7 @@ msgstr "Saída"
 #: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
 #, fuzzy
 msgid "Plugin Output Gain"
-msgstr "Ganho de Entrada"
+msgstr "Ganho de Saída do Plugin"
 
 #: data/ui/autogain.ui:508 data/ui/bass_enhancer.ui:461
 #: data/ui/bass_loudness.ui:310 data/ui/compressor.ui:1160
@@ -773,12 +769,11 @@ msgstr "Resetar"
 #: data/ui/pitch.ui:378 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
 #: data/ui/stereo_tools.ui:732
 msgid "Using"
-msgstr ""
+msgstr "Usando"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
-#, fuzzy
 msgid "Device"
-msgstr "Dispositivo de Entrada"
+msgstr "Dispositivo"
 
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
 #: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
@@ -788,17 +783,19 @@ msgid "Name"
 msgstr "Nome"
 
 #: data/ui/autoload_row.ui:62
+#, fuzzy
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: data/ui/autoload_row.ui:86
 #, fuzzy
 msgid "Preset"
-msgstr "Predefinições"
+msgstr "Predefinição"
 
 #: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
+#, fuzzy
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 #: data/ui/bass_enhancer.ui:24 data/ui/compressor.ui:465 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:24
@@ -837,25 +834,27 @@ msgstr "Piso"
 #: data/ui/bass_enhancer.ui:242
 #, fuzzy
 msgid "Floor Value"
-msgstr "Piso"
+msgstr "Valor do piso"
 
 #: data/ui/bass_loudness.ui:95
+#, fuzzy
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 #, fuzzy
 msgid "Application Name"
-msgstr "Aplicativos"
+msgstr "Nome da Aplicação"
 
 #: data/ui/blocklist_menu.ui:86
+#, fuzzy
 msgid "Blocklisted Applications List"
-msgstr ""
+msgstr "Lista de aplicativos bloqueados"
 
 #: data/ui/blocklist_menu.ui:102
 #, fuzzy
 msgid "Show Blocklisted Applications"
-msgstr "Aplicativos"
+msgstr "Mostrar aplicativos bloqueados"
 
 #: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
@@ -887,7 +886,7 @@ msgstr "Modo de Compressão"
 #: data/ui/compressor.ui:77 data/ui/multiband_compressor_band.ui:765
 #, fuzzy
 msgid "Boost Threshold"
-msgstr "Limiar"
+msgstr "Limiar de Impulso"
 
 #: data/ui/compressor.ui:116 data/ui/multiband_compressor_band.ui:721
 #, fuzzy
@@ -904,7 +903,7 @@ msgstr "Ataque"
 #: data/ui/compressor.ui:173 data/ui/multiband_compressor_band.ui:166
 #, fuzzy
 msgid "Time"
-msgstr "Tempo Real"
+msgstr "Tempo"
 
 #: data/ui/compressor.ui:183 data/ui/deesser.ui:300 data/ui/gate.ui:184
 #: data/ui/limiter.ui:350 data/ui/maximizer.ui:29
@@ -917,12 +916,12 @@ msgstr "Limiar"
 #: data/ui/compressor.ui:210 data/ui/multiband_compressor_band.ui:222
 #, fuzzy
 msgid "Attack Time"
-msgstr "Ataque"
+msgstr "Tempo de Ataque"
 
 #: data/ui/compressor.ui:233 data/ui/multiband_compressor_band.ui:247
 #, fuzzy
 msgid "Attack Threshold"
-msgstr "Limiar"
+msgstr "Limiar de Ataque"
 
 #: data/ui/compressor.ui:240 data/ui/gate.ui:149 data/ui/limiter.ui:307
 #: data/ui/limiter.ui:543 data/ui/maximizer.ui:95
@@ -935,12 +934,12 @@ msgstr "Liberação"
 #: data/ui/compressor.ui:267 data/ui/multiband_compressor_band.ui:274
 #, fuzzy
 msgid "Release Time"
-msgstr "Liberação"
+msgstr "Tempo de liberação"
 
 #: data/ui/compressor.ui:292 data/ui/multiband_compressor_band.ui:302
 #, fuzzy
 msgid "Release Threshold"
-msgstr "Limiar"
+msgstr "Limiar de liberação"
 
 #: data/ui/compressor.ui:299 data/ui/deesser.ui:334 data/ui/gate.ui:218
 #: data/ui/multiband_compressor_band.ui:309 data/ui/multiband_gate.ui:327
@@ -993,7 +992,7 @@ msgstr "Uniforme"
 #: data/ui/compressor.ui:457 data/ui/multiband_compressor_band.ui:470
 #, fuzzy
 msgid "Sidechain Mode"
-msgstr "Cadeia Lateral"
+msgstr "Modo de cadeia lateral"
 
 #: data/ui/compressor.ui:475 data/ui/multiband_compressor_band.ui:477
 msgid "Source"
@@ -1023,7 +1022,7 @@ msgstr "Direita"
 #: data/ui/multiband_compressor_band.ui:498
 #, fuzzy
 msgid "Sidechain Source"
-msgstr "Cadeia Lateral"
+msgstr "Fonte da cadeia lateral"
 
 #: data/ui/compressor.ui:524 data/ui/equalizer_band.ui:98
 msgid "Type"
@@ -1038,13 +1037,14 @@ msgid "Feed-back"
 msgstr "Feed-back"
 
 #: data/ui/compressor.ui:550
+#, fuzzy
 msgid "External"
-msgstr ""
+msgstr "Externo"
 
 #: data/ui/compressor.ui:557
 #, fuzzy
 msgid "Sidechain Type"
-msgstr "Cadeia Lateral"
+msgstr "Tipo de cadeia lateral"
 
 #: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
 #, fuzzy
@@ -1054,7 +1054,7 @@ msgstr "Dispositivo de Entrada"
 #: data/ui/compressor.ui:592
 #, fuzzy
 msgid "PreAmplification"
-msgstr "Pré-amplificação"
+msgstr "Pré-Amplificação"
 
 #: data/ui/compressor.ui:629 data/ui/multiband_compressor_band.ui:654
 msgid "Reactivity"
@@ -1066,14 +1066,13 @@ msgid "Lookahead"
 msgstr "Lookahead"
 
 #: data/ui/compressor.ui:709
-#, fuzzy
 msgid "Sidechain Filters"
-msgstr "Cadeia Lateral"
+msgstr "Filtros da cadeia lateral"
 
 #: data/ui/compressor.ui:719
 #, fuzzy
 msgid "High-Pass"
-msgstr "Passa Altas"
+msgstr "Passa-alta"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
 #: data/ui/pipe_manager_box.ui:563
@@ -2549,7 +2548,7 @@ msgstr "Predefinições de Entrada: "
 #: data/ui/presets_menu.ui:308
 #, fuzzy
 msgid "Input Presets List"
-msgstr "Predefinições de Entrada: "
+msgstr "Lista de predefinições de entrada"
 
 #: data/ui/reverb.ui:43
 msgid "High Frequency Damping"
@@ -2680,9 +2679,8 @@ msgid "Overview"
 msgstr "Dispositivo de Entrada"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the EasyEffects Manual"
-msgstr "Redefinir o EasyEffects."
+msgstr "Abrir o Manual do EasyEffects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2940,7 +2938,7 @@ msgstr "Reforçador de Graves"
 #: src/plugin_name.cpp:27
 #, fuzzy
 msgid "Bass Loudness"
-msgstr "Sonoridade"
+msgstr "Volume do baixo"
 
 #: src/plugin_name.cpp:29
 msgid "Convolver"
@@ -3010,15 +3008,16 @@ msgstr "Reverberação"
 #: src/plugin_name.cpp:46
 #, fuzzy
 msgid "Noise Reduction"
-msgstr "Redução de Ganho"
+msgstr "Redução de Ruído"
 
 #: src/plugin_name.cpp:47
 msgid "Stereo Tools"
 msgstr "Ferramentas Stereo"
 
 #: src/plugins_menu.cpp:145
+#, fuzzy
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 #: src/presets_menu.cpp:106
 #, fuzzy
@@ -3028,12 +3027,11 @@ msgstr "Importar Predefinições"
 #: src/rnnoise_ui.cpp:122
 #, fuzzy
 msgid "Import Model File"
-msgstr "Importar Arquivo com a Resposta de Impulso"
+msgstr "Importar arquivo de modelo"
 
 #: src/rnnoise_ui.cpp:127
-#, fuzzy
 msgid "RNNoise Models"
-msgstr "Modo Agressivo"
+msgstr "Modelos RNNoise"
 
 #~ msgid "RLC (BT)"
 #~ msgstr "RLC (BT)"
