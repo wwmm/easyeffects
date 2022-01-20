@@ -19,70 +19,24 @@
         </child>
 
         <child>
-            <object class="AdwHeaderBar">
-                <property name="centering-policy">strict</property>
-                <property name="show-end-title-buttons">0</property>
+            <object class="GtkCenterBox">
+                <style>
+                    <class name="toolbar" />
+                </style>
 
-                <property name="title-widget">
+                <child type="center">
                     <object class="AdwViewSwitcher">
                         <property name="stack">stack</property>
                     </object>
-                </property>
-
-                <child>
-                    <object class="GtkLabel" id="device_state">
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="label"></property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                    </object>
                 </child>
 
-                <child>
-                    <object class="GtkLabel" id="latency_status">
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="label"></property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                    </object>
-                </child>
-
-                <child>
+                <child type="start">
                     <object class="GtkBox">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="spacing">3</property>
                         <child>
-                            <object class="GtkLabel" id="label_global_output_level_left">
-                                <property name="halign">center</property>
+                            <object class="GtkLabel" id="device_state">
+                                <property name="halign">start</property>
                                 <property name="valign">center</property>
-                                <property name="width_chars">4</property>
-                                <property name="label">0</property>
-                                <style>
-                                    <class name="dim-label" />
-                                </style>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkLabel" id="label_global_output_level_right">
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="width_chars">4</property>
-                                <property name="label">0</property>
-                                <style>
-                                    <class name="dim-label" />
-                                </style>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="label">dB</property>
+                                <property name="label"></property>
                                 <style>
                                     <class name="dim-label" />
                                 </style>
@@ -90,46 +44,99 @@
                         </child>
 
                         <child>
-                            <object class="GtkImage" id="saturation_icon">
-                                <property name="halign">center</property>
+                            <object class="GtkLabel" id="latency_status">
+                                <property name="halign">start</property>
                                 <property name="valign">center</property>
-                                <property name="opacity">0</property>
-                                <property name="icon_name">dialog-warning-symbolic</property>
+                                <property name="label"></property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
                             </object>
                         </child>
-                    </object>
-                </child>
 
-                <child type="end">
-                    <object class="GtkMenuButton" id="menubutton_blocklist">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="direction">up</property>
-                        <property name="label" translatable="yes">Blocklist</property>
-                    </object>
-                </child>
-
-                <child type="end">
-                    <object class="GtkToggleButton" id="toggle_listen_mic">
-                        <property name="visible">False</property>
-                        <signal name="toggled" handler="on_listen_mic_toggled" object="EffectsBox" />
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">center</property>
+                                <property name="valign">center</property>
                                 <property name="spacing">3</property>
                                 <child>
-                                    <object class="GtkImage">
-                                        <property name="icon-name">audio-input-microphone-symbolic</property>
+                                    <object class="GtkLabel" id="label_global_output_level_left">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="width_chars">4</property>
+                                        <property name="label">0</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
                                     </object>
                                 </child>
                                 <child>
-                                    <object class="GtkImage">
-                                        <property name="icon-name">media-playlist-consecutive-symbolic</property>
+                                    <object class="GtkLabel" id="label_global_output_level_right">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="width_chars">4</property>
+                                        <property name="label">0</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
                                     </object>
                                 </child>
                                 <child>
-                                    <object class="GtkImage">
-                                        <property name="icon-name">audio-speakers-symbolic</property>
+                                    <object class="GtkLabel">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="label">dB</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkImage" id="saturation_icon">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="opacity">0</property>
+                                        <property name="icon_name">dialog-warning-symbolic</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child type="end">
+                    <object class="GtkBox">
+                        <child>
+                            <object class="GtkMenuButton" id="menubutton_blocklist">
+                                <property name="direction">up</property>
+                                <property name="label" translatable="yes">Blocklist</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_listen_mic">
+                                <property name="visible">False</property>
+                                <signal name="toggled" handler="on_listen_mic_toggled" object="EffectsBox" />
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="spacing">3</property>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">audio-input-microphone-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">media-playlist-consecutive-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">audio-speakers-symbolic</property>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
                             </object>
