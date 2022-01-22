@@ -205,6 +205,42 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   auto mic_linked = false;
 
+  // checking if the output device exists
+
+  bool dev_exists = false;
+
+  for (const auto& [ts, node] : pm->node_map) {
+    if (node.id == pm->input_device.id) {
+      dev_exists = true;
+
+      break;
+    }
+  }
+
+  if (!dev_exists) {
+    util::warning(log_tag + "The input device " + pm->input_device.name + " with id " +
+                  std::to_string(pm->input_device.id) + " does not exist anymore. Aborting the link");
+
+    return;
+  }
+
+  // waiting for the input device ports information to be available.
+
+  int timeout = 0;
+
+  while (pm->count_node_ports(pm->input_device.id) < 1) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+    timeout++;
+
+    if (timeout > 10000) {
+      util::warning(log_tag + "Information about the ports of the input device " + pm->input_device.name + " with id " +
+                    std::to_string(pm->input_device.id) + " are taking to long to be available. Aborting the link");
+
+      return;
+    }
+  }
+
   uint prev_node_id = pm->input_device.id;
   uint next_node_id = 0U;
 

@@ -260,6 +260,43 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     }
   }
 
+  // checking if the output device exists
+
+  bool dev_exists = false;
+
+  for (const auto& [ts, node] : pm->node_map) {
+    if (node.id == pm->output_device.id) {
+      dev_exists = true;
+
+      break;
+    }
+  }
+
+  if (!dev_exists) {
+    util::warning(log_tag + "The output device " + pm->output_device.name + " with id " +
+                  std::to_string(pm->output_device.id) + " does not exist anymore. Aborting the link");
+
+    return;
+  }
+
+  // waiting for the output device ports information to be available.
+
+  int timeout = 0;
+
+  while (pm->count_node_ports(pm->output_device.id) < 2) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+    timeout++;
+
+    if (timeout > 10000) {  // 10 seconds
+      util::warning(log_tag + "Information about the ports of the output device " + pm->output_device.name +
+                    " with id " + std::to_string(pm->output_device.id) +
+                    " are taking to long to be available. Aborting the link");
+
+      return;
+    }
+  }
+
   // link output device
 
   next_node_id = pm->output_device.id;

@@ -995,8 +995,9 @@ void on_registry_global(void* data,
             if (g_strcmp0(description.substr(0, 2).c_str(), "ee_") == 0) {
               const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
-              util::debug(PipeManager::log_tag + "Filter " + node_name + ", id = " + std::to_string(id) + ", was added");
-          	}
+              util::debug(PipeManager::log_tag + "Filter " + node_name + ", id = " + std::to_string(id) +
+                          ", was added");
+            }
           }
         }
       }
@@ -1217,11 +1218,13 @@ void on_registry_global(void* data,
     if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
       util::debug(PipeManager::log_tag + "found metadata: " + name);
 
-      if (pm->metadata != nullptr) {
-        return;
-      }
-
       if (g_strcmp0(name, "default") == 0) {
+        if (pm->metadata != nullptr) {
+          util::debug(PipeManager::log_tag + "A new default metadata is available. We will use it");
+
+          spa_hook_remove(&pm->metadata_listener);
+        }
+
         pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
 
         if (pm->metadata != nullptr) {
