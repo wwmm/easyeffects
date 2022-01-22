@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-15 15:43-0300\n"
-"PO-Revision-Date: 2022-01-20 08:56+0000\n"
+"PO-Revision-Date: 2022-01-22 05:53+0000\n"
 "Last-Translator: IDeathByte <wwconstantin@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -509,6 +509,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
 msgid "Transient windows are now properly set for some plugins dialogs"
 msgstr ""
+"Временные окна для взаимодействия с некоторыми плагинами теперь работают "
+"корректно"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:167
 msgid ""
@@ -516,15 +518,20 @@ msgid ""
 "where the impulse files was not loaded when only one was available in the "
 "menu"
 msgstr ""
+"Была исправлена ошибка меню конвольвера, при которой файлы импульсов не "
+"подгружались, если на выбор доступна только одна опция"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:168
 msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
 msgstr ""
+"Исправлена ошибка, при которой плагин мог некорректно инициализироваться"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
 msgid "The saturation warning should not displace its neighbor widgets anymore"
 msgstr ""
+"Предупреждение о переполнении больше не должно менять расположение соседних "
+"виджетов"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid "Fixed the locale in a few widgets"
@@ -539,6 +546,8 @@ msgid ""
 "The Loudness plugin is being used again for the reasons described at This "
 "means that is an optional dependency again."
 msgstr ""
+"По указаным выше причинам, лагин работы с громкостью теперь снова доступен. "
+"Это значит, что он снова добавлен в список опциональных зависимостей."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid ""
@@ -557,10 +566,12 @@ msgid ""
 "Now we use a sidechain LSP compressor that allows the user to select and "
 "external source as the sidechain input."
 msgstr ""
+"Теперь для компрессора LSP используется сторонняя цепочка, что позволяет "
+"пользователям использовать внешние источники в качестве входной цепочки."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
 msgid "We now support the LSP compressor `Boosting` mode."
-msgstr ""
+msgstr "Теперь компрессор LSP поддерживает режим 'Усиление'."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:194
 msgid ""
@@ -569,38 +580,48 @@ msgid ""
 "will allow to import different presets for each channel instead of just "
 "settings the same values to both."
 msgstr ""
+"Когда 'смещение каналов' активировано в эквалайзере, предустановки "
+"импортированные из APO будут применены только к каналу, отображаемому в "
+"окне. Это позволяет применять различные предустановки для каждого канала "
+"вместо установки одинакового значения в обоих каналах."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
 msgid ""
 "Fixed some segmentation faults that could happen when creating a preset "
 "autoloading profile or removing presets"
 msgstr ""
+"Исправлены ошибки сегментирования, возникавшие при создании или удалении "
+"предустановок, используемых для автозагрузки"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid ""
 "This is one of the biggest releases that I have ever made. The amount of "
 "changes is so big that it is hard to talk about everything here."
 msgstr ""
+"Данный релиз является одним из самых крупных, что мы делали за все время. Мы "
+"провели очень много изменений, поэтому очень трудно описать их все."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
 msgid ""
 "The following are just the most import ones. People interested on the "
 "journey that got us here can take"
 msgstr ""
+"Перечисленные изменения являются самыми важными на наш взгляд. Если вам "
+"интересны возможности, предоставляемые приложением, просто возьмите"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
 msgid "a look at and"
-msgstr ""
+msgstr "и опробуйте их"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
 msgid ""
 "The application and its repository have been renamed from PulseEffects to "
 "`EasyEffects`"
-msgstr ""
+msgstr "Приложение и его репозиторий были переименованы в 'EasyEffects'"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
 msgid "gtkmm3 was replaced by gtkmm4"
-msgstr ""
+msgstr "gtkmm3 был заменен на gtkmm4"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid "Gstreamer was replaced by native PipeWire filters."
@@ -695,7 +716,7 @@ msgstr "_Руководство"
 
 #: data/ui/application_window.ui:14
 msgid "_Shortcuts"
-msgstr "_Ярлыки"
+msgstr "_Гор. Клавиши"
 
 #: data/ui/application_window.ui:20
 msgid "_Reset Settings"
@@ -1068,7 +1089,7 @@ msgstr "Компенсирование"
 # #, fuzzy
 #: data/ui/compressor.ui:418 data/ui/compressor.ui:930
 msgid "Sidechain"
-msgstr "Усиление ввода [дБ]"
+msgstr "Сторонняя цепочка"
 
 #: data/ui/compressor.ui:447 data/ui/deesser.ui:49 data/ui/gate.ui:38
 #: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:204
@@ -1087,7 +1108,7 @@ msgstr "RMS (среднеквадратичный уровень сигнала)
 #: data/ui/compressor.ui:449 data/ui/compressor.ui:801
 #: data/ui/multiband_compressor_band.ui:462
 msgid "Low-Pass"
-msgstr "Фильтр низких частот"
+msgstr "НЧ фильтр"
 
 #: data/ui/compressor.ui:450 data/ui/multiband_compressor_band.ui:463
 msgid "Uniform"
@@ -1101,7 +1122,7 @@ msgstr "Режим Цепочки"
 # #, fuzzy
 #: data/ui/compressor.ui:475 data/ui/multiband_compressor_band.ui:477
 msgid "Source"
-msgstr "Средний источник"
+msgstr "Источник"
 
 #: data/ui/compressor.ui:485 data/ui/multiband_compressor_band.ui:488
 msgid "Middle"
@@ -1175,9 +1196,8 @@ msgid "Sidechain Filters"
 msgstr "Фильтры Цепочки"
 
 #: data/ui/compressor.ui:719
-#, fuzzy
 msgid "High-Pass"
-msgstr "Высокочастотный фильтр"
+msgstr "ВЧ фильтр"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
 #: data/ui/pipe_manager_box.ui:563
@@ -1931,9 +1951,8 @@ msgid "Band End"
 msgstr "Конец полосы"
 
 #: data/ui/multiband_compressor_band.ui:108
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Редим сжатия"
+msgstr "Режим Компрессии Полосы"
 
 #: data/ui/multiband_compressor_band.ui:126
 msgid "Band Bypass"
@@ -1946,24 +1965,20 @@ msgid "Band Sidechain Options"
 msgstr "Усиление ввода [дБ]"
 
 #: data/ui/multiband_compressor_band.ui:523
-#, fuzzy
 msgid "Low-Cut Filter"
-msgstr "Фильтр"
+msgstr "Фильтр Обрезка НЧ"
 
 #: data/ui/multiband_compressor_band.ui:551
-#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Фильтр"
+msgstr "НЧ Срез Частот"
 
 #: data/ui/multiband_compressor_band.ui:576
-#, fuzzy
 msgid "High-Cut Filter"
-msgstr "Высокачастотный фильтр"
+msgstr "Фильтр Обрезка ВЧ"
 
 #: data/ui/multiband_compressor_band.ui:604
-#, fuzzy
 msgid "High-Cut Filter Frequency"
-msgstr "Высокачастотный фильтр"
+msgstr "ВЧ Срез Частот"
 
 #: data/ui/multiband_compressor_band.ui:620
 msgid "PreAmp"
@@ -2274,7 +2289,7 @@ msgstr "Версия Библиотек"
 
 #: data/ui/pipe_manager_box.ui:140
 msgid "Sampling Rate"
-msgstr "Частота дискретизации"
+msgstr "Частота Дискретизации"
 
 #: data/ui/pipe_manager_box.ui:151
 msgid "Minimum Quantum"
@@ -2632,24 +2647,20 @@ msgid "Decay Time"
 msgstr "Время распада"
 
 #: data/ui/reverb.ui:210
-#, fuzzy
 msgid "Wet Amount"
-msgstr "Величина"
+msgstr "Влажность"
 
 #: data/ui/reverb.ui:238
-#, fuzzy
 msgid "Wet Level"
-msgstr "Целевой результат"
+msgstr "Уровень Вл"
 
 #: data/ui/reverb.ui:245
-#, fuzzy
 msgid "Dry Amount"
-msgstr "Величина"
+msgstr "Сухость"
 
 #: data/ui/reverb.ui:272
-#, fuzzy
 msgid "Dry Level"
-msgstr "Уровень"
+msgstr "Уровень Сх"
 
 #: data/ui/reverb.ui:279
 msgid "Bass Cut"
