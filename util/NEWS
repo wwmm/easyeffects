@@ -7,7 +7,7 @@ Features:
 happen anymore in these situations.
 - Added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts.
 It should help with the cases were our devices are muted by the audio server for unknown reasons.
-- Better support for computer suspension 
+- Better support for computer suspending 
 
 Bugfixes:
 - Fixed a bug where trying to create an autoloading profile without having presets caused the application to crash.
