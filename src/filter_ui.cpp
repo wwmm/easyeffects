@@ -171,9 +171,9 @@ void filter_box_init(FilterBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"dB">(self->frequency);
-  prepare_spinbutton<"Hz">(self->resonance);
-  prepare_spinbutton<"Hz">(self->inertia);
+  prepare_spinbutton<"Hz">(self->frequency);
+  prepare_spinbutton<"dB">(self->resonance);
+  prepare_spinbutton<"ms">(self->inertia);
 }
 
 auto create() -> FilterBox* {
