@@ -81,6 +81,8 @@ class PluginBase {
 
   inline static bool post_messages;
 
+  std::vector<float> probe_dummy_left, probe_dummy_right;
+
   [[nodiscard]] auto get_node_id() const -> uint;
 
   void set_active(const bool& state) const;

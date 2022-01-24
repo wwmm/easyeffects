@@ -36,6 +36,12 @@ void on_process(void* userdata, spa_io_position* position) {
     d->pb->n_samples = n_samples;
     d->pb->buffer_duration = static_cast<float>(n_samples) / static_cast<float>(rate);
 
+    d->pb->probe_dummy_left.resize(n_samples);
+    d->pb->probe_dummy_right.resize(n_samples);
+
+    std::ranges::fill(d->pb->probe_dummy_left, 0.0F);
+    std::ranges::fill(d->pb->probe_dummy_right, 0.0F);
+
     d->pb->setup();
   }
 
@@ -63,13 +69,16 @@ void on_process(void* userdata, spa_io_position* position) {
     auto* probe_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_right, n_samples));
 
     if (probe_left == nullptr || probe_right == nullptr) {
-      return;
+      std::span l{d->pb->probe_dummy_left.data(), d->pb->probe_dummy_left.data() + n_samples};
+      std::span r{d->pb->probe_dummy_right.data(), d->pb->probe_dummy_right.data() + n_samples};
+
+      d->pb->process(left_in, right_in, left_out, right_out, l, r);
+    } else {
+      std::span l{probe_left, probe_left + n_samples};
+      std::span r{probe_right, probe_right + n_samples};
+
+      d->pb->process(left_in, right_in, left_out, right_out, l, r);
     }
-
-    std::span l{probe_left, probe_left + n_samples};
-    std::span r{probe_right, probe_right + n_samples};
-
-    d->pb->process(left_in, right_in, left_out, right_out, l, r);
   }
 }
 
