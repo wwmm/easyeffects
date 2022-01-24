@@ -62,6 +62,10 @@ void on_process(void* userdata, spa_io_position* position) {
     auto* probe_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_left, n_samples));
     auto* probe_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_right, n_samples));
 
+    if (probe_left == nullptr || probe_right == nullptr) {
+      return;
+    }
+
     std::span l{probe_left, probe_left + n_samples};
     std::span r{probe_right, probe_right + n_samples};
 
