@@ -30,7 +30,6 @@ GStreamer usage was replaced by native PipeWire filters.
 - Echo Canceller
 - Equalizer
 - Exciter
-- Expander
 - Filter (low-pass, high-pass, band-pass and band-reject modes)
 - Gate
 - Limiter
