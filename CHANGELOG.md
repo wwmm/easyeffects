@@ -1,4 +1,20 @@
 # Changelog
+## 6.2.2
+              
+### 2022-01-27
+
+### Features:
+- Support for the next PipeWire release `0.3.44`
+- The autogain filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not
+happen anymore in these situations.
+- We added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts.
+It should help with the cases were our devices are muted by the audio server for unknown reasons.
+- Better support for computer suspending. 
+- Updated translations
+
+### Bugfixes:
+- Fixed a bug where trying to create an autoloading profile without having presets caused the application to crash.
+
 ## 6.2.1
               
 ### 2022-01-05
