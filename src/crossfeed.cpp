@@ -62,9 +62,11 @@ Crossfeed::~Crossfeed() {
 void Crossfeed::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  bs2b.set_srate(rate);
-
   data.resize(2 * n_samples);
+
+  if (rate != bs2b.get_srate()) {
+    bs2b.set_srate(rate);
+  }
 }
 
 void Crossfeed::process(std::span<float>& left_in,
