@@ -53,11 +53,7 @@ void on_process(void* userdata, spa_io_position* position) {
   auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
   auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
 
-  if (out_left == nullptr || out_right == nullptr) {
-    return;
-  }
-
-  std::span<float> left_in, right_in;
+  std::span<float> left_in, right_in, left_out, right_out;
 
   if (in_left != nullptr) {
     left_in = std::span{in_left, in_left + n_samples};
@@ -71,8 +67,17 @@ void on_process(void* userdata, spa_io_position* position) {
     right_in = d->pb->dummy_right;
   }
 
-  std::span left_out{out_left, out_left + n_samples};
-  std::span right_out{out_right, out_right + n_samples};
+  if (out_left != nullptr) {
+    left_out = std::span{out_left, out_left + n_samples};
+  } else {
+    left_out = d->pb->dummy_left;
+  }
+
+  if (out_right != nullptr) {
+    right_out = std::span{out_right, out_right + n_samples};
+  } else {
+    right_out = d->pb->dummy_right;
+  }
 
   if (!d->pb->enable_probe) {
     d->pb->process(left_in, right_in, left_out, right_out);
