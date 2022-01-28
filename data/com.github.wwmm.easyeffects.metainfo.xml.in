@@ -38,10 +38,8 @@
         <p>This release adds the following features:</p>
         <ul>
           <li>Support for the next PipeWire release `0.3.44`</li>
-          <li>The autogain filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not</li>
-          <li>happen anymore in these situations.</li>
-          <li>We added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts.</li>
-          <li>It should help with the cases were our devices are muted by the audio server for unknown reasons.</li>
+          <li>The autogain filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.</li>
+          <li>We added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts. It should help with the cases were our devices are muted by the audio server for unknown reasons.</li>
           <li>Better support for computer suspending.</li>
           <li>Updated translations</li>
         </ul>
