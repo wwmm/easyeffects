@@ -7,7 +7,7 @@ Features:
 happen anymore in these situations.
 
 Bugfixes:
-- 
+- Fixed a bug that prevented mono microphones from properly work with EasyEffects
 
 Notes:
 - 

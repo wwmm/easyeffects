@@ -81,7 +81,7 @@ class PluginBase {
 
   inline static bool post_messages;
 
-  std::vector<float> probe_dummy_left, probe_dummy_right;
+  std::vector<float> dummy_left, dummy_right;
 
   [[nodiscard]] auto get_node_id() const -> uint;
 

@@ -36,11 +36,11 @@ void on_process(void* userdata, spa_io_position* position) {
     d->pb->n_samples = n_samples;
     d->pb->buffer_duration = static_cast<float>(n_samples) / static_cast<float>(rate);
 
-    d->pb->probe_dummy_left.resize(n_samples);
-    d->pb->probe_dummy_right.resize(n_samples);
+    d->pb->dummy_left.resize(n_samples);
+    d->pb->dummy_right.resize(n_samples);
 
-    std::ranges::fill(d->pb->probe_dummy_left, 0.0F);
-    std::ranges::fill(d->pb->probe_dummy_right, 0.0F);
+    std::ranges::fill(d->pb->dummy_left, 0.0F);
+    std::ranges::fill(d->pb->dummy_right, 0.0F);
 
     d->pb->setup();
   }
@@ -53,13 +53,25 @@ void on_process(void* userdata, spa_io_position* position) {
   auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
   auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
 
-  if (in_left == nullptr || in_right == nullptr || out_left == nullptr || out_right == nullptr) {
+  if (out_left == nullptr || out_right == nullptr) {
     return;
   }
 
-  std::span left_in{in_left, in_left + n_samples};
+  std::span<float> left_in, right_in;
+
+  if (in_left != nullptr) {
+    left_in = std::span{in_left, in_left + n_samples};
+  } else {
+    left_in = d->pb->dummy_left;
+  }
+
+  if (in_right != nullptr) {
+    right_in = std::span{in_right, in_right + n_samples};
+  } else {
+    right_in = d->pb->dummy_right;
+  }
+
   std::span left_out{out_left, out_left + n_samples};
-  std::span right_in{in_right, in_right + n_samples};
   std::span right_out{out_right, out_right + n_samples};
 
   if (!d->pb->enable_probe) {
@@ -69,8 +81,8 @@ void on_process(void* userdata, spa_io_position* position) {
     auto* probe_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_right, n_samples));
 
     if (probe_left == nullptr || probe_right == nullptr) {
-      std::span l{d->pb->probe_dummy_left.data(), d->pb->probe_dummy_left.data() + n_samples};
-      std::span r{d->pb->probe_dummy_right.data(), d->pb->probe_dummy_right.data() + n_samples};
+      std::span l{d->pb->dummy_left.data(), d->pb->dummy_left.data() + n_samples};
+      std::span r{d->pb->dummy_right.data(), d->pb->dummy_right.data() + n_samples};
 
       d->pb->process(left_in, right_in, left_out, right_out, l, r);
     } else {
