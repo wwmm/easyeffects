@@ -1,4 +1,15 @@
 # Changelog
+## 6.2.3
+              
+### 2022-01-29
+
+### Features:
+- The crossfeed filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.
+
+### Bugfixes:
+- Fixed a bug that prevented mono microphones from properly working with EasyEffects
+
+
 ## 6.2.2
               
 ### 2022-01-27
