@@ -33,6 +33,18 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="6.2.3" date="2022-01-29T00:00:00Z">
+      <description>
+        <p>This release adds the following feature:</p>
+        <ul>
+          <li>The crossfeed filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.</li>
+        </ul>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Fixed a bug that prevented mono microphones from properly working with EasyEffects</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="6.2.2" date="2022-01-27T00:00:00Z">
       <description>
         <p>This release adds the following features:</p>
