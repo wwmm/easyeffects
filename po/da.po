@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 21:43-0300\n"
+"POT-Creation-Date: 2022-01-30 11:43-0300\n"
 "PO-Revision-Date: 2022-01-11 15:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -599,7 +599,7 @@ msgstr "Formater"
 msgid "Rate"
 msgstr "Rate"
 
-#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:503
+#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:499
 msgid "Channels"
 msgstr "Kanaler"
 
@@ -607,7 +607,7 @@ msgstr "Kanaler"
 msgid "Latency"
 msgstr "Forsinkelse"
 
-#: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:482
+#: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:478
 #: data/ui/preferences_spectrum.ui:9
 msgid "State"
 msgstr "Tilstand"
@@ -733,7 +733,7 @@ msgstr "Udgangsforstærkning"
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
 #: data/ui/limiter.ui:749 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:308 data/ui/pitch.ui:198 data/ui/reverb.ui:364
+#: data/ui/pipe_manager_box.ui:304 data/ui/pitch.ui:198 data/ui/reverb.ui:364
 #: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
 #: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
 msgid "Input"
@@ -761,7 +761,7 @@ msgstr "Plugin-Indgangsforstærkning"
 #: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
 #: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:211 data/ui/pitch.ui:282 data/ui/reverb.ui:448
+#: data/ui/pipe_manager_box.ui:207 data/ui/pitch.ui:282 data/ui/reverb.ui:448
 #: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
 msgid "Output"
@@ -809,8 +809,7 @@ msgid "Device"
 msgstr "Enhed"
 
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
-#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
-#: data/ui/pipe_manager_box.ui:92 data/ui/presets_menu.ui:50
+#: data/ui/factory_modules_listview.ui:43 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
 msgid "Name"
 msgstr "Navn"
@@ -1026,13 +1025,13 @@ msgid "Side"
 msgstr "Side"
 
 #: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
-#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:506
+#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:502
 #: data/ui/stereo_tools.ui:159
 msgid "Left"
 msgstr "Venstre"
 
 #: data/ui/compressor.ui:488 data/ui/delay.ui:61 data/ui/equalizer.ui:49
-#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:517
+#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:513
 #: data/ui/stereo_tools.ui:214
 msgid "Right"
 msgstr "Højre"
@@ -1088,7 +1087,7 @@ msgid "High-Pass"
 msgstr "Højpas"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
-#: data/ui/pipe_manager_box.ui:563
+#: data/ui/pipe_manager_box.ui:559
 msgid "Frequency"
 msgstr "Frekvens"
 
@@ -1137,7 +1136,7 @@ msgstr "Kurve"
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:509
+#: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:505
 msgid "Left Channel"
 msgstr "Venstre Kanal"
 
@@ -1145,7 +1144,7 @@ msgstr "Venstre Kanal"
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:520
+#: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:516
 msgid "Right Channel"
 msgstr "Højre Kanal"
 
@@ -1215,17 +1214,9 @@ msgstr "Søg Impulsfiler"
 msgid "Impulse Files List"
 msgstr "Impulsfiler liste"
 
-#: data/ui/crossfeed.ui:27
-msgid "Cmoy"
-msgstr "Cmoy"
-
 #: data/ui/crossfeed.ui:34
 msgid "Default"
 msgstr "Standard"
-
-#: data/ui/crossfeed.ui:41
-msgid "Jmeier"
-msgstr "Jmeier"
 
 #: data/ui/crossfeed.ui:57
 msgid "Cutoff"
@@ -2059,7 +2050,7 @@ msgstr "Bånd 4 Max Reduktion"
 msgid "General"
 msgstr "Generelt"
 
-#: data/ui/pipe_manager_box.ui:37 data/ui/pipe_manager_box.ui:77
+#: data/ui/pipe_manager_box.ui:37 data/ui/pipe_manager_box.ui:75
 msgid "Use Default"
 msgstr "Brug Standard"
 
@@ -2067,135 +2058,135 @@ msgstr "Brug Standard"
 msgid "Use Default Input"
 msgstr "Brug Standard Input"
 
-#: data/ui/pipe_manager_box.ui:63
+#: data/ui/pipe_manager_box.ui:61
 msgid "Custom Input Device"
 msgstr "Brugerdefineret Input-Enhed"
 
-#: data/ui/pipe_manager_box.ui:74
+#: data/ui/pipe_manager_box.ui:72
 msgid "Output Device"
 msgstr "Udgangsenhed"
 
-#: data/ui/pipe_manager_box.ui:83
+#: data/ui/pipe_manager_box.ui:81
 msgid "Use Default Output"
 msgstr "Brug Standard Udgang"
 
-#: data/ui/pipe_manager_box.ui:103
+#: data/ui/pipe_manager_box.ui:99
 msgid "Custom Output Device"
 msgstr "Brugerdefineret Udgangs-Enhed"
 
-#: data/ui/pipe_manager_box.ui:114
+#: data/ui/pipe_manager_box.ui:110
 msgid "Server Information"
 msgstr "Serveroplysninger"
 
-#: data/ui/pipe_manager_box.ui:118
+#: data/ui/pipe_manager_box.ui:114
 msgid "Header Version"
 msgstr "Overskriftsversion"
 
-#: data/ui/pipe_manager_box.ui:129
+#: data/ui/pipe_manager_box.ui:125
 msgid "Library Version"
 msgstr "Bibloteksversion"
 
-#: data/ui/pipe_manager_box.ui:140
+#: data/ui/pipe_manager_box.ui:136
 msgid "Sampling Rate"
 msgstr "Prøvetagningsfrekvens"
 
-#: data/ui/pipe_manager_box.ui:151
+#: data/ui/pipe_manager_box.ui:147
 msgid "Minimum Quantum"
 msgstr "Minimumsantal"
 
-#: data/ui/pipe_manager_box.ui:162
+#: data/ui/pipe_manager_box.ui:158
 msgid "Maximum Quantum"
 msgstr "Maksimumantal"
 
-#: data/ui/pipe_manager_box.ui:173
+#: data/ui/pipe_manager_box.ui:169
 msgid "Default Quantum"
 msgstr "Standard Antal"
 
-#: data/ui/pipe_manager_box.ui:193
+#: data/ui/pipe_manager_box.ui:189
 msgid "Presets Autoloading"
 msgstr "Forindstil Autolæsning"
 
-#: data/ui/pipe_manager_box.ui:234
+#: data/ui/pipe_manager_box.ui:230
 msgid "Output Devices"
 msgstr "Udgangsenheder"
 
-#: data/ui/pipe_manager_box.ui:251
+#: data/ui/pipe_manager_box.ui:247
 msgid "Output Presets"
 msgstr "Udgangsforindstillinger"
 
-#: data/ui/pipe_manager_box.ui:258 data/ui/pipe_manager_box.ui:350
+#: data/ui/pipe_manager_box.ui:254 data/ui/pipe_manager_box.ui:346
 msgid "Create Association"
 msgstr "Skab Associering"
 
-#: data/ui/pipe_manager_box.ui:272
+#: data/ui/pipe_manager_box.ui:268
 msgid "Add Autoloading Output Preset"
 msgstr "Tilføj Autolæsning Udgangsforindstilling"
 
-#: data/ui/pipe_manager_box.ui:292
+#: data/ui/pipe_manager_box.ui:288
 msgid "Output Autoloading Presets List"
 msgstr "Udgangsautolæsingsforindstillinger Liste"
 
-#: data/ui/pipe_manager_box.ui:331
+#: data/ui/pipe_manager_box.ui:327
 msgid "Input Devices"
 msgstr "Indgangsenheder"
 
-#: data/ui/pipe_manager_box.ui:343
+#: data/ui/pipe_manager_box.ui:339
 msgid "Input Presets"
 msgstr "Indgangsforindstillinger"
 
-#: data/ui/pipe_manager_box.ui:364
+#: data/ui/pipe_manager_box.ui:360
 msgid "Add Autoloading Input Preset"
 msgstr "Tilføj Autolæsning Indgangsforindstilling"
 
-#: data/ui/pipe_manager_box.ui:383
+#: data/ui/pipe_manager_box.ui:379
 msgid "Input Autoloading Presets List"
 msgstr "Indgangsautolæsingsforindstillinger Liste"
 
-#: data/ui/pipe_manager_box.ui:413
+#: data/ui/pipe_manager_box.ui:409
 msgid "Modules"
 msgstr "Moduler"
 
-#: data/ui/pipe_manager_box.ui:431
+#: data/ui/pipe_manager_box.ui:427
 msgid "Modules List"
 msgstr "Liste over moduler"
 
-#: data/ui/pipe_manager_box.ui:445
+#: data/ui/pipe_manager_box.ui:441
 msgid "Clients"
 msgstr "Klienter"
 
-#: data/ui/pipe_manager_box.ui:463
+#: data/ui/pipe_manager_box.ui:459
 msgid "Clients List"
 msgstr "Liste over klienter"
 
-#: data/ui/pipe_manager_box.ui:477
+#: data/ui/pipe_manager_box.ui:473
 msgid "Test Signal"
 msgstr "Test-Signal"
 
-#: data/ui/pipe_manager_box.ui:485 data/ui/preferences_spectrum.ui:12
+#: data/ui/pipe_manager_box.ui:481 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr "Aktiveret"
 
-#: data/ui/pipe_manager_box.ui:500
+#: data/ui/pipe_manager_box.ui:496
 msgid "Properties"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:528
+#: data/ui/pipe_manager_box.ui:524
 msgid "Both"
 msgstr "Begge"
 
-#: data/ui/pipe_manager_box.ui:532
+#: data/ui/pipe_manager_box.ui:528
 msgid "Both Channels"
 msgstr "Begge Kanaler"
 
-#: data/ui/pipe_manager_box.ui:541
+#: data/ui/pipe_manager_box.ui:537
 msgid "Waveform"
 msgstr "Bølgeform"
 
-#: data/ui/pipe_manager_box.ui:545
+#: data/ui/pipe_manager_box.ui:541
 msgid "Sine Wave"
 msgstr "Sinusbølge"
 
-#: data/ui/pipe_manager_box.ui:554
+#: data/ui/pipe_manager_box.ui:550
 msgid "White Noise"
 msgstr "Hvid Støj"
 
@@ -2877,6 +2868,12 @@ msgstr "Import Modelfil"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "RNNoise-modeller"
+
+#~ msgid "Cmoy"
+#~ msgstr "Cmoy"
+
+#~ msgid "Jmeier"
+#~ msgstr "Jmeier"
 
 #~ msgid "Player Name"
 #~ msgstr "Spillernavn"
