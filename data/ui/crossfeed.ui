@@ -24,7 +24,7 @@
                 <property name="spacing">48</property>
                 <child>
                     <object class="GtkButton" id="preset_cmoy">
-                        <property name="label" translatable="yes">Cmoy</property>
+                        <property name="label">Cmoy</property>
                         <signal name="clicked" handler="on_preset_cmoy" object="CrossfeedBox" />
                     </object>
                 </child>
@@ -38,7 +38,7 @@
 
                 <child>
                     <object class="GtkButton" id="preset_jmeier">
-                        <property name="label" translatable="yes">Jmeier</property>
+                        <property name="label">Jmeier</property>
                         <signal name="clicked" handler="on_preset_jmeier" object="CrossfeedBox" />
                     </object>
                 </child>
