@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-28 21:43-0300\n"
-"PO-Revision-Date: 2022-01-16 14:02+0000\n"
+"PO-Revision-Date: 2022-01-30 03:53+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -2101,7 +2101,7 @@ msgstr "采样率"
 #: data/ui/pipe_manager_box.ui:151
 #, fuzzy
 msgid "Minimum Quantum"
-msgstr "最低 Quantum"
+msgstr "最小 Quantum"
 
 #: data/ui/pipe_manager_box.ui:162
 msgid "Maximum Quantum"
