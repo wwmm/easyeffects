@@ -13,6 +13,7 @@
 
                 <child>
                     <object class="GtkLabel">
+                        <property name="ellipsize">end</property>
                         <binding name="label">
                             <lookup name="description" type="NodeInfoHolder">
                                 <lookup name="item">GtkListItem</lookup>
