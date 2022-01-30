@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-30 11:43-0300\n"
+"POT-Creation-Date: 2022-01-30 17:09-0300\n"
 "PO-Revision-Date: 2021-03-25 22:09+0100\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: \n"
@@ -603,7 +603,7 @@ msgstr "Formato"
 msgid "Rate"
 msgstr "Taxa"
 
-#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:499
+#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:505
 msgid "Channels"
 msgstr "Canles"
 
@@ -611,7 +611,7 @@ msgstr "Canles"
 msgid "Latency"
 msgstr "Latencia"
 
-#: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:478
+#: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:484
 #: data/ui/preferences_spectrum.ui:9
 msgid "State"
 msgstr "Estado"
@@ -748,7 +748,7 @@ msgstr "Saída"
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
 #: data/ui/limiter.ui:749 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:304 data/ui/pitch.ui:198 data/ui/reverb.ui:364
+#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:198 data/ui/reverb.ui:364
 #: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
 #: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
 msgid "Input"
@@ -777,7 +777,7 @@ msgstr "Saída"
 #: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
 #: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:207 data/ui/pitch.ui:282 data/ui/reverb.ui:448
+#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:282 data/ui/reverb.ui:448
 #: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
 msgid "Output"
@@ -827,7 +827,8 @@ msgid "Device"
 msgstr "Nivel de entrada"
 
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
-#: data/ui/factory_modules_listview.ui:43 data/ui/presets_menu.ui:50
+#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
+#: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
 msgid "Name"
 msgstr "Nome"
@@ -1052,13 +1053,13 @@ msgid "Side"
 msgstr "Lado"
 
 #: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
-#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:502
+#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:508
 #: data/ui/stereo_tools.ui:159
 msgid "Left"
 msgstr "Esquerda"
 
 #: data/ui/compressor.ui:488 data/ui/delay.ui:61 data/ui/equalizer.ui:49
-#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:513
+#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:519
 #: data/ui/stereo_tools.ui:214
 msgid "Right"
 msgstr "Dereita"
@@ -1120,7 +1121,7 @@ msgid "High-Pass"
 msgstr "Frecuencias altas"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
-#: data/ui/pipe_manager_box.ui:559
+#: data/ui/pipe_manager_box.ui:565
 msgid "Frequency"
 msgstr "Frecuencia"
 
@@ -1173,7 +1174,7 @@ msgstr "Curva"
 msgid "L"
 msgstr "E"
 
-#: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:505
+#: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:511
 #, fuzzy
 msgid "Left Channel"
 msgstr "Canles"
@@ -1182,7 +1183,7 @@ msgstr "Canles"
 msgid "R"
 msgstr "D"
 
-#: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:516
+#: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:522
 #, fuzzy
 msgid "Right Channel"
 msgstr "Dividir canles"
@@ -2190,7 +2191,7 @@ msgstr "Redución de ganancia"
 msgid "General"
 msgstr "Xeral"
 
-#: data/ui/pipe_manager_box.ui:37 data/ui/pipe_manager_box.ui:75
+#: data/ui/pipe_manager_box.ui:37 data/ui/pipe_manager_box.ui:78
 #, fuzzy
 msgid "Use Default"
 msgstr "Empregar o predeterminado"
@@ -2200,158 +2201,158 @@ msgstr "Empregar o predeterminado"
 msgid "Use Default Input"
 msgstr "Empregar o predeterminado"
 
-#: data/ui/pipe_manager_box.ui:61
+#: data/ui/pipe_manager_box.ui:64
 #, fuzzy
 msgid "Custom Input Device"
 msgstr "Nivel de entrada"
 
-#: data/ui/pipe_manager_box.ui:72
+#: data/ui/pipe_manager_box.ui:75
 #, fuzzy
 msgid "Output Device"
 msgstr "Saída"
 
-#: data/ui/pipe_manager_box.ui:81
+#: data/ui/pipe_manager_box.ui:84
 #, fuzzy
 msgid "Use Default Output"
 msgstr "Empregar o predeterminado"
 
-#: data/ui/pipe_manager_box.ui:99
+#: data/ui/pipe_manager_box.ui:105
 #, fuzzy
 msgid "Custom Output Device"
 msgstr "Saída"
 
-#: data/ui/pipe_manager_box.ui:110
+#: data/ui/pipe_manager_box.ui:116
 #, fuzzy
 msgid "Server Information"
 msgstr "Reverberación"
 
-#: data/ui/pipe_manager_box.ui:114
+#: data/ui/pipe_manager_box.ui:120
 #, fuzzy
 msgid "Header Version"
 msgstr "Versión"
 
-#: data/ui/pipe_manager_box.ui:125
+#: data/ui/pipe_manager_box.ui:131
 #, fuzzy
 msgid "Library Version"
 msgstr "Versión"
 
-#: data/ui/pipe_manager_box.ui:136
+#: data/ui/pipe_manager_box.ui:142
 #, fuzzy
 msgid "Sampling Rate"
 msgstr "Taxa da mostraxe predeterminada"
 
-#: data/ui/pipe_manager_box.ui:147
+#: data/ui/pipe_manager_box.ui:153
 #, fuzzy
 msgid "Minimum Quantum"
 msgstr "Máximo"
 
-#: data/ui/pipe_manager_box.ui:158
+#: data/ui/pipe_manager_box.ui:164
 #, fuzzy
 msgid "Maximum Quantum"
 msgstr "Ganancia máxima"
 
-#: data/ui/pipe_manager_box.ui:169
+#: data/ui/pipe_manager_box.ui:175
 #, fuzzy
 msgid "Default Quantum"
 msgstr "Saída de son por defecto"
 
-#: data/ui/pipe_manager_box.ui:189
+#: data/ui/pipe_manager_box.ui:195
 msgid "Presets Autoloading"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:230
+#: data/ui/pipe_manager_box.ui:236
 #, fuzzy
 msgid "Output Devices"
 msgstr "Saída"
 
-#: data/ui/pipe_manager_box.ui:247
+#: data/ui/pipe_manager_box.ui:253
 #, fuzzy
 msgid "Output Presets"
 msgstr "Preconfiguracións de saída: "
 
-#: data/ui/pipe_manager_box.ui:254 data/ui/pipe_manager_box.ui:346
+#: data/ui/pipe_manager_box.ui:260 data/ui/pipe_manager_box.ui:352
 msgid "Create Association"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:268
+#: data/ui/pipe_manager_box.ui:274
 msgid "Add Autoloading Output Preset"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:288
+#: data/ui/pipe_manager_box.ui:294
 #, fuzzy
 msgid "Output Autoloading Presets List"
 msgstr "Preconfiguracións de saída: "
 
-#: data/ui/pipe_manager_box.ui:327
+#: data/ui/pipe_manager_box.ui:333
 #, fuzzy
 msgid "Input Devices"
 msgstr "Nivel de entrada"
 
-#: data/ui/pipe_manager_box.ui:339
+#: data/ui/pipe_manager_box.ui:345
 #, fuzzy
 msgid "Input Presets"
 msgstr "Preconfiguracións de entrada: "
 
-#: data/ui/pipe_manager_box.ui:360
+#: data/ui/pipe_manager_box.ui:366
 msgid "Add Autoloading Input Preset"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:379
+#: data/ui/pipe_manager_box.ui:385
 #, fuzzy
 msgid "Input Autoloading Presets List"
 msgstr "Preconfiguracións de entrada: "
 
-#: data/ui/pipe_manager_box.ui:409
+#: data/ui/pipe_manager_box.ui:415
 msgid "Modules"
 msgstr "Módulos"
 
-#: data/ui/pipe_manager_box.ui:427
+#: data/ui/pipe_manager_box.ui:433
 #, fuzzy
 msgid "Modules List"
 msgstr "Módulos"
 
-#: data/ui/pipe_manager_box.ui:441
+#: data/ui/pipe_manager_box.ui:447
 msgid "Clients"
 msgstr "Clientes"
 
-#: data/ui/pipe_manager_box.ui:459
+#: data/ui/pipe_manager_box.ui:465
 #, fuzzy
 msgid "Clients List"
 msgstr "Clientes"
 
-#: data/ui/pipe_manager_box.ui:473
+#: data/ui/pipe_manager_box.ui:479
 #, fuzzy
 msgid "Test Signal"
 msgstr "Sinais de proba"
 
-#: data/ui/pipe_manager_box.ui:481 data/ui/preferences_spectrum.ui:12
+#: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
 #, fuzzy
 msgid "Enabled"
 msgstr "Activar"
 
-#: data/ui/pipe_manager_box.ui:496
+#: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:524
+#: data/ui/pipe_manager_box.ui:530
 msgid "Both"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:528
+#: data/ui/pipe_manager_box.ui:534
 #, fuzzy
 msgid "Both Channels"
 msgstr "Canles"
 
-#: data/ui/pipe_manager_box.ui:537
+#: data/ui/pipe_manager_box.ui:543
 msgid "Waveform"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:541
+#: data/ui/pipe_manager_box.ui:547
 #, fuzzy
 msgid "Sine Wave"
 msgstr "Táboa de senos"
 
-#: data/ui/pipe_manager_box.ui:550
+#: data/ui/pipe_manager_box.ui:556
 msgid "White Noise"
 msgstr "Ruído branco"
 
