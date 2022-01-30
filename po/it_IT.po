@@ -942,7 +942,7 @@ msgid "Rate"
 msgstr "Frequenza"
 
 #: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:499
-#: data/ui/pipe_manager_box.ui:503
+#: data/ui/pipe_manager_box.ui:503 data/ui/pipe_manager_box.ui:505
 msgid "Channels"
 msgstr "Canali"
 
@@ -952,6 +952,7 @@ msgstr "Latenza"
 
 #: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:478
 #: data/ui/preferences_spectrum.ui:9 data/ui/pipe_manager_box.ui:482
+#: data/ui/pipe_manager_box.ui:484
 msgid "State"
 msgstr "Stato"
 
@@ -1079,7 +1080,7 @@ msgstr "Guadagno Uscita"
 #: data/ui/pipe_manager_box.ui:304 data/ui/pitch.ui:198 data/ui/reverb.ui:364
 #: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
 #: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
-#: data/ui/pipe_manager_box.ui:308
+#: data/ui/pipe_manager_box.ui:308 data/ui/pipe_manager_box.ui:310
 msgid "Input"
 msgstr "Ingresso"
 
@@ -1108,7 +1109,7 @@ msgstr "Guadagno in Ingresso del Plugin"
 #: data/ui/pipe_manager_box.ui:207 data/ui/pitch.ui:282 data/ui/reverb.ui:448
 #: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
-#: data/ui/pipe_manager_box.ui:211
+#: data/ui/pipe_manager_box.ui:211 data/ui/pipe_manager_box.ui:213
 msgid "Output"
 msgstr "Uscita"
 
@@ -1156,7 +1157,7 @@ msgstr "Dispositivo Audio"
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
 #: data/ui/factory_modules_listview.ui:43 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203 data/ui/pipe_manager_box.ui:52
-#: data/ui/pipe_manager_box.ui:92
+#: data/ui/pipe_manager_box.ui:92 data/ui/pipe_manager_box.ui:93
 msgid "Name"
 msgstr "Nome"
 
@@ -1371,12 +1372,14 @@ msgstr "Lato"
 #: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
 #: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:502
 #: data/ui/stereo_tools.ui:159 data/ui/pipe_manager_box.ui:506
+#: data/ui/pipe_manager_box.ui:508
 msgid "Left"
 msgstr "Sinistro"
 
 #: data/ui/compressor.ui:488 data/ui/delay.ui:61 data/ui/equalizer.ui:49
 #: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:513
 #: data/ui/stereo_tools.ui:214 data/ui/pipe_manager_box.ui:517
+#: data/ui/pipe_manager_box.ui:519
 msgid "Right"
 msgstr "Destro"
 
@@ -1432,6 +1435,7 @@ msgstr "Passa-Alto"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
 #: data/ui/pipe_manager_box.ui:559 data/ui/pipe_manager_box.ui:563
+#: data/ui/pipe_manager_box.ui:565
 msgid "Frequency"
 msgstr "Frequenza"
 
@@ -1481,7 +1485,7 @@ msgid "L"
 msgstr "S"
 
 #: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:505
-#: data/ui/pipe_manager_box.ui:509
+#: data/ui/pipe_manager_box.ui:509 data/ui/pipe_manager_box.ui:511
 msgid "Left Channel"
 msgstr "Canale Sinistro"
 
@@ -1490,7 +1494,7 @@ msgid "R"
 msgstr "D"
 
 #: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:516
-#: data/ui/pipe_manager_box.ui:520
+#: data/ui/pipe_manager_box.ui:520 data/ui/pipe_manager_box.ui:522
 msgid "Right Channel"
 msgstr "Canale Destro"
 
@@ -2397,7 +2401,7 @@ msgid "General"
 msgstr "Generale"
 
 #: data/ui/pipe_manager_box.ui:37 data/ui/pipe_manager_box.ui:75
-#: data/ui/pipe_manager_box.ui:77
+#: data/ui/pipe_manager_box.ui:77 data/ui/pipe_manager_box.ui:78
 msgid "Use Default"
 msgstr "Usa Predefinito"
 
@@ -2406,136 +2410,168 @@ msgid "Use Default Input"
 msgstr "Usa Ingresso Predefinito"
 
 #: data/ui/pipe_manager_box.ui:61 data/ui/pipe_manager_box.ui:63
+#: data/ui/pipe_manager_box.ui:64
 msgid "Custom Input Device"
 msgstr "Dispositivo Ingresso Personalizzato"
 
 #: data/ui/pipe_manager_box.ui:72 data/ui/pipe_manager_box.ui:74
+#: data/ui/pipe_manager_box.ui:75
 msgid "Output Device"
 msgstr "Dispositivo Uscita"
 
 #: data/ui/pipe_manager_box.ui:81 data/ui/pipe_manager_box.ui:83
+#: data/ui/pipe_manager_box.ui:84
 msgid "Use Default Output"
 msgstr "Usa Uscita Predefinita"
 
 #: data/ui/pipe_manager_box.ui:99 data/ui/pipe_manager_box.ui:103
+#: data/ui/pipe_manager_box.ui:105
 msgid "Custom Output Device"
 msgstr "Dispositivo Uscita Personalizzato"
 
 #: data/ui/pipe_manager_box.ui:110 data/ui/pipe_manager_box.ui:114
+#: data/ui/pipe_manager_box.ui:116
 msgid "Server Information"
 msgstr "Informazioni Server"
 
 #: data/ui/pipe_manager_box.ui:114 data/ui/pipe_manager_box.ui:118
+#: data/ui/pipe_manager_box.ui:120
 msgid "Header Version"
 msgstr "Versione Header"
 
 #: data/ui/pipe_manager_box.ui:125 data/ui/pipe_manager_box.ui:129
+#: data/ui/pipe_manager_box.ui:131
 msgid "Library Version"
 msgstr "Versione Libreria"
 
 #: data/ui/pipe_manager_box.ui:136 data/ui/pipe_manager_box.ui:140
+#: data/ui/pipe_manager_box.ui:142
 msgid "Sampling Rate"
 msgstr "Frequenza di Campionamento"
 
 #: data/ui/pipe_manager_box.ui:147 data/ui/pipe_manager_box.ui:151
+#: data/ui/pipe_manager_box.ui:153
 msgid "Minimum Quantum"
 msgstr "Quantum Minimo"
 
 #: data/ui/pipe_manager_box.ui:158 data/ui/pipe_manager_box.ui:162
+#: data/ui/pipe_manager_box.ui:164
 msgid "Maximum Quantum"
 msgstr "Quantum Massimo"
 
 #: data/ui/pipe_manager_box.ui:169 data/ui/pipe_manager_box.ui:173
+#: data/ui/pipe_manager_box.ui:175
 msgid "Default Quantum"
 msgstr "Quantum Predefinito"
 
 #: data/ui/pipe_manager_box.ui:189 data/ui/pipe_manager_box.ui:193
+#: data/ui/pipe_manager_box.ui:195
 msgid "Presets Autoloading"
 msgstr "Auto Caricamento Profili"
 
 #: data/ui/pipe_manager_box.ui:230 data/ui/pipe_manager_box.ui:234
+#: data/ui/pipe_manager_box.ui:236
 msgid "Output Devices"
 msgstr "Dispositivi di Uscita"
 
 #: data/ui/pipe_manager_box.ui:247 data/ui/pipe_manager_box.ui:251
+#: data/ui/pipe_manager_box.ui:253
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
 #: data/ui/pipe_manager_box.ui:254 data/ui/pipe_manager_box.ui:346
 #: data/ui/pipe_manager_box.ui:258 data/ui/pipe_manager_box.ui:350
+#: data/ui/pipe_manager_box.ui:260 data/ui/pipe_manager_box.ui:352
 msgid "Create Association"
 msgstr "Crea Associazione"
 
 #: data/ui/pipe_manager_box.ui:268 data/ui/pipe_manager_box.ui:272
+#: data/ui/pipe_manager_box.ui:274
 msgid "Add Autoloading Output Preset"
 msgstr "Aggiungi Profilo di Auto Caricamento in Uscita"
 
 #: data/ui/pipe_manager_box.ui:288 data/ui/pipe_manager_box.ui:292
+#: data/ui/pipe_manager_box.ui:294
 msgid "Output Autoloading Presets List"
 msgstr "Profili di Auto Caricamento in Uscita"
 
 #: data/ui/pipe_manager_box.ui:327 data/ui/pipe_manager_box.ui:331
+#: data/ui/pipe_manager_box.ui:333
 msgid "Input Devices"
 msgstr "Dispositivi di Ingresso"
 
 #: data/ui/pipe_manager_box.ui:339 data/ui/pipe_manager_box.ui:343
+#: data/ui/pipe_manager_box.ui:345
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
 #: data/ui/pipe_manager_box.ui:360 data/ui/pipe_manager_box.ui:364
+#: data/ui/pipe_manager_box.ui:366
 msgid "Add Autoloading Input Preset"
 msgstr "Aggiungi Profilo di Auto Caricamento in Ingresso"
 
 #: data/ui/pipe_manager_box.ui:379 data/ui/pipe_manager_box.ui:383
+#: data/ui/pipe_manager_box.ui:385
 msgid "Input Autoloading Presets List"
 msgstr "Profili di Auto Caricamento in Ingresso"
 
 #: data/ui/pipe_manager_box.ui:409 data/ui/pipe_manager_box.ui:413
+#: data/ui/pipe_manager_box.ui:415
 msgid "Modules"
 msgstr "Moduli"
 
 #: data/ui/pipe_manager_box.ui:427 data/ui/pipe_manager_box.ui:431
+#: data/ui/pipe_manager_box.ui:433
 msgid "Modules List"
 msgstr "Lista Moduli"
 
 #: data/ui/pipe_manager_box.ui:441 data/ui/pipe_manager_box.ui:445
+#: data/ui/pipe_manager_box.ui:447
 msgid "Clients"
 msgstr "Client"
 
 #: data/ui/pipe_manager_box.ui:459 data/ui/pipe_manager_box.ui:463
+#: data/ui/pipe_manager_box.ui:465
 msgid "Clients List"
 msgstr "Lista Client"
 
 #: data/ui/pipe_manager_box.ui:473 data/ui/pipe_manager_box.ui:477
+#: data/ui/pipe_manager_box.ui:479
 msgid "Test Signal"
 msgstr "Segnale di Test"
 
 #: data/ui/pipe_manager_box.ui:481 data/ui/preferences_spectrum.ui:12
-#: data/ui/pipe_manager_box.ui:485
+#: data/ui/pipe_manager_box.ui:485 data/ui/pipe_manager_box.ui:487
 msgid "Enabled"
 msgstr "Attivato"
 
 #: data/ui/pipe_manager_box.ui:496 data/ui/pipe_manager_box.ui:500
+#: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
 msgstr "Proprietà"
 
 #: data/ui/pipe_manager_box.ui:524 data/ui/pipe_manager_box.ui:528
+#: data/ui/pipe_manager_box.ui:530
 msgid "Both"
 msgstr "Entrambi"
 
 #: data/ui/pipe_manager_box.ui:528 data/ui/pipe_manager_box.ui:532
+#: data/ui/pipe_manager_box.ui:534
 msgid "Both Channels"
 msgstr "Entrambi i Canali"
 
 #: data/ui/pipe_manager_box.ui:537 data/ui/pipe_manager_box.ui:541
+#: data/ui/pipe_manager_box.ui:543
 msgid "Waveform"
 msgstr "Tipo Onda"
 
 #: data/ui/pipe_manager_box.ui:541 data/ui/pipe_manager_box.ui:545
+#: data/ui/pipe_manager_box.ui:547
 msgid "Sine Wave"
 msgstr "Sinusoidale"
 
 #: data/ui/pipe_manager_box.ui:550 data/ui/pipe_manager_box.ui:554
+#: data/ui/pipe_manager_box.ui:556
 msgid "White Noise"
 msgstr "Rumore Bianco"
 

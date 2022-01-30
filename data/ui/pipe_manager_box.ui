@@ -49,13 +49,16 @@
 
                                                 <child>
                                                     <object class="AdwActionRow">
-                                                        <property name="icon_name">audio-input-microphone-symbolic</property>
+                                                        <property name="title" translatable="yes">Name</property>
+                                                        <property name="title-lines">1</property>
                                                         <child>
                                                             <object class="GtkDropDown" id="dropdown_input_devices">
                                                                 <property name="valign">center</property>
                                                                 <property name="sensitive" bind-source="use_default_input" bind-property="active" bind-flags="sync-create|invert-boolean" />
-                                                                <property name="expression">
-                                                                    <lookup name="description" type="NodeInfoHolder"></lookup>
+                                                                <property name="factory">
+                                                                    <object class="GtkBuilderListItemFactory">
+                                                                        <property name="resource">/com/github/wwmm/easyeffects/ui/factory_input_device_dropdown.ui</property>
+                                                                    </object>
                                                                 </property>
                                                                 <accessibility>
                                                                     <property name="label" translatable="yes">Custom Input Device</property>
@@ -87,13 +90,16 @@
 
                                                 <child>
                                                     <object class="AdwActionRow">
-                                                        <property name="icon_name">audio-speakers-symbolic</property>
+                                                        <property name="title" translatable="yes">Name</property>
+                                                        <property name="title-lines">1</property>
                                                         <child>
                                                             <object class="GtkDropDown" id="dropdown_output_devices">
                                                                 <property name="valign">center</property>
                                                                 <property name="sensitive" bind-source="use_default_output" bind-property="active" bind-flags="sync-create|invert-boolean" />
-                                                                <property name="expression">
-                                                                    <lookup name="description" type="NodeInfoHolder"></lookup>
+                                                                <property name="factory">
+                                                                    <object class="GtkBuilderListItemFactory">
+                                                                        <property name="resource">/com/github/wwmm/easyeffects/ui/factory_output_device_dropdown.ui</property>
+                                                                    </object>
                                                                 </property>
                                                                 <accessibility>
                                                                     <property name="label" translatable="yes">Custom Output Device</property>
