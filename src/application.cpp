@@ -57,13 +57,16 @@ void on_startup(GApplication* gapp) {
 
   self->data = new Data();
 
-  self->settings = g_settings_new("com.github.wwmm.easyeffects");
   self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
   self->pm = new PipeManager();
   self->soe = new StreamOutputEffects(self->pm);
   self->sie = new StreamInputEffects(self->pm);
+
+  if (self->settings == nullptr) {
+    self->settings = g_settings_new("com.github.wwmm.easyeffects");
+  }
 
   if (self->presets_manager == nullptr) {
     self->presets_manager = new PresetsManager();
@@ -249,6 +252,56 @@ void on_startup(GApplication* gapp) {
 void application_class_init(ApplicationClass* klass) {
   auto* application_class = G_APPLICATION_CLASS(klass);
 
+  application_class->handle_local_options = [](GApplication* gapp, GVariantDict* options) {
+    if (options == nullptr) {
+      return -1;
+    }
+
+    auto* self = EE_APP(gapp);
+
+    if (self->settings == nullptr) {
+      self->settings = g_settings_new("com.github.wwmm.easyeffects");
+    }
+
+    if (self->presets_manager == nullptr) {
+      self->presets_manager = new PresetsManager();
+    }
+
+    if (g_variant_dict_contains(options, "presets") != 0) {
+      std::string list;
+
+      for (const auto& name : self->presets_manager->get_names(PresetType::output)) {
+        list += name + ",";
+      }
+
+      std::cout << _("Output Presets: ") + list << std::endl;
+
+      list = "";
+
+      for (const auto& name : self->presets_manager->get_names(PresetType::input)) {
+        list += name + ",";
+      }
+
+      std::cout << _("Input Presets: ") + list << std::endl;
+
+      return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "bypass") != 0) {
+      if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
+        if (bypass_arg == 3) {
+          std::cout << g_settings_get_boolean(self->settings, "bypass") << std::endl;
+
+          return EXIT_SUCCESS;
+        }
+      }
+    }
+
+    return -1;
+  };
+
+  application_class->startup = on_startup;
+
   application_class->command_line = [](GApplication* gapp, GApplicationCommandLine* cmdline) {
     auto* self = EE_APP(gapp);
     auto* options = g_application_command_line_get_options_dict(cmdline);
@@ -291,52 +344,6 @@ void application_class_init(ApplicationClass* klass) {
 
     return G_APPLICATION_CLASS(application_parent_class)->command_line(gapp, cmdline);
   };
-
-  application_class->handle_local_options = [](GApplication* gapp, GVariantDict* options) {
-    if (options == nullptr) {
-      return -1;
-    }
-
-    auto* self = EE_APP(gapp);
-
-    if (self->presets_manager == nullptr) {
-      self->presets_manager = new PresetsManager();
-    }
-
-    if (g_variant_dict_contains(options, "presets") != 0) {
-      std::string list;
-
-      for (const auto& name : self->presets_manager->get_names(PresetType::output)) {
-        list += name + ",";
-      }
-
-      std::clog << _("Output Presets: ") + list << std::endl;
-
-      list = "";
-
-      for (const auto& name : self->presets_manager->get_names(PresetType::input)) {
-        list += name + ",";
-      }
-
-      std::clog << _("Input Presets: ") + list << std::endl;
-
-      return EXIT_SUCCESS;
-    }
-
-    if (g_variant_dict_contains(options, "bypass") != 0) {
-      if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
-        if (bypass_arg == 3) {
-          std::clog << g_settings_get_boolean(self->settings, "bypass") << std::endl;
-
-          return EXIT_SUCCESS;
-        }
-      }
-    }
-
-    return -1;
-  };
-
-  application_class->startup = on_startup;
 
   application_class->activate = [](GApplication* gapp) {
     if (gtk_application_get_active_window(GTK_APPLICATION(gapp)) == nullptr) {

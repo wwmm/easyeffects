@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 11:21-0300\n"
+"POT-Creation-Date: 2022-02-04 11:54-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -2847,44 +2847,44 @@ msgstr "chyba"
 msgid "unknown"
 msgstr ""
 
-#: src/application.cpp:313
+#: src/application.cpp:277
 msgid "Output Presets: "
 msgstr "Výstupné predvoľby: "
 
-#: src/application.cpp:321
+#: src/application.cpp:285
 msgid "Input Presets: "
 msgstr "Vstupné predvoľby: "
 
-#: src/application.cpp:418
+#: src/application.cpp:425
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pre aplikácie využívajúce PulseAudio"
 
-#: src/application.cpp:504
+#: src/application.cpp:511
 #, fuzzy
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Ukončiť PulseEffect. Užitočné pre beh v režime služby."
 
-#: src/application.cpp:507
+#: src/application.cpp:514
 #, fuzzy
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Načítať predvoľby. Napr.: pulseeffects -l music"
 
-#: src/application.cpp:510
+#: src/application.cpp:517
 #, fuzzy
 msgid "Reset EasyEffects."
 msgstr "Obnoviť PulseEffects"
 
-#: src/application.cpp:513
+#: src/application.cpp:520
 msgid "Hide the Window."
 msgstr "Skryť okno"
 
-#: src/application.cpp:516
+#: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globálne premostenie. 1 pre zapnutie, 2 pre vypnutie, 3 pre získanie stavu"
 
-#: src/application.cpp:519
+#: src/application.cpp:526
 msgid "Show available presets."
 msgstr "Zobraziť dostupné ~redvoľby"
 

@@ -6,7 +6,7 @@ Features:
 - 
 
 Bugfixes:
-- 
+- The command line option that returns the global bypass state is working again.
 
 Notes:
 - 

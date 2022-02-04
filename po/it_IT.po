@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 11:21-0300\n"
+"POT-Creation-Date: 2022-02-04 11:54-0300\n"
 "PO-Revision-Date: 2022-01-15 17:41+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2791,40 +2791,40 @@ msgstr "errore"
 msgid "unknown"
 msgstr "sconosciuto"
 
-#: src/application.cpp:313
+#: src/application.cpp:277
 msgid "Output Presets: "
 msgstr "Profili Uscita: "
 
-#: src/application.cpp:321
+#: src/application.cpp:285
 msgid "Input Presets: "
 msgstr "Profili Ingresso: "
 
-#: src/application.cpp:418
+#: src/application.cpp:425
 msgid "Audio effects for PipeWire applications"
 msgstr "Effetti Audio per Applicazioni PipeWire"
 
-#: src/application.cpp:504
+#: src/application.cpp:511
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Esci da EasyEffects. Utile in esecuzione come servizio."
 
-#: src/application.cpp:507
+#: src/application.cpp:514
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
-#: src/application.cpp:510
+#: src/application.cpp:517
 msgid "Reset EasyEffects."
 msgstr "Reset EasyEffects."
 
-#: src/application.cpp:513
+#: src/application.cpp:520
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra."
 
-#: src/application.cpp:516
+#: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
 
-#: src/application.cpp:519
+#: src/application.cpp:526
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 

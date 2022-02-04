@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 11:21-0300\n"
+"POT-Creation-Date: 2022-02-04 11:54-0300\n"
 "PO-Revision-Date: 2022-01-24 05:52+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2776,39 +2776,39 @@ msgstr "エラー"
 msgid "unknown"
 msgstr "不明"
 
-#: src/application.cpp:313
+#: src/application.cpp:277
 msgid "Output Presets: "
 msgstr "出力プリセット: "
 
-#: src/application.cpp:321
+#: src/application.cpp:285
 msgid "Input Presets: "
 msgstr "入力プリセット: "
 
-#: src/application.cpp:418
+#: src/application.cpp:425
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
-#: src/application.cpp:504
+#: src/application.cpp:511
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "EasyEffects を終了します。サービスモードで動作しているときに便利です。"
 
-#: src/application.cpp:507
+#: src/application.cpp:514
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込む。例: easyeffects -l music"
 
-#: src/application.cpp:510
+#: src/application.cpp:517
 msgid "Reset EasyEffects."
 msgstr "EasyEffects をリセット。"
 
-#: src/application.cpp:513
+#: src/application.cpp:520
 msgid "Hide the Window."
 msgstr "ウィンドウを隠す。"
 
-#: src/application.cpp:516
+#: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "グローバルバイパス。1 で有効、2 で無効、3 でステータス取得"
 
-#: src/application.cpp:519
+#: src/application.cpp:526
 msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 

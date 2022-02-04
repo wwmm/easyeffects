@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 11:21-0300\n"
+"POT-Creation-Date: 2022-02-04 11:54-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -2898,44 +2898,44 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/application.cpp:313
+#: src/application.cpp:277
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Predlošci: "
 
-#: src/application.cpp:321
+#: src/application.cpp:285
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Učitaj predloške"
 
-#: src/application.cpp:418
+#: src/application.cpp:425
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvučni efekti za Pulseaudio aplikacije"
 
-#: src/application.cpp:504
+#: src/application.cpp:511
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 "Zatvori EasyEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
 
-#: src/application.cpp:507
+#: src/application.cpp:514
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
-#: src/application.cpp:510
+#: src/application.cpp:517
 #, fuzzy
 msgid "Reset EasyEffects."
 msgstr "EasyEffects"
 
-#: src/application.cpp:513
+#: src/application.cpp:520
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:516
+#: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:519
+#: src/application.cpp:526
 msgid "Show available presets."
 msgstr "Prikaži dostupne predloške."
 
