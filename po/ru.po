@@ -109,6 +109,9 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
+"Фильтр перекрестной подачи должен лучше работать с динамическим изменением "
+"задержек PipeWire. Больше не должны возникать ситуации, приводящие к скачкам "
+"громкости."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
@@ -124,6 +127,8 @@ msgid ""
 "Fixed a bug that prevented mono microphones from properly working with "
 "EasyEffects"
 msgstr ""
+"Исправлена ошибка, не дававшая моно-микрофонам корректно работать с "
+"EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -141,7 +146,7 @@ msgstr "Данный релиз привносит следующие особе
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid "Support for the next PipeWire release `0.3.44`"
-msgstr ""
+msgstr "Подержка PipeWire версии `0.3.44`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
@@ -149,6 +154,9 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
+"Фильтр автогейн должен лучше работать с динамическим изменением задержек "
+"PipeWire. Теперь ситуации со скачками уровня громкости больше не должны "
+"возникать."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid ""
@@ -156,10 +164,13 @@ msgid ""
 "devices to be reset when EasyEffects starts. It should help with the cases "
 "were our devices are muted by the audio server for unknown reasons."
 msgstr ""
+"Мы добавили опцию, позволяющую сбрасывать уровень громкости и заглушение "
+"устройства во время запуска EasyEffects. Это должно помочь в случае, когда "
+"ваши устройства по неизвестным причинам заглушаются аудио-сервером."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
 msgid "Better support for computer suspending."
-msgstr ""
+msgstr "Улучшена поддержка спящего режима."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
@@ -167,13 +178,12 @@ msgid "Updated translations"
 msgstr "Обновление перевода"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
-#, fuzzy
 msgid ""
 "Fixed a bug where trying to create an autoloading profile without having "
 "presets caused the application to crash."
 msgstr ""
-"Исправлена ошибка, при которой установка полосы эквалайзера в \"ноль\" "
-"приводила к аварийному завершению приложения."
+"Исправлена ошибка, при которой попытка создать профиль для автозагрузки, не "
+"имеющий предустановок, приводила к вылету приложения."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 msgid ""
@@ -815,9 +825,8 @@ msgid "Momentary"
 msgstr "Моментальные измерения"
 
 #: data/ui/autogain.ui:66 data/ui/autogain.ui:150
-#, fuzzy
 msgid "Short-Term"
-msgstr "Короткие измерения"
+msgstr "Краткосрочные измерения"
 
 # Время интеграции — это величина, характеризующая быстродействие измерителя.
 # https://tech.ebu.ch/docs/factsheets/Factsheet-R128-2011-RUS.pdf
@@ -829,9 +838,8 @@ msgid "Integrated"
 msgstr "Комплексные измерения"
 
 #: data/ui/autogain.ui:68
-#, fuzzy
 msgid "Geometric Mean"
-msgstr "Использовать градиент"
+msgstr "Геометрически Усредненное"
 
 #: data/ui/autogain.ui:90 data/ui/bass_enhancer.ui:18
 #: data/ui/bass_loudness.ui:14 data/ui/compressor.ui:13 data/ui/convolver.ui:14
@@ -1329,9 +1337,8 @@ msgid "Spectrum"
 msgstr "Спектр"
 
 #: data/ui/convolver.ui:123
-#, fuzzy
 msgid "Log Scale"
-msgstr "Масштаб"
+msgstr "Логарифмическая шкала"
 
 #: data/ui/convolver.ui:163
 msgid "Samples"
@@ -1403,7 +1410,7 @@ msgstr "Определение"
 
 #: data/ui/deesser.ui:72
 msgid "Wide"
-msgstr ""
+msgstr "Ширина"
 
 #: data/ui/deesser.ui:73
 msgid "Split"
@@ -1948,9 +1955,8 @@ msgid "Brown MT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:156
-#, fuzzy
 msgid "Bands List"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полосы"
 
 #: data/ui/multiband_compressor.ui:165
 msgid "Band 1"
@@ -2899,40 +2905,40 @@ msgstr "ошибка"
 msgid "unknown"
 msgstr "неизвестно"
 
-#: src/application.cpp:277
+#: src/application.cpp:277 src/application.cpp:313
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:285
+#: src/application.cpp:285 src/application.cpp:321
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 
-#: src/application.cpp:425
+#: src/application.cpp:425 src/application.cpp:418
 msgid "Audio effects for PipeWire applications"
 msgstr "Аудио-эффекты для приложений PipeWire"
 
-#: src/application.cpp:511
+#: src/application.cpp:511 src/application.cpp:504
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Выйти из EasyEffects. Полезно при запуске в режиме отладки."
 
-#: src/application.cpp:514
+#: src/application.cpp:514 src/application.cpp:507
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить пресет. Пример: easyeffects -l music"
 
-#: src/application.cpp:517
+#: src/application.cpp:517 src/application.cpp:510
 msgid "Reset EasyEffects."
 msgstr "Сбросить настройки EasyEffects."
 
-#: src/application.cpp:520
+#: src/application.cpp:520 src/application.cpp:513
 msgid "Hide the Window."
 msgstr "Спрятать Окно."
 
-#: src/application.cpp:523
+#: src/application.cpp:523 src/application.cpp:516
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Глобальный обход. 1 для включения, 2 выключить, 3 для получения статуса"
 
-#: src/application.cpp:526
+#: src/application.cpp:526 src/application.cpp:519
 msgid "Show available presets."
 msgstr "Показать доступные пресеты."
 
