@@ -626,12 +626,10 @@ msgid "Application Volume"
 msgstr "Volume do Aplicativo"
 
 #: data/ui/application_window.ui:6
-#, fuzzy
 msgid "_Preferences"
 msgstr "_Preferências"
 
 #: data/ui/application_window.ui:10
-#, fuzzy
 msgid "_Manual"
 msgstr "_Manual"
 
@@ -644,7 +642,6 @@ msgid "_Reset Settings"
 msgstr "_Redefinir as Configurações"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About EasyEffects"
 msgstr "_Sobre EasyEffects"
 
@@ -664,7 +661,6 @@ msgid "Global Bypass"
 msgstr "Bypass Global"
 
 #: data/ui/application_window.ui:76
-#, fuzzy
 msgid "Primary Menu"
 msgstr "Menu Principal"
 
@@ -681,7 +677,6 @@ msgid "Target"
 msgstr "Alvo"
 
 #: data/ui/autogain.ui:53
-#, fuzzy
 msgid "Reference"
 msgstr "Referência"
 
@@ -759,7 +754,6 @@ msgstr "Entrada"
 #: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
 #: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:217 data/ui/reverb.ui:383
 #: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
-#, fuzzy
 msgid "Plugin Input Gain"
 msgstr "Ganho de Entrada do Plugin"
 
@@ -788,7 +782,6 @@ msgstr "Saída"
 #: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
 #: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:301 data/ui/reverb.ui:467
 #: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
-#, fuzzy
 msgid "Plugin Output Gain"
 msgstr "Ganho de Saída do Plugin"
 
@@ -829,17 +822,14 @@ msgid "Name"
 msgstr "Nome"
 
 #: data/ui/autoload_row.ui:62
-#, fuzzy
 msgid "Profile"
 msgstr "Perfil"
 
 #: data/ui/autoload_row.ui:86
-#, fuzzy
 msgid "Preset"
 msgstr "Predefinição"
 
 #: data/ui/autoload_row.ui:110 src/plugins_box.cpp:412
-#, fuzzy
 msgid "Remove"
 msgstr "Remover"
 
@@ -878,7 +868,6 @@ msgid "Floor"
 msgstr "Piso"
 
 #: data/ui/bass_enhancer.ui:242
-#, fuzzy
 msgid "Floor Value"
 msgstr "Valor do piso"
 
@@ -888,12 +877,10 @@ msgid "Link"
 msgstr "Link"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
-#, fuzzy
 msgid "Application Name"
-msgstr "Nome da Aplicação"
+msgstr "Nome do Aplicativo"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Blocklisted Applications List"
 msgstr "Lista de aplicativos bloqueados"
 
@@ -1199,7 +1186,7 @@ msgstr "Resposta de Impulso"
 #: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Combinar"
 
 #: data/ui/convolver.ui:85
 msgid "Stereo Width"
@@ -1229,11 +1216,11 @@ msgstr "Resposta de Impulso"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "Primeiro Núcleo"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "Segundo Núcleo"
 
 #: data/ui/convolver_menu_combine.ui:91
 #, fuzzy
@@ -1242,7 +1229,7 @@ msgstr "Saída"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "Nome do Núcleo Combinado"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
@@ -1250,8 +1237,9 @@ msgstr "Importar Impulso"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
+#, fuzzy
 msgid "Search"
-msgstr ""
+msgstr "Busca"
 
 #: data/ui/convolver_menu_impulses.ui:27
 #, fuzzy
@@ -1386,8 +1374,9 @@ msgid "FFT"
 msgstr "FFT"
 
 #: data/ui/equalizer.ui:125
+#, fuzzy
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:150
 msgid "Split Channels"
@@ -1478,16 +1467,19 @@ msgid "Ceil"
 msgstr "Teto"
 
 #: data/ui/exciter.ui:242
+#, fuzzy
 msgid "Ceil Value"
-msgstr ""
+msgstr "Valor do Teto"
 
 #: data/ui/factory_clients_listview.ui:71
+#, fuzzy
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:99
+#, fuzzy
 msgid "Access"
-msgstr ""
+msgstr "Acesso"
 
 #: data/ui/factory_modules_listview.ui:71
 #, fuzzy
@@ -1580,12 +1572,14 @@ msgid "Oversampling"
 msgstr "Oversampling"
 
 #: data/ui/limiter.ui:69
+#, fuzzy
 msgid "Dither"
-msgstr ""
+msgstr "Dither"
 
 #: data/ui/limiter.ui:81
+#, fuzzy
 msgid "Herm Thin"
-msgstr ""
+msgstr "Herm Fino"
 
 #: data/ui/limiter.ui:82
 #, fuzzy
@@ -1593,8 +1587,9 @@ msgid "Herm Wide"
 msgstr "Amplo"
 
 #: data/ui/limiter.ui:83
+#, fuzzy
 msgid "Herm Tail"
-msgstr ""
+msgstr "Cauda de Herm"
 
 #: data/ui/limiter.ui:84
 msgid "Herm Duck"
@@ -2855,40 +2850,40 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/application.cpp:277
+#: src/application.cpp:277 src/application.cpp:313
 msgid "Output Presets: "
 msgstr "Predefinições de Saída: "
 
-#: src/application.cpp:285
+#: src/application.cpp:285 src/application.cpp:321
 msgid "Input Presets: "
 msgstr "Predefinições de Entrada: "
 
-#: src/application.cpp:425
+#: src/application.cpp:425 src/application.cpp:418
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: src/application.cpp:511
+#: src/application.cpp:511 src/application.cpp:504
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Sair do EasyEffects. Útil quando executando em modo de serviço."
 
-#: src/application.cpp:514
+#: src/application.cpp:514 src/application.cpp:507
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
 
-#: src/application.cpp:517
+#: src/application.cpp:517 src/application.cpp:510
 msgid "Reset EasyEffects."
 msgstr "Redefinir o EasyEffects."
 
-#: src/application.cpp:520
+#: src/application.cpp:520 src/application.cpp:513
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:523
+#: src/application.cpp:523 src/application.cpp:516
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:526
+#: src/application.cpp:526 src/application.cpp:519
 msgid "Show available presets."
 msgstr "Mostrar predefinições disponíveis."
 
