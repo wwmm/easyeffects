@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-04 11:54-0300\n"
-"PO-Revision-Date: 2022-01-18 10:56+0000\n"
+"PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
 "main/id/>\n"
@@ -2388,17 +2388,15 @@ msgstr ""
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "Daftar Plugin"
 
 #: data/ui/preferences_general.ui:5
-#, fuzzy
 msgid "_General"
-msgstr "Umum"
+msgstr "_Umum"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Pembatas Masukan"
+msgstr "Layanan"
 
 #: data/ui/preferences_general.ui:13
 msgid "Start Service at Login"
@@ -2406,11 +2404,11 @@ msgstr "Mulai Layanan Saat Startup"
 
 #: data/ui/preferences_general.ui:26
 msgid "Shutdown on Window Close"
-msgstr ""
+msgstr "Shutdown pada Penutupan Jendela"
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
 msgid "Process All Outputs"
@@ -2422,15 +2420,15 @@ msgstr "Proses Semua Input"
 
 #: data/ui/preferences_general.ui:67
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "Gunakan Volume Kubik"
 
 #: data/ui/preferences_general.ui:79
 msgid "Reset Our Devices Volume on Startup"
-msgstr ""
+msgstr "Setel Ulang Volume Perangkat Kami saat Memulai"
 
 #: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "Gaya"
 
 #: data/ui/preferences_general.ui:96
 msgid "Use Dark Theme"
@@ -2438,16 +2436,15 @@ msgstr "Gunakan Tema Gelap"
 
 #: data/ui/preferences_general.ui:108
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "Sembunyikan Menu di Klik Luar"
 
 #: data/ui/preferences_spectrum.ui:5
-#, fuzzy
 msgid "_Spectrum"
-msgstr "Spektrum"
+msgstr "_Spektrum"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Rupa"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
@@ -2455,11 +2452,11 @@ msgstr "Batang"
 
 #: data/ui/preferences_spectrum.ui:36
 msgid "Lines"
-msgstr ""
+msgstr "Garis"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Dots"
-msgstr ""
+msgstr "Titik"
 
 #: data/ui/preferences_spectrum.ui:46
 msgid "Points"
@@ -2470,9 +2467,8 @@ msgid "Height"
 msgstr "Tinggi"
 
 #: data/ui/preferences_spectrum.ui:91
-#, fuzzy
 msgid "Line Width"
-msgstr "Lebar"
+msgstr "Lebar Garis"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Fill"
@@ -2480,37 +2476,35 @@ msgstr "Spektrum Batangan"
 
 #: data/ui/preferences_spectrum.ui:126
 msgid "Show Bars Border"
-msgstr ""
+msgstr "Tampilkan batar bar"
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Sudut Bulat"
 
 #: data/ui/preferences_spectrum.ui:152
 msgid "Color"
-msgstr ""
+msgstr "Warna"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
-msgstr ""
+msgstr "Garis dan Bar"
 
 #: data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
-msgstr ""
+msgstr "Label Sumbu"
 
 #: data/ui/preferences_spectrum.ui:185
-#, fuzzy
 msgid "Frequency Range"
-msgstr "Frekuensi"
+msgstr "Rentang Frekuensi"
 
 #: data/ui/preferences_spectrum.ui:188
-#, fuzzy
 msgid "Minimum"
-msgstr "Maksimal"
+msgstr "Minimum"
 
 #: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
 msgid "Load"
-msgstr ""
+msgstr "Muat"
 
 #: data/ui/preset_row.ui:29
 msgid "Save current settings to this preset file"
@@ -2522,7 +2516,7 @@ msgstr "Hapus Berkas Preset Ini"
 
 #: data/ui/presets_menu.ui:28
 msgid "Speakers"
-msgstr ""
+msgstr "Speaker"
 
 #: data/ui/presets_menu.ui:54
 msgid "New Output Preset Name"
@@ -2545,24 +2539,20 @@ msgid "Output Presets List"
 msgstr "Daftar Preset Keluaran"
 
 #: data/ui/presets_menu.ui:181
-#, fuzzy
 msgid "Microphone"
-msgstr "Kalibrasikan Mikrofon"
+msgstr "Mikrofon"
 
 #: data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "New Input Preset Name"
-msgstr "Preset Input"
+msgstr "Nama Preset Input Baru"
 
 #: data/ui/presets_menu.ui:247
-#, fuzzy
 msgid "Search Input Preset"
-msgstr "Preset Input"
+msgstr "Cari Preset Input"
 
 #: data/ui/presets_menu.ui:308
-#, fuzzy
 msgid "Input Presets List"
-msgstr "Preset Input"
+msgstr "Daftar Preset Input"
 
 #: data/ui/reverb.ui:43
 msgid "High Frequency Damping"
@@ -2609,24 +2599,20 @@ msgid "Decay Time"
 msgstr "Waktu Decay"
 
 #: data/ui/reverb.ui:210
-#, fuzzy
 msgid "Wet Amount"
-msgstr "Besaran"
+msgstr "Besaran Wet"
 
 #: data/ui/reverb.ui:238
-#, fuzzy
 msgid "Wet Level"
-msgstr "Target Tingkat"
+msgstr "Tingkat Wet"
 
 #: data/ui/reverb.ui:245
-#, fuzzy
 msgid "Dry Amount"
-msgstr "Besaran"
+msgstr "Besaran Dry"
 
 #: data/ui/reverb.ui:272
-#, fuzzy
 msgid "Dry Level"
-msgstr "Level"
+msgstr "Tingkat Dry"
 
 #: data/ui/reverb.ui:279
 msgid "Bass Cut"
@@ -2661,72 +2647,64 @@ msgid "Large Occupied Hall"
 msgstr "Aula Besar Terisi Penuh"
 
 #: data/ui/rnnoise.ui:20
-#, fuzzy
 msgid "Import Model"
-msgstr "Muat Impuls"
+msgstr "Impor Model"
 
 #: data/ui/rnnoise.ui:35
-#, fuzzy
 msgid "Models"
-msgstr "Modus"
+msgstr "Model"
 
 #: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
 msgid "Standard Model"
-msgstr ""
+msgstr "Model Standar"
 
 #: data/ui/rnnoise.ui:84
 msgid "RNNoise Models List"
-msgstr ""
+msgstr "Daftar Model RNNoise"
 
 #: data/ui/rnnoise.ui:100
-#, fuzzy
 msgid "Active Model"
-msgstr "Modus Agresif"
+msgstr "Model Aktif"
 
 #: data/ui/rnnoise.ui:106
 msgid "Standard RNNoise Model"
-msgstr ""
+msgstr "Model RNNoise Standar"
 
 #: data/ui/shortcuts.ui:11
-#, fuzzy
 msgid "Overview"
-msgstr "Pembatas Masukan"
+msgstr "Ringkasan"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the EasyEffects Manual"
-msgstr "Atur Ulang EasyEffects"
+msgstr "Buka Manual EasyEffects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Layar penuh/Pulihkan dari layar penuh"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "Tutup jendela"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit EasyEffects"
-msgstr "EasyEffects"
+msgstr "Keluar EasyEffects"
 
 #: data/ui/stereo_tools.ui:50 data/ui/stereo_tools.ui:391
 msgid "Balance"
 msgstr "Keseimbangan"
 
 #: data/ui/stereo_tools.ui:77
-#, fuzzy
 msgid "Input Balance"
-msgstr "Keseimbangan"
+msgstr "Masukan Keseimbangan"
 
 #: data/ui/stereo_tools.ui:86
 msgid "Softclip"
 msgstr "Kliping Lunak"
 
 #: data/ui/stereo_tools.ui:114
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Kliping Lunak"
+msgstr "Tingkat Softclip"
 
 #: data/ui/stereo_tools.ui:126
 msgid "Stereo Matrix"
@@ -2761,9 +2739,8 @@ msgid "LR > RL (Stereo Flip Channels)"
 msgstr "Kiri-Kanan > Kanan-Kiri (Pembalikan Setereo)"
 
 #: data/ui/stereo_tools.ui:145
-#, fuzzy
 msgid "Stereo Mode"
-msgstr "Basis Stereo"
+msgstr "Mode Stereo"
 
 #: data/ui/stereo_tools.ui:178 data/ui/stereo_tools.ui:203
 msgid "Invert Phase"
@@ -2786,18 +2763,16 @@ msgid "Middle Panorama"
 msgstr "Panorama Kanal Tengah"
 
 #: data/ui/stereo_tools.ui:418
-#, fuzzy
 msgid "Output Balance"
-msgstr "Gain Input"
+msgstr "Keluaran Balance"
 
 #: data/ui/stereo_tools.ui:427
 msgid "Delay L/R"
 msgstr "Penundaan Kiri/Kanan"
 
 #: data/ui/stereo_tools.ui:454
-#, fuzzy
 msgid "Delay Left Right"
-msgstr "Penundaan Kiri/Kanan"
+msgstr "Penundaan Kiri Kanan"
 
 #: data/ui/stereo_tools.ui:463
 msgid "Stereo Base"
@@ -2809,42 +2784,39 @@ msgstr "Phase Stereo"
 
 #: src/app_info.cpp:68
 msgid "running"
-msgstr ""
+msgstr "berjalan"
 
 #: src/app_info.cpp:70
 msgid "suspended"
-msgstr ""
+msgstr "Ditangguhkan"
 
 #: src/app_info.cpp:72
 msgid "idle"
-msgstr ""
+msgstr "siaga"
 
 #: src/app_info.cpp:74
-#, fuzzy
 msgid "creating"
-msgstr "Gating"
+msgstr "membuat"
 
 #: src/app_info.cpp:76
 msgid "error"
-msgstr ""
+msgstr "error"
 
 #: src/app_info.cpp:78
 msgid "unknown"
-msgstr ""
+msgstr "tidak dikenal"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
 msgstr "Preset Keluaran: "
 
 #: src/application.cpp:285
-#, fuzzy
 msgid "Input Presets: "
-msgstr "Preset Input"
+msgstr "Preset Input: "
 
 #: src/application.cpp:425
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Penerap Efek Suara untuk Aplikasi Berbasis Pulseaudio"
+msgstr "Efek Suara untuk Aplikasi PipeWire"
 
 #: src/application.cpp:511
 msgid "Quit EasyEffects. Useful when running in service mode."
@@ -2856,15 +2828,17 @@ msgstr "Muat Preset. Misalkan: easyeffects -l music"
 
 #: src/application.cpp:517
 msgid "Reset EasyEffects."
-msgstr "Atur Ulang EasyEffects"
+msgstr "Atur Ulang EasyEffects."
 
 #: src/application.cpp:520
 msgid "Hide the Window."
-msgstr ""
+msgstr "Sembunyikan jendela."
 
 #: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
+"Bypass global. 1 untuk mengaktifkan, 2 untuk menonaktifkan dan 3 untuk "
+"mendapatkan status"
 
 #: src/application.cpp:526
 msgid "Show available presets."
@@ -2872,11 +2846,11 @@ msgstr "Tampilkan Preset Tersedia."
 
 #: src/application_ui.cpp:246
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:85
 msgid "Import Impulse File"
-msgstr "Muat Berkas Impuls"
+msgstr "Impor File Impuls"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
@@ -2893,14 +2867,12 @@ msgid "Impulse Response"
 msgstr "Respons Impuls"
 
 #: src/convolver_menu_impulses.cpp:199
-#, fuzzy
 msgid "Load Impulse"
-msgstr "Respons Impuls"
+msgstr "Muat Impuls"
 
 #: src/convolver_menu_impulses.cpp:202
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "Muat Impuls"
+msgstr "Hapus Impuls"
 
 #: src/convolver_ui.cpp:336 src/convolver_ui.cpp:337 src/convolver_ui.cpp:338
 msgid "Failed"
@@ -2912,48 +2884,43 @@ msgstr "Tidak dapat Memuat Berkas Impuls"
 
 #: src/effects_box.cpp:255
 msgid "Recorders"
-msgstr ""
+msgstr "Perekam"
 
 #: src/effects_box.cpp:280
 msgid "Players"
-msgstr ""
+msgstr "Pemain"
 
 #: src/effects_box.cpp:303
 msgid "Plugins"
-msgstr ""
+msgstr "Plugin"
 
 #: src/equalizer_band_box.cpp:83
 msgid "infinity"
 msgstr "Tak Terbatas"
 
 #: src/equalizer_ui.cpp:362
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "Muat Preset"
+msgstr "Impor File Preset APO"
 
 #: src/equalizer_ui.cpp:368
-#, fuzzy
 msgid "APO Presets"
-msgstr "Preset"
+msgstr "Preset APO"
 
 #: src/pipe_manager_box.cpp:308
-#, fuzzy
 msgid "Remove Autoloading Preset"
-msgstr "Hapus Berkas Preset Ini"
+msgstr "Hapus Preset Pemuatan Otomatis"
 
 #: src/plugin_name.cpp:25
-#, fuzzy
 msgid "Autogain"
-msgstr "Gain Otomatis"
+msgstr "Autogain"
 
 #: src/plugin_name.cpp:26
 msgid "Bass Enhancer"
 msgstr "Penguat Bass"
 
 #: src/plugin_name.cpp:27
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Kelantangan"
+msgstr "Kenyaringan Bass"
 
 #: src/plugin_name.cpp:29
 msgid "Convolver"
@@ -2972,7 +2939,6 @@ msgid "Deesser"
 msgstr "Penghilang Desis"
 
 #: src/plugin_name.cpp:33
-#, fuzzy
 msgid "Delay"
 msgstr "Penundaan"
 
@@ -3017,14 +2983,12 @@ msgid "Pitch"
 msgstr "Nada"
 
 #: src/plugin_name.cpp:45
-#, fuzzy
 msgid "Reverberation"
 msgstr "Penggemaan"
 
 #: src/plugin_name.cpp:46
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Pengurangan Kuatan"
+msgstr "Pengurangan Noise"
 
 #: src/plugin_name.cpp:47
 msgid "Stereo Tools"
@@ -3032,17 +2996,15 @@ msgstr "Pengolah Stereo"
 
 #: src/plugins_menu.cpp:145
 msgid "Add"
-msgstr ""
+msgstr "Tambah"
 
 #: src/presets_menu.cpp:106
-#, fuzzy
 msgid "Import Preset"
-msgstr "Muat Preset"
+msgstr "Impor Preset"
 
 #: src/rnnoise_ui.cpp:122
-#, fuzzy
 msgid "Import Model File"
-msgstr "Muat Berkas Impuls"
+msgstr "Impor file Model"
 
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
