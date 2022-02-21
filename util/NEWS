@@ -3,7 +3,9 @@ Version UNRELEASED_VERSION
 Released: UNRELEASED_DATE
 
 Features:
-- 
+- There is a new setting allowing the user to select an inactivity timeout for the pipeline. When no client is playing 
+to or recording from our devices the filters will be unlinked after the timeout is reached. This is done to make sure
+we do not waste CPU power processing silence.
 
 Bugfixes:
 - The command line option that returns the global bypass state is working again.

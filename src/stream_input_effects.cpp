@@ -149,6 +149,18 @@ void StreamInputEffects::on_app_added(const NodeInfo node_info) {
   }
 }
 
+auto StreamInputEffects::apps_want_to_play() -> bool {
+  for (const auto& link : pm->list_links) {
+    if (link.output_node_id == pm->ee_source_node.id) {
+      if (link.state == PW_LINK_STATE_ACTIVE) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
   // We are not interested in the other link states
 
@@ -168,28 +180,24 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
     return;
   }
 
-  auto want_to_play = false;
-
-  for (const auto& link : pm->list_links) {
-    if (link.output_node_id == pm->ee_source_node.id) {
-      if (link.state == PW_LINK_STATE_ACTIVE) {
-        want_to_play = true;
-
-        break;
-      }
+  if (apps_want_to_play()) {
+    if (list_proxies.empty()) {
+      connect_filters();
     }
-  }
+  } else {
+    int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
 
-  if (!want_to_play) {
-    if (!list_proxies.empty()) {
-      disconnect_filters();
-    }
+    g_timeout_add_seconds(
+        inactivity_timeout, GSourceFunc(+[](StreamInputEffects* self) {
+          if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
+            util::debug(self->log_tag + "No app linked to our device wants to play. Unlinking our filters.");
 
-    return;
-  }
+            self->disconnect_filters();
+          }
 
-  if (list_proxies.empty()) {
-    connect_filters();
+          return G_SOURCE_REMOVE;
+        }),
+        this);
   }
 }
 

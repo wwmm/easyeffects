@@ -42,6 +42,8 @@ class StreamInputEffects : public EffectsBase {
 
   void disconnect_filters();
 
+  auto apps_want_to_play() -> bool;
+
   void on_app_added(const NodeInfo node_info);
 
   void on_link_changed(const LinkInfo link_info);
