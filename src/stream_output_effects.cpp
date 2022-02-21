@@ -178,6 +178,8 @@ void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
 
   if (apps_want_to_play()) {
     if (list_proxies.empty()) {
+      util::debug(log_tag + "At least one app linked to our device wants to play. Linking our filters.");
+
       connect_filters();
     }
   } else {
