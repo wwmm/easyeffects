@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 11:54-0300\n"
+"POT-Creation-Date: 2022-02-21 12:47-0300\n"
 "PO-Revision-Date: 2022-01-22 05:53+0000\n"
 "Last-Translator: IDeathByte <wwconstantin@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2521,15 +2521,19 @@ msgstr "Использовать Кубический Уровень (Громк
 msgid "Reset Our Devices Volume on Startup"
 msgstr "Сброс Громкости Устройств при Запуске"
 
-#: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:91
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Стиль"
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr "Исп. тёмную тему"
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
 msgstr "Скрыть Меню при Нажатии Извне"
 
@@ -2905,40 +2909,40 @@ msgstr "ошибка"
 msgid "unknown"
 msgstr "неизвестно"
 
-#: src/application.cpp:277 src/application.cpp:313
+#: src/application.cpp:277
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:285 src/application.cpp:321
+#: src/application.cpp:285
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 
-#: src/application.cpp:425 src/application.cpp:418
+#: src/application.cpp:425
 msgid "Audio effects for PipeWire applications"
 msgstr "Аудио-эффекты для приложений PipeWire"
 
-#: src/application.cpp:511 src/application.cpp:504
+#: src/application.cpp:511
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Выйти из EasyEffects. Полезно при запуске в режиме отладки."
 
-#: src/application.cpp:514 src/application.cpp:507
+#: src/application.cpp:514
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить пресет. Пример: easyeffects -l music"
 
-#: src/application.cpp:517 src/application.cpp:510
+#: src/application.cpp:517
 msgid "Reset EasyEffects."
 msgstr "Сбросить настройки EasyEffects."
 
-#: src/application.cpp:520 src/application.cpp:513
+#: src/application.cpp:520
 msgid "Hide the Window."
 msgstr "Спрятать Окно."
 
-#: src/application.cpp:523 src/application.cpp:516
+#: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Глобальный обход. 1 для включения, 2 выключить, 3 для получения статуса"
 
-#: src/application.cpp:526 src/application.cpp:519
+#: src/application.cpp:526
 msgid "Show available presets."
 msgstr "Показать доступные пресеты."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 11:54-0300\n"
+"POT-Creation-Date: 2022-02-21 12:47-0300\n"
 "PO-Revision-Date: 2021-03-25 22:09+0100\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: \n"
@@ -2439,15 +2439,20 @@ msgstr ""
 msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
-#: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:91
+#, fuzzy
+msgid "Inactivity Timeout"
+msgstr "Tempo límite da actividade"
+
+#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr "Empregar tema escuro"
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -3392,9 +3397,6 @@ msgstr "Modelo RNNoise estándar"
 
 #~ msgid "Priority"
 #~ msgstr "Prioridade"
-
-#~ msgid "Activity Timeout"
-#~ msgstr "Tempo límite da actividade"
 
 #~ msgid "About"
 #~ msgstr "Acerca de"

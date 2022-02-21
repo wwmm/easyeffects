@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 11:54-0300\n"
+"POT-Creation-Date: 2022-02-21 12:47-0300\n"
 "PO-Revision-Date: 2022-02-20 22:54+0000\n"
 "Last-Translator: Christian Mattes <christian.mattes@rwth-aachen.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2408,15 +2408,19 @@ msgstr "Verwende kubische Lautstärke"
 msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
-#: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:91
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Stil"
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr "Benutze dunkles Thema"
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 11:54-0300\n"
+"POT-Creation-Date: 2022-02-21 12:47-0300\n"
 "PO-Revision-Date: 2022-01-20 08:55+0000\n"
 "Last-Translator: Wellington Wallace <wellingtonwallace@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -2445,15 +2445,19 @@ msgstr ""
 msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
-#: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:91
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr "Usar Tema Escuro"
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -2850,40 +2854,40 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/application.cpp:277 src/application.cpp:313
+#: src/application.cpp:277
 msgid "Output Presets: "
 msgstr "Predefinições de Saída: "
 
-#: src/application.cpp:285 src/application.cpp:321
+#: src/application.cpp:285
 msgid "Input Presets: "
 msgstr "Predefinições de Entrada: "
 
-#: src/application.cpp:425 src/application.cpp:418
+#: src/application.cpp:425
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: src/application.cpp:511 src/application.cpp:504
+#: src/application.cpp:511
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Sair do EasyEffects. Útil quando executando em modo de serviço."
 
-#: src/application.cpp:514 src/application.cpp:507
+#: src/application.cpp:514
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
 
-#: src/application.cpp:517 src/application.cpp:510
+#: src/application.cpp:517
 msgid "Reset EasyEffects."
 msgstr "Redefinir o EasyEffects."
 
-#: src/application.cpp:520 src/application.cpp:513
+#: src/application.cpp:520
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:523 src/application.cpp:516
+#: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:526 src/application.cpp:519
+#: src/application.cpp:526
 msgid "Show available presets."
 msgstr "Mostrar predefinições disponíveis."
 

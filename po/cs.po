@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 11:54-0300\n"
+"POT-Creation-Date: 2022-02-21 12:47-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -2453,15 +2453,19 @@ msgstr ""
 msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
-#: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:91
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 

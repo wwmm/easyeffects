@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 11:54-0300\n"
+"POT-Creation-Date: 2022-02-21 12:47-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: OctopusET <sumoon@seoulsaram.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -39,16 +39,18 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects는 고급 오디오 처리 도구 입니다. 이퀄라이저, 리미터, 컴프레서, 리버브 툴 등이 포함되며, 이것들은 단지 일부일 "
-"뿐입니다. 예를 들자면 스펙트럼 분석기도 내장되어 있습니다."
+"EasyEffects는 고급 오디오 처리 도구 입니다. 이퀄라이저, 리미터, 컴프레서, 리"
+"버브 툴 등이 포함되며, 이것들은 단지 일부일 뿐입니다. 예를 들자면 스펙트럼 분"
+"석기도 내장되어 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire 오디오 서버 만을 지원 "
-"합니다. PulseAudio를 사용하는 경우 PulseEffects를 대신 사용하십시오."
+"EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire 오"
+"디오 서버 만을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 대신 사"
+"용하십시오."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -56,8 +58,9 @@ msgid ""
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"EasyEffects는 기본 PipeWire 사운드 서버를 사용하므로 대부분의 응용 프로그램에서 작동합니다. 지원되는 모든 응용 "
-"프로그램은 메인 화면에 표시되며 각각 개별적으로 활성화할 수 있습니다."
+"EasyEffects는 기본 PipeWire 사운드 서버를 사용하므로 대부분의 응용 프로그램에"
+"서 작동합니다. 지원되는 모든 응용 프로그램은 메인 화면에 표시되며 각각 개별적"
+"으로 활성화할 수 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -65,15 +68,18 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 이펙트를 걸 수 있습니다. 예를 들어 오디오 레코딩 할 "
-"때 유용하며 음성 대화 시에도 효과를 발휘합니다."
+"EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 이펙트"
+"를 걸 수 있습니다. 예를 들어 오디오 레코딩 할 때 유용하며 음성 대화 시에도 효"
+"과를 발휘합니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
-msgstr "EasyEffects를 시작하면 마지막 세션에서 사용된 설정이 적용됩니다. 현재 설정을 모두 프로파일로 저장할 수도 있습니다."
+msgstr ""
+"EasyEffects를 시작하면 마지막 세션에서 사용된 설정이 적용됩니다. 현재 설정을 "
+"모두 프로파일로 저장할 수도 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
@@ -99,7 +105,9 @@ msgid ""
 "The crossfeed filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
-msgstr "크로스 피드 필터는 PipeWire의 동적 레이턴시 스위치에 잘 대응합니다. 이제 볼륨 레벨 점프가 발생하지 않습니다."
+msgstr ""
+"크로스 피드 필터는 PipeWire의 동적 레이턴시 스위치에 잘 대응합니다. 이제 볼"
+"륨 레벨 점프가 발생하지 않습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
@@ -2444,15 +2452,19 @@ msgstr ""
 msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
-#: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:91
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr ""
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 

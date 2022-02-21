@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 11:54-0300\n"
+"POT-Creation-Date: 2022-02-21 12:47-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -2440,15 +2440,20 @@ msgstr ""
 msgid "Reset Our Devices Volume on Startup"
 msgstr ""
 
-#: data/ui/preferences_general.ui:93 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:91
+#, fuzzy
+msgid "Inactivity Timeout"
+msgstr "Čas. limit aktivity"
+
+#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:96
+#: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr "Použiť tmavý motív"
 
-#: data/ui/preferences_general.ui:108
+#: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -3325,9 +3330,6 @@ msgstr "Štandardný model RNNoise"
 
 #~ msgid "Priority"
 #~ msgstr "Priorita"
-
-#~ msgid "Activity Timeout"
-#~ msgstr "Čas. limit aktivity"
 
 #~ msgid "About"
 #~ msgstr "O programe"
