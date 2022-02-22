@@ -94,6 +94,11 @@ class EffectsBase {
 
   sigc::signal<void(const float&)> pipeline_latency;
 
+  template <typename T>
+  auto get_plugin_instance(const std::string& name) -> std::shared_ptr<T> {
+    return std::dynamic_pointer_cast<T>(plugins[name]);
+  }
+
  protected:
   GSettings *settings = nullptr, *global_settings = nullptr;
 
