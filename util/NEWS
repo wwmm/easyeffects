@@ -6,6 +6,8 @@ Features:
 - There is a new setting allowing the user to select an inactivity timeout for the pipeline. When no client is playing 
 to or recording from our devices the filters will be unlinked after the timeout is reached. This is done to make sure
 we do not waste CPU power processing silence.
+- The autogain plugin has a new option that allows the input loudness to be estimated with the average of the 
+`Momentary` and the `Short-Term` loudness.
 
 Bugfixes:
 - The command line option that returns the global bypass state is working again.

@@ -65,7 +65,8 @@
                             <item translatable="yes" id="Momentary">Momentary</item>
                             <item translatable="yes" id="Shortterm">Short-Term</item>
                             <item translatable="yes" id="Integrated">Integrated</item>
-                            <item translatable="yes" id="Geometric Mean">Geometric Mean</item>
+                            <item translatable="yes" id="Geometric Mean (MSI)">Geometric Mean (MSI)</item>
+                            <item translatable="yes" id="Geometric Mean (MS)">Geometric Mean (MS)</item>
                         </items>
                         <layout>
                             <property name="column">1</property>

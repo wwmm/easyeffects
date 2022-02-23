@@ -35,7 +35,7 @@ class AutoGain : public PluginBase {
   auto operator=(const AutoGain&&) -> AutoGain& = delete;
   ~AutoGain() override;
 
-  enum class Reference { momentary, shortterm, integrated, geometric_mean };
+  enum class Reference { momentary, shortterm, integrated, geometric_mean_msi, geometric_mean_ms };
 
   void setup() override;
 
@@ -68,7 +68,7 @@ class AutoGain : public PluginBase {
   double target = -23.0;  // target loudness level
   double internal_output_gain = 1.0;
 
-  Reference reference = Reference::geometric_mean;
+  Reference reference = Reference::geometric_mean_msi;
 
   std::vector<float> data;
 

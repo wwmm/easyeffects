@@ -122,7 +122,11 @@ auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
     return Reference::integrated;
   }
 
-  return Reference::geometric_mean;
+  if (key == "Geometric Mean (MS)") {
+    return Reference::geometric_mean_ms;
+  }
+
+  return Reference::geometric_mean_msi;
 }
 
 void AutoGain::setup() {
@@ -232,8 +236,17 @@ void AutoGain::process(std::span<float>& left_in,
 
           break;
         }
-        case Reference::geometric_mean: {
+        case Reference::geometric_mean_msi: {
           loudness = std::cbrt(momentary * shortterm * global);
+
+          break;
+        }
+        case Reference::geometric_mean_ms: {
+          loudness = std::sqrt(std::fabs(momentary * shortterm));
+
+          if (momentary < 0 && shortterm < 0) {
+            loudness *= -1;
+          }
 
           break;
         }
