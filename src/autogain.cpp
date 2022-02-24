@@ -36,6 +36,16 @@ AutoGain::AutoGain(const std::string& tag,
                                           }),
                                           this));
 
+  gconnections.push_back(g_signal_connect(settings, "changed::maximum-history",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<AutoGain*>(user_data);
+
+                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                                            self->set_maximum_history(g_settings_get_int(settings, key));
+                                          }),
+                                          this));
+
   gconnections.push_back(g_signal_connect(
       settings, "changed::reset-history", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto self = static_cast<AutoGain*>(user_data);
@@ -100,11 +110,12 @@ auto AutoGain::init_ebur128() -> bool {
     ebur_state = nullptr;
   }
 
-  ebur_state = ebur128_init(
-      2U, rate, EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
+  ebur_state = ebur128_init(2U, rate, EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK);
 
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
+
+  set_maximum_history(g_settings_get_int(settings, "maximum-history"));
 
   return ebur_state != nullptr;
 }
@@ -126,7 +137,21 @@ auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
     return Reference::geometric_mean_ms;
   }
 
+  if (key == "Geometric Mean (MI)") {
+    return Reference::geometric_mean_mi;
+  }
+
+  if (key == "Geometric Mean (SI)") {
+    return Reference::geometric_mean_si;
+  }
+
   return Reference::geometric_mean_msi;
+}
+
+void AutoGain::set_maximum_history(const int& value) {
+  // The value given to ebur128_set_max_history must be in milliseconds
+
+  ebur128_set_max_history(ebur_state, g_settings_get_int(settings, "maximum-history") * 1000);
 }
 
 void AutoGain::setup() {
@@ -245,6 +270,24 @@ void AutoGain::process(std::span<float>& left_in,
           loudness = std::sqrt(std::fabs(momentary * shortterm));
 
           if (momentary < 0 && shortterm < 0) {
+            loudness *= -1;
+          }
+
+          break;
+        }
+        case Reference::geometric_mean_mi: {
+          loudness = std::sqrt(std::fabs(momentary * global));
+
+          if (momentary < 0 && global < 0) {
+            loudness *= -1;
+          }
+
+          break;
+        }
+        case Reference::geometric_mean_si: {
+          loudness = std::sqrt(std::fabs(shortterm * global));
+
+          if (shortterm < 0 && global < 0) {
             loudness *= -1;
           }
 

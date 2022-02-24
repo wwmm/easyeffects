@@ -49,10 +49,44 @@
                 </child>
 
                 <child>
+                    <object class="GtkLabel" id="label_maximum_history">
+                        <property name="label" translatable="yes">Maximum History</property>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton" id="maximum_history">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="width-chars">10</property>
+                        <property name="adjustment">
+                            <object class="GtkAdjustment">
+                                <property name="lower">6</property>
+                                <property name="upper">3600</property>
+                                <property name="step-increment">1</property>
+                                <property name="page-increment">10</property>
+                            </object>
+                        </property>
+                        <property name="digits">0</property>
+                        <property name="update-policy">if-valid</property>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">1</property>
+                        </layout>
+                        <accessibility>
+                            <relation name="labelled-by">label_maximum_history</relation>
+                        </accessibility>
+                    </object>
+                </child>
+
+                <child>
                     <object class="GtkLabel" id="reference_label">
                         <property name="label" translatable="yes">Reference</property>
                         <layout>
-                            <property name="column">1</property>
+                            <property name="column">2</property>
                             <property name="row">0</property>
                         </layout>
                     </object>
@@ -67,9 +101,11 @@
                             <item translatable="yes" id="Integrated">Integrated</item>
                             <item translatable="yes" id="Geometric Mean (MSI)">Geometric Mean (MSI)</item>
                             <item translatable="yes" id="Geometric Mean (MS)">Geometric Mean (MS)</item>
+                            <item translatable="yes" id="Geometric Mean (MI)">Geometric Mean (MI)</item>
+                            <item translatable="yes" id="Geometric Mean (SI)">Geometric Mean (SI)</item>
                         </items>
                         <layout>
-                            <property name="column">1</property>
+                            <property name="column">2</property>
                             <property name="row">1</property>
                         </layout>
                         <accessibility>
@@ -100,7 +136,7 @@
                             </object>
                         </child>
                         <layout>
-                            <property name="column">2</property>
+                            <property name="column">3</property>
                             <property name="row">0</property>
                             <property name="row-span">2</property>
                         </layout>

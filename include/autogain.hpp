@@ -35,7 +35,15 @@ class AutoGain : public PluginBase {
   auto operator=(const AutoGain&&) -> AutoGain& = delete;
   ~AutoGain() override;
 
-  enum class Reference { momentary, shortterm, integrated, geometric_mean_msi, geometric_mean_ms };
+  enum class Reference {
+    momentary,
+    shortterm,
+    integrated,
+    geometric_mean_msi,
+    geometric_mean_ms,
+    geometric_mean_mi,
+    geometric_mean_si
+  };
 
   void setup() override;
 
@@ -79,6 +87,8 @@ class AutoGain : public PluginBase {
   auto init_ebur128() -> bool;
 
   static auto parse_reference_key(const std::string& key) -> Reference;
+
+  void set_maximum_history(const int& value);
 };
 
 #endif
