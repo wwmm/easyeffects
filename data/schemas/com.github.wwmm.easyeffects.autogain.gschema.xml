@@ -30,7 +30,7 @@
         </key>
         <key name="maximum-history" type="i">
             <range min="6" max="3600" />
-            <default>30</default>
+            <default>15</default>
         </key>
     </schema>
 </schemalist>
