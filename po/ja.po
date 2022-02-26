@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-24 12:33-0300\n"
-"PO-Revision-Date: 2022-02-23 09:55+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2022-02-26 00:54+0000\n"
+"Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.11.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -798,9 +798,8 @@ msgid "Target"
 msgstr "ターゲット"
 
 #: data/ui/autogain.ui:53
-#, fuzzy
 msgid "Maximum History"
-msgstr "最大"
+msgstr "最大履歴"
 
 #: data/ui/autogain.ui:87
 msgid "Reference"
@@ -819,24 +818,20 @@ msgid "Integrated"
 msgstr "統合"
 
 #: data/ui/autogain.ui:102
-#, fuzzy
 msgid "Geometric Mean (MSI)"
-msgstr "幾何平均"
+msgstr "幾何平均 (MSI)"
 
 #: data/ui/autogain.ui:103
-#, fuzzy
 msgid "Geometric Mean (MS)"
-msgstr "幾何平均"
+msgstr "幾何平均 (MS)"
 
 #: data/ui/autogain.ui:104
-#, fuzzy
 msgid "Geometric Mean (MI)"
-msgstr "幾何平均"
+msgstr "幾何平均 (MI)"
 
 #: data/ui/autogain.ui:105
-#, fuzzy
 msgid "Geometric Mean (SI)"
-msgstr "幾何平均"
+msgstr "幾何平均 (SI)"
 
 #: data/ui/autogain.ui:127 data/ui/bass_enhancer.ui:18
 #: data/ui/bass_loudness.ui:14 data/ui/compressor.ui:13 data/ui/convolver.ui:14
@@ -2419,7 +2414,7 @@ msgstr "起動時にデバイスの音量をリセット"
 
 #: data/ui/preferences_general.ui:91
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "非アクティブタイムアウト"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
