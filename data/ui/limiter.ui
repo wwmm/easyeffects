@@ -7,6 +7,7 @@
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
+
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
@@ -25,7 +26,6 @@
                 <child>
                     <object class="GtkGrid">
                         <property name="halign">center</property>
-                        <property name="valign">end</property>
                         <property name="row-spacing">6</property>
                         <property name="column-spacing">12</property>
                         <property name="margin-start">12</property>
@@ -171,7 +171,6 @@
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">center</property>
-                                <property name="vexpand">1</property>
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
@@ -213,7 +212,6 @@
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">center</property>
-                                <property name="vexpand">1</property>
                                 <child>
                                     <object class="GtkLabel" id="lookahead_label">
                                         <property name="halign">center</property>
@@ -256,7 +254,6 @@
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">center</property>
-                                <property name="vexpand">1</property>
                                 <child>
                                     <object class="GtkLabel" id="attack_label">
                                         <property name="halign">center</property>
@@ -299,7 +296,6 @@
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">center</property>
-                                <property name="vexpand">1</property>
                                 <child>
                                     <object class="GtkLabel" id="release_label">
                                         <property name="halign">center</property>
@@ -342,7 +338,6 @@
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">center</property>
-                                <property name="vexpand">1</property>
                                 <child>
                                     <object class="GtkLabel" id="threshold_label">
                                         <property name="halign">center</property>
@@ -411,7 +406,6 @@
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">center</property>
-                                <property name="vexpand">1</property>
                                 <child>
                                     <object class="GtkLabel" id="stereo_link_label">
                                         <property name="halign">center</property>
