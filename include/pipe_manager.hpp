@@ -42,6 +42,8 @@ struct NodeInfo {
 
   uint device_id = SPA_ID_INVALID;
 
+  uint64_t serial = SPA_ID_INVALID;
+
   std::string name;
 
   std::string description;
@@ -301,7 +303,7 @@ class PipeManager {
 
   spa_hook core_listener{}, registry_listener{};
 
-  void set_metadata_target_node(const uint& origin_id, const uint& target_id) const;
+  void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t &target_serial) const;
 };
 
 #endif
