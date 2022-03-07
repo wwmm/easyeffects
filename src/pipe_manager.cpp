@@ -1044,6 +1044,10 @@ void on_registry_global(void* data,
         nd->nd_info->media_class = media_class;
         nd->nd_info->name = name;
 
+        if (const auto* serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+          nd->nd_info->serial = std::stoull(serial);
+        }
+
         if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
           nd->nd_info->description = node_description;
         }
@@ -1491,25 +1495,27 @@ auto PipeManager::stream_is_connected(const uint& id, const std::string& media_c
 }
 
 void PipeManager::connect_stream_output(const uint& id) const {
-  set_metadata_target_node(id, ee_sink_node.id);
+  set_metadata_target_node(id, ee_sink_node.id, ee_sink_node.serial);
 }
 
 void PipeManager::disconnect_stream_output(const uint& id) const {
-  set_metadata_target_node(id, default_output_device.id);
+  set_metadata_target_node(id, default_output_device.id, default_output_device.serial);
 }
 
 void PipeManager::connect_stream_input(const uint& id) const {
-  set_metadata_target_node(id, ee_source_node.id);
+  set_metadata_target_node(id, ee_source_node.id, ee_source_node.serial);
 }
 
 void PipeManager::disconnect_stream_input(const uint& id) const {
-  set_metadata_target_node(id, default_input_device.id);
+  set_metadata_target_node(id, default_input_device.id, default_input_device.serial);
 }
 
-void PipeManager::set_metadata_target_node(const uint& origin_id, const uint& target_id) const {
+void PipeManager::set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const {
   lock();
 
+  // target.node for backward compatibility with old PW session managers
   pw_metadata_set_property(metadata, origin_id, "target.node", "Spa:Id", std::to_string(target_id).c_str());
+  pw_metadata_set_property(metadata, origin_id, "target.object", "Spa:Id", std::to_string(target_serial).c_str());
 
   sync_wait_unlock();
 }
