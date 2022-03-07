@@ -3,6 +3,19 @@ Version UNRELEASED_VERSION
 Released: UNRELEASED_DATE
 
 Features:
+- 
+
+Bugfixes:
+- 
+
+Notes:
+- 
+
+Version 6.2.4
+~~~~~~~~~~~~~~
+Released: 2022-03-07
+
+Features:
 - There is a new setting allowing the user to select an inactivity timeout for the pipeline. When no client is playing 
 to or recording from our devices the filters will be unlinked after the timeout is reached. This is done to make sure
 we do not waste CPU power processing silence.
@@ -10,12 +23,10 @@ we do not waste CPU power processing silence.
 mean.
 - The autogain plugin now allows the maximum history to be set and does not use `libebur128` histogram mode anymore.
 This should avoid the cases where the `Integrated` loudness gets stuck forever in the same value.
+- EasyEffects icon has been updated in a way that should make it visible in QT desktops.
 
 Bugfixes:
 - The command line option that returns the global bypass state is working again.
-
-Notes:
-- 
 
 Version 6.2.3
 ~~~~~~~~~~~~~~
