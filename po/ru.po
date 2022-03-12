@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-07 11:42-0300\n"
+"POT-Creation-Date: 2022-03-12 14:22-0300\n"
 "PO-Revision-Date: 2022-01-22 05:53+0000\n"
 "Last-Translator: IDeathByte <wwconstantin@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -930,7 +930,7 @@ msgstr "Геометрически Усредненное"
 #: data/ui/multiband_compressor.ui:32 data/ui/multiband_gate.ui:13
 #: data/ui/multiband_gate.ui:183 data/ui/multiband_gate.ui:543
 #: data/ui/multiband_gate.ui:903 data/ui/multiband_gate.ui:1263
-#: data/ui/pitch.ui:29 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
+#: data/ui/pitch.ui:75 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
 #: data/ui/stereo_tools.ui:13
 msgid "Bypass"
 msgstr "Обход"
@@ -975,7 +975,7 @@ msgstr "Усиление выхода"
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
 #: data/ui/limiter.ui:743 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:198 data/ui/reverb.ui:364
+#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306 data/ui/reverb.ui:364
 #: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
 #: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
 msgid "Input"
@@ -988,7 +988,7 @@ msgstr "Вход"
 #: data/ui/equalizer.ui:216 data/ui/exciter.ui:283 data/ui/filter.ui:192
 #: data/ui/gate.ui:354 data/ui/limiter.ui:762 data/ui/loudness.ui:151
 #: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
-#: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:217 data/ui/reverb.ui:383
+#: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:325 data/ui/reverb.ui:383
 #: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
 msgid "Plugin Input Gain"
 msgstr "Усиление входа"
@@ -1003,7 +1003,7 @@ msgstr "Усиление входа"
 #: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
 #: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:282 data/ui/reverb.ui:448
+#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390 data/ui/reverb.ui:448
 #: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
 msgid "Output"
@@ -1016,7 +1016,7 @@ msgstr "Выход"
 #: data/ui/equalizer.ui:300 data/ui/exciter.ui:367 data/ui/filter.ui:276
 #: data/ui/gate.ui:438 data/ui/limiter.ui:846 data/ui/loudness.ui:235
 #: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
-#: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:301 data/ui/reverb.ui:467
+#: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:409 data/ui/reverb.ui:467
 #: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
 msgid "Plugin Output Gain"
 msgstr "Усиление выхода"
@@ -1029,7 +1029,7 @@ msgstr "Усиление выхода"
 #: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:460 data/ui/filter.ui:339
 #: data/ui/gate.ui:531 data/ui/limiter.ui:909 data/ui/loudness.ui:298
 #: data/ui/maximizer.ui:343 data/ui/multiband_compressor.ui:556
-#: data/ui/multiband_gate.ui:1791 data/ui/pitch.ui:364 data/ui/reverb.ui:530
+#: data/ui/multiband_gate.ui:1791 data/ui/pitch.ui:472 data/ui/reverb.ui:530
 #: data/ui/rnnoise.ui:303 data/ui/stereo_tools.ui:718
 msgid "Reset"
 msgstr "Сбросить"
@@ -1041,7 +1041,7 @@ msgstr "Сбросить"
 #: data/ui/exciter.ui:474 data/ui/filter.ui:353 data/ui/gate.ui:545
 #: data/ui/limiter.ui:923 data/ui/loudness.ui:312 data/ui/maximizer.ui:357
 #: data/ui/multiband_compressor.ui:570 data/ui/multiband_gate.ui:1805
-#: data/ui/pitch.ui:378 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
+#: data/ui/pitch.ui:486 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
 #: data/ui/stereo_tools.ui:732
 msgid "Using"
 msgstr "Использовать"
@@ -1051,8 +1051,8 @@ msgstr "Использовать"
 msgid "Device"
 msgstr "Устройство"
 
-#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:43
-#: data/ui/factory_modules_listview.ui:43 data/ui/pipe_manager_box.ui:52
+#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:44
+#: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
 #: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
 msgid "Name"
@@ -1131,7 +1131,7 @@ msgstr "Компрессор"
 #: data/ui/compressor.ui:50 data/ui/compressor.ui:437 data/ui/compressor.ui:732
 #: data/ui/deesser.ui:65 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:130
 #: data/ui/limiter.ui:45 data/ui/multiband_compressor_band.ui:449
-#: data/ui/multiband_gate.ui:33
+#: data/ui/multiband_gate.ui:33 data/ui/pitch.ui:22
 msgid "Mode"
 msgstr "Режим"
 
@@ -1680,19 +1680,19 @@ msgstr "Верхний порог"
 msgid "Ceil Value"
 msgstr ""
 
-#: data/ui/factory_clients_listview.ui:71
+#: data/ui/factory_clients_listview.ui:72
 msgid "API"
 msgstr "API"
 
-#: data/ui/factory_clients_listview.ui:99
+#: data/ui/factory_clients_listview.ui:100
 msgid "Access"
 msgstr "Доступ"
 
-#: data/ui/factory_modules_listview.ui:71
+#: data/ui/factory_modules_listview.ui:72
 msgid "Description"
 msgstr "Описание"
 
-#: data/ui/factory_rnnoise_listview.ui:23
+#: data/ui/factory_rnnoise_listview.ui:24
 #, fuzzy
 msgid "Remove this model file"
 msgstr "Удалить этот файл с предустановками"
@@ -2519,29 +2519,92 @@ msgstr "Синусоида"
 msgid "White Noise"
 msgstr "Белый шум"
 
-#: data/ui/pitch.ui:17
-msgid "Faster"
-msgstr "Быстрее"
+#: data/ui/pitch.ui:33
+#, fuzzy
+msgid "High Speed"
+msgstr "Высокочастотный полочный фильтр"
 
-#: data/ui/pitch.ui:23
-msgid "Preserve Formant"
-msgstr "Сохранить формат"
+#: data/ui/pitch.ui:34
+#, fuzzy
+msgid "High Quality"
+msgstr "Качество"
 
-#: data/ui/pitch.ui:46
+#: data/ui/pitch.ui:35
+msgid "High Consistency"
+msgstr ""
+
+#: data/ui/pitch.ui:49
+#, fuzzy
+msgid "Formant"
+msgstr "Формат"
+
+#: data/ui/pitch.ui:60
+msgid "Shifted"
+msgstr ""
+
+#: data/ui/pitch.ui:61
+#, fuzzy
+msgid "Preserved"
+msgstr "Предустановка"
+
+#: data/ui/pitch.ui:98
+msgid "Transients"
+msgstr ""
+
+#: data/ui/pitch.ui:109
+#, fuzzy
+msgid "Crisp"
+msgstr "Чёткость"
+
+#: data/ui/pitch.ui:110
+msgid "Mixed"
+msgstr ""
+
+#: data/ui/pitch.ui:111
+msgid "Smooth"
+msgstr ""
+
+#: data/ui/pitch.ui:125
+#, fuzzy
+msgid "Detector"
+msgstr "Определение"
+
+#: data/ui/pitch.ui:136
+#, fuzzy
+msgid "Compound"
+msgstr "Сжатие"
+
+#: data/ui/pitch.ui:137
+msgid "Percussive"
+msgstr ""
+
+#: data/ui/pitch.ui:138
+msgid "Soft"
+msgstr ""
+
+#: data/ui/pitch.ui:152
+msgid "Phase"
+msgstr ""
+
+#: data/ui/pitch.ui:163
+msgid "Laminar"
+msgstr ""
+
+#: data/ui/pitch.ui:164
+msgid "Independent"
+msgstr ""
+
+#: data/ui/pitch.ui:189
 msgid "Cents"
 msgstr "Центы"
 
-#: data/ui/pitch.ui:80
+#: data/ui/pitch.ui:223
 msgid "Semitones"
 msgstr "Полутона"
 
-#: data/ui/pitch.ui:114
+#: data/ui/pitch.ui:257
 msgid "Octaves"
 msgstr "Октавы"
-
-#: data/ui/pitch.ui:148
-msgid "Crispness"
-msgstr "Чёткость"
 
 #: data/ui/plugin_row.ui:26
 msgid "Remove this plugin"
@@ -3195,6 +3258,12 @@ msgstr "Импорт Модели"
 msgid "RNNoise Models"
 msgstr "Модели RNNoise"
 
+#~ msgid "Faster"
+#~ msgstr "Быстрее"
+
+#~ msgid "Preserve Formant"
+#~ msgstr "Сохранить формат"
+
 #~ msgid "LR4"
 #~ msgstr "LR4"
 
@@ -3308,9 +3377,6 @@ msgstr "Модели RNNoise"
 
 #~ msgid "ISO226-2003"
 #~ msgstr "ISO226-2003"
-
-#~ msgid "Compression"
-#~ msgstr "Сжатие"
 
 #~ msgid "Audio Effects for PulseAudio Applications"
 #~ msgstr "Аудиоэффекты для приложений PulseAudio"
