@@ -47,9 +47,9 @@ struct _PitchBox {
 
   GtkToggleButton* bypass;
 
-  GtkSpinButton *cents, *crispness, *semitones, *octaves;
+  GtkComboBoxText *mode, *formant, *transients, *detector, *phase;
 
-  GtkToggleButton *faster, *formant_preserving;
+  GtkSpinButton *cents, *semitones, *octaves;
 
   GSettings* settings;
 
@@ -88,10 +88,10 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  g_settings_bind(self->settings, "cents", gtk_spin_button_get_adjustment(self->cents), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"mode", "formant", "transients", "detector", "phase">(
+      self->settings, self->mode, self->formant, self->transients, self->detector, self->phase);
 
-  g_settings_bind(self->settings, "crispness", gtk_spin_button_get_adjustment(self->crispness), "value",
+  g_settings_bind(self->settings, "cents", gtk_spin_button_get_adjustment(self->cents), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "semitones", gtk_spin_button_get_adjustment(self->semitones), "value",
@@ -99,10 +99,6 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 
   g_settings_bind(self->settings, "octaves", gtk_spin_button_get_adjustment(self->octaves), "value",
                   G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "faster", self->faster, "active", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "formant-preserving", self->formant_preserving, "active", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -160,12 +156,15 @@ void pitch_box_class_init(PitchBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, PitchBox, bypass);
 
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, mode);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, formant);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, transients);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, detector);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, phase);
+
   gtk_widget_class_bind_template_child(widget_class, PitchBox, cents);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, crispness);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, semitones);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, octaves);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, faster);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, formant_preserving);
 
   gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
@@ -178,7 +177,6 @@ void pitch_box_init(PitchBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"">(self->crispness);
   prepare_spinbutton<"">(self->cents);
   prepare_spinbutton<"">(self->semitones);
   prepare_spinbutton<"">(self->octaves);

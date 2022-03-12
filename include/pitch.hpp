@@ -33,6 +33,12 @@ class Pitch : public PluginBase {
   auto operator=(const Pitch&&) -> Pitch& = delete;
   ~Pitch() override;
 
+  enum class Mode { speed, quality, consistency };
+  enum class Formant { shifted, preserved };
+  enum class Transients { crisp, mixed, smooth };
+  enum class Detector { compound, percussive, soft };
+  enum class Phase { laminar, independent };
+
   void setup() override;
 
   void process(std::span<float>& left_in,
@@ -47,17 +53,8 @@ class Pitch : public PluginBase {
  private:
   bool rubberband_ready = false;
   bool notify_latency = false;
-  bool formant_preserving = false;
-  bool faster = false;
-
-  int crispness = 3;
-  int cents = 0;
-  int semitones = 0;
-  int octaves = 0;
 
   uint latency_n_frames = 0U;
-
-  double time_ratio = 1.0;
 
   std::vector<float> data_L, data_R;
 
@@ -68,11 +65,32 @@ class Pitch : public PluginBase {
 
   RubberBand::RubberBandStretcher* stretcher = nullptr;
 
-  void update_crispness();
+  Mode mode = Mode::speed;
+  Formant formant = Formant::shifted;
+  Transients transients = Transients::crisp;
+  Detector detector = Detector::compound;
+  Phase phase = Phase::laminar;
 
-  void update_pitch_scale();
+  int cents = 0;
+  int semitones = 0;
+  int octaves = 0;
+
+  double time_ratio = 1.0;
 
   void init_stretcher();
+
+  static auto parse_mode_key(const std::string& key) -> Mode;
+  static auto parse_formant_key(const std::string& key) -> Formant;
+  static auto parse_transients_key(const std::string& key) -> Transients;
+  static auto parse_detector_key(const std::string& key) -> Detector;
+  static auto parse_phase_key(const std::string& key) -> Phase;
+
+  void set_mode();
+  void set_formant();
+  void set_transients();
+  void set_detector();
+  void set_phase();
+  void set_pitch_scale();
 };
 
 #endif
