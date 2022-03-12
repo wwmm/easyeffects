@@ -32,17 +32,21 @@ void PitchPreset::save(nlohmann::json& json, const std::string& section, GSettin
 
   json[section]["pitch"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
+  json[section]["pitch"]["mode"] = util::gsettings_get_string(settings, "mode");
+
+  json[section]["pitch"]["formant"] = util::gsettings_get_string(settings, "formant");
+
+  json[section]["pitch"]["transients"] = util::gsettings_get_string(settings, "transients");
+
+  json[section]["pitch"]["detector"] = util::gsettings_get_string(settings, "detector");
+
+  json[section]["pitch"]["phase"] = util::gsettings_get_string(settings, "phase");
+
   json[section]["pitch"]["cents"] = g_settings_get_int(settings, "cents");
 
   json[section]["pitch"]["semitones"] = g_settings_get_int(settings, "semitones");
 
   json[section]["pitch"]["octaves"] = g_settings_get_int(settings, "octaves");
-
-  json[section]["pitch"]["crispness"] = g_settings_get_int(settings, "crispness");
-
-  json[section]["pitch"]["formant-preserving"] = g_settings_get_boolean(settings, "formant-preserving") != 0;
-
-  json[section]["pitch"]["faster"] = g_settings_get_boolean(settings, "faster") != 0;
 }
 
 void PitchPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
@@ -50,15 +54,17 @@ void PitchPreset::load(const nlohmann::json& json, const std::string& section, G
 
   update_key<double>(json.at(section).at("pitch"), settings, "output-gain", "output-gain");
 
-  update_key<int>(json.at(section).at("pitch"), settings, "cents", "cents");
+  update_key<gchar*>(json.at(section).at("pitch"), settings, "mode", "mode");
+
+  update_key<gchar*>(json.at(section).at("pitch"), settings, "formant", "formant");
+
+  update_key<gchar*>(json.at(section).at("pitch"), settings, "transients", "transients");
+
+  update_key<gchar*>(json.at(section).at("pitch"), settings, "detector", "detector");
+
+  update_key<gchar*>(json.at(section).at("pitch"), settings, "phase", "phase");
 
   update_key<int>(json.at(section).at("pitch"), settings, "semitones", "semitones");
 
   update_key<int>(json.at(section).at("pitch"), settings, "octaves", "octaves");
-
-  update_key<int>(json.at(section).at("pitch"), settings, "crispness", "crispness");
-
-  update_key<bool>(json.at(section).at("pitch"), settings, "formant-preserving", "formant-preserving");
-
-  update_key<bool>(json.at(section).at("pitch"), settings, "faster", "faster");
 }
