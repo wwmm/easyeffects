@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-12 14:22-0300\n"
 "PO-Revision-Date: 2022-03-14 23:07+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -120,6 +120,8 @@ msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
+"Aggiunta una nuova opzione che permette di selezionare un periodo di "
+"inattività per la pipeline. Quando nessun client"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
@@ -134,40 +136,40 @@ msgid "we do not waste CPU power processing silence."
 msgstr "non sprechiamo il silenzio di elaborazione della potenza della CPU."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
 msgstr ""
-"Il modulo di Auto Guadagno adesso permette all'utente di selezionare quale "
-"tipologia di Loudness usare come riferimento per la correzione del volume."
+"Il plugin di Auto Guadagno adesso permette di selezionare quale dei tre tipi "
+"di Loudness usare per calcolare"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "mean."
-msgstr ""
+msgstr "la media geometrica."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
 msgstr ""
-"Il modulo di Auto Guadagno adesso permette all'utente di selezionare quale "
-"tipologia di Loudness usare come riferimento per la correzione del volume."
+"Il plugin di Auto Guadagno adesso permette l'impostazione della massima "
+"cronologia e non utilizza più l'istogramma `libebur128`."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
+"Ciò eviterà i casi in cui la Loudness `Integrata` rimanga fissa "
+"costantemente sullo stesso valore."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
-"L'icona di EasyEffects è stata aggiornata in modo da renderla visibile nei "
-"desktop QT."
+"L'icona di EasyEffects è stata aggiornata in modo da essere visibile anche "
+"nei desktop QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -177,7 +179,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
 msgid "This release fixes the following bug:"
-msgstr "Questa release risolve i seguenti bug:"
+msgstr "Questa release corregge i seguenti bug:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
@@ -2417,9 +2419,8 @@ msgid "White Noise"
 msgstr "Rumore Bianco"
 
 #: data/ui/pitch.ui:33
-#, fuzzy
 msgid "High Speed"
-msgstr "Sopra Soglia"
+msgstr "Alta Velocità"
 
 #: data/ui/pitch.ui:34
 msgid "High Quality"
@@ -2430,65 +2431,60 @@ msgid "High Consistency"
 msgstr "Alta Consistenza"
 
 #: data/ui/pitch.ui:49
-#, fuzzy
 msgid "Formant"
-msgstr "Formato"
+msgstr "Formante"
 
 #: data/ui/pitch.ui:60
 msgid "Shifted"
-msgstr ""
+msgstr "Alterata"
 
 #: data/ui/pitch.ui:61
-#, fuzzy
 msgid "Preserved"
-msgstr "Profilo EasyEffects"
+msgstr "Preservata"
 
 #: data/ui/pitch.ui:98
 msgid "Transients"
-msgstr ""
+msgstr "Transienti"
 
 #: data/ui/pitch.ui:109
-#, fuzzy
 msgid "Crisp"
-msgstr "Chiarezza"
+msgstr "Netti"
 
 #: data/ui/pitch.ui:110
 msgid "Mixed"
-msgstr ""
+msgstr "Intermedi"
 
 #: data/ui/pitch.ui:111
 msgid "Smooth"
-msgstr ""
+msgstr "Tenui"
 
 #: data/ui/pitch.ui:125
-#, fuzzy
 msgid "Detector"
-msgstr "Rilevamento"
+msgstr "Rilevazione"
 
 #: data/ui/pitch.ui:136
 msgid "Compound"
-msgstr ""
+msgstr "Composto"
 
 #: data/ui/pitch.ui:137
 msgid "Percussive"
-msgstr ""
+msgstr "Percussivo"
 
 #: data/ui/pitch.ui:138
-#, fuzzy
 msgid "Soft"
-msgstr "Softclip"
+msgstr "Soft"
 
 #: data/ui/pitch.ui:152
 msgid "Phase"
-msgstr ""
+msgstr "Fase"
 
 #: data/ui/pitch.ui:163
 msgid "Laminar"
-msgstr ""
+msgstr "Laminare"
 
 #: data/ui/pitch.ui:164
 msgid "Independent"
-msgstr ""
+msgstr "Indipendente"
 
 #: data/ui/pitch.ui:189 data/ui/pitch.ui:46
 msgid "Cents"
@@ -2560,7 +2556,7 @@ msgstr "Reimposta il Volume di EasyEffects all'Avvio"
 
 #: data/ui/preferences_general.ui:91
 msgid "Inactivity Timeout"
-msgstr "Latenza Inattività"
+msgstr "Tempo Inattività"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
