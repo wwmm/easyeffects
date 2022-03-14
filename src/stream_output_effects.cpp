@@ -142,7 +142,9 @@ StreamOutputEffects::~StreamOutputEffects() {
 void StreamOutputEffects::on_app_added(const NodeInfo node_info) {
   const auto blocklist = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
 
-  const auto is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
+  auto is_blocklisted = std::ranges::find(blocklist, node_info.application_id) != blocklist.end();
+
+  is_blocklisted = is_blocklisted || std::ranges::find(blocklist, node_info.name) != blocklist.end();
 
   if (g_settings_get_boolean(global_settings, "process-all-outputs") != 0 && !is_blocklisted) {
     pm->connect_stream_output(node_info.id);

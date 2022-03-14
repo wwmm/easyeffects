@@ -302,6 +302,12 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       nd->nd_info->priority = std::stoi(prio_session);
     }
 
+    if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
+      if (app_id != nd->nd_info->application_id) {
+        nd->nd_info->application_id = app_id;
+      }
+    }
+
     if (const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME)) {
       if (app_icon_name != nd->nd_info->app_icon_name) {
         nd->nd_info->app_icon_name = app_icon_name;
@@ -1510,7 +1516,9 @@ void PipeManager::disconnect_stream_input(const uint& id) const {
   set_metadata_target_node(id, default_input_device.id, default_input_device.serial);
 }
 
-void PipeManager::set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const {
+void PipeManager::set_metadata_target_node(const uint& origin_id,
+                                           const uint& target_id,
+                                           const uint64_t& target_serial) const {
   lock();
 
   // target.node for backward compatibility with old PW session managers

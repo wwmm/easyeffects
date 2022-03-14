@@ -195,12 +195,18 @@ void on_mute(GtkToggleButton* btn, AppInfo* self) {
 void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
   const auto state = gtk_check_button_get_active(btn);
 
+  std::string app_tag = self->data->info.application_id;
+
+  if (app_tag.empty()) {
+    app_tag = self->data->info.name;
+  }
+
   if (state) {
     self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_switch_get_active(self->enable));
 
-    util::add_new_blocklist_entry(self->settings, self->data->info.name, log_tag);
+    util::add_new_blocklist_entry(self->settings, app_tag, log_tag);
   } else {
-    util::remove_blocklist_entry(self->settings, self->data->info.name, log_tag);
+    util::remove_blocklist_entry(self->settings, app_tag, log_tag);
   }
 }
 

@@ -60,6 +60,8 @@ struct NodeInfo {
 
   std::string format;
 
+  std::string application_id;
+
   int priority = -1;
 
   pw_node_state state = PW_NODE_STATE_IDLE;
@@ -303,7 +305,7 @@ class PipeManager {
 
   spa_hook core_listener{}, registry_listener{};
 
-  void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t &target_serial) const;
+  void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
 };
 
 #endif
