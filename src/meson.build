@@ -120,7 +120,7 @@ zita_convolver = cxx.find_library('zita-convolver', required: true)
 tbb = cxx.find_library('tbb', required: true)
 
 easyeffects_deps = [
-	dependency('libpipewire-0.3', version: '>=0.3.31'),
+	dependency('libpipewire-0.3', version: '>=0.3.41'),
 	dependency('glib-2.0', version: '>=2.56'),
 	dependency('gtk4', version: '>=4.2.1'),
 	dependency('libadwaita-1', version: '>=1.0.0'),
