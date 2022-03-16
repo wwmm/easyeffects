@@ -8,28 +8,27 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-12 14:22-0300\n"
-"PO-Revision-Date: 2018-06-21 21:34+0200\n"
-"Last-Translator: Piotr Komur, pkomur@gmail.com\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2022-03-14 23:07+0000\n"
+"Last-Translator: Aleksander <olek_filip@wp.pl>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
+"pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efekty dźwiękowe dla programu Pulseaudio"
+msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
@@ -51,15 +50,17 @@ msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects jest następcą PulseEffects. EasyEffects wspiera jedynie serwer "
+"audio PipeWire. Użytkownicy PulseAudio powinni zamiast tego użyć "
+"PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Ponieważ EasyEffects używa domyślnego serwera dźwięku PulseAudio, będzie on "
+"Ponieważ EasyEffects używa domyślnego serwera dźwięku PipeWire, będzie on "
 "działał z większością, jeśli nie wszystkimi używanymi programami. Wszystkie "
 "obsługiwane programy są prezentowane w oknie głównym, gdzie każdy z nich "
 "może być aktywowany indywidualnie."
@@ -112,7 +113,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid "This release adds the following features:"
-msgstr ""
+msgstr "W tym wydaniu dodano następujące funkcje:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
@@ -166,7 +167,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
 msgid "This release fixes the following bug:"
-msgstr ""
+msgstr "To wydanie poprawia następujący błąd:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
@@ -3030,22 +3031,21 @@ msgstr ""
 
 #: src/app_info.cpp:78
 msgid "unknown"
-msgstr ""
+msgstr "nieznany"
 
 #: src/application.cpp:277
 #, fuzzy
 msgid "Output Presets: "
-msgstr "Profile: "
+msgstr "Presety wyjściowe: "
 
 #: src/application.cpp:285
 #, fuzzy
 msgid "Input Presets: "
-msgstr "Importuj profile"
+msgstr "Presety wejściowe: "
 
 #: src/application.cpp:425
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Efekty dźwiękowe dla programu Pulseaudio"
+msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
 
 #: src/application.cpp:511
 msgid "Quit EasyEffects. Useful when running in service mode."
@@ -3056,13 +3056,12 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Załaduj profil. Przykład: easyeffects -l music"
 
 #: src/application.cpp:517
-#, fuzzy
 msgid "Reset EasyEffects."
-msgstr "EasyEffects"
+msgstr "Resetuj EasyEffects."
 
 #: src/application.cpp:520
 msgid "Hide the Window."
-msgstr ""
+msgstr "Schowaj okno."
 
 #: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -3074,22 +3073,21 @@ msgstr "Pokaż dostępne profile."
 
 #: src/application_ui.cpp:246
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:85
 msgid "Import Impulse File"
-msgstr ""
+msgstr "Importuj plik Impulse"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
-msgstr ""
+msgstr "Otwórz"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
-#, fuzzy
 msgid "Cancel"
-msgstr "Balans"
+msgstr "Anuluj"
 
 #: src/convolver_menu_impulses.cpp:90
 #, fuzzy
@@ -3097,57 +3095,52 @@ msgid "Impulse Response"
 msgstr "Płaska odpowiedź"
 
 #: src/convolver_menu_impulses.cpp:199
-#, fuzzy
 msgid "Load Impulse"
-msgstr "Płaska odpowiedź"
+msgstr "Wczytaj Impuls"
 
 #: src/convolver_menu_impulses.cpp:202
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "Importuj profile"
+msgstr "Usuń Impuls"
 
 #: src/convolver_ui.cpp:336 src/convolver_ui.cpp:337 src/convolver_ui.cpp:338
 msgid "Failed"
-msgstr ""
+msgstr "Niepowodzenie"
 
 #: src/convolver_ui.cpp:339
 msgid "Could Not Load The Impulse File"
-msgstr ""
+msgstr "Nie można załadować pliku Impulse"
 
 #: src/effects_box.cpp:255
 msgid "Recorders"
-msgstr ""
+msgstr "Rejestratory"
 
 #: src/effects_box.cpp:280
 msgid "Players"
-msgstr ""
+msgstr "Odtwarzacze"
 
 #: src/effects_box.cpp:303
 msgid "Plugins"
-msgstr ""
+msgstr "Wtyczki"
 
 #: src/equalizer_band_box.cpp:83
 msgid "infinity"
-msgstr ""
+msgstr "nieskończoność"
 
 #: src/equalizer_ui.cpp:362
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "Importuj profile"
+msgstr "Importuj plik profilu APO"
 
 #: src/equalizer_ui.cpp:368
-#, fuzzy
 msgid "APO Presets"
-msgstr "Profile"
+msgstr "Profile APO"
 
 #: src/pipe_manager_box.cpp:308
 msgid "Remove Autoloading Preset"
 msgstr ""
 
 #: src/plugin_name.cpp:25
-#, fuzzy
 msgid "Autogain"
-msgstr "Wzmocnienie wej."
+msgstr "Autowzmocnienie"
 
 #: src/plugin_name.cpp:26
 msgid "Bass Enhancer"
@@ -3155,7 +3148,7 @@ msgstr "Wzmacniacz basów"
 
 #: src/plugin_name.cpp:27
 msgid "Bass Loudness"
-msgstr ""
+msgstr "Głośność basu"
 
 #: src/plugin_name.cpp:29
 msgid "Convolver"
@@ -3166,18 +3159,16 @@ msgid "Crossfeed"
 msgstr "Crossfeed"
 
 #: src/plugin_name.cpp:31
-#, fuzzy
 msgid "Crystalizer"
-msgstr "Resetuj korektor"
+msgstr "Krystalizator"
 
 #: src/plugin_name.cpp:32
 msgid "Deesser"
 msgstr "De-Esser"
 
 #: src/plugin_name.cpp:33
-#, fuzzy
 msgid "Delay"
-msgstr "Przedopóźnienie"
+msgstr "Opóźnienie"
 
 #: src/plugin_name.cpp:34
 msgid "Echo Canceller"
@@ -3222,23 +3213,20 @@ msgid "Pitch"
 msgstr "Wysokość"
 
 #: src/plugin_name.cpp:45
-#, fuzzy
 msgid "Reverberation"
 msgstr "Pogłos"
 
 #: src/plugin_name.cpp:46
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Redukcja wzmocnienia"
+msgstr "Redukcja szumu"
 
 #: src/plugin_name.cpp:47
-#, fuzzy
 msgid "Stereo Tools"
-msgstr "Powiązanie stereo"
+msgstr "Narzędzia stereo"
 
 #: src/plugins_menu.cpp:145
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 #: src/presets_menu.cpp:106
 #, fuzzy
@@ -3253,7 +3241,7 @@ msgstr "Importuj profile"
 #: src/rnnoise_ui.cpp:127
 #, fuzzy
 msgid "RNNoise Models"
-msgstr "Kompresor"
+msgstr "Modele RNNoise"
 
 #~ msgid "Faster"
 #~ msgstr "Szybszy"

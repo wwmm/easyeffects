@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-12 14:22-0300\n"
-"PO-Revision-Date: 2022-02-26 00:54+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2022-03-14 23:07+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -120,50 +120,56 @@ msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
+"Aggiunta una nuova opzione che permette di selezionare un periodo di "
+"inattività per la pipeline. Quando nessun client"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"o registrando dai nostri dispositivi i filtri verranno scollegati al "
+"raggiungimento del timeout. Questo è fatto per essere sicuro"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "non sprechiamo il silenzio di elaborazione della potenza della CPU."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
 msgstr ""
-"Il modulo di Auto Guadagno adesso permette all'utente di selezionare quale "
-"tipologia di Loudness usare come riferimento per la correzione del volume."
+"Il plugin di Auto Guadagno adesso permette di selezionare quale dei tre tipi "
+"di Loudness usare per calcolare"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "mean."
-msgstr ""
+msgstr "la media geometrica."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
 msgstr ""
-"Il modulo di Auto Guadagno adesso permette all'utente di selezionare quale "
-"tipologia di Loudness usare come riferimento per la correzione del volume."
+"Il plugin di Auto Guadagno adesso permette l'impostazione della massima "
+"cronologia e non utilizza più l'istogramma `libebur128`."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
+"Ciò eviterà i casi in cui la Loudness `Integrata` rimanga fissa "
+"costantemente sullo stesso valore."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"L'icona di EasyEffects è stata aggiornata in modo da essere visibile anche "
+"nei desktop QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -173,13 +179,15 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
 msgid "This release fixes the following bug:"
-msgstr "Questa release risolve i seguenti bug:"
+msgstr "Questa release corregge i seguenti bug:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
 msgstr ""
+"L'opzione della riga di comando che restituisce lo stato di bypass globale "
+"funziona di nuovo."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
@@ -917,7 +925,7 @@ msgstr "Media geometrica (SI)"
 #: data/ui/multiband_gate.ui:183 data/ui/multiband_gate.ui:543
 #: data/ui/multiband_gate.ui:903 data/ui/multiband_gate.ui:1263
 #: data/ui/pitch.ui:75 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
-#: data/ui/stereo_tools.ui:13
+#: data/ui/stereo_tools.ui:13 data/ui/pitch.ui:29
 msgid "Bypass"
 msgstr "Bypass"
 
@@ -951,7 +959,7 @@ msgstr "Guadagno Uscita"
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
 #: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306 data/ui/reverb.ui:364
 #: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
-#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
+#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245 data/ui/pitch.ui:198
 msgid "Input"
 msgstr "Ingresso"
 
@@ -963,7 +971,7 @@ msgstr "Ingresso"
 #: data/ui/gate.ui:354 data/ui/limiter.ui:762 data/ui/loudness.ui:151
 #: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
 #: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:325 data/ui/reverb.ui:383
-#: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
+#: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571 data/ui/pitch.ui:217
 msgid "Plugin Input Gain"
 msgstr "Guadagno in Ingresso del Plugin"
 
@@ -979,7 +987,7 @@ msgstr "Guadagno in Ingresso del Plugin"
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
 #: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390 data/ui/reverb.ui:448
 #: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
-#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
+#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244 data/ui/pitch.ui:282
 msgid "Output"
 msgstr "Uscita"
 
@@ -991,7 +999,7 @@ msgstr "Uscita"
 #: data/ui/gate.ui:438 data/ui/limiter.ui:846 data/ui/loudness.ui:235
 #: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
 #: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:409 data/ui/reverb.ui:467
-#: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
+#: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655 data/ui/pitch.ui:301
 msgid "Plugin Output Gain"
 msgstr "Guadagno in Uscita del Plugin"
 
@@ -1004,7 +1012,7 @@ msgstr "Guadagno in Uscita del Plugin"
 #: data/ui/gate.ui:531 data/ui/limiter.ui:909 data/ui/loudness.ui:298
 #: data/ui/maximizer.ui:343 data/ui/multiband_compressor.ui:556
 #: data/ui/multiband_gate.ui:1791 data/ui/pitch.ui:472 data/ui/reverb.ui:530
-#: data/ui/rnnoise.ui:303 data/ui/stereo_tools.ui:718
+#: data/ui/rnnoise.ui:303 data/ui/stereo_tools.ui:718 data/ui/pitch.ui:364
 msgid "Reset"
 msgstr "Reset"
 
@@ -1016,7 +1024,7 @@ msgstr "Reset"
 #: data/ui/limiter.ui:923 data/ui/loudness.ui:312 data/ui/maximizer.ui:357
 #: data/ui/multiband_compressor.ui:570 data/ui/multiband_gate.ui:1805
 #: data/ui/pitch.ui:486 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
-#: data/ui/stereo_tools.ui:732
+#: data/ui/stereo_tools.ui:732 data/ui/pitch.ui:378
 msgid "Using"
 msgstr "Libreria"
 
@@ -1027,7 +1035,8 @@ msgstr "Dispositivo Audio"
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
 #: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
-#: data/ui/presets_menu.ui:203
+#: data/ui/presets_menu.ui:203 data/ui/factory_clients_listview.ui:43
+#: data/ui/factory_modules_listview.ui:43
 msgid "Name"
 msgstr "Nome"
 
@@ -1630,18 +1639,22 @@ msgid "Ceil Value"
 msgstr "Valore Limite Superiore"
 
 #: data/ui/factory_clients_listview.ui:72
+#: data/ui/factory_clients_listview.ui:71
 msgid "API"
 msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
+#: data/ui/factory_clients_listview.ui:99
 msgid "Access"
 msgstr "Accesso"
 
 #: data/ui/factory_modules_listview.ui:72
+#: data/ui/factory_modules_listview.ui:71
 msgid "Description"
 msgstr "Descrizione"
 
 #: data/ui/factory_rnnoise_listview.ui:24
+#: data/ui/factory_rnnoise_listview.ui:23
 msgid "Remove this model file"
 msgstr "Rimuovi questo profilo"
 
@@ -2406,89 +2419,82 @@ msgid "White Noise"
 msgstr "Rumore Bianco"
 
 #: data/ui/pitch.ui:33
-#, fuzzy
 msgid "High Speed"
-msgstr "Sopra Soglia"
+msgstr "Alta Velocità"
 
 #: data/ui/pitch.ui:34
-#, fuzzy
 msgid "High Quality"
-msgstr "Qualità"
+msgstr "Alta Qualità"
 
 #: data/ui/pitch.ui:35
 msgid "High Consistency"
-msgstr ""
+msgstr "Alta Consistenza"
 
 #: data/ui/pitch.ui:49
-#, fuzzy
 msgid "Formant"
-msgstr "Formato"
+msgstr "Formante"
 
 #: data/ui/pitch.ui:60
 msgid "Shifted"
-msgstr ""
+msgstr "Alterata"
 
 #: data/ui/pitch.ui:61
-#, fuzzy
 msgid "Preserved"
-msgstr "Profilo EasyEffects"
+msgstr "Preservata"
 
 #: data/ui/pitch.ui:98
 msgid "Transients"
-msgstr ""
+msgstr "Transienti"
 
 #: data/ui/pitch.ui:109
-#, fuzzy
 msgid "Crisp"
-msgstr "Chiarezza"
+msgstr "Netti"
 
 #: data/ui/pitch.ui:110
 msgid "Mixed"
-msgstr ""
+msgstr "Intermedi"
 
 #: data/ui/pitch.ui:111
 msgid "Smooth"
-msgstr ""
+msgstr "Tenui"
 
 #: data/ui/pitch.ui:125
-#, fuzzy
 msgid "Detector"
-msgstr "Rilevamento"
+msgstr "Rilevazione"
 
 #: data/ui/pitch.ui:136
 msgid "Compound"
-msgstr ""
+msgstr "Composto"
 
 #: data/ui/pitch.ui:137
 msgid "Percussive"
-msgstr ""
+msgstr "Percussivo"
 
 #: data/ui/pitch.ui:138
-#, fuzzy
 msgid "Soft"
-msgstr "Softclip"
+msgstr "Soft"
 
 #: data/ui/pitch.ui:152
 msgid "Phase"
-msgstr ""
+msgstr "Fase"
 
 #: data/ui/pitch.ui:163
 msgid "Laminar"
-msgstr ""
+msgstr "Laminare"
 
 #: data/ui/pitch.ui:164
 msgid "Independent"
-msgstr ""
+msgstr "Indipendente"
 
-#: data/ui/pitch.ui:189
+#: data/ui/pitch.ui:189 data/ui/pitch.ui:46
 msgid "Cents"
 msgstr "Centesimi"
 
-#: data/ui/pitch.ui:223
+#: data/ui/pitch.ui:223 data/ui/pitch.ui:80
 msgid "Semitones"
 msgstr "Semitoni"
 
-#: data/ui/pitch.ui:257
+#: data/ui/pitch.ui:257 data/ui/pitch.ui:114
 msgid "Octaves"
 msgstr "Ottave"
 
@@ -2550,7 +2556,7 @@ msgstr "Reimposta il Volume di EasyEffects all'Avvio"
 
 #: data/ui/preferences_general.ui:91
 msgid "Inactivity Timeout"
-msgstr "Latenza Inattività"
+msgstr "Tempo Inattività"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -3135,11 +3141,17 @@ msgstr "Importa File Modello"
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
-#~ msgid "Faster"
-#~ msgstr "Più Veloce"
+#: data/ui/pitch.ui:17
+msgid "Faster"
+msgstr "Più Veloce"
 
-#~ msgid "Preserve Formant"
-#~ msgstr "Preserva Formante"
+#: data/ui/pitch.ui:23
+msgid "Preserve Formant"
+msgstr "Preserva Formante"
+
+#: data/ui/pitch.ui:148
+msgid "Crispness"
+msgstr "Chiarezza"
 
 #~ msgid "Cmoy"
 #~ msgstr "Cmoy"

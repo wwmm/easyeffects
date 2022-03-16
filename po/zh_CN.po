@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-12 14:22-0300\n"
-"PO-Revision-Date: 2022-02-27 08:58+0000\n"
-"Last-Translator: Tyson Tan <tysontan@tysontan.com>\n"
+"PO-Revision-Date: 2022-03-14 23:07+0000\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -2264,21 +2264,18 @@ msgid "White Noise"
 msgstr "白噪声"
 
 #: data/ui/pitch.ui:33
-#, fuzzy
 msgid "High Speed"
-msgstr "高架"
+msgstr "高速"
 
 #: data/ui/pitch.ui:34
-#, fuzzy
 msgid "High Quality"
-msgstr "品质"
+msgstr "高品质"
 
 #: data/ui/pitch.ui:35
 msgid "High Consistency"
 msgstr ""
 
 #: data/ui/pitch.ui:49
-#, fuzzy
 msgid "Formant"
 msgstr "格式"
 
@@ -2287,9 +2284,8 @@ msgid "Shifted"
 msgstr ""
 
 #: data/ui/pitch.ui:61
-#, fuzzy
 msgid "Preserved"
-msgstr "预设"
+msgstr "保留"
 
 #: data/ui/pitch.ui:98
 msgid "Transients"
@@ -2309,9 +2305,8 @@ msgid "Smooth"
 msgstr ""
 
 #: data/ui/pitch.ui:125
-#, fuzzy
 msgid "Detector"
-msgstr "侦测"
+msgstr "侦测器"
 
 #: data/ui/pitch.ui:136
 msgid "Compound"
@@ -2322,7 +2317,6 @@ msgid "Percussive"
 msgstr ""
 
 #: data/ui/pitch.ui:138
-#, fuzzy
 msgid "Soft"
 msgstr "柔化处理"
 
