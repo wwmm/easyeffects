@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-12 14:22-0300\n"
-"PO-Revision-Date: 2022-01-11 15:04+0000\n"
+"PO-Revision-Date: 2022-03-14 23:07+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "easyeffects/main/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -31,7 +31,7 @@ msgstr "Lydeffekter for PipeWire-programmer"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -39,12 +39,17 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"EasyEffects er et avansert lydmanipuleringsverktøy. Det har tonekontroll, "
+"lydbegrenser, kompressor og etterklangsverktøy, for å nevne noe. En innebygd "
+"spektrumsanalysator komplementerer disse."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects er etterfølgeren til PulseEffects. EasyEffects støtter også "
+"Pipewire sin lydtjener. PulseAudio-brukere bør bruke PulseEffects istedenfor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -76,8 +81,9 @@ msgid "The bass enhancer page showing audio controls"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
+#, fuzzy
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Convolver-siden viser lydkontroller"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -92,23 +98,29 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid "This release adds the following features:"
-msgstr ""
+msgstr "Denne utgaven bringer følgende funksjoner:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
+#, fuzzy
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
+"Dette er en ny innstilling som lar brukeren velge tidsavbrudd for "
+"inaktivitet. Når ingen klient spiller"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
+#, fuzzy
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"til eller tar opp fra enhetene vil filterne avlenkes etter at "
+"tidsavbruddsperioden er nådd. Dette gjøres for å ikke"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "kaste bort prosessorkraft på å behandle stillhet."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
@@ -146,7 +158,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
 msgid "This release fixes the following bug:"
-msgstr ""
+msgstr "Denne utgaven fikser følgende feil:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
@@ -158,7 +170,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
 msgid "This release adds the following feature:"
-msgstr ""
+msgstr "Denne utgaven fikser følgende funksjon:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
@@ -175,7 +187,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid "Support for the next PipeWire release `0.3.44`"
-msgstr ""
+msgstr "Støtte for neste PipeWire-utgave `0.3.44`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
 msgid ""
@@ -297,7 +309,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
 msgid "The `tbb` library is a new dependency"
-msgstr ""
+msgstr "`tbb`-biblioteket er en ny avhengighet"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:129
 msgid ""
@@ -412,11 +424,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "Updated Chinese translation."
-msgstr ""
+msgstr "Oppdatert kinesisk oversettelse."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid "Updated Italian translation."
-msgstr ""
+msgstr "Oppdatert italiensk oversettelse."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid "Added support for the compressor parameter `Boost Amount`"
@@ -584,11 +596,12 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
 msgid "gtkmm3 was replaced by gtkmm4"
-msgstr ""
+msgstr "gtkmm3 erstattes av gtkmm4"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
+#, fuzzy
 msgid "Gstreamer was replaced by native PipeWire filters."
-msgstr ""
+msgstr "GStreamer erstattet av systemspesifikke PipeWire-filtre."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
 msgid ""
@@ -881,7 +894,7 @@ msgstr "Profil"
 
 #: data/ui/autoload_row.ui:86
 msgid "Preset"
-msgstr ""
+msgstr "Forhåndsinnstilling"
 
 #: data/ui/autoload_row.ui:110 src/plugins_box.cpp:478
 msgid "Remove"
@@ -911,7 +924,7 @@ msgstr "Mengde"
 #: data/ui/bass_enhancer.ui:144 data/ui/bass_enhancer.ui:426
 #: data/ui/exciter.ui:144 data/ui/exciter.ui:426
 msgid "Harmonics"
-msgstr ""
+msgstr "Overtoner"
 
 #: data/ui/bass_enhancer.ui:179 data/ui/exciter.ui:179
 msgid "Scope"
@@ -1110,8 +1123,9 @@ msgid "Feed-forward"
 msgstr ""
 
 #: data/ui/compressor.ui:549
+#, fuzzy
 msgid "Feed-back"
-msgstr ""
+msgstr "Respons"
 
 #: data/ui/compressor.ui:550
 msgid "External"
@@ -1243,11 +1257,11 @@ msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "Første kjerne"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "Andre kjerne"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
@@ -1255,7 +1269,7 @@ msgstr "Utdata-filnavn"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "Kombinert kjernenavn"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
@@ -1362,7 +1376,7 @@ msgstr "Rammestørrelse"
 
 #: data/ui/echo_canceller.ui:63
 msgid "Filter Length"
-msgstr ""
+msgstr "Filterlengde"
 
 #: data/ui/effects_box.ui:114
 msgid "Blocklist"
@@ -1398,7 +1412,7 @@ msgstr ""
 
 #: data/ui/equalizer.ui:164
 msgid "Calculate Frequencies"
-msgstr ""
+msgstr "Beregn frekvenser"
 
 #: data/ui/equalizer.ui:172
 msgid "Load APO Preset"
@@ -1492,51 +1506,51 @@ msgstr "Fjern denne modellfilen"
 
 #: data/ui/filter.ui:25
 msgid "12dB/oct Lowpass"
-msgstr ""
+msgstr "12dB/okt lavpass"
 
 #: data/ui/filter.ui:26
 msgid "24dB/oct Lowpass"
-msgstr ""
+msgstr "24dB/okt lavpass"
 
 #: data/ui/filter.ui:27
 msgid "36dB/oct Lowpass"
-msgstr ""
+msgstr "36dB/okt lavpass"
 
 #: data/ui/filter.ui:28
 msgid "12dB/oct Highpass"
-msgstr ""
+msgstr "12dB/okt høypass"
 
 #: data/ui/filter.ui:29
 msgid "24dB/oct Highpass"
-msgstr ""
+msgstr "24dB/okt høypass"
 
 #: data/ui/filter.ui:30
 msgid "36dB/oct Highpass"
-msgstr ""
+msgstr "36dB/okt høypass"
 
 #: data/ui/filter.ui:31
 msgid "6dB/oct Bandpass"
-msgstr ""
+msgstr "6dB/okt båndpass"
 
 #: data/ui/filter.ui:32
 msgid "12dB/oct Bandpass"
-msgstr ""
+msgstr "12dB/okt båndpass"
 
 #: data/ui/filter.ui:33
 msgid "18dB/oct Bandpass"
-msgstr ""
+msgstr "18dB/okt båndpass"
 
 #: data/ui/filter.ui:34
 msgid "6dB/oct Bandreject"
-msgstr ""
+msgstr "6dB/oct båndsperre"
 
 #: data/ui/filter.ui:35
 msgid "12dB/oct Bandreject"
-msgstr ""
+msgstr "12dB/oct båndsperre"
 
 #: data/ui/filter.ui:36
 msgid "18dB/oct Bandreject"
-msgstr ""
+msgstr "18dB/oct båndsperre"
 
 #: data/ui/filter.ui:123
 msgid "Inertia"
@@ -1546,7 +1560,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1149
 #: data/ui/multiband_gate.ui:1509
 msgid "Max Reduction"
-msgstr ""
+msgstr "Maks. reduksjon"
 
 #: data/ui/gate.ui:85 data/ui/limiter.ui:413
 msgid "Stereo Link"
@@ -1776,7 +1790,7 @@ msgstr ""
 
 #: data/ui/loudness.ui:89
 msgid "Output Volume"
-msgstr ""
+msgstr "Utgangslydstyrke"
 
 #: data/ui/maximizer.ui:62
 msgid "Ceiling"
@@ -2499,7 +2513,7 @@ msgstr "Opprett forhåndsinnstilling"
 
 #: data/ui/presets_menu.ui:76 data/ui/presets_menu.ui:229
 msgid "Import Presets"
-msgstr ""
+msgstr "Importer forhåndsinnstillinger"
 
 #: data/ui/presets_menu.ui:94
 msgid "Search Output Preset"
@@ -2511,11 +2525,11 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:181
 msgid "Microphone"
-msgstr ""
+msgstr "Mikrofon"
 
 #: data/ui/presets_menu.ui:207
 msgid "New Input Preset Name"
-msgstr ""
+msgstr "Nytt inngangforhåndsinnstillingsnavn"
 
 #: data/ui/presets_menu.ui:247
 msgid "Search Input Preset"
@@ -2523,27 +2537,27 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:308
 msgid "Input Presets List"
-msgstr ""
+msgstr "Inngangforhåndsinnstillingsliste"
 
 #: data/ui/reverb.ui:43
 msgid "High Frequency Damping"
-msgstr ""
+msgstr "Høyfrekvensdemping"
 
 #: data/ui/reverb.ui:75
 msgid "Room Size"
-msgstr ""
+msgstr "Romstørrelse"
 
 #: data/ui/reverb.ui:83
 msgid "Small"
-msgstr ""
+msgstr "Lite"
 
 #: data/ui/reverb.ui:84
 msgid "Medium"
-msgstr ""
+msgstr "Middels"
 
 #: data/ui/reverb.ui:85
 msgid "Large"
-msgstr ""
+msgstr "Stort"
 
 #: data/ui/reverb.ui:86
 msgid "Tunnel"
@@ -2555,7 +2569,7 @@ msgstr ""
 
 #: data/ui/reverb.ui:88
 msgid "Experimental"
-msgstr ""
+msgstr "Eksperimentelt"
 
 #: data/ui/reverb.ui:105
 msgid "Diffusion"
@@ -2607,11 +2621,11 @@ msgstr ""
 
 #: data/ui/reverb.ui:605
 msgid "Large Empty Hall"
-msgstr ""
+msgstr "Tor tom hall"
 
 #: data/ui/reverb.ui:618
 msgid "Disco"
-msgstr ""
+msgstr "Diskotek"
 
 #: data/ui/reverb.ui:625
 msgid "Large Occupied Hall"
@@ -2619,11 +2633,11 @@ msgstr ""
 
 #: data/ui/rnnoise.ui:20
 msgid "Import Model"
-msgstr ""
+msgstr "Importer modell"
 
 #: data/ui/rnnoise.ui:35
 msgid "Models"
-msgstr ""
+msgstr "Modeller"
 
 #: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
 msgid "Standard Model"
@@ -2635,7 +2649,7 @@ msgstr ""
 
 #: data/ui/rnnoise.ui:100
 msgid "Active Model"
-msgstr ""
+msgstr "Aktiv modell"
 
 #: data/ui/rnnoise.ui:106
 msgid "Standard RNNoise Model"
@@ -2771,11 +2785,11 @@ msgstr ""
 
 #: src/app_info.cpp:76
 msgid "error"
-msgstr ""
+msgstr "feil"
 
 #: src/app_info.cpp:78
 msgid "unknown"
-msgstr ""
+msgstr "ukjent"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
@@ -2802,8 +2816,9 @@ msgid "Reset EasyEffects."
 msgstr ""
 
 #: src/application.cpp:520
+#, fuzzy
 msgid "Hide the Window."
-msgstr ""
+msgstr "Skjul vinduet."
 
 #: src/application.cpp:523
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -2811,7 +2826,7 @@ msgstr ""
 
 #: src/application.cpp:526
 msgid "Show available presets."
-msgstr ""
+msgstr "Vis tilgjengelige forhåndsinnstillinger."
 
 #: src/application_ui.cpp:246
 msgid "PipeWire"
@@ -2824,7 +2839,7 @@ msgstr ""
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
-msgstr ""
+msgstr "Åpne"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
@@ -2853,19 +2868,19 @@ msgstr ""
 
 #: src/effects_box.cpp:255
 msgid "Recorders"
-msgstr ""
+msgstr "Opptakere"
 
 #: src/effects_box.cpp:280
 msgid "Players"
-msgstr ""
+msgstr "Avspillere"
 
 #: src/effects_box.cpp:303
 msgid "Plugins"
-msgstr ""
+msgstr "Programtillegg"
 
 #: src/equalizer_band_box.cpp:83
 msgid "infinity"
-msgstr ""
+msgstr "uendelig"
 
 #: src/equalizer_ui.cpp:362
 msgid "Import APO Preset File"
@@ -2893,8 +2908,9 @@ msgid "Bass Loudness"
 msgstr ""
 
 #: src/plugin_name.cpp:29
+#, fuzzy
 msgid "Convolver"
-msgstr ""
+msgstr "Convolver"
 
 #: src/plugin_name.cpp:30
 msgid "Crossfeed"
