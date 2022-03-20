@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-12 14:22-0300\n"
-"PO-Revision-Date: 2022-02-26 00:54+0000\n"
+"PO-Revision-Date: 2022-03-20 02:57+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -112,51 +112,49 @@ msgstr "このリリースでは、以下の機能が追加されています:"
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
-msgstr ""
+msgstr "パイプラインの非アクティブ時のタイムアウトを選択できる設定が追加されました。"
+"クライアントが再生していないとき"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
-msgstr ""
+msgstr "の接続や録画は、タイムアウトに達するとフィルタリングが解除されます。これは"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "CPUのパワーを無駄にせず、無音で処理することができます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
-msgstr ""
-"オートゲインプラグインで、音量補正の基準となるラウドネスを選択できるようにな"
-"りました。"
+msgstr "オートゲインプラグインでは、3つのラウドネスのうち、どのラウドネスを使用して幾"
+"何学的な計算を行うかを選択できるようになりました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "mean."
-msgstr ""
+msgstr "。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
-msgstr ""
-"オートゲインプラグインで、音量補正の基準となるラウドネスを選択できるようにな"
-"りました。"
+msgstr "オートゲインプラグインに最大履歴を設定できるようになり、libebur128 "
+"ヒストグラムモードは使用されなくなりました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
-msgstr ""
+msgstr "これにより、Integrated "
+"ラウドネスが永遠に同じ値で止まってしまうようなケースを避けることができます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
-msgstr ""
+msgstr "EasyEffects のアイコンは、QT デスクトップで見えるように更新されました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -172,7 +170,8 @@ msgstr "このリリースでは、以下のバグが修正されています:"
 msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
-msgstr ""
+msgstr "グローバルバイパスの状態を返すコマンドラインオプションが再び動作するようにな"
+"りました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
@@ -2391,79 +2390,72 @@ msgid "White Noise"
 msgstr "ホワイトノイズ"
 
 #: data/ui/pitch.ui:33
-#, fuzzy
 msgid "High Speed"
-msgstr "ハイシェルフ"
+msgstr "高速"
 
 #: data/ui/pitch.ui:34
-#, fuzzy
 msgid "High Quality"
-msgstr "品質"
+msgstr "高品質"
 
 #: data/ui/pitch.ui:35
 msgid "High Consistency"
-msgstr ""
+msgstr "高い一貫性"
 
 #: data/ui/pitch.ui:49
-#, fuzzy
 msgid "Formant"
-msgstr "フォーマット"
+msgstr "フォルマント"
 
 #: data/ui/pitch.ui:60
 msgid "Shifted"
-msgstr ""
+msgstr "シフト"
 
 #: data/ui/pitch.ui:61
-#, fuzzy
 msgid "Preserved"
-msgstr "プリセット"
+msgstr "保存済み"
 
 #: data/ui/pitch.ui:98
 msgid "Transients"
-msgstr ""
+msgstr "トランジェント"
 
 #: data/ui/pitch.ui:109
-#, fuzzy
 msgid "Crisp"
-msgstr "鮮明さ"
+msgstr "鮮明"
 
 #: data/ui/pitch.ui:110
 msgid "Mixed"
-msgstr ""
+msgstr "ミックス"
 
 #: data/ui/pitch.ui:111
 msgid "Smooth"
-msgstr ""
+msgstr "スムース"
 
 #: data/ui/pitch.ui:125
-#, fuzzy
 msgid "Detector"
-msgstr "検出"
+msgstr "ディテクター"
 
 #: data/ui/pitch.ui:136
 msgid "Compound"
-msgstr ""
+msgstr "化合物"
 
 #: data/ui/pitch.ui:137
 msgid "Percussive"
-msgstr ""
+msgstr "パーカッシブ"
 
 #: data/ui/pitch.ui:138
-#, fuzzy
 msgid "Soft"
-msgstr "ソフトクリップ"
+msgstr "ソフト"
 
 #: data/ui/pitch.ui:152
 msgid "Phase"
-msgstr ""
+msgstr "フェーズ"
 
 #: data/ui/pitch.ui:163
 msgid "Laminar"
-msgstr ""
+msgstr "ラミナー"
 
 #: data/ui/pitch.ui:164
 msgid "Independent"
-msgstr ""
+msgstr "独立"
 
 #: data/ui/pitch.ui:189
 msgid "Cents"
