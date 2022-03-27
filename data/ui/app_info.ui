@@ -214,6 +214,7 @@
 
                                 <child>
                                     <object class="GtkSpinButton" id="volume">
+                                        <property name="sensitive" bind-source="mute" bind-property="active" bind-flags="sync-create|invert-boolean" />
                                         <property name="valign">center</property>
                                         <property name="width-chars">4</property>
                                         <property name="adjustment">

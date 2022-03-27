@@ -195,8 +195,6 @@ void on_mute(GtkToggleButton* btn, AppInfo* self) {
     gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-high-symbolic");
   }
 
-  gtk_widget_set_sensitive(GTK_WIDGET(self->volume), !state);
-
   if (self->data->info.proxy != nullptr) {
     PipeManager::set_node_mute(self->data->info.proxy, state);
   }
@@ -253,8 +251,6 @@ void update(AppInfo* self, const NodeInfo node_info) {
   // updating the volume
 
   g_signal_handler_block(self->volume, self->data->handler_id_volume);
-
-  gtk_widget_set_sensitive(GTK_WIDGET(self->volume), !node_info.mute);
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
     gtk_spin_button_set_value(self->volume, 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
