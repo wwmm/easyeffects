@@ -41,15 +41,17 @@ struct Data {
 struct _AppInfo {
   GtkBox parent_instance;
 
-  GtkCheckButton* blocklist;
+  GtkSwitch* enable;
 
   GtkImage* app_icon;
 
-  GtkLabel *app_name, *media_name, *format, *rate, *channels, *latency, *state;
+  GtkLabel *app_name, *media_name, *format, *rate, *channels, *latency, *state, *ee_state;
+
+  GtkToggleButton* mute;
 
   GtkSpinButton* volume;
 
-  GtkToggleButton *enable, *mute;
+  GtkCheckButton* blocklist;
 
   GtkIconTheme* icon_theme;
 
@@ -63,18 +65,22 @@ G_DEFINE_TYPE(AppInfo, app_info, GTK_TYPE_BOX)
 auto node_state_to_char_pointer(const pw_node_state& state) -> const char* {
   switch (state) {
     case PW_NODE_STATE_RUNNING:
-      return _("running");
+      return _("Running");
     case PW_NODE_STATE_SUSPENDED:
-      return _("suspended");
+      return _("Suspended");
     case PW_NODE_STATE_IDLE:
-      return _("idle");
+      return _("Idle");
     case PW_NODE_STATE_CREATING:
-      return _("creating");
+      return _("Creating");
     case PW_NODE_STATE_ERROR:
-      return _("error");
+      return _("Error");
     default:
-      return _("unknown");
+      return _("Unknown");
   }
+}
+
+auto ee_state_to_char_pointer(const bool& enable, const bool& blocklist) -> const char* {
+  return (blocklist) ? _("excluded") : ((enable) ? _("enabled") : _("disabled"));
 }
 
 auto app_is_blocklisted(AppInfo* self, const std::string& name) -> bool {
@@ -155,15 +161,17 @@ void disconnect_stream(AppInfo* self, const uint& id, const std::string& media_c
   }
 }
 
-void on_enable(GtkToggleButton* btn, AppInfo* self) {
-  if (!app_is_blocklisted(self, self->data->info.name)) {
-    const auto state = gtk_toggle_button_get_active(btn);
+void on_enable(GtkSwitch* btn, gboolean is_enabled, AppInfo* self) {
+  auto is_blocklisted = app_is_blocklisted(self, self->data->info.name);
 
-    (state) ? connect_stream(self, self->data->info.id, self->data->info.media_class)
-            : disconnect_stream(self, self->data->info.id, self->data->info.media_class);
+  if (!is_blocklisted) {
+    (is_enabled) ? connect_stream(self, self->data->info.id, self->data->info.media_class)
+                 : disconnect_stream(self, self->data->info.id, self->data->info.media_class);
 
-    self->data->enabled_app_list->insert_or_assign(self->data->info.id, state);
+    self->data->enabled_app_list->insert_or_assign(self->data->info.id, is_enabled);
   }
+
+  gtk_label_set_text(self->ee_state, ee_state_to_char_pointer(is_enabled, is_blocklisted));
 }
 
 void on_volume_changed(GtkSpinButton* sbtn, AppInfo* self) {
@@ -195,7 +203,7 @@ void on_mute(GtkToggleButton* btn, AppInfo* self) {
 }
 
 void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
-  const auto state = gtk_check_button_get_active(btn);
+  const auto is_blocklisted = gtk_check_button_get_active(btn);
 
   std::string app_tag = self->data->info.application_id;
 
@@ -203,8 +211,8 @@ void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
     app_tag = self->data->info.name;
   }
 
-  if (state) {
-    self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_toggle_button_get_active(self->enable));
+  if (is_blocklisted) {
+    self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_switch_get_active(self->enable));
 
     util::add_new_blocklist_entry(self->settings, app_tag, log_tag);
   } else {
@@ -236,7 +244,9 @@ void update(AppInfo* self, const NodeInfo node_info) {
   const auto is_blocklisted = app_is_blocklisted(self, node_info.name);
 
   gtk_widget_set_sensitive(GTK_WIDGET(self->enable), is_enabled || !is_blocklisted);
-  gtk_toggle_button_set_active(self->enable, is_enabled);
+  gtk_switch_set_active(self->enable, is_enabled);
+
+  gtk_label_set_text(self->ee_state, ee_state_to_char_pointer(is_enabled, is_blocklisted));
 
   g_signal_handler_unblock(self->enable, self->data->handler_id_enable);
 
@@ -354,6 +364,7 @@ void app_info_class_init(AppInfoClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, AppInfo, channels);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, latency);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, state);
+  gtk_widget_class_bind_template_child(widget_class, AppInfo, ee_state);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, volume);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, mute);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, blocklist);
@@ -366,7 +377,7 @@ void app_info_init(AppInfo* self) {
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  self->data->handler_id_enable = g_signal_connect(self->enable, "toggled", G_CALLBACK(on_enable), self);
+  self->data->handler_id_enable = g_signal_connect(self->enable, "state-set", G_CALLBACK(on_enable), self);
   self->data->handler_id_volume = g_signal_connect(self->volume, "value-changed", G_CALLBACK(on_volume_changed), self);
   self->data->handler_id_mute = g_signal_connect(self->mute, "toggled", G_CALLBACK(on_mute), self);
   self->data->handler_id_blocklist = g_signal_connect(self->blocklist, "toggled", G_CALLBACK(on_blocklist), self);
