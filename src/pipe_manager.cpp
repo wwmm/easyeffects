@@ -1342,7 +1342,7 @@ PipeManager::PipeManager() {
   util::debug(log_tag + "compiled with PipeWire: " + header_version);
   util::debug(log_tag + "linked to PipeWire: " + library_version);
 
-  thread_loop = pw_thread_loop_new("pe-pipewire-thread", nullptr);
+  thread_loop = pw_thread_loop_new("ee-pipewire-thread", nullptr);
 
   if (thread_loop == nullptr) {
     util::error(log_tag + "could not create PipeWire loop");
