@@ -41,17 +41,15 @@ struct Data {
 struct _AppInfo {
   GtkBox parent_instance;
 
-  GtkSwitch* enable;
+  GtkCheckButton* blocklist;
 
   GtkImage* app_icon;
 
   GtkLabel *app_name, *media_name, *format, *rate, *channels, *latency, *state;
 
-  GtkScale* volume;
+  GtkSpinButton* volume;
 
-  GtkToggleButton* mute;
-
-  GtkCheckButton* blocklist;
+  GtkToggleButton *enable, *mute;
 
   GtkIconTheme* icon_theme;
 
@@ -157,8 +155,10 @@ void disconnect_stream(AppInfo* self, const uint& id, const std::string& media_c
   }
 }
 
-void on_enable(GtkSwitch* btn, gboolean state, AppInfo* self) {
+void on_enable(GtkToggleButton* btn, AppInfo* self) {
   if (!app_is_blocklisted(self, self->data->info.name)) {
+    const auto state = gtk_toggle_button_get_active(btn);
+
     (state) ? connect_stream(self, self->data->info.id, self->data->info.media_class)
             : disconnect_stream(self, self->data->info.id, self->data->info.media_class);
 
@@ -166,8 +166,8 @@ void on_enable(GtkSwitch* btn, gboolean state, AppInfo* self) {
   }
 }
 
-void on_volume_changed(GtkRange* scale, AppInfo* self) {
-  auto vol = static_cast<float>(gtk_range_get_value(GTK_RANGE(scale))) / 100.0F;
+void on_volume_changed(GtkSpinButton* sbtn, AppInfo* self) {
+  auto vol = static_cast<float>(gtk_spin_button_get_value(sbtn)) / 100.0F;
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
     vol = vol * vol * vol;
@@ -187,6 +187,8 @@ void on_mute(GtkToggleButton* btn, AppInfo* self) {
     gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-high-symbolic");
   }
 
+  gtk_widget_set_sensitive(GTK_WIDGET(self->volume), !state);
+
   if (self->data->info.proxy != nullptr) {
     PipeManager::set_node_mute(self->data->info.proxy, state);
   }
@@ -202,7 +204,7 @@ void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
   }
 
   if (state) {
-    self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_switch_get_active(self->enable));
+    self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_toggle_button_get_active(self->enable));
 
     util::add_new_blocklist_entry(self->settings, app_tag, log_tag);
   } else {
@@ -226,7 +228,7 @@ void update(AppInfo* self, const NodeInfo node_info) {
   gtk_label_set_text(self->latency, fmt::format("{0:.0f} ms", 1000.0F * node_info.latency).c_str());
   gtk_label_set_text(self->state, node_state_to_char_pointer(node_info.state));
 
-  // updating the enable switch
+  // updating the enable toggle button
 
   g_signal_handler_block(self->enable, self->data->handler_id_enable);
 
@@ -234,18 +236,20 @@ void update(AppInfo* self, const NodeInfo node_info) {
   const auto is_blocklisted = app_is_blocklisted(self, node_info.name);
 
   gtk_widget_set_sensitive(GTK_WIDGET(self->enable), is_enabled || !is_blocklisted);
-  gtk_switch_set_active(self->enable, is_enabled);
+  gtk_toggle_button_set_active(self->enable, is_enabled);
 
   g_signal_handler_unblock(self->enable, self->data->handler_id_enable);
 
-  // updating the volume scale
+  // updating the volume
 
   g_signal_handler_block(self->volume, self->data->handler_id_volume);
 
+  gtk_widget_set_sensitive(GTK_WIDGET(self->volume), !node_info.mute);
+
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
-    gtk_range_set_value(GTK_RANGE(self->volume), 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
+    gtk_spin_button_set_value(self->volume, 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
   } else {
-    gtk_range_set_value(GTK_RANGE(self->volume), 100.0 * static_cast<double>(node_info.volume));
+    gtk_spin_button_set_value(self->volume, 100.0 * static_cast<double>(node_info.volume));
   }
 
   g_signal_handler_unblock(self->volume, self->data->handler_id_volume);
@@ -362,7 +366,7 @@ void app_info_init(AppInfo* self) {
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  self->data->handler_id_enable = g_signal_connect(self->enable, "state-set", G_CALLBACK(on_enable), self);
+  self->data->handler_id_enable = g_signal_connect(self->enable, "toggled", G_CALLBACK(on_enable), self);
   self->data->handler_id_volume = g_signal_connect(self->volume, "value-changed", G_CALLBACK(on_volume_changed), self);
   self->data->handler_id_mute = g_signal_connect(self->mute, "toggled", G_CALLBACK(on_mute), self);
   self->data->handler_id_blocklist = g_signal_connect(self->blocklist, "toggled", G_CALLBACK(on_blocklist), self);

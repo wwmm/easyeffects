@@ -2,246 +2,224 @@
 <interface domain="easyeffects">
     <template class="AppInfo" parent="GtkBox">
         <property name="hexpand">1</property>
-        <property name="vexpand">1</property>
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
-        <property name="spacing">12</property>
-        <property name="orientation">vertical</property>
         <child>
             <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
-                <property name="spacing">6</property>
+                <property name="spacing">24</property>
+                <!-- Enable/Exclude command section -->
                 <child>
-                    <object class="GtkSwitch" id="enable">
+                    <object class="GtkBox">
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="hexpand">0</property>
-                        <property name="vexpand">0</property>
-                        <accessibility>
-                            <relation name="labelled-by">app_name</relation>
-                        </accessibility>
+                        <property name="spacing">12</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                            <object class="GtkToggleButton" id="enable">
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Enable</property>
+                                <accessibility>
+                                    <relation name="labelled-by">app_name</relation>
+                                </accessibility>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkCheckButton" id="blocklist">
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Exclude</property>
+                                <accessibility>
+                                    <relation name="labelled-by">app_name</relation>
+                                </accessibility>
+                            </object>
+                        </child>
                     </object>
                 </child>
 
-                <child>
-                    <object class="GtkImage" id="app_icon">
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="icon_size">large</property>
-                    </object>
-                </child>
-
+                <!-- Application info section -->
                 <child>
                     <object class="GtkBox">
                         <property name="hexpand">1</property>
-                        <property name="vexpand">1</property>
-                        <property name="halign">start</property>
+                        <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel" id="app_name">
+                            <object class="GtkBox">
                                 <property name="halign">start</property>
-                                <property name="valign">center</property>
-                                <property name="label">App</property>
+                                <property name="spacing">6</property>
+
+                                <!-- Application icon -->
+                                <child>
+                                    <object class="GtkImage" id="app_icon">
+                                        <property name="halign">start</property>
+                                        <property name="valign">center</property>
+                                        <property name="icon_size">large</property>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="hexpand">1</property>
+                                        <property name="halign">start</property>
+                                        <property name="spacing">6</property>
+                                        <property name="orientation">vertical</property>
+                                        <!-- Application name and state -->
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">start</property>
+                                                <property name="spacing">3</property>
+                                                <child>
+                                                    <object class="GtkLabel" id="app_name">
+                                                        <property name="halign">start</property>
+                                                        <property name="wrap">1</property>
+                                                        <property name="wrap-mode">PANGO_WRAP_WORD_CHAR</property>
+                                                        <property name="label">App</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="state">
+                                                        <property name="label">state</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <!-- Application description -->
+                                        <child>
+                                            <object class="GtkLabel" id="media_name">
+                                                <property name="halign">start</property>
+                                                <property name="wrap">1</property>
+                                                <property name="wrap-mode">PANGO_WRAP_WORD_CHAR</property>
+                                                <property name="label">Description</property>
+                                                <style>
+                                                    <class name="dim-label" />
+                                                </style>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
                             </object>
                         </child>
+
+                        <!-- Application stream data -->
                         <child>
-                            <object class="GtkLabel" id="media_name">
+                            <object class="GtkBox">
                                 <property name="halign">start</property>
-                                <property name="valign">center</property>
-                                <property name="label">Description</property>
-                                <style>
-                                    <class name="dim-label" />
-                                </style>
+                                <property name="spacing">3</property>
+                                <child>
+                                    <object class="GtkLabel" id="format">
+                                        <property name="halign">end</property>
+                                        <property name="label">f</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="margin-end">5</property>
+                                        <property name="label" translatable="yes">format</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel" id="rate">
+                                        <property name="halign">end</property>
+                                        <property name="label">r</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="margin-end">5</property>
+                                        <property name="label" translatable="yes">rate</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel" id="channels">
+                                        <property name="halign">end</property>
+                                        <property name="label">c</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="margin-end">5</property>
+                                        <property name="label" translatable="yes">channels</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel" id="latency">
+                                        <property name="halign">end</property>
+                                        <property name="label">l</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">latency</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
+                                    </object>
+                                </child>
                             </object>
                         </child>
                     </object>
                 </child>
 
+                <!-- Volume section -->
                 <child>
-                    <object class="GtkCheckButton" id="blocklist">
+                    <object class="GtkBox">
                         <property name="halign">end</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Add to Blocklist</property>
-                        <accessibility>
-                            <relation name="labelled-by">app_name</relation>
-                        </accessibility>
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkGrid">
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="row-spacing">6</property>
-                <property name="column-spacing">48</property>
-                <property name="accessible-role">presentation</property>
-                <child>
-                    <object class="GtkLabel">
-                        <property name="label" translatable="yes">Format</property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkLabel" id="format">
-                        <property name="label">f</property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="label" translatable="yes">Rate</property>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkLabel" id="rate">
-                        <property name="label">r</property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="label" translatable="yes">Channels</property>
-                        <layout>
-                            <property name="column">2</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkLabel" id="channels">
-                        <property name="label">c</property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                        <layout>
-                            <property name="column">2</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="label" translatable="yes">Latency</property>
-                        <layout>
-                            <property name="column">3</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkLabel" id="latency">
-                        <property name="label">l</property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                        <layout>
-                            <property name="column">3</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="label" translatable="yes">State</property>
-                        <layout>
-                            <property name="column">4</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkLabel" id="state">
-                        <property name="label">s</property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                        <layout>
-                            <property name="column">4</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
-                <property name="spacing">6</property>
-                <child>
-                    <object class="GtkToggleButton" id="mute">
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="icon_name">audio-volume-high-symbolic</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Mute Application</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkScale" id="volume">
-                        <property name="hexpand">1</property>
-                        <property name="valign">center</property>
-                        <property name="sensitive" bind-source="mute" bind-property="active" bind-flags="sync-create|invert-boolean" />
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">0</property>
-                                <property name="upper">100</property>
-                                <property name="step-increment">1</property>
-                                <property name="page-increment">10</property>
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkToggleButton" id="mute">
+                                <property name="valign">center</property>
+                                <property name="icon_name">audio-volume-high-symbolic</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Mute Application</property>
+                                </accessibility>
                             </object>
-                        </property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">bottom</property>
-                        <marks>
-                            <mark value="0" position="bottom"></mark>
-                            <mark value="10" position="bottom"></mark>
-                            <mark value="20" position="bottom"></mark>
-                            <mark value="30" position="bottom"></mark>
-                            <mark value="40" position="bottom"></mark>
-                            <mark value="50" position="bottom"></mark>
-                            <mark value="60" position="bottom"></mark>
-                            <mark value="70" position="bottom"></mark>
-                            <mark value="80" position="bottom"></mark>
-                            <mark value="90" position="bottom"></mark>
-                            <mark value="100" position="bottom"></mark>
-                        </marks>
-                        <accessibility>
-                            <property name="label" translatable="yes">Application Volume</property>
-                        </accessibility>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="volume">
+                                <property name="valign">center</property>
+                                <property name="width-chars">4</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">0</property>
+                                        <property name="upper">100</property>
+                                        <property name="value">100</property>
+                                        <property name="step-increment">1</property>
+                                        <property name="page-increment">10</property>
+                                    </object>
+                                </property>
+                                <property name="digits">0</property>
+                                <property name="update-policy">if-valid</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Application Volume</property>
+                                </accessibility>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>
