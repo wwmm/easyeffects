@@ -1,0 +1,314 @@
+From bc5285f225db0c1de2111a59c0a547c1fed07f50 Mon Sep 17 00:00:00 2001
+From: Vincent Chernin <38842733+vchernin@users.noreply.github.com>
+Date: Mon, 27 Dec 2021 23:53:53 -0800
+Subject: [PATCH] Background portal support for autostart and shutdown on window close switches
+
+oth the enable autostart and shutdown on window close buttons correctly use the portal.
+Based on the original patch from Digitalone1.
+To improve:
+	A way to not overly ask in case someone resets EasyEffects' permissions. Right now if you reset permissions, then disable something like autostart it will still ask for the portal. Unfortuantely this is something that would require the portal sharing more information than it should, so this particular limitation will probably stay.
+	Figure out previously reported bug where despite the portal access being previously given, EasyEffects gets killed by xdg-desktop-portal. In other words, it's in a state where it should have background permission but somehow doesn't. As of 2022-01-03 this one is (probably) as sanely avoided as we can with the portal.
+	Properly finalize and don't rely on g_settings_unbind
+---
+ data/schemas/com.github.wwmm.easyeffects.gschema.xml |   7 +++++--
+ data/ui/preferences_general.ui                       |   3 +--
+ include/preferences_general.hpp                      |   6 ++++--
+ src/meson.build                                      |   1 +
+ src/preferences_general.cpp                          | 153 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--------
+ 5 files changed, 156 insertions(+), 14 deletions(-)
+
+diff --git a/data/schemas/com.github.wwmm.easyeffects.gschema.xml b/data/schemas/com.github.wwmm.easyeffects.gschema.xml
+index 48ed8f0..1461890 100644
+--- a/data/schemas/com.github.wwmm.easyeffects.gschema.xml
++++ b/data/schemas/com.github.wwmm.easyeffects.gschema.xml
+@@ -7,6 +7,9 @@
+         <key name="process-all-inputs" type="b">
+             <default>false</default>
+         </key>
++        <key name="enable-autostart" type="b">
++            <default>false</default>
++        </key>
+         <key name="use-dark-theme" type="b">
+             <default>false</default>
+         </key>
+@@ -32,7 +35,7 @@
+             <default>false</default>
+         </key>
+         <key name="shutdown-on-window-close" type="b">
+-            <default>false</default>
++            <default>true</default>
+         </key>
+         <key name="use-cubic-volumes" type="b">
+             <default>false</default>
+@@ -48,4 +51,4 @@
+             <default>10</default>
+         </key>
+     </schema>
+-</schemalist>
+\ No newline at end of file
++</schemalist>
+diff --git a/data/ui/preferences_general.ui b/data/ui/preferences_general.ui
+index f158005..a66ca01 100644
+--- a/data/ui/preferences_general.ui
++++ b/data/ui/preferences_general.ui
+@@ -15,7 +15,6 @@
+                         <child>
+                             <object class="GtkSwitch" id="enable_autostart">
+                                 <property name="valign">center</property>
+-                                <signal name="state-set" handler="on_enable_autostart" />
+                             </object>
+                         </child>
+                     </object>
+@@ -139,4 +138,4 @@
+             </object>
+         </child>
+     </template>
+-</interface>
+\ No newline at end of file
++</interface>
+diff --git a/include/preferences_general.hpp b/include/preferences_general.hpp
+index 76c260a..a717663 100644
+--- a/include/preferences_general.hpp
++++ b/include/preferences_general.hpp
+@@ -20,11 +20,13 @@
+ #pragma once
+ 
+ #include <adwaita.h>
+-#include <filesystem>
+ #include <fstream>
+ #include <string>
+ #include "ui_helpers.hpp"
+ #include "util.hpp"
++#include "libportal/portal.h"
++#include "libportal-gtk4/portal-gtk4.h"
++
+ 
+ namespace ui::preferences::general {
+ 
+@@ -38,4 +40,4 @@ G_END_DECLS
+ 
+ auto create() -> PreferencesGeneral*;
+ 
+-}  // namespace ui::preferences::general
+\ No newline at end of file
++}  // namespace ui::preferences::general
+diff --git a/src/meson.build b/src/meson.build
+index 5bbed56..06dd8ed 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -133,6 +133,7 @@ easyeffects_deps = [
+ 	dependency('libebur128',version: '>=1.2.0'),
+ 	dependency('rnnoise'),
+ 	dependency('samplerate'),
++	dependency('libportal'),
+ 	dependency('rubberband'),
+ 	dependency('speexdsp'),
+ 	dependency('nlohmann_json'),
+diff --git a/src/preferences_general.cpp b/src/preferences_general.cpp
+index 3cecb33..da46082 100644
+--- a/src/preferences_general.cpp
++++ b/src/preferences_general.cpp
+@@ -34,10 +34,118 @@ struct _PreferencesGeneral {
+   GtkSpinButton* inactivity_timeout;
+ 
+   GSettings* settings;
++
++  gboolean reset_shutdown, reset_autostart;
++
+ };
+ 
+ G_DEFINE_TYPE(PreferencesGeneral, preferences_general, ADW_TYPE_PREFERENCES_PAGE)
+ 
++inline static XdpPortal* portal = nullptr;
++static void update_background_portal(const bool& state, PreferencesGeneral* self);
++static void on_request_background_called(GObject* source, GAsyncResult* result, gpointer data);
++
++// generic portal update function
++void update_background_portal(const bool& state, PreferencesGeneral* self) {
++  XdpBackgroundFlags background_flags = XDP_BACKGROUND_FLAG_NONE;
++
++  g_autoptr(GPtrArray) command_line = nullptr;
++
++  if (state) {
++    command_line = g_ptr_array_new_with_free_func(g_free);
++
++    g_ptr_array_add(command_line, g_strdup("easyeffects"));
++    g_ptr_array_add(command_line, g_strdup("--gapplication-service"));
++
++    background_flags = XDP_BACKGROUND_FLAG_AUTOSTART;
++  }
++
++  auto* reason = g_strdup("EasyEffects Background Access");
++
++  // libportal portal request
++  xdp_portal_request_background(portal, nullptr, reason, command_line, background_flags, NULL,
++                                on_request_background_called, self);
++
++  g_free(reason);
++}
++
++// callback
++void on_request_background_called(GObject* source, GAsyncResult* result, gpointer self) {
++  g_autoptr(GError) error = nullptr;
++
++  // libportal check if portal request worked
++  if (!xdp_portal_request_background_finish(portal, result, &error)) {
++    util::warning(std::string("portal: a background request failed: ") + ((error) ? error->message : "unknown reason"));
++    util::warning(std::string("portal: background portal access has likely been denied"));
++    util::warning(std::string("portal: to let EasyEffects ask for the portal again, run flatpak permission-reset com.github.wwmm.easyeffects"));
++
++
++    if (gtk_switch_get_active(((PreferencesGeneral *)self)->enable_autostart) == true || gtk_switch_get_state(((PreferencesGeneral *)self)->enable_autostart) == true) {
++        ((PreferencesGeneral *)self)->reset_autostart = true;
++        util::warning(std::string("portal: setting autostart state and switch to false"));
++        gtk_switch_set_state(((PreferencesGeneral *)self)->enable_autostart, false);
++        gtk_switch_set_active(((PreferencesGeneral *)self)->enable_autostart, false);
++    }
++    if (gtk_switch_get_active(((PreferencesGeneral *)self)->shutdown_on_window_close) == false || gtk_switch_get_state(((PreferencesGeneral *)self)->shutdown_on_window_close) == false) {
++        ((PreferencesGeneral *)self)->reset_shutdown = true;
++        util::warning(std::string("portal: setting shutdown on window close state and switch to true"));
++        gtk_switch_set_state(((PreferencesGeneral *)self)->shutdown_on_window_close, true);
++        gtk_switch_set_active(((PreferencesGeneral *)self)->shutdown_on_window_close, true);
++    }
++
++    ((PreferencesGeneral *)self)->reset_autostart = false;
++    ((PreferencesGeneral *)self)->reset_shutdown = false;
++    return;
++  }
++
++  gtk_switch_set_state(((PreferencesGeneral *)self)->enable_autostart, gtk_switch_get_active(((PreferencesGeneral *)self)->enable_autostart));
++
++  gtk_switch_set_state(((PreferencesGeneral *)self)->shutdown_on_window_close, gtk_switch_get_active(((PreferencesGeneral *)self)->shutdown_on_window_close));
++
++  ((PreferencesGeneral *)self)->reset_autostart = false;
++  ((PreferencesGeneral *)self)->reset_shutdown = false;
++  util::debug("portal: a background request successfully completed");
++  return;
++}
++
++
++gboolean on_enable_autostart(GtkSwitch* obj, gboolean state, PreferencesGeneral* self) {
++    if (!self->reset_autostart) {
++        util::debug("portal: requesting autostart file since autostart is enabled");
++        update_background_portal(state, self);
++    }
++    return true;
++}
++
++gboolean on_shutdown_on_window_close_called(GtkSwitch* btn, gboolean state, PreferencesGeneral* self) {
++    if (!self->reset_shutdown) {
++        if (g_settings_get_boolean(self->settings, "enable-autostart") && !state) {
++            util::debug("portal: requesting both background access and autostart file since autostart is enabled");
++            update_background_portal(true, self);
++        }
++        else if (!g_settings_get_boolean(self->settings, "enable-autostart") && !state) {
++            util::debug("portal: requesting only background access, not creating autostart file");
++            update_background_portal(false, self);
++        }
++
++        else if (g_settings_get_boolean(self->settings, "enable-autostart") && state) {
++            util::debug("portal: requesting autostart access since autostart enabled");
++            update_background_portal(true, self);
++        }
++
++        else if (!g_settings_get_boolean(self->settings, "enable-autostart") && state) {
++            util::debug("portal: not requesting any access since enabling shutdown on window close");
++            gtk_switch_set_state(((PreferencesGeneral *)self)->shutdown_on_window_close, gtk_switch_get_active(((PreferencesGeneral *)self)->shutdown_on_window_close));
++        }
++    }
++
++
++    return true;
++
++}
++
++
++/*
+ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> gboolean {
+   std::filesystem::path autostart_dir{g_get_user_config_dir() + "/autostart"s};
+ 
+@@ -74,12 +182,16 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> 
+ 
+   return 0;
+ }
++*/
+ 
+ void dispose(GObject* object) {
+   auto* self = EE_PREFERENCES_GENERAL(object);
+ 
+   g_object_unref(self->settings);
+ 
++  g_settings_unbind(self->enable_autostart, "active");
++  g_settings_unbind(self->shutdown_on_window_close, "active");
++
+   util::debug(log_tag + "disposed"s);
+ 
+   G_OBJECT_CLASS(preferences_general_parent_class)->dispose(object);
+@@ -104,30 +216,55 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
+   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, inactivity_timeout);
+ 
+   gtk_widget_class_bind_template_callback(widget_class, on_enable_autostart);
++  gtk_widget_class_bind_template_callback(widget_class, on_shutdown_on_window_close_called);
+ }
+ 
+ void preferences_general_init(PreferencesGeneral* self) {
+   gtk_widget_init_template(GTK_WIDGET(self));
+ 
+   self->settings = g_settings_new("com.github.wwmm.easyeffects");
+ 
+   prepare_spinbutton<"s">(self->inactivity_timeout);
+ 
++  if (portal == nullptr) {
++     portal = xdp_portal_new();
++  }
++  
+   // initializing some widgets
+ 
+-  gtk_switch_set_active(self->enable_autostart,
+-                        static_cast<gboolean>(std::filesystem::is_regular_file(
+-                            g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));
+-
+   gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
+-                         "use-cubic-volumes", "autohide-popovers", "reset-volume-on-startup", "inactivity-timeout">(
++                         "use-cubic-volumes", "autohide-popovers", "reset-volume-on-startup", "inactivity-timeout",
++                         "enable-autostart">(
+       self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
+-      self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->reset_volume_on_startup,
+-      self->inactivity_timeout);
++      self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->reset_volume_on_startup, self->inactivity_timeout, self->enable_autostart);
++
++  g_signal_connect(self->enable_autostart, "state-set", G_CALLBACK(on_enable_autostart), self);
++  g_signal_connect(self->shutdown_on_window_close, "state-set", G_CALLBACK(on_shutdown_on_window_close_called), self);
++
++
++
++  // sanity checks in case switch(es) was somehow already set previously.
++  if (!gtk_switch_get_active(self->shutdown_on_window_close) && !gtk_switch_get_active(self->enable_autostart)) {
++    util::debug(std::string("portal: Running portal sanity check, autostart and shutdown switches are disabled"));
++    update_background_portal(false, self);
++  }
++
++  else if (gtk_switch_get_active(self->shutdown_on_window_close) && gtk_switch_get_active(self->enable_autostart)) {
++    util::debug(std::string("portal: Running portal sanity check, autostart and shutdown switches are enabled"));
++    update_background_portal(true, self);
++  }
++
++  else if (!gtk_switch_get_active(self->shutdown_on_window_close) && gtk_switch_get_active(self->enable_autostart)) {
++    util::debug(std::string("portal: Running portal sanity check, autostart switch is enabled and shutdown switch is disabled"));
++    update_background_portal(true, self);
++  }
+ }
+ 
++
+ auto create() -> PreferencesGeneral* {
+   return static_cast<PreferencesGeneral*>(g_object_new(EE_TYPE_PREFERENCES_GENERAL, nullptr));
+ }
+ 
+-}  // namespace ui::preferences::general
+\ No newline at end of file
++
++
++}  // namespace ui::preferences::general
+--
+libgit2 1.0.1
+
