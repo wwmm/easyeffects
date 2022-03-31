@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 14:22-0300\n"
+"POT-Creation-Date: 2022-03-31 13:21-0300\n"
 "PO-Revision-Date: 2022-03-14 23:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -795,36 +795,15 @@ msgstr "limiter;compressore;riverbero;equalizzatore;autovolume;"
 msgid "\"Presets\""
 msgstr "\"Profili\""
 
-#: data/ui/app_info.ui:69 data/ui/blocklist_menu.ui:42
-msgid "Add to Blocklist"
-msgstr "Aggiungi ad App Escluse"
+#: data/ui/app_info.ui:218
+msgid "Exclude"
+msgstr ""
 
-#: data/ui/app_info.ui:87
-msgid "Format"
-msgstr "Formato"
-
-#: data/ui/app_info.ui:109 data/ui/convolver.ui:141
-msgid "Rate"
-msgstr "Frequenza"
-
-#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:505
-msgid "Channels"
-msgstr "Canali"
-
-#: data/ui/app_info.ui:153
-msgid "Latency"
-msgstr "Latenza"
-
-#: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:484
-#: data/ui/preferences_spectrum.ui:9
-msgid "State"
-msgstr "Stato"
-
-#: data/ui/app_info.ui:208
+#: data/ui/app_info.ui:236
 msgid "Mute Application"
 msgstr "Silenzia Applicazione"
 
-#: data/ui/app_info.ui:243
+#: data/ui/app_info.ui:258
 msgid "Application Volume"
 msgstr "Volume Applicazione"
 
@@ -925,7 +904,7 @@ msgstr "Media geometrica (SI)"
 #: data/ui/multiband_gate.ui:183 data/ui/multiband_gate.ui:543
 #: data/ui/multiband_gate.ui:903 data/ui/multiband_gate.ui:1263
 #: data/ui/pitch.ui:75 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
-#: data/ui/stereo_tools.ui:13 data/ui/pitch.ui:29
+#: data/ui/stereo_tools.ui:13
 msgid "Bypass"
 msgstr "Bypass"
 
@@ -959,7 +938,7 @@ msgstr "Guadagno Uscita"
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
 #: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306 data/ui/reverb.ui:364
 #: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
-#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245 data/ui/pitch.ui:198
+#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
 msgid "Input"
 msgstr "Ingresso"
 
@@ -971,7 +950,7 @@ msgstr "Ingresso"
 #: data/ui/gate.ui:354 data/ui/limiter.ui:762 data/ui/loudness.ui:151
 #: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
 #: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:325 data/ui/reverb.ui:383
-#: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571 data/ui/pitch.ui:217
+#: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
 msgid "Plugin Input Gain"
 msgstr "Guadagno in Ingresso del Plugin"
 
@@ -987,7 +966,7 @@ msgstr "Guadagno in Ingresso del Plugin"
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
 #: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390 data/ui/reverb.ui:448
 #: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
-#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244 data/ui/pitch.ui:282
+#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
 msgid "Output"
 msgstr "Uscita"
 
@@ -999,7 +978,7 @@ msgstr "Uscita"
 #: data/ui/gate.ui:438 data/ui/limiter.ui:846 data/ui/loudness.ui:235
 #: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
 #: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:409 data/ui/reverb.ui:467
-#: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655 data/ui/pitch.ui:301
+#: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
 msgid "Plugin Output Gain"
 msgstr "Guadagno in Uscita del Plugin"
 
@@ -1012,7 +991,7 @@ msgstr "Guadagno in Uscita del Plugin"
 #: data/ui/gate.ui:531 data/ui/limiter.ui:909 data/ui/loudness.ui:298
 #: data/ui/maximizer.ui:343 data/ui/multiband_compressor.ui:556
 #: data/ui/multiband_gate.ui:1791 data/ui/pitch.ui:472 data/ui/reverb.ui:530
-#: data/ui/rnnoise.ui:303 data/ui/stereo_tools.ui:718 data/ui/pitch.ui:364
+#: data/ui/rnnoise.ui:303 data/ui/stereo_tools.ui:718
 msgid "Reset"
 msgstr "Reset"
 
@@ -1024,7 +1003,7 @@ msgstr "Reset"
 #: data/ui/limiter.ui:923 data/ui/loudness.ui:312 data/ui/maximizer.ui:357
 #: data/ui/multiband_compressor.ui:570 data/ui/multiband_gate.ui:1805
 #: data/ui/pitch.ui:486 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
-#: data/ui/stereo_tools.ui:732 data/ui/pitch.ui:378
+#: data/ui/stereo_tools.ui:732
 msgid "Using"
 msgstr "Libreria"
 
@@ -1035,8 +1014,7 @@ msgstr "Dispositivo Audio"
 #: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
 #: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
-#: data/ui/presets_menu.ui:203 data/ui/factory_clients_listview.ui:43
-#: data/ui/factory_modules_listview.ui:43
+#: data/ui/presets_menu.ui:203
 msgid "Name"
 msgstr "Nome"
 
@@ -1097,6 +1075,10 @@ msgstr "Link"
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
 msgstr "Nome Applicazione"
+
+#: data/ui/blocklist_menu.ui:42
+msgid "Add to Blocklist"
+msgstr "Aggiungi ad App Escluse"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Blocklisted Applications List"
@@ -1393,6 +1375,10 @@ msgstr "Spettro"
 msgid "Log Scale"
 msgstr "Scala Logaritmica"
 
+#: data/ui/convolver.ui:141
+msgid "Rate"
+msgstr "Frequenza"
+
 #: data/ui/convolver.ui:163
 msgid "Samples"
 msgstr "Campioni"
@@ -1639,22 +1625,18 @@ msgid "Ceil Value"
 msgstr "Valore Limite Superiore"
 
 #: data/ui/factory_clients_listview.ui:72
-#: data/ui/factory_clients_listview.ui:71
 msgid "API"
 msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
-#: data/ui/factory_clients_listview.ui:99
 msgid "Access"
 msgstr "Accesso"
 
 #: data/ui/factory_modules_listview.ui:72
-#: data/ui/factory_modules_listview.ui:71
 msgid "Description"
 msgstr "Descrizione"
 
 #: data/ui/factory_rnnoise_listview.ui:24
-#: data/ui/factory_rnnoise_listview.ui:23
 msgid "Remove this model file"
 msgstr "Rimuovi questo profilo"
 
@@ -2390,6 +2372,10 @@ msgstr "Lista Client"
 msgid "Test Signal"
 msgstr "Segnale di Test"
 
+#: data/ui/pipe_manager_box.ui:484 data/ui/preferences_spectrum.ui:9
+msgid "State"
+msgstr "Stato"
+
 #: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr "Attivato"
@@ -2397,6 +2383,10 @@ msgstr "Attivato"
 #: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
 msgstr "Proprietà"
+
+#: data/ui/pipe_manager_box.ui:505
+msgid "Channels"
+msgstr "Canali"
 
 #: data/ui/pipe_manager_box.ui:530
 msgid "Both"
@@ -2486,15 +2476,15 @@ msgstr "Laminare"
 msgid "Independent"
 msgstr "Indipendente"
 
-#: data/ui/pitch.ui:189 data/ui/pitch.ui:46
+#: data/ui/pitch.ui:189
 msgid "Cents"
 msgstr "Centesimi"
 
-#: data/ui/pitch.ui:223 data/ui/pitch.ui:80
+#: data/ui/pitch.ui:223
 msgid "Semitones"
 msgstr "Semitoni"
 
-#: data/ui/pitch.ui:257 data/ui/pitch.ui:114
+#: data/ui/pitch.ui:257
 msgid "Octaves"
 msgstr "Ottave"
 
@@ -2915,28 +2905,52 @@ msgid "Stereo Phase"
 msgstr "Fase Stereo"
 
 #: src/app_info.cpp:68
-msgid "running"
+#, fuzzy
+msgid "Running"
 msgstr "in esecuzione"
 
 #: src/app_info.cpp:70
-msgid "suspended"
+#, fuzzy
+msgid "Suspended"
 msgstr "sospeso"
 
 #: src/app_info.cpp:72
-msgid "idle"
-msgstr "inattivo"
+msgid "Idle"
+msgstr ""
 
 #: src/app_info.cpp:74
-msgid "creating"
+#, fuzzy
+msgid "Creating"
 msgstr "in creazione"
 
 #: src/app_info.cpp:76
-msgid "error"
+#, fuzzy
+msgid "Error"
 msgstr "errore"
 
 #: src/app_info.cpp:78
-msgid "unknown"
+#, fuzzy
+msgid "Unknown"
 msgstr "sconosciuto"
+
+#: src/app_info.cpp:83
+msgid "excluded"
+msgstr ""
+
+#: src/app_info.cpp:83
+#, fuzzy
+msgid "enabled"
+msgstr "Attivato"
+
+#: src/app_info.cpp:83
+#, fuzzy
+msgid "disabled"
+msgstr "Attivato"
+
+#: src/app_info.cpp:233
+#, fuzzy
+msgid "channels"
+msgstr "Canali"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
@@ -2946,32 +2960,32 @@ msgstr "Profili Uscita: "
 msgid "Input Presets: "
 msgstr "Profili Ingresso: "
 
-#: src/application.cpp:425
+#: src/application.cpp:427
 msgid "Audio effects for PipeWire applications"
 msgstr "Effetti Audio per Applicazioni PipeWire"
 
-#: src/application.cpp:511
+#: src/application.cpp:513
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Esci da EasyEffects. Utile in esecuzione come servizio."
 
-#: src/application.cpp:514
+#: src/application.cpp:516
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
-#: src/application.cpp:517
+#: src/application.cpp:519
 msgid "Reset EasyEffects."
 msgstr "Reset EasyEffects."
 
-#: src/application.cpp:520
+#: src/application.cpp:522
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra."
 
-#: src/application.cpp:523
+#: src/application.cpp:525
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
 
-#: src/application.cpp:526
+#: src/application.cpp:528
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
@@ -3013,19 +3027,19 @@ msgstr "Errore"
 msgid "Could Not Load The Impulse File"
 msgstr "Non è Possibile Caricare il File di Impulso"
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:257
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/effects_box.cpp:280
+#: src/effects_box.cpp:283
 msgid "Players"
 msgstr "Riproduttori"
 
-#: src/effects_box.cpp:303
+#: src/effects_box.cpp:306
 msgid "Plugins"
 msgstr "Moduli"
 
-#: src/equalizer_band_box.cpp:83
+#: src/equalizer_band_box.cpp:97
 msgid "infinity"
 msgstr "infinito"
 
@@ -3141,17 +3155,23 @@ msgstr "Importa File Modello"
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
-#: data/ui/pitch.ui:17
-msgid "Faster"
-msgstr "Più Veloce"
+#~ msgid "Format"
+#~ msgstr "Formato"
 
-#: data/ui/pitch.ui:23
-msgid "Preserve Formant"
-msgstr "Preserva Formante"
+#~ msgid "Latency"
+#~ msgstr "Latenza"
 
-#: data/ui/pitch.ui:148
-msgid "Crispness"
-msgstr "Chiarezza"
+#~ msgid "idle"
+#~ msgstr "inattivo"
+
+#~ msgid "Faster"
+#~ msgstr "Più Veloce"
+
+#~ msgid "Preserve Formant"
+#~ msgstr "Preserva Formante"
+
+#~ msgid "Crispness"
+#~ msgstr "Chiarezza"
 
 #~ msgid "Cmoy"
 #~ msgstr "Cmoy"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 14:22-0300\n"
+"POT-Creation-Date: 2022-03-31 13:21-0300\n"
 "PO-Revision-Date: 2022-02-20 22:54+0000\n"
 "Last-Translator: Christian Mattes <christian.mattes@rwth-aachen.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -644,37 +644,16 @@ msgstr "Limiter;Kompressor;Hall;Equalizer;Autovolumen;"
 msgid "\"Presets\""
 msgstr "\"Presets\""
 
-#: data/ui/app_info.ui:69 data/ui/blocklist_menu.ui:42
-msgid "Add to Blocklist"
-msgstr "Zur Sperrliste hinzufügen"
+#: data/ui/app_info.ui:218
+msgid "Exclude"
+msgstr ""
 
-#: data/ui/app_info.ui:87
-msgid "Format"
-msgstr "Format"
-
-#: data/ui/app_info.ui:109 data/ui/convolver.ui:141
-msgid "Rate"
-msgstr "Rate"
-
-#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:505
-msgid "Channels"
-msgstr "Kanäle"
-
-#: data/ui/app_info.ui:153
-msgid "Latency"
-msgstr "Latenz"
-
-#: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:484
-#: data/ui/preferences_spectrum.ui:9
-msgid "State"
-msgstr "Status"
-
-#: data/ui/app_info.ui:208
+#: data/ui/app_info.ui:236
 #, fuzzy
 msgid "Mute Application"
 msgstr "Anwendungen"
 
-#: data/ui/app_info.ui:243
+#: data/ui/app_info.ui:258
 #, fuzzy
 msgid "Application Volume"
 msgstr "Anwendungen"
@@ -963,6 +942,10 @@ msgstr ""
 #, fuzzy
 msgid "Application Name"
 msgstr "Anwendungen"
+
+#: data/ui/blocklist_menu.ui:42
+msgid "Add to Blocklist"
+msgstr "Zur Sperrliste hinzufügen"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Blocklisted Applications List"
@@ -1277,6 +1260,10 @@ msgstr "Spektrum"
 #, fuzzy
 msgid "Log Scale"
 msgstr "Skala"
+
+#: data/ui/convolver.ui:141
+msgid "Rate"
+msgstr "Rate"
 
 #: data/ui/convolver.ui:163
 msgid "Samples"
@@ -2372,6 +2359,10 @@ msgstr "Client-Liste"
 msgid "Test Signal"
 msgstr "Testsignal"
 
+#: data/ui/pipe_manager_box.ui:484 data/ui/preferences_spectrum.ui:9
+msgid "State"
+msgstr "Status"
+
 #: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr "Aktiviert"
@@ -2379,6 +2370,10 @@ msgstr "Aktiviert"
 #: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
 msgstr "Eigenschaften"
+
+#: data/ui/pipe_manager_box.ui:505
+msgid "Channels"
+msgstr "Kanäle"
 
 #: data/ui/pipe_manager_box.ui:530
 msgid "Both"
@@ -2914,28 +2909,51 @@ msgid "Stereo Phase"
 msgstr "Stereo Phase"
 
 #: src/app_info.cpp:68
-msgid "running"
+#, fuzzy
+msgid "Running"
 msgstr "läuft"
 
 #: src/app_info.cpp:70
-msgid "suspended"
+#, fuzzy
+msgid "Suspended"
 msgstr "suspendiert"
 
 #: src/app_info.cpp:72
-msgid "idle"
-msgstr "inaktiv"
+msgid "Idle"
+msgstr ""
 
 #: src/app_info.cpp:74
-msgid "creating"
+#, fuzzy
+msgid "Creating"
 msgstr "erstelle"
 
 #: src/app_info.cpp:76
-msgid "error"
+#, fuzzy
+msgid "Error"
 msgstr "fehler"
 
 #: src/app_info.cpp:78
-msgid "unknown"
+msgid "Unknown"
 msgstr ""
+
+#: src/app_info.cpp:83
+msgid "excluded"
+msgstr ""
+
+#: src/app_info.cpp:83
+#, fuzzy
+msgid "enabled"
+msgstr "Aktiviert"
+
+#: src/app_info.cpp:83
+#, fuzzy
+msgid "disabled"
+msgstr "Aktiviert"
+
+#: src/app_info.cpp:233
+#, fuzzy
+msgid "channels"
+msgstr "Kanäle"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
@@ -2945,33 +2963,33 @@ msgstr "Ausgabe-Presets: "
 msgid "Input Presets: "
 msgstr "Eingangs-Presets: "
 
-#: src/application.cpp:425
+#: src/application.cpp:427
 msgid "Audio effects for PipeWire applications"
 msgstr "Audioeffekte für PipeWire Anwendungen"
 
-#: src/application.cpp:511
+#: src/application.cpp:513
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Beende EasyEffects. Nützlich bei der Ausführung als Service."
 
-#: src/application.cpp:514
+#: src/application.cpp:516
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Lade ein Preset. Beispiel: easyeffects -l music"
 
-#: src/application.cpp:517
+#: src/application.cpp:519
 msgid "Reset EasyEffects."
 msgstr "EasyEffects zurücksetzen."
 
-#: src/application.cpp:520
+#: src/application.cpp:522
 msgid "Hide the Window."
 msgstr "Fenster verstecken."
 
-#: src/application.cpp:523
+#: src/application.cpp:525
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globale Umleitung. 1 zum Aktivieren, 2 zum Deaktivieren und 3 zum Erhalten "
 "des Status"
 
-#: src/application.cpp:526
+#: src/application.cpp:528
 msgid "Show available presets."
 msgstr "Verfügbare Presets anzeigen."
 
@@ -3015,19 +3033,19 @@ msgstr "Gescheitert"
 msgid "Could Not Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:257
 msgid "Recorders"
 msgstr "Rekorder"
 
-#: src/effects_box.cpp:280
+#: src/effects_box.cpp:283
 msgid "Players"
 msgstr "Spieler"
 
-#: src/effects_box.cpp:303
+#: src/effects_box.cpp:306
 msgid "Plugins"
 msgstr "Plugins"
 
-#: src/equalizer_band_box.cpp:83
+#: src/equalizer_band_box.cpp:97
 msgid "infinity"
 msgstr "unendlich"
 
@@ -3147,6 +3165,15 @@ msgstr "Impulsdatei importieren"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Standard RNNoise-Modell"
+
+#~ msgid "Format"
+#~ msgstr "Format"
+
+#~ msgid "Latency"
+#~ msgstr "Latenz"
+
+#~ msgid "idle"
+#~ msgstr "inaktiv"
 
 #~ msgid "Faster"
 #~ msgstr "Schneller"

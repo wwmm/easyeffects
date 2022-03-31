@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 14:22-0300\n"
+"POT-Creation-Date: 2022-03-31 13:21-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -642,37 +642,16 @@ msgstr "obmedzovač;kompresor;ozvena;ekvalizér;automatická hlasitosť;"
 msgid "\"Presets\""
 msgstr "\"Predvoľby\""
 
-#: data/ui/app_info.ui:69 data/ui/blocklist_menu.ui:42
-msgid "Add to Blocklist"
-msgstr "Pridať na zoznam blokovaných"
+#: data/ui/app_info.ui:218
+msgid "Exclude"
+msgstr ""
 
-#: data/ui/app_info.ui:87
-msgid "Format"
-msgstr "Formát"
-
-#: data/ui/app_info.ui:109 data/ui/convolver.ui:141
-msgid "Rate"
-msgstr "Kmitočet"
-
-#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:505
-msgid "Channels"
-msgstr "Kanály"
-
-#: data/ui/app_info.ui:153
-msgid "Latency"
-msgstr "Odozva"
-
-#: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:484
-#: data/ui/preferences_spectrum.ui:9
-msgid "State"
-msgstr "Stav"
-
-#: data/ui/app_info.ui:208
+#: data/ui/app_info.ui:236
 #, fuzzy
 msgid "Mute Application"
 msgstr "Aplikácie"
 
-#: data/ui/app_info.ui:243
+#: data/ui/app_info.ui:258
 #, fuzzy
 msgid "Application Volume"
 msgstr "Aplikácie"
@@ -964,6 +943,10 @@ msgstr ""
 #, fuzzy
 msgid "Application Name"
 msgstr "Aplikácie"
+
+#: data/ui/blocklist_menu.ui:42
+msgid "Add to Blocklist"
+msgstr "Pridať na zoznam blokovaných"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Blocklisted Applications List"
@@ -1281,6 +1264,10 @@ msgstr "Spektrum"
 #, fuzzy
 msgid "Log Scale"
 msgstr "Mierka"
+
+#: data/ui/convolver.ui:141
+msgid "Rate"
+msgstr "Kmitočet"
 
 #: data/ui/convolver.ui:163
 msgid "Samples"
@@ -2398,6 +2385,10 @@ msgstr "Klienti"
 msgid "Test Signal"
 msgstr "Skúšobné signály"
 
+#: data/ui/pipe_manager_box.ui:484 data/ui/preferences_spectrum.ui:9
+msgid "State"
+msgstr "Stav"
+
 #: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
 #, fuzzy
 msgid "Enabled"
@@ -2406,6 +2397,10 @@ msgstr "Povolené"
 #: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
 msgstr ""
+
+#: data/ui/pipe_manager_box.ui:505
+msgid "Channels"
+msgstr "Kanály"
 
 #: data/ui/pipe_manager_box.ui:530
 msgid "Both"
@@ -2965,28 +2960,51 @@ msgid "Stereo Phase"
 msgstr "Fáza sterea"
 
 #: src/app_info.cpp:68
-msgid "running"
+#, fuzzy
+msgid "Running"
 msgstr "beží"
 
 #: src/app_info.cpp:70
-msgid "suspended"
+#, fuzzy
+msgid "Suspended"
 msgstr "pozastavené"
 
 #: src/app_info.cpp:72
-msgid "idle"
-msgstr "nečinné"
+msgid "Idle"
+msgstr ""
 
 #: src/app_info.cpp:74
-msgid "creating"
+#, fuzzy
+msgid "Creating"
 msgstr "vytváram"
 
 #: src/app_info.cpp:76
-msgid "error"
+#, fuzzy
+msgid "Error"
 msgstr "chyba"
 
 #: src/app_info.cpp:78
-msgid "unknown"
+msgid "Unknown"
 msgstr ""
+
+#: src/app_info.cpp:83
+msgid "excluded"
+msgstr ""
+
+#: src/app_info.cpp:83
+#, fuzzy
+msgid "enabled"
+msgstr "Povolené"
+
+#: src/app_info.cpp:83
+#, fuzzy
+msgid "disabled"
+msgstr "Povolené"
+
+#: src/app_info.cpp:233
+#, fuzzy
+msgid "channels"
+msgstr "Kanály"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
@@ -2996,36 +3014,36 @@ msgstr "Výstupné predvoľby: "
 msgid "Input Presets: "
 msgstr "Vstupné predvoľby: "
 
-#: src/application.cpp:425
+#: src/application.cpp:427
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pre aplikácie využívajúce PulseAudio"
 
-#: src/application.cpp:511
+#: src/application.cpp:513
 #, fuzzy
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Ukončiť PulseEffect. Užitočné pre beh v režime služby."
 
-#: src/application.cpp:514
+#: src/application.cpp:516
 #, fuzzy
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Načítať predvoľby. Napr.: pulseeffects -l music"
 
-#: src/application.cpp:517
+#: src/application.cpp:519
 #, fuzzy
 msgid "Reset EasyEffects."
 msgstr "Obnoviť PulseEffects"
 
-#: src/application.cpp:520
+#: src/application.cpp:522
 msgid "Hide the Window."
 msgstr "Skryť okno"
 
-#: src/application.cpp:523
+#: src/application.cpp:525
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globálne premostenie. 1 pre zapnutie, 2 pre vypnutie, 3 pre získanie stavu"
 
-#: src/application.cpp:526
+#: src/application.cpp:528
 msgid "Show available presets."
 msgstr "Zobraziť dostupné ~redvoľby"
 
@@ -3069,20 +3087,20 @@ msgstr "Zlyhalo"
 msgid "Could Not Load The Impulse File"
 msgstr "Nedá sa načítať súbor s impulzom"
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:257
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:280
+#: src/effects_box.cpp:283
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:303
+#: src/effects_box.cpp:306
 msgid "Plugins"
 msgstr ""
 
-#: src/equalizer_band_box.cpp:83
+#: src/equalizer_band_box.cpp:97
 msgid "infinity"
 msgstr "nekonečno"
 
@@ -3203,6 +3221,15 @@ msgstr "Importovať model zo súboru"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Štandardný model RNNoise"
+
+#~ msgid "Format"
+#~ msgstr "Formát"
+
+#~ msgid "Latency"
+#~ msgstr "Odozva"
+
+#~ msgid "idle"
+#~ msgstr "nečinné"
 
 #~ msgid "Faster"
 #~ msgstr "Rýchlo"

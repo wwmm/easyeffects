@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 14:22-0300\n"
+"POT-Creation-Date: 2022-03-31 13:21-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: OctopusET <sumoon@seoulsaram.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -645,43 +645,16 @@ msgstr "리미터;컴프레서;리버브;이퀄라이저;자동음량조절;"
 msgid "\"Presets\""
 msgstr "\"프리셋\""
 
-#: data/ui/app_info.ui:69 data/ui/blocklist_menu.ui:42
-#, fuzzy
-msgid "Add to Blocklist"
-msgstr "차단 목록에 추가"
+#: data/ui/app_info.ui:218
+msgid "Exclude"
+msgstr ""
 
-#: data/ui/app_info.ui:87
-#, fuzzy
-msgid "Format"
-msgstr "포멧"
-
-#: data/ui/app_info.ui:109 data/ui/convolver.ui:141
-#, fuzzy
-msgid "Rate"
-msgstr "레이트"
-
-#: data/ui/app_info.ui:131 data/ui/pipe_manager_box.ui:505
-#, fuzzy
-msgid "Channels"
-msgstr "채널"
-
-#: data/ui/app_info.ui:153
-#, fuzzy
-msgid "Latency"
-msgstr "레이턴시"
-
-#: data/ui/app_info.ui:175 data/ui/pipe_manager_box.ui:484
-#: data/ui/preferences_spectrum.ui:9
-#, fuzzy
-msgid "State"
-msgstr "상태"
-
-#: data/ui/app_info.ui:208
+#: data/ui/app_info.ui:236
 #, fuzzy
 msgid "Mute Application"
 msgstr "응용 프로그램 음소거"
 
-#: data/ui/app_info.ui:243
+#: data/ui/app_info.ui:258
 #, fuzzy
 msgid "Application Volume"
 msgstr "응용 프로그램 음량"
@@ -994,6 +967,11 @@ msgstr ""
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
 msgstr ""
+
+#: data/ui/blocklist_menu.ui:42
+#, fuzzy
+msgid "Add to Blocklist"
+msgstr "차단 목록에 추가"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Blocklisted Applications List"
@@ -1347,6 +1325,11 @@ msgstr "스펙트럼"
 #: data/ui/convolver.ui:123
 msgid "Log Scale"
 msgstr ""
+
+#: data/ui/convolver.ui:141
+#, fuzzy
+msgid "Rate"
+msgstr "레이트"
 
 #: data/ui/convolver.ui:163
 #, fuzzy
@@ -2412,6 +2395,11 @@ msgstr ""
 msgid "Test Signal"
 msgstr ""
 
+#: data/ui/pipe_manager_box.ui:484 data/ui/preferences_spectrum.ui:9
+#, fuzzy
+msgid "State"
+msgstr "상태"
+
 #: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr ""
@@ -2419,6 +2407,11 @@ msgstr ""
 #: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
 msgstr ""
+
+#: data/ui/pipe_manager_box.ui:505
+#, fuzzy
+msgid "Channels"
+msgstr "채널"
 
 #: data/ui/pipe_manager_box.ui:530
 msgid "Both"
@@ -2955,32 +2948,48 @@ msgstr ""
 
 #: src/app_info.cpp:68
 #, fuzzy
-msgid "running"
+msgid "Running"
 msgstr "실행 중"
 
 #: src/app_info.cpp:70
 #, fuzzy
-msgid "suspended"
+msgid "Suspended"
 msgstr "일시 중단됨"
 
 #: src/app_info.cpp:72
-#, fuzzy
-msgid "idle"
-msgstr "유휴 상태"
+msgid "Idle"
+msgstr ""
 
 #: src/app_info.cpp:74
 #, fuzzy
-msgid "creating"
+msgid "Creating"
 msgstr "만드는 중"
 
 #: src/app_info.cpp:76
 #, fuzzy
-msgid "error"
+msgid "Error"
 msgstr "에러"
 
 #: src/app_info.cpp:78
-msgid "unknown"
+msgid "Unknown"
 msgstr ""
+
+#: src/app_info.cpp:83
+msgid "excluded"
+msgstr ""
+
+#: src/app_info.cpp:83
+msgid "enabled"
+msgstr ""
+
+#: src/app_info.cpp:83
+msgid "disabled"
+msgstr ""
+
+#: src/app_info.cpp:233
+#, fuzzy
+msgid "channels"
+msgstr "채널"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
@@ -2990,32 +2999,32 @@ msgstr ""
 msgid "Input Presets: "
 msgstr ""
 
-#: src/application.cpp:425
+#: src/application.cpp:427
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire 음향 효과 애플리케이션"
 
-#: src/application.cpp:511
+#: src/application.cpp:513
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:514
+#: src/application.cpp:516
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/application.cpp:517
+#: src/application.cpp:519
 msgid "Reset EasyEffects."
 msgstr ""
 
-#: src/application.cpp:520
+#: src/application.cpp:522
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:523
+#: src/application.cpp:525
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:526
+#: src/application.cpp:528
 msgid "Show available presets."
 msgstr ""
 
@@ -3060,19 +3069,19 @@ msgstr ""
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:257
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:280
+#: src/effects_box.cpp:283
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:303
+#: src/effects_box.cpp:306
 msgid "Plugins"
 msgstr ""
 
-#: src/equalizer_band_box.cpp:83
+#: src/equalizer_band_box.cpp:97
 #, fuzzy
 msgid "infinity"
 msgstr "무한대"
@@ -3194,3 +3203,15 @@ msgstr "APO 프리셋 파일 임포트"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "제거"
+
+#, fuzzy
+#~ msgid "Format"
+#~ msgstr "포멧"
+
+#, fuzzy
+#~ msgid "Latency"
+#~ msgstr "레이턴시"
+
+#, fuzzy
+#~ msgid "idle"
+#~ msgstr "유휴 상태"
