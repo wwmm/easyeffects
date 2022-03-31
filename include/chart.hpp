@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include <fmt/core.h>
+#include <fmt/format.h>
 #include <sigc++/sigc++.h>
 #include <algorithm>
 #include <ranges>
