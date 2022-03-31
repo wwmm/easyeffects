@@ -3,7 +3,7 @@
     <template class="PreferencesGeneral" parent="AdwPreferencesPage">
         <property name="icon_name">preferences-system-symbolic</property>
         <property name="title" translatable="yes">_General</property>
-        <property name="use-underline">True</property>
+        <property name="use-underline">1</property>
 
         <child>
             <object class="AdwPreferencesGroup">

@@ -117,7 +117,7 @@
 
                         <child>
                             <object class="GtkToggleButton" id="toggle_listen_mic">
-                                <property name="visible">False</property>
+                                <property name="visible">0</property>
                                 <signal name="toggled" handler="on_listen_mic_toggled" object="EffectsBox" />
                                 <child>
                                     <object class="GtkBox">

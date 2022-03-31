@@ -3,7 +3,7 @@
     <template class="PreferencesSpectrum" parent="AdwPreferencesPage">
         <property name="icon_name">ee-spectrum-symbolic</property>
         <property name="title" translatable="yes">_Spectrum</property>
-        <property name="use-underline">True</property>
+        <property name="use-underline">1</property>
         <child>
             <object class="AdwPreferencesGroup">
                 <property name="title" translatable="yes">State</property>
@@ -157,7 +157,7 @@
                         <child>
                             <object class="GtkColorButton" id="color_button">
                                 <property name="valign">center</property>
-                                <property name="use-alpha">True</property>
+                                <property name="use-alpha">1</property>
                                 <signal name="color-set" handler="on_spectrum_color_set" object="PreferencesSpectrum" />
                             </object>
                         </child>
@@ -171,7 +171,7 @@
                         <child>
                             <object class="GtkColorButton" id="axis_color_button">
                                 <property name="valign">center</property>
-                                <property name="use-alpha">True</property>
+                                <property name="use-alpha">1</property>
                                 <signal name="color-set" handler="on_spectrum_axis_color_set" object="PreferencesSpectrum" />
                             </object>
                         </child>

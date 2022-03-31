@@ -45,11 +45,11 @@ struct _AppInfo {
 
   GtkImage* app_icon;
 
-  GtkLabel *app_name, *media_name, *format, *rate, *channels, *latency, *state;
-
-  GtkScale* volume;
+  GtkLabel *app_name, *media_name, *format, *rate, *channels, *latency, *state, *ee_state;
 
   GtkToggleButton* mute;
+
+  GtkSpinButton* volume;
 
   GtkCheckButton* blocklist;
 
@@ -65,18 +65,22 @@ G_DEFINE_TYPE(AppInfo, app_info, GTK_TYPE_BOX)
 auto node_state_to_char_pointer(const pw_node_state& state) -> const char* {
   switch (state) {
     case PW_NODE_STATE_RUNNING:
-      return _("running");
+      return _("Running");
     case PW_NODE_STATE_SUSPENDED:
-      return _("suspended");
+      return _("Suspended");
     case PW_NODE_STATE_IDLE:
-      return _("idle");
+      return _("Idle");
     case PW_NODE_STATE_CREATING:
-      return _("creating");
+      return _("Creating");
     case PW_NODE_STATE_ERROR:
-      return _("error");
+      return _("Error");
     default:
-      return _("unknown");
+      return _("Unknown");
   }
+}
+
+auto ee_state_to_char_pointer(const bool& enable, const bool& blocklist) -> const char* {
+  return (blocklist) ? _("excluded") : ((enable) ? _("enabled") : _("disabled"));
 }
 
 auto app_is_blocklisted(AppInfo* self, const std::string& name) -> bool {
@@ -157,17 +161,21 @@ void disconnect_stream(AppInfo* self, const uint& id, const std::string& media_c
   }
 }
 
-void on_enable(GtkSwitch* btn, gboolean state, AppInfo* self) {
-  if (!app_is_blocklisted(self, self->data->info.name)) {
-    (state) ? connect_stream(self, self->data->info.id, self->data->info.media_class)
-            : disconnect_stream(self, self->data->info.id, self->data->info.media_class);
+void on_enable(GtkSwitch* btn, gboolean is_enabled, AppInfo* self) {
+  auto is_blocklisted = app_is_blocklisted(self, self->data->info.name);
 
-    self->data->enabled_app_list->insert_or_assign(self->data->info.id, state);
+  if (!is_blocklisted) {
+    (is_enabled) ? connect_stream(self, self->data->info.id, self->data->info.media_class)
+                 : disconnect_stream(self, self->data->info.id, self->data->info.media_class);
+
+    self->data->enabled_app_list->insert_or_assign(self->data->info.id, is_enabled);
   }
+
+  gtk_label_set_text(self->ee_state, ee_state_to_char_pointer(is_enabled, is_blocklisted));
 }
 
-void on_volume_changed(GtkRange* scale, AppInfo* self) {
-  auto vol = static_cast<float>(gtk_range_get_value(GTK_RANGE(scale))) / 100.0F;
+void on_volume_changed(GtkSpinButton* sbtn, AppInfo* self) {
+  auto vol = static_cast<float>(gtk_spin_button_get_value(sbtn)) / 100.0F;
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
     vol = vol * vol * vol;
@@ -193,7 +201,7 @@ void on_mute(GtkToggleButton* btn, AppInfo* self) {
 }
 
 void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
-  const auto state = gtk_check_button_get_active(btn);
+  const auto is_blocklisted = gtk_check_button_get_active(btn);
 
   std::string app_tag = self->data->info.application_id;
 
@@ -201,7 +209,7 @@ void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
     app_tag = self->data->info.name;
   }
 
-  if (state) {
+  if (is_blocklisted) {
     self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_switch_get_active(self->enable));
 
     util::add_new_blocklist_entry(self->settings, app_tag, log_tag);
@@ -226,7 +234,7 @@ void update(AppInfo* self, const NodeInfo node_info) {
   gtk_label_set_text(self->latency, fmt::format("{0:.0f} ms", 1000.0F * node_info.latency).c_str());
   gtk_label_set_text(self->state, node_state_to_char_pointer(node_info.state));
 
-  // updating the enable switch
+  // updating the enable toggle button
 
   g_signal_handler_block(self->enable, self->data->handler_id_enable);
 
@@ -236,16 +244,18 @@ void update(AppInfo* self, const NodeInfo node_info) {
   gtk_widget_set_sensitive(GTK_WIDGET(self->enable), is_enabled || !is_blocklisted);
   gtk_switch_set_active(self->enable, is_enabled);
 
+  gtk_label_set_text(self->ee_state, ee_state_to_char_pointer(is_enabled, is_blocklisted));
+
   g_signal_handler_unblock(self->enable, self->data->handler_id_enable);
 
-  // updating the volume scale
+  // updating the volume
 
   g_signal_handler_block(self->volume, self->data->handler_id_volume);
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
-    gtk_range_set_value(GTK_RANGE(self->volume), 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
+    gtk_spin_button_set_value(self->volume, 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
   } else {
-    gtk_range_set_value(GTK_RANGE(self->volume), 100.0 * static_cast<double>(node_info.volume));
+    gtk_spin_button_set_value(self->volume, 100.0 * static_cast<double>(node_info.volume));
   }
 
   g_signal_handler_unblock(self->volume, self->data->handler_id_volume);
@@ -350,6 +360,7 @@ void app_info_class_init(AppInfoClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, AppInfo, channels);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, latency);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, state);
+  gtk_widget_class_bind_template_child(widget_class, AppInfo, ee_state);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, volume);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, mute);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, blocklist);
