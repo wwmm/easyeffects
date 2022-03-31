@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include <fmt/core.h>
+#include <fmt/format.h>
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -69,7 +70,8 @@ void prepare_scale(GtkScale* scale) {
 
             using namespace std::string_literals;
 
-            auto text = fmt::format("{0:.{1}f}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
+            auto text = fmt::format(std::locale(setlocale(LC_ALL, nullptr)), "{0:.{1}Lf}{2}", value, precision,
+                                    ((unit != nullptr) ? " "s + unit : ""));
 
             return g_strdup(text.c_str());
           },
