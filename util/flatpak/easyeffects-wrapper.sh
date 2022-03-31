@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # this checks the PipeWire version on the host, and then compares it to what we need.
-# current baseline to compile EasyEffects is 0.3.31, thus the host needs minimum that as well.
+# current baseline to compile EasyEffects is 0.3.41, thus the host needs minimum that as well.
 
 # get host's PipeWire version:
 
@@ -9,7 +9,7 @@
 # we can't use jq to parse JSON as that will fail to run with flatpak run or from desktop file; gives "command not found", even though jq is in the runtime/sdk.
 found_pipewire_version="$(pw-dump | grep -Po '"version":.*?[^\\]",' |  sed 's/"//g' | sed 's/://g' | sed 's/,//g' | cut -c9-18)"
 
-required_pipewire_version="0.3.31" # from EasyEffects' build requirements
+required_pipewire_version="0.3.41" # from EasyEffects' build requirements
 
 # compare versions
 # from https://unix.stackexchange.com/a/285928
