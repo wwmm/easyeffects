@@ -106,13 +106,18 @@
                                     <object class="GtkLabel" id="state">
                                         <property name="halign">end</property>
                                         <property name="label">s</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
                                     </object>
                                 </child>
+
+                                <!-- middle dot -->
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="halign">start</property>
                                         <property name="margin-end">5</property>
-                                        <property name="label" translatable="yes">state</property>
+                                        <property name="label">·</property>
                                         <style>
                                             <class name="dim-label" />
                                         </style>
@@ -123,13 +128,18 @@
                                     <object class="GtkLabel" id="format">
                                         <property name="halign">end</property>
                                         <property name="label">f</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
                                     </object>
                                 </child>
+
+                                <!-- middle dot -->
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="halign">start</property>
                                         <property name="margin-end">5</property>
-                                        <property name="label" translatable="yes">format</property>
+                                        <property name="label">·</property>
                                         <style>
                                             <class name="dim-label" />
                                         </style>
@@ -140,13 +150,18 @@
                                     <object class="GtkLabel" id="rate">
                                         <property name="halign">end</property>
                                         <property name="label">r</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
                                     </object>
                                 </child>
+
+                                <!-- middle dot -->
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="halign">start</property>
                                         <property name="margin-end">5</property>
-                                        <property name="label" translatable="yes">rate</property>
+                                        <property name="label">·</property>
                                         <style>
                                             <class name="dim-label" />
                                         </style>
@@ -157,13 +172,18 @@
                                     <object class="GtkLabel" id="channels">
                                         <property name="halign">end</property>
                                         <property name="label">c</property>
+                                        <style>
+                                            <class name="dim-label" />
+                                        </style>
                                     </object>
                                 </child>
+
+                                <!-- middle dot -->
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="halign">start</property>
                                         <property name="margin-end">5</property>
-                                        <property name="label" translatable="yes">channels</property>
+                                        <property name="label">·</property>
                                         <style>
                                             <class name="dim-label" />
                                         </style>
@@ -174,12 +194,6 @@
                                     <object class="GtkLabel" id="latency">
                                         <property name="halign">end</property>
                                         <property name="label">l</property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">start</property>
-                                        <property name="label" translatable="yes">latency</property>
                                         <style>
                                             <class name="dim-label" />
                                         </style>
@@ -196,6 +210,18 @@
                         <property name="valign">center</property>
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
+                        <!-- Exclude section -->
+                        <child>
+                            <object class="GtkCheckButton" id="blocklist">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Exclude</property>
+                                <accessibility>
+                                    <relation name="labelled-by">app_name</relation>
+                                </accessibility>
+                            </object>
+                        </child>
+
                         <!-- Volume section -->
                         <child>
                             <object class="GtkBox">
@@ -216,7 +242,7 @@
                                     <object class="GtkSpinButton" id="volume">
                                         <property name="sensitive" bind-source="mute" bind-property="active" bind-flags="sync-create|invert-boolean" />
                                         <property name="valign">center</property>
-                                        <property name="width-chars">4</property>
+                                        <property name="width-chars">5</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
                                                 <property name="lower">0</property>
@@ -233,18 +259,6 @@
                                         </accessibility>
                                     </object>
                                 </child>
-                            </object>
-                        </child>
-
-                        <!-- Exclude section -->
-                        <child>
-                            <object class="GtkCheckButton" id="blocklist">
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Exclude</property>
-                                <accessibility>
-                                    <relation name="labelled-by">app_name</relation>
-                                </accessibility>
                             </object>
                         </child>
                     </object>

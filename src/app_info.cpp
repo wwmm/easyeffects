@@ -230,7 +230,7 @@ void update(AppInfo* self, const NodeInfo node_info) {
   gtk_label_set_text(self->media_name, node_info.media_name.c_str());
   gtk_label_set_text(self->format, node_info.format.c_str());
   gtk_label_set_text(self->rate, fmt::format("{0:d} Hz", node_info.rate).c_str());
-  gtk_label_set_text(self->channels, fmt::format("{0:d}", node_info.n_volume_channels).c_str());
+  gtk_label_set_text(self->channels, fmt::format("{0:d} {1}", node_info.n_volume_channels, _("channels")).c_str());
   gtk_label_set_text(self->latency, fmt::format("{0:.0f} ms", 1000.0F * node_info.latency).c_str());
   gtk_label_set_text(self->state, node_state_to_char_pointer(node_info.state));
 
@@ -372,6 +372,8 @@ void app_info_init(AppInfo* self) {
   self->data = new Data();
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+
+  prepare_spinbutton<"%">(self->volume);
 
   self->data->handler_id_enable = g_signal_connect(self->enable, "state-set", G_CALLBACK(on_enable), self);
   self->data->handler_id_volume = g_signal_connect(self->volume, "value-changed", G_CALLBACK(on_volume_changed), self);
