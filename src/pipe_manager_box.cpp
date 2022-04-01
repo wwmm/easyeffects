@@ -17,6 +17,8 @@ struct Data {
   std::vector<sigc::connection> connections;
 
   std::vector<gulong> gconnections_sie, gconnections_soe;
+
+  std::locale user_locale = std::locale(setlocale(LC_ALL, nullptr));
 };
 
 struct _PipeManagerBox {
@@ -410,7 +412,8 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   gtk_label_set_text(self->header_version, pm->header_version.c_str());
   gtk_label_set_text(self->library_version, pm->library_version.c_str());
-  gtk_label_set_text(self->server_rate, fmt::format("{0:d} Hz", std::stoi(pm->default_clock_rate)).c_str());
+  gtk_label_set_text(self->server_rate,
+                     fmt::format(self->data->user_locale, "{0:Ld} Hz", std::stoi(pm->default_clock_rate)).c_str());
   gtk_label_set_text(self->min_quantum, pm->default_min_quantum.c_str());
   gtk_label_set_text(self->max_quantum, pm->default_max_quantum.c_str());
   gtk_label_set_text(self->quantum, pm->default_quantum.c_str());

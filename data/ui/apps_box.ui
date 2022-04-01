@@ -13,7 +13,7 @@
                         <property name="vexpand">1</property>
                         <property name="show-separators">1</property>
                         <style>
-                            <class name="rich-list" />
+                            <class name="boxed-list" />
                         </style>
                         <accessibility>
                             <property name="label" translatable="yes">Applications List</property>
