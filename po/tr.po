@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 12:57-0300\n"
-"PO-Revision-Date: 2022-01-15 17:41+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"PO-Revision-Date: 2022-04-01 14:37+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -152,6 +152,8 @@ msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"EasyEffects simgesi, QT masaüstlerinde görünmesini sağlayacak şekilde "
+"güncellendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -208,7 +210,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
 msgid "Better support for computer suspending."
-msgstr ""
+msgstr "Bilgisayarın askıya alınması için daha iyi destek."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
@@ -651,20 +653,15 @@ msgstr ""
 msgid "\"Presets\""
 msgstr "\"Ön Ayarlar\""
 
-#: data/ui/app_info.ui:201
-#, fuzzy
-msgid "Activate"
-msgstr "Etkin Model"
-
-#: data/ui/app_info.ui:213
+#: data/ui/app_info.ui:218
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:237
+#: data/ui/app_info.ui:236
 msgid "Mute Application"
 msgstr "Uygulamayı Sessize Al"
 
-#: data/ui/app_info.ui:259
+#: data/ui/app_info.ui:258
 msgid "Application Volume"
 msgstr "Uygulama Ses Seviyesi"
 
@@ -819,9 +816,8 @@ msgstr "Giriş"
 #: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
 #: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:325 data/ui/reverb.ui:383
 #: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
-#, fuzzy
 msgid "Plugin Input Gain"
-msgstr "Giriş Kazancı"
+msgstr "Eklenti Giriş Kazancı"
 
 #: data/ui/autogain.ui:463 data/ui/bass_enhancer.ui:348
 #: data/ui/bass_loudness.ui:61 data/ui/bass_loudness.ui:228
@@ -848,9 +844,8 @@ msgstr "Çıkış"
 #: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
 #: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:409 data/ui/reverb.ui:467
 #: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
-#, fuzzy
 msgid "Plugin Output Gain"
-msgstr "Pipeline Çıkış"
+msgstr "Eklenti Çıkış Kazancı"
 
 #: data/ui/autogain.ui:545 data/ui/bass_enhancer.ui:461
 #: data/ui/bass_loudness.ui:310 data/ui/compressor.ui:1160
@@ -1167,9 +1162,8 @@ msgid "Lookahead"
 msgstr "İlerleme"
 
 #: data/ui/compressor.ui:709
-#, fuzzy
 msgid "Sidechain Filters"
-msgstr "Yanzincir"
+msgstr "Yanzincir Süzgeçleri"
 
 #: data/ui/compressor.ui:719
 msgid "High-Pass"
@@ -1198,19 +1192,16 @@ msgid "36 dB/oct"
 msgstr "36 dB/oct"
 
 #: data/ui/compressor.ui:768
-#, fuzzy
 msgid "High-Pass Filter Mode"
-msgstr "Yüksek Geçiş Süzgeci"
+msgstr "Yüksek Geçiş Süzgeci Kipi"
 
 #: data/ui/compressor.ui:794 data/ui/compressor.ui:850
-#, fuzzy
 msgid "High-Pass Filter Frequency"
-msgstr "Yüksek Geçiş Süzgeci"
+msgstr "Yüksek Geçiş Süzgeci Frekansı"
 
 #: data/ui/compressor.ui:824
-#, fuzzy
 msgid "Low-Pass Filter Mode"
-msgstr "Yüksek Geçiş Süzgeci"
+msgstr "Alçak Geçiş Süzgeci Kipi"
 
 #: data/ui/compressor.ui:876
 msgid "Gain"
@@ -1291,7 +1282,7 @@ msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr ""
+msgstr "Çıkış Dosyası Adı"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
@@ -1527,7 +1518,7 @@ msgstr "Tavan"
 
 #: data/ui/exciter.ui:242
 msgid "Ceil Value"
-msgstr ""
+msgstr "Tavan Değeri"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
@@ -2227,7 +2218,7 @@ msgstr "Öntanımlı Girişi Kullan"
 
 #: data/ui/pipe_manager_box.ui:64
 msgid "Custom Input Device"
-msgstr ""
+msgstr "Özel Giriş Aygıtı"
 
 #: data/ui/pipe_manager_box.ui:75
 msgid "Output Device"
@@ -2239,7 +2230,7 @@ msgstr "Öntanımlı Çıkışı Kullan"
 
 #: data/ui/pipe_manager_box.ui:105
 msgid "Custom Output Device"
-msgstr ""
+msgstr "Özel Çıkış Aygıtı"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Server Information"
@@ -2342,7 +2333,7 @@ msgstr "Etkinleştir"
 
 #: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
-msgstr ""
+msgstr "Özellikler"
 
 #: data/ui/pipe_manager_box.ui:505
 msgid "Channels"
@@ -2369,18 +2360,16 @@ msgid "White Noise"
 msgstr "Beyaz Gürültü"
 
 #: data/ui/pitch.ui:33
-#, fuzzy
 msgid "High Speed"
-msgstr "Yüksek Sığlık"
+msgstr "Yüksek Hız"
 
 #: data/ui/pitch.ui:34
-#, fuzzy
 msgid "High Quality"
-msgstr "Kalite"
+msgstr "Yüksek Kalite"
 
 #: data/ui/pitch.ui:35
 msgid "High Consistency"
-msgstr ""
+msgstr "Yüksek Tutarlılık"
 
 #: data/ui/pitch.ui:49
 #, fuzzy
@@ -2490,7 +2479,7 @@ msgstr "Oturum Açarken Hizmeti Başlat"
 
 #: data/ui/preferences_general.ui:26
 msgid "Shutdown on Window Close"
-msgstr ""
+msgstr "Pencere Kapandığında Kapat"
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
@@ -2585,9 +2574,8 @@ msgid "Axis Labels"
 msgstr "Eksen Etiketleri"
 
 #: data/ui/preferences_spectrum.ui:185
-#, fuzzy
 msgid "Frequency Range"
-msgstr "Sıklık"
+msgstr "Frekans Aralığı"
 
 #: data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
@@ -2836,9 +2824,8 @@ msgid "LR > RL (Stereo Flip Channels)"
 msgstr "LR > RL (Stereo Kanalları Ters Çevir)"
 
 #: data/ui/stereo_tools.ui:145
-#, fuzzy
 msgid "Stereo Mode"
-msgstr "Stereo Taban"
+msgstr "Stereo Kipi"
 
 #: data/ui/stereo_tools.ui:178 data/ui/stereo_tools.ui:203
 msgid "Invert Phase"
@@ -2882,38 +2869,44 @@ msgid "Stereo Phase"
 msgstr "Stereo Faz"
 
 #: src/app_info.cpp:68
-#, fuzzy
 msgid "Running"
-msgstr "çalışıyor"
+msgstr "Çalışıyor"
 
 #: src/app_info.cpp:70
-#, fuzzy
 msgid "Suspended"
-msgstr "askıya alındı"
+msgstr "Askıya alındı"
 
 #: src/app_info.cpp:72
 msgid "Idle"
-msgstr ""
+msgstr "Boşta"
 
 #: src/app_info.cpp:74
-#, fuzzy
 msgid "Creating"
-msgstr "Geçitleme"
+msgstr "Oluşturuluyor"
 
 #: src/app_info.cpp:76
-#, fuzzy
 msgid "Error"
-msgstr "hata"
+msgstr "Hata"
 
 #: src/app_info.cpp:78
-#, fuzzy
 msgid "Unknown"
-msgstr "bilinmiyor"
+msgstr "Bilinmiyor"
 
-#: src/app_info.cpp:230
-#, fuzzy
+#: src/app_info.cpp:83
+msgid "excluded"
+msgstr "hariç tutuldu"
+
+#: src/app_info.cpp:83
+msgid "enabled"
+msgstr "etkin"
+
+#: src/app_info.cpp:83
+msgid "disabled"
+msgstr "devre dışı"
+
+#: src/app_info.cpp:233
 msgid "channels"
-msgstr "Kanallar"
+msgstr "kanallar"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
@@ -3015,7 +3008,7 @@ msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 msgid "APO Presets"
 msgstr "APO Ön Ayarları"
 
-#: src/pipe_manager_box.cpp:310
+#: src/pipe_manager_box.cpp:308
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
@@ -3120,14 +3113,6 @@ msgstr "Model Dosyasını İçe Aktar"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr ""
-
-#, fuzzy
-#~ msgid "enabled"
-#~ msgstr "Etkinleştir"
-
-#, fuzzy
-#~ msgid "disabled"
-#~ msgstr "Etkinleştir"
 
 #~ msgid "Format"
 #~ msgstr "Biçim"
