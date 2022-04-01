@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2022-03-14 23:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -795,15 +795,20 @@ msgstr "limiter;compressore;riverbero;equalizzatore;autovolume;"
 msgid "\"Presets\""
 msgstr "\"Profili\""
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+#, fuzzy
+msgid "Activate"
+msgstr "Modello Attivo"
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 msgid "Mute Application"
 msgstr "Silenzia Applicazione"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 msgid "Application Volume"
 msgstr "Volume Applicazione"
 
@@ -2933,21 +2938,7 @@ msgstr "errore"
 msgid "Unknown"
 msgstr "sconosciuto"
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "enabled"
-msgstr "Attivato"
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "disabled"
-msgstr "Attivato"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "Canali"
@@ -3051,7 +3042,7 @@ msgstr "Importa File Profilo APO"
 msgid "APO Presets"
 msgstr "Profili APO"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 msgid "Remove Autoloading Preset"
 msgstr "Rimuovi Profilo di Auto Caricamento"
 
@@ -3154,6 +3145,14 @@ msgstr "Importa File Modello"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Attivato"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Attivato"
 
 #~ msgid "Format"
 #~ msgstr "Formato"

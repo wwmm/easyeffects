@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -623,15 +623,19 @@ msgstr ""
 msgid "\"Presets\""
 msgstr ""
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+msgid "Activate"
+msgstr ""
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 msgid "Mute Application"
 msgstr ""
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 msgid "Application Volume"
 msgstr ""
 
@@ -2756,19 +2760,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-msgid "enabled"
-msgstr ""
-
-#: src/app_info.cpp:83
-msgid "disabled"
-msgstr ""
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 msgid "channels"
 msgstr ""
 
@@ -2870,7 +2862,7 @@ msgstr ""
 msgid "APO Presets"
 msgstr ""
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 msgid "Remove Autoloading Preset"
 msgstr ""
 

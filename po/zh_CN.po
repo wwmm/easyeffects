@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2022-03-14 23:07+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -638,15 +638,20 @@ msgstr "限幅器;压缩器;混响;均衡器;自动音量;"
 msgid "\"Presets\""
 msgstr "\"预设\""
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+#, fuzzy
+msgid "Activate"
+msgstr "激活模型"
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 msgid "Mute Application"
 msgstr "将程序静音"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 msgid "Application Volume"
 msgstr ""
 
@@ -2783,21 +2788,7 @@ msgstr "错误"
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "enabled"
-msgstr "已启用"
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "disabled"
-msgstr "已启用"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "声道"
@@ -2900,7 +2891,7 @@ msgstr "加载 APO 预设文件"
 msgid "APO Presets"
 msgstr "APO 预设"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
 
@@ -3003,6 +2994,14 @@ msgstr "导入模型文件"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "RNNoise 模型"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "已启用"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "已启用"
 
 #~ msgid "Format"
 #~ msgstr "格式"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2022-02-20 22:54+0000\n"
 "Last-Translator: Christian Mattes <christian.mattes@rwth-aachen.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -644,16 +644,21 @@ msgstr "Limiter;Kompressor;Hall;Equalizer;Autovolumen;"
 msgid "\"Presets\""
 msgstr "\"Presets\""
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+#, fuzzy
+msgid "Activate"
+msgstr "Aktives Modell"
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 #, fuzzy
 msgid "Mute Application"
 msgstr "Anwendungen"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 #, fuzzy
 msgid "Application Volume"
 msgstr "Anwendungen"
@@ -2936,21 +2941,7 @@ msgstr "fehler"
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "enabled"
-msgstr "Aktiviert"
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "disabled"
-msgstr "Aktiviert"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "Kanäle"
@@ -3057,7 +3048,7 @@ msgstr "APO Preset-Datei importieren"
 msgid "APO Presets"
 msgstr "APO Presets"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Presets automatisch laden"
@@ -3165,6 +3156,14 @@ msgstr "Impulsdatei importieren"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Standard RNNoise-Modell"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Aktiviert"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Aktiviert"
 
 #~ msgid "Format"
 #~ msgstr "Format"

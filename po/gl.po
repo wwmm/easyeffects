@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2021-03-25 22:09+0100\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: \n"
@@ -643,16 +643,21 @@ msgstr "limitador;compresor;reverberación;ecualizador;volume automático;"
 msgid "\"Presets\""
 msgstr "«Preconfiguracións»"
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+#, fuzzy
+msgid "Activate"
+msgstr "Modelo activo"
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 #, fuzzy
 msgid "Mute Application"
 msgstr "Aplicacións"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 #, fuzzy
 msgid "Application Volume"
 msgstr "Aplicacións"
@@ -2986,21 +2991,7 @@ msgstr "erro"
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "enabled"
-msgstr "Activar"
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "disabled"
-msgstr "Activar"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "Canles"
@@ -3108,7 +3099,7 @@ msgstr "Importar ficheiro de preconfiguracións de APO"
 msgid "APO Presets"
 msgstr "Preconfiguracións de APO"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Retirar este ficheiro de preconfiguracións"
@@ -3217,6 +3208,14 @@ msgstr "Importar ficheiro de modelo"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Modelo RNNoise estándar"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Activar"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Activar"
 
 #~ msgid "Format"
 #~ msgstr "Formato"
