@@ -87,11 +87,12 @@
                                                     </object>
                                                 </child>
 
-                                                <!-- middle dot -->
+                                                <!-- Middle dot -->
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">start</property>
-                                                        <property name="margin-end">5</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
                                                         <property name="label">·</property>
                                                         <style>
                                                             <class name="dim-label" />
@@ -109,11 +110,12 @@
                                                     </object>
                                                 </child>
 
-                                                <!-- middle dot -->
+                                                <!-- Middle dot -->
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">start</property>
-                                                        <property name="margin-end">5</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
                                                         <property name="label">·</property>
                                                         <style>
                                                             <class name="dim-label" />
@@ -131,11 +133,12 @@
                                                     </object>
                                                 </child>
 
-                                                <!-- middle dot -->
+                                                <!-- Middle dot -->
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">start</property>
-                                                        <property name="margin-end">5</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
                                                         <property name="label">·</property>
                                                         <style>
                                                             <class name="dim-label" />
@@ -153,11 +156,12 @@
                                                     </object>
                                                 </child>
 
-                                                <!-- middle dot -->
+                                                <!-- Middle dot -->
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">start</property>
-                                                        <property name="margin-end">5</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
                                                         <property name="label">·</property>
                                                         <style>
                                                             <class name="dim-label" />
