@@ -16,7 +16,7 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="direction">right</property>
-                        <property name="label" translatable="yes">Add Plugin</property>
+                        <property name="label" translatable="yes">Add Effect</property>
                     </object>
                 </child>
 
