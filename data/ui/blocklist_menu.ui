@@ -93,25 +93,10 @@
                 </child>
 
                 <child>
-                    <object class="GtkBox">
-                        <property name="spacing">6</property>
-                        <child>
-                            <object class="GtkLabel" id="show_blocklisted_apps_label">
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Show Blocklisted Applications</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkSwitch" id="show_blocklisted_apps">
-                                <property name="halign">start</property>
-                                <property name="valign">center</property>
-                                <accessibility>
-                                    <relation name="labelled-by">show_blocklisted_apps_label</relation>
-                                </accessibility>
-                            </object>
-                        </child>
+                    <object class="GtkCheckButton" id="show_blocklisted_apps">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Show Excluded Applications</property>
                     </object>
                 </child>
             </object>

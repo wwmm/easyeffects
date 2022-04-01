@@ -45,7 +45,7 @@ struct _BlocklistMenu {
 
   GtkText* app_name;
 
-  GtkSwitch* show_blocklisted_apps;
+  GtkCheckButton* show_blocklisted_apps;
 
   GtkStringList* string_list;
 
