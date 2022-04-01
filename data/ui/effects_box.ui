@@ -111,7 +111,7 @@
                         <child>
                             <object class="GtkMenuButton" id="menubutton_blocklist">
                                 <property name="direction">up</property>
-                                <property name="label" translatable="yes">Blocklist</property>
+                                <property name="label" translatable="yes">Excluded Apps</property>
                             </object>
                         </child>
 

@@ -194,6 +194,7 @@
                             <object class="GtkBox" id="enable_box">
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
+                                <property name="spacing">8</property>
                                 <!-- Enable section -->
                                 <child>
                                     <object class="GtkCheckButton" id="enable">
@@ -217,7 +218,6 @@
                                         </accessibility>
                                     </object>
                                 </child>
-
                             </object>
                         </child>
 

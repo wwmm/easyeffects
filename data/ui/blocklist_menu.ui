@@ -39,7 +39,7 @@
                                     <class name="suggested-action" />
                                 </style>
                                 <accessibility>
-                                    <property name="label" translatable="yes">Add to Blocklist</property>
+                                    <property name="label" translatable="yes">Add to Excluded Applications</property>
                                 </accessibility>
                             </object>
                         </child>
@@ -83,7 +83,7 @@
                                             <class name="rich-list" />
                                         </style>
                                         <accessibility>
-                                            <property name="label" translatable="yes">Blocklisted Applications List</property>
+                                            <property name="label" translatable="yes">Excluded Applications List</property>
                                         </accessibility>
                                     </object>
                                 </child>
