@@ -85,6 +85,10 @@ You can help me to keep developing EasyEffects through donations. Any amount wil
 
 - For information about changes between versions, take a look at our
   [changelog](https://github.com/wwmm/easyeffects/blob/master/CHANGELOG.md)
+  
+## Warning
+DON'T SET EasyEffects virtual devices as default
+EasyEffects is designed assuming that your hardware stays as default
 
 ## Installation
 
