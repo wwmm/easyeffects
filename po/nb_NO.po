@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2022-03-14 23:07+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -638,15 +638,20 @@ msgstr ""
 msgid "\"Presets\""
 msgstr "«Forhåndsinnstillinger»"
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+#, fuzzy
+msgid "Activate"
+msgstr "Aktiv modell"
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 msgid "Mute Application"
 msgstr "Forstum program"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 msgid "Application Volume"
 msgstr "Programlydstyrke"
 
@@ -2788,21 +2793,7 @@ msgstr "feil"
 msgid "Unknown"
 msgstr "ukjent"
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "enabled"
-msgstr "Påskrudd"
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "disabled"
-msgstr "Påskrudd"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "Kanaler"
@@ -2906,7 +2897,7 @@ msgstr ""
 msgid "APO Presets"
 msgstr ""
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 msgid "Remove Autoloading Preset"
 msgstr ""
 
@@ -3018,6 +3009,14 @@ msgstr "Importer modellfil"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr ""
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Påskrudd"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Påskrudd"
 
 #~ msgid "Format"
 #~ msgstr "Format"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2021-07-14 14:30+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -638,16 +638,21 @@ msgstr "limiter;compressor;galm;equalizer;autovolume;"
 msgid "\"Presets\""
 msgstr "‘Voorinstellingen’"
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+#, fuzzy
+msgid "Activate"
+msgstr "Huidig model"
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 #, fuzzy
 msgid "Mute Application"
 msgstr "Toepassingen"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 #, fuzzy
 msgid "Application Volume"
 msgstr "Toepassingen"
@@ -2960,21 +2965,7 @@ msgstr "foutmelding"
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "enabled"
-msgstr "Inschakelen"
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "disabled"
-msgstr "Inschakelen"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "Aantal kanalen"
@@ -3080,7 +3071,7 @@ msgstr "APO-voorinstellingsbestand importeren"
 msgid "APO Presets"
 msgstr "APO-voorinstellingen"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Voorinstellingen automatisch inladen"
@@ -3186,6 +3177,14 @@ msgstr "Modelbestand importeren"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Standaard RNNoise-model"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Inschakelen"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Inschakelen"
 
 #~ msgid "Format"
 #~ msgstr "Formaat"

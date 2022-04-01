@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: OctopusET <sumoon@seoulsaram.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -645,16 +645,20 @@ msgstr "리미터;컴프레서;리버브;이퀄라이저;자동음량조절;"
 msgid "\"Presets\""
 msgstr "\"프리셋\""
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+msgid "Activate"
+msgstr ""
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 #, fuzzy
 msgid "Mute Application"
 msgstr "응용 프로그램 음소거"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 #, fuzzy
 msgid "Application Volume"
 msgstr "응용 프로그램 음량"
@@ -2974,19 +2978,7 @@ msgstr "에러"
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-msgid "enabled"
-msgstr ""
-
-#: src/app_info.cpp:83
-msgid "disabled"
-msgstr ""
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "채널"
@@ -3096,7 +3088,7 @@ msgstr "APO 프리셋 파일 임포트"
 msgid "APO Presets"
 msgstr "APO 프리셋"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 msgid "Remove Autoloading Preset"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -640,16 +640,21 @@ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 msgid "\"Presets\""
 msgstr "Preset"
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+#, fuzzy
+msgid "Activate"
+msgstr "Model Aktif"
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 #, fuzzy
 msgid "Mute Application"
 msgstr "Aplikasi"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 #, fuzzy
 msgid "Application Volume"
 msgstr "Aplikasi"
@@ -2946,21 +2951,7 @@ msgstr "error"
 msgid "Unknown"
 msgstr "tidak dikenal"
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "enabled"
-msgstr "Hidupkan"
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "disabled"
-msgstr "Hidupkan"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "Total Kanal"
@@ -3065,7 +3056,7 @@ msgstr "Impor File Preset APO"
 msgid "APO Presets"
 msgstr "Preset APO"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 msgid "Remove Autoloading Preset"
 msgstr "Hapus Preset Pemuatan Otomatis"
 
@@ -3168,6 +3159,14 @@ msgstr "Impor file Model"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Model RNNoise"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Hidupkan"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Hidupkan"
 
 #~ msgid "Format"
 #~ msgstr "Format Resampling"

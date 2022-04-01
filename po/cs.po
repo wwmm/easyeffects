@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-01 12:57-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -641,16 +641,21 @@ msgstr "omezovač (limiter);kompresor;dozvuk;ekvalizér;automatická hlasitost;"
 msgid "\"Presets\""
 msgstr "\"Přednastavení\""
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:201
+#, fuzzy
+msgid "Activate"
+msgstr "Agresivní režim"
+
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:237
 #, fuzzy
 msgid "Mute Application"
 msgstr "Programy"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:259
 #, fuzzy
 msgid "Application Volume"
 msgstr "Programy"
@@ -2996,21 +3001,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "enabled"
-msgstr "Povolit"
-
-#: src/app_info.cpp:83
-#, fuzzy
-msgid "disabled"
-msgstr "Povolit"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 #, fuzzy
 msgid "channels"
 msgstr "Kanály"
@@ -3119,7 +3110,7 @@ msgstr "Zavést APO přednastavení"
 msgid "APO Presets"
 msgstr "APO Přednastavení"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Odstranit tento soubor s přednastavením"
@@ -3230,6 +3221,14 @@ msgstr "Zavést soubor s impulsem"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Agresivní režim"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Povolit"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Povolit"
 
 #~ msgid "Format"
 #~ msgstr "Formát"
