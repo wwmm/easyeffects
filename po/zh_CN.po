@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-31 13:21-0300\n"
-"PO-Revision-Date: 2022-03-14 23:07+0000\n"
+"PO-Revision-Date: 2022-04-01 14:37+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -2756,26 +2756,22 @@ msgid "Stereo Phase"
 msgstr "立体声相位"
 
 #: src/app_info.cpp:68
-#, fuzzy
 msgid "Running"
 msgstr "正在运行"
 
 #: src/app_info.cpp:70
-#, fuzzy
 msgid "Suspended"
-msgstr "暂停"
+msgstr "已暂停"
 
 #: src/app_info.cpp:72
 msgid "Idle"
 msgstr ""
 
 #: src/app_info.cpp:74
-#, fuzzy
 msgid "Creating"
-msgstr "创建"
+msgstr "创建中"
 
 #: src/app_info.cpp:76
-#, fuzzy
 msgid "Error"
 msgstr "错误"
 
@@ -2788,17 +2784,14 @@ msgid "excluded"
 msgstr ""
 
 #: src/app_info.cpp:83
-#, fuzzy
 msgid "enabled"
 msgstr "已启用"
 
 #: src/app_info.cpp:83
-#, fuzzy
 msgid "disabled"
-msgstr "已启用"
+msgstr "已禁用"
 
 #: src/app_info.cpp:233
-#, fuzzy
 msgid "channels"
 msgstr "声道"
 
