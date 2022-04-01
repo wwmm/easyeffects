@@ -43,17 +43,15 @@ struct Data {
 struct _AppInfo {
   GtkBox parent_instance;
 
-  GtkSwitch* enable;
-
   GtkImage* app_icon;
 
-  GtkLabel *app_name, *media_name, *format, *rate, *channels, *latency, *state, *ee_state;
+  GtkLabel *app_name, *media_name, *format, *rate, *channels, *latency, *state;
 
   GtkToggleButton* mute;
 
   GtkSpinButton* volume;
 
-  GtkCheckButton* blocklist;
+  GtkCheckButton *blocklist, *enable;
 
   GtkIconTheme* icon_theme;
 
@@ -79,10 +77,6 @@ auto node_state_to_char_pointer(const pw_node_state& state) -> const char* {
     default:
       return _("Unknown");
   }
-}
-
-auto ee_state_to_char_pointer(const bool& enable, const bool& blocklist) -> const char* {
-  return (blocklist) ? _("excluded") : ((enable) ? _("enabled") : _("disabled"));
 }
 
 auto app_is_blocklisted(AppInfo* self, const std::string& name) -> bool {
@@ -163,7 +157,9 @@ void disconnect_stream(AppInfo* self, const uint& id, const std::string& media_c
   }
 }
 
-void on_enable(GtkSwitch* btn, gboolean is_enabled, AppInfo* self) {
+void on_enable(GtkCheckButton* btn, AppInfo* self) {
+  auto is_enabled = gtk_check_button_get_active(btn) != 0;
+
   auto is_blocklisted = app_is_blocklisted(self, self->data->info.name);
 
   if (!is_blocklisted) {
@@ -172,8 +168,6 @@ void on_enable(GtkSwitch* btn, gboolean is_enabled, AppInfo* self) {
 
     self->data->enabled_app_list->insert_or_assign(self->data->info.id, is_enabled);
   }
-
-  gtk_label_set_text(self->ee_state, ee_state_to_char_pointer(is_enabled, is_blocklisted));
 }
 
 void on_volume_changed(GtkSpinButton* sbtn, AppInfo* self) {
@@ -212,7 +206,7 @@ void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
   }
 
   if (is_blocklisted) {
-    self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_switch_get_active(self->enable));
+    self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_check_button_get_active(self->enable));
 
     util::add_new_blocklist_entry(self->settings, app_tag, log_tag);
   } else {
@@ -245,9 +239,7 @@ void update(AppInfo* self, const NodeInfo node_info) {
   const auto is_blocklisted = app_is_blocklisted(self, node_info.name);
 
   gtk_widget_set_sensitive(GTK_WIDGET(self->enable), is_enabled || !is_blocklisted);
-  gtk_switch_set_active(self->enable, is_enabled);
-
-  gtk_label_set_text(self->ee_state, ee_state_to_char_pointer(is_enabled, is_blocklisted));
+  gtk_check_button_set_active(self->enable, is_enabled);
 
   g_signal_handler_unblock(self->enable, self->data->handler_id_enable);
 
@@ -363,7 +355,6 @@ void app_info_class_init(AppInfoClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, AppInfo, channels);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, latency);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, state);
-  gtk_widget_class_bind_template_child(widget_class, AppInfo, ee_state);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, volume);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, mute);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, blocklist);
@@ -378,7 +369,7 @@ void app_info_init(AppInfo* self) {
 
   prepare_spinbutton<"%">(self->volume);
 
-  self->data->handler_id_enable = g_signal_connect(self->enable, "state-set", G_CALLBACK(on_enable), self);
+  self->data->handler_id_enable = g_signal_connect(self->enable, "toggled", G_CALLBACK(on_enable), self);
   self->data->handler_id_volume = g_signal_connect(self->volume, "value-changed", G_CALLBACK(on_volume_changed), self);
   self->data->handler_id_mute = g_signal_connect(self->mute, "toggled", G_CALLBACK(on_mute), self);
   self->data->handler_id_blocklist = g_signal_connect(self->blocklist, "toggled", G_CALLBACK(on_blocklist), self);
