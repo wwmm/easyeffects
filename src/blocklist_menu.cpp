@@ -78,6 +78,8 @@ void setup_listview(BlocklistMenu* self) {
 
         gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
         gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
+        gtk_label_set_ellipsize(GTK_LABEL(label), PANGO_ELLIPSIZE_END);
+        gtk_label_set_max_width_chars(GTK_LABEL(label), 100);
 
         gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
         gtk_box_append(GTK_BOX(box), GTK_WIDGET(button));
