@@ -10,7 +10,7 @@
                 <property name="margin-end">6</property>
                 <property name="margin-top">6</property>
                 <property name="margin-bottom">6</property>
-                <property name="spacing">6</property>
+                <property name="spacing">12</property>
                 <child>
                     <object class="AdwViewSwitcher" id="switcher_title">
                         <property name="stack">stack</property>
@@ -25,7 +25,7 @@
                         <child>
                             <object class="AdwViewStackPage">
                                 <property name="name">page_output</property>
-                                <property name="title" translatable="yes">Speakers</property>
+                                <property name="title" translatable="yes">Output</property>
                                 <property name="icon_name">audio-speakers-symbolic</property>
                                 <property name="child">
                                     <object class="GtkBox">
@@ -178,7 +178,7 @@
                         <child>
                             <object class="AdwViewStackPage">
                                 <property name="name">page_input</property>
-                                <property name="title" translatable="yes">Microphone</property>
+                                <property name="title" translatable="yes">Input</property>
                                 <property name="icon_name">audio-input-microphone-symbolic</property>
                                 <property name="child">
                                     <object class="GtkBox">

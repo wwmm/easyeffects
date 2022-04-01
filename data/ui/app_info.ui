@@ -39,21 +39,16 @@
                                         <property name="valign">center</property>
                                         <property name="spacing">6</property>
                                         <property name="orientation">vertical</property>
-                                        <!-- Application name and state -->
+                                        <!-- Application name -->
                                         <child>
-                                            <object class="GtkBox">
+                                            <object class="GtkLabel" id="app_name">
                                                 <property name="halign">start</property>
+                                                <property name="xalign">0</property>
                                                 <property name="valign">center</property>
-                                                <property name="spacing">3</property>
-                                                <child>
-                                                    <object class="GtkLabel" id="app_name">
-                                                        <property name="halign">start</property>
-                                                        <property name="valign">center</property>
-                                                        <property name="wrap">1</property>
-                                                        <property name="wrap-mode">PANGO_WRAP_WORD_CHAR</property>
-                                                        <property name="label">App</property>
-                                                    </object>
-                                                </child>
+                                                <property name="wrap">1</property>
+                                                <property name="wrap-mode">word-char</property>
+                                                <property name="selectable">1</property>
+                                                <property name="label">App</property>
                                             </object>
                                         </child>
 
@@ -61,9 +56,11 @@
                                         <child>
                                             <object class="GtkLabel" id="media_name">
                                                 <property name="halign">start</property>
+                                                <property name="xalign">0</property>
                                                 <property name="valign">center</property>
                                                 <property name="wrap">1</property>
-                                                <property name="wrap-mode">PANGO_WRAP_WORD_CHAR</property>
+                                                <property name="wrap-mode">word-char</property>
+                                                <property name="selectable">1</property>
                                                 <property name="label">Description</property>
                                                 <style>
                                                     <class name="dim-label" />
@@ -87,11 +84,12 @@
                                                     </object>
                                                 </child>
 
-                                                <!-- middle dot -->
+                                                <!-- Middle dot -->
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">start</property>
-                                                        <property name="margin-end">5</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
                                                         <property name="label">·</property>
                                                         <style>
                                                             <class name="dim-label" />
@@ -109,11 +107,12 @@
                                                     </object>
                                                 </child>
 
-                                                <!-- middle dot -->
+                                                <!-- Middle dot -->
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">start</property>
-                                                        <property name="margin-end">5</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
                                                         <property name="label">·</property>
                                                         <style>
                                                             <class name="dim-label" />
@@ -131,11 +130,12 @@
                                                     </object>
                                                 </child>
 
-                                                <!-- middle dot -->
+                                                <!-- Middle dot -->
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">start</property>
-                                                        <property name="margin-end">5</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
                                                         <property name="label">·</property>
                                                         <style>
                                                             <class name="dim-label" />
@@ -153,11 +153,12 @@
                                                     </object>
                                                 </child>
 
-                                                <!-- middle dot -->
+                                                <!-- Middle dot -->
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">start</property>
-                                                        <property name="margin-end">5</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
                                                         <property name="label">·</property>
                                                         <style>
                                                             <class name="dim-label" />
@@ -193,6 +194,7 @@
                             <object class="GtkBox" id="enable_box">
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
+                                <property name="spacing">8</property>
                                 <!-- Enable section -->
                                 <child>
                                     <object class="GtkCheckButton" id="enable">
@@ -216,7 +218,6 @@
                                         </accessibility>
                                     </object>
                                 </child>
-
                             </object>
                         </child>
 
@@ -244,6 +245,9 @@
                                         <property name="sensitive" bind-source="mute" bind-property="active" bind-flags="sync-create|invert-boolean" />
                                         <property name="valign">center</property>
                                         <property name="hexpand">1</property>
+                                        <property name="xalign">0.5</property>
+                                        <property name="digits">0</property>
+                                        <property name="update-policy">if-valid</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
                                                 <property name="lower">0</property>
@@ -253,8 +257,6 @@
                                                 <property name="page-increment">10</property>
                                             </object>
                                         </property>
-                                        <property name="digits">0</property>
-                                        <property name="update-policy">if-valid</property>
                                         <accessibility>
                                             <property name="label" translatable="yes">Application Volume</property>
                                         </accessibility>

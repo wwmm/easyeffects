@@ -23,6 +23,7 @@
                 <child>
                     <object class="GtkLabel" id="device">
                         <property name="halign">start</property>
+                        <property name="ellipsize">end</property>
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -46,6 +47,7 @@
                 <child>
                     <object class="GtkLabel" id="device_description">
                         <property name="halign">start</property>
+                        <property name="ellipsize">end</property>
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -69,6 +71,7 @@
                 <child>
                     <object class="GtkLabel" id="device_profile">
                         <property name="halign">start</property>
+                        <property name="ellipsize">end</property>
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -93,6 +96,7 @@
                 <child>
                     <object class="GtkLabel" id="preset_name">
                         <property name="halign">start</property>
+                        <property name="ellipsize">end</property>
                         <style>
                             <class name="dim-label" />
                         </style>
