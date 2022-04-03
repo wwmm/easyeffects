@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 12:57-0300\n"
+"POT-Creation-Date: 2022-04-03 17:25-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: OctopusET <sumoon@seoulsaram.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -645,20 +645,20 @@ msgstr "리미터;컴프레서;리버브;이퀄라이저;자동음량조절;"
 msgid "\"Presets\""
 msgstr "\"프리셋\""
 
-#: data/ui/app_info.ui:201
+#: data/ui/app_info.ui:203
 msgid "Activate"
 msgstr ""
 
-#: data/ui/app_info.ui:213
+#: data/ui/app_info.ui:215
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:237
+#: data/ui/app_info.ui:238
 #, fuzzy
 msgid "Mute Application"
 msgstr "응용 프로그램 음소거"
 
-#: data/ui/app_info.ui:259
+#: data/ui/app_info.ui:261
 #, fuzzy
 msgid "Application Volume"
 msgstr "응용 프로그램 음량"
@@ -812,9 +812,10 @@ msgstr "Output Gain"
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
 #: data/ui/limiter.ui:743 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306 data/ui/reverb.ui:364
-#: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
-#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
+#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
+#: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
+#: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
+#: src/application_ui.cpp:245
 #, fuzzy
 msgid "Input"
 msgstr "입력"
@@ -842,9 +843,10 @@ msgstr "Plugin Input Gain"
 #: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
 #: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390 data/ui/reverb.ui:448
-#: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
-#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
+#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
+#: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
+#: src/application_ui.cpp:244
 #, fuzzy
 msgid "Output"
 msgstr "출력"
@@ -894,7 +896,7 @@ msgstr "다음 사용 중"
 msgid "Device"
 msgstr "장치"
 
-#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:44
+#: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
 #: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
@@ -902,17 +904,17 @@ msgstr "장치"
 msgid "Name"
 msgstr "이름"
 
-#: data/ui/autoload_row.ui:62
+#: data/ui/autoload_row.ui:64
 #, fuzzy
 msgid "Profile"
 msgstr "프로필"
 
-#: data/ui/autoload_row.ui:86
+#: data/ui/autoload_row.ui:89
 #, fuzzy
 msgid "Preset"
 msgstr "프리셋"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
 #, fuzzy
 msgid "Remove"
 msgstr "제거"
@@ -974,16 +976,18 @@ msgstr ""
 
 #: data/ui/blocklist_menu.ui:42
 #, fuzzy
-msgid "Add to Blocklist"
-msgstr "차단 목록에 추가"
+msgid "Add to Excluded Applications"
+msgstr "응용 프로그램 음소거"
 
 #: data/ui/blocklist_menu.ui:86
-msgid "Blocklisted Applications List"
-msgstr ""
+#, fuzzy
+msgid "Excluded Applications List"
+msgstr "응용 프로그램 목록"
 
-#: data/ui/blocklist_menu.ui:102
-msgid "Show Blocklisted Applications"
-msgstr ""
+#: data/ui/blocklist_menu.ui:99
+#, fuzzy
+msgid "Show Excluded Applications"
+msgstr "응용 프로그램 음소거"
 
 #: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 #, fuzzy
@@ -1504,7 +1508,7 @@ msgid "Filter Length"
 msgstr "Filter Length"
 
 #: data/ui/effects_box.ui:114
-msgid "Blocklist"
+msgid "Excluded Apps"
 msgstr ""
 
 #: data/ui/equalizer.ui:77
@@ -2526,9 +2530,8 @@ msgid "Remove this plugin"
 msgstr ""
 
 #: data/ui/plugins_box.ui:19
-#, fuzzy
-msgid "Add Plugin"
-msgstr "플러그인 추가"
+msgid "Add Effect"
+msgstr ""
 
 #: data/ui/plugins_box.ui:34
 #, fuzzy
@@ -2671,10 +2674,6 @@ msgstr ""
 msgid "Remove this preset file"
 msgstr ""
 
-#: data/ui/presets_menu.ui:28
-msgid "Speakers"
-msgstr ""
-
 #: data/ui/presets_menu.ui:54
 #, fuzzy
 msgid "New Output Preset Name"
@@ -2697,10 +2696,6 @@ msgstr "프리셋 임포트"
 #, fuzzy
 msgid "Output Presets List"
 msgstr "APO 프리셋"
-
-#: data/ui/presets_menu.ui:181
-msgid "Microphone"
-msgstr ""
 
 #: data/ui/presets_menu.ui:207
 #, fuzzy
@@ -3070,8 +3065,9 @@ msgid "Players"
 msgstr ""
 
 #: src/effects_box.cpp:306
-msgid "Plugins"
-msgstr ""
+#, fuzzy
+msgid "Effects"
+msgstr "EasyEffects"
 
 #: src/equalizer_band_box.cpp:97
 #, fuzzy
@@ -3195,6 +3191,14 @@ msgstr "APO 프리셋 파일 임포트"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "제거"
+
+#, fuzzy
+#~ msgid "Add to Blocklist"
+#~ msgstr "차단 목록에 추가"
+
+#, fuzzy
+#~ msgid "Add Plugin"
+#~ msgstr "플러그인 추가"
 
 #, fuzzy
 #~ msgid "Format"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 13:21-0300\n"
+"POT-Creation-Date: 2022-04-03 17:25-0300\n"
 "PO-Revision-Date: 2022-04-01 14:37+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -638,15 +638,20 @@ msgstr "限幅器;压缩器;混响;均衡器;自动音量;"
 msgid "\"Presets\""
 msgstr "\"预设\""
 
-#: data/ui/app_info.ui:218
+#: data/ui/app_info.ui:203
+#, fuzzy
+msgid "Activate"
+msgstr "激活模型"
+
+#: data/ui/app_info.ui:215
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:238
 msgid "Mute Application"
 msgstr "将程序静音"
 
-#: data/ui/app_info.ui:258
+#: data/ui/app_info.ui:261
 msgid "Application Volume"
 msgstr ""
 
@@ -779,9 +784,10 @@ msgstr "输出增益"
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
 #: data/ui/limiter.ui:743 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306 data/ui/reverb.ui:364
-#: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
-#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
+#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
+#: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
+#: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
+#: src/application_ui.cpp:245
 msgid "Input"
 msgstr "输入"
 
@@ -807,9 +813,10 @@ msgstr "插件输入增益"
 #: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
 #: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390 data/ui/reverb.ui:448
-#: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
-#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
+#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
+#: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
+#: src/application_ui.cpp:244
 msgid "Output"
 msgstr "输出"
 
@@ -854,22 +861,22 @@ msgstr "使用"
 msgid "Device"
 msgstr "设备"
 
-#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:44
+#: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
 #: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
 msgid "Name"
 msgstr "名称"
 
-#: data/ui/autoload_row.ui:62
+#: data/ui/autoload_row.ui:64
 msgid "Profile"
 msgstr "概述"
 
-#: data/ui/autoload_row.ui:86
+#: data/ui/autoload_row.ui:89
 msgid "Preset"
 msgstr "预设"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
 msgid "Remove"
 msgstr "删除"
 
@@ -920,16 +927,19 @@ msgid "Application Name"
 msgstr ""
 
 #: data/ui/blocklist_menu.ui:42
-msgid "Add to Blocklist"
-msgstr "加入黑名单"
+#, fuzzy
+msgid "Add to Excluded Applications"
+msgstr "将程序静音"
 
 #: data/ui/blocklist_menu.ui:86
-msgid "Blocklisted Applications List"
-msgstr ""
+#, fuzzy
+msgid "Excluded Applications List"
+msgstr "将程序静音"
 
-#: data/ui/blocklist_menu.ui:102
-msgid "Show Blocklisted Applications"
-msgstr ""
+#: data/ui/blocklist_menu.ui:99
+#, fuzzy
+msgid "Show Excluded Applications"
+msgstr "将程序静音"
 
 #: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
@@ -1358,8 +1368,8 @@ msgid "Filter Length"
 msgstr "过滤器长度"
 
 #: data/ui/effects_box.ui:114
-msgid "Blocklist"
-msgstr "黑名单"
+msgid "Excluded Apps"
+msgstr ""
 
 #: data/ui/equalizer.ui:77
 msgid "Bands"
@@ -2344,8 +2354,8 @@ msgid "Remove this plugin"
 msgstr "删除这个插件"
 
 #: data/ui/plugins_box.ui:19
-msgid "Add Plugin"
-msgstr "增加插件"
+msgid "Add Effect"
+msgstr ""
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
@@ -2487,10 +2497,6 @@ msgstr "将当前设置保存到这个预设文件"
 msgid "Remove this preset file"
 msgstr "删除这个预设文件"
 
-#: data/ui/presets_menu.ui:28
-msgid "Speakers"
-msgstr "扬声器"
-
 #: data/ui/presets_menu.ui:54
 msgid "New Output Preset Name"
 msgstr "新输出预设名"
@@ -2510,10 +2516,6 @@ msgstr "搜索输出预设"
 #: data/ui/presets_menu.ui:155
 msgid "Output Presets List"
 msgstr "输出预设列表"
-
-#: data/ui/presets_menu.ui:181
-msgid "Microphone"
-msgstr "麦克风"
 
 #: data/ui/presets_menu.ui:207
 msgid "New Input Preset Name"
@@ -2779,19 +2781,7 @@ msgstr "错误"
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:83
-msgid "excluded"
-msgstr ""
-
-#: src/app_info.cpp:83
-msgid "enabled"
-msgstr "已启用"
-
-#: src/app_info.cpp:83
-msgid "disabled"
-msgstr "已禁用"
-
-#: src/app_info.cpp:233
+#: src/app_info.cpp:230
 msgid "channels"
 msgstr "声道"
 
@@ -2878,8 +2868,9 @@ msgid "Players"
 msgstr "播放器"
 
 #: src/effects_box.cpp:306
-msgid "Plugins"
-msgstr "插件"
+#, fuzzy
+msgid "Effects"
+msgstr "EasyEffects"
 
 #: src/equalizer_band_box.cpp:97
 msgid "infinity"
@@ -2893,7 +2884,7 @@ msgstr "加载 APO 预设文件"
 msgid "APO Presets"
 msgstr "APO 预设"
 
-#: src/pipe_manager_box.cpp:308
+#: src/pipe_manager_box.cpp:310
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
 
@@ -2996,6 +2987,30 @@ msgstr "导入模型文件"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "RNNoise 模型"
+
+#~ msgid "Add to Blocklist"
+#~ msgstr "加入黑名单"
+
+#~ msgid "Blocklist"
+#~ msgstr "黑名单"
+
+#~ msgid "Add Plugin"
+#~ msgstr "增加插件"
+
+#~ msgid "Speakers"
+#~ msgstr "扬声器"
+
+#~ msgid "Microphone"
+#~ msgstr "麦克风"
+
+#~ msgid "enabled"
+#~ msgstr "已启用"
+
+#~ msgid "disabled"
+#~ msgstr "已禁用"
+
+#~ msgid "Plugins"
+#~ msgstr "插件"
 
 #~ msgid "Format"
 #~ msgstr "格式"

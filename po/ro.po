@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 12:57-0300\n"
+"POT-Creation-Date: 2022-04-03 17:25-0300\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -642,21 +642,21 @@ msgstr "limitator;compresor;reverberație;egalizator;autovolum"
 msgid "\"Presets\""
 msgstr "”Presetări”"
 
-#: data/ui/app_info.ui:201
+#: data/ui/app_info.ui:203
 #, fuzzy
 msgid "Activate"
 msgstr "Model Activ"
 
-#: data/ui/app_info.ui:213
+#: data/ui/app_info.ui:215
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:237
+#: data/ui/app_info.ui:238
 #, fuzzy
 msgid "Mute Application"
 msgstr "Aplicații"
 
-#: data/ui/app_info.ui:259
+#: data/ui/app_info.ui:261
 #, fuzzy
 msgid "Application Volume"
 msgstr "Aplicații"
@@ -802,9 +802,10 @@ msgstr "Output"
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
 #: data/ui/limiter.ui:743 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306 data/ui/reverb.ui:364
-#: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
-#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
+#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
+#: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
+#: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
+#: src/application_ui.cpp:245
 msgid "Input"
 msgstr "Input"
 
@@ -831,9 +832,10 @@ msgstr "Input Pipeline"
 #: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
 #: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390 data/ui/reverb.ui:448
-#: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
-#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
+#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
+#: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
+#: src/application_ui.cpp:244
 msgid "Output"
 msgstr "Output"
 
@@ -879,23 +881,23 @@ msgstr ""
 msgid "Device"
 msgstr ""
 
-#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:44
+#: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
 #: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
 msgid "Name"
 msgstr "Nume"
 
-#: data/ui/autoload_row.ui:62
+#: data/ui/autoload_row.ui:64
 msgid "Profile"
 msgstr ""
 
-#: data/ui/autoload_row.ui:86
+#: data/ui/autoload_row.ui:89
 #, fuzzy
 msgid "Preset"
 msgstr "Presetări"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
 msgid "Remove"
 msgstr ""
 
@@ -948,17 +950,18 @@ msgid "Application Name"
 msgstr "Aplicații"
 
 #: data/ui/blocklist_menu.ui:42
-msgid "Add to Blocklist"
-msgstr "Adaugă la Lista de Blocare"
+#, fuzzy
+msgid "Add to Excluded Applications"
+msgstr "Arată programele din Lista de Blocare în Fila Principală"
 
 #: data/ui/blocklist_menu.ui:86
 #, fuzzy
-msgid "Blocklisted Applications List"
+msgid "Excluded Applications List"
 msgstr "Arată programele din Lista de Blocare în Fila Principală"
 
-#: data/ui/blocklist_menu.ui:102
+#: data/ui/blocklist_menu.ui:99
 #, fuzzy
-msgid "Show Blocklisted Applications"
+msgid "Show Excluded Applications"
 msgstr "Arată programele din Lista de Blocare în Fila Principală"
 
 #: data/ui/compressor.ui:38 src/plugin_name.cpp:28
@@ -1418,8 +1421,8 @@ msgid "Filter Length"
 msgstr "Filtru"
 
 #: data/ui/effects_box.ui:114
-msgid "Blocklist"
-msgstr "Lista de Blocare"
+msgid "Excluded Apps"
+msgstr ""
 
 #: data/ui/equalizer.ui:77
 msgid "Bands"
@@ -2504,8 +2507,9 @@ msgid "Remove this plugin"
 msgstr "Șterge fișierul de presetări"
 
 #: data/ui/plugins_box.ui:19
-msgid "Add Plugin"
-msgstr ""
+#, fuzzy
+msgid "Add Effect"
+msgstr "Efecte Input"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
@@ -2654,10 +2658,6 @@ msgstr "Salvează setările curente în acest fișier cu presetări"
 msgid "Remove this preset file"
 msgstr "Șterge fișierul de presetări"
 
-#: data/ui/presets_menu.ui:28
-msgid "Speakers"
-msgstr ""
-
 #: data/ui/presets_menu.ui:54
 #, fuzzy
 msgid "New Output Preset Name"
@@ -2680,11 +2680,6 @@ msgstr "Presetări pentru Output:"
 #, fuzzy
 msgid "Output Presets List"
 msgstr "Presetări pentru Output:"
-
-#: data/ui/presets_menu.ui:181
-#, fuzzy
-msgid "Microphone"
-msgstr "Calibrare Microfon"
 
 #: data/ui/presets_menu.ui:207
 #, fuzzy
@@ -3067,8 +3062,9 @@ msgid "Players"
 msgstr ""
 
 #: src/effects_box.cpp:306
-msgid "Plugins"
-msgstr ""
+#, fuzzy
+msgid "Effects"
+msgstr "EasyEffects"
 
 #: src/equalizer_band_box.cpp:97
 msgid "infinity"
@@ -3191,6 +3187,16 @@ msgstr "Importă Fișier de Model"
 msgid "RNNoise Models"
 msgstr "Model Standard RNNoise"
 
+#~ msgid "Add to Blocklist"
+#~ msgstr "Adaugă la Lista de Blocare"
+
+#~ msgid "Blocklist"
+#~ msgstr "Lista de Blocare"
+
+#, fuzzy
+#~ msgid "Microphone"
+#~ msgstr "Calibrare Microfon"
+
 #, fuzzy
 #~ msgid "enabled"
 #~ msgstr "Activează"
@@ -3250,9 +3256,6 @@ msgstr "Model Standard RNNoise"
 #~ msgid "Reconnect the microphone to apply new changes made to the Blocklist"
 #~ msgstr ""
 #~ "Reconectați microfonul pentru a aplica noile schimbări la Lista de Blocare"
-
-#~ msgid "Input Effects"
-#~ msgstr "Efecte Input"
 
 #~ msgid "Restart the player to apply new changes made to the Blocklist"
 #~ msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 12:57-0300\n"
+"POT-Creation-Date: 2022-04-03 17:25-0300\n"
 "PO-Revision-Date: 2022-03-26 14:09+0000\n"
 "Last-Translator: 154pinkchairs <ovehis@riseup.net>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -647,21 +647,21 @@ msgstr "limiter;kompresor;pogłos;korektor;autogłośność;"
 msgid "\"Presets\""
 msgstr "Profile"
 
-#: data/ui/app_info.ui:201
+#: data/ui/app_info.ui:203
 #, fuzzy
 msgid "Activate"
 msgstr "Kompresor"
 
-#: data/ui/app_info.ui:213
+#: data/ui/app_info.ui:215
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:237
+#: data/ui/app_info.ui:238
 #, fuzzy
 msgid "Mute Application"
 msgstr "Programy"
 
-#: data/ui/app_info.ui:259
+#: data/ui/app_info.ui:261
 #, fuzzy
 msgid "Application Volume"
 msgstr "Programy"
@@ -803,9 +803,10 @@ msgstr "Wzmocnienie wej."
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
 #: data/ui/limiter.ui:743 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
 #: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306 data/ui/reverb.ui:364
-#: data/ui/rnnoise.ui:137 data/ui/stereo_tools.ui:38
-#: data/ui/stereo_tools.ui:552 src/application_ui.cpp:245
+#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
+#: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
+#: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
+#: src/application_ui.cpp:245
 msgid "Input"
 msgstr "Wejście"
 
@@ -832,9 +833,10 @@ msgstr "Wzmocnienie wej."
 #: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
 #: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
 #: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390 data/ui/reverb.ui:448
-#: data/ui/rnnoise.ui:221 data/ui/stereo_tools.ui:379
-#: data/ui/stereo_tools.ui:636 src/application_ui.cpp:244
+#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
+#: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
+#: src/application_ui.cpp:244
 msgid "Output"
 msgstr "Wyjście"
 
@@ -881,23 +883,23 @@ msgstr ""
 msgid "Device"
 msgstr "Urządzenie wejściowe"
 
-#: data/ui/autoload_row.ui:39 data/ui/factory_clients_listview.ui:44
+#: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
 #: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
 msgid "Name"
 msgstr "Nazwa"
 
-#: data/ui/autoload_row.ui:62
+#: data/ui/autoload_row.ui:64
 msgid "Profile"
 msgstr ""
 
-#: data/ui/autoload_row.ui:86
+#: data/ui/autoload_row.ui:89
 #, fuzzy
 msgid "Preset"
 msgstr "Profile"
 
-#: data/ui/autoload_row.ui:110 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
 msgid "Remove"
 msgstr ""
 
@@ -951,16 +953,18 @@ msgid "Application Name"
 msgstr "Programy"
 
 #: data/ui/blocklist_menu.ui:42
-msgid "Add to Blocklist"
-msgstr ""
+#, fuzzy
+msgid "Add to Excluded Applications"
+msgstr "Programy"
 
 #: data/ui/blocklist_menu.ui:86
-msgid "Blocklisted Applications List"
-msgstr ""
-
-#: data/ui/blocklist_menu.ui:102
 #, fuzzy
-msgid "Show Blocklisted Applications"
+msgid "Excluded Applications List"
+msgstr "Programy"
+
+#: data/ui/blocklist_menu.ui:99
+#, fuzzy
+msgid "Show Excluded Applications"
 msgstr "Programy"
 
 #: data/ui/compressor.ui:38 src/plugin_name.cpp:28
@@ -1444,7 +1448,7 @@ msgid "Filter Length"
 msgstr "Filtr"
 
 #: data/ui/effects_box.ui:114
-msgid "Blocklist"
+msgid "Excluded Apps"
 msgstr ""
 
 #: data/ui/equalizer.ui:77
@@ -2561,8 +2565,9 @@ msgid "Remove this plugin"
 msgstr "Kompresor"
 
 #: data/ui/plugins_box.ui:19
-msgid "Add Plugin"
-msgstr ""
+#, fuzzy
+msgid "Add Effect"
+msgstr "Efekty wejściowe"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
@@ -2710,10 +2715,6 @@ msgstr ""
 msgid "Remove this preset file"
 msgstr ""
 
-#: data/ui/presets_menu.ui:28
-msgid "Speakers"
-msgstr ""
-
 #: data/ui/presets_menu.ui:54
 #, fuzzy
 msgid "New Output Preset Name"
@@ -2736,11 +2737,6 @@ msgstr "Profile: "
 #, fuzzy
 msgid "Output Presets List"
 msgstr "Profile: "
-
-#: data/ui/presets_menu.ui:181
-#, fuzzy
-msgid "Microphone"
-msgstr "Kalibracja mikrofonu"
 
 #: data/ui/presets_menu.ui:207
 #, fuzzy
@@ -3125,8 +3121,9 @@ msgid "Players"
 msgstr "Odtwarzacze"
 
 #: src/effects_box.cpp:306
-msgid "Plugins"
-msgstr "Wtyczki"
+#, fuzzy
+msgid "Effects"
+msgstr "EasyEffects"
 
 #: src/equalizer_band_box.cpp:97
 msgid "infinity"
@@ -3250,6 +3247,13 @@ msgid "RNNoise Models"
 msgstr "Modele RNNoise"
 
 #, fuzzy
+#~ msgid "Microphone"
+#~ msgstr "Kalibracja mikrofonu"
+
+#~ msgid "Plugins"
+#~ msgstr "Wtyczki"
+
+#, fuzzy
 #~ msgid "enabled"
 #~ msgstr "Włącz"
 
@@ -3289,10 +3293,6 @@ msgstr "Modele RNNoise"
 
 #~ msgid "Output Effects"
 #~ msgstr "Efekty wyjściowe"
-
-#, fuzzy
-#~ msgid "Input Effects"
-#~ msgstr "Efekty wejściowe"
 
 #~ msgid "Settings"
 #~ msgstr "Ustawienia"
