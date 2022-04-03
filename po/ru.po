@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-01 12:57-0300\n"
-"PO-Revision-Date: 2022-03-27 15:07+0000\n"
+"PO-Revision-Date: 2022-04-03 12:11+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -800,13 +800,12 @@ msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
 #: data/ui/app_info.ui:201
-#, fuzzy
 msgid "Activate"
-msgstr "Активная модель"
+msgstr "Активировать"
 
 #: data/ui/app_info.ui:213
 msgid "Exclude"
-msgstr ""
+msgstr "Исключить"
 
 #: data/ui/app_info.ui:237
 msgid "Mute Application"
@@ -2954,38 +2953,32 @@ msgid "Stereo Phase"
 msgstr "Стерео фаза"
 
 #: src/app_info.cpp:68
-#, fuzzy
 msgid "Running"
-msgstr "запущен"
+msgstr "Выполняется"
 
 #: src/app_info.cpp:70
-#, fuzzy
 msgid "Suspended"
-msgstr "приостановлен"
+msgstr "Приостановлено"
 
 #: src/app_info.cpp:72
 msgid "Idle"
-msgstr ""
+msgstr "Простаивает"
 
 #: src/app_info.cpp:74
-#, fuzzy
 msgid "Creating"
-msgstr "создание"
+msgstr "Создание"
 
 #: src/app_info.cpp:76
-#, fuzzy
 msgid "Error"
-msgstr "ошибка"
+msgstr "Ошибка"
 
 #: src/app_info.cpp:78
-#, fuzzy
 msgid "Unknown"
-msgstr "неизвестно"
+msgstr "Неизвестно"
 
 #: src/app_info.cpp:230
-#, fuzzy
 msgid "channels"
-msgstr "Каналы"
+msgstr "каналы"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
