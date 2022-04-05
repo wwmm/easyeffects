@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-03 17:25-0300\n"
-"PO-Revision-Date: 2022-01-20 08:55+0000\n"
-"Last-Translator: Wellington Wallace <wellingtonwallace@gmail.com>\n"
+"PO-Revision-Date: 2022-04-05 12:09+0000\n"
+"Last-Translator: Fábio Verardino <fabio.verardino@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -33,7 +33,7 @@ msgstr "Efeitos de Áudio para Programas que Utilizam PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -110,7 +110,7 @@ msgstr "A página do convolver mostrando os controles de áudio"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid "This release adds the following features:"
-msgstr ""
+msgstr "Essa versão adiciona os seguintes recursos:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""

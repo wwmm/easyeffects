@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-03 17:25-0300\n"
-"PO-Revision-Date: 2022-04-01 14:37+0000\n"
+"PO-Revision-Date: 2022-04-05 12:09+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -639,9 +639,8 @@ msgid "\"Presets\""
 msgstr "\"预设\""
 
 #: data/ui/app_info.ui:203
-#, fuzzy
 msgid "Activate"
-msgstr "激活模型"
+msgstr "激活"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -927,19 +926,16 @@ msgid "Application Name"
 msgstr ""
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "将程序静音"
+msgstr "添加到排除的程序"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "将程序静音"
+msgstr "已排除程序列表"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "将程序静音"
+msgstr "显示已排除的程序"
 
 #: data/ui/compressor.ui:38 src/plugin_name.cpp:28
 msgid "Compressor"
@@ -2868,9 +2864,8 @@ msgid "Players"
 msgstr "播放器"
 
 #: src/effects_box.cpp:306
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "音效"
 
 #: src/equalizer_band_box.cpp:97
 msgid "infinity"
