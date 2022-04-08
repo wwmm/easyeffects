@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [4.8.6]
+
+### Fixed
+
+- Fixed a crash that happened when the compressor plugin was initialized with LSP `1.2.0`
+
 ## [4.8.5]
 
 ### Added

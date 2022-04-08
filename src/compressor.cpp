@@ -20,9 +20,37 @@
 #include "compressor.hpp"
 #include <glibmm/main.h>
 #include <array>
+#include <cstring>
 #include "util.hpp"
 
 namespace {
+
+auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
+  const auto* v = g_variant_get_string(variant, nullptr);
+
+  if (std::strcmp(v, "Downward") == 0) {
+    g_value_set_enum(value, 0);
+  } else if (std::strcmp(v, "Upward") == 0) {
+    g_value_set_enum(value, 1);
+  }
+
+  return 1;
+}
+
+auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
+  const auto v = g_value_get_int(value);
+
+  switch (v) {
+    case 0:
+      return g_variant_new_string("Downward");
+
+    case 1:
+      return g_variant_new_string("Upward");
+
+    default:
+      return g_variant_new_string("Downward");
+  }
+}
 
 void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
   const auto post = g_settings_get_boolean(settings, key);
@@ -157,7 +185,8 @@ Compressor::~Compressor() {
 }
 
 void Compressor::bind_to_gsettings() {
-  g_settings_bind(settings, "mode", compressor, "cm", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind_with_mapping(settings, "mode", compressor, "cm", G_SETTINGS_BIND_DEFAULT, mode_enum_to_int,
+                               int_to_mode_enum, nullptr, nullptr);
 
   g_settings_bind(settings, "sidechain-listen", compressor, "scl", G_SETTINGS_BIND_DEFAULT);
 

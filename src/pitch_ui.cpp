@@ -28,7 +28,6 @@ PitchUi::PitchUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("faster", faster);
   builder->get_widget("formant_preserving", formant_preserving);
   builder->get_widget("plugin_reset", reset_button);
 
@@ -48,7 +47,6 @@ PitchUi::PitchUi(BaseObjectType* cobject,
   settings->bind("crispness", crispness.get(), "value", flag);
   settings->bind("semitones", semitones.get(), "value", flag);
   settings->bind("octaves", octaves.get(), "value", flag);
-  settings->bind("faster", faster, "active", flag);
   settings->bind("formant-preserving", formant_preserving, "active", flag);
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);

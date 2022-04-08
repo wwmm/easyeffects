@@ -79,6 +79,4 @@ void Pitch::bind_to_gsettings() {
   g_settings_bind(settings, "crispness", pitch, "crispness", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(settings, "formant-preserving", pitch, "formant-preserving", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, "faster", pitch, "faster", G_SETTINGS_BIND_DEFAULT);
 }

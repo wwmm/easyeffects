@@ -43,8 +43,6 @@ void PitchPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".pitch.crispness", settings->get_int("crispness"));
 
   root.put(section + ".pitch.formant-preserving", settings->get_boolean("formant-preserving"));
-
-  root.put(section + ".pitch.faster", settings->get_boolean("faster"));
 }
 
 void PitchPreset::load(const boost::property_tree::ptree& root,
@@ -65,8 +63,6 @@ void PitchPreset::load(const boost::property_tree::ptree& root,
   update_key<int>(root, settings, "crispness", section + ".pitch.crispness");
 
   update_key<bool>(root, settings, "formant-preserving", section + ".pitch.formant-preserving");
-
-  update_key<bool>(root, settings, "faster", section + ".pitch.faster");
 }
 
 void PitchPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
