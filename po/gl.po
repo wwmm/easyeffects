@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-03 17:25-0300\n"
-"PO-Revision-Date: 2022-04-05 12:09+0000\n"
+"PO-Revision-Date: 2022-04-09 11:09+0000\n"
 "Last-Translator: Fran Diéguez <fran.dieguez@mabishu.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
 "main/gl/>\n"
@@ -116,17 +116,20 @@ msgid ""
 "the pipeline. When no client is playing"
 msgstr ""
 "Hai unha nova configuración que lle permite ao usuario seleccionar un tempo "
-"de espera de inactividade para o pipeline. Non"
+"de espera de inactividade para o pipeline. Cando non hai un cliente "
+"reproducindo"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"ou gravando desde os seus dispositivos os filtros desligaranse despois dun "
+"tempo. Isto faise para asegurarse que"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "non gasta enerxía no procesador sen que se entere."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
@@ -149,12 +152,16 @@ msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
+"Isto debería evitar os casos onde o volume «Integrado» bloquease sempre no "
+"mesmo valor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"A icona de EasyEffects foi actualizada para que poida verse mellor en "
+"escritorios QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -171,12 +178,14 @@ msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
 msgstr ""
+"A opción de liña de ordes que devolve un estado bypass global está "
+"funcionando de novo."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
 msgid "This release adds the following feature:"
-msgstr ""
+msgstr "Esta publicación engade a seguinte característica:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
@@ -193,7 +202,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid "Support for the next PipeWire release `0.3.44`"
-msgstr ""
+msgstr "Compatibilidade para a seguinte publicación de Pipewire 0.3.44"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
 msgid ""
@@ -223,6 +232,8 @@ msgid ""
 "Fixed a bug where trying to create an autoloading profile without having "
 "presets caused the application to crash."
 msgstr ""
+"Arranxouse un erro ao tentar crear un perfil de autocarga sen ter "
+"preconfiguracions causados por unha quebra da aplicación"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
 msgid ""
@@ -235,10 +246,13 @@ msgid ""
 "LibAdwaita is used to create some parts of our window and for handling the "
 "switching between dark and light themes."
 msgstr ""
+"Úsase LibAdwaita para crear algunhas partes da nosa xanela e para xestionar "
+"o troque entre temas escuro e claro."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:96
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
 msgstr ""
+"O menú de preferencias foi redeseñado empregando trebellos de LibAdwaita."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:97
 msgid ""
@@ -272,7 +286,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
-msgstr ""
+msgstr "GTKMM e GLIBMM xa non son dependencias. Agora usamos gtk4 directamente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
 msgid ""
@@ -299,7 +313,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:190
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "This release fixes the following bugs:"
-msgstr ""
+msgstr "Esta publicación arranxa os seguintes erros:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
 msgid ""
@@ -664,16 +678,15 @@ msgstr "Aplicacións"
 
 #: data/ui/application_window.ui:6
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferencias"
 
 #: data/ui/application_window.ui:10
 msgid "_Manual"
-msgstr ""
+msgstr "_Manual"
 
 #: data/ui/application_window.ui:14
-#, fuzzy
 msgid "_Shortcuts"
-msgstr "Curto prazo"
+msgstr "_Atallos de teclado"
 
 #: data/ui/application_window.ui:20
 #, fuzzy
@@ -681,9 +694,8 @@ msgid "_Reset Settings"
 msgstr "Configuración"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About EasyEffects"
-msgstr "EasyEffects"
+msgstr "_Sobre EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
 #: src/presets_menu.cpp:112 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -692,9 +704,8 @@ msgid "Presets"
 msgstr "Preconfiguracións"
 
 #: data/ui/application_window.ui:54
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Preconfiguracións"
+msgstr "Menú de preconfiguracións"
 
 #: data/ui/application_window.ui:61 data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -702,17 +713,15 @@ msgstr "Desvío global"
 
 #: data/ui/application_window.ui:76
 msgid "Primary Menu"
-msgstr ""
+msgstr "Menú primario"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "EasyEffects Window"
-msgstr "EasyEffects"
+msgstr "Xanela de EasyEffects"
 
 #: data/ui/apps_box.ui:19
-#, fuzzy
 msgid "Applications List"
-msgstr "Aplicacións"
+msgstr "Lista de aplicacións"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -725,14 +734,13 @@ msgstr "Máximo"
 
 #: data/ui/autogain.ui:87
 msgid "Reference"
-msgstr ""
+msgstr "Referencia"
 
 #: data/ui/autogain.ui:99 data/ui/autogain.ui:157
 msgid "Momentary"
 msgstr "Momentáneo"
 
 #: data/ui/autogain.ui:100 data/ui/autogain.ui:187
-#, fuzzy
 msgid "Short-Term"
 msgstr "Curto prazo"
 
@@ -792,9 +800,8 @@ msgid "Loudness"
 msgstr "Sonoridade"
 
 #: data/ui/autogain.ui:342
-#, fuzzy
 msgid "Output Gain"
-msgstr "Saída"
+msgstr "Ganancia da saída"
 
 #: data/ui/autogain.ui:379 data/ui/bass_enhancer.ui:264
 #: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
@@ -877,12 +884,11 @@ msgstr "Restabelecer"
 #: data/ui/pitch.ui:486 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
 #: data/ui/stereo_tools.ui:732
 msgid "Using"
-msgstr ""
+msgstr "Usando"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
-#, fuzzy
 msgid "Device"
-msgstr "Nivel de entrada"
+msgstr "Dispositivo"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
@@ -893,16 +899,15 @@ msgstr "Nome"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "Perfíl"
 
 #: data/ui/autoload_row.ui:89
-#, fuzzy
 msgid "Preset"
-msgstr "Preconfiguracións"
+msgstr "Preconfiguración"
 
 #: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
 msgid "Remove"
-msgstr ""
+msgstr "Eliminar"
 
 #: data/ui/bass_enhancer.ui:24 data/ui/compressor.ui:465 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:24
@@ -945,7 +950,7 @@ msgstr "Chan"
 
 #: data/ui/bass_loudness.ui:95
 msgid "Link"
-msgstr ""
+msgstr "Ligazón"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 #, fuzzy
@@ -1011,9 +1016,8 @@ msgid "Attack"
 msgstr "Ataque"
 
 #: data/ui/compressor.ui:173 data/ui/multiband_compressor_band.ui:166
-#, fuzzy
 msgid "Time"
-msgstr "Tempo real"
+msgstr "Tempo"
 
 #: data/ui/compressor.ui:183 data/ui/deesser.ui:300 data/ui/gate.ui:184
 #: data/ui/limiter.ui:345 data/ui/maximizer.ui:29
@@ -1148,7 +1152,7 @@ msgstr "Retroalimentar"
 
 #: data/ui/compressor.ui:550
 msgid "External"
-msgstr ""
+msgstr "Externo"
 
 #: data/ui/compressor.ui:557
 #, fuzzy
@@ -1180,9 +1184,8 @@ msgid "Sidechain Filters"
 msgstr "Cadea lateral"
 
 #: data/ui/compressor.ui:719
-#, fuzzy
 msgid "High-Pass"
-msgstr "Frecuencias altas"
+msgstr "Paso alto"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
 #: data/ui/pipe_manager_box.ui:565
@@ -1226,9 +1229,8 @@ msgid "Gain"
 msgstr "Ganancia"
 
 #: data/ui/compressor.ui:903
-#, fuzzy
 msgid "Envelope"
-msgstr "Pendente"
+msgstr ""
 
 #: data/ui/compressor.ui:957
 msgid "Curve"
@@ -1253,14 +1255,13 @@ msgid "Right Channel"
 msgstr "Dividir canles"
 
 #: data/ui/convolver.ui:70
-#, fuzzy
 msgid "Impulses"
-msgstr "Resposta de impulso"
+msgstr "Impulsos"
 
 #: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Combinar"
 
 #: data/ui/convolver.ui:85
 msgid "Stereo Width"
@@ -1315,7 +1316,7 @@ msgstr "Importar impulso"
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: data/ui/convolver_menu_impulses.ui:27
 #, fuzzy
@@ -1545,12 +1546,11 @@ msgstr ""
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "Acceso"
 
 #: data/ui/factory_modules_listview.ui:72
-#, fuzzy
 msgid "Description"
-msgstr "Detección"
+msgstr "Descrición"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 #, fuzzy
@@ -1872,12 +1872,11 @@ msgstr "Importar modelo"
 
 #: data/ui/multiband_compressor.ui:54
 msgid "Classic"
-msgstr ""
+msgstr "Clásico"
 
 #: data/ui/multiband_compressor.ui:55
-#, fuzzy
 msgid "Modern"
-msgstr "Modo"
+msgstr "Moderno"
 
 #: data/ui/multiband_compressor.ui:69
 #, fuzzy
@@ -2398,13 +2397,12 @@ msgid "State"
 msgstr "Estado"
 
 #: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
-#, fuzzy
 msgid "Enabled"
-msgstr "Activar"
+msgstr "Activado"
 
 #: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
-msgstr ""
+msgstr "Propiedades"
 
 #: data/ui/pipe_manager_box.ui:505
 msgid "Channels"
@@ -2412,7 +2410,7 @@ msgstr "Canles"
 
 #: data/ui/pipe_manager_box.ui:530
 msgid "Both"
-msgstr ""
+msgstr "Ambos"
 
 #: data/ui/pipe_manager_box.ui:534
 #, fuzzy
@@ -2421,7 +2419,7 @@ msgstr "Canles"
 
 #: data/ui/pipe_manager_box.ui:543
 msgid "Waveform"
-msgstr ""
+msgstr "Forma de onda"
 
 #: data/ui/pipe_manager_box.ui:547
 #, fuzzy
@@ -2447,18 +2445,16 @@ msgid "High Consistency"
 msgstr ""
 
 #: data/ui/pitch.ui:49
-#, fuzzy
 msgid "Formant"
-msgstr "Formato"
+msgstr ""
 
 #: data/ui/pitch.ui:60
 msgid "Shifted"
 msgstr ""
 
 #: data/ui/pitch.ui:61
-#, fuzzy
 msgid "Preserved"
-msgstr "Preconfiguracións"
+msgstr "Preservado"
 
 #: data/ui/pitch.ui:98
 msgid "Transients"
@@ -2543,14 +2539,12 @@ msgid "Plugins List"
 msgstr ""
 
 #: data/ui/preferences_general.ui:5
-#, fuzzy
 msgid "_General"
-msgstr "Xeral"
+msgstr "_Xeral"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Nivel de entrada"
+msgstr "Servizo"
 
 #: data/ui/preferences_general.ui:13
 msgid "Start Service at Login"
@@ -2562,7 +2556,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
 msgid "Process All Outputs"
@@ -2587,7 +2581,7 @@ msgstr "Tempo límite da actividade"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "Estilo"
 
 #: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
@@ -2598,13 +2592,12 @@ msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:5
-#, fuzzy
 msgid "_Spectrum"
-msgstr "Espectro"
+msgstr "_Espectro"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Forma"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
@@ -2616,7 +2609,7 @@ msgstr "Liñas"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Dots"
-msgstr ""
+msgstr "Puntos"
 
 #: data/ui/preferences_spectrum.ui:46
 msgid "Points"
@@ -2643,9 +2636,8 @@ msgid "Rounded Corners"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:152
-#, fuzzy
 msgid "Color"
-msgstr "Cor do eixe"
+msgstr "Cor"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
@@ -2661,9 +2653,8 @@ msgid "Frequency Range"
 msgstr "Frecuencia"
 
 #: data/ui/preferences_spectrum.ui:188
-#, fuzzy
 msgid "Minimum"
-msgstr "Máximo"
+msgstr "Mínimo"
 
 #: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
 msgid "Load"
@@ -2816,9 +2807,8 @@ msgid "Import Model"
 msgstr "Importar modelo"
 
 #: data/ui/rnnoise.ui:35
-#, fuzzy
 msgid "Models"
-msgstr "Modo"
+msgstr "Modelos"
 
 #: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
 #, fuzzy
@@ -2839,9 +2829,8 @@ msgid "Standard RNNoise Model"
 msgstr "Modelo RNNoise estándar"
 
 #: data/ui/shortcuts.ui:11
-#, fuzzy
 msgid "Overview"
-msgstr "Nivel de entrada"
+msgstr "Vista xeral"
 
 #: data/ui/shortcuts.ui:16
 #, fuzzy
@@ -3071,13 +3060,12 @@ msgid "Could Not Load The Impulse File"
 msgstr "Non foi posíbel cargar o ficheiro de impulso"
 
 #: src/effects_box.cpp:257
-#, fuzzy
 msgid "Recorders"
-msgstr "Bordo"
+msgstr "Gravadoras"
 
 #: src/effects_box.cpp:283
 msgid "Players"
-msgstr ""
+msgstr "Reprodutores"
 
 #: src/effects_box.cpp:306
 #, fuzzy
@@ -3190,7 +3178,7 @@ msgstr "Ferramentas de estéreo"
 
 #: src/plugins_menu.cpp:145
 msgid "Add"
-msgstr ""
+msgstr "Engadir"
 
 #: src/presets_menu.cpp:106
 #, fuzzy
