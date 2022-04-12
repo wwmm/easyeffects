@@ -136,7 +136,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "mean."
-msgstr ""
+msgstr "média geométrica."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
@@ -149,12 +149,16 @@ msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
+"Isto deve evitar os casos em que o\n"
+"ruído \"integrado\" fica preso para sempre no mesmo valor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"O ícone do EasyEffects foi atualizado de uma forma que deve torná-lo visível "
+"nos desktops QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -163,7 +167,6 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
-#, fuzzy
 msgid "This release fixes the following bug:"
 msgstr "Esta versão corrige o seguinte bug:"
 
@@ -704,7 +707,7 @@ msgstr "Menu Principal"
 msgid "EasyEffects Window"
 msgstr "Janela do EasyEffects"
 
-#: data/ui/apps_box.ui:21
+#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
 msgid "Applications List"
 msgstr "Lista de Aplicativos"
 
@@ -3213,9 +3216,10 @@ msgstr "Importar arquivo de modelo"
 msgid "RNNoise Models"
 msgstr "Modelos RNNoise"
 
+#: data/ui/app_info.ui:203
 #, fuzzy
-#~ msgid "Activate"
-#~ msgstr "Modo Agressivo"
+msgid "Activate"
+msgstr "Modo Agressivo"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Adicionar à Lista de Bloqueio"
