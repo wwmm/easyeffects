@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -647,8 +647,8 @@ msgstr "Predlošci"
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Kompresija"
+msgid "Enable"
+msgstr "Omogući"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -712,10 +712,14 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Aplikacije"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3259,6 +3263,10 @@ msgstr "Učitaj impuls datoteku"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Kompresija"
 
 #, fuzzy
 #~ msgid "Add to Blocklist"

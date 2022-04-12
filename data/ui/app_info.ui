@@ -200,7 +200,7 @@
                                     <object class="GtkCheckButton" id="enable">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Activate</property>
+                                        <property name="label" translatable="yes">Enable</property>
                                         <accessibility>
                                             <relation name="labelled-by">app_name</relation>
                                         </accessibility>

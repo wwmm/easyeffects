@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-04-01 14:37+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -655,8 +655,8 @@ msgstr "\"Ön Ayarlar\""
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Etkin Model"
+msgid "Enable"
+msgstr "Etkinleştir"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -713,9 +713,13 @@ msgstr "Ana Menü"
 msgid "EasyEffects Window"
 msgstr "EasyEffects Penceresi"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
 msgstr "Uygulama Listesi"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3105,6 +3109,10 @@ msgstr "Model Dosyasını İçe Aktar"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Etkin Model"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Kara Listeye Ekle"

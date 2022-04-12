@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -642,8 +642,8 @@ msgstr "Preset"
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Model Aktif"
+msgid "Enable"
+msgstr "Hidupkan"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -707,10 +707,14 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Aplikasi"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3156,6 +3160,10 @@ msgstr "Impor file Model"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Model RNNoise"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Model Aktif"
 
 #, fuzzy
 #~ msgid "Add to Blocklist"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -644,8 +644,8 @@ msgstr "”Presetări”"
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Model Activ"
+msgid "Enable"
+msgstr "Activează"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -707,10 +707,14 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Aplicații"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3186,6 +3190,10 @@ msgstr "Importă Fișier de Model"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Model Standard RNNoise"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Model Activ"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Adaugă la Lista de Blocare"

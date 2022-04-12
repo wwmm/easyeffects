@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-03-20 02:57+0000\n"
 "Last-Translator: Skia <skia+weblate@hya.sk>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -699,8 +699,8 @@ msgstr "Préréglage"
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Aucune compression"
+msgid "Enable"
+msgstr "Table sinusoïdale"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -756,9 +756,13 @@ msgstr "Menu principal"
 msgid "EasyEffects Window"
 msgstr "Fenêtre de EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
 msgstr "Liste des applications"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3268,6 +3272,10 @@ msgstr "Réponse plane"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Aucune compression"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Aucune compression"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Ajouter à la liste de blocage"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-04-03 12:11+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -800,8 +800,9 @@ msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
 #: data/ui/app_info.ui:203
-msgid "Activate"
-msgstr "Активировать"
+#, fuzzy
+msgid "Enable"
+msgstr "Включено"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -857,9 +858,13 @@ msgstr "Главное меню"
 msgid "EasyEffects Window"
 msgstr "Окно EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
 msgstr "Список приложений"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3185,6 +3190,9 @@ msgstr "Импорт файла модели"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Модели RNNoise"
+
+#~ msgid "Activate"
+#~ msgstr "Активировать"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Добавить в чёрный список"

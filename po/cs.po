@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -643,8 +643,8 @@ msgstr "\"Přednastavení\""
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Agresivní režim"
+msgid "Enable"
+msgstr "Povolit"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -708,10 +708,14 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Programy"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3217,6 +3221,10 @@ msgstr "Zavést soubor s impulsem"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Agresivní režim"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Agresivní režim"
 
 #, fuzzy
 #~ msgid "Add to Blocklist"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-02-20 22:54+0000\n"
 "Last-Translator: Christian Mattes <christian.mattes@rwth-aachen.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -646,8 +646,8 @@ msgstr "\"Presets\""
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Aktives Modell"
+msgid "Enable"
+msgstr "Aktiviert"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -710,10 +710,14 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Anwendungen"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3154,6 +3158,10 @@ msgstr "Impulsdatei importieren"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Standard RNNoise-Modell"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Aktives Modell"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Zur Sperrliste hinzufügen"

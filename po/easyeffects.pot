@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -624,7 +624,7 @@ msgid "\"Presets\""
 msgstr ""
 
 #: data/ui/app_info.ui:203
-msgid "Activate"
+msgid "Enable"
 msgstr ""
 
 #: data/ui/app_info.ui:215
@@ -681,8 +681,12 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr ""
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
+msgstr ""
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
 msgstr ""
 
 #: data/ui/autogain.ui:19

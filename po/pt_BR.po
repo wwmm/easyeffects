@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-04-05 12:09+0000\n"
 "Last-Translator: Fábio Verardino <fabio.verardino@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -646,8 +646,8 @@ msgstr "\"Predefinições\""
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Modo Agressivo"
+msgid "Enable"
+msgstr "Habilitar"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -704,9 +704,13 @@ msgstr "Menu Principal"
 msgid "EasyEffects Window"
 msgstr "Janela do EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
 msgstr "Lista de Aplicativos"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3208,6 +3212,10 @@ msgstr "Importar arquivo de modelo"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Modelos RNNoise"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Modo Agressivo"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Adicionar à Lista de Bloqueio"

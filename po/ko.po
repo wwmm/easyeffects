@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: OctopusET <sumoon@seoulsaram.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -646,7 +646,7 @@ msgid "\"Presets\""
 msgstr "\"프리셋\""
 
 #: data/ui/app_info.ui:203
-msgid "Activate"
+msgid "Enable"
 msgstr ""
 
 #: data/ui/app_info.ui:215
@@ -709,10 +709,14 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects 윈도우"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "응용 프로그램 목록"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 #, fuzzy

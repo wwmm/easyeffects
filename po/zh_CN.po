@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-04-05 12:09+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -639,8 +639,9 @@ msgid "\"Presets\""
 msgstr "\"预设\""
 
 #: data/ui/app_info.ui:203
-msgid "Activate"
-msgstr "激活"
+#, fuzzy
+msgid "Enable"
+msgstr "已启用"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -696,8 +697,12 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects 窗口"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
+msgstr ""
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
 msgstr ""
 
 #: data/ui/autogain.ui:19
@@ -2982,6 +2987,9 @@ msgstr "导入模型文件"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "RNNoise 模型"
+
+#~ msgid "Activate"
+#~ msgstr "激活"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "加入黑名单"

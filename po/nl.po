@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2021-07-14 14:30+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -640,8 +640,8 @@ msgstr "‘Voorinstellingen’"
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Huidig model"
+msgid "Enable"
+msgstr "Inschakelen"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -704,10 +704,14 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "PulseEffecten"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Toepassingen"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3175,6 +3179,10 @@ msgstr "Modelbestand importeren"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Standaard RNNoise-model"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Huidig model"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Toevoegen aan zwarte lijst"

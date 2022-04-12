@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-03-14 23:07+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -640,8 +640,8 @@ msgstr "«Forhåndsinnstillinger»"
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Aktiv modell"
+msgid "Enable"
+msgstr "Påskrudd"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -700,10 +700,14 @@ msgstr "Hovedmeny"
 msgid "EasyEffects Window"
 msgstr "EasyEffects-vindu"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Programliste"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3006,6 +3010,10 @@ msgstr "Importer modellfil"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Aktiv modell"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Legg til på svarteliste"

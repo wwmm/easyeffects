@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-04-09 11:09+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -796,8 +796,9 @@ msgid "\"Presets\""
 msgstr "\"Profili\""
 
 #: data/ui/app_info.ui:203
-msgid "Activate"
-msgstr "Abilita"
+#, fuzzy
+msgid "Enable"
+msgstr "Attivato"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -853,9 +854,13 @@ msgstr "Menu Principale"
 msgid "EasyEffects Window"
 msgstr "Finestra di EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
 msgstr "Lista Applicazioni"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3132,6 +3137,9 @@ msgstr "Importa File Modello"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
+
+#~ msgid "Activate"
+#~ msgstr "Abilita"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Aggiungi ad App Escluse"

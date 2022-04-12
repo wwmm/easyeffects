@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-03 17:25-0300\n"
+"POT-Creation-Date: 2022-04-12 12:40-0300\n"
 "PO-Revision-Date: 2022-04-09 11:09+0000\n"
 "Last-Translator: Fran Diéguez <fran.dieguez@mabishu.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -286,7 +286,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
-msgstr "GTKMM e GLIBMM xa non son dependencias. Agora usamos gtk4 directamente."
+msgstr ""
+"GTKMM e GLIBMM xa non son dependencias. Agora usamos gtk4 directamente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
 msgid ""
@@ -659,8 +660,8 @@ msgstr "«Preconfiguracións»"
 
 #: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Modelo activo"
+msgid "Enable"
+msgstr "Activado"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -719,9 +720,13 @@ msgstr "Menú primario"
 msgid "EasyEffects Window"
 msgstr "Xanela de EasyEffects"
 
-#: data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
 msgstr "Lista de aplicacións"
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3193,6 +3198,10 @@ msgstr "Importar ficheiro de modelo"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Modelo RNNoise estándar"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Modelo activo"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Engadir á lista de bloqueo"

@@ -41,6 +41,10 @@ struct Data {
 struct _AppsBox {
   GtkBox parent_instance;
 
+  GtkOverlay* overlay;
+
+  GtkGrid* overlay_empty_list;
+
   GtkListView* listview;
 
   GtkIconTheme* icon_theme;
@@ -92,6 +96,10 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
   */
 
   g_object_unref(holder);
+
+  if (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) != 0) {
+    gtk_widget_hide(GTK_WIDGET(self->overlay_empty_list));
+  }
 }
 
 void on_app_removed(AppsBox* self, const long ts) {
@@ -126,6 +134,10 @@ void on_app_removed(AppsBox* self, const long ts) {
     }
 
     g_object_unref(holder);
+  }
+
+  if (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0) {
+    gtk_widget_show(GTK_WIDGET(self->overlay_empty_list));
   }
 }
 
@@ -318,6 +330,12 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
           g_object_unref(holder);
         }
+
+        if (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0) {
+          gtk_widget_show(GTK_WIDGET(self->overlay_empty_list));
+        } else {
+          gtk_widget_hide(GTK_WIDGET(self->overlay_empty_list));
+        }
       }),
       self));
 
@@ -397,6 +415,8 @@ void apps_box_class_init(AppsBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/apps_box.ui");
 
+  gtk_widget_class_bind_template_child(widget_class, AppsBox, overlay);
+  gtk_widget_class_bind_template_child(widget_class, AppsBox, overlay_empty_list);
   gtk_widget_class_bind_template_child(widget_class, AppsBox, listview);
 }
 
@@ -409,6 +429,8 @@ void apps_box_init(AppsBox* self) {
 
   self->apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->all_apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
+
+  gtk_overlay_set_clip_overlay(self->overlay, GTK_WIDGET(self->overlay_empty_list), 1);
 
   setup_listview(self);
 }
