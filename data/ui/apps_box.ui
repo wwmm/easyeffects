@@ -32,7 +32,7 @@
                         <property name="row_spacing">36</property>
                         <child>
                             <object class="GtkImage">
-                                <property name="pixel_size">128</property>
+                                <property name="pixel_size">64</property>
                                 <property name="icon_name">applications-multimedia-symbolic</property>
                                 <style>
                                     <class name="dim-label" />
@@ -47,7 +47,8 @@
                             <object class="GtkLabel">
                                 <property name="label" translatable="yes">Empty Stream List</property>
                                 <style>
-                                    <class name="large-title" />
+                                    <class name="title-3" />
+                                    <class name="dim-label" />
                                 </style>
                                 <layout>
                                     <property name="column">0</property>
