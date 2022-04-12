@@ -802,7 +802,7 @@ msgstr "Attivato"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
-msgstr "Escludere"
+msgstr "Escludi"
 
 #: data/ui/app_info.ui:238
 msgid "Mute Application"
@@ -854,7 +854,7 @@ msgstr "Menu Principale"
 msgid "EasyEffects Window"
 msgstr "Finestra di EasyEffects"
 
-#: data/ui/apps_box.ui:21
+#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
 msgid "Applications List"
 msgstr "Lista Applicazioni"
 
@@ -3138,8 +3138,9 @@ msgstr "Importa File Modello"
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
-#~ msgid "Activate"
-#~ msgstr "Abilita"
+#: data/ui/app_info.ui:203
+msgid "Activate"
+msgstr "Abilita"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Aggiungi ad App Escluse"
