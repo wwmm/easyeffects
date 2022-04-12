@@ -108,23 +108,29 @@ msgstr "Die Convolverseite mit den Audiosteuerelementen"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid "This release adds the following features:"
-msgstr ""
+msgstr "Diese Version enthält die folgenden neuen Funktionen:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
+"Es gibt eine neue Einstellung, die es den BenutzerInnen erlaubt, einen "
+"Timeout nach Inaktivität für den Audioeffekt festzulegen. Wenn kein Client "
+"spielt"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"oder von einem Geräte aufnimmt, werden die Filter getrennt, nachdem der "
+"Timeout erreicht ist. Dies wird getan um sicherzustellen,"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
 msgstr ""
+"dass keine CPU-Leistung für das Verarbeiten von Stille verschwendet wird."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
@@ -710,7 +716,7 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:21
+#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
 #, fuzzy
 msgid "Applications List"
 msgstr "Anwendungen"
@@ -3159,9 +3165,10 @@ msgstr "Impulsdatei importieren"
 msgid "RNNoise Models"
 msgstr "Standard RNNoise-Modell"
 
+#: data/ui/app_info.ui:203
 #, fuzzy
-#~ msgid "Activate"
-#~ msgstr "Aktives Modell"
+msgid "Activate"
+msgstr "Aktives Modell"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Zur Sperrliste hinzufügen"

@@ -25,43 +25,43 @@ msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efectos de Sonido para las Aplicaciones de PulseAudio"
+msgstr "Efectos de audio paras las aplicaciones PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects es una avanzada herramienta de manipulación de audio. Incluye un "
-"ecualizador, limitador, compresor y herramienta de reverberación , solo por "
-"mencionar algunos. Para complementar esto hay también incluido un analizador "
-"de espectro."
+"EasyEffects es una herramienta avanzada de manipulación de audio. Incluye un "
+"ecualizador, limitador, compresor y una herramienta de reverberación, solo "
+"por mencionar algunos. Para complementar esto también hay un analizador de "
+"espectro incorporado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects es el sucesor de PulseEffects. EasyEffects solo admite el "
+"servidor de audio de PipeWire. Los usuarios de PulseAudio deben usar "
+"PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Debido a que EasyEffects usa por defecto el servicio de sonido PulseAudio, "
-"este funcionará con la mayoría, sino que todas, las aplicaciones que use. "
-"Todas las aplicaciones son mostradas en la ventana principal donde pueden "
-"ser habilitadas individualmente."
+"Debido a que EasyEffects utiliza el servidor de sonido PipeWire "
+"predeterminado, funcionará con la mayoría, si no todas, las aplicaciones que "
+"utilice. Todas las aplicaciones soportadas se presentan en la ventana "
+"principal, donde cada una se puede habilitar individualmente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -86,15 +86,15 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "La página principal que muestra dos aplicaciones de salida de audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "La página de potenciador de graves que muestra los controles de audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "La página convolver que muestra los controles de audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -109,51 +109,63 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid "This release adds the following features:"
-msgstr ""
+msgstr "Esta versión añade las siguientes características:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
+"Hay una nueva configuración que permite al usuario seleccionar un tiempo de "
+"inactividad para la canalización. Cuando no se reproduce ningún cliente"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"desde nuestros dispositivos, los filtros se desvincularán después de que se "
+"alcance el tiempo de espera. Esto se hace para asegurarse de que"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "no desperdiciamos el silencio de procesamiento de energía de la CPU."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
 msgstr ""
+"El plugin autogain ahora permite al usuario seleccionar cuál de las tres "
+"sonoridades se utilizan para calcular la geométrica"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "mean."
-msgstr ""
+msgstr "medida."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
 msgstr ""
+"El plugin autogain ahora permite establecer el historial máximo y ya no usa "
+"el modo `libebur128` histograma."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
+"Esto debe evitar los casos en los que el `Integrated` loudness se queda "
+"atascado para siempre en el mismo valor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"El icono de EasyEffects se ha actualizado de una manera que debería hacerlo "
+"visible en los escritorios QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -163,7 +175,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
 msgid "This release fixes the following bug:"
-msgstr ""
+msgstr "Esta versión corrige el siguiente error:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
@@ -707,7 +719,7 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:21
+#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
 #, fuzzy
 msgid "Applications List"
 msgstr "Aplicaciones"
@@ -775,7 +787,7 @@ msgstr "Usar la Media Geométrica"
 #: data/ui/pitch.ui:75 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
 #: data/ui/stereo_tools.ui:13
 msgid "Bypass"
-msgstr "Bypass"
+msgstr "Derivación"
 
 #: data/ui/autogain.ui:134
 msgid "Reset History"
@@ -791,7 +803,7 @@ msgstr "Rango"
 
 #: data/ui/autogain.ui:310 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
 msgid "Loudness"
-msgstr "Loudness"
+msgstr "Volumen"
 
 #: data/ui/autogain.ui:342
 #, fuzzy
@@ -2748,24 +2760,20 @@ msgid "Decay Time"
 msgstr "Tiempo de Decaimiento"
 
 #: data/ui/reverb.ui:210
-#, fuzzy
 msgid "Wet Amount"
-msgstr "Cantidad"
+msgstr "Cantidad húmeda"
 
 #: data/ui/reverb.ui:238
-#, fuzzy
 msgid "Wet Level"
-msgstr "Nivel Objetivo"
+msgstr "Nivel húmedo"
 
 #: data/ui/reverb.ui:245
-#, fuzzy
 msgid "Dry Amount"
-msgstr "Cantidad"
+msgstr "Gran cantidad"
 
 #: data/ui/reverb.ui:272
-#, fuzzy
 msgid "Dry Level"
-msgstr "Nivel"
+msgstr "nivel seco"
 
 #: data/ui/reverb.ui:279
 msgid "Bass Cut"
@@ -2800,71 +2808,64 @@ msgid "Large Occupied Hall"
 msgstr "Habitación Ocupada Grande"
 
 #: data/ui/rnnoise.ui:20
-#, fuzzy
 msgid "Import Model"
-msgstr "Importar Archivo Impulse"
+msgstr "Importar Modelo"
 
 #: data/ui/rnnoise.ui:35
-#, fuzzy
 msgid "Models"
-msgstr "Modo"
+msgstr "Modelos"
 
 #: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
 msgid "Standard Model"
-msgstr ""
+msgstr "Modelo estándar"
 
 #: data/ui/rnnoise.ui:84
 msgid "RNNoise Models List"
-msgstr ""
+msgstr "RNNoise Lista de Modelos"
 
 #: data/ui/rnnoise.ui:100
-#, fuzzy
 msgid "Active Model"
-msgstr "Modo Agresivo"
+msgstr "Modelo activo"
 
 #: data/ui/rnnoise.ui:106
 msgid "Standard RNNoise Model"
-msgstr ""
+msgstr "Modelo estándar RNNoise"
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "Visión general"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the EasyEffects Manual"
-msgstr "Restablecer EasyEffects."
+msgstr "Abrir el manual de EasyEffects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Pantalla completa/Restaurar desde pantalla completa"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "Cierra la ventana"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit EasyEffects"
-msgstr "EasyEffects"
+msgstr "Salir de EasyEffects"
 
 #: data/ui/stereo_tools.ui:50 data/ui/stereo_tools.ui:391
 msgid "Balance"
 msgstr "Balance"
 
 #: data/ui/stereo_tools.ui:77
-#, fuzzy
 msgid "Input Balance"
-msgstr "Balance"
+msgstr "Balance de insumos"
 
 #: data/ui/stereo_tools.ui:86
 msgid "Softclip"
 msgstr "Clip Suave"
 
 #: data/ui/stereo_tools.ui:114
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Clip Suave"
+msgstr "Nivel del Clip Suave"
 
 #: data/ui/stereo_tools.ui:126
 msgid "Stereo Matrix"
@@ -2899,9 +2900,8 @@ msgid "LR > RL (Stereo Flip Channels)"
 msgstr "LR > RL (Intercambiar Canales)"
 
 #: data/ui/stereo_tools.ui:145
-#, fuzzy
 msgid "Stereo Mode"
-msgstr "Base Estéreo"
+msgstr "Modo Estéreo"
 
 #: data/ui/stereo_tools.ui:178 data/ui/stereo_tools.ui:203
 msgid "Invert Phase"
@@ -2924,18 +2924,16 @@ msgid "Middle Panorama"
 msgstr "Panorama Medio"
 
 #: data/ui/stereo_tools.ui:418
-#, fuzzy
 msgid "Output Balance"
-msgstr "Balance"
+msgstr "Balance de producción"
 
 #: data/ui/stereo_tools.ui:427
 msgid "Delay L/R"
 msgstr "Retraso L/R"
 
 #: data/ui/stereo_tools.ui:454
-#, fuzzy
 msgid "Delay Left Right"
-msgstr "Retraso L/R"
+msgstr "Retraso Izquierda Derecha"
 
 #: data/ui/stereo_tools.ui:463
 msgid "Stereo Base"
@@ -2947,33 +2945,31 @@ msgstr "Fase Estéreo"
 
 #: src/app_info.cpp:68
 msgid "Running"
-msgstr ""
+msgstr "Corriendo"
 
 #: src/app_info.cpp:70
 msgid "Suspended"
-msgstr ""
+msgstr "Suspendido"
 
 #: src/app_info.cpp:72
 msgid "Idle"
-msgstr ""
+msgstr "Inactivo"
 
 #: src/app_info.cpp:74
-#, fuzzy
 msgid "Creating"
-msgstr "Puerta"
+msgstr "Creando"
 
 #: src/app_info.cpp:76
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: src/app_info.cpp:78
 msgid "Unknown"
-msgstr ""
+msgstr "Desconocido"
 
 #: src/app_info.cpp:230
-#, fuzzy
 msgid "channels"
-msgstr "Canales"
+msgstr "canales"
 
 #: src/application.cpp:277
 msgid "Output Presets: "
@@ -2984,9 +2980,8 @@ msgid "Input Presets: "
 msgstr "Perfiles de Dispositivos de Entrada: "
 
 #: src/application.cpp:427
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Efectos de Sonido para las aplicaciones de PulseAudio"
+msgstr "Efectos de audio para aplicaciones PipeWire"
 
 #: src/application.cpp:513
 msgid "Quit EasyEffects. Useful when running in service mode."
@@ -3003,7 +2998,7 @@ msgstr "Restablecer EasyEffects."
 
 #: src/application.cpp:522
 msgid "Hide the Window."
-msgstr ""
+msgstr "Oculta la ventana."
 
 #: src/application.cpp:525
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -3017,11 +3012,11 @@ msgstr "Mostrar perfiles disponibles."
 
 #: src/application_ui.cpp:246
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:85
 msgid "Import Impulse File"
-msgstr "Importar Archivo Impulse"
+msgstr "Importar impulso de archivo"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
@@ -3038,14 +3033,12 @@ msgid "Impulse Response"
 msgstr "Respuesta de Impulse"
 
 #: src/convolver_menu_impulses.cpp:199
-#, fuzzy
 msgid "Load Impulse"
-msgstr "Importar Archivo Impulse"
+msgstr "Cargar impulso"
 
 #: src/convolver_menu_impulses.cpp:202
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "Importar Archivo Impulse"
+msgstr "Remover impulso"
 
 #: src/convolver_ui.cpp:336 src/convolver_ui.cpp:337 src/convolver_ui.cpp:338
 msgid "Failed"
@@ -3056,55 +3049,48 @@ msgid "Could Not Load The Impulse File"
 msgstr "No se pudo encontrar el archivo Impulse"
 
 #: src/effects_box.cpp:257
-#, fuzzy
 msgid "Recorders"
-msgstr "Bordes"
+msgstr "grabadoras"
 
 #: src/effects_box.cpp:283
 msgid "Players"
-msgstr ""
+msgstr "Jugadores"
 
 #: src/effects_box.cpp:306
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "Efectos"
 
 #: src/equalizer_band_box.cpp:97
 msgid "infinity"
 msgstr "infinidad"
 
 #: src/equalizer_ui.cpp:362
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "Importar Perfiles"
+msgstr "Importar archivo de preajuste APO"
 
 #: src/equalizer_ui.cpp:368
-#, fuzzy
 msgid "APO Presets"
-msgstr "Perfiles"
+msgstr "Preajustes APO"
 
 #: src/pipe_manager_box.cpp:310
-#, fuzzy
 msgid "Remove Autoloading Preset"
-msgstr "Borrar este perfil"
+msgstr "Remover preajuste de autocargar"
 
 #: src/plugin_name.cpp:25
-#, fuzzy
 msgid "Autogain"
-msgstr "Ganancia Automática"
+msgstr "AutoGain"
 
 #: src/plugin_name.cpp:26
 msgid "Bass Enhancer"
-msgstr "Potenciado de Graves"
+msgstr "potenciador de graves"
 
 #: src/plugin_name.cpp:27
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Loudness"
+msgstr "sonoridad de graves"
 
 #: src/plugin_name.cpp:29
 msgid "Convolver"
-msgstr "Convolver"
+msgstr "enrevesado"
 
 #: src/plugin_name.cpp:30
 msgid "Crossfeed"
@@ -3116,7 +3102,7 @@ msgstr "Cristalizador"
 
 #: src/plugin_name.cpp:32
 msgid "Deesser"
-msgstr "Deesser"
+msgstr "DeEsser"
 
 #: src/plugin_name.cpp:33
 msgid "Delay"
@@ -3167,9 +3153,8 @@ msgid "Reverberation"
 msgstr "Reverberación"
 
 #: src/plugin_name.cpp:46
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Reducción de Ganancia"
+msgstr "Reducción de ruido"
 
 #: src/plugin_name.cpp:47
 msgid "Stereo Tools"
@@ -3177,25 +3162,24 @@ msgstr "Herramientas Estéreo"
 
 #: src/plugins_menu.cpp:145
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: src/presets_menu.cpp:106
-#, fuzzy
 msgid "Import Preset"
-msgstr "Importar Perfiles"
+msgstr "Importar Preajuste"
 
 #: src/rnnoise_ui.cpp:122
-#, fuzzy
 msgid "Import Model File"
-msgstr "Importar Archivo Impulse"
+msgstr "Importar archivo modelo"
 
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
-msgstr ""
+msgstr "Modelos RNNoise"
 
+#: data/ui/app_info.ui:203
 #, fuzzy
-#~ msgid "Activate"
-#~ msgstr "Modo Agresivo"
+msgid "Activate"
+msgstr "Modo Agresivo"
 
 #, fuzzy
 #~ msgid "Add to Blocklist"
