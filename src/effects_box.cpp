@@ -77,7 +77,7 @@ struct _EffectsBox {
 
   ui::blocklist_menu::BlocklistMenu* blocklist_menu;
 
-  GSettings *settings, *settings_spectrum, *app_settings;
+  GSettings *settings_spectrum, *app_settings;
 
   Data* data;
 };
@@ -250,8 +250,6 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   switch (pipeline_type) {
     case PipelineType::input: {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
-
       self->data->effects_base = static_cast<EffectsBase*>(self->data->application->sie);
 
       self->apps_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->appsBox), "apps", _("Recorders"));
@@ -276,8 +274,6 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
       break;
     }
     case PipelineType::output: {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
-
       self->data->effects_base = static_cast<EffectsBase*>(self->data->application->soe);
 
       self->apps_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->appsBox), "apps", _("Players"));
@@ -305,7 +301,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   self->plugins_box_page =
       adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->pluginsBox), "plugins", _("Effects"));
 
-  adw_view_stack_page_set_icon_name(self->plugins_box_page, "ee-plugins-symbolic");
+  adw_view_stack_page_set_icon_name(self->plugins_box_page, "emblem-music-symbolic");
 
   // setting up the boxes we added t othe stack
 
@@ -472,7 +468,6 @@ void dispose(GObject* object) {
   self->data->connections.clear();
   self->data->gconnections_spectrum.clear();
 
-  g_object_unref(self->settings);
   g_object_unref(self->app_settings);
   g_object_unref(self->settings_spectrum);
 

@@ -64,6 +64,14 @@ auto app_is_blocklisted(AppsBox* self, const std::string& name) -> bool {
   return std::ranges::find(list, name) != list.end();
 }
 
+void update_empty_list_overlay(AppsBox* self) {
+  if (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0) {
+    gtk_widget_show(GTK_WIDGET(self->overlay_empty_list));
+  } else {
+    gtk_widget_hide(GTK_WIDGET(self->overlay_empty_list));
+  }
+}
+
 void on_app_added(AppsBox* self, const NodeInfo& node_info) {
   // do not add the same stream twice
 
@@ -97,9 +105,7 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
 
   g_object_unref(holder);
 
-  if (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) != 0) {
-    gtk_widget_hide(GTK_WIDGET(self->overlay_empty_list));
-  }
+  update_empty_list_overlay(self);
 }
 
 void on_app_removed(AppsBox* self, const long ts) {
@@ -136,9 +142,7 @@ void on_app_removed(AppsBox* self, const long ts) {
     g_object_unref(holder);
   }
 
-  if (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0) {
-    gtk_widget_show(GTK_WIDGET(self->overlay_empty_list));
-  }
+  update_empty_list_overlay(self);
 }
 
 void on_app_changed(AppsBox* self, const NodeInfo node_info) {
@@ -331,11 +335,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
           g_object_unref(holder);
         }
 
-        if (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0) {
-          gtk_widget_show(GTK_WIDGET(self->overlay_empty_list));
-        } else {
-          gtk_widget_hide(GTK_WIDGET(self->overlay_empty_list));
-        }
+        update_empty_list_overlay(self);
       }),
       self));
 
@@ -369,6 +369,8 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
             }
           }
         }
+
+        update_empty_list_overlay(self);
       }),
       self));
 }
