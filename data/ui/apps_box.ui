@@ -33,7 +33,7 @@
                         <child>
                             <object class="GtkImage">
                                 <property name="pixel_size">64</property>
-                                <property name="icon_name">applications-multimedia-symbolic</property>
+                                <property name="icon_name">emblem-music-symbolic</property>
                                 <style>
                                     <class name="dim-label" />
                                 </style>
