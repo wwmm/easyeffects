@@ -93,7 +93,7 @@ msgstr "La page d'amélioration des basses montrant les contrôles audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "La page du filtre de convolution affichant les contrôles audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -115,26 +115,32 @@ msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
+"Il y a une nouvelle option permettant à l'utilisateur de sélectionner un "
+"délai d'inactivité pour les effets audio. Quand aucun client n'émet de son"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"ou n'enregistre depuis l'un des appareils, les filtres sont déconnectés une "
+"fois le délai atteint. Cela permet d'assurer"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "de ne pas gâcher l'utilisation du CPU sur du silence."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
 msgstr ""
+"le plugin autogain permet désormais à l'utilisateur de sélectionner "
+"lesquelles des trois \"loudness\" sont utilisées pour calculer la moyenne"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "mean."
-msgstr ""
+msgstr "moyenne géométrique."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
@@ -244,7 +250,7 @@ msgid ""
 "Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
 "an application crash."
 msgstr ""
-"Correction d'un bogue où le réglage de la `qualité` d'une bande d'égaliseur "
+"Correction d'un bug où le réglage de la `qualité` d'une bande d'égaliseur "
 "sur `zéro` entraînait un plantage de l'application."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:95
@@ -344,7 +350,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:190
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "This release fixes the following bugs:"
-msgstr "Cette version corrige les bogues suivants :"
+msgstr "Cette version corrige les bugs suivants :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
 msgid ""
@@ -388,40 +394,52 @@ msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
 msgstr ""
+"La fonctionnalité d'import de profil APO du plugin égalisateur utilise "
+"désormais le paramètre de \"Pré-Amplification\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:132
 msgid "Optional Cubic Volume can be enabled in General Settings."
 msgstr ""
+"L'option de Volume Cubique peut être activée dans les Paramètres Généraux."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
 msgstr ""
+"Les flux PipeWire de monitoring sont maintenant exclus et retirés de la "
+"liste d'applications."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:144
 msgid "Hopefully crashes like the one reported at [1172]( are fixed."
 msgstr ""
+"Les crashs comme celui signalé en [1172]( sont vraisemblablement corrigés."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:145
 msgid "Prevented a case in which Spectrum was crashing."
-msgstr ""
+msgstr "Une situation entraînant un plantage du Spectre a été évitée."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:146
 msgid ""
 "Pavucontrol is not added anymore to input applications list on systems with "
 "localization different than English."
 msgstr ""
+"Pavucontrol n'est plus ajouté aux liste d'applications en entrée sur les "
+"systèmes ayant une autre langue que l'anglais."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
 msgid ""
 "Improved compatibility with WirePlumber. This is needed to run on systems "
 "that decided to use it instead of the"
 msgstr ""
+"La compatibilité avec WirePlumber a été améliorée. C'est nécessaire pour les "
+"systèmes ayant décidé de l'utiliser plutôt que"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:155
 msgid "built-in PipeWire session manager. More information at issue [1144]("
 msgstr ""
+"Le gestionnaire de sessions PipeWire fourni. Plus d'informations dans "
+"l'issue [1144]("
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
 msgid ""
@@ -429,6 +447,9 @@ msgid ""
 "its target preset will be updated. This way we can change the profile preset "
 "without having to remove and recreating it."
 msgstr ""
+"Lors d'un ajout d'un profil automatique pour un appareil déjà dans la liste, "
+"ses presets cibles seront mis à jour. Ainsi, on peut modifier le preset du "
+"profil sans le retirer et la re-créer."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:164
 msgid ""
@@ -756,7 +777,7 @@ msgstr "Menu principal"
 msgid "EasyEffects Window"
 msgstr "Fenêtre de EasyEffects"
 
-#: data/ui/apps_box.ui:21
+#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
 msgid "Applications List"
 msgstr "Liste des applications"
 
@@ -3273,9 +3294,10 @@ msgstr "Réponse plane"
 msgid "RNNoise Models"
 msgstr "Aucune compression"
 
+#: data/ui/app_info.ui:203
 #, fuzzy
-#~ msgid "Activate"
-#~ msgstr "Aucune compression"
+msgid "Activate"
+msgstr "Aucune compression"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Ajouter à la liste de blocage"
