@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: 2020-01-09 18:18-0500\n"
 "Last-Translator: Christian\n"
 "Language-Team: \n"
@@ -719,14 +719,20 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Aplicaciones"
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
-msgstr ""
+#: data/ui/apps_box.ui:31
+#, fuzzy
+msgid "Empty List"
+msgstr "Paredes Vacías"
+
+#: data/ui/apps_box.ui:32
+#, fuzzy
+msgid "No Audio Application Available"
+msgstr "Aplicaciones"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3048,15 +3054,15 @@ msgstr "Fallido"
 msgid "Could Not Load The Impulse File"
 msgstr "No se pudo encontrar el archivo Impulse"
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 msgid "Recorders"
 msgstr "grabadoras"
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr "Jugadores"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 msgid "Effects"
 msgstr "Efectos"
 
@@ -3176,10 +3182,9 @@ msgstr "Importar archivo modelo"
 msgid "RNNoise Models"
 msgstr "Modelos RNNoise"
 
-#: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Modo Agresivo"
+#~ msgid "Activate"
+#~ msgstr "Modo Agresivo"
 
 #, fuzzy
 #~ msgid "Add to Blocklist"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: 2022-04-05 12:09+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -701,8 +701,13 @@ msgstr "EasyEffects 窗口"
 msgid "Applications List"
 msgstr ""
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
+#: data/ui/apps_box.ui:31
+#, fuzzy
+msgid "Empty List"
+msgstr "空旷"
+
+#: data/ui/apps_box.ui:32
+msgid "No Audio Application Available"
 msgstr ""
 
 #: data/ui/autogain.ui:19
@@ -2860,15 +2865,15 @@ msgstr "失败"
 msgid "Could Not Load The Impulse File"
 msgstr "无法加载 Impulse 文件"
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr "播放器"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 msgid "Effects"
 msgstr "音效"
 

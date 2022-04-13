@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: 2022-03-20 02:57+0000\n"
 "Last-Translator: Skia <skia+weblate@hya.sk>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -777,13 +777,18 @@ msgstr "Menu principal"
 msgid "EasyEffects Window"
 msgstr "Fenêtre de EasyEffects"
 
-#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
 msgstr "Liste des applications"
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
+#: data/ui/apps_box.ui:31
+msgid "Empty List"
 msgstr ""
+
+#: data/ui/apps_box.ui:32
+#, fuzzy
+msgid "No Audio Application Available"
+msgstr "Nom de l'application"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3148,15 +3153,15 @@ msgstr ""
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -3294,10 +3299,9 @@ msgstr "Réponse plane"
 msgid "RNNoise Models"
 msgstr "Aucune compression"
 
-#: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Aucune compression"
+#~ msgid "Activate"
+#~ msgstr "Aucune compression"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Ajouter à la liste de blocage"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -685,8 +685,12 @@ msgstr ""
 msgid "Applications List"
 msgstr ""
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
+#: data/ui/apps_box.ui:31
+msgid "Empty List"
+msgstr ""
+
+#: data/ui/apps_box.ui:32
+msgid "No Audio Application Available"
 msgstr ""
 
 #: data/ui/autogain.ui:19
@@ -2836,15 +2840,15 @@ msgstr ""
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 msgid "Effects"
 msgstr ""
 

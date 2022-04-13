@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: 2022-03-20 02:57+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -841,9 +841,15 @@ msgstr "EasyEffects ウィンドウ"
 msgid "Applications List"
 msgstr "アプリケーションリスト"
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
-msgstr ""
+#: data/ui/apps_box.ui:31
+#, fuzzy
+msgid "Empty List"
+msgstr "何もない壁"
+
+#: data/ui/apps_box.ui:32
+#, fuzzy
+msgid "No Audio Application Available"
+msgstr "アプリケーション名"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3001,15 +3007,15 @@ msgstr "失敗"
 msgid "Could Not Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr "プレイヤー"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"

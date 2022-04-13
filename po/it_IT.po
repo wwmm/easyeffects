@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: 2022-04-09 11:09+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -854,13 +854,19 @@ msgstr "Menu Principale"
 msgid "EasyEffects Window"
 msgstr "Finestra di EasyEffects"
 
-#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 msgid "Applications List"
 msgstr "Lista Applicazioni"
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
-msgstr ""
+#: data/ui/apps_box.ui:31
+#, fuzzy
+msgid "Empty List"
+msgstr "Mura Vuote"
+
+#: data/ui/apps_box.ui:32
+#, fuzzy
+msgid "No Audio Application Available"
+msgstr "Nome Applicazione"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3010,15 +3016,15 @@ msgstr "Errore"
 msgid "Could Not Load The Impulse File"
 msgstr "Non è Possibile Caricare il File di Impulso"
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr "Riproduttori"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 msgid "Effects"
 msgstr "Effetti"
 
@@ -3138,9 +3144,8 @@ msgstr "Importa File Modello"
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
-#: data/ui/app_info.ui:203
-msgid "Activate"
-msgstr "Abilita"
+#~ msgid "Activate"
+#~ msgstr "Abilita"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Aggiungi ad App Escluse"

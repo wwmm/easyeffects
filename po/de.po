@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: 2022-02-20 22:54+0000\n"
 "Last-Translator: Christian Mattes <christian.mattes@rwth-aachen.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -716,14 +716,20 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:21 data/ui/apps_box.ui:19
+#: data/ui/apps_box.ui:21
 #, fuzzy
 msgid "Applications List"
 msgstr "Anwendungen"
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
-msgstr ""
+#: data/ui/apps_box.ui:31
+#, fuzzy
+msgid "Empty List"
+msgstr "Leere Wände"
+
+#: data/ui/apps_box.ui:32
+#, fuzzy
+msgid "No Audio Application Available"
+msgstr "Anwendungen"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3031,15 +3037,15 @@ msgstr "Gescheitert"
 msgid "Could Not Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 msgid "Recorders"
 msgstr "Rekorder"
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr "Spieler"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -3165,10 +3171,9 @@ msgstr "Impulsdatei importieren"
 msgid "RNNoise Models"
 msgstr "Standard RNNoise-Modell"
 
-#: data/ui/app_info.ui:203
 #, fuzzy
-msgid "Activate"
-msgstr "Aktives Modell"
+#~ msgid "Activate"
+#~ msgstr "Aktives Modell"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Zur Sperrliste hinzufügen"

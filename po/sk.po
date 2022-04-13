@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -710,9 +710,15 @@ msgstr "PulseEffects"
 msgid "Applications List"
 msgstr "Aplikácie"
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
-msgstr ""
+#: data/ui/apps_box.ui:31
+#, fuzzy
+msgid "Empty List"
+msgstr "Prázdne steny"
+
+#: data/ui/apps_box.ui:32
+#, fuzzy
+msgid "No Audio Application Available"
+msgstr "Aplikácie"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3066,16 +3072,16 @@ msgstr "Zlyhalo"
 msgid "Could Not Load The Impulse File"
 msgstr "Nedá sa načítať súbor s impulzom"
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr "Prehrávače"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"

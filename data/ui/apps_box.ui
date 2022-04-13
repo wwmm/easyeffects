@@ -28,8 +28,8 @@
                 <child type="overlay">
                     <object class="AdwStatusPage" id="overlay_empty_list">
                         <property name="icon-name">applications-multimedia-symbolic</property>
-                        <property name="title" translatable="yes">Audio Applications List</property>
-                        <property name="description" translatable="yes">No Applications Available</property>
+                        <property name="title" translatable="yes">Empty List</property>
+                        <property name="description" translatable="yes">No Audio Application Available</property>
                     </object>
                 </child>
             </object>

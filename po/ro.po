@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 12:40-0300\n"
+"POT-Creation-Date: 2022-04-13 01:48-0300\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -712,9 +712,15 @@ msgstr "EasyEffects"
 msgid "Applications List"
 msgstr "Aplicații"
 
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
-msgstr ""
+#: data/ui/apps_box.ui:31
+#, fuzzy
+msgid "Empty List"
+msgstr "Pereți Goi"
+
+#: data/ui/apps_box.ui:32
+#, fuzzy
+msgid "No Audio Application Available"
+msgstr "Aplicații"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -3056,16 +3062,16 @@ msgstr "A Eșuat"
 msgid "Could Not Load The Impulse File"
 msgstr "Nu s-a putut Încărca Fișierul Impulse"
 
-#: src/effects_box.cpp:257
+#: src/effects_box.cpp:255
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordură"
 
-#: src/effects_box.cpp:283
+#: src/effects_box.cpp:279
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:302
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
