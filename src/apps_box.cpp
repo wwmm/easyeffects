@@ -43,7 +43,7 @@ struct _AppsBox {
 
   GtkOverlay* overlay;
 
-  GtkGrid* overlay_empty_list;
+  AdwStatusPage* overlay_empty_list;
 
   GtkListView* listview;
 

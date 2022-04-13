@@ -26,36 +26,10 @@
                 </child>
 
                 <child type="overlay">
-                    <object class="GtkGrid" id="overlay_empty_list">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="row_spacing">36</property>
-                        <child>
-                            <object class="GtkImage">
-                                <property name="pixel_size">64</property>
-                                <property name="icon_name">applications-multimedia-symbolic</property>
-                                <style>
-                                    <class name="dim-label" />
-                                </style>
-                                <layout>
-                                    <property name="column">0</property>
-                                    <property name="row">0</property>
-                                </layout>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="label" translatable="yes">Empty Stream List</property>
-                                <style>
-                                    <class name="title-3" />
-                                    <class name="dim-label" />
-                                </style>
-                                <layout>
-                                    <property name="column">0</property>
-                                    <property name="row">1</property>
-                                </layout>
-                            </object>
-                        </child>
+                    <object class="AdwStatusPage" id="overlay_empty_list">
+                        <property name="icon-name">applications-multimedia-symbolic</property>
+                        <property name="title" translatable="yes">Audio Applications List</property>
+                        <property name="description" translatable="yes">No Applications Available</property>
                     </object>
                 </child>
             </object>
