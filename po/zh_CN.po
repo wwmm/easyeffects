@@ -639,9 +639,8 @@ msgid "\"Presets\""
 msgstr "\"预设\""
 
 #: data/ui/app_info.ui:203
-#, fuzzy
 msgid "Enable"
-msgstr "已启用"
+msgstr "启用"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -2865,15 +2864,15 @@ msgstr "失败"
 msgid "Could Not Load The Impulse File"
 msgstr "无法加载 Impulse 文件"
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:255 src/effects_box.cpp:257
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:279
+#: src/effects_box.cpp:279 src/effects_box.cpp:283
 msgid "Players"
 msgstr "播放器"
 
-#: src/effects_box.cpp:302
+#: src/effects_box.cpp:302 src/effects_box.cpp:306
 msgid "Effects"
 msgstr "音效"
 
@@ -2993,6 +2992,10 @@ msgstr "导入模型文件"
 msgid "RNNoise Models"
 msgstr "RNNoise 模型"
 
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
+msgstr ""
+
 #~ msgid "Activate"
 #~ msgstr "激活"
 
@@ -3059,7 +3062,6 @@ msgstr "RNNoise 模型"
 #~ msgid "Id"
 #~ msgstr "Id"
 
-#~| msgid "Low-Pass"
 #~ msgid "Low-pass"
 #~ msgstr "低通"
 
@@ -3093,12 +3095,10 @@ msgstr "RNNoise 模型"
 #~ msgid "Robinson-Dadson"
 #~ msgstr "Robinson-Dadson"
 
-#~| msgid "Test Signals"
 #~ msgid "Signal"
 #~ msgstr "测试信号"
 
 #, fuzzy
-#~| msgid "Weights"
 #~ msgid "Wet"
 #~ msgstr "程度"
 
