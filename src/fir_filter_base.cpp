@@ -154,7 +154,7 @@ void FirFilterBase::setup_zita() {
   int ret = conv->configure(2, 2, kernel.size(), n_samples, n_samples, n_samples, 0.0F /*density*/);
 
   if (ret != 0) {
-    util::warning(log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
+    util::warning(log_tag + "can't initialise zita-convolver engine: " + util::to_string(ret, ""));
 
     return;
   }
@@ -162,7 +162,7 @@ void FirFilterBase::setup_zita() {
   ret = conv->impdata_create(0, 0, 1, kernel.data(), 0, static_cast<int>(kernel.size()));
 
   if (ret != 0) {
-    util::warning(log_tag + "left impdata_create failed: " + std::to_string(ret));
+    util::warning(log_tag + "left impdata_create failed: " + util::to_string(ret, ""));
 
     return;
   }
@@ -170,7 +170,7 @@ void FirFilterBase::setup_zita() {
   ret = conv->impdata_create(1, 1, 1, kernel.data(), 0, static_cast<int>(kernel.size()));
 
   if (ret != 0) {
-    util::warning(log_tag + "right impdata_create failed: " + std::to_string(ret));
+    util::warning(log_tag + "right impdata_create failed: " + util::to_string(ret, ""));
 
     return;
   }
@@ -178,7 +178,7 @@ void FirFilterBase::setup_zita() {
   ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
 
   if (ret != 0) {
-    util::warning(log_tag + "start_process failed: " + std::to_string(ret));
+    util::warning(log_tag + "start_process failed: " + util::to_string(ret, ""));
 
     conv->stop_process();
     conv->cleanup();

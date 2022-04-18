@@ -253,7 +253,7 @@ void Convolver::process(std::span<float>& left_in,
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+    util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
     util::idle_add([=, this] { latency.emit(latency_value); });
 
@@ -310,9 +310,9 @@ void Convolver::read_kernel_file() {
   }
 
   util::debug(log_tag + name + ": irs file: " + path);
-  util::debug(log_tag + name + ": irs rate: " + std::to_string(file.samplerate()) + " Hz");
-  util::debug(log_tag + name + ": irs channels: " + std::to_string(file.channels()));
-  util::debug(log_tag + name + ": irs frames: " + std::to_string(file.frames()));
+  util::debug(log_tag + name + ": irs rate: " + util::to_string(file.samplerate()) + " Hz");
+  util::debug(log_tag + name + ": irs channels: " + util::to_string(file.channels()));
+  util::debug(log_tag + name + ": irs frames: " + util::to_string(file.frames()));
 
   // for now only stereo irs files are supported
 
@@ -335,7 +335,7 @@ void Convolver::read_kernel_file() {
   }
 
   if (file.samplerate() != static_cast<int>(rate)) {
-    util::debug(log_tag + name + " resampling the kernel to " + std::to_string(rate));
+    util::debug(log_tag + name + " resampling the kernel to " + util::to_string(rate));
 
     auto resampler = std::make_unique<Resampler>(file.samplerate(), rate);
 
@@ -382,7 +382,7 @@ void Convolver::apply_kernel_autogain() {
 
   const float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
 
-  util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
+  util::debug(log_tag + "autogain factor: " + util::to_string(autogain));
 
   std::ranges::for_each(kernel_L, [&](auto& v) { v *= autogain; });
   std::ranges::for_each(kernel_R, [&](auto& v) { v *= autogain; });
@@ -430,7 +430,7 @@ void Convolver::setup_zita() {
   int ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, 0.0F /*density*/);
 
   if (ret != 0) {
-    util::warning(log_tag + name + " can't initialise zita-convolver engine: " + std::to_string(ret));
+    util::warning(log_tag + name + " can't initialise zita-convolver engine: " + util::to_string(ret, ""));
 
     return;
   }
@@ -438,7 +438,7 @@ void Convolver::setup_zita() {
   ret = conv->impdata_create(0, 0, 1, kernel_L.data(), 0, static_cast<int>(kernel_L.size()));
 
   if (ret != 0) {
-    util::warning(log_tag + name + " left impdata_create failed: " + std::to_string(ret));
+    util::warning(log_tag + name + " left impdata_create failed: " + util::to_string(ret));
 
     return;
   }
@@ -446,7 +446,7 @@ void Convolver::setup_zita() {
   ret = conv->impdata_create(1, 1, 1, kernel_R.data(), 0, static_cast<int>(kernel_R.size()));
 
   if (ret != 0) {
-    util::warning(log_tag + name + " right impdata_create failed: " + std::to_string(ret));
+    util::warning(log_tag + name + " right impdata_create failed: " + util::to_string(ret, ""));
 
     return;
   }
@@ -454,7 +454,7 @@ void Convolver::setup_zita() {
   ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
 
   if (ret != 0) {
-    util::warning(log_tag + name + " start_process failed: " + std::to_string(ret));
+    util::warning(log_tag + name + " start_process failed: " + util::to_string(ret, ""));
 
     conv->stop_process();
     conv->cleanup();

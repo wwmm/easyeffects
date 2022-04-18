@@ -82,7 +82,7 @@ void on_reset(MultibandCompressorBox* self, GtkButton* btn) {
 void on_listbox_row_selected(MultibandCompressorBox* self, GtkListBoxRow* row, GtkListBox* listbox) {
   if (auto* selected_row = gtk_list_box_get_selected_row(listbox); selected_row != nullptr) {
     if (auto index = gtk_list_box_row_get_index(selected_row); index != -1) {
-      gtk_stack_set_visible_child_name(self->stack, ("band" + std::to_string(index)).c_str());
+      gtk_stack_set_visible_child_name(self->stack, ("band" + util::to_string(index)).c_str());
     }
   }
 }
@@ -105,7 +105,7 @@ void create_bands(MultibandCompressorBox* self) {
 
     ui::multiband_compressor_band_box::setup(band_box, self->settings, n);
 
-    gtk_stack_add_named(self->stack, GTK_WIDGET(band_box), ("band" + std::to_string(n)).c_str());
+    gtk_stack_add_named(self->stack, GTK_WIDGET(band_box), ("band" + util::to_string(n)).c_str());
 
     self->bands[n] = band_box;
 

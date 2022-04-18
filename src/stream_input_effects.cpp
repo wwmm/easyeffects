@@ -231,7 +231,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   if (!dev_exists) {
     util::warning(log_tag + "The input device " + pm->input_device.name + " with id " +
-                  std::to_string(pm->input_device.id) + " does not exist anymore. Aborting the link");
+                  util::to_string(pm->input_device.id) + " does not exist anymore. Aborting the link");
 
     return;
   }
@@ -247,7 +247,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
     if (timeout > 10000) {
       util::warning(log_tag + "Information about the ports of the input device " + pm->input_device.name + " with id " +
-                    std::to_string(pm->input_device.id) + " are taking to long to be available. Aborting the link");
+                    util::to_string(pm->input_device.id) + " are taking to long to be available. Aborting the link");
 
       return;
     }
@@ -279,8 +279,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
           prev_node_id = next_node_id;
           mic_linked = true;
         } else {
-          util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
-                        std::to_string(next_node_id) + " failed");
+          util::warning(log_tag + " link from node " + util::to_string(prev_node_id) + " to node " +
+                        util::to_string(next_node_id) + " failed");
         }
       }
     }
@@ -321,8 +321,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
       prev_node_id = next_node_id;
       mic_linked = true;
     } else {
-      util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
-                    std::to_string(next_node_id) + " failed");
+      util::warning(log_tag + " link from node " + util::to_string(prev_node_id) + " to node " +
+                    util::to_string(next_node_id) + " failed");
     }
   }
 }

@@ -90,7 +90,7 @@ void Loudness::process(std::span<float>& left_in,
 
     const float latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
+    util::debug(log_tag + name + " latency: " + util::to_string(latency_port_value, "") + " s");
 
     util::idle_add([=, this]() {
       if (!post_messages) {

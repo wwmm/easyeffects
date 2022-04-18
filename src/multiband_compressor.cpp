@@ -101,7 +101,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
 
     latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
+    util::debug(log_tag + name + " latency: " + util::to_string(latency_port_value, "") + " s");
 
     util::idle_add([=, this]() {
       if (!post_messages) {
@@ -151,7 +151,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
 
     if (notification_dt >= notification_time_window) {
       for (uint n = 0U; n < n_bands; n++) {
-        const auto nstr = std::to_string(n);
+        const auto nstr = util::to_string(n);
 
         frequency_range_end_port_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
         envelope_port_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);
@@ -192,7 +192,7 @@ void MultibandCompressor::update_sidechain_links(const std::string& key) {
   auto external_sidechain_enabled = false;
 
   for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {
-    const auto nstr = std::to_string(n);
+    const auto nstr = util::to_string(n);
 
     external_sidechain_enabled = g_settings_get_boolean(settings, ("external-sidechain" + nstr).c_str()) != 0;
   }

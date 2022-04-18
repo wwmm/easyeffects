@@ -142,7 +142,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->app_settings);
 
-  util::debug(log_tag + "index: "s + std::to_string(self->data->index) + " disposed"s);
+  util::debug(log_tag + "index: "s + util::to_string(self->data->index) + " disposed"s);
 
   G_OBJECT_CLASS(equalizer_band_box_parent_class)->dispose(object);
 }

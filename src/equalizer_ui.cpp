@@ -148,9 +148,7 @@ auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
     return false;
   }
 
-  preamp = std::stod(matches.str(1));
-
-  return true;
+  return util::str_to_num(matches.str(1), preamp);
 }
 
 auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::string {
@@ -194,9 +192,7 @@ auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bo
 
   // Frequency could have a comma as thousands separator
   // to be removed for the correct float conversion.
-  filter.freq = std::stof(std::regex_replace(matches.str(1), std::regex(","), ""));
-
-  return true;
+  return util::str_to_num(std::regex_replace(matches.str(1), std::regex(","), ""), filter.freq);
 }
 
 auto parse_apo_gain(const std::string& line, struct APO_Band& filter) -> bool {
@@ -210,9 +206,7 @@ auto parse_apo_gain(const std::string& line, struct APO_Band& filter) -> bool {
     return false;
   }
 
-  filter.gain = std::stof(matches.str(1));
-
-  return true;
+  return util::str_to_num(matches.str(1), filter.gain);
 }
 
 auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool {
@@ -226,9 +220,7 @@ auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool
     return false;
   }
 
-  filter.quality = std::stof(matches.str(1));
-
-  return true;
+  return util::str_to_num(matches.str(1), filter.quality);
 }
 
 auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {

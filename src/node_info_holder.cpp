@@ -90,7 +90,7 @@ void node_info_holder_finalize(GObject* object) {
 
   self->info_updated.clear();
 
-  util::debug(log_tag + std::to_string(self->info->id) + ", " + self->info->name + " finalized");
+  util::debug(log_tag + util::to_string(self->info->id) + ", " + self->info->name + " finalized");
 
   delete self->info;
 

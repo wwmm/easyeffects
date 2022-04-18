@@ -122,7 +122,7 @@ void combine_kernels(ConvolverMenuCombine* self,
   }
 
   if (rate1 > rate2) {
-    util::debug(log_tag + "resampling the kernel "s + kernel_2_name + " to " + std::to_string(rate1) + " Hz");
+    util::debug(log_tag + "resampling the kernel "s + kernel_2_name + " to " + util::to_string(rate1) + " Hz");
 
     auto resampler = std::make_unique<Resampler>(rate2, rate1);
 
@@ -132,7 +132,7 @@ void combine_kernels(ConvolverMenuCombine* self,
 
     kernel_2_R = resampler->process(kernel_2_R, true);
   } else if (rate2 > rate1) {
-    util::debug(log_tag + "resampling the kernel "s + kernel_1_name + " to " + std::to_string(rate2) + " Hz");
+    util::debug(log_tag + "resampling the kernel "s + kernel_1_name + " to " + util::to_string(rate2) + " Hz");
 
     auto resampler = std::make_unique<Resampler>(rate1, rate2);
 

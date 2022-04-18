@@ -83,7 +83,7 @@ void build_bands(CrystalizerBox* self) {
 
     prepare_scale<"">(band_intensity);
 
-    const auto bandn = "band" + std::to_string(n);
+    const auto bandn = "band" + util::to_string(n);
 
     // connections
 

@@ -255,8 +255,8 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   float max_freq = std::ranges::max(self->data->freq_axis);
   float min_freq = std::ranges::min(self->data->freq_axis);
 
-  util::debug(log_tag + "min fft frequency: "s + std::to_string(min_freq));
-  util::debug(log_tag + "max fft frequency: "s + std::to_string(max_freq));
+  util::debug(log_tag + "min fft frequency: "s + util::to_string(min_freq, ""));
+  util::debug(log_tag + "max fft frequency: "s + util::to_string(max_freq, ""));
 
   const auto log_axis = util::logspace(min_freq, max_freq, bin_size);
   // const auto log_axis = util::logspace(20.0F, 22000.0F, self->data->freq_axis.size());

@@ -193,7 +193,7 @@ void dispose(GObject* object) {
 
   self->data->gconnections.clear();
 
-  util::debug(log_tag + "index: "s + std::to_string(self->data->index) + " disposed"s);
+  util::debug(log_tag + "index: "s + util::to_string(self->data->index) + " disposed"s);
 
   G_OBJECT_CLASS(multiband_compressor_band_box_parent_class)->dispose(object);
 }
