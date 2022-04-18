@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-13 01:48-0300\n"
-"PO-Revision-Date: 2022-04-03 12:11+0000\n"
+"PO-Revision-Date: 2022-04-18 18:11+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -800,9 +800,8 @@ msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
 #: data/ui/app_info.ui:203
-#, fuzzy
 msgid "Enable"
-msgstr "Включено"
+msgstr "Включить"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -863,14 +862,12 @@ msgid "Applications List"
 msgstr "Список приложений"
 
 #: data/ui/apps_box.ui:31
-#, fuzzy
 msgid "Empty List"
-msgstr "Пустые стены"
+msgstr "Пустой список"
 
 #: data/ui/apps_box.ui:32
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Название приложения"
+msgstr "Нет доступных приложений аудио"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -1116,17 +1113,14 @@ msgid "Application Name"
 msgstr "Название приложения"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "Отобразить чёрный список приложений"
+msgstr "Добавить в чёрный список приложений"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
 msgstr "Чёрный список приложений"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
 msgstr "Отобразить чёрный список приложений"
 
@@ -1566,9 +1560,8 @@ msgid "Filter Length"
 msgstr "Длина фильтра"
 
 #: data/ui/effects_box.ui:114
-#, fuzzy
 msgid "Excluded Apps"
-msgstr "Исключить"
+msgstr "Приложения чёрного списка"
 
 #: data/ui/equalizer.ui:77
 msgid "Bands"
@@ -2554,9 +2547,8 @@ msgid "Remove this plugin"
 msgstr "Удалить этот плагин"
 
 #: data/ui/plugins_box.ui:19
-#, fuzzy
 msgid "Add Effect"
-msgstr "Эффекты для ввода звука"
+msgstr "Добавить эффект"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
@@ -3073,9 +3065,8 @@ msgid "Players"
 msgstr "Проигрыватели"
 
 #: src/effects_box.cpp:302
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "Эффекты"
 
 #: src/equalizer_band_box.cpp:97
 msgid "infinity"
