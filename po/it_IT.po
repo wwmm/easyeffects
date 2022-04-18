@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-13 01:48-0300\n"
-"PO-Revision-Date: 2022-04-09 11:09+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2022-04-18 18:11+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -796,9 +796,8 @@ msgid "\"Presets\""
 msgstr "\"Profili\""
 
 #: data/ui/app_info.ui:203
-#, fuzzy
 msgid "Enable"
-msgstr "Attivato"
+msgstr "Attiva"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -859,14 +858,12 @@ msgid "Applications List"
 msgstr "Lista Applicazioni"
 
 #: data/ui/apps_box.ui:31
-#, fuzzy
 msgid "Empty List"
-msgstr "Mura Vuote"
+msgstr "Elenco vuoto"
 
 #: data/ui/apps_box.ui:32
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Nome Applicazione"
+msgstr "Nessuna applicazione audio disponibile"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
