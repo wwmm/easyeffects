@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-13 01:48-0300\n"
-"PO-Revision-Date: 2022-03-26 14:09+0000\n"
-"Last-Translator: 154pinkchairs <ovehis@riseup.net>\n"
+"PO-Revision-Date: 2022-04-18 18:11+0000\n"
+"Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
 "Language: pl\n"
@@ -76,15 +76,14 @@ msgstr ""
 "głosowych."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
 msgstr ""
-"Podczas uruchamiania, EasyEffects wygodnie przypomni sobie konfigurację "
-"użytą w ostatniej sesji. Możliwe jest również zapisanie wszystkich bieżących "
-"ustawień w postaci profilów."
+"Po uruchomieniu programu EasyEffects zapamiętuje on konfigurację użytą "
+"podczas ostatniej sesji. Możliwe jest także zapisanie wszystkich bieżących "
+"ustawień w postaci profili."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
@@ -96,7 +95,7 @@ msgstr "Strona wzmacniacza basów z widocznymi elementami sterowania dźwiękiem
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Strona konwolwera przedstawiająca elementy sterujące dźwiękiem"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -126,38 +125,48 @@ msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"do lub nagrywanych z naszych urządzeń, których filtry zostaną usunięte po "
+"upływie limitu czasu. Ma to na celu zapewnienie"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "tego, że nie będziemy marnować mocy procesora na przetwarzanie ciszy."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
 msgstr ""
+"Wtyczka automatycznej regulacji wzmocnienia umożliwia teraz użytkownikowi "
+"wybór, która z trzech głośności jest używana do obliczania średniej"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "mean."
-msgstr ""
+msgstr "geometrycznej."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
 msgstr ""
+"Wtyczka automatycznej regulacji wzmocnienia umożliwia teraz ustawienie "
+"maksymalnej historii i nie używa już trybu histogramu `libebur128`."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
+"Powinno to zapobiec przypadkom, gdy `Zintegrowana` głośność utknie na zawsze "
+"w tej samej wartości."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"Ikona EasyEffects została uaktualniona w taki sposób, że powinna być "
+"widoczna w pulpitach QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -174,12 +183,14 @@ msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
 msgstr ""
+"Opcja wiersza poleceń, która zwraca stan globalnego obejścia, działa "
+"ponownie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
 msgid "This release adds the following feature:"
-msgstr ""
+msgstr "W tym wydaniu dodano następującą funkcję:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
@@ -187,16 +198,21 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
+"Filtr krzyżowy powinien lepiej radzić sobie z dynamicznymi przełącznikami "
+"opóźnień w systemie PipeWire. W takich sytuacjach nie powinny już występować "
+"skoki poziomu głośności."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid ""
 "Fixed a bug that prevented mono microphones from properly working with "
 "EasyEffects"
 msgstr ""
+"Naprawiono błąd, który uniemożliwiał prawidłowe działanie mikrofonów "
+"monofonicznych z EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid "Support for the next PipeWire release `0.3.44`"
-msgstr ""
+msgstr "Wsparcie dla następnej wersji PipeWire `0.3.44`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
 msgid ""
@@ -204,6 +220,9 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
+"Filtr automatycznej regulacji wzmocnienia powinien lepiej radzić sobie z "
+"dynamicznymi przełącznikami opóźnień w systemie PipeWire. W takich "
+"sytuacjach nie powinny już występować skoki poziomu głośności."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
 msgid ""
@@ -211,15 +230,19 @@ msgid ""
 "devices to be reset when EasyEffects starts. It should help with the cases "
 "were our devices are muted by the audio server for unknown reasons."
 msgstr ""
+"Dodaliśmy opcję, która umożliwia zresetowanie głośności i stanu wyciszenia "
+"naszych urządzeń wirtualnych podczas uruchamiania EasyEffects. Powinno to "
+"pomóc w przypadkach, gdy z nieznanych przyczyn nasze urządzenia są wyciszane "
+"przez serwer audio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
 msgid "Better support for computer suspending."
-msgstr ""
+msgstr "Lepsza obsługa uśpienia komputera."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
 msgid "Updated translations"
-msgstr ""
+msgstr "Uaktualnione tłumaczenia"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
