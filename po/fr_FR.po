@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-13 01:48-0300\n"
-"PO-Revision-Date: 2022-03-20 02:57+0000\n"
-"Last-Translator: Skia <skia+weblate@hya.sk>\n"
+"PO-Revision-Date: 2022-04-18 18:11+0000\n"
+"Last-Translator: Marc Neiger <marc@neiger.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -147,18 +147,23 @@ msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
 msgstr ""
+"Le plugin autogain permet dorénavant d'indiquer une profondeur d'historique "
+"maximum et n'utilise plus le mode histogramme `libebur128`."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
+"Cela devrait permettre d'éviter les cas où le loudness `Integrated` reste "
+"toujours coincé à la même valeur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"L'icone EasyEffect a été mise à jour afin d'être visible dans les bureaux QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
@@ -3039,13 +3044,12 @@ msgid "Stereo Base"
 msgstr "Amélioration audio"
 
 #: data/ui/stereo_tools.ui:499
-#, fuzzy
 msgid "Stereo Phase"
-msgstr "Amélioration audio"
+msgstr "Phase Stéréo"
 
 #: src/app_info.cpp:68
 msgid "Running"
-msgstr ""
+msgstr "En cours"
 
 #: src/app_info.cpp:70
 msgid "Suspended"
@@ -3062,7 +3066,7 @@ msgstr "Paramètres"
 
 #: src/app_info.cpp:76
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: src/app_info.cpp:78
 msgid "Unknown"
@@ -3100,7 +3104,7 @@ msgstr "Réinitialiser EasyEffects."
 
 #: src/application.cpp:522
 msgid "Hide the Window."
-msgstr ""
+msgstr "Masquer la Fenêtre."
 
 #: src/application.cpp:525
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -3126,9 +3130,8 @@ msgstr ""
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
-#, fuzzy
 msgid "Cancel"
-msgstr "Amélioration audio"
+msgstr "Annuler"
 
 #: src/convolver_menu_impulses.cpp:90
 #, fuzzy
@@ -3171,9 +3174,8 @@ msgid "infinity"
 msgstr ""
 
 #: src/equalizer_ui.cpp:362
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "Ouvrir préréglage"
+msgstr "Importer un fichier de préréglage APO"
 
 #: src/equalizer_ui.cpp:368
 #, fuzzy
@@ -3236,7 +3238,7 @@ msgstr ""
 
 #: src/plugin_name.cpp:37
 msgid "Filter"
-msgstr ""
+msgstr "Filtre"
 
 #: src/plugin_name.cpp:38
 msgid "Gate"
