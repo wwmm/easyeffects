@@ -71,10 +71,12 @@ msgid ""
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
 msgstr ""
+"Når EasyEffects startes, vil den huske alle innstillingene du gjorde i "
+"forrige økt. Det er også mulig å lagre innstillingene i ulike profiler."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Hovedsiden som viser to programmer der det spilles av lyd"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
@@ -2878,15 +2880,15 @@ msgstr ""
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:255 src/effects_box.cpp:257
 msgid "Recorders"
 msgstr "Opptakere"
 
-#: src/effects_box.cpp:279
+#: src/effects_box.cpp:279 src/effects_box.cpp:283
 msgid "Players"
 msgstr "Avspillere"
 
-#: src/effects_box.cpp:302
+#: src/effects_box.cpp:302 src/effects_box.cpp:306
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -3014,6 +3016,10 @@ msgstr "Importer modellfil"
 
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
+msgstr ""
+
+#: data/ui/apps_box.ui:48
+msgid "Empty Stream List"
 msgstr ""
 
 #, fuzzy

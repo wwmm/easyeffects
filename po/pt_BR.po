@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-13 01:48-0300\n"
-"PO-Revision-Date: 2022-04-05 12:09+0000\n"
-"Last-Translator: Fábio Verardino <fabio.verardino@gmail.com>\n"
+"PO-Revision-Date: 2022-04-18 18:11+0000\n"
+"Last-Translator: João Henrique <jhenriquelc@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "não desperdiçamos poder da CPU processando silêncio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
@@ -180,7 +180,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
 msgid "This release adds the following feature:"
-msgstr ""
+msgstr "Esse lançamento adiciona o seguinte recurso:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
@@ -197,7 +197,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid "Support for the next PipeWire release `0.3.44`"
-msgstr ""
+msgstr "Suporte à próxima versão do PipeWire `0.3.44`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
 msgid ""
@@ -212,6 +212,10 @@ msgid ""
 "devices to be reset when EasyEffects starts. It should help with the cases "
 "were our devices are muted by the audio server for unknown reasons."
 msgstr ""
+"Adicionamos uma opção que permite os estados de volume e mudo de nossos "
+"dispositivos virtuais serem reiniciados quando EasyEffects inicia. Isto deve "
+"ajudar nos casos em que nossos dispositivos são silenciados pelo servidor de "
+"áudio por razões desconhecidas."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
 msgid "Better support for computer suspending."
@@ -695,7 +699,6 @@ msgid "Presets Menu"
 msgstr "Menu de Predefinições"
 
 #: data/ui/application_window.ui:61 data/ui/application_window.ui:66
-#, fuzzy
 msgid "Global Bypass"
 msgstr "Bypass Global"
 
@@ -1319,9 +1322,8 @@ msgstr "Importar Impulso"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
-#, fuzzy
 msgid "Search"
-msgstr "Busca"
+msgstr "Buscar"
 
 #: data/ui/convolver_menu_impulses.ui:27
 #, fuzzy
@@ -1554,7 +1556,6 @@ msgid "Ceil Value"
 msgstr "Valor do Teto"
 
 #: data/ui/factory_clients_listview.ui:72
-#, fuzzy
 msgid "API"
 msgstr "API"
 
