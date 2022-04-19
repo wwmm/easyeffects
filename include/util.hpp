@@ -29,6 +29,7 @@
 #include <filesystem>
 #include <functional>
 #include <iostream>
+#include <limits>
 #include <string>
 #include <thread>
 #include <vector>
@@ -133,11 +134,16 @@ auto to_string(const T& num, const std::string def = "0") -> std::string {
   // An additional string parameter could be eventually provided with a
   // default value to return in case the conversion fails.
 
-  const size_t max = 100u;
+  // Max buffer lenght:
+  // number of base-10 digits that can be represented by the type T without change +
+  // number of base-10 digits that are necessary to uniquely represent all distinct
+  // values of the type T (meaningful only for real numbers) +
+  // room for other characters such as "+-e,."
+  const size_t max = std::numeric_limits<T>::digits10 + std::numeric_limits<T>::max_digits10 + 10u;
 
-  std::array<char, max> str;
+  std::array<char, max> buffer;
 
-  const auto p_init = str.data();
+  const auto p_init = buffer.data();
 
   const auto result = std::to_chars(p_init, p_init + max, num);
 
