@@ -21,6 +21,12 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool {
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
   std::istringstream str(gtk_editable_get_text(GTK_EDITABLE(button)));
 
+  try {
+    str.imbue(std::locale(""));  // User locale
+  } catch (...) {
+    str.imbue(std::locale());  // C locale if user locale not set
+  }
+
   if (auto min = 0.0, max = 0.0; str >> *new_value) {
     gtk_spin_button_get_range(button, &min, &max);
 

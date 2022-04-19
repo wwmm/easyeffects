@@ -228,8 +228,8 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
         if (links.size() == 2U) {
           prev_node_id = next_node_id;
         } else {
-          util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
-                        std::to_string(next_node_id) + " failed");
+          util::warning(log_tag + " link from node " + util::to_string(prev_node_id) + " to node " +
+                        util::to_string(next_node_id) + " failed");
         }
       }
     }
@@ -267,8 +267,8 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     if (links.size() == 2U) {
       prev_node_id = next_node_id;
     } else {
-      util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
-                    std::to_string(next_node_id) + " failed");
+      util::warning(log_tag + " link from node " + util::to_string(prev_node_id) + " to node " +
+                    util::to_string(next_node_id) + " failed");
     }
   }
 
@@ -286,7 +286,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   if (!dev_exists) {
     util::warning(log_tag + "The output device " + pm->output_device.name + " with id " +
-                  std::to_string(pm->output_device.id) + " does not exist anymore. Aborting the link");
+                  util::to_string(pm->output_device.id) + " does not exist anymore. Aborting the link");
 
     return;
   }
@@ -302,7 +302,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
     if (timeout > 10000) {  // 10 seconds
       util::warning(log_tag + "Information about the ports of the output device " + pm->output_device.name +
-                    " with id " + std::to_string(pm->output_device.id) +
+                    " with id " + util::to_string(pm->output_device.id) +
                     " are taking to long to be available. Aborting the link");
 
       return;
@@ -320,8 +320,8 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   }
 
   if (links.size() < 2U) {
-    util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to output device " +
-                  std::to_string(next_node_id) + " failed");
+    util::warning(log_tag + " link from node " + util::to_string(prev_node_id) + " to output device " +
+                  util::to_string(next_node_id) + " failed");
   }
 }
 

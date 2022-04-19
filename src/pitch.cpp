@@ -193,7 +193,7 @@ void Pitch::process(std::span<float>& left_in,
   stretcher->process(stretcher_in.data(), n_samples, false);
 
   if (const auto n_available = stretcher->available(); n_available > 0) {
-    // util::debug(log_tag + name + " available: " + std::to_string(n_available));
+    // util::debug(log_tag + name + " available: " + util::to_string(n_available));
 
     data_L.resize(n_available);
     data_R.resize(n_available);
@@ -251,7 +251,7 @@ void Pitch::process(std::span<float>& left_in,
   if (notify_latency) {
     latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+    util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
     util::idle_add([=, this]() {
       if (!post_messages) {

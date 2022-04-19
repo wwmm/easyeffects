@@ -59,7 +59,7 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
   LinkInfo info;
 
   if (const auto* id = spa_dict_lookup(props, PW_KEY_LINK_ID)) {
-    info.id = std::stoi(id);
+    util::str_to_num(std::string(id), info.id);
   }
 
   if (const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH)) {
@@ -67,19 +67,19 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
   }
 
   if (const auto* input_node_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_NODE)) {
-    info.input_node_id = std::stoi(input_node_id);
+    util::str_to_num(std::string(input_node_id), info.input_node_id);
   }
 
   if (const auto* input_port_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_PORT)) {
-    info.input_port_id = std::stoi(input_port_id);
+    util::str_to_num(std::string(input_port_id), info.input_port_id);
   }
 
   if (const auto* output_node_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_NODE)) {
-    info.output_node_id = std::stoi(output_node_id);
+    util::str_to_num(std::string(output_node_id), info.output_node_id);
   }
 
   if (const auto* output_port_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_PORT)) {
-    info.output_port_id = std::stoi(output_port_id);
+    util::str_to_num(std::string(output_port_id), info.output_port_id);
   }
 
   if (const auto* passive = spa_dict_lookup(props, PW_KEY_LINK_PASSIVE)) {
@@ -95,7 +95,7 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
   PortInfo info;
 
   if (const auto* port_id = spa_dict_lookup(props, PW_KEY_PORT_ID)) {
-    info.port_id = std::stoi(port_id);
+    util::str_to_num(std::string(port_id), info.port_id);
   }
 
   if (const auto* name = spa_dict_lookup(props, PW_KEY_PORT_NAME)) {
@@ -103,7 +103,7 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
   }
 
   if (const auto* node_id = spa_dict_lookup(props, PW_KEY_NODE_ID)) {
-    info.node_id = std::stoi(node_id);
+    util::str_to_num(std::string(node_id), info.node_id);
   }
 
   if (const auto* direction = spa_dict_lookup(props, PW_KEY_PORT_DIRECTION)) {
@@ -299,7 +299,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     nd->nd_info->n_output_ports = static_cast<int>(info->n_output_ports);
 
     if (const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION)) {
-      nd->nd_info->priority = std::stoi(prio_session);
+      util::str_to_num(std::string(prio_session), nd->nd_info->priority);
     }
 
     if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
@@ -341,26 +341,29 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       const auto delimiter_pos = str.find('/');
 
-      const auto rate_str = str.substr(delimiter_pos + 1);
+      int rate = 1;
 
-      if (auto rate = std::stoi(rate_str); rate != nd->nd_info->rate) {
-        nd->nd_info->rate = rate;
+      if (util::str_to_num(str.substr(delimiter_pos + 1), rate)) {
+        if (rate != nd->nd_info->rate) {
+          nd->nd_info->rate = rate;
 
-        app_info_ui_changed = true;
+          app_info_ui_changed = true;
+        }
       }
 
-      const auto latency_str = str.substr(0, delimiter_pos);
+      float pw_lat = 0.0f;
 
-      if (auto latency = (std::stof(latency_str) / static_cast<float>(nd->nd_info->rate));
-          latency != nd->nd_info->latency) {
-        nd->nd_info->latency = latency;
+      if (util::str_to_num(str.substr(0, delimiter_pos), pw_lat)) {
+        if (auto latency = (pw_lat / static_cast<float>(nd->nd_info->rate)); latency != nd->nd_info->latency) {
+          nd->nd_info->latency = latency;
 
-        app_info_ui_changed = true;
+          app_info_ui_changed = true;
+        }
       }
     }
 
     if (const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID)) {
-      nd->nd_info->device_id = std::stoi(device_id);
+      util::str_to_num(std::string(device_id), nd->nd_info->device_id);
     }
 
     if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
@@ -481,8 +484,8 @@ void on_node_event_param(void* object,
                   format_str = "F32P";
                   break;
                 default:
-                  format_str = std::to_string(format);
-                  // util::warning(format_str + " " + std::to_string(SPA_AUDIO_FORMAT_F32_LE));
+                  format_str = util::to_string(format);
+                  // util::warning(format_str + " " + util::to_string(SPA_AUDIO_FORMAT_F32_LE));
                   break;
               }
 
@@ -844,7 +847,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   const std::string str_type = (type != nullptr) ? type : "";
   const std::string str_value = (value != nullptr) ? value : "";
 
-  util::debug(PipeManager::log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type +
+  util::debug(PipeManager::log_tag + "new metadata property: " + util::to_string(id) + ", " + str_key + ", " + str_type +
               ", " + str_value);
 
   if (str_value.empty()) {
@@ -1001,7 +1004,7 @@ void on_registry_global(void* data,
             if (g_strcmp0(description.substr(0, 2).c_str(), "ee_") == 0) {
               const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
-              util::debug(PipeManager::log_tag + "Filter " + node_name + ", id = " + std::to_string(id) +
+              util::debug(PipeManager::log_tag + "Filter " + node_name + ", id = " + util::to_string(id) +
                           ", was added");
             }
           }
@@ -1059,19 +1062,19 @@ void on_registry_global(void* data,
         }
 
         if (const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION)) {
-          nd->nd_info->priority = std::stoi(prio_session);
+          util::str_to_num(std::string(prio_session), nd->nd_info->priority);
         }
 
         if (const auto* device_id = spa_dict_lookup(props, PW_KEY_DEVICE_ID)) {
-          nd->nd_info->device_id = std::stoi(device_id);
+          util::str_to_num(std::string(device_id), nd->nd_info->device_id);
         }
 
         const auto [node_it, success] = pm->node_map.insert({nd->nd_info->timestamp, *nd->nd_info});
 
         if (!success) {
-          util::warning(PipeManager::log_tag + "Cannot insert node " + std::to_string(id) + " " + name +
+          util::warning(PipeManager::log_tag + "Cannot insert node " + util::to_string(id) + " " + name +
                         " into the node map because there's already an existing timestamp " +
-                        std::to_string(nd->nd_info->timestamp));
+                        util::to_string(nd->nd_info->timestamp));
 
           return;
         }
@@ -1118,8 +1121,8 @@ void on_registry_global(void* data,
           });
         }
 
-        util::debug(PipeManager::log_tag + media_class + " " + std::to_string(id) + " " + nd->nd_info->name +
-                    " with timestamp " + std::to_string(nd->nd_info->timestamp) + " was added");
+        util::debug(PipeManager::log_tag + media_class + " " + util::to_string(id) + " " + nd->nd_info->name +
+                    " with timestamp " + util::to_string(nd->nd_info->timestamp) + " was added");
       }
     }
 
@@ -1149,8 +1152,8 @@ void on_registry_global(void* data,
 
       const auto output_node = pm->node_map_at_id(link_info.output_node_id);
 
-      util::debug(PipeManager::log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
-                  " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
+      util::debug(PipeManager::log_tag + output_node.name + " port " + util::to_string(link_info.output_port_id) +
+                  " is connected to " + input_node.name + " port " + util::to_string(link_info.input_port_id));
     } catch (...) {
     }
 
@@ -1424,13 +1427,13 @@ PipeManager::PipeManager() {
       if (ee_sink_node.name.empty() && node.name == ee_sink_name) {
         ee_sink_node = node;
 
-        util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + std::to_string(node.id) +
-                    " and timestamp " + std::to_string(node.timestamp));
+        util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + util::to_string(node.id) +
+                    " and timestamp " + util::to_string(node.timestamp));
       } else if (ee_source_node.name.empty() && node.name == ee_source_name) {
         ee_source_node = node;
 
-        util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + std::to_string(node.id) +
-                    " and timestamp " + std::to_string(node.timestamp));
+        util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + util::to_string(node.id) +
+                    " and timestamp " + util::to_string(node.timestamp));
       }
     }
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
@@ -1522,8 +1525,8 @@ void PipeManager::set_metadata_target_node(const uint& origin_id,
   lock();
 
   // target.node for backward compatibility with old PW session managers
-  pw_metadata_set_property(metadata, origin_id, "target.node", "Spa:Id", std::to_string(target_id).c_str());
-  pw_metadata_set_property(metadata, origin_id, "target.object", "Spa:Id", std::to_string(target_serial).c_str());
+  pw_metadata_set_property(metadata, origin_id, "target.node", "Spa:Id", util::to_string(target_id).c_str());
+  pw_metadata_set_property(metadata, origin_id, "target.object", "Spa:Id", util::to_string(target_serial).c_str());
 
   sync_wait_unlock();
 }
@@ -1602,13 +1605,13 @@ auto PipeManager::link_nodes(const uint& output_node_id,
   }
 
   if (list_input_ports.size() == 0) {
-    util::debug(log_tag + "node " + std::to_string(input_node_id) + " has no input ports yet. Aborting the link");
+    util::debug(log_tag + "node " + util::to_string(input_node_id) + " has no input ports yet. Aborting the link");
 
     return list;
   }
 
   if (list_output_ports.size() == 0) {
-    util::debug(log_tag + "node " + std::to_string(output_node_id) + " has no input ports yet. Aborting the link");
+    util::debug(log_tag + "node " + util::to_string(output_node_id) + " has no input ports yet. Aborting the link");
 
     return list;
   }
@@ -1638,10 +1641,10 @@ auto PipeManager::link_nodes(const uint& output_node_id,
 
         pw_properties_set(props, PW_KEY_LINK_PASSIVE, (link_passive) ? "true" : "false");
         pw_properties_set(props, PW_KEY_OBJECT_LINGER, "false");
-        pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, std::to_string(output_node_id).c_str());
-        pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(outp.id).c_str());
-        pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, std::to_string(input_node_id).c_str());
-        pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, std::to_string(inp.id).c_str());
+        pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, util::to_string(output_node_id).c_str());
+        pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, util::to_string(outp.id).c_str());
+        pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, util::to_string(input_node_id).c_str());
+        pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, util::to_string(inp.id).c_str());
 
         lock();
 
@@ -1651,8 +1654,8 @@ auto PipeManager::link_nodes(const uint& output_node_id,
         pw_properties_free(props);
 
         if (proxy == nullptr) {
-          util::warning(log_tag + "failed to link the node " + std::to_string(output_node_id) + " to " +
-                        std::to_string(input_node_id));
+          util::warning(log_tag + "failed to link the node " + util::to_string(output_node_id) + " to " +
+                        util::to_string(input_node_id));
 
           unlock();
 

@@ -180,7 +180,7 @@ auto remove_filename_extension(const std::string& basename) -> std::string {
 }
 
 auto timestamp_str(const time_point ts) -> std::string {
-  return std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count());
+  return to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count());
 }
 
 auto timepoint_to_long(time_point ts) -> long {
@@ -311,7 +311,7 @@ void generate_tags(const int& N, const std::string& start_string, const std::str
   std::string msg = "constexpr char tag_array[][";
 
   for (int n = 0; n < N; n++) {
-    auto n_str = std::to_string(n);
+    auto n_str = to_string(n);
 
     auto tag = "\"" + start_string + n_str + end_string + "\"";
 
@@ -324,7 +324,7 @@ void generate_tags(const int& N, const std::string& start_string, const std::str
     max_tag_size = (tag.size() > max_tag_size) ? tag.size() : max_tag_size;
   }
 
-  msg += std::to_string(max_tag_size) + "] = " + body + "};";
+  msg += to_string(max_tag_size) + "] = " + body + "};";
 
   warning(msg);
 }

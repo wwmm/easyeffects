@@ -94,7 +94,7 @@ class Convolver : public PluginBase {
       const int& ret = conv->process(true);  // thread sync mode set to true
 
       if (ret != 0) {
-        util::debug(log_tag + "IR: process failed: " + std::to_string(ret));
+        util::debug(log_tag + "IR: process failed: " + util::to_string(ret, ""));
 
         zita_ready = false;
       } else {

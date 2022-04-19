@@ -57,7 +57,7 @@ auto main(int argc, char* argv[]) -> int {
 
     g_object_unref(app);
 
-    util::debug("Exitting the main function with status: " + std::to_string(status));
+    util::debug("Exitting the main function with status: " + util::to_string(status, ""));
 
     return status;
   } catch (const std::exception& e) {

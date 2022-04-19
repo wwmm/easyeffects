@@ -72,7 +72,7 @@ struct NodeInfo {
 
   int n_output_ports = 0;
 
-  int rate = 0U;
+  int rate = 1;  // used as divisor to calculate latency, so do not initialize it as 0
 
   uint n_volume_channels = 0U;
 

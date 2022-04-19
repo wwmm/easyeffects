@@ -177,7 +177,7 @@ void EchoCanceller::process(std::span<float>& left_in,
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+    util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
     util::idle_add([=, this]() {
       if (!post_messages) {
@@ -229,14 +229,14 @@ void EchoCanceller::init_speex() {
 
   blocksize = 0.001F * blocksize_ms * rate;
 
-  util::debug(log_tag + name + " blocksize: " + std::to_string(blocksize));
+  util::debug(log_tag + name + " blocksize: " + util::to_string(blocksize));
 
   filtered_L.resize(blocksize);
   filtered_R.resize(blocksize);
 
   const uint filter_length = 0.001F * filter_length_ms * rate;
 
-  util::debug(log_tag + name + " filter length: " + std::to_string(filter_length));
+  util::debug(log_tag + name + " filter length: " + util::to_string(filter_length));
 
   if (echo_state_L != nullptr) {
     speex_echo_state_destroy(echo_state_L);

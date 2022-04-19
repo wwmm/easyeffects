@@ -115,7 +115,7 @@ void EqualizerPreset::load(const nlohmann::json& json, const std::string& sectio
 
 void EqualizerPreset::load_channel(const nlohmann::json& json, GSettings* settings, const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    const auto bandn = "band" + std::to_string(n);
+    const auto bandn = "band" + util::to_string(n);
 
     update_key<gchar*>(json.at(bandn), settings, band_type[n], "type");
 
