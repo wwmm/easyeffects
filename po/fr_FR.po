@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-13 01:48-0300\n"
-"PO-Revision-Date: 2022-04-18 18:11+0000\n"
-"Last-Translator: Marc Neiger <marc@neiger.org>\n"
+"PO-Revision-Date: 2022-04-20 06:09+0000\n"
+"Last-Translator: matb <perso@mathieu-bousquet.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -1243,9 +1243,8 @@ msgid "Input Device"
 msgstr "Limiteur d'entrée"
 
 #: data/ui/compressor.ui:592
-#, fuzzy
 msgid "PreAmplification"
-msgstr "Calibration"
+msgstr "Préamplification"
 
 #: data/ui/compressor.ui:629 data/ui/multiband_compressor_band.ui:654
 msgid "Reactivity"
@@ -1268,9 +1267,8 @@ msgstr "Passe-haut"
 
 #: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
 #: data/ui/pipe_manager_box.ui:565
-#, fuzzy
 msgid "Frequency"
-msgstr "Fréquence [Hz]"
+msgstr "Fréquence"
 
 #: data/ui/compressor.ui:758 data/ui/compressor.ui:814
 #: data/ui/equalizer_band.ui:108
@@ -1311,11 +1309,11 @@ msgstr "Gain d'entrée [dB]"
 
 #: data/ui/compressor.ui:903
 msgid "Envelope"
-msgstr ""
+msgstr "Enveloppe"
 
 #: data/ui/compressor.ui:957
 msgid "Curve"
-msgstr ""
+msgstr "Courbe"
 
 #: data/ui/convolver.ui:39
 msgid "L"
@@ -1323,7 +1321,7 @@ msgstr "L"
 
 #: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:511
 msgid "Left Channel"
-msgstr ""
+msgstr "Canal gauche"
 
 #: data/ui/convolver.ui:52
 msgid "R"
@@ -1331,7 +1329,7 @@ msgstr "R"
 
 #: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:522
 msgid "Right Channel"
-msgstr ""
+msgstr "Canal droit"
 
 #: data/ui/convolver.ui:70
 #, fuzzy
@@ -1341,12 +1339,12 @@ msgstr "Réponse plane"
 #: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Combiner"
 
 #: data/ui/convolver.ui:85
 #, fuzzy
 msgid "Stereo Width"
-msgstr "Amélioration audio"
+msgstr "Largeur stéréo"
 
 #: data/ui/convolver.ui:114
 msgid "Spectrum"
@@ -1354,7 +1352,7 @@ msgstr "Spectromètre"
 
 #: data/ui/convolver.ui:123
 msgid "Log Scale"
-msgstr ""
+msgstr "Échelle logarithmique"
 
 #: data/ui/convolver.ui:141
 msgid "Rate"
@@ -1362,34 +1360,34 @@ msgstr "Taux"
 
 #: data/ui/convolver.ui:163
 msgid "Samples"
-msgstr ""
+msgstr "Échantillons"
 
 #: data/ui/convolver.ui:185
-#, fuzzy
 msgid "Duration"
-msgstr "Calibration"
+msgstr "Durée"
 
 #: data/ui/convolver_menu_combine.ui:15
-#, fuzzy
 msgid "Combine Impulse Responses"
-msgstr "Réponse plane"
+msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:48
+#, fuzzy
 msgid "First Kernel"
-msgstr ""
+msgstr "Premier noyau"
 
 #: data/ui/convolver_menu_combine.ui:82
+#, fuzzy
 msgid "Second Kernel"
-msgstr ""
+msgstr "Deuxième noyau"
 
 #: data/ui/convolver_menu_combine.ui:91
-#, fuzzy
 msgid "Output File Name"
-msgstr "Sortie"
+msgstr "Nom du fichier de sortie"
 
 #: data/ui/convolver_menu_combine.ui:95
+#, fuzzy
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "Nom du noyau combiné"
 
 #: data/ui/convolver_menu_impulses.ui:16
 #, fuzzy
@@ -1399,7 +1397,7 @@ msgstr "Réponse plane"
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
 
 #: data/ui/convolver_menu_impulses.ui:27
 #, fuzzy
@@ -1412,8 +1410,9 @@ msgid "Impulse Files List"
 msgstr "Réponse plane"
 
 #: data/ui/crossfeed.ui:34
+#, fuzzy
 msgid "Default"
-msgstr ""
+msgstr "Par défaut"
 
 #: data/ui/crossfeed.ui:57
 #, fuzzy
@@ -1421,32 +1420,30 @@ msgid "Cutoff"
 msgstr "Coupure [Hz]"
 
 #: data/ui/crossfeed.ui:92
-#, fuzzy
 msgid "Feed"
-msgstr "Coudée [dB]"
+msgstr "Flux"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:321
 #: data/ui/multiband_compressor_band.ui:136 data/ui/stereo_tools.ui:169
 #: data/ui/stereo_tools.ui:194
 msgid "Mute"
-msgstr ""
+msgstr "Couper le son"
 
 #: data/ui/deesser.ui:41 data/ui/gate.ui:30
-#, fuzzy
 msgid "Detection"
-msgstr "Atténuation"
+msgstr "Détection"
 
 #: data/ui/deesser.ui:72
 msgid "Wide"
-msgstr ""
+msgstr "Large"
 
 #: data/ui/deesser.ui:73
 msgid "Split"
-msgstr ""
+msgstr "Divisé"
 
 #: data/ui/deesser.ui:89
 msgid "F1 Split"
-msgstr ""
+msgstr "Division F1"
 
 #: data/ui/deesser.ui:109
 #, fuzzy
@@ -1496,9 +1493,8 @@ msgid "Laxity"
 msgstr ""
 
 #: data/ui/deesser.ui:580
-#, fuzzy
 msgid "Detected"
-msgstr "Atténuation"
+msgstr "Détecté"
 
 #: data/ui/deesser.ui:610 data/ui/maximizer.ui:307
 #, fuzzy
@@ -1512,32 +1508,37 @@ msgid "Frame Size"
 msgstr "Taille pièce"
 
 #: data/ui/echo_canceller.ui:63
+#, fuzzy
 msgid "Filter Length"
-msgstr ""
+msgstr "Longueur du filtre"
 
 #: data/ui/effects_box.ui:114
+#, fuzzy
 msgid "Excluded Apps"
-msgstr ""
+msgstr "Applications exclues"
 
 #: data/ui/equalizer.ui:77
 msgid "Bands"
-msgstr ""
+msgstr "Bandes"
 
 #: data/ui/equalizer.ui:122
 msgid "IIR"
-msgstr ""
+msgstr "IIR"
 
 #: data/ui/equalizer.ui:123
+#, fuzzy
 msgid "FIR"
-msgstr ""
+msgstr "FIR"
 
 #: data/ui/equalizer.ui:124
+#, fuzzy
 msgid "FFT"
-msgstr ""
+msgstr "FFT"
 
 #: data/ui/equalizer.ui:125
+#, fuzzy
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:150
 msgid "Split Channels"
@@ -3126,7 +3127,7 @@ msgstr "Réponse plane"
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
-msgstr ""
+msgstr "Ouvrir"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
@@ -3150,7 +3151,7 @@ msgstr "Réponse plane"
 
 #: src/convolver_ui.cpp:336 src/convolver_ui.cpp:337 src/convolver_ui.cpp:338
 msgid "Failed"
-msgstr ""
+msgstr "Échec"
 
 #: src/convolver_ui.cpp:339
 msgid "Could Not Load The Impulse File"
@@ -3158,33 +3159,31 @@ msgstr ""
 
 #: src/effects_box.cpp:255
 msgid "Recorders"
-msgstr ""
+msgstr "Enregistreurs"
 
 #: src/effects_box.cpp:279
 msgid "Players"
 msgstr ""
 
 #: src/effects_box.cpp:302
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "Effets"
 
 #: src/equalizer_band_box.cpp:97
 msgid "infinity"
-msgstr ""
+msgstr "infini"
 
 #: src/equalizer_ui.cpp:362
 msgid "Import APO Preset File"
 msgstr "Importer un fichier de préréglage APO"
 
 #: src/equalizer_ui.cpp:368
-#, fuzzy
 msgid "APO Presets"
-msgstr "Préréglage"
+msgstr "Préréglages APO"
 
 #: src/pipe_manager_box.cpp:310
 msgid "Remove Autoloading Preset"
-msgstr ""
+msgstr "Supprimer le préréglage du chargement automatique"
 
 #: src/plugin_name.cpp:25
 #, fuzzy
@@ -3192,18 +3191,16 @@ msgid "Autogain"
 msgstr "Gain d'entrée [dB]"
 
 #: src/plugin_name.cpp:26
-#, fuzzy
 msgid "Bass Enhancer"
-msgstr "Amélioration audio"
+msgstr "Amplificateur de basses"
 
 #: src/plugin_name.cpp:27
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Volume"
+msgstr "Intensité des basses"
 
 #: src/plugin_name.cpp:29
 msgid "Convolver"
-msgstr ""
+msgstr "Convolueur"
 
 #: src/plugin_name.cpp:30
 msgid "Crossfeed"
@@ -3219,22 +3216,22 @@ msgid "Deesser"
 msgstr ""
 
 #: src/plugin_name.cpp:33
-#, fuzzy
 msgid "Delay"
-msgstr "Relâche [ms]"
+msgstr "Délai [ms]"
 
 #: src/plugin_name.cpp:34
 #, fuzzy
 msgid "Echo Canceller"
-msgstr "Amélioration audio"
+msgstr "Annulateur d’écho"
 
 #: src/plugin_name.cpp:35
 msgid "Equalizer"
 msgstr "Égaliseur"
 
 #: src/plugin_name.cpp:36
+#, fuzzy
 msgid "Exciter"
-msgstr ""
+msgstr "Excitateur"
 
 #: src/plugin_name.cpp:37
 msgid "Filter"
@@ -3245,18 +3242,16 @@ msgid "Gate"
 msgstr ""
 
 #: src/plugin_name.cpp:39
-#, fuzzy
 msgid "Limiter"
-msgstr "Limite [dB]"
+msgstr "Limiteur [dB]"
 
 #: src/plugin_name.cpp:41
 msgid "Maximizer"
-msgstr ""
+msgstr "Maximiseur"
 
 #: src/plugin_name.cpp:42
-#, fuzzy
 msgid "Multiband Compressor"
-msgstr "Compresseur"
+msgstr "Compresseur multibande"
 
 #: src/plugin_name.cpp:43
 #, fuzzy
@@ -3273,33 +3268,28 @@ msgid "Reverberation"
 msgstr "Réverberation"
 
 #: src/plugin_name.cpp:46
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Réduction de gain"
+msgstr "Réduction de bruit"
 
 #: src/plugin_name.cpp:47
-#, fuzzy
 msgid "Stereo Tools"
-msgstr "Amélioration audio"
+msgstr "Outils stéréo"
 
 #: src/plugins_menu.cpp:145
 msgid "Add"
 msgstr "Ajouter"
 
 #: src/presets_menu.cpp:106
-#, fuzzy
 msgid "Import Preset"
-msgstr "Ouvrir préréglage"
+msgstr "Importer un préréglage"
 
 #: src/rnnoise_ui.cpp:122
-#, fuzzy
 msgid "Import Model File"
-msgstr "Réponse plane"
+msgstr "Importer un modèle"
 
 #: src/rnnoise_ui.cpp:127
-#, fuzzy
 msgid "RNNoise Models"
-msgstr "Aucune compression"
+msgstr "Modèle RNNoise"
 
 #, fuzzy
 #~ msgid "Activate"
