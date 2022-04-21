@@ -314,6 +314,23 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
 void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
   auto* self = EE_CHART(widget);
 
+  switch (self->data->chart_scale) {
+    case ChartScale::logarithmic: {
+      if (self->data->y_axis.size() != self->data->x_axis_log.size()) {
+        return;
+      }
+
+      break;
+    }
+    case ChartScale::linear: {
+      if (self->data->y_axis.size() != self->data->x_axis.size()) {
+        return;
+      }
+
+      break;
+    }
+  }
+
   int width = gtk_widget_get_width(widget);
   int height = gtk_widget_get_height(widget);
 
