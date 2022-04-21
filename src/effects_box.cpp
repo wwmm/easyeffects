@@ -218,16 +218,24 @@ void setup_spectrum(EffectsBox* self) {
       self));
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::n-points",
-      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
+      self->settings_spectrum, "changed::n-points", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
+        util::idle_add([=]() { init_spectrum_frequency_axis(self); });
+      }),
+      self));
 
-  self->data->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::minimum-frequency",
-      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
+  self->data->gconnections_spectrum.push_back(
+      g_signal_connect(self->settings_spectrum, "changed::minimum-frequency",
+                       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
+                         util::idle_add([=]() { init_spectrum_frequency_axis(self); });
+                       }),
+                       self));
 
-  self->data->gconnections_spectrum.push_back(g_signal_connect(
-      self->settings_spectrum, "changed::maximum-frequency",
-      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) { init_spectrum_frequency_axis(self); }), self));
+  self->data->gconnections_spectrum.push_back(
+      g_signal_connect(self->settings_spectrum, "changed::maximum-frequency",
+                       G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
+                         util::idle_add([=]() { init_spectrum_frequency_axis(self); });
+                       }),
+                       self));
 }
 void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget* stack) {
   const auto* name = adw_view_stack_get_visible_child_name(ADW_VIEW_STACK(stack));
