@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-13 01:48-0300\n"
-"PO-Revision-Date: 2022-04-05 12:09+0000\n"
-"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
+"PO-Revision-Date: 2022-04-21 00:11+0000\n"
+"Last-Translator: 刘韬 <lyuutau@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -105,13 +105,14 @@ msgstr "卷积混响器显示的音频控件"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid "This release adds the following features:"
-msgstr ""
+msgstr "此版本增加了以下功能："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
+#, fuzzy
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
-msgstr ""
+msgstr "有一个新设置允许用户为管道选择不活动超时。当没有客户端正在播放时"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
@@ -120,8 +121,9 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
+#, fuzzy
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "我们不会浪费CPU功率处理沉默。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
