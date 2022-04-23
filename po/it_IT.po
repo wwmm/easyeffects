@@ -797,7 +797,7 @@ msgstr "\"Profili\""
 
 #: data/ui/app_info.ui:203
 msgid "Enable"
-msgstr "Attiva"
+msgstr "Abilita"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -2392,7 +2392,7 @@ msgstr "Stato"
 
 #: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
-msgstr "Attivato"
+msgstr "Abilitato"
 
 #: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
