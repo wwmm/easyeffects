@@ -419,7 +419,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   // pipeline latency
 
   gtk_label_set_text(self->latency_status, fmt::format(self->data->user_locale, "     {0:.1Lf} ms",
-                                                       self->data->effects_base->get_pipeline_latency())
+                                                       self->data->effects_base->get_pipeline_latency() * 1000)
                                                .c_str());
 
   self->data->connections.push_back(self->data->effects_base->pipeline_latency.connect([=](const float& v) {
