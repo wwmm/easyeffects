@@ -113,10 +113,13 @@ msgid "This release adds the following features:"
 msgstr "Essa versão adiciona os seguintes recursos:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
+#, fuzzy
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
+"Existe uma nova configuração que permite que o usuário selecione um tempo "
+"limite de inatividade para a pipeline. Quando nenhum cliente está tocando."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
@@ -332,10 +335,13 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
+#, fuzzy
 msgid ""
 "The Autogain plugin now allows the user to select which Loudness is used as "
 "reference for the volume correction."
 msgstr ""
+"O plugin Ganho Automático agora permite que o usuário selecione qual o "
+"Loudness que é utilizado como referência para a correção do volume."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:131
 msgid ""
@@ -3052,12 +3058,12 @@ msgid "Import Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
+#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123 src/equalizer_ui.cpp:363
 msgid "Open"
 msgstr "Abrir"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
+#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123 src/equalizer_ui.cpp:363
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -3083,16 +3089,16 @@ msgstr "Falhou"
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/effects_box.cpp:263
+#: src/effects_box.cpp:263 src/effects_box.cpp:255
 #, fuzzy
 msgid "Recorders"
 msgstr "Borda"
 
-#: src/effects_box.cpp:287
+#: src/effects_box.cpp:287 src/effects_box.cpp:279
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:310
+#: src/effects_box.cpp:310 src/effects_box.cpp:302
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -3101,12 +3107,12 @@ msgstr "EasyEffects"
 msgid "infinity"
 msgstr "infinito"
 
-#: src/equalizer_ui.cpp:354
+#: src/equalizer_ui.cpp:354 src/equalizer_ui.cpp:362
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Importar Predefinições"
 
-#: src/equalizer_ui.cpp:360
+#: src/equalizer_ui.cpp:360 src/equalizer_ui.cpp:368
 #, fuzzy
 msgid "APO Presets"
 msgstr "Predefinições"
@@ -3117,7 +3123,6 @@ msgid "Remove Autoloading Preset"
 msgstr "Remover este arquivo de predefinição"
 
 #: src/plugin_name.cpp:25
-#, fuzzy
 msgid "Autogain"
 msgstr "Ganho Automático"
 
