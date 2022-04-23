@@ -121,81 +121,30 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(rnnoise->name, rnnoise));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
 
-  for (const auto& key : plugins | std::views::keys) {
-    plugins_latency[key] = 0.0F;
-  }
+  connections.push_back(compressor->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-  connections.push_back(compressor->latency.connect([=, this](const auto& v) {
-    plugins_latency[compressor->name] = v;
+  connections.push_back(convolver->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-    broadcast_pipeline_latency();
-  }));
+  connections.push_back(crystalizer->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-  connections.push_back(convolver->latency.connect([=, this](const auto& v) {
-    plugins_latency[convolver->name] = v;
+  connections.push_back(delay->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-    broadcast_pipeline_latency();
-  }));
+  connections.push_back(echo_canceller->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-  connections.push_back(crystalizer->latency.connect([=, this](const auto& v) {
-    plugins_latency[crystalizer->name] = v;
+  connections.push_back(equalizer->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-    broadcast_pipeline_latency();
-  }));
+  connections.push_back(limiter->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-  connections.push_back(delay->latency.connect([=, this](const auto& v) {
-    plugins_latency[delay->name] = v;
+  connections.push_back(loudness->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-    broadcast_pipeline_latency();
-  }));
+  connections.push_back(maximizer->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-  connections.push_back(echo_canceller->latency.connect([=, this](const auto& v) {
-    plugins_latency[echo_canceller->name] = v;
+  connections.push_back(
+      multiband_compressor->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-    broadcast_pipeline_latency();
-  }));
+  connections.push_back(pitch->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
-  connections.push_back(equalizer->latency.connect([=, this](const auto& v) {
-    plugins_latency[equalizer->name] = v;
-
-    broadcast_pipeline_latency();
-  }));
-
-  connections.push_back(limiter->latency.connect([=, this](const auto& v) {
-    plugins_latency[limiter->name] = v;
-
-    broadcast_pipeline_latency();
-  }));
-
-  connections.push_back(loudness->latency.connect([=, this](const auto& v) {
-    plugins_latency[loudness->name] = v;
-
-    broadcast_pipeline_latency();
-  }));
-
-  connections.push_back(maximizer->latency.connect([=, this](const auto& v) {
-    plugins_latency[maximizer->name] = v;
-
-    broadcast_pipeline_latency();
-  }));
-
-  connections.push_back(multiband_compressor->latency.connect([=, this](const auto& v) {
-    plugins_latency[multiband_compressor->name] = v;
-
-    broadcast_pipeline_latency();
-  }));
-
-  connections.push_back(pitch->latency.connect([=, this](const auto& v) {
-    plugins_latency[pitch->name] = v;
-
-    broadcast_pipeline_latency();
-  }));
-
-  connections.push_back(rnnoise->latency.connect([=, this](const auto& v) {
-    plugins_latency[rnnoise->name] = v;
-
-    broadcast_pipeline_latency();
-  }));
+  connections.push_back(rnnoise->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
 
   gconnections.push_back(g_signal_connect(settings, "changed::plugins",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
@@ -246,7 +195,7 @@ auto EffectsBase::get_pipeline_latency() -> float {
   float total = 0.0F;
 
   for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"))) {
-    total += plugins_latency[name];
+    total += plugins[name]->get_latency_seconds();
   }
 
   return total * 1000.0F;

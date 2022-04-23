@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 11:34-0300\n"
+"POT-Creation-Date: 2022-04-23 13:21-0300\n"
 "PO-Revision-Date: 2022-04-18 18:11+0000\n"
 "Last-Translator: João Henrique <jhenriquelc@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -3058,12 +3058,12 @@ msgid "Import Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123 src/equalizer_ui.cpp:363
+#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
 msgstr "Abrir"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123 src/equalizer_ui.cpp:363
+#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -3089,16 +3089,16 @@ msgstr "Falhou"
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/effects_box.cpp:263 src/effects_box.cpp:255
+#: src/effects_box.cpp:263
 #, fuzzy
 msgid "Recorders"
 msgstr "Borda"
 
-#: src/effects_box.cpp:287 src/effects_box.cpp:279
+#: src/effects_box.cpp:287
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:310 src/effects_box.cpp:302
+#: src/effects_box.cpp:310
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -3107,12 +3107,12 @@ msgstr "EasyEffects"
 msgid "infinity"
 msgstr "infinito"
 
-#: src/equalizer_ui.cpp:354 src/equalizer_ui.cpp:362
+#: src/equalizer_ui.cpp:354
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Importar Predefinições"
 
-#: src/equalizer_ui.cpp:360 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:360
 #, fuzzy
 msgid "APO Presets"
 msgstr "Predefinições"
