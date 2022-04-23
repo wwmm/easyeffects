@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 01:48-0300\n"
+"POT-Creation-Date: 2022-04-23 11:34-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -3056,12 +3056,12 @@ msgstr ""
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
 msgid "Cancel"
 msgstr "Zrušit"
@@ -3088,16 +3088,16 @@ msgstr "Nepodařilo se"
 msgid "Could Not Load The Impulse File"
 msgstr "Nepodařilo se nahrát soubor s impulsem"
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:263
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:279
+#: src/effects_box.cpp:287
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:302
+#: src/effects_box.cpp:310
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -3106,12 +3106,12 @@ msgstr "EasyEffects"
 msgid "infinity"
 msgstr "nekonečno"
 
-#: src/equalizer_ui.cpp:362
+#: src/equalizer_ui.cpp:354
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Zavést APO přednastavení"
 
-#: src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:360
 #, fuzzy
 msgid "APO Presets"
 msgstr "APO Přednastavení"

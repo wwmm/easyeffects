@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 01:48-0300\n"
+"POT-Creation-Date: 2022-04-23 11:34-0300\n"
 "PO-Revision-Date: 2022-03-14 23:07+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -2850,12 +2850,12 @@ msgstr "PipeWire"
 msgid "Import Impulse File"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
 msgstr "Åpne"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
 msgid "Cancel"
 msgstr "Avbryt"
@@ -2880,15 +2880,15 @@ msgstr ""
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:255 src/effects_box.cpp:257
+#: src/effects_box.cpp:263
 msgid "Recorders"
 msgstr "Opptakere"
 
-#: src/effects_box.cpp:279 src/effects_box.cpp:283
+#: src/effects_box.cpp:287
 msgid "Players"
 msgstr "Avspillere"
 
-#: src/effects_box.cpp:302 src/effects_box.cpp:306
+#: src/effects_box.cpp:310
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -2897,11 +2897,11 @@ msgstr "EasyEffects"
 msgid "infinity"
 msgstr "uendelig"
 
-#: src/equalizer_ui.cpp:362
+#: src/equalizer_ui.cpp:354
 msgid "Import APO Preset File"
 msgstr ""
 
-#: src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:360
 msgid "APO Presets"
 msgstr ""
 
@@ -3016,10 +3016,6 @@ msgstr "Importer modellfil"
 
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
-msgstr ""
-
-#: data/ui/apps_box.ui:48
-msgid "Empty Stream List"
 msgstr ""
 
 #, fuzzy

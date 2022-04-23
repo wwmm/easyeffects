@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 01:48-0300\n"
+"POT-Creation-Date: 2022-04-23 11:34-0300\n"
 "PO-Revision-Date: 2022-04-18 18:11+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -3026,12 +3026,12 @@ msgstr "PipeWire"
 msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
 msgstr "Открыть"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
 msgid "Cancel"
 msgstr "Отмена"
@@ -3056,15 +3056,15 @@ msgstr "Не удалось"
 msgid "Could Not Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:263
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:279
+#: src/effects_box.cpp:287
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/effects_box.cpp:302
+#: src/effects_box.cpp:310
 msgid "Effects"
 msgstr "Эффекты"
 
@@ -3072,11 +3072,11 @@ msgstr "Эффекты"
 msgid "infinity"
 msgstr "бесконечно"
 
-#: src/equalizer_ui.cpp:362
+#: src/equalizer_ui.cpp:354
 msgid "Import APO Preset File"
 msgstr "Импортировать файл предустановки APO"
 
-#: src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:360
 msgid "APO Presets"
 msgstr "Предустановки APO"
 

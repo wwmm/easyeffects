@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 01:48-0300\n"
+"POT-Creation-Date: 2022-04-23 11:34-0300\n"
 "PO-Revision-Date: 2022-04-18 18:11+0000\n"
-"Last-Translator: Santiago José Gutiérrez Llanos <gutierrezapata17@gmail.com>"
-"\n"
+"Last-Translator: Santiago José Gutiérrez Llanos <gutierrezapata17@gmail."
+"com>\n"
 "Language-Team: Spanish (Colombia) <https://hosted.weblate.org/projects/"
 "easyeffects/main/es_CO/>\n"
 "Language: es_CO\n"
@@ -3071,12 +3071,12 @@ msgstr "PipeWire"
 msgid "Import Impulse File"
 msgstr "Importar impulso de archivo"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
 #: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
 msgstr "Abrir"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:363
+#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
 #: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
 msgid "Cancel"
 msgstr "Cancelar"
@@ -3101,15 +3101,15 @@ msgstr "Fallido"
 msgid "Could Not Load The Impulse File"
 msgstr "No se pudo encontrar el archivo Impulse"
 
-#: src/effects_box.cpp:255
+#: src/effects_box.cpp:263
 msgid "Recorders"
 msgstr "grabadoras"
 
-#: src/effects_box.cpp:279
+#: src/effects_box.cpp:287
 msgid "Players"
 msgstr "Jugadores"
 
-#: src/effects_box.cpp:302
+#: src/effects_box.cpp:310
 msgid "Effects"
 msgstr "Efectos"
 
@@ -3117,11 +3117,11 @@ msgstr "Efectos"
 msgid "infinity"
 msgstr "infinidad"
 
-#: src/equalizer_ui.cpp:362
+#: src/equalizer_ui.cpp:354
 msgid "Import APO Preset File"
 msgstr "Importar archivo de preajuste APO"
 
-#: src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:360
 msgid "APO Presets"
 msgstr "Preajustes APO"
 
