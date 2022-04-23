@@ -255,7 +255,7 @@ auto EffectsBase::get_pipeline_latency() -> float {
 void EffectsBase::broadcast_pipeline_latency() {
   const auto latency_value = get_pipeline_latency();
 
-  util::debug(log_tag + "pipeline latency: " + util::to_string(latency_value, "") + " s");
+  util::debug(log_tag + "pipeline latency: " + util::to_string(latency_value, "") + " ms");
 
   pipeline_latency.emit(latency_value);
 }

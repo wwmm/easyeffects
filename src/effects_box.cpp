@@ -419,7 +419,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   // pipeline latency
 
   gtk_label_set_text(self->latency_status, fmt::format(self->data->user_locale, "     {0:.1Lf} ms",
-                                                       self->data->effects_base->get_pipeline_latency() * 1000)
+                                                       self->data->effects_base->get_pipeline_latency())
                                                .c_str());
 
   self->data->connections.push_back(self->data->effects_base->pipeline_latency.connect([=](const float& v) {
@@ -429,15 +429,16 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
       return;
     }
 
-    g_idle_add((GSourceFunc) +
-                   [](EffectsBox* self) {
-                     gtk_label_set_text(self->latency_status, fmt::format(self->data->user_locale, "     {0:.1Lf} ms",
-                                                                          self->data->pipeline_latency_ms * 1000)
-                                                                  .c_str());
+    g_idle_add(
+        (GSourceFunc) +
+            [](EffectsBox* self) {
+              gtk_label_set_text(
+                  self->latency_status,
+                  fmt::format(self->data->user_locale, "     {0:.1Lf} ms", self->data->pipeline_latency_ms).c_str());
 
-                     return G_SOURCE_REMOVE;
-                   },
-               self);
+              return G_SOURCE_REMOVE;
+            },
+        self);
   }));
 }
 

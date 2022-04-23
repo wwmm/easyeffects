@@ -15,7 +15,6 @@ and #1427
 Bugfixes:
 - Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while 
 our pipeline was active and the spectrum widget was visible
-- The pipeline latency value was being shown in the wrong unit. This was fixed.
 
 Notes:
 - 
