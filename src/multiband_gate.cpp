@@ -222,3 +222,7 @@ void MultibandGate::process(std::span<float>& left_in,
     }
   }
 }
+
+auto MultibandGate::get_latency_seconds() -> float {
+  return 0.0F;
+}

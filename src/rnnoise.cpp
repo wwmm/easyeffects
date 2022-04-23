@@ -281,3 +281,7 @@ void RNNoise::free_rnnoise() {
   state_right = nullptr;
   model = nullptr;
 }
+
+auto RNNoise::get_latency_seconds() -> float {
+  return latency_value;
+}

@@ -42,6 +42,8 @@ class StereoTools : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
   double correlation_port_value = 0.0;
 
  private:

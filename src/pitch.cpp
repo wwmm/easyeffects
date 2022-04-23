@@ -526,3 +526,7 @@ void Pitch::init_stretcher() {
   set_detector();
   set_phase();
 }
+
+auto Pitch::get_latency_seconds() -> float {
+  return latency_value;
+}

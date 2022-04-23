@@ -88,7 +88,7 @@ void Loudness::process(std::span<float>& left_in,
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    const float latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_port_value, "") + " s");
 
@@ -126,4 +126,8 @@ void Loudness::process(std::span<float>& left_in,
       notification_dt = 0.0F;
     }
   }
+}
+
+auto Loudness::get_latency_seconds() -> float {
+  return latency_port_value;
 }

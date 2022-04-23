@@ -109,6 +109,8 @@ class PluginBase {
 
   virtual void update_probe_links();
 
+  virtual auto get_latency_seconds() -> float;
+
   sigc::signal<void(const float&, const float&)> input_level;
   sigc::signal<void(const float&, const float&)> output_level;
 

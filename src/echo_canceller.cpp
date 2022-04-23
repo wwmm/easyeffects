@@ -260,3 +260,7 @@ void EchoCanceller::init_speex() {
 
   ready = true;
 }
+
+auto EchoCanceller::get_latency_seconds() -> float {
+  return latency_value;
+}

@@ -47,6 +47,8 @@ class Crystalizer : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
   sigc::signal<void(const float&)> latency;
 
  private:
@@ -57,6 +59,8 @@ class Crystalizer : public PluginBase {
 
   uint blocksize = 512U;
   uint latency_n_frames = 0U;
+
+  float latency_value = 0.0F;
 
   static constexpr uint nbands = 13U;
 

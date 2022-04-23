@@ -42,6 +42,8 @@ class BassLoudness : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

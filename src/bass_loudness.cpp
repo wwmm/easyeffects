@@ -92,3 +92,7 @@ void BassLoudness::process(std::span<float>& left_in,
     }
   }
 }
+
+auto BassLoudness::get_latency_seconds() -> float {
+  return 0.0F;
+}

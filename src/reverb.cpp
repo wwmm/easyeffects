@@ -104,3 +104,7 @@ void Reverb::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Reverb::get_latency_seconds() -> float {
+  return 0.0F;
+}

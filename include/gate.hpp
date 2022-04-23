@@ -39,6 +39,8 @@ class Gate : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
   sigc::signal<void(const double&)> gating;
 
   double gating_port_value = 0.0;

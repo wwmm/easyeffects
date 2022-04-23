@@ -113,3 +113,7 @@ void Gate::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Gate::get_latency_seconds() -> float {
+  return 0.0F;
+}

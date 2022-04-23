@@ -92,3 +92,7 @@ void Filter::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Filter::get_latency_seconds() -> float {
+  return 0.0F;
+}

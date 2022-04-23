@@ -251,7 +251,7 @@ void Convolver::process(std::span<float>& left_in,
   }
 
   if (notify_latency) {
-    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
@@ -473,4 +473,8 @@ auto Convolver::get_zita_buffer_size() -> uint {
   }
 
   return blocksize;
+}
+
+auto Convolver::get_latency_seconds() -> float {
+  return this->latency_value;
 }

@@ -251,3 +251,7 @@ void Compressor::update_sidechain_links(const std::string& key) {
 void Compressor::update_probe_links() {
   update_sidechain_links("");
 }
+
+auto Compressor::get_latency_seconds() -> float {
+  return this->latency_port_value;
+}

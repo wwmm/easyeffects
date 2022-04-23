@@ -56,3 +56,7 @@ void OutputLevel::process(std::span<float>& left_in,
     }
   }
 }
+
+auto OutputLevel::get_latency_seconds() -> float {
+  return 0.0F;
+}
