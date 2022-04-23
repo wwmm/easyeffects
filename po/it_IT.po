@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 13:21-0300\n"
+"POT-Creation-Date: 2022-04-23 12:36-0300\n"
 "PO-Revision-Date: 2022-04-18 18:11+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -797,7 +797,7 @@ msgstr "\"Profili\""
 
 #: data/ui/app_info.ui:203
 msgid "Enable"
-msgstr "Attiva"
+msgstr "Abilita"
 
 #: data/ui/app_info.ui:215
 msgid "Exclude"
@@ -2392,7 +2392,7 @@ msgstr "Stato"
 
 #: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
-msgstr "Attivato"
+msgstr "Abilitato"
 
 #: data/ui/pipe_manager_box.ui:502
 msgid "Properties"
