@@ -104,8 +104,6 @@ class EffectsBase {
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
-  std::map<std::string, float> plugins_latency;
-
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
 
   std::vector<sigc::connection> connections;
