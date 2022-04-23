@@ -42,6 +42,8 @@ class Crossfeed : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
  private:
   std::vector<float> data;
 

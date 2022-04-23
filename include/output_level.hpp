@@ -40,6 +40,8 @@ class OutputLevel : public PluginBase {
                std::span<float>& right_in,
                std::span<float>& left_out,
                std::span<float>& right_out) override;
+
+  auto get_latency_seconds() -> float override;
 };
 
 #endif

@@ -39,6 +39,8 @@ class Delay : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
   sigc::signal<void(const float&)> latency;
 
   float latency_port_value = 0.0F;

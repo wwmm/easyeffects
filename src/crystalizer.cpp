@@ -223,7 +223,7 @@ void Crystalizer::process(std::span<float>& left_in,
   }
 
   if (notify_latency) {
-    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
@@ -316,4 +316,8 @@ void Crystalizer::bind_band(const int& n) {
                                             }
                                           }),
                                           this));
+}
+
+auto Crystalizer::get_latency_seconds() -> float {
+  return this->latency_value;
 }

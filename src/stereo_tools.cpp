@@ -118,3 +118,7 @@ void StereoTools::process(std::span<float>& left_in,
     }
   }
 }
+
+auto StereoTools::get_latency_seconds() -> float {
+  return 0.0F;
+}

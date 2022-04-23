@@ -43,6 +43,8 @@ class Spectrum : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
   sigc::signal<void(uint, uint, std::vector<float>)> power;  // rate, nbands, magnitudes
 
  private:

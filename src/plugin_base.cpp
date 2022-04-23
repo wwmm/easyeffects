@@ -320,6 +320,10 @@ void PluginBase::process(std::span<float>& left_in,
                          std::span<float>& probe_left,
                          std::span<float>& probe_right) {}
 
+auto PluginBase::get_latency_seconds() -> float {
+  return 0.0F;
+}
+
 void PluginBase::get_peaks(const std::span<float>& left_in,
                            const std::span<float>& right_in,
                            std::span<float>& left_out,

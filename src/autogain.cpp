@@ -354,3 +354,7 @@ void AutoGain::process(std::span<float>& left_in,
     }
   }
 }
+
+auto AutoGain::get_latency_seconds() -> float {
+  return 0.0F;
+}

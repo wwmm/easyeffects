@@ -112,3 +112,7 @@ void Exciter::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Exciter::get_latency_seconds() -> float {
+  return 0.0F;
+}

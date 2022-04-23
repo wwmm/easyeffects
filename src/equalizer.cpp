@@ -260,3 +260,7 @@ void Equalizer::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Equalizer::get_latency_seconds() -> float {
+  return latency_port_value;
+}

@@ -114,3 +114,7 @@ void Crossfeed::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Crossfeed::get_latency_seconds() -> float {
+  return 0.0F;
+}

@@ -52,6 +52,8 @@ class AutoGain : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
   sigc::signal<void(const double&,  // loudness
                     const double&,  // gain
                     const double&,  // momentary

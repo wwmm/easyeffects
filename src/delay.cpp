@@ -128,3 +128,7 @@ void Delay::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Delay::get_latency_seconds() -> float {
+  return latency_port_value;
+}

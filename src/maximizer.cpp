@@ -141,3 +141,7 @@ void Maximizer::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Maximizer::get_latency_seconds() -> float {
+  return latency_port_value;
+}

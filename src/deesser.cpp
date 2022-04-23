@@ -124,3 +124,7 @@ void Deesser::process(std::span<float>& left_in,
     }
   }
 }
+
+auto Deesser::get_latency_seconds() -> float {
+  return 0.0F;
+}

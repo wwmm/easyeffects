@@ -46,6 +46,8 @@ class Convolver : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency_seconds() -> float override;
+
   sigc::signal<void(const float&)> latency;
 
  private:
@@ -58,6 +60,8 @@ class Convolver : public PluginBase {
   uint blocksize = 512U;
   uint ir_width = 100U;
   uint latency_n_frames = 0U;
+
+  float latency_value = 0.0F;
 
   std::vector<float> kernel_L, kernel_R;
   std::vector<float> original_kernel_L, original_kernel_R;

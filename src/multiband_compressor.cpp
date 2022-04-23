@@ -227,3 +227,7 @@ void MultibandCompressor::update_sidechain_links(const std::string& key) {
 void MultibandCompressor::update_probe_links() {
   update_sidechain_links("");
 }
+
+auto MultibandCompressor::get_latency_seconds() -> float {
+  return latency_port_value;
+}
