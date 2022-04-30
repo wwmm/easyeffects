@@ -3,6 +3,19 @@ Version UNRELEASED_VERSION
 Released: UNRELEASED_DATE
 
 Features:
+- 
+
+Bugfixes:
+- 
+
+Notes:
+- 
+
+Version 6.2.5
+~~~~~~~~~~~~~~
+Released: 2022-04-30
+
+Features:
 - The interface of the pitch plugin was improved
 - Our application icon is now compatible with desktops that uses QT
 - Our blocklist code will use the `application.id` tag if the stream sets it
@@ -16,9 +29,6 @@ Bugfixes:
 - Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while 
 our pipeline was active and the spectrum widget was visible
 - The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.
-
-Notes:
-- 
 
 Version 6.2.4
 ~~~~~~~~~~~~~~

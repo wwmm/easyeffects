@@ -33,6 +33,27 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="6.2.5" date="2022-04-30T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>The interface of the pitch plugin was improved</li>
+          <li>Our application icon is now compatible with desktops that uses QT</li>
+          <li>Our blocklist code will use the `application.id` tag if the stream sets it</li>
+          <li>In order to avoid problems with the mouse scroll the entries in the applications list shown in our `Players/Recorders`</li>
+          <li>tab do not show a volume scale anymore. More details about the problem and the solution for it can be found on #1211</li>
+          <li>and #1427</li>
+          <li>When no application is available for display in the `Players/Recorders` a message will be shown to the user</li>
+          <li>Many translation updates</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while</li>
+          <li>our pipeline was active and the spectrum widget was visible</li>
+          <li>The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="6.2.4" date="2022-03-07T00:00:00Z">
       <description>
         <p>This release adds the following features:</p>
