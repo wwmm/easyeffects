@@ -859,11 +859,11 @@ msgstr "Lista Applicazioni"
 
 #: data/ui/apps_box.ui:31
 msgid "Empty List"
-msgstr "Elenco vuoto"
+msgstr "Elenco Vuoto"
 
 #: data/ui/apps_box.ui:32
 msgid "No Audio Application Available"
-msgstr "Nessuna applicazione audio disponibile"
+msgstr "Nessuna Applicazione Audio Disponibile"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -1040,7 +1040,7 @@ msgstr "Profilo Dispositivo"
 msgid "Preset"
 msgstr "Profilo EasyEffects"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488 src/plugins_box.cpp:478
 msgid "Remove"
 msgstr "Rimuovi"
 
