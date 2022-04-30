@@ -20,8 +20,8 @@
                             <object class="GtkText" id="app_name">
                                 <property name="valign">center</property>
                                 <property name="hexpand">1</property>
-                                <property name="placeholder_text" translatable="yes">Application Name</property>
-                                <property name="accessible_role">text-box</property>
+                                <property name="placeholder-text" translatable="yes">Application Name</property>
+                                <property name="accessible-role">text-box</property>
                                 <accessibility>
                                     <property name="label" translatable="yes">Application Name</property>
                                 </accessibility>
@@ -33,7 +33,7 @@
                                 <property name="margin-bottom">3</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="icon_name">list-add-symbolic</property>
+                                <property name="icon-name">list-add-symbolic</property>
                                 <signal name="clicked" handler="on_add_to_blocklist" object="BlocklistMenu" />
                                 <style>
                                     <class name="suggested-action" />
@@ -53,8 +53,8 @@
                     <object class="GtkFrame">
                         <child>
                             <object class="GtkScrolledWindow" id="scrolled_window">
-                                <property name="propagate_natural_width">1</property>
-                                <property name="propagate_natural_height">1</property>
+                                <property name="propagate-natural-width">1</property>
+                                <property name="propagate-natural-height">1</property>
                                 <child>
                                     <object class="GtkListView" id="listview">
                                         <property name="hexpand">1</property>

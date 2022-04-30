@@ -8,7 +8,7 @@
             <object class="GtkImage" id="plugin_icon">
                 <property name="halign">start</property>
                 <property name="valign">center</property>
-                <property name="icon_name">ee-arrow-down-symbolic</property>
+                <property name="icon-name">ee-arrow-down-symbolic</property>
             </object>
         </child>
 
@@ -23,10 +23,10 @@
 
         <child>
             <object class="GtkButton" id="remove">
-                <property name="tooltip_text" translatable="yes">Remove this plugin</property>
+                <property name="tooltip-text" translatable="yes">Remove this plugin</property>
                 <property name="valign">center</property>
                 <property name="opacity">0</property>
-                <property name="icon_name">user-trash-symbolic</property>
+                <property name="icon-name">user-trash-symbolic</property>
                 <style>
                     <class name="flat" />
                 </style>
@@ -38,7 +38,7 @@
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="opacity">0</property>
-                <property name="icon_name">ee-drag-handle-symbolic</property>
+                <property name="icon-name">ee-drag-handle-symbolic</property>
             </object>
         </child>
     </object>

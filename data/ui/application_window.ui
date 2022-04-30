@@ -58,10 +58,10 @@
 
                         <child>
                             <object class="GtkToggleButton" id="bypass_button">
-                                <property name="tooltip_text" translatable="yes">Global Bypass</property>
+                                <property name="tooltip-text" translatable="yes">Global Bypass</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="icon_name">media-playlist-shuffle-symbolic</property>
+                                <property name="icon-name">media-playlist-shuffle-symbolic</property>
                                 <accessibility>
                                     <property name="label" translatable="yes">Global Bypass</property>
                                 </accessibility>

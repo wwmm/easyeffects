@@ -88,9 +88,9 @@
                     <object class="GtkEntry" id="output_kernel_name">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
-                        <property name="placeholder_text" translatable="yes">Output File Name</property>
-                        <property name="input_purpose">name</property>
-                        <property name="accessible_role">text-box</property>
+                        <property name="placeholder-text" translatable="yes">Output File Name</property>
+                        <property name="input-purpose">name</property>
+                        <property name="accessible-role">text-box</property>
                         <accessibility>
                             <property name="label" translatable="yes">Combined Kernel Name</property>
                         </accessibility>

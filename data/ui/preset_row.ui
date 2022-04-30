@@ -26,10 +26,10 @@
 
         <child>
             <object class="GtkButton" id="save">
-                <property name="tooltip_text" translatable="yes">Save current settings to this preset file</property>
+                <property name="tooltip-text" translatable="yes">Save current settings to this preset file</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="icon_name">document-save-symbolic</property>
+                <property name="icon-name">document-save-symbolic</property>
                 <accessibility>
                     <relation name="labelled-by">name</relation>
                 </accessibility>
@@ -38,10 +38,10 @@
 
         <child>
             <object class="GtkButton" id="remove">
-                <property name="tooltip_text" translatable="yes">Remove this preset file</property>
+                <property name="tooltip-text" translatable="yes">Remove this preset file</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="icon_name">user-trash-symbolic</property>
+                <property name="icon-name">user-trash-symbolic</property>
                 <accessibility>
                     <relation name="labelled-by">name</relation>
                 </accessibility>

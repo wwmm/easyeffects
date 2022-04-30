@@ -64,7 +64,7 @@
                                     <object class="GtkLabel" id="label_global_output_level_left">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="width_chars">4</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                         <style>
                                             <class name="dim-label" />
@@ -75,7 +75,7 @@
                                     <object class="GtkLabel" id="label_global_output_level_right">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="width_chars">4</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                         <style>
                                             <class name="dim-label" />
@@ -98,7 +98,7 @@
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
                                         <property name="opacity">0</property>
-                                        <property name="icon_name">dialog-warning-symbolic</property>
+                                        <property name="icon-name">dialog-warning-symbolic</property>
                                     </object>
                                 </child>
                             </object>

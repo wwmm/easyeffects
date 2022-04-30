@@ -111,10 +111,10 @@
 
         <child>
             <object class="GtkButton" id="remove">
-                <property name="tooltip_text" translatable="yes">Remove</property>
+                <property name="tooltip-text" translatable="yes">Remove</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="icon_name">user-trash-symbolic</property>
+                <property name="icon-name">user-trash-symbolic</property>
             </object>
         </child>
     </object>
