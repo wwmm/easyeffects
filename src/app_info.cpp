@@ -271,24 +271,14 @@ void update(AppInfo* self, const NodeInfo node_info) {
 
   // set the icon name
 
-  if (self->icon_theme != nullptr) {
-    if (const auto icon_name = get_app_icon_name(node_info); !icon_name.empty()) {
-      if (icon_available(self, icon_name)) {
-        gtk_widget_set_visible(GTK_WIDGET(self->app_icon), 1);
-
-        gtk_image_set_from_icon_name(self->app_icon, icon_name.c_str());
-      } else {
-        gtk_widget_set_visible(GTK_WIDGET(self->app_icon), 0);
-
-        util::debug(log_tag + icon_name + " icon name not installed in the " +
-                    gtk_icon_theme_get_theme_name(self->icon_theme) + " icon theme in use. " +
-                    "The application icon has been hidden.");
-      }
-    } else {
-      gtk_widget_set_visible(GTK_WIDGET(self->app_icon), 0);
-    }
+  if (const auto default_app_icon = "applications-multimedia-symbolic"s; self->icon_theme == nullptr) {
+    gtk_image_set_from_icon_name(self->app_icon, default_app_icon.c_str());
+  } else if (const auto icon_name = get_app_icon_name(node_info); icon_name.empty()) {
+    gtk_image_set_from_icon_name(self->app_icon, default_app_icon.c_str());
+  } else if (!icon_available(self, icon_name)) {
+    gtk_image_set_from_icon_name(self->app_icon, default_app_icon.c_str());
   } else {
-    gtk_widget_set_visible(GTK_WIDGET(self->app_icon), 0);
+    gtk_image_set_from_icon_name(self->app_icon, icon_name.c_str());
   }
 
   // updating the blocklist button state

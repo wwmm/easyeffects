@@ -29,8 +29,8 @@
                                 <child>
                                     <object class="GtkStack" id="stack">
                                         <property name="halign">center</property>
-                                        <property name="transition_duration">250</property>
-                                        <property name="transition_type">slide-left-right</property>
+                                        <property name="transition-duration">250</property>
+                                        <property name="transition-type">slide-left-right</property>
                                         <child>
                                             <object class="GtkStackPage">
                                                 <property name="name">page_left_channel</property>

@@ -8,7 +8,7 @@
                     <object class="GtkImage">
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="icon_name">audio-input-microphone-symbolic</property>
+                        <property name="icon-name">audio-input-microphone-symbolic</property>
                     </object>
                 </child>
 

@@ -14,7 +14,7 @@
                     <object class="GtkSearchEntry" id="plugins_search">
                         <property name="valign">start</property>
                         <property name="hexpand">1</property>
-                        <property name="placeholder_text" translatable="yes">Search</property>
+                        <property name="placeholder-text" translatable="yes">Search</property>
                         <accessibility>
                             <property name="label" translatable="yes">Search Plugin</property>
                         </accessibility>
@@ -25,8 +25,8 @@
                     <object class="GtkFrame">
                         <child>
                             <object class="GtkScrolledWindow" id="scrolled_window">
-                                <property name="propagate_natural_width">1</property>
-                                <property name="propagate_natural_height">1</property>
+                                <property name="propagate-natural-width">1</property>
+                                <property name="propagate-natural-height">1</property>
                                 <child>
                                     <object class="GtkListView" id="listview">
                                         <property name="hexpand">1</property>

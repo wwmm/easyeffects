@@ -8,7 +8,7 @@
                     <object class="GtkImage">
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="icon_name">emblem-system-symbolic</property>
+                        <property name="icon-name">emblem-system-symbolic</property>
                     </object>
                 </child>
 

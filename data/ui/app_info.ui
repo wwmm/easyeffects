@@ -28,7 +28,7 @@
                                     <object class="GtkImage" id="app_icon">
                                         <property name="halign">start</property>
                                         <property name="valign">center</property>
-                                        <property name="icon_size">large</property>
+                                        <property name="icon-size">large</property>
                                     </object>
                                 </child>
 
@@ -233,7 +233,7 @@
                                 <child>
                                     <object class="GtkToggleButton" id="mute">
                                         <property name="valign">center</property>
-                                        <property name="icon_name">audio-volume-high-symbolic</property>
+                                        <property name="icon-name">audio-volume-high-symbolic</property>
                                         <accessibility>
                                             <property name="label" translatable="yes">Mute Application</property>
                                         </accessibility>
