@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 13:21-0300\n"
+"POT-Creation-Date: 2022-04-30 14:22-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: OctopusET <sumoon@seoulsaram.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -922,7 +922,7 @@ msgstr "프로필"
 msgid "Preset"
 msgstr "프리셋"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
 #, fuzzy
 msgid "Remove"
 msgstr "제거"
@@ -2545,6 +2545,15 @@ msgstr ""
 #, fuzzy
 msgid "Used Plugins List"
 msgstr "사용된 플러그인 목록"
+
+#: data/ui/plugins_box.ui:67
+#, fuzzy
+msgid "No Effects"
+msgstr "EasyEffects"
+
+#: data/ui/plugins_box.ui:68
+msgid "Audio Stream Not Modified"
+msgstr ""
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"

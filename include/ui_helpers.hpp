@@ -61,10 +61,23 @@ void prepare_spinbutton(GtkSpinButton* button) {
 
 template <StringLiteralWrapper sl_wrapper>
 void prepare_scale(GtkScale* scale) {
+  /*
+    The sanitizer caught a "use after free" inside this function. As the problem happens randomly and is hard to
+    reproduce I am not sure about what could be the cause yet. So for now I am just checking for null pointers.
+  */
+
+  if (scale == nullptr) {
+    return;
+  }
+
   gtk_scale_set_format_value_func(
       scale,
       (GtkScaleFormatValueFunc) +
           [](GtkScale* scale, double value, gpointer user_data) {
+            if (scale == nullptr) {
+              return g_strdup("");
+            }
+
             auto precision = gtk_scale_get_digits(scale);
             auto unit = sl_wrapper.msg.data();
 

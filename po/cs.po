@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 13:21-0300\n"
+"POT-Creation-Date: 2022-04-30 14:22-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -911,7 +911,7 @@ msgstr ""
 msgid "Preset"
 msgstr "Přednastavení"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
 msgid "Remove"
 msgstr ""
 
@@ -2555,6 +2555,15 @@ msgstr "Vstupní efekty"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
+msgstr ""
+
+#: data/ui/plugins_box.ui:67
+#, fuzzy
+msgid "No Effects"
+msgstr "EasyEffects"
+
+#: data/ui/plugins_box.ui:68
+msgid "Audio Stream Not Modified"
 msgstr ""
 
 #: data/ui/plugins_menu.ui:19

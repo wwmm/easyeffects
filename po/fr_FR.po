@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 13:21-0300\n"
+"POT-Creation-Date: 2022-04-30 14:22-0300\n"
 "PO-Revision-Date: 2022-04-20 06:09+0000\n"
 "Last-Translator: matb <perso@mathieu-bousquet.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -977,7 +977,7 @@ msgstr "Profil"
 msgid "Preset"
 msgstr "Préréglage"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -2608,6 +2608,15 @@ msgstr "EasyEffects"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
+msgstr ""
+
+#: data/ui/plugins_box.ui:67
+#, fuzzy
+msgid "No Effects"
+msgstr "Effets"
+
+#: data/ui/plugins_box.ui:68
+msgid "Audio Stream Not Modified"
 msgstr ""
 
 #: data/ui/plugins_menu.ui:19

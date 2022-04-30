@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 13:21-0300\n"
+"POT-Creation-Date: 2022-04-30 14:22-0300\n"
 "PO-Revision-Date: 2022-01-11 15:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -892,7 +892,7 @@ msgstr "Profil"
 msgid "Preset"
 msgstr "Forindstilling"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
 msgid "Remove"
 msgstr "Fjern"
 
@@ -2377,6 +2377,15 @@ msgstr ""
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
 msgstr "Liste over Anvendte Plugins"
+
+#: data/ui/plugins_box.ui:67
+#, fuzzy
+msgid "No Effects"
+msgstr "Easyeffects"
+
+#: data/ui/plugins_box.ui:68
+msgid "Audio Stream Not Modified"
+msgstr ""
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"

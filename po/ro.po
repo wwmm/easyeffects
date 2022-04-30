@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 13:21-0300\n"
+"POT-Creation-Date: 2022-04-30 14:22-0300\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -907,7 +907,7 @@ msgstr ""
 msgid "Preset"
 msgstr "Presetări"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
 msgid "Remove"
 msgstr ""
 
@@ -2523,6 +2523,15 @@ msgstr "Efecte Input"
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
+msgstr ""
+
+#: data/ui/plugins_box.ui:67
+#, fuzzy
+msgid "No Effects"
+msgstr "EasyEffects"
+
+#: data/ui/plugins_box.ui:68
+msgid "Audio Stream Not Modified"
 msgstr ""
 
 #: data/ui/plugins_menu.ui:19

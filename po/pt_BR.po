@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 12:36-0300\n"
+"POT-Creation-Date: 2022-04-30 14:22-0300\n"
 "PO-Revision-Date: 2022-04-18 18:11+0000\n"
 "Last-Translator: João Henrique <jhenriquelc@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -910,7 +910,7 @@ msgstr "Perfil"
 msgid "Preset"
 msgstr "Predefinição"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
 msgid "Remove"
 msgstr "Remover"
 
@@ -2561,6 +2561,15 @@ msgstr "Efeitos de Entrada"
 msgid "Used Plugins List"
 msgstr ""
 
+#: data/ui/plugins_box.ui:67
+#, fuzzy
+msgid "No Effects"
+msgstr "EasyEffects"
+
+#: data/ui/plugins_box.ui:68
+msgid "Audio Stream Not Modified"
+msgstr ""
+
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
 msgstr ""
@@ -3058,12 +3067,12 @@ msgid "Import Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123 src/equalizer_ui.cpp:363
+#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
 msgid "Open"
 msgstr "Abrir"
 
 #: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123 src/equalizer_ui.cpp:363
+#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -3089,16 +3098,16 @@ msgstr "Falhou"
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/effects_box.cpp:263 src/effects_box.cpp:255
+#: src/effects_box.cpp:263
 #, fuzzy
 msgid "Recorders"
 msgstr "Borda"
 
-#: src/effects_box.cpp:287 src/effects_box.cpp:279
+#: src/effects_box.cpp:287
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:310 src/effects_box.cpp:302
+#: src/effects_box.cpp:310
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -3107,12 +3116,12 @@ msgstr "EasyEffects"
 msgid "infinity"
 msgstr "infinito"
 
-#: src/equalizer_ui.cpp:354 src/equalizer_ui.cpp:362
+#: src/equalizer_ui.cpp:354
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Importar Predefinições"
 
-#: src/equalizer_ui.cpp:360 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:360
 #, fuzzy
 msgid "APO Presets"
 msgstr "Predefinições"

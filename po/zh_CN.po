@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-23 13:21-0300\n"
+"POT-Creation-Date: 2022-04-30 14:22-0300\n"
 "PO-Revision-Date: 2022-04-22 00:14+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -883,7 +883,7 @@ msgstr "概述"
 msgid "Preset"
 msgstr "预设"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:478
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
 msgid "Remove"
 msgstr "删除"
 
@@ -2363,6 +2363,15 @@ msgstr ""
 
 #: data/ui/plugins_box.ui:34
 msgid "Used Plugins List"
+msgstr ""
+
+#: data/ui/plugins_box.ui:67
+#, fuzzy
+msgid "No Effects"
+msgstr "音效"
+
+#: data/ui/plugins_box.ui:68
+msgid "Audio Stream Not Modified"
 msgstr ""
 
 #: data/ui/plugins_menu.ui:19

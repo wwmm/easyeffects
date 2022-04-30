@@ -56,7 +56,6 @@
         <file>icons/scalable/emblems/ee-arrow-down-symbolic.svg</file>
         <file>icons/scalable/emblems/ee-square-symbolic.svg</file>
         <file>icons/scalable/emblems/ee-spectrum-symbolic.svg</file>
-        <file>icons/scalable/emblems/ee-plugins-symbolic.svg</file>
         <file>icons/scalable/emblems/ee-drag-handle-symbolic.svg</file>
     </gresource>
 </gresources>
