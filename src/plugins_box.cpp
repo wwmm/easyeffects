@@ -53,6 +53,10 @@ struct _PluginsBox {
 
   GtkMenuButton* menubutton_plugins;
 
+  GtkOverlay* plugin_overlay;
+
+  AdwStatusPage* overlay_no_plugins;
+
   GtkListView* listview;
 
   GtkStack* stack;
@@ -316,8 +320,14 @@ void add_plugins_to_stack(PluginsBox* self) {
     }
   }
 
-  if (std::ranges::find(plugins_list, visible_page_name) != plugins_list.end()) {
-    gtk_stack_set_visible_child_name(self->stack, visible_page_name.c_str());
+  if (plugins_list.empty()) {
+    gtk_widget_show(GTK_WIDGET(self->overlay_no_plugins));
+  } else {
+    gtk_widget_hide(GTK_WIDGET(self->overlay_no_plugins));
+
+    if (std::ranges::find(plugins_list, visible_page_name) != plugins_list.end()) {
+      gtk_stack_set_visible_child_name(self->stack, visible_page_name.c_str());
+    }
   }
 }
 
@@ -591,6 +601,8 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/plugins_box.ui");
 
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, menubutton_plugins);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, plugin_overlay);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, overlay_no_plugins);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, listview);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, stack);
 }
@@ -605,6 +617,8 @@ void plugins_box_init(PluginsBox* self) {
   self->plugins_menu = ui::plugins_menu::create();
 
   gtk_menu_button_set_popover(self->menubutton_plugins, GTK_WIDGET(self->plugins_menu));
+
+  gtk_overlay_set_clip_overlay(self->plugin_overlay, GTK_WIDGET(self->overlay_no_plugins), 1);
 }
 
 auto create() -> PluginsBox* {

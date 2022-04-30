@@ -47,11 +47,25 @@
         </child>
 
         <child>
-            <object class="GtkScrolledWindow">
+            <object class="GtkOverlay" id="plugin_overlay">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
                 <child>
-                    <object class="GtkStack" id="stack">
-                        <property name="hhomogeneous">0</property>
-                        <property name="vhomogeneous">0</property>
+                    <object class="GtkScrolledWindow">
+                        <child>
+                            <object class="GtkStack" id="stack">
+                                <property name="hhomogeneous">0</property>
+                                <property name="vhomogeneous">0</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child type="overlay">
+                    <object class="AdwStatusPage" id="overlay_no_plugins">
+                        <property name="icon-name">emblem-music-symbolic</property>
+                        <property name="title" translatable="yes">No Effects</property>
+                        <property name="description" translatable="yes">Audio Stream Not Modified</property>
                     </object>
                 </child>
             </object>
