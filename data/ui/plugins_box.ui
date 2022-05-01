@@ -28,7 +28,7 @@
                             <object class="GtkBox">
                                 <property name="orientation">vertical</property>
                                 <child>
-                                    <object class="GtkBox">
+                                    <object class="GtkBox" id="startpoint_box">
                                         <property name="spacing">6</property>
                                         <property name="margin-start">21</property>
                                         <property name="margin-end">21</property>
@@ -64,7 +64,7 @@
                                 </child>
 
                                 <child>
-                                    <object class="GtkBox">
+                                    <object class="GtkBox" id="endpoint_box">
                                         <property name="spacing">6</property>
                                         <property name="margin-start">21</property>
                                         <property name="margin-end">21</property>

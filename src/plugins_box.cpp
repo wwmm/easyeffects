@@ -61,6 +61,8 @@ struct _PluginsBox {
 
   GtkStack* stack;
 
+  GtkBox *startpoint_box, *endpoint_box;
+
   GtkImage *startpoint_icon, *endpoint_icon;
 
   GtkLabel *startpoint_name, *endpoint_name;
@@ -326,8 +328,16 @@ void add_plugins_to_stack(PluginsBox* self) {
 
   if (plugins_list.empty()) {
     gtk_widget_show(GTK_WIDGET(self->overlay_no_plugins));
+
+    gtk_widget_hide(GTK_WIDGET(self->startpoint_box));
+
+    gtk_widget_hide(GTK_WIDGET(self->endpoint_box));
   } else {
     gtk_widget_hide(GTK_WIDGET(self->overlay_no_plugins));
+
+    gtk_widget_show(GTK_WIDGET(self->startpoint_box));
+
+    gtk_widget_show(GTK_WIDGET(self->endpoint_box));
 
     if (std::ranges::find(plugins_list, visible_page_name) != plugins_list.end()) {
       gtk_stack_set_visible_child_name(self->stack, visible_page_name.c_str());
@@ -354,6 +364,10 @@ void setup_listview(PluginsBox* self) {
         g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
         g_object_set_data(G_OBJECT(item), "remove", remove);
         g_object_set_data(G_OBJECT(item), "drag_handle", drag_handle);
+
+        // pointer cursor when the mouse is over the plugin row
+
+        gtk_widget_set_cursor_from_name(GTK_WIDGET(top_box), "pointer");
 
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
 
@@ -614,8 +628,10 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, overlay_no_plugins);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, listview);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, stack);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, startpoint_box);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, startpoint_icon);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, startpoint_name);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_box);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_icon);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_name);
 }
@@ -628,6 +644,8 @@ void plugins_box_init(PluginsBox* self) {
   self->data->schedule_signal_idle = false;
 
   self->plugins_menu = ui::plugins_menu::create();
+
+  gtk_widget_set_cursor_from_name(GTK_WIDGET(self->menubutton_plugins), "pointer");
 
   gtk_menu_button_set_popover(self->menubutton_plugins, GTK_WIDGET(self->plugins_menu));
 
