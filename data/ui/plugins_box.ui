@@ -38,7 +38,6 @@
                                             <object class="GtkImage" id="startpoint_icon">
                                                 <property name="halign">start</property>
                                                 <property name="valign">center</property>
-                                                <property name="icon-name">ee-square-symbolic</property>
                                             </object>
                                         </child>
 
@@ -75,7 +74,6 @@
                                             <object class="GtkImage" id="endpoint_icon">
                                                 <property name="halign">start</property>
                                                 <property name="valign">center</property>
-                                                <property name="icon-name">ee-square-symbolic</property>
                                             </object>
                                         </child>
 
