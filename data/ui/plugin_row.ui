@@ -44,6 +44,11 @@
                 <property name="valign">center</property>
                 <property name="opacity">0</property>
                 <property name="icon-name">ee-drag-handle-symbolic</property>
+                <property name="cursor">
+                    <object class="GdkCursor">
+                        <property name="name">grab</property>
+                    </object>
+                </property>
             </object>
         </child>
     </object>
