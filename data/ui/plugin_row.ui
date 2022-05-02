@@ -4,6 +4,11 @@
         <property name="spacing">6</property>
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
+        <property name="cursor">
+            <object class="GdkCursor">
+                <property name="name">pointer</property>
+            </object>
+        </property>
         <child>
             <object class="GtkImage" id="plugin_icon">
                 <property name="halign">start</property>

@@ -365,10 +365,6 @@ void setup_listview(PluginsBox* self) {
         g_object_set_data(G_OBJECT(item), "remove", remove);
         g_object_set_data(G_OBJECT(item), "drag_handle", drag_handle);
 
-        // pointer cursor when the mouse is over the plugin row
-
-        gtk_widget_set_cursor_from_name(GTK_WIDGET(top_box), "pointer");
-
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
 
         g_object_unref(builder);
@@ -644,8 +640,6 @@ void plugins_box_init(PluginsBox* self) {
   self->data->schedule_signal_idle = false;
 
   self->plugins_menu = ui::plugins_menu::create();
-
-  gtk_widget_set_cursor_from_name(GTK_WIDGET(self->menubutton_plugins), "pointer");
 
   gtk_menu_button_set_popover(self->menubutton_plugins, GTK_WIDGET(self->plugins_menu));
 

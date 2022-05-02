@@ -17,6 +17,11 @@
                         <property name="valign">center</property>
                         <property name="direction">right</property>
                         <property name="label" translatable="yes">Add Effect</property>
+                        <property name="cursor">
+                            <object class="GdkCursor">
+                                <property name="name">pointer</property>
+                            </object>
+                        </property>
                     </object>
                 </child>
 
