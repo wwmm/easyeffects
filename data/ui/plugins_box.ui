@@ -38,6 +38,7 @@
                                             <object class="GtkImage" id="startpoint_icon">
                                                 <property name="halign">start</property>
                                                 <property name="valign">center</property>
+                                                <property name="opacity">0.5</property>
                                             </object>
                                         </child>
 
@@ -45,6 +46,7 @@
                                             <object class="GtkLabel" id="startpoint_name">
                                                 <property name="halign">start</property>
                                                 <property name="valign">center</property>
+                                                <property name="opacity">0.5</property>
                                                 <property name="label">Source</property>
                                             </object>
                                         </child>
@@ -74,6 +76,7 @@
                                             <object class="GtkImage" id="endpoint_icon">
                                                 <property name="halign">start</property>
                                                 <property name="valign">center</property>
+                                                <property name="opacity">0.5</property>
                                             </object>
                                         </child>
 
@@ -81,6 +84,7 @@
                                             <object class="GtkLabel" id="endpoint_name">
                                                 <property name="halign">start</property>
                                                 <property name="valign">center</property>
+                                                <property name="opacity">0.5</property>
                                                 <property name="label">Endpoint</property>
                                             </object>
                                         </child>
