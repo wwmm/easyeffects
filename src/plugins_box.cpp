@@ -61,6 +61,12 @@ struct _PluginsBox {
 
   GtkStack* stack;
 
+  GtkBox *startpoint_box, *endpoint_box;
+
+  GtkImage *startpoint_icon, *endpoint_icon;
+
+  GtkLabel *startpoint_name, *endpoint_name;
+
   ui::plugins_menu::PluginsMenu* plugins_menu;
 
   GSettings* settings;
@@ -322,8 +328,16 @@ void add_plugins_to_stack(PluginsBox* self) {
 
   if (plugins_list.empty()) {
     gtk_widget_show(GTK_WIDGET(self->overlay_no_plugins));
+
+    gtk_widget_hide(GTK_WIDGET(self->startpoint_box));
+
+    gtk_widget_hide(GTK_WIDGET(self->endpoint_box));
   } else {
     gtk_widget_hide(GTK_WIDGET(self->overlay_no_plugins));
+
+    gtk_widget_show(GTK_WIDGET(self->startpoint_box));
+
+    gtk_widget_show(GTK_WIDGET(self->endpoint_box));
 
     if (std::ranges::find(plugins_list, visible_page_name) != plugins_list.end()) {
       gtk_stack_set_visible_child_name(self->stack, visible_page_name.c_str());
@@ -487,14 +501,7 @@ void setup_listview(PluginsBox* self) {
                      gtk_accessible_update_property(GTK_ACCESSIBLE(remove), GTK_ACCESSIBLE_PROPERTY_LABEL,
                                                     (_("Remove") + " "s + self->data->translated[name]).c_str(), -1);
 
-                     const auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
-
-                     if (const auto iter_name = std::ranges::find(list, name);
-                         (iter_name == list.begin() && iter_name != list.end() - 2) || iter_name == list.end() - 1) {
-                       gtk_image_set_from_icon_name(plugin_icon, "ee-square-symbolic");
-                     } else {
-                       gtk_image_set_from_icon_name(plugin_icon, "ee-arrow-down-symbolic");
-                     }
+                     gtk_image_set_from_icon_name(plugin_icon, "ee-arrow-down-symbolic");
                    }),
                    self);
 
@@ -519,6 +526,12 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
           }),
           self));
 
+      gtk_image_set_from_icon_name(self->startpoint_icon, "audio-input-microphone-symbolic");
+      gtk_image_set_from_icon_name(self->endpoint_icon, "applications-multimedia-symbolic");
+
+      gtk_label_set_text(self->startpoint_name, _("Input Device"));
+      gtk_label_set_text(self->endpoint_name, _("Recording Apps"));
+
       break;
     }
     case PipelineType::output: {
@@ -531,6 +544,12 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
             add_plugins_to_stack<PipelineType::output>(self);
           }),
           self));
+
+      gtk_image_set_from_icon_name(self->startpoint_icon, "applications-multimedia-symbolic");
+      gtk_image_set_from_icon_name(self->endpoint_icon, "audio-speakers-symbolic");
+
+      gtk_label_set_text(self->startpoint_name, _("Playing Apps"));
+      gtk_label_set_text(self->endpoint_name, _("Output Device"));
 
       break;
     }
@@ -605,6 +624,12 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, overlay_no_plugins);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, listview);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, stack);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, startpoint_box);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, startpoint_icon);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, startpoint_name);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_box);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_icon);
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_name);
 }
 
 void plugins_box_init(PluginsBox* self) {
