@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-30 14:22-0300\n"
-"PO-Revision-Date: 2022-04-22 00:14+0000\n"
+"PO-Revision-Date: 2022-05-02 12:10+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -2366,9 +2366,8 @@ msgid "Used Plugins List"
 msgstr ""
 
 #: data/ui/plugins_box.ui:67
-#, fuzzy
 msgid "No Effects"
-msgstr "音效"
+msgstr "无音效"
 
 #: data/ui/plugins_box.ui:68
 msgid "Audio Stream Not Modified"
