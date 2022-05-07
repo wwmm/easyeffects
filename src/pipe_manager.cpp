@@ -386,6 +386,12 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy
 
+    if (nd->nd_info->connected != pm->stream_is_connected(info->id, nd->nd_info->media_class)) {
+      nd->nd_info->connected = !nd->nd_info->connected;
+
+      app_info_ui_changed = true;
+    }
+
     if (app_info_ui_changed) {
       const auto nd_info_copy = *nd->nd_info;
 

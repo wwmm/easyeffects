@@ -68,6 +68,8 @@ struct NodeInfo {
 
   bool mute = false;
 
+  bool connected = false;
+
   int n_input_ports = 0;
 
   int n_output_ports = 0;
