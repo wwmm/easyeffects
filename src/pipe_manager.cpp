@@ -847,8 +847,8 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   const std::string str_type = (type != nullptr) ? type : "";
   const std::string str_value = (value != nullptr) ? value : "";
 
-  util::debug(PipeManager::log_tag + "new metadata property: " + util::to_string(id) + ", " + str_key + ", " + str_type +
-              ", " + str_value);
+  util::debug(PipeManager::log_tag + "new metadata property: " + util::to_string(id) + ", " + str_key + ", " +
+              str_type + ", " + str_value);
 
   if (str_value.empty()) {
     return 0;
@@ -1507,16 +1507,8 @@ void PipeManager::connect_stream_output(const uint& id) const {
   set_metadata_target_node(id, ee_sink_node.id, ee_sink_node.serial);
 }
 
-void PipeManager::disconnect_stream_output(const uint& id) const {
-  set_metadata_target_node(id, default_output_device.id, default_output_device.serial);
-}
-
 void PipeManager::connect_stream_input(const uint& id) const {
   set_metadata_target_node(id, ee_source_node.id, ee_source_node.serial);
-}
-
-void PipeManager::disconnect_stream_input(const uint& id) const {
-  set_metadata_target_node(id, default_input_device.id, default_input_device.serial);
 }
 
 void PipeManager::set_metadata_target_node(const uint& origin_id,
@@ -1527,6 +1519,16 @@ void PipeManager::set_metadata_target_node(const uint& origin_id,
   // target.node for backward compatibility with old PW session managers
   pw_metadata_set_property(metadata, origin_id, "target.node", "Spa:Id", util::to_string(target_id).c_str());
   pw_metadata_set_property(metadata, origin_id, "target.object", "Spa:Id", util::to_string(target_serial).c_str());
+
+  sync_wait_unlock();
+}
+
+void PipeManager::disconnect_stream(const uint& stream_id) const {
+  lock();
+
+  // target.node for backward compatibility with old PW session managers
+  pw_metadata_set_property(metadata, stream_id, "target.node", nullptr, nullptr);
+  pw_metadata_set_property(metadata, stream_id, "target.object", nullptr, nullptr);
 
   sync_wait_unlock();
 }

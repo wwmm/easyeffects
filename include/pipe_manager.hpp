@@ -240,9 +240,7 @@ class PipeManager {
 
   void connect_stream_input(const uint& id) const;
 
-  void disconnect_stream_output(const uint& id) const;
-
-  void disconnect_stream_input(const uint& id) const;
+  void disconnect_stream(const uint& id) const;
 
   static void set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value);
 

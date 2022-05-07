@@ -3,7 +3,8 @@ Version UNRELEASED_VERSION
 Released: UNRELEASED_DATE
 
 Features:
-- 
+- When effects are disable to an application we now set its target metadata to null. This will allow the media session
+manager (wireplumber) to properly move the stream to a new device.
 
 Bugfixes:
 - 
