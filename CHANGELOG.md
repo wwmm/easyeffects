@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [4.8.7]
+
+### Added
+
+- Improved compatibility with `Boost 1.79`
+
 ## [4.8.6]
 
 ### Fixed
