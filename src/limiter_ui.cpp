@@ -316,15 +316,11 @@ void limiter_box_init(LimiterBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"dB">(self->sc_preamp);
-  prepare_spinbutton<"dB">(self->threshold);
-  prepare_spinbutton<"dB">(self->alr_knee);
-  prepare_spinbutton<"ms">(self->lookahead);
-  prepare_spinbutton<"ms">(self->attack);
-  prepare_spinbutton<"ms">(self->release);
-  prepare_spinbutton<"ms">(self->alr_attack);
-  prepare_spinbutton<"ms">(self->alr_release);
-  prepare_spinbutton<"%">(self->stereo_link);
+  prepare_spinbuttons<"dB">(self->sc_preamp, self->threshold, self->alr_knee);
+
+  prepare_spinbuttons<"ms">(self->lookahead, self->attack, self->release, self->alr_attack, self->alr_release);
+
+  prepare_spinbuttons<"%">(self->stereo_link);
 }
 
 auto create() -> LimiterBox* {

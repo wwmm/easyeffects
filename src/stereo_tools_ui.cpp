@@ -212,17 +212,12 @@ void stereo_tools_box_init(StereoToolsBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"dB">(self->slev);
-  prepare_spinbutton<"dB">(self->mlev);
-  prepare_spinbutton<"ms">(self->delay);
+  prepare_spinbuttons<"dB">(self->slev, self->mlev);
 
-  prepare_spinbutton<"">(self->balance_in);
-  prepare_spinbutton<"">(self->balance_out);
-  prepare_spinbutton<"">(self->sc_level);
-  prepare_spinbutton<"">(self->sbal);
-  prepare_spinbutton<"">(self->mpan);
-  prepare_spinbutton<"">(self->stereo_base);
-  prepare_spinbutton<"">(self->stereo_phase);
+  prepare_spinbuttons<"ms">(self->delay);
+
+  prepare_spinbuttons<"">(self->balance_in, self->balance_out, self->sc_level, self->sbal, self->mpan,
+                          self->stereo_base, self->stereo_phase);
 }
 
 auto create() -> StereoToolsBox* {

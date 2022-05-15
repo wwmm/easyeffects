@@ -356,7 +356,7 @@ void app_info_init(AppInfo* self) {
 
   self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  prepare_spinbutton<"%">(self->volume);
+  prepare_spinbuttons<"%">(self->volume);
 
   self->data->handler_id_enable = g_signal_connect(self->enable, "toggled", G_CALLBACK(on_enable), self);
   self->data->handler_id_volume = g_signal_connect(self->volume, "value-changed", G_CALLBACK(on_volume_changed), self);

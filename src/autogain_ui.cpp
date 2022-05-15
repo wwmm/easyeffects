@@ -220,7 +220,7 @@ void autogain_box_init(AutogainBox* self) {
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
   prepare_spinbuttons<"dB">(self->target);
-  prepare_spinbutton<"s">(self->maximum_history);
+  prepare_spinbuttons<"s">(self->maximum_history);
 }
 
 auto create() -> AutogainBox* {

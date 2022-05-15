@@ -48,6 +48,12 @@ void remove_from_string_list(GtkStringList* string_list, const std::string& name
 
 template <StringLiteralWrapper sl_wrapper>
 void prepare_spinbutton(GtkSpinButton* button) {
+  if (button == nullptr) {
+    util::warning("Null pointer provided: Spinbutton widget not prepared.");
+
+    return;
+  }
+
   g_signal_connect(button, "output", G_CALLBACK(+[](GtkSpinButton* button, gpointer user_data) {
                      return parse_spinbutton_output(button, sl_wrapper.msg.data());
                    }),
@@ -67,6 +73,8 @@ void prepare_scale(GtkScale* scale) {
   */
 
   if (scale == nullptr) {
+    util::warning("Null pointer provided: Scale widget not prepared.");
+
     return;
   }
 

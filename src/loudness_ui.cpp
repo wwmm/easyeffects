@@ -165,7 +165,7 @@ void loudness_box_init(LoudnessBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"dB">(self->volume);
+  prepare_spinbuttons<"dB">(self->volume);
 }
 
 auto create() -> LoudnessBox* {

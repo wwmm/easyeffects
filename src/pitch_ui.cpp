@@ -177,9 +177,7 @@ void pitch_box_init(PitchBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"">(self->cents);
-  prepare_spinbutton<"">(self->semitones);
-  prepare_spinbutton<"">(self->octaves);
+  prepare_spinbuttons<"">(self->cents, self->semitones, self->octaves);
 }
 
 auto create() -> PitchBox* {

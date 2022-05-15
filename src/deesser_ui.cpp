@@ -218,13 +218,11 @@ void deesser_box_init(DeesserBox* self) {
 
   self->data = new Data();
 
-  prepare_spinbutton<"dB">(self->makeup);
-  prepare_spinbutton<"dB">(self->threshold);
-  prepare_spinbutton<"dB">(self->f1_level);
-  prepare_spinbutton<"dB">(self->f2_level);
-  prepare_spinbutton<"Hz">(self->f1_freq);
-  prepare_spinbutton<"Hz">(self->f2_freq);
-  prepare_spinbutton<"">(self->f2_q);
+  prepare_spinbuttons<"dB">(self->makeup, self->threshold, self->f1_level, self->f2_level);
+
+  prepare_spinbuttons<"Hz">(self->f1_freq, self->f2_freq);
+
+  prepare_spinbuttons<"">(self->f2_q);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }

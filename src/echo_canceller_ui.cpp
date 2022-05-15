@@ -160,8 +160,7 @@ void echo_canceller_box_init(EchoCancellerBox* self) {
 
   self->data = new Data();
 
-  prepare_spinbutton<"ms">(self->filter_length);
-  prepare_spinbutton<"ms">(self->frame_size);
+  prepare_spinbuttons<"ms">(self->filter_length, self->frame_size);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }

@@ -81,7 +81,7 @@ void build_bands(CrystalizerBox* self) {
     auto* band_bypass = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder, "band_bypass"));
     auto* band_mute = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder, "band_mute"));
 
-    prepare_scale<"">(band_intensity);
+    prepare_scales<"">(band_intensity);
 
     const auto bandn = "band" + util::to_string(n);
 

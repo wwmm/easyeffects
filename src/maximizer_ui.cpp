@@ -175,9 +175,9 @@ void maximizer_box_init(MaximizerBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"dB">(self->threshold);
-  prepare_spinbutton<"dB">(self->ceiling);
-  prepare_spinbutton<"ms">(self->release);
+  prepare_spinbuttons<"dB">(self->threshold, self->ceiling);
+
+  prepare_spinbuttons<"ms">(self->release);
 }
 
 auto create() -> MaximizerBox* {

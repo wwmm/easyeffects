@@ -189,12 +189,13 @@ void exciter_box_init(ExciterBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"dB">(self->amount);
-  prepare_spinbutton<"Hz">(self->scope);
-  prepare_spinbutton<"Hz">(self->ceil);
-  prepare_spinbutton<"">(self->harmonics);
+  prepare_spinbuttons<"dB">(self->amount);
 
-  prepare_scale<"">(self->blend);
+  prepare_spinbuttons<"Hz">(self->scope, self->ceil);
+
+  prepare_spinbuttons<"">(self->harmonics);
+
+  prepare_scales<"">(self->blend);
 }
 
 auto create() -> ExciterBox* {

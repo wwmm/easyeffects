@@ -268,14 +268,15 @@ void reverb_box_init(ReverbBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"dB">(self->amount);
-  prepare_spinbutton<"dB">(self->dry);
-  prepare_spinbutton<"Hz">(self->hf_damp);
-  prepare_spinbutton<"Hz">(self->bass_cut);
-  prepare_spinbutton<"Hz">(self->treble_cut);
-  prepare_spinbutton<"s">(self->decay_time);
-  prepare_spinbutton<"ms">(self->predelay);
-  prepare_spinbutton<"">(self->diffusion);
+  prepare_spinbuttons<"dB">(self->amount, self->dry);
+
+  prepare_spinbuttons<"Hz">(self->hf_damp, self->bass_cut, self->treble_cut);
+
+  prepare_spinbuttons<"s">(self->decay_time);
+
+  prepare_spinbuttons<"ms">(self->predelay);
+
+  prepare_spinbuttons<"">(self->diffusion);
 }
 
 auto create() -> ReverbBox* {

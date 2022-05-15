@@ -176,8 +176,8 @@ void crossfeed_box_init(CrossfeedBox* self) {
 
   self->data = new Data();
 
-  prepare_spinbutton<"Hz">(self->fcut);
-  prepare_spinbutton<"dB">(self->feed);
+  prepare_spinbuttons<"Hz">(self->fcut);
+  prepare_spinbuttons<"dB">(self->feed);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }

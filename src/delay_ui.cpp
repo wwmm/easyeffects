@@ -162,8 +162,7 @@ void delay_box_init(DelayBox* self) {
 
   self->data = new Data();
 
-  prepare_spinbutton<"ms">(self->time_l);
-  prepare_spinbutton<"ms">(self->time_r);
+  prepare_spinbuttons<"ms">(self->time_l, self->time_r);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }
