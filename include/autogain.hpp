@@ -90,7 +90,7 @@ class AutoGain : public PluginBase {
 
   static auto parse_reference_key(const std::string& key) -> Reference;
 
-  void set_maximum_history(const int& value);
+  void set_maximum_history(const int& seconds);
 };
 
 #endif

@@ -148,10 +148,10 @@ auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
   return Reference::geometric_mean_msi;
 }
 
-void AutoGain::set_maximum_history(const int& value) {
+void AutoGain::set_maximum_history(const int& seconds) {
   // The value given to ebur128_set_max_history must be in milliseconds
 
-  ebur128_set_max_history(ebur_state, g_settings_get_int(settings, "maximum-history") * 1000);
+  ebur128_set_max_history(ebur_state, static_cast<ulong>(seconds) * 1000ul);
 }
 
 void AutoGain::setup() {
