@@ -149,6 +149,10 @@ auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
 }
 
 void AutoGain::set_maximum_history(const int& seconds) {
+  if (ebur_state == nullptr) {
+    return;
+  }
+
   // The value given to ebur128_set_max_history must be in milliseconds
 
   ebur128_set_max_history(ebur_state, static_cast<ulong>(seconds) * 1000ul);

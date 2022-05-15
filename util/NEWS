@@ -9,6 +9,7 @@ manager (wireplumber) to properly move the stream to a new device.
 Bugfixes:
 - The "enable effects" checkbox in our window was not being updated when third party programs like pavucontrol
 moved the stream away from our virtual devices. This should be fixed now.
+- Fixed a crash that could happen when the maximum autogain history was changed.
 
 Notes:
 - 
