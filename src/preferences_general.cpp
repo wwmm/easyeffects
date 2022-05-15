@@ -111,7 +111,7 @@ void preferences_general_init(PreferencesGeneral* self) {
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  prepare_spinbutton<"s">(self->inactivity_timeout);
+  prepare_spinbuttons<"s">(self->inactivity_timeout);
 
   // initializing some widgets
 

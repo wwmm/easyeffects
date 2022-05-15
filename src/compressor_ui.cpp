@@ -375,7 +375,7 @@ void compressor_box_init(CompressorBox* self) {
 
   prepare_spinbuttons<"ms">(self->attack, self->release, self->lookahead, self->reactivity);
 
-  prepare_spinbutton<"">(self->ratio);
+  prepare_spinbuttons<"">(self->ratio);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }

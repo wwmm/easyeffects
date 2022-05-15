@@ -591,7 +591,7 @@ void convolver_box_init(ConvolverBox* self) {
     util::debug(log_tag + "irs directory already exists: "s + irs_dir.string());
   }
 
-  prepare_spinbutton<"%">(self->ir_width);
+  prepare_spinbuttons<"%">(self->ir_width);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 

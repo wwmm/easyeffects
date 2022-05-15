@@ -178,11 +178,11 @@ void bass_enhancer_box_init(BassEnhancerBox* self) {
 
   self->data = new Data();
 
-  prepare_spinbutton<"dB">(self->amount);
+  prepare_spinbuttons<"dB">(self->amount);
   prepare_spinbuttons<"Hz">(self->scope, self->floor);
-  prepare_spinbutton<"">(self->harmonics);
+  prepare_spinbuttons<"">(self->harmonics);
 
-  prepare_scale<"">(self->blend);
+  prepare_scales<"">(self->blend);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }

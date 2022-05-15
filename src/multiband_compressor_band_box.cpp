@@ -257,22 +257,15 @@ void multiband_compressor_band_box_init(MultibandCompressorBandBox* self) {
 
   self->data = new Data();
 
-  prepare_spinbutton<"Hz">(self->lowcut_filter_frequency);
-  prepare_spinbutton<"Hz">(self->highcut_filter_frequency);
-  prepare_spinbutton<"Hz">(self->split_frequency);
-  prepare_spinbutton<"ms">(self->attack_time);
-  prepare_spinbutton<"ms">(self->release_time);
-  prepare_spinbutton<"ms">(self->sidechain_reactivity);
-  prepare_spinbutton<"ms">(self->sidechain_lookahead);
-  prepare_spinbutton<"dB">(self->attack_threshold);
-  prepare_spinbutton<"dB">(self->release_threshold);
-  prepare_spinbutton<"dB">(self->knee);
-  prepare_spinbutton<"dB">(self->makeup);
-  prepare_spinbutton<"dB">(self->sidechain_preamp);
-  prepare_spinbutton<"dB">(self->boost_amount);
-  prepare_spinbutton<"dB">(self->boost_threshold);
+  prepare_spinbuttons<"Hz">(self->lowcut_filter_frequency, self->highcut_filter_frequency, self->split_frequency);
 
-  prepare_spinbutton<"">(self->ratio);
+  prepare_spinbuttons<"ms">(self->attack_time, self->release_time, self->sidechain_reactivity,
+                            self->sidechain_lookahead);
+
+  prepare_spinbuttons<"dB">(self->attack_threshold, self->release_threshold, self->knee, self->makeup,
+                            self->sidechain_preamp, self->boost_amount, self->boost_threshold);
+
+  prepare_spinbuttons<"">(self->ratio);
 }
 
 auto create() -> MultibandCompressorBandBox* {

@@ -200,13 +200,11 @@ void gate_box_init(GateBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"dB">(self->range);
-  prepare_spinbutton<"dB">(self->threshold);
-  prepare_spinbutton<"dB">(self->knee);
-  prepare_spinbutton<"dB">(self->makeup);
-  prepare_spinbutton<"ms">(self->attack);
-  prepare_spinbutton<"ms">(self->release);
-  prepare_spinbutton<"">(self->ratio);
+  prepare_spinbuttons<"dB">(self->range, self->threshold, self->knee, self->makeup);
+
+  prepare_spinbuttons<"ms">(self->attack, self->release);
+
+  prepare_spinbuttons<"">(self->ratio);
 }
 
 auto create() -> GateBox* {

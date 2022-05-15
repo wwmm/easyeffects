@@ -818,7 +818,7 @@ void pipe_manager_box_init(PipeManagerBox* self) {
   self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
-  prepare_spinbutton<"Hz">(self->spinbutton_test_signal_frequency);
+  prepare_spinbuttons<"Hz">(self->spinbutton_test_signal_frequency);
 
   g_settings_bind(self->sie_settings, "use-default-input-device", self->use_default_input, "active",
                   G_SETTINGS_BIND_DEFAULT);

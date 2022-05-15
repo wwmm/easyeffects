@@ -195,10 +195,10 @@ void equalizer_band_box_init(EqualizerBandBox* self) {
 
   g_settings_bind(self->app_settings, "autohide-popovers", self->popover_menu, "autohide", G_SETTINGS_BIND_DEFAULT);
 
-  prepare_scale<"">(self->band_scale);
+  prepare_scales<"">(self->band_scale);
 
-  prepare_spinbutton<"Hz">(self->band_frequency);
-  prepare_spinbutton<"">(self->band_quality);
+  prepare_spinbuttons<"Hz">(self->band_frequency);
+  prepare_spinbuttons<"">(self->band_quality);
 }
 
 auto create() -> EqualizerBandBox* {
