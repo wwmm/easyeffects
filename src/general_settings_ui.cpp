@@ -21,6 +21,7 @@
 #include <giomm/file.h>
 #include <glibmm.h>
 #include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
 #include "util.hpp"
 
 namespace {
