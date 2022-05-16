@@ -314,7 +314,7 @@ void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::jso
   }
 }
 
-void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohmann::json& json) {
+auto PresetsManager::load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool {
   std::vector<std::string> blocklist;
 
   switch (preset_type) {
@@ -327,6 +327,17 @@ void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
         g_settings_reset(sie_settings, "blocklist");
 
         util::warning(log_tag + e.what());
+
+        util::warning(log_tag + "A parsing error occurred while trying to load the blocklist inside " +
+                      "the preset. The file could be invalid or corrupted. Please check its content.");
+
+        return false;
+      } catch (...) {
+        g_settings_reset(sie_settings, "blocklist");
+
+        util::warning(log_tag + "A generic error occurred while trying to load the blocklist inside the preset.");
+
+        return false;
       }
 
       break;
@@ -340,11 +351,24 @@ void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
         g_settings_reset(soe_settings, "blocklist");
 
         util::warning(log_tag + e.what());
+
+        util::warning(log_tag + "A parsing error occurred while trying to load the blocklist inside " +
+                      "the preset. The file could be invalid or corrupted. Please check its content.");
+
+        return false;
+      } catch (...) {
+        g_settings_reset(soe_settings, "blocklist");
+
+        util::warning(log_tag + "A generic error occurred while trying to load the blocklist inside the preset.");
+
+        return false;
       }
 
       break;
     }
   }
+
+  return true;
 }
 
 void PresetsManager::save_preset_file(const PresetType& preset_type, const std::string& name) {
@@ -472,7 +496,7 @@ void PresetsManager::remove(const PresetType& preset_type, const std::string& na
   }
 }
 
-void PresetsManager::load_preset_file(const PresetType& preset_type, const std::string& name) {
+auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
   nlohmann::json json;
 
   std::vector<std::string> plugins;
@@ -516,16 +540,24 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const std::
           }
 
         } catch (const nlohmann::json::exception& e) {
-          plugins.clear();
-
           util::warning(log_tag + e.what());
+
+          util::warning(log_tag + "A parsing error occurred while trying to load the effects list inside " + name +
+                        " preset. The file could be invalid or corrupted. Please check its content.");
+
+          return false;
+        } catch (...) {
+          util::warning(log_tag + "A generic error occurred while trying to load the effects list inside " + name +
+                        " preset.");
+
+          return false;
         }
 
         g_settings_set_strv(soe_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
       } else {
         util::debug(log_tag + "can't find the preset " + name + " on the filesystem");
 
-        return;
+        return false;
       }
 
       break;
@@ -562,81 +594,106 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const std::
           }
 
         } catch (const nlohmann::json::exception& e) {
-          plugins.clear();
-
           util::warning(log_tag + e.what());
+
+          util::warning(log_tag + "A parsing error occurred while trying to load the effects list inside " + name +
+                        " preset. The file could be invalid or corrupted. Please check its content.");
+
+          return false;
+        } catch (...) {
+          util::warning(log_tag + "A generic error occurred while trying to load the effects list inside " + name +
+                        " preset.");
+
+          return false;
         }
 
         g_settings_set_strv(sie_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
       } else {
         util::debug(log_tag + "can't find the preset " + name + " on the filesystem");
 
-        return;
+        return false;
       }
 
       break;
     }
   }
 
-  load_blocklist(preset_type, json);
+  if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
+    util::debug(log_tag + "successfully loaded preset: " + input_file.string());
 
-  read_plugins_preset(preset_type, plugins, json);
+    return true;
+  }
 
-  util::debug(log_tag + "loaded preset: " + input_file.string());
+  return false;
 }
 
-void PresetsManager::read_plugins_preset(const PresetType& preset_type,
+auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
                                          const std::vector<std::string>& plugins,
-                                         const nlohmann::json& json) {
+                                         const nlohmann::json& json) -> bool {
   for (const auto& name : plugins) {
-    if (name == plugin_name::autogain) {
-      autogain->read(preset_type, json);
-    } else if (name == plugin_name::bass_enhancer) {
-      bass_enhancer->read(preset_type, json);
-    } else if (name == plugin_name::bass_loudness) {
-      bass_loudness->read(preset_type, json);
-    } else if (name == plugin_name::compressor) {
-      compressor->read(preset_type, json);
-    } else if (name == plugin_name::convolver) {
-      convolver->read(preset_type, json);
-    } else if (name == plugin_name::crossfeed) {
-      crossfeed->read(preset_type, json);
-    } else if (name == plugin_name::crystalizer) {
-      crystalizer->read(preset_type, json);
-    } else if (name == plugin_name::deesser) {
-      deesser->read(preset_type, json);
-    } else if (name == plugin_name::delay) {
-      delay->read(preset_type, json);
-    } else if (name == plugin_name::echo_canceller) {
-      echo_canceller->read(preset_type, json);
-    } else if (name == plugin_name::equalizer) {
-      equalizer->read(preset_type, json);
-    } else if (name == plugin_name::exciter) {
-      exciter->read(preset_type, json);
-    } else if (name == plugin_name::filter) {
-      filter->read(preset_type, json);
-    } else if (name == plugin_name::gate) {
-      gate->read(preset_type, json);
-    } else if (name == plugin_name::limiter) {
-      limiter->read(preset_type, json);
-    } else if (name == plugin_name::loudness) {
-      loudness->read(preset_type, json);
-    } else if (name == plugin_name::maximizer) {
-      maximizer->read(preset_type, json);
-    } else if (name == plugin_name::multiband_compressor) {
-      multiband_compressor->read(preset_type, json);
-    } else if (name == plugin_name::multiband_gate) {
-      multiband_gate->read(preset_type, json);
-    } else if (name == plugin_name::pitch) {
-      pitch->read(preset_type, json);
-    } else if (name == plugin_name::reverb) {
-      reverb->read(preset_type, json);
-    } else if (name == plugin_name::rnnoise) {
-      rnnoise->read(preset_type, json);
-    } else if (name == plugin_name::stereo_tools) {
-      stereo_tools->read(preset_type, json);
+    try {
+      if (name == plugin_name::autogain) {
+        autogain->read(preset_type, json);
+      } else if (name == plugin_name::bass_enhancer) {
+        bass_enhancer->read(preset_type, json);
+      } else if (name == plugin_name::bass_loudness) {
+        bass_loudness->read(preset_type, json);
+      } else if (name == plugin_name::compressor) {
+        compressor->read(preset_type, json);
+      } else if (name == plugin_name::convolver) {
+        convolver->read(preset_type, json);
+      } else if (name == plugin_name::crossfeed) {
+        crossfeed->read(preset_type, json);
+      } else if (name == plugin_name::crystalizer) {
+        crystalizer->read(preset_type, json);
+      } else if (name == plugin_name::deesser) {
+        deesser->read(preset_type, json);
+      } else if (name == plugin_name::delay) {
+        delay->read(preset_type, json);
+      } else if (name == plugin_name::echo_canceller) {
+        echo_canceller->read(preset_type, json);
+      } else if (name == plugin_name::equalizer) {
+        equalizer->read(preset_type, json);
+      } else if (name == plugin_name::exciter) {
+        exciter->read(preset_type, json);
+      } else if (name == plugin_name::filter) {
+        filter->read(preset_type, json);
+      } else if (name == plugin_name::gate) {
+        gate->read(preset_type, json);
+      } else if (name == plugin_name::limiter) {
+        limiter->read(preset_type, json);
+      } else if (name == plugin_name::loudness) {
+        loudness->read(preset_type, json);
+      } else if (name == plugin_name::maximizer) {
+        maximizer->read(preset_type, json);
+      } else if (name == plugin_name::multiband_compressor) {
+        multiband_compressor->read(preset_type, json);
+      } else if (name == plugin_name::multiband_gate) {
+        multiband_gate->read(preset_type, json);
+      } else if (name == plugin_name::pitch) {
+        pitch->read(preset_type, json);
+      } else if (name == plugin_name::reverb) {
+        reverb->read(preset_type, json);
+      } else if (name == plugin_name::rnnoise) {
+        rnnoise->read(preset_type, json);
+      } else if (name == plugin_name::stereo_tools) {
+        stereo_tools->read(preset_type, json);
+      }
+    } catch (const nlohmann::json::exception& e) {
+      util::warning(log_tag + e.what());
+
+      util::warning(log_tag + "A parsing error occurred while reading the parameters for " + name +
+                    " effect. The preset file could be invalid or corrupted. Please check its content.");
+
+      return false;
+    } catch (...) {
+      util::warning(log_tag + "A generic error occurred while parsing the preset file for " + name + " effect.");
+
+      return false;
     }
   }
+
+  return true;
 }
 
 void PresetsManager::import(const PresetType& preset_type, const std::string& file_path) {
@@ -754,15 +811,12 @@ void PresetsManager::autoload(const PresetType& preset_type,
   if (!name.empty()) {
     util::debug(log_tag + "autoloading preset " + name + " for device " + device_name);
 
-    load_preset_file(preset_type, name);
+    auto key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
 
-    switch (preset_type) {
-      case PresetType::output:
-        g_settings_set_string(settings, "last-used-output-preset", name.c_str());
-        break;
-      case PresetType::input:
-        g_settings_set_string(settings, "last-used-input-preset", name.c_str());
-        break;
+    if (load_preset_file(preset_type, name)) {
+      g_settings_set_string(settings, key, name.c_str());
+    } else {
+      g_settings_reset(settings, key);
     }
   }
 }

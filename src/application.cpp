@@ -315,13 +315,19 @@ void application_class_init(ApplicationClass* klass) {
 
       if (g_variant_dict_lookup(options, "load-preset", "&s", &name) != 0) {
         if (self->presets_manager->preset_file_exists(PresetType::input, name)) {
-          self->presets_manager->load_preset_file(PresetType::input, name);
-          g_settings_set_string(self->settings, "last-used-input-preset", name);
+          if (self->presets_manager->load_preset_file(PresetType::input, name)) {
+            g_settings_set_string(self->settings, "last-used-input-preset", name);
+          } else {
+            g_settings_reset(self->settings, "last-used-input-preset");
+          }
         }
 
         if (self->presets_manager->preset_file_exists(PresetType::output, name)) {
-          self->presets_manager->load_preset_file(PresetType::output, name);
-          g_settings_set_string(self->settings, "last-used-output-preset", name);
+          if (self->presets_manager->load_preset_file(PresetType::output, name)) {
+            g_settings_set_string(self->settings, "last-used-output-preset", name);
+          } else {
+            g_settings_reset(self->settings, "last-used-output-preset");
+          }
         }
       }
     } else if (g_variant_dict_contains(options, "reset") != 0) {
