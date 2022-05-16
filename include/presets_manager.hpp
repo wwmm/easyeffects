@@ -77,11 +77,11 @@ class PresetsManager {
 
   void remove(const PresetType& preset_type, const std::string& name);
 
-  void load_preset_file(const PresetType& preset_type, const std::string& name);
+  auto load_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
 
-  void read_plugins_preset(const PresetType& preset_type,
+  auto read_plugins_preset(const PresetType& preset_type,
                            const std::vector<std::string>& plugins,
-                           const nlohmann::json& json);
+                           const nlohmann::json& json) -> bool;
 
   void import(const PresetType& preset_type, const std::string& file_path);
 
@@ -158,7 +158,7 @@ class PresetsManager {
 
   void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 
-  void load_blocklist(const PresetType& preset_type, const nlohmann::json& json);
+  auto load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool;
 };
 
 #endif

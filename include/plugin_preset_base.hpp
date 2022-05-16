@@ -54,17 +54,16 @@ class PluginPresetBase {
   }
 
   void read(PresetType preset_type, const nlohmann::json& json) {
-    try {
-      switch (preset_type) {
-        case PresetType::output:
-          load(json, "output", output_settings);
-          break;
-        case PresetType::input:
-          load(json, "input", input_settings);
-          break;
-      }
-    } catch (const nlohmann::json::exception& e) {
-      util::warning(e.what());
+    // For simplicity, exceptions raised while reading presets parameters
+    // should be handled outside this method.
+
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
     }
   }
 
