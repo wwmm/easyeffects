@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-30 14:22-0300\n"
-"PO-Revision-Date: 2022-05-15 12:17+0000\n"
+"PO-Revision-Date: 2022-05-23 08:18+0000\n"
 "Last-Translator: Grooty12 <Rasmus@rosendahl-kaa.name>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
 "da/>\n"
@@ -87,11 +87,11 @@ msgstr "Hovedsiden viser to lydoutput apps"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Basforstærkersiden, der viser lydkontroller"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Convolver-siden, der viser lydkontrolelementer"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -106,51 +106,63 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid "This release adds the following features:"
-msgstr ""
+msgstr "Denne udgivelse tilføjer følgende funktioner:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
+"Der er en ny indstilling, der giver brugeren mulighed for at vælge en "
+"inaktivitetstimeout for pipelinen. Når ingen klient spiller"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"til eller optagelse fra vores enheder vil filtrene blive fjernet, når "
+"timeout er nået. Dette gøres for at sikre"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "we do not waste CPU power processing silence."
-msgstr ""
+msgstr "vi spilder ikke CPU-kraft på at processerer tavshed."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
 msgstr ""
+"Autogain-pluginet giver nu brugeren mulighed for at vælge, hvilken af de tre "
+"lydstyrker der bruges til at beregne den geometriske"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "mean."
-msgstr ""
+msgstr "middel."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
 msgstr ""
+"Autogain-pluginet tillader nu at indstille den maksimale historik og bruger "
+"ikke længere `libebur128` histogramtilstand."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
+"Dette bør undgå de tilfælde, hvor den 'Integrerede' lydstyrke bliver "
+"hængende for evigt i den samme værdi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"EasyEffects-ikonet er blevet opdateret på en måde, der burde gøre det "
+"synligt i QT-skriveborde."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
