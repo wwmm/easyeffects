@@ -1040,112 +1040,114 @@ void on_registry_global(void* data,
       static const auto class_array = {pm->media_class_output_stream, pm->media_class_input_stream,
                                        pm->media_class_sink, pm->media_class_source, pm->media_class_virtual_source};
 
-      if (std::any_of(class_array.begin(), class_array.end(), [&](const auto& str) { return str == media_class; })) {
-        const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
-
-        if (node_name == nullptr) {
-          return;
-        }
-
-        const std::string name = node_name;
-
-        if (name.empty()) {
-          return;
-        }
-
-        if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
-          return;
-        }
-
-        // New node can be added in the node map
-
-        auto* proxy =
-            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
-
-        auto* nd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
-
-        nd->proxy = proxy;
-        nd->pm = pm;
-
-        nd->nd_info = new NodeInfo();
-
-        nd->nd_info->timestamp = util::timepoint_to_long(std::chrono::system_clock::now());
-        nd->nd_info->proxy = proxy;
-        nd->nd_info->id = id;
-        nd->nd_info->media_class = media_class;
-        nd->nd_info->name = name;
-
-        if (const auto* serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-          nd->nd_info->serial = std::stoull(serial);
-        }
-
-        if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
-          nd->nd_info->description = node_description;
-        }
-
-        if (const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION)) {
-          util::str_to_num(std::string(prio_session), nd->nd_info->priority);
-        }
-
-        if (const auto* device_id = spa_dict_lookup(props, PW_KEY_DEVICE_ID)) {
-          util::str_to_num(std::string(device_id), nd->nd_info->device_id);
-        }
-
-        const auto [node_it, success] = pm->node_map.insert({nd->nd_info->timestamp, *nd->nd_info});
-
-        if (!success) {
-          util::warning(PipeManager::log_tag + "Cannot insert node " + util::to_string(id) + " " + name +
-                        " into the node map because there's already an existing timestamp " +
-                        util::to_string(nd->nd_info->timestamp));
-
-          return;
-        }
-
-        pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);
-        pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
-
-        // sometimes PipeWire destroys the pointer before signal_idle is called,
-        // therefore we make a copy of NodeInfo
-
-        const auto nd_info_copy = *nd->nd_info;
-
-        if (media_class == pm->media_class_source && name != pm->ee_source_name) {
-          util::idle_add([pm, nd_info_copy] {
-            if (PipeManager::exiting) {
-              return;
-            }
-
-            pm->source_added.emit(nd_info_copy);
-          });
-        } else if (media_class == pm->media_class_sink && name != pm->ee_sink_name) {
-          util::idle_add([pm, nd_info_copy] {
-            if (PipeManager::exiting) {
-              return;
-            }
-
-            pm->sink_added.emit(nd_info_copy);
-          });
-        } else if (media_class == pm->media_class_output_stream) {
-          util::idle_add([pm, nd_info_copy] {
-            if (PipeManager::exiting) {
-              return;
-            }
-
-            pm->stream_output_added.emit(nd_info_copy);
-          });
-        } else if (media_class == pm->media_class_input_stream) {
-          util::idle_add([pm, nd_info_copy] {
-            if (PipeManager::exiting) {
-              return;
-            }
-
-            pm->stream_input_added.emit(nd_info_copy);
-          });
-        }
-
-        util::debug(PipeManager::log_tag + media_class + " " + util::to_string(id) + " " + nd->nd_info->name +
-                    " with timestamp " + util::to_string(nd->nd_info->timestamp) + " was added");
+      if (!std::any_of(class_array.begin(), class_array.end(), [&](const auto& str) { return str == media_class; })) {
+        return;
       }
+
+      const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+
+      if (node_name == nullptr) {
+        return;
+      }
+
+      const std::string name = node_name;
+
+      if (name.empty()) {
+        return;
+      }
+
+      if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
+        return;
+      }
+
+      // New node can be added in the node map
+
+      auto* proxy =
+          static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
+
+      auto* nd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
+
+      nd->proxy = proxy;
+      nd->pm = pm;
+
+      nd->nd_info = new NodeInfo();
+
+      nd->nd_info->timestamp = util::timepoint_to_long(std::chrono::system_clock::now());
+      nd->nd_info->proxy = proxy;
+      nd->nd_info->id = id;
+      nd->nd_info->media_class = media_class;
+      nd->nd_info->name = name;
+
+      if (const auto* serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+        nd->nd_info->serial = std::stoull(serial);
+      }
+
+      if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
+        nd->nd_info->description = node_description;
+      }
+
+      if (const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION)) {
+        util::str_to_num(std::string(prio_session), nd->nd_info->priority);
+      }
+
+      if (const auto* device_id = spa_dict_lookup(props, PW_KEY_DEVICE_ID)) {
+        util::str_to_num(std::string(device_id), nd->nd_info->device_id);
+      }
+
+      const auto [node_it, success] = pm->node_map.insert({nd->nd_info->timestamp, *nd->nd_info});
+
+      if (!success) {
+        util::warning(PipeManager::log_tag + "Cannot insert node " + util::to_string(id) + " " + name +
+                      " into the node map because there's already an existing timestamp " +
+                      util::to_string(nd->nd_info->timestamp));
+
+        return;
+      }
+
+      pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);
+      pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
+
+      // sometimes PipeWire destroys the pointer before signal_idle is called,
+      // therefore we make a copy of NodeInfo
+
+      const auto nd_info_copy = *nd->nd_info;
+
+      if (media_class == pm->media_class_source && name != pm->ee_source_name) {
+        util::idle_add([pm, nd_info_copy] {
+          if (PipeManager::exiting) {
+            return;
+          }
+
+          pm->source_added.emit(nd_info_copy);
+        });
+      } else if (media_class == pm->media_class_sink && name != pm->ee_sink_name) {
+        util::idle_add([pm, nd_info_copy] {
+          if (PipeManager::exiting) {
+            return;
+          }
+
+          pm->sink_added.emit(nd_info_copy);
+        });
+      } else if (media_class == pm->media_class_output_stream) {
+        util::idle_add([pm, nd_info_copy] {
+          if (PipeManager::exiting) {
+            return;
+          }
+
+          pm->stream_output_added.emit(nd_info_copy);
+        });
+      } else if (media_class == pm->media_class_input_stream) {
+        util::idle_add([pm, nd_info_copy] {
+          if (PipeManager::exiting) {
+            return;
+          }
+
+          pm->stream_input_added.emit(nd_info_copy);
+        });
+      }
+
+      util::debug(PipeManager::log_tag + media_class + " " + util::to_string(id) + " " + nd->nd_info->name +
+                  " with timestamp " + util::to_string(nd->nd_info->timestamp) + " was added");
     }
 
     return;
