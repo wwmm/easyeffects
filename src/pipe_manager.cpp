@@ -221,16 +221,32 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   auto* const pm = nd->pm;
 
   if (auto node_it = pm->node_map.find(nd->nd_info->timestamp); node_it != pm->node_map.end()) {
-    if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_MONITOR), "true") == 0) {
-      /*
-        This is a workaround for issue #1128.
-        Sometimes monitor streams like Pavucontrol can't be blocklisted inside on_registry_global
-        because PipeWire sets localized app name in PW_KEY_NODE_NAME or PW_KEY_STREAM_MONITOR is
-        empty and set afterwards.
-        Therefore we check here the PW_KEY_STREAM_MONITOR of already added nodes inside the map
-        and remove them accordingly.
-      */
+    bool remove_node = false;
 
+    /*
+      This is a workaround for issue #1128.
+      Sometimes monitor streams like Pavucontrol can't be blocklisted inside on_registry_global
+      because PipeWire sets localized app name in PW_KEY_NODE_NAME or PW_KEY_STREAM_MONITOR is
+      empty and set afterwards.
+      Therefore we check here the PW_KEY_STREAM_MONITOR of already added nodes inside the map
+      and remove them accordingly.
+    */
+
+    if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_MONITOR), "true") == 0) {
+      remove_node = true;
+    }
+
+    /*
+      In OBS users do not want EasyEffects messing with the stream that records from the sound card monitors
+    */
+
+    if (nd->nd_info->name == "OBS") {
+      if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0) {
+        remove_node = true;
+      }
+    }
+
+    if (remove_node) {
       nd->nd_info->proxy = nullptr;
 
       node_it->second.proxy = nullptr;
