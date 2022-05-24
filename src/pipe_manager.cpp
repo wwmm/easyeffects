@@ -220,209 +220,45 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   auto* const pm = nd->pm;
 
-  if (auto node_it = pm->node_map.find(nd->nd_info->timestamp); node_it != pm->node_map.end()) {
-    bool remove_node = false;
+  // Check if the node is inside our map
 
-    // Exclude blocklisted App id.
-    // To be checked here because PW_KEY_APP_ID is not set in on_registry_global.
+  auto node_it = pm->node_map.find(nd->nd_info->timestamp);
 
-    if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
-      if (std::ranges::find(pm->blocklist_app_id, app_id) != pm->blocklist_app_id.end()) {
-        remove_node = true;
-      }
-    }
+  if (node_it == pm->node_map.end()) {
+    return;
+  }
 
-    // Exclude capture streams.
-    // Even PW_KEY_STREAM_CAPTURE_SINK is not set in on_registry_global.
-    // Useful to exclude OBS recording streams.
+  // Check if the node has to be removed
 
-    if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0) {
+  bool remove_node = false;
+
+  // Exclude blocklisted App id.
+  // To be checked here because PW_KEY_APP_ID is not set in on_registry_global.
+
+  if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
+    if (std::ranges::find(pm->blocklist_app_id, app_id) != pm->blocklist_app_id.end()) {
       remove_node = true;
     }
+  }
 
-    if (remove_node) {
-      nd->nd_info->proxy = nullptr;
+  // Exclude capture streams.
+  // Even PW_KEY_STREAM_CAPTURE_SINK is not set in on_registry_global.
+  // Useful to exclude OBS recording streams.
 
-      node_it->second.proxy = nullptr;
+  if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0) {
+    remove_node = true;
+  }
 
-      spa_hook_remove(&nd->proxy_listener);
+  if (remove_node) {
+    nd->nd_info->proxy = nullptr;
 
-      pm->node_map.erase(node_it);
+    node_it->second.proxy = nullptr;
 
-      if (nd->nd_info->media_class == pm->media_class_source) {
-        const auto nd_info_copy = *nd->nd_info;
+    spa_hook_remove(&nd->proxy_listener);
 
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
+    pm->node_map.erase(node_it);
 
-          pm->source_removed.emit(nd_info_copy);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_sink) {
-        const auto nd_info_copy = *nd->nd_info;
-
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->sink_removed.emit(nd_info_copy);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
-        const auto node_ts = nd->nd_info->timestamp;
-
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->stream_output_removed.emit(node_ts);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
-        const auto node_ts = nd->nd_info->timestamp;
-
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->stream_input_removed.emit(node_ts);
-        });
-      }
-
-      util::debug(PipeManager::log_tag + " stream " + nd->nd_info->media_class + " " + nd->nd_info->name +
-                  " has been removed");
-
-      return;
-    }
-
-    auto app_info_ui_changed = false;
-
-    if (info->state != nd->nd_info->state) {
-      nd->nd_info->state = info->state;
-
-      app_info_ui_changed = true;
-    }
-
-    nd->nd_info->n_input_ports = static_cast<int>(info->n_input_ports);
-    nd->nd_info->n_output_ports = static_cast<int>(info->n_output_ports);
-
-    if (const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION)) {
-      util::str_to_num(std::string(prio_session), nd->nd_info->priority);
-    }
-
-    if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
-      if (app_id != nd->nd_info->application_id) {
-        nd->nd_info->application_id = app_id;
-      }
-    }
-
-    if (const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME)) {
-      if (app_icon_name != nd->nd_info->app_icon_name) {
-        nd->nd_info->app_icon_name = app_icon_name;
-
-        app_info_ui_changed = true;
-      }
-    }
-
-    if (const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME)) {
-      if (media_icon_name != nd->nd_info->media_icon_name) {
-        nd->nd_info->media_icon_name = media_icon_name;
-
-        app_info_ui_changed = true;
-      }
-    }
-
-    if (const auto* device_icon_name = spa_dict_lookup(info->props, PW_KEY_DEVICE_ICON_NAME)) {
-      nd->nd_info->device_icon_name = device_icon_name;
-    }
-
-    if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
-      if (media_name != nd->nd_info->media_name) {
-        nd->nd_info->media_name = media_name;
-
-        app_info_ui_changed = true;
-      }
-    }
-
-    if (const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY)) {
-      const auto str = std::string(node_latency);
-
-      const auto delimiter_pos = str.find('/');
-
-      int rate = 1;
-
-      if (util::str_to_num(str.substr(delimiter_pos + 1), rate)) {
-        if (rate != nd->nd_info->rate) {
-          nd->nd_info->rate = rate;
-
-          app_info_ui_changed = true;
-        }
-      }
-
-      float pw_lat = 0.0f;
-
-      if (util::str_to_num(str.substr(0, delimiter_pos), pw_lat)) {
-        if (auto latency = (pw_lat / static_cast<float>(nd->nd_info->rate)); latency != nd->nd_info->latency) {
-          nd->nd_info->latency = latency;
-
-          app_info_ui_changed = true;
-        }
-      }
-    }
-
-    if (const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID)) {
-      util::str_to_num(std::string(device_id), nd->nd_info->device_id);
-    }
-
-    if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
-      for (uint i = 0U; i < info->n_params; i++) {
-        if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
-          continue;
-        }
-
-        if (const auto id = info->params[i].id;
-            id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
-          pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
-        }
-      }
-    }
-
-    // update NodeInfo inside map
-
-    node_it->second = *nd->nd_info;
-
-    // sometimes PipeWire destroys the pointer before signal_idle is called,
-    // therefore we make a copy
-
-    if (nd->nd_info->connected != pm->stream_is_connected(info->id, nd->nd_info->media_class)) {
-      nd->nd_info->connected = !nd->nd_info->connected;
-
-      app_info_ui_changed = true;
-    }
-
-    if (app_info_ui_changed) {
-      const auto nd_info_copy = *nd->nd_info;
-
-      if (nd->nd_info->media_class == pm->media_class_output_stream) {
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->stream_output_changed.emit(nd_info_copy);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->stream_input_changed.emit(nd_info_copy);
-        });
-      }
-    } else if (nd->nd_info->media_class == pm->media_class_source) {
+    if (nd->nd_info->media_class == pm->media_class_source) {
       const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([=]() {
@@ -430,7 +266,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
           return;
         }
 
-        pm->source_changed.emit(nd_info_copy);
+        pm->source_removed.emit(nd_info_copy);
       });
     } else if (nd->nd_info->media_class == pm->media_class_sink) {
       const auto nd_info_copy = *nd->nd_info;
@@ -440,9 +276,183 @@ void on_node_info(void* object, const struct pw_node_info* info) {
           return;
         }
 
-        pm->sink_changed.emit(nd_info_copy);
+        pm->sink_removed.emit(nd_info_copy);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
+      const auto node_ts = nd->nd_info->timestamp;
+
+      util::idle_add([=]() {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->stream_output_removed.emit(node_ts);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+      const auto node_ts = nd->nd_info->timestamp;
+
+      util::idle_add([=]() {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->stream_input_removed.emit(node_ts);
       });
     }
+
+    util::debug(PipeManager::log_tag + " stream " + nd->nd_info->media_class + " " + nd->nd_info->name +
+                " has been removed");
+
+    return;
+  }
+
+  // Chech for node info updates
+
+  auto app_info_ui_changed = false;
+
+  if (info->state != nd->nd_info->state) {
+    nd->nd_info->state = info->state;
+
+    app_info_ui_changed = true;
+  }
+
+  nd->nd_info->n_input_ports = static_cast<int>(info->n_input_ports);
+  nd->nd_info->n_output_ports = static_cast<int>(info->n_output_ports);
+
+  if (const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION)) {
+    util::str_to_num(std::string(prio_session), nd->nd_info->priority);
+  }
+
+  if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
+    if (app_id != nd->nd_info->application_id) {
+      nd->nd_info->application_id = app_id;
+    }
+  }
+
+  if (const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME)) {
+    if (app_icon_name != nd->nd_info->app_icon_name) {
+      nd->nd_info->app_icon_name = app_icon_name;
+
+      app_info_ui_changed = true;
+    }
+  }
+
+  if (const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME)) {
+    if (media_icon_name != nd->nd_info->media_icon_name) {
+      nd->nd_info->media_icon_name = media_icon_name;
+
+      app_info_ui_changed = true;
+    }
+  }
+
+  if (const auto* device_icon_name = spa_dict_lookup(info->props, PW_KEY_DEVICE_ICON_NAME)) {
+    nd->nd_info->device_icon_name = device_icon_name;
+  }
+
+  if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
+    if (media_name != nd->nd_info->media_name) {
+      nd->nd_info->media_name = media_name;
+
+      app_info_ui_changed = true;
+    }
+  }
+
+  if (const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY)) {
+    const auto str = std::string(node_latency);
+
+    const auto delimiter_pos = str.find('/');
+
+    int rate = 1;
+
+    if (util::str_to_num(str.substr(delimiter_pos + 1), rate)) {
+      if (rate != nd->nd_info->rate) {
+        nd->nd_info->rate = rate;
+
+        app_info_ui_changed = true;
+      }
+    }
+
+    float pw_lat = 0.0f;
+
+    if (util::str_to_num(str.substr(0, delimiter_pos), pw_lat)) {
+      if (auto latency = (pw_lat / static_cast<float>(nd->nd_info->rate)); latency != nd->nd_info->latency) {
+        nd->nd_info->latency = latency;
+
+        app_info_ui_changed = true;
+      }
+    }
+  }
+
+  if (const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID)) {
+    util::str_to_num(std::string(device_id), nd->nd_info->device_id);
+  }
+
+  if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
+    for (uint i = 0U; i < info->n_params; i++) {
+      if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
+        continue;
+      }
+
+      if (const auto id = info->params[i].id;
+          id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
+        pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
+      }
+    }
+  }
+
+  // update NodeInfo inside map
+
+  node_it->second = *nd->nd_info;
+
+  // sometimes PipeWire destroys the pointer before signal_idle is called,
+  // therefore we make a copy
+
+  if (nd->nd_info->connected != pm->stream_is_connected(info->id, nd->nd_info->media_class)) {
+    nd->nd_info->connected = !nd->nd_info->connected;
+
+    app_info_ui_changed = true;
+  }
+
+  if (app_info_ui_changed) {
+    const auto nd_info_copy = *nd->nd_info;
+
+    if (nd->nd_info->media_class == pm->media_class_output_stream) {
+      util::idle_add([=]() {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->stream_output_changed.emit(nd_info_copy);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+      util::idle_add([=]() {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->stream_input_changed.emit(nd_info_copy);
+      });
+    }
+  } else if (nd->nd_info->media_class == pm->media_class_source) {
+    const auto nd_info_copy = *nd->nd_info;
+
+    util::idle_add([=]() {
+      if (PipeManager::exiting) {
+        return;
+      }
+
+      pm->source_changed.emit(nd_info_copy);
+    });
+  } else if (nd->nd_info->media_class == pm->media_class_sink) {
+    const auto nd_info_copy = *nd->nd_info;
+
+    util::idle_add([=]() {
+      if (PipeManager::exiting) {
+        return;
+      }
+
+      pm->sink_changed.emit(nd_info_copy);
+    });
   }
 
   // const struct spa_dict_item* item = nullptr;
