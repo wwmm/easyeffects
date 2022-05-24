@@ -223,27 +223,21 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   if (auto node_it = pm->node_map.find(nd->nd_info->timestamp); node_it != pm->node_map.end()) {
     bool remove_node = false;
 
-    /*
-      This is a workaround for issue #1128.
-      Sometimes monitor streams like Pavucontrol can't be blocklisted inside on_registry_global
-      because PipeWire sets localized app name in PW_KEY_NODE_NAME or PW_KEY_STREAM_MONITOR is
-      empty and set afterwards.
-      Therefore we check here the PW_KEY_STREAM_MONITOR of already added nodes inside the map
-      and remove them accordingly.
-    */
+    // Exclude blocklisted App id.
+    // To be checked here because PW_KEY_APP_ID is not set in on_registry_global.
 
-    if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_MONITOR), "true") == 0) {
-      remove_node = true;
-    }
-
-    /*
-      In OBS users do not want EasyEffects messing with the stream that records from the sound card monitors
-    */
-
-    if (nd->nd_info->name == "OBS") {
-      if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0) {
+    if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
+      if (std::ranges::find(pm->blocklist_app_id, app_id) != pm->blocklist_app_id.end()) {
         remove_node = true;
       }
+    }
+
+    // Exclude capture streams.
+    // Even PW_KEY_STREAM_CAPTURE_SINK is not set in on_registry_global.
+    // Useful to exclude OBS recording streams.
+
+    if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0) {
+      remove_node = true;
     }
 
     if (remove_node) {
@@ -297,8 +291,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         });
       }
 
-      util::debug(PipeManager::log_tag + " monitor stream " + nd->nd_info->media_class + " " + nd->nd_info->name +
-                  " was removed");
+      util::debug(PipeManager::log_tag + " stream " + nd->nd_info->media_class + " " + nd->nd_info->name +
+                  " has been removed");
 
       return;
     }
@@ -1012,6 +1006,8 @@ void on_registry_global(void* data,
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Node) == 0) {
     if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
+      // Exclude blocklisted media roles
+
       if (std::ranges::find(pm->blocklist_media_role, std::string(key_media_role)) != pm->blocklist_media_role.end()) {
         return;
       }
@@ -1056,11 +1052,13 @@ void on_registry_global(void* data,
         return;
       }
 
+      // Exclude blocklisted node names
+
       if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
         return;
       }
 
-      // New node can be added in the node map
+      // New node can be added into the node map
 
       auto* proxy =
           static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
