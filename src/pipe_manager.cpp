@@ -221,10 +221,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   auto* const pm = nd->pm;
 
   if (auto node_it = pm->node_map.find(nd->nd_info->timestamp); node_it != pm->node_map.end()) {
-    bool remove_node = false;
-
     /*
-      This is a workaround for issue #1128.
+      The following is a workaround for issue #1128.
       Sometimes monitor streams like Pavucontrol can't be blocklisted inside on_registry_global
       because PipeWire sets localized app name in PW_KEY_NODE_NAME or PW_KEY_STREAM_MONITOR is
       empty and set afterwards.
@@ -233,20 +231,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     */
 
     if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_MONITOR), "true") == 0) {
-      remove_node = true;
-    }
-
-    /*
-      In OBS users do not want EasyEffects messing with the stream that records from the sound card monitors
-    */
-
-    if (nd->nd_info->name == "OBS") {
-      if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0) {
-        remove_node = true;
-      }
-    }
-
-    if (remove_node) {
       nd->nd_info->proxy = nullptr;
 
       node_it->second.proxy = nullptr;
@@ -1011,6 +995,8 @@ void on_registry_global(void* data,
   auto* const pm = static_cast<PipeManager*>(data);
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Node) == 0) {
+    // Exclude blocklisted media roles
+
     if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
       if (std::ranges::find(pm->blocklist_media_role, std::string(key_media_role)) != pm->blocklist_media_role.end()) {
         return;
@@ -1053,11 +1039,21 @@ void on_registry_global(void* data,
           return;
         }
 
+        // Exclude blocklisted node names
+
         if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
           return;
         }
 
-        // New node can be added in the node map
+        // Exclude blocklisted capture nodes
+
+        if (g_strcmp0(spa_dict_lookup(props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0) {
+          if (std::ranges::find(pm->blocklist_capture_node, std::string(name)) != pm->blocklist_capture_node.end()) {
+            return;
+          }
+        }
+
+        // New node can be added into the node map
 
         auto* proxy =
             static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
