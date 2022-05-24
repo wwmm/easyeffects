@@ -205,7 +205,8 @@ void on_destroy_node_proxy(void* data) {
       }
     }
 
-    util::debug(PipeManager::log_tag + nd->nd_info->media_class + " " + nd->nd_info->name + " was removed");
+    util::debug(PipeManager::log_tag + nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " +
+                nd->nd_info->name + " has been removed");
 
     delete nd->nd_info;
   }
@@ -300,8 +301,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       });
     }
 
-    util::debug(PipeManager::log_tag + " stream " + nd->nd_info->media_class + " " + nd->nd_info->name +
-                " has been removed");
+    util::debug(PipeManager::log_tag + nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " +
+                nd->nd_info->name + " has been removed");
 
     return;
   }
@@ -1032,8 +1033,8 @@ void on_registry_global(void* data,
             if (g_strcmp0(description.substr(0, 2).c_str(), "ee_") == 0) {
               const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
-              util::debug(PipeManager::log_tag + "Filter " + node_name + ", id = " + util::to_string(id) +
-                          ", was added");
+              util::debug(PipeManager::log_tag + "Filter " + node_name + " with id " + util::to_string(id) +
+                          " has been added");
             }
           }
         }
@@ -1155,7 +1156,7 @@ void on_registry_global(void* data,
       }
 
       util::debug(PipeManager::log_tag + media_class + " " + util::to_string(id) + " " + nd->nd_info->name +
-                  " with timestamp " + util::to_string(nd->nd_info->timestamp) + " was added");
+                  " with timestamp " + util::to_string(nd->nd_info->timestamp) + " has been added");
     }
 
     return;
