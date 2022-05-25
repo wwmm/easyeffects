@@ -20,11 +20,9 @@
 #include "rnnoise_preset.hpp"
 
 RNNoisePreset::RNNoisePreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.rnnoise",
-                                            "/com/github/wwmm/easyeffects/streaminputs/rnnoise/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/rnnoise/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.rnnoise",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/rnnoise/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/rnnoise/").c_str());
 }
 
 void RNNoisePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

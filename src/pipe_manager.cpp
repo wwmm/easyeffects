@@ -1423,6 +1423,7 @@ PipeManager::PipeManager() {
 
   pw_properties* props_sink = pw_properties_new(nullptr, nullptr);
 
+  pw_properties_set(props_sink, PW_KEY_APP_ID, tags::app::id.c_str());
   pw_properties_set(props_sink, PW_KEY_NODE_NAME, ee_sink_name.c_str());
   pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "EasyEffects Sink");
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
@@ -1439,6 +1440,7 @@ PipeManager::PipeManager() {
 
   pw_properties* props_source = pw_properties_new(nullptr, nullptr);
 
+  pw_properties_set(props_source, PW_KEY_APP_ID, tags::app::id.c_str());
   pw_properties_set(props_source, PW_KEY_NODE_NAME, ee_source_name.c_str());
   pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "EasyEffects Source");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");

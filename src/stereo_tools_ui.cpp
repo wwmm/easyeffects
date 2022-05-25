@@ -73,7 +73,7 @@ void on_reset(StereoToolsBox* self, GtkButton* btn) {
 void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, const std::string& schema_path) {
   self->data->stereo_tools = stereo_tools;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.stereotools", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".stereotools").c_str(), schema_path.c_str());
 
   stereo_tools->post_messages = true;
   stereo_tools->bypass = false;
@@ -169,7 +169,7 @@ void stereo_tools_box_class_init(StereoToolsBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/stereo_tools.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/stereo_tools.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_gain);

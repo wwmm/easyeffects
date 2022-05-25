@@ -22,22 +22,17 @@
 using namespace tags::equalizer;
 
 EqualizerPreset::EqualizerPreset()
-    : input_settings_left(g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer.channel",
-                                                   "/com/github/wwmm/easyeffects/streaminputs/equalizer/leftchannel/")),
-      input_settings_right(
-          g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer.channel",
-                                   "/com/github/wwmm/easyeffects/streaminputs/equalizer/rightchannel/")),
-      output_settings_left(
-          g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer.channel",
-                                   "/com/github/wwmm/easyeffects/streamoutputs/equalizer/leftchannel/")),
-      output_settings_right(
-          g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer.channel",
-                                   "/com/github/wwmm/easyeffects/streamoutputs/equalizer/rightchannel/")) {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer",
-                                            "/com/github/wwmm/easyeffects/streaminputs/equalizer/");
+    : input_settings_left(
+          g_settings_new_with_path(preset_channel_id.c_str(), (tags::app::path + "/streaminputs/equalizer/leftchannel/").c_str())),
+      input_settings_right(g_settings_new_with_path(preset_channel_id.c_str(),
+                                                    (tags::app::path + "/streaminputs/equalizer/rightchannel/").c_str())),
+      output_settings_left(g_settings_new_with_path(preset_channel_id.c_str(),
+                                                    (tags::app::path + "/streamoutputs/equalizer/leftchannel/").c_str())),
+      output_settings_right(g_settings_new_with_path(preset_channel_id.c_str(),
+                                                     (tags::app::path + "/streamoutputs/equalizer/rightchannel/").c_str())) {
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/equalizer/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/equalizer/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/equalizer/").c_str());
 }
 
 EqualizerPreset::~EqualizerPreset() {

@@ -31,6 +31,7 @@
 #include <array>
 #include <map>
 #include <memory>
+#include "app_tags.hpp"
 #include "util.hpp"
 
 struct NodeInfo {

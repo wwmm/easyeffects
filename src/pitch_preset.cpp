@@ -20,11 +20,9 @@
 #include "pitch_preset.hpp"
 
 PitchPreset::PitchPreset() {
-  input_settings =
-      g_settings_new_with_path("com.github.wwmm.easyeffects.pitch", "/com/github/wwmm/easyeffects/streaminputs/pitch/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/pitch/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.pitch",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/pitch/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/pitch/").c_str());
 }
 
 void PitchPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

@@ -20,11 +20,9 @@
 #include "exciter_preset.hpp"
 
 ExciterPreset::ExciterPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.exciter",
-                                            "/com/github/wwmm/easyeffects/streaminputs/exciter/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/exciter/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.exciter",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/exciter/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/exciter/").c_str());
 }
 
 void ExciterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

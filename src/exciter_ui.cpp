@@ -77,7 +77,7 @@ void on_reset(ExciterBox* self, GtkButton* btn) {
 void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string& schema_path) {
   self->data->exciter = exciter;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.exciter", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".exciter").c_str(), schema_path.c_str());
 
   exciter->post_messages = true;
   exciter->bypass = false;
@@ -153,7 +153,7 @@ void exciter_box_class_init(ExciterBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/exciter.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/exciter.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, output_gain);

@@ -69,7 +69,7 @@ void on_reset(EchoCancellerBox* self, GtkButton* btn) {
 void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller, const std::string& schema_path) {
   self->data->echo_canceller = echo_canceller;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.echocanceller", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".echocanceller").c_str(), schema_path.c_str());
 
   echo_canceller->post_messages = true;
   echo_canceller->bypass = false;
@@ -133,7 +133,7 @@ void echo_canceller_box_class_init(EchoCancellerBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/echo_canceller.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/echo_canceller.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_gain);

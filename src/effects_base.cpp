@@ -23,71 +23,65 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     : log_tag(std::move(tag)),
       pm(pipe_manager),
       settings(g_settings_new(schema.c_str())),
-      global_settings(g_settings_new("com.github.wwmm.easyeffects")) {
+      global_settings(g_settings_new(tags::app::id.c_str())) {
   std::string path = "/" + schema + "/";
 
   std::replace(path.begin(), path.end(), '.', '/');
 
-  autogain = std::make_shared<AutoGain>(log_tag, "com.github.wwmm.easyeffects.autogain", path + "autogain/", pm);
+  autogain = std::make_shared<AutoGain>(log_tag, tags::app::id + ".autogain", path + "autogain/", pm);
 
-  bass_enhancer =
-      std::make_shared<BassEnhancer>(log_tag, "com.github.wwmm.easyeffects.bassenhancer", path + "bassenhancer/", pm);
+  bass_enhancer = std::make_shared<BassEnhancer>(log_tag, tags::app::id + ".bassenhancer", path + "bassenhancer/", pm);
 
-  bass_loudness =
-      std::make_shared<BassLoudness>(log_tag, "com.github.wwmm.easyeffects.bassloudness", path + "bassloudness/", pm);
+  bass_loudness = std::make_shared<BassLoudness>(log_tag, tags::app::id + ".bassloudness", path + "bassloudness/", pm);
 
-  compressor =
-      std::make_shared<Compressor>(log_tag, "com.github.wwmm.easyeffects.compressor", path + "compressor/", pm);
+  compressor = std::make_shared<Compressor>(log_tag, tags::app::id + ".compressor", path + "compressor/", pm);
 
-  convolver = std::make_shared<Convolver>(log_tag, "com.github.wwmm.easyeffects.convolver", path + "convolver/", pm);
+  convolver = std::make_shared<Convolver>(log_tag, tags::app::id + ".convolver", path + "convolver/", pm);
 
-  crossfeed = std::make_shared<Crossfeed>(log_tag, "com.github.wwmm.easyeffects.crossfeed", path + "crossfeed/", pm);
+  crossfeed = std::make_shared<Crossfeed>(log_tag, tags::app::id + ".crossfeed", path + "crossfeed/", pm);
 
-  crystalizer =
-      std::make_shared<Crystalizer>(log_tag, "com.github.wwmm.easyeffects.crystalizer", path + "crystalizer/", pm);
+  crystalizer = std::make_shared<Crystalizer>(log_tag, tags::app::id + ".crystalizer", path + "crystalizer/", pm);
 
-  deesser = std::make_shared<Deesser>(log_tag, "com.github.wwmm.easyeffects.deesser", path + "deesser/", pm);
+  deesser = std::make_shared<Deesser>(log_tag, tags::app::id + ".deesser", path + "deesser/", pm);
 
-  delay = std::make_shared<Delay>(log_tag, "com.github.wwmm.easyeffects.delay", path + "delay/", pm);
+  delay = std::make_shared<Delay>(log_tag, tags::app::id + ".delay", path + "delay/", pm);
 
-  echo_canceller = std::make_shared<EchoCanceller>(log_tag, "com.github.wwmm.easyeffects.echocanceller",
-                                                   path + "echocanceller/", pm);
+  echo_canceller =
+      std::make_shared<EchoCanceller>(log_tag, tags::app::id + ".echocanceller", path + "echocanceller/", pm);
 
-  equalizer = std::make_shared<Equalizer>(log_tag, "com.github.wwmm.easyeffects.equalizer", path + "equalizer/",
-                                          "com.github.wwmm.easyeffects.equalizer.channel",
-                                          path + "equalizer/leftchannel/", path + "equalizer/rightchannel/", pm);
+  equalizer = std::make_shared<Equalizer>(log_tag, tags::app::id + ".equalizer", path + "equalizer/",
+                                          tags::app::id + ".equalizer.channel", path + "equalizer/leftchannel/",
+                                          path + "equalizer/rightchannel/", pm);
 
-  exciter = std::make_shared<Exciter>(log_tag, "com.github.wwmm.easyeffects.exciter", path + "exciter/", pm);
+  exciter = std::make_shared<Exciter>(log_tag, tags::app::id + ".exciter", path + "exciter/", pm);
 
-  filter = std::make_shared<Filter>(log_tag, "com.github.wwmm.easyeffects.filter", path + "filter/", pm);
+  filter = std::make_shared<Filter>(log_tag, tags::app::id + ".filter", path + "filter/", pm);
 
-  gate = std::make_shared<Gate>(log_tag, "com.github.wwmm.easyeffects.gate", path + "gate/", pm);
+  gate = std::make_shared<Gate>(log_tag, tags::app::id + ".gate", path + "gate/", pm);
 
-  limiter = std::make_shared<Limiter>(log_tag, "com.github.wwmm.easyeffects.limiter", path + "limiter/", pm);
+  limiter = std::make_shared<Limiter>(log_tag, tags::app::id + ".limiter", path + "limiter/", pm);
 
-  loudness = std::make_shared<Loudness>(log_tag, "com.github.wwmm.easyeffects.loudness", path + "loudness/", pm);
+  loudness = std::make_shared<Loudness>(log_tag, tags::app::id + ".loudness", path + "loudness/", pm);
 
-  maximizer = std::make_shared<Maximizer>(log_tag, "com.github.wwmm.easyeffects.maximizer", path + "maximizer/", pm);
+  maximizer = std::make_shared<Maximizer>(log_tag, tags::app::id + ".maximizer", path + "maximizer/", pm);
 
-  multiband_compressor = std::make_shared<MultibandCompressor>(
-      log_tag, "com.github.wwmm.easyeffects.multibandcompressor", path + "multibandcompressor/", pm);
+  multiband_compressor = std::make_shared<MultibandCompressor>(log_tag, tags::app::id + ".multibandcompressor",
+                                                               path + "multibandcompressor/", pm);
 
-  multiband_gate = std::make_shared<MultibandGate>(log_tag, "com.github.wwmm.easyeffects.multibandgate",
-                                                   path + "multibandgate/", pm);
+  multiband_gate =
+      std::make_shared<MultibandGate>(log_tag, tags::app::id + ".multibandgate", path + "multibandgate/", pm);
 
-  output_level =
-      std::make_shared<OutputLevel>(log_tag, "com.github.wwmm.easyeffects.outputlevel", path + "outputlevel/", pm);
+  output_level = std::make_shared<OutputLevel>(log_tag, tags::app::id + ".outputlevel", path + "outputlevel/", pm);
 
-  pitch = std::make_shared<Pitch>(log_tag, "com.github.wwmm.easyeffects.pitch", path + "pitch/", pm);
+  pitch = std::make_shared<Pitch>(log_tag, tags::app::id + ".pitch", path + "pitch/", pm);
 
-  reverb = std::make_shared<Reverb>(log_tag, "com.github.wwmm.easyeffects.reverb", path + "reverb/", pm);
+  reverb = std::make_shared<Reverb>(log_tag, tags::app::id + ".reverb", path + "reverb/", pm);
 
-  rnnoise = std::make_shared<RNNoise>(log_tag, "com.github.wwmm.easyeffects.rnnoise", path + "rnnoise/", pm);
+  rnnoise = std::make_shared<RNNoise>(log_tag, tags::app::id + ".rnnoise", path + "rnnoise/", pm);
 
-  spectrum = std::make_shared<Spectrum>(log_tag, "com.github.wwmm.easyeffects.spectrum",
-                                        "/com/github/wwmm/easyeffects/spectrum/", pm);
-  stereo_tools =
-      std::make_shared<StereoTools>(log_tag, "com.github.wwmm.easyeffects.stereotools", path + "stereotools/", pm);
+  spectrum = std::make_shared<Spectrum>(log_tag, tags::app::id + ".spectrum", tags::app::path + "/spectrum/", pm);
+
+  stereo_tools = std::make_shared<StereoTools>(log_tag, tags::app::id + ".stereotools", path + "stereotools/", pm);
 
   if (!output_level->connected_to_pw) {
     output_level->connect_to_pw();

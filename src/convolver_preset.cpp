@@ -20,11 +20,9 @@
 #include "convolver_preset.hpp"
 
 ConvolverPreset::ConvolverPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.convolver",
-                                            "/com/github/wwmm/easyeffects/streaminputs/convolver/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/convolver/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.convolver",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/convolver/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/convolver/").c_str());
 }
 
 void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

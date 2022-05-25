@@ -80,7 +80,7 @@ void on_reset(MultibandGateBox* self, GtkButton* btn) {
 void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate, const std::string& schema_path) {
   self->data->multiband_gate = multiband_gate;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandgate", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".multibandgate").c_str(), schema_path.c_str());
 
   multiband_gate->post_messages = true;
   multiband_gate->bypass = false;
@@ -212,7 +212,7 @@ void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/multiband_gate.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/multiband_gate.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_gain);

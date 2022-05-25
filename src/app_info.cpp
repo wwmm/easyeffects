@@ -333,7 +333,7 @@ void app_info_class_init(AppInfoClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/app_info.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/app_info.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, AppInfo, enable);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, app_icon);
@@ -354,7 +354,7 @@ void app_info_init(AppInfo* self) {
 
   self->data = new Data();
 
-  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->app_settings = g_settings_new(tags::app::id.c_str());
 
   prepare_spinbuttons<"%">(self->volume);
 

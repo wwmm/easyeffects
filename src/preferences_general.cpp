@@ -91,7 +91,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
 
   object_class->dispose = dispose;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/preferences_general.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/preferences_general.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, enable_autostart);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, process_all_inputs);
@@ -109,7 +109,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
 void preferences_general_init(PreferencesGeneral* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
-  self->settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->settings = g_settings_new(tags::app::id.c_str());
 
   prepare_spinbuttons<"s">(self->inactivity_timeout);
 

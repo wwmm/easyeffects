@@ -20,11 +20,9 @@
 #include "deesser_preset.hpp"
 
 DeesserPreset::DeesserPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.deesser",
-                                            "/com/github/wwmm/easyeffects/streaminputs/deesser/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/deesser/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.deesser",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/deesser/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/deesser/").c_str());
 }
 
 void DeesserPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

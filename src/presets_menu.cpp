@@ -154,7 +154,7 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
 
   g_signal_connect(
       factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
-        auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
+        auto builder = gtk_builder_new_from_resource((tags::app::path + "/ui/preset_row.ui").c_str());
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
         auto* apply = gtk_builder_get_object(builder, "apply");
@@ -413,7 +413,7 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
   widget_class->show = show;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/presets_menu.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/presets_menu.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_string_list);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_string_list);
@@ -441,7 +441,7 @@ void presets_menu_init(PresetsMenu* self) {
 
   self->data = new Data();
 
-  self->settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->settings = g_settings_new(tags::app::id.c_str());
 
   gtk_label_set_text(self->last_used_output,
                      util::gsettings_get_string(self->settings, "last-used-output-preset").c_str());

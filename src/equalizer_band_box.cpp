@@ -164,7 +164,7 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/equalizer_band.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_type);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_mode);
@@ -191,7 +191,7 @@ void equalizer_band_box_init(EqualizerBandBox* self) {
 
   self->data = new Data();
 
-  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->app_settings = g_settings_new(tags::app::id.c_str());
 
   g_settings_bind(self->app_settings, "autohide-popovers", self->popover_menu, "autohide", G_SETTINGS_BIND_DEFAULT);
 

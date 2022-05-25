@@ -77,7 +77,7 @@ void on_reset(DeesserBox* self, GtkButton* btn) {
 void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string& schema_path) {
   self->data->deesser = deesser;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.deesser", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".deesser").c_str(), schema_path.c_str());
 
   deesser->post_messages = true;
   deesser->bypass = false;
@@ -177,7 +177,7 @@ void deesser_box_class_init(DeesserBoxClass* klass) {
   object_class->finalize = finalize;
   object_class->dispose = dispose;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/deesser.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/deesser.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_gain);

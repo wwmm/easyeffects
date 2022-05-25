@@ -70,7 +70,7 @@ void on_reset(CrystalizerBox* self, GtkButton* btn) {
 
 void build_bands(CrystalizerBox* self) {
   for (uint n = 0; n < nbands; n++) {
-    auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/crystalizer_band.ui");
+    auto builder = gtk_builder_new_from_resource((tags::app::path + "/ui/crystalizer_band.ui").c_str());
 
     auto* band_box = GTK_BOX(gtk_builder_get_object(builder, "band_box"));
 
@@ -144,7 +144,7 @@ void build_bands(CrystalizerBox* self) {
 void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const std::string& schema_path) {
   self->data->crystalizer = crystalizer;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crystalizer", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".crystalizer").c_str(), schema_path.c_str());
 
   crystalizer->post_messages = true;
   crystalizer->bypass = false;
@@ -204,7 +204,7 @@ void crystalizer_box_class_init(CrystalizerBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/crystalizer.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/crystalizer.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, CrystalizerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, CrystalizerBox, output_gain);

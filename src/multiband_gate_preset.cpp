@@ -20,11 +20,9 @@
 #include "multiband_gate_preset.hpp"
 
 MultibandGatePreset::MultibandGatePreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandgate",
-                                            "/com/github/wwmm/easyeffects/streaminputs/multibandgate/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/multibandgate/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandgate",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/multibandgate/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/multibandgate/").c_str());
 }
 
 void MultibandGatePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

@@ -71,7 +71,7 @@ void on_reset(FilterBox* self, GtkButton* btn) {
 void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path) {
   self->data->filter = filter;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.filter", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".filter").c_str(), schema_path.c_str());
 
   filter->post_messages = true;
   filter->bypass = false;
@@ -140,7 +140,7 @@ void filter_box_class_init(FilterBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/filter.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/filter.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, FilterBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, output_gain);

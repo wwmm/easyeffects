@@ -27,6 +27,8 @@ class AutoGainPreset : public PluginPresetBase {
   AutoGainPreset();
 
  private:
+  const std::string preset_id = tags::app::id + ".autogain";
+
   void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;
 
   void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;

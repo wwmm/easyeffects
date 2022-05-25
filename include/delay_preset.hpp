@@ -27,6 +27,8 @@ class DelayPreset : public PluginPresetBase {
   DelayPreset();
 
  private:
+  const std::string preset_id = tags::app::id + ".delay";
+
   void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;
 
   void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;

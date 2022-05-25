@@ -20,11 +20,11 @@
 #include "multiband_compressor_preset.hpp"
 
 MultibandCompressorPreset::MultibandCompressorPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandcompressor",
-                                            "/com/github/wwmm/easyeffects/streaminputs/multibandcompressor/");
+  input_settings =
+      g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/multibandcompressor/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandcompressor",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/multibandcompressor/");
+  output_settings =
+      g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/multibandcompressor/").c_str());
 }
 
 void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

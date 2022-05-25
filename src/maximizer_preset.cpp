@@ -20,11 +20,9 @@
 #include "maximizer_preset.hpp"
 
 MaximizerPreset::MaximizerPreset() {
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.maximizer",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/maximizer/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/maximizer/").c_str());
 
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.maximizer",
-                                            "/com/github/wwmm/easyeffects/streaminputs/maximizer/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/maximizer/").c_str());
 }
 
 void MaximizerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

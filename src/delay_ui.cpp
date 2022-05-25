@@ -71,7 +71,7 @@ void on_reset(DelayBox* self, GtkButton* btn) {
 void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& schema_path) {
   self->data->delay = delay;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.delay", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".delay").c_str(), schema_path.c_str());
 
   delay->post_messages = true;
   delay->bypass = false;
@@ -135,7 +135,7 @@ void delay_box_class_init(DelayBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/delay.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/delay.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, DelayBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, output_gain);
