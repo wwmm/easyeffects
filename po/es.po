@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-30 14:22-0300\n"
+"POT-Creation-Date: 2022-05-26 14:37-0300\n"
 "PO-Revision-Date: 2022-05-06 00:14+0000\n"
 "Last-Translator: fjsevilla <fjsevilla2.0@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -98,21 +98,88 @@ msgid "The convolver page showing audio controls"
 msgstr "La página del convolucionador mostrando los controles de audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:93
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:205
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:132
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:173
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:202
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:272
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
 msgid "This release adds the following features:"
 msgstr "Esta versión añade las siguientes características:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
+msgid "The interface of the pitch plugin was improved"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
+msgid "Our application icon is now compatible with desktops that uses QT"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
+msgid ""
+"Our blocklist code will use the `application.id` tag if the stream sets it"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
+msgid ""
+"In order to avoid problems with the mouse scroll the entries in the "
+"applications list shown in our `Players/Recorders`"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
+msgid ""
+"tab do not show a volume scale anymore. More details about the problem and "
+"the solution for it can be found on #1211"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
+#, fuzzy
+msgid "and #1427"
+msgstr "Banda 1"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
+msgid ""
+"When no application is available for display in the `Players/Recorders` a "
+"message will be shown to the user"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
+#, fuzzy
+msgid "Many translation updates"
+msgstr "Traducciones actualizadas"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
+msgid "This release fixes the following bugs:"
+msgstr "Esta versión corrige los siguientes errores:"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
+msgid ""
+"Fixed a bug where EasyEffeects crashed when the number of points displayed "
+"in the spectrum was changed while"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
+msgid "our pipeline was active and the spectrum widget was visible"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
+msgid ""
+"The pipeline latency value displayed in our window could be wrong in some "
+"situations. This was fixed."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
@@ -120,7 +187,7 @@ msgstr ""
 "Hay disponible un nuevo ajuste que permite al usuario seleccionar un tiempo "
 "de inactividad para la tubería. Cuando ningún cliente está reproduciendo"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
@@ -128,11 +195,11 @@ msgstr ""
 "o grabando desde nuestros dispositivos, los filtros se desconectarán una vez "
 "alcanzado el tiempo de espera. Esto se hace para asegurarse de que"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "we do not waste CPU power processing silence."
 msgstr "no desperdiciamos la potencia de la CPU procesando silencio."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
@@ -140,11 +207,11 @@ msgstr ""
 "El plugin de ganancia automática ahora permite al usuario seleccionar cuál "
 "de los tres tipos de sonoridad se utiliza para calcular"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 msgid "mean."
 msgstr "la media geométrica."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
@@ -152,7 +219,7 @@ msgstr ""
 "El plugin de ganancia automática ahora permite establecer el historial "
 "máximo y ya no utiliza el modo histograma `libebur128`."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
@@ -160,7 +227,7 @@ msgstr ""
 "Esto debería evitar los casos en los que la sonoridad `Integrada` se quedaba "
 "bloqueada indefinidamente en el mismo valor."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
@@ -168,17 +235,17 @@ msgstr ""
 "El icono de EasyEffects ha sido actualizado de forma que debería ser visible "
 "en los escritorios QT."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:98
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:249
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
 msgid "This release fixes the following bug:"
 msgstr "Esta versión corrige el siguiente error:"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
 msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
@@ -186,13 +253,13 @@ msgstr ""
 "La opción de línea de comandos que retorna el estado de bypass global vuelve "
 "a funcionar."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:245
 msgid "This release adds the following feature:"
 msgstr "Esta versión añade la siguiente funcionalidad:"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid ""
 "The crossfeed filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
@@ -202,7 +269,7 @@ msgstr ""
 "latencia dinámica de PipeWire. Ya no deberían producirse cambios bruscos en "
 "el nivel de volumen en estas situaciones."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
 msgid ""
 "Fixed a bug that prevented mono microphones from properly working with "
 "EasyEffects"
@@ -210,11 +277,11 @@ msgstr ""
 "Se ha corregido un error que impedía que los micrófonos mono funcionaran "
 "correctamente con EasyEffects"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
 msgid "Support for the next PipeWire release `0.3.44`"
 msgstr "Soporte para la próxima versión `0.3.44` de PipeWire"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:93
 msgid ""
 "The autogain filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
@@ -224,7 +291,7 @@ msgstr ""
 "latencia dinámica de PipeWire. Ya no deberían producirse cambios bruscos en "
 "el nivel de volumen en estas situaciones."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
 msgid ""
 "We added an option that allows the volume and mute state of our virtual "
 "devices to be reset when EasyEffects starts. It should help with the cases "
@@ -235,16 +302,16 @@ msgstr ""
 "Esto debería ayudar en los casos en que nuestros dispositivos son "
 "silenciados por el servidor de audio por razones desconocidas."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:95
 msgid "Better support for computer suspending."
 msgstr "Se ha mejorado el soporte para la suspensión del ordenador."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:96
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid "Updated translations"
 msgstr "Traducciones actualizadas"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
 msgid ""
 "Fixed a bug where trying to create an autoloading profile without having "
 "presets caused the application to crash."
@@ -252,7 +319,7 @@ msgstr ""
 "Se ha corregido un error que causaba que la aplicación se bloqueara al "
 "intentar crear un perfil de carga automática que no disponía de preajustes."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:108
 msgid ""
 "Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
 "an application crash."
@@ -260,7 +327,7 @@ msgstr ""
 "Se ha corregido un error por el que el ajuste de la `calidad` de una banda "
 "del ecualizador a `cero` provocaba un bloqueo de la aplicación."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:95
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
 msgid ""
 "LibAdwaita is used to create some parts of our window and for handling the "
 "switching between dark and light themes."
@@ -268,11 +335,12 @@ msgstr ""
 "Se hace uso de LibAdwaita para crear algunas partes de nuestra ventana y "
 "para manejar el cambio entre temas oscuros y claros."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:96
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
-msgstr "El menú de ajustes ha sido rediseñado utilizando widgets de LibAdwaita."
+msgstr ""
+"El menú de ajustes ha sido rediseñado utilizando widgets de LibAdwaita."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:97
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:118
 msgid ""
 "Equalizer APO preset import feature has been improved to apply not only the "
 "Bell filter, but also other supported ones"
@@ -280,14 +348,14 @@ msgstr ""
 "Se ha mejorado la función de importación de perfiles del ecualizador APO "
 "para aplicar no sólo el filtro Bell, sino también otros compatibles"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:98
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
 msgid ""
 "The `Reset All Settings` function in our menu should work in Flatpak now."
 msgstr ""
 "La función `Restablecer todos los ajustes` de nuestro menú debería funcionar "
 "ahora en Flatpak."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:99
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
 msgid ""
 "We have a new option that allows the user to disable our menus `autohide`. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
@@ -296,7 +364,7 @@ msgstr ""
 "desactivar nuestros menús . Esto puede ayudar a solucionar algunos errores "
 "que los menús Popover tienen actualmente en gtk4."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
 msgid ""
 "More robust parsing to import APO presets saved with comma as thousands "
 "separator in central frequency band."
@@ -304,7 +372,7 @@ msgstr ""
 "Un análisis más robusto para importar perfiles APO guardados con una coma "
 "como separador de miles en la banda de frecuencia central."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
 msgid ""
 "The fmt library is a new dependency At least while the c++ compilers do not "
 "implement its features. This is expected to happen in the next years."
@@ -313,12 +381,12 @@ msgstr ""
 "compiladores de c++ no implementen sus características. Se espera que esto "
 "ocurra en los próximos años."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
 msgid ""
 "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
 msgstr "GTKMM y GLIBMM ya no son dependencias. Ahora usamos gtk4 directamente."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
 msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
@@ -327,7 +395,7 @@ msgstr ""
 "convolucionador. Un nuevo archivo de respuesta a impulsos es generado y debe "
 "ser visible en la lista de respuestas a impulsos."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
 msgid ""
 "Improved `x axis` drawings in our plots. Now the number of labels is "
 "adjusted dynamically depending on our window width."
@@ -335,7 +403,7 @@ msgstr ""
 "Se ha mejorado el diseño del `eje x`en nuestros gráficos. Ahora el número de "
 "etiquetas se ajusta dinámicamente en función del ancho de la ventana."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
 msgid ""
 "The documentation has been updated reflecting the new EasyEffects features. "
 "Old references about PulseEffects have been removed. The documentation "
@@ -345,15 +413,7 @@ msgstr ""
 "de EasyEffects. Se han eliminado las antiguas referencias sobre "
 "PulseEffects. Se ha añadido al menú el botón de documentación."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:142
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:168
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:190
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
-msgid "This release fixes the following bugs:"
-msgstr "Esta versión corrige los siguientes errores:"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid ""
 "When a spinbutton is filled with an out of range value, now it is updated "
 "with the lowest/highest value rather than resetting to the previous one."
@@ -362,7 +422,7 @@ msgstr ""
 "actualiza con el valor más bajo o más alto en lugar de restablecerse al "
 "valor previo."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
 msgid ""
 "The application window now remembers the maximized state and restores it on "
 "the next opening event."
@@ -370,11 +430,11 @@ msgstr ""
 "La ventana principal ahora recuerda el estado maximizado y lo restaura "
 "cuando se abre de nuevo."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:143
 msgid "The `tbb` library is a new dependency"
 msgstr "La biblioteca `tbb` es una nueva dependencia"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:129
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 msgid ""
 "The Limiter and the Multiband Compressor plugins can now use an optional "
 "external sidechain."
@@ -382,7 +442,7 @@ msgstr ""
 "Los plugins Limitador y Compresor multibanda ahora pueden utilizar una "
 "cadena lateral externa opcional."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
 msgid ""
 "The Autogain plugin now allows the user to select which Loudness is used as "
 "reference for the volume correction."
@@ -390,7 +450,7 @@ msgstr ""
 "El plugin de ganancia automática ahora permite al usuario seleccionar el "
 "tipo de sonoridad a usar como referencia en la corrección de volumen."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:131
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
 msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
@@ -398,13 +458,13 @@ msgstr ""
 "La función de importación de perfiles APO del plugin Ecualizador ahora "
 "analiza el parámetro \"PreAmplificación\"."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:132
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:153
 msgid "Optional Cubic Volume can be enabled in General Settings."
 msgstr ""
 "El volumen cúbico puede activarse de forma opcional en la configuración "
 "general."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
@@ -412,17 +472,17 @@ msgstr ""
 "Los flujos de monitorización de PipeWire están ahora excluidos y eliminados "
 "de la lista de aplicaciones."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:144
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
 msgid "Hopefully crashes like the one reported at [1172]( are fixed."
 msgstr ""
 "Esperamos que los fallos como el reportado en [1172]( se han solucionado."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:145
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
 msgid "Prevented a case in which Spectrum was crashing."
 msgstr ""
 "Se ha corregido un caso en el que el visualizador de espectro se bloqueaba."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:146
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:167
 msgid ""
 "Pavucontrol is not added anymore to input applications list on systems with "
 "localization different than English."
@@ -430,7 +490,7 @@ msgstr ""
 "Pavucontrol ya no se añade a la lista de aplicaciones de entrada en los "
 "sistemas con localización diferente a la inglesa."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
 msgid ""
 "Improved compatibility with WirePlumber. This is needed to run on systems "
 "that decided to use it instead of the"
@@ -438,11 +498,11 @@ msgstr ""
 "Se ha mejorado la compatibilidad con WirePlumber. Esto es necesario para que "
 "funcione en los sistemas que decidieron utilizarlo en lugar del"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:155
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:176
 msgid "built-in PipeWire session manager. More information at issue [1144]("
 msgstr "gestor de sesiones de PipeWire integrado. Más información en [1144]("
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid ""
 "When trying to add an autoloading profile for a device already in the list "
 "its target preset will be updated. This way we can change the profile preset "
@@ -452,7 +512,7 @@ msgstr ""
 "está en la lista se actualizará su perfil de destino. De esta manera podemos "
 "modificar los ajustes del perfil sin tener que eliminarlo y volver a crearlo."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:164
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue [1051]("
@@ -461,7 +521,7 @@ msgstr ""
 "de perfiles. Ahora debería funcionar en un conjunto mayor de hardware. "
 "Consultar [1051]( para más información"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:186
 msgid ""
 "If the Limiter or the Maximizer are set in the last position of the plugin "
 "stack, new plugins are added at the second to last position in order to "
@@ -472,7 +532,7 @@ msgstr ""
 "de evitar la posibilidad de que el hardware se dañe por un nivel de salida "
 "eventualmente alto."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid ""
 "Removing an application from the blocklist, its previous enabled state is "
 "restored."
@@ -480,7 +540,7 @@ msgstr ""
 "Al eliminar una aplicación de la lista de aplicaciones bloqueadas, se "
 "restablece su estado anterior de activación."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
 msgid ""
 "Sometimes when removing imported models from the noise reduction plugin the "
 "current used model was not properly updated. This should be fixed now."
@@ -489,7 +549,7 @@ msgstr ""
 "ruido, el modelo en uso no se actualizaba correctamente. Esto debería estar "
 "solucionado ahora."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:192
 msgid ""
 "When editing presets files in an external editor, duplicated entries won't "
 "be shown in our presets menu."
@@ -497,13 +557,13 @@ msgstr ""
 "Al editar archivos de perfiles en un editor externo, las entradas duplicadas "
 "no se mostrarán en el menú de perfiles."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
 msgid "Now the blocklist is correctly set when switching presets."
 msgstr ""
 "Ahora la lista de aplicaciones bloqueadas se ajusta correctamente al cambiar "
 "de perfil."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:173
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:194
 msgid ""
 "Now the status of the global bypass button is correctly updated when "
 "changing plugin stack."
@@ -511,7 +571,7 @@ msgstr ""
 "Ahora el estado del botón de bypass global se actualiza correctamente al "
 "modificarse la pila de plugins."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
 msgid ""
 "Missing icons on the system should not be shown inside the application info "
 "UI"
@@ -519,27 +579,27 @@ msgstr ""
 "Los iconos no disponibles en el sistema no deberían mostrarse en la interfaz "
 "de información de la aplicación"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
 msgid ""
 "Some icons not showing in Plasma DE with Breeze icon theme should appear now."
 msgstr ""
 "Algunos iconos que no se mostraban en el escritorio Plasma con el tema de "
 "iconos Breeze deberían ser visibles ahora."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
 msgid "Updated Chinese translation."
 msgstr "Traducción al chino actualizada."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:205
 msgid "Updated Italian translation."
 msgstr "Traducción al italiano actualizada."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid "Added support for the compressor parameter `Boost Amount`"
 msgstr ""
 "Se ha añadido soporte para el parámetro del compresor `Cantidad de refuerzo`"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:186
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
 msgid ""
 "The multiband compressor plugin now uses the stereo multiband compressor "
 "plugin from Linux Studio Plugins instead of the one from Calf Studio."
@@ -547,7 +607,7 @@ msgstr ""
 "El plugin de compresión multibanda ahora utiliza el plugin de compresión "
 "multibanda estéreo de Linux Studio Plugins, en lugar del de Calf Studio."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
 msgid ""
 "The limiter plugin now uses the stereo limiter plugin from Linux Studio "
 "Plugins instead of the one from Calf Studio."
@@ -555,7 +615,7 @@ msgstr ""
 "El plugin del limitador ahora utiliza el plugin del limitador estéreo de "
 "Linux Studio Plugins, en lugar del de Calf Studio."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:188
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
 msgid ""
 "LV2 filters now are spawned in PipeWire graph only when loaded the first "
 "time. Once loaded, they remain connected until EasyEffects shutdown."
@@ -564,13 +624,13 @@ msgstr ""
 "cargan por primera vez. Una vez cargados, permanecen conectados hasta el "
 "cierre de EasyEffects."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:192
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
 msgid "The echo canceller sampling rate is now properly set."
 msgstr ""
 "La tasa de muestreo del plugin de cancelación de eco está ahora "
 "correctamente ajustada."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid ""
 "The threshold parameter from the deesser plugin is now saved to the preset "
 "file."
@@ -578,14 +638,14 @@ msgstr ""
 "El parámetro umbral del plugin deesser se guarda ahora en el archivo de "
 "perfil."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:194
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
 msgid ""
 "Improved band splitting for crystalizer with new default intensity values."
 msgstr ""
 "Mejorada la división de bandas para el cristalizador con nuevos valores de "
 "intensidad por defecto."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
 msgid ""
 "Depending on the input gain or output gain values the corresponding level "
 "bars could not be aligned."
@@ -593,14 +653,14 @@ msgstr ""
 "Dependiendo de los valores de la ganancia de entrada y de salida, las barras "
 "de nivel correspondientes podrían no alinearse correctamente."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
 msgid ""
 "When adding more equalizer bands they are set to `Bell` instead of `Off`."
 msgstr ""
 "Cuando se añaden nuevas bandas de ecualización se les asigna la modalidad "
 "`Campana` en lugar de `Apagado`."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid ""
 "Equalizer APO presets loading is now working properly on locales different "
 "than C."
@@ -608,13 +668,13 @@ msgstr ""
 "La carga de los perfiles del ecualizador APO ahora funciona correctamente en "
 "localizaciones diferentes a C."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
 msgid "Improved linking management between port filter nodes in PipeWire."
 msgstr ""
 "Se ha mejorado la gestión de las conexiones entre puertos de nodos en "
 "PipeWire."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:220
 msgid ""
 "The crystalizer plugin signal amplification was too high before. It should "
 "be within more reasonable levels now."
@@ -622,7 +682,7 @@ msgstr ""
 "La amplificación de la señal del plugin del cristalizador era demasiado alta "
 "antes. Ahora debería estar dentro de niveles más razonables."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 msgid ""
 "Improved the resampler used in the plugins that require one(like the rnnoise "
 "plugin)"
@@ -630,19 +690,19 @@ msgstr ""
 "Se ha mejorado el remuestreador (resampler) utilizado en los plugins que lo "
 "requieren (como el plugin rnnoise)"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:233
 msgid "Setting multiple autoloading presets should be fine now"
 msgstr ""
 "La configuración de múltiples perfiles de autocarga debería funcionar ahora "
 "correctamente"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:234
 msgid "Transient windows are now properly set for some plugins dialogs"
 msgstr ""
 "Las ventanas transitorias están ahora correctamente configuradas para "
 "algunos diálogos de plugins"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:235
 msgid ""
 "The convolver impulse response menu was improved to workaround an issue "
 "where the impulse files was not loaded when only one was available in the "
@@ -652,26 +712,26 @@ msgstr ""
 "tiene como fin solucionar un problema que causaba que no se cargaran los "
 "archivos de respuesta a impulsos cuando sólo había uno disponible en el menú"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
 msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
 msgstr ""
 "Se ha corregido un error que podía hacer que el plugin de tonalidad (pitch) "
 "no se inicializara correctamente"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid "The saturation warning should not displace its neighbor widgets anymore"
 msgstr "El aviso de saturación ahora no desplaza a los widgets adyacentes"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
 msgid "Fixed the locale in a few widgets"
 msgstr "Se ha corregido la configuración regional en algunos widgets"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid "Fixed wrong alignment in a few widgets"
 msgstr "Se ha corregido la alineación incorrecta de algunos widgets"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
 msgid ""
 "The Loudness plugin is being used again for the reasons described at This "
 "means that is an optional dependency again."
@@ -679,7 +739,7 @@ msgstr ""
 "El plugin Loudness es usado de nuevo por las razones descritas. Esto implica "
 "que es una dependencia opcional de nuevo."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:230
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid ""
 "Fixed a segmentation fault that happened when optional dependencies were not "
 "installed"
@@ -687,11 +747,11 @@ msgstr ""
 "Se ha corregido un fallo de segmentación que ocurría cuando no se instalaban "
 "las dependencias opcionales"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
 msgid "Improved equalizer interface."
 msgstr "Se ha mejorado la interfaz del ecualizador."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
 msgid ""
 "Now we use a sidechain LSP compressor that allows the user to select and "
 "external source as the sidechain input."
@@ -699,12 +759,12 @@ msgstr ""
 "Ahora se hace uso de un compresor LSP de cadena lateral que permite al "
 "usuario seleccionar una fuente externa como entrada para la cadena lateral."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:240
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
 msgid "We now support the LSP compressor `Boosting` mode."
 msgstr ""
 "Agregado soporte para el nuevo modo`Refuerzo` (`Boosting`) del compresor LSP."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:241
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
 msgid ""
 "When `split-channels` is enabled in the equalizer the imported APO preset "
 "will be applied only to the channel being visualized in the window. This "
@@ -716,7 +776,7 @@ msgstr ""
 "ventana. Esto permite importar diferentes perfiles para cada canal, en lugar "
 "de asignar los mismos valores para ambos."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:245
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
 msgid ""
 "Fixed some segmentation faults that could happen when creating a preset "
 "autoloading profile or removing presets"
@@ -724,7 +784,7 @@ msgstr ""
 "Se han corregido algunos fallos de segmentación que podían producirse al "
 "crear o eliminar un perfil de carga automática"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
 msgid ""
 "This is one of the biggest releases that I have ever made. The amount of "
 "changes is so big that it is hard to talk about everything here."
@@ -732,7 +792,7 @@ msgstr ""
 "Este es uno de los mayores lanzamientos que he hecho. El número de cambios "
 "es tan grande que es difícil describirlos todos aquí."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:254
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:275
 msgid ""
 "The following are just the most import ones. People interested on the "
 "journey that got us here can take"
@@ -740,11 +800,11 @@ msgstr ""
 "A continuación se indican sólo los más importantes. Quien esté interesado en "
 "profundizar más puede echar"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
 msgid "a look at and"
 msgstr "un vistazo y"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
 msgid ""
 "The application and its repository have been renamed from PulseEffects to "
 "`EasyEffects`"
@@ -752,15 +812,15 @@ msgstr ""
 "La aplicación y su repositorio han sido renombrados de PulseEffects a "
 "`EasyEffects`"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
 msgid "gtkmm3 was replaced by gtkmm4"
 msgstr "Se ha sustituido gtkmm3 por gtkmm4"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
 msgid "Gstreamer was replaced by native PipeWire filters."
 msgstr "Se ha sustituido Gstreamer por filtros nativos de PipeWire."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
 msgid ""
 "Many features were reimplemented from scratch. The preset autoloading is one "
 "example. Another remarkable change will be seen in the plugins selection "
@@ -772,7 +832,7 @@ msgstr ""
 "selección de plugins. Ahora el usuario puede mostrar en la ventana sólo los "
 "plugins que desea utilizar."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
 msgid ""
 "Boost is no longer a dependency. The price paid for that was a little change "
 "in our presets structures. With some patience it is possible to edit "
@@ -785,7 +845,7 @@ msgstr ""
 "funcionar en EasyEffects. Con un poco de suerte puede que alguien cree un "
 "script para automatizar esto."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
 msgid ""
 "New libraries are being used and some of the librarires that were optional "
 "before are now required"
@@ -806,19 +866,19 @@ msgstr "limitador;compresor;reverberación;ecualizador;autovolumen;"
 msgid "\"Presets\""
 msgstr "\"Perfiles\""
 
-#: data/ui/app_info.ui:203
+#: data/ui/app_info.ui:201
 msgid "Enable"
 msgstr "Habilitar"
 
-#: data/ui/app_info.ui:215
+#: data/ui/app_info.ui:213
 msgid "Exclude"
 msgstr "Excluir"
 
-#: data/ui/app_info.ui:238
+#: data/ui/app_info.ui:236
 msgid "Mute Application"
 msgstr "Silenciar la aplicación"
 
-#: data/ui/app_info.ui:261
+#: data/ui/app_info.ui:259
 msgid "Application Volume"
 msgstr "Volumen de aplicación"
 
@@ -843,8 +903,8 @@ msgid "_About EasyEffects"
 msgstr "_Acerca de EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
-#: src/presets_menu.cpp:112 src/presets_menu.cpp:258 src/presets_menu.cpp:259
-#: src/presets_menu.cpp:276 src/presets_menu.cpp:277
+#: src/presets_menu.cpp:112 src/presets_menu.cpp:262 src/presets_menu.cpp:263
+#: src/presets_menu.cpp:280 src/presets_menu.cpp:281
 msgid "Presets"
 msgstr "Perfiles"
 
@@ -1051,7 +1111,7 @@ msgstr "Perfil"
 msgid "Preset"
 msgstr "Perfil"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:488
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:502
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -1293,6 +1353,7 @@ msgid "Sidechain Type"
 msgstr "Tipo de cadena lateral"
 
 #: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
+#: src/plugins_box.cpp:532
 msgid "Input Device"
 msgstr "Dispositivo de entrada"
 
@@ -2297,7 +2358,7 @@ msgstr "Usar entrada predeterminada"
 msgid "Custom Input Device"
 msgstr "Dispositivo de entrada personalizado"
 
-#: data/ui/pipe_manager_box.ui:75
+#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:552
 msgid "Output Device"
 msgstr "Dispositivo de salida"
 
@@ -2513,7 +2574,7 @@ msgstr "Semitonos"
 msgid "Octaves"
 msgstr "Octavas"
 
-#: data/ui/plugin_row.ui:26
+#: data/ui/plugin_row.ui:31
 msgid "Remove this plugin"
 msgstr "Eliminar este plugin"
 
@@ -2521,15 +2582,15 @@ msgstr "Eliminar este plugin"
 msgid "Add Effect"
 msgstr "Agregar efecto"
 
-#: data/ui/plugins_box.ui:34
+#: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
 msgstr "Lista de plugins utilizados"
 
-#: data/ui/plugins_box.ui:67
+#: data/ui/plugins_box.ui:129
 msgid "No Effects"
 msgstr "Sin efectos"
 
-#: data/ui/plugins_box.ui:68
+#: data/ui/plugins_box.ui:130
 msgid "Audio Stream Not Modified"
 msgstr "Flujo de audio no modificado"
 
@@ -2578,18 +2639,22 @@ msgid "Reset Our Devices Volume on Startup"
 msgstr "Restablecer el volumen de los dispositivos de EasyEffect al inicio"
 
 #: data/ui/preferences_general.ui:91
+msgid "Exclude Device Monitor Streams"
+msgstr ""
+
+#: data/ui/preferences_general.ui:103
 msgid "Inactivity Timeout"
 msgstr "Tiempo de inactividad"
 
-#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:127 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Estilo"
 
-#: data/ui/preferences_general.ui:118
+#: data/ui/preferences_general.ui:130
 msgid "Use Dark Theme"
 msgstr "Usar tema oscuro"
 
-#: data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:142
 msgid "Hide Menus on Outside Clicks"
 msgstr "Ocultar los menús al hacer click fuera"
 
@@ -2953,45 +3018,45 @@ msgstr "Error"
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: src/app_info.cpp:230
+#: src/app_info.cpp:229
 msgid "channels"
 msgstr "canales"
 
-#: src/application.cpp:277
+#: src/application.cpp:286
 msgid "Output Presets: "
 msgstr "Perfiles de salida: "
 
-#: src/application.cpp:285
+#: src/application.cpp:294
 msgid "Input Presets: "
 msgstr "Perfiles de entrada: "
 
-#: src/application.cpp:427
+#: src/application.cpp:442
 msgid "Audio effects for PipeWire applications"
 msgstr "Efectos de audio para aplicaciones que utilizan PipeWire"
 
-#: src/application.cpp:513
+#: src/application.cpp:528
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Salir de EasyEffects. Útil cuando se está ejecutando en modo servicio."
 
-#: src/application.cpp:516
+#: src/application.cpp:531
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar un perfil. Por ejemplo: easyeffects -l musica"
 
-#: src/application.cpp:519
+#: src/application.cpp:534
 msgid "Reset EasyEffects."
 msgstr "Restablecer EasyEffects."
 
-#: src/application.cpp:522
+#: src/application.cpp:537
 msgid "Hide the Window."
 msgstr "Ocultar la ventana."
 
-#: src/application.cpp:525
+#: src/application.cpp:540
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass global. 1 para habilitar, 2 para deshabilitar y 3 para obtener el "
 "estado actual"
 
-#: src/application.cpp:528
+#: src/application.cpp:543
 msgid "Show available presets."
 msgstr "Mostrar los perfiles disponibles."
 
@@ -3033,11 +3098,11 @@ msgstr "Fallido"
 msgid "Could Not Load The Impulse File"
 msgstr "No se pudo cargar el archivo de respuesta a impulsos"
 
-#: src/effects_box.cpp:263
+#: src/effects_box.cpp:263 src/plugins_box.cpp:533
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/effects_box.cpp:287
+#: src/effects_box.cpp:287 src/plugins_box.cpp:551
 msgid "Players"
 msgstr "Reproductores"
 
@@ -3057,7 +3122,7 @@ msgstr "Importar archivo de perfil APO"
 msgid "APO Presets"
 msgstr "Perfiles APO"
 
-#: src/pipe_manager_box.cpp:310
+#: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr "Eliminar perfil de carga automática"
 

@@ -242,6 +242,15 @@ void on_startup(GApplication* gapp) {
       }),
       self));
 
+  self->data->gconnections.push_back(
+      g_signal_connect(self->settings, "changed::exclude-monitor-streams",
+                       G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                         auto self = static_cast<Application*>(user_data);
+
+                         self->pm->exclude_monitor_stream = g_settings_get_boolean(settings, key) != 0;
+                       }),
+                       self));
+
   update_bypass_state(self);
 
   if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {

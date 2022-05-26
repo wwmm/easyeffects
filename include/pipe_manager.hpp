@@ -186,6 +186,8 @@ class PipeManager {
 
   inline static bool exiting = false;
 
+  inline static bool exclude_monitor_stream = true;
+
   spa_hook metadata_listener{};
 
   /*

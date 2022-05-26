@@ -88,6 +88,18 @@
 
                 <child>
                     <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Exclude Device Monitor Streams</property>
+                        <property name="activatable-widget">exclude_monitor_streams</property>
+                        <child>
+                            <object class="GtkSwitch" id="exclude_monitor_streams">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwActionRow">
                         <property name="title" translatable="yes">Inactivity Timeout</property>
 
                         <child>

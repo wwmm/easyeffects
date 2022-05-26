@@ -246,7 +246,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   // Even PW_KEY_STREAM_CAPTURE_SINK is not set in on_registry_global.
   // Useful to exclude OBS recording streams.
 
-  if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0) {
+  if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK), "true") == 0 &&
+      PipeManager::exclude_monitor_stream) {
     remove_node = true;
   }
 
