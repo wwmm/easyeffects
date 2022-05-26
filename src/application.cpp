@@ -72,7 +72,7 @@ void on_startup(GApplication* gapp) {
     self->presets_manager = new PresetsManager();
   }
 
-  self->pm->exclude_monitor_stream = g_settings_get_boolean(self->settings, "exclude-monitor-streams") != 0;
+  PipeManager::exclude_monitor_stream = g_settings_get_boolean(self->settings, "exclude-monitor-streams") != 0;
 
   if (g_settings_get_boolean(self->settings, "reset-volume-on-startup") != 0) {
     PipeManager::set_node_mute(self->pm->ee_source_node.proxy, false);
@@ -247,9 +247,7 @@ void on_startup(GApplication* gapp) {
   self->data->gconnections.push_back(
       g_signal_connect(self->settings, "changed::exclude-monitor-streams",
                        G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                         auto self = static_cast<Application*>(user_data);
-
-                         self->pm->exclude_monitor_stream = g_settings_get_boolean(settings, key) != 0;
+                         PipeManager::exclude_monitor_stream = g_settings_get_boolean(settings, key) != 0;
                        }),
                        self));
 
