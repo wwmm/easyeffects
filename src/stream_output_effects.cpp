@@ -20,7 +20,7 @@
 #include "stream_output_effects.hpp"
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
-    : EffectsBase("soe: ", "com.github.wwmm.easyeffects.streamoutputs", pipe_manager) {
+    : EffectsBase("soe: ", tags::app::id + ".streamoutputs", pipe_manager) {
   pm->output_device = pm->default_output_device;
 
   if (g_settings_get_boolean(settings, "use-default-output-device") != 0) {

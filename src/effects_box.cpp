@@ -504,7 +504,7 @@ void effects_box_class_init(EffectsBoxClass* klass) {
   widget_class->realize = realize;
   widget_class->unroot = unroot;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/effects_box.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/effects_box.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, stack);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, device_state);
@@ -526,8 +526,8 @@ void effects_box_init(EffectsBox* self) {
 
   self->data->schedule_signal_idle = false;
 
-  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
-  self->settings_spectrum = g_settings_new("com.github.wwmm.easyeffects.spectrum");
+  self->app_settings = g_settings_new(tags::app::id.c_str());
+  self->settings_spectrum = g_settings_new((tags::app::id + ".spectrum").c_str());
 
   self->spectrum_chart = ui::chart::create();
 

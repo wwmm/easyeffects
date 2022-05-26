@@ -551,7 +551,7 @@ void chart_class_init(ChartClass* klass) {
   widget_class->snapshot = snapshot;
   widget_class->unroot = unroot;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/chart.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/chart.ui").c_str());
 }
 
 void chart_init(Chart* self) {

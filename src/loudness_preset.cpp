@@ -20,11 +20,9 @@
 #include "loudness_preset.hpp"
 
 LoudnessPreset::LoudnessPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.loudness",
-                                            "/com/github/wwmm/easyeffects/streaminputs/loudness/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/loudness/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.loudness",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/loudness/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/loudness/").c_str());
 }
 
 void LoudnessPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

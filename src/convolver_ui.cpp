@@ -452,7 +452,7 @@ void setup(ConvolverBox* self,
   self->data->convolver = convolver;
   self->data->application = application;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.convolver", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".convolver").c_str(), schema_path.c_str());
 
   convolver->post_messages = true;
   convolver->bypass = false;
@@ -539,7 +539,7 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/convolver.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/convolver.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_gain);

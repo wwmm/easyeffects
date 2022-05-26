@@ -100,7 +100,7 @@ void setup_dropdown_input_device(LimiterBox* self) {
 void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string& schema_path, PipeManager* pm) {
   self->data->limiter = limiter;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.limiter", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".limiter").c_str(), schema_path.c_str());
 
   limiter->post_messages = true;
   limiter->bypass = false;
@@ -267,7 +267,7 @@ void limiter_box_class_init(LimiterBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/limiter.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/limiter.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, output_gain);

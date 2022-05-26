@@ -20,11 +20,11 @@
 #include "bass_enhancer_preset.hpp"
 
 BassEnhancerPreset::BassEnhancerPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassenhancer",
-                                            "/com/github/wwmm/easyeffects/streaminputs/bassenhancer/");
+  input_settings =
+      g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/bassenhancer/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassenhancer",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/bassenhancer/");
+  output_settings =
+      g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/bassenhancer/").c_str());
 }
 
 void BassEnhancerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

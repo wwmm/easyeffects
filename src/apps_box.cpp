@@ -243,9 +243,9 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
   switch (pipeline_type) {
     case PipelineType::input: {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
-
       auto* pm = application->sie->pm;
+
+      self->settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
 
       for (const auto& [ts, node] : pm->node_map) {
         if (node.media_class == pm->media_class_input_stream) {
@@ -265,9 +265,9 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       break;
     }
     case PipelineType::output: {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
-
       auto* pm = application->soe->pm;
+
+      self->settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
 
       for (const auto& [ts, node] : pm->node_map) {
         if (node.media_class == pm->media_class_output_stream) {
@@ -414,7 +414,7 @@ void apps_box_class_init(AppsBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/apps_box.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/apps_box.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, AppsBox, overlay);
   gtk_widget_class_bind_template_child(widget_class, AppsBox, overlay_empty_list);
@@ -426,7 +426,7 @@ void apps_box_init(AppsBox* self) {
 
   self->data = new Data();
 
-  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->app_settings = g_settings_new(tags::app::id.c_str());
 
   self->apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->all_apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());

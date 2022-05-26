@@ -1,3 +1,22 @@
+/*
+ *  Copyright © 2017-2022 Wellington Wallace
+ *
+ *  This file is part of EasyEffects.
+ *
+ *  EasyEffects is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  EasyEffects is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "pipe_manager_box.hpp"
 
 namespace ui::pipe_manager_box {
@@ -258,7 +277,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
   g_signal_connect(
       factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-        auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/autoload_row.ui");
+        auto builder = gtk_builder_new_from_resource((tags::app::path + "/ui/autoload_row.ui").c_str());
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
 
@@ -757,7 +776,7 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/pipe_manager_box.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/pipe_manager_box.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, use_default_input);
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, use_default_output);
@@ -815,8 +834,8 @@ void pipe_manager_box_init(PipeManagerBox* self) {
   self->autoloading_input_model = g_list_store_new(ui::holders::presets_autoloading_holder_get_type());
   self->autoloading_output_model = g_list_store_new(ui::holders::presets_autoloading_holder_get_type());
 
-  self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
-  self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+  self->sie_settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
+  self->soe_settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
 
   prepare_spinbuttons<"Hz">(self->spinbutton_test_signal_frequency);
 

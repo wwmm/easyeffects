@@ -57,15 +57,15 @@ void on_startup(GApplication* gapp) {
 
   self->data = new Data();
 
-  self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
-  self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+  self->sie_settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
+  self->soe_settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
 
   self->pm = new PipeManager();
   self->soe = new StreamOutputEffects(self->pm);
   self->sie = new StreamInputEffects(self->pm);
 
   if (self->settings == nullptr) {
-    self->settings = g_settings_new("com.github.wwmm.easyeffects");
+    self->settings = g_settings_new(tags::app::id.c_str());
   }
 
   if (self->presets_manager == nullptr) {
@@ -260,7 +260,7 @@ void application_class_init(ApplicationClass* klass) {
     auto* self = EE_APP(gapp);
 
     if (self->settings == nullptr) {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects");
+      self->settings = g_settings_new(tags::app::id.c_str());
     }
 
     if (self->presets_manager == nullptr) {
@@ -478,7 +478,7 @@ void application_init(Application* self) {
 
   entries[6] = {"shortcuts",
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/shortcuts.ui");
+                  auto builder = gtk_builder_new_from_resource((tags::app::path + "/ui/shortcuts.ui").c_str());
 
                   auto* window = GTK_SHORTCUTS_WINDOW(gtk_builder_get_object(builder, "window"));
 
@@ -512,7 +512,7 @@ void application_init(Application* self) {
 auto application_new() -> GApplication* {
   g_set_application_name("EasyEffects");
 
-  auto* app = g_object_new(EE_TYPE_APPLICATION, "application-id", "com.github.wwmm.easyeffects", "flags",
+  auto* app = g_object_new(EE_TYPE_APPLICATION, "application-id", tags::app::id.c_str(), "flags",
                            G_APPLICATION_HANDLES_COMMAND_LINE, nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "quit", 'q', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,

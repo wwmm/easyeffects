@@ -20,11 +20,9 @@
 #include "bass_loudness_preset.hpp"
 
 BassLoudnessPreset::BassLoudnessPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassloudness",
-                                            "/com/github/wwmm/easyeffects/streaminputs/bassloudness/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/bassloudness/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassloudness",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/bassloudness/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/bassloudness/").c_str());
 }
 
 void BassLoudnessPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

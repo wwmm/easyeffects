@@ -453,13 +453,13 @@ void setup(EqualizerBox* self,
 
   self->data->application = application;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".equalizer").c_str(), schema_path.c_str());
 
   self->settings_left =
-      g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer.channel", (schema_path + "leftchannel/").c_str());
+      g_settings_new_with_path((tags::app::id + ".equalizer.channel").c_str(), (schema_path + "leftchannel/").c_str());
 
-  self->settings_right = g_settings_new_with_path("com.github.wwmm.easyeffects.equalizer.channel",
-                                                  (schema_path + "rightchannel/").c_str());
+  self->settings_right =
+      g_settings_new_with_path((tags::app::id + ".equalizer.channel").c_str(), (schema_path + "rightchannel/").c_str());
 
   equalizer->post_messages = true;
   equalizer->bypass = false;
@@ -550,7 +550,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/equalizer.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/equalizer.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, output_gain);

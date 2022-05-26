@@ -20,11 +20,9 @@
 #include "compressor_preset.hpp"
 
 CompressorPreset::CompressorPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.compressor",
-                                            "/com/github/wwmm/easyeffects/streaminputs/compressor/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/compressor/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.compressor",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/compressor/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/compressor/").c_str());
 }
 
 void CompressorPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

@@ -19,27 +19,6 @@
 
 #include "convolver_menu_combine.hpp"
 
-/*
- *  Copyright © 2017-2022 Wellington Wallace
- *
- *  This file is part of EasyEffects.
- *
- *  EasyEffects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  EasyEffects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
- */
-
-#include "convolver_menu_combine.hpp"
-
 namespace ui::convolver_menu_combine {
 
 using namespace std::string_literals;
@@ -261,7 +240,7 @@ void convolver_menu_combine_class_init(ConvolverMenuCombineClass* klass) {
   object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class,
-                                              "/com/github/wwmm/easyeffects/ui/convolver_menu_combine.ui");
+                                              (tags::app::path + "/ui/convolver_menu_combine.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuCombine, string_list_1);
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuCombine, string_list_2);
@@ -283,7 +262,7 @@ void convolver_menu_combine_init(ConvolverMenuCombine* self) {
     gtk_string_list_append(self->string_list_2, name.c_str());
   }
 
-  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->app_settings = g_settings_new(tags::app::id.c_str());
 
   g_settings_bind(self->app_settings, "autohide-popovers", self, "autohide", G_SETTINGS_BIND_DEFAULT);
 }

@@ -69,7 +69,7 @@ void on_reset(BassLoudnessBox* self, GtkButton* btn) {
 void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, const std::string& schema_path) {
   self->data->bass_loudness = bass_loudness;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassloudness", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".bassloudness").c_str(), schema_path.c_str());
 
   bass_loudness->post_messages = true;
   bass_loudness->bypass = false;
@@ -129,7 +129,7 @@ void bass_loudness_box_class_init(BassLoudnessBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/bass_loudness.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/bass_loudness.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_gain);

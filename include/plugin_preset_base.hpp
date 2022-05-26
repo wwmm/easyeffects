@@ -22,6 +22,7 @@
 #include <gio/gio.h>
 #include <nlohmann/json.hpp>
 #include <string>
+#include "app_tags.hpp"
 #include "preset_type.hpp"
 #include "util.hpp"
 

@@ -20,11 +20,9 @@
 #include "gate_preset.hpp"
 
 GatePreset::GatePreset() {
-  input_settings =
-      g_settings_new_with_path("com.github.wwmm.easyeffects.gate", "/com/github/wwmm/easyeffects/streaminputs/gate/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/gate/").c_str());
 
-  output_settings =
-      g_settings_new_with_path("com.github.wwmm.easyeffects.gate", "/com/github/wwmm/easyeffects/streamoutputs/gate/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/gate/").c_str());
 }
 
 void GatePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

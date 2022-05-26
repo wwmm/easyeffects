@@ -17,21 +17,12 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef EXCITER_PRESET_HPP
-#define EXCITER_PRESET_HPP
+#pragma once
 
-#include "plugin_preset_base.hpp"
+namespace tags::app {
 
-class ExciterPreset : public PluginPresetBase {
- public:
-  ExciterPreset();
+const std::string id = "com.github.wwmm.easyeffects";
 
- private:
-  const std::string preset_id = tags::app::id + ".exciter";
+const std::string path = "/com/github/wwmm/easyeffects";
 
-  void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;
-
-  void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;
-};
-
-#endif
+}  // namespace tags::app

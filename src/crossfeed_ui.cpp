@@ -84,7 +84,7 @@ void on_preset_jmeier(CrossfeedBox* self, GtkButton* btn) {
 void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::string& schema_path) {
   self->data->crossfeed = crossfeed;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crossfeed", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".crossfeed").c_str(), schema_path.c_str());
 
   crossfeed->post_messages = true;
   crossfeed->bypass = false;
@@ -145,7 +145,7 @@ void crossfeed_box_class_init(CrossfeedBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/crossfeed.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/crossfeed.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, output_gain);

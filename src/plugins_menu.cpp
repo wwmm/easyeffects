@@ -160,12 +160,12 @@ void setup(PluginsMenu* self, app::Application* application, PipelineType pipeli
 
   switch (pipeline_type) {
     case PipelineType::input: {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
+      self->settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
 
       break;
     }
     case PipelineType::output: {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+      self->settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
 
       break;
     }
@@ -229,7 +229,7 @@ void plugins_menu_class_init(PluginsMenuClass* klass) {
 
   widget_class->show = show;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/plugins_menu.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/plugins_menu.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, PluginsMenu, string_list);
 
@@ -242,7 +242,7 @@ void plugins_menu_init(PluginsMenu* self) {
 
   self->data = new Data();
 
-  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->app_settings = g_settings_new(tags::app::id.c_str());
 
   g_settings_bind(self->app_settings, "autohide-popovers", self, "autohide", G_SETTINGS_BIND_DEFAULT);
 }

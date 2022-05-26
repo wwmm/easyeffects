@@ -20,11 +20,9 @@
 #include "crystalizer_preset.hpp"
 
 CrystalizerPreset::CrystalizerPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crystalizer",
-                                            "/com/github/wwmm/easyeffects/streaminputs/crystalizer/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/crystalizer/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crystalizer",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/crystalizer/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/crystalizer/").c_str());
 }
 
 void CrystalizerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

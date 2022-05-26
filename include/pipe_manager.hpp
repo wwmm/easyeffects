@@ -31,6 +31,7 @@
 #include <array>
 #include <map>
 #include <memory>
+#include "app_tags.hpp"
 #include "util.hpp"
 
 struct NodeInfo {
@@ -221,10 +222,12 @@ class PipeManager {
 
   NodeInfo output_device, input_device;
 
-  constexpr static auto blocklist_node_name = std::to_array(
-      {"EasyEffects", "easyeffects", "easyeffects_soe", "easyeffects_sie", "EasyEffectsWebrtcProbe", "pavucontrol",
-       "PulseAudio Volume Control", "libcanberra", "gsd-media-keys", "GNOME Shell", "speech-dispatcher",
-       "speech-dispatcher-dummy", "speech-dispatcher-espeak-ng", "Mutter", "gameoverlayui"});
+  constexpr static auto blocklist_node_name =
+      std::to_array({"EasyEffects", "easyeffects", "easyeffects_soe", "easyeffects_sie", "EasyEffectsWebrtcProbe",
+                     "libcanberra", "gsd-media-keys", "GNOME Shell", "speech-dispatcher", "speech-dispatcher-dummy",
+                     "speech-dispatcher-espeak-ng", "Mutter", "gameoverlayui"});
+
+  std::array<std::string, 1U> blocklist_app_id = {"org.PulseAudio.pavucontrol"};
 
   std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
 

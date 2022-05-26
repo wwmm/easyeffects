@@ -71,7 +71,7 @@ void on_reset(LoudnessBox* self, GtkButton* btn) {
 void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::string& schema_path) {
   self->data->loudness = loudness;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.loudness", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".loudness").c_str(), schema_path.c_str());
 
   loudness->post_messages = true;
   loudness->bypass = false;
@@ -135,7 +135,7 @@ void loudness_box_class_init(LoudnessBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/loudness.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/loudness.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_gain);

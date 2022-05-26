@@ -86,7 +86,7 @@ auto setup_icon_theme() -> GtkIconTheme* {
     g_free(name);
   }
 
-  gtk_icon_theme_add_resource_path(icon_theme, "/com/github/wwmm/easyeffects/icons");
+  gtk_icon_theme_add_resource_path(icon_theme, (tags::app::path + "/icons").c_str());
 
   return icon_theme;
 }
@@ -94,7 +94,7 @@ auto setup_icon_theme() -> GtkIconTheme* {
 void apply_css_style() {
   auto* provider = gtk_css_provider_new();
 
-  gtk_css_provider_load_from_resource(provider, "/com/github/wwmm/easyeffects/ui/custom.css");
+  gtk_css_provider_load_from_resource(provider, (tags::app::path + "/ui/custom.css").c_str());
 
   gtk_style_context_add_provider_for_display(gdk_display_get_default(), GTK_STYLE_PROVIDER(provider),
                                              GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -211,7 +211,7 @@ void application_window_class_init(ApplicationWindowClass* klass) {
   widget_class->realize = realize;
   widget_class->unrealize = unrealize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/application_window.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/application_window.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, presets_menu_button);
@@ -228,7 +228,7 @@ void application_window_init(ApplicationWindow* self) {
   self->data->maximized = false;
   self->data->fullscreen = false;
 
-  self->settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->settings = g_settings_new(tags::app::id.c_str());
 
   init_theme_color(self);
 

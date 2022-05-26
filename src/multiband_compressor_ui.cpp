@@ -142,7 +142,7 @@ void setup(MultibandCompressorBox* self,
            PipeManager* pm) {
   self->data->multiband_compressor = multiband_compressor;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandcompressor", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".multibandcompressor").c_str(), schema_path.c_str());
 
   multiband_compressor->post_messages = true;
   multiband_compressor->bypass = false;
@@ -299,7 +299,7 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/multiband_compressor.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_gain);

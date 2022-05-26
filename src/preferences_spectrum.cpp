@@ -99,7 +99,7 @@ void preferences_spectrum_class_init(PreferencesSpectrumClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/preferences_spectrum.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/preferences_spectrum.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, show);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, type);
@@ -123,7 +123,7 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
 
   self->data = new Data();
 
-  self->settings = g_settings_new("com.github.wwmm.easyeffects.spectrum");
+  self->settings = g_settings_new((tags::app::id + ".spectrum").c_str());
 
   // initializing some widgets
 

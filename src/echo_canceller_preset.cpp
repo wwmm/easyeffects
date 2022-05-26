@@ -20,11 +20,9 @@
 #include "echo_canceller_preset.hpp"
 
 EchoCancellerPreset::EchoCancellerPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.echocanceller",
-                                            "/com/github/wwmm/easyeffects/streaminputs/echocanceller/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/echocanceller/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.echocanceller",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/echocanceller/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/echocanceller/").c_str());
 }
 
 void EchoCancellerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

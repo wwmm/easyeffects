@@ -82,11 +82,11 @@ void add_plugins_to_stack(PluginsBox* self) {
   EffectsBase* effects_base;
 
   if constexpr (pipeline_type == PipelineType::input) {
-    schema_path = "/com/github/wwmm/easyeffects/streaminputs/";
+    schema_path = tags::app::path + "/streaminputs/";
 
     effects_base = self->data->application->sie;
   } else if constexpr (pipeline_type == PipelineType::output) {
-    schema_path = "/com/github/wwmm/easyeffects/streamoutputs/";
+    schema_path = tags::app::path + "/streamoutputs/";
 
     effects_base = self->data->application->soe;
   }
@@ -352,7 +352,7 @@ void setup_listview(PluginsBox* self) {
 
   g_signal_connect(
       factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PluginsBox* self) {
-        auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/plugin_row.ui");
+        auto builder = gtk_builder_new_from_resource((tags::app::path + "/ui/plugin_row.ui").c_str());
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
         auto* plugin_icon = gtk_builder_get_object(builder, "plugin_icon");
@@ -516,7 +516,7 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
 
   switch (pipeline_type) {
     case PipelineType::input: {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
+      self->settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
 
       add_plugins_to_stack<PipelineType::input>(self);
 
@@ -535,7 +535,7 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
       break;
     }
     case PipelineType::output: {
-      self->settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
+      self->settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
 
       add_plugins_to_stack<PipelineType::output>(self);
 
@@ -617,7 +617,7 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
   widget_class->realize = realize;
   widget_class->unroot = unroot;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/plugins_box.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/plugins_box.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, menubutton_plugins);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, plugin_overlay);

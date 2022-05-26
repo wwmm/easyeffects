@@ -75,7 +75,7 @@ void on_reset(GateBox* self, GtkButton* btn) {
 void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path) {
   self->data->gate = gate;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.gate", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".gate").c_str(), schema_path.c_str());
 
   gate->post_messages = true;
   gate->bypass = false;
@@ -162,7 +162,7 @@ void gate_box_class_init(GateBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/gate.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/gate.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, GateBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_gain);

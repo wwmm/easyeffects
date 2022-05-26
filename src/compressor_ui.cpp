@@ -129,7 +129,7 @@ void setup(CompressorBox* self,
            PipeManager* pm) {
   self->data->compressor = compressor;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.compressor", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".compressor").c_str(), schema_path.c_str());
 
   compressor->post_messages = true;
   compressor->bypass = false;
@@ -312,7 +312,7 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/compressor.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/compressor.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_gain);

@@ -167,7 +167,7 @@ void setup(RNNoiseBox* self,
   self->data->rnnoise = rnnoise;
   self->data->application = application;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.rnnoise", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".rnnoise").c_str(), schema_path.c_str());
 
   rnnoise->post_messages = true;
   rnnoise->bypass = false;
@@ -282,7 +282,7 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/rnnoise.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/rnnoise.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_gain);

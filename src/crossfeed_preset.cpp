@@ -20,11 +20,9 @@
 #include "crossfeed_preset.hpp"
 
 CrossfeedPreset::CrossfeedPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crossfeed",
-                                            "/com/github/wwmm/easyeffects/streaminputs/crossfeed/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/crossfeed/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crossfeed",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/crossfeed/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/crossfeed/").c_str());
 }
 
 void CrossfeedPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

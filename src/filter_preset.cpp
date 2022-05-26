@@ -20,11 +20,9 @@
 #include "filter_preset.hpp"
 
 FilterPreset::FilterPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.filter",
-                                            "/com/github/wwmm/easyeffects/streaminputs/filter/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/filter/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.filter",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/filter/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/filter/").c_str());
 }
 
 void FilterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

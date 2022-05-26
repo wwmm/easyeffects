@@ -73,7 +73,7 @@ void on_reset(MaximizerBox* self, GtkButton* btn) {
 void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::string& schema_path) {
   self->data->maximizer = maximizer;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.maximizer", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".maximizer").c_str(), schema_path.c_str());
 
   maximizer->post_messages = true;
   maximizer->bypass = false;
@@ -143,7 +143,7 @@ void maximizer_box_class_init(MaximizerBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/maximizer.ui");
+  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/maximizer.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, output_gain);

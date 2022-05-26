@@ -20,11 +20,9 @@
 #include "limiter_preset.hpp"
 
 LimiterPreset::LimiterPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.limiter",
-                                            "/com/github/wwmm/easyeffects/streaminputs/limiter/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/limiter/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.limiter",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/limiter/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/limiter/").c_str());
 }
 
 void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

@@ -239,7 +239,7 @@ void setup_listview(ConvolverMenuImpulses* self) {
 void setup(ConvolverMenuImpulses* self, const std::string& schema_path, app::Application* application) {
   self->application = application;
 
-  self->settings = g_settings_new_with_path("com.github.wwmm.easyeffects.convolver", schema_path.c_str());
+  self->settings = g_settings_new_with_path((tags::app::id + ".convolver").c_str(), schema_path.c_str());
 
   setup_listview(self);
 }
@@ -278,7 +278,7 @@ void convolver_menu_impulses_class_init(ConvolverMenuImpulsesClass* klass) {
   widget_class->show = show;
 
   gtk_widget_class_set_template_from_resource(widget_class,
-                                              "/com/github/wwmm/easyeffects/ui/convolver_menu_impulses.ui");
+                                              (tags::app::path + "/ui/convolver_menu_impulses.ui").c_str());
 
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuImpulses, scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuImpulses, listview);
@@ -292,7 +292,7 @@ void convolver_menu_impulses_init(ConvolverMenuImpulses* self) {
 
   self->string_list = gtk_string_list_new(nullptr);
 
-  self->app_settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->app_settings = g_settings_new(tags::app::id.c_str());
 
   g_settings_bind(self->app_settings, "autohide-popovers", self, "autohide", G_SETTINGS_BIND_DEFAULT);
 }

@@ -20,11 +20,9 @@
 #include "autogain_preset.hpp"
 
 AutoGainPreset::AutoGainPreset() {
-  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.autogain",
-                                            "/com/github/wwmm/easyeffects/streaminputs/autogain/");
+  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/autogain/").c_str());
 
-  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.autogain",
-                                             "/com/github/wwmm/easyeffects/streamoutputs/autogain/");
+  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/autogain/").c_str());
 }
 
 void AutoGainPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
