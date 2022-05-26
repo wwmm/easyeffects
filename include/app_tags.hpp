@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include <string>
+
 namespace tags::app {
 
 const std::string id = "com.github.wwmm.easyeffects";

@@ -288,6 +288,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         }
 
         pm->stream_output_removed.emit(node_ts);
+
+        pm->disconnect_stream(nd->nd_info->id);
       });
     } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
       const auto node_ts = nd->nd_info->timestamp;
@@ -298,6 +300,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         }
 
         pm->stream_input_removed.emit(node_ts);
+
+        pm->disconnect_stream(nd->nd_info->id);
       });
     }
 
