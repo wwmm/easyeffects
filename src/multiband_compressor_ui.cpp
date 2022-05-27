@@ -153,7 +153,7 @@ void setup(MultibandCompressorBox* self,
 
   create_bands(self);
 
-  for (const auto& [ts, node] : pm->node_map) {
+  for (const auto& [serial, node] : pm->node_map) {
     if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
       continue;
     }

@@ -25,7 +25,7 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "node holder: ";
 
-enum { PROP_0, PROP_TS, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS, PROP_DESCRIPTION };
+enum { PROP_0, PROP_SERIAL, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS, PROP_DESCRIPTION };
 
 G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
 
@@ -33,8 +33,8 @@ void node_info_set_property(GObject* object, guint prop_id, const GValue* value,
   auto* self = EE_NODE_INFO_HOLDER(object);
 
   switch (prop_id) {
-    case PROP_TS:
-      self->info->timestamp = g_value_get_long(value);
+    case PROP_SERIAL:
+      self->info->serial = g_value_get_uint64(value);
       break;
     case PROP_ID:
       self->info->id = g_value_get_uint(value);
@@ -61,8 +61,8 @@ void node_info_get_property(GObject* object, guint prop_id, GValue* value, GPara
   auto* self = EE_NODE_INFO_HOLDER(object);
 
   switch (prop_id) {
-    case PROP_TS:
-      g_value_set_long(value, self->info->timestamp);
+    case PROP_SERIAL:
+      g_value_set_uint64(value, self->info->serial);
       break;
     case PROP_ID:
       g_value_set_uint(value, self->info->id);
@@ -104,9 +104,11 @@ void node_info_holder_class_init(NodeInfoHolderClass* klass) {
   object_class->set_property = node_info_set_property;
   object_class->get_property = node_info_get_property;
 
-  g_object_class_install_property(object_class, PROP_TS,
-                                  g_param_spec_long("timestamp", "Timestamp", "Timestamp", G_MINLONG, G_MAXLONG,
-                                                    SPA_ID_INVALID, G_PARAM_READWRITE));
+  // Using G_MININT64 as minimum parameter causes
+  // assertion 'default_value >= minimum && default_value <= maximum' failed
+  g_object_class_install_property(object_class, PROP_SERIAL,
+                                  g_param_spec_uint64("serial", "Serial", "Serial", SPA_ID_INVALID, G_MAXUINT64,
+                                                      SPA_ID_INVALID, G_PARAM_READWRITE));
 
   g_object_class_install_property(
       object_class, PROP_ID,
