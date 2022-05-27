@@ -35,8 +35,6 @@
 #include "util.hpp"
 
 struct NodeInfo {
-  long timestamp;
-
   pw_proxy* proxy = nullptr;
 
   uint id = SPA_ID_INVALID;
@@ -190,14 +188,7 @@ class PipeManager {
 
   spa_hook metadata_listener{};
 
-  /*
-    Nodes are tracked in a map and indexed by the creation date UNIX timestamp.
-    This way we should have always a different index for any streams while PipeWire
-    try to reassign already used ID and maybe we should avoid issues with bad
-    applications creating and destroying too many streams in a very short time.
-  */
-
-  std::map<long, NodeInfo> node_map;
+  std::map<uint64_t, NodeInfo> node_map;
 
   std::vector<LinkInfo> list_links;
 
@@ -284,8 +275,8 @@ class PipeManager {
   sigc::signal<void(const NodeInfo)> stream_input_added;
   sigc::signal<void(const NodeInfo)> stream_output_changed;
   sigc::signal<void(const NodeInfo)> stream_input_changed;
-  sigc::signal<void(const long)> stream_output_removed;
-  sigc::signal<void(const long)> stream_input_removed;
+  sigc::signal<void(const uint64_t)> stream_output_removed;
+  sigc::signal<void(const uint64_t)> stream_input_removed;
 
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.

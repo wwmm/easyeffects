@@ -179,14 +179,6 @@ auto remove_filename_extension(const std::string& basename) -> std::string {
   return basename.substr(0, basename.find_last_of('.'));
 }
 
-auto timestamp_str(const time_point ts) -> std::string {
-  return to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count());
-}
-
-auto timepoint_to_long(time_point ts) -> long {
-  return std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count();
-}
-
 auto gchar_array_to_vector(gchar** gchar_array, const bool free_data) -> std::vector<std::string> {
   std::vector<std::string> output;
 

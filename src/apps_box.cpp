@@ -79,7 +79,7 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
     auto* holder =
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
-    if (holder->info->timestamp == node_info.timestamp) {
+    if (holder->info->serial == node_info.serial) {
       g_object_unref(holder);
 
       return;
@@ -108,12 +108,12 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
   update_empty_list_overlay(self);
 }
 
-void on_app_removed(AppsBox* self, const long ts) {
+void on_app_removed(AppsBox* self, const uint64_t serial) {
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
     auto* holder =
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
-    if (holder->info->timestamp == ts) {
+    if (holder->info->serial == serial) {
       holder->info_updated.clear();  // Disconnecting all the slots before removing the holder from the model
 
       g_list_store_remove(self->all_apps_model, n);
@@ -129,7 +129,7 @@ void on_app_removed(AppsBox* self, const long ts) {
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
-    if (holder->info->timestamp == ts) {
+    if (holder->info->serial == serial) {
       holder->info_updated.clear();  // Disconnecting all the slots before removing the holder from the model
 
       g_list_store_remove(self->apps_model, n);
@@ -149,7 +149,7 @@ void on_app_changed(AppsBox* self, const NodeInfo node_info) {
   for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
-    if (holder->info->timestamp == node_info.timestamp) {
+    if (holder->info->serial == node_info.serial) {
       holder->info_updated.emit(node_info);
 
       g_object_unref(holder);
@@ -205,7 +205,7 @@ void setup_listview(AppsBox* self) {
 
         // Update the app info ui for the very first time Needed for interface initialization in service mode
 
-        if (const auto node_it = self->data->application->pm->node_map.find(holder->info->timestamp);
+        if (const auto node_it = self->data->application->pm->node_map.find(holder->info->serial);
             node_it != self->data->application->pm->node_map.end()) {
           ui::app_info::update(app_info, node_it->second);
         }
@@ -247,7 +247,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
       self->settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
 
-      for (const auto& [ts, node] : pm->node_map) {
+      for (const auto& [serial, node] : pm->node_map) {
         if (node.media_class == pm->media_class_input_stream) {
           on_app_added(self, node);
         }
@@ -256,8 +256,8 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->data->connections.push_back(
           application->sie->pm->stream_input_added.connect([=](const NodeInfo info) { on_app_added(self, info); }));
 
-      self->data->connections.push_back(
-          application->sie->pm->stream_input_removed.connect([=](const long ts) { on_app_removed(self, ts); }));
+      self->data->connections.push_back(application->sie->pm->stream_input_removed.connect(
+          [=](const uint64_t serial) { on_app_removed(self, serial); }));
 
       self->data->connections.push_back(application->sie->pm->stream_input_changed.connect(
           [=](const NodeInfo node_info) { on_app_changed(self, node_info); }));
@@ -269,7 +269,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
       self->settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
 
-      for (const auto& [ts, node] : pm->node_map) {
+      for (const auto& [serial, node] : pm->node_map) {
         if (node.media_class == pm->media_class_output_stream) {
           on_app_added(self, node);
         }
@@ -278,8 +278,8 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->data->connections.push_back(
           pm->stream_output_added.connect([=](const NodeInfo info) { on_app_added(self, info); }));
 
-      self->data->connections.push_back(
-          application->soe->pm->stream_output_removed.connect([=](const long ts) { on_app_removed(self, ts); }));
+      self->data->connections.push_back(application->soe->pm->stream_output_removed.connect(
+          [=](const uint64_t serial) { on_app_removed(self, serial); }));
 
       self->data->connections.push_back(application->soe->pm->stream_output_changed.connect(
           [=](const NodeInfo node_info) { on_app_changed(self, node_info); }));

@@ -152,64 +152,68 @@ void on_destroy_node_proxy(void* data) {
 
   auto* const pm = nd->pm;
 
-  if (auto node_it = pm->node_map.find(nd->nd_info->timestamp); node_it != pm->node_map.end()) {
-    nd->nd_info->proxy = nullptr;
+  auto node_it = pm->node_map.find(nd->nd_info->serial);
 
-    node_it->second.proxy = nullptr;
-
-    spa_hook_remove(&nd->proxy_listener);
-
-    pm->node_map.erase(node_it);
-
-    if (!pm->exiting) {
-      if (nd->nd_info->media_class == pm->media_class_source) {
-        const auto nd_info_copy = *nd->nd_info;
-
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->source_removed.emit(nd_info_copy);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_sink) {
-        const auto nd_info_copy = *nd->nd_info;
-
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->sink_removed.emit(nd_info_copy);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
-        const auto node_ts = nd->nd_info->timestamp;
-
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->stream_output_removed.emit(node_ts);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
-        const auto node_ts = nd->nd_info->timestamp;
-
-        util::idle_add([=]() {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->stream_input_removed.emit(node_ts);
-        });
-      }
-    }
-
-    util::debug(PipeManager::log_tag + nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " +
-                nd->nd_info->name + " has been removed");
-
-    delete nd->nd_info;
+  if (node_it == pm->node_map.end()) {
+    return;
   }
+
+  nd->nd_info->proxy = nullptr;
+
+  node_it->second.proxy = nullptr;
+
+  spa_hook_remove(&nd->proxy_listener);
+
+  pm->node_map.erase(node_it);
+
+  if (!pm->exiting) {
+    if (nd->nd_info->media_class == pm->media_class_source) {
+      const auto nd_info_copy = *nd->nd_info;
+
+      util::idle_add([=]() {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->source_removed.emit(nd_info_copy);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_sink) {
+      const auto nd_info_copy = *nd->nd_info;
+
+      util::idle_add([=]() {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->sink_removed.emit(nd_info_copy);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
+      const auto serial = nd->nd_info->serial;
+
+      util::idle_add([=]() {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->stream_output_removed.emit(serial);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+      const auto serial = nd->nd_info->serial;
+
+      util::idle_add([=]() {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->stream_input_removed.emit(serial);
+      });
+    }
+  }
+
+  util::debug(PipeManager::log_tag + nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " +
+              nd->nd_info->name + " has been removed");
+
+  delete nd->nd_info;
 }
 
 void on_node_info(void* object, const struct pw_node_info* info) {
@@ -223,7 +227,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   // Check if the node is inside our map
 
-  auto node_it = pm->node_map.find(nd->nd_info->timestamp);
+  auto node_it = pm->node_map.find(nd->nd_info->serial);
 
   if (node_it == pm->node_map.end()) {
     return;
@@ -281,26 +285,26 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         pm->sink_removed.emit(nd_info_copy);
       });
     } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
-      const auto node_ts = nd->nd_info->timestamp;
+      const auto serial = nd->nd_info->serial;
 
       util::idle_add([=]() {
         if (PipeManager::exiting) {
           return;
         }
 
-        pm->stream_output_removed.emit(node_ts);
+        pm->stream_output_removed.emit(serial);
 
         pm->disconnect_stream(nd->nd_info->id);
       });
     } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
-      const auto node_ts = nd->nd_info->timestamp;
+      const auto serial = nd->nd_info->serial;
 
       util::idle_add([=]() {
         if (PipeManager::exiting) {
           return;
         }
 
-        pm->stream_input_removed.emit(node_ts);
+        pm->stream_input_removed.emit(serial);
 
         pm->disconnect_stream(nd->nd_info->id);
       });
@@ -483,7 +487,7 @@ void on_node_event_param(void* object,
     spa_pod_prop* pod_prop = nullptr;
     auto* obj = (spa_pod_object*)param;
 
-    const auto ts = nd->nd_info->timestamp;
+    const auto serial = nd->nd_info->serial;
 
     auto notify = false;
 
@@ -493,7 +497,7 @@ void on_node_event_param(void* object,
           uint format = 0U;
 
           if (spa_pod_get_id(&pod_prop->value, &format) == 0) {
-            if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
+            if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
               std::string format_str;
 
               switch (format) {
@@ -538,7 +542,7 @@ void on_node_event_param(void* object,
 
           if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
             if (rate != nd->nd_info->rate) {
-              if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
+              if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
                 node_it->second.rate = rate;
 
                 nd->nd_info->rate = rate;
@@ -555,7 +559,7 @@ void on_node_event_param(void* object,
 
           if (spa_pod_get_bool(&pod_prop->value, &v) == 0) {
             if (v != nd->nd_info->mute) {
-              if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
+              if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
                 node_it->second.mute = v;
 
                 nd->nd_info->mute = v;
@@ -568,7 +572,7 @@ void on_node_event_param(void* object,
           break;
         }
         case SPA_PROP_channelVolumes: {
-          if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
+          if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
             std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
             const auto n_volumes =
@@ -891,7 +895,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (const auto& [ts, node] : pm->node_map) {
+    for (const auto& [serial, node] : pm->node_map) {
       if (node.name == v.data()) {
         if (node.name == pm->ee_sink_name) {
           pm->default_output_device.id = SPA_ID_INVALID;
@@ -923,7 +927,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (const auto& [ts, node] : pm->node_map) {
+    for (const auto& [serial, node] : pm->node_map) {
       if (node.name == v.data()) {
         if (node.name == pm->ee_source_name) {
           pm->default_input_device.id = SPA_ID_INVALID;
@@ -1074,6 +1078,20 @@ void on_registry_global(void* data,
         return;
       }
 
+      uint64_t serial;
+
+      if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+        if (!util::str_to_num(std::string(object_serial), serial)) {
+          util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
+                        "The node cannot be handled by EasyEffects.");
+          return;
+        }
+      } else {
+        util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
+                      "The node cannot be handled by EasyEffects.");
+        return;
+      }
+
       // New node can be added into the node map
 
       auto* proxy =
@@ -1086,15 +1104,11 @@ void on_registry_global(void* data,
 
       nd->nd_info = new NodeInfo();
 
-      nd->nd_info->timestamp = util::timepoint_to_long(std::chrono::system_clock::now());
       nd->nd_info->proxy = proxy;
+      nd->nd_info->serial = serial;
       nd->nd_info->id = id;
       nd->nd_info->media_class = media_class;
       nd->nd_info->name = name;
-
-      if (const auto* serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-        nd->nd_info->serial = std::stoull(serial);
-      }
 
       if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
         nd->nd_info->description = node_description;
@@ -1108,12 +1122,11 @@ void on_registry_global(void* data,
         util::str_to_num(std::string(device_id), nd->nd_info->device_id);
       }
 
-      const auto [node_it, success] = pm->node_map.insert({nd->nd_info->timestamp, *nd->nd_info});
+      const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
 
       if (!success) {
         util::warning(PipeManager::log_tag + "Cannot insert node " + util::to_string(id) + " " + name +
-                      " into the node map because there's already an existing timestamp " +
-                      util::to_string(nd->nd_info->timestamp));
+                      " into the node map because there's already an existing serial " + util::to_string(serial));
 
         return;
       }
@@ -1161,7 +1174,7 @@ void on_registry_global(void* data,
       }
 
       util::debug(PipeManager::log_tag + media_class + " " + util::to_string(id) + " " + nd->nd_info->name +
-                  " with timestamp " + util::to_string(nd->nd_info->timestamp) + " has been added");
+                  " with serial " + util::to_string(serial) + " has been added");
     }
 
     return;
@@ -1463,17 +1476,17 @@ PipeManager::PipeManager() {
   do {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-    for (const auto& [ts, node] : node_map) {
+    for (const auto& [serial, node] : node_map) {
       if (ee_sink_node.name.empty() && node.name == ee_sink_name) {
         ee_sink_node = node;
 
         util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + util::to_string(node.id) +
-                    " and timestamp " + util::to_string(node.timestamp));
+                    " and serial " + util::to_string(node.serial));
       } else if (ee_source_node.name.empty() && node.name == ee_source_name) {
         ee_source_node = node;
 
         util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + util::to_string(node.id) +
-                    " and timestamp " + util::to_string(node.timestamp));
+                    " and serial " + util::to_string(node.serial));
       }
     }
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
@@ -1514,9 +1527,9 @@ PipeManager::~PipeManager() {
 }
 
 auto PipeManager::node_map_at_id(const uint& id) -> NodeInfo& {
-  // helper method to access easily a node by id, same functionality as map.at()
+  // Helper method to access easily a node by id, same functionality as map.at()
 
-  for (auto& [ts, node] : node_map) {
+  for (auto& [serial, node] : node_map) {
     if (node.id == id) {
       return node;
     }

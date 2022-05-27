@@ -31,7 +31,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     const auto output_device = util::gsettings_get_string(settings, "output-device");
 
     if (output_device != pm->ee_sink_name) {
-      for (const auto& [ts, node] : pm->node_map) {
+      for (const auto& [serial, node] : pm->node_map) {
         if (node.name == output_device) {
           pm->output_device = node;
 
@@ -50,7 +50,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr && PULSE_SINK != pm->ee_sink_name) {
-    for (const auto& [ts, node] : pm->node_map) {
+    for (const auto& [serial, node] : pm->node_map) {
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
 
@@ -100,7 +100,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
                                               return;
                                             }
 
-                                            for (const auto& [ts, node] : self->pm->node_map) {
+                                            for (const auto& [serial, node] : self->pm->node_map) {
                                               if (node.name == name) {
                                                 self->pm->output_device = node;
 
@@ -276,7 +276,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   bool dev_exists = false;
 
-  for (const auto& [ts, node] : pm->node_map) {
+  for (const auto& [serial, node] : pm->node_map) {
     if (node.id == pm->output_device.id) {
       dev_exists = true;
 

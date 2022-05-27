@@ -24,7 +24,6 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <charconv>
-#include <chrono>
 #include <cmath>
 #include <filesystem>
 #include <functional>
@@ -35,8 +34,6 @@
 #include <vector>
 
 namespace util {
-
-using time_point = std::chrono::time_point<std::chrono::system_clock>;
 
 const float minimum_db_level = -100.0F;
 const double minimum_db_d_level = -100.0;
@@ -76,10 +73,6 @@ auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> 
 auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
 
 auto remove_filename_extension(const std::string& basename) -> std::string;
-
-auto timestamp_str(time_point ts) -> std::string;
-
-auto timepoint_to_long(time_point ts) -> long;
 
 void print_thread_id();
 

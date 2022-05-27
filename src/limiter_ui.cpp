@@ -107,7 +107,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   setup_dropdown_input_device(self);
 
-  for (const auto& [ts, node] : pm->node_map) {
+  for (const auto& [serial, node] : pm->node_map) {
     if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
       continue;
     }

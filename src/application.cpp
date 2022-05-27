@@ -119,7 +119,7 @@ void on_startup(GApplication* gapp) {
 
     NodeInfo target_node;
 
-    for (const auto& [ts, node] : self->pm->node_map) {
+    for (const auto& [serial, node] : self->pm->node_map) {
       if (node.device_id == device.id && node.media_class == self->pm->media_class_source) {
         target_node = node;
 
@@ -149,7 +149,7 @@ void on_startup(GApplication* gapp) {
 
     NodeInfo target_node;
 
-    for (const auto& [ts, node] : self->pm->node_map) {
+    for (const auto& [serial, node] : self->pm->node_map) {
       target_node = node;
 
       if (node.device_id == device.id && node.media_class == self->pm->media_class_sink) {
@@ -184,7 +184,7 @@ void on_startup(GApplication* gapp) {
 
         uint device_id = SPA_ID_INVALID;
 
-        for (const auto& [ts, node] : self->pm->node_map) {
+        for (const auto& [serial, node] : self->pm->node_map) {
           if (node.name == name) {
             device_id = node.device_id;
 
@@ -216,7 +216,7 @@ void on_startup(GApplication* gapp) {
 
         uint device_id = SPA_ID_INVALID;
 
-        for (const auto& [ts, node] : self->pm->node_map) {
+        for (const auto& [serial, node] : self->pm->node_map) {
           if (node.name == name) {
             device_id = node.device_id;
 
