@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-26 14:37-0300\n"
+"POT-Creation-Date: 2022-05-28 11:37-0300\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2617,11 +2617,12 @@ msgid "Service"
 msgstr "Layanan"
 
 #: data/ui/preferences_general.ui:13
-msgid "Start Service at Login"
-msgstr "Mulai Layanan Saat Startup"
+msgid "Launch Service at System Startup"
+msgstr ""
 
 #: data/ui/preferences_general.ui:26
-msgid "Shutdown on Window Close"
+#, fuzzy
+msgid "Shutdown on Window Closing"
 msgstr "Shutdown pada Penutupan Jendela"
 
 #: data/ui/preferences_general.ui:40
@@ -2629,23 +2630,25 @@ msgid "Audio"
 msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
-msgid "Process All Outputs"
+#, fuzzy
+msgid "Process All Output Streams"
 msgstr "Proses Semua Output"
 
 #: data/ui/preferences_general.ui:55
-msgid "Process All Inputs"
+#, fuzzy
+msgid "Process All Input Streams"
 msgstr "Proses Semua Input"
 
 #: data/ui/preferences_general.ui:67
+msgid "Ignore Streams from Monitor of Devices"
+msgstr ""
+
+#: data/ui/preferences_general.ui:79
 msgid "Use Cubic Volume"
 msgstr "Gunakan Volume Kubik"
 
-#: data/ui/preferences_general.ui:79
-msgid "Reset Our Devices Volume on Startup"
-msgstr "Setel Ulang Volume Perangkat Kami saat Memulai"
-
 #: data/ui/preferences_general.ui:91
-msgid "Exclude Device Monitor Streams"
+msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
 msgstr ""
 
 #: data/ui/preferences_general.ui:103
@@ -3238,6 +3241,12 @@ msgstr "Impor file Model"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Model RNNoise"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Mulai Layanan Saat Startup"
+
+#~ msgid "Reset Our Devices Volume on Startup"
+#~ msgstr "Setel Ulang Volume Perangkat Kami saat Memulai"
 
 #, fuzzy
 #~ msgid "Activate"

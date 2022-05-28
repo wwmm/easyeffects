@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-26 14:37-0300\n"
+"POT-Creation-Date: 2022-05-28 11:37-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -2627,11 +2627,11 @@ msgid "Service"
 msgstr "Server"
 
 #: data/ui/preferences_general.ui:13
-msgid "Start Service at Login"
-msgstr "Spustiť službu pri prihlásení"
+msgid "Launch Service at System Startup"
+msgstr ""
 
 #: data/ui/preferences_general.ui:26
-msgid "Shutdown on Window Close"
+msgid "Shutdown on Window Closing"
 msgstr ""
 
 #: data/ui/preferences_general.ui:40
@@ -2639,23 +2639,25 @@ msgid "Audio"
 msgstr ""
 
 #: data/ui/preferences_general.ui:43
-msgid "Process All Outputs"
+#, fuzzy
+msgid "Process All Output Streams"
 msgstr "Spracovať všetky výstupy"
 
 #: data/ui/preferences_general.ui:55
-msgid "Process All Inputs"
+#, fuzzy
+msgid "Process All Input Streams"
 msgstr "Spracovať všetky vstupy"
 
 #: data/ui/preferences_general.ui:67
-msgid "Use Cubic Volume"
+msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
 #: data/ui/preferences_general.ui:79
-msgid "Reset Our Devices Volume on Startup"
+msgid "Use Cubic Volume"
 msgstr ""
 
 #: data/ui/preferences_general.ui:91
-msgid "Exclude Device Monitor Streams"
+msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
 msgstr ""
 
 #: data/ui/preferences_general.ui:103
@@ -3280,6 +3282,9 @@ msgstr "Importovať model zo súboru"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Štandardný model RNNoise"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Spustiť službu pri prihlásení"
 
 #, fuzzy
 #~ msgid "Activate"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-26 14:37-0300\n"
+"POT-Creation-Date: 2022-05-28 11:37-0300\n"
 "PO-Revision-Date: 2022-05-12 13:15+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2637,11 +2637,12 @@ msgid "Service"
 msgstr "Service"
 
 #: data/ui/preferences_general.ui:13
-msgid "Start Service at Login"
-msgstr "Lancer le service au démarrage"
+msgid "Launch Service at System Startup"
+msgstr ""
 
 #: data/ui/preferences_general.ui:26
-msgid "Shutdown on Window Close"
+#, fuzzy
+msgid "Shutdown on Window Closing"
 msgstr "Arrêt à la fermeture de la fenêtre"
 
 #: data/ui/preferences_general.ui:40
@@ -2649,23 +2650,25 @@ msgid "Audio"
 msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
-msgid "Process All Outputs"
+#, fuzzy
+msgid "Process All Output Streams"
 msgstr "Modifier toutes les sorties"
 
 #: data/ui/preferences_general.ui:55
-msgid "Process All Inputs"
+#, fuzzy
+msgid "Process All Input Streams"
 msgstr "Modifier toutes les entrées"
 
 #: data/ui/preferences_general.ui:67
+msgid "Ignore Streams from Monitor of Devices"
+msgstr ""
+
+#: data/ui/preferences_general.ui:79
 msgid "Use Cubic Volume"
 msgstr "Utiliser le volume cubique"
 
-#: data/ui/preferences_general.ui:79
-msgid "Reset Our Devices Volume on Startup"
-msgstr "Réinitialiser le volume au démarrage"
-
 #: data/ui/preferences_general.ui:91
-msgid "Exclude Device Monitor Streams"
+msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
 msgstr ""
 
 #: data/ui/preferences_general.ui:103
@@ -3255,6 +3258,12 @@ msgstr "Importer un modèle"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Modèles RNNoise"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Lancer le service au démarrage"
+
+#~ msgid "Reset Our Devices Volume on Startup"
+#~ msgstr "Réinitialiser le volume au démarrage"
 
 #, fuzzy
 #~ msgid "Activate"

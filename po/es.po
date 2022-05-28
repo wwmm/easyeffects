@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-26 14:37-0300\n"
+"POT-Creation-Date: 2022-05-28 11:37-0300\n"
 "PO-Revision-Date: 2022-05-06 00:14+0000\n"
 "Last-Translator: fjsevilla <fjsevilla2.0@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2611,11 +2611,12 @@ msgid "Service"
 msgstr "Servicio"
 
 #: data/ui/preferences_general.ui:13
-msgid "Start Service at Login"
-msgstr "Iniciar el servicio en el inicio de sesión"
+msgid "Launch Service at System Startup"
+msgstr ""
 
 #: data/ui/preferences_general.ui:26
-msgid "Shutdown on Window Close"
+#, fuzzy
+msgid "Shutdown on Window Closing"
 msgstr "Apagar al cerrar la ventana"
 
 #: data/ui/preferences_general.ui:40
@@ -2623,23 +2624,25 @@ msgid "Audio"
 msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
-msgid "Process All Outputs"
+#, fuzzy
+msgid "Process All Output Streams"
 msgstr "Procesar todas las salidas"
 
 #: data/ui/preferences_general.ui:55
-msgid "Process All Inputs"
+#, fuzzy
+msgid "Process All Input Streams"
 msgstr "Procesar todas las entradas"
 
 #: data/ui/preferences_general.ui:67
+msgid "Ignore Streams from Monitor of Devices"
+msgstr ""
+
+#: data/ui/preferences_general.ui:79
 msgid "Use Cubic Volume"
 msgstr "Usar volumen cúbico"
 
-#: data/ui/preferences_general.ui:79
-msgid "Reset Our Devices Volume on Startup"
-msgstr "Restablecer el volumen de los dispositivos de EasyEffect al inicio"
-
 #: data/ui/preferences_general.ui:91
-msgid "Exclude Device Monitor Streams"
+msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
 msgstr ""
 
 #: data/ui/preferences_general.ui:103
@@ -3225,3 +3228,9 @@ msgstr "Importar archivo de modelo"
 #: src/rnnoise_ui.cpp:127
 msgid "RNNoise Models"
 msgstr "Modelos RNNoise"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Iniciar el servicio en el inicio de sesión"
+
+#~ msgid "Reset Our Devices Volume on Startup"
+#~ msgstr "Restablecer el volumen de los dispositivos de EasyEffect al inicio"

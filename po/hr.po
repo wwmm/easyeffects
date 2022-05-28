@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-26 14:37-0300\n"
+"POT-Creation-Date: 2022-05-28 11:37-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -2663,11 +2663,11 @@ msgid "Service"
 msgstr "Ulazni uređaj"
 
 #: data/ui/preferences_general.ui:13
-msgid "Start Service at Login"
-msgstr "Pokreni servis pri pokretanju računala"
+msgid "Launch Service at System Startup"
+msgstr ""
 
 #: data/ui/preferences_general.ui:26
-msgid "Shutdown on Window Close"
+msgid "Shutdown on Window Closing"
 msgstr ""
 
 #: data/ui/preferences_general.ui:40
@@ -2675,23 +2675,23 @@ msgid "Audio"
 msgstr ""
 
 #: data/ui/preferences_general.ui:43
-msgid "Process All Outputs"
+msgid "Process All Output Streams"
 msgstr ""
 
 #: data/ui/preferences_general.ui:55
-msgid "Process All Inputs"
+msgid "Process All Input Streams"
 msgstr ""
 
 #: data/ui/preferences_general.ui:67
-msgid "Use Cubic Volume"
+msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
 #: data/ui/preferences_general.ui:79
-msgid "Reset Our Devices Volume on Startup"
+msgid "Use Cubic Volume"
 msgstr ""
 
 #: data/ui/preferences_general.ui:91
-msgid "Exclude Device Monitor Streams"
+msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
 msgstr ""
 
 #: data/ui/preferences_general.ui:103
@@ -3341,6 +3341,9 @@ msgstr "Učitaj impuls datoteku"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Kompresija"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Pokreni servis pri pokretanju računala"
 
 #, fuzzy
 #~ msgid "Activate"
