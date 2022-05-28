@@ -15,21 +15,15 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Reset History</em>
+                <em style="strong" its:withinText="nested">Maximum History</em>
             </title>
-            <p>Resets the Autogain history related to Momentary, Short-Term, Integrated, Relative and Range values which affect the volume changes.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Use Geometric Mean</em>
-            </title>
-            <p>The estimated loudness is obtained from the geometric mean of the Momentary, Short-Term and Integrated loudness. When this option is disabled, a weighted average is used.</p>
+            <p>Range of time taken into account for the calculation of loudness level and output gain.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Reference</em>
             </title>
-            <p>The parameter used as reference to evaluate the output level.</p>
+            <p>The parameter used as reference to evaluate the output gain.</p>
             <list>
                 <item>
                     <p>
@@ -46,16 +40,28 @@
                 <item>
                     <p>
                         <em style="strong">Integrated</em>
-                        - The measure of the loudness over the entire duration. It indicates how loud the whole content is on average.
+                        - Ideally it indicates how loud the content is on average. It measures the loudness on a long range of time, depending on the value set as Maximum History.
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        <em style="strong">Geometric Mean</em>
+                        - Uses the geometric mean of all the above mentioned parameters, or two of them at user choosing.
                     </p>
                 </item>
             </list>
         </item>
         <item>
             <title>
+                <em style="strong" its:withinText="nested">Reset History</em>
+            </title>
+            <p>Resets the Autogain history related to chosen Reference.</p>
+        </item>
+        <item>
+            <title>
                 <em style="strong" its:withinText="nested">Monitor Parameters</em>
             </title>
-            <p>Other values not customizable by the user.</p>
+            <p>Autogain values shown as stats.</p>
             <list>
                 <item>
                     <p>
@@ -78,7 +84,7 @@
                 <item>
                     <p>
                         <em style="strong">Output Gain</em>
-                        - The input signal will be multiplied by this correction gain to bring its loudness to the target value.
+                        - The input signal is adjusted by this correction gain to bring its loudness to the target value.
                     </p>
                 </item>
             </list>
