@@ -62,6 +62,10 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
     util::str_to_num(std::string(id), info.id);
   }
 
+  if (const auto* serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+    util::str_to_num(std::string(serial), info.serial);
+  }
+
   if (const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH)) {
     info.path = path;
   }
@@ -96,6 +100,10 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
 
   if (const auto* port_id = spa_dict_lookup(props, PW_KEY_PORT_ID)) {
     util::str_to_num(std::string(port_id), info.port_id);
+  }
+
+  if (const auto* serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+    util::str_to_num(std::string(serial), info.serial);
   }
 
   if (const auto* name = spa_dict_lookup(props, PW_KEY_PORT_NAME)) {
@@ -629,7 +637,7 @@ void on_node_event_param(void* object,
       } else if (nd->nd_info->media_class == pm->media_class_virtual_source) {
         const auto nd_info_copy = *nd->nd_info;
 
-        if (nd_info_copy.id == pm->ee_source_node.id) {
+        if (nd_info_copy.serial == pm->ee_source_node.serial) {
           pm->ee_source_node = nd_info_copy;
         }
 
@@ -643,7 +651,7 @@ void on_node_event_param(void* object,
       } else if (nd->nd_info->media_class == pm->media_class_sink) {
         const auto nd_info_copy = *nd->nd_info;
 
-        if (nd_info_copy.id == pm->ee_sink_node.id) {
+        if (nd_info_copy.serial == pm->ee_sink_node.serial) {
           pm->ee_sink_node = nd_info_copy;
         }
 

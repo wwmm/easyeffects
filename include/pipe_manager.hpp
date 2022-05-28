@@ -95,6 +95,8 @@ struct LinkInfo {
 
   uint output_port_id = 0U;
 
+  uint64_t serial = SPA_ID_INVALID;
+
   bool passive = false;  // does not cause the graph to be runnable
 
   pw_link_state state = PW_LINK_STATE_UNLINKED;
@@ -122,6 +124,8 @@ struct PortInfo {
   uint node_id = 0U;
 
   uint port_id = 0U;
+
+  uint64_t serial = SPA_ID_INVALID;
 };
 
 struct ModuleInfo {

@@ -81,6 +81,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     if (g_settings_get_boolean(settings, "use-default-output-device") == 0) {
       if (node.name == util::gsettings_get_string(settings, "output-device")) {
         pm->output_device.id = SPA_ID_INVALID;
+        pm->output_device.serial = SPA_ID_INVALID;
       }
     }
   }));

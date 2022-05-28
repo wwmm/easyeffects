@@ -81,6 +81,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     if (g_settings_get_boolean(settings, "use-default-input-device") == 0) {
       if (node.name == util::gsettings_get_string(settings, "input-device")) {
         pm->input_device.id = SPA_ID_INVALID;
+        pm->input_device.serial = SPA_ID_INVALID;
       }
     }
   }));
@@ -170,7 +171,7 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
     return;
   }
 
-  if (pm->default_input_device.id == pm->ee_source_node.id) {
+  if (pm->default_input_device.serial == pm->ee_source_node.serial) {
     return;
   }
 
@@ -206,7 +207,7 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
 }
 
 void StreamInputEffects::connect_filters(const bool& bypass) {
-  if (pm->input_device.id == SPA_ID_INVALID) {
+  if (pm->input_device.id == SPA_ID_INVALID || pm->input_device.serial == SPA_ID_INVALID) {
     util::debug(log_tag + "Input device id is invalid. Aborting the link between filters in the microphone pipeline");
 
     return;
@@ -222,7 +223,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
   bool dev_exists = false;
 
   for (const auto& [serial, node] : pm->node_map) {
-    if (node.id == pm->input_device.id) {
+    if (node.serial == pm->input_device.serial) {
       dev_exists = true;
 
       break;
