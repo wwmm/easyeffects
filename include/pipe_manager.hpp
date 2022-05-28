@@ -131,6 +131,8 @@ struct PortInfo {
 struct ModuleInfo {
   uint id;
 
+  uint64_t serial = SPA_ID_INVALID;
+
   std::string name;
 
   std::string description;
@@ -141,6 +143,8 @@ struct ModuleInfo {
 struct ClientInfo {
   uint id;
 
+  uint64_t serial = SPA_ID_INVALID;
+
   std::string name;
 
   std::string access;
@@ -150,6 +154,8 @@ struct ClientInfo {
 
 struct DeviceInfo {
   uint id;
+
+  uint64_t serial = SPA_ID_INVALID;
 
   std::string name;
 

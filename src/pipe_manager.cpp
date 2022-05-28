@@ -42,7 +42,9 @@ struct proxy_data {
 
   PipeManager* pm = nullptr;
 
-  uint id = 0U;
+  uint id = SPA_ID_INVALID;
+
+  uint64_t serial = SPA_ID_INVALID;
 };
 
 void on_removed_proxy(void* data) {
@@ -1189,6 +1191,20 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Link) == 0) {
+    uint64_t serial;
+
+    if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+      if (!util::str_to_num(std::string(object_serial), serial)) {
+        util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
+                      "This link cannot be handled by EasyEffects.");
+        return;
+      }
+    } else {
+      util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
+                    "This link cannot be handled by EasyEffects.");
+      return;
+    }
+
     auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(proxy_data)));
 
     auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
@@ -1196,6 +1212,7 @@ void on_registry_global(void* data,
     pd->proxy = proxy;
     pd->pm = pm;
     pd->id = id;
+    pd->serial = serial;
 
     pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
@@ -1203,6 +1220,7 @@ void on_registry_global(void* data,
     auto link_info = link_info_from_props(props);
 
     link_info.id = id;
+    link_info.serial = serial;
 
     pm->list_links.push_back(link_info);
 
@@ -1220,6 +1238,20 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Port) == 0) {
+    uint64_t serial;
+
+    if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+      if (!util::str_to_num(std::string(object_serial), serial)) {
+        util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
+                      "This port cannot be handled by EasyEffects.");
+        return;
+      }
+    } else {
+      util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
+                    "This port cannot be handled by EasyEffects.");
+      return;
+    }
+
     auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_PORT, sizeof(proxy_data)));
 
     auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
@@ -1227,12 +1259,14 @@ void on_registry_global(void* data,
     pd->proxy = proxy;
     pd->pm = pm;
     pd->id = id;
+    pd->serial = serial;
 
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &port_proxy_events, pd);
 
     auto port_info = port_info_from_props(props);
 
     port_info.id = id;
+    port_info.serial = serial;
 
     // std::cout << port_info.name << "\t" << port_info.audio_channel << "\t" << port_info.direction << "\t"
     //           << port_info.format_dsp << "\t" << port_info.port_id << "\t" << port_info.node_id << std::endl;
@@ -1243,6 +1277,20 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Module) == 0) {
+    uint64_t serial;
+
+    if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+      if (!util::str_to_num(std::string(object_serial), serial)) {
+        util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
+                      "This module cannot be handled by EasyEffects.");
+        return;
+      }
+    } else {
+      util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
+                    "This module cannot be handled by EasyEffects.");
+      return;
+    }
+
     auto* proxy =
         static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_MODULE, sizeof(proxy_data)));
 
@@ -1251,11 +1299,12 @@ void on_registry_global(void* data,
     pd->proxy = proxy;
     pd->pm = pm;
     pd->id = id;
+    pd->serial = serial;
 
     pw_module_add_listener(proxy, &pd->object_listener, &module_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &module_proxy_events, pd);
 
-    ModuleInfo m_info{.id = id};
+    ModuleInfo m_info{.id = id, .serial = serial};
 
     if (const auto* name = spa_dict_lookup(props, PW_KEY_MODULE_NAME)) {
       m_info.name = name;
@@ -1267,6 +1316,20 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Client) == 0) {
+    uint64_t serial;
+
+    if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+      if (!util::str_to_num(std::string(object_serial), serial)) {
+        util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
+                      "This client cannot be handled by EasyEffects.");
+        return;
+      }
+    } else {
+      util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
+                    "This client cannot be handled by EasyEffects.");
+      return;
+    }
+
     auto* proxy =
         static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_CLIENT, sizeof(proxy_data)));
 
@@ -1275,11 +1338,12 @@ void on_registry_global(void* data,
     pd->proxy = proxy;
     pd->pm = pm;
     pd->id = id;
+    pd->serial = serial;
 
     pw_client_add_listener(proxy, &pd->object_listener, &client_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &client_proxy_events, pd);
 
-    ClientInfo c_info{.id = id};
+    ClientInfo c_info{.id = id, .serial = serial};
 
     pm->list_clients.push_back(c_info);
 
@@ -1315,6 +1379,20 @@ void on_registry_global(void* data,
       const std::string media_class = key_media_class;
 
       if (media_class == "Audio/Device") {
+        uint64_t serial;
+
+        if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
+          if (!util::str_to_num(std::string(object_serial), serial)) {
+            util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
+                          "This device cannot be handled by EasyEffects.");
+            return;
+          }
+        } else {
+          util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
+                        "This device cannot be handled by EasyEffects.");
+          return;
+        }
+
         auto* proxy =
             static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_DEVICE, sizeof(proxy_data)));
 
@@ -1323,11 +1401,12 @@ void on_registry_global(void* data,
         pd->proxy = proxy;
         pd->pm = pm;
         pd->id = id;
+        pd->serial = serial;
 
         pw_device_add_listener(proxy, &pd->object_listener, &device_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &device_proxy_events, pd);
 
-        DeviceInfo d_info{.id = id, .media_class = media_class};
+        DeviceInfo d_info{.id = id, .serial = serial, .media_class = media_class};
 
         pm->list_devices.push_back(d_info);
       }
