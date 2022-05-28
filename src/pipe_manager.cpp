@@ -676,7 +676,7 @@ void on_link_info(void* object, const struct pw_link_info* info) {
   LinkInfo link_copy;
 
   for (auto& l : ld->pm->list_links) {
-    if (l.id == ld->id) {
+    if (l.serial == ld->serial) {
       l.state = info->state;
 
       link_copy = l;
@@ -705,7 +705,7 @@ void on_destroy_link_proxy(void* data) {
   spa_hook_remove(&ld->proxy_listener);
 
   ld->pm->list_links.erase(std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(),
-                                          [=](const auto& n) { return n.id == ld->id; }),
+                                          [=](const auto& n) { return n.serial == ld->serial; }),
                            ld->pm->list_links.end());
 }
 
@@ -715,7 +715,7 @@ void on_destroy_port_proxy(void* data) {
   spa_hook_remove(&pd->proxy_listener);
 
   pd->pm->list_ports.erase(std::remove_if(pd->pm->list_ports.begin(), pd->pm->list_ports.end(),
-                                          [=](const auto& n) { return n.id == pd->id; }),
+                                          [=](const auto& n) { return n.serial == pd->serial; }),
                            pd->pm->list_ports.end());
 }
 
@@ -775,7 +775,7 @@ void on_destroy_client_proxy(void* data) {
   spa_hook_remove(&cd->proxy_listener);
 
   cd->pm->list_clients.erase(std::remove_if(cd->pm->list_clients.begin(), cd->pm->list_clients.end(),
-                                            [=](const auto& n) { return n.id == cd->id; }),
+                                            [=](const auto& n) { return n.serial == cd->serial; }),
                              cd->pm->list_clients.end());
 }
 
