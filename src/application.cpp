@@ -150,8 +150,6 @@ void on_startup(GApplication* gapp) {
     NodeInfo target_node;
 
     for (const auto& [serial, node] : self->pm->node_map) {
-      target_node = node;
-
       if (node.device_id == device.id && node.media_class == self->pm->media_class_sink) {
         target_node = node;
 
@@ -159,7 +157,7 @@ void on_startup(GApplication* gapp) {
       }
     }
 
-    if (target_node.id != SPA_ID_INVALID) {
+    if (target_node.serial != SPA_ID_INVALID) {
       auto name = util::gsettings_get_string(self->soe_settings, "output-device");
 
       if (target_node.name == name) {
@@ -194,7 +192,7 @@ void on_startup(GApplication* gapp) {
 
         if (device_id != SPA_ID_INVALID) {
           for (const auto& device : self->pm->list_devices) {
-            if (device.id == device_id) {
+            if (device.serial == device_id) {
               self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
 
               break;
@@ -226,7 +224,7 @@ void on_startup(GApplication* gapp) {
 
         if (device_id != SPA_ID_INVALID) {
           for (const auto& device : self->pm->list_devices) {
-            if (device.id == device_id) {
+            if (device.serial == device_id) {
               self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
 
               break;
