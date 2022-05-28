@@ -64,7 +64,7 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Do Not Process the Monitors of Devices</property>
+                        <property name="title" translatable="yes">Ignore Streams from Monitor of Devices</property>
                         <property name="activatable-widget">exclude_monitor_streams</property>
                         <child>
                             <object class="GtkSwitch" id="exclude_monitor_streams">
