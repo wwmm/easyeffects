@@ -277,7 +277,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   bool dev_exists = false;
 
   for (const auto& [serial, node] : pm->node_map) {
-    if (node.id == pm->output_device.id) {
+    if (node.serial == pm->output_device.serial) {
       dev_exists = true;
 
       break;
