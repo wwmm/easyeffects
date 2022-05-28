@@ -5,6 +5,6 @@
         <link type="guide" xref="index#ui"/>
     </info>
     <title>Enable or Disable an Application</title>
-    <p>The user can choose which applications have effects applied through the switch next to its name. "Process All Inputs/Outputs" option in <link xref="general" its:withinText="yes">General Settings</link> can be activated to always apply effects to whichever application.
+    <p>The user can choose which applications have effects applied through the Enable checkbutton. "Process All Inputs/Outputs" option in <link xref="general" its:withinText="yes">General Settings</link> can be activated to always apply effects to whichever application.
     </p>
 </page>

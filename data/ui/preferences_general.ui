@@ -10,7 +10,7 @@
                 <property name="title" translatable="yes">Service</property>
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Start Service at Login</property>
+                        <property name="title" translatable="yes">Launch Service at System Startup</property>
                         <property name="activatable-widget">enable_autostart</property>
                         <child>
                             <object class="GtkSwitch" id="enable_autostart">
@@ -23,7 +23,7 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Shutdown on Window Close</property>
+                        <property name="title" translatable="yes">Shutdown on Window Closing</property>
                         <property name="activatable-widget">shutdown_on_window_close</property>
                         <child>
                             <object class="GtkSwitch" id="shutdown_on_window_close">
@@ -40,7 +40,7 @@
                 <property name="title" translatable="yes">Audio</property>
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Process All Outputs</property>
+                        <property name="title" translatable="yes">Process All Output Streams</property>
                         <property name="activatable-widget">process_all_outputs</property>
                         <child>
                             <object class="GtkSwitch" id="process_all_outputs">
@@ -52,10 +52,22 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Process All Inputs</property>
+                        <property name="title" translatable="yes">Process All Input Streams</property>
                         <property name="activatable-widget">process_all_inputs</property>
                         <child>
                             <object class="GtkSwitch" id="process_all_inputs">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Ignore Streams from Monitor of Devices</property>
+                        <property name="activatable-widget">exclude_monitor_streams</property>
+                        <child>
+                            <object class="GtkSwitch" id="exclude_monitor_streams">
                                 <property name="valign">center</property>
                             </object>
                         </child>
@@ -76,22 +88,10 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Reset Our Devices Volume on Startup</property>
+                        <property name="title" translatable="yes">Reset Volume of EasyEffects Virtual Devices at Startup</property>
                         <property name="activatable-widget">reset_volume_on_startup</property>
                         <child>
                             <object class="GtkSwitch" id="reset_volume_on_startup">
-                                <property name="valign">center</property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Exclude Device Monitor Streams</property>
-                        <property name="activatable-widget">exclude_monitor_streams</property>
-                        <child>
-                            <object class="GtkSwitch" id="exclude_monitor_streams">
                                 <property name="valign">center</property>
                             </object>
                         </child>

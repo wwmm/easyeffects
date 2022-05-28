@@ -5,7 +5,7 @@
         <link type="guide" xref="index#ui" />
     </info>
     <title>Advanced Information</title>
-    <p>EasyEffects audio processing is composed by 3 main stages. Each of them needs a specific audio format and sampling rate.</p>
-    <p>The format is Float 32 bit, but some apps can use a different one. It is shown for every app in the applications list. The sampling rate instead is reported in the bottom bar.</p>
-    <p>Another important information is the latency introduced by the audio processing. This in shown in milliseconds, near the sampling rate.</p>
+    <p>EasyEffects audio processing is composed by three main stages. Each of them needs a specific audio format and sampling rate.</p>
+    <p>In the bottom bar is reported the pipeline output sampling rate (in kHz) and the latency (in ms) introduced by the audio processing stage.</p>
+    <p>Every stream in applications list also reports its own latency and sampling rate, along with status and format.</p>
 </page>

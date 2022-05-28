@@ -8,15 +8,33 @@
     <terms>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Show Spectrum</em>
+                <em style="strong" its:withinText="nested">Enabled</em>
             </title>
-            <p>Enable or Disable the Spectrum.</p>
+            <p>Show or hide the Spectrum.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Spectrum Type</em>
+                <em style="strong" its:withinText="nested">Shape</em>
             </title>
-            <p>Choose between drawing lines or bars.</p>
+            <p>Choose the style of the animation.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Points</em>
+            </title>
+            <p>Number of points/bars on the x axis.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Height</em>
+            </title>
+            <p>Changes the height of the Spectrum.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Line Width</em>
+            </title>
+            <p>The width of a single bar.</p>
         </item>
         <item>
             <title>
@@ -26,50 +44,32 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Border</em>
+                <em style="strong" its:withinText="nested">Show Bars Border</em>
             </title>
-            <p>Show bar border.</p>
+            <p>Draw bars with borders.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Spectrum Color</em>
+                <em style="strong" its:withinText="nested">Rounded Corners</em>
             </title>
-            <p>Choose the color of the Spectrum.
+            <p>Draw bars with rounded corners.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Color</em>
+            </title>
+            <p>Choose the color of the Spectrum components.
             </p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Axis Color</em>
-            </title>
-            <p>Choose the color of the frequencies axis.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Points</em>
-            </title>
-            <p>Number of points displayed.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Height</em>
-            </title>
-            <p>Height of the Spectrum.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Line Width</em>
-            </title>
-            <p>Bar width. Higher values give more spacing between bars.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Minimum</em>
+                <em style="strong" its:withinText="nested">Minimum Frequency Range</em>
             </title>
             <p>Lower end frequency of the Spectrum.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Maximum</em>
+                <em style="strong" its:withinText="nested">Maximum Frequency Range</em>
             </title>
             <p>Upper end frequency of the Spectrum.</p>
         </item>
