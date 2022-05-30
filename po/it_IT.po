@@ -118,7 +118,7 @@ msgstr "Questa release aggiunge le seguenti funzionalità:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "L'interfaccia del plugin pitch è stata migliorata"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "Our application icon is now compatible with desktops that uses QT"
@@ -171,6 +171,8 @@ msgid ""
 "Fixed a bug where EasyEffeects crashed when the number of points displayed "
 "in the spectrum was changed while"
 msgstr ""
+"Corretto un bug per il quale EasyEffects andava in crash quando il numero di "
+"punti mostrati nello spettro era cambiato mentre"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid "our pipeline was active and the spectrum widget was visible"
@@ -2625,7 +2627,7 @@ msgstr "Processa Tutto in Ingresso"
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: data/ui/preferences_general.ui:79
+#: data/ui/preferences_general.ui:79 data/ui/preferences_general.ui:67
 msgid "Use Cubic Volume"
 msgstr "Usa Volume Cubico"
 
@@ -3216,11 +3218,29 @@ msgstr "Importa File Modello"
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
-#~ msgid "Start Service at Login"
-#~ msgstr "Esegui Servizio all'Avvio"
+#: data/ui/preferences_general.ui:13
+msgid "Start Service at Login"
+msgstr "Esegui Servizio all'Avvio"
 
-#~ msgid "Reset Our Devices Volume on Startup"
-#~ msgstr "Reimposta il Volume di EasyEffects all'Avvio"
+#: data/ui/preferences_general.ui:79
+msgid "Reset Our Devices Volume on Startup"
+msgstr "Reimposta il Volume di EasyEffects all'Avvio"
+
+#: data/ui/preferences_general.ui:26
+msgid "Shutdown on Window Close"
+msgstr "Termina alla Chiusura della Finestra"
+
+#: data/ui/preferences_general.ui:43
+msgid "Process All Outputs"
+msgstr "Processa Tutto in Uscita"
+
+#: data/ui/preferences_general.ui:55
+msgid "Process All Inputs"
+msgstr "Processa Tutto in Ingresso"
+
+#: data/ui/preferences_general.ui:91
+msgid "Exclude Device Monitor Streams"
+msgstr ""
 
 #~ msgid "Activate"
 #~ msgstr "Abilita"
