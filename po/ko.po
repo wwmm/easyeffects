@@ -27,7 +27,7 @@ msgstr "EasyEffects"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
+msgstr "PipeWire 에서 작동하는 음향효과 프로그램"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
@@ -40,17 +40,16 @@ msgid ""
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
 "EasyEffects는 고급 오디오 처리 도구 입니다. 이퀄라이저, 리미터, 컴프레서, 리"
-"버브 툴 등이 포함되며, 이것들은 단지 일부일 뿐입니다. 예를 들자면 스펙트럼 분"
-"석기도 내장되어 있습니다."
+"버브 툴 등이 포함되며, 이외에도 여러가지 플러그인이 있습니다. 예를 들자면 스"
+"펙트럼 분석기도 내장되어 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire 오"
-"디오 서버 만을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 대신 사"
-"용하십시오."
+"EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire 만"
+"을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 사용하십시오."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -68,8 +67,8 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 이펙트"
-"를 걸 수 있습니다. 예를 들어 오디오 레코딩 할 때 유용하며 음성 대화 시에도 효"
+"EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 음향효"
+"과를 걸 수 있습니다. 예를 들어 오디오 녹음 할 때 유용하며 음성 대화 시에도 효"
 "과를 발휘합니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
@@ -111,33 +110,37 @@ msgstr "이 릴리스에는 다음 기능이 추가되었습니다:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "피치 플러그인의 인터페이스가 개선되었습니다"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "Our application icon is now compatible with desktops that uses QT"
-msgstr ""
+msgstr "이제 응용 프로그램 아이콘이 QT를 사용하는 데스크톱과 호환됩니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "Our blocklist code will use the `application.id` tag if the stream sets it"
 msgstr ""
+"스트림이 설정하는 경우 차단 목록 코드는 `application.id` 태그를 사용합니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
 "applications list shown in our `Players/Recorders`"
 msgstr ""
+"마우스 스크롤 문제를 방지하려면 `재생/녹음`에 표시된 애플리케이션 목록의 항목"
+"을 스크롤하십시오"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid ""
 "tab do not show a volume scale anymore. More details about the problem and "
 "the solution for it can be found on #1211"
 msgstr ""
+"탭에 더 이상 볼륨 스케일이 표시되지 않습니다. 문제 및 해결 방법에 대한 자세"
+"한 내용은 #1211에서 확인할 수 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "and #1427"
-msgstr "바이패스"
+msgstr "그리고 #1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
@@ -241,7 +244,6 @@ msgid "This release adds the following feature:"
 msgstr "이 릴리스에는 다음 기능이 추가되었습니다:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
-#, fuzzy
 msgid ""
 "The crossfeed filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
@@ -688,18 +690,15 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
-#, fuzzy
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "이퀄라이저, 컴프레서 그리고 기타 오디오 효과"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
-#, fuzzy
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "리미터;컴프레서;리버브;이퀄라이저;자동음량조절;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
-#, fuzzy
 msgid "\"Presets\""
 msgstr "\"프리셋\""
 
@@ -712,12 +711,10 @@ msgid "Exclude"
 msgstr ""
 
 #: data/ui/app_info.ui:236
-#, fuzzy
 msgid "Mute Application"
 msgstr "응용 프로그램 음소거"
 
 #: data/ui/app_info.ui:259
-#, fuzzy
 msgid "Application Volume"
 msgstr "응용 프로그램 음량"
 
@@ -744,31 +741,26 @@ msgstr ""
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
 #: src/presets_menu.cpp:112 src/presets_menu.cpp:262 src/presets_menu.cpp:263
 #: src/presets_menu.cpp:280 src/presets_menu.cpp:281
-#, fuzzy
 msgid "Presets"
 msgstr "프리셋"
 
 #: data/ui/application_window.ui:54
-#, fuzzy
 msgid "Presets Menu"
 msgstr "프리셋 메뉴"
 
 #: data/ui/application_window.ui:61 data/ui/application_window.ui:66
-#, fuzzy
 msgid "Global Bypass"
-msgstr "Global Bypass"
+msgstr "전역 Bypass"
 
 #: data/ui/application_window.ui:76
 msgid "Primary Menu"
 msgstr ""
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "EasyEffects Window"
 msgstr "EasyEffects 윈도우"
 
 #: data/ui/apps_box.ui:21
-#, fuzzy
 msgid "Applications List"
 msgstr "응용 프로그램 목록"
 
@@ -781,36 +773,30 @@ msgid "No Audio Application Available"
 msgstr ""
 
 #: data/ui/autogain.ui:19
-#, fuzzy
 msgid "Target"
-msgstr "Target"
+msgstr "대상"
 
 #: data/ui/autogain.ui:53
 msgid "Maximum History"
 msgstr ""
 
 #: data/ui/autogain.ui:87
-#, fuzzy
 msgid "Reference"
-msgstr "Reference"
+msgstr "참조"
 
 #: data/ui/autogain.ui:99 data/ui/autogain.ui:157
-#, fuzzy
 msgid "Momentary"
 msgstr "Momentary"
 
 #: data/ui/autogain.ui:100 data/ui/autogain.ui:187
-#, fuzzy
 msgid "Short-Term"
 msgstr "Short-Term"
 
 #: data/ui/autogain.ui:101 data/ui/autogain.ui:217
-#, fuzzy
 msgid "Integrated"
 msgstr "Integrated"
 
 #: data/ui/autogain.ui:102
-#, fuzzy
 msgid "Geometric Mean (MSI)"
 msgstr "Geometric Mean"
 
@@ -841,12 +827,10 @@ msgstr "Geometric Mean"
 #: data/ui/multiband_gate.ui:903 data/ui/multiband_gate.ui:1263
 #: data/ui/pitch.ui:75 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
 #: data/ui/stereo_tools.ui:13
-#, fuzzy
 msgid "Bypass"
-msgstr "Bypass"
+msgstr "바이패스"
 
 #: data/ui/autogain.ui:134
-#, fuzzy
 msgid "Reset History"
 msgstr "히스토리 초기화"
 
@@ -856,19 +840,16 @@ msgid "Relative"
 msgstr "Relative"
 
 #: data/ui/autogain.ui:277
-#, fuzzy
 msgid "Range"
 msgstr "Range"
 
 #: data/ui/autogain.ui:310 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
-#, fuzzy
 msgid "Loudness"
 msgstr "Loudness"
 
 #: data/ui/autogain.ui:342
-#, fuzzy
 msgid "Output Gain"
-msgstr "Output Gain"
+msgstr "아웃풋 게인"
 
 #: data/ui/autogain.ui:379 data/ui/bass_enhancer.ui:264
 #: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
@@ -882,9 +863,8 @@ msgstr "Output Gain"
 #: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
 #: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
 #: src/application_ui.cpp:245
-#, fuzzy
 msgid "Input"
-msgstr "입력"
+msgstr "인풋"
 
 #: data/ui/autogain.ui:398 data/ui/bass_enhancer.ui:283
 #: data/ui/bass_loudness.ui:163 data/ui/compressor.ui:1013
@@ -895,9 +875,8 @@ msgstr "입력"
 #: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
 #: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:325 data/ui/reverb.ui:383
 #: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
-#, fuzzy
 msgid "Plugin Input Gain"
-msgstr "Plugin Input Gain"
+msgstr "플러그인 인풋 게인"
 
 #: data/ui/autogain.ui:463 data/ui/bass_enhancer.ui:348
 #: data/ui/bass_loudness.ui:61 data/ui/bass_loudness.ui:228
@@ -913,9 +892,8 @@ msgstr "Plugin Input Gain"
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
 #: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
 #: src/application_ui.cpp:244
-#, fuzzy
 msgid "Output"
-msgstr "출력"
+msgstr "아웃풋"
 
 #: data/ui/autogain.ui:482 data/ui/bass_enhancer.ui:367
 #: data/ui/bass_loudness.ui:247 data/ui/compressor.ui:1097
@@ -926,9 +904,8 @@ msgstr "출력"
 #: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
 #: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:409 data/ui/reverb.ui:467
 #: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
-#, fuzzy
 msgid "Plugin Output Gain"
-msgstr "Plugin Output Gain"
+msgstr "플러그인 아웃풋 게인"
 
 #: data/ui/autogain.ui:545 data/ui/bass_enhancer.ui:461
 #: data/ui/bass_loudness.ui:310 data/ui/compressor.ui:1160
@@ -940,7 +917,6 @@ msgstr "Plugin Output Gain"
 #: data/ui/maximizer.ui:343 data/ui/multiband_compressor.ui:556
 #: data/ui/multiband_gate.ui:1791 data/ui/pitch.ui:472 data/ui/reverb.ui:530
 #: data/ui/rnnoise.ui:303 data/ui/stereo_tools.ui:718
-#, fuzzy
 msgid "Reset"
 msgstr "리셋"
 
@@ -958,7 +934,6 @@ msgid "Using"
 msgstr "다음 사용 중"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
-#, fuzzy
 msgid "Device"
 msgstr "장치"
 
@@ -966,22 +941,18 @@ msgstr "장치"
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
 #: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
 #: data/ui/presets_menu.ui:203
-#, fuzzy
 msgid "Name"
 msgstr "이름"
 
 #: data/ui/autoload_row.ui:64
-#, fuzzy
 msgid "Profile"
 msgstr "프로필"
 
 #: data/ui/autoload_row.ui:89
-#, fuzzy
 msgid "Preset"
 msgstr "프리셋"
 
 #: data/ui/autoload_row.ui:114 src/plugins_box.cpp:502
-#, fuzzy
 msgid "Remove"
 msgstr "제거"
 
@@ -992,17 +963,14 @@ msgid "Listen"
 msgstr "듣는 중"
 
 #: data/ui/bass_enhancer.ui:36 data/ui/exciter.ui:36
-#, fuzzy
 msgid "Blend Harmonics"
 msgstr "Blend Harmonics"
 
 #: data/ui/bass_enhancer.ui:48 data/ui/exciter.ui:48
-#, fuzzy
 msgid "3rd"
 msgstr "3rd"
 
 #: data/ui/bass_enhancer.ui:91 data/ui/exciter.ui:91
-#, fuzzy
 msgid "2nd"
 msgstr "2nd"
 
@@ -1018,17 +986,14 @@ msgid "Harmonics"
 msgstr "Harmonics"
 
 #: data/ui/bass_enhancer.ui:179 data/ui/exciter.ui:179
-#, fuzzy
 msgid "Scope"
 msgstr "Scope"
 
 #: data/ui/bass_enhancer.ui:213
-#, fuzzy
 msgid "Floor"
 msgstr "Floor"
 
 #: data/ui/bass_enhancer.ui:242
-#, fuzzy
 msgid "Floor Value"
 msgstr "Floor Value"
 
@@ -1041,47 +1006,39 @@ msgid "Application Name"
 msgstr ""
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "응용 프로그램 음소거"
+msgstr "응용 프로그램 제외"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "응용 프로그램 목록"
+msgstr "제외된 프로그램 목록"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "응용 프로그램 음소거"
+msgstr "제외된 프로그램 보기"
 
 #: data/ui/compressor.ui:38 src/plugin_name.cpp:28
-#, fuzzy
 msgid "Compressor"
-msgstr "Compressor"
+msgstr "컴프레서"
 
 #: data/ui/compressor.ui:50 data/ui/compressor.ui:437 data/ui/compressor.ui:732
 #: data/ui/deesser.ui:65 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:130
 #: data/ui/limiter.ui:45 data/ui/multiband_compressor_band.ui:449
 #: data/ui/multiband_gate.ui:33 data/ui/pitch.ui:22
-#, fuzzy
 msgid "Mode"
 msgstr "모드"
 
 #: data/ui/compressor.ui:61 data/ui/multiband_compressor_band.ui:99
-#, fuzzy
 msgid "Downward"
 msgstr "Downward"
 
 #: data/ui/compressor.ui:62 data/ui/multiband_compressor_band.ui:100
-#, fuzzy
 msgid "Upward"
 msgstr "Upward"
 
 #: data/ui/compressor.ui:63 data/ui/multiband_compressor_band.ui:101
-#, fuzzy
 msgid "Boosting"
-msgstr "Boosting"
+msgstr "증폭"
 
 #: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:88
 #, fuzzy
@@ -1102,28 +1059,24 @@ msgstr "Boost Amount"
 #: data/ui/limiter.ui:500 data/ui/multiband_compressor_band.ui:186
 #: data/ui/multiband_gate.ui:223 data/ui/multiband_gate.ui:583
 #: data/ui/multiband_gate.ui:943 data/ui/multiband_gate.ui:1303
-#, fuzzy
 msgid "Attack"
-msgstr "Attack"
+msgstr "어택"
 
 #: data/ui/compressor.ui:173 data/ui/multiband_compressor_band.ui:166
-#, fuzzy
 msgid "Time"
-msgstr "Time"
+msgstr "타임"
 
 #: data/ui/compressor.ui:183 data/ui/deesser.ui:300 data/ui/gate.ui:184
 #: data/ui/limiter.ui:345 data/ui/maximizer.ui:29
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate.ui:293
 #: data/ui/multiband_gate.ui:653 data/ui/multiband_gate.ui:1013
 #: data/ui/multiband_gate.ui:1373
-#, fuzzy
 msgid "Threshold"
 msgstr "Threshold"
 
 #: data/ui/compressor.ui:210 data/ui/multiband_compressor_band.ui:222
-#, fuzzy
 msgid "Attack Time"
-msgstr "Attack Time"
+msgstr "어택 타임"
 
 #: data/ui/compressor.ui:233 data/ui/multiband_compressor_band.ui:247
 #, fuzzy
@@ -1135,14 +1088,12 @@ msgstr "Attack Threshold"
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate.ui:258
 #: data/ui/multiband_gate.ui:618 data/ui/multiband_gate.ui:978
 #: data/ui/multiband_gate.ui:1338
-#, fuzzy
 msgid "Release"
-msgstr "Release"
+msgstr "릴리스"
 
 #: data/ui/compressor.ui:267 data/ui/multiband_compressor_band.ui:274
-#, fuzzy
 msgid "Release Time"
-msgstr "Release Time"
+msgstr "릴리스 타임"
 
 #: data/ui/compressor.ui:292 data/ui/multiband_compressor_band.ui:302
 #, fuzzy
@@ -1190,13 +1141,11 @@ msgstr "Peak"
 #: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:203
 #: data/ui/multiband_gate.ui:563 data/ui/multiband_gate.ui:923
 #: data/ui/multiband_gate.ui:1283
-#, fuzzy
 msgid "RMS"
 msgstr "RMS"
 
 #: data/ui/compressor.ui:449 data/ui/compressor.ui:801
 #: data/ui/multiband_compressor_band.ui:462
-#, fuzzy
 msgid "Low-Pass"
 msgstr "Low-Pass"
 
@@ -1206,59 +1155,49 @@ msgid "Uniform"
 msgstr "Uniform"
 
 #: data/ui/compressor.ui:457 data/ui/multiband_compressor_band.ui:470
-#, fuzzy
 msgid "Sidechain Mode"
 msgstr "Sidechain Mode"
 
 #: data/ui/compressor.ui:475 data/ui/multiband_compressor_band.ui:477
-#, fuzzy
 msgid "Source"
 msgstr "소스"
 
 #: data/ui/compressor.ui:485 data/ui/multiband_compressor_band.ui:488
-#, fuzzy
 msgid "Middle"
-msgstr "Middle"
+msgstr "중간"
 
 #: data/ui/compressor.ui:486 data/ui/multiband_compressor_band.ui:489
-#, fuzzy
 msgid "Side"
 msgstr "Side"
 
 #: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
 #: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:508
 #: data/ui/stereo_tools.ui:159
-#, fuzzy
 msgid "Left"
-msgstr "Left"
+msgstr "왼쪽"
 
 #: data/ui/compressor.ui:488 data/ui/delay.ui:61 data/ui/equalizer.ui:49
 #: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:519
 #: data/ui/stereo_tools.ui:214
-#, fuzzy
 msgid "Right"
-msgstr "Right"
+msgstr "오른쪽"
 
 #: data/ui/compressor.ui:495 data/ui/multiband_compressor.ui:98
 #: data/ui/multiband_compressor_band.ui:498
-#, fuzzy
 msgid "Sidechain Source"
 msgstr "Sidechain Source"
 
 #: data/ui/compressor.ui:524 data/ui/equalizer_band.ui:98
-#, fuzzy
 msgid "Type"
 msgstr "타입"
 
 #: data/ui/compressor.ui:548
-#, fuzzy
 msgid "Feed-forward"
 msgstr "Feed-forward"
 
 #: data/ui/compressor.ui:549
-#, fuzzy
 msgid "Feed-back"
-msgstr "Feed-back"
+msgstr "피드백"
 
 #: data/ui/compressor.ui:550
 #, fuzzy
@@ -1266,18 +1205,15 @@ msgid "External"
 msgstr "External"
 
 #: data/ui/compressor.ui:557
-#, fuzzy
 msgid "Sidechain Type"
-msgstr "Sidechain Type"
+msgstr "Sidechain 타입"
 
 #: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
 #: src/plugins_box.cpp:532
-#, fuzzy
 msgid "Input Device"
 msgstr "입력 장치"
 
 #: data/ui/compressor.ui:592
-#, fuzzy
 msgid "PreAmplification"
 msgstr "PreAmplification"
 
@@ -2654,7 +2590,7 @@ msgstr ""
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: data/ui/preferences_general.ui:79
+#: data/ui/preferences_general.ui:79 data/ui/preferences_general.ui:67
 msgid "Use Cubic Volume"
 msgstr ""
 
@@ -3271,6 +3207,30 @@ msgstr "APO 프리셋 파일 임포트"
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "제거"
+
+#: data/ui/preferences_general.ui:13
+msgid "Start Service at Login"
+msgstr ""
+
+#: data/ui/preferences_general.ui:26
+msgid "Shutdown on Window Close"
+msgstr ""
+
+#: data/ui/preferences_general.ui:43
+msgid "Process All Outputs"
+msgstr ""
+
+#: data/ui/preferences_general.ui:55
+msgid "Process All Inputs"
+msgstr ""
+
+#: data/ui/preferences_general.ui:79
+msgid "Reset Our Devices Volume on Startup"
+msgstr ""
+
+#: data/ui/preferences_general.ui:91
+msgid "Exclude Device Monitor Streams"
+msgstr ""
 
 #, fuzzy
 #~ msgid "Add to Blocklist"
