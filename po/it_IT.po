@@ -123,11 +123,15 @@ msgstr "L'interfaccia del plugin pitch è stata migliorata"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr ""
+"La nostra icona dell'applicazione è ora compatibile con i desktop che "
+"utilizzano QT"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "Our blocklist code will use the `application.id` tag if the stream sets it"
 msgstr ""
+"Il nostro codice blocklist utilizzerà il tag `application.id` se lo stream "
+"lo imposta"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
@@ -140,11 +144,12 @@ msgid ""
 "tab do not show a volume scale anymore. More details about the problem and "
 "the solution for it can be found on #1211"
 msgstr ""
+"la scheda non mostra più una scala del volume. Maggiori dettagli sul "
+"problema e la soluzione per esso possono essere trovati su #1211"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "and #1427"
-msgstr "Banda 1"
+msgstr "e #1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
@@ -153,9 +158,8 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
-#, fuzzy
 msgid "Many translation updates"
-msgstr "Traduzioni aggiornate"
+msgstr "Molti aggiornamenti di traduzione"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
@@ -176,13 +180,15 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid "our pipeline was active and the spectrum widget was visible"
-msgstr ""
+msgstr "la nostra pipeline era attiva e il widget dello spettro era visibile"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
+"Il valore di latenza della pipeline visualizzato nella nostra finestra "
+"poteva essere errato in alcune situazioni. Questo è stato risolto."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
@@ -3240,7 +3246,7 @@ msgstr "Processa Tutto in Ingresso"
 
 #: data/ui/preferences_general.ui:91
 msgid "Exclude Device Monitor Streams"
-msgstr ""
+msgstr "Escludi i flussi di monitoraggio del dispositivo"
 
 #~ msgid "Activate"
 #~ msgstr "Abilita"
