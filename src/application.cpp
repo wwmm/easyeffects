@@ -180,23 +180,11 @@ void on_startup(GApplication* gapp) {
           return;
         }
 
-        uint device_id = SPA_ID_INVALID;
+        for (const auto& device : self->pm->list_devices) {
+          if (name.find(device.bus_path) != std::string::npos) {
+            self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
 
-        for (const auto& [serial, node] : self->pm->node_map) {
-          if (node.name == name) {
-            device_id = node.device_id;
-
-            break;
-          }
-        }
-
-        if (device_id != SPA_ID_INVALID) {
-          for (const auto& device : self->pm->list_devices) {
-            if (device.serial == device_id) {
-              self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
-
-              break;
-            }
+            return;
           }
         }
       }),
@@ -212,23 +200,11 @@ void on_startup(GApplication* gapp) {
           return;
         }
 
-        uint device_id = SPA_ID_INVALID;
+        for (const auto& device : self->pm->list_devices) {
+          if (name.find(device.bus_path) != std::string::npos) {
+            self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
 
-        for (const auto& [serial, node] : self->pm->node_map) {
-          if (node.name == name) {
-            device_id = node.device_id;
-
-            break;
-          }
-        }
-
-        if (device_id != SPA_ID_INVALID) {
-          for (const auto& device : self->pm->list_devices) {
-            if (device.serial == device_id) {
-              self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
-
-              break;
-            }
+            return;
           }
         }
       }),
