@@ -117,7 +117,7 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    if (device.id == holder->info->device_id) {
+    if (holder->info->name.find(device.bus_path) != std::string::npos) {
       device_profile = device.input_route_name;
 
       break;
@@ -165,7 +165,7 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    if (device.id == holder->info->device_id) {
+    if (holder->info->name.find(device.bus_path) != std::string::npos) {
       device_profile = device.output_route_name;
 
       break;
