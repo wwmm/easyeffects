@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-28 11:37-0300\n"
-"PO-Revision-Date: 2022-05-06 00:14+0000\n"
-"Last-Translator: fjsevilla <fjsevilla2.0@gmail.com>\n"
+"PO-Revision-Date: 2022-05-30 22:18+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.13-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -118,44 +118,52 @@ msgstr "Questa release aggiunge le seguenti funzionalità:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "L'interfaccia del plugin pitch è stata migliorata"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr ""
+"La nostra icona dell'applicazione è ora compatibile con i desktop che "
+"utilizzano QT"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "Our blocklist code will use the `application.id` tag if the stream sets it"
 msgstr ""
+"Il nostro codice blocklist utilizzerà il tag `application.id` se lo stream "
+"lo imposta"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
 "applications list shown in our `Players/Recorders`"
 msgstr ""
+"Per evitare problemi con lo scroll del mouse, le voci della lista delle "
+"applicazioni nelle schede `Riproduttori/Registratori`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid ""
 "tab do not show a volume scale anymore. More details about the problem and "
 "the solution for it can be found on #1211"
 msgstr ""
+"la scheda non mostra più una scala del volume. Maggiori dettagli sul "
+"problema e la soluzione per esso possono essere trovati su #1211"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "and #1427"
-msgstr "Banda 1"
+msgstr "e #1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "When no application is available for display in the `Players/Recorders` a "
 "message will be shown to the user"
 msgstr ""
+"Quando non sono presenti applicazioni nelle schede `Riproduttori/"
+"Registratori`, sarà visualizzato un messaggio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
-#, fuzzy
 msgid "Many translation updates"
-msgstr "Traduzioni aggiornate"
+msgstr "Molti aggiornamenti di traduzione"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
@@ -171,16 +179,20 @@ msgid ""
 "Fixed a bug where EasyEffeects crashed when the number of points displayed "
 "in the spectrum was changed while"
 msgstr ""
+"Corretto un bug per il quale EasyEffects andava in crash quando il numero di "
+"punti mostrati nello spettro era cambiato mentre"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid "our pipeline was active and the spectrum widget was visible"
-msgstr ""
+msgstr "la nostra pipeline era attiva e il widget dello spettro era visibile"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
+"Il valore di latenza della pipeline visualizzato nella nostra finestra "
+"poteva essere errato in alcune situazioni. Questo è stato risolto."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
@@ -950,19 +962,19 @@ msgstr "Integrato"
 
 #: data/ui/autogain.ui:102
 msgid "Geometric Mean (MSI)"
-msgstr "Media geometrica (MSI)"
+msgstr "Media Geometrica (MBI)"
 
 #: data/ui/autogain.ui:103
 msgid "Geometric Mean (MS)"
-msgstr "Media geometrica (MSI)"
+msgstr "Media Geometrica (MB)"
 
 #: data/ui/autogain.ui:104
 msgid "Geometric Mean (MI)"
-msgstr "Media geometrica (MI)"
+msgstr "Media Geometrica (MI)"
 
 #: data/ui/autogain.ui:105
 msgid "Geometric Mean (SI)"
-msgstr "Media geometrica (SI)"
+msgstr "Media Geometrica (BI)"
 
 #: data/ui/autogain.ui:127 data/ui/bass_enhancer.ui:18
 #: data/ui/bass_loudness.ui:14 data/ui/compressor.ui:13 data/ui/convolver.ui:14
@@ -2600,10 +2612,9 @@ msgstr "Servizio"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Inizia come Servizio all'Avvio del Sistema"
 
 #: data/ui/preferences_general.ui:26
-#, fuzzy
 msgid "Shutdown on Window Closing"
 msgstr "Termina alla Chiusura della Finestra"
 
@@ -2612,26 +2623,24 @@ msgid "Audio"
 msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
-#, fuzzy
 msgid "Process All Output Streams"
-msgstr "Processa Tutto in Uscita"
+msgstr "Processa Tutto i Flussi in Uscita"
 
 #: data/ui/preferences_general.ui:55
-#, fuzzy
 msgid "Process All Input Streams"
-msgstr "Processa Tutto in Ingresso"
+msgstr "Processa Tutti i Flussi in Ingresso"
 
 #: data/ui/preferences_general.ui:67
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Ignora i Flussi dai Monitor dei Dispositivi"
 
-#: data/ui/preferences_general.ui:79
+#: data/ui/preferences_general.ui:79 data/ui/preferences_general.ui:67
 msgid "Use Cubic Volume"
 msgstr "Usa Volume Cubico"
 
 #: data/ui/preferences_general.ui:91
 msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
-msgstr ""
+msgstr "Reimposta il Volume dei Dispositivi Virtuali di EasyEffects all'Avvio"
 
 #: data/ui/preferences_general.ui:103
 msgid "Inactivity Timeout"
@@ -3216,11 +3225,29 @@ msgstr "Importa File Modello"
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
-#~ msgid "Start Service at Login"
-#~ msgstr "Esegui Servizio all'Avvio"
+#: data/ui/preferences_general.ui:13
+msgid "Start Service at Login"
+msgstr "Esegui Servizio all'Avvio"
 
-#~ msgid "Reset Our Devices Volume on Startup"
-#~ msgstr "Reimposta il Volume di EasyEffects all'Avvio"
+#: data/ui/preferences_general.ui:79
+msgid "Reset Our Devices Volume on Startup"
+msgstr "Reimposta il Volume di EasyEffects all'Avvio"
+
+#: data/ui/preferences_general.ui:26
+msgid "Shutdown on Window Close"
+msgstr "Termina alla Chiusura della Finestra"
+
+#: data/ui/preferences_general.ui:43
+msgid "Process All Outputs"
+msgstr "Processa Tutto in Uscita"
+
+#: data/ui/preferences_general.ui:55
+msgid "Process All Inputs"
+msgstr "Processa Tutto in Ingresso"
+
+#: data/ui/preferences_general.ui:91
+msgid "Exclude Device Monitor Streams"
+msgstr "Escludi i flussi di monitoraggio del dispositivo"
 
 #~ msgid "Activate"
 #~ msgstr "Abilita"

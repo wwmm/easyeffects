@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-28 11:37-0300\n"
-"PO-Revision-Date: 2022-05-02 12:10+0000\n"
+"PO-Revision-Date: 2022-05-28 16:19+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -134,9 +134,8 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "and #1427"
-msgstr "频段 1"
+msgstr "和 #1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
@@ -2461,9 +2460,8 @@ msgid "Audio"
 msgstr ""
 
 #: data/ui/preferences_general.ui:43
-#, fuzzy
 msgid "Process All Output Streams"
-msgstr "处理所有输出"
+msgstr "处理所有输出流"
 
 #: data/ui/preferences_general.ui:55
 #, fuzzy
@@ -2474,7 +2472,7 @@ msgstr "处理所有输入"
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: data/ui/preferences_general.ui:79
+#: data/ui/preferences_general.ui:79 data/ui/preferences_general.ui:67
 msgid "Use Cubic Volume"
 msgstr ""
 
@@ -3064,8 +3062,29 @@ msgstr "导入模型文件"
 msgid "RNNoise Models"
 msgstr "RNNoise 模型"
 
-#~ msgid "Start Service at Login"
-#~ msgstr "登录时启动服务"
+#: data/ui/preferences_general.ui:13
+msgid "Start Service at Login"
+msgstr "登录时启动服务"
+
+#: data/ui/preferences_general.ui:26
+msgid "Shutdown on Window Close"
+msgstr ""
+
+#: data/ui/preferences_general.ui:43
+msgid "Process All Outputs"
+msgstr "处理所有输出"
+
+#: data/ui/preferences_general.ui:55
+msgid "Process All Inputs"
+msgstr "处理所有输入"
+
+#: data/ui/preferences_general.ui:79
+msgid "Reset Our Devices Volume on Startup"
+msgstr ""
+
+#: data/ui/preferences_general.ui:91
+msgid "Exclude Device Monitor Streams"
+msgstr ""
 
 #~ msgid "Activate"
 #~ msgstr "激活"
