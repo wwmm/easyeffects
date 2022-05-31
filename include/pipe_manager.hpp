@@ -171,6 +171,8 @@ struct DeviceInfo {
 
   std::string output_route_name;
 
+  std::string bus_path;
+
   spa_param_availability input_route_available;
 
   spa_param_availability output_route_available;

@@ -800,6 +800,12 @@ void on_device_info(void* object, const struct pw_device_info* info) {
         device.api = api;
       }
 
+      if (const auto* bus_path = spa_dict_lookup(info->props, PW_KEY_DEVICE_BUS_PATH)) {
+        device.bus_path = bus_path;
+
+        std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
+      }
+
       if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
         for (uint i = 0U; i < info->n_params; i++) {
           if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
@@ -1753,7 +1759,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
   }
 
   if (list_output_ports.size() == 0) {
-    util::debug(log_tag + "node " + util::to_string(output_node_id) + " has no input ports yet. Aborting the link");
+    util::debug(log_tag + "node " + util::to_string(output_node_id) + " has no output ports yet. Aborting the link");
 
     return list;
   }
