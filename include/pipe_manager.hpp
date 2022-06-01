@@ -215,6 +215,7 @@ class PipeManager {
   const std::string ee_source_name = "easyeffects_source";
   const std::string ee_sink_name = "easyeffects_sink";
 
+  const std::string media_class_device = "Audio/Device";
   const std::string media_class_sink = "Audio/Sink";
   const std::string media_class_source = "Audio/Source";
   const std::string media_class_virtual_source = "Audio/Source/Virtual";
