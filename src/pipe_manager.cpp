@@ -1416,7 +1416,7 @@ void on_registry_global(void* data,
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
       const std::string media_class = key_media_class;
 
-      if (media_class == "Audio/Device") {
+      if (media_class == pm->media_class_device) {
         uint64_t serial;
 
         if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
