@@ -493,178 +493,197 @@ void on_node_event_param(void* object,
 
   auto* const pm = nd->pm;
 
-  if (param != nullptr) {
-    spa_pod_prop* pod_prop = nullptr;
-    auto* obj = (spa_pod_object*)param;
+  if (param == nullptr) {
+    return;
+  }
 
-    const auto serial = nd->nd_info->serial;
+  spa_pod_prop* pod_prop = nullptr;
+  auto* obj = (spa_pod_object*)param;
 
-    auto notify = false;
+  const auto serial = nd->nd_info->serial;
 
-    SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
-      switch (pod_prop->key) {
-        case SPA_FORMAT_AUDIO_format: {
-          uint format = 0U;
+  auto notify = false;
 
-          if (spa_pod_get_id(&pod_prop->value, &format) == 0) {
-            if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
-              std::string format_str;
+  SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
+    switch (pod_prop->key) {
+      case SPA_FORMAT_AUDIO_format: {
+        uint format = 0U;
 
-              switch (format) {
-                case SPA_AUDIO_FORMAT_S16_LE:
-                  format_str = "S16LE";
-                  break;
-                case SPA_AUDIO_FORMAT_S24_LE:
-                  format_str = "S24LE";
-                  break;
-                case SPA_AUDIO_FORMAT_S32_LE:
-                  format_str = "S32LE";
-                  break;
-                case SPA_AUDIO_FORMAT_F32_LE:
-                  format_str = "F32LE";
-                  break;
-                case SPA_AUDIO_FORMAT_F64_LE:
-                  format_str = "F64LE";
-                  break;
-                case SPA_AUDIO_FORMAT_F32P:
-                  format_str = "F32P";
-                  break;
-                default:
-                  format_str = util::to_string(format);
-                  // util::warning(format_str + " " + util::to_string(SPA_AUDIO_FORMAT_F32_LE));
-                  break;
-              }
-
-              if (format_str != nd->nd_info->format) {
-                node_it->second.format = format_str;
-
-                nd->nd_info->format = format_str;
-
-                notify = true;
-              }
-            }
-          }
-
+        if (spa_pod_get_id(&pod_prop->value, &format) != 0) {
           break;
         }
-        case SPA_FORMAT_AUDIO_rate: {
-          int rate = 1;
 
-          if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
-            if (rate != nd->nd_info->rate) {
-              if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
-                node_it->second.rate = rate;
+        auto node_it = pm->node_map.find(serial);
 
-                nd->nd_info->rate = rate;
-
-                notify = true;
-              }
-            }
-          }
-
+        if (node_it == pm->node_map.end()) {
           break;
         }
-        case SPA_PROP_mute: {
-          auto v = false;
 
-          if (spa_pod_get_bool(&pod_prop->value, &v) == 0) {
-            if (v != nd->nd_info->mute) {
-              if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
-                node_it->second.mute = v;
+        std::string format_str;
 
-                nd->nd_info->mute = v;
-
-                notify = true;
-              }
-            }
-          }
-
-          break;
+        switch (format) {
+          case SPA_AUDIO_FORMAT_S16_LE:
+            format_str = "S16LE";
+            break;
+          case SPA_AUDIO_FORMAT_S24_LE:
+            format_str = "S24LE";
+            break;
+          case SPA_AUDIO_FORMAT_S32_LE:
+            format_str = "S32LE";
+            break;
+          case SPA_AUDIO_FORMAT_F32_LE:
+            format_str = "F32LE";
+            break;
+          case SPA_AUDIO_FORMAT_F64_LE:
+            format_str = "F64LE";
+            break;
+          case SPA_AUDIO_FORMAT_F32P:
+            format_str = "F32P";
+            break;
+          default:
+            format_str = util::to_string(format);
+            // util::warning(format_str + " " + util::to_string(SPA_AUDIO_FORMAT_F32_LE));
+            break;
         }
-        case SPA_PROP_channelVolumes: {
-          if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
-            std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
-            const auto n_volumes =
-                spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
+        if (format_str != nd->nd_info->format) {
+          node_it->second.format = format_str;
 
-            float max = 0.0F;
+          nd->nd_info->format = format_str;
 
-            for (uint i = 0U; i < n_volumes; i++) {
-              max = std::max(volumes.at(i++), max);
-            }
-
-            if (n_volumes != nd->nd_info->n_volume_channels || max != nd->nd_info->volume) {
-              node_it->second.n_volume_channels = n_volumes;
-              node_it->second.volume = max;
-
-              nd->nd_info->n_volume_channels = n_volumes;
-              nd->nd_info->volume = max;
-
-              notify = true;
-            }
-          }
-
-          break;
+          notify = true;
         }
-        default:
-          break;
+
+        break;
       }
+      case SPA_FORMAT_AUDIO_rate: {
+        int rate = 1;
+
+        if (spa_pod_get_int(&pod_prop->value, &rate) != 0) {
+          break;
+        }
+
+        if (rate == nd->nd_info->rate) {
+          break;
+        }
+
+        if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
+          node_it->second.rate = rate;
+
+          nd->nd_info->rate = rate;
+
+          notify = true;
+        }
+
+        break;
+      }
+      case SPA_PROP_mute: {
+        auto v = false;
+
+        if (spa_pod_get_bool(&pod_prop->value, &v) != 0) {
+          break;
+        }
+
+        if (v == nd->nd_info->mute) {
+          break;
+        }
+
+        if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
+          node_it->second.mute = v;
+
+          nd->nd_info->mute = v;
+
+          notify = true;
+        }
+        break;
+      }
+      case SPA_PROP_channelVolumes: {
+        auto node_it = pm->node_map.find(serial);
+
+        if (node_it == pm->node_map.end()) {
+          break;
+        }
+
+        std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
+
+        const auto n_volumes =
+            spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
+
+        float max = 0.0F;
+
+        for (uint i = 0U; i < n_volumes; i++) {
+          max = std::max(volumes.at(i++), max);
+        }
+
+        if (n_volumes != nd->nd_info->n_volume_channels || max != nd->nd_info->volume) {
+          node_it->second.n_volume_channels = n_volumes;
+          node_it->second.volume = max;
+
+          nd->nd_info->n_volume_channels = n_volumes;
+          nd->nd_info->volume = max;
+
+          notify = true;
+        }
+
+        break;
+      }
+      default:
+        break;
     }
+  }
 
-    if (notify) {
-      // sometimes PipeWire destroys the pointer before signal_idle is called,
-      // therefore we make a copy
+  if (notify) {
+    // sometimes PipeWire destroys the pointer before signal_idle is called,
+    // therefore we make a copy
 
-      if (nd->nd_info->media_class == pm->media_class_output_stream) {
-        const auto nd_info_copy = *nd->nd_info;
+    if (nd->nd_info->media_class == pm->media_class_output_stream) {
+      const auto nd_info_copy = *nd->nd_info;
 
-        util::idle_add([pm, nd_info_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->stream_output_changed.emit(nd_info_copy);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
-        const auto nd_info_copy = *nd->nd_info;
-
-        util::idle_add([pm, nd_info_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->stream_input_changed.emit(nd_info_copy);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_virtual_source) {
-        const auto nd_info_copy = *nd->nd_info;
-
-        if (nd_info_copy.serial == pm->ee_source_node.serial) {
-          pm->ee_source_node = nd_info_copy;
+      util::idle_add([pm, nd_info_copy] {
+        if (PipeManager::exiting) {
+          return;
         }
 
-        util::idle_add([pm, nd_info_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
+        pm->stream_output_changed.emit(nd_info_copy);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+      const auto nd_info_copy = *nd->nd_info;
 
-          pm->source_changed.emit(nd_info_copy);
-        });
-      } else if (nd->nd_info->media_class == pm->media_class_sink) {
-        const auto nd_info_copy = *nd->nd_info;
-
-        if (nd_info_copy.serial == pm->ee_sink_node.serial) {
-          pm->ee_sink_node = nd_info_copy;
+      util::idle_add([pm, nd_info_copy] {
+        if (PipeManager::exiting) {
+          return;
         }
 
-        util::idle_add([pm, nd_info_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
+        pm->stream_input_changed.emit(nd_info_copy);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_virtual_source) {
+      const auto nd_info_copy = *nd->nd_info;
 
-          pm->sink_changed.emit(nd_info_copy);
-        });
+      if (nd_info_copy.serial == pm->ee_source_node.serial) {
+        pm->ee_source_node = nd_info_copy;
       }
+
+      util::idle_add([pm, nd_info_copy] {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->source_changed.emit(nd_info_copy);
+      });
+    } else if (nd->nd_info->media_class == pm->media_class_sink) {
+      const auto nd_info_copy = *nd->nd_info;
+
+      if (nd_info_copy.serial == pm->ee_sink_node.serial) {
+        pm->ee_sink_node = nd_info_copy;
+      }
+
+      util::idle_add([pm, nd_info_copy] {
+        if (PipeManager::exiting) {
+          return;
+        }
+
+        pm->sink_changed.emit(nd_info_copy);
+      });
     }
   }
 }
@@ -783,43 +802,45 @@ void on_device_info(void* object, const struct pw_device_info* info) {
   auto* const dd = static_cast<proxy_data*>(object);
 
   for (auto& device : dd->pm->list_devices) {
-    if (device.id == info->id) {
-      if (const auto* name = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME)) {
-        device.name = name;
-      }
+    if (device.id != info->id) {
+      continue;
+    }
 
-      if (const auto* nick = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME)) {
-        device.nick = nick;
-      }
+    if (const auto* name = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME)) {
+      device.name = name;
+    }
 
-      if (const auto* description = spa_dict_lookup(info->props, PW_KEY_DEVICE_DESCRIPTION)) {
-        device.description = description;
-      }
+    if (const auto* nick = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME)) {
+      device.nick = nick;
+    }
 
-      if (const auto* api = spa_dict_lookup(info->props, PW_KEY_DEVICE_API)) {
-        device.api = api;
-      }
+    if (const auto* description = spa_dict_lookup(info->props, PW_KEY_DEVICE_DESCRIPTION)) {
+      device.description = description;
+    }
 
-      if (const auto* bus_path = spa_dict_lookup(info->props, PW_KEY_DEVICE_BUS_PATH)) {
-        device.bus_path = bus_path;
+    if (const auto* api = spa_dict_lookup(info->props, PW_KEY_DEVICE_API)) {
+      device.api = api;
+    }
 
-        std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
-      }
+    if (const auto* bus_path = spa_dict_lookup(info->props, PW_KEY_DEVICE_BUS_PATH)) {
+      device.bus_path = bus_path;
 
-      if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
-        for (uint i = 0U; i < info->n_params; i++) {
-          if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
-            continue;
-          }
+      std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
+    }
 
-          if (const auto id = info->params[i].id; id == SPA_PARAM_Route) {
-            pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);
-          }
+    if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
+      for (uint i = 0U; i < info->n_params; i++) {
+        if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
+          continue;
+        }
+
+        if (const auto id = info->params[i].id; id == SPA_PARAM_Route) {
+          pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);
         }
       }
-
-      break;
     }
+
+    break;
   }
 }
 
@@ -829,56 +850,63 @@ void on_device_event_param(void* object,
                            uint32_t index,
                            uint32_t next,
                            const struct spa_pod* param) {
+  if (id != SPA_PARAM_Route) {
+    return;
+  }
+
   auto* const dd = static_cast<proxy_data*>(object);
 
-  if (id == SPA_PARAM_Route) {
-    const char* name = nullptr;
-    enum spa_direction direction {};
-    enum spa_param_availability available {};
+  const char* name = nullptr;
 
-    if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
-                             SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
-                             SPA_PARAM_ROUTE_available, SPA_POD_Id(&available)) < 0) {
-      return;
+  enum spa_direction direction {};
+  enum spa_param_availability available {};
+
+  if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
+                           SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
+                           SPA_PARAM_ROUTE_available, SPA_POD_Id(&available)) < 0) {
+    return;
+  }
+
+  if (name == nullptr) {
+    return;
+  }
+
+  for (auto& device : dd->pm->list_devices) {
+    if (device.id != dd->id) {
+      continue;
     }
 
-    if (name != nullptr) {
-      for (auto& device : dd->pm->list_devices) {
-        if (device.id == dd->id) {
-          auto* const pm = dd->pm;
+    auto* const pm = dd->pm;
 
-          if (direction == SPA_DIRECTION_INPUT) {
-            if (name != device.input_route_name || available != device.input_route_available) {
-              device.input_route_name = name;
-              device.input_route_available = available;
+    if (direction == SPA_DIRECTION_INPUT) {
+      if (name != device.input_route_name || available != device.input_route_available) {
+        device.input_route_name = name;
+        device.input_route_available = available;
 
-              util::idle_add([pm, device] {
-                if (PipeManager::exiting) {
-                  return;
-                }
-
-                pm->device_input_route_changed.emit(device);
-              });
-            }
-          } else if (direction == SPA_DIRECTION_OUTPUT) {
-            if (name != device.output_route_name || available != device.output_route_available) {
-              device.output_route_name = name;
-              device.output_route_available = available;
-
-              util::idle_add([pm, device] {
-                if (PipeManager::exiting) {
-                  return;
-                }
-
-                pm->device_output_route_changed.emit(device);
-              });
-            }
+        util::idle_add([pm, device] {
+          if (PipeManager::exiting) {
+            return;
           }
 
-          break;
-        }
+          pm->device_input_route_changed.emit(device);
+        });
+      }
+    } else if (direction == SPA_DIRECTION_OUTPUT) {
+      if (name != device.output_route_name || available != device.output_route_available) {
+        device.output_route_name = name;
+        device.output_route_available = available;
+
+        util::idle_add([pm, device] {
+          if (PipeManager::exiting) {
+            return;
+          }
+
+          pm->device_output_route_changed.emit(device);
+        });
       }
     }
+
+    break;
   }
 }
 
@@ -912,29 +940,31 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
     for (const auto& [serial, node] : pm->node_map) {
-      if (node.name == v.data()) {
-        if (node.name == pm->ee_sink_name) {
-          pm->default_output_device.id = SPA_ID_INVALID;
-
-          return 0;
-        }
-
-        if (node.media_class == pm->media_class_sink) {
-          pm->default_output_device = node;
-
-          auto node_copy = node;
-
-          util::idle_add([pm, node_copy] {
-            if (PipeManager::exiting) {
-              return;
-            }
-
-            pm->new_default_sink.emit(node_copy);
-          });
-        }
-
-        break;
+      if (node.name != v.data()) {
+        continue;
       }
+
+      if (node.name == pm->ee_sink_name) {
+        pm->default_output_device.id = SPA_ID_INVALID;
+
+        return 0;
+      }
+
+      if (node.media_class == pm->media_class_sink) {
+        pm->default_output_device = node;
+
+        auto node_copy = node;
+
+        util::idle_add([pm, node_copy] {
+          if (PipeManager::exiting) {
+            return;
+          }
+
+          pm->new_default_sink.emit(node_copy);
+        });
+      }
+
+      break;
     }
   }
 
@@ -944,29 +974,31 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
     for (const auto& [serial, node] : pm->node_map) {
-      if (node.name == v.data()) {
-        if (node.name == pm->ee_source_name) {
-          pm->default_input_device.id = SPA_ID_INVALID;
-
-          return 0;
-        }
-
-        if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
-          pm->default_input_device = node;
-
-          auto node_copy = node;
-
-          util::idle_add([pm, node_copy] {
-            if (PipeManager::exiting) {
-              return;
-            }
-
-            pm->new_default_source.emit(node_copy);
-          });
-        }
-
-        break;
+      if (node.name != v.data()) {
+        continue;
       }
+
+      if (node.name == pm->ee_source_name) {
+        pm->default_input_device.id = SPA_ID_INVALID;
+
+        return 0;
+      }
+
+      if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
+        pm->default_input_device = node;
+
+        auto node_copy = node;
+
+        util::idle_add([pm, node_copy] {
+          if (PipeManager::exiting) {
+            return;
+          }
+
+          pm->new_default_source.emit(node_copy);
+        });
+      }
+
+      break;
     }
   }
 
