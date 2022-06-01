@@ -612,7 +612,7 @@ void on_node_event_param(void* object,
         float max = 0.0F;
 
         for (uint i = 0U; i < n_volumes; i++) {
-          max = std::max(volumes.at(i++), max);
+          max = std::max(volumes.at(i), max);
         }
 
         if (n_volumes != nd->nd_info->n_volume_channels || max != nd->nd_info->volume) {
