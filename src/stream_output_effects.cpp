@@ -62,18 +62,16 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   }
 
   connections.push_back(pm->sink_added.connect([=, this](const NodeInfo node) {
-    if (g_settings_get_boolean(settings, "use-default-output-device") == 0) {
-      if (node.name == util::gsettings_get_string(settings, "output-device")) {
-        pm->output_device = node;
+    if (node.name == util::gsettings_get_string(settings, "output-device")) {
+      pm->output_device = node;
 
-        if (g_settings_get_boolean(global_settings, "bypass") != 0) {
-          g_settings_set_boolean(global_settings, "bypass", 0);
+      if (g_settings_get_boolean(global_settings, "bypass") != 0) {
+        g_settings_set_boolean(global_settings, "bypass", 0);
 
-          return;  // filter connected through update_bypass_state
-        }
-
-        set_bypass(false);
+        return;  // filter connected through update_bypass_state
       }
+
+      set_bypass(false);
     }
   }));
 
