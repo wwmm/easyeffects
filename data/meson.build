@@ -66,7 +66,7 @@ if desktop_utils.found()
 endif
 
 icondir = join_paths(datadir, 'icons', 'hicolor')
-install_data('easyeffects.svg',
+install_data('com.github.wwmm.easyeffects.svg',
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
 
