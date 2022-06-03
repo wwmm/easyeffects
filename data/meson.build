@@ -70,6 +70,10 @@ install_data('com.github.wwmm.easyeffects.svg',
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
 
+install_data('com.github.wwmm.easyeffects-symbolic.svg',
+  install_dir: join_paths(icondir, 'symbolic', 'apps')
+)
+
 conf_glade = configuration_data()
 conf_glade.set('PROJECT_VERSION', meson.project_version())
 
