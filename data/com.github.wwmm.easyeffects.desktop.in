@@ -6,7 +6,7 @@ Keywords=limiter;compressor;reverberation;equalizer;autovolume;
 Categories=GTK;AudioVideo;Audio;
 Exec=easyeffects
 # Translators: This is an icon name, don't translate!
-Icon=easyeffects
+Icon=com.github.wwmm.easyeffects
 StartupNotify=true
 DBusActivatable=true
 X-GNOME-UsesNotifications=true
