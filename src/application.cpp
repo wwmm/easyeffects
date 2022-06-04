@@ -414,8 +414,8 @@ void application_init(Application* self) {
                   gtk_show_about_dialog(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name",
                                         "EasyEffects", "version", VERSION, "comments",
                                         _("Audio effects for PipeWire applications"), "authors", authors.data(),
-                                        "logo-icon-name", "easyeffects", "license-type", GTK_LICENSE_GPL_3_0, "website",
-                                        "https://github.com/wwmm/easyeffects", nullptr);
+                                        "logo-icon-name", "com.github.wwmm.easyeffects", "license-type",
+                                        GTK_LICENSE_GPL_3_0, "website", "https://github.com/wwmm/easyeffects", nullptr);
                 },
                 nullptr, nullptr, nullptr};
 
