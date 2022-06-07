@@ -68,6 +68,10 @@ You can help me to keep developing EasyEffects through donations. Any amount wil
 
 <table>
   <tr>
+    <td>https://github.com/sponsors/wwmm</td>
+    <td>Github Sponsors</td>
+  </tr>
+  <tr>
     <td><a href="https://liberapay.com/wwmm/">https://liberapay.com/wwmm</a></td>
     <td><a href="https://liberapay.com/wwmm/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></td>
   </tr>
