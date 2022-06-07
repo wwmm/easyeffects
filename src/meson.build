@@ -136,7 +136,7 @@ easyeffects_deps = [
 	dependency('rubberband'),
 	dependency('speexdsp'),
 	dependency('nlohmann_json'),
-	dependency('fmt'),
+	dependency('fmt', version: '>=8.0.0'),
 	dependency('threads'),
 	tbb,
 	zita_convolver,
