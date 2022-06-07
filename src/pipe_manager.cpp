@@ -1081,17 +1081,19 @@ void on_registry_global(void* data,
       }
 
       if (g_strcmp0(key_media_role, "DSP") == 0) {
-        const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY);
+        if (const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY)) {
+          if (g_strcmp0(key_media_category, "Filter") == 0) {
+            if (const auto* key_node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
+              std::string description(key_node_description);
 
-        if (g_strcmp0(key_media_category, "Filter") == 0) {
-          const auto* key_node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
-          std::string description(key_node_description);
-          if (description.length() > 3) {
-            if (g_strcmp0(description.substr(0, 2).c_str(), "ee_") == 0) {
-              const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+              if (description.length() > 3) {
+                if (description.substr(0, 2) == "ee_") {
+                  const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
-              util::debug(PipeManager::log_tag + "Filter " + node_name + " with id " + util::to_string(id) +
-                          " has been added");
+                  util::debug(PipeManager::log_tag + "Filter " + node_name + " with id " + util::to_string(id) +
+                              " has been added");
+                }
+              }
             }
           }
         }
