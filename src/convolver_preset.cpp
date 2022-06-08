@@ -33,6 +33,8 @@ void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSe
   json[section]["convolver"]["kernel-path"] = util::gsettings_get_string(settings, "kernel-path");
 
   json[section]["convolver"]["ir-width"] = g_settings_get_int(settings, "ir-width");
+
+  json[section]["convolver"]["autogain"] = g_settings_get_boolean(settings, "autogain") != 0;
 }
 
 void ConvolverPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
@@ -43,4 +45,6 @@ void ConvolverPreset::load(const nlohmann::json& json, const std::string& sectio
   update_key<gchar*>(json.at(section).at("convolver"), settings, "kernel-path", "kernel-path");
 
   update_key<int>(json.at(section).at("convolver"), settings, "ir-width", "ir-width");
+
+  update_key<bool>(json.at(section).at("convolver"), settings, "autogain", "autogain");
 }
