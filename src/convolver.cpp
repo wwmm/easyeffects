@@ -32,6 +32,10 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
+  do_autogain = g_settings_get_boolean(settings, "autogain") != 0;
+
+  ir_width = g_settings_get_int(settings, "ir-width");
+
   gconnections.push_back(g_signal_connect(settings, "changed::ir-width",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<Convolver*>(user_data);
@@ -54,33 +58,7 @@ Convolver::Convolver(const std::string& tag,
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<Convolver*>(user_data);
 
-                                            if (self->n_samples == 0U || self->rate == 0U) {
-                                              return;
-                                            }
-
-                                            self->data_mutex.lock();
-
-                                            self->ready = false;
-
-                                            self->data_mutex.unlock();
-
-                                            self->read_kernel_file();
-
-                                            if (self->kernel_is_initialized) {
-                                              self->kernel_L = self->original_kernel_L;
-                                              self->kernel_R = self->original_kernel_R;
-
-                                              self->set_kernel_stereo_width();
-                                              self->apply_kernel_autogain();
-
-                                              self->setup_zita();
-
-                                              self->data_mutex.lock();
-
-                                              self->ready = self->kernel_is_initialized && self->zita_ready;
-
-                                              self->data_mutex.unlock();
-                                            }
+                                            self->prepare_kernel();
                                           }),
                                           this));
 
@@ -88,33 +66,9 @@ Convolver::Convolver(const std::string& tag,
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<Convolver*>(user_data);
 
-                                            if (self->n_samples == 0U || self->rate == 0U) {
-                                              return;
-                                            }
+                                            self->do_autogain = g_settings_get_boolean(settings, key) != 0;
 
-                                            self->data_mutex.lock();
-
-                                            self->ready = false;
-
-                                            self->data_mutex.unlock();
-
-                                            self->read_kernel_file();
-
-                                            if (self->kernel_is_initialized) {
-                                              self->kernel_L = self->original_kernel_L;
-                                              self->kernel_R = self->original_kernel_R;
-
-                                              self->set_kernel_stereo_width();
-                                              self->apply_kernel_autogain();
-
-                                              self->setup_zita();
-
-                                              self->data_mutex.lock();
-
-                                              self->ready = self->kernel_is_initialized && self->zita_ready;
-
-                                              self->data_mutex.unlock();
-                                            }
+                                            self->prepare_kernel();
                                           }),
                                           this));
 
@@ -392,6 +346,7 @@ void Convolver::apply_kernel_autogain() {
   if (!do_autogain) {
     return;
   }
+
   if (kernel_L.empty() || kernel_R.empty()) {
     return;
   }
@@ -514,4 +469,34 @@ auto Convolver::get_zita_buffer_size() -> uint {
 
 auto Convolver::get_latency_seconds() -> float {
   return this->latency_value;
+}
+
+void Convolver::prepare_kernel() {
+  if (n_samples == 0U || rate == 0U) {
+    return;
+  }
+
+  data_mutex.lock();
+
+  ready = false;
+
+  data_mutex.unlock();
+
+  read_kernel_file();
+
+  if (kernel_is_initialized) {
+    kernel_L = original_kernel_L;
+    kernel_R = original_kernel_R;
+
+    set_kernel_stereo_width();
+    apply_kernel_autogain();
+
+    setup_zita();
+
+    data_mutex.lock();
+
+    ready = kernel_is_initialized && zita_ready;
+
+    data_mutex.unlock();
+  }
 }

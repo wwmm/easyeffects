@@ -85,6 +85,8 @@ class Convolver : public PluginBase {
 
   auto get_zita_buffer_size() -> uint;
 
+  void prepare_kernel();
+
   template <typename T1>
   void do_convolution(T1& data_left, T1& data_right) {
     std::span conv_left_in{conv->inpdata(0), conv->inpdata(0) + get_zita_buffer_size()};

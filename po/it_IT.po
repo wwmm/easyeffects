@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-28 11:37-0300\n"
+"POT-Creation-Date: 2022-06-09 11:58-0300\n"
 "PO-Revision-Date: 2022-05-30 22:18+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1013,7 +1013,7 @@ msgstr "Guadagno Uscita"
 
 #: data/ui/autogain.ui:379 data/ui/bass_enhancer.ui:264
 #: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
-#: data/ui/compressor.ui:994 data/ui/convolver.ui:222 data/ui/crossfeed.ui:142
+#: data/ui/compressor.ui:994 data/ui/convolver.ui:230 data/ui/crossfeed.ui:142
 #: data/ui/crystalizer.ui:40 data/ui/deesser.ui:418 data/ui/delay.ui:109
 #: data/ui/echo_canceller.ui:113 data/ui/equalizer.ui:197
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
@@ -1028,7 +1028,7 @@ msgstr "Ingresso"
 
 #: data/ui/autogain.ui:398 data/ui/bass_enhancer.ui:283
 #: data/ui/bass_loudness.ui:163 data/ui/compressor.ui:1013
-#: data/ui/convolver.ui:241 data/ui/crossfeed.ui:161 data/ui/crystalizer.ui:59
+#: data/ui/convolver.ui:249 data/ui/crossfeed.ui:161 data/ui/crystalizer.ui:59
 #: data/ui/deesser.ui:437 data/ui/delay.ui:128 data/ui/echo_canceller.ui:132
 #: data/ui/equalizer.ui:216 data/ui/exciter.ui:283 data/ui/filter.ui:192
 #: data/ui/gate.ui:354 data/ui/limiter.ui:762 data/ui/loudness.ui:151
@@ -1040,7 +1040,7 @@ msgstr "Guadagno in Ingresso del Plugin"
 
 #: data/ui/autogain.ui:463 data/ui/bass_enhancer.ui:348
 #: data/ui/bass_loudness.ui:61 data/ui/bass_loudness.ui:228
-#: data/ui/compressor.ui:1078 data/ui/convolver.ui:306 data/ui/crossfeed.ui:226
+#: data/ui/compressor.ui:1078 data/ui/convolver.ui:314 data/ui/crossfeed.ui:226
 #: data/ui/crystalizer.ui:124 data/ui/deesser.ui:502 data/ui/delay.ui:193
 #: data/ui/echo_canceller.ui:197 data/ui/equalizer.ui:281
 #: data/ui/exciter.ui:348 data/ui/filter.ui:257 data/ui/gate.ui:419
@@ -1057,7 +1057,7 @@ msgstr "Uscita"
 
 #: data/ui/autogain.ui:482 data/ui/bass_enhancer.ui:367
 #: data/ui/bass_loudness.ui:247 data/ui/compressor.ui:1097
-#: data/ui/convolver.ui:325 data/ui/crossfeed.ui:245 data/ui/crystalizer.ui:143
+#: data/ui/convolver.ui:333 data/ui/crossfeed.ui:245 data/ui/crystalizer.ui:143
 #: data/ui/deesser.ui:521 data/ui/delay.ui:212 data/ui/echo_canceller.ui:216
 #: data/ui/equalizer.ui:300 data/ui/exciter.ui:367 data/ui/filter.ui:276
 #: data/ui/gate.ui:438 data/ui/limiter.ui:846 data/ui/loudness.ui:235
@@ -1069,7 +1069,7 @@ msgstr "Guadagno in Uscita del Plugin"
 
 #: data/ui/autogain.ui:545 data/ui/bass_enhancer.ui:461
 #: data/ui/bass_loudness.ui:310 data/ui/compressor.ui:1160
-#: data/ui/convolver.ui:388 data/ui/crossfeed.ui:308 data/ui/crystalizer.ui:198
+#: data/ui/convolver.ui:396 data/ui/crossfeed.ui:308 data/ui/crystalizer.ui:198
 #: data/ui/deesser.ui:644 data/ui/delay.ui:275 data/ui/echo_canceller.ui:279
 #: data/ui/equalizer.ui:363 data/ui/equalizer_band.ui:223
 #: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:460 data/ui/filter.ui:339
@@ -1082,7 +1082,7 @@ msgstr "Reset"
 
 #: data/ui/autogain.ui:559 data/ui/bass_enhancer.ui:475
 #: data/ui/bass_loudness.ui:324 data/ui/compressor.ui:1174
-#: data/ui/convolver.ui:402 data/ui/crossfeed.ui:322 data/ui/deesser.ui:658
+#: data/ui/convolver.ui:410 data/ui/crossfeed.ui:322 data/ui/deesser.ui:658
 #: data/ui/delay.ui:289 data/ui/echo_canceller.ui:293 data/ui/equalizer.ui:377
 #: data/ui/exciter.ui:474 data/ui/filter.ui:353 data/ui/gate.ui:545
 #: data/ui/limiter.ui:923 data/ui/loudness.ui:312 data/ui/maximizer.ui:357
@@ -1461,15 +1461,19 @@ msgstr "Spettro"
 msgid "Log Scale"
 msgstr "Scala Logaritmica"
 
-#: data/ui/convolver.ui:141
+#: data/ui/convolver.ui:133 src/plugin_name.cpp:25
+msgid "Autogain"
+msgstr "Auto Guadagno"
+
+#: data/ui/convolver.ui:149
 msgid "Rate"
 msgstr "Frequenza"
 
-#: data/ui/convolver.ui:163
+#: data/ui/convolver.ui:171
 msgid "Samples"
 msgstr "Campioni"
 
-#: data/ui/convolver.ui:185
+#: data/ui/convolver.ui:193
 msgid "Duration"
 msgstr "Durata"
 
@@ -2634,7 +2638,7 @@ msgstr "Processa Tutti i Flussi in Ingresso"
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ignora i Flussi dai Monitor dei Dispositivi"
 
-#: data/ui/preferences_general.ui:79 data/ui/preferences_general.ui:67
+#: data/ui/preferences_general.ui:79
 msgid "Use Cubic Volume"
 msgstr "Usa Volume Cubico"
 
@@ -3022,40 +3026,40 @@ msgstr "Sconosciuto"
 msgid "channels"
 msgstr "Canali"
 
-#: src/application.cpp:286
+#: src/application.cpp:260
 msgid "Output Presets: "
 msgstr "Profili Uscita: "
 
-#: src/application.cpp:294
+#: src/application.cpp:268
 msgid "Input Presets: "
 msgstr "Profili Ingresso: "
 
-#: src/application.cpp:442
+#: src/application.cpp:416
 msgid "Audio effects for PipeWire applications"
 msgstr "Effetti Audio per Applicazioni PipeWire"
 
-#: src/application.cpp:528
+#: src/application.cpp:502
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Esci da EasyEffects. Utile in esecuzione come servizio."
 
-#: src/application.cpp:531
+#: src/application.cpp:505
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
-#: src/application.cpp:534
+#: src/application.cpp:508
 msgid "Reset EasyEffects."
 msgstr "Reset EasyEffects."
 
-#: src/application.cpp:537
+#: src/application.cpp:511
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra."
 
-#: src/application.cpp:540
+#: src/application.cpp:514
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
 
-#: src/application.cpp:543
+#: src/application.cpp:517
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
@@ -3089,11 +3093,11 @@ msgstr "Carica Impulso"
 msgid "Remove Impulse"
 msgstr "Rimuovi Impulso"
 
-#: src/convolver_ui.cpp:336 src/convolver_ui.cpp:337 src/convolver_ui.cpp:338
+#: src/convolver_ui.cpp:339 src/convolver_ui.cpp:340 src/convolver_ui.cpp:341
 msgid "Failed"
 msgstr "Errore"
 
-#: src/convolver_ui.cpp:339
+#: src/convolver_ui.cpp:342
 msgid "Could Not Load The Impulse File"
 msgstr "Non è Possibile Caricare il File di Impulso"
 
@@ -3124,10 +3128,6 @@ msgstr "Profili APO"
 #: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr "Rimuovi Profilo di Auto Caricamento"
-
-#: src/plugin_name.cpp:25
-msgid "Autogain"
-msgstr "Auto Guadagno"
 
 #: src/plugin_name.cpp:26
 msgid "Bass Enhancer"
@@ -3225,29 +3225,23 @@ msgstr "Importa File Modello"
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
-#: data/ui/preferences_general.ui:13
-msgid "Start Service at Login"
-msgstr "Esegui Servizio all'Avvio"
+#~ msgid "Start Service at Login"
+#~ msgstr "Esegui Servizio all'Avvio"
 
-#: data/ui/preferences_general.ui:79
-msgid "Reset Our Devices Volume on Startup"
-msgstr "Reimposta il Volume di EasyEffects all'Avvio"
+#~ msgid "Reset Our Devices Volume on Startup"
+#~ msgstr "Reimposta il Volume di EasyEffects all'Avvio"
 
-#: data/ui/preferences_general.ui:26
-msgid "Shutdown on Window Close"
-msgstr "Termina alla Chiusura della Finestra"
+#~ msgid "Shutdown on Window Close"
+#~ msgstr "Termina alla Chiusura della Finestra"
 
-#: data/ui/preferences_general.ui:43
-msgid "Process All Outputs"
-msgstr "Processa Tutto in Uscita"
+#~ msgid "Process All Outputs"
+#~ msgstr "Processa Tutto in Uscita"
 
-#: data/ui/preferences_general.ui:55
-msgid "Process All Inputs"
-msgstr "Processa Tutto in Ingresso"
+#~ msgid "Process All Inputs"
+#~ msgstr "Processa Tutto in Ingresso"
 
-#: data/ui/preferences_general.ui:91
-msgid "Exclude Device Monitor Streams"
-msgstr "Escludi i flussi di monitoraggio del dispositivo"
+#~ msgid "Exclude Device Monitor Streams"
+#~ msgstr "Escludi i flussi di monitoraggio del dispositivo"
 
 #~ msgid "Activate"
 #~ msgstr "Abilita"

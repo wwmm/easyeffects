@@ -82,17 +82,13 @@ struct _ConvolverBox {
 
   Data* data;
 
-  GtkToggleButton *autogain;
+  GtkToggleButton* autogain;
 };
 
 G_DEFINE_TYPE(ConvolverBox, convolver_box, GTK_TYPE_BOX)
 
 void on_bypass(ConvolverBox* self, GtkToggleButton* btn) {
   self->data->convolver->bypass = gtk_toggle_button_get_active(btn);
-}
-
-void on_autogain(ConvolverBox* self, GtkToggleButton* btn) {
-  self->data->convolver->do_autogain = gtk_toggle_button_get_active(btn);
 }
 
 void on_reset(ConvolverBox* self, GtkButton* btn) {
@@ -486,7 +482,8 @@ void setup(ConvolverBox* self,
       }),
       self));
 
-  gsettings_bind_widgets<"input-gain", "output-gain", "autogain">(self->settings, self->input_gain, self->output_gain, self->autogain);
+  gsettings_bind_widgets<"input-gain", "output-gain", "autogain">(self->settings, self->input_gain, self->output_gain,
+                                                                  self->autogain);
 
   g_settings_bind(self->settings, "ir-width", gtk_spin_button_get_adjustment(self->ir_width), "value",
                   G_SETTINGS_BIND_DEFAULT);
@@ -580,7 +577,6 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_show_fft);
   gtk_widget_class_bind_template_callback(widget_class, on_show_channel);
   gtk_widget_class_bind_template_callback(widget_class, on_enable_log_scale);
-  gtk_widget_class_bind_template_callback(widget_class, on_autogain);
 }
 
 void convolver_box_init(ConvolverBox* self) {

@@ -17,7 +17,7 @@
             <default>100</default>
         </key>
         <key name="autogain" type="b">
-            <default>false</default>
+            <default>true</default>
         </key>
     </schema>
 </schemalist>

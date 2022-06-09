@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-28 11:37-0300\n"
+"POT-Creation-Date: 2022-06-09 11:58-0300\n"
 "PO-Revision-Date: 2022-05-23 08:18+0000\n"
 "Last-Translator: Ebert Matthee <weblate@ecmatthee.com>\n"
 "Language-Team: Afrikaans <https://hosted.weblate.org/projects/easyeffects/"
@@ -839,7 +839,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:379 data/ui/bass_enhancer.ui:264
 #: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
-#: data/ui/compressor.ui:994 data/ui/convolver.ui:222 data/ui/crossfeed.ui:142
+#: data/ui/compressor.ui:994 data/ui/convolver.ui:230 data/ui/crossfeed.ui:142
 #: data/ui/crystalizer.ui:40 data/ui/deesser.ui:418 data/ui/delay.ui:109
 #: data/ui/echo_canceller.ui:113 data/ui/equalizer.ui:197
 #: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
@@ -854,7 +854,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:398 data/ui/bass_enhancer.ui:283
 #: data/ui/bass_loudness.ui:163 data/ui/compressor.ui:1013
-#: data/ui/convolver.ui:241 data/ui/crossfeed.ui:161 data/ui/crystalizer.ui:59
+#: data/ui/convolver.ui:249 data/ui/crossfeed.ui:161 data/ui/crystalizer.ui:59
 #: data/ui/deesser.ui:437 data/ui/delay.ui:128 data/ui/echo_canceller.ui:132
 #: data/ui/equalizer.ui:216 data/ui/exciter.ui:283 data/ui/filter.ui:192
 #: data/ui/gate.ui:354 data/ui/limiter.ui:762 data/ui/loudness.ui:151
@@ -866,7 +866,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:463 data/ui/bass_enhancer.ui:348
 #: data/ui/bass_loudness.ui:61 data/ui/bass_loudness.ui:228
-#: data/ui/compressor.ui:1078 data/ui/convolver.ui:306 data/ui/crossfeed.ui:226
+#: data/ui/compressor.ui:1078 data/ui/convolver.ui:314 data/ui/crossfeed.ui:226
 #: data/ui/crystalizer.ui:124 data/ui/deesser.ui:502 data/ui/delay.ui:193
 #: data/ui/echo_canceller.ui:197 data/ui/equalizer.ui:281
 #: data/ui/exciter.ui:348 data/ui/filter.ui:257 data/ui/gate.ui:419
@@ -883,7 +883,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:482 data/ui/bass_enhancer.ui:367
 #: data/ui/bass_loudness.ui:247 data/ui/compressor.ui:1097
-#: data/ui/convolver.ui:325 data/ui/crossfeed.ui:245 data/ui/crystalizer.ui:143
+#: data/ui/convolver.ui:333 data/ui/crossfeed.ui:245 data/ui/crystalizer.ui:143
 #: data/ui/deesser.ui:521 data/ui/delay.ui:212 data/ui/echo_canceller.ui:216
 #: data/ui/equalizer.ui:300 data/ui/exciter.ui:367 data/ui/filter.ui:276
 #: data/ui/gate.ui:438 data/ui/limiter.ui:846 data/ui/loudness.ui:235
@@ -895,7 +895,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:545 data/ui/bass_enhancer.ui:461
 #: data/ui/bass_loudness.ui:310 data/ui/compressor.ui:1160
-#: data/ui/convolver.ui:388 data/ui/crossfeed.ui:308 data/ui/crystalizer.ui:198
+#: data/ui/convolver.ui:396 data/ui/crossfeed.ui:308 data/ui/crystalizer.ui:198
 #: data/ui/deesser.ui:644 data/ui/delay.ui:275 data/ui/echo_canceller.ui:279
 #: data/ui/equalizer.ui:363 data/ui/equalizer_band.ui:223
 #: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:460 data/ui/filter.ui:339
@@ -908,7 +908,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:559 data/ui/bass_enhancer.ui:475
 #: data/ui/bass_loudness.ui:324 data/ui/compressor.ui:1174
-#: data/ui/convolver.ui:402 data/ui/crossfeed.ui:322 data/ui/deesser.ui:658
+#: data/ui/convolver.ui:410 data/ui/crossfeed.ui:322 data/ui/deesser.ui:658
 #: data/ui/delay.ui:289 data/ui/echo_canceller.ui:293 data/ui/equalizer.ui:377
 #: data/ui/exciter.ui:474 data/ui/filter.ui:353 data/ui/gate.ui:545
 #: data/ui/limiter.ui:923 data/ui/loudness.ui:312 data/ui/maximizer.ui:357
@@ -1287,15 +1287,19 @@ msgstr ""
 msgid "Log Scale"
 msgstr ""
 
-#: data/ui/convolver.ui:141
+#: data/ui/convolver.ui:133 src/plugin_name.cpp:25
+msgid "Autogain"
+msgstr ""
+
+#: data/ui/convolver.ui:149
 msgid "Rate"
 msgstr ""
 
-#: data/ui/convolver.ui:163
+#: data/ui/convolver.ui:171
 msgid "Samples"
 msgstr ""
 
-#: data/ui/convolver.ui:185
+#: data/ui/convolver.ui:193
 msgid "Duration"
 msgstr ""
 
@@ -2848,39 +2852,39 @@ msgstr ""
 msgid "channels"
 msgstr ""
 
-#: src/application.cpp:286
+#: src/application.cpp:260
 msgid "Output Presets: "
 msgstr ""
 
-#: src/application.cpp:294
+#: src/application.cpp:268
 msgid "Input Presets: "
 msgstr ""
 
-#: src/application.cpp:442
+#: src/application.cpp:416
 msgid "Audio effects for PipeWire applications"
 msgstr ""
 
-#: src/application.cpp:528
+#: src/application.cpp:502
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:531
+#: src/application.cpp:505
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/application.cpp:534
+#: src/application.cpp:508
 msgid "Reset EasyEffects."
 msgstr ""
 
-#: src/application.cpp:537
+#: src/application.cpp:511
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:540
+#: src/application.cpp:514
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:543
+#: src/application.cpp:517
 msgid "Show available presets."
 msgstr ""
 
@@ -2914,11 +2918,11 @@ msgstr ""
 msgid "Remove Impulse"
 msgstr ""
 
-#: src/convolver_ui.cpp:336 src/convolver_ui.cpp:337 src/convolver_ui.cpp:338
+#: src/convolver_ui.cpp:339 src/convolver_ui.cpp:340 src/convolver_ui.cpp:341
 msgid "Failed"
 msgstr ""
 
-#: src/convolver_ui.cpp:339
+#: src/convolver_ui.cpp:342
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
@@ -2948,10 +2952,6 @@ msgstr ""
 
 #: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
-msgstr ""
-
-#: src/plugin_name.cpp:25
-msgid "Autogain"
 msgstr ""
 
 #: src/plugin_name.cpp:26
