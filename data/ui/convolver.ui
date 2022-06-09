@@ -125,6 +125,15 @@
                                 <signal name="toggled" handler="on_enable_log_scale" object="ConvolverBox" />
                             </object>
                         </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="autogain">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Autogain</property>
+                                <signal name="toggled" handler="on_autogain" object="ConvolverBox" />
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>

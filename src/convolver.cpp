@@ -84,6 +84,40 @@ Convolver::Convolver(const std::string& tag,
                                           }),
                                           this));
 
+  gconnections.push_back(g_signal_connect(settings, "changed::autogain",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Convolver*>(user_data);
+
+                                            if (self->n_samples == 0U || self->rate == 0U) {
+                                              return;
+                                            }
+
+                                            self->data_mutex.lock();
+
+                                            self->ready = false;
+
+                                            self->data_mutex.unlock();
+
+                                            self->read_kernel_file();
+
+                                            if (self->kernel_is_initialized) {
+                                              self->kernel_L = self->original_kernel_L;
+                                              self->kernel_R = self->original_kernel_R;
+
+                                              self->set_kernel_stereo_width();
+                                              self->apply_kernel_autogain();
+
+                                              self->setup_zita();
+
+                                              self->data_mutex.lock();
+
+                                              self->ready = self->kernel_is_initialized && self->zita_ready;
+
+                                              self->data_mutex.unlock();
+                                            }
+                                          }),
+                                          this));
+
   setup_input_output_gain();
 }
 
@@ -355,6 +389,9 @@ void Convolver::read_kernel_file() {
 }
 
 void Convolver::apply_kernel_autogain() {
+  if (!do_autogain) {
+    return;
+  }
   if (kernel_L.empty() || kernel_R.empty()) {
     return;
   }

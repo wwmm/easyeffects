@@ -16,5 +16,8 @@
             <range min="0" max="200" />
             <default>100</default>
         </key>
+        <key name="autogain" type="b">
+            <default>false</default>
+        </key>
     </schema>
 </schemalist>

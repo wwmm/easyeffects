@@ -50,6 +50,8 @@ class Convolver : public PluginBase {
 
   sigc::signal<void(const float&)> latency;
 
+  bool do_autogain = false;
+
  private:
   bool kernel_is_initialized = false;
   bool n_samples_is_power_of_2 = true;
