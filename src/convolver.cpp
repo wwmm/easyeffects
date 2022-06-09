@@ -389,7 +389,7 @@ void Convolver::read_kernel_file() {
 }
 
 void Convolver::apply_kernel_autogain() {
-  if (g_settings_get_boolean(settings, "autogain") == 0) {
+  if (!do_autogain) {
     return;
   }
   if (kernel_L.empty() || kernel_R.empty()) {

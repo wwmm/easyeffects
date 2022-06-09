@@ -131,6 +131,7 @@
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Autogain</property>
+                                <signal name="toggled" handler="on_autogain" object="ConvolverBox" />
                             </object>
                         </child>
                     </object>

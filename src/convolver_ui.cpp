@@ -91,6 +91,10 @@ void on_bypass(ConvolverBox* self, GtkToggleButton* btn) {
   self->data->convolver->bypass = gtk_toggle_button_get_active(btn);
 }
 
+void on_autogain(ConvolverBox* self, GtkToggleButton* btn) {
+  self->data->convolver->do_autogain = gtk_toggle_button_get_active(btn);
+}
+
 void on_reset(ConvolverBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->bypass, 0);
   gtk_toggle_button_set_active(self->autogain, 0);
@@ -576,6 +580,7 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_show_fft);
   gtk_widget_class_bind_template_callback(widget_class, on_show_channel);
   gtk_widget_class_bind_template_callback(widget_class, on_enable_log_scale);
+  gtk_widget_class_bind_template_callback(widget_class, on_autogain);
 }
 
 void convolver_box_init(ConvolverBox* self) {
