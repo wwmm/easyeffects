@@ -21,13 +21,9 @@
 
 namespace ui::blocklist_menu {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "blocklist_menu: ";
-
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   app::Application* application;
 
@@ -57,8 +53,7 @@ struct _BlocklistMenu {
 G_DEFINE_TYPE(BlocklistMenu, blocklist_menu, GTK_TYPE_POPOVER)
 
 void on_add_to_blocklist(BlocklistMenu* self, GtkButton* button) {
-  auto status =
-      util::add_new_blocklist_entry(self->settings, gtk_editable_get_text(GTK_EDITABLE(self->app_name)), log_tag);
+  auto status = util::add_new_blocklist_entry(self->settings, gtk_editable_get_text(GTK_EDITABLE(self->app_name)));
 
   if (status) {
     gtk_editable_set_text(GTK_EDITABLE(self->app_name), "");
@@ -194,7 +189,7 @@ void dispose(GObject* object) {
   g_object_unref(self->settings);
   g_object_unref(self->app_settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(blocklist_menu_parent_class)->dispose(object);
 }
@@ -204,7 +199,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(blocklist_menu_parent_class)->finalize(object);
 }

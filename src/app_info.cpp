@@ -23,11 +23,9 @@ namespace ui::app_info {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "app_info: ";
-
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   app::Application* application;
 
@@ -127,14 +125,14 @@ auto icon_available(AppInfo* self, const std::string& icon_name) -> bool {
       for (std::filesystem::directory_iterator it{dir}; it != std::filesystem::directory_iterator{}; ++it) {
         if (std::filesystem::is_regular_file(it->status())) {
           if (it->path().stem().string() == icon_name) {
-            util::debug(log_tag + icon_name + " icon name not included in the icon theme, but found in " + dir);
+            util::debug(icon_name + " icon name not included in the icon theme, but found in " + dir);
 
             return true;
           }
         }
       }
     } catch (...) {
-      util::debug(log_tag + "cannot lookup application icon "s + icon_name + " in "s + dir);
+      util::debug("cannot lookup application icon " + icon_name + " in " + dir);
     }
   }
 
@@ -207,9 +205,9 @@ void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
   if (is_blocklisted) {
     self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_check_button_get_active(self->enable));
 
-    util::add_new_blocklist_entry(self->settings, app_tag, log_tag);
+    util::add_new_blocklist_entry(self->settings, app_tag);
   } else {
-    util::remove_blocklist_entry(self->settings, app_tag, log_tag);
+    util::remove_blocklist_entry(self->settings, app_tag);
   }
 }
 
@@ -311,7 +309,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->app_settings);
 
-  util::debug(log_tag + self->data->info.name + " disposed"s);
+  util::debug(self->data->info.name + " disposed");
 
   G_OBJECT_CLASS(app_info_parent_class)->dispose(object);
 }
@@ -319,7 +317,7 @@ void dispose(GObject* object) {
 void finalize(GObject* object) {
   auto* self = EE_APP_INFO(object);
 
-  util::debug(log_tag + self->data->info.name + " finalized"s);
+  util::debug(self->data->info.name + " finalized");
 
   delete self->data;
 

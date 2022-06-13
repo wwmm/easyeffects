@@ -85,9 +85,9 @@ auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA;
 
 auto gsettings_get_string(GSettings* settings, const char* key) -> std::string;
 
-auto add_new_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag) -> bool;
+auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bool;
 
-void remove_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag);
+void remove_blocklist_entry(GSettings* settings, const std::string& name);
 
 void idle_add(std::function<void()> cb);
 

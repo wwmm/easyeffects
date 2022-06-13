@@ -241,7 +241,7 @@ auto gsettings_get_string(GSettings* settings, const char* key) -> std::string {
   return output;
 }
 
-auto add_new_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag) -> bool {
+auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bool {
   if (name.empty()) {
     return false;
   }
@@ -251,7 +251,7 @@ auto add_new_blocklist_entry(GSettings* settings, const std::string& name, const
   auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
 
   if (std::any_of(list.cbegin(), list.cend(), [&](const auto& str) { return str == name; })) {
-    util::debug(log_tag + "entry already present in the list"s);
+    util::debug("entry already present in the list");
 
     return false;
   }
@@ -260,12 +260,12 @@ auto add_new_blocklist_entry(GSettings* settings, const std::string& name, const
 
   g_settings_set_strv(settings, "blocklist", util::make_gchar_pointer_vector(list).data());
 
-  util::debug(log_tag + "new entry has been added to the blocklist"s);
+  util::debug("new entry has been added to the blocklist");
 
   return true;
 }
 
-void remove_blocklist_entry(GSettings* settings, const std::string& name, const char* log_tag) {
+void remove_blocklist_entry(GSettings* settings, const std::string& name) {
   using namespace std::string_literals;
 
   auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
@@ -274,7 +274,7 @@ void remove_blocklist_entry(GSettings* settings, const std::string& name, const 
 
   g_settings_set_strv(settings, "blocklist", util::make_gchar_pointer_vector(list).data());
 
-  util::debug(log_tag + "an entry has been removed from the blocklist"s);
+  util::debug("an entry has been removed from the blocklist");
 }
 
 void idle_add(std::function<void()> cb) {

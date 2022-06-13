@@ -23,8 +23,6 @@ namespace ui::preferences::general {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "preferences_general: ";
-
 struct _PreferencesGeneral {
   AdwPreferencesPage parent_instance;
 
@@ -62,13 +60,13 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> 
 
       ofs.close();
 
-      util::debug(log_tag + "autostart file created"s);
+      util::debug("autostart file created");
     }
   } else {
     if (std::filesystem::exists(autostart_file)) {
       std::filesystem::remove(autostart_file);
 
-      util::debug(log_tag + "autostart file removed"s);
+      util::debug("autostart file removed");
     }
   }
 
@@ -80,7 +78,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(preferences_general_parent_class)->dispose(object);
 }

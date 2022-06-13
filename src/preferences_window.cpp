@@ -21,10 +21,6 @@
 
 namespace ui::preferences::window {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "preferences_window: ";
-
 struct _PreferencesWindow {
   AdwPreferencesWindow parent_instance;
 
@@ -41,7 +37,7 @@ void dispose(GObject* object) {
   adw_preferences_window_remove(ADW_PREFERENCES_WINDOW(self), ADW_PREFERENCES_PAGE(self->page_general));
   adw_preferences_window_remove(ADW_PREFERENCES_WINDOW(self), ADW_PREFERENCES_PAGE(self->page_spectrum));
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(preferences_window_parent_class)->dispose(object);
 }

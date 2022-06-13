@@ -21,13 +21,9 @@
 
 namespace ui::apps_box {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "apps_box: ";
-
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   app::Application* application;
 
@@ -322,7 +318,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
               } catch (...) {
                 connect_stream(self, holder->info->id, holder->info->media_class);
 
-                util::warning(log_tag + "can't retrieve enabled state of node "s + holder->info->name);
+                util::warning("can't retrieve enabled state of node " + holder->info->name);
 
                 self->data->enabled_app_list.insert({holder->info->id, true});
               }
@@ -392,7 +388,7 @@ void dispose(GObject* object) {
   g_object_unref(self->settings);
   g_object_unref(self->app_settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(apps_box_parent_class)->dispose(object);
 }
@@ -402,7 +398,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(apps_box_parent_class)->finalize(object);
 }
