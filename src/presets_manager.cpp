@@ -69,10 +69,10 @@ PresetsManager::PresetsManager()
   system_output_dir.erase(std::unique(system_output_dir.begin(), system_output_dir.end()), system_output_dir.end());
 
   for (const auto& scd : system_input_dir) {
-    util::debug(log_tag + "system input presets directory: \"" + scd.string() + "\"; ");
+    util::debug("system input presets directory: \"" + scd.string() + "\"; ");
   }
   for (const auto& scd : system_output_dir) {
-    util::debug(log_tag + "system output presets directory: \"" + scd.string() + "\"; ");
+    util::debug("system output presets directory: \"" + scd.string() + "\"; ");
   }
 
   // user presets directories
@@ -200,19 +200,19 @@ PresetsManager::~PresetsManager() {
   g_object_unref(sie_settings);
   g_object_unref(soe_settings);
 
-  util::debug(log_tag + "destroyed");
+  util::debug("destroyed");
 }
 
 void PresetsManager::create_user_directory(const std::filesystem::path& path) {
   if (!std::filesystem::is_directory(path)) {
     if (std::filesystem::create_directories(path)) {
-      util::debug(log_tag + "user presets directory created: " + path.string());
+      util::debug("user presets directory created: " + path.string());
     } else {
-      util::warning(log_tag + "failed to create user presets directory: " + path.string());
+      util::warning("failed to create user presets directory: " + path.string());
     }
 
   } else {
-    util::debug(log_tag + "user presets directory already exists: " + path.string());
+    util::debug("user presets directory already exists: " + path.string());
   }
 }
 
@@ -326,16 +326,17 @@ auto PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
       } catch (const nlohmann::json::exception& e) {
         g_settings_reset(sie_settings, "blocklist");
 
-        util::warning(log_tag + e.what());
+        util::warning(e.what());
 
-        util::warning(log_tag + "A parsing error occurred while trying to load the blocklist inside " +
-                      "the preset. The file could be invalid or corrupted. Please check its content.");
+        util::warning(
+            "A parsing error occurred while trying to load the blocklist inside the preset. The file could be invalid "
+            "or corrupted. Please check its content.");
 
         return false;
       } catch (...) {
         g_settings_reset(sie_settings, "blocklist");
 
-        util::warning(log_tag + "A generic error occurred while trying to load the blocklist inside the preset.");
+        util::warning("A generic error occurred while trying to load the blocklist inside the preset.");
 
         return false;
       }
@@ -350,16 +351,17 @@ auto PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
       } catch (const nlohmann::json::exception& e) {
         g_settings_reset(soe_settings, "blocklist");
 
-        util::warning(log_tag + e.what());
+        util::warning(e.what());
 
-        util::warning(log_tag + "A parsing error occurred while trying to load the blocklist inside " +
-                      "the preset. The file could be invalid or corrupted. Please check its content.");
+        util::warning(
+            "A parsing error occurred while trying to load the blocklist inside the preset. The file could be invalid "
+            "or corrupted. Please check its content.");
 
         return false;
       } catch (...) {
         g_settings_reset(soe_settings, "blocklist");
 
-        util::warning(log_tag + "A generic error occurred while trying to load the blocklist inside the preset.");
+        util::warning("A generic error occurred while trying to load the blocklist inside the preset.");
 
         return false;
       }
@@ -425,7 +427,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const std::
 
   // std::cout << std::setw(4) << json << std::endl;
 
-  util::debug(log_tag + "saved preset: " + output_file.string());
+  util::debug("saved preset: " + output_file.string());
 }
 
 void PresetsManager::write_plugins_preset(const PresetType& preset_type,
@@ -492,7 +494,7 @@ void PresetsManager::remove(const PresetType& preset_type, const std::string& na
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
 
-    util::debug(log_tag + "removed preset: " + preset_file.string());
+    util::debug("removed preset: " + preset_file.string());
   }
 }
 
@@ -540,22 +542,21 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
           }
 
         } catch (const nlohmann::json::exception& e) {
-          util::warning(log_tag + e.what());
+          util::warning(e.what());
 
-          util::warning(log_tag + "A parsing error occurred while trying to load the effects list inside " + name +
+          util::warning("A parsing error occurred while trying to load the effects list inside " + name +
                         " preset. The file could be invalid or corrupted. Please check its content.");
 
           return false;
         } catch (...) {
-          util::warning(log_tag + "A generic error occurred while trying to load the effects list inside " + name +
-                        " preset.");
+          util::warning("A generic error occurred while trying to load the effects list inside " + name + " preset.");
 
           return false;
         }
 
         g_settings_set_strv(soe_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
       } else {
-        util::debug(log_tag + "can't find the preset " + name + " on the filesystem");
+        util::debug("can't find the preset " + name + " on the filesystem");
 
         return false;
       }
@@ -594,22 +595,21 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
           }
 
         } catch (const nlohmann::json::exception& e) {
-          util::warning(log_tag + e.what());
+          util::warning(e.what());
 
-          util::warning(log_tag + "A parsing error occurred while trying to load the effects list inside " + name +
+          util::warning("A parsing error occurred while trying to load the effects list inside " + name +
                         " preset. The file could be invalid or corrupted. Please check its content.");
 
           return false;
         } catch (...) {
-          util::warning(log_tag + "A generic error occurred while trying to load the effects list inside " + name +
-                        " preset.");
+          util::warning("A generic error occurred while trying to load the effects list inside " + name + " preset.");
 
           return false;
         }
 
         g_settings_set_strv(sie_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
       } else {
-        util::debug(log_tag + "can't find the preset " + name + " on the filesystem");
+        util::debug("can't find the preset " + name + " on the filesystem");
 
         return false;
       }
@@ -619,7 +619,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
   }
 
   if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
-    util::debug(log_tag + "successfully loaded preset: " + input_file.string());
+    util::debug("successfully loaded preset: " + input_file.string());
 
     return true;
   }
@@ -680,14 +680,14 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
         stereo_tools->read(preset_type, json);
       }
     } catch (const nlohmann::json::exception& e) {
-      util::warning(log_tag + e.what());
+      util::warning(e.what());
 
-      util::warning(log_tag + "A parsing error occurred while reading the parameters for " + name +
+      util::warning("A parsing error occurred while reading the parameters for " + name +
                     " effect. The preset file could be invalid or corrupted. Please check its content.");
 
       return false;
     } catch (...) {
-      util::warning(log_tag + "A generic error occurred while parsing the preset file for " + name + " effect.");
+      util::warning("A generic error occurred while parsing the preset file for " + name + " effect.");
 
       return false;
     }
@@ -709,10 +709,10 @@ void PresetsManager::import(const PresetType& preset_type, const std::string& fi
 
       std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
-      util::debug(log_tag + "imported preset to: " + out_path.string());
+      util::debug("imported preset to: " + out_path.string());
     }
   } else {
-    util::warning(log_tag + p.string() + " is not a file!");
+    util::warning(p.string() + " is not a file!");
   }
 }
 
@@ -743,7 +743,7 @@ void PresetsManager::add_autoload(const PresetType& preset_type,
 
   o << std::setw(4) << json << std::endl;
 
-  util::debug(log_tag + "added autoload preset file: " + output_file.string());
+  util::debug("added autoload preset file: " + output_file.string());
 }
 
 void PresetsManager::remove_autoload(const PresetType& preset_type,
@@ -771,7 +771,7 @@ void PresetsManager::remove_autoload(const PresetType& preset_type,
     if (preset_name == json.value("preset-name", "") && device_profile == json.value("device-profile", "")) {
       std::filesystem::remove(input_file);
 
-      util::debug(log_tag + "removed autoload: " + input_file.string());
+      util::debug("removed autoload: " + input_file.string());
     }
   }
 }
@@ -809,7 +809,7 @@ void PresetsManager::autoload(const PresetType& preset_type,
   const auto name = find_autoload(preset_type, device_name, device_profile);
 
   if (!name.empty()) {
-    util::debug(log_tag + "autoloading preset " + name + " for device " + device_name);
+    util::debug("autoloading preset " + name + " for device " + device_name);
 
     auto key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
 
@@ -856,7 +856,7 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
 
     return list;
   } catch (const std::exception& e) {
-    util::warning(log_tag + e.what());
+    util::warning(e.what());
 
     return list;
   }

@@ -47,7 +47,7 @@ void update_bypass_state(Application* self) {
   self->soe->set_bypass(state != 0);
   self->sie->set_bypass(state != 0);
 
-  util::info(log_tag + ((state) != 0 ? "enabling"s : "disabling"s) + " global bypass"s);
+  util::info(((state) != 0 ? "enabling" : "disabling") + " global bypass"s);
 }
 
 void on_startup(GApplication* gapp) {
@@ -115,7 +115,7 @@ void on_startup(GApplication* gapp) {
       return;
     }
 
-    util::debug(log_tag + "device "s + device.name + " has changed its input route to: "s + device.input_route_name);
+    util::debug("device "s + device.name + " has changed its input route to: "s + device.input_route_name);
 
     NodeInfo target_node;
 
@@ -133,10 +133,10 @@ void on_startup(GApplication* gapp) {
       if (target_node.name == name) {
         self->presets_manager->autoload(PresetType::input, target_node.name, device.input_route_name);
       } else {
-        util::debug(log_tag + "input autoloading: the target node name does not match the input device name"s);
+        util::debug("input autoloading: the target node name does not match the input device name");
       }
     } else {
-      util::debug(log_tag + "input autoloading: could not find the target node"s);
+      util::debug("input autoloading: could not find the target node");
     }
   }));
 
@@ -145,7 +145,7 @@ void on_startup(GApplication* gapp) {
       return;
     }
 
-    util::debug(log_tag + "device "s + device.name + " has changed its output route to: "s + device.output_route_name);
+    util::debug("device "s + device.name + " has changed its output route to: "s + device.output_route_name);
 
     NodeInfo target_node;
 
@@ -163,10 +163,10 @@ void on_startup(GApplication* gapp) {
       if (target_node.name == name) {
         self->presets_manager->autoload(PresetType::output, target_node.name, device.output_route_name);
       } else {
-        util::debug(log_tag + "output autoloading: the target node name does not match the output device name"s);
+        util::debug("output autoloading: the target node name does not match the output device name");
       }
     } else {
-      util::debug(log_tag + "output autoloading: could not find the target node"s);
+      util::debug("output autoloading: could not find the target node");
     }
   }));
 
@@ -316,11 +316,11 @@ void application_class_init(ApplicationClass* klass) {
     } else if (g_variant_dict_contains(options, "reset") != 0) {
       g_settings_reset(self->settings, "");
 
-      util::info(log_tag + "All settings were reset"s);
+      util::info("All settings were reset");
     } else if (g_variant_dict_contains(options, "hide-window") != 0) {
       hide_all_windows(gapp);
 
-      util::info(log_tag + "Hiding the window..."s);
+      util::info("Hiding the window...");
     } else if (g_variant_dict_contains(options, "bypass") != 0) {
       if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
         if (bypass_arg == 1) {
@@ -389,7 +389,7 @@ void application_class_init(ApplicationClass* klass) {
     self->soe = nullptr;
     self->pm = nullptr;
 
-    util::debug(log_tag + "shutting down..."s);
+    util::debug("shutting down...");
   };
 }
 

@@ -220,8 +220,8 @@ void on_destroy_node_proxy(void* data) {
     }
   }
 
-  util::debug(PipeManager::log_tag + nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " +
-              nd->nd_info->name + " has been removed");
+  util::debug(nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " + nd->nd_info->name +
+              " has been removed");
 
   delete nd->nd_info;
 }
@@ -320,8 +320,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       });
     }
 
-    util::debug(PipeManager::log_tag + nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " +
-                nd->nd_info->name + " has been removed");
+    util::debug(nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " + nd->nd_info->name +
+                " has been removed");
 
     return;
   }
@@ -927,8 +927,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   const std::string str_type = (type != nullptr) ? type : "";
   const std::string str_value = (value != nullptr) ? value : "";
 
-  util::debug(PipeManager::log_tag + "new metadata property: " + util::to_string(id) + ", " + str_key + ", " +
-              str_type + ", " + str_value);
+  util::debug("new metadata property: " + util::to_string(id) + ", " + str_key + ", " + str_type + ", " + str_value);
 
   if (str_value.empty()) {
     return 0;
@@ -1088,10 +1087,9 @@ void on_registry_global(void* data,
 
               if (description.length() > 3) {
                 if (description.substr(0, 2) == "ee_") {
-                  const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+                  std::string node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
-                  util::debug(PipeManager::log_tag + "Filter " + node_name + " with id " + util::to_string(id) +
-                              " has been added");
+                  util::debug("Filter " + node_name + " with id " + util::to_string(id) + " has been added");
                 }
               }
             }
@@ -1132,13 +1130,12 @@ void on_registry_global(void* data,
 
       if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
         if (!util::str_to_num(std::string(object_serial), serial)) {
-          util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
-                        "The node cannot be handled by EasyEffects.");
+          util::warning(
+              "An error occurred while converting the object serial. The node cannot be handled by EasyEffects.");
           return;
         }
       } else {
-        util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
-                      "The node cannot be handled by EasyEffects.");
+        util::warning("Object serial not provided by PipeWire. The node cannot be handled by EasyEffects.");
         return;
       }
 
@@ -1175,7 +1172,7 @@ void on_registry_global(void* data,
       const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
 
       if (!success) {
-        util::warning(PipeManager::log_tag + "Cannot insert node " + util::to_string(id) + " " + name +
+        util::warning("Cannot insert node " + util::to_string(id) + " " + name +
                       " into the node map because there's already an existing serial " + util::to_string(serial));
 
         return;
@@ -1223,8 +1220,8 @@ void on_registry_global(void* data,
         });
       }
 
-      util::debug(PipeManager::log_tag + media_class + " " + util::to_string(id) + " " + nd->nd_info->name +
-                  " with serial " + util::to_string(serial) + " has been added");
+      util::debug(media_class + " " + util::to_string(id) + " " + nd->nd_info->name + " with serial " +
+                  util::to_string(serial) + " has been added");
     }
 
     return;
@@ -1235,13 +1232,12 @@ void on_registry_global(void* data,
 
     if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
       if (!util::str_to_num(std::string(object_serial), serial)) {
-        util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
-                      "This link cannot be handled by EasyEffects.");
+        util::warning(
+            "An error occurred while converting the object serial. This link cannot be handled by EasyEffects.");
         return;
       }
     } else {
-      util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
-                    "This link cannot be handled by EasyEffects.");
+      util::warning("Object serial not provided by PipeWire. This link cannot be handled by EasyEffects.");
       return;
     }
 
@@ -1269,8 +1265,8 @@ void on_registry_global(void* data,
 
       const auto output_node = pm->node_map_at_id(link_info.output_node_id);
 
-      util::debug(PipeManager::log_tag + output_node.name + " port " + util::to_string(link_info.output_port_id) +
-                  " is connected to " + input_node.name + " port " + util::to_string(link_info.input_port_id));
+      util::debug(output_node.name + " port " + util::to_string(link_info.output_port_id) + " is connected to " +
+                  input_node.name + " port " + util::to_string(link_info.input_port_id));
     } catch (...) {
     }
 
@@ -1282,13 +1278,12 @@ void on_registry_global(void* data,
 
     if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
       if (!util::str_to_num(std::string(object_serial), serial)) {
-        util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
-                      "This port cannot be handled by EasyEffects.");
+        util::warning(
+            "An error occurred while converting the object serial. This port cannot be handled by EasyEffects.");
         return;
       }
     } else {
-      util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
-                    "This port cannot be handled by EasyEffects.");
+      util::warning("Object serial not provided by PipeWire. This port cannot be handled by EasyEffects.");
       return;
     }
 
@@ -1321,13 +1316,12 @@ void on_registry_global(void* data,
 
     if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
       if (!util::str_to_num(std::string(object_serial), serial)) {
-        util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
-                      "This module cannot be handled by EasyEffects.");
+        util::warning(
+            "An error occurred while converting the object serial. This module cannot be handled by EasyEffects.");
         return;
       }
     } else {
-      util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
-                    "This module cannot be handled by EasyEffects.");
+      util::warning("Object serial not provided by PipeWire. This module cannot be handled by EasyEffects.");
       return;
     }
 
@@ -1360,13 +1354,12 @@ void on_registry_global(void* data,
 
     if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
       if (!util::str_to_num(std::string(object_serial), serial)) {
-        util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
-                      "This client cannot be handled by EasyEffects.");
+        util::warning(
+            "An error occurred while converting the object serial. This client cannot be handled by EasyEffects.");
         return;
       }
     } else {
-      util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
-                    "This client cannot be handled by EasyEffects.");
+      util::warning("Object serial not provided by PipeWire. This client cannot be handled by EasyEffects.");
       return;
     }
 
@@ -1392,11 +1385,13 @@ void on_registry_global(void* data,
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Metadata) == 0) {
     if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
-      util::debug(PipeManager::log_tag + "found metadata: " + name);
+      using namespace std::string_literals;
+
+      util::debug("found metadata: "s + name);
 
       if (g_strcmp0(name, "default") == 0) {
         if (pm->metadata != nullptr) {
-          util::debug(PipeManager::log_tag + "A new default metadata is available. We will use it");
+          util::debug("A new default metadata is available. We will use it");
 
           spa_hook_remove(&pm->metadata_listener);
         }
@@ -1406,7 +1401,7 @@ void on_registry_global(void* data,
         if (pm->metadata != nullptr) {
           pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
         } else {
-          util::warning(PipeManager::log_tag + "pw_registry_bind returned a null metadata object");
+          util::warning("pw_registry_bind returned a null metadata object");
         }
       }
     }
@@ -1423,13 +1418,12 @@ void on_registry_global(void* data,
 
         if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
           if (!util::str_to_num(std::string(object_serial), serial)) {
-            util::warning(PipeManager::log_tag + "An error occurred while converting the object serial. " +
-                          "This device cannot be handled by EasyEffects.");
+            util::warning(
+                "An error occurred while converting the object serial. This device cannot be handled by EasyEffects.");
             return;
           }
         } else {
-          util::warning(PipeManager::log_tag + "Object serial not provided by PipeWire. " +
-                        "This device cannot be handled by EasyEffects.");
+          util::warning("Object serial not provided by PipeWire. This device cannot be handled by EasyEffects.");
           return;
         }
 
@@ -1459,15 +1453,19 @@ void on_registry_global(void* data,
 void on_core_error(void* data, uint32_t id, int seq, int res, const char* message) {
   auto* const pm = static_cast<PipeManager*>(data);
 
+  using namespace std::string_literals;
+
   if (id == PW_ID_CORE) {
-    util::warning(PipeManager::log_tag + "Remote error res: " + spa_strerror(res));
-    util::warning(PipeManager::log_tag + "Remote error message: " + message);
+    util::warning("Remote error res: "s + spa_strerror(res));
+    util::warning("Remote error message: "s + message);
 
     pw_thread_loop_signal(pm->thread_loop, false);
   }
 }
 
 void on_core_info(void* data, const struct pw_core_info* info) {
+  using namespace std::string_literals;
+
   auto* const pm = static_cast<PipeManager*>(data);
 
   pm->core_name = info->name;
@@ -1488,8 +1486,8 @@ void on_core_info(void* data, const struct pw_core_info* info) {
     pm->default_quantum = quantum;
   }
 
-  util::debug(PipeManager::log_tag + "core version: " + info->version);
-  util::debug(PipeManager::log_tag + "core name: " + info->name);
+  util::debug("core version: "s + info->version);
+  util::debug("core name: "s + info->name);
 }
 
 void on_core_done(void* data, uint32_t id, int seq) {
@@ -1520,17 +1518,17 @@ PipeManager::PipeManager() {
   header_version = pw_get_headers_version();
   library_version = pw_get_library_version();
 
-  util::debug(log_tag + "compiled with PipeWire: " + header_version);
-  util::debug(log_tag + "linked to PipeWire: " + library_version);
+  util::debug("compiled with PipeWire: " + header_version);
+  util::debug("linked to PipeWire: " + library_version);
 
   thread_loop = pw_thread_loop_new("ee-pipewire-thread", nullptr);
 
   if (thread_loop == nullptr) {
-    util::error(log_tag + "could not create PipeWire loop");
+    util::error("could not create PipeWire loop");
   }
 
   if (pw_thread_loop_start(thread_loop) != 0) {
-    util::error(log_tag + "could not start the loop");
+    util::error("could not start the loop");
   }
 
   lock();
@@ -1545,19 +1543,19 @@ PipeManager::PipeManager() {
   context = pw_context_new(pw_thread_loop_get_loop(thread_loop), props_context, 0);
 
   if (context == nullptr) {
-    util::error(log_tag + "could not create PipeWire context");
+    util::error("could not create PipeWire context");
   }
 
   core = pw_context_connect(context, nullptr, 0);
 
   if (core == nullptr) {
-    util::error(log_tag + "context connection failed");
+    util::error("context connection failed");
   }
 
   registry = pw_core_get_registry(core, PW_VERSION_REGISTRY, 0);
 
   if (registry == nullptr) {
-    util::error(log_tag + "could not get the registry");
+    util::error("could not get the registry");
   }
 
   pw_registry_add_listener(registry, &registry_listener, &registry_events, this);
@@ -1607,12 +1605,12 @@ PipeManager::PipeManager() {
       if (ee_sink_node.name.empty() && node.name == ee_sink_name) {
         ee_sink_node = node;
 
-        util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + util::to_string(node.id) +
-                    " and serial " + util::to_string(node.serial));
+        util::debug(ee_sink_name + " node successfully retrieved with id " + util::to_string(node.id) + " and serial " +
+                    util::to_string(node.serial));
       } else if (ee_source_node.name.empty() && node.name == ee_source_name) {
         ee_source_node = node;
 
-        util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + util::to_string(node.id) +
+        util::debug(ee_source_name + " node successfully retrieved with id " + util::to_string(node.id) +
                     " and serial " + util::to_string(node.serial));
       }
     }
@@ -1635,21 +1633,21 @@ PipeManager::~PipeManager() {
   pw_proxy_destroy(proxy_stream_output_sink);
   pw_proxy_destroy(proxy_stream_input_source);
 
-  util::debug(log_tag + "Destroying PipeWire registry...");
+  util::debug("Destroying PipeWire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
 
-  util::debug(log_tag + "Disconnecting PipeWire core...");
+  util::debug("Disconnecting PipeWire core...");
   pw_core_disconnect(core);
 
   unlock();
 
-  util::debug(log_tag + "Stopping PipeWire's loop...");
+  util::debug("Stopping PipeWire's loop...");
   pw_thread_loop_stop(thread_loop);
 
-  util::debug(log_tag + "Destroying PipeWire's context...");
+  util::debug("Destroying PipeWire's context...");
   pw_context_destroy(context);
 
-  util::debug(log_tag + "Destroying PipeWire's loop...");
+  util::debug("Destroying PipeWire's loop...");
   pw_thread_loop_destroy(thread_loop);
 }
 
@@ -1787,13 +1785,13 @@ auto PipeManager::link_nodes(const uint& output_node_id,
   }
 
   if (list_input_ports.size() == 0) {
-    util::debug(log_tag + "node " + util::to_string(input_node_id) + " has no input ports yet. Aborting the link");
+    util::debug("node " + util::to_string(input_node_id) + " has no input ports yet. Aborting the link");
 
     return list;
   }
 
   if (list_output_ports.size() == 0) {
-    util::debug(log_tag + "node " + util::to_string(output_node_id) + " has no output ports yet. Aborting the link");
+    util::debug("node " + util::to_string(output_node_id) + " has no output ports yet. Aborting the link");
 
     return list;
   }
@@ -1836,7 +1834,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
         pw_properties_free(props);
 
         if (proxy == nullptr) {
-          util::warning(log_tag + "failed to link the node " + util::to_string(output_node_id) + " to " +
+          util::warning("failed to link the node " + util::to_string(output_node_id) + " to " +
                         util::to_string(input_node_id));
 
           unlock();

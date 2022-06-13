@@ -29,6 +29,7 @@
 #include <functional>
 #include <iostream>
 #include <limits>
+#include <source_location>
 #include <string>
 #include <thread>
 #include <vector>
@@ -40,11 +41,11 @@ const double minimum_db_d_level = -100.0;
 const float minimum_linear_level = 0.00001F;
 const double minimum_linear_d_level = 0.00001;
 
-void debug(const std::string& s);
-void error(const std::string& s);
-void critical(const std::string& s);
-void warning(const std::string& s);
-void info(const std::string& s);
+void debug(const std::string& s, std::source_location location = std::source_location::current());
+void error(const std::string& s, std::source_location location = std::source_location::current());
+void critical(const std::string& s, std::source_location location = std::source_location::current());
+void warning(const std::string& s, std::source_location location = std::source_location::current());
+void info(const std::string& s, std::source_location location = std::source_location::current());
 
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;
 auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;

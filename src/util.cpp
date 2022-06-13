@@ -21,24 +21,32 @@
 
 namespace util {
 
-void debug(const std::string& s) {
-  g_debug(s.c_str(), "%s");
+auto prepare_debug_message(const std::string& message, std::source_location location) -> std::string {
+  auto file_path = std::filesystem::path{location.file_name()};
+
+  std::string msg = "\t" + file_path.filename().string() + ":" + to_string(location.line()) + "\t" + message;
+
+  return msg;
 }
 
-void error(const std::string& s) {
-  g_error(s.c_str(), "%s");
+void debug(const std::string& s, std::source_location location) {
+  g_debug(prepare_debug_message(s, location).c_str(), "%s");
 }
 
-void critical(const std::string& s) {
-  g_critical(s.c_str(), "%s");
+void error(const std::string& s, std::source_location location) {
+  g_error(prepare_debug_message(s, location).c_str(), "%s");
 }
 
-void warning(const std::string& s) {
-  g_warning(s.c_str(), "%s");
+void critical(const std::string& s, std::source_location location) {
+  g_critical(prepare_debug_message(s, location).c_str(), "%s");
 }
 
-void info(const std::string& s) {
-  g_info(s.c_str(), "%s");
+void warning(const std::string& s, std::source_location location) {
+  g_warning(prepare_debug_message(s, location).c_str(), "%s");
+}
+
+void info(const std::string& s, std::source_location location) {
+  g_info(prepare_debug_message(s, location).c_str(), "%s");
 }
 
 void print_thread_id() {

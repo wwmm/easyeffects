@@ -42,9 +42,9 @@ auto main(int argc, char* argv[]) -> int {
     textdomain(GETTEXT_PACKAGE);
 
     if (bindtext_output != nullptr) {
-      util::debug("main: locale directory: " + std::string(bindtext_output));
+      util::debug("locale directory: " + std::string(bindtext_output));
     } else if (errno == ENOMEM) {
-      util::warning("main: bindtextdomain: Not enough memory available!");
+      util::warning("bindtextdomain: Not enough memory available!");
 
       return errno;
     }

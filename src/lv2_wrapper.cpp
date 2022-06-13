@@ -40,7 +40,7 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   world = lilv_world_new();
 
   if (world == nullptr) {
-    util::warning(log_tag + "failed to initialized the world");
+    util::warning("failed to initialized the world");
 
     return;
   }
@@ -48,7 +48,7 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   auto* const uri = lilv_new_uri(world, plugin_uri.c_str());
 
   if (uri == nullptr) {
-    util::warning(log_tag + "Invalid plugin URI: " + plugin_uri);
+    util::warning("Invalid plugin URI: " + plugin_uri);
 
     return;
   }
@@ -62,7 +62,7 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   lilv_node_free(uri);
 
   if (plugin == nullptr) {
-    util::warning(log_tag + "Could not find the plugin: " + plugin_uri);
+    util::warning("Could not find the plugin: " + plugin_uri);
 
     return;
   }
@@ -97,7 +97,7 @@ void Lv2Wrapper::check_required_features() {
 
       const char* required_feature_uri = lilv_node_as_uri(required_feature);
 
-      util::debug(log_tag + plugin_uri + " requires feature: " + required_feature_uri);
+      util::debug(plugin_uri + " requires feature: " + required_feature_uri);
     }
 
     lilv_nodes_free(required_features);
@@ -140,7 +140,7 @@ void Lv2Wrapper::create_ports() {
     if (lilv_port_is_a(plugin, lilv_port, lv2_InputPort)) {
       port->is_input = true;
     } else if (!lilv_port_is_a(plugin, lilv_port, lv2_OutputPort) && !port->optional) {
-      util::warning(log_tag + "Port " + port->name + " is neither input nor output!");
+      util::warning("Port " + port->name + " is neither input nor output!");
     }
 
     if (lilv_port_is_a(plugin, lilv_port, lv2_ControlPort)) {
@@ -151,7 +151,7 @@ void Lv2Wrapper::create_ports() {
       n_audio_in = (port->is_input) ? n_audio_in + 1 : n_audio_in;
       n_audio_out = (!port->is_input) ? n_audio_out + 1 : n_audio_out;
     } else if (!port->optional) {
-      util::warning(log_tag + "Port " + port->name + " has un unsupported type!");
+      util::warning("Port " + port->name + " has un unsupported type!");
     }
 
     lilv_node_free(port_name);
@@ -218,7 +218,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
   instance = lilv_plugin_instantiate(plugin, rate, features.data());
 
   if (instance == nullptr) {
-    util::warning(log_tag + "failed to instantiate " + plugin_uri);
+    util::warning("failed to instantiate " + plugin_uri);
 
     return false;
   }
@@ -336,7 +336,7 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
   for (auto& p : ports) {
     if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol) {
       if (!p.is_input) {
-        util::warning(log_tag + plugin_uri + " port " + symbol + " is not an input!");
+        util::warning(plugin_uri + " port " + symbol + " is not an input!");
 
         return;
       }
@@ -350,7 +350,7 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
   }
 
   if (!found) {
-    util::warning(log_tag + plugin_uri + " port symbol not found: " + symbol);
+    util::warning(plugin_uri + " port symbol not found: " + symbol);
   }
 }
 auto Lv2Wrapper::get_control_port_value(const std::string& symbol) -> float {
@@ -360,7 +360,7 @@ auto Lv2Wrapper::get_control_port_value(const std::string& symbol) -> float {
     }
   }
 
-  util::warning(log_tag + plugin_uri + " port symbol not found: " + symbol);
+  util::warning(plugin_uri + " port symbol not found: " + symbol);
 
   return 0.0F;
 }

@@ -177,8 +177,6 @@ class Lv2Wrapper {
   }
 
  private:
-  const std::string log_tag = "lv2_wrapper: ";
-
   std::string plugin_uri;
 
   LilvWorld* world = nullptr;

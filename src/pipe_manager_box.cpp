@@ -23,11 +23,9 @@ namespace ui::pipe_manager_box {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "pipe_manager_box: ";
-
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   app::Application* application;
 
@@ -620,7 +618,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->connections.push_back(
       application->presets_manager->user_output_preset_created.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file"s);
 
           return;
         }
@@ -637,7 +635,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->connections.push_back(
       application->presets_manager->user_output_preset_removed.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file"s);
 
           return;
         }
@@ -654,7 +652,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->connections.push_back(
       application->presets_manager->user_input_preset_created.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file"s);
 
           return;
         }
@@ -671,7 +669,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->connections.push_back(
       application->presets_manager->user_input_preset_removed.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file"s);
 
           return;
         }
@@ -754,7 +752,7 @@ void dispose(GObject* object) {
   g_object_unref(self->sie_settings);
   g_object_unref(self->soe_settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed"s);
 
   G_OBJECT_CLASS(pipe_manager_box_parent_class)->dispose(object);
 }
@@ -764,7 +762,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized"s);
 
   G_OBJECT_CLASS(pipe_manager_box_parent_class)->finalize(object);
 }

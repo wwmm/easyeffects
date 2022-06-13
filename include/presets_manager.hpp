@@ -114,8 +114,6 @@ class PresetsManager {
   sigc::signal<void(const std::vector<nlohmann::json>& profiles)> autoload_output_profiles_changed;
 
  private:
-  const std::string log_tag = "presets_manager: ";
-
   const std::string json_ext = ".json";
 
   std::string user_config_dir;
