@@ -21,10 +21,6 @@
 
 namespace ui::holders {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "module holder: ";
-
 enum { PROP_0, PROP_ID, PROP_NAME, PROP_DESCRIPTION, PROP_FILENAME };
 
 G_DEFINE_TYPE(ModuleInfoHolder, module_info_holder, G_TYPE_OBJECT);
@@ -78,7 +74,7 @@ void module_info_holder_finalize(GObject* object) {
 
   self->info_updated.clear();
 
-  util::debug(log_tag + util::to_string(self->info->id) + ", " + self->info->name + " finalized");
+  util::debug(util::to_string(self->info->id) + ", " + self->info->name + " finalized");
 
   delete self->info;
 

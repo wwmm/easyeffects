@@ -23,7 +23,6 @@ namespace ui::convolver_menu_impulses {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "convolver_menu_impulses: ";
 auto constexpr irs_ext = ".irs";
 
 static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
@@ -61,8 +60,8 @@ void import_irs_file(const std::string& file_path) {
 
   if (std::filesystem::is_regular_file(p)) {
     if (SndfileHandle file = SndfileHandle(file_path.c_str()); file.channels() != 2 || file.frames() == 0) {
-      util::warning(log_tag + " Only stereo impulse files are supported!"s);
-      util::warning(log_tag + file_path + " loading failed"s);
+      util::warning("Only stereo impulse files are supported!");
+      util::warning(file_path + " loading failed");
 
       return;
     }
@@ -73,9 +72,9 @@ void import_irs_file(const std::string& file_path) {
 
     std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
-    util::debug(log_tag + "imported irs file to: "s + out_path.string());
+    util::debug("imported irs file to: " + out_path.string());
   } else {
-    util::warning(log_tag + p.string() + " is not a file!");
+    util::warning(p.string() + " is not a file!");
   }
 }
 
@@ -121,7 +120,7 @@ void remove_irs_file(const std::string& name) {
   if (std::filesystem::exists(irs_file)) {
     std::filesystem::remove(irs_file);
 
-    util::debug(log_tag + "removed irs file: "s + irs_file.string());
+    util::debug("removed irs file: " + irs_file.string());
   }
 }
 
@@ -264,7 +263,7 @@ void dispose(GObject* object) {
   g_object_unref(self->settings);
   g_object_unref(self->app_settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(convolver_menu_impulses_parent_class)->dispose(object);
 }

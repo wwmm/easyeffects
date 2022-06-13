@@ -79,8 +79,6 @@ class TestSignals {
   auto white_noise() -> float;
 
  private:
-  inline static const std::string log_tag = "test signals: ";
-
   PipeManager* pm = nullptr;
 
   spa_hook listener{};

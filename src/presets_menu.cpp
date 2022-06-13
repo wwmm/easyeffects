@@ -21,13 +21,9 @@
 
 namespace ui::presets_menu {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "presets_menu: ";
-
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   app::Application* application;
 
@@ -83,7 +79,7 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
   }
 
   if (name.find_first_of("\\/") != std::string::npos) {
-    util::debug(log_tag + " name "s + name + " has illegal file name characters. Aborting preset creation!"s);
+    util::debug(" name " + name + " has illegal file name characters. Aborting preset creation!");
 
     return;
   }
@@ -292,7 +288,7 @@ void setup(PresetsMenu* self, app::Application* application) {
   self->data->connections.push_back(
       self->data->application->presets_manager->user_output_preset_created.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file");
 
           return;
         }
@@ -309,7 +305,7 @@ void setup(PresetsMenu* self, app::Application* application) {
   self->data->connections.push_back(
       self->data->application->presets_manager->user_output_preset_removed.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file");
 
           return;
         }
@@ -326,7 +322,7 @@ void setup(PresetsMenu* self, app::Application* application) {
   self->data->connections.push_back(
       self->data->application->presets_manager->user_input_preset_created.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file");
 
           return;
         }
@@ -343,7 +339,7 @@ void setup(PresetsMenu* self, app::Application* application) {
   self->data->connections.push_back(
       self->data->application->presets_manager->user_input_preset_removed.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file");
 
           return;
         }
@@ -389,7 +385,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(presets_menu_parent_class)->dispose(object);
 }
@@ -399,7 +395,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(presets_menu_parent_class)->finalize(object);
 }

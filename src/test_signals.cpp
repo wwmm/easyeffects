@@ -134,7 +134,9 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
-    util::error(log_tag + filter_name + " cannot connect the filter to PipeWire!");
+    using namespace std::string_literals;
+
+    util::error(filter_name + " cannot connect the filter to PipeWire!"s);
   }
 
   pm->sync_wait_unlock();
@@ -149,7 +151,7 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
 }
 
 TestSignals::~TestSignals() {
-  util::debug(log_tag + " destroyed");
+  util::debug("destroyed");
 
   spa_hook_remove(&listener);
 

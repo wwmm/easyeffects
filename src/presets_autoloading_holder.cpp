@@ -21,16 +21,12 @@
 
 namespace ui::holders {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "presets autoloading holder: ";
-
 G_DEFINE_TYPE(PresetsAutoloadingHolder, presets_autoloading_holder, G_TYPE_OBJECT);
 
 void presets_autoloading_holder_finalize(GObject* object) {
   auto* self = EE_PRESETS_AUTOLOADING_HOLDER(object);
 
-  util::debug(log_tag + self->data->device + ", " + self->data->preset_name + " finalized");
+  util::debug(self->data->device + ", " + self->data->preset_name + " finalized");
 
   delete self->data;
 
