@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-09 11:58-0300\n"
-"PO-Revision-Date: 2022-05-18 17:15+0000\n"
-"Last-Translator: Vitor Henrique <vitorhcl00@gmail.com>\n"
+"PO-Revision-Date: 2022-06-13 01:22+0000\n"
+"Last-Translator: João Henrique <jhenriquelc@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -29,7 +29,7 @@ msgstr "EasyEffects"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efeitos de Áudio para Programas que Utilizam PipeWire"
+msgstr "Efeitos de áudio para aplicativos que utilizam PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
@@ -95,7 +95,7 @@ msgstr "A página do aprimoramento de graves mostrando controles de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr "A página do convolver mostrando os controles de áudio"
+msgstr "A página de convolução mostrando os controles de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
@@ -115,43 +115,51 @@ msgstr "Essa versão adiciona os seguintes recursos:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "A interface do plugin de tom foi melhorada"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr ""
+"O ícone do nosso aplicativo é agora compatível com ambientes que usam QT"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "Our blocklist code will use the `application.id` tag if the stream sets it"
 msgstr ""
+"Nosso código de lista de bloqueio usará a tag `application.id` se o fluxo a "
+"definir"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
 "applications list shown in our `Players/Recorders`"
 msgstr ""
+"Para evitar problemas com mouse, role as entradas na lista de aplicativos "
+"mostrada em nossos `Reprodutores/Gravadores`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid ""
 "tab do not show a volume scale anymore. More details about the problem and "
 "the solution for it can be found on #1211"
 msgstr ""
+"Tab não mostram mais uma escala de volume. Mais detalhes sobre o problema e "
+"a solução para ele podem ser encontrados em #1211"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "and #1427"
-msgstr "Bandas"
+msgstr "e #1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "When no application is available for display in the `Players/Recorders` a "
 "message will be shown to the user"
 msgstr ""
+"Quando nenhum aplicativo estiver disponível para exibição em `Reprodutores/"
+"Gravadores` uma mensagem será mostrada ao usuário"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "Many translation updates"
-msgstr ""
+msgstr "Muitas atualizações de tradução"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
@@ -160,48 +168,55 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
 msgid "This release fixes the following bugs:"
-msgstr ""
+msgstr "Este lançamento corrige os seguintes bugs:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
 "Fixed a bug where EasyEffeects crashed when the number of points displayed "
 "in the spectrum was changed while"
 msgstr ""
+"Corrigido um bug em que o EasyEffects travava quando o número de pontos "
+"exibidos no espectro era alterado enquanto"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid "our pipeline was active and the spectrum widget was visible"
-msgstr ""
+msgstr "nosso pipeline estava ativo e o widget de espectro estava visível"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
+"O valor de latência do pipeline exibido em nossa janela pode estar errado em "
+"algumas situações. Isso foi corrigido."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
-#, fuzzy
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
-"Existe uma nova configuração que permite que o usuário selecione um tempo "
-"limite de inatividade para a pipeline. Quando nenhum cliente está tocando."
+"Há uma nova configuração que permite ao usuário selecionar um tempo limite "
+"de inatividade para o pipeline. Quando nenhum cliente está reproduzindo"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
+"ou gravando de nossos dispositivos, os filtros serão desconectados após o "
+"tempo limite ser alcançado. Isso é feito para garantir que"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "we do not waste CPU power processing silence."
-msgstr "não desperdiçamos poder da CPU processando silêncio."
+msgstr "não desperdicemos energia da CPU processando silêncio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
 msgstr ""
+"O plugin de ganho automático agora permite que o usuário selecione quais dos "
+"três tipos de sonoridade são usados para calcular a"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 msgid "mean."
@@ -212,14 +227,16 @@ msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
 msgstr ""
+"O plugin de ganho automático agora permite que o histórico máximo seja "
+"definido e não usa mais o modo de histograma `libebur128`."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
-"Isto deve evitar os casos em que o\n"
-"ruído \"integrado\" fica preso para sempre no mesmo valor."
+"Isto deve evitar os casos em que o ruído \"integrado\" fica preso para "
+"sempre no mesmo valor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 msgid ""
@@ -361,6 +378,8 @@ msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
 msgstr ""
+"Agora é possível combinar respostas de impulso na interface Convolução. Um "
+"novo arquivo de impulso é gerado e deve estar visível na lista de impulsos."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
 msgid ""
@@ -597,6 +616,9 @@ msgid ""
 "where the impulse files was not loaded when only one was available in the "
 "menu"
 msgstr ""
+"O menu de resposta ao impulso de convolução foi aprimorado para solucionar "
+"um problema em que os arquivos de impulso não eram carregados quando apenas "
+"um estava disponível no menu"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
 msgid ""
@@ -3179,7 +3201,7 @@ msgstr "Borda"
 
 #: src/effects_box.cpp:287 src/plugins_box.cpp:551
 msgid "Players"
-msgstr ""
+msgstr "Reprodutores"
 
 #: src/effects_box.cpp:310
 #, fuzzy
@@ -3216,7 +3238,7 @@ msgstr "Volume do baixo"
 
 #: src/plugin_name.cpp:29
 msgid "Convolver"
-msgstr "Convolver"
+msgstr "Convolução"
 
 #: src/plugin_name.cpp:30
 msgid "Crossfeed"
