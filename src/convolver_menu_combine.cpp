@@ -23,14 +23,13 @@ namespace ui::convolver_menu_combine {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "convolver_menu_combine: ";
 auto constexpr irs_ext = ".irs";
 
 static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
 
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   std::vector<std::thread> mythreads;
 };
@@ -91,8 +90,8 @@ void combine_kernels(ConvolverMenuCombine* self,
     return;
   }
 
-  auto [rate1, kernel_1_L, kernel_1_R] = ui::convolver::read_kernel(log_tag, irs_dir, irs_ext, kernel_1_name);
-  auto [rate2, kernel_2_L, kernel_2_R] = ui::convolver::read_kernel(log_tag, irs_dir, irs_ext, kernel_2_name);
+  auto [rate1, kernel_1_L, kernel_1_R] = ui::convolver::read_kernel(irs_dir, irs_ext, kernel_1_name);
+  auto [rate2, kernel_2_L, kernel_2_R] = ui::convolver::read_kernel(irs_dir, irs_ext, kernel_2_name);
 
   if (rate1 == 0 || rate2 == 0) {
     util::idle_add([=] { gtk_spinner_stop(self->spinner); });
@@ -101,7 +100,7 @@ void combine_kernels(ConvolverMenuCombine* self,
   }
 
   if (rate1 > rate2) {
-    util::debug(log_tag + "resampling the kernel "s + kernel_2_name + " to " + util::to_string(rate1) + " Hz");
+    util::debug("resampling the kernel " + kernel_2_name + " to " + util::to_string(rate1) + " Hz");
 
     auto resampler = std::make_unique<Resampler>(rate2, rate1);
 
@@ -111,7 +110,7 @@ void combine_kernels(ConvolverMenuCombine* self,
 
     kernel_2_R = resampler->process(kernel_2_R, true);
   } else if (rate2 > rate1) {
-    util::debug(log_tag + "resampling the kernel "s + kernel_1_name + " to " + util::to_string(rate2) + " Hz");
+    util::debug("resampling the kernel " + kernel_1_name + " to " + util::to_string(rate2) + " Hz");
 
     auto resampler = std::make_unique<Resampler>(rate1, rate2);
 
@@ -153,7 +152,7 @@ void combine_kernels(ConvolverMenuCombine* self,
 
   sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
 
-  util::debug(log_tag + "combined kernel saved: "s + output_file_path.string());
+  util::debug("combined kernel saved: " + output_file_path.string());
 
   util::idle_add([=] { gtk_spinner_stop(self->spinner); });
 }
@@ -180,7 +179,7 @@ void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
   std::string output_name = gtk_editable_get_text(GTK_EDITABLE(self->output_kernel_name));
 
   if (output_name.empty() || output_name.find_first_of("\\/") != std::string::npos) {
-    util::debug(log_tag + " combined IR filename is empty or has illegal characters."s);
+    util::debug(" combined IR filename is empty or has illegal characters.");
 
     gtk_widget_add_css_class(GTK_WIDGET(self->output_kernel_name), "error");
 
@@ -217,7 +216,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->app_settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(convolver_menu_combine_parent_class)->dispose(object);
 }
@@ -227,7 +226,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(convolver_menu_combine_parent_class)->finalize(object);
 }

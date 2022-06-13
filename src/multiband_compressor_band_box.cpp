@@ -21,13 +21,9 @@
 
 namespace ui::multiband_compressor_band_box {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "multiband_compressor_band_box: ";
-
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   int index;
 
@@ -193,7 +189,7 @@ void dispose(GObject* object) {
 
   self->data->gconnections.clear();
 
-  util::debug(log_tag + "index: "s + util::to_string(self->data->index) + " disposed"s);
+  util::debug("index: " + util::to_string(self->data->index) + " disposed");
 
   G_OBJECT_CLASS(multiband_compressor_band_box_parent_class)->dispose(object);
 }
@@ -203,7 +199,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(multiband_compressor_band_box_parent_class)->finalize(object);
 }

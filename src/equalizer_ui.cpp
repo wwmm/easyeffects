@@ -21,10 +21,7 @@
 
 namespace ui::equalizer_box {
 
-using namespace std::string_literals;
 using namespace tags::equalizer;
-
-auto constexpr log_tag = "equalizer_box: ";
 
 constexpr int max_bands = 32U;
 
@@ -45,7 +42,7 @@ std::unordered_map<std::string, std::string> const FilterTypeMap = {
 
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   app::Application* application;
 
@@ -528,7 +525,7 @@ void dispose(GObject* object) {
   g_object_unref(self->settings_left);
   g_object_unref(self->settings_right);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(equalizer_box_parent_class)->dispose(object);
 }
@@ -538,7 +535,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(equalizer_box_parent_class)->finalize(object);
 }

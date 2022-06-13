@@ -21,15 +21,11 @@
 
 namespace ui::crystalizer_box {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "crystalizer_box: ";
-
 constexpr uint nbands = 13U;
 
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   std::shared_ptr<Crystalizer> crystalizer;
 
@@ -182,7 +178,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(crystalizer_box_parent_class)->dispose(object);
 }
@@ -192,7 +188,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(crystalizer_box_parent_class)->finalize(object);
 }

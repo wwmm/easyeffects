@@ -21,13 +21,9 @@
 
 namespace ui::filter_box {
 
-using namespace std::string_literals;
-
-auto constexpr log_tag = "filter_box: ";
-
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   std::shared_ptr<Filter> filter;
 
@@ -118,7 +114,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(filter_box_parent_class)->dispose(object);
 }
@@ -128,7 +124,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(filter_box_parent_class)->finalize(object);
 }

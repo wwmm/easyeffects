@@ -23,11 +23,9 @@ namespace ui::application_window {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "application_ui: ";
-
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   int width, height;
 
@@ -71,7 +69,7 @@ auto setup_icon_theme() -> GtkIconTheme* {
   auto* icon_theme = gtk_icon_theme_get_for_display(gdk_display_get_default());
 
   if (icon_theme == nullptr) {
-    util::warning(log_tag + "can't retrieve the icon theme in use on the system. App icons won't be shown."s);
+    util::warning("can't retrieve the icon theme in use on the system. App icons won't be shown.");
 
     return nullptr;
   }
@@ -79,9 +77,9 @@ auto setup_icon_theme() -> GtkIconTheme* {
   auto* name = gtk_icon_theme_get_theme_name(icon_theme);
 
   if (name == nullptr) {
-    util::debug(log_tag + "Icon Theme detected, but the name is empty"s);
+    util::debug("Icon Theme detected, but the name is empty");
   } else {
-    util::debug(log_tag + "Icon Theme "s + name + " detected"s);
+    util::debug("Icon Theme "s + name + " detected");
 
     g_free(name);
   }
@@ -184,7 +182,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(application_window_parent_class)->dispose(object);
 }
@@ -194,7 +192,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(application_window_parent_class)->finalize(object);
 }

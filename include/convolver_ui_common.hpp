@@ -25,9 +25,7 @@
 
 namespace ui::convolver {
 
-auto read_kernel(const std::string& log_tag,
-                 std::filesystem::path irs_dir,
-                 const std::string& irs_ext,
-                 const std::string& file_name) -> std::tuple<int, std::vector<float>, std::vector<float>>;
+auto read_kernel(std::filesystem::path irs_dir, const std::string& irs_ext, const std::string& file_name)
+    -> std::tuple<int, std::vector<float>, std::vector<float>>;
 
 }

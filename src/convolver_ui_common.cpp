@@ -21,10 +21,8 @@
 
 namespace ui::convolver {
 
-auto read_kernel(const std::string& log_tag,
-                 std::filesystem::path irs_dir,
-                 const std::string& irs_ext,
-                 const std::string& file_name) -> std::tuple<int, std::vector<float>, std::vector<float>> {
+auto read_kernel(std::filesystem::path irs_dir, const std::string& irs_ext, const std::string& file_name)
+    -> std::tuple<int, std::vector<float>, std::vector<float>> {
   int rate = 0;
   std::vector<float> buffer;
   std::vector<float> kernel_L;
@@ -32,14 +30,14 @@ auto read_kernel(const std::string& log_tag,
 
   auto file_path = irs_dir / std::filesystem::path{file_name};
 
-  util::debug(log_tag + "reading the impulse file: " + file_path.string());
+  util::debug("reading the impulse file: " + file_path.string());
 
   if (file_path.extension() != irs_ext) {
     file_path += irs_ext;
   }
 
   if (!std::filesystem::exists(file_path)) {
-    util::debug(log_tag + "file: " + file_path.string() + " does not exist");
+    util::debug("file: " + file_path.string() + " does not exist");
 
     return std::make_tuple(rate, kernel_L, kernel_R);
   }
@@ -47,8 +45,8 @@ auto read_kernel(const std::string& log_tag,
   auto sndfile = SndfileHandle(file_path.string());
 
   if (sndfile.channels() != 2 || sndfile.frames() == 0) {
-    util::warning(log_tag + " Only stereo impulse responses are supported.");
-    util::warning(log_tag + " The impulse file was not loaded!");
+    util::warning(" Only stereo impulse responses are supported.");
+    util::warning(" The impulse file was not loaded!");
 
     return std::make_tuple(rate, kernel_L, kernel_R);
   }

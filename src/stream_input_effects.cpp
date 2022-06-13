@@ -135,7 +135,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 StreamInputEffects::~StreamInputEffects() {
   disconnect_filters();
 
-  util::debug(log_tag + "destroyed");
+  util::debug("destroyed");
 }
 
 void StreamInputEffects::on_app_added(const NodeInfo node_info) {
@@ -183,30 +183,29 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
 
   if (apps_want_to_play()) {
     if (list_proxies.empty()) {
-      util::debug(log_tag + "At least one app linked to our device wants to play. Linking our filters.");
+      util::debug("At least one app linked to our device wants to play. Linking our filters.");
 
       connect_filters();
     }
   } else {
     int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
 
-    g_timeout_add_seconds(
-        inactivity_timeout, GSourceFunc(+[](StreamInputEffects* self) {
-          if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
-            util::debug(self->log_tag + "No app linked to our device wants to play. Unlinking our filters.");
+    g_timeout_add_seconds(inactivity_timeout, GSourceFunc(+[](StreamInputEffects* self) {
+                            if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
+                              util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
-            self->disconnect_filters();
-          }
+                              self->disconnect_filters();
+                            }
 
-          return G_SOURCE_REMOVE;
-        }),
-        this);
+                            return G_SOURCE_REMOVE;
+                          }),
+                          this);
   }
 }
 
 void StreamInputEffects::connect_filters(const bool& bypass) {
   if (pm->input_device.id == SPA_ID_INVALID || pm->input_device.serial == SPA_ID_INVALID) {
-    util::debug(log_tag + "Input device id is invalid. Aborting the link between filters in the microphone pipeline");
+    util::debug("Input device id is invalid. Aborting the link between filters in the microphone pipeline");
 
     return;
   }
@@ -229,8 +228,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
   }
 
   if (!dev_exists) {
-    util::warning(log_tag + "The input device " + pm->input_device.name + " with id " +
-                  util::to_string(pm->input_device.id) + " does not exist anymore. Aborting the link");
+    util::warning("The input device " + pm->input_device.name + " with id " + util::to_string(pm->input_device.id) +
+                  " does not exist anymore. Aborting the link");
 
     return;
   }
@@ -245,7 +244,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
     timeout++;
 
     if (timeout > 10000) {
-      util::warning(log_tag + "Information about the ports of the input device " + pm->input_device.name + " with id " +
+      util::warning("Information about the ports of the input device " + pm->input_device.name + " with id " +
                     util::to_string(pm->input_device.id) + " are taking to long to be available. Aborting the link");
 
       return;
@@ -278,7 +277,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
           prev_node_id = next_node_id;
           mic_linked = true;
         } else {
-          util::warning(log_tag + " link from node " + util::to_string(prev_node_id) + " to node " +
+          util::warning(" link from node " + util::to_string(prev_node_id) + " to node " +
                         util::to_string(next_node_id) + " failed");
         }
       }
@@ -320,8 +319,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
       prev_node_id = next_node_id;
       mic_linked = true;
     } else {
-      util::warning(log_tag + " link from node " + util::to_string(prev_node_id) + " to node " +
-                    util::to_string(next_node_id) + " failed");
+      util::warning(" link from node " + util::to_string(prev_node_id) + " to node " + util::to_string(next_node_id) +
+                    " failed");
     }
   }
 }
@@ -341,7 +340,7 @@ void StreamInputEffects::disconnect_filters() {
 
     if (plugin->connected_to_pw) {
       if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-        util::debug(log_tag + "disconnecting the " + plugin->name + " filter from PipeWire");
+        util::debug("disconnecting the " + plugin->name + " filter from PipeWire");
 
         plugin->disconnect_from_pw();
       }

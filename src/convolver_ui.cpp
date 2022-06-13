@@ -23,14 +23,13 @@ namespace ui::convolver_box {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "convolver_box: ";
 auto constexpr irs_ext = ".irs";
 
 static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
 
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   app::Application* application;
 
@@ -168,12 +167,12 @@ void on_enable_log_scale(ConvolverBox* self, GtkToggleButton* btn) {
 void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   if (self->data->left_mag.empty() || self->data->right_mag.empty() ||
       self->data->left_mag.size() != self->data->right_mag.size()) {
-    util::debug(log_tag + " aborting the impulse fft calculation..."s);
+    util::debug(" aborting the impulse fft calculation...");
 
     return;
   }
 
-  util::debug(log_tag + " calculating the impulse fft..."s);
+  util::debug(" calculating the impulse fft...");
 
   self->data->left_spectrum.resize(self->data->left_mag.size() / 2U + 1U);
   self->data->right_spectrum.resize(self->data->right_mag.size() / 2U + 1U);
@@ -258,8 +257,8 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   float max_freq = std::ranges::max(self->data->freq_axis);
   float min_freq = std::ranges::min(self->data->freq_axis);
 
-  util::debug(log_tag + "min fft frequency: "s + util::to_string(min_freq, ""));
-  util::debug(log_tag + "max fft frequency: "s + util::to_string(max_freq, ""));
+  util::debug("min fft frequency: " + util::to_string(min_freq, ""));
+  util::debug("max fft frequency: " + util::to_string(max_freq, ""));
 
   const auto log_axis = util::logspace(min_freq, max_freq, bin_size);
   // const auto log_axis = util::logspace(20.0F, 22000.0F, self->data->freq_axis.size());
@@ -321,12 +320,12 @@ void get_irs_info(ConvolverBox* self) {
   const std::string path = util::gsettings_get_string(self->settings, "kernel-path");
 
   if (path.empty()) {
-    util::warning(log_tag + ": irs file path is null."s);
+    util::warning(": irs file path is null.");
 
     return;
   }
 
-  auto [rate, kernel_L, kernel_R] = ui::convolver::read_kernel(log_tag, irs_dir, irs_ext, path);
+  auto [rate, kernel_L, kernel_R] = ui::convolver::read_kernel(irs_dir, irs_ext, path);
 
   if (rate == 0) {
     // warning the user that there is a problem
@@ -515,7 +514,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(convolver_box_parent_class)->dispose(object);
 }
@@ -531,7 +530,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(convolver_box_parent_class)->finalize(object);
 }
@@ -588,12 +587,12 @@ void convolver_box_init(ConvolverBox* self) {
 
   if (!std::filesystem::is_directory(irs_dir)) {
     if (std::filesystem::create_directories(irs_dir)) {
-      util::debug(log_tag + "irs directory created: "s + irs_dir.string());
+      util::debug("irs directory created: " + irs_dir.string());
     } else {
-      util::warning(log_tag + "failed to create irs directory: "s + irs_dir.string());
+      util::warning("failed to create irs directory: " + irs_dir.string());
     }
   } else {
-    util::debug(log_tag + "irs directory already exists: "s + irs_dir.string());
+    util::debug("irs directory already exists: " + irs_dir.string());
   }
 
   prepare_spinbuttons<"%">(self->ir_width);
@@ -625,7 +624,7 @@ void convolver_box_init(ConvolverBox* self) {
                      const auto irs_filename = util::remove_filename_extension(g_file_get_basename(file));
 
                      if (irs_filename.empty()) {
-                       util::warning(log_tag + "can't retrieve information about irs file"s);
+                       util::warning("can't retrieve information about irs file");
 
                        return;
                      }

@@ -23,8 +23,6 @@ namespace ui::rnnoise_box {
 
 using namespace std::string_literals;
 
-auto constexpr log_tag = "rnnoise_box: ";
-
 static const std::string rnnn_ext = ".rnnn";
 
 static const std::string default_model_name = _("Standard Model");
@@ -33,7 +31,7 @@ static std::filesystem::path model_dir = g_get_user_config_dir() + "/easyeffects
 
 struct Data {
  public:
-  ~Data() { util::debug(log_tag + "data struct destroyed"s); }
+  ~Data() { util::debug("data struct destroyed"); }
 
   app::Application* application;
 
@@ -96,7 +94,7 @@ void on_remove_model_file(GtkListItem* item, GtkButton* btn) {
   if (std::filesystem::exists(model_file)) {
     std::filesystem::remove(model_file);
 
-    util::debug(log_tag + "removed model file: "s + model_file.string());
+    util::debug("removed model file: " + model_file.string());
   }
 }
 
@@ -110,9 +108,9 @@ void import_model_file(const std::string& file_path) {
 
     std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
-    util::debug(log_tag + "imported model file to: "s + out_path.string());
+    util::debug("imported model file to: " + out_path.string());
   } else {
-    util::warning(log_tag + p.string() + " is not a file!");
+    util::warning(p.string() + " is not a file!");
   }
 }
 
@@ -260,7 +258,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-  util::debug(log_tag + "disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(rnnoise_box_parent_class)->dispose(object);
 }
@@ -270,7 +268,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug(log_tag + "finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(rnnoise_box_parent_class)->finalize(object);
 }
@@ -319,12 +317,12 @@ void rnnoise_box_init(RNNoiseBox* self) {
 
   if (!std::filesystem::is_directory(model_dir)) {
     if (std::filesystem::create_directories(model_dir)) {
-      util::debug(log_tag + "model directory created: "s + model_dir.string());
+      util::debug("model directory created: " + model_dir.string());
     } else {
-      util::warning(log_tag + "failed to create model directory: "s + model_dir.string());
+      util::warning("failed to create model directory: " + model_dir.string());
     }
   } else {
-    util::debug(log_tag + "model directory already exists: "s + model_dir.string());
+    util::debug("model directory already exists: " + model_dir.string());
   }
 
   auto gfile = g_file_new_for_path(model_dir.c_str());
@@ -337,7 +335,7 @@ void rnnoise_box_init(RNNoiseBox* self) {
                      const auto rnn_filename = util::remove_filename_extension(g_file_get_basename(file));
 
                      if (rnn_filename.empty()) {
-                       util::warning(log_tag + "can't retrieve information about the rnn file"s);
+                       util::warning("can't retrieve information about the rnn file");
 
                        return;
                      }
