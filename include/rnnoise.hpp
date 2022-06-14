@@ -20,7 +20,10 @@
 #ifndef RNNOISE_HPP
 #define RNNOISE_HPP
 
+#ifdef RNNOISE_AVAILABLE
 #include <rnnoise.h>
+#endif
+
 #include <deque>
 #include "plugin_base.hpp"
 #include "resampler.hpp"
@@ -66,6 +69,8 @@ class RNNoise : public PluginBase {
 
   std::unique_ptr<Resampler> resampler_inL, resampler_outL;
   std::unique_ptr<Resampler> resampler_inR, resampler_outR;
+
+#ifdef RNNOISE_AVAILABLE
 
   RNNModel* model = nullptr;
 
@@ -117,6 +122,8 @@ class RNNoise : public PluginBase {
       }
     }
   }
+
+#endif
 };
 
 #endif

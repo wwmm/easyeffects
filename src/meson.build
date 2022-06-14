@@ -119,6 +119,14 @@ zita_convolver = cxx.find_library('zita-convolver', required: true)
 
 tbb = cxx.find_library('tbb', required: true)
 
+rnnoise = dependency('rnnoise', required: false)
+
+if rnnoise.found()
+	add_global_arguments('-DRNNOISE_AVAILABLE=1', language : 'cpp')
+else
+	message('The RNNoise library was not found. The calls to its functions will be disabled')
+endif
+
 easyeffects_deps = [
 	dependency('libpipewire-0.3', version: '>=0.3.41'),
 	dependency('glib-2.0', version: '>=2.56'),
@@ -131,7 +139,6 @@ easyeffects_deps = [
 	dependency('sndfile'),
 	dependency('fftw3f'),
 	dependency('libebur128',version: '>=1.2.0'),
-	dependency('rnnoise'),
 	dependency('samplerate'),
 	dependency('rubberband'),
 	dependency('speexdsp'),
@@ -140,6 +147,7 @@ easyeffects_deps = [
 	dependency('threads'),
 	tbb,
 	zita_convolver,
+	rnnoise
 ]
 
 executable(

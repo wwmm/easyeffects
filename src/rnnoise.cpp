@@ -37,6 +37,7 @@ RNNoise::RNNoise(const std::string& tag,
 
                                             self->data_mutex.unlock();
 
+#ifdef RNNOISE_AVAILABLE
                                             self->free_rnnoise();
 
                                             auto* m = self->get_model_from_file();
@@ -47,10 +48,13 @@ RNNoise::RNNoise(const std::string& tag,
                                             self->state_right = rnnoise_create(self->model);
 
                                             self->rnnoise_ready = true;
+#endif
                                           }),
                                           this));
 
   setup_input_output_gain();
+
+#ifdef RNNOISE_AVAILABLE
 
   auto* m = get_model_from_file();
 
@@ -60,6 +64,8 @@ RNNoise::RNNoise(const std::string& tag,
   state_right = rnnoise_create(model);
 
   rnnoise_ready = true;
+
+#endif
 }
 
 RNNoise::~RNNoise() {
@@ -71,7 +77,9 @@ RNNoise::~RNNoise() {
 
   resampler_ready = false;
 
+#ifdef RNNOISE_AVAILABLE
   free_rnnoise();
+#endif
 
   util::debug(log_tag + name + " destroyed");
 }
@@ -125,7 +133,9 @@ void RNNoise::process(std::span<float>& left_in,
       resampled_data_L.resize(0);
       resampled_data_R.resize(0);
 
+#ifdef RNNOISE_AVAILABLE
       remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
+#endif
 
       auto resampled_outL = resampler_outL->process(resampled_data_L, false);
       auto resampled_outR = resampler_outR->process(resampled_data_R, false);
@@ -147,7 +157,9 @@ void RNNoise::process(std::span<float>& left_in,
       }
     }
   } else {
+#ifdef RNNOISE_AVAILABLE
     remove_noise(left_in, right_in, deque_out_L, deque_out_R);
+#endif
   }
 
   if (deque_out_L.size() >= left_out.size()) {
@@ -242,6 +254,8 @@ void RNNoise::process(std::span<float>& left_in,
   }
 }
 
+#ifdef RNNOISE_AVAILABLE
+
 auto RNNoise::get_model_from_file() -> RNNModel* {
   RNNModel* m = nullptr;
 
@@ -281,6 +295,8 @@ void RNNoise::free_rnnoise() {
   state_right = nullptr;
   model = nullptr;
 }
+
+#endif
 
 auto RNNoise::get_latency_seconds() -> float {
   return latency_value;
