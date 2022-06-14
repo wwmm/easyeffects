@@ -64,7 +64,8 @@ RNNoise::RNNoise(const std::string& tag,
   state_right = rnnoise_create(model);
 
   rnnoise_ready = true;
-
+#elif
+  util::warning("The RNNoise library was not available at compilation time. The noise reduction filter won't work");
 #endif
 }
 
