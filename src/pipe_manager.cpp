@@ -1134,13 +1134,7 @@ void on_registry_global(void* data,
       nd->proxy = proxy;
       nd->pm = pm;
 
-      nd->nd_info = new NodeInfo();
-
-      nd->nd_info->proxy = proxy;
-      nd->nd_info->serial = serial;
-      nd->nd_info->id = id;
-      nd->nd_info->media_class = media_class;
-      nd->nd_info->name = name;
+      nd->nd_info = new NodeInfo{.proxy = proxy, .id = id, .serial = serial, .name = name, .media_class = media_class};
 
       if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
         nd->nd_info->description = node_description;
