@@ -84,11 +84,6 @@ void on_startup(GApplication* gapp) {
     util::debug("new default output device: " + name);
 
     if (g_settings_get_boolean(self->soe_settings, "use-default-output-device") != 0) {
-      /*
-        Depending on the hardware headphones can cause a node recreation where the id and the name are kept.
-        So we clear the key to force the callbacks to be called
-      */
-
       g_settings_set_string(self->soe_settings, "output-device", name.c_str());
     }
   }));
@@ -97,11 +92,6 @@ void on_startup(GApplication* gapp) {
     util::debug("new default input device: " + name);
 
     if (g_settings_get_boolean(self->sie_settings, "use-default-input-device") != 0) {
-      /*
-        Depending on the hardware microphones can cause a node recreation where the id and the name are kept.
-        So we clear the key to force the callbacks to be called
-      */
-
       g_settings_set_string(self->sie_settings, "input-device", name.c_str());
     }
   }));
