@@ -80,8 +80,8 @@ void on_startup(GApplication* gapp) {
     PipeManager::set_node_volume(self->pm->ee_sink_node.proxy, self->pm->ee_sink_node.n_volume_channels, 1.0);
   }
 
-  self->data->connections.push_back(self->pm->new_default_sink.connect([=](const NodeInfo node) {
-    util::debug("new default output device: " + node.name);
+  self->data->connections.push_back(self->pm->new_default_sink_name.connect([=](const std::string name) {
+    util::debug("new default output device: " + name);
 
     if (g_settings_get_boolean(self->soe_settings, "use-default-output-device") != 0) {
       /*
@@ -89,13 +89,12 @@ void on_startup(GApplication* gapp) {
         So we clear the key to force the callbacks to be called
       */
 
-      g_settings_set_string(self->soe_settings, "output-device", "");
-      g_settings_set_string(self->soe_settings, "output-device", node.name.c_str());
+      g_settings_set_string(self->soe_settings, "output-device", name.c_str());
     }
   }));
 
-  self->data->connections.push_back(self->pm->new_default_source.connect([=](const NodeInfo node) {
-    util::debug("new default input device: " + node.name);
+  self->data->connections.push_back(self->pm->new_default_source_name.connect([=](const std::string name) {
+    util::debug("new default input device: " + name);
 
     if (g_settings_get_boolean(self->sie_settings, "use-default-input-device") != 0) {
       /*
@@ -103,8 +102,7 @@ void on_startup(GApplication* gapp) {
         So we clear the key to force the callbacks to be called
       */
 
-      g_settings_set_string(self->sie_settings, "input-device", "");
-      g_settings_set_string(self->sie_settings, "input-device", node.name.c_str());
+      g_settings_set_string(self->sie_settings, "input-device", name.c_str());
     }
   }));
 

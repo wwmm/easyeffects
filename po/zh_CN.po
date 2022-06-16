@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-09 11:58-0300\n"
+"POT-Creation-Date: 2022-06-16 14:36-0300\n"
 "PO-Revision-Date: 2022-06-05 11:16+0000\n"
 "Last-Translator: Sch <weblate@scheimong.net>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -732,8 +732,8 @@ msgid "_About EasyEffects"
 msgstr "关于 EasyEffects (_A)"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
-#: src/presets_menu.cpp:112 src/presets_menu.cpp:262 src/presets_menu.cpp:263
-#: src/presets_menu.cpp:280 src/presets_menu.cpp:281
+#: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
+#: src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
 msgstr "预设"
 
@@ -851,7 +851,7 @@ msgstr "输出增益"
 #: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
 #: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
 #: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
-#: src/application_ui.cpp:245
+#: src/application_ui.cpp:243
 msgid "Input"
 msgstr "输入"
 
@@ -880,7 +880,7 @@ msgstr "插件输入增益"
 #: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
 #: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
-#: src/application_ui.cpp:244
+#: src/application_ui.cpp:242
 msgid "Output"
 msgstr "输出"
 
@@ -940,7 +940,7 @@ msgstr "概述"
 msgid "Preset"
 msgstr "预设"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:502
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:500
 msgid "Remove"
 msgstr "删除"
 
@@ -1182,7 +1182,7 @@ msgid "Sidechain Type"
 msgstr "侧链类型"
 
 #: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
-#: src/plugins_box.cpp:532
+#: src/plugins_box.cpp:530
 msgid "Input Device"
 msgstr "输入设备"
 
@@ -2196,7 +2196,7 @@ msgstr "使用默认输入"
 msgid "Custom Input Device"
 msgstr "自定义输入设备"
 
-#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:552
+#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:550
 msgid "Output Device"
 msgstr "输出设备"
 
@@ -2564,7 +2564,7 @@ msgstr "频率范围"
 msgid "Minimum"
 msgstr "最低"
 
-#: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
+#: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:136
 msgid "Load"
 msgstr "加载"
 
@@ -2708,7 +2708,7 @@ msgstr "导入模型"
 msgid "Models"
 msgstr "模型"
 
-#: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
+#: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:28
 msgid "Standard Model"
 msgstr "标准模型"
 
@@ -2836,133 +2836,133 @@ msgstr "立体声基线"
 msgid "Stereo Phase"
 msgstr "立体声相位"
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:66
 msgid "Running"
 msgstr "正在运行"
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:68
 msgid "Suspended"
 msgstr "已暂停"
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:70
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:72
 msgid "Creating"
 msgstr "创建中"
 
-#: src/app_info.cpp:76
+#: src/app_info.cpp:74
 msgid "Error"
 msgstr "错误"
 
-#: src/app_info.cpp:78
+#: src/app_info.cpp:76
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:229
+#: src/app_info.cpp:227
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:260
+#: src/application.cpp:256
 msgid "Output Presets: "
 msgstr "输出预设: "
 
-#: src/application.cpp:268
+#: src/application.cpp:264
 msgid "Input Presets: "
 msgstr "输入预设: "
 
-#: src/application.cpp:416
+#: src/application.cpp:412
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
-#: src/application.cpp:502
+#: src/application.cpp:498
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "退出 EasyEffects。 在服务模式下运行时很有用。"
 
-#: src/application.cpp:505
+#: src/application.cpp:501
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
-#: src/application.cpp:508
+#: src/application.cpp:504
 msgid "Reset EasyEffects."
 msgstr "重设 EasyEffects。"
 
-#: src/application.cpp:511
+#: src/application.cpp:507
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:514
+#: src/application.cpp:510
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:517
+#: src/application.cpp:513
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
-#: src/application_ui.cpp:246
+#: src/application_ui.cpp:244
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/convolver_menu_impulses.cpp:85
+#: src/convolver_menu_impulses.cpp:84
 msgid "Import Impulse File"
 msgstr "导入 Impulse 文件"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
+#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:121
 msgid "Open"
 msgstr "打开"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
+#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:121
 msgid "Cancel"
 msgstr "取消"
 
-#: src/convolver_menu_impulses.cpp:90
+#: src/convolver_menu_impulses.cpp:89
 msgid "Impulse Response"
 msgstr "Impulse 解析"
 
-#: src/convolver_menu_impulses.cpp:199
+#: src/convolver_menu_impulses.cpp:198
 msgid "Load Impulse"
 msgstr "加载脉冲"
 
-#: src/convolver_menu_impulses.cpp:202
+#: src/convolver_menu_impulses.cpp:201
 msgid "Remove Impulse"
 msgstr "删除脉冲"
 
-#: src/convolver_ui.cpp:339 src/convolver_ui.cpp:340 src/convolver_ui.cpp:341
+#: src/convolver_ui.cpp:338 src/convolver_ui.cpp:339 src/convolver_ui.cpp:340
 msgid "Failed"
 msgstr "失败"
 
-#: src/convolver_ui.cpp:342
+#: src/convolver_ui.cpp:341
 msgid "Could Not Load The Impulse File"
 msgstr "无法加载 Impulse 文件"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:533
+#: src/effects_box.cpp:259 src/plugins_box.cpp:531
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:287 src/plugins_box.cpp:551
+#: src/effects_box.cpp:283 src/plugins_box.cpp:549
 msgid "Players"
 msgstr "播放器"
 
-#: src/effects_box.cpp:310
+#: src/effects_box.cpp:306
 msgid "Effects"
 msgstr "音效"
 
-#: src/equalizer_band_box.cpp:97
+#: src/equalizer_band_box.cpp:93
 msgid "infinity"
 msgstr ""
 
-#: src/equalizer_ui.cpp:354
+#: src/equalizer_ui.cpp:351
 msgid "Import APO Preset File"
 msgstr "加载 APO 预设文件"
 
-#: src/equalizer_ui.cpp:360
+#: src/equalizer_ui.cpp:357
 msgid "APO Presets"
 msgstr "APO 预设"
 
-#: src/pipe_manager_box.cpp:329
+#: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
 
@@ -3046,19 +3046,19 @@ msgstr "降噪"
 msgid "Stereo Tools"
 msgstr "立体声工具"
 
-#: src/plugins_menu.cpp:145
+#: src/plugins_menu.cpp:143
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:106
+#: src/presets_menu.cpp:102
 msgid "Import Preset"
 msgstr "导入预设"
 
-#: src/rnnoise_ui.cpp:122
+#: src/rnnoise_ui.cpp:120
 msgid "Import Model File"
 msgstr "导入模型文件"
 
-#: src/rnnoise_ui.cpp:127
+#: src/rnnoise_ui.cpp:125
 msgid "RNNoise Models"
 msgstr "RNNoise 模型"
 

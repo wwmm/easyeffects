@@ -474,7 +474,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       pm->sink_changed.emit(nd_info_copy);
     });
   }
-
   // const struct spa_dict_item* item = nullptr;
   // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
@@ -923,33 +922,15 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (const auto& [serial, node] : pm->node_map) {
-      if (node.name != v.data()) {
-        continue;
+    pm->default_output_device_name = v.data();
+
+    util::idle_add([pm] {
+      if (PipeManager::exiting) {
+        return;
       }
 
-      if (node.name == pm->ee_sink_name) {
-        pm->default_output_device.id = SPA_ID_INVALID;
-
-        return 0;
-      }
-
-      if (node.media_class == pm->media_class_sink) {
-        pm->default_output_device = node;
-
-        auto node_copy = node;
-
-        util::idle_add([pm, node_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->new_default_sink.emit(node_copy);
-        });
-      }
-
-      break;
-    }
+      pm->new_default_sink_name.emit(pm->default_output_device_name);
+    });
   }
 
   if (str_key == "default.audio.source") {
@@ -957,33 +938,15 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (const auto& [serial, node] : pm->node_map) {
-      if (node.name != v.data()) {
-        continue;
+    pm->default_input_device_name = v.data();
+
+    util::idle_add([pm] {
+      if (PipeManager::exiting) {
+        return;
       }
 
-      if (node.name == pm->ee_source_name) {
-        pm->default_input_device.id = SPA_ID_INVALID;
-
-        return 0;
-      }
-
-      if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
-        pm->default_input_device = node;
-
-        auto node_copy = node;
-
-        util::idle_add([pm, node_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
-
-          pm->new_default_source.emit(node_copy);
-        });
-      }
-
-      break;
-    }
+      pm->new_default_source_name.emit(pm->default_input_device_name);
+    });
   }
 
   return 0;
@@ -1134,7 +1097,13 @@ void on_registry_global(void* data,
       nd->proxy = proxy;
       nd->pm = pm;
 
-      nd->nd_info = new NodeInfo{.proxy = proxy, .id = id, .serial = serial, .name = name, .media_class = media_class};
+      nd->nd_info = new NodeInfo();
+
+      nd->nd_info->proxy = proxy;
+      nd->nd_info->serial = serial;
+      nd->nd_info->id = id;
+      nd->nd_info->media_class = media_class;
+      nd->nd_info->name = name;
 
       if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
         nd->nd_info->description = node_description;

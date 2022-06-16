@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-09 11:58-0300\n"
+"POT-Creation-Date: 2022-06-16 14:36-0300\n"
 "PO-Revision-Date: 2022-03-20 02:57+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -875,8 +875,8 @@ msgid "_About EasyEffects"
 msgstr "_EasyEffects について"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
-#: src/presets_menu.cpp:112 src/presets_menu.cpp:262 src/presets_menu.cpp:263
-#: src/presets_menu.cpp:280 src/presets_menu.cpp:281
+#: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
+#: src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
 msgstr "プリセット"
 
@@ -996,7 +996,7 @@ msgstr "出力ゲイン"
 #: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
 #: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
 #: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
-#: src/application_ui.cpp:245
+#: src/application_ui.cpp:243
 msgid "Input"
 msgstr "入力"
 
@@ -1025,7 +1025,7 @@ msgstr "プラグイン入力ゲイン"
 #: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
 #: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
-#: src/application_ui.cpp:244
+#: src/application_ui.cpp:242
 msgid "Output"
 msgstr "出力"
 
@@ -1085,7 +1085,7 @@ msgstr "プロファイル"
 msgid "Preset"
 msgstr "プリセット"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:502
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:500
 msgid "Remove"
 msgstr "削除"
 
@@ -1330,7 +1330,7 @@ msgid "Sidechain Type"
 msgstr "サイドチェーンタイプ"
 
 #: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
-#: src/plugins_box.cpp:532
+#: src/plugins_box.cpp:530
 msgid "Input Device"
 msgstr "入力デバイス"
 
@@ -2339,7 +2339,7 @@ msgstr "デフォルトの入力を使用"
 msgid "Custom Input Device"
 msgstr "カスタム入力デバイス"
 
-#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:552
+#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:550
 msgid "Output Device"
 msgstr "出力デバイス"
 
@@ -2707,7 +2707,7 @@ msgstr "周波数範囲"
 msgid "Minimum"
 msgstr "最小"
 
-#: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
+#: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:136
 msgid "Load"
 msgstr "ロード"
 
@@ -2851,7 +2851,7 @@ msgstr "モデルのインポート"
 msgid "Models"
 msgstr "モデル"
 
-#: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
+#: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:28
 msgid "Standard Model"
 msgstr "標準モデル"
 
@@ -2979,140 +2979,140 @@ msgstr "ステレオベース"
 msgid "Stereo Phase"
 msgstr "ステレオ位相"
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:66
 #, fuzzy
 msgid "Running"
 msgstr "実行中"
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:68
 #, fuzzy
 msgid "Suspended"
 msgstr "サスペンド"
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:70
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:72
 #, fuzzy
 msgid "Creating"
 msgstr "作成中"
 
-#: src/app_info.cpp:76
+#: src/app_info.cpp:74
 #, fuzzy
 msgid "Error"
 msgstr "エラー"
 
-#: src/app_info.cpp:78
+#: src/app_info.cpp:76
 #, fuzzy
 msgid "Unknown"
 msgstr "不明"
 
-#: src/app_info.cpp:229
+#: src/app_info.cpp:227
 #, fuzzy
 msgid "channels"
 msgstr "チャンネル"
 
-#: src/application.cpp:260
+#: src/application.cpp:256
 msgid "Output Presets: "
 msgstr "出力プリセット: "
 
-#: src/application.cpp:268
+#: src/application.cpp:264
 msgid "Input Presets: "
 msgstr "入力プリセット: "
 
-#: src/application.cpp:416
+#: src/application.cpp:412
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
-#: src/application.cpp:502
+#: src/application.cpp:498
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "EasyEffects を終了します。サービスモードで動作しているときに便利です。"
 
-#: src/application.cpp:505
+#: src/application.cpp:501
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込む。例: easyeffects -l music"
 
-#: src/application.cpp:508
+#: src/application.cpp:504
 msgid "Reset EasyEffects."
 msgstr "EasyEffects をリセット。"
 
-#: src/application.cpp:511
+#: src/application.cpp:507
 msgid "Hide the Window."
 msgstr "ウィンドウを隠す。"
 
-#: src/application.cpp:514
+#: src/application.cpp:510
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "グローバルバイパス。1 で有効、2 で無効、3 でステータス取得"
 
-#: src/application.cpp:517
+#: src/application.cpp:513
 msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 
-#: src/application_ui.cpp:246
+#: src/application_ui.cpp:244
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/convolver_menu_impulses.cpp:85
+#: src/convolver_menu_impulses.cpp:84
 msgid "Import Impulse File"
 msgstr "インパルスファイルをインポート"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
+#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:121
 msgid "Open"
 msgstr "開く"
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
+#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:121
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/convolver_menu_impulses.cpp:90
+#: src/convolver_menu_impulses.cpp:89
 msgid "Impulse Response"
 msgstr "インパルスレスポンス"
 
-#: src/convolver_menu_impulses.cpp:199
+#: src/convolver_menu_impulses.cpp:198
 msgid "Load Impulse"
 msgstr "インパルスを読み込み"
 
-#: src/convolver_menu_impulses.cpp:202
+#: src/convolver_menu_impulses.cpp:201
 msgid "Remove Impulse"
 msgstr "インパルスを削除"
 
-#: src/convolver_ui.cpp:339 src/convolver_ui.cpp:340 src/convolver_ui.cpp:341
+#: src/convolver_ui.cpp:338 src/convolver_ui.cpp:339 src/convolver_ui.cpp:340
 msgid "Failed"
 msgstr "失敗"
 
-#: src/convolver_ui.cpp:342
+#: src/convolver_ui.cpp:341
 msgid "Could Not Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:533
+#: src/effects_box.cpp:259 src/plugins_box.cpp:531
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/effects_box.cpp:287 src/plugins_box.cpp:551
+#: src/effects_box.cpp:283 src/plugins_box.cpp:549
 msgid "Players"
 msgstr "プレイヤー"
 
-#: src/effects_box.cpp:310
+#: src/effects_box.cpp:306
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/equalizer_band_box.cpp:97
+#: src/equalizer_band_box.cpp:93
 msgid "infinity"
 msgstr "無限大"
 
-#: src/equalizer_ui.cpp:354
+#: src/equalizer_ui.cpp:351
 msgid "Import APO Preset File"
 msgstr "APO プリセットファイルをインポート"
 
-#: src/equalizer_ui.cpp:360
+#: src/equalizer_ui.cpp:357
 msgid "APO Presets"
 msgstr "APO プリセット"
 
-#: src/pipe_manager_box.cpp:329
+#: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
 msgstr "自動読み込みプリセットを削除"
 
@@ -3196,19 +3196,19 @@ msgstr "ノイズリダクション"
 msgid "Stereo Tools"
 msgstr "ステレオツール"
 
-#: src/plugins_menu.cpp:145
+#: src/plugins_menu.cpp:143
 msgid "Add"
 msgstr "追加"
 
-#: src/presets_menu.cpp:106
+#: src/presets_menu.cpp:102
 msgid "Import Preset"
 msgstr "プリセットをインポート"
 
-#: src/rnnoise_ui.cpp:122
+#: src/rnnoise_ui.cpp:120
 msgid "Import Model File"
 msgstr "モデルファイルをインポート"
 
-#: src/rnnoise_ui.cpp:127
+#: src/rnnoise_ui.cpp:125
 msgid "RNNoise Models"
 msgstr "RNNoise モデル"
 

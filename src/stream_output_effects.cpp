@@ -21,8 +21,6 @@
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     : EffectsBase("soe: ", tags::app::id + ".streamoutputs", pipe_manager) {
-  pm->output_device = pm->default_output_device;
-
   if (g_settings_get_boolean(settings, "use-default-output-device") != 0) {
     g_settings_set_string(settings, "output-device", pm->output_device.name.c_str());
   } else {
@@ -200,6 +198,34 @@ void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {
+  const auto output_device_name = util::gsettings_get_string(settings, "output-device");
+
+  // checking if the output device exists
+
+  if (output_device_name.empty()) {
+    util::debug("No output device set. Aborting the link");
+
+    return;
+  }
+
+  bool dev_exists = false;
+
+  for (const auto& [serial, node] : pm->node_map) {
+    if (node.name == output_device_name) {
+      dev_exists = true;
+
+      pm->output_device = node;
+
+      break;
+    }
+  }
+
+  if (!dev_exists) {
+    util::debug("The output device " + output_device_name + " is not available. Aborting the link");
+
+    return;
+  }
+
   const auto list =
       (bypass) ? std::vector<std::string>() : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
 
@@ -268,25 +294,6 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
       util::warning(" link from node " + util::to_string(prev_node_id) + " to node " + util::to_string(next_node_id) +
                     " failed");
     }
-  }
-
-  // checking if the output device exists
-
-  bool dev_exists = false;
-
-  for (const auto& [serial, node] : pm->node_map) {
-    if (node.serial == pm->output_device.serial) {
-      dev_exists = true;
-
-      break;
-    }
-  }
-
-  if (!dev_exists) {
-    util::warning("The output device " + pm->output_device.name + " with id " + util::to_string(pm->output_device.id) +
-                  " does not exist anymore. Aborting the link");
-
-    return;
   }
 
   // waiting for the output device ports information to be available.

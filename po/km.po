@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-09 11:58-0300\n"
+"POT-Creation-Date: 2022-06-16 14:36-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -716,8 +716,8 @@ msgid "_About EasyEffects"
 msgstr ""
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:18
-#: src/presets_menu.cpp:112 src/presets_menu.cpp:262 src/presets_menu.cpp:263
-#: src/presets_menu.cpp:280 src/presets_menu.cpp:281
+#: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
+#: src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
 msgstr ""
 
@@ -835,7 +835,7 @@ msgstr ""
 #: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
 #: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
 #: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
-#: src/application_ui.cpp:245
+#: src/application_ui.cpp:243
 msgid "Input"
 msgstr ""
 
@@ -864,7 +864,7 @@ msgstr ""
 #: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
 #: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
-#: src/application_ui.cpp:244
+#: src/application_ui.cpp:242
 msgid "Output"
 msgstr ""
 
@@ -924,7 +924,7 @@ msgstr ""
 msgid "Preset"
 msgstr ""
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:502
+#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:500
 msgid "Remove"
 msgstr ""
 
@@ -1166,7 +1166,7 @@ msgid "Sidechain Type"
 msgstr ""
 
 #: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
-#: src/plugins_box.cpp:532
+#: src/plugins_box.cpp:530
 msgid "Input Device"
 msgstr ""
 
@@ -2175,7 +2175,7 @@ msgstr ""
 msgid "Custom Input Device"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:552
+#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:550
 msgid "Output Device"
 msgstr ""
 
@@ -2539,7 +2539,7 @@ msgstr ""
 msgid "Minimum"
 msgstr ""
 
-#: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:137
+#: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:136
 msgid "Load"
 msgstr ""
 
@@ -2683,7 +2683,7 @@ msgstr ""
 msgid "Models"
 msgstr ""
 
-#: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:30
+#: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:28
 msgid "Standard Model"
 msgstr ""
 
@@ -2811,133 +2811,133 @@ msgstr ""
 msgid "Stereo Phase"
 msgstr ""
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:66
 msgid "Running"
 msgstr ""
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:68
 msgid "Suspended"
 msgstr ""
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:70
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:72
 msgid "Creating"
 msgstr ""
 
-#: src/app_info.cpp:76
+#: src/app_info.cpp:74
 msgid "Error"
 msgstr ""
 
-#: src/app_info.cpp:78
+#: src/app_info.cpp:76
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:229
+#: src/app_info.cpp:227
 msgid "channels"
 msgstr ""
 
-#: src/application.cpp:260
+#: src/application.cpp:256
 msgid "Output Presets: "
 msgstr ""
 
-#: src/application.cpp:268
+#: src/application.cpp:264
 msgid "Input Presets: "
 msgstr ""
 
-#: src/application.cpp:416
+#: src/application.cpp:412
 msgid "Audio effects for PipeWire applications"
 msgstr ""
 
-#: src/application.cpp:502
+#: src/application.cpp:498
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:505
+#: src/application.cpp:501
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/application.cpp:508
+#: src/application.cpp:504
 msgid "Reset EasyEffects."
 msgstr ""
 
-#: src/application.cpp:511
+#: src/application.cpp:507
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:514
+#: src/application.cpp:510
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:517
+#: src/application.cpp:513
 msgid "Show available presets."
 msgstr ""
 
-#: src/application_ui.cpp:246
+#: src/application_ui.cpp:244
 msgid "PipeWire"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:85
+#: src/convolver_menu_impulses.cpp:84
 msgid "Import Impulse File"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:106 src/rnnoise_ui.cpp:123
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
+#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:121
 msgid "Open"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:86 src/equalizer_ui.cpp:355
-#: src/presets_menu.cpp:107 src/rnnoise_ui.cpp:123
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
+#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:121
 msgid "Cancel"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:90
+#: src/convolver_menu_impulses.cpp:89
 msgid "Impulse Response"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:199
+#: src/convolver_menu_impulses.cpp:198
 msgid "Load Impulse"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:202
+#: src/convolver_menu_impulses.cpp:201
 msgid "Remove Impulse"
 msgstr ""
 
-#: src/convolver_ui.cpp:339 src/convolver_ui.cpp:340 src/convolver_ui.cpp:341
+#: src/convolver_ui.cpp:338 src/convolver_ui.cpp:339 src/convolver_ui.cpp:340
 msgid "Failed"
 msgstr ""
 
-#: src/convolver_ui.cpp:342
+#: src/convolver_ui.cpp:341
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:533
+#: src/effects_box.cpp:259 src/plugins_box.cpp:531
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:287 src/plugins_box.cpp:551
+#: src/effects_box.cpp:283 src/plugins_box.cpp:549
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:310
+#: src/effects_box.cpp:306
 msgid "Effects"
 msgstr ""
 
-#: src/equalizer_band_box.cpp:97
+#: src/equalizer_band_box.cpp:93
 msgid "infinity"
 msgstr ""
 
-#: src/equalizer_ui.cpp:354
+#: src/equalizer_ui.cpp:351
 msgid "Import APO Preset File"
 msgstr ""
 
-#: src/equalizer_ui.cpp:360
+#: src/equalizer_ui.cpp:357
 msgid "APO Presets"
 msgstr ""
 
-#: src/pipe_manager_box.cpp:329
+#: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
 msgstr ""
 
@@ -3021,18 +3021,18 @@ msgstr ""
 msgid "Stereo Tools"
 msgstr ""
 
-#: src/plugins_menu.cpp:145
+#: src/plugins_menu.cpp:143
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:106
+#: src/presets_menu.cpp:102
 msgid "Import Preset"
 msgstr ""
 
-#: src/rnnoise_ui.cpp:122
+#: src/rnnoise_ui.cpp:120
 msgid "Import Model File"
 msgstr ""
 
-#: src/rnnoise_ui.cpp:127
+#: src/rnnoise_ui.cpp:125
 msgid "RNNoise Models"
 msgstr ""

@@ -21,8 +21,6 @@
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     : EffectsBase("sie: ", tags::app::id + ".streaminputs", pipe_manager) {
-  pm->input_device = pm->default_input_device;
-
   if (g_settings_get_boolean(settings, "use-default-input-device") != 0) {
     g_settings_set_string(settings, "input-device", pm->input_device.name.c_str());
   } else {
@@ -169,7 +167,7 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
     return;
   }
 
-  if (pm->default_input_device.serial == pm->ee_source_node.serial) {
+  if (pm->default_input_device_name == pm->ee_source_node.name) {
     return;
   }
 
@@ -204,8 +202,30 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
 }
 
 void StreamInputEffects::connect_filters(const bool& bypass) {
-  if (pm->input_device.id == SPA_ID_INVALID || pm->input_device.serial == SPA_ID_INVALID) {
-    util::debug("Input device id is invalid. Aborting the link between filters in the microphone pipeline");
+  const auto input_device_name = util::gsettings_get_string(settings, "input-device");
+
+  // checking if the output device exists
+
+  if (input_device_name.empty()) {
+    util::debug("No input device set. Aborting the link");
+
+    return;
+  }
+
+  bool dev_exists = false;
+
+  for (const auto& [serial, node] : pm->node_map) {
+    if (node.name == input_device_name) {
+      dev_exists = true;
+
+      pm->input_device = node;
+
+      break;
+    }
+  }
+
+  if (!dev_exists) {
+    util::debug("The input device " + input_device_name + " is not available. Aborting the link");
 
     return;
   }
@@ -214,25 +234,6 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
       (bypass) ? std::vector<std::string>() : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
 
   auto mic_linked = false;
-
-  // checking if the output device exists
-
-  bool dev_exists = false;
-
-  for (const auto& [serial, node] : pm->node_map) {
-    if (node.serial == pm->input_device.serial) {
-      dev_exists = true;
-
-      break;
-    }
-  }
-
-  if (!dev_exists) {
-    util::warning("The input device " + pm->input_device.name + " with id " + util::to_string(pm->input_device.id) +
-                  " does not exist anymore. Aborting the link");
-
-    return;
-  }
 
   // waiting for the input device ports information to be available.
 

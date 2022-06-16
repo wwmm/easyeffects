@@ -221,10 +221,9 @@ class PipeManager {
   const std::string media_class_input_stream = "Stream/Input/Audio";
   const std::string media_class_output_stream = "Stream/Output/Audio";
 
+  std::string default_output_device_name, default_input_device_name;
+
   NodeInfo ee_sink_node, ee_source_node;
-
-  NodeInfo default_output_device, default_input_device;
-
   NodeInfo output_device, input_device;
 
   constexpr static auto blocklist_node_name =
@@ -300,8 +299,8 @@ class PipeManager {
   sigc::signal<void(const NodeInfo)> sink_added;
   sigc::signal<void(const NodeInfo)> sink_changed;
   sigc::signal<void(const NodeInfo)> sink_removed;
-  sigc::signal<void(const NodeInfo)> new_default_sink;
-  sigc::signal<void(const NodeInfo)> new_default_source;
+  sigc::signal<void(const std::string)> new_default_sink_name;
+  sigc::signal<void(const std::string)> new_default_source_name;
   sigc::signal<void(const DeviceInfo)> device_input_route_changed;
   sigc::signal<void(const DeviceInfo)> device_output_route_changed;
 
