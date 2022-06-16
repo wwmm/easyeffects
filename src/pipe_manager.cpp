@@ -519,31 +519,16 @@ void on_node_event_param(void* object,
           break;
         }
 
-        std::string format_str;
+        std::string format_str = "unknown";
 
-        switch (format) {
-          case SPA_AUDIO_FORMAT_S16_LE:
-            format_str = "S16LE";
-            break;
-          case SPA_AUDIO_FORMAT_S24_LE:
-            format_str = "S24LE";
-            break;
-          case SPA_AUDIO_FORMAT_S32_LE:
-            format_str = "S32LE";
-            break;
-          case SPA_AUDIO_FORMAT_F32_LE:
-            format_str = "F32LE";
-            break;
-          case SPA_AUDIO_FORMAT_F64_LE:
-            format_str = "F64LE";
-            break;
-          case SPA_AUDIO_FORMAT_F32P:
-            format_str = "F32P";
-            break;
-          default:
-            format_str = util::to_string(format);
-            // util::warning(format_str + " " + util::to_string(SPA_AUDIO_FORMAT_F32_LE));
-            break;
+        for (size_t k = 0; k < std::size(spa_type_audio_format); k++) {
+          if (format == spa_type_audio_format[k].type) {
+            if (spa_type_audio_format[k].name != nullptr) {
+              std::string long_name = spa_type_audio_format[k].name;
+
+              format_str = long_name.substr(long_name.rfind(":") + 1);
+            }
+          }
         }
 
         if (format_str != nd->nd_info->format) {

@@ -24,6 +24,7 @@
 #include <pipewire/pipewire.h>
 #include <sigc++/sigc++.h>
 #include <spa/param/audio/format-utils.h>
+#include <spa/param/audio/type-info.h>
 #include <spa/param/props.h>
 #include <spa/utils/json.h>
 #include <spa/utils/result.h>
