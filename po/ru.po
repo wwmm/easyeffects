@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-16 14:36-0300\n"
-"PO-Revision-Date: 2022-04-18 18:11+0000\n"
+"PO-Revision-Date: 2022-06-17 19:16+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -115,22 +115,28 @@ msgstr "Этот выпуск привносит следующие возмож
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "Улучшен интерфейс плагина высоты тона"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr ""
+"Значок нашего приложения теперь совместим с рабочими столами, использующими "
+"QT"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "Our blocklist code will use the `application.id` tag if the stream sets it"
 msgstr ""
+"Наш код чёрного списка будет использовать тег `application.id`, если поток "
+"укажет его"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
 "applications list shown in our `Players/Recorders`"
 msgstr ""
+"Во избежание проблем с колесом мыши записи в списке приложений отображаются "
+"в `Проигрыватели/Рекордеры`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid ""
@@ -710,7 +716,8 @@ msgstr ""
 msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
 msgstr ""
-"Исправлена ошибка, при которой плагин не мог правильно инициализироваться"
+"Исправлена ошибка, при которой плагин высоты тона не мог правильно "
+"инициализироваться"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid "The saturation warning should not displace its neighbor widgets anymore"
