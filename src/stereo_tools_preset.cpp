@@ -20,9 +20,9 @@
 #include "stereo_tools_preset.hpp"
 
 StereoToolsPreset::StereoToolsPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/stereotools/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/stereotools/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::output_path);
 }
 
 void StereoToolsPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

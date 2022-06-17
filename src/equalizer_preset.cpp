@@ -23,16 +23,16 @@ using namespace tags::equalizer;
 
 EqualizerPreset::EqualizerPreset()
     : input_settings_left(
-          g_settings_new_with_path(preset_channel_id.c_str(), (tags::app::path + "/streaminputs/equalizer/leftchannel/").c_str())),
-      input_settings_right(g_settings_new_with_path(preset_channel_id.c_str(),
-                                                    (tags::app::path + "/streaminputs/equalizer/rightchannel/").c_str())),
-      output_settings_left(g_settings_new_with_path(preset_channel_id.c_str(),
-                                                    (tags::app::path + "/streamoutputs/equalizer/leftchannel/").c_str())),
-      output_settings_right(g_settings_new_with_path(preset_channel_id.c_str(),
-                                                     (tags::app::path + "/streamoutputs/equalizer/rightchannel/").c_str())) {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/equalizer/").c_str());
+          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::input_path_left)),
+      input_settings_right(
+          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::input_path_right)),
+      output_settings_left(
+          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::output_path_left)),
+      output_settings_right(
+          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::output_path_right)) {
+  input_settings = g_settings_new_with_path(tags::schema::equalizer::id, tags::schema::equalizer::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/equalizer/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::equalizer::id, tags::schema::equalizer::output_path);
 }
 
 EqualizerPreset::~EqualizerPreset() {

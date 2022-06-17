@@ -20,9 +20,9 @@
 #include "loudness_preset.hpp"
 
 LoudnessPreset::LoudnessPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/loudness/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::loudness::id, tags::schema::loudness::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/loudness/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::loudness::id, tags::schema::loudness::output_path);
 }
 
 void LoudnessPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

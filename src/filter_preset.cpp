@@ -20,9 +20,9 @@
 #include "filter_preset.hpp"
 
 FilterPreset::FilterPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/filter/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::filter::id, tags::schema::filter::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/filter/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::filter::id, tags::schema::filter::output_path);
 }
 
 void FilterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

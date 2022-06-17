@@ -20,9 +20,9 @@
 #include "exciter_preset.hpp"
 
 ExciterPreset::ExciterPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/exciter/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::exciter::id, tags::schema::exciter::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/exciter/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::exciter::id, tags::schema::exciter::output_path);
 }
 
 void ExciterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

@@ -20,9 +20,9 @@
 #include "reverb_preset.hpp"
 
 ReverbPreset::ReverbPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/reverb/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::reverb::id, tags::schema::reverb::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/reverb/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::reverb::id, tags::schema::reverb::output_path);
 }
 
 void ReverbPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

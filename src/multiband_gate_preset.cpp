@@ -20,9 +20,10 @@
 #include "multiband_gate_preset.hpp"
 
 MultibandGatePreset::MultibandGatePreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/multibandgate/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::multiband_gate::id, tags::schema::multiband_gate::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/multibandgate/").c_str());
+  output_settings =
+      g_settings_new_with_path(tags::schema::multiband_gate::id, tags::schema::multiband_gate::output_path);
 }
 
 void MultibandGatePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

@@ -20,9 +20,10 @@
 #include "echo_canceller_preset.hpp"
 
 EchoCancellerPreset::EchoCancellerPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/echocanceller/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::echo_canceller::id, tags::schema::echo_canceller::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/echocanceller/").c_str());
+  output_settings =
+      g_settings_new_with_path(tags::schema::echo_canceller::id, tags::schema::echo_canceller::output_path);
 }
 
 void EchoCancellerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

@@ -20,9 +20,9 @@
 #include "limiter_preset.hpp"
 
 LimiterPreset::LimiterPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/limiter/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::limiter::id, tags::schema::limiter::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/limiter/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::limiter::id, tags::schema::limiter::output_path);
 }
 
 void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

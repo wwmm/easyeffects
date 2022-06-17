@@ -20,9 +20,9 @@
 #include "gate_preset.hpp"
 
 GatePreset::GatePreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/gate/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::gate::id, tags::schema::gate::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/gate/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::gate::id, tags::schema::gate::output_path);
 }
 
 void GatePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

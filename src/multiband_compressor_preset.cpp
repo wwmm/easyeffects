@@ -21,10 +21,10 @@
 
 MultibandCompressorPreset::MultibandCompressorPreset() {
   input_settings =
-      g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/multibandcompressor/").c_str());
+      g_settings_new_with_path(tags::schema::multiband_compressor::id, tags::schema::multiband_compressor::input_path);
 
   output_settings =
-      g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/multibandcompressor/").c_str());
+      g_settings_new_with_path(tags::schema::multiband_compressor::id, tags::schema::multiband_compressor::output_path);
 }
 
 void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

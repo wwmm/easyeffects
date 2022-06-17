@@ -27,8 +27,6 @@ class PitchPreset : public PluginPresetBase {
   PitchPreset();
 
  private:
-  const std::string preset_id = tags::app::id + ".pitch";
-
   void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;
 
   void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;

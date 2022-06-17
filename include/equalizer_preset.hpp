@@ -29,12 +29,6 @@ class EqualizerPreset : public PluginPresetBase {
   ~EqualizerPreset();
 
  private:
-  inline static const std::string log_tag = "equalizer_preset: ";
-
-  const std::string preset_id = tags::app::id + ".equalizer";
-
-  const std::string preset_channel_id = tags::app::id + ".equalizer.channel";
-
   GSettings *input_settings_left = nullptr, *input_settings_right = nullptr, *output_settings_left = nullptr,
             *output_settings_right = nullptr;
 

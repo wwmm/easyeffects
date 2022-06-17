@@ -19,8 +19,6 @@
 
 #pragma once
 
-#include <string>
-
 namespace tags::schema::autogain {
 
 inline constexpr auto id = "com.github.wwmm.easyeffects.autogain";
@@ -110,3 +108,153 @@ inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/de
 inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/delay/";
 
 }  // namespace tags::schema::delay
+
+namespace tags::schema::echo_canceller {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.echocanceller";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/echocanceller/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/echocanceller/";
+
+}  // namespace tags::schema::echo_canceller
+
+namespace tags::schema::equalizer {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.equalizer";
+
+inline constexpr auto channel_id = "com.github.wwmm.easyeffects.equalizer.channel";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/equalizer/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/equalizer/";
+
+inline constexpr auto input_path_left = "/com/github/wwmm/easyeffects/streaminputs/equalizer/leftchannel/";
+
+inline constexpr auto input_path_right = "/com/github/wwmm/easyeffects/streaminputs/equalizer/rightchannel/";
+
+inline constexpr auto output_path_left = "/com/github/wwmm/easyeffects/streamoutputs/equalizer/leftchannel/";
+
+inline constexpr auto output_path_right = "/com/github/wwmm/easyeffects/streamoutputs/equalizer/rightchannel/";
+
+}  // namespace tags::schema::equalizer
+
+namespace tags::schema::exciter {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.exciter";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/exciter/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/exciter/";
+
+}  // namespace tags::schema::exciter
+
+namespace tags::schema::filter {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.filter";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/filter/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/filter/";
+
+}  // namespace tags::schema::filter
+
+namespace tags::schema::gate {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.gate";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/gate/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/gate/";
+
+}  // namespace tags::schema::gate
+
+namespace tags::schema::limiter {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.limiter";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/limiter/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/limiter/";
+
+}  // namespace tags::schema::limiter
+
+namespace tags::schema::loudness {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.loudness";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/loudness/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/loudness/";
+
+}  // namespace tags::schema::loudness
+
+namespace tags::schema::maximizer {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.maximizer";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/maximizer/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/maximizer/";
+
+}  // namespace tags::schema::maximizer
+
+namespace tags::schema::multiband_compressor {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.multibandcompressor";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/multibandcompressor/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/multibandcompressor/";
+
+}  // namespace tags::schema::multiband_compressor
+
+namespace tags::schema::multiband_gate {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.multibandgate";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/multibandgate/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/multibandgate/";
+
+}  // namespace tags::schema::multiband_gate
+
+namespace tags::schema::pitch {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.pitch";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/pitch/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/pitch/";
+
+}  // namespace tags::schema::pitch
+
+namespace tags::schema::reverb {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.reverb";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/reverb/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/reverb/";
+
+}  // namespace tags::schema::reverb
+
+namespace tags::schema::rnnoise {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.rnnoise";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/rnnoise/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/rnnoise/";
+
+}  // namespace tags::schema::rnnoise
+
+namespace tags::schema::stereo_tools {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.stereotools";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/stereotools/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/stereotools/";
+
+}  // namespace tags::schema::stereo_tools

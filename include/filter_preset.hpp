@@ -27,8 +27,6 @@ class FilterPreset : public PluginPresetBase {
   FilterPreset();
 
  private:
-  const std::string preset_id = tags::app::id + ".filter";
-
   void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;
 
   void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;

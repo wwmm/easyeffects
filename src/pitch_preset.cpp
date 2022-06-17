@@ -20,9 +20,9 @@
 #include "pitch_preset.hpp"
 
 PitchPreset::PitchPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/pitch/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::pitch::id, tags::schema::pitch::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/pitch/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::pitch::id, tags::schema::pitch::output_path);
 }
 
 void PitchPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

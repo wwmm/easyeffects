@@ -20,9 +20,9 @@
 #include "maximizer_preset.hpp"
 
 MaximizerPreset::MaximizerPreset() {
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/maximizer/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::maximizer::id, tags::schema::maximizer::input_path);
 
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/maximizer/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::maximizer::id, tags::schema::maximizer::output_path);
 }
 
 void MaximizerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

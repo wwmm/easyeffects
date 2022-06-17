@@ -20,9 +20,9 @@
 #include "rnnoise_preset.hpp"
 
 RNNoisePreset::RNNoisePreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/rnnoise/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::rnnoise::id, tags::schema::rnnoise::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/rnnoise/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::rnnoise::id, tags::schema::rnnoise::output_path);
 }
 
 void RNNoisePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
