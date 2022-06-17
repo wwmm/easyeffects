@@ -20,11 +20,9 @@
 #include "bass_enhancer_preset.hpp"
 
 BassEnhancerPreset::BassEnhancerPreset() {
-  input_settings =
-      g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/bassenhancer/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, tags::schema::bass_enhancer::input_path);
 
-  output_settings =
-      g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/bassenhancer/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, tags::schema::bass_enhancer::output_path);
 }
 
 void BassEnhancerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

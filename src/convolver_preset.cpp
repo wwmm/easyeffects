@@ -20,9 +20,9 @@
 #include "convolver_preset.hpp"
 
 ConvolverPreset::ConvolverPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/convolver/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/convolver/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::output_path);
 }
 
 void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

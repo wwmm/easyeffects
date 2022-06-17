@@ -20,9 +20,9 @@
 #include "compressor_preset.hpp"
 
 CompressorPreset::CompressorPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/compressor/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::compressor::id, tags::schema::compressor::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/compressor/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::compressor::id, tags::schema::compressor::output_path);
 }
 
 void CompressorPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

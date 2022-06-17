@@ -20,9 +20,9 @@
 #include "crystalizer_preset.hpp"
 
 CrystalizerPreset::CrystalizerPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/crystalizer/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/crystalizer/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::output_path);
 }
 
 void CrystalizerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

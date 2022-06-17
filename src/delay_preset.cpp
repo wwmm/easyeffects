@@ -20,9 +20,9 @@
 #include "delay_preset.hpp"
 
 DelayPreset::DelayPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/delay/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::delay::id, tags::schema::delay::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/delay/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::delay::id, tags::schema::delay::output_path);
 }
 
 void DelayPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

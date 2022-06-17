@@ -20,9 +20,9 @@
 #include "crossfeed_preset.hpp"
 
 CrossfeedPreset::CrossfeedPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/crossfeed/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::crossfeed::id, tags::schema::crossfeed::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/crossfeed/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::crossfeed::id, tags::schema::crossfeed::output_path);
 }
 
 void CrossfeedPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

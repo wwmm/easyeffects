@@ -20,9 +20,9 @@
 #include "bass_loudness_preset.hpp"
 
 BassLoudnessPreset::BassLoudnessPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/bassloudness/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::bass_loudness::id, tags::schema::bass_loudness::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/bassloudness/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::bass_loudness::id, tags::schema::bass_loudness::output_path);
 }
 
 void BassLoudnessPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {

@@ -24,6 +24,7 @@
 #include <string>
 #include "app_tags.hpp"
 #include "preset_type.hpp"
+#include "schema_tags.hpp"
 #include "util.hpp"
 
 class PluginPresetBase {

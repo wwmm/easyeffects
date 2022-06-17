@@ -20,9 +20,9 @@
 #include "autogain_preset.hpp"
 
 AutoGainPreset::AutoGainPreset() {
-  input_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streaminputs/autogain/").c_str());
+  input_settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::input_path);
 
-  output_settings = g_settings_new_with_path(preset_id.c_str(), (tags::app::path + "/streamoutputs/autogain/").c_str());
+  output_settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::output_path);
 }
 
 void AutoGainPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
@@ -31,6 +31,8 @@ void AutoGainPreset::save(nlohmann::json& json, const std::string& section, GSet
   json[section]["autogain"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
   json[section]["autogain"]["target"] = g_settings_get_double(settings, "target");
+
+  json[section]["autogain"]["maximum-history"] = g_settings_get_int(settings, "maximum-history");
 
   json[section]["autogain"]["reference"] = util::gsettings_get_string(settings, "reference");
 }
@@ -41,6 +43,8 @@ void AutoGainPreset::load(const nlohmann::json& json, const std::string& section
   update_key<double>(json.at(section).at("autogain"), settings, "output-gain", "output-gain");
 
   update_key<double>(json.at(section).at("autogain"), settings, "target", "target");
+
+  update_key<int>(json.at(section).at("autogain"), settings, "maximum-history", "maximum-history");
 
   update_key<gchar*>(json.at(section).at("autogain"), settings, "reference", "reference");
 }
