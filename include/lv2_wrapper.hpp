@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef LV2_WRAPPER_HPP
-#define LV2_WRAPPER_HPP
+#pragma once
 
 #include <lilv/lilv.h>
 #include <lv2/atom/atom.h>
@@ -210,5 +209,3 @@ class Lv2Wrapper {
 };
 
 }  // namespace lv2
-
-#endif

@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef COMPRESSOR_HPP
-#define COMPRESSOR_HPP
+#pragma once
 
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
@@ -65,5 +64,3 @@ class Compressor : public PluginBase {
 
   void update_sidechain_links(const std::string& key);
 };
-
-#endif

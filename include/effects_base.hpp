@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef EFFECTS_BASE_HPP
-#define EFFECTS_BASE_HPP
+#pragma once
 
 #include <set>
 #include "autogain.hpp"
@@ -116,5 +115,3 @@ class EffectsBase {
 
   void broadcast_pipeline_latency();
 };
-
-#endif

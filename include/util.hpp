@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef UTIL_HPP
-#define UTIL_HPP
+#pragma once
 
 #include <gdk/gdk.h>
 #include <glib-object.h>
@@ -145,5 +144,3 @@ auto to_string(const T& num, const std::string def = "0") -> std::string {
 }
 
 }  // namespace util
-
-#endif

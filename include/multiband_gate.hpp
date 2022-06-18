@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef MULTIBAND_GATE_HPP
-#define MULTIBAND_GATE_HPP
+#pragma once
 
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
@@ -59,5 +58,3 @@ class MultibandGate : public PluginBase {
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
-
-#endif

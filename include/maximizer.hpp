@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef MAXIMIZER_HPP
-#define MAXIMIZER_HPP
+#pragma once
 
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
@@ -57,5 +56,3 @@ class Maximizer : public PluginBase {
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
-
-#endif

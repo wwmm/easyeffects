@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef ECHO_CANCELLER_HPP
-#define ECHO_CANCELLER_HPP
+#pragma once
 
 #include <speex/speex_echo.h>
 #include <deque>
@@ -76,5 +75,3 @@ class EchoCanceller : public PluginBase {
 
   void init_speex();
 };
-
-#endif

@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PITCH_HPP
-#define PITCH_HPP
+#pragma once
 
 #include <rubberband/RubberBandStretcher.h>
 #include <deque>
@@ -94,5 +93,3 @@ class Pitch : public PluginBase {
   void set_phase();
   void set_pitch_scale();
 };
-
-#endif

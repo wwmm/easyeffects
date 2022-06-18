@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef FIR_FILTER_LOWPASS_HPP
-#define FIR_FILTER_LOWPASS_HPP
+#pragma once
 
 #include "fir_filter_base.hpp"
 
@@ -33,5 +32,3 @@ class FirFilterLowpass : public FirFilterBase {
 
   void setup() override;
 };
-
-#endif

@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef CRYSTALIZER_HPP
-#define CRYSTALIZER_HPP
+#pragma once
 
 #include <deque>
 #include "fir_filter_bandpass.hpp"
@@ -215,5 +214,3 @@ class Crystalizer : public PluginBase {
     }
   }
 };
-
-#endif

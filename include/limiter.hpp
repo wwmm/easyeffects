@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef LIMITER_HPP
-#define LIMITER_HPP
+#pragma once
 
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
@@ -62,5 +61,3 @@ class Limiter : public PluginBase {
 
   void update_sidechain_links(const std::string& key);
 };
-
-#endif

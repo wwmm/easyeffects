@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef EQUALIZER_PRESET_HPP
-#define EQUALIZER_PRESET_HPP
+#pragma once
 
 #include "equalizer_tags.hpp"
 #include "plugin_preset_base.hpp"
@@ -42,5 +41,3 @@ class EqualizerPreset : public PluginPresetBase {
 
   void load_legacy_preset();
 };
-
-#endif

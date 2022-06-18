@@ -17,8 +17,7 @@
  *  along with EasyEffects  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef BASS_LOUDNESS_PRESET_HPP
-#define BASS_LOUDNESS_PRESET_HPP
+#pragma once
 
 #include "plugin_preset_base.hpp"
 
@@ -31,5 +30,3 @@ class BassLoudnessPreset : public PluginPresetBase {
 
   void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;
 };
-
-#endif

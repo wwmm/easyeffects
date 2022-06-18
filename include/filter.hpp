@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef FILTER_HPP
-#define FILTER_HPP
+#pragma once
 
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
@@ -44,5 +43,3 @@ class Filter : public PluginBase {
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
-
-#endif

@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef MULTIBAND_COMPRESSOR_PRESET_HPP
-#define MULTIBAND_COMPRESSOR_PRESET_HPP
+#pragma once
 
 #include "plugin_preset_base.hpp"
 
@@ -33,5 +32,3 @@ class MultibandCompressorPreset : public PluginPresetBase {
 
   void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;
 };
-
-#endif

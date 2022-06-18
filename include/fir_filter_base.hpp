@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef FIR_FILTER_BASE_HPP
-#define FIR_FILTER_BASE_HPP
+#pragma once
 
 #include <zita-convolver.h>
 #include <algorithm>
@@ -99,5 +98,3 @@ class FirFilterBase {
 
   static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 };
-
-#endif

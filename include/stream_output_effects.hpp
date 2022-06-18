@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef STREAM_OUTPUT_EFFECTS_HPP
-#define STREAM_OUTPUT_EFFECTS_HPP
+#pragma once
 
 #include "effects_base.hpp"
 
@@ -46,5 +45,3 @@ class StreamOutputEffects : public EffectsBase {
 
   void on_link_changed(const LinkInfo link_info);
 };
-
-#endif

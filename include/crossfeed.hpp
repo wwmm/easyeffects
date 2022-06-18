@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef CROSSFEED_HPP
-#define CROSSFEED_HPP
+#pragma once
 
 #include <bs2bclass.h>
 #include "plugin_base.hpp"
@@ -49,5 +48,3 @@ class Crossfeed : public PluginBase {
 
   bs2b_base bs2b;
 };
-
-#endif

@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef LOUDNESS_HPP
-#define LOUDNESS_HPP
+#pragma once
 
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
@@ -53,5 +52,3 @@ class Loudness : public PluginBase {
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
-
-#endif

@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef CONVOLVER_PRESET_HPP
-#define CONVOLVER_PRESET_HPP
+#pragma once
 
 #include "plugin_preset_base.hpp"
 
@@ -31,5 +30,3 @@ class ConvolverPreset : public PluginPresetBase {
 
   void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;
 };
-
-#endif

@@ -17,8 +17,7 @@
  *  along with EasyEffects  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef CONVOLVER_HPP
-#define CONVOLVER_HPP
+#pragma once
 
 #include <zita-convolver.h>
 #include <algorithm>
@@ -112,5 +111,3 @@ class Convolver : public PluginBase {
     }
   }
 };
-
-#endif

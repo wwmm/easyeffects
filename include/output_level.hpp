@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef OUTPUT_LEVEL_HPP
-#define OUTPUT_LEVEL_HPP
+#pragma once
 
 #include "plugin_base.hpp"
 
@@ -43,5 +42,3 @@ class OutputLevel : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 };
-
-#endif

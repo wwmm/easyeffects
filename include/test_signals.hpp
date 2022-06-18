@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef TEST_SIGNALS_HPP
-#define TEST_SIGNALS_HPP
+#pragma once
 
 #include <pipewire/filter.h>
 #include <numbers>
@@ -95,5 +94,3 @@ class TestSignals {
 
   std::normal_distribution<float> normal_distribution{0.0F, 0.3F};
 };
-
-#endif

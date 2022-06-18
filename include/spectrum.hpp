@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef SPECTRUM_HPP
-#define SPECTRUM_HPP
+#pragma once
 
 #include <fftw3.h>
 #include <numbers>
@@ -60,5 +59,3 @@ class Spectrum : public PluginBase {
 
   float fft_buffer_duration = 0.0F;
 };
-
-#endif

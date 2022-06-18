@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef AUTOGAIN_HPP
-#define AUTOGAIN_HPP
+#pragma once
 
 #include <ebur128.h>
 #include "plugin_base.hpp"
@@ -92,5 +91,3 @@ class AutoGain : public PluginBase {
 
   void set_maximum_history(const int& seconds);
 };
-
-#endif

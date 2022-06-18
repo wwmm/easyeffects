@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef BASS_ENHANCER_HPP
-#define BASS_ENHANCER_HPP
+#pragma once
 
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
@@ -51,5 +50,3 @@ class BassEnhancer : public PluginBase {
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
-
-#endif

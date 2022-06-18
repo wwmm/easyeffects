@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PRESETS_MANAGER_HPP
-#define PRESETS_MANAGER_HPP
+#pragma once
 
 #include <gio/gio.h>
 #include <sigc++/sigc++.h>
@@ -158,5 +157,3 @@ class PresetsManager {
 
   auto load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool;
 };
-
-#endif

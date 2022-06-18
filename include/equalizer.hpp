@@ -17,8 +17,7 @@
  *  along with EasyEffects  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef EQUALIZER_HPP
-#define EQUALIZER_HPP
+#pragma once
 
 #include <utility>
 #include "equalizer_tags.hpp"
@@ -102,5 +101,3 @@ class Equalizer : public PluginBase {
 
   void on_split_channels();
 };
-
-#endif

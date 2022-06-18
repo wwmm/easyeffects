@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef MULTIBAND_COMPRESSOR_HPP
-#define MULTIBAND_COMPRESSOR_HPP
+#pragma once
 
 #include "lv2_wrapper.hpp"
 #include "multiband_compressor_tags.hpp"
@@ -123,5 +122,3 @@ class MultibandCompressor : public PluginBase {
     (bind_band<Ns>(), ...);
   }
 };
-
-#endif

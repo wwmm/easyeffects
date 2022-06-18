@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef RNNOISE_HPP
-#define RNNOISE_HPP
+#pragma once
 
 #ifdef RNNOISE_AVAILABLE
 #include <rnnoise.h>
@@ -125,5 +124,3 @@ class RNNoise : public PluginBase {
 
 #endif
 };
-
-#endif

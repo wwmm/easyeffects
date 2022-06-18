@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PLUGIN_BASE_HPP
-#define PLUGIN_BASE_HPP
+#pragma once
 
 #include <pipewire/filter.h>
 #include <spa/param/latency-utils.h>
@@ -154,5 +153,3 @@ class PluginBase {
   float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
   float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;
 };
-
-#endif

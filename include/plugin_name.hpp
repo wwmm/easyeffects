@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PLUGIN_NAME_HPP
-#define PLUGIN_NAME_HPP
+#pragma once
 
 #include <glib/gi18n.h>
 #include <array>
@@ -81,5 +80,3 @@ constexpr auto list = std::to_array(
 auto get_translated() -> std::map<std::string, std::string>;
 
 }  // namespace plugin_name
-
-#endif

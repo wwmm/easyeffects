@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef RESAMPLER_HPP
-#define RESAMPLER_HPP
+#pragma once
 
 #include <samplerate.h>
 #include <cmath>
@@ -72,5 +71,3 @@ class Resampler {
 
   std::vector<float> output;
 };
-
-#endif

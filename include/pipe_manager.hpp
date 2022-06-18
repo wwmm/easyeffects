@@ -17,8 +17,7 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PIPE_MANAGER_HPP
-#define PIPE_MANAGER_HPP
+#pragma once
 
 #include <pipewire/extensions/metadata.h>
 #include <pipewire/pipewire.h>
@@ -314,5 +313,3 @@ class PipeManager {
 
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
 };
-
-#endif
