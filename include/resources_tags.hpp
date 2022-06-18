@@ -21,6 +21,16 @@
 
 namespace tags::resources {
 
+// Custom icon path
+
+inline constexpr auto icons = "/com/github/wwmm/easyeffects/icons";
+
+// Custom css file path
+
+inline constexpr auto css = "/com/github/wwmm/easyeffects/ui/custom.css";
+
+// Path to the widgets xml files
+
 inline constexpr auto app_info_ui = "/com/github/wwmm/easyeffects/ui/app_info.ui";
 
 inline constexpr auto application_window_ui = "/com/github/wwmm/easyeffects/ui/application_window.ui";
@@ -28,6 +38,8 @@ inline constexpr auto application_window_ui = "/com/github/wwmm/easyeffects/ui/a
 inline constexpr auto apps_box_ui = "/com/github/wwmm/easyeffects/ui/apps_box.ui";
 
 inline constexpr auto autogain_ui = "/com/github/wwmm/easyeffects/ui/autogain.ui";
+
+inline constexpr auto autoload_row_ui = "/com/github/wwmm/easyeffects/ui/autoload_row.ui";
 
 inline constexpr auto bass_enhancer_ui = "/com/github/wwmm/easyeffects/ui/bass_enhancer.ui";
 
@@ -41,9 +53,15 @@ inline constexpr auto compressor_ui = "/com/github/wwmm/easyeffects/ui/compresso
 
 inline constexpr auto convolver_ui = "/com/github/wwmm/easyeffects/ui/convolver.ui";
 
+inline constexpr auto convolver_menu_impulses_ui = "/com/github/wwmm/easyeffects/ui/convolver_menu_impulses.ui";
+
+inline constexpr auto convolver_menu_combine_ui = "/com/github/wwmm/easyeffects/ui/convolver_menu_combine.ui";
+
 inline constexpr auto crossfeed_ui = "/com/github/wwmm/easyeffects/ui/crossfeed.ui";
 
 inline constexpr auto crystalizer_ui = "/com/github/wwmm/easyeffects/ui/crystalizer.ui";
+
+inline constexpr auto crystalizer_band_ui = "/com/github/wwmm/easyeffects/ui/crystalizer_band.ui";
 
 inline constexpr auto deesser_ui = "/com/github/wwmm/easyeffects/ui/deesser.ui";
 
@@ -71,11 +89,15 @@ inline constexpr auto maximizer_ui = "/com/github/wwmm/easyeffects/ui/maximizer.
 
 inline constexpr auto multiband_compressor_ui = "/com/github/wwmm/easyeffects/ui/multiband_compressor.ui";
 
+inline constexpr auto multiband_compressor_band_ui = "/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui";
+
 inline constexpr auto multiband_gate_ui = "/com/github/wwmm/easyeffects/ui/multiband_gate.ui";
 
 inline constexpr auto pipe_manager_box_ui = "/com/github/wwmm/easyeffects/ui/pipe_manager_box.ui";
 
 inline constexpr auto pitch_ui = "/com/github/wwmm/easyeffects/ui/pitch.ui";
+
+inline constexpr auto plugin_row_ui = "/com/github/wwmm/easyeffects/ui/plugin_row.ui";
 
 inline constexpr auto plugins_box_ui = "/com/github/wwmm/easyeffects/ui/plugins_box.ui";
 
@@ -87,11 +109,15 @@ inline constexpr auto preferences_spectrum_ui = "/com/github/wwmm/easyeffects/ui
 
 inline constexpr auto preferences_window_ui = "/com/github/wwmm/easyeffects/ui/preferences_window.ui";
 
+inline constexpr auto preset_row_ui = "/com/github/wwmm/easyeffects/ui/preset_row.ui";
+
 inline constexpr auto presets_menu_ui = "/com/github/wwmm/easyeffects/ui/presets_menu.ui";
 
 inline constexpr auto reverb_ui = "/com/github/wwmm/easyeffects/ui/reverb.ui";
 
 inline constexpr auto rnnoise_ui = "/com/github/wwmm/easyeffects/ui/rnnoise.ui";
+
+inline constexpr auto shortcuts_ui = "/com/github/wwmm/easyeffects/ui/shortcuts.ui";
 
 inline constexpr auto stereo_tools_ui = "/com/github/wwmm/easyeffects/ui/stereo_tools.ui";
 

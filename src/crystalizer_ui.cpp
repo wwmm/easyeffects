@@ -66,7 +66,7 @@ void on_reset(CrystalizerBox* self, GtkButton* btn) {
 
 void build_bands(CrystalizerBox* self) {
   for (uint n = 0; n < nbands; n++) {
-    auto builder = gtk_builder_new_from_resource((tags::app::path + "/ui/crystalizer_band.ui").c_str());
+    auto builder = gtk_builder_new_from_resource(tags::resources::crystalizer_band_ui);
 
     auto* band_box = GTK_BOX(gtk_builder_get_object(builder, "band_box"));
 

@@ -276,8 +276,7 @@ void convolver_menu_impulses_class_init(ConvolverMenuImpulsesClass* klass) {
 
   widget_class->show = show;
 
-  gtk_widget_class_set_template_from_resource(widget_class,
-                                              (tags::app::path + "/ui/convolver_menu_impulses.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::convolver_menu_impulses_ui);
 
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuImpulses, scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, ConvolverMenuImpulses, listview);

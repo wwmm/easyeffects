@@ -84,7 +84,7 @@ auto setup_icon_theme() -> GtkIconTheme* {
     g_free(name);
   }
 
-  gtk_icon_theme_add_resource_path(icon_theme, (tags::app::path + "/icons").c_str());
+  gtk_icon_theme_add_resource_path(icon_theme, tags::resources::icons);
 
   return icon_theme;
 }
@@ -92,7 +92,7 @@ auto setup_icon_theme() -> GtkIconTheme* {
 void apply_css_style() {
   auto* provider = gtk_css_provider_new();
 
-  gtk_css_provider_load_from_resource(provider, (tags::app::path + "/ui/custom.css").c_str());
+  gtk_css_provider_load_from_resource(provider, tags::resources::css);
 
   gtk_style_context_add_provider_for_display(gdk_display_get_default(), GTK_STYLE_PROVIDER(provider),
                                              GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);

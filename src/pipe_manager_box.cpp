@@ -275,7 +275,7 @@ void setup_listview_autoloading(PipeManagerBox* self) {
 
   g_signal_connect(
       factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PipeManagerBox* self) {
-        auto builder = gtk_builder_new_from_resource((tags::app::path + "/ui/autoload_row.ui").c_str());
+        auto builder = gtk_builder_new_from_resource(tags::resources::autoload_row_ui);
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
 

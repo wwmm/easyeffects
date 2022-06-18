@@ -22,6 +22,7 @@
 #include <adwaita.h>
 #include <glib/gi18n.h>
 #include "multiband_compressor_tags.hpp"
+#include "resources_tags.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::multiband_compressor_band_box {

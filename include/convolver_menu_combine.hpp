@@ -23,6 +23,7 @@
 #include <execution>
 #include "convolver_ui_common.hpp"
 #include "resampler.hpp"
+#include "resources_tags.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::convolver_menu_combine {
