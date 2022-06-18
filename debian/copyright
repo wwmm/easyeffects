@@ -4,12 +4,12 @@ Upstream-Contact: Wellington Wallace <wellingtonwallace@gmail.com>
 Source: https://github.com/wwmm/easyeffects
 
 Files: *
-Copyright: 2017-2019 Wellington Wallace <wellingtonwallace@gmail.com>
+Copyright: 2017-2022 Wellington Wallace <wellingtonwallace@gmail.com>
 License: GPL-3.0+
 
 Files: debian/*
 Copyright: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
-           2019 Boyuan Yang <byang@debian.org>
+           2019-2022 Boyuan Yang <byang@debian.org>
 License: GPL-3.0+
 
 Files: util/autobuild.sh
