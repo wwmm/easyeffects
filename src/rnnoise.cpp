@@ -37,36 +37,35 @@ RNNoise::RNNoise(const std::string& tag,
 
                                             self->data_mutex.unlock();
 
-#ifdef RNNOISE_AVAILABLE
-                                            self->free_rnnoise();
+                                            if constexpr (RNNOISE_AVAILABLE) {
+                                              self->free_rnnoise();
 
-                                            auto* m = self->get_model_from_file();
+                                              auto* m = self->get_model_from_file();
 
-                                            self->model = m;
+                                              self->model = m;
 
-                                            self->state_left = rnnoise_create(self->model);
-                                            self->state_right = rnnoise_create(self->model);
+                                              self->state_left = rnnoise_create(self->model);
+                                              self->state_right = rnnoise_create(self->model);
 
-                                            self->rnnoise_ready = true;
-#endif
+                                              self->rnnoise_ready = true;
+                                            }
                                           }),
                                           this));
 
   setup_input_output_gain();
 
-#ifdef RNNOISE_AVAILABLE
+  if constexpr (RNNOISE_AVAILABLE) {
+    auto* m = get_model_from_file();
 
-  auto* m = get_model_from_file();
+    model = m;
 
-  model = m;
+    state_left = rnnoise_create(model);
+    state_right = rnnoise_create(model);
 
-  state_left = rnnoise_create(model);
-  state_right = rnnoise_create(model);
-
-  rnnoise_ready = true;
-#elif
-  util::warning("The RNNoise library was not available at compilation time. The noise reduction filter won't work");
-#endif
+    rnnoise_ready = true;
+  } else {
+    util::warning("The RNNoise library was not available at compilation time. The noise reduction filter won't work");
+  }
 }
 
 RNNoise::~RNNoise() {
@@ -78,9 +77,9 @@ RNNoise::~RNNoise() {
 
   resampler_ready = false;
 
-#ifdef RNNOISE_AVAILABLE
-  free_rnnoise();
-#endif
+  if constexpr (RNNOISE_AVAILABLE) {
+    free_rnnoise();
+  }
 
   util::debug(log_tag + name + " destroyed");
 }
@@ -134,9 +133,9 @@ void RNNoise::process(std::span<float>& left_in,
       resampled_data_L.resize(0);
       resampled_data_R.resize(0);
 
-#ifdef RNNOISE_AVAILABLE
-      remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
-#endif
+      if constexpr (RNNOISE_AVAILABLE) {
+        remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
+      }
 
       auto resampled_outL = resampler_outL->process(resampled_data_L, false);
       auto resampled_outR = resampler_outR->process(resampled_data_R, false);
@@ -158,9 +157,9 @@ void RNNoise::process(std::span<float>& left_in,
       }
     }
   } else {
-#ifdef RNNOISE_AVAILABLE
-    remove_noise(left_in, right_in, deque_out_L, deque_out_R);
-#endif
+    if constexpr (RNNOISE_AVAILABLE) {
+      remove_noise(left_in, right_in, deque_out_L, deque_out_R);
+    }
   }
 
   if (deque_out_L.size() >= left_out.size()) {
