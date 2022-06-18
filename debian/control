@@ -40,6 +40,5 @@ Depends:
 Recommends:
  mda-lv2,
  zam-plugins,
- python3-rnnoise,
 Description: Audio effects for PipeWire applications
  Many sound effects for PipeWire input and output.
