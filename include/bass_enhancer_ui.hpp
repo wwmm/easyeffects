@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include "effects_base.hpp"
+#include "resources_tags.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::bass_enhancer_box {

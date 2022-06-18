@@ -547,7 +547,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/equalizer.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::equalizer_ui);
 
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, output_gain);

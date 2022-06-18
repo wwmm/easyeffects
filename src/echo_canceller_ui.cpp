@@ -129,7 +129,7 @@ void echo_canceller_box_class_init(EchoCancellerBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/echo_canceller.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::echo_canceller_ui);
 
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_gain);

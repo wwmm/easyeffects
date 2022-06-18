@@ -89,7 +89,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
 
   object_class->dispose = dispose;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/preferences_general.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::preferences_general_ui);
 
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, enable_autostart);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, process_all_inputs);

@@ -331,7 +331,7 @@ void app_info_class_init(AppInfoClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/app_info.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::app_info_ui);
 
   gtk_widget_class_bind_template_child(widget_class, AppInfo, enable);
   gtk_widget_class_bind_template_child(widget_class, AppInfo, app_icon);

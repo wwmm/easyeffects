@@ -48,7 +48,7 @@ void preferences_window_class_init(PreferencesWindowClass* klass) {
 
   object_class->dispose = dispose;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/preferences_window.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::preferences_window_ui);
 }
 
 void preferences_window_init(PreferencesWindow* self) {

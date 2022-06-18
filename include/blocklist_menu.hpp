@@ -23,6 +23,7 @@
 #include <string>
 #include "application.hpp"
 #include "pipeline_type.hpp"
+#include "resources_tags.hpp"
 
 namespace ui::blocklist_menu {
 

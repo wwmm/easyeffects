@@ -22,6 +22,7 @@
 #include <adwaita.h>
 #include "application.hpp"
 #include "preset_type.hpp"
+#include "resources_tags.hpp"
 
 namespace ui::presets_menu {
 

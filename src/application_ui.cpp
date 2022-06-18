@@ -209,7 +209,7 @@ void application_window_class_init(ApplicationWindowClass* klass) {
   widget_class->realize = realize;
   widget_class->unrealize = unrealize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/application_window.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::application_window_ui);
 
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, presets_menu_button);

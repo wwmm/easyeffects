@@ -27,6 +27,7 @@
 #include "effects_base.hpp"
 #include "pipeline_type.hpp"
 #include "plugins_box.hpp"
+#include "resources_tags.hpp"
 
 namespace ui::effects_box {
 

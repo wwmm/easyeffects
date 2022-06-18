@@ -173,7 +173,7 @@ void deesser_box_class_init(DeesserBoxClass* klass) {
   object_class->finalize = finalize;
   object_class->dispose = dispose;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/deesser.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::deesser_ui);
 
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_gain);

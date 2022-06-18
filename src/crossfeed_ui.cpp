@@ -141,7 +141,7 @@ void crossfeed_box_class_init(CrossfeedBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/crossfeed.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::crossfeed_ui);
 
   gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, output_gain);

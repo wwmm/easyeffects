@@ -30,6 +30,7 @@
 #include "convolver_menu_combine.hpp"
 #include "convolver_menu_impulses.hpp"
 #include "effects_base.hpp"
+#include "resources_tags.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::convolver_box {

@@ -409,7 +409,7 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
   widget_class->show = show;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/presets_menu.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::presets_menu_ui);
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_string_list);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_string_list);

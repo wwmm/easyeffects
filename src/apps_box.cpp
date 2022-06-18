@@ -410,7 +410,7 @@ void apps_box_class_init(AppsBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/apps_box.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::apps_box_ui);
 
   gtk_widget_class_bind_template_child(widget_class, AppsBox, overlay);
   gtk_widget_class_bind_template_child(widget_class, AppsBox, overlay_empty_list);

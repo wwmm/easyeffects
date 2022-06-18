@@ -160,7 +160,7 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/equalizer_band.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::equalizer_band_ui);
 
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_type);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_mode);

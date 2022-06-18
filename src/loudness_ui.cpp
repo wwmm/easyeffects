@@ -131,7 +131,7 @@ void loudness_box_class_init(LoudnessBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/loudness.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::loudness_ui);
 
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_gain);

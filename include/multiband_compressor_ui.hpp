@@ -23,6 +23,7 @@
 #include "effects_base.hpp"
 #include "multiband_compressor_band_box.hpp"
 #include "node_info_holder.hpp"
+#include "resources_tags.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::multiband_compressor_box {

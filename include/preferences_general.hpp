@@ -23,6 +23,7 @@
 #include <filesystem>
 #include <fstream>
 #include <string>
+#include "resources_tags.hpp"
 #include "ui_helpers.hpp"
 #include "util.hpp"
 

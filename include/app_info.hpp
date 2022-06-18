@@ -23,6 +23,7 @@
 #include <fmt/core.h>
 #include "application.hpp"
 #include "node_info_holder.hpp"
+#include "resources_tags.hpp"
 
 namespace ui::app_info {
 

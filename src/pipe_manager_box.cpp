@@ -774,7 +774,7 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/pipe_manager_box.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::pipe_manager_box_ui);
 
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, use_default_input);
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, use_default_output);

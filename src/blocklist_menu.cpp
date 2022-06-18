@@ -213,7 +213,7 @@ void blocklist_menu_class_init(BlocklistMenuClass* klass) {
 
   widget_class->show = show;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/blocklist_menu.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::blocklist_menu_ui);
 
   gtk_widget_class_bind_template_child(widget_class, BlocklistMenu, string_list);
 

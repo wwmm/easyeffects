@@ -25,6 +25,7 @@
 #include "module_info_holder.hpp"
 #include "node_info_holder.hpp"
 #include "presets_autoloading_holder.hpp"
+#include "resources_tags.hpp"
 #include "test_signals.hpp"
 #include "ui_helpers.hpp"
 

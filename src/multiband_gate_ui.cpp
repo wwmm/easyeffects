@@ -208,7 +208,7 @@ void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/multiband_gate.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::multiband_gate_ui);
 
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_gain);

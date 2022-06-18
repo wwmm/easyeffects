@@ -615,7 +615,7 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
   widget_class->realize = realize;
   widget_class->unroot = unroot;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/plugins_box.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::plugins_box_ui);
 
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, menubutton_plugins);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, plugin_overlay);

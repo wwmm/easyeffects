@@ -23,6 +23,7 @@
 #include <filesystem>
 #include "application.hpp"
 #include "effects_base.hpp"
+#include "resources_tags.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::rnnoise_box {

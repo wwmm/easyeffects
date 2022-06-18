@@ -136,7 +136,7 @@ void filter_box_class_init(FilterBoxClass* klass) {
   object_class->dispose = dispose;
   object_class->finalize = finalize;
 
-  gtk_widget_class_set_template_from_resource(widget_class, (tags::app::path + "/ui/filter.ui").c_str());
+  gtk_widget_class_set_template_from_resource(widget_class, tags::resources::filter_ui);
 
   gtk_widget_class_bind_template_child(widget_class, FilterBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, output_gain);
