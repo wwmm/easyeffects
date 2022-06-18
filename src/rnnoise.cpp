@@ -37,35 +37,36 @@ RNNoise::RNNoise(const std::string& tag,
 
                                             self->data_mutex.unlock();
 
-                                            if constexpr (RNNOISE_AVAILABLE) {
-                                              self->free_rnnoise();
+#ifdef RNNOISE_AVAILABLE
+                                            self->free_rnnoise();
 
-                                              auto* m = self->get_model_from_file();
+                                            auto* m = self->get_model_from_file();
 
-                                              self->model = m;
+                                            self->model = m;
 
-                                              self->state_left = rnnoise_create(self->model);
-                                              self->state_right = rnnoise_create(self->model);
+                                            self->state_left = rnnoise_create(self->model);
+                                            self->state_right = rnnoise_create(self->model);
 
-                                              self->rnnoise_ready = true;
-                                            }
+                                            self->rnnoise_ready = true;
+#endif
                                           }),
                                           this));
 
   setup_input_output_gain();
 
-  if constexpr (RNNOISE_AVAILABLE) {
-    auto* m = get_model_from_file();
+#ifdef RNNOISE_AVAILABLE
 
-    model = m;
+  auto* m = get_model_from_file();
 
-    state_left = rnnoise_create(model);
-    state_right = rnnoise_create(model);
+  model = m;
 
-    rnnoise_ready = true;
-  } else {
-    util::warning("The RNNoise library was not available at compilation time. The noise reduction filter won't work");
-  }
+  state_left = rnnoise_create(model);
+  state_right = rnnoise_create(model);
+
+  rnnoise_ready = true;
+#elif
+  util::warning("The RNNoise library was not available at compilation time. The noise reduction filter won't work");
+#endif
 }
 
 RNNoise::~RNNoise() {
@@ -77,9 +78,9 @@ RNNoise::~RNNoise() {
 
   resampler_ready = false;
 
-  if constexpr (RNNOISE_AVAILABLE) {
-    free_rnnoise();
-  }
+#ifdef RNNOISE_AVAILABLE
+  free_rnnoise();
+#endif
 
   util::debug(log_tag + name + " destroyed");
 }
@@ -133,9 +134,9 @@ void RNNoise::process(std::span<float>& left_in,
       resampled_data_L.resize(0);
       resampled_data_R.resize(0);
 
-      if constexpr (RNNOISE_AVAILABLE) {
-        remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
-      }
+#ifdef RNNOISE_AVAILABLE
+      remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
+#endif
 
       auto resampled_outL = resampler_outL->process(resampled_data_L, false);
       auto resampled_outR = resampler_outR->process(resampled_data_R, false);
@@ -157,9 +158,9 @@ void RNNoise::process(std::span<float>& left_in,
       }
     }
   } else {
-    if constexpr (RNNOISE_AVAILABLE) {
-      remove_noise(left_in, right_in, deque_out_L, deque_out_R);
-    }
+#ifdef RNNOISE_AVAILABLE
+    remove_noise(left_in, right_in, deque_out_L, deque_out_R);
+#endif
   }
 
   if (deque_out_L.size() >= left_out.size()) {
