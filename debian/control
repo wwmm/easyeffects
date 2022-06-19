@@ -1,97 +1,44 @@
 Source: easyeffects
 Section: sound
 Priority: optional
-Maintainer: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
-Standards-Version: 4.1.4
+Maintainer: Boyuan Yang <byang@debian.org>
+Build-Depends:
+ appstream-util,
+ debhelper-compat (= 13),
+ gettext,
+ itstool,
+ libadwaita-1-dev,
+ libbs2b-dev,
+ libebur128-dev,
+ libfftw3-dev,
+ libfmt-dev,
+ libglib2.0-dev,
+ libgtk-4-dev,
+ liblilv-dev,
+ libpipewire-0.3-dev,
+ librubberband-dev,
+ libsamplerate0-dev,
+ libsigc++-3.0-dev,
+ libsndfile-dev,
+ libspeexdsp-dev,
+ libtbb-dev,
+ libzita-convolver-dev,
+ lv2-dev,
+ meson,
+ nlohmann-json3-dev,
+ pkg-config,
+Standards-Version: 4.6.1
 Homepage: https://github.com/wwmm/easyeffects
-Build-Depends: debhelper (>=11),
-               scour,
-               meson (>=0.40),
-               pkg-config,
-               libgstreamer1.0-dev (>= 1.12.5),
-               libgstreamer-plugins-bad1.0-dev,
-               libpulse-dev,
-               libpango1.0-dev,
-               libgtk-3-dev,
-               libglibmm-2.4-dev,
-               libgtkmm-3.0-dev (>= 3.24),
-               libboost-filesystem-dev (>= 1.72) | libboost-filesystem1.72-dev,
-               libboost-system-dev (>= 1.72) | libboost-system1.72-dev,
-               libbs2b-dev,
-               liblilv-dev,
-               librubberband-dev,
-               libzita-convolver-dev,
-               libsndfile1-dev,
-               libsamplerate0-dev,
-               itstool,
-               libebur128-dev,
-               appstream-util,
-               desktop-file-utils
 
 Package: easyeffects
 Architecture: any
-Depends: ${misc:Depends},
-         ${shlibs:Depends},
-         pulseaudio,
-         gstreamer1.0-plugins-bad,
-         gstreamer1.0-plugins-good,
-         gir1.2-gst-plugins-bad-1.0,
-         gstreamer1.0-pulseaudio,
-         gstreamer1.0-adapter-easyeffects
-# gstreamer1.0-adapter-easyeffects is a strict dependency, not recommended
-# see https://github.com/wwmm/easyeffects/issues/307#issuecomment-415078508
-Recommends: calf-plugins (>= 0.90.0),
-            zam-plugins,
-            rubberband-ladspa,
-            liblilv-0-0,
-            lsp-plugins-lv2 (>= 1.1.24) | lsp-plugins (>= 1.1.24),
-            gstreamer1.0-convolver-easyeffects,
-            gstreamer1.0-crystalizer-easyeffects,
-            gstreamer1.0-autogain-easyeffects
-Description: Sound input and output effects for PulseAudio
- Many sound effects for PulseAudio input and output.
-
-Package: gstreamer1.0-convolver-easyeffects
-Architecture: any
-Multi-Arch: same
-Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Provides: peconvolver, gstreamer1.0-convolver
-Replaces: easyeffects (<< 4.1.7-3)
-Description: Gstreamer convolver
- Simple Gstreamer crystalizer plugin based on
- the library Zita-convolver.
-
-Package: gstreamer1.0-crystalizer-easyeffects
-Architecture: any
-Multi-Arch: same
-Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Provides: pecrystalizer, gstreamer1.0-crystalizer
-Description: Gstreamer crystalizer
- Simple Gstreamer plugin useful to add more dynamic range
- to songs that were overly compressed.
-
-Package: gstreamer1.0-autogain-easyeffects
-Architecture: any
-Multi-Arch: same
-Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Provides: peautogain, gstreamer1.0-autogain
-Description: Gstreamer crystalizer
- Simple Gstreamer plugin that changes audio gain
- to match the levels recommended by the ebur128 standard.
-
-Package: gstreamer1.0-adapter-easyeffects
-Architecture: any
-Multi-Arch: same
-Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Provides: peadapter, gstreamer1.0-adapter
-Description: Gstreamer adapter
- Simple plugin that gives output buffers
- with the desired number of samples.
- .
- It is used in EasyEffects to ensure that
- the number of audio samples in the buffer
- is a power of 2. The convolver needs this.
+Depends:
+ calf-plugins,
+ lsp-plugins-lv2 | lsp-plugins,
+ ${misc:Depends},
+ ${shlibs:Depends},
+Recommends:
+ mda-lv2,
+ zam-plugins,
+Description: Audio effects for PipeWire applications
+ Many sound effects for PipeWire input and output.

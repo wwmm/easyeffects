@@ -1,2 +1,4 @@
-version = 4 opts = filenamemangle = s /.+\/ v ? (\d\S +)\.tar\.gz / <project> - $1\.tar\.gz / https
-                                              :  // github.com/wwmm/easyeffects/tags .*/v?(\d\S+)\.tar\.gz
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*@ARCHIVE_EXT@)%@PACKAGE@-$1%" \
+ https://github.com/wwmm/easyeffects/tags \
+ (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@
