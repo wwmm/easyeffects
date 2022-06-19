@@ -102,8 +102,8 @@ void on_flat_response(EqualizerBox* self, GtkButton* btn) {
 }
 
 void on_calculate_frequencies(EqualizerBox* self, GtkButton* btn) {
-  static const double min_freq = 20.0;
-  static const double max_freq = 20000.0;
+  constexpr double min_freq = 20.0;
+  constexpr double max_freq = 20000.0;
 
   double freq0 = min_freq;
   double freq1 = 0.0;

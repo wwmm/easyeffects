@@ -105,7 +105,7 @@ void setup_listview(PluginsMenu* self) {
                   return;
                 }
 
-                static const auto limiter_plugins = std::to_array({plugin_name::limiter, plugin_name::maximizer});
+                constexpr auto limiter_plugins = std::to_array({plugin_name::limiter, plugin_name::maximizer});
 
                 if (!list.empty() && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
                                                  [&](const auto& str) { return str == list.at(list.size() - 1U); })) {
