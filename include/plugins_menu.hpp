@@ -25,7 +25,7 @@
 #include "application.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_name.hpp"
-#include "resources_tags.hpp"
+#include "tags_resources.hpp"
 #include "util.hpp"
 
 namespace ui::plugins_menu {

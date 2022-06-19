@@ -23,7 +23,7 @@
 #include "effects_box.hpp"
 #include "pipe_manager_box.hpp"
 #include "presets_menu.hpp"
-#include "resources_tags.hpp"
+#include "tags_resources.hpp"
 
 namespace ui::application_window {
 

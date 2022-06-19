@@ -24,8 +24,8 @@
 #include "application.hpp"
 #include "effects_base.hpp"
 #include "equalizer_band_box.hpp"
-#include "resources_tags.hpp"
 #include "tags_equalizer.hpp"
+#include "tags_resources.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::equalizer_box {

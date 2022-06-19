@@ -20,7 +20,7 @@
 #pragma once
 
 #include <adwaita.h>
-#include "resources_tags.hpp"
+#include "tags_resources.hpp"
 #include "ui_helpers.hpp"
 #include "util.hpp"
 
