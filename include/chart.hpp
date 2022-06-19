@@ -27,8 +27,8 @@
 #include <ranges>
 #include <string>
 #include <vector>
-#include "app_tags.hpp"
 #include "resources_tags.hpp"
+#include "tags_app.hpp"
 #include "util.hpp"
 
 namespace ui::chart {

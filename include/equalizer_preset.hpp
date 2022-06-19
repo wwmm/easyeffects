@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "equalizer_tags.hpp"
 #include "plugin_preset_base.hpp"
+#include "tags_equalizer.hpp"
 
 class EqualizerPreset : public PluginPresetBase {
  public:

@@ -20,9 +20,9 @@
 #pragma once
 
 #include <utility>
-#include "equalizer_tags.hpp"
 #include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
+#include "tags_equalizer.hpp"
 
 class Equalizer : public PluginBase {
  public:

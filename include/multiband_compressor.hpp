@@ -20,8 +20,8 @@
 #pragma once
 
 #include "lv2_wrapper.hpp"
-#include "multiband_compressor_tags.hpp"
 #include "plugin_base.hpp"
+#include "tags_multiband_compressor.hpp"
 
 class MultibandCompressor : public PluginBase {
  public:

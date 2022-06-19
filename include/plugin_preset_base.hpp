@@ -22,9 +22,9 @@
 #include <gio/gio.h>
 #include <nlohmann/json.hpp>
 #include <string>
-#include "app_tags.hpp"
 #include "preset_type.hpp"
-#include "schema_tags.hpp"
+#include "tags_app.hpp"
+#include "tags_schema.hpp"
 #include "util.hpp"
 
 class PluginPresetBase {
