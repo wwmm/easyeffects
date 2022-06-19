@@ -86,8 +86,8 @@ auto app_is_blocklisted(AppInfo* self, const std::string& name) -> bool {
 auto get_app_icon_name(const NodeInfo& node_info) -> std::string {
   // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
 
-  static const std::map<std::string, std::string> icon_map{
-      {"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}};
+  constexpr auto icon_map = std::to_array<std::pair<const char*, const char*>>(
+      {{"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}});
 
   std::string icon_name;
 
@@ -104,11 +104,13 @@ auto get_app_icon_name(const NodeInfo& node_info) -> std::string {
                    [](unsigned char c) { return std::tolower(c); });
   }
 
-  try {
-    return icon_map.at(icon_name);
-  } catch (...) {
-    return icon_name;
+  for (auto& [key, value] : icon_map) {
+    if (key == icon_name) {
+      return value;
+    }
   }
+
+  return icon_name;
 }
 
 auto icon_available(AppInfo* self, const std::string& icon_name) -> bool {
