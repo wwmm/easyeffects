@@ -25,11 +25,7 @@ using namespace std::string_literals;
 
 struct Data {
  public:
-  Data() {
-    using namespace plugin_name;
-
-    this->translated = get_translated();
-  }
+  Data() { this->translated = tags::plugin_name::get_translated(); }
 
   ~Data() { util::debug("data struct destroyed"); }
 
@@ -105,7 +101,8 @@ void setup_listview(PluginsMenu* self) {
                   return;
                 }
 
-                constexpr auto limiter_plugins = std::to_array({plugin_name::limiter, plugin_name::maximizer});
+                constexpr auto limiter_plugins =
+                    std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer});
 
                 if (!list.empty() && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
                                                  [&](const auto& str) { return str == list.at(list.size() - 1U); })) {

@@ -17,9 +17,9 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "plugin_name.hpp"
+#include "tags_plugin_name.hpp"
 
-namespace plugin_name {
+namespace tags::plugin_name {
 
 auto get_translated() -> std::map<std::string, std::string> {
   std::map<std::string, std::string> translated = {{autogain, _("Autogain")},
@@ -49,4 +49,4 @@ auto get_translated() -> std::map<std::string, std::string> {
   return translated;
 }
 
-}  // namespace plugin_name
+}  // namespace tags::plugin_name

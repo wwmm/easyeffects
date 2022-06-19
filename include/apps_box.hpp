@@ -27,7 +27,7 @@
 #include "app_info.hpp"
 #include "application.hpp"
 #include "pipeline_type.hpp"
-#include "plugin_name.hpp"
+#include "tags_plugin_name.hpp"
 
 namespace ui::apps_box {
 

@@ -25,7 +25,7 @@
 #include <ranges>
 #include <span>
 #include "pipe_manager.hpp"
-#include "plugin_name.hpp"
+#include "tags_plugin_name.hpp"
 
 class PluginBase {
  public:

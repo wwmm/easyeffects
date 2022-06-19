@@ -265,7 +265,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
         continue;
       }
 
-      if (name == plugin_name::echo_canceller) {
+      if (name == tags::plugin_name::echo_canceller) {
         if (plugins[name]->connected_to_pw) {
           for (const auto& link : pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true)) {
             list_proxies.push_back(link);

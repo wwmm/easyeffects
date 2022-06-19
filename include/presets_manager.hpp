@@ -46,11 +46,11 @@
 #include "multiband_compressor_preset.hpp"
 #include "multiband_gate_preset.hpp"
 #include "pitch_preset.hpp"
-#include "plugin_name.hpp"
 #include "preset_type.hpp"
 #include "reverb_preset.hpp"
 #include "rnnoise_preset.hpp"
 #include "stereo_tools_preset.hpp"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 class PresetsManager {

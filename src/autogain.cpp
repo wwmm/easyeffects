@@ -23,7 +23,7 @@ AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::autogain, schema, schema_path, pipe_manager) {
+    : PluginBase(tag, tags::plugin_name::autogain, schema, schema_path, pipe_manager) {
   target = g_settings_get_double(settings, "target");
 
   reference = parse_reference_key(util::gsettings_get_string(settings, "reference"));

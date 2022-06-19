@@ -24,59 +24,59 @@
 #include <iostream>
 #include <map>
 
-namespace plugin_name {
+namespace tags::plugin_name {
 
-constexpr auto autogain = "autogain";
+inline constexpr auto autogain = "autogain";
 
-constexpr auto bass_enhancer = "bass_enhancer";
+inline constexpr auto bass_enhancer = "bass_enhancer";
 
-constexpr auto bass_loudness = "bass_loudness";
+inline constexpr auto bass_loudness = "bass_loudness";
 
-constexpr auto compressor = "compressor";
+inline constexpr auto compressor = "compressor";
 
-constexpr auto convolver = "convolver";
+inline constexpr auto convolver = "convolver";
 
-constexpr auto crossfeed = "crossfeed";
+inline constexpr auto crossfeed = "crossfeed";
 
-constexpr auto crystalizer = "crystalizer";
+inline constexpr auto crystalizer = "crystalizer";
 
-constexpr auto deesser = "deesser";
+inline constexpr auto deesser = "deesser";
 
-constexpr auto delay = "delay";
+inline constexpr auto delay = "delay";
 
-constexpr auto echo_canceller = "echo_canceller";
+inline constexpr auto echo_canceller = "echo_canceller";
 
-constexpr auto equalizer = "equalizer";
+inline constexpr auto equalizer = "equalizer";
 
-constexpr auto exciter = "exciter";
+inline constexpr auto exciter = "exciter";
 
-constexpr auto filter = "filter";
+inline constexpr auto filter = "filter";
 
-constexpr auto gate = "gate";
+inline constexpr auto gate = "gate";
 
-constexpr auto limiter = "limiter";
+inline constexpr auto limiter = "limiter";
 
-constexpr auto loudness = "loudness";
+inline constexpr auto loudness = "loudness";
 
-constexpr auto maximizer = "maximizer";
+inline constexpr auto maximizer = "maximizer";
 
-constexpr auto multiband_compressor = "multiband_compressor";
+inline constexpr auto multiband_compressor = "multiband_compressor";
 
-constexpr auto multiband_gate = "multiband_gate";
+inline constexpr auto multiband_gate = "multiband_gate";
 
-constexpr auto pitch = "pitch";
+inline constexpr auto pitch = "pitch";
 
-constexpr auto reverb = "reverb";
+inline constexpr auto reverb = "reverb";
 
-constexpr auto rnnoise = "rnnoise";
+inline constexpr auto rnnoise = "rnnoise";
 
-constexpr auto stereo_tools = "stereo_tools";
+inline constexpr auto stereo_tools = "stereo_tools";
 
-constexpr auto list = std::to_array(
+inline constexpr auto list = std::to_array(
     {autogain,  bass_enhancer,        bass_loudness,  compressor, convolver, crossfeed, crystalizer, deesser,
      delay,     echo_canceller,       equalizer,      exciter,    filter,    gate,      limiter,     loudness,
      maximizer, multiband_compressor, multiband_gate, pitch,      reverb,    rnnoise,   stereo_tools});
 
 auto get_translated() -> std::map<std::string, std::string>;
 
-}  // namespace plugin_name
+}  // namespace tags::plugin_name

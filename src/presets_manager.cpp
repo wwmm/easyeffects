@@ -434,51 +434,51 @@ void PresetsManager::write_plugins_preset(const PresetType& preset_type,
                                           const std::vector<std::string>& plugins,
                                           nlohmann::json& json) {
   for (const auto& name : plugins) {
-    if (name == plugin_name::autogain) {
+    if (name == tags::plugin_name::autogain) {
       autogain->write(preset_type, json);
-    } else if (name == plugin_name::bass_enhancer) {
+    } else if (name == tags::plugin_name::bass_enhancer) {
       bass_enhancer->write(preset_type, json);
-    } else if (name == plugin_name::bass_loudness) {
+    } else if (name == tags::plugin_name::bass_loudness) {
       bass_loudness->write(preset_type, json);
-    } else if (name == plugin_name::compressor) {
+    } else if (name == tags::plugin_name::compressor) {
       compressor->write(preset_type, json);
-    } else if (name == plugin_name::convolver) {
+    } else if (name == tags::plugin_name::convolver) {
       convolver->write(preset_type, json);
-    } else if (name == plugin_name::crossfeed) {
+    } else if (name == tags::plugin_name::crossfeed) {
       crossfeed->write(preset_type, json);
-    } else if (name == plugin_name::crystalizer) {
+    } else if (name == tags::plugin_name::crystalizer) {
       crystalizer->write(preset_type, json);
-    } else if (name == plugin_name::deesser) {
+    } else if (name == tags::plugin_name::deesser) {
       deesser->write(preset_type, json);
-    } else if (name == plugin_name::delay) {
+    } else if (name == tags::plugin_name::delay) {
       delay->write(preset_type, json);
-    } else if (name == plugin_name::echo_canceller) {
+    } else if (name == tags::plugin_name::echo_canceller) {
       echo_canceller->write(preset_type, json);
-    } else if (name == plugin_name::equalizer) {
+    } else if (name == tags::plugin_name::equalizer) {
       equalizer->write(preset_type, json);
-    } else if (name == plugin_name::exciter) {
+    } else if (name == tags::plugin_name::exciter) {
       exciter->write(preset_type, json);
-    } else if (name == plugin_name::filter) {
+    } else if (name == tags::plugin_name::filter) {
       filter->write(preset_type, json);
-    } else if (name == plugin_name::gate) {
+    } else if (name == tags::plugin_name::gate) {
       gate->write(preset_type, json);
-    } else if (name == plugin_name::limiter) {
+    } else if (name == tags::plugin_name::limiter) {
       limiter->write(preset_type, json);
-    } else if (name == plugin_name::loudness) {
+    } else if (name == tags::plugin_name::loudness) {
       loudness->write(preset_type, json);
-    } else if (name == plugin_name::maximizer) {
+    } else if (name == tags::plugin_name::maximizer) {
       maximizer->write(preset_type, json);
-    } else if (name == plugin_name::multiband_compressor) {
+    } else if (name == tags::plugin_name::multiband_compressor) {
       multiband_compressor->write(preset_type, json);
-    } else if (name == plugin_name::multiband_gate) {
+    } else if (name == tags::plugin_name::multiband_gate) {
       multiband_gate->write(preset_type, json);
-    } else if (name == plugin_name::pitch) {
+    } else if (name == tags::plugin_name::pitch) {
       pitch->write(preset_type, json);
-    } else if (name == plugin_name::reverb) {
+    } else if (name == tags::plugin_name::reverb) {
       reverb->write(preset_type, json);
-    } else if (name == plugin_name::rnnoise) {
+    } else if (name == tags::plugin_name::rnnoise) {
       rnnoise->write(preset_type, json);
-    } else if (name == plugin_name::stereo_tools) {
+    } else if (name == tags::plugin_name::stereo_tools) {
       stereo_tools->write(preset_type, json);
     }
   }
@@ -532,7 +532,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
           is >> json;
 
           for (const auto& p : json.at("output").at("plugins_order").get<std::vector<std::string>>()) {
-            for (const auto& v : plugin_name::list) {
+            for (const auto& v : tags::plugin_name::list) {
               if (v == p) {
                 plugins.push_back(p);
 
@@ -585,7 +585,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
           is >> json;
 
           for (const auto& p : json.at("input").at("plugins_order").get<std::vector<std::string>>()) {
-            for (const auto& v : plugin_name::list) {
+            for (const auto& v : tags::plugin_name::list) {
               if (v == p) {
                 plugins.push_back(p);
 
@@ -632,51 +632,51 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
                                          const nlohmann::json& json) -> bool {
   for (const auto& name : plugins) {
     try {
-      if (name == plugin_name::autogain) {
+      if (name == tags::plugin_name::autogain) {
         autogain->read(preset_type, json);
-      } else if (name == plugin_name::bass_enhancer) {
+      } else if (name == tags::plugin_name::bass_enhancer) {
         bass_enhancer->read(preset_type, json);
-      } else if (name == plugin_name::bass_loudness) {
+      } else if (name == tags::plugin_name::bass_loudness) {
         bass_loudness->read(preset_type, json);
-      } else if (name == plugin_name::compressor) {
+      } else if (name == tags::plugin_name::compressor) {
         compressor->read(preset_type, json);
-      } else if (name == plugin_name::convolver) {
+      } else if (name == tags::plugin_name::convolver) {
         convolver->read(preset_type, json);
-      } else if (name == plugin_name::crossfeed) {
+      } else if (name == tags::plugin_name::crossfeed) {
         crossfeed->read(preset_type, json);
-      } else if (name == plugin_name::crystalizer) {
+      } else if (name == tags::plugin_name::crystalizer) {
         crystalizer->read(preset_type, json);
-      } else if (name == plugin_name::deesser) {
+      } else if (name == tags::plugin_name::deesser) {
         deesser->read(preset_type, json);
-      } else if (name == plugin_name::delay) {
+      } else if (name == tags::plugin_name::delay) {
         delay->read(preset_type, json);
-      } else if (name == plugin_name::echo_canceller) {
+      } else if (name == tags::plugin_name::echo_canceller) {
         echo_canceller->read(preset_type, json);
-      } else if (name == plugin_name::equalizer) {
+      } else if (name == tags::plugin_name::equalizer) {
         equalizer->read(preset_type, json);
-      } else if (name == plugin_name::exciter) {
+      } else if (name == tags::plugin_name::exciter) {
         exciter->read(preset_type, json);
-      } else if (name == plugin_name::filter) {
+      } else if (name == tags::plugin_name::filter) {
         filter->read(preset_type, json);
-      } else if (name == plugin_name::gate) {
+      } else if (name == tags::plugin_name::gate) {
         gate->read(preset_type, json);
-      } else if (name == plugin_name::limiter) {
+      } else if (name == tags::plugin_name::limiter) {
         limiter->read(preset_type, json);
-      } else if (name == plugin_name::loudness) {
+      } else if (name == tags::plugin_name::loudness) {
         loudness->read(preset_type, json);
-      } else if (name == plugin_name::maximizer) {
+      } else if (name == tags::plugin_name::maximizer) {
         maximizer->read(preset_type, json);
-      } else if (name == plugin_name::multiband_compressor) {
+      } else if (name == tags::plugin_name::multiband_compressor) {
         multiband_compressor->read(preset_type, json);
-      } else if (name == plugin_name::multiband_gate) {
+      } else if (name == tags::plugin_name::multiband_gate) {
         multiband_gate->read(preset_type, json);
-      } else if (name == plugin_name::pitch) {
+      } else if (name == tags::plugin_name::pitch) {
         pitch->read(preset_type, json);
-      } else if (name == plugin_name::reverb) {
+      } else if (name == tags::plugin_name::reverb) {
         reverb->read(preset_type, json);
-      } else if (name == plugin_name::rnnoise) {
+      } else if (name == tags::plugin_name::rnnoise) {
         rnnoise->read(preset_type, json);
-      } else if (name == plugin_name::stereo_tools) {
+      } else if (name == tags::plugin_name::stereo_tools) {
         stereo_tools->read(preset_type, json);
       }
     } catch (const nlohmann::json::exception& e) {
