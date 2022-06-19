@@ -158,16 +158,16 @@ void on_app_changed(AppsBox* self, const NodeInfo node_info) {
 }
 
 void connect_stream(AppsBox* self, const uint& id, const std::string& media_class) {
-  if (media_class == self->data->application->pm->media_class_output_stream) {
+  if (media_class == tags::pipewire::media_class::output_stream) {
     self->data->application->pm->connect_stream_output(id);
-  } else if (media_class == self->data->application->pm->media_class_input_stream) {
+  } else if (media_class == tags::pipewire::media_class::input_stream) {
     self->data->application->pm->connect_stream_input(id);
   }
 }
 
 void disconnect_stream(AppsBox* self, const uint& id, const std::string& media_class) {
-  if (media_class == self->data->application->pm->media_class_output_stream ||
-      media_class == self->data->application->pm->media_class_input_stream) {
+  if (media_class == tags::pipewire::media_class::output_stream ||
+      media_class == tags::pipewire::media_class::input_stream) {
     self->data->application->pm->disconnect_stream(id);
   }
 }
@@ -244,7 +244,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
 
       for (const auto& [serial, node] : pm->node_map) {
-        if (node.media_class == pm->media_class_input_stream) {
+        if (node.media_class == tags::pipewire::media_class::input_stream) {
           on_app_added(self, node);
         }
       }
@@ -266,7 +266,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
       self->settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
 
       for (const auto& [serial, node] : pm->node_map) {
-        if (node.media_class == pm->media_class_output_stream) {
+        if (node.media_class == tags::pipewire::media_class::output_stream) {
           on_app_added(self, node);
         }
       }

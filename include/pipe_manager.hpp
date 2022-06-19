@@ -32,6 +32,7 @@
 #include <map>
 #include <memory>
 #include "tags_app.hpp"
+#include "tags_pipewire.hpp"
 #include "util.hpp"
 
 struct NodeInfo {
@@ -209,16 +210,6 @@ class PipeManager {
   std::vector<ClientInfo> list_clients;
 
   std::vector<DeviceInfo> list_devices;
-
-  const std::string ee_source_name = "easyeffects_source";
-  const std::string ee_sink_name = "easyeffects_sink";
-
-  const std::string media_class_device = "Audio/Device";
-  const std::string media_class_sink = "Audio/Sink";
-  const std::string media_class_source = "Audio/Source";
-  const std::string media_class_virtual_source = "Audio/Source/Virtual";
-  const std::string media_class_input_stream = "Stream/Input/Audio";
-  const std::string media_class_output_stream = "Stream/Output/Audio";
 
   std::string default_output_device_name, default_input_device_name;
 

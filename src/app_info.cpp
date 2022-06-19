@@ -142,16 +142,16 @@ auto icon_available(AppInfo* self, const std::string& icon_name) -> bool {
 }
 
 void connect_stream(AppInfo* self, const uint& id, const std::string& media_class) {
-  if (media_class == self->data->application->pm->media_class_output_stream) {
+  if (media_class == tags::pipewire::media_class::output_stream) {
     self->data->application->pm->connect_stream_output(id);
-  } else if (media_class == self->data->application->pm->media_class_input_stream) {
+  } else if (media_class == tags::pipewire::media_class::input_stream) {
     self->data->application->pm->connect_stream_input(id);
   }
 }
 
 void disconnect_stream(AppInfo* self, const uint& id, const std::string& media_class) {
-  if (media_class == self->data->application->pm->media_class_output_stream ||
-      media_class == self->data->application->pm->media_class_input_stream) {
+  if (media_class == tags::pipewire::media_class::output_stream ||
+      media_class == tags::pipewire::media_class::input_stream) {
     self->data->application->pm->disconnect_stream(id);
   }
 }

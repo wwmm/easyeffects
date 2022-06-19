@@ -104,11 +104,12 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
   setup_dropdown_input_device(self);
 
   for (const auto& [serial, node] : pm->node_map) {
-    if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
+    if (node.name == tags::pipewire::ee_sink_name || node.name == tags::pipewire::ee_source_name) {
       continue;
     }
 
-    if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
+    if (node.media_class == tags::pipewire::media_class::source ||
+        node.media_class == tags::pipewire::media_class::virtual_source) {
       auto holder = ui::holders::create(node);
 
       g_list_store_append(self->input_devices_model, holder);

@@ -406,18 +406,19 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->ts = std::make_unique<TestSignals>(pm);
 
   for (const auto& [serial, node] : pm->node_map) {
-    if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
+    if (node.name == tags::pipewire::ee_sink_name || node.name == tags::pipewire::ee_source_name) {
       continue;
     }
 
-    if (node.media_class == pm->media_class_sink) {
+    if (node.media_class == tags::pipewire::media_class::sink) {
       auto holder = ui::holders::create(node);
 
       g_list_store_append(self->output_devices_model, holder);
       g_list_store_append(self->autoloading_output_devices_model, holder);
 
       g_object_unref(holder);
-    } else if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
+    } else if (node.media_class == tags::pipewire::media_class::source ||
+               node.media_class == tags::pipewire::media_class::virtual_source) {
       auto holder = ui::holders::create(node);
 
       g_list_store_append(self->input_devices_model, holder);

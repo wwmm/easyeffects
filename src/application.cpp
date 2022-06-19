@@ -106,7 +106,8 @@ void on_startup(GApplication* gapp) {
     NodeInfo target_node;
 
     for (const auto& [serial, node] : self->pm->node_map) {
-      if (node.name.find(device.bus_path) != std::string::npos && node.media_class == self->pm->media_class_source) {
+      if (node.name.find(device.bus_path) != std::string::npos &&
+          node.media_class == tags::pipewire::media_class::source) {
         target_node = node;
 
         break;
@@ -136,7 +137,8 @@ void on_startup(GApplication* gapp) {
     NodeInfo target_node;
 
     for (const auto& [serial, node] : self->pm->node_map) {
-      if (node.name.find(device.bus_path) != std::string::npos && node.media_class == self->pm->media_class_sink) {
+      if (node.name.find(device.bus_path) != std::string::npos &&
+          node.media_class == tags::pipewire::media_class::sink) {
         target_node = node;
 
         break;

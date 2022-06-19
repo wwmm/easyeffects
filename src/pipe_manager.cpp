@@ -177,7 +177,7 @@ void on_destroy_node_proxy(void* data) {
   pm->node_map.erase(node_it);
 
   if (!pm->exiting) {
-    if (nd->nd_info->media_class == pm->media_class_source) {
+    if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
       const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([=]() {
@@ -187,7 +187,7 @@ void on_destroy_node_proxy(void* data) {
 
         pm->source_removed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_sink) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
       const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([=]() {
@@ -197,7 +197,7 @@ void on_destroy_node_proxy(void* data) {
 
         pm->sink_removed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       const auto serial = nd->nd_info->serial;
 
       util::idle_add([=]() {
@@ -207,7 +207,7 @@ void on_destroy_node_proxy(void* data) {
 
         pm->stream_output_removed.emit(serial);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto serial = nd->nd_info->serial;
 
       util::idle_add([=]() {
@@ -274,7 +274,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     pm->node_map.erase(node_it);
 
-    if (nd->nd_info->media_class == pm->media_class_source) {
+    if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
       const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([=]() {
@@ -284,7 +284,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
         pm->source_removed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_sink) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
       const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([=]() {
@@ -294,7 +294,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
         pm->sink_removed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_output_stream) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       const auto serial = nd->nd_info->serial;
 
       util::idle_add([=]() {
@@ -306,7 +306,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
         pm->disconnect_stream(nd->nd_info->id);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto serial = nd->nd_info->serial;
 
       util::idle_add([=]() {
@@ -436,7 +436,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   if (app_info_ui_changed) {
     const auto nd_info_copy = *nd->nd_info;
 
-    if (nd->nd_info->media_class == pm->media_class_output_stream) {
+    if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       util::idle_add([=]() {
         if (PipeManager::exiting) {
           return;
@@ -444,7 +444,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
         pm->stream_output_changed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       util::idle_add([=]() {
         if (PipeManager::exiting) {
           return;
@@ -453,7 +453,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         pm->stream_input_changed.emit(nd_info_copy);
       });
     }
-  } else if (nd->nd_info->media_class == pm->media_class_source) {
+  } else if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
     const auto nd_info_copy = *nd->nd_info;
 
     util::idle_add([=]() {
@@ -463,7 +463,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       pm->source_changed.emit(nd_info_copy);
     });
-  } else if (nd->nd_info->media_class == pm->media_class_sink) {
+  } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
     const auto nd_info_copy = *nd->nd_info;
 
     util::idle_add([=]() {
@@ -620,7 +620,7 @@ void on_node_event_param(void* object,
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy
 
-    if (nd->nd_info->media_class == pm->media_class_output_stream) {
+    if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([pm, nd_info_copy] {
@@ -630,7 +630,7 @@ void on_node_event_param(void* object,
 
         pm->stream_output_changed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_input_stream) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto nd_info_copy = *nd->nd_info;
 
       util::idle_add([pm, nd_info_copy] {
@@ -640,7 +640,7 @@ void on_node_event_param(void* object,
 
         pm->stream_input_changed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_virtual_source) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::virtual_source) {
       const auto nd_info_copy = *nd->nd_info;
 
       if (nd_info_copy.serial == pm->ee_source_node.serial) {
@@ -654,7 +654,7 @@ void on_node_event_param(void* object,
 
         pm->source_changed.emit(nd_info_copy);
       });
-    } else if (nd->nd_info->media_class == pm->media_class_sink) {
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
       const auto nd_info_copy = *nd->nd_info;
 
       if (nd_info_copy.serial == pm->ee_sink_node.serial) {
@@ -1049,8 +1049,10 @@ void on_registry_global(void* data,
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
       const std::string media_class = key_media_class;
 
-      static const auto class_array = {pm->media_class_output_stream, pm->media_class_input_stream,
-                                       pm->media_class_sink, pm->media_class_source, pm->media_class_virtual_source};
+      constexpr auto class_array =
+          std::to_array({tags::pipewire::media_class::output_stream, tags::pipewire::media_class::input_stream,
+                         tags::pipewire::media_class::sink, tags::pipewire::media_class::source,
+                         tags::pipewire::media_class::virtual_source});
 
       if (!std::any_of(class_array.begin(), class_array.end(), [&](const auto& str) { return str == media_class; })) {
         return;
@@ -1134,7 +1136,7 @@ void on_registry_global(void* data,
 
       const auto nd_info_copy = *nd->nd_info;
 
-      if (media_class == pm->media_class_source && name != pm->ee_source_name) {
+      if (media_class == tags::pipewire::media_class::source && name != tags::pipewire::ee_source_name) {
         util::idle_add([pm, nd_info_copy] {
           if (PipeManager::exiting) {
             return;
@@ -1142,7 +1144,7 @@ void on_registry_global(void* data,
 
           pm->source_added.emit(nd_info_copy);
         });
-      } else if (media_class == pm->media_class_sink && name != pm->ee_sink_name) {
+      } else if (media_class == tags::pipewire::media_class::sink && name != tags::pipewire::ee_sink_name) {
         util::idle_add([pm, nd_info_copy] {
           if (PipeManager::exiting) {
             return;
@@ -1150,7 +1152,7 @@ void on_registry_global(void* data,
 
           pm->sink_added.emit(nd_info_copy);
         });
-      } else if (media_class == pm->media_class_output_stream) {
+      } else if (media_class == tags::pipewire::media_class::output_stream) {
         util::idle_add([pm, nd_info_copy] {
           if (PipeManager::exiting) {
             return;
@@ -1158,7 +1160,7 @@ void on_registry_global(void* data,
 
           pm->stream_output_added.emit(nd_info_copy);
         });
-      } else if (media_class == pm->media_class_input_stream) {
+      } else if (media_class == tags::pipewire::media_class::input_stream) {
         util::idle_add([pm, nd_info_copy] {
           if (PipeManager::exiting) {
             return;
@@ -1361,7 +1363,7 @@ void on_registry_global(void* data,
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
       const std::string media_class = key_media_class;
 
-      if (media_class == pm->media_class_device) {
+      if (media_class == tags::pipewire::media_class::device) {
         uint64_t serial;
 
         if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
@@ -1515,10 +1517,10 @@ PipeManager::PipeManager() {
   pw_properties* props_sink = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_sink, PW_KEY_APP_ID, tags::app::id.c_str());
-  pw_properties_set(props_sink, PW_KEY_NODE_NAME, ee_sink_name.c_str());
+  pw_properties_set(props_sink, PW_KEY_NODE_NAME, tags::pipewire::ee_sink_name);
   pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "EasyEffects Sink");
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
-  pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, media_class_sink.c_str());
+  pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::sink);
   pw_properties_set(props_sink, "audio.position", "FL,FR");
   pw_properties_set(props_sink, "monitor.channel-volumes", "true");
 
@@ -1532,10 +1534,10 @@ PipeManager::PipeManager() {
   pw_properties* props_source = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_source, PW_KEY_APP_ID, tags::app::id.c_str());
-  pw_properties_set(props_source, PW_KEY_NODE_NAME, ee_source_name.c_str());
+  pw_properties_set(props_source, PW_KEY_NODE_NAME, tags::pipewire::ee_source_name);
   pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "EasyEffects Source");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
-  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, media_class_virtual_source.c_str());
+  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::virtual_source);
   pw_properties_set(props_source, "audio.position", "FL,FR");
   pw_properties_set(props_source, "monitor.channel-volumes", "true");
 
@@ -1546,20 +1548,22 @@ PipeManager::PipeManager() {
 
   sync_wait_unlock();
 
+  using namespace std::string_literals;
+
   do {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     for (const auto& [serial, node] : node_map) {
-      if (ee_sink_node.name.empty() && node.name == ee_sink_name) {
+      if (ee_sink_node.name.empty() && node.name == tags::pipewire::ee_sink_name) {
         ee_sink_node = node;
 
-        util::debug(ee_sink_name + " node successfully retrieved with id " + util::to_string(node.id) + " and serial " +
-                    util::to_string(node.serial));
-      } else if (ee_source_node.name.empty() && node.name == ee_source_name) {
+        util::debug(tags::pipewire::ee_sink_name + " node successfully retrieved with id "s + util::to_string(node.id) +
+                    " and serial " + util::to_string(node.serial));
+      } else if (ee_source_node.name.empty() && node.name == tags::pipewire::ee_source_name) {
         ee_source_node = node;
 
-        util::debug(ee_source_name + " node successfully retrieved with id " + util::to_string(node.id) +
-                    " and serial " + util::to_string(node.serial));
+        util::debug(tags::pipewire::ee_source_name + " node successfully retrieved with id "s +
+                    util::to_string(node.id) + " and serial " + util::to_string(node.serial));
       }
     }
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
@@ -1612,13 +1616,13 @@ auto PipeManager::node_map_at_id(const uint& id) -> NodeInfo& {
 }
 
 auto PipeManager::stream_is_connected(const uint& id, const std::string& media_class) -> bool {
-  if (media_class == media_class_output_stream) {
+  if (media_class == tags::pipewire::media_class::output_stream) {
     for (const auto& link : list_links) {
       if (link.output_node_id == id && link.input_node_id == ee_sink_node.id) {
         return true;
       }
     }
-  } else if (media_class == media_class_input_stream) {
+  } else if (media_class == tags::pipewire::media_class::input_stream) {
     for (const auto& link : list_links) {
       if (link.output_node_id == ee_source_node.id && link.input_node_id == id) {
         return true;
