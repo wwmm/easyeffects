@@ -96,7 +96,7 @@ void setup_dropdown_input_device(LimiterBox* self) {
 void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string& schema_path, PipeManager* pm) {
   self->data->limiter = limiter;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".limiter").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::limiter::id, schema_path.c_str());
 
   limiter->post_messages = true;
   limiter->bypass = false;

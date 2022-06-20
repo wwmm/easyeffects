@@ -139,7 +139,7 @@ void on_preset_large_occupied_hall(ReverbBox* self, GtkButton* btn) {
 void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& schema_path) {
   self->data->reverb = reverb;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".reverb").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::reverb::id, schema_path.c_str());
 
   reverb->post_messages = true;
   reverb->bypass = false;

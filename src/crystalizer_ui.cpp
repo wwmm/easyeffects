@@ -140,7 +140,7 @@ void build_bands(CrystalizerBox* self) {
 void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const std::string& schema_path) {
   self->data->crystalizer = crystalizer;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".crystalizer").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::crystalizer::id, schema_path.c_str());
 
   crystalizer->post_messages = true;
   crystalizer->bypass = false;

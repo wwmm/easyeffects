@@ -140,7 +140,7 @@ void setup(MultibandCompressorBox* self,
            PipeManager* pm) {
   self->data->multiband_compressor = multiband_compressor;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".multibandcompressor").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::multiband_compressor::id, schema_path.c_str());
 
   multiband_compressor->post_messages = true;
   multiband_compressor->bypass = false;

@@ -20,7 +20,7 @@
 #include "stream_input_effects.hpp"
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
-    : EffectsBase("sie: ", tags::app::id + ".streaminputs", pipe_manager) {
+    : EffectsBase("sie: ", tags::schema::id_input, pipe_manager) {
   if (g_settings_get_boolean(settings, "use-default-input-device") != 0) {
     g_settings_set_string(settings, "input-device", pm->input_device.name.c_str());
   } else {

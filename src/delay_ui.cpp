@@ -67,7 +67,7 @@ void on_reset(DelayBox* self, GtkButton* btn) {
 void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& schema_path) {
   self->data->delay = delay;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".delay").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::delay::id, schema_path.c_str());
 
   delay->post_messages = true;
   delay->bypass = false;

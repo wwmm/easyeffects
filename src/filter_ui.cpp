@@ -67,7 +67,7 @@ void on_reset(FilterBox* self, GtkButton* btn) {
 void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path) {
   self->data->filter = filter;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".filter").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::filter::id, schema_path.c_str());
 
   filter->post_messages = true;
   filter->bypass = false;

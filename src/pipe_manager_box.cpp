@@ -833,8 +833,8 @@ void pipe_manager_box_init(PipeManagerBox* self) {
   self->autoloading_input_model = g_list_store_new(ui::holders::presets_autoloading_holder_get_type());
   self->autoloading_output_model = g_list_store_new(ui::holders::presets_autoloading_holder_get_type());
 
-  self->sie_settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
-  self->soe_settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
+  self->sie_settings = g_settings_new(tags::schema::id_input);
+  self->soe_settings = g_settings_new(tags::schema::id_output);
 
   prepare_spinbuttons<"Hz">(self->spinbutton_test_signal_frequency);
 

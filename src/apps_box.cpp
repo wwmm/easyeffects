@@ -241,7 +241,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
     case PipelineType::input: {
       auto* pm = application->sie->pm;
 
-      self->settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
+      self->settings = g_settings_new(tags::schema::id_input);
 
       for (const auto& [serial, node] : pm->node_map) {
         if (node.media_class == tags::pipewire::media_class::input_stream) {
@@ -263,7 +263,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
     case PipelineType::output: {
       auto* pm = application->soe->pm;
 
-      self->settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
+      self->settings = g_settings_new(tags::schema::id_output);
 
       for (const auto& [serial, node] : pm->node_map) {
         if (node.media_class == tags::pipewire::media_class::output_stream) {

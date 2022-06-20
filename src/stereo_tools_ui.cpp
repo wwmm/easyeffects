@@ -69,7 +69,7 @@ void on_reset(StereoToolsBox* self, GtkButton* btn) {
 void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, const std::string& schema_path) {
   self->data->stereo_tools = stereo_tools;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".stereotools").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::stereo_tools::id, schema_path.c_str());
 
   stereo_tools->post_messages = true;
   stereo_tools->bypass = false;

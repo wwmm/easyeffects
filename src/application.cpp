@@ -55,8 +55,8 @@ void on_startup(GApplication* gapp) {
 
   self->data = new Data();
 
-  self->sie_settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
-  self->soe_settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
+  self->sie_settings = g_settings_new(tags::schema::id_input);
+  self->soe_settings = g_settings_new(tags::schema::id_output);
 
   self->pm = new PipeManager();
   self->soe = new StreamOutputEffects(self->pm);
