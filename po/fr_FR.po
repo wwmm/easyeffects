@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-16 14:36-0300\n"
-"PO-Revision-Date: 2022-05-12 13:15+0000\n"
+"PO-Revision-Date: 2022-06-20 08:14+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -114,44 +114,52 @@ msgstr "Cette version ajoute les fonctionnalités suivantes :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "L'interface du plugin pitch a été améliorée"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr ""
+"L'icône de notre application est maintenant compatible avec les ordinateurs "
+"de bureau qui utilisent QT"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "Our blocklist code will use the `application.id` tag if the stream sets it"
 msgstr ""
+"Notre liste de blocage utilisera la balise `application.id` si le flux la "
+"définit"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
 "applications list shown in our `Players/Recorders`"
 msgstr ""
+"Afin d'éviter les problèmes de défilement de la souris, les entrées de la "
+"liste d'applications s'affichent dans nos `Lecteurs/Enregistreurs`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid ""
 "tab do not show a volume scale anymore. More details about the problem and "
 "the solution for it can be found on #1211"
 msgstr ""
+"Les onglets n'affichent plus d'échelle de volume. Plus de détails sur le "
+"problème et sa solution peuvent être trouvés sur la page #1211"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "and #1427"
-msgstr "Bande 1"
+msgstr "et #1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "When no application is available for display in the `Players/Recorders` a "
 "message will be shown to the user"
 msgstr ""
+"Lorsque aucune application n'est disponible pour l'affichage dans les `"
+"Lecteurs/Enregistreurs`, un message sera affiché à l'utilisateur"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
-#, fuzzy
 msgid "Many translation updates"
-msgstr "Traductions mises à jour"
+msgstr "Mises à jour des traductions"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
@@ -167,16 +175,20 @@ msgid ""
 "Fixed a bug where EasyEffeects crashed when the number of points displayed "
 "in the spectrum was changed while"
 msgstr ""
+"Correction d’un bug où EasyEffeects plantait lorsque le nombre de points "
+"affichés dans le spectre était modifié alors que"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid "our pipeline was active and the spectrum widget was visible"
-msgstr ""
+msgstr "notre pipeline était active et le widget spectre était visible"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
+"La valeur de latence du pipeline affichée dans notre fenêtre peut être "
+"incorrecte dans certaines situations. Cela a été corrigé."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
@@ -919,7 +931,7 @@ msgstr "Menu des préréglages"
 
 #: data/ui/application_window.ui:61 data/ui/application_window.ui:66
 msgid "Global Bypass"
-msgstr "Tout ignorer"
+msgstr "Ignorer tous les flux"
 
 #: data/ui/application_window.ui:76
 msgid "Primary Menu"
@@ -1010,7 +1022,7 @@ msgstr "Intervalle"
 
 #: data/ui/autogain.ui:310 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
 msgid "Loudness"
-msgstr ""
+msgstr "Sonie"
 
 #: data/ui/autogain.ui:342
 msgid "Output Gain"
@@ -1095,7 +1107,7 @@ msgstr "Réinitialiser"
 #: data/ui/pitch.ui:486 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
 #: data/ui/stereo_tools.ui:732
 msgid "Using"
-msgstr "Utilisant"
+msgstr "Utilise"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
 msgid "Device"
@@ -1149,7 +1161,7 @@ msgstr "Harmoniques"
 #: data/ui/bass_enhancer.ui:179 data/ui/exciter.ui:179
 #, fuzzy
 msgid "Scope"
-msgstr "Champ d'application"
+msgstr "Seuil"
 
 #: data/ui/bass_enhancer.ui:213
 msgid "Floor"
@@ -1276,7 +1288,7 @@ msgstr "Genou"
 #: data/ui/multiband_gate.ui:756 data/ui/multiband_gate.ui:1116
 #: data/ui/multiband_gate.ui:1476
 msgid "Makeup"
-msgstr "Rattrapage de gain"
+msgstr "Compensation de gain"
 
 #: data/ui/compressor.ui:418 data/ui/compressor.ui:930
 msgid "Sidechain"
@@ -1287,7 +1299,7 @@ msgstr "Chaîne latérale"
 #: data/ui/multiband_gate.ui:564 data/ui/multiband_gate.ui:924
 #: data/ui/multiband_gate.ui:1284
 msgid "Peak"
-msgstr "Pic"
+msgstr "Crête"
 
 #: data/ui/compressor.ui:448 data/ui/deesser.ui:48 data/ui/gate.ui:37
 #: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:203
@@ -1316,11 +1328,11 @@ msgstr "Source"
 
 #: data/ui/compressor.ui:485 data/ui/multiband_compressor_band.ui:488
 msgid "Middle"
-msgstr "Milieu"
+msgstr "Centrale"
 
 #: data/ui/compressor.ui:486 data/ui/multiband_compressor_band.ui:489
 msgid "Side"
-msgstr "Côté"
+msgstr "Latérale"
 
 #: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
 #: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:508
@@ -1377,7 +1389,7 @@ msgstr "Réactivité"
 #: data/ui/compressor.ui:666 data/ui/limiter.ui:219
 #: data/ui/multiband_compressor_band.ui:688
 msgid "Lookahead"
-msgstr "Prévision"
+msgstr "Anticipation"
 
 #: data/ui/compressor.ui:709
 msgid "Sidechain Filters"
@@ -1563,11 +1575,11 @@ msgstr "Division de la fréquence 1"
 
 #: data/ui/deesser.ui:122
 msgid "F2 Peak"
-msgstr "Pic F2"
+msgstr "Crête F2"
 
 #: data/ui/deesser.ui:142
 msgid "Frequency 2 Peak"
-msgstr "Pic de la fréquence 2"
+msgstr "Crête de la fréquence 2"
 
 #: data/ui/deesser.ui:160
 msgid "F1 Gain"
@@ -1587,11 +1599,11 @@ msgstr "Niveau de la fréquence 2"
 
 #: data/ui/deesser.ui:230
 msgid "F2 Peak Q"
-msgstr "Pic Q F2"
+msgstr "Crête Q F2"
 
 #: data/ui/deesser.ui:258
 msgid "Frequency 2 Peak Q"
-msgstr "Pic de la fréquence 2"
+msgstr "Crête de la fréquence 2"
 
 #: data/ui/deesser.ui:265
 msgid "Laxity"
@@ -1679,7 +1691,7 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:114
 msgid "Notch"
-msgstr "Coupe-bande"
+msgstr "Réjection de bande"
 
 #: data/ui/equalizer_band.ui:115 data/ui/filter.ui:88
 msgid "Resonance"
@@ -1971,9 +1983,8 @@ msgid "Full x8(3L)"
 msgstr "Complet x8(3L)"
 
 #: data/ui/limiter.ui:178
-#, fuzzy
 msgid "SC PreAmp"
-msgstr "SC PreAmp"
+msgstr "SC PréAmp"
 
 #: data/ui/limiter.ui:207 data/ui/multiband_compressor_band.ui:647
 msgid "Sidechain PreAmplification"
@@ -2029,7 +2040,7 @@ msgstr "Standard"
 
 #: data/ui/loudness.ui:40
 msgid "Flat"
-msgstr "Linéaire"
+msgstr "Plat"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/loudness.ui:59
@@ -2278,7 +2289,7 @@ msgstr "Genou de la bande 2"
 
 #: data/ui/multiband_gate.ui:782
 msgid "Band 2 Makeup"
-msgstr "Rattrapage de gain de la bande 2"
+msgstr "Compensation de gain de la bande 2"
 
 #: data/ui/multiband_gate.ui:816
 msgid "Band 2 Max Reduction"
@@ -2322,7 +2333,7 @@ msgstr "Genou de la bande 3"
 
 #: data/ui/multiband_gate.ui:1142
 msgid "Band 3 Makeup"
-msgstr "Rattrapage de gain de la bande 3"
+msgstr "Compensation de gain de la bande 3"
 
 #: data/ui/multiband_gate.ui:1176
 msgid "Band 3 Max Reduction"
@@ -2366,7 +2377,7 @@ msgstr "Genou de la bande 4"
 
 #: data/ui/multiband_gate.ui:1502
 msgid "Band 4 Makeup"
-msgstr "Rattrapage de gain de la bande 4"
+msgstr "Compensation de gain de la bande 4"
 
 #: data/ui/multiband_gate.ui:1536
 msgid "Band 4 Max Reduction"
@@ -2514,7 +2525,7 @@ msgstr "Les deux canaux"
 
 #: data/ui/pipe_manager_box.ui:543
 msgid "Waveform"
-msgstr "ondulations"
+msgstr "Forme d'onde"
 
 #: data/ui/pipe_manager_box.ui:547
 msgid "Sine Wave"
@@ -2542,7 +2553,7 @@ msgstr "Format"
 
 #: data/ui/pitch.ui:60
 msgid "Shifted"
-msgstr "Décalé"
+msgstr "Altéré"
 
 #: data/ui/pitch.ui:61
 msgid "Preserved"
@@ -2554,7 +2565,7 @@ msgstr "Transitoires"
 
 #: data/ui/pitch.ui:109
 msgid "Crisp"
-msgstr "nette"
+msgstr "Net"
 
 #: data/ui/pitch.ui:110
 msgid "Mixed"
@@ -2562,7 +2573,7 @@ msgstr "Intermédiaire"
 
 #: data/ui/pitch.ui:111
 msgid "Smooth"
-msgstr "Douce"
+msgstr "Progressif"
 
 #: data/ui/pitch.ui:125
 msgid "Detector"
@@ -2590,7 +2601,7 @@ msgstr "Laminaire"
 
 #: data/ui/pitch.ui:164
 msgid "Independent"
-msgstr "Indépendant"
+msgstr "Indépendante"
 
 #: data/ui/pitch.ui:189
 msgid "Cents"
@@ -2642,30 +2653,27 @@ msgstr "Service"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Lancer le service au démarrage du système"
 
 #: data/ui/preferences_general.ui:26
-#, fuzzy
 msgid "Shutdown on Window Closing"
-msgstr "Arrêt à la fermeture de la fenêtre"
+msgstr "Arrêter à la fermeture de la fenêtre"
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
 msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
-#, fuzzy
 msgid "Process All Output Streams"
-msgstr "Modifier toutes les sorties"
+msgstr "Traiter tous les flux de sortie"
 
 #: data/ui/preferences_general.ui:55
-#, fuzzy
 msgid "Process All Input Streams"
-msgstr "Modifier toutes les entrées"
+msgstr "Traiter tous les flux d’entrée"
 
 #: data/ui/preferences_general.ui:67
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Ignorer les flux du moniteur des périphériques"
 
 #: data/ui/preferences_general.ui:79
 msgid "Use Cubic Volume"
@@ -2674,6 +2682,7 @@ msgstr "Utiliser le volume cubique"
 #: data/ui/preferences_general.ui:91
 msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
 msgstr ""
+"Réinitialiser le volume des périphériques virtuels EasyEffects au démarrage"
 
 #: data/ui/preferences_general.ui:103
 msgid "Inactivity Timeout"
@@ -2729,7 +2738,7 @@ msgstr "Remplir"
 
 #: data/ui/preferences_spectrum.ui:126
 msgid "Show Bars Border"
-msgstr "Afficher la bordure des barres"
+msgstr "Afficher les bordures des barres"
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
@@ -2801,7 +2810,7 @@ msgstr "Liste des préréglages d'entrée"
 
 #: data/ui/reverb.ui:43
 msgid "High Frequency Damping"
-msgstr "Amortissement des hautes fréquences"
+msgstr "Atténuation des hautes fréquences"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/reverb.ui:75
@@ -2810,15 +2819,15 @@ msgstr "Taille de la salle"
 
 #: data/ui/reverb.ui:83
 msgid "Small"
-msgstr "Petit"
+msgstr "Petite"
 
 #: data/ui/reverb.ui:84
 msgid "Medium"
-msgstr "Moyen"
+msgstr "Moyenne"
 
 #: data/ui/reverb.ui:85
 msgid "Large"
-msgstr "Large"
+msgstr "Grande"
 
 #: data/ui/reverb.ui:86
 msgid "Tunnel"
@@ -2826,7 +2835,7 @@ msgstr "Tunnel"
 
 #: data/ui/reverb.ui:87
 msgid "Large/smooth"
-msgstr "Large/lisse"
+msgstr "Grande/lisse"
 
 #: data/ui/reverb.ui:88
 msgid "Experimental"
@@ -3166,7 +3175,7 @@ msgstr "Amplificateur de basses"
 
 #: src/plugin_name.cpp:27
 msgid "Bass Loudness"
-msgstr "Intensité des basses"
+msgstr "Sonie des basses"
 
 #: src/plugin_name.cpp:29
 msgid "Convolver"
@@ -3211,7 +3220,7 @@ msgstr "Porte à bruits"
 
 #: src/plugin_name.cpp:39
 msgid "Limiter"
-msgstr "Limiteur [dB]"
+msgstr "Limiteur"
 
 #: src/plugin_name.cpp:41
 msgid "Maximizer"
