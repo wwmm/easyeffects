@@ -47,6 +47,18 @@ struct proxy_data {
   uint64_t serial = SPA_ID_INVALID;
 };
 
+template <typename T>
+auto spa_dict_get_string(const spa_dict* props, const char* key, T& str) -> bool {
+  // If we will use string views in the future, this template could be useful.
+  if (const auto* s = spa_dict_lookup(props, key)) {
+    str = s;
+
+    return true;
+  }
+
+  return false;
+}
+
 void on_removed_proxy(void* data) {
   auto* const pd = static_cast<proxy_data*>(data);
 
@@ -68,9 +80,7 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
     util::str_to_num(std::string(serial), info.serial);
   }
 
-  if (const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH)) {
-    info.path = path;
-  }
+  spa_dict_get_string(props, PW_KEY_OBJECT_PATH, info.path);
 
   if (const auto* input_node_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_NODE)) {
     util::str_to_num(std::string(input_node_id), info.input_node_id);
@@ -108,25 +118,17 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
     util::str_to_num(std::string(serial), info.serial);
   }
 
-  if (const auto* name = spa_dict_lookup(props, PW_KEY_PORT_NAME)) {
-    info.name = name;
-  }
+  spa_dict_get_string(props, PW_KEY_PORT_NAME, info.name);
 
   if (const auto* node_id = spa_dict_lookup(props, PW_KEY_NODE_ID)) {
     util::str_to_num(std::string(node_id), info.node_id);
   }
 
-  if (const auto* direction = spa_dict_lookup(props, PW_KEY_PORT_DIRECTION)) {
-    info.direction = direction;
-  }
+  spa_dict_get_string(props, PW_KEY_PORT_DIRECTION, info.direction);
 
-  if (const auto* port_channel = spa_dict_lookup(props, PW_KEY_AUDIO_CHANNEL)) {
-    info.audio_channel = port_channel;
-  }
+  spa_dict_get_string(props, PW_KEY_AUDIO_CHANNEL, info.audio_channel);
 
-  if (const auto* port_audio_format = spa_dict_lookup(props, PW_KEY_AUDIO_FORMAT)) {
-    info.format_dsp = port_audio_format;
-  }
+  spa_dict_get_string(props, PW_KEY_AUDIO_FORMAT, info.format_dsp);
 
   if (const auto* port_physical = spa_dict_lookup(props, PW_KEY_PORT_PHYSICAL)) {
     if (g_strcmp0(port_physical, "true") == 0) {
@@ -365,9 +367,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
-  if (const auto* device_icon_name = spa_dict_lookup(info->props, PW_KEY_DEVICE_ICON_NAME)) {
-    nd->nd_info->device_icon_name = device_icon_name;
-  }
+  spa_dict_get_string(info->props, PW_KEY_DEVICE_ICON_NAME, nd->nd_info->device_icon_name);
 
   if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
     if (media_name != nd->nd_info->media_name) {
@@ -731,9 +731,7 @@ void on_module_info(void* object, const struct pw_module_info* info) {
         module.filename = info->filename;
       }
 
-      if (const auto* description = spa_dict_lookup(info->props, PW_KEY_MODULE_DESCRIPTION)) {
-        module.description = description;
-      }
+      spa_dict_get_string(info->props, PW_KEY_MODULE_DESCRIPTION, module.description);
 
       break;
     }
@@ -755,17 +753,11 @@ void on_client_info(void* object, const struct pw_client_info* info) {
 
   for (auto& client : cd->pm->list_clients) {
     if (client.id == info->id) {
-      if (const auto* name = spa_dict_lookup(info->props, PW_KEY_APP_NAME)) {
-        client.name = name;
-      }
+      spa_dict_get_string(info->props, PW_KEY_APP_NAME, client.name);
 
-      if (const auto* access = spa_dict_lookup(info->props, PW_KEY_ACCESS)) {
-        client.access = access;
-      }
+      spa_dict_get_string(info->props, PW_KEY_ACCESS, client.access);
 
-      if (const auto* api = spa_dict_lookup(info->props, PW_KEY_CLIENT_API)) {
-        client.api = api;
-      }
+      spa_dict_get_string(info->props, PW_KEY_CLIENT_API, client.api);
 
       break;
     }
@@ -790,25 +782,15 @@ void on_device_info(void* object, const struct pw_device_info* info) {
       continue;
     }
 
-    if (const auto* name = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME)) {
-      device.name = name;
-    }
+    spa_dict_get_string(info->props, PW_KEY_DEVICE_NAME, device.name);
 
-    if (const auto* nick = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME)) {
-      device.nick = nick;
-    }
+    spa_dict_get_string(info->props, PW_KEY_DEVICE_NAME, device.nick);
 
-    if (const auto* description = spa_dict_lookup(info->props, PW_KEY_DEVICE_DESCRIPTION)) {
-      device.description = description;
-    }
+    spa_dict_get_string(info->props, PW_KEY_DEVICE_DESCRIPTION, device.description);
 
-    if (const auto* api = spa_dict_lookup(info->props, PW_KEY_DEVICE_API)) {
-      device.api = api;
-    }
+    spa_dict_get_string(info->props, PW_KEY_DEVICE_API, device.api);
 
-    if (const auto* bus_path = spa_dict_lookup(info->props, PW_KEY_DEVICE_BUS_PATH)) {
-      device.bus_path = bus_path;
-
+    if (spa_dict_get_string(info->props, PW_KEY_DEVICE_BUS_PATH, device.bus_path)) {
       std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
     }
 
@@ -1107,9 +1089,7 @@ void on_registry_global(void* data,
       nd->nd_info->media_class = media_class;
       nd->nd_info->name = name;
 
-      if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
-        nd->nd_info->description = node_description;
-      }
+      spa_dict_get_string(props, PW_KEY_NODE_DESCRIPTION, nd->nd_info->description);
 
       if (const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION)) {
         util::str_to_num(std::string(prio_session), nd->nd_info->priority);
@@ -1290,9 +1270,7 @@ void on_registry_global(void* data,
 
     ModuleInfo m_info{.id = id, .serial = serial};
 
-    if (const auto* name = spa_dict_lookup(props, PW_KEY_MODULE_NAME)) {
-      m_info.name = name;
-    }
+    spa_dict_get_string(props, PW_KEY_MODULE_NAME, m_info.name);
 
     pm->list_modules.push_back(m_info);
 
@@ -1420,21 +1398,13 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 
   pm->core_name = info->name;
 
-  if (const auto* rate = spa_dict_lookup(info->props, "default.clock.rate")) {
-    pm->default_clock_rate = rate;
-  }
+  spa_dict_get_string(info->props, "default.clock.rate", pm->default_clock_rate);
 
-  if (const auto* min_quantum = spa_dict_lookup(info->props, "default.clock.min-quantum")) {
-    pm->default_min_quantum = min_quantum;
-  }
+  spa_dict_get_string(info->props, "default.clock.min-quantum", pm->default_min_quantum);
 
-  if (const auto* max_quantum = spa_dict_lookup(info->props, "default.clock.max-quantum")) {
-    pm->default_max_quantum = max_quantum;
-  }
+  spa_dict_get_string(info->props, "default.clock.max-quantum", pm->default_max_quantum);
 
-  if (const auto* quantum = spa_dict_lookup(info->props, "default.clock.quantum")) {
-    pm->default_quantum = quantum;
-  }
+  spa_dict_get_string(info->props, "default.clock.quantum", pm->default_quantum);
 
   util::debug("core version: "s + info->version);
   util::debug("core name: "s + info->name);
