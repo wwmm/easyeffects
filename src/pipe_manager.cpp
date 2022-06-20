@@ -68,6 +68,18 @@ auto spa_dict_get_num(const spa_dict* props, const char* key, T& num) -> bool {
   return false;
 }
 
+auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool {
+  // Returning bool is for conversion success state.
+  // The bool value is assigned to reference parameter.
+  if (const auto* v = spa_dict_lookup(props, key)) {
+    b = (g_strcmp0(v, "true") == 0);
+
+    return true;
+  }
+
+  return false;
+}
+
 void on_removed_proxy(void* data) {
   auto* const pd = static_cast<proxy_data*>(data);
 
@@ -95,11 +107,7 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
 
   spa_dict_get_num(props, PW_KEY_LINK_OUTPUT_PORT, info.output_port_id);
 
-  if (const auto* passive = spa_dict_lookup(props, PW_KEY_LINK_PASSIVE)) {
-    if (g_strcmp0(passive, "true") == 0) {
-      info.passive = true;
-    }
-  }
+  spa_dict_get_bool(props, PW_KEY_LINK_PASSIVE, info.passive);
 
   return info;
 }
@@ -121,23 +129,11 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
 
   spa_dict_get_string(props, PW_KEY_AUDIO_FORMAT, info.format_dsp);
 
-  if (const auto* port_physical = spa_dict_lookup(props, PW_KEY_PORT_PHYSICAL)) {
-    if (g_strcmp0(port_physical, "true") == 0) {
-      info.physical = true;
-    }
-  }
+  spa_dict_get_bool(props, PW_KEY_PORT_PHYSICAL, info.physical);
 
-  if (const auto* port_terminal = spa_dict_lookup(props, PW_KEY_PORT_TERMINAL)) {
-    if (g_strcmp0(port_terminal, "true") == 0) {
-      info.terminal = true;
-    }
-  }
+  spa_dict_get_bool(props, PW_KEY_PORT_TERMINAL, info.terminal);
 
-  if (const auto* port_monitor = spa_dict_lookup(props, PW_KEY_PORT_MONITOR)) {
-    if (g_strcmp0(port_monitor, "true") == 0) {
-      info.monitor = true;
-    }
-  }
+  spa_dict_get_bool(props, PW_KEY_PORT_MONITOR, info.monitor);
 
   return info;
 }
