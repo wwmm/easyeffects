@@ -59,6 +59,15 @@ auto spa_dict_get_string(const spa_dict* props, const char* key, T& str) -> bool
   return false;
 }
 
+template <typename T>
+auto spa_dict_get_num(const spa_dict* props, const char* key, T& num) -> bool {
+  if (const auto* n = spa_dict_lookup(props, key)) {
+    return util::str_to_num(std::string(n), num);
+  }
+
+  return false;
+}
+
 void on_removed_proxy(void* data) {
   auto* const pd = static_cast<proxy_data*>(data);
 
@@ -72,31 +81,19 @@ void on_removed_proxy(void* data) {
 auto link_info_from_props(const spa_dict* props) -> LinkInfo {
   LinkInfo info;
 
-  if (const auto* id = spa_dict_lookup(props, PW_KEY_LINK_ID)) {
-    util::str_to_num(std::string(id), info.id);
-  }
+  spa_dict_get_num(props, PW_KEY_LINK_ID, info.id);
 
-  if (const auto* serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-    util::str_to_num(std::string(serial), info.serial);
-  }
+  spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, info.serial);
 
   spa_dict_get_string(props, PW_KEY_OBJECT_PATH, info.path);
 
-  if (const auto* input_node_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_NODE)) {
-    util::str_to_num(std::string(input_node_id), info.input_node_id);
-  }
+  spa_dict_get_num(props, PW_KEY_LINK_INPUT_NODE, info.input_node_id);
 
-  if (const auto* input_port_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_PORT)) {
-    util::str_to_num(std::string(input_port_id), info.input_port_id);
-  }
+  spa_dict_get_num(props, PW_KEY_LINK_INPUT_PORT, info.input_port_id);
 
-  if (const auto* output_node_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_NODE)) {
-    util::str_to_num(std::string(output_node_id), info.output_node_id);
-  }
+  spa_dict_get_num(props, PW_KEY_LINK_OUTPUT_NODE, info.output_node_id);
 
-  if (const auto* output_port_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_PORT)) {
-    util::str_to_num(std::string(output_port_id), info.output_port_id);
-  }
+  spa_dict_get_num(props, PW_KEY_LINK_OUTPUT_PORT, info.output_port_id);
 
   if (const auto* passive = spa_dict_lookup(props, PW_KEY_LINK_PASSIVE)) {
     if (g_strcmp0(passive, "true") == 0) {
@@ -110,19 +107,13 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
 auto port_info_from_props(const spa_dict* props) -> PortInfo {
   PortInfo info;
 
-  if (const auto* port_id = spa_dict_lookup(props, PW_KEY_PORT_ID)) {
-    util::str_to_num(std::string(port_id), info.port_id);
-  }
+  spa_dict_get_num(props, PW_KEY_PORT_ID, info.port_id);
 
-  if (const auto* serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-    util::str_to_num(std::string(serial), info.serial);
-  }
+  spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, info.serial);
 
   spa_dict_get_string(props, PW_KEY_PORT_NAME, info.name);
 
-  if (const auto* node_id = spa_dict_lookup(props, PW_KEY_NODE_ID)) {
-    util::str_to_num(std::string(node_id), info.node_id);
-  }
+  spa_dict_get_num(props, PW_KEY_NODE_ID, info.node_id);
 
   spa_dict_get_string(props, PW_KEY_PORT_DIRECTION, info.direction);
 
@@ -341,9 +332,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   nd->nd_info->n_input_ports = static_cast<int>(info->n_input_ports);
   nd->nd_info->n_output_ports = static_cast<int>(info->n_output_ports);
 
-  if (const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION)) {
-    util::str_to_num(std::string(prio_session), nd->nd_info->priority);
-  }
+  spa_dict_get_num(info->props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
 
   if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
     if (app_id != nd->nd_info->application_id) {
@@ -403,9 +392,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
-  if (const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID)) {
-    util::str_to_num(std::string(device_id), nd->nd_info->device_id);
-  }
+  spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
   if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
     for (uint i = 0U; i < info->n_params; i++) {
@@ -1060,14 +1047,9 @@ void on_registry_global(void* data,
 
       uint64_t serial;
 
-      if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-        if (!util::str_to_num(std::string(object_serial), serial)) {
-          util::warning(
-              "An error occurred while converting the object serial. The node cannot be handled by EasyEffects.");
-          return;
-        }
-      } else {
-        util::warning("Object serial not provided by PipeWire. The node cannot be handled by EasyEffects.");
+      if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
+        util::warning(
+            "An error occurred while retrieving the object serial. The node cannot be handled by EasyEffects.");
         return;
       }
 
@@ -1091,13 +1073,9 @@ void on_registry_global(void* data,
 
       spa_dict_get_string(props, PW_KEY_NODE_DESCRIPTION, nd->nd_info->description);
 
-      if (const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION)) {
-        util::str_to_num(std::string(prio_session), nd->nd_info->priority);
-      }
+      spa_dict_get_num(props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
 
-      if (const auto* device_id = spa_dict_lookup(props, PW_KEY_DEVICE_ID)) {
-        util::str_to_num(std::string(device_id), nd->nd_info->device_id);
-      }
+      spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
       const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
 
@@ -1160,14 +1138,9 @@ void on_registry_global(void* data,
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Link) == 0) {
     uint64_t serial;
 
-    if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-      if (!util::str_to_num(std::string(object_serial), serial)) {
-        util::warning(
-            "An error occurred while converting the object serial. This link cannot be handled by EasyEffects.");
-        return;
-      }
-    } else {
-      util::warning("Object serial not provided by PipeWire. This link cannot be handled by EasyEffects.");
+    if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
+      util::warning(
+          "An error occurred while retrieving the object serial. This link cannot be handled by EasyEffects.");
       return;
     }
 
@@ -1206,14 +1179,9 @@ void on_registry_global(void* data,
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Port) == 0) {
     uint64_t serial;
 
-    if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-      if (!util::str_to_num(std::string(object_serial), serial)) {
-        util::warning(
-            "An error occurred while converting the object serial. This port cannot be handled by EasyEffects.");
-        return;
-      }
-    } else {
-      util::warning("Object serial not provided by PipeWire. This port cannot be handled by EasyEffects.");
+    if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
+      util::warning(
+          "An error occurred while retrieving the object serial. This port cannot be handled by EasyEffects.");
       return;
     }
 
@@ -1244,14 +1212,9 @@ void on_registry_global(void* data,
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Module) == 0) {
     uint64_t serial;
 
-    if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-      if (!util::str_to_num(std::string(object_serial), serial)) {
-        util::warning(
-            "An error occurred while converting the object serial. This module cannot be handled by EasyEffects.");
-        return;
-      }
-    } else {
-      util::warning("Object serial not provided by PipeWire. This module cannot be handled by EasyEffects.");
+    if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
+      util::warning(
+          "An error occurred while retrieving the object serial. This module cannot be handled by EasyEffects.");
       return;
     }
 
@@ -1280,14 +1243,9 @@ void on_registry_global(void* data,
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Client) == 0) {
     uint64_t serial;
 
-    if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-      if (!util::str_to_num(std::string(object_serial), serial)) {
-        util::warning(
-            "An error occurred while converting the object serial. This client cannot be handled by EasyEffects.");
-        return;
-      }
-    } else {
-      util::warning("Object serial not provided by PipeWire. This client cannot be handled by EasyEffects.");
+    if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
+      util::warning(
+          "An error occurred while retrieving the object serial. This client cannot be handled by EasyEffects.");
       return;
     }
 
@@ -1344,14 +1302,9 @@ void on_registry_global(void* data,
       if (media_class == tags::pipewire::media_class::device) {
         uint64_t serial;
 
-        if (const auto* object_serial = spa_dict_lookup(props, PW_KEY_OBJECT_SERIAL)) {
-          if (!util::str_to_num(std::string(object_serial), serial)) {
-            util::warning(
-                "An error occurred while converting the object serial. This device cannot be handled by EasyEffects.");
-            return;
-          }
-        } else {
-          util::warning("Object serial not provided by PipeWire. This device cannot be handled by EasyEffects.");
+        if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
+          util::warning(
+              "An error occurred while converting the object serial. This device cannot be handled by EasyEffects.");
           return;
         }
 
