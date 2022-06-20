@@ -226,7 +226,7 @@ void application_window_init(ApplicationWindow* self) {
   self->data->maximized = false;
   self->data->fullscreen = false;
 
-  self->settings = g_settings_new(tags::app::id.c_str());
+  self->settings = g_settings_new(tags::app::id);
 
   init_theme_color(self);
 

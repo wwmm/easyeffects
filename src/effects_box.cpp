@@ -522,7 +522,7 @@ void effects_box_init(EffectsBox* self) {
 
   self->data->schedule_signal_idle = false;
 
-  self->app_settings = g_settings_new(tags::app::id.c_str());
+  self->app_settings = g_settings_new(tags::app::id);
   self->settings_spectrum = g_settings_new(tags::schema::spectrum::id);
 
   self->spectrum_chart = ui::chart::create();

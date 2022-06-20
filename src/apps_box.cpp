@@ -422,7 +422,7 @@ void apps_box_init(AppsBox* self) {
 
   self->data = new Data();
 
-  self->app_settings = g_settings_new(tags::app::id.c_str());
+  self->app_settings = g_settings_new(tags::app::id);
 
   self->apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());
   self->all_apps_model = g_list_store_new(ui::holders::node_info_holder_get_type());

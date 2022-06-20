@@ -290,7 +290,7 @@ void convolver_menu_impulses_init(ConvolverMenuImpulses* self) {
 
   self->string_list = gtk_string_list_new(nullptr);
 
-  self->app_settings = g_settings_new(tags::app::id.c_str());
+  self->app_settings = g_settings_new(tags::app::id);
 
   g_settings_bind(self->app_settings, "autohide-popovers", self, "autohide", G_SETTINGS_BIND_DEFAULT);
 }

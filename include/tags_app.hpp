@@ -23,7 +23,7 @@
 
 namespace tags::app {
 
-const std::string id = "com.github.wwmm.easyeffects";
+inline constexpr auto id = "com.github.wwmm.easyeffects";
 
 const std::string path = "/com/github/wwmm/easyeffects";
 

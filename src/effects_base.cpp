@@ -23,7 +23,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     : log_tag(std::move(tag)),
       pm(pipe_manager),
       settings(g_settings_new(schema.c_str())),
-      global_settings(g_settings_new(tags::app::id.c_str())) {
+      global_settings(g_settings_new(tags::app::id)) {
   std::string path = "/" + schema + "/";
 
   std::replace(path.begin(), path.end(), '.', '/');

@@ -26,7 +26,7 @@ PresetsManager::PresetsManager()
       user_output_dir(user_config_dir + "/easyeffects/output"),
       autoload_input_dir(user_config_dir + "/easyeffects/autoload/input"),
       autoload_output_dir(user_config_dir + "/easyeffects/autoload/output"),
-      settings(g_settings_new(tags::app::id.c_str())),
+      settings(g_settings_new(tags::app::id)),
       soe_settings(g_settings_new(tags::schema::id_output)),
       sie_settings(g_settings_new(tags::schema::id_input)),
       autogain(std::make_unique<AutoGainPreset>()),

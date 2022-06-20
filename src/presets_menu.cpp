@@ -437,7 +437,7 @@ void presets_menu_init(PresetsMenu* self) {
 
   self->data = new Data();
 
-  self->settings = g_settings_new(tags::app::id.c_str());
+  self->settings = g_settings_new(tags::app::id);
 
   gtk_label_set_text(self->last_used_output,
                      util::gsettings_get_string(self->settings, "last-used-output-preset").c_str());

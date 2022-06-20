@@ -354,7 +354,7 @@ void app_info_init(AppInfo* self) {
 
   self->data = new Data();
 
-  self->app_settings = g_settings_new(tags::app::id.c_str());
+  self->app_settings = g_settings_new(tags::app::id);
 
   prepare_spinbuttons<"%">(self->volume);
 
