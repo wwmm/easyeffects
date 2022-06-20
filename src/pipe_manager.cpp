@@ -1027,21 +1027,19 @@ void on_registry_global(void* data,
         return;
       }
 
-      const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+      std::string node_name;
 
-      if (node_name == nullptr) {
+      if (!spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name)) {
         return;
       }
 
-      const std::string name = node_name;
-
-      if (name.empty()) {
+      if (node_name.empty()) {
         return;
       }
 
       // Exclude blocklisted node names
 
-      if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
+      if (std::ranges::find(pm->blocklist_node_name, node_name) != pm->blocklist_node_name.end()) {
         return;
       }
 
@@ -1069,7 +1067,7 @@ void on_registry_global(void* data,
       nd->nd_info->serial = serial;
       nd->nd_info->id = id;
       nd->nd_info->media_class = media_class;
-      nd->nd_info->name = name;
+      nd->nd_info->name = node_name;
 
       spa_dict_get_string(props, PW_KEY_NODE_DESCRIPTION, nd->nd_info->description);
 
@@ -1080,7 +1078,7 @@ void on_registry_global(void* data,
       const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
 
       if (!success) {
-        util::warning("Cannot insert node " + util::to_string(id) + " " + name +
+        util::warning("Cannot insert node " + util::to_string(id) + " " + node_name +
                       " into the node map because there's already an existing serial " + util::to_string(serial));
 
         return;
@@ -1094,7 +1092,7 @@ void on_registry_global(void* data,
 
       const auto nd_info_copy = *nd->nd_info;
 
-      if (media_class == tags::pipewire::media_class::source && name != tags::pipewire::ee_source_name) {
+      if (media_class == tags::pipewire::media_class::source && node_name != tags::pipewire::ee_source_name) {
         util::idle_add([pm, nd_info_copy] {
           if (PipeManager::exiting) {
             return;
@@ -1102,7 +1100,7 @@ void on_registry_global(void* data,
 
           pm->source_added.emit(nd_info_copy);
         });
-      } else if (media_class == tags::pipewire::media_class::sink && name != tags::pipewire::ee_sink_name) {
+      } else if (media_class == tags::pipewire::media_class::sink && node_name != tags::pipewire::ee_sink_name) {
         util::idle_add([pm, nd_info_copy] {
           if (PipeManager::exiting) {
             return;
