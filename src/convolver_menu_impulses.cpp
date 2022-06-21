@@ -238,7 +238,7 @@ void setup_listview(ConvolverMenuImpulses* self) {
 void setup(ConvolverMenuImpulses* self, const std::string& schema_path, app::Application* application) {
   self->application = application;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".convolver").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::convolver::id, schema_path.c_str());
 
   setup_listview(self);
 }
@@ -290,7 +290,7 @@ void convolver_menu_impulses_init(ConvolverMenuImpulses* self) {
 
   self->string_list = gtk_string_list_new(nullptr);
 
-  self->app_settings = g_settings_new(tags::app::id.c_str());
+  self->app_settings = g_settings_new(tags::app::id);
 
   g_settings_bind(self->app_settings, "autohide-popovers", self, "autohide", G_SETTINGS_BIND_DEFAULT);
 }

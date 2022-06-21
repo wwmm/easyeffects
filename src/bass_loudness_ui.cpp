@@ -65,7 +65,7 @@ void on_reset(BassLoudnessBox* self, GtkButton* btn) {
 void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, const std::string& schema_path) {
   self->data->bass_loudness = bass_loudness;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".bassloudness").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::bass_loudness::id, schema_path.c_str());
 
   bass_loudness->post_messages = true;
   bass_loudness->bypass = false;

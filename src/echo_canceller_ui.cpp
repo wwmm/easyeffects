@@ -65,7 +65,7 @@ void on_reset(EchoCancellerBox* self, GtkButton* btn) {
 void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller, const std::string& schema_path) {
   self->data->echo_canceller = echo_canceller;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".echocanceller").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::echo_canceller::id, schema_path.c_str());
 
   echo_canceller->post_messages = true;
   echo_canceller->bypass = false;

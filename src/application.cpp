@@ -55,15 +55,15 @@ void on_startup(GApplication* gapp) {
 
   self->data = new Data();
 
-  self->sie_settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
-  self->soe_settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
+  self->sie_settings = g_settings_new(tags::schema::id_input);
+  self->soe_settings = g_settings_new(tags::schema::id_output);
 
   self->pm = new PipeManager();
   self->soe = new StreamOutputEffects(self->pm);
   self->sie = new StreamInputEffects(self->pm);
 
   if (self->settings == nullptr) {
-    self->settings = g_settings_new(tags::app::id.c_str());
+    self->settings = g_settings_new(tags::app::id);
   }
 
   if (self->presets_manager == nullptr) {
@@ -231,7 +231,7 @@ void application_class_init(ApplicationClass* klass) {
     auto* self = EE_APP(gapp);
 
     if (self->settings == nullptr) {
-      self->settings = g_settings_new(tags::app::id.c_str());
+      self->settings = g_settings_new(tags::app::id);
     }
 
     if (self->presets_manager == nullptr) {
@@ -483,7 +483,7 @@ void application_init(Application* self) {
 auto application_new() -> GApplication* {
   g_set_application_name("EasyEffects");
 
-  auto* app = g_object_new(EE_TYPE_APPLICATION, "application-id", tags::app::id.c_str(), "flags",
+  auto* app = g_object_new(EE_TYPE_APPLICATION, "application-id", tags::app::id, "flags",
                            G_APPLICATION_HANDLES_COMMAND_LINE, nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "quit", 'q', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,

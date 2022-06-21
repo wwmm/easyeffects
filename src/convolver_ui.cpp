@@ -454,7 +454,7 @@ void setup(ConvolverBox* self,
   self->data->convolver = convolver;
   self->data->application = application;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".convolver").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::convolver::id, schema_path.c_str());
 
   convolver->post_messages = true;
   convolver->bypass = false;

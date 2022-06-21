@@ -76,7 +76,7 @@ void on_reset(MultibandGateBox* self, GtkButton* btn) {
 void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate, const std::string& schema_path) {
   self->data->multiband_gate = multiband_gate;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".multibandgate").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::multiband_gate::id, schema_path.c_str());
 
   multiband_gate->post_messages = true;
   multiband_gate->bypass = false;

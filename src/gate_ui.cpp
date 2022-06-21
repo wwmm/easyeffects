@@ -71,7 +71,7 @@ void on_reset(GateBox* self, GtkButton* btn) {
 void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path) {
   self->data->gate = gate;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".gate").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::gate::id, schema_path.c_str());
 
   gate->post_messages = true;
   gate->bypass = false;

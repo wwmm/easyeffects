@@ -69,7 +69,7 @@ void on_reset(MaximizerBox* self, GtkButton* btn) {
 void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::string& schema_path) {
   self->data->maximizer = maximizer;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".maximizer").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::maximizer::id, schema_path.c_str());
 
   maximizer->post_messages = true;
   maximizer->bypass = false;

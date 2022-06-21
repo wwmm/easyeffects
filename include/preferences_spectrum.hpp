@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include "tags_resources.hpp"
+#include "tags_schema.hpp"
 #include "ui_helpers.hpp"
 #include "util.hpp"
 

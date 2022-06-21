@@ -19,6 +19,14 @@
 
 #pragma once
 
+namespace tags::schema {
+
+inline constexpr auto id_input = "com.github.wwmm.easyeffects.streaminputs";
+
+inline constexpr auto id_output = "com.github.wwmm.easyeffects.streamoutputs";
+
+}  // namespace tags::schema
+
 namespace tags::schema::autogain {
 
 inline constexpr auto id = "com.github.wwmm.easyeffects.autogain";
@@ -219,6 +227,12 @@ inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/
 
 }  // namespace tags::schema::multiband_gate
 
+namespace tags::schema::output_level {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.outputlevel";
+
+}
+
 namespace tags::schema::pitch {
 
 inline constexpr auto id = "com.github.wwmm.easyeffects.pitch";
@@ -258,3 +272,9 @@ inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/st
 inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/stereotools/";
 
 }  // namespace tags::schema::stereo_tools
+
+namespace tags::schema::spectrum {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.spectrum";
+
+}  // namespace tags::schema::spectrum

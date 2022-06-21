@@ -450,13 +450,13 @@ void setup(EqualizerBox* self,
 
   self->data->application = application;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".equalizer").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::equalizer::id, schema_path.c_str());
 
   self->settings_left =
-      g_settings_new_with_path((tags::app::id + ".equalizer.channel").c_str(), (schema_path + "leftchannel/").c_str());
+      g_settings_new_with_path(tags::schema::equalizer::channel_id, (schema_path + "leftchannel/").c_str());
 
   self->settings_right =
-      g_settings_new_with_path((tags::app::id + ".equalizer.channel").c_str(), (schema_path + "rightchannel/").c_str());
+      g_settings_new_with_path(tags::schema::equalizer::channel_id, (schema_path + "rightchannel/").c_str());
 
   equalizer->post_messages = true;
   equalizer->bypass = false;

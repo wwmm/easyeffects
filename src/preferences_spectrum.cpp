@@ -119,7 +119,7 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
 
   self->data = new Data();
 
-  self->settings = g_settings_new((tags::app::id + ".spectrum").c_str());
+  self->settings = g_settings_new(tags::schema::spectrum::id);
 
   // initializing some widgets
 

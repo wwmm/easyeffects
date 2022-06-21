@@ -73,7 +73,7 @@ void on_reset(ExciterBox* self, GtkButton* btn) {
 void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string& schema_path) {
   self->data->exciter = exciter;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".exciter").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::exciter::id, schema_path.c_str());
 
   exciter->post_messages = true;
   exciter->bypass = false;

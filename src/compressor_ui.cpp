@@ -125,7 +125,7 @@ void setup(CompressorBox* self,
            PipeManager* pm) {
   self->data->compressor = compressor;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".compressor").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::compressor::id, schema_path.c_str());
 
   compressor->post_messages = true;
   compressor->bypass = false;

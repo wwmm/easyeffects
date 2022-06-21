@@ -510,7 +510,7 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
 
   switch (pipeline_type) {
     case PipelineType::input: {
-      self->settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
+      self->settings = g_settings_new(tags::schema::id_input);
 
       add_plugins_to_stack<PipelineType::input>(self);
 
@@ -529,7 +529,7 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
       break;
     }
     case PipelineType::output: {
-      self->settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
+      self->settings = g_settings_new(tags::schema::id_output);
 
       add_plugins_to_stack<PipelineType::output>(self);
 

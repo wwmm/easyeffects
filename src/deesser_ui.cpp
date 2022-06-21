@@ -73,7 +73,7 @@ void on_reset(DeesserBox* self, GtkButton* btn) {
 void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string& schema_path) {
   self->data->deesser = deesser;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".deesser").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::deesser::id, schema_path.c_str());
 
   deesser->post_messages = true;
   deesser->bypass = false;

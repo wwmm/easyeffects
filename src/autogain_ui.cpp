@@ -81,7 +81,7 @@ void on_reset_history(AutogainBox* self, GtkButton* btn) {
 void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::string& schema_path) {
   self->data->autogain = autogain;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".autogain").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::autogain::id, schema_path.c_str());
 
   autogain->post_messages = true;
   autogain->bypass = false;

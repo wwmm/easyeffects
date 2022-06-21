@@ -165,7 +165,7 @@ void setup(RNNoiseBox* self,
   self->data->rnnoise = rnnoise;
   self->data->application = application;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".rnnoise").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::rnnoise::id, schema_path.c_str());
 
   rnnoise->post_messages = true;
   rnnoise->bypass = false;

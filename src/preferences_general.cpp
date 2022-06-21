@@ -108,7 +108,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
 void preferences_general_init(PreferencesGeneral* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
-  self->settings = g_settings_new(tags::app::id.c_str());
+  self->settings = g_settings_new(tags::app::id);
 
   prepare_spinbuttons<"s">(self->inactivity_timeout);
 

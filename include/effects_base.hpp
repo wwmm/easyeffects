@@ -46,6 +46,7 @@
 #include "rnnoise.hpp"
 #include "spectrum.hpp"
 #include "stereo_tools.hpp"
+#include "tags_schema.hpp"
 
 class EffectsBase {
  public:

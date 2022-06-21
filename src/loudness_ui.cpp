@@ -67,7 +67,7 @@ void on_reset(LoudnessBox* self, GtkButton* btn) {
 void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::string& schema_path) {
   self->data->loudness = loudness;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".loudness").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::loudness::id, schema_path.c_str());
 
   loudness->post_messages = true;
   loudness->bypass = false;

@@ -73,7 +73,7 @@ void on_reset(BassEnhancerBox* self, GtkButton* btn) {
 void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, const std::string& schema_path) {
   self->data->bass_enhancer = bass_enhancer;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".bassenhancer").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, schema_path.c_str());
 
   bass_enhancer->post_messages = true;
   bass_enhancer->bypass = false;

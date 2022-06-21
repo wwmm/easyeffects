@@ -67,7 +67,7 @@ void on_reset(PitchBox* self, GtkButton* btn) {
 void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& schema_path) {
   self->data->pitch = pitch;
 
-  self->settings = g_settings_new_with_path((tags::app::id + ".pitch").c_str(), schema_path.c_str());
+  self->settings = g_settings_new_with_path(tags::schema::pitch::id, schema_path.c_str());
 
   pitch->post_messages = true;
   pitch->bypass = false;

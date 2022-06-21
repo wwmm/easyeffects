@@ -155,12 +155,12 @@ void setup(PluginsMenu* self, app::Application* application, PipelineType pipeli
 
   switch (pipeline_type) {
     case PipelineType::input: {
-      self->settings = g_settings_new((tags::app::id + ".streaminputs").c_str());
+      self->settings = g_settings_new(tags::schema::id_input);
 
       break;
     }
     case PipelineType::output: {
-      self->settings = g_settings_new((tags::app::id + ".streamoutputs").c_str());
+      self->settings = g_settings_new(tags::schema::id_output);
 
       break;
     }
@@ -237,7 +237,7 @@ void plugins_menu_init(PluginsMenu* self) {
 
   self->data = new Data();
 
-  self->app_settings = g_settings_new(tags::app::id.c_str());
+  self->app_settings = g_settings_new(tags::app::id);
 
   g_settings_bind(self->app_settings, "autohide-popovers", self, "autohide", G_SETTINGS_BIND_DEFAULT);
 }
