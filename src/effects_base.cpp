@@ -24,6 +24,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
       pm(pipe_manager),
       settings(g_settings_new(schema.c_str())),
       global_settings(g_settings_new(tags::app::id)) {
+  using namespace std::string_literals;
+
   std::string path = "/" + schema + "/";
 
   std::replace(path.begin(), path.end(), '.', '/');
@@ -79,7 +81,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   rnnoise = std::make_shared<RNNoise>(log_tag, tags::schema::rnnoise::id, path + "rnnoise/", pm);
 
-  spectrum = std::make_shared<Spectrum>(log_tag, tags::schema::spectrum::id, tags::app::path + "/spectrum/", pm);
+  spectrum = std::make_shared<Spectrum>(log_tag, tags::schema::spectrum::id, tags::app::path + "/spectrum/"s, pm);
 
   stereo_tools = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path + "stereotools/", pm);
 

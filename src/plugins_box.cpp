@@ -75,12 +75,14 @@ void add_plugins_to_stack(PluginsBox* self) {
   std::string schema_path;
   EffectsBase* effects_base;
 
+  using namespace std::string_literals;
+
   if constexpr (pipeline_type == PipelineType::input) {
-    schema_path = tags::app::path + "/streaminputs/";
+    schema_path = tags::app::path + "/streaminputs/"s;
 
     effects_base = self->data->application->sie;
   } else if constexpr (pipeline_type == PipelineType::output) {
-    schema_path = tags::app::path + "/streamoutputs/";
+    schema_path = tags::app::path + "/streamoutputs/"s;
 
     effects_base = self->data->application->soe;
   }
