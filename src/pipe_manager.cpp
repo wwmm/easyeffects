@@ -767,7 +767,7 @@ void on_device_info(void* object, const struct pw_device_info* info) {
 
     spa_dict_get_string(info->props, PW_KEY_DEVICE_NAME, device.name);
 
-    spa_dict_get_string(info->props, PW_KEY_DEVICE_NAME, device.nick);
+    spa_dict_get_string(info->props, PW_KEY_DEVICE_NICK, device.nick);
 
     spa_dict_get_string(info->props, PW_KEY_DEVICE_DESCRIPTION, device.description);
 
