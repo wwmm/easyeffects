@@ -384,9 +384,13 @@ void application_class_init(ApplicationClass* klass) {
 void application_init(Application* self) {
   std::array<GActionEntry, 8> entries{};
 
-  entries[0] = {
-      "quit", [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
-      nullptr, nullptr, nullptr};
+  entries[0] = {"quit",
+                [](GSimpleAction* action, GVariant* parameter, gpointer app) {
+                  util::debug("The user pressed <Ctrl>Q or executed a similar action. Our process will exit.");
+
+                  g_application_quit(G_APPLICATION(app));
+                },
+                nullptr, nullptr, nullptr};
 
   entries[1] = {"help",
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
@@ -463,7 +467,11 @@ void application_init(Application* self) {
                 nullptr, nullptr, nullptr};
 
   entries[7] = {"hide_windows",
-                [](GSimpleAction* action, GVariant* parameter, gpointer app) { hide_all_windows(G_APPLICATION(app)); },
+                [](GSimpleAction* action, GVariant* parameter, gpointer app) {
+                  util::debug("The user pressed <Ctrl>W or executed a similar action. Hiding our window.");
+
+                  hide_all_windows(G_APPLICATION(app));
+                },
                 nullptr, nullptr, nullptr};
 
   g_action_map_add_action_entries(G_ACTION_MAP(self), entries.data(), entries.size(), self);

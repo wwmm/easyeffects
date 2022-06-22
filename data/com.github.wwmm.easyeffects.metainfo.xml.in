@@ -33,6 +33,28 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="6.2.6" date="2022-06-22T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>When effects are disable to an application we now set its target metadata to null. This will allow the media session</li>
+          <li>manager</li>
+          <li>A new configuration option was added. It allows EasyEffects to ignore streams whose purpose is to monitor sink</li>
+          <li>devices. This will help to fix some of problems our users were having when using OBS.</li>
+          <li>The code that shows the stream sample format has been improved</li>
+          <li>The rnnoise library is now optional. This should help package maintainers to build</li>
+          <li>a Debian package. See the issue #1000 for more information.</li>
+          <li>Our logs now show the source code line where the messages are being printed</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>The "enable effects" checkbox in our window was not being updated when third party programs like pavucontrol</li>
+          <li>moved the stream away from our virtual devices. This should be fixed now.</li>
+          <li>Fixed a crash that could happen when the maximum autogain history was changed.</li>
+          <li>Avoid crashes when pw-mididump is running</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="6.2.5" date="2022-04-30T00:00:00Z">
       <description>
         <p>This release adds the following features:</p>

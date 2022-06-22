@@ -3,6 +3,19 @@ Version UNRELEASED_VERSION
 Released: UNRELEASED_DATE
 
 Features:
+- 
+
+Bugfixes:
+- 
+
+Notes:
+- 
+
+Version 6.2.6
+~~~~~~~~~~~~~~
+Released: 2022-06-22
+
+Features:
 - When effects are disable to an application we now set its target metadata to null. This will allow the media session
 manager (wireplumber) to properly move the stream to a new device.
 - A new configuration option was added. It allows EasyEffects to ignore streams whose purpose is to monitor sink
@@ -18,8 +31,7 @@ moved the stream away from our virtual devices. This should be fixed now.
 - Fixed a crash that could happen when the maximum autogain history was changed.
 - Avoid crashes when pw-mididump is running
 
-Notes:
-- 
+
 
 Version 6.2.5
 ~~~~~~~~~~~~~~

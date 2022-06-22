@@ -1,4 +1,26 @@
 # Changelog
+## 6.2.6
+              
+### 2022-06-22
+
+### Features:
+- When effects are disable to an application we now set its target metadata to null. This will allow the media session
+manager (wireplumber) to properly move the stream to a new device.
+- A new configuration option was added. It allows EasyEffects to ignore streams whose purpose is to monitor sink
+devices. This will help to fix some of problems our users were having when using OBS.
+- The code that shows the stream sample format has been improved
+- The rnnoise library is now optional. This should help package maintainers to build
+a Debian package. See the issue #1000 for more information.
+- Our logs now show the source code line where the messages are being printed
+
+### Bugfixes:
+- The "enable effects" checkbox in our window was not being updated when third party programs like pavucontrol
+moved the stream away from our virtual devices. This should be fixed now.
+- Fixed a crash that could happen when the maximum autogain history was changed.
+- Avoid crashes when pw-mididump is running
+
+
+
 ## 6.2.5
               
 ### 2022-04-30
