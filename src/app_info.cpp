@@ -35,7 +35,7 @@ struct Data {
 
   std::unordered_map<uint, bool>* enabled_app_list;
 
-  std::locale user_locale = std::locale(setlocale(LC_ALL, nullptr));
+  std::locale user_locale = std::locale("");
 };
 
 struct _AppInfo {

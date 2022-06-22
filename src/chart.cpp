@@ -47,7 +47,7 @@ struct Data {
 
   std::vector<float> y_axis, x_axis, x_axis_log, objects_x;
 
-  std::locale user_locale = std::locale(setlocale(LC_ALL, nullptr));
+  std::locale user_locale = std::locale("");
 };
 
 struct _Chart {

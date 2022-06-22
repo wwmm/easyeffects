@@ -10,8 +10,7 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool {
   auto precision = gtk_spin_button_get_digits(button);
 
   // format string: 0 = value, 1 = precision, 2 = unit
-  auto text = fmt::format(std::locale(setlocale(LC_ALL, nullptr)), "{0:.{1}Lf}{2}", value, precision,
-                          ((unit != nullptr) ? " "s + unit : ""));
+  auto text = fmt::format(std::locale(""), "{0:.{1}Lf}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
 
   gtk_editable_set_text(GTK_EDITABLE(button), text.c_str());
 
@@ -24,7 +23,7 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
   try {
     str.imbue(std::locale(""));  // User locale
   } catch (...) {
-    str.imbue(std::locale());  // C locale if user locale not set
+    str.imbue(std::locale::classic());  // C locale if user locale not set
   }
 
   if (auto min = 0.0, max = 0.0; str >> *new_value) {
