@@ -15,6 +15,9 @@
         <value nick="18dB/oct Bandreject" value="11" />
     </enum>
     <schema id="com.github.wwmm.easyeffects.filter">
+        <key name="bypass" type="b">
+            <default>false</default>
+        </key>
         <key name="input-gain" type="d">
             <range min="-36" max="36" />
             <default>0</default>

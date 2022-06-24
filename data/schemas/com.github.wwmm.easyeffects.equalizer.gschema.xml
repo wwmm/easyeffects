@@ -7,6 +7,9 @@
         <value nick="SPM" value="3" />
     </enum>
     <schema id="com.github.wwmm.easyeffects.equalizer">
+        <key name="bypass" type="b">
+            <default>false</default>
+        </key>
         <key name="num-bands" type="i">
             <range min="1" max="32" />
             <default>32</default>

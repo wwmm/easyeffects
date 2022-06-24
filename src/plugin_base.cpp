@@ -114,6 +114,18 @@ PluginBase::PluginBase(std::string tag,
       enable_probe(enable_probe),
       settings(g_settings_new_with_path(schema.c_str(), schema_path.c_str())),
       pm(pipe_manager) {
+  if (name != "output_level" && name != "spectrum") {
+    bypass = g_settings_get_boolean(settings, "bypass") != 0;
+
+    gconnections.push_back(g_signal_connect(settings, "changed::bypass",
+                                            G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                              auto self = static_cast<PluginBase*>(user_data);
+
+                                              self->bypass = g_settings_get_boolean(settings, "bypass") != 0;
+                                            }),
+                                            this));
+  }
+
   pf_data.pb = this;
 
   const auto filter_name = "ee_" + log_tag.substr(0, log_tag.size() - 2U) + "_" + name;

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
-        <property name="spacing">6</property>
         <property name="margin-start">6</property>
-        <property name="margin-end">6</property>
+        <property name="margin-end">3</property>
+
+        <style>
+            <class name="linked" />
+        </style>
+
         <property name="cursor">
             <object class="GdkCursor">
                 <property name="name">pointer</property>
             </object>
         </property>
+
         <child>
             <object class="GtkImage" id="plugin_icon">
                 <property name="halign">start</property>
@@ -32,6 +37,18 @@
                 <property name="valign">center</property>
                 <property name="opacity">0</property>
                 <property name="icon-name">user-trash-symbolic</property>
+                <style>
+                    <class name="flat" />
+                </style>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkToggleButton" id="bypass">
+                <property name="tooltip-text" translatable="yes">Bypass this plugin</property>
+                <property name="valign">center</property>
+                <property name="opacity">0</property>
+                <property name="icon-name">media-playlist-shuffle-symbolic</property>
                 <style>
                     <class name="flat" />
                 </style>

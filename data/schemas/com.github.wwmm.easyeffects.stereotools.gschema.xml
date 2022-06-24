@@ -10,6 +10,9 @@
         <value nick="LR > RL (Stereo Flip Channels)" value="6" />
     </enum>
     <schema id="com.github.wwmm.easyeffects.stereotools">
+        <key name="bypass" type="b">
+            <default>false</default>
+        </key>
         <key name="input-gain" type="d">
             <range min="-36" max="36" />
             <default>0</default>

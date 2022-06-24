@@ -49,6 +49,9 @@
         <value nick="24bit" value="8" />
     </enum>
     <schema id="com.github.wwmm.easyeffects.limiter">
+        <key name="bypass" type="b">
+            <default>false</default>
+        </key>
         <key name="input-gain" type="d">
             <range min="-36" max="36" />
             <default>0</default>

@@ -27,4 +27,8 @@ inline constexpr auto id = "com.github.wwmm.easyeffects";
 
 inline constexpr auto path = "/com/github/wwmm/easyeffects";
 
+inline constexpr auto path_stream_inputs = "/com/github/wwmm/easyeffects/streaminputs/";
+
+inline constexpr auto path_stream_outputs = "/com/github/wwmm/easyeffects/streamoutputs/";
+
 }  // namespace tags::app
