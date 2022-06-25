@@ -41,8 +41,6 @@ struct _LoudnessBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkComboBoxText *fft_size, *standard;
 
   GtkSpinButton* volume;
@@ -54,13 +52,7 @@ struct _LoudnessBox {
 
 G_DEFINE_TYPE(LoudnessBox, loudness_box, GTK_TYPE_BOX)
 
-void on_bypass(LoudnessBox* self, GtkToggleButton* btn) {
-  self->data->loudness->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(LoudnessBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -70,7 +62,6 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
   self->settings = g_settings_new_with_path(tags::schema::loudness::id, schema_path.c_str());
 
   loudness->post_messages = true;
-  loudness->bypass = false;
 
   self->data->connections.push_back(loudness->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -93,8 +84,6 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 
 void dispose(GObject* object) {
   auto* self = EE_LOUDNESS_BOX(object);
-
-  self->data->loudness->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -144,13 +133,10 @@ void loudness_box_class_init(LoudnessBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, volume);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, standard);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, fft_size);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

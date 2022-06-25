@@ -41,8 +41,6 @@ struct _StereoToolsBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkComboBoxText* mode;
 
   GtkSpinButton *balance_in, *balance_out, *slev, *sbal, *mlev, *mpan, *stereo_base, *delay, *sc_level, *stereo_phase;
@@ -56,13 +54,7 @@ struct _StereoToolsBox {
 
 G_DEFINE_TYPE(StereoToolsBox, stereo_tools_box, GTK_TYPE_BOX)
 
-void on_bypass(StereoToolsBox* self, GtkToggleButton* btn) {
-  self->data->stereo_tools->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(StereoToolsBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -72,7 +64,6 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
   self->settings = g_settings_new_with_path(tags::schema::stereo_tools::id, schema_path.c_str());
 
   stereo_tools->post_messages = true;
-  stereo_tools->bypass = false;
 
   self->data->connections.push_back(stereo_tools->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -128,8 +119,6 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 void dispose(GObject* object) {
   auto* self = EE_STEREO_TOOLS_BOX(object);
 
-  self->data->stereo_tools->bypass = false;
-
   for (auto& c : self->data->connections) {
     c.disconnect();
   }
@@ -178,8 +167,6 @@ void stereo_tools_box_class_init(StereoToolsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, mode);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, balance_in);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, balance_out);
@@ -197,7 +184,6 @@ void stereo_tools_box_class_init(StereoToolsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, phasel);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, phaser);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

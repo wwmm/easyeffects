@@ -8,23 +8,10 @@
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
         <child>
-            <object class="GtkBox">
+            <object class="GtkMenuButton">
                 <property name="halign">center</property>
-                <property name="homogeneous">1</property>
-                <property name="spacing">48</property>
-                <child>
-                    <object class="GtkMenuButton">
-                        <property name="popover">popover_presets</property>
-                        <property name="label" translatable="yes">Presets</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkToggleButton" id="bypass">
-                        <property name="label" translatable="yes">Bypass</property>
-                        <signal name="toggled" handler="on_bypass" object="ReverbBox" />
-                    </object>
-                </child>
+                <property name="popover">popover_presets</property>
+                <property name="label" translatable="yes">Presets</property>
             </object>
         </child>
 

@@ -41,8 +41,6 @@ struct _PitchBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkComboBoxText *mode, *formant, *transients, *detector, *phase;
 
   GtkSpinButton *cents, *semitones, *octaves;
@@ -54,13 +52,7 @@ struct _PitchBox {
 
 G_DEFINE_TYPE(PitchBox, pitch_box, GTK_TYPE_BOX)
 
-void on_bypass(PitchBox* self, GtkToggleButton* btn) {
-  self->data->pitch->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(PitchBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -70,7 +62,6 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
   self->settings = g_settings_new_with_path(tags::schema::pitch::id, schema_path.c_str());
 
   pitch->post_messages = true;
-  pitch->bypass = false;
 
   self->data->connections.push_back(pitch->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -99,8 +90,6 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 
 void dispose(GObject* object) {
   auto* self = EE_PITCH_BOX(object);
-
-  self->data->pitch->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -150,8 +139,6 @@ void pitch_box_class_init(PitchBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PitchBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, PitchBox, mode);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, formant);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, transients);
@@ -162,7 +149,6 @@ void pitch_box_class_init(PitchBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PitchBox, semitones);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, octaves);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

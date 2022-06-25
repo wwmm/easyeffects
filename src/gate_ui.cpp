@@ -41,8 +41,6 @@ struct _GateBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkLevelBar* gating;
 
   GtkLabel* gating_label;
@@ -58,13 +56,7 @@ struct _GateBox {
 
 G_DEFINE_TYPE(GateBox, gate_box, GTK_TYPE_BOX)
 
-void on_bypass(GateBox* self, GtkToggleButton* btn) {
-  self->data->gate->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(GateBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -74,7 +66,6 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
   self->settings = g_settings_new_with_path(tags::schema::gate::id, schema_path.c_str());
 
   gate->post_messages = true;
-  gate->bypass = false;
 
   self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -120,8 +111,6 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
 void dispose(GObject* object) {
   auto* self = EE_GATE_BOX(object);
-
-  self->data->gate->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -171,8 +160,6 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, GateBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, GateBox, gating);
   gtk_widget_class_bind_template_child(widget_class, GateBox, gating_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, attack);
@@ -185,7 +172,6 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, detection);
   gtk_widget_class_bind_template_child(widget_class, GateBox, stereo_link);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

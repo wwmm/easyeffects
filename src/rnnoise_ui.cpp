@@ -51,8 +51,6 @@ struct _RNNoiseBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkListView* listview;
 
   GtkStringList* string_list;
@@ -68,13 +66,7 @@ struct _RNNoiseBox {
 
 G_DEFINE_TYPE(RNNoiseBox, rnnoise_box, GTK_TYPE_BOX)
 
-void on_bypass(RNNoiseBox* self, GtkToggleButton* btn) {
-  self->data->rnnoise->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(RNNoiseBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -168,7 +160,6 @@ void setup(RNNoiseBox* self,
   self->settings = g_settings_new_with_path(tags::schema::rnnoise::id, schema_path.c_str());
 
   rnnoise->post_messages = true;
-  rnnoise->bypass = false;
 
   setup_listview(self);
 
@@ -239,8 +230,6 @@ void setup(RNNoiseBox* self,
 void dispose(GObject* object) {
   auto* self = EE_RNNOISE_BOX(object);
 
-  self->data->rnnoise->bypass = false;
-
   g_file_monitor_cancel(self->folder_monitor);
 
   g_object_unref(self->folder_monitor);
@@ -293,13 +282,10 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, string_list);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, selection_model);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, listview);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_import_model_clicked);
   gtk_widget_class_bind_template_callback(widget_class, on_remove_model_file);

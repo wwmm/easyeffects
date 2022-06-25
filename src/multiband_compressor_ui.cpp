@@ -45,8 +45,6 @@ struct _MultibandCompressorBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkStack* stack;
 
   GtkCheckButton *enable_band1, *enable_band2, *enable_band3, *enable_band4, *enable_band5, *enable_band6,
@@ -67,13 +65,7 @@ struct _MultibandCompressorBox {
 
 G_DEFINE_TYPE(MultibandCompressorBox, multiband_compressor_box, GTK_TYPE_BOX)
 
-void on_bypass(MultibandCompressorBox* self, GtkToggleButton* btn) {
-  self->data->multiband_compressor->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(MultibandCompressorBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -143,7 +135,6 @@ void setup(MultibandCompressorBox* self,
   self->settings = g_settings_new_with_path(tags::schema::multiband_compressor::id, schema_path.c_str());
 
   multiband_compressor->post_messages = true;
-  multiband_compressor->bypass = false;
 
   setup_dropdown_input_device(self);
 
@@ -261,8 +252,6 @@ void setup(MultibandCompressorBox* self,
 void dispose(GObject* object) {
   auto* self = EE_MULTIBAND_COMPRESSOR_BOX(object);
 
-  self->data->multiband_compressor->bypass = false;
-
   for (auto& c : self->data->connections) {
     c.disconnect();
   }
@@ -311,8 +300,6 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, stack);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band1);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band2);
@@ -325,7 +312,6 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, envelope_boost);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, dropdown_input_devices);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_listbox_row_selected);
 }

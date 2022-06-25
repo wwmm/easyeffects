@@ -53,8 +53,6 @@ struct _AutogainBox {
 
   GtkComboBoxText* reference;
 
-  GtkToggleButton* bypass;
-
   GSettings* settings;
 
   Data* data;
@@ -62,13 +60,7 @@ struct _AutogainBox {
 
 G_DEFINE_TYPE(AutogainBox, autogain_box, GTK_TYPE_BOX)
 
-void on_bypass(AutogainBox* self, GtkToggleButton* btn) {
-  self->data->autogain->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(AutogainBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -84,7 +76,6 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
   self->settings = g_settings_new_with_path(tags::schema::autogain::id, schema_path.c_str());
 
   autogain->post_messages = true;
-  autogain->bypass = false;
 
   self->data->connections.push_back(autogain->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -129,8 +120,6 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
 void dispose(GObject* object) {
   auto* self = EE_AUTOGAIN_BOX(object);
-
-  self->data->autogain->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -180,7 +169,6 @@ void autogain_box_class_init(AutogainBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, AutogainBox, bypass);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, target);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, maximum_history);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, reference);
@@ -202,7 +190,6 @@ void autogain_box_class_init(AutogainBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, l_label);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, lra_label);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset_history);

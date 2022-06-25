@@ -41,8 +41,6 @@ struct _EchoCancellerBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkSpinButton *frame_size, *filter_length;
 
   GSettings* settings;
@@ -52,13 +50,7 @@ struct _EchoCancellerBox {
 
 G_DEFINE_TYPE(EchoCancellerBox, echo_canceller_box, GTK_TYPE_BOX)
 
-void on_bypass(EchoCancellerBox* self, GtkToggleButton* btn) {
-  self->data->echo_canceller->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(EchoCancellerBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -68,7 +60,6 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
   self->settings = g_settings_new_with_path(tags::schema::echo_canceller::id, schema_path.c_str());
 
   echo_canceller->post_messages = true;
-  echo_canceller->bypass = false;
 
   self->data->connections.push_back(echo_canceller->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -91,8 +82,6 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 
 void dispose(GObject* object) {
   auto* self = EE_ECHO_CANCELLER_BOX(object);
-
-  self->data->echo_canceller->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -142,12 +131,9 @@ void echo_canceller_box_class_init(EchoCancellerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, frame_size);
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, filter_length);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

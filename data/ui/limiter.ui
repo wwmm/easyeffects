@@ -9,14 +9,6 @@
         <property name="orientation">vertical</property>
 
         <child>
-            <object class="GtkToggleButton" id="bypass">
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Bypass</property>
-                <signal name="toggled" handler="on_bypass" object="LimiterBox" />
-            </object>
-        </child>
-
-        <child>
             <object class="GtkBox">
                 <property name="margin-top">6</property>
                 <property name="margin-bottom">6</property>

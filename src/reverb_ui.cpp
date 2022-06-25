@@ -41,8 +41,6 @@ struct _ReverbBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkComboBoxText* room_size;
 
   GtkSpinButton *predelay, *decay_time, *diffusion, *amount, *dry, *hf_damp, *bass_cut, *treble_cut;
@@ -54,13 +52,7 @@ struct _ReverbBox {
 
 G_DEFINE_TYPE(ReverbBox, reverb_box, GTK_TYPE_BOX)
 
-void on_bypass(ReverbBox* self, GtkToggleButton* btn) {
-  self->data->reverb->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(ReverbBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -142,7 +134,6 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
   self->settings = g_settings_new_with_path(tags::schema::reverb::id, schema_path.c_str());
 
   reverb->post_messages = true;
-  reverb->bypass = false;
 
   self->data->connections.push_back(reverb->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -184,8 +175,6 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 
 void dispose(GObject* object) {
   auto* self = EE_REVERB_BOX(object);
-
-  self->data->reverb->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -235,8 +224,6 @@ void reverb_box_class_init(ReverbBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, ReverbBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, room_size);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, predelay);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, decay_time);
@@ -247,7 +234,6 @@ void reverb_box_class_init(ReverbBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, bass_cut);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, treble_cut);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_preset_room);
   gtk_widget_class_bind_template_callback(widget_class, on_preset_empty_walls);

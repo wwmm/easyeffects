@@ -41,8 +41,6 @@ struct _FilterBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkComboBoxText* mode;
 
   GtkSpinButton *frequency, *resonance, *inertia;
@@ -54,13 +52,7 @@ struct _FilterBox {
 
 G_DEFINE_TYPE(FilterBox, filter_box, GTK_TYPE_BOX)
 
-void on_bypass(FilterBox* self, GtkToggleButton* btn) {
-  self->data->filter->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(FilterBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -70,7 +62,6 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
   self->settings = g_settings_new_with_path(tags::schema::filter::id, schema_path.c_str());
 
   filter->post_messages = true;
-  filter->bypass = false;
 
   self->data->connections.push_back(filter->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -98,8 +89,6 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 
 void dispose(GObject* object) {
   auto* self = EE_FILTER_BOX(object);
-
-  self->data->filter->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -149,14 +138,11 @@ void filter_box_class_init(FilterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, FilterBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, FilterBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, FilterBox, mode);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, frequency);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, resonance);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, inertia);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

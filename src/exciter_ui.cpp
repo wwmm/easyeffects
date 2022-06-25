@@ -41,8 +41,6 @@ struct _ExciterBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkLevelBar* harmonics_levelbar;
 
   GtkLabel* harmonics_levelbar_label;
@@ -60,13 +58,7 @@ struct _ExciterBox {
 
 G_DEFINE_TYPE(ExciterBox, exciter_box, GTK_TYPE_BOX)
 
-void on_bypass(ExciterBox* self, GtkToggleButton* btn) {
-  self->data->exciter->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(ExciterBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -76,7 +68,6 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
   self->settings = g_settings_new_with_path(tags::schema::exciter::id, schema_path.c_str());
 
   exciter->post_messages = true;
-  exciter->bypass = false;
 
   self->data->connections.push_back(exciter->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -111,8 +102,6 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
 void dispose(GObject* object) {
   auto* self = EE_EXCITER_BOX(object);
-
-  self->data->exciter->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -162,8 +151,6 @@ void exciter_box_class_init(ExciterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, ExciterBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, harmonics_levelbar_label);
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, harmonics_levelbar);
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, ceil);
@@ -174,7 +161,6 @@ void exciter_box_class_init(ExciterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, ceil_active);
   gtk_widget_class_bind_template_child(widget_class, ExciterBox, listen);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

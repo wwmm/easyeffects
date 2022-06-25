@@ -41,8 +41,6 @@ struct _DelayBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkSpinButton *time_l, *time_r;
 
   GtkToggleButton *floor_active, *listen;
@@ -54,13 +52,7 @@ struct _DelayBox {
 
 G_DEFINE_TYPE(DelayBox, delay_box, GTK_TYPE_BOX)
 
-void on_bypass(DelayBox* self, GtkToggleButton* btn) {
-  self->data->delay->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(DelayBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -70,7 +62,6 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
   self->settings = g_settings_new_with_path(tags::schema::delay::id, schema_path.c_str());
 
   delay->post_messages = true;
-  delay->bypass = false;
 
   self->data->connections.push_back(delay->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -93,8 +84,6 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
 void dispose(GObject* object) {
   auto* self = EE_DELAY_BOX(object);
-
-  self->data->delay->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -144,12 +133,9 @@ void delay_box_class_init(DelayBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, DelayBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, DelayBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, DelayBox, time_l);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, time_r);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

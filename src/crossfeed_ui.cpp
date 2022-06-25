@@ -41,8 +41,6 @@ struct _CrossfeedBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkSpinButton *fcut, *feed;
 
   GSettings* settings;
@@ -52,13 +50,7 @@ struct _CrossfeedBox {
 
 G_DEFINE_TYPE(CrossfeedBox, crossfeed_box, GTK_TYPE_BOX)
 
-void on_bypass(CrossfeedBox* self, GtkToggleButton* btn) {
-  self->data->crossfeed->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(CrossfeedBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -83,7 +75,6 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
   self->settings = g_settings_new_with_path(tags::schema::crossfeed::id, schema_path.c_str());
 
   crossfeed->post_messages = true;
-  crossfeed->bypass = false;
 
   self->data->connections.push_back(crossfeed->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -103,8 +94,6 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 
 void dispose(GObject* object) {
   auto* self = EE_CROSSFEED_BOX(object);
-
-  self->data->crossfeed->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -154,12 +143,9 @@ void crossfeed_box_class_init(CrossfeedBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, fcut);
   gtk_widget_class_bind_template_child(widget_class, CrossfeedBox, feed);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 
   gtk_widget_class_bind_template_callback(widget_class, on_preset_cmoy);

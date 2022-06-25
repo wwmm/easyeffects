@@ -69,17 +69,6 @@
                         </accessibility>
                     </object>
                 </child>
-
-                <child>
-                    <object class="GtkToggleButton" id="bypass">
-                        <property name="label" translatable="yes">Bypass</property>
-                        <layout>
-                            <property name="column">2</property>
-                            <property name="row">1</property>
-                        </layout>
-                        <signal name="toggled" handler="on_bypass" object="PitchBox" />
-                    </object>
-                </child>
             </object>
         </child>
 

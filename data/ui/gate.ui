@@ -7,13 +7,6 @@
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-        <child>
-            <object class="GtkToggleButton" id="bypass">
-                <property name="halign">center</property>
-                <property name="label" translatable="yes">Bypass</property>
-                <signal name="toggled" handler="on_bypass" object="GateBox" />
-            </object>
-        </child>
 
         <child>
             <object class="GtkBox" id="box_reduction_option">

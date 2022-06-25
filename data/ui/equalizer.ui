@@ -137,14 +137,6 @@
                         </child>
 
                         <child>
-                            <object class="GtkToggleButton" id="bypass">
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Bypass</property>
-                                <signal name="toggled" handler="on_bypass" object="EqualizerBox" />
-                            </object>
-                        </child>
-
-                        <child>
                             <object class="GtkToggleButton" id="split_channels">
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Split Channels</property>

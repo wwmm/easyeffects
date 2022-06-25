@@ -7,22 +7,11 @@
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
+
         <child>
-            <object class="GtkBox">
-                <property name="spacing">24</property>
+            <object class="GtkToggleButton" id="sc_listen">
                 <property name="halign">center</property>
-                <property name="homogeneous">1</property>
-                <child>
-                    <object class="GtkToggleButton" id="bypass">
-                        <property name="label" translatable="yes">Bypass</property>
-                        <signal name="toggled" handler="on_bypass" object="DeesserBox" />
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkToggleButton" id="sc_listen">
-                        <property name="label" translatable="yes">Listen</property>
-                    </object>
-                </child>
+                <property name="label" translatable="yes">Listen</property>
             </object>
         </child>
 

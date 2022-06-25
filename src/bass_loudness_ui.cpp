@@ -41,8 +41,6 @@ struct _BassLoudnessBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkSpinButton *loudness, *output, *link;
 
   GSettings* settings;
@@ -52,13 +50,7 @@ struct _BassLoudnessBox {
 
 G_DEFINE_TYPE(BassLoudnessBox, bass_loudness_box, GTK_TYPE_BOX)
 
-void on_bypass(BassLoudnessBox* self, GtkToggleButton* btn) {
-  self->data->bass_loudness->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(BassLoudnessBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -68,7 +60,6 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
   self->settings = g_settings_new_with_path(tags::schema::bass_loudness::id, schema_path.c_str());
 
   bass_loudness->post_messages = true;
-  bass_loudness->bypass = false;
 
   self->data->connections.push_back(bass_loudness->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -87,8 +78,6 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
 
 void dispose(GObject* object) {
   auto* self = EE_BASS_LOUDNESS_BOX(object);
-
-  self->data->bass_loudness->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -138,13 +127,10 @@ void bass_loudness_box_class_init(BassLoudnessBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, loudness);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, link);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

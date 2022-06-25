@@ -55,8 +55,6 @@ struct _ConvolverBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkMenuButton *menu_button_impulses, *menu_button_combine;
 
   GtkLabel *label_file_name, *label_sampling_rate, *label_samples, *label_duration;
@@ -86,12 +84,7 @@ struct _ConvolverBox {
 
 G_DEFINE_TYPE(ConvolverBox, convolver_box, GTK_TYPE_BOX)
 
-void on_bypass(ConvolverBox* self, GtkToggleButton* btn) {
-  self->data->convolver->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(ConvolverBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
   gtk_toggle_button_set_active(self->autogain, 0);
 
   util::reset_all_keys(self->settings);
@@ -457,7 +450,6 @@ void setup(ConvolverBox* self,
   self->settings = g_settings_new_with_path(tags::schema::convolver::id, schema_path.c_str());
 
   convolver->post_messages = true;
-  convolver->bypass = false;
 
   ui::convolver_menu_impulses::setup(self->impulses_menu, schema_path, application);
 
@@ -555,8 +547,6 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, menu_button_impulses);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, menu_button_combine);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, label_file_name);
@@ -571,7 +561,6 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, chart_box);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, autogain);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_fft);
   gtk_widget_class_bind_template_callback(widget_class, on_show_channel);

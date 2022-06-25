@@ -62,8 +62,6 @@ struct _EqualizerBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkStack* stack;
 
   GtkBox *bands_box_left, *bands_box_right;
@@ -81,13 +79,7 @@ struct _EqualizerBox {
 
 G_DEFINE_TYPE(EqualizerBox, equalizer_box, GTK_TYPE_BOX)
 
-void on_bypass(EqualizerBox* self, GtkToggleButton* btn) {
-  self->data->equalizer->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(EqualizerBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
   util::reset_all_keys(self->settings_left);
   util::reset_all_keys(self->settings_right);
@@ -459,7 +451,6 @@ void setup(EqualizerBox* self,
       g_settings_new_with_path(tags::schema::equalizer::channel_id, (schema_path + "rightchannel/").c_str());
 
   equalizer->post_messages = true;
-  equalizer->bypass = false;
 
   build_all_bands(self);
 
@@ -497,8 +488,6 @@ void setup(EqualizerBox* self,
 
 void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BOX(object);
-
-  self->data->equalizer->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -560,8 +549,6 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, stack);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, bands_box_left);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, bands_box_right);
@@ -569,7 +556,6 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, mode);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, split_channels);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 
   gtk_widget_class_bind_template_callback(widget_class, on_flat_response);

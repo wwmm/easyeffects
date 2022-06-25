@@ -41,8 +41,6 @@ struct _LimiterBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkComboBoxText *mode, *oversampling, *dither;
 
   GtkDropDown* dropdown_input_devices;
@@ -65,13 +63,7 @@ struct _LimiterBox {
 
 G_DEFINE_TYPE(LimiterBox, limiter_box, GTK_TYPE_BOX)
 
-void on_bypass(LimiterBox* self, GtkToggleButton* btn) {
-  self->data->limiter->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(LimiterBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -99,7 +91,6 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
   self->settings = g_settings_new_with_path(tags::schema::limiter::id, schema_path.c_str());
 
   limiter->post_messages = true;
-  limiter->bypass = false;
 
   setup_dropdown_input_device(self);
 
@@ -227,8 +218,6 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 void dispose(GObject* object) {
   auto* self = EE_LIMITER_BOX(object);
 
-  self->data->limiter->bypass = false;
-
   for (auto& c : self->data->connections) {
     c.disconnect();
   }
@@ -277,8 +266,6 @@ void limiter_box_class_init(LimiterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, LimiterBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, mode);
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, oversampling);
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, dither);
@@ -300,7 +287,6 @@ void limiter_box_class_init(LimiterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, sidechain_right);
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, dropdown_input_devices);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

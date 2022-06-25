@@ -9,15 +9,6 @@
         <property name="orientation">vertical</property>
 
         <child>
-            <object class="GtkToggleButton" id="bypass">
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="label" translatable="yes">Bypass</property>
-                <signal name="toggled" handler="on_bypass" object="FilterBox" />
-            </object>
-        </child>
-
-        <child>
             <object class="GtkComboBoxText" id="mode">
                 <property name="margin-top">6</property>
                 <property name="halign">center</property>

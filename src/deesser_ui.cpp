@@ -41,8 +41,6 @@ struct _DeesserBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkLevelBar *compression, *detected;
 
   GtkLabel *compression_label, *detected_label;
@@ -60,13 +58,7 @@ struct _DeesserBox {
 
 G_DEFINE_TYPE(DeesserBox, deesser_box, GTK_TYPE_BOX)
 
-void on_bypass(DeesserBox* self, GtkToggleButton* btn) {
-  self->data->deesser->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(DeesserBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -76,7 +68,6 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
   self->settings = g_settings_new_with_path(tags::schema::deesser::id, schema_path.c_str());
 
   deesser->post_messages = true;
-  deesser->bypass = false;
 
   self->data->connections.push_back(deesser->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -136,8 +127,6 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 void dispose(GObject* object) {
   auto* self = EE_DEESSER_BOX(object);
 
-  self->data->deesser->bypass = false;
-
   for (auto& c : self->data->connections) {
     c.disconnect();
   }
@@ -186,8 +175,6 @@ void deesser_box_class_init(DeesserBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, DeesserBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, compression);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, compression_label);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, detected);
@@ -205,7 +192,6 @@ void deesser_box_class_init(DeesserBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, laxity);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, makeup);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

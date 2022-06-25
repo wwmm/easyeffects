@@ -41,8 +41,6 @@ struct _CompressorBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkLabel *gain_label, *sidechain_label, *curve_label, *envelope_label;
 
   GtkSpinButton *attack, *release, *release_threshold, *threshold, *knee, *ratio, *makeup, *boost_threshold,
@@ -63,13 +61,7 @@ struct _CompressorBox {
 
 G_DEFINE_TYPE(CompressorBox, compressor_box, GTK_TYPE_BOX)
 
-void on_bypass(CompressorBox* self, GtkToggleButton* btn) {
-  self->data->compressor->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(CompressorBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -128,7 +120,6 @@ void setup(CompressorBox* self,
   self->settings = g_settings_new_with_path(tags::schema::compressor::id, schema_path.c_str());
 
   compressor->post_messages = true;
-  compressor->bypass = false;
 
   setup_dropdown_input_device(self);
 
@@ -272,8 +263,6 @@ void setup(CompressorBox* self,
 void dispose(GObject* object) {
   auto* self = EE_COMPRESSOR_BOX(object);
 
-  self->data->compressor->bypass = false;
-
   for (auto& c : self->data->connections) {
     c.disconnect();
   }
@@ -322,8 +311,6 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, CompressorBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, gain_label);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, sidechain_label);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, curve_label);
@@ -351,7 +338,6 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, listen);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, dropdown_input_devices);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, set_dropdown_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_threshold_sensitive);

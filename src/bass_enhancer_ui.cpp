@@ -41,8 +41,6 @@ struct _BassEnhancerBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkLevelBar* harmonics_levelbar;
 
   GtkLabel* harmonics_levelbar_label;
@@ -60,13 +58,7 @@ struct _BassEnhancerBox {
 
 G_DEFINE_TYPE(BassEnhancerBox, bass_enhancer_box, GTK_TYPE_BOX)
 
-void on_bypass(BassEnhancerBox* self, GtkToggleButton* btn) {
-  self->data->bass_enhancer->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(BassEnhancerBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -76,7 +68,6 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
   self->settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, schema_path.c_str());
 
   bass_enhancer->post_messages = true;
-  bass_enhancer->bypass = false;
 
   self->data->connections.push_back(bass_enhancer->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -102,8 +93,6 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
 void dispose(GObject* object) {
   auto* self = EE_BASS_ENHANCER_BOX(object);
-
-  self->data->bass_enhancer->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -153,8 +142,6 @@ void bass_enhancer_box_class_init(BassEnhancerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, harmonics_levelbar_label);
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, harmonics_levelbar);
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, floor);
@@ -165,7 +152,6 @@ void bass_enhancer_box_class_init(BassEnhancerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, floor_active);
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, listen);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

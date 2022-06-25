@@ -21,12 +21,6 @@
                         <signal name="clicked" handler="on_import_model_clicked" object="RNNoiseBox" />
                     </object>
                 </child>
-                <child>
-                    <object class="GtkToggleButton" id="bypass">
-                        <property name="label" translatable="yes">Bypass</property>
-                        <signal name="toggled" handler="on_bypass" object="RNNoiseBox" />
-                    </object>
-                </child>
             </object>
         </child>
 

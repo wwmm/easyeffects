@@ -41,8 +41,6 @@ struct _MultibandGateBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkLevelBar *output0, *output1, *output2, *output3, *gating0, *gating1, *gating2, *gating3;
 
   GtkLabel *output0_label, *output1_label, *output2_label, *output3_label, *gating0_label, *gating1_label,
@@ -63,13 +61,7 @@ struct _MultibandGateBox {
 
 G_DEFINE_TYPE(MultibandGateBox, multiband_gate_box, GTK_TYPE_BOX)
 
-void on_bypass(MultibandGateBox* self, GtkToggleButton* btn) {
-  self->data->multiband_gate->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(MultibandGateBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -79,7 +71,6 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
   self->settings = g_settings_new_with_path(tags::schema::multiband_gate::id, schema_path.c_str());
 
   multiband_gate->post_messages = true;
-  multiband_gate->bypass = false;
 
   self->data->connections.push_back(multiband_gate->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -171,8 +162,6 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 void dispose(GObject* object) {
   auto* self = EE_MULTIBAND_GATE_BOX(object);
 
-  self->data->multiband_gate->bypass = false;
-
   for (auto& c : self->data->connections) {
     c.disconnect();
   }
@@ -220,8 +209,6 @@ void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_level_right_label);
-
-  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, bypass);
 
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output0);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output1);
@@ -284,7 +271,6 @@ void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, detection2);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, detection3);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 

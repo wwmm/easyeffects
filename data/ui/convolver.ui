@@ -7,14 +7,6 @@
         <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
-        <child>
-            <object class="GtkToggleButton" id="bypass">
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="label" translatable="yes">Bypass</property>
-                <signal name="toggled" handler="on_bypass" object="ConvolverBox" />
-            </object>
-        </child>
 
         <child>
             <object class="GtkLabel" id="label_file_name">

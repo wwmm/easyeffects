@@ -43,8 +43,6 @@ struct _CrystalizerBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkToggleButton* bypass;
-
   GtkBox* bands_box;
 
   GSettings* settings;
@@ -54,13 +52,7 @@ struct _CrystalizerBox {
 
 G_DEFINE_TYPE(CrystalizerBox, crystalizer_box, GTK_TYPE_BOX)
 
-void on_bypass(CrystalizerBox* self, GtkToggleButton* btn) {
-  self->data->crystalizer->bypass = gtk_toggle_button_get_active(btn);
-}
-
 void on_reset(CrystalizerBox* self, GtkButton* btn) {
-  gtk_toggle_button_set_active(self->bypass, 0);
-
   util::reset_all_keys(self->settings);
 }
 
@@ -143,7 +135,6 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
   self->settings = g_settings_new_with_path(tags::schema::crystalizer::id, schema_path.c_str());
 
   crystalizer->post_messages = true;
-  crystalizer->bypass = false;
 
   build_bands(self);
 
@@ -162,8 +153,6 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
 void dispose(GObject* object) {
   auto* self = EE_CRYSTALIZER_BOX(object);
-
-  self->data->crystalizer->bypass = false;
 
   for (auto& c : self->data->connections) {
     c.disconnect();
@@ -213,11 +202,8 @@ void crystalizer_box_class_init(CrystalizerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CrystalizerBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, CrystalizerBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, CrystalizerBox, bypass);
-
   gtk_widget_class_bind_template_child(widget_class, CrystalizerBox, bands_box);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_bypass);
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
