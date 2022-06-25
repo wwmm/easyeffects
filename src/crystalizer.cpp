@@ -154,7 +154,7 @@ void Crystalizer::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  if (n_samples_is_power_of_2) {
+  if (n_samples_is_power_of_2 && blocksize == n_samples) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
