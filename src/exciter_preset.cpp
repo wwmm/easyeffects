@@ -26,6 +26,8 @@ ExciterPreset::ExciterPreset() {
 }
 
 void ExciterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["exciter"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["exciter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["exciter"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -44,6 +46,8 @@ void ExciterPreset::save(nlohmann::json& json, const std::string& section, GSett
 }
 
 void ExciterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("exciter"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("exciter"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("exciter"), settings, "output-gain", "output-gain");

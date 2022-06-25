@@ -26,6 +26,8 @@ PitchPreset::PitchPreset() {
 }
 
 void PitchPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["pitch"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["pitch"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["pitch"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -48,6 +50,8 @@ void PitchPreset::save(nlohmann::json& json, const std::string& section, GSettin
 }
 
 void PitchPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("pitch"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("pitch"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("pitch"), settings, "output-gain", "output-gain");

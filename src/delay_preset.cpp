@@ -26,6 +26,8 @@ DelayPreset::DelayPreset() {
 }
 
 void DelayPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["delay"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["delay"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["delay"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -36,6 +38,8 @@ void DelayPreset::save(nlohmann::json& json, const std::string& section, GSettin
 }
 
 void DelayPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("delay"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("delay"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("delay"), settings, "output-gain", "output-gain");

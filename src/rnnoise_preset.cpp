@@ -26,6 +26,8 @@ RNNoisePreset::RNNoisePreset() {
 }
 
 void RNNoisePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["rnnoise"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["rnnoise"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["rnnoise"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -34,6 +36,8 @@ void RNNoisePreset::save(nlohmann::json& json, const std::string& section, GSett
 }
 
 void RNNoisePreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("rnnoise"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("rnnoise"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("rnnoise"), settings, "output-gain", "output-gain");

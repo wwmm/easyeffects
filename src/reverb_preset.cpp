@@ -26,6 +26,8 @@ ReverbPreset::ReverbPreset() {
 }
 
 void ReverbPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["reverb"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["reverb"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["reverb"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -50,6 +52,8 @@ void ReverbPreset::save(nlohmann::json& json, const std::string& section, GSetti
 }
 
 void ReverbPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("reverb"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("reverb"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("reverb"), settings, "output-gain", "output-gain");

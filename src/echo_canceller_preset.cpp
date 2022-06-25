@@ -27,6 +27,8 @@ EchoCancellerPreset::EchoCancellerPreset() {
 }
 
 void EchoCancellerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["echo_canceller"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["echo_canceller"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["echo_canceller"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -37,6 +39,8 @@ void EchoCancellerPreset::save(nlohmann::json& json, const std::string& section,
 }
 
 void EchoCancellerPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("echo_canceller"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("echo_canceller"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("echo_canceller"), settings, "output-gain", "output-gain");

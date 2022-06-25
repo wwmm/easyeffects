@@ -26,6 +26,8 @@ StereoToolsPreset::StereoToolsPreset() {
 }
 
 void StereoToolsPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["stereo_tools"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["stereo_tools"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["stereo_tools"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -64,6 +66,8 @@ void StereoToolsPreset::save(nlohmann::json& json, const std::string& section, G
 }
 
 void StereoToolsPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("stereo_tools"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("stereo_tools"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("stereo_tools"), settings, "output-gain", "output-gain");

@@ -26,6 +26,8 @@ AutoGainPreset::AutoGainPreset() {
 }
 
 void AutoGainPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["autogain"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["autogain"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["autogain"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -38,6 +40,8 @@ void AutoGainPreset::save(nlohmann::json& json, const std::string& section, GSet
 }
 
 void AutoGainPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("autogain"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("autogain"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("autogain"), settings, "output-gain", "output-gain");

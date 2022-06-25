@@ -26,6 +26,8 @@ MaximizerPreset::MaximizerPreset() {
 }
 
 void MaximizerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["maximizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["maximizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["maximizer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -38,6 +40,8 @@ void MaximizerPreset::save(nlohmann::json& json, const std::string& section, GSe
 }
 
 void MaximizerPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("maximizer"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("maximizer"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("maximizer"), settings, "output-gain", "output-gain");

@@ -26,6 +26,8 @@ ConvolverPreset::ConvolverPreset() {
 }
 
 void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["convolver"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["convolver"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["convolver"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -38,6 +40,8 @@ void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSe
 }
 
 void ConvolverPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("convolver"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("convolver"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("convolver"), settings, "output-gain", "output-gain");

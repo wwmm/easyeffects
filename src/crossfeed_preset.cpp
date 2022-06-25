@@ -26,6 +26,8 @@ CrossfeedPreset::CrossfeedPreset() {
 }
 
 void CrossfeedPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["crossfeed"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["crossfeed"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["crossfeed"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -36,6 +38,8 @@ void CrossfeedPreset::save(nlohmann::json& json, const std::string& section, GSe
 }
 
 void CrossfeedPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("crossfeed"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("crossfeed"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("crossfeed"), settings, "output-gain", "output-gain");

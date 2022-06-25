@@ -26,6 +26,8 @@ CompressorPreset::CompressorPreset() {
 }
 
 void CompressorPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["compressor"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["compressor"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["compressor"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -72,6 +74,8 @@ void CompressorPreset::save(nlohmann::json& json, const std::string& section, GS
 }
 
 void CompressorPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("compressor"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("compressor"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("compressor"), settings, "output-gain", "output-gain");

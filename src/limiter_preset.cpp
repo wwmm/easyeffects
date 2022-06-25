@@ -32,6 +32,8 @@ void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSett
 
   json[section]["limiter"]["dithering"] = util::gsettings_get_string(settings, "dithering");
 
+  json[section]["limiter"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["limiter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["limiter"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -67,6 +69,8 @@ void LimiterPreset::load(const nlohmann::json& json, const std::string& section,
   update_key<gchar*>(json.at(section).at("limiter"), settings, "oversampling", "oversampling");
 
   update_key<gchar*>(json.at(section).at("limiter"), settings, "dithering", "dithering");
+
+  update_key<bool>(json.at(section).at("limiter"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("limiter"), settings, "input-gain", "input-gain");
 

@@ -26,6 +26,8 @@ FilterPreset::FilterPreset() {
 }
 
 void FilterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["filter"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["filter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["filter"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -40,6 +42,8 @@ void FilterPreset::save(nlohmann::json& json, const std::string& section, GSetti
 }
 
 void FilterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("filter"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("filter"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("filter"), settings, "output-gain", "output-gain");

@@ -26,6 +26,8 @@ BassEnhancerPreset::BassEnhancerPreset() {
 }
 
 void BassEnhancerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["bass_enhancer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+
   json[section]["bass_enhancer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section]["bass_enhancer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
@@ -44,6 +46,8 @@ void BassEnhancerPreset::save(nlohmann::json& json, const std::string& section, 
 }
 
 void BassEnhancerPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+  update_key<bool>(json.at(section).at("bass_enhancer"), settings, "bypass", "bypass");
+
   update_key<double>(json.at(section).at("bass_enhancer"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("bass_enhancer"), settings, "output-gain", "output-gain");
