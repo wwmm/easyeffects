@@ -3,7 +3,7 @@ Version UNRELEASED_VERSION
 Released: UNRELEASED_DATE
 
 Features:
-- 
+- The bypass state can be saved to the preset file. The reasons why this was done can be seen at #1039 
 
 Bugfixes:
 - 
