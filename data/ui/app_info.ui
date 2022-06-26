@@ -2,10 +2,15 @@
 <interface domain="easyeffects">
     <template class="AppInfo" parent="GtkBox">
         <property name="hexpand">1</property>
-        <property name="margin-start">6</property>
-        <property name="margin-end">6</property>
-        <property name="margin-top">6</property>
-        <property name="margin-bottom">6</property>
+        <property name="margin-start">3</property>
+        <property name="margin-end">3</property>
+        <property name="margin-top">3</property>
+        <property name="margin-bottom">3</property>
+
+        <style>
+            <class name="card" />
+        </style>
+
         <child>
             <object class="GtkBox">
                 <property name="spacing">24</property>
@@ -17,6 +22,9 @@
                         <property name="valign">center</property>
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
+                        <property name="margin-start">6</property>
+                        <property name="margin-top">6</property>
+                        <property name="margin-bottom">6</property>
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">start</property>
@@ -188,6 +196,9 @@
                         <property name="valign">center</property>
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
+                        <property name="margin-end">6</property>
+                        <property name="margin-top">6</property>
+                        <property name="margin-bottom">6</property>
                         <child>
                             <object class="GtkBox" id="enable_box">
                                 <property name="halign">end</property>
