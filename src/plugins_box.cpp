@@ -346,14 +346,14 @@ void setup_listview(PluginsBox* self) {
         auto* top_box = gtk_builder_get_object(builder, "top_box");
         auto* plugin_icon = gtk_builder_get_object(builder, "plugin_icon");
         auto* remove = gtk_builder_get_object(builder, "remove");
-        auto* bypass = gtk_builder_get_object(builder, "bypass");
+        auto* enable = gtk_builder_get_object(builder, "enable");
         auto* drag_handle = gtk_builder_get_object(builder, "drag_handle");
 
         g_object_set_data(G_OBJECT(item), "top_box", top_box);
         g_object_set_data(G_OBJECT(item), "plugin_icon", plugin_icon);
         g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
         g_object_set_data(G_OBJECT(item), "remove", remove);
-        g_object_set_data(G_OBJECT(item), "bypass", bypass);
+        g_object_set_data(G_OBJECT(item), "enable", enable);
         g_object_set_data(G_OBJECT(item), "drag_handle", drag_handle);
 
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
@@ -365,13 +365,13 @@ void setup_listview(PluginsBox* self) {
         auto* controller = gtk_event_controller_motion_new();
 
         g_object_set_data(G_OBJECT(controller), "remove", remove);
-        g_object_set_data(G_OBJECT(controller), "bypass", bypass);
+        g_object_set_data(G_OBJECT(controller), "enable", enable);
         g_object_set_data(G_OBJECT(controller), "drag_handle", drag_handle);
 
         g_signal_connect(controller, "enter",
                          G_CALLBACK(+[](GtkEventControllerMotion* controller, gdouble x, gdouble y, PluginsBox* self) {
                            gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "remove")), 1.0);
-                           gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "bypass")), 1.0);
+                           gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "enable")), 1.0);
                            gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "drag_handle")),
                                                   1.0);
                          }),
@@ -379,7 +379,7 @@ void setup_listview(PluginsBox* self) {
 
         g_signal_connect(controller, "leave", G_CALLBACK(+[](GtkEventControllerMotion* controller, PluginsBox* self) {
                            gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "remove")), 0.0);
-                           gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "bypass")), 0.0);
+                           gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "enable")), 0.0);
                            gtk_widget_set_opacity(GTK_WIDGET(g_object_get_data(G_OBJECT(controller), "drag_handle")),
                                                   0.0);
                          }),
@@ -480,7 +480,7 @@ void setup_listview(PluginsBox* self) {
                      auto* top_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(item), "top_box"));
                      auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
                      auto* remove = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "remove"));
-                     auto* bypass = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "bypass"));
+                     auto* enable = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "enable"));
                      auto* plugin_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "plugin_icon"));
 
                      gtk_image_set_from_icon_name(plugin_icon, "ee-arrow-down-symbolic");
@@ -498,7 +498,7 @@ void setup_listview(PluginsBox* self) {
                      gtk_accessible_update_property(GTK_ACCESSIBLE(remove), GTK_ACCESSIBLE_PROPERTY_LABEL,
                                                     (_("Remove") + " "s + self->data->translated[name]).c_str(), -1);
 
-                     // binding the bypass button to the corresponding gsettings key
+                     // binding the enable button to the bypass key
 
                      auto gname = std::string(name);
 
@@ -509,7 +509,7 @@ void setup_listview(PluginsBox* self) {
 
                      auto* settings = g_settings_new_with_path(schema_id.c_str(), schema_path.c_str());
 
-                     gsettings_bind_widget(settings, "bypass", bypass);
+                     gsettings_bind_widget(settings, "bypass", enable, G_SETTINGS_BIND_INVERT_BOOLEAN);
 
                      g_object_unref(settings);
                    }),
