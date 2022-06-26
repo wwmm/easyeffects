@@ -35,55 +35,51 @@
                                         <property name="spacing">12</property>
                                         <child>
                                             <object class="GtkBox">
-                                                <property name="valign">start</property>
+                                                <property name="valign">center</property>
                                                 <property name="hexpand">1</property>
-                                                <property name="spacing">6</property>
+                                                <property name="css-name">entry</property>
+                                                <property name="spacing">3</property>
+
                                                 <child>
-                                                    <object class="GtkBox">
+                                                    <object class="GtkText" id="output_name">
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
-                                                        <property name="css-name">entry</property>
-                                                        <child>
-                                                            <object class="GtkText" id="output_name">
-                                                                <property name="valign">center</property>
-                                                                <property name="hexpand">1</property>
-                                                                <property name="placeholder-text" translatable="yes">Name</property>
-                                                                <property name="input-purpose">name</property>
-                                                                <property name="accessible-role">text-box</property>
-                                                                <accessibility>
-                                                                    <property name="label" translatable="yes">New Output Preset Name</property>
-                                                                </accessibility>
-                                                            </object>
-                                                        </child>
-                                                        <child>
-                                                            <object class="GtkButton" id="add_output">
-                                                                <property name="margin-top">3</property>
-                                                                <property name="margin-bottom">3</property>
-                                                                <property name="tooltip-text" translatable="yes">Create Preset</property>
-                                                                <property name="halign">center</property>
-                                                                <property name="valign">center</property>
-                                                                <property name="icon-name">list-add-symbolic</property>
-                                                                <signal name="clicked" handler="create_output_preset" object="PresetsMenu" />
-                                                                <style>
-                                                                    <class name="suggested-action" />
-                                                                </style>
-                                                            </object>
-                                                        </child>
-                                                        <child>
-                                                            <object class="GtkButton" id="import_output">
-                                                                <property name="margin-top">3</property>
-                                                                <property name="margin-bottom">3</property>
-                                                                <property name="tooltip-text" translatable="yes">Import Presets</property>
-                                                                <property name="halign">center</property>
-                                                                <property name="valign">center</property>
-                                                                <property name="icon-name">document-open-symbolic</property>
-                                                                <signal name="clicked" handler="import_output_preset" object="PresetsMenu" />
-                                                            </object>
-                                                        </child>
+                                                        <property name="placeholder-text" translatable="yes">Name</property>
+                                                        <property name="input-purpose">name</property>
+                                                        <property name="accessible-role">text-box</property>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">New Output Preset Name</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="add_output">
+                                                        <property name="margin-top">3</property>
+                                                        <property name="margin-bottom">3</property>
+                                                        <property name="tooltip-text" translatable="yes">Create Preset</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="icon-name">list-add-symbolic</property>
+                                                        <signal name="clicked" handler="create_output_preset" object="PresetsMenu" />
+                                                        <style>
+                                                            <class name="suggested-action" />
+                                                        </style>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="import_output">
+                                                        <property name="margin-top">3</property>
+                                                        <property name="margin-bottom">3</property>
+                                                        <property name="tooltip-text" translatable="yes">Import Presets</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="icon-name">document-open-symbolic</property>
+                                                        <signal name="clicked" handler="import_output_preset" object="PresetsMenu" />
                                                     </object>
                                                 </child>
                                             </object>
                                         </child>
+
 
                                         <child>
                                             <object class="GtkSearchEntry" id="output_search">
@@ -188,51 +184,45 @@
                                         <property name="spacing">12</property>
                                         <child>
                                             <object class="GtkBox">
-                                                <property name="valign">start</property>
+                                                <property name="valign">center</property>
                                                 <property name="hexpand">1</property>
-                                                <property name="spacing">6</property>
+                                                <property name="spacing">3</property>
+                                                <property name="css-name">entry</property>
                                                 <child>
-                                                    <object class="GtkBox">
+                                                    <object class="GtkText" id="input_name">
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
-                                                        <property name="css-name">entry</property>
-                                                        <child>
-                                                            <object class="GtkText" id="input_name">
-                                                                <property name="valign">center</property>
-                                                                <property name="hexpand">1</property>
-                                                                <property name="placeholder-text" translatable="yes">Name</property>
-                                                                <property name="input-purpose">name</property>
-                                                                <property name="accessible-role">text-box</property>
-                                                                <accessibility>
-                                                                    <property name="label" translatable="yes">New Input Preset Name</property>
-                                                                </accessibility>
-                                                            </object>
-                                                        </child>
-                                                        <child>
-                                                            <object class="GtkButton" id="add_input">
-                                                                <property name="margin-top">3</property>
-                                                                <property name="margin-bottom">3</property>
-                                                                <property name="tooltip-text" translatable="yes">Create Preset</property>
-                                                                <property name="halign">center</property>
-                                                                <property name="valign">center</property>
-                                                                <property name="icon-name">list-add-symbolic</property>
-                                                                <signal name="clicked" handler="create_input_preset" object="PresetsMenu" />
-                                                                <style>
-                                                                    <class name="suggested-action" />
-                                                                </style>
-                                                            </object>
-                                                        </child>
-                                                        <child>
-                                                            <object class="GtkButton" id="import_input">
-                                                                <property name="margin-top">3</property>
-                                                                <property name="margin-bottom">3</property>
-                                                                <property name="tooltip-text" translatable="yes">Import Presets</property>
-                                                                <property name="halign">center</property>
-                                                                <property name="valign">center</property>
-                                                                <property name="icon-name">document-open-symbolic</property>
-                                                                <signal name="clicked" handler="import_input_preset" object="PresetsMenu" />
-                                                            </object>
-                                                        </child>
+                                                        <property name="placeholder-text" translatable="yes">Name</property>
+                                                        <property name="input-purpose">name</property>
+                                                        <property name="accessible-role">text-box</property>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">New Input Preset Name</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="add_input">
+                                                        <property name="margin-top">3</property>
+                                                        <property name="margin-bottom">3</property>
+                                                        <property name="tooltip-text" translatable="yes">Create Preset</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="icon-name">list-add-symbolic</property>
+                                                        <signal name="clicked" handler="create_input_preset" object="PresetsMenu" />
+                                                        <style>
+                                                            <class name="suggested-action" />
+                                                        </style>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="import_input">
+                                                        <property name="margin-top">3</property>
+                                                        <property name="margin-bottom">3</property>
+                                                        <property name="tooltip-text" translatable="yes">Import Presets</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="icon-name">document-open-symbolic</property>
+                                                        <signal name="clicked" handler="import_input_preset" object="PresetsMenu" />
                                                     </object>
                                                 </child>
                                             </object>
