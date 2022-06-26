@@ -73,6 +73,8 @@ void setup_listview(PluginsMenu* self) {
         gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
         gtk_box_append(GTK_BOX(box), GTK_WIDGET(button));
 
+        gtk_widget_add_css_class(GTK_WIDGET(button), "circular");
+
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(box));
 
