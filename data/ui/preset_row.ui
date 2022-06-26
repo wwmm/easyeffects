@@ -14,37 +14,43 @@
         </child>
 
         <child>
-            <object class="GtkButton" id="apply">
-                <property name="label" translatable="yes">Load</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <accessibility>
-                    <relation name="labelled-by">name</relation>
-                </accessibility>
-            </object>
-        </child>
+            <object class="GtkBox">
+                <property name="halign">end</property>
+                <style>
+                    <class name="linked" />
+                </style>
 
-        <child>
-            <object class="GtkButton" id="save">
-                <property name="tooltip-text" translatable="yes">Save current settings to this preset file</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="icon-name">document-save-symbolic</property>
-                <accessibility>
-                    <relation name="labelled-by">name</relation>
-                </accessibility>
-            </object>
-        </child>
+                <child>
+                    <object class="GtkButton" id="apply">
+                        <property name="label" translatable="yes">Load</property>
+                        <property name="valign">center</property>
+                        <accessibility>
+                            <relation name="labelled-by">name</relation>
+                        </accessibility>
+                    </object>
+                </child>
 
-        <child>
-            <object class="GtkButton" id="remove">
-                <property name="tooltip-text" translatable="yes">Remove this preset file</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="icon-name">user-trash-symbolic</property>
-                <accessibility>
-                    <relation name="labelled-by">name</relation>
-                </accessibility>
+                <child>
+                    <object class="GtkButton" id="save">
+                        <property name="tooltip-text" translatable="yes">Save current settings to this preset file</property>
+                        <property name="valign">center</property>
+                        <property name="icon-name">document-save-symbolic</property>
+                        <accessibility>
+                            <relation name="labelled-by">name</relation>
+                        </accessibility>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkButton" id="remove">
+                        <property name="tooltip-text" translatable="yes">Remove this preset file</property>
+                        <property name="valign">center</property>
+                        <property name="icon-name">user-trash-symbolic</property>
+                        <accessibility>
+                            <relation name="labelled-by">name</relation>
+                        </accessibility>
+                    </object>
+                </child>
             </object>
         </child>
     </object>
