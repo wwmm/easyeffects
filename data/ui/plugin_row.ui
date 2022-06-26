@@ -3,10 +3,7 @@
     <object class="GtkBox" id="top_box">
         <property name="margin-start">6</property>
         <property name="margin-end">3</property>
-
-        <style>
-            <class name="linked" />
-        </style>
+        <property name="spacing">6</property>
 
         <property name="cursor">
             <object class="GdkCursor">
@@ -28,44 +25,53 @@
                 <property name="valign">center</property>
                 <property name="hexpand">1</property>
                 <property name="label">Name</property>
+                <property name="sensitive" bind-source="bypass" bind-property="active" bind-flags="sync-create|invert-boolean" />
             </object>
         </child>
 
         <child>
-            <object class="GtkButton" id="remove">
-                <property name="tooltip-text" translatable="yes">Remove this plugin</property>
-                <property name="valign">center</property>
-                <property name="opacity">0</property>
-                <property name="icon-name">user-trash-symbolic</property>
+            <object class="GtkBox">
                 <style>
-                    <class name="flat" />
+                    <class name="linked" />
                 </style>
-            </object>
-        </child>
 
-        <child>
-            <object class="GtkToggleButton" id="bypass">
-                <property name="tooltip-text" translatable="yes">Bypass this plugin</property>
-                <property name="valign">center</property>
-                <property name="opacity">0</property>
-                <property name="icon-name">media-playlist-shuffle-symbolic</property>
-                <style>
-                    <class name="flat" />
-                </style>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkImage" id="drag_handle">
-                <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="opacity">0</property>
-                <property name="icon-name">ee-drag-handle-symbolic</property>
-                <property name="cursor">
-                    <object class="GdkCursor">
-                        <property name="name">grab</property>
+                <child>
+                    <object class="GtkButton" id="remove">
+                        <property name="tooltip-text" translatable="yes">Remove this plugin</property>
+                        <property name="valign">center</property>
+                        <property name="opacity">0</property>
+                        <property name="icon-name">user-trash-symbolic</property>
+                        <style>
+                            <class name="flat" />
+                        </style>
                     </object>
-                </property>
+                </child>
+
+                <child>
+                    <object class="GtkToggleButton" id="bypass">
+                        <property name="tooltip-text" translatable="yes">Bypass this plugin</property>
+                        <property name="valign">center</property>
+                        <property name="opacity">0</property>
+                        <property name="icon-name">media-playlist-shuffle-symbolic</property>
+                        <style>
+                            <class name="flat" />
+                        </style>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkImage" id="drag_handle">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="opacity">0</property>
+                        <property name="icon-name">ee-drag-handle-symbolic</property>
+                        <property name="cursor">
+                            <object class="GdkCursor">
+                                <property name="name">grab</property>
+                            </object>
+                        </property>
+                    </object>
+                </child>
             </object>
         </child>
     </object>

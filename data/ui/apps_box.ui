@@ -13,9 +13,6 @@
                             <object class="GtkListView" id="listview">
                                 <property name="hexpand">1</property>
                                 <property name="vexpand">1</property>
-                                <style>
-                                    <class name="rich-list" />
-                                </style>
                                 <accessibility>
                                     <property name="label" translatable="yes">Applications List</property>
                                 </accessibility>
