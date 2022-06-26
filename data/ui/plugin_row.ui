@@ -2,7 +2,6 @@
 <interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
         <property name="margin-start">6</property>
-        <property name="margin-end">3</property>
         <property name="spacing">6</property>
 
         <property name="cursor">
@@ -37,7 +36,7 @@
 
                 <child>
                     <object class="GtkButton" id="remove">
-                        <property name="tooltip-text" translatable="yes">Remove this plugin</property>
+                        <property name="tooltip-text" translatable="yes">Remove this effect</property>
                         <property name="valign">center</property>
                         <property name="opacity">0</property>
                         <property name="icon-name">user-trash-symbolic</property>
@@ -49,7 +48,7 @@
 
                 <child>
                     <object class="GtkToggleButton" id="enable">
-                        <property name="tooltip-text" translatable="yes">Enable this plugin</property>
+                        <property name="tooltip-text" translatable="yes">Enable/disable this effect</property>
                         <property name="valign">center</property>
                         <property name="opacity">0</property>
                         <property name="icon-name">system-shutdown-symbolic</property>
@@ -61,8 +60,9 @@
 
                 <child>
                     <object class="GtkImage" id="drag_handle">
-                        <property name="halign">end</property>
+                        <property name="tooltip-text" translatable="yes">Change the position of this effect</property>
                         <property name="valign">center</property>
+                        <property name="margin-start">8</property>
                         <property name="opacity">0</property>
                         <property name="icon-name">ee-drag-handle-symbolic</property>
                         <property name="cursor">
