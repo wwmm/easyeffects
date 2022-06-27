@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-16 14:36-0300\n"
-"PO-Revision-Date: 2022-06-25 00:21+0000\n"
+"PO-Revision-Date: 2022-06-27 22:36+0000\n"
 "Last-Translator: Vander <vander.azevedo88@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -111,7 +111,7 @@ msgstr "A página de convolução mostrando os controles de áudio"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:272
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
 msgid "This release adds the following features:"
-msgstr "Essa versão adiciona os seguintes recursos:"
+msgstr "Esta versão adiciona os seguintes recursos:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The interface of the pitch plugin was improved"
@@ -454,13 +454,12 @@ msgstr ""
 "lateral externa opcional."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
-#, fuzzy
 msgid ""
 "The Autogain plugin now allows the user to select which Loudness is used as "
 "reference for the volume correction."
 msgstr ""
-"O plugin Ganho Automático agora permite que o usuário selecione qual o "
-"Loudness que é utilizado como referência para a correção do volume."
+"O plugin Ganho Automático agora permite que o usuário selecione qual volume "
+"que é utilizado como referência para a correção do volume."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
 msgid ""
@@ -1269,11 +1268,11 @@ msgstr "Tipo"
 
 #: data/ui/compressor.ui:548
 msgid "Feed-forward"
-msgstr "Feed-forward"
+msgstr "Avanço de alimentação"
 
 #: data/ui/compressor.ui:549
 msgid "Feed-back"
-msgstr "Feed-back"
+msgstr "Retorno"
 
 #: data/ui/compressor.ui:550
 #, fuzzy
@@ -1303,7 +1302,7 @@ msgstr "Reatividade"
 #: data/ui/compressor.ui:666 data/ui/limiter.ui:219
 #: data/ui/multiband_compressor_band.ui:688
 msgid "Lookahead"
-msgstr "Lookahead"
+msgstr "Antevisão"
 
 #: data/ui/compressor.ui:709
 msgid "Sidechain Filters"
@@ -1767,7 +1766,7 @@ msgstr "Gating"
 
 #: data/ui/limiter.ui:57
 msgid "Oversampling"
-msgstr "Oversampling"
+msgstr "Sobreamostragem"
 
 #: data/ui/limiter.ui:69
 #, fuzzy
@@ -2446,9 +2445,8 @@ msgid "Output Devices"
 msgstr "Ganho de Entrada"
 
 #: data/ui/pipe_manager_box.ui:253
-#, fuzzy
 msgid "Output Presets"
-msgstr "Predefinições de Saída: "
+msgstr "Predefinições de Saída"
 
 #: data/ui/pipe_manager_box.ui:260 data/ui/pipe_manager_box.ui:352
 msgid "Create Association"
@@ -2459,9 +2457,8 @@ msgid "Add Autoloading Output Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:294
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "Predefinições de Saída: "
+msgstr "Lista de Predefinições de Saída"
 
 #: data/ui/pipe_manager_box.ui:333
 #, fuzzy
@@ -2469,18 +2466,16 @@ msgid "Input Devices"
 msgstr "Dispositivo de Entrada"
 
 #: data/ui/pipe_manager_box.ui:345
-#, fuzzy
 msgid "Input Presets"
-msgstr "Predefinições de Entrada: "
+msgstr "Predefinições de Entrada"
 
 #: data/ui/pipe_manager_box.ui:366
 msgid "Add Autoloading Input Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:385
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "Predefinições de Entrada: "
+msgstr "Lista de Predefinições de Entrada"
 
 #: data/ui/pipe_manager_box.ui:415
 msgid "Modules"
@@ -2618,7 +2613,7 @@ msgstr "Independente"
 
 #: data/ui/pitch.ui:189
 msgid "Cents"
-msgstr "Cents"
+msgstr "Centavos"
 
 #: data/ui/pitch.ui:223
 msgid "Semitones"
@@ -2794,9 +2789,8 @@ msgid "Remove this preset file"
 msgstr "Remover este arquivo de predefinição"
 
 #: data/ui/presets_menu.ui:54
-#, fuzzy
 msgid "New Output Preset Name"
-msgstr "Predefinições de Saída: "
+msgstr "Novo Nome de Predefinição de Saída"
 
 #: data/ui/presets_menu.ui:62 data/ui/presets_menu.ui:215
 msgid "Create Preset"
@@ -2807,29 +2801,24 @@ msgid "Import Presets"
 msgstr "Importar Predefinições"
 
 #: data/ui/presets_menu.ui:94
-#, fuzzy
 msgid "Search Output Preset"
-msgstr "Predefinições de Saída: "
+msgstr "Pesquisa de Predefinições de Saída"
 
 #: data/ui/presets_menu.ui:155
-#, fuzzy
 msgid "Output Presets List"
-msgstr "Predefinições de Saída: "
+msgstr "Lista de Predefinições de Saída"
 
 #: data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "New Input Preset Name"
-msgstr "Predefinições de Entrada: "
+msgstr "Novo Nome de Predefinição de Entrada"
 
 #: data/ui/presets_menu.ui:247
-#, fuzzy
 msgid "Search Input Preset"
-msgstr "Predefinições de Entrada: "
+msgstr "Pesquisar Predefinições de Entrada"
 
 #: data/ui/presets_menu.ui:308
-#, fuzzy
 msgid "Input Presets List"
-msgstr "Lista de predefinições de entrada"
+msgstr "Lista de Predefinições de Entrada"
 
 #: data/ui/reverb.ui:43
 msgid "High Frequency Damping"
@@ -3255,7 +3244,7 @@ msgstr "Filtro"
 
 #: src/plugin_name.cpp:38
 msgid "Gate"
-msgstr "Gate"
+msgstr "Portão"
 
 #: src/plugin_name.cpp:39
 msgid "Limiter"
@@ -3302,9 +3291,8 @@ msgid "Import Preset"
 msgstr "Importar Predefinições"
 
 #: src/rnnoise_ui.cpp:120
-#, fuzzy
 msgid "Import Model File"
-msgstr "Importar arquivo de modelo"
+msgstr "Importar Arquivo de Modelo"
 
 #: src/rnnoise_ui.cpp:125
 msgid "RNNoise Models"
