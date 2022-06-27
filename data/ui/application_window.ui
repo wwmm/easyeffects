@@ -61,7 +61,7 @@
                                 <property name="tooltip-text" translatable="yes">Global Bypass</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="icon-name">media-playlist-shuffle-symbolic</property>
+                                <property name="icon-name">system-log-out-symbolic</property>
                                 <accessibility>
                                     <property name="label" translatable="yes">Global Bypass</property>
                                 </accessibility>
