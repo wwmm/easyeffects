@@ -70,7 +70,7 @@
         </ul>
         <p>This release fixes the following bugs:</p>
         <ul>
-          <li>Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while</li>
+          <li>Fixed a bug where EasyEffects crashed when the number of points displayed in the spectrum was changed while</li>
           <li>our pipeline was active and the spectrum widget was visible</li>
           <li>The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.</li>
         </ul>

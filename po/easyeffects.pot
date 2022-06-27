@@ -143,7 +143,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
-"Fixed a bug where EasyEffeects crashed when the number of points displayed "
+"Fixed a bug where EasyEffects crashed when the number of points displayed "
 "in the spectrum was changed while"
 msgstr ""
 
