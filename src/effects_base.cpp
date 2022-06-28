@@ -205,6 +205,15 @@ void EffectsBase::remove_unused_filters() {
     auto key = it->first;
 
     if (std::ranges::find(list, key) == list.end()) {
+      auto plugin = it->second;
+
+      plugin->post_messages = false;
+      plugin->latency.clear();
+
+      if (plugin->connected_to_pw) {
+        plugin->disconnect_from_pw();
+      }
+
       it = plugins.erase(it);
     } else {
       it++;
