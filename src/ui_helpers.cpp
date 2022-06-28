@@ -1,5 +1,13 @@
 #include "ui_helpers.hpp"
 
+namespace {
+
+bool show_user_locale_warning = true;
+
+bool show_c_locale_warning = true;
+
+}  // namespace
+
 namespace ui {
 
 using namespace std::string_literals;
@@ -23,9 +31,21 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
   try {
     str.imbue(std::locale(""));  // User locale
   } catch (...) {
+    if (show_user_locale_warning) {
+      util::warning("We could not load the user locale in your system! Your locale configuration is broken!");
+
+      show_user_locale_warning = false;
+    }
+
     try {
       str.imbue(std::locale::classic());  // C locale if user locale not set
     } catch (...) {
+      if (show_c_locale_warning) {
+        util::warning("We could not load the C locale in your system! Your locale configuration is broken!");
+
+        show_c_locale_warning = false;
+      }
+
       return GTK_INPUT_ERROR;
     }
   }
