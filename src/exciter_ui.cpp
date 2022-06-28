@@ -67,7 +67,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
   self->settings = g_settings_new_with_path(tags::schema::exciter::id, schema_path.c_str());
 
-  exciter->post_messages = true;
+  exciter->set_post_messages(true);
 
   self->data->connections.push_back(exciter->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -102,6 +102,8 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
 void dispose(GObject* object) {
   auto* self = EE_EXCITER_BOX(object);
+
+  self->data->exciter->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

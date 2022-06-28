@@ -63,7 +63,7 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 
   self->settings = g_settings_new_with_path(tags::schema::stereo_tools::id, schema_path.c_str());
 
-  stereo_tools->post_messages = true;
+  stereo_tools->set_post_messages(true);
 
   self->data->connections.push_back(stereo_tools->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -118,6 +118,8 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 
 void dispose(GObject* object) {
   auto* self = EE_STEREO_TOOLS_BOX(object);
+
+  self->data->stereo_tools->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

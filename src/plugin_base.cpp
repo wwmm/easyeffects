@@ -236,6 +236,10 @@ PluginBase::~PluginBase() {
   g_object_unref(settings);
 }
 
+void PluginBase::set_post_messages(const bool& state) {
+  post_messages = state;
+}
+
 void PluginBase::reset_settings() {
   util::reset_all_keys(settings);
 }

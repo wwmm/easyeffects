@@ -134,7 +134,7 @@ void setup(MultibandCompressorBox* self,
 
   self->settings = g_settings_new_with_path(tags::schema::multiband_compressor::id, schema_path.c_str());
 
-  multiband_compressor->post_messages = true;
+  multiband_compressor->set_post_messages(true);
 
   setup_dropdown_input_device(self);
 
@@ -251,6 +251,8 @@ void setup(MultibandCompressorBox* self,
 
 void dispose(GObject* object) {
   auto* self = EE_MULTIBAND_COMPRESSOR_BOX(object);
+
+  self->data->multiband_compressor->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

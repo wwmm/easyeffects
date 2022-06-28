@@ -61,7 +61,7 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   self->settings = g_settings_new_with_path(tags::schema::delay::id, schema_path.c_str());
 
-  delay->post_messages = true;
+  delay->set_post_messages(true);
 
   self->data->connections.push_back(delay->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -84,6 +84,8 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
 void dispose(GObject* object) {
   auto* self = EE_DELAY_BOX(object);
+
+  self->data->delay->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

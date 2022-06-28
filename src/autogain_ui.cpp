@@ -75,7 +75,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   self->settings = g_settings_new_with_path(tags::schema::autogain::id, schema_path.c_str());
 
-  autogain->post_messages = true;
+  autogain->set_post_messages(true);
 
   self->data->connections.push_back(autogain->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -120,6 +120,8 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
 void dispose(GObject* object) {
   auto* self = EE_AUTOGAIN_BOX(object);
+
+  self->data->autogain->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

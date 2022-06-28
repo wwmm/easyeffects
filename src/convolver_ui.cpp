@@ -449,7 +449,7 @@ void setup(ConvolverBox* self,
 
   self->settings = g_settings_new_with_path(tags::schema::convolver::id, schema_path.c_str());
 
-  convolver->post_messages = true;
+  convolver->set_post_messages(true);
 
   ui::convolver_menu_impulses::setup(self->impulses_menu, schema_path, application);
 
@@ -482,6 +482,8 @@ void setup(ConvolverBox* self,
 
 void dispose(GObject* object) {
   auto* self = EE_CONVOLVER_BOX(object);
+
+  self->data->convolver->set_post_messages(false);
 
   g_file_monitor_cancel(self->folder_monitor);
 

@@ -90,7 +90,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->settings = g_settings_new_with_path(tags::schema::limiter::id, schema_path.c_str());
 
-  limiter->post_messages = true;
+  limiter->set_post_messages(true);
 
   setup_dropdown_input_device(self);
 
@@ -217,6 +217,8 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
 void dispose(GObject* object) {
   auto* self = EE_LIMITER_BOX(object);
+
+  self->data->limiter->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

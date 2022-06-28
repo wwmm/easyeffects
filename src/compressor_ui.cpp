@@ -119,7 +119,7 @@ void setup(CompressorBox* self,
 
   self->settings = g_settings_new_with_path(tags::schema::compressor::id, schema_path.c_str());
 
-  compressor->post_messages = true;
+  compressor->set_post_messages(true);
 
   setup_dropdown_input_device(self);
 
@@ -262,6 +262,8 @@ void setup(CompressorBox* self,
 
 void dispose(GObject* object) {
   auto* self = EE_COMPRESSOR_BOX(object);
+
+  self->data->compressor->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

@@ -408,9 +408,9 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   // As we are showing the window we want the filters to send notifications about level meters, etc
 
-  PluginBase::post_messages = true;
-
   self->data->effects_base->spectrum->bypass = !g_settings_get_boolean(self->settings_spectrum, "show");
+
+  self->data->effects_base->output_level->set_post_messages(true);
 
   // pipeline latency
 
@@ -457,9 +457,9 @@ void unroot(GtkWidget* widget) {
 void dispose(GObject* object) {
   auto* self = EE_EFFECTS_BOX(object);
 
-  PluginBase::post_messages = false;
-
   self->data->effects_base->spectrum->bypass = true;
+
+  self->data->effects_base->output_level->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

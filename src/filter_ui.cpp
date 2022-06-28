@@ -61,7 +61,7 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 
   self->settings = g_settings_new_with_path(tags::schema::filter::id, schema_path.c_str());
 
-  filter->post_messages = true;
+  filter->set_post_messages(true);
 
   self->data->connections.push_back(filter->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -89,6 +89,8 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 
 void dispose(GObject* object) {
   auto* self = EE_FILTER_BOX(object);
+
+  self->data->filter->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

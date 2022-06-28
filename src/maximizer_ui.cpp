@@ -63,7 +63,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   self->settings = g_settings_new_with_path(tags::schema::maximizer::id, schema_path.c_str());
 
-  maximizer->post_messages = true;
+  maximizer->set_post_messages(true);
 
   self->data->connections.push_back(maximizer->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -92,6 +92,8 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
 void dispose(GObject* object) {
   auto* self = EE_MAXIMIZER_BOX(object);
+
+  self->data->maximizer->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

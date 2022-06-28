@@ -263,11 +263,11 @@ void Pitch::process(std::span<float>& left_in,
 
     g_idle_add((GSourceFunc) +
                    [](gpointer user_data) {
-                     if (!post_messages) {
+                     auto* self = static_cast<Pitch*>(user_data);
+
+                     if (!self->post_messages) {
                        return G_SOURCE_REMOVE;
                      }
-
-                     auto* self = static_cast<Pitch*>(user_data);
 
                      if (self->latency.empty()) {
                        return G_SOURCE_REMOVE;

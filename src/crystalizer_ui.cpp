@@ -134,7 +134,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   self->settings = g_settings_new_with_path(tags::schema::crystalizer::id, schema_path.c_str());
 
-  crystalizer->post_messages = true;
+  crystalizer->set_post_messages(true);
 
   build_bands(self);
 
@@ -153,6 +153,8 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
 void dispose(GObject* object) {
   auto* self = EE_CRYSTALIZER_BOX(object);
+
+  self->data->crystalizer->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

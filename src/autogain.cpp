@@ -335,11 +335,11 @@ void AutoGain::process(std::span<float>& left_in,
     if (notification_dt >= notification_time_window) {
       g_idle_add((GSourceFunc) +
                      [](gpointer user_data) {
-                       if (!post_messages) {
+                       auto* self = static_cast<AutoGain*>(user_data);
+
+                       if (!self->post_messages) {
                          return G_SOURCE_REMOVE;
                        }
-
-                       auto* self = static_cast<AutoGain*>(user_data);
 
                        if (self->results.empty()) {
                          return G_SOURCE_REMOVE;

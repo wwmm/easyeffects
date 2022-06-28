@@ -137,11 +137,11 @@ void Limiter::process(std::span<float>& left_in,
 
     g_idle_add((GSourceFunc) +
                    [](gpointer user_data) {
-                     if (!post_messages) {
+                     auto* self = static_cast<Limiter*>(user_data);
+
+                     if (!self->post_messages) {
                        return G_SOURCE_REMOVE;
                      }
-
-                     auto* self = static_cast<Limiter*>(user_data);
 
                      if (self->latency.empty()) {
                        return G_SOURCE_REMOVE;
@@ -181,11 +181,11 @@ void Limiter::process(std::span<float>& left_in,
 
       g_idle_add((GSourceFunc) +
                      [](gpointer user_data) {
-                       if (!post_messages) {
+                       auto* self = static_cast<Limiter*>(user_data);
+
+                       if (!self->post_messages) {
                          return G_SOURCE_REMOVE;
                        }
-
-                       auto* self = static_cast<Limiter*>(user_data);
 
                        if (self->gain_left.empty() || self->gain_right.empty() || self->sidechain_left.empty() ||
                            self->sidechain_right.empty()) {

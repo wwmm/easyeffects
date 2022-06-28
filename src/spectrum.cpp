@@ -76,7 +76,7 @@ void Spectrum::process(std::span<float>& left_in,
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  if (bypass || !post_messages || !fftw_ready) {
+  if (bypass || !fftw_ready) {
     return;
   }
 
@@ -117,7 +117,7 @@ void Spectrum::process(std::span<float>& left_in,
     notification_dt = 0.0F;
 
     util::idle_add([=, this]() {
-      if (!post_messages) {
+      if (bypass) {
         return;
       }
 

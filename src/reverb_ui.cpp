@@ -133,7 +133,7 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 
   self->settings = g_settings_new_with_path(tags::schema::reverb::id, schema_path.c_str());
 
-  reverb->post_messages = true;
+  reverb->set_post_messages(true);
 
   self->data->connections.push_back(reverb->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -175,6 +175,8 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 
 void dispose(GObject* object) {
   auto* self = EE_REVERB_BOX(object);
+
+  self->data->reverb->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

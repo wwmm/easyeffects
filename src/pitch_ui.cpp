@@ -61,7 +61,7 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 
   self->settings = g_settings_new_with_path(tags::schema::pitch::id, schema_path.c_str());
 
-  pitch->post_messages = true;
+  pitch->set_post_messages(true);
 
   self->data->connections.push_back(pitch->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -90,6 +90,8 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 
 void dispose(GObject* object) {
   auto* self = EE_PITCH_BOX(object);
+
+  self->data->pitch->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

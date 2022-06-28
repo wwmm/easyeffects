@@ -70,7 +70,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->settings = g_settings_new_with_path(tags::schema::multiband_gate::id, schema_path.c_str());
 
-  multiband_gate->post_messages = true;
+  multiband_gate->set_post_messages(true);
 
   self->data->connections.push_back(multiband_gate->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -161,6 +161,8 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
 void dispose(GObject* object) {
   auto* self = EE_MULTIBAND_GATE_BOX(object);
+
+  self->data->multiband_gate->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

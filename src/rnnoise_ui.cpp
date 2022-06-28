@@ -159,7 +159,7 @@ void setup(RNNoiseBox* self,
 
   self->settings = g_settings_new_with_path(tags::schema::rnnoise::id, schema_path.c_str());
 
-  rnnoise->post_messages = true;
+  rnnoise->set_post_messages(true);
 
   setup_listview(self);
 
@@ -229,6 +229,8 @@ void setup(RNNoiseBox* self,
 
 void dispose(GObject* object) {
   auto* self = EE_RNNOISE_BOX(object);
+
+  self->data->rnnoise->set_post_messages(false);
 
   g_file_monitor_cancel(self->folder_monitor);
 

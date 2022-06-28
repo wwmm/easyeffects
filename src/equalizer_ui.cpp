@@ -450,7 +450,7 @@ void setup(EqualizerBox* self,
   self->settings_right =
       g_settings_new_with_path(tags::schema::equalizer::channel_id, (schema_path + "rightchannel/").c_str());
 
-  equalizer->post_messages = true;
+  equalizer->set_post_messages(true);
 
   build_all_bands(self);
 
@@ -488,6 +488,8 @@ void setup(EqualizerBox* self,
 
 void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BOX(object);
+
+  self->data->equalizer->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

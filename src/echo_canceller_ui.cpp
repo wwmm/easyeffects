@@ -59,7 +59,7 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 
   self->settings = g_settings_new_with_path(tags::schema::echo_canceller::id, schema_path.c_str());
 
-  echo_canceller->post_messages = true;
+  echo_canceller->set_post_messages(true);
 
   self->data->connections.push_back(echo_canceller->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -82,6 +82,8 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 
 void dispose(GObject* object) {
   auto* self = EE_ECHO_CANCELLER_BOX(object);
+
+  self->data->echo_canceller->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

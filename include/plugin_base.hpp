@@ -78,13 +78,13 @@ class PluginBase {
 
   bool connected_to_pw = false;
 
-  inline static bool post_messages;
-
   std::vector<float> dummy_left, dummy_right;
 
   [[nodiscard]] auto get_node_id() const -> uint;
 
   void set_active(const bool& state) const;
+
+  void set_post_messages(const bool& state);
 
   auto connect_to_pw() -> bool;
 
@@ -124,6 +124,8 @@ class PluginBase {
   spa_hook listener{};
 
   data pf_data = {};
+
+  bool post_messages = false;
 
   uint n_ports = 4;
 

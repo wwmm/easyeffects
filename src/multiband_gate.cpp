@@ -190,11 +190,11 @@ void MultibandGate::process(std::span<float>& left_in,
 
       g_idle_add((GSourceFunc) +
                      [](gpointer user_data) {
-                       if (!post_messages) {
+                       auto* self = static_cast<MultibandGate*>(user_data);
+
+                       if (!self->post_messages) {
                          return G_SOURCE_REMOVE;
                        }
-
-                       auto* self = static_cast<MultibandGate*>(user_data);
 
                        if (self->output0.empty() || self->output1.empty() || self->output2.empty() ||
                            self->output3.empty() || self->gating0.empty() || self->gating1.empty() ||

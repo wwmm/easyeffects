@@ -67,7 +67,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->settings = g_settings_new_with_path(tags::schema::deesser::id, schema_path.c_str());
 
-  deesser->post_messages = true;
+  deesser->set_post_messages(true);
 
   self->data->connections.push_back(deesser->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -126,6 +126,8 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
 void dispose(GObject* object) {
   auto* self = EE_DEESSER_BOX(object);
+
+  self->data->deesser->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

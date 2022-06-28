@@ -67,7 +67,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, schema_path.c_str());
 
-  bass_enhancer->post_messages = true;
+  bass_enhancer->set_post_messages(true);
 
   self->data->connections.push_back(bass_enhancer->input_level.connect([=](const float& left, const float& right) {
     update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
@@ -93,6 +93,8 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
 void dispose(GObject* object) {
   auto* self = EE_BASS_ENHANCER_BOX(object);
+
+  self->data->bass_enhancer->set_post_messages(false);
 
   for (auto& c : self->data->connections) {
     c.disconnect();
