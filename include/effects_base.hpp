@@ -114,6 +114,8 @@ class EffectsBase {
 
   void create_filters_if_necessary();
 
+  void remove_unused_filters();
+
   void activate_filters();
 
   void deactivate_filters();

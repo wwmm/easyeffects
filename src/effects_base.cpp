@@ -192,6 +192,26 @@ void EffectsBase::create_filters_if_necessary() {
   }
 }
 
+void EffectsBase::remove_unused_filters() {
+  const auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
+
+  if (list.empty()) {
+    plugins.clear();
+
+    return;
+  }
+
+  for (auto it = plugins.begin(); it != plugins.end();) {
+    auto key = it->first;
+
+    if (std::ranges::find(list, key) == list.end()) {
+      it = plugins.erase(it);
+    } else {
+      it++;
+    }
+  }
+}
+
 void EffectsBase::activate_filters() {
   for (auto& plugin : plugins | std::views::values) {
     plugin->set_active(true);

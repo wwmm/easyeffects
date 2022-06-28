@@ -221,7 +221,7 @@ class PipeManager {
                      "libcanberra", "gsd-media-keys", "GNOME Shell", "speech-dispatcher", "speech-dispatcher-dummy",
                      "speech-dispatcher-espeak-ng", "Mutter", "gameoverlayui"});
 
-  std::array<std::string, 1U> blocklist_app_id = {"org.PulseAudio.pavucontrol"};
+  std::array<std::string, 2U> blocklist_app_id = {"org.PulseAudio.pavucontrol", "org.gnome.VolumeControl"};
 
   std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
 

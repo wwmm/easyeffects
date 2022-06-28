@@ -887,6 +887,10 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
+    if (g_strcmp0(v.data(), tags::pipewire::ee_sink_name) == 0) {
+      return 0;
+    }
+
     pm->default_output_device_name = v.data();
 
     util::idle_add([pm] {
@@ -902,6 +906,10 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
     std::array<char, 1024U> v{};
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
+
+    if (g_strcmp0(v.data(), tags::pipewire::ee_source_name) == 0) {
+      return 0;
+    }
 
     pm->default_input_device_name = v.data();
 
