@@ -26,6 +26,7 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
     try {
       str.imbue(std::locale::classic());  // C locale if user locale not set
     } catch (...) {
+      return GTK_INPUT_ERROR;
     }
   }
 
