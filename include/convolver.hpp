@@ -47,8 +47,6 @@ class Convolver : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const float&)> latency;
-
   bool do_autogain = false;
 
  private:

@@ -46,8 +46,6 @@ class EchoCanceller : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const float&)> latency;
-
  private:
   bool notify_latency = false;
   bool ready = false;

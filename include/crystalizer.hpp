@@ -48,8 +48,6 @@ class Crystalizer : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const float&)> latency;
-
  private:
   bool n_samples_is_power_of_2 = true;
   bool filters_are_ready = false;

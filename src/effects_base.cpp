@@ -26,64 +26,14 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
       global_settings(g_settings_new(tags::app::id)) {
   using namespace std::string_literals;
 
-  std::string path = "/" + schema + "/";
+  schema_base_path = "/" + schema + "/";
 
-  std::replace(path.begin(), path.end(), '.', '/');
+  std::replace(schema_base_path.begin(), schema_base_path.end(), '.', '/');
 
-  autogain = std::make_shared<AutoGain>(log_tag, tags::schema::autogain::id, path + "autogain/", pm);
-
-  bass_enhancer = std::make_shared<BassEnhancer>(log_tag, tags::schema::bass_enhancer::id, path + "bassenhancer/", pm);
-
-  bass_loudness = std::make_shared<BassLoudness>(log_tag, tags::schema::bass_loudness::id, path + "bassloudness/", pm);
-
-  compressor = std::make_shared<Compressor>(log_tag, tags::schema::compressor::id, path + "compressor/", pm);
-
-  convolver = std::make_shared<Convolver>(log_tag, tags::schema::convolver::id, path + "convolver/", pm);
-
-  crossfeed = std::make_shared<Crossfeed>(log_tag, tags::schema::crossfeed::id, path + "crossfeed/", pm);
-
-  crystalizer = std::make_shared<Crystalizer>(log_tag, tags::schema::crystalizer::id, path + "crystalizer/", pm);
-
-  deesser = std::make_shared<Deesser>(log_tag, tags::schema::deesser::id, path + "deesser/", pm);
-
-  delay = std::make_shared<Delay>(log_tag, tags::schema::delay::id, path + "delay/", pm);
-
-  echo_canceller =
-      std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path + "echocanceller/", pm);
-
-  equalizer = std::make_shared<Equalizer>(log_tag, tags::schema::equalizer::id, path + "equalizer/",
-                                          tags::schema::equalizer::channel_id, path + "equalizer/leftchannel/",
-                                          path + "equalizer/rightchannel/", pm);
-
-  exciter = std::make_shared<Exciter>(log_tag, tags::schema::exciter::id, path + "exciter/", pm);
-
-  filter = std::make_shared<Filter>(log_tag, tags::schema::filter::id, path + "filter/", pm);
-
-  gate = std::make_shared<Gate>(log_tag, tags::schema::gate::id, path + "gate/", pm);
-
-  limiter = std::make_shared<Limiter>(log_tag, tags::schema::limiter::id, path + "limiter/", pm);
-
-  loudness = std::make_shared<Loudness>(log_tag, tags::schema::loudness::id, path + "loudness/", pm);
-
-  maximizer = std::make_shared<Maximizer>(log_tag, tags::schema::maximizer::id, path + "maximizer/", pm);
-
-  multiband_compressor = std::make_shared<MultibandCompressor>(log_tag, tags::schema::multiband_compressor::id,
-                                                               path + "multibandcompressor/", pm);
-
-  multiband_gate =
-      std::make_shared<MultibandGate>(log_tag, tags::schema::multiband_gate::id, path + "multibandgate/", pm);
-
-  output_level = std::make_shared<OutputLevel>(log_tag, tags::schema::output_level::id, path + "outputlevel/", pm);
-
-  pitch = std::make_shared<Pitch>(log_tag, tags::schema::pitch::id, path + "pitch/", pm);
-
-  reverb = std::make_shared<Reverb>(log_tag, tags::schema::reverb::id, path + "reverb/", pm);
-
-  rnnoise = std::make_shared<RNNoise>(log_tag, tags::schema::rnnoise::id, path + "rnnoise/", pm);
+  output_level =
+      std::make_shared<OutputLevel>(log_tag, tags::schema::output_level::id, schema_base_path + "outputlevel/", pm);
 
   spectrum = std::make_shared<Spectrum>(log_tag, tags::schema::spectrum::id, tags::app::path + "/spectrum/"s, pm);
-
-  stereo_tools = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path + "stereotools/", pm);
 
   if (!output_level->connected_to_pw) {
     output_level->connect_to_pw();
@@ -93,58 +43,13 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     spectrum->connect_to_pw();
   }
 
-  plugins.insert(std::make_pair(autogain->name, autogain));
-  plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
-  plugins.insert(std::make_pair(bass_loudness->name, bass_loudness));
-  plugins.insert(std::make_pair(compressor->name, compressor));
-  plugins.insert(std::make_pair(convolver->name, convolver));
-  plugins.insert(std::make_pair(crossfeed->name, crossfeed));
-  plugins.insert(std::make_pair(crystalizer->name, crystalizer));
-  plugins.insert(std::make_pair(deesser->name, deesser));
-  plugins.insert(std::make_pair(delay->name, delay));
-  plugins.insert(std::make_pair(echo_canceller->name, echo_canceller));
-  plugins.insert(std::make_pair(equalizer->name, equalizer));
-  plugins.insert(std::make_pair(exciter->name, exciter));
-  plugins.insert(std::make_pair(filter->name, filter));
-  plugins.insert(std::make_pair(gate->name, gate));
-  plugins.insert(std::make_pair(limiter->name, limiter));
-  plugins.insert(std::make_pair(loudness->name, loudness));
-  plugins.insert(std::make_pair(maximizer->name, maximizer));
-  plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
-  plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));
-  plugins.insert(std::make_pair(pitch->name, pitch));
-  plugins.insert(std::make_pair(reverb->name, reverb));
-  plugins.insert(std::make_pair(rnnoise->name, rnnoise));
-  plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
-
-  connections.push_back(compressor->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(convolver->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(crystalizer->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(delay->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(echo_canceller->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(equalizer->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(limiter->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(loudness->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(maximizer->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(
-      multiband_compressor->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(pitch->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
-
-  connections.push_back(rnnoise->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
+  create_filters_if_necessary();
 
   gconnections.push_back(g_signal_connect(settings, "changed::plugins",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<EffectsBase*>(user_data);
+
+                                            self->create_filters_if_necessary();
 
                                             self->broadcast_pipeline_latency();
                                           }),
@@ -172,6 +77,118 @@ void EffectsBase::reset_settings() {
 
   for (auto& plugin : plugins | std::views::values) {
     plugin->reset_settings();
+  }
+}
+
+void EffectsBase::create_filters_if_necessary() {
+  const auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
+
+  if (list.empty()) {
+    return;
+  }
+
+  for (const auto& name : list) {
+    if (plugins.contains(name)) {
+      continue;
+    }
+
+    std::shared_ptr<PluginBase> filter;
+
+    // With rfind we check if the plugin name starts with a given base name
+
+    if (name.rfind(tags::plugin_name::autogain, 0) == 0) {
+      filter = std::make_shared<AutoGain>(log_tag, tags::schema::autogain::id,
+                                          schema_base_path + tags::plugin_name::autogain + "/", pm);
+    } else if (name.rfind(tags::plugin_name::bass_enhancer, 0) == 0) {
+      auto path = schema_base_path + tags::plugin_name::bass_enhancer + "/";
+
+      path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
+
+      filter = std::make_shared<BassEnhancer>(log_tag, tags::schema::bass_enhancer::id, path, pm);
+    } else if (name.rfind(tags::plugin_name::bass_loudness, 0) == 0) {
+      auto path = schema_base_path + tags::plugin_name::bass_loudness + "/";
+
+      path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
+
+      filter = std::make_shared<BassLoudness>(log_tag, tags::schema::bass_loudness::id, path, pm);
+    } else if (name.rfind(tags::plugin_name::compressor, 0) == 0) {
+      filter = std::make_shared<Compressor>(log_tag, tags::schema::compressor::id,
+                                            schema_base_path + tags::plugin_name::compressor + "/", pm);
+    } else if (name.rfind(tags::plugin_name::convolver, 0) == 0) {
+      filter = std::make_shared<Convolver>(log_tag, tags::schema::convolver::id,
+                                           schema_base_path + tags::plugin_name::convolver + "/", pm);
+    } else if (name.rfind(tags::plugin_name::crossfeed, 0) == 0) {
+      filter = std::make_shared<Crossfeed>(log_tag, tags::schema::crossfeed::id,
+                                           schema_base_path + tags::plugin_name::crossfeed + "/", pm);
+    } else if (name.rfind(tags::plugin_name::crystalizer, 0) == 0) {
+      filter = std::make_shared<Crystalizer>(log_tag, tags::schema::crystalizer::id,
+                                             schema_base_path + tags::plugin_name::crystalizer + "/", pm);
+    } else if (name.rfind(tags::plugin_name::deesser, 0) == 0) {
+      filter = std::make_shared<Deesser>(log_tag, tags::schema::deesser::id,
+                                         schema_base_path + tags::plugin_name::deesser + "/", pm);
+    } else if (name.rfind(tags::plugin_name::delay, 0) == 0) {
+      filter = std::make_shared<Delay>(log_tag, tags::schema::delay::id,
+                                       schema_base_path + tags::plugin_name::delay + "/", pm);
+    } else if (name.rfind(tags::plugin_name::echo_canceller, 0) == 0) {
+      auto path = schema_base_path + tags::plugin_name::echo_canceller + "/";
+
+      path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
+
+      filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm);
+    } else if (name.rfind(tags::plugin_name::exciter, 0) == 0) {
+      filter = std::make_shared<Exciter>(log_tag, tags::schema::exciter::id,
+                                         schema_base_path + tags::plugin_name::exciter + "/", pm);
+    } else if (name.rfind(tags::plugin_name::equalizer, 0) == 0) {
+      filter = std::make_shared<Equalizer>(
+          log_tag, tags::schema::equalizer::id, schema_base_path + "equalizer/", tags::schema::equalizer::channel_id,
+          schema_base_path + "equalizer/leftchannel/", schema_base_path + "equalizer/rightchannel/", pm);
+    } else if (name.rfind(tags::plugin_name::filter, 0) == 0) {
+      filter = std::make_shared<Filter>(log_tag, tags::schema::filter::id,
+                                        schema_base_path + tags::plugin_name::filter + "/", pm);
+    } else if (name.rfind(tags::plugin_name::gate, 0) == 0) {
+      filter =
+          std::make_shared<Gate>(log_tag, tags::schema::gate::id, schema_base_path + tags::plugin_name::gate + "/", pm);
+    } else if (name.rfind(tags::plugin_name::limiter, 0) == 0) {
+      filter = std::make_shared<Limiter>(log_tag, tags::schema::limiter::id,
+                                         schema_base_path + tags::plugin_name::limiter + "/", pm);
+    } else if (name.rfind(tags::plugin_name::loudness, 0) == 0) {
+      filter = std::make_shared<Loudness>(log_tag, tags::schema::loudness::id,
+                                          schema_base_path + tags::plugin_name::loudness + "/", pm);
+    } else if (name.rfind(tags::plugin_name::maximizer, 0) == 0) {
+      filter = std::make_shared<Maximizer>(log_tag, tags::schema::maximizer::id,
+                                           schema_base_path + tags::plugin_name::maximizer + "/", pm);
+    } else if (name.rfind(tags::plugin_name::multiband_compressor, 0) == 0) {
+      auto path = schema_base_path + tags::plugin_name::multiband_compressor + "/";
+
+      path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
+
+      filter = std::make_shared<MultibandCompressor>(log_tag, tags::schema::multiband_compressor::id, path, pm);
+    } else if (name.rfind(tags::plugin_name::multiband_gate, 0) == 0) {
+      auto path = schema_base_path + tags::plugin_name::multiband_gate + "/";
+
+      path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
+
+      filter = std::make_shared<MultibandGate>(log_tag, tags::schema::multiband_gate::id, path, pm);
+    } else if (name.rfind(tags::plugin_name::pitch, 0) == 0) {
+      filter = std::make_shared<Pitch>(log_tag, tags::schema::pitch::id,
+                                       schema_base_path + tags::plugin_name::pitch + "/", pm);
+    } else if (name.rfind(tags::plugin_name::reverb, 0) == 0) {
+      filter = std::make_shared<Reverb>(log_tag, tags::schema::reverb::id,
+                                        schema_base_path + tags::plugin_name::reverb + "/", pm);
+    } else if (name.rfind(tags::plugin_name::rnnoise, 0) == 0) {
+      filter = std::make_shared<RNNoise>(log_tag, tags::schema::rnnoise::id,
+                                         schema_base_path + tags::plugin_name::rnnoise + "/", pm);
+    } else if (name.rfind(tags::plugin_name::stereo_tools, 0) == 0) {
+      auto path = schema_base_path + tags::plugin_name::stereo_tools + "/";
+
+      path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
+
+      filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm);
+    }
+
+    connections.push_back(filter->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
+
+    plugins.insert(std::make_pair(name, filter));
   }
 }
 

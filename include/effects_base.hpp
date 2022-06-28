@@ -102,6 +102,8 @@ class EffectsBase {
  protected:
   GSettings *settings = nullptr, *global_settings = nullptr;
 
+  std::string schema_base_path;
+
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
@@ -109,6 +111,8 @@ class EffectsBase {
   std::vector<sigc::connection> connections;
 
   std::vector<gulong> gconnections;
+
+  void create_filters_if_necessary();
 
   void activate_filters();
 
