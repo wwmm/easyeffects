@@ -23,7 +23,10 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
   try {
     str.imbue(std::locale(""));  // User locale
   } catch (...) {
-    str.imbue(std::locale::classic());  // C locale if user locale not set
+    try {
+      str.imbue(std::locale::classic());  // C locale if user locale not set
+    } catch (...) {
+    }
   }
 
   if (auto min = 0.0, max = 0.0; str >> *new_value) {
