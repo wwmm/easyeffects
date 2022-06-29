@@ -97,8 +97,9 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
         gtk_level_bar_set_value(self->l_level, util::db_to_linear(loudness));
         gtk_label_set_text(self->l_label, fmt::format("{0:.0f}", loudness).c_str());
 
-        gtk_level_bar_set_value(self->g_level, util::db_to_linear(gain));
-        gtk_label_set_text(self->g_label, fmt::format(self->data->user_locale, "{0:.2Lf}", gain).c_str());
+        gtk_level_bar_set_value(self->g_level, gain);
+        gtk_label_set_text(self->g_label,
+                           fmt::format(self->data->user_locale, "{0:.2Lf}", util::linear_to_db(gain)).c_str());
 
         gtk_level_bar_set_value(self->m_level, util::db_to_linear(momentary));
         gtk_label_set_text(self->m_label, fmt::format("{0:.0f}", momentary).c_str());
