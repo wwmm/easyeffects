@@ -333,24 +333,7 @@ void AutoGain::process(std::span<float>& left_in,
     notification_dt += buffer_duration;
 
     if (notification_dt >= notification_time_window) {
-      g_idle_add((GSourceFunc) +
-                     [](gpointer user_data) {
-                       auto* self = static_cast<AutoGain*>(user_data);
-
-                       if (!self->post_messages) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       if (self->results.empty()) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       self->results.emit(self->loudness, self->internal_output_gain, self->momentary, self->shortterm,
-                                          self->global, self->relative, self->range);
-
-                       return G_SOURCE_REMOVE;
-                     },
-                 this);
+      results.emit(loudness, internal_output_gain, momentary, shortterm, global, relative, range);
 
       notify();
 

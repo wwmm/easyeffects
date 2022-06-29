@@ -53,13 +53,13 @@ class AutoGain : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const double&,  // loudness
-                    const double&,  // gain
-                    const double&,  // momentary
-                    const double&,  // shortterm
-                    const double&,  // integrated
-                    const double&,  // relative
-                    const double&)>
+  sigc::signal<void(const double,  // loudness
+                    const double,  // gain
+                    const double,  // momentary
+                    const double,  // shortterm
+                    const double,  // integrated
+                    const double,  // relative
+                    const double)>
       results;  // range
 
   double momentary = 0.0;

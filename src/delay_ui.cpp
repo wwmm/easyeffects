@@ -65,6 +65,10 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   self->data->connections.push_back(delay->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
       update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                    self->input_level_right_label, left, right);
     });
@@ -72,6 +76,10 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   self->data->connections.push_back(delay->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
       update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                    self->output_level_right_label, left, right);
     });

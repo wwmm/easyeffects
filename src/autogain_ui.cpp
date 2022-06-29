@@ -79,6 +79,10 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   self->data->connections.push_back(autogain->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
       update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                    self->input_level_right_label, left, right);
     });
@@ -86,6 +90,10 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   self->data->connections.push_back(autogain->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
       update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                    self->output_level_right_label, left, right);
     });
@@ -94,27 +102,41 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
   self->data->connections.push_back(autogain->results.connect(
       [=](const double& loudness, const double& gain, const double& momentary, const double& shortterm,
           const double& integrated, const double& relative, const double& range) {
-        gtk_level_bar_set_value(self->l_level, util::db_to_linear(loudness));
-        gtk_label_set_text(self->l_label, fmt::format("{0:.0f}", loudness).c_str());
+        util::idle_add([=]() {
+          if (self == nullptr) {
+            return;
+          }
 
-        gtk_level_bar_set_value(self->g_level, gain);
-        gtk_label_set_text(self->g_label,
-                           fmt::format(self->data->user_locale, "{0:.2Lf}", util::linear_to_db(gain)).c_str());
+          if (!GTK_IS_LEVEL_BAR(self->l_level) || !GTK_IS_LABEL(self->l_label) || !GTK_IS_LEVEL_BAR(self->g_level) ||
+              !GTK_IS_LABEL(self->g_label) || !GTK_IS_LEVEL_BAR(self->m_level) || !GTK_IS_LABEL(self->m_label) ||
+              !GTK_IS_LEVEL_BAR(self->s_level) || !GTK_IS_LABEL(self->s_label) || !GTK_IS_LEVEL_BAR(self->i_level) ||
+              !GTK_IS_LABEL(self->i_label) || !GTK_IS_LEVEL_BAR(self->r_level) || !GTK_IS_LABEL(self->r_label) ||
+              !GTK_IS_LEVEL_BAR(self->lra_level) || !GTK_IS_LABEL(self->lra_label)) {
+            return;
+          }
 
-        gtk_level_bar_set_value(self->m_level, util::db_to_linear(momentary));
-        gtk_label_set_text(self->m_label, fmt::format("{0:.0f}", momentary).c_str());
+          gtk_level_bar_set_value(self->l_level, util::db_to_linear(loudness));
+          gtk_label_set_text(self->l_label, fmt::format("{0:.0f}", loudness).c_str());
 
-        gtk_level_bar_set_value(self->s_level, util::db_to_linear(shortterm));
-        gtk_label_set_text(self->s_label, fmt::format("{0:.0f}", shortterm).c_str());
+          gtk_level_bar_set_value(self->g_level, gain);
+          gtk_label_set_text(self->g_label,
+                             fmt::format(self->data->user_locale, "{0:.2Lf}", util::linear_to_db(gain)).c_str());
 
-        gtk_level_bar_set_value(self->i_level, util::db_to_linear(integrated));
-        gtk_label_set_text(self->i_label, fmt::format("{0:.0f}", integrated).c_str());
+          gtk_level_bar_set_value(self->m_level, util::db_to_linear(momentary));
+          gtk_label_set_text(self->m_label, fmt::format("{0:.0f}", momentary).c_str());
 
-        gtk_level_bar_set_value(self->r_level, util::db_to_linear(relative));
-        gtk_label_set_text(self->r_label, fmt::format("{0:.0f}", relative).c_str());
+          gtk_level_bar_set_value(self->s_level, util::db_to_linear(shortterm));
+          gtk_label_set_text(self->s_label, fmt::format("{0:.0f}", shortterm).c_str());
 
-        gtk_level_bar_set_value(self->lra_level, util::db_to_linear(range));
-        gtk_label_set_text(self->lra_label, fmt::format("{0:.0f}", range).c_str());
+          gtk_level_bar_set_value(self->i_level, util::db_to_linear(integrated));
+          gtk_label_set_text(self->i_label, fmt::format("{0:.0f}", integrated).c_str());
+
+          gtk_level_bar_set_value(self->r_level, util::db_to_linear(relative));
+          gtk_label_set_text(self->r_label, fmt::format("{0:.0f}", relative).c_str());
+
+          gtk_level_bar_set_value(self->lra_level, util::db_to_linear(range));
+          gtk_label_set_text(self->lra_label, fmt::format("{0:.0f}", range).c_str());
+        });
       }));
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);

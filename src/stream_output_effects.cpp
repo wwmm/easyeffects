@@ -366,7 +366,7 @@ void StreamOutputEffects::disconnect_filters() {
 
   list_proxies.clear();
 
-  remove_unused_filters();
+  // remove_unused_filters();
 }
 
 void StreamOutputEffects::set_bypass(const bool& state) {
