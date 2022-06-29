@@ -67,6 +67,11 @@ void update_level(GtkLevelBar* w_left,
                   GtkLabel* w_right_label,
                   const float& left,
                   const float& right) {
+  if (!GTK_IS_LEVEL_BAR(w_left) || !GTK_IS_LABEL(w_left_label) || !GTK_IS_LEVEL_BAR(w_right) ||
+      !GTK_IS_LABEL(w_right_label)) {
+    return;
+  }
+
   if (auto db_value = util::db_to_linear(left); left >= -99.0) {
     if (db_value < 0.0) {
       db_value = 0.0;

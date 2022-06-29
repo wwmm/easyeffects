@@ -403,16 +403,8 @@ void PluginBase::notify() {
   const auto output_peak_db_l = util::linear_to_db(output_peak_left);
   const auto output_peak_db_r = util::linear_to_db(output_peak_right);
 
-  util::idle_add([=, this]() {
-    // The application was hanging when we finished it. This seems to fix the problem.
-
-    if (!post_messages) {
-      return;
-    }
-
-    input_level.emit(input_peak_db_l, input_peak_db_r);
-    output_level.emit(output_peak_db_l, output_peak_db_r);
-  });
+  input_level.emit(input_peak_db_l, input_peak_db_r);
+  output_level.emit(output_peak_db_l, output_peak_db_r);
 
   input_peak_left = util::minimum_linear_level;
   input_peak_right = util::minimum_linear_level;

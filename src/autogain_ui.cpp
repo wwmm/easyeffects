@@ -78,13 +78,17 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
   autogain->set_post_messages(true);
 
   self->data->connections.push_back(autogain->input_level.connect([=](const float& left, const float& right) {
-    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                 self->input_level_right_label, left, right);
+    util::idle_add([=]() {
+      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                   self->input_level_right_label, left, right);
+    });
   }));
 
   self->data->connections.push_back(autogain->output_level.connect([=](const float& left, const float& right) {
-    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                 self->output_level_right_label, left, right);
+    util::idle_add([=]() {
+      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                   self->output_level_right_label, left, right);
+    });
   }));
 
   self->data->connections.push_back(autogain->results.connect(

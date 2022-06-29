@@ -164,13 +164,17 @@ void setup(RNNoiseBox* self,
   setup_listview(self);
 
   self->data->connections.push_back(rnnoise->input_level.connect([=](const float& left, const float& right) {
-    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                 self->input_level_right_label, left, right);
+    util::idle_add([=]() {
+      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                   self->input_level_right_label, left, right);
+    });
   }));
 
   self->data->connections.push_back(rnnoise->output_level.connect([=](const float& left, const float& right) {
-    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                 self->output_level_right_label, left, right);
+    util::idle_add([=]() {
+      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                   self->output_level_right_label, left, right);
+    });
   }));
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);

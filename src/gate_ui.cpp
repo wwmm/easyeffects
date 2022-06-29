@@ -68,13 +68,17 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
   gate->set_post_messages(true);
 
   self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
-    update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                 self->input_level_right_label, left, right);
+    util::idle_add([=]() {
+      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                   self->input_level_right_label, left, right);
+    });
   }));
 
   self->data->connections.push_back(gate->output_level.connect([=](const float& left, const float& right) {
-    update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                 self->output_level_right_label, left, right);
+    util::idle_add([=]() {
+      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                   self->output_level_right_label, left, right);
+    });
   }));
 
   self->data->connections.push_back(gate->gating.connect([=](const double& value) {

@@ -207,6 +207,7 @@ void EffectsBase::remove_unused_filters() {
     if (std::ranges::find(list, key) == list.end()) {
       auto plugin = it->second;
 
+      plugin->bypass = true;
       plugin->set_post_messages(false);
       plugin->latency.clear();
 

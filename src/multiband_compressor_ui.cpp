@@ -159,14 +159,18 @@ void setup(MultibandCompressorBox* self,
 
   self->data->connections.push_back(
       multiband_compressor->input_level.connect([=](const float& left, const float& right) {
-        update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                     self->input_level_right_label, left, right);
+        util::idle_add([=]() {
+          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                       self->input_level_right_label, left, right);
+        });
       }));
 
   self->data->connections.push_back(
       multiband_compressor->output_level.connect([=](const float& left, const float& right) {
-        update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                     self->output_level_right_label, left, right);
+        util::idle_add([=]() {
+          update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                       self->output_level_right_label, left, right);
+        });
       }));
 
   self->data->connections.push_back(
