@@ -71,7 +71,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -82,7 +82,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -93,7 +93,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->harmonics.connect([=](const double value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

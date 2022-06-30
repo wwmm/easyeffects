@@ -65,7 +65,7 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 
   self->data->connections.push_back(loudness->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -76,7 +76,7 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 
   self->data->connections.push_back(loudness->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

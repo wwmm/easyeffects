@@ -63,7 +63,7 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 
   self->data->connections.push_back(echo_canceller->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -74,7 +74,7 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 
   self->data->connections.push_back(echo_canceller->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

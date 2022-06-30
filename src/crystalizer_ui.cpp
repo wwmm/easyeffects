@@ -140,7 +140,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   self->data->connections.push_back(crystalizer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -151,7 +151,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   self->data->connections.push_back(crystalizer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

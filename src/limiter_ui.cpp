@@ -111,7 +111,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -122,7 +122,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -133,7 +133,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->gain_left.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -147,7 +147,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->gain_right.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -161,7 +161,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->sidechain_left.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -175,7 +175,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->sidechain_right.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

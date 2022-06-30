@@ -455,7 +455,7 @@ void setup(ConvolverBox* self,
 
   self->data->connections.push_back(convolver->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -466,7 +466,7 @@ void setup(ConvolverBox* self,
 
   self->data->connections.push_back(convolver->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

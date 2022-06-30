@@ -69,7 +69,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -80,7 +80,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -91,7 +91,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->gating.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

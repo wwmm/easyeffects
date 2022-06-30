@@ -65,7 +65,7 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   self->data->connections.push_back(delay->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -76,7 +76,7 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   self->data->connections.push_back(delay->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

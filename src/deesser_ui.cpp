@@ -71,7 +71,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->data->connections.push_back(deesser->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -82,7 +82,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->data->connections.push_back(deesser->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -93,7 +93,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->data->connections.push_back(deesser->detected.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -108,7 +108,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->data->connections.push_back(deesser->compression.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

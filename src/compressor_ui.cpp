@@ -140,7 +140,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -151,7 +151,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -162,7 +162,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->reduction.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -176,7 +176,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->envelope.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -190,7 +190,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->sidechain.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -204,7 +204,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->curve.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

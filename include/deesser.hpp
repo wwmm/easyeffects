@@ -40,7 +40,7 @@ class Deesser : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const double&)> compression, detected;
+  sigc::signal<void(const double)> compression, detected;
 
   double compression_port_value = 0.0;
   double detected_port_value = 0.0;

@@ -456,7 +456,7 @@ void setup(EqualizerBox* self,
 
   self->data->connections.push_back(equalizer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -467,7 +467,7 @@ void setup(EqualizerBox* self,
 
   self->data->connections.push_back(equalizer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

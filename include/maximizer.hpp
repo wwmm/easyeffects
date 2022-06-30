@@ -43,7 +43,7 @@ class Maximizer : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const double&)> reduction;
+  sigc::signal<void(const double)> reduction;
 
   double reduction_port_value = 0.0;
 

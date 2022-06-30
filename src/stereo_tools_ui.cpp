@@ -67,7 +67,7 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 
   self->data->connections.push_back(stereo_tools->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -78,7 +78,7 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 
   self->data->connections.push_back(stereo_tools->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

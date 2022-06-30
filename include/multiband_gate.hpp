@@ -43,7 +43,7 @@ class MultibandGate : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const double&)> output0, output1, output2, output3, gating0, gating1, gating2, gating3;
+  sigc::signal<void(const double)> output0, output1, output2, output3, gating0, gating1, gating2, gating3;
 
   double output0_port_value = 0.0;
   double output1_port_value = 0.0;

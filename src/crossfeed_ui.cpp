@@ -78,7 +78,7 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 
   self->data->connections.push_back(crossfeed->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -89,7 +89,7 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 
   self->data->connections.push_back(crossfeed->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

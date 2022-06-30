@@ -50,7 +50,7 @@ class MultibandCompressor : public PluginBase {
 
   void update_probe_links() override;
 
-  sigc::signal<void(const std::array<float, n_bands>&)> reduction, envelope, curve, frequency_range;
+  sigc::signal<void(const std::array<float, n_bands>)> reduction, envelope, curve, frequency_range;
 
   float latency_port_value = 0.0F;
 

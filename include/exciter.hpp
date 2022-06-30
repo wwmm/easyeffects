@@ -40,7 +40,7 @@ class Exciter : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const double&)> harmonics;
+  sigc::signal<void(const double)> harmonics;
 
   double harmonics_port_value = 0.0;
 

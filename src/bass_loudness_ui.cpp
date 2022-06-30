@@ -63,7 +63,7 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
 
   self->data->connections.push_back(bass_loudness->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -74,7 +74,7 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
 
   self->data->connections.push_back(bass_loudness->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

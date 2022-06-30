@@ -79,7 +79,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   self->data->connections.push_back(autogain->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -90,7 +90,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   self->data->connections.push_back(autogain->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -103,7 +103,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
       [=](const double& loudness, const double& gain, const double& momentary, const double& shortterm,
           const double& integrated, const double& relative, const double& range) {
         util::idle_add([=]() {
-          if (self == nullptr) {
+          if (!GTK_IS_WIDGET(self)) {
             return;
           }
 

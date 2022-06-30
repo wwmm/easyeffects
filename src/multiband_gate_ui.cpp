@@ -74,7 +74,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -85,7 +85,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -96,7 +96,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output0.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -111,7 +111,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output1.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -126,7 +126,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output2.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -141,7 +141,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output3.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -156,7 +156,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating0.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -171,7 +171,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating1.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -186,7 +186,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating2.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -201,7 +201,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating3.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

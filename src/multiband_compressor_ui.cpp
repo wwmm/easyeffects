@@ -160,7 +160,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->input_level.connect([=](const float& left, const float& right) {
         util::idle_add([=]() {
-          if (self == nullptr) {
+          if (!GTK_IS_WIDGET(self)) {
             return;
           }
 
@@ -172,7 +172,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->output_level.connect([=](const float& left, const float& right) {
         util::idle_add([=]() {
-          if (self == nullptr) {
+          if (!GTK_IS_WIDGET(self)) {
             return;
           }
 
@@ -184,7 +184,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->frequency_range.connect([=](const std::array<float, n_bands>& values) {
         util::idle_add([=]() {
-          if (self == nullptr) {
+          if (!GTK_IS_WIDGET(self)) {
             return;
           }
 
@@ -197,7 +197,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->envelope.connect([=](const std::array<float, n_bands>& values) {
         util::idle_add([=]() {
-          if (self == nullptr) {
+          if (!GTK_IS_WIDGET(self)) {
             return;
           }
 
@@ -209,7 +209,7 @@ void setup(MultibandCompressorBox* self,
 
   self->data->connections.push_back(multiband_compressor->curve.connect([=](const std::array<float, n_bands>& values) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -222,7 +222,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->reduction.connect([=](const std::array<float, n_bands>& values) {
         util::idle_add([=]() {
-          if (self == nullptr) {
+          if (!GTK_IS_WIDGET(self)) {
             return;
           }
 

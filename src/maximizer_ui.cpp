@@ -67,7 +67,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   self->data->connections.push_back(maximizer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -78,7 +78,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   self->data->connections.push_back(maximizer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -89,7 +89,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   self->data->connections.push_back(maximizer->reduction.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 

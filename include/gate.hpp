@@ -40,7 +40,7 @@ class Gate : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const double&)> gating;
+  sigc::signal<void(const double)> gating;
 
   double gating_port_value = 0.0;
 

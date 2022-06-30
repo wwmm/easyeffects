@@ -71,7 +71,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
   self->data->connections.push_back(exciter->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -82,7 +82,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
   self->data->connections.push_back(exciter->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
@@ -93,7 +93,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
   self->data->connections.push_back(exciter->harmonics.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (self == nullptr) {
+      if (!GTK_IS_WIDGET(self)) {
         return;
       }
 
