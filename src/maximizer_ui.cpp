@@ -88,8 +88,18 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
   }));
 
   self->data->connections.push_back(maximizer->reduction.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->reduction_levelbar, value);
-    gtk_label_set_text(self->reduction_label, fmt::format("{0:.0f}", value).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->reduction_levelbar) || !GTK_IS_LABEL(self->reduction_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->reduction_levelbar, value);
+      gtk_label_set_text(self->reduction_label, fmt::format("{0:.0f}", value).c_str());
+    });
   }));
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);

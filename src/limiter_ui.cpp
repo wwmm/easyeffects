@@ -132,19 +132,59 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
   }));
 
   self->data->connections.push_back(limiter->gain_left.connect([=](const double& value) {
-    gtk_label_set_text(self->gain_left, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->gain_left)) {
+        return;
+      }
+
+      gtk_label_set_text(self->gain_left, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(limiter->gain_right.connect([=](const double& value) {
-    gtk_label_set_text(self->gain_right, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->gain_right)) {
+        return;
+      }
+
+      gtk_label_set_text(self->gain_right, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(limiter->sidechain_left.connect([=](const double& value) {
-    gtk_label_set_text(self->sidechain_left, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->sidechain_left)) {
+        return;
+      }
+
+      gtk_label_set_text(self->sidechain_left, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(limiter->sidechain_right.connect([=](const double& value) {
-    gtk_label_set_text(self->sidechain_right, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->sidechain_right)) {
+        return;
+      }
+
+      gtk_label_set_text(self->sidechain_right, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {

@@ -179,27 +179,10 @@ void Limiter::process(std::span<float>& left_in,
       sidechain_l_port_value = lv2_wrapper->get_control_port_value("sclm_l");
       sidechain_r_port_value = lv2_wrapper->get_control_port_value("sclm_r");
 
-      g_idle_add((GSourceFunc) +
-                     [](gpointer user_data) {
-                       auto* self = static_cast<Limiter*>(user_data);
-
-                       if (!self->post_messages) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       if (self->gain_left.empty() || self->gain_right.empty() || self->sidechain_left.empty() ||
-                           self->sidechain_right.empty()) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       self->gain_left.emit(self->gain_l_port_value);
-                       self->gain_right.emit(self->gain_r_port_value);
-                       self->sidechain_left.emit(self->sidechain_l_port_value);
-                       self->sidechain_right.emit(self->sidechain_r_port_value);
-
-                       return G_SOURCE_REMOVE;
-                     },
-                 this);
+      gain_left.emit(gain_l_port_value);
+      gain_right.emit(gain_r_port_value);
+      sidechain_left.emit(sidechain_l_port_value);
+      sidechain_right.emit(sidechain_r_port_value);
 
       notify();
 

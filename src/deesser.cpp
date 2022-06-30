@@ -109,14 +109,8 @@ void Deesser::process(std::span<float>& left_in,
       detected_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("detected"));
       compression_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("compression"));
 
-      util::idle_add([=, this]() {
-        if (!post_messages) {
-          return;
-        }
-
-        detected.emit(detected_port_value);
-        compression.emit(compression_port_value);
-      });
+      detected.emit(detected_port_value);
+      compression.emit(compression_port_value);
 
       notify();
 

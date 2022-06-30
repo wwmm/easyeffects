@@ -127,13 +127,7 @@ void Maximizer::process(std::span<float>& left_in,
 
       reduction_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gr"));
 
-      util::idle_add([=, this]() {
-        if (!post_messages) {
-          return;
-        }
-
-        reduction.emit(reduction_port_value);
-      });
+      reduction.emit(reduction_port_value);
 
       notify();
 

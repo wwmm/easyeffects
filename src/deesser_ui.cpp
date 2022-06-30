@@ -92,13 +92,33 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
   }));
 
   self->data->connections.push_back(deesser->detected.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->compression, 1.0 - value);
-    gtk_label_set_text(self->compression_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->compression) || !GTK_IS_LABEL(self->compression_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->compression, 1.0 - value);
+      gtk_label_set_text(self->compression_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(deesser->compression.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->detected, value);
-    gtk_label_set_text(self->detected_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->detected) || !GTK_IS_LABEL(self->detected_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->detected, value);
+      gtk_label_set_text(self->detected_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
