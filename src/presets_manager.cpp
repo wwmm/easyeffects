@@ -326,17 +326,15 @@ auto PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
       } catch (const nlohmann::json::exception& e) {
         g_settings_reset(sie_settings, "blocklist");
 
-        util::warning(e.what());
+        notify_error(PresetError::blocklist_format);
 
-        util::warning(
-            "A parsing error occurred while trying to load the blocklist inside the preset. The file could be invalid "
-            "or corrupted. Please check its content.");
+        util::warning(e.what());
 
         return false;
       } catch (...) {
         g_settings_reset(sie_settings, "blocklist");
 
-        util::warning("A generic error occurred while trying to load the blocklist inside the preset.");
+        notify_error(PresetError::blocklist_generic);
 
         return false;
       }
@@ -351,17 +349,15 @@ auto PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
       } catch (const nlohmann::json::exception& e) {
         g_settings_reset(soe_settings, "blocklist");
 
-        util::warning(e.what());
+        notify_error(PresetError::blocklist_format);
 
-        util::warning(
-            "A parsing error occurred while trying to load the blocklist inside the preset. The file could be invalid "
-            "or corrupted. Please check its content.");
+        util::warning(e.what());
 
         return false;
       } catch (...) {
         g_settings_reset(soe_settings, "blocklist");
 
-        util::warning("A generic error occurred while trying to load the blocklist inside the preset.");
+        notify_error(PresetError::blocklist_generic);
 
         return false;
       }
@@ -542,14 +538,13 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
           }
 
         } catch (const nlohmann::json::exception& e) {
-          util::warning(e.what());
+          notify_error(PresetError::pipeline_format);
 
-          util::warning("A parsing error occurred while trying to load the effects list inside " + name +
-                        " preset. The file could be invalid or corrupted. Please check its content.");
+          util::warning(e.what());
 
           return false;
         } catch (...) {
-          util::warning("A generic error occurred while trying to load the effects list inside " + name + " preset.");
+          notify_error(PresetError::pipeline_generic);
 
           return false;
         }
@@ -595,14 +590,13 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
           }
 
         } catch (const nlohmann::json::exception& e) {
-          util::warning(e.what());
+          notify_error(PresetError::pipeline_format);
 
-          util::warning("A parsing error occurred while trying to load the effects list inside " + name +
-                        " preset. The file could be invalid or corrupted. Please check its content.");
+          util::warning(e.what());
 
           return false;
         } catch (...) {
-          util::warning("A generic error occurred while trying to load the effects list inside " + name + " preset.");
+          notify_error(PresetError::pipeline_generic);
 
           return false;
         }
@@ -680,14 +674,13 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
         stereo_tools->read(preset_type, json);
       }
     } catch (const nlohmann::json::exception& e) {
-      util::warning(e.what());
+      notify_error(PresetError::plugin_format);
 
-      util::warning("A parsing error occurred while reading the parameters for " + name +
-                    " effect. The preset file could be invalid or corrupted. Please check its content.");
+      util::warning(e.what());
 
       return false;
     } catch (...) {
-      util::warning("A generic error occurred while parsing the preset file for " + name + " effect.");
+      notify_error(PresetError::plugin_generic);
 
       return false;
     }
@@ -900,4 +893,47 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
   }
 
   return false;
+}
+
+void PresetsManager::notify_error(const PresetError& preset_error) {
+  switch (preset_error) {
+    case PresetError::blocklist_format: {
+      util::warning(
+          "A parsing error occurred while trying to load the blocklist inside the preset. The file could be invalid "
+          "or corrupted. Please check its content.");
+
+      break;
+    }
+    case PresetError::blocklist_generic: {
+      util::warning("A generic error occurred while trying to load the blocklist inside the preset.");
+
+      break;
+    }
+    case PresetError::pipeline_format: {
+      util::warning(
+          "A parsing error occurred while trying to load the pipeline inside the preset. The file could be invalid "
+          "or corrupted. Please check its content.");
+
+      break;
+    }
+    case PresetError::pipeline_generic: {
+      util::warning("A generic error occurred while trying to load the pipeline inside the preset.");
+
+      break;
+    }
+    case PresetError::plugin_format: {
+      util::warning(
+          "A parsing error occurred while trying to load a plugin inside the preset. The file file could be invalid or "
+          "corrupted. Please check its content.");
+
+      break;
+    }
+    case PresetError::plugin_generic: {
+      util::warning("A generic error occurred while trying to load a plugin inside the preset.");
+
+      break;
+    }
+    default:
+      break;
+  }
 }
