@@ -75,7 +75,7 @@ gboolean set_boost_amount_sensitive(MultibandCompressorBandBox* self, const char
 }
 
 void set_end_label(MultibandCompressorBandBox* self, const float& value) {
-  if (self == nullptr) {
+  if (!GTK_IS_WIDGET(self)) {
     return;
   }
 
@@ -87,7 +87,7 @@ void set_end_label(MultibandCompressorBandBox* self, const float& value) {
 }
 
 void set_envelope_label(MultibandCompressorBandBox* self, const float& value) {
-  if (self == nullptr) {
+  if (!GTK_IS_WIDGET(self)) {
     return;
   }
 
@@ -99,7 +99,7 @@ void set_envelope_label(MultibandCompressorBandBox* self, const float& value) {
 }
 
 void set_curve_label(MultibandCompressorBandBox* self, const float& value) {
-  if (self == nullptr) {
+  if (!GTK_IS_WIDGET(self)) {
     return;
   }
 
@@ -111,7 +111,7 @@ void set_curve_label(MultibandCompressorBandBox* self, const float& value) {
 }
 
 void set_gain_label(MultibandCompressorBandBox* self, const float& value) {
-  if (self == nullptr) {
+  if (!GTK_IS_WIDGET(self)) {
     return;
   }
 
