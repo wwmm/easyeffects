@@ -159,27 +159,10 @@ void MultibandCompressor::process(std::span<float>& left_in,
         reduction_port_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
       }
 
-      g_idle_add((GSourceFunc) +
-                     [](gpointer user_data) {
-                       auto* self = static_cast<MultibandCompressor*>(user_data);
-
-                       if (!self->post_messages) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       if (self->frequency_range.empty() || self->envelope.empty() || self->curve.empty() ||
-                           self->reduction.empty()) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       self->frequency_range.emit(self->frequency_range_end_port_array);
-                       self->envelope.emit(self->envelope_port_array);
-                       self->curve.emit(self->curve_port_array);
-                       self->reduction.emit(self->reduction_port_array);
-
-                       return G_SOURCE_REMOVE;
-                     },
-                 this);
+      frequency_range.emit(frequency_range_end_port_array);
+      envelope.emit(envelope_port_array);
+      curve.emit(curve_port_array);
+      reduction.emit(reduction_port_array);
 
       notify();
 

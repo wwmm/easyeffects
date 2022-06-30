@@ -188,33 +188,15 @@ void MultibandGate::process(std::span<float>& left_in,
       gating2_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating2"));
       gating3_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating3"));
 
-      g_idle_add((GSourceFunc) +
-                     [](gpointer user_data) {
-                       auto* self = static_cast<MultibandGate*>(user_data);
+      output0.emit(output0_port_value);
+      output1.emit(output1_port_value);
+      output2.emit(output2_port_value);
+      output3.emit(output3_port_value);
 
-                       if (!self->post_messages) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       if (self->output0.empty() || self->output1.empty() || self->output2.empty() ||
-                           self->output3.empty() || self->gating0.empty() || self->gating1.empty() ||
-                           self->gating2.empty() || self->gating3.empty()) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       self->output0.emit(self->output0_port_value);
-                       self->output1.emit(self->output1_port_value);
-                       self->output2.emit(self->output2_port_value);
-                       self->output3.emit(self->output3_port_value);
-
-                       self->gating0.emit(self->gating0_port_value);
-                       self->gating1.emit(self->gating1_port_value);
-                       self->gating2.emit(self->gating2_port_value);
-                       self->gating3.emit(self->gating3_port_value);
-
-                       return G_SOURCE_REMOVE;
-                     },
-                 this);
+      gating0.emit(gating0_port_value);
+      gating1.emit(gating1_port_value);
+      gating2.emit(gating2_port_value);
+      gating3.emit(gating3_port_value);
 
       notify();
 

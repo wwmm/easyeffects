@@ -160,6 +160,10 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->input_level.connect([=](const float& left, const float& right) {
         util::idle_add([=]() {
+          if (self == nullptr) {
+            return;
+          }
+
           update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
                        self->input_level_right_label, left, right);
         });
@@ -168,6 +172,10 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->output_level.connect([=](const float& left, const float& right) {
         util::idle_add([=]() {
+          if (self == nullptr) {
+            return;
+          }
+
           update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                        self->output_level_right_label, left, right);
         });
@@ -175,29 +183,53 @@ void setup(MultibandCompressorBox* self,
 
   self->data->connections.push_back(
       multiband_compressor->frequency_range.connect([=](const std::array<float, n_bands>& values) {
-        for (size_t n = 0U; n < values.size(); n++) {
-          ui::multiband_compressor_band_box::set_end_label(self->bands[n], values[n]);
-        }
+        util::idle_add([=]() {
+          if (self == nullptr) {
+            return;
+          }
+
+          for (size_t n = 0U; n < values.size(); n++) {
+            ui::multiband_compressor_band_box::set_end_label(self->bands[n], values[n]);
+          }
+        });
       }));
 
   self->data->connections.push_back(
       multiband_compressor->envelope.connect([=](const std::array<float, n_bands>& values) {
-        for (size_t n = 0U; n < values.size(); n++) {
-          ui::multiband_compressor_band_box::set_envelope_label(self->bands[n], values[n]);
-        }
+        util::idle_add([=]() {
+          if (self == nullptr) {
+            return;
+          }
+
+          for (size_t n = 0U; n < values.size(); n++) {
+            ui::multiband_compressor_band_box::set_envelope_label(self->bands[n], values[n]);
+          }
+        });
       }));
 
   self->data->connections.push_back(multiband_compressor->curve.connect([=](const std::array<float, n_bands>& values) {
-    for (size_t n = 0U; n < values.size(); n++) {
-      ui::multiband_compressor_band_box::set_curve_label(self->bands[n], values[n]);
-    }
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      for (size_t n = 0U; n < values.size(); n++) {
+        ui::multiband_compressor_band_box::set_curve_label(self->bands[n], values[n]);
+      }
+    });
   }));
 
   self->data->connections.push_back(
       multiband_compressor->reduction.connect([=](const std::array<float, n_bands>& values) {
-        for (size_t n = 0U; n < values.size(); n++) {
-          ui::multiband_compressor_band_box::set_gain_label(self->bands[n], values[n]);
-        }
+        util::idle_add([=]() {
+          if (self == nullptr) {
+            return;
+          }
+
+          for (size_t n = 0U; n < values.size(); n++) {
+            ui::multiband_compressor_band_box::set_gain_label(self->bands[n], values[n]);
+          }
+        });
       }));
 
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {

@@ -75,18 +75,50 @@ gboolean set_boost_amount_sensitive(MultibandCompressorBandBox* self, const char
 }
 
 void set_end_label(MultibandCompressorBandBox* self, const float& value) {
+  if (self == nullptr) {
+    return;
+  }
+
+  if (!GTK_IS_LABEL(self->end_label)) {
+    return;
+  }
+
   gtk_label_set_text(self->end_label, fmt::format("{0:.0f}", value).c_str());
 }
 
 void set_envelope_label(MultibandCompressorBandBox* self, const float& value) {
+  if (self == nullptr) {
+    return;
+  }
+
+  if (!GTK_IS_LABEL(self->envelope_label)) {
+    return;
+  }
+
   gtk_label_set_text(self->envelope_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
 }
 
 void set_curve_label(MultibandCompressorBandBox* self, const float& value) {
+  if (self == nullptr) {
+    return;
+  }
+
+  if (!GTK_IS_LABEL(self->curve_label)) {
+    return;
+  }
+
   gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
 }
 
 void set_gain_label(MultibandCompressorBandBox* self, const float& value) {
+  if (self == nullptr) {
+    return;
+  }
+
+  if (!GTK_IS_LABEL(self->gain_label)) {
+    return;
+  }
+
   gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
 }
 

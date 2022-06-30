@@ -95,43 +95,123 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
   }));
 
   self->data->connections.push_back(multiband_gate->output0.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->output0, value);
-    gtk_label_set_text(self->output0_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->output0) || !GTK_IS_LABEL(self->output0_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->output0, value);
+      gtk_label_set_text(self->output0_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(multiband_gate->output1.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->output1, value);
-    gtk_label_set_text(self->output1_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->output1) || !GTK_IS_LABEL(self->output1_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->output1, value);
+      gtk_label_set_text(self->output1_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(multiband_gate->output2.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->output2, value);
-    gtk_label_set_text(self->output2_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->output2) || !GTK_IS_LABEL(self->output2_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->output2, value);
+      gtk_label_set_text(self->output2_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(multiband_gate->output3.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->output3, value);
-    gtk_label_set_text(self->output3_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->output3) || !GTK_IS_LABEL(self->output3_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->output3, value);
+      gtk_label_set_text(self->output3_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(multiband_gate->gating0.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->gating0, 1.0 - value);
-    gtk_label_set_text(self->gating0_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->gating0) || !GTK_IS_LABEL(self->gating0_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->gating0, 1.0 - value);
+      gtk_label_set_text(self->gating0_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(multiband_gate->gating1.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->gating1, 1.0 - value);
-    gtk_label_set_text(self->gating1_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->gating1) || !GTK_IS_LABEL(self->gating1_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->gating1, 1.0 - value);
+      gtk_label_set_text(self->gating1_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(multiband_gate->gating2.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->gating2, 1.0 - value);
-    gtk_label_set_text(self->gating2_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->gating2) || !GTK_IS_LABEL(self->gating2_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->gating2, 1.0 - value);
+      gtk_label_set_text(self->gating2_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(multiband_gate->gating3.connect([=](const double& value) {
-    gtk_level_bar_set_value(self->gating3, 1.0 - value);
-    gtk_label_set_text(self->gating3_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LEVEL_BAR(self->gating3) || !GTK_IS_LABEL(self->gating3_label)) {
+        return;
+      }
+
+      gtk_level_bar_set_value(self->gating3, 1.0 - value);
+      gtk_label_set_text(self->gating3_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
