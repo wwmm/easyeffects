@@ -191,27 +191,10 @@ void Compressor::process(std::span<float>& left_in,
       curve_port_value = lv2_wrapper->get_control_port_value("clm");
       envelope_port_value = lv2_wrapper->get_control_port_value("elm");
 
-      g_idle_add((GSourceFunc) +
-                     [](gpointer user_data) {
-                       auto* self = static_cast<Compressor*>(user_data);
-
-                       if (!self->post_messages) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       if (self->reduction.empty() || self->sidechain.empty() || self->curve.empty() ||
-                           self->envelope.empty()) {
-                         return G_SOURCE_REMOVE;
-                       }
-
-                       self->reduction.emit(self->reduction_port_value);
-                       self->sidechain.emit(self->sidechain_port_value);
-                       self->curve.emit(self->curve_port_value);
-                       self->envelope.emit(self->envelope_port_value);
-
-                       return G_SOURCE_REMOVE;
-                     },
-                 this);
+      reduction.emit(reduction_port_value);
+      sidechain.emit(sidechain_port_value);
+      curve.emit(curve_port_value);
+      envelope.emit(envelope_port_value);
 
       notify();
 

@@ -93,6 +93,10 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->harmonics.connect([=](const double value) {
     util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
       if (!GTK_IS_LEVEL_BAR(self->harmonics_levelbar) || !GTK_IS_LABEL(self->harmonics_levelbar_label)) {
         return;
       }

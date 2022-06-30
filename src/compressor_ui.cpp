@@ -161,19 +161,59 @@ void setup(CompressorBox* self,
   }));
 
   self->data->connections.push_back(compressor->reduction.connect([=](const double& value) {
-    gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->gain_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(compressor->envelope.connect([=](const double& value) {
-    gtk_label_set_text(self->envelope_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->envelope_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->envelope_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(compressor->sidechain.connect([=](const double& value) {
-    gtk_label_set_text(self->sidechain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->sidechain_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->sidechain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(compressor->curve.connect([=](const double& value) {
-    gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->curve_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
   }));
 
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
