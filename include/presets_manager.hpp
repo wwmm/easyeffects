@@ -71,6 +71,9 @@ class PresetsManager {
     plugin_generic
   };
 
+  // signal sending title and description strings
+  sigc::signal<void(const std::string, const std::string)> preset_load_error;
+
   auto get_names(const PresetType& preset_type) -> std::vector<std::string>;
 
   auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
@@ -166,5 +169,5 @@ class PresetsManager {
 
   auto load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool;
 
-  void notify_error(const PresetError& preset_error);
+  void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
 };

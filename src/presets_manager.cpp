@@ -674,13 +674,13 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
         stereo_tools->read(preset_type, json);
       }
     } catch (const nlohmann::json::exception& e) {
-      notify_error(PresetError::plugin_format);
+      notify_error(PresetError::plugin_format, name);
 
       util::warning(e.what());
 
       return false;
     } catch (...) {
-      notify_error(PresetError::plugin_generic);
+      notify_error(PresetError::plugin_generic, name);
 
       return false;
     }
@@ -895,41 +895,54 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
   return false;
 }
 
-void PresetsManager::notify_error(const PresetError& preset_error) {
+void PresetsManager::notify_error(const PresetError& preset_error, const std::string& plugin_name) {
   switch (preset_error) {
     case PresetError::blocklist_format: {
       util::warning(
-          "A parsing error occurred while trying to load the blocklist inside the preset. The file could be invalid "
+          "A parsing error occurred while trying to load the blocklist from the preset. The file could be invalid "
           "or corrupted. Please check its content.");
+
+      preset_load_error.emit(_("Preset Not Loaded Correctly"), _("Wrong Format in Excluded Apps List"));
 
       break;
     }
     case PresetError::blocklist_generic: {
-      util::warning("A generic error occurred while trying to load the blocklist inside the preset.");
+      util::warning("A generic error occurred while trying to load the blocklist from the preset.");
+
+      preset_load_error.emit(_("Preset Not Loaded Correctly"), _("Generic Error While Loading Excluded Apps List"));
 
       break;
     }
     case PresetError::pipeline_format: {
       util::warning(
-          "A parsing error occurred while trying to load the pipeline inside the preset. The file could be invalid "
+          "A parsing error occurred while trying to load the pipeline from the preset. The file could be invalid "
           "or corrupted. Please check its content.");
+
+      preset_load_error.emit(_("Preset Not Loaded Correctly"), _("Wrong Format in Effects List"));
 
       break;
     }
     case PresetError::pipeline_generic: {
-      util::warning("A generic error occurred while trying to load the pipeline inside the preset.");
+      util::warning("A generic error occurred while trying to load the pipeline from the preset.");
+
+      preset_load_error.emit(_("Preset Not Loaded Correctly"), _("Generic Error While Loading Effects List"));
 
       break;
     }
     case PresetError::plugin_format: {
-      util::warning(
-          "A parsing error occurred while trying to load a plugin inside the preset. The file file could be invalid or "
-          "corrupted. Please check its content.");
+      util::warning("A parsing error occurred while trying to load the " + plugin_name +
+                    " plugin from the preset. The file could be invalid or "
+                    "corrupted. Please check its content.");
+
+      preset_load_error.emit(_("Preset Not Loaded Correctly"), plugin_name + ": " + _("The Effect Has a Wrong Format"));
 
       break;
     }
     case PresetError::plugin_generic: {
-      util::warning("A generic error occurred while trying to load a plugin inside the preset.");
+      util::warning("A generic error occurred while trying to load the " + plugin_name + " plugin from the preset.");
+
+      preset_load_error.emit(_("Preset Not Loaded Correctly"),
+                             plugin_name + ": " + _("Generic Error While Loading The Effect"));
 
       break;
     }
