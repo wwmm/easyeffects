@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-16 14:36-0300\n"
-"PO-Revision-Date: 2022-06-20 08:14+0000\n"
+"PO-Revision-Date: 2022-06-30 23:18+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -3236,9 +3236,8 @@ msgid "Multiband Gate"
 msgstr "Porte à bruits multibande"
 
 #: src/plugin_name.cpp:44
-#, fuzzy
 msgid "Pitch"
-msgstr "ton"
+msgstr ""
 
 #: src/plugin_name.cpp:45
 msgid "Reverberation"
