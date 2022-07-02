@@ -447,6 +447,10 @@ void setup(ConvolverBox* self,
   self->data->convolver = convolver;
   self->data->application = application;
 
+  auto node_id = convolver->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->settings = g_settings_new_with_path(tags::schema::convolver::id, schema_path.c_str());
 
   convolver->set_post_messages(true);
@@ -455,7 +459,7 @@ void setup(ConvolverBox* self,
 
   self->data->connections.push_back(convolver->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -466,7 +470,7 @@ void setup(ConvolverBox* self,
 
   self->data->connections.push_back(convolver->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -496,6 +500,8 @@ void dispose(GObject* object) {
   auto* self = EE_CONVOLVER_BOX(object);
 
   self->data->convolver->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->convolver->get_node_id(), true);
 
   g_file_monitor_cancel(self->folder_monitor);
 

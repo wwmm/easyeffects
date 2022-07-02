@@ -24,6 +24,7 @@
 #include <fmt/format.h>
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <sstream>
 #include <string>
 #include "string_literal_wrapper.hpp"
@@ -35,6 +36,10 @@ namespace ui {
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
 
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int;
+
+void set_ignore_filter_idle_add(const uint& node_id, const bool& state);
+
+auto get_ignore_filter_idle_add(const uint& node_id) -> bool;
 
 void update_level(GtkLevelBar* w_left,
                   GtkLabel* w_left_label,

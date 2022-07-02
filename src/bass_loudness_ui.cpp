@@ -55,6 +55,10 @@ void on_reset(BassLoudnessBox* self, GtkButton* btn) {
 }
 
 void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, const std::string& schema_path) {
+  auto node_id = bass_loudness->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->bass_loudness = bass_loudness;
 
   self->settings = g_settings_new_with_path(tags::schema::bass_loudness::id, schema_path.c_str());
@@ -63,7 +67,7 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
 
   self->data->connections.push_back(bass_loudness->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -74,7 +78,7 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
 
   self->data->connections.push_back(bass_loudness->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -92,6 +96,8 @@ void dispose(GObject* object) {
   auto* self = EE_BASS_LOUDNESS_BOX(object);
 
   self->data->bass_loudness->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->bass_loudness->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

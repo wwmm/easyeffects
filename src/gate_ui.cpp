@@ -61,6 +61,10 @@ void on_reset(GateBox* self, GtkButton* btn) {
 }
 
 void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path) {
+  auto node_id = gate->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->gate = gate;
 
   self->settings = g_settings_new_with_path(tags::schema::gate::id, schema_path.c_str());
@@ -69,7 +73,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -80,7 +84,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -91,7 +95,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->gating.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -135,6 +139,8 @@ void dispose(GObject* object) {
   auto* self = EE_GATE_BOX(object);
 
   self->data->gate->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->gate->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

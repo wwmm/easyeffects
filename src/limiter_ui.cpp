@@ -88,6 +88,10 @@ void setup_dropdown_input_device(LimiterBox* self) {
 void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string& schema_path, PipeManager* pm) {
   self->data->limiter = limiter;
 
+  auto node_id = limiter->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->settings = g_settings_new_with_path(tags::schema::limiter::id, schema_path.c_str());
 
   limiter->set_post_messages(true);
@@ -111,7 +115,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -122,7 +126,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -133,7 +137,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->gain_left.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -147,7 +151,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->gain_right.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -161,7 +165,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->sidechain_left.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -175,7 +179,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->sidechain_right.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -271,6 +275,8 @@ void dispose(GObject* object) {
   auto* self = EE_LIMITER_BOX(object);
 
   self->data->limiter->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->limiter->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

@@ -130,6 +130,10 @@ void build_bands(CrystalizerBox* self) {
 }
 
 void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const std::string& schema_path) {
+  auto node_id = crystalizer->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->crystalizer = crystalizer;
 
   self->settings = g_settings_new_with_path(tags::schema::crystalizer::id, schema_path.c_str());
@@ -140,7 +144,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   self->data->connections.push_back(crystalizer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -151,7 +155,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   self->data->connections.push_back(crystalizer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -167,6 +171,8 @@ void dispose(GObject* object) {
   auto* self = EE_CRYSTALIZER_BOX(object);
 
   self->data->crystalizer->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->crystalizer->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

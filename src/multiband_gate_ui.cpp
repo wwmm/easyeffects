@@ -66,6 +66,10 @@ void on_reset(MultibandGateBox* self, GtkButton* btn) {
 }
 
 void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate, const std::string& schema_path) {
+  auto node_id = multiband_gate->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->multiband_gate = multiband_gate;
 
   self->settings = g_settings_new_with_path(tags::schema::multiband_gate::id, schema_path.c_str());
@@ -74,7 +78,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -85,7 +89,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -96,7 +100,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output0.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -111,7 +115,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output1.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -126,7 +130,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output2.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -141,7 +145,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output3.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -156,7 +160,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating0.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -171,7 +175,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating1.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -186,7 +190,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating2.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -201,7 +205,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating3.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -255,6 +259,8 @@ void dispose(GObject* object) {
   auto* self = EE_MULTIBAND_GATE_BOX(object);
 
   self->data->multiband_gate->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->multiband_gate->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

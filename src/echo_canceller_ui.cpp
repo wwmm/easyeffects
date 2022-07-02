@@ -55,6 +55,10 @@ void on_reset(EchoCancellerBox* self, GtkButton* btn) {
 }
 
 void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller, const std::string& schema_path) {
+  auto node_id = echo_canceller->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->echo_canceller = echo_canceller;
 
   self->settings = g_settings_new_with_path(tags::schema::echo_canceller::id, schema_path.c_str());
@@ -63,7 +67,7 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 
   self->data->connections.push_back(echo_canceller->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -74,7 +78,7 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 
   self->data->connections.push_back(echo_canceller->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -96,6 +100,8 @@ void dispose(GObject* object) {
   auto* self = EE_ECHO_CANCELLER_BOX(object);
 
   self->data->echo_canceller->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->echo_canceller->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

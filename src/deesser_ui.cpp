@@ -63,6 +63,10 @@ void on_reset(DeesserBox* self, GtkButton* btn) {
 }
 
 void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string& schema_path) {
+  auto node_id = deesser->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->deesser = deesser;
 
   self->settings = g_settings_new_with_path(tags::schema::deesser::id, schema_path.c_str());
@@ -71,7 +75,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->data->connections.push_back(deesser->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -82,7 +86,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->data->connections.push_back(deesser->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -93,7 +97,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->data->connections.push_back(deesser->detected.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -108,7 +112,7 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   self->data->connections.push_back(deesser->compression.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -160,6 +164,8 @@ void dispose(GObject* object) {
   auto* self = EE_DEESSER_BOX(object);
 
   self->data->deesser->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->deesser->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

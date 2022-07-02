@@ -63,6 +63,10 @@ void on_reset(ExciterBox* self, GtkButton* btn) {
 }
 
 void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string& schema_path) {
+  auto node_id = exciter->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->exciter = exciter;
 
   self->settings = g_settings_new_with_path(tags::schema::exciter::id, schema_path.c_str());
@@ -71,7 +75,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
   self->data->connections.push_back(exciter->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -82,7 +86,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
   self->data->connections.push_back(exciter->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -93,7 +97,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 
   self->data->connections.push_back(exciter->harmonics.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -126,6 +130,8 @@ void dispose(GObject* object) {
   auto* self = EE_EXCITER_BOX(object);
 
   self->data->exciter->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->exciter->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

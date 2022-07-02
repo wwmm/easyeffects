@@ -6,6 +6,8 @@ bool show_user_locale_warning = true;
 
 bool show_c_locale_warning = true;
 
+std::map<uint, bool> map_ignore_filter_idle_add;
+
 }  // namespace
 
 namespace ui {
@@ -59,6 +61,14 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
   }
 
   return GTK_INPUT_ERROR;
+}
+
+void set_ignore_filter_idle_add(const uint& node_id, const bool& state) {
+  map_ignore_filter_idle_add[node_id] = state;
+}
+
+auto get_ignore_filter_idle_add(const uint& node_id) -> bool {
+  return map_ignore_filter_idle_add[node_id];
 }
 
 void update_level(GtkLevelBar* w_left,

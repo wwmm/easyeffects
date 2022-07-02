@@ -63,6 +63,10 @@ void on_reset(BassEnhancerBox* self, GtkButton* btn) {
 }
 
 void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, const std::string& schema_path) {
+  auto node_id = bass_enhancer->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->bass_enhancer = bass_enhancer;
 
   self->settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, schema_path.c_str());
@@ -71,7 +75,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -82,7 +86,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -93,7 +97,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->harmonics.connect([=](const double value) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -117,6 +121,8 @@ void dispose(GObject* object) {
   auto* self = EE_BASS_ENHANCER_BOX(object);
 
   self->data->bass_enhancer->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->bass_enhancer->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

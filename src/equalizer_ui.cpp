@@ -442,6 +442,10 @@ void setup(EqualizerBox* self,
 
   self->data->application = application;
 
+  auto node_id = equalizer->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->settings = g_settings_new_with_path(tags::schema::equalizer::id, schema_path.c_str());
 
   self->settings_left =
@@ -456,7 +460,7 @@ void setup(EqualizerBox* self,
 
   self->data->connections.push_back(equalizer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -467,7 +471,7 @@ void setup(EqualizerBox* self,
 
   self->data->connections.push_back(equalizer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -502,6 +506,8 @@ void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BOX(object);
 
   self->data->equalizer->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->equalizer->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

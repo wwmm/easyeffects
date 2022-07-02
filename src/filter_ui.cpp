@@ -57,6 +57,10 @@ void on_reset(FilterBox* self, GtkButton* btn) {
 }
 
 void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path) {
+  auto node_id = filter->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->filter = filter;
 
   self->settings = g_settings_new_with_path(tags::schema::filter::id, schema_path.c_str());
@@ -65,7 +69,7 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 
   self->data->connections.push_back(filter->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -76,7 +80,7 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 
   self->data->connections.push_back(filter->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -103,6 +107,8 @@ void dispose(GObject* object) {
   auto* self = EE_FILTER_BOX(object);
 
   self->data->filter->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->filter->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

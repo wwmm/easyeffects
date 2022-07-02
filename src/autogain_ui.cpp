@@ -71,6 +71,10 @@ void on_reset_history(AutogainBox* self, GtkButton* btn) {
 }
 
 void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::string& schema_path) {
+  auto node_id = autogain->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->autogain = autogain;
 
   self->settings = g_settings_new_with_path(tags::schema::autogain::id, schema_path.c_str());
@@ -79,7 +83,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   self->data->connections.push_back(autogain->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -90,7 +94,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   self->data->connections.push_back(autogain->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -103,7 +107,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
       [=](const double& loudness, const double& gain, const double& momentary, const double& shortterm,
           const double& integrated, const double& relative, const double& range) {
         util::idle_add([=]() {
-          if (!GTK_IS_WIDGET(self)) {
+          if (get_ignore_filter_idle_add(node_id)) {
             return;
           }
 
@@ -149,6 +153,8 @@ void dispose(GObject* object) {
   auto* self = EE_AUTOGAIN_BOX(object);
 
   self->data->autogain->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->autogain->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

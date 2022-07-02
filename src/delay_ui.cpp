@@ -59,13 +59,17 @@ void on_reset(DelayBox* self, GtkButton* btn) {
 void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& schema_path) {
   self->data->delay = delay;
 
+  auto node_id = delay->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->settings = g_settings_new_with_path(tags::schema::delay::id, schema_path.c_str());
 
   delay->set_post_messages(true);
 
   self->data->connections.push_back(delay->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -76,7 +80,7 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   self->data->connections.push_back(delay->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -98,6 +102,8 @@ void dispose(GObject* object) {
   auto* self = EE_DELAY_BOX(object);
 
   self->data->delay->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->delay->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

@@ -70,6 +70,10 @@ void on_preset_jmeier(CrossfeedBox* self, GtkButton* btn) {
 }
 
 void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::string& schema_path) {
+  auto node_id = crossfeed->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->crossfeed = crossfeed;
 
   self->settings = g_settings_new_with_path(tags::schema::crossfeed::id, schema_path.c_str());
@@ -78,7 +82,7 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 
   self->data->connections.push_back(crossfeed->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -89,7 +93,7 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 
   self->data->connections.push_back(crossfeed->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -108,6 +112,8 @@ void dispose(GObject* object) {
   auto* self = EE_CROSSFEED_BOX(object);
 
   self->data->crossfeed->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->crossfeed->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

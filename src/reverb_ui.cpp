@@ -129,6 +129,10 @@ void on_preset_large_occupied_hall(ReverbBox* self, GtkButton* btn) {
 }
 
 void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& schema_path) {
+  auto node_id = reverb->get_node_id();
+
+  set_ignore_filter_idle_add(node_id, false);
+
   self->data->reverb = reverb;
 
   self->settings = g_settings_new_with_path(tags::schema::reverb::id, schema_path.c_str());
@@ -137,7 +141,7 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 
   self->data->connections.push_back(reverb->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -148,7 +152,7 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 
   self->data->connections.push_back(reverb->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (!GTK_IS_WIDGET(self)) {
+      if (get_ignore_filter_idle_add(node_id)) {
         return;
       }
 
@@ -189,6 +193,8 @@ void dispose(GObject* object) {
   auto* self = EE_REVERB_BOX(object);
 
   self->data->reverb->set_post_messages(false);
+
+  set_ignore_filter_idle_add(self->data->reverb->get_node_id(), true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

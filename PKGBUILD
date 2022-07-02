@@ -7,7 +7,7 @@ pkgdesc='Audio Effects for PipeWire Applications'
 arch=(x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'glib2' 'pipewire' 'lilv' 'lv2' 'libsigc++-3.0' 'libsndfile' 'libsamplerate' 'zita-convolver' 
+depends=('gtk4' 'libadwaita' 'glib2' 'pipewire-pulse' 'lilv' 'lv2' 'libsigc++-3.0' 'libsndfile' 'libsamplerate' 'zita-convolver' 
          'libebur128' 'rnnoise' 'rubberband' 'fftw' 'libbs2b' 'speexdsp' 'nlohmann-json' 'tbb' 'fmt')
 makedepends=('meson' 'itstool' 'appstream-glib')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
