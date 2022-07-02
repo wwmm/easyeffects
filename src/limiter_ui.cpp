@@ -25,6 +25,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<Limiter> limiter;
 
   std::vector<sigc::connection> connections;
@@ -88,9 +90,13 @@ void setup_dropdown_input_device(LimiterBox* self) {
 void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string& schema_path, PipeManager* pm) {
   self->data->limiter = limiter;
 
-  auto node_id = limiter->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->settings = g_settings_new_with_path(tags::schema::limiter::id, schema_path.c_str());
 
@@ -115,7 +121,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -126,7 +132,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -137,7 +143,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->gain_left.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -151,7 +157,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->gain_right.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -165,7 +171,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->sidechain_left.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -179,7 +185,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   self->data->connections.push_back(limiter->sidechain_right.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -276,7 +282,7 @@ void dispose(GObject* object) {
 
   self->data->limiter->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->limiter->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

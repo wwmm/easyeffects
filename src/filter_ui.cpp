@@ -25,6 +25,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<Filter> filter;
 
   std::vector<sigc::connection> connections;
@@ -57,9 +59,13 @@ void on_reset(FilterBox* self, GtkButton* btn) {
 }
 
 void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path) {
-  auto node_id = filter->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->data->filter = filter;
 
@@ -69,7 +75,7 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 
   self->data->connections.push_back(filter->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -80,7 +86,7 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 
   self->data->connections.push_back(filter->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -108,7 +114,7 @@ void dispose(GObject* object) {
 
   self->data->filter->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->filter->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

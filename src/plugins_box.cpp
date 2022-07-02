@@ -92,6 +92,10 @@ void add_plugins_to_stack(PluginsBox* self) {
   for (auto child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
     auto* next_child = gtk_widget_get_next_sibling(child);
 
+    uint serial = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(child), "serial"));
+
+    set_ignore_filter_idle_add(serial, true);
+
     gtk_stack_remove(self->stack, child);
 
     child = next_child;

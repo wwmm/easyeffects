@@ -25,6 +25,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<Compressor> compressor;
 
   std::vector<sigc::connection> connections;
@@ -117,9 +119,13 @@ void setup(CompressorBox* self,
            PipeManager* pm) {
   self->data->compressor = compressor;
 
-  auto node_id = compressor->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->settings = g_settings_new_with_path(tags::schema::compressor::id, schema_path.c_str());
 
@@ -144,7 +150,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -155,7 +161,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -166,7 +172,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->reduction.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -180,7 +186,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->envelope.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -194,7 +200,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->sidechain.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -208,7 +214,7 @@ void setup(CompressorBox* self,
 
   self->data->connections.push_back(compressor->curve.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -321,7 +327,7 @@ void dispose(GObject* object) {
 
   self->data->compressor->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->compressor->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

@@ -31,6 +31,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   app::Application* application;
 
   std::shared_ptr<Convolver> convolver;
@@ -447,9 +449,13 @@ void setup(ConvolverBox* self,
   self->data->convolver = convolver;
   self->data->application = application;
 
-  auto node_id = convolver->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->settings = g_settings_new_with_path(tags::schema::convolver::id, schema_path.c_str());
 
@@ -459,7 +465,7 @@ void setup(ConvolverBox* self,
 
   self->data->connections.push_back(convolver->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -470,7 +476,7 @@ void setup(ConvolverBox* self,
 
   self->data->connections.push_back(convolver->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -501,7 +507,7 @@ void dispose(GObject* object) {
 
   self->data->convolver->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->convolver->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   g_file_monitor_cancel(self->folder_monitor);
 

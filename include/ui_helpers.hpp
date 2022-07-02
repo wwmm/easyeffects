@@ -37,9 +37,11 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
 
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int;
 
-void set_ignore_filter_idle_add(const uint& node_id, const bool& state);
+auto get_new_filter_serial() -> uint;
 
-auto get_ignore_filter_idle_add(const uint& node_id) -> bool;
+void set_ignore_filter_idle_add(const uint& serial, const bool& state);
+
+auto get_ignore_filter_idle_add(const uint& serial) -> bool;
 
 void update_level(GtkLevelBar* w_left,
                   GtkLabel* w_left_label,

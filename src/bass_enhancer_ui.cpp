@@ -25,6 +25,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<BassEnhancer> bass_enhancer;
 
   std::vector<sigc::connection> connections;
@@ -63,9 +65,13 @@ void on_reset(BassEnhancerBox* self, GtkButton* btn) {
 }
 
 void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, const std::string& schema_path) {
-  auto node_id = bass_enhancer->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->data->bass_enhancer = bass_enhancer;
 
@@ -75,7 +81,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -86,7 +92,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -97,7 +103,7 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 
   self->data->connections.push_back(bass_enhancer->harmonics.connect([=](const double value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -122,7 +128,7 @@ void dispose(GObject* object) {
 
   self->data->bass_enhancer->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->bass_enhancer->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

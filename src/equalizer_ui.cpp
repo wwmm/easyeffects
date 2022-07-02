@@ -44,6 +44,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   app::Application* application;
 
   std::shared_ptr<Equalizer> equalizer;
@@ -442,9 +444,13 @@ void setup(EqualizerBox* self,
 
   self->data->application = application;
 
-  auto node_id = equalizer->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->settings = g_settings_new_with_path(tags::schema::equalizer::id, schema_path.c_str());
 
@@ -460,7 +466,7 @@ void setup(EqualizerBox* self,
 
   self->data->connections.push_back(equalizer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -471,7 +477,7 @@ void setup(EqualizerBox* self,
 
   self->data->connections.push_back(equalizer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -507,7 +513,7 @@ void dispose(GObject* object) {
 
   self->data->equalizer->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->equalizer->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

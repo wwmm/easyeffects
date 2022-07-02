@@ -25,6 +25,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<Maximizer> maximizer;
 
   std::vector<sigc::connection> connections;
@@ -59,9 +61,13 @@ void on_reset(MaximizerBox* self, GtkButton* btn) {
 }
 
 void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::string& schema_path) {
-  auto node_id = maximizer->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->data->maximizer = maximizer;
 
@@ -71,7 +77,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   self->data->connections.push_back(maximizer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -82,7 +88,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   self->data->connections.push_back(maximizer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -93,7 +99,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   self->data->connections.push_back(maximizer->reduction.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -121,7 +127,7 @@ void dispose(GObject* object) {
 
   self->data->maximizer->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->maximizer->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

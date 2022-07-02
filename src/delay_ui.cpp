@@ -25,6 +25,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<Delay> delay;
 
   std::vector<sigc::connection> connections;
@@ -59,9 +61,13 @@ void on_reset(DelayBox* self, GtkButton* btn) {
 void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& schema_path) {
   self->data->delay = delay;
 
-  auto node_id = delay->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->settings = g_settings_new_with_path(tags::schema::delay::id, schema_path.c_str());
 
@@ -69,7 +75,7 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   self->data->connections.push_back(delay->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -80,7 +86,7 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   self->data->connections.push_back(delay->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -103,7 +109,7 @@ void dispose(GObject* object) {
 
   self->data->delay->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->delay->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

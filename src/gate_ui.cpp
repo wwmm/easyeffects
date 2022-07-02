@@ -25,6 +25,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<Gate> gate;
 
   std::vector<sigc::connection> connections;
@@ -61,9 +63,13 @@ void on_reset(GateBox* self, GtkButton* btn) {
 }
 
 void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path) {
-  auto node_id = gate->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->data->gate = gate;
 
@@ -73,7 +79,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -84,7 +90,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -95,7 +101,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   self->data->connections.push_back(gate->gating.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -140,7 +146,7 @@ void dispose(GObject* object) {
 
   self->data->gate->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->gate->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

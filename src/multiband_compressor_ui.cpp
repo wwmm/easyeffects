@@ -29,6 +29,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<MultibandCompressor> multiband_compressor;
 
   std::vector<sigc::connection> connections;
@@ -132,9 +134,13 @@ void setup(MultibandCompressorBox* self,
            PipeManager* pm) {
   self->data->multiband_compressor = multiband_compressor;
 
-  auto node_id = multiband_compressor->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->settings = g_settings_new_with_path(tags::schema::multiband_compressor::id, schema_path.c_str());
 
@@ -164,7 +170,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->input_level.connect([=](const float& left, const float& right) {
         util::idle_add([=]() {
-          if (get_ignore_filter_idle_add(node_id)) {
+          if (get_ignore_filter_idle_add(serial)) {
             return;
           }
 
@@ -176,7 +182,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->output_level.connect([=](const float& left, const float& right) {
         util::idle_add([=]() {
-          if (get_ignore_filter_idle_add(node_id)) {
+          if (get_ignore_filter_idle_add(serial)) {
             return;
           }
 
@@ -188,7 +194,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->frequency_range.connect([=](const std::array<float, n_bands>& values) {
         util::idle_add([=]() {
-          if (get_ignore_filter_idle_add(node_id)) {
+          if (get_ignore_filter_idle_add(serial)) {
             return;
           }
 
@@ -201,7 +207,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->envelope.connect([=](const std::array<float, n_bands>& values) {
         util::idle_add([=]() {
-          if (get_ignore_filter_idle_add(node_id)) {
+          if (get_ignore_filter_idle_add(serial)) {
             return;
           }
 
@@ -213,7 +219,7 @@ void setup(MultibandCompressorBox* self,
 
   self->data->connections.push_back(multiband_compressor->curve.connect([=](const std::array<float, n_bands>& values) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -226,7 +232,7 @@ void setup(MultibandCompressorBox* self,
   self->data->connections.push_back(
       multiband_compressor->reduction.connect([=](const std::array<float, n_bands>& values) {
         util::idle_add([=]() {
-          if (get_ignore_filter_idle_add(node_id)) {
+          if (get_ignore_filter_idle_add(serial)) {
             return;
           }
 
@@ -294,7 +300,7 @@ void dispose(GObject* object) {
 
   self->data->multiband_compressor->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->multiband_compressor->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

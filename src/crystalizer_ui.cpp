@@ -27,6 +27,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<Crystalizer> crystalizer;
 
   std::vector<sigc::connection> connections;
@@ -130,9 +132,13 @@ void build_bands(CrystalizerBox* self) {
 }
 
 void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const std::string& schema_path) {
-  auto node_id = crystalizer->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->data->crystalizer = crystalizer;
 
@@ -144,7 +150,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   self->data->connections.push_back(crystalizer->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -155,7 +161,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   self->data->connections.push_back(crystalizer->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -172,7 +178,7 @@ void dispose(GObject* object) {
 
   self->data->crystalizer->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->crystalizer->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();

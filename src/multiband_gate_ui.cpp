@@ -25,6 +25,8 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
+  uint serial = 0;
+
   std::shared_ptr<MultibandGate> multiband_gate;
 
   std::vector<sigc::connection> connections;
@@ -66,9 +68,13 @@ void on_reset(MultibandGateBox* self, GtkButton* btn) {
 }
 
 void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate, const std::string& schema_path) {
-  auto node_id = multiband_gate->get_node_id();
+  auto serial = get_new_filter_serial();
 
-  set_ignore_filter_idle_add(node_id, false);
+  self->data->serial = serial;
+
+  g_object_set_data(G_OBJECT(self), "serial", GUINT_TO_POINTER(serial));
+
+  set_ignore_filter_idle_add(serial, false);
 
   self->data->multiband_gate = multiband_gate;
 
@@ -78,7 +84,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -89,7 +95,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -100,7 +106,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output0.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -115,7 +121,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output1.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -130,7 +136,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output2.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -145,7 +151,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->output3.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -160,7 +166,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating0.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -175,7 +181,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating1.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -190,7 +196,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating2.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -205,7 +211,7 @@ void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate
 
   self->data->connections.push_back(multiband_gate->gating3.connect([=](const double& value) {
     util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(node_id)) {
+      if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
@@ -260,7 +266,7 @@ void dispose(GObject* object) {
 
   self->data->multiband_gate->set_post_messages(false);
 
-  set_ignore_filter_idle_add(self->data->multiband_gate->get_node_id(), true);
+  set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
     c.disconnect();
