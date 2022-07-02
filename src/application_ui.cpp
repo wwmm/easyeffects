@@ -34,6 +34,8 @@ struct Data {
   GApplication* gapp;
 
   GtkIconTheme* icon_theme;
+
+  std::vector<sigc::connection> connections;
 };
 
 struct _ApplicationWindow {
@@ -87,6 +89,32 @@ auto setup_icon_theme() -> GtkIconTheme* {
   gtk_icon_theme_add_resource_path(icon_theme, tags::resources::icons);
 
   return icon_theme;
+}
+
+void setup_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr) {
+  if (parent == nullptr) {
+    return;
+  }
+
+  // Modal flag prevents interaction with other windows in the same application
+  auto* dialog = gtk_message_dialog_new(GTK_WINDOW(parent),
+                                        static_cast<GtkDialogFlags>(GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL),
+                                        GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, title.c_str());
+
+  gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), descr.c_str());
+
+  // Destroy the dialog when the user responds to it
+  g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), NULL);
+
+  // Keep the dialog on top of the main window, or center the dialog over the main window
+  gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
+
+  /* Version with Adw.MessageDialog available from libAdwaita 1.2
+  auto* dialog = adw_message_dialog_new(GTK_WINDOW(parent), title.c_str(), descr.c_str());
+
+  adw_message_dialog_add_response(ADW_MESSAGE_DIALOG(dialog), "close", "OK"); */
+
+  gtk_window_present(GTK_WINDOW(dialog));
 }
 
 void apply_css_style() {
@@ -158,9 +186,23 @@ void realize(GtkWidget* widget) {
   ui::effects_box::setup(self->soe_ui, app::EE_APP(self->data->gapp), PipelineType::output, self->data->icon_theme);
   ui::effects_box::setup(self->sie_ui, app::EE_APP(self->data->gapp), PipelineType::input, self->data->icon_theme);
   ui::pipe_manager_box::setup(self->pm_box, app::EE_APP(self->data->gapp));
+
+  self->data->connections.push_back(
+      app::EE_APP(self->data->gapp)
+          ->presets_manager->preset_load_error.connect([=](const std::string title, const std::string descr) {
+            setup_simple_message_dialog(widget, title, descr);
+          }));
 }
 
 void unrealize(GtkWidget* widget) {
+  auto* self = EE_APP_WINDOW(widget);
+
+  for (auto& c : self->data->connections) {
+    c.disconnect();
+  }
+
+  self->data->connections.clear();
+
   g_signal_handlers_disconnect_by_func(gtk_native_get_surface(GTK_NATIVE((widget))),
                                        reinterpret_cast<gpointer>(surface_state_changed), widget);
 
