@@ -45,7 +45,7 @@ struct Data {
 
   std::vector<gulong> gconnections_spectrum;
 
-  std::locale user_locale = std::locale("");
+  std::locale user_locale;
 };
 
 struct _EffectsBox {
@@ -251,6 +251,11 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   self->data->application = application;
   self->data->pipeline_type = pipeline_type;
   self->icon_theme = icon_theme;
+
+  try {
+    self->data->user_locale = std::locale("");
+  } catch (...) {
+  }
 
   switch (pipeline_type) {
     case PipelineType::input: {

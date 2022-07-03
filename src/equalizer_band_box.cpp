@@ -29,7 +29,7 @@ struct Data {
 
   std::vector<gulong> gconnections;
 
-  std::locale user_locale = std::locale("");
+  std::locale user_locale;
 };
 
 struct _EqualizerBandBox {
@@ -67,6 +67,11 @@ auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
     return g_strdup("");
   }
 
+  try {
+    self->data->user_locale = std::locale("");
+  } catch (...) {
+  }
+
   if (value > 1000.0) {
     return g_strdup(fmt::format(self->data->user_locale, "{0:.1Lf} kHz", value / 1000.0).c_str());
   } else {
@@ -79,12 +84,22 @@ auto set_band_quality_label(EqualizerBandBox* self, double value) -> const char*
     return g_strdup("");
   }
 
+  try {
+    self->data->user_locale = std::locale("");
+  } catch (...) {
+  }
+
   return g_strdup(fmt::format(self->data->user_locale, "Q {0:.2Lf}", value).c_str());
 }
 
 auto set_band_width_label(EqualizerBandBox* self, double quality, double frequency) -> const char* {
   if (self->data == nullptr) {
     return g_strdup("");
+  }
+
+  try {
+    self->data->user_locale = std::locale("");
+  } catch (...) {
   }
 
   if (quality > 0.0) {

@@ -35,7 +35,7 @@ struct Data {
 
   std::vector<gulong> gconnections_sie, gconnections_soe;
 
-  std::locale user_locale = std::locale("");
+  std::locale user_locale;
 };
 
 struct _PipeManagerBox {
@@ -432,6 +432,11 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   int rate = 0;
   util::str_to_num(std::string(pm->default_clock_rate), rate);
+
+  try {
+    self->data->user_locale = std::locale("");
+  } catch (...) {
+  }
 
   gtk_label_set_text(self->header_version, pm->header_version.c_str());
   gtk_label_set_text(self->library_version, pm->library_version.c_str());

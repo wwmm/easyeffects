@@ -35,7 +35,7 @@ struct Data {
 
   std::unordered_map<uint, bool>* enabled_app_list;
 
-  std::locale user_locale = std::locale("");
+  std::locale user_locale;
 };
 
 struct _AppInfo {
@@ -220,6 +220,11 @@ void update(AppInfo* self, const NodeInfo node_info) {
   }
 
   self->data->info = node_info;
+
+  try {
+    self->data->user_locale = std::locale("");
+  } catch (...) {
+  }
 
   gtk_label_set_text(self->app_name, node_info.name.c_str());
   gtk_label_set_text(self->media_name, node_info.media_name.c_str());
