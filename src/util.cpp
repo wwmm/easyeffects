@@ -359,4 +359,19 @@ void reset_all_keys(GSettings* settings) {
   g_strfreev(keys);
 }
 
+auto str_contains(const std::string& haystack, const std::string& needle) -> bool {
+  // This helper indicates if the needle is contained in the haystack string,
+  // but the empty needle will NOT return true.
+
+  // Instead .find method of C++ string class returns a size_type different
+  // than std::string::npos when the needle is empty indicating that an empty
+  // string IS CONTAINED in the haystack. That's pointless, so here is this helper.
+
+  if (needle.empty()) {
+    return false;
+  }
+
+  return (haystack.find(needle) != std::string::npos);
+}
+
 }  // namespace util

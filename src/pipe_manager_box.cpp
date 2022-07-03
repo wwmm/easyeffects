@@ -115,26 +115,8 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    bool match = false;
-
-    /*
-      Today I learned that ".find" considers an empty string as a subtring of all strings... This means it will
-      always return true if we give to it a variable that is empty... Unbelievable...
-    */
-
-    if (!device.bus_path.empty()) {
-      if (holder->info->name.find(device.bus_path) != std::string::npos) {
-        match = true;
-      }
-    }
-
-    if (!device.bus_id.empty()) {
-      if (holder->info->name.find(device.bus_id) != std::string::npos) {
-        match = true;
-      }
-    }
-
-    if (match) {
+    if (util::str_contains(holder->info->name, device.bus_path) ||
+        util::str_contains(holder->info->name, device.bus_id)) {
       device_profile = device.input_route_name;
 
       break;
@@ -182,26 +164,8 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    bool match = false;
-
-    /*
-      Today I learned that ".find" considers an empty string as a subtring of all strings... This means it will
-      always return true if we give to it a variable that is empty... Unbelievable...
-    */
-
-    if (!device.bus_path.empty()) {
-      if (holder->info->name.find(device.bus_path) != std::string::npos) {
-        match = true;
-      }
-    }
-
-    if (!device.bus_id.empty()) {
-      if (holder->info->name.find(device.bus_id) != std::string::npos) {
-        match = true;
-      }
-    }
-
-    if (match) {
+    if (util::str_contains(holder->info->name, device.bus_path) ||
+        util::str_contains(holder->info->name, device.bus_id)) {
       device_profile = device.output_route_name;
 
       break;
