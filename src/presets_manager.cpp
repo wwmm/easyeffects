@@ -896,6 +896,13 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
 }
 
 void PresetsManager::notify_error(const PresetError& preset_error, const std::string& plugin_name) {
+  std::string plugin_translated;
+
+  try {
+    plugin_translated = tags::plugin_name::get_translated().at(plugin_name);
+  } catch (...) {
+  }
+
   switch (preset_error) {
     case PresetError::blocklist_format: {
       util::warning(
@@ -934,7 +941,8 @@ void PresetsManager::notify_error(const PresetError& preset_error, const std::st
                     " plugin from the preset. The file could be invalid or "
                     "corrupted. Please check its content.");
 
-      preset_load_error.emit(_("Preset Not Loaded Correctly"), plugin_name + ": " + _("The Effect Has a Wrong Format"));
+      preset_load_error.emit(_("Preset Not Loaded Correctly"),
+                             plugin_translated + ": " + _("One or More Parameters Have a Wrong Format"));
 
       break;
     }
@@ -942,7 +950,7 @@ void PresetsManager::notify_error(const PresetError& preset_error, const std::st
       util::warning("A generic error occurred while trying to load the " + plugin_name + " plugin from the preset.");
 
       preset_load_error.emit(_("Preset Not Loaded Correctly"),
-                             plugin_name + ": " + _("Generic Error While Loading The Effect"));
+                             plugin_translated + ": " + _("Generic Error While Loading The Effect"));
 
       break;
     }

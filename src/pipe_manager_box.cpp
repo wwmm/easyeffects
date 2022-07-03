@@ -35,7 +35,7 @@ struct Data {
 
   std::vector<gulong> gconnections_sie, gconnections_soe;
 
-  std::locale user_locale = std::locale("");
+  std::locale user_locale;
 };
 
 struct _PipeManagerBox {
@@ -115,26 +115,8 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    bool match = false;
-
-    /*
-      Today I learned that ".find" considers an empty string as a subtring of all strings... This means it will
-      always return true if we give to it a variable that is empty... Unbelievable...
-    */
-
-    if (!device.bus_path.empty()) {
-      if (holder->info->name.find(device.bus_path) != std::string::npos) {
-        match = true;
-      }
-    }
-
-    if (!device.bus_id.empty()) {
-      if (holder->info->name.find(device.bus_id) != std::string::npos) {
-        match = true;
-      }
-    }
-
-    if (match) {
+    if (util::str_contains(holder->info->name, device.bus_path) ||
+        util::str_contains(holder->info->name, device.bus_id)) {
       device_profile = device.input_route_name;
 
       break;
@@ -182,26 +164,8 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    bool match = false;
-
-    /*
-      Today I learned that ".find" considers an empty string as a subtring of all strings... This means it will
-      always return true if we give to it a variable that is empty... Unbelievable...
-    */
-
-    if (!device.bus_path.empty()) {
-      if (holder->info->name.find(device.bus_path) != std::string::npos) {
-        match = true;
-      }
-    }
-
-    if (!device.bus_id.empty()) {
-      if (holder->info->name.find(device.bus_id) != std::string::npos) {
-        match = true;
-      }
-    }
-
-    if (match) {
+    if (util::str_contains(holder->info->name, device.bus_path) ||
+        util::str_contains(holder->info->name, device.bus_id)) {
       device_profile = device.output_route_name;
 
       break;
@@ -468,6 +432,11 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   int rate = 0;
   util::str_to_num(std::string(pm->default_clock_rate), rate);
+
+  try {
+    self->data->user_locale = std::locale("");
+  } catch (...) {
+  }
 
   gtk_label_set_text(self->header_version, pm->header_version.c_str());
   gtk_label_set_text(self->library_version, pm->library_version.c_str());

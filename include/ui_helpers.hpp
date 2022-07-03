@@ -99,8 +99,14 @@ void prepare_scale(GtkScale* scale) {
 
             using namespace std::string_literals;
 
-            auto text =
-                fmt::format(std::locale(""), "{0:.{1}Lf}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
+            std::locale loc;
+
+            try {
+              loc = std::locale("");
+            } catch (...) {
+            }
+
+            auto text = fmt::format(loc, "{0:.{1}Lf}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
 
             return g_strdup(text.c_str());
           },

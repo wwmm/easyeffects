@@ -96,6 +96,8 @@ auto get_files_name(std::filesystem::path dir_path, const std::string& ext) -> s
 
 void reset_all_keys(GSettings* settings);
 
+auto str_contains(const std::string& haystack, const std::string& needle) -> bool;
+
 template <typename T>
 void print_type(T v) {
   warning(typeid(v).name());

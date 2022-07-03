@@ -33,7 +33,7 @@ struct Data {
 
   std::vector<gulong> gconnections;
 
-  std::locale user_locale = std::locale("");
+  std::locale user_locale;
 };
 
 struct _AutogainBox {
@@ -123,6 +123,11 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
               !GTK_IS_LABEL(self->i_label) || !GTK_IS_LEVEL_BAR(self->r_level) || !GTK_IS_LABEL(self->r_label) ||
               !GTK_IS_LEVEL_BAR(self->lra_level) || !GTK_IS_LABEL(self->lra_label)) {
             return;
+          }
+
+          try {
+            self->data->user_locale = std::locale("");
+          } catch (...) {
           }
 
           gtk_level_bar_set_value(self->l_level, util::db_to_linear(loudness));
