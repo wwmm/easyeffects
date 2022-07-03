@@ -22,6 +22,7 @@
 #include <pipewire/extensions/metadata.h>
 #include <pipewire/pipewire.h>
 #include <sigc++/sigc++.h>
+#include <spa/monitor/device.h>
 #include <spa/param/audio/format-utils.h>
 #include <spa/param/audio/type-info.h>
 #include <spa/param/props.h>
@@ -171,6 +172,8 @@ struct DeviceInfo {
   std::string input_route_name;
 
   std::string output_route_name;
+
+  std::string bus_id;
 
   std::string bus_path;
 

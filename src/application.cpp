@@ -106,11 +106,31 @@ void on_startup(GApplication* gapp) {
     NodeInfo target_node;
 
     for (const auto& [serial, node] : self->pm->node_map) {
-      if (node.name.find(device.bus_path) != std::string::npos &&
-          node.media_class == tags::pipewire::media_class::source) {
-        target_node = node;
+      if (node.media_class == tags::pipewire::media_class::source) {
+        bool match = false;
 
-        break;
+        /*
+          Today I learned that ".find" considers an empty string as a subtring of all strings... This means it will
+          always return true if we give to it a variable that is empty... Unbelievable...
+        */
+
+        if (!device.bus_path.empty()) {
+          if (node.name.find(device.bus_path) != std::string::npos) {
+            match = true;
+          }
+        }
+
+        if (!device.bus_id.empty()) {
+          if (node.name.find(device.bus_id) != std::string::npos) {
+            match = true;
+          }
+        }
+
+        if (match) {
+          target_node = node;
+
+          break;
+        }
       }
     }
 
@@ -137,11 +157,31 @@ void on_startup(GApplication* gapp) {
     NodeInfo target_node;
 
     for (const auto& [serial, node] : self->pm->node_map) {
-      if (node.name.find(device.bus_path) != std::string::npos &&
-          node.media_class == tags::pipewire::media_class::sink) {
-        target_node = node;
+      if (node.media_class == tags::pipewire::media_class::sink) {
+        bool match = false;
 
-        break;
+        /*
+          Today I learned that ".find" considers an empty string as a subtring of all strings... This means it will
+          always return true if we give to it a variable that is empty... Unbelievable...
+        */
+
+        if (!device.bus_path.empty()) {
+          if (node.name.find(device.bus_path) != std::string::npos) {
+            match = true;
+          }
+        }
+
+        if (!device.bus_id.empty()) {
+          if (node.name.find(device.bus_id) != std::string::npos) {
+            match = true;
+          }
+        }
+
+        if (match) {
+          target_node = node;
+
+          break;
+        }
       }
     }
 
@@ -169,7 +209,7 @@ void on_startup(GApplication* gapp) {
         }
 
         for (const auto& device : self->pm->list_devices) {
-          if (name.find(device.bus_path) != std::string::npos) {
+          if (name.find(device.bus_path) != std::string::npos || name.find(device.bus_id) != std::string::npos) {
             self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
 
             return;
@@ -189,7 +229,7 @@ void on_startup(GApplication* gapp) {
         }
 
         for (const auto& device : self->pm->list_devices) {
-          if (name.find(device.bus_path) != std::string::npos) {
+          if (name.find(device.bus_path) != std::string::npos || name.find(device.bus_id) != std::string::npos) {
             self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
 
             return;
