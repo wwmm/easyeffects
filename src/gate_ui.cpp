@@ -43,13 +43,20 @@ struct _GateBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkLevelBar* gating;
+  GtkLabel *gain_label, *sidechain_label, *curve_label, *envelope_label;
 
-  GtkLabel* gating_label;
+  GtkToggleButton* hysteresis;
 
-  GtkSpinButton *attack, *release, *threshold, *knee, *ratio, *range, *makeup;
+  GtkSpinButton *attack, *release, *curve_threshold, *curve_zone, *hysteresis_threshold, *hysteresis_zone, *reduction,
+      *makeup, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
 
-  GtkComboBoxText *detection, *stereo_link;
+  GtkComboBoxText *sidechain_input, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode;
+
+  GtkToggleButton* listen;
+
+  GtkDropDown* dropdown_input_devices;
+
+  GListStore* input_devices_model;
 
   GSettings* settings;
 
@@ -62,7 +69,35 @@ void on_reset(GateBox* self, GtkButton* btn) {
   util::reset_all_keys(self->settings);
 }
 
-void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path) {
+gboolean set_dropdown_sensitive(GateBox* self, const char* active_id) {
+  if (g_strcmp0(active_id, "External") == 0) {
+    return 1;
+  }
+
+  return 0;
+}
+
+void setup_dropdown_input_device(GateBox* self) {
+  auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->input_devices_model));
+
+  g_signal_connect(self->dropdown_input_devices, "notify::selected-item",
+                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, GateBox* self) {
+                     if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
+                       auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
+
+                       g_settings_set_string(self->settings, "sidechain-input-device", holder->info->name.c_str());
+                     }
+                   }),
+                   self);
+
+  gtk_drop_down_set_model(self->dropdown_input_devices, G_LIST_MODEL(self->input_devices_model));
+
+  g_object_unref(selection);
+}
+
+void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path, PipeManager* pm) {
+  self->data->gate = gate;
+
   auto serial = get_new_filter_serial();
 
   self->data->serial = serial;
@@ -71,11 +106,26 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   set_ignore_filter_idle_add(serial, false);
 
-  self->data->gate = gate;
-
   self->settings = g_settings_new_with_path(tags::schema::gate::id, schema_path.c_str());
 
   gate->set_post_messages(true);
+
+  setup_dropdown_input_device(self);
+
+  for (const auto& [serial, node] : pm->node_map) {
+    if (node.name == tags::pipewire::ee_sink_name || node.name == tags::pipewire::ee_source_name) {
+      continue;
+    }
+
+    if (node.media_class == tags::pipewire::media_class::source ||
+        node.media_class == tags::pipewire::media_class::virtual_source) {
+      auto holder = ui::holders::create(node);
+
+      g_list_store_append(self->input_devices_model, holder);
+
+      g_object_unref(holder);
+    }
+  }
 
   self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
@@ -99,19 +149,98 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->gating.connect([=](const double& value) {
+  self->data->connections.push_back(gate->reduction.connect([=](const double& value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
       }
 
-      if (!GTK_IS_LEVEL_BAR(self->gating) || !GTK_IS_LABEL(self->gating_label)) {
+      if (!GTK_IS_LABEL(self->gain_label)) {
         return;
       }
 
-      gtk_level_bar_set_value(self->gating, 1.0 - value);
-      gtk_label_set_text(self->gating_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+      gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
     });
+  }));
+
+  self->data->connections.push_back(gate->envelope.connect([=](const double& value) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->envelope_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->envelope_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
+  }));
+
+  self->data->connections.push_back(gate->sidechain.connect([=](const double& value) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->sidechain_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->sidechain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
+  }));
+
+  self->data->connections.push_back(gate->curve.connect([=](const double& value) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->curve_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+    });
+  }));
+
+  self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+      if (holder->info->id == info.id) {
+        g_object_unref(holder);
+
+        return;
+      }
+
+      g_object_unref(holder);
+    }
+
+    auto holder = ui::holders::create(info);
+
+    g_list_store_append(self->input_devices_model, holder);
+
+    g_object_unref(holder);
+  }));
+
+  self->data->connections.push_back(pm->source_removed.connect([=](const NodeInfo info) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+      if (holder->info->id == info.id) {
+        g_list_store_remove(self->input_devices_model, n);
+
+        g_object_unref(holder);
+
+        return;
+      }
+
+      g_object_unref(holder);
+    }
   }));
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
@@ -119,26 +248,55 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
   g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "range", gtk_spin_button_get_adjustment(self->range), "value",
+  g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "knee", gtk_spin_button_get_adjustment(self->knee), "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "curve-threshold", gtk_spin_button_get_adjustment(self->curve_threshold), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "curve-zone", gtk_spin_button_get_adjustment(self->curve_zone), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "hysteresis", self->hysteresis, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "hysteresis-threshold", gtk_spin_button_get_adjustment(self->hysteresis_threshold),
+                  "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "hysteresis-zone", gtk_spin_button_get_adjustment(self->hysteresis_zone), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "reduction", gtk_spin_button_get_adjustment(self->reduction), "value",
+                  G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "makeup", gtk_spin_button_get_adjustment(self->makeup), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "ratio", gtk_spin_button_get_adjustment(self->ratio), "value",
+  g_settings_bind(self->settings, "sidechain-preamp", gtk_spin_button_get_adjustment(self->preamp), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
+  g_settings_bind(self->settings, "sidechain-reactivity", gtk_spin_button_get_adjustment(self->reactivity), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
+  g_settings_bind(self->settings, "sidechain-lookahead", gtk_spin_button_get_adjustment(self->lookahead), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "detection", self->detection, "active-id", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "hpf-frequency", gtk_spin_button_get_adjustment(self->hpf_freq), "value",
+                  G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "stereo-link", self->stereo_link, "active-id", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "lpf-frequency", gtk_spin_button_get_adjustment(self->lpf_freq), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sidechain-listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sidechain-input", self->sidechain_input, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sidechain-mode", self->sidechain_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "sidechain-source", self->sidechain_source, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "hpf-mode", self->hpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "lpf-mode", self->lpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -196,19 +354,34 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_right_label);
 
-  gtk_widget_class_bind_template_child(widget_class, GateBox, gating);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, gating_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, gain_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, sidechain_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, curve_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, envelope_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, attack);
   gtk_widget_class_bind_template_child(widget_class, GateBox, release);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, threshold);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, knee);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, ratio);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, range);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, curve_threshold);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, curve_zone);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, hysteresis);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, hysteresis_threshold);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, hysteresis_zone);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, reduction);
   gtk_widget_class_bind_template_child(widget_class, GateBox, makeup);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, detection);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, stereo_link);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, preamp);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, reactivity);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, lookahead);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, hpf_freq);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, lpf_freq);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, sidechain_input);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, sidechain_mode);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, sidechain_source);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, lpf_mode);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, hpf_mode);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, listen);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, dropdown_input_devices);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, set_dropdown_sensitive);
 }
 
 void gate_box_init(GateBox* self) {
@@ -216,13 +389,16 @@ void gate_box_init(GateBox* self) {
 
   self->data = new Data();
 
+  self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
+
+  prepare_spinbuttons<"dB">(self->curve_threshold, self->curve_zone, self->hysteresis_threshold, self->hysteresis_zone,
+                            self->reduction, self->makeup, self->preamp);
+
+  prepare_spinbuttons<"Hz">(self->hpf_freq, self->lpf_freq);
+
+  prepare_spinbuttons<"ms">(self->attack, self->release, self->lookahead, self->reactivity);
+
   prepare_scales<"dB">(self->input_gain, self->output_gain);
-
-  prepare_spinbuttons<"dB">(self->range, self->threshold, self->knee, self->makeup);
-
-  prepare_spinbuttons<"ms">(self->attack, self->release);
-
-  prepare_spinbuttons<"">(self->ratio);
 }
 
 auto create() -> GateBox* {

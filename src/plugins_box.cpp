@@ -229,7 +229,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
       auto plugin_ptr = effects_base->get_plugin_instance<Gate>(name);
 
-      ui::gate_box::setup(box, plugin_ptr, self->data->schema_path + name + "/");
+      ui::gate_box::setup(box, plugin_ptr, self->data->schema_path + name + "/", self->data->application->pm);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
     } else if (name.rfind(tags::plugin_name::limiter, 0) == 0) {

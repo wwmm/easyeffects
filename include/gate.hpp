@@ -36,14 +36,28 @@ class Gate : public PluginBase {
   void process(std::span<float>& left_in,
                std::span<float>& right_in,
                std::span<float>& left_out,
-               std::span<float>& right_out) override;
+               std::span<float>& right_out,
+               std::span<float>& probe_left,
+               std::span<float>& probe_right) override;
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const double)> gating;
+  void update_probe_links() override;
 
-  double gating_port_value = 0.0;
+  sigc::signal<void(const float)> reduction, sidechain, curve, envelope, latency;
+
+  float reduction_port_value = 0.0F;
+  float sidechain_port_value = 0.0F;
+  float curve_port_value = 0.0F;
+  float envelope_port_value = 0.0F;
+  float latency_port_value = 0.0F;
 
  private:
+  uint latency_n_frames = 0U;
+
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
+
+  std::vector<pw_proxy*> list_proxies;
+
+  void update_sidechain_links(const std::string& key);
 };
