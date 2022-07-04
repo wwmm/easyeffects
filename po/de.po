@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-16 14:36-0300\n"
-"PO-Revision-Date: 2022-06-27 22:05+0000\n"
+"PO-Revision-Date: 2022-07-04 14:14+0000\n"
 "Last-Translator: Florian Schaupp <fschaupp@hotmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
@@ -331,13 +331,12 @@ msgstr ""
 "versucht wurde, automatisch ein Profil ohne Voreinstellungen anzulegen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:108
-#, fuzzy
 msgid ""
 "Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
 "an application crash."
 msgstr ""
 "Es wurde ein Fehler behoben, der beim Setzen des Equalizer-Bereichs von "
-"`Qualität` auf `Null`die Anwendungzum Abstürzen brachte."
+"`Qualität` auf `Null`die Anwendung zum Abstürzen brachte."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
 msgid ""
@@ -372,6 +371,9 @@ msgid ""
 "We have a new option that allows the user to disable our menus `autohide`. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
 msgstr ""
+"Jetzt gibt es eine Möglichkeit das automatische Verstecken des Menüs zu "
+"deaktivieren. Dies könnte bei einigen Problemen mit den GTK 4.0 Popover-"
+"Menüs helfen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
 msgid ""
@@ -428,6 +430,9 @@ msgid ""
 "When a spinbutton is filled with an out of range value, now it is updated "
 "with the lowest/highest value rather than resetting to the previous one."
 msgstr ""
+"Wenn ein Drehknopf einen Wertebereich außerhalb des möglichen Bereichs hat, "
+"wird dieser jetzt an die Grenzen angepasst - statt den vorherigen Wert zu "
+"verwenden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
 msgid ""
@@ -442,13 +447,12 @@ msgid "The `tbb` library is a new dependency"
 msgstr "Die `tbb`-Bibliothek ist jetzt eine neue Abhängigkeit"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
-#, fuzzy
 msgid ""
 "The Limiter and the Multiband Compressor plugins can now use an optional "
 "external sidechain."
 msgstr ""
-"Die Begrenzer- und Multiband-Kompressor-Plugins nutzen jetzt eine optionale, "
-"externe Referenz."
+"Die Begrenzer- und Multiband-Kompressor-Plugins können jetzt optional eine "
+"externe Sidechain verwenden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
 msgid ""
@@ -486,7 +490,7 @@ msgstr "Hoffentlich sind jetzt Abstürze, wie in [1172] gemeldet, behoben."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
 msgid "Prevented a case in which Spectrum was crashing."
-msgstr ""
+msgstr "Ein Absturz durch die Spektrum-Anzeige wurde verindert."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:167
 msgid ""
@@ -516,12 +520,18 @@ msgid ""
 "its target preset will be updated. This way we can change the profile preset "
 "without having to remove and recreating it."
 msgstr ""
+"Die Ziel-Voreinstellung für Geräte in der Liste werden aktualisiert, wenn "
+"ein Standardprofil hinterlegt wird. So kann die Profil-Voreinstellung "
+"angepasst werden, ohne das es komplett neu angelegt werden muss."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue [1051]("
 msgstr ""
+"Das Laden von Standard-Voreinstellungen wurde wieder verändert. Jetzt "
+"sollten mehr Geräte damit funktionieren. Für weitere Informationen siehe "
+"Ticket [1051]("
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:186
 msgid ""
@@ -529,85 +539,111 @@ msgid ""
 "stack, new plugins are added at the second to last position in order to "
 "prevent hardware damage on eventually high output level."
 msgstr ""
+"Wenn der Begrenzer oder Maximierer an der letzten Position der Plugin-Kette "
+"stehen, werden weitere Plugins an der zweitletzen Position hinzugefügt, um "
+"eventuelle Schäden an den Geräten durch zu hohe Laustärke zu vermeiden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid ""
 "Removing an application from the blocklist, its previous enabled state is "
 "restored."
 msgstr ""
+"Wird eine Anwendung von der Blockliste entfernt, so werden die zuvor "
+"aktivierten Einstellungen wiederhergestellt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
 msgid ""
 "Sometimes when removing imported models from the noise reduction plugin the "
 "current used model was not properly updated. This should be fixed now."
 msgstr ""
+"Manchmal wurde beim Entfernen von importierten Rauschreduzierungs-Modellen "
+"das aktuelle Modell nicht korrekt gesetzt. Dies sollte nun behoben sein."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:192
 msgid ""
 "When editing presets files in an external editor, duplicated entries won't "
 "be shown in our presets menu."
 msgstr ""
+"Wenn Voreinstellungs-Datein in einem externen Editor verändert wurden, "
+"konnten duplizierte Einträge nicht mehr in dem Menü für Voreinstellungen "
+"angezeigt werden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
 msgid "Now the blocklist is correctly set when switching presets."
 msgstr ""
+"Jetzt wird die Blockliste korrekt gesetzt wenn Voreinstellungen gewechselt "
+"werden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:194
 msgid ""
 "Now the status of the global bypass button is correctly updated when "
 "changing plugin stack."
 msgstr ""
+"Jetzt wird der Status der Knopfes für die globalen Umleitung korrekt "
+"aktualisiert, wenn die Plugin-Liste verändert wird."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
 msgid ""
 "Missing icons on the system should not be shown inside the application info "
 "UI"
 msgstr ""
+"Fehlende Symbole des Systems sollten jetzt nicht mehr in der "
+"Applikationsinfo-Oberfläche angezeigt werden"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
 msgid ""
 "Some icons not showing in Plasma DE with Breeze icon theme should appear now."
 msgstr ""
+"Manche Symbole, die auf der Plasma-Desktopoberfläche gefehlt haben, sollten "
+"jetzt wieder angezeigt werden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
 msgid "Updated Chinese translation."
-msgstr ""
+msgstr "Die chinesische Übersetzung wurde aktualisiert."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:205
 msgid "Updated Italian translation."
-msgstr ""
+msgstr "Die italienische Übersetzung wurde aktualisiert."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid "Added support for the compressor parameter `Boost Amount`"
-msgstr ""
+msgstr "Der Kompressor-Parameter `Boost Amount`wird jetzt unterstützt"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
 msgid ""
 "The multiband compressor plugin now uses the stereo multiband compressor "
 "plugin from Linux Studio Plugins instead of the one from Calf Studio."
 msgstr ""
+"Das Multiband-Kompressor Plugin verwendet jetzt das Stereo Multiband-"
+"Kompressor Plugin von Linux Studio anstatt des Plugins von Calf Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
 msgid ""
 "The limiter plugin now uses the stereo limiter plugin from Linux Studio "
 "Plugins instead of the one from Calf Studio."
 msgstr ""
+"Das Begrenzer Plugin verwendet jetzt das Begrenzer Plugin von Linux Studio "
+"Plugins statt das von Calf Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
 msgid ""
 "LV2 filters now are spawned in PipeWire graph only when loaded the first "
 "time. Once loaded, they remain connected until EasyEffects shutdown."
 msgstr ""
+"LV2 Filter werden jetzt in der PipeWire nur beim ersten Mal eingehängt. "
+"Jetzt bleiben diese eingehängt, bis EasyEffects beendet wird."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
 msgid "The echo canceller sampling rate is now properly set."
-msgstr ""
+msgstr "Die Abtastrate der Echounterdrückung wird jetzt korrekt gesetzt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid ""
 "The threshold parameter from the deesser plugin is now saved to the preset "
 "file."
 msgstr ""
+"Der Grenz-Parameter des Deesser Plugins wird jetzt in der Voreinstellungs-"
+"Datei gespeichert."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
 msgid ""
@@ -619,41 +655,54 @@ msgid ""
 "Depending on the input gain or output gain values the corresponding level "
 "bars could not be aligned."
 msgstr ""
+"Die Balkenvisualisierung konnte nicht abhängig von der Eingangs- oder "
+"Ausgangsverstäkung angepasst werden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
 msgid ""
 "When adding more equalizer bands they are set to `Bell` instead of `Off`."
 msgstr ""
+"Beim Hinzufügen von Equalizer-Bereichen, werden diese jetzt mit `Glocke` "
+"statt `Aus` vorbesetzt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid ""
 "Equalizer APO presets loading is now working properly on locales different "
 "than C."
 msgstr ""
+"Laden der Equalizer APO Voreinstellungen funktioniert jetzt auch in anderen "
+"Sprachen korrekt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
 msgid "Improved linking management between port filter nodes in PipeWire."
 msgstr ""
+"Verbessertes Verknüfungs-Management zwischen Schnittstellenfilter-Knoten in "
+"PipeWire."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:220
 msgid ""
 "The crystalizer plugin signal amplification was too high before. It should "
 "be within more reasonable levels now."
 msgstr ""
+"Die Signalverstärkung des Crystalizer Plugins war zuvor zu hoch. Jetzt "
+"sollte es mit sinnvolleren Werten vorbelegt sein."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 msgid ""
 "Improved the resampler used in the plugins that require one(like the rnnoise "
 "plugin)"
 msgstr ""
+"Der Resampler, der in verschiedenen Plugins (z.B. der Rauschunterdrückung) "
+"verwendet wird, wurde verbessert"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:233
 msgid "Setting multiple autoloading presets should be fine now"
 msgstr ""
+"Setzen von mehreren Standard-Voreinstellungen sollte jetzt funktionieren"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:234
 msgid "Transient windows are now properly set for some plugins dialogs"
-msgstr ""
+msgstr "Die Dialog-Fenster mancher Plugins werden jetzt korrekt dargestellt"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:235
 msgid ""
@@ -1166,7 +1215,7 @@ msgstr "Schwelle"
 #: data/ui/multiband_gate.ui:618 data/ui/multiband_gate.ui:978
 #: data/ui/multiband_gate.ui:1338
 msgid "Release"
-msgstr "Ausklingzeit"
+msgstr "Freigabe"
 
 #: data/ui/compressor.ui:267 data/ui/multiband_compressor_band.ui:274
 #, fuzzy
@@ -1828,87 +1877,87 @@ msgstr "Keine"
 
 #: data/ui/limiter.ui:109
 msgid "Half x2(2L)"
-msgstr ""
+msgstr "Halb x2(2L)"
 
 #: data/ui/limiter.ui:110
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "Halb x2(3L)"
 
 #: data/ui/limiter.ui:111
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "Halb x3(2L)"
 
 #: data/ui/limiter.ui:112
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "Halb x3(3L)"
 
 #: data/ui/limiter.ui:113
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "Halb x4(2L)"
 
 #: data/ui/limiter.ui:114
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "Halb x4(3L)"
 
 #: data/ui/limiter.ui:115
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "Halb x6(2L)"
 
 #: data/ui/limiter.ui:116
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "Halb x6(3L)"
 
 #: data/ui/limiter.ui:117
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "Halb x8(2L)"
 
 #: data/ui/limiter.ui:118
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "Halb x8(3L)"
 
 #: data/ui/limiter.ui:119
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "Voll x2(2L)"
 
 #: data/ui/limiter.ui:120
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "Voll x2(3L)"
 
 #: data/ui/limiter.ui:121
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "Voll x3(2L)"
 
 #: data/ui/limiter.ui:122
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "Voll x3(3L)"
 
 #: data/ui/limiter.ui:123
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "Voll x4(2L)"
 
 #: data/ui/limiter.ui:124
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "Voll x4(3L)"
 
 #: data/ui/limiter.ui:125
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "Voll x6(2L)"
 
 #: data/ui/limiter.ui:126
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "Voll x6(3L)"
 
 #: data/ui/limiter.ui:127
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "Voll x8(2L)"
 
 #: data/ui/limiter.ui:128
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "Voll x8(3L)"
 
 #: data/ui/limiter.ui:178
 msgid "SC PreAmp"
-msgstr "SC PreAmp"
+msgstr "SC Vorverstärker"
 
 #: data/ui/limiter.ui:207 data/ui/multiband_compressor_band.ui:647
 msgid "Sidechain PreAmplification"
@@ -1995,9 +2044,8 @@ msgid "Modern"
 msgstr "Modern"
 
 #: data/ui/multiband_compressor.ui:69
-#, fuzzy
 msgid "Sidechain Boost"
-msgstr "Sidechain"
+msgstr "Sidechain Boost"
 
 #: data/ui/multiband_compressor.ui:81
 msgid "Pink BT"
@@ -2016,358 +2064,296 @@ msgid "Brown MT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:156
-#, fuzzy
 msgid "Bands List"
-msgstr "Bereiche"
+msgstr "Band-Liste"
 
 #: data/ui/multiband_compressor.ui:165
-#, fuzzy
 msgid "Band 1"
-msgstr "Bereiche"
+msgstr "Band 1"
 
 #: data/ui/multiband_compressor.ui:182
-#, fuzzy
 msgid "Band 2"
-msgstr "Bereiche"
+msgstr "Band 2"
 
 #: data/ui/multiband_compressor.ui:209
-#, fuzzy
 msgid "Band 3"
-msgstr "Bereiche"
+msgstr "Band 3"
 
 #: data/ui/multiband_compressor.ui:236
-#, fuzzy
 msgid "Band 4"
-msgstr "Bereiche"
+msgstr "Band 4"
 
 #: data/ui/multiband_compressor.ui:263
-#, fuzzy
 msgid "Band 5"
-msgstr "Bereiche"
+msgstr "Band 5"
 
 #: data/ui/multiband_compressor.ui:290
-#, fuzzy
 msgid "Band 6"
-msgstr "Bereiche"
+msgstr "Band 6"
 
 #: data/ui/multiband_compressor.ui:317
-#, fuzzy
 msgid "Band 7"
-msgstr "Bereiche"
+msgstr "Band 7"
 
 #: data/ui/multiband_compressor.ui:344
-#, fuzzy
 msgid "Band 8"
-msgstr "Bereiche"
+msgstr "Band 8"
 
 #: data/ui/multiband_compressor_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "Band Beginn"
 
 #: data/ui/multiband_compressor_band.ui:57
-#, fuzzy
 msgid "Band End"
-msgstr "Bereiche"
+msgstr "Band Ende"
 
 #: data/ui/multiband_compressor_band.ui:108
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Kompressionsmodus"
+msgstr "Band Kompressionsmodus"
 
 #: data/ui/multiband_compressor_band.ui:126
-#, fuzzy
 msgid "Band Bypass"
-msgstr "Umleiten"
+msgstr "Band Umleitung"
 
 #: data/ui/multiband_compressor_band.ui:431
-#, fuzzy
 msgid "Band Sidechain Options"
-msgstr "Sidechain"
+msgstr "Band Sidechain Einstellungen"
 
 #: data/ui/multiband_compressor_band.ui:523
-#, fuzzy
 msgid "Low-Cut Filter"
-msgstr "Filter"
+msgstr "Hochpass-Filter"
 
 #: data/ui/multiband_compressor_band.ui:551
-#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Filter"
+msgstr "Tiefpassfilter-Frequenz"
 
 #: data/ui/multiband_compressor_band.ui:576
-#, fuzzy
 msgid "High-Cut Filter"
-msgstr "Hochpassfilter"
+msgstr "Tiefpass-Filter"
 
 #: data/ui/multiband_compressor_band.ui:604
-#, fuzzy
 msgid "High-Cut Filter Frequency"
-msgstr "Hochpassfilter"
+msgstr "Tiefpassfilter-Frequenz"
 
 #: data/ui/multiband_compressor_band.ui:620
 msgid "PreAmp"
-msgstr ""
+msgstr "Vorverstärker"
 
 #: data/ui/multiband_compressor_band.ui:826
-#, fuzzy
 msgid "Band Gain"
-msgstr "Eingabeverstärkung"
+msgstr "Bereichs-Verstärkung"
 
 #: data/ui/multiband_compressor_band.ui:851
 msgid "Band Envelope"
-msgstr ""
+msgstr "Band Bereich"
 
 #: data/ui/multiband_compressor_band.ui:876
-#, fuzzy
 msgid "Band Curve"
-msgstr "Kurve"
+msgstr "Band-Kurve"
 
 #: data/ui/multiband_gate.ui:43
-#, fuzzy
 msgid "Split Mode"
-msgstr "Teilen"
+msgstr "Teilungsmodus"
 
 #: data/ui/multiband_gate.ui:56
 msgid "Split 1/2"
 msgstr "1/2 Teilen"
 
 #: data/ui/multiband_gate.ui:76
-#, fuzzy
 msgid "Split Frequency 1"
-msgstr "Frequenz"
+msgstr "Teilfrequenz 1"
 
 #: data/ui/multiband_gate.ui:89
 msgid "Split 2/3"
 msgstr "2/3 Teilen"
 
 #: data/ui/multiband_gate.ui:109
-#, fuzzy
 msgid "Split Frequency 2"
-msgstr "Frequenz"
+msgstr "Teilfrequenz 2"
 
 #: data/ui/multiband_gate.ui:122
 msgid "Split 3/4"
 msgstr "3/4 Teilen"
 
 #: data/ui/multiband_gate.ui:142
-#, fuzzy
 msgid "Split Frequency 3"
-msgstr "Frequenz"
+msgstr "Teilfrequenz 3"
 
 #: data/ui/multiband_gate.ui:170
 msgid "Sub Band"
 msgstr "Subband"
 
 #: data/ui/multiband_gate.ui:185
-#, fuzzy
 msgid "Band 1 Bypass"
-msgstr "Umleiten"
+msgstr "Band 1 Umleitung"
 
 #: data/ui/multiband_gate.ui:195
-#, fuzzy
 msgid "Band 1 Solo"
-msgstr "Bereiche"
+msgstr "Nur Band 1"
 
 #: data/ui/multiband_gate.ui:207
-#, fuzzy
 msgid "Band 1 Detection"
-msgstr "Amplitudenreduktion"
+msgstr "Band 1 Erkennung"
 
 #: data/ui/multiband_gate.ui:251
-#, fuzzy
 msgid "Band 1 Attack"
-msgstr "Anstiegszeit"
+msgstr "Band 1 Anstiegszeit"
 
 #: data/ui/multiband_gate.ui:286
-#, fuzzy
 msgid "Band 1 Release"
-msgstr "Ausklingzeit"
+msgstr "Band 1 Freigabe"
 
 #: data/ui/multiband_gate.ui:320
-#, fuzzy
 msgid "Band 1 Threshold"
-msgstr "Schwelle"
+msgstr "Band 1 Schwelle"
 
 #: data/ui/multiband_gate.ui:355
-#, fuzzy
 msgid "Band 1 Ratio"
-msgstr "Bereiche"
+msgstr "Band 1 Verhältnis"
 
 #: data/ui/multiband_gate.ui:389
-#, fuzzy
 msgid "Band 1 Knee"
-msgstr "Bereiche"
+msgstr "Band 1 Knie"
 
 #: data/ui/multiband_gate.ui:422
-#, fuzzy
 msgid "Band 1 Makeup"
-msgstr "Hebung"
+msgstr "Band 1 Hebung"
 
 #: data/ui/multiband_gate.ui:456
-#, fuzzy
 msgid "Band 1 Max Reduction"
-msgstr "Amplitudenreduktion"
+msgstr "maximale Band 1 Reduktion"
 
 #: data/ui/multiband_gate.ui:530
 msgid "Low Band"
 msgstr "Tiefband"
 
 #: data/ui/multiband_gate.ui:545
-#, fuzzy
 msgid "Band 2 Bypass"
-msgstr "Umleiten"
+msgstr "Band 2 Umleitung"
 
 #: data/ui/multiband_gate.ui:555
-#, fuzzy
 msgid "Band 2 Solo"
-msgstr "Bereiche"
+msgstr "Nur Band 2"
 
 #: data/ui/multiband_gate.ui:567
-#, fuzzy
 msgid "Band 2 Detection"
-msgstr "Amplitudenreduktion"
+msgstr "Band 2 Erkennung"
 
 #: data/ui/multiband_gate.ui:611
-#, fuzzy
 msgid "Band 2 Attack"
-msgstr "Anstiegszeit"
+msgstr "Band 2 Anstiegszeit"
 
 #: data/ui/multiband_gate.ui:646
-#, fuzzy
 msgid "Band 2 Release"
-msgstr "Ausklingzeit"
+msgstr "Band 2 Freigabe"
 
 #: data/ui/multiband_gate.ui:680
-#, fuzzy
 msgid "Band 2 Threshold"
-msgstr "Schwelle"
+msgstr "Band 2 Schwelle"
 
 #: data/ui/multiband_gate.ui:715
-#, fuzzy
 msgid "Band 2 Ratio"
-msgstr "Bereiche"
+msgstr "Band 2 Verhältnis"
 
 #: data/ui/multiband_gate.ui:749
-#, fuzzy
 msgid "Band 2 Knee"
-msgstr "Bereiche"
+msgstr "Band 2 Knie"
 
 #: data/ui/multiband_gate.ui:782
-#, fuzzy
 msgid "Band 2 Makeup"
-msgstr "Hebung"
+msgstr "Band 2 Hebung"
 
 #: data/ui/multiband_gate.ui:816
-#, fuzzy
 msgid "Band 2 Max Reduction"
-msgstr "Amplitudenreduktion"
+msgstr "maximale Band 2 Reduktion"
 
 #: data/ui/multiband_gate.ui:890
 msgid "Mid Band"
 msgstr "Mittelband"
 
 #: data/ui/multiband_gate.ui:905
-#, fuzzy
 msgid "Band 3 Bypass"
-msgstr "Umleiten"
+msgstr "Band 3 Umleitung"
 
 #: data/ui/multiband_gate.ui:915
-#, fuzzy
 msgid "Band 3 Solo"
-msgstr "Bereiche"
+msgstr "Nur Band 3"
 
 #: data/ui/multiband_gate.ui:927
-#, fuzzy
 msgid "Band 3 Detection"
-msgstr "Amplitudenreduktion"
+msgstr "Band 3 Erkennung"
 
 #: data/ui/multiband_gate.ui:971
-#, fuzzy
 msgid "Band 3 Attack"
-msgstr "Anstiegszeit"
+msgstr "Band 3 Anstiegszeit"
 
 #: data/ui/multiband_gate.ui:1006
-#, fuzzy
 msgid "Band 3 Release"
-msgstr "Ausklingzeit"
+msgstr "Band 3 Freigabe"
 
 #: data/ui/multiband_gate.ui:1040
-#, fuzzy
 msgid "Band 3 Threshold"
-msgstr "Schwelle"
+msgstr "Band 3 Schwelle"
 
 #: data/ui/multiband_gate.ui:1075
-#, fuzzy
 msgid "Band 3 Ratio"
-msgstr "Bereiche"
+msgstr "Band 3 Verhältnis"
 
 #: data/ui/multiband_gate.ui:1109
-#, fuzzy
 msgid "Band 3 Knee"
-msgstr "Bereiche"
+msgstr "Band 3 Knie"
 
 #: data/ui/multiband_gate.ui:1142
-#, fuzzy
 msgid "Band 3 Makeup"
-msgstr "Hebung"
+msgstr "Band 3 Hebung"
 
 #: data/ui/multiband_gate.ui:1176
-#, fuzzy
 msgid "Band 3 Max Reduction"
-msgstr "Amplitudenreduktion"
+msgstr "maximale Band 3 Reduktion"
 
 #: data/ui/multiband_gate.ui:1250
 msgid "High Band"
 msgstr "Hochband"
 
 #: data/ui/multiband_gate.ui:1265
-#, fuzzy
 msgid "Band 4 Bypass"
-msgstr "Umleiten"
+msgstr "Band 4 Umleitung"
 
 #: data/ui/multiband_gate.ui:1275
-#, fuzzy
 msgid "Band 4 Solo"
-msgstr "Bereiche"
+msgstr "Nur Band 4"
 
 #: data/ui/multiband_gate.ui:1287
-#, fuzzy
 msgid "Band 4 Detection"
-msgstr "Amplitudenreduktion"
+msgstr "Band 4 Erkennung"
 
 #: data/ui/multiband_gate.ui:1331
-#, fuzzy
 msgid "Band 4 Attack"
-msgstr "Anstiegszeit"
+msgstr "Band 4 Anstiegszeit"
 
 #: data/ui/multiband_gate.ui:1366
-#, fuzzy
 msgid "Band 4 Release"
-msgstr "Ausklingzeit"
+msgstr "Band 4 Freigabe"
 
 #: data/ui/multiband_gate.ui:1400
-#, fuzzy
 msgid "Band 4 Threshold"
-msgstr "Schwelle"
+msgstr "Band 4 Schwelle"
 
 #: data/ui/multiband_gate.ui:1435
-#, fuzzy
 msgid "Band 4 Ratio"
-msgstr "Bereiche"
+msgstr "Band 4 Verhältnis"
 
 #: data/ui/multiband_gate.ui:1469
-#, fuzzy
 msgid "Band 4 Knee"
-msgstr "Bereiche"
+msgstr "Band 4 Knie"
 
 #: data/ui/multiband_gate.ui:1502
-#, fuzzy
 msgid "Band 4 Makeup"
-msgstr "Hebung"
+msgstr "Band 4 Hebung"
 
 #: data/ui/multiband_gate.ui:1536
 msgid "Band 4 Max Reduction"
-msgstr ""
+msgstr "Maximale Band 4 Reduktion"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -2531,10 +2517,9 @@ msgstr "Hohe Qualität"
 
 #: data/ui/pitch.ui:35
 msgid "High Consistency"
-msgstr ""
+msgstr "Hohe Konsistenz"
 
 #: data/ui/pitch.ui:49
-#, fuzzy
 msgid "Formant"
 msgstr "Format"
 
@@ -2544,11 +2529,11 @@ msgstr "Verschoben"
 
 #: data/ui/pitch.ui:61
 msgid "Preserved"
-msgstr ""
+msgstr "Beibehalten"
 
 #: data/ui/pitch.ui:98
 msgid "Transients"
-msgstr ""
+msgstr "Transient"
 
 #: data/ui/pitch.ui:109
 msgid "Crisp"
@@ -2563,14 +2548,12 @@ msgid "Smooth"
 msgstr "Sanft"
 
 #: data/ui/pitch.ui:125
-#, fuzzy
 msgid "Detector"
 msgstr "Erkennung"
 
 #: data/ui/pitch.ui:136
-#, fuzzy
 msgid "Compound"
-msgstr "Kompression"
+msgstr "Verbindung"
 
 #: data/ui/pitch.ui:137
 msgid "Percussive"
@@ -2841,24 +2824,20 @@ msgid "Decay Time"
 msgstr "Abklingzeit"
 
 #: data/ui/reverb.ui:210
-#, fuzzy
 msgid "Wet Amount"
-msgstr "Betrag"
+msgstr "Feuchtigkeits-Anteil"
 
 #: data/ui/reverb.ui:238
-#, fuzzy
 msgid "Wet Level"
-msgstr "Zielwert"
+msgstr "Feuchtigkeit"
 
 #: data/ui/reverb.ui:245
-#, fuzzy
 msgid "Dry Amount"
-msgstr "Betrag"
+msgstr "Trockenheits-Anteil"
 
 #: data/ui/reverb.ui:272
-#, fuzzy
 msgid "Dry Level"
-msgstr "F2 Level"
+msgstr "Trockenheit"
 
 #: data/ui/reverb.ui:279
 msgid "Bass Cut"
@@ -3009,9 +2988,8 @@ msgid "Middle Panorama"
 msgstr "Mittleres Panorama"
 
 #: data/ui/stereo_tools.ui:418
-#, fuzzy
 msgid "Output Balance"
-msgstr "Ausgangsverstärkung"
+msgstr "Ausgabe-Balance"
 
 #: data/ui/stereo_tools.ui:427
 msgid "Delay L/R"
@@ -3230,9 +3208,8 @@ msgid "Pitch"
 msgstr "Tonhöhe"
 
 #: src/plugin_name.cpp:45
-#, fuzzy
 msgid "Reverberation"
-msgstr "Serverinformation"
+msgstr "Nachhall"
 
 #: src/plugin_name.cpp:46
 msgid "Noise Reduction"
@@ -3251,14 +3228,12 @@ msgid "Import Preset"
 msgstr "Preset importieren"
 
 #: src/rnnoise_ui.cpp:120
-#, fuzzy
 msgid "Import Model File"
-msgstr "Impulsdatei importieren"
+msgstr "Modell-Datei importieren"
 
 #: src/rnnoise_ui.cpp:125
-#, fuzzy
 msgid "RNNoise Models"
-msgstr "Standard RNNoise-Modell"
+msgstr "RNNoise-Modelle"
 
 #~ msgid "Start Service at Login"
 #~ msgstr "Dienst beim Login starten"
