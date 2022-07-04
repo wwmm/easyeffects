@@ -209,6 +209,7 @@
                                     <object class="GtkCheckButton" id="enable">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
+                                        <property name="tooltip-text" translatable="yes">Enable/disable this application</property>
                                         <property name="label" translatable="yes">Enable</property>
                                         <accessibility>
                                             <relation name="labelled-by">app_name</relation>
@@ -221,6 +222,7 @@
                                     <object class="GtkCheckButton" id="blocklist">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
+                                        <property name="tooltip-text" translatable="yes">Excluded App List: Add/remove this application</property>
                                         <property name="label" translatable="yes">Exclude</property>
                                         <accessibility>
                                             <relation name="labelled-by">app_name</relation>
@@ -243,6 +245,7 @@
                                     <object class="GtkToggleButton" id="mute">
                                         <property name="valign">center</property>
                                         <property name="icon-name">audio-volume-high-symbolic</property>
+                                        <property name="tooltip-text" translatable="yes">Mute Application</property>
                                         <accessibility>
                                             <property name="label" translatable="yes">Mute Application</property>
                                         </accessibility>
@@ -266,6 +269,7 @@
                                                 <property name="page-increment">10</property>
                                             </object>
                                         </property>
+                                        <property name="tooltip-text" translatable="yes">Change the volume of this application</property>
                                         <accessibility>
                                             <property name="label" translatable="yes">Application Volume</property>
                                         </accessibility>

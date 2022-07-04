@@ -10,7 +10,6 @@
 
         <child>
             <object class="GtkComboBoxText" id="mode">
-                <property name="margin-top">6</property>
                 <property name="halign">center</property>
                 <items>
                     <item translatable="yes" id="12dB/oct Lowpass">12dB/oct Lowpass</item>

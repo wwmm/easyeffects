@@ -56,7 +56,7 @@
                                                     <object class="GtkButton" id="add_output">
                                                         <property name="margin-top">3</property>
                                                         <property name="margin-bottom">3</property>
-                                                        <property name="tooltip-text" translatable="yes">Create Preset</property>
+                                                        <property name="tooltip-text" translatable="yes">Create a new preset</property>
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="icon-name">list-add-symbolic</property>
@@ -70,7 +70,7 @@
                                                     <object class="GtkButton" id="import_output">
                                                         <property name="margin-top">3</property>
                                                         <property name="margin-bottom">3</property>
-                                                        <property name="tooltip-text" translatable="yes">Import Presets</property>
+                                                        <property name="tooltip-text" translatable="yes">Import a preset</property>
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="icon-name">document-open-symbolic</property>
@@ -204,7 +204,7 @@
                                                     <object class="GtkButton" id="add_input">
                                                         <property name="margin-top">3</property>
                                                         <property name="margin-bottom">3</property>
-                                                        <property name="tooltip-text" translatable="yes">Create Preset</property>
+                                                        <property name="tooltip-text" translatable="yes">Create a new preset</property>
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="icon-name">list-add-symbolic</property>
@@ -218,7 +218,7 @@
                                                     <object class="GtkButton" id="import_input">
                                                         <property name="margin-top">3</property>
                                                         <property name="margin-bottom">3</property>
-                                                        <property name="tooltip-text" translatable="yes">Import Presets</property>
+                                                        <property name="tooltip-text" translatable="yes">Import a preset</property>
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="icon-name">document-open-symbolic</property>

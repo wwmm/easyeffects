@@ -31,10 +31,11 @@
                                     <object class="AdwPreferencesPage">
                                         <child>
                                             <object class="AdwPreferencesGroup">
-                                                <property name="title" translatable="yes">Input Device</property>
+                                                <property name="title" translatable="yes">Device Management</property>
+                                                <property name="description" translatable="yes">It's recommended to NOT set EasyEffects Sink/Source as Default Device in external applications (e.g. Gnome Settings and Plasma System Settings).</property>
                                                 <child>
                                                     <object class="AdwActionRow">
-                                                        <property name="title" translatable="yes">Use Default</property>
+                                                        <property name="title" translatable="yes">Use Default Input</property>
                                                         <property name="activatable-widget">use_default_input</property>
                                                         <child>
                                                             <object class="GtkSwitch" id="use_default_input">
@@ -67,15 +68,10 @@
                                                         </child>
                                                     </object>
                                                 </child>
-                                            </object>
-                                        </child>
 
-                                        <child>
-                                            <object class="AdwPreferencesGroup">
-                                                <property name="title" translatable="yes">Output Device</property>
                                                 <child>
                                                     <object class="AdwActionRow">
-                                                        <property name="title" translatable="yes">Use Default</property>
+                                                        <property name="title" translatable="yes">Use Default Output</property>
                                                         <property name="activatable-widget">use_default_output</property>
                                                         <child>
                                                             <object class="GtkSwitch" id="use_default_output">

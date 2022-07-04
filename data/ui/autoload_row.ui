@@ -111,7 +111,7 @@
 
         <child>
             <object class="GtkButton" id="remove">
-                <property name="tooltip-text" translatable="yes">Remove</property>
+                <property name="tooltip-text" translatable="yes">Remove this autoload preset</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
                 <property name="icon-name">user-trash-symbolic</property>

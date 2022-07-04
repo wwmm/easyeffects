@@ -10,7 +10,6 @@
 
         <child>
             <object class="GtkBox">
-                <property name="margin-top">6</property>
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
