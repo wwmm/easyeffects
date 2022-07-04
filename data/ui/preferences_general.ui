@@ -105,6 +105,7 @@
                         <child>
                             <object class="GtkSpinButton" id="inactivity_timeout">
                                 <property name="valign">center</property>
+                                <property name="width-chars">7</property>
                                 <property name="digits">0</property>
                                 <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
