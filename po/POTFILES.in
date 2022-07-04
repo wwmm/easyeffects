@@ -61,9 +61,8 @@ src/effects_box.cpp
 src/equalizer_band_box.cpp
 src/equalizer_ui.cpp
 src/pipe_manager_box.cpp
-src/plugin_name.cpp
+src/tags_plugin_name.cpp
 src/plugins_box.cpp
 src/plugins_menu.cpp
 src/presets_menu.cpp
 src/rnnoise_ui.cpp
-include/plugin_name.hpp

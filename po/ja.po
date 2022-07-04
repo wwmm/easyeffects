@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-16 14:36-0300\n"
+"POT-Creation-Date: 2022-07-04 19:14-0300\n"
 "PO-Revision-Date: 2022-03-20 02:57+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -94,88 +94,152 @@ msgid "The convolver page showing audio controls"
 msgstr "オーディオコントロールを表示するコンボルバーのページ"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:132
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:173
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:202
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:272
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:112
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:294
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
 msgid "This release adds the following features:"
 msgstr "このリリースでは、以下の機能が追加されています:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
-msgid "The interface of the pitch plugin was improved"
+msgid ""
+"When effects are disable to an application we now set its target metadata to "
+"null. This will allow the media session"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
-msgid "Our application icon is now compatible with desktops that uses QT"
+msgid "manager"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
-"Our blocklist code will use the `application.id` tag if the stream sets it"
+"A new configuration option was added. It allows EasyEffects to ignore "
+"streams whose purpose is to monitor sink"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
-"In order to avoid problems with the mouse scroll the entries in the "
-"applications list shown in our `Players/Recorders`"
+"devices. This will help to fix some of problems our users were having when "
+"using OBS."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
-msgid ""
-"tab do not show a volume scale anymore. More details about the problem and "
-"the solution for it can be found on #1211"
+msgid "The code that shows the stream sample format has been improved"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
-msgid "and #1427"
-msgstr "バンド 1"
+msgid ""
+"The rnnoise library is now optional. This should help package maintainers to "
+"build"
+msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
-msgid ""
-"When no application is available for display in the `Players/Recorders` a "
-"message will be shown to the user"
+msgid "a Debian package. See the issue #1000 for more information."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
-#, fuzzy
-msgid "Many translation updates"
-msgstr "翻訳の更新"
+msgid ""
+"Our logs now show the source code line where the messages are being printed"
+msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:160
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:233
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
 msgid "This release fixes the following bugs:"
 msgstr "このリリースでは、以下のバグが修正されています:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
-"Fixed a bug where EasyEffeects crashed when the number of points displayed "
-"in the spectrum was changed while"
+"The \"enable effects\" checkbox in our window was not being updated when "
+"third party programs like pavucontrol"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
-msgid "our pipeline was active and the spectrum widget was visible"
+msgid ""
+"moved the stream away from our virtual devices. This should be fixed now."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
+msgid ""
+"Fixed a crash that could happen when the maximum autogain history was "
+"changed."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
+msgid "Avoid crashes when pw-mididump is running"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
+msgid "The interface of the pitch plugin was improved"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
+msgid "Our application icon is now compatible with desktops that uses QT"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
+msgid ""
+"Our blocklist code will use the `application.id` tag if the stream sets it"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
+msgid ""
+"In order to avoid problems with the mouse scroll the entries in the "
+"applications list shown in our `Players/Recorders`"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
+msgid ""
+"tab do not show a volume scale anymore. More details about the problem and "
+"the solution for it can be found on #1211"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
+#, fuzzy
+msgid "and #1427"
+msgstr "バンド 1"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
+msgid ""
+"When no application is available for display in the `Players/Recorders` a "
+"message will be shown to the user"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
+#, fuzzy
+msgid "Many translation updates"
+msgstr "翻訳の更新"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
+msgid ""
+"Fixed a bug where EasyEffects crashed when the number of points displayed in "
+"the spectrum was changed while"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
+msgid "our pipeline was active and the spectrum widget was visible"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
@@ -183,18 +247,18 @@ msgstr ""
 "パイプラインの非アクティブ時のタイムアウトを選択できる設定が追加されました。"
 "クライアントが再生していないとき"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
 "の接続や録画は、タイムアウトに達するとフィルタリングが解除されます。これは"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
 msgid "we do not waste CPU power processing silence."
 msgstr "CPUのパワーを無駄にせず、無音で処理することができます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:86
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
@@ -202,11 +266,11 @@ msgstr ""
 "オートゲインプラグインでは、3つのラウドネスのうち、どのラウドネスを使用して幾"
 "何学的な計算を行うかを選択できるようになりました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
 msgid "mean."
 msgstr "。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
@@ -214,7 +278,7 @@ msgstr ""
 "オートゲインプラグインに最大履歴を設定できるようになり、libebur128 ヒストグラ"
 "ムモードは使用されなくなりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
@@ -222,24 +286,24 @@ msgstr ""
 "これにより、Integrated ラウドネスが永遠に同じ値で止まってしまうようなケースを"
 "避けることができます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
 "EasyEffects のアイコンは、QT デスクトップで見えるように更新されました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:98
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:249
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:144
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:271
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
 msgid "This release fixes the following bug:"
 msgstr "このリリースでは、以下のバグが修正されています:"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
 msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
@@ -247,13 +311,13 @@ msgstr ""
 "グローバルバイパスの状態を返すコマンドラインオプションが再び動作するようにな"
 "りました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:245
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
 msgid "This release adds the following feature:"
 msgstr "このリリースでは、以下の機能が追加されています:"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid ""
 "The crossfeed filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
@@ -262,17 +326,17 @@ msgstr ""
 "クロスフィードフィルターは、PipeWire の動的遅延スイッチにうまく対応するように"
 "なりました。これで、音量レベルのジャンプが起こらなくなるはずです。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "Fixed a bug that prevented mono microphones from properly working with "
 "EasyEffects"
 msgstr "モノラルマイクが EasyEffects で正しく動作しない不具合を修正しました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
 msgid "Support for the next PipeWire release `0.3.44`"
 msgstr "次の PipeWire リリース `0.3.44` への対応"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:93
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
 msgid ""
 "The autogain filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
@@ -281,7 +345,7 @@ msgstr ""
 "オートゲインフィルターは、PipeWire の動的遅延スイッチにうまく対応するようにな"
 "りました。これで、音量レベルのジャンプが起こらなくなるはずです。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
 msgid ""
 "We added an option that allows the volume and mute state of our virtual "
 "devices to be reset when EasyEffects starts. It should help with the cases "
@@ -291,16 +355,16 @@ msgstr ""
 "セットできるオプションを追加しました。これは、謎の理由でオーディオサーバーに"
 "よってデバイスがミュートされている場合に役立ちます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:95
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "Better support for computer suspending."
 msgstr "コンピュータのサスペンドのサポートが強化されました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:96
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:118
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid "Updated translations"
 msgstr "翻訳の更新"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
 msgid ""
 "Fixed a bug where trying to create an autoloading profile without having "
 "presets caused the application to crash."
@@ -308,7 +372,7 @@ msgstr ""
 "プリセットを持たない自動読み込みプロファイルを作成しようとすると、アプリケー"
 "ションがクラッシュするというバグを修正しました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:108
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
 msgid ""
 "Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
 "an application crash."
@@ -316,7 +380,7 @@ msgstr ""
 "イコライザーバンドの「品質」を「0」に設定するとアプリケーションがクラッシュす"
 "るバグを修正しました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid ""
 "LibAdwaita is used to create some parts of our window and for handling the "
 "switching between dark and light themes."
@@ -324,11 +388,11 @@ msgstr ""
 "LibAdwaita は、ウィンドウの一部を作成したり、ダークテーマとライトテーマを切り"
 "替えるために使用されます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
 msgstr "設定メニューは、LibAdwaita ウィジェットを使用して再設計されました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:118
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid ""
 "Equalizer APO preset import feature has been improved to apply not only the "
 "Bell filter, but also other supported ones"
@@ -336,14 +400,14 @@ msgstr ""
 "イコライザー APO のプリセットインポート機能で、ベルフィルターだけでなく、対応"
 "する他のフィルターも適用できるよう改善しました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
 msgid ""
 "The `Reset All Settings` function in our menu should work in Flatpak now."
 msgstr ""
 "メニューの「すべての設定をリセット」機能が Flatpak でも動作するようにしまし"
 "た。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:142
 msgid ""
 "We have a new option that allows the user to disable our menus `autohide`. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
@@ -352,7 +416,7 @@ msgstr ""
 "た。これにより、現在 gtk4 で抱えているポップオーバーメニュー関連のバグを回避"
 "できるかもしれません。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:146
 msgid ""
 "More robust parsing to import APO presets saved with comma as thousands "
 "separator in central frequency band."
@@ -360,7 +424,7 @@ msgstr ""
 "中央の周波数帯でカンマを千の区切りとして保存された APO プリセットを読み込むた"
 "めの解析がより強力になりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
 msgid ""
 "The fmt library is a new dependency At least while the c++ compilers do not "
 "implement its features. This is expected to happen in the next years."
@@ -368,14 +432,14 @@ msgstr ""
 "fmt ライブラリは、少なくとも c++ コンパイラがその機能を実装していない間は新し"
 "い依存関係にあります。これは今後数年のうちに実現すると思われます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:149
 msgid ""
 "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
 msgstr ""
 "GTKMM と GLIBMM はもう依存関係にありません。現在は gtk4 を直接使用していま"
 "す。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
 msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
@@ -384,7 +448,7 @@ msgstr ""
 "ようになりました。新しいインパルスファイルが生成され、インパルスリストに表示"
 "されます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:157
 msgid ""
 "Improved `x axis` drawings in our plots. Now the number of labels is "
 "adjusted dynamically depending on our window width."
@@ -392,7 +456,7 @@ msgstr ""
 "プロットの「x 軸」の描画を改善しました。ウィンドウの幅に応じてラベルの数が動"
 "的に調整されるようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:158
 msgid ""
 "The documentation has been updated reflecting the new EasyEffects features. "
 "Old references about PulseEffects have been removed. The documentation "
@@ -402,7 +466,7 @@ msgstr ""
 "関する古い文献は削除されました。メニューセクションにドキュメントボタンが追加"
 "されました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
 msgid ""
 "When a spinbutton is filled with an out of range value, now it is updated "
 "with the lowest/highest value rather than resetting to the previous one."
@@ -410,7 +474,7 @@ msgstr ""
 "スピンボタンに範囲外の値が入力されたときに、前の値にリセットされるのではな"
 "く、最低/最高の値に更新されるようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
 msgid ""
 "The application window now remembers the maximized state and restores it on "
 "the next opening event."
@@ -418,11 +482,11 @@ msgstr ""
 "アプリケーションウィンドウは最大化された状態を記憶し、次回の起動時に反映しま"
 "す。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:143
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
 msgid "The `tbb` library is a new dependency"
 msgstr "「tbb」ライブラリは新しい依存関係です"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
 msgid ""
 "The Limiter and the Multiband Compressor plugins can now use an optional "
 "external sidechain."
@@ -430,7 +494,7 @@ msgstr ""
 "リミッターとマルチバンドコンプレッサーのプラグインで、オプションの外部サイド"
 "チェーンを使用できるようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:173
 msgid ""
 "The Autogain plugin now allows the user to select which Loudness is used as "
 "reference for the volume correction."
@@ -438,7 +502,7 @@ msgstr ""
 "オートゲインプラグインで、音量補正の基準となるラウドネスを選択できるようにな"
 "りました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
 msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
@@ -446,12 +510,12 @@ msgstr ""
 "イコライザープラグインの APO プロファイルインポート機能で、\"Pre "
 "Amplification\" パラメータを解析するようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:153
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
 msgid "Optional Cubic Volume can be enabled in General Settings."
 msgstr ""
 "オプションのキュービックボリュームは一般設定で有効にすることができます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
@@ -459,16 +523,16 @@ msgstr ""
 "PipeWire のモニターストリームがアプリケーションリストから除外され、削除される"
 "ようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Hopefully crashes like the one reported at [1172]( are fixed."
 msgstr ""
 "うまくいけば [1172]( で報告されたもののようなクラッシュが修正されています。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:188
 msgid "Prevented a case in which Spectrum was crashing."
 msgstr "スペクトラムがクラッシュするのを防ぎました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:167
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
 msgid ""
 "Pavucontrol is not added anymore to input applications list on systems with "
 "localization different than English."
@@ -476,7 +540,7 @@ msgstr ""
 "英語以外の言語を使用しているシステムでは、Pavucontrol は入力アプリケーション"
 "リストに追加されません。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
 "Improved compatibility with WirePlumber. This is needed to run on systems "
 "that decided to use it instead of the"
@@ -484,13 +548,13 @@ msgstr ""
 "WirePlumber との互換性を改善しました。これは次のものの代わりにシステムで動作"
 "するために必要です"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:176
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
 msgid "built-in PipeWire session manager. More information at issue [1144]("
 msgstr ""
 "内蔵の PipeWire セッションマネージャーです。詳細は issue [1144]( で確認できま"
 "す"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid ""
 "When trying to add an autoloading profile for a device already in the list "
 "its target preset will be updated. This way we can change the profile preset "
@@ -500,7 +564,7 @@ msgstr ""
 "のターゲットプリセットが更新されます。これにより、プロファイルを削除して再度"
 "作成せずにプロファイルのプリセットを変更することができます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
 msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue [1051]("
@@ -509,7 +573,7 @@ msgstr ""
 "ハードウェアで動作するようになりました。詳しくは issue [1051]( を確認してくだ"
 "さい"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:186
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
 msgid ""
 "If the Limiter or the Maximizer are set in the last position of the plugin "
 "stack, new plugins are added at the second to last position in order to "
@@ -519,13 +583,13 @@ msgstr ""
 "い出力レベルでハードウェアが損傷するのを防ぐために、新しいプラグインは最後か"
 "ら2番目の位置に追加されます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
 msgid ""
 "Removing an application from the blocklist, its previous enabled state is "
 "restored."
 msgstr "ブロックリストからアプリケーションを削除すると、有効な状態に戻ります。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
 msgid ""
 "Sometimes when removing imported models from the noise reduction plugin the "
 "current used model was not properly updated. This should be fixed now."
@@ -533,7 +597,7 @@ msgstr ""
 "ノイズ除去プラグインからインポートしたモデルを削除すると、現在使用しているモ"
 "デルが正しく更新されないことがありました。これは現在修正されているはずです。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:192
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid ""
 "When editing presets files in an external editor, duplicated entries won't "
 "be shown in our presets menu."
@@ -541,13 +605,13 @@ msgstr ""
 "外部エディタでプリセットファイルを編集すると、重複したエントリーがプリセット"
 "メニューに表示されなくなります。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
 msgid "Now the blocklist is correctly set when switching presets."
 msgstr ""
 "プリセットを切り替えたときに、ブロックリストが正しく設定されるようになりまし"
 "た。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:194
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
 msgid ""
 "Now the status of the global bypass button is correctly updated when "
 "changing plugin stack."
@@ -555,7 +619,7 @@ msgstr ""
 "プラグインのスタックを変更したときに、グローバルバイパスボタンの状態が正しく"
 "更新されるようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
 msgid ""
 "Missing icons on the system should not be shown inside the application info "
 "UI"
@@ -563,26 +627,26 @@ msgstr ""
 "システム上のアイコンが見つからない場合は、アプリケーション情報インターフェー"
 "ス内に表示されません"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid ""
 "Some icons not showing in Plasma DE with Breeze icon theme should appear now."
 msgstr ""
 "Breeze アイコンテーマを使用した Plasma DE で表示されなかった一部のアイコンが"
 "表示されるようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
 msgid "Updated Chinese translation."
 msgstr "中国語の翻訳を更新しました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:205
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
 msgid "Updated Italian translation."
 msgstr "イタリア語の翻訳を更新しました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 msgid "Added support for the compressor parameter `Boost Amount`"
 msgstr "コンプレッサーのパラメーター「Boost Amount」に対応しました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid ""
 "The multiband compressor plugin now uses the stereo multiband compressor "
 "plugin from Linux Studio Plugins instead of the one from Calf Studio."
@@ -591,7 +655,7 @@ msgstr ""
 "Plugins のステレオマルチバンドコンプレッサープラグインを使用するようになりま"
 "した。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:230
 msgid ""
 "The limiter plugin now uses the stereo limiter plugin from Linux Studio "
 "Plugins instead of the one from Calf Studio."
@@ -599,7 +663,7 @@ msgstr ""
 "リミッタープラグインは、Calf Studio のものから Linux Studio Plugins のステレ"
 "オリミッタープラグインを使用するようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
 msgid ""
 "LV2 filters now are spawned in PipeWire graph only when loaded the first "
 "time. Once loaded, they remain connected until EasyEffects shutdown."
@@ -608,12 +672,12 @@ msgstr ""
 "になりました。一度読み込まれると、EasyEffects がシャットダウンするまで接続さ"
 "れたままになります。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:235
 msgid "The echo canceller sampling rate is now properly set."
 msgstr ""
 "エコーキャンセラーのサンプリングレートが正しく設定されるようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
 msgid ""
 "The threshold parameter from the deesser plugin is now saved to the preset "
 "file."
@@ -621,14 +685,14 @@ msgstr ""
 "ディエッサープラグインのしきい値パラメーターがプリセットファイルに保存される"
 "ようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid ""
 "Improved band splitting for crystalizer with new default intensity values."
 msgstr ""
 "クリスタライザーのバンドスプリットを改善し、新しいデフォルトの強度値を追加し"
 "ました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
 msgid ""
 "Depending on the input gain or output gain values the corresponding level "
 "bars could not be aligned."
@@ -636,13 +700,13 @@ msgstr ""
 "入力ゲインや出力ゲインの値によっては、対応するレベルバーが揃わないことがあり"
 "ました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid ""
 "When adding more equalizer bands they are set to `Bell` instead of `Off`."
 msgstr ""
 "イコライザーバンドを追加すると、「オフ」ではなく「ベル」に設定されます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:240
 msgid ""
 "Equalizer APO presets loading is now working properly on locales different "
 "than C."
@@ -650,11 +714,11 @@ msgstr ""
 "イコライザー APO のプリセットの読み込みが、C 以外のロケールで正しく動作するよ"
 "うになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:241
 msgid "Improved linking management between port filter nodes in PipeWire."
 msgstr "PipeWire のポートフィルターノード間のリンク管理を改善しました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:220
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:242
 msgid ""
 "The crystalizer plugin signal amplification was too high before. It should "
 "be within more reasonable levels now."
@@ -662,7 +726,7 @@ msgstr ""
 "以前は、クリスタライザープラグインの信号増幅が高すぎました。今は、より合理的"
 "なレベルになっているはずです。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
 msgid ""
 "Improved the resampler used in the plugins that require one(like the rnnoise "
 "plugin)"
@@ -670,17 +734,17 @@ msgstr ""
 "リサンプラーを必要とするプラグイン (rnnoise プラグインなど) で使用されるリザ"
 "ンプラーの改善"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:233
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
 msgid "Setting multiple autoloading presets should be fine now"
 msgstr "複数の自動読み込みプリセットを設定しても正常に動作するようになりました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:234
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:256
 msgid "Transient windows are now properly set for some plugins dialogs"
 msgstr ""
 "一部のプラグインのダイアログで、一時的なウィンドウが適切に設定されるようにな"
 "りました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:235
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid ""
 "The convolver impulse response menu was improved to workaround an issue "
 "where the impulse files was not loaded when only one was available in the "
@@ -689,25 +753,25 @@ msgstr ""
 "コンボルバーのインパルス応答メニューで、インパルスファイルが1つしかない場合に"
 "読み込まれないという問題を改善しました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:258
 msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
 msgstr "ピッチプラグインが正しく初期化されないことがあるバグを修正しました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
 msgid "The saturation warning should not displace its neighbor widgets anymore"
 msgstr ""
 "サチュレーション警告は、もう隣のウィジェットの位置を変えることはありません"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
 msgid "Fixed the locale in a few widgets"
 msgstr "いくつかのウィジェットのロケールを修正"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
 msgid "Fixed wrong alignment in a few widgets"
 msgstr "いくつかのウィジェットで誤った配置になっていたのを修正"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:269
 msgid ""
 "The Loudness plugin is being used again for the reasons described at This "
 "means that is an optional dependency again."
@@ -715,7 +779,7 @@ msgstr ""
 "ラウドネスプラグインは、ここで説明されている理由のために再び使用されていま"
 "す。そのため、オプションの依存関係になりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:273
 msgid ""
 "Fixed a segmentation fault that happened when optional dependencies were not "
 "installed"
@@ -723,11 +787,11 @@ msgstr ""
 "オプションの依存パッケージがインストールされていない場合に発生するセグメン"
 "テーションフォールトを修正しました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
 msgid "Improved equalizer interface."
 msgstr "イコライザーのインターフェースを改善しました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
 msgid ""
 "Now we use a sidechain LSP compressor that allows the user to select and "
 "external source as the sidechain input."
@@ -735,11 +799,11 @@ msgstr ""
 "現在は、サイドチェーン入力として外部ソースを選択できるサイドチェーン LSP コン"
 "プレッサーを使用しています。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
 msgid "We now support the LSP compressor `Boosting` mode."
 msgstr "LSP コンプレッサーの「ブースト」モードに対応しました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
 msgid ""
 "When `split-channels` is enabled in the equalizer the imported APO preset "
 "will be applied only to the channel being visualized in the window. This "
@@ -751,7 +815,7 @@ msgstr ""
 "れにより、両方に同じ値を設定するのではなく、チャンネルごとに異なるプリセット"
 "をインポートすることができます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:288
 msgid ""
 "Fixed some segmentation faults that could happen when creating a preset "
 "autoloading profile or removing presets"
@@ -759,7 +823,7 @@ msgstr ""
 "プリセットの自動読み込みプロファイル作成時やプリセットの削除時に発生するセグ"
 "メンテーションフォールトを修正"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
 msgid ""
 "This is one of the biggest releases that I have ever made. The amount of "
 "changes is so big that it is hard to talk about everything here."
@@ -767,17 +831,17 @@ msgstr ""
 "今回のリリースは、これまでのリリースの中でも最も大きなもののひとつです。変更"
 "点が多すぎて、ここですべてを話すことはできません。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:275
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
 msgid ""
 "The following are just the most import ones. People interested on the "
 "journey that got us here can take"
 msgstr "以下は、最も重要なものだけです。ここに至るまでの道のりに興味のある方は"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:298
 msgid "a look at and"
 msgstr "を見て、"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:302
 msgid ""
 "The application and its repository have been renamed from PulseEffects to "
 "`EasyEffects`"
@@ -785,15 +849,15 @@ msgstr ""
 "アプリケーションとそのリポジトリの名称が PulseEffects から EasyEffects に変更"
 "されました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:303
 msgid "gtkmm3 was replaced by gtkmm4"
 msgstr "gtkmm3 は gtkmm4 に置き換えられました"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:304
 msgid "Gstreamer was replaced by native PipeWire filters."
 msgstr "Gstreamer は、ネイティブの PipeWire フィルターに置き換えられました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:305
 msgid ""
 "Many features were reimplemented from scratch. The preset autoloading is one "
 "example. Another remarkable change will be seen in the plugins selection "
@@ -804,7 +868,7 @@ msgstr ""
 "す。また、プラグイン選択メニューも大きく変化しました。ユーザーは、使用したい"
 "プラグインだけをウィンドウに表示できるようになりました。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:307
 msgid ""
 "Boost is no longer a dependency. The price paid for that was a little change "
 "in our presets structures. With some patience it is possible to edit "
@@ -816,7 +880,7 @@ msgstr ""
 "EasyEffects で動作させることができます。誰かがこの機能のためのスクリプトを開"
 "発してくれることを期待しています。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:308
 msgid ""
 "New libraries are being used and some of the librarires that were optional "
 "before are now required"
@@ -837,20 +901,32 @@ msgstr "リミッター;コンプレッサー;リバーブ;イコライザー;�
 msgid "\"Presets\""
 msgstr "「プリセット」"
 
-#: data/ui/app_info.ui:201
+#: data/ui/app_info.ui:212
+msgid "Enable/disable this application"
+msgstr ""
+
+#: data/ui/app_info.ui:213
 #, fuzzy
 msgid "Enable"
 msgstr "有効"
 
-#: data/ui/app_info.ui:213
+#: data/ui/app_info.ui:225
+msgid "Excluded App List: Add/remove this application"
+msgstr ""
+
+#: data/ui/app_info.ui:226
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:248 data/ui/app_info.ui:250
 msgid "Mute Application"
 msgstr "アプリケーションをミュート"
 
-#: data/ui/app_info.ui:259
+#: data/ui/app_info.ui:272
+msgid "Change the volume of this application"
+msgstr ""
+
+#: data/ui/app_info.ui:274
 msgid "Application Volume"
 msgstr "アプリケーションの音量"
 
@@ -874,7 +950,7 @@ msgstr "_設定をリセット"
 msgid "_About EasyEffects"
 msgstr "_EasyEffects について"
 
-#: data/ui/application_window.ui:52 data/ui/reverb.ui:18
+#: data/ui/application_window.ui:52 data/ui/reverb.ui:14
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
 #: src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
@@ -884,7 +960,11 @@ msgstr "プリセット"
 msgid "Presets Menu"
 msgstr "プリセットメニュー"
 
-#: data/ui/application_window.ui:61 data/ui/application_window.ui:66
+#: data/ui/application_window.ui:61
+msgid "Enable/disable the global bypass"
+msgstr ""
+
+#: data/ui/application_window.ui:66
 msgid "Global Bypass"
 msgstr "グローバルバイパス"
 
@@ -896,184 +976,170 @@ msgstr "メインメニュー"
 msgid "EasyEffects Window"
 msgstr "EasyEffects ウィンドウ"
 
-#: data/ui/apps_box.ui:21
+#: data/ui/apps_box.ui:17
 msgid "Applications List"
 msgstr "アプリケーションリスト"
 
-#: data/ui/apps_box.ui:31
+#: data/ui/apps_box.ui:27
 #, fuzzy
 msgid "Empty List"
 msgstr "何もない壁"
 
-#: data/ui/apps_box.ui:32
+#: data/ui/apps_box.ui:28
 #, fuzzy
 msgid "No Audio Application Available"
 msgstr "アプリケーション名"
 
-#: data/ui/autogain.ui:19
+#: data/ui/autogain.ui:18
 msgid "Target"
 msgstr "ターゲット"
 
-#: data/ui/autogain.ui:53
+#: data/ui/autogain.ui:52
 msgid "Maximum History"
 msgstr "最大履歴"
 
-#: data/ui/autogain.ui:87
+#: data/ui/autogain.ui:86
 msgid "Reference"
 msgstr "リファレンス"
 
-#: data/ui/autogain.ui:99 data/ui/autogain.ui:157
+#: data/ui/autogain.ui:98 data/ui/autogain.ui:139
 msgid "Momentary"
 msgstr "瞬間的"
 
-#: data/ui/autogain.ui:100 data/ui/autogain.ui:187
+#: data/ui/autogain.ui:99 data/ui/autogain.ui:169
 msgid "Short-Term"
 msgstr "短期"
 
-#: data/ui/autogain.ui:101 data/ui/autogain.ui:217
+#: data/ui/autogain.ui:100 data/ui/autogain.ui:199
 msgid "Integrated"
 msgstr "統合"
 
-#: data/ui/autogain.ui:102
+#: data/ui/autogain.ui:101
 msgid "Geometric Mean (MSI)"
 msgstr "幾何平均 (MSI)"
 
-#: data/ui/autogain.ui:103
+#: data/ui/autogain.ui:102
 msgid "Geometric Mean (MS)"
 msgstr "幾何平均 (MS)"
 
-#: data/ui/autogain.ui:104
+#: data/ui/autogain.ui:103
 msgid "Geometric Mean (MI)"
 msgstr "幾何平均 (MI)"
 
-#: data/ui/autogain.ui:105
+#: data/ui/autogain.ui:104
 msgid "Geometric Mean (SI)"
 msgstr "幾何平均 (SI)"
 
-#: data/ui/autogain.ui:127 data/ui/bass_enhancer.ui:18
-#: data/ui/bass_loudness.ui:14 data/ui/compressor.ui:13 data/ui/convolver.ui:14
-#: data/ui/crossfeed.ui:14 data/ui/crystalizer.ui:13
-#: data/ui/crystalizer_band.ui:11 data/ui/deesser.ui:17 data/ui/delay.ui:14
-#: data/ui/echo_canceller.ui:14 data/ui/equalizer.ui:142 data/ui/exciter.ui:18
-#: data/ui/filter.ui:15 data/ui/gate.ui:13 data/ui/limiter.ui:14
-#: data/ui/loudness.ui:14 data/ui/maximizer.ui:14
-#: data/ui/multiband_compressor.ui:32 data/ui/multiband_gate.ui:13
-#: data/ui/multiband_gate.ui:183 data/ui/multiband_gate.ui:543
-#: data/ui/multiband_gate.ui:903 data/ui/multiband_gate.ui:1263
-#: data/ui/pitch.ui:75 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
-#: data/ui/stereo_tools.ui:13
-msgid "Bypass"
-msgstr "バイパス"
-
-#: data/ui/autogain.ui:134
+#: data/ui/autogain.ui:119
 msgid "Reset History"
 msgstr "履歴をリセット"
 
-#: data/ui/autogain.ui:247
+#: data/ui/autogain.ui:229
 msgid "Relative"
 msgstr "相対的"
 
-#: data/ui/autogain.ui:277
+#: data/ui/autogain.ui:259
 msgid "Range"
 msgstr "範囲"
 
-#: data/ui/autogain.ui:310 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
+#: data/ui/autogain.ui:292 data/ui/bass_loudness.ui:19
+#: src/tags_plugin_name.cpp:40
 msgid "Loudness"
 msgstr "ラウドネス"
 
-#: data/ui/autogain.ui:342
+#: data/ui/autogain.ui:324
 msgid "Output Gain"
 msgstr "出力ゲイン"
 
-#: data/ui/autogain.ui:379 data/ui/bass_enhancer.ui:264
-#: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
-#: data/ui/compressor.ui:994 data/ui/convolver.ui:230 data/ui/crossfeed.ui:142
-#: data/ui/crystalizer.ui:40 data/ui/deesser.ui:418 data/ui/delay.ui:109
-#: data/ui/echo_canceller.ui:113 data/ui/equalizer.ui:197
-#: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
-#: data/ui/limiter.ui:743 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
-#: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
-#: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
-#: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
-#: src/application_ui.cpp:243
+#: data/ui/autogain.ui:361 data/ui/bass_enhancer.ui:251
+#: data/ui/bass_loudness.ui:136 data/ui/compressor.ui:505
+#: data/ui/compressor.ui:987 data/ui/convolver.ui:222 data/ui/crossfeed.ui:133
+#: data/ui/crystalizer.ui:33 data/ui/deesser.ui:407 data/ui/delay.ui:101
+#: data/ui/echo_canceller.ui:105 data/ui/equalizer.ui:189
+#: data/ui/exciter.ui:251 data/ui/filter.ui:163 data/ui/gate.ui:327
+#: data/ui/limiter.ui:718 data/ui/loudness.ui:123 data/ui/maximizer.ui:136
+#: data/ui/multiband_compressor.ui:378 data/ui/multiband_gate.ui:1617
+#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:295
+#: data/ui/presets_menu.ui:177 data/ui/reverb.ui:351 data/ui/rnnoise.ui:131
+#: data/ui/stereo_tools.ui:30 data/ui/stereo_tools.ui:544
+#: src/application_ui.cpp:285
 msgid "Input"
 msgstr "入力"
 
-#: data/ui/autogain.ui:398 data/ui/bass_enhancer.ui:283
-#: data/ui/bass_loudness.ui:163 data/ui/compressor.ui:1013
-#: data/ui/convolver.ui:249 data/ui/crossfeed.ui:161 data/ui/crystalizer.ui:59
-#: data/ui/deesser.ui:437 data/ui/delay.ui:128 data/ui/echo_canceller.ui:132
-#: data/ui/equalizer.ui:216 data/ui/exciter.ui:283 data/ui/filter.ui:192
-#: data/ui/gate.ui:354 data/ui/limiter.ui:762 data/ui/loudness.ui:151
-#: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
-#: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:325 data/ui/reverb.ui:383
-#: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
+#: data/ui/autogain.ui:380 data/ui/bass_enhancer.ui:270
+#: data/ui/bass_loudness.ui:155 data/ui/compressor.ui:1006
+#: data/ui/convolver.ui:241 data/ui/crossfeed.ui:152 data/ui/crystalizer.ui:52
+#: data/ui/deesser.ui:426 data/ui/delay.ui:120 data/ui/echo_canceller.ui:124
+#: data/ui/equalizer.ui:208 data/ui/exciter.ui:270 data/ui/filter.ui:182
+#: data/ui/gate.ui:346 data/ui/limiter.ui:737 data/ui/loudness.ui:142
+#: data/ui/maximizer.ui:155 data/ui/multiband_compressor.ui:397
+#: data/ui/multiband_gate.ui:1636 data/ui/pitch.ui:314 data/ui/reverb.ui:370
+#: data/ui/rnnoise.ui:150 data/ui/stereo_tools.ui:563
 msgid "Plugin Input Gain"
 msgstr "プラグイン入力ゲイン"
 
-#: data/ui/autogain.ui:463 data/ui/bass_enhancer.ui:348
-#: data/ui/bass_loudness.ui:61 data/ui/bass_loudness.ui:228
-#: data/ui/compressor.ui:1078 data/ui/convolver.ui:314 data/ui/crossfeed.ui:226
-#: data/ui/crystalizer.ui:124 data/ui/deesser.ui:502 data/ui/delay.ui:193
-#: data/ui/echo_canceller.ui:197 data/ui/equalizer.ui:281
-#: data/ui/exciter.ui:348 data/ui/filter.ui:257 data/ui/gate.ui:419
-#: data/ui/limiter.ui:827 data/ui/loudness.ui:216 data/ui/maximizer.ui:229
-#: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
-#: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
-#: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
-#: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
-#: src/application_ui.cpp:242
+#: data/ui/autogain.ui:445 data/ui/bass_enhancer.ui:335
+#: data/ui/bass_loudness.ui:53 data/ui/bass_loudness.ui:220
+#: data/ui/compressor.ui:1071 data/ui/convolver.ui:306 data/ui/crossfeed.ui:217
+#: data/ui/crystalizer.ui:117 data/ui/deesser.ui:491 data/ui/delay.ui:185
+#: data/ui/echo_canceller.ui:189 data/ui/equalizer.ui:273
+#: data/ui/exciter.ui:335 data/ui/filter.ui:247 data/ui/gate.ui:411
+#: data/ui/limiter.ui:802 data/ui/loudness.ui:207 data/ui/maximizer.ui:220
+#: data/ui/multiband_compressor.ui:462 data/ui/multiband_gate.ui:464
+#: data/ui/multiband_gate.ui:824 data/ui/multiband_gate.ui:1184
+#: data/ui/multiband_gate.ui:1544 data/ui/multiband_gate.ui:1701
+#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:379
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:435 data/ui/rnnoise.ui:215
+#: data/ui/stereo_tools.ui:371 data/ui/stereo_tools.ui:628
+#: src/application_ui.cpp:284
 msgid "Output"
 msgstr "出力"
 
-#: data/ui/autogain.ui:482 data/ui/bass_enhancer.ui:367
-#: data/ui/bass_loudness.ui:247 data/ui/compressor.ui:1097
-#: data/ui/convolver.ui:333 data/ui/crossfeed.ui:245 data/ui/crystalizer.ui:143
-#: data/ui/deesser.ui:521 data/ui/delay.ui:212 data/ui/echo_canceller.ui:216
-#: data/ui/equalizer.ui:300 data/ui/exciter.ui:367 data/ui/filter.ui:276
-#: data/ui/gate.ui:438 data/ui/limiter.ui:846 data/ui/loudness.ui:235
-#: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
-#: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:409 data/ui/reverb.ui:467
-#: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
+#: data/ui/autogain.ui:464 data/ui/bass_enhancer.ui:354
+#: data/ui/bass_loudness.ui:239 data/ui/compressor.ui:1090
+#: data/ui/convolver.ui:325 data/ui/crossfeed.ui:236 data/ui/crystalizer.ui:136
+#: data/ui/deesser.ui:510 data/ui/delay.ui:204 data/ui/echo_canceller.ui:208
+#: data/ui/equalizer.ui:292 data/ui/exciter.ui:354 data/ui/filter.ui:266
+#: data/ui/gate.ui:430 data/ui/limiter.ui:821 data/ui/loudness.ui:226
+#: data/ui/maximizer.ui:239 data/ui/multiband_compressor.ui:481
+#: data/ui/multiband_gate.ui:1720 data/ui/pitch.ui:398 data/ui/reverb.ui:454
+#: data/ui/rnnoise.ui:234 data/ui/stereo_tools.ui:647
 msgid "Plugin Output Gain"
 msgstr "プラグイン出力ゲイン"
 
-#: data/ui/autogain.ui:545 data/ui/bass_enhancer.ui:461
-#: data/ui/bass_loudness.ui:310 data/ui/compressor.ui:1160
-#: data/ui/convolver.ui:396 data/ui/crossfeed.ui:308 data/ui/crystalizer.ui:198
-#: data/ui/deesser.ui:644 data/ui/delay.ui:275 data/ui/echo_canceller.ui:279
-#: data/ui/equalizer.ui:363 data/ui/equalizer_band.ui:223
-#: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:460 data/ui/filter.ui:339
-#: data/ui/gate.ui:531 data/ui/limiter.ui:909 data/ui/loudness.ui:298
-#: data/ui/maximizer.ui:343 data/ui/multiband_compressor.ui:556
-#: data/ui/multiband_gate.ui:1791 data/ui/pitch.ui:472 data/ui/reverb.ui:530
-#: data/ui/rnnoise.ui:303 data/ui/stereo_tools.ui:718
+#: data/ui/autogain.ui:527 data/ui/bass_enhancer.ui:448
+#: data/ui/bass_loudness.ui:302 data/ui/compressor.ui:1153
+#: data/ui/convolver.ui:388 data/ui/crossfeed.ui:299 data/ui/crystalizer.ui:191
+#: data/ui/deesser.ui:633 data/ui/delay.ui:267 data/ui/echo_canceller.ui:271
+#: data/ui/equalizer.ui:355 data/ui/equalizer_band.ui:223
+#: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:447 data/ui/filter.ui:329
+#: data/ui/gate.ui:523 data/ui/limiter.ui:884 data/ui/loudness.ui:289
+#: data/ui/maximizer.ui:334 data/ui/multiband_compressor.ui:544
+#: data/ui/multiband_gate.ui:1783 data/ui/pitch.ui:461 data/ui/reverb.ui:517
+#: data/ui/rnnoise.ui:297 data/ui/stereo_tools.ui:710
 msgid "Reset"
 msgstr "リセット"
 
-#: data/ui/autogain.ui:559 data/ui/bass_enhancer.ui:475
-#: data/ui/bass_loudness.ui:324 data/ui/compressor.ui:1174
-#: data/ui/convolver.ui:410 data/ui/crossfeed.ui:322 data/ui/deesser.ui:658
-#: data/ui/delay.ui:289 data/ui/echo_canceller.ui:293 data/ui/equalizer.ui:377
-#: data/ui/exciter.ui:474 data/ui/filter.ui:353 data/ui/gate.ui:545
-#: data/ui/limiter.ui:923 data/ui/loudness.ui:312 data/ui/maximizer.ui:357
-#: data/ui/multiband_compressor.ui:570 data/ui/multiband_gate.ui:1805
-#: data/ui/pitch.ui:486 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
-#: data/ui/stereo_tools.ui:732
+#: data/ui/autogain.ui:541 data/ui/bass_enhancer.ui:462
+#: data/ui/bass_loudness.ui:316 data/ui/compressor.ui:1167
+#: data/ui/convolver.ui:402 data/ui/crossfeed.ui:313 data/ui/deesser.ui:647
+#: data/ui/delay.ui:281 data/ui/echo_canceller.ui:285 data/ui/equalizer.ui:369
+#: data/ui/exciter.ui:461 data/ui/filter.ui:343 data/ui/gate.ui:537
+#: data/ui/limiter.ui:898 data/ui/loudness.ui:303 data/ui/maximizer.ui:348
+#: data/ui/multiband_compressor.ui:558 data/ui/multiband_gate.ui:1797
+#: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:311
+#: data/ui/stereo_tools.ui:724
 msgid "Using"
 msgstr "使用中"
 
-#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
+#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:528
 msgid "Device"
 msgstr "デバイス"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
-#: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
-#: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
-#: data/ui/presets_menu.ui:203
+#: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
+#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:47
+#: data/ui/presets_menu.ui:195
 msgid "Name"
 msgstr "名前"
 
@@ -1085,49 +1151,50 @@ msgstr "プロファイル"
 msgid "Preset"
 msgstr "プリセット"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:500
-msgid "Remove"
-msgstr "削除"
+#: data/ui/autoload_row.ui:114
+#, fuzzy
+msgid "Remove this autoload preset"
+msgstr "自動読み込みプリセットを削除"
 
-#: data/ui/bass_enhancer.ui:24 data/ui/compressor.ui:465 data/ui/deesser.ui:23
-#: data/ui/exciter.ui:24
+#: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:458 data/ui/deesser.ui:14
+#: data/ui/exciter.ui:12
 msgid "Listen"
 msgstr "聞く"
 
-#: data/ui/bass_enhancer.ui:36 data/ui/exciter.ui:36
+#: data/ui/bass_enhancer.ui:23 data/ui/exciter.ui:23
 msgid "Blend Harmonics"
 msgstr "ブレンドハーモニクス"
 
-#: data/ui/bass_enhancer.ui:48 data/ui/exciter.ui:48
+#: data/ui/bass_enhancer.ui:35 data/ui/exciter.ui:35
 msgid "3rd"
 msgstr "3rd"
 
-#: data/ui/bass_enhancer.ui:91 data/ui/exciter.ui:91
+#: data/ui/bass_enhancer.ui:78 data/ui/exciter.ui:78
 msgid "2nd"
 msgstr "2nd"
 
-#: data/ui/bass_enhancer.ui:110 data/ui/exciter.ui:110
+#: data/ui/bass_enhancer.ui:97 data/ui/exciter.ui:97
 msgid "Amount"
 msgstr "量"
 
-#: data/ui/bass_enhancer.ui:144 data/ui/bass_enhancer.ui:426
-#: data/ui/exciter.ui:144 data/ui/exciter.ui:426
+#: data/ui/bass_enhancer.ui:131 data/ui/bass_enhancer.ui:413
+#: data/ui/exciter.ui:131 data/ui/exciter.ui:413
 msgid "Harmonics"
 msgstr "ハーモニクス"
 
-#: data/ui/bass_enhancer.ui:179 data/ui/exciter.ui:179
+#: data/ui/bass_enhancer.ui:166 data/ui/exciter.ui:166
 msgid "Scope"
 msgstr "範囲"
 
-#: data/ui/bass_enhancer.ui:213
+#: data/ui/bass_enhancer.ui:200
 msgid "Floor"
 msgstr "フロア"
 
-#: data/ui/bass_enhancer.ui:242
+#: data/ui/bass_enhancer.ui:229
 msgid "Floor Value"
 msgstr "フロア値"
 
-#: data/ui/bass_loudness.ui:95
+#: data/ui/bass_loudness.ui:87
 msgid "Link"
 msgstr "リンク"
 
@@ -1150,307 +1217,306 @@ msgstr "ブロックリストのアプリケーション一覧"
 msgid "Show Excluded Applications"
 msgstr "ブロックリストのアプリケーションを表示"
 
-#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
+#: data/ui/compressor.ui:31 src/tags_plugin_name.cpp:28
 msgid "Compressor"
 msgstr "コンプレッサー"
 
-#: data/ui/compressor.ui:50 data/ui/compressor.ui:437 data/ui/compressor.ui:732
-#: data/ui/deesser.ui:65 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:130
-#: data/ui/limiter.ui:45 data/ui/multiband_compressor_band.ui:449
-#: data/ui/multiband_gate.ui:33 data/ui/pitch.ui:22
+#: data/ui/compressor.ui:43 data/ui/compressor.ui:430 data/ui/compressor.ui:725
+#: data/ui/deesser.ui:54 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:130
+#: data/ui/limiter.ui:36 data/ui/multiband_compressor_band.ui:449
+#: data/ui/multiband_gate.ui:25 data/ui/pitch.ui:22
 msgid "Mode"
 msgstr "モード"
 
-#: data/ui/compressor.ui:61 data/ui/multiband_compressor_band.ui:99
+#: data/ui/compressor.ui:54 data/ui/multiband_compressor_band.ui:99
 msgid "Downward"
 msgstr "下方向"
 
-#: data/ui/compressor.ui:62 data/ui/multiband_compressor_band.ui:100
+#: data/ui/compressor.ui:55 data/ui/multiband_compressor_band.ui:100
 msgid "Upward"
 msgstr "上方向"
 
-#: data/ui/compressor.ui:63 data/ui/multiband_compressor_band.ui:101
+#: data/ui/compressor.ui:56 data/ui/multiband_compressor_band.ui:101
 msgid "Boosting"
 msgstr "ブースト"
 
-#: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:88
+#: data/ui/compressor.ui:63 data/ui/multiband_compressor_band.ui:88
 msgid "Compression Mode"
 msgstr "圧縮モード"
 
-#: data/ui/compressor.ui:77 data/ui/multiband_compressor_band.ui:765
+#: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:765
 msgid "Boost Threshold"
 msgstr "ブーストしきい値"
 
-#: data/ui/compressor.ui:116 data/ui/multiband_compressor_band.ui:721
+#: data/ui/compressor.ui:109 data/ui/multiband_compressor_band.ui:721
 msgid "Boost Amount"
 msgstr "ブースト量"
 
-#: data/ui/compressor.ui:162 data/ui/gate.ui:114 data/ui/limiter.ui:261
-#: data/ui/limiter.ui:500 data/ui/multiband_compressor_band.ui:186
-#: data/ui/multiband_gate.ui:223 data/ui/multiband_gate.ui:583
-#: data/ui/multiband_gate.ui:943 data/ui/multiband_gate.ui:1303
+#: data/ui/compressor.ui:155 data/ui/gate.ui:106 data/ui/limiter.ui:252
+#: data/ui/limiter.ui:475 data/ui/multiband_compressor_band.ui:186
+#: data/ui/multiband_gate.ui:215 data/ui/multiband_gate.ui:575
+#: data/ui/multiband_gate.ui:935 data/ui/multiband_gate.ui:1295
 msgid "Attack"
 msgstr "アタック"
 
-#: data/ui/compressor.ui:173 data/ui/multiband_compressor_band.ui:166
+#: data/ui/compressor.ui:166 data/ui/multiband_compressor_band.ui:166
 msgid "Time"
 msgstr "時間"
 
-#: data/ui/compressor.ui:183 data/ui/deesser.ui:300 data/ui/gate.ui:184
-#: data/ui/limiter.ui:345 data/ui/maximizer.ui:29
-#: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate.ui:293
-#: data/ui/multiband_gate.ui:653 data/ui/multiband_gate.ui:1013
-#: data/ui/multiband_gate.ui:1373
+#: data/ui/compressor.ui:176 data/ui/deesser.ui:289 data/ui/gate.ui:176
+#: data/ui/limiter.ui:336 data/ui/maximizer.ui:20
+#: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate.ui:285
+#: data/ui/multiband_gate.ui:645 data/ui/multiband_gate.ui:1005
+#: data/ui/multiband_gate.ui:1365
 msgid "Threshold"
 msgstr "しきい値"
 
-#: data/ui/compressor.ui:210 data/ui/multiband_compressor_band.ui:222
+#: data/ui/compressor.ui:203 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
 msgstr "アタックタイム"
 
-#: data/ui/compressor.ui:233 data/ui/multiband_compressor_band.ui:247
+#: data/ui/compressor.ui:226 data/ui/multiband_compressor_band.ui:247
 msgid "Attack Threshold"
 msgstr "アタックしきい値"
 
-#: data/ui/compressor.ui:240 data/ui/gate.ui:149 data/ui/limiter.ui:303
-#: data/ui/limiter.ui:537 data/ui/maximizer.ui:95
-#: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate.ui:258
-#: data/ui/multiband_gate.ui:618 data/ui/multiband_gate.ui:978
-#: data/ui/multiband_gate.ui:1338
+#: data/ui/compressor.ui:233 data/ui/gate.ui:141 data/ui/limiter.ui:294
+#: data/ui/limiter.ui:512 data/ui/maximizer.ui:86
+#: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate.ui:250
+#: data/ui/multiband_gate.ui:610 data/ui/multiband_gate.ui:970
+#: data/ui/multiband_gate.ui:1330
 msgid "Release"
 msgstr "リリース"
 
-#: data/ui/compressor.ui:267 data/ui/multiband_compressor_band.ui:274
+#: data/ui/compressor.ui:260 data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
 msgstr "リリース時間"
 
-#: data/ui/compressor.ui:292 data/ui/multiband_compressor_band.ui:302
+#: data/ui/compressor.ui:285 data/ui/multiband_compressor_band.ui:302
 msgid "Release Threshold"
 msgstr "リリースしきい値"
 
-#: data/ui/compressor.ui:299 data/ui/deesser.ui:334 data/ui/gate.ui:218
-#: data/ui/multiband_compressor_band.ui:309 data/ui/multiband_gate.ui:327
-#: data/ui/multiband_gate.ui:687 data/ui/multiband_gate.ui:1047
-#: data/ui/multiband_gate.ui:1407
+#: data/ui/compressor.ui:292 data/ui/deesser.ui:323 data/ui/gate.ui:210
+#: data/ui/multiband_compressor_band.ui:309 data/ui/multiband_gate.ui:319
+#: data/ui/multiband_gate.ui:679 data/ui/multiband_gate.ui:1039
+#: data/ui/multiband_gate.ui:1399
 msgid "Ratio"
 msgstr "比率"
 
-#: data/ui/compressor.ui:337 data/ui/gate.ui:253 data/ui/limiter.ui:573
-#: data/ui/multiband_compressor_band.ui:347 data/ui/multiband_gate.ui:362
-#: data/ui/multiband_gate.ui:722 data/ui/multiband_gate.ui:1082
-#: data/ui/multiband_gate.ui:1442
+#: data/ui/compressor.ui:330 data/ui/gate.ui:245 data/ui/limiter.ui:548
+#: data/ui/multiband_compressor_band.ui:347 data/ui/multiband_gate.ui:354
+#: data/ui/multiband_gate.ui:714 data/ui/multiband_gate.ui:1074
+#: data/ui/multiband_gate.ui:1434
 msgid "Knee"
 msgstr "ニー"
 
-#: data/ui/compressor.ui:374 data/ui/deesser.ui:370 data/ui/gate.ui:287
-#: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate.ui:396
-#: data/ui/multiband_gate.ui:756 data/ui/multiband_gate.ui:1116
-#: data/ui/multiband_gate.ui:1476
+#: data/ui/compressor.ui:367 data/ui/deesser.ui:359 data/ui/gate.ui:279
+#: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate.ui:388
+#: data/ui/multiband_gate.ui:748 data/ui/multiband_gate.ui:1108
+#: data/ui/multiband_gate.ui:1468
 msgid "Makeup"
 msgstr "メイクアップ"
 
-#: data/ui/compressor.ui:418 data/ui/compressor.ui:930
+#: data/ui/compressor.ui:411 data/ui/compressor.ui:923
 msgid "Sidechain"
 msgstr "サイドチェーン"
 
-#: data/ui/compressor.ui:447 data/ui/deesser.ui:49 data/ui/gate.ui:38
-#: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:204
-#: data/ui/multiband_gate.ui:564 data/ui/multiband_gate.ui:924
-#: data/ui/multiband_gate.ui:1284
+#: data/ui/compressor.ui:440 data/ui/deesser.ui:38 data/ui/gate.ui:30
+#: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:196
+#: data/ui/multiband_gate.ui:556 data/ui/multiband_gate.ui:916
+#: data/ui/multiband_gate.ui:1276
 msgid "Peak"
 msgstr "ピーク"
 
-#: data/ui/compressor.ui:448 data/ui/deesser.ui:48 data/ui/gate.ui:37
-#: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:203
-#: data/ui/multiband_gate.ui:563 data/ui/multiband_gate.ui:923
-#: data/ui/multiband_gate.ui:1283
+#: data/ui/compressor.ui:441 data/ui/deesser.ui:37 data/ui/gate.ui:29
+#: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:195
+#: data/ui/multiband_gate.ui:555 data/ui/multiband_gate.ui:915
+#: data/ui/multiband_gate.ui:1275
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:449 data/ui/compressor.ui:801
+#: data/ui/compressor.ui:442 data/ui/compressor.ui:794
 #: data/ui/multiband_compressor_band.ui:462
 msgid "Low-Pass"
 msgstr "ローパス"
 
-#: data/ui/compressor.ui:450 data/ui/multiband_compressor_band.ui:463
+#: data/ui/compressor.ui:443 data/ui/multiband_compressor_band.ui:463
 msgid "Uniform"
 msgstr "ユニフォーム"
 
-#: data/ui/compressor.ui:457 data/ui/multiband_compressor_band.ui:470
+#: data/ui/compressor.ui:450 data/ui/multiband_compressor_band.ui:470
 msgid "Sidechain Mode"
 msgstr "サイドチェーンモード"
 
-#: data/ui/compressor.ui:475 data/ui/multiband_compressor_band.ui:477
+#: data/ui/compressor.ui:468 data/ui/multiband_compressor_band.ui:477
 msgid "Source"
 msgstr "ソース"
 
-#: data/ui/compressor.ui:485 data/ui/multiband_compressor_band.ui:488
+#: data/ui/compressor.ui:478 data/ui/multiband_compressor_band.ui:488
 msgid "Middle"
 msgstr "中央"
 
-#: data/ui/compressor.ui:486 data/ui/multiband_compressor_band.ui:489
+#: data/ui/compressor.ui:479 data/ui/multiband_compressor_band.ui:489
 msgid "Side"
 msgstr "サイド"
 
-#: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
-#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:508
-#: data/ui/stereo_tools.ui:159
+#: data/ui/compressor.ui:480 data/ui/delay.ui:20 data/ui/equalizer.ui:37
+#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:504
+#: data/ui/stereo_tools.ui:151
 msgid "Left"
 msgstr "左"
 
-#: data/ui/compressor.ui:488 data/ui/delay.ui:61 data/ui/equalizer.ui:49
-#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:519
-#: data/ui/stereo_tools.ui:214
+#: data/ui/compressor.ui:481 data/ui/delay.ui:53 data/ui/equalizer.ui:49
+#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:515
+#: data/ui/stereo_tools.ui:206
 msgid "Right"
 msgstr "右"
 
-#: data/ui/compressor.ui:495 data/ui/multiband_compressor.ui:98
+#: data/ui/compressor.ui:488 data/ui/multiband_compressor.ui:86
 #: data/ui/multiband_compressor_band.ui:498
 msgid "Sidechain Source"
 msgstr "サイドチェーンソース"
 
-#: data/ui/compressor.ui:524 data/ui/equalizer_band.ui:98
+#: data/ui/compressor.ui:517 data/ui/equalizer_band.ui:98
 msgid "Type"
 msgstr "タイプ"
 
-#: data/ui/compressor.ui:548
+#: data/ui/compressor.ui:541
 msgid "Feed-forward"
 msgstr "フィードフォワード"
 
-#: data/ui/compressor.ui:549
+#: data/ui/compressor.ui:542
 msgid "Feed-back"
 msgstr "フィードバック"
 
-#: data/ui/compressor.ui:550
+#: data/ui/compressor.ui:543
 msgid "External"
 msgstr "外部"
 
-#: data/ui/compressor.ui:557
+#: data/ui/compressor.ui:550
 msgid "Sidechain Type"
 msgstr "サイドチェーンタイプ"
 
-#: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
-#: src/plugins_box.cpp:530
+#: data/ui/compressor.ui:577 src/plugins_box.cpp:548
 msgid "Input Device"
 msgstr "入力デバイス"
 
-#: data/ui/compressor.ui:592
+#: data/ui/compressor.ui:585
 msgid "PreAmplification"
 msgstr "プリアンプリーション"
 
-#: data/ui/compressor.ui:629 data/ui/multiband_compressor_band.ui:654
+#: data/ui/compressor.ui:622 data/ui/multiband_compressor_band.ui:654
 msgid "Reactivity"
 msgstr "反応性"
 
-#: data/ui/compressor.ui:666 data/ui/limiter.ui:219
+#: data/ui/compressor.ui:659 data/ui/limiter.ui:210
 #: data/ui/multiband_compressor_band.ui:688
 msgid "Lookahead"
 msgstr "ルックアヘッド"
 
-#: data/ui/compressor.ui:709
+#: data/ui/compressor.ui:702
 msgid "Sidechain Filters"
 msgstr "サイドチェーンフィルター"
 
-#: data/ui/compressor.ui:719
+#: data/ui/compressor.ui:712
 msgid "High-Pass"
 msgstr "ハイパス"
 
-#: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
-#: data/ui/pipe_manager_box.ui:565
+#: data/ui/compressor.ui:738 data/ui/equalizer_band.ui:197 data/ui/filter.ui:43
+#: data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "周波数"
 
-#: data/ui/compressor.ui:758 data/ui/compressor.ui:814
+#: data/ui/compressor.ui:751 data/ui/compressor.ui:807
 #: data/ui/equalizer_band.ui:108
 msgid "Off"
 msgstr "オフ"
 
-#: data/ui/compressor.ui:759 data/ui/compressor.ui:815
+#: data/ui/compressor.ui:752 data/ui/compressor.ui:808
 msgid "12 dB/oct"
 msgstr "12 dB/oct"
 
-#: data/ui/compressor.ui:760 data/ui/compressor.ui:816
+#: data/ui/compressor.ui:753 data/ui/compressor.ui:809
 msgid "24 dB/oct"
 msgstr "24 dB/oct"
 
-#: data/ui/compressor.ui:761 data/ui/compressor.ui:817
+#: data/ui/compressor.ui:754 data/ui/compressor.ui:810
 msgid "36 dB/oct"
 msgstr "36 dB/oct"
 
-#: data/ui/compressor.ui:768
+#: data/ui/compressor.ui:761
 msgid "High-Pass Filter Mode"
 msgstr "ハイパスフィルターモード"
 
-#: data/ui/compressor.ui:794 data/ui/compressor.ui:850
+#: data/ui/compressor.ui:787 data/ui/compressor.ui:843
 msgid "High-Pass Filter Frequency"
 msgstr "ハイパスフィルター周波数"
 
-#: data/ui/compressor.ui:824
+#: data/ui/compressor.ui:817
 msgid "Low-Pass Filter Mode"
 msgstr "ローパスフィルターモード"
 
-#: data/ui/compressor.ui:876
+#: data/ui/compressor.ui:869
 msgid "Gain"
 msgstr "ゲイン"
 
-#: data/ui/compressor.ui:903
+#: data/ui/compressor.ui:896
 msgid "Envelope"
 msgstr "包装"
 
-#: data/ui/compressor.ui:957
+#: data/ui/compressor.ui:950
 msgid "Curve"
 msgstr "カーブ"
 
-#: data/ui/convolver.ui:39
+#: data/ui/convolver.ui:31
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:511
+#: data/ui/convolver.ui:34 data/ui/pipe_manager_box.ui:507
 msgid "Left Channel"
 msgstr "左チャンネル"
 
-#: data/ui/convolver.ui:52
+#: data/ui/convolver.ui:44
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:522
+#: data/ui/convolver.ui:47 data/ui/pipe_manager_box.ui:518
 msgid "Right Channel"
 msgstr "右チャンネル"
 
-#: data/ui/convolver.ui:70
+#: data/ui/convolver.ui:62
 msgid "Impulses"
 msgstr "インパルス"
 
-#: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:113
+#: data/ui/convolver.ui:70 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
 msgstr "コンバイン"
 
-#: data/ui/convolver.ui:85
+#: data/ui/convolver.ui:77
 msgid "Stereo Width"
 msgstr "ステレオ幅"
 
-#: data/ui/convolver.ui:114
+#: data/ui/convolver.ui:106
 msgid "Spectrum"
 msgstr "スペクトラム"
 
-#: data/ui/convolver.ui:123
+#: data/ui/convolver.ui:115
 msgid "Log Scale"
 msgstr "ログスケール"
 
-#: data/ui/convolver.ui:133 src/plugin_name.cpp:25
+#: data/ui/convolver.ui:125 src/tags_plugin_name.cpp:25
 msgid "Autogain"
 msgstr "オートゲイン"
 
-#: data/ui/convolver.ui:149
+#: data/ui/convolver.ui:141
 msgid "Rate"
 msgstr "レート"
 
-#: data/ui/convolver.ui:171
+#: data/ui/convolver.ui:163
 msgid "Samples"
 msgstr "サンプル"
 
-#: data/ui/convolver.ui:193
+#: data/ui/convolver.ui:185
 msgid "Duration"
 msgstr "長さ"
 
@@ -1479,7 +1545,7 @@ msgid "Import Impulse"
 msgstr "インパルスをインポート"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
+#: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
 msgid "Search"
 msgstr "検索"
 
@@ -1491,93 +1557,99 @@ msgstr "インパルスファイルを検索"
 msgid "Impulse Files List"
 msgstr "インパルスファイル一覧"
 
-#: data/ui/crossfeed.ui:34
+#: data/ui/crossfeed.ui:25
 msgid "Default"
 msgstr "デフォルト"
 
-#: data/ui/crossfeed.ui:57
+#: data/ui/crossfeed.ui:48
 msgid "Cutoff"
 msgstr "カットオフ"
 
-#: data/ui/crossfeed.ui:92
+#: data/ui/crossfeed.ui:83
 msgid "Feed"
 msgstr "フィード"
 
+#: data/ui/crystalizer_band.ui:11 data/ui/multiband_gate.ui:175
+#: data/ui/multiband_gate.ui:535 data/ui/multiband_gate.ui:895
+#: data/ui/multiband_gate.ui:1255
+msgid "Bypass"
+msgstr "バイパス"
+
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:321
-#: data/ui/multiband_compressor_band.ui:136 data/ui/stereo_tools.ui:169
-#: data/ui/stereo_tools.ui:194
+#: data/ui/multiband_compressor_band.ui:136 data/ui/stereo_tools.ui:161
+#: data/ui/stereo_tools.ui:186
 msgid "Mute"
 msgstr "ミュート"
 
-#: data/ui/deesser.ui:41 data/ui/gate.ui:30
+#: data/ui/deesser.ui:30 data/ui/gate.ui:22
 msgid "Detection"
 msgstr "検出"
 
-#: data/ui/deesser.ui:72
+#: data/ui/deesser.ui:61
 msgid "Wide"
 msgstr "ワイド"
 
-#: data/ui/deesser.ui:73
+#: data/ui/deesser.ui:62
 msgid "Split"
 msgstr "スプリット"
 
-#: data/ui/deesser.ui:89
+#: data/ui/deesser.ui:78
 msgid "F1 Split"
 msgstr "F1 スプリット"
 
-#: data/ui/deesser.ui:109
+#: data/ui/deesser.ui:98
 msgid "Frequency 1 Split"
 msgstr "周波数 1 スプリット"
 
-#: data/ui/deesser.ui:122
+#: data/ui/deesser.ui:111
 msgid "F2 Peak"
 msgstr "F2 ピーク"
 
-#: data/ui/deesser.ui:142
+#: data/ui/deesser.ui:131
 msgid "Frequency 2 Peak"
 msgstr "周波数 2 ピーク"
 
-#: data/ui/deesser.ui:160
+#: data/ui/deesser.ui:149
 msgid "F1 Gain"
 msgstr "F1 ゲイン"
 
-#: data/ui/deesser.ui:188
+#: data/ui/deesser.ui:177
 msgid "Frequency 1 Gain"
 msgstr "周波数 1 ゲイン"
 
-#: data/ui/deesser.ui:195
+#: data/ui/deesser.ui:184
 msgid "F2 Level"
 msgstr "F2 レベル"
 
-#: data/ui/deesser.ui:223
+#: data/ui/deesser.ui:212
 msgid "Frequency 2 Level"
 msgstr "周波数 2 レベル"
 
-#: data/ui/deesser.ui:230
+#: data/ui/deesser.ui:219
 msgid "F2 Peak Q"
 msgstr "F2 ピーク Q"
 
-#: data/ui/deesser.ui:258
+#: data/ui/deesser.ui:247
 msgid "Frequency 2 Peak Q"
 msgstr "周波数 2 ピーク Q"
 
-#: data/ui/deesser.ui:265
+#: data/ui/deesser.ui:254
 msgid "Laxity"
 msgstr "ゆるみ"
 
-#: data/ui/deesser.ui:580
+#: data/ui/deesser.ui:569
 msgid "Detected"
 msgstr "検出"
 
-#: data/ui/deesser.ui:610 data/ui/maximizer.ui:307
+#: data/ui/deesser.ui:599 data/ui/maximizer.ui:298
 msgid "Reduction"
 msgstr "減少"
 
-#: data/ui/echo_canceller.ui:28
+#: data/ui/echo_canceller.ui:20
 msgid "Frame Size"
 msgstr "フレームサイズ"
 
-#: data/ui/echo_canceller.ui:63
+#: data/ui/echo_canceller.ui:55
 msgid "Filter Length"
 msgstr "フィルター長"
 
@@ -1605,19 +1677,19 @@ msgstr "FFT"
 msgid "SPM"
 msgstr "SPM"
 
-#: data/ui/equalizer.ui:150
+#: data/ui/equalizer.ui:142
 msgid "Split Channels"
 msgstr "チャンネルの分割"
 
-#: data/ui/equalizer.ui:156
+#: data/ui/equalizer.ui:148
 msgid "Flat Response"
 msgstr "フラットレスポンス"
 
-#: data/ui/equalizer.ui:164
+#: data/ui/equalizer.ui:156
 msgid "Calculate Frequencies"
 msgstr "周波数の計算"
 
-#: data/ui/equalizer.ui:172
+#: data/ui/equalizer.ui:164
 msgid "Load APO Preset"
 msgstr "APO プリセットを読み込む"
 
@@ -1645,7 +1717,7 @@ msgstr "ローシェルフ"
 msgid "Notch"
 msgstr "ノッチ"
 
-#: data/ui/equalizer_band.ui:115 data/ui/filter.ui:88
+#: data/ui/equalizer_band.ui:115 data/ui/filter.ui:78
 msgid "Resonance"
 msgstr "反響"
 
@@ -1678,16 +1750,16 @@ msgid "Quality"
 msgstr "品質"
 
 #: data/ui/equalizer_band.ui:315 data/ui/multiband_compressor_band.ui:146
-#: data/ui/multiband_gate.ui:193 data/ui/multiband_gate.ui:553
-#: data/ui/multiband_gate.ui:913 data/ui/multiband_gate.ui:1273
+#: data/ui/multiband_gate.ui:185 data/ui/multiband_gate.ui:545
+#: data/ui/multiband_gate.ui:905 data/ui/multiband_gate.ui:1265
 msgid "Solo"
 msgstr "ソロ"
 
-#: data/ui/exciter.ui:213
+#: data/ui/exciter.ui:200
 msgid "Ceil"
 msgstr "切り上げ"
 
-#: data/ui/exciter.ui:242
+#: data/ui/exciter.ui:229
 msgid "Ceil Value"
 msgstr "切り上げ値"
 
@@ -1707,363 +1779,363 @@ msgstr "説明"
 msgid "Remove this model file"
 msgstr "このモデルファイルを削除"
 
-#: data/ui/filter.ui:25
+#: data/ui/filter.ui:15
 msgid "12dB/oct Lowpass"
 msgstr "12dB/oct ローパス"
 
-#: data/ui/filter.ui:26
+#: data/ui/filter.ui:16
 msgid "24dB/oct Lowpass"
 msgstr "24dB/oct ローパス"
 
-#: data/ui/filter.ui:27
+#: data/ui/filter.ui:17
 msgid "36dB/oct Lowpass"
 msgstr "36dB/oct ローパス"
 
-#: data/ui/filter.ui:28
+#: data/ui/filter.ui:18
 msgid "12dB/oct Highpass"
 msgstr "12dB/oct ハイパス"
 
-#: data/ui/filter.ui:29
+#: data/ui/filter.ui:19
 msgid "24dB/oct Highpass"
 msgstr "24dB/oct ハイパス"
 
-#: data/ui/filter.ui:30
+#: data/ui/filter.ui:20
 msgid "36dB/oct Highpass"
 msgstr "36dB/oct ハイパス"
 
-#: data/ui/filter.ui:31
+#: data/ui/filter.ui:21
 msgid "6dB/oct Bandpass"
 msgstr "6dB/oct バンドパス"
 
-#: data/ui/filter.ui:32
+#: data/ui/filter.ui:22
 msgid "12dB/oct Bandpass"
 msgstr "12dB/oct バンドパス"
 
-#: data/ui/filter.ui:33
+#: data/ui/filter.ui:23
 msgid "18dB/oct Bandpass"
 msgstr "18dB/oct バンドパス"
 
-#: data/ui/filter.ui:34
+#: data/ui/filter.ui:24
 msgid "6dB/oct Bandreject"
 msgstr "6dB/oct バンドリジェクト"
 
-#: data/ui/filter.ui:35
+#: data/ui/filter.ui:25
 msgid "12dB/oct Bandreject"
 msgstr "12dB/oct バンドリジェクト"
 
-#: data/ui/filter.ui:36
+#: data/ui/filter.ui:26
 msgid "18dB/oct Bandreject"
 msgstr "18dB/oct バンドリジェクト"
 
-#: data/ui/filter.ui:123
+#: data/ui/filter.ui:113
 msgid "Inertia"
 msgstr "慣性"
 
-#: data/ui/gate.ui:54 data/ui/multiband_gate.ui:429
-#: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1149
-#: data/ui/multiband_gate.ui:1509
+#: data/ui/gate.ui:46 data/ui/multiband_gate.ui:421
+#: data/ui/multiband_gate.ui:781 data/ui/multiband_gate.ui:1141
+#: data/ui/multiband_gate.ui:1501
 msgid "Max Reduction"
 msgstr "最大リダクション"
 
-#: data/ui/gate.ui:85 data/ui/limiter.ui:413
+#: data/ui/gate.ui:77 data/ui/limiter.ui:388
 msgid "Stereo Link"
 msgstr "ステレオリンク"
 
-#: data/ui/gate.ui:92
+#: data/ui/gate.ui:84
 msgid "Average"
 msgstr "平均"
 
-#: data/ui/gate.ui:93 data/ui/preferences_spectrum.ui:211
+#: data/ui/gate.ui:85 data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
 msgstr "最大"
 
-#: data/ui/gate.ui:497 data/ui/multiband_gate.ui:502
-#: data/ui/multiband_gate.ui:862 data/ui/multiband_gate.ui:1222
-#: data/ui/multiband_gate.ui:1582
+#: data/ui/gate.ui:489 data/ui/multiband_gate.ui:494
+#: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
+#: data/ui/multiband_gate.ui:1574
 msgid "Gating"
 msgstr "ゲーティング"
 
-#: data/ui/limiter.ui:57
+#: data/ui/limiter.ui:48
 msgid "Oversampling"
 msgstr "オーバーサンプリング"
 
-#: data/ui/limiter.ui:69
+#: data/ui/limiter.ui:60
 msgid "Dither"
 msgstr "ディザ"
 
-#: data/ui/limiter.ui:81
+#: data/ui/limiter.ui:72
 msgid "Herm Thin"
 msgstr "Herm Thin"
 
-#: data/ui/limiter.ui:82
+#: data/ui/limiter.ui:73
 msgid "Herm Wide"
 msgstr "Herm Wide"
 
-#: data/ui/limiter.ui:83
+#: data/ui/limiter.ui:74
 msgid "Herm Tail"
 msgstr "Herm Tail"
 
-#: data/ui/limiter.ui:84
+#: data/ui/limiter.ui:75
 msgid "Herm Duck"
 msgstr "Herm Duck"
 
-#: data/ui/limiter.ui:85
+#: data/ui/limiter.ui:76
 msgid "Exp Thin"
 msgstr "Exp Thin"
 
-#: data/ui/limiter.ui:86
+#: data/ui/limiter.ui:77
 msgid "Exp Wide"
 msgstr "Exp Wide"
 
-#: data/ui/limiter.ui:87
+#: data/ui/limiter.ui:78
 msgid "Exp Tail"
 msgstr "Exp Tail"
 
-#: data/ui/limiter.ui:88
+#: data/ui/limiter.ui:79
 msgid "Exp Duck"
 msgstr "Exp Duck"
 
-#: data/ui/limiter.ui:89
+#: data/ui/limiter.ui:80
 msgid "Line Thin"
 msgstr "Line Thin"
 
-#: data/ui/limiter.ui:90
+#: data/ui/limiter.ui:81
 msgid "Line Wide"
 msgstr "Line Wide"
 
-#: data/ui/limiter.ui:91
+#: data/ui/limiter.ui:82
 msgid "Line Tail"
 msgstr "Line Tail"
 
-#: data/ui/limiter.ui:92
+#: data/ui/limiter.ui:83
 msgid "Line Duck"
 msgstr "Line Duck"
 
-#: data/ui/limiter.ui:108 data/ui/multiband_compressor.ui:80
+#: data/ui/limiter.ui:99 data/ui/multiband_compressor.ui:68
 msgid "None"
 msgstr "なし"
 
-#: data/ui/limiter.ui:109
+#: data/ui/limiter.ui:100
 msgid "Half x2(2L)"
 msgstr "ハーフ ×2(2L)"
 
-#: data/ui/limiter.ui:110
+#: data/ui/limiter.ui:101
 msgid "Half x2(3L)"
 msgstr "ハーフ ×2(3L)"
 
-#: data/ui/limiter.ui:111
+#: data/ui/limiter.ui:102
 msgid "Half x3(2L)"
 msgstr "ハーフ ×3(2L)"
 
-#: data/ui/limiter.ui:112
+#: data/ui/limiter.ui:103
 msgid "Half x3(3L)"
 msgstr "ハーフ ×3(3L)"
 
-#: data/ui/limiter.ui:113
+#: data/ui/limiter.ui:104
 msgid "Half x4(2L)"
 msgstr "ハーフ ×4(2L)"
 
-#: data/ui/limiter.ui:114
+#: data/ui/limiter.ui:105
 msgid "Half x4(3L)"
 msgstr "ハーフ ×4(3L)"
 
-#: data/ui/limiter.ui:115
+#: data/ui/limiter.ui:106
 msgid "Half x6(2L)"
 msgstr "ハーフ ×6(2L)"
 
-#: data/ui/limiter.ui:116
+#: data/ui/limiter.ui:107
 msgid "Half x6(3L)"
 msgstr "ハーフ ×6(3L)"
 
-#: data/ui/limiter.ui:117
+#: data/ui/limiter.ui:108
 msgid "Half x8(2L)"
 msgstr "ハーフ ×8(2L)"
 
-#: data/ui/limiter.ui:118
+#: data/ui/limiter.ui:109
 msgid "Half x8(3L)"
 msgstr "ハーフ ×8(3L)"
 
-#: data/ui/limiter.ui:119
+#: data/ui/limiter.ui:110
 msgid "Full x2(2L)"
 msgstr "フル x2(2L)"
 
-#: data/ui/limiter.ui:120
+#: data/ui/limiter.ui:111
 msgid "Full x2(3L)"
 msgstr "フル x2(3L)"
 
-#: data/ui/limiter.ui:121
+#: data/ui/limiter.ui:112
 msgid "Full x3(2L)"
 msgstr "フル ×3(2L)"
 
-#: data/ui/limiter.ui:122
+#: data/ui/limiter.ui:113
 msgid "Full x3(3L)"
 msgstr "フル ×3(3L)"
 
-#: data/ui/limiter.ui:123
+#: data/ui/limiter.ui:114
 msgid "Full x4(2L)"
 msgstr "フル ×4(2L)"
 
-#: data/ui/limiter.ui:124
+#: data/ui/limiter.ui:115
 msgid "Full x4(3L)"
 msgstr "フル ×4(3L)"
 
-#: data/ui/limiter.ui:125
+#: data/ui/limiter.ui:116
 msgid "Full x6(2L)"
 msgstr "フル ×6(2L)"
 
-#: data/ui/limiter.ui:126
+#: data/ui/limiter.ui:117
 msgid "Full x6(3L)"
 msgstr "フル ×6(3L)"
 
-#: data/ui/limiter.ui:127
+#: data/ui/limiter.ui:118
 msgid "Full x8(2L)"
 msgstr "フル ×8(2L)"
 
-#: data/ui/limiter.ui:128
+#: data/ui/limiter.ui:119
 msgid "Full x8(3L)"
 msgstr "フル ×8(3L)"
 
-#: data/ui/limiter.ui:178
+#: data/ui/limiter.ui:169
 msgid "SC PreAmp"
 msgstr "SC プリアンプ"
 
-#: data/ui/limiter.ui:207 data/ui/multiband_compressor_band.ui:647
+#: data/ui/limiter.ui:198 data/ui/multiband_compressor_band.ui:647
 msgid "Sidechain PreAmplification"
 msgstr "サイドチェーン PreAmplification"
 
-#: data/ui/limiter.ui:396
+#: data/ui/limiter.ui:373
 msgid "Boost"
 msgstr "ブースト"
 
-#: data/ui/limiter.ui:458 data/ui/multiband_compressor_band.ui:116
+#: data/ui/limiter.ui:433 data/ui/multiband_compressor_band.ui:116
 msgid "External Sidechain"
 msgstr "外部サイドチェーン"
 
-#: data/ui/limiter.ui:471 data/ui/multiband_compressor.ui:121
+#: data/ui/limiter.ui:446 data/ui/multiband_compressor.ui:109
 msgid "External Sidechain Source"
 msgstr "外部サイドチェーンソース"
 
-#: data/ui/limiter.ui:490
+#: data/ui/limiter.ui:465
 msgid "Auto Leveling"
 msgstr "オートレベリング"
 
-#: data/ui/limiter.ui:530
+#: data/ui/limiter.ui:505
 msgid "Auto Leveling Attack"
 msgstr "オートレベリングアタック"
 
-#: data/ui/limiter.ui:566
+#: data/ui/limiter.ui:541
 msgid "Auto Leveling Release"
 msgstr "オートレベリングリリース"
 
-#: data/ui/limiter.ui:601
+#: data/ui/limiter.ui:576
 msgid "Auto Leveling Knee"
 msgstr "オートレベリングニー"
 
-#: data/ui/limiter.ui:626
+#: data/ui/limiter.ui:601
 msgid "Gain Left"
 msgstr "左ゲイン"
 
-#: data/ui/limiter.ui:653
+#: data/ui/limiter.ui:628
 msgid "Gain Right"
 msgstr "右ゲイン"
 
-#: data/ui/limiter.ui:680
+#: data/ui/limiter.ui:655
 msgid "Sidechain Left"
 msgstr "左サイドチェーン"
 
-#: data/ui/limiter.ui:707
+#: data/ui/limiter.ui:682
 msgid "Sidechain Right"
 msgstr "右サイドチェーン"
 
-#: data/ui/loudness.ui:32
+#: data/ui/loudness.ui:23
 msgid "Standard"
 msgstr "標準"
 
-#: data/ui/loudness.ui:40
+#: data/ui/loudness.ui:31
 msgid "Flat"
 msgstr "フラット"
 
-#: data/ui/loudness.ui:59
+#: data/ui/loudness.ui:50
 msgid "FFT Size"
 msgstr "FFT サイズ"
 
-#: data/ui/loudness.ui:76
+#: data/ui/loudness.ui:67
 msgid "Fast Fourier Transform Size"
 msgstr "高速フーリエ変換サイズ"
 
-#: data/ui/loudness.ui:89
+#: data/ui/loudness.ui:80
 msgid "Output Volume"
 msgstr "出力ボリューム"
 
-#: data/ui/maximizer.ui:62
+#: data/ui/maximizer.ui:53
 msgid "Ceiling"
 msgstr "シーリング"
 
-#: data/ui/multiband_compressor.ui:43
+#: data/ui/multiband_compressor.ui:31
 msgid "Operating Mode"
 msgstr "動作モード"
 
-#: data/ui/multiband_compressor.ui:54
+#: data/ui/multiband_compressor.ui:42
 msgid "Classic"
 msgstr "クラシック"
 
-#: data/ui/multiband_compressor.ui:55
+#: data/ui/multiband_compressor.ui:43
 msgid "Modern"
 msgstr "モダン"
 
-#: data/ui/multiband_compressor.ui:69
+#: data/ui/multiband_compressor.ui:57
 msgid "Sidechain Boost"
 msgstr "サイドチェーンブースト"
 
-#: data/ui/multiband_compressor.ui:81
+#: data/ui/multiband_compressor.ui:69
 msgid "Pink BT"
 msgstr "ピンク BT"
 
-#: data/ui/multiband_compressor.ui:82
+#: data/ui/multiband_compressor.ui:70
 msgid "Pink MT"
 msgstr "ピンク MT"
 
-#: data/ui/multiband_compressor.ui:83
+#: data/ui/multiband_compressor.ui:71
 msgid "Brown BT"
 msgstr "ブラウン BT"
 
-#: data/ui/multiband_compressor.ui:84
+#: data/ui/multiband_compressor.ui:72
 msgid "Brown MT"
 msgstr "ブラウン MT"
 
-#: data/ui/multiband_compressor.ui:156
+#: data/ui/multiband_compressor.ui:144
 msgid "Bands List"
 msgstr "バンドリスト"
 
-#: data/ui/multiband_compressor.ui:165
+#: data/ui/multiband_compressor.ui:153
 msgid "Band 1"
 msgstr "バンド 1"
 
-#: data/ui/multiband_compressor.ui:182
+#: data/ui/multiband_compressor.ui:170
 msgid "Band 2"
 msgstr "バンド 2"
 
-#: data/ui/multiband_compressor.ui:209
+#: data/ui/multiband_compressor.ui:197
 msgid "Band 3"
 msgstr "バンド 3"
 
-#: data/ui/multiband_compressor.ui:236
+#: data/ui/multiband_compressor.ui:224
 msgid "Band 4"
 msgstr "バンド 4"
 
-#: data/ui/multiband_compressor.ui:263
+#: data/ui/multiband_compressor.ui:251
 msgid "Band 5"
 msgstr "バンド 5"
 
-#: data/ui/multiband_compressor.ui:290
+#: data/ui/multiband_compressor.ui:278
 msgid "Band 6"
 msgstr "バンド 6"
 
-#: data/ui/multiband_compressor.ui:317
+#: data/ui/multiband_compressor.ui:305
 msgid "Band 7"
 msgstr "バンド 7"
 
-#: data/ui/multiband_compressor.ui:344
+#: data/ui/multiband_compressor.ui:332
 msgid "Band 8"
 msgstr "バンド 8"
 
@@ -2119,207 +2191,207 @@ msgstr "バンドエンベロープ"
 msgid "Band Curve"
 msgstr "バンドカーブ"
 
-#: data/ui/multiband_gate.ui:43
+#: data/ui/multiband_gate.ui:35
 msgid "Split Mode"
 msgstr "スプリットモード"
 
-#: data/ui/multiband_gate.ui:56
+#: data/ui/multiband_gate.ui:48
 msgid "Split 1/2"
 msgstr "スプリット 1/2"
 
-#: data/ui/multiband_gate.ui:76
+#: data/ui/multiband_gate.ui:68
 msgid "Split Frequency 1"
 msgstr "スプリット周波数 1"
 
-#: data/ui/multiband_gate.ui:89
+#: data/ui/multiband_gate.ui:81
 msgid "Split 2/3"
 msgstr "スプリット 2/3"
 
-#: data/ui/multiband_gate.ui:109
+#: data/ui/multiband_gate.ui:101
 msgid "Split Frequency 2"
 msgstr "スプリット周波数 2"
 
-#: data/ui/multiband_gate.ui:122
+#: data/ui/multiband_gate.ui:114
 msgid "Split 3/4"
 msgstr "スプリット 3/4"
 
-#: data/ui/multiband_gate.ui:142
+#: data/ui/multiband_gate.ui:134
 msgid "Split Frequency 3"
 msgstr "スプリット周波数 3"
 
-#: data/ui/multiband_gate.ui:170
+#: data/ui/multiband_gate.ui:162
 msgid "Sub Band"
 msgstr "サブバンド"
 
-#: data/ui/multiband_gate.ui:185
+#: data/ui/multiband_gate.ui:177
 msgid "Band 1 Bypass"
 msgstr "バンド 1 バイパス"
 
-#: data/ui/multiband_gate.ui:195
+#: data/ui/multiband_gate.ui:187
 msgid "Band 1 Solo"
 msgstr "バンド 1 ソロ"
 
-#: data/ui/multiband_gate.ui:207
+#: data/ui/multiband_gate.ui:199
 msgid "Band 1 Detection"
 msgstr "バンド 1 検出"
 
-#: data/ui/multiband_gate.ui:251
+#: data/ui/multiband_gate.ui:243
 msgid "Band 1 Attack"
 msgstr "バンド 1 アタック"
 
-#: data/ui/multiband_gate.ui:286
+#: data/ui/multiband_gate.ui:278
 msgid "Band 1 Release"
 msgstr "バンド 1 リリース"
 
-#: data/ui/multiband_gate.ui:320
+#: data/ui/multiband_gate.ui:312
 msgid "Band 1 Threshold"
 msgstr "バンド 1 しきい値"
 
-#: data/ui/multiband_gate.ui:355
+#: data/ui/multiband_gate.ui:347
 msgid "Band 1 Ratio"
 msgstr "バンド 1 比率"
 
-#: data/ui/multiband_gate.ui:389
+#: data/ui/multiband_gate.ui:381
 msgid "Band 1 Knee"
 msgstr "バンド 1 ニー"
 
-#: data/ui/multiband_gate.ui:422
+#: data/ui/multiband_gate.ui:414
 msgid "Band 1 Makeup"
 msgstr "バンド 1 メイクアップ"
 
-#: data/ui/multiband_gate.ui:456
+#: data/ui/multiband_gate.ui:448
 msgid "Band 1 Max Reduction"
 msgstr "バンド 1 最大リダクション"
 
-#: data/ui/multiband_gate.ui:530
+#: data/ui/multiband_gate.ui:522
 msgid "Low Band"
 msgstr "ローバンド"
 
-#: data/ui/multiband_gate.ui:545
+#: data/ui/multiband_gate.ui:537
 msgid "Band 2 Bypass"
 msgstr "バンド 2 バイパス"
 
-#: data/ui/multiband_gate.ui:555
+#: data/ui/multiband_gate.ui:547
 msgid "Band 2 Solo"
 msgstr "バンド 2 ソロ"
 
-#: data/ui/multiband_gate.ui:567
+#: data/ui/multiband_gate.ui:559
 msgid "Band 2 Detection"
 msgstr "バンド 2 検出"
 
-#: data/ui/multiband_gate.ui:611
+#: data/ui/multiband_gate.ui:603
 msgid "Band 2 Attack"
 msgstr "バンド 2 アタック"
 
-#: data/ui/multiband_gate.ui:646
+#: data/ui/multiband_gate.ui:638
 msgid "Band 2 Release"
 msgstr "バンド 2 リリース"
 
-#: data/ui/multiband_gate.ui:680
+#: data/ui/multiband_gate.ui:672
 msgid "Band 2 Threshold"
 msgstr "バンド 2 しきい値"
 
-#: data/ui/multiband_gate.ui:715
+#: data/ui/multiband_gate.ui:707
 msgid "Band 2 Ratio"
 msgstr "バンド 2 比率"
 
-#: data/ui/multiband_gate.ui:749
+#: data/ui/multiband_gate.ui:741
 msgid "Band 2 Knee"
 msgstr "バンド 2 ニー"
 
-#: data/ui/multiband_gate.ui:782
+#: data/ui/multiband_gate.ui:774
 msgid "Band 2 Makeup"
 msgstr "バンド 2 メイクアップ"
 
-#: data/ui/multiband_gate.ui:816
+#: data/ui/multiband_gate.ui:808
 msgid "Band 2 Max Reduction"
 msgstr "バンド 2 最大リダクション"
 
-#: data/ui/multiband_gate.ui:890
+#: data/ui/multiband_gate.ui:882
 msgid "Mid Band"
 msgstr "ミッドバンド"
 
-#: data/ui/multiband_gate.ui:905
+#: data/ui/multiband_gate.ui:897
 msgid "Band 3 Bypass"
 msgstr "バンド 3 バイパス"
 
-#: data/ui/multiband_gate.ui:915
+#: data/ui/multiband_gate.ui:907
 msgid "Band 3 Solo"
 msgstr "バンド 3 ソロ"
 
-#: data/ui/multiband_gate.ui:927
+#: data/ui/multiband_gate.ui:919
 msgid "Band 3 Detection"
 msgstr "バンド 3 検出"
 
-#: data/ui/multiband_gate.ui:971
+#: data/ui/multiband_gate.ui:963
 msgid "Band 3 Attack"
 msgstr "バンド 3 アタック"
 
-#: data/ui/multiband_gate.ui:1006
+#: data/ui/multiband_gate.ui:998
 msgid "Band 3 Release"
 msgstr "バンド 3 リリース"
 
-#: data/ui/multiband_gate.ui:1040
+#: data/ui/multiband_gate.ui:1032
 msgid "Band 3 Threshold"
 msgstr "バンド 3 しきい値"
 
-#: data/ui/multiband_gate.ui:1075
+#: data/ui/multiband_gate.ui:1067
 msgid "Band 3 Ratio"
 msgstr "バンド 3 比率"
 
-#: data/ui/multiband_gate.ui:1109
+#: data/ui/multiband_gate.ui:1101
 msgid "Band 3 Knee"
 msgstr "バンド 3 ニー"
 
-#: data/ui/multiband_gate.ui:1142
+#: data/ui/multiband_gate.ui:1134
 msgid "Band 3 Makeup"
 msgstr "バンド 3 メイクアップ"
 
-#: data/ui/multiband_gate.ui:1176
+#: data/ui/multiband_gate.ui:1168
 msgid "Band 3 Max Reduction"
 msgstr "バンド 3 最大リダクション"
 
-#: data/ui/multiband_gate.ui:1250
+#: data/ui/multiband_gate.ui:1242
 msgid "High Band"
 msgstr "ハイバンド"
 
-#: data/ui/multiband_gate.ui:1265
+#: data/ui/multiband_gate.ui:1257
 msgid "Band 4 Bypass"
 msgstr "バンド 4 バイパス"
 
-#: data/ui/multiband_gate.ui:1275
+#: data/ui/multiband_gate.ui:1267
 msgid "Band 4 Solo"
 msgstr "バンド 4 ソロ"
 
-#: data/ui/multiband_gate.ui:1287
+#: data/ui/multiband_gate.ui:1279
 msgid "Band 4 Detection"
 msgstr "バンド 4 検出"
 
-#: data/ui/multiband_gate.ui:1331
+#: data/ui/multiband_gate.ui:1323
 msgid "Band 4 Attack"
 msgstr "バンド 4 アタック"
 
-#: data/ui/multiband_gate.ui:1366
+#: data/ui/multiband_gate.ui:1358
 msgid "Band 4 Release"
 msgstr "バンド 4 リリース"
 
-#: data/ui/multiband_gate.ui:1400
+#: data/ui/multiband_gate.ui:1392
 msgid "Band 4 Threshold"
 msgstr "バンド 4 しきい値"
 
-#: data/ui/multiband_gate.ui:1435
+#: data/ui/multiband_gate.ui:1427
 msgid "Band 4 Ratio"
 msgstr "バンド 4 比率"
 
-#: data/ui/multiband_gate.ui:1469
+#: data/ui/multiband_gate.ui:1461
 msgid "Band 4 Knee"
 msgstr "バンド 4 ニー"
 
-#: data/ui/multiband_gate.ui:1502
+#: data/ui/multiband_gate.ui:1494
 msgid "Band 4 Makeup"
 msgstr "バンド 4 メイクアップ"
 
-#: data/ui/multiband_gate.ui:1536
+#: data/ui/multiband_gate.ui:1528
 msgid "Band 4 Max Reduction"
 msgstr "バンド 4 最大リダクション"
 
@@ -2327,151 +2399,153 @@ msgstr "バンド 4 最大リダクション"
 msgid "General"
 msgstr "一般"
 
-#: data/ui/pipe_manager_box.ui:37 data/ui/pipe_manager_box.ui:78
-msgid "Use Default"
-msgstr "デフォルトを使用"
+#: data/ui/pipe_manager_box.ui:34
+msgid "Device Management"
+msgstr ""
 
-#: data/ui/pipe_manager_box.ui:43
+#: data/ui/pipe_manager_box.ui:35
+msgid ""
+"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"external applications (e.g. Gnome Settings and Plasma System Settings)."
+msgstr ""
+
+#: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
 msgstr "デフォルトの入力を使用"
 
-#: data/ui/pipe_manager_box.ui:64
+#: data/ui/pipe_manager_box.ui:65
 msgid "Custom Input Device"
 msgstr "カスタム入力デバイス"
 
-#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:550
-msgid "Output Device"
-msgstr "出力デバイス"
-
-#: data/ui/pipe_manager_box.ui:84
+#: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 msgid "Use Default Output"
 msgstr "デフォルトの出力を使用"
 
-#: data/ui/pipe_manager_box.ui:105
+#: data/ui/pipe_manager_box.ui:101
 msgid "Custom Output Device"
 msgstr "カスタム出力デバイス"
 
-#: data/ui/pipe_manager_box.ui:116
+#: data/ui/pipe_manager_box.ui:112
 msgid "Server Information"
 msgstr "サーバー情報"
 
-#: data/ui/pipe_manager_box.ui:120
+#: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
 msgstr "ヘッダーバージョン"
 
-#: data/ui/pipe_manager_box.ui:131
+#: data/ui/pipe_manager_box.ui:127
 msgid "Library Version"
 msgstr "ライブラリバージョン"
 
-#: data/ui/pipe_manager_box.ui:142
+#: data/ui/pipe_manager_box.ui:138
 msgid "Sampling Rate"
 msgstr "サンプリングレート"
 
-#: data/ui/pipe_manager_box.ui:153
+#: data/ui/pipe_manager_box.ui:149
 msgid "Minimum Quantum"
 msgstr "最小クォンタム"
 
-#: data/ui/pipe_manager_box.ui:164
+#: data/ui/pipe_manager_box.ui:160
 msgid "Maximum Quantum"
 msgstr "最大クォンタム"
 
-#: data/ui/pipe_manager_box.ui:175
+#: data/ui/pipe_manager_box.ui:171
 msgid "Default Quantum"
 msgstr "デフォルトクォンタム"
 
-#: data/ui/pipe_manager_box.ui:195
+#: data/ui/pipe_manager_box.ui:191
 msgid "Presets Autoloading"
 msgstr "プリセット自動読み込み"
 
-#: data/ui/pipe_manager_box.ui:236
+#: data/ui/pipe_manager_box.ui:232
 msgid "Output Devices"
 msgstr "出力デバイス"
 
-#: data/ui/pipe_manager_box.ui:253
+#: data/ui/pipe_manager_box.ui:249
 msgid "Output Presets"
 msgstr "出力プリセット"
 
-#: data/ui/pipe_manager_box.ui:260 data/ui/pipe_manager_box.ui:352
+#: data/ui/pipe_manager_box.ui:256 data/ui/pipe_manager_box.ui:348
 msgid "Create Association"
 msgstr "アソシエーションを作成"
 
-#: data/ui/pipe_manager_box.ui:274
+#: data/ui/pipe_manager_box.ui:270
 msgid "Add Autoloading Output Preset"
 msgstr "自動読み込み出力プリセットを追加"
 
-#: data/ui/pipe_manager_box.ui:294
+#: data/ui/pipe_manager_box.ui:290
 msgid "Output Autoloading Presets List"
 msgstr "自動読み込み出力プリセットリスト"
 
-#: data/ui/pipe_manager_box.ui:333
+#: data/ui/pipe_manager_box.ui:329
 msgid "Input Devices"
 msgstr "入力デバイス"
 
-#: data/ui/pipe_manager_box.ui:345
+#: data/ui/pipe_manager_box.ui:341
 msgid "Input Presets"
 msgstr "入力プリセット"
 
-#: data/ui/pipe_manager_box.ui:366
+#: data/ui/pipe_manager_box.ui:362
 msgid "Add Autoloading Input Preset"
 msgstr "自動読み込み入力プリセットを追加"
 
-#: data/ui/pipe_manager_box.ui:385
+#: data/ui/pipe_manager_box.ui:381
 msgid "Input Autoloading Presets List"
 msgstr "自動読み込み入力プリセットリスト"
 
-#: data/ui/pipe_manager_box.ui:415
+#: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
 msgstr "モジュール"
 
-#: data/ui/pipe_manager_box.ui:433
+#: data/ui/pipe_manager_box.ui:429
 msgid "Modules List"
 msgstr "モジュールリスト"
 
-#: data/ui/pipe_manager_box.ui:447
+#: data/ui/pipe_manager_box.ui:443
 msgid "Clients"
 msgstr "クライアント"
 
-#: data/ui/pipe_manager_box.ui:465
+#: data/ui/pipe_manager_box.ui:461
 msgid "Clients List"
 msgstr "クライアントリスト"
 
-#: data/ui/pipe_manager_box.ui:479
+#: data/ui/pipe_manager_box.ui:475
 msgid "Test Signal"
 msgstr "テスト信号"
 
-#: data/ui/pipe_manager_box.ui:484 data/ui/preferences_spectrum.ui:9
+#: data/ui/pipe_manager_box.ui:480 data/ui/preferences_spectrum.ui:9
 msgid "State"
 msgstr "状態"
 
-#: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
+#: data/ui/pipe_manager_box.ui:483 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr "有効"
 
-#: data/ui/pipe_manager_box.ui:502
+#: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
 msgstr "プロパティ"
 
-#: data/ui/pipe_manager_box.ui:505
+#: data/ui/pipe_manager_box.ui:501
 msgid "Channels"
 msgstr "チャンネル"
 
-#: data/ui/pipe_manager_box.ui:530
+#: data/ui/pipe_manager_box.ui:526
 msgid "Both"
 msgstr "両方"
 
-#: data/ui/pipe_manager_box.ui:534
+#: data/ui/pipe_manager_box.ui:530
 msgid "Both Channels"
 msgstr "両方チャンネル"
 
-#: data/ui/pipe_manager_box.ui:543
+#: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
 msgstr "波形"
 
-#: data/ui/pipe_manager_box.ui:547
+#: data/ui/pipe_manager_box.ui:543
 msgid "Sine Wave"
 msgstr "正弦波"
 
-#: data/ui/pipe_manager_box.ui:556
+#: data/ui/pipe_manager_box.ui:552
 msgid "White Noise"
 msgstr "ホワイトノイズ"
 
@@ -2499,65 +2573,74 @@ msgstr "シフト"
 msgid "Preserved"
 msgstr "保存済み"
 
-#: data/ui/pitch.ui:98
+#: data/ui/pitch.ui:87
 msgid "Transients"
 msgstr "トランジェント"
 
-#: data/ui/pitch.ui:109
+#: data/ui/pitch.ui:98
 msgid "Crisp"
 msgstr "鮮明"
 
-#: data/ui/pitch.ui:110
+#: data/ui/pitch.ui:99
 msgid "Mixed"
 msgstr "ミックス"
 
-#: data/ui/pitch.ui:111
+#: data/ui/pitch.ui:100
 msgid "Smooth"
 msgstr "スムース"
 
-#: data/ui/pitch.ui:125
+#: data/ui/pitch.ui:114
 msgid "Detector"
 msgstr "ディテクター"
 
-#: data/ui/pitch.ui:136
+#: data/ui/pitch.ui:125
 msgid "Compound"
 msgstr "化合物"
 
-#: data/ui/pitch.ui:137
+#: data/ui/pitch.ui:126
 msgid "Percussive"
 msgstr "パーカッシブ"
 
-#: data/ui/pitch.ui:138
+#: data/ui/pitch.ui:127
 msgid "Soft"
 msgstr "ソフト"
 
-#: data/ui/pitch.ui:152
+#: data/ui/pitch.ui:141
 msgid "Phase"
 msgstr "フェーズ"
 
-#: data/ui/pitch.ui:163
+#: data/ui/pitch.ui:152
 msgid "Laminar"
 msgstr "ラミナー"
 
-#: data/ui/pitch.ui:164
+#: data/ui/pitch.ui:153
 msgid "Independent"
 msgstr "独立"
 
-#: data/ui/pitch.ui:189
+#: data/ui/pitch.ui:178
 msgid "Cents"
 msgstr "セント"
 
-#: data/ui/pitch.ui:223
+#: data/ui/pitch.ui:212
 msgid "Semitones"
 msgstr "半音"
 
-#: data/ui/pitch.ui:257
+#: data/ui/pitch.ui:246
 msgid "Octaves"
 msgstr "オクターブ"
 
-#: data/ui/plugin_row.ui:31
-msgid "Remove this plugin"
-msgstr "このプラグインを削除"
+#: data/ui/plugin_row.ui:39
+#, fuzzy
+msgid "Remove this effect"
+msgstr "このモデルファイルを削除"
+
+#: data/ui/plugin_row.ui:51
+msgid "Enable/disable this effect"
+msgstr ""
+
+#: data/ui/plugin_row.ui:63
+msgid "Change the position of this effect"
+msgstr ""
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
@@ -2631,15 +2714,15 @@ msgstr ""
 msgid "Inactivity Timeout"
 msgstr "非アクティブタイムアウト"
 
-#: data/ui/preferences_general.ui:127 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:128 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "スタイル"
 
-#: data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:131
 msgid "Use Dark Theme"
 msgstr "ダークテーマを使用"
 
-#: data/ui/preferences_general.ui:142
+#: data/ui/preferences_general.ui:143
 msgid "Hide Menus on Outside Clicks"
 msgstr "外側クリックでメニュー非表示"
 
@@ -2707,139 +2790,141 @@ msgstr "周波数範囲"
 msgid "Minimum"
 msgstr "最小"
 
-#: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:136
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:136
 msgid "Load"
 msgstr "ロード"
 
-#: data/ui/preset_row.ui:29
+#: data/ui/preset_row.ui:35
 msgid "Save current settings to this preset file"
 msgstr "現在の設定をこのプリセットファイルに保存"
 
-#: data/ui/preset_row.ui:41
+#: data/ui/preset_row.ui:46
 msgid "Remove this preset file"
 msgstr "このプリセットファイルを削除"
 
-#: data/ui/presets_menu.ui:54
+#: data/ui/presets_menu.ui:51
 msgid "New Output Preset Name"
 msgstr "新規出力プリセット名"
 
-#: data/ui/presets_menu.ui:62 data/ui/presets_menu.ui:215
-msgid "Create Preset"
+#: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
+#, fuzzy
+msgid "Create a new preset"
 msgstr "プリセットを作成"
 
-#: data/ui/presets_menu.ui:76 data/ui/presets_menu.ui:229
-msgid "Import Presets"
+#: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
+#, fuzzy
+msgid "Import a preset"
 msgstr "プリセットをインポート"
 
-#: data/ui/presets_menu.ui:94
+#: data/ui/presets_menu.ui:90
 msgid "Search Output Preset"
 msgstr "出力プリセットを検索"
 
-#: data/ui/presets_menu.ui:155
+#: data/ui/presets_menu.ui:151
 msgid "Output Presets List"
 msgstr "出力プリセットリスト"
 
-#: data/ui/presets_menu.ui:207
+#: data/ui/presets_menu.ui:199
 msgid "New Input Preset Name"
 msgstr "新規入力プリセット名"
 
-#: data/ui/presets_menu.ui:247
+#: data/ui/presets_menu.ui:237
 msgid "Search Input Preset"
 msgstr "入力プリセットを検索"
 
-#: data/ui/presets_menu.ui:308
+#: data/ui/presets_menu.ui:298
 msgid "Input Presets List"
 msgstr "入力プリセットリスト"
 
-#: data/ui/reverb.ui:43
+#: data/ui/reverb.ui:30
 msgid "High Frequency Damping"
 msgstr "高周波ダンピング"
 
-#: data/ui/reverb.ui:75
+#: data/ui/reverb.ui:62
 msgid "Room Size"
 msgstr "部屋のサイズ"
 
-#: data/ui/reverb.ui:83
+#: data/ui/reverb.ui:70
 msgid "Small"
 msgstr "小"
 
-#: data/ui/reverb.ui:84
+#: data/ui/reverb.ui:71
 msgid "Medium"
 msgstr "中"
 
-#: data/ui/reverb.ui:85
+#: data/ui/reverb.ui:72
 msgid "Large"
 msgstr "大"
 
-#: data/ui/reverb.ui:86
+#: data/ui/reverb.ui:73
 msgid "Tunnel"
 msgstr "トンネル"
 
-#: data/ui/reverb.ui:87
+#: data/ui/reverb.ui:74
 msgid "Large/smooth"
 msgstr "大/なめらか"
 
-#: data/ui/reverb.ui:88
+#: data/ui/reverb.ui:75
 msgid "Experimental"
 msgstr "実験的"
 
-#: data/ui/reverb.ui:105
+#: data/ui/reverb.ui:92
 msgid "Diffusion"
 msgstr "拡散"
 
-#: data/ui/reverb.ui:142
+#: data/ui/reverb.ui:129
 msgid "Pre Delay"
 msgstr "プリディレイ"
 
-#: data/ui/reverb.ui:175
+#: data/ui/reverb.ui:162
 msgid "Decay Time"
 msgstr "減衰時間"
 
-#: data/ui/reverb.ui:210
+#: data/ui/reverb.ui:197
 msgid "Wet Amount"
 msgstr "Wet 量"
 
-#: data/ui/reverb.ui:238
+#: data/ui/reverb.ui:225
 msgid "Wet Level"
 msgstr "Wet レベル"
 
-#: data/ui/reverb.ui:245
+#: data/ui/reverb.ui:232
 msgid "Dry Amount"
 msgstr "Dry 量"
 
-#: data/ui/reverb.ui:272
+#: data/ui/reverb.ui:259
 msgid "Dry Level"
 msgstr "Dry レベル"
 
-#: data/ui/reverb.ui:279
+#: data/ui/reverb.ui:266
 msgid "Bass Cut"
 msgstr "ベースカット"
 
-#: data/ui/reverb.ui:314
+#: data/ui/reverb.ui:301
 msgid "Treble Cut"
 msgstr "高音カット"
 
-#: data/ui/reverb.ui:578
+#: data/ui/reverb.ui:565
 msgid "Ambience"
 msgstr "環境"
 
-#: data/ui/reverb.ui:585
+#: data/ui/reverb.ui:572
 msgid "Empty Walls"
 msgstr "何もない壁"
 
-#: data/ui/reverb.ui:598
+#: data/ui/reverb.ui:585
 msgid "Room"
 msgstr "部屋"
 
-#: data/ui/reverb.ui:605
+#: data/ui/reverb.ui:592
 msgid "Large Empty Hall"
 msgstr "何もない大きなホール"
 
-#: data/ui/reverb.ui:618
+#: data/ui/reverb.ui:605
 msgid "Disco"
 msgstr "ディスコ"
 
-#: data/ui/reverb.ui:625
+#: data/ui/reverb.ui:612
 msgid "Large Occupied Hall"
 msgstr "占有面積の大きいホール"
 
@@ -2847,23 +2932,23 @@ msgstr "占有面積の大きいホール"
 msgid "Import Model"
 msgstr "モデルのインポート"
 
-#: data/ui/rnnoise.ui:35
+#: data/ui/rnnoise.ui:29
 msgid "Models"
 msgstr "モデル"
 
-#: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:28
+#: data/ui/rnnoise.ui:50 src/rnnoise_ui.cpp:28
 msgid "Standard Model"
 msgstr "標準モデル"
 
-#: data/ui/rnnoise.ui:84
+#: data/ui/rnnoise.ui:78
 msgid "RNNoise Models List"
 msgstr "RNNoise モデルリスト"
 
-#: data/ui/rnnoise.ui:100
+#: data/ui/rnnoise.ui:94
 msgid "Active Model"
 msgstr "アクティブモデル"
 
-#: data/ui/rnnoise.ui:106
+#: data/ui/rnnoise.ui:100
 msgid "Standard RNNoise Model"
 msgstr "標準 RNNoise モデル"
 
@@ -2887,95 +2972,95 @@ msgstr "ウィンドウを閉じる"
 msgid "Quit EasyEffects"
 msgstr "EasyEffects を終了"
 
-#: data/ui/stereo_tools.ui:50 data/ui/stereo_tools.ui:391
+#: data/ui/stereo_tools.ui:42 data/ui/stereo_tools.ui:383
 msgid "Balance"
 msgstr "バランス"
 
-#: data/ui/stereo_tools.ui:77
+#: data/ui/stereo_tools.ui:69
 msgid "Input Balance"
 msgstr "入力バランス"
 
-#: data/ui/stereo_tools.ui:86
+#: data/ui/stereo_tools.ui:78
 msgid "Softclip"
 msgstr "ソフトクリップ"
 
-#: data/ui/stereo_tools.ui:114
+#: data/ui/stereo_tools.ui:106
 msgid "Softclip Level"
 msgstr "ソフトクリップレベル"
 
-#: data/ui/stereo_tools.ui:126
+#: data/ui/stereo_tools.ui:118
 msgid "Stereo Matrix"
 msgstr "ステレオマトリックス"
 
-#: data/ui/stereo_tools.ui:136
+#: data/ui/stereo_tools.ui:128
 msgid "LR > LR (Stereo Default)"
 msgstr "LR > LR (ステレオデフォルト)"
 
-#: data/ui/stereo_tools.ui:137
+#: data/ui/stereo_tools.ui:129
 msgid "LR > MS (Stereo to Mid-Side)"
 msgstr "LR > MS (ステレオからミッドサイド)"
 
-#: data/ui/stereo_tools.ui:138
+#: data/ui/stereo_tools.ui:130
 msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "MS > LR (ミッドサイドからステレオ)"
 
-#: data/ui/stereo_tools.ui:139
+#: data/ui/stereo_tools.ui:131
 msgid "LR > LL (Mono Left Channel)"
 msgstr "LR > LL (モノラル左チャンネル)"
 
-#: data/ui/stereo_tools.ui:140
+#: data/ui/stereo_tools.ui:132
 msgid "LR > RR (Mono Right Channel)"
 msgstr "LR > RR (モノラル右チャンネル)"
 
-#: data/ui/stereo_tools.ui:141
+#: data/ui/stereo_tools.ui:133
 msgid "LR > L+R (Mono Sum L+R)"
 msgstr "LR > L+R (モノラル合計 L+R)"
 
-#: data/ui/stereo_tools.ui:142
+#: data/ui/stereo_tools.ui:134
 msgid "LR > RL (Stereo Flip Channels)"
 msgstr "LR > RL (ステレオチャンネル反転)"
 
-#: data/ui/stereo_tools.ui:145
+#: data/ui/stereo_tools.ui:137
 msgid "Stereo Mode"
 msgstr "ステレオモード"
 
-#: data/ui/stereo_tools.ui:178 data/ui/stereo_tools.ui:203
+#: data/ui/stereo_tools.ui:170 data/ui/stereo_tools.ui:195
 msgid "Invert Phase"
 msgstr "位相反転"
 
-#: data/ui/stereo_tools.ui:230
+#: data/ui/stereo_tools.ui:222
 msgid "Side Level"
 msgstr "サイドレベル"
 
-#: data/ui/stereo_tools.ui:266
+#: data/ui/stereo_tools.ui:258
 msgid "Side Balance"
 msgstr "サイドバランス"
 
-#: data/ui/stereo_tools.ui:302
+#: data/ui/stereo_tools.ui:294
 msgid "Middle Level"
 msgstr "中間レベル"
 
-#: data/ui/stereo_tools.ui:338
+#: data/ui/stereo_tools.ui:330
 msgid "Middle Panorama"
 msgstr "中間パノラマ"
 
-#: data/ui/stereo_tools.ui:418
+#: data/ui/stereo_tools.ui:410
 msgid "Output Balance"
 msgstr "出力バランス"
 
-#: data/ui/stereo_tools.ui:427
+#: data/ui/stereo_tools.ui:419
 msgid "Delay L/R"
 msgstr "ディレイ L/R"
 
-#: data/ui/stereo_tools.ui:454
+#: data/ui/stereo_tools.ui:446
 msgid "Delay Left Right"
 msgstr "ディレイ 左 右"
 
-#: data/ui/stereo_tools.ui:463
+#: data/ui/stereo_tools.ui:455
 msgid "Stereo Base"
 msgstr "ステレオベース"
 
-#: data/ui/stereo_tools.ui:499
+#: data/ui/stereo_tools.ui:491
 msgid "Stereo Phase"
 msgstr "ステレオ位相"
 
@@ -3008,48 +3093,48 @@ msgstr "エラー"
 msgid "Unknown"
 msgstr "不明"
 
-#: src/app_info.cpp:227
+#: src/app_info.cpp:234
 #, fuzzy
 msgid "channels"
 msgstr "チャンネル"
 
-#: src/application.cpp:256
+#: src/application.cpp:250
 msgid "Output Presets: "
 msgstr "出力プリセット: "
 
-#: src/application.cpp:264
+#: src/application.cpp:258
 msgid "Input Presets: "
 msgstr "入力プリセット: "
 
-#: src/application.cpp:412
+#: src/application.cpp:410
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
-#: src/application.cpp:498
+#: src/application.cpp:500
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "EasyEffects を終了します。サービスモードで動作しているときに便利です。"
 
-#: src/application.cpp:501
+#: src/application.cpp:503
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込む。例: easyeffects -l music"
 
-#: src/application.cpp:504
+#: src/application.cpp:506
 msgid "Reset EasyEffects."
 msgstr "EasyEffects をリセット。"
 
-#: src/application.cpp:507
+#: src/application.cpp:509
 msgid "Hide the Window."
 msgstr "ウィンドウを隠す。"
 
-#: src/application.cpp:510
+#: src/application.cpp:512
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "グローバルバイパス。1 で有効、2 で無効、3 でステータス取得"
 
-#: src/application.cpp:513
+#: src/application.cpp:515
 msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 
-#: src/application_ui.cpp:244
+#: src/application_ui.cpp:286
 msgid "PipeWire"
 msgstr "PipeWire"
 
@@ -3057,13 +3142,13 @@ msgstr "PipeWire"
 msgid "Import Impulse File"
 msgstr "インパルスファイルをインポート"
 
-#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
-#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:121
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:346
+#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:115
 msgid "Open"
 msgstr "開く"
 
-#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
-#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:121
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:346
+#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:115
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -3079,124 +3164,132 @@ msgstr "インパルスを読み込み"
 msgid "Remove Impulse"
 msgstr "インパルスを削除"
 
-#: src/convolver_ui.cpp:338 src/convolver_ui.cpp:339 src/convolver_ui.cpp:340
+#: src/convolver_ui.cpp:333 src/convolver_ui.cpp:334 src/convolver_ui.cpp:335
 msgid "Failed"
 msgstr "失敗"
 
-#: src/convolver_ui.cpp:341
+#: src/convolver_ui.cpp:336
 msgid "Could Not Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/effects_box.cpp:259 src/plugins_box.cpp:531
+#: src/effects_box.cpp:264 src/plugins_box.cpp:549
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:549
+#: src/effects_box.cpp:288 src/plugins_box.cpp:569
 msgid "Players"
 msgstr "プレイヤー"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:311
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/equalizer_band_box.cpp:93
+#: src/equalizer_band_box.cpp:108
 msgid "infinity"
 msgstr "無限大"
 
-#: src/equalizer_ui.cpp:351
+#: src/equalizer_ui.cpp:345
 msgid "Import APO Preset File"
 msgstr "APO プリセットファイルをインポート"
 
-#: src/equalizer_ui.cpp:357
+#: src/equalizer_ui.cpp:351
 msgid "APO Presets"
 msgstr "APO プリセット"
 
-#: src/pipe_manager_box.cpp:327
+#: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr "自動読み込みプリセットを削除"
 
-#: src/plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:26
 msgid "Bass Enhancer"
 msgstr "ベースエンハンサー"
 
-#: src/plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Loudness"
 msgstr "低音ラウドネス"
 
-#: src/plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:29
 msgid "Convolver"
 msgstr "コンボルバー"
 
-#: src/plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:30
 msgid "Crossfeed"
 msgstr "クロスフィード"
 
-#: src/plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:31
 msgid "Crystalizer"
 msgstr "クリスタライザー"
 
-#: src/plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:32
 msgid "Deesser"
 msgstr "ディエッサー"
 
-#: src/plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:33
 msgid "Delay"
 msgstr "ディレイ"
 
-#: src/plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:34
 msgid "Echo Canceller"
 msgstr "エコーキャンセラー"
 
-#: src/plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:35
 msgid "Equalizer"
 msgstr "イコライザー"
 
-#: src/plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:36
 msgid "Exciter"
 msgstr "エキサイター"
 
-#: src/plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:37
 msgid "Filter"
 msgstr "フィルター"
 
-#: src/plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:38
 msgid "Gate"
 msgstr "ゲート"
 
-#: src/plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:39
 msgid "Limiter"
 msgstr "リミッター"
 
-#: src/plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:41
 msgid "Maximizer"
 msgstr "マキシマイザー"
 
-#: src/plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:42
 msgid "Multiband Compressor"
 msgstr "マルチバンドコンプレッサー"
 
-#: src/plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:43
 msgid "Multiband Gate"
 msgstr "マルチバンドゲート"
 
-#: src/plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:44
 msgid "Pitch"
 msgstr "ピッチ"
 
-#: src/plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:45
 msgid "Reverberation"
 msgstr "リバーブ"
 
-#: src/plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:46
 msgid "Noise Reduction"
 msgstr "ノイズリダクション"
 
-#: src/plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:47
 msgid "Stereo Tools"
 msgstr "ステレオツール"
 
-#: src/plugins_menu.cpp:143
+#: src/plugins_box.cpp:503
+msgid "Remove"
+msgstr "削除"
+
+#: src/plugins_box.cpp:570
+msgid "Output Device"
+msgstr "出力デバイス"
+
+#: src/plugins_menu.cpp:142
 msgid "Add"
 msgstr "追加"
 
@@ -3204,13 +3297,22 @@ msgstr "追加"
 msgid "Import Preset"
 msgstr "プリセットをインポート"
 
-#: src/rnnoise_ui.cpp:120
+#: src/rnnoise_ui.cpp:114
 msgid "Import Model File"
 msgstr "モデルファイルをインポート"
 
-#: src/rnnoise_ui.cpp:125
+#: src/rnnoise_ui.cpp:119
 msgid "RNNoise Models"
 msgstr "RNNoise モデル"
+
+#~ msgid "Use Default"
+#~ msgstr "デフォルトを使用"
+
+#~ msgid "Remove this plugin"
+#~ msgstr "このプラグインを削除"
+
+#~ msgid "Import Presets"
+#~ msgstr "プリセットをインポート"
 
 #~ msgid "Start Service at Login"
 #~ msgstr "ログイン時にサービスを開始"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-16 14:36-0300\n"
+"POT-Creation-Date: 2022-07-04 19:14-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -99,531 +99,595 @@ msgid "The convolver page showing audio controls"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:132
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:173
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:202
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:272
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:112
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:294
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
 msgid "This release adds the following features:"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
-msgid "The interface of the pitch plugin was improved"
+msgid ""
+"When effects are disable to an application we now set its target metadata to "
+"null. This will allow the media session"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
-msgid "Our application icon is now compatible with desktops that uses QT"
+msgid "manager"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
-"Our blocklist code will use the `application.id` tag if the stream sets it"
+"A new configuration option was added. It allows EasyEffects to ignore "
+"streams whose purpose is to monitor sink"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
-"In order to avoid problems with the mouse scroll the entries in the "
-"applications list shown in our `Players/Recorders`"
+"devices. This will help to fix some of problems our users were having when "
+"using OBS."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
-msgid ""
-"tab do not show a volume scale anymore. More details about the problem and "
-"the solution for it can be found on #1211"
+msgid "The code that shows the stream sample format has been improved"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
-msgid "and #1427"
-msgstr "Broj raspona"
+msgid ""
+"The rnnoise library is now optional. This should help package maintainers to "
+"build"
+msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
-msgid ""
-"When no application is available for display in the `Players/Recorders` a "
-"message will be shown to the user"
+msgid "a Debian package. See the issue #1000 for more information."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
-msgid "Many translation updates"
+msgid ""
+"Our logs now show the source code line where the messages are being printed"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:160
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:233
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
 msgid "This release fixes the following bugs:"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
-"Fixed a bug where EasyEffeects crashed when the number of points displayed "
-"in the spectrum was changed while"
+"The \"enable effects\" checkbox in our window was not being updated when "
+"third party programs like pavucontrol"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
-msgid "our pipeline was active and the spectrum widget was visible"
+msgid ""
+"moved the stream away from our virtual devices. This should be fixed now."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
+msgid ""
+"Fixed a crash that could happen when the maximum autogain history was "
+"changed."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
+msgid "Avoid crashes when pw-mididump is running"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
+msgid "The interface of the pitch plugin was improved"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
+msgid "Our application icon is now compatible with desktops that uses QT"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
+msgid ""
+"Our blocklist code will use the `application.id` tag if the stream sets it"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
+msgid ""
+"In order to avoid problems with the mouse scroll the entries in the "
+"applications list shown in our `Players/Recorders`"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
+msgid ""
+"tab do not show a volume scale anymore. More details about the problem and "
+"the solution for it can be found on #1211"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
+#, fuzzy
+msgid "and #1427"
+msgstr "Broj raspona"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
+msgid ""
+"When no application is available for display in the `Players/Recorders` a "
+"message will be shown to the user"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
+msgid "Many translation updates"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
+msgid ""
+"Fixed a bug where EasyEffects crashed when the number of points displayed in "
+"the spectrum was changed while"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
+msgid "our pipeline was active and the spectrum widget was visible"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
 msgid ""
 "There is a new setting allowing the user to select an inactivity timeout for "
 "the pipeline. When no client is playing"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
 msgid ""
 "to or recording from our devices the filters will be unlinked after the "
 "timeout is reached. This is done to make sure"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
 msgid "we do not waste CPU power processing silence."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:86
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
 msgid "mean."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
 msgid ""
 "This should avoid the cases where the `Integrated` loudness gets stuck "
 "forever in the same value."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:98
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:249
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:144
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:271
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
 msgid "This release fixes the following bug:"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
 msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:245
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
 msgid "This release adds the following feature:"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid ""
 "The crossfeed filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "Fixed a bug that prevented mono microphones from properly working with "
 "EasyEffects"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
 msgid "Support for the next PipeWire release `0.3.44`"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:93
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
 msgid ""
 "The autogain filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
 msgid ""
 "We added an option that allows the volume and mute state of our virtual "
 "devices to be reset when EasyEffects starts. It should help with the cases "
 "were our devices are muted by the audio server for unknown reasons."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:95
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "Better support for computer suspending."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:96
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:118
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid "Updated translations"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
 msgid ""
 "Fixed a bug where trying to create an autoloading profile without having "
 "presets caused the application to crash."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:108
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
 msgid ""
 "Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
 "an application crash."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid ""
 "LibAdwaita is used to create some parts of our window and for handling the "
 "switching between dark and light themes."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:118
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid ""
 "Equalizer APO preset import feature has been improved to apply not only the "
 "Bell filter, but also other supported ones"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
 msgid ""
 "The `Reset All Settings` function in our menu should work in Flatpak now."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:142
 msgid ""
 "We have a new option that allows the user to disable our menus `autohide`. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:146
 msgid ""
 "More robust parsing to import APO presets saved with comma as thousands "
 "separator in central frequency band."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
 msgid ""
 "The fmt library is a new dependency At least while the c++ compilers do not "
 "implement its features. This is expected to happen in the next years."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:149
 msgid ""
 "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
 msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:157
 msgid ""
 "Improved `x axis` drawings in our plots. Now the number of labels is "
 "adjusted dynamically depending on our window width."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:158
 msgid ""
 "The documentation has been updated reflecting the new EasyEffects features. "
 "Old references about PulseEffects have been removed. The documentation "
 "button has been added in the menu section."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
 msgid ""
 "When a spinbutton is filled with an out of range value, now it is updated "
 "with the lowest/highest value rather than resetting to the previous one."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
 msgid ""
 "The application window now remembers the maximized state and restores it on "
 "the next opening event."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:143
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
 msgid "The `tbb` library is a new dependency"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
 msgid ""
 "The Limiter and the Multiband Compressor plugins can now use an optional "
 "external sidechain."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:173
 msgid ""
 "The Autogain plugin now allows the user to select which Loudness is used as "
 "reference for the volume correction."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
 msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:153
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
 msgid "Optional Cubic Volume can be enabled in General Settings."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Hopefully crashes like the one reported at [1172]( are fixed."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:188
 msgid "Prevented a case in which Spectrum was crashing."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:167
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
 msgid ""
 "Pavucontrol is not added anymore to input applications list on systems with "
 "localization different than English."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
 "Improved compatibility with WirePlumber. This is needed to run on systems "
 "that decided to use it instead of the"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:176
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
 msgid "built-in PipeWire session manager. More information at issue [1144]("
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid ""
 "When trying to add an autoloading profile for a device already in the list "
 "its target preset will be updated. This way we can change the profile preset "
 "without having to remove and recreating it."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
 msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue [1051]("
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:186
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
 msgid ""
 "If the Limiter or the Maximizer are set in the last position of the plugin "
 "stack, new plugins are added at the second to last position in order to "
 "prevent hardware damage on eventually high output level."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
 msgid ""
 "Removing an application from the blocklist, its previous enabled state is "
 "restored."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
 msgid ""
 "Sometimes when removing imported models from the noise reduction plugin the "
 "current used model was not properly updated. This should be fixed now."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:192
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid ""
 "When editing presets files in an external editor, duplicated entries won't "
 "be shown in our presets menu."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
 msgid "Now the blocklist is correctly set when switching presets."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:194
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
 msgid ""
 "Now the status of the global bypass button is correctly updated when "
 "changing plugin stack."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
 msgid ""
 "Missing icons on the system should not be shown inside the application info "
 "UI"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid ""
 "Some icons not showing in Plasma DE with Breeze icon theme should appear now."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
 msgid "Updated Chinese translation."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:205
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
 msgid "Updated Italian translation."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 msgid "Added support for the compressor parameter `Boost Amount`"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid ""
 "The multiband compressor plugin now uses the stereo multiband compressor "
 "plugin from Linux Studio Plugins instead of the one from Calf Studio."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:230
 msgid ""
 "The limiter plugin now uses the stereo limiter plugin from Linux Studio "
 "Plugins instead of the one from Calf Studio."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
 msgid ""
 "LV2 filters now are spawned in PipeWire graph only when loaded the first "
 "time. Once loaded, they remain connected until EasyEffects shutdown."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:235
 msgid "The echo canceller sampling rate is now properly set."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
 msgid ""
 "The threshold parameter from the deesser plugin is now saved to the preset "
 "file."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid ""
 "Improved band splitting for crystalizer with new default intensity values."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
 msgid ""
 "Depending on the input gain or output gain values the corresponding level "
 "bars could not be aligned."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid ""
 "When adding more equalizer bands they are set to `Bell` instead of `Off`."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:240
 msgid ""
 "Equalizer APO presets loading is now working properly on locales different "
 "than C."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:241
 msgid "Improved linking management between port filter nodes in PipeWire."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:220
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:242
 msgid ""
 "The crystalizer plugin signal amplification was too high before. It should "
 "be within more reasonable levels now."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
 msgid ""
 "Improved the resampler used in the plugins that require one(like the rnnoise "
 "plugin)"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:233
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
 msgid "Setting multiple autoloading presets should be fine now"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:234
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:256
 msgid "Transient windows are now properly set for some plugins dialogs"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:235
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid ""
 "The convolver impulse response menu was improved to workaround an issue "
 "where the impulse files was not loaded when only one was available in the "
 "menu"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:258
 msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
 msgid "The saturation warning should not displace its neighbor widgets anymore"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
 msgid "Fixed the locale in a few widgets"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
 msgid "Fixed wrong alignment in a few widgets"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:269
 msgid ""
 "The Loudness plugin is being used again for the reasons described at This "
 "means that is an optional dependency again."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:273
 msgid ""
 "Fixed a segmentation fault that happened when optional dependencies were not "
 "installed"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
 msgid "Improved equalizer interface."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
 msgid ""
 "Now we use a sidechain LSP compressor that allows the user to select and "
 "external source as the sidechain input."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
 msgid "We now support the LSP compressor `Boosting` mode."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
 msgid ""
 "When `split-channels` is enabled in the equalizer the imported APO preset "
 "will be applied only to the channel being visualized in the window. This "
@@ -631,43 +695,43 @@ msgid ""
 "settings the same values to both."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:288
 msgid ""
 "Fixed some segmentation faults that could happen when creating a preset "
 "autoloading profile or removing presets"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
 msgid ""
 "This is one of the biggest releases that I have ever made. The amount of "
 "changes is so big that it is hard to talk about everything here."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:275
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
 msgid ""
 "The following are just the most import ones. People interested on the "
 "journey that got us here can take"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:298
 msgid "a look at and"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:302
 msgid ""
 "The application and its repository have been renamed from PulseEffects to "
 "`EasyEffects`"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:303
 msgid "gtkmm3 was replaced by gtkmm4"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:304
 msgid "Gstreamer was replaced by native PipeWire filters."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:305
 msgid ""
 "Many features were reimplemented from scratch. The preset autoloading is one "
 "example. Another remarkable change will be seen in the plugins selection "
@@ -675,7 +739,7 @@ msgid ""
 "to use."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:307
 msgid ""
 "Boost is no longer a dependency. The price paid for that was a little change "
 "in our presets structures. With some patience it is possible to edit "
@@ -683,7 +747,7 @@ msgid ""
 "Hopefully someone will come up with a script for this in the feature."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:308
 msgid ""
 "New libraries are being used and some of the librarires that were optional "
 "before are now required"
@@ -703,21 +767,33 @@ msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
 msgid "\"Presets\""
 msgstr "Predlošci"
 
-#: data/ui/app_info.ui:201
+#: data/ui/app_info.ui:212
+msgid "Enable/disable this application"
+msgstr ""
+
+#: data/ui/app_info.ui:213
 #, fuzzy
 msgid "Enable"
 msgstr "Omogući"
 
-#: data/ui/app_info.ui:213
+#: data/ui/app_info.ui:225
+msgid "Excluded App List: Add/remove this application"
+msgstr ""
+
+#: data/ui/app_info.ui:226
 msgid "Exclude"
 msgstr ""
 
-#: data/ui/app_info.ui:236
+#: data/ui/app_info.ui:248 data/ui/app_info.ui:250
 #, fuzzy
 msgid "Mute Application"
 msgstr "Aplikacije"
 
-#: data/ui/app_info.ui:259
+#: data/ui/app_info.ui:272
+msgid "Change the volume of this application"
+msgstr ""
+
+#: data/ui/app_info.ui:274
 #, fuzzy
 msgid "Application Volume"
 msgstr "Aplikacije"
@@ -745,7 +821,7 @@ msgstr "Postavke"
 msgid "_About EasyEffects"
 msgstr "EasyEffects"
 
-#: data/ui/application_window.ui:52 data/ui/reverb.ui:18
+#: data/ui/application_window.ui:52 data/ui/reverb.ui:14
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
 #: src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
@@ -756,7 +832,11 @@ msgstr "Predlošci"
 msgid "Presets Menu"
 msgstr "Predlošci"
 
-#: data/ui/application_window.ui:61 data/ui/application_window.ui:66
+#: data/ui/application_window.ui:61
+msgid "Enable/disable the global bypass"
+msgstr ""
+
+#: data/ui/application_window.ui:66
 #, fuzzy
 msgid "Global Bypass"
 msgstr "Premosnica"
@@ -770,192 +850,178 @@ msgstr ""
 msgid "EasyEffects Window"
 msgstr "EasyEffects"
 
-#: data/ui/apps_box.ui:21
+#: data/ui/apps_box.ui:17
 #, fuzzy
 msgid "Applications List"
 msgstr "Aplikacije"
 
-#: data/ui/apps_box.ui:31
+#: data/ui/apps_box.ui:27
 #, fuzzy
 msgid "Empty List"
 msgstr "Prazna soba"
 
-#: data/ui/apps_box.ui:32
+#: data/ui/apps_box.ui:28
 #, fuzzy
 msgid "No Audio Application Available"
 msgstr "Aplikacije"
 
-#: data/ui/autogain.ui:19
+#: data/ui/autogain.ui:18
 msgid "Target"
 msgstr "Meta"
 
-#: data/ui/autogain.ui:53
+#: data/ui/autogain.ui:52
 #, fuzzy
 msgid "Maximum History"
 msgstr "Najveće pojačanje"
 
-#: data/ui/autogain.ui:87
+#: data/ui/autogain.ui:86
 msgid "Reference"
 msgstr ""
 
-#: data/ui/autogain.ui:99 data/ui/autogain.ui:157
+#: data/ui/autogain.ui:98 data/ui/autogain.ui:139
 msgid "Momentary"
 msgstr "Trenutačno"
 
-#: data/ui/autogain.ui:100 data/ui/autogain.ui:187
+#: data/ui/autogain.ui:99 data/ui/autogain.ui:169
 #, fuzzy
 msgid "Short-Term"
 msgstr "Kratkoročno"
 
-#: data/ui/autogain.ui:101 data/ui/autogain.ui:217
+#: data/ui/autogain.ui:100 data/ui/autogain.ui:199
 msgid "Integrated"
 msgstr "Integrirano"
 
-#: data/ui/autogain.ui:102
+#: data/ui/autogain.ui:101
 msgid "Geometric Mean (MSI)"
 msgstr ""
 
-#: data/ui/autogain.ui:103
+#: data/ui/autogain.ui:102
 msgid "Geometric Mean (MS)"
 msgstr ""
 
-#: data/ui/autogain.ui:104
+#: data/ui/autogain.ui:103
 msgid "Geometric Mean (MI)"
 msgstr ""
 
-#: data/ui/autogain.ui:105
+#: data/ui/autogain.ui:104
 msgid "Geometric Mean (SI)"
 msgstr ""
 
-#: data/ui/autogain.ui:127 data/ui/bass_enhancer.ui:18
-#: data/ui/bass_loudness.ui:14 data/ui/compressor.ui:13 data/ui/convolver.ui:14
-#: data/ui/crossfeed.ui:14 data/ui/crystalizer.ui:13
-#: data/ui/crystalizer_band.ui:11 data/ui/deesser.ui:17 data/ui/delay.ui:14
-#: data/ui/echo_canceller.ui:14 data/ui/equalizer.ui:142 data/ui/exciter.ui:18
-#: data/ui/filter.ui:15 data/ui/gate.ui:13 data/ui/limiter.ui:14
-#: data/ui/loudness.ui:14 data/ui/maximizer.ui:14
-#: data/ui/multiband_compressor.ui:32 data/ui/multiband_gate.ui:13
-#: data/ui/multiband_gate.ui:183 data/ui/multiband_gate.ui:543
-#: data/ui/multiband_gate.ui:903 data/ui/multiband_gate.ui:1263
-#: data/ui/pitch.ui:75 data/ui/reverb.ui:24 data/ui/rnnoise.ui:26
-#: data/ui/stereo_tools.ui:13
-msgid "Bypass"
-msgstr "Premosnica"
-
-#: data/ui/autogain.ui:134
+#: data/ui/autogain.ui:119
 #, fuzzy
 msgid "Reset History"
 msgstr "Vrati izvornu kvalitetu"
 
-#: data/ui/autogain.ui:247
+#: data/ui/autogain.ui:229
 msgid "Relative"
 msgstr "Relativno"
 
-#: data/ui/autogain.ui:277
+#: data/ui/autogain.ui:259
 msgid "Range"
 msgstr "Raspon"
 
-#: data/ui/autogain.ui:310 data/ui/bass_loudness.ui:27 src/plugin_name.cpp:40
+#: data/ui/autogain.ui:292 data/ui/bass_loudness.ui:19
+#: src/tags_plugin_name.cpp:40
 msgid "Loudness"
 msgstr "Glasnoća"
 
-#: data/ui/autogain.ui:342
+#: data/ui/autogain.ui:324
 #, fuzzy
 msgid "Output Gain"
 msgstr "Pojačanje ulaza"
 
-#: data/ui/autogain.ui:379 data/ui/bass_enhancer.ui:264
-#: data/ui/bass_loudness.ui:144 data/ui/compressor.ui:512
-#: data/ui/compressor.ui:994 data/ui/convolver.ui:230 data/ui/crossfeed.ui:142
-#: data/ui/crystalizer.ui:40 data/ui/deesser.ui:418 data/ui/delay.ui:109
-#: data/ui/echo_canceller.ui:113 data/ui/equalizer.ui:197
-#: data/ui/exciter.ui:264 data/ui/filter.ui:173 data/ui/gate.ui:335
-#: data/ui/limiter.ui:743 data/ui/loudness.ui:132 data/ui/maximizer.ui:145
-#: data/ui/multiband_compressor.ui:390 data/ui/multiband_gate.ui:1625
-#: data/ui/pipe_manager_box.ui:310 data/ui/pitch.ui:306
-#: data/ui/presets_menu.ui:181 data/ui/reverb.ui:364 data/ui/rnnoise.ui:137
-#: data/ui/stereo_tools.ui:38 data/ui/stereo_tools.ui:552
-#: src/application_ui.cpp:243
+#: data/ui/autogain.ui:361 data/ui/bass_enhancer.ui:251
+#: data/ui/bass_loudness.ui:136 data/ui/compressor.ui:505
+#: data/ui/compressor.ui:987 data/ui/convolver.ui:222 data/ui/crossfeed.ui:133
+#: data/ui/crystalizer.ui:33 data/ui/deesser.ui:407 data/ui/delay.ui:101
+#: data/ui/echo_canceller.ui:105 data/ui/equalizer.ui:189
+#: data/ui/exciter.ui:251 data/ui/filter.ui:163 data/ui/gate.ui:327
+#: data/ui/limiter.ui:718 data/ui/loudness.ui:123 data/ui/maximizer.ui:136
+#: data/ui/multiband_compressor.ui:378 data/ui/multiband_gate.ui:1617
+#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:295
+#: data/ui/presets_menu.ui:177 data/ui/reverb.ui:351 data/ui/rnnoise.ui:131
+#: data/ui/stereo_tools.ui:30 data/ui/stereo_tools.ui:544
+#: src/application_ui.cpp:285
 msgid "Input"
 msgstr "Ulaz"
 
-#: data/ui/autogain.ui:398 data/ui/bass_enhancer.ui:283
-#: data/ui/bass_loudness.ui:163 data/ui/compressor.ui:1013
-#: data/ui/convolver.ui:249 data/ui/crossfeed.ui:161 data/ui/crystalizer.ui:59
-#: data/ui/deesser.ui:437 data/ui/delay.ui:128 data/ui/echo_canceller.ui:132
-#: data/ui/equalizer.ui:216 data/ui/exciter.ui:283 data/ui/filter.ui:192
-#: data/ui/gate.ui:354 data/ui/limiter.ui:762 data/ui/loudness.ui:151
-#: data/ui/maximizer.ui:164 data/ui/multiband_compressor.ui:409
-#: data/ui/multiband_gate.ui:1644 data/ui/pitch.ui:325 data/ui/reverb.ui:383
-#: data/ui/rnnoise.ui:156 data/ui/stereo_tools.ui:571
+#: data/ui/autogain.ui:380 data/ui/bass_enhancer.ui:270
+#: data/ui/bass_loudness.ui:155 data/ui/compressor.ui:1006
+#: data/ui/convolver.ui:241 data/ui/crossfeed.ui:152 data/ui/crystalizer.ui:52
+#: data/ui/deesser.ui:426 data/ui/delay.ui:120 data/ui/echo_canceller.ui:124
+#: data/ui/equalizer.ui:208 data/ui/exciter.ui:270 data/ui/filter.ui:182
+#: data/ui/gate.ui:346 data/ui/limiter.ui:737 data/ui/loudness.ui:142
+#: data/ui/maximizer.ui:155 data/ui/multiband_compressor.ui:397
+#: data/ui/multiband_gate.ui:1636 data/ui/pitch.ui:314 data/ui/reverb.ui:370
+#: data/ui/rnnoise.ui:150 data/ui/stereo_tools.ui:563
 #, fuzzy
 msgid "Plugin Input Gain"
 msgstr "Pojačanje ulaza"
 
-#: data/ui/autogain.ui:463 data/ui/bass_enhancer.ui:348
-#: data/ui/bass_loudness.ui:61 data/ui/bass_loudness.ui:228
-#: data/ui/compressor.ui:1078 data/ui/convolver.ui:314 data/ui/crossfeed.ui:226
-#: data/ui/crystalizer.ui:124 data/ui/deesser.ui:502 data/ui/delay.ui:193
-#: data/ui/echo_canceller.ui:197 data/ui/equalizer.ui:281
-#: data/ui/exciter.ui:348 data/ui/filter.ui:257 data/ui/gate.ui:419
-#: data/ui/limiter.ui:827 data/ui/loudness.ui:216 data/ui/maximizer.ui:229
-#: data/ui/multiband_compressor.ui:474 data/ui/multiband_gate.ui:472
-#: data/ui/multiband_gate.ui:832 data/ui/multiband_gate.ui:1192
-#: data/ui/multiband_gate.ui:1552 data/ui/multiband_gate.ui:1709
-#: data/ui/pipe_manager_box.ui:213 data/ui/pitch.ui:390
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:448 data/ui/rnnoise.ui:221
-#: data/ui/stereo_tools.ui:379 data/ui/stereo_tools.ui:636
-#: src/application_ui.cpp:242
+#: data/ui/autogain.ui:445 data/ui/bass_enhancer.ui:335
+#: data/ui/bass_loudness.ui:53 data/ui/bass_loudness.ui:220
+#: data/ui/compressor.ui:1071 data/ui/convolver.ui:306 data/ui/crossfeed.ui:217
+#: data/ui/crystalizer.ui:117 data/ui/deesser.ui:491 data/ui/delay.ui:185
+#: data/ui/echo_canceller.ui:189 data/ui/equalizer.ui:273
+#: data/ui/exciter.ui:335 data/ui/filter.ui:247 data/ui/gate.ui:411
+#: data/ui/limiter.ui:802 data/ui/loudness.ui:207 data/ui/maximizer.ui:220
+#: data/ui/multiband_compressor.ui:462 data/ui/multiband_gate.ui:464
+#: data/ui/multiband_gate.ui:824 data/ui/multiband_gate.ui:1184
+#: data/ui/multiband_gate.ui:1544 data/ui/multiband_gate.ui:1701
+#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:379
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:435 data/ui/rnnoise.ui:215
+#: data/ui/stereo_tools.ui:371 data/ui/stereo_tools.ui:628
+#: src/application_ui.cpp:284
 msgid "Output"
 msgstr "Izlaz"
 
-#: data/ui/autogain.ui:482 data/ui/bass_enhancer.ui:367
-#: data/ui/bass_loudness.ui:247 data/ui/compressor.ui:1097
-#: data/ui/convolver.ui:333 data/ui/crossfeed.ui:245 data/ui/crystalizer.ui:143
-#: data/ui/deesser.ui:521 data/ui/delay.ui:212 data/ui/echo_canceller.ui:216
-#: data/ui/equalizer.ui:300 data/ui/exciter.ui:367 data/ui/filter.ui:276
-#: data/ui/gate.ui:438 data/ui/limiter.ui:846 data/ui/loudness.ui:235
-#: data/ui/maximizer.ui:248 data/ui/multiband_compressor.ui:493
-#: data/ui/multiband_gate.ui:1728 data/ui/pitch.ui:409 data/ui/reverb.ui:467
-#: data/ui/rnnoise.ui:240 data/ui/stereo_tools.ui:655
+#: data/ui/autogain.ui:464 data/ui/bass_enhancer.ui:354
+#: data/ui/bass_loudness.ui:239 data/ui/compressor.ui:1090
+#: data/ui/convolver.ui:325 data/ui/crossfeed.ui:236 data/ui/crystalizer.ui:136
+#: data/ui/deesser.ui:510 data/ui/delay.ui:204 data/ui/echo_canceller.ui:208
+#: data/ui/equalizer.ui:292 data/ui/exciter.ui:354 data/ui/filter.ui:266
+#: data/ui/gate.ui:430 data/ui/limiter.ui:821 data/ui/loudness.ui:226
+#: data/ui/maximizer.ui:239 data/ui/multiband_compressor.ui:481
+#: data/ui/multiband_gate.ui:1720 data/ui/pitch.ui:398 data/ui/reverb.ui:454
+#: data/ui/rnnoise.ui:234 data/ui/stereo_tools.ui:647
 #, fuzzy
 msgid "Plugin Output Gain"
 msgstr "Pojačanje ulaza"
 
-#: data/ui/autogain.ui:545 data/ui/bass_enhancer.ui:461
-#: data/ui/bass_loudness.ui:310 data/ui/compressor.ui:1160
-#: data/ui/convolver.ui:396 data/ui/crossfeed.ui:308 data/ui/crystalizer.ui:198
-#: data/ui/deesser.ui:644 data/ui/delay.ui:275 data/ui/echo_canceller.ui:279
-#: data/ui/equalizer.ui:363 data/ui/equalizer_band.ui:223
-#: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:460 data/ui/filter.ui:339
-#: data/ui/gate.ui:531 data/ui/limiter.ui:909 data/ui/loudness.ui:298
-#: data/ui/maximizer.ui:343 data/ui/multiband_compressor.ui:556
-#: data/ui/multiband_gate.ui:1791 data/ui/pitch.ui:472 data/ui/reverb.ui:530
-#: data/ui/rnnoise.ui:303 data/ui/stereo_tools.ui:718
+#: data/ui/autogain.ui:527 data/ui/bass_enhancer.ui:448
+#: data/ui/bass_loudness.ui:302 data/ui/compressor.ui:1153
+#: data/ui/convolver.ui:388 data/ui/crossfeed.ui:299 data/ui/crystalizer.ui:191
+#: data/ui/deesser.ui:633 data/ui/delay.ui:267 data/ui/echo_canceller.ui:271
+#: data/ui/equalizer.ui:355 data/ui/equalizer_band.ui:223
+#: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:447 data/ui/filter.ui:329
+#: data/ui/gate.ui:523 data/ui/limiter.ui:884 data/ui/loudness.ui:289
+#: data/ui/maximizer.ui:334 data/ui/multiband_compressor.ui:544
+#: data/ui/multiband_gate.ui:1783 data/ui/pitch.ui:461 data/ui/reverb.ui:517
+#: data/ui/rnnoise.ui:297 data/ui/stereo_tools.ui:710
 msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
-#: data/ui/autogain.ui:559 data/ui/bass_enhancer.ui:475
-#: data/ui/bass_loudness.ui:324 data/ui/compressor.ui:1174
-#: data/ui/convolver.ui:410 data/ui/crossfeed.ui:322 data/ui/deesser.ui:658
-#: data/ui/delay.ui:289 data/ui/echo_canceller.ui:293 data/ui/equalizer.ui:377
-#: data/ui/exciter.ui:474 data/ui/filter.ui:353 data/ui/gate.ui:545
-#: data/ui/limiter.ui:923 data/ui/loudness.ui:312 data/ui/maximizer.ui:357
-#: data/ui/multiband_compressor.ui:570 data/ui/multiband_gate.ui:1805
-#: data/ui/pitch.ui:486 data/ui/reverb.ui:544 data/ui/rnnoise.ui:317
-#: data/ui/stereo_tools.ui:732
+#: data/ui/autogain.ui:541 data/ui/bass_enhancer.ui:462
+#: data/ui/bass_loudness.ui:316 data/ui/compressor.ui:1167
+#: data/ui/convolver.ui:402 data/ui/crossfeed.ui:313 data/ui/deesser.ui:647
+#: data/ui/delay.ui:281 data/ui/echo_canceller.ui:285 data/ui/equalizer.ui:369
+#: data/ui/exciter.ui:461 data/ui/filter.ui:343 data/ui/gate.ui:537
+#: data/ui/limiter.ui:898 data/ui/loudness.ui:303 data/ui/maximizer.ui:348
+#: data/ui/multiband_compressor.ui:558 data/ui/multiband_gate.ui:1797
+#: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:311
+#: data/ui/stereo_tools.ui:724
 msgid "Using"
 msgstr ""
 
-#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:535
+#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:528
 #, fuzzy
 msgid "Device"
 msgstr "Ulazni uređaj"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
-#: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:52
-#: data/ui/pipe_manager_box.ui:93 data/ui/presets_menu.ui:50
-#: data/ui/presets_menu.ui:203
+#: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
+#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:47
+#: data/ui/presets_menu.ui:195
 msgid "Name"
 msgstr "Naziv"
 
@@ -968,50 +1034,51 @@ msgstr ""
 msgid "Preset"
 msgstr "Predlošci"
 
-#: data/ui/autoload_row.ui:114 src/plugins_box.cpp:500
-msgid "Remove"
-msgstr ""
+#: data/ui/autoload_row.ui:114
+#, fuzzy
+msgid "Remove this autoload preset"
+msgstr "Kompresija"
 
-#: data/ui/bass_enhancer.ui:24 data/ui/compressor.ui:465 data/ui/deesser.ui:23
-#: data/ui/exciter.ui:24
+#: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:458 data/ui/deesser.ui:14
+#: data/ui/exciter.ui:12
 msgid "Listen"
 msgstr "Poslušaj"
 
-#: data/ui/bass_enhancer.ui:36 data/ui/exciter.ui:36
+#: data/ui/bass_enhancer.ui:23 data/ui/exciter.ui:23
 msgid "Blend Harmonics"
 msgstr "Spajanje harmonijskog reda"
 
-#: data/ui/bass_enhancer.ui:48 data/ui/exciter.ui:48
+#: data/ui/bass_enhancer.ui:35 data/ui/exciter.ui:35
 msgid "3rd"
 msgstr "3."
 
-#: data/ui/bass_enhancer.ui:91 data/ui/exciter.ui:91
+#: data/ui/bass_enhancer.ui:78 data/ui/exciter.ui:78
 msgid "2nd"
 msgstr "2."
 
-#: data/ui/bass_enhancer.ui:110 data/ui/exciter.ui:110
+#: data/ui/bass_enhancer.ui:97 data/ui/exciter.ui:97
 msgid "Amount"
 msgstr "Jačina"
 
-#: data/ui/bass_enhancer.ui:144 data/ui/bass_enhancer.ui:426
-#: data/ui/exciter.ui:144 data/ui/exciter.ui:426
+#: data/ui/bass_enhancer.ui:131 data/ui/bass_enhancer.ui:413
+#: data/ui/exciter.ui:131 data/ui/exciter.ui:413
 msgid "Harmonics"
 msgstr "Harmonijski red"
 
-#: data/ui/bass_enhancer.ui:179 data/ui/exciter.ui:179
+#: data/ui/bass_enhancer.ui:166 data/ui/exciter.ui:166
 msgid "Scope"
 msgstr "Raspon"
 
-#: data/ui/bass_enhancer.ui:213
+#: data/ui/bass_enhancer.ui:200
 msgid "Floor"
 msgstr "Dno"
 
-#: data/ui/bass_enhancer.ui:242
+#: data/ui/bass_enhancer.ui:229
 #, fuzzy
 msgid "Floor Value"
 msgstr "Dno"
 
-#: data/ui/bass_loudness.ui:95
+#: data/ui/bass_loudness.ui:87
 msgid "Link"
 msgstr ""
 
@@ -1035,342 +1102,341 @@ msgstr "Aplikacije"
 msgid "Show Excluded Applications"
 msgstr "Aplikacije"
 
-#: data/ui/compressor.ui:38 src/plugin_name.cpp:28
+#: data/ui/compressor.ui:31 src/tags_plugin_name.cpp:28
 msgid "Compressor"
 msgstr "Kompresor"
 
-#: data/ui/compressor.ui:50 data/ui/compressor.ui:437 data/ui/compressor.ui:732
-#: data/ui/deesser.ui:65 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:130
-#: data/ui/limiter.ui:45 data/ui/multiband_compressor_band.ui:449
-#: data/ui/multiband_gate.ui:33 data/ui/pitch.ui:22
+#: data/ui/compressor.ui:43 data/ui/compressor.ui:430 data/ui/compressor.ui:725
+#: data/ui/deesser.ui:54 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:130
+#: data/ui/limiter.ui:36 data/ui/multiband_compressor_band.ui:449
+#: data/ui/multiband_gate.ui:25 data/ui/pitch.ui:22
 msgid "Mode"
 msgstr "Način"
 
-#: data/ui/compressor.ui:61 data/ui/multiband_compressor_band.ui:99
+#: data/ui/compressor.ui:54 data/ui/multiband_compressor_band.ui:99
 msgid "Downward"
 msgstr ""
 
-#: data/ui/compressor.ui:62 data/ui/multiband_compressor_band.ui:100
+#: data/ui/compressor.ui:55 data/ui/multiband_compressor_band.ui:100
 msgid "Upward"
 msgstr ""
 
-#: data/ui/compressor.ui:63 data/ui/multiband_compressor_band.ui:101
+#: data/ui/compressor.ui:56 data/ui/multiband_compressor_band.ui:101
 msgid "Boosting"
 msgstr ""
 
-#: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:88
+#: data/ui/compressor.ui:63 data/ui/multiband_compressor_band.ui:88
 #, fuzzy
 msgid "Compression Mode"
 msgstr "Kompresija"
 
-#: data/ui/compressor.ui:77 data/ui/multiband_compressor_band.ui:765
+#: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:765
 #, fuzzy
 msgid "Boost Threshold"
 msgstr "Prag"
 
-#: data/ui/compressor.ui:116 data/ui/multiband_compressor_band.ui:721
+#: data/ui/compressor.ui:109 data/ui/multiband_compressor_band.ui:721
 #, fuzzy
 msgid "Boost Amount"
 msgstr "Jačina"
 
-#: data/ui/compressor.ui:162 data/ui/gate.ui:114 data/ui/limiter.ui:261
-#: data/ui/limiter.ui:500 data/ui/multiband_compressor_band.ui:186
-#: data/ui/multiband_gate.ui:223 data/ui/multiband_gate.ui:583
-#: data/ui/multiband_gate.ui:943 data/ui/multiband_gate.ui:1303
+#: data/ui/compressor.ui:155 data/ui/gate.ui:106 data/ui/limiter.ui:252
+#: data/ui/limiter.ui:475 data/ui/multiband_compressor_band.ui:186
+#: data/ui/multiband_gate.ui:215 data/ui/multiband_gate.ui:575
+#: data/ui/multiband_gate.ui:935 data/ui/multiband_gate.ui:1295
 msgid "Attack"
 msgstr "Pokretanje"
 
-#: data/ui/compressor.ui:173 data/ui/multiband_compressor_band.ui:166
+#: data/ui/compressor.ui:166 data/ui/multiband_compressor_band.ui:166
 #, fuzzy
 msgid "Time"
 msgstr "Vrijeme opadanja intenziteta signala"
 
-#: data/ui/compressor.ui:183 data/ui/deesser.ui:300 data/ui/gate.ui:184
-#: data/ui/limiter.ui:345 data/ui/maximizer.ui:29
-#: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate.ui:293
-#: data/ui/multiband_gate.ui:653 data/ui/multiband_gate.ui:1013
-#: data/ui/multiband_gate.ui:1373
+#: data/ui/compressor.ui:176 data/ui/deesser.ui:289 data/ui/gate.ui:176
+#: data/ui/limiter.ui:336 data/ui/maximizer.ui:20
+#: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate.ui:285
+#: data/ui/multiband_gate.ui:645 data/ui/multiband_gate.ui:1005
+#: data/ui/multiband_gate.ui:1365
 msgid "Threshold"
 msgstr "Prag"
 
-#: data/ui/compressor.ui:210 data/ui/multiband_compressor_band.ui:222
+#: data/ui/compressor.ui:203 data/ui/multiband_compressor_band.ui:222
 #, fuzzy
 msgid "Attack Time"
 msgstr "Pokretanje"
 
-#: data/ui/compressor.ui:233 data/ui/multiband_compressor_band.ui:247
+#: data/ui/compressor.ui:226 data/ui/multiband_compressor_band.ui:247
 #, fuzzy
 msgid "Attack Threshold"
 msgstr "Prag"
 
-#: data/ui/compressor.ui:240 data/ui/gate.ui:149 data/ui/limiter.ui:303
-#: data/ui/limiter.ui:537 data/ui/maximizer.ui:95
-#: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate.ui:258
-#: data/ui/multiband_gate.ui:618 data/ui/multiband_gate.ui:978
-#: data/ui/multiband_gate.ui:1338
+#: data/ui/compressor.ui:233 data/ui/gate.ui:141 data/ui/limiter.ui:294
+#: data/ui/limiter.ui:512 data/ui/maximizer.ui:86
+#: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate.ui:250
+#: data/ui/multiband_gate.ui:610 data/ui/multiband_gate.ui:970
+#: data/ui/multiband_gate.ui:1330
 msgid "Release"
 msgstr "Vrijeme prijelaza"
 
-#: data/ui/compressor.ui:267 data/ui/multiband_compressor_band.ui:274
+#: data/ui/compressor.ui:260 data/ui/multiband_compressor_band.ui:274
 #, fuzzy
 msgid "Release Time"
 msgstr "Vrijeme prijelaza"
 
-#: data/ui/compressor.ui:292 data/ui/multiband_compressor_band.ui:302
+#: data/ui/compressor.ui:285 data/ui/multiband_compressor_band.ui:302
 #, fuzzy
 msgid "Release Threshold"
 msgstr "Prag"
 
-#: data/ui/compressor.ui:299 data/ui/deesser.ui:334 data/ui/gate.ui:218
-#: data/ui/multiband_compressor_band.ui:309 data/ui/multiband_gate.ui:327
-#: data/ui/multiband_gate.ui:687 data/ui/multiband_gate.ui:1047
-#: data/ui/multiband_gate.ui:1407
+#: data/ui/compressor.ui:292 data/ui/deesser.ui:323 data/ui/gate.ui:210
+#: data/ui/multiband_compressor_band.ui:309 data/ui/multiband_gate.ui:319
+#: data/ui/multiband_gate.ui:679 data/ui/multiband_gate.ui:1039
+#: data/ui/multiband_gate.ui:1399
 msgid "Ratio"
 msgstr "Omjer"
 
-#: data/ui/compressor.ui:337 data/ui/gate.ui:253 data/ui/limiter.ui:573
-#: data/ui/multiband_compressor_band.ui:347 data/ui/multiband_gate.ui:362
-#: data/ui/multiband_gate.ui:722 data/ui/multiband_gate.ui:1082
-#: data/ui/multiband_gate.ui:1442
+#: data/ui/compressor.ui:330 data/ui/gate.ui:245 data/ui/limiter.ui:548
+#: data/ui/multiband_compressor_band.ui:347 data/ui/multiband_gate.ui:354
+#: data/ui/multiband_gate.ui:714 data/ui/multiband_gate.ui:1074
+#: data/ui/multiband_gate.ui:1434
 #, fuzzy
 msgid "Knee"
 msgstr "Koljeno"
 
-#: data/ui/compressor.ui:374 data/ui/deesser.ui:370 data/ui/gate.ui:287
-#: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate.ui:396
-#: data/ui/multiband_gate.ui:756 data/ui/multiband_gate.ui:1116
-#: data/ui/multiband_gate.ui:1476
+#: data/ui/compressor.ui:367 data/ui/deesser.ui:359 data/ui/gate.ui:279
+#: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate.ui:388
+#: data/ui/multiband_gate.ui:748 data/ui/multiband_gate.ui:1108
+#: data/ui/multiband_gate.ui:1468
 #, fuzzy
 msgid "Makeup"
 msgstr "Dorada"
 
-#: data/ui/compressor.ui:418 data/ui/compressor.ui:930
+#: data/ui/compressor.ui:411 data/ui/compressor.ui:923
 #, fuzzy
 msgid "Sidechain"
 msgstr "Postranični ulaz"
 
-#: data/ui/compressor.ui:447 data/ui/deesser.ui:49 data/ui/gate.ui:38
-#: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:204
-#: data/ui/multiband_gate.ui:564 data/ui/multiband_gate.ui:924
-#: data/ui/multiband_gate.ui:1284
+#: data/ui/compressor.ui:440 data/ui/deesser.ui:38 data/ui/gate.ui:30
+#: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:196
+#: data/ui/multiband_gate.ui:556 data/ui/multiband_gate.ui:916
+#: data/ui/multiband_gate.ui:1276
 msgid "Peak"
 msgstr "Vrhunac"
 
-#: data/ui/compressor.ui:448 data/ui/deesser.ui:48 data/ui/gate.ui:37
-#: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:203
-#: data/ui/multiband_gate.ui:563 data/ui/multiband_gate.ui:923
-#: data/ui/multiband_gate.ui:1283
+#: data/ui/compressor.ui:441 data/ui/deesser.ui:37 data/ui/gate.ui:29
+#: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:195
+#: data/ui/multiband_gate.ui:555 data/ui/multiband_gate.ui:915
+#: data/ui/multiband_gate.ui:1275
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:449 data/ui/compressor.ui:801
+#: data/ui/compressor.ui:442 data/ui/compressor.ui:794
 #: data/ui/multiband_compressor_band.ui:462
 #, fuzzy
 msgid "Low-Pass"
 msgstr "Nizak prolaz"
 
-#: data/ui/compressor.ui:450 data/ui/multiband_compressor_band.ui:463
+#: data/ui/compressor.ui:443 data/ui/multiband_compressor_band.ui:463
 msgid "Uniform"
 msgstr ""
 
-#: data/ui/compressor.ui:457 data/ui/multiband_compressor_band.ui:470
+#: data/ui/compressor.ui:450 data/ui/multiband_compressor_band.ui:470
 #, fuzzy
 msgid "Sidechain Mode"
 msgstr "Postranični ulaz"
 
-#: data/ui/compressor.ui:475 data/ui/multiband_compressor_band.ui:477
+#: data/ui/compressor.ui:468 data/ui/multiband_compressor_band.ui:477
 #, fuzzy
 msgid "Source"
 msgstr "Izvor"
 
-#: data/ui/compressor.ui:485 data/ui/multiband_compressor_band.ui:488
+#: data/ui/compressor.ui:478 data/ui/multiband_compressor_band.ui:488
 #, fuzzy
 msgid "Middle"
 msgstr "Srednji nivo"
 
-#: data/ui/compressor.ui:486 data/ui/multiband_compressor_band.ui:489
+#: data/ui/compressor.ui:479 data/ui/multiband_compressor_band.ui:489
 #, fuzzy
 msgid "Side"
 msgstr "Strana"
 
-#: data/ui/compressor.ui:487 data/ui/delay.ui:28 data/ui/equalizer.ui:37
-#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:508
-#: data/ui/stereo_tools.ui:159
+#: data/ui/compressor.ui:480 data/ui/delay.ui:20 data/ui/equalizer.ui:37
+#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:504
+#: data/ui/stereo_tools.ui:151
 msgid "Left"
 msgstr "Lijevo"
 
-#: data/ui/compressor.ui:488 data/ui/delay.ui:61 data/ui/equalizer.ui:49
-#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:519
-#: data/ui/stereo_tools.ui:214
+#: data/ui/compressor.ui:481 data/ui/delay.ui:53 data/ui/equalizer.ui:49
+#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:515
+#: data/ui/stereo_tools.ui:206
 msgid "Right"
 msgstr "Desno"
 
-#: data/ui/compressor.ui:495 data/ui/multiband_compressor.ui:98
+#: data/ui/compressor.ui:488 data/ui/multiband_compressor.ui:86
 #: data/ui/multiband_compressor_band.ui:498
 #, fuzzy
 msgid "Sidechain Source"
 msgstr "Postranični ulaz"
 
-#: data/ui/compressor.ui:524 data/ui/equalizer_band.ui:98
+#: data/ui/compressor.ui:517 data/ui/equalizer_band.ui:98
 msgid "Type"
 msgstr ""
 
-#: data/ui/compressor.ui:548
+#: data/ui/compressor.ui:541
 msgid "Feed-forward"
 msgstr ""
 
-#: data/ui/compressor.ui:549
+#: data/ui/compressor.ui:542
 #, fuzzy
 msgid "Feed-back"
 msgstr "Dovod zvuka"
 
-#: data/ui/compressor.ui:550
+#: data/ui/compressor.ui:543
 msgid "External"
 msgstr ""
 
-#: data/ui/compressor.ui:557
+#: data/ui/compressor.ui:550
 #, fuzzy
 msgid "Sidechain Type"
 msgstr "Postranični ulaz"
 
-#: data/ui/compressor.ui:584 data/ui/pipe_manager_box.ui:34
-#: src/plugins_box.cpp:530
+#: data/ui/compressor.ui:577 src/plugins_box.cpp:548
 #, fuzzy
 msgid "Input Device"
 msgstr "Ulazni uređaj"
 
-#: data/ui/compressor.ui:592
+#: data/ui/compressor.ui:585
 #, fuzzy
 msgid "PreAmplification"
 msgstr "Aplikacije"
 
-#: data/ui/compressor.ui:629 data/ui/multiband_compressor_band.ui:654
+#: data/ui/compressor.ui:622 data/ui/multiband_compressor_band.ui:654
 msgid "Reactivity"
 msgstr ""
 
-#: data/ui/compressor.ui:666 data/ui/limiter.ui:219
+#: data/ui/compressor.ui:659 data/ui/limiter.ui:210
 #: data/ui/multiband_compressor_band.ui:688
 msgid "Lookahead"
 msgstr "Preduhvatiti"
 
-#: data/ui/compressor.ui:709
+#: data/ui/compressor.ui:702
 #, fuzzy
 msgid "Sidechain Filters"
 msgstr "Postranični ulaz"
 
-#: data/ui/compressor.ui:719
+#: data/ui/compressor.ui:712
 #, fuzzy
 msgid "High-Pass"
 msgstr "Filter visokog prolaza"
 
-#: data/ui/compressor.ui:745 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
-#: data/ui/pipe_manager_box.ui:565
+#: data/ui/compressor.ui:738 data/ui/equalizer_band.ui:197 data/ui/filter.ui:43
+#: data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "Frekvencija"
 
-#: data/ui/compressor.ui:758 data/ui/compressor.ui:814
+#: data/ui/compressor.ui:751 data/ui/compressor.ui:807
 #: data/ui/equalizer_band.ui:108
 msgid "Off"
 msgstr ""
 
-#: data/ui/compressor.ui:759 data/ui/compressor.ui:815
+#: data/ui/compressor.ui:752 data/ui/compressor.ui:808
 #, fuzzy
 msgid "12 dB/oct"
 msgstr "12dB/oct niski prolaz"
 
-#: data/ui/compressor.ui:760 data/ui/compressor.ui:816
+#: data/ui/compressor.ui:753 data/ui/compressor.ui:809
 #, fuzzy
 msgid "24 dB/oct"
 msgstr "24dB/oct niski prolaz"
 
-#: data/ui/compressor.ui:761 data/ui/compressor.ui:817
+#: data/ui/compressor.ui:754 data/ui/compressor.ui:810
 #, fuzzy
 msgid "36 dB/oct"
 msgstr "36dB/oct niski prolaz"
 
-#: data/ui/compressor.ui:768
+#: data/ui/compressor.ui:761
 #, fuzzy
 msgid "High-Pass Filter Mode"
 msgstr "Filter visokog prolaza"
 
-#: data/ui/compressor.ui:794 data/ui/compressor.ui:850
+#: data/ui/compressor.ui:787 data/ui/compressor.ui:843
 #, fuzzy
 msgid "High-Pass Filter Frequency"
 msgstr "Prigušivanje visokih frekvencija"
 
-#: data/ui/compressor.ui:824
+#: data/ui/compressor.ui:817
 #, fuzzy
 msgid "Low-Pass Filter Mode"
 msgstr "Filter visokog prolaza"
 
-#: data/ui/compressor.ui:876
+#: data/ui/compressor.ui:869
 msgid "Gain"
 msgstr "Pojačanje"
 
-#: data/ui/compressor.ui:903
+#: data/ui/compressor.ui:896
 msgid "Envelope"
 msgstr ""
 
-#: data/ui/compressor.ui:957
+#: data/ui/compressor.ui:950
 msgid "Curve"
 msgstr ""
 
-#: data/ui/convolver.ui:39
+#: data/ui/convolver.ui:31
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.ui:42 data/ui/pipe_manager_box.ui:511
+#: data/ui/convolver.ui:34 data/ui/pipe_manager_box.ui:507
 #, fuzzy
 msgid "Left Channel"
 msgstr "Kanali"
 
-#: data/ui/convolver.ui:52
+#: data/ui/convolver.ui:44
 msgid "R"
 msgstr "D"
 
-#: data/ui/convolver.ui:55 data/ui/pipe_manager_box.ui:522
+#: data/ui/convolver.ui:47 data/ui/pipe_manager_box.ui:518
 #, fuzzy
 msgid "Right Channel"
 msgstr "Kanali"
 
-#: data/ui/convolver.ui:70
+#: data/ui/convolver.ui:62
 #, fuzzy
 msgid "Impulses"
 msgstr "Reakcija impulsa"
 
-#: data/ui/convolver.ui:78 data/ui/convolver_menu_combine.ui:113
+#: data/ui/convolver.ui:70 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
 msgstr ""
 
-#: data/ui/convolver.ui:85
+#: data/ui/convolver.ui:77
 #, fuzzy
 msgid "Stereo Width"
 msgstr "Stereo širina"
 
-#: data/ui/convolver.ui:114
+#: data/ui/convolver.ui:106
 msgid "Spectrum"
 msgstr "Spektar"
 
-#: data/ui/convolver.ui:123
+#: data/ui/convolver.ui:115
 msgid "Log Scale"
 msgstr ""
 
-#: data/ui/convolver.ui:133 src/plugin_name.cpp:25
+#: data/ui/convolver.ui:125 src/tags_plugin_name.cpp:25
 #, fuzzy
 msgid "Autogain"
 msgstr "Automatsko pojačavanje"
 
-#: data/ui/convolver.ui:149
+#: data/ui/convolver.ui:141
 msgid "Rate"
 msgstr "Frekvencija"
 
-#: data/ui/convolver.ui:171
+#: data/ui/convolver.ui:163
 #, fuzzy
 msgid "Samples"
 msgstr "Semplovi"
 
-#: data/ui/convolver.ui:193
+#: data/ui/convolver.ui:185
 #, fuzzy
 msgid "Duration"
 msgstr "Trajanje"
@@ -1403,7 +1469,7 @@ msgid "Import Impulse"
 msgstr "Učitaj impuls"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:92 data/ui/presets_menu.ui:245
+#: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
 msgid "Search"
 msgstr ""
 
@@ -1417,106 +1483,112 @@ msgstr "Učitaj impuls datoteku"
 msgid "Impulse Files List"
 msgstr "Učitaj impuls datoteku"
 
-#: data/ui/crossfeed.ui:34
+#: data/ui/crossfeed.ui:25
 msgid "Default"
 msgstr "Tvorničke postavke"
 
-#: data/ui/crossfeed.ui:57
+#: data/ui/crossfeed.ui:48
 msgid "Cutoff"
 msgstr "Prekid"
 
-#: data/ui/crossfeed.ui:92
+#: data/ui/crossfeed.ui:83
 msgid "Feed"
 msgstr "Dovod zvuka"
 
+#: data/ui/crystalizer_band.ui:11 data/ui/multiband_gate.ui:175
+#: data/ui/multiband_gate.ui:535 data/ui/multiband_gate.ui:895
+#: data/ui/multiband_gate.ui:1255
+msgid "Bypass"
+msgstr "Premosnica"
+
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:321
-#: data/ui/multiband_compressor_band.ui:136 data/ui/stereo_tools.ui:169
-#: data/ui/stereo_tools.ui:194
+#: data/ui/multiband_compressor_band.ui:136 data/ui/stereo_tools.ui:161
+#: data/ui/stereo_tools.ui:186
 msgid "Mute"
 msgstr "Bezvučno"
 
-#: data/ui/deesser.ui:41 data/ui/gate.ui:30
+#: data/ui/deesser.ui:30 data/ui/gate.ui:22
 msgid "Detection"
 msgstr "Detekcija"
 
-#: data/ui/deesser.ui:72
+#: data/ui/deesser.ui:61
 msgid "Wide"
 msgstr "Široko"
 
-#: data/ui/deesser.ui:73
+#: data/ui/deesser.ui:62
 #, fuzzy
 msgid "Split"
 msgstr "Razdvojeno"
 
-#: data/ui/deesser.ui:89
+#: data/ui/deesser.ui:78
 #, fuzzy
 msgid "F1 Split"
 msgstr "Razdvojeno"
 
-#: data/ui/deesser.ui:109
+#: data/ui/deesser.ui:98
 #, fuzzy
 msgid "Frequency 1 Split"
 msgstr "Frekvencija"
 
-#: data/ui/deesser.ui:122
+#: data/ui/deesser.ui:111
 #, fuzzy
 msgid "F2 Peak"
 msgstr "Vrhunac"
 
-#: data/ui/deesser.ui:142
+#: data/ui/deesser.ui:131
 #, fuzzy
 msgid "Frequency 2 Peak"
 msgstr "Frekvencija"
 
-#: data/ui/deesser.ui:160
+#: data/ui/deesser.ui:149
 #, fuzzy
 msgid "F1 Gain"
 msgstr "Pojačanje"
 
-#: data/ui/deesser.ui:188
+#: data/ui/deesser.ui:177
 #, fuzzy
 msgid "Frequency 1 Gain"
 msgstr "Frekvencija"
 
-#: data/ui/deesser.ui:195
+#: data/ui/deesser.ui:184
 #, fuzzy
 msgid "F2 Level"
 msgstr "Razina"
 
-#: data/ui/deesser.ui:223
+#: data/ui/deesser.ui:212
 #, fuzzy
 msgid "Frequency 2 Level"
 msgstr "Frekvencija"
 
-#: data/ui/deesser.ui:230
+#: data/ui/deesser.ui:219
 #, fuzzy
 msgid "F2 Peak Q"
 msgstr "Vrhunac Q"
 
-#: data/ui/deesser.ui:258
+#: data/ui/deesser.ui:247
 #, fuzzy
 msgid "Frequency 2 Peak Q"
 msgstr "Frekvencija"
 
-#: data/ui/deesser.ui:265
+#: data/ui/deesser.ui:254
 msgid "Laxity"
 msgstr "Popustljivost"
 
-#: data/ui/deesser.ui:580
+#: data/ui/deesser.ui:569
 #, fuzzy
 msgid "Detected"
 msgstr "Detektirano"
 
-#: data/ui/deesser.ui:610 data/ui/maximizer.ui:307
+#: data/ui/deesser.ui:599 data/ui/maximizer.ui:298
 #, fuzzy
 msgid "Reduction"
 msgstr "Smanjenje"
 
-#: data/ui/echo_canceller.ui:28
+#: data/ui/echo_canceller.ui:20
 msgid "Frame Size"
 msgstr "Veličina okvira"
 
-#: data/ui/echo_canceller.ui:63
+#: data/ui/echo_canceller.ui:55
 #, fuzzy
 msgid "Filter Length"
 msgstr "Filter"
@@ -1545,20 +1617,20 @@ msgstr ""
 msgid "SPM"
 msgstr ""
 
-#: data/ui/equalizer.ui:150
+#: data/ui/equalizer.ui:142
 #, fuzzy
 msgid "Split Channels"
 msgstr "Kanali"
 
-#: data/ui/equalizer.ui:156
+#: data/ui/equalizer.ui:148
 msgid "Flat Response"
 msgstr "Ravan izlaz"
 
-#: data/ui/equalizer.ui:164
+#: data/ui/equalizer.ui:156
 msgid "Calculate Frequencies"
 msgstr "Izračunaj frekvencije"
 
-#: data/ui/equalizer.ui:172
+#: data/ui/equalizer.ui:164
 #, fuzzy
 msgid "Load APO Preset"
 msgstr "Predlošci"
@@ -1588,7 +1660,7 @@ msgstr "Niski shelf"
 msgid "Notch"
 msgstr ""
 
-#: data/ui/equalizer_band.ui:115 data/ui/filter.ui:88
+#: data/ui/equalizer_band.ui:115 data/ui/filter.ui:78
 msgid "Resonance"
 msgstr "Rezonancija"
 
@@ -1625,17 +1697,17 @@ msgid "Quality"
 msgstr "Kvaliteta"
 
 #: data/ui/equalizer_band.ui:315 data/ui/multiband_compressor_band.ui:146
-#: data/ui/multiband_gate.ui:193 data/ui/multiband_gate.ui:553
-#: data/ui/multiband_gate.ui:913 data/ui/multiband_gate.ui:1273
+#: data/ui/multiband_gate.ui:185 data/ui/multiband_gate.ui:545
+#: data/ui/multiband_gate.ui:905 data/ui/multiband_gate.ui:1265
 msgid "Solo"
 msgstr "Solo"
 
-#: data/ui/exciter.ui:213
+#: data/ui/exciter.ui:200
 #, fuzzy
 msgid "Ceil"
 msgstr "Vrh"
 
-#: data/ui/exciter.ui:242
+#: data/ui/exciter.ui:229
 msgid "Ceil Value"
 msgstr ""
 
@@ -1657,393 +1729,393 @@ msgstr "Detekcija"
 msgid "Remove this model file"
 msgstr "Kompresija"
 
-#: data/ui/filter.ui:25
+#: data/ui/filter.ui:15
 msgid "12dB/oct Lowpass"
 msgstr "12dB/oct niski prolaz"
 
-#: data/ui/filter.ui:26
+#: data/ui/filter.ui:16
 msgid "24dB/oct Lowpass"
 msgstr "24dB/oct niski prolaz"
 
-#: data/ui/filter.ui:27
+#: data/ui/filter.ui:17
 msgid "36dB/oct Lowpass"
 msgstr "36dB/oct niski prolaz"
 
-#: data/ui/filter.ui:28
+#: data/ui/filter.ui:18
 msgid "12dB/oct Highpass"
 msgstr "12dB/oct visoki prolaz"
 
-#: data/ui/filter.ui:29
+#: data/ui/filter.ui:19
 msgid "24dB/oct Highpass"
 msgstr "24dB/oct visoki prolaz"
 
-#: data/ui/filter.ui:30
+#: data/ui/filter.ui:20
 msgid "36dB/oct Highpass"
 msgstr "36dB/oct visoki prolaz"
 
-#: data/ui/filter.ui:31
+#: data/ui/filter.ui:21
 msgid "6dB/oct Bandpass"
 msgstr "6dB/oct band prolaz"
 
-#: data/ui/filter.ui:32
+#: data/ui/filter.ui:22
 msgid "12dB/oct Bandpass"
 msgstr "12dB/oct band prolaz"
 
-#: data/ui/filter.ui:33
+#: data/ui/filter.ui:23
 msgid "18dB/oct Bandpass"
 msgstr "18dB/oct band prolaz"
 
-#: data/ui/filter.ui:34
+#: data/ui/filter.ui:24
 msgid "6dB/oct Bandreject"
 msgstr "6dB/oct odbijanje banda"
 
-#: data/ui/filter.ui:35
+#: data/ui/filter.ui:25
 msgid "12dB/oct Bandreject"
 msgstr "12dB/oct odbijanje banda"
 
-#: data/ui/filter.ui:36
+#: data/ui/filter.ui:26
 msgid "18dB/oct Bandreject"
 msgstr "18dB/oct odbijanje banda"
 
-#: data/ui/filter.ui:123
+#: data/ui/filter.ui:113
 msgid "Inertia"
 msgstr "Inercija"
 
-#: data/ui/gate.ui:54 data/ui/multiband_gate.ui:429
-#: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1149
-#: data/ui/multiband_gate.ui:1509
+#: data/ui/gate.ui:46 data/ui/multiband_gate.ui:421
+#: data/ui/multiband_gate.ui:781 data/ui/multiband_gate.ui:1141
+#: data/ui/multiband_gate.ui:1501
 msgid "Max Reduction"
 msgstr "Smanjenje"
 
-#: data/ui/gate.ui:85 data/ui/limiter.ui:413
+#: data/ui/gate.ui:77 data/ui/limiter.ui:388
 msgid "Stereo Link"
 msgstr "Stereo veza"
 
-#: data/ui/gate.ui:92
+#: data/ui/gate.ui:84
 #, fuzzy
 msgid "Average"
 msgstr "Prosjek"
 
-#: data/ui/gate.ui:93 data/ui/preferences_spectrum.ui:211
+#: data/ui/gate.ui:85 data/ui/preferences_spectrum.ui:211
 #, fuzzy
 msgid "Maximum"
 msgstr "Maksimum"
 
-#: data/ui/gate.ui:497 data/ui/multiband_gate.ui:502
-#: data/ui/multiband_gate.ui:862 data/ui/multiband_gate.ui:1222
-#: data/ui/multiband_gate.ui:1582
+#: data/ui/gate.ui:489 data/ui/multiband_gate.ui:494
+#: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
+#: data/ui/multiband_gate.ui:1574
 msgid "Gating"
 msgstr ""
 
-#: data/ui/limiter.ui:57
+#: data/ui/limiter.ui:48
 msgid "Oversampling"
 msgstr "Jači sampling"
 
-#: data/ui/limiter.ui:69
+#: data/ui/limiter.ui:60
 msgid "Dither"
 msgstr ""
 
-#: data/ui/limiter.ui:81
+#: data/ui/limiter.ui:72
 msgid "Herm Thin"
 msgstr ""
 
-#: data/ui/limiter.ui:82
+#: data/ui/limiter.ui:73
 #, fuzzy
 msgid "Herm Wide"
 msgstr "Široko"
 
-#: data/ui/limiter.ui:83
+#: data/ui/limiter.ui:74
 msgid "Herm Tail"
 msgstr ""
 
-#: data/ui/limiter.ui:84
+#: data/ui/limiter.ui:75
 msgid "Herm Duck"
 msgstr ""
 
-#: data/ui/limiter.ui:85
+#: data/ui/limiter.ui:76
 msgid "Exp Thin"
 msgstr ""
 
-#: data/ui/limiter.ui:86
+#: data/ui/limiter.ui:77
 #, fuzzy
 msgid "Exp Wide"
 msgstr "Široko"
 
-#: data/ui/limiter.ui:87
+#: data/ui/limiter.ui:78
 msgid "Exp Tail"
 msgstr ""
 
-#: data/ui/limiter.ui:88
+#: data/ui/limiter.ui:79
 msgid "Exp Duck"
 msgstr ""
 
-#: data/ui/limiter.ui:89
+#: data/ui/limiter.ui:80
 #, fuzzy
 msgid "Line Thin"
 msgstr "Širina"
 
-#: data/ui/limiter.ui:90
+#: data/ui/limiter.ui:81
 #, fuzzy
 msgid "Line Wide"
 msgstr "Širina"
 
-#: data/ui/limiter.ui:91
+#: data/ui/limiter.ui:82
 #, fuzzy
 msgid "Line Tail"
 msgstr "Širina"
 
-#: data/ui/limiter.ui:92
+#: data/ui/limiter.ui:83
 msgid "Line Duck"
 msgstr ""
 
-#: data/ui/limiter.ui:108 data/ui/multiband_compressor.ui:80
+#: data/ui/limiter.ui:99 data/ui/multiband_compressor.ui:68
 msgid "None"
 msgstr ""
 
-#: data/ui/limiter.ui:109
+#: data/ui/limiter.ui:100
 msgid "Half x2(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:110
+#: data/ui/limiter.ui:101
 msgid "Half x2(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:111
+#: data/ui/limiter.ui:102
 msgid "Half x3(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:112
+#: data/ui/limiter.ui:103
 msgid "Half x3(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:113
+#: data/ui/limiter.ui:104
 msgid "Half x4(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:114
+#: data/ui/limiter.ui:105
 msgid "Half x4(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:115
+#: data/ui/limiter.ui:106
 msgid "Half x6(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:116
+#: data/ui/limiter.ui:107
 msgid "Half x6(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:117
+#: data/ui/limiter.ui:108
 msgid "Half x8(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:118
+#: data/ui/limiter.ui:109
 msgid "Half x8(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:119
+#: data/ui/limiter.ui:110
 msgid "Full x2(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:120
+#: data/ui/limiter.ui:111
 msgid "Full x2(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:121
+#: data/ui/limiter.ui:112
 msgid "Full x3(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:122
+#: data/ui/limiter.ui:113
 msgid "Full x3(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:123
+#: data/ui/limiter.ui:114
 msgid "Full x4(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:124
+#: data/ui/limiter.ui:115
 msgid "Full x4(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:125
+#: data/ui/limiter.ui:116
 msgid "Full x6(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:126
+#: data/ui/limiter.ui:117
 msgid "Full x6(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:127
+#: data/ui/limiter.ui:118
 msgid "Full x8(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:128
+#: data/ui/limiter.ui:119
 msgid "Full x8(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:178
+#: data/ui/limiter.ui:169
 msgid "SC PreAmp"
 msgstr ""
 
-#: data/ui/limiter.ui:207 data/ui/multiband_compressor_band.ui:647
+#: data/ui/limiter.ui:198 data/ui/multiband_compressor_band.ui:647
 #, fuzzy
 msgid "Sidechain PreAmplification"
 msgstr "Aplikacije"
 
-#: data/ui/limiter.ui:396
+#: data/ui/limiter.ui:373
 msgid "Boost"
 msgstr ""
 
-#: data/ui/limiter.ui:458 data/ui/multiband_compressor_band.ui:116
+#: data/ui/limiter.ui:433 data/ui/multiband_compressor_band.ui:116
 #, fuzzy
 msgid "External Sidechain"
 msgstr "Postranični ulaz"
 
-#: data/ui/limiter.ui:471 data/ui/multiband_compressor.ui:121
+#: data/ui/limiter.ui:446 data/ui/multiband_compressor.ui:109
 msgid "External Sidechain Source"
 msgstr ""
 
-#: data/ui/limiter.ui:490
+#: data/ui/limiter.ui:465
 #, fuzzy
 msgid "Auto Leveling"
 msgstr "Automatsko pojačavanje"
 
-#: data/ui/limiter.ui:530
+#: data/ui/limiter.ui:505
 #, fuzzy
 msgid "Auto Leveling Attack"
 msgstr "Automatsko pojačavanje"
 
-#: data/ui/limiter.ui:566
+#: data/ui/limiter.ui:541
 #, fuzzy
 msgid "Auto Leveling Release"
 msgstr "Automatsko pojačavanje"
 
-#: data/ui/limiter.ui:601
+#: data/ui/limiter.ui:576
 #, fuzzy
 msgid "Auto Leveling Knee"
 msgstr "Automatsko pojačavanje"
 
-#: data/ui/limiter.ui:626
+#: data/ui/limiter.ui:601
 #, fuzzy
 msgid "Gain Left"
 msgstr "Lijevo"
 
-#: data/ui/limiter.ui:653
+#: data/ui/limiter.ui:628
 #, fuzzy
 msgid "Gain Right"
 msgstr "Desno"
 
-#: data/ui/limiter.ui:680
+#: data/ui/limiter.ui:655
 #, fuzzy
 msgid "Sidechain Left"
 msgstr "Postranični ulaz"
 
-#: data/ui/limiter.ui:707
+#: data/ui/limiter.ui:682
 #, fuzzy
 msgid "Sidechain Right"
 msgstr "Postranični ulaz"
 
-#: data/ui/loudness.ui:32
+#: data/ui/loudness.ui:23
 msgid "Standard"
 msgstr ""
 
-#: data/ui/loudness.ui:40
+#: data/ui/loudness.ui:31
 msgid "Flat"
 msgstr ""
 
-#: data/ui/loudness.ui:59
+#: data/ui/loudness.ui:50
 #, fuzzy
 msgid "FFT Size"
 msgstr "Veličina okvira"
 
-#: data/ui/loudness.ui:76
+#: data/ui/loudness.ui:67
 msgid "Fast Fourier Transform Size"
 msgstr ""
 
-#: data/ui/loudness.ui:89
+#: data/ui/loudness.ui:80
 #, fuzzy
 msgid "Output Volume"
 msgstr "Izlaz"
 
-#: data/ui/maximizer.ui:62
+#: data/ui/maximizer.ui:53
 msgid "Ceiling"
 msgstr "Vrh"
 
-#: data/ui/multiband_compressor.ui:43
+#: data/ui/multiband_compressor.ui:31
 #, fuzzy
 msgid "Operating Mode"
 msgstr "Učitaj impuls"
 
-#: data/ui/multiband_compressor.ui:54
+#: data/ui/multiband_compressor.ui:42
 msgid "Classic"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:55
+#: data/ui/multiband_compressor.ui:43
 #, fuzzy
 msgid "Modern"
 msgstr "Način"
 
-#: data/ui/multiband_compressor.ui:69
+#: data/ui/multiband_compressor.ui:57
 #, fuzzy
 msgid "Sidechain Boost"
 msgstr "Postranični ulaz"
 
-#: data/ui/multiband_compressor.ui:81
+#: data/ui/multiband_compressor.ui:69
 msgid "Pink BT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:82
+#: data/ui/multiband_compressor.ui:70
 msgid "Pink MT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:83
+#: data/ui/multiband_compressor.ui:71
 msgid "Brown BT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:84
+#: data/ui/multiband_compressor.ui:72
 msgid "Brown MT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:156
+#: data/ui/multiband_compressor.ui:144
 #, fuzzy
 msgid "Bands List"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_compressor.ui:165
+#: data/ui/multiband_compressor.ui:153
 #, fuzzy
 msgid "Band 1"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_compressor.ui:182
+#: data/ui/multiband_compressor.ui:170
 #, fuzzy
 msgid "Band 2"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_compressor.ui:209
+#: data/ui/multiband_compressor.ui:197
 #, fuzzy
 msgid "Band 3"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_compressor.ui:236
+#: data/ui/multiband_compressor.ui:224
 #, fuzzy
 msgid "Band 4"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_compressor.ui:263
+#: data/ui/multiband_compressor.ui:251
 #, fuzzy
 msgid "Band 5"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_compressor.ui:290
+#: data/ui/multiband_compressor.ui:278
 #, fuzzy
 msgid "Band 6"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_compressor.ui:317
+#: data/ui/multiband_compressor.ui:305
 #, fuzzy
 msgid "Band 7"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_compressor.ui:344
+#: data/ui/multiband_compressor.ui:332
 #, fuzzy
 msgid "Band 8"
 msgstr "Broj raspona"
@@ -2109,257 +2181,257 @@ msgstr ""
 msgid "Band Curve"
 msgstr ""
 
-#: data/ui/multiband_gate.ui:43
+#: data/ui/multiband_gate.ui:35
 #, fuzzy
 msgid "Split Mode"
 msgstr "Razdvojeno"
 
-#: data/ui/multiband_gate.ui:56
+#: data/ui/multiband_gate.ui:48
 #, fuzzy
 msgid "Split 1/2"
 msgstr "Razdvojeno 1/2"
 
-#: data/ui/multiband_gate.ui:76
+#: data/ui/multiband_gate.ui:68
 #, fuzzy
 msgid "Split Frequency 1"
 msgstr "Frekvencija"
 
-#: data/ui/multiband_gate.ui:89
+#: data/ui/multiband_gate.ui:81
 #, fuzzy
 msgid "Split 2/3"
 msgstr "Razdvojeno 2/3"
 
-#: data/ui/multiband_gate.ui:109
+#: data/ui/multiband_gate.ui:101
 #, fuzzy
 msgid "Split Frequency 2"
 msgstr "Frekvencija"
 
-#: data/ui/multiband_gate.ui:122
+#: data/ui/multiband_gate.ui:114
 #, fuzzy
 msgid "Split 3/4"
 msgstr "Razdvojeno 3/4"
 
-#: data/ui/multiband_gate.ui:142
+#: data/ui/multiband_gate.ui:134
 #, fuzzy
 msgid "Split Frequency 3"
 msgstr "Frekvencija"
 
-#: data/ui/multiband_gate.ui:170
+#: data/ui/multiband_gate.ui:162
 #, fuzzy
 msgid "Sub Band"
 msgstr "Sub band"
 
-#: data/ui/multiband_gate.ui:185
+#: data/ui/multiband_gate.ui:177
 #, fuzzy
 msgid "Band 1 Bypass"
 msgstr "Premosnica"
 
-#: data/ui/multiband_gate.ui:195
+#: data/ui/multiband_gate.ui:187
 #, fuzzy
 msgid "Band 1 Solo"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:207
+#: data/ui/multiband_gate.ui:199
 #, fuzzy
 msgid "Band 1 Detection"
 msgstr "Ograničenje pojačanja"
 
-#: data/ui/multiband_gate.ui:251
+#: data/ui/multiband_gate.ui:243
 #, fuzzy
 msgid "Band 1 Attack"
 msgstr "Pokretanje"
 
-#: data/ui/multiband_gate.ui:286
+#: data/ui/multiband_gate.ui:278
 #, fuzzy
 msgid "Band 1 Release"
 msgstr "Vrijeme prijelaza"
 
-#: data/ui/multiband_gate.ui:320
+#: data/ui/multiband_gate.ui:312
 #, fuzzy
 msgid "Band 1 Threshold"
 msgstr "Prag"
 
-#: data/ui/multiband_gate.ui:355
+#: data/ui/multiband_gate.ui:347
 #, fuzzy
 msgid "Band 1 Ratio"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:389
+#: data/ui/multiband_gate.ui:381
 #, fuzzy
 msgid "Band 1 Knee"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:422
+#: data/ui/multiband_gate.ui:414
 #, fuzzy
 msgid "Band 1 Makeup"
 msgstr "Dorada"
 
-#: data/ui/multiband_gate.ui:456
+#: data/ui/multiband_gate.ui:448
 #, fuzzy
 msgid "Band 1 Max Reduction"
 msgstr "Ograničenje pojačanja"
 
-#: data/ui/multiband_gate.ui:530
+#: data/ui/multiband_gate.ui:522
 #, fuzzy
 msgid "Low Band"
 msgstr "Niski band"
 
-#: data/ui/multiband_gate.ui:545
+#: data/ui/multiband_gate.ui:537
 #, fuzzy
 msgid "Band 2 Bypass"
 msgstr "Premosnica"
 
-#: data/ui/multiband_gate.ui:555
+#: data/ui/multiband_gate.ui:547
 #, fuzzy
 msgid "Band 2 Solo"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:567
+#: data/ui/multiband_gate.ui:559
 #, fuzzy
 msgid "Band 2 Detection"
 msgstr "Ograničenje pojačanja"
 
-#: data/ui/multiband_gate.ui:611
+#: data/ui/multiband_gate.ui:603
 #, fuzzy
 msgid "Band 2 Attack"
 msgstr "Pokretanje"
 
-#: data/ui/multiband_gate.ui:646
+#: data/ui/multiband_gate.ui:638
 #, fuzzy
 msgid "Band 2 Release"
 msgstr "Vrijeme prijelaza"
 
-#: data/ui/multiband_gate.ui:680
+#: data/ui/multiband_gate.ui:672
 #, fuzzy
 msgid "Band 2 Threshold"
 msgstr "Prag"
 
-#: data/ui/multiband_gate.ui:715
+#: data/ui/multiband_gate.ui:707
 #, fuzzy
 msgid "Band 2 Ratio"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:749
+#: data/ui/multiband_gate.ui:741
 #, fuzzy
 msgid "Band 2 Knee"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:782
+#: data/ui/multiband_gate.ui:774
 #, fuzzy
 msgid "Band 2 Makeup"
 msgstr "Dorada"
 
-#: data/ui/multiband_gate.ui:816
+#: data/ui/multiband_gate.ui:808
 #, fuzzy
 msgid "Band 2 Max Reduction"
 msgstr "Ograničenje pojačanja"
 
-#: data/ui/multiband_gate.ui:890
+#: data/ui/multiband_gate.ui:882
 #, fuzzy
 msgid "Mid Band"
 msgstr "Srednji band"
 
-#: data/ui/multiband_gate.ui:905
+#: data/ui/multiband_gate.ui:897
 #, fuzzy
 msgid "Band 3 Bypass"
 msgstr "Premosnica"
 
-#: data/ui/multiband_gate.ui:915
+#: data/ui/multiband_gate.ui:907
 #, fuzzy
 msgid "Band 3 Solo"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:927
+#: data/ui/multiband_gate.ui:919
 #, fuzzy
 msgid "Band 3 Detection"
 msgstr "Ograničenje pojačanja"
 
-#: data/ui/multiband_gate.ui:971
+#: data/ui/multiband_gate.ui:963
 #, fuzzy
 msgid "Band 3 Attack"
 msgstr "Pokretanje"
 
-#: data/ui/multiband_gate.ui:1006
+#: data/ui/multiband_gate.ui:998
 #, fuzzy
 msgid "Band 3 Release"
 msgstr "Vrijeme prijelaza"
 
-#: data/ui/multiband_gate.ui:1040
+#: data/ui/multiband_gate.ui:1032
 #, fuzzy
 msgid "Band 3 Threshold"
 msgstr "Prag"
 
-#: data/ui/multiband_gate.ui:1075
+#: data/ui/multiband_gate.ui:1067
 #, fuzzy
 msgid "Band 3 Ratio"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:1109
+#: data/ui/multiband_gate.ui:1101
 #, fuzzy
 msgid "Band 3 Knee"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:1142
+#: data/ui/multiband_gate.ui:1134
 #, fuzzy
 msgid "Band 3 Makeup"
 msgstr "Dorada"
 
-#: data/ui/multiband_gate.ui:1176
+#: data/ui/multiband_gate.ui:1168
 #, fuzzy
 msgid "Band 3 Max Reduction"
 msgstr "Ograničenje pojačanja"
 
-#: data/ui/multiband_gate.ui:1250
+#: data/ui/multiband_gate.ui:1242
 #, fuzzy
 msgid "High Band"
 msgstr "Visoki band"
 
-#: data/ui/multiband_gate.ui:1265
+#: data/ui/multiband_gate.ui:1257
 #, fuzzy
 msgid "Band 4 Bypass"
 msgstr "Premosnica"
 
-#: data/ui/multiband_gate.ui:1275
+#: data/ui/multiband_gate.ui:1267
 #, fuzzy
 msgid "Band 4 Solo"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:1287
+#: data/ui/multiband_gate.ui:1279
 #, fuzzy
 msgid "Band 4 Detection"
 msgstr "Ograničenje pojačanja"
 
-#: data/ui/multiband_gate.ui:1331
+#: data/ui/multiband_gate.ui:1323
 #, fuzzy
 msgid "Band 4 Attack"
 msgstr "Pokretanje"
 
-#: data/ui/multiband_gate.ui:1366
+#: data/ui/multiband_gate.ui:1358
 #, fuzzy
 msgid "Band 4 Release"
 msgstr "Vrijeme prijelaza"
 
-#: data/ui/multiband_gate.ui:1400
+#: data/ui/multiband_gate.ui:1392
 #, fuzzy
 msgid "Band 4 Threshold"
 msgstr "Prag"
 
-#: data/ui/multiband_gate.ui:1435
+#: data/ui/multiband_gate.ui:1427
 #, fuzzy
 msgid "Band 4 Ratio"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:1469
+#: data/ui/multiband_gate.ui:1461
 #, fuzzy
 msgid "Band 4 Knee"
 msgstr "Broj raspona"
 
-#: data/ui/multiband_gate.ui:1502
+#: data/ui/multiband_gate.ui:1494
 #, fuzzy
 msgid "Band 4 Makeup"
 msgstr "Dorada"
 
-#: data/ui/multiband_gate.ui:1536
+#: data/ui/multiband_gate.ui:1528
 #, fuzzy
 msgid "Band 4 Max Reduction"
 msgstr "Ograničenje pojačanja"
@@ -2368,174 +2440,174 @@ msgstr "Ograničenje pojačanja"
 msgid "General"
 msgstr "Općenito"
 
-#: data/ui/pipe_manager_box.ui:37 data/ui/pipe_manager_box.ui:78
-#, fuzzy
-msgid "Use Default"
-msgstr "Koristi tvorničke postavke"
+#: data/ui/pipe_manager_box.ui:34
+msgid "Device Management"
+msgstr ""
 
-#: data/ui/pipe_manager_box.ui:43
+#: data/ui/pipe_manager_box.ui:35
+msgid ""
+"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"external applications (e.g. Gnome Settings and Plasma System Settings)."
+msgstr ""
+
+#: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 #, fuzzy
 msgid "Use Default Input"
 msgstr "Koristi tvorničke postavke"
 
-#: data/ui/pipe_manager_box.ui:64
+#: data/ui/pipe_manager_box.ui:65
 #, fuzzy
 msgid "Custom Input Device"
 msgstr "Ulazni uređaj"
 
-#: data/ui/pipe_manager_box.ui:75 src/plugins_box.cpp:550
-#, fuzzy
-msgid "Output Device"
-msgstr "Pojačanje ulaza"
-
-#: data/ui/pipe_manager_box.ui:84
+#: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 #, fuzzy
 msgid "Use Default Output"
 msgstr "Koristi tvorničke postavke"
 
-#: data/ui/pipe_manager_box.ui:105
+#: data/ui/pipe_manager_box.ui:101
 #, fuzzy
 msgid "Custom Output Device"
 msgstr "Pojačanje ulaza"
 
-#: data/ui/pipe_manager_box.ui:116
+#: data/ui/pipe_manager_box.ui:112
 #, fuzzy
 msgid "Server Information"
 msgstr "Reverberacija"
 
-#: data/ui/pipe_manager_box.ui:120
+#: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:131
+#: data/ui/pipe_manager_box.ui:127
 msgid "Library Version"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:142
+#: data/ui/pipe_manager_box.ui:138
 #, fuzzy
 msgid "Sampling Rate"
 msgstr "Jači sampling"
 
-#: data/ui/pipe_manager_box.ui:153
+#: data/ui/pipe_manager_box.ui:149
 #, fuzzy
 msgid "Minimum Quantum"
 msgstr "Frekvencija"
 
-#: data/ui/pipe_manager_box.ui:164
+#: data/ui/pipe_manager_box.ui:160
 #, fuzzy
 msgid "Maximum Quantum"
 msgstr "Najveće pojačanje"
 
-#: data/ui/pipe_manager_box.ui:175
+#: data/ui/pipe_manager_box.ui:171
 #, fuzzy
 msgid "Default Quantum"
 msgstr "Tvorničke postavke"
 
-#: data/ui/pipe_manager_box.ui:195
+#: data/ui/pipe_manager_box.ui:191
 msgid "Presets Autoloading"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:236
+#: data/ui/pipe_manager_box.ui:232
 #, fuzzy
 msgid "Output Devices"
 msgstr "Pojačanje ulaza"
 
-#: data/ui/pipe_manager_box.ui:253
+#: data/ui/pipe_manager_box.ui:249
 #, fuzzy
 msgid "Output Presets"
 msgstr "Predlošci: "
 
-#: data/ui/pipe_manager_box.ui:260 data/ui/pipe_manager_box.ui:352
+#: data/ui/pipe_manager_box.ui:256 data/ui/pipe_manager_box.ui:348
 msgid "Create Association"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:274
+#: data/ui/pipe_manager_box.ui:270
 msgid "Add Autoloading Output Preset"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:294
+#: data/ui/pipe_manager_box.ui:290
 #, fuzzy
 msgid "Output Autoloading Presets List"
 msgstr "Predlošci: "
 
-#: data/ui/pipe_manager_box.ui:333
+#: data/ui/pipe_manager_box.ui:329
 #, fuzzy
 msgid "Input Devices"
 msgstr "Ulazni uređaj"
 
-#: data/ui/pipe_manager_box.ui:345
+#: data/ui/pipe_manager_box.ui:341
 #, fuzzy
 msgid "Input Presets"
 msgstr "Učitaj predloške"
 
-#: data/ui/pipe_manager_box.ui:366
+#: data/ui/pipe_manager_box.ui:362
 msgid "Add Autoloading Input Preset"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:385
+#: data/ui/pipe_manager_box.ui:381
 #, fuzzy
 msgid "Input Autoloading Presets List"
 msgstr "Učitaj predloške"
 
-#: data/ui/pipe_manager_box.ui:415
+#: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:433
+#: data/ui/pipe_manager_box.ui:429
 msgid "Modules List"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:447
+#: data/ui/pipe_manager_box.ui:443
 #, fuzzy
 msgid "Clients"
 msgstr "Centi"
 
-#: data/ui/pipe_manager_box.ui:465
+#: data/ui/pipe_manager_box.ui:461
 #, fuzzy
 msgid "Clients List"
 msgstr "Centi"
 
-#: data/ui/pipe_manager_box.ui:479
+#: data/ui/pipe_manager_box.ui:475
 #, fuzzy
 msgid "Test Signal"
 msgstr "Testni signali"
 
-#: data/ui/pipe_manager_box.ui:484 data/ui/preferences_spectrum.ui:9
+#: data/ui/pipe_manager_box.ui:480 data/ui/preferences_spectrum.ui:9
 msgid "State"
 msgstr "Stanje"
 
-#: data/ui/pipe_manager_box.ui:487 data/ui/preferences_spectrum.ui:12
+#: data/ui/pipe_manager_box.ui:483 data/ui/preferences_spectrum.ui:12
 #, fuzzy
 msgid "Enabled"
 msgstr "Omogući"
 
-#: data/ui/pipe_manager_box.ui:502
+#: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:505
+#: data/ui/pipe_manager_box.ui:501
 msgid "Channels"
 msgstr "Kanali"
 
-#: data/ui/pipe_manager_box.ui:530
+#: data/ui/pipe_manager_box.ui:526
 msgid "Both"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:534
+#: data/ui/pipe_manager_box.ui:530
 #, fuzzy
 msgid "Both Channels"
 msgstr "Kanali"
 
-#: data/ui/pipe_manager_box.ui:543
+#: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:547
+#: data/ui/pipe_manager_box.ui:543
 #, fuzzy
 msgid "Sine Wave"
 msgstr "Sinus tablica"
 
-#: data/ui/pipe_manager_box.ui:556
+#: data/ui/pipe_manager_box.ui:552
 msgid "White Noise"
 msgstr "Bijeli šum"
 
@@ -2567,69 +2639,77 @@ msgstr ""
 msgid "Preserved"
 msgstr "Predlošci"
 
-#: data/ui/pitch.ui:98
+#: data/ui/pitch.ui:87
 msgid "Transients"
 msgstr ""
 
-#: data/ui/pitch.ui:109
+#: data/ui/pitch.ui:98
 #, fuzzy
 msgid "Crisp"
 msgstr "Oštrina"
 
-#: data/ui/pitch.ui:110
+#: data/ui/pitch.ui:99
 msgid "Mixed"
 msgstr ""
 
-#: data/ui/pitch.ui:111
+#: data/ui/pitch.ui:100
 msgid "Smooth"
 msgstr ""
 
-#: data/ui/pitch.ui:125
+#: data/ui/pitch.ui:114
 #, fuzzy
 msgid "Detector"
 msgstr "Detekcija"
 
-#: data/ui/pitch.ui:136
+#: data/ui/pitch.ui:125
 #, fuzzy
 msgid "Compound"
 msgstr "Kompresija"
 
-#: data/ui/pitch.ui:137
+#: data/ui/pitch.ui:126
 msgid "Percussive"
 msgstr ""
 
-#: data/ui/pitch.ui:138
+#: data/ui/pitch.ui:127
 msgid "Soft"
 msgstr ""
 
-#: data/ui/pitch.ui:152
+#: data/ui/pitch.ui:141
 msgid "Phase"
 msgstr ""
 
-#: data/ui/pitch.ui:163
+#: data/ui/pitch.ui:152
 msgid "Laminar"
 msgstr ""
 
-#: data/ui/pitch.ui:164
+#: data/ui/pitch.ui:153
 msgid "Independent"
 msgstr ""
 
-#: data/ui/pitch.ui:189
+#: data/ui/pitch.ui:178
 msgid "Cents"
 msgstr "Centi"
 
-#: data/ui/pitch.ui:223
+#: data/ui/pitch.ui:212
 msgid "Semitones"
 msgstr "Polustepeni"
 
-#: data/ui/pitch.ui:257
+#: data/ui/pitch.ui:246
 msgid "Octaves"
 msgstr "Oktave"
 
-#: data/ui/plugin_row.ui:31
+#: data/ui/plugin_row.ui:39
 #, fuzzy
-msgid "Remove this plugin"
+msgid "Remove this effect"
 msgstr "Kompresija"
+
+#: data/ui/plugin_row.ui:51
+msgid "Enable/disable this effect"
+msgstr ""
+
+#: data/ui/plugin_row.ui:63
+msgid "Change the position of this effect"
+msgstr ""
 
 #: data/ui/plugins_box.ui:19
 #, fuzzy
@@ -2703,15 +2783,15 @@ msgstr ""
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: data/ui/preferences_general.ui:127 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:128 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:131
 msgid "Use Dark Theme"
 msgstr "Koristi tamnu temu"
 
-#: data/ui/preferences_general.ui:142
+#: data/ui/preferences_general.ui:143
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -2784,155 +2864,157 @@ msgstr "Frekvencija"
 msgid "Minimum"
 msgstr "Maksimum"
 
-#: data/ui/preset_row.ui:18 src/convolver_menu_impulses.cpp:136
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:136
 msgid "Load"
 msgstr ""
 
-#: data/ui/preset_row.ui:29
+#: data/ui/preset_row.ui:35
 #, fuzzy
 msgid "Save current settings to this preset file"
 msgstr "Spremi trenutne postavke u predložak"
 
-#: data/ui/preset_row.ui:41
+#: data/ui/preset_row.ui:46
 msgid "Remove this preset file"
 msgstr ""
 
-#: data/ui/presets_menu.ui:54
+#: data/ui/presets_menu.ui:51
 #, fuzzy
 msgid "New Output Preset Name"
 msgstr "Predlošci: "
 
-#: data/ui/presets_menu.ui:62 data/ui/presets_menu.ui:215
-msgid "Create Preset"
+#: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
+#, fuzzy
+msgid "Create a new preset"
 msgstr "Stvori predložak"
 
-#: data/ui/presets_menu.ui:76 data/ui/presets_menu.ui:229
-msgid "Import Presets"
+#: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
+#, fuzzy
+msgid "Import a preset"
 msgstr "Učitaj predloške"
 
-#: data/ui/presets_menu.ui:94
+#: data/ui/presets_menu.ui:90
 #, fuzzy
 msgid "Search Output Preset"
 msgstr "Predlošci: "
 
-#: data/ui/presets_menu.ui:155
+#: data/ui/presets_menu.ui:151
 #, fuzzy
 msgid "Output Presets List"
 msgstr "Predlošci: "
 
-#: data/ui/presets_menu.ui:207
+#: data/ui/presets_menu.ui:199
 #, fuzzy
 msgid "New Input Preset Name"
 msgstr "Učitaj predloške"
 
-#: data/ui/presets_menu.ui:247
+#: data/ui/presets_menu.ui:237
 #, fuzzy
 msgid "Search Input Preset"
 msgstr "Učitaj predloške"
 
-#: data/ui/presets_menu.ui:308
+#: data/ui/presets_menu.ui:298
 #, fuzzy
 msgid "Input Presets List"
 msgstr "Učitaj predloške"
 
-#: data/ui/reverb.ui:43
+#: data/ui/reverb.ui:30
 msgid "High Frequency Damping"
 msgstr "Prigušivanje visokih frekvencija"
 
-#: data/ui/reverb.ui:75
+#: data/ui/reverb.ui:62
 msgid "Room Size"
 msgstr "Veličina sobe"
 
-#: data/ui/reverb.ui:83
+#: data/ui/reverb.ui:70
 #, fuzzy
 msgid "Small"
 msgstr "Mala"
 
-#: data/ui/reverb.ui:84
+#: data/ui/reverb.ui:71
 msgid "Medium"
 msgstr "Osrednja"
 
-#: data/ui/reverb.ui:85
+#: data/ui/reverb.ui:72
 #, fuzzy
 msgid "Large"
 msgstr "Velika"
 
-#: data/ui/reverb.ui:86
+#: data/ui/reverb.ui:73
 msgid "Tunnel"
 msgstr "Tunel"
 
-#: data/ui/reverb.ui:87
+#: data/ui/reverb.ui:74
 msgid "Large/smooth"
 msgstr "Velika/glatko"
 
-#: data/ui/reverb.ui:88
+#: data/ui/reverb.ui:75
 msgid "Experimental"
 msgstr "Eksperimentalna"
 
-#: data/ui/reverb.ui:105
+#: data/ui/reverb.ui:92
 msgid "Diffusion"
 msgstr "Difuzija"
 
-#: data/ui/reverb.ui:142
+#: data/ui/reverb.ui:129
 #, fuzzy
 msgid "Pre Delay"
 msgstr "Prijevremeno kašnjenje"
 
-#: data/ui/reverb.ui:175
+#: data/ui/reverb.ui:162
 msgid "Decay Time"
 msgstr "Vrijeme opadanja intenziteta signala"
 
-#: data/ui/reverb.ui:210
+#: data/ui/reverb.ui:197
 #, fuzzy
 msgid "Wet Amount"
 msgstr "Jačina"
 
-#: data/ui/reverb.ui:238
+#: data/ui/reverb.ui:225
 #, fuzzy
 msgid "Wet Level"
 msgstr "Ciljana razina"
 
-#: data/ui/reverb.ui:245
+#: data/ui/reverb.ui:232
 #, fuzzy
 msgid "Dry Amount"
 msgstr "Jačina"
 
-#: data/ui/reverb.ui:272
+#: data/ui/reverb.ui:259
 #, fuzzy
 msgid "Dry Level"
 msgstr "Razina"
 
-#: data/ui/reverb.ui:279
+#: data/ui/reverb.ui:266
 msgid "Bass Cut"
 msgstr "Odrezivanje basa"
 
-#: data/ui/reverb.ui:314
+#: data/ui/reverb.ui:301
 msgid "Treble Cut"
 msgstr "Odrezivanje trebla"
 
-#: data/ui/reverb.ui:578
+#: data/ui/reverb.ui:565
 #, fuzzy
 msgid "Ambience"
 msgstr "Ambijent"
 
-#: data/ui/reverb.ui:585
+#: data/ui/reverb.ui:572
 msgid "Empty Walls"
 msgstr "Prazna soba"
 
-#: data/ui/reverb.ui:598
+#: data/ui/reverb.ui:585
 #, fuzzy
 msgid "Room"
 msgstr "Soba"
 
-#: data/ui/reverb.ui:605
+#: data/ui/reverb.ui:592
 msgid "Large Empty Hall"
 msgstr "Velika prazna dvorana"
 
-#: data/ui/reverb.ui:618
+#: data/ui/reverb.ui:605
 msgid "Disco"
 msgstr "Disco"
 
-#: data/ui/reverb.ui:625
+#: data/ui/reverb.ui:612
 msgid "Large Occupied Hall"
 msgstr "Velika popunjena dvorana"
 
@@ -2941,25 +3023,25 @@ msgstr "Velika popunjena dvorana"
 msgid "Import Model"
 msgstr "Učitaj impuls"
 
-#: data/ui/rnnoise.ui:35
+#: data/ui/rnnoise.ui:29
 #, fuzzy
 msgid "Models"
 msgstr "Način"
 
-#: data/ui/rnnoise.ui:56 src/rnnoise_ui.cpp:28
+#: data/ui/rnnoise.ui:50 src/rnnoise_ui.cpp:28
 msgid "Standard Model"
 msgstr ""
 
-#: data/ui/rnnoise.ui:84
+#: data/ui/rnnoise.ui:78
 msgid "RNNoise Models List"
 msgstr ""
 
-#: data/ui/rnnoise.ui:100
+#: data/ui/rnnoise.ui:94
 #, fuzzy
 msgid "Active Model"
 msgstr "Kompresija"
 
-#: data/ui/rnnoise.ui:106
+#: data/ui/rnnoise.ui:100
 msgid "Standard RNNoise Model"
 msgstr ""
 
@@ -2986,107 +3068,107 @@ msgstr ""
 msgid "Quit EasyEffects"
 msgstr "EasyEffects"
 
-#: data/ui/stereo_tools.ui:50 data/ui/stereo_tools.ui:391
+#: data/ui/stereo_tools.ui:42 data/ui/stereo_tools.ui:383
 msgid "Balance"
 msgstr "Ravnoteža"
 
-#: data/ui/stereo_tools.ui:77
+#: data/ui/stereo_tools.ui:69
 #, fuzzy
 msgid "Input Balance"
 msgstr "Ravnoteža"
 
-#: data/ui/stereo_tools.ui:86
+#: data/ui/stereo_tools.ui:78
 msgid "Softclip"
 msgstr ""
 
-#: data/ui/stereo_tools.ui:114
+#: data/ui/stereo_tools.ui:106
 #, fuzzy
 msgid "Softclip Level"
 msgstr "Stranična razina"
 
-#: data/ui/stereo_tools.ui:126
+#: data/ui/stereo_tools.ui:118
 #, fuzzy
 msgid "Stereo Matrix"
 msgstr "Stereo matrica"
 
-#: data/ui/stereo_tools.ui:136
+#: data/ui/stereo_tools.ui:128
 msgid "LR > LR (Stereo Default)"
 msgstr ""
 
-#: data/ui/stereo_tools.ui:137
+#: data/ui/stereo_tools.ui:129
 msgid "LR > MS (Stereo to Mid-Side)"
 msgstr ""
 
-#: data/ui/stereo_tools.ui:138
+#: data/ui/stereo_tools.ui:130
 msgid "MS > LR (Mid-Side to Stereo)"
 msgstr ""
 
-#: data/ui/stereo_tools.ui:139
+#: data/ui/stereo_tools.ui:131
 msgid "LR > LL (Mono Left Channel)"
 msgstr ""
 
-#: data/ui/stereo_tools.ui:140
+#: data/ui/stereo_tools.ui:132
 msgid "LR > RR (Mono Right Channel)"
 msgstr ""
 
-#: data/ui/stereo_tools.ui:141
+#: data/ui/stereo_tools.ui:133
 msgid "LR > L+R (Mono Sum L+R)"
 msgstr ""
 
-#: data/ui/stereo_tools.ui:142
+#: data/ui/stereo_tools.ui:134
 msgid "LR > RL (Stereo Flip Channels)"
 msgstr ""
 
-#: data/ui/stereo_tools.ui:145
+#: data/ui/stereo_tools.ui:137
 #, fuzzy
 msgid "Stereo Mode"
 msgstr "Stereo baza"
 
-#: data/ui/stereo_tools.ui:178 data/ui/stereo_tools.ui:203
+#: data/ui/stereo_tools.ui:170 data/ui/stereo_tools.ui:195
 msgid "Invert Phase"
 msgstr "Inverzija faze"
 
-#: data/ui/stereo_tools.ui:230
+#: data/ui/stereo_tools.ui:222
 #, fuzzy
 msgid "Side Level"
 msgstr "Stranična razina"
 
-#: data/ui/stereo_tools.ui:266
+#: data/ui/stereo_tools.ui:258
 #, fuzzy
 msgid "Side Balance"
 msgstr "Stranična ravnoteža"
 
-#: data/ui/stereo_tools.ui:302
+#: data/ui/stereo_tools.ui:294
 #, fuzzy
 msgid "Middle Level"
 msgstr "Srednji nivo"
 
-#: data/ui/stereo_tools.ui:338
+#: data/ui/stereo_tools.ui:330
 #, fuzzy
 msgid "Middle Panorama"
 msgstr "Srednja panorama"
 
-#: data/ui/stereo_tools.ui:418
+#: data/ui/stereo_tools.ui:410
 #, fuzzy
 msgid "Output Balance"
 msgstr "Pojačanje ulaza"
 
-#: data/ui/stereo_tools.ui:427
+#: data/ui/stereo_tools.ui:419
 #, fuzzy
 msgid "Delay L/R"
 msgstr "Kašnjenje L/D"
 
-#: data/ui/stereo_tools.ui:454
+#: data/ui/stereo_tools.ui:446
 #, fuzzy
 msgid "Delay Left Right"
 msgstr "Kašnjenje L/D"
 
-#: data/ui/stereo_tools.ui:463
+#: data/ui/stereo_tools.ui:455
 #, fuzzy
 msgid "Stereo Base"
 msgstr "Stereo baza"
 
-#: data/ui/stereo_tools.ui:499
+#: data/ui/stereo_tools.ui:491
 #, fuzzy
 msgid "Stereo Phase"
 msgstr "Stereo faza"
@@ -3116,53 +3198,53 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:227
+#: src/app_info.cpp:234
 #, fuzzy
 msgid "channels"
 msgstr "Kanali"
 
-#: src/application.cpp:256
+#: src/application.cpp:250
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Predlošci: "
 
-#: src/application.cpp:264
+#: src/application.cpp:258
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Učitaj predloške"
 
-#: src/application.cpp:412
+#: src/application.cpp:410
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvučni efekti za Pulseaudio aplikacije"
 
-#: src/application.cpp:498
+#: src/application.cpp:500
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 "Zatvori EasyEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
 
-#: src/application.cpp:501
+#: src/application.cpp:503
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
-#: src/application.cpp:504
+#: src/application.cpp:506
 #, fuzzy
 msgid "Reset EasyEffects."
 msgstr "EasyEffects"
 
-#: src/application.cpp:507
+#: src/application.cpp:509
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:510
+#: src/application.cpp:512
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:513
+#: src/application.cpp:515
 msgid "Show available presets."
 msgstr "Prikaži dostupne predloške."
 
-#: src/application_ui.cpp:244
+#: src/application_ui.cpp:286
 msgid "PipeWire"
 msgstr ""
 
@@ -3171,13 +3253,13 @@ msgstr ""
 msgid "Import Impulse File"
 msgstr "Učitaj impuls datoteku"
 
-#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
-#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:121
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:346
+#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:115
 msgid "Open"
 msgstr "Otvori"
 
-#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:352
-#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:121
+#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:346
+#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:115
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -3196,134 +3278,143 @@ msgstr "Reakcija impulsa"
 msgid "Remove Impulse"
 msgstr "Učitaj impuls"
 
-#: src/convolver_ui.cpp:338 src/convolver_ui.cpp:339 src/convolver_ui.cpp:340
+#: src/convolver_ui.cpp:333 src/convolver_ui.cpp:334 src/convolver_ui.cpp:335
 msgid "Failed"
 msgstr "Nije uspjelo"
 
-#: src/convolver_ui.cpp:341
+#: src/convolver_ui.cpp:336
 msgid "Could Not Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
 
-#: src/effects_box.cpp:259 src/plugins_box.cpp:531
+#: src/effects_box.cpp:264 src/plugins_box.cpp:549
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:549
+#: src/effects_box.cpp:288 src/plugins_box.cpp:569
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:311
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/equalizer_band_box.cpp:93
+#: src/equalizer_band_box.cpp:108
 msgid "infinity"
 msgstr ""
 
-#: src/equalizer_ui.cpp:351
+#: src/equalizer_ui.cpp:345
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Učitaj predloške"
 
-#: src/equalizer_ui.cpp:357
+#: src/equalizer_ui.cpp:351
 #, fuzzy
 msgid "APO Presets"
 msgstr "Predlošci"
 
-#: src/pipe_manager_box.cpp:327
+#: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr ""
 
-#: src/plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:26
 msgid "Bass Enhancer"
 msgstr "Pojačanje basa"
 
-#: src/plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:27
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Glasnoća"
 
-#: src/plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:29
 msgid "Convolver"
 msgstr "Konvolver"
 
-#: src/plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:30
 msgid "Crossfeed"
 msgstr "Križno spajanje"
 
-#: src/plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:31
 #, fuzzy
 msgid "Crystalizer"
 msgstr "Kristalizator"
 
-#: src/plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:32
 msgid "Deesser"
 msgstr "De-esiranje"
 
-#: src/plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:33
 msgid "Delay"
 msgstr "Kašnjenje"
 
-#: src/plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:34
 msgid "Echo Canceller"
 msgstr "Poništenje jeke"
 
-#: src/plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:35
 msgid "Equalizer"
 msgstr "Ekvalizator"
 
-#: src/plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:36
 msgid "Exciter"
 msgstr "Uzbuđivač"
 
-#: src/plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:37
 #, fuzzy
 msgid "Filter"
 msgstr "Filter"
 
-#: src/plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:38
 msgid "Gate"
 msgstr "Vrata"
 
-#: src/plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:39
 msgid "Limiter"
 msgstr "Graničnik"
 
-#: src/plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:41
 msgid "Maximizer"
 msgstr "Maksimizer"
 
-#: src/plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:42
 #, fuzzy
 msgid "Multiband Compressor"
 msgstr "Višerasponski kompresor"
 
-#: src/plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:43
 #, fuzzy
 msgid "Multiband Gate"
 msgstr "Višerasponska vrata"
 
-#: src/plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:44
 msgid "Pitch"
 msgstr "Visina"
 
-#: src/plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:45
 #, fuzzy
 msgid "Reverberation"
 msgstr "Reverberacija"
 
-#: src/plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:46
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Ograničenje pojačanja"
 
-#: src/plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:47
 #, fuzzy
 msgid "Stereo Tools"
 msgstr "Stereo alati"
 
-#: src/plugins_menu.cpp:143
+#: src/plugins_box.cpp:503
+msgid "Remove"
+msgstr ""
+
+#: src/plugins_box.cpp:570
+#, fuzzy
+msgid "Output Device"
+msgstr "Pojačanje ulaza"
+
+#: src/plugins_menu.cpp:142
 msgid "Add"
 msgstr ""
 
@@ -3332,15 +3423,26 @@ msgstr ""
 msgid "Import Preset"
 msgstr "Učitaj predloške"
 
-#: src/rnnoise_ui.cpp:120
+#: src/rnnoise_ui.cpp:114
 #, fuzzy
 msgid "Import Model File"
 msgstr "Učitaj impuls datoteku"
 
-#: src/rnnoise_ui.cpp:125
+#: src/rnnoise_ui.cpp:119
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "Use Default"
+#~ msgstr "Koristi tvorničke postavke"
+
+#, fuzzy
+#~ msgid "Remove this plugin"
+#~ msgstr "Kompresija"
+
+#~ msgid "Import Presets"
+#~ msgstr "Učitaj predloške"
 
 #~ msgid "Start Service at Login"
 #~ msgstr "Pokreni servis pri pokretanju računala"
