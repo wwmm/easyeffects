@@ -10,7 +10,6 @@
         <child>
             <object class="GtkGrid">
                 <property name="halign">center</property>
-                <property name="row-homogeneous">1</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">24</property>
                 <property name="margin-bottom">6</property>

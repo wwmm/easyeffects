@@ -10,7 +10,6 @@
 
         <child>
             <object class="GtkStackSwitcher" id="stack_switcher">
-                <property name="margin-top">6</property>
                 <property name="halign">center</property>
                 <property name="stack">stack</property>
             </object>
