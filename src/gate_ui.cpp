@@ -43,6 +43,8 @@ struct _GateBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
+  GtkLabel *attack_zone_start_label, *attack_threshold_label, *release_zone_start_label, *release_threshold_label;
+
   GtkLabel *gain_label, *sidechain_label, *curve_label, *envelope_label;
 
   GtkToggleButton* hysteresis;
@@ -146,6 +148,62 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
       update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
                    self->output_level_right_label, left, right);
+    });
+  }));
+
+  self->data->connections.push_back(gate->attack_zone_start.connect([=](const double& value) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->attack_zone_start_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->attack_zone_start_label, fmt::format("{0:.1f}", util::linear_to_db(value)).c_str());
+    });
+  }));
+
+  self->data->connections.push_back(gate->attack_threshold.connect([=](const double& value) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->attack_threshold_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->attack_threshold_label, fmt::format("{0:.1f}", util::linear_to_db(value)).c_str());
+    });
+  }));
+
+  self->data->connections.push_back(gate->release_zone_start.connect([=](const double& value) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->release_zone_start_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->release_zone_start_label, fmt::format("{0:.1f}", util::linear_to_db(value)).c_str());
+    });
+  }));
+
+  self->data->connections.push_back(gate->release_threshold.connect([=](const double& value) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
+
+      if (!GTK_IS_LABEL(self->release_threshold_label)) {
+        return;
+      }
+
+      gtk_label_set_text(self->release_threshold_label, fmt::format("{0:.1f}", util::linear_to_db(value)).c_str());
     });
   }));
 
@@ -354,6 +412,10 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_right_label);
 
+  gtk_widget_class_bind_template_child(widget_class, GateBox, attack_zone_start_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, attack_threshold_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, release_zone_start_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, release_threshold_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, gain_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, sidechain_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, curve_label);

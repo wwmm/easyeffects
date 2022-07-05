@@ -181,11 +181,19 @@ void Gate::process(std::span<float>& left_in,
     notification_dt += buffer_duration;
 
     if (notification_dt >= notification_time_window) {
+      attack_zone_start_port_value = lv2_wrapper->get_control_port_value("gzs");
+      attack_threshold_port_value = lv2_wrapper->get_control_port_value("gt");
+      release_zone_start_port_value = lv2_wrapper->get_control_port_value("hts");
+      release_threshold_port_value = lv2_wrapper->get_control_port_value("hzs");
       reduction_port_value = lv2_wrapper->get_control_port_value("rlm");
       sidechain_port_value = lv2_wrapper->get_control_port_value("slm");
       curve_port_value = lv2_wrapper->get_control_port_value("clm");
       envelope_port_value = lv2_wrapper->get_control_port_value("elm");
 
+      attack_zone_start.emit(attack_zone_start_port_value);
+      attack_threshold.emit(attack_threshold_port_value);
+      release_zone_start.emit(release_zone_start_port_value);
+      release_threshold.emit(release_threshold_port_value);
       reduction.emit(reduction_port_value);
       sidechain.emit(sidechain_port_value);
       curve.emit(curve_port_value);

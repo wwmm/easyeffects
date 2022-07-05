@@ -7,6 +7,13 @@
     <title>Gate</title>
     <p>The Gate attenuates signals that register below a Threshold. This kind of signal processing is used to reduce disturbing noise between useful signals. EasyEffects uses the Stereo Sidechain Gate from Linux Studio Plugins.</p>
     <section>
+        <title>Gate Workflow</title>
+        <p>The Gate begins to open when the Sidechain level becomes above the Attack Zone Start level.</p>
+        <p>The Gate fully opens when the Sidechain level becomes above the Attack Threshold level.</p>
+        <p>The Gate begins to close when the Sidechain level becomes below the Release Zone Start level.</p>
+        <p>The Gate fully closes when the Sidechain level becomes below the Release Threshold level.</p>
+    </section>
+    <section>
         <title>Gate Options</title>
         <terms>
             <item>
@@ -25,15 +32,15 @@
                 <title>
                     <em style="strong" its:withinText="nested">Curve Threshold</em>
                 </title>
-                <p>The Gate fully opens upon the Sidechain level becoming above Curve Threshold.</p>
-                <p>If Hysteresis is not enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold.</p>
+                <p>The Gate fully opens upon the Sidechain level becoming above Curve Threshold (displayed as Attack Threshold level).</p>
+                <p>If Hysteresis is not enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold (displayed as Release Zone Start level).</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Curve Zone Size</em>
                 </title>
-                <p>The Gate begins to open upon the Sidechain level becoming above the Curve Threshold + Curve Zone.</p>
-                <p>If Hysteresis is not enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Curve Zone.</p>
+                <p>The Gate begins to open upon the Sidechain level becoming above the Curve Threshold + Curve Zone (displayed as Attack Zone Start level).</p>
+                <p>If Hysteresis is not enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Curve Zone (displayed as Release Threshold level).</p>
             </item>
             <item>
                 <title>
@@ -45,19 +52,19 @@
                 <title>
                     <em style="strong" its:withinText="nested">Hysteresis Threshold</em>
                 </title>
-                <p>If Hysteresis is enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold + Hysteresis Threshold.</p>
+                <p>If Hysteresis is enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold + Hysteresis Threshold (displayed as Release Zone Start level).</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Hysteresis Zone Size</em>
                 </title>
-                <p>If Hysteresis is enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Hysteresis Threshold + Hysteresis Zone.</p>
+                <p>If Hysteresis is enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Hysteresis Threshold + Hysteresis Zone (displayed as Release Threshold level).</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Reduction</em>
                 </title>
-                <p>The amount of gain reduction to apply when the Gate is fully closed.</p>
+                <p>The amount of gain reduction to apply to the input signal when the Gate is fully closed.</p>
             </item>
             <item>
                 <title>
