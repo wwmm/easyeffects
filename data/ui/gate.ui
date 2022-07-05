@@ -377,7 +377,7 @@
                                                 <child>
                                                     <object class="GtkLabel" id="attack_zone_start_label">
                                                         <property name="width-chars">6</property>
-                                                        <property name="label">0</property>
+                                                        <property name="label">0.0</property>
                                                     </object>
                                                 </child>
 
@@ -404,7 +404,7 @@
                                                 <child>
                                                     <object class="GtkLabel" id="attack_threshold_label">
                                                         <property name="width-chars">6</property>
-                                                        <property name="label">0</property>
+                                                        <property name="label">0.0</property>
                                                     </object>
                                                 </child>
 
@@ -431,7 +431,7 @@
                                                 <child>
                                                     <object class="GtkLabel" id="release_zone_start_label">
                                                         <property name="width-chars">6</property>
-                                                        <property name="label">0</property>
+                                                        <property name="label">0.0</property>
                                                     </object>
                                                 </child>
 
@@ -458,7 +458,7 @@
                                                 <child>
                                                     <object class="GtkLabel" id="release_threshold_label">
                                                         <property name="width-chars">6</property>
-                                                        <property name="label">0</property>
+                                                        <property name="label">0.0</property>
                                                     </object>
                                                 </child>
 
