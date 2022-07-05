@@ -370,7 +370,7 @@
                                                     <object class="GtkLabel" id="attack_zone_start_title">
                                                         <property name="halign">end</property>
                                                         <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Attack zone start</property>
+                                                        <property name="label" translatable="yes">Attack Zone Start</property>
                                                     </object>
                                                 </child>
 
@@ -397,7 +397,7 @@
                                                     <object class="GtkLabel" id="attack_threshold_title">
                                                         <property name="halign">end</property>
                                                         <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Attack threshold</property>
+                                                        <property name="label" translatable="yes">Attack Threshold</property>
                                                     </object>
                                                 </child>
 
@@ -424,7 +424,7 @@
                                                     <object class="GtkLabel" id="release_zone_start_title">
                                                         <property name="halign">end</property>
                                                         <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Release zone start</property>
+                                                        <property name="label" translatable="yes">Release Zone Start</property>
                                                     </object>
                                                 </child>
 
@@ -451,7 +451,7 @@
                                                     <object class="GtkLabel" id="release_threshold_title">
                                                         <property name="halign">end</property>
                                                         <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Release threshold</property>
+                                                        <property name="label" translatable="yes">Release Threshold</property>
                                                     </object>
                                                 </child>
 
