@@ -36,15 +36,15 @@ void GatePreset::save(nlohmann::json& json, const std::string& section, GSetting
 
   json[section]["gate"]["release"] = g_settings_get_double(settings, "release");
 
-  json[section]["gate"]["curve_threshold"] = g_settings_get_double(settings, "curve-threshold");
+  json[section]["gate"]["curve-threshold"] = g_settings_get_double(settings, "curve-threshold");
 
-  json[section]["gate"]["curve_zone"] = g_settings_get_double(settings, "curve-zone");
+  json[section]["gate"]["curve-zone"] = g_settings_get_double(settings, "curve-zone");
 
-  json[section]["gate"]["hysteresis"] = g_settings_get_boolean(settings, "hysteresis");
+  json[section]["gate"]["hysteresis"] = g_settings_get_boolean(settings, "hysteresis") != 0;
 
-  json[section]["gate"]["hysteresis_threshold"] = g_settings_get_double(settings, "hysteresis-threshold");
+  json[section]["gate"]["hysteresis-threshold"] = g_settings_get_double(settings, "hysteresis-threshold");
 
-  json[section]["gate"]["hysteresis_zone"] = g_settings_get_double(settings, "hysteresis-zone");
+  json[section]["gate"]["hysteresis-zone"] = g_settings_get_double(settings, "hysteresis-zone");
 
   json[section]["gate"]["reduction"] = g_settings_get_double(settings, "reduction");
 
@@ -82,15 +82,15 @@ void GatePreset::load(const nlohmann::json& json, const std::string& section, GS
 
   update_key<double>(json.at(section).at("gate"), settings, "release", "release");
 
-  update_key<double>(json.at(section).at("gate"), settings, "curve_threshold", "curve-threshold");
+  update_key<double>(json.at(section).at("gate"), settings, "curve-threshold", "curve-threshold");
 
-  update_key<double>(json.at(section).at("gate"), settings, "curve_zone", "curve-zone");
+  update_key<double>(json.at(section).at("gate"), settings, "curve-zone", "curve-zone");
 
   update_key<bool>(json.at(section).at("gate"), settings, "hysteresis", "hysteresis");
 
-  update_key<double>(json.at(section).at("gate"), settings, "hysteresis_threshold", "hysteresis-threshold");
+  update_key<double>(json.at(section).at("gate"), settings, "hysteresis-threshold", "hysteresis-threshold");
 
-  update_key<double>(json.at(section).at("gate"), settings, "hysteresis_zone", "hysteresis-zone");
+  update_key<double>(json.at(section).at("gate"), settings, "hysteresis-zone", "hysteresis-zone");
 
   update_key<double>(json.at(section).at("gate"), settings, "reduction", "reduction");
 
