@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include "effects_base.hpp"
+#include "node_info_holder.hpp"
 #include "tags_resources.hpp"
 #include "ui_helpers.hpp"
 
@@ -36,6 +37,6 @@ G_END_DECLS
 
 auto create() -> GateBox*;
 
-void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path);
+void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_path, PipeManager* pm);
 
 }  // namespace ui::gate_box
