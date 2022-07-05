@@ -367,15 +367,15 @@
                                             <object class="GtkBox">
                                                 <property name="halign">center</property>
                                                 <child>
-                                                    <object class="GtkLabel" id="zone_start_title">
+                                                    <object class="GtkLabel" id="attack_zone_start_title">
                                                         <property name="halign">end</property>
                                                         <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Zone start</property>
+                                                        <property name="label" translatable="yes">Attack zone start</property>
                                                     </object>
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkLabel" id="zone_start_label">
+                                                    <object class="GtkLabel" id="attack_zone_start_label">
                                                         <property name="width-chars">6</property>
                                                         <property name="label">0</property>
                                                     </object>
@@ -394,15 +394,15 @@
                                             <object class="GtkBox">
                                                 <property name="halign">center</property>
                                                 <child>
-                                                    <object class="GtkLabel" id="hysteresis_threshold_start_title">
+                                                    <object class="GtkLabel" id="attack_threshold_title">
                                                         <property name="halign">end</property>
                                                         <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Hysteresis threshold start</property>
+                                                        <property name="label" translatable="yes">Attack threshold</property>
                                                     </object>
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkLabel" id="hysteresis_threshold_start_label">
+                                                    <object class="GtkLabel" id="attack_threshold_label">
                                                         <property name="width-chars">6</property>
                                                         <property name="label">0</property>
                                                     </object>
@@ -421,15 +421,42 @@
                                             <object class="GtkBox">
                                                 <property name="halign">center</property>
                                                 <child>
-                                                    <object class="GtkLabel" id="hysteresis_zone_start_title">
+                                                    <object class="GtkLabel" id="release_zone_start_title">
                                                         <property name="halign">end</property>
                                                         <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Hysteresis zone start</property>
+                                                        <property name="label" translatable="yes">Release zone start</property>
                                                     </object>
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkLabel" id="hysteresis_zone_start_label">
+                                                    <object class="GtkLabel" id="release_zone_start_label">
+                                                        <property name="width-chars">6</property>
+                                                        <property name="label">0</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">start</property>
+                                                        <property name="label">db</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">center</property>
+                                                <child>
+                                                    <object class="GtkLabel" id="release_threshold_title">
+                                                        <property name="halign">end</property>
+                                                        <property name="xalign">1</property>
+                                                        <property name="label" translatable="yes">Release threshold</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="release_threshold_label">
                                                         <property name="width-chars">6</property>
                                                         <property name="label">0</property>
                                                     </object>
