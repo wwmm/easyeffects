@@ -354,6 +354,98 @@
                                         </child>
                                     </object>
                                 </child>
+
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">0</property>
+                                        <property name="homogeneous">1</property>
+                                        <property name="margin-top">4</property>
+                                        <property name="margin-bottom">4</property>
+
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">center</property>
+                                                <child>
+                                                    <object class="GtkLabel" id="zone_start_title">
+                                                        <property name="halign">end</property>
+                                                        <property name="xalign">1</property>
+                                                        <property name="label" translatable="yes">Zone start</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="zone_start_label">
+                                                        <property name="width-chars">6</property>
+                                                        <property name="label">0</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">start</property>
+                                                        <property name="label">db</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">center</property>
+                                                <child>
+                                                    <object class="GtkLabel" id="hysteresis_threshold_start_title">
+                                                        <property name="halign">end</property>
+                                                        <property name="xalign">1</property>
+                                                        <property name="label" translatable="yes">Hysteresis threshold start</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="hysteresis_threshold_start_label">
+                                                        <property name="width-chars">6</property>
+                                                        <property name="label">0</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">start</property>
+                                                        <property name="label">db</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">center</property>
+                                                <child>
+                                                    <object class="GtkLabel" id="hysteresis_zone_start_title">
+                                                        <property name="halign">end</property>
+                                                        <property name="xalign">1</property>
+                                                        <property name="label" translatable="yes">Hysteresis zone start</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="hysteresis_zone_start_label">
+                                                        <property name="width-chars">6</property>
+                                                        <property name="label">0</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">start</property>
+                                                        <property name="label">db</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
                             </object>
                         </property>
                     </object>

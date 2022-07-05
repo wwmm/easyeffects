@@ -32,8 +32,8 @@
                 <title>
                     <em style="strong" its:withinText="nested">Curve Zone Size</em>
                 </title>
-                <p>The Gate begins to open upon the Sidechain level becoming above the Curve Threshold + Curve Zone.</p>
-                <p>If Hysteresis is not enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Curve Zone.</p>
+                <p>The Gate begins to open upon the Sidechain level becoming above the Curve Threshold + Curve Zone (displayed as Zone start).</p>
+                <p>If Hysteresis is not enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Curve Zone (displayed as Zone start).</p>
             </item>
             <item>
                 <title>
@@ -45,13 +45,13 @@
                 <title>
                     <em style="strong" its:withinText="nested">Hysteresis Threshold</em>
                 </title>
-                <p>If Hysteresis is enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold + Hysteresis Threshold.</p>
+                <p>If Hysteresis is enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold + Hysteresis Threshold (displayed as Hysteresis threshold start).</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Hysteresis Zone Size</em>
                 </title>
-                <p>If Hysteresis is enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Hysteresis Threshold + Hysteresis Zone.</p>
+                <p>If Hysteresis is enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Hysteresis Threshold + Hysteresis Zone (displayed as Hysteresis zone start).</p>
             </item>
             <item>
                 <title>
