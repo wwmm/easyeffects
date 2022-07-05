@@ -215,7 +215,7 @@ auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool
 }
 
 auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
-  std::string filter_type = parse_apo_filter(line, filter);
+  auto filter_type = parse_apo_filter(line, filter);
 
   if (filter_type.empty()) {
     return false;
