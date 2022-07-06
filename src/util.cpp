@@ -53,6 +53,10 @@ void print_thread_id() {
   std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
 }
 
+auto normalize(const float& x, const float& min, const float& max) -> float {
+  return (x - min) / (max - min);
+}
+
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 

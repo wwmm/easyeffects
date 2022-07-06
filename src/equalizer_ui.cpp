@@ -58,6 +58,10 @@ struct Data {
 struct _EqualizerBox {
   GtkBox parent_instance;
 
+  GtkOverlay* overlay;
+
+  AdwToastOverlay* toast_overlay;
+
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -271,11 +275,11 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
   return true;
 }
 
-void import_apo_preset(EqualizerBox* self, const std::string& file_path) {
+auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool {
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
-    return;
+    return false;
   }
 
   std::ifstream eq_file;
@@ -297,7 +301,7 @@ void import_apo_preset(EqualizerBox* self, const std::string& file_path) {
   eq_file.close();
 
   if (bands.empty()) {
-    return;
+    return false;
   }
 
   // Apply APO parameters obtained
@@ -337,6 +341,8 @@ void import_apo_preset(EqualizerBox* self, const std::string& file_path) {
       g_settings_reset(channel, band_mute[n]);
     }
   }
+
+  return true;
 }
 
 void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
@@ -358,7 +364,12 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
                        auto* file = gtk_file_chooser_get_file(chooser);
                        auto* path = g_file_get_path(file);
 
-                       import_apo_preset(self, path);
+                       if (!import_apo_preset(self, path)) {
+                         // notify error on APO preset loading
+                         show_fixed_toast(
+                             self->toast_overlay,
+                             _("APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."));
+                       }
 
                        g_free(path);
 
@@ -563,6 +574,9 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::equalizer_ui);
+
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, overlay);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, toast_overlay);
 
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, output_gain);
