@@ -190,6 +190,12 @@ void Gate::process(std::span<float>& left_in,
       curve_port_value = lv2_wrapper->get_control_port_value("clm");
       envelope_port_value = lv2_wrapper->get_control_port_value("elm");
 
+      // Normalize the current gain reduction amount as a percentage,
+      // where 0% is no gating, and 100% is a fully closed gate.
+      const float max_reduction_port_value = lv2_wrapper->get_control_port_value("gr");
+      const float no_reduction = 1.0F;  // aka, db_to_linear(0 /*dB*/);
+      gating_port_value = util::normalize(reduction_port_value, no_reduction, max_reduction_port_value);
+
       attack_zone_start.emit(attack_zone_start_port_value);
       attack_threshold.emit(attack_threshold_port_value);
       release_zone_start.emit(release_zone_start_port_value);
@@ -198,6 +204,7 @@ void Gate::process(std::span<float>& left_in,
       sidechain.emit(sidechain_port_value);
       curve.emit(curve_port_value);
       envelope.emit(envelope_port_value);
+      gating.emit(gating_port_value);
 
       notify();
 
