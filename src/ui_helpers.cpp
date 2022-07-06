@@ -14,6 +14,19 @@ namespace ui {
 
 using namespace std::string_literals;
 
+void show_fixed_toast(AdwToastOverlay* toast_overlay, const std::string& text, const AdwToastPriority& priority) {
+  // This helper is for showing fixed toasts which the user has to close them.
+  // For autohiding toasts we'll make another helper specifying the timeout as parameter.
+
+  auto* toast = adw_toast_new(text.c_str());
+
+  adw_toast_set_timeout(toast, 0U);
+
+  adw_toast_set_priority(toast, priority);
+
+  adw_toast_overlay_add_toast(toast_overlay, toast);
+}
+
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool {
   auto* adjustment = gtk_spin_button_get_adjustment(button);
   auto value = gtk_adjustment_get_value(adjustment);

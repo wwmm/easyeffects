@@ -33,6 +33,10 @@
 
 namespace ui {
 
+void show_fixed_toast(AdwToastOverlay* toast_overlay,
+                      const std::string& text,
+                      const AdwToastPriority& priority = ADW_TOAST_PRIORITY_HIGH);
+
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
 
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int;
