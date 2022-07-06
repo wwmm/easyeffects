@@ -99,9 +99,12 @@ void setup_simple_message_dialog(GtkWidget* parent, const std::string& title, co
   // Modal flag prevents interaction with other windows in the same application
   auto* dialog = gtk_message_dialog_new(GTK_WINDOW(parent),
                                         static_cast<GtkDialogFlags>(GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL),
-                                        GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, "%s", title.c_str());
+                                        GTK_MESSAGE_ERROR, GTK_BUTTONS_NONE, "%s", title.c_str());
 
   gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s", descr.c_str());
+
+  // Add custom button to hint the user to press ESC to destroy the dialog
+  gtk_dialog_add_button(GTK_DIALOG(dialog), _("Close (Press ESC)"), 0);
 
   // Destroy the dialog when the user responds to it
   g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), NULL);
