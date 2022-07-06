@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-04 19:14-0300\n"
-"PO-Revision-Date: 2022-06-27 22:36+0000\n"
-"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"PO-Revision-Date: 2022-07-06 20:18+0000\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -1007,9 +1007,8 @@ msgid "Preset"
 msgstr "预设"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "删除自动加载预设"
+msgstr "删除此自动加载预设"
 
 #: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:458 data/ui/deesser.ui:14
 #: data/ui/exciter.ui:12
@@ -2490,9 +2489,8 @@ msgid "Octaves"
 msgstr "八度"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "删除这个模型文件"
+msgstr "删除这个音效"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
@@ -2551,9 +2549,8 @@ msgid "Process All Output Streams"
 msgstr "处理所有输出流"
 
 #: data/ui/preferences_general.ui:55
-#, fuzzy
 msgid "Process All Input Streams"
-msgstr "处理所有输入"
+msgstr "处理所有输入流"
 
 #: data/ui/preferences_general.ui:67
 msgid "Ignore Streams from Monitor of Devices"
@@ -2664,12 +2661,10 @@ msgid "New Output Preset Name"
 msgstr "新输出预设名"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "新建预设"
+msgstr "创建新预设"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
 msgstr "导入预设"
 
