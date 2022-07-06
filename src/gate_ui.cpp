@@ -47,10 +47,6 @@ struct _GateBox {
 
   GtkLabel *gain_label, *sidechain_label, *curve_label, *envelope_label;
 
-  GtkLevelBar* gating;
-
-  GtkLabel* gating_label;
-
   GtkToggleButton* hysteresis;
 
   GtkSpinButton *attack, *release, *curve_threshold, *curve_zone, *hysteresis_threshold, *hysteresis_zone, *reduction,
@@ -217,26 +213,11 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
         return;
       }
 
-      if (!GTK_IS_LABEL(self->gain_label) || !GTK_IS_LABEL(self->gating_label)) {
+      if (!GTK_IS_LABEL(self->gain_label)) {
         return;
       }
 
-      gtk_label_set_text(self->gating_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
       gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-    });
-  }));
-
-  self->data->connections.push_back(gate->gating.connect([=](const double& value) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
-
-      if (!GTK_IS_LEVEL_BAR(self->gating)) {
-        return;
-      }
-
-      gtk_level_bar_set_value(self->gating, value);
     });
   }));
 
@@ -430,8 +411,6 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_right_label);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, gating);
-  gtk_widget_class_bind_template_child(widget_class, GateBox, gating_label);
 
   gtk_widget_class_bind_template_child(widget_class, GateBox, attack_zone_start_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, attack_threshold_label);
