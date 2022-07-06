@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-04 19:14-0300\n"
-"PO-Revision-Date: 2022-06-27 22:36+0000\n"
+"PO-Revision-Date: 2022-07-06 20:18+0000\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -139,11 +139,11 @@ msgstr ""
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build"
-msgstr ""
+msgstr "现在 rnnoise 库是可选的。这项改动可以帮助软件包维护者构建"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid "a Debian package. See the issue #1000 for more information."
-msgstr ""
+msgstr "Debian 软件包。请参考 issue #1000 以了解更多信息。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
@@ -1007,9 +1007,8 @@ msgid "Preset"
 msgstr "预设"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "删除自动加载预设"
+msgstr "删除此自动加载预设"
 
 #: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:458 data/ui/deesser.ui:14
 #: data/ui/exciter.ui:12
@@ -1720,9 +1719,8 @@ msgid "Herm Thin"
 msgstr ""
 
 #: data/ui/limiter.ui:73
-#, fuzzy
 msgid "Herm Wide"
-msgstr "Herm Wide"
+msgstr ""
 
 #: data/ui/limiter.ui:74
 msgid "Herm Tail"
@@ -1737,9 +1735,8 @@ msgid "Exp Thin"
 msgstr ""
 
 #: data/ui/limiter.ui:77
-#, fuzzy
 msgid "Exp Wide"
-msgstr "Exp Wide"
+msgstr ""
 
 #: data/ui/limiter.ui:78
 msgid "Exp Tail"
@@ -1750,18 +1747,16 @@ msgid "Exp Duck"
 msgstr ""
 
 #: data/ui/limiter.ui:80
-#, fuzzy
 msgid "Line Thin"
-msgstr "Line Thin"
+msgstr ""
 
 #: data/ui/limiter.ui:81
 msgid "Line Wide"
-msgstr "线宽"
+msgstr ""
 
 #: data/ui/limiter.ui:82
-#, fuzzy
 msgid "Line Tail"
-msgstr "Line Tail"
+msgstr ""
 
 #: data/ui/limiter.ui:83
 msgid "Line Duck"
@@ -2490,9 +2485,8 @@ msgid "Octaves"
 msgstr "八度"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "删除这个模型文件"
+msgstr "删除这个音效"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
@@ -2536,24 +2530,23 @@ msgstr "服务"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "系统启动时运行服务"
 
 #: data/ui/preferences_general.ui:26
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "窗口关闭时退出"
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
-msgstr ""
+msgstr "音频"
 
 #: data/ui/preferences_general.ui:43
 msgid "Process All Output Streams"
 msgstr "处理所有输出流"
 
 #: data/ui/preferences_general.ui:55
-#, fuzzy
 msgid "Process All Input Streams"
-msgstr "处理所有输入"
+msgstr "处理所有输入流"
 
 #: data/ui/preferences_general.ui:67
 msgid "Ignore Streams from Monitor of Devices"
@@ -2589,7 +2582,7 @@ msgstr "频谱(_S)"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "形状"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
@@ -2664,12 +2657,10 @@ msgid "New Output Preset Name"
 msgstr "新输出预设名"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "新建预设"
+msgstr "创建新预设"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
 msgstr "导入预设"
 
@@ -2811,7 +2802,7 @@ msgstr "标准 RNNoise 模型"
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "概览"
 
 #: data/ui/shortcuts.ui:16
 msgid "Open the EasyEffects Manual"
@@ -2819,7 +2810,7 @@ msgstr "打开 EasyEffects 手册"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "全屏/从全屏恢复"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
@@ -2931,7 +2922,7 @@ msgstr "已暂停"
 
 #: src/app_info.cpp:70
 msgid "Idle"
-msgstr ""
+msgstr "空闲"
 
 #: src/app_info.cpp:72
 msgid "Creating"
@@ -2943,7 +2934,7 @@ msgstr "错误"
 
 #: src/app_info.cpp:76
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
 #: src/app_info.cpp:234
 msgid "channels"
@@ -3037,7 +3028,7 @@ msgstr "音效"
 
 #: src/equalizer_band_box.cpp:108
 msgid "infinity"
-msgstr ""
+msgstr "无限"
 
 #: src/equalizer_ui.cpp:345
 msgid "Import APO Preset File"
@@ -3141,7 +3132,7 @@ msgstr "输出设备"
 
 #: src/plugins_menu.cpp:142
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
 #: src/presets_menu.cpp:102
 msgid "Import Preset"
