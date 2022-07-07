@@ -61,7 +61,7 @@
                                 <property name="tooltip-text" translatable="yes">Enable/disable the global bypass</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="icon-name">system-log-out-symbolic</property>
+                                <property name="icon-name">ee-bypass-symbolic</property>
                                 <accessibility>
                                     <property name="label" translatable="yes">Global Bypass</property>
                                 </accessibility>
