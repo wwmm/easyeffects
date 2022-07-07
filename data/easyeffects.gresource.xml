@@ -58,5 +58,6 @@
         <file>icons/scalable/emblems/ee-drag-handle-symbolic.svg</file>
         <file>icons/scalable/emblems/ee-arrows-right-symbolic.svg</file>
         <file>icons/scalable/emblems/ee-bypass-symbolic.svg</file>
+        <file>icons/scalable/emblems/ee-applications-multimedia-symbolic.svg</file>
     </gresource>
 </gresources>

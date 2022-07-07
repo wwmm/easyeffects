@@ -275,7 +275,7 @@ void update(AppInfo* self, const NodeInfo node_info) {
 
   // set the icon name
 
-  if (const auto default_app_icon = "applications-multimedia-symbolic"s; self->icon_theme == nullptr) {
+  if (const auto default_app_icon = "ee-applications-multimedia-symbolic"s; self->icon_theme == nullptr) {
     gtk_image_set_from_icon_name(self->app_icon, default_app_icon.c_str());
   } else if (const auto icon_name = get_app_icon_name(node_info); icon_name.empty()) {
     gtk_image_set_from_icon_name(self->app_icon, default_app_icon.c_str());

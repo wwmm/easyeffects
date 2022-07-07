@@ -543,7 +543,7 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
           self));
 
       gtk_image_set_from_icon_name(self->startpoint_icon, "audio-input-microphone-symbolic");
-      gtk_image_set_from_icon_name(self->endpoint_icon, "applications-multimedia-symbolic");
+      gtk_image_set_from_icon_name(self->endpoint_icon, "ee-applications-multimedia-symbolic");
 
       gtk_label_set_text(self->startpoint_name, _("Input Device"));
       gtk_label_set_text(self->endpoint_name, _("Recorders"));
@@ -563,7 +563,7 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
           }),
           self));
 
-      gtk_image_set_from_icon_name(self->startpoint_icon, "applications-multimedia-symbolic");
+      gtk_image_set_from_icon_name(self->startpoint_icon, "ee-applications-multimedia-symbolic");
       gtk_image_set_from_icon_name(self->endpoint_icon, "audio-speakers-symbolic");
 
       gtk_label_set_text(self->startpoint_name, _("Players"));

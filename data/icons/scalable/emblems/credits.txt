@@ -10,3 +10,4 @@ ee-plugins-symbolic is the icon "application-x-addon-symbolic" from the Adwaita 
 ee-drag-handle-symbolic is the icon "list-drag-handle-symbolic" from the Adwaita package
 ee-arrows-right-symbolic is the icon "media-playlist-consecutive-symbolic" from the Adwaita package
 ee-bypass-symbolic is the icon "system-log-out-symbolic" from the Adwaita package
+ee-applications-multimedia-symbolic is the icon "applications-multimedia-symbolic" from the Adwaita package
