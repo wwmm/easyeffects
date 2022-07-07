@@ -21,30 +21,6 @@
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     : EffectsBase("soe: ", tags::schema::id_output, pipe_manager) {
-  if (g_settings_get_boolean(settings, "use-default-output-device") != 0) {
-    g_settings_set_string(settings, "output-device", pm->output_device.name.c_str());
-  } else {
-    auto found = false;
-
-    const auto output_device = util::gsettings_get_string(settings, "output-device");
-
-    if (output_device != tags::pipewire::ee_sink_name) {
-      for (const auto& [serial, node] : pm->node_map) {
-        if (node.name == output_device) {
-          pm->output_device = node;
-
-          found = true;
-
-          break;
-        }
-      }
-    }
-
-    if (!found) {
-      g_settings_set_string(settings, "output-device", pm->output_device.name.c_str());
-    }
-  }
-
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr && PULSE_SINK != tags::pipewire::ee_sink_name) {

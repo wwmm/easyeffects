@@ -21,30 +21,6 @@
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     : EffectsBase("sie: ", tags::schema::id_input, pipe_manager) {
-  if (g_settings_get_boolean(settings, "use-default-input-device") != 0) {
-    g_settings_set_string(settings, "input-device", pm->input_device.name.c_str());
-  } else {
-    auto found = false;
-
-    const auto input_device = util::gsettings_get_string(settings, "input-device");
-
-    if (input_device != tags::pipewire::ee_source_name) {
-      for (const auto& [serial, node] : pm->node_map) {
-        if (node.name == input_device) {
-          pm->input_device = node;
-
-          found = true;
-
-          break;
-        }
-      }
-    }
-
-    if (!found) {
-      g_settings_set_string(settings, "input-device", pm->input_device.name.c_str());
-    }
-  }
-
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {
