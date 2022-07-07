@@ -130,7 +130,7 @@
                                         </child>
                                         <child>
                                             <object class="GtkImage">
-                                                <property name="icon-name">media-playlist-consecutive-symbolic</property>
+                                                <property name="icon-name">ee-arrows-right-symbolic</property>
                                             </object>
                                         </child>
                                         <child>
