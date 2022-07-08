@@ -32,6 +32,8 @@ struct Data {
   std::vector<sigc::connection> connections;
 
   std::vector<gulong> gconnections;
+
+  std::locale user_locale;
 };
 
 struct _GateBox {
@@ -165,7 +167,13 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
         return;
       }
 
-      gtk_label_set_text(self->attack_zone_start_label, fmt::format("{0:.1f}", util::linear_to_db(value)).c_str());
+      try {
+        self->data->user_locale = std::locale("");
+      } catch (...) {
+      }
+
+      gtk_label_set_text(self->attack_zone_start_label,
+                         fmt::format(self->data->user_locale, "{0:.1Lf}", util::linear_to_db(value)).c_str());
     });
   }));
 
@@ -179,7 +187,13 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
         return;
       }
 
-      gtk_label_set_text(self->attack_threshold_label, fmt::format("{0:.1f}", util::linear_to_db(value)).c_str());
+      try {
+        self->data->user_locale = std::locale("");
+      } catch (...) {
+      }
+
+      gtk_label_set_text(self->attack_threshold_label,
+                         fmt::format(self->data->user_locale, "{0:.1Lf}", util::linear_to_db(value)).c_str());
     });
   }));
 
@@ -193,7 +207,13 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
         return;
       }
 
-      gtk_label_set_text(self->release_zone_start_label, fmt::format("{0:.1f}", util::linear_to_db(value)).c_str());
+      try {
+        self->data->user_locale = std::locale("");
+      } catch (...) {
+      }
+
+      gtk_label_set_text(self->release_zone_start_label,
+                         fmt::format(self->data->user_locale, "{0:.1Lf}", util::linear_to_db(value)).c_str());
     });
   }));
 
@@ -207,7 +227,13 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
         return;
       }
 
-      gtk_label_set_text(self->release_threshold_label, fmt::format("{0:.1f}", util::linear_to_db(value)).c_str());
+      try {
+        self->data->user_locale = std::locale("");
+      } catch (...) {
+      }
+
+      gtk_label_set_text(self->release_threshold_label,
+                         fmt::format(self->data->user_locale, "{0:.1Lf}", util::linear_to_db(value)).c_str());
     });
   }));
 
@@ -221,8 +247,15 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
         return;
       }
 
-      gtk_label_set_text(self->gating_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-      gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+      try {
+        self->data->user_locale = std::locale("");
+      } catch (...) {
+      }
+
+      gtk_label_set_text(self->gating_label,
+                         fmt::format(self->data->user_locale, "{0:.0Lf}", util::linear_to_db(value)).c_str());
+      gtk_label_set_text(self->gain_label,
+                         fmt::format(self->data->user_locale, "{0:.0Lf}", util::linear_to_db(value)).c_str());
     });
   }));
 
