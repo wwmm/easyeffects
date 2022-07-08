@@ -147,7 +147,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="label_sampling_rate">
-                        <property name="label">f</property>
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -169,7 +168,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="label_samples">
-                        <property name="label">r</property>
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -191,7 +189,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="label_duration">
-                        <property name="label">c</property>
                         <style>
                             <class name="dim-label" />
                         </style>
