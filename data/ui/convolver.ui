@@ -10,9 +10,8 @@
 
         <child>
             <object class="GtkLabel" id="label_file_name">
-                <style>
-                    <class name="dim-label" />
-                </style>
+                <property name="wrap">1</property>
+                <property name="wrap-mode">word-char</property>
             </object>
         </child>
 

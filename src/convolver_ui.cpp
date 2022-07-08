@@ -317,6 +317,15 @@ void get_irs_info(ConvolverBox* self) {
   if (path.empty()) {
     util::warning(": irs file path is null.");
 
+    // Set label to initial empty state
+    gtk_widget_remove_css_class(GTK_WIDGET(self->label_file_name), "error");
+    gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
+    gtk_label_set_text(self->label_file_name, _("No Impulse File Loaded"));
+
+    gtk_label_set_text(self->label_sampling_rate, "");
+    gtk_label_set_text(self->label_samples, "");
+    gtk_label_set_text(self->label_duration, "");
+
     return;
   }
 
@@ -330,10 +339,14 @@ void get_irs_info(ConvolverBox* self) {
         return;
       }
 
-      gtk_label_set_text(self->label_sampling_rate, _("Failed"));
-      gtk_label_set_text(self->label_samples, _("Failed"));
-      gtk_label_set_text(self->label_sampling_rate, _("Failed"));
-      gtk_label_set_text(self->label_file_name, _("Could Not Load The Impulse File"));
+      // Move label to error state
+      gtk_widget_remove_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
+      gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "error");
+      gtk_label_set_text(self->label_file_name, _("Failed To Load The Impulse File"));
+
+      gtk_label_set_text(self->label_sampling_rate, "");
+      gtk_label_set_text(self->label_samples, "");
+      gtk_label_set_text(self->label_duration, "");
     });
 
     return;
@@ -428,13 +441,16 @@ void get_irs_info(ConvolverBox* self) {
       return;
     }
 
+    const auto fpath = std::filesystem::path{path};
+
+    // Set label to ready state and update with filename
+    gtk_widget_remove_css_class(GTK_WIDGET(self->label_file_name), "error");
+    gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
+    gtk_label_set_text(self->label_file_name, fpath.stem().c_str());
+
     gtk_label_set_text(self->label_sampling_rate, fmt::format("{0:d} Hz", rate_copy).c_str());
     gtk_label_set_text(self->label_samples, fmt::format("{0:d}", n_samples).c_str());
     gtk_label_set_text(self->label_duration, fmt::format("{0:.3f}", duration).c_str());
-
-    const auto fpath = std::filesystem::path{path};
-
-    gtk_label_set_text(self->label_file_name, fpath.stem().c_str());
 
     if (gtk_toggle_button_get_active(self->show_fft) == 0) {
       plot_waveform(self);
