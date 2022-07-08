@@ -46,6 +46,8 @@ struct Data {
   std::vector<gulong> gconnections;
 
   std::vector<float> left_mag, right_mag, time_axis, left_spectrum, right_spectrum, freq_axis;
+
+  std::locale user_locale;
 };
 
 struct _ConvolverBox {
@@ -448,9 +450,14 @@ void get_irs_info(ConvolverBox* self) {
     gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
     gtk_label_set_text(self->label_file_name, fpath.stem().c_str());
 
-    gtk_label_set_text(self->label_sampling_rate, fmt::format("{0:d} Hz", rate_copy).c_str());
-    gtk_label_set_text(self->label_samples, fmt::format("{0:d}", n_samples).c_str());
-    gtk_label_set_text(self->label_duration, fmt::format("{0:.3f}", duration).c_str());
+    try {
+      self->data->user_locale = std::locale("");
+    } catch (...) {
+    }
+
+    gtk_label_set_text(self->label_sampling_rate, fmt::format(self->data->user_locale, "{0:Ld} Hz", rate_copy).c_str());
+    gtk_label_set_text(self->label_samples, fmt::format(self->data->user_locale, "{0:Ld}", n_samples).c_str());
+    gtk_label_set_text(self->label_duration, fmt::format(self->data->user_locale, "{0:.3Lf}", duration).c_str());
 
     if (gtk_toggle_button_get_active(self->show_fft) == 0) {
       plot_waveform(self);
