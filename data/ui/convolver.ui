@@ -72,7 +72,7 @@
 
                         <child>
                             <object class="GtkLabel" id="ir_width_label">
-                                <property name="margin-top">6</property>
+                                <property name="margin-top">12</property>
                                 <property name="label" translatable="yes">Stereo Width</property>
                             </object>
                         </child>
@@ -100,7 +100,6 @@
 
                         <child>
                             <object class="GtkToggleButton" id="show_fft">
-                                <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Spectrum</property>
                                 <signal name="toggled" handler="on_show_fft" object="ConvolverBox" />
@@ -110,7 +109,6 @@
                         <child>
                             <object class="GtkToggleButton" id="enable_log_scale">
                                 <property name="halign">center</property>
-                                <property name="valign">center</property>
                                 <property name="label" translatable="yes">Log Scale</property>
                                 <property name="visible" bind-source="show_fft" bind-property="active" bind-flags="sync-create" />
                                 <signal name="toggled" handler="on_enable_log_scale" object="ConvolverBox" />
@@ -119,7 +117,7 @@
 
                         <child>
                             <object class="GtkToggleButton" id="autogain">
-                                <property name="halign">center</property>
+                                <property name="margin-top">12</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Autogain</property>
                             </object>
