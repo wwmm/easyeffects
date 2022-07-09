@@ -10,9 +10,8 @@
 
         <child>
             <object class="GtkLabel" id="label_file_name">
-                <style>
-                    <class name="dim-label" />
-                </style>
+                <property name="wrap">1</property>
+                <property name="wrap-mode">word-char</property>
             </object>
         </child>
 
@@ -73,7 +72,7 @@
 
                         <child>
                             <object class="GtkLabel" id="ir_width_label">
-                                <property name="margin-top">6</property>
+                                <property name="margin-top">12</property>
                                 <property name="label" translatable="yes">Stereo Width</property>
                             </object>
                         </child>
@@ -101,7 +100,6 @@
 
                         <child>
                             <object class="GtkToggleButton" id="show_fft">
-                                <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Spectrum</property>
                                 <signal name="toggled" handler="on_show_fft" object="ConvolverBox" />
@@ -111,7 +109,6 @@
                         <child>
                             <object class="GtkToggleButton" id="enable_log_scale">
                                 <property name="halign">center</property>
-                                <property name="valign">center</property>
                                 <property name="label" translatable="yes">Log Scale</property>
                                 <property name="visible" bind-source="show_fft" bind-property="active" bind-flags="sync-create" />
                                 <signal name="toggled" handler="on_enable_log_scale" object="ConvolverBox" />
@@ -120,7 +117,7 @@
 
                         <child>
                             <object class="GtkToggleButton" id="autogain">
-                                <property name="halign">center</property>
+                                <property name="margin-top">12</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Autogain</property>
                             </object>
@@ -147,7 +144,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="label_sampling_rate">
-                        <property name="label">f</property>
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -169,7 +165,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="label_samples">
-                        <property name="label">r</property>
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -191,7 +186,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="label_duration">
-                        <property name="label">c</property>
                         <style>
                             <class name="dim-label" />
                         </style>
