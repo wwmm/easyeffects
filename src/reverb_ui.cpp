@@ -55,7 +55,7 @@ struct _ReverbBox {
 G_DEFINE_TYPE(ReverbBox, reverb_box, GTK_TYPE_BOX)
 
 void on_reset(ReverbBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void on_preset_room(ReverbBox* self, GtkButton* btn) {

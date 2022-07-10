@@ -69,7 +69,7 @@ struct _RNNoiseBox {
 G_DEFINE_TYPE(RNNoiseBox, rnnoise_box, GTK_TYPE_BOX)
 
 void on_reset(RNNoiseBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 gboolean set_model_delete_button_visibility(GtkListItem* item, const char* name) {

@@ -66,7 +66,7 @@ struct _LimiterBox {
 G_DEFINE_TYPE(LimiterBox, limiter_box, GTK_TYPE_BOX)
 
 void on_reset(LimiterBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void setup_dropdown_input_device(LimiterBox* self) {

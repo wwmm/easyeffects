@@ -91,7 +91,7 @@ G_DEFINE_TYPE(ConvolverBox, convolver_box, GTK_TYPE_BOX)
 void on_reset(ConvolverBox* self, GtkButton* btn) {
   gtk_toggle_button_set_active(self->autogain, 0);
 
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void plot_fft(ConvolverBox* self) {

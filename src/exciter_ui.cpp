@@ -61,7 +61,7 @@ struct _ExciterBox {
 G_DEFINE_TYPE(ExciterBox, exciter_box, GTK_TYPE_BOX)
 
 void on_reset(ExciterBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string& schema_path) {

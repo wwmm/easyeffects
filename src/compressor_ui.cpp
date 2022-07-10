@@ -64,7 +64,7 @@ struct _CompressorBox {
 G_DEFINE_TYPE(CompressorBox, compressor_box, GTK_TYPE_BOX)
 
 void on_reset(CompressorBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 gboolean set_dropdown_sensitive(CompressorBox* self, const char* active_id) {

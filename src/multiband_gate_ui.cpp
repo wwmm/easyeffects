@@ -64,7 +64,7 @@ struct _MultibandGateBox {
 G_DEFINE_TYPE(MultibandGateBox, multiband_gate_box, GTK_TYPE_BOX)
 
 void on_reset(MultibandGateBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate, const std::string& schema_path) {

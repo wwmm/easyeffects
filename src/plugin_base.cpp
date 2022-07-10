@@ -241,7 +241,7 @@ void PluginBase::set_post_messages(const bool& state) {
 }
 
 void PluginBase::reset_settings() {
-  util::reset_all_keys(settings);
+  util::reset_all_keys_except(settings);
 }
 
 auto PluginBase::connect_to_pw() -> bool {

@@ -28,6 +28,7 @@
 #include <functional>
 #include <iostream>
 #include <limits>
+#include <ranges>
 #include <source_location>
 #include <string>
 #include <thread>
@@ -96,7 +97,7 @@ void generate_tags(const int& N, const std::string& start_string, const std::str
 
 auto get_files_name(std::filesystem::path dir_path, const std::string& ext) -> std::vector<std::string>;
 
-void reset_all_keys(GSettings* settings);
+void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& blocklist = std::vector<std::string>());
 
 auto str_contains(const std::string& haystack, const std::string& needle) -> bool;
 

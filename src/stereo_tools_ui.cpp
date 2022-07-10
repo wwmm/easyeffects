@@ -57,7 +57,7 @@ struct _StereoToolsBox {
 G_DEFINE_TYPE(StereoToolsBox, stereo_tools_box, GTK_TYPE_BOX)
 
 void on_reset(StereoToolsBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, const std::string& schema_path) {

@@ -71,7 +71,7 @@ EffectsBase::~EffectsBase() {
 }
 
 void EffectsBase::reset_settings() {
-  util::reset_all_keys(settings);
+  util::reset_all_keys_except(settings, {"input-device", "output-device"});
 
   spectrum->reset_settings();
 

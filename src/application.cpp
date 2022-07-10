@@ -304,7 +304,10 @@ void application_class_init(ApplicationClass* klass) {
         }
       }
     } else if (g_variant_dict_contains(options, "reset") != 0) {
-      g_settings_reset(self->settings, "");
+      util::reset_all_keys_except(self->settings);
+
+      self->soe->reset_settings();
+      self->sie->reset_settings();
 
       util::info("All settings were reset");
     } else if (g_variant_dict_contains(options, "hide-window") != 0) {
@@ -446,7 +449,7 @@ void application_init(Application* self) {
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
                   auto* self = EE_APP(gapp);
 
-                  util::reset_all_keys(self->settings);
+                  util::reset_all_keys_except(self->settings);
 
                   self->soe->reset_settings();
                   self->sie->reset_settings();

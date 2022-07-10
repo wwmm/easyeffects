@@ -55,7 +55,7 @@ struct _CrystalizerBox {
 G_DEFINE_TYPE(CrystalizerBox, crystalizer_box, GTK_TYPE_BOX)
 
 void on_reset(CrystalizerBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void build_bands(CrystalizerBox* self) {

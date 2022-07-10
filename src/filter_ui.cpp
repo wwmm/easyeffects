@@ -55,7 +55,7 @@ struct _FilterBox {
 G_DEFINE_TYPE(FilterBox, filter_box, GTK_TYPE_BOX)
 
 void on_reset(FilterBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path) {

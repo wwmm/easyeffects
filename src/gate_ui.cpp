@@ -74,7 +74,7 @@ struct _GateBox {
 G_DEFINE_TYPE(GateBox, gate_box, GTK_TYPE_BOX)
 
 void on_reset(GateBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 gboolean set_dropdown_sensitive(GateBox* self, const char* active_id) {

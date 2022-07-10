@@ -347,7 +347,7 @@ auto get_files_name(std::filesystem::path dir_path, const std::string& ext) -> s
   return names;
 }
 
-void reset_all_keys(GSettings* settings) {
+void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& blocklist) {
   GSettingsSchema* schema;
   gchar** keys;
 
@@ -356,7 +356,9 @@ void reset_all_keys(GSettings* settings) {
   keys = g_settings_schema_list_keys(schema);
 
   for (int i = 0; keys[i]; i++) {
-    g_settings_reset(settings, keys[i]);
+    if (std::ranges::find(blocklist, keys[i]) == blocklist.end()) {
+      g_settings_reset(settings, keys[i]);
+    }
   }
 
   g_settings_schema_unref(schema);

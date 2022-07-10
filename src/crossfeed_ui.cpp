@@ -53,7 +53,7 @@ struct _CrossfeedBox {
 G_DEFINE_TYPE(CrossfeedBox, crossfeed_box, GTK_TYPE_BOX)
 
 void on_reset(CrossfeedBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void on_preset_cmoy(CrossfeedBox* self, GtkButton* btn) {

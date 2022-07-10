@@ -86,9 +86,9 @@ struct _EqualizerBox {
 G_DEFINE_TYPE(EqualizerBox, equalizer_box, GTK_TYPE_BOX)
 
 void on_reset(EqualizerBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
-  util::reset_all_keys(self->settings_left);
-  util::reset_all_keys(self->settings_right);
+  util::reset_all_keys_except(self->settings);
+  util::reset_all_keys_except(self->settings_left);
+  util::reset_all_keys_except(self->settings_right);
 }
 
 void on_flat_response(EqualizerBox* self, GtkButton* btn) {

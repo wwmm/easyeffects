@@ -55,7 +55,7 @@ struct _PitchBox {
 G_DEFINE_TYPE(PitchBox, pitch_box, GTK_TYPE_BOX)
 
 void on_reset(PitchBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& schema_path) {

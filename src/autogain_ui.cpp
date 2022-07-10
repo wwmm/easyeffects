@@ -63,7 +63,7 @@ struct _AutogainBox {
 G_DEFINE_TYPE(AutogainBox, autogain_box, GTK_TYPE_BOX)
 
 void on_reset(AutogainBox* self, GtkButton* btn) {
-  util::reset_all_keys(self->settings);
+  util::reset_all_keys_except(self->settings);
 }
 
 void on_reset_history(AutogainBox* self, GtkButton* btn) {
