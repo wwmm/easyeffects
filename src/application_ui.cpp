@@ -279,6 +279,13 @@ void application_window_init(ApplicationWindow* self) {
 
   self->data->icon_theme = setup_icon_theme();
 
+  /*
+    We save the user locale here because we have to wait for the changes GTK is going to make to the global locale.
+    It seems that the init method of the main window widget is a good place for this.
+  */
+
+  ui::save_user_locale();
+
   self->presetsMenu = ui::presets_menu::create();
   self->soe_ui = ui::effects_box::create();
   self->sie_ui = ui::effects_box::create();

@@ -28,8 +28,6 @@ struct Data {
   int index;
 
   std::vector<gulong> gconnections;
-
-  std::locale user_locale;
 };
 
 struct _EqualizerBandBox {
@@ -67,15 +65,10 @@ auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
     return g_strdup("");
   }
 
-  try {
-    self->data->user_locale = std::locale("");
-  } catch (...) {
-  }
-
   if (value > 1000.0) {
-    return g_strdup(fmt::format(self->data->user_locale, "{0:.1Lf} kHz", value / 1000.0).c_str());
+    return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", value / 1000.0).c_str());
   } else {
-    return g_strdup(fmt::format(self->data->user_locale, "{0:.1Lf} Hz", value).c_str());
+    return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} Hz", value).c_str());
   }
 }
 
@@ -84,12 +77,7 @@ auto set_band_quality_label(EqualizerBandBox* self, double value) -> const char*
     return g_strdup("");
   }
 
-  try {
-    self->data->user_locale = std::locale("");
-  } catch (...) {
-  }
-
-  return g_strdup(fmt::format(self->data->user_locale, "Q {0:.2Lf}", value).c_str());
+  return g_strdup(fmt::format(ui::get_user_locale(), "Q {0:.2Lf}", value).c_str());
 }
 
 auto set_band_width_label(EqualizerBandBox* self, double quality, double frequency) -> const char* {
@@ -97,13 +85,8 @@ auto set_band_width_label(EqualizerBandBox* self, double quality, double frequen
     return g_strdup("");
   }
 
-  try {
-    self->data->user_locale = std::locale("");
-  } catch (...) {
-  }
-
   if (quality > 0.0) {
-    return g_strdup(fmt::format(self->data->user_locale, "{0:.1Lf} Hz", frequency / quality).c_str());
+    return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} Hz", frequency / quality).c_str());
   } else {
     return g_strdup(_("infinity"));
   }

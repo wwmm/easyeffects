@@ -34,8 +34,6 @@ struct Data {
   gulong handler_id_enable, handler_id_volume, handler_id_mute, handler_id_blocklist;
 
   std::unordered_map<uint, bool>* enabled_app_list;
-
-  std::locale user_locale;
 };
 
 struct _AppInfo {
@@ -221,16 +219,10 @@ void update(AppInfo* self, const NodeInfo node_info) {
 
   self->data->info = node_info;
 
-  try {
-    self->data->user_locale = std::locale("");
-  } catch (...) {
-  }
-
   gtk_label_set_text(self->app_name, node_info.name.c_str());
   gtk_label_set_text(self->media_name, node_info.media_name.c_str());
   gtk_label_set_text(self->format, node_info.format.c_str());
-  gtk_label_set_text(self->rate,
-                     fmt::format(self->data->user_locale, "{0:.1Lf} kHz", node_info.rate / 1000.0F).c_str());
+  gtk_label_set_text(self->rate, fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", node_info.rate / 1000.0F).c_str());
   gtk_label_set_text(self->channels, fmt::format("{0:d} {1}", node_info.n_volume_channels, _("channels")).c_str());
   gtk_label_set_text(self->latency, fmt::format("{0:.0f} ms", 1000.0F * node_info.latency).c_str());
   gtk_label_set_text(self->state, node_state_to_char_pointer(node_info.state));

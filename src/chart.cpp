@@ -46,8 +46,6 @@ struct Data {
   std::string x_unit, y_unit;
 
   std::vector<float> y_axis, x_axis, x_axis_log, objects_x;
-
-  std::locale user_locale;
 };
 
 struct _Chart {
@@ -269,11 +267,6 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
 
   draw_unit(self, snapshot, width, height, " "s + self->data->x_unit + " "s);
 
-  try {
-    self->data->user_locale = std::locale("");
-  } catch (...) {
-  }
-
   /*
     There is no space left in the window to show the last label. So we skip it.
     All labels are enclosed by whitespaces to not stick the first and the final
@@ -281,7 +274,7 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
   */
 
   for (size_t n = 0U; n < labels.size() - 1; n++) {
-    const auto msg = fmt::format(self->data->user_locale, " {0:.{1}Lf} ", labels[n], self->data->n_x_decimals);
+    const auto msg = fmt::format(ui::get_user_locale(), " {0:.{1}Lf} ", labels[n], self->data->n_x_decimals);
 
     auto* layout = gtk_widget_create_pango_layout(GTK_WIDGET(self), msg.c_str());
 
@@ -495,15 +488,10 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
     }
 
     if (gtk_event_controller_motion_contains_pointer(GTK_EVENT_CONTROLLER_MOTION(self->controller_motion)) != 0) {
-      try {
-        self->data->user_locale = std::locale("");
-      } catch (...) {
-      }
-
       // We leave a withespace at the end to not stick the string at the window border.
-      const auto msg = fmt::format(self->data->user_locale, "x = {0:.{1}Lf} {2} y = {3:.{4}Lf} {5} ",
-                                   self->data->mouse_x, self->data->n_x_decimals, self->data->x_unit,
-                                   self->data->mouse_y, self->data->n_y_decimals, self->data->y_unit);
+      const auto msg = fmt::format(ui::get_user_locale(), "x = {0:.{1}Lf} {2} y = {3:.{4}Lf} {5} ", self->data->mouse_x,
+                                   self->data->n_x_decimals, self->data->x_unit, self->data->mouse_y,
+                                   self->data->n_y_decimals, self->data->y_unit);
 
       auto* layout = gtk_widget_create_pango_layout(GTK_WIDGET(self), msg.c_str());
 

@@ -44,8 +44,6 @@ struct Data {
   std::vector<sigc::connection> connections;
 
   std::vector<gulong> gconnections_spectrum;
-
-  std::locale user_locale;
 };
 
 struct _EffectsBox {
@@ -252,11 +250,6 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   self->data->pipeline_type = pipeline_type;
   self->icon_theme = icon_theme;
 
-  try {
-    self->data->user_locale = std::locale("");
-  } catch (...) {
-  }
-
   switch (pipeline_type) {
     case PipelineType::input: {
       self->data->effects_base = static_cast<EffectsBase*>(self->data->application->sie);
@@ -268,8 +261,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
       auto set_device_state_label = [=]() {
         auto source_rate = static_cast<float>(application->pm->ee_source_node.rate) * 0.001F;
 
-        gtk_label_set_text(self->device_state,
-                           fmt::format(self->data->user_locale, "{0:.1Lf} kHz", source_rate).c_str());
+        gtk_label_set_text(self->device_state, fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", source_rate).c_str());
       };
 
       set_device_state_label();
@@ -292,7 +284,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
       auto set_device_state_label = [=]() {
         auto sink_rate = static_cast<float>(application->pm->ee_sink_node.rate) * 0.001F;
 
-        gtk_label_set_text(self->device_state, fmt::format(self->data->user_locale, "{0:.1Lf} kHz", sink_rate).c_str());
+        gtk_label_set_text(self->device_state, fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", sink_rate).c_str());
       };
 
       set_device_state_label();
@@ -419,9 +411,9 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   // pipeline latency
 
-  gtk_label_set_text(self->latency_status, fmt::format(self->data->user_locale, "     {0:.1Lf} ms",
-                                                       self->data->effects_base->get_pipeline_latency())
-                                               .c_str());
+  gtk_label_set_text(
+      self->latency_status,
+      fmt::format(ui::get_user_locale(), "     {0:.1Lf} ms", self->data->effects_base->get_pipeline_latency()).c_str());
 
   self->data->connections.push_back(self->data->effects_base->pipeline_latency.connect([=](const float& v) {
     self->data->pipeline_latency_ms = v;
@@ -435,7 +427,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
             [](EffectsBox* self) {
               gtk_label_set_text(
                   self->latency_status,
-                  fmt::format(self->data->user_locale, "     {0:.1Lf} ms", self->data->pipeline_latency_ms).c_str());
+                  fmt::format(ui::get_user_locale(), "     {0:.1Lf} ms", self->data->pipeline_latency_ms).c_str());
 
               return G_SOURCE_REMOVE;
             },

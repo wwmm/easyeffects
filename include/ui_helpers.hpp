@@ -47,6 +47,10 @@ void set_ignore_filter_idle_add(const uint& serial, const bool& state);
 
 auto get_ignore_filter_idle_add(const uint& serial) -> bool;
 
+void save_user_locale();
+
+auto get_user_locale() -> std::locale;
+
 void update_level(GtkLevelBar* w_left,
                   GtkLabel* w_left_label,
                   GtkLevelBar* w_right,
@@ -103,14 +107,8 @@ void prepare_scale(GtkScale* scale) {
 
             using namespace std::string_literals;
 
-            std::locale loc;
-
-            try {
-              loc = std::locale("");
-            } catch (...) {
-            }
-
-            auto text = fmt::format(loc, "{0:.{1}Lf}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
+            auto text = fmt::format(ui::get_user_locale(), "{0:.{1}Lf}{2}", value, precision,
+                                    ((unit != nullptr) ? " "s + unit : ""));
 
             return g_strdup(text.c_str());
           },

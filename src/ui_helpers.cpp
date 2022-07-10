@@ -2,9 +2,9 @@
 
 namespace {
 
-bool show_user_locale_warning = true;
-
 uint widget_serial = 0;
+
+std::locale user_locale = std::locale::classic();
 
 std::map<uint, bool> map_ignore_filter_idle_add;
 
@@ -32,15 +32,9 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool {
   auto value = gtk_adjustment_get_value(adjustment);
   auto precision = gtk_spin_button_get_digits(button);
 
-  std::locale loc;
-
-  try {
-    loc = std::locale("");
-  } catch (...) {
-  }
-
   // format string: 0 = value, 1 = precision, 2 = unit
-  auto text = fmt::format(loc, "{0:.{1}Lf}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
+  auto text =
+      fmt::format(ui::get_user_locale(), "{0:.{1}Lf}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
 
   gtk_editable_set_text(GTK_EDITABLE(button), text.c_str());
 
@@ -50,21 +44,7 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool {
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
   std::istringstream str(gtk_editable_get_text(GTK_EDITABLE(button)));
 
-  std::locale loc;
-
-  try {
-    loc = std::locale("");
-
-    str.imbue(loc);
-  } catch (...) {
-    if (show_user_locale_warning) {
-      util::warning("We could not load the user locale in your system! Your locale configuration is broken!");
-
-      show_user_locale_warning = false;
-    }
-
-    str.imbue(loc);
-  }
+  str.imbue(ui::get_user_locale());
 
   if (auto min = 0.0, max = 0.0; str >> *new_value) {
     gtk_spin_button_get_range(button, &min, &max);
@@ -89,6 +69,20 @@ void set_ignore_filter_idle_add(const uint& serial, const bool& state) {
 
 auto get_ignore_filter_idle_add(const uint& serial) -> bool {
   return map_ignore_filter_idle_add[serial];
+}
+
+void save_user_locale() {
+  try {
+    user_locale = std::locale("");
+  } catch (...) {
+    util::warning("We could not get the user locale in your system! Your locale configuration is broken!");
+
+    util::warning("Falling back to the C locale");
+  }
+}
+
+auto get_user_locale() -> std::locale {
+  return user_locale;
 }
 
 void update_level(GtkLevelBar* w_left,

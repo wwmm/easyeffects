@@ -29,6 +29,7 @@
 #include <vector>
 #include "tags_app.hpp"
 #include "tags_resources.hpp"
+#include "ui_helpers.hpp"
 #include "util.hpp"
 
 namespace ui::chart {
