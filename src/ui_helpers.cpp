@@ -4,7 +4,7 @@ namespace {
 
 uint widget_serial = 0;
 
-std::locale user_locale = std::locale::classic();
+std::locale user_locale;
 
 std::map<uint, bool> map_ignore_filter_idle_add;
 
