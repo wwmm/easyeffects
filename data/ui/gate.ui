@@ -38,54 +38,41 @@
                                         <property name="halign">center</property>
                                         <property name="column-spacing">18</property>
 
+                                        <!-- Attack/Release section -->
                                         <child>
-                                            <object class="GtkLabel" id="attack_time_label">
-                                                <property name="label" translatable="yes">Attack</property>
+                                            <object class="GtkBox">
+                                                <property name="halign">fill</property>
+                                                <property name="homogeneous">1</property>
+                                                <property name="margin-bottom">6</property>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="attack_time_label">
+                                                        <property name="label" translatable="yes">Attack</property>
+
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="release_time_label">
+                                                        <property name="label" translatable="yes">Release</property>
+                                                    </object>
+                                                </child>
+
                                                 <layout>
                                                     <property name="column">0</property>
                                                     <property name="row">1</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel" id="release_time_label">
-                                                <property name="label" translatable="yes">Release</property>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">1</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Curve</property>
-                                                <layout>
-                                                    <property name="column">2</property>
-                                                    <property name="row">0</property>
-                                                    <property name="column-span">2</property>
                                                 </layout>
                                             </object>
                                         </child>
 
                                         <child>
                                             <object class="GtkBox">
-                                                <property name="margin-top">4</property>
                                                 <property name="halign">center</property>
                                                 <style>
                                                     <class name="linked" />
                                                 </style>
 
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">2</property>
-                                                    <property name="column-span">2</property>
-                                                </layout>
-
                                                 <child>
                                                     <object class="GtkSpinButton" id="attack">
-                                                        <property name="margin-top">4</property>
                                                         <property name="orientation">vertical</property>
                                                         <property name="digits">2</property>
                                                         <property name="width-chars">11</property>
@@ -106,7 +93,6 @@
 
                                                 <child>
                                                     <object class="GtkSpinButton" id="release">
-                                                        <property name="margin-top">4</property>
                                                         <property name="orientation">vertical</property>
                                                         <property name="digits">2</property>
                                                         <property name="width-chars">11</property>
@@ -124,6 +110,25 @@
                                                         </accessibility>
                                                     </object>
                                                 </child>
+
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">2</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <!-- Curve section -->
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="margin-bottom">4</property>
+                                                <property name="label" translatable="yes">Curve</property>
+                                                <layout>
+                                                    <property name="column">1</property>
+                                                    <property name="row">0</property>
+                                                </layout>
                                             </object>
                                         </child>
 
@@ -146,16 +151,14 @@
                                                 </child>
 
                                                 <layout>
-                                                    <property name="column">2</property>
+                                                    <property name="column">1</property>
                                                     <property name="row">1</property>
-                                                    <property name="column-span">2</property>
                                                 </layout>
                                             </object>
                                         </child>
 
                                         <child>
                                             <object class="GtkBox">
-                                                <property name="margin-top">4</property>
                                                 <property name="halign">center</property>
                                                 <style>
                                                     <class name="linked" />
@@ -203,22 +206,22 @@
                                                 </child>
 
                                                 <layout>
-                                                    <property name="column">2</property>
+                                                    <property name="column">1</property>
                                                     <property name="row">2</property>
-                                                    <property name="column-span">2</property>
                                                 </layout>
                                             </object>
                                         </child>
 
+                                        <!-- Hysteresis section -->
                                         <child>
                                             <object class="GtkToggleButton" id="hysteresis">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
+                                                <property name="margin-bottom">4</property>
                                                 <property name="label" translatable="yes">Hysteresis</property>
                                                 <layout>
-                                                    <property name="column">4</property>
+                                                    <property name="column">2</property>
                                                     <property name="row">0</property>
-                                                    <property name="column-span">2</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -227,6 +230,7 @@
                                             <object class="GtkBox">
                                                 <property name="halign">fill</property>
                                                 <property name="homogeneous">1</property>
+                                                <property name="margin-bottom">6</property>
 
                                                 <child>
                                                     <object class="GtkLabel" id="hysteresis_threshold_label">
@@ -240,16 +244,14 @@
                                                 </child>
 
                                                 <layout>
-                                                    <property name="column">4</property>
+                                                    <property name="column">2</property>
                                                     <property name="row">1</property>
-                                                    <property name="column-span">2</property>
                                                 </layout>
                                             </object>
                                         </child>
 
                                         <child>
                                             <object class="GtkBox">
-                                                <property name="margin-top">4</property>
                                                 <property name="halign">center</property>
                                                 <style>
                                                     <class name="linked" />
@@ -299,30 +301,46 @@
                                                 </child>
 
                                                 <layout>
-                                                    <property name="column">4</property>
+                                                    <property name="column">2</property>
                                                     <property name="row">2</property>
-                                                    <property name="column-span">2</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <!-- Reduction/Makeup section -->
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">fill</property>
+                                                <property name="homogeneous">1</property>
+                                                <property name="margin-bottom">6</property>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="reduction_label">
+                                                        <property name="label" translatable="yes">Reduction</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="makeup_label">
+                                                        <property name="label" translatable="yes">Makeup</property>
+                                                    </object>
+                                                </child>
+
+                                                <layout>
+                                                    <property name="column">3</property>
+                                                    <property name="row">1</property>
                                                 </layout>
                                             </object>
                                         </child>
 
                                         <child>
                                             <object class="GtkBox">
-                                                <property name="margin-top">4</property>
                                                 <property name="halign">center</property>
                                                 <style>
                                                     <class name="linked" />
                                                 </style>
 
-                                                <layout>
-                                                    <property name="column">6</property>
-                                                    <property name="row">2</property>
-                                                    <property name="column-span">2</property>
-                                                </layout>
-
                                                 <child>
                                                     <object class="GtkSpinButton" id="reduction">
-                                                        <property name="margin-top">4</property>
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">1</property>
@@ -341,10 +359,8 @@
                                                         </accessibility>
                                                     </object>
                                                 </child>
-
                                                 <child>
                                                     <object class="GtkSpinButton" id="makeup">
-                                                        <property name="margin-top">4</property>
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">1</property>
@@ -362,25 +378,10 @@
                                                         </accessibility>
                                                     </object>
                                                 </child>
-                                            </object>
-                                        </child>
 
-                                        <child>
-                                            <object class="GtkLabel" id="reduction_label">
-                                                <property name="label" translatable="yes">Reduction</property>
                                                 <layout>
-                                                    <property name="column">6</property>
-                                                    <property name="row">1</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel" id="makeup_label">
-                                                <property name="label" translatable="yes">Makeup</property>
-                                                <layout>
-                                                    <property name="column">7</property>
-                                                    <property name="row">1</property>
+                                                    <property name="column">3</property>
+                                                    <property name="row">2</property>
                                                 </layout>
                                             </object>
                                         </child>
