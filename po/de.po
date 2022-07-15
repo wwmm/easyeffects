@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-04 19:14-0300\n"
-"PO-Revision-Date: 2022-07-06 20:18+0000\n"
+"PO-Revision-Date: 2022-07-15 14:19+0000\n"
 "Last-Translator: Florian Schaupp <fschaupp@hotmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -117,41 +117,50 @@ msgid ""
 "When effects are disable to an application we now set its target metadata to "
 "null. This will allow the media session"
 msgstr ""
+"Wenn jetzt Effekte einer Anwendung deaktiviert werden, setzen wir dessen "
+"Ziel-Metadaten auf null. Dies ermöglicht der Medien Session"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "manager"
-msgstr ""
+msgstr "Manager"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "A new configuration option was added. It allows EasyEffects to ignore "
 "streams whose purpose is to monitor sink"
 msgstr ""
+"Es wurde eine neue Einstellungsmöglichkeit hinzugefügt. Diese erlaubt "
+"EasyEffects überwachende Eingänge zu ignorieren"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "devices. This will help to fix some of problems our users were having when "
 "using OBS."
-msgstr ""
+msgstr ". Dies sollte einige Probleme in Verbindung mit OBS beheben."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The code that shows the stream sample format has been improved"
-msgstr ""
+msgstr "Der Code zum Anzeigen des Stream-Auflösungsformats wurde verbessert"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build"
 msgstr ""
+"Die rnnoise-Bibliothek ist jetzt optional. Dadurch sollten Paket-Maintainer "
+"einfacher"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid "a Debian package. See the issue #1000 for more information."
 msgstr ""
+"Debian Pakete bauen können. Siehe Problem #1000 für weiter Informationen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "Our logs now show the source code line where the messages are being printed"
 msgstr ""
+"In den Logs werden jetzt die Sourcecode-Zeilen angezeigt, welche die "
+"Nachricht ausgelöst hat"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -168,21 +177,27 @@ msgid ""
 "The \"enable effects\" checkbox in our window was not being updated when "
 "third party programs like pavucontrol"
 msgstr ""
+"Die \"Effekte aktivieren\" Checkbox im Fenster wurde nicht aktualisiert, "
+"wenn Programme wie Pavucontrol"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid ""
 "moved the stream away from our virtual devices. This should be fixed now."
 msgstr ""
+"den Stream von unserem virtuellem Gerät entfernt haben. Dies sollte jetzt "
+"behoben sein."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "Fixed a crash that could happen when the maximum autogain history was "
 "changed."
 msgstr ""
+"Ein Absturz-Problem wurde behoben, wenn der Verlauf der automatischen "
+"Verstärkungsregelung verändert wurde."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
+msgstr "Absturz-Probleme durch pw-mididump wurden behoben"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid "The interface of the pitch plugin was improved"
