@@ -89,7 +89,17 @@
                 <property name="spacing">6</property>
                 <property name="halign">center</property>
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="model_error_state">
+                        <style>
+                            <class name="error" />
+                        </style>
+                        <property name="visible">0</property>
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Model Not Loaded</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="model_active_state">
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">Active Model</property>
                     </object>
@@ -97,6 +107,8 @@
                 <child>
                     <object class="GtkLabel" id="active_model_name">
                         <property name="halign">start</property>
+                        <property name="wrap">1</property>
+                        <property name="wrap-mode">word-char</property>
                         <property name="label" translatable="yes">Standard RNNoise Model</property>
 
                         <binding name="label">
