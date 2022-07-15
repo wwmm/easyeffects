@@ -23,6 +23,8 @@ namespace ui::convolver_menu_impulses {
 
 using namespace std::string_literals;
 
+enum class ImpulseImportState { success, no_regular_file, no_frame, no_stereo };
+
 auto constexpr irs_ext = ".irs";
 
 static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
@@ -55,27 +57,66 @@ void remove_from_string_list(ConvolverMenuImpulses* self, const std::string& irs
   ui::remove_from_string_list(self->string_list, irs_filename);
 }
 
-void import_irs_file(const std::string& file_path) {
+auto import_irs_file(const std::string& file_path) -> ImpulseImportState {
   std::filesystem::path p{file_path};
 
-  if (std::filesystem::is_regular_file(p)) {
-    if (SndfileHandle file = SndfileHandle(file_path.c_str()); file.channels() != 2 || file.frames() == 0) {
-      util::warning("Only stereo impulse files are supported!");
-      util::warning(file_path + " loading failed");
-
-      return;
-    }
-
-    auto out_path = irs_dir / p.filename();
-
-    out_path.replace_extension(irs_ext);
-
-    std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
-
-    util::debug("imported irs file to: " + out_path.string());
-  } else {
+  if (!std::filesystem::is_regular_file(p)) {
     util::warning(p.string() + " is not a file!");
+
+    return ImpulseImportState::no_regular_file;
   }
+
+  auto file = SndfileHandle(file_path.c_str());
+
+  if (file.frames() == 0) {
+    util::warning("Cannot import the impulse response! The format may be corrupted or unsupported.");
+    util::warning(file_path + " loading failed");
+
+    return ImpulseImportState::no_frame;
+  } else if (file.channels() != 2) {
+    util::warning("Only stereo impulse files are supported!");
+    util::warning(file_path + " loading failed");
+
+    return ImpulseImportState::no_stereo;
+  }
+
+  auto out_path = irs_dir / p.filename();
+
+  out_path.replace_extension(irs_ext);
+
+  std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+
+  util::debug("Irs file successfully imported to: " + out_path.string());
+
+  return ImpulseImportState::success;
+}
+
+void notify_import_error(const ImpulseImportState& import_state, ConvolverMenuImpulses* self) {
+  std::string descr;
+
+  switch (import_state) {
+    case ImpulseImportState::no_regular_file: {
+      descr = _("The File Is Not Regular");
+
+      break;
+    }
+    case ImpulseImportState::no_frame: {
+      descr = _("The Impulse File May Be Corrupted or Unsupported");
+
+      break;
+    }
+    case ImpulseImportState::no_stereo: {
+      descr = _("Only Stereo Impulse Files Are Supported");
+
+      break;
+    }
+    default:
+      return;
+  }
+
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
+
+  ui::show_simple_message_dialog(GTK_WIDGET(active_window), _("Impulse File Not Imported"), descr);
 }
 
 void on_import_irs_clicked(ConvolverMenuImpulses* self, GtkButton* btn) {
@@ -99,7 +140,11 @@ void on_import_irs_clicked(ConvolverMenuImpulses* self, GtkButton* btn) {
                        auto* file = gtk_file_chooser_get_file(chooser);
                        auto* path = g_file_get_path(file);
 
-                       import_irs_file(path);
+                       auto import_state = import_irs_file(path);
+
+                       if (import_state != ImpulseImportState::success) {
+                         notify_import_error(import_state, self);
+                       }
 
                        g_free(path);
 

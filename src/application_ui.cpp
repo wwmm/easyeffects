@@ -91,35 +91,6 @@ auto setup_icon_theme() -> GtkIconTheme* {
   return icon_theme;
 }
 
-void setup_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr) {
-  if (parent == nullptr) {
-    return;
-  }
-
-  // Modal flag prevents interaction with other windows in the same application
-  auto* dialog = gtk_message_dialog_new(GTK_WINDOW(parent),
-                                        static_cast<GtkDialogFlags>(GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL),
-                                        GTK_MESSAGE_ERROR, GTK_BUTTONS_NONE, "%s", title.c_str());
-
-  gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s", descr.c_str());
-
-  // Add custom button to hint the user to press ESC to destroy the dialog
-  gtk_dialog_add_button(GTK_DIALOG(dialog), _("Close (Press ESC)"), 0);
-
-  // Destroy the dialog when the user responds to it
-  g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), NULL);
-
-  // Keep the dialog on top of the main window, or center the dialog over the main window
-  gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
-
-  /* Version with Adw.MessageDialog available from libAdwaita 1.2
-  auto* dialog = adw_message_dialog_new(GTK_WINDOW(parent), title.c_str(), descr.c_str());
-
-  adw_message_dialog_add_response(ADW_MESSAGE_DIALOG(dialog), "close", "OK"); */
-
-  gtk_window_present(GTK_WINDOW(dialog));
-}
-
 void apply_css_style() {
   auto* provider = gtk_css_provider_new();
 
@@ -193,7 +164,7 @@ void realize(GtkWidget* widget) {
   self->data->connections.push_back(
       app::EE_APP(self->data->gapp)
           ->presets_manager->preset_load_error.connect([=](const std::string title, const std::string descr) {
-            setup_simple_message_dialog(widget, title, descr);
+            ui::show_simple_message_dialog(widget, title, descr);
           }));
 }
 

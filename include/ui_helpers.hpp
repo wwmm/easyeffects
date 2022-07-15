@@ -22,6 +22,7 @@
 #include <adwaita.h>
 #include <fmt/core.h>
 #include <fmt/format.h>
+#include <glib/gi18n.h>
 #include <algorithm>
 #include <iostream>
 #include <map>
@@ -36,6 +37,8 @@ namespace ui {
 void show_fixed_toast(AdwToastOverlay* toast_overlay,
                       const std::string& text,
                       const AdwToastPriority& priority = ADW_TOAST_PRIORITY_HIGH);
+
+void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr);
 
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
 
