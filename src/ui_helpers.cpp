@@ -33,17 +33,21 @@ namespace ui {
 
 using namespace std::string_literals;
 
-void show_fixed_toast(AdwToastOverlay* toast_overlay, const std::string& text, const AdwToastPriority& priority) {
-  // This helper is for showing fixed toasts which the user has to close them.
-  // For autohiding toasts we'll make another helper specifying the timeout as parameter.
-
+void show_autohiding_toast(AdwToastOverlay* toast_overlay,
+                           const std::string& text,
+                           const uint& timeout,
+                           const AdwToastPriority& priority) {
   auto* toast = adw_toast_new(text.c_str());
 
-  adw_toast_set_timeout(toast, 0U);
+  adw_toast_set_timeout(toast, timeout);
 
   adw_toast_set_priority(toast, priority);
 
   adw_toast_overlay_add_toast(toast_overlay, toast);
+}
+
+void show_fixed_toast(AdwToastOverlay* toast_overlay, const std::string& text, const AdwToastPriority& priority) {
+  show_autohiding_toast(toast_overlay, text, 0U, priority);
 }
 
 void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr) {

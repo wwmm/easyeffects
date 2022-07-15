@@ -47,6 +47,10 @@ struct Data {
 struct _RNNoiseBox {
   GtkBox parent_instance;
 
+  GtkOverlay* overlay;
+
+  AdwToastOverlay* toast_overlay;
+
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -76,6 +80,12 @@ void on_reset(RNNoiseBox* self, GtkButton* btn) {
 void update_model_state(RNNoiseBox* self, const bool& load_error) {
   gtk_widget_set_visible(GTK_WIDGET(self->model_error_state), load_error);
   gtk_widget_set_visible(GTK_WIDGET(self->model_active_state), !load_error);
+
+  if (load_error) {
+    ui::show_autohiding_toast(
+        self->toast_overlay,
+        _("Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The Standard Model."));
+  }
 }
 
 gboolean set_model_delete_button_visibility(GtkListItem* item, const char* name) {
@@ -310,6 +320,9 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
   object_class->finalize = finalize;
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::rnnoise_ui);
+
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, overlay);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, toast_overlay);
 
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_gain);
