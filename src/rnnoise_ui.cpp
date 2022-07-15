@@ -47,11 +47,16 @@ struct Data {
 struct _RNNoiseBox {
   GtkBox parent_instance;
 
+  GtkOverlay* overlay;
+
+  AdwToastOverlay* toast_overlay;
+
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *active_model_name, *model_active_state, *model_error_state, *input_level_left_label,
+      *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
   GtkListView* listview;
 
@@ -70,6 +75,17 @@ G_DEFINE_TYPE(RNNoiseBox, rnnoise_box, GTK_TYPE_BOX)
 
 void on_reset(RNNoiseBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
+}
+
+void update_model_state(RNNoiseBox* self, const bool& load_error) {
+  gtk_widget_set_visible(GTK_WIDGET(self->model_error_state), load_error);
+  gtk_widget_set_visible(GTK_WIDGET(self->model_active_state), !load_error);
+
+  if (load_error) {
+    ui::show_autohiding_toast(
+        self->toast_overlay,
+        _("Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The Standard Model."));
+  }
 }
 
 gboolean set_model_delete_button_visibility(GtkListItem* item, const char* name) {
@@ -171,7 +187,15 @@ void setup(RNNoiseBox* self,
 
   rnnoise->set_post_messages(true);
 
+  // Initialize state labels
+  if (const auto m = util::gsettings_get_string(self->settings, "model-path"); !m.empty() && rnnoise->standard_model) {
+    update_model_state(self, true);
+  }
+
   setup_listview(self);
+
+  self->data->connections.push_back(rnnoise->model_changed.connect(
+      [=](const bool load_error) { util::idle_add([=]() { update_model_state(self, load_error); }); }));
 
   self->data->connections.push_back(rnnoise->input_level.connect([=](const float& left, const float& right) {
     util::idle_add([=]() {
@@ -297,6 +321,9 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::rnnoise_ui);
 
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, overlay);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, toast_overlay);
+
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_level_left);
@@ -311,6 +338,10 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, string_list);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, selection_model);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, listview);
+
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, active_model_name);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, model_active_state);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, model_error_state);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_import_model_clicked);

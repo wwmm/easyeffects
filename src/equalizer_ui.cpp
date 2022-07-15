@@ -366,7 +366,7 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
                        if (!import_apo_preset(self, path)) {
                          // notify error on APO preset loading
-                         show_fixed_toast(
+                         ui::show_fixed_toast(
                              self->toast_overlay,
                              _("APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."));
                        }

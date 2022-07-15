@@ -47,6 +47,10 @@ class RNNoise : public PluginBase {
 
   float latency_value = 0.0F;
 
+  bool standard_model = true;
+
+  sigc::signal<void(const bool load_error)> model_changed;
+
  private:
   bool resample = false;
   bool notify_latency = false;

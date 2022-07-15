@@ -260,19 +260,33 @@ void RNNoise::process(std::span<float>& left_in,
 auto RNNoise::get_model_from_file() -> RNNModel* {
   RNNModel* m = nullptr;
 
-  if (const auto path = util::gsettings_get_string(settings, "model-path"); !path.empty()) {
-    if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
-      util::debug(log_tag + name + " loading model from file: " + path);
+  const auto path = util::gsettings_get_string(settings, "model-path");
 
-      m = rnnoise_model_from_file(f);
+  if (path.empty()) {
+    standard_model = true;
 
-      fclose(f);
-    }
+    util::debug(log_tag + name + " using the standard model.");
+
+    model_changed.emit(false);
+
+    return m;
   }
 
-  if (m == nullptr) {
-    util::debug(log_tag + name + " using the default model");
+  if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
+    util::debug(log_tag + name + " loading custom model from file: " + path);
+
+    m = rnnoise_model_from_file(f);
+
+    fclose(f);
   }
+
+  standard_model = (m == nullptr);
+
+  if (standard_model) {
+    util::warning(log_tag + name + " failed to load the custom model. Using the standard one.");
+  }
+
+  model_changed.emit(standard_model);
 
   return m;
 }
