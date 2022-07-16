@@ -5,9 +5,10 @@ Released: UNRELEASED_DATE
 Features:
 - The bypass state can be saved to the preset file. The reasons why this was done can be seen at #1039
 - The preset autoloading code compatibility with usb devices has been improved.
+- A dialog is shown to the user when a preset fails to load or a preset/impulse file fails to be imported.
 
 Bugfixes:
-- 
+- EasyEffects should not crash anymore when the user locale is not properly configured.
 
 Notes:
 - 

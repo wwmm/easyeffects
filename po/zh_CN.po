@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-04 19:14-0300\n"
+"POT-Creation-Date: 2022-07-16 11:20-0300\n"
 "PO-Revision-Date: 2022-07-06 20:18+0000\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -908,86 +908,86 @@ msgstr "输出增益"
 
 #: data/ui/autogain.ui:361 data/ui/bass_enhancer.ui:251
 #: data/ui/bass_loudness.ui:136 data/ui/compressor.ui:505
-#: data/ui/compressor.ui:987 data/ui/convolver.ui:222 data/ui/crossfeed.ui:133
+#: data/ui/compressor.ui:987 data/ui/convolver.ui:216 data/ui/crossfeed.ui:133
 #: data/ui/crystalizer.ui:33 data/ui/deesser.ui:407 data/ui/delay.ui:101
-#: data/ui/echo_canceller.ui:105 data/ui/equalizer.ui:189
-#: data/ui/exciter.ui:251 data/ui/filter.ui:163 data/ui/gate.ui:327
-#: data/ui/limiter.ui:718 data/ui/loudness.ui:123 data/ui/maximizer.ui:136
-#: data/ui/multiband_compressor.ui:378 data/ui/multiband_gate.ui:1617
-#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:295
-#: data/ui/presets_menu.ui:177 data/ui/reverb.ui:351 data/ui/rnnoise.ui:131
-#: data/ui/stereo_tools.ui:30 data/ui/stereo_tools.ui:544
-#: src/application_ui.cpp:285
+#: data/ui/echo_canceller.ui:105 data/ui/equalizer.ui:200
+#: data/ui/exciter.ui:251 data/ui/filter.ui:163 data/ui/gate.ui:611
+#: data/ui/gate.ui:1092 data/ui/limiter.ui:718 data/ui/loudness.ui:123
+#: data/ui/maximizer.ui:136 data/ui/multiband_compressor.ui:378
+#: data/ui/multiband_gate.ui:1617 data/ui/pipe_manager_box.ui:306
+#: data/ui/pitch.ui:295 data/ui/presets_menu.ui:177 data/ui/reverb.ui:351
+#: data/ui/rnnoise.ui:154 data/ui/stereo_tools.ui:30
+#: data/ui/stereo_tools.ui:544 src/application_ui.cpp:266
 msgid "Input"
 msgstr "输入"
 
 #: data/ui/autogain.ui:380 data/ui/bass_enhancer.ui:270
 #: data/ui/bass_loudness.ui:155 data/ui/compressor.ui:1006
-#: data/ui/convolver.ui:241 data/ui/crossfeed.ui:152 data/ui/crystalizer.ui:52
+#: data/ui/convolver.ui:235 data/ui/crossfeed.ui:152 data/ui/crystalizer.ui:52
 #: data/ui/deesser.ui:426 data/ui/delay.ui:120 data/ui/echo_canceller.ui:124
-#: data/ui/equalizer.ui:208 data/ui/exciter.ui:270 data/ui/filter.ui:182
-#: data/ui/gate.ui:346 data/ui/limiter.ui:737 data/ui/loudness.ui:142
+#: data/ui/equalizer.ui:219 data/ui/exciter.ui:270 data/ui/filter.ui:182
+#: data/ui/gate.ui:1111 data/ui/limiter.ui:737 data/ui/loudness.ui:142
 #: data/ui/maximizer.ui:155 data/ui/multiband_compressor.ui:397
 #: data/ui/multiband_gate.ui:1636 data/ui/pitch.ui:314 data/ui/reverb.ui:370
-#: data/ui/rnnoise.ui:150 data/ui/stereo_tools.ui:563
+#: data/ui/rnnoise.ui:173 data/ui/stereo_tools.ui:563
 msgid "Plugin Input Gain"
 msgstr "插件输入增益"
 
 #: data/ui/autogain.ui:445 data/ui/bass_enhancer.ui:335
 #: data/ui/bass_loudness.ui:53 data/ui/bass_loudness.ui:220
-#: data/ui/compressor.ui:1071 data/ui/convolver.ui:306 data/ui/crossfeed.ui:217
+#: data/ui/compressor.ui:1071 data/ui/convolver.ui:300 data/ui/crossfeed.ui:217
 #: data/ui/crystalizer.ui:117 data/ui/deesser.ui:491 data/ui/delay.ui:185
-#: data/ui/echo_canceller.ui:189 data/ui/equalizer.ui:273
-#: data/ui/exciter.ui:335 data/ui/filter.ui:247 data/ui/gate.ui:411
+#: data/ui/echo_canceller.ui:189 data/ui/equalizer.ui:284
+#: data/ui/exciter.ui:335 data/ui/filter.ui:247 data/ui/gate.ui:1176
 #: data/ui/limiter.ui:802 data/ui/loudness.ui:207 data/ui/maximizer.ui:220
 #: data/ui/multiband_compressor.ui:462 data/ui/multiband_gate.ui:464
 #: data/ui/multiband_gate.ui:824 data/ui/multiband_gate.ui:1184
 #: data/ui/multiband_gate.ui:1544 data/ui/multiband_gate.ui:1701
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:379
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:435 data/ui/rnnoise.ui:215
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:435 data/ui/rnnoise.ui:238
 #: data/ui/stereo_tools.ui:371 data/ui/stereo_tools.ui:628
-#: src/application_ui.cpp:284
+#: src/application_ui.cpp:265
 msgid "Output"
 msgstr "输出"
 
 #: data/ui/autogain.ui:464 data/ui/bass_enhancer.ui:354
 #: data/ui/bass_loudness.ui:239 data/ui/compressor.ui:1090
-#: data/ui/convolver.ui:325 data/ui/crossfeed.ui:236 data/ui/crystalizer.ui:136
+#: data/ui/convolver.ui:319 data/ui/crossfeed.ui:236 data/ui/crystalizer.ui:136
 #: data/ui/deesser.ui:510 data/ui/delay.ui:204 data/ui/echo_canceller.ui:208
-#: data/ui/equalizer.ui:292 data/ui/exciter.ui:354 data/ui/filter.ui:266
-#: data/ui/gate.ui:430 data/ui/limiter.ui:821 data/ui/loudness.ui:226
+#: data/ui/equalizer.ui:303 data/ui/exciter.ui:354 data/ui/filter.ui:266
+#: data/ui/gate.ui:1195 data/ui/limiter.ui:821 data/ui/loudness.ui:226
 #: data/ui/maximizer.ui:239 data/ui/multiband_compressor.ui:481
 #: data/ui/multiband_gate.ui:1720 data/ui/pitch.ui:398 data/ui/reverb.ui:454
-#: data/ui/rnnoise.ui:234 data/ui/stereo_tools.ui:647
+#: data/ui/rnnoise.ui:257 data/ui/stereo_tools.ui:647
 msgid "Plugin Output Gain"
 msgstr "插件输出增益"
 
 #: data/ui/autogain.ui:527 data/ui/bass_enhancer.ui:448
 #: data/ui/bass_loudness.ui:302 data/ui/compressor.ui:1153
-#: data/ui/convolver.ui:388 data/ui/crossfeed.ui:299 data/ui/crystalizer.ui:191
+#: data/ui/convolver.ui:382 data/ui/crossfeed.ui:299 data/ui/crystalizer.ui:191
 #: data/ui/deesser.ui:633 data/ui/delay.ui:267 data/ui/echo_canceller.ui:271
-#: data/ui/equalizer.ui:355 data/ui/equalizer_band.ui:223
+#: data/ui/equalizer.ui:366 data/ui/equalizer_band.ui:223
 #: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:447 data/ui/filter.ui:329
-#: data/ui/gate.ui:523 data/ui/limiter.ui:884 data/ui/loudness.ui:289
+#: data/ui/gate.ui:1288 data/ui/limiter.ui:884 data/ui/loudness.ui:289
 #: data/ui/maximizer.ui:334 data/ui/multiband_compressor.ui:544
 #: data/ui/multiband_gate.ui:1783 data/ui/pitch.ui:461 data/ui/reverb.ui:517
-#: data/ui/rnnoise.ui:297 data/ui/stereo_tools.ui:710
+#: data/ui/rnnoise.ui:320 data/ui/stereo_tools.ui:710
 msgid "Reset"
 msgstr "重置"
 
 #: data/ui/autogain.ui:541 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:316 data/ui/compressor.ui:1167
-#: data/ui/convolver.ui:402 data/ui/crossfeed.ui:313 data/ui/deesser.ui:647
-#: data/ui/delay.ui:281 data/ui/echo_canceller.ui:285 data/ui/equalizer.ui:369
-#: data/ui/exciter.ui:461 data/ui/filter.ui:343 data/ui/gate.ui:537
+#: data/ui/convolver.ui:396 data/ui/crossfeed.ui:313 data/ui/deesser.ui:647
+#: data/ui/delay.ui:281 data/ui/echo_canceller.ui:285 data/ui/equalizer.ui:380
+#: data/ui/exciter.ui:461 data/ui/filter.ui:343 data/ui/gate.ui:1302
 #: data/ui/limiter.ui:898 data/ui/loudness.ui:303 data/ui/maximizer.ui:348
 #: data/ui/multiband_compressor.ui:558 data/ui/multiband_gate.ui:1797
-#: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:311
+#: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:334
 #: data/ui/stereo_tools.ui:724
 msgid "Using"
 msgstr "使用"
 
-#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:528
+#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:528 data/ui/gate.ui:634
 msgid "Device"
 msgstr "设备"
 
@@ -1011,7 +1011,7 @@ msgid "Remove this autoload preset"
 msgstr "删除此自动加载预设"
 
 #: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:458 data/ui/deesser.ui:14
-#: data/ui/exciter.ui:12
+#: data/ui/exciter.ui:12 data/ui/gate.ui:564
 msgid "Listen"
 msgstr "聆听"
 
@@ -1073,9 +1073,10 @@ msgid "Compressor"
 msgstr "压缩器"
 
 #: data/ui/compressor.ui:43 data/ui/compressor.ui:430 data/ui/compressor.ui:725
-#: data/ui/deesser.ui:54 data/ui/equalizer.ui:111 data/ui/equalizer_band.ui:130
-#: data/ui/limiter.ui:36 data/ui/multiband_compressor_band.ui:449
-#: data/ui/multiband_gate.ui:25 data/ui/pitch.ui:22
+#: data/ui/deesser.ui:54 data/ui/equalizer.ui:122 data/ui/equalizer_band.ui:130
+#: data/ui/gate.ui:536 data/ui/gate.ui:830 data/ui/limiter.ui:36
+#: data/ui/multiband_compressor_band.ui:449 data/ui/multiband_gate.ui:25
+#: data/ui/pitch.ui:22
 msgid "Mode"
 msgstr "模式"
 
@@ -1103,7 +1104,7 @@ msgstr "提升阈值"
 msgid "Boost Amount"
 msgstr "Boost 量"
 
-#: data/ui/compressor.ui:155 data/ui/gate.ui:106 data/ui/limiter.ui:252
+#: data/ui/compressor.ui:155 data/ui/gate.ui:50 data/ui/limiter.ui:252
 #: data/ui/limiter.ui:475 data/ui/multiband_compressor_band.ui:186
 #: data/ui/multiband_gate.ui:215 data/ui/multiband_gate.ui:575
 #: data/ui/multiband_gate.ui:935 data/ui/multiband_gate.ui:1295
@@ -1114,8 +1115,8 @@ msgstr "起始时间"
 msgid "Time"
 msgstr "时间"
 
-#: data/ui/compressor.ui:176 data/ui/deesser.ui:289 data/ui/gate.ui:176
-#: data/ui/limiter.ui:336 data/ui/maximizer.ui:20
+#: data/ui/compressor.ui:176 data/ui/deesser.ui:289 data/ui/gate.ui:143
+#: data/ui/gate.ui:237 data/ui/limiter.ui:336 data/ui/maximizer.ui:20
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate.ui:285
 #: data/ui/multiband_gate.ui:645 data/ui/multiband_gate.ui:1005
 #: data/ui/multiband_gate.ui:1365
@@ -1126,11 +1127,12 @@ msgstr "阈值"
 msgid "Attack Time"
 msgstr "起音时间"
 
-#: data/ui/compressor.ui:226 data/ui/multiband_compressor_band.ui:247
+#: data/ui/compressor.ui:226 data/ui/gate.ui:433
+#: data/ui/multiband_compressor_band.ui:247
 msgid "Attack Threshold"
 msgstr "起音阈值"
 
-#: data/ui/compressor.ui:233 data/ui/gate.ui:141 data/ui/limiter.ui:294
+#: data/ui/compressor.ui:233 data/ui/gate.ui:56 data/ui/limiter.ui:294
 #: data/ui/limiter.ui:512 data/ui/maximizer.ui:86
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate.ui:250
 #: data/ui/multiband_gate.ui:610 data/ui/multiband_gate.ui:970
@@ -1142,92 +1144,99 @@ msgstr "消音时间"
 msgid "Release Time"
 msgstr "消音时间"
 
-#: data/ui/compressor.ui:285 data/ui/multiband_compressor_band.ui:302
+#: data/ui/compressor.ui:285 data/ui/gate.ui:487
+#: data/ui/multiband_compressor_band.ui:302
 msgid "Release Threshold"
 msgstr "消音阈值"
 
-#: data/ui/compressor.ui:292 data/ui/deesser.ui:323 data/ui/gate.ui:210
+#: data/ui/compressor.ui:292 data/ui/deesser.ui:323
 #: data/ui/multiband_compressor_band.ui:309 data/ui/multiband_gate.ui:319
 #: data/ui/multiband_gate.ui:679 data/ui/multiband_gate.ui:1039
 #: data/ui/multiband_gate.ui:1399
 msgid "Ratio"
 msgstr "比率"
 
-#: data/ui/compressor.ui:330 data/ui/gate.ui:245 data/ui/limiter.ui:548
+#: data/ui/compressor.ui:330 data/ui/limiter.ui:548
 #: data/ui/multiband_compressor_band.ui:347 data/ui/multiband_gate.ui:354
 #: data/ui/multiband_gate.ui:714 data/ui/multiband_gate.ui:1074
 #: data/ui/multiband_gate.ui:1434
 msgid "Knee"
 msgstr "拐点"
 
-#: data/ui/compressor.ui:367 data/ui/deesser.ui:359 data/ui/gate.ui:279
+#: data/ui/compressor.ui:367 data/ui/deesser.ui:359 data/ui/gate.ui:324
 #: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate.ui:388
 #: data/ui/multiband_gate.ui:748 data/ui/multiband_gate.ui:1108
 #: data/ui/multiband_gate.ui:1468
 msgid "Makeup"
 msgstr "补偿"
 
-#: data/ui/compressor.ui:411 data/ui/compressor.ui:923
+#: data/ui/compressor.ui:411 data/ui/compressor.ui:923 data/ui/gate.ui:517
+#: data/ui/gate.ui:1028
 msgid "Sidechain"
 msgstr "侧链"
 
-#: data/ui/compressor.ui:440 data/ui/deesser.ui:38 data/ui/gate.ui:30
+#: data/ui/compressor.ui:440 data/ui/deesser.ui:38 data/ui/gate.ui:546
 #: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:196
 #: data/ui/multiband_gate.ui:556 data/ui/multiband_gate.ui:916
 #: data/ui/multiband_gate.ui:1276
 msgid "Peak"
 msgstr "峰值"
 
-#: data/ui/compressor.ui:441 data/ui/deesser.ui:37 data/ui/gate.ui:29
+#: data/ui/compressor.ui:441 data/ui/deesser.ui:37 data/ui/gate.ui:547
 #: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:195
 #: data/ui/multiband_gate.ui:555 data/ui/multiband_gate.ui:915
 #: data/ui/multiband_gate.ui:1275
 msgid "RMS"
 msgstr "均方根值"
 
-#: data/ui/compressor.ui:442 data/ui/compressor.ui:794
-#: data/ui/multiband_compressor_band.ui:462
+#: data/ui/compressor.ui:442 data/ui/compressor.ui:794 data/ui/gate.ui:548
+#: data/ui/gate.ui:899 data/ui/multiband_compressor_band.ui:462
 msgid "Low-Pass"
 msgstr "低通"
 
-#: data/ui/compressor.ui:443 data/ui/multiband_compressor_band.ui:463
+#: data/ui/compressor.ui:443 data/ui/gate.ui:549
+#: data/ui/multiband_compressor_band.ui:463
 msgid "Uniform"
 msgstr "均值"
 
-#: data/ui/compressor.ui:450 data/ui/multiband_compressor_band.ui:470
+#: data/ui/compressor.ui:450 data/ui/gate.ui:556
+#: data/ui/multiband_compressor_band.ui:470
 msgid "Sidechain Mode"
 msgstr "侧链模式"
 
-#: data/ui/compressor.ui:468 data/ui/multiband_compressor_band.ui:477
+#: data/ui/compressor.ui:468 data/ui/gate.ui:574
+#: data/ui/multiband_compressor_band.ui:477
 msgid "Source"
 msgstr "源"
 
-#: data/ui/compressor.ui:478 data/ui/multiband_compressor_band.ui:488
+#: data/ui/compressor.ui:478 data/ui/gate.ui:584
+#: data/ui/multiband_compressor_band.ui:488
 msgid "Middle"
 msgstr "中央"
 
-#: data/ui/compressor.ui:479 data/ui/multiband_compressor_band.ui:489
+#: data/ui/compressor.ui:479 data/ui/gate.ui:585
+#: data/ui/multiband_compressor_band.ui:489
 msgid "Side"
 msgstr "侧边"
 
-#: data/ui/compressor.ui:480 data/ui/delay.ui:20 data/ui/equalizer.ui:37
-#: data/ui/multiband_compressor_band.ui:490 data/ui/pipe_manager_box.ui:504
-#: data/ui/stereo_tools.ui:151
+#: data/ui/compressor.ui:480 data/ui/delay.ui:20 data/ui/equalizer.ui:48
+#: data/ui/gate.ui:586 data/ui/multiband_compressor_band.ui:490
+#: data/ui/pipe_manager_box.ui:504 data/ui/stereo_tools.ui:151
 msgid "Left"
 msgstr "左"
 
-#: data/ui/compressor.ui:481 data/ui/delay.ui:53 data/ui/equalizer.ui:49
-#: data/ui/multiband_compressor_band.ui:491 data/ui/pipe_manager_box.ui:515
-#: data/ui/stereo_tools.ui:206
+#: data/ui/compressor.ui:481 data/ui/delay.ui:53 data/ui/equalizer.ui:60
+#: data/ui/gate.ui:587 data/ui/multiband_compressor_band.ui:491
+#: data/ui/pipe_manager_box.ui:515 data/ui/stereo_tools.ui:206
 msgid "Right"
 msgstr "右"
 
-#: data/ui/compressor.ui:488 data/ui/multiband_compressor.ui:86
-#: data/ui/multiband_compressor_band.ui:498
+#: data/ui/compressor.ui:488 data/ui/gate.ui:594
+#: data/ui/multiband_compressor.ui:86 data/ui/multiband_compressor_band.ui:498
 msgid "Sidechain Source"
 msgstr "侧链声源"
 
-#: data/ui/compressor.ui:517 data/ui/equalizer_band.ui:98
+#: data/ui/compressor.ui:517 data/ui/equalizer_band.ui:98 data/ui/gate.ui:623
 msgid "Type"
 msgstr "类型"
 
@@ -1239,135 +1248,140 @@ msgstr "前馈式"
 msgid "Feed-back"
 msgstr "反馈式"
 
-#: data/ui/compressor.ui:543
+#: data/ui/compressor.ui:543 data/ui/gate.ui:648
 msgid "External"
 msgstr ""
 
-#: data/ui/compressor.ui:550
+#: data/ui/compressor.ui:550 data/ui/gate.ui:655
 msgid "Sidechain Type"
 msgstr "侧链类型"
 
-#: data/ui/compressor.ui:577 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
 msgid "Input Device"
 msgstr "输入设备"
 
-#: data/ui/compressor.ui:585
+#: data/ui/compressor.ui:585 data/ui/gate.ui:690
 msgid "PreAmplification"
 msgstr "前置放大"
 
-#: data/ui/compressor.ui:622 data/ui/multiband_compressor_band.ui:654
+#: data/ui/compressor.ui:622 data/ui/gate.ui:727
+#: data/ui/multiband_compressor_band.ui:654
 msgid "Reactivity"
 msgstr "响应"
 
-#: data/ui/compressor.ui:659 data/ui/limiter.ui:210
+#: data/ui/compressor.ui:659 data/ui/gate.ui:764 data/ui/limiter.ui:210
 #: data/ui/multiband_compressor_band.ui:688
 msgid "Lookahead"
 msgstr "预测时间"
 
-#: data/ui/compressor.ui:702
+#: data/ui/compressor.ui:702 data/ui/gate.ui:807
 msgid "Sidechain Filters"
 msgstr "侧链过滤器"
 
-#: data/ui/compressor.ui:712
+#: data/ui/compressor.ui:712 data/ui/gate.ui:817
 msgid "High-Pass"
 msgstr "高通滤波器"
 
 #: data/ui/compressor.ui:738 data/ui/equalizer_band.ui:197 data/ui/filter.ui:43
-#: data/ui/pipe_manager_box.ui:561
+#: data/ui/gate.ui:843 data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "频率"
 
 #: data/ui/compressor.ui:751 data/ui/compressor.ui:807
-#: data/ui/equalizer_band.ui:108
+#: data/ui/equalizer_band.ui:108 data/ui/gate.ui:856 data/ui/gate.ui:912
 msgid "Off"
 msgstr "关"
 
-#: data/ui/compressor.ui:752 data/ui/compressor.ui:808
+#: data/ui/compressor.ui:752 data/ui/compressor.ui:808 data/ui/gate.ui:857
+#: data/ui/gate.ui:913
 msgid "12 dB/oct"
 msgstr ""
 
-#: data/ui/compressor.ui:753 data/ui/compressor.ui:809
+#: data/ui/compressor.ui:753 data/ui/compressor.ui:809 data/ui/gate.ui:858
+#: data/ui/gate.ui:914
 msgid "24 dB/oct"
 msgstr ""
 
-#: data/ui/compressor.ui:754 data/ui/compressor.ui:810
+#: data/ui/compressor.ui:754 data/ui/compressor.ui:810 data/ui/gate.ui:859
+#: data/ui/gate.ui:915
 msgid "36 dB/oct"
 msgstr ""
 
-#: data/ui/compressor.ui:761
+#: data/ui/compressor.ui:761 data/ui/gate.ui:866
 msgid "High-Pass Filter Mode"
 msgstr ""
 
-#: data/ui/compressor.ui:787 data/ui/compressor.ui:843
+#: data/ui/compressor.ui:787 data/ui/compressor.ui:843 data/ui/gate.ui:892
+#: data/ui/gate.ui:948
 msgid "High-Pass Filter Frequency"
 msgstr ""
 
-#: data/ui/compressor.ui:817
+#: data/ui/compressor.ui:817 data/ui/gate.ui:922
 msgid "Low-Pass Filter Mode"
 msgstr ""
 
-#: data/ui/compressor.ui:869
+#: data/ui/compressor.ui:869 data/ui/gate.ui:974
 msgid "Gain"
 msgstr "增益"
 
-#: data/ui/compressor.ui:896
+#: data/ui/compressor.ui:896 data/ui/gate.ui:1001
 msgid "Envelope"
 msgstr "波封"
 
-#: data/ui/compressor.ui:950
+#: data/ui/compressor.ui:950 data/ui/gate.ui:127 data/ui/gate.ui:1055
 msgid "Curve"
 msgstr "压缩曲线"
 
-#: data/ui/convolver.ui:31
+#: data/ui/convolver.ui:30
 msgid "L"
 msgstr "左"
 
-#: data/ui/convolver.ui:34 data/ui/pipe_manager_box.ui:507
+#: data/ui/convolver.ui:33 data/ui/pipe_manager_box.ui:507
 msgid "Left Channel"
 msgstr "左声道"
 
-#: data/ui/convolver.ui:44
+#: data/ui/convolver.ui:43
 msgid "R"
 msgstr "右"
 
-#: data/ui/convolver.ui:47 data/ui/pipe_manager_box.ui:518
+#: data/ui/convolver.ui:46 data/ui/pipe_manager_box.ui:518
 msgid "Right Channel"
 msgstr "右声道"
 
-#: data/ui/convolver.ui:62
+#: data/ui/convolver.ui:61
 msgid "Impulses"
 msgstr ""
 
-#: data/ui/convolver.ui:70 data/ui/convolver_menu_combine.ui:113
+#: data/ui/convolver.ui:69 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
 msgstr ""
 
-#: data/ui/convolver.ui:77
+#: data/ui/convolver.ui:76
 msgid "Stereo Width"
 msgstr "立体声宽度"
 
-#: data/ui/convolver.ui:106
+#: data/ui/convolver.ui:104
 msgid "Spectrum"
 msgstr "频谱"
 
-#: data/ui/convolver.ui:115
+#: data/ui/convolver.ui:112
 msgid "Log Scale"
 msgstr ""
 
-#: data/ui/convolver.ui:125 src/tags_plugin_name.cpp:25
+#: data/ui/convolver.ui:122 src/tags_plugin_name.cpp:25
 msgid "Autogain"
 msgstr "自动增益"
 
-#: data/ui/convolver.ui:141
+#: data/ui/convolver.ui:138
 msgid "Rate"
 msgstr "速率"
 
-#: data/ui/convolver.ui:163
+#: data/ui/convolver.ui:159
 msgid "Samples"
 msgstr "样本"
 
-#: data/ui/convolver.ui:185
+#: data/ui/convolver.ui:180
 msgid "Duration"
 msgstr "持续时间"
 
@@ -1432,7 +1446,7 @@ msgstr "旁路"
 msgid "Mute"
 msgstr "静音静音"
 
-#: data/ui/deesser.ui:30 data/ui/gate.ui:22
+#: data/ui/deesser.ui:30
 msgid "Detection"
 msgstr "侦测"
 
@@ -1492,7 +1506,7 @@ msgstr ""
 msgid "Detected"
 msgstr "已侦测到"
 
-#: data/ui/deesser.ui:599 data/ui/maximizer.ui:298
+#: data/ui/deesser.ui:599 data/ui/gate.ui:319 data/ui/maximizer.ui:298
 msgid "Reduction"
 msgstr "衰减"
 
@@ -1508,39 +1522,39 @@ msgstr "过滤器长度"
 msgid "Excluded Apps"
 msgstr ""
 
-#: data/ui/equalizer.ui:77
+#: data/ui/equalizer.ui:88
 msgid "Bands"
 msgstr "频段"
 
-#: data/ui/equalizer.ui:122
+#: data/ui/equalizer.ui:133
 msgid "IIR"
 msgstr ""
 
-#: data/ui/equalizer.ui:123
+#: data/ui/equalizer.ui:134
 msgid "FIR"
 msgstr ""
 
-#: data/ui/equalizer.ui:124
+#: data/ui/equalizer.ui:135
 msgid "FFT"
 msgstr ""
 
-#: data/ui/equalizer.ui:125
+#: data/ui/equalizer.ui:136
 msgid "SPM"
 msgstr ""
 
-#: data/ui/equalizer.ui:142
+#: data/ui/equalizer.ui:153
 msgid "Split Channels"
 msgstr "分离声道"
 
-#: data/ui/equalizer.ui:148
+#: data/ui/equalizer.ui:159
 msgid "Flat Response"
 msgstr "平滑响应"
 
-#: data/ui/equalizer.ui:156
+#: data/ui/equalizer.ui:167
 msgid "Calculate Frequencies"
 msgstr "频率响应"
 
-#: data/ui/equalizer.ui:164
+#: data/ui/equalizer.ui:175
 msgid "Load APO Preset"
 msgstr "加载 APO 预设"
 
@@ -1682,25 +1696,33 @@ msgstr ""
 msgid "Inertia"
 msgstr "惯性"
 
-#: data/ui/gate.ui:46 data/ui/multiband_gate.ui:421
-#: data/ui/multiband_gate.ui:781 data/ui/multiband_gate.ui:1141
-#: data/ui/multiband_gate.ui:1501
-msgid "Max Reduction"
-msgstr "衰减"
+#: data/ui/gate.ui:31 src/tags_plugin_name.cpp:38
+msgid "Gate"
+msgstr "门限"
 
-#: data/ui/gate.ui:77 data/ui/limiter.ui:388
-msgid "Stereo Link"
-msgstr "立体声连锁"
+#: data/ui/gate.ui:149 data/ui/gate.ui:242
+msgid "Zone"
+msgstr ""
 
-#: data/ui/gate.ui:84
-msgid "Average"
-msgstr "平均值"
+#: data/ui/gate.ui:221
+msgid "Hysteresis"
+msgstr ""
 
-#: data/ui/gate.ui:85 data/ui/preferences_spectrum.ui:211
-msgid "Maximum"
-msgstr "最大值"
+#: data/ui/gate.ui:406
+msgid "Attack Zone Start"
+msgstr ""
 
-#: data/ui/gate.ui:489 data/ui/multiband_gate.ui:494
+#: data/ui/gate.ui:460
+#, fuzzy
+msgid "Release Zone Start"
+msgstr "消音时间"
+
+#: data/ui/gate.ui:647
+#, fuzzy
+msgid "Internal"
+msgstr "综合"
+
+#: data/ui/gate.ui:1254 data/ui/multiband_gate.ui:494
 #: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
 #: data/ui/multiband_gate.ui:1574
 msgid "Gating"
@@ -1857,6 +1879,10 @@ msgstr "侧链前置放大"
 #: data/ui/limiter.ui:373
 msgid "Boost"
 msgstr "增强"
+
+#: data/ui/limiter.ui:388
+msgid "Stereo Link"
+msgstr "立体声连锁"
 
 #: data/ui/limiter.ui:433 data/ui/multiband_compressor_band.ui:116
 msgid "External Sidechain"
@@ -2110,6 +2136,11 @@ msgstr ""
 #: data/ui/multiband_gate.ui:414
 msgid "Band 1 Makeup"
 msgstr "频段 1 补偿"
+
+#: data/ui/multiband_gate.ui:421 data/ui/multiband_gate.ui:781
+#: data/ui/multiband_gate.ui:1141 data/ui/multiband_gate.ui:1501
+msgid "Max Reduction"
+msgstr "衰减"
 
 #: data/ui/multiband_gate.ui:448
 msgid "Band 1 Max Reduction"
@@ -2640,7 +2671,11 @@ msgstr "频率范围"
 msgid "Minimum"
 msgstr "最低"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:136
+#: data/ui/preferences_spectrum.ui:211
+msgid "Maximum"
+msgstr "最大值"
+
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:181
 msgid "Load"
 msgstr "加载"
 
@@ -2776,27 +2811,31 @@ msgstr "舞厅"
 msgid "Large Occupied Hall"
 msgstr "拥挤的大厅"
 
-#: data/ui/rnnoise.ui:20
+#: data/ui/rnnoise.ui:31
 msgid "Import Model"
 msgstr "导入模型"
 
-#: data/ui/rnnoise.ui:29
+#: data/ui/rnnoise.ui:40
 msgid "Models"
 msgstr "模型"
 
-#: data/ui/rnnoise.ui:50 src/rnnoise_ui.cpp:28
+#: data/ui/rnnoise.ui:61 src/rnnoise_ui.cpp:28
 msgid "Standard Model"
 msgstr "标准模型"
 
-#: data/ui/rnnoise.ui:78
+#: data/ui/rnnoise.ui:89
 msgid "RNNoise Models List"
 msgstr "RNNoise 模型列表"
 
-#: data/ui/rnnoise.ui:94
+#: data/ui/rnnoise.ui:109
+msgid "Model Not Loaded"
+msgstr ""
+
+#: data/ui/rnnoise.ui:115
 msgid "Active Model"
 msgstr "激活模型"
 
-#: data/ui/rnnoise.ui:100
+#: data/ui/rnnoise.ui:123
 msgid "Standard RNNoise Model"
 msgstr "标准 RNNoise 模型"
 
@@ -2912,31 +2951,31 @@ msgstr "立体声基线"
 msgid "Stereo Phase"
 msgstr "立体声相位"
 
-#: src/app_info.cpp:66
+#: src/app_info.cpp:64
 msgid "Running"
 msgstr "正在运行"
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:66
 msgid "Suspended"
 msgstr "已暂停"
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:68
 msgid "Idle"
 msgstr "空闲"
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:70
 msgid "Creating"
 msgstr "创建中"
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:72
 msgid "Error"
 msgstr "错误"
 
-#: src/app_info.cpp:76
+#: src/app_info.cpp:74
 msgid "Unknown"
 msgstr "未知"
 
-#: src/app_info.cpp:234
+#: src/app_info.cpp:226
 msgid "channels"
 msgstr "声道"
 
@@ -2948,99 +2987,153 @@ msgstr "输出预设: "
 msgid "Input Presets: "
 msgstr "输入预设: "
 
-#: src/application.cpp:410
+#: src/application.cpp:413
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
-#: src/application.cpp:500
+#: src/application.cpp:503
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "退出 EasyEffects。 在服务模式下运行时很有用。"
 
-#: src/application.cpp:503
+#: src/application.cpp:506
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
-#: src/application.cpp:506
+#: src/application.cpp:509
 msgid "Reset EasyEffects."
 msgstr "重设 EasyEffects。"
 
-#: src/application.cpp:509
+#: src/application.cpp:512
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:512
+#: src/application.cpp:515
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:515
+#: src/application.cpp:518
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
-#: src/application_ui.cpp:286
+#: src/application_ui.cpp:267
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/convolver_menu_impulses.cpp:84
+#: src/convolver_menu_impulses.cpp:99
+msgid "The File Is Not Regular"
+msgstr ""
+
+#: src/convolver_menu_impulses.cpp:104
+msgid "The Impulse File May Be Corrupted or Unsupported"
+msgstr ""
+
+#: src/convolver_menu_impulses.cpp:109
+msgid "Only Stereo Impulse Files Are Supported"
+msgstr ""
+
+#: src/convolver_menu_impulses.cpp:119
+#, fuzzy
+msgid "Impulse File Not Imported"
+msgstr "脉冲文件列表"
+
+#: src/convolver_menu_impulses.cpp:125
 msgid "Import Impulse File"
 msgstr "导入 Impulse 文件"
 
-#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:346
-#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:115
+#: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:352
+#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "打开"
 
-#: src/convolver_menu_impulses.cpp:85 src/equalizer_ui.cpp:346
-#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:115
+#: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:352
+#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr "取消"
 
-#: src/convolver_menu_impulses.cpp:89
+#: src/convolver_menu_impulses.cpp:130
 msgid "Impulse Response"
 msgstr "Impulse 解析"
 
-#: src/convolver_menu_impulses.cpp:198
+#: src/convolver_menu_impulses.cpp:243
 msgid "Load Impulse"
 msgstr "加载脉冲"
 
-#: src/convolver_menu_impulses.cpp:201
+#: src/convolver_menu_impulses.cpp:246
 msgid "Remove Impulse"
 msgstr "删除脉冲"
 
-#: src/convolver_ui.cpp:333 src/convolver_ui.cpp:334 src/convolver_ui.cpp:335
-msgid "Failed"
-msgstr "失败"
+#: src/convolver_ui.cpp:323
+#, fuzzy
+msgid "No Impulse File Loaded"
+msgstr "脉冲文件列表"
 
-#: src/convolver_ui.cpp:336
-msgid "Could Not Load The Impulse File"
+#: src/convolver_ui.cpp:345
+#, fuzzy
+msgid "Failed To Load The Impulse File"
 msgstr "无法加载 Impulse 文件"
 
-#: src/effects_box.cpp:264 src/plugins_box.cpp:549
+#: src/effects_box.cpp:257 src/plugins_box.cpp:549
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:288 src/plugins_box.cpp:569
+#: src/effects_box.cpp:280 src/plugins_box.cpp:569
 msgid "Players"
 msgstr "播放器"
 
-#: src/effects_box.cpp:311
+#: src/effects_box.cpp:303
 msgid "Effects"
 msgstr "音效"
 
-#: src/equalizer_band_box.cpp:108
+#: src/equalizer_band_box.cpp:91
 msgid "infinity"
 msgstr "无限"
 
-#: src/equalizer_ui.cpp:345
+#: src/equalizer_ui.cpp:351
 msgid "Import APO Preset File"
 msgstr "加载 APO 预设文件"
 
-#: src/equalizer_ui.cpp:351
+#: src/equalizer_ui.cpp:357
 msgid "APO Presets"
 msgstr "APO 预设"
 
-#: src/pipe_manager_box.cpp:329
+#: src/equalizer_ui.cpp:371
+msgid ""
+"APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
+msgstr ""
+
+#: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
+
+#: src/plugins_box.cpp:503
+msgid "Remove"
+msgstr "删除"
+
+#: src/plugins_box.cpp:570
+msgid "Output Device"
+msgstr "输出设备"
+
+#: src/plugins_menu.cpp:142
+msgid "Add"
+msgstr "添加"
+
+#: src/presets_menu.cpp:102
+msgid "Import Preset"
+msgstr "导入预设"
+
+#: src/rnnoise_ui.cpp:87
+msgid ""
+"Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
+"Standard Model."
+msgstr ""
+
+#: src/rnnoise_ui.cpp:130
+msgid "Import Model File"
+msgstr "导入模型文件"
+
+#: src/rnnoise_ui.cpp:135
+msgid "RNNoise Models"
+msgstr "RNNoise 模型"
 
 #: src/tags_plugin_name.cpp:26
 msgid "Bass Enhancer"
@@ -3086,10 +3179,6 @@ msgstr "激励器"
 msgid "Filter"
 msgstr "过滤器"
 
-#: src/tags_plugin_name.cpp:38
-msgid "Gate"
-msgstr "门限"
-
 #: src/tags_plugin_name.cpp:39
 msgid "Limiter"
 msgstr "限幅器"
@@ -3122,29 +3211,19 @@ msgstr "降噪"
 msgid "Stereo Tools"
 msgstr "立体声工具"
 
-#: src/plugins_box.cpp:503
-msgid "Remove"
-msgstr "删除"
+#. Add custom button to hint the user to press ESC to destroy the dialog.
+#. This has been introduced because multiple GTK4 dialogs shown at
+#. the same time could have issues on Wayland and the only way to
+#. close the outer one is pressing ESC, the mouse click does not work.
+#: src/ui_helpers.cpp:69
+msgid "Close (Press ESC)"
+msgstr ""
 
-#: src/plugins_box.cpp:570
-msgid "Output Device"
-msgstr "输出设备"
+#~ msgid "Average"
+#~ msgstr "平均值"
 
-#: src/plugins_menu.cpp:142
-msgid "Add"
-msgstr "添加"
-
-#: src/presets_menu.cpp:102
-msgid "Import Preset"
-msgstr "导入预设"
-
-#: src/rnnoise_ui.cpp:114
-msgid "Import Model File"
-msgstr "导入模型文件"
-
-#: src/rnnoise_ui.cpp:119
-msgid "RNNoise Models"
-msgstr "RNNoise 模型"
+#~ msgid "Failed"
+#~ msgstr "失败"
 
 #~ msgid "Use Default"
 #~ msgstr "使用默认"
