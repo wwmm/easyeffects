@@ -33,6 +33,22 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="6.2.7" date="2022-07-18T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>The bypass state can be saved to the preset file. The reasons why this was done can be seen at #1039</li>
+          <li>The preset autoloading code compatibility with usb devices has been improved.</li>
+          <li>A dialog is shown to the user when a preset fails to load or a preset/impulse file fails to be imported.</li>
+          <li>The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of the one from Calf Studio.</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>EasyEffects should not crash anymore when the user locale is not properly configured.</li>
+          <li>A workaround was implemented in our icon to deal with the lack of proper SVG support in QT.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="6.2.6" date="2022-06-22T00:00:00Z">
       <description>
         <p>This release adds the following features:</p>

@@ -3,6 +3,19 @@ Version UNRELEASED_VERSION
 Released: UNRELEASED_DATE
 
 Features:
+- 
+
+Bugfixes:
+- 
+
+Notes:
+- 
+
+Version 6.2.7
+~~~~~~~~~~~~~~
+Released: 2022-07-18
+
+Features:
 - The bypass state can be saved to the preset file. The reasons why this was done can be seen at #1039
 - The preset autoloading code compatibility with usb devices has been improved.
 - A dialog is shown to the user when a preset fails to load or a preset/impulse file fails to be imported.
@@ -11,9 +24,6 @@ Features:
 Bugfixes:
 - EasyEffects should not crash anymore when the user locale is not properly configured.
 - A workaround was implemented in our icon to deal with the lack of proper SVG support in QT.
-
-Notes:
-- 
 
 Version 6.2.6
 ~~~~~~~~~~~~~~
