@@ -1718,9 +1718,8 @@ msgid "Release Zone Start"
 msgstr "消音时间"
 
 #: data/ui/gate.ui:647
-#, fuzzy
 msgid "Internal"
-msgstr "综合"
+msgstr "内部"
 
 #: data/ui/gate.ui:1254 data/ui/multiband_gate.ui:494
 #: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
@@ -3032,9 +3031,8 @@ msgid "Only Stereo Impulse Files Are Supported"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:119
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "脉冲文件列表"
+msgstr "脉冲文件未导入"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "Import Impulse File"
@@ -3063,14 +3061,12 @@ msgid "Remove Impulse"
 msgstr "删除脉冲"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "脉冲文件列表"
+msgstr "未加载脉冲文件"
 
 #: src/convolver_ui.cpp:345
-#, fuzzy
 msgid "Failed To Load The Impulse File"
-msgstr "无法加载 Impulse 文件"
+msgstr "加载脉冲文件失败"
 
 #: src/effects_box.cpp:257 src/plugins_box.cpp:549
 msgid "Recorders"

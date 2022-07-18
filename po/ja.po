@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-16 12:12-0300\n"
-"PO-Revision-Date: 2022-03-20 02:57+0000\n"
+"PO-Revision-Date: 2022-07-18 22:44+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -115,41 +115,46 @@ msgid ""
 "When effects are disable to an application we now set its target metadata to "
 "null. This will allow the media session"
 msgstr ""
+"アプリケーションに対してエフェクトが無効になっている場合、ターゲットメタデー"
+"タをnullに設定します。これにより、メディアセッションが可能になります"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "manager"
-msgstr ""
+msgstr "マネージャー"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "A new configuration option was added. It allows EasyEffects to ignore "
 "streams whose purpose is to monitor sink"
-msgstr ""
+msgstr "新しい設定オプションが追加されました。これは、EasyEffects "
+"が監視シンクデバイスのストリームを無視することを可能にします。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "devices. This will help to fix some of problems our users were having when "
 "using OBS."
-msgstr ""
+msgstr "これにより、OBS "
+"を使用する際にユーザーが抱えていた問題のいくつかを解決することができます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The code that shows the stream sample format has been improved"
-msgstr ""
+msgstr "ストリームのサンプル形式を表示するコードが改善されました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build"
-msgstr ""
+msgstr "rnnoise ライブラリがオプションになりました。これはパッケージメンテナがDebian"
+"パッケージをビルドするのに役立ちます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid "a Debian package. See the issue #1000 for more information."
-msgstr ""
+msgstr "詳しくは issue #1000 を参照してください。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "Our logs now show the source code line where the messages are being printed"
-msgstr ""
+msgstr "ログにメッセージが出力されるソースコードの行が表示されるようになりました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -166,78 +171,86 @@ msgid ""
 "The \"enable effects\" checkbox in our window was not being updated when "
 "third party programs like pavucontrol"
 msgstr ""
+"pavucontrol などのサードパーティ製プログラムが動作しているとき、ウィンドウの"
+"「エフェクトを有効にする」チェックボックスが更新されないことがありました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid ""
 "moved the stream away from our virtual devices. This should be fixed now."
-msgstr ""
+msgstr "そのストリームを仮想デバイスから遠ざけました。これは今すぐ修正する必要があり"
+"ます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "Fixed a crash that could happen when the maximum autogain history was "
 "changed."
-msgstr ""
+msgstr "オートゲインの最大履歴を変更すると、クラッシュすることがある問題を修正しまし"
+"た。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
+msgstr "pw-mididump 実行時のクラッシュを回避"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "ピッチプラグインのインターフェースが改善されました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Our application icon is now compatible with desktops that uses QT"
-msgstr ""
+msgstr "アプリケーションアイコンが QT を使用するデスクトップに対応しました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
 "Our blocklist code will use the `application.id` tag if the stream sets it"
-msgstr ""
+msgstr "ブロックリストのコードは、ストリームが `application.id` "
+"タグを設定した場合、それを使用します"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
 "applications list shown in our `Players/Recorders`"
-msgstr ""
+msgstr "マウスのスクロールの問題を回避するために、`プレーヤー/レコーダー` "
+"に表示されるアプリケーションリストのエントリを表示します"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
 "tab do not show a volume scale anymore. More details about the problem and "
 "the solution for it can be found on #1211"
-msgstr ""
+msgstr "タブにボリュームスケールが表示されなくなりました。この問題の詳細と解決策につ"
+"いては、#1211 を参照してください"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
-#, fuzzy
 msgid "and #1427"
-msgstr "バンド 1"
+msgstr "and #1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 msgid ""
 "When no application is available for display in the `Players/Recorders` a "
 "message will be shown to the user"
-msgstr ""
+msgstr "`プレーヤー/レコーダー` "
+"に表示できるアプリケーションがない場合、メッセージが表示されます"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
-#, fuzzy
 msgid "Many translation updates"
-msgstr "翻訳の更新"
+msgstr "多くの翻訳の更新"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
 msgid ""
 "Fixed a bug where EasyEffects crashed when the number of points displayed in "
 "the spectrum was changed while"
-msgstr ""
+msgstr "EasyEffects が次の状態のときにスペクトラムに表示されるポイント数を変更したと"
+"きにクラッシュするバグを修正しました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
 msgid "our pipeline was active and the spectrum widget was visible"
-msgstr ""
+msgstr "パイプラインがアクティブで、かつスペクトラムウィジェットが表示されている間"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
-msgstr ""
+msgstr "ウィンドウに表示されるパイプラインの待機時間の値は、状況によっては間違ってい"
+"る可能性があります。この問題は修正されました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
 msgid ""
@@ -903,20 +916,19 @@ msgstr "「プリセット」"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "このアプリケーションの有効化/無効化"
 
 #: data/ui/app_info.ui:213
-#, fuzzy
 msgid "Enable"
 msgstr "有効"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "除外されたアプリリスト: このアプリケーションを追加/削除"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "除外"
 
 #: data/ui/app_info.ui:248 data/ui/app_info.ui:250
 msgid "Mute Application"
@@ -924,7 +936,7 @@ msgstr "アプリケーションをミュート"
 
 #: data/ui/app_info.ui:272
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "このアプリケーションの音量を変更"
 
 #: data/ui/app_info.ui:274
 msgid "Application Volume"
@@ -962,7 +974,7 @@ msgstr "プリセットメニュー"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "グローバルバイパスの有効化/無効化"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -981,14 +993,12 @@ msgid "Applications List"
 msgstr "アプリケーションリスト"
 
 #: data/ui/apps_box.ui:27
-#, fuzzy
 msgid "Empty List"
-msgstr "何もない壁"
+msgstr "空のリスト"
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "アプリケーション名"
+msgstr "オーディオアプリケーションがありません"
 
 #: data/ui/autogain.ui:18
 msgid "Target"
@@ -1152,9 +1162,8 @@ msgid "Preset"
 msgstr "プリセット"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "自動読み込みプリセットを削除"
+msgstr "この自動読み込みプリセットを削除"
 
 #: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:458 data/ui/deesser.ui:14
 #: data/ui/exciter.ui:12 data/ui/gate.ui:564
@@ -1203,19 +1212,16 @@ msgid "Application Name"
 msgstr "アプリケーション名"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "ブロックリストのアプリケーションを表示"
+msgstr "除外アプリケーションに追加"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "ブロックリストのアプリケーション一覧"
+msgstr "除外されたアプリケーションリスト"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "ブロックリストのアプリケーションを表示"
+msgstr "除外されたアプリケーションを表示"
 
 #: data/ui/compressor.ui:31 src/tags_plugin_name.cpp:28
 msgid "Compressor"
@@ -1669,7 +1675,7 @@ msgstr "フィルター長"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "除外されたアプリ"
 
 #: data/ui/equalizer.ui:88
 msgid "Bands"
@@ -1851,25 +1857,23 @@ msgstr "ゲート"
 
 #: data/ui/gate.ui:149 data/ui/gate.ui:242
 msgid "Zone"
-msgstr ""
+msgstr "ゾーン"
 
 #: data/ui/gate.ui:221
 msgid "Hysteresis"
-msgstr ""
+msgstr "ヒステリシス"
 
 #: data/ui/gate.ui:406
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "アタックゾーンスタート"
 
 #: data/ui/gate.ui:460
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "リリース時間"
+msgstr "リリースゾーン開始"
 
 #: data/ui/gate.ui:647
-#, fuzzy
 msgid "Internal"
-msgstr "外部"
+msgstr "内部"
 
 #: data/ui/gate.ui:1254 data/ui/multiband_gate.ui:494
 #: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
@@ -2432,13 +2436,15 @@ msgstr "一般"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "デバイス管理"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"外部アプリケーション (Gnome 設定や Plasma システム設定など) で EasyEffects "
+"の Sink/Source をデフォルトデバイスとして設定しないことをお勧めします。"
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -2661,34 +2667,32 @@ msgid "Octaves"
 msgstr "オクターブ"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "このモデルファイルを削除"
+msgstr "このエフェクトを削除"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "このエフェクトの有効化/無効化"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "このエフェクトの位置を変更する"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
-msgstr ""
+msgstr "エフェクトの追加"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
 msgstr "使用プラグインリスト"
 
 #: data/ui/plugins_box.ui:129
-#, fuzzy
 msgid "No Effects"
-msgstr "EasyEffects"
+msgstr "エフェクトなし"
 
 #: data/ui/plugins_box.ui:130
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "オーディオストリームは変更されていません"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
@@ -2708,10 +2712,9 @@ msgstr "サービス"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "システム起動時にサービスを起動"
 
 #: data/ui/preferences_general.ui:26
-#, fuzzy
 msgid "Shutdown on Window Closing"
 msgstr "ウィンドウを閉じるときにシャットダウン"
 
@@ -2720,18 +2723,16 @@ msgid "Audio"
 msgstr "オーディオ"
 
 #: data/ui/preferences_general.ui:43
-#, fuzzy
 msgid "Process All Output Streams"
 msgstr "すべての出力を処理"
 
 #: data/ui/preferences_general.ui:55
-#, fuzzy
 msgid "Process All Input Streams"
 msgstr "すべての入力を処理"
 
 #: data/ui/preferences_general.ui:67
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "デバイスのモニターからのストリームを無視"
 
 #: data/ui/preferences_general.ui:79
 msgid "Use Cubic Volume"
@@ -2739,7 +2740,7 @@ msgstr "キュービックボリュームを使用"
 
 #: data/ui/preferences_general.ui:91
 msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
-msgstr ""
+msgstr "起動時に EasyEffects 仮想デバイスの音量をリセット"
 
 #: data/ui/preferences_general.ui:103
 msgid "Inactivity Timeout"
@@ -2842,12 +2843,10 @@ msgid "New Output Preset Name"
 msgstr "新規出力プリセット名"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
 msgstr "プリセットを作成"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
 msgstr "プリセットをインポート"
 
@@ -2981,7 +2980,7 @@ msgstr "RNNoise モデルリスト"
 
 #: data/ui/rnnoise.ui:109
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "モデルがロードされていません"
 
 #: data/ui/rnnoise.ui:115
 msgid "Active Model"
@@ -3104,36 +3103,30 @@ msgid "Stereo Phase"
 msgstr "ステレオ位相"
 
 #: src/app_info.cpp:64
-#, fuzzy
 msgid "Running"
 msgstr "実行中"
 
 #: src/app_info.cpp:66
-#, fuzzy
 msgid "Suspended"
 msgstr "サスペンド"
 
 #: src/app_info.cpp:68
 msgid "Idle"
-msgstr ""
+msgstr "アイドル"
 
 #: src/app_info.cpp:70
-#, fuzzy
 msgid "Creating"
 msgstr "作成中"
 
 #: src/app_info.cpp:72
-#, fuzzy
 msgid "Error"
 msgstr "エラー"
 
 #: src/app_info.cpp:74
-#, fuzzy
 msgid "Unknown"
 msgstr "不明"
 
 #: src/app_info.cpp:226
-#, fuzzy
 msgid "channels"
 msgstr "チャンネル"
 
@@ -3179,20 +3172,19 @@ msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:99
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "このファイルは正しくありません"
 
 #: src/convolver_menu_impulses.cpp:104
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "インパルスファイルが破損しているか、サポートされていない可能性があります"
 
 #: src/convolver_menu_impulses.cpp:109
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "ステレオインパルスファイルのみサポートされています"
 
 #: src/convolver_menu_impulses.cpp:119
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "インパルスファイル一覧"
+msgstr "インパルスファイルがインポートされていません"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "Import Impulse File"
@@ -3221,12 +3213,10 @@ msgid "Remove Impulse"
 msgstr "インパルスを削除"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "インパルスファイル一覧"
+msgstr "読み込まれたインパルスファイルはありません"
 
 #: src/convolver_ui.cpp:345
-#, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
@@ -3239,9 +3229,8 @@ msgid "Players"
 msgstr "プレイヤー"
 
 #: src/effects_box.cpp:303
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "エフェクト"
 
 #: src/equalizer_band_box.cpp:91
 msgid "infinity"
@@ -3258,7 +3247,8 @@ msgstr "APO プリセット"
 #: src/equalizer_ui.cpp:371
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
-msgstr ""
+msgstr "APO プリセットが読み込まれていません。ファイルフォーマットが間違っている可能"
+"性があります。内容を確認してください。"
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
@@ -3284,7 +3274,8 @@ msgstr "プリセットをインポート"
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
-msgstr ""
+msgstr "選択されたモデルが読み込まれていません。そのフォーマットはサポートされていな"
+"い可能性があります。標準モデルに戻しました。"
 
 #: src/rnnoise_ui.cpp:130
 msgid "Import Model File"
@@ -3376,7 +3367,7 @@ msgstr "ステレオツール"
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:69
 msgid "Close (Press ESC)"
-msgstr ""
+msgstr "閉じる (Esc キーを押す)"
 
 #~ msgid "Average"
 #~ msgstr "平均"

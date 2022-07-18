@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-16 12:12-0300\n"
-"PO-Revision-Date: 2022-05-30 22:18+0000\n"
+"PO-Revision-Date: 2022-07-18 22:44+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -122,41 +122,50 @@ msgid ""
 "When effects are disable to an application we now set its target metadata to "
 "null. This will allow the media session"
 msgstr ""
+"Quando gli effetti sono disabilitati per un applicazione, adesso impostiamo "
+"il suo target metadata a null. Questo permetterà al media session"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "manager"
-msgstr ""
+msgstr "manager"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "A new configuration option was added. It allows EasyEffects to ignore "
 "streams whose purpose is to monitor sink"
 msgstr ""
+"Aggiunta una nuova configurazione. EasyEffects adesso può essere impostato "
+"per ignorare i flussi dei monitor"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "devices. This will help to fix some of problems our users were having when "
 "using OBS."
 msgstr ""
+"sink. Questo potrà risolvere alcune anomalie che gli utenti avevano con OBS."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The code that shows the stream sample format has been improved"
-msgstr ""
+msgstr "Il codice che mostra il formato di campionamento è stato migliorato"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build"
 msgstr ""
+"La libreria rnnoise è adesso opzionale. Questo può aiutare i gestori dei "
+"pacchetti"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid "a Debian package. See the issue #1000 for more information."
-msgstr ""
+msgstr "su Debian. Consultare il ticket #1000 per maggiori informazioni."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid ""
 "Our logs now show the source code line where the messages are being printed"
 msgstr ""
+"I nostri log ora mostrano il numero di linea del codice sorgente dove il "
+"messaggio viene stampato"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -173,21 +182,27 @@ msgid ""
 "The \"enable effects\" checkbox in our window was not being updated when "
 "third party programs like pavucontrol"
 msgstr ""
+"Il checkbox di abilitazione degli effetti nella finestra non era aggiornato "
+"quando programmi esterni come pavucontrol"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid ""
 "moved the stream away from our virtual devices. This should be fixed now."
 msgstr ""
+"rimuovevano gli stream dai nostri dispositivi virtuali. Questo problema "
+"dovrebbe essere risolto."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "Fixed a crash that could happen when the maximum autogain history was "
 "changed."
 msgstr ""
+"Corretto un bug che poteva capitare quando la cronologia dell'Auto Guadagno "
+"veniva modificata."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
+msgstr "Evitato il crash quando pw-mididump è in esecuzione"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid "The interface of the pitch plugin was improved"
@@ -239,7 +254,6 @@ msgid "Many translation updates"
 msgstr "Molti aggiornamenti di traduzione"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
-#, fuzzy
 msgid ""
 "Fixed a bug where EasyEffects crashed when the number of points displayed in "
 "the spectrum was changed while"
@@ -933,7 +947,7 @@ msgstr "\"Profili\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Abilita/disabilita questa applicazione"
 
 #: data/ui/app_info.ui:213
 msgid "Enable"
@@ -941,7 +955,7 @@ msgstr "Abilita"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Lista App Escluse: Aggiungi/rimuovi questa applicazione"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -953,7 +967,7 @@ msgstr "Silenzia Applicazione"
 
 #: data/ui/app_info.ui:272
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "Modifica il volume di questa applicazione"
 
 #: data/ui/app_info.ui:274
 msgid "Application Volume"
@@ -991,7 +1005,7 @@ msgstr "Menu Profili"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "Abilita/disabilita il bypass globale"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -1157,7 +1171,7 @@ msgstr "Reset"
 #: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:334
 #: data/ui/stereo_tools.ui:724
 msgid "Using"
-msgstr "Libreria"
+msgstr "Utilizzo"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:528 data/ui/gate.ui:634
 msgid "Device"
@@ -1179,9 +1193,8 @@ msgid "Preset"
 msgstr "Profilo EasyEffects"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "Rimuovi Profilo di Auto Caricamento"
+msgstr "Rimuovi questo profilo di auto-caricamento"
 
 #: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:458 data/ui/deesser.ui:14
 #: data/ui/exciter.ui:12 data/ui/gate.ui:564
@@ -1875,25 +1888,23 @@ msgstr "Gate"
 
 #: data/ui/gate.ui:149 data/ui/gate.ui:242
 msgid "Zone"
-msgstr ""
+msgstr "Zona"
 
 #: data/ui/gate.ui:221
 msgid "Hysteresis"
-msgstr ""
+msgstr "Isteresi"
 
 #: data/ui/gate.ui:406
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "Inizio Zona Attacco"
 
 #: data/ui/gate.ui:460
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "Tempo di Rilascio"
+msgstr "Inizio Zona Rilascio"
 
 #: data/ui/gate.ui:647
-#, fuzzy
 msgid "Internal"
-msgstr "Esterna"
+msgstr "Interna"
 
 #: data/ui/gate.ui:1254 data/ui/multiband_gate.ui:494
 #: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
@@ -2456,13 +2467,16 @@ msgstr "Generale"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Gestione Dispositivi"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"Si raccomanda di NON impostare EasyEffects Sink/Source come Dispositivo "
+"Predefinito in applicazioni esterne (per esempio Gnome Settings e Plasma "
+"System Settings)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -2685,17 +2699,16 @@ msgid "Octaves"
 msgstr "Ottave"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Rimuovi questo profilo"
+msgstr "Rimuovi questo effetto"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Abilita/disabilita questo effetto"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Cambia la posizione di questo effetto"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
@@ -2862,14 +2875,12 @@ msgid "New Output Preset Name"
 msgstr "Nome Nuovo Profilo di Uscita"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Crea Profilo"
+msgstr "Crea un nuovo profilo"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
-msgstr "Importa Profilo"
+msgstr "Importa un profilo"
 
 #: data/ui/presets_menu.ui:90
 msgid "Search Output Preset"
@@ -3001,7 +3012,7 @@ msgstr "Lista Modelli RNNoise"
 
 #: data/ui/rnnoise.ui:109
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Modello Non Caricato"
 
 #: data/ui/rnnoise.ui:115
 msgid "Active Model"
@@ -3194,20 +3205,19 @@ msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:99
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "Il File È Irregolare"
 
 #: src/convolver_menu_impulses.cpp:104
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "Il File di Risposta Impulsiva Può Essere Corrotto o Non Supportato"
 
 #: src/convolver_menu_impulses.cpp:109
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Sono Supportati Soltanto File di Risposta Impulsiva in Formato Stereo"
 
 #: src/convolver_menu_impulses.cpp:119
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Lista File di Impulso"
+msgstr "File di Risposta Impulsiva Non Importato"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "Import Impulse File"
@@ -3236,14 +3246,12 @@ msgid "Remove Impulse"
 msgstr "Rimuovi Impulso"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Lista File di Impulso"
+msgstr "Nessun File di Risposta Impulsiva Caricato"
 
 #: src/convolver_ui.cpp:345
-#, fuzzy
 msgid "Failed To Load The Impulse File"
-msgstr "Non è Possibile Caricare il File di Impulso"
+msgstr "Impossibile Caricare il File di Risposta Impulsiva"
 
 #: src/effects_box.cpp:257 src/plugins_box.cpp:549
 msgid "Recorders"
@@ -3273,6 +3281,8 @@ msgstr "Profili APO"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
+"Profilo APO Non Caricato. Il Formato Può Essere Errato. Si Prega di "
+"Controllare il Contenuto."
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
@@ -3299,6 +3309,8 @@ msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"Il Modello Selezionato Non È Stato Caricato. Il Formato Potrebbe Essere Non "
+"Supportato. Il Modello Standard È Stato Ripristinato."
 
 #: src/rnnoise_ui.cpp:130
 msgid "Import Model File"
@@ -3390,7 +3402,7 @@ msgstr "Strumenti Stereo"
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:69
 msgid "Close (Press ESC)"
-msgstr ""
+msgstr "Chiudi (Premi ESC)"
 
 #~ msgid "Average"
 #~ msgstr "Media"
