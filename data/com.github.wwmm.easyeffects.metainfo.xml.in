@@ -51,21 +51,15 @@
     </release>
     <release type="stable" version="6.2.6" date="2022-06-22T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
-          <li>When effects are disable to an application we now set its target metadata to null. This will allow the media session</li>
-          <li>manager</li>
-          <li>A new configuration option was added. It allows EasyEffects to ignore streams whose purpose is to monitor sink</li>
-          <li>devices. This will help to fix some of problems our users were having when using OBS.</li>
+          <li>Features:</li>
+          <li>When effects are disable to an application we now set its target metadata to null. This will allow the media session manager (wireplumber) to properly move the stream to a new device.</li>
+          <li>A new configuration option was added. It allows EasyEffects to ignore streams whose purpose is to monitor sink devices. This will help to fix some of problems our users were having when using OBS.</li>
           <li>The code that shows the stream sample format has been improved</li>
-          <li>The rnnoise library is now optional. This should help package maintainers to build</li>
-          <li>a Debian package. See the issue #1000 for more information.</li>
+          <li>The rnnoise library is now optional. This should help package maintainers to build a Debian package. See issue 1000 for more information.</li>
           <li>Our logs now show the source code line where the messages are being printed</li>
-        </ul>
-        <p>This release fixes the following bugs:</p>
-        <ul>
-          <li>The "enable effects" checkbox in our window was not being updated when third party programs like pavucontrol</li>
-          <li>moved the stream away from our virtual devices. This should be fixed now.</li>
+          <li>Bug fixes:</li>
+          <li>The "enable effects" checkbox in our window was not being updated when third party programs like pavucontrol moved the stream away from our virtual devices. This should be fixed now.</li>
           <li>Fixed a crash that could happen when the maximum autogain history was changed.</li>
           <li>Avoid crashes when pw-mididump is running</li>
         </ul>
@@ -73,134 +67,119 @@
     </release>
     <release type="stable" version="6.2.5" date="2022-04-30T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>The interface of the pitch plugin was improved</li>
           <li>Our application icon is now compatible with desktops that uses QT</li>
           <li>Our blocklist code will use the `application.id` tag if the stream sets it</li>
-          <li>In order to avoid problems with the mouse scroll the entries in the applications list shown in our `Players/Recorders`</li>
-          <li>tab do not show a volume scale anymore. More details about the problem and the solution for it can be found on #1211</li>
-          <li>and #1427</li>
+          <li>In order to avoid problems with the mouse scroll the entries in the applications list shown in our `Players/Recorders` tab do not show a volume scale anymore. More details about the problem and the solution for it can be found on issue 1211 and issue 1427</li>
           <li>When no application is available for display in the `Players/Recorders` a message will be shown to the user</li>
           <li>Many translation updates</li>
-        </ul>
-        <p>This release fixes the following bugs:</p>
-        <ul>
-          <li>Fixed a bug where EasyEffects crashed when the number of points displayed in the spectrum was changed while</li>
-          <li>our pipeline was active and the spectrum widget was visible</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while our pipeline was active and the spectrum widget was visible</li>
           <li>The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.2.4" date="2022-03-07T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
-          <li>There is a new setting allowing the user to select an inactivity timeout for the pipeline. When no client is playing</li>
-          <li>to or recording from our devices the filters will be unlinked after the timeout is reached. This is done to make sure</li>
-          <li>we do not waste CPU power processing silence.</li>
-          <li>The autogain plugin now allows the user to select which of the three loudness are used to calculate the geometric</li>
-          <li>mean.</li>
-          <li>The autogain plugin now allows the maximum history to be set and does not use `libebur128` histogram mode anymore.</li>
-          <li>This should avoid the cases where the `Integrated` loudness gets stuck forever in the same value.</li>
+          <li>Features:</li>
+          <li>There is a new setting allowing the user to select an inactivity timeout for the pipeline. When no client is playing to or recording from our devices the filters will be unlinked after the timeout is reached. This is done to make sure we do not waste CPU power processing silence.</li>
+          <li>The autogain plugin now allows the user to select which of the three loudness are used to calculate the geometric mean.</li>
+          <li>The autogain plugin now allows the maximum history to be set and does not use `libebur128` histogram mode anymore. This should avoid the cases where the `Integrated` loudness gets stuck forever in the same value.</li>
           <li>EasyEffects icon has been updated in a way that should make it visible in QT desktops.</li>
-        </ul>
-        <p>This release fixes the following bug:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>The command line option that returns the global bypass state is working again.</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.2.3" date="2022-01-29T00:00:00Z">
       <description>
-        <p>This release adds the following feature:</p>
         <ul>
+          <li>Features:</li>
           <li>The crossfeed filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.</li>
-        </ul>
-        <p>This release fixes the following bug:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>Fixed a bug that prevented mono microphones from properly working with EasyEffects</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.2.2" date="2022-01-27T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>Support for the next PipeWire release `0.3.44`</li>
           <li>The autogain filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.</li>
           <li>We added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts. It should help with the cases were our devices are muted by the audio server for unknown reasons.</li>
           <li>Better support for computer suspending.</li>
           <li>Updated translations</li>
-        </ul>
-        <p>This release fixes the following bug:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>Fixed a bug where trying to create an autoloading profile without having presets caused the application to crash.</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.2.1" date="2022-01-05T00:00:00Z">
       <description>
-        <p>This release fixes the following bug:</p>
         <ul>
+          <li>Bug fixes:</li>
           <li>Fixed a bug where setting a equalizer band `quality` to `zero` would lead to an application crash.</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.2.0" date="2022-01-04T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>LibAdwaita is used to create some parts of our window and for handling the switching between dark and light themes.</li>
           <li>The settings menu has been redesigned using LibAdwaita widgets.</li>
-          <li>Equalizer APO preset import feature has been improved to apply not only the Bell filter, but also other supported ones</li>
+          <li>Equalizer APO preset import feature has been improved to apply not only the Bell filter, but also other supported ones (at the moment only the Bandpass filter is not available in LSP plugin).</li>
           <li>The `Reset All Settings` function in our menu should work in Flatpak now.</li>
           <li>We have a new option that allows the user to disable our menus `autohide`. This may help to workaround some bugs Popover menus currently have on gtk4.</li>
-        </ul>
-        <p>This release fixes the following bug:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.</li>
+          <li>Other notes:</li>
+          <li>The fmt library is a new dependency  At least while the c++ compilers do not implement its features. This is expected to happen in the next years.</li>
+          <li>GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly.</li>
         </ul>
-        <p>The fmt library is a new dependency  At least while the c++ compilers do not implement its features. This is expected to happen in the next years.</p>
-        <p>GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly.</p>
       </description>
     </release>
     <release type="stable" version="6.1.5" date="2021-11-17T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>It is now possible to combine impulse responses in the Convolver interface. A new impulse file is generated and it should be visible in the impulse list.</li>
           <li>Improved `x axis` drawings in our plots. Now the number of labels is adjusted dynamically depending on our window width.</li>
           <li>The documentation has been updated reflecting the new EasyEffects features. Old references about PulseEffects have been removed. The documentation button has been added in the menu section.</li>
-        </ul>
-        <p>This release fixes the following bugs:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest value rather than resetting to the previous one.</li>
           <li>The application window now remembers the maximized state and restores it on the next opening event.</li>
+          <li>Other notes:</li>
+          <li>The `tbb` library is a new dependency</li>
         </ul>
-        <p>The `tbb` library is a new dependency</p>
       </description>
     </release>
     <release type="stable" version="6.1.4" date="2021-10-16T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>The Limiter and the Multiband Compressor plugins can now use an optional external sidechain.</li>
           <li>The Autogain plugin now allows the user to select which Loudness is used as reference for the volume correction.</li>
           <li>The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification" parameter.</li>
           <li>Optional Cubic Volume can be enabled in General Settings.</li>
+          <li>Bug fixes:</li>
+          <li>The Spectrum plugin was supposed to enter passthrough whenever it was not visible, but this was happening only when our window was closed.</li>
+          <li>Improved support for Assistive Technology.</li>
+          <li>The probes used in some filters like the Compressor and the Limiter were not being relinked after changing the order of the plugins in the pipeline. It should be working now.</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.1.3" date="2021-10-03T00:00:00Z">
       <description>
-        <p>This release adds the following feature:</p>
         <ul>
+          <li>Features:</li>
           <li>PipeWire monitor streams are now excluded and removed from the applications list.</li>
-        </ul>
-        <p>This release fixes the following bugs:</p>
-        <ul>
-          <li>Hopefully crashes like the one reported at [1172]( are fixed.</li>
+          <li>Bug fixes:</li>
+          <li>Hopefully crashes like the one reported at issue 1172 are fixed.</li>
           <li>Prevented a case in which Spectrum was crashing.</li>
           <li>Pavucontrol is not added anymore to input applications list on systems with localization different than English.</li>
         </ul>
@@ -208,46 +187,41 @@
     </release>
     <release type="stable" version="6.1.2" date="2021-09-20T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
-          <li>Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the</li>
-          <li>built-in PipeWire session manager. More information at issue [1144](</li>
+          <li>Features:</li>
+          <li>Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the built-in PipeWire session manager. More information at issue 1144.</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.1.1" date="2021-09-17T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>When trying to add an autoloading profile for a device already in the list its target preset will be updated. This way we can change the profile preset without having to remove and recreating it.</li>
-          <li>The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more information see issue [1051](</li>
+          <li>The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more information see issue 1051.</li>
           <li>If the Limiter or the Maximizer are set in the last position of the plugin stack, new plugins are added at the second to last position in order to prevent hardware damage on eventually high output level.</li>
           <li>Removing an application from the blocklist, its previous enabled state is restored.</li>
-        </ul>
-        <p>This release fixes the following bugs:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>Sometimes when removing imported models from the noise reduction plugin the current used model was not properly updated. This should be fixed now.</li>
           <li>When editing presets files in an external editor, duplicated entries won't be shown in our presets menu.</li>
           <li>Now the blocklist is correctly set when switching presets.</li>
           <li>Now the status of the global bypass button is correctly updated when changing plugin stack.</li>
-          <li>Missing icons on the system should not be shown inside the application info UI</li>
+          <li>Missing icons on the system should not be shown inside the application info UI (if an application icon could not be shown even if you're sure it's correctly installed, please open an issue).</li>
           <li>Some icons not showing in Plasma DE with Breeze icon theme should appear now.</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.1.0" date="2021-08-17T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>Updated Chinese translation.</li>
           <li>Updated Italian translation.</li>
           <li>Added support for the compressor parameter `Boost Amount`</li>
           <li>The multiband compressor plugin now uses the stereo multiband compressor plugin from Linux Studio Plugins instead of the one from Calf Studio.</li>
           <li>The limiter plugin now uses the stereo limiter plugin from Linux Studio Plugins instead of the one from Calf Studio.</li>
           <li>LV2 filters now are spawned in PipeWire graph only when loaded the first time. Once loaded, they remain connected until EasyEffects shutdown.</li>
-        </ul>
-        <p>This release fixes the following bugs:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>The echo canceller sampling rate is now properly set.</li>
           <li>The threshold parameter from the deesser plugin is now saved to the preset file.</li>
           <li>Improved band splitting for crystalizer with new default intensity values.</li>
@@ -261,16 +235,14 @@
     </release>
     <release type="stable" version="6.0.3" date="2021-07-16T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>Improved the resampler used in the plugins that require one(like the rnnoise plugin)</li>
           <li>Updated translations</li>
-        </ul>
-        <p>This release fixes the following bugs:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>Setting multiple autoloading presets should be fine now</li>
           <li>Transient windows are now properly set for some plugins dialogs</li>
-          <li>The convolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when only one was available in the menu</li>
+          <li>The convolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when only one was available in the menu, see issue 1011</li>
           <li>Fixed a bug that could make the pitch plugin to not be properly initialized</li>
           <li>The saturation warning should not displace its neighbor widgets anymore</li>
           <li>Fixed the locale in a few widgets</li>
@@ -280,48 +252,40 @@
     </release>
     <release type="stable" version="6.0.2" date="2021-07-11T00:00:00Z">
       <description>
-        <p>This release adds the following feature:</p>
         <ul>
-          <li>The Loudness plugin is being used again for the reasons described at  This means that  is an optional dependency again.</li>
-        </ul>
-        <p>This release fixes the following bug:</p>
-        <ul>
+          <li>Features:</li>
+          <li>The Loudness plugin is being used again for the reasons described at issue 820. This means that  is an optional dependency again.</li>
+          <li>Bug fixes:</li>
           <li>Fixed a segmentation fault that happened when optional dependencies were not installed</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.0.1" date="2021-07-09T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>Improved equalizer interface.</li>
           <li>Now we use a sidechain LSP compressor that allows the user to select and external source as the sidechain input.</li>
           <li>We now support the LSP compressor `Boosting` mode.</li>
           <li>When `split-channels` is enabled in the equalizer the imported APO preset will be applied only to the channel being visualized in the window. This will allow to import different presets for each channel instead of just settings the same values to both.</li>
-        </ul>
-        <p>This release fixes the following bug:</p>
-        <ul>
+          <li>Bug fixes:</li>
           <li>Fixed some segmentation faults that could happen when creating a preset autoloading profile or removing presets</li>
         </ul>
       </description>
     </release>
     <release type="stable" version="6.0.0" date="2021-07-07T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
         <ul>
+          <li>Features:</li>
           <li>This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about everything here.</li>
-          <li>The following are just the most import ones. People interested on the journey that got us here can take</li>
-          <li>a look at  and</li>
-        </ul>
-        <p>This release adds the following features:</p>
-        <ul>
+          <li>The following are just the most import ones. People interested on the journey that got us here can take a look at issue 904 and issue 874.</li>
           <li>The application and its repository have been renamed from PulseEffects to `EasyEffects`</li>
           <li>gtkmm3 was replaced by gtkmm4</li>
           <li>Gstreamer was replaced by native PipeWire filters.</li>
           <li>Many features were reimplemented from scratch. The preset autoloading is one example. Another remarkable change will be seen in the plugins selection menu. Now the user can show in the window only the plugins that he/she wants to use.</li>
+          <li>Boost is no longer a dependency. The price paid for that was a little change in our presets structures. With some patience it is possible to edit PulseEffects presets in a text editor and make them work in EasyEffects. Hopefully someone will come up with a script for this in the feature.</li>
+          <li>New libraries are being used and some of the librarires that were optional before are now required</li>
         </ul>
-        <p>Boost is no longer a dependency. The price paid for that was a little change in our presets structures. With some patience it is possible to edit PulseEffects presets in a text editor and make them work in EasyEffects. Hopefully someone will come up with a script for this in the feature.</p>
-        <p>New libraries are being used and some of the librarires that were optional before are now required</p>
       </description>
     </release>
   </releases>
