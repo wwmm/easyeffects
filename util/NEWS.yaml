@@ -27,9 +27,6 @@ Description:
 - EasyEffects should not crash anymore when the user locale is not properly configured.
 - A workaround was implemented in our icon to deal with the lack of proper SVG support in QT.
 
-- Other notes∶
-- 
-
 ---
 Version: 6.2.6
 Date: 2022-06-22

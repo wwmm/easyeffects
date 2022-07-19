@@ -1,19 +1,21 @@
 # Changelog
 
+ 
 ## 6.2.7
-              
 ### 2022-07-18
 
+
 ### Features:
-- The bypass state can be saved to the preset file. The reasons why this was done can be seen at #1039
+- The bypass state can be saved to the preset file. The reasons why this was done can be seen at https://github.com/wwmm/easyeffects/issues/1039
 - The preset autoloading code compatibility with usb devices has been improved.
 - A dialog is shown to the user when a preset fails to load or a preset/impulse file fails to be imported.
 - The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of the one from Calf Studio. 
 
-### Bugfixes:
+### Bug fixes:
 - EasyEffects should not crash anymore when the user locale is not properly configured.
 - A workaround was implemented in our icon to deal with the lack of proper SVG support in QT.
 
+ 
 ## 6.2.6
 ### 2022-06-22
 
