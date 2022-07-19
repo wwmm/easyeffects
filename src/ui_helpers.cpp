@@ -37,12 +37,27 @@ void show_autohiding_toast(AdwToastOverlay* toast_overlay,
                            const std::string& text,
                            const uint& timeout,
                            const AdwToastPriority& priority) {
-  auto* toast = adw_toast_new(text.c_str());
+  /* ONLY AVAILABLE FROM libAdwaita 1.2
+  // Construct a custom label because we want it
+  // to be wrapped on reduced window width
+  auto custom_title = gtk_label_new(text.c_str());
+
+  // Set wrap properties
+  gtk_label_set_wrap(GTK_LABEL(custom_title), 1);
+  gtk_label_set_wrap_mode(GTK_LABEL(custom_title), PANGO_WRAP_WORD_CHAR);
+  */
+
+  // Construct AdwToast
+  auto* toast = adw_toast_new("");
+
+  // adw_toast_set_custom_title(toast, custom_title);
+  adw_toast_set_title(toast, text.c_str());
 
   adw_toast_set_timeout(toast, timeout);
 
   adw_toast_set_priority(toast, priority);
 
+  // Show AdwToast
   adw_toast_overlay_add_toast(toast_overlay, toast);
 }
 
