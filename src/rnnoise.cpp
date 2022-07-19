@@ -262,6 +262,7 @@ auto RNNoise::get_model_from_file() -> RNNModel* {
 
   const auto path = util::gsettings_get_string(settings, "model-path");
 
+  // Standard Model
   if (path.empty()) {
     standard_model = true;
 
@@ -272,9 +273,10 @@ auto RNNoise::get_model_from_file() -> RNNModel* {
     return m;
   }
 
-  if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
-    util::debug(log_tag + name + " loading custom model from file: " + path);
+  // Custom Model
+  util::debug(log_tag + name + " loading custom model from file: " + path);
 
+  if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
     m = rnnoise_model_from_file(f);
 
     fclose(f);

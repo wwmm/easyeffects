@@ -58,6 +58,7 @@
                                                                 <property name="model">
                                                                     <object class="GtkStringList" id="string_list">
                                                                         <items>
+                                                                            <!-- If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name -->
                                                                             <item translatable="yes">Standard Model</item>
                                                                         </items>
                                                                     </object>

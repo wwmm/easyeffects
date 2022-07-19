@@ -25,7 +25,11 @@ using namespace std::string_literals;
 
 static const std::string rnnn_ext = ".rnnn";
 
-static const std::string default_model_name = _("Standard Model");
+// The translated default_model_name is not working as global variable
+// because for some reasons it's not translated and, as a result, the
+// Standard Model is not set from UI perspective (see #1659).
+// So it has to be constructed every time locally when it's needed.
+// static const std::string default_model_name = _("Standard Model");
 
 static std::filesystem::path model_dir = g_get_user_config_dir() + "/easyeffects/rnnoise"s;
 
@@ -89,11 +93,9 @@ void update_model_state(RNNoiseBox* self, const bool& load_error) {
 }
 
 gboolean set_model_delete_button_visibility(GtkListItem* item, const char* name) {
-  if (name == default_model_name) {
-    return 0;
-  }
+  const std::string default_model_name = _("Standard Model");
 
-  return 1;
+  return (name == default_model_name) ? 0 : 1;
 }
 
 void on_remove_model_file(GtkListItem* item, GtkButton* btn) {
@@ -228,7 +230,9 @@ void setup(RNNoiseBox* self,
 
         const auto* v = g_variant_get_string(variant, nullptr);
 
-        auto path = std::filesystem::path{v};
+        const auto path = std::filesystem::path{v};
+
+        const std::string default_model_name = _("Standard Model");
 
         auto gsettings_model_name = path.stem();
 
@@ -237,7 +241,7 @@ void setup(RNNoiseBox* self,
         for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->selection_model)); n++) {
           auto item = g_list_model_get_item(G_LIST_MODEL(self->selection_model), n);
 
-          std::string model_name = gtk_string_object_get_string(GTK_STRING_OBJECT(item));
+          const std::string model_name = gtk_string_object_get_string(GTK_STRING_OBJECT(item));
 
           g_object_unref(item);
 
@@ -260,7 +264,9 @@ void setup(RNNoiseBox* self,
         auto string_object =
             GTK_STRING_OBJECT(gtk_single_selection_get_selected_item(GTK_SINGLE_SELECTION(self->selection_model)));
 
-        std::string name = gtk_string_object_get_string(string_object);
+        const std::string name = gtk_string_object_get_string(string_object);
+
+        const std::string default_model_name = _("Standard Model");
 
         if (name == default_model_name) {
           return g_variant_new_string("");
