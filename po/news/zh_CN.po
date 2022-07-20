@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-20 20:04-0300\n"
 "PO-Revision-Date: 2022-07-22 16:18+0000\n"
-"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -189,11 +189,12 @@ msgid "The code that shows the stream sample format has been improved"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
-#, fuzzy
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build a Debian package. See issue 1000 for more information."
-msgstr "现在 rnnoise 库是可选的。这项改动可以帮助软件包维护者构建"
+msgstr ""
+"rnnoise 库现在是可选的。 这应该有助于软件包维护者构建 Debian 软件包。 "
+"有关详细信息，请参阅 Github 存储库中编号为 1000 的 issue。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
