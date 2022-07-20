@@ -1,0 +1,2835 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-20 20:04-0300\n"
+"PO-Revision-Date: 2022-07-18 22:44+0000\n"
+"Last-Translator: R.Suga <21r.suga@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
+"main/ja/>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14-dev\n"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
+msgid "Audio Effects for PipeWire Applications"
+msgstr "PipeWire アプリケーション用オーディオエフェクト"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
+msgid ""
+"EasyEffects is an advanced audio manipulation tool. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+"EasyEffects は、高度なオーディオ操作ツールです。イコライザー、リミッター、コ"
+"ンプレッサー、リバーブツールなどが含まれていますが、これらはほんの一部です。"
+"さらに、スペクトラムアナライザーもあります。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
+msgid ""
+"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+msgstr ""
+"EasyEffects は、PulseEffects の後継版です。EasyEffects は PipeWire のオーディ"
+"オサーバーのみ対応しています。PulseAudio をお使いの場合、代わりに "
+"PulseEffects をお使いください。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
+msgid ""
+"Because EasyEffects uses the default PipeWire sound server it will work with "
+"most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+"EasyEffects はデフォルトの PipeWire サウンドサーバーを使用しているので、ほと"
+"んどのアプリケーションで動作します。サポートされているすべてのアプリケーショ"
+"ンは、メインウィンドウに表示され、それぞれ個別に有効にすることができます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+msgid ""
+"Besides manipulating sound output, EasyEffects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+"EasyEffects は、音の出力を操作するだけでなく、マイクなどの入力デバイスにもエ"
+"フェクトをかけることができます。例えば、音声録音の時に便利ですが、音声会話の"
+"時にも効果を発揮します。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
+msgid ""
+"When EasyEffects is launched it will conveniently remember the configuration "
+"used in the last session. It is also possible to save all the current "
+"settings as profiles."
+msgstr ""
+"EasyEffects を起動すると、前回のセッションで使用した設定を適用します。また、"
+"現在のすべての設定をプロファイルとして保存することもできます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
+msgid "The main page showing two audio output apps"
+msgstr "2 つのオーディオ出力アプリを表示するメインページ"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
+msgid "The bass enhancer page showing audio controls"
+msgstr "オーディオコントロールを表示するベースエンハンサーページ"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
+msgid "The convolver page showing audio controls"
+msgstr "オーディオコントロールを表示するコンボルバーのページ"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:86
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:99
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:109
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:131
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:178
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:190
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
+msgid "Features:"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
+msgid ""
+"The bypass state can be saved to the preset file. The reasons why this was "
+"done can be seen at issue 1039"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
+msgid ""
+"The preset autoloading code compatibility with usb devices has been improved."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
+msgid ""
+"A dialog is shown to the user when a preset fails to load or a preset/"
+"impulse file fails to be imported."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
+#, fuzzy
+msgid ""
+"The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of "
+"the one from Calf Studio."
+msgstr ""
+"リミッタープラグインは、Calf Studio のものから Linux Studio Plugins のステレ"
+"オリミッタープラグインを使用するようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:91
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:123
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:168
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:180
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:203
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:223
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:241
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:270
+msgid "Bug fixes:"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
+msgid ""
+"EasyEffects should not crash anymore when the user locale is not properly "
+"configured."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
+msgid ""
+"A workaround was implemented in our icon to deal with the lack of proper SVG "
+"support in QT."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:155
+msgid "Other notes:"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
+#, fuzzy
+msgid ""
+"When effects are disable to an application we now set its target metadata to "
+"null. This will allow the media session manager (wireplumber) to properly "
+"move the stream to a new device."
+msgstr ""
+"アプリケーションに対してエフェクトが無効になっている場合、ターゲットメタデー"
+"タをnullに設定します。これにより、メディアセッションが可能になります"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
+#, fuzzy
+msgid ""
+"A new configuration option was added. It allows EasyEffects to ignore "
+"streams whose purpose is to monitor sink devices. This will help to fix some "
+"of problems our users were having when using OBS."
+msgstr ""
+"新しい設定オプションが追加されました。これは、EasyEffects が監視シンクデバイ"
+"スのストリームを無視することを可能にします。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
+msgid "The code that shows the stream sample format has been improved"
+msgstr "ストリームのサンプル形式を表示するコードが改善されました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
+#, fuzzy
+msgid ""
+"The rnnoise library is now optional. This should help package maintainers to "
+"build a Debian package. See issue 1000 for more information."
+msgstr ""
+"rnnoise ライブラリがオプションになりました。これはパッケージメンテナがDebian"
+"パッケージをビルドするのに役立ちます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
+msgid ""
+"Our logs now show the source code line where the messages are being printed"
+msgstr ""
+"ログにメッセージが出力されるソースコードの行が表示されるようになりました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
+#, fuzzy
+msgid ""
+"The \"enable effects\" checkbox in our window was not being updated when "
+"third party programs like pavucontrol moved the stream away from our virtual "
+"devices. This should be fixed now."
+msgstr ""
+"pavucontrol などのサードパーティ製プログラムが動作しているとき、ウィンドウの"
+"「エフェクトを有効にする」チェックボックスが更新されないことがありました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
+msgid ""
+"Fixed a crash that could happen when the maximum autogain history was "
+"changed."
+msgstr ""
+"オートゲインの最大履歴を変更すると、クラッシュすることがある問題を修正しまし"
+"た。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
+msgid "Avoid crashes when pw-mididump is running"
+msgstr "pw-mididump 実行時のクラッシュを回避"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
+msgid "The interface of the pitch plugin was improved"
+msgstr "ピッチプラグインのインターフェースが改善されました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
+msgid "Our application icon is now compatible with desktops that uses QT"
+msgstr "アプリケーションアイコンが QT を使用するデスクトップに対応しました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
+msgid ""
+"Our blocklist code will use the `application.id` tag if the stream sets it"
+msgstr ""
+"ブロックリストのコードは、ストリームが `application.id` タグを設定した場合、"
+"それを使用します"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
+#, fuzzy
+msgid ""
+"In order to avoid problems with the mouse scroll the entries in the "
+"applications list shown in our `Players/Recorders` tab do not show a volume "
+"scale anymore. More details about the problem and the solution for it can be "
+"found on issue 1211 and issue 1427"
+msgstr ""
+"マウスのスクロールの問題を回避するために、`プレーヤー/レコーダー` に表示され"
+"るアプリケーションリストのエントリを表示します"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
+msgid ""
+"When no application is available for display in the `Players/Recorders` a "
+"message will be shown to the user"
+msgstr ""
+"`プレーヤー/レコーダー` に表示できるアプリケーションがない場合、メッセージが"
+"表示されます"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
+msgid "Many translation updates"
+msgstr "多くの翻訳の更新"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
+#, fuzzy
+msgid ""
+"Fixed a bug where EasyEffeects crashed when the number of points displayed "
+"in the spectrum was changed while our pipeline was active and the spectrum "
+"widget was visible"
+msgstr ""
+"EasyEffects が次の状態のときにスペクトラムに表示されるポイント数を変更したと"
+"きにクラッシュするバグを修正しました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
+msgid ""
+"The pipeline latency value displayed in our window could be wrong in some "
+"situations. This was fixed."
+msgstr ""
+"ウィンドウに表示されるパイプラインの待機時間の値は、状況によっては間違ってい"
+"る可能性があります。この問題は修正されました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
+msgid ""
+"There is a new setting allowing the user to select an inactivity timeout for "
+"the pipeline. When no client is playing to or recording from our devices the "
+"filters will be unlinked after the timeout is reached. This is done to make "
+"sure we do not waste CPU power processing silence."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
+#, fuzzy
+msgid ""
+"The autogain plugin now allows the user to select which of the three "
+"loudness are used to calculate the geometric mean."
+msgstr ""
+"オートゲインプラグインでは、3つのラウドネスのうち、どのラウドネスを使用して幾"
+"何学的な計算を行うかを選択できるようになりました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
+#, fuzzy
+msgid ""
+"The autogain plugin now allows the maximum history to be set and does not "
+"use `libebur128` histogram mode anymore. This should avoid the cases where "
+"the `Integrated` loudness gets stuck forever in the same value."
+msgstr ""
+"オートゲインプラグインに最大履歴を設定できるようになり、libebur128 ヒストグラ"
+"ムモードは使用されなくなりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
+msgid ""
+"EasyEffects icon has been updated in a way that should make it visible in QT "
+"desktops."
+msgstr ""
+"EasyEffects のアイコンは、QT デスクトップで見えるように更新されました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
+msgid ""
+"The command line option that returns the global bypass state is working "
+"again."
+msgstr ""
+"グローバルバイパスの状態を返すコマンドラインオプションが再び動作するようにな"
+"りました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
+msgid ""
+"The crossfeed filter should deal better with PipeWire's dynamic latency "
+"switches. Jumps in volume level should not happen anymore in these "
+"situations."
+msgstr ""
+"クロスフィードフィルターは、PipeWire の動的遅延スイッチにうまく対応するように"
+"なりました。これで、音量レベルのジャンプが起こらなくなるはずです。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
+msgid ""
+"Fixed a bug that prevented mono microphones from properly working with "
+"EasyEffects"
+msgstr "モノラルマイクが EasyEffects で正しく動作しない不具合を修正しました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:110
+msgid "Support for the next PipeWire release `0.3.44`"
+msgstr "次の PipeWire リリース `0.3.44` への対応"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
+msgid ""
+"The autogain filter should deal better with PipeWire's dynamic latency "
+"switches. Jumps in volume level should not happen anymore in these "
+"situations."
+msgstr ""
+"オートゲインフィルターは、PipeWire の動的遅延スイッチにうまく対応するようにな"
+"りました。これで、音量レベルのジャンプが起こらなくなるはずです。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:112
+msgid ""
+"We added an option that allows the volume and mute state of our virtual "
+"devices to be reset when EasyEffects starts. It should help with the cases "
+"were our devices are muted by the audio server for unknown reasons."
+msgstr ""
+"EasyEffects の起動時に、バーチャルデバイスのボリュームとミュートの状態をリ"
+"セットできるオプションを追加しました。これは、謎の理由でオーディオサーバーに"
+"よってデバイスがミュートされている場合に役立ちます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
+msgid "Better support for computer suspending."
+msgstr "コンピュータのサスペンドのサポートが強化されました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:240
+msgid "Updated translations"
+msgstr "翻訳の更新"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
+msgid ""
+"Fixed a bug where trying to create an autoloading profile without having "
+"presets caused the application to crash."
+msgstr ""
+"プリセットを持たない自動読み込みプロファイルを作成しようとすると、アプリケー"
+"ションがクラッシュするというバグを修正しました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
+msgid ""
+"Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
+"an application crash."
+msgstr ""
+"イコライザーバンドの「品質」を「0」に設定するとアプリケーションがクラッシュす"
+"るバグを修正しました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:132
+msgid ""
+"LibAdwaita is used to create some parts of our window and for handling the "
+"switching between dark and light themes."
+msgstr ""
+"LibAdwaita は、ウィンドウの一部を作成したり、ダークテーマとライトテーマを切り"
+"替えるために使用されます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:133
+msgid "The settings menu has been redesigned using LibAdwaita widgets."
+msgstr "設定メニューは、LibAdwaita ウィジェットを使用して再設計されました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
+#, fuzzy
+msgid ""
+"Equalizer APO preset import feature has been improved to apply not only the "
+"Bell filter, but also other supported ones (at the moment only the Bandpass "
+"filter is not available in LSP plugin)."
+msgstr ""
+"イコライザー APO のプリセットインポート機能で、ベルフィルターだけでなく、対応"
+"する他のフィルターも適用できるよう改善しました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
+msgid ""
+"The `Reset All Settings` function in our menu should work in Flatpak now."
+msgstr ""
+"メニューの「すべての設定をリセット」機能が Flatpak でも動作するようにしまし"
+"た。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
+msgid ""
+"We have a new option that allows the user to disable our menus `autohide`. "
+"This may help to workaround some bugs Popover menus currently have on gtk4."
+msgstr ""
+"メニューの 「自動非表示」を無効にすることができる新しいオプションを用意しまし"
+"た。これにより、現在 gtk4 で抱えているポップオーバーメニュー関連のバグを回避"
+"できるかもしれません。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
+msgid ""
+"More robust parsing to import APO presets saved with comma as thousands "
+"separator in central frequency band."
+msgstr ""
+"中央の周波数帯でカンマを千の区切りとして保存された APO プリセットを読み込むた"
+"めの解析がより強力になりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
+msgid ""
+"The fmt library is a new dependency At least while the c++ compilers do not "
+"implement its features. This is expected to happen in the next years."
+msgstr ""
+"fmt ライブラリは、少なくとも c++ コンパイラがその機能を実装していない間は新し"
+"い依存関係にあります。これは今後数年のうちに実現すると思われます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
+msgid ""
+"GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
+msgstr ""
+"GTKMM と GLIBMM はもう依存関係にありません。現在は gtk4 を直接使用していま"
+"す。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:149
+msgid ""
+"It is now possible to combine impulse responses in the Convolver interface. "
+"A new impulse file is generated and it should be visible in the impulse list."
+msgstr ""
+"コンボルバーインターフェースでインパルスレスポンスを組み合わせることができる"
+"ようになりました。新しいインパルスファイルが生成され、インパルスリストに表示"
+"されます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
+msgid ""
+"Improved `x axis` drawings in our plots. Now the number of labels is "
+"adjusted dynamically depending on our window width."
+msgstr ""
+"プロットの「x 軸」の描画を改善しました。ウィンドウの幅に応じてラベルの数が動"
+"的に調整されるようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
+msgid ""
+"The documentation has been updated reflecting the new EasyEffects features. "
+"Old references about PulseEffects have been removed. The documentation "
+"button has been added in the menu section."
+msgstr ""
+"ドキュメントが EasyEffects の新機能を反映して更新されました。PulseEffects に"
+"関する古い文献は削除されました。メニューセクションにドキュメントボタンが追加"
+"されました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:153
+msgid ""
+"When a spinbutton is filled with an out of range value, now it is updated "
+"with the lowest/highest value rather than resetting to the previous one."
+msgstr ""
+"スピンボタンに範囲外の値が入力されたときに、前の値にリセットされるのではな"
+"く、最低/最高の値に更新されるようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
+msgid ""
+"The application window now remembers the maximized state and restores it on "
+"the next opening event."
+msgstr ""
+"アプリケーションウィンドウは最大化された状態を記憶し、次回の起動時に反映しま"
+"す。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
+msgid "The `tbb` library is a new dependency"
+msgstr "「tbb」ライブラリは新しい依存関係です"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:164
+msgid ""
+"The Limiter and the Multiband Compressor plugins can now use an optional "
+"external sidechain."
+msgstr ""
+"リミッターとマルチバンドコンプレッサーのプラグインで、オプションの外部サイド"
+"チェーンを使用できるようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
+msgid ""
+"The Autogain plugin now allows the user to select which Loudness is used as "
+"reference for the volume correction."
+msgstr ""
+"オートゲインプラグインで、音量補正の基準となるラウドネスを選択できるようにな"
+"りました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
+msgid ""
+"The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
+"Amplification\" parameter."
+msgstr ""
+"イコライザープラグインの APO プロファイルインポート機能で、\"Pre "
+"Amplification\" パラメータを解析するようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:167
+msgid "Optional Cubic Volume can be enabled in General Settings."
+msgstr ""
+"オプションのキュービックボリュームは一般設定で有効にすることができます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
+msgid ""
+"The Spectrum plugin was supposed to enter passthrough whenever it was not "
+"visible, but this was happening only when our window was closed."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
+msgid "Improved support for Assistive Technology."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
+msgid ""
+"The probes used in some filters like the Compressor and the Limiter were not "
+"being relinked after changing the order of the plugins in the pipeline. It "
+"should be working now."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:179
+msgid ""
+"PipeWire monitor streams are now excluded and removed from the applications "
+"list."
+msgstr ""
+"PipeWire のモニターストリームがアプリケーションリストから除外され、削除される"
+"ようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
+#, fuzzy
+msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
+msgstr ""
+"うまくいけば [1172]( で報告されたもののようなクラッシュが修正されています。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
+msgid "Prevented a case in which Spectrum was crashing."
+msgstr "スペクトラムがクラッシュするのを防ぎました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
+msgid ""
+"Pavucontrol is not added anymore to input applications list on systems with "
+"localization different than English."
+msgstr ""
+"英語以外の言語を使用しているシステムでは、Pavucontrol は入力アプリケーション"
+"リストに追加されません。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
+#, fuzzy
+msgid ""
+"Improved compatibility with WirePlumber. This is needed to run on systems "
+"that decided to use it instead of the built-in PipeWire session manager. "
+"More information at issue 1144."
+msgstr ""
+"WirePlumber との互換性を改善しました。これは次のものの代わりにシステムで動作"
+"するために必要です"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
+msgid ""
+"When trying to add an autoloading profile for a device already in the list "
+"its target preset will be updated. This way we can change the profile preset "
+"without having to remove and recreating it."
+msgstr ""
+"すでにリストにあるデバイスに自動読み込みプロファイルを追加しようとすると、そ"
+"のターゲットプリセットが更新されます。これにより、プロファイルを削除して再度"
+"作成せずにプロファイルのプリセットを変更することができます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:200
+#, fuzzy
+msgid ""
+"The preset autoloading support implementation was redesigned again. It "
+"should work on more hardware now. For more information see issue 1051."
+msgstr ""
+"プリセットの自動読み込みサポートの実装を再設計しました。これにより、多くの"
+"ハードウェアで動作するようになりました。詳しくは issue [1051]( を確認してくだ"
+"さい"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
+msgid ""
+"If the Limiter or the Maximizer are set in the last position of the plugin "
+"stack, new plugins are added at the second to last position in order to "
+"prevent hardware damage on eventually high output level."
+msgstr ""
+"プラグインスタックの最後にリミッターやマキシマイザーが設定されている場合、高"
+"い出力レベルでハードウェアが損傷するのを防ぐために、新しいプラグインは最後か"
+"ら2番目の位置に追加されます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:202
+msgid ""
+"Removing an application from the blocklist, its previous enabled state is "
+"restored."
+msgstr "ブロックリストからアプリケーションを削除すると、有効な状態に戻ります。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
+msgid ""
+"Sometimes when removing imported models from the noise reduction plugin the "
+"current used model was not properly updated. This should be fixed now."
+msgstr ""
+"ノイズ除去プラグインからインポートしたモデルを削除すると、現在使用しているモ"
+"デルが正しく更新されないことがありました。これは現在修正されているはずです。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:205
+msgid ""
+"When editing presets files in an external editor, duplicated entries won't "
+"be shown in our presets menu."
+msgstr ""
+"外部エディタでプリセットファイルを編集すると、重複したエントリーがプリセット"
+"メニューに表示されなくなります。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
+msgid "Now the blocklist is correctly set when switching presets."
+msgstr ""
+"プリセットを切り替えたときに、ブロックリストが正しく設定されるようになりまし"
+"た。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
+msgid ""
+"Now the status of the global bypass button is correctly updated when "
+"changing plugin stack."
+msgstr ""
+"プラグインのスタックを変更したときに、グローバルバイパスボタンの状態が正しく"
+"更新されるようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
+msgid ""
+"Missing icons on the system should not be shown inside the application info "
+"UI (if an application icon could not be shown even if you're sure it's "
+"correctly installed, please open an issue)."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
+msgid ""
+"Some icons not showing in Plasma DE with Breeze icon theme should appear now."
+msgstr ""
+"Breeze アイコンテーマを使用した Plasma DE で表示されなかった一部のアイコンが"
+"表示されるようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
+msgid "Updated Chinese translation."
+msgstr "中国語の翻訳を更新しました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
+msgid "Updated Italian translation."
+msgstr "イタリア語の翻訳を更新しました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
+msgid "Added support for the compressor parameter `Boost Amount`"
+msgstr "コンプレッサーのパラメーター「Boost Amount」に対応しました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:220
+msgid ""
+"The multiband compressor plugin now uses the stereo multiband compressor "
+"plugin from Linux Studio Plugins instead of the one from Calf Studio."
+msgstr ""
+"マルチバンドコンプレッサープラグインは、Calf Studio のものから Linux Studio "
+"Plugins のステレオマルチバンドコンプレッサープラグインを使用するようになりま"
+"した。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:221
+msgid ""
+"The limiter plugin now uses the stereo limiter plugin from Linux Studio "
+"Plugins instead of the one from Calf Studio."
+msgstr ""
+"リミッタープラグインは、Calf Studio のものから Linux Studio Plugins のステレ"
+"オリミッタープラグインを使用するようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:222
+msgid ""
+"LV2 filters now are spawned in PipeWire graph only when loaded the first "
+"time. Once loaded, they remain connected until EasyEffects shutdown."
+msgstr ""
+"LV2 フィルターは、最初に読み込まれたときのみ PipeWire グラフに生成されるよう"
+"になりました。一度読み込まれると、EasyEffects がシャットダウンするまで接続さ"
+"れたままになります。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
+msgid "The echo canceller sampling rate is now properly set."
+msgstr ""
+"エコーキャンセラーのサンプリングレートが正しく設定されるようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:225
+msgid ""
+"The threshold parameter from the deesser plugin is now saved to the preset "
+"file."
+msgstr ""
+"ディエッサープラグインのしきい値パラメーターがプリセットファイルに保存される"
+"ようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
+msgid ""
+"Improved band splitting for crystalizer with new default intensity values."
+msgstr ""
+"クリスタライザーのバンドスプリットを改善し、新しいデフォルトの強度値を追加し"
+"ました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
+msgid ""
+"Depending on the input gain or output gain values the corresponding level "
+"bars could not be aligned."
+msgstr ""
+"入力ゲインや出力ゲインの値によっては、対応するレベルバーが揃わないことがあり"
+"ました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
+msgid ""
+"When adding more equalizer bands they are set to `Bell` instead of `Off`."
+msgstr ""
+"イコライザーバンドを追加すると、「オフ」ではなく「ベル」に設定されます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
+msgid ""
+"Equalizer APO presets loading is now working properly on locales different "
+"than C."
+msgstr ""
+"イコライザー APO のプリセットの読み込みが、C 以外のロケールで正しく動作するよ"
+"うになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:230
+msgid "Improved linking management between port filter nodes in PipeWire."
+msgstr "PipeWire のポートフィルターノード間のリンク管理を改善しました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
+msgid ""
+"The crystalizer plugin signal amplification was too high before. It should "
+"be within more reasonable levels now."
+msgstr ""
+"以前は、クリスタライザープラグインの信号増幅が高すぎました。今は、より合理的"
+"なレベルになっているはずです。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
+msgid ""
+"Improved the resampler used in the plugins that require one(like the rnnoise "
+"plugin)"
+msgstr ""
+"リサンプラーを必要とするプラグイン (rnnoise プラグインなど) で使用されるリザ"
+"ンプラーの改善"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:242
+msgid "Setting multiple autoloading presets should be fine now"
+msgstr "複数の自動読み込みプリセットを設定しても正常に動作するようになりました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
+msgid "Transient windows are now properly set for some plugins dialogs"
+msgstr ""
+"一部のプラグインのダイアログで、一時的なウィンドウが適切に設定されるようにな"
+"りました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:244
+#, fuzzy
+msgid ""
+"The convolver impulse response menu was improved to workaround an issue "
+"where the impulse files was not loaded when only one was available in the "
+"menu, see issue 1011"
+msgstr ""
+"コンボルバーのインパルス応答メニューで、インパルスファイルが1つしかない場合に"
+"読み込まれないという問題を改善しました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:245
+msgid ""
+"Fixed a bug that could make the pitch plugin to not be properly initialized"
+msgstr "ピッチプラグインが正しく初期化されないことがあるバグを修正しました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:246
+msgid "The saturation warning should not displace its neighbor widgets anymore"
+msgstr ""
+"サチュレーション警告は、もう隣のウィジェットの位置を変えることはありません"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
+msgid "Fixed the locale in a few widgets"
+msgstr "いくつかのウィジェットのロケールを修正"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
+msgid "Fixed wrong alignment in a few widgets"
+msgstr "いくつかのウィジェットで誤った配置になっていたのを修正"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:256
+#, fuzzy
+msgid ""
+"The Loudness plugin is being used again for the reasons described at issue "
+"820. This means that is an optional dependency again."
+msgstr ""
+"ラウドネスプラグインは、ここで説明されている理由のために再び使用されていま"
+"す。そのため、オプションの依存関係になりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:258
+msgid ""
+"Fixed a segmentation fault that happened when optional dependencies were not "
+"installed"
+msgstr ""
+"オプションの依存パッケージがインストールされていない場合に発生するセグメン"
+"テーションフォールトを修正しました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
+msgid "Improved equalizer interface."
+msgstr "イコライザーのインターフェースを改善しました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
+msgid ""
+"Now we use a sidechain LSP compressor that allows the user to select and "
+"external source as the sidechain input."
+msgstr ""
+"現在は、サイドチェーン入力として外部ソースを選択できるサイドチェーン LSP コン"
+"プレッサーを使用しています。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:268
+msgid "We now support the LSP compressor `Boosting` mode."
+msgstr "LSP コンプレッサーの「ブースト」モードに対応しました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:269
+msgid ""
+"When `split-channels` is enabled in the equalizer the imported APO preset "
+"will be applied only to the channel being visualized in the window. This "
+"will allow to import different presets for each channel instead of just "
+"settings the same values to both."
+msgstr ""
+"イコライザーで「スプリットチャンネル」が有効になっている場合、インポートされ"
+"た APO プリセットは、ウィンドウに表示されているチャンネルのみ適用されます。こ"
+"れにより、両方に同じ値を設定するのではなく、チャンネルごとに異なるプリセット"
+"をインポートすることができます。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:271
+msgid ""
+"Fixed some segmentation faults that could happen when creating a preset "
+"autoloading profile or removing presets"
+msgstr ""
+"プリセットの自動読み込みプロファイル作成時やプリセットの削除時に発生するセグ"
+"メンテーションフォールトを修正"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
+msgid ""
+"This is one of the biggest releases that I have ever made. The amount of "
+"changes is so big that it is hard to talk about everything here."
+msgstr ""
+"今回のリリースは、これまでのリリースの中でも最も大きなもののひとつです。変更"
+"点が多すぎて、ここですべてを話すことはできません。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
+#, fuzzy
+msgid ""
+"The following are just the most import ones. People interested on the "
+"journey that got us here can take a look at issue 904 and issue 874."
+msgstr "以下は、最も重要なものだけです。ここに至るまでの道のりに興味のある方は"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
+msgid ""
+"The application and its repository have been renamed from PulseEffects to "
+"`EasyEffects`"
+msgstr ""
+"アプリケーションとそのリポジトリの名称が PulseEffects から EasyEffects に変更"
+"されました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
+msgid "gtkmm3 was replaced by gtkmm4"
+msgstr "gtkmm3 は gtkmm4 に置き換えられました"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
+msgid "Gstreamer was replaced by native PipeWire filters."
+msgstr "Gstreamer は、ネイティブの PipeWire フィルターに置き換えられました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
+msgid ""
+"Many features were reimplemented from scratch. The preset autoloading is one "
+"example. Another remarkable change will be seen in the plugins selection "
+"menu. Now the user can show in the window only the plugins that he/she wants "
+"to use."
+msgstr ""
+"多くの機能がゼロから再実装されました。プリセットの自動読み込みはその一例で"
+"す。また、プラグイン選択メニューも大きく変化しました。ユーザーは、使用したい"
+"プラグインだけをウィンドウに表示できるようになりました。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
+msgid ""
+"Boost is no longer a dependency. The price paid for that was a little change "
+"in our presets structures. With some patience it is possible to edit "
+"PulseEffects presets in a text editor and make them work in EasyEffects. "
+"Hopefully someone will come up with a script for this in the feature."
+msgstr ""
+"Boost は依存関係でなくなりました。そのため、プリセットの構造に少し変更があり"
+"ました。根気があれば、PulseEffects のプリセットをテキストエディタで編集して、"
+"EasyEffects で動作させることができます。誰かがこの機能のためのスクリプトを開"
+"発してくれることを期待しています。"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
+msgid ""
+"New libraries are being used and some of the librarires that were optional "
+"before are now required"
+msgstr ""
+"新しいライブラリーが使われるようになり、以前はオプションであったライブラリー"
+"の一部が必須になりました"
+
+#~ msgid "This release adds the following features:"
+#~ msgstr "このリリースでは、以下の機能が追加されています:"
+
+#~ msgid "manager"
+#~ msgstr "マネージャー"
+
+#~ msgid ""
+#~ "devices. This will help to fix some of problems our users were having "
+#~ "when using OBS."
+#~ msgstr ""
+#~ "これにより、OBS を使用する際にユーザーが抱えていた問題のいくつかを解決する"
+#~ "ことができます。"
+
+#~ msgid "a Debian package. See the issue #1000 for more information."
+#~ msgstr "詳しくは issue #1000 を参照してください。"
+
+#~ msgid "This release fixes the following bugs:"
+#~ msgstr "このリリースでは、以下のバグが修正されています:"
+
+#~ msgid ""
+#~ "moved the stream away from our virtual devices. This should be fixed now."
+#~ msgstr ""
+#~ "そのストリームを仮想デバイスから遠ざけました。これは今すぐ修正する必要があ"
+#~ "ります。"
+
+#~ msgid ""
+#~ "tab do not show a volume scale anymore. More details about the problem "
+#~ "and the solution for it can be found on #1211"
+#~ msgstr ""
+#~ "タブにボリュームスケールが表示されなくなりました。この問題の詳細と解決策に"
+#~ "ついては、#1211 を参照してください"
+
+#~ msgid "and #1427"
+#~ msgstr "and #1427"
+
+#~ msgid "our pipeline was active and the spectrum widget was visible"
+#~ msgstr ""
+#~ "パイプラインがアクティブで、かつスペクトラムウィジェットが表示されている間"
+
+#~ msgid ""
+#~ "There is a new setting allowing the user to select an inactivity timeout "
+#~ "for the pipeline. When no client is playing"
+#~ msgstr ""
+#~ "パイプラインの非アクティブ時のタイムアウトを選択できる設定が追加されまし"
+#~ "た。クライアントが再生していないとき"
+
+#~ msgid ""
+#~ "to or recording from our devices the filters will be unlinked after the "
+#~ "timeout is reached. This is done to make sure"
+#~ msgstr ""
+#~ "の接続や録画は、タイムアウトに達するとフィルタリングが解除されます。これは"
+
+#~ msgid "we do not waste CPU power processing silence."
+#~ msgstr "CPUのパワーを無駄にせず、無音で処理することができます。"
+
+#~ msgid "mean."
+#~ msgstr "。"
+
+#~ msgid ""
+#~ "This should avoid the cases where the `Integrated` loudness gets stuck "
+#~ "forever in the same value."
+#~ msgstr ""
+#~ "これにより、Integrated ラウドネスが永遠に同じ値で止まってしまうようなケー"
+#~ "スを避けることができます。"
+
+#~ msgid "This release fixes the following bug:"
+#~ msgstr "このリリースでは、以下のバグが修正されています:"
+
+#~ msgid "This release adds the following feature:"
+#~ msgstr "このリリースでは、以下の機能が追加されています:"
+
+#~ msgid "built-in PipeWire session manager. More information at issue [1144]("
+#~ msgstr ""
+#~ "内蔵の PipeWire セッションマネージャーです。詳細は issue [1144]( で確認で"
+#~ "きます"
+
+#~ msgid ""
+#~ "Missing icons on the system should not be shown inside the application "
+#~ "info UI"
+#~ msgstr ""
+#~ "システム上のアイコンが見つからない場合は、アプリケーション情報インター"
+#~ "フェース内に表示されません"
+
+#~ msgid "a look at and"
+#~ msgstr "を見て、"
+
+#~ msgid "Equalizer, Compressor and Other Audio Effects"
+#~ msgstr "イコライザー、コンプレッサーなどのオーディオエフェクト"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "リミッター;コンプレッサー;リバーブ;イコライザー;オートボリューム;"
+
+#~ msgid "\"Presets\""
+#~ msgstr "「プリセット」"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "このアプリケーションの有効化/無効化"
+
+#~ msgid "Enable"
+#~ msgstr "有効"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "除外されたアプリリスト: このアプリケーションを追加/削除"
+
+#~ msgid "Exclude"
+#~ msgstr "除外"
+
+#~ msgid "Mute Application"
+#~ msgstr "アプリケーションをミュート"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "このアプリケーションの音量を変更"
+
+#~ msgid "Application Volume"
+#~ msgstr "アプリケーションの音量"
+
+#~ msgid "_Preferences"
+#~ msgstr "_環境設定"
+
+#~ msgid "_Manual"
+#~ msgstr "_マニュアル"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_ショートカット"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_設定をリセット"
+
+#~ msgid "_About EasyEffects"
+#~ msgstr "_EasyEffects について"
+
+#~ msgid "Presets"
+#~ msgstr "プリセット"
+
+#~ msgid "Presets Menu"
+#~ msgstr "プリセットメニュー"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "グローバルバイパスの有効化/無効化"
+
+#~ msgid "Global Bypass"
+#~ msgstr "グローバルバイパス"
+
+#~ msgid "Primary Menu"
+#~ msgstr "メインメニュー"
+
+#~ msgid "EasyEffects Window"
+#~ msgstr "EasyEffects ウィンドウ"
+
+#~ msgid "Applications List"
+#~ msgstr "アプリケーションリスト"
+
+#~ msgid "Empty List"
+#~ msgstr "空のリスト"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "オーディオアプリケーションがありません"
+
+#~ msgid "Target"
+#~ msgstr "ターゲット"
+
+#~ msgid "Maximum History"
+#~ msgstr "最大履歴"
+
+#~ msgid "Reference"
+#~ msgstr "リファレンス"
+
+#~ msgid "Momentary"
+#~ msgstr "瞬間的"
+
+#~ msgid "Short-Term"
+#~ msgstr "短期"
+
+#~ msgid "Integrated"
+#~ msgstr "統合"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "幾何平均 (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "幾何平均 (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "幾何平均 (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "幾何平均 (SI)"
+
+#~ msgid "Reset History"
+#~ msgstr "履歴をリセット"
+
+#~ msgid "Relative"
+#~ msgstr "相対的"
+
+#~ msgid "Range"
+#~ msgstr "範囲"
+
+#~ msgid "Loudness"
+#~ msgstr "ラウドネス"
+
+#~ msgid "Output Gain"
+#~ msgstr "出力ゲイン"
+
+#~ msgid "Input"
+#~ msgstr "入力"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "プラグイン入力ゲイン"
+
+#~ msgid "Output"
+#~ msgstr "出力"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "プラグイン出力ゲイン"
+
+#~ msgid "Reset"
+#~ msgstr "リセット"
+
+#~ msgid "Using"
+#~ msgstr "使用中"
+
+#~ msgid "Device"
+#~ msgstr "デバイス"
+
+#~ msgid "Name"
+#~ msgstr "名前"
+
+#~ msgid "Profile"
+#~ msgstr "プロファイル"
+
+#~ msgid "Preset"
+#~ msgstr "プリセット"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "この自動読み込みプリセットを削除"
+
+#~ msgid "Listen"
+#~ msgstr "聞く"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "ブレンドハーモニクス"
+
+#~ msgid "3rd"
+#~ msgstr "3rd"
+
+#~ msgid "2nd"
+#~ msgstr "2nd"
+
+#~ msgid "Amount"
+#~ msgstr "量"
+
+#~ msgid "Harmonics"
+#~ msgstr "ハーモニクス"
+
+#~ msgid "Scope"
+#~ msgstr "範囲"
+
+#~ msgid "Floor"
+#~ msgstr "フロア"
+
+#~ msgid "Floor Value"
+#~ msgstr "フロア値"
+
+#~ msgid "Link"
+#~ msgstr "リンク"
+
+#~ msgid "Application Name"
+#~ msgstr "アプリケーション名"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "除外アプリケーションに追加"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "除外されたアプリケーションリスト"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "除外されたアプリケーションを表示"
+
+#~ msgid "Compressor"
+#~ msgstr "コンプレッサー"
+
+#~ msgid "Mode"
+#~ msgstr "モード"
+
+#~ msgid "Downward"
+#~ msgstr "下方向"
+
+#~ msgid "Upward"
+#~ msgstr "上方向"
+
+#~ msgid "Boosting"
+#~ msgstr "ブースト"
+
+#~ msgid "Compression Mode"
+#~ msgstr "圧縮モード"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "ブーストしきい値"
+
+#~ msgid "Boost Amount"
+#~ msgstr "ブースト量"
+
+#~ msgid "Attack"
+#~ msgstr "アタック"
+
+#~ msgid "Time"
+#~ msgstr "時間"
+
+#~ msgid "Threshold"
+#~ msgstr "しきい値"
+
+#~ msgid "Attack Time"
+#~ msgstr "アタックタイム"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "アタックしきい値"
+
+#~ msgid "Release"
+#~ msgstr "リリース"
+
+#~ msgid "Release Time"
+#~ msgstr "リリース時間"
+
+#~ msgid "Release Threshold"
+#~ msgstr "リリースしきい値"
+
+#~ msgid "Ratio"
+#~ msgstr "比率"
+
+#~ msgid "Knee"
+#~ msgstr "ニー"
+
+#~ msgid "Makeup"
+#~ msgstr "メイクアップ"
+
+#~ msgid "Sidechain"
+#~ msgstr "サイドチェーン"
+
+#~ msgid "Peak"
+#~ msgstr "ピーク"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#~ msgid "Low-Pass"
+#~ msgstr "ローパス"
+
+#~ msgid "Uniform"
+#~ msgstr "ユニフォーム"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "サイドチェーンモード"
+
+#~ msgid "Source"
+#~ msgstr "ソース"
+
+#~ msgid "Middle"
+#~ msgstr "中央"
+
+#~ msgid "Side"
+#~ msgstr "サイド"
+
+#~ msgid "Left"
+#~ msgstr "左"
+
+#~ msgid "Right"
+#~ msgstr "右"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "サイドチェーンソース"
+
+#~ msgid "Type"
+#~ msgstr "タイプ"
+
+#~ msgid "Feed-forward"
+#~ msgstr "フィードフォワード"
+
+#~ msgid "Feed-back"
+#~ msgstr "フィードバック"
+
+#~ msgid "External"
+#~ msgstr "外部"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "サイドチェーンタイプ"
+
+#~ msgid "Input Device"
+#~ msgstr "入力デバイス"
+
+#~ msgid "PreAmplification"
+#~ msgstr "プリアンプリーション"
+
+#~ msgid "Reactivity"
+#~ msgstr "反応性"
+
+#~ msgid "Lookahead"
+#~ msgstr "ルックアヘッド"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "サイドチェーンフィルター"
+
+#~ msgid "High-Pass"
+#~ msgstr "ハイパス"
+
+#~ msgid "Frequency"
+#~ msgstr "周波数"
+
+#~ msgid "Off"
+#~ msgstr "オフ"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/oct"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "24 dB/oct"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/oct"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "ハイパスフィルターモード"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "ハイパスフィルター周波数"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "ローパスフィルターモード"
+
+#~ msgid "Gain"
+#~ msgstr "ゲイン"
+
+#~ msgid "Envelope"
+#~ msgstr "包装"
+
+#~ msgid "Curve"
+#~ msgstr "カーブ"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#~ msgid "Left Channel"
+#~ msgstr "左チャンネル"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "Right Channel"
+#~ msgstr "右チャンネル"
+
+#~ msgid "Impulses"
+#~ msgstr "インパルス"
+
+#~ msgid "Combine"
+#~ msgstr "コンバイン"
+
+#~ msgid "Stereo Width"
+#~ msgstr "ステレオ幅"
+
+#~ msgid "Spectrum"
+#~ msgstr "スペクトラム"
+
+#~ msgid "Log Scale"
+#~ msgstr "ログスケール"
+
+#~ msgid "Autogain"
+#~ msgstr "オートゲイン"
+
+#~ msgid "Rate"
+#~ msgstr "レート"
+
+#~ msgid "Samples"
+#~ msgstr "サンプル"
+
+#~ msgid "Duration"
+#~ msgstr "長さ"
+
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "インパルス応答をコンバイン"
+
+#~ msgid "First Kernel"
+#~ msgstr "ファーストカーネル"
+
+#~ msgid "Second Kernel"
+#~ msgstr "セカンドカーネル"
+
+#~ msgid "Output File Name"
+#~ msgstr "出力ファイル名"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "複合カーネル名"
+
+#~ msgid "Import Impulse"
+#~ msgstr "インパルスをインポート"
+
+#~ msgid "Search"
+#~ msgstr "検索"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "インパルスファイルを検索"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "インパルスファイル一覧"
+
+#~ msgid "Default"
+#~ msgstr "デフォルト"
+
+#~ msgid "Cutoff"
+#~ msgstr "カットオフ"
+
+#~ msgid "Feed"
+#~ msgstr "フィード"
+
+#~ msgid "Bypass"
+#~ msgstr "バイパス"
+
+#~ msgid "Mute"
+#~ msgstr "ミュート"
+
+#~ msgid "Detection"
+#~ msgstr "検出"
+
+#~ msgid "Wide"
+#~ msgstr "ワイド"
+
+#~ msgid "Split"
+#~ msgstr "スプリット"
+
+#~ msgid "F1 Split"
+#~ msgstr "F1 スプリット"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "周波数 1 スプリット"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 ピーク"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "周波数 2 ピーク"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 ゲイン"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "周波数 1 ゲイン"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 レベル"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "周波数 2 レベル"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 ピーク Q"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "周波数 2 ピーク Q"
+
+#~ msgid "Laxity"
+#~ msgstr "ゆるみ"
+
+#~ msgid "Detected"
+#~ msgstr "検出"
+
+#~ msgid "Reduction"
+#~ msgstr "減少"
+
+#~ msgid "Frame Size"
+#~ msgstr "フレームサイズ"
+
+#~ msgid "Filter Length"
+#~ msgstr "フィルター長"
+
+#~ msgid "Excluded Apps"
+#~ msgstr "除外されたアプリ"
+
+#~ msgid "Bands"
+#~ msgstr "バンド"
+
+#~ msgid "IIR"
+#~ msgstr "IIR"
+
+#~ msgid "FIR"
+#~ msgstr "FIR"
+
+#~ msgid "FFT"
+#~ msgstr "FFT"
+
+#~ msgid "SPM"
+#~ msgstr "SPM"
+
+#~ msgid "Split Channels"
+#~ msgstr "チャンネルの分割"
+
+#~ msgid "Flat Response"
+#~ msgstr "フラットレスポンス"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "周波数の計算"
+
+#~ msgid "Load APO Preset"
+#~ msgstr "APO プリセットを読み込む"
+
+#~ msgid "Bell"
+#~ msgstr "ベル"
+
+#~ msgid "High Pass"
+#~ msgstr "ハイパス"
+
+#~ msgid "High Shelf"
+#~ msgstr "ハイシェルフ"
+
+#~ msgid "Low Pass"
+#~ msgstr "ローパス"
+
+#~ msgid "Low Shelf"
+#~ msgstr "ローシェルフ"
+
+#~ msgid "Notch"
+#~ msgstr "ノッチ"
+
+#~ msgid "Resonance"
+#~ msgstr "反響"
+
+#~ msgid "All Pass"
+#~ msgstr "オールパス"
+
+#~ msgid "Band Type"
+#~ msgstr "バンドタイプ"
+
+#~ msgid "Band Mode"
+#~ msgstr "バンドモード"
+
+#~ msgid "Slope"
+#~ msgstr "スロープ"
+
+#~ msgid "Band Slope"
+#~ msgstr "バンドスロープ"
+
+#~ msgid "Width"
+#~ msgstr "幅"
+
+#~ msgid "Quality"
+#~ msgstr "品質"
+
+#~ msgid "Solo"
+#~ msgstr "ソロ"
+
+#~ msgid "Ceil"
+#~ msgstr "切り上げ"
+
+#~ msgid "Ceil Value"
+#~ msgstr "切り上げ値"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Access"
+#~ msgstr "アクセス"
+
+#~ msgid "Description"
+#~ msgstr "説明"
+
+#~ msgid "Remove this model file"
+#~ msgstr "このモデルファイルを削除"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/oct ローパス"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/oct ローパス"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/oct ローパス"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/oct ハイパス"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/oct ハイパス"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/oct ハイパス"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/oct バンドパス"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/oct バンドパス"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/oct バンドパス"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/oct バンドリジェクト"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/oct バンドリジェクト"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "18dB/oct バンドリジェクト"
+
+#~ msgid "Inertia"
+#~ msgstr "慣性"
+
+#~ msgid "Gate"
+#~ msgstr "ゲート"
+
+#~ msgid "Zone"
+#~ msgstr "ゾーン"
+
+#~ msgid "Hysteresis"
+#~ msgstr "ヒステリシス"
+
+#~ msgid "Attack Zone Start"
+#~ msgstr "アタックゾーンスタート"
+
+#~ msgid "Release Zone Start"
+#~ msgstr "リリースゾーン開始"
+
+#~ msgid "Internal"
+#~ msgstr "内部"
+
+#~ msgid "Gating"
+#~ msgstr "ゲーティング"
+
+#~ msgid "Oversampling"
+#~ msgstr "オーバーサンプリング"
+
+#~ msgid "Dither"
+#~ msgstr "ディザ"
+
+#~ msgid "Herm Thin"
+#~ msgstr "Herm Thin"
+
+#~ msgid "Herm Wide"
+#~ msgstr "Herm Wide"
+
+#~ msgid "Herm Tail"
+#~ msgstr "Herm Tail"
+
+#~ msgid "Herm Duck"
+#~ msgstr "Herm Duck"
+
+#~ msgid "Exp Thin"
+#~ msgstr "Exp Thin"
+
+#~ msgid "Exp Wide"
+#~ msgstr "Exp Wide"
+
+#~ msgid "Exp Tail"
+#~ msgstr "Exp Tail"
+
+#~ msgid "Exp Duck"
+#~ msgstr "Exp Duck"
+
+#~ msgid "Line Thin"
+#~ msgstr "Line Thin"
+
+#~ msgid "Line Wide"
+#~ msgstr "Line Wide"
+
+#~ msgid "Line Tail"
+#~ msgstr "Line Tail"
+
+#~ msgid "Line Duck"
+#~ msgstr "Line Duck"
+
+#~ msgid "None"
+#~ msgstr "なし"
+
+#~ msgid "Half x2(2L)"
+#~ msgstr "ハーフ ×2(2L)"
+
+#~ msgid "Half x2(3L)"
+#~ msgstr "ハーフ ×2(3L)"
+
+#~ msgid "Half x3(2L)"
+#~ msgstr "ハーフ ×3(2L)"
+
+#~ msgid "Half x3(3L)"
+#~ msgstr "ハーフ ×3(3L)"
+
+#~ msgid "Half x4(2L)"
+#~ msgstr "ハーフ ×4(2L)"
+
+#~ msgid "Half x4(3L)"
+#~ msgstr "ハーフ ×4(3L)"
+
+#~ msgid "Half x6(2L)"
+#~ msgstr "ハーフ ×6(2L)"
+
+#~ msgid "Half x6(3L)"
+#~ msgstr "ハーフ ×6(3L)"
+
+#~ msgid "Half x8(2L)"
+#~ msgstr "ハーフ ×8(2L)"
+
+#~ msgid "Half x8(3L)"
+#~ msgstr "ハーフ ×8(3L)"
+
+#~ msgid "Full x2(2L)"
+#~ msgstr "フル x2(2L)"
+
+#~ msgid "Full x2(3L)"
+#~ msgstr "フル x2(3L)"
+
+#~ msgid "Full x3(2L)"
+#~ msgstr "フル ×3(2L)"
+
+#~ msgid "Full x3(3L)"
+#~ msgstr "フル ×3(3L)"
+
+#~ msgid "Full x4(2L)"
+#~ msgstr "フル ×4(2L)"
+
+#~ msgid "Full x4(3L)"
+#~ msgstr "フル ×4(3L)"
+
+#~ msgid "Full x6(2L)"
+#~ msgstr "フル ×6(2L)"
+
+#~ msgid "Full x6(3L)"
+#~ msgstr "フル ×6(3L)"
+
+#~ msgid "Full x8(2L)"
+#~ msgstr "フル ×8(2L)"
+
+#~ msgid "Full x8(3L)"
+#~ msgstr "フル ×8(3L)"
+
+#~ msgid "SC PreAmp"
+#~ msgstr "SC プリアンプ"
+
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "サイドチェーン PreAmplification"
+
+#~ msgid "Boost"
+#~ msgstr "ブースト"
+
+#~ msgid "Stereo Link"
+#~ msgstr "ステレオリンク"
+
+#~ msgid "External Sidechain"
+#~ msgstr "外部サイドチェーン"
+
+#~ msgid "External Sidechain Source"
+#~ msgstr "外部サイドチェーンソース"
+
+#~ msgid "Auto Leveling"
+#~ msgstr "オートレベリング"
+
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "オートレベリングアタック"
+
+#~ msgid "Auto Leveling Release"
+#~ msgstr "オートレベリングリリース"
+
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "オートレベリングニー"
+
+#~ msgid "Gain Left"
+#~ msgstr "左ゲイン"
+
+#~ msgid "Gain Right"
+#~ msgstr "右ゲイン"
+
+#~ msgid "Sidechain Left"
+#~ msgstr "左サイドチェーン"
+
+#~ msgid "Sidechain Right"
+#~ msgstr "右サイドチェーン"
+
+#~ msgid "Standard"
+#~ msgstr "標準"
+
+#~ msgid "Flat"
+#~ msgstr "フラット"
+
+#~ msgid "FFT Size"
+#~ msgstr "FFT サイズ"
+
+#~ msgid "Fast Fourier Transform Size"
+#~ msgstr "高速フーリエ変換サイズ"
+
+#~ msgid "Output Volume"
+#~ msgstr "出力ボリューム"
+
+#~ msgid "Ceiling"
+#~ msgstr "シーリング"
+
+#~ msgid "Operating Mode"
+#~ msgstr "動作モード"
+
+#~ msgid "Classic"
+#~ msgstr "クラシック"
+
+#~ msgid "Modern"
+#~ msgstr "モダン"
+
+#~ msgid "Sidechain Boost"
+#~ msgstr "サイドチェーンブースト"
+
+#~ msgid "Pink BT"
+#~ msgstr "ピンク BT"
+
+#~ msgid "Pink MT"
+#~ msgstr "ピンク MT"
+
+#~ msgid "Brown BT"
+#~ msgstr "ブラウン BT"
+
+#~ msgid "Brown MT"
+#~ msgstr "ブラウン MT"
+
+#~ msgid "Bands List"
+#~ msgstr "バンドリスト"
+
+#~ msgid "Band 1"
+#~ msgstr "バンド 1"
+
+#~ msgid "Band 2"
+#~ msgstr "バンド 2"
+
+#~ msgid "Band 3"
+#~ msgstr "バンド 3"
+
+#~ msgid "Band 4"
+#~ msgstr "バンド 4"
+
+#~ msgid "Band 5"
+#~ msgstr "バンド 5"
+
+#~ msgid "Band 6"
+#~ msgstr "バンド 6"
+
+#~ msgid "Band 7"
+#~ msgstr "バンド 7"
+
+#~ msgid "Band 8"
+#~ msgstr "バンド 8"
+
+#~ msgid "Band Start"
+#~ msgstr "バンドスタート"
+
+#~ msgid "Band End"
+#~ msgstr "バンドエンド"
+
+#~ msgid "Band Compression Mode"
+#~ msgstr "バンド圧縮モード"
+
+#~ msgid "Band Bypass"
+#~ msgstr "バンドバイパス"
+
+#~ msgid "Band Sidechain Options"
+#~ msgstr "バンドサイドチェーンオプション"
+
+#~ msgid "Low-Cut Filter"
+#~ msgstr "ローカットフィルター"
+
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "ローカットフィルター周波数"
+
+#~ msgid "High-Cut Filter"
+#~ msgstr "ハイカットフィルター"
+
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "ハイカットフィルター周波数"
+
+#~ msgid "PreAmp"
+#~ msgstr "プリアンプ"
+
+#~ msgid "Band Gain"
+#~ msgstr "バンドゲイン"
+
+#~ msgid "Band Envelope"
+#~ msgstr "バンドエンベロープ"
+
+#~ msgid "Band Curve"
+#~ msgstr "バンドカーブ"
+
+#~ msgid "Split Mode"
+#~ msgstr "スプリットモード"
+
+#~ msgid "Split 1/2"
+#~ msgstr "スプリット 1/2"
+
+#~ msgid "Split Frequency 1"
+#~ msgstr "スプリット周波数 1"
+
+#~ msgid "Split 2/3"
+#~ msgstr "スプリット 2/3"
+
+#~ msgid "Split Frequency 2"
+#~ msgstr "スプリット周波数 2"
+
+#~ msgid "Split 3/4"
+#~ msgstr "スプリット 3/4"
+
+#~ msgid "Split Frequency 3"
+#~ msgstr "スプリット周波数 3"
+
+#~ msgid "Sub Band"
+#~ msgstr "サブバンド"
+
+#~ msgid "Band 1 Bypass"
+#~ msgstr "バンド 1 バイパス"
+
+#~ msgid "Band 1 Solo"
+#~ msgstr "バンド 1 ソロ"
+
+#~ msgid "Band 1 Detection"
+#~ msgstr "バンド 1 検出"
+
+#~ msgid "Band 1 Attack"
+#~ msgstr "バンド 1 アタック"
+
+#~ msgid "Band 1 Release"
+#~ msgstr "バンド 1 リリース"
+
+#~ msgid "Band 1 Threshold"
+#~ msgstr "バンド 1 しきい値"
+
+#~ msgid "Band 1 Ratio"
+#~ msgstr "バンド 1 比率"
+
+#~ msgid "Band 1 Knee"
+#~ msgstr "バンド 1 ニー"
+
+#~ msgid "Band 1 Makeup"
+#~ msgstr "バンド 1 メイクアップ"
+
+#~ msgid "Max Reduction"
+#~ msgstr "最大リダクション"
+
+#~ msgid "Band 1 Max Reduction"
+#~ msgstr "バンド 1 最大リダクション"
+
+#~ msgid "Low Band"
+#~ msgstr "ローバンド"
+
+#~ msgid "Band 2 Bypass"
+#~ msgstr "バンド 2 バイパス"
+
+#~ msgid "Band 2 Solo"
+#~ msgstr "バンド 2 ソロ"
+
+#~ msgid "Band 2 Detection"
+#~ msgstr "バンド 2 検出"
+
+#~ msgid "Band 2 Attack"
+#~ msgstr "バンド 2 アタック"
+
+#~ msgid "Band 2 Release"
+#~ msgstr "バンド 2 リリース"
+
+#~ msgid "Band 2 Threshold"
+#~ msgstr "バンド 2 しきい値"
+
+#~ msgid "Band 2 Ratio"
+#~ msgstr "バンド 2 比率"
+
+#~ msgid "Band 2 Knee"
+#~ msgstr "バンド 2 ニー"
+
+#~ msgid "Band 2 Makeup"
+#~ msgstr "バンド 2 メイクアップ"
+
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "バンド 2 最大リダクション"
+
+#~ msgid "Mid Band"
+#~ msgstr "ミッドバンド"
+
+#~ msgid "Band 3 Bypass"
+#~ msgstr "バンド 3 バイパス"
+
+#~ msgid "Band 3 Solo"
+#~ msgstr "バンド 3 ソロ"
+
+#~ msgid "Band 3 Detection"
+#~ msgstr "バンド 3 検出"
+
+#~ msgid "Band 3 Attack"
+#~ msgstr "バンド 3 アタック"
+
+#~ msgid "Band 3 Release"
+#~ msgstr "バンド 3 リリース"
+
+#~ msgid "Band 3 Threshold"
+#~ msgstr "バンド 3 しきい値"
+
+#~ msgid "Band 3 Ratio"
+#~ msgstr "バンド 3 比率"
+
+#~ msgid "Band 3 Knee"
+#~ msgstr "バンド 3 ニー"
+
+#~ msgid "Band 3 Makeup"
+#~ msgstr "バンド 3 メイクアップ"
+
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "バンド 3 最大リダクション"
+
+#~ msgid "High Band"
+#~ msgstr "ハイバンド"
+
+#~ msgid "Band 4 Bypass"
+#~ msgstr "バンド 4 バイパス"
+
+#~ msgid "Band 4 Solo"
+#~ msgstr "バンド 4 ソロ"
+
+#~ msgid "Band 4 Detection"
+#~ msgstr "バンド 4 検出"
+
+#~ msgid "Band 4 Attack"
+#~ msgstr "バンド 4 アタック"
+
+#~ msgid "Band 4 Release"
+#~ msgstr "バンド 4 リリース"
+
+#~ msgid "Band 4 Threshold"
+#~ msgstr "バンド 4 しきい値"
+
+#~ msgid "Band 4 Ratio"
+#~ msgstr "バンド 4 比率"
+
+#~ msgid "Band 4 Knee"
+#~ msgstr "バンド 4 ニー"
+
+#~ msgid "Band 4 Makeup"
+#~ msgstr "バンド 4 メイクアップ"
+
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "バンド 4 最大リダクション"
+
+#~ msgid "General"
+#~ msgstr "一般"
+
+#~ msgid "Device Management"
+#~ msgstr "デバイス管理"
+
+#~ msgid ""
+#~ "It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+#~ "external applications (e.g. Gnome Settings and Plasma System Settings)."
+#~ msgstr ""
+#~ "外部アプリケーション (Gnome 設定や Plasma システム設定など) で "
+#~ "EasyEffects の Sink/Source をデフォルトデバイスとして設定しないことをお勧"
+#~ "めします。"
+
+#~ msgid "Use Default Input"
+#~ msgstr "デフォルトの入力を使用"
+
+#~ msgid "Custom Input Device"
+#~ msgstr "カスタム入力デバイス"
+
+#~ msgid "Use Default Output"
+#~ msgstr "デフォルトの出力を使用"
+
+#~ msgid "Custom Output Device"
+#~ msgstr "カスタム出力デバイス"
+
+#~ msgid "Server Information"
+#~ msgstr "サーバー情報"
+
+#~ msgid "Header Version"
+#~ msgstr "ヘッダーバージョン"
+
+#~ msgid "Library Version"
+#~ msgstr "ライブラリバージョン"
+
+#~ msgid "Sampling Rate"
+#~ msgstr "サンプリングレート"
+
+#~ msgid "Minimum Quantum"
+#~ msgstr "最小クォンタム"
+
+#~ msgid "Maximum Quantum"
+#~ msgstr "最大クォンタム"
+
+#~ msgid "Default Quantum"
+#~ msgstr "デフォルトクォンタム"
+
+#~ msgid "Presets Autoloading"
+#~ msgstr "プリセット自動読み込み"
+
+#~ msgid "Output Devices"
+#~ msgstr "出力デバイス"
+
+#~ msgid "Output Presets"
+#~ msgstr "出力プリセット"
+
+#~ msgid "Create Association"
+#~ msgstr "アソシエーションを作成"
+
+#~ msgid "Add Autoloading Output Preset"
+#~ msgstr "自動読み込み出力プリセットを追加"
+
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "自動読み込み出力プリセットリスト"
+
+#~ msgid "Input Devices"
+#~ msgstr "入力デバイス"
+
+#~ msgid "Input Presets"
+#~ msgstr "入力プリセット"
+
+#~ msgid "Add Autoloading Input Preset"
+#~ msgstr "自動読み込み入力プリセットを追加"
+
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "自動読み込み入力プリセットリスト"
+
+#~ msgid "Modules"
+#~ msgstr "モジュール"
+
+#~ msgid "Modules List"
+#~ msgstr "モジュールリスト"
+
+#~ msgid "Clients"
+#~ msgstr "クライアント"
+
+#~ msgid "Clients List"
+#~ msgstr "クライアントリスト"
+
+#~ msgid "Test Signal"
+#~ msgstr "テスト信号"
+
+#~ msgid "State"
+#~ msgstr "状態"
+
+#~ msgid "Enabled"
+#~ msgstr "有効"
+
+#~ msgid "Properties"
+#~ msgstr "プロパティ"
+
+#~ msgid "Channels"
+#~ msgstr "チャンネル"
+
+#~ msgid "Both"
+#~ msgstr "両方"
+
+#~ msgid "Both Channels"
+#~ msgstr "両方チャンネル"
+
+#~ msgid "Waveform"
+#~ msgstr "波形"
+
+#~ msgid "Sine Wave"
+#~ msgstr "正弦波"
+
+#~ msgid "White Noise"
+#~ msgstr "ホワイトノイズ"
+
+#~ msgid "High Speed"
+#~ msgstr "高速"
+
+#~ msgid "High Quality"
+#~ msgstr "高品質"
+
+#~ msgid "High Consistency"
+#~ msgstr "高い一貫性"
+
+#~ msgid "Formant"
+#~ msgstr "フォルマント"
+
+#~ msgid "Shifted"
+#~ msgstr "シフト"
+
+#~ msgid "Preserved"
+#~ msgstr "保存済み"
+
+#~ msgid "Transients"
+#~ msgstr "トランジェント"
+
+#~ msgid "Crisp"
+#~ msgstr "鮮明"
+
+#~ msgid "Mixed"
+#~ msgstr "ミックス"
+
+#~ msgid "Smooth"
+#~ msgstr "スムース"
+
+#~ msgid "Detector"
+#~ msgstr "ディテクター"
+
+#~ msgid "Compound"
+#~ msgstr "化合物"
+
+#~ msgid "Percussive"
+#~ msgstr "パーカッシブ"
+
+#~ msgid "Soft"
+#~ msgstr "ソフト"
+
+#~ msgid "Phase"
+#~ msgstr "フェーズ"
+
+#~ msgid "Laminar"
+#~ msgstr "ラミナー"
+
+#~ msgid "Independent"
+#~ msgstr "独立"
+
+#~ msgid "Cents"
+#~ msgstr "セント"
+
+#~ msgid "Semitones"
+#~ msgstr "半音"
+
+#~ msgid "Octaves"
+#~ msgstr "オクターブ"
+
+#~ msgid "Remove this effect"
+#~ msgstr "このエフェクトを削除"
+
+#~ msgid "Enable/disable this effect"
+#~ msgstr "このエフェクトの有効化/無効化"
+
+#~ msgid "Change the position of this effect"
+#~ msgstr "このエフェクトの位置を変更する"
+
+#~ msgid "Add Effect"
+#~ msgstr "エフェクトの追加"
+
+#~ msgid "Used Plugins List"
+#~ msgstr "使用プラグインリスト"
+
+#~ msgid "No Effects"
+#~ msgstr "エフェクトなし"
+
+#~ msgid "Audio Stream Not Modified"
+#~ msgstr "オーディオストリームは変更されていません"
+
+#~ msgid "Search Plugin"
+#~ msgstr "プラグインを検索"
+
+#~ msgid "Plugins List"
+#~ msgstr "プラグインリスト"
+
+#~ msgid "_General"
+#~ msgstr "_一般"
+
+#~ msgid "Service"
+#~ msgstr "サービス"
+
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "システム起動時にサービスを起動"
+
+#~ msgid "Shutdown on Window Closing"
+#~ msgstr "ウィンドウを閉じるときにシャットダウン"
+
+#~ msgid "Audio"
+#~ msgstr "オーディオ"
+
+#~ msgid "Process All Output Streams"
+#~ msgstr "すべての出力を処理"
+
+#~ msgid "Process All Input Streams"
+#~ msgstr "すべての入力を処理"
+
+#~ msgid "Ignore Streams from Monitor of Devices"
+#~ msgstr "デバイスのモニターからのストリームを無視"
+
+#~ msgid "Use Cubic Volume"
+#~ msgstr "キュービックボリュームを使用"
+
+#~ msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
+#~ msgstr "起動時に EasyEffects 仮想デバイスの音量をリセット"
+
+#~ msgid "Inactivity Timeout"
+#~ msgstr "非アクティブタイムアウト"
+
+#~ msgid "Style"
+#~ msgstr "スタイル"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "ダークテーマを使用"
+
+#~ msgid "Hide Menus on Outside Clicks"
+#~ msgstr "外側クリックでメニュー非表示"
+
+#~ msgid "_Spectrum"
+#~ msgstr "_スペクトラム"
+
+#~ msgid "Shape"
+#~ msgstr "形状"
+
+#~ msgid "Bars"
+#~ msgstr "バー"
+
+#~ msgid "Lines"
+#~ msgstr "線"
+
+#~ msgid "Dots"
+#~ msgstr "ドット"
+
+#~ msgid "Points"
+#~ msgstr "ポイント"
+
+#~ msgid "Height"
+#~ msgstr "高さ"
+
+#~ msgid "Line Width"
+#~ msgstr "線幅"
+
+#~ msgid "Fill"
+#~ msgstr "塗りつぶし"
+
+#~ msgid "Show Bars Border"
+#~ msgstr "バーの境界線を表示"
+
+#~ msgid "Rounded Corners"
+#~ msgstr "角丸"
+
+#~ msgid "Color"
+#~ msgstr "色"
+
+#~ msgid "Lines and Bars"
+#~ msgstr "線とバー"
+
+#~ msgid "Axis Labels"
+#~ msgstr "軸ラベル"
+
+#~ msgid "Frequency Range"
+#~ msgstr "周波数範囲"
+
+#~ msgid "Minimum"
+#~ msgstr "最小"
+
+#~ msgid "Maximum"
+#~ msgstr "最大"
+
+#~ msgid "Load"
+#~ msgstr "ロード"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "現在の設定をこのプリセットファイルに保存"
+
+#~ msgid "Remove this preset file"
+#~ msgstr "このプリセットファイルを削除"
+
+#~ msgid "New Output Preset Name"
+#~ msgstr "新規出力プリセット名"
+
+#~ msgid "Create a new preset"
+#~ msgstr "プリセットを作成"
+
+#~ msgid "Import a preset"
+#~ msgstr "プリセットをインポート"
+
+#~ msgid "Search Output Preset"
+#~ msgstr "出力プリセットを検索"
+
+#~ msgid "Output Presets List"
+#~ msgstr "出力プリセットリスト"
+
+#~ msgid "New Input Preset Name"
+#~ msgstr "新規入力プリセット名"
+
+#~ msgid "Search Input Preset"
+#~ msgstr "入力プリセットを検索"
+
+#~ msgid "Input Presets List"
+#~ msgstr "入力プリセットリスト"
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "高周波ダンピング"
+
+#~ msgid "Room Size"
+#~ msgstr "部屋のサイズ"
+
+#~ msgid "Small"
+#~ msgstr "小"
+
+#~ msgid "Medium"
+#~ msgstr "中"
+
+#~ msgid "Large"
+#~ msgstr "大"
+
+#~ msgid "Tunnel"
+#~ msgstr "トンネル"
+
+#~ msgid "Large/smooth"
+#~ msgstr "大/なめらか"
+
+#~ msgid "Experimental"
+#~ msgstr "実験的"
+
+#~ msgid "Diffusion"
+#~ msgstr "拡散"
+
+#~ msgid "Pre Delay"
+#~ msgstr "プリディレイ"
+
+#~ msgid "Decay Time"
+#~ msgstr "減衰時間"
+
+#~ msgid "Wet Amount"
+#~ msgstr "Wet 量"
+
+#~ msgid "Wet Level"
+#~ msgstr "Wet レベル"
+
+#~ msgid "Dry Amount"
+#~ msgstr "Dry 量"
+
+#~ msgid "Dry Level"
+#~ msgstr "Dry レベル"
+
+#~ msgid "Bass Cut"
+#~ msgstr "ベースカット"
+
+#~ msgid "Treble Cut"
+#~ msgstr "高音カット"
+
+#~ msgid "Ambience"
+#~ msgstr "環境"
+
+#~ msgid "Empty Walls"
+#~ msgstr "何もない壁"
+
+#~ msgid "Room"
+#~ msgstr "部屋"
+
+#~ msgid "Large Empty Hall"
+#~ msgstr "何もない大きなホール"
+
+#~ msgid "Disco"
+#~ msgstr "ディスコ"
+
+#~ msgid "Large Occupied Hall"
+#~ msgstr "占有面積の大きいホール"
+
+#~ msgid "Import Model"
+#~ msgstr "モデルのインポート"
+
+#~ msgid "Models"
+#~ msgstr "モデル"
+
+#~ msgid "Standard Model"
+#~ msgstr "標準モデル"
+
+#~ msgid "RNNoise Models List"
+#~ msgstr "RNNoise モデルリスト"
+
+#~ msgid "Model Not Loaded"
+#~ msgstr "モデルがロードされていません"
+
+#~ msgid "Active Model"
+#~ msgstr "アクティブモデル"
+
+#~ msgid "Standard RNNoise Model"
+#~ msgstr "標準 RNNoise モデル"
+
+#~ msgid "Overview"
+#~ msgstr "概要"
+
+#~ msgid "Open the EasyEffects Manual"
+#~ msgstr "EasyEffects のマニュアルを開く"
+
+#~ msgid "Fullscreen/Restore from fullscreen"
+#~ msgstr "フルスクリーン/フルスクリーンから復元"
+
+#~ msgid "Close the Window"
+#~ msgstr "ウィンドウを閉じる"
+
+#~ msgid "Quit EasyEffects"
+#~ msgstr "EasyEffects を終了"
+
+#~ msgid "Balance"
+#~ msgstr "バランス"
+
+#~ msgid "Input Balance"
+#~ msgstr "入力バランス"
+
+#~ msgid "Softclip"
+#~ msgstr "ソフトクリップ"
+
+#~ msgid "Softclip Level"
+#~ msgstr "ソフトクリップレベル"
+
+#~ msgid "Stereo Matrix"
+#~ msgstr "ステレオマトリックス"
+
+#~ msgid "LR > LR (Stereo Default)"
+#~ msgstr "LR > LR (ステレオデフォルト)"
+
+#~ msgid "LR > MS (Stereo to Mid-Side)"
+#~ msgstr "LR > MS (ステレオからミッドサイド)"
+
+#~ msgid "MS > LR (Mid-Side to Stereo)"
+#~ msgstr "MS > LR (ミッドサイドからステレオ)"
+
+#~ msgid "LR > LL (Mono Left Channel)"
+#~ msgstr "LR > LL (モノラル左チャンネル)"
+
+#~ msgid "LR > RR (Mono Right Channel)"
+#~ msgstr "LR > RR (モノラル右チャンネル)"
+
+#~ msgid "LR > L+R (Mono Sum L+R)"
+#~ msgstr "LR > L+R (モノラル合計 L+R)"
+
+#~ msgid "LR > RL (Stereo Flip Channels)"
+#~ msgstr "LR > RL (ステレオチャンネル反転)"
+
+#~ msgid "Stereo Mode"
+#~ msgstr "ステレオモード"
+
+#~ msgid "Invert Phase"
+#~ msgstr "位相反転"
+
+#~ msgid "Side Level"
+#~ msgstr "サイドレベル"
+
+#~ msgid "Side Balance"
+#~ msgstr "サイドバランス"
+
+#~ msgid "Middle Level"
+#~ msgstr "中間レベル"
+
+#~ msgid "Middle Panorama"
+#~ msgstr "中間パノラマ"
+
+#~ msgid "Output Balance"
+#~ msgstr "出力バランス"
+
+#~ msgid "Delay L/R"
+#~ msgstr "ディレイ L/R"
+
+#~ msgid "Delay Left Right"
+#~ msgstr "ディレイ 左 右"
+
+#~ msgid "Stereo Base"
+#~ msgstr "ステレオベース"
+
+#~ msgid "Stereo Phase"
+#~ msgstr "ステレオ位相"
+
+#~ msgid "Running"
+#~ msgstr "実行中"
+
+#~ msgid "Suspended"
+#~ msgstr "サスペンド"
+
+#~ msgid "Idle"
+#~ msgstr "アイドル"
+
+#~ msgid "Creating"
+#~ msgstr "作成中"
+
+#~ msgid "Error"
+#~ msgstr "エラー"
+
+#~ msgid "Unknown"
+#~ msgstr "不明"
+
+#~ msgid "channels"
+#~ msgstr "チャンネル"
+
+#~ msgid "Output Presets: "
+#~ msgstr "出力プリセット: "
+
+#~ msgid "Input Presets: "
+#~ msgstr "入力プリセット: "
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "PipeWire アプリケーション用オーディオエフェクト"
+
+#~ msgid "Quit EasyEffects. Useful when running in service mode."
+#~ msgstr ""
+#~ "EasyEffects を終了します。サービスモードで動作しているときに便利です。"
+
+#~ msgid "Load a preset. Example: easyeffects -l music"
+#~ msgstr "プリセットを読み込む。例: easyeffects -l music"
+
+#~ msgid "Reset EasyEffects."
+#~ msgstr "EasyEffects をリセット。"
+
+#~ msgid "Hide the Window."
+#~ msgstr "ウィンドウを隠す。"
+
+#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+#~ msgstr "グローバルバイパス。1 で有効、2 で無効、3 でステータス取得"
+
+#~ msgid "Show available presets."
+#~ msgstr "利用可能なプリセットを表示します。"
+
+#~ msgid "PipeWire"
+#~ msgstr "PipeWire"
+
+#~ msgid "The File Is Not Regular"
+#~ msgstr "このファイルは正しくありません"
+
+#~ msgid "The Impulse File May Be Corrupted or Unsupported"
+#~ msgstr ""
+#~ "インパルスファイルが破損しているか、サポートされていない可能性があります"
+
+#~ msgid "Only Stereo Impulse Files Are Supported"
+#~ msgstr "ステレオインパルスファイルのみサポートされています"
+
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "インパルスファイルがインポートされていません"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "インパルスファイルをインポート"
+
+#~ msgid "Open"
+#~ msgstr "開く"
+
+#~ msgid "Cancel"
+#~ msgstr "キャンセル"
+
+#~ msgid "Impulse Response"
+#~ msgstr "インパルスレスポンス"
+
+#~ msgid "Load Impulse"
+#~ msgstr "インパルスを読み込み"
+
+#~ msgid "Remove Impulse"
+#~ msgstr "インパルスを削除"
+
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "読み込まれたインパルスファイルはありません"
+
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "インパルスファイルを読み込めません"
+
+#~ msgid "Recorders"
+#~ msgstr "レコーダー"
+
+#~ msgid "Players"
+#~ msgstr "プレイヤー"
+
+#~ msgid "Effects"
+#~ msgstr "エフェクト"
+
+#~ msgid "infinity"
+#~ msgstr "無限大"
+
+#~ msgid "Import APO Preset File"
+#~ msgstr "APO プリセットファイルをインポート"
+
+#~ msgid "APO Presets"
+#~ msgstr "APO プリセット"
+
+#~ msgid ""
+#~ "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
+#~ msgstr ""
+#~ "APO プリセットが読み込まれていません。ファイルフォーマットが間違っている可"
+#~ "能性があります。内容を確認してください。"
+
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "自動読み込みプリセットを削除"
+
+#~ msgid "Remove"
+#~ msgstr "削除"
+
+#~ msgid "Output Device"
+#~ msgstr "出力デバイス"
+
+#~ msgid "Add"
+#~ msgstr "追加"
+
+#~ msgid "Import Preset"
+#~ msgstr "プリセットをインポート"
+
+#~ msgid ""
+#~ "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To "
+#~ "The Standard Model."
+#~ msgstr ""
+#~ "選択されたモデルが読み込まれていません。そのフォーマットはサポートされてい"
+#~ "ない可能性があります。標準モデルに戻しました。"
+
+#~ msgid "Import Model File"
+#~ msgstr "モデルファイルをインポート"
+
+#~ msgid "RNNoise Models"
+#~ msgstr "RNNoise モデル"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "ベースエンハンサー"
+
+#~ msgid "Bass Loudness"
+#~ msgstr "低音ラウドネス"
+
+#~ msgid "Convolver"
+#~ msgstr "コンボルバー"
+
+#~ msgid "Crossfeed"
+#~ msgstr "クロスフィード"
+
+#~ msgid "Crystalizer"
+#~ msgstr "クリスタライザー"
+
+#~ msgid "Deesser"
+#~ msgstr "ディエッサー"
+
+#~ msgid "Delay"
+#~ msgstr "ディレイ"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "エコーキャンセラー"
+
+#~ msgid "Equalizer"
+#~ msgstr "イコライザー"
+
+#~ msgid "Exciter"
+#~ msgstr "エキサイター"
+
+#~ msgid "Filter"
+#~ msgstr "フィルター"
+
+#~ msgid "Limiter"
+#~ msgstr "リミッター"
+
+#~ msgid "Maximizer"
+#~ msgstr "マキシマイザー"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "マルチバンドコンプレッサー"
+
+#~ msgid "Multiband Gate"
+#~ msgstr "マルチバンドゲート"
+
+#~ msgid "Pitch"
+#~ msgstr "ピッチ"
+
+#~ msgid "Reverberation"
+#~ msgstr "リバーブ"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "ノイズリダクション"
+
+#~ msgid "Stereo Tools"
+#~ msgstr "ステレオツール"
+
+#~ msgid "Close (Press ESC)"
+#~ msgstr "閉じる (Esc キーを押す)"
+
+#~ msgid "Average"
+#~ msgstr "平均"
+
+#~ msgid "Failed"
+#~ msgstr "失敗"
+
+#~ msgid "Use Default"
+#~ msgstr "デフォルトを使用"
+
+#~ msgid "Remove this plugin"
+#~ msgstr "このプラグインを削除"
+
+#~ msgid "Import Presets"
+#~ msgstr "プリセットをインポート"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "ログイン時にサービスを開始"
+
+#~ msgid "Reset Our Devices Volume on Startup"
+#~ msgstr "起動時にデバイスの音量をリセット"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "アクティブモデル"
+
+#~ msgid "Add to Blocklist"
+#~ msgstr "ブロックリストに追加"
+
+#~ msgid "Blocklist"
+#~ msgstr "ブロックリスト"
+
+#~ msgid "Add Plugin"
+#~ msgstr "プラグインを追加"
+
+#~ msgid "Speakers"
+#~ msgstr "スピーカー"
+
+#~ msgid "Microphone"
+#~ msgstr "マイク"
+
+#~ msgid "Plugins"
+#~ msgstr "プラグイン"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "有効"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "有効"
+
+#~ msgid "Format"
+#~ msgstr "フォーマット"
+
+#~ msgid "Latency"
+#~ msgstr "レイテンシー"
+
+#~ msgid "idle"
+#~ msgstr "アイドル"
+
+#~ msgid "Faster"
+#~ msgstr "より速く"
+
+#~ msgid "Preserve Formant"
+#~ msgstr "フォルマントを保持"
+
+#~ msgid "Cmoy"
+#~ msgstr "Cmoy"
+
+#~ msgid "Jmeier"
+#~ msgstr "Jmeier"

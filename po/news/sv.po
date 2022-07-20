@@ -1,0 +1,2012 @@
+# Swedish translation of EasyEffects application.
+# Copyright (C) 2017
+# This file is distributed under the same license as the easyeffects package.
+# Patrik Nilsson <translation_AT_hembas.se>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-20 20:04-0300\n"
+"PO-Revision-Date: 2022-01-15 15:15+0000\n"
+"Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
+"sv/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10.1\n"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Ljudeffekter för PipeWire-applikationer"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
+msgid ""
+"EasyEffects is an advanced audio manipulation tool. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+"EasyEffects är ett avancerat verktyg för manipulation av ljud. Det "
+"innehåller en ljudutjämnare (equalizer), ljudbegränsare (limiter), "
+"kompressor och ett efterklangsverktyg (eko), för att bara nämna några få. "
+"Där finns även en inbyggd frekvensanalysator som kompletterar dessa."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
+msgid ""
+"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
+msgid ""
+"Because EasyEffects uses the default PipeWire sound server it will work with "
+"most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+"Eftersom EasyEffects använder sig av standard PipeWire som ljudserver "
+"stödjer den de flesta, om inte alla, program du använder. Alla applikationer "
+"som stöds presenteras i huvudfönstret, där var och en kan aktiveras "
+"individuellt."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+msgid ""
+"Besides manipulating sound output, EasyEffects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+"Förutom att manipulera dina programs ljud kan EasyEffects tillämpa effekter "
+"på en ingångsenhet, såsom en mikrofon. Detta är exempelvis användbart vid "
+"ljudinspelning, men det fungerar även bra under röstsamtal."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
+msgid ""
+"When EasyEffects is launched it will conveniently remember the configuration "
+"used in the last session. It is also possible to save all the current "
+"settings as profiles."
+msgstr ""
+"När EasyEffects startas kommer det ihåg konfigurationen som användes under "
+"den senaste sessionen. Det är också möjligt att spara alla aktuella "
+"inställningar som profiler."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
+msgid "The main page showing two audio output apps"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
+msgid "The bass enhancer page showing audio controls"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
+msgid "The convolver page showing audio controls"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:86
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:99
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:109
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:131
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:178
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:190
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
+msgid "Features:"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
+msgid ""
+"The bypass state can be saved to the preset file. The reasons why this was "
+"done can be seen at issue 1039"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
+msgid ""
+"The preset autoloading code compatibility with usb devices has been improved."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
+msgid ""
+"A dialog is shown to the user when a preset fails to load or a preset/"
+"impulse file fails to be imported."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
+msgid ""
+"The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of "
+"the one from Calf Studio."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:91
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:123
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:168
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:180
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:203
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:223
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:241
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:270
+msgid "Bug fixes:"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
+msgid ""
+"EasyEffects should not crash anymore when the user locale is not properly "
+"configured."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
+msgid ""
+"A workaround was implemented in our icon to deal with the lack of proper SVG "
+"support in QT."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:155
+msgid "Other notes:"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
+msgid ""
+"When effects are disable to an application we now set its target metadata to "
+"null. This will allow the media session manager (wireplumber) to properly "
+"move the stream to a new device."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
+msgid ""
+"A new configuration option was added. It allows EasyEffects to ignore "
+"streams whose purpose is to monitor sink devices. This will help to fix some "
+"of problems our users were having when using OBS."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
+msgid "The code that shows the stream sample format has been improved"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
+msgid ""
+"The rnnoise library is now optional. This should help package maintainers to "
+"build a Debian package. See issue 1000 for more information."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
+msgid ""
+"Our logs now show the source code line where the messages are being printed"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
+msgid ""
+"The \"enable effects\" checkbox in our window was not being updated when "
+"third party programs like pavucontrol moved the stream away from our virtual "
+"devices. This should be fixed now."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
+msgid ""
+"Fixed a crash that could happen when the maximum autogain history was "
+"changed."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
+msgid "Avoid crashes when pw-mididump is running"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
+msgid "The interface of the pitch plugin was improved"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
+msgid "Our application icon is now compatible with desktops that uses QT"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
+msgid ""
+"Our blocklist code will use the `application.id` tag if the stream sets it"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
+msgid ""
+"In order to avoid problems with the mouse scroll the entries in the "
+"applications list shown in our `Players/Recorders` tab do not show a volume "
+"scale anymore. More details about the problem and the solution for it can be "
+"found on issue 1211 and issue 1427"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
+msgid ""
+"When no application is available for display in the `Players/Recorders` a "
+"message will be shown to the user"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
+msgid "Many translation updates"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
+msgid ""
+"Fixed a bug where EasyEffeects crashed when the number of points displayed "
+"in the spectrum was changed while our pipeline was active and the spectrum "
+"widget was visible"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
+msgid ""
+"The pipeline latency value displayed in our window could be wrong in some "
+"situations. This was fixed."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
+msgid ""
+"There is a new setting allowing the user to select an inactivity timeout for "
+"the pipeline. When no client is playing to or recording from our devices the "
+"filters will be unlinked after the timeout is reached. This is done to make "
+"sure we do not waste CPU power processing silence."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
+msgid ""
+"The autogain plugin now allows the user to select which of the three "
+"loudness are used to calculate the geometric mean."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
+msgid ""
+"The autogain plugin now allows the maximum history to be set and does not "
+"use `libebur128` histogram mode anymore. This should avoid the cases where "
+"the `Integrated` loudness gets stuck forever in the same value."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
+msgid ""
+"EasyEffects icon has been updated in a way that should make it visible in QT "
+"desktops."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
+msgid ""
+"The command line option that returns the global bypass state is working "
+"again."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
+msgid ""
+"The crossfeed filter should deal better with PipeWire's dynamic latency "
+"switches. Jumps in volume level should not happen anymore in these "
+"situations."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
+msgid ""
+"Fixed a bug that prevented mono microphones from properly working with "
+"EasyEffects"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:110
+msgid "Support for the next PipeWire release `0.3.44`"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
+msgid ""
+"The autogain filter should deal better with PipeWire's dynamic latency "
+"switches. Jumps in volume level should not happen anymore in these "
+"situations."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:112
+msgid ""
+"We added an option that allows the volume and mute state of our virtual "
+"devices to be reset when EasyEffects starts. It should help with the cases "
+"were our devices are muted by the audio server for unknown reasons."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
+msgid "Better support for computer suspending."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:240
+msgid "Updated translations"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
+msgid ""
+"Fixed a bug where trying to create an autoloading profile without having "
+"presets caused the application to crash."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
+msgid ""
+"Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
+"an application crash."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:132
+msgid ""
+"LibAdwaita is used to create some parts of our window and for handling the "
+"switching between dark and light themes."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:133
+msgid "The settings menu has been redesigned using LibAdwaita widgets."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
+msgid ""
+"Equalizer APO preset import feature has been improved to apply not only the "
+"Bell filter, but also other supported ones (at the moment only the Bandpass "
+"filter is not available in LSP plugin)."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
+msgid ""
+"The `Reset All Settings` function in our menu should work in Flatpak now."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
+msgid ""
+"We have a new option that allows the user to disable our menus `autohide`. "
+"This may help to workaround some bugs Popover menus currently have on gtk4."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
+msgid ""
+"More robust parsing to import APO presets saved with comma as thousands "
+"separator in central frequency band."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
+msgid ""
+"The fmt library is a new dependency At least while the c++ compilers do not "
+"implement its features. This is expected to happen in the next years."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
+msgid ""
+"GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:149
+msgid ""
+"It is now possible to combine impulse responses in the Convolver interface. "
+"A new impulse file is generated and it should be visible in the impulse list."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
+msgid ""
+"Improved `x axis` drawings in our plots. Now the number of labels is "
+"adjusted dynamically depending on our window width."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
+msgid ""
+"The documentation has been updated reflecting the new EasyEffects features. "
+"Old references about PulseEffects have been removed. The documentation "
+"button has been added in the menu section."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:153
+msgid ""
+"When a spinbutton is filled with an out of range value, now it is updated "
+"with the lowest/highest value rather than resetting to the previous one."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
+msgid ""
+"The application window now remembers the maximized state and restores it on "
+"the next opening event."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
+msgid "The `tbb` library is a new dependency"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:164
+msgid ""
+"The Limiter and the Multiband Compressor plugins can now use an optional "
+"external sidechain."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
+msgid ""
+"The Autogain plugin now allows the user to select which Loudness is used as "
+"reference for the volume correction."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
+msgid ""
+"The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
+"Amplification\" parameter."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:167
+msgid "Optional Cubic Volume can be enabled in General Settings."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
+msgid ""
+"The Spectrum plugin was supposed to enter passthrough whenever it was not "
+"visible, but this was happening only when our window was closed."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
+msgid "Improved support for Assistive Technology."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
+msgid ""
+"The probes used in some filters like the Compressor and the Limiter were not "
+"being relinked after changing the order of the plugins in the pipeline. It "
+"should be working now."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:179
+msgid ""
+"PipeWire monitor streams are now excluded and removed from the applications "
+"list."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
+msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
+msgid "Prevented a case in which Spectrum was crashing."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
+msgid ""
+"Pavucontrol is not added anymore to input applications list on systems with "
+"localization different than English."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
+msgid ""
+"Improved compatibility with WirePlumber. This is needed to run on systems "
+"that decided to use it instead of the built-in PipeWire session manager. "
+"More information at issue 1144."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
+msgid ""
+"When trying to add an autoloading profile for a device already in the list "
+"its target preset will be updated. This way we can change the profile preset "
+"without having to remove and recreating it."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:200
+msgid ""
+"The preset autoloading support implementation was redesigned again. It "
+"should work on more hardware now. For more information see issue 1051."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
+msgid ""
+"If the Limiter or the Maximizer are set in the last position of the plugin "
+"stack, new plugins are added at the second to last position in order to "
+"prevent hardware damage on eventually high output level."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:202
+msgid ""
+"Removing an application from the blocklist, its previous enabled state is "
+"restored."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
+msgid ""
+"Sometimes when removing imported models from the noise reduction plugin the "
+"current used model was not properly updated. This should be fixed now."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:205
+msgid ""
+"When editing presets files in an external editor, duplicated entries won't "
+"be shown in our presets menu."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
+msgid "Now the blocklist is correctly set when switching presets."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
+msgid ""
+"Now the status of the global bypass button is correctly updated when "
+"changing plugin stack."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
+msgid ""
+"Missing icons on the system should not be shown inside the application info "
+"UI (if an application icon could not be shown even if you're sure it's "
+"correctly installed, please open an issue)."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
+msgid ""
+"Some icons not showing in Plasma DE with Breeze icon theme should appear now."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
+msgid "Updated Chinese translation."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
+msgid "Updated Italian translation."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
+msgid "Added support for the compressor parameter `Boost Amount`"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:220
+msgid ""
+"The multiband compressor plugin now uses the stereo multiband compressor "
+"plugin from Linux Studio Plugins instead of the one from Calf Studio."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:221
+msgid ""
+"The limiter plugin now uses the stereo limiter plugin from Linux Studio "
+"Plugins instead of the one from Calf Studio."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:222
+msgid ""
+"LV2 filters now are spawned in PipeWire graph only when loaded the first "
+"time. Once loaded, they remain connected until EasyEffects shutdown."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
+msgid "The echo canceller sampling rate is now properly set."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:225
+msgid ""
+"The threshold parameter from the deesser plugin is now saved to the preset "
+"file."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
+msgid ""
+"Improved band splitting for crystalizer with new default intensity values."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
+msgid ""
+"Depending on the input gain or output gain values the corresponding level "
+"bars could not be aligned."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
+msgid ""
+"When adding more equalizer bands they are set to `Bell` instead of `Off`."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
+msgid ""
+"Equalizer APO presets loading is now working properly on locales different "
+"than C."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:230
+msgid "Improved linking management between port filter nodes in PipeWire."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
+msgid ""
+"The crystalizer plugin signal amplification was too high before. It should "
+"be within more reasonable levels now."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
+msgid ""
+"Improved the resampler used in the plugins that require one(like the rnnoise "
+"plugin)"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:242
+msgid "Setting multiple autoloading presets should be fine now"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
+msgid "Transient windows are now properly set for some plugins dialogs"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:244
+msgid ""
+"The convolver impulse response menu was improved to workaround an issue "
+"where the impulse files was not loaded when only one was available in the "
+"menu, see issue 1011"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:245
+msgid ""
+"Fixed a bug that could make the pitch plugin to not be properly initialized"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:246
+msgid "The saturation warning should not displace its neighbor widgets anymore"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
+msgid "Fixed the locale in a few widgets"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
+msgid "Fixed wrong alignment in a few widgets"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:256
+msgid ""
+"The Loudness plugin is being used again for the reasons described at issue "
+"820. This means that is an optional dependency again."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:258
+msgid ""
+"Fixed a segmentation fault that happened when optional dependencies were not "
+"installed"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
+msgid "Improved equalizer interface."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
+msgid ""
+"Now we use a sidechain LSP compressor that allows the user to select and "
+"external source as the sidechain input."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:268
+msgid "We now support the LSP compressor `Boosting` mode."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:269
+msgid ""
+"When `split-channels` is enabled in the equalizer the imported APO preset "
+"will be applied only to the channel being visualized in the window. This "
+"will allow to import different presets for each channel instead of just "
+"settings the same values to both."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:271
+msgid ""
+"Fixed some segmentation faults that could happen when creating a preset "
+"autoloading profile or removing presets"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
+msgid ""
+"This is one of the biggest releases that I have ever made. The amount of "
+"changes is so big that it is hard to talk about everything here."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
+msgid ""
+"The following are just the most import ones. People interested on the "
+"journey that got us here can take a look at issue 904 and issue 874."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
+msgid ""
+"The application and its repository have been renamed from PulseEffects to "
+"`EasyEffects`"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
+msgid "gtkmm3 was replaced by gtkmm4"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
+msgid "Gstreamer was replaced by native PipeWire filters."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
+msgid ""
+"Many features were reimplemented from scratch. The preset autoloading is one "
+"example. Another remarkable change will be seen in the plugins selection "
+"menu. Now the user can show in the window only the plugins that he/she wants "
+"to use."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
+msgid ""
+"Boost is no longer a dependency. The price paid for that was a little change "
+"in our presets structures. With some patience it is possible to edit "
+"PulseEffects presets in a text editor and make them work in EasyEffects. "
+"Hopefully someone will come up with a script for this in the feature."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
+msgid ""
+"New libraries are being used and some of the librarires that were optional "
+"before are now required"
+msgstr ""
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr ""
+#~ "limiter;begränsare;kompressor;eko;efterklang;equalizer;utjämnare;auto;"
+#~ "volym;"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Förinställningar\""
+
+#, fuzzy
+#~ msgid "Enable"
+#~ msgstr "Sinustabell"
+
+#~ msgid "Mute Application"
+#~ msgstr "Tysta applikationen"
+
+#~ msgid "Application Volume"
+#~ msgstr "Applikationsvolym"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_Återställ inställningar"
+
+#~ msgid "_About EasyEffects"
+#~ msgstr "_Om EasyEffects"
+
+#~ msgid "Presets"
+#~ msgstr "Profiler"
+
+#~ msgid "Presets Menu"
+#~ msgstr "Förinställningsmeny"
+
+#~ msgid "EasyEffects Window"
+#~ msgstr "EasyEffects-fönster"
+
+#~ msgid "Applications List"
+#~ msgstr "Applikationslista"
+
+#, fuzzy
+#~ msgid "No Audio Application Available"
+#~ msgstr "Applikationsnamn"
+
+#~ msgid "Target"
+#~ msgstr "Målvärde (dB)"
+
+#, fuzzy
+#~ msgid "Maximum History"
+#~ msgstr "Frekvens (Hz)"
+
+#~ msgid "Reset History"
+#~ msgstr "Återställ historik"
+
+#~ msgid "Output Gain"
+#~ msgstr "Utgångsförstärkning (dB)"
+
+#~ msgid "Input"
+#~ msgstr "Ingång"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Plugin ingångsförstärkning (dB)"
+
+#~ msgid "Output"
+#~ msgstr "Utgång"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Plugin utgångsförstärkning (dB)"
+
+#~ msgid "Reset"
+#~ msgstr "Återställ"
+
+#~ msgid "Using"
+#~ msgstr "Använder"
+
+#~ msgid "Device"
+#~ msgstr "Enhet"
+
+#~ msgid "Name"
+#~ msgstr "Namn"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Preset"
+#~ msgstr "Förinställning"
+
+#, fuzzy
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Ta bort denna modellfil"
+
+#~ msgid "Listen"
+#~ msgstr "Lyssna"
+
+#~ msgid "Application Name"
+#~ msgstr "Applikationsnamn"
+
+#, fuzzy
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Visa blocklistade applikationer"
+
+#, fuzzy
+#~ msgid "Excluded Applications List"
+#~ msgstr "Applikationslista"
+
+#, fuzzy
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Visa blocklistade applikationer"
+
+#~ msgid "Compressor"
+#~ msgstr "Kompressor"
+
+#~ msgid "Boosting"
+#~ msgstr "Förstärkning"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Komprimeringsläge"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Tröskelvärde för förstärkning (dB)"
+
+#~ msgid "Boost Amount"
+#~ msgstr "Förstärkningsmängd"
+
+#~ msgid "Attack"
+#~ msgstr "Attack (ms)"
+
+#~ msgid "Threshold"
+#~ msgstr "Tröskelvärde (dB)"
+
+#~ msgid "Attack Time"
+#~ msgstr "Attacktid (ms)"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "Tröskelvärde för attack (dB)"
+
+#~ msgid "Release"
+#~ msgstr "Släpp (s)"
+
+#~ msgid "Release Time"
+#~ msgstr "Tid för frisläppning (s)"
+
+#~ msgid "Release Threshold"
+#~ msgstr "Tröskelvärde för frisläppning (dB)"
+
+#~ msgid "Ratio"
+#~ msgstr "Förhållande (n:1)"
+
+#~ msgid "Knee"
+#~ msgstr "Knävärde (dB)"
+
+#~ msgid "Makeup"
+#~ msgstr "Makeup (dB)"
+
+#~ msgid "Sidechain"
+#~ msgstr "Sidokedja"
+
+#~ msgid "Peak"
+#~ msgstr "Topp"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Lågpass"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "Sidokedjeläge"
+
+#~ msgid "Middle"
+#~ msgstr "Mitten"
+
+#~ msgid "Side"
+#~ msgstr "Sida"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "Sidokedjekälla"
+
+#~ msgid "Feed-back"
+#~ msgstr "Respons"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "Typ av sidokedja"
+
+#~ msgid "Input Device"
+#~ msgstr "Ingångsenhet"
+
+#~ msgid "PreAmplification"
+#~ msgstr "Förförstärkning"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "Sidokedjefilter"
+
+#~ msgid "High-Pass"
+#~ msgstr "Högpass"
+
+#~ msgid "Frequency"
+#~ msgstr "Frekvens (Hz)"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Högpassfilterläge"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Högpassfilterfrekvens"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Lågpassfilterläge"
+
+#~ msgid "Gain"
+#~ msgstr "Förstärkning"
+
+#~ msgid "L"
+#~ msgstr "V"
+
+#~ msgid "Left Channel"
+#~ msgstr "Vänster kanal"
+
+#~ msgid "R"
+#~ msgstr "H"
+
+#~ msgid "Right Channel"
+#~ msgstr "Höger kanal"
+
+#~ msgid "Impulses"
+#~ msgstr "Impulser"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Stereobredd"
+
+#~ msgid "Spectrum"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Autogain"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#~ msgid "Rate"
+#~ msgstr "Takt"
+
+#~ msgid "Samples"
+#~ msgstr "Prover"
+
+#~ msgid "Duration"
+#~ msgstr "Varaktighet"
+
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Kombinera impulssvar"
+
+#~ msgid "Output File Name"
+#~ msgstr "Utdatafilnamn"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Importera impuls"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "Sök impulsfil"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "Lista över impulsfiler"
+
+#~ msgid "Cutoff"
+#~ msgstr "Gräns (Hz)"
+
+#~ msgid "Feed"
+#~ msgstr "Mata (dB)"
+
+#~ msgid "Detection"
+#~ msgstr "Upptäckt"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frekvens 1 delning (Hz)"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 topp"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frekvens 2 topp (Hz)"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 förstärkning (dB)"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frekvens 1 förstärkning (Hz)"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 nivå"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frekvens 2 nivå (Hz)"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 topp Q"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frekvens 2 topp Q"
+
+#~ msgid "Detected"
+#~ msgstr "Upptäckt"
+
+#~ msgid "Reduction"
+#~ msgstr "Reduktion"
+
+#~ msgid "Frame Size"
+#~ msgstr "Ramstorlek"
+
+#~ msgid "Filter Length"
+#~ msgstr "Filterlängd"
+
+#~ msgid "Split Channels"
+#~ msgstr "Delade kanaler"
+
+#~ msgid "Flat Response"
+#~ msgstr "Platt respons"
+
+#~ msgid "Load APO Preset"
+#~ msgstr "Ladda APO-förinställning"
+
+#~ msgid "High Pass"
+#~ msgstr "Högpass"
+
+#~ msgid "High Shelf"
+#~ msgstr "Hög hylla"
+
+#~ msgid "Low Pass"
+#~ msgstr "Lågpass"
+
+#~ msgid "Low Shelf"
+#~ msgstr "Låg hylla"
+
+#~ msgid "All Pass"
+#~ msgstr "Lågpass"
+
+#~ msgid "Band Type"
+#~ msgstr "Bandtyp"
+
+#~ msgid "Band Mode"
+#~ msgstr "Bandläge"
+
+#~ msgid "Width"
+#~ msgstr "Bredd"
+
+#~ msgid "Quality"
+#~ msgstr "Kvalitet"
+
+#~ msgid "Ceil"
+#~ msgstr "Tak (dB)"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivning"
+
+#~ msgid "Remove this model file"
+#~ msgstr "Ta bort denna modellfil"
+
+#, fuzzy
+#~ msgid "Release Zone Start"
+#~ msgstr "Tid för frisläppning (s)"
+
+#~ msgid "Line Thin"
+#~ msgstr "Linje tunn"
+
+#~ msgid "Line Wide"
+#~ msgstr "Linje bred"
+
+#~ msgid "Line Tail"
+#~ msgstr "Linje svans"
+
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "Sidokedjeförförstärkning"
+
+#~ msgid "Boost"
+#~ msgstr "Förstärkning"
+
+#~ msgid "Stereo Link"
+#~ msgstr "Stereolänk"
+
+#~ msgid "External Sidechain"
+#~ msgstr "Extern sidokedja"
+
+#~ msgid "Auto Leveling"
+#~ msgstr "Automatisk utjämning"
+
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "Automatisk utjämningsattack"
+
+#~ msgid "Auto Leveling Release"
+#~ msgstr "Automatisk utjämningsutlösning"
+
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "Automatisk knäutjämning"
+
+#~ msgid "Gain Left"
+#~ msgstr "Förstärkning vänster"
+
+#~ msgid "Sidechain Left"
+#~ msgstr "Sidokedja vänster"
+
+#~ msgid "Sidechain Right"
+#~ msgstr "Sidokedja höger"
+
+#~ msgid "FFT Size"
+#~ msgstr "FFT-storlek"
+
+#~ msgid "Output Volume"
+#~ msgstr "Utgångsvolym"
+
+#~ msgid "Ceiling"
+#~ msgstr "Tak"
+
+#~ msgid "Operating Mode"
+#~ msgstr "Driftläge"
+
+#~ msgid "Sidechain Boost"
+#~ msgstr "Sidokedjeförstärkning"
+
+#~ msgid "Bands List"
+#~ msgstr "Lista över band"
+
+#~ msgid "Band Compression Mode"
+#~ msgstr "Bandkomprimeringsläge"
+
+#~ msgid "Band Sidechain Options"
+#~ msgstr "Alternativ för bandsidokedja"
+
+#~ msgid "Low-Cut Filter"
+#~ msgstr "Lågklippt filter"
+
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "Lågklippt filterfrekvens"
+
+#~ msgid "High-Cut Filter"
+#~ msgstr "Högklippt filter"
+
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "Högklippt filterfrekvens"
+
+#~ msgid "Band Gain"
+#~ msgstr "Bandförstärkning"
+
+#~ msgid "Split Mode"
+#~ msgstr "Delat läge"
+
+#~ msgid "Split Frequency 1"
+#~ msgstr "Delad frekvens 1"
+
+#~ msgid "Split Frequency 2"
+#~ msgstr "Delad frekvens 2"
+
+#~ msgid "Split Frequency 3"
+#~ msgstr "Delad frekvens 3"
+
+#~ msgid "Sub Band"
+#~ msgstr "Underband"
+
+#~ msgid "Band 1 Bypass"
+#~ msgstr "Förbikoppling av band 1"
+
+#~ msgid "Band 1 Solo"
+#~ msgstr "Band 1 solo"
+
+#~ msgid "Band 1 Detection"
+#~ msgstr "Band 1-detektering"
+
+#~ msgid "Band 1 Attack"
+#~ msgstr "Band 1 attack"
+
+#~ msgid "Band 1 Release"
+#~ msgstr "Band 1 släpp"
+
+#~ msgid "Band 1 Threshold"
+#~ msgstr "Band 1 tröskel"
+
+#~ msgid "Band 1 Ratio"
+#~ msgstr "Band 1-förhållande"
+
+#~ msgid "Band 1 Knee"
+#~ msgstr "Band 1 knä"
+
+#~ msgid "Band 1 Makeup"
+#~ msgstr "Band 1 sammansättning"
+
+#~ msgid "Max Reduction"
+#~ msgstr "Maximal minskning"
+
+#~ msgid "Band 1 Max Reduction"
+#~ msgstr "Band 1 max reduktion"
+
+#~ msgid "Low Band"
+#~ msgstr "Lågt band"
+
+#~ msgid "Band 2 Bypass"
+#~ msgstr "Förbikoppling av band 2"
+
+#~ msgid "Band 2 Solo"
+#~ msgstr "Band 2 solo"
+
+#~ msgid "Band 2 Detection"
+#~ msgstr "Band 2-detektering"
+
+#~ msgid "Band 2 Attack"
+#~ msgstr "Band 2 attack"
+
+#~ msgid "Band 2 Release"
+#~ msgstr "Band 2 släpp"
+
+#~ msgid "Band 2 Threshold"
+#~ msgstr "Tröskelvärde för band 2"
+
+#~ msgid "Band 2 Ratio"
+#~ msgstr "Band 2-förhållande"
+
+#~ msgid "Band 2 Knee"
+#~ msgstr "Band 2 knä"
+
+#~ msgid "Band 2 Makeup"
+#~ msgstr "Band 2 sammansättning"
+
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "Band 2 max reduktion"
+
+#~ msgid "Mid Band"
+#~ msgstr "Mittband"
+
+#~ msgid "Band 3 Bypass"
+#~ msgstr "Förbikoppling av band 3"
+
+#~ msgid "Band 3 Solo"
+#~ msgstr "Band 3 solo"
+
+#~ msgid "Band 3 Detection"
+#~ msgstr "Band 3-detektering"
+
+#~ msgid "Band 3 Attack"
+#~ msgstr "Band 3 attack"
+
+#~ msgid "Band 3 Release"
+#~ msgstr "Band 3 släpp"
+
+#~ msgid "Band 3 Threshold"
+#~ msgstr "Band 3 tröskelvärde"
+
+#, fuzzy
+#~ msgid "Band 3 Ratio"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 3 Knee"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 3 Makeup"
+#~ msgstr "Makeup (dB)"
+
+#, fuzzy
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "High Band"
+#~ msgstr "Högpass"
+
+#, fuzzy
+#~ msgid "Band 4 Bypass"
+#~ msgstr "Release (s)"
+
+#, fuzzy
+#~ msgid "Band 4 Solo"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Detection"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "Band 4 Attack"
+#~ msgstr "Attack (ms)"
+
+#, fuzzy
+#~ msgid "Band 4 Release"
+#~ msgstr "Release (s)"
+
+#, fuzzy
+#~ msgid "Band 4 Threshold"
+#~ msgstr "Tröskelvärde (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Ratio"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Knee"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Makeup"
+#~ msgstr "Makeup (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "Förstärkningsreducering"
+
+#~ msgid "General"
+#~ msgstr "Allmänt"
+
+#, fuzzy
+#~ msgid "Custom Input Device"
+#~ msgstr "Ingångs-begränsning"
+
+#, fuzzy
+#~ msgid "Custom Output Device"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Server Information"
+#~ msgstr "Efterljud (eko)"
+
+#, fuzzy
+#~ msgid "Sampling Rate"
+#~ msgstr "Resampler"
+
+#, fuzzy
+#~ msgid "Minimum Quantum"
+#~ msgstr "Frekvens (Hz)"
+
+#, fuzzy
+#~ msgid "Maximum Quantum"
+#~ msgstr "Frekvens (Hz)"
+
+#, fuzzy
+#~ msgid "Default Quantum"
+#~ msgstr "Frekvens (Hz)"
+
+#, fuzzy
+#~ msgid "Output Devices"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Output Presets"
+#~ msgstr "Profiler"
+
+#, fuzzy
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "Profiler"
+
+#, fuzzy
+#~ msgid "Input Devices"
+#~ msgstr "Ingångs-begränsning"
+
+#, fuzzy
+#~ msgid "Input Presets"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Test Signal"
+#~ msgstr "Testsignal"
+
+#, fuzzy
+#~ msgid "Enabled"
+#~ msgstr "Sinustabell"
+
+#~ msgid "Channels"
+#~ msgstr "Kanaler"
+
+#, fuzzy
+#~ msgid "Both Channels"
+#~ msgstr "Kanaler"
+
+#, fuzzy
+#~ msgid "Sine Wave"
+#~ msgstr "Sinustabell"
+
+#~ msgid "White Noise"
+#~ msgstr "Vitt brus"
+
+#, fuzzy
+#~ msgid "High Speed"
+#~ msgstr "Hög hylla"
+
+#, fuzzy
+#~ msgid "High Quality"
+#~ msgstr "Kvalitet"
+
+#, fuzzy
+#~ msgid "Formant"
+#~ msgstr "Format"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "Förinställning"
+
+#, fuzzy
+#~ msgid "Detector"
+#~ msgstr "Upptäckt"
+
+#, fuzzy
+#~ msgid "Compound"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Remove this effect"
+#~ msgstr "Ta bort denna modellfil"
+
+#, fuzzy
+#~ msgid "Add Effect"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "No Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "_General"
+#~ msgstr "Allmänt"
+
+#, fuzzy
+#~ msgid "Service"
+#~ msgstr "Ingångs-begränsning"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "Använd mörkt tema"
+
+#, fuzzy
+#~ msgid "_Spectrum"
+#~ msgstr "Spektrum"
+
+#~ msgid "Points"
+#~ msgstr "Punkter"
+
+#, fuzzy
+#~ msgid "Line Width"
+#~ msgstr "Bredd"
+
+#, fuzzy
+#~ msgid "Frequency Range"
+#~ msgstr "Frekvens (Hz)"
+
+#, fuzzy
+#~ msgid "Minimum"
+#~ msgstr "Frekvens (Hz)"
+
+#, fuzzy
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "Spara nuvarande inställningar som profil"
+
+#, fuzzy
+#~ msgid "New Output Preset Name"
+#~ msgstr "Profiler"
+
+#, fuzzy
+#~ msgid "Create a new preset"
+#~ msgstr "Ta bort profil"
+
+#, fuzzy
+#~ msgid "Import a preset"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Search Output Preset"
+#~ msgstr "Profiler"
+
+#, fuzzy
+#~ msgid "Output Presets List"
+#~ msgstr "Profiler"
+
+#, fuzzy
+#~ msgid "New Input Preset Name"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Search Input Preset"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Input Presets List"
+#~ msgstr "Öppna förinställning"
+
+#~ msgid "Room Size"
+#~ msgstr "Rumsstorlek"
+
+#, fuzzy
+#~ msgid "Small"
+#~ msgstr "Litet rum"
+
+#, fuzzy
+#~ msgid "Large"
+#~ msgstr "Målvärde (dB)"
+
+#, fuzzy
+#~ msgid "Pre Delay"
+#~ msgstr "Release (ms)"
+
+#, fuzzy
+#~ msgid "Wet Level"
+#~ msgstr "Målvärde (dB)"
+
+#, fuzzy
+#~ msgid "Dry Level"
+#~ msgstr "Nivå"
+
+#, fuzzy
+#~ msgid "Ambience"
+#~ msgstr "Tystnad"
+
+#, fuzzy
+#~ msgid "Room"
+#~ msgstr "Rumsstorlek"
+
+#, fuzzy
+#~ msgid "Import Model"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "Active Model"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Overview"
+#~ msgstr "Ingångs-begränsning"
+
+#, fuzzy
+#~ msgid "Open the EasyEffects Manual"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Quit EasyEffects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Balance"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Input Balance"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Softclip Level"
+#~ msgstr "Nivå"
+
+#, fuzzy
+#~ msgid "Stereo Matrix"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "LR > LL (Mono Left Channel)"
+#~ msgstr "Kanaler"
+
+#, fuzzy
+#~ msgid "LR > RR (Mono Right Channel)"
+#~ msgstr "Kanaler"
+
+#, fuzzy
+#~ msgid "Stereo Mode"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Side Level"
+#~ msgstr "Nivå"
+
+#, fuzzy
+#~ msgid "Side Balance"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Middle Level"
+#~ msgstr "Nivå"
+
+#, fuzzy
+#~ msgid "Middle Panorama"
+#~ msgstr "Panorama"
+
+#, fuzzy
+#~ msgid "Output Balance"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Delay L/R"
+#~ msgstr "Release (ms)"
+
+#, fuzzy
+#~ msgid "Delay Left Right"
+#~ msgstr "Release (ms)"
+
+#, fuzzy
+#~ msgid "Stereo Base"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Stereo Phase"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Creating"
+#~ msgstr "Inställningar"
+
+#, fuzzy
+#~ msgid "channels"
+#~ msgstr "Kanaler"
+
+#~ msgid "Output Presets: "
+#~ msgstr "Utgångsförinställningar: "
+
+#~ msgid "Input Presets: "
+#~ msgstr "Ingångsförinställningar: "
+
+#, fuzzy
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Ljudeffekter för PulseAudio applikationer"
+
+#~ msgid "Reset EasyEffects."
+#~ msgstr "Återställ EasyEffects."
+
+#, fuzzy
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "Lista över impulsfiler"
+
+#, fuzzy
+#~ msgid "Import Impulse File"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "Cancel"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Impulse Response"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "Load Impulse"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "Remove Impulse"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "Lista över impulsfiler"
+
+#, fuzzy
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "Sök impulsfil"
+
+#, fuzzy
+#~ msgid "Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Import APO Preset File"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "APO Presets"
+#~ msgstr "Profiler"
+
+#~ msgid "Remove"
+#~ msgstr "Ta bort"
+
+#, fuzzy
+#~ msgid "Output Device"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Import Preset"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Import Model File"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "RNNoise Models"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Bass Enhancer"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Crystalizer"
+#~ msgstr "Utjämnare"
+
+#, fuzzy
+#~ msgid "Delay"
+#~ msgstr "Release (ms)"
+
+#, fuzzy
+#~ msgid "Echo Canceller"
+#~ msgstr "Ljudförstärkare"
+
+#~ msgid "Equalizer"
+#~ msgstr "Utjämnare"
+
+#, fuzzy
+#~ msgid "Filter"
+#~ msgstr "Filter typ"
+
+#, fuzzy
+#~ msgid "Limiter"
+#~ msgstr "Gränsvärde (dB)"
+
+#, fuzzy
+#~ msgid "Multiband Compressor"
+#~ msgstr "Kompressor"
+
+#, fuzzy
+#~ msgid "Multiband Gate"
+#~ msgstr "Kompressor"
+
+#, fuzzy
+#~ msgid "Reverberation"
+#~ msgstr "Efterljud (eko)"
+
+#, fuzzy
+#~ msgid "Noise Reduction"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "Stereo Tools"
+#~ msgstr "Ljudförstärkare"
+
+#, fuzzy
+#~ msgid "Remove this plugin"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Import Presets"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Microphone"
+#~ msgstr "Kalibrering och mikrofon korrigering"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Sinustabell"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Sinustabell"
+
+#~ msgid "Format"
+#~ msgstr "Format"
+
+#~ msgid "Latency"
+#~ msgstr "Latens"
+
+#, fuzzy
+#~ msgid "Output Channel"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Channel"
+#~ msgstr "Kanaler"
+
+#, fuzzy
+#~ msgid "Output Effects"
+#~ msgstr "Ingångs-begränsning"
+
+#~ msgid "Settings"
+#~ msgstr "Inställningar"
+
+#, fuzzy
+#~ msgid "Settings Menu"
+#~ msgstr "Inställningar"
+
+#, fuzzy
+#~ msgid "Documentation"
+#~ msgstr "Kalibrering"
+
+#, fuzzy
+#~ msgid "Enable Test Signal"
+#~ msgstr "Testsignal"
+
+#, fuzzy
+#~ msgid "Signal"
+#~ msgstr "Testsignal"
+
+#, fuzzy
+#~ msgid "Show Spectrum"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Spectrum Type"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Spectrum Color"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Maximum Gain Reduction"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "S/C Level"
+#~ msgstr "Nivå"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Lågpass"
+
+#~ msgid "Input Limiter"
+#~ msgstr "Ingångs-begränsning"
+
+#~ msgid "Calibration"
+#~ msgstr "Kalibrering"
+
+#, fuzzy
+#~ msgid "Limit"
+#~ msgstr "Gränsvärde (dB)"
+
+#~ msgid "Attenuation"
+#~ msgstr "Försvagning"
+
+#~ msgid "Audio Effects for PulseAudio Applications"
+#~ msgstr "Ljudeffekter för PulseAudio applikationer"
+
+#, fuzzy
+#~ msgid "Audio effects for PulseAudio applications"
+#~ msgstr "Ljudeffekter för PulseAudio applikationer"
+
+#, fuzzy
+#~ msgid "Calibration Microphone"
+#~ msgstr "Kalibrering och mikrofon korrigering"
+
+#~ msgid "Sine"
+#~ msgstr "Sinus"
+
+#~ msgid "Square"
+#~ msgstr "Fyrkant"
+
+#~ msgid "Saw"
+#~ msgstr "Sågtand"
+
+#~ msgid "Triangle"
+#~ msgstr "Triangel"
+
+#, fuzzy
+#~ msgid "Silence"
+#~ msgstr "Tystnad"
+
+#~ msgid "Pink Noise"
+#~ msgstr "Skärt brus"
+
+#~ msgid "Ticks"
+#~ msgstr "Tickande"
+
+#~ msgid "Gaussian Noise"
+#~ msgstr "Gaussiskt brus"
+
+#~ msgid "Red Noise"
+#~ msgstr "Rött brus"
+
+#~ msgid "Blue Noise"
+#~ msgstr "Blått brus"
+
+#~ msgid "Violet Noise"
+#~ msgstr "Violett brus"
+
+#~ msgid "Volume"
+#~ msgstr "Volym"
+
+#, fuzzy
+#~ msgid "Window"
+#~ msgstr "Mellanrum (s)"
+
+#~ msgid "Measure Noise"
+#~ msgstr "Mät brus"
+
+#~ msgid "Subtract Noise"
+#~ msgstr "Ta bort brus"
+
+#, fuzzy
+#~ msgid "High"
+#~ msgstr "Högpass"
+
+#, fuzzy
+#~ msgid "Suppression Level"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "Very High"
+#~ msgstr "Högpass"
+
+#, fuzzy
+#~ msgid "Noise Suppressor"
+#~ msgstr "Kompressor"
+
+#, fuzzy
+#~ msgid "Detection Likelihood"
+#~ msgstr "Försvagning"
+
+#, fuzzy
+#~ msgid "Voice Detector"
+#~ msgstr "Försvagning"
+
+#, fuzzy
+#~ msgid "Select the impulse Response File"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "Aggressive Mode"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Configuration"
+#~ msgstr "Kalibrering"
+
+#, fuzzy
+#~ msgid "Low-pass Frequency"
+#~ msgstr "Återställ frekvens"
+
+#, fuzzy
+#~ msgid "Advanced"
+#~ msgstr "Inställningar"
+
+#, fuzzy
+#~ msgid "Apply APO Preset"
+#~ msgstr "Profiler"
+
+#, fuzzy
+#~ msgid "Detect Silence"
+#~ msgstr "Försvagning"
+
+#, fuzzy
+#~ msgid "Minimum Frequency"
+#~ msgstr "Frekvens (Hz)"
+
+#, fuzzy
+#~ msgid "Channel Mapping"
+#~ msgstr "Kanaler"
+
+#, fuzzy
+#~ msgid "Resamplers"
+#~ msgstr "Resampler"
+
+#, fuzzy
+#~ msgid "Buffer"
+#~ msgstr "Latens"
+
+#, fuzzy
+#~ msgid "Pipeline Output"
+#~ msgstr "Ljudutjämnare - Utgång"
+
+#, fuzzy
+#~ msgid "Block Size"
+#~ msgstr "Rumsstorlek"
+
+#~ msgid "Resampler"
+#~ msgstr "Resampler"
+
+#, fuzzy
+#~ msgid "Import APO Presets"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Gain Detection"
+#~ msgstr "Förstärkningsreducering"

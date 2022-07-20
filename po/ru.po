@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-16 12:12-0300\n"
+"POT-Creation-Date: 2022-07-20 20:05-0300\n"
 "PO-Revision-Date: 2022-06-20 08:14+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -20,912 +20,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Weblate 4.13.1-dev\n"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
-#: data/com.github.wwmm.easyeffects.desktop.in:5
-msgid "Audio Effects for PipeWire Applications"
-msgstr "Звуковые эффекты для приложений PipeWire"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
-msgid "Wellington Wallace"
-msgstr "Веллингтон Уоллис"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-msgid ""
-"EasyEffects is an advanced audio manipulation tool. It includes an "
-"equalizer, limiter, compressor and a reverberation tool, just to mention a "
-"few. To complement this there is also a built in spectrum analyzer."
-msgstr ""
-"EasyEffects — это продвинутый набор инструментов для работы со звуком. "
-"Приложение включает в себя эквалайзер, ограничитель (лимитер), компрессор, "
-"утилиту для реверберации и многое другое. Более того, имеется встроенный "
-"анализатор аудиоспектра."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-msgid ""
-"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
-"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
-msgstr ""
-"EasyEffects является наследником PulseEffects. EasyEffects поддерживает "
-"только PipeWire в качестве аудио-сервера. Пользователи PulseAudio должны "
-"продолжать использовать PulseEffects."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-msgid ""
-"Because EasyEffects uses the default PipeWire sound server it will work with "
-"most, if not all, applications you use. All supported applications are "
-"presented in the main window, where each can be enabled individually."
-msgstr ""
-"Так как EasyEffects использует стандартный сервер PipeWire, программа будет "
-"работать с большинством используемых вами приложений. Все поддерживаемые "
-"приложения представлены в главном окне, где каждое может быть настроено "
-"индивидуально."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-msgid ""
-"Besides manipulating sound output, EasyEffects is able to apply effects to "
-"an input device, such as a microphone. This is, for example, useful in audio "
-"recording, but it also works well during voice conversations."
-msgstr ""
-"Помимо изменения звука на выходе, EasyEffects также может использовать "
-"звуковые эффекты для входных аудио-потоков, таких как микрофон. К примеру, "
-"это может быть полезно во время аудиозаписи или голосовой конференции."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-msgid ""
-"When EasyEffects is launched it will conveniently remember the configuration "
-"used in the last session. It is also possible to save all the current "
-"settings as profiles."
-msgstr ""
-"При запуске, EasyEffects автоматически подгрузит ваши настройки из "
-"предыдущей сессии. Также вы можете сохранить ваши текущие настройки в "
-"качестве загружаемого профиля."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
-msgid "The main page showing two audio output apps"
-msgstr "Главная страница отображает приложения с выходными аудио-потоками"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
-msgid "The bass enhancer page showing audio controls"
-msgstr "Страница усиления басов отображает настройки аудио"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
-msgid "The convolver page showing audio controls"
-msgstr "Страница конвольвера отображает настройки аудио"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:38
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:112
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:294
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
-msgid "This release adds the following features:"
-msgstr "Этот выпуск привносит следующие возможности:"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
-msgid ""
-"When effects are disable to an application we now set its target metadata to "
-"null. This will allow the media session"
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
-msgid "manager"
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
-msgid ""
-"A new configuration option was added. It allows EasyEffects to ignore "
-"streams whose purpose is to monitor sink"
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
-msgid ""
-"devices. This will help to fix some of problems our users were having when "
-"using OBS."
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
-msgid "The code that shows the stream sample format has been improved"
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-msgid ""
-"The rnnoise library is now optional. This should help package maintainers to "
-"build"
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
-msgid "a Debian package. See the issue #1000 for more information."
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
-msgid ""
-"Our logs now show the source code line where the messages are being printed"
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:160
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:233
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
-msgid "This release fixes the following bugs:"
-msgstr "Этот выпуск исправляет следующие ошибки:"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
-msgid ""
-"The \"enable effects\" checkbox in our window was not being updated when "
-"third party programs like pavucontrol"
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
-msgid ""
-"moved the stream away from our virtual devices. This should be fixed now."
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
-msgid ""
-"Fixed a crash that could happen when the maximum autogain history was "
-"changed."
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
-msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
-msgid "The interface of the pitch plugin was improved"
-msgstr "Улучшен интерфейс плагина высоты тона"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
-msgid "Our application icon is now compatible with desktops that uses QT"
-msgstr ""
-"Значок нашего приложения теперь совместим с рабочими столами, использующими "
-"QT"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
-msgid ""
-"Our blocklist code will use the `application.id` tag if the stream sets it"
-msgstr ""
-"Наш код чёрного списка будет использовать тег `application.id`, если поток "
-"укажет его"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
-msgid ""
-"In order to avoid problems with the mouse scroll the entries in the "
-"applications list shown in our `Players/Recorders`"
-msgstr ""
-"Во избежание проблем с колесом мыши записи в списке приложений отображаются "
-"в `Проигрыватели/Рекордеры`"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
-msgid ""
-"tab do not show a volume scale anymore. More details about the problem and "
-"the solution for it can be found on #1211"
-msgstr ""
-"вкладка больше не показывает шкалу громкости. Подробнее о проблеме и её "
-"решении можно узнать в #1211"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
-msgid "and #1427"
-msgstr "и #1427"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
-msgid ""
-"When no application is available for display in the `Players/Recorders` a "
-"message will be shown to the user"
-msgstr ""
-"Когда ни одно приложение не доступно для отображения в `Проигрывателях/"
-"Рекордерах`, пользователю будет показано сообщение"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
-msgid "Many translation updates"
-msgstr "Крупное обновление переводов"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
-#, fuzzy
-msgid ""
-"Fixed a bug where EasyEffects crashed when the number of points displayed in "
-"the spectrum was changed while"
-msgstr ""
-"Исправлена ошибка, при которой EasyEffeects аварийно завершал работу, когда "
-"изменялось количество точек, отображаемых в спектре, в то время как"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
-msgid "our pipeline was active and the spectrum widget was visible"
-msgstr "наш канал обработки был активен, и виджет спектра отображался"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
-msgid ""
-"The pipeline latency value displayed in our window could be wrong in some "
-"situations. This was fixed."
-msgstr ""
-"Значение задержки канала обработки, отображаемое в нашем окне, могло быть "
-"неверным в некоторых ситуациях. Это было исправлено."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
-msgid ""
-"There is a new setting allowing the user to select an inactivity timeout for "
-"the pipeline. When no client is playing"
-msgstr ""
-"Появился новый параметр, позволяющая пользователю выбирать тайм-аут "
-"бездействия для канала обработки. Когда ни один клиент не играет"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
-msgid ""
-"to or recording from our devices the filters will be unlinked after the "
-"timeout is reached. This is done to make sure"
-msgstr ""
-"или записывает с наших устройств, фильтры будут отключены после достижения "
-"тайм-аута. Это делается для уверенности в том, что"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
-msgid "we do not waste CPU power processing silence."
-msgstr "не тратится мощность процессора на обработку тишины."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:86
-msgid ""
-"The autogain plugin now allows the user to select which of the three "
-"loudness are used to calculate the geometric"
-msgstr ""
-"Плагин нормализации громкости теперь позволяет пользователю выбрать один из "
-"трёх уровней для расчета среднего"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
-msgid "mean."
-msgstr "геометрического."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
-msgid ""
-"The autogain plugin now allows the maximum history to be set and does not "
-"use `libebur128` histogram mode anymore."
-msgstr ""
-"Плагин нормализации громкости теперь позволяет устанавливать максимальную "
-"историю и больше не использует режим гистограммы «libebur128»."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-msgid ""
-"This should avoid the cases where the `Integrated` loudness gets stuck "
-"forever in the same value."
-msgstr ""
-"Это поможет избегать случаев, когда «встроенная» громкость навсегда "
-"застревает на одном и том же значении."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
-msgid ""
-"EasyEffects icon has been updated in a way that should make it visible in QT "
-"desktops."
-msgstr ""
-"Значок EasyEffects был обновлён таким образом, чтобы сделать его видимым на "
-"рабочих столах QT."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:144
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:271
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
-msgid "This release fixes the following bug:"
-msgstr "В этом выпуске исправлены следующие ошибки:"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
-msgid ""
-"The command line option that returns the global bypass state is working "
-"again."
-msgstr ""
-"Параметр командной строки, возвращающий состояние глобального обхода, снова "
-"работает."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
-msgid "This release adds the following feature:"
-msgstr "Этот выпуск добавляет следующие возможности:"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
-msgid ""
-"The crossfeed filter should deal better with PipeWire's dynamic latency "
-"switches. Jumps in volume level should not happen anymore in these "
-"situations."
-msgstr ""
-"Фильтр перекрестной подачи должен лучше работать с динамическим изменением "
-"задержек PipeWire. Больше не должны возникать ситуации, приводящие к скачкам "
-"громкости."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
-msgid ""
-"Fixed a bug that prevented mono microphones from properly working with "
-"EasyEffects"
-msgstr ""
-"Исправлена ошибка, не дававшая моно-микрофонам корректно работать с "
-"EasyEffects"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
-msgid "Support for the next PipeWire release `0.3.44`"
-msgstr "Поддержка PipeWire версии `0.3.44`"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
-msgid ""
-"The autogain filter should deal better with PipeWire's dynamic latency "
-"switches. Jumps in volume level should not happen anymore in these "
-"situations."
-msgstr ""
-"Фильтр автогейн должен лучше работать с динамическим изменением задержек "
-"PipeWire. Теперь ситуации со скачками уровня громкости больше не должны "
-"возникать."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
-msgid ""
-"We added an option that allows the volume and mute state of our virtual "
-"devices to be reset when EasyEffects starts. It should help with the cases "
-"were our devices are muted by the audio server for unknown reasons."
-msgstr ""
-"Мы добавили опцию, позволяющую сбрасывать уровень громкости и заглушение "
-"устройства во время запуска EasyEffects. Это должно помочь в случае, когда "
-"ваши устройства по неизвестным причинам заглушаются аудио-сервером."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
-msgid "Better support for computer suspending."
-msgstr "Улучшена поддержка спящего режима."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:118
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
-msgid "Updated translations"
-msgstr "Обновление перевода"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
-msgid ""
-"Fixed a bug where trying to create an autoloading profile without having "
-"presets caused the application to crash."
-msgstr ""
-"Исправлена ошибка, при которой попытка создать профиль для автозагрузки, не "
-"имеющий предустановок, приводила к вылету приложения."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
-msgid ""
-"Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
-"an application crash."
-msgstr ""
-"Исправлена ошибка, при которой установка полосы эквалайзера в \"ноль\" "
-"приводила к аварийному завершению приложения."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
-msgid ""
-"LibAdwaita is used to create some parts of our window and for handling the "
-"switching between dark and light themes."
-msgstr ""
-"LibAdwaita используется для создания некоторых частей окна приложения и "
-"управления переключением между тёмной и светлой темами."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
-msgid "The settings menu has been redesigned using LibAdwaita widgets."
-msgstr ""
-"Дизайн меню настроек приложения был изменен с использованием виджетов "
-"LibAdwaita."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
-msgid ""
-"Equalizer APO preset import feature has been improved to apply not only the "
-"Bell filter, but also other supported ones"
-msgstr ""
-"Функция импорта предустановок для Equalizer APO была улучшена: теперь "
-"возможно применить не только \"Bell\", но и другие поддерживаемые фильтры"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
-msgid ""
-"The `Reset All Settings` function in our menu should work in Flatpak now."
-msgstr ""
-"Функция «Сброс всех настроек» в меню теперь должна работать и с Flatpak."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:142
-msgid ""
-"We have a new option that allows the user to disable our menus `autohide`. "
-"This may help to workaround some bugs Popover menus currently have on gtk4."
-msgstr ""
-"Теперь у нас есть новая опция, которая позволяет пользователю отключить "
-"\"автоскрытие\" меню. Это должно помочь обойти некоторые ошибки наложения, "
-"имеющиеся в gtk4."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:146
-msgid ""
-"More robust parsing to import APO presets saved with comma as thousands "
-"separator in central frequency band."
-msgstr ""
-"Большинство сложных для обработки при импорте предустановок APO, сохранены с "
-"использованием запятой в качестве разделителя в центральный полосе частот."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
-msgid ""
-"The fmt library is a new dependency At least while the c++ compilers do not "
-"implement its features. This is expected to happen in the next years."
-msgstr ""
-"Библиотека fmt является новой зависимостью, поскольку компилятор C++ на "
-"данный момент не может реализовать ее возможности. Поддержка ожидается в "
-"ближайшие несколько лет."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:149
-msgid ""
-"GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
-msgstr ""
-"GTKMM и GLIBMM больше не являются зависимостями. Теперь мы используем gtk4 "
-"напрямую."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
-msgid ""
-"It is now possible to combine impulse responses in the Convolver interface. "
-"A new impulse file is generated and it should be visible in the impulse list."
-msgstr ""
-"Теперь вы можете объединять характеристики импульсов в интерфейсе "
-"Конвольвера. Новые файлы импульсов созданы и должны быть видны в списке."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:157
-msgid ""
-"Improved `x axis` drawings in our plots. Now the number of labels is "
-"adjusted dynamically depending on our window width."
-msgstr ""
-"Улучшена горизонтальная отрисовка внутри окна приложения. Теперь количество "
-"элементов изменяется динамически в зависимости от ширины окна."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:158
-msgid ""
-"The documentation has been updated reflecting the new EasyEffects features. "
-"Old references about PulseEffects have been removed. The documentation "
-"button has been added in the menu section."
-msgstr ""
-"Была обновлена пользовательская документация в связи с добавлением в "
-"EasyEffects новых возможностей. Старые отсылки к PulseEffects были удалены. "
-"Кнопка для вызова документации была добавлена в качестве секции Меню."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
-msgid ""
-"When a spinbutton is filled with an out of range value, now it is updated "
-"with the lowest/highest value rather than resetting to the previous one."
-msgstr ""
-"Когда регулятор установлен в положение, превышающее возможное значение, он "
-"будет обновлен до наименьшего/высшего значения, наиболее соответствующего "
-"предыдущему."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
-msgid ""
-"The application window now remembers the maximized state and restores it on "
-"the next opening event."
-msgstr ""
-"Окно приложения теперь запоминает свое состояние, и будет восстановлено при "
-"его следующем открытии."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:165
-msgid "The `tbb` library is a new dependency"
-msgstr "Библиотека tbb теперь является новой зависимостью"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
-msgid ""
-"The Limiter and the Multiband Compressor plugins can now use an optional "
-"external sidechain."
-msgstr ""
-"Плагины Лимитер и Многополосный компрессор теперь могут использоваться в "
-"качестве опционального внешнего сайдчейна."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:173
-msgid ""
-"The Autogain plugin now allows the user to select which Loudness is used as "
-"reference for the volume correction."
-msgstr ""
-"Плагин Автогейн теперь позволяет пользователям выбрать, какая громкость "
-"будет использоваться в качестве значения для коррекции её уровня."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
-msgid ""
-"The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
-"Amplification\" parameter."
-msgstr ""
-"Функция импорта предустановок APO для плагина Эквалайзера, теперь считывает "
-"параметры Предусиления."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
-msgid "Optional Cubic Volume can be enabled in General Settings."
-msgstr ""
-"Теперь в главных настройках можно выбрать Кубический Уровень в качестве "
-"опции."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
-msgid ""
-"PipeWire monitor streams are now excluded and removed from the applications "
-"list."
-msgstr ""
-"Монитор источников PipeWire был исключён и удалён из списка приложений."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
-msgid "Hopefully crashes like the one reported at [1172]( are fixed."
-msgstr ""
-"Надеемся, что ошибки вылета приложения, указанные в отчете [1172] были "
-"исправлены."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:188
-msgid "Prevented a case in which Spectrum was crashing."
-msgstr ""
-"Предотвращена ошибка, связанная со Спектром, приводящая к аварийному "
-"завершению приложения."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
-msgid ""
-"Pavucontrol is not added anymore to input applications list on systems with "
-"localization different than English."
-msgstr ""
-"Pavucontrol больше не указывается в списке приложений с источниками "
-"аудиопотоков в системах, локализация которых отличается от английской."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
-msgid ""
-"Improved compatibility with WirePlumber. This is needed to run on systems "
-"that decided to use it instead of the"
-msgstr ""
-"Улучшена совместимость с WirePlumber, необходимая для работы в системах, "
-"использующих го в качестве основного"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
-msgid "built-in PipeWire session manager. More information at issue [1144]("
-msgstr ""
-"менеджера управления сессиями PipeWire. Больше информации в отчете [1144]"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
-msgid ""
-"When trying to add an autoloading profile for a device already in the list "
-"its target preset will be updated. This way we can change the profile preset "
-"without having to remove and recreating it."
-msgstr ""
-"При попытке добавить профиль для автозагрузки для устройства, находящегося в "
-"списке, его цель будет обновлена. С помощью этого, мы сможем изменять "
-"предустановки профиля без необходимости удалять и пересоздавать его заново."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
-msgid ""
-"The preset autoloading support implementation was redesigned again. It "
-"should work on more hardware now. For more information see issue [1051]("
-msgstr ""
-"Реализация поддержки автозагрузки профилей была заново переписана. Теперь "
-"она должна работать с большим количеством оборудования. Более детальная "
-"информация в отчете [1051]"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
-msgid ""
-"If the Limiter or the Maximizer are set in the last position of the plugin "
-"stack, new plugins are added at the second to last position in order to "
-"prevent hardware damage on eventually high output level."
-msgstr ""
-"Лимитер и Максимизатор теперь устанавливаются в последнюю позицию цепочки "
-"плагинов. Новые плагины добавляются в предыдущую секцию с целью "
-"предотвращения порчи оборудования чрезмерным выходным уровнем громкости."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
-msgid ""
-"Removing an application from the blocklist, its previous enabled state is "
-"restored."
-msgstr ""
-"При удалении приложения из черного списка, его предшествующее состояние "
-"будет восстановлено."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
-msgid ""
-"Sometimes when removing imported models from the noise reduction plugin the "
-"current used model was not properly updated. This should be fixed now."
-msgstr ""
-"Иногда, во время удаления импортированной модели в плагине шумоподавления, "
-"текущая используемая модель не обновлялась корректно. Теперь должно работать "
-"как положено."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
-msgid ""
-"When editing presets files in an external editor, duplicated entries won't "
-"be shown in our presets menu."
-msgstr ""
-"Во время правки файла предустановок во внешнем редакторе, повторяющиеся "
-"параметры не будут отображаться в меню."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
-msgid "Now the blocklist is correctly set when switching presets."
-msgstr ""
-"Теперь чёрный список правильно устанавливается при смене предустановок."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
-msgid ""
-"Now the status of the global bypass button is correctly updated when "
-"changing plugin stack."
-msgstr ""
-"Теперь статус при нажатии на кнопку глобального обхода корректно "
-"отображается при смене набора плагинов."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
-msgid ""
-"Missing icons on the system should not be shown inside the application info "
-"UI"
-msgstr ""
-"Потерянные системные значки теперь не должны отображаться внутри "
-"пользовательского интерфейса приложения"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
-msgid ""
-"Some icons not showing in Plasma DE with Breeze icon theme should appear now."
-msgstr ""
-"Некоторые значки, которые не отображались в окружении рабочего стола Plasma "
-"с темой Breeze, теперь должны отображаться."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
-msgid "Updated Chinese translation."
-msgstr "Обновлен Китайский перевод."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
-msgid "Updated Italian translation."
-msgstr "Обновлен перевод на Итальянский."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
-msgid "Added support for the compressor parameter `Boost Amount`"
-msgstr "В компрессор добавлена поддержка параметра `Boost Amount`"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
-msgid ""
-"The multiband compressor plugin now uses the stereo multiband compressor "
-"plugin from Linux Studio Plugins instead of the one from Calf Studio."
-msgstr ""
-"Плагин многополосного компрессора теперь использует плагин стерео "
-"многополосного компрессора из набора плагинов Linux Studio Plugins взамен "
-"Calf Studio."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:230
-msgid ""
-"The limiter plugin now uses the stereo limiter plugin from Linux Studio "
-"Plugins instead of the one from Calf Studio."
-msgstr ""
-"Плагин лимитера теперь использует стерео плагин лимитера из набора Linux "
-"Studio Plugins взамен Calf Studio."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
-msgid ""
-"LV2 filters now are spawned in PipeWire graph only when loaded the first "
-"time. Once loaded, they remain connected until EasyEffects shutdown."
-msgstr ""
-"Наборы LV2 фильтров отображаются в графе PipeWire только во время первой "
-"загрузки. Однажды загруженные, они останутся включёнными до тех пор пока "
-"EasyEffects продолжает работу."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:235
-msgid "The echo canceller sampling rate is now properly set."
-msgstr "Теперь для модуля эхоподавления возможно установить частотный спектр."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
-msgid ""
-"The threshold parameter from the deesser plugin is now saved to the preset "
-"file."
-msgstr ""
-"Уровень порогового значения в плагине антишипения (деэссера) теперь "
-"сохраняется в файле предустановки."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
-msgid ""
-"Improved band splitting for crystalizer with new default intensity values."
-msgstr ""
-"Улучшено полосное разделение для кристаллизатора с новыми значениями "
-"интенсивности по умолчанию."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
-msgid ""
-"Depending on the input gain or output gain values the corresponding level "
-"bars could not be aligned."
-msgstr ""
-"Зависимости во входных и выходных уровнях громкости теперь коррелируют со "
-"значениями регулятора, которые ранее нельзя было выровнять."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
-msgid ""
-"When adding more equalizer bands they are set to `Bell` instead of `Off`."
-msgstr ""
-"При добавлении новых полос в эквалайзер их значение равно «Bell» вместо "
-"«Отключено»."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:240
-msgid ""
-"Equalizer APO presets loading is now working properly on locales different "
-"than C."
-msgstr ""
-"Предустановки для Эквалайзера APO теперь работают корректно с языками, "
-"отличными от С."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:241
-msgid "Improved linking management between port filter nodes in PipeWire."
-msgstr ""
-"Улучшено взаимодействие между точками пересечения портов фильтров в PipeWire."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:242
-msgid ""
-"The crystalizer plugin signal amplification was too high before. It should "
-"be within more reasonable levels now."
-msgstr ""
-"Ранее, усиление сигнала в плагине кристаллизатора было слишком высоким. "
-"Установлены более адекватные значения."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
-msgid ""
-"Improved the resampler used in the plugins that require one(like the rnnoise "
-"plugin)"
-msgstr "Улучшена работа ресемлера с некоторыми плагинами (rnnoise и пр.)"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
-msgid "Setting multiple autoloading presets should be fine now"
-msgstr ""
-"Установка множества предустановок для автозагрузки теперь должно работать "
-"корректно"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:256
-msgid "Transient windows are now properly set for some plugins dialogs"
-msgstr ""
-"Временные окна для взаимодействия с некоторыми плагинами теперь работают "
-"корректно"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
-msgid ""
-"The convolver impulse response menu was improved to workaround an issue "
-"where the impulse files was not loaded when only one was available in the "
-"menu"
-msgstr ""
-"Была исправлена ошибка меню конвольвера, при которой файлы импульсов не "
-"подгружались, если на выбор доступна только одна опция"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:258
-msgid ""
-"Fixed a bug that could make the pitch plugin to not be properly initialized"
-msgstr ""
-"Исправлена ошибка, при которой плагин высоты тона не мог правильно "
-"инициализироваться"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
-msgid "The saturation warning should not displace its neighbor widgets anymore"
-msgstr ""
-"Предупреждение о переполнении больше не должно менять расположение соседних "
-"виджетов"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
-msgid "Fixed the locale in a few widgets"
-msgstr "Исправлен перевод некоторых виджетов"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
-msgid "Fixed wrong alignment in a few widgets"
-msgstr "Исправлено неправильное выравнивание некоторых виджетов"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:269
-msgid ""
-"The Loudness plugin is being used again for the reasons described at This "
-"means that is an optional dependency again."
-msgstr ""
-"По указаным выше причинам, лагин работы с громкостью теперь снова доступен. "
-"Это значит, что он снова добавлен в список опциональных зависимостей."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:273
-msgid ""
-"Fixed a segmentation fault that happened when optional dependencies were not "
-"installed"
-msgstr ""
-"Исправлена ошибка сегментирования, возникавшая в случае, когда опциональные "
-"зависимости не были установлены"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
-msgid "Improved equalizer interface."
-msgstr "Улучшен интерфейс эквалайзера."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
-msgid ""
-"Now we use a sidechain LSP compressor that allows the user to select and "
-"external source as the sidechain input."
-msgstr ""
-"Теперь используется компрессор LSP, что позволяет пользователю выбрать "
-"внешний источник в качестве входного сайдчейна."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
-msgid "We now support the LSP compressor `Boosting` mode."
-msgstr "Теперь компрессор LSP поддерживает режим 'Усиление'."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
-msgid ""
-"When `split-channels` is enabled in the equalizer the imported APO preset "
-"will be applied only to the channel being visualized in the window. This "
-"will allow to import different presets for each channel instead of just "
-"settings the same values to both."
-msgstr ""
-"Когда 'смещение каналов' активировано в эквалайзере, предустановки "
-"импортированные из APO будут применены только к каналу, отображаемому в "
-"окне. Это позволяет применять различные предустановки для каждого канала "
-"вместо установки одинакового значения в обоих каналах."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:288
-msgid ""
-"Fixed some segmentation faults that could happen when creating a preset "
-"autoloading profile or removing presets"
-msgstr ""
-"Исправлены ошибки сегментирования, возникавшие при создании или удалении "
-"предустановок, используемых для автозагрузки"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
-msgid ""
-"This is one of the biggest releases that I have ever made. The amount of "
-"changes is so big that it is hard to talk about everything here."
-msgstr ""
-"Этот выпуск является одним из самых крупных, что мы делали за всё время. "
-"Объём изменений обширен, поэтому очень трудно описать их все."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
-msgid ""
-"The following are just the most import ones. People interested on the "
-"journey that got us here can take"
-msgstr ""
-"Перечисленные изменения являются самыми важными на наш взгляд. Если вам "
-"интересны возможности, предоставляемые приложением, просто возьмите"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:298
-msgid "a look at and"
-msgstr "и опробуйте их"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:302
-msgid ""
-"The application and its repository have been renamed from PulseEffects to "
-"`EasyEffects`"
-msgstr "Приложение и его репозиторий были переименованы в 'EasyEffects'"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:303
-msgid "gtkmm3 was replaced by gtkmm4"
-msgstr "gtkmm3 был заменен на gtkmm4"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:304
-msgid "Gstreamer was replaced by native PipeWire filters."
-msgstr "Фильтры GStreamer были заменены на собственные фильтры PipeWire."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:305
-msgid ""
-"Many features were reimplemented from scratch. The preset autoloading is one "
-"example. Another remarkable change will be seen in the plugins selection "
-"menu. Now the user can show in the window only the plugins that he/she wants "
-"to use."
-msgstr ""
-"Множество возможностей былы переписаны с нуля. Например предустановки для "
-"автозагрузки. Другие изменения, которые стоит упомянуть, можно увидеть в "
-"меню выбора плагинов. Теперь пользователь может отобразить в окне только те "
-"плагины, которые посчитает необходимыми."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:307
-msgid ""
-"Boost is no longer a dependency. The price paid for that was a little change "
-"in our presets structures. With some patience it is possible to edit "
-"PulseEffects presets in a text editor and make them work in EasyEffects. "
-"Hopefully someone will come up with a script for this in the feature."
-msgstr ""
-"Библиотека Boost более не является зависимостью. Ценой данного решения "
-"является небольшое изменение структуры предустановок. Имея немного терпения, "
-"можно отредактировать предустановки PulseEffects в любом текстовом "
-"редакторе, чтобы сделать их совместимыми с EasyEffects. Надеемся, кто нибудь "
-"создаст скрипт для автоматизации данной возможности."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:308
-msgid ""
-"New libraries are being used and some of the librarires that were optional "
-"before are now required"
-msgstr ""
-"Наличие некоторых новых библиотек, ранее считавшиеся опциональными, теперь "
-"является обязательным"
-
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Эквалайзер, компрессор и прочие звуковые эффекты"
+
+#: data/com.github.wwmm.easyeffects.desktop.in:5
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Звуковые эффекты для приложений PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
@@ -1110,7 +215,7 @@ msgstr "Усиление выхода"
 #: data/ui/maximizer.ui:136 data/ui/multiband_compressor.ui:378
 #: data/ui/multiband_gate.ui:1617 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:295 data/ui/presets_menu.ui:177 data/ui/reverb.ui:351
-#: data/ui/rnnoise.ui:154 data/ui/stereo_tools.ui:30
+#: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:30
 #: data/ui/stereo_tools.ui:544 src/application_ui.cpp:266
 msgid "Input"
 msgstr "Вход"
@@ -1123,7 +228,7 @@ msgstr "Вход"
 #: data/ui/gate.ui:1111 data/ui/limiter.ui:737 data/ui/loudness.ui:142
 #: data/ui/maximizer.ui:155 data/ui/multiband_compressor.ui:397
 #: data/ui/multiband_gate.ui:1636 data/ui/pitch.ui:314 data/ui/reverb.ui:370
-#: data/ui/rnnoise.ui:173 data/ui/stereo_tools.ui:563
+#: data/ui/rnnoise.ui:174 data/ui/stereo_tools.ui:563
 msgid "Plugin Input Gain"
 msgstr "Усиление входа"
 
@@ -1138,7 +243,7 @@ msgstr "Усиление входа"
 #: data/ui/multiband_gate.ui:824 data/ui/multiband_gate.ui:1184
 #: data/ui/multiband_gate.ui:1544 data/ui/multiband_gate.ui:1701
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:379
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:435 data/ui/rnnoise.ui:238
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:435 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:371 data/ui/stereo_tools.ui:628
 #: src/application_ui.cpp:265
 msgid "Output"
@@ -1152,7 +257,7 @@ msgstr "Выход"
 #: data/ui/gate.ui:1195 data/ui/limiter.ui:821 data/ui/loudness.ui:226
 #: data/ui/maximizer.ui:239 data/ui/multiband_compressor.ui:481
 #: data/ui/multiband_gate.ui:1720 data/ui/pitch.ui:398 data/ui/reverb.ui:454
-#: data/ui/rnnoise.ui:257 data/ui/stereo_tools.ui:647
+#: data/ui/rnnoise.ui:258 data/ui/stereo_tools.ui:647
 msgid "Plugin Output Gain"
 msgstr "Усиление выхода"
 
@@ -1165,7 +270,7 @@ msgstr "Усиление выхода"
 #: data/ui/gate.ui:1288 data/ui/limiter.ui:884 data/ui/loudness.ui:289
 #: data/ui/maximizer.ui:334 data/ui/multiband_compressor.ui:544
 #: data/ui/multiband_gate.ui:1783 data/ui/pitch.ui:461 data/ui/reverb.ui:517
-#: data/ui/rnnoise.ui:320 data/ui/stereo_tools.ui:710
+#: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:710
 msgid "Reset"
 msgstr "Сброс"
 
@@ -1176,7 +281,7 @@ msgstr "Сброс"
 #: data/ui/exciter.ui:461 data/ui/filter.ui:343 data/ui/gate.ui:1302
 #: data/ui/limiter.ui:898 data/ui/loudness.ui:303 data/ui/maximizer.ui:348
 #: data/ui/multiband_compressor.ui:558 data/ui/multiband_gate.ui:1797
-#: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:334
+#: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:335
 #: data/ui/stereo_tools.ui:724
 msgid "Using"
 msgstr "Используется"
@@ -3036,23 +2141,25 @@ msgstr "Импортировать модель"
 msgid "Models"
 msgstr "Модели"
 
-#: data/ui/rnnoise.ui:61 src/rnnoise_ui.cpp:28
+#. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:96 src/rnnoise_ui.cpp:235
+#: src/rnnoise_ui.cpp:269
 msgid "Standard Model"
 msgstr "Стандартная модель"
 
-#: data/ui/rnnoise.ui:89
+#: data/ui/rnnoise.ui:90
 msgid "RNNoise Models List"
 msgstr "Список моделей RNNoise"
 
-#: data/ui/rnnoise.ui:109
+#: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
 msgstr ""
 
-#: data/ui/rnnoise.ui:115
+#: data/ui/rnnoise.ui:116
 msgid "Active Model"
 msgstr "Активная модель"
 
-#: data/ui/rnnoise.ui:123
+#: data/ui/rnnoise.ui:124
 msgid "Standard RNNoise Model"
 msgstr "Стандартная модель RNNoise"
 
@@ -3259,12 +2366,12 @@ msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
 #: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:352
-#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
+#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:133
 msgid "Open"
 msgstr "Открыть"
 
 #: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:352
-#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
+#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:133
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -3339,17 +2446,17 @@ msgstr "Добавить"
 msgid "Import Preset"
 msgstr "Импорт предустановки"
 
-#: src/rnnoise_ui.cpp:87
+#: src/rnnoise_ui.cpp:91
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
 
-#: src/rnnoise_ui.cpp:130
+#: src/rnnoise_ui.cpp:132
 msgid "Import Model File"
 msgstr "Импорт файла модели"
 
-#: src/rnnoise_ui.cpp:135
+#: src/rnnoise_ui.cpp:137
 msgid "RNNoise Models"
 msgstr "Модели RNNoise"
 
@@ -3436,9 +2543,711 @@ msgstr "Стереокорректоры"
 #. This has been introduced because multiple GTK4 dialogs shown at
 #. the same time could have issues on Wayland and the only way to
 #. close the outer one is pressing ESC, the mouse click does not work.
-#: src/ui_helpers.cpp:69
+#: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#~ msgid "Wellington Wallace"
+#~ msgstr "Веллингтон Уоллис"
+
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects — это продвинутый набор инструментов для работы со звуком. "
+#~ "Приложение включает в себя эквалайзер, ограничитель (лимитер), "
+#~ "компрессор, утилиту для реверберации и многое другое. Более того, имеется "
+#~ "встроенный анализатор аудиоспектра."
+
+#~ msgid ""
+#~ "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+#~ "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+#~ msgstr ""
+#~ "EasyEffects является наследником PulseEffects. EasyEffects поддерживает "
+#~ "только PipeWire в качестве аудио-сервера. Пользователи PulseAudio должны "
+#~ "продолжать использовать PulseEffects."
+
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "Так как EasyEffects использует стандартный сервер PipeWire, программа "
+#~ "будет работать с большинством используемых вами приложений. Все "
+#~ "поддерживаемые приложения представлены в главном окне, где каждое может "
+#~ "быть настроено индивидуально."
+
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "Помимо изменения звука на выходе, EasyEffects также может использовать "
+#~ "звуковые эффекты для входных аудио-потоков, таких как микрофон. К "
+#~ "примеру, это может быть полезно во время аудиозаписи или голосовой "
+#~ "конференции."
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "При запуске, EasyEffects автоматически подгрузит ваши настройки из "
+#~ "предыдущей сессии. Также вы можете сохранить ваши текущие настройки в "
+#~ "качестве загружаемого профиля."
+
+#~ msgid "The main page showing two audio output apps"
+#~ msgstr "Главная страница отображает приложения с выходными аудио-потоками"
+
+#~ msgid "The bass enhancer page showing audio controls"
+#~ msgstr "Страница усиления басов отображает настройки аудио"
+
+#~ msgid "The convolver page showing audio controls"
+#~ msgstr "Страница конвольвера отображает настройки аудио"
+
+#~ msgid "This release adds the following features:"
+#~ msgstr "Этот выпуск привносит следующие возможности:"
+
+#~ msgid "This release fixes the following bugs:"
+#~ msgstr "Этот выпуск исправляет следующие ошибки:"
+
+#~ msgid "The interface of the pitch plugin was improved"
+#~ msgstr "Улучшен интерфейс плагина высоты тона"
+
+#~ msgid "Our application icon is now compatible with desktops that uses QT"
+#~ msgstr ""
+#~ "Значок нашего приложения теперь совместим с рабочими столами, "
+#~ "использующими QT"
+
+#~ msgid ""
+#~ "Our blocklist code will use the `application.id` tag if the stream sets it"
+#~ msgstr ""
+#~ "Наш код чёрного списка будет использовать тег `application.id`, если "
+#~ "поток укажет его"
+
+#~ msgid ""
+#~ "In order to avoid problems with the mouse scroll the entries in the "
+#~ "applications list shown in our `Players/Recorders`"
+#~ msgstr ""
+#~ "Во избежание проблем с колесом мыши записи в списке приложений "
+#~ "отображаются в `Проигрыватели/Рекордеры`"
+
+#~ msgid ""
+#~ "tab do not show a volume scale anymore. More details about the problem "
+#~ "and the solution for it can be found on #1211"
+#~ msgstr ""
+#~ "вкладка больше не показывает шкалу громкости. Подробнее о проблеме и её "
+#~ "решении можно узнать в #1211"
+
+#~ msgid "and #1427"
+#~ msgstr "и #1427"
+
+#~ msgid ""
+#~ "When no application is available for display in the `Players/Recorders` a "
+#~ "message will be shown to the user"
+#~ msgstr ""
+#~ "Когда ни одно приложение не доступно для отображения в `Проигрывателях/"
+#~ "Рекордерах`, пользователю будет показано сообщение"
+
+#~ msgid "Many translation updates"
+#~ msgstr "Крупное обновление переводов"
+
+#, fuzzy
+#~ msgid ""
+#~ "Fixed a bug where EasyEffects crashed when the number of points displayed "
+#~ "in the spectrum was changed while"
+#~ msgstr ""
+#~ "Исправлена ошибка, при которой EasyEffeects аварийно завершал работу, "
+#~ "когда изменялось количество точек, отображаемых в спектре, в то время как"
+
+#~ msgid "our pipeline was active and the spectrum widget was visible"
+#~ msgstr "наш канал обработки был активен, и виджет спектра отображался"
+
+#~ msgid ""
+#~ "The pipeline latency value displayed in our window could be wrong in some "
+#~ "situations. This was fixed."
+#~ msgstr ""
+#~ "Значение задержки канала обработки, отображаемое в нашем окне, могло быть "
+#~ "неверным в некоторых ситуациях. Это было исправлено."
+
+#~ msgid ""
+#~ "There is a new setting allowing the user to select an inactivity timeout "
+#~ "for the pipeline. When no client is playing"
+#~ msgstr ""
+#~ "Появился новый параметр, позволяющая пользователю выбирать тайм-аут "
+#~ "бездействия для канала обработки. Когда ни один клиент не играет"
+
+#~ msgid ""
+#~ "to or recording from our devices the filters will be unlinked after the "
+#~ "timeout is reached. This is done to make sure"
+#~ msgstr ""
+#~ "или записывает с наших устройств, фильтры будут отключены после "
+#~ "достижения тайм-аута. Это делается для уверенности в том, что"
+
+#~ msgid "we do not waste CPU power processing silence."
+#~ msgstr "не тратится мощность процессора на обработку тишины."
+
+#~ msgid ""
+#~ "The autogain plugin now allows the user to select which of the three "
+#~ "loudness are used to calculate the geometric"
+#~ msgstr ""
+#~ "Плагин нормализации громкости теперь позволяет пользователю выбрать один "
+#~ "из трёх уровней для расчета среднего"
+
+#~ msgid "mean."
+#~ msgstr "геометрического."
+
+#~ msgid ""
+#~ "The autogain plugin now allows the maximum history to be set and does not "
+#~ "use `libebur128` histogram mode anymore."
+#~ msgstr ""
+#~ "Плагин нормализации громкости теперь позволяет устанавливать максимальную "
+#~ "историю и больше не использует режим гистограммы «libebur128»."
+
+#~ msgid ""
+#~ "This should avoid the cases where the `Integrated` loudness gets stuck "
+#~ "forever in the same value."
+#~ msgstr ""
+#~ "Это поможет избегать случаев, когда «встроенная» громкость навсегда "
+#~ "застревает на одном и том же значении."
+
+#~ msgid ""
+#~ "EasyEffects icon has been updated in a way that should make it visible in "
+#~ "QT desktops."
+#~ msgstr ""
+#~ "Значок EasyEffects был обновлён таким образом, чтобы сделать его видимым "
+#~ "на рабочих столах QT."
+
+#~ msgid "This release fixes the following bug:"
+#~ msgstr "В этом выпуске исправлены следующие ошибки:"
+
+#~ msgid ""
+#~ "The command line option that returns the global bypass state is working "
+#~ "again."
+#~ msgstr ""
+#~ "Параметр командной строки, возвращающий состояние глобального обхода, "
+#~ "снова работает."
+
+#~ msgid "This release adds the following feature:"
+#~ msgstr "Этот выпуск добавляет следующие возможности:"
+
+#~ msgid ""
+#~ "The crossfeed filter should deal better with PipeWire's dynamic latency "
+#~ "switches. Jumps in volume level should not happen anymore in these "
+#~ "situations."
+#~ msgstr ""
+#~ "Фильтр перекрестной подачи должен лучше работать с динамическим "
+#~ "изменением задержек PipeWire. Больше не должны возникать ситуации, "
+#~ "приводящие к скачкам громкости."
+
+#~ msgid ""
+#~ "Fixed a bug that prevented mono microphones from properly working with "
+#~ "EasyEffects"
+#~ msgstr ""
+#~ "Исправлена ошибка, не дававшая моно-микрофонам корректно работать с "
+#~ "EasyEffects"
+
+#~ msgid "Support for the next PipeWire release `0.3.44`"
+#~ msgstr "Поддержка PipeWire версии `0.3.44`"
+
+#~ msgid ""
+#~ "The autogain filter should deal better with PipeWire's dynamic latency "
+#~ "switches. Jumps in volume level should not happen anymore in these "
+#~ "situations."
+#~ msgstr ""
+#~ "Фильтр автогейн должен лучше работать с динамическим изменением задержек "
+#~ "PipeWire. Теперь ситуации со скачками уровня громкости больше не должны "
+#~ "возникать."
+
+#~ msgid ""
+#~ "We added an option that allows the volume and mute state of our virtual "
+#~ "devices to be reset when EasyEffects starts. It should help with the "
+#~ "cases were our devices are muted by the audio server for unknown reasons."
+#~ msgstr ""
+#~ "Мы добавили опцию, позволяющую сбрасывать уровень громкости и заглушение "
+#~ "устройства во время запуска EasyEffects. Это должно помочь в случае, "
+#~ "когда ваши устройства по неизвестным причинам заглушаются аудио-сервером."
+
+#~ msgid "Better support for computer suspending."
+#~ msgstr "Улучшена поддержка спящего режима."
+
+#~ msgid "Updated translations"
+#~ msgstr "Обновление перевода"
+
+#~ msgid ""
+#~ "Fixed a bug where trying to create an autoloading profile without having "
+#~ "presets caused the application to crash."
+#~ msgstr ""
+#~ "Исправлена ошибка, при которой попытка создать профиль для автозагрузки, "
+#~ "не имеющий предустановок, приводила к вылету приложения."
+
+#~ msgid ""
+#~ "Fixed a bug where setting a equalizer band `quality` to `zero` would lead "
+#~ "to an application crash."
+#~ msgstr ""
+#~ "Исправлена ошибка, при которой установка полосы эквалайзера в \"ноль\" "
+#~ "приводила к аварийному завершению приложения."
+
+#~ msgid ""
+#~ "LibAdwaita is used to create some parts of our window and for handling "
+#~ "the switching between dark and light themes."
+#~ msgstr ""
+#~ "LibAdwaita используется для создания некоторых частей окна приложения и "
+#~ "управления переключением между тёмной и светлой темами."
+
+#~ msgid "The settings menu has been redesigned using LibAdwaita widgets."
+#~ msgstr ""
+#~ "Дизайн меню настроек приложения был изменен с использованием виджетов "
+#~ "LibAdwaita."
+
+#~ msgid ""
+#~ "Equalizer APO preset import feature has been improved to apply not only "
+#~ "the Bell filter, but also other supported ones"
+#~ msgstr ""
+#~ "Функция импорта предустановок для Equalizer APO была улучшена: теперь "
+#~ "возможно применить не только \"Bell\", но и другие поддерживаемые фильтры"
+
+#~ msgid ""
+#~ "The `Reset All Settings` function in our menu should work in Flatpak now."
+#~ msgstr ""
+#~ "Функция «Сброс всех настроек» в меню теперь должна работать и с Flatpak."
+
+#~ msgid ""
+#~ "We have a new option that allows the user to disable our menus "
+#~ "`autohide`. This may help to workaround some bugs Popover menus currently "
+#~ "have on gtk4."
+#~ msgstr ""
+#~ "Теперь у нас есть новая опция, которая позволяет пользователю отключить "
+#~ "\"автоскрытие\" меню. Это должно помочь обойти некоторые ошибки "
+#~ "наложения, имеющиеся в gtk4."
+
+#~ msgid ""
+#~ "More robust parsing to import APO presets saved with comma as thousands "
+#~ "separator in central frequency band."
+#~ msgstr ""
+#~ "Большинство сложных для обработки при импорте предустановок APO, "
+#~ "сохранены с использованием запятой в качестве разделителя в центральный "
+#~ "полосе частот."
+
+#~ msgid ""
+#~ "The fmt library is a new dependency At least while the c++ compilers do "
+#~ "not implement its features. This is expected to happen in the next years."
+#~ msgstr ""
+#~ "Библиотека fmt является новой зависимостью, поскольку компилятор C++ на "
+#~ "данный момент не может реализовать ее возможности. Поддержка ожидается в "
+#~ "ближайшие несколько лет."
+
+#~ msgid ""
+#~ "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
+#~ msgstr ""
+#~ "GTKMM и GLIBMM больше не являются зависимостями. Теперь мы используем "
+#~ "gtk4 напрямую."
+
+#~ msgid ""
+#~ "It is now possible to combine impulse responses in the Convolver "
+#~ "interface. A new impulse file is generated and it should be visible in "
+#~ "the impulse list."
+#~ msgstr ""
+#~ "Теперь вы можете объединять характеристики импульсов в интерфейсе "
+#~ "Конвольвера. Новые файлы импульсов созданы и должны быть видны в списке."
+
+#~ msgid ""
+#~ "Improved `x axis` drawings in our plots. Now the number of labels is "
+#~ "adjusted dynamically depending on our window width."
+#~ msgstr ""
+#~ "Улучшена горизонтальная отрисовка внутри окна приложения. Теперь "
+#~ "количество элементов изменяется динамически в зависимости от ширины окна."
+
+#~ msgid ""
+#~ "The documentation has been updated reflecting the new EasyEffects "
+#~ "features. Old references about PulseEffects have been removed. The "
+#~ "documentation button has been added in the menu section."
+#~ msgstr ""
+#~ "Была обновлена пользовательская документация в связи с добавлением в "
+#~ "EasyEffects новых возможностей. Старые отсылки к PulseEffects были "
+#~ "удалены. Кнопка для вызова документации была добавлена в качестве секции "
+#~ "Меню."
+
+#~ msgid ""
+#~ "When a spinbutton is filled with an out of range value, now it is updated "
+#~ "with the lowest/highest value rather than resetting to the previous one."
+#~ msgstr ""
+#~ "Когда регулятор установлен в положение, превышающее возможное значение, "
+#~ "он будет обновлен до наименьшего/высшего значения, наиболее "
+#~ "соответствующего предыдущему."
+
+#~ msgid ""
+#~ "The application window now remembers the maximized state and restores it "
+#~ "on the next opening event."
+#~ msgstr ""
+#~ "Окно приложения теперь запоминает свое состояние, и будет восстановлено "
+#~ "при его следующем открытии."
+
+#~ msgid "The `tbb` library is a new dependency"
+#~ msgstr "Библиотека tbb теперь является новой зависимостью"
+
+#~ msgid ""
+#~ "The Limiter and the Multiband Compressor plugins can now use an optional "
+#~ "external sidechain."
+#~ msgstr ""
+#~ "Плагины Лимитер и Многополосный компрессор теперь могут использоваться в "
+#~ "качестве опционального внешнего сайдчейна."
+
+#~ msgid ""
+#~ "The Autogain plugin now allows the user to select which Loudness is used "
+#~ "as reference for the volume correction."
+#~ msgstr ""
+#~ "Плагин Автогейн теперь позволяет пользователям выбрать, какая громкость "
+#~ "будет использоваться в качестве значения для коррекции её уровня."
+
+#~ msgid ""
+#~ "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
+#~ "Amplification\" parameter."
+#~ msgstr ""
+#~ "Функция импорта предустановок APO для плагина Эквалайзера, теперь "
+#~ "считывает параметры Предусиления."
+
+#~ msgid "Optional Cubic Volume can be enabled in General Settings."
+#~ msgstr ""
+#~ "Теперь в главных настройках можно выбрать Кубический Уровень в качестве "
+#~ "опции."
+
+#~ msgid ""
+#~ "PipeWire monitor streams are now excluded and removed from the "
+#~ "applications list."
+#~ msgstr ""
+#~ "Монитор источников PipeWire был исключён и удалён из списка приложений."
+
+#~ msgid "Hopefully crashes like the one reported at [1172]( are fixed."
+#~ msgstr ""
+#~ "Надеемся, что ошибки вылета приложения, указанные в отчете [1172] были "
+#~ "исправлены."
+
+#~ msgid "Prevented a case in which Spectrum was crashing."
+#~ msgstr ""
+#~ "Предотвращена ошибка, связанная со Спектром, приводящая к аварийному "
+#~ "завершению приложения."
+
+#~ msgid ""
+#~ "Pavucontrol is not added anymore to input applications list on systems "
+#~ "with localization different than English."
+#~ msgstr ""
+#~ "Pavucontrol больше не указывается в списке приложений с источниками "
+#~ "аудиопотоков в системах, локализация которых отличается от английской."
+
+#~ msgid ""
+#~ "Improved compatibility with WirePlumber. This is needed to run on systems "
+#~ "that decided to use it instead of the"
+#~ msgstr ""
+#~ "Улучшена совместимость с WirePlumber, необходимая для работы в системах, "
+#~ "использующих го в качестве основного"
+
+#~ msgid "built-in PipeWire session manager. More information at issue [1144]("
+#~ msgstr ""
+#~ "менеджера управления сессиями PipeWire. Больше информации в отчете [1144]"
+
+#~ msgid ""
+#~ "When trying to add an autoloading profile for a device already in the "
+#~ "list its target preset will be updated. This way we can change the "
+#~ "profile preset without having to remove and recreating it."
+#~ msgstr ""
+#~ "При попытке добавить профиль для автозагрузки для устройства, "
+#~ "находящегося в списке, его цель будет обновлена. С помощью этого, мы "
+#~ "сможем изменять предустановки профиля без необходимости удалять и "
+#~ "пересоздавать его заново."
+
+#~ msgid ""
+#~ "The preset autoloading support implementation was redesigned again. It "
+#~ "should work on more hardware now. For more information see issue [1051]("
+#~ msgstr ""
+#~ "Реализация поддержки автозагрузки профилей была заново переписана. Теперь "
+#~ "она должна работать с большим количеством оборудования. Более детальная "
+#~ "информация в отчете [1051]"
+
+#~ msgid ""
+#~ "If the Limiter or the Maximizer are set in the last position of the "
+#~ "plugin stack, new plugins are added at the second to last position in "
+#~ "order to prevent hardware damage on eventually high output level."
+#~ msgstr ""
+#~ "Лимитер и Максимизатор теперь устанавливаются в последнюю позицию цепочки "
+#~ "плагинов. Новые плагины добавляются в предыдущую секцию с целью "
+#~ "предотвращения порчи оборудования чрезмерным выходным уровнем громкости."
+
+#~ msgid ""
+#~ "Removing an application from the blocklist, its previous enabled state is "
+#~ "restored."
+#~ msgstr ""
+#~ "При удалении приложения из черного списка, его предшествующее состояние "
+#~ "будет восстановлено."
+
+#~ msgid ""
+#~ "Sometimes when removing imported models from the noise reduction plugin "
+#~ "the current used model was not properly updated. This should be fixed now."
+#~ msgstr ""
+#~ "Иногда, во время удаления импортированной модели в плагине "
+#~ "шумоподавления, текущая используемая модель не обновлялась корректно. "
+#~ "Теперь должно работать как положено."
+
+#~ msgid ""
+#~ "When editing presets files in an external editor, duplicated entries "
+#~ "won't be shown in our presets menu."
+#~ msgstr ""
+#~ "Во время правки файла предустановок во внешнем редакторе, повторяющиеся "
+#~ "параметры не будут отображаться в меню."
+
+#~ msgid "Now the blocklist is correctly set when switching presets."
+#~ msgstr ""
+#~ "Теперь чёрный список правильно устанавливается при смене предустановок."
+
+#~ msgid ""
+#~ "Now the status of the global bypass button is correctly updated when "
+#~ "changing plugin stack."
+#~ msgstr ""
+#~ "Теперь статус при нажатии на кнопку глобального обхода корректно "
+#~ "отображается при смене набора плагинов."
+
+#~ msgid ""
+#~ "Missing icons on the system should not be shown inside the application "
+#~ "info UI"
+#~ msgstr ""
+#~ "Потерянные системные значки теперь не должны отображаться внутри "
+#~ "пользовательского интерфейса приложения"
+
+#~ msgid ""
+#~ "Some icons not showing in Plasma DE with Breeze icon theme should appear "
+#~ "now."
+#~ msgstr ""
+#~ "Некоторые значки, которые не отображались в окружении рабочего стола "
+#~ "Plasma с темой Breeze, теперь должны отображаться."
+
+#~ msgid "Updated Chinese translation."
+#~ msgstr "Обновлен Китайский перевод."
+
+#~ msgid "Updated Italian translation."
+#~ msgstr "Обновлен перевод на Итальянский."
+
+#~ msgid "Added support for the compressor parameter `Boost Amount`"
+#~ msgstr "В компрессор добавлена поддержка параметра `Boost Amount`"
+
+#~ msgid ""
+#~ "The multiband compressor plugin now uses the stereo multiband compressor "
+#~ "plugin from Linux Studio Plugins instead of the one from Calf Studio."
+#~ msgstr ""
+#~ "Плагин многополосного компрессора теперь использует плагин стерео "
+#~ "многополосного компрессора из набора плагинов Linux Studio Plugins взамен "
+#~ "Calf Studio."
+
+#~ msgid ""
+#~ "The limiter plugin now uses the stereo limiter plugin from Linux Studio "
+#~ "Plugins instead of the one from Calf Studio."
+#~ msgstr ""
+#~ "Плагин лимитера теперь использует стерео плагин лимитера из набора Linux "
+#~ "Studio Plugins взамен Calf Studio."
+
+#~ msgid ""
+#~ "LV2 filters now are spawned in PipeWire graph only when loaded the first "
+#~ "time. Once loaded, they remain connected until EasyEffects shutdown."
+#~ msgstr ""
+#~ "Наборы LV2 фильтров отображаются в графе PipeWire только во время первой "
+#~ "загрузки. Однажды загруженные, они останутся включёнными до тех пор пока "
+#~ "EasyEffects продолжает работу."
+
+#~ msgid "The echo canceller sampling rate is now properly set."
+#~ msgstr ""
+#~ "Теперь для модуля эхоподавления возможно установить частотный спектр."
+
+#~ msgid ""
+#~ "The threshold parameter from the deesser plugin is now saved to the "
+#~ "preset file."
+#~ msgstr ""
+#~ "Уровень порогового значения в плагине антишипения (деэссера) теперь "
+#~ "сохраняется в файле предустановки."
+
+#~ msgid ""
+#~ "Improved band splitting for crystalizer with new default intensity values."
+#~ msgstr ""
+#~ "Улучшено полосное разделение для кристаллизатора с новыми значениями "
+#~ "интенсивности по умолчанию."
+
+#~ msgid ""
+#~ "Depending on the input gain or output gain values the corresponding level "
+#~ "bars could not be aligned."
+#~ msgstr ""
+#~ "Зависимости во входных и выходных уровнях громкости теперь коррелируют со "
+#~ "значениями регулятора, которые ранее нельзя было выровнять."
+
+#~ msgid ""
+#~ "When adding more equalizer bands they are set to `Bell` instead of `Off`."
+#~ msgstr ""
+#~ "При добавлении новых полос в эквалайзер их значение равно «Bell» вместо "
+#~ "«Отключено»."
+
+#~ msgid ""
+#~ "Equalizer APO presets loading is now working properly on locales "
+#~ "different than C."
+#~ msgstr ""
+#~ "Предустановки для Эквалайзера APO теперь работают корректно с языками, "
+#~ "отличными от С."
+
+#~ msgid "Improved linking management between port filter nodes in PipeWire."
+#~ msgstr ""
+#~ "Улучшено взаимодействие между точками пересечения портов фильтров в "
+#~ "PipeWire."
+
+#~ msgid ""
+#~ "The crystalizer plugin signal amplification was too high before. It "
+#~ "should be within more reasonable levels now."
+#~ msgstr ""
+#~ "Ранее, усиление сигнала в плагине кристаллизатора было слишком высоким. "
+#~ "Установлены более адекватные значения."
+
+#~ msgid ""
+#~ "Improved the resampler used in the plugins that require one(like the "
+#~ "rnnoise plugin)"
+#~ msgstr "Улучшена работа ресемлера с некоторыми плагинами (rnnoise и пр.)"
+
+#~ msgid "Setting multiple autoloading presets should be fine now"
+#~ msgstr ""
+#~ "Установка множества предустановок для автозагрузки теперь должно работать "
+#~ "корректно"
+
+#~ msgid "Transient windows are now properly set for some plugins dialogs"
+#~ msgstr ""
+#~ "Временные окна для взаимодействия с некоторыми плагинами теперь работают "
+#~ "корректно"
+
+#~ msgid ""
+#~ "The convolver impulse response menu was improved to workaround an issue "
+#~ "where the impulse files was not loaded when only one was available in the "
+#~ "menu"
+#~ msgstr ""
+#~ "Была исправлена ошибка меню конвольвера, при которой файлы импульсов не "
+#~ "подгружались, если на выбор доступна только одна опция"
+
+#~ msgid ""
+#~ "Fixed a bug that could make the pitch plugin to not be properly "
+#~ "initialized"
+#~ msgstr ""
+#~ "Исправлена ошибка, при которой плагин высоты тона не мог правильно "
+#~ "инициализироваться"
+
+#~ msgid ""
+#~ "The saturation warning should not displace its neighbor widgets anymore"
+#~ msgstr ""
+#~ "Предупреждение о переполнении больше не должно менять расположение "
+#~ "соседних виджетов"
+
+#~ msgid "Fixed the locale in a few widgets"
+#~ msgstr "Исправлен перевод некоторых виджетов"
+
+#~ msgid "Fixed wrong alignment in a few widgets"
+#~ msgstr "Исправлено неправильное выравнивание некоторых виджетов"
+
+#~ msgid ""
+#~ "The Loudness plugin is being used again for the reasons described at This "
+#~ "means that is an optional dependency again."
+#~ msgstr ""
+#~ "По указаным выше причинам, лагин работы с громкостью теперь снова "
+#~ "доступен. Это значит, что он снова добавлен в список опциональных "
+#~ "зависимостей."
+
+#~ msgid ""
+#~ "Fixed a segmentation fault that happened when optional dependencies were "
+#~ "not installed"
+#~ msgstr ""
+#~ "Исправлена ошибка сегментирования, возникавшая в случае, когда "
+#~ "опциональные зависимости не были установлены"
+
+#~ msgid "Improved equalizer interface."
+#~ msgstr "Улучшен интерфейс эквалайзера."
+
+#~ msgid ""
+#~ "Now we use a sidechain LSP compressor that allows the user to select and "
+#~ "external source as the sidechain input."
+#~ msgstr ""
+#~ "Теперь используется компрессор LSP, что позволяет пользователю выбрать "
+#~ "внешний источник в качестве входного сайдчейна."
+
+#~ msgid "We now support the LSP compressor `Boosting` mode."
+#~ msgstr "Теперь компрессор LSP поддерживает режим 'Усиление'."
+
+#~ msgid ""
+#~ "When `split-channels` is enabled in the equalizer the imported APO preset "
+#~ "will be applied only to the channel being visualized in the window. This "
+#~ "will allow to import different presets for each channel instead of just "
+#~ "settings the same values to both."
+#~ msgstr ""
+#~ "Когда 'смещение каналов' активировано в эквалайзере, предустановки "
+#~ "импортированные из APO будут применены только к каналу, отображаемому в "
+#~ "окне. Это позволяет применять различные предустановки для каждого канала "
+#~ "вместо установки одинакового значения в обоих каналах."
+
+#~ msgid ""
+#~ "Fixed some segmentation faults that could happen when creating a preset "
+#~ "autoloading profile or removing presets"
+#~ msgstr ""
+#~ "Исправлены ошибки сегментирования, возникавшие при создании или удалении "
+#~ "предустановок, используемых для автозагрузки"
+
+#~ msgid ""
+#~ "This is one of the biggest releases that I have ever made. The amount of "
+#~ "changes is so big that it is hard to talk about everything here."
+#~ msgstr ""
+#~ "Этот выпуск является одним из самых крупных, что мы делали за всё время. "
+#~ "Объём изменений обширен, поэтому очень трудно описать их все."
+
+#~ msgid ""
+#~ "The following are just the most import ones. People interested on the "
+#~ "journey that got us here can take"
+#~ msgstr ""
+#~ "Перечисленные изменения являются самыми важными на наш взгляд. Если вам "
+#~ "интересны возможности, предоставляемые приложением, просто возьмите"
+
+#~ msgid "a look at and"
+#~ msgstr "и опробуйте их"
+
+#~ msgid ""
+#~ "The application and its repository have been renamed from PulseEffects to "
+#~ "`EasyEffects`"
+#~ msgstr "Приложение и его репозиторий были переименованы в 'EasyEffects'"
+
+#~ msgid "gtkmm3 was replaced by gtkmm4"
+#~ msgstr "gtkmm3 был заменен на gtkmm4"
+
+#~ msgid "Gstreamer was replaced by native PipeWire filters."
+#~ msgstr "Фильтры GStreamer были заменены на собственные фильтры PipeWire."
+
+#~ msgid ""
+#~ "Many features were reimplemented from scratch. The preset autoloading is "
+#~ "one example. Another remarkable change will be seen in the plugins "
+#~ "selection menu. Now the user can show in the window only the plugins that "
+#~ "he/she wants to use."
+#~ msgstr ""
+#~ "Множество возможностей былы переписаны с нуля. Например предустановки для "
+#~ "автозагрузки. Другие изменения, которые стоит упомянуть, можно увидеть в "
+#~ "меню выбора плагинов. Теперь пользователь может отобразить в окне только "
+#~ "те плагины, которые посчитает необходимыми."
+
+#~ msgid ""
+#~ "Boost is no longer a dependency. The price paid for that was a little "
+#~ "change in our presets structures. With some patience it is possible to "
+#~ "edit PulseEffects presets in a text editor and make them work in "
+#~ "EasyEffects. Hopefully someone will come up with a script for this in the "
+#~ "feature."
+#~ msgstr ""
+#~ "Библиотека Boost более не является зависимостью. Ценой данного решения "
+#~ "является небольшое изменение структуры предустановок. Имея немного "
+#~ "терпения, можно отредактировать предустановки PulseEffects в любом "
+#~ "текстовом редакторе, чтобы сделать их совместимыми с EasyEffects. "
+#~ "Надеемся, кто нибудь создаст скрипт для автоматизации данной возможности."
+
+#~ msgid ""
+#~ "New libraries are being used and some of the librarires that were "
+#~ "optional before are now required"
+#~ msgstr ""
+#~ "Наличие некоторых новых библиотек, ранее считавшиеся опциональными, "
+#~ "теперь является обязательным"
 
 #~ msgid "Average"
 #~ msgstr "Средняя"
