@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-20 20:05-0300\n"
 "PO-Revision-Date: 2022-07-21 04:07+0000\n"
-"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"Last-Translator: poi <erbaotao@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -649,7 +649,7 @@ msgstr "频谱"
 
 #: data/ui/convolver.ui:112
 msgid "Log Scale"
-msgstr ""
+msgstr "对数坐标"
 
 #: data/ui/convolver.ui:122 src/tags_plugin_name.cpp:25
 msgid "Autogain"
@@ -1186,9 +1186,8 @@ msgid "Auto Leveling Release"
 msgstr "自动调平消音"
 
 #: data/ui/limiter.ui:576
-#, fuzzy
 msgid "Auto Leveling Knee"
-msgstr "自动调平 Knee"
+msgstr "自动调平拐点"
 
 #: data/ui/limiter.ui:601
 msgid "Gain Left"
@@ -1328,7 +1327,7 @@ msgstr "低切滤音器频率"
 
 #: data/ui/multiband_compressor_band.ui:576
 msgid "High-Cut Filter"
-msgstr ""
+msgstr "高切滤音"
 
 #: data/ui/multiband_compressor_band.ui:604
 msgid "High-Cut Filter Frequency"
