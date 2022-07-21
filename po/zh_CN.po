@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-20 20:05-0300\n"
-"PO-Revision-Date: 2022-07-21 04:07+0000\n"
+"PO-Revision-Date: 2022-07-21 10:57+0000\n"
 "Last-Translator: poi <erbaotao@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -26,7 +26,7 @@ msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "均衡器, 压缩器和其他音效"
+msgstr "均衡器、压缩器和其他音效"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -303,11 +303,11 @@ msgstr "谐波注入"
 
 #: data/ui/bass_enhancer.ui:35 data/ui/exciter.ui:35
 msgid "3rd"
-msgstr "3次"
+msgstr "3 次"
 
 #: data/ui/bass_enhancer.ui:78 data/ui/exciter.ui:78
 msgid "2nd"
-msgstr "2次"
+msgstr "2 次"
 
 #: data/ui/bass_enhancer.ui:97 data/ui/exciter.ui:97
 msgid "Amount"
@@ -1015,7 +1015,7 @@ msgstr "超采样"
 
 #: data/ui/limiter.ui:60
 msgid "Dither"
-msgstr ""
+msgstr "抖动"
 
 #: data/ui/limiter.ui:72
 msgid "Herm Thin"
@@ -1171,7 +1171,7 @@ msgstr "外部侧链"
 
 #: data/ui/limiter.ui:446 data/ui/multiband_compressor.ui:109
 msgid "External Sidechain Source"
-msgstr ""
+msgstr "外部侧链声源"
 
 #: data/ui/limiter.ui:465
 msgid "Auto Leveling"
@@ -1186,6 +1186,7 @@ msgid "Auto Leveling Release"
 msgstr "自动调平消音"
 
 #: data/ui/limiter.ui:576
+#, fuzzy
 msgid "Auto Leveling Knee"
 msgstr "自动调平拐点"
 
@@ -1235,7 +1236,7 @@ msgstr "运作模式"
 
 #: data/ui/multiband_compressor.ui:42
 msgid "Classic"
-msgstr ""
+msgstr "经典"
 
 #: data/ui/multiband_compressor.ui:43
 msgid "Modern"
@@ -1335,7 +1336,7 @@ msgstr "高切滤音器频率"
 
 #: data/ui/multiband_compressor_band.ui:620
 msgid "PreAmp"
-msgstr ""
+msgstr "前置放大器"
 
 #: data/ui/multiband_compressor_band.ui:826
 msgid "Band Gain"
@@ -1410,8 +1411,9 @@ msgid "Band 1 Ratio"
 msgstr ""
 
 #: data/ui/multiband_gate.ui:381
+#, fuzzy
 msgid "Band 1 Knee"
-msgstr ""
+msgstr "频段 1 拐点"
 
 #: data/ui/multiband_gate.ui:414
 msgid "Band 1 Makeup"
@@ -1420,7 +1422,7 @@ msgstr "频段 1 补偿"
 #: data/ui/multiband_gate.ui:421 data/ui/multiband_gate.ui:781
 #: data/ui/multiband_gate.ui:1141 data/ui/multiband_gate.ui:1501
 msgid "Max Reduction"
-msgstr "衰减"
+msgstr "最大衰减"
 
 #: data/ui/multiband_gate.ui:448
 msgid "Band 1 Max Reduction"
@@ -1459,8 +1461,9 @@ msgid "Band 2 Ratio"
 msgstr ""
 
 #: data/ui/multiband_gate.ui:741
+#, fuzzy
 msgid "Band 2 Knee"
-msgstr ""
+msgstr "频段 2 拐点"
 
 #: data/ui/multiband_gate.ui:774
 msgid "Band 2 Makeup"
@@ -1503,8 +1506,9 @@ msgid "Band 3 Ratio"
 msgstr ""
 
 #: data/ui/multiband_gate.ui:1101
+#, fuzzy
 msgid "Band 3 Knee"
-msgstr ""
+msgstr "频段 3 拐点"
 
 #: data/ui/multiband_gate.ui:1134
 msgid "Band 3 Makeup"
@@ -1547,8 +1551,9 @@ msgid "Band 4 Ratio"
 msgstr ""
 
 #: data/ui/multiband_gate.ui:1461
+#, fuzzy
 msgid "Band 4 Knee"
-msgstr ""
+msgstr "频段 4 拐点"
 
 #: data/ui/multiband_gate.ui:1494
 msgid "Band 4 Makeup"
@@ -1571,6 +1576,8 @@ msgid ""
 "It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 的设置或 "
+"Plasma 的系统设置）的默认设备。"
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1635,12 +1642,14 @@ msgid "Create Association"
 msgstr "创建关联"
 
 #: data/ui/pipe_manager_box.ui:270
+#, fuzzy
 msgid "Add Autoloading Output Preset"
-msgstr ""
+msgstr "新建自动加载的输出预设"
 
 #: data/ui/pipe_manager_box.ui:290
+#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "输出自动加载预设列表"
+msgstr "导出自动加载预设列表"
 
 #: data/ui/pipe_manager_box.ui:329
 msgid "Input Devices"
@@ -1651,12 +1660,14 @@ msgid "Input Presets"
 msgstr "输入预设"
 
 #: data/ui/pipe_manager_box.ui:362
+#, fuzzy
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "新建自动加载的输入预设"
 
 #: data/ui/pipe_manager_box.ui:381
+#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "输入自动加载预设列表"
+msgstr "导入自动加载预设列表"
 
 #: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
@@ -1687,8 +1698,9 @@ msgid "Enabled"
 msgstr "已启用"
 
 #: data/ui/pipe_manager_box.ui:498
+#, fuzzy
 msgid "Properties"
-msgstr ""
+msgstr "属性"
 
 #: data/ui/pipe_manager_box.ui:501
 msgid "Channels"
@@ -1704,7 +1716,7 @@ msgstr "双声道"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
-msgstr ""
+msgstr "波形"
 
 #: data/ui/pipe_manager_box.ui:543
 msgid "Sine Wave"
@@ -1797,11 +1809,11 @@ msgstr "八度"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
-msgstr "删除这个音效"
+msgstr "删除此音效"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "启用/禁用此音效"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
@@ -1809,11 +1821,11 @@ msgstr ""
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
-msgstr ""
+msgstr "添加音效"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
-msgstr ""
+msgstr "使用的插件的列表"
 
 #: data/ui/plugins_box.ui:129
 msgid "No Effects"
@@ -1821,7 +1833,7 @@ msgstr "无音效"
 
 #: data/ui/plugins_box.ui:130
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "音频流未作修改"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
@@ -1908,6 +1920,7 @@ msgid "Dots"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:46
+#, fuzzy
 msgid "Points"
 msgstr "数量"
 
@@ -1929,7 +1942,7 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
-msgstr ""
+msgstr "圆角"
 
 #: data/ui/preferences_spectrum.ui:152
 msgid "Color"
@@ -1953,7 +1966,7 @@ msgstr "最低"
 
 #: data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
-msgstr "最大值"
+msgstr "最高"
 
 #: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:181
 msgid "Load"
@@ -2111,7 +2124,7 @@ msgstr "RNNoise 模型列表"
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "模型尚未载入"
 
 #: data/ui/rnnoise.ui:116
 msgid "Active Model"
@@ -2130,8 +2143,9 @@ msgid "Open the EasyEffects Manual"
 msgstr "打开 EasyEffects 手册"
 
 #: data/ui/shortcuts.ui:23
+#, fuzzy
 msgid "Fullscreen/Restore from fullscreen"
-msgstr "全屏/从全屏恢复"
+msgstr "全屏/从全屏还原"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
@@ -2275,7 +2289,7 @@ msgstr "为使用 PipeWire 的程序提供音效"
 
 #: src/application.cpp:503
 msgid "Quit EasyEffects. Useful when running in service mode."
-msgstr "退出 EasyEffects。 在服务模式下运行时很有用。"
+msgstr "退出 EasyEffects。程序若在服务模式下运行，由此便可退出程序。"
 
 #: src/application.cpp:506
 msgid "Load a preset. Example: easyeffects -l music"
@@ -2378,7 +2392,7 @@ msgstr "APO 预设"
 #: src/equalizer_ui.cpp:371
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
-msgstr ""
+msgstr "APO 预设没加载成功。可能是文件格式有错。请检查文件内容。"
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
@@ -2404,7 +2418,7 @@ msgstr "导入预设"
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
-msgstr ""
+msgstr "所选模型没加载成功。可能是文件格式不支持。退回到了标准模型。"
 
 #: src/rnnoise_ui.cpp:132
 msgid "Import Model File"
@@ -2496,7 +2510,7 @@ msgstr "立体声工具"
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
-msgstr "关闭（按下 ESC）"
+msgstr "关闭（请按 ESC）"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"
