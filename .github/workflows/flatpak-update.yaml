@@ -1,0 +1,30 @@
+name: Check for flatpak module updates
+on:
+  schedule: # for scheduling to work this file must be in the default branch
+  - cron: "0 0 * * *" # run every day
+  workflow_dispatch: # can be manually dispatched under GitHub's "Actions" tab 
+
+jobs:
+  flatpak-external-data-checker:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        branch: [ master ] # list all branches to check
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ matrix.branch }}
+
+      - uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
+        env:
+          GIT_AUTHOR_NAME: Flatpak External Data Checker
+          GIT_COMMITTER_NAME: Flatpak External Data Checker
+          # email sets "github-actions[bot]" as commit author, see https://github.community/t/github-actions-bot-email-address/17204/6
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --update --always-fork util/flatpak/com.github.wwmm.easyeffects.json
