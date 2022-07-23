@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-20 20:05-0300\n"
-"PO-Revision-Date: 2022-07-21 10:57+0000\n"
-"Last-Translator: poi <erbaotao@outlook.com>\n"
+"PO-Revision-Date: 2022-07-22 11:20+0000\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -1642,7 +1642,6 @@ msgid "Create Association"
 msgstr "创建关联"
 
 #: data/ui/pipe_manager_box.ui:270
-#, fuzzy
 msgid "Add Autoloading Output Preset"
 msgstr "新建自动加载的输出预设"
 
@@ -1660,7 +1659,6 @@ msgid "Input Presets"
 msgstr "输入预设"
 
 #: data/ui/pipe_manager_box.ui:362
-#, fuzzy
 msgid "Add Autoloading Input Preset"
 msgstr "新建自动加载的输入预设"
 
@@ -1698,7 +1696,6 @@ msgid "Enabled"
 msgstr "已启用"
 
 #: data/ui/pipe_manager_box.ui:498
-#, fuzzy
 msgid "Properties"
 msgstr "属性"
 
@@ -2143,7 +2140,6 @@ msgid "Open the EasyEffects Manual"
 msgstr "打开 EasyEffects 手册"
 
 #: data/ui/shortcuts.ui:23
-#, fuzzy
 msgid "Fullscreen/Restore from fullscreen"
 msgstr "全屏/从全屏还原"
 

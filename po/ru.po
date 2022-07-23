@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-20 20:05-0300\n"
-"PO-Revision-Date: 2022-07-21 04:07+0000\n"
+"PO-Revision-Date: 2022-07-22 11:20+0000\n"
 "Last-Translator: IDeathByte <wwconstantin@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1012,25 +1012,23 @@ msgstr "Шумовые ворота (гейт)"
 
 #: data/ui/gate.ui:149 data/ui/gate.ui:242
 msgid "Zone"
-msgstr ""
+msgstr "Зона"
 
 #: data/ui/gate.ui:221
 msgid "Hysteresis"
-msgstr ""
+msgstr "Гистерезис"
 
 #: data/ui/gate.ui:406
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "Зона Атаки"
 
 #: data/ui/gate.ui:460
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "Время восстановления"
+msgstr "Зона Срабатывания"
 
 #: data/ui/gate.ui:647
-#, fuzzy
 msgid "Internal"
-msgstr "Внешний"
+msgstr "Внутренний"
 
 #: data/ui/gate.ui:1254 data/ui/multiband_gate.ui:494
 #: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
@@ -1600,13 +1598,16 @@ msgstr "Общие"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Управление Устройством"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"Рекомендуется НЕ устанавливать источники EasyEffects в качестве Устройства "
+"По-умолчанию во внешних приложениях (таких как Настройки Gnome и Параметры "
+"Системы Plasma)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1831,17 +1832,16 @@ msgid "Octaves"
 msgstr "Октавы"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Удалить этот файл модели"
+msgstr "Удалить этот эффект"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Включить/отключить эффект"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Изменить позицию эффекта"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
@@ -2009,12 +2009,10 @@ msgid "New Output Preset Name"
 msgstr "Имя новой предустановки выхода"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Создать предустановку"
+msgstr "Создать новую предустановку"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
 msgstr "Импорт предустановки"
 
@@ -2152,7 +2150,7 @@ msgstr "Список моделей RNNoise"
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Модель Не Загружена"
 
 #: data/ui/rnnoise.ui:116
 msgid "Active Model"
@@ -2345,20 +2343,19 @@ msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:99
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "Не Стандартный Файл"
 
 #: src/convolver_menu_impulses.cpp:104
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "Файл Импульса Может Быть Поврежден или Не Поддерживается"
 
 #: src/convolver_menu_impulses.cpp:109
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Поддерживаются только Стерео файлы импульса"
 
 #: src/convolver_menu_impulses.cpp:119
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Список файлов импульса"
+msgstr "Файл импульса не импортирован"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "Import Impulse File"
@@ -2387,12 +2384,10 @@ msgid "Remove Impulse"
 msgstr "Удалить Импульс"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Список файлов импульса"
+msgstr "Нет загруженного файла импульса"
 
 #: src/convolver_ui.cpp:345
-#, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
@@ -2424,6 +2419,8 @@ msgstr "Предустановки APO"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
+"Предустановки APO не загружены. Формат файла может быть не верным. "
+"Пожалуйста, проверьте его содержимое."
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
@@ -2450,6 +2447,8 @@ msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"Выбранная модель не загружена. Данный формат может быть не поддерживаемым. "
+"Возвращение на стандартную модель."
 
 #: src/rnnoise_ui.cpp:132
 msgid "Import Model File"
@@ -2544,7 +2543,7 @@ msgstr "Стереокорректоры"
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
-msgstr ""
+msgstr "Закрыть (Нажмите ESC)"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Веллингтон Уоллис"
