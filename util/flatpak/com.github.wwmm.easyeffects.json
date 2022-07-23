@@ -1,0 +1,64 @@
+{
+  "id": "com.github.wwmm.easyeffects",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "42",
+  "sdk": "org.gnome.Sdk",
+  "command": "easyeffects-wrapper",
+  "finish-args": [
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--filesystem=xdg-run/pipewire-0:ro",
+    "--env=LV2_PATH=/app/lib/lv2:/app/extensions/Plugins/lv2"
+  ],
+  "cleanup": [
+    "*.a",
+    "*.h",
+    "*.la",
+    "/bin/analyseplugin",
+    "/bin/applyplugin",
+    "/bin/listplugins",
+    "/include",
+    "/lib/pkgconfig",
+    "/lib/python*",
+    "/share/info"
+  ],
+  "add-extensions": {
+    "org.freedesktop.LinuxAudio.Plugins": {
+      "directory": "extensions/Plugins",
+      "version": "21.08",
+      "add-ld-path": "lib",
+      "merge-dirs": "lv2",
+      "subdirectories": true,
+      "no-autodownload": true
+    },
+    "org.freedesktop.LinuxAudio.Plugins.LSP": {
+      "directory": "extensions/Plugins/LSP",
+      "version": "21.08",
+      "add-ld-path": "lib",
+      "merge-dirs": "lv2",
+      "autodelete": false,
+      "subdirectories": true
+    },
+    "org.freedesktop.LinuxAudio.Plugins.ZamPlugins": {
+      "directory": "extensions/Plugins/ZamPlugins",
+      "version": "21.08",
+      "add-ld-path": "lib",
+      "merge-dirs": "lv2",
+      "autodelete": false,
+      "subdirectories": true
+    },
+    "org.freedesktop.LinuxAudio.Plugins.MDA": {
+      "directory": "extensions/Plugins/MDA",
+      "version": "21.08",
+      "add-ld-path": "lib",
+      "merge-dirs": "lv2",
+      "autodelete": false,
+      "subdirectories": true
+    }
+  },
+  "modules": [
+    "easyeffects-modules.json"
+  ]
+}
