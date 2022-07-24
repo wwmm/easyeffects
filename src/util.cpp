@@ -132,6 +132,27 @@ auto db_to_linear(const double& db) -> double {
   return std::exp((db / 20.0) * std::log(10.0));
 }
 
+auto db_percent_to_linear(const float& percent, const float& limit) -> float {
+  // This is used to map a range of db values [-limit, limit] on a percentual scale
+  // and converts them to the linear ones, with the exception of the lower bound 0%
+  // which does not assume -limit, but returns 0 acting as -infinity db.
+
+  // This replicates the behavior of some knobs in LSP interfaces which allows
+  // the user to set -infinity.
+  // It's used specifically for dry and wet controls which we want to adjust
+  // having also the ability to completely exclude their signals from the mix,
+  // but with the usual double db value we can't specify -infinity.
+
+  // For convenience the limit defaults to 100, so 1% unit corresponds to 1 db:
+  // 100% is 0 db, 50% is -50 db, 1% is -99 db, but 0% will set linear 0.
+  // Based on the plugin configuration, also values greater than 0 db could be set.
+  return (percent == 0.0F) ? 0.0F : db_to_linear(((limit * percent) / 100.0F) - limit);
+}
+
+auto db_percent_to_linear(const double& percent, const double& limit) -> double {
+  return (percent == 0.0) ? 0.0 : db_to_linear(((limit * percent) / 100.0) - limit);
+}
+
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const gfloat v_linear = std::pow(10.0F, static_cast<float>(g_variant_get_double(variant)) / 20.0F);
 

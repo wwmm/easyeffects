@@ -58,6 +58,9 @@ auto linear_to_db(const double& amp) -> double;
 auto db_to_linear(const float& db) -> float;
 auto db_to_linear(const double& db) -> double;
 
+auto db_percent_to_linear(const float& percent, const float& limit = 100.0F) -> float;
+auto db_percent_to_linear(const double& percent, const double& limit = 100.0) -> double;
+
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
 
 auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant*;
