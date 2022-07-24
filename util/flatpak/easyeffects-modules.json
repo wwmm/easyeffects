@@ -1,34 +1,5 @@
 {
-  "name": "easyeffects",
-  "buildsystem": "meson",
-  "sources": [
-    {
-      "type": "dir",
-      "path": "../../"
-    },
-    {
-      "type": "file",
-      "path": "easyeffects-wrapper.sh"
-    },
-    {
-      "type": "patch",
-      "path": "patch/easyeffects/002-fix-desktop-file.patch"
-    },
-    {
-      "type": "patch",
-      "path": "patch/easyeffects/0001-Background-portal-support-for-autostart-and-shutdown.patch"
-    },
-    {
-      "type": "shell",
-      "commands": [
-        "install -Dvm 755 easyeffects-wrapper.sh $FLATPAK_DEST/bin/easyeffects-wrapper"
-      ]
-    }
-  ],
-  "post-install": [
-    "install -Dm644 -t $FLATPAK_DEST/share/licenses/$FLATPAK_ID ../LICENSE.md",
-    "mkdir -pm755 $FLATPAK_DEST/extensions/Plugins"
-  ],
+  "name": "easyeffects-modules",
   "modules": [
     {
       "name": "libsigc++",
