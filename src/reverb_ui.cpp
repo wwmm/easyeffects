@@ -45,7 +45,7 @@ struct _ReverbBox {
 
   GtkComboBoxText* room_size;
 
-  GtkSpinButton *predelay, *decay_time, *diffusion, *amount, *dry, *hf_damp, *bass_cut, *treble_cut;
+  GtkSpinButton *predelay, *decay_time, *diffusion, *hf_damp, *bass_cut, *treble_cut, *dry, *wet;
 
   GSettings* settings;
 
@@ -63,8 +63,8 @@ void on_preset_room(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->hf_damp, 5508.46);
   gtk_combo_box_set_active(GTK_COMBO_BOX(self->room_size), 4);
   gtk_spin_button_set_value(self->diffusion, 0.54);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.469761));
-  gtk_spin_button_set_value(self->dry, util::linear_to_db(1.0));
+  gtk_spin_button_set_value(self->wet, 93.437539);  // linear 0.469761
+  gtk_spin_button_set_value(self->dry, 100.0);      // linear 1.0
   gtk_spin_button_set_value(self->predelay, 25.0);
   gtk_spin_button_set_value(self->bass_cut, 257.65);
   gtk_spin_button_set_value(self->treble_cut, 20000.0);
@@ -75,8 +75,8 @@ void on_preset_empty_walls(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->hf_damp, 3971.64);
   gtk_combo_box_set_active(GTK_COMBO_BOX(self->room_size), 4);
   gtk_spin_button_set_value(self->diffusion, 0.17);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.198884));
-  gtk_spin_button_set_value(self->dry, util::linear_to_db(1.0));
+  gtk_spin_button_set_value(self->wet, 85.971997);  // linear 0.198884
+  gtk_spin_button_set_value(self->dry, 100.0);      // linear 1.0
   gtk_spin_button_set_value(self->predelay, 13.0);
   gtk_spin_button_set_value(self->bass_cut, 240.453);
   gtk_spin_button_set_value(self->treble_cut, 3303.47);
@@ -87,8 +87,8 @@ void on_preset_ambience(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->hf_damp, 2182.58);
   gtk_combo_box_set_active(GTK_COMBO_BOX(self->room_size), 4);
   gtk_spin_button_set_value(self->diffusion, 0.69);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.291183));
-  gtk_spin_button_set_value(self->dry, util::linear_to_db(1.0));
+  gtk_spin_button_set_value(self->wet, 89.283320);  // linear 0.291183
+  gtk_spin_button_set_value(self->dry, 100.0);      // linear 1.0
   gtk_spin_button_set_value(self->predelay, 6.5);
   gtk_spin_button_set_value(self->bass_cut, 514.079);
   gtk_spin_button_set_value(self->treble_cut, 4064.15);
@@ -97,7 +97,7 @@ void on_preset_ambience(ReverbBox* self, GtkButton* btn) {
 void on_preset_large_empty_hall(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->decay_time, 2.00689);
   gtk_spin_button_set_value(self->hf_damp, 20000.0);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.366022));
+  gtk_spin_button_set_value(self->wet, 91.270144);  // linear 0.366022
   g_settings_reset(self->settings, "room-size");
   g_settings_reset(self->settings, "diffusion");
   g_settings_reset(self->settings, "dry");
@@ -109,7 +109,7 @@ void on_preset_large_empty_hall(ReverbBox* self, GtkButton* btn) {
 void on_preset_disco(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->decay_time, 1.0);
   gtk_spin_button_set_value(self->hf_damp, 3396.49);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.269807));
+  gtk_spin_button_set_value(self->wet, 88.621064);  // linear 0.184284
   g_settings_reset(self->settings, "room-size");
   g_settings_reset(self->settings, "diffusion");
   g_settings_reset(self->settings, "dry");
@@ -121,7 +121,7 @@ void on_preset_disco(ReverbBox* self, GtkButton* btn) {
 void on_preset_large_occupied_hall(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->decay_time, 1.45397);
   gtk_spin_button_set_value(self->hf_damp, 9795.58);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.184284));
+  gtk_spin_button_set_value(self->wet, 85.309753);  // linear 0.184284
   g_settings_reset(self->settings, "room-size");
   g_settings_reset(self->settings, "diffusion");
   g_settings_reset(self->settings, "dry");
@@ -169,9 +169,6 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  g_settings_bind(self->settings, "amount", gtk_spin_button_get_adjustment(self->amount), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
   g_settings_bind(self->settings, "predelay", gtk_spin_button_get_adjustment(self->predelay), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
@@ -182,6 +179,8 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
                   G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "dry", gtk_spin_button_get_adjustment(self->dry), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "hf-damp", gtk_spin_button_get_adjustment(self->hf_damp), "value",
                   G_SETTINGS_BIND_DEFAULT);
@@ -253,9 +252,9 @@ void reverb_box_class_init(ReverbBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, room_size);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, predelay);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, decay_time);
-  gtk_widget_class_bind_template_child(widget_class, ReverbBox, amount);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, diffusion);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, dry);
+  gtk_widget_class_bind_template_child(widget_class, ReverbBox, wet);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, hf_damp);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, bass_cut);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, treble_cut);
@@ -276,7 +275,7 @@ void reverb_box_init(ReverbBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbuttons<"dB">(self->amount, self->dry);
+  prepare_spinbuttons<"%">(self->dry, self->wet);
 
   prepare_spinbuttons<"Hz">(self->hf_damp, self->bass_cut, self->treble_cut);
 

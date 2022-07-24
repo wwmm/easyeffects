@@ -194,7 +194,7 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="label" translatable="yes">Wet Amount</property>
+                        <property name="label" translatable="yes">Wet</property>
                         <layout>
                             <property name="column">2</property>
                             <property name="row">0</property>
@@ -202,7 +202,7 @@
                     </object>
                 </child>
                 <child>
-                    <object class="GtkSpinButton" id="amount">
+                    <object class="GtkSpinButton" id="wet">
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
@@ -210,9 +210,8 @@
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
-                                <property name="lower">-100</property>
-                                <property name="upper">6</property>
-                                <property name="value">-12</property>
+                                <property name="upper">106</property>
+                                <property name="value">100</property>
                                 <property name="step-increment">0.1</property>
                                 <property name="page-increment">1</property>
                             </object>
@@ -229,7 +228,7 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="label" translatable="yes">Dry Amount</property>
+                        <property name="label" translatable="yes">Dry</property>
                         <layout>
                             <property name="column">3</property>
                             <property name="row">0</property>
@@ -245,8 +244,7 @@
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
-                                <property name="lower">-100</property>
-                                <property name="upper">6</property>
+                                <property name="upper">106</property>
                                 <property name="step-increment">0.1</property>
                                 <property name="page-increment">1</property>
                             </object>
