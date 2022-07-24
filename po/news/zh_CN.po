@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-20 20:04-0300\n"
-"PO-Revision-Date: 2022-07-06 20:18+0000\n"
-"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"PO-Revision-Date: 2022-07-22 16:18+0000\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"easyeffects/main/zh_Hans/>\n"
+"easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "EasyEffects"
@@ -189,11 +189,12 @@ msgid "The code that shows the stream sample format has been improved"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
-#, fuzzy
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build a Debian package. See issue 1000 for more information."
-msgstr "现在 rnnoise 库是可选的。这项改动可以帮助软件包维护者构建"
+msgstr ""
+"rnnoise 库现在是可选的。 这应该有助于软件包维护者构建 Debian 软件包。 "
+"有关详细信息，请参阅 Github 存储库中编号为 1000 的 issue。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
@@ -215,7 +216,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
+msgstr "当 pw-mididump 正在运行时避免崩溃"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid "The interface of the pitch plugin was improved"
@@ -309,7 +310,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:110
 msgid "Support for the next PipeWire release `0.3.44`"
-msgstr ""
+msgstr "对下一个 PipeWire 发布版本 `0.3.44` 的支持"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
 msgid ""
@@ -354,7 +355,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:133
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
-msgstr ""
+msgstr "设置菜单被重新设计以使用 LibAdwaita 组件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
 msgid ""
@@ -389,7 +390,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
 msgid ""
 "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
-msgstr ""
+msgstr "不再使用 GTKMM 和 GLIBMM 作为依赖。我们现在直接使用 gtk4。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:149
 msgid ""
@@ -424,7 +425,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
 msgid "The `tbb` library is a new dependency"
-msgstr ""
+msgstr "使用 `tbb` 软件库作为新的依赖"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:164
 msgid ""
