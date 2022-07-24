@@ -238,7 +238,9 @@ auto EffectsBase::get_pipeline_latency() -> float {
   float total = 0.0F;
 
   for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"))) {
-    total += plugins[name]->get_latency_seconds();
+    if (plugins.contains(name)) {
+      total += plugins[name]->get_latency_seconds();
+    }
   }
 
   return total * 1000.0F;
