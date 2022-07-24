@@ -1447,7 +1447,6 @@ PipeManager::PipeManager() {
   pw_properties_set(props_sink, PW_KEY_NODE_NAME, tags::pipewire::ee_sink_name);
   pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "EasyEffects Sink");
   pw_properties_set(props_sink, PW_KEY_NODE_VIRTUAL, "true");
-  pw_properties_set(props_sink, PW_KEY_NODE_WANT_DRIVER, "true");
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::sink);
   pw_properties_set(props_sink, "audio.position", "FL,FR");
@@ -1466,7 +1465,6 @@ PipeManager::PipeManager() {
   pw_properties_set(props_source, PW_KEY_NODE_NAME, tags::pipewire::ee_source_name);
   pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "EasyEffects Source");
   pw_properties_set(props_source, PW_KEY_NODE_VIRTUAL, "true");
-  pw_properties_set(props_source, PW_KEY_NODE_WANT_DRIVER, "true");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::virtual_source);
   pw_properties_set(props_source, "audio.position", "FL,FR");
