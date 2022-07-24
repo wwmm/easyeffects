@@ -3,7 +3,7 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "42",
   "sdk": "org.gnome.Sdk",
-  "command": "easyeffects-wrapper",
+  "command": "easyeffects",
   "finish-args": [
     "--share=ipc",
     "--socket=fallback-x11",
