@@ -26,6 +26,7 @@
 #include <fstream>
 #include <memory>
 #include <nlohmann/json.hpp>
+#include <optional>
 #include "autogain_preset.hpp"
 #include "bass_enhancer_preset.hpp"
 #include "bass_loudness_preset.hpp"
@@ -139,30 +140,6 @@ class PresetsManager {
 
   GFileMonitor *autoload_output_monitor = nullptr, *autoload_input_monitor = nullptr;
 
-  std::unique_ptr<AutoGainPreset> autogain;
-  std::unique_ptr<BassEnhancerPreset> bass_enhancer;
-  std::unique_ptr<BassLoudnessPreset> bass_loudness;
-  std::unique_ptr<CompressorPreset> compressor;
-  std::unique_ptr<ConvolverPreset> convolver;
-  std::unique_ptr<CrossfeedPreset> crossfeed;
-  std::unique_ptr<CrystalizerPreset> crystalizer;
-  std::unique_ptr<DeesserPreset> deesser;
-  std::unique_ptr<DelayPreset> delay;
-  std::unique_ptr<EchoCancellerPreset> echo_canceller;
-  std::unique_ptr<EqualizerPreset> equalizer;
-  std::unique_ptr<ExciterPreset> exciter;
-  std::unique_ptr<FilterPreset> filter;
-  std::unique_ptr<GatePreset> gate;
-  std::unique_ptr<LimiterPreset> limiter;
-  std::unique_ptr<LoudnessPreset> loudness;
-  std::unique_ptr<MaximizerPreset> maximizer;
-  std::unique_ptr<MultibandCompressorPreset> multiband_compressor;
-  std::unique_ptr<MultibandGatePreset> multiband_gate;
-  std::unique_ptr<PitchPreset> pitch;
-  std::unique_ptr<ReverbPreset> reverb;
-  std::unique_ptr<RNNoisePreset> rnnoise;
-  std::unique_ptr<StereoToolsPreset> stereo_tools;
-
   void create_user_directory(const std::filesystem::path& path);
 
   void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
@@ -170,4 +147,6 @@ class PresetsManager {
   auto load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool;
 
   void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
+
+  auto create_wrapper(std::string_view filter_name) -> std::optional<std::unique_ptr<PluginPresetBase>>;
 };
