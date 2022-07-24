@@ -146,11 +146,11 @@ auto db_percent_to_linear(const float& percent, const float& limit) -> float {
   // For convenience the limit defaults to 100, so 1% unit corresponds to 1 db:
   // 100% is 0 db, 50% is -50 db, 1% is -99 db, but 0% will set linear 0.
   // Based on the plugin configuration, also values greater than 0 db could be set.
-  return (percent == 0.0F) ? 0.0F : db_to_linear(((limit * percent) / 100.0F) - limit);
+  return (percent < 0.1F) ? 0.0F : db_to_linear(((limit * percent) / 100.0F) - limit);
 }
 
 auto db_percent_to_linear(const double& percent, const double& limit) -> double {
-  return (percent == 0.0) ? 0.0 : db_to_linear(((limit * percent) / 100.0) - limit);
+  return (percent < 0.1) ? 0.0 : db_to_linear(((limit * percent) / 100.0) - limit);
 }
 
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
