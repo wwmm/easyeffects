@@ -33,6 +33,17 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="6.2.8" date="2022-07-25T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Improved translations</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a bug where EasyEffects could crash when closing its window while effects were being applied.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="6.2.7" date="2022-07-18T00:00:00Z">
       <description>
         <ul>
