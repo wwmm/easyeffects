@@ -40,7 +40,7 @@ void ReverbPreset::save(nlohmann::json& json, const std::string& section, GSetti
 
   json[section]["reverb"]["diffusion"] = g_settings_get_double(settings, "diffusion");
 
-  json[section]["reverb"]["amount"] = g_settings_get_double(settings, "amount");
+  json[section]["reverb"]["wet"] = g_settings_get_double(settings, "wet");
 
   json[section]["reverb"]["dry"] = g_settings_get_double(settings, "dry");
 
@@ -66,7 +66,7 @@ void ReverbPreset::load(const nlohmann::json& json, const std::string& section, 
 
   update_key<double>(json.at(section).at("reverb"), settings, "diffusion", "diffusion");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "amount", "amount");
+  update_key<double>(json.at(section).at("reverb"), settings, "wet", "wet");
 
   update_key<double>(json.at(section).at("reverb"), settings, "dry", "dry");
 
