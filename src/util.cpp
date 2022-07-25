@@ -133,7 +133,7 @@ auto db_to_linear(const double& db) -> double {
 }
 
 auto db_percent_to_linear(const float& percent, const float& limit) -> float {
-  // This is used to map a range of db values [-limit, limit] on a percentual scale
+  // This is used to map a range of db values [-limit, limit] on a percentage scale
   // and converts them to the linear ones, with the exception of the lower bound 0%
   // which does not assume -limit, but returns 0 acting as -infinity db.
 

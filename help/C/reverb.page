@@ -40,18 +40,6 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Wet Amount</em>
-            </title>
-            <p>Amount of processed signal (Reverberation) in the output.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Dry Amount</em>
-            </title>
-            <p>Amount of unprocessed signal in the output.</p>
-        </item>
-        <item>
-            <title>
                 <em style="strong" its:withinText="nested">Bass Cut</em>
             </title>
             <p>Removes low frequencies from the Reverberation.</p>
@@ -61,6 +49,18 @@
                 <em style="strong" its:withinText="nested">Treble Cut</em>
             </title>
             <p>Removes high frequencies from the Reverberation.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Dry Level</em>
+            </title>
+            <p>Amount of unprocessed signal in the output. The value is in percentage scale. Variation of 1% corresponds to variation of 1 db. 100% is 0 db gain reduction, 0% means no signal is mixed into the output.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Wet Level</em>
+            </title>
+            <p>Amount of processed signal (Reverberation) in the output. The value is in percentage scale, same as Dry Level.</p>
         </item>
     </terms>
     <section>
