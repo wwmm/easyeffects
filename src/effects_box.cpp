@@ -19,6 +19,12 @@
 
 #include "effects_box.hpp"
 
+namespace {
+
+bool schedule_signal_idle = false;
+
+}
+
 namespace ui::effects_box {
 
 struct Data {
@@ -30,8 +36,6 @@ struct Data {
   EffectsBase* effects_base;
 
   PipelineType pipeline_type;
-
-  bool schedule_signal_idle;
 
   uint spectrum_rate, spectrum_n_bands;
 
@@ -317,12 +321,16 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
         self->data->global_output_level_left = left;
         self->data->global_output_level_right = right;
 
-        if (!self->data->schedule_signal_idle) {
+        if (!schedule_signal_idle) {
           return;
         }
 
         g_idle_add((GSourceFunc) +
                        [](EffectsBox* self) {
+                         if (!schedule_signal_idle) {
+                           return G_SOURCE_REMOVE;
+                         }
+
                          gtk_label_set_text(self->label_global_output_level_left,
                                             fmt::format("{0:.0f}", self->data->global_output_level_left).c_str());
 
@@ -348,7 +356,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
           return;
         }
 
-        if (!self->data->schedule_signal_idle) {
+        if (!schedule_signal_idle) {
           return;
         }
 
@@ -418,13 +426,17 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   self->data->connections.push_back(self->data->effects_base->pipeline_latency.connect([=](const float& v) {
     self->data->pipeline_latency_ms = v;
 
-    if (!self->data->schedule_signal_idle) {
+    if (!schedule_signal_idle) {
       return;
     }
 
     g_idle_add(
         (GSourceFunc) +
             [](EffectsBox* self) {
+              if (!schedule_signal_idle) {
+                return G_SOURCE_REMOVE;
+              }
+
               gtk_label_set_text(
                   self->latency_status,
                   fmt::format(ui::get_user_locale(), "     {0:.1Lf} ms", self->data->pipeline_latency_ms).c_str());
@@ -436,23 +448,21 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 }
 
 void realize(GtkWidget* widget) {
-  auto* self = EE_EFFECTS_BOX(widget);
-
-  self->data->schedule_signal_idle = true;
+  schedule_signal_idle = true;
 
   GTK_WIDGET_CLASS(effects_box_parent_class)->realize(widget);
 }
 
 void unroot(GtkWidget* widget) {
-  auto* self = EE_EFFECTS_BOX(widget);
-
-  self->data->schedule_signal_idle = false;
+  schedule_signal_idle = false;
 
   GTK_WIDGET_CLASS(effects_box_parent_class)->unroot(widget);
 }
 
 void dispose(GObject* object) {
   auto* self = EE_EFFECTS_BOX(object);
+
+  schedule_signal_idle = false;
 
   self->data->effects_base->spectrum->bypass = true;
 
@@ -517,7 +527,7 @@ void effects_box_init(EffectsBox* self) {
 
   self->data = new Data();
 
-  self->data->schedule_signal_idle = false;
+  schedule_signal_idle = false;
 
   self->app_settings = g_settings_new(tags::app::id);
   self->settings_spectrum = g_settings_new(tags::schema::spectrum::id);

@@ -610,6 +610,19 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
+  // Trying to avoid that the functions scheduled by the plugins are executed when the widgets have already been
+  // disposed
+
+  for (auto child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
+    auto* next_child = gtk_widget_get_next_sibling(child);
+
+    uint serial = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(child), "serial"));
+
+    set_ignore_filter_idle_add(serial, true);
+
+    child = next_child;
+  }
+
   util::debug("disposed");
 
   G_OBJECT_CLASS(plugins_box_parent_class)->dispose(object);

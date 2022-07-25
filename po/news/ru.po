@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-20 20:04-0300\n"
-"PO-Revision-Date: 2022-06-20 08:14+0000\n"
-"Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
-"ru/>\n"
+"PO-Revision-Date: 2022-07-22 16:18+0000\n"
+"Last-Translator: IDeathByte <wwconstantin@protonmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "EasyEffects"
@@ -113,33 +113,38 @@ msgstr "Страница конвольвера отображает настр�
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
 msgid "Features:"
-msgstr ""
+msgstr "Возможности:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
 msgstr ""
+"Состояние обхода может быть сохранено в файл предустановок. Причины данного "
+"решения можно посмотреть в ошибке 1039"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "The preset autoloading code compatibility with usb devices has been improved."
 msgstr ""
+"Была улучшена кодовая база автозагрузки предустановок для лучшей "
+"совместимости с USB-устройствами."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
+"Пользователю выводится сообщение, если загрузка предустановки не удалась, "
+"или предустановку/файл импульса не удалось импортировать."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
-#, fuzzy
 msgid ""
 "The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of "
 "the one from Calf Studio."
 msgstr ""
-"Плагин лимитера теперь использует стерео плагин лимитера из набора Linux "
-"Studio Plugins взамен Calf Studio."
+"Теперь плагин SideChain Gate используется из набора Linux Studio Plugins "
+"взамен Calf Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
@@ -158,25 +163,29 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:270
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Исправление ошибок:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid ""
 "EasyEffects should not crash anymore when the user locale is not properly "
 "configured."
 msgstr ""
+"EasyEffects больше не должен падать, если язык пользователя не был правильно "
+"настроен."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid ""
 "A workaround was implemented in our icon to deal with the lack of proper SVG "
 "support in QT."
 msgstr ""
+"Был реализован обходной механизм для отображения иконки, необходимый из-за "
+"посредственной поддержки SVG в QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:155
 msgid "Other notes:"
-msgstr ""
+msgstr "Другие изменения:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
 msgid ""
@@ -184,6 +193,9 @@ msgid ""
 "null. This will allow the media session manager (wireplumber) to properly "
 "move the stream to a new device."
 msgstr ""
+"Когда для приложения отключены эффекты, мы устанавливаем значение его "
+"метаданных равным null. Это позволяет менеджеру медиа (wireplumber) "
+"корректно переместить аудиопоток на новое устройство."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 msgid ""
@@ -191,21 +203,28 @@ msgid ""
 "streams whose purpose is to monitor sink devices. This will help to fix some "
 "of problems our users were having when using OBS."
 msgstr ""
+"Были добавили новые настройки конфигурации. Они позволят EasyEffects "
+"игнорировать потоки, которые он создает сам. Это должно исправить некоторые "
+"проблемы, которые возникали у пользователей при использовании OBS."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid "The code that shows the stream sample format has been improved"
-msgstr ""
+msgstr "Был улучшен код, ответственный за отображение потока"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build a Debian package. See issue 1000 for more information."
 msgstr ""
+"Теперь использование библиотеки rnnoise является опциональным. Это должно "
+"помочь мейнтейнерам в сборке пакетов для Debian. Подробности в ошибке 1000."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
 "Our logs now show the source code line where the messages are being printed"
 msgstr ""
+"Теперь в наших отчетах отображается строка кода, ответственная за вывод "
+"сообщения"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
@@ -213,16 +232,19 @@ msgid ""
 "third party programs like pavucontrol moved the stream away from our virtual "
 "devices. This should be fixed now."
 msgstr ""
+"Флаг \"включить эффекты\" в нашем окне не обновлялся, когда сторонние "
+"приложения вроде pavucontrol перемещали поток с наших виртуальных устройств. "
+"Теперь должно работать корректно."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "Fixed a crash that could happen when the maximum autogain history was "
 "changed."
-msgstr ""
+msgstr "Исправлен вылет, происходивший при изменении максимума автогейна."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
+msgstr "Предотвращены вылеты, когда запущен pw-mididump"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid "The interface of the pitch plugin was improved"
@@ -242,15 +264,15 @@ msgstr ""
 "укажет его"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
-#, fuzzy
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
 "applications list shown in our `Players/Recorders` tab do not show a volume "
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
-"Во избежание проблем с колесом мыши записи в списке приложений отображаются "
-"в `Проигрыватели/Рекордеры`"
+"Во избежание проблем с прокруткой списка `Проигрыватели/Рекордеры`, в этой "
+"вкладке больше не отображается шкала громкости. Больше информации о проблеме "
+"и возможные решения можно посмотреть в ошибках 1211 и 1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 msgid ""
@@ -265,14 +287,14 @@ msgid "Many translation updates"
 msgstr "Крупное обновление переводов"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
-#, fuzzy
 msgid ""
 "Fixed a bug where EasyEffeects crashed when the number of points displayed "
 "in the spectrum was changed while our pipeline was active and the spectrum "
 "widget was visible"
 msgstr ""
 "Исправлена ошибка, при которой EasyEffeects аварийно завершал работу, когда "
-"изменялось количество точек, отображаемых в спектре, в то время как"
+"изменялось количество точек, отображаемых в спектре, в то время как виджет "
+"отображения спектра был видим и канал обработки был активен"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
@@ -289,25 +311,29 @@ msgid ""
 "filters will be unlinked after the timeout is reached. This is done to make "
 "sure we do not waste CPU power processing silence."
 msgstr ""
+"Добавлена новая настройка, позволяющая пользователю установить время простоя "
+"для канала обработки. Когда ни один из клиентов не проигрывает или не "
+"записывает поток с наших устройств, фильтры будут отключены по истечению "
+"указанного периода. Это сделано для того, чтобы CPU не тратил время впустую "
+"на обработку тишины."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
 "Плагин нормализации громкости теперь позволяет пользователю выбрать один из "
-"трёх уровней для расчета среднего"
+"трёх уровней для расчета среднего."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore. This should avoid the cases where "
 "the `Integrated` loudness gets stuck forever in the same value."
 msgstr ""
 "Плагин нормализации громкости теперь позволяет устанавливать максимальную "
-"историю и больше не использует режим гистограммы «libebur128»."
+"историю и больше не использует режим гистограммы «libebur128». Это должно "
+"решить проблему, когда громкость застревала одном уровне."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 msgid ""
@@ -407,14 +433,14 @@ msgstr ""
 "LibAdwaita."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
-#, fuzzy
 msgid ""
 "Equalizer APO preset import feature has been improved to apply not only the "
 "Bell filter, but also other supported ones (at the moment only the Bandpass "
 "filter is not available in LSP plugin)."
 msgstr ""
 "Функция импорта предустановок для Equalizer APO была улучшена: теперь "
-"возможно применить не только \"Bell\", но и другие поддерживаемые фильтры"
+"возможно применить не только \"Bell\", но и другие поддерживаемые фильтры ("
+"На текущий момент, из плагинов LSP не доступен только фильтр Bandpass)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
 msgid ""
@@ -537,10 +563,12 @@ msgid ""
 "The Spectrum plugin was supposed to enter passthrough whenever it was not "
 "visible, but this was happening only when our window was closed."
 msgstr ""
+"Плагин спектра должен осуществлять проброс, когда он станет не видимым, но "
+"это произойдет только после закрытия окна."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid "Improved support for Assistive Technology."
-msgstr ""
+msgstr "Улучшена поддержка Assistive Technology."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
 msgid ""
