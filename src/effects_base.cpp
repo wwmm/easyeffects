@@ -94,91 +94,89 @@ void EffectsBase::create_filters_if_necessary() {
 
     std::shared_ptr<PluginBase> filter;
 
-    // With rfind we check if the plugin name starts with a given base name
-
-    if (name.rfind(tags::plugin_name::autogain, 0) == 0) {
+    if (name.starts_with(tags::plugin_name::autogain)) {
       filter = std::make_shared<AutoGain>(log_tag, tags::schema::autogain::id,
                                           schema_base_path + tags::plugin_name::autogain + "/", pm);
-    } else if (name.rfind(tags::plugin_name::bass_enhancer, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::bass_enhancer)) {
       auto path = schema_base_path + tags::plugin_name::bass_enhancer + "/";
 
       path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
       filter = std::make_shared<BassEnhancer>(log_tag, tags::schema::bass_enhancer::id, path, pm);
-    } else if (name.rfind(tags::plugin_name::bass_loudness, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::bass_loudness)) {
       auto path = schema_base_path + tags::plugin_name::bass_loudness + "/";
 
       path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
       filter = std::make_shared<BassLoudness>(log_tag, tags::schema::bass_loudness::id, path, pm);
-    } else if (name.rfind(tags::plugin_name::compressor, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::compressor)) {
       filter = std::make_shared<Compressor>(log_tag, tags::schema::compressor::id,
                                             schema_base_path + tags::plugin_name::compressor + "/", pm);
-    } else if (name.rfind(tags::plugin_name::convolver, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::convolver)) {
       filter = std::make_shared<Convolver>(log_tag, tags::schema::convolver::id,
                                            schema_base_path + tags::plugin_name::convolver + "/", pm);
-    } else if (name.rfind(tags::plugin_name::crossfeed, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::crossfeed)) {
       filter = std::make_shared<Crossfeed>(log_tag, tags::schema::crossfeed::id,
                                            schema_base_path + tags::plugin_name::crossfeed + "/", pm);
-    } else if (name.rfind(tags::plugin_name::crystalizer, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::crystalizer)) {
       filter = std::make_shared<Crystalizer>(log_tag, tags::schema::crystalizer::id,
                                              schema_base_path + tags::plugin_name::crystalizer + "/", pm);
-    } else if (name.rfind(tags::plugin_name::deesser, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::deesser)) {
       filter = std::make_shared<Deesser>(log_tag, tags::schema::deesser::id,
                                          schema_base_path + tags::plugin_name::deesser + "/", pm);
-    } else if (name.rfind(tags::plugin_name::delay, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::delay)) {
       filter = std::make_shared<Delay>(log_tag, tags::schema::delay::id,
                                        schema_base_path + tags::plugin_name::delay + "/", pm);
-    } else if (name.rfind(tags::plugin_name::echo_canceller, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::echo_canceller)) {
       auto path = schema_base_path + tags::plugin_name::echo_canceller + "/";
 
       path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
       filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm);
-    } else if (name.rfind(tags::plugin_name::exciter, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::exciter)) {
       filter = std::make_shared<Exciter>(log_tag, tags::schema::exciter::id,
                                          schema_base_path + tags::plugin_name::exciter + "/", pm);
-    } else if (name.rfind(tags::plugin_name::equalizer, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::equalizer)) {
       filter = std::make_shared<Equalizer>(
           log_tag, tags::schema::equalizer::id, schema_base_path + "equalizer/", tags::schema::equalizer::channel_id,
           schema_base_path + "equalizer/leftchannel/", schema_base_path + "equalizer/rightchannel/", pm);
-    } else if (name.rfind(tags::plugin_name::filter, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::filter)) {
       filter = std::make_shared<Filter>(log_tag, tags::schema::filter::id,
                                         schema_base_path + tags::plugin_name::filter + "/", pm);
-    } else if (name.rfind(tags::plugin_name::gate, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::gate)) {
       filter =
           std::make_shared<Gate>(log_tag, tags::schema::gate::id, schema_base_path + tags::plugin_name::gate + "/", pm);
-    } else if (name.rfind(tags::plugin_name::limiter, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::limiter)) {
       filter = std::make_shared<Limiter>(log_tag, tags::schema::limiter::id,
                                          schema_base_path + tags::plugin_name::limiter + "/", pm);
-    } else if (name.rfind(tags::plugin_name::loudness, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::loudness)) {
       filter = std::make_shared<Loudness>(log_tag, tags::schema::loudness::id,
                                           schema_base_path + tags::plugin_name::loudness + "/", pm);
-    } else if (name.rfind(tags::plugin_name::maximizer, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::maximizer)) {
       filter = std::make_shared<Maximizer>(log_tag, tags::schema::maximizer::id,
                                            schema_base_path + tags::plugin_name::maximizer + "/", pm);
-    } else if (name.rfind(tags::plugin_name::multiband_compressor, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::multiband_compressor)) {
       auto path = schema_base_path + tags::plugin_name::multiband_compressor + "/";
 
       path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
       filter = std::make_shared<MultibandCompressor>(log_tag, tags::schema::multiband_compressor::id, path, pm);
-    } else if (name.rfind(tags::plugin_name::multiband_gate, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::multiband_gate)) {
       auto path = schema_base_path + tags::plugin_name::multiband_gate + "/";
 
       path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
       filter = std::make_shared<MultibandGate>(log_tag, tags::schema::multiband_gate::id, path, pm);
-    } else if (name.rfind(tags::plugin_name::pitch, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::pitch)) {
       filter = std::make_shared<Pitch>(log_tag, tags::schema::pitch::id,
                                        schema_base_path + tags::plugin_name::pitch + "/", pm);
-    } else if (name.rfind(tags::plugin_name::reverb, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::reverb)) {
       filter = std::make_shared<Reverb>(log_tag, tags::schema::reverb::id,
                                         schema_base_path + tags::plugin_name::reverb + "/", pm);
-    } else if (name.rfind(tags::plugin_name::rnnoise, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::rnnoise)) {
       filter = std::make_shared<RNNoise>(log_tag, tags::schema::rnnoise::id,
                                          schema_base_path + tags::plugin_name::rnnoise + "/", pm);
-    } else if (name.rfind(tags::plugin_name::stereo_tools, 0) == 0) {
+    } else if (name.starts_with(tags::plugin_name::stereo_tools)) {
       auto path = schema_base_path + tags::plugin_name::stereo_tools + "/";
 
       path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
