@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 20:05-0300\n"
+"POT-Creation-Date: 2022-07-25 19:45-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -2622,15 +2622,15 @@ msgstr "Učitaj impuls datoteku"
 msgid "Failed To Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
 
-#: src/effects_box.cpp:257 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:549
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:280 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:569
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:303
+#: src/effects_box.cpp:307
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"

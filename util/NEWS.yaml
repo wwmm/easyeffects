@@ -10,6 +10,20 @@ Description:
 - 
 
 - Other notes∶
+- 
+
+---
+Version: 6.2.8
+Date: 2022-07-25
+
+Description: 
+- Features∶
+- Improved translations
+
+- Bug fixes∶
+- Fixed a bug where EasyEffects could crash when closing its window while effects were being applied.
+
+- Other notes∶
 
 ---
 Version: 6.2.7

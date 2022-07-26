@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 20:05-0300\n"
+"POT-Creation-Date: 2022-07-25 19:45-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -2586,16 +2586,16 @@ msgstr "Zavést soubor s impulsem"
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát soubor s impulsem"
 
-#: src/effects_box.cpp:257 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:549
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:280 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:569
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:303
+#: src/effects_box.cpp:307
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"

@@ -1,4 +1,16 @@
 # Changelog
+ 
+## 6.2.8
+### 2022-07-25
+
+ 
+### Features:
+- Improved translations
+
+### Bug fixes:
+- Fixed a bug where EasyEffects could crash when closing its window while effects were being applied.
+
+### Other notes:
 
  
 ## 6.2.7

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 20:05-0300\n"
+"POT-Creation-Date: 2022-07-25 19:45-0300\n"
 "PO-Revision-Date: 2022-04-01 14:37+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2476,15 +2476,15 @@ msgstr "Dürtü Dosyasını İçe Aktar"
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:257 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:549
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:280 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:569
 msgid "Players"
 msgstr "Oynatıcılar"
 
-#: src/effects_box.cpp:303
+#: src/effects_box.cpp:307
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
