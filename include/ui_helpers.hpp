@@ -44,9 +44,9 @@ void show_autohiding_toast(AdwToastOverlay* toast_overlay,
 
 void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr);
 
-auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool;
+auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound = true) -> bool;
 
-auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int;
+auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound = true) -> int;
 
 auto get_new_filter_serial() -> uint;
 
@@ -69,7 +69,7 @@ void append_to_string_list(GtkStringList* string_list, const std::string& name);
 
 void remove_from_string_list(GtkStringList* string_list, const std::string& name);
 
-template <StringLiteralWrapper sl_wrapper>
+template <StringLiteralWrapper sl_wrapper, bool lower_bound = true>
 void prepare_spinbutton(GtkSpinButton* button) {
   if (button == nullptr) {
     util::warning("Null pointer provided: Spinbutton widget not prepared.");
@@ -78,12 +78,12 @@ void prepare_spinbutton(GtkSpinButton* button) {
   }
 
   g_signal_connect(button, "output", G_CALLBACK(+[](GtkSpinButton* button, gpointer user_data) {
-                     return parse_spinbutton_output(button, sl_wrapper.msg.data());
+                     return parse_spinbutton_output(button, sl_wrapper.msg.data(), lower_bound);
                    }),
                    nullptr);
 
   g_signal_connect(button, "input", G_CALLBACK(+[](GtkSpinButton* button, gdouble* new_value, gpointer user_data) {
-                     return parse_spinbutton_input(button, new_value);
+                     return parse_spinbutton_input(button, new_value, lower_bound);
                    }),
                    nullptr);
 }

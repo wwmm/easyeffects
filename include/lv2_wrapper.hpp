@@ -158,19 +158,27 @@ class Lv2Wrapper {
                      this);
   }
 
-  template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
+  template <StringLiteralWrapper key_wrapper,
+            StringLiteralWrapper gkey_wrapper,
+            bool lower_bound = true,
+            double limit = 0.0>
   void bind_key_double_db(GSettings* settings) {
-    set_control_port_value(
-        key_wrapper.msg.data(),
-        static_cast<float>(util::db_to_linear(g_settings_get_double(settings, gkey_wrapper.msg.data()))));
+    auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
+
+    auto linear_v = (!lower_bound && key_v <= limit) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+
+    set_control_port_value(key_wrapper.msg.data(), linear_v);
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto self = static_cast<Lv2Wrapper*>(user_data);
 
-                       self->set_control_port_value(
-                           key_wrapper.msg.data(),
-                           static_cast<float>(util::db_to_linear(g_settings_get_double(settings, key))));
+                       auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
+
+                       auto linear_v =
+                           (!lower_bound && key_v <= limit) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+
+                       self->set_control_port_value(key_wrapper.msg.data(), linear_v);
                      }),
                      this);
   }
