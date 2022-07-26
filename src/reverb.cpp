@@ -41,9 +41,9 @@ Reverb::Reverb(const std::string& tag,
 
   lv2_wrapper->bind_key_double<"treble_cut", "treble-cut">(settings);
 
-  lv2_wrapper->bind_key_double_percent_db<"amount", "wet">(settings);
+  lv2_wrapper->bind_key_double_db<"amount", "amount">(settings);
 
-  lv2_wrapper->bind_key_double_percent_db<"dry", "dry">(settings);
+  lv2_wrapper->bind_key_double_db<"dry", "dry">(settings);
 
   lv2_wrapper->bind_key_enum<"room_size", "room-size">(settings);
 

@@ -175,23 +175,6 @@ class Lv2Wrapper {
                      this);
   }
 
-  template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
-  void bind_key_double_percent_db(GSettings* settings) {
-    set_control_port_value(
-        key_wrapper.msg.data(),
-        static_cast<float>(util::db_percent_to_linear(g_settings_get_double(settings, gkey_wrapper.msg.data()))));
-
-    g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
-                     G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                       auto self = static_cast<Lv2Wrapper*>(user_data);
-
-                       self->set_control_port_value(
-                           key_wrapper.msg.data(),
-                           static_cast<float>(util::db_percent_to_linear(g_settings_get_double(settings, key))));
-                     }),
-                     this);
-  }
-
  private:
   std::string plugin_uri;
 
