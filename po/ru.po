@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-07-22 11:20+0000\n"
 "Last-Translator: IDeathByte <wwconstantin@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -563,7 +563,7 @@ msgid "Sidechain Type"
 msgstr "Тип сайдчейна"
 
 # #, fuzzy
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr "Устройство ввода"
 
@@ -2082,20 +2082,12 @@ msgid "Decay Time"
 msgstr "Время распада"
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr "Влажность"
-
-#: data/ui/reverb.ui:225
-msgid "Wet Level"
-msgstr "Уровень влаж."
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr "Сухость"
-
-#: data/ui/reverb.ui:259
 msgid "Dry Level"
 msgstr "Уровень сух."
+
+#: data/ui/reverb.ui:231
+msgid "Wet Level"
+msgstr "Уровень влаж."
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2391,11 +2383,11 @@ msgstr "Нет загруженного файла импульса"
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "Проигрыватели"
 
@@ -2426,11 +2418,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Удалить автозагрузку предустановки"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 msgid "Output Device"
 msgstr "Устройство вывода"
 
@@ -2544,6 +2536,16 @@ msgstr "Стереокорректоры"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr "Закрыть (Нажмите ESC)"
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#~ msgid "Wet Amount"
+#~ msgstr "Влажность"
+
+#~ msgid "Dry Amount"
+#~ msgstr "Сухость"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Веллингтон Уоллис"

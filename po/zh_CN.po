@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-07-22 11:20+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -538,7 +538,7 @@ msgstr "外部"
 msgid "Sidechain Type"
 msgstr "侧链类型"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr "输入设备"
 
@@ -2054,20 +2054,12 @@ msgid "Decay Time"
 msgstr "衰减时间"
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr "湿声程度"
-
-#: data/ui/reverb.ui:225
-msgid "Wet Level"
-msgstr "湿声级别"
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr "干声程度"
-
-#: data/ui/reverb.ui:259
 msgid "Dry Level"
 msgstr "干声级别"
+
+#: data/ui/reverb.ui:231
+msgid "Wet Level"
+msgstr "湿声级别"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2361,11 +2353,11 @@ msgstr "未加载脉冲文件"
 msgid "Failed To Load The Impulse File"
 msgstr "加载脉冲文件失败"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "播放器"
 
@@ -2394,11 +2386,11 @@ msgstr "APO 预设没加载成功。可能是文件格式有错。请检查文�
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "删除"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 msgid "Output Device"
 msgstr "输出设备"
 
@@ -2507,6 +2499,16 @@ msgstr "立体声工具"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr "关闭（请按 ESC）"
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#~ msgid "Wet Amount"
+#~ msgstr "湿声程度"
+
+#~ msgid "Dry Amount"
+#~ msgstr "干声程度"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

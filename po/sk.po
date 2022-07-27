@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -574,7 +574,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Postranný reťazec"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 #, fuzzy
 msgid "Input Device"
 msgstr "Obmedzovač na vstupe"
@@ -2242,23 +2242,13 @@ msgstr "Čas dozvuku"
 
 #: data/ui/reverb.ui:197
 #, fuzzy
-msgid "Wet Amount"
-msgstr "Množstvo"
+msgid "Dry Level"
+msgstr "Úroveň F2"
 
-#: data/ui/reverb.ui:225
+#: data/ui/reverb.ui:231
 #, fuzzy
 msgid "Wet Level"
 msgstr "Cieľová úroveň"
-
-#: data/ui/reverb.ui:232
-#, fuzzy
-msgid "Dry Amount"
-msgstr "Množstvo"
-
-#: data/ui/reverb.ui:259
-#, fuzzy
-msgid "Dry Level"
-msgstr "Úroveň F2"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2573,12 +2563,12 @@ msgstr "Načítať súbor impulzu"
 msgid "Failed To Load The Impulse File"
 msgstr "Nedá sa načítať súbor s impulzom"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "Prehrávače"
 
@@ -2609,11 +2599,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Odstrániť predvoľbu"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 #, fuzzy
 msgid "Output Device"
 msgstr "Výstupné efekty"
@@ -2727,6 +2717,18 @@ msgstr "Stereo nástroje"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Množstvo"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Množstvo"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

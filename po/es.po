@@ -537,7 +537,7 @@ msgstr "Externa"
 msgid "Sidechain Type"
 msgstr "Tipo de cadena lateral"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr "Dispositivo de entrada"
 
@@ -2044,20 +2044,12 @@ msgid "Decay Time"
 msgstr "Tiempo de decaimiento"
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr "Cantidad de señal con efectos"
-
-#: data/ui/reverb.ui:225
-msgid "Wet Level"
-msgstr "Nivel de señal con efectos"
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr "Cantidad de señal sin efectos"
-
-#: data/ui/reverb.ui:259
 msgid "Dry Level"
 msgstr "Nivel de señal sin efectos"
+
+#: data/ui/reverb.ui:231
+msgid "Wet Level"
+msgstr "Nivel de señal con efectos"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2353,11 +2345,11 @@ msgstr "No se ha cargado el archivo de impulsos"
 msgid "Failed To Load The Impulse File"
 msgstr "Fallo en la carga del archivo de impulso"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "Reproductores"
 
@@ -2388,11 +2380,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Eliminar perfil de carga automática"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 msgid "Output Device"
 msgstr "Dispositivo de salida"
 
@@ -2503,6 +2495,15 @@ msgstr "Herramientas estéreo"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr "Cerrar (Pulsar ESC)"
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#~ msgid "Wet Amount"
+#~ msgstr "Cantidad de señal con efectos"
+
+#~ msgid "Dry Amount"
+#~ msgstr "Cantidad de señal sin efectos"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

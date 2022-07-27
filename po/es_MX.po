@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2020-01-09 18:18-0500\n"
 "Last-Translator: Christian\n"
 "Language-Team: \n"
@@ -573,7 +573,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Cadena Lateral"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 #, fuzzy
 msgid "Input Device"
 msgstr "Efectos de Entrada"
@@ -2228,23 +2228,13 @@ msgstr "Tiempo de Decaimiento"
 
 #: data/ui/reverb.ui:197
 #, fuzzy
-msgid "Wet Amount"
-msgstr "Cantidad"
+msgid "Dry Level"
+msgstr "Nivel"
 
-#: data/ui/reverb.ui:225
+#: data/ui/reverb.ui:231
 #, fuzzy
 msgid "Wet Level"
 msgstr "Nivel Objetivo"
-
-#: data/ui/reverb.ui:232
-#, fuzzy
-msgid "Dry Amount"
-msgstr "Cantidad"
-
-#: data/ui/reverb.ui:259
-#, fuzzy
-msgid "Dry Level"
-msgstr "Nivel"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2559,12 +2549,12 @@ msgstr "Importar Archivo Impulse"
 msgid "Failed To Load The Impulse File"
 msgstr "No se pudo encontrar el archivo Impulse"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordes"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr ""
 
@@ -2597,11 +2587,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Borrar este perfil"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 #, fuzzy
 msgid "Output Device"
 msgstr "Efectos de Salida"
@@ -2715,6 +2705,18 @@ msgstr "Herramientas Estéreo"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Cantidad"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Cantidad"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

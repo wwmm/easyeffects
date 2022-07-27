@@ -36,10 +36,12 @@
 
 namespace util {
 
-const float minimum_db_level = -100.0F;
-const double minimum_db_d_level = -100.0;
-const float minimum_linear_level = 0.00001F;
-const double minimum_linear_d_level = 0.00001;
+// Minimum dB level reported here has to be used in gsettings and spinbuttons
+// as minimal values for controls that replicates the -infinity state (linear 0).
+constexpr float minimum_db_level = -100.0F;
+constexpr double minimum_db_d_level = -100.0;
+constexpr float minimum_linear_level = 0.00001F;
+constexpr double minimum_linear_d_level = 0.00001;
 
 void debug(const std::string& s, std::source_location location = std::source_location::current());
 void error(const std::string& s, std::source_location location = std::source_location::current());

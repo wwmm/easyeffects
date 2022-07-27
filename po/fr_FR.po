@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-07-18 22:44+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -541,7 +541,7 @@ msgstr "Externe"
 msgid "Sidechain Type"
 msgstr "Type de chaîne latérale"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr "Périphérique d’entrée"
 
@@ -2069,20 +2069,12 @@ msgid "Decay Time"
 msgstr "Temps de déclin"
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr "Quantité de signaux avec effets"
-
-#: data/ui/reverb.ui:225
-msgid "Wet Level"
-msgstr "Niveau des signaux avec effet"
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr "Quantité de signaux sans effets"
-
-#: data/ui/reverb.ui:259
 msgid "Dry Level"
 msgstr "Niveau des signaux sans effets"
+
+#: data/ui/reverb.ui:231
+msgid "Wet Level"
+msgstr "Niveau des signaux avec effet"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2379,11 +2371,11 @@ msgstr "Aucun fichier d’impulsion chargé"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossible de charger le fichier d’impulsion"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "Lecteurs"
 
@@ -2414,11 +2406,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 msgid "Output Device"
 msgstr "Périphérique de sortie"
 
@@ -2531,6 +2523,16 @@ msgstr "Outils stéréo"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr "Fermer (appuyez sur Échap)"
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#~ msgid "Wet Amount"
+#~ msgstr "Quantité de signaux avec effets"
+
+#~ msgid "Dry Amount"
+#~ msgstr "Quantité de signaux sans effets"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

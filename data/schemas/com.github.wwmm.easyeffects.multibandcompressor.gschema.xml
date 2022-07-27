@@ -560,36 +560,36 @@
         </key>
 
         <key name="release-threshold0" type="d">
-            <range min="-120" max="36" />
-            <default>-120</default>
+            <range min="-100" max="36" />
+            <default>-100</default>
         </key>
         <key name="release-threshold1" type="d">
-            <range min="-120" max="36" />
-            <default>-120</default>
+            <range min="-100" max="36" />
+            <default>-100</default>
         </key>
         <key name="release-threshold2" type="d">
-            <range min="-120" max="36" />
-            <default>-120</default>
+            <range min="-100" max="36" />
+            <default>-100</default>
         </key>
         <key name="release-threshold3" type="d">
-            <range min="-120" max="36" />
-            <default>-120</default>
+            <range min="-100" max="36" />
+            <default>-100</default>
         </key>
         <key name="release-threshold4" type="d">
-            <range min="-120" max="36" />
-            <default>-120</default>
+            <range min="-100" max="36" />
+            <default>-100</default>
         </key>
         <key name="release-threshold5" type="d">
-            <range min="-120" max="36" />
-            <default>-120</default>
+            <range min="-100" max="36" />
+            <default>-100</default>
         </key>
         <key name="release-threshold6" type="d">
-            <range min="-120" max="36" />
-            <default>-120</default>
+            <range min="-100" max="36" />
+            <default>-100</default>
         </key>
         <key name="release-threshold7" type="d">
-            <range min="-120" max="36" />
-            <default>-120</default>
+            <range min="-100" max="36" />
+            <default>-100</default>
         </key>
 
         <key name="release-time0" type="d">

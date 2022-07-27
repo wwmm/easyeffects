@@ -33,7 +33,7 @@
                 </title>
                 <p>Sets up the Threshold of the Release Time, calculated by summing the Release Threshold to the Attack Threshold.</p>
                 <p>If the Sidechain level is above that Threshold, the compressor uses the Release Time for the releasing stage. Otherwise the Attack Time is used in place of Release Time.</p>
-                <p>For example, with -10 dB Attack Threshold and -60 dB Release Threshold, if the Sidechain is above <code its:withinText="nested">-10 + (-60) = -70 db</code>, the Release Time is used for the gain restoration. If the Sidechain is below -70 db, the Attack Time is used for the gain restoration.</p>
+                <p>For example, with -10 dB Attack Threshold and -60 dB Release Threshold, if the Sidechain is above <code its:withinText="nested">-10 + (-60) = -70 dB</code>, the Release Time is used for the gain restoration. If the Sidechain is below -70 dB, the Attack Time is used for the gain restoration.</p>
             </item>
             <item>
                 <title>

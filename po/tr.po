@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-04-01 14:37+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -563,7 +563,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Yanzincir"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
@@ -2158,23 +2158,13 @@ msgstr "Bozunma Süresi"
 
 #: data/ui/reverb.ui:197
 #, fuzzy
-msgid "Wet Amount"
-msgstr "Miktar"
+msgid "Dry Level"
+msgstr "Seviye"
 
-#: data/ui/reverb.ui:225
+#: data/ui/reverb.ui:231
 #, fuzzy
 msgid "Wet Level"
 msgstr "Hedef Seviye"
-
-#: data/ui/reverb.ui:232
-#, fuzzy
-msgid "Dry Amount"
-msgstr "Miktar"
-
-#: data/ui/reverb.ui:259
-#, fuzzy
-msgid "Dry Level"
-msgstr "Seviye"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2476,11 +2466,11 @@ msgstr "Dürtü Dosyasını İçe Aktar"
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "Oynatıcılar"
 
@@ -2510,11 +2500,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 msgid "Output Device"
 msgstr "Çıkış Aygıtı"
 
@@ -2624,6 +2614,18 @@ msgstr "Stereo Araçları"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Miktar"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Miktar"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

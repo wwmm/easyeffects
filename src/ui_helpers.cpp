@@ -97,29 +97,46 @@ void show_simple_message_dialog(GtkWidget* parent, const std::string& title, con
   gtk_window_present(GTK_WINDOW(dialog));
 }
 
-auto parse_spinbutton_output(GtkSpinButton* button, const char* unit) -> bool {
+auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound) -> bool {
   auto* adjustment = gtk_spin_button_get_adjustment(button);
   auto value = gtk_adjustment_get_value(adjustment);
   auto precision = gtk_spin_button_get_digits(button);
+  auto str_unit = (unit != nullptr) ? (" "s + unit) : ""s;
 
-  // format string: 0 = value, 1 = precision, 2 = unit
-  auto text =
-      fmt::format(ui::get_user_locale(), "{0:.{1}Lf}{2}", value, precision, ((unit != nullptr) ? " "s + unit : ""));
+  bool minus_infinity = (!lower_bound && value <= util::minimum_db_d_level);
+
+  auto text = (minus_infinity) ? (_("-inf") + str_unit)
+                               // format string: 0 = value, 1 = precision, 2 = unit
+                               : fmt::format(ui::get_user_locale(), "{0:.{1}Lf}{2}", value, precision, str_unit);
 
   gtk_editable_set_text(GTK_EDITABLE(button), text.c_str());
 
   return true;
 }
 
-auto parse_spinbutton_input(GtkSpinButton* button, double* new_value) -> int {
+auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound) -> int {
+  auto min = 0.0, max = 0.0;
+
+  gtk_spin_button_get_range(button, &min, &max);
+
   std::istringstream str(gtk_editable_get_text(GTK_EDITABLE(button)));
+
+  if (!lower_bound) {
+    auto s = str.str();
+
+    if (s.starts_with(_("-inf"))) {
+      *new_value = min;
+
+      return 1;
+    }
+  }
 
   str.imbue(ui::get_user_locale());
 
-  if (auto min = 0.0, max = 0.0; str >> *new_value) {
-    gtk_spin_button_get_range(button, &min, &max);
+  auto v = 0.0;
 
-    *new_value = std::clamp(*new_value, min, max);
+  if (str >> v) {
+    *new_value = std::clamp(v, min, max);
 
     return 1;
   }

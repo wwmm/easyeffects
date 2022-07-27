@@ -100,11 +100,13 @@ class MultibandCompressor : public PluginBase {
 
     lv2_wrapper->bind_key_double_db<scp[n], band_sidechain_preamp[n]>(settings);
     lv2_wrapper->bind_key_double_db<al[n], band_attack_threshold[n]>(settings);
-    lv2_wrapper->bind_key_double_db<rrl[n], band_release_threshold[n]>(settings);
     lv2_wrapper->bind_key_double_db<kn[n], band_knee[n]>(settings);
     lv2_wrapper->bind_key_double_db<bth[n], band_boost_threshold[n]>(settings);
     lv2_wrapper->bind_key_double_db<bsa[n], band_boost_amount[n]>(settings);
     lv2_wrapper->bind_key_double_db<mk[n], band_makeup[n]>(settings);
+
+    // This control can assume -inf
+    lv2_wrapper->bind_key_double_db<rrl[n], band_release_threshold[n], false>(settings);
 
     gconnections.push_back(g_signal_connect(settings, ("changed::"s + band_external_sidechain[n]).c_str(),
                                             G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
