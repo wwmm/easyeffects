@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-25 19:45-0300\n"
-"PO-Revision-Date: 2022-05-06 00:14+0000\n"
-"Last-Translator: fjsevilla <fjsevilla2.0@gmail.com>\n"
+"PO-Revision-Date: 2022-07-27 07:18+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "EasyEffects"
@@ -42,15 +42,15 @@ msgstr "\"Perfiles\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Activar/desactivar esta aplicación"
 
 #: data/ui/app_info.ui:213
 msgid "Enable"
-msgstr "Habilitar"
+msgstr "Activar"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Lista de aplicaciones excluidas: Añadir/quitar esta aplicación"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -62,7 +62,7 @@ msgstr "Silenciar la aplicación"
 
 #: data/ui/app_info.ui:272
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "Cambiar el volumen de esta aplicación"
 
 #: data/ui/app_info.ui:274
 msgid "Application Volume"
@@ -100,7 +100,7 @@ msgstr "Menú de perfiles"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "Activar/desactivar el baipás global"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -288,9 +288,8 @@ msgid "Preset"
 msgstr "Perfil"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "Eliminar perfil de carga automática"
+msgstr "Eliminar este preajuste de carga automática"
 
 #: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:458 data/ui/deesser.ui:14
 #: data/ui/exciter.ui:12 data/ui/gate.ui:564
@@ -984,25 +983,23 @@ msgstr "Puerta de ruido"
 
 #: data/ui/gate.ui:149 data/ui/gate.ui:242
 msgid "Zone"
-msgstr ""
+msgstr "Zona"
 
 #: data/ui/gate.ui:221
 msgid "Hysteresis"
-msgstr ""
+msgstr "Histéresis"
 
 #: data/ui/gate.ui:406
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "Inicio de la zona de ataque"
 
 #: data/ui/gate.ui:460
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "Tiempo de decaimiento"
+msgstr "Inicio de la zona de decaimiento"
 
 #: data/ui/gate.ui:647
-#, fuzzy
 msgid "Internal"
-msgstr "Externa"
+msgstr "Interna"
 
 #: data/ui/gate.ui:1254 data/ui/multiband_gate.ui:494
 #: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
@@ -1565,13 +1562,16 @@ msgstr "General"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Gestión de dispositivos"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"Se recomienda NO establecer EasyEffects Sink/Source como dispositivo "
+"predeterminado en aplicaciones externas (por ejemplo, Configuración de Gnome "
+"y Configuración del sistema Plasma)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1794,17 +1794,16 @@ msgid "Octaves"
 msgstr "Octavas"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Borrar este perfil"
+msgstr "Quitar este efecto"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Activar/desactivar este efecto"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Cambiar la posición de este efecto"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
@@ -1840,30 +1839,27 @@ msgstr "Servicio"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Lanzar el servicio al iniciar el sistema"
 
 #: data/ui/preferences_general.ui:26
-#, fuzzy
 msgid "Shutdown on Window Closing"
-msgstr "Apagar al cerrar la ventana"
+msgstr "Apagado al cerrar la ventana"
 
 #: data/ui/preferences_general.ui:40
 msgid "Audio"
 msgstr "Audio"
 
 #: data/ui/preferences_general.ui:43
-#, fuzzy
 msgid "Process All Output Streams"
-msgstr "Procesar todas las salidas"
+msgstr "Procesar todos los flujos de salida"
 
 #: data/ui/preferences_general.ui:55
-#, fuzzy
 msgid "Process All Input Streams"
-msgstr "Procesar todas las entradas"
+msgstr "Procesar todos los flujos de entrada"
 
 #: data/ui/preferences_general.ui:67
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Ignorar los flujos del monitor de dispositivos"
 
 #: data/ui/preferences_general.ui:79
 msgid "Use Cubic Volume"
@@ -1872,6 +1868,8 @@ msgstr "Usar volumen cúbico"
 #: data/ui/preferences_general.ui:91
 msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
 msgstr ""
+"Restablecer el volumen de los dispositivos virtuales de EasyEffects al "
+"iniciarse"
 
 #: data/ui/preferences_general.ui:103
 msgid "Inactivity Timeout"
@@ -1974,14 +1972,12 @@ msgid "New Output Preset Name"
 msgstr "Nombre del nuevo perfil de salida"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Crear perfil"
+msgstr "Crear un preajuste nuevo"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
-msgstr "Importar perfil"
+msgstr "Importar un preajuste"
 
 #: data/ui/presets_menu.ui:90
 msgid "Search Output Preset"
@@ -2115,7 +2111,7 @@ msgstr "Lista de modelos de RNNoise"
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Modelo no cargado"
 
 #: data/ui/rnnoise.ui:116
 msgid "Active Model"
@@ -2309,20 +2305,19 @@ msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:99
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "El archivo no es regular"
 
 #: src/convolver_menu_impulses.cpp:104
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "El archivo de impulso puede estar dañado o no ser compatible"
 
 #: src/convolver_menu_impulses.cpp:109
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Sólo se admiten archivos de impulso estéreo"
 
 #: src/convolver_menu_impulses.cpp:119
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Lista de archivos de respuesta a impulsos"
+msgstr "Archivo de impulso no importado"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "Import Impulse File"
@@ -2351,14 +2346,12 @@ msgid "Remove Impulse"
 msgstr "Eliminar archivo de respuesta a impulsos"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Lista de archivos de respuesta a impulsos"
+msgstr "No se ha cargado el archivo de impulsos"
 
 #: src/convolver_ui.cpp:345
-#, fuzzy
 msgid "Failed To Load The Impulse File"
-msgstr "No se pudo cargar el archivo de respuesta a impulsos"
+msgstr "Fallo en la carga del archivo de impulso"
 
 #: src/effects_box.cpp:261 src/plugins_box.cpp:549
 msgid "Recorders"
@@ -2388,6 +2381,8 @@ msgstr "Perfiles APO"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
+"El preajuste APO no se ha cargado. El formato del archivo puede ser "
+"incorrecto. Por favor, compruebe su contenido."
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
@@ -2414,6 +2409,8 @@ msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"El modelo seleccionado no se ha cargado. Su formato puede no ser compatible. "
+"Vuelva al modelo estándar."
 
 #: src/rnnoise_ui.cpp:132
 msgid "Import Model File"
@@ -2505,7 +2502,7 @@ msgstr "Herramientas estéreo"
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
-msgstr ""
+msgstr "Cerrar (Pulsar ESC)"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"
