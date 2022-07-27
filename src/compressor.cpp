@@ -73,8 +73,6 @@ Compressor::Compressor(const std::string& tag,
 
   lv2_wrapper->bind_key_double<"slpf", "lpf-frequency">(settings);
 
-  lv2_wrapper->bind_key_double_db<"rrl", "release-threshold">(settings);
-
   lv2_wrapper->bind_key_double_db<"bth", "boost-threshold">(settings);
 
   lv2_wrapper->bind_key_double_db<"bsa", "boost-amount">(settings);
@@ -86,6 +84,9 @@ Compressor::Compressor(const std::string& tag,
   lv2_wrapper->bind_key_double_db<"mk", "makeup">(settings);
 
   lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
+
+  // This control can assume -inf
+  lv2_wrapper->bind_key_double_db<"rrl", "release-threshold", false>(settings);
 
   setup_input_output_gain();
 }

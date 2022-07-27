@@ -98,24 +98,16 @@ void show_simple_message_dialog(GtkWidget* parent, const std::string& title, con
 }
 
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound) -> bool {
-  bool minus_infinity = false;
-
   auto* adjustment = gtk_spin_button_get_adjustment(button);
   auto value = gtk_adjustment_get_value(adjustment);
   auto precision = gtk_spin_button_get_digits(button);
+  auto str_unit = (unit != nullptr) ? (" "s + unit) : ""s;
 
-  if (!lower_bound) {
-    auto min = 0.0, max = 0.0;
+  bool minus_infinity = (!lower_bound && value <= util::minimum_db_d_level);
 
-    gtk_spin_button_get_range(button, &min, &max);
-
-    minus_infinity = (value <= min);
-  }
-
-  // format string: 0 = value, 1 = precision, 2 = unit
-  auto text = (minus_infinity) ? ("-inf "s + unit)
-                               : fmt::format(ui::get_user_locale(), "{0:.{1}Lf}{2}", value, precision,
-                                             ((unit != nullptr) ? " "s + unit : ""));
+  auto text = (minus_infinity) ? (_("-inf") + str_unit)
+                               // format string: 0 = value, 1 = precision, 2 = unit
+                               : fmt::format(ui::get_user_locale(), "{0:.{1}Lf}{2}", value, precision, str_unit);
 
   gtk_editable_set_text(GTK_EDITABLE(button), text.c_str());
 
@@ -132,7 +124,7 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool
   if (!lower_bound) {
     auto s = str.str();
 
-    if (s.starts_with("-inf")) {
+    if (s.starts_with(_("-inf"))) {
       *new_value = min;
 
       return 1;

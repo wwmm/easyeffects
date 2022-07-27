@@ -158,14 +158,12 @@ class Lv2Wrapper {
                      this);
   }
 
-  template <StringLiteralWrapper key_wrapper,
-            StringLiteralWrapper gkey_wrapper,
-            bool lower_bound = true,
-            double limit = 0.0>
+  template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper, bool lower_bound = true>
   void bind_key_double_db(GSettings* settings) {
     auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
 
-    auto linear_v = (!lower_bound && key_v <= limit) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+    auto linear_v =
+        (!lower_bound && key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
 
     set_control_port_value(key_wrapper.msg.data(), linear_v);
 
@@ -175,8 +173,9 @@ class Lv2Wrapper {
 
                        auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
 
-                       auto linear_v =
-                           (!lower_bound && key_v <= limit) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+                       auto linear_v = (!lower_bound && key_v <= util::minimum_db_d_level)
+                                           ? 0.0F
+                                           : static_cast<float>(util::db_to_linear(key_v));
 
                        self->set_control_port_value(key_wrapper.msg.data(), linear_v);
                      }),

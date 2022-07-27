@@ -417,8 +417,8 @@ void compressor_box_init(CompressorBox* self) {
 
   self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
 
-  prepare_spinbuttons<"dB">(self->threshold, self->release_threshold, self->boost_threshold, self->boost_amount,
-                            self->knee, self->makeup, self->preamp);
+  prepare_spinbuttons<"dB">(self->threshold, self->boost_threshold, self->boost_amount, self->knee, self->makeup,
+                            self->preamp);
 
   prepare_spinbuttons<"Hz">(self->hpf_freq, self->lpf_freq);
 
@@ -427,6 +427,9 @@ void compressor_box_init(CompressorBox* self) {
   prepare_spinbuttons<"">(self->ratio);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
+
+  // This spinbutton can assume -inf
+  prepare_spinbuttons<"dB", false>(self->release_threshold);
 }
 
 auto create() -> CompressorBox* {

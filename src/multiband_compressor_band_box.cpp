@@ -289,10 +289,13 @@ void multiband_compressor_band_box_init(MultibandCompressorBandBox* self) {
   prepare_spinbuttons<"ms">(self->attack_time, self->release_time, self->sidechain_reactivity,
                             self->sidechain_lookahead);
 
-  prepare_spinbuttons<"dB">(self->attack_threshold, self->release_threshold, self->knee, self->makeup,
-                            self->sidechain_preamp, self->boost_amount, self->boost_threshold);
+  prepare_spinbuttons<"dB">(self->attack_threshold, self->knee, self->makeup, self->sidechain_preamp,
+                            self->boost_amount, self->boost_threshold);
 
   prepare_spinbuttons<"">(self->ratio);
+
+  // This spinbutton can assume -inf
+  prepare_spinbuttons<"dB", false>(self->release_threshold);
 }
 
 auto create() -> MultibandCompressorBandBox* {

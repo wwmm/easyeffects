@@ -122,9 +122,9 @@ void prepare_scale(GtkScale* scale) {
       nullptr, nullptr);
 }
 
-template <StringLiteralWrapper key_wrapper, typename... Targs>
+template <StringLiteralWrapper key_wrapper, bool lower_bound = true, typename... Targs>
 void prepare_spinbuttons(Targs... button) {
-  (prepare_spinbutton<key_wrapper>(button), ...);
+  (prepare_spinbutton<key_wrapper, lower_bound>(button), ...);
 }
 
 template <StringLiteralWrapper key_wrapper, typename... Targs>
