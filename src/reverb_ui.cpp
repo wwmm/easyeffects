@@ -45,7 +45,7 @@ struct _ReverbBox {
 
   GtkComboBoxText* room_size;
 
-  GtkSpinButton *predelay, *decay_time, *diffusion, *amount, *dry, *hf_damp, *bass_cut, *treble_cut;
+  GtkSpinButton *predelay, *decay_time, *diffusion, *dry, *wet, *hf_damp, *bass_cut, *treble_cut;
 
   GSettings* settings;
 
@@ -63,7 +63,7 @@ void on_preset_room(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->hf_damp, 5508.46);
   gtk_combo_box_set_active(GTK_COMBO_BOX(self->room_size), 4);
   gtk_spin_button_set_value(self->diffusion, 0.54);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.469761));
+  gtk_spin_button_set_value(self->wet, util::linear_to_db(0.469761));
   gtk_spin_button_set_value(self->dry, util::linear_to_db(1.0));
   gtk_spin_button_set_value(self->predelay, 25.0);
   gtk_spin_button_set_value(self->bass_cut, 257.65);
@@ -75,7 +75,7 @@ void on_preset_empty_walls(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->hf_damp, 3971.64);
   gtk_combo_box_set_active(GTK_COMBO_BOX(self->room_size), 4);
   gtk_spin_button_set_value(self->diffusion, 0.17);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.198884));
+  gtk_spin_button_set_value(self->wet, util::linear_to_db(0.198884));
   gtk_spin_button_set_value(self->dry, util::linear_to_db(1.0));
   gtk_spin_button_set_value(self->predelay, 13.0);
   gtk_spin_button_set_value(self->bass_cut, 240.453);
@@ -87,7 +87,7 @@ void on_preset_ambience(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->hf_damp, 2182.58);
   gtk_combo_box_set_active(GTK_COMBO_BOX(self->room_size), 4);
   gtk_spin_button_set_value(self->diffusion, 0.69);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.291183));
+  gtk_spin_button_set_value(self->wet, util::linear_to_db(0.291183));
   gtk_spin_button_set_value(self->dry, util::linear_to_db(1.0));
   gtk_spin_button_set_value(self->predelay, 6.5);
   gtk_spin_button_set_value(self->bass_cut, 514.079);
@@ -97,7 +97,7 @@ void on_preset_ambience(ReverbBox* self, GtkButton* btn) {
 void on_preset_large_empty_hall(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->decay_time, 2.00689);
   gtk_spin_button_set_value(self->hf_damp, 20000.0);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.366022));
+  gtk_spin_button_set_value(self->wet, util::linear_to_db(0.366022));
   g_settings_reset(self->settings, "room-size");
   g_settings_reset(self->settings, "diffusion");
   g_settings_reset(self->settings, "dry");
@@ -109,7 +109,7 @@ void on_preset_large_empty_hall(ReverbBox* self, GtkButton* btn) {
 void on_preset_disco(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->decay_time, 1.0);
   gtk_spin_button_set_value(self->hf_damp, 3396.49);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.269807));
+  gtk_spin_button_set_value(self->wet, util::linear_to_db(0.269807));
   g_settings_reset(self->settings, "room-size");
   g_settings_reset(self->settings, "diffusion");
   g_settings_reset(self->settings, "dry");
@@ -121,7 +121,7 @@ void on_preset_disco(ReverbBox* self, GtkButton* btn) {
 void on_preset_large_occupied_hall(ReverbBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->decay_time, 1.45397);
   gtk_spin_button_set_value(self->hf_damp, 9795.58);
-  gtk_spin_button_set_value(self->amount, util::linear_to_db(0.184284));
+  gtk_spin_button_set_value(self->wet, util::linear_to_db(0.184284));
   g_settings_reset(self->settings, "room-size");
   g_settings_reset(self->settings, "diffusion");
   g_settings_reset(self->settings, "dry");
@@ -169,7 +169,7 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  g_settings_bind(self->settings, "amount", gtk_spin_button_get_adjustment(self->amount), "value",
+  g_settings_bind(self->settings, "amount", gtk_spin_button_get_adjustment(self->wet), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "predelay", gtk_spin_button_get_adjustment(self->predelay), "value",
@@ -253,9 +253,9 @@ void reverb_box_class_init(ReverbBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, room_size);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, predelay);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, decay_time);
-  gtk_widget_class_bind_template_child(widget_class, ReverbBox, amount);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, diffusion);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, dry);
+  gtk_widget_class_bind_template_child(widget_class, ReverbBox, wet);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, hf_damp);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, bass_cut);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, treble_cut);
@@ -285,7 +285,7 @@ void reverb_box_init(ReverbBox* self) {
   prepare_spinbuttons<"">(self->diffusion);
 
   // These spinbuttons can assume -inf
-  prepare_spinbuttons<"dB", false>(self->amount, self->dry);
+  prepare_spinbuttons<"dB", false>(self->wet, self->dry);
 }
 
 auto create() -> ReverbBox* {
