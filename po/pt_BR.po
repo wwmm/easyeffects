@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-06-27 22:36+0000\n"
 "Last-Translator: Vander <vander.azevedo88@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -558,7 +558,7 @@ msgstr "Externo"
 msgid "Sidechain Type"
 msgstr "Tipo de cadeia lateral"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 #, fuzzy
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
@@ -2181,23 +2181,13 @@ msgstr "Tempo de Decaimento"
 
 #: data/ui/reverb.ui:197
 #, fuzzy
-msgid "Wet Amount"
-msgstr "Quantidade"
+msgid "Dry Level"
+msgstr "Nível"
 
-#: data/ui/reverb.ui:225
+#: data/ui/reverb.ui:231
 #, fuzzy
 msgid "Wet Level"
 msgstr "Nível Alvo"
-
-#: data/ui/reverb.ui:232
-#, fuzzy
-msgid "Dry Amount"
-msgstr "Quantidade"
-
-#: data/ui/reverb.ui:259
-#, fuzzy
-msgid "Dry Level"
-msgstr "Nível"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2506,11 +2496,11 @@ msgstr "Importar Arquivo com a Resposta de Impulso"
 msgid "Failed To Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "Reprodutores"
 
@@ -2542,11 +2532,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Remover este arquivo de predefinição"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "Remover"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 #, fuzzy
 msgid "Output Device"
 msgstr "Ganho de Entrada"
@@ -2661,6 +2651,18 @@ msgstr "Ferramentas Stereo"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Quantidade"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Quantidade"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

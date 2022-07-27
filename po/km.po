@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -534,7 +534,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr ""
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr ""
 
@@ -2036,19 +2036,11 @@ msgid "Decay Time"
 msgstr ""
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr ""
-
-#: data/ui/reverb.ui:225
-msgid "Wet Level"
-msgstr ""
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr ""
-
-#: data/ui/reverb.ui:259
 msgid "Dry Level"
+msgstr ""
+
+#: data/ui/reverb.ui:231
+msgid "Wet Level"
 msgstr ""
 
 #: data/ui/reverb.ui:266
@@ -2343,11 +2335,11 @@ msgstr ""
 msgid "Failed To Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr ""
 
@@ -2376,11 +2368,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr ""
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 msgid "Output Device"
 msgstr ""
 
@@ -2488,4 +2480,8 @@ msgstr ""
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
+msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
 msgstr ""

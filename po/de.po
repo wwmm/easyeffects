@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-07-15 14:19+0000\n"
 "Last-Translator: Florian Schaupp <fschaupp@hotmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -539,7 +539,7 @@ msgstr "Extern"
 msgid "Sidechain Type"
 msgstr "Sidechain-Typ"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr "Eingabegerät"
 
@@ -2049,20 +2049,12 @@ msgid "Decay Time"
 msgstr "Abklingzeit"
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr "Feuchtigkeits-Anteil"
-
-#: data/ui/reverb.ui:225
-msgid "Wet Level"
-msgstr "Feuchtigkeit"
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr "Trockenheits-Anteil"
-
-#: data/ui/reverb.ui:259
 msgid "Dry Level"
 msgstr "Trockenheit"
+
+#: data/ui/reverb.ui:231
+msgid "Wet Level"
+msgstr "Feuchtigkeit"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2361,11 +2353,11 @@ msgstr "Impulsfilter-Liste"
 msgid "Failed To Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "Rekorder"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "Spieler"
 
@@ -2394,11 +2386,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Voreinstellung automatisch laden"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "Entfernen"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 msgid "Output Device"
 msgstr "Ausgabegerät"
 
@@ -2507,6 +2499,16 @@ msgstr "Stereowerkzeuge"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#~ msgid "Wet Amount"
+#~ msgstr "Feuchtigkeits-Anteil"
+
+#~ msgid "Dry Amount"
+#~ msgstr "Trockenheits-Anteil"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

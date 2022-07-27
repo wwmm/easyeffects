@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -578,7 +578,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Postranní řetězec"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 #, fuzzy
 msgid "Input Device"
 msgstr "Omezovač vstupu"
@@ -2255,23 +2255,13 @@ msgstr "Čas dozvuku"
 
 #: data/ui/reverb.ui:197
 #, fuzzy
-msgid "Wet Amount"
-msgstr "Množství"
+msgid "Dry Level"
+msgstr "Úroveň"
 
-#: data/ui/reverb.ui:225
+#: data/ui/reverb.ui:231
 #, fuzzy
 msgid "Wet Level"
 msgstr "Úroveň cíle"
-
-#: data/ui/reverb.ui:232
-#, fuzzy
-msgid "Dry Amount"
-msgstr "Množství"
-
-#: data/ui/reverb.ui:259
-#, fuzzy
-msgid "Dry Level"
-msgstr "Úroveň"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2586,12 +2576,12 @@ msgstr "Zavést soubor s impulsem"
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát soubor s impulsem"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr ""
 
@@ -2624,11 +2614,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Odstranit tento soubor s přednastavením"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 #, fuzzy
 msgid "Output Device"
 msgstr "Vstupní zesílení"
@@ -2744,6 +2734,18 @@ msgstr "Nástroje sterea"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Množství"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Množství"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

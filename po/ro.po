@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -573,7 +573,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Lanț Lateral"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 #, fuzzy
 msgid "Input Device"
 msgstr "Nivel Input"
@@ -2226,23 +2226,13 @@ msgstr "Timp Decay"
 
 #: data/ui/reverb.ui:197
 #, fuzzy
-msgid "Wet Amount"
-msgstr "Cantitate"
+msgid "Dry Level"
+msgstr "F2 Nivel"
 
-#: data/ui/reverb.ui:225
+#: data/ui/reverb.ui:231
 #, fuzzy
 msgid "Wet Level"
 msgstr "Nivelul Țintă"
-
-#: data/ui/reverb.ui:232
-#, fuzzy
-msgid "Dry Amount"
-msgstr "Cantitate"
-
-#: data/ui/reverb.ui:259
-#, fuzzy
-msgid "Dry Level"
-msgstr "F2 Nivel"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2561,12 +2551,12 @@ msgstr "Importă Fișier Impulse"
 msgid "Failed To Load The Impulse File"
 msgstr "Nu s-a putut Încărca Fișierul Impulse"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordură"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr ""
 
@@ -2597,11 +2587,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Șterge fișierul de presetări"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 #, fuzzy
 msgid "Output Device"
 msgstr "Efecte Output"
@@ -2714,6 +2704,18 @@ msgstr "Unelte Stereo"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Cantitate"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Cantitate"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

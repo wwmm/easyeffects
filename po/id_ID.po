@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -580,7 +580,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Sidechain"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 #, fuzzy
 msgid "Input Device"
 msgstr "Pembatas Masukan"
@@ -2219,20 +2219,12 @@ msgid "Decay Time"
 msgstr "Waktu Decay"
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr "Besaran Wet"
-
-#: data/ui/reverb.ui:225
-msgid "Wet Level"
-msgstr "Tingkat Wet"
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr "Besaran Dry"
-
-#: data/ui/reverb.ui:259
 msgid "Dry Level"
 msgstr "Tingkat Dry"
+
+#: data/ui/reverb.ui:231
+msgid "Wet Level"
+msgstr "Tingkat Wet"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2537,11 +2529,11 @@ msgstr "Muat Berkas Impuls"
 msgid "Failed To Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "Perekam"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "Pemain"
 
@@ -2571,11 +2563,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Hapus Preset Pemuatan Otomatis"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 #, fuzzy
 msgid "Output Device"
 msgstr "Gain Input"
@@ -2685,6 +2677,16 @@ msgstr "Pengolah Stereo"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#~ msgid "Wet Amount"
+#~ msgstr "Besaran Wet"
+
+#~ msgid "Dry Amount"
+#~ msgstr "Besaran Dry"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"

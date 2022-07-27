@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-01-15 15:15+0000\n"
 "Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -545,7 +545,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Typ av sidokedja"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr "Ingångsenhet"
 
@@ -2108,22 +2108,14 @@ msgid "Decay Time"
 msgstr ""
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr ""
-
-#: data/ui/reverb.ui:225
-#, fuzzy
-msgid "Wet Level"
-msgstr "Målvärde (dB)"
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr ""
-
-#: data/ui/reverb.ui:259
 #, fuzzy
 msgid "Dry Level"
 msgstr "Nivå"
+
+#: data/ui/reverb.ui:231
+#, fuzzy
+msgid "Wet Level"
+msgstr "Målvärde (dB)"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2451,11 +2443,11 @@ msgstr "Lista över impulsfiler"
 msgid "Failed To Load The Impulse File"
 msgstr "Sök impulsfil"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr ""
 
@@ -2487,11 +2479,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr ""
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "Ta bort"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 #, fuzzy
 msgid "Output Device"
 msgstr "Ingångsförstärkning (dB)"
@@ -2614,6 +2606,10 @@ msgstr "Ljudförstärkare"
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
+msgstr ""
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
 msgstr ""
 
 #~ msgid "Wellington Wallace"

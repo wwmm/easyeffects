@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 19:45-0300\n"
+"POT-Creation-Date: 2022-07-27 18:34+0200\n"
 "PO-Revision-Date: 2022-07-18 22:44+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -537,7 +537,7 @@ msgstr "外部"
 msgid "Sidechain Type"
 msgstr "サイドチェーンタイプ"
 
-#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:548
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
 msgid "Input Device"
 msgstr "入力デバイス"
 
@@ -2041,20 +2041,12 @@ msgid "Decay Time"
 msgstr "減衰時間"
 
 #: data/ui/reverb.ui:197
-msgid "Wet Amount"
-msgstr "Wet 量"
-
-#: data/ui/reverb.ui:225
-msgid "Wet Level"
-msgstr "Wet レベル"
-
-#: data/ui/reverb.ui:232
-msgid "Dry Amount"
-msgstr "Dry 量"
-
-#: data/ui/reverb.ui:259
 msgid "Dry Level"
 msgstr "Dry レベル"
+
+#: data/ui/reverb.ui:231
+msgid "Wet Level"
+msgstr "Wet レベル"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2349,11 +2341,11 @@ msgstr "読み込まれたインパルスファイルはありません"
 msgid "Failed To Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:549
+#: src/effects_box.cpp:261 src/plugins_box.cpp:547
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:569
+#: src/effects_box.cpp:284 src/plugins_box.cpp:567
 msgid "Players"
 msgstr "プレイヤー"
 
@@ -2384,11 +2376,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "自動読み込みプリセットを削除"
 
-#: src/plugins_box.cpp:503
+#: src/plugins_box.cpp:501
 msgid "Remove"
 msgstr "削除"
 
-#: src/plugins_box.cpp:570
+#: src/plugins_box.cpp:568
 msgid "Output Device"
 msgstr "出力デバイス"
 
@@ -2499,6 +2491,16 @@ msgstr "ステレオツール"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr "閉じる (Esc キーを押す)"
+
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+msgid "-inf"
+msgstr ""
+
+#~ msgid "Wet Amount"
+#~ msgstr "Wet 量"
+
+#~ msgid "Dry Amount"
+#~ msgstr "Dry 量"
 
 #~ msgid "Wellington Wallace"
 #~ msgstr "Wellington Wallace"
