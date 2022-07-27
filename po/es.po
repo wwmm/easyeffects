@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 18:34+0200\n"
+"POT-Creation-Date: 2022-07-25 19:45-0300\n"
 "PO-Revision-Date: 2022-07-27 07:18+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2495,7 +2495,6 @@ msgstr "Herramientas estéreo"
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
 msgstr "Cerrar (Pulsar ESC)"
-
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
 msgid "-inf"
 msgstr ""
