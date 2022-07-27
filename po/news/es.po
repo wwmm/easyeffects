@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-25 19:45-0300\n"
-"PO-Revision-Date: 2022-07-26 19:24+0000\n"
+"PO-Revision-Date: 2022-07-27 08:18+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -274,17 +274,22 @@ msgid ""
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
+"Para evitar problemas con el desplazamiento del ratón, las entradas de la "
+"lista de aplicaciones que se muestran en la pestaña \"Reproductores/"
+"Grabadores\" ya no muestran una escala de volumen. Puede encontrar más "
+"detalles sobre el problema y su solución en las incidencias 1211 y 1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 msgid ""
 "When no application is available for display in the `Players/Recorders` a "
 "message will be shown to the user"
 msgstr ""
+"Cuando no hay ninguna aplicación disponible para su visualización en los `"
+"Reproductores/Registradores` se mostrará un mensaje al usuario"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
-#, fuzzy
 msgid "Many translation updates"
-msgstr "Traducciones actualizadas"
+msgstr "Muchas actualizaciones de las traducciones"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
@@ -292,12 +297,17 @@ msgid ""
 "in the spectrum was changed while our pipeline was active and the spectrum "
 "widget was visible"
 msgstr ""
+"Se ha corregido un error por el que EasyEffeects se bloqueaba cuando se "
+"cambiaba el número de puntos mostrados en el espectro mientras nuestro "
+"pipeline estaba activo y el widget del espectro estaba visible"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
+"El valor de la latencia de la tubería mostrado en nuestra ventana podía ser "
+"erróneo en algunas situaciones. Esto se ha solucionado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
 msgid ""
@@ -306,25 +316,30 @@ msgid ""
 "filters will be unlinked after the timeout is reached. This is done to make "
 "sure we do not waste CPU power processing silence."
 msgstr ""
+"Hay un nuevo ajuste que permite al usuario seleccionar un tiempo de "
+"inactividad para la tubería. Cuando ningún cliente esté reproduciendo o "
+"grabando desde nuestros dispositivos, los filtros se desvincularán una vez "
+"alcanzado el tiempo de espera. Esto se hace para asegurarse de que no "
+"desperdiciamos energía de la CPU procesando el silencio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
 "El plugin de ganancia automática ahora permite al usuario seleccionar cuál "
-"de los tres tipos de sonoridad se utiliza para calcular"
+"de los tres tipos de sonoridad se utiliza para calcular."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore. This should avoid the cases where "
 "the `Integrated` loudness gets stuck forever in the same value."
 msgstr ""
-"El plugin de ganancia automática ahora permite establecer el historial "
-"máximo y ya no utiliza el modo histograma `libebur128`."
+"El plugin de autogestión ahora permite establecer el historial máximo y ya "
+"no utiliza el modo de histograma `libebur128`. Esto debería evitar los casos "
+"en los que la sonoridad `Integrada` se queda atascada para siempre en el "
+"mismo valor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 msgid ""
