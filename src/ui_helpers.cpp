@@ -125,7 +125,7 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool
     auto s = str.str();
 
     if (s.starts_with(_("-inf"))) {
-      *new_value = min;
+      *new_value = util::minimum_db_d_level;
 
       return 1;
     }

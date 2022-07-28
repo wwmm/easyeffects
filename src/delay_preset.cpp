@@ -35,6 +35,14 @@ void DelayPreset::save(nlohmann::json& json, const std::string& section, GSettin
   json[section]["delay"]["time-l"] = g_settings_get_double(settings, "time-l");
 
   json[section]["delay"]["time-r"] = g_settings_get_double(settings, "time-r");
+
+  json[section]["delay"]["dry-l"] = g_settings_get_double(settings, "dry-l");
+
+  json[section]["delay"]["dry-r"] = g_settings_get_double(settings, "dry-r");
+
+  json[section]["delay"]["wet-l"] = g_settings_get_double(settings, "wet-l");
+
+  json[section]["delay"]["wet-r"] = g_settings_get_double(settings, "wet-r");
 }
 
 void DelayPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
@@ -47,4 +55,12 @@ void DelayPreset::load(const nlohmann::json& json, const std::string& section, G
   update_key<double>(json.at(section).at("delay"), settings, "time-l", "time-l");
 
   update_key<double>(json.at(section).at("delay"), settings, "time-r", "time-r");
+
+  update_key<double>(json.at(section).at("delay"), settings, "dry-l", "dry-l");
+
+  update_key<double>(json.at(section).at("delay"), settings, "dry-r", "dry-r");
+
+  update_key<double>(json.at(section).at("delay"), settings, "wet-l", "wet-l");
+
+  update_key<double>(json.at(section).at("delay"), settings, "wet-r", "wet-r");
 }
