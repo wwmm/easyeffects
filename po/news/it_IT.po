@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-27 18:34+0200\n"
-"PO-Revision-Date: 2022-07-25 22:40+0000\n"
+"PO-Revision-Date: 2022-07-28 16:42+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
@@ -120,9 +120,8 @@ msgid "Features:"
 msgstr "Funzionalità:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
-#, fuzzy
 msgid "Improved translations"
-msgstr "Traduzioni aggiornate"
+msgstr "Traduzioni migliorate"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
@@ -149,6 +148,8 @@ msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
 msgstr ""
+"Corretto un bug per il quale EasyEffects andava in crash quando la finestra "
+"veniva chiusa mentre gli effetti stavano per essere applicati."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
