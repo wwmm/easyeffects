@@ -277,6 +277,7 @@ auto gsettings_get_range(GSettings* settings, const char* key) -> std::pair<std:
     g_free(smax);
   }
 
+  g_variant_unref(detail);
   g_variant_unref(range);
   g_settings_schema_key_unref(schema_key);
   g_settings_schema_unref(schema);
