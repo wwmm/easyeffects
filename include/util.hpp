@@ -20,6 +20,7 @@
 #pragma once
 
 #include <gdk/gdk.h>
+#include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
 #include <charconv>
@@ -88,6 +89,8 @@ auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::ve
 auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA;
 
 auto gsettings_get_string(GSettings* settings, const char* key) -> std::string;
+
+auto gsettings_get_range(GSettings* settings, const char* key) -> std::pair<std::string, std::string>;
 
 auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bool;
 

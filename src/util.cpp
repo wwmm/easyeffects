@@ -245,6 +245,44 @@ auto gsettings_get_string(GSettings* settings, const char* key) -> std::string {
   return output;
 }
 
+auto gsettings_get_range(GSettings* settings, const char* key) -> std::pair<std::string, std::string> {
+  GSettingsSchema* schema;
+  const gchar* type;
+  GVariant* detail;
+  std::string min_v, max_v;
+
+  g_object_get(settings, "settings-schema", &schema, nullptr);
+
+  auto schema_key = g_settings_schema_get_key(schema, key);
+
+  auto range = g_settings_schema_key_get_range(schema_key);
+
+  g_variant_get(range, "(&sv)", &type, &detail);
+
+  if (strcmp(type, "range") == 0) {
+    GVariant *min, *max;
+    gchar *smin, *smax;
+
+    g_variant_get(detail, "(**)", &min, &max);
+
+    smin = g_variant_print(min, false);
+    smax = g_variant_print(max, false);
+
+    min_v = smin;
+    max_v = smax;
+
+    g_variant_unref(min);
+    g_variant_unref(max);
+    g_free(smin);
+    g_free(smax);
+  }
+
+  g_settings_schema_key_unref(schema_key);
+  g_settings_schema_unref(schema);
+
+  return {min_v, max_v};
+}
+
 auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bool {
   if (name.empty()) {
     return false;
