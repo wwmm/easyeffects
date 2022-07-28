@@ -34,6 +34,10 @@ void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& se
 
   json[section]["multiband_compressor"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
+  json[section]["multiband_compressor"]["dry"] = g_settings_get_double(settings, "dry");
+
+  json[section]["multiband_compressor"]["wet"] = g_settings_get_double(settings, "wet");
+
   json[section]["multiband_compressor"]["compressor-mode"] = util::gsettings_get_string(settings, "compressor-mode");
 
   json[section]["multiband_compressor"]["envelope-boost"] = util::gsettings_get_string(settings, "envelope-boost");
@@ -124,6 +128,10 @@ void MultibandCompressorPreset::load(const nlohmann::json& json, const std::stri
   update_key<double>(json.at(section).at("multiband_compressor"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("multiband_compressor"), settings, "output-gain", "output-gain");
+
+  update_key<double>(json.at(section).at("multiband_compressor"), settings, "dry", "dry");
+
+  update_key<double>(json.at(section).at("multiband_compressor"), settings, "wet", "wet");
 
   update_key<gchar*>(json.at(section).at("multiband_compressor"), settings, "compressor-mode", "compressor-mode");
 

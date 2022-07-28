@@ -52,6 +52,8 @@ struct _MultibandCompressorBox {
   GtkCheckButton *enable_band1, *enable_band2, *enable_band3, *enable_band4, *enable_band5, *enable_band6,
       *enable_band7;
 
+  GtkSpinButton *dry, *wet;
+
   GtkComboBoxText *compressor_mode, *envelope_boost;
 
   GtkDropDown* dropdown_input_devices;
@@ -282,6 +284,10 @@ void setup(MultibandCompressorBox* self,
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
+  g_settings_bind(self->settings, "dry", gtk_spin_button_get_adjustment(self->dry), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "compressor-mode", self->compressor_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "envelope-boost", self->envelope_boost, "active-id", G_SETTINGS_BIND_DEFAULT);
@@ -358,6 +364,8 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band5);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band6);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band7);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, dry);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, wet);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, compressor_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, envelope_boost);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, dropdown_input_devices);
@@ -372,6 +380,9 @@ void multiband_compressor_box_init(MultibandCompressorBox* self) {
   self->data = new Data();
 
   self->input_devices_model = g_list_store_new(ui::holders::node_info_holder_get_type());
+
+  // The following spinbuttons can assume -inf
+  prepare_spinbuttons<"dB", false>(self->dry, self->wet);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }

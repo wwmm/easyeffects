@@ -45,7 +45,7 @@ struct _CompressorBox {
 
   GtkLabel *gain_label, *sidechain_label, *curve_label, *envelope_label;
 
-  GtkSpinButton *attack, *release, *release_threshold, *threshold, *knee, *ratio, *makeup, *boost_threshold,
+  GtkSpinButton *attack, *release, *release_threshold, *threshold, *knee, *ratio, *makeup, *dry, *wet, *boost_threshold,
       *boost_amount, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
 
   GtkComboBoxText *compression_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode;
@@ -266,6 +266,10 @@ void setup(CompressorBox* self,
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
+  g_settings_bind(self->settings, "dry", gtk_spin_button_get_adjustment(self->dry), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
@@ -388,6 +392,8 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, knee);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, ratio);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, makeup);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, dry);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, wet);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, boost_threshold);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, boost_amount);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, preamp);
@@ -428,8 +434,8 @@ void compressor_box_init(CompressorBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  // This spinbutton can assume -inf
-  prepare_spinbuttons<"dB", false>(self->release_threshold);
+  // The following spinbuttons can assume -inf
+  prepare_spinbuttons<"dB", false>(self->release_threshold, self->dry, self->wet);
 }
 
 auto create() -> CompressorBox* {

@@ -56,6 +56,18 @@
             </item>
             <item>
                 <title>
+                    <em style="strong" its:withinText="nested">Dry Level</em>
+                </title>
+                <p>Amount of unprocessed signal mixed in the output.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Wet Level</em>
+                </title>
+                <p>Amount of processed signal mixed in the output.</p>
+            </item>
+            <item>
+                <title>
                     <em style="strong" its:withinText="nested">Mode</em>
                 </title>
                 <list>

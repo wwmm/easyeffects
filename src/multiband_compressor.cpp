@@ -41,6 +41,11 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
   lv2_wrapper->bind_key_enum<"envb", "envelope-boost">(settings);
 
+  // The following controls can assume -inf
+  lv2_wrapper->bind_key_double_db<"g_dry", "dry", false>(settings);
+
+  lv2_wrapper->bind_key_double_db<"g_wet", "wet", false>(settings);
+
   bind_bands(std::make_index_sequence<n_bands>());
 
   setup_input_output_gain();

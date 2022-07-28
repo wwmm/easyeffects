@@ -82,6 +82,11 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
 
   lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
 
+  // The following controls can assume -inf
+  lv2_wrapper->bind_key_double_db<"cdr", "dry", false>(settings);
+
+  lv2_wrapper->bind_key_double_db<"cwt", "wet", false>(settings);
+
   setup_input_output_gain();
 }
 

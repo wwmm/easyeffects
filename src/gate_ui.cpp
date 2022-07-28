@@ -53,8 +53,8 @@ struct _GateBox {
 
   GtkToggleButton* hysteresis;
 
-  GtkSpinButton *attack, *release, *curve_threshold, *curve_zone, *hysteresis_threshold, *hysteresis_zone, *reduction,
-      *makeup, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
+  GtkSpinButton *attack, *release, *curve_threshold, *curve_zone, *hysteresis_threshold, *hysteresis_zone, *dry, *wet,
+      *reduction, *makeup, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
 
   GtkComboBoxText *sidechain_input, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode;
 
@@ -328,6 +328,10 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
+  g_settings_bind(self->settings, "dry", gtk_spin_button_get_adjustment(self->dry), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "attack", gtk_spin_button_get_adjustment(self->attack), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
@@ -454,6 +458,8 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, hysteresis);
   gtk_widget_class_bind_template_child(widget_class, GateBox, hysteresis_threshold);
   gtk_widget_class_bind_template_child(widget_class, GateBox, hysteresis_zone);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, dry);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, wet);
   gtk_widget_class_bind_template_child(widget_class, GateBox, reduction);
   gtk_widget_class_bind_template_child(widget_class, GateBox, makeup);
   gtk_widget_class_bind_template_child(widget_class, GateBox, preamp);
@@ -488,6 +494,9 @@ void gate_box_init(GateBox* self) {
   prepare_spinbuttons<"ms">(self->attack, self->release, self->lookahead, self->reactivity);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
+
+  // The following spinbuttons can assume -inf
+  prepare_spinbuttons<"dB", false>(self->dry, self->wet);
 }
 
 auto create() -> GateBox* {

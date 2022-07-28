@@ -85,8 +85,12 @@ Compressor::Compressor(const std::string& tag,
 
   lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
 
-  // This control can assume -inf
+  // The following controls can assume -inf
   lv2_wrapper->bind_key_double_db<"rrl", "release-threshold", false>(settings);
+
+  lv2_wrapper->bind_key_double_db<"cdr", "dry", false>(settings);
+
+  lv2_wrapper->bind_key_double_db<"cwt", "wet", false>(settings);
 
   setup_input_output_gain();
 }
