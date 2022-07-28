@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-27 18:34+0200\n"
-"PO-Revision-Date: 2022-07-22 11:20+0000\n"
+"PO-Revision-Date: 2022-07-28 12:19+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -1646,9 +1646,8 @@ msgid "Add Autoloading Output Preset"
 msgstr "新建自动加载的输出预设"
 
 #: data/ui/pipe_manager_box.ui:290
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "导出自动加载预设列表"
+msgstr "输出自动加载预设列表"
 
 #: data/ui/pipe_manager_box.ui:329
 msgid "Input Devices"
@@ -1663,9 +1662,8 @@ msgid "Add Autoloading Input Preset"
 msgstr "新建自动加载的输入预设"
 
 #: data/ui/pipe_manager_box.ui:381
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "导入自动加载预设列表"
+msgstr "输入自动加载预设列表"
 
 #: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
