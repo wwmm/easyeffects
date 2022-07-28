@@ -32,6 +32,10 @@ void GatePreset::save(nlohmann::json& json, const std::string& section, GSetting
 
   json[section]["gate"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
+  json[section]["gate"]["dry"] = g_settings_get_double(settings, "dry");
+
+  json[section]["gate"]["wet"] = g_settings_get_double(settings, "wet");
+
   json[section]["gate"]["attack"] = g_settings_get_double(settings, "attack");
 
   json[section]["gate"]["release"] = g_settings_get_double(settings, "release");
@@ -77,6 +81,10 @@ void GatePreset::load(const nlohmann::json& json, const std::string& section, GS
   update_key<double>(json.at(section).at("gate"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("gate"), settings, "output-gain", "output-gain");
+
+  update_key<double>(json.at(section).at("gate"), settings, "dry", "dry");
+
+  update_key<double>(json.at(section).at("gate"), settings, "wet", "wet");
 
   update_key<double>(json.at(section).at("gate"), settings, "attack", "attack");
 

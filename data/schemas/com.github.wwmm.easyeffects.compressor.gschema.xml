@@ -45,8 +45,8 @@
             <default>-100</default>
         </key>
         <key name="wet" type="d">
-          <range min="-100" max="20" />
-          <default>0</default>
+            <range min="-100" max="20" />
+            <default>0</default>
         </key>
         <key name="mode" enum="com.github.wwmm.easyeffects.compressor.mode.enum">
             <default>"Downward"</default>
