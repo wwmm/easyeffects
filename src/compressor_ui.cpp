@@ -434,7 +434,7 @@ void compressor_box_init(CompressorBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  // This spinbutton can assume -inf
+  // The following spinbuttons can assume -inf
   prepare_spinbuttons<"dB", false>(self->release_threshold, self->dry, self->wet);
 }
 

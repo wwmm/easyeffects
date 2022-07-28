@@ -55,6 +55,18 @@
                 </title>
                 <p>If the External Sidechain is enabled inside at least one band, this combobox allows to select the input device as source.</p>
             </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Dry Level</em>
+                </title>
+                <p>Amount of unprocessed signal mixed in the output.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Wet Level</em>
+                </title>
+                <p>Amount of processed signal mixed in the output.</p>
+            </item>
         </terms>
     </section>
     <section>
