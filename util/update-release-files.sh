@@ -15,7 +15,6 @@
 
 # no means just refresh changelog and metainfo with current news.yaml file, will assume template is present representing a future relase. 
 # The future release at the top of NEWS.yaml will not be included (since you are only regenerating current releases).
-read -r -e -p "Create a new release? (y/n): " MAKE_NEW_RELEASE
 
 set -o nounset
 set -o noglob
@@ -316,7 +315,18 @@ convert_news_to_metainfo() {
   rm "${TEMP_NEWS_CLEANED:?}"
 
 }
-
+set +o nounset
+if [[ "$1" == "--make-new-release" ]]; then
+  MAKE_NEW_RELEASE='y'
+elif [[ "$1" == "--no-new-release" ]]; then
+  MAKE_NEW_RELEASE='n'
+elif [[ ! "$1" == "" ]]; then
+  log_err "Unknown argument, exiting \n"
+  exit 1
+else 
+  read -r -e -p "Create a new release? (y/n): " MAKE_NEW_RELEASE
+fi
+set -o nounset
 
 
 if ! [ "${MAKE_NEW_RELEASE}" == y ] && ! [ "${MAKE_NEW_RELEASE}" == n ]
