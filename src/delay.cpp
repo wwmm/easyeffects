@@ -35,6 +35,13 @@ Delay::Delay(const std::string& tag,
   lv2_wrapper->bind_key_double<"time_l", "time-l">(settings);
   lv2_wrapper->bind_key_double<"time_r", "time-r">(settings);
 
+  // The following controls can assume -inf
+  lv2_wrapper->bind_key_double_db<"dry_l", "dry-l", false>(settings);
+  lv2_wrapper->bind_key_double_db<"dry_r", "dry-r", false>(settings);
+
+  lv2_wrapper->bind_key_double_db<"wet_l", "wet-l", false>(settings);
+  lv2_wrapper->bind_key_double_db<"wet_r", "wet-r", false>(settings);
+
   setup_input_output_gain();
 }
 

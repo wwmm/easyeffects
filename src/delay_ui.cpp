@@ -43,7 +43,7 @@ struct _DelayBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkSpinButton *time_l, *time_r;
+  GtkSpinButton *time_l, *time_r, *dry_l, *dry_r, *wet_l, *wet_r;
 
   GtkToggleButton *floor_active, *listen;
 
@@ -101,6 +101,18 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
                   G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "time-r", gtk_spin_button_get_adjustment(self->time_r), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "dry-l", gtk_spin_button_get_adjustment(self->dry_l), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "dry-r", gtk_spin_button_get_adjustment(self->dry_r), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "wet-l", gtk_spin_button_get_adjustment(self->wet_l), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "wet-r", gtk_spin_button_get_adjustment(self->wet_r), "value",
                   G_SETTINGS_BIND_DEFAULT);
 }
 
@@ -161,6 +173,10 @@ void delay_box_class_init(DelayBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, DelayBox, time_l);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, time_r);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, dry_l);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, dry_r);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, wet_l);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, wet_r);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
@@ -173,6 +189,9 @@ void delay_box_init(DelayBox* self) {
   prepare_spinbuttons<"ms">(self->time_l, self->time_r);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
+
+  // The following spinbuttons can assume -inf
+  prepare_spinbuttons<"dB", false>(self->dry_l, self->dry_r, self->wet_l, self->wet_r);
 }
 
 auto create() -> DelayBox* {
