@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-27 18:34+0200\n"
-"PO-Revision-Date: 2022-07-18 22:44+0000\n"
+"PO-Revision-Date: 2022-07-29 06:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2497,7 +2497,7 @@ msgstr "Chiudi (Premi ESC)"
 
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
 msgid "-inf"
-msgstr ""
+msgstr "-inf"
 
 #~ msgid "Wet Amount"
 #~ msgstr "Quantità Dry"
