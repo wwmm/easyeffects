@@ -20,12 +20,17 @@
 #include "crystalizer_preset.hpp"
 
 CrystalizerPreset::CrystalizerPreset(PresetType preset_type, const int& index) {
-  input_settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::input_path);
-
-  output_settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::output_path);
+  switch (preset_type) {
+    case PresetType::input:
+      settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::input_path);
+      break;
+    case PresetType::output:
+      settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::output_path);
+      break;
+  }
 }
 
-void CrystalizerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+void CrystalizerPreset::save(nlohmann::json& json, const std::string& section) {
   json[section]["crystalizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["crystalizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -43,7 +48,7 @@ void CrystalizerPreset::save(nlohmann::json& json, const std::string& section, G
   }
 }
 
-void CrystalizerPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+void CrystalizerPreset::load(const nlohmann::json& json, const std::string& section) {
   update_key<bool>(json.at(section).at("crystalizer"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("crystalizer"), settings, "input-gain", "input-gain");

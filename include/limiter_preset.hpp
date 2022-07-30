@@ -26,7 +26,7 @@ class LimiterPreset : public PluginPresetBase {
   LimiterPreset(PresetType preset_type, const int& index = 0);
 
  private:
-  void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;
+  void save(nlohmann::json& json, const std::string& section) override;
 
-  void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;
+  void load(const nlohmann::json& json, const std::string& section) override;
 };
