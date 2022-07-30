@@ -19,7 +19,8 @@
 
 #include "bass_loudness_preset.hpp"
 
-BassLoudnessPreset::BassLoudnessPreset(PresetType preset_type, const int& index) {
+BassLoudnessPreset::BassLoudnessPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::bass_loudness::id, tags::schema::bass_loudness::input_path);
@@ -30,7 +31,7 @@ BassLoudnessPreset::BassLoudnessPreset(PresetType preset_type, const int& index)
   }
 }
 
-void BassLoudnessPreset::save(nlohmann::json& json, const std::string& section) {
+void BassLoudnessPreset::save(nlohmann::json& json) {
   json[section]["bass_loudness"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["bass_loudness"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -44,7 +45,7 @@ void BassLoudnessPreset::save(nlohmann::json& json, const std::string& section) 
   json[section]["bass_loudness"]["link"] = g_settings_get_double(settings, "link");
 }
 
-void BassLoudnessPreset::load(const nlohmann::json& json, const std::string& section) {
+void BassLoudnessPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("bass_loudness"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("bass_loudness"), settings, "input-gain", "input-gain");

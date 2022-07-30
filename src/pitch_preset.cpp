@@ -19,7 +19,7 @@
 
 #include "pitch_preset.hpp"
 
-PitchPreset::PitchPreset(PresetType preset_type, const int& index) {
+PitchPreset::PitchPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::pitch::id, tags::schema::pitch::input_path);
@@ -30,7 +30,7 @@ PitchPreset::PitchPreset(PresetType preset_type, const int& index) {
   }
 }
 
-void PitchPreset::save(nlohmann::json& json, const std::string& section) {
+void PitchPreset::save(nlohmann::json& json) {
   json[section]["pitch"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["pitch"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -54,7 +54,7 @@ void PitchPreset::save(nlohmann::json& json, const std::string& section) {
   json[section]["pitch"]["octaves"] = g_settings_get_int(settings, "octaves");
 }
 
-void PitchPreset::load(const nlohmann::json& json, const std::string& section) {
+void PitchPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("pitch"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("pitch"), settings, "input-gain", "input-gain");

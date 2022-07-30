@@ -19,7 +19,8 @@
 
 #include "multiband_compressor_preset.hpp"
 
-MultibandCompressorPreset::MultibandCompressorPreset(PresetType preset_type, const int& index) {
+MultibandCompressorPreset::MultibandCompressorPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::multiband_compressor::id,
@@ -32,7 +33,7 @@ MultibandCompressorPreset::MultibandCompressorPreset(PresetType preset_type, con
   }
 }
 
-void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& section) {
+void MultibandCompressorPreset::save(nlohmann::json& json) {
   json[section]["multiband_compressor"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["multiband_compressor"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -127,7 +128,7 @@ void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& se
   }
 }
 
-void MultibandCompressorPreset::load(const nlohmann::json& json, const std::string& section) {
+void MultibandCompressorPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("multiband_compressor"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("multiband_compressor"), settings, "input-gain", "input-gain");

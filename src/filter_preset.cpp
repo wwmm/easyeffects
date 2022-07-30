@@ -19,7 +19,7 @@
 
 #include "filter_preset.hpp"
 
-FilterPreset::FilterPreset(PresetType preset_type, const int& index) {
+FilterPreset::FilterPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::filter::id, tags::schema::filter::input_path);
@@ -30,7 +30,7 @@ FilterPreset::FilterPreset(PresetType preset_type, const int& index) {
   }
 }
 
-void FilterPreset::save(nlohmann::json& json, const std::string& section) {
+void FilterPreset::save(nlohmann::json& json) {
   json[section]["filter"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["filter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -46,7 +46,7 @@ void FilterPreset::save(nlohmann::json& json, const std::string& section) {
   json[section]["filter"]["inertia"] = g_settings_get_double(settings, "inertia");
 }
 
-void FilterPreset::load(const nlohmann::json& json, const std::string& section) {
+void FilterPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("filter"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("filter"), settings, "input-gain", "input-gain");

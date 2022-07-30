@@ -19,7 +19,8 @@
 
 #include "bass_enhancer_preset.hpp"
 
-BassEnhancerPreset::BassEnhancerPreset(PresetType preset_type, const int& index) {
+BassEnhancerPreset::BassEnhancerPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, tags::schema::bass_enhancer::input_path);
@@ -30,7 +31,7 @@ BassEnhancerPreset::BassEnhancerPreset(PresetType preset_type, const int& index)
   }
 }
 
-void BassEnhancerPreset::save(nlohmann::json& json, const std::string& section) {
+void BassEnhancerPreset::save(nlohmann::json& json) {
   json[section]["bass_enhancer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["bass_enhancer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -50,7 +51,7 @@ void BassEnhancerPreset::save(nlohmann::json& json, const std::string& section) 
   json[section]["bass_enhancer"]["floor-active"] = g_settings_get_boolean(settings, "floor-active") != 0;
 }
 
-void BassEnhancerPreset::load(const nlohmann::json& json, const std::string& section) {
+void BassEnhancerPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("bass_enhancer"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("bass_enhancer"), settings, "input-gain", "input-gain");

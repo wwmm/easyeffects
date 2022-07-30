@@ -22,7 +22,8 @@
 using namespace tags::equalizer;
 
 EqualizerPreset::EqualizerPreset(PresetType preset_type, const int& index)
-    : input_settings_left(
+    : PluginPresetBase(preset_type, index),
+      input_settings_left(
           g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::input_path_left)),
       input_settings_right(
           g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::input_path_right)),
@@ -47,7 +48,7 @@ EqualizerPreset::~EqualizerPreset() {
   g_object_unref(output_settings_right);
 }
 
-void EqualizerPreset::save(nlohmann::json& json, const std::string& section) {
+void EqualizerPreset::save(nlohmann::json& json) {
   json[section]["equalizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["equalizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -93,7 +94,7 @@ void EqualizerPreset::save_channel(nlohmann::json& json, GSettings* settings, co
   }
 }
 
-void EqualizerPreset::load(const nlohmann::json& json, const std::string& section) {
+void EqualizerPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("equalizer"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("equalizer"), settings, "input-gain", "input-gain");

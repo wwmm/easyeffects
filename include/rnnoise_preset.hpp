@@ -26,7 +26,7 @@ class RNNoisePreset : public PluginPresetBase {
   RNNoisePreset(PresetType preset_type, const int& index = 0);
 
  private:
-  void save(nlohmann::json& json, const std::string& section) override;
+  void save(nlohmann::json& json) override;
 
-  void load(const nlohmann::json& json, const std::string& section) override;
+  void load(const nlohmann::json& json) override;
 };

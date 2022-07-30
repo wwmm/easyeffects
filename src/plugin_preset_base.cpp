@@ -17,16 +17,23 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#pragma once
-
 #include "plugin_preset_base.hpp"
 
-class StereoToolsPreset : public PluginPresetBase {
- public:
-  StereoToolsPreset(PresetType preset_type, const int& index = 0);
+PluginPresetBase::PluginPresetBase(PresetType preset_type, const int& index) {
+  switch (preset_type) {
+    case PresetType::input:
+      section = "input";
 
- private:
-  void save(nlohmann::json& json) override;
+      //   settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::input_path);
+      break;
+    case PresetType::output:
+      section = "output";
 
-  void load(const nlohmann::json& json) override;
-};
+      //   settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::output_path);
+      break;
+  }
+}
+
+PluginPresetBase::~PluginPresetBase() {
+  g_object_unref(settings);
+}

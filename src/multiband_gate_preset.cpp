@@ -19,7 +19,8 @@
 
 #include "multiband_gate_preset.hpp"
 
-MultibandGatePreset::MultibandGatePreset(PresetType preset_type, const int& index) {
+MultibandGatePreset::MultibandGatePreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::multiband_gate::id, tags::schema::multiband_gate::input_path);
@@ -30,7 +31,7 @@ MultibandGatePreset::MultibandGatePreset(PresetType preset_type, const int& inde
   }
 }
 
-void MultibandGatePreset::save(nlohmann::json& json, const std::string& section) {
+void MultibandGatePreset::save(nlohmann::json& json) {
   json[section]["multiband_gate"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["multiband_gate"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -134,7 +135,7 @@ void MultibandGatePreset::save(nlohmann::json& json, const std::string& section)
   json[section]["multiband_gate"]["highband"]["solo"] = g_settings_get_boolean(settings, "solo3") != 0;
 }
 
-void MultibandGatePreset::load(const nlohmann::json& json, const std::string& section) {
+void MultibandGatePreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("multiband_gate"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("multiband_gate"), settings, "input-gain", "input-gain");

@@ -29,24 +29,17 @@
 
 class PluginPresetBase {
  public:
-  PluginPresetBase() = default;
+  PluginPresetBase(PresetType preset_type, const int& index);
   PluginPresetBase(const PluginPresetBase&) = delete;
   auto operator=(const PluginPresetBase&) -> PluginPresetBase& = delete;
   PluginPresetBase(const PluginPresetBase&&) = delete;
   auto operator=(const PluginPresetBase&&) -> PluginPresetBase& = delete;
 
-  virtual ~PluginPresetBase() { g_object_unref(settings); };
+  virtual ~PluginPresetBase();
 
   void write(PresetType preset_type, nlohmann::json& json) {
     try {
-      switch (preset_type) {
-        case PresetType::output:
-          save(json, "output");
-          break;
-        case PresetType::input:
-          save(json, "input");
-          break;
-      }
+      save(json);
     } catch (const nlohmann::json::exception& e) {
       util::warning(e.what());
     }
@@ -56,14 +49,7 @@ class PluginPresetBase {
     // For simplicity, exceptions raised while reading presets parameters
     // should be handled outside this method.
 
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output");
-        break;
-      case PresetType::input:
-        load(json, "input");
-        break;
-    }
+    load(json);
   }
 
  protected:
@@ -71,9 +57,9 @@ class PluginPresetBase {
 
   std::string section;
 
-  virtual void save(nlohmann::json& json, const std::string& section) = 0;
+  virtual void save(nlohmann::json& json) = 0;
 
-  virtual void load(const nlohmann::json& json, const std::string& section) = 0;
+  virtual void load(const nlohmann::json& json) = 0;
 
   template <typename T>
   auto get_default(GSettings* settings, const std::string& key) -> T {

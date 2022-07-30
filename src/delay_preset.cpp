@@ -19,7 +19,7 @@
 
 #include "delay_preset.hpp"
 
-DelayPreset::DelayPreset(PresetType preset_type, const int& index) {
+DelayPreset::DelayPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::delay::id, tags::schema::delay::input_path);
@@ -30,7 +30,7 @@ DelayPreset::DelayPreset(PresetType preset_type, const int& index) {
   }
 }
 
-void DelayPreset::save(nlohmann::json& json, const std::string& section) {
+void DelayPreset::save(nlohmann::json& json) {
   json[section]["delay"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["delay"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -50,7 +50,7 @@ void DelayPreset::save(nlohmann::json& json, const std::string& section) {
   json[section]["delay"]["wet-r"] = g_settings_get_double(settings, "wet-r");
 }
 
-void DelayPreset::load(const nlohmann::json& json, const std::string& section) {
+void DelayPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("delay"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("delay"), settings, "input-gain", "input-gain");

@@ -19,7 +19,7 @@
 
 #include "autogain_preset.hpp"
 
-AutoGainPreset::AutoGainPreset(PresetType preset_type, const int& index) {
+AutoGainPreset::AutoGainPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::input_path);
@@ -30,7 +30,7 @@ AutoGainPreset::AutoGainPreset(PresetType preset_type, const int& index) {
   }
 }
 
-void AutoGainPreset::save(nlohmann::json& json, const std::string& section) {
+void AutoGainPreset::save(nlohmann::json& json) {
   json[section]["autogain"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["autogain"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -44,7 +44,7 @@ void AutoGainPreset::save(nlohmann::json& json, const std::string& section) {
   json[section]["autogain"]["reference"] = util::gsettings_get_string(settings, "reference");
 }
 
-void AutoGainPreset::load(const nlohmann::json& json, const std::string& section) {
+void AutoGainPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("autogain"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("autogain"), settings, "input-gain", "input-gain");

@@ -19,7 +19,7 @@
 
 #include "reverb_preset.hpp"
 
-ReverbPreset::ReverbPreset(PresetType preset_type, const int& index) {
+ReverbPreset::ReverbPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::reverb::id, tags::schema::reverb::input_path);
@@ -30,7 +30,7 @@ ReverbPreset::ReverbPreset(PresetType preset_type, const int& index) {
   }
 }
 
-void ReverbPreset::save(nlohmann::json& json, const std::string& section) {
+void ReverbPreset::save(nlohmann::json& json) {
   json[section]["reverb"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["reverb"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -56,7 +56,7 @@ void ReverbPreset::save(nlohmann::json& json, const std::string& section) {
   json[section]["reverb"]["treble-cut"] = g_settings_get_double(settings, "treble-cut");
 }
 
-void ReverbPreset::load(const nlohmann::json& json, const std::string& section) {
+void ReverbPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("reverb"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("reverb"), settings, "input-gain", "input-gain");

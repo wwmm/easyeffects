@@ -31,9 +31,9 @@ class EqualizerPreset : public PluginPresetBase {
   GSettings *input_settings_left = nullptr, *input_settings_right = nullptr, *output_settings_left = nullptr,
             *output_settings_right = nullptr;
 
-  void save(nlohmann::json& json, const std::string& section) override;
+  void save(nlohmann::json& json) override;
 
-  void load(const nlohmann::json& json, const std::string& section) override;
+  void load(const nlohmann::json& json) override;
 
   static void save_channel(nlohmann::json& json, GSettings* settings, const int& nbands);
 

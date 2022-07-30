@@ -19,7 +19,7 @@
 
 #include "rnnoise_preset.hpp"
 
-RNNoisePreset::RNNoisePreset(PresetType preset_type, const int& index) {
+RNNoisePreset::RNNoisePreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::rnnoise::id, tags::schema::rnnoise::input_path);
@@ -30,7 +30,7 @@ RNNoisePreset::RNNoisePreset(PresetType preset_type, const int& index) {
   }
 }
 
-void RNNoisePreset::save(nlohmann::json& json, const std::string& section) {
+void RNNoisePreset::save(nlohmann::json& json) {
   json[section]["rnnoise"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["rnnoise"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -40,7 +40,7 @@ void RNNoisePreset::save(nlohmann::json& json, const std::string& section) {
   json[section]["rnnoise"]["model-path"] = util::gsettings_get_string(settings, "model-path");
 }
 
-void RNNoisePreset::load(const nlohmann::json& json, const std::string& section) {
+void RNNoisePreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("rnnoise"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("rnnoise"), settings, "input-gain", "input-gain");

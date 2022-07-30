@@ -19,7 +19,7 @@
 
 #include "maximizer_preset.hpp"
 
-MaximizerPreset::MaximizerPreset(PresetType preset_type, const int& index) {
+MaximizerPreset::MaximizerPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
   switch (preset_type) {
     case PresetType::input:
       settings = g_settings_new_with_path(tags::schema::maximizer::id, tags::schema::maximizer::input_path);
@@ -30,7 +30,7 @@ MaximizerPreset::MaximizerPreset(PresetType preset_type, const int& index) {
   }
 }
 
-void MaximizerPreset::save(nlohmann::json& json, const std::string& section) {
+void MaximizerPreset::save(nlohmann::json& json) {
   json[section]["maximizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["maximizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -44,7 +44,7 @@ void MaximizerPreset::save(nlohmann::json& json, const std::string& section) {
   json[section]["maximizer"]["threshold"] = g_settings_get_double(settings, "threshold");
 }
 
-void MaximizerPreset::load(const nlohmann::json& json, const std::string& section) {
+void MaximizerPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("maximizer"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("maximizer"), settings, "input-gain", "input-gain");
