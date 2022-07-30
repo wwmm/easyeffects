@@ -37,7 +37,7 @@ class PluginPresetBase {
 
   virtual ~PluginPresetBase();
 
-  void write(PresetType preset_type, nlohmann::json& json) {
+  void write(nlohmann::json& json) {
     try {
       save(json);
     } catch (const nlohmann::json::exception& e) {
@@ -45,7 +45,7 @@ class PluginPresetBase {
     }
   }
 
-  void read(PresetType preset_type, const nlohmann::json& json) {
+  void read(const nlohmann::json& json) {
     // For simplicity, exceptions raised while reading presets parameters
     // should be handled outside this method.
 
