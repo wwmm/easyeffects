@@ -21,7 +21,7 @@
 
 using namespace tags::equalizer;
 
-EqualizerPreset::EqualizerPreset()
+EqualizerPreset::EqualizerPreset(PresetType preset_type, const int& index)
     : input_settings_left(
           g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::input_path_left)),
       input_settings_right(

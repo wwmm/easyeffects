@@ -19,7 +19,7 @@
 
 #include "autogain_preset.hpp"
 
-AutoGainPreset::AutoGainPreset() {
+AutoGainPreset::AutoGainPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::output_path);

@@ -19,7 +19,7 @@
 
 #include "rnnoise_preset.hpp"
 
-RNNoisePreset::RNNoisePreset() {
+RNNoisePreset::RNNoisePreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::rnnoise::id, tags::schema::rnnoise::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::rnnoise::id, tags::schema::rnnoise::output_path);

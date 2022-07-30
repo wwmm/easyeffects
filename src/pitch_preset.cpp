@@ -19,7 +19,7 @@
 
 #include "pitch_preset.hpp"
 
-PitchPreset::PitchPreset() {
+PitchPreset::PitchPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::pitch::id, tags::schema::pitch::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::pitch::id, tags::schema::pitch::output_path);

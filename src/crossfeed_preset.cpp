@@ -19,7 +19,7 @@
 
 #include "crossfeed_preset.hpp"
 
-CrossfeedPreset::CrossfeedPreset() {
+CrossfeedPreset::CrossfeedPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::crossfeed::id, tags::schema::crossfeed::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::crossfeed::id, tags::schema::crossfeed::output_path);

@@ -19,7 +19,7 @@
 
 #include "reverb_preset.hpp"
 
-ReverbPreset::ReverbPreset() {
+ReverbPreset::ReverbPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::reverb::id, tags::schema::reverb::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::reverb::id, tags::schema::reverb::output_path);

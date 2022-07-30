@@ -19,7 +19,7 @@
 
 #include "filter_preset.hpp"
 
-FilterPreset::FilterPreset() {
+FilterPreset::FilterPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::filter::id, tags::schema::filter::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::filter::id, tags::schema::filter::output_path);

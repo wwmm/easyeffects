@@ -23,7 +23,7 @@
 
 class LimiterPreset : public PluginPresetBase {
  public:
-  LimiterPreset();
+  LimiterPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;

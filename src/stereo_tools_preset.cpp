@@ -19,7 +19,7 @@
 
 #include "stereo_tools_preset.hpp"
 
-StereoToolsPreset::StereoToolsPreset() {
+StereoToolsPreset::StereoToolsPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::output_path);

@@ -19,7 +19,7 @@
 
 #include "multiband_gate_preset.hpp"
 
-MultibandGatePreset::MultibandGatePreset() {
+MultibandGatePreset::MultibandGatePreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::multiband_gate::id, tags::schema::multiband_gate::input_path);
 
   output_settings =

@@ -19,7 +19,7 @@
 
 #include "delay_preset.hpp"
 
-DelayPreset::DelayPreset() {
+DelayPreset::DelayPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::delay::id, tags::schema::delay::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::delay::id, tags::schema::delay::output_path);

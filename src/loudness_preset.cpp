@@ -19,7 +19,7 @@
 
 #include "loudness_preset.hpp"
 
-LoudnessPreset::LoudnessPreset() {
+LoudnessPreset::LoudnessPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::loudness::id, tags::schema::loudness::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::loudness::id, tags::schema::loudness::output_path);

@@ -19,7 +19,7 @@
 
 #include "convolver_preset.hpp"
 
-ConvolverPreset::ConvolverPreset() {
+ConvolverPreset::ConvolverPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::output_path);

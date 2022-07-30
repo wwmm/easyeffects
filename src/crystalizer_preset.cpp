@@ -19,7 +19,7 @@
 
 #include "crystalizer_preset.hpp"
 
-CrystalizerPreset::CrystalizerPreset() {
+CrystalizerPreset::CrystalizerPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::output_path);

@@ -19,7 +19,7 @@
 
 #include "bass_enhancer_preset.hpp"
 
-BassEnhancerPreset::BassEnhancerPreset() {
+BassEnhancerPreset::BassEnhancerPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, tags::schema::bass_enhancer::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, tags::schema::bass_enhancer::output_path);

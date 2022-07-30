@@ -23,7 +23,7 @@
 
 class AutoGainPreset : public PluginPresetBase {
  public:
-  AutoGainPreset();
+  AutoGainPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;

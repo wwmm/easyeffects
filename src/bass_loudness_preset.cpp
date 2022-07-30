@@ -19,7 +19,7 @@
 
 #include "bass_loudness_preset.hpp"
 
-BassLoudnessPreset::BassLoudnessPreset() {
+BassLoudnessPreset::BassLoudnessPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::bass_loudness::id, tags::schema::bass_loudness::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::bass_loudness::id, tags::schema::bass_loudness::output_path);

@@ -19,7 +19,7 @@
 
 #include "compressor_preset.hpp"
 
-CompressorPreset::CompressorPreset() {
+CompressorPreset::CompressorPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::compressor::id, tags::schema::compressor::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::compressor::id, tags::schema::compressor::output_path);

@@ -19,7 +19,7 @@
 
 #include "echo_canceller_preset.hpp"
 
-EchoCancellerPreset::EchoCancellerPreset() {
+EchoCancellerPreset::EchoCancellerPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::echo_canceller::id, tags::schema::echo_canceller::input_path);
 
   output_settings =

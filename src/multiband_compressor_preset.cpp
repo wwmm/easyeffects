@@ -19,7 +19,7 @@
 
 #include "multiband_compressor_preset.hpp"
 
-MultibandCompressorPreset::MultibandCompressorPreset() {
+MultibandCompressorPreset::MultibandCompressorPreset(PresetType preset_type, const int& index) {
   input_settings =
       g_settings_new_with_path(tags::schema::multiband_compressor::id, tags::schema::multiband_compressor::input_path);
 

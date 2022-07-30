@@ -19,7 +19,7 @@
 
 #include "maximizer_preset.hpp"
 
-MaximizerPreset::MaximizerPreset() {
+MaximizerPreset::MaximizerPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::maximizer::id, tags::schema::maximizer::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::maximizer::id, tags::schema::maximizer::output_path);

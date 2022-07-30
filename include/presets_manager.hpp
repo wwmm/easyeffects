@@ -148,5 +148,6 @@ class PresetsManager {
 
   void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
 
-  auto create_wrapper(std::string_view filter_name) -> std::optional<std::unique_ptr<PluginPresetBase>>;
+  auto create_wrapper(const PresetType& preset_type, std::string_view filter_name)
+      -> std::optional<std::unique_ptr<PluginPresetBase>>;
 };

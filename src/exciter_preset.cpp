@@ -19,7 +19,7 @@
 
 #include "exciter_preset.hpp"
 
-ExciterPreset::ExciterPreset() {
+ExciterPreset::ExciterPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::exciter::id, tags::schema::exciter::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::exciter::id, tags::schema::exciter::output_path);

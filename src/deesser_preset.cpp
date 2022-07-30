@@ -19,7 +19,7 @@
 
 #include "deesser_preset.hpp"
 
-DeesserPreset::DeesserPreset() {
+DeesserPreset::DeesserPreset(PresetType preset_type, const int& index) {
   input_settings = g_settings_new_with_path(tags::schema::deesser::id, tags::schema::deesser::input_path);
 
   output_settings = g_settings_new_with_path(tags::schema::deesser::id, tags::schema::deesser::output_path);
