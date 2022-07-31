@@ -19,7 +19,7 @@
 
 #include "plugin_preset_base.hpp"
 
-PluginPresetBase::PluginPresetBase(PresetType preset_type, const int& index) {
+PluginPresetBase::PluginPresetBase(PresetType preset_type, const int& index) : index(index), preset_type(preset_type) {
   switch (preset_type) {
     case PresetType::input:
       section = "input";
