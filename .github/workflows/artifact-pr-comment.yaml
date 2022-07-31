@@ -27,8 +27,11 @@ jobs:
         run: |
           # Query the issue search API to get the PR associated with it
           PR_RAW=$(curl 'https://api.github.com/search/issues?q=${{ github.event.workflow_run.head_commit.id }}')
+
           # Get the event number from the search results, which will be the PR number
-          PR_NUM=$(echo $PR_RAW | jq '.items[].number')
+          # Filter by PRs only in this repository, as a PR with an identical head commit may be made in another repository (e.g. a fork)
+          # Assume the 0th index in the array of found PRs is the correct one (it seems to usually be the latest one)
+          PR_NUM=$(echo $PR_RAW | jq '.items | map(select(.repository_url=="https://api.github.com/repos/${{ github.repository }}")) | .[0].number')
           echo "PR_NUM=${PR_NUM}" >> ${GITHUB_ENV}
       
       - name: Comment on PR
