@@ -1,4 +1,4 @@
-name: Artifact comment
+name: Artifact PR comment
 
 on:
   workflow_run:
@@ -10,8 +10,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  pr_comment:
-    name: Update PR comment
+  artifact_pr_comment:
+    name: Update Artifact PR comment
     if: github.event.workflow_run.event == 'pull_request'
     runs-on: ubuntu-20.04
     steps:
