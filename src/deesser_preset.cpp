@@ -19,13 +19,18 @@
 
 #include "deesser_preset.hpp"
 
-DeesserPreset::DeesserPreset() {
-  input_settings = g_settings_new_with_path(tags::schema::deesser::id, tags::schema::deesser::input_path);
-
-  output_settings = g_settings_new_with_path(tags::schema::deesser::id, tags::schema::deesser::output_path);
+DeesserPreset::DeesserPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
+  switch (preset_type) {
+    case PresetType::input:
+      settings = g_settings_new_with_path(tags::schema::deesser::id, tags::schema::deesser::input_path);
+      break;
+    case PresetType::output:
+      settings = g_settings_new_with_path(tags::schema::deesser::id, tags::schema::deesser::output_path);
+      break;
+  }
 }
 
-void DeesserPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+void DeesserPreset::save(nlohmann::json& json) {
   json[section]["deesser"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["deesser"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -57,7 +62,7 @@ void DeesserPreset::save(nlohmann::json& json, const std::string& section, GSett
   json[section]["deesser"]["sc-listen"] = g_settings_get_boolean(settings, "sc-listen") != 0;
 }
 
-void DeesserPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+void DeesserPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("deesser"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("deesser"), settings, "input-gain", "input-gain");

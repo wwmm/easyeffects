@@ -19,13 +19,18 @@
 
 #include "gate_preset.hpp"
 
-GatePreset::GatePreset() {
-  input_settings = g_settings_new_with_path(tags::schema::gate::id, tags::schema::gate::input_path);
-
-  output_settings = g_settings_new_with_path(tags::schema::gate::id, tags::schema::gate::output_path);
+GatePreset::GatePreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
+  switch (preset_type) {
+    case PresetType::input:
+      settings = g_settings_new_with_path(tags::schema::gate::id, tags::schema::gate::input_path);
+      break;
+    case PresetType::output:
+      settings = g_settings_new_with_path(tags::schema::gate::id, tags::schema::gate::output_path);
+      break;
+  }
 }
 
-void GatePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+void GatePreset::save(nlohmann::json& json) {
   json[section]["gate"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["gate"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -75,7 +80,7 @@ void GatePreset::save(nlohmann::json& json, const std::string& section, GSetting
   json[section]["gate"]["lpf-frequency"] = g_settings_get_double(settings, "lpf-frequency");
 }
 
-void GatePreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+void GatePreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("gate"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("gate"), settings, "input-gain", "input-gain");

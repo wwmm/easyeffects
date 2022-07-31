@@ -19,13 +19,18 @@
 
 #include "limiter_preset.hpp"
 
-LimiterPreset::LimiterPreset() {
-  input_settings = g_settings_new_with_path(tags::schema::limiter::id, tags::schema::limiter::input_path);
-
-  output_settings = g_settings_new_with_path(tags::schema::limiter::id, tags::schema::limiter::output_path);
+LimiterPreset::LimiterPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
+  switch (preset_type) {
+    case PresetType::input:
+      settings = g_settings_new_with_path(tags::schema::limiter::id, tags::schema::limiter::input_path);
+      break;
+    case PresetType::output:
+      settings = g_settings_new_with_path(tags::schema::limiter::id, tags::schema::limiter::output_path);
+      break;
+  }
 }
 
-void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+void LimiterPreset::save(nlohmann::json& json) {
   json[section]["limiter"]["mode"] = util::gsettings_get_string(settings, "mode");
 
   json[section]["limiter"]["oversampling"] = util::gsettings_get_string(settings, "oversampling");
@@ -63,7 +68,7 @@ void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSett
   json[section]["limiter"]["external-sidechain"] = g_settings_get_boolean(settings, "external-sidechain") != 0;
 }
 
-void LimiterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+void LimiterPreset::load(const nlohmann::json& json) {
   update_key<gchar*>(json.at(section).at("limiter"), settings, "mode", "mode");
 
   update_key<gchar*>(json.at(section).at("limiter"), settings, "oversampling", "oversampling");

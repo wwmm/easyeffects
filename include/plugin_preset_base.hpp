@@ -29,52 +29,37 @@
 
 class PluginPresetBase {
  public:
-  PluginPresetBase() = default;
+  PluginPresetBase(PresetType preset_type, const int& index);
   PluginPresetBase(const PluginPresetBase&) = delete;
   auto operator=(const PluginPresetBase&) -> PluginPresetBase& = delete;
   PluginPresetBase(const PluginPresetBase&&) = delete;
   auto operator=(const PluginPresetBase&&) -> PluginPresetBase& = delete;
 
-  virtual ~PluginPresetBase() {
-    g_object_unref(input_settings);
-    g_object_unref(output_settings);
-  };
+  virtual ~PluginPresetBase();
 
-  void write(PresetType preset_type, nlohmann::json& json) {
+  void write(nlohmann::json& json) {
     try {
-      switch (preset_type) {
-        case PresetType::output:
-          save(json, "output", output_settings);
-          break;
-        case PresetType::input:
-          save(json, "input", input_settings);
-          break;
-      }
+      save(json);
     } catch (const nlohmann::json::exception& e) {
       util::warning(e.what());
     }
   }
 
-  void read(PresetType preset_type, const nlohmann::json& json) {
+  void read(const nlohmann::json& json) {
     // For simplicity, exceptions raised while reading presets parameters
     // should be handled outside this method.
 
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
+    load(json);
   }
 
  protected:
-  GSettings *input_settings = nullptr, *output_settings = nullptr;
+  GSettings* settings = nullptr;
 
-  virtual void save(nlohmann::json& json, const std::string& section, GSettings* settings) = 0;
+  std::string section;
 
-  virtual void load(const nlohmann::json& json, const std::string& section, GSettings* settings) = 0;
+  virtual void save(nlohmann::json& json) = 0;
+
+  virtual void load(const nlohmann::json& json) = 0;
 
   template <typename T>
   auto get_default(GSettings* settings, const std::string& key) -> T {

@@ -19,13 +19,18 @@
 
 #include "stereo_tools_preset.hpp"
 
-StereoToolsPreset::StereoToolsPreset() {
-  input_settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::input_path);
-
-  output_settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::output_path);
+StereoToolsPreset::StereoToolsPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
+  switch (preset_type) {
+    case PresetType::input:
+      settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::input_path);
+      break;
+    case PresetType::output:
+      settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::output_path);
+      break;
+  }
 }
 
-void StereoToolsPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+void StereoToolsPreset::save(nlohmann::json& json) {
   json[section]["stereo_tools"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["stereo_tools"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -65,7 +70,7 @@ void StereoToolsPreset::save(nlohmann::json& json, const std::string& section, G
   json[section]["stereo_tools"]["stereo-phase"] = g_settings_get_double(settings, "stereo-phase");
 }
 
-void StereoToolsPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+void StereoToolsPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("stereo_tools"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("stereo_tools"), settings, "input-gain", "input-gain");

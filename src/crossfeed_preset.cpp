@@ -19,13 +19,18 @@
 
 #include "crossfeed_preset.hpp"
 
-CrossfeedPreset::CrossfeedPreset() {
-  input_settings = g_settings_new_with_path(tags::schema::crossfeed::id, tags::schema::crossfeed::input_path);
-
-  output_settings = g_settings_new_with_path(tags::schema::crossfeed::id, tags::schema::crossfeed::output_path);
+CrossfeedPreset::CrossfeedPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
+  switch (preset_type) {
+    case PresetType::input:
+      settings = g_settings_new_with_path(tags::schema::crossfeed::id, tags::schema::crossfeed::input_path);
+      break;
+    case PresetType::output:
+      settings = g_settings_new_with_path(tags::schema::crossfeed::id, tags::schema::crossfeed::output_path);
+      break;
+  }
 }
 
-void CrossfeedPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+void CrossfeedPreset::save(nlohmann::json& json) {
   json[section]["crossfeed"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["crossfeed"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -37,7 +42,7 @@ void CrossfeedPreset::save(nlohmann::json& json, const std::string& section, GSe
   json[section]["crossfeed"]["feed"] = g_settings_get_double(settings, "feed");
 }
 
-void CrossfeedPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+void CrossfeedPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("crossfeed"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("crossfeed"), settings, "input-gain", "input-gain");

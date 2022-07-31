@@ -19,13 +19,18 @@
 
 #include "compressor_preset.hpp"
 
-CompressorPreset::CompressorPreset() {
-  input_settings = g_settings_new_with_path(tags::schema::compressor::id, tags::schema::compressor::input_path);
-
-  output_settings = g_settings_new_with_path(tags::schema::compressor::id, tags::schema::compressor::output_path);
+CompressorPreset::CompressorPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
+  switch (preset_type) {
+    case PresetType::input:
+      settings = g_settings_new_with_path(tags::schema::compressor::id, tags::schema::compressor::input_path);
+      break;
+    case PresetType::output:
+      settings = g_settings_new_with_path(tags::schema::compressor::id, tags::schema::compressor::output_path);
+      break;
+  }
 }
 
-void CompressorPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+void CompressorPreset::save(nlohmann::json& json) {
   json[section]["compressor"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["compressor"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -77,7 +82,7 @@ void CompressorPreset::save(nlohmann::json& json, const std::string& section, GS
   json[section]["compressor"]["lpf-frequency"] = g_settings_get_double(settings, "lpf-frequency");
 }
 
-void CompressorPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+void CompressorPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("compressor"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("compressor"), settings, "input-gain", "input-gain");

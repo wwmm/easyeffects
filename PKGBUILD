@@ -1,38 +1,48 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
+# Maintainer: Upstream https://github.com/wwmm/easyeffects 
 
 pkgname=easyeffects-git
-pkgver=6.1.4.r19.gc63c5dd3
+pkgver=pkgvernotupdated
 pkgrel=1
 pkgdesc='Audio Effects for PipeWire Applications'
 arch=(x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'glib2' 'pipewire-pulse' 'lilv' 'lv2' 'libsigc++-3.0' 'libsndfile' 'libsamplerate' 'zita-convolver' 
-         'libebur128' 'rnnoise' 'rubberband' 'fftw' 'libbs2b' 'speexdsp' 'nlohmann-json' 'tbb' 'fmt')
-makedepends=('meson' 'itstool' 'appstream-glib')
+depends=('libadwaita' 'pipewire-pulse' 'lilv' 'libsigc++-3.0' 'libsamplerate' 'zita-convolver' 
+         'libebur128' 'rnnoise' 'rubberband' 'libbs2b' 'nlohmann-json' 'tbb' 'fmt')
+makedepends=('meson' 'itstool' 'appstream-glib' 'git')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'
             'mda.lv2: bass loudness'
             'yelp: in-app help')
-source=("easyeffects::git+https://github.com/wwmm/easyeffects.git")
 conflicts=(easyeffects)
 provides=(easyeffects)
 replaces=('pulseeffects')
-sha512sums=('SKIP')
+sha512sums=()
 
 pkgver() {
-  cd easyeffects
-
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  description=$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+  # if in github actions environment
+  if test -f "../GITHUB_COMMIT_DESC"; then 
+    # remove last commit from git describe output (which may sometimes be a merge commit),
+    # and replace it with a human friendly version
+    description_short=$(echo "$description" | sed -r 's/(.*)\..*/\1/')
+    github_commit_desc_no_hyphen=$(sed 's/-/./g' ../GITHUB_COMMIT_DESC)
+    printf "%s" "${description_short}.${github_commit_desc_no_hyphen}"
+  else
+    printf "%s" "$description"
+  fi
 }
 
 build() {
-  arch-meson easyeffects build
+  cd ..
+  arch-meson . build
 
   ninja -C build
 }
 
 package() {
+  cd ..
   DESTDIR="${pkgdir}" ninja install -C build
 }

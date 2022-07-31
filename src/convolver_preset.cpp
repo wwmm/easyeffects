@@ -19,13 +19,18 @@
 
 #include "convolver_preset.hpp"
 
-ConvolverPreset::ConvolverPreset() {
-  input_settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::input_path);
-
-  output_settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::output_path);
+ConvolverPreset::ConvolverPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
+  switch (preset_type) {
+    case PresetType::input:
+      settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::input_path);
+      break;
+    case PresetType::output:
+      settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::output_path);
+      break;
+  }
 }
 
-void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+void ConvolverPreset::save(nlohmann::json& json) {
   json[section]["convolver"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section]["convolver"]["input-gain"] = g_settings_get_double(settings, "input-gain");
@@ -39,7 +44,7 @@ void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSe
   json[section]["convolver"]["autogain"] = g_settings_get_boolean(settings, "autogain") != 0;
 }
 
-void ConvolverPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
+void ConvolverPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at("convolver"), settings, "bypass", "bypass");
 
   update_key<double>(json.at(section).at("convolver"), settings, "input-gain", "input-gain");

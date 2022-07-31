@@ -85,6 +85,7 @@ easyeffects_sources = [
 	'pitch_preset.cpp',
 	'pitch_ui.cpp',
 	'plugin_base.cpp',
+	'plugin_preset_base.cpp',
 	'plugins_box.cpp',
 	'plugins_menu.cpp',
 	'preferences_general.cpp',
