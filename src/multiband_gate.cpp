@@ -24,106 +24,29 @@ MultibandGate::MultibandGate(const std::string& tag,
                              const std::string& schema_path,
                              PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::multiband_gate, schema, schema_path, pipe_manager),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/MultibandGate")) {
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_mb_gate_stereo")) {
   if (!lv2_wrapper->found_plugin) {
-    util::debug(log_tag + "http://calf.sourceforge.net/plugins/MultibandGate is not installed");
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_mb_gate_stereo is not installed");
   }
 
-  lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
+  gconnections.push_back(g_signal_connect(settings, "changed::sidechain-input-device",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<MultibandGate*>(user_data);
 
-  lv2_wrapper->bind_key_double<"freq0", "freq0">(settings);
+                                            self->update_sidechain_links(key);
+                                          }),
+                                          this));
 
-  lv2_wrapper->bind_key_double<"freq1", "freq1">(settings);
+  lv2_wrapper->bind_key_enum<"mode", "gate-mode">(settings);
 
-  lv2_wrapper->bind_key_double<"freq2", "freq2">(settings);
+  lv2_wrapper->bind_key_enum<"envb", "envelope-boost">(settings);
 
-  // sub band
+  // The following controls can assume -inf
+  lv2_wrapper->bind_key_double_db<"g_dry", "dry", false>(settings);
 
-  lv2_wrapper->bind_key_double_db<"range0", "range0">(settings);
+  lv2_wrapper->bind_key_double_db<"g_wet", "wet", false>(settings);
 
-  lv2_wrapper->bind_key_double_db<"threshold0", "threshold0">(settings);
-
-  lv2_wrapper->bind_key_double_db<"makeup0", "makeup0">(settings);
-
-  lv2_wrapper->bind_key_double_db<"knee0", "knee0">(settings);
-
-  lv2_wrapper->bind_key_double<"ratio0", "ratio0">(settings);
-
-  lv2_wrapper->bind_key_double<"attack0", "attack0">(settings);
-
-  lv2_wrapper->bind_key_double<"release0", "release0">(settings);
-
-  lv2_wrapper->bind_key_enum<"detection0", "detection0">(settings);
-
-  lv2_wrapper->bind_key_bool<"bypass0", "bypass0">(settings);
-
-  lv2_wrapper->bind_key_bool<"solo0", "solo0">(settings);
-
-  // low band
-
-  lv2_wrapper->bind_key_double_db<"range1", "range1">(settings);
-
-  lv2_wrapper->bind_key_double_db<"threshold1", "threshold1">(settings);
-
-  lv2_wrapper->bind_key_double_db<"makeup1", "makeup1">(settings);
-
-  lv2_wrapper->bind_key_double_db<"knee1", "knee1">(settings);
-
-  lv2_wrapper->bind_key_double<"ratio1", "ratio1">(settings);
-
-  lv2_wrapper->bind_key_double<"attack1", "attack1">(settings);
-
-  lv2_wrapper->bind_key_double<"release1", "release1">(settings);
-
-  lv2_wrapper->bind_key_enum<"detection1", "detection1">(settings);
-
-  lv2_wrapper->bind_key_bool<"bypass1", "bypass1">(settings);
-
-  lv2_wrapper->bind_key_bool<"solo1", "solo1">(settings);
-
-  // mid band
-
-  lv2_wrapper->bind_key_double_db<"range2", "range2">(settings);
-
-  lv2_wrapper->bind_key_double_db<"threshold2", "threshold2">(settings);
-
-  lv2_wrapper->bind_key_double_db<"makeup2", "makeup2">(settings);
-
-  lv2_wrapper->bind_key_double_db<"knee2", "knee2">(settings);
-
-  lv2_wrapper->bind_key_double<"ratio2", "ratio2">(settings);
-
-  lv2_wrapper->bind_key_double<"attack2", "attack2">(settings);
-
-  lv2_wrapper->bind_key_double<"release2", "release2">(settings);
-
-  lv2_wrapper->bind_key_enum<"detection2", "detection2">(settings);
-
-  lv2_wrapper->bind_key_bool<"bypass2", "bypass2">(settings);
-
-  lv2_wrapper->bind_key_bool<"solo2", "solo2">(settings);
-
-  // high band
-
-  lv2_wrapper->bind_key_double_db<"range3", "range3">(settings);
-
-  lv2_wrapper->bind_key_double_db<"threshold3", "threshold3">(settings);
-
-  lv2_wrapper->bind_key_double_db<"makeup3", "makeup3">(settings);
-
-  lv2_wrapper->bind_key_double_db<"knee3", "knee3">(settings);
-
-  lv2_wrapper->bind_key_double<"ratio3", "ratio3">(settings);
-
-  lv2_wrapper->bind_key_double<"attack3", "attack3">(settings);
-
-  lv2_wrapper->bind_key_double<"release3", "release3">(settings);
-
-  lv2_wrapper->bind_key_enum<"detection3", "detection3">(settings);
-
-  lv2_wrapper->bind_key_bool<"bypass3", "bypass3">(settings);
-
-  lv2_wrapper->bind_key_bool<"solo3", "solo3">(settings);
+  bind_bands(std::make_index_sequence<n_bands>());
 
   setup_input_output_gain();
 }
@@ -151,7 +74,9 @@ void MultibandGate::setup() {
 void MultibandGate::process(std::span<float>& left_in,
                             std::span<float>& right_in,
                             std::span<float>& left_out,
-                            std::span<float>& right_out) {
+                            std::span<float>& right_out,
+                            std::span<float>& probe_left,
+                            std::span<float>& probe_right) {
   if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
@@ -163,11 +88,65 @@ void MultibandGate::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out, probe_left, probe_right);
   lv2_wrapper->run();
 
   if (output_gain != 1.0F) {
     apply_gain(left_out, right_out, output_gain);
+  }
+
+  /*
+   This plugin gives the latency in number of samples
+ */
+
+  const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+
+  if (latency_n_frames != lv) {
+    latency_n_frames = lv;
+
+    latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+
+    util::debug(log_tag + name + " latency: " + util::to_string(latency_port_value, "") + " s");
+
+    util::idle_add([=, this]() {
+      if (!post_messages) {
+        return;
+      }
+
+      latency.emit(latency_port_value);
+    });
+
+    g_idle_add((GSourceFunc) +
+                   [](gpointer user_data) {
+                     auto* self = static_cast<MultibandGate*>(user_data);
+
+                     if (!self->post_messages) {
+                       return G_SOURCE_REMOVE;
+                     }
+
+                     if (self->latency.empty()) {
+                       return G_SOURCE_REMOVE;
+                     }
+
+                     self->latency.emit(self->latency_port_value);
+
+                     return G_SOURCE_REMOVE;
+                   },
+               this);
+
+    spa_process_latency_info latency_info{};
+
+    latency_info.ns = static_cast<uint64_t>(latency_port_value * 1000000000.0F);
+
+    std::array<char, 1024U> buffer{};
+
+    spa_pod_builder b{};
+
+    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+
+    const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
+
+    pw_filter_update_params(filter, nullptr, &param, 1);
   }
 
   if (post_messages) {
@@ -176,33 +155,67 @@ void MultibandGate::process(std::span<float>& left_in,
     notification_dt += buffer_duration;
 
     if (notification_dt >= notification_time_window) {
-      // values needed as double for levelbars widget ui, so we convert them here
+      for (uint n = 0U; n < n_bands; n++) {
+        const auto nstr = util::to_string(n);
 
-      output0_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("output0"));
-      output1_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("output1"));
-      output2_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("output2"));
-      output3_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("output3"));
+        frequency_range_end_port_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
+        envelope_port_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);
+        curve_port_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + nstr);
+        reduction_port_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
+      }
 
-      gating0_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating0"));
-      gating1_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating1"));
-      gating2_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating2"));
-      gating3_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating3"));
-
-      output0.emit(output0_port_value);
-      output1.emit(output1_port_value);
-      output2.emit(output2_port_value);
-      output3.emit(output3_port_value);
-
-      gating0.emit(gating0_port_value);
-      gating1.emit(gating1_port_value);
-      gating2.emit(gating2_port_value);
-      gating3.emit(gating3_port_value);
+      frequency_range.emit(frequency_range_end_port_array);
+      envelope.emit(envelope_port_array);
+      curve.emit(curve_port_array);
+      reduction.emit(reduction_port_array);
 
       notify();
 
       notification_dt = 0.0F;
     }
   }
+}
+
+void MultibandGate::update_sidechain_links(const std::string& key) {
+  auto external_sidechain_enabled = false;
+
+  for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {
+    const auto nstr = util::to_string(n);
+
+    external_sidechain_enabled = g_settings_get_boolean(settings, ("external-sidechain" + nstr).c_str()) != 0;
+  }
+
+  if (!external_sidechain_enabled) {
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
+
+    return;
+  }
+
+  const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
+
+  NodeInfo input_device = pm->ee_source_node;
+
+  for (const auto& [serial, node] : pm->node_map) {
+    if (node.name == device_name) {
+      input_device = node;
+
+      break;
+    }
+  }
+
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
+
+  for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+    list_proxies.push_back(link);
+  }
+}
+
+void MultibandGate::update_probe_links() {
+  update_sidechain_links("");
 }
 
 auto MultibandGate::get_latency_seconds() -> float {
