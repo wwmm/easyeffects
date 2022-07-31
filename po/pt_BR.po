@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-27 18:34+0200\n"
-"PO-Revision-Date: 2022-06-27 22:36+0000\n"
-"Last-Translator: Vander <vander.azevedo88@gmail.com>\n"
+"PO-Revision-Date: 2022-07-31 00:17+0000\n"
+"Last-Translator: Filipe Torres <felipetorres2405@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -44,16 +44,15 @@ msgstr "\"Predefinições\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Habilitar/Desabilitar este aplicativo"
 
 #: data/ui/app_info.ui:213
-#, fuzzy
 msgid "Enable"
 msgstr "Habilitar"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Lista de aplicativos excluídos: Adicionar/remover este aplicativo"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -65,7 +64,7 @@ msgstr "Silenciar o Aplicativo"
 
 #: data/ui/app_info.ui:272
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "Alterar o volume desse aplicativo"
 
 #: data/ui/app_info.ui:274
 msgid "Application Volume"
@@ -103,7 +102,7 @@ msgstr "Menu de Predefinições"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "Habilitar/desabilitar o global bypass"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -154,28 +153,24 @@ msgid "Integrated"
 msgstr "Integrada"
 
 #: data/ui/autogain.ui:101
-#, fuzzy
 msgid "Geometric Mean (MSI)"
-msgstr "Média Geométrica"
+msgstr "Média Geométrica (MSI)"
 
 #: data/ui/autogain.ui:102
-#, fuzzy
 msgid "Geometric Mean (MS)"
-msgstr "Média Geométrica"
+msgstr "Média Geométrica (MS)"
 
 #: data/ui/autogain.ui:103
-#, fuzzy
 msgid "Geometric Mean (MI)"
-msgstr "Média Geométrica"
+msgstr "Média Geométrica (MI)"
 
 #: data/ui/autogain.ui:104
-#, fuzzy
 msgid "Geometric Mean (SI)"
-msgstr "Média Geométrica"
+msgstr "Média Geométrica (SI)"
 
 #: data/ui/autogain.ui:119
 msgid "Reset History"
-msgstr "Redefinir Histórico"
+msgstr "Apagar Histórico"
 
 #: data/ui/autogain.ui:229
 msgid "Relative"
@@ -295,7 +290,6 @@ msgid "Preset"
 msgstr "Predefinição"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
 msgstr "Remover este arquivo de predefinição"
 
@@ -346,19 +340,16 @@ msgid "Application Name"
 msgstr "Nome do Aplicativo"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "Mostrar aplicativos bloqueados"
+msgstr "Adicionar aos aplicativos excluídos"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "Lista de aplicativos bloqueados"
+msgstr "Lista de aplicativos excluídos"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "Mostrar aplicativos bloqueados"
+msgstr "Mostrar aplicativos excluídos"
 
 #: data/ui/compressor.ui:31 src/tags_plugin_name.cpp:28
 msgid "Compressor"
@@ -389,7 +380,6 @@ msgid "Compression Mode"
 msgstr "Modo de Compressão"
 
 #: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:765
-#, fuzzy
 msgid "Boost Threshold"
 msgstr "Limiar de Impulso"
 
@@ -405,7 +395,6 @@ msgid "Attack"
 msgstr "Ataque"
 
 #: data/ui/compressor.ui:166 data/ui/multiband_compressor_band.ui:166
-#, fuzzy
 msgid "Time"
 msgstr "Tempo"
 
@@ -418,13 +407,11 @@ msgid "Threshold"
 msgstr "Limiar"
 
 #: data/ui/compressor.ui:203 data/ui/multiband_compressor_band.ui:222
-#, fuzzy
 msgid "Attack Time"
 msgstr "Tempo de Ataque"
 
 #: data/ui/compressor.ui:226 data/ui/gate.ui:433
 #: data/ui/multiband_compressor_band.ui:247
-#, fuzzy
 msgid "Attack Threshold"
 msgstr "Limiar de Ataque"
 
@@ -437,13 +424,11 @@ msgid "Release"
 msgstr "Liberação"
 
 #: data/ui/compressor.ui:260 data/ui/multiband_compressor_band.ui:274
-#, fuzzy
 msgid "Release Time"
 msgstr "Tempo de liberação"
 
 #: data/ui/compressor.ui:285 data/ui/gate.ui:487
 #: data/ui/multiband_compressor_band.ui:302
-#, fuzzy
 msgid "Release Threshold"
 msgstr "Limiar de liberação"
 
@@ -499,7 +484,6 @@ msgstr "Uniforme"
 
 #: data/ui/compressor.ui:450 data/ui/gate.ui:556
 #: data/ui/multiband_compressor_band.ui:470
-#, fuzzy
 msgid "Sidechain Mode"
 msgstr "Modo de cadeia lateral"
 
@@ -532,7 +516,6 @@ msgstr "Direita"
 
 #: data/ui/compressor.ui:488 data/ui/gate.ui:594
 #: data/ui/multiband_compressor.ui:86 data/ui/multiband_compressor_band.ui:498
-#, fuzzy
 msgid "Sidechain Source"
 msgstr "Fonte da cadeia lateral"
 
@@ -549,22 +532,18 @@ msgid "Feed-back"
 msgstr "Retorno"
 
 #: data/ui/compressor.ui:543 data/ui/gate.ui:648
-#, fuzzy
 msgid "External"
 msgstr "Externo"
 
 #: data/ui/compressor.ui:550 data/ui/gate.ui:655
-#, fuzzy
 msgid "Sidechain Type"
 msgstr "Tipo de cadeia lateral"
 
 #: data/ui/compressor.ui:577 data/ui/gate.ui:682 src/plugins_box.cpp:546
-#, fuzzy
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
 
 #: data/ui/compressor.ui:585 data/ui/gate.ui:690
-#, fuzzy
 msgid "PreAmplification"
 msgstr "Pré-Amplificação"
 
@@ -583,7 +562,6 @@ msgid "Sidechain Filters"
 msgstr "Filtros da cadeia lateral"
 
 #: data/ui/compressor.ui:712 data/ui/gate.ui:817
-#, fuzzy
 msgid "High-Pass"
 msgstr "Passa-alta"
 
@@ -613,20 +591,17 @@ msgid "36 dB/oct"
 msgstr "36dB/oct"
 
 #: data/ui/compressor.ui:761 data/ui/gate.ui:866
-#, fuzzy
 msgid "High-Pass Filter Mode"
-msgstr "Filtro Passa-Alta"
+msgstr "Modo de Filtro Passa-Alta"
 
 #: data/ui/compressor.ui:787 data/ui/compressor.ui:843 data/ui/gate.ui:892
 #: data/ui/gate.ui:948
-#, fuzzy
 msgid "High-Pass Filter Frequency"
-msgstr "Frequências Mais Altas"
+msgstr "Frequência do Filtro Passa-Alta"
 
 #: data/ui/compressor.ui:817 data/ui/gate.ui:922
-#, fuzzy
 msgid "Low-Pass Filter Mode"
-msgstr "Filtro Passa-Alta"
+msgstr "Modo de Filtro Passa-Baixa"
 
 #: data/ui/compressor.ui:869 data/ui/gate.ui:974
 msgid "Gain"
@@ -658,9 +633,8 @@ msgid "Right Channel"
 msgstr "Canal direito"
 
 #: data/ui/convolver.ui:61
-#, fuzzy
 msgid "Impulses"
-msgstr "Resposta de Impulso"
+msgstr "Impulsos"
 
 #: data/ui/convolver.ui:69 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
@@ -696,9 +670,8 @@ msgid "Duration"
 msgstr "Duração"
 
 #: data/ui/convolver_menu_combine.ui:15
-#, fuzzy
 msgid "Combine Impulse Responses"
-msgstr "Resposta de Impulso"
+msgstr "Combinar Respostas de Impulso"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
@@ -709,9 +682,8 @@ msgid "Second Kernel"
 msgstr "Segundo Núcleo"
 
 #: data/ui/convolver_menu_combine.ui:91
-#, fuzzy
 msgid "Output File Name"
-msgstr "Saída"
+msgstr "Nome do Arquivo de Saída"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
@@ -727,14 +699,12 @@ msgid "Search"
 msgstr "Buscar"
 
 #: data/ui/convolver_menu_impulses.ui:27
-#, fuzzy
 msgid "Search Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
 #: data/ui/convolver_menu_impulses.ui:47
-#, fuzzy
 msgid "Impulse Files List"
-msgstr "Importar Arquivo com a Resposta de Impulso"
+msgstr "Arquivo com o Impulso"
 
 #: data/ui/crossfeed.ui:25
 msgid "Default"
@@ -777,46 +747,40 @@ msgid "F1 Split"
 msgstr "Divisão F1"
 
 #: data/ui/deesser.ui:98
-#, fuzzy
 msgid "Frequency 1 Split"
-msgstr "Frequência"
+msgstr "Divisão da Frequência 1"
 
 #: data/ui/deesser.ui:111
 msgid "F2 Peak"
 msgstr "Pico F2"
 
 #: data/ui/deesser.ui:131
-#, fuzzy
 msgid "Frequency 2 Peak"
-msgstr "Frequência"
+msgstr "Pico da Frequência 2"
 
 #: data/ui/deesser.ui:149
 msgid "F1 Gain"
 msgstr "Ganho F1"
 
 #: data/ui/deesser.ui:177
-#, fuzzy
 msgid "Frequency 1 Gain"
-msgstr "Frequência"
+msgstr "Ganho da Frequência 1"
 
 #: data/ui/deesser.ui:184
 msgid "F2 Level"
 msgstr "Nível F2"
 
 #: data/ui/deesser.ui:212
-#, fuzzy
 msgid "Frequency 2 Level"
-msgstr "Frequência"
+msgstr "Nível da Frequência 2"
 
 #: data/ui/deesser.ui:219
-#, fuzzy
 msgid "F2 Peak Q"
-msgstr "Pico Q"
+msgstr "Pico Q F2"
 
 #: data/ui/deesser.ui:247
-#, fuzzy
 msgid "Frequency 2 Peak Q"
-msgstr "Frequência"
+msgstr "Pico Q da Frequência 2"
 
 #: data/ui/deesser.ui:254
 msgid "Laxity"
@@ -827,7 +791,6 @@ msgid "Detected"
 msgstr "Detectado"
 
 #: data/ui/deesser.ui:599 data/ui/gate.ui:319 data/ui/maximizer.ui:298
-#, fuzzy
 msgid "Reduction"
 msgstr "Redução"
 
@@ -860,7 +823,6 @@ msgid "FFT"
 msgstr "FFT"
 
 #: data/ui/equalizer.ui:136
-#, fuzzy
 msgid "SPM"
 msgstr "SPM"
 
@@ -877,9 +839,8 @@ msgid "Calculate Frequencies"
 msgstr "Calcular Frequências"
 
 #: data/ui/equalizer.ui:175
-#, fuzzy
 msgid "Load APO Preset"
-msgstr "Predefinições"
+msgstr "Carregar Predefinições APO"
 
 #: data/ui/equalizer_band.ui:109
 msgid "Bell"
@@ -910,9 +871,8 @@ msgid "Resonance"
 msgstr "Ressonância"
 
 #: data/ui/equalizer_band.ui:116
-#, fuzzy
 msgid "All Pass"
-msgstr "Passa-Baixa"
+msgstr "Passa-Tudo"
 
 #: data/ui/equalizer_band.ui:123
 msgid "Band Type"
@@ -920,7 +880,7 @@ msgstr "Tipo de banda"
 
 #: data/ui/equalizer_band.ui:153
 msgid "Band Mode"
-msgstr "Modo Banda"
+msgstr "Modo de Banda"
 
 #: data/ui/equalizer_band.ui:160
 msgid "Slope"
@@ -959,7 +919,6 @@ msgid "API"
 msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
-#, fuzzy
 msgid "Access"
 msgstr "Acesso"
 
@@ -968,9 +927,8 @@ msgid "Description"
 msgstr "Descrição"
 
 #: data/ui/factory_rnnoise_listview.ui:24
-#, fuzzy
 msgid "Remove this model file"
-msgstr "Remover este arquivo de predefinição"
+msgstr "Remover este arquivo modelo"
 
 #: data/ui/filter.ui:15
 msgid "12dB/oct Lowpass"
@@ -1030,7 +988,7 @@ msgstr "Portão"
 
 #: data/ui/gate.ui:149 data/ui/gate.ui:242
 msgid "Zone"
-msgstr ""
+msgstr "Zona"
 
 #: data/ui/gate.ui:221
 msgid "Hysteresis"
@@ -1046,9 +1004,8 @@ msgid "Release Zone Start"
 msgstr "Tempo de liberação"
 
 #: data/ui/gate.ui:647
-#, fuzzy
 msgid "Internal"
-msgstr "Externo"
+msgstr "Interno"
 
 #: data/ui/gate.ui:1254 data/ui/multiband_gate.ui:494
 #: data/ui/multiband_gate.ui:854 data/ui/multiband_gate.ui:1214
@@ -1061,7 +1018,6 @@ msgid "Oversampling"
 msgstr "Sobreamostragem"
 
 #: data/ui/limiter.ui:60
-#, fuzzy
 msgid "Dither"
 msgstr "Dither"
 
@@ -2396,9 +2352,8 @@ msgid "Unknown"
 msgstr "Desconhecido"
 
 #: src/app_info.cpp:226
-#, fuzzy
 msgid "channels"
-msgstr "Canais"
+msgstr "canais"
 
 #: src/application.cpp:250
 msgid "Output Presets: "
@@ -2409,9 +2364,8 @@ msgid "Input Presets: "
 msgstr "Predefinições de Entrada: "
 
 #: src/application.cpp:413
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
+msgstr "Efeitos de audio para Programas que utilizam PipeWire"
 
 #: src/application.cpp:503
 msgid "Quit EasyEffects. Useful when running in service mode."
@@ -2419,7 +2373,7 @@ msgstr "Sair do EasyEffects. Útil quando executando em modo de serviço."
 
 #: src/application.cpp:506
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
+msgstr "Carregar uma predefinição. Exemplo: easyeffects -l music"
 
 #: src/application.cpp:509
 msgid "Reset EasyEffects."
@@ -2427,11 +2381,13 @@ msgstr "Redefinir o EasyEffects."
 
 #: src/application.cpp:512
 msgid "Hide the Window."
-msgstr ""
+msgstr "Ocultar a janela."
 
 #: src/application.cpp:515
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
+"Global bypass. 1 para habilitar 2 para desabilitar e 3 para verificar o "
+"status"
 
 #: src/application.cpp:518
 msgid "Show available presets."
@@ -2443,20 +2399,19 @@ msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:99
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "O arquivo não está regular"
 
 #: src/convolver_menu_impulses.cpp:104
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "O arquivo de impulso pode estar corrompido ou é não é suportado"
 
 #: src/convolver_menu_impulses.cpp:109
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Apenas arquivos de impulso stereo são suportados"
 
 #: src/convolver_menu_impulses.cpp:119
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Importar Arquivo com a Resposta de Impulso"
+msgstr "Arquivo de impulso não importado"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "Import Impulse File"
@@ -2477,19 +2432,16 @@ msgid "Impulse Response"
 msgstr "Resposta de Impulso"
 
 #: src/convolver_menu_impulses.cpp:243
-#, fuzzy
 msgid "Load Impulse"
-msgstr "Resposta de Impulso"
+msgstr "Carregar Impulso"
 
 #: src/convolver_menu_impulses.cpp:246
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "Importar Impulso"
+msgstr "Remover Impulso"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Importar Arquivo com a Resposta de Impulso"
+msgstr "Nenhum arquivo de impulso carregado"
 
 #: src/convolver_ui.cpp:345
 #, fuzzy
@@ -2526,6 +2478,8 @@ msgstr "Predefinições"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
+"Arquivo de predefinição não carregado: Talvez o formato do arquivo esteja "
+"errado. Por favor, verifique o conteúdo."
 
 #: src/pipe_manager_box.cpp:327
 #, fuzzy
@@ -2636,7 +2590,6 @@ msgid "Reverberation"
 msgstr "Reverberação"
 
 #: src/tags_plugin_name.cpp:46
-#, fuzzy
 msgid "Noise Reduction"
 msgstr "Redução de Ruído"
 
@@ -2650,7 +2603,7 @@ msgstr "Ferramentas Stereo"
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:84
 msgid "Close (Press ESC)"
-msgstr ""
+msgstr "Fechar (Pressione ESC)"
 
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
 msgid "-inf"
