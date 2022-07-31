@@ -1,0 +1,109 @@
+name: Artifact comment
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed, requested]
+
+permissions:
+  # write comment
+  pull-requests: write
+
+jobs:
+  pr_comment:
+    name: Update PR comment
+    if: github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check if workflow is running
+        if: ${{github.event.workflow_run.conclusion == '' }}
+        run: echo "CONCLUSION=running" >> $GITHUB_ENV
+      
+      - name: Check if workflow concluded
+        if: ${{github.event.workflow_run.conclusion != '' }}
+        run: echo "CONCLUSION=${{github.event.workflow_run.conclusion }}" >> $GITHUB_ENV
+      
+      - name: Get the PR number
+        run: |
+          # Query the issue search API to get the PR associated with it
+          PR_RAW=$(curl 'https://api.github.com/search/issues?q=${{ github.event.workflow_run.head_commit.id }}')
+          # Get the event number from the search results, which will be the PR number
+          PR_NUM=$(echo $PR_RAW | jq '.items[].number')
+          echo "PR_NUM=${PR_NUM}" >> ${GITHUB_ENV}
+      
+      - name: Comment on PR
+        uses: actions/github-script@v6.1.0
+        with:
+          # adapted from https://github.com/oprypin/nightly.link/blob/master/.github/workflows/pr-comment.yml
+          # and https://github.com/oprypin/nightly.link/pull/38
+          script: |
+            async function upsertComment(owner, repo, issue_number, purpose) {
+              const { data: comments } = await github.rest.issues.listComments(
+                { owner, repo, issue_number });
+              const marker = `<!-- bot: ${purpose} -->`;
+              
+              let body = 'no body was set';
+              const conclusion = process.env.CONCLUSION;
+
+              if (conclusion === "running") {
+                body = `Workflow is currently running, latest artifacts not yet available.\n`;
+              }
+              else {
+                const artifacts = await github.paginate(
+                  github.rest.actions.listWorkflowRunArtifacts, { owner, repo, run_id });
+                
+                // in case we have a simple scenario, when no artifacts are available.
+                if (!artifacts.length) {
+                  if (conclusion === "failure") {
+                    body = `Workflow failed, and no artifacts are available.\n`;
+                  }
+                  else if (conclusion === "cancelled") {
+                    body = `Workflow was cancelled, and no artifacts are available.\n`;
+                  }
+                  else {
+                    return core.error(`No artifacts were found for non successful workflow, but conclusion was not failure or cancelled, instead it was: ${conclusion}`);
+                  }
+                }
+                
+                // if at least some artifacts exist we can still make a comment with them.
+                else {
+                  if (conclusion === "success") {
+                    body = `Download the latest artifacts for this pull request:\n`;
+                  }
+                  else if (conclusion === "failure") {
+                    body = `Workflow failed, but the following artifacts are still available for this pull request:\n`;
+                  }
+                  else if (conclusion === "cancelled") {
+                    body = `Workflow was cancelled, but the following artifacts are still available for this pull request:\n`;
+                  }
+                  else {
+                    return core.error(`Artifacts were found for this workflow, but conclusion was not success, failure, or cancelled, instead it was: ${conclusion}`);
+                  }
+
+                  for (const art of artifacts) {
+                    body += `\n* [${art.name}.zip](https://nightly.link/${owner}/${repo}/actions/artifacts/${art.id}.zip)`;
+                  }
+                }
+              }
+              
+              body = marker + "\n" + body;
+              const existing = comments.filter((c) => c.body.includes(marker));
+              if (existing.length > 0) {
+                const last = existing[existing.length - 1];
+                core.info(`Updating comment ${last.id}`);
+                await github.rest.issues.updateComment({
+                  owner, repo,
+                  body,
+                  comment_id: last.id,
+                });
+              } else {
+                core.info(`Creating a comment in issue / PR #${issue_number}`);
+                await github.rest.issues.createComment({ issue_number, body, owner, repo });
+              }
+            }
+            const { owner, repo } = context.repo;
+            const run_id = ${{ github.event.workflow_run.id }};
+          
+            await upsertComment(owner, repo, process.env.PR_NUM,
+              "ci-artifacts-comment");
+

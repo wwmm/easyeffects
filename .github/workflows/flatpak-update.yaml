@@ -1,4 +1,4 @@
-name: Check for flatpak module updates
+name: Flatpak dependency updates
 on:
   schedule: # for scheduling to work this file must be in the default branch
   - cron: "0 0 * * *" # run every day
@@ -6,14 +6,14 @@ on:
 
 jobs:
   flatpak-external-data-checker:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     strategy:
       matrix:
         branch: [ master ] # list all branches to check
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.0.2
         with:
           ref: ${{ matrix.branch }}
 
