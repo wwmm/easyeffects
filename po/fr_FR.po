@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-27 18:34+0200\n"
-"PO-Revision-Date: 2022-07-29 06:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2022-08-01 03:16+0000\n"
+"Last-Translator: Maxime Leroy <lisacintosh@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -468,7 +468,6 @@ msgstr "Crête"
 #: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:195
 #: data/ui/multiband_gate.ui:555 data/ui/multiband_gate.ui:915
 #: data/ui/multiband_gate.ui:1275
-#, fuzzy
 msgid "RMS"
 msgstr "RMS"
 
@@ -822,9 +821,8 @@ msgid "FIR"
 msgstr "FIR"
 
 #: data/ui/equalizer.ui:135
-#, fuzzy
 msgid "FFT"
-msgstr "FFT"
+msgstr "TFR"
 
 #: data/ui/equalizer.ui:136
 #, fuzzy
@@ -918,7 +916,6 @@ msgid "Ceil Value"
 msgstr "Valeur du plafonnement"
 
 #: data/ui/factory_clients_listview.ui:72
-#, fuzzy
 msgid "API"
 msgstr "API"
 
@@ -987,9 +984,8 @@ msgid "Inertia"
 msgstr "Inertie"
 
 #: data/ui/gate.ui:31 src/tags_plugin_name.cpp:38
-#, fuzzy
 msgid "Gate"
-msgstr "Porte à bruits"
+msgstr "Porte"
 
 #: data/ui/gate.ui:149 data/ui/gate.ui:242
 msgid "Zone"
@@ -2075,7 +2071,7 @@ msgstr "Niveau des signaux sans effets"
 #: data/ui/reverb.ui:231
 #, fuzzy
 msgid "Wet Level"
-msgstr "Niveau des signaux avec effet"
+msgstr "Niveau de wet"
 
 #: data/ui/reverb.ui:266
 msgid "Bass Cut"
@@ -2182,31 +2178,31 @@ msgstr "Matrice stéréo"
 
 #: data/ui/stereo_tools.ui:128
 msgid "LR > LR (Stereo Default)"
-msgstr ""
+msgstr "GD > GD (Stéréo par défaut)"
 
 #: data/ui/stereo_tools.ui:129
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr ""
+msgstr "GD > M (Stéréo vers milieu)"
 
 #: data/ui/stereo_tools.ui:130
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr ""
+msgstr "M > GD (Milieu vers stéréo)"
 
 #: data/ui/stereo_tools.ui:131
 msgid "LR > LL (Mono Left Channel)"
-msgstr ""
+msgstr "GD > GG (Canal gauche mono)"
 
 #: data/ui/stereo_tools.ui:132
 msgid "LR > RR (Mono Right Channel)"
-msgstr ""
+msgstr "GD > DD (Canal droit mono)"
 
 #: data/ui/stereo_tools.ui:133
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr ""
+msgstr "GD > G+D (Somme G+D vers mono)"
 
 #: data/ui/stereo_tools.ui:134
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr ""
+msgstr "GD > DG (Inversement des canaux stéréo)"
 
 #: data/ui/stereo_tools.ui:137
 msgid "Stereo Mode"
@@ -2496,12 +2492,10 @@ msgid "Multiband Compressor"
 msgstr "Compresseur multibande"
 
 #: src/tags_plugin_name.cpp:43
-#, fuzzy
 msgid "Multiband Gate"
 msgstr "Porte multibande"
 
 #: src/tags_plugin_name.cpp:44
-#, fuzzy
 msgid "Pitch"
 msgstr "Hauteur"
 
@@ -2527,7 +2521,7 @@ msgstr "Fermer (appuyez sur Échap)"
 
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
 msgid "-inf"
-msgstr ""
+msgstr "-inf"
 
 #~ msgid "Wet Amount"
 #~ msgstr "Quantité de signaux avec effets"
