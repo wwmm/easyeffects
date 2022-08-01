@@ -562,7 +562,7 @@
             <default>false</default>
         </key>
 
-        <key name="hysteresis-thresholdo" type="d">
+        <key name="hysteresis-threshold0" type="d">
             <range min="-60" max="0" />
             <default>-12</default>
         </key>

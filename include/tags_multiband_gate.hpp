@@ -78,26 +78,26 @@ inline constexpr char band_release_time[][15] = {{"release-time0"}, {"release-ti
                                                  {"release-time3"}, {"release-time4"}, {"release-time5"},
                                                  {"release-time6"}, {"release-time7"}};
 
-inline constexpr char band_hysteresis[][19] = {{"hysteresis0"}, {"hysteresis1"}, {"hysteresis2"}, {"hysteresis3"},
+inline constexpr char band_hysteresis[][13] = {{"hysteresis0"}, {"hysteresis1"}, {"hysteresis2"}, {"hysteresis3"},
                                                {"hysteresis4"}, {"hysteresis5"}, {"hysteresis6"}, {"hysteresis7"}};
 
-inline constexpr char band_hysteresis_threshold[][20] = {
+inline constexpr char band_hysteresis_threshold[][22] = {
     {"hysteresis-threshold0"}, {"hysteresis-threshold1"}, {"hysteresis-threshold2"}, {"hysteresis-threshold3"},
     {"hysteresis-threshold4"}, {"hysteresis-threshold5"}, {"hysteresis-threshold6"}, {"hysteresis-threshold7"}};
 
-inline constexpr char band_hysteresis_zone[][20] = {{"hysteresis-zone0"}, {"hysteresis-zone1"}, {"hysteresis-zone2"},
+inline constexpr char band_hysteresis_zone[][18] = {{"hysteresis-zone0"}, {"hysteresis-zone1"}, {"hysteresis-zone2"},
                                                     {"hysteresis-zone3"}, {"hysteresis-zone4"}, {"hysteresis-zone5"},
                                                     {"hysteresis-zone6"}, {"hysteresis-zone7"}};
 
-inline constexpr char band_curve_threshold[][20] = {{"curve-threshold0"}, {"curve-threshold1"}, {"curve-threshold2"},
+inline constexpr char band_curve_threshold[][18] = {{"curve-threshold0"}, {"curve-threshold1"}, {"curve-threshold2"},
                                                     {"curve-threshold3"}, {"curve-threshold4"}, {"curve-threshold5"},
                                                     {"curve-threshold6"}, {"curve-threshold7"}};
 
-inline constexpr char band_curve_zone[][20] = {{"curve-zone0"}, {"curve-zone1"}, {"curve-zone2"}, {"curve-zone3"},
+inline constexpr char band_curve_zone[][13] = {{"curve-zone0"}, {"curve-zone1"}, {"curve-zone2"}, {"curve-zone3"},
                                                {"curve-zone4"}, {"curve-zone5"}, {"curve-zone6"}, {"curve-zone7"}};
 
-inline constexpr char band_reduction[][7] = {{"reduction0"}, {"reduction1"}, {"reduction2"}, {"reduction3"},
-                                             {"reduction4"}, {"reduction5"}, {"reduction6"}, {"reduction7"}};
+inline constexpr char band_reduction[][12] = {{"reduction0"}, {"reduction1"}, {"reduction2"}, {"reduction3"},
+                                              {"reduction4"}, {"reduction5"}, {"reduction6"}, {"reduction7"}};
 
 inline constexpr char band_makeup[][9] = {{"makeup0"}, {"makeup1"}, {"makeup2"}, {"makeup3"},
                                           {"makeup4"}, {"makeup5"}, {"makeup6"}, {"makeup7"}};

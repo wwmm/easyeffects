@@ -21,6 +21,8 @@
 
 #include <adwaita.h>
 #include "effects_base.hpp"
+#include "multiband_gate_band_box.hpp"
+#include "node_info_holder.hpp"
 #include "tags_resources.hpp"
 #include "ui_helpers.hpp"
 
@@ -36,6 +38,9 @@ G_END_DECLS
 
 auto create() -> MultibandGateBox*;
 
-void setup(MultibandGateBox* self, std::shared_ptr<MultibandGate> multiband_gate, const std::string& schema_path);
+void setup(MultibandGateBox* self,
+           std::shared_ptr<MultibandGate> multiband_gate,
+           const std::string& schema_path,
+           PipeManager* pm);
 
 }  // namespace ui::multiband_gate_box

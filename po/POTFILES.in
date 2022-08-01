@@ -37,6 +37,7 @@ data/ui/maximizer.ui
 data/ui/multiband_compressor.ui
 data/ui/multiband_compressor_band.ui
 data/ui/multiband_gate.ui
+data/ui/multiband_gate_band.ui
 data/ui/pipe_manager_box.ui
 data/ui/pitch.ui
 data/ui/plugin_row.ui
