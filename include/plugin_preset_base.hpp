@@ -53,9 +53,13 @@ class PluginPresetBase {
   }
 
  protected:
+  int index = 0;
+
   GSettings* settings = nullptr;
 
   std::string section;
+
+  PresetType preset_type;
 
   virtual void save(nlohmann::json& json) = 0;
 
