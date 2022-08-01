@@ -34,7 +34,8 @@ OutputLevel::~OutputLevel() {
 }
 
 void OutputLevel::setup() {
-  util::debug(log_tag + name + ": new PipeWire blocksize: " + util::to_string(n_samples, ""));
+  util::debug(log_tag + name + ": PipeWire blocksize: " + util::to_string(n_samples, ""));
+  util::debug(log_tag + name + ": PipeWire sampling rate: " + util::to_string(rate, ""));
 }
 
 void OutputLevel::process(std::span<float>& left_in,
