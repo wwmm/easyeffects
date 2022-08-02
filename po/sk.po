@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 14:23-0300\n"
-"PO-Revision-Date: 2021-07-01 17:22+0200\n"
-"Last-Translator: Jose Riha\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2022-08-02 19:36+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
+"sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "EasyEffects"
@@ -618,16 +619,19 @@ msgstr "Vyp"
 
 #: data/ui/compressor.ui:813 data/ui/compressor.ui:869 data/ui/gate.ui:951
 #: data/ui/gate.ui:1007
+#, fuzzy
 msgid "12 dB/oct"
 msgstr "Nízka pásmová priepusť 12dB/okt"
 
 #: data/ui/compressor.ui:814 data/ui/compressor.ui:870 data/ui/gate.ui:952
 #: data/ui/gate.ui:1008
+#, fuzzy
 msgid "24 dB/oct"
 msgstr "Nízka pásmová priepusť 24dB/okt"
 
 #: data/ui/compressor.ui:815 data/ui/compressor.ui:871 data/ui/gate.ui:953
 #: data/ui/gate.ui:1009
+#, fuzzy
 msgid "36 dB/oct"
 msgstr "Nízka pásmová priepusť 36dB/okt"
 

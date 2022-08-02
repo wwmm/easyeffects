@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 14:23-0300\n"
-"PO-Revision-Date: 2022-04-09 11:09+0000\n"
-"Last-Translator: Fran Diéguez <fran.dieguez@mabishu.com>\n"
+"PO-Revision-Date: 2022-08-02 19:36+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
 "main/gl/>\n"
 "Language: gl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "EasyEffects"
@@ -899,6 +899,7 @@ msgid "FIR"
 msgstr "FIR"
 
 #: data/ui/equalizer.ui:135
+#, fuzzy
 msgid "FFT"
 msgstr "Transformada rápida de Fourier"
 

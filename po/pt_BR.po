@@ -201,6 +201,9 @@ msgstr "Ganho de Saída"
 #: data/ui/pitch.ui:295 data/ui/presets_menu.ui:177 data/ui/reverb.ui:351
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:30
 #: data/ui/stereo_tools.ui:544 src/application_ui.cpp:266
+#: data/ui/compressor.ui:505 data/ui/compressor.ui:987 data/ui/delay.ui:101
+#: data/ui/gate.ui:611 data/ui/gate.ui:1092 data/ui/multiband_compressor.ui:378
+#: data/ui/multiband_gate.ui:1617
 msgid "Input"
 msgstr "Entrada"
 
@@ -213,6 +216,8 @@ msgstr "Entrada"
 #: data/ui/maximizer.ui:155 data/ui/multiband_compressor.ui:462
 #: data/ui/multiband_gate.ui:462 data/ui/pitch.ui:314 data/ui/reverb.ui:370
 #: data/ui/rnnoise.ui:174 data/ui/stereo_tools.ui:563
+#: data/ui/compressor.ui:1006 data/ui/delay.ui:120 data/ui/gate.ui:1111
+#: data/ui/multiband_compressor.ui:397 data/ui/multiband_gate.ui:1636
 msgid "Plugin Input Gain"
 msgstr "Ganho de Entrada do Plugin"
 
@@ -227,7 +232,11 @@ msgstr "Ganho de Entrada do Plugin"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:379
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:435 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:371 data/ui/stereo_tools.ui:628
-#: src/application_ui.cpp:265
+#: src/application_ui.cpp:265 data/ui/compressor.ui:1071 data/ui/delay.ui:185
+#: data/ui/gate.ui:1176 data/ui/multiband_compressor.ui:462
+#: data/ui/multiband_gate.ui:464 data/ui/multiband_gate.ui:824
+#: data/ui/multiband_gate.ui:1184 data/ui/multiband_gate.ui:1544
+#: data/ui/multiband_gate.ui:1701
 msgid "Output"
 msgstr "Saída"
 
@@ -240,6 +249,8 @@ msgstr "Saída"
 #: data/ui/maximizer.ui:239 data/ui/multiband_compressor.ui:546
 #: data/ui/multiband_gate.ui:546 data/ui/pitch.ui:398 data/ui/reverb.ui:454
 #: data/ui/rnnoise.ui:258 data/ui/stereo_tools.ui:647
+#: data/ui/compressor.ui:1090 data/ui/delay.ui:204 data/ui/gate.ui:1195
+#: data/ui/multiband_compressor.ui:481 data/ui/multiband_gate.ui:1720
 msgid "Plugin Output Gain"
 msgstr "Ganho de Saída do Plugin"
 
@@ -253,6 +264,8 @@ msgstr "Ganho de Saída do Plugin"
 #: data/ui/maximizer.ui:334 data/ui/multiband_compressor.ui:609
 #: data/ui/multiband_gate.ui:609 data/ui/pitch.ui:461 data/ui/reverb.ui:517
 #: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:710
+#: data/ui/compressor.ui:1153 data/ui/delay.ui:267 data/ui/gate.ui:1288
+#: data/ui/multiband_compressor.ui:544 data/ui/multiband_gate.ui:1783
 msgid "Reset"
 msgstr "Resetar"
 
@@ -264,11 +277,14 @@ msgstr "Resetar"
 #: data/ui/limiter.ui:898 data/ui/loudness.ui:303 data/ui/maximizer.ui:348
 #: data/ui/multiband_compressor.ui:623 data/ui/multiband_gate.ui:623
 #: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:335
-#: data/ui/stereo_tools.ui:724
+#: data/ui/stereo_tools.ui:724 data/ui/compressor.ui:1167 data/ui/delay.ui:281
+#: data/ui/gate.ui:1302 data/ui/multiband_compressor.ui:558
+#: data/ui/multiband_gate.ui:1797
 msgid "Using"
 msgstr "Usando"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:589 data/ui/gate.ui:728
+#: data/ui/compressor.ui:528 data/ui/gate.ui:634
 msgid "Device"
 msgstr "Dispositivo"
 
@@ -292,7 +308,8 @@ msgid "Remove this autoload preset"
 msgstr "Remover este arquivo de predefinição"
 
 #: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:519 data/ui/deesser.ui:14
-#: data/ui/exciter.ui:12 data/ui/gate.ui:658
+#: data/ui/exciter.ui:12 data/ui/gate.ui:658 data/ui/compressor.ui:458
+#: data/ui/gate.ui:564
 msgid "Listen"
 msgstr "Escutar"
 
@@ -302,11 +319,11 @@ msgstr "Mistura de Harmônicos"
 
 #: data/ui/bass_enhancer.ui:35 data/ui/exciter.ui:35
 msgid "3rd"
-msgstr "3°"
+msgstr "3º"
 
 #: data/ui/bass_enhancer.ui:78 data/ui/exciter.ui:78
 msgid "2nd"
-msgstr "2°"
+msgstr "2º"
 
 #: data/ui/bass_enhancer.ui:97 data/ui/exciter.ui:97
 msgid "Amount"
@@ -357,7 +374,9 @@ msgstr "Compressor"
 #: data/ui/deesser.ui:54 data/ui/equalizer.ui:122 data/ui/equalizer_band.ui:130
 #: data/ui/gate.ui:630 data/ui/gate.ui:924 data/ui/limiter.ui:36
 #: data/ui/multiband_compressor_band.ui:457 data/ui/multiband_gate_band.ui:520
-#: data/ui/pitch.ui:22
+#: data/ui/pitch.ui:22 data/ui/compressor.ui:430 data/ui/compressor.ui:725
+#: data/ui/gate.ui:536 data/ui/gate.ui:830
+#: data/ui/multiband_compressor_band.ui:449 data/ui/multiband_gate.ui:25
 msgid "Mode"
 msgstr "Modo"
 
@@ -378,16 +397,20 @@ msgid "Compression Mode"
 msgstr "Modo de Compressão"
 
 #: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:744
+#: data/ui/multiband_compressor_band.ui:765
 msgid "Boost Threshold"
 msgstr "Limiar de Impulso"
 
 #: data/ui/compressor.ui:109 data/ui/multiband_compressor_band.ui:700
+#: data/ui/multiband_compressor_band.ui:721
 msgid "Boost Amount"
 msgstr "Valor do reforço"
 
 #: data/ui/compressor.ui:155 data/ui/gate.ui:50 data/ui/limiter.ui:252
 #: data/ui/limiter.ui:475 data/ui/multiband_compressor_band.ui:186
-#: data/ui/multiband_gate_band.ui:144
+#: data/ui/multiband_gate_band.ui:144 data/ui/multiband_gate.ui:215
+#: data/ui/multiband_gate.ui:575 data/ui/multiband_gate.ui:935
+#: data/ui/multiband_gate.ui:1295
 msgid "Attack"
 msgstr "Ataque"
 
@@ -398,46 +421,62 @@ msgstr "Tempo"
 #: data/ui/compressor.ui:176 data/ui/deesser.ui:289 data/ui/gate.ui:143
 #: data/ui/gate.ui:237 data/ui/limiter.ui:336 data/ui/maximizer.ui:20
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate_band.ui:237
-#: data/ui/multiband_gate_band.ui:331
+#: data/ui/multiband_gate_band.ui:331 data/ui/multiband_gate.ui:285
+#: data/ui/multiband_gate.ui:645 data/ui/multiband_gate.ui:1005
+#: data/ui/multiband_gate.ui:1365
 msgid "Threshold"
 msgstr "Limiar"
 
 #: data/ui/compressor.ui:202 data/ui/multiband_compressor_band.ui:222
+#: data/ui/compressor.ui:203
 msgid "Attack Time"
 msgstr "Tempo de Ataque"
 
 #: data/ui/compressor.ui:224 data/ui/gate.ui:527
-#: data/ui/multiband_compressor_band.ui:247
+#: data/ui/multiband_compressor_band.ui:247 data/ui/compressor.ui:226
+#: data/ui/gate.ui:433
 msgid "Attack Threshold"
 msgstr "Limiar de Ataque"
 
 #: data/ui/compressor.ui:231 data/ui/gate.ui:56 data/ui/limiter.ui:294
 #: data/ui/limiter.ui:512 data/ui/maximizer.ui:86
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate_band.ui:150
+#: data/ui/compressor.ui:233 data/ui/multiband_gate.ui:250
+#: data/ui/multiband_gate.ui:610 data/ui/multiband_gate.ui:970
+#: data/ui/multiband_gate.ui:1330
 msgid "Release"
 msgstr "Liberação"
 
 #: data/ui/compressor.ui:257 data/ui/multiband_compressor_band.ui:274
+#: data/ui/compressor.ui:260
 msgid "Release Time"
 msgstr "Tempo de liberação"
 
 #: data/ui/compressor.ui:281 data/ui/gate.ui:581
-#: data/ui/multiband_compressor_band.ui:302
+#: data/ui/multiband_compressor_band.ui:302 data/ui/compressor.ui:285
+#: data/ui/gate.ui:487
 msgid "Release Threshold"
 msgstr "Limiar de liberação"
 
 #: data/ui/compressor.ui:288 data/ui/deesser.ui:323
-#: data/ui/multiband_compressor_band.ui:309
+#: data/ui/multiband_compressor_band.ui:309 data/ui/compressor.ui:292
+#: data/ui/multiband_gate.ui:319 data/ui/multiband_gate.ui:679
+#: data/ui/multiband_gate.ui:1039 data/ui/multiband_gate.ui:1399
 msgid "Ratio"
 msgstr "Razão"
 
 #: data/ui/compressor.ui:325 data/ui/limiter.ui:548
-#: data/ui/multiband_compressor_band.ui:347
+#: data/ui/multiband_compressor_band.ui:347 data/ui/compressor.ui:330
+#: data/ui/multiband_gate.ui:354 data/ui/multiband_gate.ui:714
+#: data/ui/multiband_gate.ui:1074 data/ui/multiband_gate.ui:1434
 msgid "Knee"
 msgstr "Joelho"
 
 #: data/ui/compressor.ui:360 data/ui/deesser.ui:359 data/ui/gate.ui:418
 #: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate_band.ui:418
+#: data/ui/compressor.ui:367 data/ui/gate.ui:324 data/ui/multiband_gate.ui:388
+#: data/ui/multiband_gate.ui:748 data/ui/multiband_gate.ui:1108
+#: data/ui/multiband_gate.ui:1468
 msgid "Makeup"
 msgstr "Ganho de Saída"
 
@@ -456,166 +495,213 @@ msgid "Wet Level"
 msgstr "Nível Alvo"
 
 #: data/ui/compressor.ui:472 data/ui/compressor.ui:984 data/ui/gate.ui:611
-#: data/ui/gate.ui:1122
+#: data/ui/gate.ui:1122 data/ui/compressor.ui:411 data/ui/compressor.ui:923
+#: data/ui/gate.ui:517 data/ui/gate.ui:1028
 msgid "Sidechain"
 msgstr "Cadeia Lateral"
 
 #: data/ui/compressor.ui:501 data/ui/deesser.ui:38 data/ui/gate.ui:640
 #: data/ui/multiband_compressor_band.ui:468 data/ui/multiband_gate_band.ui:531
+#: data/ui/compressor.ui:440 data/ui/gate.ui:546
+#: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:196
+#: data/ui/multiband_gate.ui:556 data/ui/multiband_gate.ui:916
+#: data/ui/multiband_gate.ui:1276
 msgid "Peak"
 msgstr "Pico"
 
 #: data/ui/compressor.ui:502 data/ui/deesser.ui:37 data/ui/gate.ui:641
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
+#: data/ui/compressor.ui:441 data/ui/gate.ui:547
+#: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:195
+#: data/ui/multiband_gate.ui:555 data/ui/multiband_gate.ui:915
+#: data/ui/multiband_gate.ui:1275
 msgid "RMS"
 msgstr "RMS"
 
 #: data/ui/compressor.ui:503 data/ui/compressor.ui:855 data/ui/gate.ui:642
 #: data/ui/gate.ui:993 data/ui/multiband_compressor_band.ui:470
-#: data/ui/multiband_gate_band.ui:533
+#: data/ui/multiband_gate_band.ui:533 data/ui/compressor.ui:442
+#: data/ui/compressor.ui:794 data/ui/gate.ui:548 data/ui/gate.ui:899
+#: data/ui/multiband_compressor_band.ui:462
 msgid "Low-Pass"
 msgstr "Passa-Baixa"
 
 #: data/ui/compressor.ui:504 data/ui/gate.ui:643
 #: data/ui/multiband_compressor_band.ui:471 data/ui/multiband_gate_band.ui:534
+#: data/ui/compressor.ui:443 data/ui/gate.ui:549
+#: data/ui/multiband_compressor_band.ui:463
 msgid "Uniform"
 msgstr "Uniforme"
 
 #: data/ui/compressor.ui:511 data/ui/gate.ui:650
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
+#: data/ui/compressor.ui:450 data/ui/gate.ui:556
+#: data/ui/multiband_compressor_band.ui:470
 msgid "Sidechain Mode"
 msgstr "Modo de cadeia lateral"
 
 #: data/ui/compressor.ui:529 data/ui/gate.ui:668
 #: data/ui/multiband_compressor_band.ui:485 data/ui/multiband_gate_band.ui:548
+#: data/ui/compressor.ui:468 data/ui/gate.ui:574
+#: data/ui/multiband_compressor_band.ui:477
 msgid "Source"
 msgstr "Fonte"
 
 #: data/ui/compressor.ui:539 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:496 data/ui/multiband_gate_band.ui:559
+#: data/ui/compressor.ui:478 data/ui/gate.ui:584
+#: data/ui/multiband_compressor_band.ui:488
 msgid "Middle"
 msgstr "Meio"
 
 #: data/ui/compressor.ui:540 data/ui/gate.ui:679
 #: data/ui/multiband_compressor_band.ui:497 data/ui/multiband_gate_band.ui:560
+#: data/ui/compressor.ui:479 data/ui/gate.ui:585
+#: data/ui/multiband_compressor_band.ui:489
 msgid "Side"
 msgstr "Lado"
 
 #: data/ui/compressor.ui:541 data/ui/delay.ui:20 data/ui/equalizer.ui:48
 #: data/ui/gate.ui:680 data/ui/multiband_compressor_band.ui:498
 #: data/ui/multiband_gate_band.ui:561 data/ui/pipe_manager_box.ui:504
-#: data/ui/stereo_tools.ui:151
+#: data/ui/stereo_tools.ui:151 data/ui/compressor.ui:480 data/ui/gate.ui:586
+#: data/ui/multiband_compressor_band.ui:490
 msgid "Left"
 msgstr "Esquerda"
 
 #: data/ui/compressor.ui:542 data/ui/delay.ui:29 data/ui/equalizer.ui:60
 #: data/ui/gate.ui:681 data/ui/multiband_compressor_band.ui:499
 #: data/ui/multiband_gate_band.ui:562 data/ui/pipe_manager_box.ui:515
-#: data/ui/stereo_tools.ui:206
+#: data/ui/stereo_tools.ui:206 data/ui/compressor.ui:481 data/ui/delay.ui:53
+#: data/ui/gate.ui:587 data/ui/multiband_compressor_band.ui:491
 msgid "Right"
 msgstr "Direita"
 
 #: data/ui/compressor.ui:549 data/ui/gate.ui:688
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_compressor_band.ui:506
 #: data/ui/multiband_gate.ui:60 data/ui/multiband_gate_band.ui:569
+#: data/ui/compressor.ui:488 data/ui/gate.ui:594
+#: data/ui/multiband_compressor.ui:86 data/ui/multiband_compressor_band.ui:498
 msgid "Sidechain Source"
 msgstr "Fonte da cadeia lateral"
 
 #: data/ui/compressor.ui:578 data/ui/equalizer_band.ui:98 data/ui/gate.ui:717
+#: data/ui/compressor.ui:517 data/ui/gate.ui:623
 msgid "Type"
 msgstr "Tipo"
 
-#: data/ui/compressor.ui:602
+#: data/ui/compressor.ui:602 data/ui/compressor.ui:541
 msgid "Feed-forward"
 msgstr "Avanço de alimentação"
 
-#: data/ui/compressor.ui:603
+#: data/ui/compressor.ui:603 data/ui/compressor.ui:542
 msgid "Feed-back"
 msgstr "Retorno"
 
-#: data/ui/compressor.ui:604 data/ui/gate.ui:742
+#: data/ui/compressor.ui:604 data/ui/gate.ui:742 data/ui/compressor.ui:543
+#: data/ui/gate.ui:648
 msgid "External"
 msgstr "Externo"
 
-#: data/ui/compressor.ui:611 data/ui/gate.ui:749
+#: data/ui/compressor.ui:611 data/ui/gate.ui:749 data/ui/compressor.ui:550
+#: data/ui/gate.ui:655
 msgid "Sidechain Type"
 msgstr "Tipo de cadeia lateral"
 
 #: data/ui/compressor.ui:638 data/ui/gate.ui:776 src/plugins_box.cpp:546
+#: data/ui/compressor.ui:577 data/ui/gate.ui:682
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
 
-#: data/ui/compressor.ui:646 data/ui/gate.ui:784
+#: data/ui/compressor.ui:646 data/ui/gate.ui:784 data/ui/compressor.ui:585
+#: data/ui/gate.ui:690
 msgid "PreAmplification"
 msgstr "Pré-Amplificação"
 
 #: data/ui/compressor.ui:683 data/ui/gate.ui:821
 #: data/ui/multiband_compressor_band.ui:633 data/ui/multiband_gate_band.ui:695
+#: data/ui/compressor.ui:622 data/ui/gate.ui:727
+#: data/ui/multiband_compressor_band.ui:654
 msgid "Reactivity"
 msgstr "Reatividade"
 
 #: data/ui/compressor.ui:720 data/ui/gate.ui:858 data/ui/limiter.ui:210
 #: data/ui/multiband_compressor_band.ui:667 data/ui/multiband_gate_band.ui:728
+#: data/ui/compressor.ui:659 data/ui/gate.ui:764
+#: data/ui/multiband_compressor_band.ui:688
 msgid "Lookahead"
 msgstr "Antevisão"
 
-#: data/ui/compressor.ui:763 data/ui/gate.ui:901
+#: data/ui/compressor.ui:763 data/ui/gate.ui:901 data/ui/compressor.ui:702
+#: data/ui/gate.ui:807
 msgid "Sidechain Filters"
 msgstr "Filtros da cadeia lateral"
 
-#: data/ui/compressor.ui:773 data/ui/gate.ui:911
+#: data/ui/compressor.ui:773 data/ui/gate.ui:911 data/ui/compressor.ui:712
+#: data/ui/gate.ui:817
 msgid "High-Pass"
 msgstr "Passa-alta"
 
 #: data/ui/compressor.ui:799 data/ui/equalizer_band.ui:197 data/ui/filter.ui:43
 #: data/ui/gate.ui:937 data/ui/pipe_manager_box.ui:561
+#: data/ui/compressor.ui:738 data/ui/gate.ui:843
 msgid "Frequency"
 msgstr "Frequência"
 
 #: data/ui/compressor.ui:812 data/ui/compressor.ui:868
 #: data/ui/equalizer_band.ui:108 data/ui/gate.ui:950 data/ui/gate.ui:1006
+#: data/ui/compressor.ui:751 data/ui/compressor.ui:807 data/ui/gate.ui:856
+#: data/ui/gate.ui:912
 msgid "Off"
 msgstr "Desligado"
 
 #: data/ui/compressor.ui:813 data/ui/compressor.ui:869 data/ui/gate.ui:951
-#: data/ui/gate.ui:1007
+#: data/ui/gate.ui:1007 data/ui/compressor.ui:752 data/ui/compressor.ui:808
+#: data/ui/gate.ui:857 data/ui/gate.ui:913
 msgid "12 dB/oct"
 msgstr "12dB/oct"
 
 #: data/ui/compressor.ui:814 data/ui/compressor.ui:870 data/ui/gate.ui:952
-#: data/ui/gate.ui:1008
+#: data/ui/gate.ui:1008 data/ui/compressor.ui:753 data/ui/compressor.ui:809
+#: data/ui/gate.ui:858 data/ui/gate.ui:914
 msgid "24 dB/oct"
 msgstr "24dB/oct"
 
 #: data/ui/compressor.ui:815 data/ui/compressor.ui:871 data/ui/gate.ui:953
-#: data/ui/gate.ui:1009
+#: data/ui/gate.ui:1009 data/ui/compressor.ui:754 data/ui/compressor.ui:810
+#: data/ui/gate.ui:859 data/ui/gate.ui:915
 msgid "36 dB/oct"
 msgstr "36dB/oct"
 
-#: data/ui/compressor.ui:822 data/ui/gate.ui:960
+#: data/ui/compressor.ui:822 data/ui/gate.ui:960 data/ui/compressor.ui:761
+#: data/ui/gate.ui:866
 msgid "High-Pass Filter Mode"
 msgstr "Modo de Filtro Passa-Alta"
 
 #: data/ui/compressor.ui:848 data/ui/compressor.ui:904 data/ui/gate.ui:986
-#: data/ui/gate.ui:1042
+#: data/ui/gate.ui:1042 data/ui/compressor.ui:787 data/ui/compressor.ui:843
+#: data/ui/gate.ui:892 data/ui/gate.ui:948
 msgid "High-Pass Filter Frequency"
 msgstr "Frequência do Filtro Passa-Alta"
 
-#: data/ui/compressor.ui:878 data/ui/gate.ui:1016
+#: data/ui/compressor.ui:878 data/ui/gate.ui:1016 data/ui/compressor.ui:817
+#: data/ui/gate.ui:922
 msgid "Low-Pass Filter Mode"
 msgstr "Modo de Filtro Passa-Baixa"
 
-#: data/ui/compressor.ui:930
+#: data/ui/compressor.ui:930 data/ui/compressor.ui:869 data/ui/gate.ui:974
 msgid "Gain"
 msgstr "Ganho"
 
-#: data/ui/compressor.ui:957 data/ui/gate.ui:1095
+#: data/ui/compressor.ui:957 data/ui/gate.ui:1095 data/ui/compressor.ui:896
+#: data/ui/gate.ui:1001
 #, fuzzy
 msgid "Envelope"
 msgstr "Inclinação"
 
 #: data/ui/compressor.ui:1011 data/ui/gate.ui:127 data/ui/gate.ui:1149
-#: data/ui/multiband_gate_band.ui:221
+#: data/ui/multiband_gate_band.ui:221 data/ui/compressor.ui:950
+#: data/ui/gate.ui:1055
 msgid "Curve"
 msgstr "Curva"
 
@@ -721,7 +807,9 @@ msgstr "Corte"
 msgid "Feed"
 msgstr "Alimentação"
 
-#: data/ui/crystalizer_band.ui:11
+#: data/ui/crystalizer_band.ui:11 data/ui/multiband_gate.ui:175
+#: data/ui/multiband_gate.ui:535 data/ui/multiband_gate.ui:895
+#: data/ui/multiband_gate.ui:1255
 msgid "Bypass"
 msgstr "Ignorar"
 
@@ -793,6 +881,7 @@ msgstr "Detectado"
 
 #: data/ui/deesser.ui:599 data/ui/gate.ui:413 data/ui/gate.ui:1068
 #: data/ui/maximizer.ui:298 data/ui/multiband_gate_band.ui:413
+#: data/ui/gate.ui:319
 msgid "Reduction"
 msgstr "Redução"
 
@@ -935,7 +1024,9 @@ msgid "Quality"
 msgstr "Qualidade"
 
 #: data/ui/equalizer_band.ui:315 data/ui/multiband_compressor_band.ui:146
-#: data/ui/multiband_gate_band.ui:119
+#: data/ui/multiband_gate_band.ui:119 data/ui/multiband_gate.ui:185
+#: data/ui/multiband_gate.ui:545 data/ui/multiband_gate.ui:905
+#: data/ui/multiband_gate.ui:1265
 msgid "Solo"
 msgstr "Sozinho"
 
@@ -1035,20 +1126,22 @@ msgstr ""
 msgid "Mix"
 msgstr "Misturado"
 
-#: data/ui/gate.ui:500
+#: data/ui/gate.ui:500 data/ui/gate.ui:406
 msgid "Attack Zone Start"
 msgstr ""
 
-#: data/ui/gate.ui:554
+#: data/ui/gate.ui:554 data/ui/gate.ui:460
 #, fuzzy
 msgid "Release Zone Start"
 msgstr "Tempo de liberação"
 
-#: data/ui/gate.ui:741
+#: data/ui/gate.ui:741 data/ui/gate.ui:647
 msgid "Internal"
 msgstr "Interno"
 
-#: data/ui/gate.ui:1348 data/ui/multiband_gate_band.ui:856
+#: data/ui/gate.ui:1348 data/ui/multiband_gate_band.ui:856 data/ui/gate.ui:1254
+#: data/ui/multiband_gate.ui:494 data/ui/multiband_gate.ui:854
+#: data/ui/multiband_gate.ui:1214 data/ui/multiband_gate.ui:1574
 msgid "Gating"
 msgstr "Gating"
 
@@ -1111,7 +1204,7 @@ msgid "Line Duck"
 msgstr ""
 
 #: data/ui/limiter.ui:99 data/ui/multiband_compressor.ui:42
-#: data/ui/multiband_gate.ui:42
+#: data/ui/multiband_gate.ui:42 data/ui/multiband_compressor.ui:68
 msgid "None"
 msgstr "Nenhuma"
 
@@ -1200,7 +1293,7 @@ msgid "SC PreAmp"
 msgstr ""
 
 #: data/ui/limiter.ui:198 data/ui/multiband_compressor_band.ui:626
-#: data/ui/multiband_gate_band.ui:688
+#: data/ui/multiband_gate_band.ui:688 data/ui/multiband_compressor_band.ui:647
 msgid "Sidechain PreAmplification"
 msgstr "Pré-amplificação de cadeia lateral"
 
@@ -1218,7 +1311,7 @@ msgid "External Sidechain"
 msgstr "Cadeia Lateral Externa"
 
 #: data/ui/limiter.ui:446 data/ui/multiband_compressor.ui:80
-#: data/ui/multiband_gate.ui:80
+#: data/ui/multiband_gate.ui:80 data/ui/multiband_compressor.ui:109
 msgid "External Sidechain Source"
 msgstr ""
 
@@ -1286,70 +1379,87 @@ msgid "Ceiling"
 msgstr "Teto"
 
 #: data/ui/multiband_compressor.ui:31 data/ui/multiband_gate.ui:31
+#: data/ui/multiband_compressor.ui:57
 msgid "Sidechain Boost"
 msgstr "Impulso de Cadeia Lateral"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:43
+#: data/ui/multiband_compressor.ui:69
 msgid "Pink BT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:44 data/ui/multiband_gate.ui:44
+#: data/ui/multiband_compressor.ui:70
 msgid "Pink MT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:45 data/ui/multiband_gate.ui:45
+#: data/ui/multiband_compressor.ui:71
 msgid "Brown BT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:46 data/ui/multiband_gate.ui:46
+#: data/ui/multiband_compressor.ui:72
 msgid "Brown MT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:95 data/ui/multiband_gate.ui:95
+#: data/ui/multiband_compressor.ui:31
 msgid "Operating Mode"
 msgstr "Modo operacional"
 
 #: data/ui/multiband_compressor.ui:106 data/ui/multiband_gate.ui:106
+#: data/ui/multiband_compressor.ui:42
 msgid "Classic"
 msgstr "Clássico"
 
 #: data/ui/multiband_compressor.ui:107 data/ui/multiband_gate.ui:107
+#: data/ui/multiband_compressor.ui:43
 msgid "Modern"
 msgstr "Moderno"
 
 #: data/ui/multiband_compressor.ui:216 data/ui/multiband_gate.ui:216
+#: data/ui/multiband_compressor.ui:144
 msgid "Bands List"
 msgstr "Lista de Bandas"
 
 #: data/ui/multiband_compressor.ui:225 data/ui/multiband_gate.ui:225
+#: data/ui/multiband_compressor.ui:153
 msgid "Band 1"
 msgstr "Banda 1"
 
 #: data/ui/multiband_compressor.ui:242 data/ui/multiband_gate.ui:242
+#: data/ui/multiband_compressor.ui:170
 msgid "Band 2"
 msgstr "Banda 2"
 
 #: data/ui/multiband_compressor.ui:268 data/ui/multiband_gate.ui:268
+#: data/ui/multiband_compressor.ui:197
 msgid "Band 3"
 msgstr "Banda 3"
 
 #: data/ui/multiband_compressor.ui:294 data/ui/multiband_gate.ui:294
+#: data/ui/multiband_compressor.ui:224
 msgid "Band 4"
 msgstr "Banda 4"
 
 #: data/ui/multiband_compressor.ui:320 data/ui/multiband_gate.ui:320
+#: data/ui/multiband_compressor.ui:251
 msgid "Band 5"
 msgstr "Banda 5"
 
 #: data/ui/multiband_compressor.ui:346 data/ui/multiband_gate.ui:346
+#: data/ui/multiband_compressor.ui:278
 msgid "Band 6"
 msgstr "Banda 6"
 
 #: data/ui/multiband_compressor.ui:372 data/ui/multiband_gate.ui:372
+#: data/ui/multiband_compressor.ui:305
 msgid "Band 7"
 msgstr "Banda 7"
 
 #: data/ui/multiband_compressor.ui:398 data/ui/multiband_gate.ui:398
+#: data/ui/multiband_compressor.ui:332
 msgid "Band 8"
 msgstr "Banda 8"
 
@@ -1376,39 +1486,47 @@ msgid "Band Sidechain Options"
 msgstr "Cadeia Lateral"
 
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:578
+#: data/ui/multiband_compressor_band.ui:523
 #, fuzzy
 msgid "Low-Cut Filter"
 msgstr "Filtro"
 
 #: data/ui/multiband_compressor_band.ui:543 data/ui/multiband_gate_band.ui:606
+#: data/ui/multiband_compressor_band.ui:551
 #, fuzzy
 msgid "Low-Cut Filter Frequency"
 msgstr "Filtro"
 
 #: data/ui/multiband_compressor_band.ui:552 data/ui/multiband_gate_band.ui:615
+#: data/ui/multiband_compressor_band.ui:576
 #, fuzzy
 msgid "High-Cut Filter"
 msgstr "Filtro Passa-Alta"
 
 #: data/ui/multiband_compressor_band.ui:580 data/ui/multiband_gate_band.ui:643
+#: data/ui/multiband_compressor_band.ui:604
 #, fuzzy
 msgid "High-Cut Filter Frequency"
 msgstr "Filtro Passa-Alta"
 
 #: data/ui/multiband_compressor_band.ui:599 data/ui/multiband_gate_band.ui:662
+#: data/ui/multiband_compressor_band.ui:620
 msgid "PreAmp"
 msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:805
+#: data/ui/multiband_compressor_band.ui:826
 #, fuzzy
 msgid "Band Gain"
 msgstr "Ganho de Entrada"
 
 #: data/ui/multiband_compressor_band.ui:830 data/ui/multiband_gate_band.ui:802
+#: data/ui/multiband_compressor_band.ui:851
 msgid "Band Envelope"
 msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:855 data/ui/multiband_gate_band.ui:827
+#: data/ui/multiband_compressor_band.ui:876
 #, fuzzy
 msgid "Band Curve"
 msgstr "Curva"
@@ -2390,201 +2508,258 @@ msgstr "Fechar (Pressione ESC)"
 msgid "-inf"
 msgstr ""
 
+#: data/ui/multiband_gate.ui:35
 #, fuzzy
-#~ msgid "Split Mode"
-#~ msgstr "Separado"
+msgid "Split Mode"
+msgstr "Separado"
 
-#~ msgid "Split 1/2"
-#~ msgstr "Disivão 1/2"
+#: data/ui/multiband_gate.ui:48
+msgid "Split 1/2"
+msgstr "Disivão 1/2"
 
+#: data/ui/multiband_gate.ui:68
 #, fuzzy
-#~ msgid "Split Frequency 1"
-#~ msgstr "Frequência"
+msgid "Split Frequency 1"
+msgstr "Frequência"
 
-#~ msgid "Split 2/3"
-#~ msgstr "Disivão 2/3"
+#: data/ui/multiband_gate.ui:81
+msgid "Split 2/3"
+msgstr "Disivão 2/3"
 
+#: data/ui/multiband_gate.ui:101
 #, fuzzy
-#~ msgid "Split Frequency 2"
-#~ msgstr "Frequência"
+msgid "Split Frequency 2"
+msgstr "Frequência"
 
-#~ msgid "Split 3/4"
-#~ msgstr "Disivão 3/4"
+#: data/ui/multiband_gate.ui:114
+msgid "Split 3/4"
+msgstr "Disivão 3/4"
 
+#: data/ui/multiband_gate.ui:134
 #, fuzzy
-#~ msgid "Split Frequency 3"
-#~ msgstr "Frequência"
+msgid "Split Frequency 3"
+msgstr "Frequência"
 
-#~ msgid "Sub Band"
-#~ msgstr "Banda"
+#: data/ui/multiband_gate.ui:162
+msgid "Sub Band"
+msgstr "Banda"
 
+#: data/ui/multiband_gate.ui:177
 #, fuzzy
-#~ msgid "Band 1 Bypass"
-#~ msgstr "Ignorar"
+msgid "Band 1 Bypass"
+msgstr "Ignorar"
 
+#: data/ui/multiband_gate.ui:187
 #, fuzzy
-#~ msgid "Band 1 Solo"
-#~ msgstr "Bandas"
+msgid "Band 1 Solo"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:199
 #, fuzzy
-#~ msgid "Band 1 Detection"
-#~ msgstr "Redução de Ganho"
+msgid "Band 1 Detection"
+msgstr "Redução de Ganho"
 
+#: data/ui/multiband_gate.ui:243
 #, fuzzy
-#~ msgid "Band 1 Attack"
-#~ msgstr "Ataque"
+msgid "Band 1 Attack"
+msgstr "Ataque"
 
+#: data/ui/multiband_gate.ui:278
 #, fuzzy
-#~ msgid "Band 1 Release"
-#~ msgstr "Liberação"
+msgid "Band 1 Release"
+msgstr "Liberação"
 
+#: data/ui/multiband_gate.ui:312
 #, fuzzy
-#~ msgid "Band 1 Threshold"
-#~ msgstr "Limiar"
+msgid "Band 1 Threshold"
+msgstr "Limiar"
 
+#: data/ui/multiband_gate.ui:347
 #, fuzzy
-#~ msgid "Band 1 Ratio"
-#~ msgstr "Bandas"
+msgid "Band 1 Ratio"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:381
 #, fuzzy
-#~ msgid "Band 1 Knee"
-#~ msgstr "Bandas"
+msgid "Band 1 Knee"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:414
 #, fuzzy
-#~ msgid "Band 1 Makeup"
-#~ msgstr "Ganho de Saída"
+msgid "Band 1 Makeup"
+msgstr "Ganho de Saída"
 
-#~ msgid "Max Reduction"
-#~ msgstr "Redução"
+#: data/ui/multiband_gate.ui:421 data/ui/multiband_gate.ui:781
+#: data/ui/multiband_gate.ui:1141 data/ui/multiband_gate.ui:1501
+msgid "Max Reduction"
+msgstr "Redução"
 
-#~ msgid "Low Band"
-#~ msgstr "Banda Baixa"
+#: data/ui/multiband_gate.ui:522
+msgid "Low Band"
+msgstr "Banda Baixa"
 
+#: data/ui/multiband_gate.ui:537
 #, fuzzy
-#~ msgid "Band 2 Bypass"
-#~ msgstr "Ignorar"
+msgid "Band 2 Bypass"
+msgstr "Ignorar"
 
+#: data/ui/multiband_gate.ui:547
 #, fuzzy
-#~ msgid "Band 2 Solo"
-#~ msgstr "Bandas"
+msgid "Band 2 Solo"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:559
 #, fuzzy
-#~ msgid "Band 2 Detection"
-#~ msgstr "Redução de Ganho"
+msgid "Band 2 Detection"
+msgstr "Redução de Ganho"
 
+#: data/ui/multiband_gate.ui:603
 #, fuzzy
-#~ msgid "Band 2 Attack"
-#~ msgstr "Ataque"
+msgid "Band 2 Attack"
+msgstr "Ataque"
 
+#: data/ui/multiband_gate.ui:638
 #, fuzzy
-#~ msgid "Band 2 Release"
-#~ msgstr "Liberação"
+msgid "Band 2 Release"
+msgstr "Liberação"
 
+#: data/ui/multiband_gate.ui:672
 #, fuzzy
-#~ msgid "Band 2 Threshold"
-#~ msgstr "Limiar"
+msgid "Band 2 Threshold"
+msgstr "Limiar"
 
+#: data/ui/multiband_gate.ui:707
 #, fuzzy
-#~ msgid "Band 2 Ratio"
-#~ msgstr "Bandas"
+msgid "Band 2 Ratio"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:741
 #, fuzzy
-#~ msgid "Band 2 Knee"
-#~ msgstr "Bandas"
+msgid "Band 2 Knee"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:774
 #, fuzzy
-#~ msgid "Band 2 Makeup"
-#~ msgstr "Ganho de Saída"
+msgid "Band 2 Makeup"
+msgstr "Ganho de Saída"
 
+#: data/ui/multiband_gate.ui:808
 #, fuzzy
-#~ msgid "Band 2 Max Reduction"
-#~ msgstr "Redução de Ganho"
+msgid "Band 2 Max Reduction"
+msgstr "Redução de Ganho"
 
-#~ msgid "Mid Band"
-#~ msgstr "Banda Média"
+#: data/ui/multiband_gate.ui:882
+msgid "Mid Band"
+msgstr "Banda Média"
 
+#: data/ui/multiband_gate.ui:897
 #, fuzzy
-#~ msgid "Band 3 Bypass"
-#~ msgstr "Ignorar"
+msgid "Band 3 Bypass"
+msgstr "Ignorar"
 
+#: data/ui/multiband_gate.ui:907
 #, fuzzy
-#~ msgid "Band 3 Solo"
-#~ msgstr "Bandas"
+msgid "Band 3 Solo"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:919
 #, fuzzy
-#~ msgid "Band 3 Detection"
-#~ msgstr "Redução de Ganho"
+msgid "Band 3 Detection"
+msgstr "Redução de Ganho"
 
+#: data/ui/multiband_gate.ui:963
 #, fuzzy
-#~ msgid "Band 3 Attack"
-#~ msgstr "Ataque"
+msgid "Band 3 Attack"
+msgstr "Ataque"
 
+#: data/ui/multiband_gate.ui:998
 #, fuzzy
-#~ msgid "Band 3 Release"
-#~ msgstr "Liberação"
+msgid "Band 3 Release"
+msgstr "Liberação"
 
+#: data/ui/multiband_gate.ui:1032
 #, fuzzy
-#~ msgid "Band 3 Threshold"
-#~ msgstr "Limiar"
+msgid "Band 3 Threshold"
+msgstr "Limiar"
 
+#: data/ui/multiband_gate.ui:1067
 #, fuzzy
-#~ msgid "Band 3 Ratio"
-#~ msgstr "Bandas"
+msgid "Band 3 Ratio"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:1101
 #, fuzzy
-#~ msgid "Band 3 Knee"
-#~ msgstr "Bandas"
+msgid "Band 3 Knee"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:1134
 #, fuzzy
-#~ msgid "Band 3 Makeup"
-#~ msgstr "Ganho de Saída"
+msgid "Band 3 Makeup"
+msgstr "Ganho de Saída"
 
+#: data/ui/multiband_gate.ui:1168
 #, fuzzy
-#~ msgid "Band 3 Max Reduction"
-#~ msgstr "Redução de Ganho"
+msgid "Band 3 Max Reduction"
+msgstr "Redução de Ganho"
 
-#~ msgid "High Band"
-#~ msgstr "Banda Alta"
+#: data/ui/multiband_gate.ui:1242
+msgid "High Band"
+msgstr "Banda Alta"
 
+#: data/ui/multiband_gate.ui:1257
 #, fuzzy
-#~ msgid "Band 4 Bypass"
-#~ msgstr "Ignorar"
+msgid "Band 4 Bypass"
+msgstr "Ignorar"
 
+#: data/ui/multiband_gate.ui:1267
 #, fuzzy
-#~ msgid "Band 4 Solo"
-#~ msgstr "Bandas"
+msgid "Band 4 Solo"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:1279
 #, fuzzy
-#~ msgid "Band 4 Detection"
-#~ msgstr "Redução de Ganho"
+msgid "Band 4 Detection"
+msgstr "Redução de Ganho"
 
+#: data/ui/multiband_gate.ui:1323
 #, fuzzy
-#~ msgid "Band 4 Attack"
-#~ msgstr "Ataque"
+msgid "Band 4 Attack"
+msgstr "Ataque"
 
+#: data/ui/multiband_gate.ui:1358
 #, fuzzy
-#~ msgid "Band 4 Release"
-#~ msgstr "Liberação"
+msgid "Band 4 Release"
+msgstr "Liberação"
 
+#: data/ui/multiband_gate.ui:1392
 #, fuzzy
-#~ msgid "Band 4 Threshold"
-#~ msgstr "Limiar"
+msgid "Band 4 Threshold"
+msgstr "Limiar"
 
+#: data/ui/multiband_gate.ui:1427
 #, fuzzy
-#~ msgid "Band 4 Ratio"
-#~ msgstr "Bandas"
+msgid "Band 4 Ratio"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:1461
 #, fuzzy
-#~ msgid "Band 4 Knee"
-#~ msgstr "Bandas"
+msgid "Band 4 Knee"
+msgstr "Bandas"
 
+#: data/ui/multiband_gate.ui:1494
 #, fuzzy
-#~ msgid "Band 4 Makeup"
-#~ msgstr "Ganho de Saída"
+msgid "Band 4 Makeup"
+msgstr "Ganho de Saída"
 
+#: data/ui/multiband_gate.ui:1528
 #, fuzzy
-#~ msgid "Band 4 Max Reduction"
-#~ msgstr "Redução de Ganho"
+msgid "Band 4 Max Reduction"
+msgstr "Redução de Ganho"
+
+#: data/ui/multiband_gate.ui:448
+#, fuzzy
+msgid "Band 1 Max Reduction"
+msgstr "Redução de Ganho"
 
 #, fuzzy
 #~ msgid "Wet Amount"
