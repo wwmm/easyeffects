@@ -48,7 +48,7 @@ Equalizer::Equalizer(const std::string& tag,
 
                                             const uint nbands = g_settings_get_int(settings, key);
 
-                                            const bool split = g_settings_get_boolean(settings, "split-channels") == 1;
+                                            const bool split = g_settings_get_boolean(settings, "split-channels") != 0;
 
                                             using namespace tags::equalizer;
 
@@ -93,7 +93,7 @@ Equalizer::~Equalizer() {
 }
 
 void Equalizer::on_split_channels() {
-  if (g_settings_get_boolean(settings, "split-channels") == 1) {
+  if (g_settings_get_boolean(settings, "split-channels") != 0) {
     for (auto& handler_id : gconnections_unified) {
       g_signal_handler_disconnect(settings_left, handler_id);
     }
