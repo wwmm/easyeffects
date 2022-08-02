@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 14:23-0300\n"
-"PO-Revision-Date: 2022-07-29 06:16+0000\n"
+"PO-Revision-Date: 2022-08-02 19:36+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -442,6 +442,7 @@ msgstr "Ganancia de compensación"
 #: data/ui/compressor.ui:395 data/ui/delay.ui:95 data/ui/gate.ui:332
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_gate.ui:121
 #: data/ui/reverb.ui:197
+#, fuzzy
 msgid "Dry Level"
 msgstr "Nivel de señal sin efectos"
 
