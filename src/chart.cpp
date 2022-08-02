@@ -234,7 +234,7 @@ auto draw_unit(Chart* self, GtkSnapshot* snapshot, const int& width, const int& 
 }
 
 auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const int& height) -> int {
-  float labels_offset = 0.1 * width;
+  double labels_offset = 0.1 * width;
 
   int n_x_labels = static_cast<int>(std::ceil((width - 2 * self->data->margin * width) / labels_offset)) + 1;
 
@@ -448,14 +448,17 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
           cairo_move_to(ctx, self->data->margin * width,
                         self->data->margin * height + static_cast<float>(usable_height));
         } else {
-          const double point_height = self->data->y_axis.front() * static_cast<float>(usable_height);
+          const double point_height =
+              static_cast<double>(self->data->y_axis.front()) * static_cast<double>(usable_height);
 
-          cairo_move_to(ctx, self->data->objects_x.front(),
-                        self->data->margin * height + static_cast<double>(usable_height) - point_height);
+          cairo_move_to(
+              ctx, self->data->objects_x.front(),
+              self->data->margin * static_cast<double>(height) + static_cast<double>(usable_height) - point_height);
         }
 
         for (uint n = 0U; n < n_points - 1U; n++) {
-          const double next_point_height = self->data->y_axis[n + 1] * static_cast<float>(usable_height);
+          const double next_point_height =
+              static_cast<double>(self->data->y_axis[n + 1]) * static_cast<double>(usable_height);
 
           cairo_line_to(ctx, self->data->objects_x[n + 1],
                         self->data->margin * height + static_cast<double>(usable_height) - next_point_height);
