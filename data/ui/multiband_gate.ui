@@ -249,7 +249,6 @@
                                                     <object class="GtkCheckButton" id="enable_band1">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">4</property>
                                                         <accessibility>
                                                             <relation name="labelled-by">enable_band1_label</relation>
                                                         </accessibility>
@@ -276,7 +275,6 @@
                                                     <object class="GtkCheckButton" id="enable_band2">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">4</property>
                                                         <accessibility>
                                                             <relation name="labelled-by">enable_band2_label</relation>
                                                         </accessibility>
@@ -303,7 +301,6 @@
                                                     <object class="GtkCheckButton" id="enable_band3">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">4</property>
                                                         <accessibility>
                                                             <relation name="labelled-by">enable_band3_label</relation>
                                                         </accessibility>
@@ -330,7 +327,6 @@
                                                     <object class="GtkCheckButton" id="enable_band4">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">4</property>
                                                         <accessibility>
                                                             <relation name="labelled-by">enable_band4_label</relation>
                                                         </accessibility>
@@ -357,7 +353,6 @@
                                                     <object class="GtkCheckButton" id="enable_band5">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">4</property>
                                                         <accessibility>
                                                             <relation name="labelled-by">enable_band5_label</relation>
                                                         </accessibility>
@@ -384,7 +379,6 @@
                                                     <object class="GtkCheckButton" id="enable_band6">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">4</property>
                                                         <accessibility>
                                                             <relation name="labelled-by">enable_band6_label</relation>
                                                         </accessibility>
@@ -411,7 +405,6 @@
                                                     <object class="GtkCheckButton" id="enable_band7">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">4</property>
                                                         <accessibility>
                                                             <relation name="labelled-by">enable_band7_label</relation>
                                                         </accessibility>
