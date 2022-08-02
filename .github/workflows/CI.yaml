@@ -117,17 +117,13 @@ jobs:
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
         if-no-files-found: error
 
-  analyze:
-    name: Analyze
+  codeql-analyze:
+    name: CodeQL Analyze
     runs-on: ubuntu-20.04
     permissions:
       security-events: write
     container:
       image: archlinux
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'python' ] # cpp should also be here, but the codeql analysis fails due to a strange internal semmle error https://github.com/github/codeql/issues/9929
 
     steps:
     - name: Checkout repository
@@ -140,10 +136,22 @@ jobs:
         # install easyeffects deps
         source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
 
+    # due to https://github.com/github/codeql/issues/9929 we must minify the xml
+    # while it is possible to minify the xml during the build process by setting preprocess="xml-stripblanks" for each file xml in easyeffects.gresource.xml
+    # per https://docs.gtk.org/gio/struct.Resource.html
+    # it results in this error for non-flatpak ci builds: 
+    #   ../data/easyeffects.gresource.xml: Failed to close file descriptor for child process (Operation not permitted).
+    # this was only reproducible in the ci envrionment, not locally, so minifying here is the next-best alternative
+    - name: Minify xml
+      run: |
+        while IFS= read -r line; do
+          xmllint --noblanks "$line" --output "$line"
+        done < <( find ./data/ui/ -type f -name "*.ui" -print )
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
-        languages: ${{ matrix.language }}
+        languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
