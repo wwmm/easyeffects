@@ -198,8 +198,8 @@ void Gate::process(std::span<float>& left_in,
       // Normalize the current gain reduction amount as a percentage,
       // where 0% is no gating, and 100% is a fully closed gate.
       const float max_reduction_port_value = lv2_wrapper->get_control_port_value("gr");
-      const float no_reduction = 1.0F;  // aka, db_to_linear(0 /*dB*/);
-      gating_port_value = util::normalize(reduction_port_value, no_reduction, max_reduction_port_value);
+      // no reduction defaults to 1.0F; aka db_to_linear(0 dB);
+      gating_port_value = util::normalize(reduction_port_value, max_reduction_port_value);
 
       attack_zone_start.emit(attack_zone_start_port_value);
       attack_threshold.emit(attack_threshold_port_value);

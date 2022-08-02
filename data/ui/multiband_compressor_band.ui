@@ -434,16 +434,24 @@
                 <child>
                     <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="spacing">24</property>
+                        <property name="spacing">12</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="margin-top">6</property>
+
+                        <style>
+                            <class name="card" />
+                        </style>
+
                         <child>
                             <object class="GtkGrid">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">24</property>
+                                <property name="margin-start">6</property>
+                                <property name="margin-end">6</property>
+                                <property name="margin-top">6</property>
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="label" translatable="yes">Mode</property>
@@ -614,6 +622,9 @@
                                 <property name="valign">center</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">24</property>
+                                <property name="margin-start">6</property>
+                                <property name="margin-end">6</property>
+                                <property name="margin-bottom">6</property>
 
                                 <child>
                                     <object class="GtkLabel">

@@ -35,7 +35,7 @@ struct _MultibandGateBandBox {
 
   GtkToggleButton *bypass, *mute, *solo, *external_sidechain, *hysteresis;
 
-  GtkLabel *end_label, *gain_label, *envelope_label, *curve_label;
+  GtkLabel *end_label, *gain_label, *envelope_label, *curve_label, *gating_label;
 
   GtkSpinButton *split_frequency, *lowcut_filter_frequency, *highcut_filter_frequency, *attack_time, *release_time,
       *hysteresis_threshold, *hysteresis_zone, *curve_threshold, *curve_zone, *reduction, *makeup, *sidechain_preamp,
@@ -46,6 +46,8 @@ struct _MultibandGateBandBox {
   GtkComboBoxText *sidechain_mode, *sidechain_source;
 
   GtkBox* split_frequency_box;
+
+  GtkLevelBar* gating;
 
   GSettings* settings;
 
@@ -99,7 +101,20 @@ void set_gain_label(MultibandGateBandBox* self, const float& value) {
     return;
   }
 
+  gtk_label_set_text(self->gating_label, fmt::format("{0:.0Lf}", util::linear_to_db(value)).c_str());
   gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+}
+
+void set_gating_levelbar(MultibandGateBandBox* self, const float& value) {
+  if (!GTK_IS_WIDGET(self)) {
+    return;
+  }
+
+  if (!GTK_IS_LEVEL_BAR(self->gating)) {
+    return;
+  }
+
+  gtk_level_bar_set_value(self->gating, value);
 }
 
 void setup(MultibandGateBandBox* self, GSettings* settings, int index) {
@@ -226,6 +241,8 @@ void multiband_gate_band_box_class_init(MultibandGateBandBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, external_sidechain);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, end_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, gain_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, gating);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, gating_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, envelope_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, curve_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, split_frequency);

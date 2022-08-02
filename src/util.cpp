@@ -53,7 +53,8 @@ void print_thread_id() {
   std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
 }
 
-auto normalize(const float& x, const float& min, const float& max) -> float {
+auto normalize(const float& x, const float& max, const float& min) -> float {
+  // Mainly used for gating level bar in gate effects
   return (x - min) / (max - min);
 }
 

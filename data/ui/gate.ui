@@ -1065,7 +1065,7 @@
                             <object class="GtkLabel" id="gain_title">
                                 <property name="halign">end</property>
                                 <property name="xalign">1</property>
-                                <property name="label" translatable="yes">Gain</property>
+                                <property name="label" translatable="yes">Reduction</property>
                             </object>
                         </child>
 

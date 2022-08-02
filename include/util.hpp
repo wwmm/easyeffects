@@ -50,7 +50,7 @@ void critical(const std::string& s, std::source_location location = std::source_
 void warning(const std::string& s, std::source_location location = std::source_location::current());
 void info(const std::string& s, std::source_location location = std::source_location::current());
 
-auto normalize(const float& x, const float& min, const float& max) -> float;
+auto normalize(const float& x, const float& max, const float& min = 1.0F) -> float;
 
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;
 auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;

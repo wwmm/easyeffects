@@ -23,7 +23,7 @@ MultibandGate::MultibandGate(const std::string& tag,
                              const std::string& schema,
                              const std::string& schema_path,
                              PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::multiband_gate, schema, schema_path, pipe_manager),
+    : PluginBase(tag, tags::plugin_name::multiband_gate, schema, schema_path, pipe_manager, true),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_mb_gate_stereo")) {
   if (!lv2_wrapper->found_plugin) {
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_mb_gate_stereo is not installed");
@@ -162,12 +162,19 @@ void MultibandGate::process(std::span<float>& left_in,
         envelope_port_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);
         curve_port_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + nstr);
         reduction_port_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
+
+        // Normalize the current band gain reduction amount as a percentage,
+        // where 0% is no gating, and 100% is a fully closed gate.
+        const float band_max_reduction_port_value = lv2_wrapper->get_control_port_value("gr_" + nstr);
+        // no reduction defaults to 1.0F; aka db_to_linear(0 dB)
+        gating_array.at(n) = util::normalize(reduction_port_array.at(n), band_max_reduction_port_value);
       }
 
       frequency_range.emit(frequency_range_end_port_array);
       envelope.emit(envelope_port_array);
       curve.emit(curve_port_array);
       reduction.emit(reduction_port_array);
+      gating.emit(gating_array);
 
       notify();
 
