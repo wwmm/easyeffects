@@ -13,7 +13,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Band Management</em>
                 </title>
-                <p>This Compressor allows to split the input signal up to 8 bands. Each band is not attached to it's strict frequency and can be controlled by completely different frequency range that can be obtained by applying Low-Cut and Hi-Cut filters to the Sidechain signal.</p>
+                <p>This Compressor allows to split the input signal up to 8 bands. Each band is not attached to its strict frequency and can be controlled by completely different frequency range that can be obtained by applying Low-Cut and Hi-Cut filters to the Sidechain signal.</p>
                 <p>The first band is always enabled while the others can be activated if needed. When only the first band is enabled, the functionality is similar to the Singleband Sidechain Compressor. Otherwise the signal is split in more bands and each band is compressed individually. After the compression stage, the bands are mixed together to form the output result.</p>
             </item>
             <item>
@@ -119,7 +119,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Band Bypass</em>
                 </title>
-                <p>If enabled, the selected band is not affected by the compression stage. To not be confused by the Bypass checkbutton in the global options which bypasses the whole Multiband Compressor.</p>
+                <p>If enabled, the selected band is not affected by the compression stage.</p>
             </item>
             <item>
                 <title>

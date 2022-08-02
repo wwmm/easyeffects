@@ -11,47 +11,61 @@
         <terms>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Band Selection</em>
+                    <em style="strong" its:withinText="nested">Band Management</em>
                 </title>
-                <p>This Gate splits the input signal in 4 bands. The first one is named <em style="strong">Sub Band</em>, the second <em style="strong">Low Band</em>, the third <em style="strong">Mid Band</em> and the last <em style="strong">High Band</em>. Each one of them is processed individually and can have different configurations. After the gating stage, all bands are mixed together to form the output result.</p>
+                <p>This Gate allows to split the input signal up to 8 bands. Each band is not attached to its strict frequency and can be controlled by completely different frequency range that can be obtained by applying Low-Cut and Hi-Cut filters to the Sidechain signal.</p>
+                <p>The first band is always enabled while the others can be activated if needed. When only the first band is enabled, the functionality is similar to the Singleband Sidechain Gate. Otherwise the signal is split in more bands and each band is processed individually. After the gating stage, the bands are mixed together to form the output result.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Operating Mode</em>
                 </title>
-                <p>Determines how the input signal is split to obtain the 4 bands.</p>
+                <p>Determines how the input signal is split to obtain the different bands.</p>
                 <list>
                     <item>
                         <p>
-                            <em style="strong">LR4</em>
-                            - The original signal is split using the fourth-order Linkwitz–Riley crossover filter.
+                            <em style="strong">Classic</em>
+                            - The original signal is split using crossover filters. After the gating stage, all bands become phase-compensated using All-Pass filters.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">LR8</em>
-                            - The original signal is split using the eighth-order Linkwitz–Riley crossover filter.
+                            <em style="strong">Modern</em>
+                            - Each band is processed by a pair of dynamic shelving filters. This mode allows a better control over the gain of each band.
                         </p>
                     </item>
                 </list>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Split 1/2</em>
+                    <em style="strong" its:withinText="nested">Sidechain Boost</em>
                 </title>
-                <p>The split frequency that separates the Sub Band from the Low Band.</p>
+                <p>If enabled, it introduces a special mode for assigning the same weight for higher frequencies opposite to lower frequencies.</p>
+                <p>When disabled, the frequency band is processed 'as is', but the usual audio signal has 3 dB/octave falloff in the frequency domain and could be compared with the pink noise. So lower frequencies take more effect on the Gate rather than higher frequencies.</p>
+                <p>On the other hand the Sidechain Boost mode allows to compensate the -3 dB/octave falloff of the signal spectrum and, even more, makes the signal spectrum growing +3 dB/octave in the almost fully audible frequency range.</p>
+                <p>
+                    <em style="strong">Pink</em> applies +3 dB/octave while
+                    <em style="strong">Brown</em> applies +6 dB/octave Sidechain Boost.
+                    Each of them can use bilinear-transformed (BT) or matched-transformed (MT) shelving filter.
+                </p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Split 2/3</em>
+                    <em style="strong" its:withinText="nested">Sidechain Source</em>
                 </title>
-                <p>The split frequency that separates the Low Band from the Mid Band.</p>
+                <p>If the External Sidechain is enabled inside at least one band, this combobox allows to select the input device as source.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Split 3/4</em>
+                    <em style="strong" its:withinText="nested">Dry Level</em>
                 </title>
-                <p>The split frequency that separates the Mid Band from the High Band.</p>
+                <p>Amount of unprocessed signal mixed in the output.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Wet Level</em>
+                </title>
+                <p>Amount of processed signal mixed in the output.</p>
             </item>
         </terms>
     </section>
@@ -60,78 +74,207 @@
         <terms>
             <item>
                 <title>
+                    <em style="strong" its:withinText="nested">Band Start</em>
+                </title>
+                <p>Allows to change the lower end split frequency of the selected band. This value is assigned to the Band End of the previous enabled band. It can be modified for all bands except the first one, which is always enabled and its value is 0 Hz.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Band End</em>
+                </title>
+                <p>Specify the upper end split frequency of the selected band. It cannot be directly modified and assumes the same value of the Band Start of the next enabled band. For the last enabled band it is always 24.000 Hz.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">External Sidechain</em>
+                </title>
+                <p>The Sidechain is an external source took by a specific input device (typically a microphone).</p>
+            </item>
+            <item>
+                <title>
                     <em style="strong" its:withinText="nested">Band Bypass</em>
                 </title>
-                <p>If enabled, the selected band is not affected by the gating stage. To not be confused by the Bypass checkbutton in the global options which bypasses the whole Multiband Gate.</p>
+                <p>If enabled, the selected band is not affected by the gating stage.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Solo</em>
                 </title>
-                <p>Mutes all bands not set to Solo.</p>
+                <p>Turns on the Solo mode to the selected band by applying -36 dB gain to the other non-soloing bands.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Detection</em>
+                    <em style="strong" its:withinText="nested">Mute</em>
                 </title>
-                <p>Determines how the band signal is evaluated for the gain reduction.</p>
+                <p>Turns on the Mute mode applying -36 dB gain to to the selected band.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Attack Time</em>
+                </title>
+                <p>The length of time it takes to apply roughly two-thirds of the gain reduction.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Release Time</em>
+                </title>
+                <p>The length of time it takes to restore roughly two-thirds of the gain reduction.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Curve Threshold</em>
+                </title>
+                <p>The Gate fully opens upon the Sidechain level becoming above Curve Threshold.</p>
+                <p>If Hysteresis is not enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Curve Zone Size</em>
+                </title>
+                <p>The Gate begins to open upon the Sidechain level becoming above the Curve Threshold + Curve Zone.</p>
+                <p>If Hysteresis is not enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Curve Zone.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Hysteresis</em>
+                </title>
+                <p>When enabled, Curve Threshold and Curve Zone apply only to the opening Gate, and separate parameters can be configured for closing Gate.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Hysteresis Threshold</em>
+                </title>
+                <p>If Hysteresis is enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold + Hysteresis Threshold.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Hysteresis Zone Size</em>
+                </title>
+                <p>If Hysteresis is enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Hysteresis Threshold + Hysteresis Zone.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Reduction</em>
+                </title>
+                <p>The amount of gain reduction to apply to the input signal when the Gate is fully closed.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Makeup</em>
+                </title>
+                <p>The gain to apply after the gating stage.</p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Band Sidechain Options</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Mode</em>
+                </title>
+                <p>Determines how the Sidechain is evaluated for the gating stage.</p>
                 <list>
                     <item>
                         <p>
-                            <em style="strong">RMS</em>
-                            - The gating process reacts according to the average level measured by the root mean square.
+                            <em style="strong">Peak</em>
+                            - The Gate reacts according to the peaks.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Peak</em>
-                            - The gating process reacts according to the peaks.
+                            <em style="strong">RMS</em>
+                            - The Gate reacts according to the average loudness measured by the root mean square.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Low-Pass</em>
+                            - The Gate reacts according to the signal processed by a Low-Pass filter.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Uniform</em>
+                            - The Gate reacts according to the loudness measured by the average of the absolute amplitude.
                         </p>
                     </item>
                 </list>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Release</em>
+                    <em style="strong" its:withinText="nested">Source</em>
                 </title>
-                <p>The length of time it takes to apply roughly two-thirds of the targeted amount of reduction ratio.</p>
+                <p>Determines which part of the Sidechain is taken into account for the gating stage.</p>
+                <list>
+                    <item>
+                        <p>
+                            <em style="strong">Middle</em>
+                            - The sum of left and right channels.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Side</em>
+                            - The difference between left and right channels.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Left</em>
+                            - Only left channel is used.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Right</em>
+                            - Only right channel is used.
+                        </p>
+                    </item>
+                </list>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Attack</em>
+                    <em style="strong" its:withinText="nested">Low-Cut Filter</em>
                 </title>
-                <p>The length of time it takes to restore roughly two-thirds of the reduced gain.</p>
+                <p>Enables a custom Low-Cut Filter for the selected band.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Threshold</em>
+                    <em style="strong" its:withinText="nested">Low-Cut Frequency</em>
                 </title>
-                <p>The target level around which the reduction is applied (the range depends by the Knee).</p>
+                <p>Sets the cut-off frequency of the custom Low-Cut filter. If it is disabled, the default Low-Cut filter assumes internally the Band Start frequency as the cut-off frequency.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Ratio</em>
+                    <em style="strong" its:withinText="nested">Hight-Cut Filter</em>
                 </title>
-                <p>The amount of reduction that will be applied to the signal.</p>
-                <p>For example, when the Ratio is 2 and the signal falls below the Threshold by 5 dB, it would be ideally reduced by 10 dB (5x2 dB, or less if the maximum band gain Reduction is greater than -10 dB). In practice this behavior mostly depends on how the Multiband Gate is designed and configured.</p>
+                <p>Enables a custom High-Cut Filter for the selected band.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Knee</em>
+                    <em style="strong" its:withinText="nested">Hight-Cut Frequency</em>
                 </title>
-                <p>The range over which the Gate switches from no reduction to almost the full ratio reduction (the Threshold usually sits at the center of this transition zone).</p>
+                <p>Sets the cut-off frequency of the custom High-Cut filter. If it is disabled, the default High-Cut filter assumes internally the Band End frequency as the cut-off frequency.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Makeup</em>
+                    <em style="strong" its:withinText="nested">PreAmp</em>
                 </title>
-                <p>The gain to apply to the band signal after the gating stage.</p>
+                <p>Gain applied to the Sidechain signal of the selected band.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Max Reduction</em>
+                    <em style="strong" its:withinText="nested">Reactivity</em>
                 </title>
-                <p>The maximum level of gain reduction to apply when the band signal is below the Threshold.</p>
+                <p>The time that defines the number of samples used to process the Sidechain in RMS, Uniform and Low-Pass modes. Higher the value, more smooth the gating.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Lookahead</em>
+                </title>
+                <p>The band signal to gate is delayed by this amount of time, so that the gating will be applied earlier than it would be otherwise.</p>
+                <p>Each band can have different Lookahead values. To avoid phase distortions in the mixing stage, all the bands are automatically delayed for an individually calculated period of time.</p>
             </item>
         </terms>
     </section>
@@ -140,7 +283,7 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Multiband%20Gate.html" its:translate="no">Calf Multiband Gate</link>
+                    <link href="https://lsp-plug.in/?page=manuals&amp;section=sc_mb_gate_stereo" its:translate="no">LSP Sidechain Multiband Gate Stereo</link>
                 </p>
             </item>
             <item>
