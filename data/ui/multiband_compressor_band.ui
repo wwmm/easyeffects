@@ -509,30 +509,14 @@
                                 </child>
 
                                 <child>
-                                    <object class="GtkBox">
+                                    <object class="GtkCheckButton" id="lowcut_filter">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="spacing">6</property>
+                                        <property name="label" translatable="yes">Low-Cut Filter</property>
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">0</property>
                                         </layout>
-                                        <child>
-                                            <object class="GtkCheckButton" id="lowcut_filter">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
-                                                <accessibility>
-                                                    <relation name="labelled-by">lowcut_filter_label</relation>
-                                                </accessibility>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="lowcut_filter_label">
-                                                <property name="label" translatable="yes">Low-Cut Filter</property>
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
-                                            </object>
-                                        </child>
                                     </object>
                                 </child>
                                 <child>
@@ -562,30 +546,14 @@
                                 </child>
 
                                 <child>
-                                    <object class="GtkBox">
+                                    <object class="GtkCheckButton" id="highcut_filter">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="spacing">6</property>
+                                        <property name="label" translatable="yes">High-Cut Filter</property>
                                         <layout>
                                             <property name="column">3</property>
                                             <property name="row">0</property>
                                         </layout>
-                                        <child>
-                                            <object class="GtkCheckButton" id="highcut_filter">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
-                                                <accessibility>
-                                                    <relation name="labelled-by">highcut_filter_label</relation>
-                                                </accessibility>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="highcut_filter_label">
-                                                <property name="label" translatable="yes">High-Cut Filter</property>
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
-                                            </object>
-                                        </child>
                                     </object>
                                 </child>
                                 <child>
