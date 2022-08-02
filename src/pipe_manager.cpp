@@ -779,6 +779,17 @@ void on_device_info(void* object, const struct pw_device_info* info) {
       std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
     }
 
+    /*
+        For some reason bluez5 devices do not define bus-path or bus-id. So as a workaround we set
+       SPA_KEY_API_BLUEZ5_ADDRESS as bus_path
+    */
+
+    if (device.api == "bluez5") {
+      if (spa_dict_get_string(info->props, SPA_KEY_API_BLUEZ5_ADDRESS, device.bus_path)) {
+        std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
+      }
+    }
+
     if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
       for (uint i = 0U; i < info->n_params; i++) {
         if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {

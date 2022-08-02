@@ -4,7 +4,7 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- The preset autoloading code compatibility with bluez5 devices has been improved.
 
 - Bug fixes∶
 - 
