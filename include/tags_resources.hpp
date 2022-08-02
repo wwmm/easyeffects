@@ -93,6 +93,8 @@ inline constexpr auto multiband_compressor_band_ui = "/com/github/wwmm/easyeffec
 
 inline constexpr auto multiband_gate_ui = "/com/github/wwmm/easyeffects/ui/multiband_gate.ui";
 
+inline constexpr auto multiband_gate_band_ui = "/com/github/wwmm/easyeffects/ui/multiband_gate_band.ui";
+
 inline constexpr auto pipe_manager_box_ui = "/com/github/wwmm/easyeffects/ui/pipe_manager_box.ui";
 
 inline constexpr auto pitch_ui = "/com/github/wwmm/easyeffects/ui/pitch.ui";

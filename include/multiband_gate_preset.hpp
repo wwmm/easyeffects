@@ -26,6 +26,8 @@ class MultibandGatePreset : public PluginPresetBase {
   MultibandGatePreset(PresetType preset_type, const int& index = 0);
 
  private:
+  static constexpr uint n_bands = 8U;
+
   void save(nlohmann::json& json) override;
 
   void load(const nlohmann::json& json) override;

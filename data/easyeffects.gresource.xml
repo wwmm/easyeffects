@@ -39,6 +39,7 @@
         <file>ui/multiband_compressor.ui</file>
         <file>ui/multiband_compressor_band.ui</file>
         <file>ui/multiband_gate.ui</file>
+        <file>ui/multiband_gate_band.ui</file>
         <file>ui/pipe_manager_box.ui</file>
         <file>ui/pitch.ui</file>
         <file>ui/plugin_row.ui</file>

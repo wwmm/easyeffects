@@ -192,30 +192,32 @@ void Limiter::process(std::span<float>& left_in,
 }
 
 void Limiter::update_sidechain_links(const std::string& key) {
-  if (g_settings_get_boolean(settings, "external-sidechain") != 0) {
-    const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
-
-    NodeInfo input_device = pm->ee_source_node;
-
-    for (const auto& [serial, node] : pm->node_map) {
-      if (node.name == device_name) {
-        input_device = node;
-
-        break;
-      }
-    }
-
+  if (g_settings_get_boolean(settings, "external-sidechain") == 0) {
     pm->destroy_links(list_proxies);
 
     list_proxies.clear();
 
-    for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
-      list_proxies.push_back(link);
-    }
-  } else {
-    pm->destroy_links(list_proxies);
+    return;
+  }
 
-    list_proxies.clear();
+  const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
+
+  NodeInfo input_device = pm->ee_source_node;
+
+  for (const auto& [serial, node] : pm->node_map) {
+    if (node.name == device_name) {
+      input_device = node;
+
+      break;
+    }
+  }
+
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
+
+  for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+    list_proxies.push_back(link);
   }
 }
 

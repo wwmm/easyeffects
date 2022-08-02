@@ -765,7 +765,6 @@
             <default>6</default>
         </key>
 
-
         <key name="makeup0" type="d">
             <range min="-60" max="60" />
             <default>0</default>
@@ -798,6 +797,5 @@
             <range min="-60" max="60" />
             <default>0</default>
         </key>
-
     </schema>
 </schemalist>

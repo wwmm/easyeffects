@@ -20,27 +20,33 @@
 #pragma once
 
 #include <adwaita.h>
-#include "effects_base.hpp"
-#include "multiband_gate_band_box.hpp"
-#include "node_info_holder.hpp"
+#include <glib/gi18n.h>
+#include "tags_multiband_gate.hpp"
 #include "tags_resources.hpp"
 #include "ui_helpers.hpp"
 
-namespace ui::multiband_gate_box {
+namespace ui::multiband_gate_band_box {
 
 G_BEGIN_DECLS
 
-#define EE_TYPE_MULTIBAND_GATE_BOX (multiband_gate_box_get_type())
+#define EE_TYPE_MULTIBAND_GATE_BAND_BOX (multiband_gate_band_box_get_type())
 
-G_DECLARE_FINAL_TYPE(MultibandGateBox, multiband_gate_box, EE, MULTIBAND_GATE_BOX, GtkBox)
+G_DECLARE_FINAL_TYPE(MultibandGateBandBox, multiband_gate_band_box, EE, MULTIBAND_GATE_BAND_BOX, GtkBox)
 
 G_END_DECLS
 
-auto create() -> MultibandGateBox*;
+auto create() -> MultibandGateBandBox*;
 
-void setup(MultibandGateBox* self,
-           std::shared_ptr<MultibandGate> multiband_gate,
-           const std::string& schema_path,
-           PipeManager* pm);
+void setup(MultibandGateBandBox* self, GSettings* settings, int index);
 
-}  // namespace ui::multiband_gate_box
+void set_end_label(MultibandGateBandBox* self, const float& value);
+
+void set_envelope_label(MultibandGateBandBox* self, const float& value);
+
+void set_curve_label(MultibandGateBandBox* self, const float& value);
+
+void set_gain_label(MultibandGateBandBox* self, const float& value);
+
+void set_gating_levelbar(MultibandGateBandBox* self, const float& value);
+
+}  // namespace ui::multiband_gate_band_box

@@ -75,6 +75,7 @@ easyeffects_sources = [
 	'multiband_compressor_preset.cpp',
 	'multiband_compressor_ui.cpp',
 	'multiband_gate.cpp',
+	'multiband_gate_band_box.cpp',
 	'multiband_gate_preset.cpp',
 	'multiband_gate_ui.cpp',
 	'node_info_holder.cpp',

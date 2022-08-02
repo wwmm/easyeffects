@@ -225,10 +225,8 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
         return;
       }
 
-      gtk_label_set_text(self->gating_label,
-                         fmt::format(ui::get_user_locale(), "{0:.0Lf}", util::linear_to_db(value)).c_str());
-      gtk_label_set_text(self->gain_label,
-                         fmt::format(ui::get_user_locale(), "{0:.0Lf}", util::linear_to_db(value)).c_str());
+      gtk_label_set_text(self->gating_label, fmt::format("{0:.0Lf}", util::linear_to_db(value)).c_str());
+      gtk_label_set_text(self->gain_label, fmt::format("{0:.0Lf}", util::linear_to_db(value)).c_str());
     });
   }));
 

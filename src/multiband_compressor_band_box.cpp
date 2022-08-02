@@ -33,7 +33,7 @@ struct Data {
 struct _MultibandCompressorBandBox {
   GtkBox parent_instance;
 
-  GtkToggleButton *bypass, *mute, *solo;
+  GtkToggleButton *bypass, *mute, *solo, *external_sidechain;
 
   GtkLabel *end_label, *gain_label, *envelope_label, *curve_label;
 
@@ -41,7 +41,7 @@ struct _MultibandCompressorBandBox {
       *release_time, *release_threshold, *ratio, *knee, *makeup, *sidechain_preamp, *sidechain_reactivity,
       *sidechain_lookahead, *boost_amount, *boost_threshold;
 
-  GtkCheckButton *lowcut_filter, *highcut_filter, *external_sidechain;
+  GtkCheckButton *lowcut_filter, *highcut_filter;
 
   GtkComboBoxText *compression_mode, *sidechain_mode, *sidechain_source;
 

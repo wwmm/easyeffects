@@ -185,30 +185,32 @@ void MultibandCompressor::update_sidechain_links(const std::string& key) {
     external_sidechain_enabled = g_settings_get_boolean(settings, ("external-sidechain" + nstr).c_str()) != 0;
   }
 
-  if (external_sidechain_enabled) {
-    const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
-
-    NodeInfo input_device = pm->ee_source_node;
-
-    for (const auto& [serial, node] : pm->node_map) {
-      if (node.name == device_name) {
-        input_device = node;
-
-        break;
-      }
-    }
-
+  if (!external_sidechain_enabled) {
     pm->destroy_links(list_proxies);
 
     list_proxies.clear();
 
-    for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
-      list_proxies.push_back(link);
-    }
-  } else {
-    pm->destroy_links(list_proxies);
+    return;
+  }
 
-    list_proxies.clear();
+  const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
+
+  NodeInfo input_device = pm->ee_source_node;
+
+  for (const auto& [serial, node] : pm->node_map) {
+    if (node.name == device_name) {
+      input_device = node;
+
+      break;
+    }
+  }
+
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
+
+  for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+    list_proxies.push_back(link);
   }
 }
 

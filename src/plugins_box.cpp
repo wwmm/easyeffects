@@ -275,7 +275,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
       path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
-      ui::multiband_gate_box::setup(box, plugin_ptr, self->data->schema_path + path);
+      ui::multiband_gate_box::setup(box, plugin_ptr, self->data->schema_path + path, self->data->application->pm);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
     } else if (name.starts_with(tags::plugin_name::pitch)) {

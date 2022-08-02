@@ -198,8 +198,8 @@ void Gate::process(std::span<float>& left_in,
       // Normalize the current gain reduction amount as a percentage,
       // where 0% is no gating, and 100% is a fully closed gate.
       const float max_reduction_port_value = lv2_wrapper->get_control_port_value("gr");
-      const float no_reduction = 1.0F;  // aka, db_to_linear(0 /*dB*/);
-      gating_port_value = util::normalize(reduction_port_value, no_reduction, max_reduction_port_value);
+      // no reduction defaults to 1.0F; aka db_to_linear(0 dB);
+      gating_port_value = util::normalize(reduction_port_value, max_reduction_port_value);
 
       attack_zone_start.emit(attack_zone_start_port_value);
       attack_threshold.emit(attack_threshold_port_value);
@@ -219,30 +219,32 @@ void Gate::process(std::span<float>& left_in,
 }
 
 void Gate::update_sidechain_links(const std::string& key) {
-  if (util::gsettings_get_string(settings, "sidechain-input") == "External") {
-    const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
-
-    NodeInfo input_device = pm->ee_source_node;
-
-    for (const auto& [serial, node] : pm->node_map) {
-      if (node.name == device_name) {
-        input_device = node;
-
-        break;
-      }
-    }
-
+  if (util::gsettings_get_string(settings, "sidechain-input") != "External") {
     pm->destroy_links(list_proxies);
 
     list_proxies.clear();
 
-    for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
-      list_proxies.push_back(link);
-    }
-  } else {
-    pm->destroy_links(list_proxies);
+    return;
+  }
 
-    list_proxies.clear();
+  const auto device_name = util::gsettings_get_string(settings, "sidechain-input-device");
+
+  NodeInfo input_device = pm->ee_source_node;
+
+  for (const auto& [serial, node] : pm->node_map) {
+    if (node.name == device_name) {
+      input_device = node;
+
+      break;
+    }
+  }
+
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
+
+  for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+    list_proxies.push_back(link);
   }
 }
 
