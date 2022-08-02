@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-27 18:34+0200\n"
-"PO-Revision-Date: 2022-07-31 00:17+0000\n"
-"Last-Translator: Filipe Torres <felipetorres2405@gmail.com>\n"
+"PO-Revision-Date: 2022-08-02 17:17+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -304,11 +304,11 @@ msgstr "Mistura de Harmônicos"
 
 #: data/ui/bass_enhancer.ui:35 data/ui/exciter.ui:35
 msgid "3rd"
-msgstr "3°"
+msgstr "3º"
 
 #: data/ui/bass_enhancer.ui:78 data/ui/exciter.ui:78
 msgid "2nd"
-msgstr "2°"
+msgstr "2º"
 
 #: data/ui/bass_enhancer.ui:97 data/ui/exciter.ui:97
 msgid "Amount"
