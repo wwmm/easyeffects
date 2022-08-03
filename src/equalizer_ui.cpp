@@ -72,7 +72,7 @@ struct _EqualizerBox {
 
   GtkBox *bands_box_left, *bands_box_right;
 
-  GtkSpinButton* nbands;
+  GtkSpinButton *nbands, *balance, *pitch_left, *pitch_right;
 
   GtkComboBoxText* mode;
 
@@ -506,6 +506,15 @@ void setup(EqualizerBox* self,
 
   g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(self->settings, "balance", gtk_spin_button_get_adjustment(self->balance), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "pitch-left", gtk_spin_button_get_adjustment(self->pitch_left), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "pitch-right", gtk_spin_button_get_adjustment(self->pitch_right), "value",
+                  G_SETTINGS_BIND_DEFAULT);
+
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::num-bands",
       G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self); }), self));
@@ -595,6 +604,9 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, nbands);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, mode);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, split_channels);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, balance);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, pitch_left);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, pitch_right);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 
@@ -607,6 +619,10 @@ void equalizer_box_init(EqualizerBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->data = new Data();
+
+  prepare_spinbuttons<"%">(self->balance);
+
+  prepare_spinbuttons<"st">(self->pitch_left, self->pitch_right);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }

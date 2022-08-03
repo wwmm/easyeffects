@@ -59,6 +59,12 @@ void EqualizerPreset::save(nlohmann::json& json) {
 
   json[section]["equalizer"]["split-channels"] = g_settings_get_boolean(settings, "split-channels") != 0;
 
+  json[section]["equalizer"]["balance"] = g_settings_get_double(settings, "balance");
+
+  json[section]["equalizer"]["pitch-left"] = g_settings_get_double(settings, "pitch-left");
+
+  json[section]["equalizer"]["pitch-right"] = g_settings_get_double(settings, "pitch-right");
+
   const auto nbands = g_settings_get_int(settings, "num-bands");
 
   json[section]["equalizer"]["num-bands"] = nbands;
@@ -106,6 +112,12 @@ void EqualizerPreset::load(const nlohmann::json& json) {
   update_key<int>(json.at(section).at("equalizer"), settings, "num-bands", "num-bands");
 
   update_key<bool>(json.at(section).at("equalizer"), settings, "split-channels", "split-channels");
+
+  update_key<double>(json.at(section).at("equalizer"), settings, "balance", "balance");
+
+  update_key<double>(json.at(section).at("equalizer"), settings, "pitch-left", "pitch-left");
+
+  update_key<double>(json.at(section).at("equalizer"), settings, "pitch-right", "pitch-right");
 
   const auto nbands = g_settings_get_int(settings, "num-bands");
 

@@ -14,6 +14,9 @@
             <range min="1" max="32" />
             <default>32</default>
         </key>
+        <key name="mode" enum="com.github.wwmm.easyeffects.equalizer.mode.enum">
+            <default>"IIR"</default>
+        </key>
         <key name="input-gain" type="d">
             <range min="-36" max="36" />
             <default>0</default>
@@ -25,8 +28,17 @@
         <key name="split-channels" type="b">
             <default>false</default>
         </key>
-        <key name="mode" enum="com.github.wwmm.easyeffects.equalizer.mode.enum">
-            <default>"IIR"</default>
+        <key name="balance" type="d">
+            <range min="-100" max="100" />
+            <default>0</default>
+        </key>
+        <key name="pitch-left" type="d">
+            <range min="-120" max="120" />
+            <default>0</default>
+        </key>
+        <key name="pitch-right" type="d">
+            <range min="-120" max="120" />
+            <default>0</default>
         </key>
     </schema>
 </schemalist>

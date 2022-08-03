@@ -42,6 +42,24 @@
             </item>
             <item>
                 <title>
+                    <em style="strong" its:withinText="nested">Balance</em>
+                </title>
+                <p>Balance between left and right output channels.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Pitch Left</em>
+                </title>
+                <p>The frequency shift for all filters of the left channel, in semitones.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Pitch Right</em>
+                </title>
+                <p>The frequency shift for all filters of the right channel, in semitones.</p>
+            </item>
+            <item>
+                <title>
                     <em style="strong" its:withinText="nested">Split Channels</em>
                 </title>
                 <p>When enabled it is possible to apply different configurations to left and right channels.</p>

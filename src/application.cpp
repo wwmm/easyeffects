@@ -247,7 +247,7 @@ void application_class_init(ApplicationClass* klass) {
         list += name + ",";
       }
 
-      std::cout << _("Output Presets: ") + list << std::endl;
+      std::cout << _("Output Presets") + ": "s + list << std::endl;
 
       list = "";
 
@@ -255,7 +255,7 @@ void application_class_init(ApplicationClass* klass) {
         list += name + ",";
       }
 
-      std::cout << _("Input Presets: ") + list << std::endl;
+      std::cout << _("Input Presets") + ": "s + list << std::endl;
 
       return EXIT_SUCCESS;
     }

@@ -38,6 +38,12 @@ Equalizer::Equalizer(const std::string& tag,
 
   lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
+  lv2_wrapper->bind_key_double<"bal", "balance">(settings);
+
+  lv2_wrapper->bind_key_double<"frqs_l", "pitch-left">(settings);
+
+  lv2_wrapper->bind_key_double<"frqs_r", "pitch-right">(settings);
+
   bind_bands(std::make_index_sequence<max_bands>());
 
   on_split_channels();
