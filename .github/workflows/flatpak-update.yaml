@@ -8,23 +8,23 @@ jobs:
   flatpak-external-data-checker:
     runs-on: ubuntu-20.04
 
-    strategy:
-      matrix:
-        branch: [ master ] # list all branches to check
-    
     steps:
       - uses: actions/checkout@v3.0.2
         with:
-          ref: ${{ matrix.branch }}
+          # we can't push changes to a fork via a shallow update, we need to clone the full repo
+          fetch-depth: 0
+          # by default when persisting credentials the local git config will use the workflow provided GITHUB_TOKEN, not our own GITHUB_TOKEN env var for the container
+          # we must not use the provided GITHUB_TOKEN, as it will fail to push to the fork since the provided GITHUB_TOKEN is only for the repository where the workflow is running 
+          persist-credentials: false
 
       - uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
         env:
-          GIT_AUTHOR_NAME: Flatpak External Data Checker
-          GIT_COMMITTER_NAME: Flatpak External Data Checker
-          # email sets "github-actions[bot]" as commit author, see https://github.community/t/github-actions-bot-email-address/17204/6
-          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: EasyEffects Bot
+          GIT_COMMITTER_NAME: EasyEffects Bot
+          # email sets "EasyEffects Bot" user as commit author
+          GIT_AUTHOR_EMAIL: 110548574+easyeffects-bot@users.noreply.github.com
+          GIT_COMMITTER_EMAIL: 110548574+easyeffects-bot@users.noreply.github.com
+          EMAIL: 110548574+easyeffects-bot@users.noreply.github.com
+          GITHUB_TOKEN: ${{ secrets.EASYEFFECTS_BOT }}
         with:
           args: --update --always-fork util/flatpak/com.github.wwmm.easyeffects.json
