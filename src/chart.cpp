@@ -31,11 +31,11 @@ struct Data {
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
-  float mouse_y, mouse_x, margin, line_width;
+  double mouse_y, mouse_x, margin, line_width;
 
-  float x_min, x_max, y_min, y_max;
+  double x_min, x_max, y_min, y_max;
 
-  float x_min_log, x_max_log;
+  double x_min_log, x_max_log;
 
   ChartType chart_type;
 
@@ -186,9 +186,8 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y,
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
-        const double& mouse_x_log = (x - self->data->margin * width) /
-                                        static_cast<double>(width - 2 * self->data->margin * width) *
-                                        (self->data->x_max_log - self->data->x_min_log) +
+        const double& mouse_x_log = (x - self->data->margin * width) / width -
+                                    2 * self->data->margin * width * (self->data->x_max_log - self->data->x_min_log) +
                                     self->data->x_min_log;
 
         self->data->mouse_x = std::pow(10.0, mouse_x_log);  // exp10 does not exist on FreeBSD
@@ -196,9 +195,8 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y,
         break;
       }
       case ChartScale::linear: {
-        self->data->mouse_x = (x - self->data->margin * width) /
-                                  static_cast<double>(width - 2 * self->data->margin * width) *
-                                  (self->data->x_max - self->data->x_min) +
+        self->data->mouse_x = (x - self->data->margin * width) / width -
+                              2 * self->data->margin * width * (self->data->x_max - self->data->x_min) +
                               self->data->x_min;
 
         break;
@@ -236,7 +234,7 @@ auto draw_unit(Chart* self, GtkSnapshot* snapshot, const int& width, const int& 
 }
 
 auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const int& height) -> int {
-  float labels_offset = 0.1 * width;
+  double labels_offset = 0.1 * width;
 
   int n_x_labels = static_cast<int>(std::ceil((width - 2 * self->data->margin * width) / labels_offset)) + 1;
 
@@ -290,8 +288,8 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
 
     gtk_snapshot_save(snapshot);
 
-    auto point =
-        GRAPHENE_POINT_INIT(self->data->margin * width + n * labels_offset, static_cast<float>(height - text_height));
+    auto point = GRAPHENE_POINT_INIT(static_cast<float>(self->data->margin * width + n * labels_offset),
+                                     static_cast<float>(height - text_height));
 
     gtk_snapshot_translate(snapshot, &point);
 
@@ -450,17 +448,20 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
           cairo_move_to(ctx, self->data->margin * width,
                         self->data->margin * height + static_cast<float>(usable_height));
         } else {
-          const auto point_height = self->data->y_axis.front() * static_cast<float>(usable_height);
+          const double point_height =
+              static_cast<double>(self->data->y_axis.front()) * static_cast<double>(usable_height);
 
-          cairo_move_to(ctx, self->data->objects_x.front(),
-                        self->data->margin * height + static_cast<float>(usable_height) - point_height);
+          cairo_move_to(
+              ctx, self->data->objects_x.front(),
+              self->data->margin * static_cast<double>(height) + static_cast<double>(usable_height) - point_height);
         }
 
         for (uint n = 0U; n < n_points - 1U; n++) {
-          const auto next_point_height = self->data->y_axis[n + 1] * static_cast<float>(usable_height);
+          const double next_point_height =
+              static_cast<double>(self->data->y_axis[n + 1]) * static_cast<double>(usable_height);
 
           cairo_line_to(ctx, self->data->objects_x[n + 1],
-                        self->data->margin * height + static_cast<float>(usable_height) - next_point_height);
+                        self->data->margin * height + static_cast<double>(usable_height) - next_point_height);
         }
 
         if (self->data->fill_bars) {

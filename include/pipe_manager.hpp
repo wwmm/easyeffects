@@ -27,6 +27,7 @@
 #include <spa/param/audio/type-info.h>
 #include <spa/param/props.h>
 #include <spa/utils/json.h>
+#include <spa/utils/keys.h>
 #include <spa/utils/result.h>
 #include <algorithm>
 #include <array>

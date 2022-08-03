@@ -491,6 +491,10 @@ msgstr "Sidechain"
 #: data/ui/multiband_gate.ui:556 data/ui/multiband_gate.ui:916
 #: data/ui/multiband_gate.ui:1276 data/ui/compressor.ui:501 data/ui/gate.ui:640
 #: data/ui/multiband_compressor_band.ui:468 data/ui/multiband_gate_band.ui:531
+#: data/ui/compressor.ui:440 data/ui/gate.ui:546
+#: data/ui/multiband_compressor_band.ui:460 data/ui/multiband_gate.ui:196
+#: data/ui/multiband_gate.ui:556 data/ui/multiband_gate.ui:916
+#: data/ui/multiband_gate.ui:1276
 msgid "Peak"
 msgstr "Picco"
 
@@ -499,6 +503,10 @@ msgstr "Picco"
 #: data/ui/multiband_gate.ui:555 data/ui/multiband_gate.ui:915
 #: data/ui/multiband_gate.ui:1275 data/ui/compressor.ui:502 data/ui/gate.ui:641
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
+#: data/ui/compressor.ui:441 data/ui/gate.ui:547
+#: data/ui/multiband_compressor_band.ui:461 data/ui/multiband_gate.ui:195
+#: data/ui/multiband_gate.ui:555 data/ui/multiband_gate.ui:915
+#: data/ui/multiband_gate.ui:1275
 msgid "RMS"
 msgstr "RMS"
 
@@ -506,7 +514,9 @@ msgstr "RMS"
 #: data/ui/gate.ui:899 data/ui/multiband_compressor_band.ui:462
 #: data/ui/compressor.ui:503 data/ui/compressor.ui:855 data/ui/gate.ui:642
 #: data/ui/gate.ui:993 data/ui/multiband_compressor_band.ui:470
-#: data/ui/multiband_gate_band.ui:533
+#: data/ui/multiband_gate_band.ui:533 data/ui/compressor.ui:442
+#: data/ui/compressor.ui:794 data/ui/gate.ui:548 data/ui/gate.ui:899
+#: data/ui/multiband_compressor_band.ui:462
 msgid "Low-Pass"
 msgstr "Passa-Basso"
 
@@ -566,6 +576,8 @@ msgstr "Destro"
 #: data/ui/compressor.ui:549 data/ui/gate.ui:688
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_compressor_band.ui:506
 #: data/ui/multiband_gate.ui:60 data/ui/multiband_gate_band.ui:569
+#: data/ui/compressor.ui:488 data/ui/gate.ui:594
+#: data/ui/multiband_compressor.ui:86 data/ui/multiband_compressor_band.ui:498
 msgid "Sidechain Source"
 msgstr "Sorgente Sidechain"
 
@@ -1417,41 +1429,49 @@ msgstr "Opzioni Sidechain Banda"
 
 #: data/ui/multiband_compressor_band.ui:523
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:578
+#: data/ui/multiband_compressor_band.ui:523
 msgid "Low-Cut Filter"
 msgstr "Filtro Passa-Basso"
 
 #: data/ui/multiband_compressor_band.ui:551
 #: data/ui/multiband_compressor_band.ui:543 data/ui/multiband_gate_band.ui:606
+#: data/ui/multiband_compressor_band.ui:551
 msgid "Low-Cut Filter Frequency"
 msgstr "Frequenza Filtro Passa-Basso"
 
 #: data/ui/multiband_compressor_band.ui:576
 #: data/ui/multiband_compressor_band.ui:552 data/ui/multiband_gate_band.ui:615
+#: data/ui/multiband_compressor_band.ui:576
 msgid "High-Cut Filter"
 msgstr "Filtro Passa-Alto"
 
 #: data/ui/multiband_compressor_band.ui:604
 #: data/ui/multiband_compressor_band.ui:580 data/ui/multiband_gate_band.ui:643
+#: data/ui/multiband_compressor_band.ui:604
 msgid "High-Cut Filter Frequency"
 msgstr "Frequenza Filtro Passa-Alto"
 
 #: data/ui/multiband_compressor_band.ui:620
 #: data/ui/multiband_compressor_band.ui:599 data/ui/multiband_gate_band.ui:662
+#: data/ui/multiband_compressor_band.ui:620
 msgid "PreAmp"
 msgstr "PreAmp"
 
 #: data/ui/multiband_compressor_band.ui:826
 #: data/ui/multiband_compressor_band.ui:805
+#: data/ui/multiband_compressor_band.ui:826
 msgid "Band Gain"
 msgstr "Guadagno Banda"
 
 #: data/ui/multiband_compressor_band.ui:851
 #: data/ui/multiband_compressor_band.ui:830 data/ui/multiband_gate_band.ui:802
+#: data/ui/multiband_compressor_band.ui:851
 msgid "Band Envelope"
 msgstr "Envelope Banda"
 
 #: data/ui/multiband_compressor_band.ui:876
 #: data/ui/multiband_compressor_band.ui:855 data/ui/multiband_gate_band.ui:827
+#: data/ui/multiband_compressor_band.ui:876
 msgid "Band Curve"
 msgstr "Curva Banda"
 
