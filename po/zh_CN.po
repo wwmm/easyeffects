@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 14:23-0300\n"
-"PO-Revision-Date: 2022-07-29 06:16+0000\n"
-"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"PO-Revision-Date: 2022-08-03 10:16+0000\n"
+"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -797,34 +797,28 @@ msgid "Delay"
 msgstr "延迟"
 
 #: data/ui/delay.ui:65
-#, fuzzy
 msgid "Left Delay"
-msgstr "前反射延迟"
+msgstr "左延迟"
 
 #: data/ui/delay.ui:87
-#, fuzzy
 msgid "Right Delay"
-msgstr "右声道"
+msgstr "右延迟"
 
 #: data/ui/delay.ui:122
-#, fuzzy
 msgid "Left Dry Level"
-msgstr "干声级别"
+msgstr "左干声级别"
 
 #: data/ui/delay.ui:146
-#, fuzzy
 msgid "Right Dry Level"
-msgstr "干声级别"
+msgstr "右干声级别"
 
 #: data/ui/delay.ui:180
-#, fuzzy
 msgid "Left Wet Level"
-msgstr "湿声级别"
+msgstr "左湿声级别"
 
 #: data/ui/delay.ui:203
-#, fuzzy
 msgid "Right Wet Level"
-msgstr "湿声级别"
+msgstr "右湿声级别"
 
 #: data/ui/echo_canceller.ui:20
 msgid "Frame Size"
@@ -1391,9 +1385,8 @@ msgid "Band Curve"
 msgstr "频段曲线"
 
 #: data/ui/multiband_gate_band.ui:777
-#, fuzzy
 msgid "Band Reduction"
-msgstr "频段 1 最大衰减"
+msgstr "频段衰减"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
