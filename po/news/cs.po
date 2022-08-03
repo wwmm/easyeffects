@@ -7,32 +7,30 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 14:23-0300\n"
-"PO-Revision-Date: 2019-08-25 21:29+0200\n"
-"Last-Translator: Mlocik97\n"
-"Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2022-08-04 04:20+0000\n"
+"Last-Translator: Jan Val <jan.valenta.h@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 19.04.0\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Zvukové efekty pro programy využívající PulseAudio"
+msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
@@ -47,21 +45,22 @@ msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects je nástupce aplikace PulseEffects. EasyEffects podporuje pouze "
+"audio server PipeWire. Uživatelé PulseAudio by měli použít aplikaci "
+"PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Protože EasyEffects používá výchozí zvukový server PulseAudio, bude pracovat "
-"s většinou, pokud už ne se všemi vámi používanými programy. Všechny "
+"Protože EasyEffects používá výchozí zvukový server PipeWire, bude pracovat s "
+"většinou, pokud už ne se všemi vámi používanými programy. Všechny "
 "podporované programy jsou ukázány v hlavním okně, v němž je možné kterýkoli "
 "z nich ručně povolit."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -69,29 +68,29 @@ msgid ""
 msgstr ""
 "Vedle práce se zvukovým výstupem dokáže EasyEffects efekty použít i na "
 "vstupní zařízení, jako je mikrofon. To je užitečné mimo jiné při nahrávání "
-"zvuku, pracuje to ale dobře během hlasových hovorů."
+"zvuku, avšak lze dobře uplatnit i během hlasových hovorů."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
 msgstr ""
-"Když je EasyEffects spuštěn, zapamatuje si příhodně nastavení používané při "
-"posledním sezení. Je možné i uložení všech nynějších nastavení jako profilů."
+"Když je EasyEffects spuštěn, zapamatuje si nastavení používané při posledním "
+"sezení. Je možné i uložit všechna aktuální nastavení jako profil."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Hlavní stránka zobrazující dvě aplikace přehrávající zvuk"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Stránka zesílení basů zobrazující nastavení zvuku"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
+#, fuzzy
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Stránka konvoleru (convoler) zobrazující nastavení zvuku"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
@@ -112,11 +111,11 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:289
 msgid "Features:"
-msgstr ""
+msgstr "Funkce:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "Improved translations"
-msgstr ""
+msgstr "Vylepšené překlady"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
@@ -136,37 +135,42 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:268
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Opravy chyb:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
 msgstr ""
+"Opravena chyba, kdy EasyEffects mohlo spadnout při současném zavírání okna a "
+"aplikování efektů."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
 msgid "Other notes:"
-msgstr ""
+msgstr "Ostatní poznámky:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
-msgstr ""
+msgstr "Do profilu lze uložit stav bypassu. Důvod je popsaný v problému 1039"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid ""
 "The preset autoloading code compatibility with usb devices has been improved."
-msgstr ""
+msgstr "Kód pro automatické načtení profilu u USB zařízení byl vylepšen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
+#, fuzzy
 msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
+"Uživateli je zobrazen dialog, pokud se nezdaří načíst profil, nebo pokud "
+"soubor profilu/impulse se nepovedlo importovat."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid ""
@@ -179,12 +183,16 @@ msgid ""
 "EasyEffects should not crash anymore when the user locale is not properly "
 "configured."
 msgstr ""
+"EasyEffect již nespadne pokud uživatelské nastavení jazyka není správně "
+"nastaveno."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid ""
 "A workaround was implemented in our icon to deal with the lack of proper SVG "
 "support in QT."
 msgstr ""
+"V ikoně bylo implementováno řešení, které si poradí s nedostatečnou podporou "
+"SVG v knihovně QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
