@@ -37,5 +37,12 @@
             <range min="-83" max="7" />
             <default>0</default>
         </key>
+        <key name="clipping" type="b">
+            <default>false</default>
+        </key>
+        <key name="clipping-range" type="d">
+            <range min="0" max="24" />
+            <default>6</default>
+        </key>
     </schema>
 </schemalist>
