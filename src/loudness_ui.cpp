@@ -45,7 +45,9 @@ struct _LoudnessBox {
 
   GtkComboBoxText *fft_size, *standard;
 
-  GtkSpinButton* volume;
+  GtkCheckButton* clipping;
+
+  GtkSpinButton *volume, *clipping_range;
 
   GSettings* settings;
 
@@ -97,11 +99,17 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
+  g_settings_bind(self->settings, "fft", self->fft_size, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "std", self->standard, "active-id", G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(self->settings, "volume", gtk_spin_button_get_adjustment(self->volume), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "fft", self->fft_size, "active-id", G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "std", self->standard, "active-id", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "clipping", self->clipping, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "clipping-range", gtk_spin_button_get_adjustment(self->clipping_range), "value",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -162,6 +170,8 @@ void loudness_box_class_init(LoudnessBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, volume);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, standard);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, fft_size);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, clipping);
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, clipping_range);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
@@ -173,7 +183,7 @@ void loudness_box_init(LoudnessBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbuttons<"dB">(self->volume);
+  prepare_spinbuttons<"dB">(self->volume, self->clipping_range);
 }
 
 auto create() -> LoudnessBox* {
