@@ -1,292 +1,292 @@
 {
-  "name": "easyeffects-modules",
-  "modules": [
-    {
-      "name": "libsigc++",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dbuild-examples=false"
-      ],
-      "sources": [
+    "name": "easyeffects-modules",
+    "modules": [
         {
-          "type": "archive",
-          "url": "https://download.gnome.org/sources/libsigc++/3.2/libsigc++-3.2.0.tar.xz",
-          "sha256": "8cdcb986e3f0a7c5b4474aa3c833d676e62469509f4899110ddf118f04082651",
-          "x-checker-data": {
-            "type": "gnome",
             "name": "libsigc++",
-            "stable-only": true
-          }
-        }
-      ],
-      "cleanup": [
-        "/lib/sigc++*"
-      ]
-    },
-    {
-      "name": "libebur128",
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE=Release",
-        "-DBUILD_STATIC_LIBS=OFF",
-        "-DCMAKE_INSTALL_LIBDIR=lib"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/jiixyj/libebur128.git",
-          "tag": "v1.2.6",
-          "commit": "67b33abe1558160ed76ada1322329b0e9e058b02",
-          "x-checker-data": {
-            "type": "git",
-            "tag-pattern": "^v([\\d.]+)"
-          }
-        }
-      ],
-      "post-install": [
-        "install -Dm644 -t $FLATPAK_DEST/share/licenses/libebur128 COPYING"
-      ]
-    },
-    {
-      "name": "zita-convolver",
-      "no-autogen": true,
-      "subdir": "source",
-      "make-install-args": [
-        "PREFIX=${FLATPAK_DEST}",
-        "LIBDIR=${FLATPAK_DEST}/lib"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://kokkinizita.linuxaudio.org/linuxaudio/downloads/zita-convolver-4.0.3.tar.bz2",
-          "sha512": "62d7841757f10c094e43ed755e187f947c5743f302ed2a1ee6064a850c18921466f4505d8a2a7b3ad23619db7f1ad7307e1dfb2e8a1e7685e60ece2ffff4f6ca"
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dbuild-examples=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libsigc++/3.2/libsigc++-3.2.0.tar.xz",
+                    "sha256": "8cdcb986e3f0a7c5b4474aa3c833d676e62469509f4899110ddf118f04082651",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "libsigc++",
+                        "stable-only": true
+                    }
+                }
+            ],
+            "cleanup": [
+                "/lib/sigc++*"
+            ]
         },
         {
-          "type": "patch",
-          "path": "patch/zita-convolver/0001-Fix-makefile.patch"
-        }
-      ],
-      "modules": [
-        "shared-modules/linux-audio/fftw3f.json",
-        "shared-modules/linux-audio/lv2.json",
-        "shared-modules/linux-audio/lilv.json",
-        {
-          "name": "bs2b",
-          "rm-configure": true,
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://downloads.sourceforge.net/sourceforge/bs2b/libbs2b-3.1.0.tar.gz",
-              "sha256": "6aaafd81aae3898ee40148dd1349aab348db9bfae9767d0e66e0b07ddd4b2528"
-            },
-            {
-              "type": "script",
-              "dest-filename": "autogen.sh",
-              "commands": [
-                "cp -p /usr/share/automake-*/config.{sub,guess} build-aux",
-                "autoreconf -vfi"
-              ]
-            },
-            {
-              "type": "patch",
-              "path": "patch/bs2b/001-fix-automake-dist-lzma.patch"
-            }
-          ],
-          "post-install": [
-            "install -Dm644 -t $FLATPAK_DEST/share/licenses/bs2b COPYING"
-          ],
-          "cleanup": [
-            "/bin"
-          ]
+            "name": "libebur128",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DBUILD_STATIC_LIBS=OFF",
+                "-DCMAKE_INSTALL_LIBDIR=lib"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/jiixyj/libebur128.git",
+                    "tag": "v1.2.6",
+                    "commit": "67b33abe1558160ed76ada1322329b0e9e058b02",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)"
+                    }
+                }
+            ],
+            "post-install": [
+                "install -Dm644 -t $FLATPAK_DEST/share/licenses/libebur128 COPYING"
+            ]
         },
         {
-          "name": "speexdsp",
-          "buildsystem": "autotools",
-          "sources": [
-            {
-              "type": "git",
-              "url": "https://gitlab.xiph.org/xiph/speexdsp",
-              "tag": "SpeexDSP-1.2.1",
-              "commit": "1b28a0f61bc31162979e1f26f3981fc3637095c8",
-              "x-checker-data": {
-                "type": "git",
-                "tag-pattern": "^SpeexDSP-([\\d.]+)"
-              }
-            }
-          ]
+            "name": "zita-convolver",
+            "no-autogen": true,
+            "subdir": "source",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}",
+                "LIBDIR=${FLATPAK_DEST}/lib"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://kokkinizita.linuxaudio.org/linuxaudio/downloads/zita-convolver-4.0.3.tar.bz2",
+                    "sha512": "62d7841757f10c094e43ed755e187f947c5743f302ed2a1ee6064a850c18921466f4505d8a2a7b3ad23619db7f1ad7307e1dfb2e8a1e7685e60ece2ffff4f6ca"
+                },
+                {
+                    "type": "patch",
+                    "path": "patch/zita-convolver/0001-Fix-makefile.patch"
+                }
+            ],
+            "modules": [
+                "shared-modules/linux-audio/fftw3f.json",
+                "shared-modules/linux-audio/lv2.json",
+                "shared-modules/linux-audio/lilv.json",
+                {
+                    "name": "bs2b",
+                    "rm-configure": true,
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://downloads.sourceforge.net/sourceforge/bs2b/libbs2b-3.1.0.tar.gz",
+                            "sha256": "6aaafd81aae3898ee40148dd1349aab348db9bfae9767d0e66e0b07ddd4b2528"
+                        },
+                        {
+                            "type": "script",
+                            "dest-filename": "autogen.sh",
+                            "commands": [
+                                "cp -p /usr/share/automake-*/config.{sub,guess} build-aux",
+                                "autoreconf -vfi"
+                            ]
+                        },
+                        {
+                            "type": "patch",
+                            "path": "patch/bs2b/001-fix-automake-dist-lzma.patch"
+                        }
+                    ],
+                    "post-install": [
+                        "install -Dm644 -t $FLATPAK_DEST/share/licenses/bs2b COPYING"
+                    ],
+                    "cleanup": [
+                        "/bin"
+                    ]
+                },
+                {
+                    "name": "speexdsp",
+                    "buildsystem": "autotools",
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://gitlab.xiph.org/xiph/speexdsp",
+                            "tag": "SpeexDSP-1.2.1",
+                            "commit": "1b28a0f61bc31162979e1f26f3981fc3637095c8",
+                            "x-checker-data": {
+                                "type": "git",
+                                "tag-pattern": "^SpeexDSP-([\\d.]+)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "rubberband",
+                    "buildsystem": "meson",
+                    "cleanup": [
+                        "/include",
+                        "/lib/*.a",
+                        "/lib/pkgconfig"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://breakfastquay.com/files/releases/rubberband-3.0.0.tar.bz2",
+                            "sha256": "df6530b403c8300a23973df22f36f3c263f010d53792063e411f633cebb9ed85",
+                            "x-checker-data": {
+                                "type": "html",
+                                "url": "https://www.breakfastquay.com/rubberband/",
+                                "version-pattern": "Rubber Band Library v(\\d\\.\\d+\\.?\\d*) source",
+                                "url-template": "https://breakfastquay.com/files/releases/rubberband-$version.tar.bz2"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "calf",
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/calf-studio-gear/calf.git",
+                            "tag": "0.90.3",
+                            "commit": "41a2b7fb029cf0099fc05b7a9c569208034018de",
+                            "x-checker-data": {
+                                "type": "git",
+                                "tag-pattern": "^([\\d.]+)"
+                            }
+                        }
+                    ],
+                    "post-install": [
+                        "install -Dm644 -t $FLATPAK_DEST/share/licenses/calf COPYING"
+                    ],
+                    "cleanup": [
+                        "/bin",
+                        "/share/applications",
+                        "/share/bash-completion",
+                        "/share/calf",
+                        "/share/doc",
+                        "/share/icons",
+                        "/share/man"
+                    ],
+                    "modules": [
+                        "shared-modules/linux-audio/fluidsynth2.json"
+                    ]
+                }
+            ]
         },
         {
-          "name": "rubberband",
-          "buildsystem": "meson",
-          "cleanup": [
-            "/include",
-            "/lib/*.a",
-            "/lib/pkgconfig"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://breakfastquay.com/files/releases/rubberband-3.0.0.tar.bz2",
-              "sha256": "df6530b403c8300a23973df22f36f3c263f010d53792063e411f633cebb9ed85",
-              "x-checker-data": {
-                "type": "html",
-                "url": "https://www.breakfastquay.com/rubberband/",
-                "version-pattern": "Rubber Band Library v(\\d\\.\\d+\\.?\\d*) source",
-                "url-template": "https://breakfastquay.com/files/releases/rubberband-$version.tar.bz2"
-              }
-            }
-          ]
+            "name": "rnnoise",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/xiph/rnnoise.git",
+                    "commit": "1cbdbcf1283499bbb2230a6b0f126eb9b236defd"
+                }
+            ],
+            "cleanup": [
+                "/share/doc/rnnoise"
+            ]
         },
         {
-          "name": "calf",
-          "sources": [
-            {
-              "type": "git",
-              "url": "https://github.com/calf-studio-gear/calf.git",
-              "tag": "0.90.3",
-              "commit": "41a2b7fb029cf0099fc05b7a9c569208034018de",
-              "x-checker-data": {
-                "type": "git",
-                "tag-pattern": "^([\\d.]+)"
-              }
-            }
-          ],
-          "post-install": [
-            "install -Dm644 -t $FLATPAK_DEST/share/licenses/calf COPYING"
-          ],
-          "cleanup": [
-            "/bin",
-            "/share/applications",
-            "/share/bash-completion",
-            "/share/calf",
-            "/share/doc",
-            "/share/icons",
-            "/share/man"
-          ],
-          "modules": [
-            "shared-modules/linux-audio/fluidsynth2.json"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "rnnoise",
-      "sources": [
+            "name": "pipewire",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dgstreamer=disabled",
+                "-Dman=disabled",
+                "-Dsystemd=disabled",
+                "-Dudev=disabled",
+                "-Dudevrulesdir=disabled",
+                "-Dsession-managers=[]"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pipewire/pipewire.git",
+                    "tag": "0.3.41",
+                    "commit": "717fb64e4e4477b5a3bfb2d6f8def273b52b7259"
+                }
+            ]
+        },
         {
-          "type": "git",
-          "url": "https://github.com/xiph/rnnoise.git",
-          "commit": "1cbdbcf1283499bbb2230a6b0f126eb9b236defd"
-        }
-      ],
-      "cleanup": [
-        "/share/doc/rnnoise"
-      ]
-    },
-    {
-      "name": "pipewire",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Dgstreamer=disabled",
-        "-Dman=disabled",
-        "-Dsystemd=disabled",
-        "-Dudev=disabled",
-        "-Dudevrulesdir=disabled",
-        "-Dsession-managers=[]"
-      ],
-      "sources": [
+            "name": "nlohmann-json",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/nlohmann/json",
+                    "tag": "v3.11.1",
+                    "commit": "69d744867f8847c91a126fa25e9a6a3d67b3be41",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                }
+            ]
+        },
         {
-          "type": "git",
-          "url": "https://github.com/pipewire/pipewire.git",
-          "tag": "0.3.41",
-          "commit": "717fb64e4e4477b5a3bfb2d6f8def273b52b7259"
-        }
-      ]
-    },
-    {
-      "name": "nlohmann-json",
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE=Release"
-      ],
-      "sources": [
+            "name": "tbb",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make tbb tbbmalloc tbbproxy",
+                "install -d usr/lib/",
+                "install -m755 build/linux_*/*.so* /app/lib/",
+                "install -d usr/include",
+                "cp -a include/tbb /app/include/",
+                "cmake -DINSTALL_DIR=/app/lib/cmake/TBB -DSYSTEM_NAME=Linux -DTBB_VERSION_FILE=/app/include/tbb/tbb_stddef.h -P cmake/tbb_config_installer.cmake"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/intel/tbb/archive/v2020.3.tar.gz",
+                    "sha256": "ebc4f6aa47972daed1f7bf71d100ae5bf6931c2e3144cf299c8cc7d041dca2f3"
+                }
+            ],
+            "cleanup": [
+                "/include"
+            ]
+        },
         {
-          "type": "git",
-          "url": "https://github.com/nlohmann/json",
-          "tag": "v3.10.5",
-          "commit": "4f8fba14066156b73f1189a2b8bd568bde5284c5",
-          "x-checker-data": {
-            "type": "git",
-            "tag-pattern": "^v([\\d.]+)$"
-          }
-        }
-      ]
-    },
-    {
-      "name": "tbb",
-      "buildsystem": "simple",
-      "build-commands": [
-        "make tbb tbbmalloc tbbproxy",
-        "install -d usr/lib/",
-        "install -m755 build/linux_*/*.so* /app/lib/",
-        "install -d usr/include",
-        "cp -a include/tbb /app/include/",
-        "cmake -DINSTALL_DIR=/app/lib/cmake/TBB -DSYSTEM_NAME=Linux -DTBB_VERSION_FILE=/app/include/tbb/tbb_stddef.h -P cmake/tbb_config_installer.cmake"
-      ],
-      "sources": [
+            "name": "libportal",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Ddocs=false",
+                "-Dbackends=gtk4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/libportal.git",
+                    "tag": "0.5",
+                    "commit": "467a397fd7996557f837cdc26ac07c01c62810e5"
+                }
+            ]
+        },
         {
-          "type": "archive",
-          "url": "https://github.com/intel/tbb/archive/v2020.3.tar.gz",
-          "sha256": "ebc4f6aa47972daed1f7bf71d100ae5bf6931c2e3144cf299c8cc7d041dca2f3"
-        }
-      ],
-      "cleanup": [
-        "/include"
-      ]
-    },
-    {
-      "name": "libportal",
-      "buildsystem": "meson",
-      "config-opts": [
-        "-Ddocs=false",
-        "-Dbackends=gtk4"
-      ],
-      "sources": [
+            "name": "zenity",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/zenity",
+                    "tag": "3.41.0",
+                    "commit": "d8857f446b602d5fb4a41fef3d8a63507a12b72c"
+                }
+            ]
+        },
         {
-          "type": "git",
-          "url": "https://github.com/flatpak/libportal.git",
-          "tag": "0.5",
-          "commit": "467a397fd7996557f837cdc26ac07c01c62810e5"
+            "name": "fmt",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_INSTALL_PREFIX=/app",
+                "-DCMAKE_INSTALL_LIBDIR=/app/lib",
+                "-DBUILD_SHARED_LIBS=ON",
+                "-DFMT_TEST=Off"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/fmtlib/fmt/releases/download/8.0.1/fmt-8.0.1.zip",
+                    "sha256": "a627a56eab9554fc1e5dd9a623d0768583b3a383ff70a4312ba68f94c9d415bf"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "zenity",
-      "buildsystem": "meson",
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://gitlab.gnome.org/GNOME/zenity",
-          "tag": "3.41.0",
-          "commit": "d8857f446b602d5fb4a41fef3d8a63507a12b72c"
-        }
-      ]
-    },
-    {
-      "name": "fmt",
-      "buildsystem": "cmake",
-      "config-opts": [
-        "-DCMAKE_INSTALL_PREFIX=/app",
-        "-DCMAKE_INSTALL_LIBDIR=/app/lib",
-        "-DBUILD_SHARED_LIBS=ON",
-        "-DFMT_TEST=Off"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://github.com/fmtlib/fmt/releases/download/8.0.1/fmt-8.0.1.zip",
-          "sha256": "a627a56eab9554fc1e5dd9a623d0768583b3a383ff70a4312ba68f94c9d415bf"
-        }
-      ]
-    }
-  ]
+    ]
 }
