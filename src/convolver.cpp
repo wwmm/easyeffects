@@ -243,7 +243,7 @@ void Convolver::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
-    util::idle_add([=, this] { latency.emit(latency_value); });
+    util::idle_add([=, this] { latency.emit(); });
 
     spa_process_latency_info latency_info{};
 

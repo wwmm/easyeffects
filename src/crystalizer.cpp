@@ -228,9 +228,11 @@ void Crystalizer::process(std::span<float>& left_in,
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
     util::idle_add([=, this]() {
-      if (!latency.empty()) {
-        latency.emit(latency_value);
+      if (!post_messages || latency.empty()) {
+        return;
       }
+
+      latency.emit();
     });
 
     spa_process_latency_info latency_info{};

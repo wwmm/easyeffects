@@ -254,30 +254,12 @@ void Pitch::process(std::span<float>& left_in,
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
     util::idle_add([=, this]() {
-      if (!post_messages) {
+      if (!post_messages || latency.empty()) {
         return;
       }
 
-      latency.emit(latency_value);
+      latency.emit();
     });
-
-    g_idle_add((GSourceFunc) +
-                   [](gpointer user_data) {
-                     auto* self = static_cast<Pitch*>(user_data);
-
-                     if (!self->post_messages) {
-                       return G_SOURCE_REMOVE;
-                     }
-
-                     if (self->latency.empty()) {
-                       return G_SOURCE_REMOVE;
-                     }
-
-                     self->latency.emit(self->latency_value);
-
-                     return G_SOURCE_REMOVE;
-                   },
-               this);
 
     spa_process_latency_info latency_info{};
 
