@@ -184,7 +184,7 @@ void EffectsBase::create_filters_if_necessary() {
       filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm);
     }
 
-    connections.push_back(filter->latency.connect([=, this](const auto& v) { broadcast_pipeline_latency(); }));
+    connections.push_back(filter->latency.connect([=, this]() { broadcast_pipeline_latency(); }));
 
     plugins.insert(std::make_pair(name, filter));
   }

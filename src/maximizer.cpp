@@ -95,11 +95,11 @@ void Maximizer::process(std::span<float>& left_in,
     util::debug(log_tag + name + " latency: " + util::to_string(latency_port_value, "") + " s");
 
     util::idle_add([=, this]() {
-      if (!post_messages) {
+      if (!post_messages || latency.empty()) {
         return;
       }
 
-      latency.emit(latency_port_value);
+      latency.emit();
     });
 
     spa_process_latency_info latency_info{};

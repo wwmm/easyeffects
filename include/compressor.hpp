@@ -47,7 +47,7 @@ class Compressor : public PluginBase {
 
   void update_probe_links() override;
 
-  sigc::signal<void(const float)> reduction, sidechain, curve, envelope, latency;
+  sigc::signal<void(const float)> reduction, sidechain, curve, envelope;
 
   float reduction_port_value = 0.0F;
   float sidechain_port_value = 0.0F;

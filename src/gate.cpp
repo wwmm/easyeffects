@@ -147,23 +147,13 @@ void Gate::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_port_value, "") + " s");
 
-    g_idle_add((GSourceFunc) +
-                   [](gpointer user_data) {
-                     auto* self = static_cast<Gate*>(user_data);
+    util::idle_add([=, this]() {
+      if (!post_messages || latency.empty()) {
+        return;
+      }
 
-                     if (!self->post_messages) {
-                       return G_SOURCE_REMOVE;
-                     }
-
-                     if (self->latency.empty()) {
-                       return G_SOURCE_REMOVE;
-                     }
-
-                     self->latency.emit(self->latency_port_value);
-
-                     return G_SOURCE_REMOVE;
-                   },
-               this);
+      latency.emit();
+    });
 
     spa_process_latency_info latency_info{};
 
