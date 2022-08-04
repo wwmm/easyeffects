@@ -30,9 +30,14 @@ Loudness::Loudness(const std::string& tag,
   }
 
   lv2_wrapper->bind_key_enum<"std", "std">(settings);
+
   lv2_wrapper->bind_key_enum<"fft", "fft">(settings);
 
   lv2_wrapper->bind_key_double<"volume", "volume">(settings);
+
+  lv2_wrapper->bind_key_bool<"hclip", "clipping">(settings);
+
+  lv2_wrapper->bind_key_double<"hcrange", "clipping-range">(settings);
 
   setup_input_output_gain();
 }

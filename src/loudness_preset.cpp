@@ -42,6 +42,10 @@ void LoudnessPreset::save(nlohmann::json& json) {
   json[section]["loudness"]["std"] = util::gsettings_get_string(settings, "std");
 
   json[section]["loudness"]["volume"] = g_settings_get_double(settings, "volume");
+
+  json[section]["loudness"]["clipping"] = g_settings_get_boolean(settings, "clipping") != 0;
+
+  json[section]["loudness"]["clipping-range"] = g_settings_get_double(settings, "clipping-range");
 }
 
 void LoudnessPreset::load(const nlohmann::json& json) {
@@ -56,4 +60,8 @@ void LoudnessPreset::load(const nlohmann::json& json) {
   update_key<gchar*>(json.at(section).at("loudness"), settings, "std", "std");
 
   update_key<double>(json.at(section).at("loudness"), settings, "volume", "volume");
+
+  update_key<bool>(json.at(section).at("loudness"), settings, "clipping", "clipping");
+
+  update_key<double>(json.at(section).at("loudness"), settings, "clipping-range", "clipping-range");
 }
