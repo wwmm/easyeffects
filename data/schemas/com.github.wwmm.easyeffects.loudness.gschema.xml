@@ -33,10 +33,6 @@
         <key name="std" enum="com.github.wwmm.easyeffects.loudness.std.enum">
             <default>"ISO226-2003"</default>
         </key>
-        <key name="input" type="d">
-            <range min="-60" max="72" />
-            <default>0</default>
-        </key>
         <key name="volume" type="d">
             <range min="-83" max="7" />
             <default>0</default>
