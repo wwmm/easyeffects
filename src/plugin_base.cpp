@@ -105,12 +105,14 @@ const struct pw_filter_events filter_events = {.process = on_process};
 
 PluginBase::PluginBase(std::string tag,
                        std::string plugin_name,
+                       std::string package,
                        const std::string& schema,
                        const std::string& schema_path,
                        PipeManager* pipe_manager,
                        const bool& enable_probe)
     : log_tag(std::move(tag)),
       name(std::move(plugin_name)),
+      package(std::move(package)),
       enable_probe(enable_probe),
       settings(g_settings_new_with_path(schema.c_str(), schema_path.c_str())),
       pm(pipe_manager) {

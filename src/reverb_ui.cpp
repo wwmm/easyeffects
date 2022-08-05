@@ -37,6 +37,8 @@ struct Data {
 struct _ReverbBox {
   GtkBox parent_instance;
 
+  AdwToastOverlay* toast_overlay;
+
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -239,6 +241,7 @@ void reverb_box_class_init(ReverbBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::reverb_ui);
 
+  gtk_widget_class_bind_template_child(widget_class, ReverbBox, toast_overlay);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, input_level_left);

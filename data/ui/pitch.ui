@@ -488,7 +488,7 @@
                                         <child>
                                             <object class="GtkLabel">
                                                 <property name="halign">end</property>
-                                                <property name="label">RubberBand</property>
+                                                <property name="label">Rubber Band</property>
                                                 <attributes>
                                                     <attribute name="weight" value="bold" />
                                                 </attributes>

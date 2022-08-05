@@ -37,6 +37,8 @@ struct Data {
 struct _BassLoudnessBox {
   GtkBox parent_instance;
 
+  AdwToastOverlay* toast_overlay;
+
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -142,6 +144,7 @@ void bass_loudness_box_class_init(BassLoudnessBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::bass_loudness_ui);
 
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, toast_overlay);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_level_left);

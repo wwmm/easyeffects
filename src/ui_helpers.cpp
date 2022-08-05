@@ -65,6 +65,13 @@ void show_fixed_toast(AdwToastOverlay* toast_overlay, const std::string& text, c
   show_autohiding_toast(toast_overlay, text, 0U, priority);
 }
 
+void missing_plugin_toast(AdwToastOverlay* toast_overlay, const std::string& package) {
+  // For translators: {} is replaced by the name of the package containing the plugin.
+  const auto format = fmt::runtime(_("{} Is Not Installed On The System. This Effect Is Not Available."));
+
+  show_autohiding_toast(toast_overlay, fmt::format(format, package), 10U);
+}
+
 void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr) {
   if (parent == nullptr) {
     return;

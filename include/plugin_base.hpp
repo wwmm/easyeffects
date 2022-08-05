@@ -31,6 +31,7 @@ class PluginBase {
  public:
   PluginBase(std::string tag,
              std::string plugin_name,
+             std::string plugin_package,
              const std::string& schema,
              const std::string& schema_path,
              PipeManager* pipe_manager,
@@ -62,7 +63,7 @@ class PluginBase {
 
   const std::string log_tag;
 
-  std::string name;
+  std::string name, package;
 
   pw_filter* filter = nullptr;
 
@@ -73,6 +74,8 @@ class PluginBase {
   uint rate = 0U;
 
   float buffer_duration = 0.0F;
+
+  bool package_installed = true;
 
   bool bypass = false;
 

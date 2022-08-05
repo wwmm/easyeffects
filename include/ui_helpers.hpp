@@ -37,10 +37,13 @@ namespace ui {
 void show_fixed_toast(AdwToastOverlay* toast_overlay,
                       const std::string& text,
                       const AdwToastPriority& priority = ADW_TOAST_PRIORITY_HIGH);
+
 void show_autohiding_toast(AdwToastOverlay* toast_overlay,
                            const std::string& text,
                            const uint& timeout = 5U,
                            const AdwToastPriority& priority = ADW_TOAST_PRIORITY_HIGH);
+
+void missing_plugin_toast(AdwToastOverlay* toast_overlay, const std::string& package);
 
 void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr);
 

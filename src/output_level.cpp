@@ -23,7 +23,7 @@ OutputLevel::OutputLevel(const std::string& tag,
                          const std::string& schema,
                          const std::string& schema_path,
                          PipeManager* pipe_manager)
-    : PluginBase(tag, "output_level", schema, schema_path, pipe_manager) {}
+    : PluginBase(tag, "output_level", tags::plugin_package::ee, schema, schema_path, pipe_manager) {}
 
 OutputLevel::~OutputLevel() {
   if (connected_to_pw) {

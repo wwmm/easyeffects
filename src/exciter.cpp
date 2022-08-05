@@ -23,9 +23,11 @@ Exciter::Exciter(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::exciter, schema, schema_path, pipe_manager),
+    : PluginBase(tag, tags::plugin_name::exciter, tags::plugin_package::calf, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Exciter")) {
-  if (!lv2_wrapper->found_plugin) {
+  package_installed = lv2_wrapper->found_plugin;
+
+  if (!package_installed) {
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Exciter is not installed");
   }
 

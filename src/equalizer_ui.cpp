@@ -58,8 +58,6 @@ struct Data {
 struct _EqualizerBox {
   GtkBox parent_instance;
 
-  GtkOverlay* overlay;
-
   AdwToastOverlay* toast_overlay;
 
   GtkScale *input_gain, *output_gain;
@@ -584,9 +582,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::equalizer_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, overlay);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, toast_overlay);
-
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, input_level_left);

@@ -23,9 +23,11 @@ Loudness::Loudness(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::loudness, schema, schema_path, pipe_manager),
+    : PluginBase(tag, tags::plugin_name::loudness, tags::plugin_package::lsp, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/loud_comp_stereo")) {
-  if (!lv2_wrapper->found_plugin) {
+  package_installed = lv2_wrapper->found_plugin;
+
+  if (!package_installed) {
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/loud_comp_stereo is not installed");
   }
 

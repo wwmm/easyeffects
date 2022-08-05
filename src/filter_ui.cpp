@@ -37,6 +37,8 @@ struct Data {
 struct _FilterBox {
   GtkBox parent_instance;
 
+  AdwToastOverlay* toast_overlay;
+
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -153,6 +155,7 @@ void filter_box_class_init(FilterBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::filter_ui);
 
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, toast_overlay);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, input_level_left);

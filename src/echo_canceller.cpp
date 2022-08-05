@@ -23,7 +23,13 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                              const std::string& schema,
                              const std::string& schema_path,
                              PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::echo_canceller, schema, schema_path, pipe_manager, true) {
+    : PluginBase(tag,
+                 tags::plugin_name::echo_canceller,
+                 tags::plugin_package::speex,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 true) {
   gconnections.push_back(g_signal_connect(settings, "changed::frame-size",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<EchoCanceller*>(user_data);
