@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-04 19:58+0200\n"
-"PO-Revision-Date: 2022-08-03 10:16+0000\n"
+"PO-Revision-Date: 2022-08-05 12:16+0000\n"
 "Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -858,14 +858,12 @@ msgid "Balance"
 msgstr "平衡"
 
 #: data/ui/equalizer.ui:123
-#, fuzzy
 msgid "Pitch Left"
-msgstr "左边侧链"
+msgstr "左音高"
 
 #: data/ui/equalizer.ui:156
-#, fuzzy
 msgid "Pitch Right"
-msgstr "右边侧链"
+msgstr "右音高"
 
 #: data/ui/equalizer.ui:251
 msgid "Split Channels"
