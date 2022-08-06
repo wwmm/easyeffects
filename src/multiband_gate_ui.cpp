@@ -194,7 +194,7 @@ void setup(MultibandGateBox* self,
   }));
 
   self->data->connections.push_back(
-      multiband_gate->frequency_range.connect([=](const std::array<float, n_bands>& values) {
+      multiband_gate->frequency_range.connect([=](const std::array<float, n_bands> values) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
@@ -206,7 +206,7 @@ void setup(MultibandGateBox* self,
         });
       }));
 
-  self->data->connections.push_back(multiband_gate->envelope.connect([=](const std::array<float, n_bands>& values) {
+  self->data->connections.push_back(multiband_gate->envelope.connect([=](const std::array<float, n_bands> values) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -218,7 +218,7 @@ void setup(MultibandGateBox* self,
     });
   }));
 
-  self->data->connections.push_back(multiband_gate->curve.connect([=](const std::array<float, n_bands>& values) {
+  self->data->connections.push_back(multiband_gate->curve.connect([=](const std::array<float, n_bands> values) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -230,7 +230,7 @@ void setup(MultibandGateBox* self,
     });
   }));
 
-  self->data->connections.push_back(multiband_gate->reduction.connect([=](const std::array<float, n_bands>& values) {
+  self->data->connections.push_back(multiband_gate->reduction.connect([=](const std::array<float, n_bands> values) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -242,7 +242,7 @@ void setup(MultibandGateBox* self,
     });
   }));
 
-  self->data->connections.push_back(multiband_gate->gating.connect([=](const std::array<float, n_bands>& values) {
+  self->data->connections.push_back(multiband_gate->gating.connect([=](const std::array<double, n_bands> values) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

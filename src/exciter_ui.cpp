@@ -103,7 +103,7 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
     });
   }));
 
-  self->data->connections.push_back(exciter->harmonics.connect([=](const double& value) {
+  self->data->connections.push_back(exciter->harmonics.connect([=](const double value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

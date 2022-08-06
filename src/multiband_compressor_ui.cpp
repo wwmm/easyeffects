@@ -196,7 +196,7 @@ void setup(MultibandCompressorBox* self,
       }));
 
   self->data->connections.push_back(
-      multiband_compressor->frequency_range.connect([=](const std::array<float, n_bands>& values) {
+      multiband_compressor->frequency_range.connect([=](const std::array<float, n_bands> values) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
@@ -209,7 +209,7 @@ void setup(MultibandCompressorBox* self,
       }));
 
   self->data->connections.push_back(
-      multiband_compressor->envelope.connect([=](const std::array<float, n_bands>& values) {
+      multiband_compressor->envelope.connect([=](const std::array<float, n_bands> values) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
@@ -221,7 +221,7 @@ void setup(MultibandCompressorBox* self,
         });
       }));
 
-  self->data->connections.push_back(multiband_compressor->curve.connect([=](const std::array<float, n_bands>& values) {
+  self->data->connections.push_back(multiband_compressor->curve.connect([=](const std::array<float, n_bands> values) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -234,7 +234,7 @@ void setup(MultibandCompressorBox* self,
   }));
 
   self->data->connections.push_back(
-      multiband_compressor->reduction.connect([=](const std::array<float, n_bands>& values) {
+      multiband_compressor->reduction.connect([=](const std::array<float, n_bands> values) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;

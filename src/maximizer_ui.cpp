@@ -99,7 +99,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
     });
   }));
 
-  self->data->connections.push_back(maximizer->reduction.connect([=](const double& value) {
+  self->data->connections.push_back(maximizer->reduction.connect([=](const double value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
