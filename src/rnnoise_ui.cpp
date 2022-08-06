@@ -204,7 +204,7 @@ void setup(RNNoiseBox* self,
     });
   }));
 
-  self->data->connections.push_back(rnnoise->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(rnnoise->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -215,7 +215,7 @@ void setup(RNNoiseBox* self,
     });
   }));
 
-  self->data->connections.push_back(rnnoise->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(rnnoise->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

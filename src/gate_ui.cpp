@@ -135,7 +135,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     }
   }
 
-  self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(gate->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -146,7 +146,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(gate->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

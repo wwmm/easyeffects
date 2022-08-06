@@ -77,7 +77,7 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 
   loudness->set_post_messages(true);
 
-  self->data->connections.push_back(loudness->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(loudness->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -88,7 +88,7 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
     });
   }));
 
-  self->data->connections.push_back(loudness->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(loudness->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

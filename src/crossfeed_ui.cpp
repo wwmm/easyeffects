@@ -86,7 +86,7 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 
   crossfeed->set_post_messages(true);
 
-  self->data->connections.push_back(crossfeed->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(crossfeed->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -97,7 +97,7 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
     });
   }));
 
-  self->data->connections.push_back(crossfeed->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(crossfeed->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

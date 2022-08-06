@@ -77,7 +77,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   maximizer->set_post_messages(true);
 
-  self->data->connections.push_back(maximizer->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(maximizer->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -88,7 +88,7 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
     });
   }));
 
-  self->data->connections.push_back(maximizer->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(maximizer->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

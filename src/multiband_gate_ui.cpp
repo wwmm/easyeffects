@@ -171,7 +171,7 @@ void setup(MultibandGateBox* self,
     }
   }
 
-  self->data->connections.push_back(multiband_gate->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(multiband_gate->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -182,7 +182,7 @@ void setup(MultibandGateBox* self,
     });
   }));
 
-  self->data->connections.push_back(multiband_gate->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(multiband_gate->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

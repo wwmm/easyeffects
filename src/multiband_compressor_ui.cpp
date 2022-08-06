@@ -172,7 +172,7 @@ void setup(MultibandCompressorBox* self,
   }
 
   self->data->connections.push_back(
-      multiband_compressor->input_level.connect([=](const float& left, const float& right) {
+      multiband_compressor->input_level.connect([=](const float left, const float right) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
@@ -184,7 +184,7 @@ void setup(MultibandCompressorBox* self,
       }));
 
   self->data->connections.push_back(
-      multiband_compressor->output_level.connect([=](const float& left, const float& right) {
+      multiband_compressor->output_level.connect([=](const float left, const float right) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;

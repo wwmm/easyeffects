@@ -148,7 +148,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 
   build_bands(self);
 
-  self->data->connections.push_back(crystalizer->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(crystalizer->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -159,7 +159,7 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
     });
   }));
 
-  self->data->connections.push_back(crystalizer->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(crystalizer->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

@@ -71,7 +71,7 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 
   echo_canceller->set_post_messages(true);
 
-  self->data->connections.push_back(echo_canceller->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(echo_canceller->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -82,7 +82,7 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
     });
   }));
 
-  self->data->connections.push_back(echo_canceller->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(echo_canceller->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

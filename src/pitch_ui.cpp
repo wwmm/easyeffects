@@ -73,7 +73,7 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 
   pitch->set_post_messages(true);
 
-  self->data->connections.push_back(pitch->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(pitch->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -84,7 +84,7 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
     });
   }));
 
-  self->data->connections.push_back(pitch->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(pitch->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

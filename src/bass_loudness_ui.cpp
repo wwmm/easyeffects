@@ -73,7 +73,7 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
 
   bass_loudness->set_post_messages(true);
 
-  self->data->connections.push_back(bass_loudness->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(bass_loudness->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -84,7 +84,7 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
     });
   }));
 
-  self->data->connections.push_back(bass_loudness->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(bass_loudness->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
