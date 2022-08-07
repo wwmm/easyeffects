@@ -19,16 +19,12 @@
 
 #include "loudness_preset.hpp"
 
-LoudnessPreset::LoudnessPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::loudness::id, tags::schema::loudness::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::loudness::id, tags::schema::loudness::output_path);
-      break;
-  }
-}
+LoudnessPreset::LoudnessPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::loudness::id,
+                       tags::schema::loudness::input_path,
+                       tags::schema::loudness::output_path,
+                       preset_type,
+                       index) {}
 
 void LoudnessPreset::save(nlohmann::json& json) {
   json[section]["loudness"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

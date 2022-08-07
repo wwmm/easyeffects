@@ -19,16 +19,12 @@
 
 #include "convolver_preset.hpp"
 
-ConvolverPreset::ConvolverPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::convolver::id, tags::schema::convolver::output_path);
-      break;
-  }
-}
+ConvolverPreset::ConvolverPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::convolver::id,
+                       tags::schema::convolver::input_path,
+                       tags::schema::convolver::output_path,
+                       preset_type,
+                       index) {}
 
 void ConvolverPreset::save(nlohmann::json& json) {
   json[section]["convolver"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

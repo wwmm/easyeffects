@@ -20,16 +20,11 @@
 #include "bass_enhancer_preset.hpp"
 
 BassEnhancerPreset::BassEnhancerPreset(PresetType preset_type, const int& index)
-    : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, tags::schema::bass_enhancer::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::bass_enhancer::id, tags::schema::bass_enhancer::output_path);
-      break;
-  }
-}
+    : PluginPresetBase(tags::schema::bass_enhancer::id,
+                       tags::schema::bass_enhancer::input_path,
+                       tags::schema::bass_enhancer::output_path,
+                       preset_type,
+                       index) {}
 
 void BassEnhancerPreset::save(nlohmann::json& json) {
   json[section]["bass_enhancer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

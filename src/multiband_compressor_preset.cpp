@@ -20,18 +20,11 @@
 #include "multiband_compressor_preset.hpp"
 
 MultibandCompressorPreset::MultibandCompressorPreset(PresetType preset_type, const int& index)
-    : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::multiband_compressor::id,
-                                          tags::schema::multiband_compressor::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::multiband_compressor::id,
-                                          tags::schema::multiband_compressor::output_path);
-      break;
-  }
-}
+    : PluginPresetBase(tags::schema::multiband_compressor::id,
+                       tags::schema::multiband_compressor::input_path,
+                       tags::schema::multiband_compressor::output_path,
+                       preset_type,
+                       index) {}
 
 void MultibandCompressorPreset::save(nlohmann::json& json) {
   json[section]["multiband_compressor"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

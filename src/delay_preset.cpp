@@ -19,16 +19,12 @@
 
 #include "delay_preset.hpp"
 
-DelayPreset::DelayPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::delay::id, tags::schema::delay::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::delay::id, tags::schema::delay::output_path);
-      break;
-  }
-}
+DelayPreset::DelayPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::delay::id,
+                       tags::schema::delay::input_path,
+                       tags::schema::delay::output_path,
+                       preset_type,
+                       index) {}
 
 void DelayPreset::save(nlohmann::json& json) {
   json[section]["delay"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

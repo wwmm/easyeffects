@@ -19,16 +19,12 @@
 
 #include "rnnoise_preset.hpp"
 
-RNNoisePreset::RNNoisePreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::rnnoise::id, tags::schema::rnnoise::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::rnnoise::id, tags::schema::rnnoise::output_path);
-      break;
-  }
-}
+RNNoisePreset::RNNoisePreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::rnnoise::id,
+                       tags::schema::rnnoise::input_path,
+                       tags::schema::rnnoise::output_path,
+                       preset_type,
+                       index) {}
 
 void RNNoisePreset::save(nlohmann::json& json) {
   json[section]["rnnoise"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

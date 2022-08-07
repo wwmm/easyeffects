@@ -19,17 +19,22 @@
 
 #include "plugin_preset_base.hpp"
 
-PluginPresetBase::PluginPresetBase(PresetType preset_type, const int& index) : index(index), preset_type(preset_type) {
+PluginPresetBase::PluginPresetBase(const char* schema_id,
+                                   const char* schema_path_input,
+                                   const char* schema_path_output,
+                                   PresetType preset_type,
+                                   const int& index)
+    : index(index), preset_type(preset_type) {
   switch (preset_type) {
     case PresetType::input:
       section = "input";
 
-      //   settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::input_path);
+      settings = g_settings_new_with_path(schema_id, schema_path_input);
       break;
     case PresetType::output:
       section = "output";
 
-      //   settings = g_settings_new_with_path(tags::schema::autogain::id, tags::schema::autogain::output_path);
+      settings = g_settings_new_with_path(schema_id, schema_path_output);
       break;
   }
 }

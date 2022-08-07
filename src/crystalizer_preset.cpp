@@ -19,16 +19,12 @@
 
 #include "crystalizer_preset.hpp"
 
-CrystalizerPreset::CrystalizerPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::crystalizer::id, tags::schema::crystalizer::output_path);
-      break;
-  }
-}
+CrystalizerPreset::CrystalizerPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::crystalizer::id,
+                       tags::schema::crystalizer::input_path,
+                       tags::schema::crystalizer::output_path,
+                       preset_type,
+                       index) {}
 
 void CrystalizerPreset::save(nlohmann::json& json) {
   json[section]["crystalizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
