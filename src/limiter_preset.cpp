@@ -19,16 +19,12 @@
 
 #include "limiter_preset.hpp"
 
-LimiterPreset::LimiterPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::limiter::id, tags::schema::limiter::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::limiter::id, tags::schema::limiter::output_path);
-      break;
-  }
-}
+LimiterPreset::LimiterPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::limiter::id,
+                       tags::schema::limiter::input_path,
+                       tags::schema::limiter::output_path,
+                       preset_type,
+                       index) {}
 
 void LimiterPreset::save(nlohmann::json& json) {
   json[section]["limiter"]["mode"] = util::gsettings_get_string(settings, "mode");

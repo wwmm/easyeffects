@@ -19,16 +19,12 @@
 
 #include "maximizer_preset.hpp"
 
-MaximizerPreset::MaximizerPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::maximizer::id, tags::schema::maximizer::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::maximizer::id, tags::schema::maximizer::output_path);
-      break;
-  }
-}
+MaximizerPreset::MaximizerPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::maximizer::id,
+                       tags::schema::maximizer::input_path,
+                       tags::schema::maximizer::output_path,
+                       preset_type,
+                       index) {}
 
 void MaximizerPreset::save(nlohmann::json& json) {
   json[section]["maximizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

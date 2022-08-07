@@ -19,16 +19,12 @@
 
 #include "filter_preset.hpp"
 
-FilterPreset::FilterPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::filter::id, tags::schema::filter::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::filter::id, tags::schema::filter::output_path);
-      break;
-  }
-}
+FilterPreset::FilterPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::filter::id,
+                       tags::schema::filter::input_path,
+                       tags::schema::filter::output_path,
+                       preset_type,
+                       index) {}
 
 void FilterPreset::save(nlohmann::json& json) {
   json[section]["filter"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

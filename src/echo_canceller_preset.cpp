@@ -20,16 +20,11 @@
 #include "echo_canceller_preset.hpp"
 
 EchoCancellerPreset::EchoCancellerPreset(PresetType preset_type, const int& index)
-    : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::echo_canceller::id, tags::schema::echo_canceller::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::echo_canceller::id, tags::schema::echo_canceller::output_path);
-      break;
-  }
-}
+    : PluginPresetBase(tags::schema::echo_canceller::id,
+                       tags::schema::echo_canceller::input_path,
+                       tags::schema::echo_canceller::output_path,
+                       preset_type,
+                       index) {}
 
 void EchoCancellerPreset::save(nlohmann::json& json) {
   json[section]["echo_canceller"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

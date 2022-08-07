@@ -19,16 +19,12 @@
 
 #include "reverb_preset.hpp"
 
-ReverbPreset::ReverbPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::reverb::id, tags::schema::reverb::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::reverb::id, tags::schema::reverb::output_path);
-      break;
-  }
-}
+ReverbPreset::ReverbPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::reverb::id,
+                       tags::schema::reverb::input_path,
+                       tags::schema::reverb::output_path,
+                       preset_type,
+                       index) {}
 
 void ReverbPreset::save(nlohmann::json& json) {
   json[section]["reverb"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

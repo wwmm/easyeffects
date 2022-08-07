@@ -20,16 +20,11 @@
 #include "bass_loudness_preset.hpp"
 
 BassLoudnessPreset::BassLoudnessPreset(PresetType preset_type, const int& index)
-    : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::bass_loudness::id, tags::schema::bass_loudness::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::bass_loudness::id, tags::schema::bass_loudness::output_path);
-      break;
-  }
-}
+    : PluginPresetBase(tags::schema::bass_loudness::id,
+                       tags::schema::bass_loudness::input_path,
+                       tags::schema::bass_loudness::output_path,
+                       preset_type,
+                       index) {}
 
 void BassLoudnessPreset::save(nlohmann::json& json) {
   json[section]["bass_loudness"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
