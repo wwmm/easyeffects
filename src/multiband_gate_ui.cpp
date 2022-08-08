@@ -41,8 +41,6 @@ struct Data {
 struct _MultibandGateBox {
   GtkBox parent_instance;
 
-  AdwToastOverlay* toast_overlay;
-
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -355,7 +353,6 @@ void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::multiband_gate_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, toast_overlay);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, input_level_left);

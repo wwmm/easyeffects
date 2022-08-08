@@ -41,8 +41,6 @@ struct Data {
 struct _MultibandCompressorBox {
   GtkBox parent_instance;
 
-  AdwToastOverlay* toast_overlay;
-
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -171,17 +169,16 @@ void setup(MultibandCompressorBox* self,
     }
   }
 
-  self->data->connections.push_back(
-      multiband_compressor->input_level.connect([=](const float left, const float right) {
-        util::idle_add([=]() {
-          if (get_ignore_filter_idle_add(serial)) {
-            return;
-          }
+  self->data->connections.push_back(multiband_compressor->input_level.connect([=](const float left, const float right) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
 
-          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                       self->input_level_right_label, left, right);
-        });
-      }));
+      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                   self->input_level_right_label, left, right);
+    });
+  }));
 
   self->data->connections.push_back(
       multiband_compressor->output_level.connect([=](const float left, const float right) {
@@ -347,7 +344,6 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::multiband_compressor_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, toast_overlay);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_level_left);

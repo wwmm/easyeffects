@@ -37,8 +37,6 @@ struct Data {
 struct _DelayBox {
   GtkBox parent_instance;
 
-  AdwToastOverlay* toast_overlay;
-
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -162,7 +160,6 @@ void delay_box_class_init(DelayBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::delay_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, DelayBox, toast_overlay);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, input_level_left);

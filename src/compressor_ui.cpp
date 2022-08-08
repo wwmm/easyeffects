@@ -37,8 +37,6 @@ struct Data {
 struct _CompressorBox {
   GtkBox parent_instance;
 
-  AdwToastOverlay* toast_overlay;
-
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -372,7 +370,6 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::compressor_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, CompressorBox, toast_overlay);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, input_level_left);

@@ -37,8 +37,6 @@ struct Data {
 struct _GateBox {
   GtkBox parent_instance;
 
-  AdwToastOverlay* toast_overlay;
-
   GtkScale *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
@@ -430,7 +428,6 @@ void gate_box_class_init(GateBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::gate_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, GateBox, toast_overlay);
   gtk_widget_class_bind_template_child(widget_class, GateBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, GateBox, input_level_left);
