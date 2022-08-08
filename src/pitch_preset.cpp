@@ -19,16 +19,12 @@
 
 #include "pitch_preset.hpp"
 
-PitchPreset::PitchPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::pitch::id, tags::schema::pitch::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::pitch::id, tags::schema::pitch::output_path);
-      break;
-  }
-}
+PitchPreset::PitchPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::pitch::id,
+                       tags::schema::pitch::input_path,
+                       tags::schema::pitch::output_path,
+                       preset_type,
+                       index) {}
 
 void PitchPreset::save(nlohmann::json& json) {
   json[section]["pitch"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;

@@ -29,7 +29,11 @@
 
 class PluginPresetBase {
  public:
-  PluginPresetBase(PresetType preset_type, const int& index);
+  PluginPresetBase(const char* schema_id,
+                   const char* schema_path_input,
+                   const char* schema_path_output,
+                   PresetType preset_type,
+                   const int& index);
   PluginPresetBase(const PluginPresetBase&) = delete;
   auto operator=(const PluginPresetBase&) -> PluginPresetBase& = delete;
   PluginPresetBase(const PluginPresetBase&&) = delete;

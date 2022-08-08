@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-04 19:58+0200\n"
-"PO-Revision-Date: 2022-07-15 14:19+0000\n"
-"Last-Translator: Florian Schaupp <fschaupp@hotmail.com>\n"
+"PO-Revision-Date: 2022-08-07 22:16+0000\n"
+"Last-Translator: Florian Otti <otti.florian@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -42,7 +42,7 @@ msgstr "\"Voreinstellungen\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Anwendung aktivieren/deaktivieren"
 
 #: data/ui/app_info.ui:213
 msgid "Enable"
@@ -50,7 +50,7 @@ msgstr "Aktiviert"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Liste der ausgeschlossenen Anwendungen: Anwendung hinzufügen/entfernen"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -62,7 +62,7 @@ msgstr "Anwendung stummschalten"
 
 #: data/ui/app_info.ui:272
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "Lautstärke der Anwendung anpassen"
 
 #: data/ui/app_info.ui:274
 msgid "Application Volume"
@@ -100,7 +100,7 @@ msgstr "Voreinstellungs-Menü"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "Globale Umleitung aktivieren/deaktivieren"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -321,12 +321,11 @@ msgstr "Bereich"
 
 #: data/ui/bass_enhancer.ui:200
 msgid "Floor"
-msgstr "Boden"
+msgstr "Untere Grenze"
 
 #: data/ui/bass_enhancer.ui:229
-#, fuzzy
 msgid "Floor Value"
-msgstr "untere Grenze"
+msgstr "Unterer Grenzwert"
 
 #: data/ui/bass_loudness.ui:87
 msgid "Link"

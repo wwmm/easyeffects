@@ -19,16 +19,12 @@
 
 #include "stereo_tools_preset.hpp"
 
-StereoToolsPreset::StereoToolsPreset(PresetType preset_type, const int& index) : PluginPresetBase(preset_type, index) {
-  switch (preset_type) {
-    case PresetType::input:
-      settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::input_path);
-      break;
-    case PresetType::output:
-      settings = g_settings_new_with_path(tags::schema::stereo_tools::id, tags::schema::stereo_tools::output_path);
-      break;
-  }
-}
+StereoToolsPreset::StereoToolsPreset(PresetType preset_type, const int& index)
+    : PluginPresetBase(tags::schema::stereo_tools::id,
+                       tags::schema::stereo_tools::input_path,
+                       tags::schema::stereo_tools::output_path,
+                       preset_type,
+                       index) {}
 
 void StereoToolsPreset::save(nlohmann::json& json) {
   json[section]["stereo_tools"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
