@@ -215,7 +215,7 @@ void update_level(GtkLevelBar* w_left,
     return;
   }
 
-  if (left >= -99.0) {
+  if (left >= -99.0F) {
     // Level bar widget needs double value
     const auto linear_value = static_cast<double>(std::clamp(util::db_to_linear(left), 0.0F, 1.0F));
 
@@ -226,7 +226,7 @@ void update_level(GtkLevelBar* w_left,
     gtk_label_set_text(w_left_label, "-99");
   }
 
-  if (right >= -99.0) {
+  if (right >= -99.0F) {
     // Level bar widget needs double value
     const auto linear_value = static_cast<double>(std::clamp(util::db_to_linear(right), 0.0F, 1.0F));
 
