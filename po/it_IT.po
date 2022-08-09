@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-09 01:10-0300\n"
-"PO-Revision-Date: 2022-08-02 17:17+0000\n"
+"PO-Revision-Date: 2022-08-09 23:20+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -859,14 +859,12 @@ msgid "Balance"
 msgstr "Bilanciamento"
 
 #: data/ui/equalizer.ui:123
-#, fuzzy
 msgid "Pitch Left"
-msgstr "Sidechain Sinistro"
+msgstr "Tono Sinistro"
 
 #: data/ui/equalizer.ui:156
-#, fuzzy
 msgid "Pitch Right"
-msgstr "Sidechain Destro"
+msgstr "Tono Destro"
 
 #: data/ui/equalizer.ui:251
 msgid "Split Channels"
@@ -1276,11 +1274,11 @@ msgstr "Volume Uscita"
 
 #: data/ui/loudness.ui:127
 msgid "Clipping"
-msgstr ""
+msgstr "Clipping"
 
 #: data/ui/loudness.ui:155
 msgid "Clipping Range"
-msgstr ""
+msgstr "Livello Clipping"
 
 #: data/ui/maximizer.ui:63
 msgid "Ceiling"
@@ -2318,12 +2316,12 @@ msgstr "Strumenti Stereo"
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:70
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} Non Installato sul Sistema"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:73
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} Non Disponibile"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at
