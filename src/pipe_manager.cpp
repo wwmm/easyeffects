@@ -1584,6 +1584,10 @@ void PipeManager::connect_stream_input(const uint& id) const {
 void PipeManager::set_metadata_target_node(const uint& origin_id,
                                            const uint& target_id,
                                            const uint64_t& target_serial) const {
+  if (metadata == nullptr) {
+    return;
+  }
+
   lock();
 
   // target.node for backward compatibility with old PW session managers
@@ -1594,6 +1598,10 @@ void PipeManager::set_metadata_target_node(const uint& origin_id,
 }
 
 void PipeManager::disconnect_stream(const uint& stream_id) const {
+  if (metadata == nullptr) {
+    return;
+  }
+
   lock();
 
   // target.node for backward compatibility with old PW session managers
