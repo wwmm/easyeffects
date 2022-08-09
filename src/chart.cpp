@@ -344,7 +344,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
   if (const auto n_points = self->data->y_axis.size(); n_points > 0) {
     float usable_width = width_f - 2.0F * (self->data->line_width + self->data->margin * width_f);
 
-    auto usable_height = static_cast<int>(height_f - self->data->margin * height_f) - self->data->x_axis_height;
+    auto usable_height = (height_f - self->data->margin * height_f) - self->data->x_axis_height;
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
@@ -379,10 +379,10 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         float dw = width_f / static_cast<float>(n_points);
 
         for (uint n = 0U; n < n_points; n++) {
-          float bar_height = static_cast<float>(usable_height) * self->data->y_axis[n];
+          float bar_height = usable_height * self->data->y_axis[n];
 
           float rect_x = self->data->objects_x[n];
-          float rect_y = self->data->margin * height_f + static_cast<float>(usable_height) - bar_height;
+          float rect_y = self->data->margin * height_f + usable_height - bar_height;
           float rect_height = bar_height;
           float rect_width = dw;
 
@@ -415,10 +415,10 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         usable_height -= radius;  // this avoids the dots being drawn over the axis label
 
         for (uint n = 0U; n < n_points; n++) {
-          float dot_y = static_cast<float>(usable_height) * self->data->y_axis[n];
+          float dot_y = usable_height * self->data->y_axis[n];
 
           float rect_x = self->data->objects_x[n];
-          float rect_y = self->data->margin * height_f + radius + static_cast<float>(usable_height) - dot_y;
+          float rect_y = self->data->margin * height_f + radius + usable_height - dot_y;
           float rect_width = dw;
 
           if (self->data->draw_bar_border) {
