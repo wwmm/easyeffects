@@ -444,35 +444,33 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
       case ChartType::line: {
         auto* ctx = gtk_snapshot_append_cairo(snapshot, &widget_rectangle);
 
-        cairo_set_source_rgba(ctx, self->data->color.red, self->data->color.green, self->data->color.blue,
-                              self->data->color.alpha);
+        cairo_set_source_rgba(ctx, static_cast<double>(self->data->color.red),
+                              static_cast<double>(self->data->color.green), static_cast<double>(self->data->color.blue),
+                              static_cast<double>(self->data->color.alpha));
 
         if (self->data->fill_bars) {
-          cairo_move_to(ctx, self->data->margin * width,
-                        self->data->margin * height + static_cast<float>(usable_height));
+          cairo_move_to(ctx, static_cast<double>(self->data->margin * width),
+                        static_cast<double>(self->data->margin * height + usable_height));
         } else {
-          const double point_height =
-              static_cast<double>(self->data->y_axis.front()) * static_cast<double>(usable_height);
+          const auto point_height = self->data->y_axis.front() * usable_height;
 
-          cairo_move_to(
-              ctx, self->data->objects_x.front(),
-              self->data->margin * static_cast<double>(height) + static_cast<double>(usable_height) - point_height);
+          cairo_move_to(ctx, static_cast<double>(self->data->objects_x.front()),
+                        static_cast<double>(self->data->margin * height + usable_height - point_height));
         }
 
         for (uint n = 0U; n < n_points - 1U; n++) {
-          const double next_point_height =
-              static_cast<double>(self->data->y_axis[n + 1]) * static_cast<double>(usable_height);
+          const auto next_point_height = self->data->y_axis[n + 1U] * usable_height;
 
-          cairo_line_to(ctx, self->data->objects_x[n + 1],
-                        self->data->margin * height + static_cast<double>(usable_height) - next_point_height);
+          cairo_line_to(ctx, static_cast<double>(self->data->objects_x[n + 1U]),
+                        static_cast<double>(self->data->margin * height + usable_height - next_point_height));
         }
 
         if (self->data->fill_bars) {
-          cairo_line_to(ctx, self->data->objects_x.back(),
-                        self->data->margin * height + static_cast<float>(usable_height));
+          cairo_line_to(ctx, static_cast<double>(self->data->objects_x.back()),
+                        static_cast<double>(self->data->margin * height + usable_height));
 
-          cairo_move_to(ctx, self->data->objects_x.back(),
-                        self->data->margin * height + static_cast<float>(usable_height));
+          cairo_move_to(ctx, static_cast<double>(self->data->objects_x.back()),
+                        static_cast<double>(self->data->margin * height + usable_height));
 
           cairo_close_path(ctx);
         }
