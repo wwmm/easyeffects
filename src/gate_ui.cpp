@@ -133,7 +133,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     }
   }
 
-  self->data->connections.push_back(gate->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(gate->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -144,7 +144,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(gate->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -155,7 +155,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->attack_zone_start.connect([=](const double& value) {
+  self->data->connections.push_back(gate->attack_zone_start.connect([=](const float value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -170,7 +170,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->attack_threshold.connect([=](const double& value) {
+  self->data->connections.push_back(gate->attack_threshold.connect([=](const float value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -185,7 +185,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->release_zone_start.connect([=](const double& value) {
+  self->data->connections.push_back(gate->release_zone_start.connect([=](const float value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -200,7 +200,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->release_threshold.connect([=](const double& value) {
+  self->data->connections.push_back(gate->release_threshold.connect([=](const float value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -215,7 +215,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->reduction.connect([=](const double& value) {
+  self->data->connections.push_back(gate->reduction.connect([=](const float value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -230,7 +230,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->gating.connect([=](const double& value) {
+  self->data->connections.push_back(gate->gating.connect([=](const double value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -244,7 +244,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->envelope.connect([=](const double& value) {
+  self->data->connections.push_back(gate->envelope.connect([=](const float value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -258,7 +258,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->sidechain.connect([=](const double& value) {
+  self->data->connections.push_back(gate->sidechain.connect([=](const float value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -272,7 +272,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     });
   }));
 
-  self->data->connections.push_back(gate->curve.connect([=](const double& value) {
+  self->data->connections.push_back(gate->curve.connect([=](const float value) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

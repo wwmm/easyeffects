@@ -58,8 +58,6 @@ struct Data {
 struct _EqualizerBox {
   GtkBox parent_instance;
 
-  GtkOverlay* overlay;
-
   AdwToastOverlay* toast_overlay;
 
   GtkScale *input_gain, *output_gain;
@@ -475,7 +473,7 @@ void setup(EqualizerBox* self,
 
   build_all_bands(self);
 
-  self->data->connections.push_back(equalizer->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(equalizer->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -486,7 +484,7 @@ void setup(EqualizerBox* self,
     });
   }));
 
-  self->data->connections.push_back(equalizer->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(equalizer->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -584,9 +582,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::equalizer_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, overlay);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, toast_overlay);
-
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, input_level_left);

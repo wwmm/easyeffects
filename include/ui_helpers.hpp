@@ -30,6 +30,7 @@
 #include <string>
 #include "string_literal_wrapper.hpp"
 #include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 namespace ui {
@@ -37,10 +38,13 @@ namespace ui {
 void show_fixed_toast(AdwToastOverlay* toast_overlay,
                       const std::string& text,
                       const AdwToastPriority& priority = ADW_TOAST_PRIORITY_HIGH);
+
 void show_autohiding_toast(AdwToastOverlay* toast_overlay,
                            const std::string& text,
                            const uint& timeout = 5U,
                            const AdwToastPriority& priority = ADW_TOAST_PRIORITY_HIGH);
+
+auto missing_plugin_box(const std::string& name, const std::string& package) -> GtkWidget*;
 
 void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr);
 

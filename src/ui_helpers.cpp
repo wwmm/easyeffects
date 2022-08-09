@@ -65,6 +65,38 @@ void show_fixed_toast(AdwToastOverlay* toast_overlay, const std::string& text, c
   show_autohiding_toast(toast_overlay, text, 0U, priority);
 }
 
+auto missing_plugin_box(const std::string& name, const std::string& package) -> GtkWidget* {
+  // For translators: {} is replaced by the effect name.
+  const auto format_title = fmt::runtime(_("{} Is Not Installed On The System"));
+
+  // For translators: {} is replaced by the package name.
+  const auto format_descr = fmt::runtime(_("{} Not Available"));
+
+  std::string translated_name;
+
+  try {
+    translated_name = tags::plugin_name::get_translated().at(name);
+  } catch (...) {
+  }
+
+  auto* status_page = adw_status_page_new();
+
+  adw_status_page_set_icon_name(ADW_STATUS_PAGE(status_page), "emblem-music-symbolic");
+  adw_status_page_set_title(ADW_STATUS_PAGE(status_page), fmt::format(format_title, translated_name).c_str());
+  adw_status_page_set_description(ADW_STATUS_PAGE(status_page), fmt::format(format_descr, package).c_str());
+
+  auto* box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+
+  gtk_widget_set_margin_start(box, 6);
+  gtk_widget_set_margin_end(box, 6);
+  gtk_widget_set_margin_bottom(box, 6);
+  gtk_widget_set_margin_top(box, 6);
+
+  gtk_box_append(GTK_BOX(box), status_page);
+
+  return box;
+}
+
 void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr) {
   if (parent == nullptr) {
     return;
@@ -183,28 +215,22 @@ void update_level(GtkLevelBar* w_left,
     return;
   }
 
-  if (auto db_value = util::db_to_linear(left); left >= -99.0) {
-    if (db_value < 0.0) {
-      db_value = 0.0;
-    } else if (db_value > 1.0) {
-      db_value = 1.0;
-    }
+  if (left >= -99.0) {
+    // Level bar widget needs double value
+    const auto linear_value = static_cast<double>(std::clamp(util::db_to_linear(left), 0.0F, 1.0F));
 
-    gtk_level_bar_set_value(w_left, db_value);
+    gtk_level_bar_set_value(w_left, linear_value);
     gtk_label_set_text(w_left_label, fmt::format("{0:.0f}", left).c_str());
   } else {
     gtk_level_bar_set_value(w_left, 0.0);
     gtk_label_set_text(w_left_label, "-99");
   }
 
-  if (auto db_value = util::db_to_linear(right); right >= -99.0) {
-    if (db_value < 0.0) {
-      db_value = 0.0;
-    } else if (db_value > 1.0) {
-      db_value = 1.0;
-    }
+  if (right >= -99.0) {
+    // Level bar widget needs double value
+    const auto linear_value = static_cast<double>(std::clamp(util::db_to_linear(right), 0.0F, 1.0F));
 
-    gtk_level_bar_set_value(w_right, db_value);
+    gtk_level_bar_set_value(w_right, linear_value);
     gtk_label_set_text(w_right_label, fmt::format("{0:.0f}", right).c_str());
   } else {
     gtk_level_bar_set_value(w_right, 0.0);

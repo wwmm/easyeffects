@@ -45,7 +45,8 @@ class Gate : public PluginBase {
   void update_probe_links() override;
 
   sigc::signal<void(const float)> attack_zone_start, attack_threshold, release_zone_start, release_threshold, reduction,
-      sidechain, curve, envelope, gating;
+      sidechain, curve, envelope;
+  sigc::signal<void(const double)> gating;
 
   float attack_zone_start_port_value = 0.0F;
   float attack_threshold_port_value = 0.0F;
@@ -55,8 +56,8 @@ class Gate : public PluginBase {
   float sidechain_port_value = 0.0F;
   float curve_port_value = 0.0F;
   float envelope_port_value = 0.0F;
-  float gating_port_value = 0.0F;
   float latency_port_value = 0.0F;
+  double gating_port_value = 0.0F;
 
  private:
   uint latency_n_frames = 0U;

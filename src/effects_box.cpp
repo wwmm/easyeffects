@@ -317,7 +317,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   // output level
 
   self->data->connections.push_back(
-      self->data->effects_base->output_level->output_level.connect([=](const float& left, const float& right) {
+      self->data->effects_base->output_level->output_level.connect([=](const float left, const float right) {
         self->data->global_output_level_left = left;
         self->data->global_output_level_right = right;
 

@@ -23,7 +23,7 @@ Spectrum::Spectrum(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
-    : PluginBase(tag, "spectrum", schema, schema_path, pipe_manager) {
+    : PluginBase(tag, "spectrum", tags::plugin_package::ee, schema, schema_path, pipe_manager) {
   real_input.resize(n_bands);
   output.resize(n_bands / 2U + 1U);
 

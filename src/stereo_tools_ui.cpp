@@ -75,7 +75,7 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 
   stereo_tools->set_post_messages(true);
 
-  self->data->connections.push_back(stereo_tools->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(stereo_tools->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -86,7 +86,7 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
     });
   }));
 
-  self->data->connections.push_back(stereo_tools->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(stereo_tools->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;

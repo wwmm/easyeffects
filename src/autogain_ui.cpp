@@ -85,7 +85,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   autogain->set_post_messages(true);
 
-  self->data->connections.push_back(autogain->input_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(autogain->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -96,7 +96,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
     });
   }));
 
-  self->data->connections.push_back(autogain->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(autogain->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -108,8 +108,8 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
   }));
 
   self->data->connections.push_back(autogain->results.connect(
-      [=](const double& loudness, const double& gain, const double& momentary, const double& shortterm,
-          const double& integrated, const double& relative, const double& range) {
+      [=](const double loudness, const double gain, const double momentary, const double shortterm,
+          const double integrated, const double relative, const double range) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;

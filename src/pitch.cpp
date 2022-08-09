@@ -23,7 +23,7 @@ Pitch::Pitch(const std::string& tag,
              const std::string& schema,
              const std::string& schema_path,
              PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::pitch, schema, schema_path, pipe_manager) {
+    : PluginBase(tag, tags::plugin_name::pitch, tags::plugin_package::rubber, schema, schema_path, pipe_manager) {
   mode = parse_mode_key(util::gsettings_get_string(settings, "mode"));
   formant = parse_formant_key(util::gsettings_get_string(settings, "formant"));
   transients = parse_transients_key(util::gsettings_get_string(settings, "transients"));

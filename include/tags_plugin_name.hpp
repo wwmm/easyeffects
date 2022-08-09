@@ -24,6 +24,32 @@
 #include <iostream>
 #include <map>
 
+namespace tags::plugin_package {
+
+inline constexpr auto bs2b = "bs2b";
+
+inline constexpr auto calf = "Calf Studio Gear";
+
+inline constexpr auto ebur128 = "libebur128";
+
+inline constexpr auto ee = "EasyEffects";
+
+inline constexpr auto lsp = "Linux Studio Plugins";
+
+inline constexpr auto mda = "MDA";
+
+inline constexpr auto rnnoise = "RNNoise";
+
+inline constexpr auto rubber = "Rubber Band";
+
+inline constexpr auto speex = "SpeexDSP";
+
+inline constexpr auto zam = "ZamAudio";
+
+inline constexpr auto zita = "Zita";
+
+}  // namespace tags::plugin_package
+
 namespace tags::plugin_name {
 
 inline constexpr auto autogain = "autogain";

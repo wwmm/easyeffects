@@ -51,8 +51,6 @@ struct Data {
 struct _RNNoiseBox {
   GtkBox parent_instance;
 
-  GtkOverlay* overlay;
-
   AdwToastOverlay* toast_overlay;
 
   GtkScale *input_gain, *output_gain;
@@ -196,10 +194,17 @@ void setup(RNNoiseBox* self,
 
   setup_listview(self);
 
-  self->data->connections.push_back(rnnoise->model_changed.connect(
-      [=](const bool load_error) { util::idle_add([=]() { update_model_state(self, load_error); }); }));
+  self->data->connections.push_back(rnnoise->model_changed.connect([=](const bool load_error) {
+    util::idle_add([=]() {
+      if (get_ignore_filter_idle_add(serial)) {
+        return;
+      }
 
-  self->data->connections.push_back(rnnoise->input_level.connect([=](const float& left, const float& right) {
+      update_model_state(self, load_error);
+    });
+  }));
+
+  self->data->connections.push_back(rnnoise->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -210,7 +215,7 @@ void setup(RNNoiseBox* self,
     });
   }));
 
-  self->data->connections.push_back(rnnoise->output_level.connect([=](const float& left, const float& right) {
+  self->data->connections.push_back(rnnoise->output_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
       if (get_ignore_filter_idle_add(serial)) {
         return;
@@ -327,9 +332,7 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::rnnoise_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, overlay);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, toast_overlay);
-
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_gain);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_gain);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, input_level_left);

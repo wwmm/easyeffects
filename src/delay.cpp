@@ -23,9 +23,11 @@ Delay::Delay(const std::string& tag,
              const std::string& schema,
              const std::string& schema_path,
              PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::delay, schema, schema_path, pipe_manager),
+    : PluginBase(tag, tags::plugin_name::delay, tags::plugin_package::lsp, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo")) {
-  if (!lv2_wrapper->found_plugin) {
+  package_installed = lv2_wrapper->found_plugin;
+
+  if (!package_installed) {
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo is not installed");
   }
 
