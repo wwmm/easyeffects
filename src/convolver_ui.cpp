@@ -99,7 +99,7 @@ void plot_fft(ConvolverBox* self) {
 
   ui::chart::set_chart_type(self->chart, ui::chart::ChartType::line);
   ui::chart::set_fill_bars(self->chart, false);
-  ui::chart::set_line_width(self->chart, 2.0);
+  ui::chart::set_line_width(self->chart, 2.0F);
   ui::chart::set_n_x_decimals(self->chart, 0);
   ui::chart::set_n_y_decimals(self->chart, 2);
   ui::chart::set_x_unit(self->chart, "Hz");
@@ -127,7 +127,7 @@ void plot_waveform(ConvolverBox* self) {
   ui::chart::set_chart_type(self->chart, ui::chart::ChartType::line);
   ui::chart::set_chart_scale(self->chart, ui::chart::ChartScale::linear);
   ui::chart::set_fill_bars(self->chart, false);
-  ui::chart::set_line_width(self->chart, 2.0);
+  ui::chart::set_line_width(self->chart, 2.0F);
   ui::chart::set_n_x_decimals(self->chart, 2);
   ui::chart::set_n_y_decimals(self->chart, 2);
   ui::chart::set_x_unit(self->chart, "s");

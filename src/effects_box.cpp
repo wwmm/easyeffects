@@ -128,7 +128,8 @@ void setup_spectrum(EffectsBox* self) {
   ui::chart::set_draw_bar_border(self->spectrum_chart,
                                  g_settings_get_boolean(self->settings_spectrum, "show-bar-border") != 0);
 
-  ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, "line-width"));
+  ui::chart::set_line_width(self->spectrum_chart,
+                            static_cast<float>(g_settings_get_double(self->settings_spectrum, "line-width")));
 
   ui::chart::set_chart_scale(self->spectrum_chart, ui::chart::ChartScale::logarithmic);
 
@@ -138,7 +139,7 @@ void setup_spectrum(EffectsBox* self) {
   ui::chart::set_n_x_decimals(self->spectrum_chart, 0);
   ui::chart::set_n_y_decimals(self->spectrum_chart, 1);
 
-  ui::chart::set_margin(self->spectrum_chart, 0);
+  ui::chart::set_margin(self->spectrum_chart, 0.0F);
 
   gtk_widget_set_size_request(GTK_WIDGET(self->spectrum_chart), -1,
                               g_settings_get_int(self->settings_spectrum, "height"));
@@ -190,7 +191,8 @@ void setup_spectrum(EffectsBox* self) {
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::line-width", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        ui::chart::set_line_width(self->spectrum_chart, g_settings_get_double(self->settings_spectrum, key));
+        ui::chart::set_line_width(self->spectrum_chart,
+                                  static_cast<float>(g_settings_get_double(self->settings_spectrum, key)));
       }),
       self));
 

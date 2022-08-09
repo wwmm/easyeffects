@@ -60,7 +60,7 @@ void set_color(Chart* self, GdkRGBA color);
 
 void set_axis_labels_color(Chart* self, GdkRGBA color);
 
-void set_line_width(Chart* self, const double& value);
+void set_line_width(Chart* self, const float& value);
 
 void set_draw_bar_border(Chart* self, const bool& v);
 
@@ -76,7 +76,7 @@ void set_x_unit(Chart* self, const std::string& value);
 
 void set_y_unit(Chart* self, const std::string& value);
 
-void set_margin(Chart* self, const double& v);
+void set_margin(Chart* self, const float& v);
 
 auto get_is_visible(Chart* self) -> bool;
 

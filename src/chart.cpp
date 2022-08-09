@@ -31,11 +31,11 @@ struct Data {
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
-  double mouse_y, mouse_x, margin, line_width;
+  float mouse_y, mouse_x, margin, line_width;
 
-  double x_min, x_max, y_min, y_max;
+  float x_min, x_max, y_min, y_max;
 
-  double x_min_log, x_max_log;
+  float x_min_log, x_max_log;
 
   ChartType chart_type;
 
@@ -78,7 +78,7 @@ void set_axis_labels_color(Chart* self, GdkRGBA color) {
   self->data->color_axis_labels = color;
 }
 
-void set_line_width(Chart* self, const double& value) {
+void set_line_width(Chart* self, const float& value) {
   self->data->line_width = value;
 }
 
@@ -110,7 +110,7 @@ void set_y_unit(Chart* self, const std::string& value) {
   self->data->y_unit = value;
 }
 
-void set_margin(Chart* self, const double& v) {
+void set_margin(Chart* self, const float& v) {
   self->data->margin = v;
 }
 
@@ -171,9 +171,13 @@ void set_y_data(Chart* self, const std::vector<float>& y) {
   gtk_widget_queue_draw(GTK_WIDGET(self));
 }
 
-void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y, Chart* self) {
-  const int width = gtk_widget_get_allocated_width(GTK_WIDGET(self));
-  const int height = gtk_widget_get_allocated_height(GTK_WIDGET(self));
+void on_pointer_motion(GtkEventControllerMotion* controller, double xpos, double ypos, Chart* self) {
+  // Static cast trying to fix codeql issue
+  const auto x = static_cast<float>(xpos);
+  const auto y = static_cast<float>(ypos);
+
+  const auto width = static_cast<float>(gtk_widget_get_allocated_width(GTK_WIDGET(self)));
+  const auto height = static_cast<float>(gtk_widget_get_allocated_height(GTK_WIDGET(self)));
 
   const auto usable_height = height - self->data->margin * height - self->data->x_axis_height;
 
@@ -186,11 +190,11 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y,
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
-        const double& mouse_x_log = (x - self->data->margin * width) / width -
-                                    2 * self->data->margin * width * (self->data->x_max_log - self->data->x_min_log) +
-                                    self->data->x_min_log;
+        const float mouse_x_log = (x - self->data->margin * width) / width -
+                                  2 * self->data->margin * width * (self->data->x_max_log - self->data->x_min_log) +
+                                  self->data->x_min_log;
 
-        self->data->mouse_x = std::pow(10.0, mouse_x_log);  // exp10 does not exist on FreeBSD
+        self->data->mouse_x = std::pow(10.0F, mouse_x_log);  // exp10 does not exist on FreeBSD
 
         break;
       }
@@ -234,7 +238,7 @@ auto draw_unit(Chart* self, GtkSnapshot* snapshot, const int& width, const int& 
 }
 
 auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const int& height) -> int {
-  double labels_offset = 0.1 * width;
+  float labels_offset = 0.1F * width;
 
   int n_x_labels = static_cast<int>(std::ceil((width - 2 * self->data->margin * width) / labels_offset)) + 1;
 
@@ -246,7 +250,7 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
     Correcting the offset based on the final n_x_labels value
   */
 
-  labels_offset = (width - 2 * self->data->margin * width) / static_cast<float>(n_x_labels - 1);
+  labels_offset = (width - 2.0F * self->data->margin * width) / static_cast<float>(n_x_labels - 1);
 
   std::vector<float> labels;
 
@@ -271,7 +275,7 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
     at window borders.
   */
 
-  for (size_t n = 0U; n < labels.size() - 1; n++) {
+  for (size_t n = 0U; n < labels.size() - 1U; n++) {
     const auto msg = fmt::format(ui::get_user_locale(), " {0:.{1}Lf} ", labels[n], self->data->n_x_decimals);
 
     auto* layout = gtk_widget_create_pango_layout(GTK_WIDGET(self), msg.c_str());
@@ -288,8 +292,8 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
 
     gtk_snapshot_save(snapshot);
 
-    auto point = GRAPHENE_POINT_INIT(static_cast<float>(self->data->margin * width + n * labels_offset),
-                                     static_cast<float>(height - text_height));
+    auto point =
+        GRAPHENE_POINT_INIT(self->data->margin * width + n * labels_offset, static_cast<float>(height - text_height));
 
     gtk_snapshot_translate(snapshot, &point);
 
@@ -327,23 +331,26 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
     }
   }
 
-  int width = gtk_widget_get_width(widget);
-  int height = gtk_widget_get_height(widget);
+  auto width = gtk_widget_get_width(widget);
+  auto height = gtk_widget_get_height(widget);
 
-  auto widget_rectangle = GRAPHENE_RECT_INIT(0.0F, 0.0F, static_cast<float>(width), static_cast<float>(height));
+  auto width_f = static_cast<float>(width);
+  auto height_f = static_cast<float>(height);
+
+  auto widget_rectangle = GRAPHENE_RECT_INIT(0.0F, 0.0F, width_f, height_f);
 
   gtk_snapshot_append_color(snapshot, &self->data->background_color, &widget_rectangle);
 
   if (const auto n_points = self->data->y_axis.size(); n_points > 0) {
-    double usable_width = width - 2 * (self->data->line_width + self->data->margin * width);
+    float usable_width = width_f - 2.0F * (self->data->line_width + self->data->margin * width_f);
 
-    int usable_height = static_cast<int>(height - self->data->margin * height) - self->data->x_axis_height;
+    auto usable_height = (height_f - self->data->margin * height_f) - self->data->x_axis_height;
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
         for (size_t n = 0; n < n_points; n++) {
           self->data->objects_x[n] =
-              usable_width * self->data->x_axis_log[n] + self->data->line_width + self->data->margin * width;
+              usable_width * self->data->x_axis_log[n] + self->data->line_width + self->data->margin * width_f;
         }
 
         break;
@@ -351,7 +358,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
       case ChartScale::linear: {
         for (size_t n = 0; n < n_points; n++) {
           self->data->objects_x[n] =
-              usable_width * self->data->x_axis[n] + self->data->line_width + self->data->margin * width;
+              usable_width * self->data->x_axis[n] + self->data->line_width + self->data->margin * width_f;
         }
 
         break;
@@ -363,20 +370,19 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
     auto border_color = std::to_array({self->data->color, self->data->color, self->data->color, self->data->color});
 
     auto border_width =
-        std::to_array({static_cast<float>(self->data->line_width), static_cast<float>(self->data->line_width),
-                       static_cast<float>(self->data->line_width), static_cast<float>(self->data->line_width)});
+        std::to_array({self->data->line_width, self->data->line_width, self->data->line_width, self->data->line_width});
 
     float radius = (self->data->rounded_corners == true) ? 5.0F : 0.0F;
 
     switch (self->data->chart_type) {
       case ChartType::bar: {
-        float dw = static_cast<float>(width) / static_cast<float>(n_points);
+        float dw = width_f / static_cast<float>(n_points);
 
         for (uint n = 0U; n < n_points; n++) {
-          float bar_height = static_cast<float>(usable_height) * self->data->y_axis[n];
+          float bar_height = usable_height * self->data->y_axis[n];
 
           float rect_x = self->data->objects_x[n];
-          float rect_y = self->data->margin * height + static_cast<float>(usable_height) - bar_height;
+          float rect_y = self->data->margin * height_f + usable_height - bar_height;
           float rect_height = bar_height;
           float rect_width = dw;
 
@@ -404,15 +410,15 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         break;
       }
       case ChartType::dots: {
-        float dw = static_cast<float>(width) / static_cast<float>(n_points);
+        float dw = width_f / static_cast<float>(n_points);
 
         usable_height -= radius;  // this avoids the dots being drawn over the axis label
 
         for (uint n = 0U; n < n_points; n++) {
-          float dot_y = static_cast<float>(usable_height) * self->data->y_axis[n];
+          float dot_y = usable_height * self->data->y_axis[n];
 
           float rect_x = self->data->objects_x[n];
-          float rect_y = self->data->margin * height + radius + static_cast<float>(usable_height) - dot_y;
+          float rect_y = self->data->margin * height_f + radius + usable_height - dot_y;
           float rect_width = dw;
 
           if (self->data->draw_bar_border) {
@@ -441,35 +447,33 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
       case ChartType::line: {
         auto* ctx = gtk_snapshot_append_cairo(snapshot, &widget_rectangle);
 
-        cairo_set_source_rgba(ctx, self->data->color.red, self->data->color.green, self->data->color.blue,
-                              self->data->color.alpha);
+        cairo_set_source_rgba(ctx, static_cast<double>(self->data->color.red),
+                              static_cast<double>(self->data->color.green), static_cast<double>(self->data->color.blue),
+                              static_cast<double>(self->data->color.alpha));
 
         if (self->data->fill_bars) {
-          cairo_move_to(ctx, self->data->margin * width,
-                        self->data->margin * height + static_cast<float>(usable_height));
+          cairo_move_to(ctx, static_cast<double>(self->data->margin * width_f),
+                        static_cast<double>(self->data->margin * height_f + usable_height));
         } else {
-          const double point_height =
-              static_cast<double>(self->data->y_axis.front()) * static_cast<double>(usable_height);
+          const auto point_height = self->data->y_axis.front() * usable_height;
 
-          cairo_move_to(
-              ctx, self->data->objects_x.front(),
-              self->data->margin * static_cast<double>(height) + static_cast<double>(usable_height) - point_height);
+          cairo_move_to(ctx, static_cast<double>(self->data->objects_x.front()),
+                        static_cast<double>(self->data->margin * height_f + usable_height - point_height));
         }
 
         for (uint n = 0U; n < n_points - 1U; n++) {
-          const double next_point_height =
-              static_cast<double>(self->data->y_axis[n + 1]) * static_cast<double>(usable_height);
+          const auto next_point_height = self->data->y_axis[n + 1U] * usable_height;
 
-          cairo_line_to(ctx, self->data->objects_x[n + 1],
-                        self->data->margin * height + static_cast<double>(usable_height) - next_point_height);
+          cairo_line_to(ctx, static_cast<double>(self->data->objects_x[n + 1U]),
+                        static_cast<double>(self->data->margin * height_f + usable_height - next_point_height));
         }
 
         if (self->data->fill_bars) {
-          cairo_line_to(ctx, self->data->objects_x.back(),
-                        self->data->margin * height + static_cast<float>(usable_height));
+          cairo_line_to(ctx, static_cast<double>(self->data->objects_x.back()),
+                        static_cast<double>(self->data->margin * height_f + usable_height));
 
-          cairo_move_to(ctx, self->data->objects_x.back(),
-                        self->data->margin * height + static_cast<float>(usable_height));
+          cairo_move_to(ctx, static_cast<double>(self->data->objects_x.back()),
+                        static_cast<double>(self->data->margin * height_f + usable_height));
 
           cairo_close_path(ctx);
         }
@@ -508,7 +512,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
       gtk_snapshot_save(snapshot);
 
-      auto point = GRAPHENE_POINT_INIT(static_cast<float>(width) - static_cast<float>(text_width), 0.0F);
+      auto point = GRAPHENE_POINT_INIT(width_f - static_cast<float>(text_width), 0.0F);
 
       gtk_snapshot_translate(snapshot, &point);
 
@@ -563,7 +567,7 @@ void chart_init(Chart* self) {
   self->data->n_x_decimals = 1;
   self->data->n_y_decimals = 1;
   self->data->line_width = 2.0F;
-  self->data->margin = 0.02;
+  self->data->margin = 0.02F;
 
   self->data->x_min = 0.0F;
   self->data->y_min = 0.0F;
