@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-04 19:58+0200\n"
+"POT-Creation-Date: 2022-08-09 01:10-0300\n"
 "PO-Revision-Date: 2022-08-02 17:17+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -58,15 +58,15 @@ msgstr "Lista de aplicativos excluídos: Adicionar/remover este aplicativo"
 msgid "Exclude"
 msgstr "Excluir"
 
-#: data/ui/app_info.ui:248 data/ui/app_info.ui:250
+#: data/ui/app_info.ui:247 data/ui/app_info.ui:249
 msgid "Mute Application"
 msgstr "Silenciar o Aplicativo"
 
-#: data/ui/app_info.ui:272
+#: data/ui/app_info.ui:270
 msgid "Change the volume of this application"
 msgstr "Alterar o volume desse aplicativo"
 
-#: data/ui/app_info.ui:274
+#: data/ui/app_info.ui:272
 msgid "Application Volume"
 msgstr "Volume do Aplicativo"
 
@@ -90,7 +90,7 @@ msgstr "_Redefinir as Configurações"
 msgid "_About EasyEffects"
 msgstr "_Sobre EasyEffects"
 
-#: data/ui/application_window.ui:52 data/ui/reverb.ui:14
+#: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
 #: src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
@@ -128,147 +128,147 @@ msgstr "Lista vazia"
 msgid "No Audio Application Available"
 msgstr "Nenhum aplicativo de áudio disponível"
 
-#: data/ui/autogain.ui:18
+#: data/ui/autogain.ui:29
 msgid "Target"
 msgstr "Alvo"
 
-#: data/ui/autogain.ui:52
+#: data/ui/autogain.ui:63
 msgid "Maximum History"
 msgstr "Histórico máximo"
 
-#: data/ui/autogain.ui:86
+#: data/ui/autogain.ui:97
 msgid "Reference"
 msgstr "Referência"
 
-#: data/ui/autogain.ui:98 data/ui/autogain.ui:139
+#: data/ui/autogain.ui:109 data/ui/autogain.ui:150
 msgid "Momentary"
 msgstr "Momentâneo"
 
-#: data/ui/autogain.ui:99 data/ui/autogain.ui:169
+#: data/ui/autogain.ui:110 data/ui/autogain.ui:180
 msgid "Short-Term"
 msgstr "Curto Prazo"
 
-#: data/ui/autogain.ui:100 data/ui/autogain.ui:199
+#: data/ui/autogain.ui:111 data/ui/autogain.ui:210
 msgid "Integrated"
 msgstr "Integrada"
 
-#: data/ui/autogain.ui:101
+#: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
 msgstr "Média Geométrica (MSI)"
 
-#: data/ui/autogain.ui:102
+#: data/ui/autogain.ui:113
 msgid "Geometric Mean (MS)"
 msgstr "Média Geométrica (MS)"
 
-#: data/ui/autogain.ui:103
+#: data/ui/autogain.ui:114
 msgid "Geometric Mean (MI)"
 msgstr "Média Geométrica (MI)"
 
-#: data/ui/autogain.ui:104
+#: data/ui/autogain.ui:115
 msgid "Geometric Mean (SI)"
 msgstr "Média Geométrica (SI)"
 
-#: data/ui/autogain.ui:119
+#: data/ui/autogain.ui:130
 msgid "Reset History"
 msgstr "Apagar Histórico"
 
-#: data/ui/autogain.ui:229
+#: data/ui/autogain.ui:240
 msgid "Relative"
 msgstr "Relativo"
 
-#: data/ui/autogain.ui:259
+#: data/ui/autogain.ui:270
 msgid "Range"
 msgstr "Alcance"
 
-#: data/ui/autogain.ui:292 data/ui/bass_loudness.ui:19
+#: data/ui/autogain.ui:303 data/ui/bass_loudness.ui:29
 #: src/tags_plugin_name.cpp:40
 msgid "Loudness"
 msgstr "Sonoridade"
 
-#: data/ui/autogain.ui:324
+#: data/ui/autogain.ui:335
 msgid "Output Gain"
 msgstr "Ganho de Saída"
 
-#: data/ui/autogain.ui:361 data/ui/bass_enhancer.ui:251
-#: data/ui/bass_loudness.ui:136 data/ui/compressor.ui:566
-#: data/ui/compressor.ui:1048 data/ui/convolver.ui:216 data/ui/crossfeed.ui:133
-#: data/ui/crystalizer.ui:33 data/ui/deesser.ui:407 data/ui/delay.ui:225
-#: data/ui/echo_canceller.ui:105 data/ui/equalizer.ui:298
-#: data/ui/exciter.ui:251 data/ui/filter.ui:163 data/ui/gate.ui:705
-#: data/ui/gate.ui:1186 data/ui/limiter.ui:718 data/ui/loudness.ui:167
-#: data/ui/maximizer.ui:136 data/ui/multiband_compressor.ui:443
-#: data/ui/multiband_gate.ui:443 data/ui/pipe_manager_box.ui:306
-#: data/ui/pitch.ui:295 data/ui/presets_menu.ui:177 data/ui/reverb.ui:351
-#: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:30
-#: data/ui/stereo_tools.ui:544 src/application_ui.cpp:266
+#: data/ui/autogain.ui:372 data/ui/bass_enhancer.ui:262
+#: data/ui/bass_loudness.ui:146 data/ui/compressor.ui:576
+#: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:143
+#: data/ui/crystalizer.ui:43 data/ui/deesser.ui:417 data/ui/delay.ui:235
+#: data/ui/echo_canceller.ui:115 data/ui/equalizer.ui:298
+#: data/ui/exciter.ui:262 data/ui/filter.ui:173 data/ui/gate.ui:715
+#: data/ui/gate.ui:1196 data/ui/limiter.ui:728 data/ui/loudness.ui:177
+#: data/ui/maximizer.ui:146 data/ui/multiband_compressor.ui:454
+#: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
+#: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
+#: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
+#: data/ui/stereo_tools.ui:554 src/application_ui.cpp:266
 msgid "Input"
 msgstr "Entrada"
 
-#: data/ui/autogain.ui:380 data/ui/bass_enhancer.ui:270
-#: data/ui/bass_loudness.ui:155 data/ui/compressor.ui:1067
-#: data/ui/convolver.ui:235 data/ui/crossfeed.ui:152 data/ui/crystalizer.ui:52
-#: data/ui/deesser.ui:426 data/ui/delay.ui:244 data/ui/echo_canceller.ui:124
-#: data/ui/equalizer.ui:317 data/ui/exciter.ui:270 data/ui/filter.ui:182
-#: data/ui/gate.ui:1205 data/ui/limiter.ui:737 data/ui/loudness.ui:186
-#: data/ui/maximizer.ui:155 data/ui/multiband_compressor.ui:462
-#: data/ui/multiband_gate.ui:462 data/ui/pitch.ui:314 data/ui/reverb.ui:370
-#: data/ui/rnnoise.ui:174 data/ui/stereo_tools.ui:563
+#: data/ui/autogain.ui:391 data/ui/bass_enhancer.ui:281
+#: data/ui/bass_loudness.ui:165 data/ui/compressor.ui:1077
+#: data/ui/convolver.ui:245 data/ui/crossfeed.ui:162 data/ui/crystalizer.ui:62
+#: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:134
+#: data/ui/equalizer.ui:317 data/ui/exciter.ui:281 data/ui/filter.ui:192
+#: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:196
+#: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
+#: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
+#: data/ui/rnnoise.ui:174 data/ui/stereo_tools.ui:573
 msgid "Plugin Input Gain"
 msgstr "Ganho de Entrada do Plugin"
 
-#: data/ui/autogain.ui:445 data/ui/bass_enhancer.ui:335
-#: data/ui/bass_loudness.ui:53 data/ui/bass_loudness.ui:220
-#: data/ui/compressor.ui:1132 data/ui/convolver.ui:300 data/ui/crossfeed.ui:217
-#: data/ui/crystalizer.ui:117 data/ui/deesser.ui:491 data/ui/delay.ui:309
-#: data/ui/echo_canceller.ui:189 data/ui/equalizer.ui:382
-#: data/ui/exciter.ui:335 data/ui/filter.ui:247 data/ui/gate.ui:1270
-#: data/ui/limiter.ui:802 data/ui/loudness.ui:251 data/ui/maximizer.ui:220
-#: data/ui/multiband_compressor.ui:527 data/ui/multiband_gate.ui:527
-#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:379
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:435 data/ui/rnnoise.ui:239
-#: data/ui/stereo_tools.ui:371 data/ui/stereo_tools.ui:628
+#: data/ui/autogain.ui:456 data/ui/bass_enhancer.ui:346
+#: data/ui/bass_loudness.ui:63 data/ui/bass_loudness.ui:230
+#: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:227
+#: data/ui/crystalizer.ui:127 data/ui/deesser.ui:501 data/ui/delay.ui:319
+#: data/ui/echo_canceller.ui:199 data/ui/equalizer.ui:382
+#: data/ui/exciter.ui:346 data/ui/filter.ui:257 data/ui/gate.ui:1280
+#: data/ui/limiter.ui:812 data/ui/loudness.ui:261 data/ui/maximizer.ui:230
+#: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
+#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
+#: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:638
 #: src/application_ui.cpp:265
 msgid "Output"
 msgstr "Saída"
 
-#: data/ui/autogain.ui:464 data/ui/bass_enhancer.ui:354
-#: data/ui/bass_loudness.ui:239 data/ui/compressor.ui:1151
-#: data/ui/convolver.ui:319 data/ui/crossfeed.ui:236 data/ui/crystalizer.ui:136
-#: data/ui/deesser.ui:510 data/ui/delay.ui:328 data/ui/echo_canceller.ui:208
-#: data/ui/equalizer.ui:401 data/ui/exciter.ui:354 data/ui/filter.ui:266
-#: data/ui/gate.ui:1289 data/ui/limiter.ui:821 data/ui/loudness.ui:270
-#: data/ui/maximizer.ui:239 data/ui/multiband_compressor.ui:546
-#: data/ui/multiband_gate.ui:546 data/ui/pitch.ui:398 data/ui/reverb.ui:454
-#: data/ui/rnnoise.ui:258 data/ui/stereo_tools.ui:647
+#: data/ui/autogain.ui:475 data/ui/bass_enhancer.ui:365
+#: data/ui/bass_loudness.ui:249 data/ui/compressor.ui:1161
+#: data/ui/convolver.ui:329 data/ui/crossfeed.ui:246 data/ui/crystalizer.ui:146
+#: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:218
+#: data/ui/equalizer.ui:401 data/ui/exciter.ui:365 data/ui/filter.ui:276
+#: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:280
+#: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
+#: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
+#: data/ui/rnnoise.ui:258 data/ui/stereo_tools.ui:657
 msgid "Plugin Output Gain"
 msgstr "Ganho de Saída do Plugin"
 
-#: data/ui/autogain.ui:527 data/ui/bass_enhancer.ui:448
-#: data/ui/bass_loudness.ui:302 data/ui/compressor.ui:1214
-#: data/ui/convolver.ui:382 data/ui/crossfeed.ui:299 data/ui/crystalizer.ui:191
-#: data/ui/deesser.ui:633 data/ui/delay.ui:391 data/ui/echo_canceller.ui:271
+#: data/ui/autogain.ui:538 data/ui/bass_enhancer.ui:459
+#: data/ui/bass_loudness.ui:312 data/ui/compressor.ui:1224
+#: data/ui/convolver.ui:392 data/ui/crossfeed.ui:309 data/ui/crystalizer.ui:201
+#: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:281
 #: data/ui/equalizer.ui:464 data/ui/equalizer_band.ui:223
-#: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:447 data/ui/filter.ui:329
-#: data/ui/gate.ui:1382 data/ui/limiter.ui:884 data/ui/loudness.ui:333
-#: data/ui/maximizer.ui:334 data/ui/multiband_compressor.ui:609
-#: data/ui/multiband_gate.ui:609 data/ui/pitch.ui:461 data/ui/reverb.ui:517
-#: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:710
+#: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:458 data/ui/filter.ui:339
+#: data/ui/gate.ui:1392 data/ui/limiter.ui:894 data/ui/loudness.ui:343
+#: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
+#: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
+#: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:720
 msgid "Reset"
 msgstr "Resetar"
 
-#: data/ui/autogain.ui:541 data/ui/bass_enhancer.ui:462
-#: data/ui/bass_loudness.ui:316 data/ui/compressor.ui:1228
-#: data/ui/convolver.ui:396 data/ui/crossfeed.ui:313 data/ui/deesser.ui:647
-#: data/ui/delay.ui:405 data/ui/echo_canceller.ui:285 data/ui/equalizer.ui:478
-#: data/ui/exciter.ui:461 data/ui/filter.ui:343 data/ui/gate.ui:1396
-#: data/ui/limiter.ui:898 data/ui/loudness.ui:347 data/ui/maximizer.ui:348
-#: data/ui/multiband_compressor.ui:623 data/ui/multiband_gate.ui:623
-#: data/ui/pitch.ui:475 data/ui/reverb.ui:531 data/ui/rnnoise.ui:335
-#: data/ui/stereo_tools.ui:724
+#: data/ui/autogain.ui:552 data/ui/bass_enhancer.ui:473
+#: data/ui/bass_loudness.ui:326 data/ui/compressor.ui:1238
+#: data/ui/convolver.ui:406 data/ui/crossfeed.ui:323 data/ui/deesser.ui:657
+#: data/ui/delay.ui:415 data/ui/echo_canceller.ui:295 data/ui/equalizer.ui:478
+#: data/ui/exciter.ui:472 data/ui/filter.ui:353 data/ui/gate.ui:1406
+#: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
+#: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
+#: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
+#: data/ui/stereo_tools.ui:734
 msgid "Using"
 msgstr "Usando"
 
-#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:589 data/ui/gate.ui:728
+#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:599 data/ui/gate.ui:738
 msgid "Device"
 msgstr "Dispositivo"
 
@@ -291,45 +291,45 @@ msgstr "Predefinição"
 msgid "Remove this autoload preset"
 msgstr "Remover este arquivo de predefinição"
 
-#: data/ui/bass_enhancer.ui:12 data/ui/compressor.ui:519 data/ui/deesser.ui:14
-#: data/ui/exciter.ui:12 data/ui/gate.ui:658
+#: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:529 data/ui/deesser.ui:24
+#: data/ui/exciter.ui:23 data/ui/gate.ui:668
 msgid "Listen"
 msgstr "Escutar"
 
-#: data/ui/bass_enhancer.ui:23 data/ui/exciter.ui:23
+#: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
 msgstr "Mistura de Harmônicos"
 
-#: data/ui/bass_enhancer.ui:35 data/ui/exciter.ui:35
+#: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
 msgstr "3º"
 
-#: data/ui/bass_enhancer.ui:78 data/ui/exciter.ui:78
+#: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
 msgstr "2º"
 
-#: data/ui/bass_enhancer.ui:97 data/ui/exciter.ui:97
+#: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
 msgstr "Quantidade"
 
-#: data/ui/bass_enhancer.ui:131 data/ui/bass_enhancer.ui:413
-#: data/ui/exciter.ui:131 data/ui/exciter.ui:413
+#: data/ui/bass_enhancer.ui:142 data/ui/bass_enhancer.ui:424
+#: data/ui/exciter.ui:142 data/ui/exciter.ui:424
 msgid "Harmonics"
 msgstr "Harmônico"
 
-#: data/ui/bass_enhancer.ui:166 data/ui/exciter.ui:166
+#: data/ui/bass_enhancer.ui:177 data/ui/exciter.ui:177
 msgid "Scope"
 msgstr "Escopo"
 
-#: data/ui/bass_enhancer.ui:200
+#: data/ui/bass_enhancer.ui:211
 msgid "Floor"
 msgstr "Piso"
 
-#: data/ui/bass_enhancer.ui:229
+#: data/ui/bass_enhancer.ui:240
 msgid "Floor Value"
 msgstr "Valor do piso"
 
-#: data/ui/bass_loudness.ui:87
+#: data/ui/bass_loudness.ui:97
 msgid "Link"
 msgstr "Ligação"
 
@@ -349,326 +349,326 @@ msgstr "Lista de aplicativos excluídos"
 msgid "Show Excluded Applications"
 msgstr "Mostrar aplicativos excluídos"
 
-#: data/ui/compressor.ui:31 src/tags_plugin_name.cpp:28
+#: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:28
 msgid "Compressor"
 msgstr "Compressor"
 
-#: data/ui/compressor.ui:43 data/ui/compressor.ui:491 data/ui/compressor.ui:786
-#: data/ui/deesser.ui:54 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:130
-#: data/ui/gate.ui:630 data/ui/gate.ui:924 data/ui/limiter.ui:36
+#: data/ui/compressor.ui:53 data/ui/compressor.ui:501 data/ui/compressor.ui:796
+#: data/ui/deesser.ui:64 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:130
+#: data/ui/gate.ui:640 data/ui/gate.ui:934 data/ui/limiter.ui:46
 #: data/ui/multiband_compressor_band.ui:457 data/ui/multiband_gate_band.ui:520
-#: data/ui/pitch.ui:22
+#: data/ui/pitch.ui:32
 msgid "Mode"
 msgstr "Modo"
 
-#: data/ui/compressor.ui:54 data/ui/multiband_compressor_band.ui:99
+#: data/ui/compressor.ui:64 data/ui/multiband_compressor_band.ui:99
 msgid "Downward"
 msgstr "Para Baixo"
 
-#: data/ui/compressor.ui:55 data/ui/multiband_compressor_band.ui:100
+#: data/ui/compressor.ui:65 data/ui/multiband_compressor_band.ui:100
 msgid "Upward"
 msgstr "Para Cima"
 
-#: data/ui/compressor.ui:56 data/ui/multiband_compressor_band.ui:101
+#: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
 msgid "Boosting"
 msgstr "Impulsionando"
 
-#: data/ui/compressor.ui:63 data/ui/multiband_compressor_band.ui:88
+#: data/ui/compressor.ui:73 data/ui/multiband_compressor_band.ui:88
 msgid "Compression Mode"
 msgstr "Modo de Compressão"
 
-#: data/ui/compressor.ui:70 data/ui/multiband_compressor_band.ui:744
+#: data/ui/compressor.ui:80 data/ui/multiband_compressor_band.ui:744
 msgid "Boost Threshold"
 msgstr "Limiar de Impulso"
 
-#: data/ui/compressor.ui:109 data/ui/multiband_compressor_band.ui:700
+#: data/ui/compressor.ui:119 data/ui/multiband_compressor_band.ui:700
 msgid "Boost Amount"
 msgstr "Valor do reforço"
 
-#: data/ui/compressor.ui:155 data/ui/gate.ui:50 data/ui/limiter.ui:252
-#: data/ui/limiter.ui:475 data/ui/multiband_compressor_band.ui:186
+#: data/ui/compressor.ui:165 data/ui/gate.ui:60 data/ui/limiter.ui:262
+#: data/ui/limiter.ui:485 data/ui/multiband_compressor_band.ui:186
 #: data/ui/multiband_gate_band.ui:144
 msgid "Attack"
 msgstr "Ataque"
 
-#: data/ui/compressor.ui:166 data/ui/multiband_compressor_band.ui:166
+#: data/ui/compressor.ui:176 data/ui/multiband_compressor_band.ui:166
 msgid "Time"
 msgstr "Tempo"
 
-#: data/ui/compressor.ui:176 data/ui/deesser.ui:289 data/ui/gate.ui:143
-#: data/ui/gate.ui:237 data/ui/limiter.ui:336 data/ui/maximizer.ui:20
+#: data/ui/compressor.ui:186 data/ui/deesser.ui:299 data/ui/gate.ui:153
+#: data/ui/gate.ui:247 data/ui/limiter.ui:346 data/ui/maximizer.ui:30
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
 msgstr "Limiar"
 
-#: data/ui/compressor.ui:202 data/ui/multiband_compressor_band.ui:222
+#: data/ui/compressor.ui:212 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
 msgstr "Tempo de Ataque"
 
-#: data/ui/compressor.ui:224 data/ui/gate.ui:527
+#: data/ui/compressor.ui:234 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:247
 msgid "Attack Threshold"
 msgstr "Limiar de Ataque"
 
-#: data/ui/compressor.ui:231 data/ui/gate.ui:56 data/ui/limiter.ui:294
-#: data/ui/limiter.ui:512 data/ui/maximizer.ui:86
+#: data/ui/compressor.ui:241 data/ui/gate.ui:66 data/ui/limiter.ui:304
+#: data/ui/limiter.ui:522 data/ui/maximizer.ui:96
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate_band.ui:150
 msgid "Release"
 msgstr "Liberação"
 
-#: data/ui/compressor.ui:257 data/ui/multiband_compressor_band.ui:274
+#: data/ui/compressor.ui:267 data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
 msgstr "Tempo de liberação"
 
-#: data/ui/compressor.ui:281 data/ui/gate.ui:581
+#: data/ui/compressor.ui:291 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:302
 msgid "Release Threshold"
 msgstr "Limiar de liberação"
 
-#: data/ui/compressor.ui:288 data/ui/deesser.ui:323
+#: data/ui/compressor.ui:298 data/ui/deesser.ui:333
 #: data/ui/multiband_compressor_band.ui:309
 msgid "Ratio"
 msgstr "Razão"
 
-#: data/ui/compressor.ui:325 data/ui/limiter.ui:548
+#: data/ui/compressor.ui:335 data/ui/limiter.ui:558
 #: data/ui/multiband_compressor_band.ui:347
 msgid "Knee"
 msgstr "Joelho"
 
-#: data/ui/compressor.ui:360 data/ui/deesser.ui:359 data/ui/gate.ui:418
+#: data/ui/compressor.ui:370 data/ui/deesser.ui:369 data/ui/gate.ui:428
 #: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate_band.ui:418
 msgid "Makeup"
 msgstr "Ganho de Saída"
 
-#: data/ui/compressor.ui:395 data/ui/delay.ui:95 data/ui/gate.ui:332
-#: data/ui/multiband_compressor.ui:121 data/ui/multiband_gate.ui:121
-#: data/ui/reverb.ui:197
+#: data/ui/compressor.ui:405 data/ui/delay.ui:105 data/ui/gate.ui:342
+#: data/ui/multiband_compressor.ui:132 data/ui/multiband_gate.ui:132
+#: data/ui/reverb.ui:208
 #, fuzzy
 msgid "Dry Level"
 msgstr "Nível"
 
-#: data/ui/compressor.ui:430 data/ui/delay.ui:154 data/ui/gate.ui:337
-#: data/ui/multiband_compressor.ui:155 data/ui/multiband_gate.ui:155
-#: data/ui/reverb.ui:231
+#: data/ui/compressor.ui:440 data/ui/delay.ui:164 data/ui/gate.ui:347
+#: data/ui/multiband_compressor.ui:166 data/ui/multiband_gate.ui:166
+#: data/ui/reverb.ui:242
 #, fuzzy
 msgid "Wet Level"
 msgstr "Nível Alvo"
 
-#: data/ui/compressor.ui:472 data/ui/compressor.ui:984 data/ui/gate.ui:611
-#: data/ui/gate.ui:1122
+#: data/ui/compressor.ui:482 data/ui/compressor.ui:994 data/ui/gate.ui:621
+#: data/ui/gate.ui:1132
 msgid "Sidechain"
 msgstr "Cadeia Lateral"
 
-#: data/ui/compressor.ui:501 data/ui/deesser.ui:38 data/ui/gate.ui:640
+#: data/ui/compressor.ui:511 data/ui/deesser.ui:48 data/ui/gate.ui:650
 #: data/ui/multiband_compressor_band.ui:468 data/ui/multiband_gate_band.ui:531
 msgid "Peak"
 msgstr "Pico"
 
-#: data/ui/compressor.ui:502 data/ui/deesser.ui:37 data/ui/gate.ui:641
+#: data/ui/compressor.ui:512 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:503 data/ui/compressor.ui:855 data/ui/gate.ui:642
-#: data/ui/gate.ui:993 data/ui/multiband_compressor_band.ui:470
+#: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:652
+#: data/ui/gate.ui:1003 data/ui/multiband_compressor_band.ui:470
 #: data/ui/multiband_gate_band.ui:533
 msgid "Low-Pass"
 msgstr "Passa-Baixa"
 
-#: data/ui/compressor.ui:504 data/ui/gate.ui:643
+#: data/ui/compressor.ui:514 data/ui/gate.ui:653
 #: data/ui/multiband_compressor_band.ui:471 data/ui/multiband_gate_band.ui:534
 msgid "Uniform"
 msgstr "Uniforme"
 
-#: data/ui/compressor.ui:511 data/ui/gate.ui:650
+#: data/ui/compressor.ui:521 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
 msgid "Sidechain Mode"
 msgstr "Modo de cadeia lateral"
 
-#: data/ui/compressor.ui:529 data/ui/gate.ui:668
+#: data/ui/compressor.ui:539 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:485 data/ui/multiband_gate_band.ui:548
 msgid "Source"
 msgstr "Fonte"
 
-#: data/ui/compressor.ui:539 data/ui/gate.ui:678
+#: data/ui/compressor.ui:549 data/ui/gate.ui:688
 #: data/ui/multiband_compressor_band.ui:496 data/ui/multiband_gate_band.ui:559
 msgid "Middle"
 msgstr "Meio"
 
-#: data/ui/compressor.ui:540 data/ui/gate.ui:679
+#: data/ui/compressor.ui:550 data/ui/gate.ui:689
 #: data/ui/multiband_compressor_band.ui:497 data/ui/multiband_gate_band.ui:560
 msgid "Side"
 msgstr "Lado"
 
-#: data/ui/compressor.ui:541 data/ui/delay.ui:20 data/ui/equalizer.ui:216
-#: data/ui/gate.ui:680 data/ui/multiband_compressor_band.ui:498
+#: data/ui/compressor.ui:551 data/ui/delay.ui:30 data/ui/equalizer.ui:216
+#: data/ui/gate.ui:690 data/ui/multiband_compressor_band.ui:498
 #: data/ui/multiband_gate_band.ui:561 data/ui/pipe_manager_box.ui:504
-#: data/ui/stereo_tools.ui:151
+#: data/ui/stereo_tools.ui:161
 msgid "Left"
 msgstr "Esquerda"
 
-#: data/ui/compressor.ui:542 data/ui/delay.ui:29 data/ui/equalizer.ui:228
-#: data/ui/gate.ui:681 data/ui/multiband_compressor_band.ui:499
+#: data/ui/compressor.ui:552 data/ui/delay.ui:39 data/ui/equalizer.ui:228
+#: data/ui/gate.ui:691 data/ui/multiband_compressor_band.ui:499
 #: data/ui/multiband_gate_band.ui:562 data/ui/pipe_manager_box.ui:515
-#: data/ui/stereo_tools.ui:206
+#: data/ui/stereo_tools.ui:216
 msgid "Right"
 msgstr "Direita"
 
-#: data/ui/compressor.ui:549 data/ui/gate.ui:688
-#: data/ui/multiband_compressor.ui:60 data/ui/multiband_compressor_band.ui:506
-#: data/ui/multiband_gate.ui:60 data/ui/multiband_gate_band.ui:569
+#: data/ui/compressor.ui:559 data/ui/gate.ui:698
+#: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:506
+#: data/ui/multiband_gate.ui:71 data/ui/multiband_gate_band.ui:569
 msgid "Sidechain Source"
 msgstr "Fonte da cadeia lateral"
 
-#: data/ui/compressor.ui:578 data/ui/equalizer_band.ui:98 data/ui/gate.ui:717
+#: data/ui/compressor.ui:588 data/ui/equalizer_band.ui:98 data/ui/gate.ui:727
 msgid "Type"
 msgstr "Tipo"
 
-#: data/ui/compressor.ui:602
+#: data/ui/compressor.ui:612
 msgid "Feed-forward"
 msgstr "Avanço de alimentação"
 
-#: data/ui/compressor.ui:603
+#: data/ui/compressor.ui:613
 msgid "Feed-back"
 msgstr "Retorno"
 
-#: data/ui/compressor.ui:604 data/ui/gate.ui:742
+#: data/ui/compressor.ui:614 data/ui/gate.ui:752
 msgid "External"
 msgstr "Externo"
 
-#: data/ui/compressor.ui:611 data/ui/gate.ui:749
+#: data/ui/compressor.ui:621 data/ui/gate.ui:759
 msgid "Sidechain Type"
 msgstr "Tipo de cadeia lateral"
 
-#: data/ui/compressor.ui:638 data/ui/gate.ui:776 src/plugins_box.cpp:546
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:652
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
 
-#: data/ui/compressor.ui:646 data/ui/gate.ui:784
+#: data/ui/compressor.ui:656 data/ui/gate.ui:794
 msgid "PreAmplification"
 msgstr "Pré-Amplificação"
 
-#: data/ui/compressor.ui:683 data/ui/gate.ui:821
+#: data/ui/compressor.ui:693 data/ui/gate.ui:831
 #: data/ui/multiband_compressor_band.ui:633 data/ui/multiband_gate_band.ui:695
 msgid "Reactivity"
 msgstr "Reatividade"
 
-#: data/ui/compressor.ui:720 data/ui/gate.ui:858 data/ui/limiter.ui:210
+#: data/ui/compressor.ui:730 data/ui/gate.ui:868 data/ui/limiter.ui:220
 #: data/ui/multiband_compressor_band.ui:667 data/ui/multiband_gate_band.ui:728
 msgid "Lookahead"
 msgstr "Antevisão"
 
-#: data/ui/compressor.ui:763 data/ui/gate.ui:901
+#: data/ui/compressor.ui:773 data/ui/gate.ui:911
 msgid "Sidechain Filters"
 msgstr "Filtros da cadeia lateral"
 
-#: data/ui/compressor.ui:773 data/ui/gate.ui:911
+#: data/ui/compressor.ui:783 data/ui/gate.ui:921
 msgid "High-Pass"
 msgstr "Passa-alta"
 
-#: data/ui/compressor.ui:799 data/ui/equalizer_band.ui:197 data/ui/filter.ui:43
-#: data/ui/gate.ui:937 data/ui/pipe_manager_box.ui:561
+#: data/ui/compressor.ui:809 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
+#: data/ui/gate.ui:947 data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "Frequência"
 
-#: data/ui/compressor.ui:812 data/ui/compressor.ui:868
-#: data/ui/equalizer_band.ui:108 data/ui/gate.ui:950 data/ui/gate.ui:1006
+#: data/ui/compressor.ui:822 data/ui/compressor.ui:878
+#: data/ui/equalizer_band.ui:108 data/ui/gate.ui:960 data/ui/gate.ui:1016
 msgid "Off"
 msgstr "Desligado"
 
-#: data/ui/compressor.ui:813 data/ui/compressor.ui:869 data/ui/gate.ui:951
-#: data/ui/gate.ui:1007
+#: data/ui/compressor.ui:823 data/ui/compressor.ui:879 data/ui/gate.ui:961
+#: data/ui/gate.ui:1017
 msgid "12 dB/oct"
 msgstr "12dB/oct"
 
-#: data/ui/compressor.ui:814 data/ui/compressor.ui:870 data/ui/gate.ui:952
-#: data/ui/gate.ui:1008
+#: data/ui/compressor.ui:824 data/ui/compressor.ui:880 data/ui/gate.ui:962
+#: data/ui/gate.ui:1018
 msgid "24 dB/oct"
 msgstr "24dB/oct"
 
-#: data/ui/compressor.ui:815 data/ui/compressor.ui:871 data/ui/gate.ui:953
-#: data/ui/gate.ui:1009
+#: data/ui/compressor.ui:825 data/ui/compressor.ui:881 data/ui/gate.ui:963
+#: data/ui/gate.ui:1019
 msgid "36 dB/oct"
 msgstr "36dB/oct"
 
-#: data/ui/compressor.ui:822 data/ui/gate.ui:960
+#: data/ui/compressor.ui:832 data/ui/gate.ui:970
 msgid "High-Pass Filter Mode"
 msgstr "Modo de Filtro Passa-Alta"
 
-#: data/ui/compressor.ui:848 data/ui/compressor.ui:904 data/ui/gate.ui:986
-#: data/ui/gate.ui:1042
+#: data/ui/compressor.ui:858 data/ui/compressor.ui:914 data/ui/gate.ui:996
+#: data/ui/gate.ui:1052
 msgid "High-Pass Filter Frequency"
 msgstr "Frequência do Filtro Passa-Alta"
 
-#: data/ui/compressor.ui:878 data/ui/gate.ui:1016
+#: data/ui/compressor.ui:888 data/ui/gate.ui:1026
 msgid "Low-Pass Filter Mode"
 msgstr "Modo de Filtro Passa-Baixa"
 
-#: data/ui/compressor.ui:930
+#: data/ui/compressor.ui:940
 msgid "Gain"
 msgstr "Ganho"
 
-#: data/ui/compressor.ui:957 data/ui/gate.ui:1095
+#: data/ui/compressor.ui:967 data/ui/gate.ui:1105
 #, fuzzy
 msgid "Envelope"
 msgstr "Inclinação"
 
-#: data/ui/compressor.ui:1011 data/ui/gate.ui:127 data/ui/gate.ui:1149
+#: data/ui/compressor.ui:1021 data/ui/gate.ui:137 data/ui/gate.ui:1159
 #: data/ui/multiband_gate_band.ui:221
 msgid "Curve"
 msgstr "Curva"
 
-#: data/ui/convolver.ui:30
+#: data/ui/convolver.ui:40
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.ui:33 data/ui/pipe_manager_box.ui:507
+#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:507
 msgid "Left Channel"
 msgstr "Canal esquerdo"
 
-#: data/ui/convolver.ui:43
+#: data/ui/convolver.ui:53
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.ui:46 data/ui/pipe_manager_box.ui:518
+#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:518
 msgid "Right Channel"
 msgstr "Canal direito"
 
-#: data/ui/convolver.ui:61
+#: data/ui/convolver.ui:71
 msgid "Impulses"
 msgstr "Impulsos"
 
-#: data/ui/convolver.ui:69 data/ui/convolver_menu_combine.ui:113
+#: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
 msgstr "Combinar"
 
-#: data/ui/convolver.ui:76
+#: data/ui/convolver.ui:86
 msgid "Stereo Width"
 msgstr "Largura do Stereo"
 
-#: data/ui/convolver.ui:104
+#: data/ui/convolver.ui:114
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: data/ui/convolver.ui:112
+#: data/ui/convolver.ui:122
 msgid "Log Scale"
 msgstr "Escala logarítmica"
 
-#: data/ui/convolver.ui:122 src/tags_plugin_name.cpp:25
+#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:25
 msgid "Autogain"
 msgstr "Ganho Automático"
 
-#: data/ui/convolver.ui:138
+#: data/ui/convolver.ui:148
 msgid "Rate"
 msgstr "Taxa"
 
-#: data/ui/convolver.ui:159
+#: data/ui/convolver.ui:169
 msgid "Samples"
 msgstr "Amostras"
 
-#: data/ui/convolver.ui:180
+#: data/ui/convolver.ui:190
 msgid "Duration"
 msgstr "Duração"
 
@@ -709,15 +709,15 @@ msgstr "Importar Arquivo com a Resposta de Impulso"
 msgid "Impulse Files List"
 msgstr "Arquivo com o Impulso"
 
-#: data/ui/crossfeed.ui:25
+#: data/ui/crossfeed.ui:35
 msgid "Default"
 msgstr "Padrão"
 
-#: data/ui/crossfeed.ui:48
+#: data/ui/crossfeed.ui:58
 msgid "Cutoff"
 msgstr "Corte"
 
-#: data/ui/crossfeed.ui:83
+#: data/ui/crossfeed.ui:93
 msgid "Feed"
 msgstr "Alimentação"
 
@@ -727,114 +727,114 @@ msgstr "Ignorar"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:321
 #: data/ui/multiband_compressor_band.ui:136 data/ui/multiband_gate_band.ui:109
-#: data/ui/stereo_tools.ui:161 data/ui/stereo_tools.ui:186
+#: data/ui/stereo_tools.ui:171 data/ui/stereo_tools.ui:196
 msgid "Mute"
 msgstr "Mudo"
 
-#: data/ui/deesser.ui:30
+#: data/ui/deesser.ui:40
 msgid "Detection"
 msgstr "Detecção"
 
-#: data/ui/deesser.ui:61
+#: data/ui/deesser.ui:71
 msgid "Wide"
 msgstr "Amplo"
 
-#: data/ui/deesser.ui:62
+#: data/ui/deesser.ui:72
 msgid "Split"
 msgstr "Separado"
 
-#: data/ui/deesser.ui:78
+#: data/ui/deesser.ui:88
 msgid "F1 Split"
 msgstr "Divisão F1"
 
-#: data/ui/deesser.ui:98
+#: data/ui/deesser.ui:108
 msgid "Frequency 1 Split"
 msgstr "Divisão da Frequência 1"
 
-#: data/ui/deesser.ui:111
+#: data/ui/deesser.ui:121
 msgid "F2 Peak"
 msgstr "Pico F2"
 
-#: data/ui/deesser.ui:131
+#: data/ui/deesser.ui:141
 msgid "Frequency 2 Peak"
 msgstr "Pico da Frequência 2"
 
-#: data/ui/deesser.ui:149
+#: data/ui/deesser.ui:159
 msgid "F1 Gain"
 msgstr "Ganho F1"
 
-#: data/ui/deesser.ui:177
+#: data/ui/deesser.ui:187
 msgid "Frequency 1 Gain"
 msgstr "Ganho da Frequência 1"
 
-#: data/ui/deesser.ui:184
+#: data/ui/deesser.ui:194
 msgid "F2 Level"
 msgstr "Nível F2"
 
-#: data/ui/deesser.ui:212
+#: data/ui/deesser.ui:222
 msgid "Frequency 2 Level"
 msgstr "Nível da Frequência 2"
 
-#: data/ui/deesser.ui:219
+#: data/ui/deesser.ui:229
 msgid "F2 Peak Q"
 msgstr "Pico Q F2"
 
-#: data/ui/deesser.ui:247
+#: data/ui/deesser.ui:257
 msgid "Frequency 2 Peak Q"
 msgstr "Pico Q da Frequência 2"
 
-#: data/ui/deesser.ui:254
+#: data/ui/deesser.ui:264
 msgid "Laxity"
 msgstr "Frouxidão"
 
-#: data/ui/deesser.ui:569
+#: data/ui/deesser.ui:579
 msgid "Detected"
 msgstr "Detectado"
 
-#: data/ui/deesser.ui:599 data/ui/gate.ui:413 data/ui/gate.ui:1068
-#: data/ui/maximizer.ui:298 data/ui/multiband_gate_band.ui:413
+#: data/ui/deesser.ui:609 data/ui/gate.ui:423 data/ui/gate.ui:1078
+#: data/ui/maximizer.ui:308 data/ui/multiband_gate_band.ui:413
 msgid "Reduction"
 msgstr "Redução"
 
-#: data/ui/delay.ui:40 src/tags_plugin_name.cpp:33
+#: data/ui/delay.ui:50 src/tags_plugin_name.cpp:33
 msgid "Delay"
 msgstr "Atraso"
 
-#: data/ui/delay.ui:65
+#: data/ui/delay.ui:75
 #, fuzzy
 msgid "Left Delay"
 msgstr "Pré Atraso"
 
-#: data/ui/delay.ui:87
+#: data/ui/delay.ui:97
 #, fuzzy
 msgid "Right Delay"
 msgstr "Canal direito"
 
-#: data/ui/delay.ui:122
+#: data/ui/delay.ui:132
 #, fuzzy
 msgid "Left Dry Level"
 msgstr "Nível"
 
-#: data/ui/delay.ui:146
+#: data/ui/delay.ui:156
 #, fuzzy
 msgid "Right Dry Level"
 msgstr "Nível"
 
-#: data/ui/delay.ui:180
+#: data/ui/delay.ui:190
 #, fuzzy
 msgid "Left Wet Level"
 msgstr "Nível Alvo"
 
-#: data/ui/delay.ui:203
+#: data/ui/delay.ui:213
 #, fuzzy
 msgid "Right Wet Level"
 msgstr "Nível Alvo"
 
-#: data/ui/echo_canceller.ui:20
+#: data/ui/echo_canceller.ui:30
 msgid "Frame Size"
 msgstr "Tamanho do Quadro"
 
-#: data/ui/echo_canceller.ui:55
+#: data/ui/echo_canceller.ui:65
 msgid "Filter Length"
 msgstr "Comprimento do filtro"
 
@@ -862,8 +862,8 @@ msgstr "FFT"
 msgid "SPM"
 msgstr "SPM"
 
-#: data/ui/equalizer.ui:90 data/ui/stereo_tools.ui:42
-#: data/ui/stereo_tools.ui:383
+#: data/ui/equalizer.ui:90 data/ui/stereo_tools.ui:52
+#: data/ui/stereo_tools.ui:393
 msgid "Balance"
 msgstr "Balanço"
 
@@ -917,7 +917,7 @@ msgstr "Low Shelf"
 msgid "Notch"
 msgstr "Rejeita-faixa"
 
-#: data/ui/equalizer_band.ui:115 data/ui/filter.ui:78
+#: data/ui/equalizer_band.ui:115 data/ui/filter.ui:88
 msgid "Resonance"
 msgstr "Ressonância"
 
@@ -954,12 +954,12 @@ msgstr "Qualidade"
 msgid "Solo"
 msgstr "Sozinho"
 
-#: data/ui/exciter.ui:200
+#: data/ui/exciter.ui:211
 #, fuzzy
 msgid "Ceil"
 msgstr "Teto"
 
-#: data/ui/exciter.ui:229
+#: data/ui/exciter.ui:240
 #, fuzzy
 msgid "Ceil Value"
 msgstr "Valor do Teto"
@@ -980,400 +980,400 @@ msgstr "Descrição"
 msgid "Remove this model file"
 msgstr "Remover este arquivo modelo"
 
-#: data/ui/filter.ui:15
+#: data/ui/filter.ui:25
 msgid "12dB/oct Lowpass"
 msgstr "12dB/oct Passa-Baixa"
 
-#: data/ui/filter.ui:16
+#: data/ui/filter.ui:26
 msgid "24dB/oct Lowpass"
 msgstr "24dB/oct Passa-Baixa"
 
-#: data/ui/filter.ui:17
+#: data/ui/filter.ui:27
 msgid "36dB/oct Lowpass"
 msgstr "36dB/oct Passa-Baixa"
 
-#: data/ui/filter.ui:18
+#: data/ui/filter.ui:28
 msgid "12dB/oct Highpass"
 msgstr "12dB/oct Passa-Alta"
 
-#: data/ui/filter.ui:19
+#: data/ui/filter.ui:29
 msgid "24dB/oct Highpass"
 msgstr "24dB/oct Passa-Alta"
 
-#: data/ui/filter.ui:20
+#: data/ui/filter.ui:30
 msgid "36dB/oct Highpass"
 msgstr "36dB/oct Passa-Alta"
 
-#: data/ui/filter.ui:21
+#: data/ui/filter.ui:31
 msgid "6dB/oct Bandpass"
 msgstr "6dB/oct Passa-Banda"
 
-#: data/ui/filter.ui:22
+#: data/ui/filter.ui:32
 msgid "12dB/oct Bandpass"
 msgstr "12dB/oct Passa-Banda"
 
-#: data/ui/filter.ui:23
+#: data/ui/filter.ui:33
 msgid "18dB/oct Bandpass"
 msgstr "18dB/oct Passa-Banda"
 
-#: data/ui/filter.ui:24
+#: data/ui/filter.ui:34
 msgid "6dB/oct Bandreject"
 msgstr "6dB/oct Rejeita-Faixa"
 
-#: data/ui/filter.ui:25
+#: data/ui/filter.ui:35
 msgid "12dB/oct Bandreject"
 msgstr "12dB/oct Rejeita-Faixa"
 
-#: data/ui/filter.ui:26
+#: data/ui/filter.ui:36
 msgid "18dB/oct Bandreject"
 msgstr "18dB/oct Rejeita-Faixa"
 
-#: data/ui/filter.ui:113
+#: data/ui/filter.ui:123
 msgid "Inertia"
 msgstr "Inércia"
 
-#: data/ui/gate.ui:31 src/tags_plugin_name.cpp:38
+#: data/ui/gate.ui:41 src/tags_plugin_name.cpp:38
 msgid "Gate"
 msgstr "Portão"
 
-#: data/ui/gate.ui:149 data/ui/gate.ui:242 data/ui/multiband_gate_band.ui:243
+#: data/ui/gate.ui:159 data/ui/gate.ui:252 data/ui/multiband_gate_band.ui:243
 #: data/ui/multiband_gate_band.ui:336
 msgid "Zone"
 msgstr "Zona"
 
-#: data/ui/gate.ui:221 data/ui/multiband_gate_band.ui:315
+#: data/ui/gate.ui:231 data/ui/multiband_gate_band.ui:315
 msgid "Hysteresis"
 msgstr ""
 
-#: data/ui/gate.ui:316
+#: data/ui/gate.ui:326
 #, fuzzy
 msgid "Mix"
 msgstr "Misturado"
 
-#: data/ui/gate.ui:500
+#: data/ui/gate.ui:510
 msgid "Attack Zone Start"
 msgstr ""
 
-#: data/ui/gate.ui:554
+#: data/ui/gate.ui:564
 #, fuzzy
 msgid "Release Zone Start"
 msgstr "Tempo de liberação"
 
-#: data/ui/gate.ui:741
+#: data/ui/gate.ui:751
 msgid "Internal"
 msgstr "Interno"
 
-#: data/ui/gate.ui:1348 data/ui/multiband_gate_band.ui:856
+#: data/ui/gate.ui:1358 data/ui/multiband_gate_band.ui:856
 msgid "Gating"
 msgstr "Gating"
 
-#: data/ui/limiter.ui:48
+#: data/ui/limiter.ui:58
 msgid "Oversampling"
 msgstr "Sobreamostragem"
 
-#: data/ui/limiter.ui:60
+#: data/ui/limiter.ui:70
 msgid "Dither"
 msgstr "Dither"
 
-#: data/ui/limiter.ui:72
+#: data/ui/limiter.ui:82
 #, fuzzy
 msgid "Herm Thin"
 msgstr "Herm Fino"
 
-#: data/ui/limiter.ui:73
+#: data/ui/limiter.ui:83
 msgid "Herm Wide"
 msgstr "Herm Amplo"
 
-#: data/ui/limiter.ui:74
+#: data/ui/limiter.ui:84
 #, fuzzy
 msgid "Herm Tail"
 msgstr "Cauda de Herm"
 
-#: data/ui/limiter.ui:75
+#: data/ui/limiter.ui:85
 msgid "Herm Duck"
 msgstr ""
 
-#: data/ui/limiter.ui:76
+#: data/ui/limiter.ui:86
 msgid "Exp Thin"
 msgstr ""
 
-#: data/ui/limiter.ui:77
+#: data/ui/limiter.ui:87
 msgid "Exp Wide"
 msgstr "Exp Amplo"
 
-#: data/ui/limiter.ui:78
+#: data/ui/limiter.ui:88
 msgid "Exp Tail"
 msgstr "Cauda de Exp"
 
-#: data/ui/limiter.ui:79
+#: data/ui/limiter.ui:89
 msgid "Exp Duck"
 msgstr ""
 
-#: data/ui/limiter.ui:80
+#: data/ui/limiter.ui:90
 msgid "Line Thin"
 msgstr "Linha Fina"
 
-#: data/ui/limiter.ui:81
+#: data/ui/limiter.ui:91
 msgid "Line Wide"
 msgstr "Linha Larga"
 
-#: data/ui/limiter.ui:82
+#: data/ui/limiter.ui:92
 msgid "Line Tail"
 msgstr "Cauda da Linha"
 
-#: data/ui/limiter.ui:83
+#: data/ui/limiter.ui:93
 msgid "Line Duck"
 msgstr ""
 
-#: data/ui/limiter.ui:99 data/ui/multiband_compressor.ui:42
-#: data/ui/multiband_gate.ui:42
+#: data/ui/limiter.ui:109 data/ui/multiband_compressor.ui:53
+#: data/ui/multiband_gate.ui:53
 msgid "None"
 msgstr "Nenhuma"
 
-#: data/ui/limiter.ui:100
+#: data/ui/limiter.ui:110
 msgid "Half x2(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:101
+#: data/ui/limiter.ui:111
 msgid "Half x2(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:102
+#: data/ui/limiter.ui:112
 msgid "Half x3(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:103
+#: data/ui/limiter.ui:113
 msgid "Half x3(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:104
+#: data/ui/limiter.ui:114
 msgid "Half x4(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:105
+#: data/ui/limiter.ui:115
 msgid "Half x4(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:106
+#: data/ui/limiter.ui:116
 msgid "Half x6(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:107
+#: data/ui/limiter.ui:117
 msgid "Half x6(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:108
+#: data/ui/limiter.ui:118
 msgid "Half x8(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:109
+#: data/ui/limiter.ui:119
 msgid "Half x8(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:110
+#: data/ui/limiter.ui:120
 msgid "Full x2(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:111
+#: data/ui/limiter.ui:121
 msgid "Full x2(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:112
+#: data/ui/limiter.ui:122
 msgid "Full x3(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:113
+#: data/ui/limiter.ui:123
 msgid "Full x3(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:114
+#: data/ui/limiter.ui:124
 msgid "Full x4(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:115
+#: data/ui/limiter.ui:125
 msgid "Full x4(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:116
+#: data/ui/limiter.ui:126
 msgid "Full x6(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:117
+#: data/ui/limiter.ui:127
 msgid "Full x6(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:118
+#: data/ui/limiter.ui:128
 msgid "Full x8(2L)"
 msgstr ""
 
-#: data/ui/limiter.ui:119
+#: data/ui/limiter.ui:129
 msgid "Full x8(3L)"
 msgstr ""
 
-#: data/ui/limiter.ui:169
+#: data/ui/limiter.ui:179
 msgid "SC PreAmp"
 msgstr ""
 
-#: data/ui/limiter.ui:198 data/ui/multiband_compressor_band.ui:626
+#: data/ui/limiter.ui:208 data/ui/multiband_compressor_band.ui:626
 #: data/ui/multiband_gate_band.ui:688
 msgid "Sidechain PreAmplification"
 msgstr "Pré-amplificação de cadeia lateral"
 
-#: data/ui/limiter.ui:373
+#: data/ui/limiter.ui:383
 msgid "Boost"
 msgstr "Impulso"
 
-#: data/ui/limiter.ui:388
+#: data/ui/limiter.ui:398
 msgid "Stereo Link"
 msgstr "Elo Stereo"
 
-#: data/ui/limiter.ui:433 data/ui/multiband_compressor_band.ui:116
+#: data/ui/limiter.ui:443 data/ui/multiband_compressor_band.ui:116
 #: data/ui/multiband_gate_band.ui:89
 msgid "External Sidechain"
 msgstr "Cadeia Lateral Externa"
 
-#: data/ui/limiter.ui:446 data/ui/multiband_compressor.ui:80
-#: data/ui/multiband_gate.ui:80
+#: data/ui/limiter.ui:456 data/ui/multiband_compressor.ui:91
+#: data/ui/multiband_gate.ui:91
 msgid "External Sidechain Source"
 msgstr ""
 
-#: data/ui/limiter.ui:465
+#: data/ui/limiter.ui:475
 #, fuzzy
 msgid "Auto Leveling"
 msgstr "Ganho Automático"
 
-#: data/ui/limiter.ui:505
+#: data/ui/limiter.ui:515
 #, fuzzy
 msgid "Auto Leveling Attack"
 msgstr "Ganho Automático"
 
-#: data/ui/limiter.ui:541
+#: data/ui/limiter.ui:551
 #, fuzzy
 msgid "Auto Leveling Release"
 msgstr "Ganho Automático"
 
-#: data/ui/limiter.ui:576
+#: data/ui/limiter.ui:586
 #, fuzzy
 msgid "Auto Leveling Knee"
 msgstr "Ganho Automático"
 
-#: data/ui/limiter.ui:601
+#: data/ui/limiter.ui:611
 #, fuzzy
 msgid "Gain Left"
 msgstr "Esquerda"
 
-#: data/ui/limiter.ui:628
+#: data/ui/limiter.ui:638
 #, fuzzy
 msgid "Gain Right"
 msgstr "Direita"
 
-#: data/ui/limiter.ui:655
+#: data/ui/limiter.ui:665
 msgid "Sidechain Left"
 msgstr "Cadeia Lateral Esquerda"
 
-#: data/ui/limiter.ui:682
+#: data/ui/limiter.ui:692
 msgid "Sidechain Right"
 msgstr "Cadeia Lateral Direita"
 
-#: data/ui/loudness.ui:20
+#: data/ui/loudness.ui:30
 msgid "Standard"
 msgstr "Padrão"
 
-#: data/ui/loudness.ui:32
+#: data/ui/loudness.ui:42
 msgid "Flat"
 msgstr "Plano"
 
-#: data/ui/loudness.ui:49
+#: data/ui/loudness.ui:59
 #, fuzzy
 msgid "FFT Size"
 msgstr "Tamanho do Quadro"
 
-#: data/ui/loudness.ui:74
+#: data/ui/loudness.ui:84
 msgid "Fast Fourier Transform Size"
 msgstr ""
 
-#: data/ui/loudness.ui:81
+#: data/ui/loudness.ui:91
 msgid "Output Volume"
 msgstr "Volume de Saída"
 
-#: data/ui/loudness.ui:117
+#: data/ui/loudness.ui:127
 #, fuzzy
 msgid "Clipping"
 msgstr "Mapeamento de Canal"
 
-#: data/ui/loudness.ui:145
+#: data/ui/loudness.ui:155
 msgid "Clipping Range"
 msgstr ""
 
-#: data/ui/maximizer.ui:53
+#: data/ui/maximizer.ui:63
 msgid "Ceiling"
 msgstr "Teto"
 
-#: data/ui/multiband_compressor.ui:31 data/ui/multiband_gate.ui:31
+#: data/ui/multiband_compressor.ui:42 data/ui/multiband_gate.ui:42
 msgid "Sidechain Boost"
 msgstr "Impulso de Cadeia Lateral"
 
-#: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:43
+#: data/ui/multiband_compressor.ui:54 data/ui/multiband_gate.ui:54
 msgid "Pink BT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:44 data/ui/multiband_gate.ui:44
+#: data/ui/multiband_compressor.ui:55 data/ui/multiband_gate.ui:55
 msgid "Pink MT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:45 data/ui/multiband_gate.ui:45
+#: data/ui/multiband_compressor.ui:56 data/ui/multiband_gate.ui:56
 msgid "Brown BT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:46 data/ui/multiband_gate.ui:46
+#: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Brown MT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:95 data/ui/multiband_gate.ui:95
+#: data/ui/multiband_compressor.ui:106 data/ui/multiband_gate.ui:106
 msgid "Operating Mode"
 msgstr "Modo operacional"
 
-#: data/ui/multiband_compressor.ui:106 data/ui/multiband_gate.ui:106
+#: data/ui/multiband_compressor.ui:117 data/ui/multiband_gate.ui:117
 msgid "Classic"
 msgstr "Clássico"
 
-#: data/ui/multiband_compressor.ui:107 data/ui/multiband_gate.ui:107
+#: data/ui/multiband_compressor.ui:118 data/ui/multiband_gate.ui:118
 msgid "Modern"
 msgstr "Moderno"
 
-#: data/ui/multiband_compressor.ui:216 data/ui/multiband_gate.ui:216
+#: data/ui/multiband_compressor.ui:227 data/ui/multiband_gate.ui:227
 msgid "Bands List"
 msgstr "Lista de Bandas"
 
-#: data/ui/multiband_compressor.ui:225 data/ui/multiband_gate.ui:225
+#: data/ui/multiband_compressor.ui:236 data/ui/multiband_gate.ui:236
 msgid "Band 1"
 msgstr "Banda 1"
 
-#: data/ui/multiband_compressor.ui:242 data/ui/multiband_gate.ui:242
+#: data/ui/multiband_compressor.ui:253 data/ui/multiband_gate.ui:253
 msgid "Band 2"
 msgstr "Banda 2"
 
-#: data/ui/multiband_compressor.ui:268 data/ui/multiband_gate.ui:268
+#: data/ui/multiband_compressor.ui:279 data/ui/multiband_gate.ui:279
 msgid "Band 3"
 msgstr "Banda 3"
 
-#: data/ui/multiband_compressor.ui:294 data/ui/multiband_gate.ui:294
+#: data/ui/multiband_compressor.ui:305 data/ui/multiband_gate.ui:305
 msgid "Band 4"
 msgstr "Banda 4"
 
-#: data/ui/multiband_compressor.ui:320 data/ui/multiband_gate.ui:320
+#: data/ui/multiband_compressor.ui:331 data/ui/multiband_gate.ui:331
 msgid "Band 5"
 msgstr "Banda 5"
 
-#: data/ui/multiband_compressor.ui:346 data/ui/multiband_gate.ui:346
+#: data/ui/multiband_compressor.ui:357 data/ui/multiband_gate.ui:357
 msgid "Band 6"
 msgstr "Banda 6"
 
-#: data/ui/multiband_compressor.ui:372 data/ui/multiband_gate.ui:372
+#: data/ui/multiband_compressor.ui:383 data/ui/multiband_gate.ui:383
 msgid "Band 7"
 msgstr "Banda 7"
 
-#: data/ui/multiband_compressor.ui:398 data/ui/multiband_gate.ui:398
+#: data/ui/multiband_compressor.ui:409 data/ui/multiband_gate.ui:409
 msgid "Band 8"
 msgstr "Banda 8"
 
@@ -1613,89 +1613,89 @@ msgstr "Onda senoidal"
 msgid "White Noise"
 msgstr "Ruído Branco"
 
-#: data/ui/pitch.ui:33
+#: data/ui/pitch.ui:43
 msgid "High Speed"
 msgstr "Alta velocidade"
 
-#: data/ui/pitch.ui:34
+#: data/ui/pitch.ui:44
 msgid "High Quality"
 msgstr "Alta qualidade"
 
-#: data/ui/pitch.ui:35
+#: data/ui/pitch.ui:45
 msgid "High Consistency"
 msgstr "Alta consistência"
 
-#: data/ui/pitch.ui:49
+#: data/ui/pitch.ui:59
 #, fuzzy
 msgid "Formant"
 msgstr "Formato"
 
-#: data/ui/pitch.ui:60
+#: data/ui/pitch.ui:70
 msgid "Shifted"
 msgstr "Deslocado"
 
-#: data/ui/pitch.ui:61
+#: data/ui/pitch.ui:71
 #, fuzzy
 msgid "Preserved"
 msgstr "Predefinição"
 
-#: data/ui/pitch.ui:87
+#: data/ui/pitch.ui:97
 msgid "Transients"
 msgstr "Transientes"
 
-#: data/ui/pitch.ui:98
+#: data/ui/pitch.ui:108
 #, fuzzy
 msgid "Crisp"
 msgstr "Clareza"
 
-#: data/ui/pitch.ui:99
+#: data/ui/pitch.ui:109
 msgid "Mixed"
 msgstr "Misturado"
 
-#: data/ui/pitch.ui:100
+#: data/ui/pitch.ui:110
 msgid "Smooth"
 msgstr "Suave"
 
-#: data/ui/pitch.ui:114
+#: data/ui/pitch.ui:124
 #, fuzzy
 msgid "Detector"
 msgstr "Detecção"
 
-#: data/ui/pitch.ui:125
+#: data/ui/pitch.ui:135
 #, fuzzy
 msgid "Compound"
 msgstr "Compressão"
 
-#: data/ui/pitch.ui:126
+#: data/ui/pitch.ui:136
 msgid "Percussive"
 msgstr "Percussivo"
 
-#: data/ui/pitch.ui:127
+#: data/ui/pitch.ui:137
 #, fuzzy
 msgid "Soft"
 msgstr "Clipe Macio"
 
-#: data/ui/pitch.ui:141
+#: data/ui/pitch.ui:151
 msgid "Phase"
 msgstr "Estágio"
 
-#: data/ui/pitch.ui:152
+#: data/ui/pitch.ui:162
 msgid "Laminar"
 msgstr ""
 
-#: data/ui/pitch.ui:153
+#: data/ui/pitch.ui:163
 msgid "Independent"
 msgstr "Independente"
 
-#: data/ui/pitch.ui:178
+#: data/ui/pitch.ui:188
 msgid "Cents"
 msgstr "Centavos"
 
-#: data/ui/pitch.ui:212
+#: data/ui/pitch.ui:222
 msgid "Semitones"
 msgstr "Semitons"
 
-#: data/ui/pitch.ui:246
+#: data/ui/pitch.ui:256
 msgid "Octaves"
 msgstr "Oitavas"
 
@@ -1868,11 +1868,11 @@ msgstr "Máximo"
 msgid "Load"
 msgstr "Carregar"
 
-#: data/ui/preset_row.ui:35
+#: data/ui/preset_row.ui:34
 msgid "Save current settings to this preset file"
 msgstr "Salvar Configurações atuais para este arquivo de predefinição"
 
-#: data/ui/preset_row.ui:46
+#: data/ui/preset_row.ui:44
 msgid "Remove this preset file"
 msgstr "Remover este arquivo de predefinição"
 
@@ -1910,79 +1910,79 @@ msgstr "Pesquisar Predefinições de Entrada"
 msgid "Input Presets List"
 msgstr "Lista de Predefinições de Entrada"
 
-#: data/ui/reverb.ui:30
+#: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
 msgstr "Amortecimento de Alta Frequência"
 
-#: data/ui/reverb.ui:62
+#: data/ui/reverb.ui:73
 msgid "Room Size"
 msgstr "Tamanho do quarto"
 
-#: data/ui/reverb.ui:70
+#: data/ui/reverb.ui:81
 msgid "Small"
 msgstr "Pequeno"
 
-#: data/ui/reverb.ui:71
+#: data/ui/reverb.ui:82
 msgid "Medium"
 msgstr "Médio"
 
-#: data/ui/reverb.ui:72
+#: data/ui/reverb.ui:83
 msgid "Large"
 msgstr "Grande"
 
-#: data/ui/reverb.ui:73
+#: data/ui/reverb.ui:84
 msgid "Tunnel"
 msgstr "Túnel"
 
-#: data/ui/reverb.ui:74
+#: data/ui/reverb.ui:85
 msgid "Large/smooth"
 msgstr "Grande/Suave"
 
-#: data/ui/reverb.ui:75
+#: data/ui/reverb.ui:86
 msgid "Experimental"
 msgstr "Experimental"
 
-#: data/ui/reverb.ui:92
+#: data/ui/reverb.ui:103
 msgid "Diffusion"
 msgstr "Difusão"
 
-#: data/ui/reverb.ui:129
+#: data/ui/reverb.ui:140
 msgid "Pre Delay"
 msgstr "Pré Atraso"
 
-#: data/ui/reverb.ui:162
+#: data/ui/reverb.ui:173
 msgid "Decay Time"
 msgstr "Tempo de Decaimento"
 
-#: data/ui/reverb.ui:266
+#: data/ui/reverb.ui:277
 msgid "Bass Cut"
 msgstr "Corte de Grave"
 
-#: data/ui/reverb.ui:301
+#: data/ui/reverb.ui:312
 msgid "Treble Cut"
 msgstr "Corte de Agudo"
 
-#: data/ui/reverb.ui:565
+#: data/ui/reverb.ui:580
 msgid "Ambience"
 msgstr "Ambiente"
 
-#: data/ui/reverb.ui:572
+#: data/ui/reverb.ui:587
 msgid "Empty Walls"
 msgstr "Paredes Vazias"
 
-#: data/ui/reverb.ui:585
+#: data/ui/reverb.ui:600
 msgid "Room"
 msgstr "Quarto"
 
-#: data/ui/reverb.ui:592
+#: data/ui/reverb.ui:607
 msgid "Large Empty Hall"
 msgstr "Grande Salão Vazio"
 
-#: data/ui/reverb.ui:605
+#: data/ui/reverb.ui:620
 msgid "Disco"
 msgstr "Discoteca"
 
-#: data/ui/reverb.ui:612
+#: data/ui/reverb.ui:627
 msgid "Large Occupied Hall"
 msgstr "Grande Salão Ocupado"
 
@@ -1996,8 +1996,8 @@ msgid "Models"
 msgstr "Modelos"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:96 src/rnnoise_ui.cpp:235
-#: src/rnnoise_ui.cpp:269
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:94 src/rnnoise_ui.cpp:240
+#: src/rnnoise_ui.cpp:274
 msgid "Standard Model"
 msgstr ""
 
@@ -2039,96 +2039,96 @@ msgstr ""
 msgid "Quit EasyEffects"
 msgstr "EasyEffects"
 
-#: data/ui/stereo_tools.ui:69
+#: data/ui/stereo_tools.ui:79
 #, fuzzy
 msgid "Input Balance"
 msgstr "Balanço"
 
-#: data/ui/stereo_tools.ui:78
+#: data/ui/stereo_tools.ui:88
 msgid "Softclip"
 msgstr "Clipe Macio"
 
-#: data/ui/stereo_tools.ui:106
+#: data/ui/stereo_tools.ui:116
 #, fuzzy
 msgid "Softclip Level"
 msgstr "Clipe Macio"
 
-#: data/ui/stereo_tools.ui:118
+#: data/ui/stereo_tools.ui:128
 msgid "Stereo Matrix"
 msgstr "Matriz Stereo"
 
-#: data/ui/stereo_tools.ui:128
+#: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
 msgstr "ED > ED (Stereo Padrão)"
 
-#: data/ui/stereo_tools.ui:129
+#: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
 msgstr "ED > ML (Stereo para Meio-Lado)"
 
-#: data/ui/stereo_tools.ui:130
+#: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "ML > ED (Meio-Lado para Stereo)"
 
-#: data/ui/stereo_tools.ui:131
+#: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
 msgstr "ED > EE (Canal Esquerdo Mono)"
 
-#: data/ui/stereo_tools.ui:132
+#: data/ui/stereo_tools.ui:142
 msgid "LR > RR (Mono Right Channel)"
 msgstr "ED > DD (Canal Direito Mono)"
 
-#: data/ui/stereo_tools.ui:133
+#: data/ui/stereo_tools.ui:143
 msgid "LR > L+R (Mono Sum L+R)"
 msgstr "ED > E+D (Soma Mono E+D)"
 
-#: data/ui/stereo_tools.ui:134
+#: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
 msgstr "ED > DL (Alternar Canais Stereo)"
 
-#: data/ui/stereo_tools.ui:137
+#: data/ui/stereo_tools.ui:147
 #, fuzzy
 msgid "Stereo Mode"
 msgstr "Base Stereo"
 
-#: data/ui/stereo_tools.ui:170 data/ui/stereo_tools.ui:195
+#: data/ui/stereo_tools.ui:180 data/ui/stereo_tools.ui:205
 msgid "Invert Phase"
 msgstr "Inverter Fase"
 
-#: data/ui/stereo_tools.ui:222
+#: data/ui/stereo_tools.ui:232
 msgid "Side Level"
 msgstr "Nível Lateral"
 
-#: data/ui/stereo_tools.ui:258
+#: data/ui/stereo_tools.ui:268
 msgid "Side Balance"
 msgstr "Balanço Lateral"
 
-#: data/ui/stereo_tools.ui:294
+#: data/ui/stereo_tools.ui:304
 msgid "Middle Level"
 msgstr "Nível do Meio"
 
-#: data/ui/stereo_tools.ui:330
+#: data/ui/stereo_tools.ui:340
 msgid "Middle Panorama"
 msgstr "Panorama do Meio"
 
-#: data/ui/stereo_tools.ui:410
+#: data/ui/stereo_tools.ui:420
 #, fuzzy
 msgid "Output Balance"
 msgstr "Ganho de Entrada"
 
-#: data/ui/stereo_tools.ui:419
+#: data/ui/stereo_tools.ui:429
 msgid "Delay L/R"
 msgstr "Atraso E/D"
 
-#: data/ui/stereo_tools.ui:446
+#: data/ui/stereo_tools.ui:456
 #, fuzzy
 msgid "Delay Left Right"
 msgstr "Atraso E/D"
 
-#: data/ui/stereo_tools.ui:455
+#: data/ui/stereo_tools.ui:465
 msgid "Stereo Base"
 msgstr "Base Stereo"
 
-#: data/ui/stereo_tools.ui:491
+#: data/ui/stereo_tools.ui:501
 msgid "Stereo Phase"
 msgstr "Fase Stereo"
 
@@ -2214,13 +2214,13 @@ msgstr "Arquivo de impulso não importado"
 msgid "Import Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
-#: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:352
-#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:133
+#: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:350
+#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "Abrir"
 
-#: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:352
-#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:133
+#: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:350
+#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -2245,11 +2245,11 @@ msgstr "Nenhum arquivo de impulso carregado"
 msgid "Failed To Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:547
+#: src/effects_box.cpp:261 src/plugins_box.cpp:653
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:567
+#: src/effects_box.cpp:284 src/plugins_box.cpp:673
 msgid "Players"
 msgstr "Reprodutores"
 
@@ -2261,17 +2261,17 @@ msgstr "Efeitos"
 msgid "infinity"
 msgstr "infinito"
 
-#: src/equalizer_ui.cpp:351
+#: src/equalizer_ui.cpp:349
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Importar Predefinições"
 
-#: src/equalizer_ui.cpp:357
+#: src/equalizer_ui.cpp:355
 #, fuzzy
 msgid "APO Presets"
 msgstr "Predefinições"
 
-#: src/equalizer_ui.cpp:371
+#: src/equalizer_ui.cpp:369
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
@@ -2283,11 +2283,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Remover este arquivo de predefinição"
 
-#: src/plugins_box.cpp:501
+#: src/plugins_box.cpp:607
 msgid "Remove"
 msgstr "Remover"
 
-#: src/plugins_box.cpp:568
+#: src/plugins_box.cpp:674
 #, fuzzy
 msgid "Output Device"
 msgstr "Ganho de Entrada"
@@ -2302,17 +2302,17 @@ msgstr "Adicionar"
 msgid "Import Preset"
 msgstr "Importar Predefinições"
 
-#: src/rnnoise_ui.cpp:91
+#: src/rnnoise_ui.cpp:89
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
 
-#: src/rnnoise_ui.cpp:132
+#: src/rnnoise_ui.cpp:130
 msgid "Import Model File"
 msgstr "Importar Arquivo de Modelo"
 
-#: src/rnnoise_ui.cpp:137
+#: src/rnnoise_ui.cpp:135
 msgid "RNNoise Models"
 msgstr "Modelos RNNoise"
 
@@ -2390,15 +2390,25 @@ msgstr "Redução de Ruído"
 msgid "Stereo Tools"
 msgstr "Ferramentas Stereo"
 
+#. For translators: {} is replaced by the effect name.
+#: src/ui_helpers.cpp:70
+msgid "{} Is Not Installed On The System"
+msgstr ""
+
+#. For translators: {} is replaced by the package name.
+#: src/ui_helpers.cpp:73
+msgid "{} Not Available"
+msgstr ""
+
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at
 #. the same time could have issues on Wayland and the only way to
 #. close the outer one is pressing ESC, the mouse click does not work.
-#: src/ui_helpers.cpp:84
+#: src/ui_helpers.cpp:116
 msgid "Close (Press ESC)"
 msgstr "Fechar (Pressione ESC)"
 
-#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:127
+#: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr ""
 
