@@ -31,11 +31,11 @@ struct Data {
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
-  double mouse_y, mouse_x, margin, line_width;
+  float mouse_y, mouse_x, margin, line_width;
 
-  double x_min, x_max, y_min, y_max;
+  float x_min, x_max, y_min, y_max;
 
-  double x_min_log, x_max_log;
+  float x_min_log, x_max_log;
 
   ChartType chart_type;
 
@@ -78,7 +78,7 @@ void set_axis_labels_color(Chart* self, GdkRGBA color) {
   self->data->color_axis_labels = color;
 }
 
-void set_line_width(Chart* self, const double& value) {
+void set_line_width(Chart* self, const float& value) {
   self->data->line_width = value;
 }
 
@@ -110,7 +110,7 @@ void set_y_unit(Chart* self, const std::string& value) {
   self->data->y_unit = value;
 }
 
-void set_margin(Chart* self, const double& v) {
+void set_margin(Chart* self, const float& v) {
   self->data->margin = v;
 }
 
@@ -171,9 +171,13 @@ void set_y_data(Chart* self, const std::vector<float>& y) {
   gtk_widget_queue_draw(GTK_WIDGET(self));
 }
 
-void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y, Chart* self) {
-  const int width = gtk_widget_get_allocated_width(GTK_WIDGET(self));
-  const int height = gtk_widget_get_allocated_height(GTK_WIDGET(self));
+void on_pointer_motion(GtkEventControllerMotion* controller, double xpos, double ypos, Chart* self) {
+  // Static cast trying to fix codeql issue
+  const auto x = static_cast<float>(xpos);
+  const auto y = static_cast<float>(ypos);
+
+  const auto width = static_cast<float>(gtk_widget_get_allocated_width(GTK_WIDGET(self)));
+  const auto height = static_cast<float>(gtk_widget_get_allocated_height(GTK_WIDGET(self)));
 
   const auto usable_height = height - self->data->margin * height - self->data->x_axis_height;
 
@@ -186,11 +190,11 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double x, double y,
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
-        const double& mouse_x_log = (x - self->data->margin * width) / width -
-                                    2 * self->data->margin * width * (self->data->x_max_log - self->data->x_min_log) +
-                                    self->data->x_min_log;
+        const float mouse_x_log = (x - self->data->margin * width) / width -
+                                  2 * self->data->margin * width * (self->data->x_max_log - self->data->x_min_log) +
+                                  self->data->x_min_log;
 
-        self->data->mouse_x = std::pow(10.0, mouse_x_log);  // exp10 does not exist on FreeBSD
+        self->data->mouse_x = std::pow(10.0F, mouse_x_log);  // exp10 does not exist on FreeBSD
 
         break;
       }
@@ -234,7 +238,7 @@ auto draw_unit(Chart* self, GtkSnapshot* snapshot, const int& width, const int& 
 }
 
 auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const int& height) -> int {
-  double labels_offset = 0.1 * width;
+  float labels_offset = 0.1F * width;
 
   int n_x_labels = static_cast<int>(std::ceil((width - 2 * self->data->margin * width) / labels_offset)) + 1;
 
@@ -271,7 +275,7 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
     at window borders.
   */
 
-  for (size_t n = 0U; n < labels.size() - 1; n++) {
+  for (size_t n = 0U; n < labels.size() - 1U; n++) {
     const auto msg = fmt::format(ui::get_user_locale(), " {0:.{1}Lf} ", labels[n], self->data->n_x_decimals);
 
     auto* layout = gtk_widget_create_pango_layout(GTK_WIDGET(self), msg.c_str());
@@ -288,8 +292,8 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
 
     gtk_snapshot_save(snapshot);
 
-    auto point = GRAPHENE_POINT_INIT(static_cast<float>(self->data->margin * width + n * labels_offset),
-                                     static_cast<float>(height - text_height));
+    auto point =
+        GRAPHENE_POINT_INIT(self->data->margin * width + n * labels_offset, static_cast<float>(height - text_height));
 
     gtk_snapshot_translate(snapshot, &point);
 
@@ -335,9 +339,9 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
   gtk_snapshot_append_color(snapshot, &self->data->background_color, &widget_rectangle);
 
   if (const auto n_points = self->data->y_axis.size(); n_points > 0) {
-    double usable_width = width - 2 * (self->data->line_width + self->data->margin * width);
+    float usable_width = width - 2.0F * (self->data->line_width + self->data->margin * width);
 
-    int usable_height = static_cast<int>(height - self->data->margin * height) - self->data->x_axis_height;
+    auto usable_height = static_cast<int>(height - self->data->margin * height) - self->data->x_axis_height;
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
@@ -363,8 +367,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
     auto border_color = std::to_array({self->data->color, self->data->color, self->data->color, self->data->color});
 
     auto border_width =
-        std::to_array({static_cast<float>(self->data->line_width), static_cast<float>(self->data->line_width),
-                       static_cast<float>(self->data->line_width), static_cast<float>(self->data->line_width)});
+        std::to_array({self->data->line_width, self->data->line_width, self->data->line_width, self->data->line_width});
 
     float radius = (self->data->rounded_corners == true) ? 5.0F : 0.0F;
 
@@ -563,7 +566,7 @@ void chart_init(Chart* self) {
   self->data->n_x_decimals = 1;
   self->data->n_y_decimals = 1;
   self->data->line_width = 2.0F;
-  self->data->margin = 0.02;
+  self->data->margin = 0.02F;
 
   self->data->x_min = 0.0F;
   self->data->y_min = 0.0F;
