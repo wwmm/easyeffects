@@ -1060,7 +1060,7 @@ void on_registry_global(void* data,
         return;
       }
 
-      uint64_t serial = 0;
+      uint64_t serial = 0U;
 
       if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
         util::warning(
@@ -1151,7 +1151,7 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Link) == 0) {
-    uint64_t serial = 0;
+    uint64_t serial = 0U;
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
@@ -1192,7 +1192,7 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Port) == 0) {
-    uint64_t serial = 0;
+    uint64_t serial = 0U;
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
@@ -1225,7 +1225,7 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Module) == 0) {
-    uint64_t serial = 0;
+    uint64_t serial = 0U;
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
@@ -1256,7 +1256,7 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Client) == 0) {
-    uint64_t serial = 0;
+    uint64_t serial = 0U;
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
@@ -1315,7 +1315,7 @@ void on_registry_global(void* data,
       const std::string media_class = key_media_class;
 
       if (media_class == tags::pipewire::media_class::device) {
-        uint64_t serial = 0;
+        uint64_t serial = 0U;
 
         if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
           util::warning(

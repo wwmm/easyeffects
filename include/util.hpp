@@ -142,7 +142,7 @@ auto to_string(const T& num, const std::string def = "0") -> std::string {
   // number of base-10 digits that are necessary to uniquely represent all distinct
   // values of the type T (meaningful only for real numbers) +
   // room for other characters such as "+-e,."
-  const size_t max = std::numeric_limits<T>::digits10 + std::numeric_limits<T>::max_digits10 + 10u;
+  const size_t max = std::numeric_limits<T>::digits10 + std::numeric_limits<T>::max_digits10 + 10U;
 
   std::array<char, max> buffer;
 

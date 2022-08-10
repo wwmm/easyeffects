@@ -29,9 +29,9 @@ enum Channel { left, right };
 
 struct APO_Band {
   std::string type;
-  float freq = 1000.0f;
-  float gain = 0.0f;
-  float quality = (1.0f / std::numbers::sqrt2_v<float>);
+  float freq = 1000.0F;
+  float gain = 0.0F;
+  float quality = (1.0F / std::numbers::sqrt2_v<float>);
 };
 
 std::unordered_map<std::string, std::string> const FilterTypeMap = {
@@ -239,29 +239,29 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
     parse_apo_gain(line, filter);
 
     if (!parse_apo_quality(line, filter)) {
-      filter.quality = 2.0f / 3.0f;
+      filter.quality = 2.0F / 3.0F;
     }
   } else if (filter_type == "LS 6DB") {
-    filter.freq = filter.freq * 2.0f / 3.0f;
-    filter.quality = std::numbers::sqrt2_v<float> / 3.0f;
+    filter.freq = filter.freq * 2.0F / 3.0F;
+    filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
 
     parse_apo_gain(line, filter);
   } else if (filter_type == "LS 12DB") {
-    filter.freq = filter.freq * 3.0f / 2.0f;
+    filter.freq = filter.freq * 3.0F / 2.0F;
 
     parse_apo_gain(line, filter);
   } else if (filter_type == "HS 6DB") {
-    filter.freq = filter.freq / (1.0f / std::numbers::sqrt2_v<float>);
-    filter.quality = std::numbers::sqrt2_v<float> / 3.0f;
+    filter.freq = filter.freq / (1.0F / std::numbers::sqrt2_v<float>);
+    filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
 
     parse_apo_gain(line, filter);
   } else if (filter_type == "HS 12DB") {
-    filter.freq = filter.freq * (1.0f / std::numbers::sqrt2_v<float>);
+    filter.freq = filter.freq * (1.0F / std::numbers::sqrt2_v<float>);
 
     parse_apo_gain(line, filter);
   } else if (filter_type == "NO") {
     if (!parse_apo_quality(line, filter)) {
-      filter.quality = 100.0f / 3.0f;
+      filter.quality = 100.0F / 3.0F;
     }
   } else if (filter_type == "AP") {
     parse_apo_quality(line, filter);

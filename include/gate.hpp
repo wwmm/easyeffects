@@ -57,7 +57,7 @@ class Gate : public PluginBase {
   float curve_port_value = 0.0F;
   float envelope_port_value = 0.0F;
   float latency_port_value = 0.0F;
-  double gating_port_value = 0.0F;
+  double gating_port_value = 0.0;
 
  private:
   uint latency_n_frames = 0U;
