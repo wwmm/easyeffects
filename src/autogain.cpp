@@ -155,7 +155,7 @@ void AutoGain::set_maximum_history(const int& seconds) {
 
   // The value given to ebur128_set_max_history must be in milliseconds
 
-  ebur128_set_max_history(ebur_state, static_cast<ulong>(seconds) * 1000ul);
+  ebur128_set_max_history(ebur_state, static_cast<ulong>(seconds) * 1000UL);
 }
 
 void AutoGain::setup() {

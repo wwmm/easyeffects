@@ -66,31 +66,31 @@ void show_fixed_toast(AdwToastOverlay* toast_overlay, const std::string& text, c
 }
 
 auto missing_plugin_box(const std::string& name, const std::string& package) -> GtkWidget* {
-  // For translators: {} is replaced by the effect name.
-  const auto format_title = fmt::runtime(_("{} Is Not Installed On The System"));
-
-  // For translators: {} is replaced by the package name.
-  const auto format_descr = fmt::runtime(_("{} Not Available"));
-
-  std::string translated_name;
-
-  try {
-    translated_name = tags::plugin_name::get_translated().at(name);
-  } catch (...) {
-  }
-
-  auto* status_page = adw_status_page_new();
-
-  adw_status_page_set_icon_name(ADW_STATUS_PAGE(status_page), "emblem-music-symbolic");
-  adw_status_page_set_title(ADW_STATUS_PAGE(status_page), fmt::format(format_title, translated_name).c_str());
-  adw_status_page_set_description(ADW_STATUS_PAGE(status_page), fmt::format(format_descr, package).c_str());
-
   auto* box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
 
   gtk_widget_set_margin_start(box, 6);
   gtk_widget_set_margin_end(box, 6);
   gtk_widget_set_margin_bottom(box, 6);
   gtk_widget_set_margin_top(box, 6);
+  gtk_widget_set_valign(box, GTK_ALIGN_CENTER);
+
+  auto* status_page = adw_status_page_new();
+
+  try {
+    // For translators: {} is replaced by the effect name.
+    const auto format_title = fmt::runtime(_("{} Not Available"));
+
+    // For translators: {} is replaced by the package name.
+    const auto format_descr = fmt::runtime(_("{} Is Not Installed On The System"));
+
+    const std::string translated_name = tags::plugin_name::get_translated().at(name);
+
+    adw_status_page_set_title(ADW_STATUS_PAGE(status_page), fmt::format(format_title, translated_name).c_str());
+    adw_status_page_set_description(ADW_STATUS_PAGE(status_page), fmt::format(format_descr, package).c_str());
+  } catch (...) {
+  }
+
+  adw_status_page_set_icon_name(ADW_STATUS_PAGE(status_page), "emblem-music-symbolic");
 
   gtk_box_append(GTK_BOX(box), status_page);
 
