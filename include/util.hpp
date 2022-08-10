@@ -34,6 +34,12 @@
 #include <string>
 #include <thread>
 #include <vector>
+// this usage of an experimental source_location will eventually fail once experimental source_location has been removed from stable clang
+// when that happens source_location (a c++20 feature) has probably made it to stable clang, 
+// so we should remove the ifdefs and only use std::source_location for both gcc and clang.
+#ifdef __clang__
+#include <experimental/source_location>
+#endif
 
 namespace util {
 
@@ -44,11 +50,22 @@ constexpr double minimum_db_d_level = -100.0;
 constexpr float minimum_linear_level = 0.00001F;
 constexpr double minimum_linear_d_level = 0.00001;
 
+#ifndef __clang__
 void debug(const std::string& s, std::source_location location = std::source_location::current());
 void error(const std::string& s, std::source_location location = std::source_location::current());
 void critical(const std::string& s, std::source_location location = std::source_location::current());
 void warning(const std::string& s, std::source_location location = std::source_location::current());
 void info(const std::string& s, std::source_location location = std::source_location::current());
+#endif
+
+// otherwise clang-tidy complains about: error: no type named 'source_location' in namespace 'util' [clang-diagnostic-error] which is a clang build error due to unfinished support for c++20
+#ifdef __clang__
+void debug(const std::string& s, std::experimental::source_location location = std::experimental::source_location::current());
+void error(const std::string& s, std::experimental::source_location location = std::experimental::source_location::current());
+void critical(const std::string& s, std::experimental::source_location location = std::experimental::source_location::current());
+void warning(const std::string& s, std::experimental::source_location location = std::experimental::source_location::current());
+void info(const std::string& s, std::experimental::source_location location = std::experimental::source_location::current());
+#endif
 
 auto normalize(const double& x, const double& max, const double& min = 1.0) -> double;
 
