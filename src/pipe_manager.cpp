@@ -30,7 +30,7 @@ struct node_data {
 
   PipeManager* pm = nullptr;
 
-  NodeInfo* nd_info;
+  NodeInfo* nd_info{};
 };
 
 struct proxy_data {
@@ -165,7 +165,7 @@ void on_destroy_node_proxy(void* data) {
 
   pm->node_map.erase(node_it);
 
-  if (!pm->exiting) {
+  if (!PipeManager::exiting) {
     if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
       const auto nd_info_copy = *nd->nd_info;
 
@@ -377,7 +377,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       }
     }
 
-    float pw_lat = 0.0f;
+    float pw_lat = 0.0F;
 
     if (util::str_to_num(str.substr(0, delimiter_pos), pw_lat)) {
       if (auto latency = (pw_lat / static_cast<float>(nd->nd_info->rate)); latency != nd->nd_info->latency) {
@@ -508,7 +508,7 @@ void on_node_event_param(void* object,
             if (spa_type_audio_format[k].name != nullptr) {
               std::string long_name = spa_type_audio_format[k].name;
 
-              format_str = long_name.substr(long_name.rfind(":") + 1);
+              format_str = long_name.substr(long_name.rfind(':') + 1);
             }
           }
         }
@@ -1056,11 +1056,11 @@ void on_registry_global(void* data,
 
       // Exclude blocklisted node names
 
-      if (std::ranges::find(pm->blocklist_node_name, node_name) != pm->blocklist_node_name.end()) {
+      if (std::ranges::find(PipeManager::blocklist_node_name, node_name) != PipeManager::blocklist_node_name.end()) {
         return;
       }
 
-      uint64_t serial;
+      uint64_t serial = 0;
 
       if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
         util::warning(
@@ -1151,7 +1151,7 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Link) == 0) {
-    uint64_t serial;
+    uint64_t serial = 0;
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
@@ -1192,7 +1192,7 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Port) == 0) {
-    uint64_t serial;
+    uint64_t serial = 0;
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
@@ -1225,7 +1225,7 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Module) == 0) {
-    uint64_t serial;
+    uint64_t serial = 0;
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
@@ -1256,7 +1256,7 @@ void on_registry_global(void* data,
   }
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Client) == 0) {
-    uint64_t serial;
+    uint64_t serial = 0;
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
@@ -1315,7 +1315,7 @@ void on_registry_global(void* data,
       const std::string media_class = key_media_class;
 
       if (media_class == tags::pipewire::media_class::device) {
-        uint64_t serial;
+        uint64_t serial = 0;
 
         if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
           util::warning(
@@ -1684,13 +1684,13 @@ auto PipeManager::link_nodes(const uint& output_node_id,
     }
   }
 
-  if (list_input_ports.size() == 0) {
+  if (list_input_ports.empty()) {
     util::debug("node " + util::to_string(input_node_id) + " has no input ports yet. Aborting the link");
 
     return list;
   }
 
-  if (list_output_ports.size() == 0) {
+  if (list_output_ports.empty()) {
     util::debug("node " + util::to_string(output_node_id) + " has no output ports yet. Aborting the link");
 
     return list;

@@ -83,9 +83,9 @@ class PresetsManager {
 
   void save_preset_file(const PresetType& preset_type, const std::string& name);
 
-  void write_plugins_preset(const PresetType& preset_type,
-                            const std::vector<std::string>& plugins,
-                            nlohmann::json& json);
+  static void write_plugins_preset(const PresetType& preset_type,
+                                   const std::vector<std::string>& plugins,
+                                   nlohmann::json& json);
 
   void remove(const PresetType& preset_type, const std::string& name);
 
@@ -140,7 +140,7 @@ class PresetsManager {
 
   GFileMonitor *autoload_output_monitor = nullptr, *autoload_input_monitor = nullptr;
 
-  void create_user_directory(const std::filesystem::path& path);
+  static void create_user_directory(const std::filesystem::path& path);
 
   void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 
@@ -148,6 +148,6 @@ class PresetsManager {
 
   void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
 
-  auto create_wrapper(const PresetType& preset_type, std::string_view filter_name)
+  static auto create_wrapper(const PresetType& preset_type, std::string_view filter_name)
       -> std::optional<std::unique_ptr<PluginPresetBase>>;
 };

@@ -53,7 +53,10 @@ void on_process(void* userdata, spa_io_position* position) {
   auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
   auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
 
-  std::span<float> left_in, right_in, left_out, right_out;
+  std::span<float> left_in;
+  std::span<float> right_in;
+  std::span<float> left_out;
+  std::span<float> right_out;
 
   if (in_left != nullptr) {
     left_in = std::span{in_left, in_left + n_samples};

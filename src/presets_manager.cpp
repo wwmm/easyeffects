@@ -31,7 +31,7 @@ PresetsManager::PresetsManager()
       sie_settings(g_settings_new(tags::schema::id_input)) {
   // system presets directories provided by Glib
 
-  for (auto scd = g_get_system_config_dirs(); *scd != nullptr; scd++) {
+  for (const auto* scd = g_get_system_config_dirs(); *scd != nullptr; scd++) {
     system_input_dir.emplace_back(std::string(*scd) +
                                   "/easyeffects/input");  // it should be fine to use emplace_back in these cases
     system_output_dir.emplace_back(std::string(*scd) + "/easyeffects/output");
@@ -184,9 +184,11 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
   if (!std::filesystem::is_directory(path)) {
     if (std::filesystem::create_directories(path)) {
       util::debug("user presets directory created: " + path.string());
-    } else {
-      util::warning("failed to create user presets directory: " + path.string());
+
+      return;
     }
+
+    util::warning("failed to create user presets directory: " + path.string());
 
   } else {
     util::debug("user presets directory already exists: " + path.string());
@@ -369,7 +371,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const std::
 
       write_plugins_preset(preset_type, plugins, json);
 
-      output_file = user_output_dir / std::filesystem::path{name.c_str() + json_ext};
+      output_file = user_output_dir / std::filesystem::path{name + json_ext};
 
       break;
     }
@@ -388,7 +390,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const std::
 
       write_plugins_preset(preset_type, plugins, json);
 
-      output_file = user_input_dir / std::filesystem::path{name.c_str() + json_ext};
+      output_file = user_input_dir / std::filesystem::path{name + json_ext};
 
       break;
     }
@@ -418,7 +420,7 @@ void PresetsManager::remove(const PresetType& preset_type, const std::string& na
 
   const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  preset_file = user_dir / std::filesystem::path{name.c_str() + json_ext};
+  preset_file = user_dir / std::filesystem::path{name + json_ext};
 
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
@@ -693,7 +695,7 @@ void PresetsManager::autoload(const PresetType& preset_type,
   if (!name.empty()) {
     util::debug("autoloading preset " + name + " for device " + device_name);
 
-    auto key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
+    const auto* key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
 
     if (load_preset_file(preset_type, name)) {
       g_settings_set_string(settings, key, name.c_str());
@@ -755,7 +757,7 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name.c_str() + json_ext};
+        input_file = dir / std::filesystem::path{name + json_ext};
 
         if (std::filesystem::exists(input_file)) {
           return true;
@@ -770,7 +772,7 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name.c_str() + json_ext};
+        input_file = dir / std::filesystem::path{name + json_ext};
 
         if (std::filesystem::exists(input_file)) {
           return true;
@@ -852,49 +854,93 @@ auto PresetsManager::create_wrapper(const PresetType& preset_type, std::string_v
     -> std::optional<std::unique_ptr<PluginPresetBase>> {
   if (filter_name.starts_with(tags::plugin_name::autogain)) {
     return std::make_unique<AutoGainPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::bass_enhancer)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::bass_enhancer)) {
     return std::make_unique<BassEnhancerPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::bass_loudness)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::bass_loudness)) {
     return std::make_unique<BassLoudnessPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::compressor)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::compressor)) {
     return std::make_unique<CompressorPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::convolver)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::convolver)) {
     return std::make_unique<ConvolverPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::crossfeed)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::crossfeed)) {
     return std::make_unique<CrossfeedPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::crystalizer)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::crystalizer)) {
     return std::make_unique<CrystalizerPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::deesser)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::deesser)) {
     return std::make_unique<DeesserPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::delay)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::delay)) {
     return std::make_unique<DelayPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::echo_canceller)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::echo_canceller)) {
     return std::make_unique<EchoCancellerPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::equalizer)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::equalizer)) {
     return std::make_unique<EqualizerPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::exciter)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::exciter)) {
     return std::make_unique<ExciterPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::filter)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::filter)) {
     return std::make_unique<FilterPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::gate)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::gate)) {
     return std::make_unique<GatePreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::limiter)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::limiter)) {
     return std::make_unique<LimiterPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::loudness)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::loudness)) {
     return std::make_unique<LoudnessPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::maximizer)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::maximizer)) {
     return std::make_unique<MaximizerPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::multiband_compressor)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::multiband_compressor)) {
     return std::make_unique<MultibandCompressorPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::multiband_gate)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::multiband_gate)) {
     return std::make_unique<MultibandGatePreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::pitch)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::pitch)) {
     return std::make_unique<PitchPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::reverb)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::reverb)) {
     return std::make_unique<ReverbPreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::rnnoise)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::rnnoise)) {
     return std::make_unique<RNNoisePreset>(preset_type);
-  } else if (filter_name.starts_with(tags::plugin_name::stereo_tools)) {
+  }
+
+  if (filter_name.starts_with(tags::plugin_name::stereo_tools)) {
     return std::make_unique<StereoToolsPreset>(preset_type);
   }
 
