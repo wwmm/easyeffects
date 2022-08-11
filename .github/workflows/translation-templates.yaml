@@ -34,7 +34,24 @@ jobs:
           cd build
           ../util/update_translation_templates.sh
           cd ..
-      
+
+      - name: Check for non-timestamp diff
+        run: |
+          # see https://stackoverflow.com/a/26622262
+          DIFF_LINES=$(git diff --unified=0 | grep '^[+-]' | grep -Ev '^(--- a/|\+\+\+ b/)')
+
+          if [[ $(echo "$DIFF_LINES" | grep "POT-Creation-Date:") != "$DIFF_LINES" ]]; then
+            echo "The calculated diff includes modifications besides just timestamp changes (POT-Creation-Date)."
+            echo "Letting the PR continue as this is a valid reason to open a PR."
+          else
+            echo "The calculated diff just has timestamp changes (POT-Creation-Date)."
+            echo "Restoring original files since this is not a valid reason to open a PR."
+            git restore .
+          fi
+
+          echo "All diff lines count: $(echo "$DIFF_LINES" | wc -l)"
+          echo "Diff lines count where POT-Creation-Date was changed: $(echo "$DIFF_LINES" | grep "POT-Creation-Date:" | wc -l)"
+
       # TODO it would be ideal to refresh metainfo fully by copying release notes from the upcoming release in NEWS.yaml to metainfo, and then running the above update template script,
       # however this is not possible without putting a dummy release in the metainfo with said upcoming release notes which would later have to be adjusted to the real release.
       - name: Create Pull Request
