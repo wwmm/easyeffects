@@ -7,6 +7,10 @@ project(
 	meson_version: '>= 0.57.0'
 )
 
+# see https://github.com/wwmm/easyeffects/pull/1739 for more info
+cxx = meson.get_compiler('cpp')
+assert(cxx.get_id() == 'gcc', 'This project only supports the gcc compiler due to usage of c++20 features.')
+
 add_global_arguments('-DG_LOG_DOMAIN="easyeffects"', language : 'c')
 add_global_arguments('-DG_LOG_DOMAIN="easyeffects"', language : 'cpp')
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),

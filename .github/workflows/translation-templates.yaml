@@ -1,0 +1,53 @@
+on:
+  push:
+    branches: [ master ]
+
+name: Update translation templates
+jobs:
+  update-templates:
+    name: Update translation templates
+    runs-on: ubuntu-20.04
+    container:
+      image: archlinux
+    steps:
+      # install git first otherwise checkout will not give us an actual git repo
+      - name: Install git
+        run: pacman -Syu --noconfirm git
+    
+      - name: Checkout
+        uses: actions/checkout@v3.0.2
+
+      - name: Install deps
+        run: |
+          # install general build deps
+          pacman -Syu --noconfirm ninja gcc pkgconf python3 python-pip which
+          # install easyeffects deps
+          source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
+          
+      # workaround upstream permissions issue github.com/peter-evans/create-pull-request/issues/1170
+      - name: Change git permissions
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Run meson targets
+        run: |
+          meson build
+          cd build
+          ../util/update_translation_templates.sh
+          cd ..
+      
+      # TODO it would be ideal to refresh metainfo fully by copying release notes from the upcoming release in NEWS.yaml to metainfo, and then running the above update template script,
+      # however this is not possible without putting a dummy release in the metainfo with said upcoming release notes which would later have to be adjusted to the real release.
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4.0.4
+        with:
+          title: Update translation templates
+          body: Ensure to merge all other Pull Requests before merging this. Conflicts here will automatically be resolved in case of changes in master.
+          commit-message: Update translation templates
+          # email sets "EasyEffects Bot" user as commit author
+          committer: EasyEffects Bot <110548574+easyeffects-bot@users.noreply.github.com>
+          author: EasyEffects Bot <110548574+easyeffects-bot@users.noreply.github.com>
+          branch: automatically-update-translation-templates
+          # the easyeffects_bot secret/token is only valid for a fork
+          # note the machine user (easyeffects-bot) must have already forked the repository  where the action is running for this to work
+          push-to-fork: easyeffects-bot/easyeffects
+          token: ${{ secrets.EASYEFFECTS_BOT }}
