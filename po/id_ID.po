@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 01:10-0300\n"
+"POT-Creation-Date: 2022-08-11 14:08+0000\n"
 "PO-Revision-Date: 2022-02-19 08:54+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2325,15 +2325,15 @@ msgstr "Muat Berkas Impuls"
 msgid "Failed To Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:653
+#: src/effects_box.cpp:263 src/plugins_box.cpp:653
 msgid "Recorders"
 msgstr "Perekam"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:673
+#: src/effects_box.cpp:286 src/plugins_box.cpp:673
 msgid "Players"
 msgstr "Pemain"
 
-#: src/effects_box.cpp:307
+#: src/effects_box.cpp:309
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -2463,13 +2463,13 @@ msgid "Stereo Tools"
 msgstr "Pengolah Stereo"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:70
-msgid "{} Is Not Installed On The System"
+#: src/ui_helpers.cpp:81
+msgid "{} Not Available"
 msgstr ""
 
 #. For translators: {} is replaced by the package name.
-#: src/ui_helpers.cpp:73
-msgid "{} Not Available"
+#: src/ui_helpers.cpp:84
+msgid "{} Is Not Installed On The System"
 msgstr ""
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
