@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 01:10-0300\n"
+"POT-Creation-Date: 2022-08-11 14:08+0000\n"
 "PO-Revision-Date: 2022-08-09 23:20+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2174,15 +2174,15 @@ msgstr "Nessun File di Risposta Impulsiva Caricato"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossibile Caricare il File di Risposta Impulsiva"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:653
+#: src/effects_box.cpp:263 src/plugins_box.cpp:653
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:673
+#: src/effects_box.cpp:286 src/plugins_box.cpp:673
 msgid "Players"
 msgstr "Riproduttori"
 
-#: src/effects_box.cpp:307
+#: src/effects_box.cpp:309
 msgid "Effects"
 msgstr "Effetti"
 
@@ -2314,14 +2314,14 @@ msgid "Stereo Tools"
 msgstr "Strumenti Stereo"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:70
-msgid "{} Is Not Installed On The System"
-msgstr "{} Non Installato sul Sistema"
-
-#. For translators: {} is replaced by the package name.
-#: src/ui_helpers.cpp:73
+#: src/ui_helpers.cpp:81
 msgid "{} Not Available"
 msgstr "{} Non Disponibile"
+
+#. For translators: {} is replaced by the package name.
+#: src/ui_helpers.cpp:84
+msgid "{} Is Not Installed On The System"
+msgstr "{} Non Installato sul Sistema"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at

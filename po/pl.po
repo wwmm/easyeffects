@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-09 01:10-0300\n"
+"POT-Creation-Date: 2022-08-11 14:08+0000\n"
 "PO-Revision-Date: 2022-04-18 18:11+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2381,15 +2381,15 @@ msgstr "Płaska odpowiedź"
 msgid "Failed To Load The Impulse File"
 msgstr "Nie można załadować pliku Impulse"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:653
+#: src/effects_box.cpp:263 src/plugins_box.cpp:653
 msgid "Recorders"
 msgstr "Rejestratory"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:673
+#: src/effects_box.cpp:286 src/plugins_box.cpp:673
 msgid "Players"
 msgstr "Odtwarzacze"
 
-#: src/effects_box.cpp:307
+#: src/effects_box.cpp:309
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -2524,13 +2524,13 @@ msgid "Stereo Tools"
 msgstr "Narzędzia stereo"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:70
-msgid "{} Is Not Installed On The System"
+#: src/ui_helpers.cpp:81
+msgid "{} Not Available"
 msgstr ""
 
 #. For translators: {} is replaced by the package name.
-#: src/ui_helpers.cpp:73
-msgid "{} Not Available"
+#: src/ui_helpers.cpp:84
+msgid "{} Is Not Installed On The System"
 msgstr ""
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
