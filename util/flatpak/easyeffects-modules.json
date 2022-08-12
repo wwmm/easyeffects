@@ -223,24 +223,20 @@
         },
         {
             "name": "tbb",
-            "buildsystem": "simple",
-            "build-commands": [
-                "make tbb tbbmalloc tbbproxy",
-                "install -d usr/lib/",
-                "install -m755 build/linux_*/*.so* /app/lib/",
-                "install -d usr/include",
-                "cp -a include/tbb /app/include/",
-                "cmake -DINSTALL_DIR=/app/lib/cmake/TBB -DSYSTEM_NAME=Linux -DTBB_VERSION_FILE=/app/include/tbb/tbb_stddef.h -P cmake/tbb_config_installer.cmake"
-            ],
+            "buildsystem": "cmake",
+            "builddir": true,
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/intel/tbb/archive/v2020.3.tar.gz",
-                    "sha256": "ebc4f6aa47972daed1f7bf71d100ae5bf6931c2e3144cf299c8cc7d041dca2f3"
+                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.5.0.tar.gz",
+                    "sha256": "e5b57537c741400cf6134b428fc1689a649d7d38d9bb9c1b6d64f092ea28178a",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 227581,
+                        "stable-only": true,
+                        "url-template": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v$version.tar.gz"
+                    }
                 }
-            ],
-            "cleanup": [
-                "/include"
             ]
         },
         {
