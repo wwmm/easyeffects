@@ -225,6 +225,9 @@
             "name": "tbb",
             "buildsystem": "cmake",
             "builddir": true,
+            "config-opts": [
+                "-DTBB_TEST=OFF"
+            ],
             "sources": [
                 {
                     "type": "archive",
