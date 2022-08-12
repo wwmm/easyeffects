@@ -69,7 +69,7 @@ jobs:
     - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
       with:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
-        manifest-path: util/flatpak/com.github.wwmm.easyeffects.json
+        manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
         cache-key: flatpak-builder-${{ github.sha }}
         arch: ${{ matrix.arch }}
         run-tests: true
@@ -80,14 +80,14 @@ jobs:
       shell: bash
       working-directory: ${{ env.FLATPAK_BUILD_PATH }}
       run: |
-        appstream-util validate-relax appdata/com.github.wwmm.easyeffects.appdata.xml
+        appstream-util validate-relax appdata/com.github.wwmm.easyeffects.Devel.appdata.xml
     
     - name: Verify icon and metadata in app-info
       shell: bash
       working-directory: ${{ env.FLATPAK_BUILD_PATH }}
       run: |
-        test -f app-info/icons/flatpak/128x128/com.github.wwmm.easyeffects.png || { echo "Missing 128x128 icon in app-info" ; exit 1; }
-        test -f app-info/xmls/com.github.wwmm.easyeffects.xml.gz || { echo "Missing com.github.wwmm.easyeffects.xml.gz in app-info" ; exit 1; }
+        test -f app-info/icons/flatpak/128x128/com.github.wwmm.easyeffects.Devel.png || { echo "Missing 128x128 icon in app-info" ; exit 1; }
+        test -f app-info/xmls/com.github.wwmm.easyeffects.Devel.xml.gz || { echo "Missing com.github.wwmm.easyeffects.Devel.xml.gz in app-info" ; exit 1; }
 
   arch-linux:
     name: Arch Linux

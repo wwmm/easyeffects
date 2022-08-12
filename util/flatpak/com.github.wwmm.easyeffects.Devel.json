@@ -1,5 +1,5 @@
 {
-    "id": "com.github.wwmm.easyeffects",
+    "id": "com.github.wwmm.easyeffects.Devel",
     "runtime": "org.gnome.Platform",
     "runtime-version": "42",
     "sdk": "org.gnome.Sdk",
@@ -62,6 +62,10 @@
         {
             "name": "easyeffects",
             "buildsystem": "meson",
+            "config-opts": [
+                "-Ddevel=true"
+            ],
+
             "sources": [
                 {
                     "type": "dir",

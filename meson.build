@@ -26,14 +26,43 @@ localedir = join_paths(prefix, get_option('localedir'))
 include_dir = include_directories('include')
 config_h_dir = include_directories('.')
 
-# Configuration
+status = []
+
+if get_option('devel')
+  status += [ 'Using development build mode with .Devel appended to the application ID' ]
+  app_id_suffix = '.Devel'
+  name_suffix = ' (Devel)'
+else
+  status += [ 'Using stable build mode with the standard application ID' ]
+  app_id_suffix = ''
+  name_suffix = ''
+endif
+
+app_id = 'com.github.wwmm.easyeffects@0@'.format(app_id_suffix)
+
+# Configuration for application itself at compile time, such as debug info like the commit that was built
 conf = configuration_data()
+
+conf.set10('IS_DEVEL_BUILD', get_option('devel'))
+conf.set_quoted('APP_NAME', 'EasyEffects' + name_suffix)
 
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALE_DIR', localedir)
 conf.set_quoted('VERSION', meson.project_version())
 
-configure_file(output: 'config.h', configuration: conf)
+conf.set('COMMIT_DESC', '"@VCS_TAG@"')
+
+config_h = declare_dependency(
+  sources: vcs_tag(
+    command: ['git', 'rev-parse', '--short', 'HEAD'],
+    fallback: 'Could find commit of build',
+    input: configure_file(
+      output: 'config.h.in',
+      configuration: conf
+    ),
+    output: 'config.h'
+  )
+)
 
 subdir('data')
 subdir('po')
@@ -41,3 +70,5 @@ subdir('help')
 subdir('src')
 
 meson.add_install_script('meson_post_install.py')
+
+message('\n  '.join(status))

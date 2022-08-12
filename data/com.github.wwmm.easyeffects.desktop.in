@@ -1,12 +1,11 @@
 [Desktop Entry]
-Name=EasyEffects
+Name=@APP_NAME@
 GenericName=Equalizer, Compressor and Other Audio Effects
 Comment=Audio Effects for PipeWire Applications
 Keywords=limiter;compressor;reverberation;equalizer;autovolume;
 Categories=GTK;AudioVideo;Audio;
 Exec=easyeffects
-# Translators: This is an icon name, don't translate!
-Icon=com.github.wwmm.easyeffects
+Icon=@APP_ID@
 StartupNotify=true
 DBusActivatable=true
 X-GNOME-UsesNotifications=true

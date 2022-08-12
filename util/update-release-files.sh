@@ -212,6 +212,14 @@ prepare_release_entry() {
 
 }
 
+prepare_metainfo() {
+  sed 's/@APP_ID@/com.github.wwmm.easyeffects/g' -i "${TEMP_METAINFO_FILE}"
+}
+
+finalize_metainfo() {
+  sed 's/com.github.wwmm.easyeffects/@APP_ID@/g' -i "${TEMP_METAINFO_FILE}"
+}
+
 check_appstream_cli() {
 
   log_info "Checking appstreamcli validate --pedantic"
@@ -356,6 +364,8 @@ remove_unneeded_template
 prepare_release_entry
 
 convert_news_to_metainfo
+prepare_metainfo
+
 check_appstream_cli
 check_appstream_util
 
@@ -372,6 +382,7 @@ then
 fi
 
 log_info "Copying changes to metainfo file"
+finalize_metainfo
 cp "${TEMP_METAINFO_FILE}" "${METAINFO_FILE}"
 rm "${TEMP_METAINFO_FILE:?}"
 

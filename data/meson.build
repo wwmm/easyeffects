@@ -32,9 +32,20 @@ install_data([
   'schemas/com.github.wwmm.easyeffects.streaminputs.gschema.xml'
 ], install_dir: schemadir)
 
+data_conf = configuration_data()
+
+data_conf.set('BIN_DIR', bindir)
+
+data_conf.set('APP_ID', app_id)
+data_conf.set('APP_NAME', 'EasyEffects' + name_suffix)
+
 metainfo_file = i18n_mod.merge_file(
-  input: 'com.github.wwmm.easyeffects.metainfo.xml.in',
-  output: 'com.github.wwmm.easyeffects.metainfo.xml',
+  input: configure_file(
+    input: files('com.github.wwmm.easyeffects.metainfo.xml.in'),
+    output: 'com.github.wwmm.easyeffects.metainfo.xml.in',
+    configuration: data_conf
+  ),
+  output: '@0@.metainfo.xml'.format(app_id),
   po_dir: '../po',
   install: true,
   install_dir: join_paths(datadir, 'metainfo')
@@ -49,8 +60,12 @@ if appstream_util.found()
 endif
 
 desktop_file = i18n_mod.merge_file(
-  input: 'com.github.wwmm.easyeffects.desktop.in',
-  output: 'com.github.wwmm.easyeffects.desktop',
+  input: configure_file(
+    input: files('com.github.wwmm.easyeffects.desktop.in'),
+    output: 'com.github.wwmm.easyeffects.desktop.in',
+    configuration: data_conf
+  ),
+  output: '@0@.desktop'.format(app_id),
   type: 'desktop',
   po_dir: '../po',
   install: true,
@@ -66,16 +81,16 @@ if desktop_utils.found()
 endif
 
 icondir = join_paths(datadir, 'icons', 'hicolor')
-install_data('com.github.wwmm.easyeffects.svg',
-  install_dir: join_paths(icondir, 'scalable', 'apps')
+install_data('@0@.svg'.format(app_id),
+  install_dir: join_paths(icondir, 'scalable', 'apps'),
+  rename: '@0@.svg'.format(app_id)
 )
 
 install_data('com.github.wwmm.easyeffects-symbolic.svg',
-  install_dir: join_paths(icondir, 'symbolic', 'apps')
+  install_dir: join_paths(icondir, 'symbolic', 'apps'),
+  rename: '@0@-symbolic.svg'.format(app_id)
 )
 
-conf_glade = configuration_data()
-conf_glade.set('PROJECT_VERSION', meson.project_version())
 
 gresources = gnome_mod.compile_resources(
 	'easyeffects-resources',
@@ -83,12 +98,12 @@ gresources = gnome_mod.compile_resources(
 	c_name: meson.project_name()
 )
 
-dbusconf = configuration_data()
-dbusconf.set('bindir', join_paths(get_option('prefix'), get_option('bindir')))
+
 
 configure_file(
   input: 'com.github.wwmm.easyeffects.service.in',
-  output: 'com.github.wwmm.easyeffects.service',
-  configuration: dbusconf,
+  output: '@0@.service'.format(app_id),
+  configuration: data_conf,
+  install: true,
   install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services'),
 )

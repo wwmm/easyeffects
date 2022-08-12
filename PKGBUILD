@@ -37,7 +37,7 @@ pkgver() {
 
 build() {
   cd ..
-  arch-meson . build
+  arch-meson . build -Ddevel=true
 
   ninja -C build
 }
