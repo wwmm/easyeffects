@@ -1,8 +1,10 @@
 on:
   push:
-    branches: [ master ]
+    branches-ignore:
+      # dependabot branches will fail on push since they run with fork-level permissions despite being in the main repo.
+      # said branches are tested anyhow when dependabot makes its PR and the pull_request triggers the run.
+      - 'dependabot/**'
   pull_request:
-    branches: [ master ]
 
 name: CI
 jobs:
@@ -34,7 +36,7 @@ jobs:
           if [[ ${{ github.event_name }} == 'pull_request' ]]; then
             echo "::set-output name=github_commit_desc::merge-${{ env.GITHUB_PR_HEAD_SHA }}-into-${{ env.GITHUB_PR_BASE_SHA }}"
           else
-            echo "::set-output name=github_commit_desc::master-${{ env.GITHUB_HEAD_SHA }}"
+            echo "::set-output name=github_commit_desc::${{ env.GITHUB_HEAD_SHA }}"
           fi
 
   flatpak:
