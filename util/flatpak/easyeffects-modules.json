@@ -212,8 +212,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nlohmann/json",
-                    "tag": "v3.11.1",
-                    "commit": "69d744867f8847c91a126fa25e9a6a3d67b3be41",
+                    "tag": "v3.11.2",
+                    "commit": "bc889afb4c5bf1c0d8ee29ef35eaaf4c8bef8a5d",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
