@@ -206,7 +206,8 @@
             "name": "nlohmann-json",
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DJSON_BuildTests=false"
             ],
             "sources": [
                 {
@@ -223,7 +224,7 @@
         },
         {
             "name": "tbb",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
                 "-DTBB_TEST=OFF"
@@ -272,7 +273,7 @@
         },
         {
             "name": "fmt",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DCMAKE_INSTALL_PREFIX=/app",
                 "-DCMAKE_INSTALL_LIBDIR=/app/lib",
