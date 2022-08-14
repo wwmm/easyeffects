@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 14:24+0000\n"
+"POT-Creation-Date: 2022-08-14 14:44+0000\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -2268,35 +2268,35 @@ msgstr ""
 msgid "channels"
 msgstr "Canale"
 
-#: src/application.cpp:415
+#: src/application.cpp:414
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efecte audio pentru aplicații PulseAudio"
 
-#: src/application.cpp:509
+#: src/application.cpp:507
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 "Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
 
-#: src/application.cpp:512
+#: src/application.cpp:510
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
 
-#: src/application.cpp:515
+#: src/application.cpp:513
 msgid "Reset EasyEffects."
 msgstr "Resetează EasyEffects."
 
-#: src/application.cpp:518
+#: src/application.cpp:516
 msgid "Hide the Window."
 msgstr "Ascunde Fereastra."
 
-#: src/application.cpp:521
+#: src/application.cpp:519
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Ocolire Globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
 "statusul"
 
-#: src/application.cpp:524
+#: src/application.cpp:522
 msgid "Show available presets."
 msgstr "Arată presetările valabile."
 
