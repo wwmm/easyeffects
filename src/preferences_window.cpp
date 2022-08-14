@@ -35,7 +35,8 @@ G_DEFINE_TYPE(PreferencesWindow, preferences_window, ADW_TYPE_PREFERENCES_WINDOW
 void dispose(GObject* object) {
   auto* self = EE_PREFERENCES_WINDOW(object);
 
-  gtk_window_set_icon_name (GTK_WINDOW (self), IS_DEVEL_BUILD ? g_strconcat(tags::app::id, ".Devel", nullptr) : tags::app::id);
+  gtk_window_set_icon_name(GTK_WINDOW(self),
+                           IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id);
 
   adw_preferences_window_remove(ADW_PREFERENCES_WINDOW(self), ADW_PREFERENCES_PAGE(self->page_general));
   adw_preferences_window_remove(ADW_PREFERENCES_WINDOW(self), ADW_PREFERENCES_PAGE(self->page_spectrum));

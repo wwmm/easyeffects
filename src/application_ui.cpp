@@ -28,13 +28,13 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
-  int width, height;
+  int width = 0, height = 0;
 
-  bool maximized, fullscreen;
+  bool maximized = false, fullscreen = false;
 
-  GApplication* gapp;
+  GApplication* gapp = nullptr;
 
-  GtkIconTheme* icon_theme;
+  GtkIconTheme* icon_theme = nullptr;
 
   std::vector<sigc::connection> connections;
 };
@@ -111,7 +111,8 @@ void constructed(GObject* object) {
 
   gtk_window_set_default_size(GTK_WINDOW(self), self->data->width, self->data->height);
 
-  gtk_window_set_default_icon_name (IS_DEVEL_BUILD ? g_strconcat(tags::app::id, ".Devel", nullptr) : tags::app::id);
+  gtk_window_set_default_icon_name(IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str()
+                                                  : tags::app::id);
 
   if (self->data->maximized) {
     gtk_window_maximize(GTK_WINDOW(self));
@@ -251,13 +252,12 @@ void application_window_init(ApplicationWindow* self) {
 
   apply_css_style();
 
-  if (IS_DEVEL_BUILD)
-  {
-    GtkStyleContext *style_context;
+  if (IS_DEVEL_BUILD) {
+    GtkStyleContext* style_context = nullptr;
 
-    style_context = gtk_widget_get_style_context (GTK_WIDGET (self));
+    style_context = gtk_widget_get_style_context(GTK_WIDGET(self));
 
-    gtk_style_context_add_class (style_context, "devel");
+    gtk_style_context_add_class(style_context, "devel");
   }
 
   self->data->icon_theme = setup_icon_theme();

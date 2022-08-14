@@ -409,16 +409,13 @@ void application_init(Application* self) {
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
                   std::array<const char*, 2> authors = {"Wellington Wallace", nullptr};
 
-                  gtk_show_about_dialog(gtk_application_get_active_window(GTK_APPLICATION(gapp)),
-                                        "program-name", APP_NAME,
-                                        "version", VERSION,
-                                        "comments", _("Audio effects for PipeWire applications"),
-                                        "authors", authors.data(),
-                                        "logo-icon-name", IS_DEVEL_BUILD ? g_strconcat(tags::app::id, ".Devel", nullptr) : tags::app::id,
-                                        "license-type", GTK_LICENSE_GPL_3_0,
-                                        "website", "https://github.com/wwmm/easyeffects",
-                                        "system-information", g_strconcat("Commit: ", COMMIT_DESC, nullptr),
-                                        nullptr);
+                  gtk_show_about_dialog(
+                      gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name", APP_NAME, "version",
+                      VERSION, "comments", _("Audio effects for PipeWire applications"), "authors", authors.data(),
+                      "logo-icon-name",
+                      IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id,
+                      "license-type", GTK_LICENSE_GPL_3_0, "website", "https://github.com/wwmm/easyeffects",
+                      "system-information", std::string("Commit: ").append(COMMIT_DESC).c_str(), nullptr);
                 },
                 nullptr, nullptr, nullptr};
 
@@ -502,8 +499,9 @@ void application_init(Application* self) {
 auto application_new() -> GApplication* {
   g_set_application_name("EasyEffects");
 
-  auto* app = g_object_new(EE_TYPE_APPLICATION, "application-id", IS_DEVEL_BUILD ? g_strconcat(tags::app::id, ".Devel", nullptr) : tags::app::id, "flags",
-                           G_APPLICATION_HANDLES_COMMAND_LINE, nullptr);
+  auto* app = g_object_new(EE_TYPE_APPLICATION, "application-id",
+                           IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id,
+                           "flags", G_APPLICATION_HANDLES_COMMAND_LINE, nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "quit", 'q', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Quit EasyEffects. Useful when running in service mode."), nullptr);
