@@ -51,7 +51,7 @@ auto main(int argc, char* argv[]) -> int {
 
     auto* app = app::application_new();
 
-    g_unix_signal_add(2, (GSourceFunc)sigterm, app);
+    g_unix_signal_add(2, G_SOURCE_FUNC(sigterm), app);
 
     auto status = g_application_run(app, argc, argv);
 

@@ -46,9 +46,13 @@ config_h_dir = include_directories('.')
 status = []
 
 if get_option('devel')
-  status += [ 'Using development build mode with .Devel appended to the application ID' ]
+  status += [ 
+    'Using development build mode with .Devel appended to the application ID.',
+    'Also enabling -Werror.' 
+  ]
   app_id_suffix = '.Devel'
   name_suffix = ' (Devel)'
+  add_project_arguments ('-Werror', language: [ 'c', 'cpp' ])
 else
   status += [ 'Using stable build mode with the standard application ID' ]
   app_id_suffix = ''
