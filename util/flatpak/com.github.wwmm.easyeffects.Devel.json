@@ -65,7 +65,7 @@
             "config-opts": [
                 "-Ddevel=true"
             ],
-
+            "run-tests": true,
             "sources": [
                 {
                     "type": "dir",
