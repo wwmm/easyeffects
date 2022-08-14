@@ -86,6 +86,10 @@ subdir('po')
 subdir('help')
 subdir('src')
 
-meson.add_install_script('meson_post_install.py')
+gnome_mod.post_install(
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true,
+  update_desktop_database: true,
+)
 
 message('\n  '.join(status))
