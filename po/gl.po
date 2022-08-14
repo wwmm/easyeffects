@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 14:13+0000\n"
+"POT-Creation-Date: 2022-08-14 14:24+0000\n"
 "PO-Revision-Date: 2022-08-02 19:36+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "EasyEffects"
-msgstr "EasyEffects"
+msgid "@APP_NAME@"
+msgstr ""
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -209,7 +209,7 @@ msgstr "Ganancia da saída"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:554 src/application_ui.cpp:266
+#: data/ui/stereo_tools.ui:554 src/application_ui.cpp:278
 msgid "Input"
 msgstr "Entrada"
 
@@ -237,7 +237,7 @@ msgstr "Saída"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:638
-#: src/application_ui.cpp:265
+#: src/application_ui.cpp:277
 msgid "Output"
 msgstr "Saída"
 
@@ -1589,7 +1589,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Saída"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:250
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:251
 #, fuzzy
 msgid "Output Presets"
 msgstr "Preconfiguracións de saída: "
@@ -1612,7 +1612,7 @@ msgstr "Preconfiguracións de saída: "
 msgid "Input Devices"
 msgstr "Nivel de entrada"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:258
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:259
 #, fuzzy
 msgid "Input Presets"
 msgstr "Preconfiguracións de entrada: "
@@ -2249,37 +2249,37 @@ msgstr ""
 msgid "channels"
 msgstr "Canles"
 
-#: src/application.cpp:413
+#: src/application.cpp:415
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efectos de son para as aplicacións de PulseAudio"
 
-#: src/application.cpp:503
+#: src/application.cpp:509
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Saír do EasyEffects. É últil cando se executa no modo de servizo."
 
-#: src/application.cpp:506
+#: src/application.cpp:512
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar unha preconfiguración. Exemplo: pulseefects-l music"
 
-#: src/application.cpp:509
+#: src/application.cpp:515
 msgid "Reset EasyEffects."
 msgstr "Restabelecer EasyEffects."
 
-#: src/application.cpp:512
+#: src/application.cpp:518
 msgid "Hide the Window."
 msgstr "Agochar a xanela."
 
-#: src/application.cpp:515
+#: src/application.cpp:521
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Desvío global. 1 para activar, 2 para desactivar e 3 para coñecer o estado"
 
-#: src/application.cpp:518
+#: src/application.cpp:524
 msgid "Show available presets."
 msgstr "Mostrar preoconfiguracións dispoñíbeis."
 
-#: src/application_ui.cpp:267
+#: src/application_ui.cpp:279
 msgid "PipeWire"
 msgstr "PipeWire"
 
@@ -2501,6 +2501,9 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr ""
+
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Preconfiguracións de saída: "

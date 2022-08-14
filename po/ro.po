@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 14:13+0000\n"
+"POT-Creation-Date: 2022-08-14 14:24+0000\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -20,8 +20,8 @@ msgstr ""
 "n%100<=19) ? 1 : 2);\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "EasyEffects"
-msgstr "EasyEffects"
+msgid "@APP_NAME@"
+msgstr ""
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -216,7 +216,7 @@ msgstr "Output"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:554 src/application_ui.cpp:266
+#: data/ui/stereo_tools.ui:554 src/application_ui.cpp:278
 msgid "Input"
 msgstr "Input"
 
@@ -244,7 +244,7 @@ msgstr "Input Pipeline"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:638
-#: src/application_ui.cpp:265
+#: src/application_ui.cpp:277
 msgid "Output"
 msgstr "Output"
 
@@ -1599,7 +1599,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Efecte Output"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:250
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:251
 #, fuzzy
 msgid "Output Presets"
 msgstr "Presetări pentru Output:"
@@ -1622,7 +1622,7 @@ msgstr "Presetări pentru Output:"
 msgid "Input Devices"
 msgstr "Nivel Input"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:258
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:259
 #, fuzzy
 msgid "Input Presets"
 msgstr "Presetări pentru Input:"
@@ -2268,39 +2268,39 @@ msgstr ""
 msgid "channels"
 msgstr "Canale"
 
-#: src/application.cpp:413
+#: src/application.cpp:415
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efecte audio pentru aplicații PulseAudio"
 
-#: src/application.cpp:503
+#: src/application.cpp:509
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 "Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
 
-#: src/application.cpp:506
+#: src/application.cpp:512
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
 
-#: src/application.cpp:509
+#: src/application.cpp:515
 msgid "Reset EasyEffects."
 msgstr "Resetează EasyEffects."
 
-#: src/application.cpp:512
+#: src/application.cpp:518
 msgid "Hide the Window."
 msgstr "Ascunde Fereastra."
 
-#: src/application.cpp:515
+#: src/application.cpp:521
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Ocolire Globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
 "statusul"
 
-#: src/application.cpp:518
+#: src/application.cpp:524
 msgid "Show available presets."
 msgstr "Arată presetările valabile."
 
-#: src/application_ui.cpp:267
+#: src/application_ui.cpp:279
 msgid "PipeWire"
 msgstr "PipeWire"
 
@@ -2522,6 +2522,9 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr ""
+
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Presetări pentru Output:"
