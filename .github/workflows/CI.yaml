@@ -48,30 +48,15 @@ jobs:
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-42
       options: --privileged
-    strategy:
-      matrix:
-        arch: [x86_64, aarch64]
-      # Don't fail the whole workflow if one architecture fails
-      fail-fast: false
     steps:
     - name: Checkout
       uses: actions/checkout@v3.0.2
-    
-    - name: Install deps
-      run: dnf -y install docker
-    
-    - name: Set up QEMU
-      id: qemu
-      uses: docker/setup-qemu-action@v2.0.0
-      with:
-        platforms: arm64
 
     - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
       with:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
         cache-key: flatpak-builder-${{ github.sha }}
-        arch: ${{ matrix.arch }}
         run-tests: true
     
     # we also validate appstream in the appstream-news-validate job, 
