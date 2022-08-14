@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-14 10:54-0700\n"
-"PO-Revision-Date: 2022-08-05 12:16+0000\n"
-"Last-Translator: Eric <alchemillatruth@purelymail.com>\n"
+"PO-Revision-Date: 2022-08-14 21:19+0000\n"
+"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -2160,7 +2160,7 @@ msgstr "取消"
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "Impulse Response"
-msgstr "Impulse 解析"
+msgstr "脉冲响应"
 
 #: src/convolver_menu_impulses.cpp:243
 msgid "Load Impulse"
@@ -2316,12 +2316,12 @@ msgstr "立体声工具"
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:81
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} 不可用"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:84
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} 未在系统中安装"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at
