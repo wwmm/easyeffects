@@ -18,6 +18,7 @@
  */
 
 #include "application_ui.hpp"
+#include "config.h"
 
 namespace ui::application_window {
 
@@ -109,6 +110,8 @@ void constructed(GObject* object) {
   self->data->height = g_settings_get_int(self->settings, "window-height");
 
   gtk_window_set_default_size(GTK_WINDOW(self), self->data->width, self->data->height);
+
+  gtk_window_set_default_icon_name (IS_DEVEL_BUILD ? g_strconcat(tags::app::id, ".Devel", nullptr) : tags::app::id);
 
   if (self->data->maximized) {
     gtk_window_maximize(GTK_WINDOW(self));
@@ -247,6 +250,15 @@ void application_window_init(ApplicationWindow* self) {
   init_theme_color(self);
 
   apply_css_style();
+
+  if (IS_DEVEL_BUILD)
+  {
+    GtkStyleContext *style_context;
+
+    style_context = gtk_widget_get_style_context (GTK_WIDGET (self));
+
+    gtk_style_context_add_class (style_context, "devel");
+  }
 
   self->data->icon_theme = setup_icon_theme();
 

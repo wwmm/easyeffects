@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop-application">
-  <id>com.github.wwmm.easyeffects.desktop</id>
+  <id>@APP_ID@.desktop</id>
   <name>EasyEffects</name>
   <summary>Audio Effects for PipeWire Applications</summary>
   <metadata_license>CC0-1.0</metadata_license>
@@ -13,7 +13,7 @@
     <p>Besides manipulating sound output, EasyEffects is able to apply effects to an input device, such as a microphone. This is, for example, useful in audio recording, but it also works well during voice conversations.</p>
     <p>When EasyEffects is launched it will conveniently remember the configuration used in the last session. It is also possible to save all the current settings as profiles.</p>
   </description>
-  <launchable type="desktop-id">com.github.wwmm.easyeffects.desktop</launchable>
+  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
   <url type="help">https://github.com/wwmm/easyeffects/blob/master/README.md</url>

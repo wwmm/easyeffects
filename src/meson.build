@@ -149,7 +149,8 @@ easyeffects_deps = [
 	dependency('threads'),
 	tbb,
 	zita_convolver,
-	rnnoise
+	rnnoise,
+	config_h
 ]
 
 executable(

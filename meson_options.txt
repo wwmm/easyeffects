@@ -1,0 +1,6 @@
+option(
+  'devel',
+  description: 'Whether to use development build mode, with .Devel appended to the application ID. For Flatpak builds, user data for development builds is stored seperately from stable builds.',
+  type: 'boolean',
+  value: false
+)
