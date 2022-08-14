@@ -217,6 +217,7 @@ msgstr "Усиление выхода"
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:554 src/application_ui.cpp:278
+#: src/application_ui.cpp:266
 msgid "Input"
 msgstr "Вход"
 
@@ -243,7 +244,7 @@ msgstr "Усиление входа"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:638
-#: src/application_ui.cpp:277
+#: src/application_ui.cpp:277 src/application_ui.cpp:265
 msgid "Output"
 msgstr "Выход"
 
@@ -483,9 +484,8 @@ msgstr "Пик"
 
 #: data/ui/compressor.ui:512 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
-#, fuzzy
 msgid "RMS"
-msgstr "RMS (среднеквадратичный уровень сигнала)"
+msgstr "RMS (среднеквадратичное значение)"
 
 #: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:652
 #: data/ui/gate.ui:1003 data/ui/multiband_compressor_band.ui:470
@@ -824,14 +824,12 @@ msgid "Delay"
 msgstr "Задержка"
 
 #: data/ui/delay.ui:75
-#, fuzzy
 msgid "Left Delay"
-msgstr "Предзадержка"
+msgstr "Задержка левого"
 
 #: data/ui/delay.ui:97
-#, fuzzy
 msgid "Right Delay"
-msgstr "Правый Канал"
+msgstr "Задержка правого"
 
 #: data/ui/delay.ui:132
 #, fuzzy
@@ -1527,6 +1525,7 @@ msgid "Output Devices"
 msgstr "Устройства вывода"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:251
+#: src/application.cpp:250
 msgid "Output Presets"
 msgstr "Предустановки выхода"
 
@@ -1548,6 +1547,7 @@ msgid "Input Devices"
 msgstr "Устройства ввода"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:259
+#: src/application.cpp:258
 msgid "Input Presets"
 msgstr "Предустановки входа"
 
@@ -2145,35 +2145,35 @@ msgstr "Неизвестно"
 msgid "channels"
 msgstr "каналы"
 
-#: src/application.cpp:415
+#: src/application.cpp:415 src/application.cpp:413
 msgid "Audio effects for PipeWire applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
 
-#: src/application.cpp:509
+#: src/application.cpp:509 src/application.cpp:503
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Выход из EasyEffects. Полезно при запуске в режиме службы."
 
-#: src/application.cpp:512
+#: src/application.cpp:512 src/application.cpp:506
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 
-#: src/application.cpp:515
+#: src/application.cpp:515 src/application.cpp:509
 msgid "Reset EasyEffects."
 msgstr "Сброс настроек EasyEffects."
 
-#: src/application.cpp:518
+#: src/application.cpp:518 src/application.cpp:512
 msgid "Hide the Window."
 msgstr "Скрыть окно."
 
-#: src/application.cpp:521
+#: src/application.cpp:521 src/application.cpp:515
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получение статуса"
 
-#: src/application.cpp:524
+#: src/application.cpp:524 src/application.cpp:518
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:279 src/application_ui.cpp:267
 msgid "PipeWire"
 msgstr "PipeWire"
 
@@ -2391,8 +2391,9 @@ msgstr "Закрыть (Нажмите ESC)"
 msgid "-inf"
 msgstr "-inf"
 
-#~ msgid "EasyEffects"
-#~ msgstr "EasyEffects"
+#: data/com.github.wwmm.easyeffects.desktop.in:3
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Предустановки выхода: "
