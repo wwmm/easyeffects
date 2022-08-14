@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 13:22-0300\n"
+"POT-Creation-Date: 2022-08-14 10:54-0700\n"
 "PO-Revision-Date: 2022-05-23 08:18+0000\n"
 "Last-Translator: Grooty12 <Rasmus@rosendahl-kaa.name>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -18,10 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.13-dev\n"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-msgid "EasyEffects"
-msgstr "Easyeffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -770,6 +766,9 @@ msgid ""
 "New libraries are being used and some of the librarires that were optional "
 "before are now required"
 msgstr ""
+
+#~ msgid "EasyEffects"
+#~ msgstr "Easyeffects"
 
 #~ msgid "This release adds the following features:"
 #~ msgstr "Denne udgivelse tilføjer følgende funktioner:"

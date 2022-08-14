@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 13:22-0300\n"
+"POT-Creation-Date: 2022-08-14 10:54-0700\n"
 "PO-Revision-Date: 2021-07-14 14:30+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -17,10 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-msgid "EasyEffects"
-msgstr "PulseEffecten"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -761,6 +757,9 @@ msgid ""
 "New libraries are being used and some of the librarires that were optional "
 "before are now required"
 msgstr ""
+
+#~ msgid "EasyEffects"
+#~ msgstr "PulseEffecten"
 
 #, fuzzy
 #~ msgid "and #1427"

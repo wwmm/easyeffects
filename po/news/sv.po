@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 13:22-0300\n"
+"POT-Creation-Date: 2022-08-14 10:54-0700\n"
 "PO-Revision-Date: 2022-01-15 15:15+0000\n"
 "Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -18,10 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.10.1\n"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-msgid "EasyEffects"
-msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -762,6 +758,9 @@ msgid ""
 "New libraries are being used and some of the librarires that were optional "
 "before are now required"
 msgstr ""
+
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
 
 #~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 #~ msgstr ""

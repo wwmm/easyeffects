@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 13:22-0300\n"
+"POT-Creation-Date: 2022-08-14 10:54-0700\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -19,20 +19,21 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
 "n%100<=19) ? 1 : 2);\n"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "EasyEffects"
-msgstr "EasyEffects"
-
+#. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
+msgid "@APP_NAME@"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Egalizator, compresor și Alte Efecte Audio"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 #, fuzzy
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efecte Audio pentru Aplicații PulseAudio"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "limitator;compresor;reverberație;egalizator;autovolum"
 
@@ -2522,6 +2523,9 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr ""
+
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Presetări pentru Output:"

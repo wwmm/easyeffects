@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 13:22-0300\n"
+"POT-Creation-Date: 2022-08-14 10:54-0700\n"
 "PO-Revision-Date: 2022-08-09 23:20+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -21,19 +21,20 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "EasyEffects"
-msgstr "EasyEffects"
-
+#. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
+msgid "@APP_NAME@"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "limiter;compressore;riverbero;equalizzatore;autovolume;"
 
@@ -2334,6 +2335,9 @@ msgstr "Chiudi (Premi ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
 
 #~ msgid "Split Mode"
 #~ msgstr "Modalità Split"

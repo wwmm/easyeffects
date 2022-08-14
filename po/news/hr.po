@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 13:22-0300\n"
+"POT-Creation-Date: 2022-08-14 10:54-0700\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -19,11 +19,6 @@ msgstr ""
 "X-Generator: Poedit 2.0.7\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
-msgid "EasyEffects"
-msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #, fuzzy
@@ -767,6 +762,10 @@ msgid ""
 "New libraries are being used and some of the librarires that were optional "
 "before are now required"
 msgstr ""
+
+#, fuzzy
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
 
 #, fuzzy
 #~ msgid "and #1427"

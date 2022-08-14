@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 13:22-0300\n"
+"POT-Creation-Date: 2022-08-14 10:54-0700\n"
 "PO-Revision-Date: 2022-08-02 19:36+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -21,21 +21,21 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.14-dev\n"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
-msgid "EasyEffects"
-msgstr "EasyEffects"
-
+#. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
+msgid "@APP_NAME@"
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Ekvalizator, kompresor i drugi audio efekti"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 #, fuzzy
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvučni efekti za Pulseaudio aplikacije"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
 
@@ -2571,6 +2571,10 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
 
 #, fuzzy
 #~ msgid "Output Presets: "
