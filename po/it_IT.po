@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 14:44+0000\n"
+"POT-Creation-Date: 2022-08-14 13:22-0300\n"
 "PO-Revision-Date: 2022-08-09 23:20+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -22,8 +22,8 @@ msgstr ""
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "@APP_NAME@"
-msgstr ""
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -2334,9 +2334,6 @@ msgstr "Chiudi (Premi ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr "-inf"
-
-#~ msgid "EasyEffects"
-#~ msgstr "EasyEffects"
 
 #~ msgid "Split Mode"
 #~ msgstr "Modalità Split"

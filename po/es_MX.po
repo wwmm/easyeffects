@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 14:44+0000\n"
+"POT-Creation-Date: 2022-08-14 13:22-0300\n"
 "PO-Revision-Date: 2020-01-09 18:18-0500\n"
 "Last-Translator: Christian\n"
 "Language-Team: \n"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "@APP_NAME@"
-msgstr ""
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -2523,9 +2523,6 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr ""
-
-#~ msgid "EasyEffects"
-#~ msgstr "EasyEffects"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Perfiles de Dispositivos de Salida: "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 14:44+0000\n"
+"POT-Creation-Date: 2022-08-14 13:22-0300\n"
 "PO-Revision-Date: 2022-05-23 08:18+0000\n"
 "Last-Translator: Grooty12 <Rasmus@rosendahl-kaa.name>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Generator: Weblate 4.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "@APP_NAME@"
-msgstr ""
+msgid "EasyEffects"
+msgstr "Easyeffects"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -2383,9 +2383,6 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr ""
-
-#~ msgid "EasyEffects"
-#~ msgstr "Easyeffects"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Udgangsforindstillinger:"

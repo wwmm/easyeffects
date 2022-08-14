@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-14 14:24+0000\n"
+"POT-Creation-Date: 2022-08-14 13:22-0300\n"
 "PO-Revision-Date: 2022-08-02 19:36+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -21,8 +21,8 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "@APP_NAME@"
-msgstr ""
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -217,7 +217,6 @@ msgstr "Усиление выхода"
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:554 src/application_ui.cpp:278
-#: src/application_ui.cpp:266
 msgid "Input"
 msgstr "Вход"
 
@@ -244,7 +243,7 @@ msgstr "Усиление входа"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:638
-#: src/application_ui.cpp:277 src/application_ui.cpp:265
+#: src/application_ui.cpp:277
 msgid "Output"
 msgstr "Выход"
 
@@ -1525,7 +1524,6 @@ msgid "Output Devices"
 msgstr "Устройства вывода"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:251
-#: src/application.cpp:250
 msgid "Output Presets"
 msgstr "Предустановки выхода"
 
@@ -1547,7 +1545,6 @@ msgid "Input Devices"
 msgstr "Устройства ввода"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:259
-#: src/application.cpp:258
 msgid "Input Presets"
 msgstr "Предустановки входа"
 
@@ -2145,35 +2142,35 @@ msgstr "Неизвестно"
 msgid "channels"
 msgstr "каналы"
 
-#: src/application.cpp:415 src/application.cpp:413 src/application.cpp:414
+#: src/application.cpp:414
 msgid "Audio effects for PipeWire applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
 
-#: src/application.cpp:509 src/application.cpp:503 src/application.cpp:507
+#: src/application.cpp:507
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Выход из EasyEffects. Полезно при запуске в режиме службы."
 
-#: src/application.cpp:512 src/application.cpp:506 src/application.cpp:510
+#: src/application.cpp:510
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 
-#: src/application.cpp:515 src/application.cpp:509 src/application.cpp:513
+#: src/application.cpp:513
 msgid "Reset EasyEffects."
 msgstr "Сброс настроек EasyEffects."
 
-#: src/application.cpp:518 src/application.cpp:512 src/application.cpp:516
+#: src/application.cpp:516
 msgid "Hide the Window."
 msgstr "Скрыть окно."
 
-#: src/application.cpp:521 src/application.cpp:515 src/application.cpp:519
+#: src/application.cpp:519
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получение статуса"
 
-#: src/application.cpp:524 src/application.cpp:518 src/application.cpp:522
+#: src/application.cpp:522
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
-#: src/application_ui.cpp:279 src/application_ui.cpp:267
+#: src/application_ui.cpp:279
 msgid "PipeWire"
 msgstr "PipeWire"
 
@@ -2390,10 +2387,6 @@ msgstr "Закрыть (Нажмите ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr "-inf"
-
-#: data/com.github.wwmm.easyeffects.desktop.in:3
-msgid "EasyEffects"
-msgstr "EasyEffects"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Предустановки выхода: "
