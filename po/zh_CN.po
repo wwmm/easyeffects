@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-14 10:54-0700\n"
-"PO-Revision-Date: 2022-08-14 21:19+0000\n"
+"PO-Revision-Date: 2022-08-15 10:17+0000\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -1739,7 +1739,7 @@ msgstr "使用暗色主题"
 
 #: data/ui/preferences_general.ui:143
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "点击外部时隐藏菜单"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
