@@ -35,7 +35,7 @@ jobs:
           echo "PR_NUM=${PR_NUM}" >> ${GITHUB_ENV}
       
       - name: Comment on PR
-        uses: actions/github-script@v6.1.0
+        uses: actions/github-script@v6.1.1
         with:
           # adapted from https://github.com/oprypin/nightly.link/blob/master/.github/workflows/pr-comment.yml
           # and https://github.com/oprypin/nightly.link/pull/38
