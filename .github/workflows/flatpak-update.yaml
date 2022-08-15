@@ -27,4 +27,4 @@ jobs:
           EMAIL: 110548574+easyeffects-bot@users.noreply.github.com
           GITHUB_TOKEN: ${{ secrets.EASYEFFECTS_BOT }}
         with:
-          args: --update --always-fork util/flatpak/com.github.wwmm.easyeffects.json
+          args: --update --always-fork util/flatpak/com.github.wwmm.easyeffects.Devel.json
