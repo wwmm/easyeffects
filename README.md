@@ -168,4 +168,4 @@ See the wiki's [Translating EasyEffects](https://github.com/wwmm/easyeffects/wik
 
 ## License
 
-EasyEffects is licensed under GNU General Public License version 3. See the [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE).
+EasyEffects is licensed under GNU General Public License version 3 or later. See the [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE).
