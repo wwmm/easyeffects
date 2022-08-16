@@ -84,11 +84,11 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
       The kernel size is related to the transition bandwidth M = 4/BW
   */
 
-  size_t M = std::ceil(4.0F / b);
+  auto M = static_cast<uint>(std::ceil(4.0F / b));
 
-  M = (M % 2 == 0) ? M : M + 1;  // checking if M is even
+  M = (M % 2U == 0U) ? M : M + 1U;  // checking if M is even
 
-  output.resize(M + 1);
+  output.resize(M + 1U);
 
   /*
     cutoff frequency as a fraction of the sample rate

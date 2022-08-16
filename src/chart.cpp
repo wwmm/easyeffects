@@ -135,7 +135,7 @@ void set_x_data(Chart* self, const std::vector<float>& x) {
 
   self->data->x_axis_log.resize(x.size());
 
-  for (size_t n = 0; n < self->data->x_axis_log.size(); n++) {
+  for (size_t n = 0U; n < self->data->x_axis_log.size(); n++) {
     self->data->x_axis_log[n] = std::log10(self->data->x_axis[n]);
   }
 
@@ -348,7 +348,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
-        for (size_t n = 0; n < n_points; n++) {
+        for (size_t n = 0U; n < n_points; n++) {
           self->data->objects_x[n] =
               usable_width * self->data->x_axis_log[n] + self->data->line_width + self->data->margin * width_f;
         }
@@ -356,7 +356,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         break;
       }
       case ChartScale::linear: {
-        for (size_t n = 0; n < n_points; n++) {
+        for (size_t n = 0U; n < n_points; n++) {
           self->data->objects_x[n] =
               usable_width * self->data->x_axis[n] + self->data->line_width + self->data->margin * width_f;
         }

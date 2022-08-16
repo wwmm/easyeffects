@@ -105,11 +105,11 @@ void Crystalizer::setup() {
 
     latency_n_frames = 1U;  // the second derivative forces us to delay at least one sample
 
-    deque_out_L.resize(0);
-    deque_out_R.resize(0);
+    deque_out_L.resize(0U);
+    deque_out_R.resize(0U);
 
-    data_L.resize(0);
-    data_R.resize(0);
+    data_L.resize(0U);
+    data_R.resize(0U);
 
     for (uint n = 0U; n < nbands; n++) {
       band_data_L.at(n).resize(blocksize);
@@ -175,8 +175,8 @@ void Crystalizer::process(std::span<float>& left_in,
           deque_out_R.push_back(v);
         }
 
-        data_L.resize(0);
-        data_R.resize(0);
+        data_L.resize(0U);
+        data_R.resize(0U);
       }
     }
 

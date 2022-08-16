@@ -103,7 +103,7 @@ class RNNoise : public PluginBase {
           out_L.push_back(v);
         }
 
-        data_L.resize(0);
+        data_L.resize(0U);
       }
     }
 
@@ -123,7 +123,7 @@ class RNNoise : public PluginBase {
           out_R.push_back(v);
         }
 
-        data_R.resize(0);
+        data_R.resize(0U);
       }
     }
   }

@@ -35,7 +35,7 @@ class Resampler {
 
   template <typename T>
   auto process(const T& input, const bool& end_of_input) -> std::vector<float> {
-    output.resize(std::ceil(1.5 * resample_ratio * input.size()));
+    output.resize(std::ceil(1.5F * resample_ratio * input.size()));
 
     // The number of frames of data pointed to by data_in
     src_data.input_frames = input.size();

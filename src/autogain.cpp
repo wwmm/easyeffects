@@ -159,8 +159,8 @@ void AutoGain::set_maximum_history(const int& seconds) {
 }
 
 void AutoGain::setup() {
-  if (2 * n_samples != data.size()) {
-    data.resize(n_samples * 2);
+  if (2U * n_samples != data.size()) {
+    data.resize(n_samples * 2U);
   }
 
   if (rate != old_rate) {

@@ -65,14 +65,16 @@ void remove_from_string_list(ConvolverMenuCombine* self, const std::string& irs_
 void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
   std::vector<size_t> indices(c.size());
 
-  std::iota(indices.begin(), indices.end(), 0);
+  std::iota(indices.begin(), indices.end(), 0U);
 
-  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), [&](size_t n) {
+  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), [&](const int n) {
     c[n] = 0.0F;
 
-    for (uint m = 0U; m < b.size(); m++) {
-      if (n - m >= 0U && n - m < a.size() - 1U) {
-        c[n] += b[m] * a[n - m];
+    // Static cast to avoid gcc signedness warning.
+    const int a_size = static_cast<int>(a.size()), b_size = static_cast<int>(b.size());
+    for (int m = 0; m < b_size; m++) {
+      if (const auto z = n - m; z >= 0 && z < a_size - 1) {
+        c[n] += b[m] * a[z];
       }
     }
   });
@@ -121,8 +123,8 @@ void combine_kernels(ConvolverMenuCombine* self,
     kernel_1_R = resampler->process(kernel_1_R, true);
   }
 
-  std::vector<float> kernel_L(kernel_1_L.size() + kernel_2_L.size() - 1);
-  std::vector<float> kernel_R(kernel_1_R.size() + kernel_2_R.size() - 1);
+  std::vector<float> kernel_L(kernel_1_L.size() + kernel_2_L.size() - 1U);
+  std::vector<float> kernel_R(kernel_1_R.size() + kernel_2_R.size() - 1U);
 
   // As the convolution is commutative we change the order based on which will run faster.
 
@@ -134,11 +136,11 @@ void combine_kernels(ConvolverMenuCombine* self,
     direct_conv(kernel_2_R, kernel_1_R, kernel_R);
   }
 
-  std::vector<float> buffer(kernel_L.size() * 2);  // 2 channels interleaved
+  std::vector<float> buffer(kernel_L.size() * 2U);  // 2 channels interleaved
 
-  for (size_t n = 0; n < kernel_L.size(); n++) {
-    buffer[2 * n] = kernel_L[n];
-    buffer[2 * n + 1] = kernel_R[n];
+  for (size_t n = 0U; n < kernel_L.size(); n++) {
+    buffer[2U * n] = kernel_L[n];
+    buffer[2U * n + 1U] = kernel_R[n];
   }
 
   const auto output_file_path = irs_dir / std::filesystem::path{output_file_name + irs_ext};
