@@ -1,22 +1,22 @@
-From 2131bf7458be12109784b12399bd5c6fc27ae8d0 Mon Sep 17 00:00:00 2001
+From b0542499f932d1b012513902bca5d25c8f60cfbe Mon Sep 17 00:00:00 2001
 From: Vincent Chernin <38842733+vchernin@users.noreply.github.com>
 Date: Mon, 27 Dec 2021 23:53:53 -0800
-Subject: [PATCH] Background portal support for autostart and shutdown on window close switches
-
-oth the enable autostart and shutdown on window close buttons correctly use the portal.
-Based on the original patch from Digitalone1.
+Subject: [PATCH] Background portal support for autostart and shutdown on
+ window close switches Both the enable autostart and shutdown on window close
+ buttons correctly use the portal. Based on the original patch from
+ Digitalone1.
 
 Ideally this should properly finalize and don't rely on g_settings_unbind
 ---
- data/schemas/com.github.wwmm.easyeffects.gschema.xml |   7 +++++--
- data/ui/preferences_general.ui                       |   1 -
- include/preferences_general.hpp                      |   6 ++++--
- src/meson.build                                      |   1 +
- src/preferences_general.cpp                          | 163 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----
+ .../com.github.wwmm.easyeffects.gschema.xml   |   7 +-
+ data/ui/preferences_general.ui                |   1 -
+ include/preferences_general.hpp               |   6 +-
+ src/meson.build                               |   1 +
+ src/preferences_general.cpp                   | 163 +++++++++++++++++-
  5 files changed, 168 insertions(+), 10 deletions(-)
 
 diff --git a/data/schemas/com.github.wwmm.easyeffects.gschema.xml b/data/schemas/com.github.wwmm.easyeffects.gschema.xml
-index 6e9483a..612390e 100644
+index 6e9483a3..612390e4 100644
 --- a/data/schemas/com.github.wwmm.easyeffects.gschema.xml
 +++ b/data/schemas/com.github.wwmm.easyeffects.gschema.xml
 @@ -7,6 +7,9 @@
@@ -46,7 +46,7 @@ index 6e9483a..612390e 100644
 \ No newline at end of file
 +</schemalist>
 diff --git a/data/ui/preferences_general.ui b/data/ui/preferences_general.ui
-index f73c4ff..25223e2 100644
+index 39f7a9e8..167f09e4 100644
 --- a/data/ui/preferences_general.ui
 +++ b/data/ui/preferences_general.ui
 @@ -15,7 +15,6 @@
@@ -58,7 +58,7 @@ index f73c4ff..25223e2 100644
                          </child>
                      </object>
 diff --git a/include/preferences_general.hpp b/include/preferences_general.hpp
-index fb6cfc7..34e1669 100644
+index fb6cfc78..34e16691 100644
 --- a/include/preferences_general.hpp
 +++ b/include/preferences_general.hpp
 @@ -20,12 +20,14 @@
@@ -85,19 +85,19 @@ index fb6cfc7..34e1669 100644
 \ No newline at end of file
 +}  // namespace ui::preferences::general
 diff --git a/src/meson.build b/src/meson.build
-index 6fb5c11..e142588 100644
+index 2f0c2f73..913d9f1b 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -140,6 +140,7 @@ easyeffects_deps = [
- 	dependency('fftw3f'),
- 	dependency('libebur128',version: '>=1.2.0'),
- 	dependency('samplerate'),
+@@ -147,6 +147,7 @@ easyeffects_deps = [
+ 	dependency('nlohmann_json', include_type: 'system'),
+ 	dependency('fmt', version: '>=8.0.0', include_type: 'system'),
+ 	dependency('threads'),
 +	dependency('libportal'),
- 	dependency('rubberband'),
- 	dependency('speexdsp'),
- 	dependency('nlohmann_json'),
+ 	tbb,
+ 	zita_convolver,
+ 	rnnoise,
 diff --git a/src/preferences_general.cpp b/src/preferences_general.cpp
-index 85faa0f..aa15860 100644
+index 85faa0fa..aa15860f 100644
 --- a/src/preferences_general.cpp
 +++ b/src/preferences_general.cpp
 @@ -32,10 +32,134 @@ struct _PreferencesGeneral {
@@ -235,7 +235,7 @@ index 85faa0f..aa15860 100644
  auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> gboolean {
    std::filesystem::path autostart_dir{g_get_user_config_dir() + "/autostart"s};
  
-@@ -72,14 +196,18 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> 
+@@ -72,6 +196,7 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) ->
  
    return 0;
  }
@@ -243,8 +243,7 @@ index 85faa0f..aa15860 100644
  
  void dispose(GObject* object) {
    auto* self = EE_PREFERENCES_GENERAL(object);
- 
-   g_object_unref(self->settings);
+@@ -80,6 +205,9 @@ void dispose(GObject* object) {
  
    util::debug("disposed");
  
@@ -254,7 +253,7 @@ index 85faa0f..aa15860 100644
    G_OBJECT_CLASS(preferences_general_parent_class)->dispose(object);
  }
  
-@@ -103,29 +231,54 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
+@@ -103,6 +231,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
    gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, inactivity_timeout);
  
    gtk_widget_class_bind_template_callback(widget_class, on_enable_autostart);
@@ -262,9 +261,7 @@ index 85faa0f..aa15860 100644
  }
  
  void preferences_general_init(PreferencesGeneral* self) {
-   gtk_widget_init_template(GTK_WIDGET(self));
- 
-   self->settings = g_settings_new(tags::app::id);
+@@ -112,20 +241,44 @@ void preferences_general_init(PreferencesGeneral* self) {
  
    prepare_spinbuttons<"s">(self->inactivity_timeout);
  
@@ -314,6 +311,6 @@ index 85faa0f..aa15860 100644
  auto create() -> PreferencesGeneral* {
    return static_cast<PreferencesGeneral*>(g_object_new(EE_TYPE_PREFERENCES_GENERAL, nullptr));
  }
---
-libgit2 1.0.1
+-- 
+2.37.1
 
