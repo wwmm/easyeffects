@@ -2,17 +2,34 @@ project(
 	'easyeffects',
 	'c',
 	'cpp',
-	default_options : ['cpp_std=c++20','buildtype=debugoptimized'],
+	default_options : [
+    'cpp_std=c++20',
+    'buildtype=debugoptimized',
+    # 1: -Wall
+    # 2: -Wall -Wextra
+    # 3: -Wall -Wextra -Wpedantic
+    'warning_level=2'
+  ],
+  license: 'GPL-3-or-later',
 	version: '6.2.8',
-	meson_version: '>= 0.57.0'
+	meson_version: '>= 0.59.0'
 )
 
 # see https://github.com/wwmm/easyeffects/pull/1739 for more info
 cxx = meson.get_compiler('cpp')
 assert(cxx.get_id() == 'gcc', 'This project only supports the gcc compiler due to usage of c++20 features.')
 
-add_global_arguments('-DG_LOG_DOMAIN="easyeffects"', language : 'c')
-add_global_arguments('-DG_LOG_DOMAIN="easyeffects"', language : 'cpp')
+suppressed_warnings = [
+  '-Wno-missing-field-initializers',
+  '-Wno-unused-parameter'
+  ]
+
+add_project_arguments (
+  suppressed_warnings,
+  language: [ 'c', 'cpp' ],
+  )
+
+add_global_arguments('-DG_LOG_DOMAIN="easyeffects"', language : [ 'c', 'cpp' ])
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
 	language:'c')
 
