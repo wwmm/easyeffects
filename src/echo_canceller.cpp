@@ -88,8 +88,8 @@ void EchoCanceller::setup() {
 
   latency_n_frames = 0U;
 
-  deque_out_L.resize(0);
-  deque_out_R.resize(0);
+  deque_out_L.resize(0U);
+  deque_out_R.resize(0U);
 
   init_speex();
 }
@@ -132,10 +132,10 @@ void EchoCanceller::process(std::span<float>& left_in,
         deque_out_R.push_back(static_cast<float>(v) * inv_short_max);
       }
 
-      data_L.resize(0);
-      data_R.resize(0);
-      probe_L.resize(0);
-      probe_R.resize(0);
+      data_L.resize(0U);
+      data_R.resize(0U);
+      probe_L.resize(0U);
+      probe_R.resize(0U);
     }
   }
 
@@ -228,10 +228,10 @@ void EchoCanceller::init_speex() {
     return;
   }
 
-  data_L.resize(0);
-  data_R.resize(0);
-  probe_L.resize(0);
-  probe_R.resize(0);
+  data_L.resize(0U);
+  data_R.resize(0U);
+  probe_L.resize(0U);
+  probe_R.resize(0U);
 
   blocksize = 0.001F * blocksize_ms * rate;
 

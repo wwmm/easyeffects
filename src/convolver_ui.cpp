@@ -400,9 +400,9 @@ void get_irs_info(ConvolverBox* self) {
         r.push_back(*minr);
         r.push_back(*maxr);
 
-        bin_x.resize(0);
-        bin_l_y.resize(0);
-        bin_r_y.resize(0);
+        bin_x.resize(0U);
+        bin_l_y.resize(0U);
+        bin_r_y.resize(0U);
       }
     }
 

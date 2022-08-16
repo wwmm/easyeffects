@@ -96,11 +96,11 @@ void RNNoise::setup() {
 
   resample = rate != rnnoise_rate;
 
-  data_L.resize(0);
-  data_R.resize(0);
+  data_L.resize(0U);
+  data_R.resize(0U);
 
-  deque_out_L.resize(0);
-  deque_out_R.resize(0);
+  deque_out_L.resize(0U);
+  deque_out_R.resize(0U);
 
   resampler_inL = std::make_unique<Resampler>(rate, rnnoise_rate);
   resampler_inR = std::make_unique<Resampler>(rate, rnnoise_rate);
@@ -133,8 +133,8 @@ void RNNoise::process(std::span<float>& left_in,
       const auto resampled_inL = resampler_inL->process(left_in, false);
       const auto resampled_inR = resampler_inR->process(right_in, false);
 
-      resampled_data_L.resize(0);
-      resampled_data_R.resize(0);
+      resampled_data_L.resize(0U);
+      resampled_data_R.resize(0U);
 
 #ifdef RNNOISE_AVAILABLE
       remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);

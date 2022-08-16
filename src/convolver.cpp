@@ -117,7 +117,7 @@ void Convolver::setup() {
 
     blocksize = n_samples;
 
-    n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
+    n_samples_is_power_of_2 = (n_samples & (n_samples - 1U)) == 0U && n_samples != 0U;
 
     if (!n_samples_is_power_of_2) {
       while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
@@ -125,11 +125,11 @@ void Convolver::setup() {
       }
     }
 
-    data_L.resize(0);
-    data_R.resize(0);
+    data_L.resize(0U);
+    data_R.resize(0U);
 
-    deque_out_L.resize(0);
-    deque_out_R.resize(0);
+    deque_out_L.resize(0U);
+    deque_out_R.resize(0U);
 
     notify_latency = true;
 
@@ -191,8 +191,8 @@ void Convolver::process(std::span<float>& left_in,
           deque_out_R.push_back(v);
         }
 
-        data_L.resize(0);
-        data_R.resize(0);
+        data_L.resize(0U);
+        data_R.resize(0U);
       }
     }
 

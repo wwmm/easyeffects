@@ -150,8 +150,8 @@ void Pitch::setup() {
 
   latency_n_frames = 0U;
 
-  deque_out_L.resize(0);
-  deque_out_R.resize(0);
+  deque_out_L.resize(0U);
+  deque_out_R.resize(0U);
 
   /*
    RubberBand initialization is slow. It is better to do it outside of the plugin realtime thread
