@@ -67,12 +67,14 @@ void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::
 
   std::iota(indices.begin(), indices.end(), 0);
 
-  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), [&](size_t n) {
+  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), [&](const int n) {
     c[n] = 0.0F;
 
-    for (uint m = 0U; m < b.size(); m++) {
-      if (n - m >= 0U && n - m < a.size() - 1U) {
-        c[n] += b[m] * a[n - m];
+    // Static cast to avoid gcc signedness warning.
+    const int a_size = static_cast<int>(a.size()), b_size = static_cast<int>(b.size());
+    for (int m = 0; m < b_size; m++) {
+      if (const auto z = n - m; z >= 0 && z < a_size - 1) {
+        c[n] += b[m] * a[z];
       }
     }
   });
