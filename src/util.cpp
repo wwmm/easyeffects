@@ -351,7 +351,7 @@ void idle_add(std::function<void()> cb) {
 }
 
 void generate_tags(const int& N, const std::string& start_string, const std::string& end_string) {
-  size_t max_tag_size = 0;
+  auto max_tag_size = 0U;
   std::string body = "{";
   std::string msg = "constexpr char tag_array[][";
 

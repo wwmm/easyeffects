@@ -244,8 +244,8 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   self->data->left_spectrum.erase(self->data->left_spectrum.begin());
   self->data->right_spectrum.erase(self->data->right_spectrum.begin());
 
-  size_t bin_size =
-      (gtk_widget_get_width(GTK_WIDGET(self->chart)) > 0) ? gtk_widget_get_width(GTK_WIDGET(self->chart)) : 500;
+  const auto chart_width = static_cast<uint>(gtk_widget_get_width(GTK_WIDGET(self->chart)));
+  const auto bin_size = (chart_width > 0U) ? chart_width : 500U;
 
   // initializing the logarithmic frequency axis
 
@@ -266,7 +266,7 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
 
-  size_t last_j = 0;
+  size_t last_j = 0U;
 
   for (size_t n = 0U; n < log_axis.size(); n++) {
     for (size_t j = last_j; j < self->data->freq_axis.size(); j++) {
@@ -361,17 +361,16 @@ void get_irs_info(ConvolverBox* self) {
   self->data->left_mag = kernel_L;
   self->data->right_mag = kernel_R;
 
-  for (size_t n = 0; n < self->data->time_axis.size(); n++) {
+  for (size_t n = 0U; n < self->data->time_axis.size(); n++) {
     self->data->time_axis[n] = static_cast<float>(n) * dt;
   }
 
   get_irs_spectrum(self, rate);
 
-  size_t bin_size = (gtk_widget_get_width(GTK_WIDGET(self->chart)) > 0)
-                        ? self->data->time_axis.size() / gtk_widget_get_width(GTK_WIDGET(self->chart))
-                        : 0;
+  const auto chart_width = static_cast<uint>(gtk_widget_get_width(GTK_WIDGET(self->chart)));
+  const auto bin_size = (chart_width > 0U) ? static_cast<uint>(self->data->time_axis.size() / chart_width) : 0U;
 
-  if (bin_size > 0) {
+  if (bin_size > 0U) {
     // decimating the data so we can draw it
 
     std::vector<float> t;
@@ -381,7 +380,7 @@ void get_irs_info(ConvolverBox* self) {
     std::vector<float> bin_l_y;
     std::vector<float> bin_r_y;
 
-    for (size_t n = 0; n < self->data->time_axis.size(); n++) {
+    for (size_t n = 0U; n < self->data->time_axis.size(); n++) {
       bin_x.push_back(self->data->time_axis[n]);
 
       bin_l_y.push_back(self->data->left_mag[n]);

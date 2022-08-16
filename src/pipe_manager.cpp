@@ -503,7 +503,7 @@ void on_node_event_param(void* object,
 
         std::string format_str = "unknown";
 
-        for (size_t k = 0; k < std::size(spa_type_audio_format); k++) {
+        for (size_t k = 0U; k < std::size(spa_type_audio_format); k++) {
           if (format == spa_type_audio_format[k].type) {
             if (spa_type_audio_format[k].name != nullptr) {
               std::string long_name = spa_type_audio_format[k].name;

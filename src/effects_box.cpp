@@ -374,7 +374,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
         // reducing the amount of data so we can plot them
 
-        size_t last_j = 0;
+        size_t last_j = 0U;
 
         for (size_t n = 0U; n < self->data->spectrum_x_axis.size(); n++) {
           for (size_t j = last_j; j < self->data->spectrum_freqs.size(); j++) {
@@ -395,7 +395,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
             continue;
           }
 
-          if (n > 0U && n < self->data->spectrum_bin_count.size() + 1) {
+          if (n > 0U && n < self->data->spectrum_bin_count.size() + 1U) {
             self->data->spectrum_mag[n] = self->data->spectrum_mag[n - 1U];
           }
         }
