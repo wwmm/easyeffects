@@ -13,7 +13,7 @@
 
 # some functions reused from https://github.com/wwmm/easyeffects/commit/04bd3e968f7e0ba79b9672882590affe445dc330
 
-# no means just refresh changelog and metainfo with current news.yaml file, will assume template is present representing a future relase. 
+# no means just refresh changelog and metainfo with current news.yaml file, will assume template is present representing a future release. 
 # The future release at the top of NEWS.yaml will not be included (since you are only regenerating current releases).
 
 set -o nounset
@@ -315,7 +315,7 @@ convert_news_to_metainfo() {
     exit 1
   fi
 
-  log_info "Succesfully converted news to metainfo"
+  log_info "Successfully converted news to metainfo"
   
   # replace ratio character with colon
   sed -i 's/∶/:/g' "${TEMP_METAINFO_FILE}"

@@ -128,7 +128,7 @@ jobs:
     # per https://docs.gtk.org/gio/struct.Resource.html
     # it results in this error for non-flatpak ci builds: 
     #   ../data/easyeffects.gresource.xml: Failed to close file descriptor for child process (Operation not permitted).
-    # this was only reproducible in the ci envrionment, not locally, so minifying here is the next-best alternative
+    # this was only reproducible in the ci environment, not locally, so minifying here is the next-best alternative
     - name: Minify xml
       run: |
         while IFS= read -r line; do

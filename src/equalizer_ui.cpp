@@ -226,7 +226,7 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
   // The configuration line refers to an existing APO filter, so we try to get the other parameters.
   parse_apo_frequency(line, filter);
 
-  // Inspired by funtion "para_equalizer_ui::import_rew_file(const LSPString*)"
+  // Inspired by function "para_equalizer_ui::import_rew_file(const LSPString*)"
   // inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
   // https://github.com/sadko4u/lsp-plugins
   if (filter_type == "PK" || filter_type == "MODAL" || filter_type == "PEQ") {
