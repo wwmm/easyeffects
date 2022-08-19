@@ -76,7 +76,7 @@ GStreamer usage was replaced by native PipeWire filters.
 The user has full control over the effects order. Just use the up/down arrows
 next to the effect labels on the left side.
 
-Some packages do not provide all plugin packages by default. In case some effects are not available, ensure you must have the following installed on your system:
+Some packages do not provide all plugin packages by default. In case some effects are not available, ensure you have the following installed on your system:
 
 <details>
 <summary>Dependencies</summary>
