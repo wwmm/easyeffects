@@ -137,7 +137,7 @@ auto to_string(const T& num, const std::string def = "0") -> std::string {
   // An additional string parameter could be eventually provided with a
   // default value to return in case the conversion fails.
 
-  // Max buffer lenght:
+  // Max buffer length:
   // number of base-10 digits that can be represented by the type T without change +
   // number of base-10 digits that are necessary to uniquely represent all distinct
   // values of the type T (meaningful only for real numbers) +

@@ -116,7 +116,7 @@ auto icon_available(AppInfo* self, const std::string& icon_name) -> bool {
     return true;
   }
 
-  // The icon object can't loopup icons in pixmaps directories, so we check their existence there also.
+  // The icon object can't lookup icons in pixmaps directories, so we check their existence there also.
 
   constexpr auto pixmaps_dirs = std::to_array({"/usr/share/pixmaps", "/usr/local/share/pixmaps"});
 

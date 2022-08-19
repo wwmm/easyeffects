@@ -278,7 +278,7 @@
                 <p>After figuring our overall sound let's look for some icing on the cake.</p>
                 <p>Add the Stereo Tools and place it at the fourth position, after Multiband Compressor and before Limiter. This tool has a lot of functionality but we only need just a single parameter. Switch to the "Output" tab and set the parameter Stereo Base to 0.25. That's it.</p>
                 <p>Stereo Base acts on the two channels. It adds inverted signals crossover-wise. This way one can bring a full stereo signal down to mono seamlessly (by going negative values, -1 is fully mono) but also raise the stereo base by choosing positive numbers. This setting has lots of side effects, so avoid overdoing it! One of the bigger problems is that it reduces the bass range due to different effects, which is something we <em style="strong">definitely</em> don't want here.</p>
-                <p>Play with Stereo Base to spread the appearance of your sound to a nice, broad stage without loosing the center (vocals, snare drums, conversations in movies) or substance in the lower end. Most likely values between 0 and 0.5 will give some good results.</p>
+                <p>Play with Stereo Base to spread the appearance of your sound to a nice, broad stage without losing the center (vocals, snare drums, conversations in movies) or substance in the lower end. Most likely values between 0 and 0.5 will give some good results.</p>
             </item>
         </terms>
     </section>

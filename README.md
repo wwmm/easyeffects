@@ -1,10 +1,41 @@
-# EasyEffects
+<h2 align="center">
+  <img src="data/com.github.wwmm.easyeffects.svg" alt="EasyEffects icon" width="150" height="150"/>
+  <br>
+  EasyEffects
+</h2>
 
-[![CircleCI](https://circleci.com/gh/wwmm/easyeffects.svg?style=shield)](https://circleci.com/gh/wwmm/easyeffects)
-[![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/wwmm/donate)
-[![Translation Status](https://hosted.weblate.org/widgets/easyeffects/-/287x66-grey.png)](https://hosted.weblate.org/engage/easyeffects/)
+<p align="center">
+  <strong>Audio effects for PipeWire applications</strong>
+</p>
 
-Audio effects for PipeWire applications.
+<p align="center">
+  <a href="https://github.com/sponsors/wwmm">
+    <img alt="GitHub Sponsors donation button" src="https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&link=https://github.com/sponsors/wwmm">
+  </a>
+  <a href="https://liberapay.com/wwmm/donate">
+    <img alt="Liberapay donation button" src="https://img.shields.io/badge/liberapay-donate-green">
+  </a>
+  <a href="https://www.patreon.com/wellingtonwallace?fan_landing=true">
+    <img alt="Patreon donation button" src="https://img.shields.io/badge/patreon-donate-green.svg">
+  </a>
+  <a href="https://www.paypal.com/donate?hosted_button_id=RK723F4EKH2UE">
+    <img alt="PayPal donation button" src="https://img.shields.io/badge/paypal-donate-green.svg">
+  </a>
+</p>
+
+<br>
+
+<p align="center">
+  <a href="https://hosted.weblate.org/engage/easyeffects/">
+    <img alt="Translation status" src="https://hosted.weblate.org/widgets/easyeffects/-/svg-badge.svg"/>
+  </a>
+  <a href="https://github.com/wwmm/easyeffects/actions/workflows/CI.yaml">
+    <img alt="CI status" src="https://github.com/wwmm/easyeffects/actions/workflows/CI.yaml/badge.svg"/>
+  </a>
+  <a href="https://circleci.com/gh/wwmm/easyeffects">
+    <img alt="CircleCI status" src="https://circleci.com/gh/wwmm/easyeffects.svg?style=shield"/>
+  </a>
+</p>
 
 This application was formerly known as PulseEffects, but it was renamed to EasyEffects after it started to use GTK4 and
 GStreamer usage was replaced by native PipeWire filters.
@@ -45,7 +76,12 @@ GStreamer usage was replaced by native PipeWire filters.
 The user has full control over the effects order. Just use the up/down arrows
 next to the effect labels on the left side.
 
-To be able to use all of the effects, you must have the following installed on your system:
+Some packages do not provide all plugin packages by default. In case some effects are not available, ensure you must have the following installed on your system:
+
+<details>
+<summary>Dependencies</summary>
+
+Plugins needed for effects:
 
 - [Linux Studio plugins](http://lsp-plug.in/?page=home). Version 1.1.24 or higher.
 - [Calf Studio plugins](https://calf-studio-gear.org/). Version 0.90.1 or higher.
@@ -54,6 +90,8 @@ To be able to use all of the effects, you must have the following installed on y
 - [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/). For Convolver.
 - [rubberband](https://www.breakfastquay.com/rubberband/). For Pitch Shift.
 - [RNNoise](https://github.com/xiph/rnnoise). For Noise Reduction.
+
+Other dependencies include: 
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
 - [libbs2b](https://sourceforge.net/projects/bs2b/files/libbs2b/)
@@ -62,63 +100,22 @@ To be able to use all of the effects, you must have the following installed on y
 - [nlohmann json](https://github.com/nlohmann/json)
 - [tbb](https://www.threadingbuildingblocks.org)
 
+</details>
+
 ## Donate
 
 You can help me to keep developing EasyEffects through donations. Any amount will be greatly appreciated :-)
 
-<table>
-  <tr>
-    <td>https://github.com/sponsors/wwmm</td>
-    <td>Github Sponsors</td>
-  </tr>
-  <tr>
-    <td><a href="https://liberapay.com/wwmm/">https://liberapay.com/wwmm</a></td>
-    <td><a href="https://liberapay.com/wwmm/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></td>
-  </tr>
-  <tr>
-    <td>https://www.patreon.com/wellingtonwallace?fan_landing=true</td>
-    <td>Patreon</td>
-  </tr>
-  <tr>
-    <td>https://www.paypal.com/donate?hosted_button_id=RK723F4EKH2UE</td>
-    <td>PayPal</td>
-  </tr>
-</table>
-
-## Changelog
-
-- For information about changes between versions, take a look at our
-  [changelog](https://github.com/wwmm/easyeffects/blob/master/CHANGELOG.md)
-  
-## Warning
-DON'T SET EasyEffects virtual devices as default
-EasyEffects is designed assuming that your hardware stays as default
+[GitHub Sponsors](https://github.com/sponsors/wwmm)  
+[Liberapay](https://liberapay.com/wwmm)  
+[Patreon](https://www.patreon.com/wellingtonwallace?fan_landing=true)  
+[PayPal](https://www.paypal.com/donate?hosted_button_id=RK723F4EKH2UE)  
 
 ## Installation
 
 ### Distribution-specific packages
 
-These Linux distributions have EasyEffects packages:
-
-- [Arch Linux](https://www.archlinux.org/packages/community/x86_64/easyeffects/) / [AUR Git version](https://aur.archlinux.org/packages/easyeffects-git/)
-- [openSUSE](https://software.opensuse.org/package/easyeffects)
-- [NixOS](https://search.nixos.org/packages?channel=unstable&show=easyeffects&query=easyeffects)
-- [Gentoo](https://packages.gentoo.org/packages/media-sound/easyeffects)
-- [Fedora](https://src.fedoraproject.org/rpms/easyeffects)
-
-<!--
-- [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/easyeffects/template)
-- [ROSA](https://abf.io/import/easyeffects/)
-- [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/easyeffects/)
-- [Fedora GNU/Linux](https://apps.fedoraproject.org/packages/easyeffects)
-- [CRUX](https://crux.nu/portdb/?a=search&q=easyeffects)
-- [Debian (buster)](https://packages.debian.org/buster-backports/easyeffects) / [Debian (bullseye)](https://packages.debian.org/bullseye/easyeffects) -->
-
-<!-- These are community maintained repositories of distribution packages. You can
-find more information about these in the
-[wiki](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#package-repositories).
-
-- [Ubuntu and Debian](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#debian--ubuntu) -->
+Most up-to-date Linux distributions have an `easyeffects` package that can be installed with the distribution package manager. See [the wiki](https://github.com/wwmm/easyeffects/wiki/Package-Repositories) for a full list.
 
 ### Flatpak
 
@@ -130,33 +127,33 @@ Flatpak packages support most Linux distributions and are sandboxed. The EasyEff
 
 If your distribution does not yet include packages required to build EasyEffects, Flatpak is a convenient option.
 
-#### Nightly Flatpak
+## Warning
 
-A nightly Flatpak package is also available, to provide the latest changes. See the [installation instructions](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#nightly-flatpak).
-
-### Installing from source
-
-To install from source, see the wiki's [Installing from Source](https://github.com/wwmm/easyeffects/wiki/Installation-from-Source) article for detailed instructions.
+**Don't set** EasyEffects' virtual devices as your default audio input/output.
+EasyEffects is designed assuming that your hardware stays as default.
 
 ## Documentation
 
-EasyEffects documentation can be read inside the GUI if the
-[yelp](https://gitlab.gnome.org/GNOME/yelp) package is installed.
+A comprehensive manual is included in the application itself, accessed via the hamburger menu in the top right. If the manual is inaccessible ensure the [yelp](https://gitlab.gnome.org/GNOME/yelp) package is installed.
+
+## Changelog
+
+For information about changes between versions, take a look at our [changelog](https://github.com/wwmm/easyeffects/blob/master/CHANGELOG.md)
 
 ## Frequently asked questions
 
 Take a look at our [FAQ](https://github.com/wwmm/easyeffects/wiki/FAQ) to see
 if you are facing a known issue.
 
-## Command-line options
-
-See the wiki: [Command Line Options](https://github.com/wwmm/easyeffects/wiki/Command-Line-Options)
-
 ## Community presets
 
 See the wiki: [Community presets](https://github.com/wwmm/easyeffects/wiki/Community-presets)
 
 This page also has instructions for converting PulseEffects presets to EasyEffects presets.
+
+## Command-line options
+
+See the wiki: [Command Line Options](https://github.com/wwmm/easyeffects/wiki/Command-Line-Options)
 
 ## Reporting bugs
 
@@ -165,6 +162,15 @@ See the wiki: [Reporting Bugs](https://github.com/wwmm/easyeffects/wiki/Reportin
 ## Translating EasyEffects
 
 See the wiki's [Translating EasyEffects](https://github.com/wwmm/easyeffects/wiki/Translating-EasyEffects) article for detailed instructions.
+
+## Installing from source
+
+To install from source, see the wiki's [Installing from Source](https://github.com/wwmm/easyeffects/wiki/Installation-from-Source) article for detailed instructions.
+
+## CI artifacts
+
+Flatpak bundles and Arch packages for testing and development purposes are built for PRs and pushes to master. 
+See the [installation instructions](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#ci-artifacts).
 
 ## License
 

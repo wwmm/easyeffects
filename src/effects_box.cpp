@@ -310,7 +310,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   adw_view_stack_page_set_icon_name(self->plugins_box_page, "emblem-music-symbolic");
 
-  // setting up the boxes we added t othe stack
+  // setting up the boxes we added t other stack
 
   ui::apps_box::setup(self->appsBox, application, pipeline_type, icon_theme);
   ui::plugins_box::setup(self->pluginsBox, application, pipeline_type);
