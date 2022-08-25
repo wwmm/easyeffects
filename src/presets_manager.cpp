@@ -241,7 +241,7 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status())) {
         if (it->path().extension().c_str() == json_ext) {
-          names.push_back(it->path().stem().c_str());
+          names.emplace_back(it->path().stem().c_str());
         }
       }
 
