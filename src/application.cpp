@@ -461,7 +461,7 @@ void application_init(Application* self) {
 
   entries[6] = {"shortcuts",
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  auto builder = gtk_builder_new_from_resource(tags::resources::shortcuts_ui);
+                  auto* builder = gtk_builder_new_from_resource(tags::resources::shortcuts_ui);
 
                   auto* window = GTK_SHORTCUTS_WINDOW(gtk_builder_get_object(builder, "window"));
 

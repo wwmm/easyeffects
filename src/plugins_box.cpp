@@ -29,11 +29,11 @@ struct Data {
 
   ~Data() { util::debug("data struct destroyed"); }
 
-  bool schedule_signal_idle;
+  bool schedule_signal_idle = false;
 
-  app::Application* application;
+  app::Application* application = nullptr;
 
-  PipelineType pipeline_type;
+  PipelineType pipeline_type{};
 
   std::string schema_path;
 
@@ -74,7 +74,7 @@ G_DEFINE_TYPE(PluginsBox, plugins_box, GTK_TYPE_BOX)
 
 template <PipelineType pipeline_type>
 void add_plugins_to_stack(PluginsBox* self) {
-  EffectsBase* effects_base;
+  EffectsBase* effects_base = nullptr;
 
   if constexpr (pipeline_type == PipelineType::input) {
     effects_base = self->data->application->sie;
@@ -89,7 +89,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
   // removing all plugins
 
-  for (auto child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
+  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
     auto* next_child = gtk_widget_get_next_sibling(child);
 
     uint serial = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(child), "serial"));
@@ -122,7 +122,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
         path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
-        auto plugin_box = ui::bass_enhancer_box::create();
+        auto* plugin_box = ui::bass_enhancer_box::create();
 
         ui::bass_enhancer_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path);
 
@@ -140,7 +140,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
         path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
-        auto plugin_box = ui::bass_loudness_box::create();
+        auto* plugin_box = ui::bass_loudness_box::create();
 
         ui::bass_loudness_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path);
 
@@ -154,7 +154,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Compressor>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::compressor_box::create();
+        auto* plugin_box = ui::compressor_box::create();
 
         ui::compressor_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/",
                                   self->data->application->pm);
@@ -193,7 +193,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Deesser>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::deesser_box::create();
+        auto* plugin_box = ui::deesser_box::create();
 
         ui::deesser_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
 
@@ -207,7 +207,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Delay>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::delay_box::create();
+        auto* plugin_box = ui::delay_box::create();
 
         ui::delay_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
 
@@ -233,7 +233,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Exciter>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::exciter_box::create();
+        auto* plugin_box = ui::exciter_box::create();
 
         ui::exciter_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
 
@@ -247,7 +247,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Equalizer>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::equalizer_box::create();
+        auto* plugin_box = ui::equalizer_box::create();
 
         ui::equalizer_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/", self->data->application);
 
@@ -261,7 +261,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Filter>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::filter_box::create();
+        auto* plugin_box = ui::filter_box::create();
 
         ui::filter_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
 
@@ -275,7 +275,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Gate>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::gate_box::create();
+        auto* plugin_box = ui::gate_box::create();
 
         ui::gate_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/", self->data->application->pm);
 
@@ -289,7 +289,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Limiter>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::limiter_box::create();
+        auto* plugin_box = ui::limiter_box::create();
 
         ui::limiter_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/",
                                self->data->application->pm);
@@ -304,7 +304,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Loudness>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::loudness_box::create();
+        auto* plugin_box = ui::loudness_box::create();
 
         ui::loudness_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
 
@@ -318,7 +318,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Maximizer>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::maximizer_box::create();
+        auto* plugin_box = ui::maximizer_box::create();
 
         ui::maximizer_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
 
@@ -336,7 +336,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
         path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
-        auto plugin_box = ui::multiband_compressor_box::create();
+        auto* plugin_box = ui::multiband_compressor_box::create();
 
         ui::multiband_compressor_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path,
                                             self->data->application->pm);
@@ -355,7 +355,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
         path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
-        auto plugin_box = ui::multiband_gate_box::create();
+        auto* plugin_box = ui::multiband_gate_box::create();
 
         ui::multiband_gate_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path,
                                       self->data->application->pm);
@@ -378,7 +378,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<Reverb>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::reverb_box::create();
+        auto* plugin_box = ui::reverb_box::create();
 
         ui::reverb_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
 
@@ -392,7 +392,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<RNNoise>(name);
 
       if (plugin_ptr->package_installed) {
-        auto plugin_box = ui::rnnoise_box::create();
+        auto* plugin_box = ui::rnnoise_box::create();
 
         ui::rnnoise_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/", self->data->application);
 
@@ -410,7 +410,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
         path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
 
-        auto plugin_box = ui::stereo_tools_box::create();
+        auto* plugin_box = ui::stereo_tools_box::create();
 
         ui::stereo_tools_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path);
 
@@ -543,7 +543,7 @@ void setup_listview(PluginsBox* self) {
                   auto iter_src = std::ranges::find(list, src);
                   auto iter_dst = std::ranges::find(list, dst);
 
-                  auto insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;
+                  auto insert_after = iter_src - list.begin() < iter_dst - list.begin();
 
                   list.erase(iter_src);
 
@@ -717,7 +717,7 @@ void dispose(GObject* object) {
   // Trying to avoid that the functions scheduled by the plugins are executed when the widgets have already been
   // disposed
 
-  for (auto child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
+  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->stack)); child != nullptr;) {
     auto* next_child = gtk_widget_get_next_sibling(child);
 
     uint serial = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(child), "serial"));
