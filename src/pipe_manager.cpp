@@ -391,16 +391,28 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
   if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
-    for (uint i = 0U; i < info->n_params; i++) {
-      if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
+    auto params = std::span(info->params, info->n_params);
+
+    for (auto param : params) {
+      if ((param.flags & SPA_PARAM_INFO_READ) == 0U) {
         continue;
       }
 
-      if (const auto id = info->params[i].id;
-          id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
+      if (const auto id = param.id; id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
         pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
       }
     }
+
+    // for (uint i = 0U; i < info->n_params; i++) {
+    //   if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
+    //     continue;
+    //   }
+
+    //   if (const auto id = info->params[i].id;
+    //       id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
+    //     pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
+    //   }
+    // }
   }
 
   // update NodeInfo inside map
@@ -791,12 +803,14 @@ void on_device_info(void* object, const struct pw_device_info* info) {
     }
 
     if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
-      for (uint i = 0U; i < info->n_params; i++) {
-        if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
+      auto params = std::span(info->params, info->n_params);
+
+      for (auto param : params) {
+        if ((param.flags & SPA_PARAM_INFO_READ) == 0U) {
           continue;
         }
 
-        if (const auto id = info->params[i].id; id == SPA_PARAM_Route) {
+        if (const auto id = param.id; id == SPA_PARAM_Route) {
           pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);
         }
       }
