@@ -33,6 +33,7 @@
 #include <array>
 #include <map>
 #include <memory>
+#include <span>
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
 #include "util.hpp"
