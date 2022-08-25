@@ -515,10 +515,10 @@ void on_node_event_param(void* object,
 
         std::string format_str = "unknown";
 
-        for (size_t k = 0U; k < std::size(spa_type_audio_format); k++) {
-          if (format == spa_type_audio_format[k].type) {
-            if (spa_type_audio_format[k].name != nullptr) {
-              std::string long_name = spa_type_audio_format[k].name;
+        for (const auto type_info : std::to_array(spa_type_audio_format)) {
+          if (format == type_info.type) {
+            if (type_info.name != nullptr) {
+              std::string long_name = type_info.name;
 
               format_str = long_name.substr(long_name.rfind(':') + 1);
             }
