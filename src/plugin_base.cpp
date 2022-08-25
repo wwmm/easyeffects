@@ -59,25 +59,25 @@ void on_process(void* userdata, spa_io_position* position) {
   std::span<float> right_out;
 
   if (in_left != nullptr) {
-    left_in = std::span{in_left, in_left + n_samples};
+    left_in = std::span(in_left, n_samples);
   } else {
     left_in = d->pb->dummy_left;
   }
 
   if (in_right != nullptr) {
-    right_in = std::span{in_right, in_right + n_samples};
+    right_in = std::span(in_right, n_samples);
   } else {
     right_in = d->pb->dummy_right;
   }
 
   if (out_left != nullptr) {
-    left_out = std::span{out_left, out_left + n_samples};
+    left_out = std::span(out_left, n_samples);
   } else {
     left_out = d->pb->dummy_left;
   }
 
   if (out_right != nullptr) {
-    right_out = std::span{out_right, out_right + n_samples};
+    right_out = std::span(out_right, n_samples);
   } else {
     right_out = d->pb->dummy_right;
   }
@@ -89,13 +89,13 @@ void on_process(void* userdata, spa_io_position* position) {
     auto* probe_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_right, n_samples));
 
     if (probe_left == nullptr || probe_right == nullptr) {
-      std::span l{d->pb->dummy_left.data(), d->pb->dummy_left.data() + n_samples};
-      std::span r{d->pb->dummy_right.data(), d->pb->dummy_right.data() + n_samples};
+      std::span l(d->pb->dummy_left.data(), n_samples);
+      std::span r(d->pb->dummy_right.data(), n_samples);
 
       d->pb->process(left_in, right_in, left_out, right_out, l, r);
     } else {
-      std::span l{probe_left, probe_left + n_samples};
-      std::span r{probe_right, probe_right + n_samples};
+      std::span l(probe_left, n_samples);
+      std::span r(probe_right, n_samples);
 
       d->pb->process(left_in, right_in, left_out, right_out, l, r);
     }
