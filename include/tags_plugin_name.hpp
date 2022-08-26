@@ -105,4 +105,6 @@ inline constexpr auto list = std::to_array(
 
 auto get_translated() -> std::map<std::string, std::string>;
 
+auto get_base_name(std::string_view name) -> std::string;
+
 }  // namespace tags::plugin_name

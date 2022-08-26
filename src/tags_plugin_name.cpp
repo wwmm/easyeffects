@@ -49,4 +49,100 @@ auto get_translated() -> std::map<std::string, std::string> {
   return translated;
 }
 
+auto get_base_name(std::string_view name) -> std::string {
+  if (name.starts_with(tags::plugin_name::autogain)) {
+    return tags::plugin_name::autogain;
+  }
+
+  if (name.starts_with(tags::plugin_name::bass_enhancer)) {
+    return tags::plugin_name::bass_enhancer;
+  }
+
+  if (name.starts_with(tags::plugin_name::bass_loudness)) {
+    return tags::plugin_name::bass_loudness;
+  }
+
+  if (name.starts_with(tags::plugin_name::compressor)) {
+    return tags::plugin_name::compressor;
+  }
+
+  if (name.starts_with(tags::plugin_name::convolver)) {
+    return tags::plugin_name::convolver;
+  }
+
+  if (name.starts_with(tags::plugin_name::crossfeed)) {
+    return tags::plugin_name::crossfeed;
+  }
+
+  if (name.starts_with(tags::plugin_name::crystalizer)) {
+    return tags::plugin_name::crystalizer;
+  }
+
+  if (name.starts_with(tags::plugin_name::deesser)) {
+    return tags::plugin_name::deesser;
+  }
+
+  if (name.starts_with(tags::plugin_name::delay)) {
+    return tags::plugin_name::delay;
+  }
+
+  if (name.starts_with(tags::plugin_name::echo_canceller)) {
+    return tags::plugin_name::echo_canceller;
+  }
+
+  if (name.starts_with(tags::plugin_name::equalizer)) {
+    return tags::plugin_name::equalizer;
+  }
+
+  if (name.starts_with(tags::plugin_name::exciter)) {
+    return tags::plugin_name::exciter;
+  }
+
+  if (name.starts_with(tags::plugin_name::filter)) {
+    return tags::plugin_name::filter;
+  }
+
+  if (name.starts_with(tags::plugin_name::gate)) {
+    return tags::plugin_name::gate;
+  }
+
+  if (name.starts_with(tags::plugin_name::limiter)) {
+    return tags::plugin_name::limiter;
+  }
+
+  if (name.starts_with(tags::plugin_name::loudness)) {
+    return tags::plugin_name::loudness;
+  }
+
+  if (name.starts_with(tags::plugin_name::maximizer)) {
+    return tags::plugin_name::maximizer;
+  }
+
+  if (name.starts_with(tags::plugin_name::multiband_compressor)) {
+    return tags::plugin_name::multiband_compressor;
+  }
+
+  if (name.starts_with(tags::plugin_name::multiband_gate)) {
+    return tags::plugin_name::multiband_gate;
+  }
+
+  if (name.starts_with(tags::plugin_name::pitch)) {
+    return tags::plugin_name::pitch;
+  }
+
+  if (name.starts_with(tags::plugin_name::reverb)) {
+    return tags::plugin_name::reverb;
+  }
+
+  if (name.starts_with(tags::plugin_name::rnnoise)) {
+    return tags::plugin_name::rnnoise;
+  }
+
+  if (name.starts_with(tags::plugin_name::stereo_tools)) {
+    return tags::plugin_name::stereo_tools;
+  }
+
+  return "";
+}
+
 }  // namespace tags::plugin_name

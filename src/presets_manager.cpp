@@ -464,7 +464,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
 
           for (const auto& p : json.at("output").at("plugins_order").get<std::vector<std::string>>()) {
             for (const auto& v : tags::plugin_name::list) {
-              if (v == p) {
+              if (p.starts_with(v)) {
                 plugins.push_back(p);
 
                 break;
@@ -516,7 +516,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
 
           for (const auto& p : json.at("input").at("plugins_order").get<std::vector<std::string>>()) {
             for (const auto& v : tags::plugin_name::list) {
-              if (v == p) {
+              if (p.starts_with(v)) {
                 plugins.push_back(p);
 
                 break;

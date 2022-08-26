@@ -583,45 +583,46 @@ void setup_listview(PluginsBox* self) {
       }),
       self);
 
-  g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PluginsBox* self) {
-                     auto* top_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(item), "top_box"));
-                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
-                     auto* remove = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "remove"));
-                     auto* enable = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "enable"));
-                     auto* plugin_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "plugin_icon"));
+  g_signal_connect(
+      factory, "bind", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PluginsBox* self) {
+        auto* top_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(item), "top_box"));
+        auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+        auto* remove = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "remove"));
+        auto* enable = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "enable"));
+        auto* plugin_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "plugin_icon"));
 
-                     gtk_image_set_from_icon_name(plugin_icon, "ee-arrow-down-symbolic");
+        gtk_image_set_from_icon_name(plugin_icon, "ee-arrow-down-symbolic");
 
-                     auto* child_item = gtk_list_item_get_item(item);
+        auto* child_item = gtk_list_item_get_item(item);
 
-                     auto page = GTK_STACK_PAGE(child_item);
-                     auto name = gtk_stack_page_get_name(page);
+        auto page = GTK_STACK_PAGE(child_item);
+        auto page_name = gtk_stack_page_get_name(page);
+        auto base_name = tags::plugin_name::get_base_name(page_name);
 
-                     g_object_set_data(G_OBJECT(top_box), "page-name", const_cast<char*>(name));
-                     g_object_set_data(G_OBJECT(remove), "page-name", const_cast<char*>(name));
+        g_object_set_data(G_OBJECT(top_box), "page-name", const_cast<char*>(page_name));
+        g_object_set_data(G_OBJECT(remove), "page-name", const_cast<char*>(page_name));
 
-                     gtk_label_set_text(label, self->data->translated[name].c_str());
+        gtk_label_set_text(label, self->data->translated[base_name].c_str());
 
-                     gtk_accessible_update_property(GTK_ACCESSIBLE(remove), GTK_ACCESSIBLE_PROPERTY_LABEL,
-                                                    (_("Remove") + " "s + self->data->translated[name]).c_str(), -1);
+        gtk_accessible_update_property(GTK_ACCESSIBLE(remove), GTK_ACCESSIBLE_PROPERTY_LABEL,
+                                       (_("Remove") + " "s + self->data->translated[base_name]).c_str(), -1);
 
-                     // binding the enable button to the bypass key
+        // binding the enable button to the bypass key
 
-                     auto gname = std::string(name);
+        auto gname = base_name;
 
-                     gname.erase(std::remove(gname.begin(), gname.end(), '_'), gname.end());
+        gname.erase(std::remove(gname.begin(), gname.end(), '_'), gname.end());
 
-                     auto schema_path = self->data->schema_path + gname + "/";
-                     auto schema_id = tags::app::id + "."s + gname;
+        auto schema_path = self->data->schema_path + gname + "/";
+        auto schema_id = tags::app::id + "."s + gname;
 
-                     auto* settings = g_settings_new_with_path(schema_id.c_str(), schema_path.c_str());
+        auto* settings = g_settings_new_with_path(schema_id.c_str(), schema_path.c_str());
 
-                     gsettings_bind_widget(settings, "bypass", enable, G_SETTINGS_BIND_INVERT_BOOLEAN);
+        gsettings_bind_widget(settings, "bypass", enable, G_SETTINGS_BIND_INVERT_BOOLEAN);
 
-                     g_object_unref(settings);
-                   }),
-                   self);
+        g_object_unref(settings);
+      }),
+      self);
 
   gtk_list_view_set_factory(self->listview, factory);
 
