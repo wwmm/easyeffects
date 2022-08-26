@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 22:50+0000\n"
+"POT-Creation-Date: 2022-08-26 20:44+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -542,7 +542,7 @@ msgstr "Externo"
 msgid "Sidechain Type"
 msgstr "Tipo de cadeia lateral"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:652
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:653
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
 
@@ -2246,11 +2246,11 @@ msgstr "Nenhum arquivo de impulso carregado"
 msgid "Failed To Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:653
+#: src/effects_box.cpp:263 src/plugins_box.cpp:654
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:673
+#: src/effects_box.cpp:286 src/plugins_box.cpp:674
 msgid "Players"
 msgstr "Reprodutores"
 
@@ -2284,11 +2284,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Remover este arquivo de predefinição"
 
-#: src/plugins_box.cpp:607
+#: src/plugins_box.cpp:608
 msgid "Remove"
 msgstr "Remover"
 
-#: src/plugins_box.cpp:674
+#: src/plugins_box.cpp:675
 #, fuzzy
 msgid "Output Device"
 msgstr "Ganho de Entrada"
