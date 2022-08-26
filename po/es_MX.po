@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 22:50+0000\n"
+"POT-Creation-Date: 2022-08-26 20:44+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -577,7 +577,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Cadena Lateral"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:652
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:653
 #, fuzzy
 msgid "Input Device"
 msgstr "Efectos de Entrada"
@@ -2359,12 +2359,12 @@ msgstr "Importar Archivo Impulse"
 msgid "Failed To Load The Impulse File"
 msgstr "No se pudo encontrar el archivo Impulse"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:653
+#: src/effects_box.cpp:263 src/plugins_box.cpp:654
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordes"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:673
+#: src/effects_box.cpp:286 src/plugins_box.cpp:674
 msgid "Players"
 msgstr ""
 
@@ -2397,11 +2397,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Borrar este perfil"
 
-#: src/plugins_box.cpp:607
+#: src/plugins_box.cpp:608
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:674
+#: src/plugins_box.cpp:675
 #, fuzzy
 msgid "Output Device"
 msgstr "Efectos de Salida"
