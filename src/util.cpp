@@ -19,6 +19,8 @@
 
 #include "util.hpp"
 
+#include <utility>
+
 namespace util {
 
 auto prepare_debug_message(const std::string& message, std::source_location location) -> std::string {
@@ -197,7 +199,7 @@ auto gchar_array_to_vector(gchar** gchar_array, const bool free_data) -> std::ve
 
   if (gchar_array != nullptr) {
     for (int n = 0; gchar_array[n] != nullptr; n++) {
-      output.push_back(gchar_array[n]);
+      output.emplace_back(gchar_array[n]);
     }
   }
 
@@ -247,27 +249,30 @@ auto gsettings_get_string(GSettings* settings, const char* key) -> std::string {
 }
 
 auto gsettings_get_range(GSettings* settings, const char* key) -> std::pair<std::string, std::string> {
-  GSettingsSchema* schema;
-  const gchar* type;
-  GVariant* detail;
-  std::string min_v, max_v;
+  GSettingsSchema* schema = nullptr;
+  const gchar* type = nullptr;
+  GVariant* detail = nullptr;
+  std::string min_v;
+  std::string max_v;
 
   g_object_get(settings, "settings-schema", &schema, nullptr);
 
-  auto schema_key = g_settings_schema_get_key(schema, key);
+  auto* schema_key = g_settings_schema_get_key(schema, key);
 
-  auto range = g_settings_schema_key_get_range(schema_key);
+  auto* range = g_settings_schema_key_get_range(schema_key);
 
   g_variant_get(range, "(&sv)", &type, &detail);
 
   if (strcmp(type, "range") == 0) {
-    GVariant *min, *max;
-    gchar *smin, *smax;
+    GVariant* min = nullptr;
+    GVariant* max = nullptr;
+    gchar* smin = nullptr;
+    gchar* smax = nullptr;
 
     g_variant_get(detail, "(**)", &min, &max);
 
-    smin = g_variant_print(min, false);
-    smax = g_variant_print(max, false);
+    smin = g_variant_print(min, 0);
+    smax = g_variant_print(max, 0);
 
     min_v = smin;
     max_v = smax;
@@ -327,9 +332,9 @@ void idle_add(std::function<void()> cb) {
     std::function<void()> cb;
   };
 
-  auto d = new Data();
+  auto* d = new Data();
 
-  d->cb = cb;
+  d->cb = std::move(cb);
 
   g_idle_add((GSourceFunc) +
                  [](Data* d) {
@@ -374,7 +379,7 @@ void generate_tags(const int& N, const std::string& start_string, const std::str
   warning(msg);
 }
 
-auto get_files_name(std::filesystem::path dir_path, const std::string& ext) -> std::vector<std::string> {
+auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string> {
   std::vector<std::string> names;
 
   for (std::filesystem::directory_iterator it{dir_path}; it != std::filesystem::directory_iterator{}; ++it) {
@@ -389,14 +394,14 @@ auto get_files_name(std::filesystem::path dir_path, const std::string& ext) -> s
 }
 
 void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& blocklist) {
-  GSettingsSchema* schema;
-  gchar** keys;
+  GSettingsSchema* schema = nullptr;
+  gchar** keys = nullptr;
 
   g_object_get(settings, "settings-schema", &schema, nullptr);
 
   keys = g_settings_schema_list_keys(schema);
 
-  for (int i = 0; keys[i]; i++) {
+  for (int i = 0; keys[i] != nullptr; i++) {
     if (std::ranges::find(blocklist, keys[i]) == blocklist.end()) {
       g_settings_reset(settings, keys[i]);
     }

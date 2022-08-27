@@ -100,7 +100,7 @@ void idle_add(std::function<void()> cb);
 
 void generate_tags(const int& N, const std::string& start_string, const std::string& end_string);
 
-auto get_files_name(std::filesystem::path dir_path, const std::string& ext) -> std::vector<std::string>;
+auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string>;
 
 void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& blocklist = std::vector<std::string>());
 
