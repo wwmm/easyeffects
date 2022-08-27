@@ -59,67 +59,127 @@ struct _Chart {
 G_DEFINE_TYPE(Chart, chart, GTK_TYPE_WIDGET)
 
 void set_chart_type(Chart* self, const ChartType& value) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->chart_type = value;
 }
 
 void set_chart_scale(Chart* self, const ChartScale& value) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->chart_scale = value;
 }
 
 void set_background_color(Chart* self, GdkRGBA color) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->background_color = color;
 }
 
 void set_color(Chart* self, GdkRGBA color) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->color = color;
 }
 
 void set_axis_labels_color(Chart* self, GdkRGBA color) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->color_axis_labels = color;
 }
 
 void set_line_width(Chart* self, const float& value) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->line_width = value;
 }
 
 void set_draw_bar_border(Chart* self, const bool& v) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->draw_bar_border = v;
 }
 
 void set_rounded_corners(Chart* self, const bool& v) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->rounded_corners = v;
 }
 
 void set_fill_bars(Chart* self, const bool& v) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->fill_bars = v;
 }
 
 void set_n_x_decimals(Chart* self, const int& v) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->n_x_decimals = v;
 }
 
 void set_n_y_decimals(Chart* self, const int& v) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->n_y_decimals = v;
 }
 
 void set_x_unit(Chart* self, const std::string& value) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->x_unit = value;
 }
 
 void set_y_unit(Chart* self, const std::string& value) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->y_unit = value;
 }
 
 void set_margin(Chart* self, const float& v) {
+  if (self->data == nullptr) {
+    return;
+  }
+
   self->data->margin = v;
 }
 
 auto get_is_visible(Chart* self) -> bool {
-  return self->data->is_visible;
+  return (self->data != nullptr) ? self->data->is_visible : false;
 }
 
 void set_x_data(Chart* self, const std::vector<float>& x) {
   if (self == nullptr || x.empty()) {
+    return;
+  }
+
+  if (self->data == nullptr) {
     return;
   }
 
@@ -537,6 +597,8 @@ void finalize(GObject* object) {
   auto* self = EE_CHART(object);
 
   delete self->data;
+
+  self->data = nullptr;
 
   util::debug("finalized");
 
