@@ -1,22 +1,22 @@
-From b0542499f932d1b012513902bca5d25c8f60cfbe Mon Sep 17 00:00:00 2001
+From d979b23daf141f2d11a2d7615adda1612da642cc Mon Sep 17 00:00:00 2001
 From: Vincent Chernin <38842733+vchernin@users.noreply.github.com>
-Date: Mon, 27 Dec 2021 23:53:53 -0800
-Subject: [PATCH] Background portal support for autostart and shutdown on
- window close switches Both the enable autostart and shutdown on window close
- buttons correctly use the portal. Based on the original patch from
- Digitalone1.
+Date: Sat, 27 Aug 2022 08:50:39 -0700
+Subject: [PATCH] Background portal support for autostart and shutdown on window close switches
+
+oth the enable autostart and shutdown on window close buttons correctly use the portal.
+Based on the original patch from Digitalone1.
 
 Ideally this should properly finalize and don't rely on g_settings_unbind
 ---
- .../com.github.wwmm.easyeffects.gschema.xml   |   7 +-
- data/ui/preferences_general.ui                |   1 -
- include/preferences_general.hpp               |   6 +-
- src/meson.build                               |   1 +
- src/preferences_general.cpp                   | 163 +++++++++++++++++-
- 5 files changed, 168 insertions(+), 10 deletions(-)
+ data/schemas/com.github.wwmm.easyeffects.gschema.xml |   7 +++++--
+ data/ui/preferences_general.ui                       |   1 -
+ include/preferences_general.hpp                      |   6 ++++--
+ src/meson.build                                      |   1 +
+ src/preferences_general.cpp                          | 165 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 5 files changed, 169 insertions(+), 11 deletions(-)
 
 diff --git a/data/schemas/com.github.wwmm.easyeffects.gschema.xml b/data/schemas/com.github.wwmm.easyeffects.gschema.xml
-index 6e9483a3..612390e4 100644
+index 58aa8d5..f7ef589 100644
 --- a/data/schemas/com.github.wwmm.easyeffects.gschema.xml
 +++ b/data/schemas/com.github.wwmm.easyeffects.gschema.xml
 @@ -7,6 +7,9 @@
@@ -38,7 +38,7 @@ index 6e9483a3..612390e4 100644
          </key>
          <key name="use-cubic-volumes" type="b">
              <default>false</default>
-@@ -51,4 +54,4 @@
+@@ -48,4 +51,4 @@
              <default>10</default>
          </key>
      </schema>
@@ -46,7 +46,7 @@ index 6e9483a3..612390e4 100644
 \ No newline at end of file
 +</schemalist>
 diff --git a/data/ui/preferences_general.ui b/data/ui/preferences_general.ui
-index 39f7a9e8..167f09e4 100644
+index 8ba5498..3fc1b62 100644
 --- a/data/ui/preferences_general.ui
 +++ b/data/ui/preferences_general.ui
 @@ -15,7 +15,6 @@
@@ -58,7 +58,7 @@ index 39f7a9e8..167f09e4 100644
                          </child>
                      </object>
 diff --git a/include/preferences_general.hpp b/include/preferences_general.hpp
-index fb6cfc78..34e16691 100644
+index fb6cfc7..34e1669 100644
 --- a/include/preferences_general.hpp
 +++ b/include/preferences_general.hpp
 @@ -20,12 +20,14 @@
@@ -85,7 +85,7 @@ index fb6cfc78..34e16691 100644
 \ No newline at end of file
 +}  // namespace ui::preferences::general
 diff --git a/src/meson.build b/src/meson.build
-index 2f0c2f73..913d9f1b 100644
+index 2f0c2f7..913d9f1 100644
 --- a/src/meson.build
 +++ b/src/meson.build
 @@ -147,6 +147,7 @@ easyeffects_deps = [
@@ -97,7 +97,7 @@ index 2f0c2f73..913d9f1b 100644
  	zita_convolver,
  	rnnoise,
 diff --git a/src/preferences_general.cpp b/src/preferences_general.cpp
-index 85faa0fa..aa15860f 100644
+index a0e5f64..dd68a43 100644
 --- a/src/preferences_general.cpp
 +++ b/src/preferences_general.cpp
 @@ -32,10 +32,134 @@ struct _PreferencesGeneral {
@@ -235,7 +235,7 @@ index 85faa0fa..aa15860f 100644
  auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> gboolean {
    std::filesystem::path autostart_dir{g_get_user_config_dir() + "/autostart"s};
  
-@@ -72,6 +196,7 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) ->
+@@ -72,14 +196,18 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> 
  
    return 0;
  }
@@ -243,7 +243,8 @@ index 85faa0fa..aa15860f 100644
  
  void dispose(GObject* object) {
    auto* self = EE_PREFERENCES_GENERAL(object);
-@@ -80,6 +205,9 @@ void dispose(GObject* object) {
+ 
+   g_object_unref(self->settings);
  
    util::debug("disposed");
  
@@ -253,7 +254,7 @@ index 85faa0fa..aa15860f 100644
    G_OBJECT_CLASS(preferences_general_parent_class)->dispose(object);
  }
  
-@@ -103,6 +231,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
+@@ -102,28 +230,53 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
    gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, inactivity_timeout);
  
    gtk_widget_class_bind_template_callback(widget_class, on_enable_autostart);
@@ -261,7 +262,9 @@ index 85faa0fa..aa15860f 100644
  }
  
  void preferences_general_init(PreferencesGeneral* self) {
-@@ -112,20 +241,44 @@ void preferences_general_init(PreferencesGeneral* self) {
+   gtk_widget_init_template(GTK_WIDGET(self));
+ 
+   self->settings = g_settings_new(tags::app::id);
  
    prepare_spinbuttons<"s">(self->inactivity_timeout);
  
@@ -277,12 +280,12 @@ index 85faa0fa..aa15860f 100644
  
    gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
 +                         "enable-autostart",
-                          "use-cubic-volumes", "autohide-popovers", "reset-volume-on-startup", "exclude-monitor-streams",
-                          "inactivity-timeout">(
+                          "use-cubic-volumes", "autohide-popovers", "exclude-monitor-streams", "inactivity-timeout">(
        self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
--      self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->reset_volume_on_startup,
-+      self->shutdown_on_window_close, self->enable_autostart,  self->use_cubic_volumes, self->autohide_popovers, self->reset_volume_on_startup,
-       self->exclude_monitor_streams, self->inactivity_timeout);
+-      self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->exclude_monitor_streams,
+-      self->inactivity_timeout);
++      self->shutdown_on_window_close, self->enable_autostart,  self->use_cubic_volumes, self->autohide_popovers,
++      self->exclude_monitor_streams, self->inactivity_timeout);
 +
 +
 +  g_signal_connect(self->enable_autostart, "state-set", G_CALLBACK(on_enable_autostart), self);
@@ -311,6 +314,6 @@ index 85faa0fa..aa15860f 100644
  auto create() -> PreferencesGeneral* {
    return static_cast<PreferencesGeneral*>(g_object_new(EE_TYPE_PREFERENCES_GENERAL, nullptr));
  }
--- 
-2.37.1
+--
+libgit2 1.0.1
 
