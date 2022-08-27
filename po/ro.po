@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-26 20:44+0000\n"
+"POT-Creation-Date: 2022-08-27 15:44+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1601,7 +1601,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Efecte Output"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
 #, fuzzy
 msgid "Output Presets"
 msgstr "Presetări pentru Output:"
@@ -1624,7 +1624,7 @@ msgstr "Presetări pentru Output:"
 msgid "Input Devices"
 msgstr "Nivel Input"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:259
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
 #, fuzzy
 msgid "Input Presets"
 msgstr "Presetări pentru Input:"
@@ -1868,23 +1868,19 @@ msgid "Use Cubic Volume"
 msgstr ""
 
 #: data/ui/preferences_general.ui:91
-msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
-msgstr ""
-
-#: data/ui/preferences_general.ui:103
 #, fuzzy
 msgid "Inactivity Timeout"
 msgstr "Expirarea Activității"
 
-#: data/ui/preferences_general.ui:128 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:116 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:131
+#: data/ui/preferences_general.ui:119
 msgid "Use Dark Theme"
 msgstr "Folosește Tema Întunecată"
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:131
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -2270,35 +2266,35 @@ msgstr ""
 msgid "channels"
 msgstr "Canale"
 
-#: src/application.cpp:414
+#: src/application.cpp:406
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efecte audio pentru aplicații PulseAudio"
 
-#: src/application.cpp:507
+#: src/application.cpp:499
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 "Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
 
-#: src/application.cpp:510
+#: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
 
-#: src/application.cpp:513
+#: src/application.cpp:505
 msgid "Reset EasyEffects."
 msgstr "Resetează EasyEffects."
 
-#: src/application.cpp:516
+#: src/application.cpp:508
 msgid "Hide the Window."
 msgstr "Ascunde Fereastra."
 
-#: src/application.cpp:519
+#: src/application.cpp:511
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Ocolire Globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
 "statusul"
 
-#: src/application.cpp:522
+#: src/application.cpp:514
 msgid "Show available presets."
 msgstr "Arată presetările valabile."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-26 20:44+0000\n"
+"POT-Creation-Date: 2022-08-27 15:44+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1508,7 +1508,7 @@ msgstr "Chargement automatique des préréglages"
 msgid "Output Devices"
 msgstr "Périphériques de sortie"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
 msgid "Output Presets"
 msgstr "Préréglages de sortie"
 
@@ -1528,7 +1528,7 @@ msgstr "Liste des préréglages de sortie auto-chargeant"
 msgid "Input Devices"
 msgstr "Périphériques d’entrée"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:259
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
 msgid "Input Presets"
 msgstr "Préréglages d’entrée"
 
@@ -1749,24 +1749,18 @@ msgid "Use Cubic Volume"
 msgstr "Utiliser le volume cubique"
 
 #: data/ui/preferences_general.ui:91
-msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
-msgstr ""
-"Réinitialiser le volume des périphériques virtuels de EasyEffects au "
-"démarrage"
-
-#: data/ui/preferences_general.ui:103
 msgid "Inactivity Timeout"
 msgstr "Délai d’inactivité"
 
-#: data/ui/preferences_general.ui:128 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:116 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Style"
 
-#: data/ui/preferences_general.ui:131
+#: data/ui/preferences_general.ui:119
 msgid "Use Dark Theme"
 msgstr "Utiliser le thème sombre"
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:131
 msgid "Hide Menus on Outside Clicks"
 msgstr "Masquer les menus en cliquant en dehors"
 
@@ -2126,33 +2120,33 @@ msgstr "Inconnu"
 msgid "channels"
 msgstr "Canaux"
 
-#: src/application.cpp:414
+#: src/application.cpp:406
 msgid "Audio effects for PipeWire applications"
 msgstr "Effets audio pour les applications utilisant PipeWire"
 
-#: src/application.cpp:507
+#: src/application.cpp:499
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr "Quitter EasyEffects. Utile en cas de fonctionnement en mode serveur."
 
-#: src/application.cpp:510
+#: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Chargez un préréglage. Exemple : easyeffects -l musique"
 
-#: src/application.cpp:513
+#: src/application.cpp:505
 msgid "Reset EasyEffects."
 msgstr "Réinitialiser EasyEffects."
 
-#: src/application.cpp:516
+#: src/application.cpp:508
 msgid "Hide the Window."
 msgstr "Masquer la Fenêtre."
 
-#: src/application.cpp:519
+#: src/application.cpp:511
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir le "
 "statut"
 
-#: src/application.cpp:522
+#: src/application.cpp:514
 msgid "Show available presets."
 msgstr "Afficher les préréglages disponibles."
 
@@ -2370,6 +2364,11 @@ msgstr "Fermer (appuyez sur Échap)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
+#~ msgstr ""
+#~ "Réinitialiser le volume des périphériques virtuels de EasyEffects au "
+#~ "démarrage"
 
 #~ msgid "EasyEffects"
 #~ msgstr "EasyEffects"
