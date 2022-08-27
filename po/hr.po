@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-26 20:44+0000\n"
+"POT-Creation-Date: 2022-08-27 15:44+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1630,7 +1630,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Pojačanje ulaza"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
 #, fuzzy
 msgid "Output Presets"
 msgstr "Predlošci: "
@@ -1653,7 +1653,7 @@ msgstr "Predlošci: "
 msgid "Input Devices"
 msgstr "Ulazni uređaj"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:259
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
 #, fuzzy
 msgid "Input Presets"
 msgstr "Učitaj predloške"
@@ -1894,22 +1894,18 @@ msgid "Use Cubic Volume"
 msgstr ""
 
 #: data/ui/preferences_general.ui:91
-msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
-msgstr ""
-
-#: data/ui/preferences_general.ui:103
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: data/ui/preferences_general.ui:128 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:116 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:131
+#: data/ui/preferences_general.ui:119
 msgid "Use Dark Theme"
 msgstr "Koristi tamnu temu"
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:131
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
@@ -2308,34 +2304,34 @@ msgstr ""
 msgid "channels"
 msgstr "Kanali"
 
-#: src/application.cpp:414
+#: src/application.cpp:406
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvučni efekti za Pulseaudio aplikacije"
 
-#: src/application.cpp:507
+#: src/application.cpp:499
 msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 "Zatvori EasyEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
 
-#: src/application.cpp:510
+#: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
-#: src/application.cpp:513
+#: src/application.cpp:505
 #, fuzzy
 msgid "Reset EasyEffects."
 msgstr "EasyEffects"
 
-#: src/application.cpp:516
+#: src/application.cpp:508
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:519
+#: src/application.cpp:511
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:522
+#: src/application.cpp:514
 msgid "Show available presets."
 msgstr "Prikaži dostupne predloške."
 
