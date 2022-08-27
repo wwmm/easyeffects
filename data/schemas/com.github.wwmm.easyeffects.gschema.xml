@@ -40,9 +40,6 @@
         <key name="autohide-popovers" type="b">
             <default>true</default>
         </key>
-        <key name="reset-volume-on-startup" type="b">
-            <default>false</default>
-        </key>
         <key name="exclude-monitor-streams" type="b">
             <default>true</default>
         </key>

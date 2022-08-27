@@ -88,18 +88,6 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Reset Volume of EasyEffects Virtual Devices at Startup</property>
-                        <property name="activatable-widget">reset_volume_on_startup</property>
-                        <child>
-                            <object class="GtkSwitch" id="reset_volume_on_startup">
-                                <property name="valign">center</property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="AdwActionRow">
                         <property name="title" translatable="yes">Inactivity Timeout</property>
 
                         <child>
