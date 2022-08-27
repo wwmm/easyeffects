@@ -277,11 +277,11 @@ index 85faa0fa..aa15860f 100644
  
    gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
 +                         "enable-autostart",
-                          "use-cubic-volumes", "autohide-popovers", "exclude-monitor-streams",
+                          "use-cubic-volumes", "autohide-popovers", "reset-volume-on-startup", "exclude-monitor-streams",
                           "inactivity-timeout">(
        self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
 -      self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->reset_volume_on_startup,
-+      self->shutdown_on_window_close, self->enable_autostart,  self->use_cubic_volumes, self->autohide_popovers,
++      self->shutdown_on_window_close, self->enable_autostart,  self->use_cubic_volumes, self->autohide_popovers, self->reset_volume_on_startup,
        self->exclude_monitor_streams, self->inactivity_timeout);
 +
 +
