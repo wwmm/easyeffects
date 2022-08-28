@@ -4,8 +4,9 @@ Checks: 'boost-*,bugprone-*,cert-*,cppcoreguidelines-*,modernize-*,performance-*
 -cppcoreguidelines-pro-type-vararg,
 -cppcoreguidelines-non-private-member-variables-in-classes,
 -cppcoreguidelines-avoid-magic-numbers,
--readability-magic-numbers,
 -cppcoreguidelines-owning-memory,
+-cppcoreguidelines-avoid-non-const-global-variables,
+-readability-magic-numbers,
 -readability-function-cognitive-complexity,
 -readability-identifier-length,
 -bugprone-easily-swappable-parameters'

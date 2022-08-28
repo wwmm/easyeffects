@@ -115,6 +115,10 @@ easyeffects_sources = [
 	gresources
 ]
 
+if get_option('enable-libportal') and libportal.found()
+	easyeffects_sources += 'libportal.cpp'
+endif
+
 cxx = meson.get_compiler('cpp')
 
 zita_convolver = cxx.find_library('zita-convolver', required: true)
@@ -150,6 +154,7 @@ easyeffects_deps = [
 	tbb,
 	zita_convolver,
 	rnnoise,
+	libportal,
 	config_h
 ]
 

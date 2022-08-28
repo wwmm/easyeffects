@@ -43,6 +43,8 @@ localedir = join_paths(prefix, get_option('localedir'))
 include_dir = include_directories('include')
 config_h_dir = include_directories('.')
 
+libportal = dependency('libportal', version: '>=0.6', include_type: 'system', required: false)
+
 status = []
 
 if get_option('devel')
@@ -57,6 +59,12 @@ else
   status += [ 'Using stable build mode with the standard application ID' ]
   app_id_suffix = ''
   name_suffix = ''
+endif
+
+if get_option('enable-libportal') and libportal.found()
+  add_global_arguments('-DUSE_LIBPORTAL=1', language : 'cpp')
+
+  message('Using libportal to handle autostart files')
 endif
 
 app_id = 'com.github.wwmm.easyeffects@0@'.format(app_id_suffix)

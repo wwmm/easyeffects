@@ -4,3 +4,10 @@ option(
   type: 'boolean',
   value: false
 )
+
+option(
+  'enable-libportal',
+  description: 'Whether to use libportal to handle autostart files.',
+  type: 'boolean',
+  value: false
+)
