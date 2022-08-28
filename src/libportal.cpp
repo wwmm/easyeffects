@@ -5,7 +5,9 @@ namespace {
 
 bool reset_shutdown = false, reset_autostart = false;
 
-}
+GSettings* settings = nullptr;
+
+}  // namespace
 
 namespace libportal {
 
@@ -101,6 +103,71 @@ void update_background_portal(const bool& state, Widgets* self) {
                                 on_request_background_called, self);
 
   g_free(reason);
+}
+
+auto on_enable_autostart(GtkSwitch* obj, gboolean state, Widgets* self) -> gboolean {
+  if (!reset_autostart) {
+    util::debug("portal: requesting autostart file since autostart is enabled");
+
+    update_background_portal(state != 0, self);
+  }
+
+  return 1;
+}
+
+auto on_shutdown_on_window_close_called(GtkSwitch* btn, gboolean state, Widgets* self) -> gboolean {
+  if (!reset_shutdown) {
+    bool enable_autostart = g_settings_get_boolean(settings, "enable-autostart") != 0;
+
+    if (enable_autostart) {
+      const auto* msg = (state == 0)
+                            ? "portal: requesting both background access and autostart file since autostart is enabled"
+                            : "portal: requesting autostart access since autostart enabled";
+
+      util::debug(msg);
+
+      update_background_portal(true, self);
+    } else {
+      if (state == 0) {
+        util::debug("portal: requesting only background access, not creating autostart file");
+
+        update_background_portal(false, self);
+      } else {
+        util::debug("portal: not requesting any access since enabling shutdown on window close");
+
+        gtk_switch_set_state(self->shutdown_on_window_close, gtk_switch_get_active(self->shutdown_on_window_close));
+      }
+    }
+  }
+
+  return 1;
+}
+
+void init(Widgets* self) {
+  settings = g_settings_new("com.github.wwmm.easyeffects.libportal");
+
+  g_signal_connect(self->enable_autostart, "state-set", G_CALLBACK(on_enable_autostart), self);
+  g_signal_connect(self->shutdown_on_window_close, "state-set", G_CALLBACK(on_shutdown_on_window_close_called), self);
+
+  // sanity checks in case switch(es) was somehow already set previously.
+
+  if ((gtk_switch_get_active(self->shutdown_on_window_close) == 0) &&
+      (gtk_switch_get_active(self->enable_autostart) == 0)) {
+    util::debug(std::string("portal: Running portal sanity check, autostart and shutdown switches are disabled"));
+
+    update_background_portal(false, self);
+  } else if ((gtk_switch_get_active(self->shutdown_on_window_close) != 0) &&
+             (gtk_switch_get_active(self->enable_autostart) != 0)) {
+    util::debug(std::string("portal: Running portal sanity check, autostart and shutdown switches are enabled"));
+
+    update_background_portal(true, self);
+  } else if ((gtk_switch_get_active(self->shutdown_on_window_close) == 0) &&
+             (gtk_switch_get_active(self->enable_autostart) != 0)) {
+    util::debug(std::string(
+        "portal: Running portal sanity check, autostart switch is enabled and shutdown switch is disabled"));
+
+    update_background_portal(true, self);
+  }
 }
 
 }  // namespace libportal
