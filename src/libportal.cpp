@@ -7,6 +7,8 @@ bool reset_shutdown = false, reset_autostart = false;
 
 GSettings* settings = nullptr;
 
+GtkSwitch *enable_autostart = nullptr, *shutdown_on_window_close = nullptr;
+
 }  // namespace
 
 namespace libportal {
@@ -14,9 +16,7 @@ namespace libportal {
 XdpPortal* portal = nullptr;
 
 void on_request_background_called(GObject* source, GAsyncResult* result, gpointer widgets_ptr) {
-  auto* widgets = static_cast<Widgets*>(widgets_ptr);
-
-  if (widgets->enable_autostart == nullptr || widgets->shutdown_on_window_close == nullptr) {
+  if (enable_autostart == nullptr || shutdown_on_window_close == nullptr) {
     util::error("Programming error. When using libportal its pointers to our settings widgets must be initialized.");
   }
 
@@ -45,24 +45,24 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
     gtk_widget_show(dialog);
     g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), nullptr);
 
-    if (static_cast<bool>(gtk_switch_get_active(widgets->enable_autostart)) ||
-        static_cast<bool>(gtk_switch_get_state(widgets->enable_autostart))) {
+    if (static_cast<bool>(gtk_switch_get_active(enable_autostart)) ||
+        static_cast<bool>(gtk_switch_get_state(enable_autostart))) {
       reset_autostart = true;
 
       util::warning(std::string("portal: setting autostart state and switch to false"));
 
-      gtk_switch_set_state(widgets->enable_autostart, 0);
-      gtk_switch_set_active(widgets->enable_autostart, 0);
+      gtk_switch_set_state(enable_autostart, 0);
+      gtk_switch_set_active(enable_autostart, 0);
     }
 
-    if (!static_cast<bool>(gtk_switch_get_active(widgets->shutdown_on_window_close)) ||
-        !static_cast<bool>(gtk_switch_get_state(widgets->shutdown_on_window_close))) {
+    if (!static_cast<bool>(gtk_switch_get_active(shutdown_on_window_close)) ||
+        !static_cast<bool>(gtk_switch_get_state(shutdown_on_window_close))) {
       reset_shutdown = true;
 
       util::warning(std::string("portal: setting shutdown on window close state and switch to true"));
 
-      gtk_switch_set_state(widgets->shutdown_on_window_close, 1);
-      gtk_switch_set_active(widgets->shutdown_on_window_close, 1);
+      gtk_switch_set_state(shutdown_on_window_close, 1);
+      gtk_switch_set_active(shutdown_on_window_close, 1);
     }
 
     reset_autostart = false;
@@ -71,9 +71,9 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
     return;
   }
 
-  gtk_switch_set_state(widgets->enable_autostart, gtk_switch_get_active(widgets->enable_autostart));
+  gtk_switch_set_state(enable_autostart, gtk_switch_get_active(enable_autostart));
 
-  gtk_switch_set_state(widgets->shutdown_on_window_close, gtk_switch_get_active(widgets->shutdown_on_window_close));
+  gtk_switch_set_state(shutdown_on_window_close, gtk_switch_get_active(shutdown_on_window_close));
 
   reset_autostart = false;
   reset_shutdown = false;
@@ -82,7 +82,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
 }
 
 // generic portal update function
-void update_background_portal(const bool& state, Widgets* self) {
+void update_background_portal(const bool& state) {
   XdpBackgroundFlags background_flags = XDP_BACKGROUND_FLAG_NONE;
 
   g_autoptr(GPtrArray) command_line = nullptr;
@@ -100,22 +100,22 @@ void update_background_portal(const bool& state, Widgets* self) {
 
   // libportal portal request
   xdp_portal_request_background(portal, nullptr, reason, command_line, background_flags, nullptr,
-                                on_request_background_called, self);
+                                on_request_background_called, nullptr);
 
   g_free(reason);
 }
 
-auto on_enable_autostart(GtkSwitch* obj, gboolean state, Widgets* self) -> gboolean {
+auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> gboolean {
   if (!reset_autostart) {
     util::debug("portal: requesting autostart file since autostart is enabled");
 
-    update_background_portal(state != 0, self);
+    update_background_portal(state != 0);
   }
 
   return 1;
 }
 
-auto on_shutdown_on_window_close_called(GtkSwitch* btn, gboolean state, Widgets* self) -> gboolean {
+auto on_shutdown_on_window_close_called(GtkSwitch* btn, gboolean state, gpointer user_data) -> gboolean {
   if (!reset_shutdown) {
     bool enable_autostart = g_settings_get_boolean(settings, "enable-autostart") != 0;
 
@@ -126,16 +126,16 @@ auto on_shutdown_on_window_close_called(GtkSwitch* btn, gboolean state, Widgets*
 
       util::debug(msg);
 
-      update_background_portal(true, self);
+      update_background_portal(true);
     } else {
       if (state == 0) {
         util::debug("portal: requesting only background access, not creating autostart file");
 
-        update_background_portal(false, self);
+        update_background_portal(false);
       } else {
         util::debug("portal: not requesting any access since enabling shutdown on window close");
 
-        gtk_switch_set_state(self->shutdown_on_window_close, gtk_switch_get_active(self->shutdown_on_window_close));
+        gtk_switch_set_state(shutdown_on_window_close, gtk_switch_get_active(shutdown_on_window_close));
       }
     }
   }
@@ -143,30 +143,34 @@ auto on_shutdown_on_window_close_called(GtkSwitch* btn, gboolean state, Widgets*
   return 1;
 }
 
-void init(Widgets* self) {
+void init(GtkSwitch* g_enable_autostart, GtkSwitch* g_shutdown_on_window_close) {
+  enable_autostart = g_enable_autostart;
+  shutdown_on_window_close = g_shutdown_on_window_close;
+
+  if (enable_autostart == nullptr || shutdown_on_window_close == nullptr) {
+    util::error("Programming error. When using libportal its pointers to our settings widgets must be initialized.");
+  }
+
   settings = g_settings_new("com.github.wwmm.easyeffects.libportal");
 
-  g_signal_connect(self->enable_autostart, "state-set", G_CALLBACK(on_enable_autostart), self);
-  g_signal_connect(self->shutdown_on_window_close, "state-set", G_CALLBACK(on_shutdown_on_window_close_called), self);
+  g_signal_connect(enable_autostart, "state-set", G_CALLBACK(on_enable_autostart), nullptr);
+  g_signal_connect(shutdown_on_window_close, "state-set", G_CALLBACK(on_shutdown_on_window_close_called), nullptr);
 
   // sanity checks in case switch(es) was somehow already set previously.
 
-  if ((gtk_switch_get_active(self->shutdown_on_window_close) == 0) &&
-      (gtk_switch_get_active(self->enable_autostart) == 0)) {
+  if ((gtk_switch_get_active(shutdown_on_window_close) == 0) && (gtk_switch_get_active(enable_autostart) == 0)) {
     util::debug(std::string("portal: Running portal sanity check, autostart and shutdown switches are disabled"));
 
-    update_background_portal(false, self);
-  } else if ((gtk_switch_get_active(self->shutdown_on_window_close) != 0) &&
-             (gtk_switch_get_active(self->enable_autostart) != 0)) {
+    update_background_portal(false);
+  } else if ((gtk_switch_get_active(shutdown_on_window_close) != 0) && (gtk_switch_get_active(enable_autostart) != 0)) {
     util::debug(std::string("portal: Running portal sanity check, autostart and shutdown switches are enabled"));
 
-    update_background_portal(true, self);
-  } else if ((gtk_switch_get_active(self->shutdown_on_window_close) == 0) &&
-             (gtk_switch_get_active(self->enable_autostart) != 0)) {
+    update_background_portal(true);
+  } else if ((gtk_switch_get_active(shutdown_on_window_close) == 0) && (gtk_switch_get_active(enable_autostart) != 0)) {
     util::debug(std::string(
         "portal: Running portal sanity check, autostart switch is enabled and shutdown switch is disabled"));
 
-    update_background_portal(true, self);
+    update_background_portal(true);
   }
 }
 

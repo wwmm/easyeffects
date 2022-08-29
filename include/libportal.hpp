@@ -25,14 +25,6 @@
 
 namespace libportal {
 
-struct Widgets {
-  GtkSwitch *enable_autostart = nullptr, *shutdown_on_window_close = nullptr;
-};
-
-void init(Widgets* self);
-
-void on_request_background_called(GObject* source, GAsyncResult* result, Widgets* self);
-
-void update_background_portal(const bool& state, Widgets* self);
+void init(GtkSwitch* g_enable_autostart, GtkSwitch* g_shutdown_on_window_close);
 
 }  // namespace libportal
