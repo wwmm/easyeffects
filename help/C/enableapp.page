@@ -7,4 +7,5 @@
     <title>Enable or Disable an Application</title>
     <p>The user can choose which applications have effects applied through the Enable checkbutton. "Process All Inputs/Outputs" option in <link xref="general" its:withinText="yes">General Settings</link> can be activated to always apply effects to whichever application.
     </p>
+    <p>Note that without the "Process All Inputs/Outputs" option the enabled state may not replicated for an application at the next session. This is because "Process All Inputs/Outputs" makes EasyEffects trying to move the stream to its virtual device every time a new application spawns (unless it is listed in the <link xref="blocklist" its:withinText="yes">Excluded Apps</link>). When EasyEffects is not running, the app stream may be redirected to another destination by Pipewire, any third party audio manager or the app itself. This leads EasyEffects to not receive the stream at the next startup if "Process All Inputs/Outputs" option is not active.</p>
 </page>
