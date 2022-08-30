@@ -44,12 +44,6 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Reset Volume of EasyEffects Virtual Devices at Startup</em>
-            </title>
-            <p>Some applications may interfere with EasyEffects sink/source used to capture audio by applications/microphones lowering its volume. This options ensures the volume of EasyEffects virtual sink/source is at 100% at startup.</p>
-        </item>
-        <item>
-            <title>
                 <em style="strong" its:withinText="nested">Inactivity Timeout</em>
             </title>
             <p>After this amount of time, EasyEffects stops audio processing and the internal filters are unlinked. This helps not wasting CPU resources while processing silence, but also makes sure the filters and not unlinked and relinked for small pauses of the stream.</p>
@@ -62,7 +56,7 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Use Dark Theme</em>
+                <em style="strong" its:withinText="nested">Hide Menus on Outside Clicks</em>
             </title>
             <p>When a popover menu is shown, return to the main window when a click is made outside the widget.</p>
         </item>
