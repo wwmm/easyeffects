@@ -63,7 +63,8 @@
             "name": "easyeffects",
             "buildsystem": "meson",
             "config-opts": [
-                "-Ddevel=true"
+                "-Ddevel=true",
+                "-Denable-libportal=true"
             ],
             "run-tests": true,
             "sources": [
