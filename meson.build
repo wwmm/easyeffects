@@ -43,7 +43,7 @@ localedir = join_paths(prefix, get_option('localedir'))
 include_dir = include_directories('include')
 config_h_dir = include_directories('.')
 
-libportal = dependency('libportal', version: '>=0.6', include_type: 'system', required: false)
+libportal = dependency('libportal', include_type: 'system', required: false)
 
 status = []
 
