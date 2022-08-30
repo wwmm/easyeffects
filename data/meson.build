@@ -35,7 +35,7 @@ install_data([
 if get_option('enable-libportal') and libportal.found()
   install_data([
     'schemas/com.github.wwmm.easyeffects.libportal.gschema.xml',
-    'schemas/com.github.wwmm.easyeffects.gschema.override'
+    'schemas/overrides/com.github.wwmm.easyeffects.gschema.override'
 ], install_dir: schemadir)
 endif
 

@@ -27,6 +27,10 @@
 #include "ui_helpers.hpp"
 #include "util.hpp"
 
+#ifdef USE_LIBPORTAL
+#include "libportal.hpp"
+#endif
+
 namespace ui::preferences::general {
 
 G_BEGIN_DECLS

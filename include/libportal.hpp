@@ -22,6 +22,7 @@
 #include <iostream>
 #include "libportal-gtk4/portal-gtk4.h"
 #include "libportal/portal.h"
+#include "ui_helpers.hpp"
 
 namespace libportal {
 

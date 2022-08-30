@@ -15,7 +15,6 @@
                         <child>
                             <object class="GtkSwitch" id="enable_autostart">
                                 <property name="valign">center</property>
-                                <signal name="state-set" handler="on_enable_autostart" />
                             </object>
                         </child>
                     </object>

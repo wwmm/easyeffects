@@ -151,7 +151,13 @@ void init(GtkSwitch* g_enable_autostart, GtkSwitch* g_shutdown_on_window_close) 
     util::error("Programming error. When using libportal its pointers to our settings widgets must be initialized.");
   }
 
+  if (portal == nullptr) {
+    portal = xdp_portal_new();
+  }
+
   settings = g_settings_new("com.github.wwmm.easyeffects.libportal");
+
+  ui::gsettings_bind_widget(settings, "enable-autostart", g_enable_autostart);
 
   g_signal_connect(enable_autostart, "state-set", G_CALLBACK(on_enable_autostart), nullptr);
   g_signal_connect(shutdown_on_window_close, "state-set", G_CALLBACK(on_shutdown_on_window_close_called), nullptr);

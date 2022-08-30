@@ -36,6 +36,8 @@ struct _PreferencesGeneral {
 
 G_DEFINE_TYPE(PreferencesGeneral, preferences_general, ADW_TYPE_PREFERENCES_PAGE)
 
+#ifndef USE_LIBPORTAL
+
 auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> gboolean {
   std::filesystem::path autostart_dir{g_get_user_config_dir() + "/autostart"s};
 
@@ -73,6 +75,8 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> 
   return 0;
 }
 
+#endif
+
 void dispose(GObject* object) {
   auto* self = EE_PREFERENCES_GENERAL(object);
 
@@ -100,8 +104,6 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, use_cubic_volumes);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, exclude_monitor_streams);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, inactivity_timeout);
-
-  gtk_widget_class_bind_template_callback(widget_class, on_enable_autostart);
 }
 
 void preferences_general_init(PreferencesGeneral* self) {
@@ -113,15 +115,21 @@ void preferences_general_init(PreferencesGeneral* self) {
 
   // initializing some widgets
 
-  gtk_switch_set_active(self->enable_autostart,
-                        static_cast<gboolean>(std::filesystem::is_regular_file(
-                            g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));
-
   gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
                          "use-cubic-volumes", "autohide-popovers", "exclude-monitor-streams", "inactivity-timeout">(
       self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
       self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->exclude_monitor_streams,
       self->inactivity_timeout);
+
+#ifdef USE_LIBPORTAL
+  libportal::init(self->enable_autostart, self->shutdown_on_window_close);
+#else
+  gtk_switch_set_active(self->enable_autostart,
+                        static_cast<gboolean>(std::filesystem::is_regular_file(
+                            g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));
+
+  g_signal_connect(self->enable_autostart, "state-set", G_CALLBACK(on_enable_autostart), nullptr);
+#endif
 }
 
 auto create() -> PreferencesGeneral* {
