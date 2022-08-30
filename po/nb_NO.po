@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-27 15:44+0000\n"
+"POT-Creation-Date: 2022-08-30 14:40+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -1716,43 +1716,43 @@ msgstr "Tjeneste"
 msgid "Launch Service at System Startup"
 msgstr ""
 
-#: data/ui/preferences_general.ui:26
+#: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
 msgstr ""
 
-#: data/ui/preferences_general.ui:40
+#: data/ui/preferences_general.ui:39
 msgid "Audio"
 msgstr "Lyd"
 
-#: data/ui/preferences_general.ui:43
+#: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
 msgstr ""
 
-#: data/ui/preferences_general.ui:55
+#: data/ui/preferences_general.ui:54
 msgid "Process All Input Streams"
 msgstr ""
 
-#: data/ui/preferences_general.ui:67
+#: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: data/ui/preferences_general.ui:79
+#: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
 msgstr ""
 
-#: data/ui/preferences_general.ui:91
+#: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: data/ui/preferences_general.ui:116 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Stil"
 
-#: data/ui/preferences_general.ui:119
+#: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr "Ifør mørk drakt"
 
-#: data/ui/preferences_general.ui:131
+#: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
