@@ -80,10 +80,6 @@
                     "path": "patch/easyeffects/002-fix-desktop-file.patch"
                 },
                 {
-                    "type": "patch",
-                    "path": "patch/easyeffects/0001-Background-portal-support-for-autostart-and-shutdown.patch"
-                },
-                {
                     "type": "shell",
                     "commands": [
                         "install -Dvm 755 easyeffects-wrapper.sh $FLATPAK_DEST/bin/easyeffects-wrapper"
