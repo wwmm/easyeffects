@@ -25,22 +25,40 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
   // libportal check if portal request worked
 
   if (xdp_portal_request_background_finish(portal, result, &error) == 0) {
-    util::warning(std::string("a background request failed: ") + ((error) ? error->message : "unknown reason"));
-    util::warning(std::string("background portal access has likely been denied"));
-    util::warning(
-        "to let EasyEffects ask for the portal again, run flatpak permission-reset "
-        "com.github.wwmm.easyeffects");
 
-    // this seems wrong but also works?
+  std::string reason = "";
+  std::string explanation = "";
+
+  if (error != nullptr) {
+    // 19 seemingly corresponds to the "cancelled" error which actually means the permission is in a revoked state.
+	  if (error->code == 19) {
+      reason = "Background access has been denied";
+      explanation = "Please allow EasyEffects to ask again with flatpak permission-reset com.github.wwmm.easyeffects";
+	  }
+	  else {
+      reason = "Unknown error";
+      explanation = "Please verify your system has a XDG Background Portal implementation running and working.";
+	  }
+  }
+  else {
+    reason = "Unknown error";
+	  explanation = "No explanation could be provided, error was null";
+  }
+
+  util::debug(std::string("a background request failed: ") + ((error) ? error->message : "unknown reason"));
+  util::warning(reason);
+  util::warning(explanation);
+
+    // map to either the preferences window or the top level window
     auto* window_levels = gtk_window_get_toplevels();
 
     GtkWidget* dialog = gtk_message_dialog_new(
         (GtkWindow*)g_list_model_get_item(window_levels, 0), GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
-        "Unable to get background access: %s", ((error) != nullptr ? error->message : "Unknown reason"));
+        "Unable to get background access: %s", reason.c_str());
 
     gtk_message_dialog_format_secondary_text(
         GTK_MESSAGE_DIALOG(dialog),
-        "To let EasyEffects ask again, run: \nflatpak permission-reset com.github.wwmm.easyeffects");
+        explanation.c_str());
 
     gtk_widget_show(dialog);
     g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), nullptr);
