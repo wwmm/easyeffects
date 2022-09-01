@@ -82,6 +82,11 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
+#ifdef USE_LIBPORTAL
+  g_settings_unbind(self->enable_autostart, "active");
+  g_settings_unbind(self->shutdown_on_window_close, "active");
+#endif
+
   util::debug("disposed");
 
   G_OBJECT_CLASS(preferences_general_parent_class)->dispose(object);
