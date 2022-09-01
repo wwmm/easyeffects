@@ -49,11 +49,12 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
     util::warning(reason);
     util::warning(explanation);
 
-    // map to either the preferences window or the top level window
+    // TODO find a bettery way of getting the preferences window
+    // it shouldn't be possible to open the preferences window without the top level window open,
+    // so the index 1 should correspond with the preferences window
     auto* window_levels = gtk_window_get_toplevels();
-
     GtkWidget* dialog = gtk_message_dialog_new(
-      (GtkWindow*)g_list_model_get_item(window_levels, 0), GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
+      GTK_WINDOW(g_list_model_get_item(window_levels, 1)), GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
       "Unable to get background access: %s", reason.c_str());
 
     gtk_message_dialog_format_secondary_text(
@@ -201,7 +202,7 @@ void init(GtkSwitch* g_enable_autostart, GtkSwitch* g_shutdown_on_window_close) 
   }
   else {
     util::debug(std::string(
-        "not doing portal sanity check, autostart switch is disabled and shutdown switch is enabled so no background portal access is needed"));
+        "not doing portal sanity check, autostart switch should be disabled and shutdown switch should be enabled so no background portal access is needed"));
   }
 }
 
