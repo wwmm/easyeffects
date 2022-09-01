@@ -24,7 +24,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
 
   // libportal check if portal request worked
 
-  if (xdp_portal_request_background_finish(portal, result, &error) == FALSE) {
+  if (xdp_portal_request_background_finish(portal, result, &error) == false) {
 
     std::string reason = "";
     std::string explanation = "";
@@ -69,8 +69,8 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
 
       util::warning(std::string("due to error, setting autostart state and switch to false"));
 
-      gtk_switch_set_state(enable_autostart, FALSE);
-      gtk_switch_set_active(enable_autostart, FALSE);
+      gtk_switch_set_state(enable_autostart, false);
+      gtk_switch_set_active(enable_autostart, false);
     }
     // if running in the background (which happens if we don't shutdown on window close) is wrongly enabled (we got an error when talking to the portal), we must reset it
     if (!static_cast<bool>(gtk_switch_get_active(shutdown_on_window_close)) ||
@@ -79,8 +79,8 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
 
       util::warning(std::string("due to error, setting shutdown on window close state and switch to true"));
 
-      gtk_switch_set_state(shutdown_on_window_close, TRUE);
-      gtk_switch_set_active(shutdown_on_window_close, TRUE);
+      gtk_switch_set_state(shutdown_on_window_close, true);
+      gtk_switch_set_active(shutdown_on_window_close, true);
     }
 
     resetting_autostart = false;
@@ -122,24 +122,21 @@ void update_background_portal(const bool& use_autostart) {
   g_free(reason);
 }
 
-auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> gboolean {
-  // this callback could be triggered when the settings are reset by other code, in that case we must not call again.
+void on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) {
+  // this callback could be triggered when the settings are reset by other code due to an error calling the portal, in that case we must not call the portal again.
   if (!resetting_autostart) {
-    util::debug("requesting autostart file since autostart is enabled");
+    state == true ? util::debug("requesting autostart file since autostart is enabled") : util::debug("not requesting autostart file since autostart is disabled");
 
     update_background_portal(state);
   }
-
-  return TRUE;
 }
 
-auto on_shutdown_on_window_close(GtkSwitch* btn, gboolean state, gpointer user_data) -> gboolean {
-  // this callback could be triggered when the settings are reset by other code, in that case we must not call again.
+void on_shutdown_on_window_close(GtkSwitch* btn, gboolean state, gpointer user_data) {
+  // this callback could be triggered when the settings are reset by other code due to an error calling the portal, in that case we must not call the portal again.
   if (!resetting_shutdown) {
-    bool enable_autostart = g_settings_get_boolean(settings, "enable-autostart") != 0;
 
-    if (enable_autostart) {
-      const auto* msg = (state == 0)
+    if (gtk_switch_get_active(enable_autostart)) {
+      const auto* msg = (state == false)
                             ? "requesting both background access and autostart file since autostart is enabled"
                             : "requesting autostart access since autostart enabled";
 
@@ -147,7 +144,7 @@ auto on_shutdown_on_window_close(GtkSwitch* btn, gboolean state, gpointer user_d
 
       update_background_portal(true);
     } else {
-      if (state == 0) {
+      if (state == false) {
         util::debug("requesting only background access, not creating autostart file");
 
         update_background_portal(false);
@@ -158,8 +155,6 @@ auto on_shutdown_on_window_close(GtkSwitch* btn, gboolean state, gpointer user_d
       }
     }
   }
-
-  return 1;
 }
 
 void init(GtkSwitch* g_enable_autostart, GtkSwitch* g_shutdown_on_window_close) {
@@ -182,20 +177,31 @@ void init(GtkSwitch* g_enable_autostart, GtkSwitch* g_shutdown_on_window_close) 
   g_signal_connect(shutdown_on_window_close, "state-set", G_CALLBACK(on_shutdown_on_window_close), nullptr);
 
   // sanity checks in case switch(es) was somehow already set previously.
+  // give extra info for debugging purposes
+  // the only the case where we must not ask the portal for access is if autostart is disabled and shutdown on window close is disabled
 
-  if ((gtk_switch_get_active(shutdown_on_window_close) == 0) && (gtk_switch_get_active(enable_autostart) == 0)) {
-    util::debug(std::string("Running portal sanity check, autostart and shutdown switches are disabled"));
+  auto enable_autostart_state = gtk_switch_get_active(enable_autostart);
+  auto shutdown_on_window_close_state = gtk_switch_get_active(shutdown_on_window_close);
+
+  if (!enable_autostart_state && !shutdown_on_window_close_state) {
+    util::debug(std::string("doing portal sanity check, autostart and shutdown switches are disabled"));
 
     update_background_portal(false);
-  } else if ((gtk_switch_get_active(shutdown_on_window_close) != 0) && (gtk_switch_get_active(enable_autostart) != 0)) {
-    util::debug(std::string("Running portal sanity check, autostart and shutdown switches are enabled"));
+  }
+  else if (enable_autostart_state && shutdown_on_window_close_state) {
+    util::debug(std::string("doing portal sanity check, autostart and shutdown switches are enabled"));
 
     update_background_portal(true);
-  } else if ((gtk_switch_get_active(shutdown_on_window_close) == 0) && (gtk_switch_get_active(enable_autostart) != 0)) {
+  }
+  else if (enable_autostart_state && !shutdown_on_window_close_state) {
     util::debug(std::string(
-        "Running portal sanity check, autostart switch is enabled and shutdown switch is disabled"));
+        "doing portal sanity check, autostart switch is enabled and shutdown switch is disabled"));
 
     update_background_portal(true);
+  }
+  else {
+    util::debug(std::string(
+        "not doing portal sanity check, autostart switch is disabled and shutdown switch is enabled so no background portal access is needed"));
   }
 }
 
