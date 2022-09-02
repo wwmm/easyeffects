@@ -1,4 +1,19 @@
 # Changelog
+ 
+## 6.3.0
+### 2022-09-02
+
+ 
+### Features:
+- The preset autoloading code compatibility with bluez5 devices has been improved.
+- Wet/dry controls were added for some plugins
+- The documentation has been updated
+- Improved debug messages
+- Updated translations
+
+### Bug fixes:
+
+### Other notes:
 
  
 ## 6.2.8
