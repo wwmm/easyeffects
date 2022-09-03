@@ -25,7 +25,11 @@
 class EqualizerPreset : public PluginPresetBase {
  public:
   EqualizerPreset(PresetType preset_type, const int& index = 0);
-  ~EqualizerPreset();
+  EqualizerPreset(const EqualizerPreset&) = delete;
+  auto operator=(const EqualizerPreset&) -> EqualizerPreset& = delete;
+  EqualizerPreset(const EqualizerPreset&&) = delete;
+  auto operator=(const EqualizerPreset&&) -> EqualizerPreset& = delete;
+  ~EqualizerPreset() override;
 
  private:
   GSettings *input_settings_left = nullptr, *input_settings_right = nullptr, *output_settings_left = nullptr,

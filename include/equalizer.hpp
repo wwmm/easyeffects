@@ -93,7 +93,7 @@ class Equalizer : public PluginBase {
   }
 
   template <size_t... Ns>
-  constexpr void bind_bands(std::index_sequence<Ns...>) {
+  constexpr void bind_bands(std::index_sequence<Ns...> /*unused*/) {
     (bind_band<Ns>(), ...);
   }
 

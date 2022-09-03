@@ -51,11 +51,11 @@ class FirFilterBase {
 
   template <typename T1>
   void process(T1& data_left, T1& data_right) {
-    std::span conv_left_in{conv->inpdata(0), conv->inpdata(0) + n_samples};
-    std::span conv_right_in{conv->inpdata(1), conv->inpdata(1) + n_samples};
+    std::span conv_left_in(conv->inpdata(0), n_samples);
+    std::span conv_right_in(conv->inpdata(1), n_samples);
 
-    std::span conv_left_out{conv->outdata(0), conv->outdata(0) + n_samples};
-    std::span conv_right_out{conv->outdata(1), conv->outdata(1) + n_samples};
+    std::span conv_left_out(conv->outdata(0), n_samples);
+    std::span conv_right_out(conv->outdata(1), n_samples);
 
     std::copy(data_left.begin(), data_left.end(), conv_left_in.begin());
     std::copy(data_right.begin(), data_right.end(), conv_right_in.begin());

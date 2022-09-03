@@ -43,6 +43,6 @@ void setup(AppInfo* self,
            GtkIconTheme* icon_theme,
            std::unordered_map<uint, bool>& enabled_app_list);
 
-void update(AppInfo* self, const NodeInfo node_info);
+void update(AppInfo* self, NodeInfo node_info);
 
 }  // namespace ui::app_info
