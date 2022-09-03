@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-03 15:26+0000\n"
+"POT-Creation-Date: 2022-09-03 15:47+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1832,7 +1832,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Maximum"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:181
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
 msgid "Load"
 msgstr "Charger"
 
@@ -2154,45 +2154,45 @@ msgstr "Afficher les préréglages disponibles."
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/convolver_menu_impulses.cpp:99
+#: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
 msgstr "Le fichier est irrégulier"
 
-#: src/convolver_menu_impulses.cpp:104
+#: src/convolver_menu_impulses.cpp:106
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Le fichier d’impulsion peut être corrompu ou non pris en charge"
 
-#: src/convolver_menu_impulses.cpp:109
+#: src/convolver_menu_impulses.cpp:111
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Seuls les fichiers d’impulsion stéréo sont pris en charge"
 
-#: src/convolver_menu_impulses.cpp:119
+#: src/convolver_menu_impulses.cpp:121
 msgid "Impulse File Not Imported"
 msgstr "Fichier d’impulsion non importé"
 
-#: src/convolver_menu_impulses.cpp:125
+#: src/convolver_menu_impulses.cpp:127
 msgid "Import Impulse File"
 msgstr "Importer un fichier d’impulsion"
 
-#: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:350
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:350
 #: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/convolver_menu_impulses.cpp:126 src/equalizer_ui.cpp:350
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:350
 #: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/convolver_menu_impulses.cpp:130
+#: src/convolver_menu_impulses.cpp:132
 msgid "Impulse Response"
 msgstr "Réponse impulsionnelle"
 
-#: src/convolver_menu_impulses.cpp:243
+#: src/convolver_menu_impulses.cpp:245
 msgid "Load Impulse"
 msgstr "Charger une impulsion"
 
-#: src/convolver_menu_impulses.cpp:246
+#: src/convolver_menu_impulses.cpp:248
 msgid "Remove Impulse"
 msgstr "Supprimer l’impulsion"
 
