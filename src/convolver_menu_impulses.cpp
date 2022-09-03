@@ -27,7 +27,7 @@ enum class ImpulseImportState { success, no_regular_file, no_frame, no_stereo };
 
 auto constexpr irs_ext = ".irs";
 
-static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
+std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
 
 struct _ConvolverMenuImpulses {
   GtkBox parent_instance;
@@ -73,7 +73,9 @@ auto import_irs_file(const std::string& file_path) -> ImpulseImportState {
     util::warning(file_path + " loading failed");
 
     return ImpulseImportState::no_frame;
-  } else if (file.channels() != 2) {
+  }
+
+  if (file.channels() != 2) {
     util::warning("Only stereo impulse files are supported!");
     util::warning(file_path + " loading failed");
 

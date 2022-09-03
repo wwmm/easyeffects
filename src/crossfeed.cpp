@@ -62,7 +62,7 @@ Crossfeed::~Crossfeed() {
 void Crossfeed::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  data.resize(2U * n_samples);
+  data.resize(2U * static_cast<size_t>(n_samples));
 
   if (rate != bs2b.get_srate()) {
     bs2b.set_srate(rate);

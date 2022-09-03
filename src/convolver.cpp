@@ -363,7 +363,8 @@ void Convolver::apply_kernel_autogain() {
 
   // find average power
 
-  float power_L = 0.0F, power_R = 0.0F;
+  float power_L = 0.0F;
+  float power_R = 0.0F;
 
   std::ranges::for_each(kernel_L, [&](const auto& v) { power_L += v * v; });
   std::ranges::for_each(kernel_R, [&](const auto& v) { power_R += v * v; });

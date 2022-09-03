@@ -25,7 +25,7 @@ using namespace std::string_literals;
 
 auto constexpr irs_ext = ".irs";
 
-static std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
+std::filesystem::path irs_dir = g_get_user_config_dir() + "/easyeffects/irs"s;
 
 struct Data {
  public:
@@ -71,7 +71,10 @@ void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::
     c[n] = 0.0F;
 
     // Static cast to avoid gcc signedness warning.
-    const int a_size = static_cast<int>(a.size()), b_size = static_cast<int>(b.size());
+
+    const int a_size = static_cast<int>(a.size());
+    const int b_size = static_cast<int>(b.size());
+
     for (int m = 0; m < b_size; m++) {
       if (const auto z = n - m; z >= 0 && z < a_size - 1) {
         c[n] += b[m] * a[z];
@@ -165,8 +168,8 @@ void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
     return;
   }
 
-  auto dropdown_1_selection = gtk_drop_down_get_selected_item(self->dropdown_kernel_1);
-  auto dropdown_2_selection = gtk_drop_down_get_selected_item(self->dropdown_kernel_2);
+  auto* dropdown_1_selection = gtk_drop_down_get_selected_item(self->dropdown_kernel_1);
+  auto* dropdown_2_selection = gtk_drop_down_get_selected_item(self->dropdown_kernel_2);
 
   if (dropdown_1_selection == nullptr || dropdown_2_selection == nullptr) {
     return;
@@ -174,9 +177,9 @@ void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
 
   gtk_spinner_start(self->spinner);
 
-  const auto kernel_1_name = gtk_string_object_get_string(GTK_STRING_OBJECT(dropdown_1_selection));
+  const auto* const kernel_1_name = gtk_string_object_get_string(GTK_STRING_OBJECT(dropdown_1_selection));
 
-  const auto kernel_2_name = gtk_string_object_get_string(GTK_STRING_OBJECT(dropdown_2_selection));
+  const auto* const kernel_2_name = gtk_string_object_get_string(GTK_STRING_OBJECT(dropdown_2_selection));
 
   std::string output_name = gtk_editable_get_text(GTK_EDITABLE(self->output_kernel_name));
 
