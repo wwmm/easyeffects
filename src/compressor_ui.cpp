@@ -67,7 +67,7 @@ void on_reset(CompressorBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
-gboolean set_dropdown_sensitive(CompressorBox* self, const char* active_id) {
+auto set_dropdown_sensitive(CompressorBox* self, const char* active_id) -> gboolean {
   if (g_strcmp0(active_id, "External") == 0) {
     return 1;
   }
@@ -75,20 +75,24 @@ gboolean set_dropdown_sensitive(CompressorBox* self, const char* active_id) {
   return 0;
 }
 
-gboolean set_boost_threshold_sensitive(CompressorBox* self, const char* active_id) {
+auto set_boost_threshold_sensitive(CompressorBox* self, const char* active_id) -> gboolean {
   if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Boosting") == 0) {
     return 0;
-  } else if (g_strcmp0(active_id, "Upward") == 0) {
+  }
+
+  if (g_strcmp0(active_id, "Upward") == 0) {
     return 1;
   }
 
   return 1;
 }
 
-gboolean set_boost_amount_sensitive(CompressorBox* self, const char* active_id) {
+auto set_boost_amount_sensitive(CompressorBox* self, const char* active_id) -> gboolean {
   if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Upward") == 0) {
     return 0;
-  } else if (g_strcmp0(active_id, "Boosting") == 0) {
+  }
+
+  if (g_strcmp0(active_id, "Boosting") == 0) {
     return 1;
   }
 
@@ -140,7 +144,7 @@ void setup(CompressorBox* self,
 
     if (node.media_class == tags::pipewire::media_class::source ||
         node.media_class == tags::pipewire::media_class::virtual_source) {
-      auto holder = ui::holders::create(node);
+      auto* holder = ui::holders::create(node);
 
       g_list_store_append(self->input_devices_model, holder);
 
@@ -240,7 +244,7 @@ void setup(CompressorBox* self,
       g_object_unref(holder);
     }
 
-    auto holder = ui::holders::create(info);
+    auto* holder = ui::holders::create(info);
 
     g_list_store_append(self->input_devices_model, holder);
 
