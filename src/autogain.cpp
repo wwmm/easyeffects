@@ -23,9 +23,8 @@ AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::autogain, tags::plugin_package::ebur128, schema, schema_path, pipe_manager) {
-  target = g_settings_get_double(settings, "target");
-
+    : PluginBase(tag, tags::plugin_name::autogain, tags::plugin_package::ebur128, schema, schema_path, pipe_manager),
+      target(g_settings_get_double(settings, "target")) {
   reference = parse_reference_key(util::gsettings_get_string(settings, "reference"));
 
   gconnections.push_back(g_signal_connect(settings, "changed::target",
@@ -159,8 +158,8 @@ void AutoGain::set_maximum_history(const int& seconds) {
 }
 
 void AutoGain::setup() {
-  if (2U * n_samples != data.size()) {
-    data.resize(n_samples * 2U);
+  if (2U * static_cast<size_t>(n_samples) != data.size()) {
+    data.resize(static_cast<size_t>(n_samples) * 2U);
   }
 
   if (rate != old_rate) {
@@ -207,7 +206,7 @@ void AutoGain::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  for (uint n = 0U; n < n_samples; n++) {
+  for (size_t n = 0U; n < n_samples; n++) {
     data[2U * n] = left_in[n];
     data[2U * n + 1U] = right_in[n];
   }
