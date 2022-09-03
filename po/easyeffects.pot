@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-02 12:49-0300\n"
+"POT-Creation-Date: 2022-09-03 15:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2077,7 +2077,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:226
+#: src/app_info.cpp:228
 msgid "channels"
 msgstr ""
 
