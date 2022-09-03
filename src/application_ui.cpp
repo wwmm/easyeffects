@@ -167,7 +167,7 @@ void realize(GtkWidget* widget) {
 
   self->data->connections.push_back(
       app::EE_APP(self->data->gapp)
-          ->presets_manager->preset_load_error.connect([=](const std::string title, const std::string descr) {
+          ->presets_manager->preset_load_error.connect([=](const std::string& title, const std::string& descr) {
             ui::show_simple_message_dialog(widget, title, descr);
           }));
 }

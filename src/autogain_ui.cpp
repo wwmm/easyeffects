@@ -67,7 +67,8 @@ void on_reset(AutogainBox* self, GtkButton* btn) {
 void on_reset_history(AutogainBox* self, GtkButton* btn) {
   // it is ugly but will ensure that third party tools are able to reset this plugin history
 
-  g_settings_set_boolean(self->settings, "reset-history", !g_settings_get_boolean(self->settings, "reset-history"));
+  g_settings_set_boolean(self->settings, "reset-history",
+                         static_cast<gboolean>(g_settings_get_boolean(self->settings, "reset-history") == 0));
 }
 
 void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::string& schema_path) {
