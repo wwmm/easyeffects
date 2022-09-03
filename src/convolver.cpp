@@ -31,11 +31,9 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::convolver, tags::plugin_package::zita, schema, schema_path, pipe_manager) {
-  do_autogain = g_settings_get_boolean(settings, "autogain") != 0;
-
-  ir_width = g_settings_get_int(settings, "ir-width");
-
+    : PluginBase(tag, tags::plugin_name::convolver, tags::plugin_package::zita, schema, schema_path, pipe_manager),
+      do_autogain(g_settings_get_boolean(settings, "autogain") != 0),
+      ir_width(g_settings_get_int(settings, "ir-width")) {
   gconnections.push_back(g_signal_connect(settings, "changed::ir-width",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<Convolver*>(user_data);

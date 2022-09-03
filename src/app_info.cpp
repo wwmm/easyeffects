@@ -102,7 +102,7 @@ auto get_app_icon_name(const NodeInfo& node_info) -> std::string {
                    [](unsigned char c) { return std::tolower(c); });
   }
 
-  for (auto& [key, value] : icon_map) {
+  for (const auto& [key, value] : icon_map) {
     if (key == icon_name) {
       return value;
     }
@@ -182,14 +182,14 @@ void on_volume_changed(GtkSpinButton* sbtn, AppInfo* self) {
 void on_mute(GtkToggleButton* btn, AppInfo* self) {
   const auto state = gtk_toggle_button_get_active(btn);
 
-  if (state) {
+  if (state != 0) {
     gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-muted-symbolic");
   } else {
     gtk_button_set_icon_name(GTK_BUTTON(btn), "audio-volume-high-symbolic");
   }
 
   if (self->data->info.proxy != nullptr) {
-    PipeManager::set_node_mute(self->data->info.proxy, state);
+    PipeManager::set_node_mute(self->data->info.proxy, state != 0);
   }
 }
 
@@ -202,7 +202,7 @@ void on_blocklist(GtkCheckButton* btn, AppInfo* self) {
     app_tag = self->data->info.name;
   }
 
-  if (is_blocklisted) {
+  if (is_blocklisted != 0) {
     self->data->enabled_app_list->insert_or_assign(self->data->info.id, gtk_check_button_get_active(self->enable));
 
     util::add_new_blocklist_entry(self->settings, app_tag);
@@ -222,7 +222,9 @@ void update(AppInfo* self, const NodeInfo node_info) {
   gtk_label_set_text(self->app_name, node_info.name.c_str());
   gtk_label_set_text(self->media_name, node_info.media_name.c_str());
   gtk_label_set_text(self->format, node_info.format.c_str());
-  gtk_label_set_text(self->rate, fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", node_info.rate / 1000.0F).c_str());
+  gtk_label_set_text(
+      self->rate,
+      fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", static_cast<float>(node_info.rate) / 1000.0F).c_str());
   gtk_label_set_text(self->channels, fmt::format("{0:d} {1}", node_info.n_volume_channels, _("channels")).c_str());
   gtk_label_set_text(self->latency, fmt::format("{0:.0f} ms", 1000.0F * node_info.latency).c_str());
   gtk_label_set_text(self->state, node_state_to_char_pointer(node_info.state));
@@ -234,8 +236,8 @@ void update(AppInfo* self, const NodeInfo node_info) {
   const auto is_enabled = self->data->application->pm->stream_is_connected(node_info.id, node_info.media_class);
   const auto is_blocklisted = app_is_blocklisted(self, node_info.name);
 
-  gtk_widget_set_sensitive(GTK_WIDGET(self->enable), is_enabled || !is_blocklisted);
-  gtk_check_button_set_active(self->enable, is_enabled);
+  gtk_widget_set_sensitive(GTK_WIDGET(self->enable), static_cast<gboolean>(is_enabled || !is_blocklisted));
+  gtk_check_button_set_active(self->enable, static_cast<gboolean>(is_enabled));
 
   g_signal_handler_unblock(self->enable, self->data->handler_id_enable);
 
@@ -261,7 +263,7 @@ void update(AppInfo* self, const NodeInfo node_info) {
     gtk_button_set_icon_name(GTK_BUTTON(self->mute), "audio-volume-high-symbolic");
   }
 
-  gtk_toggle_button_set_active(self->mute, node_info.mute);
+  gtk_toggle_button_set_active(self->mute, static_cast<gboolean>(node_info.mute));
 
   g_signal_handler_unblock(self->mute, self->data->handler_id_mute);
 
