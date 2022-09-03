@@ -23,7 +23,7 @@
 
 namespace util {
 
-auto prepare_debug_message(const std::string& message, std::source_location location) -> std::string {
+auto prepare_debug_message(const std::string& message, source_location location) -> std::string {
   auto file_path = std::filesystem::path{location.file_name()};
 
   std::string msg = "\t" + file_path.filename().string() + ":" + to_string(location.line()) + "\t" + message;
@@ -31,23 +31,23 @@ auto prepare_debug_message(const std::string& message, std::source_location loca
   return msg;
 }
 
-void debug(const std::string& s, std::source_location location) {
+void debug(const std::string& s, source_location location) {
   g_debug(prepare_debug_message(s, location).c_str(), "%s");
 }
 
-void error(const std::string& s, std::source_location location) {
+void error(const std::string& s, source_location location) {
   g_error(prepare_debug_message(s, location).c_str(), "%s");
 }
 
-void critical(const std::string& s, std::source_location location) {
+void critical(const std::string& s, source_location location) {
   g_critical(prepare_debug_message(s, location).c_str(), "%s");
 }
 
-void warning(const std::string& s, std::source_location location) {
+void warning(const std::string& s, source_location location) {
   g_warning(prepare_debug_message(s, location).c_str(), "%s");
 }
 
-void info(const std::string& s, std::source_location location) {
+void info(const std::string& s, source_location location) {
   g_info(prepare_debug_message(s, location).c_str(), "%s");
 }
 

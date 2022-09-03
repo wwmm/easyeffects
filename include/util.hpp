@@ -35,6 +35,10 @@
 #include <thread>
 #include <vector>
 
+#ifdef __clang__
+#include <experimental/source_location>
+#endif
+
 namespace util {
 
 // Minimum dB level reported here has to be used in gsettings and spinbuttons
@@ -44,11 +48,17 @@ constexpr double minimum_db_d_level = -100.0;
 constexpr float minimum_linear_level = 0.00001F;
 constexpr double minimum_linear_d_level = 0.00001;
 
-void debug(const std::string& s, std::source_location location = std::source_location::current());
-void error(const std::string& s, std::source_location location = std::source_location::current());
-void critical(const std::string& s, std::source_location location = std::source_location::current());
-void warning(const std::string& s, std::source_location location = std::source_location::current());
-void info(const std::string& s, std::source_location location = std::source_location::current());
+#ifdef __clang__
+using source_location = std::experimental::source_location;
+#else
+using source_location = std::source_location;
+#endif
+
+void debug(const std::string& s, source_location location = source_location::current());
+void error(const std::string& s, source_location location = source_location::current());
+void critical(const std::string& s, source_location location = source_location::current());
+void warning(const std::string& s, source_location location = source_location::current());
+void info(const std::string& s, source_location location = source_location::current());
 
 auto normalize(const double& x, const double& max, const double& min = 1.0) -> double;
 
