@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-03 15:47+0000\n"
-"PO-Revision-Date: 2022-07-29 06:17+0000\n"
-"Last-Translator: Maxime Leroy <lisacintosh@gmail.com>\n"
+"PO-Revision-Date: 2022-09-04 14:18+0000\n"
+"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
 "Language: fr_FR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "EasyEffects"
@@ -117,13 +117,12 @@ msgid "Features:"
 msgstr "Fonctionnalités :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
-#, fuzzy
 msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
 msgstr ""
-"Le code du chargement automatique des préréglages a été amélioré pour les "
-"périphériques USB."
+"La compatibilité du code du chargement automatique des préréglages a été "
+"améliorée pour les périphériques bluez5."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid "Wet/dry controls were added for some plugins"
@@ -131,11 +130,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "La documentation a été mise à jour"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "Improved debug messages"
-msgstr ""
+msgstr "Amélioration des messages de débogage"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
@@ -201,22 +200,21 @@ msgstr ""
 "périphériques USB."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
-#, fuzzy
 msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
-"Un dialogue est affiché à l'utilisateur lors de l'échec de chargement de "
-"préréglage, ou de l'importation d'un fichier de préréglage/impulse."
+"Une fenêtre de dialogue est affichée à l’utilisateur lors de l’échec du "
+"chargement d’un préréglage, ou de l’importation d'un fichier de préréglage / "
+"impulse."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
-#, fuzzy
 msgid ""
 "The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of "
 "the one from Calf Studio."
 msgstr ""
-"Le plugin limiteur est désormais celui de `Linux Studio Plugins` au lieu "
-"d'un de ceux de Calf Studio."
+"Le plugin SideChain Gate de `Linux Studio Plugins` est maintenant utilisé au "
+"lieu de celui de Calf Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid ""
@@ -246,7 +244,6 @@ msgstr ""
 "vers un autre périphérique."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
-#, fuzzy
 msgid ""
 "A new configuration option was added. It allows EasyEffects to ignore "
 "streams whose purpose is to monitor sink devices. This will help to fix some "
@@ -372,13 +369,13 @@ msgstr ""
 "ressources CPU gaspillées à traiter du silence."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
-"le plugin autogain permet désormais à l’utilisateur de sélectionner "
-"lesquelles des trois \"loudness\" sont utilisées pour calculer la moyenne"
+"Le greffon autogain permet désormais à l’utilisateur de sélectionner "
+"lesquelles des trois \"loudness\" sont utilisées pour calculer la moyenne "
+"géométrique."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
 msgid ""
