@@ -1,12 +1,15 @@
 # Changelog
+
  
 ## 6.3.0
 ### 2022-09-02
 
- 
+
 ### Features:
+- Multiband Gate implementation has been migrated from CALF to Linux Studio Plugins.
 - The preset autoloading code compatibility with bluez5 devices has been improved.
 - Wet/dry controls were added for some plugins
+- Effect interface is no longer loaded when the related lv2 plugin is not installed on the system. In its place a status message to the user is shown.
 - The documentation has been updated
 - Improved debug messages
 - Updated translations
@@ -19,7 +22,7 @@
 ## 6.2.8
 ### 2022-07-25
 
- 
+
 ### Features:
 - Improved translations
 
@@ -37,7 +40,7 @@
 - The bypass state can be saved to the preset file. The reasons why this was done can be seen at https://github.com/wwmm/easyeffects/issues/1039
 - The preset autoloading code compatibility with usb devices has been improved.
 - A dialog is shown to the user when a preset fails to load or a preset/impulse file fails to be imported.
-- The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of the one from Calf Studio. 
+- The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of the one from Calf Studio.
 
 ### Bug fixes:
 - EasyEffects should not crash anymore when the user locale is not properly configured.
@@ -69,7 +72,7 @@
 ## 6.2.5
 ### 2022-04-30
 
- 
+
 ### Features:
 - The interface of the pitch plugin was improved
 - Our application icon is now compatible with desktops that uses QT
@@ -85,7 +88,7 @@
 ## 6.2.4
 ### 2022-03-07
 
- 
+
 ### Features:
 - There is a new setting allowing the user to select an inactivity timeout for the pipeline. When no client is playing to or recording from our devices the filters will be unlinked after the timeout is reached. This is done to make sure we do not waste CPU power processing silence.
 - The autogain plugin now allows the user to select which of the three loudness are used to calculate the geometric mean.
@@ -98,7 +101,7 @@
 ## 6.2.3
 ### 2022-01-29
 
- 
+
 ### Features:
 - The crossfeed filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.
 
@@ -110,12 +113,12 @@
 ## 6.2.2
 ### 2022-01-27
 
- 
+
 ### Features:
 - Support for the next PipeWire release `0.3.44`
 - The autogain filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.
 - We added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts. It should help with the cases were our devices are muted by the audio server for unknown reasons.
-- Better support for computer suspending. 
+- Better support for computer suspending.
 - Updated translations
 
 ### Bug fixes:
@@ -126,7 +129,7 @@
 ## 6.2.1
 ### 2022-01-05
 
- 
+
 ### Bug fixes:
 - Fixed a bug where setting a equalizer band `quality` to `zero` would lead to an application crash.
 
@@ -134,7 +137,7 @@
 ## 6.2.0
 ### 2022-01-04
 
- 
+
 ### Features:
 - LibAdwaita is used to create some parts of our window and for handling the switching between dark and light themes.
 - The settings menu has been redesigned using LibAdwaita widgets.
@@ -155,7 +158,7 @@
 ## 6.1.5
 ### 2021-11-17
 
- 
+
 ### Features:
 - It is now possible to combine impulse responses in the Convolver interface. A new impulse file is generated and it should be visible in the impulse list.
 - Improved `x axis` drawings in our plots. Now the number of labels is adjusted dynamically depending on our window width.
@@ -174,7 +177,7 @@
 ## 6.1.4
 ### 2021-10-16
 
- 
+
 ### Features:
 - The Limiter and the Multiband Compressor plugins can now use an optional external sidechain.
 - The Autogain plugin now allows the user to select which Loudness is used as reference for the volume correction.
@@ -191,7 +194,7 @@
 ## 6.1.3
 ### 2021-10-03
 
- 
+
 ### Features:
 - PipeWire monitor streams are now excluded and removed from the applications list.
 
@@ -205,7 +208,7 @@
 ## 6.1.2
 ### 2021-09-20
 
- 
+
 ### Features:
 - Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the built-in PipeWire session manager. More information at https://github.com/wwmm/easyeffects/issues/1144.
 
@@ -213,7 +216,7 @@
 ## 6.1.1
 ### 2021-09-17
 
- 
+
 ### Features:
 - When trying to add an autoloading profile for a device already in the list its target preset will be updated. This way we can change the profile preset without having to remove and recreating it.
 - The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more information see https://github.com/wwmm/easyeffects/issues/1051.
@@ -233,7 +236,7 @@
 ## 6.1.0
 ### 2021-08-17
 
- 
+
 ### Features:
 - Updated Chinese translation.
 - Updated Italian translation.
@@ -257,7 +260,7 @@
 ## 6.0.3
 ### 2021-07-16
 
- 
+
 ### Features:
 - Improved the resampler used in the plugins that require one(like the rnnoise plugin)
 - Updated translations
@@ -276,7 +279,7 @@
 ## 6.0.2
 ### 2021-07-11
 
- 
+
 ### Features:
 - The Loudness plugin is being used again for the reasons described at https://github.com/wwmm/easyeffects/issues/820. This means that http://drobilla.net/plugins/mda/Loudness is an optional dependency again.
 
@@ -288,7 +291,7 @@
 ## 6.0.1
 ### 2021-07-09
 
- 
+
 ### Features:
 - Improved equalizer interface.
 - Now we use a sidechain LSP compressor that allows the user to select and external source as the sidechain input.
@@ -303,9 +306,9 @@
 ## 6.0.0
 ### 2021-07-07
 
- 
+
 ### Features:
-- This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about everything here. 
+- This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about everything here.
 - The following are just the most import ones. People interested on the journey that got us here can take a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/wwmm/easyeffects/issues/874.
 - The application and its repository have been renamed from PulseEffects to `EasyEffects`
 - gtkmm3 was replaced by gtkmm4
