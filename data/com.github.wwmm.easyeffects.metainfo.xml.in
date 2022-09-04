@@ -37,8 +37,10 @@
       <description>
         <ul>
           <li>Features:</li>
+          <li>Multiband Gate implementation has been migrated from CALF to Linux Studio Plugins.</li>
           <li>The preset autoloading code compatibility with bluez5 devices has been improved.</li>
           <li>Wet/dry controls were added for some plugins</li>
+          <li>Effect interface is no longer loaded when the related lv2 plugin is not installed on the system. In its place a status message to the user is shown.</li>
           <li>The documentation has been updated</li>
           <li>Improved debug messages</li>
           <li>Updated translations</li>
