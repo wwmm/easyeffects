@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-04 14:28+0000\n"
-"PO-Revision-Date: 2022-07-28 16:42+0000\n"
+"PO-Revision-Date: 2022-09-06 00:23+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -125,33 +125,37 @@ msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
 msgstr ""
+"L'implementazione del Gate Multibanda è stata migrata da CALF a Linux Studio "
+"Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
-#, fuzzy
 msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
 msgstr ""
-"Il codice per l'autocaricamento dei profili con i dispositivi usb è stato "
-"migliorato."
+"La compatibilità del codice di autocaricamento dei profili con i dispositivi "
+"bluez5 è stato migliorato."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Wet/dry controls were added for some plugins"
-msgstr ""
+msgstr "I controlli wet/dry sono stati aggiunti per alcuni effetti"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
+"L'interfaccia degli effetti non è più caricata quando il relativo plugin lv2 "
+"non è istallato sul sistema. Al suo postò verrà mostrato un messaggio di "
+"stato."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "La documentazione è stata aggiornata"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "Improved debug messages"
-msgstr ""
+msgstr "Migliorati i messaggi di debug"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
