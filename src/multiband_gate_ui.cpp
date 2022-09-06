@@ -83,7 +83,7 @@ void on_listbox_row_selected(MultibandGateBox* self, GtkListBoxRow* row, GtkList
 
 void set_dropdown_input_devices_sensitivity(MultibandGateBox* self) {
   for (uint n = 0U; n < n_bands; n++) {
-    if (g_settings_get_boolean(self->settings, tags::multiband_gate::band_external_sidechain[n]) != 0) {
+    if (g_settings_get_boolean(self->settings, tags::multiband_gate::band_external_sidechain[n].data()) != 0) {
       gtk_widget_set_sensitive(GTK_WIDGET(self->dropdown_input_devices), 1);
 
       return;
@@ -95,7 +95,7 @@ void set_dropdown_input_devices_sensitivity(MultibandGateBox* self) {
 
 void create_bands(MultibandGateBox* self) {
   for (uint n = 0; n < n_bands; n++) {
-    auto band_box = ui::multiband_gate_band_box::create();
+    auto* band_box = ui::multiband_gate_band_box::create();
 
     ui::multiband_gate_band_box::setup(band_box, self->settings, n);
 
@@ -103,12 +103,12 @@ void create_bands(MultibandGateBox* self) {
 
     self->bands[n] = band_box;
 
-    self->data->gconnections.push_back(
-        g_signal_connect(self->settings, ("changed::"s + tags::multiband_gate::band_external_sidechain[n]).c_str(),
-                         G_CALLBACK(+[](GSettings* settings, char* key, MultibandGateBox* self) {
-                           set_dropdown_input_devices_sensitivity(self);
-                         }),
-                         self));
+    self->data->gconnections.push_back(g_signal_connect(
+        self->settings, ("changed::"s + tags::multiband_gate::band_external_sidechain[n].data()).c_str(),
+        G_CALLBACK(+[](GSettings* settings, char* key, MultibandGateBox* self) {
+          set_dropdown_input_devices_sensitivity(self);
+        }),
+        self));
   }
 }
 

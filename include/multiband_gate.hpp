@@ -107,7 +107,7 @@ class MultibandGate : public PluginBase {
     lv2_wrapper->bind_key_double_db<mk[n], band_makeup[n]>(settings);
     lv2_wrapper->bind_key_double_db<scp[n], band_sidechain_preamp[n]>(settings);
 
-    gconnections.push_back(g_signal_connect(settings, ("changed::"s + band_external_sidechain[n]).c_str(),
+    gconnections.push_back(g_signal_connect(settings, ("changed::"s + band_external_sidechain[n].data()).c_str(),
                                             G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                               auto self = static_cast<MultibandGate*>(user_data);
 
