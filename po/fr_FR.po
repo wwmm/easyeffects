@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-04 14:28+0000\n"
+"POT-Creation-Date: 2022-09-06 15:34+0000\n"
 "PO-Revision-Date: 2022-09-05 03:16+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2204,7 +2204,7 @@ msgstr "Lecteurs"
 msgid "Effects"
 msgstr "Effets"
 
-#: src/equalizer_band_box.cpp:91
+#: src/equalizer_band_box.cpp:92
 msgid "infinity"
 msgstr "infini"
 
