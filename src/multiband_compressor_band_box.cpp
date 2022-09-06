@@ -129,7 +129,7 @@ void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
   using namespace tags::multiband_compressor;
 
   if (index > 0) {
-    g_settings_bind(settings, band_split_frequency[index], gtk_spin_button_get_adjustment(self->split_frequency),
+    g_settings_bind(settings, band_split_frequency[index].data(), gtk_spin_button_get_adjustment(self->split_frequency),
                     "value", G_SETTINGS_BIND_DEFAULT);
   } else {
     // removing split frequency from band 0
@@ -146,70 +146,72 @@ void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
     gtk_box_append(self->split_frequency_box, GTK_WIDGET(label));
   }
 
-  g_settings_bind(self->settings, band_compression_mode[index], self->compression_mode, "active-id",
+  g_settings_bind(self->settings, band_compression_mode[index].data(), self->compression_mode, "active-id",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, band_compressor_enable[index], self->bypass, "active",
+  g_settings_bind(self->settings, band_compressor_enable[index].data(), self->bypass, "active",
                   G_SETTINGS_BIND_INVERT_BOOLEAN);
 
-  g_settings_bind(self->settings, band_mute[index], self->mute, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_mute[index].data(), self->mute, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, band_solo[index], self->solo, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_solo[index].data(), self->solo, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, band_lowcut_filter[index], self->lowcut_filter, "active", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, band_highcut_filter[index], self->highcut_filter, "active", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, band_external_sidechain[index], self->external_sidechain, "active",
+  g_settings_bind(self->settings, band_lowcut_filter[index].data(), self->lowcut_filter, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, band_sidechain_mode[index], self->sidechain_mode, "active-id",
+  g_settings_bind(self->settings, band_highcut_filter[index].data(), self->highcut_filter, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, band_sidechain_source[index], self->sidechain_source, "active-id",
+  g_settings_bind(self->settings, band_external_sidechain[index].data(), self->external_sidechain, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_lowcut_filter_frequency[index],
+  g_settings_bind(self->settings, band_sidechain_mode[index].data(), self->sidechain_mode, "active-id",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, band_sidechain_source[index].data(), self->sidechain_source, "active-id",
+                  G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_lowcut_filter_frequency[index].data(),
                   gtk_spin_button_get_adjustment(self->lowcut_filter_frequency), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_highcut_filter_frequency[index],
+  g_settings_bind(settings, band_highcut_filter_frequency[index].data(),
                   gtk_spin_button_get_adjustment(self->highcut_filter_frequency), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_attack_time[index], gtk_spin_button_get_adjustment(self->attack_time), "value",
+  g_settings_bind(settings, band_attack_time[index].data(), gtk_spin_button_get_adjustment(self->attack_time), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_attack_threshold[index], gtk_spin_button_get_adjustment(self->attack_threshold),
+  g_settings_bind(settings, band_attack_threshold[index].data(), gtk_spin_button_get_adjustment(self->attack_threshold),
                   "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_release_time[index], gtk_spin_button_get_adjustment(self->release_time), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, band_release_threshold[index], gtk_spin_button_get_adjustment(self->release_threshold),
+  g_settings_bind(settings, band_release_time[index].data(), gtk_spin_button_get_adjustment(self->release_time),
                   "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_ratio[index], gtk_spin_button_get_adjustment(self->ratio), "value",
+  g_settings_bind(settings, band_release_threshold[index].data(),
+                  gtk_spin_button_get_adjustment(self->release_threshold), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_ratio[index].data(), gtk_spin_button_get_adjustment(self->ratio), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_knee[index], gtk_spin_button_get_adjustment(self->knee), "value",
+  g_settings_bind(settings, band_knee[index].data(), gtk_spin_button_get_adjustment(self->knee), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_makeup[index], gtk_spin_button_get_adjustment(self->makeup), "value",
+  g_settings_bind(settings, band_makeup[index].data(), gtk_spin_button_get_adjustment(self->makeup), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_sidechain_preamp[index], gtk_spin_button_get_adjustment(self->sidechain_preamp),
+  g_settings_bind(settings, band_sidechain_preamp[index].data(), gtk_spin_button_get_adjustment(self->sidechain_preamp),
                   "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_sidechain_reactivity[index],
+  g_settings_bind(settings, band_sidechain_reactivity[index].data(),
                   gtk_spin_button_get_adjustment(self->sidechain_reactivity), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_sidechain_lookahead[index], gtk_spin_button_get_adjustment(self->sidechain_lookahead),
+  g_settings_bind(settings, band_sidechain_lookahead[index].data(),
+                  gtk_spin_button_get_adjustment(self->sidechain_lookahead), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, band_boost_amount[index].data(), gtk_spin_button_get_adjustment(self->boost_amount),
                   "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, band_boost_amount[index], gtk_spin_button_get_adjustment(self->boost_amount), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, band_boost_threshold[index], gtk_spin_button_get_adjustment(self->boost_threshold), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, band_boost_threshold[index].data(), gtk_spin_button_get_adjustment(self->boost_threshold),
+                  "value", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {

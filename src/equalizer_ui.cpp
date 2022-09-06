@@ -384,8 +384,8 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
 template <Channel channel>
 void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& split_mode) {
-  GSettings* settings;
-  GtkBox* bands_box;
+  GSettings* settings = nullptr;
+  GtkBox* bands_box = nullptr;
 
   if constexpr (channel == Channel::left) {
     settings = self->settings_left;
@@ -398,7 +398,7 @@ void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& spli
   }
 
   for (int n = 0; n < nbands; n++) {
-    auto band_box = ui::equalizer_band_box::create();
+    auto* band_box = ui::equalizer_band_box::create();
 
     ui::equalizer_band_box::setup(band_box, settings, n);
 
