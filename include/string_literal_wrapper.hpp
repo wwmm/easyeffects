@@ -26,5 +26,7 @@ template <size_t N>
 struct StringLiteralWrapper {
   constexpr StringLiteralWrapper(const char (&str)[N]) : msg(std::to_array(str)) {}
 
+  constexpr StringLiteralWrapper(std::array<char, N> arr) : msg(arr) {}
+
   std::array<char, N> msg;
 };

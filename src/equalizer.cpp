@@ -62,17 +62,17 @@ Equalizer::Equalizer(const std::string& tag,
 
                                             for (uint n = 0U; n < self->max_bands; n++) {
                                               if (n < nbands) {
-                                                g_settings_set_enum(self->settings_left, band_type[n], 1);
+                                                g_settings_set_enum(self->settings_left, band_type[n].data(), 1);
 
                                                 if (split) {
-                                                  g_settings_set_enum(self->settings_right, band_type[n], 1);
+                                                  g_settings_set_enum(self->settings_right, band_type[n].data(), 1);
                                                 }
                                               } else {
                                                 // turn off unused bands
-                                                g_settings_set_enum(self->settings_left, band_type[n], 0);
+                                                g_settings_set_enum(self->settings_left, band_type[n].data(), 0);
 
                                                 if (split) {
-                                                  g_settings_set_enum(self->settings_right, band_type[n], 0);
+                                                  g_settings_set_enum(self->settings_right, band_type[n].data(), 0);
                                                 }
                                               }
                                             }
@@ -114,70 +114,74 @@ void Equalizer::on_split_channels() {
   using namespace tags::equalizer;
 
   for (uint n = 0U; n < max_bands; n++) {
-    g_settings_set_enum(settings_right, band_type[n], g_settings_get_enum(settings_left, band_type[n]));
+    g_settings_set_enum(settings_right, band_type[n].data(), g_settings_get_enum(settings_left, band_type[n].data()));
 
-    g_settings_set_enum(settings_right, band_mode[n], g_settings_get_enum(settings_left, band_mode[n]));
+    g_settings_set_enum(settings_right, band_mode[n].data(), g_settings_get_enum(settings_left, band_mode[n].data()));
 
-    g_settings_set_enum(settings_right, band_slope[n], g_settings_get_enum(settings_left, band_slope[n]));
+    g_settings_set_enum(settings_right, band_slope[n].data(), g_settings_get_enum(settings_left, band_slope[n].data()));
 
-    g_settings_set_boolean(settings_right, band_solo[n], g_settings_get_boolean(settings_left, band_solo[n]));
+    g_settings_set_boolean(settings_right, band_solo[n].data(),
+                           g_settings_get_boolean(settings_left, band_solo[n].data()));
 
-    g_settings_set_boolean(settings_right, band_mute[n], g_settings_get_boolean(settings_left, band_mute[n]));
+    g_settings_set_boolean(settings_right, band_mute[n].data(),
+                           g_settings_get_boolean(settings_left, band_mute[n].data()));
 
-    g_settings_set_double(settings_right, band_frequency[n], g_settings_get_double(settings_left, band_frequency[n]));
+    g_settings_set_double(settings_right, band_frequency[n].data(),
+                          g_settings_get_double(settings_left, band_frequency[n].data()));
 
-    g_settings_set_double(settings_right, band_gain[n], g_settings_get_double(settings_left, band_gain[n]));
+    g_settings_set_double(settings_right, band_gain[n].data(),
+                          g_settings_get_double(settings_left, band_gain[n].data()));
 
-    g_settings_set_double(settings_right, band_q[n], g_settings_get_double(settings_left, band_q[n]));
+    g_settings_set_double(settings_right, band_q[n].data(), g_settings_get_double(settings_left, band_q[n].data()));
 
     /*
       When in unified mode we want settings applied to the left channel to be propagated to the right channel
       database
     */
 
-    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_gain[n]).c_str(),
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_gain[n].data()).c_str(),
                                                     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
                                                       g_settings_set_double(self->settings_right, key,
                                                                             g_settings_get_double(settings, key));
                                                     }),
                                                     this));
 
-    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_frequency[n]).c_str(),
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_frequency[n].data()).c_str(),
                                                     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
                                                       g_settings_set_double(self->settings_right, key,
                                                                             g_settings_get_double(settings, key));
                                                     }),
                                                     this));
 
-    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_q[n]).c_str(),
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_q[n].data()).c_str(),
                                                     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
                                                       g_settings_set_double(self->settings_right, key,
                                                                             g_settings_get_double(settings, key));
                                                     }),
                                                     this));
 
-    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_type[n]).c_str(),
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_type[n].data()).c_str(),
                                                     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
                                                       g_settings_set_enum(self->settings_right, key,
                                                                           g_settings_get_enum(settings, key));
                                                     }),
                                                     this));
 
-    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_mode[n]).c_str(),
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_mode[n].data()).c_str(),
                                                     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
                                                       g_settings_set_enum(self->settings_right, key,
                                                                           g_settings_get_enum(settings, key));
                                                     }),
                                                     this));
 
-    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_slope[n]).c_str(),
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_slope[n].data()).c_str(),
                                                     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
                                                       g_settings_set_enum(self->settings_right, key,
                                                                           g_settings_get_enum(settings, key));
                                                     }),
                                                     this));
 
-    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_mute[n]).c_str(),
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_mute[n].data()).c_str(),
                                                     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
                                                       g_settings_set_boolean(self->settings_right, key,
                                                                              g_settings_get_boolean(settings, key));

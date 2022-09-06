@@ -75,23 +75,23 @@ void EqualizerPreset::save(nlohmann::json& json) {
 
 void EqualizerPreset::save_channel(nlohmann::json& json, GSettings* settings, const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    const auto bandn = band_id[n];
+    const auto* const bandn = band_id[n];
 
-    json[bandn]["type"] = util::gsettings_get_string(settings, band_type[n]);
+    json[bandn]["type"] = util::gsettings_get_string(settings, band_type[n].data());
 
-    json[bandn]["mode"] = util::gsettings_get_string(settings, band_mode[n]);
+    json[bandn]["mode"] = util::gsettings_get_string(settings, band_mode[n].data());
 
-    json[bandn]["slope"] = util::gsettings_get_string(settings, band_slope[n]);
+    json[bandn]["slope"] = util::gsettings_get_string(settings, band_slope[n].data());
 
-    json[bandn]["solo"] = g_settings_get_boolean(settings, band_solo[n]) != 0;
+    json[bandn]["solo"] = g_settings_get_boolean(settings, band_solo[n].data()) != 0;
 
-    json[bandn]["mute"] = g_settings_get_boolean(settings, band_mute[n]) != 0;
+    json[bandn]["mute"] = g_settings_get_boolean(settings, band_mute[n].data()) != 0;
 
-    json[bandn]["gain"] = g_settings_get_double(settings, band_gain[n]);
+    json[bandn]["gain"] = g_settings_get_double(settings, band_gain[n].data());
 
-    json[bandn]["frequency"] = g_settings_get_double(settings, band_frequency[n]);
+    json[bandn]["frequency"] = g_settings_get_double(settings, band_frequency[n].data());
 
-    json[bandn]["q"] = g_settings_get_double(settings, band_q[n]);
+    json[bandn]["q"] = g_settings_get_double(settings, band_q[n].data());
   }
 }
 
@@ -129,20 +129,20 @@ void EqualizerPreset::load_channel(const nlohmann::json& json, GSettings* settin
   for (int n = 0; n < nbands; n++) {
     const auto bandn = "band" + util::to_string(n);
 
-    update_key<gchar*>(json.at(bandn), settings, band_type[n], "type");
+    update_key<gchar*>(json.at(bandn), settings, band_type[n].data(), "type");
 
-    update_key<gchar*>(json.at(bandn), settings, band_mode[n], "mode");
+    update_key<gchar*>(json.at(bandn), settings, band_mode[n].data(), "mode");
 
-    update_key<gchar*>(json.at(bandn), settings, band_slope[n], "slope");
+    update_key<gchar*>(json.at(bandn), settings, band_slope[n].data(), "slope");
 
-    update_key<bool>(json.at(bandn), settings, band_solo[n], "solo");
+    update_key<bool>(json.at(bandn), settings, band_solo[n].data(), "solo");
 
-    update_key<bool>(json.at(bandn), settings, band_mute[n], "mute");
+    update_key<bool>(json.at(bandn), settings, band_mute[n].data(), "mute");
 
-    update_key<double>(json.at(bandn), settings, band_gain[n], "gain");
+    update_key<double>(json.at(bandn), settings, band_gain[n].data(), "gain");
 
-    update_key<double>(json.at(bandn), settings, band_frequency[n], "frequency");
+    update_key<double>(json.at(bandn), settings, band_frequency[n].data(), "frequency");
 
-    update_key<double>(json.at(bandn), settings, band_q[n], "q");
+    update_key<double>(json.at(bandn), settings, band_q[n].data(), "q");
   }
 }

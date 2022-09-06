@@ -53,11 +53,11 @@ struct _EqualizerBandBox {
 G_DEFINE_TYPE(EqualizerBandBox, equalizer_band_box, GTK_TYPE_BOX)
 
 void on_reset_quality(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_q[self->data->index]);
+  g_settings_reset(self->settings, tags::equalizer::band_q[self->data->index].data());
 }
 
 void on_reset_frequency(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_frequency[self->data->index]);
+  g_settings_reset(self->settings, tags::equalizer::band_frequency[self->data->index].data());
 }
 
 auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
@@ -67,9 +67,9 @@ auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
 
   if (value > 1000.0) {
     return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", value / 1000.0).c_str());
-  } else {
-    return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} Hz", value).c_str());
   }
+
+  return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} Hz", value).c_str());
 }
 
 auto set_band_quality_label(EqualizerBandBox* self, double value) -> const char* {
@@ -87,9 +87,9 @@ auto set_band_width_label(EqualizerBandBox* self, double quality, double frequen
 
   if (quality > 0.0) {
     return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} Hz", frequency / quality).c_str());
-  } else {
-    return g_strdup(_("infinity"));
   }
+
+  return g_strdup(_("infinity"));
 }
 
 auto set_band_scale_sensitive(EqualizerBandBox* self, const char* active_id) -> gboolean {
@@ -105,24 +105,29 @@ void setup(EqualizerBandBox* self, GSettings* settings, int index) {
   self->data->index = index;
   self->settings = settings;
 
-  g_settings_bind(settings, tags::equalizer::band_gain[index], gtk_range_get_adjustment(GTK_RANGE(self->band_scale)),
-                  "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, tags::equalizer::band_gain[index].data(),
+                  gtk_range_get_adjustment(GTK_RANGE(self->band_scale)), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_frequency[index],
+  g_settings_bind(settings, tags::equalizer::band_frequency[index].data(),
                   gtk_spin_button_get_adjustment(self->band_frequency), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_q[index], gtk_spin_button_get_adjustment(self->band_quality), "value",
+  g_settings_bind(settings, tags::equalizer::band_q[index].data(), gtk_spin_button_get_adjustment(self->band_quality),
+                  "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, tags::equalizer::band_solo[index].data(), self->band_solo, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_solo[index], self->band_solo, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, tags::equalizer::band_mute[index].data(), self->band_mute, "active",
+                  G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_mute[index], self->band_mute, "active", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, tags::equalizer::band_type[index].data(), self->band_type, "active-id",
+                  G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_type[index], self->band_type, "active-id", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, tags::equalizer::band_mode[index].data(), self->band_mode, "active-id",
+                  G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_mode[index], self->band_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, tags::equalizer::band_slope[index], self->band_slope, "active-id", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(settings, tags::equalizer::band_slope[index].data(), self->band_slope, "active-id",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {

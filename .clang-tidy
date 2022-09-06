@@ -6,6 +6,7 @@ Checks: 'boost-*,bugprone-*,cert-*,cppcoreguidelines-*,modernize-*,performance-*
 -cppcoreguidelines-avoid-magic-numbers,
 -cppcoreguidelines-owning-memory,
 -cppcoreguidelines-avoid-non-const-global-variables,
+-cppcoreguidelines-pro-bounds-constant-array-index,
 -readability-magic-numbers,
 -readability-function-cognitive-complexity,
 -readability-identifier-length,

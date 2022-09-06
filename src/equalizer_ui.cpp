@@ -91,9 +91,9 @@ void on_reset(EqualizerBox* self, GtkButton* btn) {
 
 void on_flat_response(EqualizerBox* self, GtkButton* btn) {
   for (int n = 0; n < max_bands; n++) {
-    g_settings_reset(self->settings_left, band_gain[n]);
+    g_settings_reset(self->settings_left, band_gain[n].data());
 
-    g_settings_reset(self->settings_right, band_gain[n]);
+    g_settings_reset(self->settings_right, band_gain[n].data());
   }
 }
 
@@ -120,11 +120,11 @@ void on_calculate_frequencies(EqualizerBox* self, GtkButton* btn) {
 
     // std::cout << n << "\t" << freq << "\t" << width << std::endl;
 
-    g_settings_set_double(self->settings_left, band_frequency[n], freq);
-    g_settings_set_double(self->settings_left, band_q[n], q);
+    g_settings_set_double(self->settings_left, band_frequency[n].data(), freq);
+    g_settings_set_double(self->settings_left, band_q[n].data(), q);
 
-    g_settings_set_double(self->settings_right, band_frequency[n], freq);
-    g_settings_set_double(self->settings_right, band_q[n], q);
+    g_settings_set_double(self->settings_right, band_frequency[n].data(), freq);
+    g_settings_set_double(self->settings_right, band_q[n].data(), q);
 
     freq0 = freq1;
   }
@@ -321,22 +321,22 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   for (int n = 0, apo_bands = static_cast<int>(bands.size()); n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
-        g_settings_set_string(channel, band_type[n], bands[n].type.c_str());
-        g_settings_set_string(channel, band_mode[n], "APO (DR)");
-        g_settings_set_double(channel, band_frequency[n], bands[n].freq);
-        g_settings_set_double(channel, band_gain[n], bands[n].gain);
-        g_settings_set_double(channel, band_q[n], bands[n].quality);
+        g_settings_set_string(channel, band_type[n].data(), bands[n].type.c_str());
+        g_settings_set_string(channel, band_mode[n].data(), "APO (DR)");
+        g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
+        g_settings_set_double(channel, band_gain[n].data(), bands[n].gain);
+        g_settings_set_double(channel, band_q[n].data(), bands[n].quality);
       } else {
-        g_settings_set_string(channel, band_type[n], "Off");
-        g_settings_reset(channel, band_mode[n]);
-        g_settings_reset(channel, band_frequency[n]);
-        g_settings_reset(channel, band_gain[n]);
-        g_settings_reset(channel, band_q[n]);
+        g_settings_set_string(channel, band_type[n].data(), "Off");
+        g_settings_reset(channel, band_mode[n].data());
+        g_settings_reset(channel, band_frequency[n].data());
+        g_settings_reset(channel, band_gain[n].data());
+        g_settings_reset(channel, band_q[n].data());
       }
 
-      g_settings_reset(channel, band_slope[n]);
-      g_settings_reset(channel, band_solo[n]);
-      g_settings_reset(channel, band_mute[n]);
+      g_settings_reset(channel, band_slope[n].data());
+      g_settings_reset(channel, band_solo[n].data());
+      g_settings_reset(channel, band_mute[n].data());
     }
   }
 
