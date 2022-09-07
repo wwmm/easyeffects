@@ -137,7 +137,7 @@ void on_shutdown_on_window_close(GtkSwitch* btn, gboolean state, gpointer user_d
   // that case we must not call the portal again.
   if (!resetting_shutdown) {
     if (gtk_switch_get_active(enable_autostart) != 0) {
-      const auto* msg = (state == 1) ? "requesting both background access and autostart file since autostart is enabled"
+      const auto* msg = (state == 0) ? "requesting both background access and autostart file since autostart is enabled"
                                      : "requesting autostart access since autostart enabled";
 
       util::debug(msg);
