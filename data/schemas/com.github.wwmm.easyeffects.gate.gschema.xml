@@ -70,7 +70,7 @@
             <default>-6</default>
         </key>
         <key name="reduction" type="d">
-            <range min="-72" max="0" />
+            <range min="-72" max="72" />
             <default>-24</default>
         </key>
         <key name="makeup" type="d">

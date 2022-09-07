@@ -442,7 +442,7 @@
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">-72</property>
-                                        <property name="upper">0</property>
+                                        <property name="upper">72</property>
                                         <property name="value">-24</property>
                                         <property name="step-increment">0.1</property>
                                         <property name="page-increment">1</property>
