@@ -136,7 +136,7 @@
                                                                 </binding>
                                                                 <property name="adjustment">
                                                                     <object class="GtkAdjustment">
-                                                                        <property name="lower">0</property>
+                                                                        <property name="lower">-72</property>
                                                                         <property name="upper">72</property>
                                                                         <property name="value">6</property>
                                                                         <property name="step-increment">0.1</property>

@@ -733,35 +733,35 @@
         </key>
 
         <key name="boost-amount0" type="d">
-            <range min="0" max="72" />
+            <range min="-72" max="72" />
             <default>6</default>
         </key>
         <key name="boost-amount1" type="d">
-            <range min="0" max="72" />
+            <range min="-72" max="72" />
             <default>6</default>
         </key>
         <key name="boost-amount2" type="d">
-            <range min="0" max="72" />
+            <range min="-72" max="72" />
             <default>6</default>
         </key>
         <key name="boost-amount3" type="d">
-            <range min="0" max="72" />
+            <range min="-72" max="72" />
             <default>6</default>
         </key>
         <key name="boost-amount4" type="d">
-            <range min="0" max="72" />
+            <range min="-72" max="72" />
             <default>6</default>
         </key>
         <key name="boost-amount5" type="d">
-            <range min="0" max="72" />
+            <range min="-72" max="72" />
             <default>6</default>
         </key>
         <key name="boost-amount6" type="d">
-            <range min="0" max="72" />
+            <range min="-72" max="72" />
             <default>6</default>
         </key>
         <key name="boost-amount7" type="d">
-            <range min="0" max="72" />
+            <range min="-72" max="72" />
             <default>6</default>
         </key>
 
