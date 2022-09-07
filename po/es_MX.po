@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-06 15:34+0000\n"
+"POT-Creation-Date: 2022-09-07 12:30-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -503,14 +503,12 @@ msgstr "Pico"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:652
-#: data/ui/gate.ui:1003 data/ui/multiband_compressor_band.ui:470
-#: data/ui/multiband_gate_band.ui:533
+#: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:1003
+#: data/ui/multiband_compressor_band.ui:470
 msgid "Low-Pass"
 msgstr "Paso Bajo"
 
-#: data/ui/compressor.ui:514 data/ui/gate.ui:653
-#: data/ui/multiband_compressor_band.ui:471 data/ui/multiband_gate_band.ui:534
+#: data/ui/compressor.ui:514 data/ui/multiband_compressor_band.ui:471
 msgid "Uniform"
 msgstr "Uniforme"
 
@@ -1128,6 +1126,15 @@ msgstr ""
 #, fuzzy
 msgid "Release Zone Start"
 msgstr "Tiempo Real"
+
+#: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
+#, fuzzy
+msgid "Low-Pass Filter"
+msgstr "Filtro de Pase Alto"
+
+#: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
+msgid "Simple Moving Average"
+msgstr ""
 
 #: data/ui/gate.ui:751
 #, fuzzy

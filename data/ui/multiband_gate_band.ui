@@ -530,8 +530,8 @@
                                         <items>
                                             <item translatable="yes" id="Peak">Peak</item>
                                             <item translatable="yes" id="RMS">RMS</item>
-                                            <item translatable="yes" id="Low-Pass">Low-Pass</item>
-                                            <item translatable="yes" id="Uniform">Uniform</item>
+                                            <item translatable="yes" id="LPF">Low-Pass Filter</item>
+                                            <item translatable="yes" id="SMA">Simple Moving Average</item>
                                         </items>
                                         <layout>
                                             <property name="column">0</property>

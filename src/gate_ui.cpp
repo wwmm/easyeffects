@@ -75,7 +75,7 @@ void on_reset(GateBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
-gboolean set_dropdown_sensitive(GateBox* self, const char* active_id) {
+auto set_dropdown_sensitive(GateBox* self, const char* active_id) -> gboolean {
   if (g_strcmp0(active_id, "External") == 0) {
     return 1;
   }
@@ -125,7 +125,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
     if (node.media_class == tags::pipewire::media_class::source ||
         node.media_class == tags::pipewire::media_class::virtual_source) {
-      auto holder = ui::holders::create(node);
+      auto* holder = ui::holders::create(node);
 
       g_list_store_append(self->input_devices_model, holder);
 
@@ -300,7 +300,7 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
       g_object_unref(holder);
     }
 
-    auto holder = ui::holders::create(info);
+    auto* holder = ui::holders::create(info);
 
     g_list_store_append(self->input_devices_model, holder);
 

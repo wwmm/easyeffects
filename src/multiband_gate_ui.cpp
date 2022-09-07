@@ -97,7 +97,7 @@ void create_bands(MultibandGateBox* self) {
   for (uint n = 0; n < n_bands; n++) {
     auto* band_box = ui::multiband_gate_band_box::create();
 
-    ui::multiband_gate_band_box::setup(band_box, self->settings, n);
+    ui::multiband_gate_band_box::setup(band_box, self->settings, static_cast<int>(n));
 
     gtk_stack_add_named(self->stack, GTK_WIDGET(band_box), ("band" + util::to_string(n)).c_str());
 
@@ -161,7 +161,7 @@ void setup(MultibandGateBox* self,
 
     if (node.media_class == tags::pipewire::media_class::source ||
         node.media_class == tags::pipewire::media_class::virtual_source) {
-      auto holder = ui::holders::create(node);
+      auto* holder = ui::holders::create(node);
 
       g_list_store_append(self->input_devices_model, holder);
 
@@ -247,7 +247,7 @@ void setup(MultibandGateBox* self,
       }
 
       for (size_t n = 0U; n < values.size(); n++) {
-        ui::multiband_gate_band_box::set_gating_levelbar(self->bands[n], values[n]);
+        ui::multiband_gate_band_box::set_gating_levelbar(self->bands[n], static_cast<float>(values[n]));
       }
     });
   }));
@@ -266,7 +266,7 @@ void setup(MultibandGateBox* self,
       g_object_unref(holder);
     }
 
-    auto holder = ui::holders::create(info);
+    auto* holder = ui::holders::create(info);
 
     g_list_store_append(self->input_devices_model, holder);
 

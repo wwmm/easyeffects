@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-06 15:34+0000\n"
+"POT-Creation-Date: 2022-09-07 12:30-0300\n"
 "PO-Revision-Date: 2022-09-05 03:16+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -468,14 +468,12 @@ msgstr "Crête"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:652
-#: data/ui/gate.ui:1003 data/ui/multiband_compressor_band.ui:470
-#: data/ui/multiband_gate_band.ui:533
+#: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:1003
+#: data/ui/multiband_compressor_band.ui:470
 msgid "Low-Pass"
 msgstr "Passe-bas"
 
-#: data/ui/compressor.ui:514 data/ui/gate.ui:653
-#: data/ui/multiband_compressor_band.ui:471 data/ui/multiband_gate_band.ui:534
+#: data/ui/compressor.ui:514 data/ui/multiband_compressor_band.ui:471
 msgid "Uniform"
 msgstr "Uniforme"
 
@@ -1048,6 +1046,15 @@ msgstr "Début Zone d’Attaque"
 #: data/ui/gate.ui:564
 msgid "Release Zone Start"
 msgstr "Début Zone de Relâchement"
+
+#: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
+#, fuzzy
+msgid "Low-Pass Filter"
+msgstr "Mode Filtre Passe-Bas"
+
+#: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
+msgid "Simple Moving Average"
+msgstr ""
 
 #: data/ui/gate.ui:751
 msgid "Internal"
