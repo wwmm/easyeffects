@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-07 12:30-0300\n"
-"PO-Revision-Date: 2022-07-27 08:18+0000\n"
-"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"PO-Revision-Date: 2022-09-09 12:18+0000\n"
+"Last-Translator: Eduardo Malaspina <vaio0@swismail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "EasyEffects"
@@ -122,6 +122,8 @@ msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
 msgstr ""
+"La implementación de la puerta multibanda se ha migrado de CALF a los "
+"plugins de Linux Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 #, fuzzy
@@ -134,21 +136,24 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Wet/dry controls were added for some plugins"
-msgstr ""
+msgstr "Se ha añadido controles húmedo/seco para algunos plugins"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
+"La interfaz de efectos ya no se carga cuando el plugin lv2 relacionado no "
+"está instalado en el sistema. En su lugar se muestra un mensaje de estado al "
+"usuario."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "La documentación ha sido actualizada"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "Improved debug messages"
-msgstr ""
+msgstr "Mejoría en mensajes de depuración"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
@@ -195,6 +200,8 @@ msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
 msgstr ""
+"Se ha corregido un error por el que EasyEffects podía fallar al cerrar su "
+"ventana mientras se aplicaban los efectos."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
@@ -620,10 +627,12 @@ msgid ""
 "The Spectrum plugin was supposed to enter passthrough whenever it was not "
 "visible, but this was happening only when our window was closed."
 msgstr ""
+"El plugin de Spectrum debía entrar en passthrough siempre que no fuera "
+"visible, pero esto sólo ocurría cuando nuestra ventana estaba cerrada."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid "Improved support for Assistive Technology."
-msgstr ""
+msgstr "Mejor apoyo a la Tecnología de Asistencia."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
 msgid ""
@@ -631,6 +640,9 @@ msgid ""
 "being relinked after changing the order of the plugins in the pipeline. It "
 "should be working now."
 msgstr ""
+"Las sondas utilizadas en algunos filtros como el Compresor y el Limitador no "
+"estaban siendo revinculadas luego de cambiar el orden de los plugins en la "
+"tubería. Ahora debería funcionar."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid ""
@@ -745,6 +757,10 @@ msgid ""
 "UI (if an application icon could not be shown even if you're sure it's "
 "correctly installed, please open an issue)."
 msgstr ""
+"Los iconos faltantes en el sistema no deberían ser mostrados dentro de la "
+"interfaz de usuario (si el ícono de una aplicación no pudiese ser mostrado "
+"aunque estés seguro de que está correctamente instalada, por favor abre un "
+"problema)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
 msgid ""
