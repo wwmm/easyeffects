@@ -382,11 +382,11 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
               last_j = j;
 
               break;
-            } else {
-              self->data->spectrum_mag[n] += magnitudes[j];
-
-              self->data->spectrum_bin_count[n]++;
             }
+
+            self->data->spectrum_mag[n] += magnitudes[j];
+
+            self->data->spectrum_bin_count[n]++;
           }
         }
 
@@ -415,7 +415,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   // As we are showing the window we want the filters to send notifications about level meters, etc
 
-  self->data->effects_base->spectrum->bypass = !g_settings_get_boolean(self->settings_spectrum, "show");
+  self->data->effects_base->spectrum->bypass = g_settings_get_boolean(self->settings_spectrum, "show") == 0;
 
   self->data->effects_base->output_level->set_post_messages(true);
 

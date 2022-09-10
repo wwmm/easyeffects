@@ -23,6 +23,8 @@
 #include <array>
 #include <iostream>
 #include <map>
+#include <regex>
+#include "util.hpp"
 
 namespace tags::plugin_package {
 
@@ -106,5 +108,7 @@ inline constexpr auto list = std::to_array(
 auto get_translated() -> std::map<std::string, std::string>;
 
 auto get_base_name(std::string_view name) -> std::string;
+
+auto get_id(const std::string& name) -> uint;
 
 }  // namespace tags::plugin_name
