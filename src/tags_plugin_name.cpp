@@ -19,6 +19,12 @@
 
 #include "tags_plugin_name.hpp"
 
+namespace {
+
+const auto id_regex = std::regex("#([0-9]*)");
+
+}
+
 namespace tags::plugin_name {
 
 auto get_translated() -> std::map<std::string, std::string> {
@@ -143,6 +149,22 @@ auto get_base_name(std::string_view name) -> std::string {
   }
 
   return "";
+}
+
+auto get_id(const std::string& name) -> uint {
+  std::smatch matches;
+
+  std::regex_search(name, matches, id_regex);
+
+  if (matches.size() != 2) {
+    return 0;
+  }
+
+  if (uint id = 0; util::str_to_num(matches[1], id)) {
+    return id;
+  }
+
+  return 0;
 }
 
 }  // namespace tags::plugin_name

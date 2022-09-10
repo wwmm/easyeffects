@@ -92,7 +92,7 @@ auto remove_filename_extension(const std::string& basename) -> std::string;
 
 void print_thread_id();
 
-auto gchar_array_to_vector(gchar** gchar_array, const bool free_data = true) -> std::vector<std::string>;
+auto gchar_array_to_vector(gchar** gchar_array, bool free_data = true) -> std::vector<std::string>;
 
 auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<const gchar*>;
 
