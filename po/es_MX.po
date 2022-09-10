@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-07 12:30-0300\n"
+"POT-Creation-Date: 2022-09-10 14:59+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -197,7 +197,7 @@ msgid "Range"
 msgstr "Rango"
 
 #: data/ui/autogain.ui:303 data/ui/bass_loudness.ui:29
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Loudness"
 
@@ -375,7 +375,7 @@ msgstr "Aplicaciones"
 msgid "Show Excluded Applications"
 msgstr "Aplicaciones"
 
-#: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:28
+#: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
 msgstr "Compresor"
 
@@ -704,7 +704,7 @@ msgstr "Espectro"
 msgid "Log Scale"
 msgstr "Escala"
 
-#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:25
+#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
 #, fuzzy
 msgid "Autogain"
 msgstr "Ganancia Automática"
@@ -859,7 +859,7 @@ msgstr "Detectado"
 msgid "Reduction"
 msgstr "Reducción"
 
-#: data/ui/delay.ui:50 src/tags_plugin_name.cpp:33
+#: data/ui/delay.ui:50 src/tags_plugin_name.cpp:39
 msgid "Delay"
 msgstr "Retraso"
 
@@ -1101,7 +1101,7 @@ msgstr "18dB/oct Rechazo de Banda"
 msgid "Inertia"
 msgstr "Inercia"
 
-#: data/ui/gate.ui:41 src/tags_plugin_name.cpp:38
+#: data/ui/gate.ui:41 src/tags_plugin_name.cpp:44
 msgid "Gate"
 msgstr "Puerta de Ruido"
 
@@ -2409,7 +2409,7 @@ msgstr ""
 msgid "Output Device"
 msgstr "Efectos de Salida"
 
-#: src/plugins_menu.cpp:142
+#: src/plugins_menu.cpp:160
 msgid "Add"
 msgstr ""
 
@@ -2433,77 +2433,77 @@ msgstr "Importar Archivo Impulse"
 msgid "RNNoise Models"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:32
 msgid "Bass Enhancer"
 msgstr "Potenciado de Graves"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:33
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Loudness"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:35
 msgid "Convolver"
 msgstr "Convolver"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:36
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:37
 msgid "Crystalizer"
 msgstr "Cristalizador"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:38
 msgid "Deesser"
 msgstr "Deesser"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:40
 msgid "Echo Canceller"
 msgstr "Cancelador de Eco"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:41
 msgid "Equalizer"
 msgstr "Ecualizador"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:42
 msgid "Exciter"
 msgstr "Excitador"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:43
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "Limitador"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "Maximizador"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "Compresor Multibanda"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "Puerta Multibanda"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "Tono"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "Reverberación"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:52
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Reducción de Ganancia"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "Herramientas Estéreo"
 
