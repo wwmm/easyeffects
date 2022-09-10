@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-07 12:30-0300\n"
+"POT-Creation-Date: 2022-09-10 14:59+0000\n"
 "PO-Revision-Date: 2022-09-06 00:23+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -188,7 +188,7 @@ msgid "Range"
 msgstr "Диапазон"
 
 #: data/ui/autogain.ui:303 data/ui/bass_loudness.ui:29
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -367,7 +367,7 @@ msgstr "Чёрный список приложений"
 msgid "Show Excluded Applications"
 msgstr "Отобразить чёрный список приложений"
 
-#: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:28
+#: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
 msgstr "Компрессор"
 
@@ -678,7 +678,7 @@ msgstr "Спектр"
 msgid "Log Scale"
 msgstr "Логарифмическая шкала"
 
-#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:25
+#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
 msgid "Autogain"
 msgstr "Нормализация громкости"
 
@@ -818,7 +818,7 @@ msgstr "Определено"
 msgid "Reduction"
 msgstr "Ослабление"
 
-#: data/ui/delay.ui:50 src/tags_plugin_name.cpp:33
+#: data/ui/delay.ui:50 src/tags_plugin_name.cpp:39
 msgid "Delay"
 msgstr "Задержка"
 
@@ -1054,7 +1054,7 @@ msgid "Inertia"
 msgstr "Инертность"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
-#: data/ui/gate.ui:41 src/tags_plugin_name.cpp:38
+#: data/ui/gate.ui:41 src/tags_plugin_name.cpp:44
 msgid "Gate"
 msgstr "Шумовые ворота (гейт)"
 
@@ -2272,7 +2272,7 @@ msgstr "Удалить"
 msgid "Output Device"
 msgstr "Устройство вывода"
 
-#: src/plugins_menu.cpp:142
+#: src/plugins_menu.cpp:160
 msgid "Add"
 msgstr "Добавить"
 
@@ -2298,76 +2298,76 @@ msgstr "Модели RNNoise"
 
 # Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
 # «Бас-Энхансер» или «Глубокий бас»
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:32
 msgid "Bass Enhancer"
 msgstr "Усиление басов (бас-энхансер)"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:33
 msgid "Bass Loudness"
 msgstr "Громкость баса"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:35
 msgid "Convolver"
 msgstr "Конвольвер"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:36
 msgid "Crossfeed"
 msgstr "Перекрёстная подача"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:37
 msgid "Crystalizer"
 msgstr "Кристаллизатор"
 
 # http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:38
 msgid "Deesser"
 msgstr "Антишипение (деэссер)"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:40
 msgid "Echo Canceller"
 msgstr "Эхоподавление"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:41
 msgid "Equalizer"
 msgstr "Эквалайзер"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:42
 msgid "Exciter"
 msgstr "Эксайтер"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:43
 msgid "Filter"
 msgstr "Фильтр"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "Ограничитель уровня звука (лимитер)"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "Максимизатор"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "Многополосные шумовые ворота"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "Высота тона"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "Реверберация"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "Стереокорректоры"
 

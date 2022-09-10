@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-07 12:30-0300\n"
+"POT-Creation-Date: 2022-09-10 14:59+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -199,7 +199,7 @@ msgid "Range"
 msgstr "Raspon"
 
 #: data/ui/autogain.ui:303 data/ui/bass_loudness.ui:29
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Glasnoća"
 
@@ -378,7 +378,7 @@ msgstr "Aplikacije"
 msgid "Show Excluded Applications"
 msgstr "Aplikacije"
 
-#: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:28
+#: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -715,7 +715,7 @@ msgstr "Spektar"
 msgid "Log Scale"
 msgstr ""
 
-#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:25
+#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
 #, fuzzy
 msgid "Autogain"
 msgstr "Automatsko pojačavanje"
@@ -876,7 +876,7 @@ msgstr "Detektirano"
 msgid "Reduction"
 msgstr "Smanjenje"
 
-#: data/ui/delay.ui:50 src/tags_plugin_name.cpp:33
+#: data/ui/delay.ui:50 src/tags_plugin_name.cpp:39
 msgid "Delay"
 msgstr "Kašnjenje"
 
@@ -1121,7 +1121,7 @@ msgstr "18dB/oct odbijanje banda"
 msgid "Inertia"
 msgstr "Inercija"
 
-#: data/ui/gate.ui:41 src/tags_plugin_name.cpp:38
+#: data/ui/gate.ui:41 src/tags_plugin_name.cpp:44
 msgid "Gate"
 msgstr "Vrata"
 
@@ -2448,7 +2448,7 @@ msgstr ""
 msgid "Output Device"
 msgstr "Pojačanje ulaza"
 
-#: src/plugins_menu.cpp:142
+#: src/plugins_menu.cpp:160
 msgid "Add"
 msgstr ""
 
@@ -2473,82 +2473,82 @@ msgstr "Učitaj impuls datoteku"
 msgid "RNNoise Models"
 msgstr "Kompresija"
 
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:32
 msgid "Bass Enhancer"
 msgstr "Pojačanje basa"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:33
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Glasnoća"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:35
 msgid "Convolver"
 msgstr "Konvolver"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:36
 msgid "Crossfeed"
 msgstr "Križno spajanje"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:37
 #, fuzzy
 msgid "Crystalizer"
 msgstr "Kristalizator"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:38
 msgid "Deesser"
 msgstr "De-esiranje"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:40
 msgid "Echo Canceller"
 msgstr "Poništenje jeke"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:41
 msgid "Equalizer"
 msgstr "Ekvalizator"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:42
 msgid "Exciter"
 msgstr "Uzbuđivač"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:43
 #, fuzzy
 msgid "Filter"
 msgstr "Filter"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "Graničnik"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "Maksimizer"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:48
 #, fuzzy
 msgid "Multiband Compressor"
 msgstr "Višerasponski kompresor"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:49
 #, fuzzy
 msgid "Multiband Gate"
 msgstr "Višerasponska vrata"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "Visina"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:51
 #, fuzzy
 msgid "Reverberation"
 msgstr "Reverberacija"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:52
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Ograničenje pojačanja"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:53
 #, fuzzy
 msgid "Stereo Tools"
 msgstr "Stereo alati"
