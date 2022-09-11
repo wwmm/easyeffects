@@ -52,7 +52,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
     // TODO find a bettery way of getting the preferences window
     // it shouldn't be possible to open the preferences window without the top level window open,
     // so the index 1 should correspond with the preferences window
-    ui::show_simple_message_dialog(GTK_WINDOW(g_list_model_get_item(gtk_window_get_toplevels(), 1)),
+    ui::show_simple_message_dialog(GTK_WIDGET(g_list_model_get_item(gtk_window_get_toplevels(), 1)),
                                    "Unable to get background access: " + reason, explanation);
 
     // if autostart is wrongly enabled (we got an error when talking to the portal), we must reset it
