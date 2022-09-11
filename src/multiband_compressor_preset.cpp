@@ -24,99 +24,99 @@ MultibandCompressorPreset::MultibandCompressorPreset(PresetType preset_type, con
                        tags::schema::multiband_compressor::input_path,
                        tags::schema::multiband_compressor::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::multiband_compressor).append("#").append(util::to_string(index));
+}
 
 void MultibandCompressorPreset::save(nlohmann::json& json) {
-  json[section]["multiband_compressor"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["multiband_compressor"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["multiband_compressor"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["multiband_compressor"]["dry"] = g_settings_get_double(settings, "dry");
+  json[section][instance_name]["dry"] = g_settings_get_double(settings, "dry");
 
-  json[section]["multiband_compressor"]["wet"] = g_settings_get_double(settings, "wet");
+  json[section][instance_name]["wet"] = g_settings_get_double(settings, "wet");
 
-  json[section]["multiband_compressor"]["compressor-mode"] = util::gsettings_get_string(settings, "compressor-mode");
+  json[section][instance_name]["compressor-mode"] = util::gsettings_get_string(settings, "compressor-mode");
 
-  json[section]["multiband_compressor"]["envelope-boost"] = util::gsettings_get_string(settings, "envelope-boost");
+  json[section][instance_name]["envelope-boost"] = util::gsettings_get_string(settings, "envelope-boost");
 
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = util::to_string(n);
     const auto bandn = "band" + nstr;
 
     if (n > 0U) {
-      json[section]["multiband_compressor"][bandn]["enable-band"] =
+      json[section][instance_name][bandn]["enable-band"] =
           g_settings_get_boolean(settings, ("enable-band" + nstr).c_str()) != 0;
 
-      json[section]["multiband_compressor"][bandn]["split-frequency"] =
+      json[section][instance_name][bandn]["split-frequency"] =
           g_settings_get_double(settings, ("split-frequency" + nstr).c_str());
     }
 
-    json[section]["multiband_compressor"][bandn]["compressor-enable"] =
+    json[section][instance_name][bandn]["compressor-enable"] =
         g_settings_get_boolean(settings, ("compressor-enable" + nstr).c_str()) != 0;
 
-    json[section]["multiband_compressor"][bandn]["solo"] =
-        g_settings_get_boolean(settings, ("solo" + nstr).c_str()) != 0;
+    json[section][instance_name][bandn]["solo"] = g_settings_get_boolean(settings, ("solo" + nstr).c_str()) != 0;
 
-    json[section]["multiband_compressor"][bandn]["mute"] =
-        g_settings_get_boolean(settings, ("mute" + nstr).c_str()) != 0;
+    json[section][instance_name][bandn]["mute"] = g_settings_get_boolean(settings, ("mute" + nstr).c_str()) != 0;
 
-    json[section]["multiband_compressor"][bandn]["attack-threshold"] =
+    json[section][instance_name][bandn]["attack-threshold"] =
         g_settings_get_double(settings, ("attack-threshold" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["attack-time"] =
+    json[section][instance_name][bandn]["attack-time"] =
         g_settings_get_double(settings, ("attack-time" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["release-threshold"] =
+    json[section][instance_name][bandn]["release-threshold"] =
         g_settings_get_double(settings, ("release-threshold" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["release-time"] =
+    json[section][instance_name][bandn]["release-time"] =
         g_settings_get_double(settings, ("release-time" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["ratio"] = g_settings_get_double(settings, ("ratio" + nstr).c_str());
+    json[section][instance_name][bandn]["ratio"] = g_settings_get_double(settings, ("ratio" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["knee"] = g_settings_get_double(settings, ("knee" + nstr).c_str());
+    json[section][instance_name][bandn]["knee"] = g_settings_get_double(settings, ("knee" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["makeup"] = g_settings_get_double(settings, ("makeup" + nstr).c_str());
+    json[section][instance_name][bandn]["makeup"] = g_settings_get_double(settings, ("makeup" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["compression-mode"] =
+    json[section][instance_name][bandn]["compression-mode"] =
         util::gsettings_get_string(settings, ("compression-mode" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["external-sidechain"] =
+    json[section][instance_name][bandn]["external-sidechain"] =
         g_settings_get_boolean(settings, ("external-sidechain" + nstr).c_str()) != 0;
 
-    json[section]["multiband_compressor"][bandn]["sidechain-mode"] =
+    json[section][instance_name][bandn]["sidechain-mode"] =
         util::gsettings_get_string(settings, ("sidechain-mode" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["sidechain-source"] =
+    json[section][instance_name][bandn]["sidechain-source"] =
         util::gsettings_get_string(settings, ("sidechain-source" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["sidechain-lookahead"] =
+    json[section][instance_name][bandn]["sidechain-lookahead"] =
         g_settings_get_double(settings, ("sidechain-lookahead" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["sidechain-reactivity"] =
+    json[section][instance_name][bandn]["sidechain-reactivity"] =
         g_settings_get_double(settings, ("sidechain-reactivity" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["sidechain-preamp"] =
+    json[section][instance_name][bandn]["sidechain-preamp"] =
         g_settings_get_double(settings, ("sidechain-preamp" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["sidechain-custom-lowcut-filter"] =
+    json[section][instance_name][bandn]["sidechain-custom-lowcut-filter"] =
         g_settings_get_boolean(settings, ("sidechain-custom-lowcut-filter" + nstr).c_str()) != 0;
 
-    json[section]["multiband_compressor"][bandn]["sidechain-custom-highcut-filter"] =
+    json[section][instance_name][bandn]["sidechain-custom-highcut-filter"] =
         g_settings_get_boolean(settings, ("sidechain-custom-highcut-filter" + nstr).c_str()) != 0;
 
-    json[section]["multiband_compressor"][bandn]["sidechain-lowcut-frequency"] =
+    json[section][instance_name][bandn]["sidechain-lowcut-frequency"] =
         g_settings_get_double(settings, ("sidechain-lowcut-frequency" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["sidechain-highcut-frequency"] =
+    json[section][instance_name][bandn]["sidechain-highcut-frequency"] =
         g_settings_get_double(settings, ("sidechain-highcut-frequency" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["boost-threshold"] =
+    json[section][instance_name][bandn]["boost-threshold"] =
         g_settings_get_double(settings, ("boost-threshold" + nstr).c_str());
 
-    json[section]["multiband_compressor"][bandn]["boost-amount"] =
+    json[section][instance_name][bandn]["boost-amount"] =
         g_settings_get_double(settings, ("boost-amount" + nstr).c_str());
   }
 }

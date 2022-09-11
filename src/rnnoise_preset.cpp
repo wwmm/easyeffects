@@ -24,16 +24,18 @@ RNNoisePreset::RNNoisePreset(PresetType preset_type, const int& index)
                        tags::schema::rnnoise::input_path,
                        tags::schema::rnnoise::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::rnnoise).append("#").append(util::to_string(index));
+}
 
 void RNNoisePreset::save(nlohmann::json& json) {
-  json[section]["rnnoise"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["rnnoise"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["rnnoise"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["rnnoise"]["model-path"] = util::gsettings_get_string(settings, "model-path");
+  json[section][instance_name]["model-path"] = util::gsettings_get_string(settings, "model-path");
 }
 
 void RNNoisePreset::load(const nlohmann::json& json) {

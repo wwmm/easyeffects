@@ -24,11 +24,11 @@ AutoGainPreset::AutoGainPreset(PresetType preset_type, const int& index)
                        tags::schema::autogain::input_path,
                        tags::schema::autogain::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::autogain).append("#").append(util::to_string(index));
+}
 
 void AutoGainPreset::save(nlohmann::json& json) {
-  auto instance_name = "autogain#" + util::to_string(index);
-
   json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
   json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");

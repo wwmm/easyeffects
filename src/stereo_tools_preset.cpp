@@ -24,46 +24,48 @@ StereoToolsPreset::StereoToolsPreset(PresetType preset_type, const int& index)
                        tags::schema::stereo_tools::input_path,
                        tags::schema::stereo_tools::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::stereo_tools).append("#").append(util::to_string(index));
+}
 
 void StereoToolsPreset::save(nlohmann::json& json) {
-  json[section]["stereo_tools"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["stereo_tools"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["stereo_tools"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["stereo_tools"]["balance-in"] = g_settings_get_double(settings, "balance-in");
+  json[section][instance_name]["balance-in"] = g_settings_get_double(settings, "balance-in");
 
-  json[section]["stereo_tools"]["balance-out"] = g_settings_get_double(settings, "balance-out");
+  json[section][instance_name]["balance-out"] = g_settings_get_double(settings, "balance-out");
 
-  json[section]["stereo_tools"]["softclip"] = g_settings_get_boolean(settings, "softclip") != 0;
+  json[section][instance_name]["softclip"] = g_settings_get_boolean(settings, "softclip") != 0;
 
-  json[section]["stereo_tools"]["mutel"] = g_settings_get_boolean(settings, "mutel") != 0;
+  json[section][instance_name]["mutel"] = g_settings_get_boolean(settings, "mutel") != 0;
 
-  json[section]["stereo_tools"]["muter"] = g_settings_get_boolean(settings, "muter") != 0;
+  json[section][instance_name]["muter"] = g_settings_get_boolean(settings, "muter") != 0;
 
-  json[section]["stereo_tools"]["phasel"] = g_settings_get_boolean(settings, "phasel") != 0;
+  json[section][instance_name]["phasel"] = g_settings_get_boolean(settings, "phasel") != 0;
 
-  json[section]["stereo_tools"]["phaser"] = g_settings_get_boolean(settings, "phaser") != 0;
+  json[section][instance_name]["phaser"] = g_settings_get_boolean(settings, "phaser") != 0;
 
-  json[section]["stereo_tools"]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section]["stereo_tools"]["side-level"] = g_settings_get_double(settings, "slev");
+  json[section][instance_name]["side-level"] = g_settings_get_double(settings, "slev");
 
-  json[section]["stereo_tools"]["side-balance"] = g_settings_get_double(settings, "sbal");
+  json[section][instance_name]["side-balance"] = g_settings_get_double(settings, "sbal");
 
-  json[section]["stereo_tools"]["middle-level"] = g_settings_get_double(settings, "mlev");
+  json[section][instance_name]["middle-level"] = g_settings_get_double(settings, "mlev");
 
-  json[section]["stereo_tools"]["middle-panorama"] = g_settings_get_double(settings, "mpan");
+  json[section][instance_name]["middle-panorama"] = g_settings_get_double(settings, "mpan");
 
-  json[section]["stereo_tools"]["stereo-base"] = g_settings_get_double(settings, "stereo-base");
+  json[section][instance_name]["stereo-base"] = g_settings_get_double(settings, "stereo-base");
 
-  json[section]["stereo_tools"]["delay"] = g_settings_get_double(settings, "delay");
+  json[section][instance_name]["delay"] = g_settings_get_double(settings, "delay");
 
-  json[section]["stereo_tools"]["sc-level"] = g_settings_get_double(settings, "sc-level");
+  json[section][instance_name]["sc-level"] = g_settings_get_double(settings, "sc-level");
 
-  json[section]["stereo_tools"]["stereo-phase"] = g_settings_get_double(settings, "stereo-phase");
+  json[section][instance_name]["stereo-phase"] = g_settings_get_double(settings, "stereo-phase");
 }
 
 void StereoToolsPreset::load(const nlohmann::json& json) {

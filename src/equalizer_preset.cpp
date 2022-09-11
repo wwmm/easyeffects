@@ -34,7 +34,9 @@ EqualizerPreset::EqualizerPreset(PresetType preset_type, const int& index)
       output_settings_left(
           g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::output_path_left)),
       output_settings_right(
-          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::output_path_right)) {}
+          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::output_path_right)) {
+  instance_name.assign(tags::plugin_name::equalizer).append("#").append(util::to_string(index));
+}
 
 EqualizerPreset::~EqualizerPreset() {
   g_object_unref(input_settings_left);
@@ -44,32 +46,32 @@ EqualizerPreset::~EqualizerPreset() {
 }
 
 void EqualizerPreset::save(nlohmann::json& json) {
-  json[section]["equalizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["equalizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["equalizer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["equalizer"]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section]["equalizer"]["split-channels"] = g_settings_get_boolean(settings, "split-channels") != 0;
+  json[section][instance_name]["split-channels"] = g_settings_get_boolean(settings, "split-channels") != 0;
 
-  json[section]["equalizer"]["balance"] = g_settings_get_double(settings, "balance");
+  json[section][instance_name]["balance"] = g_settings_get_double(settings, "balance");
 
-  json[section]["equalizer"]["pitch-left"] = g_settings_get_double(settings, "pitch-left");
+  json[section][instance_name]["pitch-left"] = g_settings_get_double(settings, "pitch-left");
 
-  json[section]["equalizer"]["pitch-right"] = g_settings_get_double(settings, "pitch-right");
+  json[section][instance_name]["pitch-right"] = g_settings_get_double(settings, "pitch-right");
 
   const auto nbands = g_settings_get_int(settings, "num-bands");
 
-  json[section]["equalizer"]["num-bands"] = nbands;
+  json[section][instance_name]["num-bands"] = nbands;
 
   if (section == "input") {
-    save_channel(json[section]["equalizer"]["left"], input_settings_left, nbands);
-    save_channel(json[section]["equalizer"]["right"], input_settings_right, nbands);
+    save_channel(json[section][instance_name]["left"], input_settings_left, nbands);
+    save_channel(json[section][instance_name]["right"], input_settings_right, nbands);
   } else if (section == "output") {
-    save_channel(json[section]["equalizer"]["left"], output_settings_left, nbands);
-    save_channel(json[section]["equalizer"]["right"], output_settings_right, nbands);
+    save_channel(json[section][instance_name]["left"], output_settings_left, nbands);
+    save_channel(json[section][instance_name]["right"], output_settings_right, nbands);
   }
 }
 

@@ -24,44 +24,46 @@ LimiterPreset::LimiterPreset(PresetType preset_type, const int& index)
                        tags::schema::limiter::input_path,
                        tags::schema::limiter::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::limiter).append("#").append(util::to_string(index));
+}
 
 void LimiterPreset::save(nlohmann::json& json) {
-  json[section]["limiter"]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section]["limiter"]["oversampling"] = util::gsettings_get_string(settings, "oversampling");
+  json[section][instance_name]["oversampling"] = util::gsettings_get_string(settings, "oversampling");
 
-  json[section]["limiter"]["dithering"] = util::gsettings_get_string(settings, "dithering");
+  json[section][instance_name]["dithering"] = util::gsettings_get_string(settings, "dithering");
 
-  json[section]["limiter"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["limiter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["limiter"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["limiter"]["lookahead"] = g_settings_get_double(settings, "lookahead");
+  json[section][instance_name]["lookahead"] = g_settings_get_double(settings, "lookahead");
 
-  json[section]["limiter"]["attack"] = g_settings_get_double(settings, "attack");
+  json[section][instance_name]["attack"] = g_settings_get_double(settings, "attack");
 
-  json[section]["limiter"]["release"] = g_settings_get_double(settings, "release");
+  json[section][instance_name]["release"] = g_settings_get_double(settings, "release");
 
-  json[section]["limiter"]["threshold"] = g_settings_get_double(settings, "threshold");
+  json[section][instance_name]["threshold"] = g_settings_get_double(settings, "threshold");
 
-  json[section]["limiter"]["sidechain-preamp"] = g_settings_get_double(settings, "sidechain-preamp");
+  json[section][instance_name]["sidechain-preamp"] = g_settings_get_double(settings, "sidechain-preamp");
 
-  json[section]["limiter"]["stereo-link"] = g_settings_get_double(settings, "stereo-link");
+  json[section][instance_name]["stereo-link"] = g_settings_get_double(settings, "stereo-link");
 
-  json[section]["limiter"]["alr-attack"] = g_settings_get_double(settings, "alr-attack");
+  json[section][instance_name]["alr-attack"] = g_settings_get_double(settings, "alr-attack");
 
-  json[section]["limiter"]["alr-release"] = g_settings_get_double(settings, "alr-release");
+  json[section][instance_name]["alr-release"] = g_settings_get_double(settings, "alr-release");
 
-  json[section]["limiter"]["alr-knee"] = g_settings_get_double(settings, "alr-knee");
+  json[section][instance_name]["alr-knee"] = g_settings_get_double(settings, "alr-knee");
 
-  json[section]["limiter"]["alr"] = g_settings_get_boolean(settings, "alr") != 0;
+  json[section][instance_name]["alr"] = g_settings_get_boolean(settings, "alr") != 0;
 
-  json[section]["limiter"]["gain-boost"] = g_settings_get_boolean(settings, "gain-boost") != 0;
+  json[section][instance_name]["gain-boost"] = g_settings_get_boolean(settings, "gain-boost") != 0;
 
-  json[section]["limiter"]["external-sidechain"] = g_settings_get_boolean(settings, "external-sidechain") != 0;
+  json[section][instance_name]["external-sidechain"] = g_settings_get_boolean(settings, "external-sidechain") != 0;
 }
 
 void LimiterPreset::load(const nlohmann::json& json) {

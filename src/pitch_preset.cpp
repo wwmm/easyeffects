@@ -24,30 +24,32 @@ PitchPreset::PitchPreset(PresetType preset_type, const int& index)
                        tags::schema::pitch::input_path,
                        tags::schema::pitch::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::pitch).append("#").append(util::to_string(index));
+}
 
 void PitchPreset::save(nlohmann::json& json) {
-  json[section]["pitch"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["pitch"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["pitch"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["pitch"]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section]["pitch"]["formant"] = util::gsettings_get_string(settings, "formant");
+  json[section][instance_name]["formant"] = util::gsettings_get_string(settings, "formant");
 
-  json[section]["pitch"]["transients"] = util::gsettings_get_string(settings, "transients");
+  json[section][instance_name]["transients"] = util::gsettings_get_string(settings, "transients");
 
-  json[section]["pitch"]["detector"] = util::gsettings_get_string(settings, "detector");
+  json[section][instance_name]["detector"] = util::gsettings_get_string(settings, "detector");
 
-  json[section]["pitch"]["phase"] = util::gsettings_get_string(settings, "phase");
+  json[section][instance_name]["phase"] = util::gsettings_get_string(settings, "phase");
 
-  json[section]["pitch"]["cents"] = g_settings_get_int(settings, "cents");
+  json[section][instance_name]["cents"] = g_settings_get_int(settings, "cents");
 
-  json[section]["pitch"]["semitones"] = g_settings_get_int(settings, "semitones");
+  json[section][instance_name]["semitones"] = g_settings_get_int(settings, "semitones");
 
-  json[section]["pitch"]["octaves"] = g_settings_get_int(settings, "octaves");
+  json[section][instance_name]["octaves"] = g_settings_get_int(settings, "octaves");
 }
 
 void PitchPreset::load(const nlohmann::json& json) {

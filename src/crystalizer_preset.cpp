@@ -24,23 +24,25 @@ CrystalizerPreset::CrystalizerPreset(PresetType preset_type, const int& index)
                        tags::schema::crystalizer::input_path,
                        tags::schema::crystalizer::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::crystalizer).append("#").append(util::to_string(index));
+}
 
 void CrystalizerPreset::save(nlohmann::json& json) {
-  json[section]["crystalizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["crystalizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["crystalizer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
   for (int n = 0; n < 13; n++) {
     const auto bandn = "band" + util::to_string(n);
 
-    json[section]["crystalizer"][bandn]["intensity"] = g_settings_get_double(settings, ("intensity-" + bandn).c_str());
+    json[section][instance_name][bandn]["intensity"] = g_settings_get_double(settings, ("intensity-" + bandn).c_str());
 
-    json[section]["crystalizer"][bandn]["mute"] = g_settings_get_boolean(settings, ("mute-" + bandn).c_str()) != 0;
+    json[section][instance_name][bandn]["mute"] = g_settings_get_boolean(settings, ("mute-" + bandn).c_str()) != 0;
 
-    json[section]["crystalizer"][bandn]["bypass"] = g_settings_get_boolean(settings, ("bypass-" + bandn).c_str()) != 0;
+    json[section][instance_name][bandn]["bypass"] = g_settings_get_boolean(settings, ("bypass-" + bandn).c_str()) != 0;
   }
 }
 

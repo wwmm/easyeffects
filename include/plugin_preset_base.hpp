@@ -24,6 +24,7 @@
 #include <string>
 #include "preset_type.hpp"
 #include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
 #include "tags_schema.hpp"
 #include "util.hpp"
 
@@ -61,7 +62,7 @@ class PluginPresetBase {
 
   GSettings* settings = nullptr;
 
-  std::string section;
+  std::string section, instance_name;
 
   PresetType preset_type;
 

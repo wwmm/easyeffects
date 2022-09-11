@@ -24,18 +24,20 @@ CrossfeedPreset::CrossfeedPreset(PresetType preset_type, const int& index)
                        tags::schema::crossfeed::input_path,
                        tags::schema::crossfeed::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::crossfeed).append("#").append(util::to_string(index));
+}
 
 void CrossfeedPreset::save(nlohmann::json& json) {
-  json[section]["crossfeed"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["crossfeed"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["crossfeed"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["crossfeed"]["fcut"] = g_settings_get_int(settings, "fcut");
+  json[section][instance_name]["fcut"] = g_settings_get_int(settings, "fcut");
 
-  json[section]["crossfeed"]["feed"] = g_settings_get_double(settings, "feed");
+  json[section][instance_name]["feed"] = g_settings_get_double(settings, "feed");
 }
 
 void CrossfeedPreset::load(const nlohmann::json& json) {

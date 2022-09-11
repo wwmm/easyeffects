@@ -24,38 +24,40 @@ DeesserPreset::DeesserPreset(PresetType preset_type, const int& index)
                        tags::schema::deesser::input_path,
                        tags::schema::deesser::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::deesser).append("#").append(util::to_string(index));
+}
 
 void DeesserPreset::save(nlohmann::json& json) {
-  json[section]["deesser"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["deesser"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["deesser"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["deesser"]["detection"] = util::gsettings_get_string(settings, "detection");
+  json[section][instance_name]["detection"] = util::gsettings_get_string(settings, "detection");
 
-  json[section]["deesser"]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section]["deesser"]["threshold"] = g_settings_get_double(settings, "threshold");
+  json[section][instance_name]["threshold"] = g_settings_get_double(settings, "threshold");
 
-  json[section]["deesser"]["ratio"] = g_settings_get_double(settings, "ratio");
+  json[section][instance_name]["ratio"] = g_settings_get_double(settings, "ratio");
 
-  json[section]["deesser"]["laxity"] = g_settings_get_int(settings, "laxity");
+  json[section][instance_name]["laxity"] = g_settings_get_int(settings, "laxity");
 
-  json[section]["deesser"]["makeup"] = g_settings_get_double(settings, "makeup");
+  json[section][instance_name]["makeup"] = g_settings_get_double(settings, "makeup");
 
-  json[section]["deesser"]["f1-freq"] = g_settings_get_double(settings, "f1-freq");
+  json[section][instance_name]["f1-freq"] = g_settings_get_double(settings, "f1-freq");
 
-  json[section]["deesser"]["f2-freq"] = g_settings_get_double(settings, "f2-freq");
+  json[section][instance_name]["f2-freq"] = g_settings_get_double(settings, "f2-freq");
 
-  json[section]["deesser"]["f1-level"] = g_settings_get_double(settings, "f1-level");
+  json[section][instance_name]["f1-level"] = g_settings_get_double(settings, "f1-level");
 
-  json[section]["deesser"]["f2-level"] = g_settings_get_double(settings, "f2-level");
+  json[section][instance_name]["f2-level"] = g_settings_get_double(settings, "f2-level");
 
-  json[section]["deesser"]["f2-q"] = g_settings_get_double(settings, "f2-q");
+  json[section][instance_name]["f2-q"] = g_settings_get_double(settings, "f2-q");
 
-  json[section]["deesser"]["sc-listen"] = g_settings_get_boolean(settings, "sc-listen") != 0;
+  json[section][instance_name]["sc-listen"] = g_settings_get_boolean(settings, "sc-listen") != 0;
 }
 
 void DeesserPreset::load(const nlohmann::json& json) {

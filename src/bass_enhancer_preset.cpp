@@ -24,26 +24,28 @@ BassEnhancerPreset::BassEnhancerPreset(PresetType preset_type, const int& index)
                        tags::schema::bass_enhancer::input_path,
                        tags::schema::bass_enhancer::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::bass_enhancer).append("#").append(util::to_string(index));
+}
 
 void BassEnhancerPreset::save(nlohmann::json& json) {
-  json[section]["bass_enhancer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["bass_enhancer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["bass_enhancer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["bass_enhancer"]["amount"] = g_settings_get_double(settings, "amount");
+  json[section][instance_name]["amount"] = g_settings_get_double(settings, "amount");
 
-  json[section]["bass_enhancer"]["harmonics"] = g_settings_get_double(settings, "harmonics");
+  json[section][instance_name]["harmonics"] = g_settings_get_double(settings, "harmonics");
 
-  json[section]["bass_enhancer"]["scope"] = g_settings_get_double(settings, "scope");
+  json[section][instance_name]["scope"] = g_settings_get_double(settings, "scope");
 
-  json[section]["bass_enhancer"]["floor"] = g_settings_get_double(settings, "floor");
+  json[section][instance_name]["floor"] = g_settings_get_double(settings, "floor");
 
-  json[section]["bass_enhancer"]["blend"] = g_settings_get_double(settings, "blend");
+  json[section][instance_name]["blend"] = g_settings_get_double(settings, "blend");
 
-  json[section]["bass_enhancer"]["floor-active"] = g_settings_get_boolean(settings, "floor-active") != 0;
+  json[section][instance_name]["floor-active"] = g_settings_get_boolean(settings, "floor-active") != 0;
 }
 
 void BassEnhancerPreset::load(const nlohmann::json& json) {

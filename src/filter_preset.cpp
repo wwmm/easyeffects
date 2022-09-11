@@ -24,22 +24,24 @@ FilterPreset::FilterPreset(PresetType preset_type, const int& index)
                        tags::schema::filter::input_path,
                        tags::schema::filter::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::filter).append("#").append(util::to_string(index));
+}
 
 void FilterPreset::save(nlohmann::json& json) {
-  json[section]["filter"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["filter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["filter"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["filter"]["frequency"] = g_settings_get_double(settings, "frequency");
+  json[section][instance_name]["frequency"] = g_settings_get_double(settings, "frequency");
 
-  json[section]["filter"]["resonance"] = g_settings_get_double(settings, "resonance");
+  json[section][instance_name]["resonance"] = g_settings_get_double(settings, "resonance");
 
-  json[section]["filter"]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section]["filter"]["inertia"] = g_settings_get_double(settings, "inertia");
+  json[section][instance_name]["inertia"] = g_settings_get_double(settings, "inertia");
 }
 
 void FilterPreset::load(const nlohmann::json& json) {

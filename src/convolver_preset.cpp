@@ -24,20 +24,22 @@ ConvolverPreset::ConvolverPreset(PresetType preset_type, const int& index)
                        tags::schema::convolver::input_path,
                        tags::schema::convolver::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::convolver).append("#").append(util::to_string(index));
+}
 
 void ConvolverPreset::save(nlohmann::json& json) {
-  json[section]["convolver"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["convolver"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["convolver"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["convolver"]["kernel-path"] = util::gsettings_get_string(settings, "kernel-path");
+  json[section][instance_name]["kernel-path"] = util::gsettings_get_string(settings, "kernel-path");
 
-  json[section]["convolver"]["ir-width"] = g_settings_get_int(settings, "ir-width");
+  json[section][instance_name]["ir-width"] = g_settings_get_int(settings, "ir-width");
 
-  json[section]["convolver"]["autogain"] = g_settings_get_boolean(settings, "autogain") != 0;
+  json[section][instance_name]["autogain"] = g_settings_get_boolean(settings, "autogain") != 0;
 }
 
 void ConvolverPreset::load(const nlohmann::json& json) {

@@ -24,20 +24,22 @@ MaximizerPreset::MaximizerPreset(PresetType preset_type, const int& index)
                        tags::schema::maximizer::input_path,
                        tags::schema::maximizer::output_path,
                        preset_type,
-                       index) {}
+                       index) {
+  instance_name.assign(tags::plugin_name::maximizer).append("#").append(util::to_string(index));
+}
 
 void MaximizerPreset::save(nlohmann::json& json) {
-  json[section]["maximizer"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["maximizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["maximizer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["maximizer"]["release"] = g_settings_get_double(settings, "release");
+  json[section][instance_name]["release"] = g_settings_get_double(settings, "release");
 
-  json[section]["maximizer"]["ceiling"] = g_settings_get_double(settings, "ceiling");
+  json[section][instance_name]["ceiling"] = g_settings_get_double(settings, "ceiling");
 
-  json[section]["maximizer"]["threshold"] = g_settings_get_double(settings, "threshold");
+  json[section][instance_name]["threshold"] = g_settings_get_double(settings, "threshold");
 }
 
 void MaximizerPreset::load(const nlohmann::json& json) {
