@@ -29,12 +29,12 @@ PluginPresetBase::PluginPresetBase(const char* schema_id,
     case PresetType::input:
       section = "input";
 
-      settings = g_settings_new_with_path(schema_id, schema_path_input);
+      settings = g_settings_new_with_path(schema_id, (schema_path_input + util::to_string(index) + "/").c_str());
       break;
     case PresetType::output:
       section = "output";
 
-      settings = g_settings_new_with_path(schema_id, schema_path_output);
+      settings = g_settings_new_with_path(schema_id, (schema_path_output + util::to_string(index) + "/").c_str());
       break;
   }
 }

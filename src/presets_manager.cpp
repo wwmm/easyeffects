@@ -852,96 +852,98 @@ void PresetsManager::notify_error(const PresetError& preset_error, const std::st
 
 auto PresetsManager::create_wrapper(const PresetType& preset_type, std::string_view filter_name)
     -> std::optional<std::unique_ptr<PluginPresetBase>> {
+  auto instance_id = tags::plugin_name::get_id(std::string(filter_name));
+
   if (filter_name.starts_with(tags::plugin_name::autogain)) {
-    return std::make_unique<AutoGainPreset>(preset_type);
+    return std::make_unique<AutoGainPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::bass_enhancer)) {
-    return std::make_unique<BassEnhancerPreset>(preset_type);
+    return std::make_unique<BassEnhancerPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::bass_loudness)) {
-    return std::make_unique<BassLoudnessPreset>(preset_type);
+    return std::make_unique<BassLoudnessPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::compressor)) {
-    return std::make_unique<CompressorPreset>(preset_type);
+    return std::make_unique<CompressorPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::convolver)) {
-    return std::make_unique<ConvolverPreset>(preset_type);
+    return std::make_unique<ConvolverPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::crossfeed)) {
-    return std::make_unique<CrossfeedPreset>(preset_type);
+    return std::make_unique<CrossfeedPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::crystalizer)) {
-    return std::make_unique<CrystalizerPreset>(preset_type);
+    return std::make_unique<CrystalizerPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::deesser)) {
-    return std::make_unique<DeesserPreset>(preset_type);
+    return std::make_unique<DeesserPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::delay)) {
-    return std::make_unique<DelayPreset>(preset_type);
+    return std::make_unique<DelayPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::echo_canceller)) {
-    return std::make_unique<EchoCancellerPreset>(preset_type);
+    return std::make_unique<EchoCancellerPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::equalizer)) {
-    return std::make_unique<EqualizerPreset>(preset_type);
+    return std::make_unique<EqualizerPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::exciter)) {
-    return std::make_unique<ExciterPreset>(preset_type);
+    return std::make_unique<ExciterPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::filter)) {
-    return std::make_unique<FilterPreset>(preset_type);
+    return std::make_unique<FilterPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::gate)) {
-    return std::make_unique<GatePreset>(preset_type);
+    return std::make_unique<GatePreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::limiter)) {
-    return std::make_unique<LimiterPreset>(preset_type);
+    return std::make_unique<LimiterPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::loudness)) {
-    return std::make_unique<LoudnessPreset>(preset_type);
+    return std::make_unique<LoudnessPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::maximizer)) {
-    return std::make_unique<MaximizerPreset>(preset_type);
+    return std::make_unique<MaximizerPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::multiband_compressor)) {
-    return std::make_unique<MultibandCompressorPreset>(preset_type);
+    return std::make_unique<MultibandCompressorPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::multiband_gate)) {
-    return std::make_unique<MultibandGatePreset>(preset_type);
+    return std::make_unique<MultibandGatePreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::pitch)) {
-    return std::make_unique<PitchPreset>(preset_type);
+    return std::make_unique<PitchPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::reverb)) {
-    return std::make_unique<ReverbPreset>(preset_type);
+    return std::make_unique<ReverbPreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::rnnoise)) {
-    return std::make_unique<RNNoisePreset>(preset_type);
+    return std::make_unique<RNNoisePreset>(preset_type, instance_id);
   }
 
   if (filter_name.starts_with(tags::plugin_name::stereo_tools)) {
-    return std::make_unique<StereoToolsPreset>(preset_type);
+    return std::make_unique<StereoToolsPreset>(preset_type, instance_id);
   }
 
   util::warning("The filter name " + std::string(filter_name) + " base name could not be recognized");
