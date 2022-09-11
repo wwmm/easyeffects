@@ -106,25 +106,26 @@ void add_plugins_to_stack(PluginsBox* self) {
   auto plugins_list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
 
   for (const auto& name : plugins_list) {
+    auto path = self->data->schema_path + tags::plugin_name::get_base_name(name) + "/" +
+                util::to_string(tags::plugin_name::get_id(name)) + "/";
+
+    path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
+
     if (name.starts_with(tags::plugin_name::autogain)) {
       auto plugin_ptr = effects_base->get_plugin_instance<AutoGain>(name);
 
       auto* box = ui::autogain_box::create();
 
-      ui::autogain_box::setup(box, plugin_ptr, self->data->schema_path + name + "/");
+      ui::autogain_box::setup(box, plugin_ptr, path);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
     } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::bass_enhancer)) {
       auto plugin_ptr = effects_base->get_plugin_instance<BassEnhancer>(name);
 
       if (plugin_ptr->package_installed) {
-        auto path = name + "/";
-
-        path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
-
         auto* plugin_box = ui::bass_enhancer_box::create();
 
-        ui::bass_enhancer_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path);
+        ui::bass_enhancer_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -136,13 +137,9 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<BassLoudness>(name);
 
       if (plugin_ptr->package_installed) {
-        auto path = name + "/";
-
-        path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
-
         auto* plugin_box = ui::bass_loudness_box::create();
 
-        ui::bass_loudness_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path);
+        ui::bass_loudness_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -156,8 +153,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::compressor_box::create();
 
-        ui::compressor_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/",
-                                  self->data->application->pm);
+        ui::compressor_box::setup(plugin_box, plugin_ptr, path, self->data->application->pm);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -170,7 +166,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
       auto* box = ui::convolver_box::create();
 
-      ui::convolver_box::setup(box, plugin_ptr, self->data->schema_path + name + "/", self->data->application);
+      ui::convolver_box::setup(box, plugin_ptr, path, self->data->application);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
     } else if (name.starts_with(tags::plugin_name::crossfeed)) {
@@ -178,7 +174,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
       auto* box = ui::crossfeed_box::create();
 
-      ui::crossfeed_box::setup(box, plugin_ptr, self->data->schema_path + name + "/");
+      ui::crossfeed_box::setup(box, plugin_ptr, path);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
     } else if (name.starts_with(tags::plugin_name::crystalizer)) {
@@ -186,7 +182,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
       auto* box = ui::crystalizer_box::create();
 
-      ui::crystalizer_box::setup(box, plugin_ptr, self->data->schema_path + name + "/");
+      ui::crystalizer_box::setup(box, plugin_ptr, path);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
     } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::deesser)) {
@@ -195,7 +191,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::deesser_box::create();
 
-        ui::deesser_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
+        ui::deesser_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -209,7 +205,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::delay_box::create();
 
-        ui::delay_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
+        ui::delay_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -222,11 +218,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
       auto* box = ui::echo_canceller_box::create();
 
-      auto path = name + "/";
-
-      path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
-
-      ui::echo_canceller_box::setup(box, plugin_ptr, self->data->schema_path + path);
+      ui::echo_canceller_box::setup(box, plugin_ptr, path);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
     } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::exciter)) {
@@ -235,7 +227,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::exciter_box::create();
 
-        ui::exciter_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
+        ui::exciter_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -249,7 +241,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::equalizer_box::create();
 
-        ui::equalizer_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/", self->data->application);
+        ui::equalizer_box::setup(plugin_box, plugin_ptr, path, self->data->application);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -263,7 +255,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::filter_box::create();
 
-        ui::filter_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
+        ui::filter_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -277,7 +269,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::gate_box::create();
 
-        ui::gate_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/", self->data->application->pm);
+        ui::gate_box::setup(plugin_box, plugin_ptr, path, self->data->application->pm);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -291,8 +283,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::limiter_box::create();
 
-        ui::limiter_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/",
-                               self->data->application->pm);
+        ui::limiter_box::setup(plugin_box, plugin_ptr, path, self->data->application->pm);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -306,7 +297,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::loudness_box::create();
 
-        ui::loudness_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
+        ui::loudness_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -320,7 +311,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::maximizer_box::create();
 
-        ui::maximizer_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
+        ui::maximizer_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -332,14 +323,9 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<MultibandCompressor>(name);
 
       if (plugin_ptr->package_installed) {
-        auto path = name + "/";
-
-        path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
-
         auto* plugin_box = ui::multiband_compressor_box::create();
 
-        ui::multiband_compressor_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path,
-                                            self->data->application->pm);
+        ui::multiband_compressor_box::setup(plugin_box, plugin_ptr, path, self->data->application->pm);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -351,14 +337,9 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<MultibandGate>(name);
 
       if (plugin_ptr->package_installed) {
-        auto path = name + "/";
-
-        path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
-
         auto* plugin_box = ui::multiband_gate_box::create();
 
-        ui::multiband_gate_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path,
-                                      self->data->application->pm);
+        ui::multiband_gate_box::setup(plugin_box, plugin_ptr, path, self->data->application->pm);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -371,7 +352,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
       auto* box = ui::pitch_box::create();
 
-      ui::pitch_box::setup(box, plugin_ptr, self->data->schema_path + name + "/");
+      ui::pitch_box::setup(box, plugin_ptr, path);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
     } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::reverb)) {
@@ -380,7 +361,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::reverb_box::create();
 
-        ui::reverb_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/");
+        ui::reverb_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -394,7 +375,7 @@ void add_plugins_to_stack(PluginsBox* self) {
       if (plugin_ptr->package_installed) {
         auto* plugin_box = ui::rnnoise_box::create();
 
-        ui::rnnoise_box::setup(plugin_box, plugin_ptr, self->data->schema_path + name + "/", self->data->application);
+        ui::rnnoise_box::setup(plugin_box, plugin_ptr, path, self->data->application);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -406,13 +387,9 @@ void add_plugins_to_stack(PluginsBox* self) {
       auto plugin_ptr = effects_base->get_plugin_instance<StereoTools>(name);
 
       if (plugin_ptr->package_installed) {
-        auto path = name + "/";
-
-        path.erase(std::remove(path.begin(), path.end(), '_'), path.end());
-
         auto* plugin_box = ui::stereo_tools_box::create();
 
-        ui::stereo_tools_box::setup(plugin_box, plugin_ptr, self->data->schema_path + path);
+        ui::stereo_tools_box::setup(plugin_box, plugin_ptr, path);
 
         box = GTK_WIDGET(plugin_box);
       } else {
@@ -613,7 +590,9 @@ void setup_listview(PluginsBox* self) {
 
         gname.erase(std::remove(gname.begin(), gname.end(), '_'), gname.end());
 
-        auto schema_path = self->data->schema_path + gname + "/";
+        auto schema_path =
+            self->data->schema_path + gname + "/" + util::to_string(tags::plugin_name::get_id(page_name)) + "/";
+
         auto schema_id = tags::app::id + "."s + gname;
 
         auto* settings = g_settings_new_with_path(schema_id.c_str(), schema_path.c_str());

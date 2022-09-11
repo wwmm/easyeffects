@@ -103,23 +103,17 @@ void setup_listview(PluginsMenu* self) {
 
                 auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
 
-                // std::vector<uint> index_list;
+                std::vector<uint> index_list;
 
-                // for (const auto& name : list) {
-                //   if (tags::plugin_name::get_base_name(name) == base_name) {
-                //     index_list.emplace_back(tags::plugin_name::get_id(name));
-                //   }
-                // }
-
-                // auto new_id = (index_list.empty()) ? 0 : std::ranges::max(index_list) + 1;
-
-                // auto new_name = base_name + "#" + util::to_string(new_id);
-
-                // util::warning(new_name);
-
-                if (std::ranges::find(list, base_name) != list.end()) {
-                  return;
+                for (const auto& name : list) {
+                  if (tags::plugin_name::get_base_name(name) == base_name) {
+                    index_list.emplace_back(tags::plugin_name::get_id(name));
+                  }
                 }
+
+                auto new_id = (index_list.empty()) ? 0 : std::ranges::max(index_list) + 1;
+
+                auto new_name = base_name + "#" + util::to_string(new_id);
 
                 constexpr auto limiter_plugins =
                     std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer});
@@ -130,9 +124,9 @@ void setup_listview(PluginsMenu* self) {
                   // type limiter at the last position of the filter chain, we follow
                   // this behaviour inserting the new plugin at the second last position
 
-                  list.insert(list.cend() - 1U, base_name);
+                  list.insert(list.cend() - 1U, new_name);
                 } else {
-                  list.push_back(base_name);
+                  list.push_back(new_name);
                 }
 
                 g_settings_set_strv(self->settings, "plugins", util::make_gchar_pointer_vector(list).data());
