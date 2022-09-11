@@ -13,6 +13,8 @@ GtkSwitch *enable_autostart = nullptr, *shutdown_on_window_close = nullptr;
 
 namespace libportal {
 
+using namespace std::string_literals;
+
 XdpPortal* portal = nullptr;
 
 void on_request_background_called(GObject* source, GAsyncResult* result, gpointer widgets_ptr) {
@@ -32,7 +34,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
       // 19 seemingly corresponds to the "cancelled" error which actually means the permission is in a revoked state.
       if (error->code == 19) {
         reason = "Background access has been denied";
-        explanation = "Please allow EasyEffects to ask again with flatpak permission-reset com.github.wwmm.easyeffects";
+        explanation = "Please allow EasyEffects to ask again with flatpak permission-reset "s + tags::app::id;
       } else {
         reason = "Unknown error";
         explanation = "Please verify your system has a XDG Background Portal implementation running and working.";
@@ -50,15 +52,8 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
     // TODO find a bettery way of getting the preferences window
     // it shouldn't be possible to open the preferences window without the top level window open,
     // so the index 1 should correspond with the preferences window
-    auto* window_levels = gtk_window_get_toplevels();
-    GtkWidget* dialog = gtk_message_dialog_new(GTK_WINDOW(g_list_model_get_item(window_levels, 1)), GTK_DIALOG_MODAL,
-                                               GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
-                                               "Unable to get background access: %s", reason.c_str());
-
-    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s", explanation.c_str());
-
-    gtk_widget_show(dialog);
-    g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), nullptr);
+    ui::show_simple_message_dialog(GTK_WIDGET(g_list_model_get_item(gtk_window_get_toplevels(), 1)),
+                                   "Unable to get background access: " + reason, explanation);
 
     // if autostart is wrongly enabled (we got an error when talking to the portal), we must reset it
     if (static_cast<bool>(gtk_switch_get_active(enable_autostart)) ||

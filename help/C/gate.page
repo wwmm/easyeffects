@@ -76,7 +76,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Reduction</em>
                 </title>
-                <p>The amount of gain reduction to apply to the input signal when the Gate is fully closed.</p>
+                <p>If the value is negative, it acts as the amount of gain reduction to apply to the input signal when the Gate is fully closed. If the value is positive, the Gate operates in "Reverse Mode": It reduces the amplitude when the signal is above the threshold.</p>
             </item>
             <item>
                 <title>
