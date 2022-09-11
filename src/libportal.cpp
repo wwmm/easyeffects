@@ -13,6 +13,8 @@ GtkSwitch *enable_autostart = nullptr, *shutdown_on_window_close = nullptr;
 
 namespace libportal {
 
+using namespace std::string_literals;
+
 XdpPortal* portal = nullptr;
 
 void on_request_background_called(GObject* source, GAsyncResult* result, gpointer widgets_ptr) {
@@ -32,7 +34,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
       // 19 seemingly corresponds to the "cancelled" error which actually means the permission is in a revoked state.
       if (error->code == 19) {
         reason = "Background access has been denied";
-        explanation = "Please allow EasyEffects to ask again with flatpak permission-reset " + tags::app::id;
+        explanation = "Please allow EasyEffects to ask again with flatpak permission-reset "s + tags::app::id;
       } else {
         reason = "Unknown error";
         explanation = "Please verify your system has a XDG Background Portal implementation running and working.";
@@ -51,7 +53,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
     // it shouldn't be possible to open the preferences window without the top level window open,
     // so the index 1 should correspond with the preferences window
     ui::show_simple_message_dialog(GTK_WINDOW(g_list_model_get_item(gtk_window_get_toplevels(), 1)),
-                                   "Unable to get background access: "s + reason, explanation);
+                                   "Unable to get background access: " + reason, explanation);
 
     // if autostart is wrongly enabled (we got an error when talking to the portal), we must reset it
     if (static_cast<bool>(gtk_switch_get_active(enable_autostart)) ||
