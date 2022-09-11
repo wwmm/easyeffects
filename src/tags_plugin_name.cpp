@@ -21,7 +21,7 @@
 
 namespace {
 
-const auto id_regex = std::regex("#([0-9]*)");
+const auto id_regex = std::regex("#(\\d++)$");
 
 }
 

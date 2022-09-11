@@ -27,17 +27,19 @@ AutoGainPreset::AutoGainPreset(PresetType preset_type, const int& index)
                        index) {}
 
 void AutoGainPreset::save(nlohmann::json& json) {
-  json[section]["autogain"]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  auto instance_name = "autogain#" + util::to_string(index);
 
-  json[section]["autogain"]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
 
-  json[section]["autogain"]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["autogain"]["target"] = g_settings_get_double(settings, "target");
+  json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["autogain"]["maximum-history"] = g_settings_get_int(settings, "maximum-history");
+  json[section][instance_name]["target"] = g_settings_get_double(settings, "target");
 
-  json[section]["autogain"]["reference"] = util::gsettings_get_string(settings, "reference");
+  json[section][instance_name]["maximum-history"] = g_settings_get_int(settings, "maximum-history");
+
+  json[section][instance_name]["reference"] = util::gsettings_get_string(settings, "reference");
 }
 
 void AutoGainPreset::load(const nlohmann::json& json) {
