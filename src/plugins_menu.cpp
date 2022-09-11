@@ -119,7 +119,7 @@ void setup_listview(PluginsMenu* self) {
                     std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer});
 
                 if (!list.empty() && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
-                                                 [&](const auto& str) { return str == list.at(list.size() - 1U); })) {
+                                                 [&](const auto& str) { return list.back().starts_with(str); })) {
                   // If the user is careful protecting his/her device with a plugin of
                   // type limiter at the last position of the filter chain, we follow
                   // this behaviour inserting the new plugin at the second last position
