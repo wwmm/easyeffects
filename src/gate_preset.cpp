@@ -79,51 +79,52 @@ void GatePreset::save(nlohmann::json& json) {
 }
 
 void GatePreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("gate"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("gate"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("gate"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("gate"), settings, "dry", "dry");
+  update_key<double>(json.at(section).at(instance_name), settings, "dry", "dry");
 
-  update_key<double>(json.at(section).at("gate"), settings, "wet", "wet");
+  update_key<double>(json.at(section).at(instance_name), settings, "wet", "wet");
 
-  update_key<double>(json.at(section).at("gate"), settings, "attack", "attack");
+  update_key<double>(json.at(section).at(instance_name), settings, "attack", "attack");
 
-  update_key<double>(json.at(section).at("gate"), settings, "release", "release");
+  update_key<double>(json.at(section).at(instance_name), settings, "release", "release");
 
-  update_key<double>(json.at(section).at("gate"), settings, "curve-threshold", "curve-threshold");
+  update_key<double>(json.at(section).at(instance_name), settings, "curve-threshold", "curve-threshold");
 
-  update_key<double>(json.at(section).at("gate"), settings, "curve-zone", "curve-zone");
+  update_key<double>(json.at(section).at(instance_name), settings, "curve-zone", "curve-zone");
 
-  update_key<bool>(json.at(section).at("gate"), settings, "hysteresis", "hysteresis");
+  update_key<bool>(json.at(section).at(instance_name), settings, "hysteresis", "hysteresis");
 
-  update_key<double>(json.at(section).at("gate"), settings, "hysteresis-threshold", "hysteresis-threshold");
+  update_key<double>(json.at(section).at(instance_name), settings, "hysteresis-threshold", "hysteresis-threshold");
 
-  update_key<double>(json.at(section).at("gate"), settings, "hysteresis-zone", "hysteresis-zone");
+  update_key<double>(json.at(section).at(instance_name), settings, "hysteresis-zone", "hysteresis-zone");
 
-  update_key<double>(json.at(section).at("gate"), settings, "reduction", "reduction");
+  update_key<double>(json.at(section).at(instance_name), settings, "reduction", "reduction");
 
-  update_key<double>(json.at(section).at("gate"), settings, "makeup", "makeup");
+  update_key<double>(json.at(section).at(instance_name), settings, "makeup", "makeup");
 
-  update_key<gchar*>(json.at(section).at("gate").at("sidechain"), settings, "sidechain-input", "input");
+  update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-input", "input");
 
-  update_key<gchar*>(json.at(section).at("gate").at("sidechain"), settings, "sidechain-mode", "mode");
+  update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-mode", "mode");
 
-  update_key<gchar*>(json.at(section).at("gate").at("sidechain"), settings, "sidechain-source", "source");
+  update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-source", "source");
 
-  update_key<double>(json.at(section).at("gate").at("sidechain"), settings, "sidechain-preamp", "preamp");
+  update_key<double>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-preamp", "preamp");
 
-  update_key<double>(json.at(section).at("gate").at("sidechain"), settings, "sidechain-reactivity", "reactivity");
+  update_key<double>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-reactivity",
+                     "reactivity");
 
-  update_key<double>(json.at(section).at("gate").at("sidechain"), settings, "sidechain-lookahead", "lookahead");
+  update_key<double>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-lookahead", "lookahead");
 
-  update_key<gchar*>(json.at(section).at("gate"), settings, "hpf-mode", "hpf-mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "hpf-mode", "hpf-mode");
 
-  update_key<double>(json.at(section).at("gate"), settings, "hpf-frequency", "hpf-frequency");
+  update_key<double>(json.at(section).at(instance_name), settings, "hpf-frequency", "hpf-frequency");
 
-  update_key<gchar*>(json.at(section).at("gate"), settings, "lpf-mode", "lpf-mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "lpf-mode", "lpf-mode");
 
-  update_key<double>(json.at(section).at("gate"), settings, "lpf-frequency", "lpf-frequency");
+  update_key<double>(json.at(section).at(instance_name), settings, "lpf-frequency", "lpf-frequency");
 }

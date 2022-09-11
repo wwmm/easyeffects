@@ -47,19 +47,19 @@ void LoudnessPreset::save(nlohmann::json& json) {
 }
 
 void LoudnessPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("loudness"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("loudness"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("loudness"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at("loudness"), settings, "fft", "fft");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "fft", "fft");
 
-  update_key<gchar*>(json.at(section).at("loudness"), settings, "std", "std");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "std", "std");
 
-  update_key<double>(json.at(section).at("loudness"), settings, "volume", "volume");
+  update_key<double>(json.at(section).at(instance_name), settings, "volume", "volume");
 
-  update_key<bool>(json.at(section).at("loudness"), settings, "clipping", "clipping");
+  update_key<bool>(json.at(section).at(instance_name), settings, "clipping", "clipping");
 
-  update_key<double>(json.at(section).at("loudness"), settings, "clipping-range", "clipping-range");
+  update_key<double>(json.at(section).at(instance_name), settings, "clipping-range", "clipping-range");
 }

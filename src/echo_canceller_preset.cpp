@@ -41,13 +41,13 @@ void EchoCancellerPreset::save(nlohmann::json& json) {
 }
 
 void EchoCancellerPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("echo_canceller"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("echo_canceller"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("echo_canceller"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<int>(json.at(section).at("echo_canceller"), settings, "frame-size", "frame-size");
+  update_key<int>(json.at(section).at(instance_name), settings, "frame-size", "frame-size");
 
-  update_key<int>(json.at(section).at("echo_canceller"), settings, "filter-length", "filter-length");
+  update_key<int>(json.at(section).at(instance_name), settings, "filter-length", "filter-length");
 }

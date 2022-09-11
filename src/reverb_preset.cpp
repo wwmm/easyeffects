@@ -55,27 +55,27 @@ void ReverbPreset::save(nlohmann::json& json) {
 }
 
 void ReverbPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("reverb"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at("reverb"), settings, "room-size", "room-size");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "room-size", "room-size");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "decay-time", "decay-time");
+  update_key<double>(json.at(section).at(instance_name), settings, "decay-time", "decay-time");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "hf-damp", "hf-damp");
+  update_key<double>(json.at(section).at(instance_name), settings, "hf-damp", "hf-damp");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "diffusion", "diffusion");
+  update_key<double>(json.at(section).at(instance_name), settings, "diffusion", "diffusion");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "amount", "amount");
+  update_key<double>(json.at(section).at(instance_name), settings, "amount", "amount");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "dry", "dry");
+  update_key<double>(json.at(section).at(instance_name), settings, "dry", "dry");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "predelay", "predelay");
+  update_key<double>(json.at(section).at(instance_name), settings, "predelay", "predelay");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "bass-cut", "bass-cut");
+  update_key<double>(json.at(section).at(instance_name), settings, "bass-cut", "bass-cut");
 
-  update_key<double>(json.at(section).at("reverb"), settings, "treble-cut", "treble-cut");
+  update_key<double>(json.at(section).at(instance_name), settings, "treble-cut", "treble-cut");
 }

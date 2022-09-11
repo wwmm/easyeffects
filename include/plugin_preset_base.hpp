@@ -51,6 +51,14 @@ class PluginPresetBase {
   }
 
   void read(const nlohmann::json& json) {
+    /*
+      Old presets do not have the filter instance id.
+    */
+
+    if (!json.at(section).contains(instance_name)) {
+      instance_name.erase(instance_name.find('#'));
+    }
+
     // For simplicity, exceptions raised while reading presets parameters
     // should be handled outside this method.
 

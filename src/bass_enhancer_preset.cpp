@@ -49,21 +49,21 @@ void BassEnhancerPreset::save(nlohmann::json& json) {
 }
 
 void BassEnhancerPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("bass_enhancer"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("bass_enhancer"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("bass_enhancer"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("bass_enhancer"), settings, "amount", "amount");
+  update_key<double>(json.at(section).at(instance_name), settings, "amount", "amount");
 
-  update_key<double>(json.at(section).at("bass_enhancer"), settings, "harmonics", "harmonics");
+  update_key<double>(json.at(section).at(instance_name), settings, "harmonics", "harmonics");
 
-  update_key<double>(json.at(section).at("bass_enhancer"), settings, "scope", "scope");
+  update_key<double>(json.at(section).at(instance_name), settings, "scope", "scope");
 
-  update_key<double>(json.at(section).at("bass_enhancer"), settings, "floor", "floor");
+  update_key<double>(json.at(section).at(instance_name), settings, "floor", "floor");
 
-  update_key<double>(json.at(section).at("bass_enhancer"), settings, "blend", "blend");
+  update_key<double>(json.at(section).at(instance_name), settings, "blend", "blend");
 
-  update_key<bool>(json.at(section).at("bass_enhancer"), settings, "floor-active", "floor-active");
+  update_key<bool>(json.at(section).at(instance_name), settings, "floor-active", "floor-active");
 }

@@ -98,32 +98,32 @@ void EqualizerPreset::save_channel(nlohmann::json& json, GSettings* settings, co
 }
 
 void EqualizerPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("equalizer"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("equalizer"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("equalizer"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at("equalizer"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
 
-  update_key<int>(json.at(section).at("equalizer"), settings, "num-bands", "num-bands");
+  update_key<int>(json.at(section).at(instance_name), settings, "num-bands", "num-bands");
 
-  update_key<bool>(json.at(section).at("equalizer"), settings, "split-channels", "split-channels");
+  update_key<bool>(json.at(section).at(instance_name), settings, "split-channels", "split-channels");
 
-  update_key<double>(json.at(section).at("equalizer"), settings, "balance", "balance");
+  update_key<double>(json.at(section).at(instance_name), settings, "balance", "balance");
 
-  update_key<double>(json.at(section).at("equalizer"), settings, "pitch-left", "pitch-left");
+  update_key<double>(json.at(section).at(instance_name), settings, "pitch-left", "pitch-left");
 
-  update_key<double>(json.at(section).at("equalizer"), settings, "pitch-right", "pitch-right");
+  update_key<double>(json.at(section).at(instance_name), settings, "pitch-right", "pitch-right");
 
   const auto nbands = g_settings_get_int(settings, "num-bands");
 
   if (section == "input") {
-    load_channel(json.at(section).at("equalizer").at("left"), input_settings_left, nbands);
-    load_channel(json.at(section).at("equalizer").at("right"), input_settings_right, nbands);
+    load_channel(json.at(section).at(instance_name).at("left"), input_settings_left, nbands);
+    load_channel(json.at(section).at(instance_name).at("right"), input_settings_right, nbands);
   } else if (section == "output") {
-    load_channel(json.at(section).at("equalizer").at("left"), output_settings_left, nbands);
-    load_channel(json.at(section).at("equalizer").at("right"), output_settings_right, nbands);
+    load_channel(json.at(section).at(instance_name).at("left"), output_settings_left, nbands);
+    load_channel(json.at(section).at(instance_name).at("right"), output_settings_right, nbands);
   }
 }
 

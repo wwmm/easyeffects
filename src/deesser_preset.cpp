@@ -61,33 +61,33 @@ void DeesserPreset::save(nlohmann::json& json) {
 }
 
 void DeesserPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("deesser"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at("deesser"), settings, "detection", "detection");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "detection", "detection");
 
-  update_key<gchar*>(json.at(section).at("deesser"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "threshold", "threshold");
+  update_key<double>(json.at(section).at(instance_name), settings, "threshold", "threshold");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "ratio", "ratio");
+  update_key<double>(json.at(section).at(instance_name), settings, "ratio", "ratio");
 
-  update_key<int>(json.at(section).at("deesser"), settings, "laxity", "laxity");
+  update_key<int>(json.at(section).at(instance_name), settings, "laxity", "laxity");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "makeup", "makeup");
+  update_key<double>(json.at(section).at(instance_name), settings, "makeup", "makeup");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "f1-freq", "f1-freq");
+  update_key<double>(json.at(section).at(instance_name), settings, "f1-freq", "f1-freq");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "f2-freq", "f2-freq");
+  update_key<double>(json.at(section).at(instance_name), settings, "f2-freq", "f2-freq");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "f1-level", "f1-level");
+  update_key<double>(json.at(section).at(instance_name), settings, "f1-level", "f1-level");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "f2-level", "f2-level");
+  update_key<double>(json.at(section).at(instance_name), settings, "f2-level", "f2-level");
 
-  update_key<double>(json.at(section).at("deesser"), settings, "f2-q", "f2-q");
+  update_key<double>(json.at(section).at(instance_name), settings, "f2-q", "f2-q");
 
-  update_key<bool>(json.at(section).at("deesser"), settings, "sc-listen", "sc-listen");
+  update_key<bool>(json.at(section).at(instance_name), settings, "sc-listen", "sc-listen");
 }

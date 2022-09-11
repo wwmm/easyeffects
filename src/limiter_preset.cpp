@@ -67,39 +67,39 @@ void LimiterPreset::save(nlohmann::json& json) {
 }
 
 void LimiterPreset::load(const nlohmann::json& json) {
-  update_key<gchar*>(json.at(section).at("limiter"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
 
-  update_key<gchar*>(json.at(section).at("limiter"), settings, "oversampling", "oversampling");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "oversampling", "oversampling");
 
-  update_key<gchar*>(json.at(section).at("limiter"), settings, "dithering", "dithering");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "dithering", "dithering");
 
-  update_key<bool>(json.at(section).at("limiter"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "lookahead", "lookahead");
+  update_key<double>(json.at(section).at(instance_name), settings, "lookahead", "lookahead");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "attack", "attack");
+  update_key<double>(json.at(section).at(instance_name), settings, "attack", "attack");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "release", "release");
+  update_key<double>(json.at(section).at(instance_name), settings, "release", "release");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "threshold", "threshold");
+  update_key<double>(json.at(section).at(instance_name), settings, "threshold", "threshold");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "sidechain-preamp", "sidechain-preamp");
+  update_key<double>(json.at(section).at(instance_name), settings, "sidechain-preamp", "sidechain-preamp");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "stereo-link", "stereo-link");
+  update_key<double>(json.at(section).at(instance_name), settings, "stereo-link", "stereo-link");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "alr-attack", "alr-attack");
+  update_key<double>(json.at(section).at(instance_name), settings, "alr-attack", "alr-attack");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "alr-release", "alr-release");
+  update_key<double>(json.at(section).at(instance_name), settings, "alr-release", "alr-release");
 
-  update_key<double>(json.at(section).at("limiter"), settings, "alr-knee", "alr-knee");
+  update_key<double>(json.at(section).at(instance_name), settings, "alr-knee", "alr-knee");
 
-  update_key<bool>(json.at(section).at("limiter"), settings, "alr", "alr");
+  update_key<bool>(json.at(section).at(instance_name), settings, "alr", "alr");
 
-  update_key<bool>(json.at(section).at("limiter"), settings, "gain-boost", "gain-boost");
+  update_key<bool>(json.at(section).at(instance_name), settings, "gain-boost", "gain-boost");
 
-  update_key<bool>(json.at(section).at("limiter"), settings, "external-sidechain", "external-sidechain");
+  update_key<bool>(json.at(section).at(instance_name), settings, "external-sidechain", "external-sidechain");
 }

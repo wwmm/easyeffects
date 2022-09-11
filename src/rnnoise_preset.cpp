@@ -39,11 +39,11 @@ void RNNoisePreset::save(nlohmann::json& json) {
 }
 
 void RNNoisePreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("rnnoise"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("rnnoise"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("rnnoise"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at("rnnoise"), settings, "model-path", "model-path");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "model-path", "model-path");
 }

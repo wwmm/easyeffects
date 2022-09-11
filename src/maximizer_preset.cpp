@@ -43,15 +43,15 @@ void MaximizerPreset::save(nlohmann::json& json) {
 }
 
 void MaximizerPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("maximizer"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("maximizer"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("maximizer"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("maximizer"), settings, "release", "release");
+  update_key<double>(json.at(section).at(instance_name), settings, "release", "release");
 
-  update_key<double>(json.at(section).at("maximizer"), settings, "ceiling", "ceiling");
+  update_key<double>(json.at(section).at(instance_name), settings, "ceiling", "ceiling");
 
-  update_key<double>(json.at(section).at("maximizer"), settings, "threshold", "threshold");
+  update_key<double>(json.at(section).at(instance_name), settings, "threshold", "threshold");
 }

@@ -43,15 +43,15 @@ void BassLoudnessPreset::save(nlohmann::json& json) {
 }
 
 void BassLoudnessPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("bass_loudness"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("bass_loudness"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("bass_loudness"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("bass_loudness"), settings, "loudness", "loudness");
+  update_key<double>(json.at(section).at(instance_name), settings, "loudness", "loudness");
 
-  update_key<double>(json.at(section).at("bass_loudness"), settings, "output", "output");
+  update_key<double>(json.at(section).at(instance_name), settings, "output", "output");
 
-  update_key<double>(json.at(section).at("bass_loudness"), settings, "link", "link");
+  update_key<double>(json.at(section).at(instance_name), settings, "link", "link");
 }
