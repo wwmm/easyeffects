@@ -119,87 +119,86 @@ void MultibandGatePreset::save(nlohmann::json& json) {
 }
 
 void MultibandGatePreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("multiband_gate"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("multiband_gate"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("multiband_gate"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("multiband_gate"), settings, "dry", "dry");
+  update_key<double>(json.at(section).at(instance_name), settings, "dry", "dry");
 
-  update_key<double>(json.at(section).at("multiband_gate"), settings, "wet", "wet");
+  update_key<double>(json.at(section).at(instance_name), settings, "wet", "wet");
 
-  update_key<gchar*>(json.at(section).at("multiband_gate"), settings, "gate-mode", "gate-mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "gate-mode", "gate-mode");
 
-  update_key<gchar*>(json.at(section).at("multiband_gate"), settings, "envelope-boost", "envelope-boost");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "envelope-boost", "envelope-boost");
 
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = util::to_string(n);
     const auto bandn = "band" + nstr;
 
     if (n > 0U) {
-      update_key<bool>(json.at(section).at("multiband_gate").at(bandn), settings, "enable-band" + nstr, "enable-band");
+      update_key<bool>(json.at(section).at(instance_name).at(bandn), settings, "enable-band" + nstr, "enable-band");
 
-      update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "split-frequency" + nstr,
+      update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "split-frequency" + nstr,
                          "split-frequency");
     }
 
-    update_key<bool>(json.at(section).at("multiband_gate").at(bandn), settings, "gate-enable" + nstr, "gate-enable");
+    update_key<bool>(json.at(section).at(instance_name).at(bandn), settings, "gate-enable" + nstr, "gate-enable");
 
-    update_key<bool>(json.at(section).at("multiband_gate").at(bandn), settings, "solo" + nstr, "solo");
+    update_key<bool>(json.at(section).at(instance_name).at(bandn), settings, "solo" + nstr, "solo");
 
-    update_key<bool>(json.at(section).at("multiband_gate").at(bandn), settings, "mute" + nstr, "mute");
+    update_key<bool>(json.at(section).at(instance_name).at(bandn), settings, "mute" + nstr, "mute");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "attack-time" + nstr, "attack-time");
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "attack-time" + nstr, "attack-time");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "release-time" + nstr,
-                       "release-time");
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "release-time" + nstr, "release-time");
 
-    update_key<bool>(json.at(section).at("multiband_gate").at(bandn), settings, "hysteresis" + nstr, "hysteresis");
+    update_key<bool>(json.at(section).at(instance_name).at(bandn), settings, "hysteresis" + nstr, "hysteresis");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "hysteresis-threshold" + nstr,
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "hysteresis-threshold" + nstr,
                        "hysteresis-threshold");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "hysteresis-zone" + nstr,
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "hysteresis-zone" + nstr,
                        "hysteresis-zone");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "curve-threshold" + nstr,
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "curve-threshold" + nstr,
                        "curve-threshold");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "curve-zone" + nstr, "curve-zone");
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "curve-zone" + nstr, "curve-zone");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "reduction" + nstr, "reduction");
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "reduction" + nstr, "reduction");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "makeup" + nstr, "makeup");
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "makeup" + nstr, "makeup");
 
-    update_key<bool>(json.at(section).at("multiband_gate").at(bandn), settings, "external-sidechain" + nstr,
+    update_key<bool>(json.at(section).at(instance_name).at(bandn), settings, "external-sidechain" + nstr,
                      "external-sidechain");
 
-    update_key<gchar*>(json.at(section).at("multiband_gate").at(bandn), settings, "sidechain-mode" + nstr,
+    update_key<gchar*>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-mode" + nstr,
                        "sidechain-mode");
 
-    update_key<gchar*>(json.at(section).at("multiband_gate").at(bandn), settings, "sidechain-source" + nstr,
+    update_key<gchar*>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-source" + nstr,
                        "sidechain-source");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "sidechain-lookahead" + nstr,
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-lookahead" + nstr,
                        "sidechain-lookahead");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "sidechain-reactivity" + nstr,
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-reactivity" + nstr,
                        "sidechain-reactivity");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "sidechain-preamp" + nstr,
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-preamp" + nstr,
                        "sidechain-preamp");
 
-    update_key<bool>(json.at(section).at("multiband_gate").at(bandn), settings, "sidechain-custom-lowcut-filter" + nstr,
+    update_key<bool>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-custom-lowcut-filter" + nstr,
                      "sidechain-custom-lowcut-filter");
 
-    update_key<bool>(json.at(section).at("multiband_gate").at(bandn), settings,
-                     "sidechain-custom-highcut-filter" + nstr, "sidechain-custom-highcut-filter");
+    update_key<bool>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-custom-highcut-filter" + nstr,
+                     "sidechain-custom-highcut-filter");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "sidechain-lowcut-frequency" + nstr,
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-lowcut-frequency" + nstr,
                        "sidechain-lowcut-frequency");
 
-    update_key<double>(json.at(section).at("multiband_gate").at(bandn), settings, "sidechain-highcut-frequency" + nstr,
+    update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-highcut-frequency" + nstr,
                        "sidechain-highcut-frequency");
   }
 }

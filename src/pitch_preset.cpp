@@ -53,23 +53,23 @@ void PitchPreset::save(nlohmann::json& json) {
 }
 
 void PitchPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("pitch"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("pitch"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("pitch"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at("pitch"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
 
-  update_key<gchar*>(json.at(section).at("pitch"), settings, "formant", "formant");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "formant", "formant");
 
-  update_key<gchar*>(json.at(section).at("pitch"), settings, "transients", "transients");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "transients", "transients");
 
-  update_key<gchar*>(json.at(section).at("pitch"), settings, "detector", "detector");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "detector", "detector");
 
-  update_key<gchar*>(json.at(section).at("pitch"), settings, "phase", "phase");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "phase", "phase");
 
-  update_key<int>(json.at(section).at("pitch"), settings, "semitones", "semitones");
+  update_key<int>(json.at(section).at(instance_name), settings, "semitones", "semitones");
 
-  update_key<int>(json.at(section).at("pitch"), settings, "octaves", "octaves");
+  update_key<int>(json.at(section).at(instance_name), settings, "octaves", "octaves");
 }

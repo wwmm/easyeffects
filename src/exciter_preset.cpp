@@ -49,21 +49,21 @@ void ExciterPreset::save(nlohmann::json& json) {
 }
 
 void ExciterPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("exciter"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("exciter"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("exciter"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("exciter"), settings, "amount", "amount");
+  update_key<double>(json.at(section).at(instance_name), settings, "amount", "amount");
 
-  update_key<double>(json.at(section).at("exciter"), settings, "harmonics", "harmonics");
+  update_key<double>(json.at(section).at(instance_name), settings, "harmonics", "harmonics");
 
-  update_key<double>(json.at(section).at("exciter"), settings, "scope", "scope");
+  update_key<double>(json.at(section).at(instance_name), settings, "scope", "scope");
 
-  update_key<double>(json.at(section).at("exciter"), settings, "ceil", "ceil");
+  update_key<double>(json.at(section).at(instance_name), settings, "ceil", "ceil");
 
-  update_key<double>(json.at(section).at("exciter"), settings, "blend", "blend");
+  update_key<double>(json.at(section).at(instance_name), settings, "blend", "blend");
 
-  update_key<bool>(json.at(section).at("exciter"), settings, "ceil-active", "ceil-active");
+  update_key<bool>(json.at(section).at(instance_name), settings, "ceil-active", "ceil-active");
 }

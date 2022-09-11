@@ -45,17 +45,17 @@ void FilterPreset::save(nlohmann::json& json) {
 }
 
 void FilterPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("filter"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("filter"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("filter"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("filter"), settings, "frequency", "frequency");
+  update_key<double>(json.at(section).at(instance_name), settings, "frequency", "frequency");
 
-  update_key<double>(json.at(section).at("filter"), settings, "resonance", "resonance");
+  update_key<double>(json.at(section).at(instance_name), settings, "resonance", "resonance");
 
-  update_key<gchar*>(json.at(section).at("filter"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
 
-  update_key<double>(json.at(section).at("filter"), settings, "inertia", "inertia");
+  update_key<double>(json.at(section).at(instance_name), settings, "inertia", "inertia");
 }

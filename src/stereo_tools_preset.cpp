@@ -69,41 +69,41 @@ void StereoToolsPreset::save(nlohmann::json& json) {
 }
 
 void StereoToolsPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("stereo_tools"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "balance-in", "balance-in");
+  update_key<double>(json.at(section).at(instance_name), settings, "balance-in", "balance-in");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "balance-out", "balance-out");
+  update_key<double>(json.at(section).at(instance_name), settings, "balance-out", "balance-out");
 
-  update_key<bool>(json.at(section).at("stereo_tools"), settings, "softclip", "softclip");
+  update_key<bool>(json.at(section).at(instance_name), settings, "softclip", "softclip");
 
-  update_key<bool>(json.at(section).at("stereo_tools"), settings, "mutel", "mutel");
+  update_key<bool>(json.at(section).at(instance_name), settings, "mutel", "mutel");
 
-  update_key<bool>(json.at(section).at("stereo_tools"), settings, "muter", "muter");
+  update_key<bool>(json.at(section).at(instance_name), settings, "muter", "muter");
 
-  update_key<bool>(json.at(section).at("stereo_tools"), settings, "phasel", "phasel");
+  update_key<bool>(json.at(section).at(instance_name), settings, "phasel", "phasel");
 
-  update_key<bool>(json.at(section).at("stereo_tools"), settings, "phaser", "phaser");
+  update_key<bool>(json.at(section).at(instance_name), settings, "phaser", "phaser");
 
-  update_key<gchar*>(json.at(section).at("stereo_tools"), settings, "mode", "mode");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "slev", "side-level");
+  update_key<double>(json.at(section).at(instance_name), settings, "slev", "side-level");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "sbal", "side-balance");
+  update_key<double>(json.at(section).at(instance_name), settings, "sbal", "side-balance");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "mlev", "middle-level");
+  update_key<double>(json.at(section).at(instance_name), settings, "mlev", "middle-level");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "mpan", "middle-panorama");
+  update_key<double>(json.at(section).at(instance_name), settings, "mpan", "middle-panorama");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "stereo-base", "stereo-base");
+  update_key<double>(json.at(section).at(instance_name), settings, "stereo-base", "stereo-base");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "delay", "delay");
+  update_key<double>(json.at(section).at(instance_name), settings, "delay", "delay");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "sc-level", "sc-level");
+  update_key<double>(json.at(section).at(instance_name), settings, "sc-level", "sc-level");
 
-  update_key<double>(json.at(section).at("stereo_tools"), settings, "stereo-phase", "stereo-phase");
+  update_key<double>(json.at(section).at(instance_name), settings, "stereo-phase", "stereo-phase");
 }

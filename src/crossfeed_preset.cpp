@@ -41,13 +41,13 @@ void CrossfeedPreset::save(nlohmann::json& json) {
 }
 
 void CrossfeedPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("crossfeed"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("crossfeed"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("crossfeed"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<int>(json.at(section).at("crossfeed"), settings, "fcut", "fcut");
+  update_key<int>(json.at(section).at(instance_name), settings, "fcut", "fcut");
 
-  update_key<double>(json.at(section).at("crossfeed"), settings, "feed", "feed");
+  update_key<double>(json.at(section).at(instance_name), settings, "feed", "feed");
 }

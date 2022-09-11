@@ -49,21 +49,21 @@ void DelayPreset::save(nlohmann::json& json) {
 }
 
 void DelayPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("delay"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("delay"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("delay"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<double>(json.at(section).at("delay"), settings, "time-l", "time-l");
+  update_key<double>(json.at(section).at(instance_name), settings, "time-l", "time-l");
 
-  update_key<double>(json.at(section).at("delay"), settings, "time-r", "time-r");
+  update_key<double>(json.at(section).at(instance_name), settings, "time-r", "time-r");
 
-  update_key<double>(json.at(section).at("delay"), settings, "dry-l", "dry-l");
+  update_key<double>(json.at(section).at(instance_name), settings, "dry-l", "dry-l");
 
-  update_key<double>(json.at(section).at("delay"), settings, "dry-r", "dry-r");
+  update_key<double>(json.at(section).at(instance_name), settings, "dry-r", "dry-r");
 
-  update_key<double>(json.at(section).at("delay"), settings, "wet-l", "wet-l");
+  update_key<double>(json.at(section).at(instance_name), settings, "wet-l", "wet-l");
 
-  update_key<double>(json.at(section).at("delay"), settings, "wet-r", "wet-r");
+  update_key<double>(json.at(section).at(instance_name), settings, "wet-r", "wet-r");
 }

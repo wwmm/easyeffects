@@ -43,15 +43,15 @@ void ConvolverPreset::save(nlohmann::json& json) {
 }
 
 void ConvolverPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("convolver"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("convolver"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("convolver"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at("convolver"), settings, "kernel-path", "kernel-path");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "kernel-path", "kernel-path");
 
-  update_key<int>(json.at(section).at("convolver"), settings, "ir-width", "ir-width");
+  update_key<int>(json.at(section).at(instance_name), settings, "ir-width", "ir-width");
 
-  update_key<bool>(json.at(section).at("convolver"), settings, "autogain", "autogain");
+  update_key<bool>(json.at(section).at(instance_name), settings, "autogain", "autogain");
 }

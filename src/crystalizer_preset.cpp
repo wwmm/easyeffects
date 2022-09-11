@@ -47,19 +47,19 @@ void CrystalizerPreset::save(nlohmann::json& json) {
 }
 
 void CrystalizerPreset::load(const nlohmann::json& json) {
-  update_key<bool>(json.at(section).at("crystalizer"), settings, "bypass", "bypass");
+  update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
 
-  update_key<double>(json.at(section).at("crystalizer"), settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
-  update_key<double>(json.at(section).at("crystalizer"), settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
   for (int n = 0; n < 13; n++) {
     const auto bandn = "band" + util::to_string(n);
 
-    update_key<double>(json.at(section).at("crystalizer")[bandn], settings, "intensity-" + bandn, "intensity");
+    update_key<double>(json.at(section).at(instance_name)[bandn], settings, "intensity-" + bandn, "intensity");
 
-    update_key<bool>(json.at(section).at("crystalizer")[bandn], settings, "mute-" + bandn, "mute");
+    update_key<bool>(json.at(section).at(instance_name)[bandn], settings, "mute-" + bandn, "mute");
 
-    update_key<bool>(json.at(section).at("crystalizer")[bandn], settings, "bypass-" + bandn, "bypass");
+    update_key<bool>(json.at(section).at(instance_name)[bandn], settings, "bypass-" + bandn, "bypass");
   }
 }
