@@ -37,7 +37,7 @@ namespace lv2 {
 
 using namespace std::string_literals;
 
-enum PortType { TYPE_CONTROL, TYPE_AUDIO };
+enum PortType { TYPE_CONTROL, TYPE_AUDIO, TYPE_ATOM };
 
 struct Port {
   PortType type;  // Datatype

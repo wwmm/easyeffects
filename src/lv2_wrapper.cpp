@@ -36,9 +36,7 @@ auto lv2_printf(LV2_Log_Handle handle, LV2_URID type, const char* format, ...) -
   return r;
 }
 
-Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
-  world = lilv_world_new();
-
+Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri), world(lilv_world_new()) {
   if (world == nullptr) {
     util::warning("failed to initialized the world");
 
@@ -119,6 +117,7 @@ void Lv2Wrapper::create_ports() {
   LilvNode* lv2_OutputPort = lilv_new_uri(world, LV2_CORE__OutputPort);
   LilvNode* lv2_AudioPort = lilv_new_uri(world, LV2_CORE__AudioPort);
   LilvNode* lv2_ControlPort = lilv_new_uri(world, LV2_CORE__ControlPort);
+  LilvNode* lv2_AtomPort = lilv_new_uri(world, LV2_ATOM__AtomPort);
   LilvNode* lv2_connectionOptional = lilv_new_uri(world, LV2_CORE__connectionOptional);
 
   for (uint n = 0U; n < n_ports; n++) {
@@ -134,7 +133,7 @@ void Lv2Wrapper::create_ports() {
     port->value = std::isnan(values[n]) ? 0.0F : values[n];
     port->optional = lilv_port_has_property(plugin, lilv_port, lv2_connectionOptional);
 
-    // util::warning("port name: " + port.name);
+    // util::warning("port name: " + port->name);
     // util::warning("port symbol: " + port->symbol);
 
     if (lilv_port_is_a(plugin, lilv_port, lv2_InputPort)) {
@@ -145,6 +144,10 @@ void Lv2Wrapper::create_ports() {
 
     if (lilv_port_is_a(plugin, lilv_port, lv2_ControlPort)) {
       port->type = TYPE_CONTROL;
+    } else if (lilv_port_is_a(plugin, lilv_port, lv2_AtomPort)) {
+      port->type = TYPE_ATOM;
+
+      // util::warning("port name: " + port->name);
     } else if (lilv_port_is_a(plugin, lilv_port, lv2_AudioPort)) {
       port->type = TYPE_AUDIO;
 
@@ -162,6 +165,7 @@ void Lv2Wrapper::create_ports() {
 
   lilv_node_free(lv2_connectionOptional);
   lilv_node_free(lv2_ControlPort);
+  lilv_node_free(lv2_AtomPort);
   lilv_node_free(lv2_AudioPort);
   lilv_node_free(lv2_OutputPort);
   lilv_node_free(lv2_InputPort);
@@ -213,7 +217,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
   LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
   const auto features = std::to_array<const LV2_Feature*>(
-      {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, &static_features[0], nullptr});
+      {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, static_features.data(), nullptr});
 
   instance = lilv_plugin_instantiate(plugin, rate, features.data());
 
