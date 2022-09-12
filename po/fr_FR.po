@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-10 14:59+0000\n"
+"POT-Creation-Date: 2022-09-12 15:31-0300\n"
 "PO-Revision-Date: 2022-09-05 03:16+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -539,7 +539,7 @@ msgstr "Externe"
 msgid "Sidechain Type"
 msgstr "Type Chaîne Latérale"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:653
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
 msgid "Input Device"
 msgstr "Périphérique d’entrée"
 
@@ -2199,11 +2199,11 @@ msgstr "Aucun fichier d’impulsion chargé"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossible de charger le fichier d’impulsion"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:654
+#: src/effects_box.cpp:263 src/plugins_box.cpp:633
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:674
+#: src/effects_box.cpp:286 src/plugins_box.cpp:653
 msgid "Players"
 msgstr "Lecteurs"
 
@@ -2234,15 +2234,15 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 
-#: src/plugins_box.cpp:608
+#: src/plugins_box.cpp:585
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:654
 msgid "Output Device"
 msgstr "Périphérique de sortie"
 
-#: src/plugins_menu.cpp:160
+#: src/plugins_menu.cpp:154
 msgid "Add"
 msgstr "Ajouter"
 
