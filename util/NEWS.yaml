@@ -5,6 +5,7 @@ Date: UNRELEASED_DATE
 Description:
 - Features∶
 - Improved compatibility with Linux Studio Plugins `1.2.3`.
+- GraphicEQ presets can be imported into the Equalizer effect.
 - The documentation has been updated.
 
 - Bug fixes∶

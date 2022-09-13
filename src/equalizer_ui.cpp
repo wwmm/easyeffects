@@ -23,7 +23,7 @@ namespace ui::equalizer_box {
 
 using namespace tags::equalizer;
 
-constexpr int max_bands = 32U;
+constexpr uint max_bands = 32U;
 
 enum Channel { left, right };
 
@@ -32,6 +32,11 @@ struct APO_Band {
   float freq = 1000.0F;
   float gain = 0.0F;
   float quality = (1.0F / std::numbers::sqrt2_v<float>);
+};
+
+struct GraphicEQ_Band {
+  float freq = 1000.0F;
+  float gain = 0.0F;
 };
 
 std::unordered_map<std::string, std::string> const FilterTypeMap = {
@@ -90,7 +95,7 @@ void on_reset(EqualizerBox* self, GtkButton* btn) {
 }
 
 void on_flat_response(EqualizerBox* self, GtkButton* btn) {
-  for (int n = 0; n < max_bands; n++) {
+  for (uint n = 0U; n < max_bands; n++) {
     g_settings_reset(self->settings_left, band_gain[n].data());
 
     g_settings_reset(self->settings_right, band_gain[n].data());
@@ -129,6 +134,8 @@ void on_calculate_frequencies(EqualizerBox* self, GtkButton* btn) {
     freq0 = freq1;
   }
 }
+
+// ### APO Preset Section ###
 
 auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
   std::smatch matches;
@@ -303,7 +310,8 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   }
 
   // Apply APO parameters obtained
-  g_settings_set_int(self->settings, "num-bands", static_cast<int>(bands.size()));
+  g_settings_set_int(self->settings, "num-bands",
+                     static_cast<int>(std::min(static_cast<uint>(bands.size()), max_bands)));
   g_settings_set_double(self->settings, "input-gain", preamp);
 
   std::vector<GSettings*> settings_channels;
@@ -318,7 +326,7 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
     settings_channels.push_back(self->settings_right);
   }
 
-  for (int n = 0, apo_bands = static_cast<int>(bands.size()); n < max_bands; n++) {
+  for (uint n = 0U, apo_bands = bands.size(); n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
         g_settings_set_string(channel, band_type[n].data(), bands[n].type.c_str());
@@ -357,23 +365,24 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
   gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
 
   g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, EqualizerBox* self) {
-                     if (response == GTK_RESPONSE_ACCEPT) {
-                       auto* chooser = GTK_FILE_CHOOSER(dialog);
-                       auto* file = gtk_file_chooser_get_file(chooser);
-                       auto* path = g_file_get_path(file);
-
-                       if (!import_apo_preset(self, path)) {
-                         // notify error on APO preset loading
-                         ui::show_fixed_toast(
-                             self->toast_overlay,
-                             _("APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."));
-                       }
-
-                       g_free(path);
-
-                       g_object_unref(file);
+                     if (response != GTK_RESPONSE_ACCEPT) {
+                       g_object_unref(dialog);
+                       return;
                      }
 
+                     auto* chooser = GTK_FILE_CHOOSER(dialog);
+                     auto* file = gtk_file_chooser_get_file(chooser);
+                     auto* path = g_file_get_path(file);
+
+                     if (!import_apo_preset(self, path)) {
+                       // notify error on preset loading
+                       ui::show_fixed_toast(
+                           self->toast_overlay,
+                           _("APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."));
+                     }
+
+                     g_free(path);
+                     g_object_unref(file);
                      g_object_unref(dialog);
                    }),
                    self);
@@ -381,6 +390,194 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
   gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
   gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
 }
+
+// ### End APO Preset Section ###
+
+// ### GraphicEQ Section ###
+
+auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ_Band>& bands) -> bool {
+  // Reminder: C++ std::regex supports possessive quantifiers.
+  // There's no reference of <regex> library supporting it inside the documentation, but
+  // std::regex_search("aaab"s, matches, std::regex("R(a*+a++b)")) returns FALSE,
+  // which means the capturing without backtracking is supported.
+
+  std::smatch full_match;
+
+  // The first parsing stage is to ensure the given string contains a
+  // substring corresponding to the GraphicEQ format reported in the documentation:
+  // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
+
+  // In order to do it, the following regular expression is used:
+  static const auto re_geq =
+      std::regex(R"(graphiceq\s*:((?:\s*\d++(?:,\d++)?+(?:\.\d++)?+\s++[+-]?+\d++(?:\.\d++)?+[ \t]*+(?:;|$))++))",
+                 std::regex::icase);
+
+  // That regex is quite permissive since:
+  // - It's case insensitive;
+  // - Gain values can be signed (with leading +/-);
+  // - Frequency values can use a comma as thousand separator.
+
+  // Note that the last class does not include the newline as whitespaces to allow
+  // matching the `$` as the end of line (not needed in this case, but it will also
+  // work if the  input string will be multiline in the future).
+  // This ensures the last band is captured with or without the final `;`.
+  // The regex has been tested at https://regex101.com/r/JRwf4G/1
+
+  std::regex_search(str, full_match, re_geq);
+
+  // The regex captures the full match and a group related to the sequential bands.
+  if (full_match.size() != 2U) {
+    return false;
+  }
+
+  // Save the substring with all the bands and use it to extract the values.
+  // It can't be const because it's used to store the sub-sequential strings
+  // from the match_result class with suffix(). See the following while loop.
+  auto bands_substr = full_match.str(1);
+
+  // Couldn't we extract the values in one only regex checking also the GraphicEQ format?
+  // No, there's no way. Even with Perl Compatible Regex (PCRE) checking the whole format
+  // and capturing the values will return only the last repeated group (the last band),
+  // but we need all of them.
+  std::smatch band_match;
+  static const auto re_geq_band = std::regex(R"((\d++(?:,\d++)?+(?:\.\d++)?+)\s++([+-]?+\d++(?:\.\d++)?+))");
+
+  // C++ regex does not support the global PCRE flag, so we need to repeat the search in a loop.
+  while (std::regex_search(bands_substr, band_match, re_geq_band)) {
+    // The size of the match should be 3:
+    // The full match with two additional groups (frequency and gain value).
+    if (band_match.size() != 3U) {
+      break;
+    }
+
+    struct GraphicEQ_Band band;
+
+    // Extract frequency. It could have a comma as thousands separator
+    // to be removed for the correct float conversion.
+    const auto freq_str = std::regex_replace(band_match.str(1), std::regex(","), "");
+    util::str_to_num(freq_str, band.freq);
+
+    // Extract gain.
+    const auto gain_str = band_match.str(2);
+    util::str_to_num(gain_str, band.gain);
+
+    // Push the band into the vector.
+    bands.push_back(band);
+
+    // Save the sub-sequential string, so the regex can return the match
+    // for the following band (if existing).
+    bands_substr = band_match.suffix().str();
+  }
+
+  return (bands.size() > 0U);
+}
+
+auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -> bool {
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::is_regular_file(p)) {
+    return false;
+  }
+
+  std::ifstream eq_file;
+  eq_file.open(p.c_str());
+
+  std::vector<struct GraphicEQ_Band> bands;
+
+  if (eq_file.is_open()) {
+    for (std::string line; getline(eq_file, line);) {
+      if (struct GraphicEQ_Band band; parse_graphiceq_config(line, bands)) {
+        break;
+      }
+    }
+  }
+
+  eq_file.close();
+
+  if (bands.empty()) {
+    return false;
+  }
+
+  // Apply GraphicEQ parameters obtained
+  g_settings_set_int(self->settings, "num-bands",
+                     static_cast<int>(std::min(static_cast<uint>(bands.size()), max_bands)));
+
+  std::vector<GSettings*> settings_channels;
+
+  // Whether to apply the parameters to both channels or the selected one only
+  if (g_settings_get_boolean(self->settings, "split-channels") == 0) {
+    settings_channels.push_back(self->settings_left);
+    settings_channels.push_back(self->settings_right);
+  } else if (g_strcmp0(gtk_stack_get_visible_child_name(self->stack), "page_left_channel") == 0) {
+    settings_channels.push_back(self->settings_left);
+  } else {
+    settings_channels.push_back(self->settings_right);
+  }
+
+  for (uint n = 0U, geq_bands = bands.size(); n < max_bands; n++) {
+    for (auto* channel : settings_channels) {
+      if (n < geq_bands) {
+        g_settings_set_string(channel, band_type[n].data(), "Bell");
+        g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
+        g_settings_set_double(channel, band_gain[n].data(), bands[n].gain);
+      } else {
+        g_settings_set_string(channel, band_type[n].data(), "Off");
+        g_settings_reset(channel, band_frequency[n].data());
+        g_settings_reset(channel, band_gain[n].data());
+      }
+
+      g_settings_reset(channel, band_mode[n].data());
+      g_settings_reset(channel, band_q[n].data());
+      g_settings_reset(channel, band_slope[n].data());
+      g_settings_reset(channel, band_solo[n].data());
+      g_settings_reset(channel, band_mute[n].data());
+    }
+  }
+
+  return true;
+}
+
+void on_import_geq_preset_clicked(EqualizerBox* self, GtkButton* btn) {
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
+
+  auto* dialog = gtk_file_chooser_native_new(_("Import GraphicEQ Preset File"), active_window,
+                                             GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+
+  auto* filter = gtk_file_filter_new();
+
+  gtk_file_filter_add_pattern(filter, "*.txt");
+  gtk_file_filter_set_name(filter, _("GraphicEQ Presets"));
+
+  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+
+  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, EqualizerBox* self) {
+                     if (response != GTK_RESPONSE_ACCEPT) {
+                       g_object_unref(dialog);
+                       return;
+                     }
+
+                     auto* chooser = GTK_FILE_CHOOSER(dialog);
+                     auto* file = gtk_file_chooser_get_file(chooser);
+                     auto* path = g_file_get_path(file);
+
+                     if (!import_graphiceq_preset(self, path)) {
+                       // notify error on preset loading
+                       ui::show_fixed_toast(
+                           self->toast_overlay,
+                           _("GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."));
+                     }
+
+                     g_free(path);
+                     g_object_unref(file);
+                     g_object_unref(dialog);
+                   }),
+                   self);
+
+  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
+  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
+}
+
+// ### End GraphicEQ Section ###
 
 template <Channel channel>
 void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& split_mode) {
@@ -609,6 +806,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_flat_response);
   gtk_widget_class_bind_template_callback(widget_class, on_calculate_frequencies);
   gtk_widget_class_bind_template_callback(widget_class, on_import_apo_preset_clicked);
+  gtk_widget_class_bind_template_callback(widget_class, on_import_geq_preset_clicked);
 }
 
 void equalizer_box_init(EqualizerBox* self) {
