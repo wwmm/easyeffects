@@ -402,7 +402,7 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ_Band>& bands) -> bool {
   // Reminder: C++ std::regex supports possessive quantifiers.
   // There's no reference of <regex> library supporting it inside the documentation, but
-  // std::regex_search("aaab"s, matches, std::regex("R(a*+a++b)")) returns FALSE,
+  // std::regex_search("aaab"s, matches, std::regex("(a*+a++b)")) returns FALSE,
   // which means the capturing without backtracking is supported.
 
   std::smatch full_match;
