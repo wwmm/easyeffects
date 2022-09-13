@@ -142,7 +142,7 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_filter, PW_KEY_APP_ID, tags::app::id);
   pw_properties_set(props_filter, PW_KEY_NODE_NAME, filter_name.c_str());
   pw_properties_set(props_filter, PW_KEY_NODE_NICK, name.c_str());
-  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, filter_name.c_str());
+  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, name.c_str());
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
