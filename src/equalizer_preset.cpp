@@ -26,15 +26,23 @@ EqualizerPreset::EqualizerPreset(PresetType preset_type, const int& index)
                        tags::schema::equalizer::input_path,
                        tags::schema::equalizer::output_path,
                        preset_type,
-                       index),
-      input_settings_left(
-          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::input_path_left)),
-      input_settings_right(
-          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::input_path_right)),
-      output_settings_left(
-          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::output_path_left)),
-      output_settings_right(
-          g_settings_new_with_path(tags::schema::equalizer::channel_id, tags::schema::equalizer::output_path_right)) {
+                       index) {
+  input_settings_left = g_settings_new_with_path(
+      tags::schema::equalizer::channel_id,
+      (tags::schema::equalizer::input_path + util::to_string(index) + "/leftchannel/").c_str());
+
+  input_settings_right = g_settings_new_with_path(
+      tags::schema::equalizer::channel_id,
+      (tags::schema::equalizer::input_path + util::to_string(index) + "/rightchannel/").c_str());
+
+  output_settings_left = g_settings_new_with_path(
+      tags::schema::equalizer::channel_id,
+      (tags::schema::equalizer::output_path + util::to_string(index) + "/leftchannel/").c_str());
+
+  output_settings_right = g_settings_new_with_path(
+      tags::schema::equalizer::channel_id,
+      (tags::schema::equalizer::output_path + util::to_string(index) + "/rightchannel/").c_str());
+
   instance_name.assign(tags::plugin_name::equalizer).append("#").append(util::to_string(index));
 }
 

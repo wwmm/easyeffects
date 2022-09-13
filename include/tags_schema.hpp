@@ -137,14 +137,6 @@ inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/eq
 
 inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/equalizer/";
 
-inline constexpr auto input_path_left = "/com/github/wwmm/easyeffects/streaminputs/equalizer/leftchannel/";
-
-inline constexpr auto input_path_right = "/com/github/wwmm/easyeffects/streaminputs/equalizer/rightchannel/";
-
-inline constexpr auto output_path_left = "/com/github/wwmm/easyeffects/streamoutputs/equalizer/leftchannel/";
-
-inline constexpr auto output_path_right = "/com/github/wwmm/easyeffects/streamoutputs/equalizer/rightchannel/";
-
 }  // namespace tags::schema::equalizer
 
 namespace tags::schema::exciter {
