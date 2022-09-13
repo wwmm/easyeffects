@@ -293,8 +293,12 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   std::vector<struct APO_Band> bands;
   double preamp = 0.0;
 
-  if (eq_file.is_open()) {
+  if (const auto re = std::regex(R"(^[ \t]*+#)"); eq_file.is_open()) {
     for (std::string line; getline(eq_file, line);) {
+      if (std::regex_search(line, re)) {  // Avoid commented lines
+        continue;
+      }
+
       if (struct APO_Band filter; parse_apo_config_line(line, filter)) {
         bands.push_back(filter);
       } else {
@@ -484,8 +488,11 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
 
   std::vector<struct GraphicEQ_Band> bands;
 
-  if (eq_file.is_open()) {
+  if (const auto re = std::regex(R"(^[ \t]*+#)"); eq_file.is_open()) {
     for (std::string line; getline(eq_file, line);) {
+      if (std::regex_search(line, re)) {  // Avoid commented lines
+        continue;
+      }
       if (struct GraphicEQ_Band band; parse_graphiceq_config(line, bands)) {
         break;
       }
