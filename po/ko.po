@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-12 15:31-0300\n"
+"POT-Creation-Date: 2022-09-13 22:54+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -196,7 +196,7 @@ msgstr "아웃풋 게인"
 #: data/ui/bass_loudness.ui:146 data/ui/compressor.ui:576
 #: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:143
 #: data/ui/crystalizer.ui:43 data/ui/deesser.ui:417 data/ui/delay.ui:235
-#: data/ui/echo_canceller.ui:115 data/ui/equalizer.ui:298
+#: data/ui/echo_canceller.ui:115 data/ui/equalizer.ui:333
 #: data/ui/exciter.ui:262 data/ui/filter.ui:173 data/ui/gate.ui:715
 #: data/ui/gate.ui:1196 data/ui/limiter.ui:728 data/ui/loudness.ui:177
 #: data/ui/maximizer.ui:146 data/ui/multiband_compressor.ui:454
@@ -211,7 +211,7 @@ msgstr "인풋"
 #: data/ui/bass_loudness.ui:165 data/ui/compressor.ui:1077
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:162 data/ui/crystalizer.ui:62
 #: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:134
-#: data/ui/equalizer.ui:317 data/ui/exciter.ui:281 data/ui/filter.ui:192
+#: data/ui/equalizer.ui:352 data/ui/exciter.ui:281 data/ui/filter.ui:192
 #: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:196
 #: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
@@ -223,7 +223,7 @@ msgstr "플러그인 인풋 게인"
 #: data/ui/bass_loudness.ui:63 data/ui/bass_loudness.ui:230
 #: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:227
 #: data/ui/crystalizer.ui:127 data/ui/deesser.ui:501 data/ui/delay.ui:319
-#: data/ui/echo_canceller.ui:199 data/ui/equalizer.ui:382
+#: data/ui/echo_canceller.ui:199 data/ui/equalizer.ui:417
 #: data/ui/exciter.ui:346 data/ui/filter.ui:257 data/ui/gate.ui:1280
 #: data/ui/limiter.ui:812 data/ui/loudness.ui:261 data/ui/maximizer.ui:230
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
@@ -238,7 +238,7 @@ msgstr "아웃풋"
 #: data/ui/bass_loudness.ui:249 data/ui/compressor.ui:1161
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:246 data/ui/crystalizer.ui:146
 #: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:218
-#: data/ui/equalizer.ui:401 data/ui/exciter.ui:365 data/ui/filter.ui:276
+#: data/ui/equalizer.ui:436 data/ui/exciter.ui:365 data/ui/filter.ui:276
 #: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:280
 #: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
@@ -250,7 +250,7 @@ msgstr "플러그인 아웃풋 게인"
 #: data/ui/bass_loudness.ui:312 data/ui/compressor.ui:1224
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:309 data/ui/crystalizer.ui:201
 #: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:281
-#: data/ui/equalizer.ui:464 data/ui/equalizer_band.ui:223
+#: data/ui/equalizer.ui:499 data/ui/equalizer_band.ui:223
 #: data/ui/equalizer_band.ui:295 data/ui/exciter.ui:458 data/ui/filter.ui:339
 #: data/ui/gate.ui:1392 data/ui/limiter.ui:894 data/ui/loudness.ui:343
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
@@ -262,7 +262,7 @@ msgstr "리셋"
 #: data/ui/autogain.ui:552 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:326 data/ui/compressor.ui:1238
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:323 data/ui/deesser.ui:657
-#: data/ui/delay.ui:415 data/ui/echo_canceller.ui:295 data/ui/equalizer.ui:478
+#: data/ui/delay.ui:415 data/ui/echo_canceller.ui:295 data/ui/equalizer.ui:513
 #: data/ui/exciter.ui:472 data/ui/filter.ui:353 data/ui/gate.ui:1406
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
@@ -958,9 +958,10 @@ msgstr ""
 msgid "Calculate Frequencies"
 msgstr ""
 
-#: data/ui/equalizer.ui:273
-msgid "Load APO Preset"
-msgstr ""
+#: data/ui/equalizer.ui:280 src/presets_menu.cpp:102
+#, fuzzy
+msgid "Import Preset"
+msgstr "프리셋 임포트"
 
 #: data/ui/equalizer_band.ui:109
 msgid "Bell"
@@ -2271,13 +2272,13 @@ msgstr "Impulse 파일 목록"
 msgid "Import Impulse File"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:350
-#: src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:362
+#: src/equalizer_ui.cpp:551 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:350
-#: src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:362
+#: src/equalizer_ui.cpp:551 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr ""
 
@@ -2323,19 +2324,35 @@ msgstr "EasyEffects"
 msgid "infinity"
 msgstr "무한대"
 
-#: src/equalizer_ui.cpp:349
+#: src/equalizer_ui.cpp:361
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "APO 프리셋 파일 임포트"
 
-#: src/equalizer_ui.cpp:355
+#: src/equalizer_ui.cpp:367
 #, fuzzy
 msgid "APO Presets"
 msgstr "APO 프리셋"
 
-#: src/equalizer_ui.cpp:369
+#: src/equalizer_ui.cpp:385
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
+msgstr ""
+
+#: src/equalizer_ui.cpp:550
+#, fuzzy
+msgid "Import GraphicEQ Preset File"
+msgstr "APO 프리셋 파일 임포트"
+
+#: src/equalizer_ui.cpp:556
+#, fuzzy
+msgid "GraphicEQ Presets"
+msgstr "프리셋 임포트"
+
+#: src/equalizer_ui.cpp:574
+msgid ""
+"GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
+"Content."
 msgstr ""
 
 #: src/pipe_manager_box.cpp:327
@@ -2354,11 +2371,6 @@ msgstr "출력 게인"
 #: src/plugins_menu.cpp:154
 msgid "Add"
 msgstr ""
-
-#: src/presets_menu.cpp:102
-#, fuzzy
-msgid "Import Preset"
-msgstr "프리셋 임포트"
 
 #: src/rnnoise_ui.cpp:89
 msgid ""
