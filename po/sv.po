@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-10 14:59+0000\n"
+"POT-Creation-Date: 2022-09-12 15:31-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -546,7 +546,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Typ av sidokedja"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:653
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
 msgid "Input Device"
 msgstr "Ingångsenhet"
 
@@ -2273,11 +2273,11 @@ msgstr "Lista över impulsfiler"
 msgid "Failed To Load The Impulse File"
 msgstr "Sök impulsfil"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:654
+#: src/effects_box.cpp:263 src/plugins_box.cpp:633
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:674
+#: src/effects_box.cpp:286 src/plugins_box.cpp:653
 msgid "Players"
 msgstr ""
 
@@ -2309,16 +2309,16 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr ""
 
-#: src/plugins_box.cpp:608
+#: src/plugins_box.cpp:585
 msgid "Remove"
 msgstr "Ta bort"
 
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:654
 #, fuzzy
 msgid "Output Device"
 msgstr "Ingångsförstärkning (dB)"
 
-#: src/plugins_menu.cpp:160
+#: src/plugins_menu.cpp:154
 msgid "Add"
 msgstr ""
 

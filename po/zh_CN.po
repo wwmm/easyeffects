@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-10 14:59+0000\n"
+"POT-Creation-Date: 2022-09-12 15:31-0300\n"
 "PO-Revision-Date: 2022-09-08 12:16+0000\n"
 "Last-Translator: Eric <hamburger1024@firemail.cc>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -537,7 +537,7 @@ msgstr "外部"
 msgid "Sidechain Type"
 msgstr "侧链类型"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:653
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
 msgid "Input Device"
 msgstr "输入设备"
 
@@ -2180,11 +2180,11 @@ msgstr "未加载脉冲文件"
 msgid "Failed To Load The Impulse File"
 msgstr "加载脉冲文件失败"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:654
+#: src/effects_box.cpp:263 src/plugins_box.cpp:633
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:674
+#: src/effects_box.cpp:286 src/plugins_box.cpp:653
 msgid "Players"
 msgstr "播放器"
 
@@ -2213,15 +2213,15 @@ msgstr "APO 预设没加载成功。可能是文件格式有错。请检查文�
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
 
-#: src/plugins_box.cpp:608
+#: src/plugins_box.cpp:585
 msgid "Remove"
 msgstr "删除"
 
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:654
 msgid "Output Device"
 msgstr "输出设备"
 
-#: src/plugins_menu.cpp:160
+#: src/plugins_menu.cpp:154
 msgid "Add"
 msgstr "添加"
 

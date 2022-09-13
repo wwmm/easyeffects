@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-10 14:59+0000\n"
-"PO-Revision-Date: 2022-08-17 04:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"POT-Creation-Date: 2022-09-12 15:31-0300\n"
+"PO-Revision-Date: 2022-09-13 08:16+0000\n"
+"Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -45,7 +45,7 @@ msgstr "Profile"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Włącz/wyłącz tą aplikację"
 
 #: data/ui/app_info.ui:213
 #, fuzzy
@@ -54,47 +54,43 @@ msgstr "Włącz"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Lista aplikacji wykluczonych: Dodaj/usuń tę aplikację"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "Wyklucz"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
-#, fuzzy
 msgid "Mute Application"
-msgstr "Programy"
+msgstr "Wycisz aplikację"
 
 #: data/ui/app_info.ui:270
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "Zmień głośność tej aplikacji"
 
 #: data/ui/app_info.ui:272
-#, fuzzy
 msgid "Application Volume"
-msgstr "Programy"
+msgstr "Głośność aplikacji"
 
 #: data/ui/application_window.ui:6
 msgid "_Preferences"
-msgstr ""
+msgstr "_Ustawienia"
 
 #: data/ui/application_window.ui:10
 msgid "_Manual"
-msgstr ""
+msgstr "_Instrukcja"
 
 #: data/ui/application_window.ui:14
 msgid "_Shortcuts"
-msgstr ""
+msgstr "_Skróty"
 
 #: data/ui/application_window.ui:20
-#, fuzzy
 msgid "_Reset Settings"
-msgstr "Ustawienia"
+msgstr "_Resetuj Ustawienia"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About EasyEffects"
-msgstr "EasyEffects"
+msgstr "_O EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -103,70 +99,64 @@ msgid "Presets"
 msgstr "Profile"
 
 #: data/ui/application_window.ui:54
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Profile"
+msgstr "Menu Profili"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "Włącz/wyłącz globalne ominięcie"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
-msgstr ""
+msgstr "Ominięcie globalne"
 
 #: data/ui/application_window.ui:76
 msgid "Primary Menu"
-msgstr ""
+msgstr "Menu główne"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "EasyEffects Window"
-msgstr "EasyEffects"
+msgstr "Okno EasyEffects"
 
 #: data/ui/apps_box.ui:17
-#, fuzzy
 msgid "Applications List"
-msgstr "Programy"
+msgstr "Lista aplikacji"
 
 #: data/ui/apps_box.ui:27
-#, fuzzy
 msgid "Empty List"
-msgstr "Gołe ściany"
+msgstr "Pusta lista"
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Programy"
+msgstr "Brak aplikacji audio"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
 msgstr "Cel"
 
 #: data/ui/autogain.ui:63
-#, fuzzy
 msgid "Maximum History"
-msgstr "Maksymalne wzmocnienie"
+msgstr "Maksymalna historia"
 
 #: data/ui/autogain.ui:97
 msgid "Reference"
-msgstr ""
+msgstr "Punkt odniesienia"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:150
 msgid "Momentary"
-msgstr ""
+msgstr "Tymczasowe"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:180
 msgid "Short-Term"
-msgstr ""
+msgstr "Krótkie"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:210
 msgid "Integrated"
-msgstr ""
+msgstr "Zintegrowane"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "Średnia geometryczna (MSI)"
 
 #: data/ui/autogain.ui:113
 msgid "Geometric Mean (MS)"
@@ -582,7 +572,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Łańcuch boczny"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:653
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
 #, fuzzy
 msgid "Input Device"
 msgstr "Urządzenie wejściowe"
@@ -2385,11 +2375,11 @@ msgstr "Płaska odpowiedź"
 msgid "Failed To Load The Impulse File"
 msgstr "Nie można załadować pliku Impulse"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:654
+#: src/effects_box.cpp:263 src/plugins_box.cpp:633
 msgid "Recorders"
 msgstr "Rejestratory"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:674
+#: src/effects_box.cpp:286 src/plugins_box.cpp:653
 msgid "Players"
 msgstr "Odtwarzacze"
 
@@ -2419,16 +2409,16 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr ""
 
-#: src/plugins_box.cpp:608
+#: src/plugins_box.cpp:585
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:654
 #, fuzzy
 msgid "Output Device"
 msgstr "Wzmocnienie wej."
 
-#: src/plugins_menu.cpp:160
+#: src/plugins_menu.cpp:154
 msgid "Add"
 msgstr "Dodaj"
 
