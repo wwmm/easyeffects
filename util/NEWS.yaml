@@ -6,6 +6,7 @@ Description:
 - Features∶
 - It is now possible to add more than one filter instance to the effects pipeline.
 - Improved compatibility with Linux Studio Plugins `1.2.3`.
+- GraphicEQ presets can be imported into the Equalizer effect.
 - The documentation has been updated.
 
 - Bug fixes∶

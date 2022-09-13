@@ -242,7 +242,7 @@
 
                                 <child>
                                     <object class="GtkBox">
-                                        <property name="spacing">12</property>
+                                        <property name="spacing">18</property>
                                         <property name="orientation">vertical</property>
                                         <property name="valign">center</property>
                                         <child>
@@ -268,11 +268,46 @@
                                             </object>
                                         </child>
 
+                                        <!-- Import EQ Presets Section -->
                                         <child>
-                                            <object class="GtkButton" id="import_apo">
-                                                <property name="label" translatable="yes">Load APO Preset</property>
+                                            <object class="GtkBox">
+                                                <property name="spacing">6</property>
+                                                <property name="orientation">vertical</property>
                                                 <property name="valign">center</property>
-                                                <signal name="clicked" handler="on_import_apo_preset_clicked" object="EqualizerBox" />
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Import Preset</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <property name="orientation">vertical</property>
+                                                        <property name="valign">center</property>
+
+                                                        <style>
+                                                            <class name="linked" />
+                                                        </style>
+
+                                                        <child>
+                                                            <object class="GtkButton" id="import_apo">
+                                                                <property name="label">APO</property>
+                                                                <property name="valign">center</property>
+                                                                <signal name="clicked" handler="on_import_apo_preset_clicked" object="EqualizerBox" />
+                                                            </object>
+                                                        </child>
+
+                                                        <child>
+                                                            <object class="GtkButton" id="import_geq">
+                                                                <property name="label">GraphicEQ</property>
+                                                                <property name="valign">center</property>
+                                                                <signal name="clicked" handler="on_import_geq_preset_clicked" object="EqualizerBox" />
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
                                     </object>
