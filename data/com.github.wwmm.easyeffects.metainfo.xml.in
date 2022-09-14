@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop-application">
   <id>@APP_ID@.desktop</id>
-  <name>EasyEffects</name>
+  <name>Easy Effects</name>
   <summary>Audio Effects for PipeWire Applications</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <developer_name>Wellington Wallace</developer_name>
   <description>
-    <p>EasyEffects is an advanced audio manipulation tool. It includes an equalizer, limiter, compressor and a reverberation tool, just to mention a few. To complement this there is also a built in spectrum analyzer.</p>
-    <p>EasyEffects is the successor to PulseEffects. EasyEffects only supports PipeWire's audio server. PulseAudio users should instead use PulseEffects.</p>
-    <p>Because EasyEffects uses the default PipeWire sound server it will work with most, if not all, applications you use. All supported applications are presented in the main window, where each can be enabled individually.</p>
-    <p>Besides manipulating sound output, EasyEffects is able to apply effects to an input device, such as a microphone. This is, for example, useful in audio recording, but it also works well during voice conversations.</p>
-    <p>When EasyEffects is launched it will conveniently remember the configuration used in the last session. It is also possible to save all the current settings as profiles.</p>
+    <p>Easy Effects is an advanced audio manipulation tool. It includes an equalizer, limiter, compressor and a reverberation tool, just to mention a few. To complement this there is also a built in spectrum analyzer.</p>
+    <p>Easy Effects is the successor to PulseEffects. Easy Effects only supports PipeWire's audio server. PulseAudio users should instead use PulseEffects.</p>
+    <p>Because Easy Effects uses the default PipeWire sound server it will work with most, if not all, applications you use. All supported applications are presented in the main window, where each can be enabled individually.</p>
+    <p>Besides manipulating sound output, Easy Effects is able to apply effects to an input device, such as a microphone. This is, for example, useful in audio recording, but it also works well during voice conversations.</p>
+    <p>When Easy Effects is launched it will conveniently remember the configuration used in the last session. It is also possible to save all the current settings as profiles.</p>
   </description>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
   <url type="help">https://github.com/wwmm/easyeffects/blob/master/README.md</url>
-  <translation type="gettext">EasyEffects</translation>
+  <translation type="gettext">Easy Effects</translation>
   <screenshots>
     <screenshot type="default">
       <caption>The main page showing two audio output apps</caption>

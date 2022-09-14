@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This ugly script helps to build a new version of EasyEffects
+# This ugly script helps to build a new version of Easy Effects
 # Currently for DEB package only
 # Author: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 
@@ -27,9 +27,9 @@ git_sync_upstream(){
 	if ! git remote -v | grep -q "$git_upstream_url"; then
 		git remote add upstream "$git_upstream_url"
 	fi
-	
+
 	git fetch upstream
-	
+
 	# git merge returns 0 only if merge was successful
 	if git merge upstream/master
 		then
@@ -72,7 +72,7 @@ check_fuzzy_po(){
 			else
 				echo "No fuzzies found in localization ${lang}"
 		fi
-		
+
 		if grep -q "^#, fuzzy" "help/${lang}/${lang}.po"
 			then
 				read -p "Fuzzies FOUND in help ${lang}"
