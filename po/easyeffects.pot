@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 22:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,7 +84,7 @@ msgid "_Reset Settings"
 msgstr ""
 
 #: data/ui/application_window.ui:26
-msgid "_About EasyEffects"
+msgid "_About Easy Effects"
 msgstr ""
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
@@ -110,7 +110,7 @@ msgid "Primary Menu"
 msgstr ""
 
 #: data/ui/application_window.ui:91
-msgid "EasyEffects Window"
+msgid "Easy Effects Window"
 msgstr ""
 
 #: data/ui/apps_box.ui:17
@@ -1421,7 +1421,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
-"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
 
@@ -1956,7 +1956,7 @@ msgid "Overview"
 msgstr ""
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the EasyEffects Manual"
+msgid "Open the Easy Effects Manual"
 msgstr ""
 
 #: data/ui/shortcuts.ui:23
@@ -1968,7 +1968,7 @@ msgid "Close the Window"
 msgstr ""
 
 #: data/ui/shortcuts.ui:37
-msgid "Quit EasyEffects"
+msgid "Quit Easy Effects"
 msgstr ""
 
 #: data/ui/stereo_tools.ui:79
@@ -2092,7 +2092,7 @@ msgid "Audio effects for PipeWire applications"
 msgstr ""
 
 #: src/application.cpp:499
-msgid "Quit EasyEffects. Useful when running in service mode."
+msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
 #: src/application.cpp:502
@@ -2100,7 +2100,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
 #: src/application.cpp:505
-msgid "Reset EasyEffects."
+msgid "Reset Easy Effects."
 msgstr ""
 
 #: src/application.cpp:508

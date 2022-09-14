@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 22:56+0000\n"
 "PO-Revision-Date: 2022-07-22 16:18+0000\n"
 "Last-Translator: IDeathByte <wwconstantin@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
@@ -21,7 +21,8 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-msgid "EasyEffects"
+#, fuzzy
+msgid "Easy Effects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
@@ -33,8 +34,9 @@ msgid "Wellington Wallace"
 msgstr "Веллингтон Уоллис"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
+#, fuzzy
 msgid ""
-"EasyEffects is an advanced audio manipulation tool. It includes an "
+"Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
@@ -44,8 +46,9 @@ msgstr ""
 "анализатор аудиоспектра."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
+#, fuzzy
 msgid ""
-"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
 "EasyEffects является наследником PulseEffects. EasyEffects поддерживает "
@@ -53,9 +56,10 @@ msgstr ""
 "продолжать использовать PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
+#, fuzzy
 msgid ""
-"Because EasyEffects uses the default PipeWire sound server it will work with "
-"most, if not all, applications you use. All supported applications are "
+"Because Easy Effects uses the default PipeWire sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
 "Так как EasyEffects использует стандартный сервер PipeWire, программа будет "
@@ -64,8 +68,9 @@ msgstr ""
 "индивидуально."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+#, fuzzy
 msgid ""
-"Besides manipulating sound output, EasyEffects is able to apply effects to "
+"Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
@@ -74,10 +79,11 @@ msgstr ""
 "это может быть полезно во время аудиозаписи или голосовой конференции."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
+#, fuzzy
 msgid ""
-"When EasyEffects is launched it will conveniently remember the configuration "
-"used in the last session. It is also possible to save all the current "
-"settings as profiles."
+"When Easy Effects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
 msgstr ""
 "При запуске, EasyEffects автоматически подгрузит ваши настройки из "
 "предыдущей сессии. Также вы можете сохранить ваши текущие настройки в "
