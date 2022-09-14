@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 22:56+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -88,7 +88,8 @@ msgid "_Reset Settings"
 msgstr "Ayarları _Sıfırla"
 
 #: data/ui/application_window.ui:26
-msgid "_About EasyEffects"
+#, fuzzy
+msgid "_About Easy Effects"
 msgstr "EasyEffects _Hakkında"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
@@ -115,7 +116,8 @@ msgid "Primary Menu"
 msgstr "Ana Menü"
 
 #: data/ui/application_window.ui:91
-msgid "EasyEffects Window"
+#, fuzzy
+msgid "Easy Effects Window"
 msgstr "EasyEffects Penceresi"
 
 #: data/ui/apps_box.ui:17
@@ -1506,7 +1508,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
-"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
 
@@ -2058,7 +2060,8 @@ msgid "Overview"
 msgstr "Genel Görünüm"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the EasyEffects Manual"
+#, fuzzy
+msgid "Open the Easy Effects Manual"
 msgstr "EasyEffects Kılavuzunu Aç"
 
 #: data/ui/shortcuts.ui:23
@@ -2070,7 +2073,8 @@ msgid "Close the Window"
 msgstr "Pencereyi Kapat"
 
 #: data/ui/shortcuts.ui:37
-msgid "Quit EasyEffects"
+#, fuzzy
+msgid "Quit Easy Effects"
 msgstr "EasyEffects'ten Çık"
 
 #: data/ui/stereo_tools.ui:79
@@ -2196,7 +2200,8 @@ msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire uygulamaları için ses efektleri"
 
 #: src/application.cpp:499
-msgid "Quit EasyEffects. Useful when running in service mode."
+#, fuzzy
+msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "EasyEffects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
 #: src/application.cpp:502
@@ -2204,7 +2209,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
 
 #: src/application.cpp:505
-msgid "Reset EasyEffects."
+#, fuzzy
+msgid "Reset Easy Effects."
 msgstr "EasyEffects’i Sıfırla."
 
 #: src/application.cpp:508

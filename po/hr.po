@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 22:56+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -96,7 +96,7 @@ msgstr "Postavke"
 
 #: data/ui/application_window.ui:26
 #, fuzzy
-msgid "_About EasyEffects"
+msgid "_About Easy Effects"
 msgstr "EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
@@ -125,7 +125,7 @@ msgstr ""
 
 #: data/ui/application_window.ui:91
 #, fuzzy
-msgid "EasyEffects Window"
+msgid "Easy Effects Window"
 msgstr "EasyEffects"
 
 #: data/ui/apps_box.ui:17
@@ -1571,7 +1571,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
-"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
 
@@ -2164,7 +2164,7 @@ msgstr "Ulazni uređaj"
 
 #: data/ui/shortcuts.ui:16
 #, fuzzy
-msgid "Open the EasyEffects Manual"
+msgid "Open the Easy Effects Manual"
 msgstr "EasyEffects"
 
 #: data/ui/shortcuts.ui:23
@@ -2177,7 +2177,7 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:37
 #, fuzzy
-msgid "Quit EasyEffects"
+msgid "Quit Easy Effects"
 msgstr "EasyEffects"
 
 #: data/ui/stereo_tools.ui:79
@@ -2317,7 +2317,8 @@ msgid "Audio effects for PipeWire applications"
 msgstr "Zvučni efekti za Pulseaudio aplikacije"
 
 #: src/application.cpp:499
-msgid "Quit EasyEffects. Useful when running in service mode."
+#, fuzzy
+msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Zatvori EasyEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
 
@@ -2327,7 +2328,7 @@ msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
 #: src/application.cpp:505
 #, fuzzy
-msgid "Reset EasyEffects."
+msgid "Reset Easy Effects."
 msgstr "EasyEffects"
 
 #: src/application.cpp:508

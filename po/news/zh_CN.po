@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 22:56+0000\n"
 "PO-Revision-Date: 2022-08-25 18:21+0000\n"
 "Last-Translator: Hugel <qihu@nfschina.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -21,7 +21,8 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-msgid "EasyEffects"
+#, fuzzy
+msgid "Easy Effects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
@@ -33,8 +34,9 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
+#, fuzzy
 msgid ""
-"EasyEffects is an advanced audio manipulation tool. It includes an "
+"Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
@@ -43,17 +45,19 @@ msgstr ""
 "仪。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
+#, fuzzy
 msgid ""
-"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
 "EasyEffects 是 PulseEffects 的后继版本，但它仅支持 PipeWire 的音频服务器。"
 "PulseAudio 用户应继续使用 PulseEffects。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
+#, fuzzy
 msgid ""
-"Because EasyEffects uses the default PipeWire sound server it will work with "
-"most, if not all, applications you use. All supported applications are "
+"Because Easy Effects uses the default PipeWire sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
 "由于 EasyEffects 默认使用 PipeWire 音频服务器，这意味着它能与大多数 (但并非全"
@@ -61,8 +65,9 @@ msgstr ""
 "以单独管理每款应用程序的音效启用状态。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+#, fuzzy
 msgid ""
-"Besides manipulating sound output, EasyEffects is able to apply effects to "
+"Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
@@ -70,10 +75,11 @@ msgstr ""
 "便在录音和语音通话时发挥作用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
+#, fuzzy
 msgid ""
-"When EasyEffects is launched it will conveniently remember the configuration "
-"used in the last session. It is also possible to save all the current "
-"settings as profiles."
+"When Easy Effects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
 msgstr ""
 "启动 EasyEffects 时，载入上一个会话中使用的配置。 也可以将所有当前设置另存为"
 "配置文件。"
