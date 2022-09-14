@@ -32,7 +32,7 @@
                                         <child>
                                             <object class="AdwPreferencesGroup">
                                                 <property name="title" translatable="yes">Device Management</property>
-                                                <property name="description" translatable="yes">It's recommended to NOT set EasyEffects Sink/Source as Default Device in external applications (e.g. Gnome Settings and Plasma System Settings).</property>
+                                                <property name="description" translatable="yes">It's recommended to NOT set Easy Effects Sink/Source as Default Device in external applications (e.g. Gnome Settings and Plasma System Settings).</property>
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Use Default Input</property>

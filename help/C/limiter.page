@@ -6,7 +6,7 @@
     </info>
     <title>Limiter</title>
     <p>A Limiter is a special type of downward <link xref="compressor" its:withinText="yes">Compressor</link> which does not allow the signal to overtake a predetermined Threshold. Ideally it has a very high compression ratio that takes the amplitude below a ceiling which stands as the maximum output level. For this reason it is usually named "brick-wall limiter".</p>
-    <p>EasyEffects uses the Sidechain Stereo Limiter from Linux Studio Plugins. In most cases it works as a brick-wall limiter, but it offers also an additional feature that acts like a Compressor with extreme settings, so the output signal may exceed the specified Threshold.</p>
+    <p>Easy Effects uses the Sidechain Stereo Limiter from Linux Studio Plugins. In most cases it works as a brick-wall limiter, but it offers also an additional feature that acts like a Compressor with extreme settings, so the output signal may exceed the specified Threshold.</p>
     <terms>
         <item>
             <title>

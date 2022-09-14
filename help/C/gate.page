@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Gate</title>
-    <p>The Gate attenuates signals that register below a Threshold. This kind of signal processing is used to reduce disturbing noise between useful signals. EasyEffects uses the Stereo Sidechain Gate from Linux Studio Plugins.</p>
+    <p>The Gate attenuates signals that register below a Threshold. This kind of signal processing is used to reduce disturbing noise between useful signals. Easy Effects uses the Stereo Sidechain Gate from Linux Studio Plugins.</p>
     <section>
         <title>Gate Workflow</title>
         <p>The Gate begins to open when the Sidechain level becomes above the Attack Zone Start level.</p>

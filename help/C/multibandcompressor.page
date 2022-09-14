@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Multiband Compressor</title>
-    <p>EasyEffects uses the Sidechain Multiband Compressor Stereo developed by Linux Studio Plugins. Please refer to the <link xref="compressor" its:withinText="yes">Compressor</link> documentation to comprehend the basic functionality of the dynamic range compression.</p>
+    <p>Easy Effects uses the Sidechain Multiband Compressor Stereo developed by Linux Studio Plugins. Please refer to the <link xref="compressor" its:withinText="yes">Compressor</link> documentation to comprehend the basic functionality of the dynamic range compression.</p>
     <section>
         <title>Global Options</title>
         <terms>

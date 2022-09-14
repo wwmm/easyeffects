@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Crossfeed</title>
-    <p>EasyEffects uses the Crossfeed by bs2b. This plugin is used to improve headphone listening of stereo audio records. It does so by mixing the left and right channel in a way that simulates a stereo speaker setup while using headphones.</p>
+    <p>Easy Effects uses the Crossfeed by bs2b. This plugin is used to improve headphone listening of stereo audio records. It does so by mixing the left and right channel in a way that simulates a stereo speaker setup while using headphones.</p>
     <terms>
         <item>
             <title>

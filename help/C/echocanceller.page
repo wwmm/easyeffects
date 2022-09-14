@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins"/>
     </info>
     <title>Echo Canceller</title>
-    <p>The Echo is a reflected sound wave with sufficient magnitude and delay to be detectable as a signal distinct from the source one. An Echo Canceller is used to improve voice quality by preventing Echo from being created or removing it after it has been added to the source signal. EasyEffects uses the Echo Canceller from SpeexDSP library.</p>
+    <p>The Echo is a reflected sound wave with sufficient magnitude and delay to be detectable as a signal distinct from the source one. An Echo Canceller is used to improve voice quality by preventing Echo from being created or removing it after it has been added to the source signal. Easy Effects uses the Echo Canceller from SpeexDSP library.</p>
     <terms>
         <item>
             <title>

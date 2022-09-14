@@ -1,20 +1,20 @@
 /*
- *  Copyright © 2017-2022 Wellington Wallace
+ *  Copyright © 2017-2023 Wellington Wallace
  *
- *  This file is part of EasyEffects.
+ *  This file is part of Easy Effects.
  *
- *  EasyEffects is free software: you can redistribute it and/or modify
+ *  Easy Effects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  EasyEffects is distributed in the hope that it will be useful,
+ *  Easy Effects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "crystalizer.hpp"
@@ -282,7 +282,7 @@ void Crystalizer::bind_band(const int& n) {
 
                                             int index = 0;
 
-                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5), index)) {
+                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
                                               auto self = static_cast<Crystalizer*>(user_data);
 
                                               self->band_intensity.at(index) =
@@ -297,7 +297,7 @@ void Crystalizer::bind_band(const int& n) {
 
                                             int index = 0;
 
-                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5), index)) {
+                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
                                               auto self = static_cast<Crystalizer*>(user_data);
 
                                               self->band_mute.at(index) = g_settings_get_boolean(settings, key) != 0;
@@ -311,7 +311,7 @@ void Crystalizer::bind_band(const int& n) {
 
                                             int index = 0;
 
-                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5), index)) {
+                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
                                               auto self = static_cast<Crystalizer*>(user_data);
 
                                               self->band_bypass.at(index) = g_settings_get_boolean(settings, key) != 0;

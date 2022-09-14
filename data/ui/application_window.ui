@@ -23,14 +23,14 @@
         </section>
         <section>
             <item>
-                <attribute name="label" translatable="yes">_About EasyEffects</attribute>
+                <attribute name="label" translatable="yes">_About Easy Effects</attribute>
                 <attribute name="action">app.about</attribute>
             </item>
         </section>
     </menu>
 
     <template class="ApplicationWindow" parent="AdwApplicationWindow">
-        <property name="title">EasyEffects</property>
+        <property name="title">Easy Effects</property>
         <property name="content">
             <object class="GtkBox">
                 <property name="orientation">vertical</property>
@@ -88,7 +88,7 @@
                 </child>
 
                 <accessibility>
-                    <property name="label" translatable="yes">EasyEffects Window</property>
+                    <property name="label" translatable="yes">Easy Effects Window</property>
                 </accessibility>
             </object>
         </property>

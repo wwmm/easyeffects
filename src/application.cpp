@@ -1,20 +1,20 @@
 /*
- *  Copyright © 2017-2022 Wellington Wallace
+ *  Copyright © 2017-2023 Wellington Wallace
  *
- *  This file is part of EasyEffects.
+ *  This file is part of Easy Effects.
  *
- *  EasyEffects is free software: you can redistribute it and/or modify
+ *  Easy Effects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  EasyEffects is distributed in the hope that it will be useful,
+ *  Easy Effects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "application.hpp"
@@ -489,20 +489,20 @@ void application_init(Application* self) {
 }
 
 auto application_new() -> GApplication* {
-  g_set_application_name("EasyEffects");
+  g_set_application_name("Easy Effects");
 
   auto* app = g_object_new(EE_TYPE_APPLICATION, "application-id",
                            IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id,
                            "flags", G_APPLICATION_HANDLES_COMMAND_LINE, nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "quit", 'q', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
-                                _("Quit EasyEffects. Useful when running in service mode."), nullptr);
+                                _("Quit Easy Effects. Useful when running in service mode."), nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "load-preset", 'l', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
                                 _("Load a preset. Example: easyeffects -l music"), nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "reset", 'r', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
-                                _("Reset EasyEffects."), nullptr);
+                                _("Reset Easy Effects."), nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "hide-window", 'w', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Hide the Window."), nullptr);

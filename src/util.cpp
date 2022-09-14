@@ -1,20 +1,20 @@
 /*
- *  Copyright © 2017-2022 Wellington Wallace
+ *  Copyright © 2017-2023 Wellington Wallace
  *
- *  This file is part of EasyEffects.
+ *  This file is part of Easy Effects.
  *
- *  EasyEffects is free software: you can redistribute it and/or modify
+ *  Easy Effects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  EasyEffects is distributed in the hope that it will be useful,
+ *  Easy Effects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "util.hpp"
@@ -191,7 +191,7 @@ auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean 
 }
 
 auto remove_filename_extension(const std::string& basename) -> std::string {
-  return basename.substr(0, basename.find_last_of('.'));
+  return basename.substr(0U, basename.find_last_of('.'));
 }
 
 auto gchar_array_to_vector(gchar** gchar_array, const bool free_data) -> std::vector<std::string> {

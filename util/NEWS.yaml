@@ -7,6 +7,7 @@ Description:
 - It is now possible to add more than one filter instance to the effects pipeline.
 - Improved compatibility with Linux Studio Plugins `1.2.3`.
 - GraphicEQ presets can be imported into the Equalizer effect.
+- The application name has been changed to `Easy Effects` to adhere to the naming conventions of GNOME Human Interface Guidelines.
 - The documentation has been updated.
 
 - Bug fixes∶

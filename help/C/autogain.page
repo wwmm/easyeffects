@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Auto Gain</title>
-    <p>EasyEffects Autogain is based on the library libebur128 which implements the EBU R 128 standard for loudness normalization. It changes the audio volume to a perceived loudness target that can be customized by the user.</p>
+    <p>Easy Effects Autogain is based on the library libebur128 which implements the EBU R 128 standard for loudness normalization. It changes the audio volume to a perceived loudness target that can be customized by the user.</p>
     <terms>
         <item>
             <title>

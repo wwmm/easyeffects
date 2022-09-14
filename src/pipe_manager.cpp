@@ -1,20 +1,20 @@
 /*
- *  Copyright © 2017-2022 Wellington Wallace
+ *  Copyright © 2017-2023 Wellington Wallace
  *
- *  This file is part of EasyEffects.
+ *  This file is part of Easy Effects.
  *
- *  EasyEffects is free software: you can redistribute it and/or modify
+ *  Easy Effects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  EasyEffects is distributed in the hope that it will be useful,
+ *  Easy Effects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "pipe_manager.hpp"
@@ -369,7 +369,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     int rate = 1;
 
-    if (util::str_to_num(str.substr(delimiter_pos + 1), rate)) {
+    if (util::str_to_num(str.substr(delimiter_pos + 1U), rate)) {
       if (rate != nd->nd_info->rate) {
         nd->nd_info->rate = rate;
 
@@ -379,7 +379,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     float pw_lat = 0.0F;
 
-    if (util::str_to_num(str.substr(0, delimiter_pos), pw_lat)) {
+    if (util::str_to_num(str.substr(0U, delimiter_pos), pw_lat)) {
       if (auto latency = (pw_lat / static_cast<float>(nd->nd_info->rate)); latency != nd->nd_info->latency) {
         nd->nd_info->latency = latency;
 
@@ -509,7 +509,7 @@ void on_node_event_param(void* object,
             if (type_info.name != nullptr) {
               std::string long_name = type_info.name;
 
-              format_str = long_name.substr(long_name.rfind(':') + 1);
+              format_str = long_name.substr(long_name.rfind(':') + 1U);
             }
           }
         }
@@ -1020,10 +1020,8 @@ void on_registry_global(void* data,
         if (const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY)) {
           if (g_strcmp0(key_media_category, "Filter") == 0) {
             if (const auto* key_node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME)) {
-              std::string node_name(key_node_name);
-
-              if (node_name.length() > 3) {
-                if (node_name.substr(0, 2) == "ee_") {
+              if (std::string node_name(key_node_name); node_name.size() > 3U) {
+                if (node_name.substr(0U, 2U) == "ee_") {
                   util::debug("Filter " + node_name + " with id " + util::to_string(id) + " has been added");
                 }
               }
@@ -1065,7 +1063,7 @@ void on_registry_global(void* data,
 
       if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
         util::warning(
-            "An error occurred while retrieving the object serial. The node cannot be handled by EasyEffects.");
+            "An error occurred while retrieving the object serial. The node cannot be handled by Easy Effects.");
         return;
       }
 
@@ -1156,7 +1154,7 @@ void on_registry_global(void* data,
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
-          "An error occurred while retrieving the object serial. This link cannot be handled by EasyEffects.");
+          "An error occurred while retrieving the object serial. This link cannot be handled by Easy Effects.");
       return;
     }
 
@@ -1197,7 +1195,7 @@ void on_registry_global(void* data,
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
-          "An error occurred while retrieving the object serial. This port cannot be handled by EasyEffects.");
+          "An error occurred while retrieving the object serial. This port cannot be handled by Easy Effects.");
       return;
     }
 
@@ -1230,7 +1228,7 @@ void on_registry_global(void* data,
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
-          "An error occurred while retrieving the object serial. This module cannot be handled by EasyEffects.");
+          "An error occurred while retrieving the object serial. This module cannot be handled by Easy Effects.");
       return;
     }
 
@@ -1261,7 +1259,7 @@ void on_registry_global(void* data,
 
     if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
       util::warning(
-          "An error occurred while retrieving the object serial. This client cannot be handled by EasyEffects.");
+          "An error occurred while retrieving the object serial. This client cannot be handled by Easy Effects.");
       return;
     }
 
@@ -1320,7 +1318,7 @@ void on_registry_global(void* data,
 
         if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
           util::warning(
-              "An error occurred while converting the object serial. This device cannot be handled by EasyEffects.");
+              "An error occurred while converting the object serial. This device cannot be handled by Easy Effects.");
           return;
         }
 
@@ -1448,13 +1446,13 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
 
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
-  // loading EasyEffects sink
+  // loading Easy Effects sink
 
   pw_properties* props_sink = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_sink, PW_KEY_APP_ID, tags::app::id);
   pw_properties_set(props_sink, PW_KEY_NODE_NAME, tags::pipewire::ee_sink_name);
-  pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "EasyEffects Sink");
+  pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "Easy Effects Sink");
   pw_properties_set(props_sink, PW_KEY_NODE_VIRTUAL, "true");
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::sink);
@@ -1472,7 +1470,7 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
 
   pw_properties_set(props_source, PW_KEY_APP_ID, tags::app::id);
   pw_properties_set(props_source, PW_KEY_NODE_NAME, tags::pipewire::ee_source_name);
-  pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "EasyEffects Source");
+  pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "Easy Effects Source");
   pw_properties_set(props_source, PW_KEY_NODE_VIRTUAL, "true");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::virtual_source);

@@ -6,7 +6,7 @@
     </info>
     <title>Reverberation</title>
     <p>Reverberation is the phenomenon of persistence of sound after the source has been stopped as a result of multiple reflections of the waves over objects within a closed surface. These reflections build up with each other and decay gradually as they are absorbed by the surfaces of objects in the space enclosed.</p>
-    <p>The Reverberation is different than Echo because the Echo is a reflected sound wave with sufficient magnitude and delay to be detectable as a signal distinct from the source one. To simulate the Reverberation effect, EasyEffects uses the Reverb plugin developed by Calf Studio Gear.</p>
+    <p>The Reverberation is different than Echo because the Echo is a reflected sound wave with sufficient magnitude and delay to be detectable as a signal distinct from the source one. To simulate the Reverberation effect, Easy Effects uses the Reverb plugin developed by Calf Studio Gear.</p>
     <terms>
         <item>
             <title>

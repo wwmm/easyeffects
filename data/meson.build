@@ -44,7 +44,7 @@ data_conf = configuration_data()
 data_conf.set('BIN_DIR', bindir)
 
 data_conf.set('APP_ID', app_id)
-data_conf.set('APP_NAME', 'EasyEffects' + name_suffix)
+data_conf.set('APP_NAME', 'Easy Effects' + name_suffix)
 
 metainfo_file = i18n_mod.merge_file(
   input: configure_file(

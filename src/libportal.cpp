@@ -34,7 +34,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
       // 19 seemingly corresponds to the "cancelled" error which actually means the permission is in a revoked state.
       if (error->code == 19) {
         reason = "Background access has been denied";
-        explanation = "Please allow EasyEffects to ask again with flatpak permission-reset "s + tags::app::id;
+        explanation = "Please allow Easy Effects to ask again with flatpak permission-reset "s + tags::app::id;
       } else {
         reason = "Unknown error";
         explanation = "Please verify your system has a XDG Background Portal implementation running and working.";
@@ -108,7 +108,7 @@ void update_background_portal(const bool& use_autostart) {
     background_flags = XDP_BACKGROUND_FLAG_AUTOSTART;
   }
 
-  auto* reason = g_strdup("EasyEffects Background Access");
+  auto* reason = g_strdup("Easy Effects Background Access");
 
   // libportal portal request
   xdp_portal_request_background(portal, nullptr, reason, command_line, background_flags, nullptr,
