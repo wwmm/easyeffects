@@ -13,7 +13,7 @@
                         <child>
                             <object class="GtkShortcutsShortcut">
                                 <property name="accelerator">F1</property>
-                                <property name="title" translatable="yes">Open the EasyEffects Manual</property>
+                                <property name="title" translatable="yes">Open the Easy Effects Manual</property>
                             </object>
                         </child>
 
@@ -34,7 +34,7 @@
                         <child>
                             <object class="GtkShortcutsShortcut">
                                 <property name="accelerator">&lt;Ctrl&gt;q</property>
-                                <property name="title" translatable="yes">Quit EasyEffects</property>
+                                <property name="title" translatable="yes">Quit Easy Effects</property>
                             </object>
                         </child>
                     </object>
