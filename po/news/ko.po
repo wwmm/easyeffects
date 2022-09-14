@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 23:12+0000\n"
 "PO-Revision-Date: 2022-09-14 23:05+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/"
@@ -20,7 +20,8 @@ msgstr ""
 "X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-msgid "EasyEffects"
+#, fuzzy
+msgid "Easy Effects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
@@ -32,8 +33,9 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
+#, fuzzy
 msgid ""
-"EasyEffects is an advanced audio manipulation tool. It includes an "
+"Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
@@ -42,17 +44,19 @@ msgstr ""
 "펙트럼 분석기도 내장되어 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
+#, fuzzy
 msgid ""
-"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
 "EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire 만"
 "을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 사용하십시오."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
+#, fuzzy
 msgid ""
-"Because EasyEffects uses the default PipeWire sound server it will work with "
-"most, if not all, applications you use. All supported applications are "
+"Because Easy Effects uses the default PipeWire sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
 "EasyEffects는 기본 PipeWire 사운드 서버를 사용하므로 대부분의 응용 프로그램에"
@@ -60,8 +64,9 @@ msgstr ""
 "으로 활성화할 수 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+#, fuzzy
 msgid ""
-"Besides manipulating sound output, EasyEffects is able to apply effects to "
+"Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
@@ -70,10 +75,11 @@ msgstr ""
 "과를 발휘합니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
+#, fuzzy
 msgid ""
-"When EasyEffects is launched it will conveniently remember the configuration "
-"used in the last session. It is also possible to save all the current "
-"settings as profiles."
+"When Easy Effects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
 msgstr ""
 "EasyEffects를 시작하면 마지막 세션에서 사용된 설정이 적용됩니다. 현재 설정을 "
 "모두 프로파일로 저장할 수도 있습니다."
@@ -804,62 +810,50 @@ msgid ""
 "before are now required"
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
-msgid "Easy Effects"
-msgstr "EasyEffects"
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
-msgid ""
-"Easy Effects is an advanced audio manipulation tool. It includes an "
-"equalizer, limiter, compressor and a reverberation tool, just to mention a "
-"few. To complement this there is also a built in spectrum analyzer."
-msgstr ""
-"EasyEffects는 고급 오디오 처리 도구 입니다. 이퀄라이저, 리미터, 컴프레서, 리"
-"버브 툴 등이 포함되며, 이외에도 여러가지 플러그인이 있습니다. 예를 들자면 스"
-"펙트럼 분석기도 내장되어 있습니다."
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects는 고급 오디오 처리 도구 입니다. 이퀄라이저, 리미터, 컴프레서, "
+#~ "리버브 툴 등이 포함되며, 이외에도 여러가지 플러그인이 있습니다. 예를 들자"
+#~ "면 스펙트럼 분석기도 내장되어 있습니다."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-#, fuzzy
-msgid ""
-"Easy Effects is the successor to PulseEffects. Easy Effects only supports "
-"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
-msgstr ""
-"EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire 만"
-"을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 사용하십시오."
+#~ msgid ""
+#~ "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+#~ "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+#~ msgstr ""
+#~ "EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire "
+#~ "만을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 사용하십시오."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
-msgid ""
-"Because Easy Effects uses the default PipeWire sound server it will work "
-"with most, if not all, applications you use. All supported applications are "
-"presented in the main window, where each can be enabled individually."
-msgstr ""
-"EasyEffects는 기본 PipeWire 사운드 서버를 사용하므로 대부분의 응용 프로그램에"
-"서 작동합니다. 지원되는 모든 응용 프로그램은 메인 화면에 표시되며 각각 개별적"
-"으로 활성화할 수 있습니다."
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "EasyEffects는 기본 PipeWire 사운드 서버를 사용하므로 대부분의 응용 프로그"
+#~ "램에서 작동합니다. 지원되는 모든 응용 프로그램은 메인 화면에 표시되며 각"
+#~ "각 개별적으로 활성화할 수 있습니다."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
-msgid ""
-"Besides manipulating sound output, Easy Effects is able to apply effects to "
-"an input device, such as a microphone. This is, for example, useful in audio "
-"recording, but it also works well during voice conversations."
-msgstr ""
-"EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 음향효"
-"과를 걸 수 있습니다. 예를 들어 오디오 녹음 할 때 유용하며 음성 대화 시에도 효"
-"과를 발휘합니다."
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 음"
+#~ "향효과를 걸 수 있습니다. 예를 들어 오디오 녹음 할 때 유용하며 음성 대화 시"
+#~ "에도 효과를 발휘합니다."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
-msgid ""
-"When Easy Effects is launched it will conveniently remember the "
-"configuration used in the last session. It is also possible to save all the "
-"current settings as profiles."
-msgstr ""
-"EasyEffects를 시작하면 마지막 세션에서 사용된 설정이 적용됩니다. 현재 설정을 "
-"모두 프로파일로 저장할 수도 있습니다."
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "EasyEffects를 시작하면 마지막 세션에서 사용된 설정이 적용됩니다. 현재 설정"
+#~ "을 모두 프로파일로 저장할 수도 있습니다."
 
 #~ msgid "This release adds the following features:"
 #~ msgstr "이 릴리스에는 다음 기능이 추가되었습니다:"
