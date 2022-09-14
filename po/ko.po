@@ -26,15 +26,17 @@ msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "이퀄라이저, 컴프레서 그리고 기타 오디오 효과"
+msgstr "이퀄라이저, 컴프레서 및 기타 오디오 효과"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "Audio Effects for PipeWire Applications"
-msgstr "PipeWire 에서 작동하는 음향효과 프로그램"
+msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "리미터;컴프레서;리버브;이퀄라이저;자동음량조절;"
+msgstr ""
+"limiter;compressor;reverberation;equalizer;autovolume;리미터;컴프레서;리버브;"
+"이퀄라이저;자동음량조절;반향;잔향;자동음량;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
@@ -43,19 +45,19 @@ msgstr "\"프리셋\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "이 응용프로그램 활성화/비활성화"
 
 #: data/ui/app_info.ui:213
 msgid "Enable"
-msgstr ""
+msgstr "활성화"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "제외된 앱 목록: 이 응용프로그램 추가/제거하기"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "제외하기"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
 msgid "Mute Application"
@@ -63,7 +65,7 @@ msgstr "응용 프로그램 음소거"
 
 #: data/ui/app_info.ui:270
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "이 응용프로그램의 음량 변경하기"
 
 #: data/ui/app_info.ui:272
 msgid "Application Volume"
@@ -71,19 +73,19 @@ msgstr "응용 프로그램 음량"
 
 #: data/ui/application_window.ui:6
 msgid "_Preferences"
-msgstr ""
+msgstr "환경설정(_P)"
 
 #: data/ui/application_window.ui:10
 msgid "_Manual"
-msgstr ""
+msgstr "수동(_M)"
 
 #: data/ui/application_window.ui:14
 msgid "_Shortcuts"
-msgstr ""
+msgstr "단축키(_S)"
 
 #: data/ui/application_window.ui:20
 msgid "_Reset Settings"
-msgstr ""
+msgstr "설정 초기화(_R)"
 
 #: data/ui/application_window.ui:26
 #, fuzzy
@@ -102,7 +104,7 @@ msgstr "프리셋 메뉴"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "전역 바이패스 활성화/비활성화"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -110,7 +112,7 @@ msgstr "전역 Bypass"
 
 #: data/ui/application_window.ui:76
 msgid "Primary Menu"
-msgstr ""
+msgstr "기본 메뉴"
 
 #: data/ui/application_window.ui:91
 #, fuzzy
@@ -123,11 +125,11 @@ msgstr "응용 프로그램 목록"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr ""
+msgstr "빈 목록"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
-msgstr ""
+msgstr "사용 가능한 오디오 응용프로그램 없음"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
@@ -135,7 +137,7 @@ msgstr "대상"
 
 #: data/ui/autogain.ui:63
 msgid "Maximum History"
-msgstr ""
+msgstr "최대 내역"
 
 #: data/ui/autogain.ui:97
 msgid "Reference"
@@ -143,52 +145,48 @@ msgstr "참조"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:150
 msgid "Momentary"
-msgstr "Momentary"
+msgstr "순간"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:180
 msgid "Short-Term"
-msgstr "Short-Term"
+msgstr "단기"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:210
 msgid "Integrated"
-msgstr "Integrated"
+msgstr "통합"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
-msgstr "Geometric Mean"
+msgstr "기하 평균 (MSI)"
 
 #: data/ui/autogain.ui:113
-#, fuzzy
 msgid "Geometric Mean (MS)"
-msgstr "Geometric Mean"
+msgstr "기하 평균 (MS)"
 
 #: data/ui/autogain.ui:114
-#, fuzzy
 msgid "Geometric Mean (MI)"
-msgstr "Geometric Mean"
+msgstr "기하 평균 (MI)"
 
 #: data/ui/autogain.ui:115
-#, fuzzy
 msgid "Geometric Mean (SI)"
-msgstr "Geometric Mean"
+msgstr "기하 평균 (SI)"
 
 #: data/ui/autogain.ui:130
 msgid "Reset History"
-msgstr "히스토리 초기화"
+msgstr "내역 초기화"
 
 #: data/ui/autogain.ui:240
-#, fuzzy
 msgid "Relative"
-msgstr "Relative"
+msgstr "상대적"
 
 #: data/ui/autogain.ui:270
 msgid "Range"
-msgstr "Range"
+msgstr "범위"
 
 #: data/ui/autogain.ui:303 data/ui/bass_loudness.ui:29
 #: src/tags_plugin_name.cpp:46
 msgid "Loudness"
-msgstr "Loudness"
+msgstr "소리의 세기"
 
 #: data/ui/autogain.ui:335
 msgid "Output Gain"
@@ -270,9 +268,8 @@ msgstr "리셋"
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/stereo_tools.ui:734
-#, fuzzy
 msgid "Using"
-msgstr "다음 사용 중"
+msgstr "사용 중"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:599 data/ui/gate.ui:738
 msgid "Device"
@@ -295,60 +292,57 @@ msgstr "프리셋"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr ""
+msgstr "이 자동 불러오기 프리셋 제거하기"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:529 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/gate.ui:668
-#, fuzzy
 msgid "Listen"
-msgstr "듣는 중"
+msgstr "듣기"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr "Blend Harmonics"
+msgstr "고조파 섞기"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr "3rd"
+msgstr "세번째"
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr "2nd"
+msgstr "두번째"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
-#, fuzzy
 msgid "Amount"
-msgstr "Amount"
+msgstr "수량"
 
 #: data/ui/bass_enhancer.ui:142 data/ui/bass_enhancer.ui:424
 #: data/ui/exciter.ui:142 data/ui/exciter.ui:424
-#, fuzzy
 msgid "Harmonics"
-msgstr "Harmonics"
+msgstr "고조파"
 
 #: data/ui/bass_enhancer.ui:177 data/ui/exciter.ui:177
 msgid "Scope"
-msgstr "Scope"
+msgstr "스코프"
 
 #: data/ui/bass_enhancer.ui:211
 msgid "Floor"
-msgstr "Floor"
+msgstr "플로어"
 
 #: data/ui/bass_enhancer.ui:240
 msgid "Floor Value"
-msgstr "Floor Value"
+msgstr "플로어 값"
 
 #: data/ui/bass_loudness.ui:97
 msgid "Link"
-msgstr ""
+msgstr "링크"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
-msgstr ""
+msgstr "응용프로그램 이름"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr "응용 프로그램 제외"
+msgstr "제외된 응용프로그램에 추가하기"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
@@ -372,30 +366,27 @@ msgstr "모드"
 
 #: data/ui/compressor.ui:64 data/ui/multiband_compressor_band.ui:99
 msgid "Downward"
-msgstr "Downward"
+msgstr "아래방향"
 
 #: data/ui/compressor.ui:65 data/ui/multiband_compressor_band.ui:100
 msgid "Upward"
-msgstr "Upward"
+msgstr "윗방향"
 
 #: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
 msgid "Boosting"
 msgstr "증폭"
 
 #: data/ui/compressor.ui:73 data/ui/multiband_compressor_band.ui:88
-#, fuzzy
 msgid "Compression Mode"
-msgstr "Compression Mode"
+msgstr "압축 모드"
 
 #: data/ui/compressor.ui:80 data/ui/multiband_compressor_band.ui:744
-#, fuzzy
 msgid "Boost Threshold"
-msgstr "Boost Threshold"
+msgstr "부스트 한계값"
 
 #: data/ui/compressor.ui:119 data/ui/multiband_compressor_band.ui:700
-#, fuzzy
 msgid "Boost Amount"
-msgstr "Boost Amount"
+msgstr "부스트 양"
 
 #: data/ui/compressor.ui:165 data/ui/gate.ui:60 data/ui/limiter.ui:262
 #: data/ui/limiter.ui:485 data/ui/multiband_compressor_band.ui:186
@@ -412,7 +403,7 @@ msgstr "타임"
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
-msgstr "Threshold"
+msgstr "한계값"
 
 #: data/ui/compressor.ui:212 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
@@ -420,9 +411,8 @@ msgstr "어택 타임"
 
 #: data/ui/compressor.ui:234 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:247
-#, fuzzy
 msgid "Attack Threshold"
-msgstr "Attack Threshold"
+msgstr "어택 한계값"
 
 #: data/ui/compressor.ui:241 data/ui/gate.ui:66 data/ui/limiter.ui:304
 #: data/ui/limiter.ui:522 data/ui/maximizer.ui:96
@@ -436,15 +426,13 @@ msgstr "릴리스 타임"
 
 #: data/ui/compressor.ui:291 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:302
-#, fuzzy
 msgid "Release Threshold"
-msgstr "Release Threshold"
+msgstr "릴리스 한계값"
 
 #: data/ui/compressor.ui:298 data/ui/deesser.ui:333
 #: data/ui/multiband_compressor_band.ui:309
-#, fuzzy
 msgid "Ratio"
-msgstr "Ratio"
+msgstr "비율"
 
 #: data/ui/compressor.ui:335 data/ui/limiter.ui:558
 #: data/ui/multiband_compressor_band.ui:347
@@ -461,28 +449,24 @@ msgstr "Makeup"
 #: data/ui/compressor.ui:405 data/ui/delay.ui:105 data/ui/gate.ui:342
 #: data/ui/multiband_compressor.ui:132 data/ui/multiband_gate.ui:132
 #: data/ui/reverb.ui:208
-#, fuzzy
 msgid "Dry Level"
-msgstr "타겟"
+msgstr "드라이 레벨"
 
 #: data/ui/compressor.ui:440 data/ui/delay.ui:164 data/ui/gate.ui:347
 #: data/ui/multiband_compressor.ui:166 data/ui/multiband_gate.ui:166
 #: data/ui/reverb.ui:242
-#, fuzzy
 msgid "Wet Level"
-msgstr "타겟"
+msgstr "웨트레벨"
 
 #: data/ui/compressor.ui:482 data/ui/compressor.ui:994 data/ui/gate.ui:621
 #: data/ui/gate.ui:1132
-#, fuzzy
 msgid "Sidechain"
-msgstr "Sidechain"
+msgstr "사이드체인"
 
 #: data/ui/compressor.ui:511 data/ui/deesser.ui:48 data/ui/gate.ui:650
 #: data/ui/multiband_compressor_band.ui:468 data/ui/multiband_gate_band.ui:531
-#, fuzzy
 msgid "Peak"
-msgstr "Peak"
+msgstr "피크"
 
 #: data/ui/compressor.ui:512 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
@@ -492,17 +476,16 @@ msgstr "RMS"
 #: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:1003
 #: data/ui/multiband_compressor_band.ui:470
 msgid "Low-Pass"
-msgstr "Low-Pass"
+msgstr "저대역"
 
 #: data/ui/compressor.ui:514 data/ui/multiband_compressor_band.ui:471
-#, fuzzy
 msgid "Uniform"
-msgstr "Uniform"
+msgstr "균일"
 
 #: data/ui/compressor.ui:521 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
 msgid "Sidechain Mode"
-msgstr "Sidechain Mode"
+msgstr "사이드체인 모드"
 
 #: data/ui/compressor.ui:539 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:485 data/ui/multiband_gate_band.ui:548
@@ -517,7 +500,7 @@ msgstr "중간"
 #: data/ui/compressor.ui:550 data/ui/gate.ui:689
 #: data/ui/multiband_compressor_band.ui:497 data/ui/multiband_gate_band.ui:560
 msgid "Side"
-msgstr "Side"
+msgstr "측면"
 
 #: data/ui/compressor.ui:551 data/ui/delay.ui:30 data/ui/equalizer.ui:216
 #: data/ui/gate.ui:690 data/ui/multiband_compressor_band.ui:498
@@ -537,28 +520,27 @@ msgstr "오른쪽"
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:506
 #: data/ui/multiband_gate.ui:71 data/ui/multiband_gate_band.ui:569
 msgid "Sidechain Source"
-msgstr "Sidechain Source"
+msgstr "사이드체인 소스"
 
 #: data/ui/compressor.ui:588 data/ui/equalizer_band.ui:98 data/ui/gate.ui:727
 msgid "Type"
-msgstr "타입"
+msgstr "유형"
 
 #: data/ui/compressor.ui:612
 msgid "Feed-forward"
-msgstr "Feed-forward"
+msgstr "피드 포워드"
 
 #: data/ui/compressor.ui:613
 msgid "Feed-back"
 msgstr "피드백"
 
 #: data/ui/compressor.ui:614 data/ui/gate.ui:752
-#, fuzzy
 msgid "External"
-msgstr "External"
+msgstr "외부"
 
 #: data/ui/compressor.ui:621 data/ui/gate.ui:759
 msgid "Sidechain Type"
-msgstr "Sidechain 타입"
+msgstr "사이드체인 유형"
 
 #: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
 msgid "Input Device"
@@ -576,29 +558,24 @@ msgstr "Reactivity"
 
 #: data/ui/compressor.ui:730 data/ui/gate.ui:868 data/ui/limiter.ui:220
 #: data/ui/multiband_compressor_band.ui:667 data/ui/multiband_gate_band.ui:728
-#, fuzzy
 msgid "Lookahead"
-msgstr "Lookahead"
+msgstr "룩 어헤드"
 
 #: data/ui/compressor.ui:773 data/ui/gate.ui:911
-#, fuzzy
 msgid "Sidechain Filters"
-msgstr "Sidechain Filters"
+msgstr "사이드체인 필터"
 
 #: data/ui/compressor.ui:783 data/ui/gate.ui:921
-#, fuzzy
 msgid "High-Pass"
-msgstr "High-Pass"
+msgstr "고대역"
 
 #: data/ui/compressor.ui:809 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
 #: data/ui/gate.ui:947 data/ui/pipe_manager_box.ui:561
-#, fuzzy
 msgid "Frequency"
-msgstr "Frequency"
+msgstr "진동수"
 
 #: data/ui/compressor.ui:822 data/ui/compressor.ui:878
 #: data/ui/equalizer_band.ui:108 data/ui/gate.ui:960 data/ui/gate.ui:1016
-#, fuzzy
 msgid "Off"
 msgstr "끄기"
 
@@ -618,72 +595,59 @@ msgid "36 dB/oct"
 msgstr ""
 
 #: data/ui/compressor.ui:832 data/ui/gate.ui:970
-#, fuzzy
 msgid "High-Pass Filter Mode"
-msgstr "High-Pass Filter Mode"
+msgstr "고대역 필터 모드"
 
 #: data/ui/compressor.ui:858 data/ui/compressor.ui:914 data/ui/gate.ui:996
 #: data/ui/gate.ui:1052
-#, fuzzy
 msgid "High-Pass Filter Frequency"
-msgstr "High-Pass Filter Frequency"
+msgstr "고대역 필터 진동수"
 
 #: data/ui/compressor.ui:888 data/ui/gate.ui:1026
-#, fuzzy
 msgid "Low-Pass Filter Mode"
-msgstr "Low-Pass Filter Mode"
+msgstr "저대역 필터 모드"
 
 #: data/ui/compressor.ui:940
-#, fuzzy
 msgid "Gain"
-msgstr "Gain"
+msgstr "게인"
 
 #: data/ui/compressor.ui:967 data/ui/gate.ui:1105
-#, fuzzy
 msgid "Envelope"
-msgstr "Envelope"
+msgstr "엔벌로프"
 
 #: data/ui/compressor.ui:1021 data/ui/gate.ui:137 data/ui/gate.ui:1159
 #: data/ui/multiband_gate_band.ui:221
-#, fuzzy
 msgid "Curve"
-msgstr "Curve"
+msgstr "곡선"
 
 #: data/ui/convolver.ui:40
-#, fuzzy
 msgid "L"
 msgstr "L"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:507
-#, fuzzy
 msgid "Left Channel"
 msgstr "좌측 채널"
 
 #: data/ui/convolver.ui:53
-#, fuzzy
 msgid "R"
 msgstr "R"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:518
-#, fuzzy
 msgid "Right Channel"
 msgstr "우측 채널"
 
 #: data/ui/convolver.ui:71
-#, fuzzy
 msgid "Impulses"
 msgstr "Impulses"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
-#, fuzzy
 msgid "Combine"
-msgstr "Combine"
+msgstr "결합하기"
 
 #: data/ui/convolver.ui:86
-#, fuzzy
 msgid "Stereo Width"
-msgstr "Stereo Width"
+msgstr "스테레오 너비"
 
 #: data/ui/convolver.ui:114
 #, fuzzy
@@ -692,87 +656,72 @@ msgstr "스펙트럼"
 
 #: data/ui/convolver.ui:122
 msgid "Log Scale"
-msgstr ""
+msgstr "로그 스케일"
 
 #: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
 msgid "Autogain"
-msgstr ""
+msgstr "오토게인"
 
 #: data/ui/convolver.ui:148
-#, fuzzy
 msgid "Rate"
-msgstr "레이트"
+msgstr "속도"
 
 #: data/ui/convolver.ui:169
-#, fuzzy
 msgid "Samples"
-msgstr "Samples"
+msgstr "샘플"
 
 #: data/ui/convolver.ui:190
-#, fuzzy
 msgid "Duration"
-msgstr "Duration"
+msgstr "재생시간"
 
 #: data/ui/convolver_menu_combine.ui:15
-#, fuzzy
 msgid "Combine Impulse Responses"
-msgstr "Combine Impulse Responses"
+msgstr "Impulse 반응 결합하기"
 
 #: data/ui/convolver_menu_combine.ui:48
-#, fuzzy
 msgid "First Kernel"
-msgstr "First Kernel"
+msgstr "첫 번째 커널"
 
 #: data/ui/convolver_menu_combine.ui:82
-#, fuzzy
 msgid "Second Kernel"
-msgstr "Second Kernel"
+msgstr "두 번째 커널"
 
 #: data/ui/convolver_menu_combine.ui:91
-#, fuzzy
 msgid "Output File Name"
 msgstr "출력 파일 이름"
 
 #: data/ui/convolver_menu_combine.ui:95
-#, fuzzy
 msgid "Combined Kernel Name"
-msgstr "Combined Kernel Name"
+msgstr "결합된 커널 이름"
 
 #: data/ui/convolver_menu_impulses.ui:16
-#, fuzzy
 msgid "Import Impulse"
-msgstr "Import Impulse"
+msgstr "Impulse 가져오기"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
-#, fuzzy
 msgid "Search"
-msgstr "검색"
+msgstr "검색하기"
 
 #: data/ui/convolver_menu_impulses.ui:27
-#, fuzzy
 msgid "Search Impulse File"
-msgstr "Impulse 파일 검색"
+msgstr "Impulse 파일 검색하기"
 
 #: data/ui/convolver_menu_impulses.ui:47
-#, fuzzy
 msgid "Impulse Files List"
 msgstr "Impulse 파일 목록"
 
 #: data/ui/crossfeed.ui:35
-#, fuzzy
 msgid "Default"
 msgstr "기본값"
 
 #: data/ui/crossfeed.ui:58
-#, fuzzy
 msgid "Cutoff"
-msgstr "Cutoff"
+msgstr "컷오프"
 
 #: data/ui/crossfeed.ui:93
-#, fuzzy
 msgid "Feed"
-msgstr "Feed"
+msgstr "피드"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
@@ -786,14 +735,12 @@ msgid "Mute"
 msgstr "음소거"
 
 #: data/ui/deesser.ui:40
-#, fuzzy
 msgid "Detection"
-msgstr "Detection"
+msgstr "탐지"
 
 #: data/ui/deesser.ui:71
-#, fuzzy
 msgid "Wide"
-msgstr "Wide"
+msgstr "와이드"
 
 #: data/ui/deesser.ui:72
 #, fuzzy
@@ -961,9 +908,8 @@ msgid "Calculate Frequencies"
 msgstr ""
 
 #: data/ui/equalizer.ui:280 src/presets_menu.cpp:102
-#, fuzzy
 msgid "Import Preset"
-msgstr "프리셋 임포트"
+msgstr "프리셋 가져오기"
 
 #: data/ui/equalizer_band.ui:109
 msgid "Bell"
@@ -1573,7 +1519,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:191
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "프리셋 자동 로딩"
 
 #: data/ui/pipe_manager_box.ui:232
 #, fuzzy
@@ -1581,23 +1527,20 @@ msgid "Output Devices"
 msgstr "출력 게인"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
-#, fuzzy
 msgid "Output Presets"
-msgstr "APO 프리셋"
+msgstr "출력 프리셋"
 
 #: data/ui/pipe_manager_box.ui:256 data/ui/pipe_manager_box.ui:348
 msgid "Create Association"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:270
-#, fuzzy
 msgid "Add Autoloading Output Preset"
-msgstr "APO 프리셋"
+msgstr "자동 로딩 출력 프리셋 추가하기"
 
 #: data/ui/pipe_manager_box.ui:290
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "APO 프리셋"
+msgstr "출력 자동 로딩 프리셋 목록"
 
 #: data/ui/pipe_manager_box.ui:329
 #, fuzzy
@@ -1605,18 +1548,16 @@ msgid "Input Devices"
 msgstr "장치"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
-#, fuzzy
 msgid "Input Presets"
-msgstr "프리셋 임포트"
+msgstr "입력 프리셋"
 
 #: data/ui/pipe_manager_box.ui:362
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "자동 로딩 입력 프리셋 추가하기"
 
 #: data/ui/pipe_manager_box.ui:381
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "프리셋 임포트"
+msgstr "입력 자동 로딩 프리셋 목록"
 
 #: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
@@ -1920,54 +1861,47 @@ msgstr ""
 
 #: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
 msgid "Load"
-msgstr ""
+msgstr "불러오기"
 
 #: data/ui/preset_row.ui:34
 msgid "Save current settings to this preset file"
-msgstr ""
+msgstr "이 프리셋 파일에 현재 설정 저장하기"
 
 #: data/ui/preset_row.ui:44
 msgid "Remove this preset file"
-msgstr ""
+msgstr "이 프리셋 파일 제거하기"
 
 #: data/ui/presets_menu.ui:51
-#, fuzzy
 msgid "New Output Preset Name"
-msgstr "APO 프리셋"
+msgstr "새 출력 프리셋 이름"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
 msgid "Create a new preset"
-msgstr ""
+msgstr "새 프리셋 만들기"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
-msgstr "프리셋 임포트"
+msgstr "프리셋 가져오기"
 
 #: data/ui/presets_menu.ui:90
-#, fuzzy
 msgid "Search Output Preset"
-msgstr "프리셋 임포트"
+msgstr "출력 프리셋 검색하기"
 
 #: data/ui/presets_menu.ui:151
-#, fuzzy
 msgid "Output Presets List"
-msgstr "APO 프리셋"
+msgstr "출력 프리셋 목록"
 
 #: data/ui/presets_menu.ui:199
-#, fuzzy
 msgid "New Input Preset Name"
-msgstr "프리셋 임포트"
+msgstr "새 입력 프리셋 이름"
 
 #: data/ui/presets_menu.ui:237
-#, fuzzy
 msgid "Search Input Preset"
-msgstr "프리셋 임포트"
+msgstr "입력 프리셋 검색하기"
 
 #: data/ui/presets_menu.ui:298
-#, fuzzy
 msgid "Input Presets List"
-msgstr "프리셋 임포트"
+msgstr "입력 프리셋 목록"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2065,7 +1999,7 @@ msgstr ""
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "모델을 불러오지 않았습니다"
 
 #: data/ui/rnnoise.ui:116
 msgid "Active Model"
@@ -2231,7 +2165,7 @@ msgstr ""
 
 #: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr ""
+msgstr "프리셋을 불러옵니다. 예시: easyeffects -l music"
 
 #: src/application.cpp:505
 #, fuzzy
@@ -2248,7 +2182,7 @@ msgstr ""
 
 #: src/application.cpp:514
 msgid "Show available presets."
-msgstr ""
+msgstr "사용 가능한 프리셋을 표시합니다."
 
 #: src/application_ui.cpp:279
 #, fuzzy
@@ -2268,47 +2202,42 @@ msgid "Only Stereo Impulse Files Are Supported"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:121
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Impulse 파일 목록"
+msgstr "Impulse 파일을 가져오지 않았습니다"
 
 #: src/convolver_menu_impulses.cpp:127
 msgid "Import Impulse File"
-msgstr ""
+msgstr "Impulse 파일 가져오기"
 
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:362
 #: src/equalizer_ui.cpp:551 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
-msgstr ""
+msgstr "열기"
 
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:362
 #: src/equalizer_ui.cpp:551 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
-msgstr ""
+msgstr "취소하기"
 
 #: src/convolver_menu_impulses.cpp:132
 msgid "Impulse Response"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:245
-#, fuzzy
 msgid "Load Impulse"
-msgstr "제거"
+msgstr "Impulse 불러오기"
 
 #: src/convolver_menu_impulses.cpp:248
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "제거"
+msgstr "Impulse 제거하기"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Impulse 파일 목록"
+msgstr "불러온 Impulse 파일 없음"
 
 #: src/convolver_ui.cpp:345
-#, fuzzy
 msgid "Failed To Load The Impulse File"
-msgstr "Impulse 파일 검색"
+msgstr "Impulse 파일을 불러오지 못했습니다"
 
 #: src/effects_box.cpp:263 src/plugins_box.cpp:633
 msgid "Recorders"
@@ -2316,25 +2245,21 @@ msgstr ""
 
 #: src/effects_box.cpp:286 src/plugins_box.cpp:653
 msgid "Players"
-msgstr ""
+msgstr "재생기"
 
 #: src/effects_box.cpp:309
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "효과음"
 
 #: src/equalizer_band_box.cpp:92
-#, fuzzy
 msgid "infinity"
 msgstr "무한대"
 
 #: src/equalizer_ui.cpp:361
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "APO 프리셋 파일 임포트"
+msgstr "APO 프리셋 파일 가져오기"
 
 #: src/equalizer_ui.cpp:367
-#, fuzzy
 msgid "APO Presets"
 msgstr "APO 프리셋"
 
@@ -2342,26 +2267,28 @@ msgstr "APO 프리셋"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
+"APO 프리셋을 불러오지 못했습니다. 파일 형식이 잘못되었을 수 있습니다. 내용을 "
+"확인하십시오."
 
 #: src/equalizer_ui.cpp:550
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "APO 프리셋 파일 임포트"
+msgstr "GraphicEQ 프리셋 파일 가져오기"
 
 #: src/equalizer_ui.cpp:556
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "프리셋 임포트"
+msgstr "GraphicEQ 프리셋"
 
 #: src/equalizer_ui.cpp:574
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
 msgstr ""
+"GraphicEQ 프리셋을 불러오지 못했습니다. 파일 형식이 잘못되었을 수 있습니다. "
+"내용을 확인하십시오."
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
-msgstr ""
+msgstr "자동 로딩 프리셋 제거하기"
 
 #: src/plugins_box.cpp:585
 msgid "Remove"
@@ -2381,6 +2308,8 @@ msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"선택한 모델을 불러오지 못했습니다. 형식이 지원되지 않을 수 있습니다. 표준 모"
+"델로 돌아갔습니다."
 
 #: src/rnnoise_ui.cpp:130
 #, fuzzy
@@ -2485,6 +2414,36 @@ msgstr ""
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:159
 msgid "-inf"
+msgstr ""
+
+#: data/ui/application_window.ui:26
+msgid "_About EasyEffects"
+msgstr "EasyEffects 정보(_A)"
+
+#: data/ui/application_window.ui:91
+msgid "EasyEffects Window"
+msgstr "EasyEffects 윈도우"
+
+#: data/ui/pipe_manager_box.ui:35
+msgid ""
+"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"external applications (e.g. Gnome Settings and Plasma System Settings)."
+msgstr ""
+
+#: data/ui/shortcuts.ui:16
+msgid "Open the EasyEffects Manual"
+msgstr ""
+
+#: data/ui/shortcuts.ui:37
+msgid "Quit EasyEffects"
+msgstr ""
+
+#: src/application.cpp:499
+msgid "Quit EasyEffects. Useful when running in service mode."
+msgstr ""
+
+#: src/application.cpp:505
+msgid "Reset EasyEffects."
 msgstr ""
 
 #, fuzzy
@@ -2695,3 +2654,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "idle"
 #~ msgstr "유휴 상태"
+
+#~ msgid "EasyEffects"
+#~ msgstr "EasyEffects"
