@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2022 Wellington Wallace
  *
- *  This file is part of EasyEffects.
+ *  This file is part of Easy Effects.
  *
- *  EasyEffects is free software: you can redistribute it and/or modify
+ *  Easy Effects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  EasyEffects is distributed in the hope that it will be useful,
+ *  Easy Effects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "test_signals.hpp"
@@ -102,7 +102,7 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
 
   pw_properties_set(props_filter, PW_KEY_APP_ID, tags::app::id);
   pw_properties_set(props_filter, PW_KEY_NODE_NAME, filter_name);
-  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "EasyEffects Filter");
+  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "Easy Effects Filter");
   pw_properties_set(props_filter, PW_KEY_NODE_DRIVER, "true");
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Source");
