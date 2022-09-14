@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 22:56+0000\n"
 "PO-Revision-Date: 2022-09-05 03:16+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -86,7 +86,8 @@ msgid "_Reset Settings"
 msgstr "_Réinitialiser les paramètres"
 
 #: data/ui/application_window.ui:26
-msgid "_About EasyEffects"
+#, fuzzy
+msgid "_About Easy Effects"
 msgstr "_À propos de EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
@@ -112,7 +113,8 @@ msgid "Primary Menu"
 msgstr "Menu principal"
 
 #: data/ui/application_window.ui:91
-msgid "EasyEffects Window"
+#, fuzzy
+msgid "Easy Effects Window"
 msgstr "Fenêtre de EasyEffects"
 
 #: data/ui/apps_box.ui:17
@@ -1443,8 +1445,9 @@ msgid "Device Management"
 msgstr "Gestion des périphériques"
 
 #: data/ui/pipe_manager_box.ui:35
+#, fuzzy
 msgid ""
-"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
 "Il est recommandé de ne PAS définir EasyEffects Sink/Source comme "
@@ -1984,7 +1987,8 @@ msgid "Overview"
 msgstr "Vue d’ensemble"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the EasyEffects Manual"
+#, fuzzy
+msgid "Open the Easy Effects Manual"
 msgstr "Ouvrir le manuel de EasyEffects"
 
 #: data/ui/shortcuts.ui:23
@@ -1996,7 +2000,8 @@ msgid "Close the Window"
 msgstr "Fermer la fenêtre"
 
 #: data/ui/shortcuts.ui:37
-msgid "Quit EasyEffects"
+#, fuzzy
+msgid "Quit Easy Effects"
 msgstr "Quitter EasyEffects"
 
 #: data/ui/stereo_tools.ui:79
@@ -2120,7 +2125,8 @@ msgid "Audio effects for PipeWire applications"
 msgstr "Effets audio pour les applications utilisant PipeWire"
 
 #: src/application.cpp:499
-msgid "Quit EasyEffects. Useful when running in service mode."
+#, fuzzy
+msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Quitter EasyEffects. Utile en cas de fonctionnement en mode serveur."
 
 #: src/application.cpp:502
@@ -2128,7 +2134,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Chargez un préréglage. Exemple : easyeffects -l musique"
 
 #: src/application.cpp:505
-msgid "Reset EasyEffects."
+#, fuzzy
+msgid "Reset Easy Effects."
 msgstr "Réinitialiser EasyEffects."
 
 #: src/application.cpp:508

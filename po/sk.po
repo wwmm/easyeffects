@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 22:56+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -94,7 +94,7 @@ msgstr "Nastavenia"
 
 #: data/ui/application_window.ui:26
 #, fuzzy
-msgid "_About EasyEffects"
+msgid "_About Easy Effects"
 msgstr "Vstupné efekty"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
@@ -122,7 +122,7 @@ msgstr ""
 
 #: data/ui/application_window.ui:91
 #, fuzzy
-msgid "EasyEffects Window"
+msgid "Easy Effects Window"
 msgstr "PulseEffects"
 
 #: data/ui/apps_box.ui:17
@@ -1549,7 +1549,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
-"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
 
@@ -2138,7 +2138,7 @@ msgstr "Server"
 
 #: data/ui/shortcuts.ui:16
 #, fuzzy
-msgid "Open the EasyEffects Manual"
+msgid "Open the Easy Effects Manual"
 msgstr "Obnoviť PulseEffects"
 
 #: data/ui/shortcuts.ui:23
@@ -2152,7 +2152,7 @@ msgstr "Skryť okno"
 
 #: data/ui/shortcuts.ui:37
 #, fuzzy
-msgid "Quit EasyEffects"
+msgid "Quit Easy Effects"
 msgstr "Vstupné efekty"
 
 #: data/ui/stereo_tools.ui:79
@@ -2285,7 +2285,7 @@ msgstr "Zvukové efekty pre aplikácie využívajúce PipeWire"
 
 #: src/application.cpp:499
 #, fuzzy
-msgid "Quit EasyEffects. Useful when running in service mode."
+msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Ukončiť PulseEffect. Užitočné pre beh v režime služby."
 
 #: src/application.cpp:502
@@ -2293,7 +2293,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Načítať predvoľby. Napr.: easyffects -l music"
 
 #: src/application.cpp:505
-msgid "Reset EasyEffects."
+#, fuzzy
+msgid "Reset Easy Effects."
 msgstr "Obnoviť EasyEffects."
 
 #: src/application.cpp:508

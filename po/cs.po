@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 22:54+0000\n"
+"POT-Creation-Date: 2022-09-14 22:56+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -85,7 +85,8 @@ msgid "_Reset Settings"
 msgstr "_Resetovat nastavení"
 
 #: data/ui/application_window.ui:26
-msgid "_About EasyEffects"
+#, fuzzy
+msgid "_About Easy Effects"
 msgstr "_O EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
@@ -111,7 +112,8 @@ msgid "Primary Menu"
 msgstr "Hlavní nabídka"
 
 #: data/ui/application_window.ui:91
-msgid "EasyEffects Window"
+#, fuzzy
+msgid "Easy Effects Window"
 msgstr "Okno EasyEffects"
 
 #: data/ui/apps_box.ui:17
@@ -1513,7 +1515,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
-"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
 
@@ -2092,7 +2094,8 @@ msgid "Overview"
 msgstr "Omezovač vstupu"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the EasyEffects Manual"
+#, fuzzy
+msgid "Open the Easy Effects Manual"
 msgstr "Otevřít manuál EasyEffects"
 
 #: data/ui/shortcuts.ui:23
@@ -2106,7 +2109,7 @@ msgstr "Skrýt Okno"
 
 #: data/ui/shortcuts.ui:37
 #, fuzzy
-msgid "Quit EasyEffects"
+msgid "Quit Easy Effects"
 msgstr "EasyEffects"
 
 #: data/ui/stereo_tools.ui:79
@@ -2238,7 +2241,8 @@ msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pro programy využívající PulseAudio"
 
 #: src/application.cpp:499
-msgid "Quit EasyEffects. Useful when running in service mode."
+#, fuzzy
+msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Ukončit EasyEffects. Užitečné, když běži ve služebním režimu."
 
 #: src/application.cpp:502
@@ -2246,7 +2250,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
 
 #: src/application.cpp:505
-msgid "Reset EasyEffects."
+#, fuzzy
+msgid "Reset Easy Effects."
 msgstr "Vynulovat EasyEffects."
 
 #: src/application.cpp:508
