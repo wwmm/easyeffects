@@ -1,7 +1,7 @@
 <h2 align="center">
-  <img src="data/com.github.wwmm.easyeffects.svg" alt="EasyEffects icon" width="150" height="150"/>
+  <img src="data/com.github.wwmm.easyeffects.svg" alt="Easy Effects icon" width="150" height="150"/>
   <br>
-  EasyEffects
+  Easy Effects
 </h2>
 
 <p align="center">
@@ -37,7 +37,7 @@
   </a>
 </p>
 
-This application was formerly known as PulseEffects, but it was renamed to EasyEffects after it started to use GTK4 and
+This application was formerly known as PulseEffects, but it was renamed to Easy Effects after it started to use GTK4 and
 GStreamer usage was replaced by native PipeWire filters.
 
 ![GitHub Light](images/easyeffects-light-screenshot-1.png#gh-light-mode-only)
@@ -91,7 +91,7 @@ Plugins needed for effects:
 - [rubberband](https://www.breakfastquay.com/rubberband/). For Pitch Shift.
 - [RNNoise](https://github.com/xiph/rnnoise). For Noise Reduction.
 
-Other dependencies include: 
+Other dependencies include:
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
 - [libbs2b](https://sourceforge.net/projects/bs2b/files/libbs2b/)
@@ -104,7 +104,7 @@ Other dependencies include:
 
 ## Donate
 
-You can help me to keep developing EasyEffects through donations. Any amount will be greatly appreciated :-)
+You can help me to keep developing Easy Effects through donations. Any amount will be greatly appreciated :-)
 
 [GitHub Sponsors](https://github.com/sponsors/wwmm)  
 [Liberapay](https://liberapay.com/wwmm)  
@@ -121,16 +121,16 @@ Most up-to-date Linux distributions have an `easyeffects` package that can be in
 
 Alternatively, click here to install via Flatpak:
 
-<a href='https://flathub.org/apps/details/com.github.wwmm.easyeffects'><img width='240' alt='Download EasyEffects on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+<a href='https://flathub.org/apps/details/com.github.wwmm.easyeffects'><img width='240' alt='Download Easy Effects on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
-Flatpak packages support most Linux distributions and are sandboxed. The EasyEffects Flatpak package also includes all available plugins.
+Flatpak packages support most Linux distributions and are sandboxed. The Easy Effects Flatpak package also includes all available plugins.
 
-If your distribution does not yet include packages required to build EasyEffects, Flatpak is a convenient option.
+If your distribution does not yet include packages required to build Easy Effects, Flatpak is a convenient option.
 
 ## Warning
 
-**Don't set** EasyEffects' virtual devices as your default audio input/output.
-EasyEffects is designed assuming that your hardware stays as default.
+**Don't set** Easy Effects' virtual devices as your default audio input/output.
+Easy Effects is designed assuming that your hardware stays as default.
 
 ## Documentation
 
@@ -149,7 +149,7 @@ if you are facing a known issue.
 
 See the wiki: [Community presets](https://github.com/wwmm/easyeffects/wiki/Community-presets)
 
-This page also has instructions for converting PulseEffects presets to EasyEffects presets.
+This page also has instructions for converting PulseEffects presets to Easy Effects presets.
 
 ## Command-line options
 
@@ -159,9 +159,9 @@ See the wiki: [Command Line Options](https://github.com/wwmm/easyeffects/wiki/Co
 
 See the wiki: [Reporting Bugs](https://github.com/wwmm/easyeffects/wiki/Reporting-bugs)
 
-## Translating EasyEffects
+## Translating Easy Effects
 
-See the wiki's [Translating EasyEffects](https://github.com/wwmm/easyeffects/wiki/Translating-EasyEffects) article for detailed instructions.
+See the wiki's [Translating Easy Effects](https://github.com/wwmm/easyeffects/wiki/Translating-EasyEffects) article for detailed instructions.
 
 ## Installing from source
 
@@ -169,9 +169,9 @@ To install from source, see the wiki's [Installing from Source](https://github.c
 
 ## CI artifacts
 
-Flatpak bundles and Arch packages for testing and development purposes are built for PRs and pushes to master. 
+Flatpak bundles and Arch packages for testing and development purposes are built for PRs and pushes to master.
 See the [installation instructions](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#ci-artifacts).
 
 ## License
 
-EasyEffects is licensed under GNU General Public License version 3 or later. See the [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE).
+Easy Effects is licensed under GNU General Public License version 3 or later. See the [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE).
