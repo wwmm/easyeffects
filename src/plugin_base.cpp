@@ -133,7 +133,7 @@ PluginBase::PluginBase(std::string tag,
 
   pf_data.pb = this;
 
-  const auto filter_name = "ee_" + log_tag.substr(0, log_tag.size() - 2U) + "_" + name;
+  const auto filter_name = "ee_" + log_tag.substr(0U, log_tag.size() - 2U) + "_" + name;
 
   pm->lock();
 

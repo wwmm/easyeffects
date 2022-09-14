@@ -194,7 +194,7 @@ void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
   } else {
     // Truncate filename if longer than 100 characters
 
-    if (output_name.length() > 100U) {
+    if (output_name.size() > 100U) {
       output_name.resize(100U);
     }
 

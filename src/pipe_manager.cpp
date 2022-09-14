@@ -369,7 +369,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     int rate = 1;
 
-    if (util::str_to_num(str.substr(delimiter_pos + 1), rate)) {
+    if (util::str_to_num(str.substr(delimiter_pos + 1U), rate)) {
       if (rate != nd->nd_info->rate) {
         nd->nd_info->rate = rate;
 
@@ -379,7 +379,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     float pw_lat = 0.0F;
 
-    if (util::str_to_num(str.substr(0, delimiter_pos), pw_lat)) {
+    if (util::str_to_num(str.substr(0U, delimiter_pos), pw_lat)) {
       if (auto latency = (pw_lat / static_cast<float>(nd->nd_info->rate)); latency != nd->nd_info->latency) {
         nd->nd_info->latency = latency;
 
@@ -509,7 +509,7 @@ void on_node_event_param(void* object,
             if (type_info.name != nullptr) {
               std::string long_name = type_info.name;
 
-              format_str = long_name.substr(long_name.rfind(':') + 1);
+              format_str = long_name.substr(long_name.rfind(':') + 1U);
             }
           }
         }
@@ -1020,8 +1020,8 @@ void on_registry_global(void* data,
         if (const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY)) {
           if (g_strcmp0(key_media_category, "Filter") == 0) {
             if (const auto* key_node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME)) {
-              if (std::string node_name(key_node_name); node_name.length() > 3) {
-                if (node_name.substr(0, 2) == "ee_") {
+              if (std::string node_name(key_node_name); node_name.size() > 3U) {
+                if (node_name.substr(0U, 2U) == "ee_") {
                   util::debug("Filter " + node_name + " with id " + util::to_string(id) + " has been added");
                 }
               }

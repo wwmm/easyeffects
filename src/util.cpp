@@ -191,7 +191,7 @@ auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean 
 }
 
 auto remove_filename_extension(const std::string& basename) -> std::string {
-  return basename.substr(0, basename.find_last_of('.'));
+  return basename.substr(0U, basename.find_last_of('.'));
 }
 
 auto gchar_array_to_vector(gchar** gchar_array, const bool free_data) -> std::vector<std::string> {

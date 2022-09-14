@@ -282,7 +282,7 @@ void Crystalizer::bind_band(const int& n) {
 
                                             int index = 0;
 
-                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5), index)) {
+                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
                                               auto self = static_cast<Crystalizer*>(user_data);
 
                                               self->band_intensity.at(index) =
@@ -297,7 +297,7 @@ void Crystalizer::bind_band(const int& n) {
 
                                             int index = 0;
 
-                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5), index)) {
+                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
                                               auto self = static_cast<Crystalizer*>(user_data);
 
                                               self->band_mute.at(index) = g_settings_get_boolean(settings, key) != 0;
@@ -311,7 +311,7 @@ void Crystalizer::bind_band(const int& n) {
 
                                             int index = 0;
 
-                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5), index)) {
+                                            if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
                                               auto self = static_cast<Crystalizer*>(user_data);
 
                                               self->band_bypass.at(index) = g_settings_get_boolean(settings, key) != 0;

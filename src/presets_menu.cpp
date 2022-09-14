@@ -74,7 +74,7 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
 
   // Truncate if longer than 100 characters
 
-  if (name.length() > 100U) {
+  if (name.size() > 100U) {
     name.resize(100U);
   }
 
