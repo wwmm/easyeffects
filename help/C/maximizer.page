@@ -6,7 +6,7 @@
     </info>
     <title>Maximizer</title>
     <p>The Maximizer is a special type of <link xref="limiter" its:withinText="yes">Limiter</link> that does not only prevent the signal to exceed a specified target level, but also adjusts the average Loudness of the audio track.</p>
-    <p>EasyEffects uses the Maximizer developed by ZamAudio. It acts like an Amplifier that feeds a brick-wall Limiter with a fixed Lookahead of 10 ms adding the corresponding delay to the output signal.</p>
+    <p>Easy Effects uses the Maximizer developed by ZamAudio. It acts like an Amplifier that feeds a brick-wall Limiter with a fixed Lookahead of 10 ms adding the corresponding delay to the output signal.</p>
     <terms>
         <item>
             <title>

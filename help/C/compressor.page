@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Compressor</title>
-    <p>A Compressor is used to reduce the dynamic range or, in other words, the difference in level between the quietest and the loudest parts of an audio signal. It achieves this purpose altering the gain when the signal overtakes a predetermined Threshold. EasyEffects uses the Stereo Sidechain Compressor from Linux Studio Plugins.</p>
+    <p>A Compressor is used to reduce the dynamic range or, in other words, the difference in level between the quietest and the loudest parts of an audio signal. It achieves this purpose altering the gain when the signal overtakes a predetermined Threshold. Easy Effects uses the Stereo Sidechain Compressor from Linux Studio Plugins.</p>
     <section>
         <title>Compressor Options</title>
         <terms>

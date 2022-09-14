@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Stereo Tools</title>
-    <p>EasyEffects uses the Stereo Tools developed by Calf Studio Gear which provides some handy utilities to manage Stereo streams handling Left and Right channels in conjunction with Mid and Side signals.</p>
+    <p>Easy Effects uses the Stereo Tools developed by Calf Studio Gear which provides some handy utilities to manage Stereo streams handling Left and Right channels in conjunction with Mid and Side signals.</p>
     <p>Mid/Side is a recording technique which registers Mid and Side signals rather then plain Left and Right channels. Its basic setup makes use of one cardioid microphone (Mid) and one bidirectional (figure-eight) microphone (Sides). In mastering stage Mid and Side can be used to shape the balance of the Stereo image having more control over the mix to get a wider, deeper, and more focused track.</p>
     <p>Having a Stereo stream, Mid is obtained summing both channels <code its:withinText="nested">(L+R)</code> while Side is the result of the difference between Left and Right <code its:withinText="nested">(L-R)</code>. Mid and Side signals can be decoded back to Left <code its:withinText="nested">(M+S)/2</code> and Right <code its:withinText="nested">(M-S)/2</code>.</p>
     <section>

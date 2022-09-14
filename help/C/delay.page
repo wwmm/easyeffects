@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins"/>
     </info>
     <title>Delay</title>
-    <p>This plugin allows the user to add a short Delay of time to each individual channel of the stereo stream. EasyEffects Delay uses the Delay Compensator Stereo by Linux Studio Plugins set in time mode.</p>
+    <p>This plugin allows the user to add a short Delay of time to each individual channel of the stereo stream. Easy Effects Delay uses the Delay Compensator Stereo by Linux Studio Plugins set in time mode.</p>
     <terms>
         <item>
             <title>

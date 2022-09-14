@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Equalizer</title>
-    <p>The Equalization in sound recording and reproduction is the process of adjusting the volume of different frequency bands within an audio signal. EasyEffects uses the Parametric Equalizer from Linux Studio Plugins. The user can choose from 1 to 32 bands. Width and center frequency of each band can be customized as needed.</p>
+    <p>The Equalization in sound recording and reproduction is the process of adjusting the volume of different frequency bands within an audio signal. Easy Effects uses the Parametric Equalizer from Linux Studio Plugins. The user can choose from 1 to 32 bands. Width and center frequency of each band can be customized as needed.</p>
     <section>
         <title>Global Options</title>
         <terms>

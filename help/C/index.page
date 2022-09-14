@@ -7,8 +7,8 @@
             <email its:translate="no">wellingtonwallace@gmail.com</email>
         </credit>
     </info>
-    <title>EasyEffects</title>
-    <p>EasyEffects applies audio effects to applications managed by PipeWire. The user can apply effects to applications output or to the microphone before sending its audio to a recording application.</p>
+    <title>Easy Effects</title>
+    <p>Easy Effects applies audio effects to applications managed by PipeWire. The user can apply effects to applications output or to the microphone before sending its audio to a recording application.</p>
     <section id="guides" style="2column">
         <title>Guides</title>
     </section>

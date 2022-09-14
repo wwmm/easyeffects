@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Multiband Gate</title>
-    <p>EasyEffects uses the Multiband Gate Stereo developed by Calf Studio Gear. Please refer to the <link xref="gate" its:withinText="yes">Gate</link> documentation to comprehend the basic functionality of the gating process.</p>
+    <p>Easy Effects uses the Multiband Gate Stereo developed by Calf Studio Gear. Please refer to the <link xref="gate" its:withinText="yes">Gate</link> documentation to comprehend the basic functionality of the gating process.</p>
     <section>
         <title>Global Options</title>
         <terms>
