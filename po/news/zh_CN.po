@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-15 14:20+0000\n"
-"PO-Revision-Date: 2022-08-25 18:21+0000\n"
-"Last-Translator: Hugel <qihu@nfschina.com>\n"
+"POT-Creation-Date: 2022-09-14 23:12+0000\n"
+"PO-Revision-Date: 2022-09-15 14:22+0000\n"
+"Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,12 +18,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
 msgid "Easy Effects"
-msgstr "EasyEffects"
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -34,55 +33,48 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects 是一款多功能音频调整工具程序。它的功能不仅包括均衡器、限幅器、压"
-"缩器和混响工具，还有更多其他工具可共选择。为了使用方便，它还内建有频谱分析"
-"仪。"
+"Easy Effects 是一款先进的音频处理工具。 它包括均衡器、限制器、压缩器和混响工"
+"具，仅举几例。 作为补充，它还有内置频谱分析仪。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-#, fuzzy
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects 是 PulseEffects 的后继版本，但它仅支持 PipeWire 的音频服务器。"
-"PulseAudio 用户应继续使用 PulseEffects。"
+"Easy Effects 是 PulseEffects 的后续版本。 Easy Effects 仅支持 PipeWire 音频服"
+"务器。 PulseAudio 用户应使用 PulseEffects。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because Easy Effects uses the default PipeWire sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"由于 EasyEffects 默认使用 PipeWire 音频服务器，这意味着它能与大多数 (但并非全"
-"部) 应用程序配合使用。EasyEffects 的主窗口会显示所有它支持的应用程序，而且可"
-"以单独管理每款应用程序的音效启用状态。"
+"因为 Easy Effects 使用默认的 PipeWire 声音服务器，所以它适用于你使用的大多数"
+"（如果不是全部）应用程序。 所有支持的应用程序都显示在主窗口中，可以单独启用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"除了处理音频输出外，EasyEffects 还可以将效果应用于输入设备，例如麦克风等，以"
-"便在录音和语音通话时发挥作用。"
+"除了处理声音输出之外，Easy Effects 还能够将效果应用于输入设备，例如麦克风。 "
+"这在录音中很有用，在语音对话中也很有效。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"启动 EasyEffects 时，载入上一个会话中使用的配置。 也可以将所有当前设置另存为"
-"配置文件。"
+"Easy Effects 启动时，它会方便地记住上次会话中使用的配置。 也可以将所有当前设"
+"置保存为配置文件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
