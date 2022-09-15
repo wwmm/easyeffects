@@ -423,7 +423,7 @@ auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ
 
   // Note that the last class does not include the newline as whitespaces to allow
   // matching the `$` as the end of line (not needed in this case, but it will also
-  // work if the  input string will be multiline in the future).
+  // work if the input string will be multiline in the future).
   // This ensures the last band is captured with or without the final `;`.
   // The regex has been tested at https://regex101.com/r/JRwf4G/1
 
@@ -493,7 +493,7 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
       if (std::regex_search(line, re)) {  // Avoid commented lines
         continue;
       }
-      if (struct GraphicEQ_Band band; parse_graphiceq_config(line, bands)) {
+      if (parse_graphiceq_config(line, bands)) {
         break;
       }
     }
