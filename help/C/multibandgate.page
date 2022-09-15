@@ -156,7 +156,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Reduction</em>
                 </title>
-                <p>The amount of gain reduction to apply to the input signal when the Gate is fully closed.</p>
+                <p>If the value is negative, it acts as the amount of gain reduction to apply to the input signal when the Gate is fully closed. If the value is positive, the Gate operates in "Reverse Mode": It reduces the amplitude when the signal is above the threshold.</p>
             </item>
             <item>
                 <title>
@@ -189,14 +189,14 @@
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Low-Pass</em>
-                            - The Gate reacts according to the signal processed by a Low-Pass filter.
+                            <em style="strong">Low-Pass Filter</em>
+                            - The Gate reacts according to the signal processed by a recursive 1-pole Low-Pass filter.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Uniform</em>
-                            - The Gate reacts according to the loudness measured by the average of the absolute amplitude.
+                            <em style="strong">Simple Moving Average</em>
+                            - The Gate reacts according to the signal processed by the Simple Moving Average filter.
                         </p>
                     </item>
                 </list>
