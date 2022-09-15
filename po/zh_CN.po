@@ -87,7 +87,6 @@ msgid "_Reset Settings"
 msgstr "重置设置(_R)"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
 msgstr "关于 EasyEffects (_A)"
 
@@ -114,7 +113,6 @@ msgid "Primary Menu"
 msgstr "主菜单"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "Easy Effects Window"
 msgstr "EasyEffects 窗口"
 
@@ -1427,13 +1425,12 @@ msgid "Device Management"
 msgstr "设备管理"
 
 #: data/ui/pipe_manager_box.ui:35
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
-"不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 的设置或 "
-"Plasma 的系统设置）的默认设备。"
+"不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 设置或 "
+"Plasma 系统设置）的默认设备。"
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1970,9 +1967,8 @@ msgid "Overview"
 msgstr "概览"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "打开 EasyEffects 手册"
+msgstr "打开 Easy Effects 手册"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -1983,9 +1979,8 @@ msgid "Close the Window"
 msgstr "关闭窗口"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "退出 EasyEffects"
+msgstr "退出 Easy Effects"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2108,18 +2103,16 @@ msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
 #: src/application.cpp:499
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "退出 EasyEffects。程序若在服务模式下运行，由此便可退出程序。"
+msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
 #: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
 #: src/application.cpp:505
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "重设 EasyEffects。"
+msgstr "重置 Easy Effects。"
 
 #: src/application.cpp:508
 msgid "Hide the Window."
