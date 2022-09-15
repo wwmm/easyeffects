@@ -141,14 +141,14 @@
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Low-Pass</em>
-                            - The Gate reacts according to the signal processed by a Low-Pass filter.
+                            <em style="strong">Low-Pass Filter</em>
+                            - The Gate reacts according to the signal processed by a recursive 1-pole Low-Pass filter.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Uniform</em>
-                            - The Gate reacts according to the loudness measured by the average of the absolute amplitude.
+                            <em style="strong">Simple Moving Average</em>
+                            - The Gate reacts according to the signal processed by the Simple Moving Average filter.
                         </p>
                     </item>
                 </list>
