@@ -88,9 +88,8 @@ msgid "_Reset Settings"
 msgstr "_Reset Preferenze"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "_Info su EasyEffects"
+msgstr "_Info su Easy Effects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -115,9 +114,8 @@ msgid "Primary Menu"
 msgstr "Menu Principale"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "Finestra di EasyEffects"
+msgstr "Finestra di Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -1046,13 +1044,12 @@ msgid "Release Zone Start"
 msgstr "Inizio Zona Rilascio"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "Modalità Filtro Passa-Basso"
+msgstr "Filtro Passa-Basso"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "Media Mobile Semplice"
 
 #: data/ui/gate.ui:751
 msgid "Internal"
@@ -1427,14 +1424,13 @@ msgid "Device Management"
 msgstr "Gestione Dispositivi"
 
 #: data/ui/pipe_manager_box.ui:35
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
-"Si raccomanda di NON impostare EasyEffects Sink/Source come Dispositivo "
-"Predefinito in applicazioni esterne (per esempio Gnome Settings e Plasma "
-"System Settings)."
+"Si raccomanda di NON impostare il dispositivo \"Easy Effects Sink/Source\" "
+"come Dispositivo Predefinito in applicazioni esterne (per esempio Gnome "
+"Settings e Plasma System Settings)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1967,9 +1963,8 @@ msgid "Overview"
 msgstr "Sommario"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "Apri il Manuale di EasyEffects"
+msgstr "Apri il Manuale di Easy Effects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -1980,9 +1975,8 @@ msgid "Close the Window"
 msgstr "Chiudi la Finestra"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "Termina EasyEffects"
+msgstr "Termina Easy Effects"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2105,18 +2099,16 @@ msgid "Audio effects for PipeWire applications"
 msgstr "Effetti Audio per Applicazioni PipeWire"
 
 #: src/application.cpp:499
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Esci da EasyEffects. Utile in esecuzione come servizio."
+msgstr "Chiudi Easy Effects. Utile in esecuzione come servizio."
 
 #: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
 #: src/application.cpp:505
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "Reset EasyEffects."
+msgstr "Reset Easy Effects."
 
 #: src/application.cpp:508
 msgid "Hide the Window."
@@ -2203,7 +2195,7 @@ msgstr "infinito"
 
 #: src/equalizer_ui.cpp:361
 msgid "Import APO Preset File"
-msgstr "Importa File Profilo APO"
+msgstr "Importa File di Profilo APO"
 
 #: src/equalizer_ui.cpp:367
 msgid "APO Presets"
@@ -2213,27 +2205,24 @@ msgstr "Profili APO"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
-"Profilo APO Non Caricato. Il Formato Può Essere Errato. Si Prega di "
+"Profilo APO Non Caricato. Il Formato Potrebbe Essere Errato. Si Prega di "
 "Controllare il Contenuto."
 
 #: src/equalizer_ui.cpp:550
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "Importa File Profilo APO"
+msgstr "Importa File di Profilo GraphicEQ"
 
 #: src/equalizer_ui.cpp:556
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Profili di Ingresso"
+msgstr "Profili GraphicEQ"
 
 #: src/equalizer_ui.cpp:574
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
 msgstr ""
-"Profilo APO Non Caricato. Il Formato Può Essere Errato. Si Prega di "
-"Controllare il Contenuto."
+"Profilo GraphicEQ Non Caricato. Il Formato Potrebbe Essere Errato. Si Prega "
+"di Controllare il Contenuto."
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
