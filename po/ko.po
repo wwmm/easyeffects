@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-14 23:12+0000\n"
+"POT-Creation-Date: 2022-09-15 14:19+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2416,35 +2416,11 @@ msgstr ""
 msgid "-inf"
 msgstr ""
 
-#: data/ui/application_window.ui:26
-msgid "_About EasyEffects"
-msgstr "EasyEffects 정보(_A)"
+#~ msgid "_About EasyEffects"
+#~ msgstr "EasyEffects 정보(_A)"
 
-#: data/ui/application_window.ui:91
-msgid "EasyEffects Window"
-msgstr "EasyEffects 윈도우"
-
-#: data/ui/pipe_manager_box.ui:35
-msgid ""
-"It's recommended to NOT set EasyEffects Sink/Source as Default Device in "
-"external applications (e.g. Gnome Settings and Plasma System Settings)."
-msgstr ""
-
-#: data/ui/shortcuts.ui:16
-msgid "Open the EasyEffects Manual"
-msgstr ""
-
-#: data/ui/shortcuts.ui:37
-msgid "Quit EasyEffects"
-msgstr ""
-
-#: src/application.cpp:499
-msgid "Quit EasyEffects. Useful when running in service mode."
-msgstr ""
-
-#: src/application.cpp:505
-msgid "Reset EasyEffects."
-msgstr ""
+#~ msgid "EasyEffects Window"
+#~ msgstr "EasyEffects 윈도우"
 
 #, fuzzy
 #~ msgid "Band 1 Bypass"
