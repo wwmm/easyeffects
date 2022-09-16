@@ -73,7 +73,7 @@ app_id = 'com.github.wwmm.easyeffects@0@'.format(app_id_suffix)
 conf = configuration_data()
 
 conf.set10('IS_DEVEL_BUILD', get_option('devel'))
-conf.set_quoted('APP_NAME', 'EasyEffects' + name_suffix)
+conf.set_quoted('APP_NAME', 'Easy Effects' + name_suffix)
 
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALE_DIR', localedir)
