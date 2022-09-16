@@ -774,10 +774,14 @@ void on_device_info(void* object, const struct pw_device_info* info) {
 
     spa_dict_get_string(info->props, PW_KEY_DEVICE_API, device.api);
 
-    spa_dict_get_string(info->props, SPA_KEY_DEVICE_BUS_ID, device.bus_id);
+    if (spa_dict_get_string(info->props, SPA_KEY_DEVICE_BUS_ID, device.bus_id)) {
+      std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
+      std::replace(device.bus_path.begin(), device.bus_path.end(), '+', '_');
+    }
 
     if (spa_dict_get_string(info->props, PW_KEY_DEVICE_BUS_PATH, device.bus_path)) {
       std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
+      std::replace(device.bus_path.begin(), device.bus_path.end(), '+', '_');
     }
 
     /*

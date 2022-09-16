@@ -9,6 +9,7 @@ Description:
 - GraphicEQ presets can be imported into the Equalizer effect.
 - The application name has been changed to `Easy Effects` to adhere to the naming conventions of GNOME Human Interface Guidelines.
 - The documentation has been updated.
+- Improved presets autoloading
 
 - Bug fixes∶
 -
