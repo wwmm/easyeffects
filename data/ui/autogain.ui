@@ -59,10 +59,45 @@
                                 </child>
 
                                 <child>
+                                    <object class="GtkLabel" id="label_silence">
+                                        <property name="label" translatable="yes">Silence</property>
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkSpinButton" id="silence_threshold">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="width-chars">10</property>
+                                        <property name="adjustment">
+                                            <object class="GtkAdjustment">
+                                                <property name="lower">-100</property>
+                                                <property name="upper">0</property>
+                                                <property name="value">-70</property>
+                                                <property name="step-increment">1</property>
+                                                <property name="page-increment">1</property>
+                                            </object>
+                                        </property>
+                                        <property name="digits">0</property>
+                                        <property name="update-policy">if-valid</property>
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">1</property>
+                                        </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">label_silence</relation>
+                                        </accessibility>
+                                    </object>
+                                </child>
+
+                                <child>
                                     <object class="GtkLabel" id="label_maximum_history">
                                         <property name="label" translatable="yes">Maximum History</property>
                                         <layout>
-                                            <property name="column">1</property>
+                                            <property name="column">2</property>
                                             <property name="row">0</property>
                                         </layout>
                                     </object>
@@ -83,7 +118,7 @@
                                         <property name="digits">0</property>
                                         <property name="update-policy">if-valid</property>
                                         <layout>
-                                            <property name="column">1</property>
+                                            <property name="column">2</property>
                                             <property name="row">1</property>
                                         </layout>
                                         <accessibility>
@@ -96,7 +131,7 @@
                                     <object class="GtkLabel" id="reference_label">
                                         <property name="label" translatable="yes">Reference</property>
                                         <layout>
-                                            <property name="column">2</property>
+                                            <property name="column">3</property>
                                             <property name="row">0</property>
                                         </layout>
                                     </object>
@@ -115,7 +150,7 @@
                                             <item translatable="yes" id="Geometric Mean (SI)">Geometric Mean (SI)</item>
                                         </items>
                                         <layout>
-                                            <property name="column">2</property>
+                                            <property name="column">3</property>
                                             <property name="row">1</property>
                                         </layout>
                                         <accessibility>
@@ -130,7 +165,7 @@
                                         <property name="label" translatable="yes">Reset History</property>
                                         <signal name="clicked" handler="on_reset_history" object="AutogainBox" />
                                         <layout>
-                                            <property name="column">3</property>
+                                            <property name="column">4</property>
                                             <property name="row">1</property>
                                         </layout>
                                     </object>

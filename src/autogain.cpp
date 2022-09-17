@@ -24,7 +24,8 @@ AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::autogain, tags::plugin_package::ebur128, schema, schema_path, pipe_manager),
-      target(g_settings_get_double(settings, "target")) {
+      target(g_settings_get_double(settings, "target")),
+      silence_threshold(g_settings_get_double(settings, "silence-threshold")) {
   reference = parse_reference_key(util::gsettings_get_string(settings, "reference"));
 
   gconnections.push_back(g_signal_connect(settings, "changed::target",
@@ -32,6 +33,14 @@ AutoGain::AutoGain(const std::string& tag,
                                             auto self = static_cast<AutoGain*>(user_data);
 
                                             self->target = g_settings_get_double(settings, key);
+                                          }),
+                                          this));
+
+  gconnections.push_back(g_signal_connect(settings, "changed::silence-threshold",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<AutoGain*>(user_data);
+
+                                            self->silence_threshold = g_settings_get_double(settings, key);
                                           }),
                                           this));
 
@@ -235,7 +244,7 @@ void AutoGain::process(std::span<float>& left_in,
     failed = true;
   }
 
-  if (relative > -70.0F && momentary > -70.0F && !failed) {
+  if (momentary > silence_threshold && !failed) {
     double peak_L = 0.0;
     double peak_R = 0.0;
 

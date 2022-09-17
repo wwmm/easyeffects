@@ -43,7 +43,7 @@ struct _AutogainBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkSpinButton *target, *maximum_history;
+  GtkSpinButton *target, *silence_threshold, *maximum_history;
 
   GtkLevelBar *m_level, *s_level, *i_level, *r_level, *g_level, *l_level, *lra_level;
 
@@ -150,8 +150,8 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  gsettings_bind_widgets<"target", "maximum-history", "reference">(self->settings, self->target, self->maximum_history,
-                                                                   self->reference);
+  gsettings_bind_widgets<"target", "silence-threshold", "maximum-history", "reference">(
+      self->settings, self->target, self->silence_threshold, self->maximum_history, self->reference);
 }
 
 void dispose(GObject* object) {
@@ -210,6 +210,7 @@ void autogain_box_class_init(AutogainBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, output_level_right_label);
 
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, target);
+  gtk_widget_class_bind_template_child(widget_class, AutogainBox, silence_threshold);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, maximum_history);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, reference);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, reset_history);
@@ -242,7 +243,7 @@ void autogain_box_init(AutogainBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbuttons<"dB">(self->target);
+  prepare_spinbuttons<"dB">(self->target, self->silence_threshold);
   prepare_spinbuttons<"s">(self->maximum_history);
 }
 

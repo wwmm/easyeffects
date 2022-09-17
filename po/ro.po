@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-15 14:19+0000\n"
+"POT-Creation-Date: 2022-09-17 12:36-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -144,70 +144,74 @@ msgid "Target"
 msgstr "Țintă"
 
 #: data/ui/autogain.ui:63
+msgid "Silence"
+msgstr "Liniște"
+
+#: data/ui/autogain.ui:98
 #, fuzzy
 msgid "Maximum History"
 msgstr "Maxim"
 
-#: data/ui/autogain.ui:97
+#: data/ui/autogain.ui:132
 msgid "Reference"
 msgstr ""
 
-#: data/ui/autogain.ui:109 data/ui/autogain.ui:150
+#: data/ui/autogain.ui:144 data/ui/autogain.ui:185
 msgid "Momentary"
 msgstr "Momentar"
 
-#: data/ui/autogain.ui:110 data/ui/autogain.ui:180
+#: data/ui/autogain.ui:145 data/ui/autogain.ui:215
 #, fuzzy
 msgid "Short-Term"
 msgstr "Pe Termen Scurt"
 
-#: data/ui/autogain.ui:111 data/ui/autogain.ui:210
+#: data/ui/autogain.ui:146 data/ui/autogain.ui:245
 msgid "Integrated"
 msgstr "Integrat"
 
-#: data/ui/autogain.ui:112
+#: data/ui/autogain.ui:147
 #, fuzzy
 msgid "Geometric Mean (MSI)"
 msgstr "Utilizarea Mijlocului Geometric"
 
-#: data/ui/autogain.ui:113
+#: data/ui/autogain.ui:148
 #, fuzzy
 msgid "Geometric Mean (MS)"
 msgstr "Utilizarea Mijlocului Geometric"
 
-#: data/ui/autogain.ui:114
+#: data/ui/autogain.ui:149
 #, fuzzy
 msgid "Geometric Mean (MI)"
 msgstr "Utilizarea Mijlocului Geometric"
 
-#: data/ui/autogain.ui:115
+#: data/ui/autogain.ui:150
 #, fuzzy
 msgid "Geometric Mean (SI)"
 msgstr "Utilizarea Mijlocului Geometric"
 
-#: data/ui/autogain.ui:130
+#: data/ui/autogain.ui:165
 msgid "Reset History"
 msgstr "Resetare Istoric"
 
-#: data/ui/autogain.ui:240
+#: data/ui/autogain.ui:275
 msgid "Relative"
 msgstr "Relativ"
 
-#: data/ui/autogain.ui:270
+#: data/ui/autogain.ui:305
 msgid "Range"
 msgstr "Gamă"
 
-#: data/ui/autogain.ui:303 data/ui/bass_loudness.ui:29
+#: data/ui/autogain.ui:338 data/ui/bass_loudness.ui:29
 #: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Intensitate"
 
-#: data/ui/autogain.ui:335
+#: data/ui/autogain.ui:370
 #, fuzzy
 msgid "Output Gain"
 msgstr "Output"
 
-#: data/ui/autogain.ui:372 data/ui/bass_enhancer.ui:262
+#: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:146 data/ui/compressor.ui:576
 #: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:143
 #: data/ui/crystalizer.ui:43 data/ui/deesser.ui:417 data/ui/delay.ui:235
@@ -222,7 +226,7 @@ msgstr "Output"
 msgid "Input"
 msgstr "Input"
 
-#: data/ui/autogain.ui:391 data/ui/bass_enhancer.ui:281
+#: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:165 data/ui/compressor.ui:1077
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:162 data/ui/crystalizer.ui:62
 #: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:134
@@ -235,7 +239,7 @@ msgstr "Input"
 msgid "Plugin Input Gain"
 msgstr "Input Pipeline"
 
-#: data/ui/autogain.ui:456 data/ui/bass_enhancer.ui:346
+#: data/ui/autogain.ui:491 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:63 data/ui/bass_loudness.ui:230
 #: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:227
 #: data/ui/crystalizer.ui:127 data/ui/deesser.ui:501 data/ui/delay.ui:319
@@ -250,7 +254,7 @@ msgstr "Input Pipeline"
 msgid "Output"
 msgstr "Output"
 
-#: data/ui/autogain.ui:475 data/ui/bass_enhancer.ui:365
+#: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:249 data/ui/compressor.ui:1161
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:246 data/ui/crystalizer.ui:146
 #: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:218
@@ -263,7 +267,7 @@ msgstr "Output"
 msgid "Plugin Output Gain"
 msgstr "Output Pipeline"
 
-#: data/ui/autogain.ui:538 data/ui/bass_enhancer.ui:459
+#: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:312 data/ui/compressor.ui:1224
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:309 data/ui/crystalizer.ui:201
 #: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:281
@@ -276,7 +280,7 @@ msgstr "Output Pipeline"
 msgid "Reset"
 msgstr "Resetare"
 
-#: data/ui/autogain.ui:552 data/ui/bass_enhancer.ui:473
+#: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:326 data/ui/compressor.ui:1238
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:323 data/ui/deesser.ui:657
 #: data/ui/delay.ui:415 data/ui/echo_canceller.ui:295 data/ui/equalizer.ui:513
@@ -2870,9 +2874,6 @@ msgstr ""
 
 #~ msgid "Triangle"
 #~ msgstr "Triunghi"
-
-#~ msgid "Silence"
-#~ msgstr "Liniște"
 
 #~ msgid "Pink Noise"
 #~ msgstr "Zgomot Roz"

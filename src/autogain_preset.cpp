@@ -37,6 +37,8 @@ void AutoGainPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["target"] = g_settings_get_double(settings, "target");
 
+  json[section][instance_name]["silence-threshold"] = g_settings_get_double(settings, "silence-threshold");
+
   json[section][instance_name]["maximum-history"] = g_settings_get_int(settings, "maximum-history");
 
   json[section][instance_name]["reference"] = util::gsettings_get_string(settings, "reference");
@@ -50,6 +52,8 @@ void AutoGainPreset::load(const nlohmann::json& json) {
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
   update_key<double>(json.at(section).at(instance_name), settings, "target", "target");
+
+  update_key<double>(json.at(section).at(instance_name), settings, "silence-threshold", "silence-threshold");
 
   update_key<int>(json.at(section).at(instance_name), settings, "maximum-history", "maximum-history");
 

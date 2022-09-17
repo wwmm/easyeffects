@@ -75,6 +75,7 @@ class AutoGain : public PluginBase {
   uint old_rate = 0U;
 
   double target = -23.0;  // target loudness level
+  double silence_threshold = -70.0;
   double internal_output_gain = 1.0;
 
   Reference reference = Reference::geometric_mean_msi;

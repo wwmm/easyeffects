@@ -35,5 +35,9 @@
             <range min="6" max="3600" />
             <default>15</default>
         </key>
+        <key name="silence-threshold" type="d">
+            <range min="-100" max="0" />
+            <default>-70</default>
+        </key>
     </schema>
 </schemalist>
