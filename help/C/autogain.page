@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<page xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="autogain">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="autogain">
     <info>
         <link type="guide" xref="index#plugins" />
     </info>
@@ -12,6 +11,12 @@
                 <em style="strong" its:withinText="nested">Target</em>
             </title>
             <p>Loudness level.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Silence</em>
+            </title>
+            <p>Silence threshold. While the momentary loudness is below this value the autogain won't make any changes to the current gain being applied to the signal level.</p>
         </item>
         <item>
             <title>
