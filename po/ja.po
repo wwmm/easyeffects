@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-17 12:36-0300\n"
-"PO-Revision-Date: 2022-08-17 04:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2022-09-18 17:19+0000\n"
+"Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -86,9 +86,8 @@ msgid "_Reset Settings"
 msgstr "_設定をリセット"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "_EasyEffects について"
+msgstr "_Easy Effects について"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -113,9 +112,8 @@ msgid "Primary Menu"
 msgstr "メインメニュー"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "EasyEffects ウィンドウ"
+msgstr "Easy Effects ウィンドウ"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -134,9 +132,8 @@ msgid "Target"
 msgstr "ターゲット"
 
 #: data/ui/autogain.ui:63
-#, fuzzy
 msgid "Silence"
-msgstr "環境"
+msgstr "サイレンス"
 
 #: data/ui/autogain.ui:98
 msgid "Maximum History"
@@ -802,34 +799,28 @@ msgid "Delay"
 msgstr "ディレイ"
 
 #: data/ui/delay.ui:75
-#, fuzzy
 msgid "Left Delay"
-msgstr "プリディレイ"
+msgstr "左ディレイ"
 
 #: data/ui/delay.ui:97
-#, fuzzy
 msgid "Right Delay"
-msgstr "右チャンネル"
+msgstr "右ディレイ"
 
 #: data/ui/delay.ui:132
-#, fuzzy
 msgid "Left Dry Level"
-msgstr "Dry レベル"
+msgstr "左ドライレベル"
 
 #: data/ui/delay.ui:156
-#, fuzzy
 msgid "Right Dry Level"
-msgstr "Dry レベル"
+msgstr "右ドライレベル"
 
 #: data/ui/delay.ui:190
-#, fuzzy
 msgid "Left Wet Level"
-msgstr "Wet レベル"
+msgstr "左ウェットレベル"
 
 #: data/ui/delay.ui:213
-#, fuzzy
 msgid "Right Wet Level"
-msgstr "Wet レベル"
+msgstr "右ウェットレベル"
 
 #: data/ui/echo_canceller.ui:30
 msgid "Frame Size"
@@ -869,14 +860,12 @@ msgid "Balance"
 msgstr "バランス"
 
 #: data/ui/equalizer.ui:123
-#, fuzzy
 msgid "Pitch Left"
-msgstr "左サイドチェーン"
+msgstr "左ピッチ"
 
 #: data/ui/equalizer.ui:156
-#, fuzzy
 msgid "Pitch Right"
-msgstr "右サイドチェーン"
+msgstr "右ピッチ"
 
 #: data/ui/equalizer.ui:251
 msgid "Split Channels"
@@ -1045,7 +1034,6 @@ msgid "Hysteresis"
 msgstr "ヒステリシス"
 
 #: data/ui/gate.ui:326
-#, fuzzy
 msgid "Mix"
 msgstr "ミックス"
 
@@ -1058,13 +1046,12 @@ msgid "Release Zone Start"
 msgstr "リリースゾーン開始"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "ローパスフィルターモード"
+msgstr "ローパスフィルタ"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "単純移動平均"
 
 #: data/ui/gate.ui:751
 msgid "Internal"
@@ -1296,11 +1283,11 @@ msgstr "出力ボリューム"
 
 #: data/ui/loudness.ui:127
 msgid "Clipping"
-msgstr ""
+msgstr "クリッピング"
 
 #: data/ui/loudness.ui:155
 msgid "Clipping Range"
-msgstr ""
+msgstr "クリッピング範囲"
 
 #: data/ui/maximizer.ui:63
 msgid "Ceiling"
@@ -1427,9 +1414,8 @@ msgid "Band Curve"
 msgstr "バンドカーブ"
 
 #: data/ui/multiband_gate_band.ui:777
-#, fuzzy
 msgid "Band Reduction"
-msgstr "バンド 1 最大リダクション"
+msgstr "バンドリダクション"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1440,12 +1426,11 @@ msgid "Device Management"
 msgstr "デバイス管理"
 
 #: data/ui/pipe_manager_box.ui:35
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
-"外部アプリケーション (Gnome 設定や Plasma システム設定など) で EasyEffects "
+"外部アプリケーション (Gnome 設定や Plasma システム設定など) で Easy Effects "
 "の Sink/Source をデフォルトデバイスとして設定しないことをお勧めします。"
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
@@ -1979,9 +1964,8 @@ msgid "Overview"
 msgstr "概要"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "EasyEffects のマニュアルを開く"
+msgstr "Easy Effects のマニュアルを開く"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -1992,9 +1976,8 @@ msgid "Close the Window"
 msgstr "ウィンドウを閉じる"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "EasyEffects を終了"
+msgstr "Easy Effects を終了"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2117,18 +2100,16 @@ msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #: src/application.cpp:499
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "EasyEffects を終了します。サービスモードで動作しているときに便利です。"
+msgstr "Easy Effects を終了します。サービスモードで動作しているときに便利です。"
 
 #: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込む。例: easyeffects -l music"
 
 #: src/application.cpp:505
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "EasyEffects をリセット。"
+msgstr "Easy Effects をリセット。"
 
 #: src/application.cpp:508
 msgid "Hide the Window."
@@ -2229,23 +2210,19 @@ msgstr ""
 "性があります。内容を確認してください。"
 
 #: src/equalizer_ui.cpp:550
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "APO プリセットファイルをインポート"
+msgstr "GraphicEQ プリセットファイルのインポート"
 
 #: src/equalizer_ui.cpp:556
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "入力プリセット"
+msgstr "GraphicEQ プリセット"
 
 #: src/equalizer_ui.cpp:574
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
-msgstr ""
-"APO プリセットが読み込まれていません。ファイルフォーマットが間違っている可能"
-"性があります。内容を確認してください。"
+msgstr "GraphicEQ プリセットが読み込まれていません。ファイル形式が間違っている可能性"
+"があります。内容を確認してください。"
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
@@ -2354,12 +2331,12 @@ msgstr "ステレオツール"
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:81
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} 利用不可"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:84
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} はシステムにインストールされていません"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at

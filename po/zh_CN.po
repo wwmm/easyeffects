@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-17 12:36-0300\n"
-"PO-Revision-Date: 2022-09-14 11:18+0000\n"
+"PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -133,9 +133,8 @@ msgid "Target"
 msgstr "目标"
 
 #: data/ui/autogain.ui:63
-#, fuzzy
 msgid "Silence"
-msgstr "氛围"
+msgstr "静音"
 
 #: data/ui/autogain.ui:98
 msgid "Maximum History"
