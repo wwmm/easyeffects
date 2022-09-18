@@ -42,3 +42,9 @@ inline constexpr auto input_stream = "Stream/Input/Audio";
 inline constexpr auto output_stream = "Stream/Output/Audio";
 
 }  // namespace tags::pipewire::media_class
+
+namespace tags::pipewire::media_role {
+
+inline constexpr auto dsp = "DSP";
+
+}

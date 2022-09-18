@@ -1013,6 +1013,8 @@ void on_registry_global(void* data,
   auto* const pm = static_cast<PipeManager*>(data);
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Node) == 0) {
+    bool is_ee_filter = false;
+
     if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
       // Exclude blocklisted media roles
 
@@ -1025,8 +1027,8 @@ void on_registry_global(void* data,
           if (g_strcmp0(key_media_category, "Filter") == 0) {
             if (const auto* key_node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME)) {
               if (std::string node_name(key_node_name); node_name.size() > 3U) {
-                if (node_name.substr(0U, 2U) == "ee_") {
-                  util::debug("Filter " + node_name + " with id " + util::to_string(id) + " has been added");
+                if (node_name.starts_with("ee_")) {
+                  is_ee_filter = true;
                 }
               }
             }
@@ -1035,117 +1037,129 @@ void on_registry_global(void* data,
       }
     }
 
+    std::string media_class;
+    std::string media_role;
+
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
-      const std::string media_class = key_media_class;
+      media_class = key_media_class;
+    }
 
-      constexpr auto class_array =
-          std::to_array({tags::pipewire::media_class::output_stream, tags::pipewire::media_class::input_stream,
-                         tags::pipewire::media_class::sink, tags::pipewire::media_class::source,
-                         tags::pipewire::media_class::virtual_source});
+    if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
+      media_role = key_media_role;
+    }
 
-      if (!std::any_of(class_array.begin(), class_array.end(), [&](const auto& str) { return str == media_class; })) {
-        return;
-      }
+    constexpr auto class_array =
+        std::to_array({tags::pipewire::media_class::output_stream, tags::pipewire::media_class::input_stream,
+                       tags::pipewire::media_class::sink, tags::pipewire::media_class::source,
+                       tags::pipewire::media_class::virtual_source});
 
-      std::string node_name;
+    if (!is_ee_filter &&
+        !std::any_of(class_array.begin(), class_array.end(), [&](const auto& str) { return str == media_class; })) {
+      return;
+    }
 
-      if (!spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name)) {
-        return;
-      }
+    std::string node_name;
 
-      if (node_name.empty()) {
-        return;
-      }
+    if (!spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name)) {
+      return;
+    }
 
-      // Exclude blocklisted node names
+    if (node_name.empty()) {
+      return;
+    }
 
-      if (std::ranges::find(PipeManager::blocklist_node_name, node_name) != PipeManager::blocklist_node_name.end()) {
-        return;
-      }
+    // Exclude blocklisted node names
 
-      uint64_t serial = 0U;
+    if (std::ranges::find(PipeManager::blocklist_node_name, node_name) != PipeManager::blocklist_node_name.end()) {
+      return;
+    }
 
-      if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
-        util::warning(
-            "An error occurred while retrieving the object serial. The node cannot be handled by Easy Effects.");
-        return;
-      }
+    uint64_t serial = 0U;
 
-      // New node can be added into the node map
+    if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
+      util::warning(
+          "An error occurred while retrieving the object serial. The node cannot be handled by Easy Effects.");
+      return;
+    }
 
-      auto* proxy =
-          static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
+    // New node can be added into the node map
 
-      auto* nd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
+    auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
 
-      nd->proxy = proxy;
-      nd->pm = pm;
+    auto* nd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
 
-      nd->nd_info = new NodeInfo();
+    nd->proxy = proxy;
+    nd->pm = pm;
 
-      nd->nd_info->proxy = proxy;
-      nd->nd_info->serial = serial;
-      nd->nd_info->id = id;
-      nd->nd_info->media_class = media_class;
-      nd->nd_info->name = node_name;
+    nd->nd_info = new NodeInfo();
 
-      spa_dict_get_string(props, PW_KEY_NODE_DESCRIPTION, nd->nd_info->description);
+    nd->nd_info->proxy = proxy;
+    nd->nd_info->serial = serial;
+    nd->nd_info->id = id;
+    nd->nd_info->media_class = media_class;
+    nd->nd_info->media_role = media_role;
+    nd->nd_info->name = node_name;
 
-      spa_dict_get_num(props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
+    spa_dict_get_string(props, PW_KEY_NODE_DESCRIPTION, nd->nd_info->description);
 
-      spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
+    spa_dict_get_num(props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
 
-      const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
+    spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
-      if (!success) {
-        util::warning("Cannot insert node " + util::to_string(id) + " " + node_name +
-                      " into the node map because there's already an existing serial " + util::to_string(serial));
+    const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
 
-        return;
-      }
+    if (!success) {
+      util::warning("Cannot insert node " + util::to_string(id) + " " + node_name +
+                    " into the node map because there's already an existing serial " + util::to_string(serial));
 
-      pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);
-      pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
+      return;
+    }
 
-      // sometimes PipeWire destroys the pointer before signal_idle is called,
-      // therefore we make a copy of NodeInfo
+    pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);
+    pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
 
-      const auto nd_info_copy = *nd->nd_info;
+    // sometimes PipeWire destroys the pointer before signal_idle is called,
+    // therefore we make a copy of NodeInfo
 
-      if (media_class == tags::pipewire::media_class::source && node_name != tags::pipewire::ee_source_name) {
-        util::idle_add([pm, nd_info_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
+    const auto nd_info_copy = *nd->nd_info;
 
-          pm->source_added.emit(nd_info_copy);
-        });
-      } else if (media_class == tags::pipewire::media_class::sink && node_name != tags::pipewire::ee_sink_name) {
-        util::idle_add([pm, nd_info_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
+    if (media_class == tags::pipewire::media_class::source && node_name != tags::pipewire::ee_source_name) {
+      util::idle_add([pm, nd_info_copy] {
+        if (PipeManager::exiting) {
+          return;
+        }
 
-          pm->sink_added.emit(nd_info_copy);
-        });
-      } else if (media_class == tags::pipewire::media_class::output_stream) {
-        util::idle_add([pm, nd_info_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
+        pm->source_added.emit(nd_info_copy);
+      });
+    } else if (media_class == tags::pipewire::media_class::sink && node_name != tags::pipewire::ee_sink_name) {
+      util::idle_add([pm, nd_info_copy] {
+        if (PipeManager::exiting) {
+          return;
+        }
 
-          pm->stream_output_added.emit(nd_info_copy);
-        });
-      } else if (media_class == tags::pipewire::media_class::input_stream) {
-        util::idle_add([pm, nd_info_copy] {
-          if (PipeManager::exiting) {
-            return;
-          }
+        pm->sink_added.emit(nd_info_copy);
+      });
+    } else if (media_class == tags::pipewire::media_class::output_stream) {
+      util::idle_add([pm, nd_info_copy] {
+        if (PipeManager::exiting) {
+          return;
+        }
 
-          pm->stream_input_added.emit(nd_info_copy);
-        });
-      }
+        pm->stream_output_added.emit(nd_info_copy);
+      });
+    } else if (media_class == tags::pipewire::media_class::input_stream) {
+      util::idle_add([pm, nd_info_copy] {
+        if (PipeManager::exiting) {
+          return;
+        }
 
+        pm->stream_input_added.emit(nd_info_copy);
+      });
+    }
+
+    // We will have debug info about our filters later
+
+    if (!is_ee_filter) {
       util::debug(media_class + " " + util::to_string(id) + " " + nd->nd_info->name + " with serial " +
                   util::to_string(serial) + " has been added");
     }

@@ -53,6 +53,8 @@ struct NodeInfo {
 
   std::string media_class;
 
+  std::string media_role;
+
   std::string app_icon_name;
 
   std::string media_icon_name;

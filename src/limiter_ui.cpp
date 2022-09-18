@@ -110,8 +110,9 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
     }
 
     if (node.media_class == tags::pipewire::media_class::source ||
-        node.media_class == tags::pipewire::media_class::virtual_source) {
-      auto holder = ui::holders::create(node);
+        node.media_class == tags::pipewire::media_class::virtual_source ||
+        node.media_role == tags::pipewire::media_role::dsp) {
+      auto* holder = ui::holders::create(node);
 
       g_list_store_append(self->input_devices_model, holder);
 
