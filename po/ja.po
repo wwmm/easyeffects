@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-17 12:36-0300\n"
+"POT-Creation-Date: 2022-09-18 17:35+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2101,7 +2101,8 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #: src/application.cpp:499
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Easy Effects を終了します。サービスモードで動作しているときに便利です。"
+msgstr ""
+"Easy Effects を終了します。サービスモードで動作しているときに便利です。"
 
 #: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
@@ -2221,7 +2222,8 @@ msgstr "GraphicEQ プリセット"
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
-msgstr "GraphicEQ プリセットが読み込まれていません。ファイル形式が間違っている可能性"
+msgstr ""
+"GraphicEQ プリセットが読み込まれていません。ファイル形式が間違っている可能性"
 "があります。内容を確認してください。"
 
 #: src/pipe_manager_box.cpp:327
