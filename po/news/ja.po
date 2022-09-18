@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-17 12:36-0300\n"
-"PO-Revision-Date: 2022-08-02 12:20+0000\n"
+"PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ja/>\n"
@@ -17,12 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
 msgid "Easy Effects"
-msgstr "EasyEffects"
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -33,56 +32,51 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects は、高度なオーディオ操作ツールです。イコライザー、リミッター、コ"
-"ンプレッサー、リバーブツールなどが含まれていますが、これらはほんの一部です。"
-"さらに、スペクトラムアナライザーもあります。"
+"Easy Effects は、高度なオーディオ操作ツールです。イコライザー、リミッター、コ"
+"ンプレッサー、リバーブツールなどが含まれています。さらに、スペクトラムアナラ"
+"イザーもあります。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-#, fuzzy
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects は、PulseEffects の後継版です。EasyEffects は PipeWire のオーディ"
-"オサーバーのみ対応しています。PulseAudio をお使いの場合、代わりに "
+"Easy Effects は、PulseEffects の後継版です。Easy Effects は PipeWire "
+"のオーディオサーバーのみ対応しています。PulseAudio をお使いの場合、代わりに "
 "PulseEffects をお使いください。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because Easy Effects uses the default PipeWire sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"EasyEffects はデフォルトの PipeWire サウンドサーバーを使用しているので、ほと"
+"Easy Effects はデフォルトの PipeWire サウンドサーバーを使用しているので、ほと"
 "んどのアプリケーションで動作します。サポートされているすべてのアプリケーショ"
 "ンは、メインウィンドウに表示され、それぞれ個別に有効にすることができます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"EasyEffects は、音の出力を操作するだけでなく、マイクなどの入力デバイスにもエ"
+"Easy Effects は、音の出力を操作するだけでなく、マイクなどの入力デバイスにもエ"
 "フェクトをかけることができます。例えば、音声録音の時に便利ですが、音声会話の"
 "時にも効果を発揮します。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"EasyEffects を起動すると、前回のセッションで使用した設定を適用します。また、"
+"Easy Effects を起動すると、前回のセッションで使用した設定を適用します。また、"
 "現在のすべての設定をプロファイルとして保存することもできます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
@@ -123,32 +117,34 @@ msgstr "機能:"
 msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
-msgstr ""
+msgstr "マルチバンドゲートの実装が CALF から Linux Studio Plugins に移行されました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
-#, fuzzy
 msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
-msgstr "USB デバイスとのプリセットオートロードコードの互換性が向上しました。"
+msgstr "bluez5 デバイスとのプリセットオートロードコードの互換性が改善されました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Wet/dry controls were added for some plugins"
-msgstr ""
+msgstr "一部のプラグインにウェット/ドライコントロールが追加されました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
+"関連する lv2 プラグインがシステムにインストールされていない場合、エフェクトイ"
+"ンターフェースがロードされないようになりました。その代わりに、ユーザーへのス"
+"テータスメッセージが表示されます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "ドキュメントが更新されました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "Improved debug messages"
-msgstr ""
+msgstr "デバッグメッセージの改善"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
