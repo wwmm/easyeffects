@@ -1064,7 +1064,10 @@ void on_registry_global(void* data,
       return;
     }
 
-    if (node_name.empty()) {
+    // At least for now I do not think there is a point in showing the spectrum adn the output level filters in menus
+
+    if (node_name.empty() || util::str_contains(node_name, "output_level") ||
+        util::str_contains(node_name, "spectrum")) {
       return;
     }
 

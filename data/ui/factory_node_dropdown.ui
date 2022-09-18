@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="easyeffects">
+    <template class="GtkListItem">
+        <property name="child">
+            <object class="GtkBox">
+                <property name="spacing">3</property>
+                <child>
+                    <object class="GtkImage">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <binding name="icon-name">
+                            <lookup name="icon-name" type="NodeInfoHolder">
+                                <lookup name="item">GtkListItem</lookup>
+                            </lookup>
+                        </binding>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="wrap">1</property>
+                        <binding name="label">
+                            <lookup name="description" type="NodeInfoHolder">
+                                <lookup name="item">GtkListItem</lookup>
+                            </lookup>
+                        </binding>
+                    </object>
+                </child>
+            </object>
+        </property>
+    </template>
+</interface>

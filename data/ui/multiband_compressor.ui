@@ -80,7 +80,7 @@
                                                         <property name="halign">center</property>
                                                         <property name="factory">
                                                             <object class="GtkBuilderListItemFactory">
-                                                                <property name="resource">/com/github/wwmm/easyeffects/ui/factory_input_device_dropdown.ui</property>
+                                                                <property name="resource">/com/github/wwmm/easyeffects/ui/factory_node_dropdown.ui</property>
                                                             </object>
                                                         </property>
                                                         <layout>

@@ -37,6 +37,8 @@ struct _NodeInfoHolder {
 
   NodeInfo* info;
 
+  std::string icon_name;  // The name of the icon that will represent the node when we show it in a list
+
   sigc::signal<void(const NodeInfo)> info_updated;
 };
 

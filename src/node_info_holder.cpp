@@ -23,7 +23,7 @@ namespace ui::holders {
 
 using namespace std::string_literals;
 
-enum { PROP_0, PROP_SERIAL, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS, PROP_DESCRIPTION };
+enum { PROP_0, PROP_SERIAL, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS, PROP_DESCRIPTION, PROP_ICON_NAME };
 
 G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
 
@@ -48,6 +48,9 @@ void node_info_set_property(GObject* object, guint prop_id, const GValue* value,
       break;
     case PROP_DESCRIPTION:
       self->info->description = g_value_get_string(value);
+      break;
+    case PROP_ICON_NAME:
+      self->icon_name = g_value_get_string(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -76,6 +79,9 @@ void node_info_get_property(GObject* object, guint prop_id, GValue* value, GPara
       break;
     case PROP_DESCRIPTION:
       g_value_set_string(value, self->info->description.c_str());
+      break;
+    case PROP_ICON_NAME:
+      g_value_set_string(value, self->icon_name.c_str());
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -126,6 +132,10 @@ void node_info_holder_class_init(NodeInfoHolderClass* klass) {
   g_object_class_install_property(
       object_class, PROP_DESCRIPTION,
       g_param_spec_string("description", "Description", "Description", nullptr, G_PARAM_READWRITE));
+
+  g_object_class_install_property(
+      object_class, PROP_ICON_NAME,
+      g_param_spec_string("icon-name", "Icon Name", "Icon Name", nullptr, G_PARAM_READWRITE));
 }
 
 void node_info_holder_init(NodeInfoHolder* self) {
@@ -136,6 +146,13 @@ auto create(const NodeInfo& info) -> NodeInfoHolder* {
   auto* holder = static_cast<NodeInfoHolder*>(g_object_new(EE_TYPE_NODE_INFO_HOLDER, nullptr));
 
   *holder->info = info;
+
+  if (info.media_class == tags::pipewire::media_class::sink || info.name.starts_with("ee_soe")) {
+    holder->icon_name = "audio-speakers-symbolic";
+  } else if (info.media_class == tags::pipewire::media_class::source ||
+             info.media_class == tags::pipewire::media_class::virtual_source || info.name.starts_with("ee_sie")) {
+    holder->icon_name = "audio-input-microphone-symbolic";
+  }
 
   return holder;
 }
