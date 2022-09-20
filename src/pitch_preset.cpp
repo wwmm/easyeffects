@@ -69,6 +69,8 @@ void PitchPreset::load(const nlohmann::json& json) {
 
   update_key<gchar*>(json.at(section).at(instance_name), settings, "phase", "phase");
 
+  update_key<int>(json.at(section).at(instance_name), settings, "cents", "cents");
+
   update_key<int>(json.at(section).at(instance_name), settings, "semitones", "semitones");
 
   update_key<int>(json.at(section).at(instance_name), settings, "octaves", "octaves");
