@@ -10,7 +10,7 @@ Description:
 - The application name has been changed to `Easy Effects` to adhere to the naming conventions of GNOME Human Interface Guidelines.
 - The documentation has been updated.
 - Improved presets autoloading.
-- The autogain silence threshold can now be configured by the user.
+- The Autogain silence threshold can now be configured by the user.
 
 - Bug fixes∶
 -
