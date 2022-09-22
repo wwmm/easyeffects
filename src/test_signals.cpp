@@ -21,6 +21,8 @@
 
 namespace {
 
+constexpr auto pi_x_2 = 2.0F * std::numbers::pi_v<float>;
+
 void on_process(void* userdata, spa_io_position* position) {
   auto* d = static_cast<TestSignals::data*>(userdata);
 
@@ -47,8 +49,10 @@ void on_process(void* userdata, spa_io_position* position) {
     return;
   }
 
-  std::span left_out{out_left, out_left + n_samples};
-  std::span right_out{out_right, out_right + n_samples};
+  std::span left_out(out_left, n_samples);
+  std::span right_out(out_right, n_samples);
+
+  const auto phase_delta = pi_x_2 * d->ts->sine_frequency / static_cast<float>(rate);
 
   for (uint n = 0U; n < n_samples; n++) {
     float signal = 0.0F;
@@ -57,10 +61,10 @@ void on_process(void* userdata, spa_io_position* position) {
 
     switch (d->ts->signal_type) {
       case TestSignalType::sine_wave: {
-        d->ts->sine_phase += 2.0F * std::numbers::pi_v<float> * d->ts->sine_frequency / static_cast<float>(rate);
+        d->ts->sine_phase += phase_delta;
 
-        if (d->ts->sine_phase >= 2.0F * std::numbers::pi_v<float>) {
-          d->ts->sine_phase -= 2.0F * std::numbers::pi_v<float>;
+        if (d->ts->sine_phase >= pi_x_2) {
+          d->ts->sine_phase -= pi_x_2;
         }
 
         signal = 0.5F * std::sin(d->ts->sine_phase);
