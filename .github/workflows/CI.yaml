@@ -91,7 +91,7 @@ jobs:
 
     - name: Makepkg Build and Check
       id: makepkg
-      uses: vchernin/pkgbuild-action@fix-permissions
+      uses: edlanglois/pkgbuild-action@v1.1.8
       with:
         # namcap doesn't actually exclude this rule, resulting in unnecessary warnings, so just disable namcap since it's not critical
         # namcapExcludeRules: unusedsodepends
