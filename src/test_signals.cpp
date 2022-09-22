@@ -59,6 +59,10 @@ void on_process(void* userdata, spa_io_position* position) {
       case TestSignalType::sine_wave: {
         d->ts->sine_phase += 2.0F * std::numbers::pi_v<float> * d->ts->sine_frequency / static_cast<float>(rate);
 
+        if (d->ts->sine_phase >= 2.0F * std::numbers::pi_v<float>) {
+          d->ts->sine_phase -= 2.0F * std::numbers::pi_v<float>;
+        }
+
         signal = 0.5F * std::sin(d->ts->sine_phase);
 
         break;
@@ -80,10 +84,6 @@ void on_process(void* userdata, spa_io_position* position) {
     if (d->ts->create_right_channel) {
       right_out[n] = signal;
     }
-  }
-
-  if (d->ts->sine_phase > 2.0F * std::numbers::pi_v<float>) {
-    d->ts->sine_phase -= 2.0F * std::numbers::pi_v<float>;
   }
 }
 
