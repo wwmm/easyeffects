@@ -250,8 +250,8 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double xpos, double
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
-        const float mouse_x_log = (x - self->data->margin * width) / width -
-                                  2 * self->data->margin * width * (self->data->x_max_log - self->data->x_min_log) +
+        const float mouse_x_log = (x - self->data->margin * width) / (width - 2 * self->data->margin * width) *
+                                      (self->data->x_max_log - self->data->x_min_log) +
                                   self->data->x_min_log;
 
         self->data->mouse_x = std::pow(10.0F, mouse_x_log);  // exp10 does not exist on FreeBSD
@@ -259,8 +259,8 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double xpos, double
         break;
       }
       case ChartScale::linear: {
-        self->data->mouse_x = (x - self->data->margin * width) / width -
-                              2 * self->data->margin * width * (self->data->x_max - self->data->x_min) +
+        self->data->mouse_x = (x - self->data->margin * width) / (width - 2 * self->data->margin * width) *
+                                  (self->data->x_max - self->data->x_min) +
                               self->data->x_min;
 
         break;
