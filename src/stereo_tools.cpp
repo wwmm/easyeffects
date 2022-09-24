@@ -63,6 +63,34 @@ StereoTools::StereoTools(const std::string& tag,
 
   lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
+  auto key_v = g_settings_get_double(settings, "dry");
+
+  dry = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+
+  key_v = g_settings_get_double(settings, "wet");
+
+  wet = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::dry", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<StereoTools*>(user_data);
+
+        auto key_v = g_settings_get_double(settings, key);
+
+        self->dry = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+      }),
+      this));
+
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::wet", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<StereoTools*>(user_data);
+
+        auto key_v = g_settings_get_double(settings, key);
+
+        self->wet = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+      }),
+      this));
+
   setup_input_output_gain();
 }
 
@@ -103,6 +131,12 @@ void StereoTools::process(std::span<float>& left_in,
 
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
   lv2_wrapper->run();
+
+  for (size_t n = 0; n < left_out.size(); n++) {
+    left_out[n] = wet * left_out[n] + dry * left_in[n];
+
+    right_out[n] = wet * right_out[n] + dry * right_in[n];
+  }
 
   if (output_gain != 1.0F) {
     apply_gain(left_out, right_out, output_gain);

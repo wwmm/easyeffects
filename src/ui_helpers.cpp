@@ -147,7 +147,8 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool
 }
 
 auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound) -> int {
-  auto min = 0.0, max = 0.0;
+  auto min = 0.0;
+  auto max = 0.0;
 
   gtk_spin_button_get_range(button, &min, &max);
 

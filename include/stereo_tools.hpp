@@ -47,4 +47,6 @@ class StereoTools : public PluginBase {
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
+
+  float dry = 0.0F, wet = 1.0F;
 };

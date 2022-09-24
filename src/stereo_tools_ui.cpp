@@ -45,7 +45,8 @@ struct _StereoToolsBox {
 
   GtkComboBoxText* mode;
 
-  GtkSpinButton *balance_in, *balance_out, *slev, *sbal, *mlev, *mpan, *stereo_base, *delay, *sc_level, *stereo_phase;
+  GtkSpinButton *balance_in, *balance_out, *slev, *sbal, *mlev, *mpan, *stereo_base, *delay, *sc_level, *stereo_phase,
+      *dry, *wet;
 
   GtkToggleButton *softclip, *mutel, *muter, *phasel, *phaser;
 
@@ -124,6 +125,10 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 
   g_settings_bind(self->settings, "stereo-phase", gtk_spin_button_get_adjustment(self->stereo_phase), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "dry", gtk_spin_button_get_adjustment(self->dry), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "softclip", self->softclip, "active", G_SETTINGS_BIND_DEFAULT);
 
@@ -209,6 +214,8 @@ void stereo_tools_box_class_init(StereoToolsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, muter);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, phasel);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, phaser);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, dry);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, wet);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
@@ -226,6 +233,9 @@ void stereo_tools_box_init(StereoToolsBox* self) {
 
   prepare_spinbuttons<"">(self->balance_in, self->balance_out, self->sc_level, self->sbal, self->mpan,
                           self->stereo_base, self->stereo_phase);
+
+  // The following spinbuttons can assume -inf
+  prepare_spinbuttons<"dB", false>(self->dry, self->wet);
 }
 
 auto create() -> StereoToolsBox* {
