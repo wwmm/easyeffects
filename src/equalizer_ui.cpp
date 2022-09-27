@@ -600,7 +600,9 @@ void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& spli
 
     bands_box = self->bands_box_right;
   }
-
+  
+  gtk_box_set_spacing(bands_box, 0);
+  
   for (int n = 0; n < nbands; n++) {
     auto* band_box = ui::equalizer_band_box::create();
 
