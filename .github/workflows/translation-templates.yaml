@@ -55,7 +55,7 @@ jobs:
       # TODO it would be ideal to refresh metainfo fully by copying release notes from the upcoming release in NEWS.yaml to metainfo, and then running the above update template script,
       # however this is not possible without putting a dummy release in the metainfo with said upcoming release notes which would later have to be adjusted to the real release.
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4.1.2
+        uses: peter-evans/create-pull-request@v4.1.3
         with:
           title: Update translation templates
           body: Ensure to merge all other Pull Requests before merging this. Conflicts here will automatically be resolved in case of changes in master.
