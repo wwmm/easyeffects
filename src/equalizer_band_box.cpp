@@ -65,11 +65,13 @@ auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
     return g_strdup("");
   }
 
-  if (value > 1000.0) {
-    return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", value / 1000.0).c_str());
+  if (value < 1000.0) {
+    // Show no decimal digits: full integer. No need of locale.
+    return g_strdup(fmt::format("{0:.0f} Hz", value).c_str());
   }
 
-  return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} Hz", value).c_str());
+  // Convert in kHz and show hHz as 1 decimal digit. Use locale.
+  return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", value / 1000.0).c_str());
 }
 
 auto set_band_quality_label(EqualizerBandBox* self, double value) -> const char* {

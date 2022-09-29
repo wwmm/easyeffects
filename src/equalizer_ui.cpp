@@ -622,20 +622,14 @@ void build_all_bands(EqualizerBox* self) {
   self->data->gconnections_left.clear();
   self->data->gconnections_right.clear();
 
-  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->bands_box_left)); child != nullptr;) {
-    auto* next_child = gtk_widget_get_next_sibling(child);
+  for (auto* band_box_ptr : {self->bands_box_left, self->bands_box_right}) {
+    for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(band_box_ptr)); child != nullptr;) {
+      auto* next_child = gtk_widget_get_next_sibling(child);
 
-    gtk_box_remove(self->bands_box_left, child);
+      gtk_box_remove(band_box_ptr, child);
 
-    child = next_child;
-  }
-
-  for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(self->bands_box_right)); child != nullptr;) {
-    auto* next_child = gtk_widget_get_next_sibling(child);
-
-    gtk_box_remove(self->bands_box_right, child);
-
-    child = next_child;
+      child = next_child;
+    }
   }
 
   const auto split = g_settings_get_boolean(self->settings, "split-channels") != 0;
