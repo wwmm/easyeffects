@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-24 12:21-0300\n"
-"PO-Revision-Date: 2022-04-01 14:37+0000\n"
-"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
-"tr/>\n"
+"PO-Revision-Date: 2022-09-29 07:18+0000\n"
+"Last-Translator: Zay <zayria@proton.me>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #, fuzzy
@@ -118,7 +118,7 @@ msgstr "Ses denetimlerini gösteren sarsıcı sayfası"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:292
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:305
 msgid "Features:"
-msgstr ""
+msgstr "Özellikler:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
@@ -131,6 +131,8 @@ msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
 msgstr ""
+"Önceden ayarlanmış otomatik yükleme kodunun bluez5 cihazlarıyla uyumluluğu "
+"geliştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Wet/dry controls were added for some plugins"
@@ -141,10 +143,12 @@ msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
+"İlgili lv2 eklentisi sistemde yüklü olmadığında efekt arayüzü artık "
+"yüklenmiyor. Onun yerine kullanıcıya bir durum mesajı gösterilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "Belgeler güncellendi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "Improved debug messages"
@@ -175,7 +179,7 @@ msgstr "Çeviriler güncellendi"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Hata düzeltmeleri:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
@@ -183,10 +187,9 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
 msgid "Other notes:"
-msgstr ""
+msgstr "Diğer notlar:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
-#, fuzzy
 msgid "Improved translations"
 msgstr "Çeviriler güncellendi"
 
@@ -195,6 +198,8 @@ msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
 msgstr ""
+"Efektler uygulanırken, EasyEffects'in penceresini kapatırken çökmesine neden "
+"olan bir hata düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
