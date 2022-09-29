@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 14:27+0000\n"
+"POT-Creation-Date: 2022-09-29 22:35+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2196,7 +2196,7 @@ msgstr "播放器"
 msgid "Effects"
 msgstr "音效"
 
-#: src/equalizer_band_box.cpp:92
+#: src/equalizer_band_box.cpp:94
 msgid "infinity"
 msgstr "无限"
 
