@@ -14,7 +14,7 @@
 
         <child>
             <object class="GtkLabel" id="band_label">
-                <property name="width-chars">10</property>
+                <property name="width-chars">8</property>
                 <property name="label">band</property>
 
                 <binding name="label">
@@ -31,7 +31,7 @@
 
         <child>
             <object class="GtkLabel" id="band_quality_label">
-                <property name="width-chars">10</property>
+                <property name="width-chars">8</property>
                 <property name="label">Q</property>
 
                 <binding name="label">

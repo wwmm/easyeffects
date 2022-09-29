@@ -216,7 +216,7 @@
                                                                 <property name="title" translatable="yes">Left</property>
                                                                 <property name="child">
                                                                     <object class="GtkBox" id="bands_box_left">
-                                                                        <property name="spacing">6</property>
+                                                                        <property name="spacing">0</property>
                                                                     </object>
                                                                 </property>
                                                             </object>
@@ -228,7 +228,7 @@
                                                                 <property name="title" translatable="yes">Right</property>
                                                                 <property name="child">
                                                                     <object class="GtkBox" id="bands_box_right">
-                                                                        <property name="spacing">6</property>
+                                                                        <property name="spacing">0</property>
                                                                     </object>
                                                                 </property>
                                                             </object>
