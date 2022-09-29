@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 14:27+0000\n"
+"POT-Creation-Date: 2022-09-29 22:35+0000\n"
 "PO-Revision-Date: 2022-09-29 01:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2421,7 +2421,7 @@ msgstr ""
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/equalizer_band_box.cpp:92
+#: src/equalizer_band_box.cpp:94
 msgid "infinity"
 msgstr ""
 
