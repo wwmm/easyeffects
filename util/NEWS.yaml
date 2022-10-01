@@ -14,11 +14,11 @@ Description:
 - Dry and wet controls added to the Stereo Tools effect.
 
 - Bug fixes∶
-- When the mouse was hovering over a chart the wrong value for the x axis coordinate was being shown. This regression
-is fixed.
+- When the mouse was hovering over a chart the wrong value for the x axis coordinate was being shown. This regression is fixed.
 
 - Other notes∶
--
+- Because of the new multiple instances feature, the preset format has changed, but the old one is still compatible to be loaded.
+Anyway take in consideration that saving the current preset will always write it in the new format.
 
 ---
 Version: 6.3.0
