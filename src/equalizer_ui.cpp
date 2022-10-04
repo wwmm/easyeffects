@@ -228,6 +228,8 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
 
   if (filter_type.empty()) {
     return false;
+  } else {
+    std::ranges::stable_sort(bands, {}, &APO_Band::freq);
   }
 
   // The configuration line refers to an existing APO filter, so we try to get the other parameters.
