@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 22:35+0000\n"
-"PO-Revision-Date: 2022-09-05 03:16+0000\n"
-"Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
+"PO-Revision-Date: 2022-10-04 21:21+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -86,9 +86,8 @@ msgid "_Reset Settings"
 msgstr "_Réinitialiser les paramètres"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "_À propos de EasyEffects"
+msgstr "_À propos de Easy Effects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -113,9 +112,8 @@ msgid "Primary Menu"
 msgstr "Menu principal"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "Fenêtre de EasyEffects"
+msgstr "Fenêtre de Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -134,7 +132,6 @@ msgid "Target"
 msgstr "Cible"
 
 #: data/ui/autogain.ui:63
-#, fuzzy
 msgid "Silence"
 msgstr "Silence"
 
@@ -324,7 +321,6 @@ msgid "Harmonics"
 msgstr "Harmoniques"
 
 #: data/ui/bass_enhancer.ui:177 data/ui/exciter.ui:177
-#, fuzzy
 msgid "Scope"
 msgstr "Seuil"
 
@@ -1450,12 +1446,11 @@ msgid "Device Management"
 msgstr "Gestion des périphériques"
 
 #: data/ui/pipe_manager_box.ui:35
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
-"Il est recommandé de ne PAS définir EasyEffects Sink/Source comme "
+"Il est recommandé de ne PAS définir Easy Effects Sink/Source comme "
 "périphérique par défaut dans les applications externes (par exemple, les "
 "Paramètres de Gnome et les Paramètres de Plasma)."
 
@@ -1992,9 +1987,8 @@ msgid "Overview"
 msgstr "Vue d’ensemble"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "Ouvrir le manuel de EasyEffects"
+msgstr "Ouvrir le manuel de Easy Effects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2005,9 +1999,8 @@ msgid "Close the Window"
 msgstr "Fermer la fenêtre"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "Quitter EasyEffects"
+msgstr "Quitter Easy Effects"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2130,18 +2123,16 @@ msgid "Audio effects for PipeWire applications"
 msgstr "Effets audio pour les applications utilisant PipeWire"
 
 #: src/application.cpp:499
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Quitter EasyEffects. Utile en cas de fonctionnement en mode serveur."
+msgstr "Quitter Easy Effects. Utile en cas de fonctionnement en mode serveur."
 
 #: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Chargez un préréglage. Exemple : easyeffects -l musique"
 
 #: src/application.cpp:505
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "Réinitialiser EasyEffects."
+msgstr "Réinitialiser Easy Effects."
 
 #: src/application.cpp:508
 msgid "Hide the Window."
@@ -2243,23 +2234,20 @@ msgstr ""
 "Veuillez vérifier son contenu."
 
 #: src/equalizer_ui.cpp:550
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "Importer un fichier de préréglage APO"
+msgstr "Importer un fichier de préréglage GraphicEQ"
 
 #: src/equalizer_ui.cpp:556
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Préréglages d’entrée"
+msgstr "Préréglages GraphicEQ"
 
 #: src/equalizer_ui.cpp:574
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
 msgstr ""
-"Le préréglage APO n’a pas été chargé. Le format du fichier peut être erroné. "
-"Veuillez vérifier son contenu."
+"Le préréglage GraphicEQ n’a pas été chargé. Le format du fichier peut être "
+"erroné. Veuillez vérifier son contenu."
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
