@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 22:35+0000\n"
+"POT-Creation-Date: 2022-10-04 21:25+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2149,13 +2149,13 @@ msgstr "インパルスファイルがインポートされていません"
 msgid "Import Impulse File"
 msgstr "インパルスファイルをインポート"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:362
-#: src/equalizer_ui.cpp:551 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:364
+#: src/equalizer_ui.cpp:555 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "開く"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:362
-#: src/equalizer_ui.cpp:551 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:364
+#: src/equalizer_ui.cpp:555 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -2195,30 +2195,30 @@ msgstr "エフェクト"
 msgid "infinity"
 msgstr "無限大"
 
-#: src/equalizer_ui.cpp:361
+#: src/equalizer_ui.cpp:363
 msgid "Import APO Preset File"
 msgstr "APO プリセットファイルをインポート"
 
-#: src/equalizer_ui.cpp:367
+#: src/equalizer_ui.cpp:369
 msgid "APO Presets"
 msgstr "APO プリセット"
 
-#: src/equalizer_ui.cpp:385
+#: src/equalizer_ui.cpp:387
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
 "APO プリセットが読み込まれていません。ファイルフォーマットが間違っている可能"
 "性があります。内容を確認してください。"
 
-#: src/equalizer_ui.cpp:550
+#: src/equalizer_ui.cpp:554
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ プリセットファイルのインポート"
 
-#: src/equalizer_ui.cpp:556
+#: src/equalizer_ui.cpp:560
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ プリセット"
 
-#: src/equalizer_ui.cpp:574
+#: src/equalizer_ui.cpp:578
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
