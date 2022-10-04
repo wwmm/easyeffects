@@ -311,10 +311,10 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
 
   if (bands.empty()) {
     return false;
-  } else {
-    std::ranges::stable_sort(bands, {}, &APO_Band::freq);
   }
-
+  
+  std::ranges::stable_sort(bands, {}, &APO_Band::freq);
+  
   // Apply APO parameters obtained
   g_settings_set_int(self->settings, "num-bands",
                      static_cast<int>(std::min(static_cast<uint>(bands.size()), max_bands)));
