@@ -507,7 +507,7 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
     return false;
   }
   
-  std::ranges::stable_sort(bands, {}, &APO_Band::freq);
+  std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq);
 
   // Apply GraphicEQ parameters obtained
   g_settings_set_int(self->settings, "num-bands",
