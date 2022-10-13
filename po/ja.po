@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-13 20:56+0000\n"
+"POT-Creation-Date: 2022-10-13 23:12+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2191,7 +2191,7 @@ msgstr "プレイヤー"
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/equalizer_band_box.cpp:94
+#: src/equalizer_band_box.cpp:82
 msgid "infinity"
 msgstr "無限大"
 
