@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-04 21:25+0000\n"
-"PO-Revision-Date: 2022-09-09 12:18+0000\n"
-"Last-Translator: Eduardo Malaspina <vaio0@swismail.com>\n"
+"PO-Revision-Date: 2022-10-13 00:41+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
 "Language: es\n"
@@ -17,12 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
 msgid "Easy Effects"
-msgstr "EasyEffects"
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -33,61 +32,56 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects es una herramienta avanzada de manipulación de audio. Entre sus "
-"útiles incluye un ecualizador, un limitador, un compresor y una herramienta "
-"de reverberación , solo por mencionar algunos. Para complementar lo "
-"anterior, viene con un analizador de espectro incluido."
+"Easy Effects es una herramienta avanzada de manipulación de audio. Incluye "
+"un ecualizador, un limitador, un compresor y una herramienta de "
+"reverberación, por mencionar algunos. Para complementar esto, también hay un "
+"analizador de espectro incorporado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-#, fuzzy
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects es el sucesor de PulseEffects. EasyEffects solo soporta el "
-"servidor de audio PipeWire. Los usuarios de PulseAudio deben usar "
-"PulseEffects en su lugar."
+"Easy Effects es el sucesor de PulseEffects. Easy Effects sólo es compatible "
+"con el servidor de audio de PipeWire. Los usuarios de PulseAudio deben "
+"utilizar en su lugar PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because Easy Effects uses the default PipeWire sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Debido a que EasyEffects usa por defecto el servidor de audio PipeWire, "
-"funcionará con la mayoría, sino todas, las aplicaciones que uses. Todas las "
-"aplicaciones son mostradas en la ventana principal, donde pueden ser "
-"habilitadas individualmente."
+"Dado que Easy Effects utiliza el servidor de sonido PipeWire por defecto, "
+"funcionará con la mayoría, si no con todas, las aplicaciones que utilice. "
+"Todas las aplicaciones compatibles se presentan en la ventana principal, "
+"donde cada una puede ser activada individualmente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Además de manipular el sonido de salida, EasyEffects también puede aplicar "
-"efectos a dispositivos de entrada, como micrófonos. Esto es útil en la "
-"grabación de audio, por poner un ejemplo, pero también funciona "
-"correctamente durante las conversaciones de voz."
+"Además de manipular la salida de sonido, Easy Effects es capaz de aplicar "
+"efectos a un dispositivo de entrada, como un micrófono. Esto es, por "
+"ejemplo, útil en la grabación de audio, pero también funciona bien durante "
+"las conversaciones de voz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"Cuando se inicie EasyEffects, este recordará convenientemente la "
-"configuración utilizada en la última sesión. También es posible guardar "
-"todos los ajustes actuales en un perfil."
+"Cuando se inicie Easy Effects, recordará convenientemente la configuración "
+"utilizada en la última sesión. También es posible guardar todos los ajustes "
+"actuales como perfiles."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
@@ -132,13 +126,12 @@ msgstr ""
 "plugins de Linux Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
-#, fuzzy
 msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
 msgstr ""
-"Se ha mejorado la compatibilidad del código de precarga con los dispositivos "
-"usb."
+"Se ha mejorado la compatibilidad del código de carga automática "
+"preestablecido con dispositivos bluez5."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Wet/dry controls were added for some plugins"
@@ -197,9 +190,8 @@ msgid "Other notes:"
 msgstr "Otras notas:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
-#, fuzzy
 msgid "Improved translations"
-msgstr "Traducciones actualizadas"
+msgstr "Traducciones mejoradas"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
@@ -503,14 +495,14 @@ msgstr ""
 "El menú de ajustes ha sido rediseñado utilizando widgets de LibAdwaita."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
-#, fuzzy
 msgid ""
 "Equalizer APO preset import feature has been improved to apply not only the "
 "Bell filter, but also other supported ones (at the moment only the Bandpass "
 "filter is not available in LSP plugin)."
 msgstr ""
-"Se ha mejorado la función de importación de perfiles del ecualizador APO "
-"para aplicar no sólo el filtro Bell, sino también otros compatibles"
+"Se mejoró la función de importación preestablecida APO del ecualizador para "
+"aplicar no solo el filtro Bell, sino también otros compatibles (por el "
+"momento, solo el filtro Bandpass no está disponible en el complemento LSP)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
 msgid ""
@@ -659,10 +651,10 @@ msgstr ""
 "de la lista de aplicaciones."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
-#, fuzzy
 msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
 msgstr ""
-"Esperamos que los fallos como el reportado en [1172]( se han solucionado."
+"Esperemos que se solucionen los bloqueos como el informado en el problema "
+"1172."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
 msgid "Prevented a case in which Spectrum was crashing."
@@ -678,14 +670,14 @@ msgstr ""
 "sistemas con localización diferente a la inglesa."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
-#, fuzzy
 msgid ""
 "Improved compatibility with WirePlumber. This is needed to run on systems "
 "that decided to use it instead of the built-in PipeWire session manager. "
 "More information at issue 1144."
 msgstr ""
-"Se ha mejorado la compatibilidad con WirePlumber. Esto es necesario para que "
-"funcione en los sistemas que decidieron utilizarlo en lugar del"
+"Compatibilidad mejorada con WirePlumber. Esto es necesario para ejecutarse "
+"en sistemas que decidieron usarlo en lugar del administrador de sesión "
+"integrado de PipeWire. Más información en el número 1144."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
 msgid ""
@@ -698,14 +690,13 @@ msgstr ""
 "modificar los ajustes del perfil sin tener que eliminarlo y volver a crearlo."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
-#, fuzzy
 msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue 1051."
 msgstr ""
-"Se ha rediseñado de nuevo la implementación del soporte de carga automática "
-"de perfiles. Ahora debería funcionar en un conjunto mayor de hardware. "
-"Consultar [1051]( para más información"
+"La implementación de soporte de carga automática preestablecida fue "
+"rediseñada nuevamente. Debería funcionar en más hardware ahora. Para obtener "
+"más información, consulte el número 1051."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 msgid ""
@@ -892,15 +883,14 @@ msgstr ""
 "algunos diálogos de plugins"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:271
-#, fuzzy
 msgid ""
 "The convolver impulse response menu was improved to workaround an issue "
 "where the impulse files was not loaded when only one was available in the "
 "menu, see issue 1011"
 msgstr ""
-"Se ha mejorado el menú de respuesta a impulsos del convolucionador. Esto "
-"tiene como fin solucionar un problema que causaba que no se cargaran los "
-"archivos de respuesta a impulsos cuando sólo había uno disponible en el menú"
+"El menú de respuesta de impulso de convolver se mejoró para solucionar un "
+"problema en el que los archivos de impulso no se cargaban cuando solo había "
+"uno disponible en el menú; consulte el problema 1011"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:272
 msgid ""
@@ -922,13 +912,13 @@ msgid "Fixed wrong alignment in a few widgets"
 msgstr "Se ha corregido la alineación incorrecta de algunos widgets"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
-#, fuzzy
 msgid ""
 "The Loudness plugin is being used again for the reasons described at issue "
 "820. This means that is an optional dependency again."
 msgstr ""
-"El plugin Loudness es usado de nuevo por las razones descritas. Esto implica "
-"que es una dependencia opcional de nuevo."
+"El complemento Loudness se está utilizando nuevamente por los motivos "
+"descritos en el problema 820. Esto significa que es una dependencia opcional "
+"nuevamente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
 msgid ""
@@ -984,13 +974,12 @@ msgstr ""
 "es tan grande que es difícil describirlos todos aquí."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:307
-#, fuzzy
 msgid ""
 "The following are just the most import ones. People interested on the "
 "journey that got us here can take a look at issue 904 and issue 874."
 msgstr ""
-"A continuación se indican sólo los más importantes. Quien esté interesado en "
-"profundizar más puede echar"
+"Los siguientes son solo los más importantes. Las personas interesadas en el "
+"viaje que nos trajo aquí pueden consultar el número 904 y el número 874."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:308
 msgid ""
