@@ -61,10 +61,6 @@ void on_reset_frequency(EqualizerBandBox* self, GtkButton* btn) {
 }
 
 auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
-  if (self->data == nullptr) {
-    return g_strdup("");
-  }
-
   if (value < 1000.0) {
     // Show no decimal digits: full integer. No need of locale.
     return g_strdup(fmt::format("{0:.0f} Hz", value).c_str());
@@ -75,18 +71,10 @@ auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
 }
 
 auto set_band_quality_label(EqualizerBandBox* self, double value) -> const char* {
-  if (self->data == nullptr) {
-    return g_strdup("");
-  }
-
   return g_strdup(fmt::format(ui::get_user_locale(), "Q {0:.2Lf}", value).c_str());
 }
 
 auto set_band_width_label(EqualizerBandBox* self, double quality, double frequency) -> const char* {
-  if (self->data == nullptr) {
-    return g_strdup("");
-  }
-
   if (quality > 0.0) {
     return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} Hz", frequency / quality).c_str());
   }
