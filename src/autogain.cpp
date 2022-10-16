@@ -230,7 +230,7 @@ void AutoGain::process(std::span<float>& left_in,
 
   if (EBUR128_SUCCESS != ebur128_loudness_shortterm(ebur_state, &shortterm)) {
     failed = true;
-  } else if (global > 10.0) {
+  } else if (shortterm > 10.0) {
     /*
       Sometimes when a stream is started right after EasyEffects has been initialized a very large shorterm value is
       calculated. Probably because of some weird high intensity transient. So it is better to ignore unresonable large
