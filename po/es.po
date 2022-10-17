@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-13 23:12+0000\n"
-"PO-Revision-Date: 2022-09-09 12:22+0000\n"
-"Last-Translator: Eduardo Malaspina <vaio0@swismail.com>\n"
+"PO-Revision-Date: 2022-10-17 22:00+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -86,9 +86,8 @@ msgid "_Reset Settings"
 msgstr "_Restablecer ajustes"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "_Acerca de EasyEffects"
+msgstr "_Acerca de Easy Effects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -113,9 +112,8 @@ msgid "Primary Menu"
 msgstr "Menú principal"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "Ventana de EasyEffects"
+msgstr "Ventana de Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -134,9 +132,8 @@ msgid "Target"
 msgstr "Objetivo"
 
 #: data/ui/autogain.ui:63
-#, fuzzy
 msgid "Silence"
-msgstr "Ambiente"
+msgstr "Silencio"
 
 #: data/ui/autogain.ui:98
 msgid "Maximum History"
@@ -259,6 +256,7 @@ msgstr "Ganancia de salida del plugin"
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:791
+#: data/ui/equalizer_band.ui:295
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -450,16 +448,14 @@ msgstr "Ganancia de compensación"
 #: data/ui/compressor.ui:405 data/ui/delay.ui:105 data/ui/gate.ui:342
 #: data/ui/multiband_compressor.ui:132 data/ui/multiband_gate.ui:132
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:534
-#, fuzzy
 msgid "Dry Level"
-msgstr "Nivel de señal sin efectos"
+msgstr "Nivel de secado"
 
 #: data/ui/compressor.ui:440 data/ui/delay.ui:164 data/ui/gate.ui:347
 #: data/ui/multiband_compressor.ui:166 data/ui/multiband_gate.ui:166
 #: data/ui/reverb.ui:242 data/ui/stereo_tools.ui:570
-#, fuzzy
 msgid "Wet Level"
-msgstr "Nivel de señal con efectos"
+msgstr "Nivel de humedad"
 
 #: data/ui/compressor.ui:482 data/ui/compressor.ui:994 data/ui/gate.ui:621
 #: data/ui/gate.ui:1132
@@ -731,6 +727,7 @@ msgstr "Bypass"
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:320
 #: data/ui/multiband_compressor_band.ui:136 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:171 data/ui/stereo_tools.ui:196
+#: data/ui/equalizer_band.ui:321
 msgid "Mute"
 msgstr "Silenciar"
 
@@ -804,34 +801,28 @@ msgid "Delay"
 msgstr "Retraso"
 
 #: data/ui/delay.ui:75
-#, fuzzy
 msgid "Left Delay"
-msgstr "Pre retraso"
+msgstr "Retraso a la izquierda"
 
 #: data/ui/delay.ui:97
-#, fuzzy
 msgid "Right Delay"
-msgstr "Canal derecho"
+msgstr "Retraso de la derecha"
 
 #: data/ui/delay.ui:132
-#, fuzzy
 msgid "Left Dry Level"
-msgstr "Nivel de señal sin efectos"
+msgstr "Nivel seco izquierdo"
 
 #: data/ui/delay.ui:156
-#, fuzzy
 msgid "Right Dry Level"
-msgstr "Nivel de señal sin efectos"
+msgstr "Nivel Seco derecho"
 
 #: data/ui/delay.ui:190
-#, fuzzy
 msgid "Left Wet Level"
-msgstr "Nivel de señal con efectos"
+msgstr "Nivel húmedo izquierdo"
 
 #: data/ui/delay.ui:213
-#, fuzzy
 msgid "Right Wet Level"
-msgstr "Nivel de señal con efectos"
+msgstr "Nivel húmedo derecho"
 
 #: data/ui/echo_canceller.ui:30
 msgid "Frame Size"
@@ -871,14 +862,12 @@ msgid "Balance"
 msgstr "Balance"
 
 #: data/ui/equalizer.ui:123
-#, fuzzy
 msgid "Pitch Left"
-msgstr "Cadena lateral izquierda"
+msgstr "Pitch izquierdo"
 
 #: data/ui/equalizer.ui:156
-#, fuzzy
 msgid "Pitch Right"
-msgstr "Cadena lateral derecha"
+msgstr "Pitch derecho"
 
 #: data/ui/equalizer.ui:251
 msgid "Split Channels"
@@ -953,7 +942,7 @@ msgid "Quality"
 msgstr "Calidad"
 
 #: data/ui/equalizer_band.ui:314 data/ui/multiband_compressor_band.ui:146
-#: data/ui/multiband_gate_band.ui:119
+#: data/ui/multiband_gate_band.ui:119 data/ui/equalizer_band.ui:315
 msgid "Solo"
 msgstr "Solo"
 
@@ -1047,9 +1036,8 @@ msgid "Hysteresis"
 msgstr "Histéresis"
 
 #: data/ui/gate.ui:326
-#, fuzzy
 msgid "Mix"
-msgstr "Intermedios"
+msgstr "Mezcla"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
@@ -1060,9 +1048,8 @@ msgid "Release Zone Start"
 msgstr "Inicio de la zona de decaimiento"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "Modo filtro de paso bajo"
+msgstr "Filtro de paso bajo"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
@@ -1429,9 +1416,8 @@ msgid "Band Curve"
 msgstr "Curva de la banda"
 
 #: data/ui/multiband_gate_band.ui:777
-#, fuzzy
 msgid "Band Reduction"
-msgstr "Reducción máx. de la banda 1"
+msgstr "Reducción de banda"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1442,14 +1428,13 @@ msgid "Device Management"
 msgstr "Gestión de dispositivos"
 
 #: data/ui/pipe_manager_box.ui:35
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
-"Se recomienda NO establecer EasyEffects Sink/Source como dispositivo "
-"predeterminado en aplicaciones externas (por ejemplo, Configuración de Gnome "
-"y Configuración del sistema Plasma)."
+"Se recomienda NO establecer Easy Effects Sink/Source como dispositivo por "
+"defecto en aplicaciones externas (por ejemplo, Gnome Settings y Plasma "
+"System Settings)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1982,9 +1967,8 @@ msgid "Overview"
 msgstr "Resumen"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "Abrir el manual de EasyEffects"
+msgstr "Abrir el manual de usuario Easy Effects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -1995,9 +1979,8 @@ msgid "Close the Window"
 msgstr "Cerrar la ventana"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "Cerrar EasyEffects"
+msgstr "Salir de Easy Effects"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2120,18 +2103,16 @@ msgid "Audio effects for PipeWire applications"
 msgstr "Efectos de audio para aplicaciones que utilizan PipeWire"
 
 #: src/application.cpp:499
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Salir de EasyEffects. Útil cuando se está ejecutando en modo servicio."
+msgstr "Deja Easy Effects. Útil cuando se ejecuta en modo de servicio."
 
 #: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar un perfil. Por ejemplo: easyeffects -l musica"
 
 #: src/application.cpp:505
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "Restablecer EasyEffects."
+msgstr "Reiniciar Easy Effects."
 
 #: src/application.cpp:508
 msgid "Hide the Window."
@@ -2213,7 +2194,7 @@ msgstr "Reproductores"
 msgid "Effects"
 msgstr "Efectos"
 
-#: src/equalizer_band_box.cpp:82
+#: src/equalizer_band_box.cpp:82 src/equalizer_band_box.cpp:94
 msgid "infinity"
 msgstr "infinito"
 
@@ -2233,23 +2214,20 @@ msgstr ""
 "incorrecto. Por favor, compruebe su contenido."
 
 #: src/equalizer_ui.cpp:554
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "Importar archivo de perfil APO"
+msgstr "Importar archivo preestablecido de GraphicEQ"
 
 #: src/equalizer_ui.cpp:560
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Perfiles de entrada"
+msgstr "Preajustes de GraphicEQ"
 
 #: src/equalizer_ui.cpp:578
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
 msgstr ""
-"El preajuste APO no se ha cargado. El formato del archivo puede ser "
-"incorrecto. Por favor, compruebe su contenido."
+"El preajuste de GraphicEQ no se ha cargado. El formato del archivo puede que "
+"ser incorrecto. Por favor, compruebe su contenido."
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
@@ -2374,7 +2352,6 @@ msgid "Close (Press ESC)"
 msgstr "Cerrar (Pulsar ESC)"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
-#, fuzzy
 msgid "-inf"
 msgstr "-inf"
 
