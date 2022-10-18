@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-13 23:12+0000\n"
+"POT-Creation-Date: 2022-10-18 00:15+0000\n"
 "PO-Revision-Date: 2022-10-17 22:00+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -256,7 +256,6 @@ msgstr "Ganancia de salida del plugin"
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:791
-#: data/ui/equalizer_band.ui:295
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -727,7 +726,6 @@ msgstr "Bypass"
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:320
 #: data/ui/multiband_compressor_band.ui:136 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:171 data/ui/stereo_tools.ui:196
-#: data/ui/equalizer_band.ui:321
 msgid "Mute"
 msgstr "Silenciar"
 
@@ -942,7 +940,7 @@ msgid "Quality"
 msgstr "Calidad"
 
 #: data/ui/equalizer_band.ui:314 data/ui/multiband_compressor_band.ui:146
-#: data/ui/multiband_gate_band.ui:119 data/ui/equalizer_band.ui:315
+#: data/ui/multiband_gate_band.ui:119
 msgid "Solo"
 msgstr "Solo"
 
@@ -2194,7 +2192,7 @@ msgstr "Reproductores"
 msgid "Effects"
 msgstr "Efectos"
 
-#: src/equalizer_band_box.cpp:82 src/equalizer_band_box.cpp:94
+#: src/equalizer_band_box.cpp:82
 msgid "infinity"
 msgstr "infinito"
 
