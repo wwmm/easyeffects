@@ -44,6 +44,7 @@
 #include "pitch.hpp"
 #include "reverb.hpp"
 #include "rnnoise.hpp"
+#include "speex.hpp"
 #include "spectrum.hpp"
 #include "stereo_tools.hpp"
 #include "tags_schema.hpp"
@@ -86,6 +87,7 @@ class EffectsBase {
   std::shared_ptr<Pitch> pitch;
   std::shared_ptr<Reverb> reverb;
   std::shared_ptr<RNNoise> rnnoise;
+    std::shared_ptr<Speex> speex;
   std::shared_ptr<StereoTools> stereo_tools;
 
   auto get_pipeline_latency() -> float;

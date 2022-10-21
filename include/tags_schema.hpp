@@ -255,6 +255,16 @@ inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/
 
 }  // namespace tags::schema::rnnoise
 
+namespace tags::schema::speex {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.speex";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/speex/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/speex/";
+
+}  // namespace tags::schema::speex
+
 namespace tags::schema::stereo_tools {
 
 inline constexpr auto id = "com.github.wwmm.easyeffects.stereotools";

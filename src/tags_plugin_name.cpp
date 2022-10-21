@@ -50,6 +50,7 @@ auto get_translated() -> std::map<std::string, std::string> {
                                                    {pitch, _("Pitch")},
                                                    {reverb, _("Reverberation")},
                                                    {rnnoise, _("Noise Reduction")},
+                                                   {speex, _("Noise Reduction (Fast)")},
                                                    {stereo_tools, _("Stereo Tools")}};
 
   return translated;
@@ -142,6 +143,10 @@ auto get_base_name(std::string_view name) -> std::string {
 
   if (name.starts_with(tags::plugin_name::rnnoise)) {
     return tags::plugin_name::rnnoise;
+  }
+
+  if (name.starts_with(tags::plugin_name::speex)) {
+    return tags::plugin_name::speex;
   }
 
   if (name.starts_with(tags::plugin_name::stereo_tools)) {

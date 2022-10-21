@@ -383,6 +383,20 @@ void add_plugins_to_stack(PluginsBox* self) {
       }
 
       gtk_stack_add_named(self->stack, box, name.c_str());
+    } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::speex)) {
+      auto plugin_ptr = effects_base->get_plugin_instance<Speex>(name);
+
+      if (plugin_ptr->package_installed) {
+        auto* plugin_box = ui::speex_box::create();
+
+        ui::speex_box::setup(plugin_box, plugin_ptr, path, self->data->application);
+
+        box = GTK_WIDGET(plugin_box);
+      } else {
+        box = ui::missing_plugin_box(plugin_ptr->name, plugin_ptr->package);
+      }
+
+      gtk_stack_add_named(self->stack, box, name.c_str());
     } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::stereo_tools)) {
       auto plugin_ptr = effects_base->get_plugin_instance<StereoTools>(name);
 
