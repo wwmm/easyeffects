@@ -8,25 +8,28 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-18 00:15+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-10-21 05:06+0000\n"
+"Last-Translator: Gustavo K. Piccoli <gustavokpiccoli@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
-msgstr ""
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "Audio Effects para aplicações PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -34,12 +37,19 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"Easy Effects é uma ferramenta avançada de manipulação de áudio. Algumas de "
+"suas funcionalidades são: equalizador, limitador, compressor e uma "
+"ferramenta de reverberação. Para complementar também existe um analisador de "
+"expectro integrado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"O Easy Effects é o sucessor do PulseEffects. O Easy Effects suporta apenas o "
+"servidor de áudio PipeWire. Os usuários do PulseAudio devem usar o "
+"PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
