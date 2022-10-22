@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-18 00:15+0000\n"
-"PO-Revision-Date: 2022-09-15 14:22+0000\n"
-"Last-Translator: Eric <hamburger1024@mailbox.org>\n"
+"PO-Revision-Date: 2022-10-22 20:06+0000\n"
+"Last-Translator: WeiHua <460706836@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -114,31 +114,32 @@ msgstr "功能："
 msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
-msgstr ""
+msgstr "多频段门限效果器的实现已经从 CALF 迁移到了 Linux Studio 插件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
-msgstr ""
+msgstr "改进了预设自动加载代码与 bluez5 设备的兼容性。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Wet/dry controls were added for some plugins"
-msgstr ""
+msgstr "为某些插件增加了湿/干控制"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
-msgstr ""
+msgstr "当系统中没有安装相关的lv2插件时，效果界面不再被加载。而是是显示给用户的状态信"
+"息。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "文档已更新"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "Improved debug messages"
-msgstr ""
+msgstr "改善了调试信息"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
@@ -173,7 +174,7 @@ msgstr "漏洞修复："
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
 msgid "Other notes:"
-msgstr ""
+msgstr "其他注意事项："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 msgid "Improved translations"
@@ -183,42 +184,43 @@ msgstr "翻译改进"
 msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
-msgstr ""
+msgstr "修正了 EasyEffects 在应用效果时关闭其窗口可能会崩溃的错误。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
-msgstr ""
+msgstr "旁通状态可以被保存到预设文件中。原因可以在第 issue 1039 找到"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 msgid ""
 "The preset autoloading code compatibility with usb devices has been improved."
-msgstr ""
+msgstr "改进了预设自动加载代码与 USB 设备的兼容性。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
 msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
-msgstr ""
+msgstr "当预设无法加载或预设/脉冲文件无法被导入时，将向用户显示一个对话框。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid ""
 "The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of "
 "the one from Calf Studio."
-msgstr ""
+msgstr "现在使用 \"Linux Studio Plugins \"的 SideChain Gate 插件，而非 Calf Studio "
+"的插件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
 msgid ""
 "EasyEffects should not crash anymore when the user locale is not properly "
 "configured."
-msgstr ""
+msgstr "当用户地区设置不正确时，EasyEffects 不应该再崩溃。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
 msgid ""
 "A workaround was implemented in our icon to deal with the lack of proper SVG "
 "support in QT."
-msgstr ""
+msgstr "在我们的图标中实施了一种曲线救国的方法，以解决 QT 中缺乏适当的 SVG 支持。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 msgid ""
