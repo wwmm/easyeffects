@@ -960,6 +960,10 @@ auto PresetsManager::create_wrapper(const PresetType& preset_type, std::string_v
     return std::make_unique<RNNoisePreset>(preset_type, instance_id);
   }
 
+  if (filter_name.starts_with(tags::plugin_name::speex)) {
+    return std::make_unique<SpeexPreset>(preset_type, instance_id);
+  }
+
   if (filter_name.starts_with(tags::plugin_name::stereo_tools)) {
     return std::make_unique<StereoToolsPreset>(preset_type, instance_id);
   }

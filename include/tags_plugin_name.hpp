@@ -94,6 +94,8 @@ inline constexpr auto multiband_gate = "multiband_gate";
 
 inline constexpr auto pitch = "pitch";
 
+inline constexpr auto speex = "speex";
+
 inline constexpr auto reverb = "reverb";
 
 inline constexpr auto rnnoise = "rnnoise";

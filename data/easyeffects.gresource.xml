@@ -54,6 +54,7 @@
         <file>ui/reverb.ui</file>
         <file>ui/rnnoise.ui</file>
         <file>ui/shortcuts.ui</file>
+        <file>ui/speex.ui</file>
         <file>ui/stereo_tools.ui</file>
         <file>icons/scalable/emblems/ee-arrow-down-symbolic.svg</file>
         <file>icons/scalable/emblems/ee-spectrum-symbolic.svg</file>
