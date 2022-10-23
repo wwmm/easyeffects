@@ -26,9 +26,28 @@ Speex::Speex(const std::string& tag,
     : PluginBase(tag, tags::plugin_name::speex, tags::plugin_package::speex, schema, schema_path, pipe_manager),
       data_L(0),
       data_R(0) {
-  data_L.reserve(blocksize);
-  data_R.reserve(blocksize);
 
+  gconnections.push_back(g_signal_connect(settings, "changed::noise-suppression",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<Speex*>(user_data);
+
+                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                                            self->noise_suppression = g_settings_get_int(settings, key);
+
+#ifdef SPEEX_AVAILABLE
+                                            if (self->state_left) {
+                                              speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_DENOISE, &self->noise_suppression);
+                                            }
+                                            
+                                            if (self->state_right) {
+                                              speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_DENOISE, &self->noise_suppression);
+                                            }
+#endif
+                                          }),
+                                          this));
+
+  
   setup_input_output_gain();
 }
 
@@ -51,15 +70,31 @@ void Speex::setup() {
 
   latency_n_frames = 0U;
 
-  data_L.resize(0U);
-  data_R.resize(0U);
+  blocksize = 0.001F * static_cast<float>(blocksize_ms * rate);
 
-  deque_out_L.resize(0U);
-  deque_out_R.resize(0U);
+  data_L.resize(0);
+  data_R.resize(0);
+
+  deque_out_L.resize(0);
+  deque_out_R.resize(0);
+
+  speex_ready = false;
 
 #ifdef SPEEX_AVAILABLE
+  if (state_left != nullptr) {
+    speex_preprocess_state_destroy(state_left);
+  }
+
+  if (state_right != nullptr) {
+    speex_preprocess_state_destroy(state_right);
+  }
+
+  printf("blocksize: %u\n", blocksize);
+
   state_left = speex_preprocess_state_init(blocksize, rate);
   state_right = speex_preprocess_state_init(blocksize, rate);
+
+  speex_ready = true;
 #else
   util::warning("The Speex library was not available at compilation time. The noise reduction filter won't work");
 #endif
@@ -71,7 +106,7 @@ void Speex::process(std::span<float>& left_in,
                       std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass) {
+  if (bypass || !speex_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -83,7 +118,26 @@ void Speex::process(std::span<float>& left_in,
   }
 
 #ifdef SPEEX_AVAILABLE
-    remove_noise(left_in, right_in, deque_out_L, deque_out_R);
+  for (size_t i = 0; i < left_in.size(); i++) {
+    data_L.push_back(left_in[i] * static_cast<float>(SHRT_MAX + 1));
+    data_R.push_back(right_in[i] * static_cast<float>(SHRT_MAX + 1));
+
+    if (data_L.size() == blocksize) {
+      speex_preprocess_run(state_left, data_L.data());
+      speex_preprocess_run(state_right, data_R.data());
+
+      for (const auto& v : data_L) {
+        deque_out_L.push_back(static_cast<float>(v) * inv_short_max);
+      }
+
+      for (const auto& v : data_R) {
+        deque_out_R.push_back(static_cast<float>(v) * inv_short_max);
+      }
+
+      data_L.resize(0U);
+      data_R.resize(0U);
+    }
+  }
 #endif
 
   if (deque_out_L.size() >= left_out.size()) {

@@ -47,12 +47,16 @@ class Speex : public PluginBase {
   bool package_installed = false;
 #endif
 
+  int noise_suppression = -15;
+
   float latency_value = 0.0F;
 
  private:
   bool notify_latency = false;
+  bool speex_ready = false;
 
   uint blocksize = 480U;
+  uint blocksize_ms = 10U;
   uint latency_n_frames = 0U;
 
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
@@ -66,41 +70,6 @@ class Speex : public PluginBase {
   SpeexPreprocessState *state_left = nullptr, *state_right = nullptr;
 
   void free_speex();
-
-  template <typename T1, typename T2>
-  void remove_noise(const T1& left_in, const T1& right_in, T2& out_L, T2& out_R) {
-    for (const auto& v : left_in) {
-      data_L.push_back(v * static_cast<float>(SHRT_MAX + 1));
-
-      if (data_L.size() == blocksize) {
-        if (state_left != nullptr) {
-          speex_preprocess_run(state_left, data_L.data());
-        }
-
-        for (const auto& v : data_L) {
-          out_L.push_back(static_cast<float>(v) * inv_short_max);
-        }
-
-        data_L.resize(0U);
-      }
-    }
-
-    for (const auto& v : right_in) {
-      data_R.push_back(v * static_cast<float>(SHRT_MAX + 1));
-
-      if (data_R.size() == blocksize) {
-        if (state_right != nullptr) {
-          speex_preprocess_run(state_right, data_R.data());
-        }
-
-        for (const auto& v : data_R) {
-          out_R.push_back(static_cast<float>(v) * inv_short_max);
-        }
-
-        data_R.resize(0U);
-      }
-    }
-  }
 
 #endif
 };

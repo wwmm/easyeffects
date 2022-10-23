@@ -18,6 +18,7 @@
  */
 
 #include "speex_ui.hpp"
+#include "ui_helpers.hpp"
 
 namespace ui::speex_box {
 
@@ -47,7 +48,10 @@ struct _SpeexBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+           *noise_suppression_label;
+
+  GtkSpinButton *noise_suppression;
 
   GSettings* settings;
 
@@ -101,7 +105,7 @@ void setup(SpeexBox* self,
     });
   }));
 
-  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
+  gsettings_bind_widgets<"input-gain", "output-gain", "noise-suppression">(self->settings, self->input_gain, self->output_gain, self->noise_suppression);
 }
 
 void dispose(GObject* object) {
@@ -160,6 +164,8 @@ void speex_box_class_init(SpeexBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, output_level_right_label);
 
+  gtk_widget_class_bind_template_child(widget_class, SpeexBox, noise_suppression);
+
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
 
@@ -169,6 +175,8 @@ void speex_box_init(SpeexBox* self) {
   self->data = new Data();
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
+
+  prepare_spinbuttons<"dB">(self->noise_suppression);
 }
 
 auto create() -> SpeexBox* {

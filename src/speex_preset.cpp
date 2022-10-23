@@ -34,6 +34,8 @@ void SpeexPreset::save(nlohmann::json& json) {
   json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
   json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
+
+  json[section][instance_name]["noise-suppression"] = g_settings_get_double(settings, "noise-suppression");
 }
 
 void SpeexPreset::load(const nlohmann::json& json) {
@@ -42,4 +44,6 @@ void SpeexPreset::load(const nlohmann::json& json) {
   update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
+
+  update_key<int>(json.at(section).at(instance_name), settings, "noise-suppression", "noise-suppression");
 }
