@@ -35,11 +35,11 @@ Speex::Speex(const std::string& tag,
 
 #ifdef SPEEX_AVAILABLE
         if (self->state_left) {
-          speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_DENOISE, &self->noise_suppression);
+          speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &self->noise_suppression);
         }
 
         if (self->state_right) {
-          speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_DENOISE, &self->noise_suppression);
+          speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &self->noise_suppression);
         }
 #endif
       }),
@@ -81,8 +81,16 @@ void Speex::setup() {
     speex_preprocess_state_destroy(state_right);
   }
 
-  state_left = speex_preprocess_state_init(n_samples, rate);
-  state_right = speex_preprocess_state_init(n_samples, rate);
+  state_left = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
+  state_right = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
+
+  if (state_left != nullptr) {
+    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
+  }
+
+  if (state_right != nullptr) {
+    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
+  }
 
   speex_ready = true;
 #else
