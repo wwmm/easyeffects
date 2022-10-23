@@ -20,7 +20,6 @@
 #pragma once
 
 #include <adwaita.h>
-#include <filesystem>
 #include "application.hpp"
 #include "effects_base.hpp"
 #include "tags_resources.hpp"

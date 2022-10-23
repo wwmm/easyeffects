@@ -55,15 +55,11 @@ class Speex : public PluginBase {
   bool notify_latency = false;
   bool speex_ready = false;
 
-  uint blocksize = 480U;
-  uint blocksize_ms = 10U;
   uint latency_n_frames = 0U;
 
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 
-  std::deque<float> deque_out_L, deque_out_R;
-
-  std::vector<short> data_L, data_R; // Speex requires the data to be in 16-bit integers.
+  std::vector<spx_int16_t> data_L, data_R;
 
 #ifdef SPEEX_AVAILABLE
 

@@ -18,7 +18,6 @@
  */
 
 #include "speex_ui.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::speex_box {
 
@@ -49,9 +48,9 @@ struct _SpeexBox {
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
-           *noise_suppression_label;
+      *noise_suppression_label;
 
-  GtkSpinButton *noise_suppression;
+  GtkSpinButton* noise_suppression;
 
   GSettings* settings;
 
@@ -105,7 +104,8 @@ void setup(SpeexBox* self,
     });
   }));
 
-  gsettings_bind_widgets<"input-gain", "output-gain", "noise-suppression">(self->settings, self->input_gain, self->output_gain, self->noise_suppression);
+  gsettings_bind_widgets<"input-gain", "output-gain", "noise-suppression">(self->settings, self->input_gain,
+                                                                           self->output_gain, self->noise_suppression);
 }
 
 void dispose(GObject* object) {

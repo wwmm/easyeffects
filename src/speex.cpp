@@ -20,34 +20,31 @@
 #include "speex.hpp"
 
 Speex::Speex(const std::string& tag,
-                 const std::string& schema,
-                 const std::string& schema_path,
-                 PipeManager* pipe_manager)
+             const std::string& schema,
+             const std::string& schema_path,
+             PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::speex, tags::plugin_package::speex, schema, schema_path, pipe_manager),
-      data_L(0),
-      data_R(0) {
+      noise_suppression(g_settings_get_int(settings, "noise-suppression")) {
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::noise-suppression", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<Speex*>(user_data);
 
-  gconnections.push_back(g_signal_connect(settings, "changed::noise-suppression",
-                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Speex*>(user_data);
+        std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
-
-                                            self->noise_suppression = g_settings_get_int(settings, key);
+        self->noise_suppression = g_settings_get_int(settings, key);
 
 #ifdef SPEEX_AVAILABLE
-                                            if (self->state_left) {
-                                              speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_DENOISE, &self->noise_suppression);
-                                            }
-                                            
-                                            if (self->state_right) {
-                                              speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_DENOISE, &self->noise_suppression);
-                                            }
-#endif
-                                          }),
-                                          this));
+        if (self->state_left) {
+          speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_DENOISE, &self->noise_suppression);
+        }
 
-  
+        if (self->state_right) {
+          speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_DENOISE, &self->noise_suppression);
+        }
+#endif
+      }),
+      this));
+
   setup_input_output_gain();
 }
 
@@ -70,15 +67,10 @@ void Speex::setup() {
 
   latency_n_frames = 0U;
 
-  blocksize = 0.001F * static_cast<float>(blocksize_ms * rate);
-
-  data_L.resize(0);
-  data_R.resize(0);
-
-  deque_out_L.resize(0);
-  deque_out_R.resize(0);
-
   speex_ready = false;
+
+  data_L.resize(n_samples);
+  data_R.resize(n_samples);
 
 #ifdef SPEEX_AVAILABLE
   if (state_left != nullptr) {
@@ -89,10 +81,8 @@ void Speex::setup() {
     speex_preprocess_state_destroy(state_right);
   }
 
-  printf("blocksize: %u\n", blocksize);
-
-  state_left = speex_preprocess_state_init(blocksize, rate);
-  state_right = speex_preprocess_state_init(blocksize, rate);
+  state_left = speex_preprocess_state_init(n_samples, rate);
+  state_right = speex_preprocess_state_init(n_samples, rate);
 
   speex_ready = true;
 #else
@@ -101,9 +91,9 @@ void Speex::setup() {
 }
 
 void Speex::process(std::span<float>& left_in,
-                      std::span<float>& right_in,
-                      std::span<float>& left_out,
-                      std::span<float>& right_out) {
+                    std::span<float>& right_in,
+                    std::span<float>& left_out,
+                    std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (bypass || !speex_ready) {
@@ -118,95 +108,25 @@ void Speex::process(std::span<float>& left_in,
   }
 
 #ifdef SPEEX_AVAILABLE
-  for (size_t i = 0; i < left_in.size(); i++) {
-    data_L.push_back(left_in[i] * static_cast<float>(SHRT_MAX + 1));
-    data_R.push_back(right_in[i] * static_cast<float>(SHRT_MAX + 1));
 
-    if (data_L.size() == blocksize) {
-      speex_preprocess_run(state_left, data_L.data());
-      speex_preprocess_run(state_right, data_R.data());
+  for (size_t i = 0; i < n_samples; i++) {
+    data_L[i] = static_cast<spx_int16_t>(left_in[i] * (SHRT_MAX + 1));
 
-      for (const auto& v : data_L) {
-        deque_out_L.push_back(static_cast<float>(v) * inv_short_max);
-      }
+    data_R[i] = static_cast<spx_int16_t>(right_in[i] * (SHRT_MAX + 1));
+  }
 
-      for (const auto& v : data_R) {
-        deque_out_R.push_back(static_cast<float>(v) * inv_short_max);
-      }
+  speex_preprocess_run(state_left, data_L.data());
+  speex_preprocess_run(state_right, data_R.data());
 
-      data_L.resize(0U);
-      data_R.resize(0U);
-    }
+  for (size_t i = 0; i < n_samples; i++) {
+    left_out[i] = static_cast<float>(data_L[i]) * inv_short_max;
+
+    right_out[i] = static_cast<float>(data_R[i]) * inv_short_max;
   }
 #endif
 
-  if (deque_out_L.size() >= left_out.size()) {
-    for (float& v : left_out) {
-      v = deque_out_L.front();
-
-      deque_out_L.pop_front();
-    }
-
-    for (float& v : right_out) {
-      v = deque_out_R.front();
-
-      deque_out_R.pop_front();
-    }
-  } else {
-    const uint offset = 2U * (left_out.size() - deque_out_L.size());
-
-    if (offset != latency_n_frames) {
-      latency_n_frames = offset;
-
-      notify_latency = true;
-    }
-
-    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
-      if (n < offset) {
-        left_out[n] = 0.0F;
-        right_out[n] = 0.0F;
-      } else {
-        left_out[n] = deque_out_L.front();
-        right_out[n] = deque_out_R.front();
-
-        deque_out_R.pop_front();
-        deque_out_L.pop_front();
-      }
-    }
-  }
-
   if (output_gain != 1.0F) {
     apply_gain(left_out, right_out, output_gain);
-  }
-
-  if (notify_latency) {
-    latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
-
-    util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
-
-    util::idle_add([=, this]() {
-      if (!post_messages || latency.empty()) {
-        return;
-      }
-
-      latency.emit();
-    });
-
-    spa_process_latency_info latency_info{};
-
-    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
-
-    std::array<char, 1024U> buffer{};
-
-    spa_pod_builder b{};
-
-    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
-
-    const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
-
-    pw_filter_update_params(filter, nullptr, &param, 1);
-
-    notify_latency = false;
   }
 
   if (post_messages) {
