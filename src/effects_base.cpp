@@ -147,6 +147,8 @@ void EffectsBase::create_filters_if_necessary() {
       filter = std::make_shared<Reverb>(log_tag, tags::schema::reverb::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::rnnoise)) {
       filter = std::make_shared<RNNoise>(log_tag, tags::schema::rnnoise::id, path, pm);
+    } else if (name.starts_with(tags::plugin_name::speex)) {
+      filter = std::make_shared<Speex>(log_tag, tags::schema::speex::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::stereo_tools)) {
       filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm);
     }

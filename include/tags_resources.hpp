@@ -119,6 +119,8 @@ inline constexpr auto reverb_ui = "/com/github/wwmm/easyeffects/ui/reverb.ui";
 
 inline constexpr auto rnnoise_ui = "/com/github/wwmm/easyeffects/ui/rnnoise.ui";
 
+inline constexpr auto speex_ui = "/com/github/wwmm/easyeffects/ui/speex.ui";
+
 inline constexpr auto shortcuts_ui = "/com/github/wwmm/easyeffects/ui/shortcuts.ui";
 
 inline constexpr auto stereo_tools_ui = "/com/github/wwmm/easyeffects/ui/stereo_tools.ui";
