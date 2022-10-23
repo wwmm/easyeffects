@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-22 22:01+0000\n"
+"POT-Creation-Date: 2022-10-23 18:09+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -546,7 +546,7 @@ msgstr "외부"
 msgid "Sidechain Type"
 msgstr "사이드체인 유형"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:646
 msgid "Input Device"
 msgstr "입력 장치"
 
@@ -2243,11 +2243,11 @@ msgstr "불러온 Impulse 파일 없음"
 msgid "Failed To Load The Impulse File"
 msgstr "Impulse 파일을 불러오지 못했습니다"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:633
+#: src/effects_box.cpp:263 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:653
+#: src/effects_box.cpp:286 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "재생기"
 
@@ -2294,11 +2294,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "자동 로딩 프리셋 제거하기"
 
-#: src/plugins_box.cpp:585
+#: src/plugins_box.cpp:599
 msgid "Remove"
 msgstr "제거"
 
-#: src/plugins_box.cpp:654
+#: src/plugins_box.cpp:668
 #, fuzzy
 msgid "Output Device"
 msgstr "출력 게인"
@@ -2395,6 +2395,10 @@ msgid "Noise Reduction"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:53
+msgid "Noise Reduction (Fast)"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr ""
 
