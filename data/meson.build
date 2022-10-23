@@ -27,6 +27,7 @@ install_data([
   'schemas/com.github.wwmm.easyeffects.reverb.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.rnnoise.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.spectrum.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.speex.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.streamoutputs.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.stereotools.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.streaminputs.gschema.xml'
