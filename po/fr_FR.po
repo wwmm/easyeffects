@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-22 22:01+0000\n"
+"POT-Creation-Date: 2022-10-23 18:09+0000\n"
 "PO-Revision-Date: 2022-10-04 21:21+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -542,7 +542,7 @@ msgstr "Externe"
 msgid "Sidechain Type"
 msgstr "Type Chaîne Latérale"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:646
 msgid "Input Device"
 msgstr "Périphérique d’entrée"
 
@@ -2202,11 +2202,11 @@ msgstr "Aucun fichier d’impulsion chargé"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossible de charger le fichier d’impulsion"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:633
+#: src/effects_box.cpp:263 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:653
+#: src/effects_box.cpp:286 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Lecteurs"
 
@@ -2253,11 +2253,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 
-#: src/plugins_box.cpp:585
+#: src/plugins_box.cpp:599
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/plugins_box.cpp:654
+#: src/plugins_box.cpp:668
 msgid "Output Device"
 msgstr "Périphérique de sortie"
 
@@ -2350,6 +2350,11 @@ msgid "Noise Reduction"
 msgstr "Réduction de bruit"
 
 #: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Noise Reduction (Fast)"
+msgstr "Réduction de bruit"
+
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "Outils stéréo"
 

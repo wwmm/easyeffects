@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-22 22:01+0000\n"
+"POT-Creation-Date: 2022-10-23 18:09+0000\n"
 "PO-Revision-Date: 2022-10-17 22:00+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -526,11 +526,11 @@ msgstr "Tipo"
 
 #: data/ui/compressor.ui:612
 msgid "Feed-forward"
-msgstr "Feed-forward"
+msgstr "Avance hacia adelante"
 
 #: data/ui/compressor.ui:613
 msgid "Feed-back"
-msgstr "Feed-back"
+msgstr "Avance hacia atrás"
 
 #: data/ui/compressor.ui:614 data/ui/gate.ui:752
 msgid "External"
@@ -540,7 +540,7 @@ msgstr "Externa"
 msgid "Sidechain Type"
 msgstr "Tipo de cadena lateral"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:646
 msgid "Input Device"
 msgstr "Dispositivo de entrada"
 
@@ -721,7 +721,7 @@ msgstr "Alimentación"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
-msgstr "Bypass"
+msgstr "Derivación"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:320
 #: data/ui/multiband_compressor_band.ui:136 data/ui/multiband_gate_band.ui:109
@@ -942,7 +942,7 @@ msgstr "Calidad"
 #: data/ui/equalizer_band.ui:314 data/ui/multiband_compressor_band.ui:146
 #: data/ui/multiband_gate_band.ui:119
 msgid "Solo"
-msgstr "Solo"
+msgstr "Solista"
 
 #: data/ui/exciter.ui:211
 msgid "Ceil"
@@ -1067,11 +1067,11 @@ msgstr "Sobremuestreo"
 
 #: data/ui/limiter.ui:70
 msgid "Dither"
-msgstr "Dither"
+msgstr "Distorsión (Dither)"
 
 #: data/ui/limiter.ui:82
 msgid "Herm Thin"
-msgstr "Herm Thin"
+msgstr "Herm delgado"
 
 #: data/ui/limiter.ui:83
 msgid "Herm Wide"
@@ -1079,43 +1079,43 @@ msgstr "Herm Wide"
 
 #: data/ui/limiter.ui:84
 msgid "Herm Tail"
-msgstr "Herm Tail"
+msgstr "Herm cola"
 
 #: data/ui/limiter.ui:85
 msgid "Herm Duck"
-msgstr "Herm Duck"
+msgstr "Herm Pato"
 
 #: data/ui/limiter.ui:86
 msgid "Exp Thin"
-msgstr "Exp Thin"
+msgstr "Exp Delgada"
 
 #: data/ui/limiter.ui:87
 msgid "Exp Wide"
-msgstr "Exp Wide"
+msgstr "Exp amplia"
 
 #: data/ui/limiter.ui:88
 msgid "Exp Tail"
-msgstr "Exp Tail"
+msgstr "Exp cola"
 
 #: data/ui/limiter.ui:89
 msgid "Exp Duck"
-msgstr "Exp Duck"
+msgstr "Exp Pato"
 
 #: data/ui/limiter.ui:90
 msgid "Line Thin"
-msgstr "Line Thin"
+msgstr "línea fina"
 
 #: data/ui/limiter.ui:91
 msgid "Line Wide"
-msgstr "Line Wide"
+msgstr "Ancho de línea"
 
 #: data/ui/limiter.ui:92
 msgid "Line Tail"
-msgstr "Line Tail"
+msgstr "Cola de línea"
 
 #: data/ui/limiter.ui:93
 msgid "Line Duck"
-msgstr "Line Duck"
+msgstr "Pato de línea"
 
 #: data/ui/limiter.ui:109 data/ui/multiband_compressor.ui:53
 #: data/ui/multiband_gate.ui:53
@@ -1204,7 +1204,7 @@ msgstr "Completo x8(3L)"
 
 #: data/ui/limiter.ui:179
 msgid "SC PreAmp"
-msgstr "SC PreAmp"
+msgstr "SC PreAmp (Preamplificador)"
 
 #: data/ui/limiter.ui:208 data/ui/multiband_compressor_band.ui:626
 #: data/ui/multiband_gate_band.ui:688
@@ -1399,7 +1399,7 @@ msgstr "Frecuencia del filtro paso alto"
 
 #: data/ui/multiband_compressor_band.ui:599 data/ui/multiband_gate_band.ui:662
 msgid "PreAmp"
-msgstr "PreAmp"
+msgstr "PreAmp (subir el nivel de ganancia de manera limpia)"
 
 #: data/ui/multiband_compressor_band.ui:805
 msgid "Band Gain"
@@ -1636,7 +1636,7 @@ msgstr "Fase"
 
 #: data/ui/pitch.ui:162
 msgid "Laminar"
-msgstr "Laminar"
+msgstr "Laminado"
 
 #: data/ui/pitch.ui:163
 msgid "Independent"
@@ -1644,7 +1644,8 @@ msgstr "Independiente"
 
 #: data/ui/pitch.ui:188
 msgid "Cents"
-msgstr "Cents"
+msgstr ""
+"Cents (menor unidad usual que se emplea para medir intervalos musicales)"
 
 #: data/ui/pitch.ui:222
 msgid "Semitones"
@@ -1884,7 +1885,7 @@ msgstr "Grande/suave"
 
 #: data/ui/reverb.ui:86
 msgid "Experimental"
-msgstr "Experimental"
+msgstr "Música experimental"
 
 #: data/ui/reverb.ui:103
 msgid "Diffusion"
@@ -2128,7 +2129,7 @@ msgstr "Mostrar los perfiles disponibles."
 
 #: src/application_ui.cpp:279
 msgid "PipeWire"
-msgstr "PipeWire"
+msgstr "Software PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
@@ -2180,11 +2181,11 @@ msgstr "No se ha cargado el archivo de impulsos"
 msgid "Failed To Load The Impulse File"
 msgstr "Fallo en la carga del archivo de impulso"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:633
+#: src/effects_box.cpp:263 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:653
+#: src/effects_box.cpp:286 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Reproductores"
 
@@ -2231,11 +2232,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Eliminar perfil de carga automática"
 
-#: src/plugins_box.cpp:585
+#: src/plugins_box.cpp:599
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/plugins_box.cpp:654
+#: src/plugins_box.cpp:668
 msgid "Output Device"
 msgstr "Dispositivo de salida"
 
@@ -2281,7 +2282,9 @@ msgstr "Cristalizador"
 
 #: src/tags_plugin_name.cpp:38
 msgid "Deesser"
-msgstr "Deesser"
+msgstr ""
+"De-essing (efecto reduce la sibilancia excesiva y se utiliza principalmente "
+"en grabaciones de voz)"
 
 #: src/tags_plugin_name.cpp:40
 msgid "Echo Canceller"
@@ -2328,6 +2331,11 @@ msgid "Noise Reduction"
 msgstr "Reducción de ruido"
 
 #: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Noise Reduction (Fast)"
+msgstr "Reducción de ruido"
+
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "Herramientas estéreo"
 
@@ -2351,7 +2359,7 @@ msgstr "Cerrar (Pulsar ESC)"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
-msgstr "-inf"
+msgstr "archivo de información de instalación (inf)"
 
 #~ msgid "Load APO Preset"
 #~ msgstr "Cargar el perfil APO"

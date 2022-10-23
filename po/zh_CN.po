@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-22 22:01+0000\n"
+"POT-Creation-Date: 2022-10-23 18:09+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -51,8 +51,9 @@ msgid "Enable"
 msgstr "启用"
 
 #: data/ui/app_info.ui:225
+#, fuzzy
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "排除的应用程序列表：添加/删除此应用程序"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -102,7 +103,7 @@ msgstr "预设菜单"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "启用/禁用全局旁通"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -541,7 +542,7 @@ msgstr "外部"
 msgid "Sidechain Type"
 msgstr "侧链类型"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:646
 msgid "Input Device"
 msgstr "输入设备"
 
@@ -2184,11 +2185,11 @@ msgstr "未加载脉冲文件"
 msgid "Failed To Load The Impulse File"
 msgstr "加载脉冲文件失败"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:633
+#: src/effects_box.cpp:263 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:653
+#: src/effects_box.cpp:286 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "播放器"
 
@@ -2231,11 +2232,11 @@ msgstr "GraphicEQ 未加载。可能是文件格式错误。请检查文件内�
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
 
-#: src/plugins_box.cpp:585
+#: src/plugins_box.cpp:599
 msgid "Remove"
 msgstr "删除"
 
-#: src/plugins_box.cpp:654
+#: src/plugins_box.cpp:668
 msgid "Output Device"
 msgstr "输出设备"
 
@@ -2326,6 +2327,11 @@ msgid "Noise Reduction"
 msgstr "降噪"
 
 #: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Noise Reduction (Fast)"
+msgstr "降噪"
+
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "立体声工具"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-22 22:01+0000\n"
+"POT-Creation-Date: 2022-10-23 18:09+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -583,7 +583,7 @@ msgstr ""
 msgid "Sidechain Type"
 msgstr "Sidechain"
 
-#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:632
+#: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:646
 #, fuzzy
 msgid "Input Device"
 msgstr "Pembatas Masukan"
@@ -2336,11 +2336,11 @@ msgstr "Muat Berkas Impuls"
 msgid "Failed To Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:633
+#: src/effects_box.cpp:263 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Perekam"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:653
+#: src/effects_box.cpp:286 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Pemain"
 
@@ -2386,11 +2386,11 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Hapus Preset Pemuatan Otomatis"
 
-#: src/plugins_box.cpp:585
+#: src/plugins_box.cpp:599
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:654
+#: src/plugins_box.cpp:668
 #, fuzzy
 msgid "Output Device"
 msgstr "Gain Input"
@@ -2482,6 +2482,11 @@ msgid "Noise Reduction"
 msgstr "Pengurangan Noise"
 
 #: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Noise Reduction (Fast)"
+msgstr "Pengurangan Noise"
+
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "Pengolah Stereo"
 
