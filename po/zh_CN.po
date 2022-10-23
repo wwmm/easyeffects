@@ -51,8 +51,9 @@ msgid "Enable"
 msgstr "启用"
 
 #: data/ui/app_info.ui:225
+#, fuzzy
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "排除的应用程序列表：添加/删除此应用程序"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -102,7 +103,7 @@ msgstr "预设菜单"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "启用/禁用全局旁通"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
