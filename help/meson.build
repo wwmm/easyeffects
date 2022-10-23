@@ -38,6 +38,7 @@ help_pages = [
   'saturated.page',
   'settingsmenu.page',
   'spectrum.page',
+  'speex.page',
   'stereotools.page',
   'testsignals.page',
   'userpresets.page'
