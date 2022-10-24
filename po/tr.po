@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-23 18:09+0000\n"
-"PO-Revision-Date: 2022-10-23 19:05+0000\n"
+"PO-Revision-Date: 2022-10-24 12:40+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -87,9 +87,8 @@ msgid "_Reset Settings"
 msgstr "Ayarları _Sıfırla"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "EasyEffects _Hakkında"
+msgstr "Easy Effects _Hakkında"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -106,32 +105,28 @@ msgid "Enable/disable the global bypass"
 msgstr "Genel atlamayı etkinleştir/devre dışı bırak"
 
 #: data/ui/application_window.ui:66
-#, fuzzy
 msgid "Global Bypass"
-msgstr "Atla"
+msgstr "Genel Atla"
 
 #: data/ui/application_window.ui:76
 msgid "Primary Menu"
 msgstr "Ana Menü"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "EasyEffects Penceresi"
+msgstr "Easy Effects Penceresi"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
 msgstr "Uygulama Listesi"
 
 #: data/ui/apps_box.ui:27
-#, fuzzy
 msgid "Empty List"
-msgstr "Boş Duvarlar"
+msgstr "Boş Liste"
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Uygulama Adı"
+msgstr "Ses Uygulaması Yok"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
@@ -142,9 +137,8 @@ msgid "Silence"
 msgstr "Sessizlik"
 
 #: data/ui/autogain.ui:98
-#, fuzzy
 msgid "Maximum History"
-msgstr "Azami"
+msgstr "Azami Geçmiş"
 
 #: data/ui/autogain.ui:132
 msgid "Reference"
@@ -155,7 +149,6 @@ msgid "Momentary"
 msgstr "Anlık"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:215
-#, fuzzy
 msgid "Short-Term"
 msgstr "Kısa Süreli"
 
@@ -164,24 +157,20 @@ msgid "Integrated"
 msgstr "Tümleşik"
 
 #: data/ui/autogain.ui:147
-#, fuzzy
 msgid "Geometric Mean (MSI)"
-msgstr "Geometrik Ortalama"
+msgstr "Geometrik Ortalama (MSI)"
 
 #: data/ui/autogain.ui:148
-#, fuzzy
 msgid "Geometric Mean (MS)"
-msgstr "Geometrik Ortalama"
+msgstr "Geometrik Ortalama (MS)"
 
 #: data/ui/autogain.ui:149
-#, fuzzy
 msgid "Geometric Mean (MI)"
-msgstr "Geometrik Ortalama"
+msgstr "Geometrik Ortalama (MI)"
 
 #: data/ui/autogain.ui:150
-#, fuzzy
 msgid "Geometric Mean (SI)"
-msgstr "Geometrik Ortalama"
+msgstr "Geometrik Ortalama (SI)"
 
 #: data/ui/autogain.ui:165
 msgid "Reset History"
@@ -299,14 +288,12 @@ msgid "Profile"
 msgstr "Profil"
 
 #: data/ui/autoload_row.ui:89
-#, fuzzy
 msgid "Preset"
-msgstr "Ön Ayarlar"
+msgstr "Ön Ayar"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
+msgstr "Bu otomatik yükleme ön ayarını kaldır"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:529 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/gate.ui:668
@@ -355,19 +342,16 @@ msgid "Application Name"
 msgstr "Uygulama Adı"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "Kara Listeye Alınan Uygulamaları Göster"
+msgstr "Hariç Tutulan Uygulamalara Ekle"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "Kara Listeye Alınan Uygulamalar Listesi"
+msgstr "Hariç Tutulan Uygulamalar Listesi"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "Kara Listeye Alınan Uygulamaları Göster"
+msgstr "Hariç Tutulan Uygulamaları Göster"
 
 #: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
@@ -391,21 +375,19 @@ msgstr "Yukarıya"
 
 #: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
 msgid "Boosting"
-msgstr ""
+msgstr "Yükseltme"
 
 #: data/ui/compressor.ui:73 data/ui/multiband_compressor_band.ui:88
 msgid "Compression Mode"
 msgstr "Sıkıştırma Kipi"
 
 #: data/ui/compressor.ui:80 data/ui/multiband_compressor_band.ui:744
-#, fuzzy
 msgid "Boost Threshold"
-msgstr "Eşik"
+msgstr "Yükseltme Eşiği"
 
 #: data/ui/compressor.ui:119 data/ui/multiband_compressor_band.ui:700
-#, fuzzy
 msgid "Boost Amount"
-msgstr "Miktar"
+msgstr "Yükseltme Miktarı"
 
 #: data/ui/compressor.ui:165 data/ui/gate.ui:60 data/ui/limiter.ui:262
 #: data/ui/limiter.ui:485 data/ui/multiband_compressor_band.ui:186
@@ -414,9 +396,8 @@ msgid "Attack"
 msgstr "Atak"
 
 #: data/ui/compressor.ui:176 data/ui/multiband_compressor_band.ui:166
-#, fuzzy
 msgid "Time"
-msgstr "Eş Zamanlı"
+msgstr "Zaman"
 
 #: data/ui/compressor.ui:186 data/ui/deesser.ui:299 data/ui/gate.ui:153
 #: data/ui/gate.ui:247 data/ui/limiter.ui:346 data/ui/maximizer.ui:30
@@ -426,15 +407,13 @@ msgid "Threshold"
 msgstr "Eşik"
 
 #: data/ui/compressor.ui:212 data/ui/multiband_compressor_band.ui:222
-#, fuzzy
 msgid "Attack Time"
-msgstr "Atak"
+msgstr "Atak Zamanı"
 
 #: data/ui/compressor.ui:234 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:247
-#, fuzzy
 msgid "Attack Threshold"
-msgstr "Eşik"
+msgstr "Atak Eşiği"
 
 #: data/ui/compressor.ui:241 data/ui/gate.ui:66 data/ui/limiter.ui:304
 #: data/ui/limiter.ui:522 data/ui/maximizer.ui:96
@@ -443,15 +422,13 @@ msgid "Release"
 msgstr "Bırak"
 
 #: data/ui/compressor.ui:267 data/ui/multiband_compressor_band.ui:274
-#, fuzzy
 msgid "Release Time"
-msgstr "Eş Zamanlı"
+msgstr "Bırakma Zamanı"
 
 #: data/ui/compressor.ui:291 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:302
-#, fuzzy
 msgid "Release Threshold"
-msgstr "Eşik"
+msgstr "Bırakma Eşiği"
 
 #: data/ui/compressor.ui:298 data/ui/deesser.ui:333
 #: data/ui/multiband_compressor_band.ui:309
@@ -500,7 +477,7 @@ msgstr "RMS"
 #: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:1003
 #: data/ui/multiband_compressor_band.ui:470
 msgid "Low-Pass"
-msgstr "Düşük-Geçiş"
+msgstr "Düşük Geçiş"
 
 #: data/ui/compressor.ui:514 data/ui/multiband_compressor_band.ui:471
 msgid "Uniform"
@@ -508,9 +485,8 @@ msgstr "Aynı"
 
 #: data/ui/compressor.ui:521 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
-#, fuzzy
 msgid "Sidechain Mode"
-msgstr "Yanzincir"
+msgstr "Yanzincir Kipi"
 
 #: data/ui/compressor.ui:539 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:485 data/ui/multiband_gate_band.ui:548
@@ -544,9 +520,8 @@ msgstr "Sağ"
 #: data/ui/compressor.ui:559 data/ui/gate.ui:698
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:506
 #: data/ui/multiband_gate.ui:71 data/ui/multiband_gate_band.ui:569
-#, fuzzy
 msgid "Sidechain Source"
-msgstr "Yanzincir"
+msgstr "Yanzincir Kaynağı"
 
 #: data/ui/compressor.ui:588 data/ui/equalizer_band.ui:98 data/ui/gate.ui:727
 msgid "Type"
@@ -562,21 +537,19 @@ msgstr "Geri-besleme"
 
 #: data/ui/compressor.ui:614 data/ui/gate.ui:752
 msgid "External"
-msgstr ""
+msgstr "Harici"
 
 #: data/ui/compressor.ui:621 data/ui/gate.ui:759
-#, fuzzy
 msgid "Sidechain Type"
-msgstr "Yanzincir"
+msgstr "Yanzincir Türü"
 
 #: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:646
 msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
 #: data/ui/compressor.ui:656 data/ui/gate.ui:794
-#, fuzzy
 msgid "PreAmplification"
-msgstr "Öntanımlı-yükselticiler"
+msgstr "Ön Yükseltme"
 
 #: data/ui/compressor.ui:693 data/ui/gate.ui:831
 #: data/ui/multiband_compressor_band.ui:633 data/ui/multiband_gate_band.ui:695
@@ -665,14 +638,13 @@ msgid "Right Channel"
 msgstr "Sağ Kanal"
 
 #: data/ui/convolver.ui:71
-#, fuzzy
 msgid "Impulses"
-msgstr "Dürtü Yanıtı"
+msgstr "Dürtüler"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Birleştir"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
@@ -683,12 +655,10 @@ msgid "Spectrum"
 msgstr "Spektrum"
 
 #: data/ui/convolver.ui:122
-#, fuzzy
 msgid "Log Scale"
-msgstr "Ölçek"
+msgstr "Günlük Ölçeği"
 
 #: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
-#, fuzzy
 msgid "Autogain"
 msgstr "Otomatik Kazanç"
 
@@ -705,17 +675,16 @@ msgid "Duration"
 msgstr "Süre"
 
 #: data/ui/convolver_menu_combine.ui:15
-#, fuzzy
 msgid "Combine Impulse Responses"
-msgstr "Dürtü Yanıtı"
+msgstr "Dürtü Yanıtlarını Birleştir"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "İlk Çekirdek"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "İkinci Çekirdek"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
@@ -723,7 +692,7 @@ msgstr "Çıkış Dosyası Adı"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "Birleşik Çekirdek Adı"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
@@ -735,14 +704,12 @@ msgid "Search"
 msgstr "Ara"
 
 #: data/ui/convolver_menu_impulses.ui:27
-#, fuzzy
 msgid "Search Impulse File"
-msgstr "Dürtü Dosyasını İçe Aktar"
+msgstr "Dürtü Dosyasını Ara"
 
 #: data/ui/convolver_menu_impulses.ui:47
-#, fuzzy
 msgid "Impulse Files List"
-msgstr "Dürtü Dosyasını İçe Aktar"
+msgstr "Dürtü Dosyaları Listesi"
 
 #: data/ui/crossfeed.ui:35
 msgid "Default"
@@ -838,23 +805,20 @@ msgstr "Saptanan"
 
 #: data/ui/deesser.ui:609 data/ui/gate.ui:423 data/ui/gate.ui:1078
 #: data/ui/maximizer.ui:308 data/ui/multiband_gate_band.ui:413
-#, fuzzy
 msgid "Reduction"
-msgstr "Azalım"
+msgstr "Azaltma"
 
 #: data/ui/delay.ui:50 src/tags_plugin_name.cpp:39
 msgid "Delay"
 msgstr "Gecikme"
 
 #: data/ui/delay.ui:75
-#, fuzzy
 msgid "Left Delay"
-msgstr "Ön Gecikme"
+msgstr "Sol Gecikme"
 
 #: data/ui/delay.ui:97
-#, fuzzy
 msgid "Right Delay"
-msgstr "Sağ Kanal"
+msgstr "Sağ Gecikme"
 
 #: data/ui/delay.ui:132
 #, fuzzy
@@ -885,9 +849,8 @@ msgid "Filter Length"
 msgstr "Süzgeç Uzunluğu"
 
 #: data/ui/effects_box.ui:114
-#, fuzzy
 msgid "Excluded Apps"
-msgstr "hariç tutuldu"
+msgstr "Hariç Tutulan Uygulamalar"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
@@ -1098,26 +1061,23 @@ msgstr ""
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "Atak Bölgesi Başlangıcı"
 
 #: data/ui/gate.ui:564
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "Eş Zamanlı"
+msgstr "Bırakma Bölgesi Başlangıcı"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "Alçak Geçiş Süzgeci Kipi"
+msgstr "Düşük Geçiş Süzgeci"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
 msgstr ""
 
 #: data/ui/gate.ui:751
-#, fuzzy
 msgid "Internal"
-msgstr "Tümleşik"
+msgstr "Dahili"
 
 #: data/ui/gate.ui:1358 data/ui/multiband_gate_band.ui:856
 msgid "Gating"
@@ -1289,14 +1249,13 @@ msgstr "Stereo Bağ"
 
 #: data/ui/limiter.ui:443 data/ui/multiband_compressor_band.ui:116
 #: data/ui/multiband_gate_band.ui:89
-#, fuzzy
 msgid "External Sidechain"
-msgstr "Yanzincir"
+msgstr "Harici Yanzincir"
 
 #: data/ui/limiter.ui:456 data/ui/multiband_compressor.ui:91
 #: data/ui/multiband_gate.ui:91
 msgid "External Sidechain Source"
-msgstr ""
+msgstr "Harici Yanzincir Kaynağı"
 
 #: data/ui/limiter.ui:475
 #, fuzzy
@@ -1507,13 +1466,16 @@ msgstr "Genel"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Aygıt Yönetimi"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"Harici uygulamalarda (örn. Gnome Ayarları ve Plasma Sistem Ayarları) Easy "
+"Effects alıcısı/kaynağının öntanımlı aygıt olarak ayarlanmaması tavsiye "
+"edilir."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1626,9 +1588,8 @@ msgid "State"
 msgstr "Durum"
 
 #: data/ui/pipe_manager_box.ui:483 data/ui/preferences_spectrum.ui:12
-#, fuzzy
 msgid "Enabled"
-msgstr "Etkinleştir"
+msgstr "Etkin"
 
 #: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
@@ -1640,7 +1601,7 @@ msgstr "Kanallar"
 
 #: data/ui/pipe_manager_box.ui:526
 msgid "Both"
-msgstr ""
+msgstr "Her ikisi"
 
 #: data/ui/pipe_manager_box.ui:530
 msgid "Both Channels"
@@ -1730,7 +1691,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:163
 msgid "Independent"
-msgstr ""
+msgstr "Bağımsız"
 
 #: data/ui/pitch.ui:188
 msgid "Cents"
@@ -1745,34 +1706,32 @@ msgid "Octaves"
 msgstr "Oktav"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Bu model dosyasını kaldır"
+msgstr "Bu efekti kaldır"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Bu efekti etkinleştir/devre dışı bırak"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Bu efektin konumunu değiştir"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
-msgstr ""
+msgstr "Efekt Ekle"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
 msgstr "Kullanılan Eklentiler Listesi"
 
 #: data/ui/plugins_box.ui:129
-#, fuzzy
 msgid "No Effects"
-msgstr "EasyEffects"
+msgstr "Efekt Yok"
 
 #: data/ui/plugins_box.ui:130
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "Ses Akışı Değiştirilmedi"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
@@ -1792,10 +1751,9 @@ msgstr "Hizmet"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Sistem Başlangıcında Hizmeti Başlat"
 
 #: data/ui/preferences_general.ui:25
-#, fuzzy
 msgid "Shutdown on Window Closing"
 msgstr "Pencere Kapandığında Kapat"
 
@@ -1804,18 +1762,16 @@ msgid "Audio"
 msgstr "Ses"
 
 #: data/ui/preferences_general.ui:42
-#, fuzzy
 msgid "Process All Output Streams"
-msgstr "Tüm Çıkışları İşle"
+msgstr "Tüm Çıkış Akışlarını İşle"
 
 #: data/ui/preferences_general.ui:54
-#, fuzzy
 msgid "Process All Input Streams"
-msgstr "Tüm Girişleri İşle"
+msgstr "Tüm Giriş Akışlarını İşle"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Aygıtların Ekranından Gelen Akışları Yoksay"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
@@ -1823,11 +1779,11 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "Tepkisizlik Zaman Aşımı"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "Görünüm"
 
 #: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
@@ -1835,7 +1791,7 @@ msgstr "Koyu Tema Kullan"
 
 #: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "Dış Tıklamalarda Menüleri Gizle"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1875,7 +1831,7 @@ msgstr "Dolgu"
 
 #: data/ui/preferences_spectrum.ui:126
 msgid "Show Bars Border"
-msgstr ""
+msgstr "Çubuk Kenarlığını Göster"
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
@@ -1922,14 +1878,12 @@ msgid "New Output Preset Name"
 msgstr "Yeni Çıkış Ön Ayarı Adı"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Hazır Ayar Oluştur"
+msgstr "Yeni bir ön ayar oluştur"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
-msgstr "Ön Ayarı İçe Aktar"
+msgstr "Bir ön ayarı içe aktar"
 
 #: data/ui/presets_menu.ui:90
 msgid "Search Output Preset"
@@ -2028,9 +1982,8 @@ msgid "Large Occupied Hall"
 msgstr "Büyük Dolu Salon"
 
 #: data/ui/rnnoise.ui:31
-#, fuzzy
 msgid "Import Model"
-msgstr "Dürtü Dosyasını İçeri Al"
+msgstr "Modeli İçe Aktar"
 
 #: data/ui/rnnoise.ui:40
 msgid "Models"
@@ -2044,11 +1997,11 @@ msgstr "Standart Model"
 
 #: data/ui/rnnoise.ui:90
 msgid "RNNoise Models List"
-msgstr ""
+msgstr "RNNoise Modelleri Listesi"
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Model Yüklenmedi"
 
 #: data/ui/rnnoise.ui:116
 msgid "Active Model"
@@ -2056,16 +2009,15 @@ msgstr "Etkin Model"
 
 #: data/ui/rnnoise.ui:124
 msgid "Standard RNNoise Model"
-msgstr ""
+msgstr "Standart RNNoise Modeli"
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
 msgstr "Genel Görünüm"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "EasyEffects Kılavuzunu Aç"
+msgstr "Easy Effects Kılavuzunu Aç"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2076,9 +2028,8 @@ msgid "Close the Window"
 msgstr "Pencereyi Kapat"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "EasyEffects'ten Çık"
+msgstr "Easy Effects'ten Çık"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2089,9 +2040,8 @@ msgid "Softclip"
 msgstr "Yumuşak kırpım"
 
 #: data/ui/stereo_tools.ui:116
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Yumuşak kırpım"
+msgstr "Yumuşak Kırpım Seviyesi"
 
 #: data/ui/stereo_tools.ui:128
 msgid "Stereo Matrix"
@@ -2203,18 +2153,16 @@ msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire uygulamaları için ses efektleri"
 
 #: src/application.cpp:499
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "EasyEffects'ten çık. Servis kipinde çalışırken kullanışlıdır."
+msgstr "Easy Effects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
 #: src/application.cpp:502
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
 
 #: src/application.cpp:505
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "EasyEffects’i Sıfırla."
+msgstr "Easy Effects’i Sıfırla."
 
 #: src/application.cpp:508
 msgid "Hide the Window."
@@ -2223,6 +2171,7 @@ msgstr "Pencereyi Gizle."
 #: src/application.cpp:511
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
+"Genel atlama. 1 etkinleştirmek, 2 devre dışı bırakmak ve 3 durumu almak için"
 
 #: src/application.cpp:514
 msgid "Show available presets."
@@ -2234,20 +2183,19 @@ msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "Dosya Normal Değil"
 
 #: src/convolver_menu_impulses.cpp:106
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "Dürtü Dosyası Bozuk veya Desteklenmiyor Olabilir"
 
 #: src/convolver_menu_impulses.cpp:111
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Yalnızca Stereo Dürtü Dosyaları Desteklenir"
 
 #: src/convolver_menu_impulses.cpp:121
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Dürtü Dosyasını İçe Aktar"
+msgstr "Dürtü Dosyası İçe Aktarılmadı"
 
 #: src/convolver_menu_impulses.cpp:127
 msgid "Import Impulse File"
@@ -2268,22 +2216,18 @@ msgid "Impulse Response"
 msgstr "Dürtü Yanıtı"
 
 #: src/convolver_menu_impulses.cpp:245
-#, fuzzy
 msgid "Load Impulse"
-msgstr "Dürtü Dosyasını İçeri Al"
+msgstr "Dürtüyü Yükle"
 
 #: src/convolver_menu_impulses.cpp:248
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "Dürtü Dosyasını İçeri Al"
+msgstr "Dürtüyü Kaldır"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Dürtü Dosyasını İçe Aktar"
+msgstr "Dürtü Dosyası Yüklenmedi"
 
 #: src/convolver_ui.cpp:345
-#, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
@@ -2296,9 +2240,8 @@ msgid "Players"
 msgstr "Oynatıcılar"
 
 #: src/effects_box.cpp:309
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "Efektler"
 
 #: src/equalizer_band_box.cpp:82
 msgid "infinity"
@@ -2316,22 +2259,24 @@ msgstr "APO Ön Ayarları"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
+"APO Ön Ayarı Yüklenmedi. Dosya Biçimi Yanlış Olabilir. Lütfen İçeriğini "
+"Gözden Geçirin."
 
 #: src/equalizer_ui.cpp:554
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "APO Ön Ayar Dosyasını İçe Aktar"
+msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
 
 #: src/equalizer_ui.cpp:560
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Giriş Ön Ayarları"
+msgstr "GraphicEQ Ön Ayarları"
 
 #: src/equalizer_ui.cpp:578
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
 msgstr ""
+"GraphicEQ Ön Ayarı Yüklenmedi. Dosya Biçimi Yanlış Olabilir. Lütfen "
+"İçeriğini Gözden Geçirin."
 
 #: src/pipe_manager_box.cpp:327
 msgid "Remove Autoloading Preset"
@@ -2354,6 +2299,8 @@ msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"Seçilen Model Yüklenmedi. Biçimi Desteklenmiyor Olabilir. Bunun Yerine "
+"Standart Modele Dönüldü."
 
 #: src/rnnoise_ui.cpp:130
 msgid "Import Model File"
@@ -2361,16 +2308,15 @@ msgstr "Model Dosyasını İçe Aktar"
 
 #: src/rnnoise_ui.cpp:135
 msgid "RNNoise Models"
-msgstr ""
+msgstr "RNNoise Modelleri"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Bass Enhancer"
 msgstr "Bas Yükseltici"
 
 #: src/tags_plugin_name.cpp:33
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Yüksek Ses"
+msgstr "Bas Yüksekliği"
 
 #: src/tags_plugin_name.cpp:35
 msgid "Convolver"
@@ -2433,9 +2379,8 @@ msgid "Noise Reduction"
 msgstr "Gürültü Azaltma"
 
 #: src/tags_plugin_name.cpp:53
-#, fuzzy
 msgid "Noise Reduction (Fast)"
-msgstr "Gürültü Azaltma"
+msgstr "Gürültü Azaltma (Hızlı)"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2444,12 +2389,12 @@ msgstr "Stereo Araçları"
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:81
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} Kullanılabilir Değil"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:84
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} Sistemde Kurulu Değil"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at
@@ -2457,7 +2402,7 @@ msgstr ""
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:116
 msgid "Close (Press ESC)"
-msgstr ""
+msgstr "Kapat (ESC tuşuna basın)"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
