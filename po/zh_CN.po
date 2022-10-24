@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-23 18:09+0000\n"
-"PO-Revision-Date: 2022-09-18 17:19+0000\n"
+"PO-Revision-Date: 2022-10-24 12:40+0000\n"
 "Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -51,7 +51,6 @@ msgid "Enable"
 msgstr "启用"
 
 #: data/ui/app_info.ui:225
-#, fuzzy
 msgid "Excluded App List: Add/remove this application"
 msgstr "排除的应用程序列表：添加/删除此应用程序"
 
@@ -2327,9 +2326,8 @@ msgid "Noise Reduction"
 msgstr "降噪"
 
 #: src/tags_plugin_name.cpp:53
-#, fuzzy
 msgid "Noise Reduction (Fast)"
-msgstr "降噪"
+msgstr "降噪（快速）"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
