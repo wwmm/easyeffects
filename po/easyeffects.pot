@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 18:09+0000\n"
+"POT-Creation-Date: 2022-10-25 21:00-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2315,7 +2315,7 @@ msgid "Noise Reduction"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:53
-msgid "Noise Reduction (Fast)"
+msgid "Speech Processor"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:54

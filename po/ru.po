@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 18:09+0000\n"
+"POT-Creation-Date: 2022-10-25 21:00-0300\n"
 "PO-Revision-Date: 2022-09-06 00:23+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2394,9 +2394,8 @@ msgid "Noise Reduction"
 msgstr "Подавление шума"
 
 #: src/tags_plugin_name.cpp:53
-#, fuzzy
-msgid "Noise Reduction (Fast)"
-msgstr "Подавление шума"
+msgid "Speech Processor"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2423,6 +2422,10 @@ msgstr "Закрыть (Нажмите ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "-inf"
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Подавление шума"
 
 #~ msgid "Load APO Preset"
 #~ msgstr "Загрузить предустановку APO"

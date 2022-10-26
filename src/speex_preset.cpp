@@ -35,7 +35,13 @@ void SpeexPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
+  json[section][instance_name]["enable-denoise"] = g_settings_get_boolean(settings, "enable-denoise") != 0;
+
   json[section][instance_name]["noise-suppression"] = g_settings_get_double(settings, "noise-suppression");
+
+  json[section][instance_name]["enable-agc"] = g_settings_get_boolean(settings, "enable-agc") != 0;
+
+  json[section][instance_name]["enable-vad"] = g_settings_get_boolean(settings, "enable-vad") != 0;
 }
 
 void SpeexPreset::load(const nlohmann::json& json) {
@@ -45,5 +51,11 @@ void SpeexPreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
+  update_key<bool>(json.at(section).at(instance_name), settings, "enable-denoise", "enable-denoise");
+
   update_key<int>(json.at(section).at(instance_name), settings, "noise-suppression", "noise-suppression");
+
+  update_key<bool>(json.at(section).at(instance_name), settings, "enable-agc", "enable-agc");
+
+  update_key<bool>(json.at(section).at(instance_name), settings, "enable-vad", "enable-vad");
 }

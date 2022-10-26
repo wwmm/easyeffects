@@ -50,7 +50,7 @@ auto get_translated() -> std::map<std::string, std::string> {
                                                    {pitch, _("Pitch")},
                                                    {reverb, _("Reverberation")},
                                                    {rnnoise, _("Noise Reduction")},
-                                                   {speex, _("Noise Reduction (Fast)")},
+                                                   {speex, _("Speech Processor")},
                                                    {stereo_tools, _("Stereo Tools")}};
 
   return translated;

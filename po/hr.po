@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 18:09+0000\n"
+"POT-Creation-Date: 2022-10-25 21:00-0300\n"
 "PO-Revision-Date: 2022-09-29 01:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2561,9 +2561,8 @@ msgid "Noise Reduction"
 msgstr "Ograničenje pojačanja"
 
 #: src/tags_plugin_name.cpp:53
-#, fuzzy
-msgid "Noise Reduction (Fast)"
-msgstr "Ograničenje pojačanja"
+msgid "Speech Processor"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:54
 #, fuzzy
@@ -2591,6 +2590,10 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Ograničenje pojačanja"
 
 #, fuzzy
 #~ msgid "Load APO Preset"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 18:09+0000\n"
+"POT-Creation-Date: 2022-10-25 21:00-0300\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2533,9 +2533,8 @@ msgid "Noise Reduction"
 msgstr "Redukcja szumu"
 
 #: src/tags_plugin_name.cpp:53
-#, fuzzy
-msgid "Noise Reduction (Fast)"
-msgstr "Redukcja szumu"
+msgid "Speech Processor"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2562,6 +2561,10 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Redukcja szumu"
 
 #, fuzzy
 #~ msgid "Load APO Preset"

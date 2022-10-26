@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 18:09+0000\n"
+"POT-Creation-Date: 2022-10-25 21:00-0300\n"
 "PO-Revision-Date: 2022-10-24 12:40+0000\n"
 "Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2326,8 +2326,8 @@ msgid "Noise Reduction"
 msgstr "降噪"
 
 #: src/tags_plugin_name.cpp:53
-msgid "Noise Reduction (Fast)"
-msgstr "降噪（快速）"
+msgid "Speech Processor"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2354,6 +2354,9 @@ msgstr "关闭（请按 ESC）"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "降噪（快速）"
 
 #~ msgid "Load APO Preset"
 #~ msgstr "加载 APO 预设"

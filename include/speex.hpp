@@ -47,13 +47,14 @@ class Speex : public PluginBase {
   bool package_installed = false;
 #endif
 
-  int noise_suppression = -15;
-
   float latency_value = 0.0F;
 
  private:
   bool notify_latency = false;
+
   bool speex_ready = false;
+
+  int enable_denoise = 0, noise_suppression = -15, enable_agc = 0, enable_vad = 0;
 
   uint latency_n_frames = 0U;
 

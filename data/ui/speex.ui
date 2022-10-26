@@ -18,44 +18,92 @@
                     <object class="GtkBox">
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
-                        <child>
-                            <object class="GtkGrid">
-                                <property name="margin-bottom">6</property>
-                                <property name="halign">center</property>
-                                <property name="row-spacing">6</property>
-                                <property name="column-spacing">24</property>
 
+                        <child>
+                            <object class="GtkBox">
+                                <property name="spacing">12</property>
                                 <child>
-                                    <object class="GtkLabel" id="noise_suppression_label">
-                                        <property name="label" translatable="yes">Noise Suppression</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">0</property>
-                                        </layout>
+                                    <object class="AdwPreferencesGroup">
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Denoise</property>
+                                                <property name="activatable-widget">enable_denoise</property>
+                                                <child>
+                                                    <object class="GtkSwitch" id="enable_denoise">
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Automatic Gain Control</property>
+                                                <property name="activatable-widget">enable_agc</property>
+                                                <child>
+                                                    <object class="GtkSwitch" id="enable_agc">
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Voice Detection</property>
+                                                <property name="activatable-widget">enable_vad</property>
+                                                <child>
+                                                    <object class="GtkSwitch" id="enable_vad">
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
 
                                 <child>
-                                    <object class="GtkSpinButton" id="noise_suppression">
+                                    <object class="GtkGrid">
+                                        <property name="margin-bottom">6</property>
                                         <property name="halign">center</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">1</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">-50</property>
-                                                <property name="upper">-1</property>
-                                                <property name="step-increment">1</property>
-                                                <property name="page-increment">1</property>
+                                        <property name="row-spacing">6</property>
+                                        <property name="column-spacing">24</property>
+
+                                        <child>
+                                            <object class="GtkLabel" id="noise_suppression_label">
+                                                <property name="label" translatable="yes">Noise Suppression</property>
+                                                <property name="sensitive" bind-source="enable_denoise" bind-property="active" bind-flags="sync-create" />
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">0</property>
+                                                </layout>
                                             </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">noise_suppression_label</relation>
-                                        </accessibility>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkSpinButton" id="noise_suppression">
+                                                <property name="sensitive" bind-source="enable_denoise" bind-property="active" bind-flags="sync-create" />
+                                                <property name="halign">center</property>
+                                                <property name="width-chars">10</property>
+                                                <property name="digits">1</property>
+                                                <property name="update-policy">if-valid</property>
+                                                <property name="adjustment">
+                                                    <object class="GtkAdjustment">
+                                                        <property name="lower">-50</property>
+                                                        <property name="upper">-1</property>
+                                                        <property name="step-increment">1</property>
+                                                        <property name="page-increment">1</property>
+                                                    </object>
+                                                </property>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">1</property>
+                                                </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">noise_suppression_label</relation>
+                                                </accessibility>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
                             </object>

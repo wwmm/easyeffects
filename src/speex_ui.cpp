@@ -50,6 +50,8 @@ struct _SpeexBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *noise_suppression_label;
 
+  GtkSwitch *enable_denoise, *enable_agc, *enable_vad;
+
   GtkSpinButton* noise_suppression;
 
   GSettings* settings;
@@ -104,8 +106,9 @@ void setup(SpeexBox* self,
     });
   }));
 
-  gsettings_bind_widgets<"input-gain", "output-gain", "noise-suppression">(self->settings, self->input_gain,
-                                                                           self->output_gain, self->noise_suppression);
+  gsettings_bind_widgets<"input-gain", "output-gain", "enable-denoise", "noise-suppression", "enable-agc",
+                         "enable-vad">(self->settings, self->input_gain, self->output_gain, self->enable_denoise,
+                                       self->noise_suppression, self->enable_agc, self->enable_vad);
 }
 
 void dispose(GObject* object) {
@@ -164,6 +167,9 @@ void speex_box_class_init(SpeexBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, output_level_right_label);
 
+  gtk_widget_class_bind_template_child(widget_class, SpeexBox, enable_denoise);
+  gtk_widget_class_bind_template_child(widget_class, SpeexBox, enable_agc);
+  gtk_widget_class_bind_template_child(widget_class, SpeexBox, enable_vad);
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, noise_suppression);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);

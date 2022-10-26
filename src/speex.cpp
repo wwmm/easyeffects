@@ -24,16 +24,34 @@ Speex::Speex(const std::string& tag,
              const std::string& schema_path,
              PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::speex, tags::plugin_package::speex, schema, schema_path, pipe_manager),
-      noise_suppression(g_settings_get_int(settings, "noise-suppression")) {
-  gconnections.push_back(g_signal_connect(
-      settings, "changed::noise-suppression", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<Speex*>(user_data);
+      enable_denoise(g_settings_get_boolean(settings, "enable-denoise")),
+      noise_suppression(g_settings_get_int(settings, "noise-suppression")),
+      enable_agc(g_settings_get_boolean(settings, "enable-agc")),
+      enable_vad(g_settings_get_boolean(settings, "enable-vad")) {
+#ifdef SPEEX_AVAILABLE
 
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::enable-denoise", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
+        std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+        self->enable_denoise = g_settings_get_boolean(settings, key);
+
+        if (self->state_left) {
+          speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_DENOISE, &self->enable_denoise);
+        }
+
+        if (self->state_right) {
+          speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_DENOISE, &self->enable_denoise);
+        }
+      }),
+      this));
+
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::noise-suppression", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
         std::scoped_lock<std::mutex> lock(self->data_mutex);
 
         self->noise_suppression = g_settings_get_int(settings, key);
 
-#ifdef SPEEX_AVAILABLE
         if (self->state_left) {
           speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &self->noise_suppression);
         }
@@ -41,9 +59,42 @@ Speex::Speex(const std::string& tag,
         if (self->state_right) {
           speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &self->noise_suppression);
         }
-#endif
       }),
       this));
+
+  gconnections.push_back(
+      g_signal_connect(settings, "changed::enable-agc", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
+                         std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                         self->enable_agc = g_settings_get_boolean(settings, key);
+
+                         if (self->state_left) {
+                           speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_AGC, &self->enable_agc);
+                         }
+
+                         if (self->state_right) {
+                           speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_AGC, &self->enable_agc);
+                         }
+                       }),
+                       this));
+
+  gconnections.push_back(
+      g_signal_connect(settings, "changed::enable-vad", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
+                         std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                         self->enable_vad = g_settings_get_boolean(settings, key);
+
+                         if (self->state_left) {
+                           speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_VAD, &self->enable_vad);
+                         }
+
+                         if (self->state_right) {
+                           speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_VAD, &self->enable_vad);
+                         }
+                       }),
+                       this));
+
+#endif
 
   setup_input_output_gain();
 }
@@ -85,11 +136,21 @@ void Speex::setup() {
   state_right = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
 
   if (state_left != nullptr) {
+    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_DENOISE, &enable_denoise);
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
+
+    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_AGC, &enable_agc);
+
+    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
   }
 
   if (state_right != nullptr) {
+    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_DENOISE, &enable_denoise);
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
+
+    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_AGC, &enable_agc);
+
+    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
   }
 
   speex_ready = true;
@@ -123,14 +184,18 @@ void Speex::process(std::span<float>& left_in,
     data_R[i] = static_cast<spx_int16_t>(right_in[i] * (SHRT_MAX + 1));
   }
 
-  speex_preprocess_run(state_left, data_L.data());
-  speex_preprocess_run(state_right, data_R.data());
-
-  for (size_t i = 0; i < n_samples; i++) {
-    left_out[i] = static_cast<float>(data_L[i]) * inv_short_max;
-
-    right_out[i] = static_cast<float>(data_R[i]) * inv_short_max;
+  if (speex_preprocess_run(state_left, data_L.data()) == 1) {
+    for (size_t i = 0; i < n_samples; i++) {
+      left_out[i] = static_cast<float>(data_L[i]) * inv_short_max;
+    }
   }
+
+  if (speex_preprocess_run(state_right, data_R.data()) == 1) {
+    for (size_t i = 0; i < n_samples; i++) {
+      right_out[i] = static_cast<float>(data_R[i]) * inv_short_max;
+    }
+  }
+
 #endif
 
   if (output_gain != 1.0F) {

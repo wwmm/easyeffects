@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 18:09+0000\n"
+"POT-Creation-Date: 2022-10-25 21:00-0300\n"
 "PO-Revision-Date: 2022-10-25 04:02+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2331,8 +2331,8 @@ msgid "Noise Reduction"
 msgstr "Reducción de ruido"
 
 #: src/tags_plugin_name.cpp:53
-msgid "Noise Reduction (Fast)"
-msgstr "Reducción de ruido (rápido)"
+msgid "Speech Processor"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2359,6 +2359,9 @@ msgstr "Cerrar (Pulsar ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "archivo de información de instalación (inf)"
+
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Reducción de ruido (rápido)"
 
 #~ msgid "Load APO Preset"
 #~ msgstr "Cargar el perfil APO"

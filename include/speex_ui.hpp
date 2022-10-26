@@ -37,9 +37,6 @@ G_END_DECLS
 
 auto create() -> SpeexBox*;
 
-void setup(SpeexBox* self,
-           std::shared_ptr<Speex> rnnoise,
-           const std::string& schema_path,
-           app::Application* application);
+void setup(SpeexBox* self, std::shared_ptr<Speex> speex, const std::string& schema_path, app::Application* application);
 
 }  // namespace ui::speex_box

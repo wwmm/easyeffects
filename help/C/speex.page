@@ -4,9 +4,9 @@
     <info>
         <link type="guide" xref="index#plugins" />
     </info>
-    <title>Noise Reduction (Fast)</title>
+    <title>Speech Processor</title>
     <p>This plugin allows EasyEffects to use the Speex preprocessor to attenuate disturbing background noises from a signal.</p>
-    <p>Compared to Noise Reduction which uses RNNoise to suppress noises, Noise Reduction (Fast) has the benefit of using less computational resources, at the cost of sacrificing noise suppression quality.</p>
+    <p>Compared to Noise Reduction which uses RNNoise to suppress noises, Speech Processor has the benefit of using less computational resources, at the cost of sacrificing noise suppression quality.</p>
     <p>For more information on noise suppression in general, refer to the manual page on Noise Reduction.</p>
     <section>
         <title>References</title>
