@@ -105,7 +105,7 @@ inline constexpr auto stereo_tools = "stereo_tools";
 inline constexpr auto list = std::to_array(
     {autogain,  bass_enhancer,        bass_loudness,  compressor, convolver, crossfeed, crystalizer, deesser,
      delay,     echo_canceller,       equalizer,      exciter,    filter,    gate,      limiter,     loudness,
-     maximizer, multiband_compressor, multiband_gate, pitch,      reverb,    rnnoise,   stereo_tools});
+     maximizer, multiband_compressor, multiband_gate, pitch,      reverb,    rnnoise,   speex,       stereo_tools});
 
 auto get_translated() -> std::map<std::string, std::string>;
 

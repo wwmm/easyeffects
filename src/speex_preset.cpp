@@ -20,12 +20,12 @@
 #include "speex_preset.hpp"
 
 SpeexPreset::SpeexPreset(PresetType preset_type, const int& index)
-    : PluginPresetBase(tags::schema::rnnoise::id,
-                       tags::schema::rnnoise::input_path,
-                       tags::schema::rnnoise::output_path,
+    : PluginPresetBase(tags::schema::speex::id,
+                       tags::schema::speex::input_path,
+                       tags::schema::speex::output_path,
                        preset_type,
                        index) {
-  instance_name.assign(tags::plugin_name::rnnoise).append("#").append(util::to_string(index));
+  instance_name.assign(tags::plugin_name::speex).append("#").append(util::to_string(index));
 }
 
 void SpeexPreset::save(nlohmann::json& json) {
@@ -37,7 +37,7 @@ void SpeexPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["enable-denoise"] = g_settings_get_boolean(settings, "enable-denoise") != 0;
 
-  json[section][instance_name]["noise-suppression"] = g_settings_get_double(settings, "noise-suppression");
+  json[section][instance_name]["noise-suppression"] = g_settings_get_int(settings, "noise-suppression");
 
   json[section][instance_name]["enable-agc"] = g_settings_get_boolean(settings, "enable-agc") != 0;
 
