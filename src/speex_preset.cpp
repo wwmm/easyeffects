@@ -41,7 +41,12 @@ void SpeexPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["enable-agc"] = g_settings_get_boolean(settings, "enable-agc") != 0;
 
-  json[section][instance_name]["enable-vad"] = g_settings_get_boolean(settings, "enable-vad") != 0;
+  json[section][instance_name]["vad"]["enable"] = g_settings_get_boolean(settings, "enable-vad") != 0;
+
+  json[section][instance_name]["vad"]["probability-start"] = g_settings_get_int(settings, "vad-probability-start");
+
+  json[section][instance_name]["vad"]["probability-continue"] =
+      g_settings_get_int(settings, "vad-probability-continue");
 }
 
 void SpeexPreset::load(const nlohmann::json& json) {
@@ -57,5 +62,10 @@ void SpeexPreset::load(const nlohmann::json& json) {
 
   update_key<bool>(json.at(section).at(instance_name), settings, "enable-agc", "enable-agc");
 
-  update_key<bool>(json.at(section).at(instance_name), settings, "enable-vad", "enable-vad");
+  update_key<bool>(json.at(section).at(instance_name).at("vad"), settings, "enable-vad", "enable");
+
+  update_key<int>(json.at(section).at(instance_name).at("vad"), settings, "vad-probability-start", "probability-start");
+
+  update_key<int>(json.at(section).at(instance_name).at("vad"), settings, "vad-probability-continue",
+                  "probability-continue");
 }

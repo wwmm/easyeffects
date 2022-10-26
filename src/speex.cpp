@@ -27,7 +27,9 @@ Speex::Speex(const std::string& tag,
       enable_denoise(g_settings_get_boolean(settings, "enable-denoise")),
       noise_suppression(g_settings_get_int(settings, "noise-suppression")),
       enable_agc(g_settings_get_boolean(settings, "enable-agc")),
-      enable_vad(g_settings_get_boolean(settings, "enable-vad")) {
+      enable_vad(g_settings_get_boolean(settings, "enable-vad")),
+      vad_probability_start(g_settings_get_int(settings, "vad-probability-start")),
+      vad_probability_continue(g_settings_get_int(settings, "vad-probability-continue")) {
 #ifdef SPEEX_AVAILABLE
 
   gconnections.push_back(g_signal_connect(
@@ -94,6 +96,38 @@ Speex::Speex(const std::string& tag,
                        }),
                        this));
 
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::vad-probability-start", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
+        std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+        self->vad_probability_start = g_settings_get_int(settings, key);
+
+        if (self->state_left) {
+          speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_PROB_START, &self->vad_probability_start);
+        }
+
+        if (self->state_right) {
+          speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_PROB_START, &self->vad_probability_start);
+        }
+      }),
+      this));
+
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::vad-probability-continue", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
+        std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+        self->vad_probability_continue = g_settings_get_int(settings, key);
+
+        if (self->state_left) {
+          speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &self->vad_probability_continue);
+        }
+
+        if (self->state_right) {
+          speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &self->vad_probability_continue);
+        }
+      }),
+      this));
+
 #endif
 
   setup_input_output_gain();
@@ -142,6 +176,8 @@ void Speex::setup() {
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_AGC, &enable_agc);
 
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
+    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_START, &vad_probability_start);
+    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
   }
 
   if (state_right != nullptr) {
@@ -151,6 +187,8 @@ void Speex::setup() {
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_AGC, &enable_agc);
 
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
+    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_START, &vad_probability_start);
+    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
   }
 
   speex_ready = true;
@@ -188,12 +226,16 @@ void Speex::process(std::span<float>& left_in,
     for (size_t i = 0; i < n_samples; i++) {
       left_out[i] = static_cast<float>(data_L[i]) * inv_short_max;
     }
+  } else {
+    std::ranges::fill(left_out, 0.0F);
   }
 
   if (speex_preprocess_run(state_right, data_R.data()) == 1) {
     for (size_t i = 0; i < n_samples; i++) {
       right_out[i] = static_cast<float>(data_R[i]) * inv_short_max;
     }
+  } else {
+    std::ranges::fill(right_out, 0.0F);
   }
 
 #endif

@@ -52,7 +52,7 @@ struct _SpeexBox {
 
   GtkSwitch *enable_denoise, *enable_agc, *enable_vad;
 
-  GtkSpinButton* noise_suppression;
+  GtkSpinButton *noise_suppression, *vad_probability_start, *vad_probability_continue;
 
   GSettings* settings;
 
@@ -106,9 +106,10 @@ void setup(SpeexBox* self,
     });
   }));
 
-  gsettings_bind_widgets<"input-gain", "output-gain", "enable-denoise", "noise-suppression", "enable-agc",
-                         "enable-vad">(self->settings, self->input_gain, self->output_gain, self->enable_denoise,
-                                       self->noise_suppression, self->enable_agc, self->enable_vad);
+  gsettings_bind_widgets<"input-gain", "output-gain", "enable-denoise", "noise-suppression", "enable-agc", "enable-vad",
+                         "vad-probability-start", "vad-probability-continue">(
+      self->settings, self->input_gain, self->output_gain, self->enable_denoise, self->noise_suppression,
+      self->enable_agc, self->enable_vad, self->vad_probability_start, self->vad_probability_continue);
 }
 
 void dispose(GObject* object) {
@@ -171,6 +172,8 @@ void speex_box_class_init(SpeexBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, enable_agc);
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, enable_vad);
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, noise_suppression);
+  gtk_widget_class_bind_template_child(widget_class, SpeexBox, vad_probability_start);
+  gtk_widget_class_bind_template_child(widget_class, SpeexBox, vad_probability_continue);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
@@ -183,6 +186,9 @@ void speex_box_init(SpeexBox* self) {
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
   prepare_spinbuttons<"dB">(self->noise_suppression);
+
+  prepare_spinbuttons<"%">(self->vad_probability_start);
+  prepare_spinbuttons<"%">(self->vad_probability_continue);
 }
 
 auto create() -> SpeexBox* {

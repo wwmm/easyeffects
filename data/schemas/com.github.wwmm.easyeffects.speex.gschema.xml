@@ -25,5 +25,13 @@
         <key name="enable-vad" type="b">
             <default>false</default>
         </key>
+        <key name="vad-probability-start" type="i">
+            <range min="0" max="100" />
+            <default>95</default>
+        </key>
+        <key name="vad-probability-continue" type="i">
+            <range min="0" max="100" />
+            <default>90</default>
+        </key>
     </schema>
 </schemalist>
