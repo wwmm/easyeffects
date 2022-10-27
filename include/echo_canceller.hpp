@@ -23,6 +23,10 @@
 #include <deque>
 #include "plugin_base.hpp"
 
+#ifdef SPEEX_AVAILABLE
+#include <speex/speex_preprocess.h>
+#endif
+
 class EchoCanceller : public PluginBase {
  public:
   EchoCanceller(const std::string& tag,
@@ -54,6 +58,7 @@ class EchoCanceller : public PluginBase {
   uint blocksize_ms = 20U;
   uint filter_length_ms = 100U;
   uint latency_n_frames = 0U;
+  int residual_echo_suppression = -10;
 
   float latency_value = 0.0F;
 
@@ -70,6 +75,14 @@ class EchoCanceller : public PluginBase {
 
   SpeexEchoState* echo_state_L = nullptr;
   SpeexEchoState* echo_state_R = nullptr;
+
+#ifdef SPEEX_AVAILABLE
+
+  SpeexPreprocessState *state_left = nullptr, *state_right = nullptr;
+
+  void free_speex();
+
+#endif
 
   void init_speex();
 };

@@ -43,7 +43,7 @@ struct _EchoCancellerBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkSpinButton *frame_size, *filter_length;
+  GtkSpinButton *frame_size, *filter_length, *residual_echo_suppression;
 
   GSettings* settings;
 
@@ -93,13 +93,9 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
     });
   }));
 
-  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
-
-  g_settings_bind(self->settings, "frame-size", gtk_spin_button_get_adjustment(self->frame_size), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "filter-length", gtk_spin_button_get_adjustment(self->filter_length), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"input-gain", "output-gain", "frame-size", "filter-length", "residual-echo-suppression">(
+      self->settings, self->input_gain, self->output_gain, self->frame_size, self->filter_length,
+      self->residual_echo_suppression);
 }
 
 void dispose(GObject* object) {
@@ -159,6 +155,7 @@ void echo_canceller_box_class_init(EchoCancellerBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, frame_size);
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, filter_length);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, residual_echo_suppression);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
@@ -169,6 +166,8 @@ void echo_canceller_box_init(EchoCancellerBox* self) {
   self->data = new Data();
 
   prepare_spinbuttons<"ms">(self->filter_length, self->frame_size);
+
+  prepare_spinbuttons<"dB">(self->residual_echo_suppression);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 }

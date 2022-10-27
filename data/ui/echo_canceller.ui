@@ -94,6 +94,40 @@
                                         </accessibility>
                                     </object>
                                 </child>
+
+                                <child>
+                                    <object class="GtkLabel" id="residual_echo_label">
+                                        <property name="label" translatable="yes">Suppression</property>
+                                        <layout>
+                                            <property name="column">2</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkSpinButton" id="residual_echo_suppression">
+                                        <property name="orientation">vertical</property>
+                                        <property name="halign">center</property>
+                                        <property name="width-chars">10</property>
+                                        <property name="digits">0</property>
+                                        <property name="update-policy">if-valid</property>
+                                        <property name="adjustment">
+                                            <object class="GtkAdjustment">
+                                                <property name="lower">-100</property>
+                                                <property name="upper">-1</property>
+                                                <property name="step-increment">1</property>
+                                                <property name="page-increment">1</property>
+                                            </object>
+                                        </property>
+                                        <layout>
+                                            <property name="column">2</property>
+                                            <property name="row">1</property>
+                                        </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">residual_echo_label</relation>
+                                        </accessibility>
+                                    </object>
+                                </child>
                             </object>
                         </child>
 

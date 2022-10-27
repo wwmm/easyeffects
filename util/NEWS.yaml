@@ -12,6 +12,9 @@ Description:
 - Improved presets autoloading.
 - The Autogain silence threshold can now be configured by the user.
 - Dry and wet controls added to the Stereo Tools effect.
+- A new `Speech Processor` plugin based on the Speex library was added. Besides providing noise suppression it also can
+detect voice activity. It is a decent alternative to the cases whre the rnnoise library does not work well.
+- The echo canceller now has a residual noise suppression control also based on the Speex library.
 
 - Bug fixes∶
 - When the mouse was hovering over a chart the wrong value for the x axis coordinate was being shown. This regression is fixed.
