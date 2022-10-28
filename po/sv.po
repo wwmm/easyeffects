@@ -26,7 +26,7 @@ msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr ""
+msgstr "Equalizer, kompressor och andra ljudeffekter"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "Audio Effects for PipeWire Applications"
@@ -34,8 +34,7 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr ""
-"limiter;begränsare;kompressor;eko;efterklang;equalizer;utjämnare;auto;volym;"
+msgstr "begränsare;kompressor;eko;utjämnare;autovolym;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
@@ -47,9 +46,8 @@ msgid "Enable/disable this application"
 msgstr ""
 
 #: data/ui/app_info.ui:213
-#, fuzzy
 msgid "Enable"
-msgstr "Sinustabell"
+msgstr "Aktivera"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
@@ -88,9 +86,8 @@ msgid "_Reset Settings"
 msgstr "_Återställ inställningar"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "_Om EasyEffects"
+msgstr "_Om Easy Effects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -115,9 +112,8 @@ msgid "Primary Menu"
 msgstr ""
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "EasyEffects-fönster"
+msgstr "Easy Effects-fönster"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -128,23 +124,20 @@ msgid "Empty List"
 msgstr ""
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Applikationsnamn"
+msgstr "Ingen ljudapplikation tillgänglig"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
 msgstr "Målvärde (dB)"
 
 #: data/ui/autogain.ui:63
-#, fuzzy
 msgid "Silence"
 msgstr "Tystnad"
 
 #: data/ui/autogain.ui:98
-#, fuzzy
 msgid "Maximum History"
-msgstr "Frekvens (Hz)"
+msgstr "Maximal historik"
 
 #: data/ui/autogain.ui:132
 msgid "Reference"
@@ -211,6 +204,7 @@ msgstr "Utgångsförstärkning (dB)"
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:625 src/application_ui.cpp:278
+#: data/ui/echo_canceller.ui:115
 msgid "Input"
 msgstr "Ingång"
 
@@ -223,6 +217,7 @@ msgstr "Ingång"
 #: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/stereo_tools.ui:644
+#: data/ui/echo_canceller.ui:134
 msgid "Plugin Input Gain"
 msgstr "Plugin ingångsförstärkning (dB)"
 
@@ -237,7 +232,7 @@ msgstr "Plugin ingångsförstärkning (dB)"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
-#: src/application_ui.cpp:277
+#: src/application_ui.cpp:277 data/ui/echo_canceller.ui:199
 msgid "Output"
 msgstr "Utgång"
 
@@ -250,6 +245,7 @@ msgstr "Utgång"
 #: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/stereo_tools.ui:728
+#: data/ui/echo_canceller.ui:218
 msgid "Plugin Output Gain"
 msgstr "Plugin utgångsförstärkning (dB)"
 
@@ -263,6 +259,7 @@ msgstr "Plugin utgångsförstärkning (dB)"
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:791
+#: data/ui/echo_canceller.ui:281
 msgid "Reset"
 msgstr "Återställ"
 
@@ -274,7 +271,7 @@ msgstr "Återställ"
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
-#: data/ui/stereo_tools.ui:805
+#: data/ui/stereo_tools.ui:805 data/ui/echo_canceller.ui:295
 msgid "Using"
 msgstr "Använder"
 
@@ -298,7 +295,6 @@ msgid "Preset"
 msgstr "Förinställning"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
 msgstr "Ta bort denna modellfil"
 
@@ -349,19 +345,16 @@ msgid "Application Name"
 msgstr "Applikationsnamn"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "Visa blocklistade applikationer"
+msgstr "Lägg till i exkluderade applikationer"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "Applikationslista"
+msgstr "Lista över exkluderade applikationer"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "Visa blocklistade applikationer"
+msgstr "Visa exkluderade applikationer"
 
 #: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
@@ -458,16 +451,14 @@ msgstr "Makeup (dB)"
 #: data/ui/compressor.ui:405 data/ui/delay.ui:105 data/ui/gate.ui:342
 #: data/ui/multiband_compressor.ui:132 data/ui/multiband_gate.ui:132
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:534
-#, fuzzy
 msgid "Dry Level"
-msgstr "Nivå"
+msgstr "Torrnivå"
 
 #: data/ui/compressor.ui:440 data/ui/delay.ui:164 data/ui/gate.ui:347
 #: data/ui/multiband_compressor.ui:166 data/ui/multiband_gate.ui:166
 #: data/ui/reverb.ui:242 data/ui/stereo_tools.ui:570
-#, fuzzy
 msgid "Wet Level"
-msgstr "Målvärde (dB)"
+msgstr "Våtnivå"
 
 #: data/ui/compressor.ui:482 data/ui/compressor.ui:994 data/ui/gate.ui:621
 #: data/ui/gate.ui:1132
@@ -668,9 +659,8 @@ msgid "Log Scale"
 msgstr ""
 
 #: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
-#, fuzzy
 msgid "Autogain"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Automatisk förstärkning"
 
 #: data/ui/convolver.ui:148
 msgid "Rate"
@@ -809,39 +799,32 @@ msgid "Reduction"
 msgstr "Reduktion"
 
 #: data/ui/delay.ui:50 src/tags_plugin_name.cpp:39
-#, fuzzy
 msgid "Delay"
-msgstr "Release (ms)"
+msgstr "Fördröjning"
 
 #: data/ui/delay.ui:75
-#, fuzzy
 msgid "Left Delay"
-msgstr "Release (ms)"
+msgstr "Vänsterfördröjning"
 
 #: data/ui/delay.ui:97
-#, fuzzy
 msgid "Right Delay"
-msgstr "Höger kanal"
+msgstr "Högerfördröjning"
 
 #: data/ui/delay.ui:132
-#, fuzzy
 msgid "Left Dry Level"
-msgstr "Nivå"
+msgstr "Vänster torrnivå"
 
 #: data/ui/delay.ui:156
-#, fuzzy
 msgid "Right Dry Level"
-msgstr "Nivå"
+msgstr "Höger torrnivå"
 
 #: data/ui/delay.ui:190
-#, fuzzy
 msgid "Left Wet Level"
-msgstr "Målvärde (dB)"
+msgstr "Vänster våtnivå"
 
 #: data/ui/delay.ui:213
-#, fuzzy
 msgid "Right Wet Level"
-msgstr "Målvärde (dB)"
+msgstr "Höger våtnivå"
 
 #: data/ui/echo_canceller.ui:30
 msgid "Frame Size"
@@ -882,19 +865,16 @@ msgstr ""
 
 #: data/ui/equalizer.ui:90 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:393
-#, fuzzy
 msgid "Balance"
-msgstr "Ljudförstärkare"
+msgstr "Balans"
 
 #: data/ui/equalizer.ui:123
-#, fuzzy
 msgid "Pitch Left"
-msgstr "Sidokedja vänster"
+msgstr "Tonhöjd vänster"
 
 #: data/ui/equalizer.ui:156
-#, fuzzy
 msgid "Pitch Right"
-msgstr "Sidokedja höger"
+msgstr "Tonhöjd höger"
 
 #: data/ui/equalizer.ui:251
 msgid "Split Channels"
@@ -909,9 +889,8 @@ msgid "Calculate Frequencies"
 msgstr ""
 
 #: data/ui/equalizer.ui:280 src/presets_menu.cpp:102
-#, fuzzy
 msgid "Import Preset"
-msgstr "Öppna förinställning"
+msgstr "Importera förinställning"
 
 #: data/ui/equalizer_band.ui:109
 msgid "Bell"
@@ -1072,14 +1051,12 @@ msgid "Attack Zone Start"
 msgstr ""
 
 #: data/ui/gate.ui:564
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "Tid för frisläppning (s)"
+msgstr "Start av frisläppande zon"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "Lågpassfilterläge"
+msgstr "Lågpassfilter"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
@@ -1314,9 +1291,8 @@ msgid "Output Volume"
 msgstr "Utgångsvolym"
 
 #: data/ui/loudness.ui:127
-#, fuzzy
 msgid "Clipping"
-msgstr "Kanaler"
+msgstr "Klippning"
 
 #: data/ui/loudness.ui:155
 msgid "Clipping Range"
@@ -1447,9 +1423,8 @@ msgid "Band Curve"
 msgstr ""
 
 #: data/ui/multiband_gate_band.ui:777
-#, fuzzy
 msgid "Band Reduction"
-msgstr "Band 1 max reduktion"
+msgstr "Bandreduktion"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1470,23 +1445,20 @@ msgid "Use Default Input"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:65
-#, fuzzy
 msgid "Custom Input Device"
-msgstr "Ingångs-begränsning"
+msgstr "Anpassad indataenhet"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 msgid "Use Default Output"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:101
-#, fuzzy
 msgid "Custom Output Device"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Anpassad utdataenhet"
 
 #: data/ui/pipe_manager_box.ui:112
-#, fuzzy
 msgid "Server Information"
-msgstr "Efterljud (eko)"
+msgstr "Serverinformation"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
@@ -1497,38 +1469,32 @@ msgid "Library Version"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Sampling Rate"
-msgstr "Resampler"
+msgstr "Samplingshastighet"
 
 #: data/ui/pipe_manager_box.ui:149
-#, fuzzy
 msgid "Minimum Quantum"
-msgstr "Frekvens (Hz)"
+msgstr "Minsta kvantum"
 
 #: data/ui/pipe_manager_box.ui:160
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Frekvens (Hz)"
+msgstr "Största kvantum"
 
 #: data/ui/pipe_manager_box.ui:171
-#, fuzzy
 msgid "Default Quantum"
-msgstr "Frekvens (Hz)"
+msgstr "Standardkvantum"
 
 #: data/ui/pipe_manager_box.ui:191
 msgid "Presets Autoloading"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:232
-#, fuzzy
 msgid "Output Devices"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Utgångsenheter"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
-#, fuzzy
 msgid "Output Presets"
-msgstr "Profiler"
+msgstr "Utgångsförinställningar"
 
 #: data/ui/pipe_manager_box.ui:256 data/ui/pipe_manager_box.ui:348
 msgid "Create Association"
@@ -1539,28 +1505,24 @@ msgid "Add Autoloading Output Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:290
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "Profiler"
+msgstr "Lista över utgångsförinställningar"
 
 #: data/ui/pipe_manager_box.ui:329
-#, fuzzy
 msgid "Input Devices"
-msgstr "Ingångs-begränsning"
+msgstr "Ingångsenheter"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
-#, fuzzy
 msgid "Input Presets"
-msgstr "Öppna förinställning"
+msgstr "Ingångsförinställningar"
 
 #: data/ui/pipe_manager_box.ui:362
 msgid "Add Autoloading Input Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:381
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "Öppna förinställning"
+msgstr "Lista över ingångsförinställningar"
 
 #: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
@@ -1579,7 +1541,6 @@ msgid "Clients List"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:475
-#, fuzzy
 msgid "Test Signal"
 msgstr "Testsignal"
 
@@ -1588,9 +1549,8 @@ msgid "State"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:483 data/ui/preferences_spectrum.ui:12
-#, fuzzy
 msgid "Enabled"
-msgstr "Sinustabell"
+msgstr "Aktiverad"
 
 #: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
@@ -1605,50 +1565,44 @@ msgid "Both"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:530
-#, fuzzy
 msgid "Both Channels"
-msgstr "Kanaler"
+msgstr "Båda kanalerna"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:543
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Sinustabell"
+msgstr "Sinusvåg"
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "White Noise"
 msgstr "Vitt brus"
 
 #: data/ui/pitch.ui:43
-#, fuzzy
 msgid "High Speed"
-msgstr "Hög hylla"
+msgstr "Hög hastighet"
 
 #: data/ui/pitch.ui:44
-#, fuzzy
 msgid "High Quality"
-msgstr "Kvalitet"
+msgstr "Hög kvalitet"
 
 #: data/ui/pitch.ui:45
 msgid "High Consistency"
 msgstr ""
 
 #: data/ui/pitch.ui:59
-#, fuzzy
 msgid "Formant"
-msgstr "Format"
+msgstr "Formant"
 
 #: data/ui/pitch.ui:70
 msgid "Shifted"
 msgstr ""
 
 #: data/ui/pitch.ui:71
-#, fuzzy
 msgid "Preserved"
-msgstr "Förinställning"
+msgstr "Bevarad"
 
 #: data/ui/pitch.ui:97
 msgid "Transients"
@@ -1667,14 +1621,12 @@ msgid "Smooth"
 msgstr ""
 
 #: data/ui/pitch.ui:124
-#, fuzzy
 msgid "Detector"
-msgstr "Upptäckt"
+msgstr "Detektor"
 
 #: data/ui/pitch.ui:135
-#, fuzzy
 msgid "Compound"
-msgstr "Ingen komprimering"
+msgstr "Förening"
 
 #: data/ui/pitch.ui:136
 msgid "Percussive"
@@ -1709,9 +1661,8 @@ msgid "Octaves"
 msgstr ""
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Ta bort denna modellfil"
+msgstr "Ta bort denna effekt"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
@@ -1722,18 +1673,16 @@ msgid "Change the position of this effect"
 msgstr ""
 
 #: data/ui/plugins_box.ui:19
-#, fuzzy
 msgid "Add Effect"
-msgstr "EasyEffects"
+msgstr "Lägg till effekt"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
 msgstr ""
 
 #: data/ui/plugins_box.ui:129
-#, fuzzy
 msgid "No Effects"
-msgstr "EasyEffects"
+msgstr "Inga effekter"
 
 #: data/ui/plugins_box.ui:130
 msgid "Audio Stream Not Modified"
@@ -1748,14 +1697,12 @@ msgid "Plugins List"
 msgstr ""
 
 #: data/ui/preferences_general.ui:5
-#, fuzzy
 msgid "_General"
-msgstr "Allmänt"
+msgstr "_Allmänt"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Ingångs-begränsning"
+msgstr "Tjänst"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
@@ -1802,9 +1749,8 @@ msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:5
-#, fuzzy
 msgid "_Spectrum"
-msgstr "Spektrum"
+msgstr "_Spektrum"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
@@ -1831,9 +1777,8 @@ msgid "Height"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:91
-#, fuzzy
 msgid "Line Width"
-msgstr "Bredd"
+msgstr "Linjebredd"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Fill"
@@ -1860,14 +1805,12 @@ msgid "Axis Labels"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:185
-#, fuzzy
 msgid "Frequency Range"
-msgstr "Frekvens (Hz)"
+msgstr "Frekvensomfång"
 
 #: data/ui/preferences_spectrum.ui:188
-#, fuzzy
 msgid "Minimum"
-msgstr "Frekvens (Hz)"
+msgstr "Minst"
 
 #: data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
@@ -1878,53 +1821,44 @@ msgid "Load"
 msgstr ""
 
 #: data/ui/preset_row.ui:34
-#, fuzzy
 msgid "Save current settings to this preset file"
-msgstr "Spara nuvarande inställningar som profil"
+msgstr "Spara dessa inställningar till fil"
 
 #: data/ui/preset_row.ui:44
 msgid "Remove this preset file"
 msgstr ""
 
 #: data/ui/presets_menu.ui:51
-#, fuzzy
 msgid "New Output Preset Name"
-msgstr "Profiler"
+msgstr "Nytt namn på förinställd utgång"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Ta bort profil"
+msgstr "Skapa en ny förinställning"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
-msgstr "Öppna förinställning"
+msgstr "Importera en förinställning"
 
 #: data/ui/presets_menu.ui:90
-#, fuzzy
 msgid "Search Output Preset"
-msgstr "Profiler"
+msgstr "Sök utgångsförinställning"
 
 #: data/ui/presets_menu.ui:151
-#, fuzzy
 msgid "Output Presets List"
-msgstr "Profiler"
+msgstr "Lista över utgångsförinställningar"
 
 #: data/ui/presets_menu.ui:199
-#, fuzzy
 msgid "New Input Preset Name"
-msgstr "Öppna förinställning"
+msgstr "Nytt namn på förinställd ingång"
 
 #: data/ui/presets_menu.ui:237
-#, fuzzy
 msgid "Search Input Preset"
-msgstr "Öppna förinställning"
+msgstr "Sök ingångsförinställning"
 
 #: data/ui/presets_menu.ui:298
-#, fuzzy
 msgid "Input Presets List"
-msgstr "Öppna förinställning"
+msgstr "Lista över ingångsförinställningar"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -1935,18 +1869,16 @@ msgid "Room Size"
 msgstr "Rumsstorlek"
 
 #: data/ui/reverb.ui:81
-#, fuzzy
 msgid "Small"
-msgstr "Litet rum"
+msgstr "Liten"
 
 #: data/ui/reverb.ui:82
 msgid "Medium"
 msgstr ""
 
 #: data/ui/reverb.ui:83
-#, fuzzy
 msgid "Large"
-msgstr "Målvärde (dB)"
+msgstr "Stor"
 
 #: data/ui/reverb.ui:84
 msgid "Tunnel"
@@ -1965,9 +1897,8 @@ msgid "Diffusion"
 msgstr ""
 
 #: data/ui/reverb.ui:140
-#, fuzzy
 msgid "Pre Delay"
-msgstr "Release (ms)"
+msgstr "Före fördröjning"
 
 #: data/ui/reverb.ui:173
 msgid "Decay Time"
@@ -1982,18 +1913,16 @@ msgid "Treble Cut"
 msgstr ""
 
 #: data/ui/reverb.ui:580
-#, fuzzy
 msgid "Ambience"
-msgstr "Tystnad"
+msgstr "Omgivning"
 
 #: data/ui/reverb.ui:587
 msgid "Empty Walls"
 msgstr ""
 
 #: data/ui/reverb.ui:600
-#, fuzzy
 msgid "Room"
-msgstr "Rumsstorlek"
+msgstr "Rum"
 
 #: data/ui/reverb.ui:607
 msgid "Large Empty Hall"
@@ -2008,9 +1937,8 @@ msgid "Large Occupied Hall"
 msgstr ""
 
 #: data/ui/rnnoise.ui:31
-#, fuzzy
 msgid "Import Model"
-msgstr "Platt respons"
+msgstr "Importmodell"
 
 #: data/ui/rnnoise.ui:40
 msgid "Models"
@@ -2031,23 +1959,20 @@ msgid "Model Not Loaded"
 msgstr ""
 
 #: data/ui/rnnoise.ui:116
-#, fuzzy
 msgid "Active Model"
-msgstr "Ingen komprimering"
+msgstr "Aktiv modell"
 
 #: data/ui/rnnoise.ui:124
 msgid "Standard RNNoise Model"
 msgstr ""
 
 #: data/ui/shortcuts.ui:11
-#, fuzzy
 msgid "Overview"
-msgstr "Ingångs-begränsning"
+msgstr "Översikt"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "EasyEffects"
+msgstr "Öppna Easy Effects Manual"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2058,28 +1983,24 @@ msgid "Close the Window"
 msgstr ""
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "EasyEffects"
+msgstr "Avsluta Easy Effects"
 
 #: data/ui/stereo_tools.ui:79
-#, fuzzy
 msgid "Input Balance"
-msgstr "Ljudförstärkare"
+msgstr "Ingångsbalans"
 
 #: data/ui/stereo_tools.ui:88
 msgid "Softclip"
 msgstr ""
 
 #: data/ui/stereo_tools.ui:116
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Nivå"
+msgstr "Softclipnivå"
 
 #: data/ui/stereo_tools.ui:128
-#, fuzzy
 msgid "Stereo Matrix"
-msgstr "Ljudförstärkare"
+msgstr "Stereomatris"
 
 #: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
@@ -2094,14 +2015,12 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr ""
 
 #: data/ui/stereo_tools.ui:141
-#, fuzzy
 msgid "LR > LL (Mono Left Channel)"
-msgstr "Kanaler"
+msgstr "LR > LL (Mono vänster kanal)"
 
 #: data/ui/stereo_tools.ui:142
-#, fuzzy
 msgid "LR > RR (Mono Right Channel)"
-msgstr "Kanaler"
+msgstr "LR > RR (Mono höger kanal)"
 
 #: data/ui/stereo_tools.ui:143
 msgid "LR > L+R (Mono Sum L+R)"
@@ -2112,58 +2031,48 @@ msgid "LR > RL (Stereo Flip Channels)"
 msgstr ""
 
 #: data/ui/stereo_tools.ui:147
-#, fuzzy
 msgid "Stereo Mode"
-msgstr "Ljudförstärkare"
+msgstr "Stereoläge"
 
 #: data/ui/stereo_tools.ui:180 data/ui/stereo_tools.ui:205
 msgid "Invert Phase"
 msgstr ""
 
 #: data/ui/stereo_tools.ui:232
-#, fuzzy
 msgid "Side Level"
-msgstr "Nivå"
+msgstr "Sidonivå"
 
 #: data/ui/stereo_tools.ui:268
-#, fuzzy
 msgid "Side Balance"
-msgstr "Ljudförstärkare"
+msgstr "Sidobalans"
 
 #: data/ui/stereo_tools.ui:304
-#, fuzzy
 msgid "Middle Level"
-msgstr "Nivå"
+msgstr "Mellannivå"
 
 #: data/ui/stereo_tools.ui:340
-#, fuzzy
 msgid "Middle Panorama"
-msgstr "Panorama"
+msgstr "Mellanpanorama"
 
 #: data/ui/stereo_tools.ui:420
-#, fuzzy
 msgid "Output Balance"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Utgångsbalans"
 
 #: data/ui/stereo_tools.ui:429
-#, fuzzy
 msgid "Delay L/R"
-msgstr "Release (ms)"
+msgstr "Fördröjning L/R"
 
 #: data/ui/stereo_tools.ui:456
-#, fuzzy
 msgid "Delay Left Right"
-msgstr "Release (ms)"
+msgstr "Fördröj vänster höger"
 
 #: data/ui/stereo_tools.ui:465
-#, fuzzy
 msgid "Stereo Base"
-msgstr "Ljudförstärkare"
+msgstr "Stereobas"
 
 #: data/ui/stereo_tools.ui:501
-#, fuzzy
 msgid "Stereo Phase"
-msgstr "Ljudförstärkare"
+msgstr "Stereofas"
 
 #: src/app_info.cpp:64
 msgid "Running"
@@ -2178,9 +2087,8 @@ msgid "Idle"
 msgstr ""
 
 #: src/app_info.cpp:70
-#, fuzzy
 msgid "Creating"
-msgstr "Inställningar"
+msgstr "Skapande"
 
 #: src/app_info.cpp:72
 msgid "Error"
@@ -2191,14 +2099,12 @@ msgid "Unknown"
 msgstr ""
 
 #: src/app_info.cpp:228
-#, fuzzy
 msgid "channels"
-msgstr "Kanaler"
+msgstr "kanaler"
 
 #: src/application.cpp:406
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Ljudeffekter för PulseAudio applikationer"
+msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #: src/application.cpp:499
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -2209,9 +2115,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
 #: src/application.cpp:505
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "Återställ EasyEffects."
+msgstr "Återställ Easy Effects."
 
 #: src/application.cpp:508
 msgid "Hide the Window."
@@ -2242,14 +2147,12 @@ msgid "Only Stereo Impulse Files Are Supported"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:121
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Lista över impulsfiler"
+msgstr "Impulsfilen har inte importerats"
 
 #: src/convolver_menu_impulses.cpp:127
-#, fuzzy
 msgid "Import Impulse File"
-msgstr "Platt respons"
+msgstr "Importera impulsfil"
 
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:364
 #: src/equalizer_ui.cpp:555 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
@@ -2258,34 +2161,28 @@ msgstr ""
 
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:364
 #: src/equalizer_ui.cpp:555 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
-#, fuzzy
 msgid "Cancel"
-msgstr "Ljudförstärkare"
+msgstr "Avbryt"
 
 #: src/convolver_menu_impulses.cpp:132
-#, fuzzy
 msgid "Impulse Response"
-msgstr "Platt respons"
+msgstr "Impulssvar"
 
 #: src/convolver_menu_impulses.cpp:245
-#, fuzzy
 msgid "Load Impulse"
-msgstr "Platt respons"
+msgstr "Ladda impuls"
 
 #: src/convolver_menu_impulses.cpp:248
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "Platt respons"
+msgstr "Ta bort impuls"
 
 #: src/convolver_ui.cpp:323
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Lista över impulsfiler"
+msgstr "Ingen impulsfil laddad"
 
 #: src/convolver_ui.cpp:345
-#, fuzzy
 msgid "Failed To Load The Impulse File"
-msgstr "Sök impulsfil"
+msgstr "Det gick inte att ladda Impulsfilen"
 
 #: src/effects_box.cpp:263 src/plugins_box.cpp:647
 msgid "Recorders"
@@ -2296,23 +2193,20 @@ msgid "Players"
 msgstr ""
 
 #: src/effects_box.cpp:309
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "Effekter"
 
 #: src/equalizer_band_box.cpp:82
 msgid "infinity"
 msgstr ""
 
 #: src/equalizer_ui.cpp:363
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "Öppna förinställning"
+msgstr "Importera APO-förinställd fil"
 
 #: src/equalizer_ui.cpp:369
-#, fuzzy
 msgid "APO Presets"
-msgstr "Profiler"
+msgstr "APO-förinställningar"
 
 #: src/equalizer_ui.cpp:387
 msgid ""
@@ -2320,14 +2214,12 @@ msgid ""
 msgstr ""
 
 #: src/equalizer_ui.cpp:554
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "Öppna förinställning"
+msgstr "Importera GraphicEQ-förinställd fil"
 
 #: src/equalizer_ui.cpp:560
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Öppna förinställning"
+msgstr "GraphicEQ-förinställningar"
 
 #: src/equalizer_ui.cpp:578
 msgid ""
@@ -2344,9 +2236,8 @@ msgid "Remove"
 msgstr "Ta bort"
 
 #: src/plugins_box.cpp:668
-#, fuzzy
 msgid "Output Device"
-msgstr "Ingångsförstärkning (dB)"
+msgstr "Utmatningsenhet"
 
 #: src/plugins_menu.cpp:154
 msgid "Add"
@@ -2359,19 +2250,16 @@ msgid ""
 msgstr ""
 
 #: src/rnnoise_ui.cpp:130
-#, fuzzy
 msgid "Import Model File"
-msgstr "Platt respons"
+msgstr "Importera modellfil"
 
 #: src/rnnoise_ui.cpp:135
-#, fuzzy
 msgid "RNNoise Models"
-msgstr "Ingen komprimering"
+msgstr "RNNoise-modeller"
 
 #: src/tags_plugin_name.cpp:32
-#, fuzzy
 msgid "Bass Enhancer"
-msgstr "Ljudförstärkare"
+msgstr "Basförstärkare"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Bass Loudness"
@@ -2386,18 +2274,16 @@ msgid "Crossfeed"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:37
-#, fuzzy
 msgid "Crystalizer"
-msgstr "Utjämnare"
+msgstr "Kristalliserare"
 
 #: src/tags_plugin_name.cpp:38
 msgid "Deesser"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:40
-#, fuzzy
 msgid "Echo Canceller"
-msgstr "Ljudförstärkare"
+msgstr "Ekosläckare"
 
 #: src/tags_plugin_name.cpp:41
 msgid "Equalizer"
@@ -2408,51 +2294,44 @@ msgid "Exciter"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:43
-#, fuzzy
 msgid "Filter"
-msgstr "Filter typ"
+msgstr "Filter"
 
 #: src/tags_plugin_name.cpp:45
-#, fuzzy
 msgid "Limiter"
-msgstr "Gränsvärde (dB)"
+msgstr "Begränsare"
 
 #: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:48
-#, fuzzy
 msgid "Multiband Compressor"
-msgstr "Kompressor"
+msgstr "Flerbandskompressor"
 
 #: src/tags_plugin_name.cpp:49
-#, fuzzy
 msgid "Multiband Gate"
-msgstr "Kompressor"
+msgstr "Flerbandsport"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:51
-#, fuzzy
 msgid "Reverberation"
-msgstr "Efterljud (eko)"
+msgstr "Eko"
 
 #: src/tags_plugin_name.cpp:52
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Förstärkningsreducering"
+msgstr "Brusreducering"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Stereo Tools"
-msgstr "Ljudförstärkare"
+msgstr "Stereoverktyg"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:81
@@ -2921,4 +2800,8 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Gain Detection"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "Suppression Level"
 #~ msgstr "Förstärkningsreducering"
