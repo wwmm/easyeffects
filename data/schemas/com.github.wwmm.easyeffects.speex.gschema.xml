@@ -33,5 +33,8 @@
             <range min="0" max="100" />
             <default>90</default>
         </key>
+        <key name="enable-dereverb" type="b">
+            <default>false</default>
+        </key>
     </schema>
 </schemalist>

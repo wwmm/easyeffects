@@ -59,6 +59,18 @@
                                                 </child>
                                             </object>
                                         </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Dereverberation</property>
+                                                <property name="activatable-widget">enable_dereverb</property>
+                                                <child>
+                                                    <object class="GtkSwitch" id="enable_dereverb">
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
 
