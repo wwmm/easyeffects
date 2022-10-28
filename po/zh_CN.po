@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-27 12:57-0300\n"
-"PO-Revision-Date: 2022-10-24 12:40+0000\n"
-"Last-Translator: Eric <hamburger1024@mailbox.org>\n"
+"PO-Revision-Date: 2022-10-28 14:53+0000\n"
+"Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -158,19 +158,22 @@ msgstr "综合"
 
 #: data/ui/autogain.ui:147
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "几何平均 (MSI)"
 
 #: data/ui/autogain.ui:148
+#, fuzzy
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "几何平均 (MS)"
 
 #: data/ui/autogain.ui:149
+#, fuzzy
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "几何平均 (MI)"
 
 #: data/ui/autogain.ui:150
+#, fuzzy
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "几何平均 (SI)"
 
 #: data/ui/autogain.ui:165
 msgid "Reset History"
@@ -580,30 +583,30 @@ msgstr "关"
 #: data/ui/compressor.ui:823 data/ui/compressor.ui:879 data/ui/gate.ui:961
 #: data/ui/gate.ui:1017
 msgid "12 dB/oct"
-msgstr ""
+msgstr "每八度 12 dB"
 
 #: data/ui/compressor.ui:824 data/ui/compressor.ui:880 data/ui/gate.ui:962
 #: data/ui/gate.ui:1018
 msgid "24 dB/oct"
-msgstr ""
+msgstr "每八度 24 dB"
 
 #: data/ui/compressor.ui:825 data/ui/compressor.ui:881 data/ui/gate.ui:963
 #: data/ui/gate.ui:1019
 msgid "36 dB/oct"
-msgstr ""
+msgstr "每八度 36 dB"
 
 #: data/ui/compressor.ui:832 data/ui/gate.ui:970
 msgid "High-Pass Filter Mode"
-msgstr ""
+msgstr "高通滤波模式"
 
 #: data/ui/compressor.ui:858 data/ui/compressor.ui:914 data/ui/gate.ui:996
 #: data/ui/gate.ui:1052
 msgid "High-Pass Filter Frequency"
-msgstr ""
+msgstr "高通滤波频率"
 
 #: data/ui/compressor.ui:888 data/ui/gate.ui:1026
 msgid "Low-Pass Filter Mode"
-msgstr ""
+msgstr "低通滤波模式"
 
 #: data/ui/compressor.ui:940
 msgid "Gain"
@@ -635,13 +638,15 @@ msgid "Right Channel"
 msgstr "右声道"
 
 #: data/ui/convolver.ui:71
+#, fuzzy
 msgid "Impulses"
-msgstr ""
+msgstr "Impulse"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
+#, fuzzy
 msgid "Combine"
-msgstr ""
+msgstr "混合"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
@@ -676,20 +681,23 @@ msgid "Combine Impulse Responses"
 msgstr "混合脉冲响应"
 
 #: data/ui/convolver_menu_combine.ui:48
+#, fuzzy
 msgid "First Kernel"
-msgstr ""
+msgstr "首Kernel"
 
 #: data/ui/convolver_menu_combine.ui:82
+#, fuzzy
 msgid "Second Kernel"
-msgstr ""
+msgstr "次Kernel"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
 msgstr "输出文件名"
 
 #: data/ui/convolver_menu_combine.ui:95
+#, fuzzy
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "结合Kernel名称"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
@@ -775,16 +783,18 @@ msgid "Frequency 2 Level"
 msgstr "频率 2 水平"
 
 #: data/ui/deesser.ui:229
+#, fuzzy
 msgid "F2 Peak Q"
-msgstr ""
+msgstr "F2极限Q值"
 
 #: data/ui/deesser.ui:257
 msgid "Frequency 2 Peak Q"
 msgstr "频率 2 Peak Q"
 
 #: data/ui/deesser.ui:264
+#, fuzzy
 msgid "Laxity"
-msgstr ""
+msgstr "松弛性"
 
 #: data/ui/deesser.ui:579
 msgid "Detected"
@@ -833,7 +843,7 @@ msgstr "过滤器长度"
 
 #: data/ui/echo_canceller.ui:100
 msgid "Suppression"
-msgstr ""
+msgstr "抑制"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -844,16 +854,19 @@ msgid "Bands"
 msgstr "频段"
 
 #: data/ui/equalizer.ui:73
+#, fuzzy
 msgid "IIR"
-msgstr ""
+msgstr "无限脉冲响应 (IIR)"
 
 #: data/ui/equalizer.ui:74
+#, fuzzy
 msgid "FIR"
-msgstr ""
+msgstr "有限脉冲响应 (FIR)"
 
 #: data/ui/equalizer.ui:75
+#, fuzzy
 msgid "FFT"
-msgstr ""
+msgstr "傅里叶变换"
 
 #: data/ui/equalizer.ui:76
 msgid "SPM"
@@ -955,7 +968,7 @@ msgstr "上限"
 
 #: data/ui/exciter.ui:240
 msgid "Ceil Value"
-msgstr ""
+msgstr "上限值"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
@@ -975,51 +988,51 @@ msgstr "删除这个模型文件"
 
 #: data/ui/filter.ui:25
 msgid "12dB/oct Lowpass"
-msgstr ""
+msgstr "12dB/oct 低通"
 
 #: data/ui/filter.ui:26
 msgid "24dB/oct Lowpass"
-msgstr ""
+msgstr "24dB/oct 低通"
 
 #: data/ui/filter.ui:27
 msgid "36dB/oct Lowpass"
-msgstr ""
+msgstr "36dB/oct 低通"
 
 #: data/ui/filter.ui:28
 msgid "12dB/oct Highpass"
-msgstr ""
+msgstr "12dB/oct 高通"
 
 #: data/ui/filter.ui:29
 msgid "24dB/oct Highpass"
-msgstr ""
+msgstr "24dB/oct 高通"
 
 #: data/ui/filter.ui:30
 msgid "36dB/oct Highpass"
-msgstr ""
+msgstr "36dB/oct 高通"
 
 #: data/ui/filter.ui:31
 msgid "6dB/oct Bandpass"
-msgstr ""
+msgstr "6dB/oct 带通"
 
 #: data/ui/filter.ui:32
 msgid "12dB/oct Bandpass"
-msgstr ""
+msgstr "12dB/oct 带通"
 
 #: data/ui/filter.ui:33
 msgid "18dB/oct Bandpass"
-msgstr ""
+msgstr "18dB/oct 带通"
 
 #: data/ui/filter.ui:34
 msgid "6dB/oct Bandreject"
-msgstr ""
+msgstr "6dB/oct 带阻"
 
 #: data/ui/filter.ui:35
 msgid "12dB/oct Bandreject"
-msgstr ""
+msgstr "12dB/oct 带阻"
 
 #: data/ui/filter.ui:36
 msgid "18dB/oct Bandreject"
-msgstr ""
+msgstr "18dB/oct 带阻"
 
 #: data/ui/filter.ui:123
 msgid "Inertia"
@@ -1057,7 +1070,7 @@ msgstr "低通滤波器"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "简单移动平均法"
 
 #: data/ui/gate.ui:751
 msgid "Internal"
@@ -1290,11 +1303,11 @@ msgstr "输出音量"
 
 #: data/ui/loudness.ui:127
 msgid "Clipping"
-msgstr ""
+msgstr "削波"
 
 #: data/ui/loudness.ui:155
 msgid "Clipping Range"
-msgstr ""
+msgstr "削波范围"
 
 #: data/ui/maximizer.ui:63
 msgid "Ceiling"
@@ -1369,8 +1382,9 @@ msgid "Band 8"
 msgstr "频段 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
+#, fuzzy
 msgid "Band Start"
-msgstr ""
+msgstr "频段起始"
 
 #: data/ui/multiband_compressor_band.ui:57 data/ui/multiband_gate_band.ui:57
 msgid "Band End"
@@ -1413,8 +1427,9 @@ msgid "Band Gain"
 msgstr "频段增益"
 
 #: data/ui/multiband_compressor_band.ui:830 data/ui/multiband_gate_band.ui:802
+#, fuzzy
 msgid "Band Envelope"
-msgstr ""
+msgstr "频段包络"
 
 #: data/ui/multiband_compressor_band.ui:855 data/ui/multiband_gate_band.ui:827
 msgid "Band Curve"
@@ -1564,7 +1579,7 @@ msgstr "声道"
 
 #: data/ui/pipe_manager_box.ui:526
 msgid "Both"
-msgstr ""
+msgstr "双声道"
 
 #: data/ui/pipe_manager_box.ui:530
 msgid "Both Channels"
@@ -1591,16 +1606,18 @@ msgid "High Quality"
 msgstr "高品质"
 
 #: data/ui/pitch.ui:45
+#, fuzzy
 msgid "High Consistency"
-msgstr ""
+msgstr "高一贯性"
 
 #: data/ui/pitch.ui:59
 msgid "Formant"
 msgstr "格式"
 
 #: data/ui/pitch.ui:70
+#, fuzzy
 msgid "Shifted"
-msgstr ""
+msgstr "偏移"
 
 #: data/ui/pitch.ui:71
 msgid "Preserved"
@@ -1611,9 +1628,8 @@ msgid "Transients"
 msgstr ""
 
 #: data/ui/pitch.ui:108
-#, fuzzy
 msgid "Crisp"
-msgstr "清脆感"
+msgstr "清脆"
 
 #: data/ui/pitch.ui:109
 msgid "Mixed"
@@ -1640,8 +1656,9 @@ msgid "Soft"
 msgstr "柔化处理"
 
 #: data/ui/pitch.ui:151
+#, fuzzy
 msgid "Phase"
-msgstr ""
+msgstr "相位"
 
 #: data/ui/pitch.ui:162
 msgid "Laminar"
@@ -1672,8 +1689,9 @@ msgid "Enable/disable this effect"
 msgstr "启用/禁用此音效"
 
 #: data/ui/plugin_row.ui:63
+#, fuzzy
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "改变此音效的位置"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
@@ -1728,20 +1746,22 @@ msgid "Process All Input Streams"
 msgstr "处理所有输入流"
 
 #: data/ui/preferences_general.ui:66
+#, fuzzy
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "忽略来自设备的Monitor的音频流"
 
 #: data/ui/preferences_general.ui:78
+#, fuzzy
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "使用立方音量调节"
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "空闲超时"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "界面风格"
 
 #: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
@@ -1769,7 +1789,7 @@ msgstr "线型"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Dots"
-msgstr ""
+msgstr "点阵"
 
 #: data/ui/preferences_spectrum.ui:46
 #, fuzzy
@@ -1790,7 +1810,7 @@ msgstr "填充频谱"
 
 #: data/ui/preferences_spectrum.ui:126
 msgid "Show Bars Border"
-msgstr ""
+msgstr "显示条柱边框"
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
@@ -1802,11 +1822,11 @@ msgstr "颜色"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
-msgstr ""
+msgstr "线形与条柱"
 
 #: data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
-msgstr ""
+msgstr "坐标轴标签"
 
 #: data/ui/preferences_spectrum.ui:185
 msgid "Frequency Range"
@@ -2144,11 +2164,11 @@ msgstr "文件不是普通文件"
 
 #: src/convolver_menu_impulses.cpp:106
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "Impulse文件已损坏或不支持"
 
 #: src/convolver_menu_impulses.cpp:111
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "仅支持双声道Impulse文件"
 
 #: src/convolver_menu_impulses.cpp:121
 msgid "Impulse File Not Imported"
@@ -2331,7 +2351,7 @@ msgstr "降噪"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr ""
+msgstr "语音处理器"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2357,7 +2377,7 @@ msgstr "关闭（请按 ESC）"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
-msgstr ""
+msgstr "-inf"
 
 #~ msgid "Noise Reduction (Fast)"
 #~ msgstr "降噪（快速）"
