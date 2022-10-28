@@ -55,7 +55,7 @@ class Speex : public PluginBase {
   bool speex_ready = false;
 
   int enable_denoise = 0, noise_suppression = -15, enable_agc = 0, enable_vad = 0, vad_probability_start = 95,
-      vad_probability_continue = 90;
+      vad_probability_continue = 90, enable_dereverb = 0;
 
   uint latency_n_frames = 0U;
 

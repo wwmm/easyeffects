@@ -29,7 +29,8 @@ Speex::Speex(const std::string& tag,
       enable_agc(g_settings_get_boolean(settings, "enable-agc")),
       enable_vad(g_settings_get_boolean(settings, "enable-vad")),
       vad_probability_start(g_settings_get_int(settings, "vad-probability-start")),
-      vad_probability_continue(g_settings_get_int(settings, "vad-probability-continue")) {
+      vad_probability_continue(g_settings_get_int(settings, "vad-probability-continue")),
+      enable_dereverb(g_settings_get_boolean(settings, "enable-dereverb")) {
 #ifdef SPEEX_AVAILABLE
 
   gconnections.push_back(g_signal_connect(
@@ -128,6 +129,22 @@ Speex::Speex(const std::string& tag,
       }),
       this));
 
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::enable-dereverb", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
+        std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+        self->enable_dereverb = g_settings_get_boolean(settings, key);
+
+        if (self->state_left) {
+          speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_DEREVERB, &self->enable_dereverb);
+        }
+
+        if (self->state_right) {
+          speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_DEREVERB, &self->enable_dereverb);
+        }
+      }),
+      this));
+
 #endif
 
   setup_input_output_gain();
@@ -178,6 +195,8 @@ void Speex::setup() {
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_START, &vad_probability_start);
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
+
+    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
   }
 
   if (state_right != nullptr) {
@@ -189,6 +208,8 @@ void Speex::setup() {
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_START, &vad_probability_start);
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
+
+    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
   }
 
   speex_ready = true;

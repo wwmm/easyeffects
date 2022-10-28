@@ -47,6 +47,8 @@ void SpeexPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["vad"]["probability-continue"] =
       g_settings_get_int(settings, "vad-probability-continue");
+
+  json[section][instance_name]["enable-dereverb"] = g_settings_get_boolean(settings, "enable-dereverb") != 0;
 }
 
 void SpeexPreset::load(const nlohmann::json& json) {
@@ -68,4 +70,6 @@ void SpeexPreset::load(const nlohmann::json& json) {
 
   update_key<int>(json.at(section).at(instance_name).at("vad"), settings, "vad-probability-continue",
                   "probability-continue");
+
+  update_key<bool>(json.at(section).at(instance_name), settings, "enable-dereverb", "enable-dereverb");
 }
