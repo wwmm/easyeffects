@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 12:57-0300\n"
+"POT-Creation-Date: 2022-10-28 14:55+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -206,7 +206,6 @@ msgstr "Guadagno Uscita"
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:625 src/application_ui.cpp:278
-#: data/ui/echo_canceller.ui:115
 msgid "Input"
 msgstr "Ingresso"
 
@@ -219,7 +218,6 @@ msgstr "Ingresso"
 #: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/stereo_tools.ui:644
-#: data/ui/echo_canceller.ui:134
 msgid "Plugin Input Gain"
 msgstr "Guadagno in Ingresso del Plugin"
 
@@ -234,7 +232,7 @@ msgstr "Guadagno in Ingresso del Plugin"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
-#: src/application_ui.cpp:277 data/ui/echo_canceller.ui:199
+#: src/application_ui.cpp:277
 msgid "Output"
 msgstr "Uscita"
 
@@ -247,7 +245,6 @@ msgstr "Uscita"
 #: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/stereo_tools.ui:728
-#: data/ui/echo_canceller.ui:218
 msgid "Plugin Output Gain"
 msgstr "Guadagno in Uscita del Plugin"
 
@@ -261,7 +258,6 @@ msgstr "Guadagno in Uscita del Plugin"
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:791
-#: data/ui/echo_canceller.ui:281
 msgid "Reset"
 msgstr "Reset"
 
@@ -273,7 +269,7 @@ msgstr "Reset"
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
-#: data/ui/stereo_tools.ui:805 data/ui/echo_canceller.ui:295
+#: data/ui/stereo_tools.ui:805
 msgid "Using"
 msgstr "Utilizzo"
 
