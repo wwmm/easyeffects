@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-28 12:23-0300\n"
-"PO-Revision-Date: 2022-09-18 17:19+0000\n"
+"PO-Revision-Date: 2022-10-29 11:05+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -834,7 +834,7 @@ msgstr "Lunghezza Filtro"
 
 #: data/ui/echo_canceller.ui:100
 msgid "Suppression"
-msgstr ""
+msgstr "Soppressione"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -2330,11 +2330,11 @@ msgstr "Riverbero"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
-msgstr "Riduzione Rumore"
+msgstr "Rimozione Rumore"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr "Processore Voce"
+msgstr "Riduzione Rumore"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
