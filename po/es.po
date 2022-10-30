@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-28 12:23-0300\n"
-"PO-Revision-Date: 2022-10-28 14:53+0000\n"
-"Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
+"PO-Revision-Date: 2022-10-30 05:01+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -832,7 +832,7 @@ msgstr "Longitud del filtro"
 
 #: data/ui/echo_canceller.ui:100
 msgid "Suppression"
-msgstr ""
+msgstr "Supresión"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -2336,7 +2336,7 @@ msgstr "Reducción de ruido"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr ""
+msgstr "Procesador de voz"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
