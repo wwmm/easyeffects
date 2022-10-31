@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-28 12:23-0300\n"
-"PO-Revision-Date: 2022-10-29 11:05+0000\n"
+"PO-Revision-Date: 2022-10-31 07:06+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2330,11 +2330,11 @@ msgstr "Riverbero"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
-msgstr "Rimozione Rumore"
+msgstr "Riduzione Rumore"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr "Riduzione Rumore"
+msgstr "Miglioramento Voce"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
