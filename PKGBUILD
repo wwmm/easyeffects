@@ -9,7 +9,7 @@ arch=(x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
 depends=('libadwaita' 'pipewire-pulse' 'lilv' 'libsigc++-3.0' 'libsamplerate' 'zita-convolver' 
-         'libebur128' 'rnnoise' 'rubberband' 'libbs2b' 'nlohmann-json' 'tbb' 'fmt')
+         'libebur128' 'rnnoise' 'rubberband' 'libbs2b' 'nlohmann-json' 'tbb' 'fmt' 'gsl')
 makedepends=('meson' 'itstool' 'appstream-glib' 'git')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
