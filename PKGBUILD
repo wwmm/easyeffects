@@ -1,3 +1,5 @@
+# This PKGBUILD is intented for our github workflows. For building your custom packages use the file PKGBUILD_AUR
+
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 # Maintainer: Upstream https://github.com/wwmm/easyeffects 
 
