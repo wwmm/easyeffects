@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-28 12:23-0300\n"
+"POT-Creation-Date: 2022-11-01 16:47+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2183,15 +2183,15 @@ msgstr "読み込まれたインパルスファイルはありません"
 msgid "Failed To Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:647
+#: src/effects_box.cpp:261 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:667
+#: src/effects_box.cpp:284 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "プレイヤー"
 
-#: src/effects_box.cpp:309
+#: src/effects_box.cpp:307
 msgid "Effects"
 msgstr "エフェクト"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-28 12:23-0300\n"
+"POT-Creation-Date: 2022-11-01 16:47+0000\n"
 "PO-Revision-Date: 2022-10-04 21:21+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2207,15 +2207,15 @@ msgstr "Aucun fichier d’impulsion chargé"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossible de charger le fichier d’impulsion"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:647
+#: src/effects_box.cpp:261 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:667
+#: src/effects_box.cpp:284 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Lecteurs"
 
-#: src/effects_box.cpp:309
+#: src/effects_box.cpp:307
 msgid "Effects"
 msgstr "Effets"
 

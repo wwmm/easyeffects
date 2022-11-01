@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-28 12:23-0300\n"
+"POT-Creation-Date: 2022-11-01 16:47+0000\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2388,15 +2388,15 @@ msgstr "Płaska odpowiedź"
 msgid "Failed To Load The Impulse File"
 msgstr "Nie można załadować pliku Impulse"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:647
+#: src/effects_box.cpp:261 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Rejestratory"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:667
+#: src/effects_box.cpp:284 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Odtwarzacze"
 
-#: src/effects_box.cpp:309
+#: src/effects_box.cpp:307
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
