@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-28 12:23-0300\n"
+"POT-Creation-Date: 2022-11-01 16:47+0000\n"
 "PO-Revision-Date: 2022-09-06 00:23+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2245,15 +2245,15 @@ msgstr "Нет загруженного файла импульса"
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:263 src/plugins_box.cpp:647
+#: src/effects_box.cpp:261 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:286 src/plugins_box.cpp:667
+#: src/effects_box.cpp:284 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/effects_box.cpp:309
+#: src/effects_box.cpp:307
 msgid "Effects"
 msgstr "Эффекты"
 
