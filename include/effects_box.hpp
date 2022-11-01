@@ -20,6 +20,7 @@
 #pragma once
 
 #include <adwaita.h>
+#include <gsl/gsl_spline.h>
 #include "application.hpp"
 #include "apps_box.hpp"
 #include "blocklist_menu.hpp"

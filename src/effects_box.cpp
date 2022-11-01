@@ -41,9 +41,9 @@ struct Data {
 
   float global_output_level_left, global_output_level_right, pipeline_latency_ms;
 
-  std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
+  std::vector<float> spectrum_mag, spectrum_x_axis;
 
-  std::vector<uint> spectrum_bin_count;
+  std::vector<double> spectrum_freqs;
 
   std::vector<sigc::connection> connections;
 
@@ -104,8 +104,6 @@ void init_spectrum_frequency_axis(EffectsBox* self) {
     const auto x_axis_size = self->data->spectrum_x_axis.size();
 
     self->data->spectrum_mag.resize(x_axis_size);
-
-    self->data->spectrum_bin_count.resize(x_axis_size);
 
     ui::chart::set_x_data(self->spectrum_chart, self->data->spectrum_x_axis);
   }
@@ -353,7 +351,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   // spectrum array
 
   self->data->connections.push_back(
-      self->data->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<float> magnitudes) {
+      self->data->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<double> magnitudes) {
         if (!ui::chart::get_is_visible(self->spectrum_chart)) {
           return;
         }
@@ -369,36 +367,18 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
           init_spectrum_frequency_axis(self);
         }
 
-        std::ranges::fill(self->data->spectrum_mag, 0.0F);
-        std::ranges::fill(self->data->spectrum_bin_count, 0U);
+        auto* acc = gsl_interp_accel_alloc();
+        auto* spline = gsl_spline_alloc(gsl_interp_steffen, n_bands);
 
-        // reducing the amount of data so we can plot them
+        gsl_spline_init(spline, self->data->spectrum_freqs.data(), magnitudes.data(), n_bands);
 
-        size_t last_j = 0U;
-
-        for (size_t n = 0U; n < self->data->spectrum_x_axis.size(); n++) {
-          for (size_t j = last_j; j < self->data->spectrum_freqs.size(); j++) {
-            if (self->data->spectrum_freqs[j] > self->data->spectrum_x_axis[n]) {
-              last_j = j;
-
-              break;
-            }
-
-            self->data->spectrum_mag[n] += magnitudes[j];
-
-            self->data->spectrum_bin_count[n]++;
-          }
+        for (size_t n = 0; n < self->data->spectrum_x_axis.size(); n++) {
+          self->data->spectrum_mag[n] =
+              static_cast<float>(gsl_spline_eval(spline, self->data->spectrum_x_axis[n], acc));
         }
 
-        for (size_t n = 0U; n < self->data->spectrum_bin_count.size(); n++) {
-          if (self->data->spectrum_bin_count[n] != 0U) {
-            continue;
-          }
-
-          if (n > 0U && n < self->data->spectrum_bin_count.size() + 1U) {
-            self->data->spectrum_mag[n] = self->data->spectrum_mag[n - 1U];
-          }
-        }
+        gsl_spline_free(spline);
+        gsl_interp_accel_free(acc);
 
         std::ranges::for_each(self->data->spectrum_mag, [](auto& v) {
           v = 10.0F * std::log10(v);

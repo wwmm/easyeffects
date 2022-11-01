@@ -44,7 +44,7 @@ class Spectrum : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(uint, uint, std::vector<float>)> power;  // rate, nbands, magnitudes
+  sigc::signal<void(uint, uint, std::vector<double>)> power;  // rate, nbands, magnitudes
 
  private:
   bool fftw_ready = false;
@@ -53,7 +53,8 @@ class Spectrum : public PluginBase {
 
   fftwf_complex* complex_output = nullptr;
 
-  std::vector<float> real_input, output;
+  std::vector<float> real_input;
+  std::vector<double> output;
 
   uint n_bands = 4096U, total_count = 0U;
 

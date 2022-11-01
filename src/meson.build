@@ -161,6 +161,7 @@ easyeffects_deps = [
 	dependency('speexdsp', include_type: 'system'),
 	dependency('nlohmann_json', include_type: 'system'),
 	dependency('fmt', version: '>=8.0.0', include_type: 'system'),
+	dependency('gsl', include_type: 'system'),
 	dependency('threads'),
 	tbb,
 	zita_convolver,

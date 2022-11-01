@@ -107,7 +107,7 @@ void Spectrum::process(std::span<float>& left_in,
 
       sqr /= static_cast<float>(output.size() * output.size());
 
-      output[i] = sqr;
+      output[i] = static_cast<double>(sqr);
     }
   }
 
