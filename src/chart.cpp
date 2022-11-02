@@ -31,11 +31,11 @@ struct Data {
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
-  float mouse_y, mouse_x, margin, line_width;
+  double mouse_y, mouse_x, margin, line_width;
 
-  float x_min, x_max, y_min, y_max;
+  double x_min, x_max, y_min, y_max;
 
-  float x_min_log, x_max_log;
+  double x_min_log, x_max_log;
 
   ChartType chart_type;
 
@@ -45,7 +45,7 @@ struct Data {
 
   std::string x_unit, y_unit;
 
-  std::vector<float> y_axis, x_axis, x_axis_log, objects_x;
+  std::vector<double> y_axis, x_axis, x_axis_log, objects_x;
 };
 
 struct _Chart {
@@ -174,7 +174,7 @@ auto get_is_visible(Chart* self) -> bool {
   return (self->data != nullptr) ? self->data->is_visible : false;
 }
 
-void set_x_data(Chart* self, const std::vector<float>& x) {
+void set_x_data(Chart* self, const std::vector<double>& x) {
   if (self == nullptr || x.empty()) {
     return;
   }
@@ -209,7 +209,7 @@ void set_x_data(Chart* self, const std::vector<float>& x) {
   });
 }
 
-void set_y_data(Chart* self, const std::vector<float>& y) {
+void set_y_data(Chart* self, const std::vector<double>& y) {
   if (self == nullptr || y.empty()) {
     return;
   }
@@ -250,9 +250,9 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double xpos, double
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
-        const float mouse_x_log = (x - self->data->margin * width) / (width - 2 * self->data->margin * width) *
-                                      (self->data->x_max_log - self->data->x_min_log) +
-                                  self->data->x_min_log;
+        const double mouse_x_log = (x - self->data->margin * width) / (width - 2 * self->data->margin * width) *
+                                       (self->data->x_max_log - self->data->x_min_log) +
+                                   self->data->x_min_log;
 
         self->data->mouse_x = std::pow(10.0F, mouse_x_log);  // exp10 does not exist on FreeBSD
 
@@ -429,28 +429,30 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
     auto border_color = std::to_array({self->data->color, self->data->color, self->data->color, self->data->color});
 
-    auto border_width =
-        std::to_array({self->data->line_width, self->data->line_width, self->data->line_width, self->data->line_width});
+    std::array<float, 4> border_width = {
+        static_cast<float>(self->data->line_width), static_cast<float>(self->data->line_width),
+        static_cast<float>(self->data->line_width), static_cast<float>(self->data->line_width)};
 
-    float radius = (self->data->rounded_corners == true) ? 5.0F : 0.0F;
+    float radius = (self->data->rounded_corners) ? 5.0F : 0.0F;
 
     switch (self->data->chart_type) {
       case ChartType::bar: {
         float dw = width_f / static_cast<float>(n_points);
 
         for (uint n = 0U; n < n_points; n++) {
-          float bar_height = usable_height * self->data->y_axis[n];
+          double bar_height = usable_height * self->data->y_axis[n];
 
-          float rect_x = self->data->objects_x[n];
-          float rect_y = self->data->margin * height_f + usable_height - bar_height;
-          float rect_height = bar_height;
-          float rect_width = dw;
+          double rect_x = self->data->objects_x[n];
+          double rect_y = self->data->margin * height_f + usable_height - bar_height;
+          double rect_height = bar_height;
+          double rect_width = dw;
 
           if (self->data->draw_bar_border) {
             rect_width -= self->data->line_width;
           }
 
-          auto bar_rectangle = GRAPHENE_RECT_INIT(rect_x, rect_y, rect_width, rect_height);
+          auto bar_rectangle = GRAPHENE_RECT_INIT(static_cast<float>(rect_x), static_cast<float>(rect_y),
+                                                  static_cast<float>(rect_width), static_cast<float>(rect_height));
 
           GskRoundedRect outline;
 

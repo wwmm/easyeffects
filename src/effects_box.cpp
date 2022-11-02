@@ -41,9 +41,7 @@ struct Data {
 
   float global_output_level_left, global_output_level_right, pipeline_latency_ms;
 
-  std::vector<float> spectrum_mag, spectrum_x_axis;
-
-  std::vector<double> spectrum_freqs;
+  std::vector<double> spectrum_mag, spectrum_x_axis, spectrum_freqs;
 
   std::vector<sigc::connection> connections;
 
@@ -98,12 +96,12 @@ void init_spectrum_frequency_axis(EffectsBox* self) {
       return;
     }
 
-    self->data->spectrum_x_axis =
-        util::logspace(min_freq, max_freq, g_settings_get_int(self->settings_spectrum, "n-points"));
+    auto log_x_axis = util::logspace(min_freq, max_freq, g_settings_get_int(self->settings_spectrum, "n-points"));
 
-    const auto x_axis_size = self->data->spectrum_x_axis.size();
+    self->data->spectrum_x_axis.resize(log_x_axis.size());
+    self->data->spectrum_mag.resize(log_x_axis.size());
 
-    self->data->spectrum_mag.resize(x_axis_size);
+    std::copy(log_x_axis.begin(), log_x_axis.end(), self->data->spectrum_x_axis.begin());
 
     ui::chart::set_x_data(self->spectrum_chart, self->data->spectrum_x_axis);
   }

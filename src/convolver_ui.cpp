@@ -45,7 +45,7 @@ struct Data {
 
   std::vector<gulong> gconnections;
 
-  std::vector<float> left_mag, right_mag, time_axis, left_spectrum, right_spectrum, freq_axis;
+  std::vector<double> left_mag, right_mag, time_axis, left_spectrum, right_spectrum, freq_axis;
 };
 
 struct _ConvolverBox {
@@ -159,6 +159,26 @@ void on_enable_log_scale(ConvolverBox* self, GtkToggleButton* btn) {
   plot_fft(self);
 }
 
+auto interpolate(const std::vector<double>& x_source,
+                 const std::vector<double>& y_source,
+                 const std::vector<double>& x_new) -> std::vector<double> {
+  auto* acc = gsl_interp_accel_alloc();
+  auto* spline = gsl_spline_alloc(gsl_interp_steffen, x_source.size());
+
+  gsl_spline_init(spline, x_source.data(), y_source.data(), x_source.size());
+
+  std::vector<double> output(x_new.size());
+
+  for (size_t n = 0; n < x_new.size(); n++) {
+    output[n] = static_cast<float>(gsl_spline_eval(spline, x_new[n], acc));
+  }
+
+  gsl_spline_free(spline);
+  gsl_interp_accel_free(acc);
+
+  return output;
+}
+
 void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   if (self->data->left_mag.empty() || self->data->right_mag.empty() ||
       self->data->left_mag.size() != self->data->right_mag.size()) {
@@ -183,12 +203,12 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
     real_input[n] *= w;
   }
 
-  auto* complex_output = fftwf_alloc_complex(real_input.size());
+  auto* complex_output = fftw_alloc_complex(real_input.size());
 
   auto* plan =
-      fftwf_plan_dft_r2c_1d(static_cast<int>(real_input.size()), real_input.data(), complex_output, FFTW_ESTIMATE);
+      fftw_plan_dft_r2c_1d(static_cast<int>(real_input.size()), real_input.data(), complex_output, FFTW_ESTIMATE);
 
-  fftwf_execute(plan);
+  fftw_execute(plan);
 
   for (uint i = 0U; i < self->data->left_spectrum.size(); i++) {
     float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
@@ -211,7 +231,7 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
     real_input[n] *= w;
   }
 
-  fftwf_execute(plan);
+  fftw_execute(plan);
 
   for (uint i = 0U; i < self->data->right_spectrum.size(); i++) {
     float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
@@ -224,10 +244,10 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   // cleaning
 
   if (complex_output != nullptr) {
-    fftwf_free(complex_output);
+    fftw_free(complex_output);
   }
 
-  fftwf_destroy_plan(plan);
+  fftw_destroy_plan(plan);
 
   // initializing the frequency axis
 
@@ -245,45 +265,26 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   self->data->right_spectrum.erase(self->data->right_spectrum.begin());
 
   const auto chart_width = static_cast<uint>(gtk_widget_get_width(GTK_WIDGET(self->chart)));
-  const auto bin_size = (chart_width > 0U) ? chart_width : 500U;
+  const auto n_interp_points = (chart_width > 0U) ? 2 * chart_width : 1000U;
 
   // initializing the logarithmic frequency axis
 
-  float max_freq = std::ranges::max(self->data->freq_axis);
-  float min_freq = std::ranges::min(self->data->freq_axis);
+  auto max_freq = std::ranges::max(self->data->freq_axis);
+  auto min_freq = std::ranges::min(self->data->freq_axis);
 
   util::debug("min fft frequency: " + util::to_string(min_freq, ""));
   util::debug("max fft frequency: " + util::to_string(max_freq, ""));
 
-  const auto log_axis = util::logspace(min_freq, max_freq, bin_size);
+  const auto log_axis = util::logspace(min_freq, max_freq, n_interp_points);
   // const auto log_axis = util::logspace(20.0F, 22000.0F, self->data->freq_axis.size());
 
-  std::vector<float> l(log_axis.size());
-  std::vector<float> r(log_axis.size());
+  std::vector<double> freq_axis(log_axis.size());
 
-  std::ranges::fill(l, 0.0F);
-  std::ranges::fill(r, 0.0F);
+  std::copy(log_axis.begin(), log_axis.end(), freq_axis.begin());
 
-  // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
-
-  size_t last_j = 0U;
-
-  for (size_t n = 0U; n < log_axis.size(); n++) {
-    for (size_t j = last_j; j < self->data->freq_axis.size(); j++) {
-      if (self->data->freq_axis[j] > log_axis[n]) {
-        last_j = j;
-
-        break;
-      } else {
-        l[n] += self->data->left_spectrum[j];
-        r[n] += self->data->right_spectrum[j];
-      }
-    }
-  }
-
-  self->data->freq_axis = log_axis;
-  self->data->left_spectrum = l;
-  self->data->right_spectrum = r;
+  self->data->freq_axis = freq_axis;
+  self->data->left_spectrum = interpolate(self->data->freq_axis, self->data->left_spectrum, freq_axis);
+  self->data->right_spectrum = interpolate(self->data->freq_axis, self->data->right_spectrum, freq_axis);
 
   // find min and max values
 
@@ -358,8 +359,11 @@ void get_irs_info(ConvolverBox* self) {
 
   self->data->time_axis.resize(kernel_L.size());
 
-  self->data->left_mag = kernel_L;
-  self->data->right_mag = kernel_R;
+  self->data->left_mag.resize(kernel_L.size());
+  self->data->right_mag.resize(kernel_R.size());
+
+  std::copy(kernel_L.begin(), kernel_L.end(), self->data->left_mag.begin());
+  std::copy(kernel_R.begin(), kernel_R.end(), self->data->right_mag.begin());
 
   for (size_t n = 0U; n < self->data->time_axis.size(); n++) {
     self->data->time_axis[n] = static_cast<float>(n) * dt;
@@ -368,48 +372,18 @@ void get_irs_info(ConvolverBox* self) {
   get_irs_spectrum(self, rate);
 
   const auto chart_width = static_cast<uint>(gtk_widget_get_width(GTK_WIDGET(self->chart)));
-  const auto bin_size = (chart_width > 0U) ? static_cast<uint>(self->data->time_axis.size() / chart_width) : 0U;
 
-  if (bin_size > 0U) {
-    // decimating the data so we can draw it
+  const auto n_interp_points = (chart_width > 0U) ? 2 * chart_width : 1000;
 
-    std::vector<float> t;
-    std::vector<float> l;
-    std::vector<float> r;
-    std::vector<float> bin_x;
-    std::vector<float> bin_l_y;
-    std::vector<float> bin_r_y;
+  auto x_linear = util::linspace(self->data->time_axis.front(), self->data->time_axis.back(), n_interp_points);
 
-    for (size_t n = 0U; n < self->data->time_axis.size(); n++) {
-      bin_x.push_back(self->data->time_axis[n]);
+  std::vector<double> x_axis(x_linear.size());
 
-      bin_l_y.push_back(self->data->left_mag[n]);
-      bin_r_y.push_back(self->data->right_mag[n]);
+  std::copy(x_linear.begin(), x_linear.end(), x_axis.begin());
 
-      if (bin_x.size() == bin_size) {
-        const auto [min, max] = std::ranges::minmax_element(bin_l_y);
-
-        t.push_back(bin_x[min - bin_l_y.begin()]);
-        t.push_back(bin_x[max - bin_l_y.begin()]);
-
-        l.push_back(*min);
-        l.push_back(*max);
-
-        const auto [minr, maxr] = std::ranges::minmax_element(bin_r_y);
-
-        r.push_back(*minr);
-        r.push_back(*maxr);
-
-        bin_x.resize(0U);
-        bin_l_y.resize(0U);
-        bin_r_y.resize(0U);
-      }
-    }
-
-    self->data->time_axis = t;
-    self->data->left_mag = l;
-    self->data->right_mag = r;
-  }
+  self->data->time_axis = x_axis;
+  self->data->left_mag = interpolate(self->data->time_axis, self->data->left_mag, x_axis);
+  self->data->right_mag = interpolate(self->data->time_axis, self->data->right_mag, x_axis);
 
   self->data->time_axis.shrink_to_fit();
   self->data->left_mag.shrink_to_fit();

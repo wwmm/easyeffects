@@ -155,6 +155,7 @@ easyeffects_deps = [
 	dependency('libbs2b', include_type: 'system'),
 	dependency('sndfile', include_type: 'system'),
 	dependency('fftw3f', include_type: 'system'),
+	dependency('fftw3', include_type: 'system'),
 	dependency('libebur128',version: '>=1.2.0', include_type: 'system'),
 	dependency('samplerate', include_type: 'system'),
 	dependency('rubberband', include_type: 'system'),

@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include <fftw3.h>
+#include <gsl/gsl_spline.h>
 #include <algorithm>
 #include <mutex>
 #include <numbers>
