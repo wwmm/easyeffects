@@ -211,9 +211,9 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   fftw_execute(plan);
 
   for (uint i = 0U; i < self->data->left_spectrum.size(); i++) {
-    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+    double sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
-    sqr /= static_cast<float>(self->data->left_spectrum.size() * self->data->left_spectrum.size());
+    sqr /= static_cast<double>(self->data->left_spectrum.size() * self->data->left_spectrum.size());
 
     self->data->left_spectrum[i] = sqr;
   }
@@ -234,9 +234,9 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   fftw_execute(plan);
 
   for (uint i = 0U; i < self->data->right_spectrum.size(); i++) {
-    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+    double sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
-    sqr /= static_cast<float>(self->data->right_spectrum.size() * self->data->right_spectrum.size());
+    sqr /= static_cast<double>(self->data->right_spectrum.size() * self->data->right_spectrum.size());
 
     self->data->right_spectrum[i] = sqr;
   }
@@ -265,7 +265,7 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   self->data->right_spectrum.erase(self->data->right_spectrum.begin());
 
   const auto chart_width = static_cast<uint>(gtk_widget_get_width(GTK_WIDGET(self->chart)));
-  const auto n_interp_points = (chart_width > 0U) ? 2 * chart_width : 1000U;
+  const auto n_interp_points = (chart_width > 0U) ? chart_width : 1000U;
 
   // initializing the logarithmic frequency axis
 
@@ -373,7 +373,7 @@ void get_irs_info(ConvolverBox* self) {
 
   const auto chart_width = static_cast<uint>(gtk_widget_get_width(GTK_WIDGET(self->chart)));
 
-  const auto n_interp_points = (chart_width > 0U) ? 2 * chart_width : 1000;
+  const auto n_interp_points = (chart_width > 0U) ? chart_width : 1000;
 
   auto x_linear = util::linspace(self->data->time_axis.front(), self->data->time_axis.back(), n_interp_points);
 
@@ -618,7 +618,7 @@ void convolver_box_init(ConvolverBox* self) {
 
   // setting some signals
 
-  auto gfile = g_file_new_for_path(irs_dir.c_str());
+  auto* gfile = g_file_new_for_path(irs_dir.c_str());
 
   self->folder_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);
 

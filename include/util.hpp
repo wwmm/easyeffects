@@ -62,9 +62,6 @@ void info(const std::string& s, source_location location = source_location::curr
 
 auto normalize(const double& x, const double& max, const double& min = 1.0) -> double;
 
-auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;
-auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;
-
 auto linear_to_db(const float& amp) -> float;
 auto linear_to_db(const double& amp) -> double;
 
@@ -107,8 +104,6 @@ auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bo
 void remove_blocklist_entry(GSettings* settings, const std::string& name);
 
 void idle_add(std::function<void()> cb);
-
-void generate_tags(const int& N, const std::string& start_string, const std::string& end_string);
 
 auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string>;
 
@@ -161,6 +156,66 @@ auto to_string(const T& num, const std::string def = "0") -> std::string {
   const auto result = std::to_chars(p_init, p_init + max, num);
 
   return (result.ec == std::errc()) ? std::string(p_init, result.ptr - p_init) : def;
+}
+
+template <class T>
+concept Number = std::is_integral<T>::value || std::is_floating_point<T>::value;
+
+template <Number T>
+auto logspace(const T& start, const T& stop, const uint& npoints) -> std::vector<T> {
+  std::vector<T> output;
+
+  if (stop <= start || npoints < 2) {
+    return output;
+  }
+
+  auto log10_start = std::log10(start);
+  auto log10_stop = std::log10(stop);
+
+  const T delta = (log10_stop - log10_start) / static_cast<T>(npoints - 1);
+
+  output.push_back(start);
+
+  T v = log10_start;
+
+  while (output.size() < npoints - 1) {
+    v += delta;
+
+    if constexpr (std::is_same_v<T, float>) {
+      output.push_back(std::pow(10.0F, v));
+    } else {
+      output.push_back(std::pow(10.0, v));
+    }
+  }
+
+  output.push_back(stop);
+
+  return output;
+}
+
+template <Number T>
+auto linspace(const T& start, const T& stop, const uint& npoints) -> std::vector<T> {
+  std::vector<T> output;
+
+  if (stop <= start || npoints < 2) {
+    return output;
+  }
+
+  const T delta = (stop - start) / static_cast<T>(npoints - 1);
+
+  output.push_back(start);
+
+  T v = start;
+
+  while (output.size() < npoints - 1) {
+    v += delta;
+
+    output.push_back(v);
+  }
+
+  output.push_back(stop);
+
+  return output;
 }
 
 }  // namespace util

@@ -60,57 +60,6 @@ auto normalize(const double& x, const double& max, const double& min) -> double 
   return (x - min) / (max - min);
 }
 
-auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
-  std::vector<float> output;
-
-  if (stop <= start || npoints < 2) {
-    return output;
-  }
-
-  auto log10_start = std::log10(start);
-  auto log10_stop = std::log10(stop);
-
-  const float delta = (log10_stop - log10_start) / static_cast<float>(npoints - 1);
-
-  output.push_back(start);
-
-  float v = log10_start;
-
-  while (output.size() < npoints - 1) {
-    v += delta;
-
-    output.push_back(std::pow(10.0F, v));
-  }
-
-  output.push_back(stop);
-
-  return output;
-}
-
-auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
-  std::vector<float> output;
-
-  if (stop <= start || npoints < 2) {
-    return output;
-  }
-
-  const float delta = (stop - start) / static_cast<float>(npoints - 1);
-
-  output.push_back(start);
-
-  float v = start;
-
-  while (output.size() < npoints - 1) {
-    v += delta;
-
-    output.push_back(v);
-  }
-
-  output.push_back(stop);
-
-  return output;
-}
-
 auto linear_to_db(const float& amp) -> float {
   if (amp >= minimum_linear_level) {
     return 20.0F * std::log10(amp);
@@ -228,7 +177,7 @@ auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA {
   GdkRGBA rgba;
   std::array<double, 4> color{};
 
-  g_settings_get(settings, key, "(dddd)", &color[0], &color[1], &color[2], &color[3]);
+  g_settings_get(settings, key, "(dddd)", color.data(), &color[1], &color[2], &color[3]);
 
   rgba.red = static_cast<float>(color[0]);
   rgba.green = static_cast<float>(color[1]);
@@ -353,30 +302,6 @@ void idle_add(std::function<void()> cb) {
                    return G_SOURCE_REMOVE;
                  },
              d);
-}
-
-void generate_tags(const int& N, const std::string& start_string, const std::string& end_string) {
-  auto max_tag_size = 0U;
-  std::string body = "{";
-  std::string msg = "constexpr char tag_array[][";
-
-  for (int n = 0; n < N; n++) {
-    auto n_str = to_string(n);
-
-    auto tag = "\"" + start_string + n_str + end_string + "\"";
-
-    body += "{" + tag + "}";
-
-    if (n < N - 1) {
-      body += ", ";
-    }
-
-    max_tag_size = (tag.size() > max_tag_size) ? tag.size() : max_tag_size;
-  }
-
-  msg += to_string(max_tag_size) + "] = " + body + "};";
-
-  warning(msg);
 }
 
 auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string> {

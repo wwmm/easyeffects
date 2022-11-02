@@ -23,15 +23,13 @@ Spectrum::Spectrum(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
-    : PluginBase(tag, "spectrum", tags::plugin_package::ee, schema, schema_path, pipe_manager) {
+    : PluginBase(tag, "spectrum", tags::plugin_package::ee, schema, schema_path, pipe_manager), fftw_ready(true) {
   real_input.resize(n_bands);
   output.resize(n_bands / 2U + 1U);
 
   complex_output = fftwf_alloc_complex(n_bands);
 
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
-
-  fftw_ready = true;
 
   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<Spectrum*>(user_data);

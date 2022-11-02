@@ -219,8 +219,8 @@ void set_y_data(Chart* self, const std::vector<double>& y) {
   self->data->y_min = std::ranges::min(y);
   self->data->y_max = std::ranges::max(y);
 
-  if (std::fabs(self->data->y_max - self->data->y_min) < 0.00001F) {
-    std::ranges::fill(self->data->y_axis, 0.0F);
+  if (std::fabs(self->data->y_max - self->data->y_min) < 0.00001) {
+    std::ranges::fill(self->data->y_axis, 0.0);
   } else {
     // making each y value a number between 0 and 1
 
@@ -233,11 +233,11 @@ void set_y_data(Chart* self, const std::vector<double>& y) {
 
 void on_pointer_motion(GtkEventControllerMotion* controller, double xpos, double ypos, Chart* self) {
   // Static cast trying to fix codeql issue
-  const auto x = static_cast<float>(xpos);
-  const auto y = static_cast<float>(ypos);
+  const auto x = xpos;
+  const auto y = ypos;
 
-  const auto width = static_cast<float>(gtk_widget_get_allocated_width(GTK_WIDGET(self)));
-  const auto height = static_cast<float>(gtk_widget_get_allocated_height(GTK_WIDGET(self)));
+  const auto width = static_cast<double>(gtk_widget_get_allocated_width(GTK_WIDGET(self)));
+  const auto height = static_cast<double>(gtk_widget_get_allocated_height(GTK_WIDGET(self)));
 
   const auto usable_height = height - self->data->margin * height - self->data->x_axis_height;
 
@@ -254,7 +254,7 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double xpos, double
                                        (self->data->x_max_log - self->data->x_min_log) +
                                    self->data->x_min_log;
 
-        self->data->mouse_x = std::pow(10.0F, mouse_x_log);  // exp10 does not exist on FreeBSD
+        self->data->mouse_x = std::pow(10.0, mouse_x_log);  // exp10 does not exist on FreeBSD
 
         break;
       }
@@ -298,7 +298,7 @@ auto draw_unit(Chart* self, GtkSnapshot* snapshot, const int& width, const int& 
 }
 
 auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const int& height) -> int {
-  float labels_offset = 0.1F * width;
+  double labels_offset = 0.1 * width;
 
   int n_x_labels = static_cast<int>(std::ceil((width - 2 * self->data->margin * width) / labels_offset)) + 1;
 
@@ -310,9 +310,9 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
     Correcting the offset based on the final n_x_labels value
   */
 
-  labels_offset = (width - 2.0F * self->data->margin * width) / static_cast<float>(n_x_labels - 1);
+  labels_offset = (width - 2.0 * self->data->margin * width) / static_cast<float>(n_x_labels - 1);
 
-  std::vector<float> labels;
+  std::vector<double> labels;
 
   switch (self->data->chart_scale) {
     case ChartScale::logarithmic: {
@@ -352,7 +352,7 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
 
     gtk_snapshot_save(snapshot);
 
-    auto point = GRAPHENE_POINT_INIT(static_cast<float>(self->data->margin) * width + n * labels_offset,
+    auto point = GRAPHENE_POINT_INIT(static_cast<float>(self->data->margin * width + n * labels_offset),
                                      static_cast<float>(height - text_height));
 
     gtk_snapshot_translate(snapshot, &point);
@@ -394,23 +394,20 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
   auto width = gtk_widget_get_width(widget);
   auto height = gtk_widget_get_height(widget);
 
-  auto width_f = static_cast<float>(width);
-  auto height_f = static_cast<float>(height);
-
-  auto widget_rectangle = GRAPHENE_RECT_INIT(0.0F, 0.0F, width_f, height_f);
+  auto widget_rectangle = GRAPHENE_RECT_INIT(0.0F, 0.0F, static_cast<float>(width), static_cast<float>(height));
 
   gtk_snapshot_append_color(snapshot, &self->data->background_color, &widget_rectangle);
 
   if (const auto n_points = self->data->y_axis.size(); n_points > 0) {
-    float usable_width = width_f - 2.0F * (self->data->line_width + self->data->margin * width_f);
+    double usable_width = width - 2.0 * (self->data->line_width + self->data->margin * width);
 
-    auto usable_height = (height_f - self->data->margin * height_f) - self->data->x_axis_height;
+    auto usable_height = (height - self->data->margin * height) - self->data->x_axis_height;
 
     switch (self->data->chart_scale) {
       case ChartScale::logarithmic: {
         for (size_t n = 0U; n < n_points; n++) {
           self->data->objects_x[n] =
-              usable_width * self->data->x_axis_log[n] + self->data->line_width + self->data->margin * width_f;
+              usable_width * self->data->x_axis_log[n] + self->data->line_width + self->data->margin * width;
         }
 
         break;
@@ -418,7 +415,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
       case ChartScale::linear: {
         for (size_t n = 0U; n < n_points; n++) {
           self->data->objects_x[n] =
-              usable_width * self->data->x_axis[n] + self->data->line_width + self->data->margin * width_f;
+              usable_width * self->data->x_axis[n] + self->data->line_width + self->data->margin * width;
         }
 
         break;
@@ -437,13 +434,13 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
     switch (self->data->chart_type) {
       case ChartType::bar: {
-        float dw = width_f / static_cast<float>(n_points);
+        double dw = width / static_cast<double>(n_points);
 
         for (uint n = 0U; n < n_points; n++) {
           double bar_height = usable_height * self->data->y_axis[n];
 
           double rect_x = self->data->objects_x[n];
-          double rect_y = self->data->margin * height_f + usable_height - bar_height;
+          double rect_y = self->data->margin * height + usable_height - bar_height;
           double rect_height = bar_height;
           double rect_width = dw;
 
@@ -472,22 +469,23 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
         break;
       }
       case ChartType::dots: {
-        float dw = width_f / static_cast<float>(n_points);
+        double dw = width / static_cast<double>(n_points);
 
         usable_height -= radius;  // this avoids the dots being drawn over the axis label
 
         for (uint n = 0U; n < n_points; n++) {
-          float dot_y = usable_height * self->data->y_axis[n];
+          double dot_y = usable_height * self->data->y_axis[n];
 
-          float rect_x = self->data->objects_x[n];
-          float rect_y = self->data->margin * height_f + radius + usable_height - dot_y;
-          float rect_width = dw;
+          double rect_x = self->data->objects_x[n];
+          double rect_y = self->data->margin * height + radius + usable_height - dot_y;
+          double rect_width = dw;
 
           if (self->data->draw_bar_border) {
             rect_width -= self->data->line_width;
           }
 
-          auto rectangle = GRAPHENE_RECT_INIT(rect_x - radius, rect_y - radius, rect_width, rect_width);
+          auto rectangle = GRAPHENE_RECT_INIT(static_cast<float>(rect_x - radius), static_cast<float>(rect_y - radius),
+                                              static_cast<float>(rect_width), static_cast<float>(rect_width));
 
           GskRoundedRect outline;
 
@@ -514,28 +512,24 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
                               static_cast<double>(self->data->color.alpha));
 
         if (self->data->fill_bars) {
-          cairo_move_to(ctx, static_cast<double>(self->data->margin * width_f),
-                        static_cast<double>(self->data->margin * height_f + usable_height));
+          cairo_move_to(ctx, self->data->margin * width, self->data->margin * height + usable_height);
         } else {
           const auto point_height = self->data->y_axis.front() * usable_height;
 
-          cairo_move_to(ctx, static_cast<double>(self->data->objects_x.front()),
-                        static_cast<double>(self->data->margin * height_f + usable_height - point_height));
+          cairo_move_to(ctx, self->data->objects_x.front(), self->data->margin * height + usable_height - point_height);
         }
 
         for (uint n = 0U; n < n_points - 1U; n++) {
           const auto next_point_height = self->data->y_axis[n + 1U] * usable_height;
 
-          cairo_line_to(ctx, static_cast<double>(self->data->objects_x[n + 1U]),
-                        static_cast<double>(self->data->margin * height_f + usable_height - next_point_height));
+          cairo_line_to(ctx, self->data->objects_x[n + 1U],
+                        self->data->margin * height + usable_height - next_point_height);
         }
 
         if (self->data->fill_bars) {
-          cairo_line_to(ctx, static_cast<double>(self->data->objects_x.back()),
-                        static_cast<double>(self->data->margin * height_f + usable_height));
+          cairo_line_to(ctx, self->data->objects_x.back(), self->data->margin * height + usable_height);
 
-          cairo_move_to(ctx, static_cast<double>(self->data->objects_x.back()),
-                        static_cast<double>(self->data->margin * height_f + usable_height));
+          cairo_move_to(ctx, self->data->objects_x.back(), self->data->margin * height + usable_height);
 
           cairo_close_path(ctx);
         }
@@ -574,7 +568,7 @@ void snapshot(GtkWidget* widget, GtkSnapshot* snapshot) {
 
       gtk_snapshot_save(snapshot);
 
-      auto point = GRAPHENE_POINT_INIT(width_f - static_cast<float>(text_width), 0.0F);
+      auto point = GRAPHENE_POINT_INIT(width - static_cast<float>(text_width), 0.0F);
 
       gtk_snapshot_translate(snapshot, &point);
 
@@ -630,13 +624,13 @@ void chart_init(Chart* self) {
   self->data->x_axis_height = 0;
   self->data->n_x_decimals = 1;
   self->data->n_y_decimals = 1;
-  self->data->line_width = 2.0F;
-  self->data->margin = 0.02F;
+  self->data->line_width = 2.0;
+  self->data->margin = 0.02;
 
-  self->data->x_min = 0.0F;
-  self->data->y_min = 0.0F;
-  self->data->x_max = 1.0F;
-  self->data->y_max = 1.0F;
+  self->data->x_min = 0.0;
+  self->data->y_min = 0.0;
+  self->data->x_max = 1.0;
+  self->data->y_max = 1.0;
 
   self->data->background_color = GdkRGBA{0.0F, 0.0F, 0.0F, 1.0F};
   self->data->color = GdkRGBA{1.0F, 1.0F, 1.0F, 1.0F};
