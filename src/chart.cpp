@@ -352,8 +352,8 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
 
     gtk_snapshot_save(snapshot);
 
-    auto point =
-        GRAPHENE_POINT_INIT(self->data->margin * width + n * labels_offset, static_cast<float>(height - text_height));
+    auto point = GRAPHENE_POINT_INIT(static_cast<float>(self->data->margin) * width + n * labels_offset,
+                                     static_cast<float>(height - text_height));
 
     gtk_snapshot_translate(snapshot, &point);
 
