@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-01 16:47+0000\n"
+"POT-Creation-Date: 2022-11-02 00:32+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2239,23 +2239,23 @@ msgstr "Impulse 불러오기"
 msgid "Remove Impulse"
 msgstr "Impulse 제거하기"
 
-#: src/convolver_ui.cpp:323
+#: src/convolver_ui.cpp:324
 msgid "No Impulse File Loaded"
 msgstr "불러온 Impulse 파일 없음"
 
-#: src/convolver_ui.cpp:345
+#: src/convolver_ui.cpp:346
 msgid "Failed To Load The Impulse File"
 msgstr "Impulse 파일을 불러오지 못했습니다"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:647
+#: src/effects_box.cpp:259 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:667
+#: src/effects_box.cpp:282 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "재생기"
 
-#: src/effects_box.cpp:307
+#: src/effects_box.cpp:305
 msgid "Effects"
 msgstr "효과음"
 

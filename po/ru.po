@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-01 16:47+0000\n"
+"POT-Creation-Date: 2022-11-02 00:32+0000\n"
 "PO-Revision-Date: 2022-09-06 00:23+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2237,23 +2237,23 @@ msgstr "Загрузить импульс"
 msgid "Remove Impulse"
 msgstr "Удалить Импульс"
 
-#: src/convolver_ui.cpp:323
+#: src/convolver_ui.cpp:324
 msgid "No Impulse File Loaded"
 msgstr "Нет загруженного файла импульса"
 
-#: src/convolver_ui.cpp:345
+#: src/convolver_ui.cpp:346
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:647
+#: src/effects_box.cpp:259 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:667
+#: src/effects_box.cpp:282 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/effects_box.cpp:307
+#: src/effects_box.cpp:305
 msgid "Effects"
 msgstr "Эффекты"
 

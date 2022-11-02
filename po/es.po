@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-01 16:47+0000\n"
+"POT-Creation-Date: 2022-11-02 00:32+0000\n"
 "PO-Revision-Date: 2022-10-30 05:01+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2177,23 +2177,23 @@ msgstr "Cargar archivo de respuesta a impulsos"
 msgid "Remove Impulse"
 msgstr "Eliminar archivo de respuesta a impulsos"
 
-#: src/convolver_ui.cpp:323
+#: src/convolver_ui.cpp:324
 msgid "No Impulse File Loaded"
 msgstr "No se ha cargado el archivo de impulsos"
 
-#: src/convolver_ui.cpp:345
+#: src/convolver_ui.cpp:346
 msgid "Failed To Load The Impulse File"
 msgstr "Fallo en la carga del archivo de impulso"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:647
+#: src/effects_box.cpp:259 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:667
+#: src/effects_box.cpp:282 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Reproductores"
 
-#: src/effects_box.cpp:307
+#: src/effects_box.cpp:305
 msgid "Effects"
 msgstr "Efectos"
 
