@@ -11,7 +11,7 @@ project(
     'warning_level=2'
   ],
   license: 'GPL-3-or-later',
-	version: '6.3.0',
+	version: '7.0.0',
 	meson_version: '>= 0.59.0'
 )
 

@@ -33,6 +33,27 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.0.0" date="2022-11-02T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>It is now possible to add more than one filter instance to the effects pipeline.</li>
+          <li>A new `Speech Processor` plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases whre the rnnoise library does not work well.</li>
+          <li>Improved compatibility with Linux Studio Plugins `1.2.3`.</li>
+          <li>GraphicEQ presets can be imported into the Equalizer effect.</li>
+          <li>The application name has been changed to `Easy Effects` to adhere to the naming conventions of GNOME Human Interface Guidelines.</li>
+          <li>The documentation has been updated.</li>
+          <li>Improved presets autoloading.</li>
+          <li>The Autogain silence threshold can now be configured by the user.</li>
+          <li>Dry and wet controls added to the Stereo Tools effect.</li>
+          <li>The echo canceller now has a residual noise suppression control also based on the Speex library.</li>
+          <li>Bug fixes:</li>
+          <li>When the mouse was hovering over a chart the wrong value for the x axis coordinate was being shown. This regression is fixed.</li>
+          <li>Other notes:</li>
+          <li>Because of the new multiple instances feature, the preset format has changed, but the old one is still compatible to be loaded. Anyway take in consideration that saving the current preset will always write it in the new format.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="6.3.0" date="2022-09-02T00:00:00Z">
       <description>
         <ul>

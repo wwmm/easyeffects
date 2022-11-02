@@ -1,4 +1,26 @@
 # Changelog
+ 
+## 7.0.0
+### 2022-11-02
+
+
+### Features:
+- It is now possible to add more than one filter instance to the effects pipeline.
+- A new `Speech Processor` plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases whre the rnnoise library does not work well.
+- Improved compatibility with Linux Studio Plugins `1.2.3`.
+- GraphicEQ presets can be imported into the Equalizer effect.
+- The application name has been changed to `Easy Effects` to adhere to the naming conventions of GNOME Human Interface Guidelines.
+- The documentation has been updated.
+- Improved presets autoloading.
+- The Autogain silence threshold can now be configured by the user.
+- Dry and wet controls added to the Stereo Tools effect.
+- The echo canceller now has a residual noise suppression control also based on the Speex library.
+
+### Bug fixes:
+- When the mouse was hovering over a chart the wrong value for the x axis coordinate was being shown. This regression is fixed.
+
+### Other notes:
+- Because of the new multiple instances feature, the preset format has changed, but the old one is still compatible to be loaded. Anyway take in consideration that saving the current preset will always write it in the new format.
 
  
 ## 6.3.0
