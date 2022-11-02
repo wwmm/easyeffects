@@ -353,9 +353,9 @@ void get_irs_info(ConvolverBox* self) {
     return;
   }
 
-  const float dt = 1.0F / static_cast<float>(rate);
+  const auto dt = 1.0 / rate;
 
-  const float duration = (static_cast<float>(kernel_L.size()) - 1.0F) * dt;
+  const double duration = (static_cast<double>(kernel_L.size()) - 1.0) * dt;
 
   self->data->time_axis.resize(kernel_L.size());
 
@@ -366,7 +366,7 @@ void get_irs_info(ConvolverBox* self) {
   std::copy(kernel_R.begin(), kernel_R.end(), self->data->right_mag.begin());
 
   for (size_t n = 0U; n < self->data->time_axis.size(); n++) {
-    self->data->time_axis[n] = static_cast<float>(n) * dt;
+    self->data->time_axis[n] = static_cast<double>(n) * dt;
   }
 
   get_irs_spectrum(self, rate);
