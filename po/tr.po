@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-01 16:47+0000\n"
+"POT-Creation-Date: 2022-11-02 00:32+0000\n"
 "PO-Revision-Date: 2022-10-24 12:40+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2228,23 +2228,23 @@ msgstr "Dürtüyü Yükle"
 msgid "Remove Impulse"
 msgstr "Dürtüyü Kaldır"
 
-#: src/convolver_ui.cpp:323
+#: src/convolver_ui.cpp:324
 msgid "No Impulse File Loaded"
 msgstr "Dürtü Dosyası Yüklenmedi"
 
-#: src/convolver_ui.cpp:345
+#: src/convolver_ui.cpp:346
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:261 src/plugins_box.cpp:647
+#: src/effects_box.cpp:259 src/plugins_box.cpp:647
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:284 src/plugins_box.cpp:667
+#: src/effects_box.cpp:282 src/plugins_box.cpp:667
 msgid "Players"
 msgstr "Oynatıcılar"
 
-#: src/effects_box.cpp:307
+#: src/effects_box.cpp:305
 msgid "Effects"
 msgstr "Efektler"
 
