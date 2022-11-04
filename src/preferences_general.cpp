@@ -55,7 +55,7 @@ auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> 
       ofs << "Name=Easy Effects\n";
       ofs << "Comment=Easy Effects Service\n";
       ofs << "Exec=easyeffects --gapplication-service\n";
-      ofs << "Icon=easyeffects\n";
+      ofs << "Icon=com.github.wwmm.easyeffects\n";
       ofs << "StartupNotify=false\n";
       ofs << "Terminal=false\n";
       ofs << "Type=Application\n";
