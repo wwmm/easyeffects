@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-02 00:32+0000\n"
-"PO-Revision-Date: 2022-08-17 04:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2022-11-04 05:01+0000\n"
+"Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
 "main/id/>\n"
 "Language: id_ID\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -43,7 +43,7 @@ msgstr "Preset"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Hidupkan/matikan aplikasi ini"
 
 #: data/ui/app_info.ui:213
 #, fuzzy
@@ -52,33 +52,31 @@ msgstr "Hidupkan"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Pengecualian daftar aplikasi: Tambah/buang aplikasi ini"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "Pengecualian"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
-#, fuzzy
 msgid "Mute Application"
-msgstr "Aplikasi"
+msgstr "Bisukan Aplikasi"
 
 #: data/ui/app_info.ui:270
 msgid "Change the volume of this application"
 msgstr ""
 
 #: data/ui/app_info.ui:272
-#, fuzzy
 msgid "Application Volume"
-msgstr "Aplikasi"
+msgstr "Volume Aplikasi"
 
 #: data/ui/application_window.ui:6
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferensi"
 
 #: data/ui/application_window.ui:10
 msgid "_Manual"
-msgstr ""
+msgstr "_Manual"
 
 #: data/ui/application_window.ui:14
 #, fuzzy
@@ -91,9 +89,8 @@ msgid "_Reset Settings"
 msgstr "Setelan"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "EasyEffects"
+msgstr "Tentang EasyEffects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -102,9 +99,8 @@ msgid "Presets"
 msgstr "Preset"
 
 #: data/ui/application_window.ui:54
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Preset"
+msgstr "Menu Preset"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
@@ -125,19 +121,16 @@ msgid "Easy Effects Window"
 msgstr "EasyEffects"
 
 #: data/ui/apps_box.ui:17
-#, fuzzy
 msgid "Applications List"
-msgstr "Aplikasi"
+msgstr "Daftar Aplikasi"
 
 #: data/ui/apps_box.ui:27
-#, fuzzy
 msgid "Empty List"
-msgstr "Tembok Kosong"
+msgstr "Daftar Kosong"
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Aplikasi"
+msgstr "Tidak ada Aplikasi Audio yang tersedia"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
@@ -154,7 +147,7 @@ msgstr "Angkatan Maksimal"
 
 #: data/ui/autogain.ui:132
 msgid "Reference"
-msgstr ""
+msgstr "Referensi"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:185
 msgid "Momentary"
@@ -191,7 +184,7 @@ msgstr "Terapkan Gradien warna"
 
 #: data/ui/autogain.ui:165
 msgid "Reset History"
-msgstr ""
+msgstr "Atur Ulang Riwayat"
 
 #: data/ui/autogain.ui:275
 msgid "Relative"
@@ -306,7 +299,7 @@ msgstr "Nama"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: data/ui/autoload_row.ui:89
 #, fuzzy
