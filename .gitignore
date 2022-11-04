@@ -60,5 +60,6 @@ util/flatpak/repo
 .flatpak
 .flatpak-builder
 
-# explictly include flatpak patch directory which includes usually ignored patch files
+# explictly include flatpak patch/shared-modules directory which includes usually ignored patch files
 !util/flatpak/patch/**/*.patch
+!util/flatpak/shared-modules/linux-audio/**/*.patch

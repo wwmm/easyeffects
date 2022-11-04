@@ -1,29 +1,19 @@
 {
   "name": "lilv",
-  "buildsystem": "simple",
-  "build-commands": [
-    "python3 ./waf configure --prefix=$FLATPAK_DEST",
-    "python3 ./waf build -j $FLATPAK_BUILDER_N_JOBS",
-    "python3 ./waf install"
-  ],
+  "buildsystem": "meson",
   "modules": [
     {
       "name": "serd",
-      "buildsystem": "simple",
-      "build-commands": [
-        "python3 ./waf configure --prefix=$FLATPAK_DEST",
-        "python3 ./waf build -j $FLATPAK_BUILDER_N_JOBS",
-        "python3 ./waf install"
-      ],
+      "buildsystem": "meson",
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.drobilla.net/serd-0.30.10.tar.bz2",
-          "sha256": "affa80deec78921f86335e6fc3f18b80aefecf424f6a5755e9f2fa0eb0710edf"
+          "url": "https://download.drobilla.net/serd-0.30.16.tar.xz",
+          "sha256": "f50f486da519cdd8d03b20c9e42414e459133f5a244411d8e63caef8d9ac9146"
         }
       ],
       "post-install": [
-        "install -Dm644 -t /app/share/licenses/serd COPYING"
+        "install -Dm644 -t $FLATPAK_DEST/share/licenses/serd ../COPYING"
       ],
       "cleanup": [
         "/bin",
@@ -34,21 +24,16 @@
     },
     {
       "name": "sord",
-      "buildsystem": "simple",
-      "build-commands": [
-        "python3 ./waf configure --prefix=$FLATPAK_DEST",
-        "python3 ./waf build -j $FLATPAK_BUILDER_N_JOBS",
-        "python3 ./waf install"
-      ],
+      "buildsystem": "meson",
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.drobilla.net/sord-0.16.8.tar.bz2",
-          "sha256": "7c289d2eaabf82fa6ac219107ce632d704672dcfb966e1a7ff0bbc4ce93f5e14"
+          "url": "https://download.drobilla.net/sord-0.16.14.tar.xz",
+          "sha256": "220fd97d5fcb216e7b85db66f685bfdaad7dc58a50d1f96dfb2558dbc6c4731b"
         }
       ],
       "post-install": [
-        "install -Dm644 -t /app/share/licenses/sord COPYING"
+        "install -Dm644 -t $FLATPAK_DEST/share/licenses/sord ../COPYING"
       ],
       "cleanup": [
         "/bin",
@@ -59,12 +44,7 @@
     },
     {
       "name": "sratom",
-      "buildsystem": "simple",
-      "build-commands": [
-        "python3 ./waf configure --prefix=$FLATPAK_DEST",
-        "python3 ./waf build -j $FLATPAK_BUILDER_N_JOBS",
-        "python3 ./waf install"
-      ],
+      "buildsystem": "meson",
       "cleanup": [
         "/include",
         "/lib/pkgconfig"
@@ -72,24 +52,24 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://download.drobilla.net/sratom-0.6.8.tar.bz2",
-          "sha256": "3acb32b1adc5a2b7facdade2e0818bcd6c71f23f84a1ebc17815bb7a0d2d02df"
+          "url": "https://download.drobilla.net/sratom-0.6.14.tar.xz",
+          "sha256": "9982faf40db83aedd9b3850e499fecd6852b8b4ba6dede514013655cffaca1e6"
         }
       ],
       "post-install": [
-        "install -Dm644 -t /app/share/licenses/sratom COPYING"
+        "install -Dm644 -t $FLATPAK_DEST/share/licenses/sratom ../COPYING"
       ]
     }
   ],
   "sources": [
     {
       "type": "archive",
-      "url": "https://download.drobilla.net/lilv-0.24.12.tar.bz2",
-      "sha256": "26a37790890c9c1f838203b47f5b2320334fe92c02a4d26ebbe2669dbd769061"
+      "url": "https://download.drobilla.net/lilv-0.24.20.tar.xz",
+      "sha256": "4fb082b9b8b286ea92bbb71bde6b75624cecab6df0cc639ee75a2a096212eebc"
     }
   ],
   "post-install": [
-    "install -Dm644 -t /app/share/licenses/lilv COPYING"
+    "install -Dm644 -t $FLATPAK_DEST/share/licenses/lilv ../COPYING"
   ],
   "cleanup": [
     "/bin",

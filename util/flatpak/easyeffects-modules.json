@@ -34,12 +34,15 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/jiixyj/libebur128.git",
+                    "url": "https://github.com/jiixyj/libebur128",
                     "tag": "v1.2.6",
                     "commit": "67b33abe1558160ed76ada1322329b0e9e058b02",
                     "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)"
+                        "type": "json",
+                        "url": "https://api.github.com/repos/jiixyj/libebur128/releases/latest",
+                        "tag-query": ".tag_name",
+                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
+                        "timestamp-query": ".published_at"
                     }
                 }
             ],
@@ -218,8 +221,11 @@
                     "tag": "v3.11.2",
                     "commit": "bc889afb4c5bf1c0d8ee29ef35eaaf4c8bef8a5d",
                     "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
+                        "type": "json",
+                        "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
+                        "tag-query": ".tag_name",
+                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
+                        "timestamp-query": ".published_at"
                     }
                 }
             ]
@@ -291,9 +297,17 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/fmtlib/fmt/releases/download/8.0.1/fmt-8.0.1.zip",
-                    "sha256": "a627a56eab9554fc1e5dd9a623d0768583b3a383ff70a4312ba68f94c9d415bf"
+                    "type": "git",
+                    "url": "https://github.com/fmtlib/fmt",
+                    "tag": "9.1.0",
+                    "commit": "a33701196adfad74917046096bf5a2aa0ab0bb50",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/fmtlib/fmt/releases/latest",
+                        "tag-query": ".tag_name",
+                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
+                        "timestamp-query": ".published_at"
+                    }
                 }
             ]
         },
