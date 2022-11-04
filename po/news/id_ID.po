@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-02 00:32+0000\n"
-"PO-Revision-Date: 2022-02-19 08:54+0000\n"
-"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"PO-Revision-Date: 2022-11-04 05:01+0000\n"
+"Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
-"main/id/>\n"
+"changelog/id/>\n"
 "Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #, fuzzy
@@ -48,6 +48,9 @@ msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Easy Effects adalah penerus dari PulseEffects. Easy Effects hanya mendukung "
+"server audio PipeWire. Pengguna PulseAudio sebaiknya menggunakan "
+"PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 #, fuzzy
@@ -83,7 +86,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Halaman utama menampilkan dua aplikasi keluaran audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
@@ -113,7 +116,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:292
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:305
 msgid "Features:"
-msgstr ""
+msgstr "Fitur:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
@@ -132,24 +135,27 @@ msgid "Wet/dry controls were added for some plugins"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
+#, fuzzy
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
+"Antarmuka efek tidak lagi termuat ketika plugin lv2 terkait tidak terpasang "
+"di sistem."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "Dukumentasi telah diperbarui"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "Improved debug messages"
-msgstr ""
+msgstr "Pesan debug yang ditingkatkan"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
 msgid "Updated translations"
-msgstr ""
+msgstr "Terjemahan yang diperbarui"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
@@ -170,7 +176,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Perbaikan Bug:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
@@ -178,17 +184,19 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
 msgid "Other notes:"
-msgstr ""
+msgstr "Catatan lainnya:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 msgid "Improved translations"
-msgstr ""
+msgstr "Terjemahan yang ditingkatkan"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
 msgstr ""
+"Memperbaiki bug dimana EasyEffects bisa macet saat menutup jendelanya "
+"sementara efek sedang diterapkan."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
@@ -276,8 +284,10 @@ msgid "The interface of the pitch plugin was improved"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:99
+#, fuzzy
 msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr ""
+"Ikon aplikasi kami sekarang kompatibel dengan desktop yang menggunakan QT"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
 msgid ""
