@@ -399,15 +399,19 @@ void application_init(Application* self) {
 
   entries[2] = {"about",
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  std::array<const char*, 2> authors = {"Wellington Wallace", nullptr};
+                  std::array<const char*, 2> authors = {"Wellington Wallace <wellingtonwallace@gmail.com>", nullptr};
 
-                  gtk_show_about_dialog(
-                      gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name", APP_NAME, "version",
-                      VERSION, "comments", _("Audio effects for PipeWire applications"), "authors", authors.data(),
-                      "logo-icon-name",
-                      IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id,
-                      "license-type", GTK_LICENSE_GPL_3_0, "website", "https://github.com/wwmm/easyeffects",
-                      "system-information", std::string("Commit: ").append(COMMIT_DESC).c_str(), nullptr);
+                  adw_show_about_window(
+                      gtk_application_get_active_window(GTK_APPLICATION(gapp)),
+                      "application-name", APP_NAME,
+                      "version", VERSION,
+                      "developer-name", "Wellington Wallace",
+                      "developers", authors.data(),
+                      "application-icon", IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id,
+                      "copyright", "Copyright © 2017–2022 Easy Effects Contributors",
+                      "license-type", GTK_LICENSE_GPL_3_0,
+                      "website", "https://github.com/wwmm/easyeffects",
+                      "debug-info", std::string("Commit: ").append(COMMIT_DESC).c_str(), nullptr);
                 },
                 nullptr, nullptr, nullptr};
 
