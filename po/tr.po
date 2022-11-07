@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-02 00:32+0000\n"
+"POT-Creation-Date: 2022-11-07 22:31+0000\n"
 "PO-Revision-Date: 2022-10-24 12:40+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2153,32 +2153,28 @@ msgstr "Bilinmiyor"
 msgid "channels"
 msgstr "kanallar"
 
-#: src/application.cpp:406
-msgid "Audio effects for PipeWire applications"
-msgstr "PipeWire uygulamaları için ses efektleri"
-
-#: src/application.cpp:499
+#: src/application.cpp:503
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Easy Effects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
-#: src/application.cpp:502
+#: src/application.cpp:506
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
 
-#: src/application.cpp:505
+#: src/application.cpp:509
 msgid "Reset Easy Effects."
 msgstr "Easy Effects’i Sıfırla."
 
-#: src/application.cpp:508
+#: src/application.cpp:512
 msgid "Hide the Window."
 msgstr "Pencereyi Gizle."
 
-#: src/application.cpp:511
+#: src/application.cpp:515
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Genel atlama. 1 etkinleştirmek, 2 devre dışı bırakmak ve 3 durumu almak için"
 
-#: src/application.cpp:514
+#: src/application.cpp:518
 msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
@@ -2412,6 +2408,9 @@ msgstr "Kapat (ESC tuşuna basın)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "PipeWire uygulamaları için ses efektleri"
 
 #~ msgid "Noise Reduction (Fast)"
 #~ msgstr "Gürültü Azaltma (Hızlı)"
