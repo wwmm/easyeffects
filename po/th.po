@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-02 00:32+0000\n"
+"POT-Creation-Date: 2022-11-07 23:15+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/easyeffects/main/th/"
@@ -2097,31 +2097,31 @@ msgstr ""
 msgid "channels"
 msgstr ""
 
-#: src/application.cpp:406
-msgid "Audio effects for PipeWire applications"
-msgstr ""
-
-#: src/application.cpp:499
-msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr ""
-
-#: src/application.cpp:502
-msgid "Load a preset. Example: easyeffects -l music"
+#: src/application.cpp:415
+msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
 #: src/application.cpp:505
-msgid "Reset Easy Effects."
+msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
 #: src/application.cpp:508
-msgid "Hide the Window."
+msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
 #: src/application.cpp:511
-msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgid "Reset Easy Effects."
 msgstr ""
 
 #: src/application.cpp:514
+msgid "Hide the Window."
+msgstr ""
+
+#: src/application.cpp:517
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr ""
+
+#: src/application.cpp:520
 msgid "Show available presets."
 msgstr ""
 
