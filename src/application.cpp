@@ -397,23 +397,25 @@ void application_init(Application* self) {
                 },
                 nullptr, nullptr, nullptr};
 
-  entries[2] = {"about",
-                [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  std::array<const char*, 2> authors = {"Wellington Wallace <wellingtonwallace@gmail.com>", nullptr};
+  entries[2] = {
+      "about",
+      [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+        std::array<const char*, 4> developers = {"Wellington Wallace <wellingtonwallace@gmail.com>",
+                                                 "Giusy Digital <kurmikon@libero.it>", "Vincent Chernin", nullptr};
 
-                  adw_show_about_window(
-                      gtk_application_get_active_window(GTK_APPLICATION(gapp)),
-                      "application-name", APP_NAME,
-                      "version", VERSION,
-                      "developer-name", "Wellington Wallace",
-                      "developers", authors.data(),
-                      "application-icon", IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id,
-                      "copyright", "Copyright © 2017–2022 Easy Effects Contributors",
-                      "license-type", GTK_LICENSE_GPL_3_0,
-                      "website", "https://github.com/wwmm/easyeffects",
-                      "debug-info", std::string("Commit: ").append(COMMIT_DESC).c_str(), nullptr);
-                },
-                nullptr, nullptr, nullptr};
+        std::array<const char*, 3> documenters = {"Wellington Wallace <wellingtonwallace@gmail.com>",
+                                                  "Giusy Digital <kurmikon@libero.it>", nullptr};
+
+        adw_show_about_window(
+            gtk_application_get_active_window(GTK_APPLICATION(gapp)), "application-name", APP_NAME, "version", VERSION,
+            "developer-name", "Wellington Wallace", "developers", developers.data(), "application-icon",
+            IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id, "copyright",
+            "Copyright © 2017–2022 Easy Effects Contributors", "license-type", GTK_LICENSE_GPL_3_0, "website",
+            "https://github.com/wwmm/easyeffects", "debug-info", std::string("Commit: ").append(COMMIT_DESC).c_str(),
+            "translator-credits", _("Weblate https://hosted.weblate.org/projects/easyeffects/"), "documenters",
+            documenters.data(), "issue-url", "https://github.com/wwmm/easyeffects/issues", nullptr);
+      },
+      nullptr, nullptr, nullptr};
 
   entries[3] = {"fullscreen",
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
