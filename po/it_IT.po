@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-02 00:32+0000\n"
+"POT-Creation-Date: 2022-11-07 23:15+0000\n"
 "PO-Revision-Date: 2022-10-31 07:06+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2102,32 +2102,32 @@ msgstr "Sconosciuto"
 msgid "channels"
 msgstr "Canali"
 
-#: src/application.cpp:406
-msgid "Audio effects for PipeWire applications"
-msgstr "Effetti Audio per Applicazioni PipeWire"
+#: src/application.cpp:415
+msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
+msgstr ""
 
-#: src/application.cpp:499
+#: src/application.cpp:505
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Chiudi Easy Effects. Utile in esecuzione come servizio."
 
-#: src/application.cpp:502
+#: src/application.cpp:508
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
-#: src/application.cpp:505
+#: src/application.cpp:511
 msgid "Reset Easy Effects."
 msgstr "Reset Easy Effects."
 
-#: src/application.cpp:508
+#: src/application.cpp:514
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra."
 
-#: src/application.cpp:511
+#: src/application.cpp:517
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
 
-#: src/application.cpp:514
+#: src/application.cpp:520
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
@@ -2361,6 +2361,9 @@ msgstr "Chiudi (Premi ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Effetti Audio per Applicazioni PipeWire"
 
 #, fuzzy
 #~ msgid "Noise Reduction (Fast)"

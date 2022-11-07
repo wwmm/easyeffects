@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-02 00:32+0000\n"
+"POT-Creation-Date: 2022-11-07 23:15+0000\n"
 "PO-Revision-Date: 2022-10-28 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2126,31 +2126,31 @@ msgstr "未知"
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:406
-msgid "Audio effects for PipeWire applications"
-msgstr "为使用 PipeWire 的程序提供音效"
+#: src/application.cpp:415
+msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
+msgstr ""
 
-#: src/application.cpp:499
+#: src/application.cpp:505
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
-#: src/application.cpp:502
+#: src/application.cpp:508
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
-#: src/application.cpp:505
+#: src/application.cpp:511
 msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
-#: src/application.cpp:508
+#: src/application.cpp:514
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:511
+#: src/application.cpp:517
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:514
+#: src/application.cpp:520
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
@@ -2378,6 +2378,9 @@ msgstr "关闭（请按 ESC）"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "为使用 PipeWire 的程序提供音效"
 
 #~ msgid "Noise Reduction (Fast)"
 #~ msgstr "降噪（快速）"
