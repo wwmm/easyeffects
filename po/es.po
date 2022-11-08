@@ -454,7 +454,7 @@ msgstr "Nivel"
 #: data/ui/multiband_compressor.ui:166 data/ui/multiband_gate.ui:166
 #: data/ui/reverb.ui:242 data/ui/stereo_tools.ui:570
 msgid "Wet Level"
-msgstr "Nivel Objetivo"
+msgstr "Nivelado"
 
 #: data/ui/compressor.ui:482 data/ui/compressor.ui:994 data/ui/gate.ui:621
 #: data/ui/gate.ui:1132
@@ -1079,7 +1079,7 @@ msgstr "Herm delgado"
 
 #: data/ui/limiter.ui:83
 msgid "Herm Wide"
-msgstr "Herm Wide"
+msgstr "Hermite Amplia (Función cúbica de interpolación de Hermite)"
 
 #: data/ui/limiter.ui:84
 msgid "Herm Tail"
@@ -2103,7 +2103,7 @@ msgstr "canales"
 
 #: src/application.cpp:415
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:505
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -2362,7 +2362,7 @@ msgstr "Cerrar (Pulsar ESC)"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
-msgstr ""
+msgstr "infinito"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "Efectos de audio para aplicaciones que utilizan PipeWire"

@@ -161,17 +161,14 @@ msgid "Geometric Mean (MSI)"
 msgstr "几何平均 (MSI)"
 
 #: data/ui/autogain.ui:148
-#, fuzzy
 msgid "Geometric Mean (MS)"
 msgstr "几何平均 (MS)"
 
 #: data/ui/autogain.ui:149
-#, fuzzy
 msgid "Geometric Mean (MI)"
 msgstr "几何平均 (MI)"
 
 #: data/ui/autogain.ui:150
-#, fuzzy
 msgid "Geometric Mean (SI)"
 msgstr "几何平均 (SI)"
 
@@ -644,7 +641,6 @@ msgstr "Impulse"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
-#, fuzzy
 msgid "Combine"
 msgstr "混合"
 
@@ -695,9 +691,8 @@ msgid "Output File Name"
 msgstr "输出文件名"
 
 #: data/ui/convolver_menu_combine.ui:95
-#, fuzzy
 msgid "Combined Kernel Name"
-msgstr "结合Kernel名称"
+msgstr "混合Kernel名称"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
@@ -783,7 +778,6 @@ msgid "Frequency 2 Level"
 msgstr "频率 2 水平"
 
 #: data/ui/deesser.ui:229
-#, fuzzy
 msgid "F2 Peak Q"
 msgstr "F2极限Q值"
 
@@ -854,19 +848,16 @@ msgid "Bands"
 msgstr "频段"
 
 #: data/ui/equalizer.ui:73
-#, fuzzy
 msgid "IIR"
 msgstr "无限脉冲响应 (IIR)"
 
 #: data/ui/equalizer.ui:74
-#, fuzzy
 msgid "FIR"
 msgstr "有限脉冲响应 (FIR)"
 
 #: data/ui/equalizer.ui:75
-#, fuzzy
 msgid "FFT"
-msgstr "傅里叶变换"
+msgstr "快速傅里叶变换 (FFT)"
 
 #: data/ui/equalizer.ui:76
 msgid "SPM"
@@ -1382,7 +1373,6 @@ msgid "Band 8"
 msgstr "频段 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
-#, fuzzy
 msgid "Band Start"
 msgstr "频段起始"
 
@@ -1427,7 +1417,6 @@ msgid "Band Gain"
 msgstr "频段增益"
 
 #: data/ui/multiband_compressor_band.ui:830 data/ui/multiband_gate_band.ui:802
-#, fuzzy
 msgid "Band Envelope"
 msgstr "频段包络"
 
@@ -1490,7 +1479,7 @@ msgstr "采样率"
 #: data/ui/pipe_manager_box.ui:149
 #, fuzzy
 msgid "Minimum Quantum"
-msgstr "最小 Quantum"
+msgstr "最小音频帧 (Quantum)"
 
 #: data/ui/pipe_manager_box.ui:160
 msgid "Maximum Quantum"
@@ -1499,7 +1488,7 @@ msgstr "最大 Quantum"
 #: data/ui/pipe_manager_box.ui:171
 #, fuzzy
 msgid "Default Quantum"
-msgstr "默认 Quantum"
+msgstr "默认音频帧 (Quantum)"
 
 #: data/ui/pipe_manager_box.ui:191
 msgid "Presets Autoloading"
@@ -1615,7 +1604,6 @@ msgid "Formant"
 msgstr "格式"
 
 #: data/ui/pitch.ui:70
-#, fuzzy
 msgid "Shifted"
 msgstr "偏移"
 
@@ -1656,7 +1644,6 @@ msgid "Soft"
 msgstr "柔化处理"
 
 #: data/ui/pitch.ui:151
-#, fuzzy
 msgid "Phase"
 msgstr "相位"
 
@@ -1689,7 +1676,6 @@ msgid "Enable/disable this effect"
 msgstr "启用/禁用此音效"
 
 #: data/ui/plugin_row.ui:63
-#, fuzzy
 msgid "Change the position of this effect"
 msgstr "改变此音效的位置"
 
@@ -1748,7 +1734,7 @@ msgstr "处理所有输入流"
 #: data/ui/preferences_general.ui:66
 #, fuzzy
 msgid "Ignore Streams from Monitor of Devices"
-msgstr "忽略来自设备的Monitor的音频流"
+msgstr "忽略来自设备 Monitor 的音频流"
 
 #: data/ui/preferences_general.ui:78
 #, fuzzy
