@@ -2104,7 +2104,7 @@ msgstr "Canali"
 
 #: src/application.cpp:415
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:505
 msgid "Quit Easy Effects. Useful when running in service mode."
