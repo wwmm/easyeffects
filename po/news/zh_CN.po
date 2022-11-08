@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-07 23:15+0000\n"
-"PO-Revision-Date: 2022-10-28 15:24+0000\n"
-"Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
+"PO-Revision-Date: 2022-11-08 16:03+0000\n"
+"Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -140,14 +140,12 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "The documentation has been updated."
-msgstr "文档已更新"
+msgstr "文档已更新。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "自动加载预设"
+msgstr "改进了预设自动加载。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The Autogain silence threshold can now be configured by the user."

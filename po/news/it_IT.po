@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-07 23:15+0000\n"
-"PO-Revision-Date: 2022-09-15 14:22+0000\n"
+"PO-Revision-Date: 2022-11-08 16:03+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.2\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -126,6 +126,7 @@ msgid ""
 "It is now possible to add more than one filter instance to the effects "
 "pipeline."
 msgstr ""
+"È adesso possibile aggiungere più istanze dello stesso effetto alla pipeline."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
@@ -134,44 +135,51 @@ msgid ""
 "a decent alternative to the cases whre the rnnoise library does not work "
 "well."
 msgstr ""
+"Un nuovo effetto di `Miglioramento Voce` basato sulla libreria Speex è stato "
+"aggiunto. Oltre a offrire funzionalità di soppressione del rumore, tale "
+"filtro può anche rilevare e processare la voce umana. Rappresenta una buona "
+"alternativa ai casi in cui la libreria rnnoise non sia soddisfacente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Improved compatibility with Linux Studio Plugins `1.2.3`."
-msgstr ""
+msgstr "Migliorata la compatibilità con Linux Studio Plugins `1.2.3`."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
-msgstr ""
+msgstr "I profili GraphicEQ possono essere importati nell'Equalizer."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid ""
 "The application name has been changed to `Easy Effects` to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
+"Il nome dell'applicazione è stato modificato in `Easy Effects` per aderire "
+"alle specifiche della GNOME Human Interface Guidelines."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "The documentation has been updated."
-msgstr "La documentazione è stata aggiornata"
+msgstr "La documentazione è stata aggiornata."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Auto Caricamento Profili"
+msgstr "Migliorato il caricamento automatico dei profili."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The Autogain silence threshold can now be configured by the user."
 msgstr ""
+"La soglia del silenzio nell'Autogain può essere ora configurata dall'utente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "Dry and wet controls added to the Stereo Tools effect."
-msgstr ""
+msgstr "I controlli Dry e Wet sono stati aggiunti all'effetto Strumenti Stereo."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 msgid ""
 "The echo canceller now has a residual noise suppression control also based "
 "on the Speex library."
 msgstr ""
+"L'effetto di cancellazione dell'eco possiede ora un controllo di "
+"soppressione del rumore basato sulla libreria Speex."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
@@ -200,6 +208,8 @@ msgid ""
 "When the mouse was hovering over a chart the wrong value for the x axis "
 "coordinate was being shown. This regression is fixed."
 msgstr ""
+"Quando il mouse era sopra un diagramma, il valore dell'asse x visualizzato "
+"era errato. Questo problema è stato risolto."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -217,6 +227,11 @@ msgid ""
 "consideration that saving the current preset will always write it in the new "
 "format."
 msgstr ""
+"A causa delle istanze multiple di un singolo effetto, il formato dei profili "
+"ha dovuto subire una modifica, ma quello precedente è rimasto comunque "
+"compatibile per l'importazione. Si tenga presente in ogni caso che il "
+"salvataggio delle impostazioni correnti sarà comunque effettuato nel nuovo "
+"formato."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
