@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-08 16:58+0000\n"
-"PO-Revision-Date: 2022-09-06 00:23+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2022-11-08 19:38+0000\n"
+"Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -52,7 +52,7 @@ msgstr "Включить"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr "Список Исключений: Добавить/удалить приложение"
+msgstr "Список исключений: Добавить/удалить это приложение"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -87,9 +87,8 @@ msgid "_Reset Settings"
 msgstr "_Сброс настроек"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "_О программе EasyEffects"
+msgstr "_О программе Easy Effects"
 
 #: data/ui/application_window.ui:52 data/ui/reverb.ui:25
 #: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
@@ -103,7 +102,7 @@ msgstr "Меню предустановок"
 
 #: data/ui/application_window.ui:61
 msgid "Enable/disable the global bypass"
-msgstr "Включить/выключить общий обход"
+msgstr "Включить/отключить общий обход"
 
 #: data/ui/application_window.ui:66
 msgid "Global Bypass"
@@ -114,9 +113,8 @@ msgid "Primary Menu"
 msgstr "Главное меню"
 
 #: data/ui/application_window.ui:91
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "Окно EasyEffects"
+msgstr "Окно Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -124,7 +122,7 @@ msgstr "Список приложений"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr "Пустой список"
+msgstr "Список пуст"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
@@ -140,7 +138,7 @@ msgstr "Тишина"
 
 #: data/ui/autogain.ui:98
 msgid "Maximum History"
-msgstr "Исторически максимальный"
+msgstr "Исторический максимум"
 
 #: data/ui/autogain.ui:132
 msgid "Reference"
@@ -371,7 +369,7 @@ msgstr "Чёрный список приложений"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr "Отобразить чёрный список приложений"
+msgstr "Показать исключённые приложения"
 
 #: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
@@ -469,7 +467,7 @@ msgstr "Усиление вверх"
 #: data/ui/multiband_compressor.ui:132 data/ui/multiband_gate.ui:132
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:534
 msgid "Dry Level"
-msgstr "Уровень сух."
+msgstr "Уровень необработанного"
 
 #: data/ui/compressor.ui:440 data/ui/delay.ui:164 data/ui/gate.ui:347
 #: data/ui/multiband_compressor.ui:166 data/ui/multiband_gate.ui:166
@@ -490,9 +488,8 @@ msgstr "Пик"
 
 #: data/ui/compressor.ui:512 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
-#, fuzzy
 msgid "RMS"
-msgstr "RMS (среднеквадратичное значение)"
+msgstr "RMS (среднее квадратичное)"
 
 #: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:1003
 #: data/ui/multiband_compressor_band.ui:470
@@ -837,24 +834,20 @@ msgid "Right Delay"
 msgstr "Задержка правого"
 
 #: data/ui/delay.ui:132
-#, fuzzy
 msgid "Left Dry Level"
-msgstr "Уровень сух."
+msgstr "Уровень необработанного левого"
 
 #: data/ui/delay.ui:156
-#, fuzzy
 msgid "Right Dry Level"
-msgstr "Уровень сух."
+msgstr "Уровень необработанного правого"
 
 #: data/ui/delay.ui:190
-#, fuzzy
 msgid "Left Wet Level"
-msgstr "Уровень влаж."
+msgstr "Уровень обработанного левого"
 
 #: data/ui/delay.ui:213
-#, fuzzy
 msgid "Right Wet Level"
-msgstr "Уровень влаж."
+msgstr "Уровень обработанного правого"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/echo_canceller.ui:30
@@ -866,9 +859,8 @@ msgid "Filter Length"
 msgstr "Длина фильтра"
 
 #: data/ui/echo_canceller.ui:100
-#, fuzzy
 msgid "Suppression"
-msgstr "Уровень подавления"
+msgstr "Подавление"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -901,15 +893,13 @@ msgstr "Баланс"
 
 # #, fuzzy
 #: data/ui/equalizer.ui:123
-#, fuzzy
 msgid "Pitch Left"
-msgstr "Левый сайдчейн"
+msgstr "Высота тона левого"
 
 # #, fuzzy
 #: data/ui/equalizer.ui:156
-#, fuzzy
 msgid "Pitch Right"
-msgstr "Правый сайдчейн"
+msgstr "Высота тона правого"
 
 #: data/ui/equalizer.ui:251
 msgid "Split Channels"
@@ -1067,7 +1057,7 @@ msgstr "Инертность"
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 #: data/ui/gate.ui:41 src/tags_plugin_name.cpp:44
 msgid "Gate"
-msgstr "Шумовые ворота (гейт)"
+msgstr "Пропускной уровень шума (гейт)"
 
 #: data/ui/gate.ui:159 data/ui/gate.ui:252 data/ui/multiband_gate_band.ui:243
 #: data/ui/multiband_gate_band.ui:336
@@ -1079,9 +1069,8 @@ msgid "Hysteresis"
 msgstr "Гистерезис"
 
 #: data/ui/gate.ui:326
-#, fuzzy
 msgid "Mix"
-msgstr "Смешанный"
+msgstr "Микс"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
@@ -1092,13 +1081,12 @@ msgid "Release Zone Start"
 msgstr "Зона Срабатывания"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "Режим низкочастотного фильтра"
+msgstr "Фильтр нижних частот"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "Простая скользящая средняя"
 
 #: data/ui/gate.ui:751
 msgid "Internal"
@@ -1334,13 +1322,12 @@ msgid "Output Volume"
 msgstr "Громкость на выходе"
 
 #: data/ui/loudness.ui:127
-#, fuzzy
 msgid "Clipping"
-msgstr "Схема каналов"
+msgstr "Клиппинг"
 
 #: data/ui/loudness.ui:155
 msgid "Clipping Range"
-msgstr ""
+msgstr "Диапазон клиппинга"
 
 #: data/ui/maximizer.ui:63
 msgid "Ceiling"
@@ -1469,9 +1456,8 @@ msgid "Band Curve"
 msgstr "Кривая полосы"
 
 #: data/ui/multiband_gate_band.ui:777
-#, fuzzy
 msgid "Band Reduction"
-msgstr "Полоса 1 макс. подавление"
+msgstr "Уменьшение полосы"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1482,14 +1468,13 @@ msgid "Device Management"
 msgstr "Управление Устройством"
 
 #: data/ui/pipe_manager_box.ui:35
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
-"Рекомендуется НЕ устанавливать источники EasyEffects в качестве Устройства "
-"По-умолчанию во внешних приложениях (таких как Настройки Gnome и Параметры "
-"Системы Plasma)."
+"Рекомендуется НЕ устанавливать источники Easy Effects в качестве "
+"стандартного устройства во внешних приложениях (таких как Настройки Gnome и "
+"Параметры системы Plasma)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1880,7 +1865,7 @@ msgstr "Сохранить текущие настройки в этот фай�
 
 #: data/ui/preset_row.ui:44
 msgid "Remove this preset file"
-msgstr "Удалить этот файл с предустановками"
+msgstr "Удалить этот файл предустановки"
 
 #: data/ui/presets_menu.ui:51
 msgid "New Output Preset Name"
@@ -2028,9 +2013,8 @@ msgid "Overview"
 msgstr "Обзор"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "Открыть руководство EasyEffects"
+msgstr "Открыть руководство Easy Effects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2041,9 +2025,8 @@ msgid "Close the Window"
 msgstr "Закрыть окно"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "Выход из EasyEffects"
+msgstr "Выход из Easy Effects"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2135,7 +2118,7 @@ msgstr "Стерео фаза"
 
 #: src/app_info.cpp:64
 msgid "Running"
-msgstr "Выполняется"
+msgstr "Работает"
 
 #: src/app_info.cpp:66
 msgid "Suspended"
@@ -2159,25 +2142,23 @@ msgstr "Неизвестно"
 
 #: src/app_info.cpp:228
 msgid "channels"
-msgstr "каналы"
+msgstr "канала(-ов)"
 
 #: src/application.cpp:415
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:505
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Выход из EasyEffects. Полезно при запуске в режиме службы."
+msgstr "Выход из Easy Effects. Полезно при работе в режиме службы."
 
 #: src/application.cpp:508
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 
 #: src/application.cpp:511
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "Сброс настроек EasyEffects."
+msgstr "Сбросить Easy Effects."
 
 #: src/application.cpp:514
 msgid "Hide the Window."
@@ -2277,22 +2258,19 @@ msgstr ""
 "Пожалуйста, проверьте его содержимое."
 
 #: src/equalizer_ui.cpp:554
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "Импортировать файл предустановки APO"
+msgstr "Импортировать файл предустановки GraphicEQ"
 
 #: src/equalizer_ui.cpp:560
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Предустановки входа"
+msgstr "Предустановки GraphicEQ"
 
 #: src/equalizer_ui.cpp:578
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
 msgstr ""
-"Предустановки APO не загружены. Формат файла может быть не верным. "
+"Предустановка GraphicEQ не загружена. Формат файла может быть не верным. "
 "Пожалуйста, проверьте его содержимое."
 
 #: src/pipe_manager_box.cpp:327
@@ -2364,7 +2342,7 @@ msgstr "Эквалайзер"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Exciter"
-msgstr "Эксайтер"
+msgstr "Гармонический возбудитель (эксайтер)"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Filter"
@@ -2372,7 +2350,7 @@ msgstr "Фильтр"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Limiter"
-msgstr "Ограничитель уровня звука (лимитер)"
+msgstr "Ограничитель (лимитер)"
 
 #: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
@@ -2384,7 +2362,7 @@ msgstr "Многополосный компрессор"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
-msgstr "Многополосные шумовые ворота"
+msgstr "Многополосный пропускной уровень"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Pitch"
@@ -2400,7 +2378,7 @@ msgstr "Подавление шума"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr ""
+msgstr "Речевой процессор"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2409,12 +2387,12 @@ msgstr "Стереокорректоры"
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:81
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} недоступно"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:84
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} не установлено в системе"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at
