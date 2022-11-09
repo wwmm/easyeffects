@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-08 16:58+0000\n"
-"PO-Revision-Date: 2022-11-08 19:38+0000\n"
+"PO-Revision-Date: 2022-11-09 18:47+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -60,15 +60,15 @@ msgstr "Исключить"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
 msgid "Mute Application"
-msgstr "Заглушить Приложение"
+msgstr "Заглушить приложение"
 
 #: data/ui/app_info.ui:270
 msgid "Change the volume of this application"
-msgstr "Изменить громкость приложения"
+msgstr "Изменить громкость этого приложения"
 
 #: data/ui/app_info.ui:272
 msgid "Application Volume"
-msgstr "Громкость Приложения"
+msgstr "Громкость приложения"
 
 #: data/ui/application_window.ui:6
 msgid "_Preferences"
@@ -126,7 +126,7 @@ msgstr "Список пуст"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
-msgstr "Нет доступных приложений аудио"
+msgstr "Нет доступных звуковых приложений"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
@@ -311,7 +311,7 @@ msgstr "Предустановка"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr "Удалить автозагружаемую предустановку"
+msgstr "Убрать эту предустановку из автозагрузки"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:529 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/gate.ui:668
@@ -405,7 +405,7 @@ msgstr "Порог усиления"
 
 #: data/ui/compressor.ui:119 data/ui/multiband_compressor_band.ui:700
 msgid "Boost Amount"
-msgstr "Величина Усиления"
+msgstr "Величина усиления"
 
 #: data/ui/compressor.ui:165 data/ui/gate.ui:60 data/ui/limiter.ui:262
 #: data/ui/limiter.ui:485 data/ui/multiband_compressor_band.ui:186
@@ -422,7 +422,7 @@ msgstr "Время"
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
-msgstr "Порог срабатывания"
+msgstr "Порог"
 
 #: data/ui/compressor.ui:212 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
@@ -467,13 +467,13 @@ msgstr "Усиление вверх"
 #: data/ui/multiband_compressor.ui:132 data/ui/multiband_gate.ui:132
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:534
 msgid "Dry Level"
-msgstr "Уровень необработанного"
+msgstr "Уровень ориг."
 
 #: data/ui/compressor.ui:440 data/ui/delay.ui:164 data/ui/gate.ui:347
 #: data/ui/multiband_compressor.ui:166 data/ui/multiband_gate.ui:166
 #: data/ui/reverb.ui:242 data/ui/stereo_tools.ui:570
 msgid "Wet Level"
-msgstr "Уровень влаж."
+msgstr "Уровень обраб."
 
 # #, fuzzy
 #: data/ui/compressor.ui:482 data/ui/compressor.ui:994 data/ui/gate.ui:621
@@ -489,7 +489,7 @@ msgstr "Пик"
 #: data/ui/compressor.ui:512 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
 msgid "RMS"
-msgstr "RMS (среднее квадратичное)"
+msgstr "Среднее квадратичное (RMS)"
 
 #: data/ui/compressor.ui:513 data/ui/compressor.ui:865 data/ui/gate.ui:1003
 #: data/ui/multiband_compressor_band.ui:470
@@ -582,7 +582,7 @@ msgstr "Скорость реакции"
 #: data/ui/compressor.ui:730 data/ui/gate.ui:868 data/ui/limiter.ui:220
 #: data/ui/multiband_compressor_band.ui:667 data/ui/multiband_gate_band.ui:728
 msgid "Lookahead"
-msgstr "Задержка (lookahead)"
+msgstr "Упреждение"
 
 # #, fuzzy
 #: data/ui/compressor.ui:773 data/ui/gate.ui:911
@@ -606,17 +606,17 @@ msgstr "Откл"
 #: data/ui/compressor.ui:823 data/ui/compressor.ui:879 data/ui/gate.ui:961
 #: data/ui/gate.ui:1017
 msgid "12 dB/oct"
-msgstr "12 Дб/окт"
+msgstr "12 дБ/окт"
 
 #: data/ui/compressor.ui:824 data/ui/compressor.ui:880 data/ui/gate.ui:962
 #: data/ui/gate.ui:1018
 msgid "24 dB/oct"
-msgstr "24 Дб/окт"
+msgstr "24 дБ/окт"
 
 #: data/ui/compressor.ui:825 data/ui/compressor.ui:881 data/ui/gate.ui:963
 #: data/ui/gate.ui:1019
 msgid "36 dB/oct"
-msgstr "36 Дб/окт"
+msgstr "36 дБ/окт"
 
 #: data/ui/compressor.ui:832 data/ui/gate.ui:970
 msgid "High-Pass Filter Mode"
@@ -650,7 +650,7 @@ msgstr "Л"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:507
 msgid "Left Channel"
-msgstr "Левый Канал"
+msgstr "Левый канал"
 
 #: data/ui/convolver.ui:53
 msgid "R"
@@ -658,7 +658,7 @@ msgstr "П"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:518
 msgid "Right Channel"
-msgstr "Правый Канал"
+msgstr "Правый канал"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
@@ -810,7 +810,7 @@ msgstr "Частота 2 пик добротности"
 
 #: data/ui/deesser.ui:264
 msgid "Laxity"
-msgstr "Допуск на срабатывание"
+msgstr "Допуск"
 
 #: data/ui/deesser.ui:579
 msgid "Detected"
@@ -835,19 +835,19 @@ msgstr "Задержка правого"
 
 #: data/ui/delay.ui:132
 msgid "Left Dry Level"
-msgstr "Уровень необработанного левого"
+msgstr "Уровень ориг. левого"
 
 #: data/ui/delay.ui:156
 msgid "Right Dry Level"
-msgstr "Уровень необработанного правого"
+msgstr "Уровень ориг. правого"
 
 #: data/ui/delay.ui:190
 msgid "Left Wet Level"
-msgstr "Уровень обработанного левого"
+msgstr "Уровень обраб. левого"
 
 #: data/ui/delay.ui:213
 msgid "Right Wet Level"
-msgstr "Уровень обработанного правого"
+msgstr "Уровень обраб. правого"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/echo_canceller.ui:30
@@ -872,19 +872,19 @@ msgstr "Число полос"
 
 #: data/ui/equalizer.ui:73
 msgid "IIR"
-msgstr "IIR"
+msgstr "БИХ (IIR)"
 
 #: data/ui/equalizer.ui:74
 msgid "FIR"
-msgstr "FIR"
+msgstr "КИХ (FIR)"
 
 #: data/ui/equalizer.ui:75
 msgid "FFT"
-msgstr "FFT"
+msgstr "БПФ (FFT)"
 
 #: data/ui/equalizer.ui:76
 msgid "SPM"
-msgstr "SPM"
+msgstr "ФСМ (SPM)"
 
 #: data/ui/equalizer.ui:90 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:393
@@ -1057,7 +1057,7 @@ msgstr "Инертность"
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 #: data/ui/gate.ui:41 src/tags_plugin_name.cpp:44
 msgid "Gate"
-msgstr "Пропускной уровень шума (гейт)"
+msgstr "Пропускной уровень (гейт)"
 
 #: data/ui/gate.ui:159 data/ui/gate.ui:252 data/ui/multiband_gate_band.ui:243
 #: data/ui/multiband_gate_band.ui:336
@@ -1074,11 +1074,11 @@ msgstr "Микс"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr "Зона Атаки"
+msgstr "Зона атаки"
 
 #: data/ui/gate.ui:564
 msgid "Release Zone Start"
-msgstr "Зона Срабатывания"
+msgstr "Зона восстановления"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
 msgid "Low-Pass Filter"
@@ -1094,7 +1094,7 @@ msgstr "Внутренний"
 
 #: data/ui/gate.ui:1358 data/ui/multiband_gate_band.ui:856
 msgid "Gating"
-msgstr "Гейтинг"
+msgstr "Гейтирование"
 
 #: data/ui/limiter.ui:58
 msgid "Oversampling"
@@ -1259,12 +1259,12 @@ msgstr "Стереосвязка"
 #: data/ui/limiter.ui:443 data/ui/multiband_compressor_band.ui:116
 #: data/ui/multiband_gate_band.ui:89
 msgid "External Sidechain"
-msgstr "Внешняя Цепочка"
+msgstr "Внешний сайдчейн"
 
 #: data/ui/limiter.ui:456 data/ui/multiband_compressor.ui:91
 #: data/ui/multiband_gate.ui:91
 msgid "External Sidechain Source"
-msgstr "Источник Внешней Цепочки"
+msgstr "Источник внешнего сайдчейна"
 
 #: data/ui/limiter.ui:475
 msgid "Auto Leveling"
@@ -1311,7 +1311,7 @@ msgstr "Плоский"
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/loudness.ui:59
 msgid "FFT Size"
-msgstr "Размер FFT"
+msgstr "Размер БПФ"
 
 #: data/ui/loudness.ui:84
 msgid "Fast Fourier Transform Size"
@@ -1495,7 +1495,7 @@ msgstr "Выбрать устройство вывода"
 
 #: data/ui/pipe_manager_box.ui:112
 msgid "Server Information"
-msgstr "Информация о сервере"
+msgstr "Сведения о сервере"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
@@ -1975,7 +1975,7 @@ msgstr "Диско"
 
 #: data/ui/reverb.ui:627
 msgid "Large Occupied Hall"
-msgstr "Большой занятый чем-то зал"
+msgstr "Большой занятый зал"
 
 #: data/ui/rnnoise.ui:31
 msgid "Import Model"
@@ -2050,11 +2050,11 @@ msgstr "ЛП > ЛП (стерео по умолчанию)"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "Стерео > Моно-Раздельно"
+msgstr "Стерео > Моно-раздельно"
 
 #: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "Моно-Раздельно > Стерео"
+msgstr "Моно-раздельно > Стерео"
 
 #: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
@@ -2178,15 +2178,15 @@ msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
-msgstr "Не Стандартный Файл"
+msgstr "Нестандартный файл"
 
 #: src/convolver_menu_impulses.cpp:106
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr "Файл Импульса Может Быть Поврежден или Не Поддерживается"
+msgstr "Файл импульса может быть поврежден или не поддерживается"
 
 #: src/convolver_menu_impulses.cpp:111
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr "Поддерживаются только Стерео файлы импульса"
+msgstr "Поддерживаются только файлы импульса стерео"
 
 #: src/convolver_menu_impulses.cpp:121
 msgid "Impulse File Not Imported"
@@ -2309,7 +2309,7 @@ msgstr "Модели RNNoise"
 # «Бас-Энхансер» или «Глубокий бас»
 #: src/tags_plugin_name.cpp:32
 msgid "Bass Enhancer"
-msgstr "Усиление басов (бас-энхансер)"
+msgstr "Усилитель басов (бас-энхансер)"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Bass Loudness"
@@ -2334,7 +2334,7 @@ msgstr "Антишипение (деэссер)"
 
 #: src/tags_plugin_name.cpp:40
 msgid "Echo Canceller"
-msgstr "Эхоподавление"
+msgstr "Эхоподавитель"
 
 #: src/tags_plugin_name.cpp:41
 msgid "Equalizer"
@@ -2400,11 +2400,11 @@ msgstr "{} не установлено в системе"
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:116
 msgid "Close (Press ESC)"
-msgstr "Закрыть (Нажмите ESC)"
+msgstr "Закрыть (нажмите ESC)"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
-msgstr "-inf"
+msgstr "∞"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "Звуковые эффекты для приложений PipeWire"
