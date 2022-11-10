@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-08 16:58+0000\n"
+"POT-Creation-Date: 2022-11-10 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -201,7 +201,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625 src/application_ui.cpp:278
+#: data/ui/stereo_tools.ui:625
 msgid "Input"
 msgstr ""
 
@@ -228,7 +228,6 @@ msgstr ""
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
-#: src/application_ui.cpp:277
 msgid "Output"
 msgstr ""
 
@@ -2123,8 +2122,16 @@ msgstr ""
 msgid "Show available presets."
 msgstr ""
 
+#: src/application_ui.cpp:277
+msgid "_Output"
+msgstr ""
+
+#: src/application_ui.cpp:278
+msgid "_Input"
+msgstr ""
+
 #: src/application_ui.cpp:279
-msgid "PipeWire"
+msgid "_PipeWire"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:101
