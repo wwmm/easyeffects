@@ -84,7 +84,7 @@ conf.set('COMMIT_DESC', '"@VCS_TAG@"')
 config_h = declare_dependency(
   sources: vcs_tag(
     command: ['git', 'rev-parse', '--short', 'HEAD'],
-    fallback: 'Could find commit of build',
+    fallback: 'Could not find commit of build',
     input: configure_file(
       output: 'config.h.in',
       configuration: conf
