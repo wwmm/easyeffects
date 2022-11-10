@@ -274,9 +274,13 @@ void application_window_init(ApplicationWindow* self) {
   self->sie_ui = ui::effects_box::create();
   self->pm_box = ui::pipe_manager_box::create();
 
-  auto* soe_ui_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->soe_ui), "stream_output", _("Output"));
-  auto* sie_ui_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->sie_ui), "stream_input", _("Input"));
-  auto* pm_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->pm_box), "page_pipewire", _("PipeWire"));
+  auto* soe_ui_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->soe_ui), "stream_output", _("_Output"));
+  auto* sie_ui_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->sie_ui), "stream_input", _("_Input"));
+  auto* pm_box_page = adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->pm_box), "page_pipewire", _("_PipeWire"));
+
+  adw_view_stack_page_set_use_underline(soe_ui_page, true);
+  adw_view_stack_page_set_use_underline(sie_ui_page, true);
+  adw_view_stack_page_set_use_underline(pm_box_page, true);
 
   adw_view_stack_page_set_icon_name(soe_ui_page, "audio-speakers-symbolic");
   adw_view_stack_page_set_icon_name(sie_ui_page, "audio-input-microphone-symbolic");
