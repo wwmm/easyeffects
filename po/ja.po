@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-08 16:58+0000\n"
+"POT-Creation-Date: 2022-11-10 15:49+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -203,7 +203,7 @@ msgstr "出力ゲイン"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625 src/application_ui.cpp:278
+#: data/ui/stereo_tools.ui:625
 msgid "Input"
 msgstr "入力"
 
@@ -230,7 +230,6 @@ msgstr "プラグイン入力ゲイン"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
-#: src/application_ui.cpp:277
 msgid "Output"
 msgstr "出力"
 
@@ -2128,8 +2127,19 @@ msgstr "グローバルバイパス。1 で有効、2 で無効、3 でステー
 msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 
+#: src/application_ui.cpp:277
+#, fuzzy
+msgid "_Output"
+msgstr "出力"
+
+#: src/application_ui.cpp:278
+#, fuzzy
+msgid "_Input"
+msgstr "入力"
+
 #: src/application_ui.cpp:279
-msgid "PipeWire"
+#, fuzzy
+msgid "_PipeWire"
 msgstr "PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
