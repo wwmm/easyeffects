@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-10 15:49+0000\n"
-"PO-Revision-Date: 2022-10-17 00:04+0000\n"
+"POT-Creation-Date: 2022-11-08 16:58+0000\n"
+"PO-Revision-Date: 2022-11-10 15:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -123,6 +123,8 @@ msgid ""
 "It is now possible to add more than one filter instance to the effects "
 "pipeline."
 msgstr ""
+"Ahora es posible añadir más de una instancia de filtro a la cadena de "
+"efectos."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
@@ -134,11 +136,12 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Improved compatibility with Linux Studio Plugins `1.2.3`."
-msgstr ""
+msgstr "Mejorada la compatibilidad con los plugins de Linux Studio `1.2.3`."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
 msgstr ""
+"Los preajustes de GraphicEQ pueden importarse al efecto del ecualizador."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid ""
@@ -147,28 +150,30 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
-#, fuzzy
 msgid "The documentation has been updated."
-msgstr "La documentación ha sido actualizada"
+msgstr "Se ha actualizado la información."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Carga automática de perfiles"
+msgstr "Mejora de la autocarga de los preajustes."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The Autogain silence threshold can now be configured by the user."
 msgstr ""
+"Ahora el usuario puede configurar el umbral de silencio de la ganancia "
+"automática."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "Dry and wet controls added to the Stereo Tools effect."
-msgstr ""
+msgstr "Se agregaron controles secos y húmedos al efecto Stereo Tools."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:49
 msgid ""
 "The echo canceller now has a residual noise suppression control also based "
 "on the Speex library."
 msgstr ""
+"El cancelador del eco ahora tiene un control para la supresión del ruido "
+"residual también basado en la biblioteca de Speed."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
@@ -197,6 +202,8 @@ msgid ""
 "When the mouse was hovering over a chart the wrong value for the x axis "
 "coordinate was being shown. This regression is fixed."
 msgstr ""
+"Al pasar el ratón por encima de un gráfico se mostraba un valor erróneo de "
+"la coordenada del eje x. Esta regresión se ha corregido."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -214,6 +221,10 @@ msgid ""
 "consideration that saving the current preset will always write it in the new "
 "format."
 msgstr ""
+"Debido a la nueva función de instancias múltiples, el formato preestablecido "
+"ha cambiado, pero el antiguo aún es compatible y puede cargarse. De todos "
+"modos, tenga en cuenta que al guardar el preset actual siempre lo escribirá "
+"en el nuevo formato."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
