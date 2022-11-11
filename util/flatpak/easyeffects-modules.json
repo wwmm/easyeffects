@@ -421,8 +421,8 @@
                     "sources": [
                         {
                             "type": "git",
-                            "url": "https://gitlab.freedesktop.org/wayland/wayland",
-                            "branch": "1.21.0",
+                            "url": "https://github.com/wayland-project/wayland",
+                            "tag": "1.21.0",
                             "commit": "8135e856ebd79872f886466e9cee39affb7d9ee8"
                         }
                     ]
