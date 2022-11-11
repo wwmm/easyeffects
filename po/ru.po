@@ -682,7 +682,7 @@ msgstr "Логарифмическая шкала"
 
 #: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
 msgid "Autogain"
-msgstr "Нормализация громкости"
+msgstr "Авторегулятор"
 
 #: data/ui/convolver.ui:148
 msgid "Rate"
@@ -2210,9 +2210,8 @@ msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
 #: src/application_ui.cpp:277
-#, fuzzy
 msgid "_Output"
-msgstr "Выход"
+msgstr "Выхо_д"
 
 # ###############################################
 # https://github.com/wwmm/easyeffects/pull/289
@@ -2225,14 +2224,12 @@ msgstr "Выход"
 # msgstr "Влияние комплексных измерений"
 # ###############################################
 #: src/application_ui.cpp:278
-#, fuzzy
 msgid "_Input"
-msgstr "Вход"
+msgstr "Вх_од"
 
 #: src/application_ui.cpp:279
-#, fuzzy
 msgid "_PipeWire"
-msgstr "PipeWire"
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
@@ -2240,7 +2237,7 @@ msgstr "Нестандартный файл"
 
 #: src/convolver_menu_impulses.cpp:106
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr "Файл импульса может быть поврежден или не поддерживается"
+msgstr "Файл импульса повреждён или не поддерживается"
 
 #: src/convolver_menu_impulses.cpp:111
 msgid "Only Stereo Impulse Files Are Supported"
@@ -3746,3 +3743,15 @@ msgstr "∞"
 
 #~ msgid "Exponent"
 #~ msgstr "Степень"
+
+#~ msgid "Red Noise"
+#~ msgstr "Красный шум"
+
+#~ msgid "Noise Suppressor"
+#~ msgstr "Простой шумодав"
+
+#~ msgid "Gain Controller"
+#~ msgstr "Автоконтроль усиления (AGC)"
+
+#~ msgid "Voice Detector"
+#~ msgstr "Обнаруживатель голоса"
