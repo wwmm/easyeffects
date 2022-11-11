@@ -10,7 +10,8 @@
         "--socket=wayland",
         "--device=dri",
         "--filesystem=xdg-run/pipewire-0:ro",
-        "--env=LV2_PATH=/app/lib/lv2:/app/extensions/Plugins/lv2"
+        "--env=LV2_PATH=/app/lib/lv2:/app/extensions/Plugins/lv2",
+        "--env=LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/lib/pipewire-0.3/jack"
     ],
     "cleanup": [
         "*.a",

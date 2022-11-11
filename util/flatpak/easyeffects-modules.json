@@ -184,6 +184,7 @@
         },
         {
             "name": "pipewire",
+            "//": "note this needs LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/lib/pipewire-0.3/jack set to use the correct libjack",
             "buildsystem": "meson",
             "config-opts": [
                 "-Dgstreamer=disabled",
@@ -191,7 +192,8 @@
                 "-Dsystemd=disabled",
                 "-Dudev=disabled",
                 "-Dudevrulesdir=disabled",
-                "-Dsession-managers=[]"
+                "-Dsession-managers=[]",
+                "-Djack=enabled"
             ],
             "sources": [
                 {
