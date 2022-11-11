@@ -34,12 +34,15 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/jiixyj/libebur128.git",
+                    "url": "https://github.com/jiixyj/libebur128",
                     "tag": "v1.2.6",
                     "commit": "67b33abe1558160ed76ada1322329b0e9e058b02",
                     "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)"
+                        "type": "json",
+                        "url": "https://api.github.com/repos/jiixyj/libebur128/releases/latest",
+                        "tag-query": ".tag_name",
+                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
+                        "timestamp-query": ".published_at"
                     }
                 }
             ],
@@ -184,6 +187,7 @@
         },
         {
             "name": "pipewire",
+            "//": "note this needs LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/lib/pipewire-0.3/jack set to use the correct libjack",
             "buildsystem": "meson",
             "config-opts": [
                 "-Dgstreamer=disabled",
@@ -191,7 +195,8 @@
                 "-Dsystemd=disabled",
                 "-Dudev=disabled",
                 "-Dudevrulesdir=disabled",
-                "-Dsession-managers=[]"
+                "-Dsession-managers=[]",
+                "-Djack=enabled"
             ],
             "sources": [
                 {
@@ -216,8 +221,11 @@
                     "tag": "v3.11.2",
                     "commit": "bc889afb4c5bf1c0d8ee29ef35eaaf4c8bef8a5d",
                     "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
+                        "type": "json",
+                        "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
+                        "tag-query": ".tag_name",
+                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
+                        "timestamp-query": ".published_at"
                     }
                 }
             ]
@@ -289,9 +297,17 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/fmtlib/fmt/releases/download/8.0.1/fmt-8.0.1.zip",
-                    "sha256": "a627a56eab9554fc1e5dd9a623d0768583b3a383ff70a4312ba68f94c9d415bf"
+                    "type": "git",
+                    "url": "https://github.com/fmtlib/fmt",
+                    "tag": "9.1.0",
+                    "commit": "a33701196adfad74917046096bf5a2aa0ab0bb50",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/fmtlib/fmt/releases/latest",
+                        "tag-query": ".tag_name",
+                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
+                        "timestamp-query": ".published_at"
+                    }
                 }
             ]
         },
@@ -308,151 +324,6 @@
                         "stable-only": true,
                         "url-template": "https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz"
                     }
-                }
-            ]
-        },
-        {
-            "name": "libadwaita",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dintrospection=disabled",
-                "-Dgtk_doc=false",
-                "-Dtests=false",
-                "-Dexamples=false",
-                "-Dvapi=false"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "tag": "1.2.0",
-                    "commit": "a905117bd2150de9e85d65f8cdce8d8fb001b89e"
-                }
-            ],
-            "cleanup": [
-                "/include",
-                "/lib/pkgconfig"
-            ],
-            "modules": [
-                {
-                    "name": "pango",
-                    "buildsystem": "meson",
-                    "config-opts": [
-                        "-Dtests=false",
-                        "-Dbuild-documentation=false"
-                    ],
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://gitlab.gnome.org/GNOME/pango.git",
-                            "tag": "1.50.11",
-                            "commit": "eabdbd54ee38fa658be574c4fa4574a05c755f16"
-                        }
-                    ],
-                    "cleanup": [
-                        "/include",
-                        "/lib/debug"
-                    ]
-                },
-                {
-                    "name": "libsass",
-                    "buildsystem": "meson",
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://github.com/lazka/libsass.git",
-                            "branch": "meson",
-                            "commit": "302397c0c8ae2d7ab02f45ea461c2c3d768f248e"
-                        }
-                    ]
-                },
-                {
-                    "name": "sassc",
-                    "buildsystem": "meson",
-                    "cleanup": [
-                        "*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://github.com/lazka/sassc.git",
-                            "branch": "meson",
-                            "commit": "82803377c33247265d779af034eceb5949e78354"
-                        }
-                    ]
-                },
-                {
-                    "name": "meson",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "pip3 install --ignore-installed --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=/$FLATPAK_DEST \"meson\""
-                    ],
-                    "cleanup": [
-                    	"*"
-                    ],
-                    "sources": [
-                        {
-                            "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/a2/b8/6a06ff0f13a00fc3c3e7d222a995526cbca26c1ad107691b6b1badbbabf1/wheel-0.38.4.tar.gz",
-                            "sha256": "965f5259b566725405b05e7cf774052044b1ed30119b5d586b2703aafe8719ac"
-                        },
-                        {
-                            "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/26/f4/ca5cb6df512f453ad50f78900bf7ec6a5491ee44bb49d0f6f76802dbdd43/setuptools-65.5.1.tar.gz",
-                            "sha256": "e197a19aa8ec9722928f2206f8de752def0e4c9fc6953527360d1c36d94ddb2f"
-                        },
-                        {
-                            "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/48/fb/09b5098772ce484b203be026d8047c596a28107e1ecc0df1412058d9f715/meson-0.60.3.tar.gz",
-                            "sha256": "87ca5fa9358a01864529392bd64e027158eb94afca7c7766b1866ef27eccb98e"
-                        }
-                    ]
-                },
-                {
-                    "name": "wayland",
-                    "buildsystem": "meson",
-                	"config-opts": [
-                        "-Dtests=false",
-                        "-Ddocumentation=false"
-                    ],
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://github.com/wayland-project/wayland",
-                            "tag": "1.21.0",
-                            "commit": "8135e856ebd79872f886466e9cee39affb7d9ee8"
-                        }
-                    ]
-                },
-                {
-                    "name": "gtk",
-                    "buildsystem": "meson",
-                    "build-options": {
-			"env": {
-			    "PYTHONPATH": "/app/utils/lib/python3.9/site-packages:/app/lib/python3.9/site-packages:/usr/lib/python3.9/site-packages"
-			}
-		    },
-                    "config-opts": [
-                        "-Dintrospection=disabled",
-                        "-Dgtk_doc=false",
-                        "-Dbuild-tests=false",
-                        "-Dbuild-examples=false"
-                    ],
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://gitlab.gnome.org/GNOME/gtk.git",
-                            "tag": "4.8.2",
-                            "commit": "81b842636071fd757a99deddecd99222f08b4b0c"
-                        }
-                    ],
-                    "cleanup": [
-                        "/include",
-                        "/lib/debug"
-                    ]
                 }
             ]
         }
