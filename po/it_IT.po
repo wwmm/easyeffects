@@ -2167,19 +2167,16 @@ msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
 #: src/application_ui.cpp:277
-#, fuzzy
 msgid "_Output"
-msgstr "Uscita"
+msgstr "_Uscita"
 
 #: src/application_ui.cpp:278
-#, fuzzy
 msgid "_Input"
-msgstr "Ingresso"
+msgstr "_Ingresso"
 
 #: src/application_ui.cpp:279
-#, fuzzy
 msgid "_PipeWire"
-msgstr "PipeWire"
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
