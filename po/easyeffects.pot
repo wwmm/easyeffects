@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-10 15:49+0000\n"
+"POT-Creation-Date: 2022-11-11 17:50+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -200,7 +200,7 @@ msgstr ""
 #: data/ui/maximizer.ui:146 data/ui/multiband_compressor.ui:454
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
-#: data/ui/rnnoise.ui:155 data/ui/stereo_tools.ui:40
+#: data/ui/rnnoise.ui:155 data/ui/speex.ui:228 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:625
 msgid "Input"
 msgstr ""
@@ -213,7 +213,7 @@ msgstr ""
 #: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:196
 #: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
-#: data/ui/rnnoise.ui:174 data/ui/stereo_tools.ui:644
+#: data/ui/rnnoise.ui:174 data/ui/speex.ui:247 data/ui/stereo_tools.ui:644
 msgid "Plugin Input Gain"
 msgstr ""
 
@@ -227,7 +227,7 @@ msgstr ""
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
-#: data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
+#: data/ui/speex.ui:312 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
 msgid "Output"
 msgstr ""
 
@@ -239,7 +239,7 @@ msgstr ""
 #: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:280
 #: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
-#: data/ui/rnnoise.ui:258 data/ui/stereo_tools.ui:728
+#: data/ui/rnnoise.ui:258 data/ui/speex.ui:331 data/ui/stereo_tools.ui:728
 msgid "Plugin Output Gain"
 msgstr ""
 
@@ -252,7 +252,7 @@ msgstr ""
 #: data/ui/gate.ui:1392 data/ui/limiter.ui:894 data/ui/loudness.ui:343
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
-#: data/ui/rnnoise.ui:321 data/ui/stereo_tools.ui:791
+#: data/ui/rnnoise.ui:321 data/ui/speex.ui:394 data/ui/stereo_tools.ui:791
 msgid "Reset"
 msgstr ""
 
@@ -264,7 +264,7 @@ msgstr ""
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
-#: data/ui/stereo_tools.ui:805
+#: data/ui/speex.ui:408 data/ui/stereo_tools.ui:805
 msgid "Using"
 msgstr ""
 
@@ -1976,6 +1976,38 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
+msgstr ""
+
+#: data/ui/speex.ui:29
+msgid "Denoise"
+msgstr ""
+
+#: data/ui/speex.ui:41
+msgid "Automatic Gain Control"
+msgstr ""
+
+#: data/ui/speex.ui:53
+msgid "Voice Detection"
+msgstr ""
+
+#: data/ui/speex.ui:65
+msgid "Dereverberation"
+msgstr ""
+
+#: data/ui/speex.ui:87
+msgid "Voice Activity Probability"
+msgstr ""
+
+#: data/ui/speex.ui:99
+msgid "Start"
+msgstr ""
+
+#: data/ui/speex.ui:133
+msgid "Continue"
+msgstr ""
+
+#: data/ui/speex.ui:175
+msgid "Noise Suppression"
 msgstr ""
 
 #: data/ui/stereo_tools.ui:79
