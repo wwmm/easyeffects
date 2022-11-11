@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-10 15:49+0000\n"
-"PO-Revision-Date: 2022-10-28 14:53+0000\n"
-"Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
+"PO-Revision-Date: 2022-11-11 13:15+0000\n"
+"Last-Translator: Eric <hamburger1024@mailbox.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1594,7 +1594,6 @@ msgid "High Quality"
 msgstr "高品质"
 
 #: data/ui/pitch.ui:45
-#, fuzzy
 msgid "High Consistency"
 msgstr "高一贯性"
 
@@ -2140,19 +2139,16 @@ msgid "Show available presets."
 msgstr "显示可用预设。"
 
 #: src/application_ui.cpp:277
-#, fuzzy
 msgid "_Output"
-msgstr "输出"
+msgstr "输出(_O)"
 
 #: src/application_ui.cpp:278
-#, fuzzy
 msgid "_Input"
-msgstr "输入"
+msgstr "输入(_I)"
 
 #: src/application_ui.cpp:279
-#, fuzzy
 msgid "_PipeWire"
-msgstr "PipeWire"
+msgstr "PipeWire(_P)"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
