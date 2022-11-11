@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-10 15:49+0000\n"
-"PO-Revision-Date: 2022-11-09 18:47+0000\n"
+"PO-Revision-Date: 2022-11-11 13:33+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -48,7 +48,7 @@ msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"Easy Effects является приемником PulseEffects, но поддерживает только аудио-"
+"Easy Effects является преемником PulseEffects, но поддерживает только аудио-"
 "сервер PipeWire. Пользователям PulseAudio следует оставаться на PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
@@ -163,7 +163,7 @@ msgstr "Улучшена автозагрузка предустановок."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The Autogain silence threshold can now be configured by the user."
-msgstr "Порог тишины Autogain теперь может быть настроен пользователем."
+msgstr "Порог тишины авторегулятора теперь может быть настроен пользователем."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "Dry and wet controls added to the Stereo Tools effect."
@@ -350,8 +350,8 @@ msgid ""
 "of problems our users were having when using OBS."
 msgstr ""
 "Были добавили новые настройки конфигурации. Они позволят EasyEffects "
-"игнорировать потоки, которые он создает сам. Это должно исправить некоторые "
-"проблемы, которые возникали у пользователей при использовании OBS."
+"игнорировать потоки, которые он создаёт сам. Это должно исправить некоторые "
+"проблемы, которые возникали у пользователей в работе с OBS."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
 msgid "The code that shows the stream sample format has been improved"
@@ -363,13 +363,13 @@ msgid ""
 "build a Debian package. See issue 1000 for more information."
 msgstr ""
 "Теперь использование библиотеки rnnoise является опциональным. Это должно "
-"помочь мейнтейнерам в сборке пакетов для Debian. Подробности в ошибке 1000."
+"помочь кураторам в сборке пакетов для Debian. Подробности в ошибке 1000."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:107
 msgid ""
 "Our logs now show the source code line where the messages are being printed"
 msgstr ""
-"Теперь в наших отчетах отображается строка кода, ответственная за вывод "
+"Теперь в наших отчётах отображается строка кода, ответственная за вывод "
 "сообщения"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:109
@@ -386,7 +386,9 @@ msgstr ""
 msgid ""
 "Fixed a crash that could happen when the maximum autogain history was "
 "changed."
-msgstr "Исправлен вылет, происходивший при изменении максимума автогейна."
+msgstr ""
+"Исправлен вылет, происходивший при изменении исторического максимума "
+"авторегулятора."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
 msgid "Avoid crashes when pw-mididump is running"
@@ -468,8 +470,8 @@ msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
-"Плагин нормализации громкости теперь позволяет пользователю выбрать один из "
-"трёх уровней для расчета среднего."
+"Плагин авторегуляции громкости теперь позволяет пользователю выбрать один из "
+"трёх уровней для расчёта среднего геометрического."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
@@ -477,9 +479,9 @@ msgid ""
 "use `libebur128` histogram mode anymore. This should avoid the cases where "
 "the `Integrated` loudness gets stuck forever in the same value."
 msgstr ""
-"Плагин нормализации громкости теперь позволяет устанавливать максимальную "
+"Плагин авторегуляции громкости теперь позволяет устанавливать максимальную "
 "историю и больше не использует режим гистограммы «libebur128». Это должно "
-"решить проблему, когда громкость застревала одном уровне."
+"решить проблему, когда громкость застревала на одном уровне."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid ""
