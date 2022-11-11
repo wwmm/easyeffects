@@ -51,7 +51,6 @@ data/ui/presets_menu.ui
 data/ui/reverb.ui
 data/ui/rnnoise.ui
 data/ui/shortcuts.ui
-data/ui/speex.ui
 data/ui/stereo_tools.ui
 src/app_info.cpp
 src/application.cpp
@@ -66,6 +65,5 @@ src/plugins_box.cpp
 src/plugins_menu.cpp
 src/presets_menu.cpp
 src/rnnoise_ui.cpp
-src/speex_ui.cpp
 src/tags_plugin_name.cpp
 src/ui_helpers.cpp
