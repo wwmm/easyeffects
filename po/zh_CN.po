@@ -1129,7 +1129,7 @@ msgstr ""
 #: data/ui/limiter.ui:109 data/ui/multiband_compressor.ui:53
 #: data/ui/multiband_gate.ui:53
 msgid "None"
-msgstr ""
+msgstr "无"
 
 #: data/ui/limiter.ui:110
 msgid "Half x2(2L)"
@@ -1735,9 +1735,8 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr "忽略来自设备 Monitor 的音频流"
 
 #: data/ui/preferences_general.ui:78
-#, fuzzy
 msgid "Use Cubic Volume"
-msgstr "使用立方音量调节"
+msgstr "使用非线性（立方）音量调节"
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
@@ -1776,7 +1775,6 @@ msgid "Dots"
 msgstr "点阵"
 
 #: data/ui/preferences_spectrum.ui:46
-#, fuzzy
 msgid "Points"
 msgstr "数量"
 
