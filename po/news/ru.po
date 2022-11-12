@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-10 15:49+0000\n"
-"PO-Revision-Date: 2022-11-11 13:45+0000\n"
+"PO-Revision-Date: 2022-11-12 02:48+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -163,7 +163,7 @@ msgstr "Улучшена автозагрузка предустановок."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The Autogain silence threshold can now be configured by the user."
-msgstr "Порог тишины авторегулятора теперь может быть настроен пользователем."
+msgstr "Порог тишины автоусилителя теперь может быть настроен пользователем."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "Dry and wet controls added to the Stereo Tools effect."
@@ -272,7 +272,7 @@ msgstr "Улучшены отладочные сообщения"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:288
 msgid "Updated translations"
-msgstr "Обновление перевода"
+msgstr "Обновлены переводы"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
 msgid "Improved translations"
@@ -388,7 +388,7 @@ msgid ""
 "changed."
 msgstr ""
 "Исправлен вылет, происходивший при изменении исторического максимума "
-"авторегулятора."
+"автоусилителя."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
 msgid "Avoid crashes when pw-mididump is running"
@@ -470,7 +470,7 @@ msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
-"Плагин авторегуляции громкости теперь позволяет пользователю выбрать один из "
+"Плагин автоусиления громкости теперь позволяет пользователю выбрать один из "
 "трёх уровней для расчёта среднего геометрического."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
@@ -479,7 +479,7 @@ msgid ""
 "use `libebur128` histogram mode anymore. This should avoid the cases where "
 "the `Integrated` loudness gets stuck forever in the same value."
 msgstr ""
-"Плагин авторегуляции громкости теперь позволяет устанавливать максимальную "
+"Плагин автоусиления громкости теперь позволяет устанавливать максимальную "
 "историю и больше не использует режим гистограммы «libebur128». Это должно "
 "решить проблему, когда громкость застревала на одном уровне."
 
@@ -527,7 +527,7 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
-"Фильтр авторегулятора должен лучше работать с динамическим изменением "
+"Фильтр автоусилителя должен лучше работать с динамическим изменением "
 "задержек PipeWire. Теперь ситуации со скачками уровня громкости больше не "
 "должны возникать."
 
@@ -684,7 +684,7 @@ msgid ""
 "The Autogain plugin now allows the user to select which Loudness is used as "
 "reference for the volume correction."
 msgstr ""
-"Плагин авторегуляции громкости теперь позволяет пользователям выбрать, какая "
+"Плагин автоусиления громкости теперь позволяет пользователям выбрать, какая "
 "громкость будет использоваться в качестве значения для коррекции её уровня."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
