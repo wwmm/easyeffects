@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-11 10:45-0300\n"
-"PO-Revision-Date: 2022-11-09 18:47+0000\n"
+"PO-Revision-Date: 2022-11-12 02:47+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2028,42 +2028,36 @@ msgid "Quit Easy Effects"
 msgstr "Выход из Easy Effects"
 
 #: data/ui/speex.ui:29
-#, fuzzy
 msgid "Denoise"
-msgstr "Красный шум"
+msgstr "Шумоподавление"
 
 #: data/ui/speex.ui:41
-#, fuzzy
 msgid "Automatic Gain Control"
-msgstr "Автоконтроль усиления (AGC)"
+msgstr "Регулятор автоусиления"
 
 #: data/ui/speex.ui:53
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Обнаруживатель голоса"
+msgstr "Распознаватель голоса"
 
 #: data/ui/speex.ui:65
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Реверберация"
+msgstr "Дереверберация"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Вероятность голосовой активности"
 
 #: data/ui/speex.ui:99
-#, fuzzy
 msgid "Start"
-msgstr "Начало полосы"
+msgstr "Начало"
 
 #: data/ui/speex.ui:133
 msgid "Continue"
-msgstr ""
+msgstr "Продолжить"
 
 #: data/ui/speex.ui:175
-#, fuzzy
 msgid "Noise Suppression"
-msgstr "Простой шумодав"
+msgstr "Шумоглушитель"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
