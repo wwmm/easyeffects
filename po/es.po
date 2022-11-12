@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-11 10:45-0300\n"
-"PO-Revision-Date: 2022-11-04 22:36+0000\n"
-"Last-Translator: Vladimir Zurita <vladzur@gmail.com>\n"
+"PO-Revision-Date: 2022-11-12 02:47+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1990,35 +1990,31 @@ msgstr ""
 
 #: data/ui/speex.ui:41
 msgid "Automatic Gain Control"
-msgstr ""
+msgstr "Control automático de ganancia"
 
 #: data/ui/speex.ui:53
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Detección"
+msgstr "Detección de la voz"
 
 #: data/ui/speex.ui:65
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Reverberación"
+msgstr "Desreverberación"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Probabilidad de actividad de la voz"
 
 #: data/ui/speex.ui:99
-#, fuzzy
 msgid "Start"
-msgstr "Inicio de la banda"
+msgstr "Comienzo"
 
 #: data/ui/speex.ui:133
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #: data/ui/speex.ui:175
-#, fuzzy
 msgid "Noise Suppression"
-msgstr "Supresión"
+msgstr "Supresión del ruido"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2167,19 +2163,16 @@ msgid "Show available presets."
 msgstr "Mostrar los perfiles disponibles."
 
 #: src/application_ui.cpp:277
-#, fuzzy
 msgid "_Output"
-msgstr "Salida"
+msgstr "_Salida"
 
 #: src/application_ui.cpp:278
-#, fuzzy
 msgid "_Input"
-msgstr "Entrada"
+msgstr "_Entrada"
 
 #: src/application_ui.cpp:279
-#, fuzzy
 msgid "_PipeWire"
-msgstr "Software PipeWire"
+msgstr "_Software PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
