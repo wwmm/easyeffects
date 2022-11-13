@@ -269,7 +269,7 @@ msgstr "重置"
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:408 data/ui/stereo_tools.ui:805
 msgid "Using"
-msgstr "使用"
+msgstr "正在使用"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:599 data/ui/gate.ui:738
 msgid "Device"
@@ -574,7 +574,7 @@ msgstr "频率"
 #: data/ui/compressor.ui:822 data/ui/compressor.ui:878
 #: data/ui/equalizer_band.ui:108 data/ui/gate.ui:960 data/ui/gate.ui:1016
 msgid "Off"
-msgstr "关"
+msgstr "关闭"
 
 #: data/ui/compressor.ui:823 data/ui/compressor.ui:879 data/ui/gate.ui:961
 #: data/ui/gate.ui:1017
@@ -730,7 +730,7 @@ msgstr "旁路"
 #: data/ui/multiband_compressor_band.ui:136 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:171 data/ui/stereo_tools.ui:196
 msgid "Mute"
-msgstr "静音静音"
+msgstr "静音"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -828,7 +828,7 @@ msgstr "右湿声级别"
 
 #: data/ui/echo_canceller.ui:30
 msgid "Frame Size"
-msgstr "Frame 大小"
+msgstr "音帧长度"
 
 #: data/ui/echo_canceller.ui:65
 msgid "Filter Length"
@@ -2242,7 +2242,7 @@ msgstr "播放器"
 msgid "Effects"
 msgstr "音效"
 
-#: src/equalizer_band_box.cpp:80
+#: src/equalizer_band_box.cpp:80 src/equalizer_band_box.cpp:82
 msgid "infinity"
 msgstr "无限"
 
