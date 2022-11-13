@@ -25,9 +25,7 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
-  int index = 0;
-
-  std::vector<gulong> gconnections;
+  int index = 0;  // index in the gsettings database
 };
 
 struct _EqualizerBandBox {
@@ -91,43 +89,40 @@ auto set_band_scale_sensitive(EqualizerBandBox* self, const char* active_id) -> 
   return 1;
 }
 
-void setup(EqualizerBandBox* self, GSettings* settings, int index) {
-  self->data->index = index;
+void setup(EqualizerBandBox* self, GSettings* settings) {
   self->settings = settings;
+}
 
-  g_settings_bind(settings, tags::equalizer::band_gain[index].data(),
+void bind(EqualizerBandBox* self, int index) {
+  self->data->index = index;
+
+  g_settings_bind(self->settings, tags::equalizer::band_gain[index].data(),
                   gtk_range_get_adjustment(GTK_RANGE(self->band_scale)), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_frequency[index].data(),
+  g_settings_bind(self->settings, tags::equalizer::band_frequency[index].data(),
                   gtk_spin_button_get_adjustment(self->band_frequency), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_q[index].data(), gtk_spin_button_get_adjustment(self->band_quality),
-                  "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, tags::equalizer::band_q[index].data(),
+                  gtk_spin_button_get_adjustment(self->band_quality), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_solo[index].data(), self->band_solo, "active",
+  g_settings_bind(self->settings, tags::equalizer::band_solo[index].data(), self->band_solo, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_mute[index].data(), self->band_mute, "active",
+  g_settings_bind(self->settings, tags::equalizer::band_mute[index].data(), self->band_mute, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_type[index].data(), self->band_type, "active-id",
+  g_settings_bind(self->settings, tags::equalizer::band_type[index].data(), self->band_type, "active-id",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_mode[index].data(), self->band_mode, "active-id",
+  g_settings_bind(self->settings, tags::equalizer::band_mode[index].data(), self->band_mode, "active-id",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, tags::equalizer::band_slope[index].data(), self->band_slope, "active-id",
+  g_settings_bind(self->settings, tags::equalizer::band_slope[index].data(), self->band_slope, "active-id",
                   G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BAND_BOX(object);
-
-  for (auto& handler_id : self->data->gconnections) {
-    g_signal_handler_disconnect(self->settings, handler_id);
-  }
-
-  self->data->gconnections.clear();
 
   g_object_unref(self->app_settings);
 

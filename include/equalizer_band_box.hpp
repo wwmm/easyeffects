@@ -37,6 +37,8 @@ G_END_DECLS
 
 auto create() -> EqualizerBandBox*;
 
-void setup(EqualizerBandBox* self, GSettings* settings, int index);
+void setup(EqualizerBandBox* self, GSettings* settings);
+
+void bind(EqualizerBandBox* self, int index);
 
 }  // namespace ui::equalizer_band_box

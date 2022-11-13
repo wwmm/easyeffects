@@ -312,9 +312,9 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   if (bands.empty()) {
     return false;
   }
-  
+
   std::ranges::stable_sort(bands, {}, &APO_Band::freq);
-  
+
   // Apply APO parameters obtained
   g_settings_set_int(self->settings, "num-bands",
                      static_cast<int>(std::min(static_cast<uint>(bands.size()), max_bands)));
@@ -506,7 +506,7 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
   if (bands.empty()) {
     return false;
   }
-  
+
   std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq);
 
   // Apply GraphicEQ parameters obtained
@@ -608,7 +608,8 @@ void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& spli
   for (int n = 0; n < nbands; n++) {
     auto* band_box = ui::equalizer_band_box::create();
 
-    ui::equalizer_band_box::setup(band_box, settings, n);
+    ui::equalizer_band_box::setup(band_box, settings);
+    ui::equalizer_band_box::bind(band_box, n);
 
     gtk_box_append(bands_box, GTK_WIDGET(band_box));
   }
