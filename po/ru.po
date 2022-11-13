@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-11 10:45-0300\n"
-"PO-Revision-Date: 2022-11-12 02:47+0000\n"
+"PO-Revision-Date: 2022-11-13 07:49+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -52,7 +52,7 @@ msgstr "Включить"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr "Список исключений: Добавить/удалить это приложение"
+msgstr "Исключённые приложения: Добавить/удалить это приложение"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -235,7 +235,7 @@ msgstr "Вход"
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:247 data/ui/stereo_tools.ui:644
 msgid "Plugin Input Gain"
-msgstr "Усиление входа"
+msgstr "Плагин усиления входа"
 
 #: data/ui/autogain.ui:491 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:63 data/ui/bass_loudness.ui:230
@@ -261,7 +261,7 @@ msgstr "Выход"
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:331 data/ui/stereo_tools.ui:728
 msgid "Plugin Output Gain"
-msgstr "Усиление выхода"
+msgstr "Плагин усиления выхода"
 
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:312 data/ui/compressor.ui:1224
@@ -360,11 +360,11 @@ msgstr "Название приложения"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr "Добавить в чёрный список приложений"
+msgstr "Добавить в исключённые приложения"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr "Чёрный список приложений"
+msgstr "Исключённые приложения"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
@@ -863,7 +863,7 @@ msgstr "Подавление"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr "Приложения чёрного списка"
+msgstr "Исключённые приложения"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
