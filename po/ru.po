@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 10:45-0300\n"
+"POT-Creation-Date: 2022-11-13 14:29+0000\n"
 "PO-Revision-Date: 2022-11-13 07:49+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2287,7 +2287,7 @@ msgstr "Проигрыватели"
 msgid "Effects"
 msgstr "Эффекты"
 
-#: src/equalizer_band_box.cpp:82
+#: src/equalizer_band_box.cpp:80
 msgid "infinity"
 msgstr "бесконечно"
 

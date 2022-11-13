@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 10:45-0300\n"
+"POT-Creation-Date: 2022-11-13 14:29+0000\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2448,7 +2448,7 @@ msgstr "Odtwarzacze"
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/equalizer_band_box.cpp:82
+#: src/equalizer_band_box.cpp:80
 msgid "infinity"
 msgstr "nieskończoność"
 

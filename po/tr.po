@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 10:45-0300\n"
+"POT-Creation-Date: 2022-11-13 14:29+0000\n"
 "PO-Revision-Date: 2022-10-24 12:40+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2295,7 +2295,7 @@ msgstr "Oynatıcılar"
 msgid "Effects"
 msgstr "Efektler"
 
-#: src/equalizer_band_box.cpp:82
+#: src/equalizer_band_box.cpp:80
 msgid "infinity"
 msgstr "sonsuzluk"
 
