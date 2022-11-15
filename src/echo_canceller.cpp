@@ -150,8 +150,10 @@ void EchoCanceller::process(std::span<float>& left_in,
       speex_echo_cancellation(echo_state_L, data_L.data(), probe_L.data(), filtered_L.data());
       speex_echo_cancellation(echo_state_R, data_R.data(), probe_R.data(), filtered_R.data());
 
+#ifdef SPEEX_AVAILABLE
       speex_preprocess_run(state_left, data_L.data());
       speex_preprocess_run(state_right, data_R.data());
+#endif
 
       for (const auto& v : filtered_L) {
         deque_out_L.push_back(static_cast<float>(v) * inv_short_max);
