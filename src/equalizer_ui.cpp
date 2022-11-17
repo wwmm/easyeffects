@@ -608,20 +608,20 @@ void build_all_bands(EqualizerBox* self) {
 
   const auto nbands = g_settings_get_int(self->settings, "num-bands");
 
-  gtk_string_list_splice(self->string_list_left, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_left)),
-                         nullptr);
+  std::vector<std::string> list;
 
-  gtk_string_list_splice(self->string_list_right, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_right)),
-                         nullptr);
+  list.reserve(nbands);
 
   for (int n = 0; n < nbands; n++) {
-    gtk_string_list_append(self->string_list_left, util::to_string(n).c_str());
+    list.push_back(util::to_string(n));
   }
 
+  gtk_string_list_splice(self->string_list_left, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_left)),
+                         util::make_gchar_pointer_vector(list).data());
+
   if (split) {
-    for (int n = 0; n < nbands; n++) {
-      gtk_string_list_append(self->string_list_right, util::to_string(n).c_str());
-    }
+    gtk_string_list_splice(self->string_list_right, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_right)),
+                           util::make_gchar_pointer_vector(list).data());
   }
 }
 
