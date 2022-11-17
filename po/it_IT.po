@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-15 13:50+0000\n"
-"PO-Revision-Date: 2022-10-31 07:06+0000\n"
+"PO-Revision-Date: 2022-11-17 01:47+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -1987,39 +1987,35 @@ msgstr "Termina Easy Effects"
 
 #: data/ui/speex.ui:29
 msgid "Denoise"
-msgstr ""
+msgstr "Meno Rumore"
 
 #: data/ui/speex.ui:41
 msgid "Automatic Gain Control"
-msgstr ""
+msgstr "Auto Controllo Guadagno"
 
 #: data/ui/speex.ui:53
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Rilevamento"
+msgstr "Rileva Voce"
 
 #: data/ui/speex.ui:65
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Riverbero"
+msgstr "Meno Riverbero"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Probabilità Attività Voce"
 
 #: data/ui/speex.ui:99
-#, fuzzy
 msgid "Start"
-msgstr "Inizio Banda"
+msgstr "Inizio"
 
 #: data/ui/speex.ui:133
 msgid "Continue"
-msgstr ""
+msgstr "Continuo"
 
 #: data/ui/speex.ui:175
-#, fuzzy
 msgid "Noise Suppression"
-msgstr "Soppressione"
+msgstr "Soppressione Rumore"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
