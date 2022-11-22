@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-15 13:50+0000\n"
-"PO-Revision-Date: 2022-08-17 04:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"POT-Creation-Date: 2022-11-22 14:27+0000\n"
+"PO-Revision-Date: 2022-11-19 01:48+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
 "main/gl/>\n"
 "Language: gl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -30,7 +30,7 @@ msgstr "Ecualizador, compresor e outros efectos de son"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efectos de son para as aplicacións de PipeWire"
+msgstr "Efectos de son para aplicacións PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"

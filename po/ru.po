@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-15 13:50+0000\n"
-"PO-Revision-Date: 2022-11-13 07:49+0000\n"
+"POT-Creation-Date: 2022-11-22 14:27+0000\n"
+"PO-Revision-Date: 2022-11-18 09:48+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -84,7 +84,7 @@ msgstr "_Горячие клавиши"
 
 #: data/ui/application_window.ui:20
 msgid "_Reset Settings"
-msgstr "_Сброс настроек"
+msgstr "Сбросить настрой_ки"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
@@ -1748,7 +1748,7 @@ msgstr "Запускать службу при старте системы"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr "Завершать работу при закрытии окна"
+msgstr "Завершать работу по закрытии окна"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
@@ -2009,7 +2009,7 @@ msgstr "Стандартная модель RNNoise"
 # #, fuzzy
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr "Обзор"
+msgstr "Описание"
 
 #: data/ui/shortcuts.ui:16
 msgid "Open the Easy Effects Manual"
@@ -2391,7 +2391,7 @@ msgstr "Эквалайзер"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Exciter"
-msgstr "Гармонический возбудитель (эксайтер)"
+msgstr "Гармонический возбудитель"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Filter"
