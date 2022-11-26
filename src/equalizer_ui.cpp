@@ -660,6 +660,8 @@ void setup_listview(EqualizerBox* self) {
 
         util::str_to_num(band_id_str, band_id);
 
+        util::warning(util::to_string(band_id));
+
         ui::equalizer_band_box::bind(band_box, band_id);
       }),
       self);
