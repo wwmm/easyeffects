@@ -152,7 +152,7 @@ void EchoCanceller::process(std::span<float>& left_in,
 
 #ifdef SPEEX_AVAILABLE
       speex_preprocess_run(state_left, filtered_L.data());
-      speex_preprocess_run(state_right, filtered_L.data());
+      speex_preprocess_run(state_right, filtered_R.data());
 #endif
 
       for (const auto& v : filtered_L) {
