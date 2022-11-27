@@ -17,7 +17,7 @@
         </key>
         <key name="noise-suppression" type="i">
             <range min="-100" max="-1" />
-            <default>-40</default>
+            <default>-70</default>
         </key>
         <key name="enable-agc" type="b">
             <default>false</default>

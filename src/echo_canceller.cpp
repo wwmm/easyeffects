@@ -30,7 +30,8 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                  schema_path,
                  pipe_manager,
                  true),
-      residual_echo_suppression(g_settings_get_int(settings, "residual-echo-suppression")) {
+      residual_echo_suppression(g_settings_get_int(settings, "residual-echo-suppression")),
+      near_end_suppression(g_settings_get_int(settings, "near-end-suppression")) {
   gconnections.push_back(g_signal_connect(settings, "changed::frame-size",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<EchoCanceller*>(user_data);
@@ -70,6 +71,24 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
         if (self->state_right) {
           speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &self->residual_echo_suppression);
+        }
+      }),
+      this));
+
+  gconnections.push_back(g_signal_connect(
+      settings, "changed::near-end-suppression", G_CALLBACK(+[](GSettings* settings, char* key, EchoCanceller* self) {
+        std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+        self->near_end_suppression = g_settings_get_int(settings, key);
+
+        if (self->state_left) {
+          speex_preprocess_ctl(self->state_left, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE,
+                               &self->near_end_suppression);
+        }
+
+        if (self->state_right) {
+          speex_preprocess_ctl(self->state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE,
+                               &self->near_end_suppression);
         }
       }),
       this));
@@ -264,14 +283,14 @@ void EchoCanceller::init_speex() {
   probe_L.resize(0U);
   probe_R.resize(0U);
 
-  blocksize = 0.001F * blocksize_ms * rate;
+  blocksize = static_cast<uint>(0.001F * static_cast<float>(blocksize_ms * rate));
 
   util::debug(log_tag + name + " blocksize: " + util::to_string(blocksize));
 
   filtered_L.resize(blocksize);
   filtered_R.resize(blocksize);
 
-  const uint filter_length = 0.001F * filter_length_ms * rate;
+  const uint filter_length = static_cast<uint>(0.001F * static_cast<float>(filter_length_ms * rate));
 
   util::debug(log_tag + name + " filter length: " + util::to_string(filter_length));
 
@@ -279,7 +298,7 @@ void EchoCanceller::init_speex() {
     speex_echo_state_destroy(echo_state_L);
   }
 
-  echo_state_L = speex_echo_state_init(blocksize, filter_length);
+  echo_state_L = speex_echo_state_init(static_cast<int>(blocksize), static_cast<int>(filter_length));
 
   if (speex_echo_ctl(echo_state_L, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
     util::warning(log_tag + name + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
@@ -289,7 +308,7 @@ void EchoCanceller::init_speex() {
     speex_echo_state_destroy(echo_state_R);
   }
 
-  echo_state_R = speex_echo_state_init(blocksize, filter_length);
+  echo_state_R = speex_echo_state_init(static_cast<int>(blocksize), static_cast<int>(filter_length));
 
   if (speex_echo_ctl(echo_state_R, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
     util::warning(log_tag + name + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
@@ -311,12 +330,16 @@ void EchoCanceller::init_speex() {
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state_L);
 
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
+
+    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
   }
 
   if (state_right != nullptr) {
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state_R);
 
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
+
+    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
   }
 
 #else
