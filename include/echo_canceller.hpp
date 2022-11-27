@@ -59,6 +59,7 @@ class EchoCanceller : public PluginBase {
   uint filter_length_ms = 100U;
   uint latency_n_frames = 0U;
   int residual_echo_suppression = -10;
+  int near_end_suppression = -10;
 
   float latency_value = 0.0F;
 

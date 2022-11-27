@@ -22,7 +22,11 @@
         </key>
         <key name="residual-echo-suppression" type="i">
             <range min="-100" max="-1" />
-            <default>-10</default>
+            <default>-70</default>
+        </key>
+        <key name="near-end-suppression" type="i">
+            <range min="-100" max="-1" />
+            <default>-70</default>
         </key>
     </schema>
 </schemalist>
