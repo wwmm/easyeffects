@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-22 14:27+0000\n"
+"POT-Creation-Date: 2022-11-27 15:56+0000\n"
 "PO-Revision-Date: 2022-11-17 01:47+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -198,7 +198,7 @@ msgstr "Guadagno Uscita"
 #: data/ui/bass_loudness.ui:146 data/ui/compressor.ui:576
 #: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:143
 #: data/ui/crystalizer.ui:43 data/ui/deesser.ui:417 data/ui/delay.ui:235
-#: data/ui/echo_canceller.ui:149 data/ui/equalizer.ui:333
+#: data/ui/echo_canceller.ui:132 data/ui/equalizer.ui:333
 #: data/ui/exciter.ui:262 data/ui/filter.ui:173 data/ui/gate.ui:715
 #: data/ui/gate.ui:1196 data/ui/limiter.ui:728 data/ui/loudness.ui:177
 #: data/ui/maximizer.ui:146 data/ui/multiband_compressor.ui:454
@@ -212,7 +212,7 @@ msgstr "Ingresso"
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:165 data/ui/compressor.ui:1077
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:162 data/ui/crystalizer.ui:62
-#: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:168
+#: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:151
 #: data/ui/equalizer.ui:352 data/ui/exciter.ui:281 data/ui/filter.ui:192
 #: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:196
 #: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
@@ -225,7 +225,7 @@ msgstr "Guadagno in Ingresso del Plugin"
 #: data/ui/bass_loudness.ui:63 data/ui/bass_loudness.ui:230
 #: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:227
 #: data/ui/crystalizer.ui:127 data/ui/deesser.ui:501 data/ui/delay.ui:319
-#: data/ui/echo_canceller.ui:233 data/ui/equalizer.ui:417
+#: data/ui/echo_canceller.ui:216 data/ui/equalizer.ui:417
 #: data/ui/exciter.ui:346 data/ui/filter.ui:257 data/ui/gate.ui:1280
 #: data/ui/limiter.ui:812 data/ui/loudness.ui:261 data/ui/maximizer.ui:230
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
@@ -238,7 +238,7 @@ msgstr "Uscita"
 #: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:249 data/ui/compressor.ui:1161
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:246 data/ui/crystalizer.ui:146
-#: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:252
+#: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:235
 #: data/ui/equalizer.ui:436 data/ui/exciter.ui:365 data/ui/filter.ui:276
 #: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:280
 #: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
@@ -250,7 +250,7 @@ msgstr "Guadagno in Uscita del Plugin"
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:312 data/ui/compressor.ui:1224
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:309 data/ui/crystalizer.ui:201
-#: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:315
+#: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:298
 #: data/ui/equalizer.ui:499 data/ui/equalizer_band.ui:223
 #: data/ui/equalizer_band.ui:294 data/ui/exciter.ui:458 data/ui/filter.ui:339
 #: data/ui/gate.ui:1392 data/ui/limiter.ui:894 data/ui/loudness.ui:343
@@ -263,7 +263,7 @@ msgstr "Reset"
 #: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:326 data/ui/compressor.ui:1238
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:323 data/ui/deesser.ui:657
-#: data/ui/delay.ui:415 data/ui/echo_canceller.ui:329 data/ui/equalizer.ui:513
+#: data/ui/delay.ui:415 data/ui/echo_canceller.ui:312 data/ui/equalizer.ui:513
 #: data/ui/exciter.ui:472 data/ui/filter.ui:353 data/ui/gate.ui:1406
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
@@ -823,17 +823,23 @@ msgstr "Livello Wet Sinistro"
 msgid "Right Wet Level"
 msgstr "Livello Wet Destro"
 
-#: data/ui/echo_canceller.ui:30
+#: data/ui/echo_canceller.ui:26
 msgid "Frame Size"
 msgstr "Dimensione Frame"
 
-#: data/ui/echo_canceller.ui:65
+#: data/ui/echo_canceller.ui:49
 msgid "Filter Length"
 msgstr "Lunghezza Filtro"
 
-#: data/ui/echo_canceller.ui:100
-msgid "Suppression"
-msgstr "Soppressione"
+#: data/ui/echo_canceller.ui:72
+#, fuzzy
+msgid "Residual Echo Suppression"
+msgstr "Soppressione Rumore"
+
+#: data/ui/echo_canceller.ui:94
+#, fuzzy
+msgid "Near End Echo Suppression"
+msgstr "Soppressione Rumore"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -2400,6 +2406,9 @@ msgstr "Chiudi (Premi ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "Suppression"
+#~ msgstr "Soppressione"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "Effetti Audio per Applicazioni PipeWire"
