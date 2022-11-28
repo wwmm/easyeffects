@@ -204,7 +204,7 @@ msgstr "Çıkış Kazancı"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:228 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625
+#: data/ui/stereo_tools.ui:625 data/ui/echo_canceller.ui:149
 msgid "Input"
 msgstr "Giriş"
 
@@ -217,6 +217,7 @@ msgstr "Giriş"
 #: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:247 data/ui/stereo_tools.ui:644
+#: data/ui/echo_canceller.ui:168
 msgid "Plugin Input Gain"
 msgstr "Eklenti Giriş Kazancı"
 
@@ -231,6 +232,7 @@ msgstr "Eklenti Giriş Kazancı"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:312 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
+#: data/ui/echo_canceller.ui:233
 msgid "Output"
 msgstr "Çıkış"
 
@@ -243,6 +245,7 @@ msgstr "Çıkış"
 #: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:331 data/ui/stereo_tools.ui:728
+#: data/ui/echo_canceller.ui:252
 msgid "Plugin Output Gain"
 msgstr "Eklenti Çıkış Kazancı"
 
@@ -256,6 +259,7 @@ msgstr "Eklenti Çıkış Kazancı"
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:394 data/ui/stereo_tools.ui:791
+#: data/ui/echo_canceller.ui:315
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -268,6 +272,7 @@ msgstr "Sıfırla"
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:408 data/ui/stereo_tools.ui:805
+#: data/ui/echo_canceller.ui:329
 msgid "Using"
 msgstr "Kullanılan"
 
@@ -839,11 +844,11 @@ msgstr "Hedef Seviye"
 msgid "Right Wet Level"
 msgstr "Hedef Seviye"
 
-#: data/ui/echo_canceller.ui:26
+#: data/ui/echo_canceller.ui:26 data/ui/echo_canceller.ui:30
 msgid "Frame Size"
 msgstr "Çerçeve Boyutu"
 
-#: data/ui/echo_canceller.ui:49
+#: data/ui/echo_canceller.ui:49 data/ui/echo_canceller.ui:65
 msgid "Filter Length"
 msgstr "Süzgeç Uzunluğu"
 
@@ -1284,24 +1289,20 @@ msgid "Auto Leveling Knee"
 msgstr ""
 
 #: data/ui/limiter.ui:611
-#, fuzzy
 msgid "Gain Left"
-msgstr "Kazanç"
+msgstr "Kazanç Sol"
 
 #: data/ui/limiter.ui:638
-#, fuzzy
 msgid "Gain Right"
-msgstr "Sağ"
+msgstr "Kazanç Sağ"
 
 #: data/ui/limiter.ui:665
-#, fuzzy
 msgid "Sidechain Left"
-msgstr "Yanzincir"
+msgstr "Yanzincir Sol"
 
 #: data/ui/limiter.ui:692
-#, fuzzy
 msgid "Sidechain Right"
-msgstr "Yanzincir"
+msgstr "Yanzincir Sağ"
 
 #: data/ui/loudness.ui:30
 msgid "Standard"
@@ -2046,14 +2047,12 @@ msgid "Denoise"
 msgstr "Kırmızı Gürültü"
 
 #: data/ui/speex.ui:41
-#, fuzzy
 msgid "Automatic Gain Control"
-msgstr "Kazanç Denetleyicisi"
+msgstr "Otomatik Kazanç Denetleyicisi"
 
 #: data/ui/speex.ui:53
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Ses Dedektörü"
+msgstr "Ses Algılama"
 
 #: data/ui/speex.ui:65
 #, fuzzy
@@ -2062,18 +2061,17 @@ msgstr "Yankılanma"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Ses Etkinliği Olasılığı"
 
 #: data/ui/speex.ui:99
 msgid "Start"
-msgstr ""
+msgstr "Başla"
 
 #: data/ui/speex.ui:133
 msgid "Continue"
-msgstr ""
+msgstr "Devam et"
 
 #: data/ui/speex.ui:175
-#, fuzzy
 msgid "Noise Suppression"
 msgstr "Gürültü Baskılayıcı"
 
@@ -2154,9 +2152,8 @@ msgid "Delay L/R"
 msgstr "Gecikme L/R"
 
 #: data/ui/stereo_tools.ui:456
-#, fuzzy
 msgid "Delay Left Right"
-msgstr "Gecikme L/R"
+msgstr "Gecikme Sol Sağ"
 
 #: data/ui/stereo_tools.ui:465
 msgid "Stereo Base"
@@ -2196,7 +2193,7 @@ msgstr "kanallar"
 
 #: src/application.cpp:415
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:505
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -2224,19 +2221,16 @@ msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
 #: src/application_ui.cpp:277
-#, fuzzy
 msgid "_Output"
-msgstr "Çıkış"
+msgstr "_Çıkış"
 
 #: src/application_ui.cpp:278
-#, fuzzy
 msgid "_Input"
-msgstr "Giriş"
+msgstr "_Giriş"
 
 #: src/application_ui.cpp:279
-#, fuzzy
 msgid "_PipeWire"
-msgstr "PipeWire"
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
@@ -2437,7 +2431,7 @@ msgstr "Gürültü Azaltma"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr ""
+msgstr "Konuşma İşleyici"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2463,11 +2457,12 @@ msgstr "Kapat (ESC tuşuna basın)"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
-msgstr ""
+msgstr "-sonsuz"
 
+#: data/ui/echo_canceller.ui:100
 #, fuzzy
-#~ msgid "Suppression"
-#~ msgstr "Bastırma Seviyesi"
+msgid "Suppression"
+msgstr "Bastırma Seviyesi"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "PipeWire uygulamaları için ses efektleri"
