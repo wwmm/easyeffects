@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 16:09+0000\n"
+"POT-Creation-Date: 2022-11-28 17:19+0000\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -204,8 +204,8 @@ msgstr "Wzmocnienie wej."
 #: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:235
 #: data/ui/echo_canceller.ui:132 data/ui/equalizer.ui:360
-#: data/ui/exciter.ui:262 data/ui/filter.ui:173 data/ui/gate.ui:715
-#: data/ui/gate.ui:1196 data/ui/limiter.ui:728 data/ui/loudness.ui:177
+#: data/ui/exciter.ui:262 data/ui/filter.ui:141 data/ui/gate.ui:715
+#: data/ui/gate.ui:1196 data/ui/limiter.ui:728 data/ui/loudness.ui:132
 #: data/ui/maximizer.ui:146 data/ui/multiband_compressor.ui:454
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
@@ -218,8 +218,8 @@ msgstr "Wejście"
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1077
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:151
-#: data/ui/equalizer.ui:379 data/ui/exciter.ui:281 data/ui/filter.ui:192
-#: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:196
+#: data/ui/equalizer.ui:379 data/ui/exciter.ui:281 data/ui/filter.ui:160
+#: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:151
 #: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:247 data/ui/stereo_tools.ui:644
@@ -232,8 +232,8 @@ msgstr "Wzmocnienie wej."
 #: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:319
 #: data/ui/echo_canceller.ui:216 data/ui/equalizer.ui:444
-#: data/ui/exciter.ui:346 data/ui/filter.ui:257 data/ui/gate.ui:1280
-#: data/ui/limiter.ui:812 data/ui/loudness.ui:261 data/ui/maximizer.ui:230
+#: data/ui/exciter.ui:346 data/ui/filter.ui:225 data/ui/gate.ui:1280
+#: data/ui/limiter.ui:812 data/ui/loudness.ui:216 data/ui/maximizer.ui:230
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
@@ -245,8 +245,8 @@ msgstr "Wyjście"
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1161
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:235
-#: data/ui/equalizer.ui:463 data/ui/exciter.ui:365 data/ui/filter.ui:276
-#: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:280
+#: data/ui/equalizer.ui:463 data/ui/exciter.ui:365 data/ui/filter.ui:244
+#: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:235
 #: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:331 data/ui/stereo_tools.ui:728
@@ -259,8 +259,8 @@ msgstr "Wzmocnienie wej."
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:285 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:298
 #: data/ui/equalizer.ui:526 data/ui/equalizer_band.ui:227
-#: data/ui/equalizer_band.ui:298 data/ui/exciter.ui:458 data/ui/filter.ui:339
-#: data/ui/gate.ui:1392 data/ui/limiter.ui:894 data/ui/loudness.ui:343
+#: data/ui/equalizer_band.ui:298 data/ui/exciter.ui:458 data/ui/filter.ui:307
+#: data/ui/gate.ui:1392 data/ui/limiter.ui:894 data/ui/loudness.ui:298
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:394 data/ui/stereo_tools.ui:791
@@ -271,8 +271,8 @@ msgstr "Zresetuj"
 #: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1238
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:299 data/ui/deesser.ui:657
 #: data/ui/delay.ui:415 data/ui/echo_canceller.ui:312 data/ui/equalizer.ui:540
-#: data/ui/exciter.ui:472 data/ui/filter.ui:353 data/ui/gate.ui:1406
-#: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
+#: data/ui/exciter.ui:472 data/ui/filter.ui:321 data/ui/gate.ui:1406
+#: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:358
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:408 data/ui/stereo_tools.ui:805
@@ -375,9 +375,9 @@ msgstr "Kompresor"
 
 #: data/ui/compressor.ui:53 data/ui/compressor.ui:501 data/ui/compressor.ui:796
 #: data/ui/deesser.ui:64 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:134
-#: data/ui/gate.ui:640 data/ui/gate.ui:934 data/ui/limiter.ui:46
-#: data/ui/multiband_compressor_band.ui:457 data/ui/multiband_gate_band.ui:520
-#: data/ui/pitch.ui:32
+#: data/ui/filter.ui:27 data/ui/gate.ui:640 data/ui/gate.ui:934
+#: data/ui/limiter.ui:46 data/ui/multiband_compressor_band.ui:457
+#: data/ui/multiband_gate_band.ui:520 data/ui/pitch.ui:32
 msgid "Mode"
 msgstr "Tryb"
 
@@ -608,7 +608,7 @@ msgstr "Łańcuch boczny"
 msgid "High-Pass"
 msgstr "Filtr górnoprzepustowy"
 
-#: data/ui/compressor.ui:809 data/ui/equalizer_band.ui:201 data/ui/filter.ui:53
+#: data/ui/compressor.ui:809 data/ui/equalizer_band.ui:201 data/ui/filter.ui:55
 #: data/ui/gate.ui:947 data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "Częstotliwość"
@@ -1002,7 +1002,7 @@ msgstr "Dolna Wartość"
 msgid "Notch"
 msgstr ""
 
-#: data/ui/equalizer_band.ui:119 data/ui/filter.ui:88
+#: data/ui/equalizer_band.ui:119 data/ui/filter.ui:78
 msgid "Resonance"
 msgstr "Rezonans"
 
@@ -1070,55 +1070,55 @@ msgstr "Wykrycie"
 msgid "Remove this model file"
 msgstr "Kompresor"
 
-#: data/ui/filter.ui:25
+#: data/ui/filter.ui:32
 msgid "12dB/oct Lowpass"
 msgstr "12dB/okt dolnoprzepustowy"
 
-#: data/ui/filter.ui:26
+#: data/ui/filter.ui:33
 msgid "24dB/oct Lowpass"
 msgstr "24dB/okt dolnoprzepustowy"
 
-#: data/ui/filter.ui:27
+#: data/ui/filter.ui:34
 msgid "36dB/oct Lowpass"
 msgstr "36dB/okt dolnoprzepustowy"
 
-#: data/ui/filter.ui:28
+#: data/ui/filter.ui:35
 msgid "12dB/oct Highpass"
 msgstr "12dB/okt górnoprzepustowy"
 
-#: data/ui/filter.ui:29
+#: data/ui/filter.ui:36
 msgid "24dB/oct Highpass"
 msgstr "24dB/okt górnoprzepustowy"
 
-#: data/ui/filter.ui:30
+#: data/ui/filter.ui:37
 msgid "36dB/oct Highpass"
 msgstr "36dB/okt górnoprzepustowy"
 
-#: data/ui/filter.ui:31
+#: data/ui/filter.ui:38
 msgid "6dB/oct Bandpass"
 msgstr "6dB/okt środkowoprzepustowy"
 
-#: data/ui/filter.ui:32
+#: data/ui/filter.ui:39
 msgid "12dB/oct Bandpass"
 msgstr "12dB/okt środkowoprzepustowy"
 
-#: data/ui/filter.ui:33
+#: data/ui/filter.ui:40
 msgid "18dB/oct Bandpass"
 msgstr "18dB/okt środkowoprzepustowy"
 
-#: data/ui/filter.ui:34
+#: data/ui/filter.ui:41
 msgid "6dB/oct Bandreject"
 msgstr "6dB/okt Środkowozaporowy"
 
-#: data/ui/filter.ui:35
+#: data/ui/filter.ui:42
 msgid "12dB/oct Bandreject"
 msgstr "12dB/okt środkowozaporowy"
 
-#: data/ui/filter.ui:36
+#: data/ui/filter.ui:43
 msgid "18dB/oct Bandreject"
 msgstr "18dB/okt środkowozaporowy"
 
-#: data/ui/filter.ui:123
+#: data/ui/filter.ui:101
 msgid "Inertia"
 msgstr "Inercja"
 
@@ -1380,36 +1380,28 @@ msgstr "Łańcuch boczny"
 msgid "Sidechain Right"
 msgstr "Łańcuch boczny"
 
-#: data/ui/loudness.ui:30
+#: data/ui/loudness.ui:27
 msgid "Standard"
 msgstr ""
 
-#: data/ui/loudness.ui:42
+#: data/ui/loudness.ui:32
 msgid "Flat"
 msgstr ""
 
-#: data/ui/loudness.ui:59
+#: data/ui/loudness.ui:44
 #, fuzzy
 msgid "FFT Size"
 msgstr "Rozmiar ramki"
 
-#: data/ui/loudness.ui:84
-msgid "Fast Fourier Transform Size"
-msgstr ""
-
-#: data/ui/loudness.ui:91
+#: data/ui/loudness.ui:64
 #, fuzzy
 msgid "Output Volume"
 msgstr "Wyjście"
 
-#: data/ui/loudness.ui:127
+#: data/ui/loudness.ui:86
 #, fuzzy
 msgid "Clipping"
 msgstr "Kanały"
-
-#: data/ui/loudness.ui:155
-msgid "Clipping Range"
-msgstr ""
 
 #: data/ui/maximizer.ui:63
 msgid "Ceiling"
