@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 15:56+0000\n"
+"POT-Creation-Date: 2022-11-28 15:45+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -195,8 +195,8 @@ msgstr "出力ゲイン"
 #: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:146 data/ui/compressor.ui:576
 #: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:143
-#: data/ui/crystalizer.ui:43 data/ui/deesser.ui:417 data/ui/delay.ui:235
-#: data/ui/echo_canceller.ui:132 data/ui/equalizer.ui:333
+#: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:235
+#: data/ui/echo_canceller.ui:132 data/ui/equalizer.ui:360
 #: data/ui/exciter.ui:262 data/ui/filter.ui:173 data/ui/gate.ui:715
 #: data/ui/gate.ui:1196 data/ui/limiter.ui:728 data/ui/loudness.ui:177
 #: data/ui/maximizer.ui:146 data/ui/multiband_compressor.ui:454
@@ -209,9 +209,9 @@ msgstr "入力"
 
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:165 data/ui/compressor.ui:1077
-#: data/ui/convolver.ui:245 data/ui/crossfeed.ui:162 data/ui/crystalizer.ui:62
+#: data/ui/convolver.ui:245 data/ui/crossfeed.ui:162 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:151
-#: data/ui/equalizer.ui:352 data/ui/exciter.ui:281 data/ui/filter.ui:192
+#: data/ui/equalizer.ui:379 data/ui/exciter.ui:281 data/ui/filter.ui:192
 #: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:196
 #: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
@@ -222,8 +222,8 @@ msgstr "プラグイン入力ゲイン"
 #: data/ui/autogain.ui:491 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:63 data/ui/bass_loudness.ui:230
 #: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:227
-#: data/ui/crystalizer.ui:127 data/ui/deesser.ui:501 data/ui/delay.ui:319
-#: data/ui/echo_canceller.ui:216 data/ui/equalizer.ui:417
+#: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:319
+#: data/ui/echo_canceller.ui:216 data/ui/equalizer.ui:444
 #: data/ui/exciter.ui:346 data/ui/filter.ui:257 data/ui/gate.ui:1280
 #: data/ui/limiter.ui:812 data/ui/loudness.ui:261 data/ui/maximizer.ui:230
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
@@ -235,9 +235,9 @@ msgstr "出力"
 
 #: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:249 data/ui/compressor.ui:1161
-#: data/ui/convolver.ui:329 data/ui/crossfeed.ui:246 data/ui/crystalizer.ui:146
+#: data/ui/convolver.ui:329 data/ui/crossfeed.ui:246 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:235
-#: data/ui/equalizer.ui:436 data/ui/exciter.ui:365 data/ui/filter.ui:276
+#: data/ui/equalizer.ui:463 data/ui/exciter.ui:365 data/ui/filter.ui:276
 #: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:280
 #: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
@@ -247,10 +247,10 @@ msgstr "プラグイン出力ゲイン"
 
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:312 data/ui/compressor.ui:1224
-#: data/ui/convolver.ui:392 data/ui/crossfeed.ui:309 data/ui/crystalizer.ui:201
+#: data/ui/convolver.ui:392 data/ui/crossfeed.ui:309 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:298
-#: data/ui/equalizer.ui:499 data/ui/equalizer_band.ui:223
-#: data/ui/equalizer_band.ui:294 data/ui/exciter.ui:458 data/ui/filter.ui:339
+#: data/ui/equalizer.ui:526 data/ui/equalizer_band.ui:227
+#: data/ui/equalizer_band.ui:298 data/ui/exciter.ui:458 data/ui/filter.ui:339
 #: data/ui/gate.ui:1392 data/ui/limiter.ui:894 data/ui/loudness.ui:343
 #: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
@@ -261,7 +261,7 @@ msgstr "リセット"
 #: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:326 data/ui/compressor.ui:1238
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:323 data/ui/deesser.ui:657
-#: data/ui/delay.ui:415 data/ui/echo_canceller.ui:312 data/ui/equalizer.ui:513
+#: data/ui/delay.ui:415 data/ui/echo_canceller.ui:312 data/ui/equalizer.ui:540
 #: data/ui/exciter.ui:472 data/ui/filter.ui:353 data/ui/gate.ui:1406
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
@@ -356,7 +356,7 @@ msgid "Compressor"
 msgstr "コンプレッサー"
 
 #: data/ui/compressor.ui:53 data/ui/compressor.ui:501 data/ui/compressor.ui:796
-#: data/ui/deesser.ui:64 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:130
+#: data/ui/deesser.ui:64 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:134
 #: data/ui/gate.ui:640 data/ui/gate.ui:934 data/ui/limiter.ui:46
 #: data/ui/multiband_compressor_band.ui:457 data/ui/multiband_gate_band.ui:520
 #: data/ui/pitch.ui:32
@@ -499,14 +499,14 @@ msgstr "中央"
 msgid "Side"
 msgstr "サイド"
 
-#: data/ui/compressor.ui:551 data/ui/delay.ui:30 data/ui/equalizer.ui:216
+#: data/ui/compressor.ui:551 data/ui/delay.ui:30 data/ui/equalizer.ui:215
 #: data/ui/gate.ui:690 data/ui/multiband_compressor_band.ui:498
 #: data/ui/multiband_gate_band.ui:561 data/ui/pipe_manager_box.ui:504
 #: data/ui/stereo_tools.ui:161
 msgid "Left"
 msgstr "左"
 
-#: data/ui/compressor.ui:552 data/ui/delay.ui:39 data/ui/equalizer.ui:228
+#: data/ui/compressor.ui:552 data/ui/delay.ui:39 data/ui/equalizer.ui:242
 #: data/ui/gate.ui:691 data/ui/multiband_compressor_band.ui:499
 #: data/ui/multiband_gate_band.ui:562 data/ui/pipe_manager_box.ui:515
 #: data/ui/stereo_tools.ui:216
@@ -519,7 +519,7 @@ msgstr "右"
 msgid "Sidechain Source"
 msgstr "サイドチェーンソース"
 
-#: data/ui/compressor.ui:588 data/ui/equalizer_band.ui:98 data/ui/gate.ui:727
+#: data/ui/compressor.ui:588 data/ui/equalizer_band.ui:102 data/ui/gate.ui:727
 msgid "Type"
 msgstr "タイプ"
 
@@ -565,13 +565,13 @@ msgstr "サイドチェーンフィルター"
 msgid "High-Pass"
 msgstr "ハイパス"
 
-#: data/ui/compressor.ui:809 data/ui/equalizer_band.ui:197 data/ui/filter.ui:53
+#: data/ui/compressor.ui:809 data/ui/equalizer_band.ui:201 data/ui/filter.ui:53
 #: data/ui/gate.ui:947 data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "周波数"
 
 #: data/ui/compressor.ui:822 data/ui/compressor.ui:878
-#: data/ui/equalizer_band.ui:108 data/ui/gate.ui:960 data/ui/gate.ui:1016
+#: data/ui/equalizer_band.ui:112 data/ui/gate.ui:960 data/ui/gate.ui:1016
 msgid "Off"
 msgstr "オフ"
 
@@ -722,7 +722,7 @@ msgstr "フィード"
 msgid "Bypass"
 msgstr "バイパス"
 
-#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:320
+#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:324
 #: data/ui/multiband_compressor_band.ui:136 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:171 data/ui/stereo_tools.ui:196
 msgid "Mute"
@@ -876,79 +876,79 @@ msgstr "左ピッチ"
 msgid "Pitch Right"
 msgstr "右ピッチ"
 
-#: data/ui/equalizer.ui:251
+#: data/ui/equalizer.ui:278
 msgid "Split Channels"
 msgstr "チャンネルの分割"
 
-#: data/ui/equalizer.ui:257
+#: data/ui/equalizer.ui:284
 msgid "Flat Response"
 msgstr "フラットレスポンス"
 
-#: data/ui/equalizer.ui:265
+#: data/ui/equalizer.ui:292
 msgid "Calculate Frequencies"
 msgstr "周波数の計算"
 
-#: data/ui/equalizer.ui:280 src/presets_menu.cpp:102
+#: data/ui/equalizer.ui:307 src/presets_menu.cpp:102
 msgid "Import Preset"
 msgstr "プリセットをインポート"
 
-#: data/ui/equalizer_band.ui:109
+#: data/ui/equalizer_band.ui:113
 msgid "Bell"
 msgstr "ベル"
 
-#: data/ui/equalizer_band.ui:110
+#: data/ui/equalizer_band.ui:114
 msgid "High Pass"
 msgstr "ハイパス"
 
-#: data/ui/equalizer_band.ui:111
+#: data/ui/equalizer_band.ui:115
 msgid "High Shelf"
 msgstr "ハイシェルフ"
 
-#: data/ui/equalizer_band.ui:112
+#: data/ui/equalizer_band.ui:116
 msgid "Low Pass"
 msgstr "ローパス"
 
-#: data/ui/equalizer_band.ui:113
+#: data/ui/equalizer_band.ui:117
 msgid "Low Shelf"
 msgstr "ローシェルフ"
 
-#: data/ui/equalizer_band.ui:114
+#: data/ui/equalizer_band.ui:118
 msgid "Notch"
 msgstr "ノッチ"
 
-#: data/ui/equalizer_band.ui:115 data/ui/filter.ui:88
+#: data/ui/equalizer_band.ui:119 data/ui/filter.ui:88
 msgid "Resonance"
 msgstr "反響"
 
-#: data/ui/equalizer_band.ui:116
+#: data/ui/equalizer_band.ui:120
 msgid "All Pass"
 msgstr "オールパス"
 
-#: data/ui/equalizer_band.ui:123
+#: data/ui/equalizer_band.ui:127
 msgid "Band Type"
 msgstr "バンドタイプ"
 
-#: data/ui/equalizer_band.ui:153
+#: data/ui/equalizer_band.ui:157
 msgid "Band Mode"
 msgstr "バンドモード"
 
-#: data/ui/equalizer_band.ui:160
+#: data/ui/equalizer_band.ui:164
 msgid "Slope"
 msgstr "スロープ"
 
-#: data/ui/equalizer_band.ui:180
+#: data/ui/equalizer_band.ui:184
 msgid "Band Slope"
 msgstr "バンドスロープ"
 
-#: data/ui/equalizer_band.ui:242
+#: data/ui/equalizer_band.ui:246
 msgid "Width"
 msgstr "幅"
 
-#: data/ui/equalizer_band.ui:269
+#: data/ui/equalizer_band.ui:273
 msgid "Quality"
 msgstr "品質"
 
-#: data/ui/equalizer_band.ui:314 data/ui/multiband_compressor_band.ui:146
+#: data/ui/equalizer_band.ui:318 data/ui/multiband_compressor_band.ui:146
 #: data/ui/multiband_gate_band.ui:119
 msgid "Solo"
 msgstr "ソロ"
@@ -2205,13 +2205,13 @@ msgstr "インパルスファイルがインポートされていません"
 msgid "Import Impulse File"
 msgstr "インパルスファイルをインポート"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:364
-#: src/equalizer_ui.cpp:555 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
+#: src/equalizer_ui.cpp:557 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "開く"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:364
-#: src/equalizer_ui.cpp:555 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
+#: src/equalizer_ui.cpp:557 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -2251,30 +2251,30 @@ msgstr "エフェクト"
 msgid "infinity"
 msgstr "無限大"
 
-#: src/equalizer_ui.cpp:363
+#: src/equalizer_ui.cpp:365
 msgid "Import APO Preset File"
 msgstr "APO プリセットファイルをインポート"
 
-#: src/equalizer_ui.cpp:369
+#: src/equalizer_ui.cpp:371
 msgid "APO Presets"
 msgstr "APO プリセット"
 
-#: src/equalizer_ui.cpp:387
+#: src/equalizer_ui.cpp:389
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
 "APO プリセットが読み込まれていません。ファイルフォーマットが間違っている可能"
 "性があります。内容を確認してください。"
 
-#: src/equalizer_ui.cpp:554
+#: src/equalizer_ui.cpp:556
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ プリセットファイルのインポート"
 
-#: src/equalizer_ui.cpp:560
+#: src/equalizer_ui.cpp:562
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ プリセット"
 
-#: src/equalizer_ui.cpp:578
+#: src/equalizer_ui.cpp:580
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
