@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-27 15:56+0000\n"
-"PO-Revision-Date: 2022-11-27 03:48+0000\n"
-"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"PO-Revision-Date: 2022-11-28 14:44+0000\n"
+"Last-Translator: Eric <hamburger1024@duck.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -835,14 +835,12 @@ msgid "Filter Length"
 msgstr "过滤器长度"
 
 #: data/ui/echo_canceller.ui:72
-#, fuzzy
 msgid "Residual Echo Suppression"
-msgstr "抑制强度"
+msgstr "残余回声抑制"
 
 #: data/ui/echo_canceller.ui:94
-#, fuzzy
 msgid "Near End Echo Suppression"
-msgstr "抑制强度"
+msgstr "近端回声抑制"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
