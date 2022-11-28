@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 17:19+0000\n"
+"POT-Creation-Date: 2022-11-28 22:58+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -206,14 +206,14 @@ msgstr "Udgangsforstærkning"
 #: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:576
 #: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
-#: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:235
-#: data/ui/echo_canceller.ui:132 data/ui/equalizer.ui:360
+#: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:191
+#: data/ui/echo_canceller.ui:135 data/ui/equalizer.ui:360
 #: data/ui/exciter.ui:262 data/ui/filter.ui:141 data/ui/gate.ui:715
 #: data/ui/gate.ui:1196 data/ui/limiter.ui:728 data/ui/loudness.ui:132
-#: data/ui/maximizer.ui:146 data/ui/multiband_compressor.ui:454
+#: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:454
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
-#: data/ui/rnnoise.ui:155 data/ui/speex.ui:228 data/ui/stereo_tools.ui:40
+#: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:625
 msgid "Input"
 msgstr "Indgang"
@@ -221,63 +221,63 @@ msgstr "Indgang"
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1077
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
-#: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:151
+#: data/ui/deesser.ui:436 data/ui/delay.ui:210 data/ui/echo_canceller.ui:154
 #: data/ui/equalizer.ui:379 data/ui/exciter.ui:281 data/ui/filter.ui:160
 #: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:151
-#: data/ui/maximizer.ui:165 data/ui/multiband_compressor.ui:473
+#: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
-#: data/ui/rnnoise.ui:174 data/ui/speex.ui:247 data/ui/stereo_tools.ui:644
+#: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
 msgid "Plugin Input Gain"
 msgstr "Plugin-Indgangsforstærkning"
 
 #: data/ui/autogain.ui:491 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
-#: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:319
-#: data/ui/echo_canceller.ui:216 data/ui/equalizer.ui:444
+#: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:275
+#: data/ui/echo_canceller.ui:219 data/ui/equalizer.ui:444
 #: data/ui/exciter.ui:346 data/ui/filter.ui:225 data/ui/gate.ui:1280
-#: data/ui/limiter.ui:812 data/ui/loudness.ui:216 data/ui/maximizer.ui:230
+#: data/ui/limiter.ui:812 data/ui/loudness.ui:216 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
-#: data/ui/speex.ui:312 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
+#: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
 msgid "Output"
 msgstr "Udgang"
 
 #: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1161
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
-#: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:235
+#: data/ui/deesser.ui:520 data/ui/delay.ui:294 data/ui/echo_canceller.ui:238
 #: data/ui/equalizer.ui:463 data/ui/exciter.ui:365 data/ui/filter.ui:244
 #: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:235
-#: data/ui/maximizer.ui:249 data/ui/multiband_compressor.ui:557
+#: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
-#: data/ui/rnnoise.ui:258 data/ui/speex.ui:331 data/ui/stereo_tools.ui:728
+#: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
 msgid "Plugin Output Gain"
 msgstr "Plugin-Udgangsforstærkning"
 
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1224
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:285 data/ui/crystalizer.ui:204
-#: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:298
+#: data/ui/deesser.ui:643 data/ui/delay.ui:357 data/ui/echo_canceller.ui:301
 #: data/ui/equalizer.ui:526 data/ui/equalizer_band.ui:227
 #: data/ui/equalizer_band.ui:298 data/ui/exciter.ui:458 data/ui/filter.ui:307
 #: data/ui/gate.ui:1392 data/ui/limiter.ui:894 data/ui/loudness.ui:298
-#: data/ui/maximizer.ui:344 data/ui/multiband_compressor.ui:620
+#: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
-#: data/ui/rnnoise.ui:321 data/ui/speex.ui:394 data/ui/stereo_tools.ui:791
+#: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
 msgid "Reset"
 msgstr "Nustil"
 
 #: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1238
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:299 data/ui/deesser.ui:657
-#: data/ui/delay.ui:415 data/ui/echo_canceller.ui:312 data/ui/equalizer.ui:540
+#: data/ui/delay.ui:371 data/ui/echo_canceller.ui:315 data/ui/equalizer.ui:540
 #: data/ui/exciter.ui:472 data/ui/filter.ui:321 data/ui/gate.ui:1406
-#: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:358
+#: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
-#: data/ui/speex.ui:408 data/ui/stereo_tools.ui:805
+#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
 msgid "Using"
 msgstr "Bruger"
 
@@ -414,7 +414,7 @@ msgid "Time"
 msgstr "Tid"
 
 #: data/ui/compressor.ui:186 data/ui/deesser.ui:299 data/ui/gate.ui:153
-#: data/ui/gate.ui:247 data/ui/limiter.ui:346 data/ui/maximizer.ui:30
+#: data/ui/gate.ui:247 data/ui/limiter.ui:346 data/ui/maximizer.ui:50
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
@@ -430,7 +430,7 @@ msgid "Attack Threshold"
 msgstr "Angreb Grænseværdi"
 
 #: data/ui/compressor.ui:241 data/ui/gate.ui:66 data/ui/limiter.ui:304
-#: data/ui/limiter.ui:522 data/ui/maximizer.ui:96
+#: data/ui/limiter.ui:522 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate_band.ui:150
 msgid "Release"
 msgstr "Frigør"
@@ -459,15 +459,17 @@ msgstr "Knæ"
 msgid "Makeup"
 msgstr "Makeup"
 
-#: data/ui/compressor.ui:405 data/ui/delay.ui:105 data/ui/gate.ui:342
-#: data/ui/multiband_compressor.ui:132 data/ui/multiband_gate.ui:132
-#: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:534
+#: data/ui/compressor.ui:405 data/ui/delay.ui:52 data/ui/delay.ui:127
+#: data/ui/gate.ui:342 data/ui/multiband_compressor.ui:132
+#: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:208
+#: data/ui/stereo_tools.ui:534
 msgid "Dry Level"
 msgstr "TørNiveau"
 
-#: data/ui/compressor.ui:440 data/ui/delay.ui:164 data/ui/gate.ui:347
-#: data/ui/multiband_compressor.ui:166 data/ui/multiband_gate.ui:166
-#: data/ui/reverb.ui:242 data/ui/stereo_tools.ui:570
+#: data/ui/compressor.ui:440 data/ui/delay.ui:75 data/ui/delay.ui:150
+#: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:166
+#: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:242
+#: data/ui/stereo_tools.ui:570
 msgid "Wet Level"
 msgstr "Vådniveau"
 
@@ -515,14 +517,14 @@ msgstr "Midte"
 msgid "Side"
 msgstr "Side"
 
-#: data/ui/compressor.ui:551 data/ui/delay.ui:30 data/ui/equalizer.ui:215
+#: data/ui/compressor.ui:551 data/ui/delay.ui:28 data/ui/equalizer.ui:215
 #: data/ui/gate.ui:690 data/ui/multiband_compressor_band.ui:498
 #: data/ui/multiband_gate_band.ui:561 data/ui/pipe_manager_box.ui:504
 #: data/ui/stereo_tools.ui:161
 msgid "Left"
 msgstr "Venstre"
 
-#: data/ui/compressor.ui:552 data/ui/delay.ui:39 data/ui/equalizer.ui:242
+#: data/ui/compressor.ui:552 data/ui/delay.ui:103 data/ui/equalizer.ui:242
 #: data/ui/gate.ui:691 data/ui/multiband_compressor_band.ui:499
 #: data/ui/multiband_gate_band.ui:562 data/ui/pipe_manager_box.ui:515
 #: data/ui/stereo_tools.ui:216
@@ -805,59 +807,29 @@ msgid "Detected"
 msgstr "Detektet"
 
 #: data/ui/deesser.ui:609 data/ui/gate.ui:423 data/ui/gate.ui:1078
-#: data/ui/maximizer.ui:308 data/ui/multiband_gate_band.ui:413
+#: data/ui/maximizer.ui:271 data/ui/multiband_gate_band.ui:413
 msgid "Reduction"
 msgstr "Reduktion"
 
-#: data/ui/delay.ui:50 src/tags_plugin_name.cpp:39
+#: data/ui/delay.ui:31 data/ui/delay.ui:106 src/tags_plugin_name.cpp:39
 #, fuzzy
 msgid "Delay"
 msgstr "Pre Forsinkelse"
 
-#: data/ui/delay.ui:75
-#, fuzzy
-msgid "Left Delay"
-msgstr "Pre Forsinkelse"
-
-#: data/ui/delay.ui:97
-#, fuzzy
-msgid "Right Delay"
-msgstr "Højre Kanal"
-
-#: data/ui/delay.ui:132
-#, fuzzy
-msgid "Left Dry Level"
-msgstr "TørNiveau"
-
-#: data/ui/delay.ui:156
-#, fuzzy
-msgid "Right Dry Level"
-msgstr "TørNiveau"
-
-#: data/ui/delay.ui:190
-#, fuzzy
-msgid "Left Wet Level"
-msgstr "Vådniveau"
-
-#: data/ui/delay.ui:213
-#, fuzzy
-msgid "Right Wet Level"
-msgstr "Vådniveau"
-
-#: data/ui/echo_canceller.ui:26
+#: data/ui/echo_canceller.ui:27
 msgid "Frame Size"
 msgstr "Rammestørrelse"
 
-#: data/ui/echo_canceller.ui:49
+#: data/ui/echo_canceller.ui:50
 msgid "Filter Length"
 msgstr "Filterlængde"
 
-#: data/ui/echo_canceller.ui:72
+#: data/ui/echo_canceller.ui:73
 #, fuzzy
 msgid "Residual Echo Suppression"
 msgstr "Reduktion"
 
-#: data/ui/echo_canceller.ui:94
+#: data/ui/echo_canceller.ui:95
 #, fuzzy
 msgid "Near End Echo Suppression"
 msgstr "Reduktion"
@@ -1318,7 +1290,7 @@ msgstr "Udgang Volume"
 msgid "Clipping"
 msgstr ""
 
-#: data/ui/maximizer.ui:63
+#: data/ui/maximizer.ui:71
 msgid "Ceiling"
 msgstr "Loft"
 
@@ -1566,6 +1538,7 @@ msgid "Test Signal"
 msgstr "Test-Signal"
 
 #: data/ui/pipe_manager_box.ui:480 data/ui/preferences_spectrum.ui:9
+#: data/ui/speex.ui:29
 msgid "State"
 msgstr "Tilstand"
 
@@ -2025,20 +1998,20 @@ msgstr "Skjul Vinduet."
 msgid "Quit Easy Effects"
 msgstr "_Om EasyEffects"
 
-#: data/ui/speex.ui:29
+#: data/ui/speex.ui:33
 msgid "Denoise"
 msgstr ""
 
-#: data/ui/speex.ui:41
+#: data/ui/speex.ui:45
 msgid "Automatic Gain Control"
 msgstr ""
 
-#: data/ui/speex.ui:53
+#: data/ui/speex.ui:57
 #, fuzzy
 msgid "Voice Detection"
 msgstr "Opsporing"
 
-#: data/ui/speex.ui:65
+#: data/ui/speex.ui:69
 #, fuzzy
 msgid "Dereverberation"
 msgstr "Serveroplysninger"
@@ -2047,19 +2020,24 @@ msgstr "Serveroplysninger"
 msgid "Voice Activity Probability"
 msgstr ""
 
-#: data/ui/speex.ui:99
+#: data/ui/speex.ui:91
 #, fuzzy
 msgid "Start"
 msgstr "Bånd start"
 
-#: data/ui/speex.ui:133
+#: data/ui/speex.ui:113
 msgid "Continue"
 msgstr ""
 
-#: data/ui/speex.ui:175
+#: data/ui/speex.ui:137
 #, fuzzy
 msgid "Noise Suppression"
 msgstr "Reduktion"
+
+#: data/ui/speex.ui:141
+#, fuzzy
+msgid "Level"
+msgstr "F2 Niveau"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2460,6 +2438,30 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Left Delay"
+#~ msgstr "Pre Forsinkelse"
+
+#, fuzzy
+#~ msgid "Right Delay"
+#~ msgstr "Højre Kanal"
+
+#, fuzzy
+#~ msgid "Left Dry Level"
+#~ msgstr "TørNiveau"
+
+#, fuzzy
+#~ msgid "Right Dry Level"
+#~ msgstr "TørNiveau"
+
+#, fuzzy
+#~ msgid "Left Wet Level"
+#~ msgstr "Vådniveau"
+
+#, fuzzy
+#~ msgid "Right Wet Level"
+#~ msgstr "Vådniveau"
 
 #~ msgid "Fast Fourier Transform Size"
 #~ msgstr "Fast Fourier Transform Størrelse"
