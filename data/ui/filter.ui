@@ -19,137 +19,105 @@
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkComboBoxText" id="mode">
-                                <property name="halign">center</property>
-                                <items>
-                                    <item translatable="yes" id="12dB/oct Lowpass">12dB/oct Lowpass</item>
-                                    <item translatable="yes" id="24dB/oct Lowpass">24dB/oct Lowpass</item>
-                                    <item translatable="yes" id="36dB/oct Lowpass">36dB/oct Lowpass</item>
-                                    <item translatable="yes" id="12dB/oct Highpass">12dB/oct Highpass</item>
-                                    <item translatable="yes" id="24dB/oct Highpass">24dB/oct Highpass</item>
-                                    <item translatable="yes" id="36dB/oct Highpass">36dB/oct Highpass</item>
-                                    <item translatable="yes" id="6dB/oct Bandpass">6dB/oct Bandpass</item>
-                                    <item translatable="yes" id="12dB/oct Bandpass">12dB/oct Bandpass</item>
-                                    <item translatable="yes" id="18dB/oct Bandpass">18dB/oct Bandpass</item>
-                                    <item translatable="yes" id="6dB/oct Bandreject">6dB/oct Bandreject</item>
-                                    <item translatable="yes" id="12dB/oct Bandreject">12dB/oct Bandreject</item>
-                                    <item translatable="yes" id="18dB/oct Bandreject">18dB/oct Bandreject</item>
-                                </items>
-                                <accessibility>
-                                    <property name="label">Filter Mode</property>
-                                </accessibility>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkGrid">
-                                <property name="margin-bottom">6</property>
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="row-spacing">6</property>
-                                <property name="column-spacing">48</property>
+                            <object class="AdwPreferencesPage">
                                 <child>
-                                    <object class="GtkLabel" id="frequency_label">
-                                        <property name="label" translatable="yes">Frequency</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="frequency">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">1</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">10</property>
-                                                <property name="upper">20000</property>
-                                                <property name="value">2000</property>
-                                                <property name="step-increment">1</property>
-                                                <property name="page-increment">100</property>
+                                    <object class="AdwPreferencesGroup">
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Mode</property>
+                                                <child>
+                                                    <object class="GtkComboBoxText" id="mode">
+                                                        <property name="valign">center</property>
+                                                        <items>
+                                                            <item translatable="yes" id="12dB/oct Lowpass">12dB/oct Lowpass</item>
+                                                            <item translatable="yes" id="24dB/oct Lowpass">24dB/oct Lowpass</item>
+                                                            <item translatable="yes" id="36dB/oct Lowpass">36dB/oct Lowpass</item>
+                                                            <item translatable="yes" id="12dB/oct Highpass">12dB/oct Highpass</item>
+                                                            <item translatable="yes" id="24dB/oct Highpass">24dB/oct Highpass</item>
+                                                            <item translatable="yes" id="36dB/oct Highpass">36dB/oct Highpass</item>
+                                                            <item translatable="yes" id="6dB/oct Bandpass">6dB/oct Bandpass</item>
+                                                            <item translatable="yes" id="12dB/oct Bandpass">12dB/oct Bandpass</item>
+                                                            <item translatable="yes" id="18dB/oct Bandpass">18dB/oct Bandpass</item>
+                                                            <item translatable="yes" id="6dB/oct Bandreject">6dB/oct Bandreject</item>
+                                                            <item translatable="yes" id="12dB/oct Bandreject">12dB/oct Bandreject</item>
+                                                            <item translatable="yes" id="18dB/oct Bandreject">18dB/oct Bandreject</item>
+                                                        </items>
+                                                        <accessibility>
+                                                            <property name="label">Filter Mode</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">frequency_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
+                                        </child>
 
-                                <child>
-                                    <object class="GtkLabel" id="resonance_label">
-                                        <property name="label" translatable="yes">Resonance</property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="resonance">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">1</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">-3</property>
-                                                <property name="upper">30</property>
-                                                <property name="value">-3</property>
-                                                <property name="step-increment">0.1</property>
-                                                <property name="page-increment">1</property>
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Frequency</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="frequency">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">10</property>
+                                                                <property name="upper">20000</property>
+                                                                <property name="value">2000</property>
+                                                                <property name="step-increment">1</property>
+                                                                <property name="page-increment">100</property>
+                                                            </object>
+                                                        </property>
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">resonance_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
+                                        </child>
 
-                                <child>
-                                    <object class="GtkLabel" id="inertia_label">
-                                        <property name="label" translatable="yes">Inertia</property>
-                                        <layout>
-                                            <property name="column">2</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="inertia">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">2</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">5</property>
-                                                <property name="upper">100</property>
-                                                <property name="value">20</property>
-                                                <property name="step-increment">0.01</property>
-                                                <property name="page-increment">0.1</property>
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Resonance</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="resonance">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">-3</property>
+                                                                <property name="upper">30</property>
+                                                                <property name="value">-3</property>
+                                                                <property name="step-increment">0.1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">2</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">inertia_label</relation>
-                                        </accessibility>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Inertia</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="inertia">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">2</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">5</property>
+                                                                <property name="upper">100</property>
+                                                                <property name="value">20</property>
+                                                                <property name="step-increment">0.01</property>
+                                                                <property name="page-increment">0.1</property>
+                                                            </object>
+                                                        </property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
                             </object>
