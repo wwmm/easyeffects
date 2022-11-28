@@ -45,7 +45,7 @@ struct _LoudnessBox {
 
   GtkComboBoxText *fft_size, *standard;
 
-  GtkCheckButton* clipping;
+  GtkSwitch* clipping;
 
   GtkSpinButton *volume, *clipping_range;
 
