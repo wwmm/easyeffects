@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:45+0000\n"
+"POT-Creation-Date: 2022-11-28 16:09+0000\n"
 "PO-Revision-Date: 2022-09-29 01:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -98,9 +98,9 @@ msgstr "Postavke"
 msgid "_About Easy Effects"
 msgstr "EasyEffects"
 
-#: data/ui/application_window.ui:52 data/ui/reverb.ui:25
-#: src/presets_menu.cpp:108 src/presets_menu.cpp:258 src/presets_menu.cpp:259
-#: src/presets_menu.cpp:276 src/presets_menu.cpp:277
+#: data/ui/application_window.ui:52 data/ui/crossfeed.ui:27
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:108 src/presets_menu.cpp:258
+#: src/presets_menu.cpp:259 src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
 msgstr "Predlošci"
 
@@ -202,7 +202,7 @@ msgstr "Relativno"
 msgid "Range"
 msgstr "Raspon"
 
-#: data/ui/autogain.ui:338 data/ui/bass_loudness.ui:29
+#: data/ui/autogain.ui:338 data/ui/bass_loudness.ui:27
 #: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Glasnoća"
@@ -213,8 +213,8 @@ msgid "Output Gain"
 msgstr "Pojačanje ulaza"
 
 #: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:262
-#: data/ui/bass_loudness.ui:146 data/ui/compressor.ui:576
-#: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:143
+#: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:576
+#: data/ui/compressor.ui:1058 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:235
 #: data/ui/echo_canceller.ui:132 data/ui/equalizer.ui:360
 #: data/ui/exciter.ui:262 data/ui/filter.ui:173 data/ui/gate.ui:715
@@ -228,8 +228,8 @@ msgid "Input"
 msgstr "Ulaz"
 
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
-#: data/ui/bass_loudness.ui:165 data/ui/compressor.ui:1077
-#: data/ui/convolver.ui:245 data/ui/crossfeed.ui:162 data/ui/crystalizer.ui:65
+#: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1077
+#: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:436 data/ui/delay.ui:254 data/ui/echo_canceller.ui:151
 #: data/ui/equalizer.ui:379 data/ui/exciter.ui:281 data/ui/filter.ui:192
 #: data/ui/gate.ui:1215 data/ui/limiter.ui:747 data/ui/loudness.ui:196
@@ -241,8 +241,8 @@ msgid "Plugin Input Gain"
 msgstr "Pojačanje ulaza"
 
 #: data/ui/autogain.ui:491 data/ui/bass_enhancer.ui:346
-#: data/ui/bass_loudness.ui:63 data/ui/bass_loudness.ui:230
-#: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:227
+#: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
+#: data/ui/compressor.ui:1142 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:319
 #: data/ui/echo_canceller.ui:216 data/ui/equalizer.ui:444
 #: data/ui/exciter.ui:346 data/ui/filter.ui:257 data/ui/gate.ui:1280
@@ -255,8 +255,8 @@ msgid "Output"
 msgstr "Izlaz"
 
 #: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
-#: data/ui/bass_loudness.ui:249 data/ui/compressor.ui:1161
-#: data/ui/convolver.ui:329 data/ui/crossfeed.ui:246 data/ui/crystalizer.ui:149
+#: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1161
+#: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:520 data/ui/delay.ui:338 data/ui/echo_canceller.ui:235
 #: data/ui/equalizer.ui:463 data/ui/exciter.ui:365 data/ui/filter.ui:276
 #: data/ui/gate.ui:1299 data/ui/limiter.ui:831 data/ui/loudness.ui:280
@@ -268,8 +268,8 @@ msgid "Plugin Output Gain"
 msgstr "Pojačanje ulaza"
 
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
-#: data/ui/bass_loudness.ui:312 data/ui/compressor.ui:1224
-#: data/ui/convolver.ui:392 data/ui/crossfeed.ui:309 data/ui/crystalizer.ui:204
+#: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1224
+#: data/ui/convolver.ui:392 data/ui/crossfeed.ui:285 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:643 data/ui/delay.ui:401 data/ui/echo_canceller.ui:298
 #: data/ui/equalizer.ui:526 data/ui/equalizer_band.ui:227
 #: data/ui/equalizer_band.ui:298 data/ui/exciter.ui:458 data/ui/filter.ui:339
@@ -281,8 +281,8 @@ msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
 #: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
-#: data/ui/bass_loudness.ui:326 data/ui/compressor.ui:1238
-#: data/ui/convolver.ui:406 data/ui/crossfeed.ui:323 data/ui/deesser.ui:657
+#: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1238
+#: data/ui/convolver.ui:406 data/ui/crossfeed.ui:299 data/ui/deesser.ui:657
 #: data/ui/delay.ui:415 data/ui/echo_canceller.ui:312 data/ui/equalizer.ui:540
 #: data/ui/exciter.ui:472 data/ui/filter.ui:353 data/ui/gate.ui:1406
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:357 data/ui/maximizer.ui:358
@@ -357,7 +357,7 @@ msgstr "Dno"
 msgid "Floor Value"
 msgstr "Dno"
 
-#: data/ui/bass_loudness.ui:97
+#: data/ui/bass_loudness.ui:71
 msgid "Link"
 msgstr ""
 
@@ -779,15 +779,15 @@ msgstr "Učitaj impuls datoteku"
 msgid "Impulse Files List"
 msgstr "Učitaj impuls datoteku"
 
-#: data/ui/crossfeed.ui:35
+#: data/ui/crossfeed.ui:39
 msgid "Default"
 msgstr "Tvorničke postavke"
 
-#: data/ui/crossfeed.ui:58
+#: data/ui/crossfeed.ui:56
 msgid "Cutoff"
 msgstr "Prekid"
 
-#: data/ui/crossfeed.ui:93
+#: data/ui/crossfeed.ui:79
 msgid "Feed"
 msgstr "Dovod zvuka"
 
