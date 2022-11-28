@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-27 15:56+0000\n"
-"PO-Revision-Date: 2022-11-13 07:49+0000\n"
+"PO-Revision-Date: 2022-11-28 14:44+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -830,14 +830,12 @@ msgid "Filter Length"
 msgstr "Longitud del filtro"
 
 #: data/ui/echo_canceller.ui:72
-#, fuzzy
 msgid "Residual Echo Suppression"
-msgstr "Supresión del ruido"
+msgstr "Suprimir el eco residual"
 
 #: data/ui/echo_canceller.ui:94
-#, fuzzy
 msgid "Near End Echo Suppression"
-msgstr "Supresión del ruido"
+msgstr "Supresión del eco en el extremo cercano"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
