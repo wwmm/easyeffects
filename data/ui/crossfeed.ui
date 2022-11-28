@@ -19,107 +19,83 @@
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkBox">
-                                <property name="halign">center</property>
-                                <property name="homogeneous">1</property>
-                                <property name="spacing">48</property>
+                            <object class="AdwPreferencesPage">
                                 <child>
-                                    <object class="GtkButton" id="preset_cmoy">
-                                        <property name="label">Cmoy</property>
-                                        <signal name="clicked" handler="on_preset_cmoy" object="CrossfeedBox" />
-                                    </object>
-                                </child>
+                                    <object class="AdwPreferencesGroup">
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Presets</property>
+                                                <child>
+                                                    <object class="GtkButton" id="preset_cmoy">
+                                                        <property name="valign">center</property>
+                                                        <property name="label">Cmoy</property>
+                                                        <signal name="clicked" handler="on_preset_cmoy" object="CrossfeedBox" />
+                                                    </object>
+                                                </child>
 
-                                <child>
-                                    <object class="GtkButton" id="preset_default">
-                                        <property name="label" translatable="yes">Default</property>
-                                        <signal name="clicked" handler="on_preset_default" object="CrossfeedBox" />
-                                    </object>
-                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="preset_default">
+                                                        <property name="valign">center</property>
+                                                        <property name="label" translatable="yes">Default</property>
+                                                        <signal name="clicked" handler="on_preset_default" object="CrossfeedBox" />
+                                                    </object>
+                                                </child>
 
-                                <child>
-                                    <object class="GtkButton" id="preset_jmeier">
-                                        <property name="label">Jmeier</property>
-                                        <signal name="clicked" handler="on_preset_jmeier" object="CrossfeedBox" />
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkGrid">
-                                <property name="margin-bottom">6</property>
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="row-spacing">6</property>
-                                <property name="column-spacing">48</property>
-                                <child>
-                                    <object class="GtkLabel" id="fcut_label">
-                                        <property name="label" translatable="yes">Cutoff</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="fcut">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">0</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">300</property>
-                                                <property name="upper">2000</property>
-                                                <property name="value">700</property>
-                                                <property name="step-increment">1</property>
-                                                <property name="page-increment">10</property>
+                                                <child>
+                                                    <object class="GtkButton" id="preset_jmeier">
+                                                        <property name="valign">center</property>
+                                                        <property name="label">Jmeier</property>
+                                                        <signal name="clicked" handler="on_preset_jmeier" object="CrossfeedBox" />
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">fcut_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
+                                        </child>
 
-                                <child>
-                                    <object class="GtkLabel" id="feed_label">
-                                        <property name="label" translatable="yes">Feed</property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="feed">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">1</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">1</property>
-                                                <property name="upper">15</property>
-                                                <property name="value">4.5</property>
-                                                <property name="step-increment">0.1</property>
-                                                <property name="page-increment">1</property>
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Cutoff</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="fcut">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">0</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">300</property>
+                                                                <property name="upper">2000</property>
+                                                                <property name="value">700</property>
+                                                                <property name="step-increment">1</property>
+                                                                <property name="page-increment">10</property>
+                                                            </object>
+                                                        </property>
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">feed_label</relation>
-                                        </accessibility>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Feed</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="feed">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">1</property>
+                                                                <property name="upper">15</property>
+                                                                <property name="value">4.5</property>
+                                                                <property name="step-increment">0.1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
                             </object>

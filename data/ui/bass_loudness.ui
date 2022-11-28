@@ -19,69 +19,72 @@
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="AdwPreferencesGroup">
-                                <property name="halign">center</property>
+                            <object class="AdwPreferencesPage">
                                 <child>
-                                    <object class="AdwActionRow">
-                                        <property name="title" translatable="yes">Loudness</property>
+                                    <object class="AdwPreferencesGroup">
                                         <child>
-                                            <object class="GtkSpinButton" id="loudness">
-                                                <property name="valign">center</property>
-                                                <property name="width-chars">10</property>
-                                                <property name="digits">1</property>
-                                                <property name="update-policy">if-valid</property>
-                                                <property name="adjustment">
-                                                    <object class="GtkAdjustment">
-                                                        <property name="lower">-100</property>
-                                                        <property name="upper">0</property>
-                                                        <property name="step-increment">0.1</property>
-                                                        <property name="page-increment">1</property>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Loudness</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="loudness">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">-100</property>
+                                                                <property name="upper">0</property>
+                                                                <property name="step-increment">0.1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
                                                     </object>
-                                                </property>
+                                                </child>
                                             </object>
                                         </child>
-                                    </object>
-                                </child>
 
-                                <child>
-                                    <object class="AdwActionRow">
-                                        <property name="title" translatable="yes">Output</property>
                                         <child>
-                                            <object class="GtkSpinButton" id="output">
-                                                <property name="valign">center</property>
-                                                <property name="width-chars">10</property>
-                                                <property name="digits">1</property>
-                                                <property name="update-policy">if-valid</property>
-                                                <property name="adjustment">
-                                                    <object class="GtkAdjustment">
-                                                        <property name="lower">-100</property>
-                                                        <property name="upper">0</property>
-                                                        <property name="step-increment">0.1</property>
-                                                        <property name="page-increment">1</property>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Output</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="output">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">-100</property>
+                                                                <property name="upper">0</property>
+                                                                <property name="step-increment">0.1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
                                                     </object>
-                                                </property>
+                                                </child>
                                             </object>
                                         </child>
-                                    </object>
-                                </child>
 
-                                <child>
-                                    <object class="AdwActionRow">
-                                        <property name="title" translatable="yes">Link</property>
                                         <child>
-                                            <object class="GtkSpinButton" id="link">
-                                                <property name="valign">center</property>
-                                                <property name="width-chars">10</property>
-                                                <property name="digits">1</property>
-                                                <property name="update-policy">if-valid</property>
-                                                <property name="adjustment">
-                                                    <object class="GtkAdjustment">
-                                                        <property name="lower">-100</property>
-                                                        <property name="upper">0</property>
-                                                        <property name="step-increment">0.1</property>
-                                                        <property name="page-increment">1</property>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Link</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="link">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">-100</property>
+                                                                <property name="upper">0</property>
+                                                                <property name="step-increment">0.1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
                                                     </object>
-                                                </property>
+                                                </child>
                                             </object>
                                         </child>
                                     </object>
