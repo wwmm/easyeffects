@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
     <template class="EqualizerBandBox" parent="GtkBox">
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
         <property name="spacing">6</property>
         <property name="orientation">vertical</property>
         <child>

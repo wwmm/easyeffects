@@ -73,7 +73,7 @@ struct _EqualizerBox {
 
   GtkStack* stack;
 
-  GtkBox *bands_box_left, *bands_box_right;
+  GtkListView *listview_left, *listview_right;
 
   GtkSpinButton *nbands, *balance, *pitch_left, *pitch_right;
 
@@ -82,6 +82,8 @@ struct _EqualizerBox {
   GtkToggleButton* split_channels;
 
   GSettings *settings, *settings_left, *settings_right;
+
+  GtkStringList *string_list_left, *string_list_right;
 
   Data* data;
 };
@@ -590,31 +592,6 @@ void on_import_geq_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
 // ### End GraphicEQ Section ###
 
-template <Channel channel>
-void build_channel_bands(EqualizerBox* self, const int& nbands, const bool& split_mode) {
-  GSettings* settings = nullptr;
-  GtkBox* bands_box = nullptr;
-
-  if constexpr (channel == Channel::left) {
-    settings = self->settings_left;
-
-    bands_box = self->bands_box_left;
-  } else if constexpr (channel == Channel::right) {
-    settings = self->settings_right;
-
-    bands_box = self->bands_box_right;
-  }
-
-  for (int n = 0; n < nbands; n++) {
-    auto* band_box = ui::equalizer_band_box::create();
-
-    ui::equalizer_band_box::setup(band_box, settings);
-    ui::equalizer_band_box::bind(band_box, n);
-
-    gtk_box_append(bands_box, GTK_WIDGET(band_box));
-  }
-}
-
 void build_all_bands(EqualizerBox* self) {
   for (auto& handler_id : self->data->gconnections_left) {
     g_signal_handler_disconnect(self->settings_left, handler_id);
@@ -627,25 +604,73 @@ void build_all_bands(EqualizerBox* self) {
   self->data->gconnections_left.clear();
   self->data->gconnections_right.clear();
 
-  for (auto* band_box_ptr : {self->bands_box_left, self->bands_box_right}) {
-    for (auto* child = gtk_widget_get_first_child(GTK_WIDGET(band_box_ptr)); child != nullptr;) {
-      auto* next_child = gtk_widget_get_next_sibling(child);
-
-      gtk_box_remove(band_box_ptr, child);
-
-      child = next_child;
-    }
-  }
-
   const auto split = g_settings_get_boolean(self->settings, "split-channels") != 0;
 
   const auto nbands = g_settings_get_int(self->settings, "num-bands");
 
-  build_channel_bands<Channel::left>(self, nbands, split);
+  std::vector<std::string> list;
+
+  list.reserve(nbands);
+
+  for (int n = 0; n < nbands; n++) {
+    list.push_back(util::to_string(n));
+  }
+
+  gtk_string_list_splice(self->string_list_left, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_left)),
+                         util::make_gchar_pointer_vector(list).data());
 
   if (split) {
-    build_channel_bands<Channel::right>(self, nbands, split);
+    gtk_string_list_splice(self->string_list_right, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_right)),
+                           util::make_gchar_pointer_vector(list).data());
   }
+}
+
+template <Channel channel>
+void setup_listview(EqualizerBox* self) {
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(factory, "setup",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, EqualizerBox* self) {
+                     auto* band_box = ui::equalizer_band_box::create();
+
+                     gtk_list_item_set_activatable(item, 0);
+                     gtk_list_item_set_child(item, GTK_WIDGET(band_box));
+
+                     g_object_set_data(G_OBJECT(item), "band-box", band_box);
+
+                     if constexpr (channel == Channel::left) {
+                       ui::equalizer_band_box::setup(band_box, self->settings_left);
+                     } else if constexpr (channel == Channel::right) {
+                       ui::equalizer_band_box::setup(band_box, self->settings_right);
+                     }
+                   }),
+                   self);
+
+  g_signal_connect(
+      factory, "bind", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, EqualizerBox* self) {
+        auto* band_box =
+            static_cast<ui::equalizer_band_box::EqualizerBandBox*>(g_object_get_data(G_OBJECT(item), "band-box"));
+
+        auto* child_item = gtk_list_item_get_item(item);
+        auto* band_id_str = gtk_string_object_get_string(GTK_STRING_OBJECT(child_item));
+
+        int band_id = 0;
+
+        util::str_to_num(band_id_str, band_id);
+
+        ui::equalizer_band_box::bind(band_box, band_id);
+      }),
+      self);
+
+  if constexpr (channel == Channel::left) {
+    gtk_list_view_set_factory(self->listview_left, factory);
+  } else if constexpr (channel == Channel::right) {
+    gtk_list_view_set_factory(self->listview_right, factory);
+  }
+
+  g_object_unref(factory);
 }
 
 void setup(EqualizerBox* self,
@@ -673,6 +698,9 @@ void setup(EqualizerBox* self,
       g_settings_new_with_path(tags::schema::equalizer::channel_id, (schema_path + "rightchannel/").c_str());
 
   equalizer->set_post_messages(true);
+
+  setup_listview<Channel::left>(self);
+  setup_listview<Channel::right>(self);
 
   build_all_bands(self);
 
@@ -798,8 +826,10 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, output_level_right_label);
 
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, stack);
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, bands_box_left);
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, bands_box_right);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, listview_left);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, listview_right);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, string_list_left);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, string_list_right);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, nbands);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, mode);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, split_channels);
