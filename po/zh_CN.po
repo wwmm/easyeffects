@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 22:58+0000\n"
-"PO-Revision-Date: 2022-11-28 14:44+0000\n"
+"PO-Revision-Date: 2022-11-29 22:47+0000\n"
 "Last-Translator: Eric <hamburger1024@duck.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -2000,9 +2000,8 @@ msgid "Noise Suppression"
 msgstr "抑制强度"
 
 #: data/ui/speex.ui:141
-#, fuzzy
 msgid "Level"
-msgstr "F2 级别"
+msgstr "级别"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
