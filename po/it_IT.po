@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 22:58+0000\n"
-"PO-Revision-Date: 2022-11-17 01:47+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2022-12-04 03:47+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -810,14 +810,12 @@ msgid "Filter Length"
 msgstr "Lunghezza Filtro"
 
 #: data/ui/echo_canceller.ui:73
-#, fuzzy
 msgid "Residual Echo Suppression"
-msgstr "Soppressione Rumore"
+msgstr "Soppressione dell'eco residuo"
 
 #: data/ui/echo_canceller.ui:95
-#, fuzzy
 msgid "Near End Echo Suppression"
-msgstr "Soppressione Rumore"
+msgstr "Soppressione dell'eco alla fine"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -1995,9 +1993,8 @@ msgid "Noise Suppression"
 msgstr "Soppressione Rumore"
 
 #: data/ui/speex.ui:141
-#, fuzzy
 msgid "Level"
-msgstr "F2 Livello"
+msgstr "Livello"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
