@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v3.2.0
         with:
           # we can't push changes to a fork via a shallow update, we need to clone the full repo
           fetch-depth: 0
