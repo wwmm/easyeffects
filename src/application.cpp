@@ -276,7 +276,11 @@ void application_class_init(ApplicationClass* klass) {
       hide_all_windows(gapp);
 
       g_application_quit(G_APPLICATION(gapp));
-    } else if (g_variant_dict_contains(options, "load-preset") != 0) {
+
+      return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "load-preset") != 0) {
       const char* name = nullptr;
 
       if (g_variant_dict_lookup(options, "load-preset", "&s", &name) != 0) {
@@ -286,6 +290,8 @@ void application_class_init(ApplicationClass* klass) {
           } else {
             g_settings_reset(self->settings, "last-used-input-preset");
           }
+
+          return EXIT_SUCCESS;
         }
 
         if (self->presets_manager->preset_file_exists(PresetType::output, name)) {
@@ -294,30 +300,44 @@ void application_class_init(ApplicationClass* klass) {
           } else {
             g_settings_reset(self->settings, "last-used-output-preset");
           }
+
+          return EXIT_SUCCESS;
         }
       }
-    } else if (g_variant_dict_contains(options, "reset") != 0) {
+    }
+
+    if (g_variant_dict_contains(options, "reset") != 0) {
       util::reset_all_keys_except(self->settings);
 
       self->soe->reset_settings();
       self->sie->reset_settings();
 
       util::info("All settings were reset");
-    } else if (g_variant_dict_contains(options, "hide-window") != 0) {
+
+      return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "hide-window") != 0) {
       hide_all_windows(gapp);
 
       util::info("Hiding the window...");
-    } else if (g_variant_dict_contains(options, "bypass") != 0) {
+
+      return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "bypass") != 0) {
       if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
         if (bypass_arg == 1) {
           g_settings_set_boolean(self->settings, "bypass", 1);
         } else if (bypass_arg == 2) {
           g_settings_set_boolean(self->settings, "bypass", 0);
         }
+
+        return EXIT_SUCCESS;
       }
-    } else {
-      g_application_activate(gapp);
     }
+
+    g_application_activate(gapp);
 
     return G_APPLICATION_CLASS(application_parent_class)->command_line(gapp, cmdline);
   };

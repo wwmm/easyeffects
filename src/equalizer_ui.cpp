@@ -51,7 +51,7 @@ struct Data {
 
   uint serial = 0;
 
-  app::Application* application;
+  app::Application* application{};
 
   std::shared_ptr<Equalizer> equalizer;
 
@@ -477,7 +477,7 @@ auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ
     bands_substr = band_match.suffix().str();
   }
 
-  return (bands.size() > 0U);
+  return !bands.empty();
 }
 
 auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -> bool {
