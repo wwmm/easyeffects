@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-15 22:50+0000\n"
-"PO-Revision-Date: 2022-12-09 04:47+0000\n"
+"PO-Revision-Date: 2022-12-23 05:48+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
 "main/bg/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -125,15 +125,15 @@ msgstr "Листа е празен"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
-msgstr ""
+msgstr "Аудио приложение не е налично"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
-msgstr ""
+msgstr "Цел"
 
 #: data/ui/autogain.ui:63
 msgid "Silence"
-msgstr ""
+msgstr "Тишина"
 
 #: data/ui/autogain.ui:98
 msgid "Maximum History"
@@ -141,35 +141,35 @@ msgstr ""
 
 #: data/ui/autogain.ui:132
 msgid "Reference"
-msgstr ""
+msgstr "Справка"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:185
 msgid "Momentary"
-msgstr ""
+msgstr "Моментално"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:215
 msgid "Short-Term"
-msgstr ""
+msgstr "Краткосрочен"
 
 #: data/ui/autogain.ui:146 data/ui/autogain.ui:245
 msgid "Integrated"
-msgstr ""
+msgstr "Интегриран"
 
 #: data/ui/autogain.ui:147
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "Средно аритметично (MSI)"
 
 #: data/ui/autogain.ui:148
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "Средно аритметично (MS)"
 
 #: data/ui/autogain.ui:149
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "Средно аритметично (MI)"
 
 #: data/ui/autogain.ui:150
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "Средно аритметично (SI)"
 
 #: data/ui/autogain.ui:165
 msgid "Reset History"
@@ -177,11 +177,11 @@ msgstr ""
 
 #: data/ui/autogain.ui:275
 msgid "Relative"
-msgstr ""
+msgstr "Относително"
 
 #: data/ui/autogain.ui:305
 msgid "Range"
-msgstr ""
+msgstr "Диапазон"
 
 #: data/ui/autogain.ui:338 data/ui/bass_loudness.ui:27
 #: src/tags_plugin_name.cpp:46
@@ -190,7 +190,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:370
 msgid "Output Gain"
-msgstr ""
+msgstr "Изходен gain"
 
 #: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:576
@@ -205,7 +205,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:625
 msgid "Input"
-msgstr ""
+msgstr "Вход"
 
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1077
@@ -217,7 +217,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
 msgid "Plugin Input Gain"
-msgstr ""
+msgstr "Входен gain на добавка"
 
 #: data/ui/autogain.ui:491 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
@@ -231,7 +231,7 @@ msgstr ""
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
 msgid "Output"
-msgstr ""
+msgstr "Изход"
 
 #: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1161
@@ -243,7 +243,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
 msgid "Plugin Output Gain"
-msgstr ""
+msgstr "Изходен gain на добавка"
 
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1224
@@ -256,7 +256,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
 msgid "Reset"
-msgstr ""
+msgstr "Нулиране"
 
 #: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1238
@@ -268,26 +268,26 @@ msgstr ""
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
 msgid "Using"
-msgstr ""
+msgstr "Използвайки"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:599 data/ui/gate.ui:738
 msgid "Device"
-msgstr ""
+msgstr "Устройство"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:47
 #: data/ui/presets_menu.ui:195
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "Профил"
 
 #: data/ui/autoload_row.ui:89
 msgid "Preset"
-msgstr ""
+msgstr "Предварително задаване"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
@@ -296,64 +296,64 @@ msgstr ""
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:529 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/gate.ui:668
 msgid "Listen"
-msgstr ""
+msgstr "Слушам"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "Смесени хармоники"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr ""
+msgstr "3-то"
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr ""
+msgstr "2-ро"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr ""
+msgstr "Количество"
 
 #: data/ui/bass_enhancer.ui:142 data/ui/bass_enhancer.ui:424
 #: data/ui/exciter.ui:142 data/ui/exciter.ui:424
 msgid "Harmonics"
-msgstr ""
+msgstr "Хармоници"
 
 #: data/ui/bass_enhancer.ui:177 data/ui/exciter.ui:177
 msgid "Scope"
-msgstr ""
+msgstr "Обхват"
 
 #: data/ui/bass_enhancer.ui:211
 msgid "Floor"
-msgstr ""
+msgstr "Под"
 
 #: data/ui/bass_enhancer.ui:240
 msgid "Floor Value"
-msgstr ""
+msgstr "Минимална стойност"
 
 #: data/ui/bass_loudness.ui:71
 msgid "Link"
-msgstr ""
+msgstr "Линк"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
-msgstr ""
+msgstr "Име на приложението"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr ""
+msgstr "Добави към изключени приложения"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr ""
+msgstr "Списък на изключени приложения"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr ""
+msgstr "Покажи изключените приложения"
 
 #: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
-msgstr ""
+msgstr "Аудио компресор"
 
 #: data/ui/compressor.ui:53 data/ui/compressor.ui:501 data/ui/compressor.ui:796
 #: data/ui/deesser.ui:64 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:134
@@ -361,27 +361,27 @@ msgstr ""
 #: data/ui/limiter.ui:46 data/ui/multiband_compressor_band.ui:457
 #: data/ui/multiband_gate_band.ui:520 data/ui/pitch.ui:32
 msgid "Mode"
-msgstr ""
+msgstr "Режим"
 
 #: data/ui/compressor.ui:64 data/ui/multiband_compressor_band.ui:99
 msgid "Downward"
-msgstr ""
+msgstr "Надолу"
 
 #: data/ui/compressor.ui:65 data/ui/multiband_compressor_band.ui:100
 msgid "Upward"
-msgstr ""
+msgstr "Нагоре"
 
 #: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
 msgid "Boosting"
-msgstr ""
+msgstr "Подсилване"
 
 #: data/ui/compressor.ui:73 data/ui/multiband_compressor_band.ui:88
 msgid "Compression Mode"
-msgstr ""
+msgstr "Компресионен режим"
 
 #: data/ui/compressor.ui:80 data/ui/multiband_compressor_band.ui:744
 msgid "Boost Threshold"
-msgstr ""
+msgstr "Праг на подсилване"
 
 #: data/ui/compressor.ui:119 data/ui/multiband_compressor_band.ui:700
 msgid "Boost Amount"
@@ -395,14 +395,14 @@ msgstr ""
 
 #: data/ui/compressor.ui:176 data/ui/multiband_compressor_band.ui:166
 msgid "Time"
-msgstr ""
+msgstr "Време"
 
 #: data/ui/compressor.ui:186 data/ui/deesser.ui:299 data/ui/gate.ui:153
 #: data/ui/gate.ui:247 data/ui/limiter.ui:346 data/ui/maximizer.ui:50
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
-msgstr ""
+msgstr "Праг"
 
 #: data/ui/compressor.ui:212 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
@@ -431,7 +431,7 @@ msgstr ""
 #: data/ui/compressor.ui:298 data/ui/deesser.ui:333
 #: data/ui/multiband_compressor_band.ui:309
 msgid "Ratio"
-msgstr ""
+msgstr "Съотношение"
 
 #: data/ui/compressor.ui:335 data/ui/limiter.ui:558
 #: data/ui/multiband_compressor_band.ui:347
@@ -448,7 +448,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:208
 #: data/ui/stereo_tools.ui:534
 msgid "Dry Level"
-msgstr ""
+msgstr "Сухо ниво"
 
 #: data/ui/compressor.ui:440 data/ui/delay.ui:75 data/ui/delay.ui:150
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:166
@@ -460,12 +460,12 @@ msgstr ""
 #: data/ui/compressor.ui:482 data/ui/compressor.ui:994 data/ui/gate.ui:621
 #: data/ui/gate.ui:1132
 msgid "Sidechain"
-msgstr ""
+msgstr "Странична верига"
 
 #: data/ui/compressor.ui:511 data/ui/deesser.ui:48 data/ui/gate.ui:650
 #: data/ui/multiband_compressor_band.ui:468 data/ui/multiband_gate_band.ui:531
 msgid "Peak"
-msgstr ""
+msgstr "Връх"
 
 #: data/ui/compressor.ui:512 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
@@ -484,36 +484,36 @@ msgstr ""
 #: data/ui/compressor.ui:521 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
 msgid "Sidechain Mode"
-msgstr ""
+msgstr "Режим на странична верига"
 
 #: data/ui/compressor.ui:539 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:485 data/ui/multiband_gate_band.ui:548
 msgid "Source"
-msgstr ""
+msgstr "Източник"
 
 #: data/ui/compressor.ui:549 data/ui/gate.ui:688
 #: data/ui/multiband_compressor_band.ui:496 data/ui/multiband_gate_band.ui:559
 msgid "Middle"
-msgstr ""
+msgstr "По средата"
 
 #: data/ui/compressor.ui:550 data/ui/gate.ui:689
 #: data/ui/multiband_compressor_band.ui:497 data/ui/multiband_gate_band.ui:560
 msgid "Side"
-msgstr ""
+msgstr "Странично"
 
 #: data/ui/compressor.ui:551 data/ui/delay.ui:28 data/ui/equalizer.ui:215
 #: data/ui/gate.ui:690 data/ui/multiband_compressor_band.ui:498
 #: data/ui/multiband_gate_band.ui:561 data/ui/pipe_manager_box.ui:504
 #: data/ui/stereo_tools.ui:161
 msgid "Left"
-msgstr ""
+msgstr "Наляво"
 
 #: data/ui/compressor.ui:552 data/ui/delay.ui:103 data/ui/equalizer.ui:242
 #: data/ui/gate.ui:691 data/ui/multiband_compressor_band.ui:499
 #: data/ui/multiband_gate_band.ui:562 data/ui/pipe_manager_box.ui:515
 #: data/ui/stereo_tools.ui:216
 msgid "Right"
-msgstr ""
+msgstr "Надясно"
 
 #: data/ui/compressor.ui:559 data/ui/gate.ui:698
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:506
@@ -523,7 +523,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:588 data/ui/equalizer_band.ui:102 data/ui/gate.ui:727
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: data/ui/compressor.ui:612
 msgid "Feed-forward"
@@ -531,19 +531,19 @@ msgstr ""
 
 #: data/ui/compressor.ui:613
 msgid "Feed-back"
-msgstr ""
+msgstr "Обратна връзка"
 
 #: data/ui/compressor.ui:614 data/ui/gate.ui:752
 msgid "External"
-msgstr ""
+msgstr "Външно"
 
 #: data/ui/compressor.ui:621 data/ui/gate.ui:759
 msgid "Sidechain Type"
-msgstr ""
+msgstr "Тип странична връзка"
 
 #: data/ui/compressor.ui:648 data/ui/gate.ui:786 src/plugins_box.cpp:646
 msgid "Input Device"
-msgstr ""
+msgstr "Входно устройство"
 
 #: data/ui/compressor.ui:656 data/ui/gate.ui:794
 msgid "PreAmplification"
@@ -561,7 +561,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:773 data/ui/gate.ui:911
 msgid "Sidechain Filters"
-msgstr ""
+msgstr "Филтри на странична верига"
 
 #: data/ui/compressor.ui:783 data/ui/gate.ui:921
 msgid "High-Pass"
@@ -570,12 +570,12 @@ msgstr ""
 #: data/ui/compressor.ui:809 data/ui/equalizer_band.ui:201 data/ui/filter.ui:55
 #: data/ui/gate.ui:947 data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
-msgstr ""
+msgstr "Честота"
 
 #: data/ui/compressor.ui:822 data/ui/compressor.ui:878
 #: data/ui/equalizer_band.ui:112 data/ui/gate.ui:960 data/ui/gate.ui:1016
 msgid "Off"
-msgstr ""
+msgstr "Изключено"
 
 #: data/ui/compressor.ui:823 data/ui/compressor.ui:879 data/ui/gate.ui:961
 #: data/ui/gate.ui:1017
@@ -590,7 +590,7 @@ msgstr ""
 #: data/ui/compressor.ui:825 data/ui/compressor.ui:881 data/ui/gate.ui:963
 #: data/ui/gate.ui:1019
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 dB/oct"
 
 #: data/ui/compressor.ui:832 data/ui/gate.ui:970
 msgid "High-Pass Filter Mode"
@@ -607,7 +607,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:940
 msgid "Gain"
-msgstr ""
+msgstr "Gain"
 
 #: data/ui/compressor.ui:967 data/ui/gate.ui:1105
 msgid "Envelope"
@@ -616,32 +616,32 @@ msgstr ""
 #: data/ui/compressor.ui:1021 data/ui/gate.ui:137 data/ui/gate.ui:1159
 #: data/ui/multiband_gate_band.ui:221
 msgid "Curve"
-msgstr ""
+msgstr "Крива"
 
 #: data/ui/convolver.ui:40
 msgid "L"
-msgstr ""
+msgstr "Л"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:507
 msgid "Left Channel"
-msgstr ""
+msgstr "Ляв канал"
 
 #: data/ui/convolver.ui:53
 msgid "R"
-msgstr ""
+msgstr "Д"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:518
 msgid "Right Channel"
-msgstr ""
+msgstr "Десен канал"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
-msgstr ""
+msgstr "Импулси"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Комбинирай"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
@@ -649,7 +649,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:114
 msgid "Spectrum"
-msgstr ""
+msgstr "Спектър"
 
 #: data/ui/convolver.ui:122
 msgid "Log Scale"
