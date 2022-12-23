@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-15 22:50+0000\n"
-"PO-Revision-Date: 2022-11-29 22:47+0000\n"
+"PO-Revision-Date: 2022-12-23 20:50+0000\n"
 "Last-Translator: Eric <hamburger1024@duck.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1705,7 +1705,6 @@ msgid "Process All Input Streams"
 msgstr "处理所有输入流"
 
 #: data/ui/preferences_general.ui:66
-#, fuzzy
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "忽略来自设备 Monitor 的音频流"
 
