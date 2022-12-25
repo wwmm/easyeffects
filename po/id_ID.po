@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 22:50+0000\n"
+"POT-Creation-Date: 2022-12-25 16:58+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -71,51 +71,53 @@ msgid "Application Volume"
 msgstr "Volume Aplikasi"
 
 #: data/ui/application_window.ui:6
-msgid "_Preferences"
-msgstr "_Preferensi"
-
-#: data/ui/application_window.ui:10
 msgid "_Manual"
 msgstr "_Manual"
 
-#: data/ui/application_window.ui:14
-#, fuzzy
-msgid "_Shortcuts"
-msgstr "Waktu Singkat"
-
-#: data/ui/application_window.ui:20
+#: data/ui/application_window.ui:12
 #, fuzzy
 msgid "_Reset Settings"
 msgstr "Setelan"
+
+#: data/ui/application_window.ui:18
+msgid "_Preferences"
+msgstr "_Preferensi"
+
+#: data/ui/application_window.ui:22
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "Waktu Singkat"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
 msgstr "Tentang EasyEffects"
 
-#: data/ui/application_window.ui:52 data/ui/crossfeed.ui:27
+#: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:108 src/presets_menu.cpp:258
 #: src/presets_menu.cpp:259 src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
 msgstr "Preset"
 
-#: data/ui/application_window.ui:54
+#: data/ui/application_window.ui:55
 msgid "Presets Menu"
 msgstr "Menu Preset"
 
-#: data/ui/application_window.ui:61
-msgid "Enable/disable the global bypass"
+#: data/ui/application_window.ui:62
+msgid ""
+"Enable/disable the\n"
+"                                    global bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:66
+#: data/ui/application_window.ui:68
 #, fuzzy
 msgid "Global Bypass"
 msgstr "Bypass"
 
-#: data/ui/application_window.ui:76
+#: data/ui/application_window.ui:78
 msgid "Primary Menu"
 msgstr ""
 
-#: data/ui/application_window.ui:91
+#: data/ui/application_window.ui:93
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "EasyEffects"

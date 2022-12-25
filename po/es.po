@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 22:50+0000\n"
+"POT-Creation-Date: 2022-12-25 16:58+0000\n"
 "PO-Revision-Date: 2022-11-29 22:47+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -70,48 +70,51 @@ msgid "Application Volume"
 msgstr "Volumen de aplicación"
 
 #: data/ui/application_window.ui:6
-msgid "_Preferences"
-msgstr "_Preferencias"
-
-#: data/ui/application_window.ui:10
 msgid "_Manual"
 msgstr "_Manual"
 
-#: data/ui/application_window.ui:14
-msgid "_Shortcuts"
-msgstr "_Atajos de teclado"
-
-#: data/ui/application_window.ui:20
+#: data/ui/application_window.ui:12
 msgid "_Reset Settings"
 msgstr "_Restablecer ajustes"
+
+#: data/ui/application_window.ui:18
+msgid "_Preferences"
+msgstr "_Preferencias"
+
+#: data/ui/application_window.ui:22
+msgid "_Shortcuts"
+msgstr "_Atajos de teclado"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
 msgstr "_Acerca de Easy Effects"
 
-#: data/ui/application_window.ui:52 data/ui/crossfeed.ui:27
+#: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:108 src/presets_menu.cpp:258
 #: src/presets_menu.cpp:259 src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
 msgstr "Perfiles"
 
-#: data/ui/application_window.ui:54
+#: data/ui/application_window.ui:55
 msgid "Presets Menu"
 msgstr "Menú de perfiles"
 
-#: data/ui/application_window.ui:61
-msgid "Enable/disable the global bypass"
+#: data/ui/application_window.ui:62
+#, fuzzy
+msgid ""
+"Enable/disable the\n"
+"                                    global bypass"
 msgstr "Activar/desactivar el baipás global"
 
-#: data/ui/application_window.ui:66
+#: data/ui/application_window.ui:68
 msgid "Global Bypass"
 msgstr "Bypass global"
 
-#: data/ui/application_window.ui:76
+#: data/ui/application_window.ui:78
 msgid "Primary Menu"
 msgstr "Menú principal"
 
-#: data/ui/application_window.ui:91
+#: data/ui/application_window.ui:93
 msgid "Easy Effects Window"
 msgstr "Ventana de Easy Effects"
 
