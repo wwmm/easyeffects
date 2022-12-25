@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 22:50+0000\n"
+"POT-Creation-Date: 2022-12-25 16:58+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -71,52 +71,54 @@ msgid "Application Volume"
 msgstr "Programlydstyrke"
 
 #: data/ui/application_window.ui:6
-msgid "_Preferences"
-msgstr "_Innstillinger"
-
-#: data/ui/application_window.ui:10
 #, fuzzy
 msgid "_Manual"
 msgstr "_Manuell"
 
-#: data/ui/application_window.ui:14
-msgid "_Shortcuts"
-msgstr "_Snarveier"
-
-#: data/ui/application_window.ui:20
+#: data/ui/application_window.ui:12
 msgid "_Reset Settings"
 msgstr "_Tilbakestill innstillinger"
+
+#: data/ui/application_window.ui:18
+msgid "_Preferences"
+msgstr "_Innstillinger"
+
+#: data/ui/application_window.ui:22
+msgid "_Shortcuts"
+msgstr "_Snarveier"
 
 #: data/ui/application_window.ui:26
 #, fuzzy
 msgid "_About Easy Effects"
 msgstr "_Om EasyEffects"
 
-#: data/ui/application_window.ui:52 data/ui/crossfeed.ui:27
+#: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:108 src/presets_menu.cpp:258
 #: src/presets_menu.cpp:259 src/presets_menu.cpp:276 src/presets_menu.cpp:277
 #, fuzzy
 msgid "Presets"
 msgstr "Profiler"
 
-#: data/ui/application_window.ui:54
+#: data/ui/application_window.ui:55
 #, fuzzy
 msgid "Presets Menu"
 msgstr "Profilmeny"
 
-#: data/ui/application_window.ui:61
-msgid "Enable/disable the global bypass"
+#: data/ui/application_window.ui:62
+msgid ""
+"Enable/disable the\n"
+"                                    global bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:66
+#: data/ui/application_window.ui:68
 msgid "Global Bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:76
+#: data/ui/application_window.ui:78
 msgid "Primary Menu"
 msgstr "Hovedmeny"
 
-#: data/ui/application_window.ui:91
+#: data/ui/application_window.ui:93
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "EasyEffects-vindu"
