@@ -290,16 +290,16 @@ class PipeManager {
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
   */
 
-  sigc::signal<void(const NodeInfo)> source_added;
-  sigc::signal<void(const NodeInfo)> source_changed;
-  sigc::signal<void(const NodeInfo)> source_removed;
-  sigc::signal<void(const NodeInfo)> sink_added;
-  sigc::signal<void(const NodeInfo)> sink_changed;
-  sigc::signal<void(const NodeInfo)> sink_removed;
-  sigc::signal<void(const std::string)> new_default_sink_name;
-  sigc::signal<void(const std::string)> new_default_source_name;
-  sigc::signal<void(const DeviceInfo)> device_input_route_changed;
-  sigc::signal<void(const DeviceInfo)> device_output_route_changed;
+  sigc::signal<void(NodeInfo)> source_added;
+  sigc::signal<void(NodeInfo)> source_changed;
+  sigc::signal<void(NodeInfo)> source_removed;
+  sigc::signal<void(NodeInfo)> sink_added;
+  sigc::signal<void(NodeInfo)> sink_changed;
+  sigc::signal<void(NodeInfo)> sink_removed;
+  sigc::signal<void(std::string)> new_default_sink_name;
+  sigc::signal<void(std::string)> new_default_source_name;
+  sigc::signal<void(DeviceInfo)> device_input_route_changed;
+  sigc::signal<void(DeviceInfo)> device_output_route_changed;
 
   sigc::signal<void(const LinkInfo)> link_changed;
 
