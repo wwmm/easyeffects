@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 16:58+0000\n"
+"POT-Creation-Date: 2022-12-27 14:02+0000\n"
 "PO-Revision-Date: 2022-12-27 02:48+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2254,7 +2254,7 @@ msgstr ""
 "Profilo GraphicEQ Non Caricato. Il Formato Potrebbe Essere Errato. Si Prega "
 "di Controllare il Contenuto."
 
-#: src/pipe_manager_box.cpp:327
+#: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr "Rimuovi Profilo di Auto Caricamento"
 

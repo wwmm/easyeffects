@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 16:58+0000\n"
+"POT-Creation-Date: 2022-12-27 14:02+0000\n"
 "PO-Revision-Date: 2022-10-04 21:21+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2281,7 +2281,7 @@ msgstr ""
 "Le préréglage GraphicEQ n’a pas été chargé. Le format du fichier peut être "
 "erroné. Veuillez vérifier son contenu."
 
-#: src/pipe_manager_box.cpp:327
+#: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 

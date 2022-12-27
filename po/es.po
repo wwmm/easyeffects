@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 16:58+0000\n"
+"POT-Creation-Date: 2022-12-27 14:02+0000\n"
 "PO-Revision-Date: 2022-12-27 02:48+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2254,7 +2254,7 @@ msgstr ""
 "El preajuste de GraphicEQ no se ha cargado. El formato del archivo puede que "
 "ser incorrecto. Por favor, compruebe su contenido."
 
-#: src/pipe_manager_box.cpp:327
+#: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr "Eliminar perfil de carga automática"
 
