@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 16:58+0000\n"
-"PO-Revision-Date: 2022-11-29 22:47+0000\n"
+"PO-Revision-Date: 2022-12-27 02:48+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -100,11 +100,12 @@ msgid "Presets Menu"
 msgstr "Menú de perfiles"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid ""
 "Enable/disable the\n"
 "                                    global bypass"
-msgstr "Activar/desactivar el baipás global"
+msgstr ""
+"Activar/desactivar el\n"
+"                                    bypass global"
 
 #: data/ui/application_window.ui:68
 msgid "Global Bypass"
