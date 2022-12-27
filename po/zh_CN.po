@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 16:58+0000\n"
+"POT-Creation-Date: 2022-12-27 14:02+0000\n"
 "PO-Revision-Date: 2022-12-23 20:50+0000\n"
 "Last-Translator: Eric <hamburger1024@duck.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2254,7 +2254,7 @@ msgid ""
 "Content."
 msgstr "GraphicEQ 未加载。可能是文件格式错误。请检查文件内容。"
 
-#: src/pipe_manager_box.cpp:327
+#: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
 

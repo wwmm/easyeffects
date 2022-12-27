@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 16:58+0000\n"
+"POT-Creation-Date: 2022-12-27 14:02+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2313,7 +2313,7 @@ msgstr ""
 "GraphicEQ 프리셋을 불러오지 못했습니다. 파일 형식이 잘못되었을 수 있습니다. "
 "내용을 확인하십시오."
 
-#: src/pipe_manager_box.cpp:327
+#: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr "자동 로딩 프리셋 제거하기"
 
