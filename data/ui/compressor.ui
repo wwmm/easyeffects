@@ -91,7 +91,8 @@
                                                                 <property name="digits">1</property>
                                                                 <property name="update-policy">if-valid</property>
                                                                 <binding name="sensitive">
-                                                                    <closure type="gboolean" function="set_boost_threshold_sensitive">
+                                                                    <closure type="gboolean"
+                                                                        function="set_boost_threshold_sensitive">
                                                                         <lookup name="active-id">compression_mode</lookup>
                                                                     </closure>
                                                                 </binding>
@@ -130,7 +131,8 @@
                                                                 <property name="digits">1</property>
                                                                 <property name="update-policy">if-valid</property>
                                                                 <binding name="sensitive">
-                                                                    <closure type="gboolean" function="set_boost_amount_sensitive">
+                                                                    <closure type="gboolean"
+                                                                        function="set_boost_amount_sensitive">
                                                                         <lookup name="active-id">compression_mode</lookup>
                                                                     </closure>
                                                                 </binding>
@@ -510,8 +512,8 @@
                                                                         <items>
                                                                             <item translatable="yes" id="Peak">Peak</item>
                                                                             <item translatable="yes" id="RMS">RMS</item>
-                                                                            <item translatable="yes" id="Low-Pass">Low-Pass</item>
-                                                                            <item translatable="yes" id="Uniform">Uniform</item>
+                                                                            <item translatable="yes" id="Low-Pass"> Low-Pass</item>
+                                                                            <item translatable="yes" id="Uniform"> Uniform</item>
                                                                         </items>
                                                                         <layout>
                                                                             <property name="column">0</property>
@@ -544,12 +546,15 @@
                                                                     </object>
                                                                 </child>
                                                                 <child>
-                                                                    <object class="GtkComboBoxText" id="sidechain_source">
+                                                                    <object class="GtkComboBoxText"
+                                                                        id="sidechain_source">
                                                                         <items>
                                                                             <item translatable="yes" id="Middle">Middle</item>
                                                                             <item translatable="yes" id="Side">Side</item>
                                                                             <item translatable="yes" id="Left">Left</item>
                                                                             <item translatable="yes" id="Right">Right</item>
+                                                                            <item translatable="yes" id="Min">Min</item>
+                                                                            <item translatable="yes" id="Max">Max</item>
                                                                         </items>
                                                                         <layout>
                                                                             <property name="column">2</property>
@@ -609,7 +614,7 @@
                                                                 <property name="valign">center</property>
                                                                 <property name="margin-end">6</property>
                                                                 <items>
-                                                                    <item id="Feed-forward" translatable="yes">Feed-forward</item>
+                                                                    <item id="Feed-forward" translatable="yes"> Feed-forward</item>
                                                                     <item id="Feed-back" translatable="yes">Feed-back</item>
                                                                     <item id="External" translatable="yes">External</item>
                                                                 </items>
@@ -628,7 +633,8 @@
                                                                 <property name="margin-end">6</property>
 
                                                                 <binding name="sensitive">
-                                                                    <closure type="gboolean" function="set_dropdown_sensitive">
+                                                                    <closure type="gboolean"
+                                                                        function="set_dropdown_sensitive">
                                                                         <lookup name="active-id">sidechain_type</lookup>
                                                                     </closure>
                                                                 </binding>
@@ -650,10 +656,9 @@
                                                             </object>
                                                         </child>
 
-
                                                         <child>
                                                             <object class="GtkLabel" id="preamp_label">
-                                                                <property name="label" translatable="yes">PreAmplification</property>
+                                                                <property name="label" translatable="yes"> PreAmplification</property>
                                                                 <layout>
                                                                     <property name="column">2</property>
                                                                     <property name="row">0</property>

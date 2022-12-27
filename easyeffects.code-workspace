@@ -87,6 +87,9 @@
     "clangd.arguments": [
       "--header-insertion=never"
     ],
-    "prettier.enable": false
+    "prettier.enable": false,
+    "xml.format.preservedNewlines": 1,
+    "xml.format.enabled": true,
+    "xml.format.maxLineWidth": 0
   }
 }

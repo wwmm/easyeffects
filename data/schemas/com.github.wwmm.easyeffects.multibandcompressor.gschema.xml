@@ -27,6 +27,8 @@
         <value nick="Side" value="1" />
         <value nick="Left" value="2" />
         <value nick="Right" value="3" />
+        <value nick="Min" value="4" />
+        <value nick="Max" value="5" />
     </enum>
     <schema id="com.github.wwmm.easyeffects.multibandcompressor">
         <key name="bypass" type="b">
@@ -49,10 +51,12 @@
             <default>0</default>
         </key>
 
-        <key name="compressor-mode" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
+        <key name="compressor-mode"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
             <default>"Modern"</default>
         </key>
-        <key name="envelope-boost" enum="com.github.wwmm.easyeffects.multibandcompressor.envelopeboost.enum">
+        <key name="envelope-boost"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.envelopeboost.enum">
             <default>"None"</default>
         </key>
 
@@ -136,53 +140,69 @@
             <default>false</default>
         </key>
 
-        <key name="sidechain-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
+        <key name="sidechain-mode0"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode1" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
+        <key name="sidechain-mode1"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode2" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
+        <key name="sidechain-mode2"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode3" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
+        <key name="sidechain-mode3"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode4" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
+        <key name="sidechain-mode4"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode5" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
+        <key name="sidechain-mode5"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode6" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
+        <key name="sidechain-mode6"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode7" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
+        <key name="sidechain-mode7"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
 
-        <key name="sidechain-source0" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
+        <key name="sidechain-source0"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source1" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
+        <key name="sidechain-source1"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source2" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
+        <key name="sidechain-source2"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source3" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
+        <key name="sidechain-source3"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source4" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
+        <key name="sidechain-source4"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source5" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
+        <key name="sidechain-source5"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source6" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
+        <key name="sidechain-source6"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source7" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
+        <key name="sidechain-source7"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
 
@@ -401,28 +421,36 @@
             <default>20000</default>
         </key>
 
-        <key name="compression-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+        <key name="compression-mode0"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
             <default>"Downward"</default>
         </key>
-        <key name="compression-mode1" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+        <key name="compression-mode1"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
             <default>"Downward"</default>
         </key>
-        <key name="compression-mode2" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+        <key name="compression-mode2"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
             <default>"Downward"</default>
         </key>
-        <key name="compression-mode3" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+        <key name="compression-mode3"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
             <default>"Downward"</default>
         </key>
-        <key name="compression-mode4" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+        <key name="compression-mode4"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
             <default>"Downward"</default>
         </key>
-        <key name="compression-mode5" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+        <key name="compression-mode5"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
             <default>"Downward"</default>
         </key>
-        <key name="compression-mode6" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+        <key name="compression-mode6"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
             <default>"Downward"</default>
         </key>
-        <key name="compression-mode7" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+        <key name="compression-mode7"
+            enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
             <default>"Downward"</default>
         </key>
 

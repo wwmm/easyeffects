@@ -73,21 +73,15 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Downward</em>
-                            - It's aimed to decrease the gain of the signal above the Threshold.
-                        </p>
+                            <em style="strong">Downward</em> - It's aimed to decrease the gain of the signal above the Threshold. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Upward</em>
-                            - It's aimed to increase the gain of the signal below the Threshold.
-                        </p>
+                            <em style="strong">Upward</em> - It's aimed to increase the gain of the signal below the Threshold. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Boosting</em>
-                            - It's aimed to increase the gain of the signal below the Threshold by a specific amount.
-                        </p>
+                            <em style="strong">Boosting</em> - It's aimed to increase the gain of the signal below the Threshold by a specific amount. </p>
                     </item>
                 </list>
             </item>
@@ -122,21 +116,15 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Feed-forward</em>
-                            - The Sidechain is the Compressor input signal (taken after applying the plugin input gain). More aggressive compression.
-                        </p>
+                            <em style="strong">Feed-forward</em> - The Sidechain is the Compressor input signal (taken after applying the plugin input gain). More aggressive compression. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Feed-back</em>
-                            - The Sidechain is the Compressor output signal (taken before applying the Makeup and the plugin output gain). Vintage-style compression.
-                        </p>
+                            <em style="strong">Feed-back</em> - The Sidechain is the Compressor output signal (taken before applying the Makeup and the plugin output gain). Vintage-style compression. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">External</em>
-                            - The Sidechain is an external source took by a specific input device (typically a microphone).
-                        </p>
+                            <em style="strong">External</em> - The Sidechain is an external source took by a specific input device (typically a microphone). </p>
                     </item>
                 </list>
             </item>
@@ -154,27 +142,19 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Peak</em>
-                            - The Compressor reacts according to the peaks.
-                        </p>
+                            <em style="strong">Peak</em> - The Compressor reacts according to the peaks. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">RMS</em>
-                            - The Compressor reacts according to the average loudness measured by the root mean square.
-                        </p>
+                            <em style="strong">RMS</em> - The Compressor reacts according to the average loudness measured by the root mean square. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Low-Pass</em>
-                            - The Compressor reacts according to the signal processed by a Low-Pass filter.
-                        </p>
+                            <em style="strong">Low-Pass</em> - The Compressor reacts according to the signal processed by a Low-Pass filter. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Uniform</em>
-                            - The Compressor reacts according to the loudness measured by the average of the absolute amplitude.
-                        </p>
+                            <em style="strong">Uniform</em> - The Compressor reacts according to the loudness measured by the average of the absolute amplitude. </p>
                     </item>
                 </list>
             </item>
@@ -186,27 +166,27 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Middle</em>
-                            - The sum of left and right channels.
-                        </p>
+                            <em style="strong">Middle</em> - The sum of left and right channels. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Side</em>
-                            - The difference between left and right channels.
-                        </p>
+                            <em style="strong">Side</em> - The difference between left and right channels. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Left</em>
-                            - Only left channel is used.
-                        </p>
+                            <em style="strong">Left</em> - Only left channel is used. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Right</em>
-                            - Only right channel is used.
-                        </p>
+                            <em style="strong">Right</em> - Only right channel is used. </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Min</em> - The absolute minimum value is taken from stereo input. </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Max</em> - The absolute maximum value is taken from stereo input. </p>
                     </item>
                 </list>
             </item>

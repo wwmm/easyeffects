@@ -689,6 +689,8 @@
                                                                             <item translatable="yes" id="Side">Side</item>
                                                                             <item translatable="yes" id="Left">Left</item>
                                                                             <item translatable="yes" id="Right">Right</item>
+                                                                            <item translatable="yes" id="Min">Min</item>
+                                                                            <item translatable="yes" id="Max">Max</item>
                                                                         </items>
                                                                         <layout>
                                                                             <property name="column">2</property>
@@ -787,7 +789,6 @@
                                                                 </accessibility>
                                                             </object>
                                                         </child>
-
 
                                                         <child>
                                                             <object class="GtkLabel" id="preamp_label">

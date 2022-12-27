@@ -22,6 +22,8 @@
         <value nick="Side" value="1" />
         <value nick="Left" value="2" />
         <value nick="Right" value="3" />
+        <value nick="Min" value="4" />
+        <value nick="Max" value="5" />
     </enum>
     <schema id="com.github.wwmm.easyeffects.multibandgate">
         <key name="bypass" type="b">
@@ -47,7 +49,8 @@
         <key name="gate-mode" enum="com.github.wwmm.easyeffects.multibandgate.gatemode.enum">
             <default>"Modern"</default>
         </key>
-        <key name="envelope-boost" enum="com.github.wwmm.easyeffects.multibandgate.envelopeboost.enum">
+        <key name="envelope-boost"
+            enum="com.github.wwmm.easyeffects.multibandgate.envelopeboost.enum">
             <default>"None"</default>
         </key>
 
@@ -131,53 +134,69 @@
             <default>false</default>
         </key>
 
-        <key name="sidechain-mode0" enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
+        <key name="sidechain-mode0"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode1" enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
+        <key name="sidechain-mode1"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode2" enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
+        <key name="sidechain-mode2"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode3" enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
+        <key name="sidechain-mode3"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode4" enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
+        <key name="sidechain-mode4"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode5" enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
+        <key name="sidechain-mode5"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode6" enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
+        <key name="sidechain-mode6"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
-        <key name="sidechain-mode7" enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
+        <key name="sidechain-mode7"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
 
-        <key name="sidechain-source0" enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
+        <key name="sidechain-source0"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source1" enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
+        <key name="sidechain-source1"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source2" enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
+        <key name="sidechain-source2"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source3" enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
+        <key name="sidechain-source3"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source4" enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
+        <key name="sidechain-source4"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source5" enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
+        <key name="sidechain-source5"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source6" enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
+        <key name="sidechain-source6"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
-        <key name="sidechain-source7" enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
+        <key name="sidechain-source7"
+            enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
 

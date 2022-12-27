@@ -103,15 +103,11 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Internal</em>
-                            - The Sidechain is the Gate input signal (taken after applying the plugin input gain).
-                        </p>
+                            <em style="strong">Internal</em> - The Sidechain is the Gate input signal (taken after applying the plugin input gain). </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">External</em>
-                            - The Sidechain is an external source took by a specific input device (typically a microphone).
-                        </p>
+                            <em style="strong">External</em> - The Sidechain is an external source took by a specific input device (typically a microphone). </p>
                     </item>
                 </list>
             </item>
@@ -129,27 +125,19 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Peak</em>
-                            - The Gate reacts according to the peaks.
-                        </p>
+                            <em style="strong">Peak</em> - The Gate reacts according to the peaks. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">RMS</em>
-                            - The Gate reacts according to the average loudness measured by the root mean square.
-                        </p>
+                            <em style="strong">RMS</em> - The Gate reacts according to the average loudness measured by the root mean square. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Low-Pass Filter</em>
-                            - The Gate reacts according to the signal processed by a recursive 1-pole Low-Pass filter.
-                        </p>
+                            <em style="strong">Low-Pass Filter</em> - The Gate reacts according to the signal processed by a recursive 1-pole Low-Pass filter. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Simple Moving Average</em>
-                            - The Gate reacts according to the signal processed by the Simple Moving Average filter.
-                        </p>
+                            <em style="strong">Simple Moving Average</em> - The Gate reacts according to the signal processed by the Simple Moving Average filter. </p>
                     </item>
                 </list>
             </item>
@@ -161,27 +149,27 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Middle</em>
-                            - The sum of left and right channels.
-                        </p>
+                            <em style="strong">Middle</em> - The sum of left and right channels. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Side</em>
-                            - The difference between left and right channels.
-                        </p>
+                            <em style="strong">Side</em> - The difference between left and right channels. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Left</em>
-                            - Only left channel is used.
-                        </p>
+                            <em style="strong">Left</em> - Only left channel is used. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Right</em>
-                            - Only right channel is used.
-                        </p>
+                            <em style="strong">Right</em> - Only right channel is used. </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Min</em> - The absolute minimum value is taken from stereo input. </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Max</em> - The absolute maximum value is taken from stereo input. </p>
                     </item>
                 </list>
             </item>

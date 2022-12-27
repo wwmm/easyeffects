@@ -15,6 +15,8 @@
         <value nick="Side" value="1" />
         <value nick="Left" value="2" />
         <value nick="Right" value="3" />
+        <value nick="Min" value="4" />
+        <value nick="Max" value="5" />
     </enum>
     <enum id="com.github.wwmm.easyeffects.gate.filter.mode.enum">
         <value nick="off" value="0" />

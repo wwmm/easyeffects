@@ -24,15 +24,11 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Classic</em>
-                            - The original signal is split using crossover filters. After the gating stage, all bands become phase-compensated using All-Pass filters.
-                        </p>
+                            <em style="strong">Classic</em> - The original signal is split using crossover filters. After the gating stage, all bands become phase-compensated using All-Pass filters. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Modern</em>
-                            - Each band is processed by a pair of dynamic shelving filters. This mode allows a better control over the gain of each band.
-                        </p>
+                            <em style="strong">Modern</em> - Each band is processed by a pair of dynamic shelving filters. This mode allows a better control over the gain of each band. </p>
                     </item>
                 </list>
             </item>
@@ -44,10 +40,7 @@
                 <p>When disabled, the frequency band is processed 'as is', but the usual audio signal has 3 dB/octave falloff in the frequency domain and could be compared with the pink noise. So lower frequencies take more effect on the Gate rather than higher frequencies.</p>
                 <p>On the other hand the Sidechain Boost mode allows to compensate the -3 dB/octave falloff of the signal spectrum and, even more, makes the signal spectrum growing +3 dB/octave in the almost fully audible frequency range.</p>
                 <p>
-                    <em style="strong">Pink</em> applies +3 dB/octave while
-                    <em style="strong">Brown</em> applies +6 dB/octave Sidechain Boost.
-                    Each of them can use bilinear-transformed (BT) or matched-transformed (MT) shelving filter.
-                </p>
+                    <em style="strong">Pink</em> applies +3 dB/octave while <em style="strong">Brown</em> applies +6 dB/octave Sidechain Boost. Each of them can use bilinear-transformed (BT) or matched-transformed (MT) shelving filter. </p>
             </item>
             <item>
                 <title>
@@ -177,27 +170,19 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Peak</em>
-                            - The Gate reacts according to the peaks.
-                        </p>
+                            <em style="strong">Peak</em> - The Gate reacts according to the peaks. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">RMS</em>
-                            - The Gate reacts according to the average loudness measured by the root mean square.
-                        </p>
+                            <em style="strong">RMS</em> - The Gate reacts according to the average loudness measured by the root mean square. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Low-Pass Filter</em>
-                            - The Gate reacts according to the signal processed by a recursive 1-pole Low-Pass filter.
-                        </p>
+                            <em style="strong">Low-Pass Filter</em> - The Gate reacts according to the signal processed by a recursive 1-pole Low-Pass filter. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Simple Moving Average</em>
-                            - The Gate reacts according to the signal processed by the Simple Moving Average filter.
-                        </p>
+                            <em style="strong">Simple Moving Average</em> - The Gate reacts according to the signal processed by the Simple Moving Average filter. </p>
                     </item>
                 </list>
             </item>
@@ -209,27 +194,27 @@
                 <list>
                     <item>
                         <p>
-                            <em style="strong">Middle</em>
-                            - The sum of left and right channels.
-                        </p>
+                            <em style="strong">Middle</em> - The sum of left and right channels. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Side</em>
-                            - The difference between left and right channels.
-                        </p>
+                            <em style="strong">Side</em> - The difference between left and right channels. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Left</em>
-                            - Only left channel is used.
-                        </p>
+                            <em style="strong">Left</em> - Only left channel is used. </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Right</em>
-                            - Only right channel is used.
-                        </p>
+                            <em style="strong">Right</em> - Only right channel is used. </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Min</em> - The absolute minimum value is taken from stereo input. </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Max</em> - The absolute maximum value is taken from stereo input. </p>
                     </item>
                 </list>
             </item>
