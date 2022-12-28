@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-27 12:11-0300\n"
-"PO-Revision-Date: 2022-12-27 15:51+0000\n"
+"PO-Revision-Date: 2022-12-28 04:50+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -539,9 +539,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid " Feed-forward"
-msgstr "Avance hacia adelante"
+msgstr " retroalimentación"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -560,9 +559,8 @@ msgid "Input Device"
 msgstr "Dispositivo de entrada"
 
 #: data/ui/compressor.ui:661
-#, fuzzy
 msgid " PreAmplification"
-msgstr "Preamplificación"
+msgstr " Preamplificación"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
