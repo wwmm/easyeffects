@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-27 12:11-0300\n"
-"PO-Revision-Date: 2022-12-23 05:48+0000\n"
+"PO-Revision-Date: 2022-12-29 15:47+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -101,11 +101,12 @@ msgid "Presets Menu"
 msgstr "Меню предустановок"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid ""
 "Enable/disable the\n"
 "                                    global bypass"
-msgstr "Включить/отключить общий обход"
+msgstr ""
+"Включить/отключить\n"
+"                                    общий обход"
 
 #: data/ui/application_window.ui:68
 msgid "Global Bypass"
@@ -496,14 +497,12 @@ msgid "RMS"
 msgstr "Среднее квадратичное (RMS)"
 
 #: data/ui/compressor.ui:515
-#, fuzzy
 msgid " Low-Pass"
-msgstr "Фильтр НЧ"
+msgstr " Фильтр НЧ"
 
 #: data/ui/compressor.ui:516
-#, fuzzy
 msgid " Uniform"
-msgstr "Равномерно"
+msgstr " Равномерно"
 
 # #, fuzzy
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -544,15 +543,13 @@ msgstr "Правый"
 
 #: data/ui/compressor.ui:556 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:563
-#, fuzzy
 msgid "Min"
-msgstr "Микс"
+msgstr "Мин."
 
 #: data/ui/compressor.ui:557 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:501 data/ui/multiband_gate_band.ui:564
-#, fuzzy
 msgid "Max"
-msgstr "Микс"
+msgstr "Макс."
 
 # #, fuzzy
 #: data/ui/compressor.ui:564 data/ui/gate.ui:700
@@ -566,9 +563,8 @@ msgid "Type"
 msgstr "Тип"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid " Feed-forward"
-msgstr "Прямая связь"
+msgstr " Прямая связь"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -589,9 +585,8 @@ msgid "Input Device"
 msgstr "Устройство ввода"
 
 #: data/ui/compressor.ui:661
-#, fuzzy
 msgid " PreAmplification"
-msgstr "Предусиление"
+msgstr " Предусиление"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
