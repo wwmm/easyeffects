@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-27 12:11-0300\n"
-"PO-Revision-Date: 2022-12-29 15:47+0000\n"
+"PO-Revision-Date: 2022-12-30 07:49+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -103,7 +103,7 @@ msgstr "Voorinstellingen-menu"
 msgid ""
 "Enable/disable the\n"
 "                                    global bypass"
-msgstr ""
+msgstr "Globale omzeiling omschakelen"
 
 #: data/ui/application_window.ui:68
 msgid "Global Bypass"
@@ -111,12 +111,11 @@ msgstr "Globale omzeiling"
 
 #: data/ui/application_window.ui:78
 msgid "Primary Menu"
-msgstr ""
+msgstr "Primair menu"
 
 #: data/ui/application_window.ui:93
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "PulseEffecten"
+msgstr "Venster van Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -144,14 +143,13 @@ msgstr "Maximale geschiedenis"
 
 #: data/ui/autogain.ui:132
 msgid "Reference"
-msgstr ""
+msgstr "Verwijzing"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:185
 msgid "Momentary"
 msgstr "Kortstondig"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:215
-#, fuzzy
 msgid "Short-Term"
 msgstr "Korte termijn"
 
@@ -160,24 +158,20 @@ msgid "Integrated"
 msgstr "Geïntegreerd"
 
 #: data/ui/autogain.ui:147
-#, fuzzy
 msgid "Geometric Mean (MSI)"
-msgstr "Geometrisch gemiddelde gebruiken"
+msgstr "Geometrisch gemiddelde (MSI)"
 
 #: data/ui/autogain.ui:148
-#, fuzzy
 msgid "Geometric Mean (MS)"
-msgstr "Geometrisch gemiddelde gebruiken"
+msgstr "Geometrisch gemiddelde (MS)"
 
 #: data/ui/autogain.ui:149
-#, fuzzy
 msgid "Geometric Mean (MI)"
-msgstr "Geometrisch gemiddelde gebruiken"
+msgstr "Geometrisch gemiddelde (MI)"
 
 #: data/ui/autogain.ui:150
-#, fuzzy
 msgid "Geometric Mean (SI)"
-msgstr "Geometrisch gemiddelde gebruiken"
+msgstr "Geometrisch gemiddelde (SI)"
 
 #: data/ui/autogain.ui:165
 msgid "Reset History"
@@ -224,9 +218,8 @@ msgstr "Invoer"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
-#, fuzzy
 msgid "Plugin Input Gain"
-msgstr "Uitvoerversterking"
+msgstr "Plug-in-invoerversterking"
 
 #: data/ui/autogain.ui:491 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
@@ -251,9 +244,8 @@ msgstr "Uitvoer"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
-#, fuzzy
 msgid "Plugin Output Gain"
-msgstr "Uitvoerversterking"
+msgstr "Plug-in-uitvoerversterking"
 
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1229
@@ -336,16 +328,15 @@ msgstr "Bereik"
 
 #: data/ui/bass_enhancer.ui:211
 msgid "Floor"
-msgstr "Verdieping"
+msgstr "Vloer"
 
 #: data/ui/bass_enhancer.ui:240
-#, fuzzy
 msgid "Floor Value"
-msgstr "Verdieping"
+msgstr "Vloerwaarde"
 
 #: data/ui/bass_loudness.ui:71
 msgid "Link"
-msgstr ""
+msgstr "Verwijzing"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
@@ -396,9 +387,8 @@ msgid "Boost Threshold"
 msgstr "Versterkingsdrempelwaarde"
 
 #: data/ui/compressor.ui:120 data/ui/multiband_compressor_band.ui:702
-#, fuzzy
 msgid "Boost Amount"
-msgstr "Hoeveelheid"
+msgstr "Versterkingsgrootte"
 
 #: data/ui/compressor.ui:167 data/ui/gate.ui:60 data/ui/limiter.ui:262
 #: data/ui/limiter.ui:485 data/ui/multiband_compressor_band.ui:186
@@ -464,17 +454,15 @@ msgstr "Make-up"
 #: data/ui/gate.ui:342 data/ui/multiband_compressor.ui:132
 #: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:208
 #: data/ui/stereo_tools.ui:534
-#, fuzzy
 msgid "Dry Level"
-msgstr "F2-niveau"
+msgstr "Droog-niveau"
 
 #: data/ui/compressor.ui:442 data/ui/delay.ui:75 data/ui/delay.ui:150
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:166
 #: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:242
 #: data/ui/stereo_tools.ui:570
-#, fuzzy
 msgid "Wet Level"
-msgstr "Doelniveau"
+msgstr "Nat-niveau"
 
 #: data/ui/compressor.ui:484 data/ui/compressor.ui:999 data/ui/gate.ui:621
 #: data/ui/gate.ui:1133
@@ -492,20 +480,17 @@ msgid "RMS"
 msgstr "RMS"
 
 #: data/ui/compressor.ui:515
-#, fuzzy
 msgid " Low-Pass"
-msgstr "Low-pass"
+msgstr " Low-pass"
 
 #: data/ui/compressor.ui:516
-#, fuzzy
 msgid " Uniform"
-msgstr "Uniform"
+msgstr " Uniform"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
-#, fuzzy
 msgid "Sidechain Mode"
-msgstr "Zijketen"
+msgstr "Zijketenmodus"
 
 #: data/ui/compressor.ui:541 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:485 data/ui/multiband_gate_band.ui:548
@@ -538,22 +523,19 @@ msgstr "Rechts"
 
 #: data/ui/compressor.ui:556 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:563
-#, fuzzy
 msgid "Min"
-msgstr "Minimaal"
+msgstr "Min"
 
 #: data/ui/compressor.ui:557 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:501 data/ui/multiband_gate_band.ui:564
-#, fuzzy
 msgid "Max"
-msgstr "Maximaal"
+msgstr "Max"
 
 #: data/ui/compressor.ui:564 data/ui/gate.ui:700
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:508
 #: data/ui/multiband_gate.ui:71 data/ui/multiband_gate_band.ui:571
-#, fuzzy
 msgid "Sidechain Source"
-msgstr "Zijketen"
+msgstr "Zijketenbron"
 
 #: data/ui/compressor.ui:593 data/ui/equalizer_band.ui:102 data/ui/gate.ui:729
 msgid "Type"
@@ -601,7 +583,6 @@ msgid "Sidechain Filters"
 msgstr "Zijketenfilters"
 
 #: data/ui/compressor.ui:788 data/ui/gate.ui:922
-#, fuzzy
 msgid "High-Pass"
 msgstr "High-pass"
 
@@ -656,9 +637,8 @@ msgid "Gain"
 msgstr "Versterking"
 
 #: data/ui/compressor.ui:972 data/ui/gate.ui:1106
-#, fuzzy
 msgid "Envelope"
-msgstr "Stijging"
+msgstr "Envelop"
 
 #: data/ui/compressor.ui:1026 data/ui/gate.ui:137 data/ui/gate.ui:1160
 #: data/ui/multiband_gate_band.ui:221
@@ -690,7 +670,7 @@ msgstr "Impulsen"
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Combineren"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
@@ -850,9 +830,8 @@ msgstr "Gedetecteerd"
 
 #: data/ui/deesser.ui:609 data/ui/gate.ui:423 data/ui/gate.ui:1079
 #: data/ui/maximizer.ui:271 data/ui/multiband_gate_band.ui:413
-#, fuzzy
 msgid "Reduction"
-msgstr "Verlaging"
+msgstr "Vermindering"
 
 #: data/ui/delay.ui:31 data/ui/delay.ui:106 src/tags_plugin_name.cpp:39
 msgid "Delay"
@@ -997,7 +976,6 @@ msgid "Solo"
 msgstr "Solo"
 
 #: data/ui/exciter.ui:211
-#, fuzzy
 msgid "Ceil"
 msgstr "Plafond"
 
@@ -1115,7 +1093,6 @@ msgid "Internal"
 msgstr "Extern"
 
 #: data/ui/gate.ui:795
-#, fuzzy
 msgid "PreAmplification"
 msgstr "Voorversterking"
 
@@ -1280,9 +1257,8 @@ msgid "Sidechain PreAmplification"
 msgstr "Voorversterking"
 
 #: data/ui/limiter.ui:383
-#, fuzzy
 msgid "Boost"
-msgstr "Versterking"
+msgstr "Versterken"
 
 #: data/ui/limiter.ui:398
 msgid "Stereo Link"
@@ -1392,12 +1368,11 @@ msgstr "Model importeren"
 
 #: data/ui/multiband_compressor.ui:117 data/ui/multiband_gate.ui:117
 msgid "Classic"
-msgstr ""
+msgstr "Klassiek"
 
 #: data/ui/multiband_compressor.ui:118 data/ui/multiband_gate.ui:118
-#, fuzzy
 msgid "Modern"
-msgstr "Modus"
+msgstr "Modern"
 
 #: data/ui/multiband_compressor.ui:227 data/ui/multiband_gate.ui:227
 #, fuzzy
@@ -1494,7 +1469,7 @@ msgstr "High-pass-filter"
 
 #: data/ui/multiband_compressor_band.ui:601 data/ui/multiband_gate_band.ui:664
 msgid "PreAmp"
-msgstr ""
+msgstr "Voorversterking"
 
 #: data/ui/multiband_compressor_band.ui:807
 #, fuzzy
@@ -1650,13 +1625,12 @@ msgid "State"
 msgstr "Status"
 
 #: data/ui/pipe_manager_box.ui:483 data/ui/preferences_spectrum.ui:12
-#, fuzzy
 msgid "Enabled"
-msgstr "Inschakelen"
+msgstr "Ingeschakeld"
 
 #: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
-msgstr ""
+msgstr "Eigenschappen"
 
 #: data/ui/pipe_manager_box.ui:501
 msgid "Channels"
@@ -1673,7 +1647,7 @@ msgstr "Aantal kanalen"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
-msgstr ""
+msgstr "Golfvorm"
 
 #: data/ui/pipe_manager_box.ui:543
 msgid "Sine Wave"
@@ -1698,58 +1672,52 @@ msgid "High Consistency"
 msgstr ""
 
 #: data/ui/pitch.ui:59
-#, fuzzy
 msgid "Formant"
-msgstr "Formaat"
+msgstr "Formant"
 
 #: data/ui/pitch.ui:70
 msgid "Shifted"
-msgstr ""
+msgstr "Verschoven"
 
 #: data/ui/pitch.ui:71
-#, fuzzy
 msgid "Preserved"
-msgstr "Voorinstelling"
+msgstr "Behouden"
 
 #: data/ui/pitch.ui:97
 msgid "Transients"
-msgstr ""
+msgstr "Overgangen"
 
 #: data/ui/pitch.ui:108
-#, fuzzy
 msgid "Crisp"
-msgstr "Scherpte"
+msgstr "Helder"
 
 #: data/ui/pitch.ui:109
 msgid "Mixed"
-msgstr ""
+msgstr "Gemengd"
 
 #: data/ui/pitch.ui:110
 msgid "Smooth"
-msgstr ""
+msgstr "Soepel"
 
 #: data/ui/pitch.ui:124
-#, fuzzy
 msgid "Detector"
-msgstr "Detectie"
+msgstr "Detector"
 
 #: data/ui/pitch.ui:135
-#, fuzzy
 msgid "Compound"
-msgstr "Compressie"
+msgstr "Samengesteld"
 
 #: data/ui/pitch.ui:136
 msgid "Percussive"
-msgstr ""
+msgstr "Percussief"
 
 #: data/ui/pitch.ui:137
-#, fuzzy
 msgid "Soft"
-msgstr "Softclip"
+msgstr "Zacht"
 
 #: data/ui/pitch.ui:151
 msgid "Phase"
-msgstr ""
+msgstr "Fase"
 
 #: data/ui/pitch.ui:162
 msgid "Laminar"
@@ -1813,14 +1781,12 @@ msgid "Plugins List"
 msgstr "Plug-ins"
 
 #: data/ui/preferences_general.ui:5
-#, fuzzy
 msgid "_General"
-msgstr "Algemeen"
+msgstr "_Algemeen"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Apparaat"
+msgstr "Dienst"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
@@ -1832,7 +1798,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: data/ui/preferences_general.ui:42
 #, fuzzy
@@ -1859,7 +1825,7 @@ msgstr "Activiteitstime-out"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "Stijl"
 
 #: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
@@ -1870,13 +1836,12 @@ msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:5
-#, fuzzy
 msgid "_Spectrum"
-msgstr "Spectrum"
+msgstr "_Spectrum"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Vorm"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
@@ -1888,7 +1853,7 @@ msgstr "Lijnen"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Dots"
-msgstr ""
+msgstr "Puntjes"
 
 #: data/ui/preferences_spectrum.ui:46
 msgid "Points"
@@ -1915,9 +1880,8 @@ msgid "Rounded Corners"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:152
-#, fuzzy
 msgid "Color"
-msgstr "Askleur"
+msgstr "Kleur"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
@@ -2101,9 +2065,8 @@ msgid "Standard RNNoise Model"
 msgstr "Standaard RNNoise-model"
 
 #: data/ui/shortcuts.ui:11
-#, fuzzy
 msgid "Overview"
-msgstr "Apparaat"
+msgstr "Overzicht"
 
 #: data/ui/shortcuts.ui:16
 #, fuzzy
@@ -2454,7 +2417,7 @@ msgstr "Uitvoerapparaat"
 
 #: src/plugins_menu.cpp:154
 msgid "Add"
-msgstr ""
+msgstr "Toevoegen"
 
 #: src/rnnoise_ui.cpp:89
 msgid ""
@@ -2532,9 +2495,8 @@ msgid "Pitch"
 msgstr "Toonhoogte"
 
 #: src/tags_plugin_name.cpp:51
-#, fuzzy
 msgid "Reverberation"
-msgstr "Galm"
+msgstr "Nagalm"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
