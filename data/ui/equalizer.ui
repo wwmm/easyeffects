@@ -295,6 +295,14 @@
                                             </object>
                                         </child>
 
+                                        <child>
+                                            <object class="GtkButton" id="sort_bands">
+                                                <property name="label" translatable="yes">Sort Bands</property>
+                                                <property name="valign">center</property>
+                                                <signal name="clicked" handler="on_sort_bands" object="EqualizerBox" />
+                                            </object>
+                                        </child>
+
                                         <!-- Import EQ Presets Section -->
                                         <child>
                                             <object class="GtkBox">
