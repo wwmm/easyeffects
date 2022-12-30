@@ -57,7 +57,7 @@ struct Data {
 
   std::vector<sigc::connection> connections;
 
-  std::vector<gulong> gconnections, gconnections_left, gconnections_right;
+  std::vector<gulong> gconnections;
 };
 
 struct _EqualizerBox {
@@ -592,37 +592,53 @@ void on_import_geq_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
 // ### End GraphicEQ Section ###
 
-void build_all_bands(EqualizerBox* self) {
-  for (auto& handler_id : self->data->gconnections_left) {
-    g_signal_handler_disconnect(self->settings_left, handler_id);
+auto sort_bands(EqualizerBox* self, const int nbands, GSettings* settings, const bool& sort_by_freq)
+    -> std::vector<std::string> {
+  std::vector<int> list(nbands);
+
+  std::iota(list.begin(), list.end(), 0);
+
+  if (sort_by_freq) {
+    std::ranges::sort(list, [=](const int& a, const int& b) {
+      const auto freq_a = g_settings_get_double(settings, tags::equalizer::band_frequency[a].data());
+
+      const auto freq_b = g_settings_get_double(settings, tags::equalizer::band_frequency[b].data());
+
+      return freq_a < freq_b;
+    });
   }
 
-  for (auto& handler_id : self->data->gconnections_right) {
-    g_signal_handler_disconnect(self->settings_right, handler_id);
+  std::vector<std::string> output;
+
+  output.reserve(nbands);
+
+  for (int n = 0; n < nbands; n++) {
+    output.push_back(util::to_string(list[n]));
   }
 
-  self->data->gconnections_left.clear();
-  self->data->gconnections_right.clear();
+  return output;
+}
 
+void build_all_bands(EqualizerBox* self, const bool& sort_by_freq) {
   const auto split = g_settings_get_boolean(self->settings, "split-channels") != 0;
 
   const auto nbands = g_settings_get_int(self->settings, "num-bands");
 
-  std::vector<std::string> list;
-
-  list.reserve(nbands);
-
-  for (int n = 0; n < nbands; n++) {
-    list.push_back(util::to_string(n));
-  }
+  auto list = sort_bands(self, nbands, self->settings_left, sort_by_freq);
 
   gtk_string_list_splice(self->string_list_left, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_left)),
                          util::make_gchar_pointer_vector(list).data());
 
   if (split) {
+    list = sort_bands(self, nbands, self->settings_right, sort_by_freq);
+
     gtk_string_list_splice(self->string_list_right, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_right)),
                            util::make_gchar_pointer_vector(list).data());
   }
+}
+
+void on_sort_bands(EqualizerBox* self, GtkButton* btn) {
+  build_all_bands(self, true);
 }
 
 template <Channel channel>
@@ -702,7 +718,7 @@ void setup(EqualizerBox* self,
   setup_listview<Channel::left>(self);
   setup_listview<Channel::right>(self);
 
-  build_all_bands(self);
+  build_all_bands(self, false);
 
   self->data->connections.push_back(equalizer->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
@@ -746,13 +762,13 @@ void setup(EqualizerBox* self,
 
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::num-bands",
-      G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self); }), self));
+      G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self, false); }), self));
 
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::split-channels", G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
         gtk_stack_set_visible_child_name(self->stack, "page_left_channel");
 
-        build_all_bands(self);
+        build_all_bands(self, false);
       }),
       self));
 }
@@ -772,18 +788,8 @@ void dispose(GObject* object) {
     g_signal_handler_disconnect(self->settings, handler_id);
   }
 
-  for (auto& handler_id : self->data->gconnections_left) {
-    g_signal_handler_disconnect(self->settings_left, handler_id);
-  }
-
-  for (auto& handler_id : self->data->gconnections_right) {
-    g_signal_handler_disconnect(self->settings_right, handler_id);
-  }
-
   self->data->connections.clear();
   self->data->gconnections.clear();
-  self->data->gconnections_left.clear();
-  self->data->gconnections_right.clear();
 
   g_object_unref(self->settings);
   g_object_unref(self->settings_left);
@@ -841,6 +847,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
 
   gtk_widget_class_bind_template_callback(widget_class, on_flat_response);
   gtk_widget_class_bind_template_callback(widget_class, on_calculate_frequencies);
+  gtk_widget_class_bind_template_callback(widget_class, on_sort_bands);
   gtk_widget_class_bind_template_callback(widget_class, on_import_apo_preset_clicked);
   gtk_widget_class_bind_template_callback(widget_class, on_import_geq_preset_clicked);
 }
