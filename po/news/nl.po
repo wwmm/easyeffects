@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-27 12:11-0300\n"
-"PO-Revision-Date: 2022-12-29 04:50+0000\n"
+"PO-Revision-Date: 2022-12-30 15:32+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -20,9 +20,8 @@ msgstr ""
 "X-Generator: Weblate 4.15.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
 msgid "Easy Effects"
-msgstr "PulseEffecten"
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -33,48 +32,47 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects is een uitgebreid hulpmiddel waarmee u audio zeer gericht kunt "
+"Easy Effects is een uitgebreide app waarmee u audio zeer gericht kunt "
 "afstellen. Het bevat een equalizer, limiter, compressor, galmhulpmiddel en "
-"een aantal andere hulpmiddelen. Verder bevat de toepassing een "
-"spectrumanalyse-hulpmiddel."
+"nog meer andere hulpmiddelen. Verder bevat de toepassing een ingebouwde "
+"spectrumanalysator."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Easy Effects is de opvolger van PulseEffects. Easy Effects ondersteunt "
+"alleen de audioserver van PipeWire. Gebruikers van PulseAudio moeten in "
+"plaats daarvan PulseEffects gebruiken."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because Easy Effects uses the default PipeWire sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"EasyEffects maakt gebruik van de PipeWire-geluidsserver en werkt daardoor "
-"met nagenoeg alle, zo niet alle, toepassingen die u gebruikt. Alle "
-"ondersteunde toepassingen worden getoond in het hoofdvenster, waar elke "
-"toepassing op elk moment kan worden in- of uitgeschakeld."
+"Omdat Easy Effects de standaard PipeWire-geluidsserver gebruikt werkt het "
+"met de meeste, zo niet alle apps die u gebruikt. Alle ondersteunde apps "
+"worden getoond in het hoofdvenster, waar elke app afzonderlijk kan worden "
+"ingeschakeld."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Naast het aanpassen van geluidsuitvoer, past EasyEffects ook het geluid van "
-"invoerapparaten, zoals microfoons, aan. Dit is onder meer nuttig bij het "
-"opnemen van audio of voeren van audiogesprekken."
+"Naast het manipuleren van geluidsuitvoer kan Easy Effects effecten toepassen "
+"op een invoerapparaat, zoals een microfoon. Dit is bijvoorbeeld handig bij "
+"geluidsopnamen, maar werkt ook goed tijdens spraakgesprekken."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
@@ -85,15 +83,15 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "De hoofdpagina welke twee apps met audio-uitvoer toont"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "De basversterkerpagina welke audiobedieningselementen toont"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "De convolver-pagina welke audiobedieningselementen toont"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
@@ -116,7 +114,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:313
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:326
 msgid "Features:"
-msgstr ""
+msgstr "Functies:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid ""
@@ -189,7 +187,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:305
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:318
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Foutoplossingen:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid ""
@@ -204,7 +202,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:203
 msgid "Other notes:"
-msgstr ""
+msgstr "Overige opmerkingen:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
@@ -248,11 +246,11 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:288
 msgid "Updated translations"
-msgstr ""
+msgstr "Bijgewerkte vertalingen"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
 msgid "Improved translations"
-msgstr ""
+msgstr "Verbeterde vertalingen"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
@@ -370,7 +368,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
 msgid "Many translation updates"
-msgstr ""
+msgstr "Veel vertalingsupdates"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
 msgid ""
