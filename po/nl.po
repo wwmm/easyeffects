@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-30 12:31-0300\n"
+"POT-Creation-Date: 2022-12-30 15:38+0000\n"
 "PO-Revision-Date: 2022-12-30 07:49+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -205,7 +205,7 @@ msgstr "Uitvoerversterking"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625 data/ui/equalizer.ui:360
+#: data/ui/stereo_tools.ui:625
 msgid "Input"
 msgstr "Invoer"
 
@@ -218,7 +218,6 @@ msgstr "Invoer"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
-#: data/ui/equalizer.ui:379
 msgid "Plugin Input Gain"
 msgstr "Plug-in-invoerversterking"
 
@@ -233,7 +232,6 @@ msgstr "Plug-in-invoerversterking"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
-#: data/ui/equalizer.ui:444
 msgid "Output"
 msgstr "Uitvoer"
 
@@ -246,7 +244,6 @@ msgstr "Uitvoer"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
-#: data/ui/equalizer.ui:463
 msgid "Plugin Output Gain"
 msgstr "Plug-in-uitvoerversterking"
 
@@ -260,7 +257,6 @@ msgstr "Plug-in-uitvoerversterking"
 #: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
-#: data/ui/equalizer.ui:526
 msgid "Reset"
 msgstr "Standaardwaarden"
 
@@ -272,7 +268,7 @@ msgstr "Standaardwaarden"
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
-#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805 data/ui/equalizer.ui:540
+#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
 msgid "Using"
 msgstr "Gebruikmakend van"
 
@@ -889,7 +885,7 @@ msgstr "Frequenties berekenen"
 msgid "Sort Bands"
 msgstr "Banden"
 
-#: data/ui/equalizer.ui:315 src/presets_menu.cpp:102 data/ui/equalizer.ui:307
+#: data/ui/equalizer.ui:315 src/presets_menu.cpp:102
 msgid "Import Preset"
 msgstr "Voorinstelling importeren"
 
