@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-30 15:38+0000\n"
-"PO-Revision-Date: 2022-12-28 04:50+0000\n"
+"PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -883,9 +883,8 @@ msgid "Calculate Frequencies"
 msgstr "Calcular frecuencias"
 
 #: data/ui/equalizer.ui:300
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Bandas"
+msgstr "Ordenar las bandas"
 
 #: data/ui/equalizer.ui:315 src/presets_menu.cpp:102
 msgid "Import Preset"
