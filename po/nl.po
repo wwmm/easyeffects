@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-30 15:38+0000\n"
-"PO-Revision-Date: 2022-12-30 07:49+0000\n"
+"PO-Revision-Date: 2023-01-01 00:54+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -393,7 +393,7 @@ msgstr "Versterkingsgrootte"
 #: data/ui/limiter.ui:485 data/ui/multiband_compressor_band.ui:186
 #: data/ui/multiband_gate_band.ui:144
 msgid "Attack"
-msgstr "Aanzet"
+msgstr "Attack"
 
 #: data/ui/compressor.ui:178 data/ui/multiband_compressor_band.ui:166
 msgid "Time"
@@ -408,27 +408,27 @@ msgstr "Drempelwaarde"
 
 #: data/ui/compressor.ui:214 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
-msgstr "Aanzettijd"
+msgstr "Attack-tijd"
 
 #: data/ui/compressor.ui:236 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:247
 msgid "Attack Threshold"
-msgstr "Aanzetdrempel"
+msgstr "Attack-drempel"
 
 #: data/ui/compressor.ui:243 data/ui/gate.ui:66 data/ui/limiter.ui:304
 #: data/ui/limiter.ui:522 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate_band.ui:150
 msgid "Release"
-msgstr "Vrijgave"
+msgstr "Release"
 
 #: data/ui/compressor.ui:269 data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr "Vrijgavetijd"
+msgstr "Release-tijd"
 
 #: data/ui/compressor.ui:293 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:302
 msgid "Release Threshold"
-msgstr "Vrijgavedrempel"
+msgstr "Release-drempel"
 
 #: data/ui/compressor.ui:300 data/ui/deesser.ui:333
 #: data/ui/multiband_compressor_band.ui:309
@@ -881,9 +881,8 @@ msgid "Calculate Frequencies"
 msgstr "Frequenties berekenen"
 
 #: data/ui/equalizer.ui:300
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Banden"
+msgstr "Banden sorteren"
 
 #: data/ui/equalizer.ui:315 src/presets_menu.cpp:102
 msgid "Import Preset"
@@ -1045,11 +1044,11 @@ msgstr "Mix"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr "Start van aanzetzone"
+msgstr "Start van attack-zone"
 
 #: data/ui/gate.ui:564
 msgid "Release Zone Start"
-msgstr "Start van vrijgavezone"
+msgstr "Start van release-zone"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
 msgid "Low-Pass Filter"
@@ -1240,24 +1239,20 @@ msgid "External Sidechain Source"
 msgstr "Bron van externe sidechain"
 
 #: data/ui/limiter.ui:475
-#, fuzzy
 msgid "Auto Leveling"
 msgstr "Automatische niveau's"
 
 #: data/ui/limiter.ui:515
-#, fuzzy
 msgid "Auto Leveling Attack"
-msgstr "Automatische niveau's"
+msgstr "Automatische attack-niveau's"
 
 #: data/ui/limiter.ui:551
-#, fuzzy
 msgid "Auto Leveling Release"
-msgstr "Automatische niveau's"
+msgstr "Automatische release-niveau's"
 
 #: data/ui/limiter.ui:586
-#, fuzzy
 msgid "Auto Leveling Knee"
-msgstr "Automatische niveau's"
+msgstr "Automatische knee-niveau's"
 
 #: data/ui/limiter.ui:611
 msgid "Gain Left"
@@ -1305,19 +1300,19 @@ msgstr "sidechain-versterking"
 
 #: data/ui/multiband_compressor.ui:54 data/ui/multiband_gate.ui:54
 msgid "Pink BT"
-msgstr ""
+msgstr "Roze-BT"
 
 #: data/ui/multiband_compressor.ui:55 data/ui/multiband_gate.ui:55
 msgid "Pink MT"
-msgstr ""
+msgstr "Roze-MT"
 
 #: data/ui/multiband_compressor.ui:56 data/ui/multiband_gate.ui:56
 msgid "Brown BT"
-msgstr ""
+msgstr "Bruin-BT"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Brown MT"
-msgstr ""
+msgstr "Bruin-MT"
 
 #: data/ui/multiband_compressor.ui:106 data/ui/multiband_gate.ui:106
 msgid "Operating Mode"
@@ -1348,29 +1343,24 @@ msgid "Band 3"
 msgstr "Band 3"
 
 #: data/ui/multiband_compressor.ui:305 data/ui/multiband_gate.ui:305
-#, fuzzy
 msgid "Band 4"
-msgstr "Banden"
+msgstr "Band 4"
 
 #: data/ui/multiband_compressor.ui:331 data/ui/multiband_gate.ui:331
-#, fuzzy
 msgid "Band 5"
-msgstr "Banden"
+msgstr "Band 5"
 
 #: data/ui/multiband_compressor.ui:357 data/ui/multiband_gate.ui:357
-#, fuzzy
 msgid "Band 6"
-msgstr "Banden"
+msgstr "Band 6"
 
 #: data/ui/multiband_compressor.ui:383 data/ui/multiband_gate.ui:383
-#, fuzzy
 msgid "Band 7"
-msgstr "Banden"
+msgstr "Band 7"
 
 #: data/ui/multiband_compressor.ui:409 data/ui/multiband_gate.ui:409
-#, fuzzy
 msgid "Band 8"
-msgstr "Banden"
+msgstr "Band 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
@@ -1381,43 +1371,36 @@ msgid "Band End"
 msgstr "Einde van band"
 
 #: data/ui/multiband_compressor_band.ui:108
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Compressiemodus"
+msgstr "Bandcompressiemodus"
 
 #: data/ui/multiband_compressor_band.ui:126 data/ui/multiband_gate_band.ui:99
-#, fuzzy
 msgid "Band Bypass"
-msgstr "Omzeiling"
+msgstr "Bandomzeiling"
 
 #: data/ui/multiband_compressor_band.ui:431 data/ui/multiband_gate_band.ui:494
-#, fuzzy
 msgid "Band Sidechain Options"
-msgstr "Zijketenfilters"
+msgstr "Band-sidechain-opties"
 
 #: data/ui/multiband_compressor_band.ui:471
 msgid "Uniform"
 msgstr "Uniform"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
-#, fuzzy
 msgid "Low-Cut Filter"
-msgstr "Low-pass-filtermodus"
+msgstr "Low-cut-filter"
 
 #: data/ui/multiband_compressor_band.ui:545 data/ui/multiband_gate_band.ui:608
-#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Low-pass-filtermodus"
+msgstr "Low-cut-filterfrequentie"
 
 #: data/ui/multiband_compressor_band.ui:554 data/ui/multiband_gate_band.ui:617
-#, fuzzy
 msgid "High-Cut Filter"
-msgstr "High-pass-filter"
+msgstr "High-cut-filter"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:645
-#, fuzzy
 msgid "High-Cut Filter Frequency"
-msgstr "High-pass-filter"
+msgstr "High-cut-filterfrequentie"
 
 #: data/ui/multiband_compressor_band.ui:601 data/ui/multiband_gate_band.ui:664
 msgid "PreAmp"
@@ -1429,17 +1412,15 @@ msgstr "Bandversterking"
 
 #: data/ui/multiband_compressor_band.ui:832 data/ui/multiband_gate_band.ui:804
 msgid "Band Envelope"
-msgstr ""
+msgstr "Bandenvelop"
 
 #: data/ui/multiband_compressor_band.ui:857 data/ui/multiband_gate_band.ui:829
-#, fuzzy
 msgid "Band Curve"
-msgstr "Curve"
+msgstr "Bandkromme"
 
 #: data/ui/multiband_gate_band.ui:779
-#, fuzzy
 msgid "Band Reduction"
-msgstr "Versterkingsverlaging"
+msgstr "Bandvermindering"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1680,26 +1661,24 @@ msgid "Octaves"
 msgstr "Octaven"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Verwijder dit voorinstellingsbestand"
+msgstr "Effect verwijderen"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Effect omschakelen"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Positie van effect aanpassen"
 
 #: data/ui/plugins_box.ui:19
-#, fuzzy
 msgid "Add Effect"
-msgstr "Invoereffecten"
+msgstr "Effect toevoegen"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
-msgstr ""
+msgstr "Lijst met gebruikte plug-ins"
 
 #: data/ui/plugins_box.ui:129
 msgid "No Effects"
@@ -1707,17 +1686,15 @@ msgstr "Geen effecten"
 
 #: data/ui/plugins_box.ui:130
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "Audio-stream onbewerkt"
 
 #: data/ui/plugins_menu.ui:19
-#, fuzzy
 msgid "Search Plugin"
-msgstr "Zoeken"
+msgstr "Zoek-plug-in"
 
 #: data/ui/plugins_menu.ui:74
-#, fuzzy
 msgid "Plugins List"
-msgstr "Plug-ins"
+msgstr "Lijst met plug-ins"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
@@ -1729,38 +1706,35 @@ msgstr "Dienst"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Service starten bij opstarten van systeem"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "Afsluiten bij sluiten van venster"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
 msgstr "Audio"
 
 #: data/ui/preferences_general.ui:42
-#, fuzzy
 msgid "Process All Output Streams"
-msgstr "Alle uitvoerbronnen gebruiken"
+msgstr "Alle uitvoer-streams verwerken"
 
 #: data/ui/preferences_general.ui:54
-#, fuzzy
 msgid "Process All Input Streams"
-msgstr "Alle invoerbronnen gebruiken"
+msgstr "Alle invoer-streams verwerken"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Streams van apparaatmonitor negeren"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "Kubisch volume gebruiken"
 
 #: data/ui/preferences_general.ui:90
-#, fuzzy
 msgid "Inactivity Timeout"
-msgstr "Activiteitstime-out"
+msgstr "Inactiviteits-time-out"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -1772,7 +1746,7 @@ msgstr "Donker thema"
 
 #: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "Menu's verbergen bij klikken achtergrond"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1812,11 +1786,11 @@ msgstr "Opvullen"
 
 #: data/ui/preferences_spectrum.ui:126
 msgid "Show Bars Border"
-msgstr ""
+msgstr "Balkrand tonen"
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Afgeronde hoeken"
 
 #: data/ui/preferences_spectrum.ui:152
 msgid "Color"
@@ -1824,16 +1798,15 @@ msgstr "Kleur"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
-msgstr ""
+msgstr "Lijnen en balken"
 
 #: data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
-msgstr ""
+msgstr "As-labels"
 
 #: data/ui/preferences_spectrum.ui:185
-#, fuzzy
 msgid "Frequency Range"
-msgstr "Frequentie"
+msgstr "Frequentiebereik"
 
 #: data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
@@ -1860,12 +1833,10 @@ msgid "New Output Preset Name"
 msgstr "Nieuwe naam voor uitvoervoorinstelling"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Voorinstelling maken"
+msgstr "Nieuwe voorinstelling aanmaken"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
 msgstr "Voorinstelling importeren"
 
@@ -1976,18 +1947,16 @@ msgstr "Modellen"
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:94 src/rnnoise_ui.cpp:240
 #: src/rnnoise_ui.cpp:274
-#, fuzzy
 msgid "Standard Model"
-msgstr "Standaard RNNoise-model"
+msgstr "Standaardmodel"
 
 #: data/ui/rnnoise.ui:90
-#, fuzzy
 msgid "RNNoise Models List"
-msgstr "Standaard RNNoise-model"
+msgstr "Lijst met RNNoise-modellen"
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Model niet geladen"
 
 #: data/ui/rnnoise.ui:116
 msgid "Active Model"
@@ -2007,7 +1976,7 @@ msgstr "Handleiding van Easy Effects openen"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Volledig scherm omschakelen"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
@@ -2022,14 +1991,12 @@ msgid "Denoise"
 msgstr "Ruis wegfilteren"
 
 #: data/ui/speex.ui:45
-#, fuzzy
 msgid "Automatic Gain Control"
-msgstr "Automatische afvlakking bedienen"
+msgstr "Automatische versterking"
 
 #: data/ui/speex.ui:57
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Stemherkenning"
+msgstr "Stemdetectie"
 
 #: data/ui/speex.ui:69
 msgid "Dereverberation"
@@ -2037,7 +2004,7 @@ msgstr "Nagalm wegfilteren"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Waarschijnlijkheid van stemactiviteit"
 
 #: data/ui/speex.ui:91
 msgid "Start"
@@ -2048,7 +2015,6 @@ msgid "Continue"
 msgstr "Doorgaan"
 
 #: data/ui/speex.ui:137
-#, fuzzy
 msgid "Noise Suppression"
 msgstr "Ruisonderdrukking"
 
@@ -2057,18 +2023,16 @@ msgid "Level"
 msgstr "Niveau"
 
 #: data/ui/stereo_tools.ui:79
-#, fuzzy
 msgid "Input Balance"
-msgstr "Balans"
+msgstr "Invoerbalans"
 
 #: data/ui/stereo_tools.ui:88
 msgid "Softclip"
 msgstr "Softclip"
 
 #: data/ui/stereo_tools.ui:116
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Softclip"
+msgstr "Softclip-niveau"
 
 #: data/ui/stereo_tools.ui:128
 msgid "Stereo Matrix"
@@ -2103,9 +2067,8 @@ msgid "LR > RL (Stereo Flip Channels)"
 msgstr "LR > RL (stereo, kanalen omwisselen)"
 
 #: data/ui/stereo_tools.ui:147
-#, fuzzy
 msgid "Stereo Mode"
-msgstr "Stereobasis"
+msgstr "Stereo-mode"
 
 #: data/ui/stereo_tools.ui:180 data/ui/stereo_tools.ui:205
 msgid "Invert Phase"
@@ -2128,18 +2091,16 @@ msgid "Middle Panorama"
 msgstr "Middelste panorama"
 
 #: data/ui/stereo_tools.ui:420
-#, fuzzy
 msgid "Output Balance"
-msgstr "Uitvoerversterking"
+msgstr "Uitvoerbalans"
 
 #: data/ui/stereo_tools.ui:429
 msgid "Delay L/R"
 msgstr "L/R-vertraging"
 
 #: data/ui/stereo_tools.ui:456
-#, fuzzy
 msgid "Delay Left Right"
-msgstr "L/R-vertraging"
+msgstr "Vertraging links/rechts"
 
 #: data/ui/stereo_tools.ui:465
 msgid "Stereo Base"
@@ -2220,20 +2181,19 @@ msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "Bestand is ongebruikelijk"
 
 #: src/convolver_menu_impulses.cpp:106
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "Het impulsbestand is mogelijk beschadigd of wordt niet ondersteund"
 
 #: src/convolver_menu_impulses.cpp:111
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Enkel stereo-impulsbestanden worden ondersteund"
 
 #: src/convolver_menu_impulses.cpp:121
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Impulse-bestand importeren"
+msgstr "Impulsbestand niet geïmporteerd"
 
 #: src/convolver_menu_impulses.cpp:127
 msgid "Import Impulse File"
@@ -2254,24 +2214,20 @@ msgid "Impulse Response"
 msgstr "Impulsrespons"
 
 #: src/convolver_menu_impulses.cpp:245
-#, fuzzy
 msgid "Load Impulse"
-msgstr "Impulsen"
+msgstr "Impuls laden"
 
 #: src/convolver_menu_impulses.cpp:248
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "Impulse importeren"
+msgstr "Impuls verwijderen"
 
 #: src/convolver_ui.cpp:324
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Impulse-bestand importeren"
+msgstr "Geen impulsbestand geladen"
 
 #: src/convolver_ui.cpp:346
-#, fuzzy
 msgid "Failed To Load The Impulse File"
-msgstr "Het Impulse-bestand kan niet worden geladen"
+msgstr "Impulsbestand laden mislukt"
 
 #: src/effects_box.cpp:259 src/plugins_box.cpp:647
 msgid "Recorders"
@@ -2301,11 +2257,12 @@ msgstr "APO-voorinstellingen"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
 msgstr ""
+"APO-voorinstelling niet geladen. Bestandsformaat is mogelijk incorrect. "
+"Controleer de inhoud."
 
 #: src/equalizer_ui.cpp:556
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr "GraphicEQ-voorinstellingsbestand importeren"
 
 #: src/equalizer_ui.cpp:562
 msgid "GraphicEQ Presets"
@@ -2316,11 +2273,12 @@ msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
 msgstr ""
+"GraphicEQ-voorinstelling niet geladen. Bestandsformaat is mogelijk "
+"incorrect. Controleer de inhoud."
 
 #: src/pipe_manager_box.cpp:328
-#, fuzzy
 msgid "Remove Autoloading Preset"
-msgstr "Voorinstellingen automatisch inladen"
+msgstr "Automatisch ingeladen voorinstelling verwijderen"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"
@@ -2339,15 +2297,16 @@ msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"Geselecteerde model is niet geladen. Het formaat wordt mogelijk niet "
+"ondersteund. Standaardmodel wordt gebruikt."
 
 #: src/rnnoise_ui.cpp:130
 msgid "Import Model File"
 msgstr "Modelbestand importeren"
 
 #: src/rnnoise_ui.cpp:135
-#, fuzzy
 msgid "RNNoise Models"
-msgstr "Standaard RNNoise-model"
+msgstr "RNNoise-modellen"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Bass Enhancer"
@@ -2419,7 +2378,7 @@ msgstr "Ruisverlaging"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr ""
+msgstr "Spraakverwerker"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2428,12 +2387,12 @@ msgstr "Stereobediening"
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:81
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} is niet beschikbaar"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:84
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} is niet geïnstalleerd op dit systeem"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at
@@ -2441,7 +2400,7 @@ msgstr ""
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:116
 msgid "Close (Press ESC)"
-msgstr ""
+msgstr "Sluiten (ESC)"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
