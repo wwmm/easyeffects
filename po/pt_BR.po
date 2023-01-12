@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-30 15:38+0000\n"
-"PO-Revision-Date: 2022-08-17 04:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2023-01-12 08:48+0000\n"
+"Last-Translator: John <janrrk+weblate@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -88,9 +88,8 @@ msgid "_Shortcuts"
 msgstr "_Atalhos"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "_Sobre EasyEffects"
+msgstr "_Sobre Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:108 src/presets_menu.cpp:258
@@ -103,11 +102,12 @@ msgid "Presets Menu"
 msgstr "Menu de Predefinições"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid ""
 "Enable/disable the\n"
 "                                    global bypass"
-msgstr "Habilitar/desabilitar o global bypass"
+msgstr ""
+"Habilitar/desabilitar\n"
+"                                    todos os efeitos"
 
 #: data/ui/application_window.ui:68
 msgid "Global Bypass"
@@ -118,9 +118,8 @@ msgid "Primary Menu"
 msgstr "Menu Principal"
 
 #: data/ui/application_window.ui:93
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "Janela do EasyEffects"
+msgstr "Janela do Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -454,17 +453,15 @@ msgstr "Ganho de Saída"
 #: data/ui/gate.ui:342 data/ui/multiband_compressor.ui:132
 #: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:208
 #: data/ui/stereo_tools.ui:534
-#, fuzzy
 msgid "Dry Level"
-msgstr "Nível"
+msgstr "Nível Seco"
 
 #: data/ui/compressor.ui:442 data/ui/delay.ui:75 data/ui/delay.ui:150
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:166
 #: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:242
 #: data/ui/stereo_tools.ui:570
-#, fuzzy
 msgid "Wet Level"
-msgstr "Nível Alvo"
+msgstr "Nível Molhado"
 
 #: data/ui/compressor.ui:484 data/ui/compressor.ui:999 data/ui/gate.ui:621
 #: data/ui/gate.ui:1133
@@ -482,14 +479,12 @@ msgid "RMS"
 msgstr "RMS"
 
 #: data/ui/compressor.ui:515
-#, fuzzy
 msgid " Low-Pass"
-msgstr "Passa-Baixa"
+msgstr " Passagem Baixa"
 
 #: data/ui/compressor.ui:516
-#, fuzzy
 msgid " Uniform"
-msgstr "Uniforme"
+msgstr " Uniforme"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
@@ -527,15 +522,13 @@ msgstr "Direita"
 
 #: data/ui/compressor.ui:556 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:563
-#, fuzzy
 msgid "Min"
-msgstr "Misturado"
+msgstr "Min"
 
 #: data/ui/compressor.ui:557 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:501 data/ui/multiband_gate_band.ui:564
-#, fuzzy
 msgid "Max"
-msgstr "Misturado"
+msgstr "Máx"
 
 #: data/ui/compressor.ui:564 data/ui/gate.ui:700
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:508
@@ -548,9 +541,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid " Feed-forward"
-msgstr "Avanço de alimentação"
+msgstr " Alimento-Adiante"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -569,9 +561,8 @@ msgid "Input Device"
 msgstr "Dispositivo de Entrada"
 
 #: data/ui/compressor.ui:661
-#, fuzzy
 msgid " PreAmplification"
-msgstr "Pré-Amplificação"
+msgstr " PréAmplificação"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
@@ -639,9 +630,8 @@ msgid "Gain"
 msgstr "Ganho"
 
 #: data/ui/compressor.ui:972 data/ui/gate.ui:1106
-#, fuzzy
 msgid "Envelope"
-msgstr "Inclinação"
+msgstr "Envelope"
 
 #: data/ui/compressor.ui:1026 data/ui/gate.ui:137 data/ui/gate.ui:1160
 #: data/ui/multiband_gate_band.ui:221
@@ -838,14 +828,12 @@ msgid "Filter Length"
 msgstr "Comprimento do filtro"
 
 #: data/ui/echo_canceller.ui:73
-#, fuzzy
 msgid "Residual Echo Suppression"
-msgstr "Supressor de Ruído"
+msgstr "Supressão de Eco Residual"
 
 #: data/ui/echo_canceller.ui:95
-#, fuzzy
 msgid "Near End Echo Suppression"
-msgstr "Supressor de Ruído"
+msgstr "Supressão de Eco no Canto Final"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -877,14 +865,12 @@ msgid "Balance"
 msgstr "Balanço"
 
 #: data/ui/equalizer.ui:123
-#, fuzzy
 msgid "Pitch Left"
-msgstr "Cadeia Lateral Esquerda"
+msgstr "Frequência Esquerda"
 
 #: data/ui/equalizer.ui:156
-#, fuzzy
 msgid "Pitch Right"
-msgstr "Cadeia Lateral Direita"
+msgstr "Frequência Direita"
 
 #: data/ui/equalizer.ui:278
 msgid "Split Channels"
@@ -899,12 +885,10 @@ msgid "Calculate Frequencies"
 msgstr "Calcular Frequências"
 
 #: data/ui/equalizer.ui:300
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Bandas"
+msgstr "Ordenar Bandas"
 
 #: data/ui/equalizer.ui:315 src/presets_menu.cpp:102
-#, fuzzy
 msgid "Import Preset"
 msgstr "Importar Predefinições"
 
@@ -970,12 +954,10 @@ msgid "Solo"
 msgstr "Sozinho"
 
 #: data/ui/exciter.ui:211
-#, fuzzy
 msgid "Ceil"
 msgstr "Teto"
 
 #: data/ui/exciter.ui:240
-#, fuzzy
 msgid "Ceil Value"
 msgstr "Valor do Teto"
 
@@ -1058,30 +1040,27 @@ msgstr "Zona"
 
 #: data/ui/gate.ui:231 data/ui/multiband_gate_band.ui:315
 msgid "Hysteresis"
-msgstr ""
+msgstr "Histérese"
 
 #: data/ui/gate.ui:326
-#, fuzzy
 msgid "Mix"
-msgstr "Misturado"
+msgstr "Mistura"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "Início da Zona de Ataque"
 
 #: data/ui/gate.ui:564
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "Tempo de liberação"
+msgstr "Início da Zona de Liberação"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "Modo de Filtro Passa-Baixa"
+msgstr "Filtro Passa-Baixo"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "Média Móvel Simples"
 
 #: data/ui/gate.ui:753
 msgid "Internal"
@@ -1123,7 +1102,7 @@ msgstr ""
 
 #: data/ui/limiter.ui:86
 msgid "Exp Thin"
-msgstr ""
+msgstr "Exp Fino"
 
 #: data/ui/limiter.ui:87
 msgid "Exp Wide"
@@ -1160,83 +1139,83 @@ msgstr "Nenhuma"
 
 #: data/ui/limiter.ui:110
 msgid "Half x2(2L)"
-msgstr ""
+msgstr "Metade x2(2L)"
 
 #: data/ui/limiter.ui:111
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "Metade x2(3L)"
 
 #: data/ui/limiter.ui:112
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "Metade x3(2L)"
 
 #: data/ui/limiter.ui:113
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "Metade x3(3L)"
 
 #: data/ui/limiter.ui:114
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "Metade x4(2L)"
 
 #: data/ui/limiter.ui:115
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "Metade x4(3L)"
 
 #: data/ui/limiter.ui:116
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "Metade x6(2L)"
 
 #: data/ui/limiter.ui:117
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "Metade x6(3L)"
 
 #: data/ui/limiter.ui:118
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "Metade x8(2L)"
 
 #: data/ui/limiter.ui:119
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "Metade x8(3L)"
 
 #: data/ui/limiter.ui:120
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "Completa x2(2L)"
 
 #: data/ui/limiter.ui:121
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "Completa x2(3L)"
 
 #: data/ui/limiter.ui:122
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "Completa x3(2L)"
 
 #: data/ui/limiter.ui:123
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "Completa x3(3L)"
 
 #: data/ui/limiter.ui:124
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "Completa x4(2L)"
 
 #: data/ui/limiter.ui:125
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "Completa x4(3L)"
 
 #: data/ui/limiter.ui:126
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "Completa x6(2L)"
 
 #: data/ui/limiter.ui:127
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "Completa x6(3L)"
 
 #: data/ui/limiter.ui:128
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "Completa x8(2L)"
 
 #: data/ui/limiter.ui:129
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "Completa x8(3L)"
 
 #: data/ui/limiter.ui:179
 msgid "SC PreAmp"
@@ -1263,37 +1242,31 @@ msgstr "Cadeia Lateral Externa"
 #: data/ui/limiter.ui:456 data/ui/multiband_compressor.ui:91
 #: data/ui/multiband_gate.ui:91
 msgid "External Sidechain Source"
-msgstr ""
+msgstr "Fonte da Cadeia Lateral Externa"
 
 #: data/ui/limiter.ui:475
-#, fuzzy
 msgid "Auto Leveling"
 msgstr "Ganho Automático"
 
 #: data/ui/limiter.ui:515
-#, fuzzy
 msgid "Auto Leveling Attack"
-msgstr "Ganho Automático"
+msgstr "Ataque do Ganho Automático"
 
 #: data/ui/limiter.ui:551
-#, fuzzy
 msgid "Auto Leveling Release"
-msgstr "Ganho Automático"
+msgstr "Liberação do Ganho Automático"
 
 #: data/ui/limiter.ui:586
-#, fuzzy
 msgid "Auto Leveling Knee"
-msgstr "Ganho Automático"
+msgstr "Joelho do Ganho Automático"
 
 #: data/ui/limiter.ui:611
-#, fuzzy
 msgid "Gain Left"
-msgstr "Esquerda"
+msgstr "Ganho Esquerdo"
 
 #: data/ui/limiter.ui:638
-#, fuzzy
 msgid "Gain Right"
-msgstr "Direita"
+msgstr "Ganho Direito"
 
 #: data/ui/limiter.ui:665
 msgid "Sidechain Left"
@@ -1312,18 +1285,16 @@ msgid "Flat"
 msgstr "Plano"
 
 #: data/ui/loudness.ui:44
-#, fuzzy
 msgid "FFT Size"
-msgstr "Tamanho do Quadro"
+msgstr "Tamanho do FFT"
 
 #: data/ui/loudness.ui:64
 msgid "Output Volume"
 msgstr "Volume de Saída"
 
 #: data/ui/loudness.ui:86
-#, fuzzy
 msgid "Clipping"
-msgstr "Mapeamento de Canal"
+msgstr "Corte"
 
 #: data/ui/maximizer.ui:71
 msgid "Ceiling"
@@ -1406,65 +1377,56 @@ msgid "Band End"
 msgstr "Fim da Banda"
 
 #: data/ui/multiband_compressor_band.ui:108
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Modo de Compressão"
+msgstr "Modo de Compressão das Bandas"
 
 #: data/ui/multiband_compressor_band.ui:126 data/ui/multiband_gate_band.ui:99
 msgid "Band Bypass"
 msgstr "Ignorar a Banda"
 
 #: data/ui/multiband_compressor_band.ui:431 data/ui/multiband_gate_band.ui:494
-#, fuzzy
 msgid "Band Sidechain Options"
-msgstr "Cadeia Lateral"
+msgstr "Opções de Cadeia Lateral das Bandas"
 
 #: data/ui/multiband_compressor_band.ui:471
 msgid "Uniform"
 msgstr "Uniforme"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
-#, fuzzy
 msgid "Low-Cut Filter"
-msgstr "Filtro"
+msgstr "Filtro Corte-Baixo"
 
 #: data/ui/multiband_compressor_band.ui:545 data/ui/multiband_gate_band.ui:608
-#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Filtro"
+msgstr "Frequência do Filtro Corte-Baixo"
 
 #: data/ui/multiband_compressor_band.ui:554 data/ui/multiband_gate_band.ui:617
-#, fuzzy
 msgid "High-Cut Filter"
-msgstr "Filtro Passa-Alta"
+msgstr "Filtro Corte-Alto"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:645
-#, fuzzy
 msgid "High-Cut Filter Frequency"
-msgstr "Filtro Passa-Alta"
+msgstr "Frequência do Filtro Corte-Alto"
 
 #: data/ui/multiband_compressor_band.ui:601 data/ui/multiband_gate_band.ui:664
 msgid "PreAmp"
-msgstr ""
+msgstr "PréAmp"
 
 #: data/ui/multiband_compressor_band.ui:807
-#, fuzzy
 msgid "Band Gain"
-msgstr "Ganho de Entrada"
+msgstr "Ganho da Banda"
 
 #: data/ui/multiband_compressor_band.ui:832 data/ui/multiband_gate_band.ui:804
 msgid "Band Envelope"
-msgstr ""
+msgstr "Envelope da Banda"
 
 #: data/ui/multiband_compressor_band.ui:857 data/ui/multiband_gate_band.ui:829
-#, fuzzy
 msgid "Band Curve"
-msgstr "Curva"
+msgstr "Curva da Banda"
 
 #: data/ui/multiband_gate_band.ui:779
-#, fuzzy
 msgid "Band Reduction"
-msgstr "Redução de Ganho"
+msgstr "Redução da Banda"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1472,77 +1434,68 @@ msgstr "Geral"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Gerenciamento de Dispositivos"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"É recomendado NÃO definir a Pia/Fonte (Sink/Source) do Easy Effects como "
+"Dispositivo Padrão em aplicações externas (p.e. Definições do Gnome ou "
+"Definições de Sistema do Plasma)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
-#, fuzzy
 msgid "Use Default Input"
-msgstr "Usar Padrão"
+msgstr "Usar Entrada Padrão"
 
 #: data/ui/pipe_manager_box.ui:65
-#, fuzzy
 msgid "Custom Input Device"
-msgstr "Dispositivo de Entrada"
+msgstr "Dispositivo de Entrada Personalizado"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
-#, fuzzy
 msgid "Use Default Output"
-msgstr "Usar Padrão"
+msgstr "Usar Saída Padrão"
 
 #: data/ui/pipe_manager_box.ui:101
-#, fuzzy
 msgid "Custom Output Device"
-msgstr "Ganho de Entrada"
+msgstr "Dispositivo de Saída Personalizado"
 
 #: data/ui/pipe_manager_box.ui:112
-#, fuzzy
 msgid "Server Information"
-msgstr "Reverberação"
+msgstr "Informações do Servidor"
 
 #: data/ui/pipe_manager_box.ui:116
-#, fuzzy
 msgid "Header Version"
-msgstr "Versão"
+msgstr "Versão do Cabeçalho"
 
 #: data/ui/pipe_manager_box.ui:127
-#, fuzzy
 msgid "Library Version"
-msgstr "Versão"
+msgstr "Versão de biblioca"
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Sampling Rate"
-msgstr "Amostragem"
+msgstr "Taxa de Amostragem"
 
 #: data/ui/pipe_manager_box.ui:149
-#, fuzzy
 msgid "Minimum Quantum"
-msgstr "Frequência"
+msgstr "Quantum Mínimo"
 
 #: data/ui/pipe_manager_box.ui:160
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Ganho Máximo"
+msgstr "Quantum Máximo"
 
 #: data/ui/pipe_manager_box.ui:171
-#, fuzzy
 msgid "Default Quantum"
-msgstr "Saída Padrão"
+msgstr "Quantum Padrão"
 
 #: data/ui/pipe_manager_box.ui:191
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "Carregamento Automático de Definições"
 
 #: data/ui/pipe_manager_box.ui:232
-#, fuzzy
 msgid "Output Devices"
-msgstr "Ganho de Entrada"
+msgstr "Dispositivos de Saída"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
 msgid "Output Presets"
@@ -1550,20 +1503,19 @@ msgstr "Predefinições de Saída"
 
 #: data/ui/pipe_manager_box.ui:256 data/ui/pipe_manager_box.ui:348
 msgid "Create Association"
-msgstr ""
+msgstr "Criar Associação"
 
 #: data/ui/pipe_manager_box.ui:270
 msgid "Add Autoloading Output Preset"
-msgstr ""
+msgstr "Adicionar Carregamento Automático de Definições de Saída"
 
 #: data/ui/pipe_manager_box.ui:290
 msgid "Output Autoloading Presets List"
 msgstr "Lista de Predefinições de Saída"
 
 #: data/ui/pipe_manager_box.ui:329
-#, fuzzy
 msgid "Input Devices"
-msgstr "Dispositivo de Entrada"
+msgstr "Dispositivos de Entrada"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
 msgid "Input Presets"
@@ -1571,7 +1523,7 @@ msgstr "Predefinições de Entrada"
 
 #: data/ui/pipe_manager_box.ui:362
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "Adicionar Carregamento Automático de Definições de Entrada"
 
 #: data/ui/pipe_manager_box.ui:381
 msgid "Input Autoloading Presets List"
@@ -1582,23 +1534,20 @@ msgid "Modules"
 msgstr "Módulos"
 
 #: data/ui/pipe_manager_box.ui:429
-#, fuzzy
 msgid "Modules List"
-msgstr "Módulos"
+msgstr "Lista de Módulos"
 
 #: data/ui/pipe_manager_box.ui:443
 msgid "Clients"
 msgstr "Clientes"
 
 #: data/ui/pipe_manager_box.ui:461
-#, fuzzy
 msgid "Clients List"
-msgstr "Clientes"
+msgstr "Lista de Clientes"
 
 #: data/ui/pipe_manager_box.ui:475
-#, fuzzy
 msgid "Test Signal"
-msgstr "Sinais de Teste"
+msgstr "Sinal de Teste"
 
 #: data/ui/pipe_manager_box.ui:480 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
@@ -1622,17 +1571,16 @@ msgid "Both"
 msgstr "Ambos"
 
 #: data/ui/pipe_manager_box.ui:530
-#, fuzzy
 msgid "Both Channels"
-msgstr "Canais"
+msgstr "Ambos Canais"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
-msgstr "Forma de onda"
+msgstr "Forma de Onda"
 
 #: data/ui/pipe_manager_box.ui:543
 msgid "Sine Wave"
-msgstr "Onda senoidal"
+msgstr "Onda Senoidal"
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "White Noise"
@@ -1640,38 +1588,35 @@ msgstr "Ruído Branco"
 
 #: data/ui/pitch.ui:43
 msgid "High Speed"
-msgstr "Alta velocidade"
+msgstr "Alta Velocidade"
 
 #: data/ui/pitch.ui:44
 msgid "High Quality"
-msgstr "Alta qualidade"
+msgstr "Alta Qualidade"
 
 #: data/ui/pitch.ui:45
 msgid "High Consistency"
-msgstr "Alta consistência"
+msgstr "Alta Consistência"
 
 #: data/ui/pitch.ui:59
-#, fuzzy
 msgid "Formant"
-msgstr "Formato"
+msgstr "Formante"
 
 #: data/ui/pitch.ui:70
 msgid "Shifted"
 msgstr "Deslocado"
 
 #: data/ui/pitch.ui:71
-#, fuzzy
 msgid "Preserved"
-msgstr "Predefinição"
+msgstr "Preservado"
 
 #: data/ui/pitch.ui:97
 msgid "Transients"
 msgstr "Transientes"
 
 #: data/ui/pitch.ui:108
-#, fuzzy
 msgid "Crisp"
-msgstr "Clareza"
+msgstr "Nítido"
 
 #: data/ui/pitch.ui:109
 msgid "Mixed"
@@ -1682,23 +1627,20 @@ msgid "Smooth"
 msgstr "Suave"
 
 #: data/ui/pitch.ui:124
-#, fuzzy
 msgid "Detector"
-msgstr "Detecção"
+msgstr "Detector"
 
 #: data/ui/pitch.ui:135
-#, fuzzy
 msgid "Compound"
-msgstr "Compressão"
+msgstr "Composto"
 
 #: data/ui/pitch.ui:136
 msgid "Percussive"
 msgstr "Percussivo"
 
 #: data/ui/pitch.ui:137
-#, fuzzy
 msgid "Soft"
-msgstr "Clipe Macio"
+msgstr "Suave"
 
 #: data/ui/pitch.ui:151
 msgid "Phase"
@@ -1706,7 +1648,7 @@ msgstr "Estágio"
 
 #: data/ui/pitch.ui:162
 msgid "Laminar"
-msgstr ""
+msgstr "Laminar"
 
 #: data/ui/pitch.ui:163
 msgid "Independent"
@@ -1725,25 +1667,24 @@ msgid "Octaves"
 msgstr "Oitavas"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Remover este arquivo de predefinição"
+msgstr "Remover este efeito"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Habilitar/desabilitar este efeito"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Alterar a posição deste efeito"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
-msgstr "Adicionar efeito"
+msgstr "Adicionar Efeito"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
-msgstr ""
+msgstr "Lista de Plugins Utilizados"
 
 #: data/ui/plugins_box.ui:129
 msgid "No Effects"
@@ -1751,58 +1692,55 @@ msgstr "Sem efeitos"
 
 #: data/ui/plugins_box.ui:130
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "Fluxo de Áudio Não Alterada"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr ""
+msgstr "Procurar Pugin"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "Lista de Plugins"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
 msgstr "_Geral"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Dispositivo de Entrada"
+msgstr "Serviço"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Iniciar Serviço com o Sistema"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "Desligar ao Fechar Janela"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
 msgstr "Áudio"
 
 #: data/ui/preferences_general.ui:42
-#, fuzzy
 msgid "Process All Output Streams"
 msgstr "Processar Todas as Saídas"
 
 #: data/ui/preferences_general.ui:54
-#, fuzzy
 msgid "Process All Input Streams"
 msgstr "Processar Todas as Entradas"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Ignorar Fluxos do Monitor de Dispositivos"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "Usar Volume Cúbico"
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "Tempo de Esgotamento por Inatividade"
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -1814,7 +1752,7 @@ msgstr "Usar Tema Escuro"
 
 #: data/ui/preferences_general.ui:130
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "Esconder Menus em Cliques Externos"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1854,11 +1792,11 @@ msgstr "Preencher"
 
 #: data/ui/preferences_spectrum.ui:126
 msgid "Show Bars Border"
-msgstr ""
+msgstr "Mostrar Borda em Barras"
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Cantos Arredondados"
 
 #: data/ui/preferences_spectrum.ui:152
 msgid "Color"
@@ -1866,16 +1804,15 @@ msgstr "Cor"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
-msgstr ""
+msgstr "Linhas e Barras"
 
 #: data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
-msgstr ""
+msgstr "Rótulos dos Eixos"
 
 #: data/ui/preferences_spectrum.ui:185
-#, fuzzy
 msgid "Frequency Range"
-msgstr "Frequência"
+msgstr "Escopo de Frequências"
 
 #: data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
@@ -1902,14 +1839,12 @@ msgid "New Output Preset Name"
 msgstr "Novo Nome de Predefinição de Saída"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Criar Predefinição"
+msgstr "Criar uma nova predefinição"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
-msgstr "Importar Predefinições"
+msgstr "Importar uma predefinição"
 
 #: data/ui/presets_menu.ui:90
 msgid "Search Output Preset"
@@ -2008,9 +1943,8 @@ msgid "Large Occupied Hall"
 msgstr "Grande Salão Ocupado"
 
 #: data/ui/rnnoise.ui:31
-#, fuzzy
 msgid "Import Model"
-msgstr "Importar Impulso"
+msgstr "Importar Modelo"
 
 #: data/ui/rnnoise.ui:40
 msgid "Models"
@@ -2020,103 +1954,91 @@ msgstr "Modelos"
 #: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:94 src/rnnoise_ui.cpp:240
 #: src/rnnoise_ui.cpp:274
 msgid "Standard Model"
-msgstr ""
+msgstr "Modelo Padrão"
 
 #: data/ui/rnnoise.ui:90
 msgid "RNNoise Models List"
-msgstr ""
+msgstr "Lista de Modelos RNNoise"
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Modelo Não Carregado"
 
 #: data/ui/rnnoise.ui:116
-#, fuzzy
 msgid "Active Model"
-msgstr "Modo Agressivo"
+msgstr "Modelo Ativo"
 
 #: data/ui/rnnoise.ui:124
 msgid "Standard RNNoise Model"
-msgstr ""
+msgstr "Modelo RNNoise Padrão"
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr "Visão geral"
+msgstr "Visão Geral"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "Abrir o Manual do EasyEffects"
+msgstr "Abrir o Manual do Easy Effects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Tela Cheia/Restaurar de Tela Cheia"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "Fechar a Janela"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "EasyEffects"
+msgstr "Sair do Easy Effects"
 
 #: data/ui/speex.ui:33
-#, fuzzy
 msgid "Denoise"
-msgstr "Ruído Vermelho"
+msgstr "Diminuir Ruído"
 
 #: data/ui/speex.ui:45
-#, fuzzy
 msgid "Automatic Gain Control"
-msgstr "Controlador de Ganho"
+msgstr "Controle de Ganho Automático"
 
 #: data/ui/speex.ui:57
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Detector de Voz"
+msgstr "Detecção de Voz"
 
 #: data/ui/speex.ui:69
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Reverberação"
+msgstr "Diminuir Reverberação"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Probabilidade de Atividade de Voz"
 
 #: data/ui/speex.ui:91
-#, fuzzy
 msgid "Start"
-msgstr "Início da Banda"
+msgstr "Iniciar"
 
 #: data/ui/speex.ui:113
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #: data/ui/speex.ui:137
-#, fuzzy
 msgid "Noise Suppression"
-msgstr "Supressor de Ruído"
+msgstr "Supressão de Ruído"
 
 #: data/ui/speex.ui:141
-#, fuzzy
 msgid "Level"
-msgstr "Nível F2"
+msgstr "Nível"
 
 #: data/ui/stereo_tools.ui:79
-#, fuzzy
 msgid "Input Balance"
-msgstr "Balanço"
+msgstr "Balanço de Entrada"
 
 #: data/ui/stereo_tools.ui:88
 msgid "Softclip"
-msgstr "Clipe Macio"
+msgstr "Corte SuaveClipe Macio"
 
 #: data/ui/stereo_tools.ui:116
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Clipe Macio"
+msgstr "Nível de Corte Suave"
 
 #: data/ui/stereo_tools.ui:128
 msgid "Stereo Matrix"
@@ -2151,9 +2073,8 @@ msgid "LR > RL (Stereo Flip Channels)"
 msgstr "ED > DL (Alternar Canais Stereo)"
 
 #: data/ui/stereo_tools.ui:147
-#, fuzzy
 msgid "Stereo Mode"
-msgstr "Base Stereo"
+msgstr "Modo Stereo"
 
 #: data/ui/stereo_tools.ui:180 data/ui/stereo_tools.ui:205
 msgid "Invert Phase"
@@ -2176,9 +2097,8 @@ msgid "Middle Panorama"
 msgstr "Panorama do Meio"
 
 #: data/ui/stereo_tools.ui:420
-#, fuzzy
 msgid "Output Balance"
-msgstr "Ganho de Entrada"
+msgstr "Ganho de Saída"
 
 #: data/ui/stereo_tools.ui:429
 msgid "Delay L/R"
@@ -2230,7 +2150,6 @@ msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
 #: src/application.cpp:525
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Sair do EasyEffects. Útil quando executando em modo de serviço."
 
@@ -2239,9 +2158,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Exemplo: easyeffects -l music"
 
 #: src/application.cpp:531
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "Redefinir o EasyEffects."
+msgstr "Redefinir o Easy Effects."
 
 #: src/application.cpp:534
 msgid "Hide the Window."
@@ -2258,19 +2176,16 @@ msgid "Show available presets."
 msgstr "Mostrar predefinições disponíveis."
 
 #: src/application_ui.cpp:277
-#, fuzzy
 msgid "_Output"
-msgstr "Saída"
+msgstr "_Saída"
 
 #: src/application_ui.cpp:278
-#, fuzzy
 msgid "_Input"
 msgstr "Entrada"
 
 #: src/application_ui.cpp:279
-#, fuzzy
 msgid "_PipeWire"
-msgstr "PipeWire"
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
@@ -2319,7 +2234,6 @@ msgid "No Impulse File Loaded"
 msgstr "Nenhum arquivo de impulso carregado"
 
 #: src/convolver_ui.cpp:346
-#, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
@@ -2340,14 +2254,12 @@ msgid "infinity"
 msgstr "infinito"
 
 #: src/equalizer_ui.cpp:365
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "Importar Predefinições"
+msgstr "Importar Predefinições do APO"
 
 #: src/equalizer_ui.cpp:371
-#, fuzzy
 msgid "APO Presets"
-msgstr "Predefinições"
+msgstr "Predefinições do APO"
 
 #: src/equalizer_ui.cpp:389
 msgid ""
@@ -2357,17 +2269,14 @@ msgstr ""
 "errado. Por favor, verifique o conteúdo."
 
 #: src/equalizer_ui.cpp:556
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "Importar Predefinições"
+msgstr "Importar Predefinições do GraphicEQ"
 
 #: src/equalizer_ui.cpp:562
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Predefinições de Entrada"
+msgstr "Predefinições do GraphicEQ"
 
 #: src/equalizer_ui.cpp:580
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
 "Content."
@@ -2376,21 +2285,18 @@ msgstr ""
 "errado. Por favor, verifique o conteúdo."
 
 #: src/pipe_manager_box.cpp:328
-#, fuzzy
 msgid "Remove Autoloading Preset"
-msgstr "Remover este arquivo de predefinição"
+msgstr "Remover Predefinições Automaticamente Carregadas"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"
 msgstr "Remover"
 
 #: src/plugins_box.cpp:668
-#, fuzzy
 msgid "Output Device"
-msgstr "Ganho de Entrada"
+msgstr "Dispositivo de Saída"
 
 #: src/plugins_menu.cpp:154
-#, fuzzy
 msgid "Add"
 msgstr "Adicionar"
 
@@ -2399,6 +2305,8 @@ msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"Modelo Selecionado Não Carregado. O Formato Pode Ser Não Suportado. Usando o "
+"Modelo Padrão."
 
 #: src/rnnoise_ui.cpp:130
 msgid "Import Model File"
@@ -2413,9 +2321,8 @@ msgid "Bass Enhancer"
 msgstr "Reforçador de Graves"
 
 #: src/tags_plugin_name.cpp:33
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Volume do baixo"
+msgstr "Sonoridade Grave"
 
 #: src/tags_plugin_name.cpp:35
 msgid "Convolver"
@@ -2470,7 +2377,6 @@ msgid "Pitch"
 msgstr "Altura"
 
 #: src/tags_plugin_name.cpp:51
-#, fuzzy
 msgid "Reverberation"
 msgstr "Reverberação"
 
@@ -2480,7 +2386,7 @@ msgstr "Redução de Ruído"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr ""
+msgstr "Processador de Conversa"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2489,12 +2395,12 @@ msgstr "Ferramentas Stereo"
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:81
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} Não Disponível"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:84
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} Não Está Instalado no Sistema"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at
