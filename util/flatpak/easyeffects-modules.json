@@ -139,36 +139,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "name": "calf",
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://github.com/calf-studio-gear/calf.git",
-                            "tag": "0.90.3",
-                            "commit": "41a2b7fb029cf0099fc05b7a9c569208034018de",
-                            "x-checker-data": {
-                                "type": "git",
-                                "tag-pattern": "^([\\d.]+)"
-                            }
-                        }
-                    ],
-                    "post-install": [
-                        "install -Dm644 -t $FLATPAK_DEST/share/licenses/calf COPYING"
-                    ],
-                    "cleanup": [
-                        "/bin",
-                        "/share/applications",
-                        "/share/bash-completion",
-                        "/share/calf",
-                        "/share/doc",
-                        "/share/icons",
-                        "/share/man"
-                    ],
-                    "modules": [
-                        "shared-modules/linux-audio/fluidsynth2.json"
-                    ]
                 }
             ]
         },
