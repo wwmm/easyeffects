@@ -34,6 +34,14 @@
             "subdirectories": true,
             "no-autodownload": true
         },
+        "org.freedesktop.LinuxAudio.Plugins.Calf": {
+            "directory": "extensions/Plugins/Calf",
+            "version": "22.08",
+            "add-ld-path": "lib",
+            "merge-dirs": "lv2",
+            "autodelete": false,
+            "subdirectories": true
+        },
         "org.freedesktop.LinuxAudio.Plugins.LSP": {
             "directory": "extensions/Plugins/LSP",
             "version": "22.08",
