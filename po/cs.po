@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-30 15:38+0000\n"
-"PO-Revision-Date: 2022-08-17 04:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2023-01-19 06:48+0000\n"
+"Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -85,7 +85,6 @@ msgid "_Shortcuts"
 msgstr "_Klávesové zkratky"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
 msgstr "_O EasyEffects"
 
@@ -100,11 +99,10 @@ msgid "Presets Menu"
 msgstr "Nabídka profilů"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid ""
 "Enable/disable the\n"
 "                                    global bypass"
-msgstr "Povolí/zakáže globální bypass"
+msgstr "Povolit/zakázat globální bypass"
 
 #: data/ui/application_window.ui:68
 msgid "Global Bypass"
@@ -115,9 +113,8 @@ msgid "Primary Menu"
 msgstr "Hlavní nabídka"
 
 #: data/ui/application_window.ui:93
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "Okno EasyEffects"
+msgstr "EasyEffects okno"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -272,8 +269,9 @@ msgstr "Vrátit na výchozí"
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
+#, fuzzy
 msgid "Using"
-msgstr ""
+msgstr "Použitím"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:604 data/ui/gate.ui:740
 msgid "Device"
@@ -288,7 +286,7 @@ msgstr "Název"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: data/ui/autoload_row.ui:89
 msgid "Preset"
@@ -339,7 +337,7 @@ msgstr "Spodní mez"
 
 #: data/ui/bass_loudness.ui:71
 msgid "Link"
-msgstr ""
+msgstr "Odkaz"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
@@ -378,8 +376,9 @@ msgid "Upward"
 msgstr "Nahoru"
 
 #: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
+#, fuzzy
 msgid "Boosting"
-msgstr ""
+msgstr "Zesílení"
 
 #: data/ui/compressor.ui:73 data/ui/multiband_compressor_band.ui:88
 msgid "Compression Mode"
@@ -561,7 +560,7 @@ msgstr "Kanál-zpět"
 
 #: data/ui/compressor.ui:619 data/ui/gate.ui:754
 msgid "External"
-msgstr ""
+msgstr "Externí"
 
 #: data/ui/compressor.ui:626 data/ui/gate.ui:761
 msgid "Sidechain Type"
@@ -678,7 +677,7 @@ msgstr "Odpověď impulsu"
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "kombinovat"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
@@ -717,11 +716,11 @@ msgstr "Odpověď impulsu"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "První jádro"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "druhé jádro"
 
 #: data/ui/convolver_menu_combine.ui:91
 #, fuzzy
@@ -730,7 +729,7 @@ msgstr "Výstup"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "Jméno kombinovaného jádra"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
@@ -739,7 +738,7 @@ msgstr "Zavést impuls"
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
 msgid "Search"
-msgstr ""
+msgstr "Hledat"
 
 #: data/ui/convolver_menu_impulses.ui:27
 #, fuzzy
@@ -874,7 +873,7 @@ msgstr "Potlačovač šumu"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "Vynechané aplikace"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
@@ -894,7 +893,7 @@ msgstr "FFT"
 
 #: data/ui/equalizer.ui:76
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:90 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:393
@@ -1004,16 +1003,17 @@ msgid "Ceil"
 msgstr "Strop"
 
 #: data/ui/exciter.ui:240
+#, fuzzy
 msgid "Ceil Value"
-msgstr ""
+msgstr "Horní mezní hodnota"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "Přístup"
 
 #: data/ui/factory_modules_listview.ui:72
 #, fuzzy
@@ -1084,19 +1084,20 @@ msgstr "Brána"
 #: data/ui/gate.ui:159 data/ui/gate.ui:252 data/ui/multiband_gate_band.ui:243
 #: data/ui/multiband_gate_band.ui:336
 msgid "Zone"
-msgstr ""
+msgstr "Zóna"
 
 #: data/ui/gate.ui:231 data/ui/multiband_gate_band.ui:315
 msgid "Hysteresis"
-msgstr ""
+msgstr "Hystereze"
 
 #: data/ui/gate.ui:326
+#, fuzzy
 msgid "Mix"
-msgstr ""
+msgstr "Mix"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "Začátek zóny attacku"
 
 #: data/ui/gate.ui:564
 #, fuzzy
@@ -1110,7 +1111,7 @@ msgstr "Režim filtrování nízkých frekvencí"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "Jednoduchý klouzavý průměr"
 
 #: data/ui/gate.ui:753
 #, fuzzy
@@ -1130,12 +1131,14 @@ msgid "Oversampling"
 msgstr "Převzorkování"
 
 #: data/ui/limiter.ui:70
+#, fuzzy
 msgid "Dither"
-msgstr ""
+msgstr "Dither"
 
 #: data/ui/limiter.ui:82
+#, fuzzy
 msgid "Herm Thin"
-msgstr ""
+msgstr "Hermit tenký"
 
 #: data/ui/limiter.ui:83
 #, fuzzy
@@ -1144,15 +1147,15 @@ msgstr "Rozšířit"
 
 #: data/ui/limiter.ui:84
 msgid "Herm Tail"
-msgstr ""
+msgstr "Herm Tail"
 
 #: data/ui/limiter.ui:85
 msgid "Herm Duck"
-msgstr ""
+msgstr "Herm Duck"
 
 #: data/ui/limiter.ui:86
 msgid "Exp Thin"
-msgstr ""
+msgstr "Exp Thin"
 
 #: data/ui/limiter.ui:87
 #, fuzzy
@@ -1161,11 +1164,11 @@ msgstr "Rozšířit"
 
 #: data/ui/limiter.ui:88
 msgid "Exp Tail"
-msgstr ""
+msgstr "Exp Tail"
 
 #: data/ui/limiter.ui:89
 msgid "Exp Duck"
-msgstr ""
+msgstr "Exp Duck"
 
 #: data/ui/limiter.ui:90
 #, fuzzy
@@ -1184,7 +1187,7 @@ msgstr "Šířka čáry"
 
 #: data/ui/limiter.ui:93
 msgid "Line Duck"
-msgstr ""
+msgstr "Line Duck"
 
 #: data/ui/limiter.ui:109 data/ui/multiband_compressor.ui:53
 #: data/ui/multiband_gate.ui:53
@@ -1193,87 +1196,87 @@ msgstr "Žádný"
 
 #: data/ui/limiter.ui:110
 msgid "Half x2(2L)"
-msgstr ""
+msgstr "Polovina x2(2L)"
 
 #: data/ui/limiter.ui:111
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "Polovina x2(3L)"
 
 #: data/ui/limiter.ui:112
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "Polovina x3(2L)"
 
 #: data/ui/limiter.ui:113
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "Polovina x3(3L)"
 
 #: data/ui/limiter.ui:114
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "Polovina x4(2L)"
 
 #: data/ui/limiter.ui:115
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "Polovina x4(3L)"
 
 #: data/ui/limiter.ui:116
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "Polovina x6(2L)"
 
 #: data/ui/limiter.ui:117
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "Polovina x6(3L)"
 
 #: data/ui/limiter.ui:118
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "Polovina x8(2L)"
 
 #: data/ui/limiter.ui:119
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "Polovina x8(3L)"
 
 #: data/ui/limiter.ui:120
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "Kompletní x2(2L)"
 
 #: data/ui/limiter.ui:121
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "Kompletní x2(3L)"
 
 #: data/ui/limiter.ui:122
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "Kompletní x3(2L)"
 
 #: data/ui/limiter.ui:123
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "Kompletní x3(3L)"
 
 #: data/ui/limiter.ui:124
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "Kompletní x4(2L)"
 
 #: data/ui/limiter.ui:125
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "Kompletní x4(3L)"
 
 #: data/ui/limiter.ui:126
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "Kompletní x6(2L)"
 
 #: data/ui/limiter.ui:127
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "Kompletní x6(3L)"
 
 #: data/ui/limiter.ui:128
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "Kompletní x8(2L)"
 
 #: data/ui/limiter.ui:129
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "Kompletní x8(3L)"
 
 #: data/ui/limiter.ui:179
 msgid "SC PreAmp"
-msgstr ""
+msgstr "SC Předzesilovač"
 
 #: data/ui/limiter.ui:208 data/ui/multiband_compressor_band.ui:628
 #: data/ui/multiband_gate_band.ui:690
@@ -1283,7 +1286,7 @@ msgstr "Předzesílení"
 
 #: data/ui/limiter.ui:383
 msgid "Boost"
-msgstr ""
+msgstr "Zesílení"
 
 #: data/ui/limiter.ui:398
 msgid "Stereo Link"
@@ -1297,8 +1300,9 @@ msgstr "Postranní řetězec"
 
 #: data/ui/limiter.ui:456 data/ui/multiband_compressor.ui:91
 #: data/ui/multiband_gate.ui:91
+#, fuzzy
 msgid "External Sidechain Source"
-msgstr ""
+msgstr "externí zdroj Sidechain"
 
 #: data/ui/limiter.ui:475
 #, fuzzy
@@ -1373,20 +1377,24 @@ msgid "Sidechain Boost"
 msgstr "Postranní řetězec"
 
 #: data/ui/multiband_compressor.ui:54 data/ui/multiband_gate.ui:54
+#, fuzzy
 msgid "Pink BT"
-msgstr ""
+msgstr "Růžový BT"
 
 #: data/ui/multiband_compressor.ui:55 data/ui/multiband_gate.ui:55
+#, fuzzy
 msgid "Pink MT"
-msgstr ""
+msgstr "Růžový MT"
 
 #: data/ui/multiband_compressor.ui:56 data/ui/multiband_gate.ui:56
+#, fuzzy
 msgid "Brown BT"
-msgstr ""
+msgstr "Hnědá BT"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
+#, fuzzy
 msgid "Brown MT"
-msgstr ""
+msgstr "Hnědá MT"
 
 #: data/ui/multiband_compressor.ui:106 data/ui/multiband_gate.ui:106
 #, fuzzy
@@ -1395,7 +1403,7 @@ msgstr "Zavést impuls"
 
 #: data/ui/multiband_compressor.ui:117 data/ui/multiband_gate.ui:117
 msgid "Classic"
-msgstr ""
+msgstr "Klasický"
 
 #: data/ui/multiband_compressor.ui:118 data/ui/multiband_gate.ui:118
 #, fuzzy
@@ -1524,13 +1532,15 @@ msgstr "Obecné"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Správa zařízení"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"V externích aplikacích (např. Nastavení Gnome a Nastavení Plasma Systému) se "
+"NEDOPORUČUJE nastavovat Easy Effects Sink/Source jako výchozí zařízení."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 #, fuzzy
@@ -1602,7 +1612,7 @@ msgstr "Profily pro výstup"
 
 #: data/ui/pipe_manager_box.ui:256 data/ui/pipe_manager_box.ui:348
 msgid "Create Association"
-msgstr ""
+msgstr "Vytvořit asociaci"
 
 #: data/ui/pipe_manager_box.ui:270
 msgid "Add Autoloading Output Preset"
@@ -1664,15 +1674,16 @@ msgstr "Povolit"
 
 #: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
-msgstr ""
+msgstr "Vlastnosti"
 
 #: data/ui/pipe_manager_box.ui:501
 msgid "Channels"
 msgstr "Kanály"
 
 #: data/ui/pipe_manager_box.ui:526
+#, fuzzy
 msgid "Both"
-msgstr ""
+msgstr "Oba"
 
 #: data/ui/pipe_manager_box.ui:530
 #, fuzzy
@@ -1704,7 +1715,7 @@ msgstr "Jakost"
 
 #: data/ui/pitch.ui:45
 msgid "High Consistency"
-msgstr ""
+msgstr "Vysoká konzistence"
 
 #: data/ui/pitch.ui:59
 #, fuzzy
@@ -1735,7 +1746,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:110
 msgid "Smooth"
-msgstr ""
+msgstr "Hladký"
 
 #: data/ui/pitch.ui:124
 #, fuzzy
@@ -1758,7 +1769,7 @@ msgstr "Softclip"
 
 #: data/ui/pitch.ui:151
 msgid "Phase"
-msgstr ""
+msgstr "Fáze"
 
 #: data/ui/pitch.ui:162
 msgid "Laminar"
@@ -1766,7 +1777,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:163
 msgid "Independent"
-msgstr ""
+msgstr "Nezávislý"
 
 #: data/ui/pitch.ui:188
 msgid "Cents"
@@ -1787,11 +1798,11 @@ msgstr "Odstranit tento soubor s přednastavením"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Povolit/zakázat tento efekt"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Změna pozice tohoto efektu"
 
 #: data/ui/plugins_box.ui:19
 #, fuzzy
@@ -1800,7 +1811,7 @@ msgstr "Vstupní efekty"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
-msgstr ""
+msgstr "Seznam použitých pluginů"
 
 #: data/ui/plugins_box.ui:129
 #, fuzzy
@@ -1809,15 +1820,15 @@ msgstr "EasyEffects"
 
 #: data/ui/plugins_box.ui:130
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "Audio Stream není modifikovaný"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr ""
+msgstr "Hledat Plugin"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "Seznam Pluginů"
 
 #: data/ui/preferences_general.ui:5
 #, fuzzy
@@ -1831,15 +1842,15 @@ msgstr "Omezovač vstupu"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Spustit službu při spuštění systému"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "Vypnout při zavření okna"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: data/ui/preferences_general.ui:42
 #, fuzzy
@@ -1853,7 +1864,7 @@ msgstr "Zpracovat všechny vstupy"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Ignorovat streamy z monitoru zařízení"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
@@ -1865,15 +1876,16 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "Styl"
 
 #: data/ui/preferences_general.ui:118
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
 #: data/ui/preferences_general.ui:130
+#, fuzzy
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "Zavřít menu při kliknutí vedle"
 
 #: data/ui/preferences_spectrum.ui:5
 #, fuzzy
@@ -1882,7 +1894,7 @@ msgstr "Spektrum"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Tvar"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
@@ -1894,7 +1906,7 @@ msgstr "Čáry"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Dots"
-msgstr ""
+msgstr "Tečky"
 
 #: data/ui/preferences_spectrum.ui:46
 msgid "Points"
@@ -1918,11 +1930,11 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:138
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Zaoblené rohy"
 
 #: data/ui/preferences_spectrum.ui:152
 msgid "Color"
-msgstr ""
+msgstr "Barva"
 
 #: data/ui/preferences_spectrum.ui:155
 msgid "Lines and Bars"
@@ -2091,7 +2103,7 @@ msgstr ""
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Model nenačtený"
 
 #: data/ui/rnnoise.ui:116
 #, fuzzy
@@ -2114,7 +2126,7 @@ msgstr "Otevřít manuál EasyEffects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Celá obrazovka/Obnovit z celé obrazovky"
 
 #: data/ui/shortcuts.ui:30
 #, fuzzy
@@ -2148,15 +2160,15 @@ msgstr "Dozvuk"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Pravděpodobnost Hlasové Aktivity"
 
 #: data/ui/speex.ui:91
 msgid "Start"
-msgstr ""
+msgstr "Začít"
 
 #: data/ui/speex.ui:113
 msgid "Continue"
-msgstr ""
+msgstr "Pokračovat"
 
 #: data/ui/speex.ui:137
 #, fuzzy
@@ -2263,11 +2275,11 @@ msgstr "Fáze sterea"
 
 #: src/app_info.cpp:64
 msgid "Running"
-msgstr ""
+msgstr "Běží"
 
 #: src/app_info.cpp:66
 msgid "Suspended"
-msgstr ""
+msgstr "Pozastaveno"
 
 #: src/app_info.cpp:68
 msgid "Idle"
@@ -2280,11 +2292,11 @@ msgstr "Hradlo"
 
 #: src/app_info.cpp:72
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: src/app_info.cpp:74
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámý"
 
 #: src/app_info.cpp:228
 #, fuzzy
@@ -2293,7 +2305,7 @@ msgstr "Kanály"
 
 #: src/application.cpp:435
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:525
 #, fuzzy
@@ -2333,19 +2345,20 @@ msgstr "Vstup"
 
 #: src/application_ui.cpp:279
 msgid "_PipeWire"
-msgstr ""
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "Soubor není standardní"
 
 #: src/convolver_menu_impulses.cpp:106
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "Soubor Impulse může být poškozený nebo nepodporovaný"
 
 #: src/convolver_menu_impulses.cpp:111
+#, fuzzy
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Podporovány jsou pouze Stereo Impulse soubory"
 
 #: src/convolver_menu_impulses.cpp:121
 #, fuzzy
@@ -2397,7 +2410,7 @@ msgstr "Okraj"
 
 #: src/effects_box.cpp:282 src/plugins_box.cpp:667
 msgid "Players"
-msgstr ""
+msgstr "Přehrávače"
 
 #: src/effects_box.cpp:305
 #, fuzzy
@@ -2446,7 +2459,7 @@ msgstr "Odstranit tento soubor s přednastavením"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"
-msgstr ""
+msgstr "Odstranit"
 
 #: src/plugins_box.cpp:668
 #, fuzzy
@@ -2455,13 +2468,16 @@ msgstr "Vstupní zesílení"
 
 #: src/plugins_menu.cpp:154
 msgid "Add"
-msgstr ""
+msgstr "Přidat"
 
 #: src/rnnoise_ui.cpp:89
+#, fuzzy
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"Vybraný model nebyl načten. Jeho formát nemusí být podporovaný. Návrat ke "
+"standardnímu modelu."
 
 #: src/rnnoise_ui.cpp:130
 #, fuzzy
@@ -2546,7 +2562,7 @@ msgstr "Zmenšení zesílení"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr ""
+msgstr "Řečový procesor"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2554,13 +2570,15 @@ msgstr "Nástroje sterea"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:81
+#, fuzzy
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} Není dostupný"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:84
+#, fuzzy
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} Není nainstalováno v systému"
 
 #. Add custom button to hint the user to press ESC to destroy the dialog.
 #. This has been introduced because multiple GTK4 dialogs shown at
@@ -2568,11 +2586,11 @@ msgstr ""
 #. close the outer one is pressing ESC, the mouse click does not work.
 #: src/ui_helpers.cpp:116
 msgid "Close (Press ESC)"
-msgstr ""
+msgstr "Zavřít (Stiskněte ESC)"
 
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
-msgstr ""
+msgstr "-inf"
 
 #, fuzzy
 #~ msgid "Left Delay"
