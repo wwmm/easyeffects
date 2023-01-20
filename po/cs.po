@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-30 15:38+0000\n"
-"PO-Revision-Date: 2023-01-19 06:48+0000\n"
-"Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
+"PO-Revision-Date: 2023-01-20 07:50+0000\n"
+"Last-Translator: multiflexi <multi.flexi@seznam.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.15.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -33,12 +33,12 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "omezovač (limiter);kompresor;dozvuk;ekvalizér;automatická hlasitost;"
+msgstr "limiter;kompresor;dozvuk;ekvalizér;automatická hlasitost;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
 msgid "\"Presets\""
-msgstr "\"Přednastavení\""
+msgstr "\"Předvolby\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -102,11 +102,13 @@ msgstr "Nabídka profilů"
 msgid ""
 "Enable/disable the\n"
 "                                    global bypass"
-msgstr "Povolit/zakázat globální bypass"
+msgstr ""
+"Povolit/zakázat\n"
+"                                    globální bypass"
 
 #: data/ui/application_window.ui:68
 msgid "Global Bypass"
-msgstr "Přepustení"
+msgstr "Globální bypass"
 
 #: data/ui/application_window.ui:78
 msgid "Primary Menu"
@@ -114,7 +116,7 @@ msgstr "Hlavní nabídka"
 
 #: data/ui/application_window.ui:93
 msgid "Easy Effects Window"
-msgstr "EasyEffects okno"
+msgstr "Easy Effects okno"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
@@ -155,7 +157,7 @@ msgstr "Kratokodobě"
 
 #: data/ui/autogain.ui:146 data/ui/autogain.ui:245
 msgid "Integrated"
-msgstr "Sjednocené"
+msgstr "Integrovaná"
 
 #: data/ui/autogain.ui:147
 msgid "Geometric Mean (MSI)"
