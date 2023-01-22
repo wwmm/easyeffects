@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-30 15:38+0000\n"
+"POT-Creation-Date: 2023-01-22 15:07+0000\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1636,7 +1636,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Wzmocnienie wej."
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:247
 #, fuzzy
 msgid "Output Presets"
 msgstr "Profile: "
@@ -1659,7 +1659,7 @@ msgstr "Profile: "
 msgid "Input Devices"
 msgstr "Urządzenie wejściowe"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:255
 #, fuzzy
 msgid "Input Presets"
 msgstr "Importuj profile"
@@ -2346,33 +2346,33 @@ msgstr "nieznany"
 msgid "channels"
 msgstr "Kanały"
 
-#: src/application.cpp:435
+#: src/application.cpp:439
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:525
+#: src/application.cpp:529
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Wyłącz EasyEffects. Przydatne przy pracy w trybie usługi."
 
-#: src/application.cpp:528
+#: src/application.cpp:532
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Załaduj profil. Przykład: easyeffects -l music"
 
-#: src/application.cpp:531
+#: src/application.cpp:535
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Resetuj EasyEffects."
 
-#: src/application.cpp:534
+#: src/application.cpp:538
 msgid "Hide the Window."
 msgstr "Schowaj okno."
 
-#: src/application.cpp:537
+#: src/application.cpp:541
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:540
+#: src/application.cpp:544
 msgid "Show available presets."
 msgstr "Pokaż dostępne profile."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-30 15:38+0000\n"
+"POT-Creation-Date: 2023-01-22 15:07+0000\n"
 "PO-Revision-Date: 2023-01-05 21:48+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1532,7 +1532,7 @@ msgstr "Автозагрузка предустановок"
 msgid "Output Devices"
 msgstr "Устройства вывода"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:247
 msgid "Output Presets"
 msgstr "Предустановки выхода"
 
@@ -1553,7 +1553,7 @@ msgstr "Список автозагружаемых предустановок �
 msgid "Input Devices"
 msgstr "Устройства ввода"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:255
 msgid "Input Presets"
 msgstr "Предустановки входа"
 
@@ -2184,31 +2184,31 @@ msgstr "Неизвестно"
 msgid "channels"
 msgstr "канала(-ов)"
 
-#: src/application.cpp:435
+#: src/application.cpp:439
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:525
+#: src/application.cpp:529
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Выход из Easy Effects. Полезно при работе в режиме службы."
 
-#: src/application.cpp:528
+#: src/application.cpp:532
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 
-#: src/application.cpp:531
+#: src/application.cpp:535
 msgid "Reset Easy Effects."
 msgstr "Сбросить Easy Effects."
 
-#: src/application.cpp:534
+#: src/application.cpp:538
 msgid "Hide the Window."
 msgstr "Скрыть окно."
 
-#: src/application.cpp:537
+#: src/application.cpp:541
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получение статуса"
 
-#: src/application.cpp:540
+#: src/application.cpp:544
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
