@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-30 15:38+0000\n"
+"POT-Creation-Date: 2023-01-22 15:07+0000\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1493,7 +1493,7 @@ msgstr "Carga automática de perfiles"
 msgid "Output Devices"
 msgstr "Dispositivos de salida"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:247
 msgid "Output Presets"
 msgstr "Perfiles de salida"
 
@@ -1513,7 +1513,7 @@ msgstr "Lista de perfiles de salida de carga automática"
 msgid "Input Devices"
 msgstr "Dispositivos de entrada"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:255
 msgid "Input Presets"
 msgstr "Perfiles de entrada"
 
@@ -2141,33 +2141,33 @@ msgstr "Desconocido"
 msgid "channels"
 msgstr "canales"
 
-#: src/application.cpp:435
+#: src/application.cpp:439
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:525
+#: src/application.cpp:529
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Deja Easy Effects. Útil cuando se ejecuta en modo de servicio."
 
-#: src/application.cpp:528
+#: src/application.cpp:532
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar un perfil. Por ejemplo: easyeffects -l musica"
 
-#: src/application.cpp:531
+#: src/application.cpp:535
 msgid "Reset Easy Effects."
 msgstr "Reiniciar Easy Effects."
 
-#: src/application.cpp:534
+#: src/application.cpp:538
 msgid "Hide the Window."
 msgstr "Ocultar la ventana."
 
-#: src/application.cpp:537
+#: src/application.cpp:541
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass global. 1 para habilitar, 2 para deshabilitar y 3 para obtener el "
 "estado actual"
 
-#: src/application.cpp:540
+#: src/application.cpp:544
 msgid "Show available presets."
 msgstr "Mostrar los perfiles disponibles."
 

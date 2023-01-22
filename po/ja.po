@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-30 15:38+0000\n"
+"POT-Creation-Date: 2023-01-22 15:07+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -1500,7 +1500,7 @@ msgstr "プリセット自動読み込み"
 msgid "Output Devices"
 msgstr "出力デバイス"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:247
 msgid "Output Presets"
 msgstr "出力プリセット"
 
@@ -1520,7 +1520,7 @@ msgstr "自動読み込み出力プリセットリスト"
 msgid "Input Devices"
 msgstr "入力デバイス"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:255
 msgid "Input Presets"
 msgstr "入力プリセット"
 
@@ -2152,32 +2152,32 @@ msgstr "不明"
 msgid "channels"
 msgstr "チャンネル"
 
-#: src/application.cpp:435
+#: src/application.cpp:439
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:525
+#: src/application.cpp:529
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Easy Effects を終了します。サービスモードで動作しているときに便利です。"
 
-#: src/application.cpp:528
+#: src/application.cpp:532
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込む。例: easyeffects -l music"
 
-#: src/application.cpp:531
+#: src/application.cpp:535
 msgid "Reset Easy Effects."
 msgstr "Easy Effects をリセット。"
 
-#: src/application.cpp:534
+#: src/application.cpp:538
 msgid "Hide the Window."
 msgstr "ウィンドウを隠す。"
 
-#: src/application.cpp:537
+#: src/application.cpp:541
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "グローバルバイパス。1 で有効、2 で無効、3 でステータス取得"
 
-#: src/application.cpp:540
+#: src/application.cpp:544
 msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 
