@@ -33,6 +33,7 @@
 #include <array>
 #include <map>
 #include <memory>
+#include <mutex>
 #include <span>
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
@@ -238,6 +239,8 @@ class PipeManager {
   std::string default_max_quantum = "0";
   std::string default_quantum = "0";
 
+  std::mutex node_map_mutex;
+
   auto node_map_at_id(const uint& id) -> NodeInfo&;
 
   auto stream_is_connected(const uint& id, const std::string& media_class) -> bool;
@@ -276,6 +279,10 @@ class PipeManager {
   void unlock() const;
 
   void sync_wait_unlock() const;
+
+  static void lock_node_map();
+
+  static void unlock_node_map();
 
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
