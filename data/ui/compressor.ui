@@ -512,8 +512,8 @@
                                                                         <items>
                                                                             <item translatable="yes" id="Peak">Peak</item>
                                                                             <item translatable="yes" id="RMS">RMS</item>
-                                                                            <item translatable="yes" id="Low-Pass"> Low-Pass</item>
-                                                                            <item translatable="yes" id="Uniform"> Uniform</item>
+                                                                            <item translatable="yes" id="Low-Pass">Low-Pass</item>
+                                                                            <item translatable="yes" id="Uniform">Uniform</item>
                                                                         </items>
                                                                         <layout>
                                                                             <property name="column">0</property>
