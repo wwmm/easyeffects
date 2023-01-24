@@ -226,8 +226,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   auto* const pm = nd->pm;
 
-  std::scoped_lock<std::mutex> lock(pm->node_map_mutex);
-
   // Check if the node is inside our map
 
   auto node_it = pm->node_map.find(nd->nd_info->serial);
@@ -483,8 +481,6 @@ void on_node_event_param(void* object,
   if (param == nullptr) {
     return;
   }
-
-  std::scoped_lock<std::mutex> lock(pm->node_map_mutex);
 
   spa_pod_prop* pod_prop = nullptr;
   auto* obj = (spa_pod_object*)param;
