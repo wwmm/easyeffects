@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-22 15:07+0000\n"
+"POT-Creation-Date: 2023-01-24 04:09+0000\n"
 "PO-Revision-Date: 2023-01-24 03:49+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -124,9 +124,8 @@ msgid ""
 "a decent alternative to the cases whre the rnnoise library does not work "
 "well."
 msgstr ""
-"新增一个基于 Speex 库的“语音处理器”插件。 "
-"除了提供噪声抑制外，它还可以检测语音活动。 在 rnnoise "
-"库无法正常工作的场景下，它或许是一个不错的替代方案。"
+"新增一个基于 Speex 库的“语音处理器”插件。 除了提供噪声抑制外，它还可以检测语"
+"音活动。 在 rnnoise 库无法正常工作的场景下，它或许是一个不错的替代方案。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Improved compatibility with Linux Studio Plugins `1.2.3`."
@@ -140,7 +139,8 @@ msgstr "新增将 GraphicEQ 预设导入均衡器的支持。"
 msgid ""
 "The application name has been changed to `Easy Effects` to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
-msgstr "为了遵守 GNOME 人机界面指南的建议，本应用程序名称已更改为“Easy Effects”。"
+msgstr ""
+"为了遵守 GNOME 人机界面指南的建议，本应用程序名称已更改为“Easy Effects”。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "The documentation has been updated."
@@ -304,9 +304,8 @@ msgid ""
 "null. This will allow the media session manager (wireplumber) to properly "
 "move the stream to a new device."
 msgstr ""
-"当对某应用程序禁用效果时，本程序现在起会将其目标元数据设置为null，"
-"以允许系统的Media Session Manager (即WirePlumber) "
-"将音流正确地移动到新设备上。"
+"当对某应用程序禁用效果时，本程序现在起会将其目标元数据设置为null，以允许系统"
+"的Media Session Manager (即WirePlumber) 将音流正确地移动到新设备上。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
@@ -314,8 +313,8 @@ msgid ""
 "streams whose purpose is to monitor sink devices. This will help to fix some "
 "of problems our users were having when using OBS."
 msgstr ""
-"新增了一个配置选项。 它允许 EasyEffects 忽略来自 Monitor 接收设备的音流。 "
-"这将有助于解决用户在使用 OBS 时遇到的一些问题。"
+"新增了一个配置选项。 它允许 EasyEffects 忽略来自 Monitor 接收设备的音流。 这"
+"将有助于解决用户在使用 OBS 时遇到的一些问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
 msgid "The code that shows the stream sample format has been improved"
@@ -339,8 +338,9 @@ msgid ""
 "The \"enable effects\" checkbox in our window was not being updated when "
 "third party programs like pavucontrol moved the stream away from our virtual "
 "devices. This should be fixed now."
-msgstr "此前，当 pavucontrol 等第三方程序将音流从本程序的虚拟设备移开时，程序窗口中的"
-"“启用效果”复选框不会被及时更新。问题现在应已解决。"
+msgstr ""
+"此前，当 pavucontrol 等第三方程序将音流从本程序的虚拟设备移开时，程序窗口中"
+"的“启用效果”复选框不会被及时更新。问题现在应已解决。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:110
 msgid ""
@@ -363,7 +363,8 @@ msgstr "我们的应用图标现已兼容基于QT的桌面环境"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:121
 msgid ""
 "Our blocklist code will use the `application.id` tag if the stream sets it"
-msgstr "从现在起，如果某个音流设置了 application.id 标签，我们的黑名单代码将会使用它"
+msgstr ""
+"从现在起，如果某个音流设置了 application.id 标签，我们的黑名单代码将会使用它"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
 msgid ""
@@ -380,7 +381,8 @@ msgstr ""
 msgid ""
 "When no application is available for display in the `Players/Recorders` a "
 "message will be shown to the user"
-msgstr "当“播放器/录音程序”中没有可显示的应用程序时，将向用户显示一条简短的信息"
+msgstr ""
+"当“播放器/录音程序”中没有可显示的应用程序时，将向用户显示一条简短的信息"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
 msgid "Many translation updates"
@@ -391,7 +393,8 @@ msgid ""
 "Fixed a bug where EasyEffeects crashed when the number of points displayed "
 "in the spectrum was changed while our pipeline was active and the spectrum "
 "widget was visible"
-msgstr "修复了当音效管道处于活动状态并且频谱部件可见时，更改频谱中的点阵数量会导致 "
+msgstr ""
+"修复了当音效管道处于活动状态并且频谱部件可见时，更改频谱中的点阵数量会导致 "
 "EasyEffects 崩溃的错误"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
@@ -414,14 +417,16 @@ msgstr ""
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
-msgstr "自动增益插件新增选项，允许用户选择使用三个响度中的其中一个来计算几何平均值。"
+msgstr ""
+"自动增益插件新增选项，允许用户选择使用三个响度中的其中一个来计算几何平均值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use `libebur128` histogram mode anymore. This should avoid the cases where "
 "the `Integrated` loudness gets stuck forever in the same value."
-msgstr "自动增益插件现在允许设置最大历史记录，并且不再使用“libebur128”直方图模式，以"
+msgstr ""
+"自动增益插件现在允许设置最大历史记录，并且不再使用“libebur128”直方图模式，以"
 "避免“综合”响度永远停留在同一值的情况。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
@@ -441,8 +446,9 @@ msgid ""
 "The crossfeed filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
-msgstr "改进了交叉反馈插件对 PipeWire "
-"动态延迟转换的处理，以防止在这种情况下发生音量跃升或骤降的问题。"
+msgstr ""
+"改进了交叉反馈插件对 PipeWire 动态延迟转换的处理，以防止在这种情况下发生音量"
+"跃升或骤降的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 msgid ""
@@ -459,8 +465,9 @@ msgid ""
 "The autogain filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
-msgstr "改进了自动增益插件对 PipeWire "
-"动态延迟转换的处理，以防止在这种情况下发生音量跃升或骤降的问题。"
+msgstr ""
+"改进了自动增益插件对 PipeWire 动态延迟转换的处理，以防止在这种情况下发生音量"
+"跃升或骤降的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:160
 msgid ""
@@ -479,7 +486,8 @@ msgstr "改善了对计算机休眠的支持。"
 msgid ""
 "Fixed a bug where trying to create an autoloading profile without having "
 "presets caused the application to crash."
-msgstr "修复了在没有预设的情况下，尝试创建自动加载配置文件会导致程序崩溃的错误。"
+msgstr ""
+"修复了在没有预设的情况下，尝试创建自动加载配置文件会导致程序崩溃的错误。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
 msgid ""
@@ -491,8 +499,9 @@ msgstr "修复了将均衡器频段质量设置为零时，会导致应用程序
 msgid ""
 "LibAdwaita is used to create some parts of our window and for handling the "
 "switching between dark and light themes."
-msgstr "现起本程序使用 LibAdwaita "
-"库创建窗口的某些部分，以及处理深色和浅色主题之间的切换。"
+msgstr ""
+"现起本程序使用 LibAdwaita 库创建窗口的某些部分，以及处理深色和浅色主题之间的"
+"切换。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
@@ -526,7 +535,8 @@ msgstr "增强解析器的稳健性，以正常导入那些使用逗号作为千
 msgid ""
 "The fmt library is a new dependency At least while the c++ compilers do not "
 "implement its features. This is expected to happen in the next years."
-msgstr "在各大C++编译器实现 std::format 的完整功能以前，本程序预期在这几年内都会使用 "
+msgstr ""
+"在各大C++编译器实现 std::format 的完整功能以前，本程序预期在这几年内都会使用 "
 "fmt 库作为依赖。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
@@ -544,28 +554,32 @@ msgstr ""
 msgid ""
 "Improved `x axis` drawings in our plots. Now the number of labels is "
 "adjusted dynamically depending on our window width."
-msgstr "改进了我们绘图中的x 轴显示。 现在起标签的数量将根据程序窗口的宽度动态调整。"
+msgstr ""
+"改进了我们绘图中的x 轴显示。 现在起标签的数量将根据程序窗口的宽度动态调整。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
 msgid ""
 "The documentation has been updated reflecting the new EasyEffects features. "
 "Old references about PulseEffects have been removed. The documentation "
 "button has been added in the menu section."
-msgstr "文档已更新，以反映 EasyEffects 的新功能。 有关 PulseEffects "
-"的旧文档均已被删除。 此外，菜单部分新添文档按钮。"
+msgstr ""
+"文档已更新，以反映 EasyEffects 的新功能。 有关 PulseEffects 的旧文档均已被删"
+"除。 此外，菜单部分新添文档按钮。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
 msgid ""
 "When a spinbutton is filled with an out of range value, now it is updated "
 "with the lowest/highest value rather than resetting to the previous one."
-msgstr "当spinbutton被输入超出范围的值时，现在起它将会被更新为最低/最高值，而不是重置"
+msgstr ""
+"当spinbutton被输入超出范围的值时，现在起它将会被更新为最低/最高值，而不是重置"
 "为前值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:202
 msgid ""
 "The application window now remembers the maximized state and restores it on "
 "the next opening event."
-msgstr "应用程序窗口现在起会记住当前最大化状态，并在下一次打开程序时恢复该状态。"
+msgstr ""
+"应用程序窗口现在起会记住当前最大化状态，并在下一次打开程序时恢复该状态。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
 msgid "The `tbb` library is a new dependency"
@@ -857,7 +871,8 @@ msgstr "这是我有史以来完成的最大版本之一。 改动量之大，�
 msgid ""
 "The following are just the most import ones. People interested on the "
 "journey that got us here can take a look at issue 904 and issue 874."
-msgstr "以下只是最重要的事项， 对我们这一路的开发旅程感兴趣的人可以参阅 issue #904 "
+msgstr ""
+"以下只是最重要的事项， 对我们这一路的开发旅程感兴趣的人可以参阅 issue #904 "
 "和 issue #874。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:329
@@ -891,8 +906,8 @@ msgid ""
 "PulseEffects presets in a text editor and make them work in EasyEffects. "
 "Hopefully someone will come up with a script for this in the feature."
 msgstr ""
-"Boost 不再是本程序依赖，伴随这项改动的是预设文件的结构发生了一点变化。 "
-"只要有足够的耐心，用户可以在文本编辑器中编辑 PulseEffects 预设并使它们在 "
+"Boost 不再是本程序依赖，伴随这项改动的是预设文件的结构发生了一点变化。 只要有"
+"足够的耐心，用户可以在文本编辑器中编辑 PulseEffects 预设并使它们在 "
 "EasyEffects 中工作。 希望未来会有人为此编写一个脚本。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:334
