@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2023-01-05 21:48+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -101,22 +101,19 @@ msgid "Presets Menu"
 msgstr "Меню предустановок"
 
 #: data/ui/application_window.ui:62
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
-msgstr ""
-"Включить/отключить\n"
-"                                    общий обход"
+#, fuzzy
+msgid "Enable/disable the global bypass"
+msgstr "Включить/выключить это приложение"
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr "Общий обход"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr "Главное меню"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 msgid "Easy Effects Window"
 msgstr "Окно Easy Effects"
 
@@ -496,13 +493,14 @@ msgstr "Пик"
 msgid "RMS"
 msgstr "Среднее квадратичное (RMS)"
 
-#: data/ui/compressor.ui:515
-msgid " Low-Pass"
-msgstr " Фильтр НЧ"
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
+msgid "Low-Pass"
+msgstr "Фильтр НЧ"
 
-#: data/ui/compressor.ui:516
-msgid " Uniform"
-msgstr " Равномерно"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
+msgstr "Равномерно"
 
 # #, fuzzy
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -640,11 +638,6 @@ msgstr "Режим высокочастотного фильтра"
 #: data/ui/gate.ui:1053
 msgid "High-Pass Filter Frequency"
 msgstr "Частота высокочастотного фильтра"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-msgid "Low-Pass"
-msgstr "Фильтр НЧ"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 msgid "Low-Pass Filter Mode"
@@ -1421,10 +1414,6 @@ msgstr "Обход полосы"
 #: data/ui/multiband_compressor_band.ui:431 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
 msgstr "Параметры сайдчейна полосы"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr "Равномерно"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 msgid "Low-Cut Filter"
@@ -2463,6 +2452,19 @@ msgstr "Закрыть (нажмите ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "∞"
+
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr ""
+#~ "Включить/отключить\n"
+#~ "                                    общий обход"
+
+#~ msgid " Low-Pass"
+#~ msgstr " Фильтр НЧ"
+
+#~ msgid " Uniform"
+#~ msgstr " Равномерно"
 
 #~ msgid "Left Delay"
 #~ msgstr "Задержка левого"

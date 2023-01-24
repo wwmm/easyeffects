@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -103,21 +103,20 @@ msgid "Presets Menu"
 msgstr "Menu Preset"
 
 #: data/ui/application_window.ui:62
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
-msgstr ""
+#, fuzzy
+msgid "Enable/disable the global bypass"
+msgstr "Hidupkan/matikan aplikasi ini"
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 #, fuzzy
 msgid "Global Bypass"
 msgstr "Bypass"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr ""
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "EasyEffects"
@@ -504,14 +503,14 @@ msgstr "Peak"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:515
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
 #, fuzzy
-msgid " Low-Pass"
+msgid "Low-Pass"
 msgstr "Band Rendah"
 
-#: data/ui/compressor.ui:516
-#, fuzzy
-msgid " Uniform"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
 msgstr "Uniform"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -660,12 +659,6 @@ msgstr "Filter High Pass"
 #, fuzzy
 msgid "High-Pass Filter Frequency"
 msgstr "Frekuensi Tinggi"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-#, fuzzy
-msgid "Low-Pass"
-msgstr "Band Rendah"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 #, fuzzy
@@ -1485,10 +1478,6 @@ msgstr "Bypass Band"
 #: data/ui/multiband_compressor_band.ui:431 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
 msgstr "Opsi Sidechain Band"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr "Uniform"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 msgid "Low-Cut Filter"
@@ -2566,6 +2555,14 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Band Rendah"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Uniform"
 
 #, fuzzy
 #~ msgid "Left Delay"

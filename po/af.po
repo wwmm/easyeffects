@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Afrikaans <https://hosted.weblate.org/projects/easyeffects/"
@@ -101,20 +101,18 @@ msgid "Presets Menu"
 msgstr ""
 
 #: data/ui/application_window.ui:62
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
+msgid "Enable/disable the global bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr ""
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "EasyEffects"
@@ -476,12 +474,13 @@ msgstr ""
 msgid "RMS"
 msgstr ""
 
-#: data/ui/compressor.ui:515
-msgid " Low-Pass"
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
+msgid "Low-Pass"
 msgstr ""
 
-#: data/ui/compressor.ui:516
-msgid " Uniform"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
 msgstr ""
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -612,11 +611,6 @@ msgstr ""
 #: data/ui/compressor.ui:863 data/ui/compressor.ui:919 data/ui/gate.ui:997
 #: data/ui/gate.ui:1053
 msgid "High-Pass Filter Frequency"
-msgstr ""
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-msgid "Low-Pass"
 msgstr ""
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
@@ -1382,10 +1376,6 @@ msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:431 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
-msgstr ""
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
 msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2022-10-04 21:21+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -101,20 +101,18 @@ msgstr "Menu des préréglages"
 
 #: data/ui/application_window.ui:62
 #, fuzzy
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
-msgstr "Activer/désactiver le contournement global"
+msgid "Enable/disable the global bypass"
+msgstr "Autoriser/Interdire cette application"
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr "Contournement global"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr "Menu principal"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 msgid "Easy Effects Window"
 msgstr "Fenêtre de Easy Effects"
 
@@ -475,14 +473,13 @@ msgstr "Crête"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:515
-#, fuzzy
-msgid " Low-Pass"
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
+msgid "Low-Pass"
 msgstr "Passe-bas"
 
-#: data/ui/compressor.ui:516
-#, fuzzy
-msgid " Uniform"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
 msgstr "Uniforme"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -619,11 +616,6 @@ msgstr "Mode Filtre Passe-Haut"
 #: data/ui/gate.ui:1053
 msgid "High-Pass Filter Frequency"
 msgstr "Fréquence Filtre Passe-Haut"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-msgid "Low-Pass"
-msgstr "Passe-bas"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 msgid "Low-Pass Filter Mode"
@@ -1409,10 +1401,6 @@ msgstr "Contourner Bande"
 #: data/ui/multiband_compressor_band.ui:431 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
 msgstr "Options Chaîne Latérale"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr "Uniforme"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 msgid "Low-Cut Filter"
@@ -2442,6 +2430,20 @@ msgstr "Fermer (appuyez sur Échap)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "-inf"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr "Activer/désactiver le contournement global"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Passe-bas"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Uniforme"
 
 #~ msgid "Left Delay"
 #~ msgstr "Retard Gauche"

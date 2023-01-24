@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -105,20 +105,18 @@ msgstr "Menu Profili"
 
 #: data/ui/application_window.ui:62
 #, fuzzy
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
-msgstr "Włącz/wyłącz globalne ominięcie"
+msgid "Enable/disable the global bypass"
+msgstr "Włącz/wyłącz tą aplikację"
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr "Ominięcie globalne"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr "Menu główne"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "Okno EasyEffects"
@@ -506,14 +504,14 @@ msgstr "Szczyt"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:515
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
 #, fuzzy
-msgid " Low-Pass"
+msgid "Low-Pass"
 msgstr "Dolnoprzepustowy"
 
-#: data/ui/compressor.ui:516
-#, fuzzy
-msgid " Uniform"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
 msgstr "Równomierny"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -663,12 +661,6 @@ msgstr "Filtr górnoprzepustowy"
 #, fuzzy
 msgid "High-Pass Filter Frequency"
 msgstr "Tłumienie wysokich tonów"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-#, fuzzy
-msgid "Low-Pass"
-msgstr "Dolnoprzepustowy"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 #, fuzzy
@@ -1513,10 +1505,6 @@ msgstr "Pasma"
 #, fuzzy
 msgid "Band Sidechain Options"
 msgstr "Łańcuch boczny"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr "Równomierny"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 #, fuzzy
@@ -2623,6 +2611,20 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr "Włącz/wyłącz globalne ominięcie"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Dolnoprzepustowy"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Równomierny"
 
 #, fuzzy
 #~ msgid "Left Delay"
