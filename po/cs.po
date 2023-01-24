@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -99,22 +99,19 @@ msgid "Presets Menu"
 msgstr "Nabídka profilů"
 
 #: data/ui/application_window.ui:62
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
-msgstr ""
-"Povolit/zakázat\n"
-"                                    globální bypass"
+#, fuzzy
+msgid "Enable/disable the global bypass"
+msgstr "Povolit/zakázat tuto aplikaci"
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr "Globální bypass"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr "Hlavní nabídka"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 msgid "Easy Effects Window"
 msgstr "Easy Effects okno"
 
@@ -479,13 +476,14 @@ msgstr "Vrchol"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:515
-msgid " Low-Pass"
-msgstr " Low-pass"
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
+msgid "Low-Pass"
+msgstr "Dolní pásmo"
 
-#: data/ui/compressor.ui:516
-msgid " Uniform"
-msgstr " Jednotný"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
+msgstr "Rovnoměrný"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
@@ -617,11 +615,6 @@ msgstr "Režim vysokopásmového filtru"
 #: data/ui/gate.ui:1053
 msgid "High-Pass Filter Frequency"
 msgstr "Filtr vysokého kmitočtu"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-msgid "Low-Pass"
-msgstr "Dolní pásmo"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 msgid "Low-Pass Filter Mode"
@@ -1400,10 +1393,6 @@ msgstr "Překlenutí"
 #: data/ui/multiband_compressor_band.ui:431 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
 msgstr "Možnosti postranního řetězce"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr "Rovnoměrný"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 msgid "Low-Cut Filter"
@@ -2425,6 +2414,19 @@ msgstr "Zavřít (Stiskněte ESC)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr ""
+#~ "Povolit/zakázat\n"
+#~ "                                    globální bypass"
+
+#~ msgid " Low-Pass"
+#~ msgstr " Low-pass"
+
+#~ msgid " Uniform"
+#~ msgstr " Jednotný"
 
 #, fuzzy
 #~ msgid "Left Delay"

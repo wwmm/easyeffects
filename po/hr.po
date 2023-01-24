@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2022-09-29 01:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -110,21 +110,19 @@ msgid "Presets Menu"
 msgstr "Predlošci"
 
 #: data/ui/application_window.ui:62
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
+msgid "Enable/disable the global bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 #, fuzzy
 msgid "Global Bypass"
 msgstr "Premosnica"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr ""
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "EasyEffects"
@@ -517,13 +515,14 @@ msgstr "Vrhunac"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:515
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
 #, fuzzy
-msgid " Low-Pass"
+msgid "Low-Pass"
 msgstr "Nizak prolaz"
 
-#: data/ui/compressor.ui:516
-msgid " Uniform"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
 msgstr ""
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -673,12 +672,6 @@ msgstr "Filter visokog prolaza"
 #, fuzzy
 msgid "High-Pass Filter Frequency"
 msgstr "Prigušivanje visokih frekvencija"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-#, fuzzy
-msgid "Low-Pass"
-msgstr "Nizak prolaz"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 #, fuzzy
@@ -1524,10 +1517,6 @@ msgstr "Premosnica"
 #, fuzzy
 msgid "Band Sidechain Options"
 msgstr "Postranični ulaz"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 #, fuzzy
@@ -2648,6 +2637,10 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Nizak prolaz"
 
 #, fuzzy
 #~ msgid "Left Delay"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -109,20 +109,18 @@ msgid "Presets Menu"
 msgstr "Predvoľby"
 
 #: data/ui/application_window.ui:62
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
+msgid "Enable/disable the global bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr "Globálne premostenie"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr ""
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "PulseEffects"
@@ -511,14 +509,13 @@ msgstr "Vrchol"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:515
-#, fuzzy
-msgid " Low-Pass"
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
+msgid "Low-Pass"
 msgstr "Dolná priepusť"
 
-#: data/ui/compressor.ui:516
-#, fuzzy
-msgid " Uniform"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
 msgstr "Rovnomerný"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -665,11 +662,6 @@ msgstr "Režim filtra vysokej priepuste"
 #, fuzzy
 msgid "High-Pass Filter Frequency"
 msgstr "Frekvencia vysokej priepuste"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-msgid "Low-Pass"
-msgstr "Dolná priepusť"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 #, fuzzy
@@ -1503,10 +1495,6 @@ msgstr "Premostiť"
 #, fuzzy
 msgid "Band Sidechain Options"
 msgstr "Postranný reťazec"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr "Rovnomerný"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 #, fuzzy
@@ -2613,6 +2601,14 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Dolná priepusť"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Rovnomerný"
 
 #, fuzzy
 #~ msgid "Left Delay"

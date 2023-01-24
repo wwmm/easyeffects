@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -101,20 +101,18 @@ msgstr "プリセットメニュー"
 
 #: data/ui/application_window.ui:62
 #, fuzzy
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
-msgstr "グローバルバイパスの有効化/無効化"
+msgid "Enable/disable the global bypass"
+msgstr "このアプリケーションの有効化/無効化"
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr "グローバルバイパス"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr "メインメニュー"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 msgid "Easy Effects Window"
 msgstr "Easy Effects ウィンドウ"
 
@@ -475,14 +473,13 @@ msgstr "ピーク"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:515
-#, fuzzy
-msgid " Low-Pass"
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
+msgid "Low-Pass"
 msgstr "ローパス"
 
-#: data/ui/compressor.ui:516
-#, fuzzy
-msgid " Uniform"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
 msgstr "ユニフォーム"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -618,11 +615,6 @@ msgstr "ハイパスフィルターモード"
 #: data/ui/gate.ui:1053
 msgid "High-Pass Filter Frequency"
 msgstr "ハイパスフィルター周波数"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-msgid "Low-Pass"
-msgstr "ローパス"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 msgid "Low-Pass Filter Mode"
@@ -1391,10 +1383,6 @@ msgstr "バンドバイパス"
 #: data/ui/multiband_compressor_band.ui:431 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
 msgstr "バンドサイドチェーンオプション"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr "ユニフォーム"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 msgid "Low-Cut Filter"
@@ -2423,6 +2411,20 @@ msgstr "閉じる (Esc キーを押す)"
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr "-inf"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr "グローバルバイパスの有効化/無効化"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "ローパス"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "ユニフォーム"
 
 #~ msgid "Left Delay"
 #~ msgstr "左ディレイ"

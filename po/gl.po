@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 04:09+0000\n"
+"POT-Creation-Date: 2023-01-24 14:09+0000\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -105,20 +105,18 @@ msgid "Presets Menu"
 msgstr "Menú de preconfiguracións"
 
 #: data/ui/application_window.ui:62
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
+msgid "Enable/disable the global bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr "Desvío global"
 
-#: data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr "Menú primario"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "Xanela de EasyEffects"
@@ -502,14 +500,13 @@ msgstr "Pico"
 msgid "RMS"
 msgstr "RMS"
 
-#: data/ui/compressor.ui:515
-#, fuzzy
-msgid " Low-Pass"
+#: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
+#: data/ui/multiband_compressor_band.ui:470
+msgid "Low-Pass"
 msgstr "Frecuencias baixas"
 
-#: data/ui/compressor.ui:516
-#, fuzzy
-msgid " Uniform"
+#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
+msgid "Uniform"
 msgstr "Uniforme"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
@@ -652,11 +649,6 @@ msgstr "Modo de filtro de frecuencias altas"
 #, fuzzy
 msgid "High-Pass Filter Frequency"
 msgstr "Frecuencias altas"
-
-#: data/ui/compressor.ui:870 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:470
-msgid "Low-Pass"
-msgstr "Frecuencias baixas"
 
 #: data/ui/compressor.ui:893 data/ui/gate.ui:1027
 #, fuzzy
@@ -1484,10 +1476,6 @@ msgstr "Desvío"
 #, fuzzy
 msgid "Band Sidechain Options"
 msgstr "Cadea lateral"
-
-#: data/ui/multiband_compressor_band.ui:471
-msgid "Uniform"
-msgstr "Uniforme"
 
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:580
 #, fuzzy
@@ -2588,6 +2576,14 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Frecuencias baixas"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Uniforme"
 
 #, fuzzy
 #~ msgid "Left Delay"
