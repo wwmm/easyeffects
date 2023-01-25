@@ -32,18 +32,6 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                  true),
       residual_echo_suppression(g_settings_get_int(settings, "residual-echo-suppression")),
       near_end_suppression(g_settings_get_int(settings, "near-end-suppression")) {
-  gconnections.push_back(g_signal_connect(settings, "changed::frame-size",
-                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<EchoCanceller*>(user_data);
-
-                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
-
-                                            self->blocksize_ms = g_settings_get_int(settings, key);
-
-                                            self->init_speex();
-                                          }),
-                                          this));
-
   gconnections.push_back(g_signal_connect(settings, "changed::filter-length",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto self = static_cast<EchoCanceller*>(user_data);
@@ -133,9 +121,6 @@ void EchoCanceller::setup() {
 
   latency_n_frames = 0U;
 
-  deque_out_L.resize(0U);
-  deque_out_R.resize(0U);
-
   init_speex();
 }
 
@@ -159,71 +144,29 @@ void EchoCanceller::process(std::span<float>& left_in,
   }
 
   for (size_t j = 0U; j < left_in.size(); j++) {
-    data_L.push_back(static_cast<spx_int16_t>(left_in[j] * (SHRT_MAX + 1)));
-    data_R.push_back(static_cast<spx_int16_t>(right_in[j] * (SHRT_MAX + 1)));
+    data_L[j] = static_cast<spx_int16_t>(left_in[j] * (SHRT_MAX + 1));
+    data_R[j] = static_cast<spx_int16_t>(right_in[j] * (SHRT_MAX + 1));
 
-    probe_L.push_back(static_cast<spx_int16_t>(probe_left[j] * (SHRT_MAX + 1)));
-    probe_R.push_back(static_cast<spx_int16_t>(probe_right[j] * (SHRT_MAX + 1)));
+    /*
+      This is a very naive and not corect attempt to mitigate the shortcomes discussed at
+      https://github.com/wwmm/easyeffects/issues/1566.
+    */
 
-    if (data_L.size() == blocksize) {
-      speex_echo_cancellation(echo_state_L, data_L.data(), probe_L.data(), filtered_L.data());
-      speex_echo_cancellation(echo_state_R, data_R.data(), probe_R.data(), filtered_R.data());
-
-#ifdef SPEEX_AVAILABLE
-      speex_preprocess_run(state_left, filtered_L.data());
-      speex_preprocess_run(state_right, filtered_R.data());
-#endif
-
-      for (const auto& v : filtered_L) {
-        deque_out_L.push_back(static_cast<float>(v) * inv_short_max);
-      }
-
-      for (const auto& v : filtered_R) {
-        deque_out_R.push_back(static_cast<float>(v) * inv_short_max);
-      }
-
-      data_L.resize(0U);
-      data_R.resize(0U);
-      probe_L.resize(0U);
-      probe_R.resize(0U);
-    }
+    probe_mono[j] = static_cast<spx_int16_t>(0.5F * (probe_left[j] + probe_right[j]) * (SHRT_MAX + 1));
   }
 
-  // copying the processed samples to the output buffers
+  speex_echo_cancellation(echo_state_L, data_L.data(), probe_mono.data(), filtered_L.data());
+  speex_echo_cancellation(echo_state_R, data_R.data(), probe_mono.data(), filtered_R.data());
 
-  if (deque_out_L.size() >= left_out.size()) {
-    for (float& v : left_out) {
-      v = deque_out_L.front();
+#ifdef SPEEX_AVAILABLE
+  speex_preprocess_run(state_left, filtered_L.data());
+  speex_preprocess_run(state_right, filtered_R.data());
+#endif
 
-      deque_out_L.pop_front();
-    }
+  for (size_t j = 0U; j < filtered_L.size(); j++) {
+    left_out[j] = static_cast<float>(filtered_L[j]) * inv_short_max;
 
-    for (float& v : right_out) {
-      v = deque_out_R.front();
-
-      deque_out_R.pop_front();
-    }
-  } else {
-    const uint offset = left_out.size() - deque_out_L.size();
-
-    if (offset != latency_n_frames) {
-      latency_n_frames = offset;
-
-      notify_latency = true;
-    }
-
-    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
-      if (n < offset) {
-        left_out[n] = 0.0F;
-        right_out[n] = 0.0F;
-      } else {
-        left_out[n] = deque_out_L.front();
-        right_out[n] = deque_out_R.front();
-
-        deque_out_R.pop_front();
-        deque_out_L.pop_front();
-      }
-    }
+    right_out[j] = static_cast<float>(filtered_R[j]) * inv_short_max;
   }
 
   if (output_gain != 1.0F) {
@@ -278,17 +221,11 @@ void EchoCanceller::init_speex() {
     return;
   }
 
-  data_L.resize(0U);
-  data_R.resize(0U);
-  probe_L.resize(0U);
-  probe_R.resize(0U);
-
-  blocksize = static_cast<uint>(0.001F * static_cast<float>(blocksize_ms * rate));
-
-  util::debug(log_tag + name + " blocksize: " + util::to_string(blocksize));
-
-  filtered_L.resize(blocksize);
-  filtered_R.resize(blocksize);
+  data_L.resize(n_samples);
+  data_R.resize(n_samples);
+  probe_mono.resize(n_samples);
+  filtered_L.resize(n_samples);
+  filtered_R.resize(n_samples);
 
   const uint filter_length = static_cast<uint>(0.001F * static_cast<float>(filter_length_ms * rate));
 
@@ -298,7 +235,7 @@ void EchoCanceller::init_speex() {
     speex_echo_state_destroy(echo_state_L);
   }
 
-  echo_state_L = speex_echo_state_init(static_cast<int>(blocksize), static_cast<int>(filter_length));
+  echo_state_L = speex_echo_state_init(static_cast<int>(n_samples), static_cast<int>(filter_length));
 
   if (speex_echo_ctl(echo_state_L, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
     util::warning(log_tag + name + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
@@ -308,7 +245,7 @@ void EchoCanceller::init_speex() {
     speex_echo_state_destroy(echo_state_R);
   }
 
-  echo_state_R = speex_echo_state_init(static_cast<int>(blocksize), static_cast<int>(filter_length));
+  echo_state_R = speex_echo_state_init(static_cast<int>(n_samples), static_cast<int>(filter_length));
 
   if (speex_echo_ctl(echo_state_R, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
     util::warning(log_tag + name + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
@@ -323,8 +260,8 @@ void EchoCanceller::init_speex() {
     speex_preprocess_state_destroy(state_right);
   }
 
-  state_left = speex_preprocess_state_init(static_cast<int>(blocksize), static_cast<int>(rate));
-  state_right = speex_preprocess_state_init(static_cast<int>(blocksize), static_cast<int>(rate));
+  state_left = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
+  state_right = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
 
   if (state_left != nullptr) {
     speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state_L);

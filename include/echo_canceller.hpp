@@ -21,6 +21,7 @@
 
 #include <speex/speex_echo.h>
 #include <deque>
+#include <numeric>
 #include "plugin_base.hpp"
 
 #ifdef SPEEX_AVAILABLE
@@ -54,10 +55,9 @@ class EchoCanceller : public PluginBase {
   bool notify_latency = false;
   bool ready = false;
 
-  uint blocksize = 512U;
-  uint blocksize_ms = 20U;
   uint filter_length_ms = 100U;
   uint latency_n_frames = 0U;
+
   int residual_echo_suppression = -10;
   int near_end_suppression = -10;
 
@@ -67,12 +67,9 @@ class EchoCanceller : public PluginBase {
 
   std::vector<spx_int16_t> data_L;
   std::vector<spx_int16_t> data_R;
-  std::vector<spx_int16_t> probe_L;
-  std::vector<spx_int16_t> probe_R;
+  std::vector<spx_int16_t> probe_mono;
   std::vector<spx_int16_t> filtered_L;
   std::vector<spx_int16_t> filtered_R;
-
-  std::deque<float> deque_out_L, deque_out_R;
 
   SpeexEchoState* echo_state_L = nullptr;
   SpeexEchoState* echo_state_R = nullptr;

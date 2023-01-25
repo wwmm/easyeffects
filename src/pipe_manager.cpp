@@ -151,8 +151,6 @@ void on_destroy_node_proxy(void* data) {
 
   auto* const pm = nd->pm;
 
-  std::scoped_lock<std::mutex> lock(pm->node_map_mutex);
-
   auto node_it = pm->node_map.find(nd->nd_info->serial);
 
   if (node_it == pm->node_map.end()) {
@@ -1110,8 +1108,6 @@ void on_registry_global(void* data,
     spa_dict_get_num(props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
 
     spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
-
-    std::scoped_lock<std::mutex> lock(pm->node_map_mutex);
 
     const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
 
