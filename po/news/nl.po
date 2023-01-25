@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-24 14:09+0000\n"
-"PO-Revision-Date: 2022-12-30 15:32+0000\n"
+"PO-Revision-Date: 2023-01-25 18:34+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -146,12 +146,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "The documentation has been updated."
-msgstr ""
+msgstr "De documentatie is bijgewerkt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Voorinstellingen automatisch inladen"
+msgstr "Automatisch inladen van voorinstellingen verbeterd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The Autogain silence threshold can now be configured by the user."
@@ -226,7 +225,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Wet/dry controls were added for some plugins"
-msgstr ""
+msgstr "Wet-/dry-bedieningselementen toegevoegd voor enkele plug-ins"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
@@ -236,11 +235,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "De documentatie is bijgewerkt"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid "Improved debug messages"
-msgstr ""
+msgstr "Foutopsporingsberichten verbeterd"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
@@ -337,7 +336,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
 msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
+msgstr "Crashes verholpen wanneer pw-mididump actief is"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
 msgid "The interface of the pitch plugin was improved"
@@ -431,7 +430,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:158
 msgid "Support for the next PipeWire release `0.3.44`"
-msgstr ""
+msgstr "Ondersteuning voor de volgende PipeWire-uitgave, `0.3.44`"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
 msgid ""
@@ -449,7 +448,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
 msgid "Better support for computer suspending."
-msgstr ""
+msgstr "Betere ondersteuning voor slaapstand."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:164
 msgid ""
@@ -541,7 +540,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
 msgid "The `tbb` library is a new dependency"
-msgstr ""
+msgstr "De bibliotheek `tbb` is een nieuwe afhankelijkheid"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
 msgid ""
@@ -573,7 +572,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid "Improved support for Assistive Technology."
-msgstr ""
+msgstr "Verbeterde ondersteuning voor Assistive Technology."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
 msgid ""
@@ -671,11 +670,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
 msgid "Updated Chinese translation."
-msgstr ""
+msgstr "Chinese vertaling bijgewerkt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
 msgid "Updated Italian translation."
-msgstr ""
+msgstr "Italiaanse vertaling bijgewerkt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
 msgid "Added support for the compressor parameter `Boost Amount`"
@@ -773,11 +772,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:295
 msgid "Fixed the locale in a few widgets"
-msgstr ""
+msgstr "Regio verbeterd in enkele widgets"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
 msgid "Fixed wrong alignment in a few widgets"
-msgstr ""
+msgstr "Verkeerde uitlijning in enkele widgets verbeterd"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:304
 msgid ""
@@ -793,7 +792,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:314
 msgid "Improved equalizer interface."
-msgstr ""
+msgstr "Equalizer-interface verbeterd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:315
 msgid ""
@@ -839,11 +838,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:330
 msgid "gtkmm3 was replaced by gtkmm4"
-msgstr ""
+msgstr "gtkmm3 is vervangen door gtkmm4"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:331
 msgid "Gstreamer was replaced by native PipeWire filters."
-msgstr ""
+msgstr "GStreamer is vervangen door inheemse PipeWire-filters."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:332
 msgid ""
