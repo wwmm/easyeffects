@@ -100,9 +100,8 @@ msgid "Presets Menu"
 msgstr "Voorinstellingen-menu"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid "Enable/disable the global bypass"
-msgstr "Deze app omschakelen"
+msgstr "Globale omleiding omschakelen"
 
 #: data/ui/application_window.ui:67
 msgid "Global Bypass"
@@ -204,7 +203,7 @@ msgstr "Uitvoerversterking"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625
+#: data/ui/stereo_tools.ui:625 data/ui/echo_canceller.ui:135
 msgid "Input"
 msgstr "Invoer"
 
@@ -217,6 +216,7 @@ msgstr "Invoer"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
+#: data/ui/echo_canceller.ui:154
 msgid "Plugin Input Gain"
 msgstr "Plug-in-invoerversterking"
 
@@ -231,6 +231,7 @@ msgstr "Plug-in-invoerversterking"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
+#: data/ui/echo_canceller.ui:219
 msgid "Output"
 msgstr "Uitvoer"
 
@@ -243,6 +244,7 @@ msgstr "Uitvoer"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
+#: data/ui/echo_canceller.ui:238
 msgid "Plugin Output Gain"
 msgstr "Plug-in-uitvoerversterking"
 
@@ -256,6 +258,7 @@ msgstr "Plug-in-uitvoerversterking"
 #: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
+#: data/ui/echo_canceller.ui:301
 msgid "Reset"
 msgstr "Standaardwaarden"
 
@@ -268,6 +271,7 @@ msgstr "Standaardwaarden"
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
+#: data/ui/echo_canceller.ui:315
 msgid "Using"
 msgstr "Gebruikmakend van"
 
@@ -810,15 +814,15 @@ msgstr "Vermindering"
 msgid "Delay"
 msgstr "Vertraging"
 
-#: data/ui/echo_canceller.ui:27
+#: data/ui/echo_canceller.ui:27 data/ui/echo_canceller.ui:50
 msgid "Filter Length"
 msgstr "Filterlengte"
 
-#: data/ui/echo_canceller.ui:50
+#: data/ui/echo_canceller.ui:50 data/ui/echo_canceller.ui:73
 msgid "Residual Echo Suppression"
 msgstr "Resterende echo-onderdrukking"
 
-#: data/ui/echo_canceller.ui:72
+#: data/ui/echo_canceller.ui:72 data/ui/echo_canceller.ui:95
 msgid "Near End Echo Suppression"
 msgstr "Echo-onderdrukking aan het einde"
 
@@ -1479,6 +1483,7 @@ msgid "Output Devices"
 msgstr "Uitvoerapparaten"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
+#: src/application.cpp:247
 msgid "Output Presets"
 msgstr "Uitvoervoorinstellingen"
 
@@ -1499,6 +1504,7 @@ msgid "Input Devices"
 msgstr "Invoerapparaten"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
+#: src/application.cpp:255
 msgid "Input Presets"
 msgstr "Invoervoorinstellingen"
 
@@ -2125,32 +2131,32 @@ msgstr "Onbekend"
 msgid "channels"
 msgstr "kanalen"
 
-#: src/application.cpp:435
+#: src/application.cpp:435 src/application.cpp:439
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:525
+#: src/application.cpp:525 src/application.cpp:529
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Sluit Easy Effects af. Nuttig in dienstmodus."
 
-#: src/application.cpp:528
+#: src/application.cpp:528 src/application.cpp:532
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Laad een voorinstelling. Voorbeeld: easyeffects -l music"
 
-#: src/application.cpp:531
+#: src/application.cpp:531 src/application.cpp:535
 msgid "Reset Easy Effects."
 msgstr "Reset Easy Effects."
 
-#: src/application.cpp:534
+#: src/application.cpp:534 src/application.cpp:538
 msgid "Hide the Window."
 msgstr "Verberg het venster."
 
-#: src/application.cpp:537
+#: src/application.cpp:537 src/application.cpp:541
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globale omzeiling: 1 = inschakelen, 2 = uitschakelen, 3 = status opvragen"
 
-#: src/application.cpp:540
+#: src/application.cpp:540 src/application.cpp:544
 msgid "Show available presets."
 msgstr "Toon de beschikbare voorinstellingen."
 
@@ -2393,8 +2399,9 @@ msgstr "Sluiten (ESC)"
 msgid "-inf"
 msgstr "- ∞"
 
-#~ msgid "Frame Size"
-#~ msgstr "Framegrootte"
+#: data/ui/echo_canceller.ui:27
+msgid "Frame Size"
+msgstr "Framegrootte"
 
 #~ msgid ""
 #~ "Enable/disable the\n"
