@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-25 15:33-0300\n"
+"POT-Creation-Date: 2023-01-25 18:39+0000\n"
 "PO-Revision-Date: 2023-01-01 20:49+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -205,7 +205,7 @@ msgstr "Guadagno Uscita"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625 data/ui/echo_canceller.ui:135
+#: data/ui/stereo_tools.ui:625
 msgid "Input"
 msgstr "Ingresso"
 
@@ -218,7 +218,6 @@ msgstr "Ingresso"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
-#: data/ui/echo_canceller.ui:154
 msgid "Plugin Input Gain"
 msgstr "Guadagno in Ingresso del Plugin"
 
@@ -233,7 +232,6 @@ msgstr "Guadagno in Ingresso del Plugin"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
-#: data/ui/echo_canceller.ui:219
 msgid "Output"
 msgstr "Uscita"
 
@@ -246,7 +244,6 @@ msgstr "Uscita"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
-#: data/ui/echo_canceller.ui:238
 msgid "Plugin Output Gain"
 msgstr "Guadagno in Uscita del Plugin"
 
@@ -260,7 +257,6 @@ msgstr "Guadagno in Uscita del Plugin"
 #: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
-#: data/ui/echo_canceller.ui:301
 msgid "Reset"
 msgstr "Reset"
 
@@ -273,7 +269,6 @@ msgstr "Reset"
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
-#: data/ui/echo_canceller.ui:315
 msgid "Using"
 msgstr "Utilizzo"
 
@@ -816,15 +811,15 @@ msgstr "Riduzione"
 msgid "Delay"
 msgstr "Delay"
 
-#: data/ui/echo_canceller.ui:27 data/ui/echo_canceller.ui:50
+#: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
 msgstr "Lunghezza Filtro"
 
-#: data/ui/echo_canceller.ui:50 data/ui/echo_canceller.ui:73
+#: data/ui/echo_canceller.ui:50
 msgid "Residual Echo Suppression"
 msgstr "Soppressione dell'eco residuo"
 
-#: data/ui/echo_canceller.ui:72 data/ui/echo_canceller.ui:95
+#: data/ui/echo_canceller.ui:72
 msgid "Near End Echo Suppression"
 msgstr "Soppressione dell'eco alla fine"
 
@@ -1485,7 +1480,6 @@ msgid "Output Devices"
 msgstr "Dispositivi di Uscita"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
-#: src/application.cpp:247
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
@@ -1506,7 +1500,6 @@ msgid "Input Devices"
 msgstr "Dispositivi di Ingresso"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
-#: src/application.cpp:255
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
@@ -2133,32 +2126,32 @@ msgstr "Sconosciuto"
 msgid "channels"
 msgstr "Canali"
 
-#: src/application.cpp:435 src/application.cpp:439
+#: src/application.cpp:435
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:525 src/application.cpp:529
+#: src/application.cpp:525
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Chiudi Easy Effects. Utile in esecuzione come servizio."
 
-#: src/application.cpp:528 src/application.cpp:532
+#: src/application.cpp:528
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
-#: src/application.cpp:531 src/application.cpp:535
+#: src/application.cpp:531
 msgid "Reset Easy Effects."
 msgstr "Reset Easy Effects."
 
-#: src/application.cpp:534 src/application.cpp:538
+#: src/application.cpp:534
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra."
 
-#: src/application.cpp:537 src/application.cpp:541
+#: src/application.cpp:537
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
 
-#: src/application.cpp:540 src/application.cpp:544
+#: src/application.cpp:540
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
@@ -2401,9 +2394,8 @@ msgstr "Chiudi (Premi ESC)"
 msgid "-inf"
 msgstr "-inf"
 
-#: data/ui/echo_canceller.ui:27
-msgid "Frame Size"
-msgstr "Dimensione Frame"
+#~ msgid "Frame Size"
+#~ msgstr "Dimensione Frame"
 
 #~ msgid ""
 #~ "Enable/disable the\n"
