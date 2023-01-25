@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-24 14:09+0000\n"
-"PO-Revision-Date: 2023-01-24 02:49+0000\n"
+"PO-Revision-Date: 2023-01-25 07:51+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -101,19 +101,18 @@ msgid "Presets Menu"
 msgstr "预设菜单"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid "Enable/disable the global bypass"
 msgstr "启用/禁用此应用程序"
 
-#: data/ui/application_window.ui:67
+#: data/ui/application_window.ui:67 data/ui/application_window.ui:68
 msgid "Global Bypass"
 msgstr "全局旁路"
 
-#: data/ui/application_window.ui:77
+#: data/ui/application_window.ui:77 data/ui/application_window.ui:78
 msgid "Primary Menu"
 msgstr "主菜单"
 
-#: data/ui/application_window.ui:92
+#: data/ui/application_window.ui:92 data/ui/application_window.ui:93
 msgid "Easy Effects Window"
 msgstr "EasyEffects 窗口"
 
@@ -520,15 +519,13 @@ msgstr "右"
 
 #: data/ui/compressor.ui:556 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:563
-#, fuzzy
 msgid "Min"
-msgstr "最低"
+msgstr "输入端最低值"
 
 #: data/ui/compressor.ui:557 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:501 data/ui/multiband_gate_band.ui:564
-#, fuzzy
 msgid "Max"
-msgstr "最高"
+msgstr "输入端最高值"
 
 #: data/ui/compressor.ui:564 data/ui/gate.ui:700
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:508
@@ -541,9 +538,8 @@ msgid "Type"
 msgstr "类型"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid " Feed-forward"
-msgstr "前馈式"
+msgstr " 前馈式"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -562,9 +558,8 @@ msgid "Input Device"
 msgstr "输入设备"
 
 #: data/ui/compressor.ui:661
-#, fuzzy
 msgid " PreAmplification"
-msgstr "前置放大"
+msgstr " 前置放大"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
@@ -652,9 +647,8 @@ msgid "Right Channel"
 msgstr "右声道"
 
 #: data/ui/convolver.ui:71
-#, fuzzy
 msgid "Impulses"
-msgstr "Impulse"
+msgstr "Impulse 文件"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
@@ -713,7 +707,7 @@ msgstr "混合Kernel名称"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr "导入 Impulse"
+msgstr "导入 Impulse 文件"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
@@ -760,7 +754,7 @@ msgstr "宽频段"
 
 #: data/ui/deesser.ui:72
 msgid "Split"
-msgstr "分割频段"
+msgstr "分割"
 
 #: data/ui/deesser.ui:88
 msgid "F1 Split"
@@ -803,9 +797,8 @@ msgid "Frequency 2 Peak Q"
 msgstr "频率 2 Peak Q"
 
 #: data/ui/deesser.ui:264
-#, fuzzy
 msgid "Laxity"
-msgstr "松弛性"
+msgstr "松弛度"
 
 #: data/ui/deesser.ui:579
 msgid "Detected"
@@ -886,9 +879,8 @@ msgid "Calculate Frequencies"
 msgstr "频率响应"
 
 #: data/ui/equalizer.ui:300
-#, fuzzy
 msgid "Sort Bands"
-msgstr "频段"
+msgstr "将频段排序"
 
 #: data/ui/equalizer.ui:315 src/presets_menu.cpp:102
 msgid "Import Preset"
@@ -896,7 +888,7 @@ msgstr "导入预设"
 
 #: data/ui/equalizer_band.ui:113
 msgid "Bell"
-msgstr "带通"
+msgstr "钟形"
 
 #: data/ui/equalizer_band.ui:114
 msgid "High Pass"
@@ -1049,14 +1041,12 @@ msgid "Mix"
 msgstr "干湿声混合"
 
 #: data/ui/gate.ui:510
-#, fuzzy
 msgid "Attack Zone Start"
-msgstr "起音区间之始"
+msgstr "起音区间开头"
 
 #: data/ui/gate.ui:564
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "消音区间之始"
+msgstr "消音区间开头"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
 msgid "Low-Pass Filter"
@@ -1671,7 +1661,7 @@ msgstr "打击乐"
 
 #: data/ui/pitch.ui:137
 msgid "Soft"
-msgstr "柔化处理"
+msgstr "柔声"
 
 #: data/ui/pitch.ui:151
 msgid "Phase"
@@ -2065,7 +2055,7 @@ msgstr "输出平衡"
 
 #: data/ui/stereo_tools.ui:88
 msgid "Softclip"
-msgstr "柔化处理"
+msgstr "软削波"
 
 #: data/ui/stereo_tools.ui:116
 msgid "Softclip Level"
@@ -2437,19 +2427,19 @@ msgstr "关闭（请按 ESC）"
 msgid "-inf"
 msgstr "-inf"
 
-#, fuzzy
-#~ msgid ""
-#~ "Enable/disable the\n"
-#~ "                                    global bypass"
-#~ msgstr "启用/禁用全局旁通"
+#: data/ui/application_window.ui:62
+msgid ""
+"Enable/disable the\n"
+"                                    global bypass"
+msgstr "启用/禁用全局旁通"
 
-#, fuzzy
-#~ msgid " Low-Pass"
-#~ msgstr "低通"
+#: data/ui/compressor.ui:515
+msgid " Low-Pass"
+msgstr " 低通"
 
-#, fuzzy
-#~ msgid " Uniform"
-#~ msgstr "均值"
+#: data/ui/compressor.ui:516
+msgid " Uniform"
+msgstr " 均值"
 
 #~ msgid "Left Delay"
 #~ msgstr "左延迟"
