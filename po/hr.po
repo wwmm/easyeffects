@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-25 14:06+0000\n"
+"POT-Creation-Date: 2023-01-25 15:33-0300\n"
 "PO-Revision-Date: 2022-09-29 01:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -216,7 +216,7 @@ msgstr "Pojačanje ulaza"
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:581
 #: data/ui/compressor.ui:1063 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:191
-#: data/ui/echo_canceller.ui:135 data/ui/equalizer.ui:368
+#: data/ui/echo_canceller.ui:112 data/ui/equalizer.ui:368
 #: data/ui/exciter.ui:262 data/ui/filter.ui:141 data/ui/gate.ui:717
 #: data/ui/gate.ui:1197 data/ui/limiter.ui:728 data/ui/loudness.ui:132
 #: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:454
@@ -230,7 +230,7 @@ msgstr "Ulaz"
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1082
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
-#: data/ui/deesser.ui:436 data/ui/delay.ui:210 data/ui/echo_canceller.ui:154
+#: data/ui/deesser.ui:436 data/ui/delay.ui:210 data/ui/echo_canceller.ui:131
 #: data/ui/equalizer.ui:387 data/ui/exciter.ui:281 data/ui/filter.ui:160
 #: data/ui/gate.ui:1216 data/ui/limiter.ui:747 data/ui/loudness.ui:151
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
@@ -244,7 +244,7 @@ msgstr "Pojačanje ulaza"
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1147 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:275
-#: data/ui/echo_canceller.ui:219 data/ui/equalizer.ui:452
+#: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:452
 #: data/ui/exciter.ui:346 data/ui/filter.ui:225 data/ui/gate.ui:1281
 #: data/ui/limiter.ui:812 data/ui/loudness.ui:216 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
@@ -257,7 +257,7 @@ msgstr "Izlaz"
 #: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1166
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
-#: data/ui/deesser.ui:520 data/ui/delay.ui:294 data/ui/echo_canceller.ui:238
+#: data/ui/deesser.ui:520 data/ui/delay.ui:294 data/ui/echo_canceller.ui:215
 #: data/ui/equalizer.ui:471 data/ui/exciter.ui:365 data/ui/filter.ui:244
 #: data/ui/gate.ui:1300 data/ui/limiter.ui:831 data/ui/loudness.ui:235
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
@@ -270,7 +270,7 @@ msgstr "Pojačanje ulaza"
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1229
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:285 data/ui/crystalizer.ui:204
-#: data/ui/deesser.ui:643 data/ui/delay.ui:357 data/ui/echo_canceller.ui:301
+#: data/ui/deesser.ui:643 data/ui/delay.ui:357 data/ui/echo_canceller.ui:278
 #: data/ui/equalizer.ui:534 data/ui/equalizer_band.ui:227
 #: data/ui/equalizer_band.ui:298 data/ui/exciter.ui:458 data/ui/filter.ui:307
 #: data/ui/gate.ui:1393 data/ui/limiter.ui:894 data/ui/loudness.ui:298
@@ -283,7 +283,7 @@ msgstr "Vrati na tvorničke postavke"
 #: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1243
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:299 data/ui/deesser.ui:657
-#: data/ui/delay.ui:371 data/ui/echo_canceller.ui:315 data/ui/equalizer.ui:548
+#: data/ui/delay.ui:371 data/ui/echo_canceller.ui:292 data/ui/equalizer.ui:548
 #: data/ui/exciter.ui:472 data/ui/filter.ui:321 data/ui/gate.ui:1407
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
@@ -898,20 +898,16 @@ msgid "Delay"
 msgstr "Kašnjenje"
 
 #: data/ui/echo_canceller.ui:27
-msgid "Frame Size"
-msgstr "Veličina okvira"
-
-#: data/ui/echo_canceller.ui:50
 #, fuzzy
 msgid "Filter Length"
 msgstr "Filter"
 
-#: data/ui/echo_canceller.ui:73
+#: data/ui/echo_canceller.ui:50
 #, fuzzy
 msgid "Residual Echo Suppression"
 msgstr "Supresija buke"
 
-#: data/ui/echo_canceller.ui:95
+#: data/ui/echo_canceller.ui:72
 #, fuzzy
 msgid "Near End Echo Suppression"
 msgstr "Supresija buke"
@@ -1636,7 +1632,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Pojačanje ulaza"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:247
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
 #, fuzzy
 msgid "Output Presets"
 msgstr "Predlošci: "
@@ -1659,7 +1655,7 @@ msgstr "Predlošci: "
 msgid "Input Devices"
 msgstr "Ulazni uređaj"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:255
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
 #, fuzzy
 msgid "Input Presets"
 msgstr "Učitaj predloške"
@@ -2350,33 +2346,33 @@ msgstr ""
 msgid "channels"
 msgstr "Kanali"
 
-#: src/application.cpp:439
+#: src/application.cpp:435
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:529
+#: src/application.cpp:525
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Zatvori EasyEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
 
-#: src/application.cpp:532
+#: src/application.cpp:528
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
-#: src/application.cpp:535
+#: src/application.cpp:531
 msgid "Reset Easy Effects."
 msgstr "Obnovi EasyEffects."
 
-#: src/application.cpp:538
+#: src/application.cpp:534
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:541
+#: src/application.cpp:537
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:544
+#: src/application.cpp:540
 msgid "Show available presets."
 msgstr "Prikaži dostupne predloške."
 
@@ -2637,6 +2633,9 @@ msgstr ""
 #: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
 msgid "-inf"
 msgstr ""
+
+#~ msgid "Frame Size"
+#~ msgstr "Veličina okvira"
 
 #, fuzzy
 #~ msgid " Low-Pass"
