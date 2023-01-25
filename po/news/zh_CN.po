@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-24 14:09+0000\n"
-"PO-Revision-Date: 2023-01-24 03:49+0000\n"
+"PO-Revision-Date: 2023-01-25 07:48+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/zh_Hans/>\n"
@@ -318,15 +318,15 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
 msgid "The code that shows the stream sample format has been improved"
-msgstr ""
+msgstr "改进了显示音频样本格式的代码"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build a Debian package. See issue 1000 for more information."
 msgstr ""
-"rnnoise 库现在是可选的。 这应该有助于软件包维护者构建 Debian 软件包。 有关详"
-"细信息，请参阅 Github 存储库中编号为 1000 的 issue。"
+"rnnoise 库现在是可选的。 这应该有助于软件包维护者构建 Debian 软件包。 "
+"有关详细信息，请参阅 Github 仓库中编号为 1000 的 issue。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:107
 msgid ""
@@ -512,7 +512,9 @@ msgid ""
 "Equalizer APO preset import feature has been improved to apply not only the "
 "Bell filter, but also other supported ones (at the moment only the Bandpass "
 "filter is not available in LSP plugin)."
-msgstr ""
+msgstr "均衡器 APO "
+"预设导入功能已得到改进，现在可以应用钟形滤波器，以及其它受支持的滤波器（目前 "
+"LSP 插件中只有带通滤波器不可用）。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid ""
@@ -523,7 +525,8 @@ msgstr "`重置所有设置` 功能如今在Flatpak环境下应该可以正常�
 msgid ""
 "We have a new option that allows the user to disable our menus `autohide`. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
-msgstr ""
+msgstr "新增一个新选项，允许用户禁用本程序的菜单自动隐藏功能。这或许可以解决 Popover "
+"菜单当前在 gtk4 上存在的一些漏洞。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:186
 msgid ""
@@ -548,7 +551,8 @@ msgstr "不再使用 GTKMM 和 GLIBMM 作为依赖。我们现在直接使用 gt
 msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
-msgstr ""
+msgstr "卷积混响器插件的界面中新增“组合脉冲响应”功能。 "
+"组合后会生成一个新的脉冲文件，应可见于脉冲列表中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
 msgid ""
@@ -601,48 +605,49 @@ msgstr "自动增益插件现在允许用户选择将哪个响度用作音量校
 msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
-msgstr ""
+msgstr "均衡器插件的 APO 预设导入功能，现在可以解析“Pre Amplication”参数了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
 msgid "Optional Cubic Volume can be enabled in General Settings."
-msgstr ""
+msgstr "设置中新增启用立方音量调节的选项。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
 msgid ""
 "The Spectrum plugin was supposed to enter passthrough whenever it was not "
 "visible, but this was happening only when our window was closed."
-msgstr ""
+msgstr "界面频谱本应在不可见时进入直通状态，但此前这只在程序窗口关闭时发生。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid "Improved support for Assistive Technology."
-msgstr ""
+msgstr "改进了对辅助技术的支持。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
 msgid ""
 "The probes used in some filters like the Compressor and the Limiter were not "
 "being relinked after changing the order of the plugins in the pipeline. It "
 "should be working now."
-msgstr ""
+msgstr "修复了在更改音效管道中插件的顺序后，压缩器以及限幅器等插件的探针并未重新链接"
+"的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
-msgstr ""
+msgstr "PipeWire 监视器流现在已从应用程序列表中排除并删除。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
-msgstr ""
+msgstr "若无意外，类似于 issue #1172 的崩溃问题现已解决。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:230
 msgid "Prevented a case in which Spectrum was crashing."
-msgstr ""
+msgstr "防止了一种会导致界面频谱崩溃的情况发生。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
 msgid ""
 "Pavucontrol is not added anymore to input applications list on systems with "
 "localization different than English."
-msgstr ""
+msgstr "在非英语的系统上，Pavucontrol 不再被添加到输入应用程序列表中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid ""
@@ -650,54 +655,60 @@ msgid ""
 "that decided to use it instead of the built-in PipeWire session manager. "
 "More information at issue 1144."
 msgstr ""
+"改进了与 WirePlumber 的兼容性。 对于使用不是 PipeWire "
+"内置的会话管理器的系统，这项改动是必要的。 更多信息请参见 issue #1144。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
 msgid ""
 "When trying to add an autoloading profile for a device already in the list "
 "its target preset will be updated. This way we can change the profile preset "
 "without having to remove and recreating it."
-msgstr ""
+msgstr "从现在起，当用户尝试为列表中已有的设备添加自动加载配置文件时，其目标预设将被"
+"更新。 这样用户更改配置文件预设时，就无需删除并重新创建它了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
 msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue 1051."
-msgstr ""
+msgstr "再次重新设计了自动加载预设的实现。它现在应该可以在更多机器上正常运行了。 "
+"有关详细信息，请参阅issue #1051。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:249
 msgid ""
 "If the Limiter or the Maximizer are set in the last position of the plugin "
 "stack, new plugins are added at the second to last position in order to "
 "prevent hardware damage on eventually high output level."
-msgstr ""
+msgstr "如果用户将限幅器或放大器设置在插件堆栈的最后一个位置，则新插件将会被添加到倒"
+"数第二个位置，以防止硬件因输出音量过大而导致损坏。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
 msgid ""
 "Removing an application from the blocklist, its previous enabled state is "
 "restored."
-msgstr ""
+msgstr "若用户从黑名单中删除某个应用程序，程序将恢复其先前的启用状态。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:252
 msgid ""
 "Sometimes when removing imported models from the noise reduction plugin the "
 "current used model was not properly updated. This should be fixed now."
-msgstr ""
+msgstr "解决当用户从降噪插件中删除导入的模型时，当前使用的模型偶尔不会正常更新的问题"
+"。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
 msgid ""
 "When editing presets files in an external editor, duplicated entries won't "
 "be shown in our presets menu."
-msgstr ""
+msgstr "现在起，在外部编辑器中编辑预设文件时，重复的条目不会显示于程序菜单中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:254
 msgid "Now the blocklist is correctly set when switching presets."
-msgstr ""
+msgstr "现在起，切换预设时黑名单会被正确更新。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
 msgid ""
 "Now the status of the global bypass button is correctly updated when "
 "changing plugin stack."
-msgstr ""
+msgstr "现在“全局旁通”按钮的状态在插件堆栈被更改时会正确更新。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:256
 msgid ""
@@ -705,127 +716,136 @@ msgid ""
 "UI (if an application icon could not be shown even if you're sure it's "
 "correctly installed, please open an issue)."
 msgstr ""
+"系统缺失的图标不应显示在应用程序信息 UI "
+"中（如果确定图标已正确安装，但本程序依旧无法正常显示应用程序的图标，"
+"请在本程序代码仓库提交 issue）。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:257
 msgid ""
 "Some icons not showing in Plasma DE with Breeze icon theme should appear now."
-msgstr ""
+msgstr "修复了在使用 Breeze 图标主题的 Plasma 桌面中，本程序未显示一些图标的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
 msgid "Updated Chinese translation."
-msgstr ""
+msgstr "更新了中文翻译。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
 msgid "Updated Italian translation."
-msgstr ""
+msgstr "更新了意大利语翻译。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
 msgid "Added support for the compressor parameter `Boost Amount`"
-msgstr ""
+msgstr "新增了压缩器参数“Boost量”的支持"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:268
 msgid ""
 "The multiband compressor plugin now uses the stereo multiband compressor "
 "plugin from Linux Studio Plugins instead of the one from Calf Studio."
-msgstr ""
+msgstr "多频段压缩器插件从现在起基于 Linux Studio Plugins "
+"中的立体声多频段压缩器插件，而非 Calf Studio 中的插件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:269
 msgid ""
 "The limiter plugin now uses the stereo limiter plugin from Linux Studio "
 "Plugins instead of the one from Calf Studio."
-msgstr ""
+msgstr "限幅器插件从现在起基于 Linux Studio 插件中的立体声限制器插件，而非 Calf "
+"Studio 中的。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:270
 msgid ""
 "LV2 filters now are spawned in PipeWire graph only when loaded the first "
 "time. Once loaded, they remain connected until EasyEffects shutdown."
 msgstr ""
+"所有的 LV2 过滤器，现在仅在其第一次被加载时会加入 PipeWire 图。 一旦被加载，"
+"它们将保持连接状态直到 EasyEffects 关闭。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:272
 msgid "The echo canceller sampling rate is now properly set."
-msgstr ""
+msgstr "修复了回声消除插件未正确设置采样率的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:273
 msgid ""
 "The threshold parameter from the deesser plugin is now saved to the preset "
 "file."
-msgstr ""
+msgstr "从今起，齿音消除插件的阈值参数会被保存到预设文件中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
 msgid ""
 "Improved band splitting for crystalizer with new default intensity values."
-msgstr ""
+msgstr "改进了结晶器的分割频段，其将使用新的默认强度值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:275
 msgid ""
 "Depending on the input gain or output gain values the corresponding level "
 "bars could not be aligned."
-msgstr ""
+msgstr "此前，根据其输入增益或输出增益值，相应的水平条有无法对齐的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
 msgid ""
 "When adding more equalizer bands they are set to `Bell` instead of `Off`."
-msgstr ""
+msgstr "添加更多均衡器频段时，它们将被设置为“钟形”而不是“关闭”。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:277
 msgid ""
 "Equalizer APO presets loading is now working properly on locales different "
 "than C."
-msgstr ""
+msgstr "均衡器 APO 预设加载现在可以在非 “C” 的语言环境中正常工作了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
 msgid "Improved linking management between port filter nodes in PipeWire."
-msgstr ""
+msgstr "改进了 PipeWire 中端口过滤器节点之间的链接管理。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
 msgid ""
 "The crystalizer plugin signal amplification was too high before. It should "
 "be within more reasonable levels now."
-msgstr ""
+msgstr "修复了结晶器插件信号放大过高的问题，经调整后其放大幅度现在更为合理了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:287
 msgid ""
 "Improved the resampler used in the plugins that require one(like the rnnoise "
 "plugin)"
-msgstr ""
+msgstr "改进了部分插件所使用的重采样器（如降噪插件）"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:290
 msgid "Setting multiple autoloading presets should be fine now"
-msgstr ""
+msgstr "修复了设置多个自动加载预设的相关问题"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:291
 msgid "Transient windows are now properly set for some plugins dialogs"
-msgstr ""
+msgstr "现在某些插件对话框会正确设置瞬态窗口了"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:292
 msgid ""
 "The convolver impulse response menu was improved to workaround an issue "
 "where the impulse files was not loaded when only one was available in the "
 "menu, see issue 1011"
-msgstr ""
+msgstr "改进了卷积器脉冲响应插件的菜单，以防止菜单中只有一个脉冲文件时会出现脉冲文件"
+"未加载的问题，请参阅 issue #1011"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:293
 msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
-msgstr ""
+msgstr "修复了一个可能导致音高插件无法正确初始化的错误"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:294
 msgid "The saturation warning should not displace its neighbor widgets anymore"
-msgstr ""
+msgstr "饱和度警告应该不再遮挡与其相邻的界面部件了"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:295
 msgid "Fixed the locale in a few widgets"
-msgstr ""
+msgstr "修复了一些小部件中的语言环境"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
 msgid "Fixed wrong alignment in a few widgets"
-msgstr "修复了程序界面一些部件中的对齐问题。"
+msgstr "修复了程序界面一些部件中的对齐问题"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:304
 msgid ""
 "The Loudness plugin is being used again for the reasons described at issue "
 "820. This means that is an optional dependency again."
-msgstr ""
+msgstr "由于 issue #820 "
+"中描述的原因，本程序再度使用响度插件。这意味着它再次成为一个可选的依赖。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:306
 msgid ""
@@ -841,7 +861,7 @@ msgstr "改进了均衡器的界面。"
 msgid ""
 "Now we use a sidechain LSP compressor that allows the user to select and "
 "external source as the sidechain input."
-msgstr ""
+msgstr "现在起本程序使用侧链 LSP 压缩器，以允许用户选择外部源作为侧链输入。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:316
 msgid "We now support the LSP compressor `Boosting` mode."
@@ -854,6 +874,9 @@ msgid ""
 "will allow to import different presets for each channel instead of just "
 "settings the same values to both."
 msgstr ""
+"当在均衡器中启用“分离声道”时，导入的 APO "
+"预设将仅应用于正在显示于程序窗口中的声道。 "
+"这将允许为每个声道导入不同的预设，两个声道不再强制共用一个预设。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:319
 msgid ""
