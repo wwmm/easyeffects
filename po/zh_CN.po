@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 14:09+0000\n"
+"POT-Creation-Date: 2023-01-25 14:06+0000\n"
 "PO-Revision-Date: 2023-01-25 07:51+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -104,15 +104,15 @@ msgstr "预设菜单"
 msgid "Enable/disable the global bypass"
 msgstr "启用/禁用此应用程序"
 
-#: data/ui/application_window.ui:67 data/ui/application_window.ui:68
+#: data/ui/application_window.ui:67
 msgid "Global Bypass"
 msgstr "全局旁路"
 
-#: data/ui/application_window.ui:77 data/ui/application_window.ui:78
+#: data/ui/application_window.ui:77
 msgid "Primary Menu"
 msgstr "主菜单"
 
-#: data/ui/application_window.ui:92 data/ui/application_window.ui:93
+#: data/ui/application_window.ui:92
 msgid "Easy Effects Window"
 msgstr "EasyEffects 窗口"
 
@@ -2427,19 +2427,16 @@ msgstr "关闭（请按 ESC）"
 msgid "-inf"
 msgstr "-inf"
 
-#: data/ui/application_window.ui:62
-msgid ""
-"Enable/disable the\n"
-"                                    global bypass"
-msgstr "启用/禁用全局旁通"
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr "启用/禁用全局旁通"
 
-#: data/ui/compressor.ui:515
-msgid " Low-Pass"
-msgstr " 低通"
+#~ msgid " Low-Pass"
+#~ msgstr " 低通"
 
-#: data/ui/compressor.ui:516
-msgid " Uniform"
-msgstr " 均值"
+#~ msgid " Uniform"
+#~ msgstr " 均值"
 
 #~ msgid "Left Delay"
 #~ msgstr "左延迟"
