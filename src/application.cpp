@@ -98,8 +98,6 @@ void on_startup(GApplication* gapp) {
 
     NodeInfo target_node;
 
-    std::scoped_lock<std::mutex> lock(self->pm->node_map_mutex);
-
     for (const auto& [serial, node] : self->pm->node_map) {
       if (node.media_class == tags::pipewire::media_class::source) {
         if (util::str_contains(node.name, device.bus_path) || util::str_contains(node.name, device.bus_id)) {
@@ -131,8 +129,6 @@ void on_startup(GApplication* gapp) {
     util::debug("device "s + device.name + " has changed its output route to: "s + device.output_route_name);
 
     NodeInfo target_node;
-
-    std::scoped_lock<std::mutex> lock(self->pm->node_map_mutex);
 
     for (const auto& [serial, node] : self->pm->node_map) {
       if (node.media_class == tags::pipewire::media_class::sink) {

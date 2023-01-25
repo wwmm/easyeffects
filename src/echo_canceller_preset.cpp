@@ -35,8 +35,6 @@ void EchoCancellerPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section][instance_name]["frame-size"] = g_settings_get_int(settings, "frame-size");
-
   json[section][instance_name]["filter-length"] = g_settings_get_int(settings, "filter-length");
 
   json[section][instance_name]["residual-echo-suppression"] = g_settings_get_int(settings, "residual-echo-suppression");
@@ -50,8 +48,6 @@ void EchoCancellerPreset::load(const nlohmann::json& json) {
   update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
-
-  update_key<int>(json.at(section).at(instance_name), settings, "frame-size", "frame-size");
 
   update_key<int>(json.at(section).at(instance_name), settings, "filter-length", "filter-length");
 

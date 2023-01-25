@@ -33,7 +33,6 @@
 #include <array>
 #include <map>
 #include <memory>
-#include <mutex>
 #include <span>
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
@@ -238,8 +237,6 @@ class PipeManager {
   std::string default_min_quantum = "0";
   std::string default_max_quantum = "0";
   std::string default_quantum = "0";
-
-  std::mutex node_map_mutex;
 
   auto node_map_at_id(const uint& id) -> NodeInfo&;
 

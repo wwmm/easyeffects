@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 14:09+0000\n"
-"PO-Revision-Date: 2023-01-24 02:49+0000\n"
+"POT-Creation-Date: 2023-01-25 15:33-0300\n"
+"PO-Revision-Date: 2023-01-25 07:51+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -101,7 +101,6 @@ msgid "Presets Menu"
 msgstr "预设菜单"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid "Enable/disable the global bypass"
 msgstr "启用/禁用此应用程序"
 
@@ -198,7 +197,7 @@ msgstr "输出增益"
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:581
 #: data/ui/compressor.ui:1063 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:191
-#: data/ui/echo_canceller.ui:135 data/ui/equalizer.ui:368
+#: data/ui/echo_canceller.ui:112 data/ui/equalizer.ui:368
 #: data/ui/exciter.ui:262 data/ui/filter.ui:141 data/ui/gate.ui:717
 #: data/ui/gate.ui:1197 data/ui/limiter.ui:728 data/ui/loudness.ui:132
 #: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:454
@@ -212,7 +211,7 @@ msgstr "输入"
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1082
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
-#: data/ui/deesser.ui:436 data/ui/delay.ui:210 data/ui/echo_canceller.ui:154
+#: data/ui/deesser.ui:436 data/ui/delay.ui:210 data/ui/echo_canceller.ui:131
 #: data/ui/equalizer.ui:387 data/ui/exciter.ui:281 data/ui/filter.ui:160
 #: data/ui/gate.ui:1216 data/ui/limiter.ui:747 data/ui/loudness.ui:151
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
@@ -225,7 +224,7 @@ msgstr "插件输入增益"
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1147 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:275
-#: data/ui/echo_canceller.ui:219 data/ui/equalizer.ui:452
+#: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:452
 #: data/ui/exciter.ui:346 data/ui/filter.ui:225 data/ui/gate.ui:1281
 #: data/ui/limiter.ui:812 data/ui/loudness.ui:216 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
@@ -238,7 +237,7 @@ msgstr "输出"
 #: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1166
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
-#: data/ui/deesser.ui:520 data/ui/delay.ui:294 data/ui/echo_canceller.ui:238
+#: data/ui/deesser.ui:520 data/ui/delay.ui:294 data/ui/echo_canceller.ui:215
 #: data/ui/equalizer.ui:471 data/ui/exciter.ui:365 data/ui/filter.ui:244
 #: data/ui/gate.ui:1300 data/ui/limiter.ui:831 data/ui/loudness.ui:235
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
@@ -250,7 +249,7 @@ msgstr "插件输出增益"
 #: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1229
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:285 data/ui/crystalizer.ui:204
-#: data/ui/deesser.ui:643 data/ui/delay.ui:357 data/ui/echo_canceller.ui:301
+#: data/ui/deesser.ui:643 data/ui/delay.ui:357 data/ui/echo_canceller.ui:278
 #: data/ui/equalizer.ui:534 data/ui/equalizer_band.ui:227
 #: data/ui/equalizer_band.ui:298 data/ui/exciter.ui:458 data/ui/filter.ui:307
 #: data/ui/gate.ui:1393 data/ui/limiter.ui:894 data/ui/loudness.ui:298
@@ -263,7 +262,7 @@ msgstr "重置"
 #: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1243
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:299 data/ui/deesser.ui:657
-#: data/ui/delay.ui:371 data/ui/echo_canceller.ui:315 data/ui/equalizer.ui:548
+#: data/ui/delay.ui:371 data/ui/echo_canceller.ui:292 data/ui/equalizer.ui:548
 #: data/ui/exciter.ui:472 data/ui/filter.ui:321 data/ui/gate.ui:1407
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
@@ -520,15 +519,13 @@ msgstr "右"
 
 #: data/ui/compressor.ui:556 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:563
-#, fuzzy
 msgid "Min"
-msgstr "最低"
+msgstr "输入端最低值"
 
 #: data/ui/compressor.ui:557 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:501 data/ui/multiband_gate_band.ui:564
-#, fuzzy
 msgid "Max"
-msgstr "最高"
+msgstr "输入端最高值"
 
 #: data/ui/compressor.ui:564 data/ui/gate.ui:700
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:508
@@ -541,9 +538,8 @@ msgid "Type"
 msgstr "类型"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid " Feed-forward"
-msgstr "前馈式"
+msgstr " 前馈式"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -562,9 +558,8 @@ msgid "Input Device"
 msgstr "输入设备"
 
 #: data/ui/compressor.ui:661
-#, fuzzy
 msgid " PreAmplification"
-msgstr "前置放大"
+msgstr " 前置放大"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
@@ -652,9 +647,8 @@ msgid "Right Channel"
 msgstr "右声道"
 
 #: data/ui/convolver.ui:71
-#, fuzzy
 msgid "Impulses"
-msgstr "Impulse"
+msgstr "Impulse 文件"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
@@ -713,7 +707,7 @@ msgstr "混合Kernel名称"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr "导入 Impulse"
+msgstr "导入 Impulse 文件"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
@@ -760,7 +754,7 @@ msgstr "宽频段"
 
 #: data/ui/deesser.ui:72
 msgid "Split"
-msgstr "分割频段"
+msgstr "分割"
 
 #: data/ui/deesser.ui:88
 msgid "F1 Split"
@@ -803,9 +797,8 @@ msgid "Frequency 2 Peak Q"
 msgstr "频率 2 Peak Q"
 
 #: data/ui/deesser.ui:264
-#, fuzzy
 msgid "Laxity"
-msgstr "松弛性"
+msgstr "松弛度"
 
 #: data/ui/deesser.ui:579
 msgid "Detected"
@@ -821,18 +814,14 @@ msgid "Delay"
 msgstr "延迟"
 
 #: data/ui/echo_canceller.ui:27
-msgid "Frame Size"
-msgstr "音帧长度"
-
-#: data/ui/echo_canceller.ui:50
 msgid "Filter Length"
 msgstr "过滤器长度"
 
-#: data/ui/echo_canceller.ui:73
+#: data/ui/echo_canceller.ui:50
 msgid "Residual Echo Suppression"
 msgstr "残余回声抑制"
 
-#: data/ui/echo_canceller.ui:95
+#: data/ui/echo_canceller.ui:72
 msgid "Near End Echo Suppression"
 msgstr "近端回声抑制"
 
@@ -886,9 +875,8 @@ msgid "Calculate Frequencies"
 msgstr "频率响应"
 
 #: data/ui/equalizer.ui:300
-#, fuzzy
 msgid "Sort Bands"
-msgstr "频段"
+msgstr "将频段排序"
 
 #: data/ui/equalizer.ui:315 src/presets_menu.cpp:102
 msgid "Import Preset"
@@ -896,7 +884,7 @@ msgstr "导入预设"
 
 #: data/ui/equalizer_band.ui:113
 msgid "Bell"
-msgstr "带通"
+msgstr "钟形"
 
 #: data/ui/equalizer_band.ui:114
 msgid "High Pass"
@@ -1049,14 +1037,12 @@ msgid "Mix"
 msgstr "干湿声混合"
 
 #: data/ui/gate.ui:510
-#, fuzzy
 msgid "Attack Zone Start"
-msgstr "起音区间之始"
+msgstr "起音区间开头"
 
 #: data/ui/gate.ui:564
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "消音区间之始"
+msgstr "消音区间开头"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
 msgid "Low-Pass Filter"
@@ -1528,7 +1514,7 @@ msgstr "自动加载预设"
 msgid "Output Devices"
 msgstr "输出设备"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:247
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
 msgid "Output Presets"
 msgstr "输出预设"
 
@@ -1548,7 +1534,7 @@ msgstr "输出自动加载预设列表"
 msgid "Input Devices"
 msgstr "输入设备"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:255
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -1671,7 +1657,7 @@ msgstr "打击乐"
 
 #: data/ui/pitch.ui:137
 msgid "Soft"
-msgstr "柔化处理"
+msgstr "柔声"
 
 #: data/ui/pitch.ui:151
 msgid "Phase"
@@ -2065,7 +2051,7 @@ msgstr "输出平衡"
 
 #: data/ui/stereo_tools.ui:88
 msgid "Softclip"
-msgstr "柔化处理"
+msgstr "软削波"
 
 #: data/ui/stereo_tools.ui:116
 msgid "Softclip Level"
@@ -2175,31 +2161,31 @@ msgstr "未知"
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:439
+#: src/application.cpp:435
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:529
+#: src/application.cpp:525
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
-#: src/application.cpp:532
+#: src/application.cpp:528
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
-#: src/application.cpp:535
+#: src/application.cpp:531
 msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
-#: src/application.cpp:538
+#: src/application.cpp:534
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:541
+#: src/application.cpp:537
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:544
+#: src/application.cpp:540
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
@@ -2437,19 +2423,19 @@ msgstr "关闭（请按 ESC）"
 msgid "-inf"
 msgstr "-inf"
 
-#, fuzzy
+#~ msgid "Frame Size"
+#~ msgstr "音帧长度"
+
 #~ msgid ""
 #~ "Enable/disable the\n"
 #~ "                                    global bypass"
 #~ msgstr "启用/禁用全局旁通"
 
-#, fuzzy
 #~ msgid " Low-Pass"
-#~ msgstr "低通"
+#~ msgstr " 低通"
 
-#, fuzzy
 #~ msgid " Uniform"
-#~ msgstr "均值"
+#~ msgstr " 均值"
 
 #~ msgid "Left Delay"
 #~ msgstr "左延迟"
