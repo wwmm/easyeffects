@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-25 18:39+0000\n"
-"PO-Revision-Date: 2023-01-25 07:51+0000\n"
+"PO-Revision-Date: 2023-01-26 09:52+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -102,7 +102,7 @@ msgstr "预设菜单"
 
 #: data/ui/application_window.ui:62
 msgid "Enable/disable the global bypass"
-msgstr "启用/禁用此应用程序"
+msgstr "开启/关闭全局旁通"
 
 #: data/ui/application_window.ui:67
 msgid "Global Bypass"
@@ -1138,104 +1138,84 @@ msgid "None"
 msgstr "无"
 
 #: data/ui/limiter.ui:110
-#, fuzzy
 msgid "Half x2(2L)"
-msgstr "部分超采样 2倍 (2L)"
+msgstr "部分 2倍 (2L)"
 
 #: data/ui/limiter.ui:111
-#, fuzzy
 msgid "Half x2(3L)"
-msgstr "部分超采样 2倍 (3L)"
+msgstr "部分 2倍 (3L)"
 
 #: data/ui/limiter.ui:112
-#, fuzzy
 msgid "Half x3(2L)"
-msgstr "部分超采样 3倍 (2L)"
+msgstr "部分 3倍 (2L)"
 
 #: data/ui/limiter.ui:113
-#, fuzzy
 msgid "Half x3(3L)"
-msgstr "部分超采样 3倍 (3L)"
+msgstr "部分 3倍 (3L)"
 
 #: data/ui/limiter.ui:114
-#, fuzzy
 msgid "Half x4(2L)"
-msgstr "部分超采样 4倍 (2L)"
+msgstr "部分 4倍 (2L)"
 
 #: data/ui/limiter.ui:115
-#, fuzzy
 msgid "Half x4(3L)"
-msgstr "部分超采样 4倍 (3L)"
+msgstr "部分 4倍 (3L)"
 
 #: data/ui/limiter.ui:116
-#, fuzzy
 msgid "Half x6(2L)"
-msgstr "部分超采样 6倍 (2L)"
+msgstr "部分 6倍 (2L)"
 
 #: data/ui/limiter.ui:117
-#, fuzzy
 msgid "Half x6(3L)"
-msgstr "部分超采样 6倍 (3L)"
+msgstr "部分 6倍 (3L)"
 
 #: data/ui/limiter.ui:118
-#, fuzzy
 msgid "Half x8(2L)"
-msgstr "部分超采样 8倍 (2L)"
+msgstr "部分 8倍 (2L)"
 
 #: data/ui/limiter.ui:119
-#, fuzzy
 msgid "Half x8(3L)"
-msgstr "部分超采样 8倍 (3L)"
+msgstr "部分 8倍 (3L)"
 
 #: data/ui/limiter.ui:120
-#, fuzzy
 msgid "Full x2(2L)"
-msgstr "全超采样 2倍 (2L)"
+msgstr "全部 2倍 (2L)"
 
 #: data/ui/limiter.ui:121
-#, fuzzy
 msgid "Full x2(3L)"
-msgstr "全超采样 2倍 (3L)"
+msgstr "全部 2倍 (3L)"
 
 #: data/ui/limiter.ui:122
-#, fuzzy
 msgid "Full x3(2L)"
-msgstr "全超采样 3倍 (2L)"
+msgstr "全部 3倍 (2L)"
 
 #: data/ui/limiter.ui:123
-#, fuzzy
 msgid "Full x3(3L)"
-msgstr "全超采样 3倍 (3L)"
+msgstr "全部 3倍 (3L)"
 
 #: data/ui/limiter.ui:124
-#, fuzzy
 msgid "Full x4(2L)"
-msgstr "全超采样 4倍 (2L)"
+msgstr "全部 4倍 (2L)"
 
 #: data/ui/limiter.ui:125
-#, fuzzy
 msgid "Full x4(3L)"
-msgstr "全超采样 4倍 (3L)"
+msgstr "全部 4倍 (3L)"
 
 #: data/ui/limiter.ui:126
-#, fuzzy
 msgid "Full x6(2L)"
-msgstr "全超采样 6倍 (2L)"
+msgstr "全部 6倍 (2L)"
 
 #: data/ui/limiter.ui:127
-#, fuzzy
 msgid "Full x6(3L)"
-msgstr "全超采样 6倍 (3L)"
+msgstr "全部 6倍 (3L)"
 
 #: data/ui/limiter.ui:128
-#, fuzzy
 msgid "Full x8(2L)"
-msgstr "全超采样 8倍 (2L)"
+msgstr "全部 8倍 (2L)"
 
 #: data/ui/limiter.ui:129
-#, fuzzy
 msgid "Full x8(3L)"
-msgstr "全超采样 8倍 (3L)"
+msgstr "全部 8倍 (3L)"
 
 #: data/ui/limiter.ui:179
 msgid "SC PreAmp"
@@ -1493,7 +1473,6 @@ msgid "Sampling Rate"
 msgstr "采样率"
 
 #: data/ui/pipe_manager_box.ui:149
-#, fuzzy
 msgid "Minimum Quantum"
 msgstr "最小音频帧 (Quantum)"
 
@@ -1502,7 +1481,6 @@ msgid "Maximum Quantum"
 msgstr "最大 Quantum"
 
 #: data/ui/pipe_manager_box.ui:171
-#, fuzzy
 msgid "Default Quantum"
 msgstr "默认音频帧 (Quantum)"
 
