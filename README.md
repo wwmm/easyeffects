@@ -58,6 +58,7 @@ GStreamer usage was replaced by native PipeWire filters.
 - Crossfeed
 - Crystalizer
 - De-esser
+- Delay
 - Echo Canceller
 - Equalizer
 - Exciter
@@ -71,6 +72,7 @@ GStreamer usage was replaced by native PipeWire filters.
 - Noise reduction
 - Pitch
 - Reverberation
+- Speech Processor
 - Stereo tools
 
 The user has full control over the effects order. Just use the up/down arrows
