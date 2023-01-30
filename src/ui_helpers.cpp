@@ -37,24 +37,10 @@ void show_autohiding_toast(AdwToastOverlay* toast_overlay,
                            const std::string& text,
                            const uint& timeout,
                            const AdwToastPriority& priority) {
-  /* ONLY AVAILABLE FROM libAdwaita 1.2
-  // Construct a custom label because we want it
-  // to be wrapped on reduced window width
-  auto custom_title = gtk_label_new(text.c_str());
-
-  // Set wrap properties
-  gtk_label_set_wrap(GTK_LABEL(custom_title), 1);
-  gtk_label_set_wrap_mode(GTK_LABEL(custom_title), PANGO_WRAP_WORD_CHAR);
-  */
-
   // Construct AdwToast
-  auto* toast = adw_toast_new("");
-
-  // adw_toast_set_custom_title(toast, custom_title);
-  adw_toast_set_title(toast, text.c_str());
+  auto* toast = adw_toast_new(text.c_str());
 
   adw_toast_set_timeout(toast, timeout);
-
   adw_toast_set_priority(toast, priority);
 
   // Show AdwToast
@@ -102,29 +88,11 @@ void show_simple_message_dialog(GtkWidget* parent, const std::string& title, con
     return;
   }
 
-  // Modal flag prevents interaction with other windows in the same application
-  auto* dialog = gtk_message_dialog_new(GTK_WINDOW(parent),
-                                        static_cast<GtkDialogFlags>(GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL),
-                                        GTK_MESSAGE_ERROR, GTK_BUTTONS_NONE, "%s", title.c_str());
-
-  gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s", descr.c_str());
-
-  // Add custom button to hint the user to press ESC to destroy the dialog.
-  // This has been introduced because multiple GTK4 dialogs shown at
-  // the same time could have issues on Wayland and the only way to
-  // close the outer one is pressing ESC, the mouse click does not work.
-  gtk_dialog_add_button(GTK_DIALOG(dialog), _("Close (Press ESC)"), 0);
-
-  // Destroy the dialog when the user responds to it
-  g_signal_connect(dialog, "response", G_CALLBACK(gtk_window_destroy), NULL);
-
-  // Keep the dialog on top of the main window, or center the dialog over the main window
-  gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
-
-  /* Version with Adw.MessageDialog available from libAdwaita 1.2
   auto* dialog = adw_message_dialog_new(GTK_WINDOW(parent), title.c_str(), descr.c_str());
 
-  adw_message_dialog_add_response(ADW_MESSAGE_DIALOG(dialog), "close", "OK"); */
+  const std::string response_id = "close";
+  adw_message_dialog_add_response(ADW_MESSAGE_DIALOG(dialog), response_id.c_str(), "Close (Press ESC)");
+  adw_message_dialog_set_default_response(ADW_MESSAGE_DIALOG(dialog), response_id.c_str());
 
   gtk_window_present(GTK_WINDOW(dialog));
 }
