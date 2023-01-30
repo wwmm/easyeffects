@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-25 18:39+0000\n"
+"POT-Creation-Date: 2023-01-30 14:12+0000\n"
 "PO-Revision-Date: 2023-01-25 07:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2242,8 +2242,10 @@ msgid "APO Presets"
 msgstr "Perfiles APO"
 
 #: src/equalizer_ui.cpp:389
+#, fuzzy
 msgid ""
-"APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
+"APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+"Content."
 msgstr ""
 "El preajuste APO no se ha cargado. El formato del archivo puede ser "
 "incorrecto. Por favor, compruebe su contenido."
@@ -2256,10 +2258,11 @@ msgstr "Importar archivo preestablecido de GraphicEQ"
 msgid "GraphicEQ Presets"
 msgstr "Preajustes de GraphicEQ"
 
-#: src/equalizer_ui.cpp:580
+#: src/equalizer_ui.cpp:581
+#, fuzzy
 msgid ""
-"GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
-"Content."
+"GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
+"Its Content."
 msgstr ""
 "El preajuste de GraphicEQ no se ha cargado. El formato del archivo puede que "
 "ser incorrecto. Por favor, compruebe su contenido."
@@ -2375,26 +2378,21 @@ msgid "Stereo Tools"
 msgstr "Herramientas estéreo"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:81
+#: src/ui_helpers.cpp:67
 msgid "{} Not Available"
 msgstr "{} No disponible"
 
 #. For translators: {} is replaced by the package name.
-#: src/ui_helpers.cpp:84
+#: src/ui_helpers.cpp:70
 msgid "{} Is Not Installed On The System"
 msgstr "{} no está instalado en el Sistema"
 
-#. Add custom button to hint the user to press ESC to destroy the dialog.
-#. This has been introduced because multiple GTK4 dialogs shown at
-#. the same time could have issues on Wayland and the only way to
-#. close the outer one is pressing ESC, the mouse click does not work.
-#: src/ui_helpers.cpp:116
-msgid "Close (Press ESC)"
-msgstr "Cerrar (Pulsar ESC)"
-
-#: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "infinito"
+
+#~ msgid "Close (Press ESC)"
+#~ msgstr "Cerrar (Pulsar ESC)"
 
 #~ msgid "Frame Size"
 #~ msgstr "Tamaño del cuadro"

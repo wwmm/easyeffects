@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-25 18:39+0000\n"
+"POT-Creation-Date: 2023-01-30 14:12+0000\n"
 "PO-Revision-Date: 2023-01-01 00:54+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2240,8 +2240,10 @@ msgid "APO Presets"
 msgstr "APO-voorinstellingen"
 
 #: src/equalizer_ui.cpp:389
+#, fuzzy
 msgid ""
-"APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
+"APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+"Content."
 msgstr ""
 "APO-voorinstelling niet geladen. Bestandsformaat is mogelijk incorrect. "
 "Controleer de inhoud."
@@ -2254,10 +2256,11 @@ msgstr "GraphicEQ-voorinstellingsbestand importeren"
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ-voorinstellingen"
 
-#: src/equalizer_ui.cpp:580
+#: src/equalizer_ui.cpp:581
+#, fuzzy
 msgid ""
-"GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
-"Content."
+"GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
+"Its Content."
 msgstr ""
 "GraphicEQ-voorinstelling niet geladen. Bestandsformaat is mogelijk "
 "incorrect. Controleer de inhoud."
@@ -2371,26 +2374,21 @@ msgid "Stereo Tools"
 msgstr "Stereobediening"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:81
+#: src/ui_helpers.cpp:67
 msgid "{} Not Available"
 msgstr "{} is niet beschikbaar"
 
 #. For translators: {} is replaced by the package name.
-#: src/ui_helpers.cpp:84
+#: src/ui_helpers.cpp:70
 msgid "{} Is Not Installed On The System"
 msgstr "{} is niet geïnstalleerd op dit systeem"
 
-#. Add custom button to hint the user to press ESC to destroy the dialog.
-#. This has been introduced because multiple GTK4 dialogs shown at
-#. the same time could have issues on Wayland and the only way to
-#. close the outer one is pressing ESC, the mouse click does not work.
-#: src/ui_helpers.cpp:116
-msgid "Close (Press ESC)"
-msgstr "Sluiten (ESC)"
-
-#: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "- ∞"
+
+#~ msgid "Close (Press ESC)"
+#~ msgstr "Sluiten (ESC)"
 
 #~ msgid "Frame Size"
 #~ msgstr "Framegrootte"

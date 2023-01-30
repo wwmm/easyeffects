@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-25 18:39+0000\n"
+"POT-Creation-Date: 2023-01-30 14:12+0000\n"
 "PO-Revision-Date: 2023-01-26 09:52+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2254,8 +2254,10 @@ msgid "APO Presets"
 msgstr "APO 预设"
 
 #: src/equalizer_ui.cpp:389
+#, fuzzy
 msgid ""
-"APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
+"APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+"Content."
 msgstr "APO 预设没加载成功。可能是文件格式有错。请检查文件内容。"
 
 #: src/equalizer_ui.cpp:556
@@ -2266,10 +2268,11 @@ msgstr "导入 GraphicEQ 预设文件"
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ 预设"
 
-#: src/equalizer_ui.cpp:580
+#: src/equalizer_ui.cpp:581
+#, fuzzy
 msgid ""
-"GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
-"Content."
+"GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
+"Its Content."
 msgstr "GraphicEQ 未加载。可能是文件格式错误。请检查文件内容。"
 
 #: src/pipe_manager_box.cpp:328
@@ -2380,26 +2383,21 @@ msgid "Stereo Tools"
 msgstr "立体声工具"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:81
+#: src/ui_helpers.cpp:67
 msgid "{} Not Available"
 msgstr "{} 不可用"
 
 #. For translators: {} is replaced by the package name.
-#: src/ui_helpers.cpp:84
+#: src/ui_helpers.cpp:70
 msgid "{} Is Not Installed On The System"
 msgstr "{} 未在系统中安装"
 
-#. Add custom button to hint the user to press ESC to destroy the dialog.
-#. This has been introduced because multiple GTK4 dialogs shown at
-#. the same time could have issues on Wayland and the only way to
-#. close the outer one is pressing ESC, the mouse click does not work.
-#: src/ui_helpers.cpp:116
-msgid "Close (Press ESC)"
-msgstr "关闭（请按 ESC）"
-
-#: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "Close (Press ESC)"
+#~ msgstr "关闭（请按 ESC）"
 
 #~ msgid "Frame Size"
 #~ msgstr "音帧长度"

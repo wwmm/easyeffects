@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-25 18:39+0000\n"
+"POT-Creation-Date: 2023-01-30 14:12+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -2443,7 +2443,8 @@ msgstr "Perfiles"
 
 #: src/equalizer_ui.cpp:389
 msgid ""
-"APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
+"APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+"Content."
 msgstr ""
 
 #: src/equalizer_ui.cpp:556
@@ -2456,10 +2457,10 @@ msgstr "Importar Perfiles"
 msgid "GraphicEQ Presets"
 msgstr "Perfiles de Dispositivos de Entrada: "
 
-#: src/equalizer_ui.cpp:580
+#: src/equalizer_ui.cpp:581
 msgid ""
-"GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
-"Content."
+"GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
+"Its Content."
 msgstr ""
 
 #: src/pipe_manager_box.cpp:328
@@ -2574,24 +2575,16 @@ msgid "Stereo Tools"
 msgstr "Herramientas Estéreo"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:81
+#: src/ui_helpers.cpp:67
 msgid "{} Not Available"
 msgstr ""
 
 #. For translators: {} is replaced by the package name.
-#: src/ui_helpers.cpp:84
+#: src/ui_helpers.cpp:70
 msgid "{} Is Not Installed On The System"
 msgstr ""
 
-#. Add custom button to hint the user to press ESC to destroy the dialog.
-#. This has been introduced because multiple GTK4 dialogs shown at
-#. the same time could have issues on Wayland and the only way to
-#. close the outer one is pressing ESC, the mouse click does not work.
-#: src/ui_helpers.cpp:116
-msgid "Close (Press ESC)"
-msgstr ""
-
-#: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr ""
 

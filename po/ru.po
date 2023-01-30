@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-25 18:39+0000\n"
+"POT-Creation-Date: 2023-01-30 14:12+0000\n"
 "PO-Revision-Date: 2023-01-05 21:48+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2293,8 +2293,10 @@ msgid "APO Presets"
 msgstr "Предустановки APO"
 
 #: src/equalizer_ui.cpp:389
+#, fuzzy
 msgid ""
-"APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."
+"APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+"Content."
 msgstr ""
 "Предустановки APO не загружены. Формат файла может быть не верным. "
 "Пожалуйста, проверьте его содержимое."
@@ -2307,10 +2309,11 @@ msgstr "Импортировать файл предустановки GraphicEQ
 msgid "GraphicEQ Presets"
 msgstr "Предустановки GraphicEQ"
 
-#: src/equalizer_ui.cpp:580
+#: src/equalizer_ui.cpp:581
+#, fuzzy
 msgid ""
-"GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its "
-"Content."
+"GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
+"Its Content."
 msgstr ""
 "Предустановка GraphicEQ не загружена. Формат файла может быть не верным. "
 "Пожалуйста, проверьте его содержимое."
@@ -2427,26 +2430,21 @@ msgid "Stereo Tools"
 msgstr "Стереокорректоры"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:81
+#: src/ui_helpers.cpp:67
 msgid "{} Not Available"
 msgstr "{} недоступно"
 
 #. For translators: {} is replaced by the package name.
-#: src/ui_helpers.cpp:84
+#: src/ui_helpers.cpp:70
 msgid "{} Is Not Installed On The System"
 msgstr "{} не установлено в системе"
 
-#. Add custom button to hint the user to press ESC to destroy the dialog.
-#. This has been introduced because multiple GTK4 dialogs shown at
-#. the same time could have issues on Wayland and the only way to
-#. close the outer one is pressing ESC, the mouse click does not work.
-#: src/ui_helpers.cpp:116
-msgid "Close (Press ESC)"
-msgstr "Закрыть (нажмите ESC)"
-
-#: src/ui_helpers.cpp:140 src/ui_helpers.cpp:160
+#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "∞"
+
+#~ msgid "Close (Press ESC)"
+#~ msgstr "Закрыть (нажмите ESC)"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #~ msgid "Frame Size"
