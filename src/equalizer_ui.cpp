@@ -386,7 +386,7 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
                        // notify error on preset loading
                        ui::show_fixed_toast(
                            self->toast_overlay,
-                           _("APO Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."));
+                           _("APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its Content."));
                      }
 
                      g_free(path);
@@ -563,28 +563,29 @@ void on_import_geq_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
   gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
 
-  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, EqualizerBox* self) {
-                     if (response != GTK_RESPONSE_ACCEPT) {
-                       g_object_unref(dialog);
-                       return;
-                     }
+  g_signal_connect(
+      dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, EqualizerBox* self) {
+        if (response != GTK_RESPONSE_ACCEPT) {
+          g_object_unref(dialog);
+          return;
+        }
 
-                     auto* chooser = GTK_FILE_CHOOSER(dialog);
-                     auto* file = gtk_file_chooser_get_file(chooser);
-                     auto* path = g_file_get_path(file);
+        auto* chooser = GTK_FILE_CHOOSER(dialog);
+        auto* file = gtk_file_chooser_get_file(chooser);
+        auto* path = g_file_get_path(file);
 
-                     if (!import_graphiceq_preset(self, path)) {
-                       // notify error on preset loading
-                       ui::show_fixed_toast(
-                           self->toast_overlay,
-                           _("GraphicEQ Preset Not Loaded. File Format May Be Wrong. Please Check Its Content."));
-                     }
+        if (!import_graphiceq_preset(self, path)) {
+          // notify error on preset loading
+          ui::show_fixed_toast(
+              self->toast_overlay,
+              _("GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check Its Content."));
+        }
 
-                     g_free(path);
-                     g_object_unref(file);
-                     g_object_unref(dialog);
-                   }),
-                   self);
+        g_free(path);
+        g_object_unref(file);
+        g_object_unref(dialog);
+      }),
+      self);
 
   gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
   gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
