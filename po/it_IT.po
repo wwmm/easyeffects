@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-30 14:12+0000\n"
-"PO-Revision-Date: 2023-01-01 20:49+0000\n"
+"PO-Revision-Date: 2023-01-31 05:40+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -2242,13 +2242,12 @@ msgid "APO Presets"
 msgstr "Profili APO"
 
 #: src/equalizer_ui.cpp:389
-#, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
-"Profilo APO Non Caricato. Il Formato Potrebbe Essere Errato. Si Prega di "
-"Controllare il Contenuto."
+"Profilo APO Non Caricato. Il Formato Potrebbe Essere Non Supportato. Si "
+"Prega di Controllarne il Contenuto."
 
 #: src/equalizer_ui.cpp:556
 msgid "Import GraphicEQ Preset File"
@@ -2259,13 +2258,12 @@ msgid "GraphicEQ Presets"
 msgstr "Profili GraphicEQ"
 
 #: src/equalizer_ui.cpp:581
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
-"Profilo GraphicEQ Non Caricato. Il Formato Potrebbe Essere Errato. Si Prega "
-"di Controllare il Contenuto."
+"Profilo GraphicEQ Non Caricato. Il Formato Potrebbe Essere Non Supportato. "
+"Si Prega di Controllarne il Contenuto."
 
 #: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
