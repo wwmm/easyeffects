@@ -68,8 +68,14 @@ void Spectrum::setup() {
 
   std::ranges::fill(real_input, 0.0F);
 
-  if (n_samples < output.size()) {
-    while (deque_in_mono.size() != output.size() - n_samples) {
+  /*
+    real_input size is hardcoded to 8192. THe same maxium buffer size hardcoded in PipeWire
+    https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/pipewire/filter.c#L48. If we reevei a smaller
+    array we have to insert some zeros in the beginning.
+  */
+
+  if (n_samples < real_input.size()) {
+    while (deque_in_mono.size() != real_input.size() - n_samples) {
       deque_in_mono.push_back(0.0F);
     }
   }

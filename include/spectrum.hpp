@@ -56,7 +56,7 @@ class Spectrum : public PluginBase {
   std::vector<float> real_input;
   std::vector<double> output;
 
-  uint n_bands = 4096U;
+  uint n_bands = 8192U;
 
   std::deque<float> deque_in_mono;
 };
