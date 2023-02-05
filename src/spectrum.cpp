@@ -62,7 +62,17 @@ Spectrum::~Spectrum() {
 void Spectrum::setup() {
   notification_dt = 0.0F;
 
-  fft_buffer_duration = static_cast<float>(n_bands) / static_cast<float>(rate);
+  clock_start = std::chrono::system_clock::now();
+
+  deque_in_mono.resize(0U);
+
+  std::ranges::fill(real_input, 0.0F);
+
+  if (n_samples < output.size()) {
+    while (deque_in_mono.size() != output.size() - n_samples) {
+      deque_in_mono.push_back(0.0F);
+    }
+  }
 }
 
 void Spectrum::process(std::span<float>& left_in,
@@ -78,41 +88,45 @@ void Spectrum::process(std::span<float>& left_in,
     return;
   }
 
-  uint count = 0U;
+  for (uint n = 0U; n < left_in.size(); n++) {
+    deque_in_mono.push_back(0.5F * (left_in[n] + right_in[n]));
+  }
 
-  for (uint n = 0U; n < left_in.size(); n++, count++) {
-    if (const uint k = total_count + n; k < real_input.size()) {
-      // https://en.wikipedia.org/wiki/Hann_function
+  for (size_t n = 0; n < deque_in_mono.size(); n++) {
+    if (n < real_input.size()) {
+      // https :  // en.wikipedia.org/wiki/Hann_function
 
-      const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(k) /
+      const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
                                               static_cast<float>(real_input.size() - 1U)));
 
-      real_input[k] = 0.5F * (left_in[n] + right_in[n]) * w;
-    } else {
-      break;
+      real_input[n] = deque_in_mono[n] * w;
     }
   }
 
-  total_count += count;
+  size_t count = 0U;
 
-  if (total_count == real_input.size()) {
-    total_count = 0U;
+  while (count < n_samples && !deque_in_mono.empty()) {
+    deque_in_mono.pop_front();
 
-    fftwf_execute(plan);
-
-    for (uint i = 0U; i < output.size(); i++) {
-      float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
-
-      sqr /= static_cast<float>(output.size() * output.size());
-
-      output[i] = static_cast<double>(sqr);
-    }
+    count++;
   }
 
-  notification_dt += fft_buffer_duration;
+  fftwf_execute(plan);
 
-  if (notification_dt >= notification_time_window) {
-    notification_dt = 0.0F;
+  for (uint i = 0U; i < output.size(); i++) {
+    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+
+    sqr /= static_cast<float>(output.size() * output.size());
+
+    output[i] = static_cast<double>(sqr);
+  }
+
+  auto delta_t = 0.001F * static_cast<float>(std::chrono::duration_cast<std::chrono::milliseconds>(
+                                                 std::chrono::system_clock::now() - clock_start)
+                                                 .count());
+
+  if (delta_t >= notification_time_window) {
+    clock_start = std::chrono::system_clock::now();
 
     util::idle_add([=, this]() {
       if (bypass) {

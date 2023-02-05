@@ -56,7 +56,7 @@ class Spectrum : public PluginBase {
   std::vector<float> real_input;
   std::vector<double> output;
 
-  uint n_bands = 4096U, total_count = 0U;
+  uint n_bands = 4096U;
 
-  float fft_buffer_duration = 0.0F;
+  std::deque<float> deque_in_mono;
 };

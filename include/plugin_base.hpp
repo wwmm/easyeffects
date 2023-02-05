@@ -138,6 +138,8 @@ class PluginBase {
   float notification_time_window = 1.0F / 20.0F;  // seconds
   float notification_dt = 0.0F;
 
+  std::chrono::time_point<std::chrono::system_clock> clock_start;
+
   std::vector<gulong> gconnections;
 
   void setup_input_output_gain();
