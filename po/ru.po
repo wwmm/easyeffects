@@ -101,9 +101,8 @@ msgid "Presets Menu"
 msgstr "Меню предустановок"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid "Enable/disable the global bypass"
-msgstr "Включить/выключить это приложение"
+msgstr "Включить/отключить общий обход"
 
 #: data/ui/application_window.ui:67
 msgid "Global Bypass"
@@ -2293,12 +2292,11 @@ msgid "APO Presets"
 msgstr "Предустановки APO"
 
 #: src/equalizer_ui.cpp:389
-#, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
-"Предустановки APO не загружены. Формат файла может быть не верным. "
+"Предустановка APO не загружена. Возможно, формат файла не поддерживается. "
 "Пожалуйста, проверьте его содержимое."
 
 #: src/equalizer_ui.cpp:556
@@ -2310,13 +2308,12 @@ msgid "GraphicEQ Presets"
 msgstr "Предустановки GraphicEQ"
 
 #: src/equalizer_ui.cpp:581
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
-"Предустановка GraphicEQ не загружена. Формат файла может быть не верным. "
-"Пожалуйста, проверьте его содержимое."
+"Предустановка GraphicEQ не загружена. Возможно, формат файла не "
+"поддерживается. Пожалуйста, проверьте его содержимое."
 
 #: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
