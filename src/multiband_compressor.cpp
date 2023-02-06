@@ -142,9 +142,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
-    notification_dt += buffer_duration;
-
-    if (notification_dt >= notification_time_window) {
+    if (send_notifications) {
       for (uint n = 0U; n < n_bands; n++) {
         const auto nstr = util::to_string(n);
 
@@ -160,8 +158,6 @@ void MultibandCompressor::process(std::span<float>& left_in,
       reduction.emit(reduction_port_array);
 
       notify();
-
-      notification_dt = 0.0F;
     }
   }
 }

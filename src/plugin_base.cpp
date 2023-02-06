@@ -34,7 +34,6 @@ void on_process(void* userdata, spa_io_position* position) {
   if (rate != d->pb->rate || n_samples != d->pb->n_samples) {
     d->pb->rate = rate;
     d->pb->n_samples = n_samples;
-    d->pb->buffer_duration = static_cast<float>(n_samples) / static_cast<float>(rate);
 
     d->pb->dummy_left.resize(n_samples);
     d->pb->dummy_right.resize(n_samples);
@@ -42,8 +41,16 @@ void on_process(void* userdata, spa_io_position* position) {
     std::ranges::fill(d->pb->dummy_left, 0.0F);
     std::ranges::fill(d->pb->dummy_right, 0.0F);
 
+    d->pb->clock_start = std::chrono::system_clock::now();
+
     d->pb->setup();
   }
+
+  d->pb->delta_t = 0.001F * static_cast<float>(std::chrono::duration_cast<std::chrono::milliseconds>(
+                                                   std::chrono::system_clock::now() - d->pb->clock_start)
+                                                   .count());
+
+  d->pb->send_notifications = d->pb->delta_t >= d->pb->notification_time_window;
 
   // util::warning("processing: " + util::to_string(n_samples));
 
@@ -99,6 +106,12 @@ void on_process(void* userdata, spa_io_position* position) {
 
       d->pb->process(left_in, right_in, left_out, right_out, l, r);
     }
+  }
+
+  if (d->pb->send_notifications) {
+    d->pb->clock_start = std::chrono::system_clock::now();
+
+    d->pb->send_notifications = false;
   }
 }
 

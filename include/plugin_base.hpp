@@ -73,13 +73,19 @@ class PluginBase {
 
   uint rate = 0U;
 
-  float buffer_duration = 0.0F;
-
   bool package_installed = true;
 
   bool bypass = false;
 
   bool connected_to_pw = false;
+
+  bool send_notifications = false;
+
+  float delta_t = 0.0F;
+
+  float notification_time_window = 1.0F / 20.0F;  // seconds
+
+  std::chrono::time_point<std::chrono::system_clock> clock_start;
 
   std::vector<float> dummy_left, dummy_right;
 
@@ -134,11 +140,6 @@ class PluginBase {
 
   float input_gain = 1.0F;
   float output_gain = 1.0F;
-
-  float notification_time_window = 1.0F / 20.0F;  // seconds
-  float notification_dt = 0.0F;
-
-  std::chrono::time_point<std::chrono::system_clock> clock_start;
 
   std::vector<gulong> gconnections;
 

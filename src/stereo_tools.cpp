@@ -145,12 +145,8 @@ void StereoTools::process(std::span<float>& left_in,
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
-    notification_dt += buffer_duration;
-
-    if (notification_dt >= notification_time_window) {
+    if (send_notifications) {
       notify();
-
-      notification_dt = 0.0F;
     }
   }
 }

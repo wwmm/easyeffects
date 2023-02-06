@@ -175,9 +175,7 @@ void Gate::process(std::span<float>& left_in,
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
-    notification_dt += buffer_duration;
-
-    if (notification_dt >= notification_time_window) {
+    if (send_notifications) {
       attack_zone_start_port_value = lv2_wrapper->get_control_port_value("gzs");
       attack_threshold_port_value = lv2_wrapper->get_control_port_value("gt");
       release_zone_start_port_value = lv2_wrapper->get_control_port_value("hts");
@@ -205,8 +203,6 @@ void Gate::process(std::span<float>& left_in,
       gating.emit(gating_port_value);
 
       notify();
-
-      notification_dt = 0.0F;
     }
   }
 }

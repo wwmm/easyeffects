@@ -186,9 +186,7 @@ void Compressor::process(std::span<float>& left_in,
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
-    notification_dt += buffer_duration;
-
-    if (notification_dt >= notification_time_window) {
+    if (send_notifications) {
       reduction_port_value = lv2_wrapper->get_control_port_value("rlm");
       sidechain_port_value = lv2_wrapper->get_control_port_value("slm");
       curve_port_value = lv2_wrapper->get_control_port_value("clm");
@@ -200,8 +198,6 @@ void Compressor::process(std::span<float>& left_in,
       envelope.emit(envelope_port_value);
 
       notify();
-
-      notification_dt = 0.0F;
     }
   }
 }

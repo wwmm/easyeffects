@@ -60,10 +60,6 @@ Spectrum::~Spectrum() {
 }
 
 void Spectrum::setup() {
-  notification_dt = 0.0F;
-
-  clock_start = std::chrono::system_clock::now();
-
   deque_in_mono.resize(0U);
 
   std::ranges::fill(real_input, 0.0F);
@@ -127,13 +123,7 @@ void Spectrum::process(std::span<float>& left_in,
     output[i] = static_cast<double>(sqr);
   }
 
-  auto delta_t = 0.001F * static_cast<float>(std::chrono::duration_cast<std::chrono::milliseconds>(
-                                                 std::chrono::system_clock::now() - clock_start)
-                                                 .count());
-
-  if (delta_t >= notification_time_window) {
-    clock_start = std::chrono::system_clock::now();
-
+  if (send_notifications) {
     util::idle_add([=, this]() {
       if (bypass) {
         return;

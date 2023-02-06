@@ -163,9 +163,7 @@ void Limiter::process(std::span<float>& left_in,
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
-    notification_dt += buffer_duration;
-
-    if (notification_dt >= notification_time_window) {
+    if (send_notifications) {
       gain_l_port_value = lv2_wrapper->get_control_port_value("grlm_l");
       gain_r_port_value = lv2_wrapper->get_control_port_value("grlm_r");
       sidechain_l_port_value = lv2_wrapper->get_control_port_value("sclm_l");
@@ -177,8 +175,6 @@ void Limiter::process(std::span<float>& left_in,
       sidechain_right.emit(sidechain_r_port_value);
 
       notify();
-
-      notification_dt = 0.0F;
     }
   }
 }
