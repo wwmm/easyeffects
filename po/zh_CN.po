@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 13:12-0300\n"
-"PO-Revision-Date: 2023-01-26 09:52+0000\n"
+"PO-Revision-Date: 2023-02-06 16:58+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -2254,11 +2254,10 @@ msgid "APO Presets"
 msgstr "APO 预设"
 
 #: src/equalizer_ui.cpp:389
-#, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
-msgstr "APO 预设没加载成功。可能是文件格式有错。请检查文件内容。"
+msgstr "APO 预设未成功加载。可能是文件格式不受支持。请检查文件内容。"
 
 #: src/equalizer_ui.cpp:556
 msgid "Import GraphicEQ Preset File"
@@ -2269,11 +2268,10 @@ msgid "GraphicEQ Presets"
 msgstr "GraphicEQ 预设"
 
 #: src/equalizer_ui.cpp:581
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
-msgstr "GraphicEQ 未加载。可能是文件格式错误。请检查文件内容。"
+msgstr "GraphicEQ 预设未成功加载。可能是文件格式不受支持。请检查文件内容。"
 
 #: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
