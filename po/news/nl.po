@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-05 13:12-0300\n"
-"PO-Revision-Date: 2023-01-25 18:34+0000\n"
+"PO-Revision-Date: 2023-02-10 05:38+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -121,6 +121,8 @@ msgid ""
 "It is now possible to add more than one filter instance to the effects "
 "pipeline."
 msgstr ""
+"Het is nu mogelijk om meer dan één filterinstantie aan de effecten-pipeline "
+"toe te voegen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
@@ -129,20 +131,28 @@ msgid ""
 "a decent alternative to the cases whre the rnnoise library does not work "
 "well."
 msgstr ""
+"Een nieuwe `Speech Processor`-plug-in gebaseerd op de Speex-bibliotheek is "
+"toegevoegd. Naast ruisonderdrukking biedt het ook detectie voor "
+"stemactiviteit. Het is een goed alternatief voor de gevallen waar de RNNoise-"
+"bibliotheek niet goed werkt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "Improved compatibility with Linux Studio Plugins `1.2.3`."
-msgstr ""
+msgstr "Compatibiliteit met Linux Studio Plugins `1.2.3` verbeterd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
 msgstr ""
+"GraphicEQ-voorinstellingen kunnen worden geïmporteerd in het equalizer-"
+"effect."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid ""
 "The application name has been changed to `Easy Effects` to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
+"De app-naam is veranderd naar `Easy Effects` om aan de naamgevingsconventies "
+"van de GNOME Human Interface Guidelines te voldoen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:45
 msgid "The documentation has been updated."
@@ -340,7 +350,7 @@ msgstr "Crashes verholpen wanneer pw-mididump actief is"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "De interface van de pitch-plug-in is verbeterd"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
 msgid "Our application icon is now compatible with desktops that uses QT"
