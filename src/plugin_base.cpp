@@ -132,7 +132,11 @@ PluginBase::PluginBase(std::string tag,
       enable_probe(enable_probe),
       settings(g_settings_new_with_path(schema.c_str(), schema_path.c_str())),
       pm(pipe_manager) {
+  std::string description;
+
   if (name != "output_level" && name != "spectrum") {
+    description = tags::plugin_name::get_translated()[name];
+
     bypass = g_settings_get_boolean(settings, "bypass") != 0;
 
     gconnections.push_back(g_signal_connect(settings, "changed::bypass",
@@ -142,6 +146,10 @@ PluginBase::PluginBase(std::string tag,
                                               self->bypass = g_settings_get_boolean(settings, "bypass") != 0;
                                             }),
                                             this));
+  } else if (name == "output_level") {
+    description = _("Output Level Meter");
+  } else if (name == "spectrum") {
+    description = _("Spectrum");
   }
 
   pf_data.pb = this;
@@ -155,7 +163,7 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_filter, PW_KEY_APP_ID, tags::app::id);
   pw_properties_set(props_filter, PW_KEY_NODE_NAME, filter_name.c_str());
   pw_properties_set(props_filter, PW_KEY_NODE_NICK, name.c_str());
-  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, name.c_str());
+  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, description.c_str());
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");

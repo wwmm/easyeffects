@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 13:12-0300\n"
+"POT-Creation-Date: 2023-02-16 11:22-0300\n"
 "PO-Revision-Date: 2023-01-31 05:40+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -659,7 +659,7 @@ msgstr "Combina"
 msgid "Stereo Width"
 msgstr "Ampiezza Stereo"
 
-#: data/ui/convolver.ui:114
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
 msgid "Spectrum"
 msgstr "Spettro"
 
@@ -2268,6 +2268,11 @@ msgstr ""
 #: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr "Rimuovi Profilo di Auto Caricamento"
+
+#: src/plugin_base.cpp:150
+#, fuzzy
+msgid "Output Level Meter"
+msgstr "Dispositivo Uscita"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 13:12-0300\n"
+"POT-Creation-Date: 2023-02-16 11:22-0300\n"
 "PO-Revision-Date: 2023-02-06 16:58+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -659,7 +659,7 @@ msgstr "混合"
 msgid "Stereo Width"
 msgstr "立体声宽度"
 
-#: data/ui/convolver.ui:114
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
 msgid "Spectrum"
 msgstr "频谱"
 
@@ -2276,6 +2276,11 @@ msgstr "GraphicEQ 预设未成功加载。可能是文件格式不受支持。�
 #: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr "删除自动加载预设"
+
+#: src/plugin_base.cpp:150
+#, fuzzy
+msgid "Output Level Meter"
+msgstr "输出设备"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"

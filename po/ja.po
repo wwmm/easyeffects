@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 13:12-0300\n"
+"POT-Creation-Date: 2023-02-16 11:22-0300\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -662,7 +662,7 @@ msgstr "コンバイン"
 msgid "Stereo Width"
 msgstr "ステレオ幅"
 
-#: data/ui/convolver.ui:114
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
 msgid "Spectrum"
 msgstr "スペクトラム"
 
@@ -2284,6 +2284,11 @@ msgstr ""
 #: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr "自動読み込みプリセットを削除"
+
+#: src/plugin_base.cpp:150
+#, fuzzy
+msgid "Output Level Meter"
+msgstr "出力デバイス"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"

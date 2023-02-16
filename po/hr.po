@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 13:12-0300\n"
+"POT-Creation-Date: 2023-02-16 11:22-0300\n"
 "PO-Revision-Date: 2022-09-29 01:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -724,7 +724,7 @@ msgstr ""
 msgid "Stereo Width"
 msgstr "Stereo širina"
 
-#: data/ui/convolver.ui:114
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
 msgid "Spectrum"
 msgstr "Spektar"
 
@@ -2499,6 +2499,11 @@ msgstr ""
 #: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
 msgstr ""
+
+#: src/plugin_base.cpp:150
+#, fuzzy
+msgid "Output Level Meter"
+msgstr "Pojačanje ulaza"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"

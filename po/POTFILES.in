@@ -62,6 +62,7 @@ src/effects_box.cpp
 src/equalizer_band_box.cpp
 src/equalizer_ui.cpp
 src/pipe_manager_box.cpp
+src/plugin_base.cpp
 src/plugins_box.cpp
 src/plugins_menu.cpp
 src/presets_menu.cpp
