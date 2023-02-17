@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-16 11:22-0300\n"
-"PO-Revision-Date: 2023-01-31 23:56+0000\n"
+"PO-Revision-Date: 2023-02-17 07:39+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -2270,9 +2270,8 @@ msgid "Remove Autoloading Preset"
 msgstr "Eliminar perfil de carga automática"
 
 #: src/plugin_base.cpp:150
-#, fuzzy
 msgid "Output Level Meter"
-msgstr "Dispositivo de salida"
+msgstr "Medidor del nivel de salida"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"
