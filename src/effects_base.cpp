@@ -54,6 +54,29 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
                                             self->broadcast_pipeline_latency();
                                           }),
                                           this));
+
+  gconnections.push_back(g_signal_connect(global_settings, "changed::meters-update-interval",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto self = static_cast<EffectsBase*>(user_data);
+
+                                            auto v = g_settings_get_int(settings, key);
+
+                                            self->spectrum->notification_time_window = 0.001F * v;
+
+                                            for (auto& plugin : self->plugins | std::views::values) {
+                                              plugin->notification_time_window = 0.001F * v;
+                                            }
+                                          }),
+                                          this));
+
+  auto notification_time_window =
+      0.001F * static_cast<float>(g_settings_get_int(global_settings, "meters-update-interval"));
+
+  spectrum->notification_time_window = notification_time_window;
+
+  for (auto& plugin : plugins | std::views::values) {
+    plugin->notification_time_window = notification_time_window;
+  }
 }
 
 EffectsBase::~EffectsBase() {

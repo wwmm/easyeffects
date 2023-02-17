@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 11:22-0300\n"
+"POT-Creation-Date: 2023-02-17 12:20-0300\n"
 "PO-Revision-Date: 2023-02-06 16:58+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1737,15 +1737,19 @@ msgstr "使用非线性（立方）音量调节"
 msgid "Inactivity Timeout"
 msgstr "空闲超时"
 
-#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:113
+msgid "Update Interval (Level Meters and Spectrum)"
+msgstr ""
+
+#: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "界面风格"
 
-#: data/ui/preferences_general.ui:118
+#: data/ui/preferences_general.ui:141
 msgid "Use Dark Theme"
 msgstr "使用暗色主题"
 
-#: data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:153
 msgid "Hide Menus on Outside Clicks"
 msgstr "点击外部时隐藏菜单"
 

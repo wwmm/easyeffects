@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 11:22-0300\n"
+"POT-Creation-Date: 2023-02-17 12:20-0300\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1742,15 +1742,19 @@ msgstr "Použít krychlový objem"
 msgid "Inactivity Timeout"
 msgstr "časový limit nečinnosti"
 
-#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:113
+msgid "Update Interval (Level Meters and Spectrum)"
+msgstr ""
+
+#: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Styl"
 
-#: data/ui/preferences_general.ui:118
+#: data/ui/preferences_general.ui:141
 msgid "Use Dark Theme"
 msgstr "Použít tmavý vzhled"
 
-#: data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:153
 msgid "Hide Menus on Outside Clicks"
 msgstr "Skrýt menu při kliknutí vedle"
 

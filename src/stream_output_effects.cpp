@@ -125,15 +125,9 @@ void StreamOutputEffects::on_app_added(const NodeInfo node_info) {
 }
 
 auto StreamOutputEffects::apps_want_to_play() -> bool {
-  for (const auto& link : pm->list_links) {
-    if (link.input_node_id == pm->ee_sink_node.id) {
-      if (link.state == PW_LINK_STATE_ACTIVE) {
-        return true;
-      }
-    }
-  }
-
-  return false;
+  return std::ranges::any_of(pm->list_links, [&](const auto& link) {
+    return (link.input_node_id == pm->ee_sink_node.id) && (link.state == PW_LINK_STATE_ACTIVE);
+  });
 }
 
 void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {

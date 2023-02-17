@@ -29,7 +29,7 @@ struct _PreferencesGeneral {
   GtkSwitch *enable_autostart, *process_all_inputs, *process_all_outputs, *theme_switch, *shutdown_on_window_close,
       *use_cubic_volumes, *autohide_popovers, *exclude_monitor_streams;
 
-  GtkSpinButton* inactivity_timeout;
+  GtkSpinButton *inactivity_timeout, *meters_update_interval;
 
   GSettings* settings;
 };
@@ -109,6 +109,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, use_cubic_volumes);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, exclude_monitor_streams);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, inactivity_timeout);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, meters_update_interval);
 }
 
 void preferences_general_init(PreferencesGeneral* self) {
@@ -116,15 +117,17 @@ void preferences_general_init(PreferencesGeneral* self) {
 
   self->settings = g_settings_new(tags::app::id);
 
-  prepare_spinbuttons<"s">(self->inactivity_timeout);
+  prepare_spinbutton<"s">(self->inactivity_timeout);
+  prepare_spinbutton<"ms">(self->meters_update_interval);
 
   // initializing some widgets
 
   gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
-                         "use-cubic-volumes", "autohide-popovers", "exclude-monitor-streams", "inactivity-timeout">(
+                         "use-cubic-volumes", "autohide-popovers", "exclude-monitor-streams", "inactivity-timeout",
+                         "meters-update-interval">(
       self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
       self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->exclude_monitor_streams,
-      self->inactivity_timeout);
+      self->inactivity_timeout, self->meters_update_interval);
 
 #ifdef USE_LIBPORTAL
   libportal::init(self->enable_autostart, self->shutdown_on_window_close);

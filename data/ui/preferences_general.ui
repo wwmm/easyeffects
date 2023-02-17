@@ -107,6 +107,29 @@
                         </child>
                     </object>
                 </child>
+
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Update Interval (Level Meters and Spectrum)</property>
+
+                        <child>
+                            <object class="GtkSpinButton" id="meters_update_interval">
+                                <property name="valign">center</property>
+                                <property name="width-chars">7</property>
+                                <property name="digits">0</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">1</property>
+                                        <property name="upper">3600</property>
+                                        <property name="step-increment">1</property>
+                                        <property name="page-increment">10</property>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
 

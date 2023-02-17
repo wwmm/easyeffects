@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 11:22-0300\n"
+"POT-Creation-Date: 2023-02-17 12:20-0300\n"
 "PO-Revision-Date: 2023-01-31 05:40+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1724,15 +1724,19 @@ msgstr "Usa Volume Cubico"
 msgid "Inactivity Timeout"
 msgstr "Tempo Inattività"
 
-#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:113
+msgid "Update Interval (Level Meters and Spectrum)"
+msgstr ""
+
+#: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Stile"
 
-#: data/ui/preferences_general.ui:118
+#: data/ui/preferences_general.ui:141
 msgid "Use Dark Theme"
 msgstr "Usa Tema Scuro"
 
-#: data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:153
 msgid "Hide Menus on Outside Clicks"
 msgstr "Chiudi Menu con Click Esterno"
 

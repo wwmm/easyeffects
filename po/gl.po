@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 11:22-0300\n"
+"POT-Creation-Date: 2023-02-17 12:20-0300\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -1861,15 +1861,19 @@ msgstr ""
 msgid "Inactivity Timeout"
 msgstr "Tempo límite da actividade"
 
-#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:113
+msgid "Update Interval (Level Meters and Spectrum)"
+msgstr ""
+
+#: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Estilo"
 
-#: data/ui/preferences_general.ui:118
+#: data/ui/preferences_general.ui:141
 msgid "Use Dark Theme"
 msgstr "Empregar tema escuro"
 
-#: data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:153
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 

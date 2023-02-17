@@ -6,8 +6,10 @@ Description:
 - Features∶
 - The spectrum plugin update rate was improved. Different sampling rates should lead to similar update frequencies 
 visually.
+- The update interval used by level meters and the spectrum can be customized by the user.
 - The equalizer band gain slider value can be updated in larger steps. Fine grain control is still possible through
 the keyboard up/down keys.
+- Small improvements to the echo canceller.
 
 - Bug fixes∶
 - The echo canceller probes were not being linked to the soundcard after the move to multiple filters intances. This

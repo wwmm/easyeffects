@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 11:22-0300\n"
+"POT-Creation-Date: 2023-02-17 12:20-0300\n"
 "PO-Revision-Date: 2022-10-04 21:21+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1747,15 +1747,19 @@ msgstr "Utiliser le volume cubique"
 msgid "Inactivity Timeout"
 msgstr "Délai d’inactivité"
 
-#: data/ui/preferences_general.ui:115 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:113
+msgid "Update Interval (Level Meters and Spectrum)"
+msgstr ""
+
+#: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Style"
 
-#: data/ui/preferences_general.ui:118
+#: data/ui/preferences_general.ui:141
 msgid "Use Dark Theme"
 msgstr "Utiliser le thème sombre"
 
-#: data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:153
 msgid "Hide Menus on Outside Clicks"
 msgstr "Masquer les menus en cliquant en dehors"
 
