@@ -55,19 +55,19 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
                                           }),
                                           this));
 
-  gconnections.push_back(g_signal_connect(global_settings, "changed::meters-update-interval",
-                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<EffectsBase*>(user_data);
+  gconnections_global.push_back(g_signal_connect(global_settings, "changed::meters-update-interval",
+                                                 G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                                   auto self = static_cast<EffectsBase*>(user_data);
 
-                                            auto v = g_settings_get_int(settings, key);
+                                                   auto v = g_settings_get_int(settings, key);
 
-                                            self->spectrum->notification_time_window = 0.001F * v;
+                                                   self->spectrum->notification_time_window = 0.001F * v;
 
-                                            for (auto& plugin : self->plugins | std::views::values) {
-                                              plugin->notification_time_window = 0.001F * v;
-                                            }
-                                          }),
-                                          this));
+                                                   for (auto& plugin : self->plugins | std::views::values) {
+                                                     plugin->notification_time_window = 0.001F * v;
+                                                   }
+                                                 }),
+                                                 this));
 
   auto notification_time_window =
       0.001F * static_cast<float>(g_settings_get_int(global_settings, "meters-update-interval"));
@@ -86,6 +86,10 @@ EffectsBase::~EffectsBase() {
 
   for (auto& handler_id : gconnections) {
     g_signal_handler_disconnect(settings, handler_id);
+  }
+
+  for (auto& handler_id : gconnections_global) {
+    g_signal_handler_disconnect(global_settings, handler_id);
   }
 
   g_object_unref(settings);

@@ -44,8 +44,8 @@
 #include "pitch.hpp"
 #include "reverb.hpp"
 #include "rnnoise.hpp"
-#include "speex.hpp"
 #include "spectrum.hpp"
+#include "speex.hpp"
 #include "stereo_tools.hpp"
 #include "tags_schema.hpp"
 
@@ -87,7 +87,7 @@ class EffectsBase {
   std::shared_ptr<Pitch> pitch;
   std::shared_ptr<Reverb> reverb;
   std::shared_ptr<RNNoise> rnnoise;
-    std::shared_ptr<Speex> speex;
+  std::shared_ptr<Speex> speex;
   std::shared_ptr<StereoTools> stereo_tools;
 
   auto get_pipeline_latency() -> float;
@@ -112,7 +112,7 @@ class EffectsBase {
 
   std::vector<sigc::connection> connections;
 
-  std::vector<gulong> gconnections;
+  std::vector<gulong> gconnections, gconnections_global;
 
   void create_filters_if_necessary();
 
