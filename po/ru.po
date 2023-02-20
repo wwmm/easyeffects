@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-17 12:20-0300\n"
-"PO-Revision-Date: 2023-02-18 21:39+0000\n"
+"PO-Revision-Date: 2023-02-20 00:59+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -35,7 +35,7 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "лимитер;компрессор;ребербатор;эквалайзер;автогромкость;"
+msgstr "лимитер;компрессор;ревербератор;эквалайзер;автогромкость;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
@@ -52,7 +52,7 @@ msgstr "Включить"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr "Исключённые приложения: Добавить/удалить это приложение"
+msgstr "Исключённые приложения: Добавить/убрать это приложение"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
