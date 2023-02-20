@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-17 12:20-0300\n"
+"POT-Creation-Date: 2023-02-20 02:36+0000\n"
 "PO-Revision-Date: 2023-02-18 20:37+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1727,15 +1727,14 @@ msgid "Update Interval (Level Meters and Spectrum)"
 msgstr "Update-interval (niveaumeters en spectrum)"
 
 #: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
-#: data/ui/preferences_general.ui:115
 msgid "Style"
 msgstr "Stijl"
 
-#: data/ui/preferences_general.ui:141 data/ui/preferences_general.ui:118
+#: data/ui/preferences_general.ui:141
 msgid "Use Dark Theme"
 msgstr "Donker thema"
 
-#: data/ui/preferences_general.ui:153 data/ui/preferences_general.ui:130
+#: data/ui/preferences_general.ui:153
 msgid "Hide Menus on Outside Clicks"
 msgstr "Menu's verbergen bij klikken achtergrond"
 
