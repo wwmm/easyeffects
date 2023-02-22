@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-20 02:36+0000\n"
-"PO-Revision-Date: 2023-01-29 11:22+0000\n"
-"Last-Translator: Han <hboetes@gmail.com>\n"
+"PO-Revision-Date: 2023-02-22 18:30+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -1044,18 +1044,16 @@ msgid "Release Zone Start"
 msgstr "Ausklingzeit"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "Tiefpassfilter-Modus"
+msgstr "Tiefpassfilter"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "Einfacher gleitender Mittelwert"
 
 #: data/ui/gate.ui:753
-#, fuzzy
 msgid "Internal"
-msgstr "Extern"
+msgstr "Intern"
 
 #: data/ui/gate.ui:795
 msgid "PreAmplification"
@@ -1414,7 +1412,7 @@ msgstr "Band-Kurve"
 #: data/ui/multiband_gate_band.ui:779
 #, fuzzy
 msgid "Band Reduction"
-msgstr "maximale Band 1 Reduktion"
+msgstr "Bandreduktion"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1422,7 +1420,7 @@ msgstr "Allgemein"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Geräteverwaltung"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
@@ -1652,17 +1650,16 @@ msgid "Octaves"
 msgstr "Oktaven"
 
 #: data/ui/plugin_row.ui:39
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Diese Preset-Datei entfernen"
+msgstr "Diesen Effekt entfernen"
 
 #: data/ui/plugin_row.ui:51
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Diesen Effekt aktivieren/deaktivieren"
 
 #: data/ui/plugin_row.ui:63
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Position dieses Effekts ändern"
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
@@ -1829,14 +1826,12 @@ msgid "New Output Preset Name"
 msgstr "Neuer Ausgabe-Presetname"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Preset erstellen"
+msgstr "Eine neue Voreinstellung erstellen"
 
 #: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
-#, fuzzy
 msgid "Import a preset"
-msgstr "Preset importieren"
+msgstr "Voreinstellung importieren"
 
 #: data/ui/presets_menu.ui:90
 msgid "Search Output Preset"
@@ -1954,7 +1949,7 @@ msgstr "RNNoise-Modell Liste"
 
 #: data/ui/rnnoise.ui:110
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Modell nicht geladen"
 
 #: data/ui/rnnoise.ui:116
 msgid "Active Model"
@@ -1969,9 +1964,8 @@ msgid "Overview"
 msgstr "Übersicht"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
 msgid "Open the Easy Effects Manual"
-msgstr "Öffne die EasyEffects Bedinungsanleitung"
+msgstr "Öffne die Anleitung für Easy Effects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -1982,14 +1976,12 @@ msgid "Close the Window"
 msgstr "Fenster schließen"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "EasyEffects beenden"
+msgstr "Easy Effects beenden"
 
 #: data/ui/speex.ui:33
-#, fuzzy
 msgid "Denoise"
-msgstr "Rotes Rauschen"
+msgstr "Entrauschen"
 
 #: data/ui/speex.ui:45
 #, fuzzy
@@ -1997,37 +1989,32 @@ msgid "Automatic Gain Control"
 msgstr "Automatische Glättungsregelung"
 
 #: data/ui/speex.ui:57
-#, fuzzy
 msgid "Voice Detection"
 msgstr "Spracherkennung"
 
 #: data/ui/speex.ui:69
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Nachhall"
+msgstr "Enthallung"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Wahrscheinlichkeit der Sprachaktivität"
 
 #: data/ui/speex.ui:91
-#, fuzzy
 msgid "Start"
-msgstr "Band Beginn"
+msgstr "Beginn"
 
 #: data/ui/speex.ui:113
 msgid "Continue"
-msgstr ""
+msgstr "Fortsetzen"
 
 #: data/ui/speex.ui:137
-#, fuzzy
 msgid "Noise Suppression"
-msgstr "Rauschunterdrücker"
+msgstr "Rauschunterdrückung"
 
 #: data/ui/speex.ui:141
-#, fuzzy
 msgid "Level"
-msgstr "F2 Level"
+msgstr "Stufe"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2150,18 +2137,16 @@ msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
 #: src/application.cpp:525
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Beende EasyEffects. Nützlich bei der Ausführung als Service."
+msgstr "Easy Effects beenden. Nützlich bei der Ausführung im Dienstmodus."
 
 #: src/application.cpp:528
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Lade ein Preset. Beispiel: easyeffects -l music"
 
 #: src/application.cpp:531
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "EasyEffects zurücksetzen."
+msgstr "Easy Effects zurücksetzen."
 
 #: src/application.cpp:534
 msgid "Hide the Window."
@@ -2178,36 +2163,33 @@ msgid "Show available presets."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
 #: src/application_ui.cpp:277
-#, fuzzy
 msgid "_Output"
-msgstr "Ausgang"
+msgstr "_Ausgang"
 
 #: src/application_ui.cpp:278
-#, fuzzy
 msgid "_Input"
-msgstr "Eingabe"
+msgstr "_Eingang"
 
 #: src/application_ui.cpp:279
-#, fuzzy
 msgid "_PipeWire"
-msgstr "PipeWire"
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "Die Datei ist nicht ordnungsgemäß"
 
 #: src/convolver_menu_impulses.cpp:106
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr ""
+"Die Impulsdatei ist möglicherweise beschädigt oder wird nicht unterstützt"
 
 #: src/convolver_menu_impulses.cpp:111
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Es werden nur Stereo-Impulsdateien unterstützt"
 
 #: src/convolver_menu_impulses.cpp:121
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Impulsfilter-Liste"
+msgstr "Impulsdatei nicht importiert"
 
 #: src/convolver_menu_impulses.cpp:127
 msgid "Import Impulse File"
@@ -2236,12 +2218,10 @@ msgid "Remove Impulse"
 msgstr "Impuls entfernen"
 
 #: src/convolver_ui.cpp:324
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Impulsfilter-Liste"
+msgstr "Keine Impulsdatei geladen"
 
 #: src/convolver_ui.cpp:346
-#, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
@@ -2276,14 +2256,12 @@ msgid ""
 msgstr ""
 
 #: src/equalizer_ui.cpp:556
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "APO Preset-Datei importieren"
+msgstr "GraphicEQ-Voreinstellungsdatei importieren"
 
 #: src/equalizer_ui.cpp:562
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Eingabe-Voreinstellungen"
+msgstr "GraphicEQ-Voreinstellungen"
 
 #: src/equalizer_ui.cpp:581
 msgid ""
@@ -2396,7 +2374,7 @@ msgstr "Rauschreduzierung"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr ""
+msgstr "Sprachprozessor"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -2405,12 +2383,12 @@ msgstr "Stereowerkzeuge"
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:67
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} nicht verfügbar"
 
 #. For translators: {} is replaced by the package name.
 #: src/ui_helpers.cpp:70
 msgid "{} Is Not Installed On The System"
-msgstr ""
+msgstr "{} ist nicht auf dem System installiert"
 
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"

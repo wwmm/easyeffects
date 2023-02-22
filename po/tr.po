@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-20 02:36+0000\n"
-"PO-Revision-Date: 2022-10-24 12:40+0000\n"
-"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"PO-Revision-Date: 2023-02-22 18:30+0000\n"
+"Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -101,9 +101,8 @@ msgid "Presets Menu"
 msgstr "Ön Ayarlar Menüsü"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid "Enable/disable the global bypass"
-msgstr "Bu uygulamayı etkinleştir/devre dışı bırak"
+msgstr "Genel atlatmayı etkinleştir/devre dışı bırak"
 
 #: data/ui/application_window.ui:67
 msgid "Global Bypass"
@@ -542,9 +541,8 @@ msgid "Type"
 msgstr "Tür"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid " Feed-forward"
-msgstr "İleri-besleme"
+msgstr " İleri-besleme"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -563,9 +561,8 @@ msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
 #: data/ui/compressor.ui:661
-#, fuzzy
 msgid " PreAmplification"
-msgstr "Ön Yükseltme"
+msgstr " Ön Yükseltme"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
@@ -979,7 +976,7 @@ msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "Erişim"
 
 #: data/ui/factory_modules_listview.ui:72
 msgid "Description"
@@ -1047,16 +1044,18 @@ msgstr "Aralık"
 
 #: data/ui/gate.ui:159 data/ui/gate.ui:252 data/ui/multiband_gate_band.ui:243
 #: data/ui/multiband_gate_band.ui:336
+#, fuzzy
 msgid "Zone"
-msgstr ""
+msgstr "Bölge"
 
 #: data/ui/gate.ui:231 data/ui/multiband_gate_band.ui:315
 msgid "Hysteresis"
-msgstr ""
+msgstr "Gecikme"
 
 #: data/ui/gate.ui:326
+#, fuzzy
 msgid "Mix"
-msgstr ""
+msgstr "Miks"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
@@ -1071,8 +1070,9 @@ msgid "Low-Pass Filter"
 msgstr "Düşük Geçiş Süzgeci"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
+#, fuzzy
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "Basit Harekelti Ortalama"
 
 #: data/ui/gate.ui:753
 msgid "Internal"
@@ -1091,8 +1091,9 @@ msgid "Oversampling"
 msgstr "Aşırı Örnekleme"
 
 #: data/ui/limiter.ui:70
+#, fuzzy
 msgid "Dither"
-msgstr ""
+msgstr "Titreme"
 
 #: data/ui/limiter.ui:82
 msgid "Herm Thin"
