@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-20 02:36+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-02-22 18:30+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
+"main/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -44,7 +47,7 @@ msgstr ""
 
 #: data/ui/app_info.ui:213
 msgid "Enable"
-msgstr ""
+msgstr "ჩართვა"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
@@ -52,7 +55,7 @@ msgstr ""
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "გამორიცხვა"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
 msgid "Mute Application"
@@ -68,7 +71,7 @@ msgstr ""
 
 #: data/ui/application_window.ui:6
 msgid "_Manual"
-msgstr ""
+msgstr "_ხელით"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -76,7 +79,7 @@ msgstr ""
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
-msgstr ""
+msgstr "_მორგება"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
@@ -90,7 +93,7 @@ msgstr ""
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:108 src/presets_menu.cpp:258
 #: src/presets_menu.cpp:259 src/presets_menu.cpp:276 src/presets_menu.cpp:277
 msgid "Presets"
-msgstr ""
+msgstr "პრესეტები"
 
 #: data/ui/application_window.ui:55
 msgid "Presets Menu"
@@ -106,7 +109,7 @@ msgstr ""
 
 #: data/ui/application_window.ui:77
 msgid "Primary Menu"
-msgstr ""
+msgstr "ძირითადი მენიუს"
 
 #: data/ui/application_window.ui:92
 msgid "Easy Effects Window"
@@ -126,11 +129,11 @@ msgstr ""
 
 #: data/ui/autogain.ui:29
 msgid "Target"
-msgstr ""
+msgstr "სამიზნე წერტილი"
 
 #: data/ui/autogain.ui:63
 msgid "Silence"
-msgstr ""
+msgstr "სიჩუმე"
 
 #: data/ui/autogain.ui:98
 msgid "Maximum History"
@@ -138,7 +141,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:132
 msgid "Reference"
-msgstr ""
+msgstr "მითითება"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:185
 msgid "Momentary"
@@ -174,11 +177,11 @@ msgstr ""
 
 #: data/ui/autogain.ui:275
 msgid "Relative"
-msgstr ""
+msgstr "ფარდობითი"
 
 #: data/ui/autogain.ui:305
 msgid "Range"
-msgstr ""
+msgstr "დიაპაზონი"
 
 #: data/ui/autogain.ui:338 data/ui/bass_loudness.ui:27
 #: src/tags_plugin_name.cpp:46
@@ -187,7 +190,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:370
 msgid "Output Gain"
-msgstr ""
+msgstr "გამოტანის გაძლიერება"
 
 #: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:581
@@ -202,7 +205,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:625
 msgid "Input"
-msgstr ""
+msgstr "შეყვანა"
 
 #: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1082
@@ -228,7 +231,7 @@ msgstr ""
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
 msgid "Output"
-msgstr ""
+msgstr "გამოტანა"
 
 #: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1166
@@ -253,7 +256,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
 msgid "Reset"
-msgstr ""
+msgstr "დაბრუნება"
 
 #: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1243
@@ -265,26 +268,26 @@ msgstr ""
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
 msgid "Using"
-msgstr ""
+msgstr "გამოყენება"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:604 data/ui/gate.ui:740
 msgid "Device"
-msgstr ""
+msgstr "მოწყობილობა"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:47
 #: data/ui/presets_menu.ui:195
 msgid "Name"
-msgstr ""
+msgstr "სახელი"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "პროფილი"
 
 #: data/ui/autoload_row.ui:89
 msgid "Preset"
-msgstr ""
+msgstr "შაბლონი"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
@@ -293,7 +296,7 @@ msgstr ""
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:531 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/gate.ui:668
 msgid "Listen"
-msgstr ""
+msgstr "მოსმენა"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
@@ -301,40 +304,40 @@ msgstr ""
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr ""
+msgstr "მესამე"
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr ""
+msgstr "მეორე"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr ""
+msgstr "რაოდენობა"
 
 #: data/ui/bass_enhancer.ui:142 data/ui/bass_enhancer.ui:424
 #: data/ui/exciter.ui:142 data/ui/exciter.ui:424
 msgid "Harmonics"
-msgstr ""
+msgstr "ჰარმონიები"
 
 #: data/ui/bass_enhancer.ui:177 data/ui/exciter.ui:177
 msgid "Scope"
-msgstr ""
+msgstr "ფარგლები"
 
 #: data/ui/bass_enhancer.ui:211
 msgid "Floor"
-msgstr ""
+msgstr "იატაკი"
 
 #: data/ui/bass_enhancer.ui:240
 msgid "Floor Value"
-msgstr ""
+msgstr "უმცირესი მნიშვნელობა"
 
 #: data/ui/bass_loudness.ui:71
 msgid "Link"
-msgstr ""
+msgstr "ბმული"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
-msgstr ""
+msgstr "აპლიკაციის სახელი"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
@@ -350,7 +353,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
-msgstr ""
+msgstr "კომპრესორი"
 
 #: data/ui/compressor.ui:53 data/ui/compressor.ui:503 data/ui/compressor.ui:801
 #: data/ui/deesser.ui:64 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:134
@@ -358,19 +361,19 @@ msgstr ""
 #: data/ui/limiter.ui:46 data/ui/multiband_compressor_band.ui:457
 #: data/ui/multiband_gate_band.ui:520 data/ui/pitch.ui:32
 msgid "Mode"
-msgstr ""
+msgstr "რეჟიმი"
 
 #: data/ui/compressor.ui:64 data/ui/multiband_compressor_band.ui:99
 msgid "Downward"
-msgstr ""
+msgstr "ქვევით"
 
 #: data/ui/compressor.ui:65 data/ui/multiband_compressor_band.ui:100
 msgid "Upward"
-msgstr ""
+msgstr "ზემოთ"
 
 #: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
 msgid "Boosting"
-msgstr ""
+msgstr "გაძლიერება"
 
 #: data/ui/compressor.ui:73 data/ui/multiband_compressor_band.ui:88
 msgid "Compression Mode"
@@ -388,22 +391,22 @@ msgstr ""
 #: data/ui/limiter.ui:485 data/ui/multiband_compressor_band.ui:186
 #: data/ui/multiband_gate_band.ui:144
 msgid "Attack"
-msgstr ""
+msgstr "შეტევა"
 
 #: data/ui/compressor.ui:178 data/ui/multiband_compressor_band.ui:166
 msgid "Time"
-msgstr ""
+msgstr "დრო"
 
 #: data/ui/compressor.ui:188 data/ui/deesser.ui:299 data/ui/gate.ui:153
 #: data/ui/gate.ui:247 data/ui/limiter.ui:346 data/ui/maximizer.ui:50
 #: data/ui/multiband_compressor_band.ui:177 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
-msgstr ""
+msgstr "ზღვარი"
 
 #: data/ui/compressor.ui:214 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
-msgstr ""
+msgstr "შეტევის დრო"
 
 #: data/ui/compressor.ui:236 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:247
@@ -414,11 +417,11 @@ msgstr ""
 #: data/ui/limiter.ui:522 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate_band.ui:150
 msgid "Release"
-msgstr ""
+msgstr "გამოცემა"
 
 #: data/ui/compressor.ui:269 data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr ""
+msgstr "გათავისუფლების დრო"
 
 #: data/ui/compressor.ui:293 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:302
@@ -428,12 +431,12 @@ msgstr ""
 #: data/ui/compressor.ui:300 data/ui/deesser.ui:333
 #: data/ui/multiband_compressor_band.ui:309
 msgid "Ratio"
-msgstr ""
+msgstr "პროპორციები"
 
 #: data/ui/compressor.ui:337 data/ui/limiter.ui:558
 #: data/ui/multiband_compressor_band.ui:347
 msgid "Knee"
-msgstr ""
+msgstr "მუხლი"
 
 #: data/ui/compressor.ui:372 data/ui/deesser.ui:369 data/ui/gate.ui:428
 #: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate_band.ui:418
@@ -462,12 +465,12 @@ msgstr ""
 #: data/ui/compressor.ui:513 data/ui/deesser.ui:48 data/ui/gate.ui:650
 #: data/ui/multiband_compressor_band.ui:468 data/ui/multiband_gate_band.ui:531
 msgid "Peak"
-msgstr ""
+msgstr "პიკი"
 
 #: data/ui/compressor.ui:514 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
 msgid "RMS"
-msgstr ""
+msgstr "RMS"
 
 #: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
 #: data/ui/multiband_compressor_band.ui:470
@@ -476,7 +479,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
 msgid "Uniform"
-msgstr ""
+msgstr "ერთგვაროვანი"
 
 #: data/ui/compressor.ui:523 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:541
@@ -486,41 +489,41 @@ msgstr ""
 #: data/ui/compressor.ui:541 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:485 data/ui/multiband_gate_band.ui:548
 msgid "Source"
-msgstr ""
+msgstr "წყარო"
 
 #: data/ui/compressor.ui:552 data/ui/gate.ui:688
 #: data/ui/multiband_compressor_band.ui:496 data/ui/multiband_gate_band.ui:559
 msgid "Middle"
-msgstr ""
+msgstr "შუა"
 
 #: data/ui/compressor.ui:553 data/ui/gate.ui:689
 #: data/ui/multiband_compressor_band.ui:497 data/ui/multiband_gate_band.ui:560
 msgid "Side"
-msgstr ""
+msgstr "გვერდითი"
 
 #: data/ui/compressor.ui:554 data/ui/delay.ui:28 data/ui/equalizer.ui:215
 #: data/ui/gate.ui:690 data/ui/multiband_compressor_band.ui:498
 #: data/ui/multiband_gate_band.ui:561 data/ui/pipe_manager_box.ui:504
 #: data/ui/stereo_tools.ui:161
 msgid "Left"
-msgstr ""
+msgstr "მარცხენა"
 
 #: data/ui/compressor.ui:555 data/ui/delay.ui:103 data/ui/equalizer.ui:242
 #: data/ui/gate.ui:691 data/ui/multiband_compressor_band.ui:499
 #: data/ui/multiband_gate_band.ui:562 data/ui/pipe_manager_box.ui:515
 #: data/ui/stereo_tools.ui:216
 msgid "Right"
-msgstr ""
+msgstr "მარჯვენა"
 
 #: data/ui/compressor.ui:556 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:563
 msgid "Min"
-msgstr ""
+msgstr "მინ"
 
 #: data/ui/compressor.ui:557 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:501 data/ui/multiband_gate_band.ui:564
 msgid "Max"
-msgstr ""
+msgstr "მაქს"
 
 #: data/ui/compressor.ui:564 data/ui/gate.ui:700
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:508
@@ -530,7 +533,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:593 data/ui/equalizer_band.ui:102 data/ui/gate.ui:729
 msgid "Type"
-msgstr ""
+msgstr "ტიპი"
 
 #: data/ui/compressor.ui:617
 msgid " Feed-forward"
@@ -542,7 +545,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:619 data/ui/gate.ui:754
 msgid "External"
-msgstr ""
+msgstr "გარე"
 
 #: data/ui/compressor.ui:626 data/ui/gate.ui:761
 msgid "Sidechain Type"
@@ -550,7 +553,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:654 data/ui/gate.ui:788 src/plugins_box.cpp:646
 msgid "Input Device"
-msgstr ""
+msgstr "შეყვანის მოწყობილობა"
 
 #: data/ui/compressor.ui:661
 msgid " PreAmplification"
@@ -577,12 +580,12 @@ msgstr ""
 #: data/ui/compressor.ui:814 data/ui/equalizer_band.ui:201 data/ui/filter.ui:55
 #: data/ui/gate.ui:948 data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
-msgstr ""
+msgstr "სიხშირე"
 
 #: data/ui/compressor.ui:827 data/ui/compressor.ui:883
 #: data/ui/equalizer_band.ui:112 data/ui/gate.ui:961 data/ui/gate.ui:1017
 msgid "Off"
-msgstr ""
+msgstr "გამორთ"
 
 #: data/ui/compressor.ui:828 data/ui/compressor.ui:884 data/ui/gate.ui:962
 #: data/ui/gate.ui:1018
@@ -614,32 +617,32 @@ msgstr ""
 
 #: data/ui/compressor.ui:945
 msgid "Gain"
-msgstr ""
+msgstr "გაძლიერება"
 
 #: data/ui/compressor.ui:972 data/ui/gate.ui:1106
 msgid "Envelope"
-msgstr ""
+msgstr "კონვერტი"
 
 #: data/ui/compressor.ui:1026 data/ui/gate.ui:137 data/ui/gate.ui:1160
 #: data/ui/multiband_gate_band.ui:221
 msgid "Curve"
-msgstr ""
+msgstr "მრუდი"
 
 #: data/ui/convolver.ui:40
 msgid "L"
-msgstr ""
+msgstr "მხ"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:507
 msgid "Left Channel"
-msgstr ""
+msgstr "მარცხენა არხი"
 
 #: data/ui/convolver.ui:53
 msgid "R"
-msgstr ""
+msgstr "მჯ"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:518
 msgid "Right Channel"
-msgstr ""
+msgstr "მარჯვენა არხი"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
@@ -648,7 +651,7 @@ msgstr ""
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "კომბინირება"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
@@ -656,7 +659,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:114 src/plugin_base.cpp:152
 msgid "Spectrum"
-msgstr ""
+msgstr "სპექტრი"
 
 #: data/ui/convolver.ui:122
 msgid "Log Scale"
@@ -668,15 +671,15 @@ msgstr ""
 
 #: data/ui/convolver.ui:148
 msgid "Rate"
-msgstr ""
+msgstr "სიხშირე"
 
 #: data/ui/convolver.ui:169
 msgid "Samples"
-msgstr ""
+msgstr "სემპლები"
 
 #: data/ui/convolver.ui:190
 msgid "Duration"
-msgstr ""
+msgstr "ხანგრძლოვობა"
 
 #: data/ui/convolver_menu_combine.ui:15
 msgid "Combine Impulse Responses"
@@ -725,7 +728,7 @@ msgstr ""
 
 #: data/ui/crossfeed.ui:79
 msgid "Feed"
-msgstr ""
+msgstr "ლენტა"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
@@ -735,7 +738,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:136 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:171 data/ui/stereo_tools.ui:196
 msgid "Mute"
-msgstr ""
+msgstr "დადუმება"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -743,11 +746,11 @@ msgstr ""
 
 #: data/ui/deesser.ui:71
 msgid "Wide"
-msgstr ""
+msgstr "ფართო"
 
 #: data/ui/deesser.ui:72
 msgid "Split"
-msgstr ""
+msgstr "გაყოფა"
 
 #: data/ui/deesser.ui:88
 msgid "F1 Split"
@@ -795,7 +798,7 @@ msgstr ""
 
 #: data/ui/deesser.ui:579
 msgid "Detected"
-msgstr ""
+msgstr "გამოვლინდა"
 
 #: data/ui/deesser.ui:609 data/ui/gate.ui:423 data/ui/gate.ui:1079
 #: data/ui/maximizer.ui:271 data/ui/multiband_gate_band.ui:413
@@ -804,7 +807,7 @@ msgstr ""
 
 #: data/ui/delay.ui:31 data/ui/delay.ui:106 src/tags_plugin_name.cpp:39
 msgid "Delay"
-msgstr ""
+msgstr "დაყოვნება"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
@@ -824,28 +827,28 @@ msgstr ""
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
-msgstr ""
+msgstr "გუნდები"
 
 #: data/ui/equalizer.ui:73
 msgid "IIR"
-msgstr ""
+msgstr "IIR"
 
 #: data/ui/equalizer.ui:74
 msgid "FIR"
-msgstr ""
+msgstr "FIR"
 
 #: data/ui/equalizer.ui:75
 msgid "FFT"
-msgstr ""
+msgstr "FFT"
 
 #: data/ui/equalizer.ui:76
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:90 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:393
 msgid "Balance"
-msgstr ""
+msgstr "ბალანსი"
 
 #: data/ui/equalizer.ui:123
 msgid "Pitch Left"
@@ -857,7 +860,7 @@ msgstr ""
 
 #: data/ui/equalizer.ui:278
 msgid "Split Channels"
-msgstr ""
+msgstr "არხების გაყოფა"
 
 #: data/ui/equalizer.ui:284
 msgid "Flat Response"
@@ -873,15 +876,15 @@ msgstr ""
 
 #: data/ui/equalizer.ui:315 src/presets_menu.cpp:102
 msgid "Import Preset"
-msgstr ""
+msgstr "პრესეტის შემოტანა"
 
 #: data/ui/equalizer_band.ui:113
 msgid "Bell"
-msgstr ""
+msgstr "ზარი"
 
 #: data/ui/equalizer_band.ui:114
 msgid "High Pass"
-msgstr ""
+msgstr "მაღალსიხშირული ფილტრი"
 
 #: data/ui/equalizer_band.ui:115
 msgid "High Shelf"
@@ -889,7 +892,7 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:116
 msgid "Low Pass"
-msgstr ""
+msgstr "დაბალსიხშირული ფილტრი"
 
 #: data/ui/equalizer_band.ui:117
 msgid "Low Shelf"
@@ -897,11 +900,11 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:118
 msgid "Notch"
-msgstr ""
+msgstr "ამოკვეთა"
 
 #: data/ui/equalizer_band.ui:119 data/ui/filter.ui:78
 msgid "Resonance"
-msgstr ""
+msgstr "რეზონანსი"
 
 #: data/ui/equalizer_band.ui:120
 msgid "All Pass"
@@ -917,7 +920,7 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:164
 msgid "Slope"
-msgstr ""
+msgstr "დახრა"
 
 #: data/ui/equalizer_band.ui:184
 msgid "Band Slope"
@@ -925,20 +928,20 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:246
 msgid "Width"
-msgstr ""
+msgstr "სიგანე"
 
 #: data/ui/equalizer_band.ui:273
 msgid "Quality"
-msgstr ""
+msgstr "ხარისხი"
 
 #: data/ui/equalizer_band.ui:318 data/ui/multiband_compressor_band.ui:146
 #: data/ui/multiband_gate_band.ui:119
 msgid "Solo"
-msgstr ""
+msgstr "სოლო"
 
 #: data/ui/exciter.ui:211
 msgid "Ceil"
-msgstr ""
+msgstr "ჭერი"
 
 #: data/ui/exciter.ui:240
 msgid "Ceil Value"
@@ -946,15 +949,15 @@ msgstr ""
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "წვდომა"
 
 #: data/ui/factory_modules_listview.ui:72
 msgid "Description"
-msgstr ""
+msgstr "აღწერა"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
@@ -1014,12 +1017,12 @@ msgstr ""
 
 #: data/ui/gate.ui:41 src/tags_plugin_name.cpp:44
 msgid "Gate"
-msgstr ""
+msgstr "გეითი"
 
 #: data/ui/gate.ui:159 data/ui/gate.ui:252 data/ui/multiband_gate_band.ui:243
 #: data/ui/multiband_gate_band.ui:336
 msgid "Zone"
-msgstr ""
+msgstr "ზონა"
 
 #: data/ui/gate.ui:231 data/ui/multiband_gate_band.ui:315
 msgid "Hysteresis"
@@ -1027,7 +1030,7 @@ msgstr ""
 
 #: data/ui/gate.ui:326
 msgid "Mix"
-msgstr ""
+msgstr "მიქსი"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
@@ -1039,7 +1042,7 @@ msgstr ""
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
 msgid "Low-Pass Filter"
-msgstr ""
+msgstr "დაბალსიხშირული ფილტრი"
 
 #: data/ui/gate.ui:653 data/ui/multiband_gate_band.ui:534
 msgid "Simple Moving Average"
@@ -1047,7 +1050,7 @@ msgstr ""
 
 #: data/ui/gate.ui:753
 msgid "Internal"
-msgstr ""
+msgstr "შიდა"
 
 #: data/ui/gate.ui:795
 msgid "PreAmplification"
@@ -1063,7 +1066,7 @@ msgstr ""
 
 #: data/ui/limiter.ui:70
 msgid "Dither"
-msgstr ""
+msgstr "დიზერი"
 
 #: data/ui/limiter.ui:82
 msgid "Herm Thin"
@@ -1209,7 +1212,7 @@ msgstr ""
 
 #: data/ui/limiter.ui:383
 msgid "Boost"
-msgstr ""
+msgstr "გაძლიერება"
 
 #: data/ui/limiter.ui:398
 msgid "Stereo Link"
@@ -1259,11 +1262,11 @@ msgstr ""
 
 #: data/ui/loudness.ui:27
 msgid "Standard"
-msgstr ""
+msgstr "სტანდარტული"
 
 #: data/ui/loudness.ui:32
 msgid "Flat"
-msgstr ""
+msgstr "ბრტყელი"
 
 #: data/ui/loudness.ui:44
 msgid "FFT Size"
@@ -1271,11 +1274,11 @@ msgstr ""
 
 #: data/ui/loudness.ui:64
 msgid "Output Volume"
-msgstr ""
+msgstr "გამოტანის ხმა"
 
 #: data/ui/loudness.ui:86
 msgid "Clipping"
-msgstr ""
+msgstr "კლინინგი"
 
 #: data/ui/maximizer.ui:71
 msgid "Ceiling"
@@ -1307,11 +1310,11 @@ msgstr ""
 
 #: data/ui/multiband_compressor.ui:117 data/ui/multiband_gate.ui:117
 msgid "Classic"
-msgstr ""
+msgstr "კლასიკური"
 
 #: data/ui/multiband_compressor.ui:118 data/ui/multiband_gate.ui:118
 msgid "Modern"
-msgstr ""
+msgstr "თანამედროვე"
 
 #: data/ui/multiband_compressor.ui:227 data/ui/multiband_gate.ui:227
 msgid "Bands List"
@@ -1407,11 +1410,11 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
-msgstr ""
+msgstr "ძირითადი"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "მოწყობილობის მართვა"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
@@ -1437,7 +1440,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:112
 msgid "Server Information"
-msgstr ""
+msgstr "ინფორმაცია სერვერის შესახებ"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
@@ -1449,7 +1452,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:138
 msgid "Sampling Rate"
-msgstr ""
+msgstr "სემპლინგისსიჩქარე"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Minimum Quantum"
@@ -1469,7 +1472,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:232
 msgid "Output Devices"
-msgstr ""
+msgstr "გამოტანის მოწყობილობები"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
 msgid "Output Presets"
@@ -1489,7 +1492,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:329
 msgid "Input Devices"
-msgstr ""
+msgstr "შემომტანი მოწყობილობები"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
 msgid "Input Presets"
@@ -1505,7 +1508,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
-msgstr ""
+msgstr "მოდულები"
 
 #: data/ui/pipe_manager_box.ui:429
 msgid "Modules List"
@@ -1513,7 +1516,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:443
 msgid "Clients"
-msgstr ""
+msgstr "კლიენტი"
 
 #: data/ui/pipe_manager_box.ui:461
 msgid "Clients List"
@@ -1526,11 +1529,11 @@ msgstr ""
 #: data/ui/pipe_manager_box.ui:480 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
 msgid "State"
-msgstr ""
+msgstr "მდგომარეობა"
 
 #: data/ui/pipe_manager_box.ui:483 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
-msgstr ""
+msgstr "ჩართულია"
 
 #: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
@@ -1538,19 +1541,19 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:501
 msgid "Channels"
-msgstr ""
+msgstr "არხები"
 
 #: data/ui/pipe_manager_box.ui:526
 msgid "Both"
-msgstr ""
+msgstr "ორივე"
 
 #: data/ui/pipe_manager_box.ui:530
 msgid "Both Channels"
-msgstr ""
+msgstr "ორივე არხი"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
-msgstr ""
+msgstr "ტალღოვანი"
 
 #: data/ui/pipe_manager_box.ui:543
 msgid "Sine Wave"
@@ -1558,7 +1561,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "White Noise"
-msgstr ""
+msgstr "თეთრი ხმაური"
 
 #: data/ui/pitch.ui:43
 msgid "High Speed"
@@ -1566,7 +1569,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:44
 msgid "High Quality"
-msgstr ""
+msgstr "მაღალი ხარისხი"
 
 #: data/ui/pitch.ui:45
 msgid "High Consistency"
@@ -1594,15 +1597,15 @@ msgstr ""
 
 #: data/ui/pitch.ui:109
 msgid "Mixed"
-msgstr ""
+msgstr "შერეული"
 
 #: data/ui/pitch.ui:110
 msgid "Smooth"
-msgstr ""
+msgstr "რბილი"
 
 #: data/ui/pitch.ui:124
 msgid "Detector"
-msgstr ""
+msgstr "დეტექტორი"
 
 #: data/ui/pitch.ui:135
 msgid "Compound"
@@ -1614,11 +1617,11 @@ msgstr ""
 
 #: data/ui/pitch.ui:137
 msgid "Soft"
-msgstr ""
+msgstr "რბილი"
 
 #: data/ui/pitch.ui:151
 msgid "Phase"
-msgstr ""
+msgstr "ფაზა"
 
 #: data/ui/pitch.ui:162
 msgid "Laminar"
@@ -1626,7 +1629,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:163
 msgid "Independent"
-msgstr ""
+msgstr "დამოუკიდებელი"
 
 #: data/ui/pitch.ui:188
 msgid "Cents"
@@ -1638,7 +1641,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:256
 msgid "Octaves"
-msgstr ""
+msgstr "ოქტავები"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
@@ -1654,7 +1657,7 @@ msgstr ""
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
-msgstr ""
+msgstr "ეფექტის დამატება"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
@@ -1678,11 +1681,11 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
-msgstr ""
+msgstr "_საერთო"
 
 #: data/ui/preferences_general.ui:10
 msgid "Service"
-msgstr ""
+msgstr "სერვისი"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
@@ -1694,7 +1697,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "აუდიო"
 
 #: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
@@ -1722,7 +1725,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "სტილი"
 
 #: data/ui/preferences_general.ui:141
 msgid "Use Dark Theme"
@@ -1738,23 +1741,23 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "ფორმა"
 
 #: data/ui/preferences_spectrum.ui:35
 msgid "Bars"
-msgstr ""
+msgstr "მართკუთხედები"
 
 #: data/ui/preferences_spectrum.ui:36
 msgid "Lines"
-msgstr ""
+msgstr "ხაზები"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Dots"
-msgstr ""
+msgstr "წერტილები"
 
 #: data/ui/preferences_spectrum.ui:46
 msgid "Points"
-msgstr ""
+msgstr "წერტილები"
 
 #: data/ui/preferences_spectrum.ui:68
 msgid "Height"
@@ -1762,7 +1765,7 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:91
 msgid "Line Width"
-msgstr ""
+msgstr "ხაზის სიგანე"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Fill"
@@ -1786,7 +1789,7 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
-msgstr ""
+msgstr "ღერძის ჭდეები"
 
 #: data/ui/preferences_spectrum.ui:185
 msgid "Frequency Range"
@@ -1794,15 +1797,15 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
-msgstr ""
+msgstr "მინიმუმი"
 
 #: data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
-msgstr ""
+msgstr "მაქსიმუმი"
 
 #: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
 msgid "Load"
-msgstr ""
+msgstr "ჩატვირთვა"
 
 #: data/ui/preset_row.ui:34
 msgid "Save current settings to this preset file"
@@ -1854,19 +1857,19 @@ msgstr ""
 
 #: data/ui/reverb.ui:81
 msgid "Small"
-msgstr ""
+msgstr "პატარა"
 
 #: data/ui/reverb.ui:82
 msgid "Medium"
-msgstr ""
+msgstr "საშუალო"
 
 #: data/ui/reverb.ui:83
 msgid "Large"
-msgstr ""
+msgstr "დიდი"
 
 #: data/ui/reverb.ui:84
 msgid "Tunnel"
-msgstr ""
+msgstr "გვირაბი"
 
 #: data/ui/reverb.ui:85
 msgid "Large/smooth"
@@ -1874,11 +1877,11 @@ msgstr ""
 
 #: data/ui/reverb.ui:86
 msgid "Experimental"
-msgstr ""
+msgstr "ექსპერიმენტალური"
 
 #: data/ui/reverb.ui:103
 msgid "Diffusion"
-msgstr ""
+msgstr "დიფუზია"
 
 #: data/ui/reverb.ui:140
 msgid "Pre Delay"
@@ -1890,11 +1893,11 @@ msgstr ""
 
 #: data/ui/reverb.ui:277
 msgid "Bass Cut"
-msgstr ""
+msgstr "Bass-ის მოჭრა"
 
 #: data/ui/reverb.ui:312
 msgid "Treble Cut"
-msgstr ""
+msgstr "მაღალი სიხშირეების მოჭრა"
 
 #: data/ui/reverb.ui:580
 msgid "Ambience"
@@ -1906,7 +1909,7 @@ msgstr ""
 
 #: data/ui/reverb.ui:600
 msgid "Room"
-msgstr ""
+msgstr "ოთახი"
 
 #: data/ui/reverb.ui:607
 msgid "Large Empty Hall"
@@ -1914,7 +1917,7 @@ msgstr ""
 
 #: data/ui/reverb.ui:620
 msgid "Disco"
-msgstr ""
+msgstr "დისკო"
 
 #: data/ui/reverb.ui:627
 msgid "Large Occupied Hall"
@@ -1926,7 +1929,7 @@ msgstr ""
 
 #: data/ui/rnnoise.ui:40
 msgid "Models"
-msgstr ""
+msgstr "მოდელები"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:94 src/rnnoise_ui.cpp:240
@@ -1952,7 +1955,7 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "მიმოხილვა"
 
 #: data/ui/shortcuts.ui:16
 msgid "Open the Easy Effects Manual"
@@ -1972,11 +1975,11 @@ msgstr ""
 
 #: data/ui/speex.ui:33
 msgid "Denoise"
-msgstr ""
+msgstr "ხმაურის მოცილება"
 
 #: data/ui/speex.ui:45
 msgid "Automatic Gain Control"
-msgstr ""
+msgstr "ხმის მომატების ავტომატური კონტროლი"
 
 #: data/ui/speex.ui:57
 msgid "Voice Detection"
@@ -1996,7 +1999,7 @@ msgstr ""
 
 #: data/ui/speex.ui:113
 msgid "Continue"
-msgstr ""
+msgstr "გაგრძელება"
 
 #: data/ui/speex.ui:137
 msgid "Noise Suppression"
@@ -2004,7 +2007,7 @@ msgstr ""
 
 #: data/ui/speex.ui:141
 msgid "Level"
-msgstr ""
+msgstr "დონე"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2052,7 +2055,7 @@ msgstr ""
 
 #: data/ui/stereo_tools.ui:147
 msgid "Stereo Mode"
-msgstr ""
+msgstr "სტერეო რეჟიმი"
 
 #: data/ui/stereo_tools.ui:180 data/ui/stereo_tools.ui:205
 msgid "Invert Phase"
@@ -2096,31 +2099,31 @@ msgstr ""
 
 #: src/app_info.cpp:64
 msgid "Running"
-msgstr ""
+msgstr "გაშვებულია"
 
 #: src/app_info.cpp:66
 msgid "Suspended"
-msgstr ""
+msgstr "გაჩერებულია"
 
 #: src/app_info.cpp:68
 msgid "Idle"
-msgstr ""
+msgstr "უმოქმედო"
 
 #: src/app_info.cpp:70
 msgid "Creating"
-msgstr ""
+msgstr "შექმნა"
 
 #: src/app_info.cpp:72
 msgid "Error"
-msgstr ""
+msgstr "შეცდომა"
 
 #: src/app_info.cpp:74
 msgid "Unknown"
-msgstr ""
+msgstr "უცნობი"
 
 #: src/app_info.cpp:228
 msgid "channels"
-msgstr ""
+msgstr "არხები"
 
 #: src/application.cpp:435
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2160,7 +2163,7 @@ msgstr ""
 
 #: src/application_ui.cpp:279
 msgid "_PipeWire"
-msgstr ""
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:101
 msgid "The File Is Not Regular"
@@ -2185,12 +2188,12 @@ msgstr ""
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
 #: src/equalizer_ui.cpp:557 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
-msgstr ""
+msgstr "გახსნა"
 
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
 #: src/equalizer_ui.cpp:557 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: src/convolver_menu_impulses.cpp:132
 msgid "Impulse Response"
@@ -2214,19 +2217,19 @@ msgstr ""
 
 #: src/effects_box.cpp:259 src/plugins_box.cpp:647
 msgid "Recorders"
-msgstr ""
+msgstr "სალამურები"
 
 #: src/effects_box.cpp:282 src/plugins_box.cpp:667
 msgid "Players"
-msgstr ""
+msgstr "მოთამაშეები"
 
 #: src/effects_box.cpp:305
 msgid "Effects"
-msgstr ""
+msgstr "ეფექტები"
 
 #: src/equalizer_band_box.cpp:80
 msgid "infinity"
-msgstr ""
+msgstr "უსასრულობა"
 
 #: src/equalizer_ui.cpp:365
 msgid "Import APO Preset File"
@@ -2266,15 +2269,15 @@ msgstr ""
 
 #: src/plugins_box.cpp:599
 msgid "Remove"
-msgstr ""
+msgstr "წაშლა"
 
 #: src/plugins_box.cpp:668
 msgid "Output Device"
-msgstr ""
+msgstr "გამოტანის მოწყობილობები"
 
 #: src/plugins_menu.cpp:154
 msgid "Add"
-msgstr ""
+msgstr "დამატება"
 
 #: src/rnnoise_ui.cpp:89
 msgid ""
@@ -2320,7 +2323,7 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:41
 msgid "Equalizer"
-msgstr ""
+msgstr "ეკვალაიზერი"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Exciter"
@@ -2328,11 +2331,11 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:43
 msgid "Filter"
-msgstr ""
+msgstr "ფილტრი"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Limiter"
-msgstr ""
+msgstr "შემზღუდველი"
 
 #: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
@@ -2348,7 +2351,7 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:50
 msgid "Pitch"
-msgstr ""
+msgstr "Pitch"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
@@ -2356,7 +2359,7 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
-msgstr ""
+msgstr "ხმაურის შემცირება"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
