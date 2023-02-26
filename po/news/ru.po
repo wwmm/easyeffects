@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-26 11:11-0300\n"
-"PO-Revision-Date: 2022-12-11 17:47+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"PO-Revision-Date: 2023-02-27 09:38+0000\n"
+"Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -123,22 +123,30 @@ msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
 msgstr ""
+"Улучшена частота обновления плагинов спектра. Различные частоты "
+"дискретизации должны теперь визуально приводить к одинаковым частотам "
+"обновления."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
 msgstr ""
+"Интервал обновления, используемый уровнемерами и спектром, может быть "
+"настроен пользователем."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
+"Значение ползунка усиления полосы эквалайзера может обновляться с большими "
+"шагами. Тонкое управление по-прежнему возможно с помощью клавиш вверх/вниз "
+"на клавиатуре."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "Small improvements to the echo canceller."
-msgstr ""
+msgstr "Небольшие улучшения в эхоподавителе."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
@@ -168,6 +176,8 @@ msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
+"После перехода на использование нескольких фильтров датчики эхоподавителя не "
+"были связаны со звуковой картой. Теперь это должно быть исправлено."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
