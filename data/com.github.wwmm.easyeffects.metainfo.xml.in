@@ -33,6 +33,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.0.1" date="2023-02-26T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>The spectrum plugin update rate was improved. Different sampling rates should lead to similar update frequencies visually.</li>
+          <li>The update interval used by level meters and the spectrum can be customized by the user.</li>
+          <li>The equalizer band gain slider value can be updated in larger steps. Fine grain control is still possible through the keyboard up/down keys.</li>
+          <li>Small improvements to the echo canceller.</li>
+          <li>Bug fixes:</li>
+          <li>The echo canceller probes were not being linked to the soundcard after the move to multiple filters intances. This should be fixed now.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.0.0" date="2022-11-02T00:00:00Z">
       <description>
         <ul>

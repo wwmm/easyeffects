@@ -309,6 +309,7 @@ convert_news_to_metainfo() {
     rm "${TEMP_NEWS:?}"
     log_err "Converting news to metainfo failed. \n"
     log_err "Check formatting, don't leave section headers with nothing beneath them. \n"
+    log_err "Also remove any line break in the fields description. \n"
     log_err "appstreamcli: $(appstreamcli news-to-metainfo --format=yaml "${TEMP_NEWS_CLEANED}" "${TEMP_METAINFO_FILE}" 2>&1 > /dev/null) \n"
     rm "${TEMP_NEWS_CLEANED:?}" 
     rm "${TEMP_METAINFO_FILE:?}"
