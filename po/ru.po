@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-26 11:11-0300\n"
-"PO-Revision-Date: 2023-02-20 00:59+0000\n"
+"PO-Revision-Date: 2023-02-27 07:38+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -455,7 +455,7 @@ msgstr "Степень сжатия"
 #: data/ui/compressor.ui:337 data/ui/limiter.ui:558
 #: data/ui/multiband_compressor_band.ui:347
 msgid "Knee"
-msgstr "Колено (излом)"
+msgstr "Колено"
 
 #: data/ui/compressor.ui:372 data/ui/deesser.ui:369 data/ui/gate.ui:428
 #: data/ui/multiband_compressor_band.ui:385 data/ui/multiband_gate_band.ui:418
@@ -490,7 +490,7 @@ msgstr "Пик"
 #: data/ui/compressor.ui:514 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:469 data/ui/multiband_gate_band.ui:532
 msgid "RMS"
-msgstr "Среднее квадратичное (RMS)"
+msgstr "Среднеквадратичное (RMS)"
 
 #: data/ui/compressor.ui:515 data/ui/compressor.ui:870 data/ui/gate.ui:1004
 #: data/ui/multiband_compressor_band.ui:470
@@ -2105,7 +2105,7 @@ msgstr "Режим стерео"
 
 #: data/ui/stereo_tools.ui:180 data/ui/stereo_tools.ui:205
 msgid "Invert Phase"
-msgstr "Инвертировать фазу"
+msgstr "Обратить фазу"
 
 #: data/ui/stereo_tools.ui:232
 msgid "Side Level"
