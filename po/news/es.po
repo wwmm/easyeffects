@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-26 11:11-0300\n"
-"PO-Revision-Date: 2022-11-13 08:49+0000\n"
+"PO-Revision-Date: 2023-02-27 09:38+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -124,22 +124,30 @@ msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
 msgstr ""
+"Frecuencia de actualización del complemento de espectro mejorada. Las "
+"diferentes frecuencias de muestreo ahora deberían dar como resultado "
+"visualmente las mismas frecuencias de actualización."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
 msgstr ""
+"El intervalo de actualización utilizado por los medidores de nivel y el "
+"espectro puede ser personalizado por el usuario."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
+"El valor del control deslizante de ganancia de la banda EQ se puede "
+"actualizar en pasos grandes. El control preciso aún es posible con las "
+"teclas arriba/abajo del teclado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "Small improvements to the echo canceller."
-msgstr ""
+msgstr "Pequeñas mejoras en el cancelador de eco."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
@@ -169,6 +177,9 @@ msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
+"Después de cambiar al uso de varios filtros, los sensores canceladores de "
+"eco no estaban asociados con la tarjeta de sonido. Ahora esto debería "
+"arreglarse."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
