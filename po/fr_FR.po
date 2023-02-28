@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-26 11:11-0300\n"
-"PO-Revision-Date: 2022-10-04 21:21+0000\n"
-"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"PO-Revision-Date: 2023-02-28 14:36+0000\n"
+"Last-Translator: \"Mathieu B.\" <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.16-rc\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -100,9 +100,8 @@ msgid "Presets Menu"
 msgstr "Menu des préréglages"
 
 #: data/ui/application_window.ui:62
-#, fuzzy
 msgid "Enable/disable the global bypass"
-msgstr "Autoriser/Interdire cette application"
+msgstr "Activer/désactiver le by-pass global"
 
 #: data/ui/application_window.ui:67
 msgid "Global Bypass"
@@ -449,14 +448,14 @@ msgstr "Compensation de gain"
 #: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:208
 #: data/ui/stereo_tools.ui:534
 msgid "Dry Level"
-msgstr "Niveau de Secs"
+msgstr "Niveau des signaux secs"
 
 #: data/ui/compressor.ui:442 data/ui/delay.ui:75 data/ui/delay.ui:150
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:166
 #: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:242
 #: data/ui/stereo_tools.ui:570
 msgid "Wet Level"
-msgstr "Niveau d’Humides"
+msgstr "Niveau des signaux humides"
 
 #: data/ui/compressor.ui:484 data/ui/compressor.ui:999 data/ui/gate.ui:621
 #: data/ui/gate.ui:1133
@@ -518,15 +517,13 @@ msgstr "Droite"
 
 #: data/ui/compressor.ui:556 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:563
-#, fuzzy
 msgid "Min"
-msgstr "Mix"
+msgstr "Min"
 
 #: data/ui/compressor.ui:557 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:501 data/ui/multiband_gate_band.ui:564
-#, fuzzy
 msgid "Max"
-msgstr "Mix"
+msgstr "Max"
 
 #: data/ui/compressor.ui:564 data/ui/gate.ui:700
 #: data/ui/multiband_compressor.ui:71 data/ui/multiband_compressor_band.ui:508
@@ -820,14 +817,12 @@ msgid "Filter Length"
 msgstr "Longueur Filtre"
 
 #: data/ui/echo_canceller.ui:50
-#, fuzzy
 msgid "Residual Echo Suppression"
-msgstr "Compresseur"
+msgstr "Suppression de l'écho résiduel"
 
 #: data/ui/echo_canceller.ui:72
-#, fuzzy
 msgid "Near End Echo Suppression"
-msgstr "Compresseur"
+msgstr "Suppression de l'écho proche"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -1069,7 +1064,7 @@ msgstr "Préamplification"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
 msgid "Gating"
-msgstr ""
+msgstr "Porte"
 
 #: data/ui/limiter.ui:58
 msgid "Oversampling"
@@ -1749,7 +1744,7 @@ msgstr "Délai d’inactivité"
 
 #: data/ui/preferences_general.ui:113
 msgid "Update Interval (Level Meters and Spectrum)"
-msgstr ""
+msgstr "Intervalle de mise à jour (mesureurs de niveau et spectre)"
 
 #: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -2010,21 +2005,19 @@ msgstr "Bruit rouge"
 
 #: data/ui/speex.ui:45
 msgid "Automatic Gain Control"
-msgstr ""
+msgstr "Contrôle automatique du gain"
 
 #: data/ui/speex.ui:57
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Atténuation"
+msgstr "Détection de la voix"
 
 #: data/ui/speex.ui:69
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Réverbération"
+msgstr "Déréverbération"
 
 #: data/ui/speex.ui:87
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Probabilité d'activité vocale"
 
 #: data/ui/speex.ui:91
 #, fuzzy
@@ -2033,17 +2026,15 @@ msgstr "Début Bande"
 
 #: data/ui/speex.ui:113
 msgid "Continue"
-msgstr ""
+msgstr "Continuer"
 
 #: data/ui/speex.ui:137
-#, fuzzy
 msgid "Noise Suppression"
-msgstr "Compresseur"
+msgstr "Suppression du bruit"
 
 #: data/ui/speex.ui:141
-#, fuzzy
 msgid "Level"
-msgstr "Niveau F2"
+msgstr "Niveau"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2278,13 +2269,12 @@ msgid "APO Presets"
 msgstr "Préréglages APO"
 
 #: src/equalizer_ui.cpp:389
-#, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
-"Le préréglage APO n’a pas été chargé. Le format du fichier peut être erroné. "
-"Veuillez vérifier son contenu."
+"Le préréglage APO n’a pas été chargé. Le format du fichier peut ne pas être "
+"pris en charge. Veuillez vérifier son contenu."
 
 #: src/equalizer_ui.cpp:556
 msgid "Import GraphicEQ Preset File"
@@ -2295,13 +2285,12 @@ msgid "GraphicEQ Presets"
 msgstr "Préréglages GraphicEQ"
 
 #: src/equalizer_ui.cpp:581
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
-"Le préréglage GraphicEQ n’a pas été chargé. Le format du fichier peut être "
-"erroné. Veuillez vérifier son contenu."
+"Le préréglage GraphicEQ n’a pas été chargé. Le format du fichier peut ne pas "
+"être pris en charge. Veuillez vérifier son contenu."
 
 #: src/pipe_manager_box.cpp:328
 msgid "Remove Autoloading Preset"
