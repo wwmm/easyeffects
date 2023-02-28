@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-26 11:11-0300\n"
 "PO-Revision-Date: 2023-02-28 14:36+0000\n"
-"Last-Translator: Bundy01 <bundy@posteo.eu>\n"
+"Last-Translator: \"Mathieu B.\" <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -455,7 +455,7 @@ msgstr "Niveau des signaux secs"
 #: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:242
 #: data/ui/stereo_tools.ui:570
 msgid "Wet Level"
-msgstr "Niveau d’Humides"
+msgstr "Niveau des signaux humides"
 
 #: data/ui/compressor.ui:484 data/ui/compressor.ui:999 data/ui/gate.ui:621
 #: data/ui/gate.ui:1133
