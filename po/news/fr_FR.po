@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-26 11:11-0300\n"
-"PO-Revision-Date: 2022-10-04 21:18+0000\n"
-"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"PO-Revision-Date: 2023-03-03 07:36+0000\n"
+"Last-Translator: Bundy01 <bundy@posteo.eu>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
 "Language: fr_FR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -123,22 +123,30 @@ msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
 msgstr ""
+"La fréquence de mise à jour du greffon du spectre a été améliorée. Des taux "
+"d'échantillonnage différents devraient conduire à des fréquences de mise à "
+"jour similaires visuellement."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
 msgstr ""
+"L'intervalle de mise à jour utilisé par les indicateurs de niveau et le "
+"spectre peut être personnalisé par l'utilisateur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
+"La valeur du curseur de gain de bande de l'égaliseur peut être mise à jour "
+"par pas plus grands. Le contrôle du grain fin est toujours possible grâce "
+"aux touches haut/bas du clavier."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "Small improvements to the echo canceller."
-msgstr ""
+msgstr "Petites améliorations de annulateur d'écho."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
@@ -168,12 +176,18 @@ msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
+"Les sondes de annulateur d'écho n'étaient pas liées à la carte son après le "
+"passage à des instances de filtres multiples. Cela devrait être corrigé "
+"maintenant."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
+#, fuzzy
 msgid ""
 "It is now possible to add more than one filter instance to the effects "
 "pipeline."
 msgstr ""
+"Il est maintenant possible d'ajouter plusieurs instances de filtre au "
+"pipeline d'effets."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid ""
@@ -182,50 +196,64 @@ msgid ""
 "a decent alternative to the cases whre the rnnoise library does not work "
 "well."
 msgstr ""
+"Un nouveau greffon `Processeur vocal` basé sur la bibliothèque Speex a été "
+"ajouté. En plus de fournir une suppression du bruit, il peut également "
+"détecter l'activité vocale. C'est une alternative décente pour les cas où la "
+"bibliothèque rnnoise ne fonctionne pas bien."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
 msgid "Improved compatibility with Linux Studio Plugins `1.2.3`."
 msgstr ""
+"Amélioration de la compatibilité avec les greffons Linux Studio (LSP) `1.2."
+"3`."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
-msgstr ""
+msgstr "Les préréglages GraphicEQ peuvent être importés dans l'effet Égaliseur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid ""
 "The application name has been changed to `Easy Effects` to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
+"Le nom de l'application a été changé en `Easy Effects` afin d'adhérer aux "
+"conventions de nommage des directives de l'interface humaine de GNOME."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
-#, fuzzy
 msgid "The documentation has been updated."
-msgstr "La documentation a été mise à jour"
+msgstr "La documentation a été mise à jour."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Chargement automatique des préréglages"
+msgstr "Chargement automatique des préréglages amélioré."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "The Autogain silence threshold can now be configured by the user."
 msgstr ""
+"Le seuil de silence du Gain automatique peut maintenant être configuré par "
+"l'utilisateur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid "Dry and wet controls added to the Stereo Tools effect."
 msgstr ""
+"Les contrôles du niveau sec et humide ont été ajoutés à l'effet Outils "
+"stéréo."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "The echo canceller now has a residual noise suppression control also based "
 "on the Speex library."
 msgstr ""
+"L'annulateur d'écho dispose désormais d'un contrôle de suppression du bruit "
+"résiduel, également basé sur la bibliothèque Speex."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
 "When the mouse was hovering over a chart the wrong value for the x axis "
 "coordinate was being shown. This regression is fixed."
 msgstr ""
+"Lorsque la souris survolait un graphique, la mauvaise valeur de la "
+"coordonnée de l'axe x était affichée. Cette régression est corrigée."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
@@ -243,12 +271,18 @@ msgid ""
 "consideration that saving the current preset will always write it in the new "
 "format."
 msgstr ""
+"En raison de la nouvelle fonctionnalité d'instances multiples, le format du "
+"préréglage a changé, mais l'ancien est toujours compatible pour être chargé. "
+"De toute façon, prenez en considération que sauvegarder le préréglage actuel "
+"l'écrira toujours dans le nouveau format."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
 msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
 msgstr ""
+"L'implémentation du Porte multibande a été migrée de CALF vers Linux Studio "
+"Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 msgid ""
@@ -260,13 +294,16 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
 msgid "Wet/dry controls were added for some plugins"
-msgstr ""
+msgstr "Des contrôles humides/secs ont été ajoutés pour certains greffons"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
+"L'interface d'effet n'est plus chargée lorsque le greffon lv2 correspondant "
+"n'est pas installé sur le système. A sa place, un message d'état destiné à "
+"l'utilisateur est affiché."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid "The documentation has been updated"
@@ -726,10 +763,12 @@ msgid ""
 "The Spectrum plugin was supposed to enter passthrough whenever it was not "
 "visible, but this was happening only when our window was closed."
 msgstr ""
+"Le greffon Spectre était censé entrer en mode passif lorsqu'il n'était pas "
+"visible, mais cela ne se produisait que lorsque notre fenêtre était fermée."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
 msgid "Improved support for Assistive Technology."
-msgstr ""
+msgstr "Amélioration du support aux technologies d'assistance."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:232
 msgid ""
