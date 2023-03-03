@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-26 11:11-0300\n"
-"PO-Revision-Date: 2023-03-01 10:37+0000\n"
+"PO-Revision-Date: 2023-03-03 06:36+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-rc\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -817,11 +817,11 @@ msgstr "Lunghezza Filtro"
 
 #: data/ui/echo_canceller.ui:50
 msgid "Residual Echo Suppression"
-msgstr "Soppressione dell'eco residuo"
+msgstr "Soppressione Eco Residuale"
 
 #: data/ui/echo_canceller.ui:72
 msgid "Near End Echo Suppression"
-msgstr "Soppressione dell'eco alla fine"
+msgstr "Soppressione Eco Vicino Alla Fine"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
