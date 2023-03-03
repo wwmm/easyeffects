@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-26 11:11-0300\n"
-"PO-Revision-Date: 2023-02-28 14:36+0000\n"
-"Last-Translator: \"Mathieu B.\" <mathieu.bousquet2@gmail.com>\n"
+"PO-Revision-Date: 2023-03-03 06:36+0000\n"
+"Last-Translator: Bundy01 <bundy@posteo.eu>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16-rc\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -558,9 +558,8 @@ msgid "Input Device"
 msgstr "Périphérique d’entrée"
 
 #: data/ui/compressor.ui:661
-#, fuzzy
 msgid " PreAmplification"
-msgstr "Préamplification"
+msgstr " Pré-amplification"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
@@ -837,7 +836,6 @@ msgid "IIR"
 msgstr "IIR"
 
 #: data/ui/equalizer.ui:74
-#, fuzzy
 msgid "FIR"
 msgstr "FIR"
 
@@ -846,7 +844,6 @@ msgid "FFT"
 msgstr "TFR"
 
 #: data/ui/equalizer.ui:76
-#, fuzzy
 msgid "SPM"
 msgstr "SPM"
 
@@ -1064,7 +1061,7 @@ msgstr "Préamplification"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
 msgid "Gating"
-msgstr "Porte"
+msgstr "Déclenchement"
 
 #: data/ui/limiter.ui:58
 msgid "Oversampling"
@@ -1076,7 +1073,6 @@ msgid "Dither"
 msgstr "Dither"
 
 #: data/ui/limiter.ui:82
-#, fuzzy
 msgid "Herm Thin"
 msgstr "Herm Thin"
 
@@ -2297,9 +2293,8 @@ msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 
 #: src/plugin_base.cpp:150
-#, fuzzy
 msgid "Output Level Meter"
-msgstr "Périphérique de sortie"
+msgstr "Indicateur de niveau de sortie"
 
 #: src/plugins_box.cpp:599
 msgid "Remove"
