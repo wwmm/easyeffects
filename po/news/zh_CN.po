@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-03 13:43+0000\n"
-"PO-Revision-Date: 2023-01-25 07:48+0000\n"
+"PO-Revision-Date: 2023-03-05 06:37+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -116,23 +116,24 @@ msgstr "功能："
 msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
-msgstr ""
+msgstr "改进了频谱插件的更新频率，现在更新频率不会因为音频的采样率不同而发生改变了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
-msgstr ""
+msgstr "允许用户自定义电平表和频谱的更新间隔。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
-msgstr ""
+msgstr "对于均衡器的频带增益滑块，用户现今可使用更大的步幅修改其数值了，但更细腻的控"
+"制仍然可以通过键盘的上下键实现。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "Small improvements to the echo canceller."
-msgstr ""
+msgstr "稍微改进了回声消除器。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
@@ -161,7 +162,8 @@ msgstr "漏洞修复："
 msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
-msgstr ""
+msgstr "自本程序支持多个过滤器实例起，回声消除器探头便未能正常链接到声卡。此问题现已"
+"得到解决。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
