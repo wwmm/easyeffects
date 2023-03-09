@@ -620,7 +620,7 @@ auto sort_bands(EqualizerBox* self, const int nbands, GSettings* settings, const
   return output;
 }
 
-void build_all_bands(EqualizerBox* self, const bool& sort_by_freq) {
+void build_all_bands(EqualizerBox* self, const bool& sort_by_freq = false) {
   const auto split = g_settings_get_boolean(self->settings, "split-channels") != 0;
 
   const auto nbands = g_settings_get_int(self->settings, "num-bands");
@@ -719,7 +719,7 @@ void setup(EqualizerBox* self,
   setup_listview<Channel::left>(self);
   setup_listview<Channel::right>(self);
 
-  build_all_bands(self, false);
+  build_all_bands(self);
 
   self->data->connections.push_back(equalizer->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
@@ -763,13 +763,13 @@ void setup(EqualizerBox* self,
 
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::num-bands",
-      G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self, false); }), self));
+      G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self); }), self));
 
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::split-channels", G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
         gtk_stack_set_visible_child_name(self->stack, "page_left_channel");
 
-        build_all_bands(self, false);
+        build_all_bands(self);
       }),
       self));
 }
