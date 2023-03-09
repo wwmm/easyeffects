@@ -80,8 +80,8 @@ void on_reset(RNNoiseBox* self, GtkButton* btn) {
 }
 
 void update_model_state(RNNoiseBox* self, const bool& load_error) {
-  gtk_widget_set_visible(GTK_WIDGET(self->model_error_state), load_error);
-  gtk_widget_set_visible(GTK_WIDGET(self->model_active_state), !load_error);
+  gtk_widget_set_visible(GTK_WIDGET(self->model_error_state), load_error ? 1 : 0);
+  gtk_widget_set_visible(GTK_WIDGET(self->model_active_state), !load_error ? 1 : 0);
 
   if (load_error) {
     ui::show_autohiding_toast(

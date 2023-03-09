@@ -415,17 +415,17 @@ void add_plugins_to_stack(PluginsBox* self) {
   }
 
   if (plugins_list.empty()) {
-    gtk_widget_show(GTK_WIDGET(self->overlay_no_plugins));
+    gtk_widget_set_visible(GTK_WIDGET(self->overlay_no_plugins), 1);
 
-    gtk_widget_hide(GTK_WIDGET(self->startpoint_box));
+    gtk_widget_set_visible(GTK_WIDGET(self->startpoint_box), 0);
 
-    gtk_widget_hide(GTK_WIDGET(self->endpoint_box));
+    gtk_widget_set_visible(GTK_WIDGET(self->endpoint_box), 0);
   } else {
-    gtk_widget_hide(GTK_WIDGET(self->overlay_no_plugins));
+    gtk_widget_set_visible(GTK_WIDGET(self->overlay_no_plugins), 0);
 
-    gtk_widget_show(GTK_WIDGET(self->startpoint_box));
+    gtk_widget_set_visible(GTK_WIDGET(self->startpoint_box), 1);
 
-    gtk_widget_show(GTK_WIDGET(self->endpoint_box));
+    gtk_widget_set_visible(GTK_WIDGET(self->endpoint_box), 1);
 
     if (std::ranges::find(plugins_list, visible_page_name) != plugins_list.end()) {
       gtk_stack_set_visible_child_name(self->stack, visible_page_name.c_str());

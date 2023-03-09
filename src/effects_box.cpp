@@ -236,10 +236,10 @@ void setup_spectrum(EffectsBox* self) {
 void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget* stack) {
   const auto* name = adw_view_stack_get_visible_child_name(ADW_VIEW_STACK(stack));
 
-  gtk_widget_set_visible(GTK_WIDGET(self->menubutton_blocklist), static_cast<gboolean>(g_strcmp0(name, "apps") == 0));
+  gtk_widget_set_visible(GTK_WIDGET(self->menubutton_blocklist), (g_strcmp0(name, "apps") == 0) ? 1 : 0);
 
   if (self->data->pipeline_type == PipelineType::input) {
-    gtk_widget_set_visible(GTK_WIDGET(self->toggle_listen_mic), static_cast<gboolean>(g_strcmp0(name, "plugins") == 0));
+    gtk_widget_set_visible(GTK_WIDGET(self->toggle_listen_mic), (g_strcmp0(name, "plugins") == 0) ? 1 : 0);
   }
 }
 
