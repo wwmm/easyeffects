@@ -10,7 +10,7 @@ name: CI
 jobs:
   prepare:
     name: Prepare
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     outputs:
       github_commit_desc: ${{ steps.get_commit_desc.outputs.github_commit_desc }}
     steps:
@@ -41,7 +41,7 @@ jobs:
 
   flatpak:
     name: Flatpak
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
@@ -90,7 +90,7 @@ jobs:
 
   arch-linux:
     name: Arch Linux
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: prepare
     steps:
     - name: Checkout
@@ -120,7 +120,7 @@ jobs:
 
   codeql-analyze:
     name: CodeQL Analyze
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     permissions:
       security-events: write
     container:
@@ -150,7 +150,7 @@ jobs:
 
   appstream-news-validate:
     name: AppStream and News validate
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container:
       # normally we'd use archlinux for up-to-date builds, but appstream-util 0.8.0 doesn't work
       # https://github.com/hughsie/appstream-glib/issues/449
