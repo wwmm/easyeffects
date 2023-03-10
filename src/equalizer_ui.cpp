@@ -314,7 +314,8 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
     return false;
   }
 
-  std::ranges::stable_sort(bands, {}, &APO_Band::freq);
+  /* Sort bands by freq is made by user through Equalizer::sort_bands()
+  std::ranges::stable_sort(bands, {}, &APO_Band::freq); */
 
   const auto& max_bands = self->data->equalizer->max_bands;
 
@@ -510,7 +511,8 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
     return false;
   }
 
-  std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq);
+  /* Sort bands by freq is made by user through Equalizer::sort_bands()
+  std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq); */
 
   const auto& max_bands = self->data->equalizer->max_bands;
 
