@@ -297,6 +297,9 @@ convert_news_to_metainfo() {
   
   sed -i 's!http[s]\?://\S*!!g' "${TEMP_NEWS_CLEANED}"
 
+  # remove backticks as these are not useful in metainfo
+  sed -i 's/`//g' "${TEMP_NEWS_CLEANED}"
+
   log_info "Converting news to metainfo"
 
   # must use actual file extension otherwise appstream-util will complain
