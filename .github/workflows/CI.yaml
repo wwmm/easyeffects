@@ -10,7 +10,7 @@ name: CI
 jobs:
   prepare:
     name: Prepare
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     outputs:
       github_commit_desc: ${{ steps.get_commit_desc.outputs.github_commit_desc }}
     steps:
@@ -34,14 +34,14 @@ jobs:
       - id: get_commit_desc
         run: | 
           if [[ ${{ github.event_name }} == 'pull_request' ]]; then
-            echo "::set-output name=github_commit_desc::merge-${{ env.GITHUB_PR_HEAD_SHA }}-into-${{ env.GITHUB_PR_BASE_SHA }}"
+            echo "github_commit_desc=merge-${{ env.GITHUB_PR_HEAD_SHA }}-into-${{ env.GITHUB_PR_BASE_SHA }}" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=github_commit_desc::${{ env.GITHUB_HEAD_SHA }}"
+            echo "github_commit_desc=${{ env.GITHUB_HEAD_SHA }}" >> $GITHUB_OUTPUT
           fi
 
   flatpak:
     name: Flatpak
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
@@ -51,6 +51,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3.3.0
+
+    - name: Enable errors on warnings
+      run: |
+        dnf install -y jq
+        # jq does not have an option to save edits in place so we should make a temporary file to edit this safely
+        updated_manifest=$(mktemp)
+        jq '.modules[0]."config-opts" += ["-Dwerror=true"]' util/flatpak/com.github.wwmm.easyeffects.Devel.json > "$updated_manifest"
+        mv "$updated_manifest" util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
     - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v5
       with:
@@ -82,7 +90,7 @@ jobs:
 
   arch-linux:
     name: Arch Linux
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: prepare
     steps:
     - name: Checkout
@@ -112,7 +120,7 @@ jobs:
 
   codeql-analyze:
     name: CodeQL Analyze
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     permissions:
       security-events: write
     container:
@@ -142,17 +150,15 @@ jobs:
 
   appstream-news-validate:
     name: AppStream and News validate
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container:
-      # normally we'd use archlinux for up-to-date builds, but appstream-util 0.8.0 doesn't work
-      # https://github.com/hughsie/appstream-glib/issues/449
-      image: fedora:35
+      image: archlinux
     steps:
       - name: Checkout code
         uses: actions/checkout@v3.3.0
       
       - name: Install deps
-        run: dnf -y install appstream libappstream-glib libxslt which
+        run: pacman -Syu --noconfirm appstream appstream-glib libxslt which
         
       - name: Validate existing files
         run: ./util/update-release-files.sh --no-new-release

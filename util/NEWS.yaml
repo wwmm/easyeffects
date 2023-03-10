@@ -10,7 +10,7 @@ Description:
 - 
 
 - Other notes∶
-- 
+- As we are removing code deprecated by `GTK 4.10` the minimum GTK version has been increased.
 
 ---
 Version: 7.0.1

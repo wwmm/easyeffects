@@ -412,8 +412,13 @@ void application_init(Application* self) {
 
   entries[1] = {"help",
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  gtk_show_uri(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "help:easyeffects",
-                               GDK_CURRENT_TIME);
+                  auto* parent = gtk_application_get_active_window(GTK_APPLICATION(gapp));
+
+                  auto* launcher = gtk_uri_launcher_new("help:easyeffects");
+
+                  gtk_uri_launcher_launch(launcher, parent, nullptr, nullptr, nullptr);
+
+                  g_object_unref(launcher);
                 },
                 nullptr, nullptr, nullptr};
 

@@ -51,10 +51,10 @@
         <ul>
           <li>Features:</li>
           <li>It is now possible to add more than one filter instance to the effects pipeline.</li>
-          <li>A new `Speech Processor` plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases whre the rnnoise library does not work well.</li>
-          <li>Improved compatibility with Linux Studio Plugins `1.2.3`.</li>
+          <li>A new Speech Processor plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases whre the rnnoise library does not work well.</li>
+          <li>Improved compatibility with Linux Studio Plugins 1.2.3.</li>
           <li>GraphicEQ presets can be imported into the Equalizer effect.</li>
-          <li>The application name has been changed to `Easy Effects` to adhere to the naming conventions of GNOME Human Interface Guidelines.</li>
+          <li>The application name has been changed to Easy Effects to adhere to the naming conventions of GNOME Human Interface Guidelines.</li>
           <li>The documentation has been updated.</li>
           <li>Improved presets autoloading.</li>
           <li>The Autogain silence threshold can now be configured by the user.</li>
@@ -101,7 +101,7 @@
           <li>The bypass state can be saved to the preset file. The reasons why this was done can be seen at issue 1039</li>
           <li>The preset autoloading code compatibility with usb devices has been improved.</li>
           <li>A dialog is shown to the user when a preset fails to load or a preset/impulse file fails to be imported.</li>
-          <li>The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of the one from Calf Studio.</li>
+          <li>The SideChain Gate plugin from Linux Studio Plugins is now used instead of the one from Calf Studio.</li>
           <li>Bug fixes:</li>
           <li>EasyEffects should not crash anymore when the user locale is not properly configured.</li>
           <li>A workaround was implemented in our icon to deal with the lack of proper SVG support in QT.</li>
@@ -131,9 +131,9 @@
           <li>Features:</li>
           <li>The interface of the pitch plugin was improved</li>
           <li>Our application icon is now compatible with desktops that uses QT</li>
-          <li>Our blocklist code will use the `application.id` tag if the stream sets it</li>
-          <li>In order to avoid problems with the mouse scroll the entries in the applications list shown in our `Players/Recorders` tab do not show a volume scale anymore. More details about the problem and the solution for it can be found on issue 1211 and issue 1427</li>
-          <li>When no application is available for display in the `Players/Recorders` a message will be shown to the user</li>
+          <li>Our blocklist code will use the application.id tag if the stream sets it</li>
+          <li>In order to avoid problems with the mouse scroll the entries in the applications list shown in our Players/Recorders tab do not show a volume scale anymore. More details about the problem and the solution for it can be found on issue 1211 and issue 1427</li>
+          <li>When no application is available for display in the Players/Recorders a message will be shown to the user</li>
           <li>Many translation updates</li>
           <li>Bug fixes:</li>
           <li>Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while our pipeline was active and the spectrum widget was visible</li>
@@ -147,7 +147,7 @@
           <li>Features:</li>
           <li>There is a new setting allowing the user to select an inactivity timeout for the pipeline. When no client is playing to or recording from our devices the filters will be unlinked after the timeout is reached. This is done to make sure we do not waste CPU power processing silence.</li>
           <li>The autogain plugin now allows the user to select which of the three loudness are used to calculate the geometric mean.</li>
-          <li>The autogain plugin now allows the maximum history to be set and does not use `libebur128` histogram mode anymore. This should avoid the cases where the `Integrated` loudness gets stuck forever in the same value.</li>
+          <li>The autogain plugin now allows the maximum history to be set and does not use libebur128 histogram mode anymore. This should avoid the cases where the Integrated loudness gets stuck forever in the same value.</li>
           <li>EasyEffects icon has been updated in a way that should make it visible in QT desktops.</li>
           <li>Bug fixes:</li>
           <li>The command line option that returns the global bypass state is working again.</li>
@@ -168,7 +168,7 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Support for the next PipeWire release `0.3.44`</li>
+          <li>Support for the next PipeWire release 0.3.44</li>
           <li>The autogain filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.</li>
           <li>We added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts. It should help with the cases were our devices are muted by the audio server for unknown reasons.</li>
           <li>Better support for computer suspending.</li>
@@ -182,7 +182,7 @@
       <description>
         <ul>
           <li>Bug fixes:</li>
-          <li>Fixed a bug where setting a equalizer band `quality` to `zero` would lead to an application crash.</li>
+          <li>Fixed a bug where setting a equalizer band quality to zero would lead to an application crash.</li>
         </ul>
       </description>
     </release>
@@ -193,8 +193,8 @@
           <li>LibAdwaita is used to create some parts of our window and for handling the switching between dark and light themes.</li>
           <li>The settings menu has been redesigned using LibAdwaita widgets.</li>
           <li>Equalizer APO preset import feature has been improved to apply not only the Bell filter, but also other supported ones (at the moment only the Bandpass filter is not available in LSP plugin).</li>
-          <li>The `Reset All Settings` function in our menu should work in Flatpak now.</li>
-          <li>We have a new option that allows the user to disable our menus `autohide`. This may help to workaround some bugs Popover menus currently have on gtk4.</li>
+          <li>The Reset All Settings function in our menu should work in Flatpak now.</li>
+          <li>We have a new option that allows the user to disable our menus autohide. This may help to workaround some bugs Popover menus currently have on gtk4.</li>
           <li>Bug fixes:</li>
           <li>More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.</li>
           <li>Other notes:</li>
@@ -208,13 +208,13 @@
         <ul>
           <li>Features:</li>
           <li>It is now possible to combine impulse responses in the Convolver interface. A new impulse file is generated and it should be visible in the impulse list.</li>
-          <li>Improved `x axis` drawings in our plots. Now the number of labels is adjusted dynamically depending on our window width.</li>
+          <li>Improved x axis drawings in our plots. Now the number of labels is adjusted dynamically depending on our window width.</li>
           <li>The documentation has been updated reflecting the new EasyEffects features. Old references about PulseEffects have been removed. The documentation button has been added in the menu section.</li>
           <li>Bug fixes:</li>
           <li>When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest value rather than resetting to the previous one.</li>
           <li>The application window now remembers the maximized state and restores it on the next opening event.</li>
           <li>Other notes:</li>
-          <li>The `tbb` library is a new dependency</li>
+          <li>The tbb library is a new dependency</li>
         </ul>
       </description>
     </release>
@@ -277,7 +277,7 @@
           <li>Features:</li>
           <li>Updated Chinese translation.</li>
           <li>Updated Italian translation.</li>
-          <li>Added support for the compressor parameter `Boost Amount`</li>
+          <li>Added support for the compressor parameter Boost Amount</li>
           <li>The multiband compressor plugin now uses the stereo multiband compressor plugin from Linux Studio Plugins instead of the one from Calf Studio.</li>
           <li>The limiter plugin now uses the stereo limiter plugin from Linux Studio Plugins instead of the one from Calf Studio.</li>
           <li>LV2 filters now are spawned in PipeWire graph only when loaded the first time. Once loaded, they remain connected until EasyEffects shutdown.</li>
@@ -286,7 +286,7 @@
           <li>The threshold parameter from the deesser plugin is now saved to the preset file.</li>
           <li>Improved band splitting for crystalizer with new default intensity values.</li>
           <li>Depending on the input gain or output gain values the corresponding level bars could not be aligned.</li>
-          <li>When adding more equalizer bands they are set to `Bell` instead of `Off`.</li>
+          <li>When adding more equalizer bands they are set to Bell instead of Off.</li>
           <li>Equalizer APO presets loading is now working properly on locales different than C.</li>
           <li>Improved linking management between port filter nodes in PipeWire.</li>
           <li>The crystalizer plugin signal amplification was too high before. It should be within more reasonable levels now.</li>
@@ -326,8 +326,8 @@
           <li>Features:</li>
           <li>Improved equalizer interface.</li>
           <li>Now we use a sidechain LSP compressor that allows the user to select and external source as the sidechain input.</li>
-          <li>We now support the LSP compressor `Boosting` mode.</li>
-          <li>When `split-channels` is enabled in the equalizer the imported APO preset will be applied only to the channel being visualized in the window. This will allow to import different presets for each channel instead of just settings the same values to both.</li>
+          <li>We now support the LSP compressor Boosting mode.</li>
+          <li>When split-channels is enabled in the equalizer the imported APO preset will be applied only to the channel being visualized in the window. This will allow to import different presets for each channel instead of just settings the same values to both.</li>
           <li>Bug fixes:</li>
           <li>Fixed some segmentation faults that could happen when creating a preset autoloading profile or removing presets</li>
         </ul>
@@ -339,7 +339,7 @@
           <li>Features:</li>
           <li>This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about everything here.</li>
           <li>The following are just the most import ones. People interested on the journey that got us here can take a look at issue 904 and issue 874.</li>
-          <li>The application and its repository have been renamed from PulseEffects to `EasyEffects`</li>
+          <li>The application and its repository have been renamed from PulseEffects to EasyEffects</li>
           <li>gtkmm3 was replaced by gtkmm4</li>
           <li>Gstreamer was replaced by native PipeWire filters.</li>
           <li>Many features were reimplemented from scratch. The preset autoloading is one example. Another remarkable change will be seen in the plugins selection menu. Now the user can show in the window only the plugins that he/she wants to use.</li>
