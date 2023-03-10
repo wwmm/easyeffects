@@ -147,7 +147,7 @@ endif
 easyeffects_deps = [
 	dependency('libpipewire-0.3', version: '>=0.3.41', include_type: 'system'),
 	dependency('glib-2.0', version: '>=2.56', include_type: 'system'),
-	dependency('gtk4', version: '>=4.2.1', include_type: 'system'),
+	dependency('gtk4', version: '>=4.10', include_type: 'system'),
 	dependency('libadwaita-1', version: '>=1.2.0', include_type: 'system'),
 	dependency('sigc++-3.0', version: '>=3.0.6', include_type: 'system'),
 	dependency('lilv-0', version: '>=0.22', include_type: 'system'),
