@@ -48,6 +48,8 @@ class Equalizer : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
+  void sort_bands();
+
   static constexpr uint max_bands = 32U;
 
   float latency_port_value = 0.0F;

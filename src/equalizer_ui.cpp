@@ -642,7 +642,7 @@ void build_all_bands(EqualizerBox* self, const bool& sort_by_freq = false) {
 }
 
 void on_sort_bands(EqualizerBox* self, GtkButton* btn) {
-  build_all_bands(self, true);
+  self->data->equalizer->sort_bands();
 }
 
 template <Channel channel>

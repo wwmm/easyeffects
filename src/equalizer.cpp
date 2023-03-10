@@ -269,6 +269,61 @@ void Equalizer::process(std::span<float>& left_in,
   }
 }
 
+void Equalizer::sort_bands() {
+  struct EQ_Band {
+    gdouble freq;
+    gint type;
+    gint mode;
+    gint slope;
+    gdouble gain;
+    gdouble q;
+    gboolean solo;
+    gboolean mute;
+  };
+
+  const auto used_bands = static_cast<uint>(g_settings_get_int(settings, "band_num"));
+  if (used_bands < 1U || used_bands > max_bands) {
+    return;
+  }
+
+  std::vector<GSettings*> settings_channels{settings_left};
+  if (g_settings_get_boolean(settings, "split-channels") != 0) {
+    settings_channels.push_back(settings_right);
+  }
+
+  using namespace tags::equalizer;
+
+  for (auto* channel : settings_channels) {
+    std::multimap<gdouble, struct EQ_Band> sorted_bands;
+
+    for (uint n = 0U; n < used_bands; n++) {
+      const auto f = g_settings_get_double(channel, band_gain[n].data());
+
+      sorted_bands.emplace(
+          std::pair<double, struct EQ_Band>(f, {.freq = f,
+                                                .type = g_settings_get_enum(channel, band_type[n].data()),
+                                                .mode = g_settings_get_enum(channel, band_mode[n].data()),
+                                                .slope = g_settings_get_enum(channel, band_slope[n].data()),
+                                                .gain = g_settings_get_double(channel, band_gain[n].data()),
+                                                .q = g_settings_get_double(channel, band_q[n].data()),
+                                                .solo = g_settings_get_boolean(channel, band_solo[n].data()),
+                                                .mute = g_settings_get_boolean(channel, band_mute[n].data())}));
+    }
+
+    for (uint n = 0U; const auto& p : sorted_bands) {
+      g_settings_set_double(channel, band_frequency[n].data(), p.second.freq);
+      g_settings_set_enum(channel, band_type[n].data(), p.second.type);
+      g_settings_set_enum(channel, band_mode[n].data(), p.second.mode);
+      g_settings_set_enum(channel, band_slope[n].data(), p.second.slope);
+      g_settings_set_double(channel, band_gain[n].data(), p.second.gain);
+      g_settings_set_double(channel, band_q[n].data(), p.second.q);
+      g_settings_set_boolean(channel, band_solo[n].data(), p.second.solo);
+      g_settings_set_boolean(channel, band_mute[n].data(), p.second.mute);
+      n++;
+    }
+  }
+}
+
 auto Equalizer::get_latency_seconds() -> float {
   return latency_port_value;
 }
