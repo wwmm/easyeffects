@@ -596,7 +596,7 @@ void on_import_geq_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
 // ### End GraphicEQ Section ###
 
-auto sort_bands(EqualizerBox* self, const int nbands, GSettings* settings, const bool& sort_by_freq)
+auto sort_band_widgets(EqualizerBox* self, const int nbands, GSettings* settings, const bool& sort_by_freq)
     -> std::vector<std::string> {
   std::vector<int> list(nbands);
 
@@ -628,13 +628,13 @@ void build_all_bands(EqualizerBox* self, const bool& sort_by_freq = false) {
 
   const auto nbands = g_settings_get_int(self->settings, "num-bands");
 
-  auto list = sort_bands(self, nbands, self->settings_left, sort_by_freq);
+  auto list = sort_band_widgets(self, nbands, self->settings_left, sort_by_freq);
 
   gtk_string_list_splice(self->string_list_left, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_left)),
                          util::make_gchar_pointer_vector(list).data());
 
   if (split) {
-    list = sort_bands(self, nbands, self->settings_right, sort_by_freq);
+    list = sort_band_widgets(self, nbands, self->settings_right, sort_by_freq);
 
     gtk_string_list_splice(self->string_list_right, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_right)),
                            util::make_gchar_pointer_vector(list).data());
