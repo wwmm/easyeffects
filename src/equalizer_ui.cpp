@@ -23,8 +23,6 @@ namespace ui::equalizer_box {
 
 using namespace tags::equalizer;
 
-constexpr uint max_bands = 32U;
-
 enum Channel { left, right };
 
 struct APO_Band {
@@ -97,6 +95,7 @@ void on_reset(EqualizerBox* self, GtkButton* btn) {
 }
 
 void on_flat_response(EqualizerBox* self, GtkButton* btn) {
+  const auto& max_bands = self->data->equalizer->max_bands;
   for (uint n = 0U; n < max_bands; n++) {
     g_settings_reset(self->settings_left, band_gain[n].data());
 
@@ -317,6 +316,8 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
 
   std::ranges::stable_sort(bands, {}, &APO_Band::freq);
 
+  const auto& max_bands = self->data->equalizer->max_bands;
+
   // Apply APO parameters obtained
   g_settings_set_int(self->settings, "num-bands",
                      static_cast<int>(std::min(static_cast<uint>(bands.size()), max_bands)));
@@ -510,6 +511,8 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
   }
 
   std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq);
+
+  const auto& max_bands = self->data->equalizer->max_bands;
 
   // Apply GraphicEQ parameters obtained
   g_settings_set_int(self->settings, "num-bands",
