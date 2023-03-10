@@ -34,9 +34,9 @@ jobs:
       - id: get_commit_desc
         run: | 
           if [[ ${{ github.event_name }} == 'pull_request' ]]; then
-            echo "::set-output name=github_commit_desc::merge-${{ env.GITHUB_PR_HEAD_SHA }}-into-${{ env.GITHUB_PR_BASE_SHA }}"
+            echo "github_commit_desc=merge-${{ env.GITHUB_PR_HEAD_SHA }}-into-${{ env.GITHUB_PR_BASE_SHA }}" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=github_commit_desc::${{ env.GITHUB_HEAD_SHA }}"
+            echo "github_commit_desc=${{ env.GITHUB_HEAD_SHA }}" >> $GITHUB_OUTPUT
           fi
 
   flatpak:
