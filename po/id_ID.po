@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-05 14:22+0000\n"
+"POT-Creation-Date: 2023-03-10 14:43+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2281,35 +2281,35 @@ msgstr "tidak dikenal"
 msgid "channels"
 msgstr "Total Kanal"
 
-#: src/application.cpp:435
+#: src/application.cpp:440
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:525
+#: src/application.cpp:530
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Tutup EasyEffects. Berguna Ketika Berjalan dalam Modus Layanan."
 
-#: src/application.cpp:528
+#: src/application.cpp:533
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Muat Preset. Misalkan: easyeffects -l music"
 
-#: src/application.cpp:531
+#: src/application.cpp:536
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Atur Ulang EasyEffects."
 
-#: src/application.cpp:534
+#: src/application.cpp:539
 msgid "Hide the Window."
 msgstr "Sembunyikan jendela."
 
-#: src/application.cpp:537
+#: src/application.cpp:542
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass global. 1 untuk mengaktifkan, 2 untuk menonaktifkan dan 3 untuk "
 "mendapatkan status"
 
-#: src/application.cpp:540
+#: src/application.cpp:545
 msgid "Show available presets."
 msgstr "Tampilkan Preset Tersedia."
 
