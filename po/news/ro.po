@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-05 14:22+0000\n"
+"POT-Creation-Date: 2023-03-10 14:17+0000\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
 "Last-Translator: Andrei Dobrete <andy3153@protonmail.com>\n"
 "Language-Team: \n"
@@ -180,14 +180,13 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid ""
-"A new `Speech Processor` plugin based on the Speex library was added. "
-"Besides providing noise suppression it also can detect voice activity. It is "
-"a decent alternative to the cases whre the rnnoise library does not work "
-"well."
+"A new Speech Processor plugin based on the Speex library was added. Besides "
+"providing noise suppression it also can detect voice activity. It is a "
+"decent alternative to the cases whre the rnnoise library does not work well."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
-msgid "Improved compatibility with Linux Studio Plugins `1.2.3`."
+msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
@@ -196,7 +195,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid ""
-"The application name has been changed to `Easy Effects` to adhere to the "
+"The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
 
@@ -310,7 +309,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
-"The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of "
+"The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
 "the one from Calf Studio."
 msgstr ""
 
@@ -382,20 +381,20 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
 msgid ""
-"Our blocklist code will use the `application.id` tag if the stream sets it"
+"Our blocklist code will use the application.id tag if the stream sets it"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
-"applications list shown in our `Players/Recorders` tab do not show a volume "
+"applications list shown in our Players/Recorders tab do not show a volume "
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
 msgid ""
-"When no application is available for display in the `Players/Recorders` a "
+"When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
 msgstr ""
 
@@ -433,8 +432,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
-"use `libebur128` histogram mode anymore. This should avoid the cases where "
-"the `Integrated` loudness gets stuck forever in the same value."
+"use libebur128 histogram mode anymore. This should avoid the cases where the "
+"Integrated loudness gets stuck forever in the same value."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
@@ -463,7 +462,7 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
-msgid "Support for the next PipeWire release `0.3.44`"
+msgid "Support for the next PipeWire release 0.3.44"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
@@ -492,8 +491,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid ""
-"Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
-"an application crash."
+"Fixed a bug where setting a equalizer band quality to zero would lead to an "
+"application crash."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
@@ -514,13 +513,12 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
-msgid ""
-"The `Reset All Settings` function in our menu should work in Flatpak now."
+msgid "The Reset All Settings function in our menu should work in Flatpak now."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
-"We have a new option that allows the user to disable our menus `autohide`. "
+"We have a new option that allows the user to disable our menus autohide. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
 msgstr ""
 
@@ -549,8 +547,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
 msgid ""
-"Improved `x axis` drawings in our plots. Now the number of labels is "
-"adjusted dynamically depending on our window width."
+"Improved x axis drawings in our plots. Now the number of labels is adjusted "
+"dynamically depending on our window width."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
@@ -573,7 +571,7 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
-msgid "The `tbb` library is a new dependency"
+msgid "The tbb library is a new dependency"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:225
@@ -711,7 +709,7 @@ msgid "Updated Italian translation."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
-msgid "Added support for the compressor parameter `Boost Amount`"
+msgid "Added support for the compressor parameter Boost Amount"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
@@ -754,8 +752,7 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:289
-msgid ""
-"When adding more equalizer bands they are set to `Bell` instead of `Off`."
+msgid "When adding more equalizer bands they are set to Bell instead of Off."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:290
@@ -835,15 +832,15 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:329
-msgid "We now support the LSP compressor `Boosting` mode."
+msgid "We now support the LSP compressor Boosting mode."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:330
 msgid ""
-"When `split-channels` is enabled in the equalizer the imported APO preset "
-"will be applied only to the channel being visualized in the window. This "
-"will allow to import different presets for each channel instead of just "
-"settings the same values to both."
+"When split-channels is enabled in the equalizer the imported APO preset will "
+"be applied only to the channel being visualized in the window. This will "
+"allow to import different presets for each channel instead of just settings "
+"the same values to both."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:332
@@ -867,7 +864,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:342
 msgid ""
 "The application and its repository have been renamed from PulseEffects to "
-"`EasyEffects`"
+"EasyEffects"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:343
