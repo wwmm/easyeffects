@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-05 14:22+0000\n"
+"POT-Creation-Date: 2023-03-10 14:35+0000\n"
 "PO-Revision-Date: 2023-03-05 06:37+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -175,17 +175,18 @@ msgid ""
 msgstr "增加向效果管道添加多个过滤器实例的支持。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
+#, fuzzy
 msgid ""
-"A new `Speech Processor` plugin based on the Speex library was added. "
-"Besides providing noise suppression it also can detect voice activity. It is "
-"a decent alternative to the cases whre the rnnoise library does not work "
-"well."
+"A new Speech Processor plugin based on the Speex library was added. Besides "
+"providing noise suppression it also can detect voice activity. It is a "
+"decent alternative to the cases whre the rnnoise library does not work well."
 msgstr ""
 "新增一个基于 Speex 库的“语音处理器”插件。 除了提供噪声抑制外，它还可以检测语"
 "音活动。 在 rnnoise 库无法正常工作的场景下，它或许是一个不错的替代方案。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
-msgid "Improved compatibility with Linux Studio Plugins `1.2.3`."
+#, fuzzy
+msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
 msgstr "改进了与 Linux Studio Plugins `1.2.3` 的兼容性。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
@@ -193,8 +194,9 @@ msgid "GraphicEQ presets can be imported into the Equalizer effect."
 msgstr "新增将 GraphicEQ 预设导入均衡器的支持。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
+#, fuzzy
 msgid ""
-"The application name has been changed to `Easy Effects` to adhere to the "
+"The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
 "为了遵守 GNOME 人机界面指南的建议，本应用程序名称已更改为“Easy Effects”。"
@@ -313,8 +315,9 @@ msgid ""
 msgstr "当预设无法加载或预设/脉冲文件无法被导入时，将向用户显示一个对话框。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
+#, fuzzy
 msgid ""
-"The SideChain Gate plugin from `Linux Studio Plugins` is now used instead of "
+"The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
 "the one from Calf Studio."
 msgstr ""
 "现在使用 \"Linux Studio Plugins \"的 SideChain Gate 插件，而非 Calf Studio 的"
@@ -396,15 +399,17 @@ msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr "我们的应用图标现已兼容基于QT的桌面环境"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
+#, fuzzy
 msgid ""
-"Our blocklist code will use the `application.id` tag if the stream sets it"
+"Our blocklist code will use the application.id tag if the stream sets it"
 msgstr ""
 "从现在起，如果某个音流设置了 application.id 标签，我们的黑名单代码将会使用它"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
+#, fuzzy
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
-"applications list shown in our `Players/Recorders` tab do not show a volume "
+"applications list shown in our Players/Recorders tab do not show a volume "
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
@@ -413,8 +418,9 @@ msgstr ""
 "#1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
+#, fuzzy
 msgid ""
-"When no application is available for display in the `Players/Recorders` a "
+"When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
 msgstr ""
 "当“播放器/录音程序”中没有可显示的应用程序时，将向用户显示一条简短的信息"
@@ -456,10 +462,11 @@ msgstr ""
 "自动增益插件新增选项，允许用户选择使用三个响度中的其中一个来计算几何平均值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
+#, fuzzy
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
-"use `libebur128` histogram mode anymore. This should avoid the cases where "
-"the `Integrated` loudness gets stuck forever in the same value."
+"use libebur128 histogram mode anymore. This should avoid the cases where the "
+"Integrated loudness gets stuck forever in the same value."
 msgstr ""
 "自动增益插件现在允许设置最大历史记录，并且不再使用“libebur128”直方图模式，以"
 "避免“综合”响度永远停留在同一值的情况。"
@@ -492,7 +499,8 @@ msgid ""
 msgstr "修复了一个使单声道麦克风无法正常工作于EasyEffects的漏洞"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
-msgid "Support for the next PipeWire release `0.3.44`"
+#, fuzzy
+msgid "Support for the next PipeWire release 0.3.44"
 msgstr "对下一个 PipeWire 发布版本 `0.3.44` 的支持"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
@@ -525,9 +533,10 @@ msgstr ""
 "修复了在没有预设的情况下，尝试创建自动加载配置文件会导致程序崩溃的错误。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
+#, fuzzy
 msgid ""
-"Fixed a bug where setting a equalizer band `quality` to `zero` would lead to "
-"an application crash."
+"Fixed a bug where setting a equalizer band quality to zero would lead to an "
+"application crash."
 msgstr "修复了将均衡器频段质量设置为零时，会导致应用程序崩溃的错误。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
@@ -552,13 +561,14 @@ msgstr ""
 "波器（目前 LSP 插件中只有带通滤波器不可用）。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
-msgid ""
-"The `Reset All Settings` function in our menu should work in Flatpak now."
+#, fuzzy
+msgid "The Reset All Settings function in our menu should work in Flatpak now."
 msgstr "`重置所有设置` 功能如今在Flatpak环境下应该可以正常工作了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
+#, fuzzy
 msgid ""
-"We have a new option that allows the user to disable our menus `autohide`. "
+"We have a new option that allows the user to disable our menus autohide. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
 msgstr ""
 "新增一个新选项，允许用户禁用本程序的菜单自动隐藏功能。这或许可以解决 Popover "
@@ -592,9 +602,10 @@ msgstr ""
 "应可见于脉冲列表中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
+#, fuzzy
 msgid ""
-"Improved `x axis` drawings in our plots. Now the number of labels is "
-"adjusted dynamically depending on our window width."
+"Improved x axis drawings in our plots. Now the number of labels is adjusted "
+"dynamically depending on our window width."
 msgstr ""
 "改进了我们绘图中的x 轴显示。 现在起标签的数量将根据程序窗口的宽度动态调整。"
 
@@ -623,7 +634,8 @@ msgstr ""
 "应用程序窗口现在起会记住当前最大化状态，并在下一次打开程序时恢复该状态。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
-msgid "The `tbb` library is a new dependency"
+#, fuzzy
+msgid "The tbb library is a new dependency"
 msgstr "使用 `tbb` 软件库作为新的依赖"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:225
@@ -776,7 +788,8 @@ msgid "Updated Italian translation."
 msgstr "更新了意大利语翻译。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
-msgid "Added support for the compressor parameter `Boost Amount`"
+#, fuzzy
+msgid "Added support for the compressor parameter Boost Amount"
 msgstr "新增了压缩器参数“Boost量”的支持"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
@@ -825,8 +838,8 @@ msgid ""
 msgstr "此前，根据其输入增益或输出增益值，相应的水平条有无法对齐的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:289
-msgid ""
-"When adding more equalizer bands they are set to `Bell` instead of `Off`."
+#, fuzzy
+msgid "When adding more equalizer bands they are set to Bell instead of Off."
 msgstr "添加更多均衡器频段时，它们将被设置为“钟形”而不是“关闭”。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:290
@@ -910,15 +923,17 @@ msgid ""
 msgstr "现在起本程序使用侧链 LSP 压缩器，以允许用户选择外部源作为侧链输入。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:329
-msgid "We now support the LSP compressor `Boosting` mode."
+#, fuzzy
+msgid "We now support the LSP compressor Boosting mode."
 msgstr "新增 LSP 压缩器“加强”模式支持。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:330
+#, fuzzy
 msgid ""
-"When `split-channels` is enabled in the equalizer the imported APO preset "
-"will be applied only to the channel being visualized in the window. This "
-"will allow to import different presets for each channel instead of just "
-"settings the same values to both."
+"When split-channels is enabled in the equalizer the imported APO preset will "
+"be applied only to the channel being visualized in the window. This will "
+"allow to import different presets for each channel instead of just settings "
+"the same values to both."
 msgstr ""
 "当在均衡器中启用“分离声道”时，导入的 APO 预设将仅应用于正在显示于程序窗口中的"
 "声道。 这将允许为每个声道导入不同的预设，两个声道不再强制共用一个预设。"
@@ -944,9 +959,10 @@ msgstr ""
 "和 issue #874。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:342
+#, fuzzy
 msgid ""
 "The application and its repository have been renamed from PulseEffects to "
-"`EasyEffects`"
+"EasyEffects"
 msgstr "本程序及 Git 仓库已从 PulseEffects 重命名为“EasyEffects”"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:343
