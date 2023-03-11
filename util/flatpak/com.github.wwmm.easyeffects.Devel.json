@@ -1,7 +1,7 @@
 {
     "id": "com.github.wwmm.easyeffects.Devel",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "43",
+    "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
     "command": "easyeffects",
     "finish-args": [
@@ -10,8 +10,7 @@
         "--socket=wayland",
         "--device=dri",
         "--filesystem=xdg-run/pipewire-0:ro",
-        "--env=LV2_PATH=/app/lib/lv2:/app/extensions/Plugins/lv2",
-        "--env=LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/lib/pipewire-0.3/jack"
+        "--env=LV2_PATH=/app/lib/lv2:/app/extensions/Plugins/lv2"
     ],
     "cleanup": [
         "*.a",
