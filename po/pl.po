@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 14:43+0000\n"
+"POT-Creation-Date: 2023-03-11 15:56+0000\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2400,13 +2400,13 @@ msgstr "Płaska odpowiedź"
 msgid "Import Impulse File"
 msgstr "Importuj plik Impulse"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
-#: src/equalizer_ui.cpp:557 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "Otwórz"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
-#: src/equalizer_ui.cpp:557 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -2450,31 +2450,31 @@ msgstr "EasyEffects"
 msgid "infinity"
 msgstr "nieskończoność"
 
-#: src/equalizer_ui.cpp:365
+#: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "Importuj plik profilu APO"
 
-#: src/equalizer_ui.cpp:371
+#: src/equalizer_ui.cpp:373
 msgid "APO Presets"
 msgstr "Profile APO"
 
-#: src/equalizer_ui.cpp:389
+#: src/equalizer_ui.cpp:391
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
 
-#: src/equalizer_ui.cpp:556
+#: src/equalizer_ui.cpp:561
 #, fuzzy
 msgid "Import GraphicEQ Preset File"
 msgstr "Importuj plik profilu APO"
 
-#: src/equalizer_ui.cpp:562
+#: src/equalizer_ui.cpp:567
 #, fuzzy
 msgid "GraphicEQ Presets"
 msgstr "Importuj profile"
 
-#: src/equalizer_ui.cpp:581
+#: src/equalizer_ui.cpp:586
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."

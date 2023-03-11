@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 14:43+0000\n"
+"POT-Creation-Date: 2023-03-11 15:56+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2205,13 +2205,13 @@ msgstr "インパルスファイルがインポートされていません"
 msgid "Import Impulse File"
 msgstr "インパルスファイルをインポート"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
-#: src/equalizer_ui.cpp:557 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "開く"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
-#: src/equalizer_ui.cpp:557 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -2251,15 +2251,15 @@ msgstr "エフェクト"
 msgid "infinity"
 msgstr "無限大"
 
-#: src/equalizer_ui.cpp:365
+#: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "APO プリセットファイルをインポート"
 
-#: src/equalizer_ui.cpp:371
+#: src/equalizer_ui.cpp:373
 msgid "APO Presets"
 msgstr "APO プリセット"
 
-#: src/equalizer_ui.cpp:389
+#: src/equalizer_ui.cpp:391
 #, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
@@ -2268,15 +2268,15 @@ msgstr ""
 "APO プリセットが読み込まれていません。ファイルフォーマットが間違っている可能"
 "性があります。内容を確認してください。"
 
-#: src/equalizer_ui.cpp:556
+#: src/equalizer_ui.cpp:561
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ プリセットファイルのインポート"
 
-#: src/equalizer_ui.cpp:562
+#: src/equalizer_ui.cpp:567
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ プリセット"
 
-#: src/equalizer_ui.cpp:581
+#: src/equalizer_ui.cpp:586
 #, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
