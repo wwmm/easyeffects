@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 14:43+0000\n"
+"POT-Creation-Date: 2023-03-11 15:56+0000\n"
 "PO-Revision-Date: 2023-03-03 06:36+0000\n"
 "Last-Translator: Bundy01 <bundy@posteo.eu>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2210,13 +2210,13 @@ msgstr "Fichier d’impulsion non importé"
 msgid "Import Impulse File"
 msgstr "Importer un fichier d’impulsion"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
-#: src/equalizer_ui.cpp:557 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:366
-#: src/equalizer_ui.cpp:557 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -2256,15 +2256,15 @@ msgstr "Effets"
 msgid "infinity"
 msgstr "infini"
 
-#: src/equalizer_ui.cpp:365
+#: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "Importer un fichier de préréglage APO"
 
-#: src/equalizer_ui.cpp:371
+#: src/equalizer_ui.cpp:373
 msgid "APO Presets"
 msgstr "Préréglages APO"
 
-#: src/equalizer_ui.cpp:389
+#: src/equalizer_ui.cpp:391
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2272,15 +2272,15 @@ msgstr ""
 "Le préréglage APO n’a pas été chargé. Le format du fichier peut ne pas être "
 "pris en charge. Veuillez vérifier son contenu."
 
-#: src/equalizer_ui.cpp:556
+#: src/equalizer_ui.cpp:561
 msgid "Import GraphicEQ Preset File"
 msgstr "Importer un fichier de préréglage GraphicEQ"
 
-#: src/equalizer_ui.cpp:562
+#: src/equalizer_ui.cpp:567
 msgid "GraphicEQ Presets"
 msgstr "Préréglages GraphicEQ"
 
-#: src/equalizer_ui.cpp:581
+#: src/equalizer_ui.cpp:586
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
