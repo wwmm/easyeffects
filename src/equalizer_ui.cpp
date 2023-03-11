@@ -23,8 +23,6 @@ namespace ui::equalizer_box {
 
 using namespace tags::equalizer;
 
-constexpr uint max_bands = 32U;
-
 enum Channel { left, right };
 
 struct APO_Band {
@@ -97,6 +95,7 @@ void on_reset(EqualizerBox* self, GtkButton* btn) {
 }
 
 void on_flat_response(EqualizerBox* self, GtkButton* btn) {
+  const auto& max_bands = self->data->equalizer->max_bands;
   for (uint n = 0U; n < max_bands; n++) {
     g_settings_reset(self->settings_left, band_gain[n].data());
 
@@ -315,7 +314,10 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
     return false;
   }
 
-  std::ranges::stable_sort(bands, {}, &APO_Band::freq);
+  /* Sort bands by freq is made by user through Equalizer::sort_bands()
+  std::ranges::stable_sort(bands, {}, &APO_Band::freq); */
+
+  const auto& max_bands = self->data->equalizer->max_bands;
 
   // Apply APO parameters obtained
   g_settings_set_int(self->settings, "num-bands",
@@ -509,7 +511,10 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
     return false;
   }
 
-  std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq);
+  /* Sort bands by freq is made by user through Equalizer::sort_bands()
+  std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq); */
+
+  const auto& max_bands = self->data->equalizer->max_bands;
 
   // Apply GraphicEQ parameters obtained
   g_settings_set_int(self->settings, "num-bands",
@@ -593,7 +598,7 @@ void on_import_geq_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
 // ### End GraphicEQ Section ###
 
-auto sort_bands(EqualizerBox* self, const int nbands, GSettings* settings, const bool& sort_by_freq)
+auto sort_band_widgets(EqualizerBox* self, const int nbands, GSettings* settings, const bool& sort_by_freq)
     -> std::vector<std::string> {
   std::vector<int> list(nbands);
 
@@ -620,18 +625,18 @@ auto sort_bands(EqualizerBox* self, const int nbands, GSettings* settings, const
   return output;
 }
 
-void build_all_bands(EqualizerBox* self, const bool& sort_by_freq) {
+void build_all_bands(EqualizerBox* self, const bool& sort_by_freq = false) {
   const auto split = g_settings_get_boolean(self->settings, "split-channels") != 0;
 
   const auto nbands = g_settings_get_int(self->settings, "num-bands");
 
-  auto list = sort_bands(self, nbands, self->settings_left, sort_by_freq);
+  auto list = sort_band_widgets(self, nbands, self->settings_left, sort_by_freq);
 
   gtk_string_list_splice(self->string_list_left, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_left)),
                          util::make_gchar_pointer_vector(list).data());
 
   if (split) {
-    list = sort_bands(self, nbands, self->settings_right, sort_by_freq);
+    list = sort_band_widgets(self, nbands, self->settings_right, sort_by_freq);
 
     gtk_string_list_splice(self->string_list_right, 0, g_list_model_get_n_items(G_LIST_MODEL(self->string_list_right)),
                            util::make_gchar_pointer_vector(list).data());
@@ -639,7 +644,7 @@ void build_all_bands(EqualizerBox* self, const bool& sort_by_freq) {
 }
 
 void on_sort_bands(EqualizerBox* self, GtkButton* btn) {
-  build_all_bands(self, true);
+  self->data->equalizer->sort_bands();
 }
 
 template <Channel channel>
@@ -719,7 +724,7 @@ void setup(EqualizerBox* self,
   setup_listview<Channel::left>(self);
   setup_listview<Channel::right>(self);
 
-  build_all_bands(self, false);
+  build_all_bands(self);
 
   self->data->connections.push_back(equalizer->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {
@@ -763,13 +768,13 @@ void setup(EqualizerBox* self,
 
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::num-bands",
-      G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self, false); }), self));
+      G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self); }), self));
 
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::split-channels", G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) {
         gtk_stack_set_visible_child_name(self->stack, "page_left_channel");
 
-        build_all_bands(self, false);
+        build_all_bands(self);
       }),
       self));
 }

@@ -35,7 +35,7 @@ class MultibandCompressor : public PluginBase {
   auto operator=(const MultibandCompressor&&) -> MultibandCompressor& = delete;
   ~MultibandCompressor() override;
 
-  static constexpr uint n_bands = 8U;
+  static constexpr uint n_bands = tags::multiband_compressor::n_bands;
 
   void setup() override;
 

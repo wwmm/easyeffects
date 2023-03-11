@@ -23,8 +23,6 @@ namespace ui::multiband_gate_box {
 
 using namespace std::string_literals;
 
-constexpr uint n_bands = 8U;
-
 struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
@@ -62,7 +60,7 @@ struct _MultibandGateBox {
 
   GSettings* settings;
 
-  std::array<ui::multiband_gate_band_box::MultibandGateBandBox*, n_bands> bands;
+  std::array<ui::multiband_gate_band_box::MultibandGateBandBox*, tags::multiband_gate::n_bands> bands;
 
   Data* data;
 };
@@ -82,7 +80,7 @@ void on_listbox_row_selected(MultibandGateBox* self, GtkListBoxRow* row, GtkList
 }
 
 void set_dropdown_input_devices_sensitivity(MultibandGateBox* self) {
-  for (uint n = 0U; n < n_bands; n++) {
+  for (uint n = 0U; n < tags::multiband_gate::n_bands; n++) {
     if (g_settings_get_boolean(self->settings, tags::multiband_gate::band_external_sidechain[n].data()) != 0) {
       gtk_widget_set_sensitive(GTK_WIDGET(self->dropdown_input_devices), 1);
 
@@ -94,7 +92,7 @@ void set_dropdown_input_devices_sensitivity(MultibandGateBox* self) {
 }
 
 void create_bands(MultibandGateBox* self) {
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0; n < tags::multiband_gate::n_bands; n++) {
     auto* band_box = ui::multiband_gate_band_box::create();
 
     ui::multiband_gate_band_box::setup(band_box, self->settings, static_cast<int>(n));
@@ -193,7 +191,7 @@ void setup(MultibandGateBox* self,
   }));
 
   self->data->connections.push_back(
-      multiband_gate->frequency_range.connect([=](const std::array<float, n_bands> values) {
+      multiband_gate->frequency_range.connect([=](const std::array<float, tags::multiband_gate::n_bands> values) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
@@ -205,53 +203,57 @@ void setup(MultibandGateBox* self,
         });
       }));
 
-  self->data->connections.push_back(multiband_gate->envelope.connect([=](const std::array<float, n_bands> values) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+  self->data->connections.push_back(
+      multiband_gate->envelope.connect([=](const std::array<float, tags::multiband_gate::n_bands> values) {
+        util::idle_add([=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      for (size_t n = 0U; n < values.size(); n++) {
-        ui::multiband_gate_band_box::set_envelope_label(self->bands[n], values[n]);
-      }
-    });
-  }));
+          for (size_t n = 0U; n < values.size(); n++) {
+            ui::multiband_gate_band_box::set_envelope_label(self->bands[n], values[n]);
+          }
+        });
+      }));
 
-  self->data->connections.push_back(multiband_gate->curve.connect([=](const std::array<float, n_bands> values) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+  self->data->connections.push_back(
+      multiband_gate->curve.connect([=](const std::array<float, tags::multiband_gate::n_bands> values) {
+        util::idle_add([=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      for (size_t n = 0U; n < values.size(); n++) {
-        ui::multiband_gate_band_box::set_curve_label(self->bands[n], values[n]);
-      }
-    });
-  }));
+          for (size_t n = 0U; n < values.size(); n++) {
+            ui::multiband_gate_band_box::set_curve_label(self->bands[n], values[n]);
+          }
+        });
+      }));
 
-  self->data->connections.push_back(multiband_gate->reduction.connect([=](const std::array<float, n_bands> values) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+  self->data->connections.push_back(
+      multiband_gate->reduction.connect([=](const std::array<float, tags::multiband_gate::n_bands> values) {
+        util::idle_add([=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      for (size_t n = 0U; n < values.size(); n++) {
-        ui::multiband_gate_band_box::set_gain_label(self->bands[n], values[n]);
-      }
-    });
-  }));
+          for (size_t n = 0U; n < values.size(); n++) {
+            ui::multiband_gate_band_box::set_gain_label(self->bands[n], values[n]);
+          }
+        });
+      }));
 
-  self->data->connections.push_back(multiband_gate->gating.connect([=](const std::array<double, n_bands> values) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+  self->data->connections.push_back(
+      multiband_gate->gating.connect([=](const std::array<double, tags::multiband_gate::n_bands> values) {
+        util::idle_add([=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      for (size_t n = 0U; n < values.size(); n++) {
-        ui::multiband_gate_band_box::set_gating_levelbar(self->bands[n], static_cast<float>(values[n]));
-      }
-    });
-  }));
+          for (size_t n = 0U; n < values.size(); n++) {
+            ui::multiband_gate_band_box::set_gating_levelbar(self->bands[n], static_cast<float>(values[n]));
+          }
+        });
+      }));
 
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {

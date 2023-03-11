@@ -23,8 +23,6 @@ namespace ui::multiband_compressor_box {
 
 using namespace std::string_literals;
 
-constexpr uint n_bands = 8U;
-
 struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
@@ -62,7 +60,7 @@ struct _MultibandCompressorBox {
 
   GSettings* settings;
 
-  std::array<ui::multiband_compressor_band_box::MultibandCompressorBandBox*, n_bands> bands;
+  std::array<ui::multiband_compressor_band_box::MultibandCompressorBandBox*, tags::multiband_compressor::n_bands> bands;
 
   Data* data;
 };
@@ -82,7 +80,7 @@ void on_listbox_row_selected(MultibandCompressorBox* self, GtkListBoxRow* row, G
 }
 
 void set_dropdown_input_devices_sensitivity(MultibandCompressorBox* self) {
-  for (uint n = 0U; n < n_bands; n++) {
+  for (uint n = 0U; n < tags::multiband_compressor::n_bands; n++) {
     if (g_settings_get_boolean(self->settings, tags::multiband_compressor::band_external_sidechain[n].data()) != 0) {
       gtk_widget_set_sensitive(GTK_WIDGET(self->dropdown_input_devices), 1);
 
@@ -94,7 +92,7 @@ void set_dropdown_input_devices_sensitivity(MultibandCompressorBox* self) {
 }
 
 void create_bands(MultibandCompressorBox* self) {
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0; n < tags::multiband_compressor::n_bands; n++) {
     auto* band_box = ui::multiband_compressor_band_box::create();
 
     ui::multiband_compressor_band_box::setup(band_box, self->settings, n);
@@ -193,8 +191,8 @@ void setup(MultibandCompressorBox* self,
         });
       }));
 
-  self->data->connections.push_back(
-      multiband_compressor->frequency_range.connect([=](const std::array<float, n_bands> values) {
+  self->data->connections.push_back(multiband_compressor->frequency_range.connect(
+      [=](const std::array<float, tags::multiband_compressor::n_bands> values) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
@@ -207,7 +205,7 @@ void setup(MultibandCompressorBox* self,
       }));
 
   self->data->connections.push_back(
-      multiband_compressor->envelope.connect([=](const std::array<float, n_bands> values) {
+      multiband_compressor->envelope.connect([=](const std::array<float, tags::multiband_compressor::n_bands> values) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
@@ -219,20 +217,21 @@ void setup(MultibandCompressorBox* self,
         });
       }));
 
-  self->data->connections.push_back(multiband_compressor->curve.connect([=](const std::array<float, n_bands> values) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+  self->data->connections.push_back(
+      multiband_compressor->curve.connect([=](const std::array<float, tags::multiband_compressor::n_bands> values) {
+        util::idle_add([=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      for (size_t n = 0U; n < values.size(); n++) {
-        ui::multiband_compressor_band_box::set_curve_label(self->bands[n], values[n]);
-      }
-    });
-  }));
+          for (size_t n = 0U; n < values.size(); n++) {
+            ui::multiband_compressor_band_box::set_curve_label(self->bands[n], values[n]);
+          }
+        });
+      }));
 
   self->data->connections.push_back(
-      multiband_compressor->reduction.connect([=](const std::array<float, n_bands> values) {
+      multiband_compressor->reduction.connect([=](const std::array<float, tags::multiband_compressor::n_bands> values) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;

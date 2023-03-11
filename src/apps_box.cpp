@@ -62,7 +62,7 @@ auto app_is_blocklisted(AppsBox* self, const std::string& name) -> bool {
 
 void update_empty_list_overlay(AppsBox* self) {
   gtk_widget_set_visible(GTK_WIDGET(self->overlay_empty_list),
-                         static_cast<gboolean>(g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0));
+                         (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0) ? 1 : 0);
 }
 
 void on_app_added(AppsBox* self, const NodeInfo& node_info) {
@@ -92,8 +92,8 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
 
   /*
     As g_list_store_append calls increases the object reference count we remove the one added by g_object_new in the
-    object creation. The reference added by g_list_store_append will be removed by an additional call to g_object_unref
-    after g_list_store_remove is called
+    object creation. The reference added by g_list_store_append will be removed by an additional call to
+    g_object_unref after g_list_store_remove is called
   */
 
   g_object_unref(holder);

@@ -23,6 +23,10 @@
 
 namespace tags::multiband_compressor {
 
+// mb comp band num const
+
+constexpr uint n_bands = 8U;
+
 // gsettings keys tags
 
 constexpr auto band_enable = std::to_array({{"enable-band0"},

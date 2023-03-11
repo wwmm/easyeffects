@@ -35,7 +35,7 @@ class MultibandGate : public PluginBase {
   auto operator=(const MultibandGate&&) -> MultibandGate& = delete;
   ~MultibandGate() override;
 
-  static constexpr uint n_bands = 8U;
+  static constexpr uint n_bands = tags::multiband_gate::n_bands;
 
   void setup() override;
 
