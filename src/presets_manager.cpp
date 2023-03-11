@@ -410,7 +410,9 @@ void PresetsManager::write_plugins_preset(const PresetType& preset_type,
                                           nlohmann::json& json) {
   for (const auto& name : plugins) {
     if (auto wrapper = create_wrapper(preset_type, name); wrapper != std::nullopt) {
-      wrapper.value()->write(json);
+      if (wrapper.has_value()) {
+        wrapper.value()->write(json);
+      }
     }
   }
 }
@@ -580,7 +582,9 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
   for (const auto& name : plugins) {
     if (auto wrapper = create_wrapper(preset_type, name); wrapper != std::nullopt) {
       try {
-        wrapper.value()->read(json);
+        if (wrapper.has_value()) {
+          wrapper.value()->read(json);
+        }
       } catch (const nlohmann::json::exception& e) {
         notify_error(PresetError::plugin_format, name);
 

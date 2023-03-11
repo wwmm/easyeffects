@@ -326,11 +326,15 @@ void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& 
 
   keys = g_settings_schema_list_keys(schema);
 
+  g_settings_delay(settings);
+
   for (int i = 0; keys[i] != nullptr; i++) {
     if (std::ranges::find(blocklist, keys[i]) == blocklist.end()) {
       g_settings_reset(settings, keys[i]);
     }
   }
+
+  g_settings_apply(settings);
 
   g_settings_schema_unref(schema);
   g_strfreev(keys);

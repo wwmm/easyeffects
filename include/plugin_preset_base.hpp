@@ -62,7 +62,11 @@ class PluginPresetBase {
     // For simplicity, exceptions raised while reading presets parameters
     // should be handled outside this method.
 
+    g_settings_delay(settings);
+
     load(json);
+
+    g_settings_apply(settings);
   }
 
  protected:
