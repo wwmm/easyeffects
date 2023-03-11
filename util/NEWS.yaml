@@ -2,12 +2,12 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
-Description: 
+Description:
 - Features∶
-- 
+- The Equalizer "sort bands" feature is now ordering bands on GSettings, so the result can be saved into presets.
 
 - Bug fixes∶
-- 
+-
 
 - Other notes∶
 - As we are removing code deprecated by `GTK 4.10` the minimum GTK version has been increased.
@@ -16,7 +16,7 @@ Description:
 Version: 7.0.1
 Date: 2023-02-26
 
-Description: 
+Description:
 - Features∶
 - The spectrum plugin update rate was improved. Different sampling rates should lead to similar update frequencies visually.
 - The update interval used by level meters and the spectrum can be customized by the user.
