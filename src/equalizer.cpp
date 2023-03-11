@@ -281,7 +281,7 @@ void Equalizer::sort_bands() {
     gboolean mute;
   };
 
-  const auto used_bands = static_cast<uint>(g_settings_get_int(settings, "band_num"));
+  const auto used_bands = static_cast<uint>(g_settings_get_int(settings, "num-bands"));
   if (used_bands < 1U || used_bands > max_bands) {
     return;
   }
@@ -297,7 +297,7 @@ void Equalizer::sort_bands() {
     std::multimap<gdouble, struct EQ_Band> sorted_bands;
 
     for (uint n = 0U; n < used_bands; n++) {
-      const auto f = g_settings_get_double(channel, band_gain[n].data());
+      const auto f = g_settings_get_double(channel, band_frequency[n].data());
 
       sorted_bands.emplace(
           std::pair<double, struct EQ_Band>(f, {.freq = f,
