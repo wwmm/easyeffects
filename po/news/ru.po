@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-11 15:56+0000\n"
-"PO-Revision-Date: 2023-02-27 09:38+0000\n"
+"PO-Revision-Date: 2023-03-12 08:41+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -188,7 +188,6 @@ msgstr ""
 "фильтра."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
-#, fuzzy
 msgid ""
 "A new Speech Processor plugin based on the Speex library was added. Besides "
 "providing noise suppression it also can detect voice activity. It is a "
@@ -196,20 +195,18 @@ msgid ""
 msgstr ""
 "Добавлен новый плагин «Речевой процессор», основанный на библиотеке Speex. "
 "Помимо обеспечения подавления шума, он также может обнаруживать голосовую "
-"активность. Это достойная альтернатива тем случаям, когда библиотека rnnoise "
-"не работает."
+"активность. Это достойная альтернатива в тех случаях, когда библиотека "
+"rnnoise не работает должным образом."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
-#, fuzzy
 msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
-msgstr "Улучшена совместимость с Linux Studio Plugins «1.2.3»."
+msgstr "Улучшена совместимость с Linux Studio Plugins 1.2.3."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
 msgstr "Пресдустановки GraphicEQ можно импортировать в эффект эквалайзера."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
-#, fuzzy
 msgid ""
 "The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
