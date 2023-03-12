@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-11 15:56+0000\n"
-"PO-Revision-Date: 2023-03-07 01:38+0000\n"
+"PO-Revision-Date: 2023-03-13 03:48+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -131,16 +131,21 @@ msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
 msgstr ""
+"Het door de niveaumeters en het spectrum gebruikte update-interval kan door "
+"de gebruiker worden aangepast."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
+"De waarde van de equalizer-bandversterking kan in grotere stappen worden "
+"aangepast. Fijnkorrelige regeling is nog steeds mogelijk via de toetsen "
+"omhoog/omlaag van het toetsenbord."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "Small improvements to the echo canceller."
-msgstr ""
+msgstr "Kleine verbeteringen aan de echo-onderdrukking."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
@@ -170,6 +175,8 @@ msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
+"De echo-onderdrukking-probes werden niet gekoppeld aan de geluidskaart na de "
+"overgang naar meerdere filters. Dit zou nu verholpen moeten zijn."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
@@ -180,21 +187,19 @@ msgstr ""
 "toe te voegen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
-#, fuzzy
 msgid ""
 "A new Speech Processor plugin based on the Speex library was added. Besides "
 "providing noise suppression it also can detect voice activity. It is a "
 "decent alternative to the cases whre the rnnoise library does not work well."
 msgstr ""
-"Een nieuwe `Speech Processor`-plug-in gebaseerd op de Speex-bibliotheek is "
+"Een nieuwe spraakverwerkings-plug-in gebaseerd op de Speex-bibliotheek is "
 "toegevoegd. Naast ruisonderdrukking biedt het ook detectie voor "
 "stemactiviteit. Het is een goed alternatief voor de gevallen waar de RNNoise-"
 "bibliotheek niet goed werkt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
-#, fuzzy
 msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
-msgstr "Compatibiliteit met Linux Studio Plugins `1.2.3` verbeterd."
+msgstr "Compatibiliteit met Linux Studio Plugins 1.2.3 verbeterd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
@@ -203,12 +208,11 @@ msgstr ""
 "effect."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
-#, fuzzy
 msgid ""
 "The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
-"De app-naam is veranderd naar `Easy Effects` om aan de naamgevingsconventies "
+"De app-naam is veranderd naar Easy Effects om aan de naamgevingsconventies "
 "van de GNOME Human Interface Guidelines te voldoen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
@@ -222,22 +226,27 @@ msgstr "Automatisch inladen van voorinstellingen verbeterd."
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "The Autogain silence threshold can now be configured by the user."
 msgstr ""
+"De autoversterking-stiltegrens kan nu door de gebruiker worden ingesteld."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid "Dry and wet controls added to the Stereo Tools effect."
-msgstr ""
+msgstr "Dry- en wet-regelaars toegevoegd aan het stereogereeschapseffect."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "The echo canceller now has a residual noise suppression control also based "
 "on the Speex library."
 msgstr ""
+"De echo-onderdrukker heeft nu een regeling voor restruisonderdrukking, "
+"eveneens gebaseerd op de Speex-bibliotheek."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
 "When the mouse was hovering over a chart the wrong value for the x axis "
 "coordinate was being shown. This regression is fixed."
 msgstr ""
+"Wanneer de muis over een grafiek beweegt werd de verkeerde waarde voor de x"
+"-as-coördinaat getoond. Deze regressie is verholpen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
@@ -255,18 +264,26 @@ msgid ""
 "consideration that saving the current preset will always write it in the new "
 "format."
 msgstr ""
+"Door de nieuwe functie voor meerdere instanties is het "
+"voorinstellingsformaat veranderd, maar de oude is nog steeds compatibel om "
+"te laden. Houd er in elk geval rekening mee dat de huidige voorinstelling "
+"altijd in het nieuwe formaat wordt opgeslagen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
 msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
 msgstr ""
+"Implementatie van Multiband Gate is gemigreerd van CALF naar Linux Studio "
+"Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
 msgstr ""
+"De compatibiliteit van het automatisch laden van voorinstellingen met bluez5-"
+"apparaten is verbeterd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
 msgid "Wet/dry controls were added for some plugins"
@@ -277,6 +294,9 @@ msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
+"De effectinterface wordt niet langer geladen wanneer de bijbehorende lv2"
+"-plug-in niet is geïnstalleerd op het systeem. In plaats daarvan wordt een "
+"statusbericht aan de gebruiker getoond."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid "The documentation has been updated"
