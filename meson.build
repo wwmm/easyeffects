@@ -49,14 +49,18 @@ status = []
 
 if get_option('devel')
   status += [ 
-    'Using development build mode with .Devel appended to the application ID.'
+    'Using development build mode with .Devel appended to the application ID.',
+    'Also using mold linker, so make sure mold is installed on your system.'
   ]
   app_id_suffix = '.Devel'
   name_suffix = ' (Devel)'
+  # --no-as-needed temporarily necessary due to https://github.com/rui314/mold/issues/1017
+  link_args = ['-fuse-ld=mold', '-Wl,--no-as-needed']
 else
   status += [ 'Using stable build mode with the standard application ID' ]
   app_id_suffix = ''
   name_suffix = ''
+  link_args = []
 endif
 
 if get_option('enable-libportal') and libportal.found()

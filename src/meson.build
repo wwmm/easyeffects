@@ -176,5 +176,6 @@ executable(
 	easyeffects_sources,
 	include_directories : [include_dir,config_h_dir],
 	dependencies : easyeffects_deps,
-	install: true
+	install: true,
+	link_args: link_args
 )
