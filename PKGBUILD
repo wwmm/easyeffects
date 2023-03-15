@@ -40,6 +40,7 @@ pkgver() {
 build() {
   cd ..
   # set werror to true if the CI file exists, otherwise false
+  # arch-meson sets --buildtype plain by default, so don't set -Dbuildtype=debug 
   arch-meson . build -Ddevel=true -Dwerror="$( test -f "./GITHUB_COMMIT_DESC" && echo "true" || echo "false")"
 
   ninja -C build
