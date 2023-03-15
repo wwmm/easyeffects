@@ -72,6 +72,7 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Ddevel=true",
+                "-Dbuildtype=debug",
                 "-Denable-libportal=true"
             ],
             "run-tests": true,

@@ -12,7 +12,7 @@ url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
 depends=('libadwaita' 'pipewire-pulse' 'lilv' 'libsigc++-3.0' 'libsamplerate' 'zita-convolver' 
          'libebur128' 'rnnoise' 'rubberband' 'libbs2b' 'nlohmann-json' 'tbb' 'fmt' 'gsl' 'speexdsp' 'speex')
-makedepends=('meson' 'itstool' 'appstream-glib' 'git')
+makedepends=('meson' 'itstool' 'appstream-glib' 'git' 'mold')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'
@@ -40,6 +40,7 @@ pkgver() {
 build() {
   cd ..
   # set werror to true if the CI file exists, otherwise false
+  # arch-meson sets --buildtype plain by default, so don't set -Dbuildtype=debug 
   arch-meson . build -Ddevel=true -Dwerror="$( test -f "./GITHUB_COMMIT_DESC" && echo "true" || echo "false")"
 
   ninja -C build
