@@ -46,7 +46,9 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
   // libportal check if portal request worked
 
   if (xdp_portal_request_background_finish(portal, result, &error) == 0) {
+    // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
     std::string reason;
+    // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
     std::string explanation;
 
     if (error != nullptr) {
@@ -114,6 +116,8 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
 
 // generic portal update function
 void update_background_portal(const bool& use_autostart) {
+  // clang-tidy doesn't seem to understand this is actually being inited.
+  // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
   XdpBackgroundFlags background_flags = XDP_BACKGROUND_FLAG_NONE;
 
   g_autoptr(GPtrArray) command_line = nullptr;
