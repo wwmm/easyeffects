@@ -1427,6 +1427,8 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
   util::debug("compiled with PipeWire: " + header_version);
   util::debug("linked to PipeWire: " + library_version);
 
+  // this needs to occur after pw_init(), so putting it before pw_init() in the initializer breaks this
+  // NOLINTNEXTLINE(cppcoreguidelines-prefer-member-initializer)
   thread_loop = pw_thread_loop_new("ee-pipewire-thread", nullptr);
 
   // NOLINTNEXTLINE(clang-analyzer-core.NullDereference)
