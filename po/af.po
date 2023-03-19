@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-15 14:37+0000\n"
+"POT-Creation-Date: 2023-03-19 12:03-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Afrikaans <https://hosted.weblate.org/projects/easyeffects/"
@@ -91,8 +91,8 @@ msgid "_About Easy Effects"
 msgstr "EasyEffects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:108 src/presets_menu.cpp:258
-#: src/presets_menu.cpp:259 src/presets_menu.cpp:276 src/presets_menu.cpp:277
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:112 src/presets_menu.cpp:268
+#: src/presets_menu.cpp:269 src/presets_menu.cpp:286 src/presets_menu.cpp:287
 msgid "Presets"
 msgstr ""
 
@@ -876,7 +876,7 @@ msgstr ""
 msgid "Sort Bands"
 msgstr ""
 
-#: data/ui/equalizer.ui:315 src/presets_menu.cpp:102
+#: data/ui/equalizer.ui:315 src/presets_menu.cpp:104
 msgid "Import Preset"
 msgstr ""
 
@@ -2190,12 +2190,12 @@ msgid "Import Impulse File"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:102 src/rnnoise_ui.cpp:131
+#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:103 src/rnnoise_ui.cpp:131
+#: src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
 msgid "Cancel"
 msgstr ""
 
