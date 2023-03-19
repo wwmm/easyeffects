@@ -41,6 +41,14 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   '
 # todo, clang-analyzer-core.NullDereference is also suppressed in the code itself with NOLINT, consider fixing that too
 
+CheckOptions:
+  # we don't want these to be passed by reference, even if (especially for shared_ptrs) it incurs a much greater cost
+  # since we either we use c apis like pipewire which clang-tidy/c++ cannot reason about (NodeInfo, LinkInfo, DeviceInfo),
+  # or we depend on shared_ptrs to work across multiple threads, notably when the caller finishes before the callee
+  performance-unnecessary-value-param.AllowedTypes: 'NodeInfo; LinkInfo; DeviceInfo; std::shared_ptr'
+
+# note some checks are disabled in the code itself by adding NOLINT(check-name) or NOLINTNEXTLINE(check-name)
+
 # don't treat clang diagnostic warnings (aka compiler warnings) as errors, to stop ci from failing due to these
 # we can't suppress these like can be done for other checks above, they will always be outputted it seems
 # these can however be suppressed by disabling the compiler warnings in meson, but that is not really what we want
