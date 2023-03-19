@@ -24,8 +24,10 @@
 
 template <size_t N>
 struct StringLiteralWrapper {
+  // NOLINTNEXTLINE(hicpp-explicit-conversions)
   constexpr StringLiteralWrapper(const char (&str)[N]) : msg(std::to_array(str)) {}
 
+  // NOLINTNEXTLINE(hicpp-explicit-conversions)
   constexpr StringLiteralWrapper(std::array<char, N> arr) : msg(arr) {}
 
   std::array<char, N> msg;
