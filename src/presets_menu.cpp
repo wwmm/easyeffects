@@ -99,39 +99,49 @@ template <PresetType preset_type>
 void import_preset(PresetsMenu* self) {
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
-  auto* dialog = gtk_file_chooser_native_new(_("Import Preset"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"),
-                                             _("Cancel"));
+  auto* dialog = gtk_file_dialog_new();
+
+  gtk_file_dialog_set_title(dialog, _("Import Preset"));
+  gtk_file_dialog_set_accept_label(dialog, _("Open"));
+
+  GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
 
   auto* filter = gtk_file_filter_new();
 
   gtk_file_filter_add_pattern(filter, "*.json");
   gtk_file_filter_set_name(filter, _("Presets"));
 
-  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+  g_list_store_append(filters, filter);
 
-  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, PresetsMenu* self) {
-                     if (response == GTK_RESPONSE_ACCEPT) {
-                       auto* chooser = GTK_FILE_CHOOSER(dialog);
-                       auto* file = gtk_file_chooser_get_file(chooser);
-                       auto* path = g_file_get_path(file);
+  g_object_unref(filter);
 
-                       if constexpr (preset_type == PresetType::output) {
-                         self->data->application->presets_manager->import(PresetType::output, path);
-                       } else if constexpr (preset_type == PresetType::input) {
-                         self->data->application->presets_manager->import(PresetType::input, path);
-                       }
+  gtk_file_dialog_set_filters(dialog, G_LIST_MODEL(filters));
 
-                       g_free(path);
+  g_object_unref(filters);
 
-                       g_object_unref(file);
-                     }
+  gtk_file_dialog_open(
+      dialog, active_window, nullptr,
+      +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
+        auto* self = static_cast<PresetsMenu*>(user_data);
+        auto* dialog = GTK_FILE_DIALOG(source_object);
 
-                     g_object_unref(dialog);
-                   }),
-                   self);
+        auto* file = gtk_file_dialog_open_finish(dialog, result, nullptr);
 
-  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
-  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
+        if (file != nullptr) {
+          auto* path = g_file_get_path(file);
+
+          if constexpr (preset_type == PresetType::output) {
+            self->data->application->presets_manager->import(PresetType::output, path);
+          } else if constexpr (preset_type == PresetType::input) {
+            self->data->application->presets_manager->import(PresetType::input, path);
+          }
+
+          g_free(path);
+
+          g_object_unref(file);
+        }
+      },
+      self);
 }
 
 void import_output_preset(PresetsMenu* self, GtkButton* button) {
