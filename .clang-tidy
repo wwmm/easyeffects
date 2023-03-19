@@ -39,6 +39,8 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -misc-use-anonymous-namespace,
   -cppcoreguidelines-avoid-do-while,
   '
+# todo, clang-analyzer-core.NullDereference is also suppressed in the code itself with NOLINT, consider fixing that too
+
 # don't treat clang diagnostic warnings (aka compiler warnings) as errors, to stop ci from failing due to these
 # we can't suppress these like can be done for other checks above, they will always be outputted it seems
 # these can however be suppressed by disabling the compiler warnings in meson, but that is not really what we want

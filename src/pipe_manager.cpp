@@ -83,6 +83,7 @@ auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool 
 void on_removed_proxy(void* data) {
   auto* const pd = static_cast<proxy_data*>(data);
 
+  // NOLINTNEXTLINE(clang-analyzer-core.NullDereference)
   if (pd->object_listener.link.next != nullptr || pd->object_listener.link.prev != nullptr) {
     spa_hook_remove(&pd->object_listener);
   }
@@ -1428,6 +1429,7 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
 
   thread_loop = pw_thread_loop_new("ee-pipewire-thread", nullptr);
 
+  // NOLINTNEXTLINE(clang-analyzer-core.NullDereference)
   if (thread_loop == nullptr) {
     util::error("could not create PipeWire loop");
   }
