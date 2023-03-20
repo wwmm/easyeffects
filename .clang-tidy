@@ -38,8 +38,24 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -cppcoreguidelines-avoid-const-or-ref-data-members,
   -misc-use-anonymous-namespace,
   -cppcoreguidelines-avoid-do-while,
+  -hicpp-explicit-conversions,
+  -misc-unused-parameters,
+  -modernize-use-trailing-return-type,
+  -readability-qualified-auto,
+  -readability-redundant-string-cstr,
+  -readability-non-const-parameter,
+  -performance-unnecessary-value-param,
+  -cppcoreguidelines-prefer-member-initializer,
+  -readability-implicit-bool-conversion,
+  -performance-inefficient-vector-operation,
+  -readability-else-after-return,
   '
 # todo, clang-analyzer-core.NullDereference is also suppressed in the code itself with NOLINT, consider fixing that too
+
+# todo these can all be fixed automatically but that needs to be done with caution
+# hicpp-explicit-conversions, misc-unused-parameter,modernize-use-trailing-return-type,readability-qualified-auto,readability-redundant-string-cstr,
+# readability-non-const-parameter,performance-unnecessary-value-param,cppcoreguidelines-prefer-member-initializer,readability-implicit-bool-conversion
+# performance-inefficient-vector-operation,readability-else-after-return
 
 CheckOptions:
   # we don't want these to be passed by reference, even if (especially for shared_ptrs) it incurs a much greater cost
