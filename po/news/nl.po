@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-19 12:03-0300\n"
-"PO-Revision-Date: 2023-03-13 03:48+0000\n"
+"PO-Revision-Date: 2023-03-20 04:38+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -321,41 +321,56 @@ msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
 msgstr ""
+"Fout verholpen waarbij EasyEffects kon crashen bij het sluiten van het "
+"venster terwijl effecten werden toegepast."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
 msgstr ""
+"De bypass-staat kan worden opgeslagen in het voorinstellingsbestand. De "
+"redenen hiervoor zijn te vinden in issue 1039"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid ""
 "The preset autoloading code compatibility with usb devices has been improved."
 msgstr ""
+"De compatibiliteit van het automatisch laden van voorinstelling met USB-"
+"apparaten is verbeterd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
 msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
+"De gebruiker krijgt een dialoogvenster te zien wanneer een voorinstelling "
+"niet wordt geladen of een voorinstellings-/impuls-bestand niet wordt "
+"geïmporteerd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
 "The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
 "the one from Calf Studio."
 msgstr ""
+"De SideChain Gate plug-in van Linux Studio Plugins wordt nu gebruikt in "
+"plaats van die van Calf Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "EasyEffects should not crash anymore when the user locale is not properly "
 "configured."
 msgstr ""
+"Easy Effects zou niet meer moeten crashen wanneer de gebruikerstaal niet "
+"goed geconfigureerd is."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:107
 msgid ""
 "A workaround was implemented in our icon to deal with the lack of proper SVG "
 "support in QT."
 msgstr ""
+"Er is een workaround geïmplementeerd in ons pictogram om het gebrek aan SVG-"
+"ondersteuning in QT op te vangen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
 msgid ""
@@ -363,6 +378,9 @@ msgid ""
 "null. This will allow the media session manager (wireplumber) to properly "
 "move the stream to a new device."
 msgstr ""
+"Wanneer effecten worden uitgeschakeld voor een app stellen we nu de "
+"doelmetadata ervan in op nul. Hierdoor kan de media session manager "
+"(wireplumber) de stream correct verplaatsen naar een nieuw apparaat."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid ""
@@ -370,21 +388,28 @@ msgid ""
 "streams whose purpose is to monitor sink devices. This will help to fix some "
 "of problems our users were having when using OBS."
 msgstr ""
+"Er is een nieuwe configuratie-optie toegevoegd. Hiermee kan Easy Effects "
+"streams negeren waarvan het doel is om sink-apparaten te monitoren. Dit "
+"helpt om enkele problemen op te lossen die onze gebruikers hadden bij het "
+"gebruik van OBS."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:118
 msgid "The code that shows the stream sample format has been improved"
-msgstr ""
+msgstr "De code die de stream sample format toont is verbeterd"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build a Debian package. See issue 1000 for more information."
 msgstr ""
+"De RNNoise-bibliotheek is nu optioneel. Dit zou pakketbeheerders moeten "
+"helpen om een Debian-pakket te bouwen. Zie issue 1000 voor meer informatie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:120
 msgid ""
 "Our logs now show the source code line where the messages are being printed"
 msgstr ""
+"Onze logboeken tonen nu de broncoderegel waar de berichten worden afgedrukt"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:122
 msgid ""
@@ -392,12 +417,17 @@ msgid ""
 "third party programs like pavucontrol moved the stream away from our virtual "
 "devices. This should be fixed now."
 msgstr ""
+"Het selectievakje ‘Effecten inschakelen’ in ons venster werd niet bijgewerkt "
+"wanneer programma's van derden, zoals pavucontrol, de stream van onze "
+"virtuele apparaten verwijderden. Dit zou nu verholpen moeten zijn."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:123
 msgid ""
 "Fixed a crash that could happen when the maximum autogain history was "
 "changed."
 msgstr ""
+"Crash verholpen die kon optreden wanneer de maximale autogain-geschiedenis "
+"werd gewijzigd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
 msgid "Avoid crashes when pw-mididump is running"
@@ -409,12 +439,14 @@ msgstr "De interface van de pitch-plug-in is verbeterd"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:133
 msgid "Our application icon is now compatible with desktops that uses QT"
-msgstr ""
+msgstr "Ons app-pictogram is nu compatibel met desktops die QT gebruiken"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
 msgid ""
 "Our blocklist code will use the application.id tag if the stream sets it"
 msgstr ""
+"Onze blocklist-code zal de tag application.id gebruiken als de stream die "
+"instelt"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
 msgid ""
