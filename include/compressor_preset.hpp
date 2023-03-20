@@ -23,7 +23,7 @@
 
 class CompressorPreset : public PluginPresetBase {
  public:
-  CompressorPreset(PresetType preset_type, const int& index = 0);
+  explicit CompressorPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;

@@ -23,7 +23,7 @@
 
 class AutoGainPreset : public PluginPresetBase {
  public:
-  AutoGainPreset(PresetType preset_type, const int& index = 0);
+  explicit AutoGainPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;

@@ -23,7 +23,7 @@
 
 class EchoCancellerPreset : public PluginPresetBase {
  public:
-  EchoCancellerPreset(PresetType preset_type, const int& index = 0);
+  explicit EchoCancellerPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;

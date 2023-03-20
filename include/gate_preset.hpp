@@ -23,7 +23,7 @@
 
 class GatePreset : public PluginPresetBase {
  public:
-  GatePreset(PresetType preset_type, const int& index = 0);
+  explicit GatePreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;

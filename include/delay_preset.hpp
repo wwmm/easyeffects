@@ -23,7 +23,7 @@
 
 class DelayPreset : public PluginPresetBase {
  public:
-  DelayPreset(PresetType preset_type, const int& index = 0);
+  explicit DelayPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;

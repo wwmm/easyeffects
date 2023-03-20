@@ -24,7 +24,7 @@
 
 class MultibandCompressorPreset : public PluginPresetBase {
  public:
-  MultibandCompressorPreset(PresetType preset_type, const int& index = 0);
+  explicit MultibandCompressorPreset(PresetType preset_type, const int& index = 0);
 
  private:
   static constexpr uint n_bands = tags::multiband_compressor::n_bands;

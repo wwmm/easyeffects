@@ -23,7 +23,7 @@
 
 class MaximizerPreset : public PluginPresetBase {
  public:
-  MaximizerPreset(PresetType preset_type, const int& index = 0);
+  explicit MaximizerPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;

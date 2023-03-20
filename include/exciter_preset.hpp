@@ -23,7 +23,7 @@
 
 class ExciterPreset : public PluginPresetBase {
  public:
-  ExciterPreset(PresetType preset_type, const int& index = 0);
+  explicit ExciterPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;

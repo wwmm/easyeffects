@@ -23,7 +23,7 @@
 
 class LoudnessPreset : public PluginPresetBase {
  public:
-  LoudnessPreset(PresetType preset_type, const int& index = 0);
+  explicit LoudnessPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;

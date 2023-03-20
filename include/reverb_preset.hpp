@@ -23,7 +23,7 @@
 
 class ReverbPreset : public PluginPresetBase {
  public:
-  ReverbPreset(PresetType preset_type, const int& index = 0);
+  explicit ReverbPreset(PresetType preset_type, const int& index = 0);
 
  private:
   void save(nlohmann::json& json) override;
