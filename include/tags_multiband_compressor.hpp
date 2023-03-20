@@ -25,7 +25,7 @@ namespace tags::multiband_compressor {
 
 // mb comp band num const
 
-constexpr uint n_bands = 8U;
+constexpr unsigned n_bands = 8U;
 
 // gsettings keys tags
 

@@ -25,7 +25,7 @@ namespace tags::multiband_gate {
 
 // mb gate band num const
 
-constexpr uint n_bands = 8U;
+constexpr unsigned n_bands = 8U;
 
 // gsettings keys tags
 
