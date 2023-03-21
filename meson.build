@@ -15,10 +15,6 @@ project(
 	meson_version: '>= 0.59.0'
 )
 
-# see https://github.com/wwmm/easyeffects/pull/1739 for more info
-cxx = meson.get_compiler('cpp')
-assert(cxx.get_id() == 'gcc', 'This project only supports the gcc compiler due to usage of c++20 features.')
-
 suppressed_warnings = [
   '-Wno-missing-field-initializers',
   '-Wno-unused-parameter'

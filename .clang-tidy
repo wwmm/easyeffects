@@ -1,13 +1,77 @@
-Checks: 'boost-*,bugprone-*,cert-*,cppcoreguidelines-*,modernize-*,performance-*,readability-*,
- -clang-analyzer-osx*,
--cppcoreguidelines-pro-type-cstyle-cast,
--cppcoreguidelines-pro-type-vararg,
--cppcoreguidelines-non-private-member-variables-in-classes,
--cppcoreguidelines-avoid-magic-numbers,
--cppcoreguidelines-owning-memory,
--cppcoreguidelines-avoid-non-const-global-variables,
--cppcoreguidelines-pro-bounds-constant-array-index,
--readability-magic-numbers,
--readability-function-cognitive-complexity,
--readability-identifier-length,
--bugprone-easily-swappable-parameters'
+# the checks with the hyphen prepended are disabled until they are fixed
+Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hicpp-*,misc-*,modernize-*,performance-*,portability-*,readability-*,
+  -cppcoreguidelines-pro-type-cstyle-cast,
+  -cppcoreguidelines-pro-type-vararg,
+  -cppcoreguidelines-non-private-member-variables-in-classes,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-owning-memory,
+  -cppcoreguidelines-avoid-non-const-global-variables,
+  -cppcoreguidelines-pro-bounds-constant-array-index,
+  -readability-magic-numbers,
+  -readability-function-cognitive-complexity,
+  -readability-identifier-length,
+  -bugprone-easily-swappable-parameters,
+  -misc-non-private-member-variables-in-classes,
+  -hicpp-vararg,
+  -cppcoreguidelines-special-member-functions,
+  -hicpp-special-member-functions,
+  -cppcoreguidelines-pro-type-member-init,
+  -hicpp-member-init,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -misc-const-correctness,
+  -cppcoreguidelines-pro-type-const-cast,
+  -hicpp-signed-bitwise,
+  -cert-err58-cpp,
+  -hicpp-multiway-paths-covered,
+  -cert-dcl50-cpp,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -hicpp-no-array-decay,
+  -bugprone-narrowing-conversions,
+  -cppcoreguidelines-narrowing-conversions,
+  -cert-err33-c,
+  -concurrency-mt-unsafe,
+  -bugprone-branch-clone,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -cppcoreguidelines-avoid-c-arrays,
+  -hicpp-avoid-c-arrays,
+  -modernize-avoid-c-arrays,
+  -cppcoreguidelines-avoid-const-or-ref-data-members,
+  -misc-use-anonymous-namespace,
+  -cppcoreguidelines-avoid-do-while,
+  -hicpp-explicit-conversions,
+  -misc-unused-parameters,
+  -modernize-use-trailing-return-type,
+  -readability-qualified-auto,
+  -readability-redundant-string-cstr,
+  -readability-non-const-parameter,
+  -performance-unnecessary-value-param,
+  -cppcoreguidelines-prefer-member-initializer,
+  -readability-implicit-bool-conversion,
+  -performance-inefficient-vector-operation,
+  -readability-else-after-return,
+  '
+# todo, clang-analyzer-core.NullDereference is also suppressed in the code itself with NOLINT, consider fixing that too
+
+# todo these can all be fixed automatically but that needs to be done with caution
+# hicpp-explicit-conversions, misc-unused-parameter,modernize-use-trailing-return-type,readability-qualified-auto,readability-redundant-string-cstr,
+# readability-non-const-parameter,performance-unnecessary-value-param,cppcoreguidelines-prefer-member-initializer,readability-implicit-bool-conversion
+# performance-inefficient-vector-operation,readability-else-after-return
+
+CheckOptions:
+  # we don't want these to be passed by reference, even if (especially for shared_ptrs) it incurs a much greater cost
+  # since we either we use c apis like pipewire which clang-tidy/c++ cannot reason about (NodeInfo, LinkInfo, DeviceInfo),
+  # or we depend on shared_ptrs to work across multiple threads, notably when the caller finishes before the callee
+  performance-unnecessary-value-param.AllowedTypes: 'NodeInfo; LinkInfo; DeviceInfo; std::shared_ptr'
+
+# note some checks are disabled in the code itself by adding NOLINT(check-name) or NOLINTNEXTLINE(check-name)
+
+# don't treat clang diagnostic warnings (aka compiler warnings) as errors, to stop ci from failing due to these
+# we can't suppress these like can be done for other checks above, they will always be outputted it seems
+# these can however be suppressed by disabling the compiler warnings in meson, but that is not really what we want
+# we cannot ignore clang-diagnostic-error, which are just compilation errors, which will occur when using clang < 16 (clang-tidy always wants clang for compilation it seems)
+WarningsAsErrors: '*,
+  -clang-diagnostic-deprecated-declarations,
+  -clang-diagnostic-dangling-gsl,
+  -clang-diagnostic-unused-private-field,
+  '
+HeaderFilterRegex: '*'

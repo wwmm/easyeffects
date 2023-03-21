@@ -336,6 +336,7 @@ void PluginBase::disconnect_from_pw() {
 
   set_active(false);
 
+  // NOLINTNEXTLINE(clang-analyzer-core.NullDereference)
   if (listener.link.next != nullptr || listener.link.prev != nullptr) {
     spa_hook_remove(&listener);
   }

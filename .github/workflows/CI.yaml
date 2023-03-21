@@ -148,6 +148,92 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
 
+  clang-tidy:
+    name: Clang Tidy
+    runs-on: ubuntu-22.04
+    container:
+      # since arch linux tends to take time to get the latest clang (we need >= 16), use alpine for now
+      image: alpine:edge
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3.4.0
+
+    - name: Install deps
+      run: |
+        # install general build deps
+        apk add meson clang clang-extra-tools build-base bash
+
+        # copy pasted from https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
+        depends="lv2"
+        makedepends="
+        appstream-glib-dev
+        desktop-file-utils
+        fftw-dev
+        fmt-dev
+        gsl-dev
+        gtk4.0-dev
+        itstool
+        libadwaita-dev
+        libbs2b-dev
+        libebur128-dev
+        libsamplerate-dev
+        libsigc++3-dev
+        libsndfile-dev
+        libtbb-dev
+        lilv-dev
+        lv2-dev
+        meson
+        nlohmann-json
+        pipewire-dev
+        rnnoise-dev
+        rubberband-dev
+        speex-dev
+        speexdsp-dev
+        zita-convolver-dev
+        "
+
+        # install easyeffects deps
+        apk add $makedepends $depends
+
+        # install libportal since we technically need it for a full check
+        apk add libportal-dev
+
+    - name: Build with Clang
+      # build with clang not because we strictly need to (we do need to do some kind of build so config.h shows up)
+      # but because any clang compiler failures will cause clang-tidy to fail later on, so we might as well fail fast
+      # todo once clang compiler warnings are also sorted out, this should use -Dwerror=true
+      run: |
+        CC=clang CXX=clang++ meson setup build -Denable-libportal=true -Dbuildtype=debug
+        ninja -C build
+
+    - name: Install ctcache
+      # todo header files added in util/clang-tidy.sh are not cached with ctcache since they are not part of the compilation database
+      run: |
+        # we need to install the full tar since the cache action needs it, and it can't use alpine linux's default
+        apk add git tar
+        git clone https://github.com/matus-chochlik/ctcache
+        cd ctcache
+        git checkout bd1620a8609ddaf2f64500820abc8b4d150edeaf
+        ./install-user-client
+
+    - name: Cache Clang Tidy
+      uses: actions/cache@v3.3.1
+      with:
+        # since the ctcache is just a list of checksums that were checked, we want to write to it every ci run to keep it up to date
+        # otherwise github actions just restores some old cache if the key didn't change
+        # the ctcache itself is what handles what misses or not
+        # https://github.com/actions/cache/blob/ea0503788c59256f4da17725d04df850ca027df5/tips-and-workarounds.md#update-a-cache
+        path: /tmp/ci-ctcache
+        key: clang-tidy-ctcache-${{ github.run_id }}
+        restore-keys: |
+          clang-tidy-ctcache
+
+    - name: Clang Tidy
+      run: |
+        cd build
+        PATH=~/.local/bin:"$PATH" CTCACHE_DIR=/tmp/ci-ctcache ../util/clang-tidy.sh
+
   appstream-news-validate:
     name: AppStream and News validate
     runs-on: ubuntu-22.04
