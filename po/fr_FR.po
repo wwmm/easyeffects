@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-19 12:03-0300\n"
-"PO-Revision-Date: 2023-03-03 06:36+0000\n"
+"PO-Revision-Date: 2023-03-21 06:41+0000\n"
 "Last-Translator: Bundy01 <bundy@posteo.eu>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -34,7 +34,7 @@ msgstr "Effets audio pour les applications utilisant le serveur audio PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
+msgstr "limiteur ; compresseur ; réverbération ; égaliseur ; autovolume ;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
@@ -538,7 +538,7 @@ msgstr "Type"
 #: data/ui/compressor.ui:617
 #, fuzzy
 msgid " Feed-forward"
-msgstr "Feed-forward"
+msgstr " Feed-forward"
 
 #: data/ui/compressor.ui:618
 #, fuzzy
@@ -873,9 +873,8 @@ msgid "Calculate Frequencies"
 msgstr "Calculer les fréquences"
 
 #: data/ui/equalizer.ui:300
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Bandes"
+msgstr "Tri des bandes"
 
 #: data/ui/equalizer.ui:315 src/presets_menu.cpp:104
 msgid "Import Preset"
@@ -2016,9 +2015,8 @@ msgid "Voice Activity Probability"
 msgstr "Probabilité d'activité vocale"
 
 #: data/ui/speex.ui:91
-#, fuzzy
 msgid "Start"
-msgstr "Début Bande"
+msgstr "Début"
 
 #: data/ui/speex.ui:113
 msgid "Continue"
