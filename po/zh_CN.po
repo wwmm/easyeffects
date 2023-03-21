@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-19 12:03-0300\n"
-"PO-Revision-Date: 2023-03-05 06:38+0000\n"
+"PO-Revision-Date: 2023-03-21 06:41+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -383,17 +383,17 @@ msgstr "压缩模式"
 
 #: data/ui/compressor.ui:80 data/ui/multiband_compressor_band.ui:746
 msgid "Boost Threshold"
-msgstr "提升阈值"
+msgstr "增强阈值"
 
 #: data/ui/compressor.ui:120 data/ui/multiband_compressor_band.ui:702
 msgid "Boost Amount"
-msgstr "Boost 量"
+msgstr "增强量"
 
 #: data/ui/compressor.ui:167 data/ui/gate.ui:60 data/ui/limiter.ui:262
 #: data/ui/limiter.ui:485 data/ui/multiband_compressor_band.ui:186
 #: data/ui/multiband_gate_band.ui:144
 msgid "Attack"
-msgstr "起始时间"
+msgstr "建立"
 
 #: data/ui/compressor.ui:178 data/ui/multiband_compressor_band.ui:166
 msgid "Time"
@@ -408,27 +408,27 @@ msgstr "阈值"
 
 #: data/ui/compressor.ui:214 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
-msgstr "起音时间"
+msgstr "建立时间"
 
 #: data/ui/compressor.ui:236 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:247
 msgid "Attack Threshold"
-msgstr "起音阈值"
+msgstr "建立阈值"
 
 #: data/ui/compressor.ui:243 data/ui/gate.ui:66 data/ui/limiter.ui:304
 #: data/ui/limiter.ui:522 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:195 data/ui/multiband_gate_band.ui:150
 msgid "Release"
-msgstr "消音时间"
+msgstr "释放"
 
 #: data/ui/compressor.ui:269 data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr "消音时间"
+msgstr "释放时间"
 
 #: data/ui/compressor.ui:293 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:302
 msgid "Release Threshold"
-msgstr "消音阈值"
+msgstr "释放阈值"
 
 #: data/ui/compressor.ui:300 data/ui/deesser.ui:333
 #: data/ui/multiband_compressor_band.ui:309
@@ -569,7 +569,7 @@ msgstr "响应"
 #: data/ui/compressor.ui:735 data/ui/gate.ui:869 data/ui/limiter.ui:220
 #: data/ui/multiband_compressor_band.ui:669 data/ui/multiband_gate_band.ui:730
 msgid "Lookahead"
-msgstr "预测时间"
+msgstr "前视时间"
 
 #: data/ui/compressor.ui:778 data/ui/gate.ui:912
 msgid "Sidechain Filters"
@@ -1038,11 +1038,11 @@ msgstr "干湿声混合"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr "起音区间开头"
+msgstr "建立区间开头"
 
 #: data/ui/gate.ui:564
 msgid "Release Zone Start"
-msgstr "消音区间开头"
+msgstr "释放区间开头"
 
 #: data/ui/gate.ui:652 data/ui/multiband_gate_band.ui:533
 msgid "Low-Pass Filter"
@@ -1238,11 +1238,11 @@ msgstr "自动调平"
 
 #: data/ui/limiter.ui:515
 msgid "Auto Leveling Attack"
-msgstr "自动调平起音"
+msgstr "自动调平建立"
 
 #: data/ui/limiter.ui:551
 msgid "Auto Leveling Release"
-msgstr "自动调平消音"
+msgstr "自动调平释放"
 
 #: data/ui/limiter.ui:586
 msgid "Auto Leveling Knee"
