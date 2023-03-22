@@ -38,9 +38,21 @@
                         </accessibility>
                     </object>
                 </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="halign">end</property>
+                <style>
+                    <class name="linked" />
+                </style>
 
                 <child>
                     <object class="GtkButton" id="remove">
+                        <style>
+                            <class name="destructive-action" />
+                        </style>
                         <property name="tooltip-text" translatable="yes">Remove this preset file</property>
                         <property name="icon-name">user-trash-symbolic</property>
                         <accessibility>
