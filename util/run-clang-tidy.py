@@ -10,7 +10,7 @@
 # FIXME: Integrate with clang-tidy-diff.py
  
 # https://clang.llvm.org/extra/doxygen/run-clang-tidy_8py_source.html
-
+ 
 """
 Parallel clang-tidy runner
 ==========================
@@ -332,11 +332,6 @@ def main():
   files = set([make_absolute(entry['file'], entry['directory'])
            for entry in database])
  
-  # files only includes cpp ones found, need to append hpp files too so clang-tidy is more useful
-  # assumes build path in one level below main repo directory
-  for file in args.files:
-    files.add(make_absolute(file, os.path.abspath(os.path.join(build_path, ".."))))
-
   max_task = args.j
   if max_task == 0:
     max_task = multiprocessing.cpu_count()

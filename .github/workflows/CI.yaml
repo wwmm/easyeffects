@@ -208,7 +208,6 @@ jobs:
         ninja -C build
 
     - name: Install ctcache
-      # todo header files added in util/clang-tidy.sh are not cached with ctcache since they are not part of the compilation database
       run: |
         # we need to install the full tar since the cache action needs it, and it can't use alpine linux's default
         apk add git tar
