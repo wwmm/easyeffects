@@ -208,7 +208,6 @@ jobs:
         ninja -C build
 
     - name: Install ctcache
-      # todo header files added in util/clang-tidy.sh are not cached with ctcache since they are not part of the compilation database
       run: |
         # we need to install the full tar since the cache action needs it, and it can't use alpine linux's default
         apk add git tar
@@ -216,6 +215,28 @@ jobs:
         cd ctcache
         git checkout bd1620a8609ddaf2f64500820abc8b4d150edeaf
         ./install-user-client
+
+    - name: Generate cache key part
+      id: cache_key
+      # generating the cache key a certain way ensures we use the cache as effectively as possible
+      # note this relies on the specifics of what github.ref/GITHUB_REF is:
+      # https://docs.github.com/en/actions/learn-github-actions/variables#using-contexts-to-access-variable-values 
+
+      # first, try to get a cache from the same pr or push to the same branch
+      # as it will be closest to clang-tidy-ctcache-refs/pull/1/merge (if pr) or
+      # clang-tidy-ctcache-refs/heads/feature-branch-1 (if push)
+
+      # next, try to get a cache from a push to the base branch in a pr (which may not be master)
+      # will only now try to match something like clang-tidy-ctcache-refs/heads/base-branch-1 since "heads" is less than "pull" 
+
+      # last, try get a cache from pushes to master
+      # this has "defaultbranch" in it so it always sorts lower than "refs" (which can be the push to the original e.g. feature-branch-1 as above)
+      run: |
+        if [[ ${{ github.event_name }} == 'push' ]] && [[ ${{ github.ref }} == 'refs/heads/master' ]]; then
+          echo "cache_key=defaultbranch-${{ github.ref }}" >> $GITHUB_OUTPUT
+        else
+          echo "cache_key=${{ github.ref }}" >> $GITHUB_OUTPUT
+        fi
 
     - name: Cache Clang Tidy
       uses: actions/cache@v3.3.1
@@ -225,7 +246,12 @@ jobs:
         # the ctcache itself is what handles what misses or not
         # https://github.com/actions/cache/blob/ea0503788c59256f4da17725d04df850ca027df5/tips-and-workarounds.md#update-a-cache
         path: /tmp/ci-ctcache
-        key: clang-tidy-ctcache-${{ github.run_id }}
+        key: clang-tidy-ctcache-${{ steps.cache_key.outputs.cache_key }}-${{ github.run_id }}
+        # get the cache which is most likely to have the most hits, in practice the most similar branch is usually the same one
+        # this relies on github's fairly restricted isolation for caches
+        # https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#restrictions-for-accessing-a-cache
+        # see the above step for generating the cache key for why this works, it is because the generated key is sorted as a string when github tries to find the closet key with restore-keys
+        # https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows#matching-a-cache-key
         restore-keys: |
           clang-tidy-ctcache
 
