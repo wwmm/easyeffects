@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 13:05+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -578,7 +578,7 @@ msgstr "Typ"
 
 #: data/ui/compressor.ui:617
 #, fuzzy
-msgid " Feed-forward"
+msgid "Feed-forward"
 msgstr "Kanál-Vpred"
 
 #: data/ui/compressor.ui:618
@@ -599,9 +599,9 @@ msgstr "Postranný reťazec"
 msgid "Input Device"
 msgstr "Obmedzovač na vstupe"
 
-#: data/ui/compressor.ui:661
+#: data/ui/compressor.ui:661 data/ui/gate.ui:795
 #, fuzzy
-msgid " PreAmplification"
+msgid "PreAmplification"
 msgstr "Predzosilnenie"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
@@ -1137,11 +1137,6 @@ msgstr ""
 #, fuzzy
 msgid "Internal"
 msgstr "Integrovaná"
-
-#: data/ui/gate.ui:795
-#, fuzzy
-msgid "PreAmplification"
-msgstr "Predzosilnenie"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
 msgid "Gating"
@@ -1979,7 +1974,7 @@ msgstr "Načítať"
 msgid "Save current settings to this preset file"
 msgstr "Uložiť aktuálne nastavenia do tejto predvoľby"
 
-#: data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr "Odstrániť predvoľbu"
 
@@ -2599,6 +2594,10 @@ msgstr ""
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Predzosilnenie"
 
 #~ msgid "Frame Size"
 #~ msgstr "Veľkosť rámca"

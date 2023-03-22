@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 13:05+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -569,7 +569,7 @@ msgstr "Tipo"
 
 #: data/ui/compressor.ui:617
 #, fuzzy
-msgid " Feed-forward"
+msgid "Feed-forward"
 msgstr "Remitir"
 
 #: data/ui/compressor.ui:618
@@ -590,9 +590,9 @@ msgstr "Cadea lateral"
 msgid "Input Device"
 msgstr "Nivel de entrada"
 
-#: data/ui/compressor.ui:661
+#: data/ui/compressor.ui:661 data/ui/gate.ui:795
 #, fuzzy
-msgid " PreAmplification"
+msgid "PreAmplification"
 msgstr "Preamplificación"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
@@ -1119,11 +1119,6 @@ msgstr ""
 #, fuzzy
 msgid "Internal"
 msgstr "Externo"
-
-#: data/ui/gate.ui:795
-#, fuzzy
-msgid "PreAmplification"
-msgstr "Preamplificación"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
 msgid "Gating"
@@ -1954,7 +1949,7 @@ msgstr "Cargar"
 msgid "Save current settings to this preset file"
 msgstr "Gardar as opcións actuais neste ficheiro de preconfiguracións"
 
-#: data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr "Retirar este ficheiro de preconfiguracións"
 
@@ -2574,6 +2569,10 @@ msgstr ""
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Preamplificación"
 
 #~ msgid "Frame Size"
 #~ msgstr "Tamaño de fotograma"

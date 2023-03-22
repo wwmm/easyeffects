@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 13:05+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: 2023-02-20 00:59+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -537,7 +537,7 @@ msgid "Type"
 msgstr ""
 
 #: data/ui/compressor.ui:617
-msgid " Feed-forward"
+msgid "Feed-forward"
 msgstr ""
 
 #: data/ui/compressor.ui:618
@@ -556,9 +556,8 @@ msgstr "Typ av sidokedja"
 msgid "Input Device"
 msgstr "Ingångsenhet"
 
-#: data/ui/compressor.ui:661
-#, fuzzy
-msgid " PreAmplification"
+#: data/ui/compressor.ui:661 data/ui/gate.ui:795
+msgid "PreAmplification"
 msgstr "Förförstärkning"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
@@ -1056,10 +1055,6 @@ msgstr ""
 #: data/ui/gate.ui:753
 msgid "Internal"
 msgstr ""
-
-#: data/ui/gate.ui:795
-msgid "PreAmplification"
-msgstr "Förförstärkning"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
 msgid "Gating"
@@ -1816,7 +1811,7 @@ msgstr ""
 msgid "Save current settings to this preset file"
 msgstr "Spara dessa inställningar till fil"
 
-#: data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr ""
 
@@ -2395,6 +2390,10 @@ msgstr ""
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Förförstärkning"
 
 #~ msgid "Frame Size"
 #~ msgstr "Ramstorlek"

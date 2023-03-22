@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 13:05+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -537,7 +537,7 @@ msgstr "Typ"
 
 #: data/ui/compressor.ui:617
 #, fuzzy
-msgid " Feed-forward"
+msgid "Feed-forward"
 msgstr "Feedforward"
 
 #: data/ui/compressor.ui:618
@@ -556,9 +556,9 @@ msgstr "Sidechain-Typ"
 msgid "Input Device"
 msgstr "Eingabegerät"
 
-#: data/ui/compressor.ui:661
-msgid " PreAmplification"
-msgstr " Vorverstärkung"
+#: data/ui/compressor.ui:661 data/ui/gate.ui:795
+msgid "PreAmplification"
+msgstr "Vorverstärkung"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
@@ -1054,10 +1054,6 @@ msgstr "Einfacher gleitender Mittelwert"
 #: data/ui/gate.ui:753
 msgid "Internal"
 msgstr "Intern"
-
-#: data/ui/gate.ui:795
-msgid "PreAmplification"
-msgstr "Vorverstärkung"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
 msgid "Gating"
@@ -1817,7 +1813,7 @@ msgstr "Laden"
 msgid "Save current settings to this preset file"
 msgstr "Aktuelle Einstellungen in dieser Preset-Datei speichern"
 
-#: data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr "Diese Preset-Datei entfernen"
 
@@ -2393,6 +2389,9 @@ msgstr "{} ist nicht auf dem System installiert"
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr ""
+
+#~ msgid " PreAmplification"
+#~ msgstr " Vorverstärkung"
 
 #~ msgid "Frame Size"
 #~ msgstr "Rahmengröße"
