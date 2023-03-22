@@ -614,7 +614,7 @@
                                                                 <property name="valign">center</property>
                                                                 <property name="margin-end">6</property>
                                                                 <items>
-                                                                    <item id="Feed-forward" translatable="yes"> Feed-forward</item>
+                                                                    <item id="Feed-forward" translatable="yes">Feed-forward</item>
                                                                     <item id="Feed-back" translatable="yes">Feed-back</item>
                                                                     <item id="External" translatable="yes">External</item>
                                                                 </items>
@@ -658,7 +658,7 @@
 
                                                         <child>
                                                             <object class="GtkLabel" id="preamp_label">
-                                                                <property name="label" translatable="yes"> PreAmplification</property>
+                                                                <property name="label" translatable="yes">PreAmplification</property>
                                                                 <layout>
                                                                     <property name="column">2</property>
                                                                     <property name="row">0</property>
