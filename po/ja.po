@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 13:05+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: 2022-09-18 17:19+0000\n"
 "Last-Translator: R.Suga <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -540,7 +540,7 @@ msgstr "タイプ"
 
 #: data/ui/compressor.ui:617
 #, fuzzy
-msgid " Feed-forward"
+msgid "Feed-forward"
 msgstr "フィードフォワード"
 
 #: data/ui/compressor.ui:618
@@ -559,9 +559,8 @@ msgstr "サイドチェーンタイプ"
 msgid "Input Device"
 msgstr "入力デバイス"
 
-#: data/ui/compressor.ui:661
-#, fuzzy
-msgid " PreAmplification"
+#: data/ui/compressor.ui:661 data/ui/gate.ui:795
+msgid "PreAmplification"
 msgstr "プリアンプリーション"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
@@ -1059,10 +1058,6 @@ msgstr "単純移動平均"
 #: data/ui/gate.ui:753
 msgid "Internal"
 msgstr "内部"
-
-#: data/ui/gate.ui:795
-msgid "PreAmplification"
-msgstr "プリアンプリーション"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
 msgid "Gating"
@@ -1821,7 +1816,7 @@ msgstr "ロード"
 msgid "Save current settings to this preset file"
 msgstr "現在の設定をこのプリセットファイルに保存"
 
-#: data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr "このプリセットファイルを削除"
 
@@ -2411,6 +2406,10 @@ msgstr "{} はシステムにインストールされていません"
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "-inf"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "プリアンプリーション"
 
 #~ msgid "Close (Press ESC)"
 #~ msgstr "閉じる (Esc キーを押す)"

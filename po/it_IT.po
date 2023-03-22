@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 13:05+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: 2023-03-03 06:36+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -538,7 +538,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: data/ui/compressor.ui:617
-msgid " Feed-forward"
+#, fuzzy
+msgid "Feed-forward"
 msgstr " Feed-forward"
 
 #: data/ui/compressor.ui:618
@@ -557,9 +558,9 @@ msgstr "Tipo Sidechain"
 msgid "Input Device"
 msgstr "Dispositivo Ingresso"
 
-#: data/ui/compressor.ui:661
-msgid " PreAmplification"
-msgstr " PreAmplificazione"
+#: data/ui/compressor.ui:661 data/ui/gate.ui:795
+msgid "PreAmplification"
+msgstr "PreAmplificazione"
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
@@ -1053,10 +1054,6 @@ msgstr "Media Mobile Semplice"
 #: data/ui/gate.ui:753
 msgid "Internal"
 msgstr "Interna"
-
-#: data/ui/gate.ui:795
-msgid "PreAmplification"
-msgstr "PreAmplificazione"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
 msgid "Gating"
@@ -1816,7 +1813,7 @@ msgstr "Carica"
 msgid "Save current settings to this preset file"
 msgstr "Salva impostazioni attuali in questo profilo"
 
-#: data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr "Rimuovi questo profilo"
 
@@ -2394,6 +2391,9 @@ msgstr "{} Non Installato sul Sistema"
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid " PreAmplification"
+#~ msgstr " PreAmplificazione"
 
 #~ msgid "Close (Press ESC)"
 #~ msgstr "Chiudi (Premi ESC)"

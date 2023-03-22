@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 13:05+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: 2022-12-23 05:48+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -537,7 +537,7 @@ msgid "Type"
 msgstr "Тип"
 
 #: data/ui/compressor.ui:617
-msgid " Feed-forward"
+msgid "Feed-forward"
 msgstr ""
 
 #: data/ui/compressor.ui:618
@@ -556,10 +556,9 @@ msgstr "Тип странична връзка"
 msgid "Input Device"
 msgstr "Входно устройство"
 
-#: data/ui/compressor.ui:661
-#, fuzzy
-msgid " PreAmplification"
-msgstr "Обеззвучи тази програма"
+#: data/ui/compressor.ui:661 data/ui/gate.ui:795
+msgid "PreAmplification"
+msgstr ""
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:635 data/ui/multiband_gate_band.ui:697
@@ -1052,10 +1051,6 @@ msgstr ""
 
 #: data/ui/gate.ui:753
 msgid "Internal"
-msgstr ""
-
-#: data/ui/gate.ui:795
-msgid "PreAmplification"
 msgstr ""
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
@@ -1813,7 +1808,7 @@ msgstr ""
 msgid "Save current settings to this preset file"
 msgstr ""
 
-#: data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr ""
 
@@ -2384,6 +2379,10 @@ msgstr ""
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Обеззвучи тази програма"
 
 #, fuzzy
 #~ msgid ""

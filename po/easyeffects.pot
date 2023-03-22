@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-21 13:05+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -534,7 +534,7 @@ msgid "Type"
 msgstr ""
 
 #: data/ui/compressor.ui:617
-msgid " Feed-forward"
+msgid "Feed-forward"
 msgstr ""
 
 #: data/ui/compressor.ui:618
@@ -553,8 +553,8 @@ msgstr ""
 msgid "Input Device"
 msgstr ""
 
-#: data/ui/compressor.ui:661
-msgid " PreAmplification"
+#: data/ui/compressor.ui:661 data/ui/gate.ui:795
+msgid "PreAmplification"
 msgstr ""
 
 #: data/ui/compressor.ui:698 data/ui/gate.ui:832
@@ -1048,10 +1048,6 @@ msgstr ""
 
 #: data/ui/gate.ui:753
 msgid "Internal"
-msgstr ""
-
-#: data/ui/gate.ui:795
-msgid "PreAmplification"
 msgstr ""
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:858
@@ -1809,7 +1805,7 @@ msgstr ""
 msgid "Save current settings to this preset file"
 msgstr ""
 
-#: data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr ""
 
