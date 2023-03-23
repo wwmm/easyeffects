@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-22 22:05+0000\n"
+"POT-Creation-Date: 2023-03-23 03:21+0000\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1971,7 +1971,7 @@ msgstr "Maksimum"
 msgid "Maximum"
 msgstr "Maksimum"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
 msgid "Load"
 msgstr ""
 
@@ -2391,30 +2391,25 @@ msgstr ""
 msgid "Impulse File Not Imported"
 msgstr "Płaska odpowiedź"
 
-#: src/convolver_menu_impulses.cpp:127
+#: src/convolver_menu_impulses.cpp:129
 msgid "Import Impulse File"
 msgstr "Importuj plik Impulse"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
 #: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "Otwórz"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "Anuluj"
-
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:136
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Płaska odpowiedź"
 
-#: src/convolver_menu_impulses.cpp:245
+#: src/convolver_menu_impulses.cpp:254
 msgid "Load Impulse"
 msgstr "Wczytaj Impuls"
 
-#: src/convolver_menu_impulses.cpp:248
+#: src/convolver_menu_impulses.cpp:257
 msgid "Remove Impulse"
 msgstr "Usuń Impuls"
 
@@ -2448,6 +2443,10 @@ msgstr "nieskończoność"
 #: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "Importuj plik profilu APO"
+
+#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
+msgid "Cancel"
+msgstr "Anuluj"
 
 #: src/equalizer_ui.cpp:373
 msgid "APO Presets"

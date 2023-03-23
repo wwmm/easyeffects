@@ -1802,6 +1802,7 @@ msgid "Maximum"
 msgstr "最大"
 
 #: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
+#: src/convolver_menu_impulses.cpp:192
 msgid "Load"
 msgstr "ロード"
 
@@ -2181,12 +2182,13 @@ msgstr "ステレオインパルスファイルのみサポートされていま
 msgid "Impulse File Not Imported"
 msgstr "インパルスファイルがインポートされていません"
 
-#: src/convolver_menu_impulses.cpp:127
+#: src/convolver_menu_impulses.cpp:127 src/convolver_menu_impulses.cpp:129
 msgid "Import Impulse File"
 msgstr "インパルスファイルをインポート"
 
 #: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
 #: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:130
 msgid "Open"
 msgstr "開く"
 
@@ -2195,15 +2197,15 @@ msgstr "開く"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:132 src/convolver_menu_impulses.cpp:136
 msgid "Impulse Response"
 msgstr "インパルスレスポンス"
 
-#: src/convolver_menu_impulses.cpp:245
+#: src/convolver_menu_impulses.cpp:245 src/convolver_menu_impulses.cpp:254
 msgid "Load Impulse"
 msgstr "インパルスを読み込み"
 
-#: src/convolver_menu_impulses.cpp:248
+#: src/convolver_menu_impulses.cpp:248 src/convolver_menu_impulses.cpp:257
 msgid "Remove Impulse"
 msgstr "インパルスを削除"
 
@@ -2243,7 +2245,8 @@ msgstr "APO プリセット"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
-msgstr "APO プリセットが読み込まれていません。ファイル形式が間違っている可能性があり"
+msgstr ""
+"APO プリセットが読み込まれていません。ファイル形式が間違っている可能性があり"
 "ます。内容を確認してください。"
 
 #: src/equalizer_ui.cpp:561
@@ -2258,7 +2261,8 @@ msgstr "GraphicEQ プリセット"
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
-msgstr "GraphicEQ プリセットが読み込まれていません。ファイル形式がサポートされていな"
+msgstr ""
+"GraphicEQ プリセットが読み込まれていません。ファイル形式がサポートされていな"
 "い可能性があります。内容を確認してください。"
 
 #: src/pipe_manager_box.cpp:328

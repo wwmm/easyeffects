@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-22 22:05+0000\n"
+"POT-Creation-Date: 2023-03-23 03:21+0000\n"
 "PO-Revision-Date: 2023-03-21 06:41+0000\n"
 "Last-Translator: Bundy01 <bundy@posteo.eu>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1817,7 +1817,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Maximum"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
 msgid "Load"
 msgstr "Charger"
 
@@ -2200,29 +2200,24 @@ msgstr "Seuls les fichiers d’impulsion stéréo sont pris en charge"
 msgid "Impulse File Not Imported"
 msgstr "Fichier d’impulsion non importé"
 
-#: src/convolver_menu_impulses.cpp:127
+#: src/convolver_menu_impulses.cpp:129
 msgid "Import Impulse File"
 msgstr "Importer un fichier d’impulsion"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
 #: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "Annuler"
-
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:136
 msgid "Impulse Response"
 msgstr "Réponse impulsionnelle"
 
-#: src/convolver_menu_impulses.cpp:245
+#: src/convolver_menu_impulses.cpp:254
 msgid "Load Impulse"
 msgstr "Charger une impulsion"
 
-#: src/convolver_menu_impulses.cpp:248
+#: src/convolver_menu_impulses.cpp:257
 msgid "Remove Impulse"
 msgstr "Supprimer l’impulsion"
 
@@ -2253,6 +2248,10 @@ msgstr "infini"
 #: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "Importer un fichier de préréglage APO"
+
+#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
+msgid "Cancel"
+msgstr "Annuler"
 
 #: src/equalizer_ui.cpp:373
 msgid "APO Presets"
