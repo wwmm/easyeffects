@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 00:59-0300\n"
+"POT-Creation-Date: 2023-03-23 14:53+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -1785,19 +1785,19 @@ msgstr "色"
 msgid "Lines and Bars"
 msgstr "線とバー"
 
-#: data/ui/preferences_spectrum.ui:169
+#: data/ui/preferences_spectrum.ui:173
 msgid "Axis Labels"
 msgstr "軸ラベル"
 
-#: data/ui/preferences_spectrum.ui:185
+#: data/ui/preferences_spectrum.ui:193
 msgid "Frequency Range"
 msgstr "周波数範囲"
 
-#: data/ui/preferences_spectrum.ui:188
+#: data/ui/preferences_spectrum.ui:196
 msgid "Minimum"
 msgstr "最小"
 
-#: data/ui/preferences_spectrum.ui:211
+#: data/ui/preferences_spectrum.ui:219
 msgid "Maximum"
 msgstr "最大"
 
