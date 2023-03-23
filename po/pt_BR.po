@@ -539,9 +539,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid "Feed-forward"
-msgstr " Alimento-Adiante"
+msgstr "Alimento-Adiante"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -1792,19 +1791,19 @@ msgstr "Cor"
 msgid "Lines and Bars"
 msgstr "Linhas e Barras"
 
-#: data/ui/preferences_spectrum.ui:173
+#: data/ui/preferences_spectrum.ui:173 data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
 msgstr "Rótulos dos Eixos"
 
-#: data/ui/preferences_spectrum.ui:193
+#: data/ui/preferences_spectrum.ui:193 data/ui/preferences_spectrum.ui:185
 msgid "Frequency Range"
 msgstr "Escopo de Frequências"
 
-#: data/ui/preferences_spectrum.ui:196
+#: data/ui/preferences_spectrum.ui:196 data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
 msgstr "Mínimo"
 
-#: data/ui/preferences_spectrum.ui:219
+#: data/ui/preferences_spectrum.ui:219 data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
 msgstr "Máximo"
 
