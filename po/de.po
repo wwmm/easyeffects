@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 14:53+0000\n"
+"POT-Creation-Date: 2023-03-23 15:20+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2158,15 +2158,15 @@ msgstr ""
 msgid "Show available presets."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:274
 msgid "_Output"
 msgstr "_Ausgang"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:275
 msgid "_Input"
 msgstr "_Eingang"
 
-#: src/application_ui.cpp:280
+#: src/application_ui.cpp:276
 msgid "_PipeWire"
 msgstr "_PipeWire"
 

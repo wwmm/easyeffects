@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 14:53+0000\n"
+"POT-Creation-Date: 2023-03-23 15:20+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2308,17 +2308,17 @@ msgstr ""
 msgid "Show available presets."
 msgstr "Tampilkan Preset Tersedia."
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:274
 #, fuzzy
 msgid "_Output"
 msgstr "Output"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:275
 #, fuzzy
 msgid "_Input"
 msgstr "Masukan"
 
-#: src/application_ui.cpp:280
+#: src/application_ui.cpp:276
 #, fuzzy
 msgid "_PipeWire"
 msgstr "PipeWire"
