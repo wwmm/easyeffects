@@ -119,14 +119,16 @@ msgstr "機能:"
 msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
-msgstr "スペクトラムプラグインの更新頻度を改善しました。サンプリングレートの違いによ"
+msgstr ""
+"スペクトラムプラグインの更新頻度を改善しました。サンプリングレートの違いによ"
 "り、視覚的に同様の周波数に更新されるはずです。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
-msgstr "レベルメーターとスペクトラムが使用する更新間隔は、カスタマイズすることができ"
+msgstr ""
+"レベルメーターとスペクトラムが使用する更新間隔は、カスタマイズすることができ"
 "ます。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
@@ -176,7 +178,8 @@ msgstr ""
 msgid ""
 "It is now possible to add more than one filter instance to the effects "
 "pipeline."
-msgstr "エフェクトパイプラインに複数のフィルターインスタンスを追加することができるよ"
+msgstr ""
+"エフェクトパイプラインに複数のフィルターインスタンスを追加することができるよ"
 "うになりました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
@@ -202,8 +205,8 @@ msgid ""
 "The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
-"GNOME Human Interface Guidelines の命名規則に準拠するため、"
-"アプリケーション名は Easy Effects に変更されました。"
+"GNOME Human Interface Guidelines の命名規則に準拠するため、アプリケーション名"
+"は Easy Effects に変更されました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid "The documentation has been updated."
@@ -219,21 +222,24 @@ msgstr "オートゲイン無音しきい値をユーザーが設定できるよ
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid "Dry and wet controls added to the Stereo Tools effect."
-msgstr "ドライコントロールとウェットコントロールがステレオツールエフェクトに追加され"
+msgstr ""
+"ドライコントロールとウェットコントロールがステレオツールエフェクトに追加され"
 "ました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "The echo canceller now has a residual noise suppression control also based "
 "on the Speex library."
-msgstr "エコーキャンセラーに、Speex "
-"ライブラリを用いたノイズ抑制制御機能が追加されました。"
+msgstr ""
+"エコーキャンセラーに、Speex ライブラリを用いたノイズ抑制制御機能が追加されま"
+"した。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
 "When the mouse was hovering over a chart the wrong value for the x axis "
 "coordinate was being shown. This regression is fixed."
-msgstr "カーソルをグラフの上に合わせると、X軸座標の間違った値が表示されていました。こ"
+msgstr ""
+"カーソルをグラフの上に合わせると、X軸座標の間違った値が表示されていました。こ"
 "の問題は修正されました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
@@ -335,8 +341,8 @@ msgid ""
 "The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
 "the one from Calf Studio."
 msgstr ""
-"Linux Studio Plugins の サイドチェーンゲートプラグインが Calf Studio "
-"プラグインの代わりに使われるようになりました。"
+"Linux Studio Plugins の サイドチェーンゲートプラグインが Calf Studio プラグイ"
+"ンの代わりに使われるようになりました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
@@ -426,8 +432,9 @@ msgstr "アプリケーションアイコンが QT を使用するデスクト�
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
 msgid ""
 "Our blocklist code will use the application.id tag if the stream sets it"
-msgstr "ブロックリストのコードは、ストリームが application.id "
-"タグを設定した場合、それを使用します"
+msgstr ""
+"ブロックリストのコードは、ストリームが application.id タグを設定した場合、そ"
+"れを使用します"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
 msgid ""
@@ -444,7 +451,8 @@ msgstr ""
 msgid ""
 "When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
-msgstr "プレーヤー/レコーダーに表示できるアプリケーションがない場合、メッセージが表示"
+msgstr ""
+"プレーヤー/レコーダーに表示できるアプリケーションがない場合、メッセージが表示"
 "されます"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
@@ -568,8 +576,9 @@ msgstr ""
 msgid ""
 "Fixed a bug where setting a equalizer band quality to zero would lead to an "
 "application crash."
-msgstr "イコライザーのバンド品質を 0 "
-"に設定するとアプリケーションがクラッシュする不具合を修正しました。"
+msgstr ""
+"イコライザーのバンド品質を 0 に設定するとアプリケーションがクラッシュする不具"
+"合を修正しました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
 msgid ""
@@ -595,7 +604,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
 msgid "The Reset All Settings function in our menu should work in Flatpak now."
-msgstr "メニューの「すべての設定をリセット」が Flatpak でも動作するようになりました。"
+msgstr ""
+"メニューの「すべての設定をリセット」が Flatpak でも動作するようになりました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
@@ -603,8 +613,8 @@ msgid ""
 "This may help to workaround some bugs Popover menus currently have on gtk4."
 msgstr ""
 "メニューを自動的に非表示にすることができる新しいオプションが追加されました。"
-"これにより、現在 gtk4 "
-"で抱えているポップオーバーメニュー関連の不具合を回避できる可能性があります。"
+"これにより、現在 gtk4 で抱えているポップオーバーメニュー関連の不具合を回避で"
+"きる可能性があります。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
 msgid ""
@@ -642,7 +652,8 @@ msgstr ""
 msgid ""
 "Improved x axis drawings in our plots. Now the number of labels is adjusted "
 "dynamically depending on our window width."
-msgstr "プロットのX軸描画が改善されました。これにより、ウィンドウの幅に応じてラベルの"
+msgstr ""
+"プロットのX軸描画が改善されました。これにより、ウィンドウの幅に応じてラベルの"
 "数が動的に調整されるようになりました。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
@@ -1049,8 +1060,9 @@ msgstr ""
 msgid ""
 "The application and its repository have been renamed from PulseEffects to "
 "EasyEffects"
-msgstr "アプリケーションとそのリポジトリの名称が PulseEffects から EasyEffects "
-"に変更されました"
+msgstr ""
+"アプリケーションとそのリポジトリの名称が PulseEffects から EasyEffects に変更"
+"されました"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:343
 msgid "gtkmm3 was replaced by gtkmm4"
