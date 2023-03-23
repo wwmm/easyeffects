@@ -538,9 +538,8 @@ msgid "Type"
 msgstr "类型"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid "Feed-forward"
-msgstr " 前馈式"
+msgstr "前馈式"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -1790,19 +1789,19 @@ msgstr "颜色"
 msgid "Lines and Bars"
 msgstr "线形与条柱"
 
-#: data/ui/preferences_spectrum.ui:173
+#: data/ui/preferences_spectrum.ui:173 data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
 msgstr "坐标轴标签"
 
-#: data/ui/preferences_spectrum.ui:193
+#: data/ui/preferences_spectrum.ui:193 data/ui/preferences_spectrum.ui:185
 msgid "Frequency Range"
 msgstr "频率范围"
 
-#: data/ui/preferences_spectrum.ui:196
+#: data/ui/preferences_spectrum.ui:196 data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
 msgstr "最低"
 
-#: data/ui/preferences_spectrum.ui:219
+#: data/ui/preferences_spectrum.ui:219 data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
 msgstr "最高"
 

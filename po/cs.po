@@ -540,9 +540,8 @@ msgid "Type"
 msgstr "Typ"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid "Feed-forward"
-msgstr " Feed-forward"
+msgstr "Feed-forward"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
@@ -1807,19 +1806,19 @@ msgstr "Barva"
 msgid "Lines and Bars"
 msgstr "čáry a pásma"
 
-#: data/ui/preferences_spectrum.ui:173
+#: data/ui/preferences_spectrum.ui:173 data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
 msgstr "štítky os"
 
-#: data/ui/preferences_spectrum.ui:193
+#: data/ui/preferences_spectrum.ui:193 data/ui/preferences_spectrum.ui:185
 msgid "Frequency Range"
 msgstr "Rozsah frekvence"
 
-#: data/ui/preferences_spectrum.ui:196
+#: data/ui/preferences_spectrum.ui:196 data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:219
+#: data/ui/preferences_spectrum.ui:219 data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
 msgstr "Nejvýše"
 

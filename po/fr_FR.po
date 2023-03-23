@@ -536,9 +536,8 @@ msgid "Type"
 msgstr "Type"
 
 #: data/ui/compressor.ui:617
-#, fuzzy
 msgid "Feed-forward"
-msgstr " Feed-forward"
+msgstr "Feed-forward"
 
 #: data/ui/compressor.ui:618
 #, fuzzy
@@ -1801,19 +1800,19 @@ msgstr "Couleur"
 msgid "Lines and Bars"
 msgstr "Lignes et barres"
 
-#: data/ui/preferences_spectrum.ui:173
+#: data/ui/preferences_spectrum.ui:173 data/ui/preferences_spectrum.ui:169
 msgid "Axis Labels"
 msgstr "Annotation des axes"
 
-#: data/ui/preferences_spectrum.ui:193
+#: data/ui/preferences_spectrum.ui:193 data/ui/preferences_spectrum.ui:185
 msgid "Frequency Range"
 msgstr "Intervalle de fréquences"
 
-#: data/ui/preferences_spectrum.ui:196
+#: data/ui/preferences_spectrum.ui:196 data/ui/preferences_spectrum.ui:188
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:219
+#: data/ui/preferences_spectrum.ui:219 data/ui/preferences_spectrum.ui:211
 msgid "Maximum"
 msgstr "Maximum"
 
