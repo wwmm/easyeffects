@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 03:21+0000\n"
+"POT-Creation-Date: 2023-03-22 22:05+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -542,7 +542,7 @@ msgstr "Feedforward"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
-msgstr "Feedback"
+msgstr "Feed-back"
 
 #: data/ui/compressor.ui:619 data/ui/gate.ui:754
 msgid "External"
@@ -1805,7 +1805,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Maximum"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
 msgid "Load"
 msgstr "Laden"
 
@@ -1813,7 +1813,7 @@ msgstr "Laden"
 msgid "Save current settings to this preset file"
 msgstr "Aktuelle Einstellungen in dieser Preset-Datei speichern"
 
-#: data/ui/preset_row.ui:56
+#: data/ui/preset_row.ui:56 data/ui/preset_row.ui:44
 msgid "Remove this preset file"
 msgstr "Diese Preset-Datei entfernen"
 
@@ -2187,24 +2187,29 @@ msgstr "Es werden nur Stereo-Impulsdateien unterstützt"
 msgid "Impulse File Not Imported"
 msgstr "Impulsdatei nicht importiert"
 
-#: src/convolver_menu_impulses.cpp:129
+#: src/convolver_menu_impulses.cpp:127
 msgid "Import Impulse File"
 msgstr "Impulsdatei importieren"
 
-#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
 #: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/convolver_menu_impulses.cpp:136
+#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/convolver_menu_impulses.cpp:132
 msgid "Impulse Response"
 msgstr "Impulsantwort"
 
-#: src/convolver_menu_impulses.cpp:254
+#: src/convolver_menu_impulses.cpp:245
 msgid "Load Impulse"
 msgstr "Impuls laden"
 
-#: src/convolver_menu_impulses.cpp:257
+#: src/convolver_menu_impulses.cpp:248
 msgid "Remove Impulse"
 msgstr "Impuls entfernen"
 
@@ -2235,10 +2240,6 @@ msgstr "unendlich"
 #: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "APO Preset-Datei importieren"
-
-#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "Abbrechen"
 
 #: src/equalizer_ui.cpp:373
 msgid "APO Presets"
@@ -2389,8 +2390,13 @@ msgstr "{} ist nicht auf dem System installiert"
 msgid "-inf"
 msgstr ""
 
-#~ msgid " PreAmplification"
-#~ msgstr " Vorverstärkung"
+#: data/ui/compressor.ui:661
+msgid " PreAmplification"
+msgstr " Vorverstärkung"
+
+#: data/ui/compressor.ui:617
+msgid " Feed-forward"
+msgstr " Feed-forward"
 
 #~ msgid "Frame Size"
 #~ msgstr "Rahmengröße"
