@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 00:59-0300\n"
+"POT-Creation-Date: 2023-03-23 14:53+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1948,21 +1948,21 @@ msgstr "Farba osi"
 msgid "Lines and Bars"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:169
+#: data/ui/preferences_spectrum.ui:173
 msgid "Axis Labels"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:185
+#: data/ui/preferences_spectrum.ui:193
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frekvencia"
 
-#: data/ui/preferences_spectrum.ui:188
+#: data/ui/preferences_spectrum.ui:196
 #, fuzzy
 msgid "Minimum"
 msgstr "Maximálna"
 
-#: data/ui/preferences_spectrum.ui:211
+#: data/ui/preferences_spectrum.ui:219
 msgid "Maximum"
 msgstr "Maximálna"
 
