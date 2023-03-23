@@ -542,7 +542,7 @@ msgstr "Feedforward"
 
 #: data/ui/compressor.ui:618
 msgid "Feed-back"
-msgstr "Feedback"
+msgstr "Feed-back"
 
 #: data/ui/compressor.ui:619 data/ui/gate.ui:754
 msgid "External"
@@ -1813,7 +1813,7 @@ msgstr "Laden"
 msgid "Save current settings to this preset file"
 msgstr "Aktuelle Einstellungen in dieser Preset-Datei speichern"
 
-#: data/ui/preset_row.ui:56
+#: data/ui/preset_row.ui:56 data/ui/preset_row.ui:44
 msgid "Remove this preset file"
 msgstr "Diese Preset-Datei entfernen"
 
@@ -2390,8 +2390,13 @@ msgstr "{} ist nicht auf dem System installiert"
 msgid "-inf"
 msgstr ""
 
-#~ msgid " PreAmplification"
-#~ msgstr " Vorverstärkung"
+#: data/ui/compressor.ui:661
+msgid " PreAmplification"
+msgstr " Vorverstärkung"
+
+#: data/ui/compressor.ui:617
+msgid " Feed-forward"
+msgstr " Feed-forward"
 
 #~ msgid "Frame Size"
 #~ msgstr "Rahmengröße"

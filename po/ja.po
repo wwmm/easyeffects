@@ -1816,7 +1816,7 @@ msgstr "ロード"
 msgid "Save current settings to this preset file"
 msgstr "現在の設定をこのプリセットファイルに保存"
 
-#: data/ui/preset_row.ui:56
+#: data/ui/preset_row.ui:56 data/ui/preset_row.ui:44
 msgid "Remove this preset file"
 msgstr "このプリセットファイルを削除"
 
@@ -2407,9 +2407,13 @@ msgstr "{} はシステムにインストールされていません"
 msgid "-inf"
 msgstr "-inf"
 
-#, fuzzy
-#~ msgid " PreAmplification"
-#~ msgstr "プリアンプリーション"
+#: data/ui/compressor.ui:661
+msgid " PreAmplification"
+msgstr " プリアンプリーション"
+
+#: data/ui/compressor.ui:617
+msgid " Feed-forward"
+msgstr " フィードフォワード"
 
 #~ msgid "Close (Press ESC)"
 #~ msgstr "閉じる (Esc キーを押す)"
