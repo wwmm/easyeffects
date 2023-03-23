@@ -254,11 +254,7 @@ void application_window_init(ApplicationWindow* self) {
   apply_css_style();
 
   if (IS_DEVEL_BUILD) {
-    GtkStyleContext* style_context = nullptr;
-
-    style_context = gtk_widget_get_style_context(GTK_WIDGET(self));
-
-    gtk_style_context_add_class(style_context, "devel");
+    gtk_widget_add_css_class(GTK_WIDGET(self), "devel");
   }
 
   self->data->icon_theme = setup_icon_theme();
