@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-22 22:05+0000\n"
+"POT-Creation-Date: 2023-03-23 03:34+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1842,8 +1842,7 @@ msgstr "Минимум"
 msgid "Maximum"
 msgstr "Максимум"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
-#: src/convolver_menu_impulses.cpp:192
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
 msgid "Load"
 msgstr "Загрузить"
 
@@ -2234,30 +2233,24 @@ msgstr "Поддерживаются только файлы импульса с
 msgid "Impulse File Not Imported"
 msgstr "Файл импульса не импортирован"
 
-#: src/convolver_menu_impulses.cpp:127 src/convolver_menu_impulses.cpp:129
+#: src/convolver_menu_impulses.cpp:129
 msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
 #: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
-#: src/convolver_menu_impulses.cpp:130
 msgid "Open"
 msgstr "Открыть"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "Отмена"
-
-#: src/convolver_menu_impulses.cpp:132 src/convolver_menu_impulses.cpp:136
+#: src/convolver_menu_impulses.cpp:136
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
-#: src/convolver_menu_impulses.cpp:245 src/convolver_menu_impulses.cpp:254
+#: src/convolver_menu_impulses.cpp:254
 msgid "Load Impulse"
 msgstr "Загрузить импульс"
 
-#: src/convolver_menu_impulses.cpp:248 src/convolver_menu_impulses.cpp:257
+#: src/convolver_menu_impulses.cpp:257
 msgid "Remove Impulse"
 msgstr "Удалить Импульс"
 
@@ -2288,6 +2281,10 @@ msgstr "бесконечно"
 #: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "Импортировать файл предустановки APO"
+
+#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
+msgid "Cancel"
+msgstr "Отмена"
 
 #: src/equalizer_ui.cpp:373
 msgid "APO Presets"

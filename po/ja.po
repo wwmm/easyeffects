@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-22 22:05+0000\n"
+"POT-Creation-Date: 2023-03-23 03:34+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -1801,8 +1801,7 @@ msgstr "最小"
 msgid "Maximum"
 msgstr "最大"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
-#: src/convolver_menu_impulses.cpp:192
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
 msgid "Load"
 msgstr "ロード"
 
@@ -1810,7 +1809,7 @@ msgstr "ロード"
 msgid "Save current settings to this preset file"
 msgstr "現在の設定をこのプリセットファイルに保存"
 
-#: data/ui/preset_row.ui:56 data/ui/preset_row.ui:44
+#: data/ui/preset_row.ui:56
 msgid "Remove this preset file"
 msgstr "このプリセットファイルを削除"
 
@@ -2182,30 +2181,24 @@ msgstr "ステレオインパルスファイルのみサポートされていま
 msgid "Impulse File Not Imported"
 msgstr "インパルスファイルがインポートされていません"
 
-#: src/convolver_menu_impulses.cpp:127 src/convolver_menu_impulses.cpp:129
+#: src/convolver_menu_impulses.cpp:129
 msgid "Import Impulse File"
 msgstr "インパルスファイルをインポート"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
 #: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
-#: src/convolver_menu_impulses.cpp:130
 msgid "Open"
 msgstr "開く"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: src/convolver_menu_impulses.cpp:132 src/convolver_menu_impulses.cpp:136
+#: src/convolver_menu_impulses.cpp:136
 msgid "Impulse Response"
 msgstr "インパルスレスポンス"
 
-#: src/convolver_menu_impulses.cpp:245 src/convolver_menu_impulses.cpp:254
+#: src/convolver_menu_impulses.cpp:254
 msgid "Load Impulse"
 msgstr "インパルスを読み込み"
 
-#: src/convolver_menu_impulses.cpp:248 src/convolver_menu_impulses.cpp:257
+#: src/convolver_menu_impulses.cpp:257
 msgid "Remove Impulse"
 msgstr "インパルスを削除"
 
@@ -2236,6 +2229,10 @@ msgstr "無限大"
 #: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "APO プリセットファイルをインポート"
+
+#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
+msgid "Cancel"
+msgstr "キャンセル"
 
 #: src/equalizer_ui.cpp:373
 msgid "APO Presets"
@@ -2391,13 +2388,11 @@ msgstr "{} はシステムにインストールされていません"
 msgid "-inf"
 msgstr "-inf"
 
-#: data/ui/compressor.ui:661
-msgid " PreAmplification"
-msgstr " プリアンプリーション"
+#~ msgid " PreAmplification"
+#~ msgstr " プリアンプリーション"
 
-#: data/ui/compressor.ui:617
-msgid " Feed-forward"
-msgstr " フィードフォワード"
+#~ msgid " Feed-forward"
+#~ msgstr " フィードフォワード"
 
 #~ msgid "Close (Press ESC)"
 #~ msgstr "閉じる (Esc キーを押す)"
