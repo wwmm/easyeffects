@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 00:47-0300\n"
+"POT-Creation-Date: 2023-03-23 00:59-0300\n"
 "PO-Revision-Date: 2022-09-13 08:16+0000\n"
 "Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2110,8 +2110,8 @@ msgid "Models"
 msgstr "Tryb"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:241
-#: src/rnnoise_ui.cpp:275
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:250
+#: src/rnnoise_ui.cpp:284
 msgid "Standard Model"
 msgstr ""
 
@@ -2396,7 +2396,7 @@ msgid "Import Impulse File"
 msgstr "Importuj plik Impulse"
 
 #: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:371
-#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:132
+#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:134
 msgid "Open"
 msgstr "Otwórz"
 
@@ -2498,16 +2498,12 @@ msgid ""
 "Standard Model."
 msgstr ""
 
-#: src/rnnoise_ui.cpp:131
+#: src/rnnoise_ui.cpp:133
 #, fuzzy
 msgid "Import Model File"
 msgstr "Importuj profile"
 
-#: src/rnnoise_ui.cpp:132
-msgid "Cancel"
-msgstr "Anuluj"
-
-#: src/rnnoise_ui.cpp:136
+#: src/rnnoise_ui.cpp:140
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Modele RNNoise"
@@ -2603,6 +2599,9 @@ msgstr ""
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr ""
+
+#~ msgid "Cancel"
+#~ msgstr "Anuluj"
 
 #, fuzzy
 #~ msgid " PreAmplification"

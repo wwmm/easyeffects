@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 00:47-0300\n"
+"POT-Creation-Date: 2023-03-23 00:59-0300\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1952,8 +1952,8 @@ msgid "Models"
 msgstr "Modely"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:241
-#: src/rnnoise_ui.cpp:275
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:250
+#: src/rnnoise_ui.cpp:284
 msgid "Standard Model"
 msgstr "Standardní model"
 
@@ -2206,7 +2206,7 @@ msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
 #: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:371
-#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:132
+#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:134
 msgid "Open"
 msgstr "Otevřít"
 
@@ -2309,15 +2309,11 @@ msgstr ""
 "Vybraný model nebyl načten. Jeho formát nemusí být podporovaný. Návrat ke "
 "standardnímu modelu."
 
-#: src/rnnoise_ui.cpp:131
+#: src/rnnoise_ui.cpp:133
 msgid "Import Model File"
 msgstr "Importovat modelový soubor"
 
-#: src/rnnoise_ui.cpp:132
-msgid "Cancel"
-msgstr "Zrušit"
-
-#: src/rnnoise_ui.cpp:136
+#: src/rnnoise_ui.cpp:140
 msgid "RNNoise Models"
 msgstr "RNNoise Modely"
 
@@ -2410,6 +2406,9 @@ msgstr "{} Není nainstalováno v systému"
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "Cancel"
+#~ msgstr "Zrušit"
 
 #~ msgid " PreAmplification"
 #~ msgstr " Předzesílení"

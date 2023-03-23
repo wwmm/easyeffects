@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 00:47-0300\n"
+"POT-Creation-Date: 2023-03-23 00:59-0300\n"
 "PO-Revision-Date: 2023-03-03 06:36+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1934,8 +1934,8 @@ msgid "Models"
 msgstr "Modelli"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:241
-#: src/rnnoise_ui.cpp:275
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:250
+#: src/rnnoise_ui.cpp:284
 msgid "Standard Model"
 msgstr "Modello Standard"
 
@@ -2189,7 +2189,7 @@ msgid "Import Impulse File"
 msgstr "Importa File di Impulso"
 
 #: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:371
-#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:132
+#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:134
 msgid "Open"
 msgstr "Apri"
 
@@ -2289,15 +2289,11 @@ msgstr ""
 "Il Modello Selezionato Non È Stato Caricato. Il Formato Potrebbe Essere Non "
 "Supportato. Il Modello Standard È Stato Ripristinato."
 
-#: src/rnnoise_ui.cpp:131
+#: src/rnnoise_ui.cpp:133
 msgid "Import Model File"
 msgstr "Importa File Modello"
 
-#: src/rnnoise_ui.cpp:132
-msgid "Cancel"
-msgstr "Annulla"
-
-#: src/rnnoise_ui.cpp:136
+#: src/rnnoise_ui.cpp:140
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
@@ -2390,6 +2386,9 @@ msgstr "{} Non Installato sul Sistema"
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "Cancel"
+#~ msgstr "Annulla"
 
 #~ msgid " PreAmplification"
 #~ msgstr " PreAmplificazione"

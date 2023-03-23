@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 00:47-0300\n"
+"POT-Creation-Date: 2023-03-23 00:59-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1984,8 +1984,8 @@ msgid "Models"
 msgstr "Modeller"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:241
-#: src/rnnoise_ui.cpp:275
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:250
+#: src/rnnoise_ui.cpp:284
 msgid "Standard Model"
 msgstr "Standart Model"
 
@@ -2242,7 +2242,7 @@ msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
 #: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:371
-#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:132
+#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:134
 msgid "Open"
 msgstr "Aç"
 
@@ -2345,15 +2345,11 @@ msgstr ""
 "Seçilen Model Yüklenmedi. Biçimi Desteklenmiyor Olabilir. Bunun Yerine "
 "Standart Modele Dönüldü."
 
-#: src/rnnoise_ui.cpp:131
+#: src/rnnoise_ui.cpp:133
 msgid "Import Model File"
 msgstr "Model Dosyasını İçe Aktar"
 
-#: src/rnnoise_ui.cpp:132
-msgid "Cancel"
-msgstr "İptal"
-
-#: src/rnnoise_ui.cpp:136
+#: src/rnnoise_ui.cpp:140
 msgid "RNNoise Models"
 msgstr "RNNoise Modelleri"
 
@@ -2446,6 +2442,9 @@ msgstr "{} Sistemde Kurulu Değil"
 #: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
 msgid "-inf"
 msgstr "-sonsuz"
+
+#~ msgid "Cancel"
+#~ msgstr "İptal"
 
 #~ msgid " PreAmplification"
 #~ msgstr " Ön Yükseltme"
