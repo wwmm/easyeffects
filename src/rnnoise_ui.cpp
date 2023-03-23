@@ -128,35 +128,44 @@ void import_model_file(const std::string& file_path) {
 void on_import_model_clicked(RNNoiseBox* self, GtkButton* btn) {
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
-  auto* dialog = gtk_file_chooser_native_new(_("Import Model File"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN,
-                                             _("Open"), _("Cancel"));
+  auto* dialog = gtk_file_dialog_new();
+
+  gtk_file_dialog_set_title(dialog, _("Import Model File"));
+  gtk_file_dialog_set_accept_label(dialog, _("Open"));
+
+  GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
 
   auto* filter = gtk_file_filter_new();
 
   gtk_file_filter_set_name(filter, _("RNNoise Models"));
   gtk_file_filter_add_pattern(filter, "*.rnnn");
 
-  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+  g_list_store_append(filters, filter);
 
-  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, RNNoiseBox* self) {
-                     if (response == GTK_RESPONSE_ACCEPT) {
-                       auto* chooser = GTK_FILE_CHOOSER(dialog);
-                       auto* file = gtk_file_chooser_get_file(chooser);
-                       auto* path = g_file_get_path(file);
+  g_object_unref(filter);
 
-                       import_model_file(path);
+  gtk_file_dialog_set_filters(dialog, G_LIST_MODEL(filters));
 
-                       g_free(path);
+  g_object_unref(filters);
 
-                       g_object_unref(file);
-                     }
+  gtk_file_dialog_open(
+      dialog, active_window, nullptr,
+      +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
+        auto* dialog = GTK_FILE_DIALOG(source_object);
 
-                     g_object_unref(dialog);
-                   }),
-                   self);
+        auto* file = gtk_file_dialog_open_finish(dialog, result, nullptr);
 
-  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
-  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
+        if (file != nullptr) {
+          auto* path = g_file_get_path(file);
+
+          import_model_file(path);
+
+          g_free(path);
+
+          g_object_unref(file);
+        }
+      },
+      self);
 }
 
 void setup_listview(RNNoiseBox* self) {
