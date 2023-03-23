@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 15:20+0000\n"
+"POT-Creation-Date: 2023-03-23 15:24+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1838,19 +1838,19 @@ msgstr "Renk"
 msgid "Lines and Bars"
 msgstr "Çizgiler ve Çubuklar"
 
-#: data/ui/preferences_spectrum.ui:173 data/ui/preferences_spectrum.ui:169
+#: data/ui/preferences_spectrum.ui:173
 msgid "Axis Labels"
 msgstr "Eksen Etiketleri"
 
-#: data/ui/preferences_spectrum.ui:193 data/ui/preferences_spectrum.ui:185
+#: data/ui/preferences_spectrum.ui:193
 msgid "Frequency Range"
 msgstr "Frekans Aralığı"
 
-#: data/ui/preferences_spectrum.ui:196 data/ui/preferences_spectrum.ui:188
+#: data/ui/preferences_spectrum.ui:196
 msgid "Minimum"
 msgstr "Asgari"
 
-#: data/ui/preferences_spectrum.ui:219 data/ui/preferences_spectrum.ui:211
+#: data/ui/preferences_spectrum.ui:219
 msgid "Maximum"
 msgstr "Azami"
 

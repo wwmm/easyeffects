@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 15:20+0000\n"
+"POT-Creation-Date: 2023-03-23 15:24+0000\n"
 "PO-Revision-Date: 2023-01-12 08:48+0000\n"
 "Last-Translator: John <janrrk+weblate@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -1791,19 +1791,19 @@ msgstr "Cor"
 msgid "Lines and Bars"
 msgstr "Linhas e Barras"
 
-#: data/ui/preferences_spectrum.ui:173 data/ui/preferences_spectrum.ui:169
+#: data/ui/preferences_spectrum.ui:173
 msgid "Axis Labels"
 msgstr "Rótulos dos Eixos"
 
-#: data/ui/preferences_spectrum.ui:193 data/ui/preferences_spectrum.ui:185
+#: data/ui/preferences_spectrum.ui:193
 msgid "Frequency Range"
 msgstr "Escopo de Frequências"
 
-#: data/ui/preferences_spectrum.ui:196 data/ui/preferences_spectrum.ui:188
+#: data/ui/preferences_spectrum.ui:196
 msgid "Minimum"
 msgstr "Mínimo"
 
-#: data/ui/preferences_spectrum.ui:219 data/ui/preferences_spectrum.ui:211
+#: data/ui/preferences_spectrum.ui:219
 msgid "Maximum"
 msgstr "Máximo"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 15:20+0000\n"
+"POT-Creation-Date: 2023-03-23 15:24+0000\n"
 "PO-Revision-Date: 2023-02-18 20:37+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1786,19 +1786,19 @@ msgstr "Kleur"
 msgid "Lines and Bars"
 msgstr "Lijnen en balken"
 
-#: data/ui/preferences_spectrum.ui:173 data/ui/preferences_spectrum.ui:169
+#: data/ui/preferences_spectrum.ui:173
 msgid "Axis Labels"
 msgstr "As-labels"
 
-#: data/ui/preferences_spectrum.ui:193 data/ui/preferences_spectrum.ui:185
+#: data/ui/preferences_spectrum.ui:193
 msgid "Frequency Range"
 msgstr "Frequentiebereik"
 
-#: data/ui/preferences_spectrum.ui:196 data/ui/preferences_spectrum.ui:188
+#: data/ui/preferences_spectrum.ui:196
 msgid "Minimum"
 msgstr "Minimaal"
 
-#: data/ui/preferences_spectrum.ui:219 data/ui/preferences_spectrum.ui:211
+#: data/ui/preferences_spectrum.ui:219
 msgid "Maximum"
 msgstr "Maximaal"
 
