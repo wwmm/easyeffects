@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 03:21+0000\n"
+"POT-Creation-Date: 2023-03-23 00:47-0300\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -89,8 +89,8 @@ msgid "_About Easy Effects"
 msgstr "_O EasyEffects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:112 src/presets_menu.cpp:268
-#: src/presets_menu.cpp:269 src/presets_menu.cpp:286 src/presets_menu.cpp:287
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:269
+#: src/presets_menu.cpp:270 src/presets_menu.cpp:287 src/presets_menu.cpp:288
 msgid "Presets"
 msgstr "Přednastavení"
 
@@ -556,7 +556,7 @@ msgstr "Externí"
 msgid "Sidechain Type"
 msgstr "Druh sidechain"
 
-#: data/ui/compressor.ui:654 data/ui/gate.ui:788 src/plugins_box.cpp:646
+#: data/ui/compressor.ui:654 data/ui/gate.ui:788 src/plugins_box.cpp:647
 msgid "Input Device"
 msgstr "Vstupní zařízení"
 
@@ -881,7 +881,7 @@ msgstr "Vypočítat Kmitočty"
 msgid "Sort Bands"
 msgstr "Pásma"
 
-#: data/ui/equalizer.ui:315 src/presets_menu.cpp:104
+#: data/ui/equalizer.ui:315 src/presets_menu.cpp:105
 msgid "Import Preset"
 msgstr "Importovat přednastavení"
 
@@ -1492,7 +1492,7 @@ msgstr "Automatické načítání přednastavení"
 msgid "Output Devices"
 msgstr "Výstupní zařízení"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:244
 msgid "Output Presets"
 msgstr "Profily pro výstup"
 
@@ -1512,7 +1512,7 @@ msgstr "Seznam automaticky načítaných profilů pro výstup"
 msgid "Input Devices"
 msgstr "Vstupní zařízení"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:252
 msgid "Input Presets"
 msgstr "Profily pro vstup"
 
@@ -1823,7 +1823,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Nejvýše"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:193
 msgid "Load"
 msgstr "Načíst"
 
@@ -1952,8 +1952,8 @@ msgid "Models"
 msgstr "Modely"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:94 src/rnnoise_ui.cpp:240
-#: src/rnnoise_ui.cpp:274
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:241
+#: src/rnnoise_ui.cpp:275
 msgid "Standard Model"
 msgstr "Standardní model"
 
@@ -2117,148 +2117,144 @@ msgstr "Základ sterea"
 msgid "Stereo Phase"
 msgstr "Fáze sterea"
 
-#: src/app_info.cpp:64
+#: src/app_info.cpp:65
 msgid "Running"
 msgstr "Běží"
 
-#: src/app_info.cpp:66
+#: src/app_info.cpp:67
 msgid "Suspended"
 msgstr "Pozastaveno"
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:69
 msgid "Idle"
 msgstr "Neaktivní"
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:71
 msgid "Creating"
 msgstr "Tvoření"
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:73
 msgid "Error"
 msgstr "Chyba"
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:75
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: src/app_info.cpp:228
+#: src/app_info.cpp:229
 msgid "channels"
 msgstr "Kanály"
 
-#: src/application.cpp:440
+#: src/application.cpp:441
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:530
+#: src/application.cpp:531
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Ukončit EasyEffects. Užitečné, při spuštění servisního režimu."
 
-#: src/application.cpp:533
+#: src/application.cpp:534
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
 
-#: src/application.cpp:536
+#: src/application.cpp:537
 msgid "Reset Easy Effects."
 msgstr "Obnovit EasyEffects."
 
-#: src/application.cpp:539
+#: src/application.cpp:540
 msgid "Hide the Window."
 msgstr "Skrýt Okno."
 
-#: src/application.cpp:542
+#: src/application.cpp:543
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání stavu"
 
-#: src/application.cpp:545
+#: src/application.cpp:546
 msgid "Show available presets."
 msgstr "Ukázat dostupná přednastavení."
 
-#: src/application_ui.cpp:277
+#: src/application_ui.cpp:278
 msgid "_Output"
 msgstr "_Výstup"
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:279
 msgid "_Input"
 msgstr "_Vstup"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:280
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:101
+#: src/convolver_menu_impulses.cpp:102
 msgid "The File Is Not Regular"
 msgstr "Soubor není standardní"
 
-#: src/convolver_menu_impulses.cpp:106
+#: src/convolver_menu_impulses.cpp:107
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Soubor Impulse může být poškozený nebo nepodporovaný"
 
-#: src/convolver_menu_impulses.cpp:111
+#: src/convolver_menu_impulses.cpp:112
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Podporovány jsou pouze Stereo Impulse soubory"
 
-#: src/convolver_menu_impulses.cpp:121
+#: src/convolver_menu_impulses.cpp:122
 msgid "Impulse File Not Imported"
 msgstr "Impulse soubor nebyl importován"
 
-#: src/convolver_menu_impulses.cpp:129
+#: src/convolver_menu_impulses.cpp:130
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:371
+#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:132
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_menu_impulses.cpp:136
+#: src/convolver_menu_impulses.cpp:137
 msgid "Impulse Response"
 msgstr "Odpověď impulsu"
 
-#: src/convolver_menu_impulses.cpp:254
+#: src/convolver_menu_impulses.cpp:255
 msgid "Load Impulse"
 msgstr "Načíst Impulse"
 
-#: src/convolver_menu_impulses.cpp:257
+#: src/convolver_menu_impulses.cpp:258
 msgid "Remove Impulse"
 msgstr "Odstranit Impuls"
 
-#: src/convolver_ui.cpp:324
+#: src/convolver_ui.cpp:325
 msgid "No Impulse File Loaded"
 msgstr "Impulse soubor nebyl načten"
 
-#: src/convolver_ui.cpp:346
+#: src/convolver_ui.cpp:347
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát Impulse soubor"
 
-#: src/effects_box.cpp:259 src/plugins_box.cpp:647
+#: src/effects_box.cpp:260 src/plugins_box.cpp:648
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/effects_box.cpp:282 src/plugins_box.cpp:667
+#: src/effects_box.cpp:283 src/plugins_box.cpp:668
 msgid "Players"
 msgstr "Přehrávače"
 
-#: src/effects_box.cpp:305
+#: src/effects_box.cpp:306
 msgid "Effects"
 msgstr "Efekty"
 
-#: src/equalizer_band_box.cpp:80
+#: src/equalizer_band_box.cpp:81
 msgid "infinity"
 msgstr "nekonečno"
 
-#: src/equalizer_ui.cpp:367
+#: src/equalizer_ui.cpp:370
 msgid "Import APO Preset File"
 msgstr "Importovat přednastavený soubor APO"
 
-#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "Zrušit"
-
-#: src/equalizer_ui.cpp:373
+#: src/equalizer_ui.cpp:378
 msgid "APO Presets"
 msgstr "APO Přednastavení"
 
-#: src/equalizer_ui.cpp:391
+#: src/equalizer_ui.cpp:403
 #, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
@@ -2267,15 +2263,15 @@ msgstr ""
 "Přednastavení APO není načtené. Formát souboru může být chybný. Prosím "
 "zkontrolujte jeho obsah."
 
-#: src/equalizer_ui.cpp:561
+#: src/equalizer_ui.cpp:573
 msgid "Import GraphicEQ Preset File"
 msgstr "Importovat soubor přednastavení GraphicEQ"
 
-#: src/equalizer_ui.cpp:567
+#: src/equalizer_ui.cpp:581
 msgid "GraphicEQ Presets"
 msgstr "Přednastavení GraphicEQ"
 
-#: src/equalizer_ui.cpp:586
+#: src/equalizer_ui.cpp:606
 #, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
@@ -2284,7 +2280,7 @@ msgstr ""
 "Přednastavení GraphicEQ není načtené. Formát souboru může být chybný. Prosím "
 "zkontrolujte jeho obsah."
 
-#: src/pipe_manager_box.cpp:328
+#: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr "Odstranit předvolbu automatického načítání"
 
@@ -2293,19 +2289,19 @@ msgstr "Odstranit předvolbu automatického načítání"
 msgid "Output Level Meter"
 msgstr "Výstupní zařízení"
 
-#: src/plugins_box.cpp:599
+#: src/plugins_box.cpp:600
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/plugins_box.cpp:668
+#: src/plugins_box.cpp:669
 msgid "Output Device"
 msgstr "Výstupní zařízení"
 
-#: src/plugins_menu.cpp:154
+#: src/plugins_menu.cpp:155
 msgid "Add"
 msgstr "Přidat"
 
-#: src/rnnoise_ui.cpp:89
+#: src/rnnoise_ui.cpp:90
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2313,11 +2309,15 @@ msgstr ""
 "Vybraný model nebyl načten. Jeho formát nemusí být podporovaný. Návrat ke "
 "standardnímu modelu."
 
-#: src/rnnoise_ui.cpp:130
+#: src/rnnoise_ui.cpp:131
 msgid "Import Model File"
 msgstr "Importovat modelový soubor"
 
-#: src/rnnoise_ui.cpp:135
+#: src/rnnoise_ui.cpp:132
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: src/rnnoise_ui.cpp:136
 msgid "RNNoise Models"
 msgstr "RNNoise Modely"
 

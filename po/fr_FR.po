@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 03:21+0000\n"
+"POT-Creation-Date: 2023-03-23 00:47-0300\n"
 "PO-Revision-Date: 2023-03-21 06:41+0000\n"
 "Last-Translator: Bundy01 <bundy@posteo.eu>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -90,8 +90,8 @@ msgid "_About Easy Effects"
 msgstr "_À propos de Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:112 src/presets_menu.cpp:268
-#: src/presets_menu.cpp:269 src/presets_menu.cpp:286 src/presets_menu.cpp:287
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:269
+#: src/presets_menu.cpp:270 src/presets_menu.cpp:287 src/presets_menu.cpp:288
 msgid "Presets"
 msgstr "Préréglage"
 
@@ -553,7 +553,7 @@ msgstr "Externe"
 msgid "Sidechain Type"
 msgstr "Type Chaîne Latérale"
 
-#: data/ui/compressor.ui:654 data/ui/gate.ui:788 src/plugins_box.cpp:646
+#: data/ui/compressor.ui:654 data/ui/gate.ui:788 src/plugins_box.cpp:647
 msgid "Input Device"
 msgstr "Périphérique d’entrée"
 
@@ -876,7 +876,7 @@ msgstr "Calculer les fréquences"
 msgid "Sort Bands"
 msgstr "Tri des bandes"
 
-#: data/ui/equalizer.ui:315 src/presets_menu.cpp:104
+#: data/ui/equalizer.ui:315 src/presets_menu.cpp:105
 msgid "Import Preset"
 msgstr "Importer un préréglage"
 
@@ -1488,7 +1488,7 @@ msgstr "Chargement automatique des préréglages"
 msgid "Output Devices"
 msgstr "Périphériques de sortie"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:244
 msgid "Output Presets"
 msgstr "Préréglages de sortie"
 
@@ -1508,7 +1508,7 @@ msgstr "Liste des préréglages de sortie auto-chargeant"
 msgid "Input Devices"
 msgstr "Périphériques d’entrée"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:252
 msgid "Input Presets"
 msgstr "Préréglages d’entrée"
 
@@ -1817,7 +1817,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Maximum"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:193
 msgid "Load"
 msgstr "Charger"
 
@@ -1948,8 +1948,8 @@ msgid "Models"
 msgstr "Modèles"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:94 src/rnnoise_ui.cpp:240
-#: src/rnnoise_ui.cpp:274
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:241
+#: src/rnnoise_ui.cpp:275
 msgid "Standard Model"
 msgstr "Modèle standard"
 
@@ -2114,150 +2114,146 @@ msgstr "Base Stéréo"
 msgid "Stereo Phase"
 msgstr "Phase Stéréo"
 
-#: src/app_info.cpp:64
+#: src/app_info.cpp:65
 msgid "Running"
 msgstr "En cours"
 
-#: src/app_info.cpp:66
+#: src/app_info.cpp:67
 msgid "Suspended"
 msgstr "En pause"
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:69
 msgid "Idle"
 msgstr "Inactif"
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:71
 msgid "Creating"
 msgstr "Génération"
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:73
 msgid "Error"
 msgstr "Erreur"
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:75
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: src/app_info.cpp:228
+#: src/app_info.cpp:229
 msgid "channels"
 msgstr "Canaux"
 
-#: src/application.cpp:440
+#: src/application.cpp:441
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:530
+#: src/application.cpp:531
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Quitter Easy Effects. Utile en cas de fonctionnement en mode serveur."
 
-#: src/application.cpp:533
+#: src/application.cpp:534
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Chargez un préréglage. Exemple : easyeffects -l musique"
 
-#: src/application.cpp:536
+#: src/application.cpp:537
 msgid "Reset Easy Effects."
 msgstr "Réinitialiser Easy Effects."
 
-#: src/application.cpp:539
+#: src/application.cpp:540
 msgid "Hide the Window."
 msgstr "Masquer la Fenêtre."
 
-#: src/application.cpp:542
+#: src/application.cpp:543
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir le "
 "statut"
 
-#: src/application.cpp:545
+#: src/application.cpp:546
 msgid "Show available presets."
 msgstr "Afficher les préréglages disponibles."
 
-#: src/application_ui.cpp:277
+#: src/application_ui.cpp:278
 msgid "_Output"
 msgstr "_Sortie"
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:279
 msgid "_Input"
 msgstr "_Entrée"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:280
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:101
+#: src/convolver_menu_impulses.cpp:102
 msgid "The File Is Not Regular"
 msgstr "Le fichier est irrégulier"
 
-#: src/convolver_menu_impulses.cpp:106
+#: src/convolver_menu_impulses.cpp:107
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Le fichier d’impulsion peut être corrompu ou non pris en charge"
 
-#: src/convolver_menu_impulses.cpp:111
+#: src/convolver_menu_impulses.cpp:112
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Seuls les fichiers d’impulsion stéréo sont pris en charge"
 
-#: src/convolver_menu_impulses.cpp:121
+#: src/convolver_menu_impulses.cpp:122
 msgid "Impulse File Not Imported"
 msgstr "Fichier d’impulsion non importé"
 
-#: src/convolver_menu_impulses.cpp:129
+#: src/convolver_menu_impulses.cpp:130
 msgid "Import Impulse File"
 msgstr "Importer un fichier d’impulsion"
 
-#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:371
+#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:132
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/convolver_menu_impulses.cpp:136
+#: src/convolver_menu_impulses.cpp:137
 msgid "Impulse Response"
 msgstr "Réponse impulsionnelle"
 
-#: src/convolver_menu_impulses.cpp:254
+#: src/convolver_menu_impulses.cpp:255
 msgid "Load Impulse"
 msgstr "Charger une impulsion"
 
-#: src/convolver_menu_impulses.cpp:257
+#: src/convolver_menu_impulses.cpp:258
 msgid "Remove Impulse"
 msgstr "Supprimer l’impulsion"
 
-#: src/convolver_ui.cpp:324
+#: src/convolver_ui.cpp:325
 msgid "No Impulse File Loaded"
 msgstr "Aucun fichier d’impulsion chargé"
 
-#: src/convolver_ui.cpp:346
+#: src/convolver_ui.cpp:347
 msgid "Failed To Load The Impulse File"
 msgstr "Impossible de charger le fichier d’impulsion"
 
-#: src/effects_box.cpp:259 src/plugins_box.cpp:647
+#: src/effects_box.cpp:260 src/plugins_box.cpp:648
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/effects_box.cpp:282 src/plugins_box.cpp:667
+#: src/effects_box.cpp:283 src/plugins_box.cpp:668
 msgid "Players"
 msgstr "Lecteurs"
 
-#: src/effects_box.cpp:305
+#: src/effects_box.cpp:306
 msgid "Effects"
 msgstr "Effets"
 
-#: src/equalizer_band_box.cpp:80
+#: src/equalizer_band_box.cpp:81
 msgid "infinity"
 msgstr "infini"
 
-#: src/equalizer_ui.cpp:367
+#: src/equalizer_ui.cpp:370
 msgid "Import APO Preset File"
 msgstr "Importer un fichier de préréglage APO"
 
-#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "Annuler"
-
-#: src/equalizer_ui.cpp:373
+#: src/equalizer_ui.cpp:378
 msgid "APO Presets"
 msgstr "Préréglages APO"
 
-#: src/equalizer_ui.cpp:391
+#: src/equalizer_ui.cpp:403
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2265,15 +2261,15 @@ msgstr ""
 "Le préréglage APO n’a pas été chargé. Le format du fichier peut ne pas être "
 "pris en charge. Veuillez vérifier son contenu."
 
-#: src/equalizer_ui.cpp:561
+#: src/equalizer_ui.cpp:573
 msgid "Import GraphicEQ Preset File"
 msgstr "Importer un fichier de préréglage GraphicEQ"
 
-#: src/equalizer_ui.cpp:567
+#: src/equalizer_ui.cpp:581
 msgid "GraphicEQ Presets"
 msgstr "Préréglages GraphicEQ"
 
-#: src/equalizer_ui.cpp:586
+#: src/equalizer_ui.cpp:606
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
@@ -2281,7 +2277,7 @@ msgstr ""
 "Le préréglage GraphicEQ n’a pas été chargé. Le format du fichier peut ne pas "
 "être pris en charge. Veuillez vérifier son contenu."
 
-#: src/pipe_manager_box.cpp:328
+#: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 
@@ -2289,19 +2285,19 @@ msgstr "Supprimer le préréglage du chargement automatique"
 msgid "Output Level Meter"
 msgstr "Indicateur de niveau de sortie"
 
-#: src/plugins_box.cpp:599
+#: src/plugins_box.cpp:600
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/plugins_box.cpp:668
+#: src/plugins_box.cpp:669
 msgid "Output Device"
 msgstr "Périphérique de sortie"
 
-#: src/plugins_menu.cpp:154
+#: src/plugins_menu.cpp:155
 msgid "Add"
 msgstr "Ajouter"
 
-#: src/rnnoise_ui.cpp:89
+#: src/rnnoise_ui.cpp:90
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2309,11 +2305,15 @@ msgstr ""
 "Le modèle sélectionné n’a pas été chargé. Son format n’est peut-être pas "
 "pris en charge. Retour au modèle standard."
 
-#: src/rnnoise_ui.cpp:130
+#: src/rnnoise_ui.cpp:131
 msgid "Import Model File"
 msgstr "Importer un modèle"
 
-#: src/rnnoise_ui.cpp:135
+#: src/rnnoise_ui.cpp:132
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/rnnoise_ui.cpp:136
 msgid "RNNoise Models"
 msgstr "Modèles RNNoise"
 

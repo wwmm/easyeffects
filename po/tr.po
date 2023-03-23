@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 03:21+0000\n"
+"POT-Creation-Date: 2023-03-23 00:47-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -91,8 +91,8 @@ msgid "_About Easy Effects"
 msgstr "Easy Effects _Hakkında"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:112 src/presets_menu.cpp:268
-#: src/presets_menu.cpp:269 src/presets_menu.cpp:286 src/presets_menu.cpp:287
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:269
+#: src/presets_menu.cpp:270 src/presets_menu.cpp:287 src/presets_menu.cpp:288
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
@@ -557,7 +557,7 @@ msgstr "Harici"
 msgid "Sidechain Type"
 msgstr "Yanzincir Türü"
 
-#: data/ui/compressor.ui:654 data/ui/gate.ui:788 src/plugins_box.cpp:646
+#: data/ui/compressor.ui:654 data/ui/gate.ui:788 src/plugins_box.cpp:647
 msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
@@ -896,7 +896,7 @@ msgstr "Frekansları Hesapla"
 msgid "Sort Bands"
 msgstr "Bantlar"
 
-#: data/ui/equalizer.ui:315 src/presets_menu.cpp:104
+#: data/ui/equalizer.ui:315 src/presets_menu.cpp:105
 msgid "Import Preset"
 msgstr "Ön Ayarı İçe Aktar"
 
@@ -1520,7 +1520,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Çıkış Aygıtları"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:243
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:244
 msgid "Output Presets"
 msgstr "Çıkış Ön Ayarları"
 
@@ -1540,7 +1540,7 @@ msgstr "Çıkış Otomatik Yükleme Ön Ayarları Listesi"
 msgid "Input Devices"
 msgstr "Giriş Aygıtları"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:251
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:252
 msgid "Input Presets"
 msgstr "Giriş Ön Ayarları"
 
@@ -1855,7 +1855,7 @@ msgstr "Asgari"
 msgid "Maximum"
 msgstr "Azami"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:193
 msgid "Load"
 msgstr ""
 
@@ -1984,8 +1984,8 @@ msgid "Models"
 msgstr "Modeller"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:94 src/rnnoise_ui.cpp:240
-#: src/rnnoise_ui.cpp:274
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:241
+#: src/rnnoise_ui.cpp:275
 msgid "Standard Model"
 msgstr "Standart Model"
 
@@ -2152,149 +2152,145 @@ msgstr "Stereo Taban"
 msgid "Stereo Phase"
 msgstr "Stereo Faz"
 
-#: src/app_info.cpp:64
+#: src/app_info.cpp:65
 msgid "Running"
 msgstr "Çalışıyor"
 
-#: src/app_info.cpp:66
+#: src/app_info.cpp:67
 msgid "Suspended"
 msgstr "Askıya alındı"
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:69
 msgid "Idle"
 msgstr "Boşta"
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:71
 msgid "Creating"
 msgstr "Oluşturuluyor"
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:73
 msgid "Error"
 msgstr "Hata"
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:75
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#: src/app_info.cpp:228
+#: src/app_info.cpp:229
 msgid "channels"
 msgstr "kanallar"
 
-#: src/application.cpp:440
+#: src/application.cpp:441
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:530
+#: src/application.cpp:531
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Easy Effects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
-#: src/application.cpp:533
+#: src/application.cpp:534
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
 
-#: src/application.cpp:536
+#: src/application.cpp:537
 msgid "Reset Easy Effects."
 msgstr "Easy Effects’i Sıfırla."
 
-#: src/application.cpp:539
+#: src/application.cpp:540
 msgid "Hide the Window."
 msgstr "Pencereyi Gizle."
 
-#: src/application.cpp:542
+#: src/application.cpp:543
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Genel atlama. 1 etkinleştirmek, 2 devre dışı bırakmak ve 3 durumu almak için"
 
-#: src/application.cpp:545
+#: src/application.cpp:546
 msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
-#: src/application_ui.cpp:277
+#: src/application_ui.cpp:278
 msgid "_Output"
 msgstr "_Çıkış"
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:279
 msgid "_Input"
 msgstr "_Giriş"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:280
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:101
+#: src/convolver_menu_impulses.cpp:102
 msgid "The File Is Not Regular"
 msgstr "Dosya Normal Değil"
 
-#: src/convolver_menu_impulses.cpp:106
+#: src/convolver_menu_impulses.cpp:107
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Dürtü Dosyası Bozuk veya Desteklenmiyor Olabilir"
 
-#: src/convolver_menu_impulses.cpp:111
+#: src/convolver_menu_impulses.cpp:112
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Yalnızca Stereo Dürtü Dosyaları Desteklenir"
 
-#: src/convolver_menu_impulses.cpp:121
+#: src/convolver_menu_impulses.cpp:122
 msgid "Impulse File Not Imported"
 msgstr "Dürtü Dosyası İçe Aktarılmadı"
 
-#: src/convolver_menu_impulses.cpp:129
+#: src/convolver_menu_impulses.cpp:130
 msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
-#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
+#: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:371
+#: src/equalizer_ui.cpp:574 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:132
 msgid "Open"
 msgstr "Aç"
 
-#: src/convolver_menu_impulses.cpp:136
+#: src/convolver_menu_impulses.cpp:137
 msgid "Impulse Response"
 msgstr "Dürtü Yanıtı"
 
-#: src/convolver_menu_impulses.cpp:254
+#: src/convolver_menu_impulses.cpp:255
 msgid "Load Impulse"
 msgstr "Dürtüyü Yükle"
 
-#: src/convolver_menu_impulses.cpp:257
+#: src/convolver_menu_impulses.cpp:258
 msgid "Remove Impulse"
 msgstr "Dürtüyü Kaldır"
 
-#: src/convolver_ui.cpp:324
+#: src/convolver_ui.cpp:325
 msgid "No Impulse File Loaded"
 msgstr "Dürtü Dosyası Yüklenmedi"
 
-#: src/convolver_ui.cpp:346
+#: src/convolver_ui.cpp:347
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:259 src/plugins_box.cpp:647
+#: src/effects_box.cpp:260 src/plugins_box.cpp:648
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:282 src/plugins_box.cpp:667
+#: src/effects_box.cpp:283 src/plugins_box.cpp:668
 msgid "Players"
 msgstr "Oynatıcılar"
 
-#: src/effects_box.cpp:305
+#: src/effects_box.cpp:306
 msgid "Effects"
 msgstr "Efektler"
 
-#: src/equalizer_band_box.cpp:80
+#: src/equalizer_band_box.cpp:81
 msgid "infinity"
 msgstr "sonsuzluk"
 
-#: src/equalizer_ui.cpp:367
+#: src/equalizer_ui.cpp:370
 msgid "Import APO Preset File"
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "İptal"
-
-#: src/equalizer_ui.cpp:373
+#: src/equalizer_ui.cpp:378
 msgid "APO Presets"
 msgstr "APO Ön Ayarları"
 
-#: src/equalizer_ui.cpp:391
+#: src/equalizer_ui.cpp:403
 #, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
@@ -2303,15 +2299,15 @@ msgstr ""
 "APO Ön Ayarı Yüklenmedi. Dosya Biçimi Yanlış Olabilir. Lütfen İçeriğini "
 "Gözden Geçirin."
 
-#: src/equalizer_ui.cpp:561
+#: src/equalizer_ui.cpp:573
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
 
-#: src/equalizer_ui.cpp:567
+#: src/equalizer_ui.cpp:581
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ Ön Ayarları"
 
-#: src/equalizer_ui.cpp:586
+#: src/equalizer_ui.cpp:606
 #, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
@@ -2320,7 +2316,7 @@ msgstr ""
 "GraphicEQ Ön Ayarı Yüklenmedi. Dosya Biçimi Yanlış Olabilir. Lütfen "
 "İçeriğini Gözden Geçirin."
 
-#: src/pipe_manager_box.cpp:328
+#: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
@@ -2329,19 +2325,19 @@ msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 msgid "Output Level Meter"
 msgstr "Çıkış Aygıtı"
 
-#: src/plugins_box.cpp:599
+#: src/plugins_box.cpp:600
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/plugins_box.cpp:668
+#: src/plugins_box.cpp:669
 msgid "Output Device"
 msgstr "Çıkış Aygıtı"
 
-#: src/plugins_menu.cpp:154
+#: src/plugins_menu.cpp:155
 msgid "Add"
 msgstr "Ekle"
 
-#: src/rnnoise_ui.cpp:89
+#: src/rnnoise_ui.cpp:90
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2349,11 +2345,15 @@ msgstr ""
 "Seçilen Model Yüklenmedi. Biçimi Desteklenmiyor Olabilir. Bunun Yerine "
 "Standart Modele Dönüldü."
 
-#: src/rnnoise_ui.cpp:130
+#: src/rnnoise_ui.cpp:131
 msgid "Import Model File"
 msgstr "Model Dosyasını İçe Aktar"
 
-#: src/rnnoise_ui.cpp:135
+#: src/rnnoise_ui.cpp:132
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/rnnoise_ui.cpp:136
 msgid "RNNoise Models"
 msgstr "RNNoise Modelleri"
 
