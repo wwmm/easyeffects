@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-22 22:05+0000\n"
+"POT-Creation-Date: 2023-03-23 03:21+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1855,7 +1855,7 @@ msgstr "Asgari"
 msgid "Maximum"
 msgstr "Azami"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:183
+#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:192
 msgid "Load"
 msgstr ""
 
@@ -2237,29 +2237,24 @@ msgstr "Yalnızca Stereo Dürtü Dosyaları Desteklenir"
 msgid "Impulse File Not Imported"
 msgstr "Dürtü Dosyası İçe Aktarılmadı"
 
-#: src/convolver_menu_impulses.cpp:127
+#: src/convolver_menu_impulses.cpp:129
 msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
+#: src/convolver_menu_impulses.cpp:130 src/equalizer_ui.cpp:368
 #: src/equalizer_ui.cpp:562 src/presets_menu.cpp:105 src/rnnoise_ui.cpp:131
 msgid "Open"
 msgstr "Aç"
 
-#: src/convolver_menu_impulses.cpp:128 src/equalizer_ui.cpp:368
-#: src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
-msgid "Cancel"
-msgstr "İptal"
-
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:136
 msgid "Impulse Response"
 msgstr "Dürtü Yanıtı"
 
-#: src/convolver_menu_impulses.cpp:245
+#: src/convolver_menu_impulses.cpp:254
 msgid "Load Impulse"
 msgstr "Dürtüyü Yükle"
 
-#: src/convolver_menu_impulses.cpp:248
+#: src/convolver_menu_impulses.cpp:257
 msgid "Remove Impulse"
 msgstr "Dürtüyü Kaldır"
 
@@ -2290,6 +2285,10 @@ msgstr "sonsuzluk"
 #: src/equalizer_ui.cpp:367
 msgid "Import APO Preset File"
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
+
+#: src/equalizer_ui.cpp:368 src/equalizer_ui.cpp:562 src/rnnoise_ui.cpp:131
+msgid "Cancel"
+msgstr "İptal"
 
 #: src/equalizer_ui.cpp:373
 msgid "APO Presets"
