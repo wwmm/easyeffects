@@ -124,8 +124,12 @@ void notify_import_error(const ImpulseImportState& import_state, ConvolverMenuIm
 void on_import_irs_clicked(ConvolverMenuImpulses* self, GtkButton* btn) {
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
 
-  auto* dialog = gtk_file_chooser_native_new(_("Import Impulse File"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN,
-                                             _("Open"), _("Cancel"));
+  auto* dialog = gtk_file_dialog_new();
+
+  gtk_file_dialog_set_title(dialog, _("Import Impulse File"));
+  gtk_file_dialog_set_accept_label(dialog, _("Open"));
+
+  GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
 
   auto* filter = gtk_file_filter_new();
 
@@ -133,32 +137,37 @@ void on_import_irs_clicked(ConvolverMenuImpulses* self, GtkButton* btn) {
   gtk_file_filter_add_pattern(filter, "*.irs");
   gtk_file_filter_add_pattern(filter, "*.wav");
 
-  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+  g_list_store_append(filters, filter);
 
-  g_signal_connect(dialog, "response",
-                   G_CALLBACK(+[](GtkNativeDialog* dialog, int response, ConvolverMenuImpulses* self) {
-                     if (response == GTK_RESPONSE_ACCEPT) {
-                       auto* chooser = GTK_FILE_CHOOSER(dialog);
-                       auto* file = gtk_file_chooser_get_file(chooser);
-                       auto* path = g_file_get_path(file);
+  g_object_unref(filter);
 
-                       auto import_state = import_irs_file(path);
+  gtk_file_dialog_set_filters(dialog, G_LIST_MODEL(filters));
 
-                       if (import_state != ImpulseImportState::success) {
-                         notify_import_error(import_state, self);
-                       }
+  g_object_unref(filters);
 
-                       g_free(path);
+  gtk_file_dialog_open(
+      dialog, active_window, nullptr,
+      +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
+        auto* self = static_cast<ConvolverMenuImpulses*>(user_data);
+        auto* dialog = GTK_FILE_DIALOG(source_object);
 
-                       g_object_unref(file);
-                     }
+        auto* file = gtk_file_dialog_open_finish(dialog, result, nullptr);
 
-                     g_object_unref(dialog);
-                   }),
-                   self);
+        if (file != nullptr) {
+          auto* path = g_file_get_path(file);
 
-  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
-  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
+          auto import_state = import_irs_file(path);
+
+          if (import_state != ImpulseImportState::success) {
+            notify_import_error(import_state, self);
+          }
+
+          g_free(path);
+
+          g_object_unref(file);
+        }
+      },
+      self);
 }
 
 void remove_irs_file(const std::string& name) {
