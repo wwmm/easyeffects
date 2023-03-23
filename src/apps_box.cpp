@@ -52,6 +52,7 @@ struct _AppsBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(AppsBox, apps_box, GTK_TYPE_BOX)
 
 auto app_is_blocklisted(AppsBox* self, const std::string& name) -> bool {

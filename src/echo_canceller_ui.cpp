@@ -50,6 +50,7 @@ struct _EchoCancellerBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(EchoCancellerBox, echo_canceller_box, GTK_TYPE_BOX)
 
 void on_reset(EchoCancellerBox* self, GtkButton* btn) {

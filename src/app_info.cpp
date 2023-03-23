@@ -56,6 +56,7 @@ struct _AppInfo {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(AppInfo, app_info, GTK_TYPE_BOX)
 
 auto node_state_to_char_pointer(const pw_node_state& state) -> const char* {

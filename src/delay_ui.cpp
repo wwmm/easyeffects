@@ -52,6 +52,7 @@ struct _DelayBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(DelayBox, delay_box, GTK_TYPE_BOX)
 
 void on_reset(DelayBox* self, GtkButton* btn) {

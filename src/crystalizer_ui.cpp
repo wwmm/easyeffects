@@ -52,6 +52,7 @@ struct _CrystalizerBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(CrystalizerBox, crystalizer_box, GTK_TYPE_BOX)
 
 void on_reset(CrystalizerBox* self, GtkButton* btn) {

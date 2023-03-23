@@ -62,6 +62,7 @@ struct _PipeManagerBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PipeManagerBox, pipe_manager_box, GTK_TYPE_BOX)
 
 void on_enable_test_signal(PipeManagerBox* self, gboolean state, GtkSwitch* btn) {

@@ -52,6 +52,7 @@ struct _PresetsMenu {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
 
 template <PresetType preset_type>

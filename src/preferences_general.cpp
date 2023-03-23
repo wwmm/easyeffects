@@ -34,6 +34,7 @@ struct _PreferencesGeneral {
   GSettings* settings;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PreferencesGeneral, preferences_general, ADW_TYPE_PREFERENCES_PAGE)
 
 #ifndef USE_LIBPORTAL

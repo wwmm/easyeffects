@@ -25,6 +25,7 @@ namespace app {
 
 using namespace std::string_literals;
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(Application, application, ADW_TYPE_APPLICATION)
 
 void hide_all_windows(GApplication* app) {

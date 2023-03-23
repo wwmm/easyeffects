@@ -52,6 +52,7 @@ struct _ReverbBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(ReverbBox, reverb_box, GTK_TYPE_BOX)
 
 void on_reset(ReverbBox* self, GtkButton* btn) {

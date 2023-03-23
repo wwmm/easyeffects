@@ -54,6 +54,7 @@ struct _PluginsMenu {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PluginsMenu, plugins_menu, GTK_TYPE_POPOVER)
 
 void setup_listview(PluginsMenu* self) {

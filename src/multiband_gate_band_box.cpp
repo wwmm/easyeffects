@@ -54,6 +54,7 @@ struct _MultibandGateBandBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(MultibandGateBandBox, multiband_gate_band_box, GTK_TYPE_BOX)
 
 void set_end_label(MultibandGateBandBox* self, const float& value) {

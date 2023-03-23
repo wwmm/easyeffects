@@ -58,6 +58,7 @@ struct _AutogainBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(AutogainBox, autogain_box, GTK_TYPE_BOX)
 
 void on_reset(AutogainBox* self, GtkButton* btn) {

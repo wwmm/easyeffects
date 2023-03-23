@@ -23,6 +23,7 @@ namespace ui::holders {
 
 enum { PROP_0, PROP_ID, PROP_NAME, PROP_API, PROP_ACCESS };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(ClientInfoHolder, client_info_holder, G_TYPE_OBJECT);
 
 void client_info_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {

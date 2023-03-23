@@ -59,6 +59,7 @@ struct _SpeexBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(SpeexBox, speex_box, GTK_TYPE_BOX)
 
 void on_reset(SpeexBox* self, GtkButton* btn) {

@@ -50,6 +50,7 @@ struct _BlocklistMenu {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(BlocklistMenu, blocklist_menu, GTK_TYPE_POPOVER)
 
 void on_add_to_blocklist(BlocklistMenu* self, GtkButton* button) {

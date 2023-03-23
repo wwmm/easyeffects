@@ -63,6 +63,7 @@ struct _LimiterBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(LimiterBox, limiter_box, GTK_TYPE_BOX)
 
 void on_reset(LimiterBox* self, GtkButton* btn) {

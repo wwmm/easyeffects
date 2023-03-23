@@ -61,6 +61,7 @@ struct _CompressorBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(CompressorBox, compressor_box, GTK_TYPE_BOX)
 
 void on_reset(CompressorBox* self, GtkButton* btn) {

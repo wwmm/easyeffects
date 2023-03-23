@@ -84,6 +84,7 @@ struct _ConvolverBox {
   GtkToggleButton* autogain;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(ConvolverBox, convolver_box, GTK_TYPE_BOX)
 
 void on_reset(ConvolverBox* self, GtkButton* btn) {

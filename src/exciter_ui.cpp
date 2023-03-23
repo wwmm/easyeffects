@@ -58,6 +58,7 @@ struct _ExciterBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(ExciterBox, exciter_box, GTK_TYPE_BOX)
 
 void on_reset(ExciterBox* self, GtkButton* btn) {

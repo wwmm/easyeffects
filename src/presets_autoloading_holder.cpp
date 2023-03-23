@@ -21,6 +21,7 @@
 
 namespace ui::holders {
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PresetsAutoloadingHolder, presets_autoloading_holder, G_TYPE_OBJECT);
 
 void presets_autoloading_holder_finalize(GObject* object) {

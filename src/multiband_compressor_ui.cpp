@@ -65,6 +65,7 @@ struct _MultibandCompressorBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(MultibandCompressorBox, multiband_compressor_box, GTK_TYPE_BOX)
 
 void on_reset(MultibandCompressorBox* self, GtkButton* btn) {

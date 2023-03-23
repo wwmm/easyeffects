@@ -73,6 +73,7 @@ struct _RNNoiseBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(RNNoiseBox, rnnoise_box, GTK_TYPE_BOX)
 
 void on_reset(RNNoiseBox* self, GtkButton* btn) {

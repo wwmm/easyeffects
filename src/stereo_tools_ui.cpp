@@ -55,6 +55,7 @@ struct _StereoToolsBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(StereoToolsBox, stereo_tools_box, GTK_TYPE_BOX)
 
 void on_reset(StereoToolsBox* self, GtkButton* btn) {

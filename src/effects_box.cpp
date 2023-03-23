@@ -78,6 +78,7 @@ struct _EffectsBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(EffectsBox, effects_box, GTK_TYPE_BOX)
 
 void init_spectrum_frequency_axis(EffectsBox* self) {

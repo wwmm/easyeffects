@@ -70,6 +70,7 @@ struct _PluginsBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PluginsBox, plugins_box, GTK_TYPE_BOX)
 
 template <PipelineType pipeline_type>

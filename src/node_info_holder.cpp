@@ -25,6 +25,7 @@ using namespace std::string_literals;
 
 enum { PROP_0, PROP_SERIAL, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS, PROP_DESCRIPTION, PROP_ICON_NAME };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(NodeInfoHolder, node_info_holder, G_TYPE_OBJECT);
 
 void node_info_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {

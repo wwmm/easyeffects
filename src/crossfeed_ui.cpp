@@ -50,6 +50,7 @@ struct _CrossfeedBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(CrossfeedBox, crossfeed_box, GTK_TYPE_BOX)
 
 void on_reset(CrossfeedBox* self, GtkButton* btn) {

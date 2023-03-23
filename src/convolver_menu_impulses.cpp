@@ -47,6 +47,7 @@ struct _ConvolverMenuImpulses {
   app::Application* application;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(ConvolverMenuImpulses, convolver_menu_impulses, GTK_TYPE_POPOVER)
 
 void append_to_string_list(ConvolverMenuImpulses* self, const std::string& irs_filename) {

@@ -44,6 +44,7 @@ struct _PreferencesSpectrum {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PreferencesSpectrum, preferences_spectrum, ADW_TYPE_PREFERENCES_PAGE)
 
 void on_spectrum_color_set(PreferencesSpectrum* self, GtkColorButton* button) {

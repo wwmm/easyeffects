@@ -30,6 +30,7 @@ struct _PreferencesWindow {
   ui::preferences::spectrum::PreferencesSpectrum* page_spectrum;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PreferencesWindow, preferences_window, ADW_TYPE_PREFERENCES_WINDOW)
 
 void dispose(GObject* object) {

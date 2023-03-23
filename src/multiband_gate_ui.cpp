@@ -65,6 +65,7 @@ struct _MultibandGateBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(MultibandGateBox, multiband_gate_box, GTK_TYPE_BOX)
 
 void on_reset(MultibandGateBox* self, GtkButton* btn) {

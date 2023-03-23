@@ -50,6 +50,7 @@ struct _ConvolverMenuCombine {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(ConvolverMenuCombine, convolver_menu_combine, GTK_TYPE_POPOVER)
 
 void append_to_string_list(ConvolverMenuCombine* self, const std::string& irs_filename) {

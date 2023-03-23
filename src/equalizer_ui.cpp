@@ -86,6 +86,7 @@ struct _EqualizerBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(EqualizerBox, equalizer_box, GTK_TYPE_BOX)
 
 void on_reset(EqualizerBox* self, GtkButton* btn) {

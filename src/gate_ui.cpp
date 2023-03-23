@@ -69,6 +69,7 @@ struct _GateBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(GateBox, gate_box, GTK_TYPE_BOX)
 
 void on_reset(GateBox* self, GtkButton* btn) {

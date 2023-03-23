@@ -54,6 +54,7 @@ struct _MaximizerBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(MaximizerBox, maximizer_box, GTK_TYPE_BOX)
 
 void on_reset(MaximizerBox* self, GtkButton* btn) {

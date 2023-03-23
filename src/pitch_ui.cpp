@@ -52,6 +52,7 @@ struct _PitchBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(PitchBox, pitch_box, GTK_TYPE_BOX)
 
 void on_reset(PitchBox* self, GtkButton* btn) {

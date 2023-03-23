@@ -52,6 +52,7 @@ struct _MultibandCompressorBandBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(MultibandCompressorBandBox, multiband_compressor_band_box, GTK_TYPE_BOX)
 
 gboolean set_boost_threshold_sensitive(MultibandCompressorBandBox* self, const char* active_id) {

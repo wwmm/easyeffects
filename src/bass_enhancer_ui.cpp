@@ -58,6 +58,7 @@ struct _BassEnhancerBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(BassEnhancerBox, bass_enhancer_box, GTK_TYPE_BOX)
 
 void on_reset(BassEnhancerBox* self, GtkButton* btn) {

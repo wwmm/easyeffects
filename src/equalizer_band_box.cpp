@@ -48,6 +48,7 @@ struct _EqualizerBandBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(EqualizerBandBox, equalizer_band_box, GTK_TYPE_BOX)
 
 void on_reset_quality(EqualizerBandBox* self, GtkButton* btn) {

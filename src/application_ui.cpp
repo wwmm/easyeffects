@@ -58,6 +58,7 @@ struct _ApplicationWindow {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)
 
 void init_theme_color(ApplicationWindow* self) {

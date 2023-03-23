@@ -50,6 +50,7 @@ struct _BassLoudnessBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(BassLoudnessBox, bass_loudness_box, GTK_TYPE_BOX)
 
 void on_reset(BassLoudnessBox* self, GtkButton* btn) {

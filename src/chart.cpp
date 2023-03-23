@@ -56,6 +56,7 @@ struct _Chart {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(Chart, chart, GTK_TYPE_WIDGET)
 
 void set_chart_type(Chart* self, const ChartType& value) {

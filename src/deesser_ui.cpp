@@ -58,6 +58,7 @@ struct _DeesserBox {
   Data* data;
 };
 
+// NOLINTNEXTLINE
 G_DEFINE_TYPE(DeesserBox, deesser_box, GTK_TYPE_BOX)
 
 void on_reset(DeesserBox* self, GtkButton* btn) {
