@@ -33,7 +33,7 @@ struct _PreferencesSpectrum {
 
   GtkSwitch *show, *fill, *show_bar_border, *rounded_corners;
 
-  GtkColorButton *color_button, *axis_color_button;
+  GtkColorDialogButton *color_button, *axis_color_button;
 
   GtkComboBoxText* type;
 
@@ -47,20 +47,16 @@ struct _PreferencesSpectrum {
 // NOLINTNEXTLINE
 G_DEFINE_TYPE(PreferencesSpectrum, preferences_spectrum, ADW_TYPE_PREFERENCES_PAGE)
 
-void on_spectrum_color_set(PreferencesSpectrum* self, GtkColorButton* button) {
-  GdkRGBA rgba;
+void on_spectrum_color_set(GtkColorDialogButton* button, GParamSpec* pspec, PreferencesSpectrum* self) {
+  auto* rgba = gtk_color_dialog_button_get_rgba(button);
 
-  gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(button), &rgba);
-
-  g_settings_set(self->settings, "color", "(dddd)", rgba.red, rgba.green, rgba.blue, rgba.alpha);
+  g_settings_set(self->settings, "color", "(dddd)", rgba->red, rgba->green, rgba->blue, rgba->alpha);
 }
 
-void on_spectrum_axis_color_set(PreferencesSpectrum* self, GtkColorButton* button) {
-  GdkRGBA rgba;
+void on_spectrum_axis_color_set(GtkColorDialogButton* button, GParamSpec* pspec, PreferencesSpectrum* self) {
+  auto* rgba = gtk_color_dialog_button_get_rgba(button);
 
-  gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(button), &rgba);
-
-  g_settings_set(self->settings, "color-axis-labels", "(dddd)", rgba.red, rgba.green, rgba.blue, rgba.alpha);
+  g_settings_set(self->settings, "color-axis-labels", "(dddd)", rgba->red, rgba->green, rgba->blue, rgba->alpha);
 }
 
 void dispose(GObject* object) {
@@ -126,11 +122,11 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
 
   auto color = util::gsettings_get_color(self->settings, "color");
 
-  gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->color_button), &color);
+  gtk_color_dialog_button_set_rgba(self->color_button, &color);
 
   color = util::gsettings_get_color(self->settings, "color-axis-labels");
 
-  gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->axis_color_button), &color);
+  gtk_color_dialog_button_set_rgba(self->axis_color_button, &color);
 
   // connecting some widgets signals
 
@@ -206,7 +202,7 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
       self->settings, "changed::color", G_CALLBACK(+[](GSettings* settings, char* key, PreferencesSpectrum* self) {
         auto color = util::gsettings_get_color(settings, key);
 
-        gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->color_button), &color);
+        gtk_color_dialog_button_set_rgba(self->color_button, &color);
       }),
       self));
 
@@ -215,7 +211,7 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
                        G_CALLBACK(+[](GSettings* settings, char* key, PreferencesSpectrum* self) {
                          auto color = util::gsettings_get_color(settings, key);
 
-                         gtk_color_chooser_set_rgba(GTK_COLOR_CHOOSER(self->axis_color_button), &color);
+                         gtk_color_dialog_button_set_rgba(self->axis_color_button, &color);
                        }),
                        self));
 }

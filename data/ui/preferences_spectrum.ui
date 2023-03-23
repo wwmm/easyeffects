@@ -155,10 +155,14 @@
                         <property name="title" translatable="yes">Lines and Bars</property>
 
                         <child>
-                            <object class="GtkColorButton" id="color_button">
+                            <object class="GtkColorDialogButton" id="color_button">
                                 <property name="valign">center</property>
-                                <property name="use-alpha">1</property>
-                                <signal name="color-set" handler="on_spectrum_color_set" object="PreferencesSpectrum" />
+                                <property name="dialog">
+                                    <object class="GtkColorDialog">
+                                        <property name="with-alpha">1</property>
+                                    </object>
+                                </property>
+                                <signal name="notify::rgba" handler="on_spectrum_color_set" />
                             </object>
                         </child>
                     </object>
@@ -169,10 +173,14 @@
                         <property name="title" translatable="yes">Axis Labels</property>
 
                         <child>
-                            <object class="GtkColorButton" id="axis_color_button">
+                            <object class="GtkColorDialogButton" id="axis_color_button">
                                 <property name="valign">center</property>
-                                <property name="use-alpha">1</property>
-                                <signal name="color-set" handler="on_spectrum_axis_color_set" object="PreferencesSpectrum" />
+                                <property name="dialog">
+                                    <object class="GtkColorDialog">
+                                        <property name="with-alpha">1</property>
+                                    </object>
+                                </property>
+                                <signal name="notify::rgba" handler="on_spectrum_axis_color_set" />
                             </object>
                         </child>
                     </object>
