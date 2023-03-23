@@ -365,41 +365,50 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
 void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
-  auto* dialog = gtk_file_chooser_native_new(_("Import APO Preset File"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN,
-                                             _("Open"), _("Cancel"));
+  auto* dialog = gtk_file_dialog_new();
+
+  gtk_file_dialog_set_title(dialog, _("Import APO Preset File"));
+  gtk_file_dialog_set_accept_label(dialog, _("Open"));
+
+  GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
 
   auto* filter = gtk_file_filter_new();
 
   gtk_file_filter_add_pattern(filter, "*.txt");
   gtk_file_filter_set_name(filter, _("APO Presets"));
 
-  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+  g_list_store_append(filters, filter);
 
-  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, EqualizerBox* self) {
-                     if (response != GTK_RESPONSE_ACCEPT) {
-                       g_object_unref(dialog);
-                       return;
-                     }
+  g_object_unref(filter);
 
-                     auto* chooser = GTK_FILE_CHOOSER(dialog);
-                     auto* file = gtk_file_chooser_get_file(chooser);
-                     auto* path = g_file_get_path(file);
+  gtk_file_dialog_set_filters(dialog, G_LIST_MODEL(filters));
 
-                     if (!import_apo_preset(self, path)) {
-                       // notify error on preset loading
-                       ui::show_fixed_toast(
-                           self->toast_overlay,
-                           _("APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its Content."));
-                     }
+  g_object_unref(filters);
 
-                     g_free(path);
-                     g_object_unref(file);
-                     g_object_unref(dialog);
-                   }),
-                   self);
+  gtk_file_dialog_open(
+      dialog, active_window, nullptr,
+      +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
+        auto* self = static_cast<EqualizerBox*>(user_data);
+        auto* dialog = GTK_FILE_DIALOG(source_object);
 
-  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
-  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
+        auto* file = gtk_file_dialog_open_finish(dialog, result, nullptr);
+
+        if (file != nullptr) {
+          auto* path = g_file_get_path(file);
+
+          if (!import_apo_preset(self, path)) {
+            // notify error on preset loading
+            ui::show_fixed_toast(
+                self->toast_overlay,
+                _("APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its Content."));
+          }
+
+          g_free(path);
+
+          g_object_unref(file);
+        }
+      },
+      self);
 }
 
 // ### End APO Preset Section ###
@@ -559,42 +568,50 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
 void on_import_geq_preset_clicked(EqualizerBox* self, GtkButton* btn) {
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
-  auto* dialog = gtk_file_chooser_native_new(_("Import GraphicEQ Preset File"), active_window,
-                                             GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+  auto* dialog = gtk_file_dialog_new();
+
+  gtk_file_dialog_set_title(dialog, _("Import GraphicEQ Preset File"));
+  gtk_file_dialog_set_accept_label(dialog, _("Open"));
+
+  GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
 
   auto* filter = gtk_file_filter_new();
 
   gtk_file_filter_add_pattern(filter, "*.txt");
   gtk_file_filter_set_name(filter, _("GraphicEQ Presets"));
 
-  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+  g_list_store_append(filters, filter);
 
-  g_signal_connect(
-      dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, EqualizerBox* self) {
-        if (response != GTK_RESPONSE_ACCEPT) {
-          g_object_unref(dialog);
-          return;
+  g_object_unref(filter);
+
+  gtk_file_dialog_set_filters(dialog, G_LIST_MODEL(filters));
+
+  g_object_unref(filters);
+
+  gtk_file_dialog_open(
+      dialog, active_window, nullptr,
+      +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
+        auto* self = static_cast<EqualizerBox*>(user_data);
+        auto* dialog = GTK_FILE_DIALOG(source_object);
+
+        auto* file = gtk_file_dialog_open_finish(dialog, result, nullptr);
+
+        if (file != nullptr) {
+          auto* path = g_file_get_path(file);
+
+          if (!import_graphiceq_preset(self, path)) {
+            // notify error on preset loading
+            ui::show_fixed_toast(
+                self->toast_overlay,
+                _("GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check Its Content."));
+          }
+
+          g_free(path);
+
+          g_object_unref(file);
         }
-
-        auto* chooser = GTK_FILE_CHOOSER(dialog);
-        auto* file = gtk_file_chooser_get_file(chooser);
-        auto* path = g_file_get_path(file);
-
-        if (!import_graphiceq_preset(self, path)) {
-          // notify error on preset loading
-          ui::show_fixed_toast(
-              self->toast_overlay,
-              _("GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check Its Content."));
-        }
-
-        g_free(path);
-        g_object_unref(file);
-        g_object_unref(dialog);
-      }),
+      },
       self);
-
-  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
-  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
 }
 
 // ### End GraphicEQ Section ###
