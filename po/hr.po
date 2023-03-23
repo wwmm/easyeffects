@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 14:53+0000\n"
+"POT-Creation-Date: 2023-03-23 15:20+0000\n"
 "PO-Revision-Date: 2022-09-29 01:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2375,17 +2375,17 @@ msgstr ""
 msgid "Show available presets."
 msgstr "Prikaži dostupne predloške."
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:274
 #, fuzzy
 msgid "_Output"
 msgstr "Izlaz"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:275
 #, fuzzy
 msgid "_Input"
 msgstr "Ulaz"
 
-#: src/application_ui.cpp:280
+#: src/application_ui.cpp:276
 msgid "_PipeWire"
 msgstr ""
 

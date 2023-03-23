@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 14:53+0000\n"
+"POT-Creation-Date: 2023-03-23 15:20+0000\n"
 "PO-Revision-Date: 2023-03-21 06:41+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2156,15 +2156,15 @@ msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:274
 msgid "_Output"
 msgstr "输出(_O)"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:275
 msgid "_Input"
 msgstr "输入(_I)"
 
-#: src/application_ui.cpp:280
+#: src/application_ui.cpp:276
 msgid "_PipeWire"
 msgstr "PipeWire(_P)"
 

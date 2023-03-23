@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 14:53+0000\n"
+"POT-Creation-Date: 2023-03-23 15:20+0000\n"
 "PO-Revision-Date: 2023-02-20 00:59+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2158,17 +2158,17 @@ msgstr ""
 msgid "Show available presets."
 msgstr ""
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:274
 #, fuzzy
 msgid "_Output"
 msgstr "Utgång"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:275
 #, fuzzy
 msgid "_Input"
 msgstr "Ingång"
 
-#: src/application_ui.cpp:280
+#: src/application_ui.cpp:276
 msgid "_PipeWire"
 msgstr ""
 
