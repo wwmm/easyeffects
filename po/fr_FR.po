@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-23 15:24+0000\n"
-"PO-Revision-Date: 2023-03-21 06:41+0000\n"
-"Last-Translator: Bundy01 <bundy@posteo.eu>\n"
+"PO-Revision-Date: 2023-03-25 15:40+0000\n"
+"Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -542,7 +542,7 @@ msgstr "Feed-forward"
 #: data/ui/compressor.ui:618
 #, fuzzy
 msgid "Feed-back"
-msgstr "Feed-back"
+msgstr "Retour"
 
 #: data/ui/compressor.ui:619 data/ui/gate.ui:754
 msgid "External"
@@ -1062,7 +1062,6 @@ msgid "Oversampling"
 msgstr "Suréchantillonnage"
 
 #: data/ui/limiter.ui:70
-#, fuzzy
 msgid "Dither"
 msgstr "Dither"
 
@@ -1071,57 +1070,46 @@ msgid "Herm Thin"
 msgstr "Herm Thin"
 
 #: data/ui/limiter.ui:83
-#, fuzzy
 msgid "Herm Wide"
 msgstr "Herm Wide"
 
 #: data/ui/limiter.ui:84
-#, fuzzy
 msgid "Herm Tail"
 msgstr "Herm Tail"
 
 #: data/ui/limiter.ui:85
-#, fuzzy
 msgid "Herm Duck"
 msgstr "Herm Duck"
 
 #: data/ui/limiter.ui:86
-#, fuzzy
 msgid "Exp Thin"
 msgstr "Exp Thin"
 
 #: data/ui/limiter.ui:87
-#, fuzzy
 msgid "Exp Wide"
 msgstr "Exp Wide"
 
 #: data/ui/limiter.ui:88
-#, fuzzy
 msgid "Exp Tail"
 msgstr "Exp Tail"
 
 #: data/ui/limiter.ui:89
-#, fuzzy
 msgid "Exp Duck"
 msgstr "Exp Duck"
 
 #: data/ui/limiter.ui:90
-#, fuzzy
 msgid "Line Thin"
 msgstr "Line Thin"
 
 #: data/ui/limiter.ui:91
-#, fuzzy
 msgid "Line Wide"
 msgstr "Line Wide"
 
 #: data/ui/limiter.ui:92
-#, fuzzy
 msgid "Line Tail"
 msgstr "Line Tail"
 
 #: data/ui/limiter.ui:93
-#, fuzzy
 msgid "Line Duck"
 msgstr "Line Duck"
 
@@ -1991,7 +1979,7 @@ msgstr "Quitter Easy Effects"
 #: data/ui/speex.ui:33
 #, fuzzy
 msgid "Denoise"
-msgstr "Bruit rouge"
+msgstr "Débruiter"
 
 #: data/ui/speex.ui:45
 msgid "Automatic Gain Control"
