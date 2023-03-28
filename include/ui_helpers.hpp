@@ -166,4 +166,33 @@ void gsettings_bind_widgets(GSettings* settings, Targs... widget) {
   (gsettings_bind_widget(settings, key_wrapper.msg.data(), widget), ...);
 }
 
+template <StringLiteralWrapper key_wrapper>
+auto gsettings_bind_enum_to_dropdown(GSettings* settings,
+                                     GtkDropDown* widget,
+                                     GSettingsBindFlags flags = G_SETTINGS_BIND_DEFAULT) -> gulong {
+  gtk_drop_down_set_selected(widget, g_settings_get_enum(settings, key_wrapper.msg.data()));
+
+  g_signal_connect(widget, "notify::selected-item",
+                   G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, GSettings* settings) {
+                     auto new_id = static_cast<gint>(gtk_drop_down_get_selected(dropdown));
+
+                     if (new_id != g_settings_get_enum(settings, key_wrapper.msg.data())) {
+                       g_settings_set_enum(settings, key_wrapper.msg.data(), new_id);
+                     }
+                   }),
+                   settings);
+
+  using namespace std::string_literals;
+
+  return g_signal_connect(settings, ("changed::"s + key_wrapper.msg.data()).c_str(),
+                          G_CALLBACK(+[](GSettings* settings, char* key, GtkDropDown* widget) {
+                            auto new_id = static_cast<guint>(g_settings_get_enum(settings, key));
+
+                            if (new_id != gtk_drop_down_get_selected(widget)) {
+                              gtk_drop_down_set_selected(widget, new_id);
+                            }
+                          }),
+                          widget);
+}
+
 }  // namespace ui

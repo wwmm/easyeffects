@@ -43,7 +43,7 @@ struct _FilterBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkComboBoxText* mode;
+  GtkDropDown* mode;
 
   GtkSpinButton *frequency, *resonance, *inertia;
 
@@ -107,7 +107,7 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
   g_settings_bind(self->settings, "inertia", gtk_spin_button_get_adjustment(self->inertia), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  self->data->gconnections.push_back(ui::gsettings_bind_enum_to_dropdown<"mode">(self->settings, self->mode));
 }
 
 void dispose(GObject* object) {
