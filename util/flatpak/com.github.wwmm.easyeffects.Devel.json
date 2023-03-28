@@ -73,7 +73,8 @@
             "config-opts": [
                 "-Ddevel=true",
                 "-Dbuildtype=debug",
-                "-Denable-libportal=true"
+                "-Denable-libportal=true",
+                "-Denable-mold=true"
             ],
             "run-tests": true,
             "sources": [
