@@ -131,8 +131,6 @@ cxx = meson.get_compiler('cpp')
 
 zita_convolver = cxx.find_library('zita-convolver', required: true)
 
-tbb = cxx.find_library('tbb', required: true)
-
 rnnoise = dependency('rnnoise', required: false)
 
 speex = dependency('speex', required: false)
@@ -169,7 +167,7 @@ easyeffects_deps = [
 	dependency('fmt', version: '>=8.0.0', include_type: 'system'),
 	dependency('gsl', include_type: 'system'),
 	dependency('threads'),
-	tbb,
+	dependency('tbb', include_type: 'system'),
 	zita_convolver,
 	rnnoise,
 	libportal,
