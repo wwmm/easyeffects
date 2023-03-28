@@ -109,7 +109,7 @@ class MultibandGate : public PluginBase {
 
     gconnections.push_back(g_signal_connect(settings, ("changed::"s + band_external_sidechain[n].data()).c_str(),
                                             G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                              auto self = static_cast<MultibandGate*>(user_data);
+                                              auto* self = static_cast<MultibandGate*>(user_data);
 
                                               self->update_sidechain_links(key);
                                             }),

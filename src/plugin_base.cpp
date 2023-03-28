@@ -141,7 +141,7 @@ PluginBase::PluginBase(std::string tag,
 
     gconnections.push_back(g_signal_connect(settings, "changed::bypass",
                                             G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                              auto self = static_cast<PluginBase*>(user_data);
+                                              auto* self = static_cast<PluginBase*>(user_data);
 
                                               self->bypass = g_settings_get_boolean(settings, "bypass") != 0;
                                             }),
@@ -398,7 +398,7 @@ void PluginBase::setup_input_output_gain() {
   output_gain = static_cast<float>(util::db_to_linear(g_settings_get_double(settings, "output-gain")));
 
   g_signal_connect(settings, "changed::input-gain", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<PluginBase*>(user_data);
+                     auto* self = static_cast<PluginBase*>(user_data);
 
                      self->input_gain = util::db_to_linear(g_settings_get_double(settings, key));
                    }),
@@ -406,7 +406,7 @@ void PluginBase::setup_input_output_gain() {
 
   g_signal_connect(settings, "changed::output-gain",
                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<PluginBase*>(user_data);
+                     auto* self = static_cast<PluginBase*>(user_data);
 
                      self->output_gain = util::db_to_linear(g_settings_get_double(settings, key));
                    }),

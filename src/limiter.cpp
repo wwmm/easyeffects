@@ -33,7 +33,7 @@ Limiter::Limiter(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::external-sidechain",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Limiter*>(user_data);
+                                            auto* self = static_cast<Limiter*>(user_data);
 
                                             self->update_sidechain_links(key);
                                           }),
@@ -41,7 +41,7 @@ Limiter::Limiter(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::sidechain-input-device",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Limiter*>(user_data);
+                                            auto* self = static_cast<Limiter*>(user_data);
 
                                             self->update_sidechain_links(key);
                                           }),

@@ -105,7 +105,7 @@ class Lv2Wrapper {
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                       auto self = static_cast<Lv2Wrapper*>(user_data);
+                       auto* self = static_cast<Lv2Wrapper*>(user_data);
 
                        self->set_control_port_value(key_wrapper.msg.data(),
                                                     static_cast<float>(g_settings_get_boolean(settings, key)));
@@ -120,7 +120,7 @@ class Lv2Wrapper {
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                       auto self = static_cast<Lv2Wrapper*>(user_data);
+                       auto* self = static_cast<Lv2Wrapper*>(user_data);
 
                        self->set_control_port_value(key_wrapper.msg.data(),
                                                     static_cast<float>(g_settings_get_enum(settings, key)));
@@ -135,7 +135,7 @@ class Lv2Wrapper {
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                       auto self = static_cast<Lv2Wrapper*>(user_data);
+                       auto* self = static_cast<Lv2Wrapper*>(user_data);
 
                        self->set_control_port_value(key_wrapper.msg.data(),
                                                     static_cast<float>(g_settings_get_int(settings, key)));
@@ -150,7 +150,7 @@ class Lv2Wrapper {
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                       auto self = static_cast<Lv2Wrapper*>(user_data);
+                       auto* self = static_cast<Lv2Wrapper*>(user_data);
 
                        self->set_control_port_value(key_wrapper.msg.data(),
                                                     static_cast<float>(g_settings_get_double(settings, key)));
@@ -169,7 +169,7 @@ class Lv2Wrapper {
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                       auto self = static_cast<Lv2Wrapper*>(user_data);
+                       auto* self = static_cast<Lv2Wrapper*>(user_data);
 
                        auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
 

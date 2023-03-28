@@ -156,7 +156,7 @@ void on_startup(GApplication* gapp) {
 
   self->data->gconnections_soe.push_back(g_signal_connect(
       self->soe_settings, "changed::output-device", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<Application*>(user_data);
+        auto* self = static_cast<Application*>(user_data);
 
         const auto name = util::gsettings_get_string(settings, key);
 
@@ -176,7 +176,7 @@ void on_startup(GApplication* gapp) {
 
   self->data->gconnections_sie.push_back(g_signal_connect(
       self->sie_settings, "changed::input-device", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<Application*>(user_data);
+        auto* self = static_cast<Application*>(user_data);
 
         const auto name = util::gsettings_get_string(settings, key);
 
@@ -196,7 +196,7 @@ void on_startup(GApplication* gapp) {
 
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::bypass", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<Application*>(user_data);
+        auto* self = static_cast<Application*>(user_data);
 
         update_bypass_state(self);
       }),

@@ -52,7 +52,7 @@ Equalizer::Equalizer(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::num-bands",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Equalizer*>(user_data);
+                                            auto* self = static_cast<Equalizer*>(user_data);
 
                                             const uint nbands = g_settings_get_int(settings, key);
 

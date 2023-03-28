@@ -73,7 +73,7 @@ StereoTools::StereoTools(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::dry", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<StereoTools*>(user_data);
+        auto* self = static_cast<StereoTools*>(user_data);
 
         auto key_v = g_settings_get_double(settings, key);
 
@@ -83,7 +83,7 @@ StereoTools::StereoTools(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::wet", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<StereoTools*>(user_data);
+        auto* self = static_cast<StereoTools*>(user_data);
 
         auto key_v = g_settings_get_double(settings, key);
 

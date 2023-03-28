@@ -30,7 +30,7 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
 
   gconnections.push_back(g_signal_connect(settings, "changed::sidechain-input",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Gate*>(user_data);
+                                            auto* self = static_cast<Gate*>(user_data);
 
                                             self->update_sidechain_links(key);
                                           }),
@@ -38,7 +38,7 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
 
   gconnections.push_back(g_signal_connect(settings, "changed::sidechain-input-device",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Gate*>(user_data);
+                                            auto* self = static_cast<Gate*>(user_data);
 
                                             self->update_sidechain_links(key);
                                           }),

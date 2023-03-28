@@ -458,7 +458,7 @@ void presets_menu_init(PresetsMenu* self) {
   self->data->gconnections.push_back(
       g_signal_connect(self->settings, "changed::last-used-output-preset",
                        G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                         auto self = static_cast<PresetsMenu*>(user_data);
+                         auto* self = static_cast<PresetsMenu*>(user_data);
 
                          gtk_label_set_text(self->last_used_output, util::gsettings_get_string(settings, key).c_str());
                        }),
@@ -467,7 +467,7 @@ void presets_menu_init(PresetsMenu* self) {
   self->data->gconnections.push_back(
       g_signal_connect(self->settings, "changed::last-used-input-preset",
                        G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                         auto self = static_cast<PresetsMenu*>(user_data);
+                         auto* self = static_cast<PresetsMenu*>(user_data);
 
                          gtk_label_set_text(self->last_used_input, util::gsettings_get_string(settings, key).c_str());
                        }),

@@ -241,7 +241,7 @@ void setup(RNNoiseBox* self,
   g_settings_bind_with_mapping(
       self->settings, "model-path", self->selection_model, "selected", G_SETTINGS_BIND_DEFAULT,
       +[](GValue* value, GVariant* variant, gpointer user_data) {
-        auto self = EE_RNNOISE_BOX(user_data);
+        auto* self = EE_RNNOISE_BOX(user_data);
 
         const auto* v = g_variant_get_string(variant, nullptr);
 
@@ -274,7 +274,7 @@ void setup(RNNoiseBox* self,
         return 1;
       },
       +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        auto self = EE_RNNOISE_BOX(user_data);
+        auto* self = EE_RNNOISE_BOX(user_data);
 
         auto string_object =
             GTK_STRING_OBJECT(gtk_single_selection_get_selected_item(GTK_SINGLE_SELECTION(self->selection_model)));

@@ -31,7 +31,7 @@ RNNoise::RNNoise(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::model-path",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<RNNoise*>(user_data);
+                                            auto* self = static_cast<RNNoise*>(user_data);
 
                                             self->data_mutex.lock();
 
