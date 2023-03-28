@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 15:24+0000\n"
+"POT-Creation-Date: 2023-03-28 00:28+0000\n"
 "PO-Revision-Date: 2023-03-27 22:39+0000\n"
 "Last-Translator: User <personal.7emb5@aleeas.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1970,11 +1970,15 @@ msgstr "Maksimum"
 msgid "Load"
 msgstr ""
 
-#: data/ui/preset_row.ui:34
+#: data/ui/preset_row.ui:26
+msgid "Discard the current settings and load this preset"
+msgstr ""
+
+#: data/ui/preset_row.ui:35
 msgid "Save current settings to this preset file"
 msgstr ""
 
-#: data/ui/preset_row.ui:56
+#: data/ui/preset_row.ui:57
 msgid "Remove this preset file"
 msgstr ""
 

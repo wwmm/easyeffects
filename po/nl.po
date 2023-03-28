@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 15:24+0000\n"
+"POT-Creation-Date: 2023-03-28 00:28+0000\n"
 "PO-Revision-Date: 2023-02-18 20:37+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1806,11 +1806,16 @@ msgstr "Maximaal"
 msgid "Load"
 msgstr "Laden"
 
-#: data/ui/preset_row.ui:34
+#: data/ui/preset_row.ui:26
+#, fuzzy
+msgid "Discard the current settings and load this preset"
+msgstr "Sla de huidige instellingen op in dit voorinstellingsbestand"
+
+#: data/ui/preset_row.ui:35
 msgid "Save current settings to this preset file"
 msgstr "Sla de huidige instellingen op in dit voorinstellingsbestand"
 
-#: data/ui/preset_row.ui:56
+#: data/ui/preset_row.ui:57
 msgid "Remove this preset file"
 msgstr "Verwijder dit voorinstellingsbestand"
 
