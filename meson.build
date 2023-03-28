@@ -50,8 +50,7 @@ if get_option('devel')
   ]
   app_id_suffix = '.Devel'
   name_suffix = ' (Devel)'
-  # --no-as-needed temporarily necessary due to https://github.com/rui314/mold/issues/1017
-  link_args = ['-fuse-ld=mold', '-Wl,--no-as-needed']
+  link_args = ['-fuse-ld=mold']
 else
   status += [ 'Using stable build mode with the standard application ID' ]
   app_id_suffix = ''
