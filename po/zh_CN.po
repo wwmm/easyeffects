@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 15:24+0000\n"
+"POT-Creation-Date: 2023-03-28 00:28+0000\n"
 "PO-Revision-Date: 2023-03-21 06:41+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1809,11 +1809,16 @@ msgstr "最高"
 msgid "Load"
 msgstr "加载"
 
-#: data/ui/preset_row.ui:34
+#: data/ui/preset_row.ui:26
+#, fuzzy
+msgid "Discard the current settings and load this preset"
+msgstr "将当前设置保存到这个预设文件"
+
+#: data/ui/preset_row.ui:35
 msgid "Save current settings to this preset file"
 msgstr "将当前设置保存到这个预设文件"
 
-#: data/ui/preset_row.ui:56
+#: data/ui/preset_row.ui:57
 msgid "Remove this preset file"
 msgstr "删除这个预设文件"
 
