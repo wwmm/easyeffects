@@ -23,6 +23,7 @@
                 <child>
                     <object class="GtkButton" id="apply">
                         <property name="label" translatable="yes">Load</property>
+                        <property name="tooltip-text" translatable="yes">Discard the current settings and load this preset</property>
                         <accessibility>
                             <relation name="labelled-by">name</relation>
                         </accessibility>
