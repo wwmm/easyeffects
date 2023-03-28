@@ -36,7 +36,7 @@ Convolver::Convolver(const std::string& tag,
       ir_width(g_settings_get_int(settings, "ir-width")) {
   gconnections.push_back(g_signal_connect(settings, "changed::ir-width",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Convolver*>(user_data);
+                                            auto* self = static_cast<Convolver*>(user_data);
 
                                             self->ir_width = g_settings_get_int(self->settings, key);
 
@@ -54,7 +54,7 @@ Convolver::Convolver(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::kernel-path",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Convolver*>(user_data);
+                                            auto* self = static_cast<Convolver*>(user_data);
 
                                             self->prepare_kernel();
                                           }),
@@ -62,7 +62,7 @@ Convolver::Convolver(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::autogain",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Convolver*>(user_data);
+                                            auto* self = static_cast<Convolver*>(user_data);
 
                                             self->do_autogain = g_settings_get_boolean(settings, key) != 0;
 

@@ -67,7 +67,7 @@ PresetsManager::PresetsManager()
   g_signal_connect(user_output_monitor, "changed",
                    G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
                                   gpointer user_data) {
-                     auto self = static_cast<PresetsManager*>(user_data);
+                     auto* self = static_cast<PresetsManager*>(user_data);
 
                      switch (event_type) {
                        case G_FILE_MONITOR_EVENT_CREATED: {
@@ -99,7 +99,7 @@ PresetsManager::PresetsManager()
   g_signal_connect(user_input_monitor, "changed",
                    G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
                                   gpointer user_data) {
-                     auto self = static_cast<PresetsManager*>(user_data);
+                     auto* self = static_cast<PresetsManager*>(user_data);
 
                      switch (event_type) {
                        case G_FILE_MONITOR_EVENT_CREATED: {
@@ -131,7 +131,7 @@ PresetsManager::PresetsManager()
   g_signal_connect(autoload_input_monitor, "changed",
                    G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
                                   gpointer user_data) {
-                     auto self = static_cast<PresetsManager*>(user_data);
+                     auto* self = static_cast<PresetsManager*>(user_data);
 
                      if (event_type == G_FILE_MONITOR_EVENT_CREATED || event_type == G_FILE_MONITOR_EVENT_DELETED) {
                        const auto profiles = self->get_autoload_profiles(PresetType::input);
@@ -150,7 +150,7 @@ PresetsManager::PresetsManager()
   g_signal_connect(autoload_output_monitor, "changed",
                    G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
                                   gpointer user_data) {
-                     auto self = static_cast<PresetsManager*>(user_data);
+                     auto* self = static_cast<PresetsManager*>(user_data);
 
                      if (event_type == G_FILE_MONITOR_EVENT_CREATED || event_type == G_FILE_MONITOR_EVENT_DELETED) {
                        const auto profiles = self->get_autoload_profiles(PresetType::output);

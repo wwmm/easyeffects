@@ -213,7 +213,7 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
       g_object_unref(holder);
     }
 
-    auto holder = ui::holders::create(info);
+    auto* holder = ui::holders::create(info);
 
     g_list_store_append(self->input_devices_model, holder);
 

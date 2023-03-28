@@ -36,7 +36,7 @@ Pitch::Pitch(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::mode",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Pitch*>(user_data);
+                                            auto* self = static_cast<Pitch*>(user_data);
 
                                             self->mode = parse_mode_key(util::gsettings_get_string(settings, key));
 
@@ -50,7 +50,7 @@ Pitch::Pitch(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::formant", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<Pitch*>(user_data);
+        auto* self = static_cast<Pitch*>(user_data);
 
         self->formant = parse_formant_key(util::gsettings_get_string(settings, key));
 
@@ -64,7 +64,7 @@ Pitch::Pitch(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::transients", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<Pitch*>(user_data);
+        auto* self = static_cast<Pitch*>(user_data);
 
         self->transients = parse_transients_key(util::gsettings_get_string(settings, key));
 
@@ -78,7 +78,7 @@ Pitch::Pitch(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::detector", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<Pitch*>(user_data);
+        auto* self = static_cast<Pitch*>(user_data);
 
         self->detector = parse_detector_key(util::gsettings_get_string(settings, key));
 
@@ -92,7 +92,7 @@ Pitch::Pitch(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::phase",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Pitch*>(user_data);
+                                            auto* self = static_cast<Pitch*>(user_data);
 
                                             self->phase = parse_phase_key(util::gsettings_get_string(settings, key));
 
@@ -106,7 +106,7 @@ Pitch::Pitch(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::octaves",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Pitch*>(user_data);
+                                            auto* self = static_cast<Pitch*>(user_data);
 
                                             self->octaves = g_settings_get_int(settings, key);
 
@@ -116,7 +116,7 @@ Pitch::Pitch(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::semitones",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Pitch*>(user_data);
+                                            auto* self = static_cast<Pitch*>(user_data);
 
                                             self->semitones = g_settings_get_int(settings, key);
 
@@ -126,7 +126,7 @@ Pitch::Pitch(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::cents",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Pitch*>(user_data);
+                                            auto* self = static_cast<Pitch*>(user_data);
 
                                             self->cents = g_settings_get_int(settings, key);
 

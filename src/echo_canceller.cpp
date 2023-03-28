@@ -34,7 +34,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
       near_end_suppression(g_settings_get_int(settings, "near-end-suppression")) {
   gconnections.push_back(g_signal_connect(settings, "changed::filter-length",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<EchoCanceller*>(user_data);
+                                            auto* self = static_cast<EchoCanceller*>(user_data);
 
                                             std::scoped_lock<std::mutex> lock(self->data_mutex);
 

@@ -65,7 +65,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
   gconnections.push_back(g_signal_connect(settings, "changed::input-device",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<StreamInputEffects*>(user_data);
+                                            auto* self = static_cast<StreamInputEffects*>(user_data);
 
                                             const auto name = util::gsettings_get_string(settings, key);
 
@@ -93,7 +93,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
   gconnections.push_back(g_signal_connect(settings, "changed::plugins",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<StreamInputEffects*>(user_data);
+                                            auto* self = static_cast<StreamInputEffects*>(user_data);
 
                                             if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
                                               g_settings_set_boolean(self->global_settings, "bypass", 0);

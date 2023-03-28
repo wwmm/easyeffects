@@ -32,7 +32,7 @@ Spectrum::Spectrum(const std::string& tag,
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
 
   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto self = static_cast<Spectrum*>(user_data);
+                     auto* self = static_cast<Spectrum*>(user_data);
 
                      std::scoped_lock<std::mutex> lock(self->data_mutex);
 

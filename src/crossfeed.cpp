@@ -30,7 +30,7 @@ Crossfeed::Crossfeed(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::fcut",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<Crossfeed*>(user_data);
+                                            auto* self = static_cast<Crossfeed*>(user_data);
 
                                             std::scoped_lock<std::mutex> lock(self->data_mutex);
 
@@ -40,7 +40,7 @@ Crossfeed::Crossfeed(const std::string& tag,
 
   gconnections.push_back(
       g_signal_connect(settings, "changed::feed", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                         auto self = static_cast<Crossfeed*>(user_data);
+                         auto* self = static_cast<Crossfeed*>(user_data);
 
                          std::scoped_lock<std::mutex> lock(self->data_mutex);
 

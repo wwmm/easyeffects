@@ -39,7 +39,7 @@ Compressor::Compressor(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::sidechain-type",
                                           G_CALLBACK(+[](GSettings* settings, const char* key, gpointer user_data) {
-                                            auto self = static_cast<Compressor*>(user_data);
+                                            auto* self = static_cast<Compressor*>(user_data);
 
                                             self->update_sidechain_links(key);
                                           }),
@@ -47,7 +47,7 @@ Compressor::Compressor(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::sidechain-input-device",
                                           G_CALLBACK(+[](GSettings* settings, const char* key, gpointer user_data) {
-                                            auto self = static_cast<Compressor*>(user_data);
+                                            auto* self = static_cast<Compressor*>(user_data);
 
                                             self->update_sidechain_links(key);
                                           }),

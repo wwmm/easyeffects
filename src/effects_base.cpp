@@ -47,7 +47,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   gconnections.push_back(g_signal_connect(settings, "changed::plugins",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<EffectsBase*>(user_data);
+                                            auto* self = static_cast<EffectsBase*>(user_data);
 
                                             self->create_filters_if_necessary();
 
@@ -57,7 +57,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   gconnections_global.push_back(g_signal_connect(global_settings, "changed::meters-update-interval",
                                                  G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                                   auto self = static_cast<EffectsBase*>(user_data);
+                                                   auto* self = static_cast<EffectsBase*>(user_data);
 
                                                    auto v = g_settings_get_int(settings, key);
 

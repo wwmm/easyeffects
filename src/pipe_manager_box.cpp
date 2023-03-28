@@ -868,7 +868,7 @@ void pipe_manager_box_init(PipeManagerBox* self) {
 
           if (holder->info->name != self->data->application->pm->default_input_device_name) {
             for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
-              auto item = static_cast<ui::holders::NodeInfoHolder*>(
+              auto* item = static_cast<ui::holders::NodeInfoHolder*>(
                   g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
 
               if (item->info->name == self->data->application->pm->default_input_device_name) {
@@ -902,7 +902,7 @@ void pipe_manager_box_init(PipeManagerBox* self) {
 
           if (holder->info->name != self->data->application->pm->default_output_device_name) {
             for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
-              auto item = static_cast<ui::holders::NodeInfoHolder*>(
+              auto* item = static_cast<ui::holders::NodeInfoHolder*>(
                   g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
 
               if (item->info->name == self->data->application->pm->default_output_device_name) {

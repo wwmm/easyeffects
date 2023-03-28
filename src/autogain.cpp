@@ -30,7 +30,7 @@ AutoGain::AutoGain(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::target",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<AutoGain*>(user_data);
+                                            auto* self = static_cast<AutoGain*>(user_data);
 
                                             self->target = g_settings_get_double(settings, key);
                                           }),
@@ -38,7 +38,7 @@ AutoGain::AutoGain(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::silence-threshold",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<AutoGain*>(user_data);
+                                            auto* self = static_cast<AutoGain*>(user_data);
 
                                             self->silence_threshold = g_settings_get_double(settings, key);
                                           }),
@@ -46,7 +46,7 @@ AutoGain::AutoGain(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(settings, "changed::maximum-history",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto self = static_cast<AutoGain*>(user_data);
+                                            auto* self = static_cast<AutoGain*>(user_data);
 
                                             std::scoped_lock<std::mutex> lock(self->data_mutex);
 
@@ -56,7 +56,7 @@ AutoGain::AutoGain(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::reset-history", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<AutoGain*>(user_data);
+        auto* self = static_cast<AutoGain*>(user_data);
 
         self->mythreads.emplace_back([self]() {  // Using emplace_back here makes sense
           self->data_mutex.lock();
@@ -78,7 +78,7 @@ AutoGain::AutoGain(const std::string& tag,
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::reference", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto self = static_cast<AutoGain*>(user_data);
+        auto* self = static_cast<AutoGain*>(user_data);
 
         self->reference = parse_reference_key(util::gsettings_get_string(settings, key));
       }),
