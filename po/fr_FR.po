@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-28 02:12-0300\n"
+"POT-Creation-Date: 2023-03-28 17:12+0000\n"
 "PO-Revision-Date: 2023-03-25 15:40+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -203,7 +203,7 @@ msgstr "Gain de sortie"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625 data/ui/filter.ui:141
+#: data/ui/stereo_tools.ui:625
 msgid "Input"
 msgstr "Entrée"
 
@@ -216,7 +216,6 @@ msgstr "Entrée"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
-#: data/ui/filter.ui:160
 msgid "Plugin Input Gain"
 msgstr "Gain d’entrée du plugin"
 
@@ -231,7 +230,6 @@ msgstr "Gain d’entrée du plugin"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
-#: data/ui/filter.ui:225
 msgid "Output"
 msgstr "Sortie"
 
@@ -244,7 +242,6 @@ msgstr "Sortie"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
-#: data/ui/filter.ui:244
 msgid "Plugin Output Gain"
 msgstr "Gain de sortie du plugin"
 
@@ -258,7 +255,6 @@ msgstr "Gain de sortie du plugin"
 #: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
-#: data/ui/filter.ui:307
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -270,7 +266,7 @@ msgstr "Réinitialiser"
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
-#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805 data/ui/filter.ui:321
+#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
 msgid "Using"
 msgstr "Utilise"
 
@@ -582,7 +578,7 @@ msgid "High-Pass"
 msgstr "Passe-haut"
 
 #: data/ui/compressor.ui:814 data/ui/equalizer_band.ui:201 data/ui/filter.ui:59
-#: data/ui/gate.ui:948 data/ui/pipe_manager_box.ui:561 data/ui/filter.ui:55
+#: data/ui/gate.ui:948 data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "Fréquence"
 
@@ -906,7 +902,7 @@ msgstr "Plateau bas"
 msgid "Notch"
 msgstr "Réjection de bande"
 
-#: data/ui/equalizer_band.ui:119 data/ui/filter.ui:82 data/ui/filter.ui:78
+#: data/ui/equalizer_band.ui:119 data/ui/filter.ui:82
 msgid "Resonance"
 msgstr "Résonance"
 
@@ -967,55 +963,55 @@ msgstr "Description"
 msgid "Remove this model file"
 msgstr "Supprimer ce fichier modèle"
 
-#: data/ui/filter.ui:34 data/ui/filter.ui:32
+#: data/ui/filter.ui:34
 msgid "12dB/oct Lowpass"
 msgstr "12dB/oct passe-bas"
 
-#: data/ui/filter.ui:35 data/ui/filter.ui:33
+#: data/ui/filter.ui:35
 msgid "24dB/oct Lowpass"
 msgstr "24dB/oct passe-bas"
 
-#: data/ui/filter.ui:36 data/ui/filter.ui:34
+#: data/ui/filter.ui:36
 msgid "36dB/oct Lowpass"
 msgstr "36dB/oct passe-bas"
 
-#: data/ui/filter.ui:37 data/ui/filter.ui:35
+#: data/ui/filter.ui:37
 msgid "12dB/oct Highpass"
 msgstr "12dB/oct passe-haut"
 
-#: data/ui/filter.ui:38 data/ui/filter.ui:36
+#: data/ui/filter.ui:38
 msgid "24dB/oct Highpass"
 msgstr "24dB/oct passe-haut"
 
-#: data/ui/filter.ui:39 data/ui/filter.ui:37
+#: data/ui/filter.ui:39
 msgid "36dB/oct Highpass"
 msgstr "36dB/oct passe-haut"
 
-#: data/ui/filter.ui:40 data/ui/filter.ui:38
+#: data/ui/filter.ui:40
 msgid "6dB/oct Bandpass"
 msgstr "6dB/oct passe-bande"
 
-#: data/ui/filter.ui:41 data/ui/filter.ui:39
+#: data/ui/filter.ui:41
 msgid "12dB/oct Bandpass"
 msgstr "12dB/oct passe-bande"
 
-#: data/ui/filter.ui:42 data/ui/filter.ui:40
+#: data/ui/filter.ui:42
 msgid "18dB/oct Bandpass"
 msgstr "18dB/oct passe-bande"
 
-#: data/ui/filter.ui:43 data/ui/filter.ui:41
+#: data/ui/filter.ui:43
 msgid "6dB/oct Bandreject"
 msgstr "6dB/oct coupe-bande"
 
-#: data/ui/filter.ui:44 data/ui/filter.ui:42
+#: data/ui/filter.ui:44
 msgid "12dB/oct Bandreject"
 msgstr "12dB/oct coupe-bande"
 
-#: data/ui/filter.ui:45 data/ui/filter.ui:43
+#: data/ui/filter.ui:45
 msgid "18dB/oct Bandreject"
 msgstr "18dB/oct coupe-bande"
 
-#: data/ui/filter.ui:105 data/ui/filter.ui:101
+#: data/ui/filter.ui:105
 msgid "Inertia"
 msgstr "Inertie"
 
