@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-28 02:12-0300\n"
-"PO-Revision-Date: 2023-03-03 06:36+0000\n"
+"PO-Revision-Date: 2023-03-28 16:43+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -1809,13 +1809,12 @@ msgid "Load"
 msgstr "Carica"
 
 #: data/ui/preset_row.ui:26
-#, fuzzy
 msgid "Discard the current settings and load this preset"
-msgstr "Salva impostazioni attuali in questo profilo"
+msgstr "Rimuovi la configurazione attuale e carica questo profilo"
 
 #: data/ui/preset_row.ui:35
 msgid "Save current settings to this preset file"
-msgstr "Salva impostazioni attuali in questo profilo"
+msgstr "Salva la configurazione attuale in questo profilo"
 
 #: data/ui/preset_row.ui:57
 msgid "Remove this preset file"
