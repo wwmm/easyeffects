@@ -213,7 +213,7 @@ jobs:
         apk add git tar
         git clone https://github.com/matus-chochlik/ctcache
         cd ctcache
-        git checkout bd1620a8609ddaf2f64500820abc8b4d150edeaf
+        git checkout bd1620a8609ddaf2f64500820abc8b4d150edeaf # v1.1.0
         ./install-user-client
 
     - name: Cache Clang Tidy
