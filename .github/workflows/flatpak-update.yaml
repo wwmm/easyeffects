@@ -17,6 +17,9 @@ jobs:
           # we must not use the provided GITHUB_TOKEN, as it will fail to push to the fork since the provided GITHUB_TOKEN is only for the repository where the workflow is running 
           persist-credentials: false
 
+      - name: Add safe git directory
+        run: git config --global --add safe.directory /github/workspace
+
       - uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
         env:
           GIT_AUTHOR_NAME: EasyEffects Bot

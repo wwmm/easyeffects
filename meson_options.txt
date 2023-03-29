@@ -1,6 +1,13 @@
 option(
   'devel',
-  description: 'Whether to use development build mode, with .Devel appended to the application ID. Also uses mold linker for speed, so mold must be installed. For Flatpak builds, user data for development builds is stored separately from stable builds.',
+  description: 'Whether to use development build mode, with .Devel appended to the application ID. For Flatpak builds, user data for development builds is stored separately from stable builds.',
+  type: 'boolean',
+  value: false
+)
+
+option(
+  'enable-mold',
+  description: 'Use the mold linker for speed, so mold must be installed. Option exists to allow easily enabling mold for Flatpak builds in GNOME Builder since CC_LD and CXX_LD cannot be reasonably used due to: https://gitlab.gnome.org/GNOME/gnome-builder/-/issues/1168',
   type: 'boolean',
   value: false
 )

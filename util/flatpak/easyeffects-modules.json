@@ -129,8 +129,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://breakfastquay.com/files/releases/rubberband-3.1.2.tar.bz2",
-                            "sha256": "dda7e257b14c59a1f59c5ccc4d6f19412039f77834275955aa0ff511779b98d2",
+                            "url": "https://breakfastquay.com/files/releases/rubberband-3.2.0.tar.bz2",
+                            "sha256": "7905a9516b5b2138d28ebcab978e7cae3558670d096f812c9688813752e3c119",
                             "x-checker-data": {
                                 "type": "html",
                                 "url": "https://www.breakfastquay.com/rubberband/",
@@ -306,8 +306,8 @@
                     "only-arches": [
                         "x86_64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v1.10.1/mold-1.10.1-x86_64-linux.tar.gz",
-                    "sha256": "7524fe67f917d5287b2f7a7d6401e2625fa3f5f84bc6b8d9b487d6cb08876488",
+                    "url": "https://github.com/rui314/mold/releases/download/v1.11.0/mold-1.11.0-x86_64-linux.tar.gz",
+                    "sha256": "bf788940db4a9ac19e7745c821bf6ee18ff4d75441a803d84f86c9f3b0aa2a5e",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
@@ -321,8 +321,8 @@
                     "only-arches": [
                         "aarch64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v1.10.1/mold-1.10.1-aarch64-linux.tar.gz",
-                    "sha256": "5ad793bce5c40c2fc5c8afb77188fd504cedd2a3160baee04091bd294385305b",
+                    "url": "https://github.com/rui314/mold/releases/download/v1.11.0/mold-1.11.0-aarch64-linux.tar.gz",
+                    "sha256": "4d7f0cc976ed1dfde1ceeaadd16829427a477eba1b49ff82dd490395f32eb78c",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,

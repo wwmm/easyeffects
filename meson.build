@@ -39,30 +39,24 @@ localedir = join_paths(prefix, get_option('localedir'))
 include_dir = include_directories('include')
 config_h_dir = include_directories('.')
 
-libportal = dependency('libportal-gtk4', include_type: 'system', required: false)
-
 status = []
 
 if get_option('devel')
-  status += [ 
-    'Using development build mode with .Devel appended to the application ID.',
-    'Also using mold linker, so make sure mold is installed on your system.'
-  ]
+  status += 'Using development build mode with .Devel appended to the application ID.'
   app_id_suffix = '.Devel'
   name_suffix = ' (Devel)'
-  # --no-as-needed temporarily necessary due to https://github.com/rui314/mold/issues/1017
-  link_args = ['-fuse-ld=mold', '-Wl,--no-as-needed']
 else
-  status += [ 'Using stable build mode with the standard application ID' ]
+  status += 'Using stable build mode with the standard application ID'
   app_id_suffix = ''
   name_suffix = ''
-  link_args = []
 endif
 
-if get_option('enable-libportal') and libportal.found()
-  add_global_arguments('-DUSE_LIBPORTAL=1', language : 'cpp')
-
-  message('Using libportal to handle autostart files')
+if get_option('enable-mold')
+  # mold 1.11.0 or later needed due to https://github.com/rui314/mold/issues/1017
+  status += 'Using mold linker, so make sure mold 1.11.0 or later is installed on your system.'
+  link_args = ['-fuse-ld=mold']
+else
+  link_args = []
 endif
 
 app_id = 'com.github.wwmm.easyeffects@0@'.format(app_id_suffix)
