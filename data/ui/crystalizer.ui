@@ -21,7 +21,7 @@
                         <child>
                             <object class="GtkBox" id="bands_box">
                                 <property name="halign">center</property>
-                                <property name="spacing">24</property>
+                                <property name="spacing">12</property>
                                 <style>
                                     <class name="card" />
                                 </style>
