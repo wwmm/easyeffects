@@ -46,7 +46,7 @@ jobs:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
+      image: bilelmoussaoui/flatpak-github-actions:gnome-44
       options: --privileged
     steps:
     - name: Checkout
