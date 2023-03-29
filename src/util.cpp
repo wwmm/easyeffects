@@ -318,23 +318,40 @@ auto get_files_name(const std::filesystem::path& dir_path, const std::string& ex
   return names;
 }
 
-void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& blocklist) {
+void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& blocklist, bool delay) {
   GSettingsSchema* schema = nullptr;
-  gchar** keys = nullptr;
 
   g_object_get(settings, "settings-schema", &schema, nullptr);
 
-  keys = g_settings_schema_list_keys(schema);
+  gchar** keys = g_settings_schema_list_keys(schema);
 
-  // g_settings_delay(settings);
+  // Gsettings should have a maximum of 256 delayed changes in delay mode (see issue #2215).
+  // If surpassed, the whole application crashes (it happens on the Equalizer).
+  // Anyway we set the maximum at the half (128) for satefy reasons.
+  uint keys_changed = 0U;
+  uint max_changes = 128U;
+
+  if (delay) {
+    g_settings_delay(settings);
+  }
 
   for (int i = 0; keys[i] != nullptr; i++) {
-    if (std::ranges::find(blocklist, keys[i]) == blocklist.end()) {
-      g_settings_reset(settings, keys[i]);
+    if (std::ranges::find(blocklist, keys[i]) != blocklist.end()) {
+      continue;
+    }
+
+    g_settings_reset(settings, keys[i]);
+    keys_changed++;
+
+    if (delay && keys_changed >= max_changes) {
+      g_settings_apply(settings);
+      keys_changed = 0U;
     }
   }
 
-  // g_settings_apply(settings);
+  if (delay && keys_changed > 0U) {
+    g_settings_apply(settings);
+  }
 
   g_settings_schema_unref(schema);
   g_strfreev(keys);

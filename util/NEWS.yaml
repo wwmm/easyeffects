@@ -7,7 +7,7 @@ Description:
 - The Equalizer "sort bands" feature is now ordering bands on GSettings, so the result can be saved into presets.
 
 - Bug fixes∶
--
+- Fixed the "Large Empty Hall" preset selection in the Reverberation effect.
 
 - Other notes∶
 - As we are removing code deprecated by `GTK 4.10` the minimum GTK version has been increased.

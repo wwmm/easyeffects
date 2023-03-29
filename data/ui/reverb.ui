@@ -75,16 +75,20 @@
                                         </child>
 
                                         <child>
-                                            <object class="GtkComboBoxText" id="room_size">
+                                            <object class="GtkDropDown" id="room_size">
                                                 <property name="halign">center</property>
-                                                <items>
-                                                    <item translatable="yes" id="Small">Small</item>
-                                                    <item translatable="yes" id="Medium">Medium</item>
-                                                    <item translatable="yes" id="Large">Large</item>
-                                                    <item translatable="yes" id="Tunnel-like">Tunnel</item>
-                                                    <item translatable="yes" id="Large/smooth">Large/smooth</item>
-                                                    <item translatable="yes" id="Experimental">Experimental</item>
-                                                </items>
+                                                <property name="model">
+                                                    <object class="GtkStringList">
+                                                        <items>
+                                                            <item translatable="yes">Small</item>
+                                                            <item translatable="yes">Medium</item>
+                                                            <item translatable="yes">Large</item>
+                                                            <item translatable="yes">Tunnel</item>
+                                                            <item translatable="yes">Large/smooth</item>
+                                                            <item translatable="yes">Experimental</item>
+                                                        </items>
+                                                    </object>
+                                                </property>
                                                 <accessibility>
                                                     <relation name="labelled-by">room_size_label</relation>
                                                 </accessibility>
@@ -605,7 +609,7 @@
                         <child>
                             <object class="GtkButton" id="preset_large_empty_hall">
                                 <property name="label" translatable="yes">Large Empty Hall</property>
-                                <signal name="clicked" handler="on_preset_ambience" object="ReverbBox" />
+                                <signal name="clicked" handler="on_preset_large_empty_hall" object="ReverbBox" />
                             </object>
                         </child>
                     </object>

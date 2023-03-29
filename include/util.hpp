@@ -107,7 +107,9 @@ void idle_add(std::function<void()> cb);
 
 auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string>;
 
-void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& blocklist = std::vector<std::string>());
+void reset_all_keys_except(GSettings* settings,
+                           const std::vector<std::string>& blocklist = std::vector<std::string>(),
+                           bool delay = true);
 
 auto str_contains(const std::string& haystack, const std::string& needle) -> bool;
 
