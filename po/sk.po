@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-28 17:12+0000\n"
+"POT-Creation-Date: 2023-03-29 22:24+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -221,7 +221,7 @@ msgstr "Výstupný Zisk"
 #: data/ui/gate.ui:1197 data/ui/limiter.ui:728 data/ui/loudness.ui:132
 #: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:454
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
-#: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:362
+#: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:625
 msgid "Input"
@@ -234,7 +234,7 @@ msgstr "Vstup"
 #: data/ui/equalizer.ui:387 data/ui/exciter.ui:281 data/ui/filter.ui:164
 #: data/ui/gate.ui:1216 data/ui/limiter.ui:747 data/ui/loudness.ui:151
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
-#: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:381
+#: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
 #, fuzzy
 msgid "Plugin Input Gain"
@@ -249,7 +249,7 @@ msgstr "Výstupný Zisk"
 #: data/ui/limiter.ui:812 data/ui/loudness.ui:216 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:538 data/ui/multiband_gate.ui:538
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:446 data/ui/rnnoise.ui:239
+#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
 msgid "Output"
 msgstr "Výstup"
@@ -261,7 +261,7 @@ msgstr "Výstup"
 #: data/ui/equalizer.ui:471 data/ui/exciter.ui:365 data/ui/filter.ui:248
 #: data/ui/gate.ui:1300 data/ui/limiter.ui:831 data/ui/loudness.ui:235
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
-#: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:465
+#: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
 #, fuzzy
 msgid "Plugin Output Gain"
@@ -275,7 +275,7 @@ msgstr "Výstupný Zisk"
 #: data/ui/equalizer_band.ui:298 data/ui/exciter.ui:458 data/ui/filter.ui:311
 #: data/ui/gate.ui:1393 data/ui/limiter.ui:894 data/ui/loudness.ui:298
 #: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:620
-#: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:528
+#: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:532
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
 msgid "Reset"
 msgstr "Obnoviť pôvodné hodnoty"
@@ -287,7 +287,7 @@ msgstr "Obnoviť pôvodné hodnoty"
 #: data/ui/exciter.ui:472 data/ui/filter.ui:325 data/ui/gate.ui:1407
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
-#: data/ui/pitch.ui:485 data/ui/reverb.ui:542 data/ui/rnnoise.ui:335
+#: data/ui/pitch.ui:485 data/ui/reverb.ui:546 data/ui/rnnoise.ui:335
 #: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
 msgid "Using"
 msgstr ""
@@ -480,7 +480,7 @@ msgstr "Pozdvihnutie"
 
 #: data/ui/compressor.ui:407 data/ui/delay.ui:52 data/ui/delay.ui:127
 #: data/ui/gate.ui:342 data/ui/multiband_compressor.ui:132
-#: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:208
+#: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:212
 #: data/ui/stereo_tools.ui:534
 #, fuzzy
 msgid "Dry Level"
@@ -488,7 +488,7 @@ msgstr "Úroveň F2"
 
 #: data/ui/compressor.ui:442 data/ui/delay.ui:75 data/ui/delay.ui:150
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:166
-#: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:242
+#: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:246
 #: data/ui/stereo_tools.ui:570
 #, fuzzy
 msgid "Wet Level"
@@ -2031,71 +2031,71 @@ msgstr "Vysokofrekvenčné tlmenie"
 msgid "Room Size"
 msgstr "Veľkosť miestnosti"
 
-#: data/ui/reverb.ui:81
+#: data/ui/reverb.ui:83
 msgid "Small"
 msgstr "Malá"
 
-#: data/ui/reverb.ui:82
+#: data/ui/reverb.ui:84
 msgid "Medium"
 msgstr "Stredná"
 
-#: data/ui/reverb.ui:83
+#: data/ui/reverb.ui:85
 msgid "Large"
 msgstr "Veľká"
 
-#: data/ui/reverb.ui:84
+#: data/ui/reverb.ui:86
 msgid "Tunnel"
 msgstr "Tunel"
 
-#: data/ui/reverb.ui:85
+#: data/ui/reverb.ui:87
 msgid "Large/smooth"
 msgstr "Veľká/hladká"
 
-#: data/ui/reverb.ui:86
+#: data/ui/reverb.ui:88
 msgid "Experimental"
 msgstr "Experimentálna"
 
-#: data/ui/reverb.ui:103
+#: data/ui/reverb.ui:107
 msgid "Diffusion"
 msgstr "Rozptyl"
 
-#: data/ui/reverb.ui:140
+#: data/ui/reverb.ui:144
 msgid "Pre Delay"
 msgstr "Predoneskorenie"
 
-#: data/ui/reverb.ui:173
+#: data/ui/reverb.ui:177
 msgid "Decay Time"
 msgstr "Čas dozvuku"
 
-#: data/ui/reverb.ui:277
+#: data/ui/reverb.ui:281
 msgid "Bass Cut"
 msgstr "Odrezanie basov"
 
-#: data/ui/reverb.ui:312
+#: data/ui/reverb.ui:316
 msgid "Treble Cut"
 msgstr "Odrezanie výšok"
 
-#: data/ui/reverb.ui:580
+#: data/ui/reverb.ui:584
 msgid "Ambience"
 msgstr "Okolie"
 
-#: data/ui/reverb.ui:587
+#: data/ui/reverb.ui:591
 msgid "Empty Walls"
 msgstr "Prázdne steny"
 
-#: data/ui/reverb.ui:600
+#: data/ui/reverb.ui:604
 msgid "Room"
 msgstr "Miestnosť"
 
-#: data/ui/reverb.ui:607
+#: data/ui/reverb.ui:611
 msgid "Large Empty Hall"
 msgstr "Veľká miestnosť (prázdna)"
 
-#: data/ui/reverb.ui:620
+#: data/ui/reverb.ui:624
 msgid "Disco"
 msgstr "Disko"
 
-#: data/ui/reverb.ui:627
+#: data/ui/reverb.ui:631
 msgid "Large Occupied Hall"
 msgstr "Veľká miestnosť (plná)"
 
