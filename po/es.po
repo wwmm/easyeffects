@@ -203,7 +203,7 @@ msgstr "Ganancia de salida"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625
+#: data/ui/stereo_tools.ui:625 data/ui/reverb.ui:362
 msgid "Input"
 msgstr "Entrada"
 
@@ -216,6 +216,7 @@ msgstr "Entrada"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:473
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
+#: data/ui/reverb.ui:381
 msgid "Plugin Input Gain"
 msgstr "Ganancia de entrada del plugin"
 
@@ -230,6 +231,7 @@ msgstr "Ganancia de entrada del plugin"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
+#: data/ui/reverb.ui:446
 msgid "Output"
 msgstr "Salida"
 
@@ -242,6 +244,7 @@ msgstr "Salida"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:557
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
+#: data/ui/reverb.ui:465
 msgid "Plugin Output Gain"
 msgstr "Ganancia de salida del plugin"
 
@@ -255,6 +258,7 @@ msgstr "Ganancia de salida del plugin"
 #: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:620
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:532
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
+#: data/ui/reverb.ui:528
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -266,7 +270,7 @@ msgstr "Restablecer"
 #: data/ui/limiter.ui:908 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:634 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:546 data/ui/rnnoise.ui:335
-#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
+#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805 data/ui/reverb.ui:542
 msgid "Using"
 msgstr "Usando"
 
@@ -446,14 +450,14 @@ msgstr "Ganancia de compensación"
 #: data/ui/compressor.ui:407 data/ui/delay.ui:52 data/ui/delay.ui:127
 #: data/ui/gate.ui:342 data/ui/multiband_compressor.ui:132
 #: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:212
-#: data/ui/stereo_tools.ui:534
+#: data/ui/stereo_tools.ui:534 data/ui/reverb.ui:208
 msgid "Dry Level"
 msgstr "Nivel"
 
 #: data/ui/compressor.ui:442 data/ui/delay.ui:75 data/ui/delay.ui:150
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:166
 #: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:246
-#: data/ui/stereo_tools.ui:570
+#: data/ui/stereo_tools.ui:570 data/ui/reverb.ui:242
 msgid "Wet Level"
 msgstr "Nivelado"
 
@@ -1808,9 +1812,8 @@ msgid "Load"
 msgstr "Cargar"
 
 #: data/ui/preset_row.ui:26
-#, fuzzy
 msgid "Discard the current settings and load this preset"
-msgstr "Guardar la configuración actual en este perfil"
+msgstr "Descarta los ajustes actuales y carga este preajuste"
 
 #: data/ui/preset_row.ui:35
 msgid "Save current settings to this preset file"
@@ -1860,71 +1863,71 @@ msgstr "Atenuación de alta frecuencia"
 msgid "Room Size"
 msgstr "Tamaño de la sala"
 
-#: data/ui/reverb.ui:83
+#: data/ui/reverb.ui:83 data/ui/reverb.ui:81
 msgid "Small"
 msgstr "Pequeña"
 
-#: data/ui/reverb.ui:84
+#: data/ui/reverb.ui:84 data/ui/reverb.ui:82
 msgid "Medium"
 msgstr "Mediana"
 
-#: data/ui/reverb.ui:85
+#: data/ui/reverb.ui:85 data/ui/reverb.ui:83
 msgid "Large"
 msgstr "Grande"
 
-#: data/ui/reverb.ui:86
+#: data/ui/reverb.ui:86 data/ui/reverb.ui:84
 msgid "Tunnel"
 msgstr "Túnel"
 
-#: data/ui/reverb.ui:87
+#: data/ui/reverb.ui:87 data/ui/reverb.ui:85
 msgid "Large/smooth"
 msgstr "Grande/suave"
 
-#: data/ui/reverb.ui:88
+#: data/ui/reverb.ui:88 data/ui/reverb.ui:86
 msgid "Experimental"
 msgstr "Música experimental"
 
-#: data/ui/reverb.ui:107
+#: data/ui/reverb.ui:107 data/ui/reverb.ui:103
 msgid "Diffusion"
 msgstr "Difusión"
 
-#: data/ui/reverb.ui:144
+#: data/ui/reverb.ui:144 data/ui/reverb.ui:140
 msgid "Pre Delay"
 msgstr "Pre retraso"
 
-#: data/ui/reverb.ui:177
+#: data/ui/reverb.ui:177 data/ui/reverb.ui:173
 msgid "Decay Time"
 msgstr "Tiempo de decaimiento"
 
-#: data/ui/reverb.ui:281
+#: data/ui/reverb.ui:281 data/ui/reverb.ui:277
 msgid "Bass Cut"
 msgstr "Corte de graves"
 
-#: data/ui/reverb.ui:316
+#: data/ui/reverb.ui:316 data/ui/reverb.ui:312
 msgid "Treble Cut"
 msgstr "Corte de agudos"
 
-#: data/ui/reverb.ui:584
+#: data/ui/reverb.ui:584 data/ui/reverb.ui:580
 msgid "Ambience"
 msgstr "Ambiente"
 
-#: data/ui/reverb.ui:591
+#: data/ui/reverb.ui:591 data/ui/reverb.ui:587
 msgid "Empty Walls"
 msgstr "Paredes vacías"
 
-#: data/ui/reverb.ui:604
+#: data/ui/reverb.ui:604 data/ui/reverb.ui:600
 msgid "Room"
 msgstr "Sala"
 
-#: data/ui/reverb.ui:611
+#: data/ui/reverb.ui:611 data/ui/reverb.ui:607
 msgid "Large Empty Hall"
 msgstr "Sala grande vacía"
 
-#: data/ui/reverb.ui:624
+#: data/ui/reverb.ui:624 data/ui/reverb.ui:620
 msgid "Disco"
 msgstr "Discoteca"
 
-#: data/ui/reverb.ui:631
+#: data/ui/reverb.ui:631 data/ui/reverb.ui:627
 msgid "Large Occupied Hall"
 msgstr "Sala grande ocupada"
 
