@@ -62,7 +62,7 @@
 
                 <binding name="sensitive">
                     <closure type="gboolean" function="set_band_scale_sensitive">
-                        <lookup name="active-id">band_type</lookup>
+                        <lookup name="selected">band_type</lookup>
                     </closure>
                 </binding>
 
