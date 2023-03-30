@@ -75,7 +75,7 @@ struct _EqualizerBox {
 
   GtkSpinButton *nbands, *balance, *pitch_left, *pitch_right;
 
-  GtkComboBoxText* mode;
+  GtkDropDown* mode;
 
   GtkToggleButton* split_channels;
 
@@ -773,7 +773,7 @@ void setup(EqualizerBox* self,
 
   g_settings_bind(self->settings, "split-channels", self->split_channels, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
 
   g_settings_bind(self->settings, "balance", gtk_spin_button_get_adjustment(self->balance), "value",
                   G_SETTINGS_BIND_DEFAULT);

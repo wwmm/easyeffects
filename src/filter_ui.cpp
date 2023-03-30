@@ -107,7 +107,7 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
   g_settings_bind(self->settings, "inertia", gtk_spin_button_get_adjustment(self->inertia), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown<"mode">(self->settings, self->mode);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
 }
 
 void dispose(GObject* object) {
