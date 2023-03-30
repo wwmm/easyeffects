@@ -65,14 +65,11 @@ CheckOptions:
 
 # note some checks are disabled in the code itself by adding NOLINT(check-name) or NOLINTNEXTLINE(check-name)
 
-# don't treat clang diagnostic warnings (aka compiler warnings) as errors, to stop ci from failing due to these
-# we can't suppress these like can be done for other checks above, they will always be outputted it seems
+# treat clang diagnostic warnings (aka compiler warnings) as errors, to ensure CI fails on these warnings
+# note we can't completely suppress warnings like can be done for other checks above, they will always be outputted
 # these can however be suppressed by disabling the compiler warnings in meson, but that is not really what we want
 # we cannot ignore clang-diagnostic-error, which are just compilation errors, which will occur when using clang < 16 (clang-tidy always wants clang for compilation it seems)
-WarningsAsErrors: '*,
-  -clang-diagnostic-deprecated-declarations,
-  -clang-diagnostic-dangling-gsl,
-  -clang-diagnostic-unused-private-field,
-  '
+WarningsAsErrors: '*'
+
 # set this to the include directory specifically, not '.*' since we don't want generated files like config.h being scanned
 HeaderFilterRegex: './include/'
