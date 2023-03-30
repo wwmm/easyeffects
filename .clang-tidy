@@ -1,5 +1,8 @@
 # the checks with the hyphen prepended are disabled until they are fixed
+# some like clang-analyzer-osx* should stay disabled as they are not relevant, to improve performance somewhat
 Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hicpp-*,misc-*,modernize-*,performance-*,portability-*,readability-*,
+  -clang-analyzer-osx*,
+  -clang-analyzer-optin.osx*,
   -cppcoreguidelines-pro-type-cstyle-cast,
   -cppcoreguidelines-pro-type-vararg,
   -cppcoreguidelines-non-private-member-variables-in-classes,
