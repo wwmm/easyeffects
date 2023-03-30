@@ -61,8 +61,6 @@ class EchoCanceller : public PluginBase {
   int residual_echo_suppression = -10;
   int near_end_suppression = -10;
 
-  float latency_value = 0.0F;
-
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 
   std::vector<spx_int16_t> data_L;

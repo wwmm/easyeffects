@@ -115,6 +115,27 @@ void on_process(void* userdata, spa_io_position* position) {
   }
 }
 
+auto update_filter(struct spa_loop* loop, bool async, uint32_t seq, const void* data, size_t size, void* user_data)
+    -> int {
+  auto* self = static_cast<PluginBase*>(user_data);
+
+  spa_process_latency_info latency_info{};
+
+  latency_info.ns = static_cast<uint64_t>(self->latency_value * 1000000000.0F);
+
+  std::array<char, 1024U> buffer{};
+
+  spa_pod_builder b{};
+
+  spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+
+  const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
+
+  pw_filter_update_params(self->filter, nullptr, &param, 1);
+
+  return 0;
+}
+
 const struct pw_filter_events filter_events = {.process = on_process};
 
 }  // namespace
@@ -439,3 +460,7 @@ void PluginBase::notify() {
 }
 
 void PluginBase::update_probe_links() {}
+
+void PluginBase::update_filter_params() {
+  pw_loop_invoke(pw_thread_loop_get_loop(pm->thread_loop), update_filter, 1, nullptr, 0, false, this);
+}

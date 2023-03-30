@@ -92,9 +92,9 @@ void Maximizer::process(std::span<float>& left_in,
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + util::to_string(latency_port_value, "") + " s");
+    util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
     util::idle_add([=, this]() {
       if (!post_messages || latency.empty()) {
@@ -104,19 +104,7 @@ void Maximizer::process(std::span<float>& left_in,
       latency.emit();
     });
 
-    spa_process_latency_info latency_info{};
-
-    latency_info.ns = static_cast<uint64_t>(latency_port_value * 1000000000.0F);
-
-    std::array<char, 1024U> buffer{};
-
-    spa_pod_builder b{};
-
-    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
-
-    const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
-
-    pw_filter_update_params(filter, nullptr, &param, 1);
+    update_filter_params();
   }
 
   if (post_messages) {
@@ -135,5 +123,5 @@ void Maximizer::process(std::span<float>& left_in,
 }
 
 auto Maximizer::get_latency_seconds() -> float {
-  return latency_port_value;
+  return latency_value;
 }

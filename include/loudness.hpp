@@ -43,8 +43,6 @@ class Loudness : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  float latency_port_value = 0.0F;
-
  private:
   uint latency_n_frames = 0U;
 

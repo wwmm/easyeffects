@@ -85,6 +85,8 @@ class PluginBase {
 
   float notification_time_window = 1.0F / 20.0F;  // seconds
 
+  float latency_value = 0.0F;  // seconds
+
   std::chrono::time_point<std::chrono::system_clock> clock_start;
 
   std::vector<float> dummy_left, dummy_right;
@@ -155,6 +157,8 @@ class PluginBase {
                  std::span<float>& right_out);
 
   static void apply_gain(std::span<float>& left, std::span<float>& right, const float& gain);
+
+  void update_filter_params();
 
  private:
   uint node_id = 0U;

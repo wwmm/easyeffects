@@ -57,8 +57,6 @@ class Crystalizer : public PluginBase {
   uint blocksize = 512U;
   uint latency_n_frames = 0U;
 
-  float latency_value = 0.0F;
-
   static constexpr uint nbands = 13U;
 
   std::vector<float> data_L;

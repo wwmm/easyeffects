@@ -47,8 +47,6 @@ class Speex : public PluginBase {
   bool package_installed = false;
 #endif
 
-  float latency_value = 0.0F;
-
  private:
   bool speex_ready = false;
 

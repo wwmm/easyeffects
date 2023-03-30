@@ -50,7 +50,6 @@ class Limiter : public PluginBase {
   float gain_r_port_value = 0.0F;
   float sidechain_l_port_value = 0.0F;
   float sidechain_r_port_value = 0.0F;
-  float latency_port_value = 0.0F;
 
  private:
   uint latency_n_frames = 0U;

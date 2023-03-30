@@ -47,8 +47,6 @@ class Pitch : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  float latency_value = 0.0F;
-
  private:
   bool rubberband_ready = false;
   bool notify_latency = false;

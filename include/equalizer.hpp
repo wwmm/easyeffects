@@ -52,8 +52,6 @@ class Equalizer : public PluginBase {
 
   static constexpr uint max_bands = 32U;
 
-  float latency_port_value = 0.0F;
-
  private:
   GSettings *settings_left = nullptr, *settings_right = nullptr;
 

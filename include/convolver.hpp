@@ -60,8 +60,6 @@ class Convolver : public PluginBase {
   uint ir_width = 100U;
   uint latency_n_frames = 0U;
 
-  float latency_value = 0.0F;
-
   std::vector<float> kernel_L, kernel_R;
   std::vector<float> original_kernel_L, original_kernel_R;
   std::vector<float> data_L, data_R;

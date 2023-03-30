@@ -49,8 +49,6 @@ class RNNoise : public PluginBase {
   bool package_installed = false;
 #endif
 
-  float latency_value = 0.0F;
-
   bool standard_model = true;
 
   sigc::signal<void(const bool load_error)> model_changed;
