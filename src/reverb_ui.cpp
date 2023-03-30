@@ -193,7 +193,7 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
   g_settings_bind(self->settings, "treble-cut", gtk_spin_button_get_adjustment(self->treble_cut), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown<"room-size">(self->settings, self->room_size);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "room-size", self->room_size);
 }
 
 void dispose(GObject* object) {
