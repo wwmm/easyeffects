@@ -148,7 +148,14 @@
                 {
                     "type": "git",
                     "url": "https://github.com/xiph/rnnoise.git",
-                    "commit": "1cbdbcf1283499bbb2230a6b0f126eb9b236defd"
+                    "commit": "1cbdbcf1283499bbb2230a6b0f126eb9b236defd",
+                     "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/xiph/rnnoise/commits",
+                        "commit-query": "first( .[].sha )",
+                        "version-query": "first( .[].sha )",
+                        "timestamp-query": "first( .[].commit.committer.date )"
+                    }
                 }
             ],
             "cleanup": [
@@ -157,7 +164,6 @@
         },
         {
             "name": "pipewire",
-            "//": "note this needs LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/lib/pipewire-0.3/jack set to use the correct libjack",
             "buildsystem": "meson",
             "config-opts": [
                 "-Dgstreamer=disabled",
@@ -247,12 +253,16 @@
         {
             "name": "zenity",
             "buildsystem": "meson",
+            "build-commands" : [
+                "mkdir -p /app/share/icons/hicolor"
+            ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/zenity",
-                    "tag": "3.41.0",
-                    "commit": "d8857f446b602d5fb4a41fef3d8a63507a12b72c"
+                    "tag": "3.44.0",
+                    "commit": "7bf8c8910d34bfb2b883b32118b93b68d44dd77b",
+                    "//": "flatpak-external-data-checker doesn't work well here, since it thinks that 3.90.0 is more recent (despite being an alpha), and 3.91.0 fails to build since it can't install translations properly"
                 }
             ]
         },
