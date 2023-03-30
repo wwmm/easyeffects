@@ -107,18 +107,22 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkComboBoxText" id="band_type">
-                                <items>
-                                    <item translatable="yes" id="Off">Off</item>
-                                    <item translatable="yes" id="Bell">Bell</item>
-                                    <item translatable="yes" id="Hi-pass">High Pass</item>
-                                    <item translatable="yes" id="Hi-shelf">High Shelf</item>
-                                    <item translatable="yes" id="Lo-pass">Low Pass</item>
-                                    <item translatable="yes" id="Lo-shelf">Low Shelf</item>
-                                    <item translatable="yes" id="Notch">Notch</item>
-                                    <item translatable="yes" id="Resonance">Resonance</item>
-                                    <item translatable="yes" id="Allpass">All Pass</item>
-                                </items>
+                            <object class="GtkDropDown" id="band_type">
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item>Off</item>
+                                            <item>Bell</item>
+                                            <item>High Pass</item>
+                                            <item>High Shelf</item>
+                                            <item>Low Pass</item>
+                                            <item>Low Shelf</item>
+                                            <item>Notch</item>
+                                            <item>Resonance</item>
+                                            <item>All Pass</item>
+                                        </items>
+                                    </object>
+                                </property>
                                 <layout>
                                     <property name="column">0</property>
                                     <property name="row">1</property>
@@ -139,16 +143,20 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkComboBoxText" id="band_mode">
-                                <items>
-                                    <item id="RLC (BT)">RLC (BT)</item>
-                                    <item id="RLC (MT)">RLC (MT)</item>
-                                    <item id="BWC (BT)">BWC (BT)</item>
-                                    <item id="BWC (MT)">BWC (MT)</item>
-                                    <item id="LRX (BT)">LRX (BT)</item>
-                                    <item id="LRX (MT)">LRX (MT)</item>
-                                    <item id="APO (DR)">APO (DR)</item>
-                                </items>
+                            <object class="GtkDropDown" id="band_mode">
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item>RLC (BT)</item>
+                                            <item>RLC (MT)</item>
+                                            <item>BWC (BT)</item>
+                                            <item>BWC (MT)</item>
+                                            <item>LRX (BT)</item>
+                                            <item>LRX (MT)</item>
+                                            <item>APO (DR)</item>
+                                        </items>
+                                    </object>
+                                </property>
                                 <layout>
                                     <property name="column">1</property>
                                     <property name="row">1</property>
@@ -169,13 +177,17 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkComboBoxText" id="band_slope">
-                                <items>
-                                    <item id="x1">x1</item>
-                                    <item id="x2">x2</item>
-                                    <item id="x3">x3</item>
-                                    <item id="x4">x4</item>
-                                </items>
+                            <object class="GtkDropDown" id="band_slope">
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item>x1</item>
+                                            <item>x2</item>
+                                            <item>x3</item>
+                                            <item>x4</item>
+                                        </items>
+                                    </object>
+                                </property>
                                 <layout>
                                     <property name="column">2</property>
                                     <property name="row">1</property>
