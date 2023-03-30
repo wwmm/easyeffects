@@ -73,6 +73,11 @@ void append_to_string_list(GtkStringList* string_list, const std::string& name);
 
 void remove_from_string_list(GtkStringList* string_list, const std::string& name);
 
+void gsettings_bind_enum_to_dropdown(GSettings* settings,
+                                     const gchar* key,
+                                     GtkDropDown* dropdown,
+                                     GSettingsBindFlags flags = G_SETTINGS_BIND_DEFAULT);
+
 template <StringLiteralWrapper sl_wrapper, bool lower_bound = true>
 void prepare_spinbutton(GtkSpinButton* button) {
   if (button == nullptr) {
@@ -164,25 +169,6 @@ void gsettings_bind_widget(GSettings* settings,
 template <StringLiteralWrapper... key_wrapper, typename... Targs>
 void gsettings_bind_widgets(GSettings* settings, Targs... widget) {
   (gsettings_bind_widget(settings, key_wrapper.msg.data(), widget), ...);
-}
-
-template <StringLiteralWrapper key_wrapper>
-void gsettings_bind_enum_to_dropdown(GSettings* settings,
-                                     GtkDropDown* dropdown,
-                                     GSettingsBindFlags flags = G_SETTINGS_BIND_DEFAULT) {
-  g_settings_bind_with_mapping(
-      settings, key_wrapper.msg.data(), dropdown, "selected", flags,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        auto* settings = static_cast<GSettings*>(user_data);
-        g_value_set_uint(value, static_cast<guint>(g_settings_get_enum(settings, key_wrapper.msg.data())));
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        auto* settings = static_cast<GSettings*>(user_data);
-        g_settings_set_enum(settings, key_wrapper.msg.data(), static_cast<gint>(g_value_get_uint(value)));
-        return g_variant_new_string(g_settings_get_string(settings, key_wrapper.msg.data()));
-      },
-      settings, nullptr);
 }
 
 }  // namespace ui

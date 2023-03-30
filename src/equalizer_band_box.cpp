@@ -31,7 +31,7 @@ struct Data {
 struct _EqualizerBandBox {
   GtkBox parent_instance;
 
-  GtkComboBoxText *band_type, *band_mode, *band_slope;
+  GtkDropDown *band_type, *band_mode, *band_slope;
 
   GtkButton *reset_frequency, *reset_quality;
 
@@ -81,9 +81,10 @@ auto set_band_width_label(EqualizerBandBox* self, double quality, double frequen
   return g_strdup(_("infinity"));
 }
 
-auto set_band_scale_sensitive(EqualizerBandBox* self, const char* active_id) -> gboolean {
-  if (g_strcmp0(active_id, "Off") == 0 || g_strcmp0(active_id, "Hi-pass") == 0 ||
-      g_strcmp0(active_id, "Lo-pass") == 0) {
+auto set_band_scale_sensitive(EqualizerBandBox* self, guint selected_id) -> gboolean {
+  // 0 == Off, 2 == Low Pass, 4 == High Pass
+
+  if (selected_id == 0 || selected_id == 2 || selected_id == 4) {
     return 0;
   }
 
@@ -112,14 +113,11 @@ void bind(EqualizerBandBox* self, int index) {
   g_settings_bind(self->settings, tags::equalizer::band_mute[index].data(), self->band_mute, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, tags::equalizer::band_type[index].data(), self->band_type, "active-id",
-                  G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, tags::equalizer::band_type[index].data(), self->band_type);
 
-  g_settings_bind(self->settings, tags::equalizer::band_mode[index].data(), self->band_mode, "active-id",
-                  G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, tags::equalizer::band_mode[index].data(), self->band_mode);
 
-  g_settings_bind(self->settings, tags::equalizer::band_slope[index].data(), self->band_slope, "active-id",
-                  G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, tags::equalizer::band_slope[index].data(), self->band_slope);
 }
 
 void dispose(GObject* object) {

@@ -67,14 +67,18 @@
                                     </object>
                                 </child>
                                 <child>
-                                    <object class="GtkComboBoxText" id="mode">
+                                    <object class="GtkDropDown" id="mode">
                                         <property name="halign">center</property>
-                                        <items>
-                                            <item translatable="yes" id="IIR">IIR</item>
-                                            <item translatable="yes" id="FIR">FIR</item>
-                                            <item translatable="yes" id="FFT">FFT</item>
-                                            <item translatable="yes" id="SPM">SPM</item>
-                                        </items>
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item translatable="yes">IIR</item>
+                                                    <item translatable="yes">FIR</item>
+                                                    <item translatable="yes">FFT</item>
+                                                    <item translatable="yes">SPM</item>
+                                                </items>
+                                            </object>
+                                        </property>
                                         <layout>
                                             <property name="column">1</property>
                                             <property name="row">1</property>
