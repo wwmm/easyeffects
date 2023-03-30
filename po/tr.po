@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 14:11+0000\n"
+"POT-Creation-Date: 2023-03-30 17:38+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -663,7 +663,7 @@ msgstr "Birleştir"
 msgid "Stereo Width"
 msgstr "Stereo Genişliği"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:173
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -2324,7 +2324,7 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/plugin_base.cpp:150
+#: src/plugin_base.cpp:171
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Çıkış Aygıtı"

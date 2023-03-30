@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 14:11+0000\n"
+"POT-Creation-Date: 2023-03-30 17:38+0000\n"
 "PO-Revision-Date: 2023-01-12 08:48+0000\n"
 "Last-Translator: John <janrrk+weblate@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -660,7 +660,7 @@ msgstr "Combinar"
 msgid "Stereo Width"
 msgstr "Largura do Stereo"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:173
 msgid "Spectrum"
 msgstr "Espectro"
 
@@ -2276,7 +2276,7 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Remover Predefinições Automaticamente Carregadas"
 
-#: src/plugin_base.cpp:150
+#: src/plugin_base.cpp:171
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Dispositivo de Saída"
