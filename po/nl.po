@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 14:11+0000\n"
+"POT-Creation-Date: 2023-03-30 17:38+0000\n"
 "PO-Revision-Date: 2023-03-28 16:43+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -657,7 +657,7 @@ msgstr "Combineren"
 msgid "Stereo Width"
 msgstr "Stereobreedte"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:173
 msgid "Spectrum"
 msgstr "Spectrum"
 
@@ -2266,7 +2266,7 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Automatisch ingeladen voorinstelling verwijderen"
 
-#: src/plugin_base.cpp:150
+#: src/plugin_base.cpp:171
 msgid "Output Level Meter"
 msgstr "Uitvoerniveaumeter"
 

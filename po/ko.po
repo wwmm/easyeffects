@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 14:11+0000\n"
+"POT-Creation-Date: 2023-03-30 17:38+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -666,7 +666,7 @@ msgstr "결합하기"
 msgid "Stereo Width"
 msgstr "스테레오 너비"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:173
 #, fuzzy
 msgid "Spectrum"
 msgstr "스펙트럼"
@@ -2332,7 +2332,7 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "자동 로딩 프리셋 제거하기"
 
-#: src/plugin_base.cpp:150
+#: src/plugin_base.cpp:171
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "출력 게인"

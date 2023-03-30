@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 14:11+0000\n"
+"POT-Creation-Date: 2023-03-30 17:38+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -711,7 +711,7 @@ msgstr ""
 msgid "Stereo Width"
 msgstr "Lebar Stereo"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:152
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:173
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -2427,7 +2427,7 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Hapus Preset Pemuatan Otomatis"
 
-#: src/plugin_base.cpp:150
+#: src/plugin_base.cpp:171
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Gain Input"
