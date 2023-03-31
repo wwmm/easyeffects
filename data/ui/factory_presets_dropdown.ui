@@ -14,6 +14,7 @@
 
                 <child>
                     <object class="GtkLabel">
+                        <property name="ellipsize">end</property>
                         <binding name="label">
                             <lookup name="string" type="GtkStringObject">
                                 <lookup name="item">GtkListItem</lookup>
