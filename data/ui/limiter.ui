@@ -75,23 +75,27 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkComboBoxText" id="mode">
+                                                    <object class="GtkDropDown" id="mode">
                                                         <property name="hexpand">1</property>
                                                         <property name="valign">center</property>
-                                                        <items>
-                                                            <item translatable="yes" id="Herm Thin">Herm Thin</item>
-                                                            <item translatable="yes" id="Herm Wide">Herm Wide</item>
-                                                            <item translatable="yes" id="Herm Tail">Herm Tail</item>
-                                                            <item translatable="yes" id="Herm Duck">Herm Duck</item>
-                                                            <item translatable="yes" id="Exp Thin">Exp Thin</item>
-                                                            <item translatable="yes" id="Exp Wide">Exp Wide</item>
-                                                            <item translatable="yes" id="Exp Tail">Exp Tail</item>
-                                                            <item translatable="yes" id="Exp Duck">Exp Duck</item>
-                                                            <item translatable="yes" id="Line Thin">Line Thin</item>
-                                                            <item translatable="yes" id="Line Wide">Line Wide</item>
-                                                            <item translatable="yes" id="Line Tail">Line Tail</item>
-                                                            <item translatable="yes" id="Line Duck">Line Duck</item>
-                                                        </items>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item translatable="yes">Herm Thin</item>
+                                                                    <item translatable="yes">Herm Wide</item>
+                                                                    <item translatable="yes">Herm Tail</item>
+                                                                    <item translatable="yes">Herm Duck</item>
+                                                                    <item translatable="yes">Exp Thin</item>
+                                                                    <item translatable="yes">Exp Wide</item>
+                                                                    <item translatable="yes">Exp Tail</item>
+                                                                    <item translatable="yes">Exp Duck</item>
+                                                                    <item translatable="yes">Line Thin</item>
+                                                                    <item translatable="yes">Line Wide</item>
+                                                                    <item translatable="yes">Line Tail</item>
+                                                                    <item translatable="yes">Line Duck</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
                                                         <layout>
                                                             <property name="column">1</property>
                                                             <property name="row">0</property>
@@ -102,32 +106,36 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkComboBoxText" id="oversampling">
+                                                    <object class="GtkDropDown" id="oversampling">
                                                         <property name="hexpand">1</property>
                                                         <property name="valign">center</property>
-                                                        <items>
-                                                            <item translatable="yes" id="None">None</item>
-                                                            <item translatable="yes" id="Half x2(2L)">Half x2(2L)</item>
-                                                            <item translatable="yes" id="Half x2(3L)">Half x2(3L)</item>
-                                                            <item translatable="yes" id="Half x3(2L)">Half x3(2L)</item>
-                                                            <item translatable="yes" id="Half x3(3L)">Half x3(3L)</item>
-                                                            <item translatable="yes" id="Half x4(2L)">Half x4(2L)</item>
-                                                            <item translatable="yes" id="Half x4(3L)">Half x4(3L)</item>
-                                                            <item translatable="yes" id="Half x6(2L)">Half x6(2L)</item>
-                                                            <item translatable="yes" id="Half x6(3L)">Half x6(3L)</item>
-                                                            <item translatable="yes" id="Half x8(2L)">Half x8(2L)</item>
-                                                            <item translatable="yes" id="Half x8(3L)">Half x8(3L)</item>
-                                                            <item translatable="yes" id="Full x2(2L)">Full x2(2L)</item>
-                                                            <item translatable="yes" id="Full x2(3L)">Full x2(3L)</item>
-                                                            <item translatable="yes" id="Full x3(2L)">Full x3(2L)</item>
-                                                            <item translatable="yes" id="Full x3(3L)">Full x3(3L)</item>
-                                                            <item translatable="yes" id="Full x4(2L)">Full x4(2L)</item>
-                                                            <item translatable="yes" id="Full x4(3L)">Full x4(3L)</item>
-                                                            <item translatable="yes" id="Full x6(2L)">Full x6(2L)</item>
-                                                            <item translatable="yes" id="Full x6(3L)">Full x6(3L)</item>
-                                                            <item translatable="yes" id="Full x8(2L)">Full x8(2L)</item>
-                                                            <item translatable="yes" id="Full x8(3L)">Full x8(3L)</item>
-                                                        </items>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item translatable="yes">None</item>
+                                                                    <item translatable="yes">Half x2(2L)</item>
+                                                                    <item translatable="yes">Half x2(3L)</item>
+                                                                    <item translatable="yes">Half x3(2L)</item>
+                                                                    <item translatable="yes">Half x3(3L)</item>
+                                                                    <item translatable="yes">Half x4(2L)</item>
+                                                                    <item translatable="yes">Half x4(3L)</item>
+                                                                    <item translatable="yes">Half x6(2L)</item>
+                                                                    <item translatable="yes">Half x6(3L)</item>
+                                                                    <item translatable="yes">Half x8(2L)</item>
+                                                                    <item translatable="yes">Half x8(3L)</item>
+                                                                    <item translatable="yes">Full x2(2L)</item>
+                                                                    <item translatable="yes">Full x2(3L)</item>
+                                                                    <item translatable="yes">Full x3(2L)</item>
+                                                                    <item translatable="yes">Full x3(3L)</item>
+                                                                    <item translatable="yes">Full x4(2L)</item>
+                                                                    <item translatable="yes">Full x4(3L)</item>
+                                                                    <item translatable="yes">Full x6(2L)</item>
+                                                                    <item translatable="yes">Full x6(3L)</item>
+                                                                    <item translatable="yes">Full x8(2L)</item>
+                                                                    <item translatable="yes">Full x8(3L)</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
                                                         <layout>
                                                             <property name="column">1</property>
                                                             <property name="row">1</property>
@@ -138,20 +146,24 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkComboBoxText" id="dither">
+                                                    <object class="GtkDropDown" id="dither">
                                                         <property name="hexpand">1</property>
                                                         <property name="valign">center</property>
-                                                        <items>
-                                                            <item id="None">None</item>
-                                                            <item id="7bit">7bit</item>
-                                                            <item id="8bit">8bit</item>
-                                                            <item id="11bit">11bit</item>
-                                                            <item id="12bit">12bit</item>
-                                                            <item id="15bit">15bit</item>
-                                                            <item id="16bit">16bit</item>
-                                                            <item id="23bit">23bit</item>
-                                                            <item id="24bit">24bit</item>
-                                                        </items>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item>None</item>
+                                                                    <item>7bit</item>
+                                                                    <item>8bit</item>
+                                                                    <item>11bit</item>
+                                                                    <item>12bit</item>
+                                                                    <item>15bit</item>
+                                                                    <item>16bit</item>
+                                                                    <item>23bit</item>
+                                                                    <item>24bit</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
                                                         <layout>
                                                             <property name="column">1</property>
                                                             <property name="row">2</property>

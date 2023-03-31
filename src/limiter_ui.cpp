@@ -43,7 +43,7 @@ struct _LimiterBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkComboBoxText *mode, *oversampling, *dither;
+  GtkDropDown *mode, *oversampling, *dither;
 
   GtkDropDown* dropdown_input_devices;
 
@@ -272,11 +272,11 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   g_settings_bind(self->settings, "alr", self->alr, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
 
-  g_settings_bind(self->settings, "oversampling", self->oversampling, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "oversampling", self->oversampling);
 
-  g_settings_bind(self->settings, "dithering", self->dither, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "dithering", self->dither);
 }
 
 void dispose(GObject* object) {
