@@ -48,11 +48,10 @@ struct _CompressorBox {
   GtkSpinButton *attack, *release, *release_threshold, *threshold, *knee, *ratio, *makeup, *dry, *wet, *boost_threshold,
       *boost_amount, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
 
-  GtkComboBoxText *compression_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode;
-
   GtkToggleButton* listen;
 
-  GtkDropDown* dropdown_input_devices;
+  GtkDropDown *compression_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode,
+      *dropdown_input_devices;
 
   GListStore* input_devices_model;
 
@@ -68,33 +67,32 @@ void on_reset(CompressorBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
-auto set_dropdown_sensitive(CompressorBox* self, const char* active_id) -> gboolean {
-  if (g_strcmp0(active_id, "External") == 0) {
-    return 1;
-  }
-
-  return 0;
+auto set_dropdown_sensitive(CompressorBox* self, const guint selected_id) -> gboolean {
+  // Sensitive on External Device selected
+  return (selected_id == 2U) ? 1 : 0;
 }
 
-auto set_boost_threshold_sensitive(CompressorBox* self, const char* active_id) -> gboolean {
-  if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Boosting") == 0) {
-    return 0;
-  }
+auto set_boost_threshold_sensitive(CompressorBox* self, const guint selected_id) -> gboolean {
+  switch (selected_id) {
+    case 0U:  // Downward
+    case 2U:  // Boosting
+      return 0;
 
-  if (g_strcmp0(active_id, "Upward") == 0) {
-    return 1;
+    default:
+      break;
   }
 
   return 1;
 }
 
-auto set_boost_amount_sensitive(CompressorBox* self, const char* active_id) -> gboolean {
-  if (g_strcmp0(active_id, "Downward") == 0 || g_strcmp0(active_id, "Upward") == 0) {
-    return 0;
-  }
+auto set_boost_amount_sensitive(CompressorBox* self, const guint selected_id) -> gboolean {
+  switch (selected_id) {
+    case 0U:  // Downward
+    case 1U:  // Upward
+      return 0;
 
-  if (g_strcmp0(active_id, "Boosting") == 0) {
-    return 1;
+    default:
+      break;
   }
 
   return 1;
@@ -319,17 +317,17 @@ void setup(CompressorBox* self,
 
   g_settings_bind(self->settings, "sidechain-listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "mode", self->compression_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->compression_mode);
 
-  g_settings_bind(self->settings, "sidechain-type", self->sidechain_type, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "sidechain-type", self->sidechain_type);
 
-  g_settings_bind(self->settings, "sidechain-mode", self->sidechain_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "sidechain-mode", self->sidechain_mode);
 
-  g_settings_bind(self->settings, "sidechain-source", self->sidechain_source, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "sidechain-source", self->sidechain_source);
 
-  g_settings_bind(self->settings, "hpf-mode", self->hpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "hpf-mode", self->hpf_mode);
 
-  g_settings_bind(self->settings, "lpf-mode", self->lpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "lpf-mode", self->lpf_mode);
 }
 
 void dispose(GObject* object) {
