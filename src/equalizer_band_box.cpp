@@ -81,11 +81,15 @@ auto set_band_width_label(EqualizerBandBox* self, double quality, double frequen
   return g_strdup(_("infinity"));
 }
 
-auto set_band_scale_sensitive(EqualizerBandBox* self, guint selected_id) -> gboolean {
-  // 0 == Off, 2 == Low Pass, 4 == High Pass
+auto set_band_scale_sensitive(EqualizerBandBox* self, const guint selected_id) -> gboolean {
+  switch (selected_id) {
+    case 0U:  // Off
+    case 2U:  // High Pass
+    case 4U:  // Low Pass
+      return 0;
 
-  if (selected_id == 0 || selected_id == 2 || selected_id == 4) {
-    return 0;
+    default:
+      break;
   }
 
   return 1;
