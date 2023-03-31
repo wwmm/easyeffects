@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-30 22:13+0000\n"
-"PO-Revision-Date: 2023-03-28 16:43+0000\n"
+"PO-Revision-Date: 2023-03-31 11:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -44,7 +44,7 @@ msgstr "\"Предустановки\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr "Включить/выключить это приложение"
+msgstr "Включить/отключить это приложение"
 
 #: data/ui/app_info.ui:213
 msgid "Enable"
@@ -1419,7 +1419,7 @@ msgstr "Общие"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr "Управление Устройством"
+msgstr "Управление устройством"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
