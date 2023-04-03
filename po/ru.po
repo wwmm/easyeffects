@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-31 22:31+0000\n"
+"POT-Creation-Date: 2023-04-03 14:24+0000\n"
 "PO-Revision-Date: 2023-04-01 11:37+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -221,9 +221,7 @@ msgstr "Усиление выхода"
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625 data/ui/compressor.ui:581
-#: data/ui/compressor.ui:1063 data/ui/limiter.ui:728
-#: data/ui/multiband_compressor.ui:454
+#: data/ui/stereo_tools.ui:625
 msgid "Input"
 msgstr "Вход"
 
@@ -236,8 +234,6 @@ msgstr "Вход"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:481
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
-#: data/ui/compressor.ui:1082 data/ui/limiter.ui:747
-#: data/ui/multiband_compressor.ui:473
 msgid "Plugin Input Gain"
 msgstr "Плагин усиления входа"
 
@@ -252,8 +248,6 @@ msgstr "Плагин усиления входа"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
-#: data/ui/compressor.ui:1147 data/ui/limiter.ui:812
-#: data/ui/multiband_compressor.ui:538
 msgid "Output"
 msgstr "Выход"
 
@@ -266,8 +260,6 @@ msgstr "Выход"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:565
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
-#: data/ui/compressor.ui:1166 data/ui/limiter.ui:831
-#: data/ui/multiband_compressor.ui:557
 msgid "Plugin Output Gain"
 msgstr "Плагин усиления выхода"
 
@@ -281,8 +273,6 @@ msgstr "Плагин усиления выхода"
 #: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:628
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:532
 #: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
-#: data/ui/compressor.ui:1229 data/ui/limiter.ui:894
-#: data/ui/multiband_compressor.ui:620
 msgid "Reset"
 msgstr "Сброс"
 
@@ -294,14 +284,12 @@ msgstr "Сброс"
 #: data/ui/limiter.ui:920 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:642 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:546 data/ui/rnnoise.ui:335
-#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805 data/ui/compressor.ui:1243
-#: data/ui/limiter.ui:908 data/ui/multiband_compressor.ui:634
+#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
 msgid "Using"
 msgstr "Используется"
 
 # #, fuzzy
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:615 data/ui/gate.ui:740
-#: data/ui/compressor.ui:604
 msgid "Device"
 msgstr "Устройство"
 
@@ -325,7 +313,7 @@ msgid "Remove this autoload preset"
 msgstr "Убрать эту предустановку из автозагрузки"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:539 data/ui/deesser.ui:24
-#: data/ui/exciter.ui:23 data/ui/gate.ui:668 data/ui/compressor.ui:531
+#: data/ui/exciter.ui:23 data/ui/gate.ui:668
 msgid "Listen"
 msgstr "Прослушать"
 
@@ -391,207 +379,172 @@ msgstr "Компрессор"
 #: data/ui/filter.ui:27 data/ui/gate.ui:640 data/ui/gate.ui:935
 #: data/ui/limiter.ui:46 data/ui/multiband_compressor_band.ui:461
 #: data/ui/multiband_gate_band.ui:520 data/ui/pitch.ui:32
-#: data/ui/compressor.ui:503 data/ui/compressor.ui:801
-#: data/ui/multiband_compressor_band.ui:457
 msgid "Mode"
 msgstr "Режим"
 
 #: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
-#: data/ui/compressor.ui:64 data/ui/multiband_compressor_band.ui:99
 msgid "Downward"
 msgstr "Нисходящий"
 
 #: data/ui/compressor.ui:67 data/ui/multiband_compressor_band.ui:102
-#: data/ui/compressor.ui:65 data/ui/multiband_compressor_band.ui:100
 msgid "Upward"
 msgstr "Восходящий"
 
 #: data/ui/compressor.ui:68 data/ui/multiband_compressor_band.ui:103
-#: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
 msgid "Boosting"
 msgstr "Усиление"
 
 #: data/ui/compressor.ui:77 data/ui/multiband_compressor_band.ui:88
-#: data/ui/compressor.ui:73
 msgid "Compression Mode"
 msgstr "Режим сжатия"
 
 #: data/ui/compressor.ui:84 data/ui/multiband_compressor_band.ui:758
-#: data/ui/compressor.ui:80 data/ui/multiband_compressor_band.ui:746
 msgid "Boost Threshold"
 msgstr "Порог усиления"
 
 #: data/ui/compressor.ui:124 data/ui/multiband_compressor_band.ui:714
-#: data/ui/compressor.ui:120 data/ui/multiband_compressor_band.ui:702
 msgid "Boost Amount"
 msgstr "Величина усиления"
 
 #: data/ui/compressor.ui:171 data/ui/gate.ui:60 data/ui/limiter.ui:274
 #: data/ui/limiter.ui:497 data/ui/multiband_compressor_band.ui:190
-#: data/ui/multiband_gate_band.ui:144 data/ui/compressor.ui:167
-#: data/ui/limiter.ui:262 data/ui/limiter.ui:485
-#: data/ui/multiband_compressor_band.ui:186
+#: data/ui/multiband_gate_band.ui:144
 msgid "Attack"
 msgstr "Атака"
 
 #: data/ui/compressor.ui:182 data/ui/multiband_compressor_band.ui:170
-#: data/ui/compressor.ui:178 data/ui/multiband_compressor_band.ui:166
 msgid "Time"
 msgstr "Время"
 
 #: data/ui/compressor.ui:192 data/ui/deesser.ui:299 data/ui/gate.ui:153
 #: data/ui/gate.ui:247 data/ui/limiter.ui:358 data/ui/maximizer.ui:50
 #: data/ui/multiband_compressor_band.ui:181 data/ui/multiband_gate_band.ui:237
-#: data/ui/multiband_gate_band.ui:331 data/ui/compressor.ui:188
-#: data/ui/limiter.ui:346 data/ui/multiband_compressor_band.ui:177
+#: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
 msgstr "Порог"
 
 #: data/ui/compressor.ui:218 data/ui/multiband_compressor_band.ui:226
-#: data/ui/compressor.ui:214 data/ui/multiband_compressor_band.ui:222
 msgid "Attack Time"
 msgstr "Время атаки"
 
 #: data/ui/compressor.ui:240 data/ui/gate.ui:537
-#: data/ui/multiband_compressor_band.ui:251 data/ui/compressor.ui:236
-#: data/ui/multiband_compressor_band.ui:247
+#: data/ui/multiband_compressor_band.ui:251
 msgid "Attack Threshold"
 msgstr "Порог атаки"
 
 #: data/ui/compressor.ui:247 data/ui/gate.ui:66 data/ui/limiter.ui:316
 #: data/ui/limiter.ui:534 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:199 data/ui/multiband_gate_band.ui:150
-#: data/ui/compressor.ui:243 data/ui/limiter.ui:304 data/ui/limiter.ui:522
-#: data/ui/multiband_compressor_band.ui:195
 msgid "Release"
 msgstr "Восстановление"
 
 #: data/ui/compressor.ui:273 data/ui/multiband_compressor_band.ui:278
-#: data/ui/compressor.ui:269 data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
 msgstr "Время восстановления"
 
 #: data/ui/compressor.ui:297 data/ui/gate.ui:591
-#: data/ui/multiband_compressor_band.ui:306 data/ui/compressor.ui:293
-#: data/ui/multiband_compressor_band.ui:302
+#: data/ui/multiband_compressor_band.ui:306
 msgid "Release Threshold"
 msgstr "Порог восстановления"
 
 #: data/ui/compressor.ui:304 data/ui/deesser.ui:333
-#: data/ui/multiband_compressor_band.ui:313 data/ui/compressor.ui:300
-#: data/ui/multiband_compressor_band.ui:309
+#: data/ui/multiband_compressor_band.ui:313
 msgid "Ratio"
 msgstr "Степень сжатия"
 
 #: data/ui/compressor.ui:341 data/ui/limiter.ui:570
-#: data/ui/multiband_compressor_band.ui:351 data/ui/compressor.ui:337
-#: data/ui/limiter.ui:558 data/ui/multiband_compressor_band.ui:347
+#: data/ui/multiband_compressor_band.ui:351
 msgid "Knee"
 msgstr "Колено"
 
 #: data/ui/compressor.ui:376 data/ui/deesser.ui:369 data/ui/gate.ui:428
 #: data/ui/multiband_compressor_band.ui:389 data/ui/multiband_gate_band.ui:418
-#: data/ui/compressor.ui:372 data/ui/multiband_compressor_band.ui:385
 msgid "Makeup"
 msgstr "Усиление вверх"
 
 #: data/ui/compressor.ui:411 data/ui/delay.ui:52 data/ui/delay.ui:127
 #: data/ui/gate.ui:342 data/ui/multiband_compressor.ui:140
 #: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:212
-#: data/ui/stereo_tools.ui:534 data/ui/compressor.ui:407
-#: data/ui/multiband_compressor.ui:132
+#: data/ui/stereo_tools.ui:534
 msgid "Dry Level"
 msgstr "Уровень ориг."
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:75 data/ui/delay.ui:150
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:174
 #: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:246
-#: data/ui/stereo_tools.ui:570 data/ui/compressor.ui:442
-#: data/ui/multiband_compressor.ui:166
+#: data/ui/stereo_tools.ui:570
 msgid "Wet Level"
 msgstr "Уровень обраб."
 
 # #, fuzzy
 #: data/ui/compressor.ui:488 data/ui/compressor.ui:1022 data/ui/gate.ui:621
-#: data/ui/gate.ui:1133 data/ui/compressor.ui:484 data/ui/compressor.ui:999
+#: data/ui/gate.ui:1133
 msgid "Sidechain"
 msgstr "Боковая цепь"
 
 #: data/ui/compressor.ui:519 data/ui/deesser.ui:48 data/ui/gate.ui:650
 #: data/ui/multiband_compressor_band.ui:474 data/ui/multiband_gate_band.ui:531
-#: data/ui/compressor.ui:513 data/ui/multiband_compressor_band.ui:468
 msgid "Peak"
 msgstr "Пик"
 
 #: data/ui/compressor.ui:520 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:475 data/ui/multiband_gate_band.ui:532
-#: data/ui/compressor.ui:514 data/ui/multiband_compressor_band.ui:469
 msgid "RMS"
 msgstr "Среднеквадратичное (RMS)"
 
 #: data/ui/compressor.ui:521 data/ui/compressor.ui:889 data/ui/gate.ui:1004
-#: data/ui/multiband_compressor_band.ui:476 data/ui/compressor.ui:515
-#: data/ui/compressor.ui:870 data/ui/multiband_compressor_band.ui:470
+#: data/ui/multiband_compressor_band.ui:476
 msgid "Low-Pass"
 msgstr "Фильтр НЧ"
 
 #: data/ui/compressor.ui:522 data/ui/multiband_compressor_band.ui:477
-#: data/ui/compressor.ui:516 data/ui/multiband_compressor_band.ui:471
 msgid "Uniform"
 msgstr "Равномерно"
 
 # #, fuzzy
 #: data/ui/compressor.ui:531 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:486 data/ui/multiband_gate_band.ui:541
-#: data/ui/compressor.ui:523 data/ui/multiband_compressor_band.ui:478
 msgid "Sidechain Mode"
 msgstr "Режим боковой цепи"
 
 # #, fuzzy
 #: data/ui/compressor.ui:549 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:493 data/ui/multiband_gate_band.ui:548
-#: data/ui/compressor.ui:541 data/ui/multiband_compressor_band.ui:485
 msgid "Source"
 msgstr "Источник"
 
 #: data/ui/compressor.ui:561 data/ui/gate.ui:688
 #: data/ui/multiband_compressor_band.ui:506 data/ui/multiband_gate_band.ui:559
-#: data/ui/compressor.ui:552 data/ui/multiband_compressor_band.ui:496
 msgid "Middle"
 msgstr "Средний"
 
 # #, fuzzy
 #: data/ui/compressor.ui:562 data/ui/gate.ui:689
 #: data/ui/multiband_compressor_band.ui:507 data/ui/multiband_gate_band.ui:560
-#: data/ui/compressor.ui:553 data/ui/multiband_compressor_band.ui:497
 msgid "Side"
 msgstr "Боковой"
 
 #: data/ui/compressor.ui:563 data/ui/delay.ui:28 data/ui/equalizer.ui:219
 #: data/ui/gate.ui:690 data/ui/multiband_compressor_band.ui:508
 #: data/ui/multiband_gate_band.ui:561 data/ui/pipe_manager_box.ui:504
-#: data/ui/stereo_tools.ui:161 data/ui/compressor.ui:554
-#: data/ui/multiband_compressor_band.ui:498
+#: data/ui/stereo_tools.ui:161
 msgid "Left"
 msgstr "Левый"
 
 #: data/ui/compressor.ui:564 data/ui/delay.ui:103 data/ui/equalizer.ui:246
 #: data/ui/gate.ui:691 data/ui/multiband_compressor_band.ui:509
 #: data/ui/multiband_gate_band.ui:562 data/ui/pipe_manager_box.ui:515
-#: data/ui/stereo_tools.ui:216 data/ui/compressor.ui:555
-#: data/ui/multiband_compressor_band.ui:499
+#: data/ui/stereo_tools.ui:216
 msgid "Right"
 msgstr "Правый"
 
 #: data/ui/compressor.ui:565 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:510 data/ui/multiband_gate_band.ui:563
-#: data/ui/compressor.ui:556 data/ui/multiband_compressor_band.ui:500
 msgid "Min"
 msgstr "Мин."
 
 #: data/ui/compressor.ui:566 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:511 data/ui/multiband_gate_band.ui:564
-#: data/ui/compressor.ui:557 data/ui/multiband_compressor_band.ui:501
 msgid "Max"
 msgstr "Макс."
 
@@ -599,114 +552,106 @@ msgstr "Макс."
 #: data/ui/compressor.ui:575 data/ui/gate.ui:700
 #: data/ui/multiband_compressor.ui:75 data/ui/multiband_compressor_band.ui:520
 #: data/ui/multiband_gate.ui:71 data/ui/multiband_gate_band.ui:571
-#: data/ui/compressor.ui:564 data/ui/multiband_compressor.ui:71
-#: data/ui/multiband_compressor_band.ui:508
 msgid "Sidechain Source"
 msgstr "Источник боковой цепи"
 
 #: data/ui/compressor.ui:604 data/ui/equalizer_band.ui:102 data/ui/gate.ui:729
-#: data/ui/compressor.ui:593
 msgid "Type"
 msgstr "Тип"
 
-#: data/ui/compressor.ui:630 data/ui/compressor.ui:617
+#: data/ui/compressor.ui:630
 msgid "Feed-forward"
 msgstr "Прямая связь"
 
-#: data/ui/compressor.ui:631 data/ui/compressor.ui:618
+#: data/ui/compressor.ui:631
 msgid "Feed-back"
 msgstr "Обратная связь"
 
-#: data/ui/compressor.ui:632 data/ui/gate.ui:754 data/ui/compressor.ui:619
+#: data/ui/compressor.ui:632 data/ui/gate.ui:754
 msgid "External"
 msgstr "Внешний"
 
 # #, fuzzy
-#: data/ui/compressor.ui:641 data/ui/gate.ui:761 data/ui/compressor.ui:626
+#: data/ui/compressor.ui:641 data/ui/gate.ui:761
 msgid "Sidechain Type"
 msgstr "Тип боковой цепи"
 
 # #, fuzzy
 #: data/ui/compressor.ui:669 data/ui/gate.ui:788 src/plugins_box.cpp:647
-#: data/ui/compressor.ui:654
 msgid "Input Device"
 msgstr "Устройство ввода"
 
-#: data/ui/compressor.ui:676 data/ui/gate.ui:795 data/ui/compressor.ui:661
+#: data/ui/compressor.ui:676 data/ui/gate.ui:795
 msgid "PreAmplification"
 msgstr "Предусиление"
 
 #: data/ui/compressor.ui:713 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:697
-#: data/ui/compressor.ui:698 data/ui/multiband_compressor_band.ui:635
 msgid "Reactivity"
 msgstr "Скорость реакции"
 
 #: data/ui/compressor.ui:750 data/ui/gate.ui:869 data/ui/limiter.ui:232
 #: data/ui/multiband_compressor_band.ui:681 data/ui/multiband_gate_band.ui:730
-#: data/ui/compressor.ui:735 data/ui/limiter.ui:220
-#: data/ui/multiband_compressor_band.ui:669
 msgid "Lookahead"
 msgstr "Упреждение"
 
 # #, fuzzy
-#: data/ui/compressor.ui:793 data/ui/gate.ui:912 data/ui/compressor.ui:778
+#: data/ui/compressor.ui:793 data/ui/gate.ui:912
 msgid "Sidechain Filters"
 msgstr "Фильтры боковой цепи"
 
-#: data/ui/compressor.ui:803 data/ui/gate.ui:922 data/ui/compressor.ui:788
+#: data/ui/compressor.ui:803 data/ui/gate.ui:922
 msgid "High-Pass"
 msgstr "Фильтр ВЧ"
 
 #: data/ui/compressor.ui:829 data/ui/equalizer_band.ui:213 data/ui/filter.ui:59
 #: data/ui/gate.ui:948 data/ui/pipe_manager_box.ui:561
-#: data/ui/compressor.ui:814
 msgid "Frequency"
 msgstr "Частота"
 
 #: data/ui/compressor.ui:844 data/ui/compressor.ui:904 data/ui/gate.ui:961
-#: data/ui/gate.ui:1017 data/ui/compressor.ui:827 data/ui/compressor.ui:883
+#: data/ui/gate.ui:1017
 msgid "Off"
 msgstr "Откл"
 
 #: data/ui/compressor.ui:845 data/ui/compressor.ui:905 data/ui/gate.ui:962
-#: data/ui/gate.ui:1018 data/ui/compressor.ui:828 data/ui/compressor.ui:884
+#: data/ui/gate.ui:1018
 msgid "12 dB/oct"
 msgstr "12 дБ/окт"
 
 #: data/ui/compressor.ui:846 data/ui/compressor.ui:906 data/ui/gate.ui:963
-#: data/ui/gate.ui:1019 data/ui/compressor.ui:829 data/ui/compressor.ui:885
+#: data/ui/gate.ui:1019
 msgid "24 dB/oct"
 msgstr "24 дБ/окт"
 
 #: data/ui/compressor.ui:847 data/ui/compressor.ui:907 data/ui/gate.ui:964
-#: data/ui/gate.ui:1020 data/ui/compressor.ui:830 data/ui/compressor.ui:886
+#: data/ui/gate.ui:1020
 msgid "36 dB/oct"
 msgstr "36 дБ/окт"
 
-#: data/ui/compressor.ui:856 data/ui/gate.ui:971 data/ui/compressor.ui:837
+#: data/ui/compressor.ui:856 data/ui/gate.ui:971
 msgid "High-Pass Filter Mode"
 msgstr "Режим высокочастотного фильтра"
 
 #: data/ui/compressor.ui:882 data/ui/compressor.ui:942 data/ui/gate.ui:997
-#: data/ui/gate.ui:1053 data/ui/compressor.ui:863 data/ui/compressor.ui:919
+#: data/ui/gate.ui:1053
 msgid "High-Pass Filter Frequency"
 msgstr "Частота высокочастотного фильтра"
 
-#: data/ui/compressor.ui:916 data/ui/gate.ui:1027 data/ui/compressor.ui:893
+#: data/ui/compressor.ui:916 data/ui/gate.ui:1027
 msgid "Low-Pass Filter Mode"
 msgstr "Режим низкочастотного фильтра"
 
-#: data/ui/compressor.ui:968 data/ui/compressor.ui:945
+#: data/ui/compressor.ui:968
 msgid "Gain"
 msgstr "Усиление"
 
-#: data/ui/compressor.ui:995 data/ui/gate.ui:1106 data/ui/compressor.ui:972
+#: data/ui/compressor.ui:995 data/ui/gate.ui:1106
 msgid "Envelope"
 msgstr "Огибающая"
 
 #: data/ui/compressor.ui:1049 data/ui/gate.ui:137 data/ui/gate.ui:1160
-#: data/ui/multiband_gate_band.ui:221 data/ui/compressor.ui:1026
+#: data/ui/multiband_gate_band.ui:221
 msgid "Curve"
 msgstr "Кривая"
 
@@ -819,7 +764,6 @@ msgstr "Обход"
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:336
 #: data/ui/multiband_compressor_band.ui:140 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:171 data/ui/stereo_tools.ui:196
-#: data/ui/multiband_compressor_band.ui:136
 msgid "Mute"
 msgstr "Приглушить"
 
@@ -988,7 +932,7 @@ msgid "Quality"
 msgstr "Качество"
 
 #: data/ui/equalizer_band.ui:330 data/ui/multiband_compressor_band.ui:150
-#: data/ui/multiband_gate_band.ui:119 data/ui/multiband_compressor_band.ui:146
+#: data/ui/multiband_gate_band.ui:119
 msgid "Solo"
 msgstr "Соло"
 
@@ -1122,203 +1066,199 @@ msgstr "Передискретизация"
 msgid "Dither"
 msgstr "Подмешивать шум"
 
-#: data/ui/limiter.ui:84 data/ui/limiter.ui:82
+#: data/ui/limiter.ui:84
 msgid "Herm Thin"
 msgstr "Эрмит узкий"
 
-#: data/ui/limiter.ui:85 data/ui/limiter.ui:83
+#: data/ui/limiter.ui:85
 msgid "Herm Wide"
 msgstr "Эрмит широкий"
 
-#: data/ui/limiter.ui:86 data/ui/limiter.ui:84
+#: data/ui/limiter.ui:86
 msgid "Herm Tail"
 msgstr "Эрмит хвост"
 
-#: data/ui/limiter.ui:87 data/ui/limiter.ui:85
+#: data/ui/limiter.ui:87
 msgid "Herm Duck"
 msgstr "Эрмит нос"
 
-#: data/ui/limiter.ui:88 data/ui/limiter.ui:86
+#: data/ui/limiter.ui:88
 msgid "Exp Thin"
 msgstr "Эксп. узкий"
 
-#: data/ui/limiter.ui:89 data/ui/limiter.ui:87
+#: data/ui/limiter.ui:89
 msgid "Exp Wide"
 msgstr "Эксп. широкий"
 
-#: data/ui/limiter.ui:90 data/ui/limiter.ui:88
+#: data/ui/limiter.ui:90
 msgid "Exp Tail"
 msgstr "Эксп. хвост"
 
-#: data/ui/limiter.ui:91 data/ui/limiter.ui:89
+#: data/ui/limiter.ui:91
 msgid "Exp Duck"
 msgstr "Эксп. нос"
 
-#: data/ui/limiter.ui:92 data/ui/limiter.ui:90
+#: data/ui/limiter.ui:92
 msgid "Line Thin"
 msgstr "Лин. узкий"
 
-#: data/ui/limiter.ui:93 data/ui/limiter.ui:91
+#: data/ui/limiter.ui:93
 msgid "Line Wide"
 msgstr "Лин. широкий"
 
-#: data/ui/limiter.ui:94 data/ui/limiter.ui:92
+#: data/ui/limiter.ui:94
 msgid "Line Tail"
 msgstr "Лин. хвост"
 
-#: data/ui/limiter.ui:95 data/ui/limiter.ui:93
+#: data/ui/limiter.ui:95
 msgid "Line Duck"
 msgstr "Лин. нос"
 
 #: data/ui/limiter.ui:115 data/ui/multiband_compressor.ui:55
-#: data/ui/multiband_gate.ui:53 data/ui/limiter.ui:109
-#: data/ui/multiband_compressor.ui:53
+#: data/ui/multiband_gate.ui:53
 msgid "None"
 msgstr "Нет"
 
-#: data/ui/limiter.ui:116 data/ui/limiter.ui:110
+#: data/ui/limiter.ui:116
 msgid "Half x2(2L)"
 msgstr "Половинный x2(2L)"
 
-#: data/ui/limiter.ui:117 data/ui/limiter.ui:111
+#: data/ui/limiter.ui:117
 msgid "Half x2(3L)"
 msgstr "Половинный x2(3L)"
 
-#: data/ui/limiter.ui:118 data/ui/limiter.ui:112
+#: data/ui/limiter.ui:118
 msgid "Half x3(2L)"
 msgstr "Половинный x3(2L)"
 
-#: data/ui/limiter.ui:119 data/ui/limiter.ui:113
+#: data/ui/limiter.ui:119
 msgid "Half x3(3L)"
 msgstr "Половинный x3(3L)"
 
-#: data/ui/limiter.ui:120 data/ui/limiter.ui:114
+#: data/ui/limiter.ui:120
 msgid "Half x4(2L)"
 msgstr "Половинный x4(2L)"
 
-#: data/ui/limiter.ui:121 data/ui/limiter.ui:115
+#: data/ui/limiter.ui:121
 msgid "Half x4(3L)"
 msgstr "Половинный x4(3L)"
 
-#: data/ui/limiter.ui:122 data/ui/limiter.ui:116
+#: data/ui/limiter.ui:122
 msgid "Half x6(2L)"
 msgstr "Половинный x6(2L)"
 
-#: data/ui/limiter.ui:123 data/ui/limiter.ui:117
+#: data/ui/limiter.ui:123
 msgid "Half x6(3L)"
 msgstr "Половинный x6(3L)"
 
-#: data/ui/limiter.ui:124 data/ui/limiter.ui:118
+#: data/ui/limiter.ui:124
 msgid "Half x8(2L)"
 msgstr "Половинный x8(2L)"
 
-#: data/ui/limiter.ui:125 data/ui/limiter.ui:119
+#: data/ui/limiter.ui:125
 msgid "Half x8(3L)"
 msgstr "Половинный x8(3L)"
 
-#: data/ui/limiter.ui:126 data/ui/limiter.ui:120
+#: data/ui/limiter.ui:126
 msgid "Full x2(2L)"
 msgstr "Полный x2(2L)"
 
-#: data/ui/limiter.ui:127 data/ui/limiter.ui:121
+#: data/ui/limiter.ui:127
 msgid "Full x2(3L)"
 msgstr "Полный x2(3L)"
 
-#: data/ui/limiter.ui:128 data/ui/limiter.ui:122
+#: data/ui/limiter.ui:128
 msgid "Full x3(2L)"
 msgstr "Полный x3(2L)"
 
-#: data/ui/limiter.ui:129 data/ui/limiter.ui:123
+#: data/ui/limiter.ui:129
 msgid "Full x3(3L)"
 msgstr "Полный x3(3L)"
 
-#: data/ui/limiter.ui:130 data/ui/limiter.ui:124
+#: data/ui/limiter.ui:130
 msgid "Full x4(2L)"
 msgstr "Полный x4(2L)"
 
-#: data/ui/limiter.ui:131 data/ui/limiter.ui:125
+#: data/ui/limiter.ui:131
 msgid "Full x4(3L)"
 msgstr "Полный x4(3L)"
 
-#: data/ui/limiter.ui:132 data/ui/limiter.ui:126
+#: data/ui/limiter.ui:132
 msgid "Full x6(2L)"
 msgstr "Полный x6(2L)"
 
-#: data/ui/limiter.ui:133 data/ui/limiter.ui:127
+#: data/ui/limiter.ui:133
 msgid "Full x6(3L)"
 msgstr "Полный x6(3L)"
 
-#: data/ui/limiter.ui:134 data/ui/limiter.ui:128
+#: data/ui/limiter.ui:134
 msgid "Full x8(2L)"
 msgstr "Полный x8(2L)"
 
-#: data/ui/limiter.ui:135 data/ui/limiter.ui:129
+#: data/ui/limiter.ui:135
 msgid "Full x8(3L)"
 msgstr "Полный x8(3L)"
 
-#: data/ui/limiter.ui:191 data/ui/limiter.ui:179
+#: data/ui/limiter.ui:191
 msgid "SC PreAmp"
 msgstr "Предусил. бок. цепи"
 
 #: data/ui/limiter.ui:220 data/ui/multiband_compressor_band.ui:640
-#: data/ui/multiband_gate_band.ui:690 data/ui/limiter.ui:208
-#: data/ui/multiband_compressor_band.ui:628
+#: data/ui/multiband_gate_band.ui:690
 msgid "Sidechain PreAmplification"
 msgstr "Предусиление боковой цепи"
 
-#: data/ui/limiter.ui:395 data/ui/limiter.ui:383
+#: data/ui/limiter.ui:395
 msgid "Boost"
 msgstr "Усиление"
 
 # В данном режиме «Компрессор» обрабатывает сигналы сразу двух каналов (стерео), уравнивая их уровни.
-#: data/ui/limiter.ui:410 data/ui/limiter.ui:398
+#: data/ui/limiter.ui:410
 msgid "Stereo Link"
 msgstr "Стереосвязка"
 
 # #, fuzzy
 #: data/ui/limiter.ui:455 data/ui/multiband_compressor_band.ui:120
-#: data/ui/multiband_gate_band.ui:89 data/ui/limiter.ui:443
-#: data/ui/multiband_compressor_band.ui:116
+#: data/ui/multiband_gate_band.ui:89
 msgid "External Sidechain"
 msgstr "Внешняя боковая цепь"
 
 #: data/ui/limiter.ui:468 data/ui/multiband_compressor.ui:95
-#: data/ui/multiband_gate.ui:91 data/ui/limiter.ui:456
-#: data/ui/multiband_compressor.ui:91
+#: data/ui/multiband_gate.ui:91
 msgid "External Sidechain Source"
 msgstr "Источник внешней боковой цепи"
 
-#: data/ui/limiter.ui:487 data/ui/limiter.ui:475
+#: data/ui/limiter.ui:487
 msgid "Auto Leveling"
 msgstr "Автовыравнивание"
 
-#: data/ui/limiter.ui:527 data/ui/limiter.ui:515
+#: data/ui/limiter.ui:527
 msgid "Auto Leveling Attack"
 msgstr "Атака автовыравнивания"
 
-#: data/ui/limiter.ui:563 data/ui/limiter.ui:551
+#: data/ui/limiter.ui:563
 msgid "Auto Leveling Release"
 msgstr "Восстановление автовыравнивания"
 
-#: data/ui/limiter.ui:598 data/ui/limiter.ui:586
+#: data/ui/limiter.ui:598
 msgid "Auto Leveling Knee"
 msgstr "Колено автовыравнивания"
 
-#: data/ui/limiter.ui:623 data/ui/limiter.ui:611
+#: data/ui/limiter.ui:623
 msgid "Gain Left"
 msgstr "Усиление левого"
 
-#: data/ui/limiter.ui:650 data/ui/limiter.ui:638
+#: data/ui/limiter.ui:650
 msgid "Gain Right"
 msgstr "Усиление правого"
 
 # #, fuzzy
-#: data/ui/limiter.ui:677 data/ui/limiter.ui:665
+#: data/ui/limiter.ui:677
 msgid "Sidechain Left"
 msgstr "Боковая цепь левая"
 
 # #, fuzzy
-#: data/ui/limiter.ui:704 data/ui/limiter.ui:692
+#: data/ui/limiter.ui:704
 msgid "Sidechain Right"
 msgstr "Боковая цепь правая"
 
@@ -1353,82 +1293,66 @@ msgid "Sidechain Boost"
 msgstr "Усиление боковой цепи"
 
 #: data/ui/multiband_compressor.ui:56 data/ui/multiband_gate.ui:54
-#: data/ui/multiband_compressor.ui:54
 msgid "Pink BT"
 msgstr "БП розового"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:55
-#: data/ui/multiband_compressor.ui:55
 msgid "Pink MT"
 msgstr "СП розового"
 
 #: data/ui/multiband_compressor.ui:58 data/ui/multiband_gate.ui:56
-#: data/ui/multiband_compressor.ui:56
 msgid "Brown BT"
 msgstr "БП коричневого"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:57
-#: data/ui/multiband_compressor.ui:57
 msgid "Brown MT"
 msgstr "СП коричневого"
 
 #: data/ui/multiband_compressor.ui:110 data/ui/multiband_gate.ui:106
-#: data/ui/multiband_compressor.ui:106
 msgid "Operating Mode"
 msgstr "Режим работы"
 
 #: data/ui/multiband_compressor.ui:123 data/ui/multiband_gate.ui:117
-#: data/ui/multiband_compressor.ui:117
 msgid "Classic"
 msgstr "Классический"
 
 #: data/ui/multiband_compressor.ui:124 data/ui/multiband_gate.ui:118
-#: data/ui/multiband_compressor.ui:118
 msgid "Modern"
 msgstr "Современный"
 
 #: data/ui/multiband_compressor.ui:235 data/ui/multiband_gate.ui:227
-#: data/ui/multiband_compressor.ui:227
 msgid "Bands List"
 msgstr "Полосы"
 
 #: data/ui/multiband_compressor.ui:244 data/ui/multiband_gate.ui:236
-#: data/ui/multiband_compressor.ui:236
 msgid "Band 1"
 msgstr "Полоса 1"
 
 #: data/ui/multiband_compressor.ui:261 data/ui/multiband_gate.ui:253
-#: data/ui/multiband_compressor.ui:253
 msgid "Band 2"
 msgstr "Полоса 2"
 
 #: data/ui/multiband_compressor.ui:287 data/ui/multiband_gate.ui:279
-#: data/ui/multiband_compressor.ui:279
 msgid "Band 3"
 msgstr "Полоса 3"
 
 #: data/ui/multiband_compressor.ui:313 data/ui/multiband_gate.ui:305
-#: data/ui/multiband_compressor.ui:305
 msgid "Band 4"
 msgstr "Полоса 4"
 
 #: data/ui/multiband_compressor.ui:339 data/ui/multiband_gate.ui:331
-#: data/ui/multiband_compressor.ui:331
 msgid "Band 5"
 msgstr "Полоса 5"
 
 #: data/ui/multiband_compressor.ui:365 data/ui/multiband_gate.ui:357
-#: data/ui/multiband_compressor.ui:357
 msgid "Band 6"
 msgstr "Полоса 6"
 
 #: data/ui/multiband_compressor.ui:391 data/ui/multiband_gate.ui:383
-#: data/ui/multiband_compressor.ui:383
 msgid "Band 7"
 msgstr "Полоса 7"
 
 #: data/ui/multiband_compressor.ui:417 data/ui/multiband_gate.ui:409
-#: data/ui/multiband_compressor.ui:409
 msgid "Band 8"
 msgstr "Полоса 8"
 
@@ -1441,58 +1365,47 @@ msgid "Band End"
 msgstr "Конец полосы"
 
 #: data/ui/multiband_compressor_band.ui:112
-#: data/ui/multiband_compressor_band.ui:108
 msgid "Band Compression Mode"
 msgstr "Режим компрессии полосы"
 
 #: data/ui/multiband_compressor_band.ui:130 data/ui/multiband_gate_band.ui:99
-#: data/ui/multiband_compressor_band.ui:126
 msgid "Band Bypass"
 msgstr "Обход полосы"
 
 # #, fuzzy
 #: data/ui/multiband_compressor_band.ui:435 data/ui/multiband_gate_band.ui:494
-#: data/ui/multiband_compressor_band.ui:431
 msgid "Band Sidechain Options"
 msgstr "Параметры боковой цепи полосы"
 
 #: data/ui/multiband_compressor_band.ui:529 data/ui/multiband_gate_band.ui:580
-#: data/ui/multiband_compressor_band.ui:517
 msgid "Low-Cut Filter"
 msgstr "Фильтр среза НЧ"
 
 #: data/ui/multiband_compressor_band.ui:557 data/ui/multiband_gate_band.ui:608
-#: data/ui/multiband_compressor_band.ui:545
 msgid "Low-Cut Filter Frequency"
 msgstr "Частота фильтра среза НЧ"
 
 #: data/ui/multiband_compressor_band.ui:566 data/ui/multiband_gate_band.ui:617
-#: data/ui/multiband_compressor_band.ui:554
 msgid "High-Cut Filter"
 msgstr "Фильтр среза ВЧ"
 
 #: data/ui/multiband_compressor_band.ui:594 data/ui/multiband_gate_band.ui:645
-#: data/ui/multiband_compressor_band.ui:582
 msgid "High-Cut Filter Frequency"
 msgstr "Частота фильтра среза ВЧ"
 
 #: data/ui/multiband_compressor_band.ui:613 data/ui/multiband_gate_band.ui:664
-#: data/ui/multiband_compressor_band.ui:601
 msgid "PreAmp"
 msgstr "Предусиление"
 
 #: data/ui/multiband_compressor_band.ui:819
-#: data/ui/multiband_compressor_band.ui:807
 msgid "Band Gain"
 msgstr "Усиление полосы"
 
 #: data/ui/multiband_compressor_band.ui:844 data/ui/multiband_gate_band.ui:804
-#: data/ui/multiband_compressor_band.ui:832
 msgid "Band Envelope"
 msgstr "Огибающая полосы"
 
 #: data/ui/multiband_compressor_band.ui:869 data/ui/multiband_gate_band.ui:829
-#: data/ui/multiband_compressor_band.ui:857
 msgid "Band Curve"
 msgstr "Кривая полосы"
 
