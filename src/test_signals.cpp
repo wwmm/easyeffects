@@ -91,7 +91,33 @@ void on_process(void* userdata, spa_io_position* position) {
   }
 }
 
-const struct pw_filter_events filter_events = {.process = on_process};
+void on_filter_state_changed(void* userdata, pw_filter_state old, pw_filter_state state, const char* error) {
+  auto* d = static_cast<TestSignals::data*>(userdata);
+
+  d->ts->state = state;
+
+  switch (state) {
+    case PW_FILTER_STATE_ERROR:
+      d->ts->can_get_node_id = false;
+      break;
+    case PW_FILTER_STATE_UNCONNECTED:
+      d->ts->can_get_node_id = false;
+      break;
+    case PW_FILTER_STATE_CONNECTING:
+      d->ts->can_get_node_id = false;
+      break;
+    case PW_FILTER_STATE_STREAMING:
+      d->ts->can_get_node_id = true;
+      break;
+    case PW_FILTER_STATE_PAUSED:
+      d->ts->can_get_node_id = true;
+      break;
+    default:
+      break;
+  }
+}
+
+const struct pw_filter_events filter_events = {.state_changed = on_filter_state_changed, .process = on_process};
 
 }  // namespace
 
@@ -137,21 +163,37 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
   pf_data.out_right = static_cast<port*>(pw_filter_add_port(
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
-  if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
+  if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) != 0) {
     using namespace std::string_literals;
 
-    util::error(filter_name + " cannot connect the filter to PipeWire!"s);
+    pm->unlock();
+
+    util::warning(filter_name + " cannot connect the filter to PipeWire!"s);
+
+    return;
   }
+
+  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
 
   pm->sync_wait_unlock();
 
-  do {
-    node_id = pw_filter_get_node_id(filter);
-
+  while (!can_get_node_id) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
-  } while (node_id == SPA_ID_INVALID);
 
-  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
+    if (state == PW_FILTER_STATE_ERROR) {
+      using namespace std::string_literals;
+
+      util::warning(filter_name + " is in an error"s);
+
+      return;
+    }
+  }
+
+  pm->lock();
+
+  node_id = pw_filter_get_node_id(filter);
+
+  pm->sync_wait_unlock();
 }
 
 TestSignals::~TestSignals() {

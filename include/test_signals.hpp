@@ -51,6 +51,8 @@ class TestSignals {
 
   pw_filter* filter = nullptr;
 
+  pw_filter_state state = PW_FILTER_STATE_UNCONNECTED;
+
   uint n_samples = 0U;
 
   uint rate = 0U;
@@ -58,6 +60,8 @@ class TestSignals {
   bool create_left_channel = true;
 
   bool create_right_channel = true;
+
+  bool can_get_node_id = false;
 
   float sine_phase = 0.0F;
 
