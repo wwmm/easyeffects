@@ -157,9 +157,9 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
 TestSignals::~TestSignals() {
   util::debug("destroyed");
 
-  spa_hook_remove(&listener);
-
   pm->lock();
+
+  spa_hook_remove(&listener);
 
   pw_filter_set_active(filter, false);
 
