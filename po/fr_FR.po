@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-03 14:24+0000\n"
+"POT-Creation-Date: 2023-04-04 17:23+0000\n"
 "PO-Revision-Date: 2023-03-25 15:40+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -657,7 +657,7 @@ msgstr "Combiner"
 msgid "Stereo Width"
 msgstr "Amplitude Stéréo"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:173
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:199
 msgid "Spectrum"
 msgstr "Spectre"
 
@@ -2242,7 +2242,7 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 
-#: src/plugin_base.cpp:171
+#: src/plugin_base.cpp:197
 msgid "Output Level Meter"
 msgstr "Indicateur de niveau de sortie"
 
