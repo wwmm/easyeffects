@@ -67,6 +67,10 @@ class PluginBase {
 
   pw_filter* filter = nullptr;
 
+  pw_filter_state state = PW_FILTER_STATE_UNCONNECTED;
+
+  bool can_get_node_id = false;
+
   bool enable_probe = false;
 
   uint n_samples = 0U;

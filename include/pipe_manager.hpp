@@ -277,6 +277,8 @@ class PipeManager {
 
   void sync_wait_unlock() const;
 
+  auto wait_full() const -> int;
+
   static void lock_node_map();
 
   static void unlock_node_map();

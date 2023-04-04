@@ -1789,6 +1789,14 @@ void PipeManager::sync_wait_unlock() const {
   pw_thread_loop_unlock(thread_loop);
 }
 
+auto PipeManager::wait_full() const -> int {
+  timespec abstime;
+
+  pw_thread_loop_get_time(thread_loop, &abstime, 30 * SPA_NSEC_PER_SEC);
+
+  return pw_thread_loop_timed_wait_full(thread_loop, &abstime);
+}
+
 void PipeManager::destroy_object(const int& id) const {
   lock();
 

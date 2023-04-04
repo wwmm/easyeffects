@@ -136,7 +136,33 @@ auto update_filter(struct spa_loop* loop, bool async, uint32_t seq, const void* 
   return 0;
 }
 
-const struct pw_filter_events filter_events = {.process = on_process};
+void on_filter_state_changed(void* userdata, pw_filter_state old, pw_filter_state state, const char* error) {
+  auto* d = static_cast<PluginBase::data*>(userdata);
+
+  d->pb->state = state;
+
+  switch (state) {
+    case PW_FILTER_STATE_ERROR:
+      d->pb->can_get_node_id = false;
+      break;
+    case PW_FILTER_STATE_UNCONNECTED:
+      d->pb->can_get_node_id = false;
+      break;
+    case PW_FILTER_STATE_CONNECTING:
+      d->pb->can_get_node_id = false;
+      break;
+    case PW_FILTER_STATE_STREAMING:
+      d->pb->can_get_node_id = true;
+      break;
+    case PW_FILTER_STATE_PAUSED:
+      d->pb->can_get_node_id = true;
+      break;
+    default:
+      break;
+  }
+}
+
+const struct pw_filter_events filter_events = {.state_changed = on_filter_state_changed, .process = on_process};
 
 }  // namespace
 
@@ -292,52 +318,53 @@ void PluginBase::reset_settings() {
 
 auto PluginBase::connect_to_pw() -> bool {
   connected_to_pw = false;
-
-  /*
-    I still do not understand why we have to lock the main loop before using pw_filter_get_state after a call to
-    pw_filter_connect...
-  */
+  can_get_node_id = false;
+  state = PW_FILTER_STATE_UNCONNECTED;
 
   pm->lock();
 
-  if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) == 0) {
-    pm->sync_wait_unlock();
+  if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) != 0) {
+    pm->unlock();
 
-    while (pw_filter_get_state(filter, nullptr) != PW_FILTER_STATE_PAUSED) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    }
+    util::warning(log_tag + name + " cannot connect the filter to PipeWire!");
 
-    node_id = pw_filter_get_node_id(filter);
-
-    while (node_id == SPA_ID_INVALID) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-      node_id = pw_filter_get_node_id(filter);
-    }
-
-    /*
-      The filter we link in our pipeline have at least 4 ports. Some have six. Before we try to link filters we have to
-      wait until the information about their ports is available in PipeManager's list_ports vector.
-    */
-
-    while (pm->count_node_ports(node_id) != n_ports) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    }
-
-    initialize_listener();
-
-    connected_to_pw = true;
-
-    util::debug(log_tag + name + " successfully connected to PipeWire graph");
-
-    return true;
+    return false;
   }
 
-  pm->unlock();
+  initialize_listener();
 
-  util::warning(log_tag + name + " cannot connect the filter to PipeWire!");
+  pm->sync_wait_unlock();
 
-  return false;
+  while (!can_get_node_id) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+    if (state == PW_FILTER_STATE_ERROR) {
+      util::warning(log_tag + name + " is in an error");
+
+      return false;
+    }
+  }
+
+  pm->lock();
+
+  node_id = pw_filter_get_node_id(filter);
+
+  pm->sync_wait_unlock();
+
+  /*
+    The filter we link in our pipeline have at least 4 ports. Some have six. Before we try to link filters we have to
+    wait until the information about their ports is available in PipeManager's list_ports vector.
+  */
+
+  while (pm->count_node_ports(node_id) != n_ports) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+  }
+
+  connected_to_pw = true;
+
+  util::debug(log_tag + name + " successfully connected to PipeWire graph");
+
+  return true;
 }
 
 void PluginBase::initialize_listener() {
