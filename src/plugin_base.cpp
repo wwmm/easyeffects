@@ -293,11 +293,15 @@ PluginBase::PluginBase(std::string tag,
 PluginBase::~PluginBase() {
   post_messages = false;
 
+  pm->lock();
+
   if (listener.link.next != nullptr || listener.link.prev != nullptr) {
     spa_hook_remove(&listener);
   }
 
   pw_filter_destroy(filter);
+
+  pm->sync_wait_unlock();
 
   for (auto& handler_id : gconnections) {
     g_signal_handler_disconnect(settings, handler_id);
