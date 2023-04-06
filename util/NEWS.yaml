@@ -2,12 +2,28 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
+Description: 
+- Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 7.0.2
+Date: 2023-04-06
+
 Description:
 - Features∶
 - The Equalizer "sort bands" feature is now ordering bands on GSettings, so the result can be saved into presets.
+- Improved performance when resetting keys.
 
 - Bug fixes∶
 - Fixed the "Large Empty Hall" preset selection in the Reverberation effect.
+- Fixed some misuses of PipeWire's API that can potentially fix some random bugs some users are facing.
 
 - Other notes∶
 - As we are removing code deprecated by `GTK 4.10` the minimum GTK version has been increased.

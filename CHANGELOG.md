@@ -1,10 +1,25 @@
 # Changelog
+ 
+## 7.0.2
+### 2023-04-06
+
+
+### Features:
+- The Equalizer "sort bands" feature is now ordering bands on GSettings, so the result can be saved into presets.
+- Improved performance when resetting keys.
+
+### Bug fixes:
+- Fixed the "Large Empty Hall" preset selection in the Reverberation effect.
+- Fixed some misuses of PipeWire's API that can potentially fix some random bugs some users are facing.
+
+### Other notes:
+- As we are removing code deprecated by `GTK 4.10` the minimum GTK version has been increased.
 
  
 ## 7.0.1
 ### 2023-02-26
 
- 
+
 ### Features:
 - The spectrum plugin update rate was improved. Different sampling rates should lead to similar update frequencies visually.
 - The update interval used by level meters and the spectrum can be customized by the user.

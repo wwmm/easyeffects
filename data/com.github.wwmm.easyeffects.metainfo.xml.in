@@ -33,6 +33,20 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.0.2" date="2023-04-06T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>The Equalizer "sort bands" feature is now ordering bands on GSettings, so the result can be saved into presets.</li>
+          <li>Improved performance when resetting keys.</li>
+          <li>Bug fixes:</li>
+          <li>Fixed the "Large Empty Hall" preset selection in the Reverberation effect.</li>
+          <li>Fixed some misuses of PipeWire's API that can potentially fix some random bugs some users are facing.</li>
+          <li>Other notes:</li>
+          <li>As we are removing code deprecated by GTK 4.10 the minimum GTK version has been increased.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.0.1" date="2023-02-26T00:00:00Z">
       <description>
         <ul>
