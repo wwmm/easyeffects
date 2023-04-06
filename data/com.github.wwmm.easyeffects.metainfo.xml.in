@@ -33,6 +33,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.0.3" date="2023-04-06T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Updated translations.</li>
+          <li>Bug fixes:</li>
+          <li>A small mistake was done in the last release. Making a new one to make sure people have the right branch in the package</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.0.2" date="2023-04-06T00:00:00Z">
       <description>
         <ul>

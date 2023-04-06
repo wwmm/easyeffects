@@ -1,5 +1,16 @@
 # Changelog
  
+## 7.0.3
+### 2023-04-06
+
+ 
+### Features:
+- Updated translations.
+
+### Bug fixes:
+- A small mistake was done in the last release. Making a new one to make sure people have the right branch in the package
+
+ 
 ## 7.0.2
 ### 2023-04-06
 
