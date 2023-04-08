@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-06 16:08+0000\n"
-"PO-Revision-Date: 2023-03-11 15:57+0000\n"
+"PO-Revision-Date: 2023-04-07 23:50+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -122,9 +122,8 @@ msgid "Features:"
 msgstr "Características:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
-#, fuzzy
 msgid "Updated translations."
-msgstr "Traducciones actualizadas"
+msgstr "Traducciones actualizadas."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
@@ -156,27 +155,36 @@ msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
 msgstr ""
+"Un pequeño error se hizo en la última versión. Hacer una nueva para "
+"asegurarte de que la gente tiene la rama correcta en el paquete"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
 msgstr ""
+"La función de \"ordenar bandas\" del ecualizador ahora ordena las bandas en "
+"GSettings, por lo que el resultado se puede guardar en los preajustes."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "Improved performance when resetting keys."
-msgstr ""
+msgstr "Mejora del rendimiento al restablecer las claves."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
 msgstr ""
+"Se ha corregido la selección del preajuste \"Una gran sala vacía\" el efecto "
+"de Reverberación."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid ""
 "Fixed some misuses of PipeWire's API that can potentially fix some random "
 "bugs some users are facing."
 msgstr ""
+"Corregidos algunos errores de uso de la API de PipeWire que potencialmente "
+"pueden solucionar algunos fallos aleatorios a los que se enfrentan algunos "
+"usuarios."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
@@ -193,6 +201,8 @@ msgid ""
 "As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
 "been increased."
 msgstr ""
+"Como estamos eliminando código obsoleto de GTK 4.10, se ha aumentado la "
+"versión mínima de GTK."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""

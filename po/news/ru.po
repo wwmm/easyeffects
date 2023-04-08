@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-06 16:08+0000\n"
-"PO-Revision-Date: 2023-04-01 11:40+0000\n"
+"PO-Revision-Date: 2023-04-07 23:50+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -121,9 +121,8 @@ msgid "Features:"
 msgstr "Возможности:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
-#, fuzzy
 msgid "Updated translations."
-msgstr "Обновлены переводы"
+msgstr "Обновлённые переводы."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:41
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:52
@@ -155,27 +154,34 @@ msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
 msgstr ""
+"В последнем выпуске была допущена небольшая ошибка. В новом выпуске у людей "
+"будет нужная ветка в пакете"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
 msgstr ""
+"Функция эквалайзера «сортировать полосы» теперь упорядочивает полосы в "
+"GSettings, так что результат можно хранить в предустановках."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "Improved performance when resetting keys."
-msgstr ""
+msgstr "Улучшена производительность при сбросе клавиш."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
 msgstr ""
+"Исправлен выбор предустановки «Большой пустой зал» в эффекте реверберации."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid ""
 "Fixed some misuses of PipeWire's API that can potentially fix some random "
 "bugs some users are facing."
 msgstr ""
+"Исправлены некоторые огрехи в API PipeWire, что потенциально может поправить "
+"различные ошибки, с которыми сталкивались пользователи."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
@@ -192,6 +198,8 @@ msgid ""
 "As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
 "been increased."
 msgstr ""
+"Поскольку мы удаляем код, устаревший в GTK 4.10, минимальная версия GTK была "
+"увеличена."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
