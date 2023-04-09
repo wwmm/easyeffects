@@ -18,7 +18,7 @@ project(
 # see https://github.com/wwmm/easyeffects/pull/1739 for more info
 cxx = meson.get_compiler('cpp')
 
-if cxx.get_id() == 'clang' and not cxx_version.version_compare('>=16.0.0')
+if cxx.get_id() == 'clang' and not cxx.version().version_compare('>=16.0.0')
   error('This project only supports gcc or > clang 16 compilers due to usage of c++20 features.')
 endif
 
