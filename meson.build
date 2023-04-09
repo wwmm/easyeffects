@@ -15,6 +15,14 @@ project(
 	meson_version: '>= 0.59.0'
 )
 
+# see https://github.com/wwmm/easyeffects/pull/1739 for more info
+cxx = meson.get_compiler('cpp')
+cxx_version=cxx.version()
+if cxx.get_id() == 'clang'
+  clang_version = cxx_version.version_compare('>=16.0.0')
+  assert(clang_version == true, 'This project only supports gcc or > clang 16 compilers due to usage of c++20 features.')
+endif
+
 suppressed_warnings = [
   '-Wno-missing-field-initializers',
   '-Wno-unused-parameter'
