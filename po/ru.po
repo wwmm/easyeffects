@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-06 16:08+0000\n"
-"PO-Revision-Date: 2023-04-01 11:37+0000\n"
+"PO-Revision-Date: 2023-04-13 07:52+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1032,7 +1032,7 @@ msgstr "Отставание"
 
 #: data/ui/gate.ui:326
 msgid "Mix"
-msgstr "Микс"
+msgstr "Сведение"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
@@ -2069,7 +2069,7 @@ msgstr "Стерео > Моно левый+правый каналы"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr "Стерео > Поменять каналы местами"
+msgstr "ЛП > ПЛ (обратить каналы стерео)"
 
 #: data/ui/stereo_tools.ui:147
 msgid "Stereo Mode"
