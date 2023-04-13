@@ -54,7 +54,7 @@ metainfo_file = i18n_mod.merge_file(
     configuration: data_conf
   ),
   output: '@0@.metainfo.xml'.format(app_id),
-  po_dir: '../po',
+  po_dir: '../po/news',
   install: true,
   install_dir: join_paths(datadir, 'metainfo')
 )
