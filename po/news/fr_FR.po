@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 16:08+0000\n"
+"POT-Creation-Date: 2023-04-13 02:51+0000\n"
 "PO-Revision-Date: 2023-04-13 01:52+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
@@ -169,7 +169,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "Improved performance when resetting keys."
-msgstr "Amélioration de la performance lors de la réinitialisation des touches."
+msgstr ""
+"Amélioration de la performance lors de la réinitialisation des touches."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
