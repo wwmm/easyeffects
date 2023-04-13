@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 14:59+0000\n"
-"PO-Revision-Date: 2023-03-20 04:38+0000\n"
+"POT-Creation-Date: 2023-04-06 16:08+0000\n"
+"PO-Revision-Date: 2023-04-13 15:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -120,7 +120,6 @@ msgid "Features:"
 msgstr "Functies:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
-#, fuzzy
 msgid "Updated translations."
 msgstr "Bijgewerkte vertalingen"
 
@@ -154,6 +153,9 @@ msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
 msgstr ""
+"Er is een klein foutje gemaakt in de laatste uitgave. Er is een nieuwe "
+"gemaakt om er zeker van te zijn dat mensen de juiste branch van het pakket "
+"hebben"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 msgid ""
