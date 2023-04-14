@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-13 14:59+0000\n"
-"PO-Revision-Date: 2023-04-13 07:52+0000\n"
+"PO-Revision-Date: 2023-04-14 08:50+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -450,7 +450,7 @@ msgstr "Порог восстановления"
 #: data/ui/compressor.ui:304 data/ui/deesser.ui:333
 #: data/ui/multiband_compressor_band.ui:313
 msgid "Ratio"
-msgstr "Степень сжатия"
+msgstr "Соотношение"
 
 #: data/ui/compressor.ui:341 data/ui/limiter.ui:570
 #: data/ui/multiband_compressor_band.ui:351
@@ -490,7 +490,7 @@ msgstr "Пик"
 #: data/ui/compressor.ui:520 data/ui/deesser.ui:47 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:475 data/ui/multiband_gate_band.ui:532
 msgid "RMS"
-msgstr "Среднеквадратичное (RMS)"
+msgstr "Среднеквадратично"
 
 #: data/ui/compressor.ui:521 data/ui/compressor.ui:889 data/ui/gate.ui:1004
 #: data/ui/multiband_compressor_band.ui:476
@@ -1264,7 +1264,7 @@ msgstr "Боковая цепь правая"
 
 #: data/ui/loudness.ui:27
 msgid "Standard"
-msgstr "Стандартный"
+msgstr "Стандарт"
 
 #: data/ui/loudness.ui:32
 msgid "Flat"
@@ -1603,7 +1603,7 @@ msgstr "Переходные звуки"
 
 #: data/ui/pitch.ui:108
 msgid "Crisp"
-msgstr "Чёткость"
+msgstr "Чёткий"
 
 #: data/ui/pitch.ui:109
 msgid "Mixed"
@@ -2017,7 +2017,7 @@ msgstr "Начало"
 
 #: data/ui/speex.ui:113
 msgid "Continue"
-msgstr "Продолжить"
+msgstr "Продолжать"
 
 #: data/ui/speex.ui:137
 msgid "Noise Suppression"
