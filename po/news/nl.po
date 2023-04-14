@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-06 16:08+0000\n"
-"PO-Revision-Date: 2023-04-13 15:01+0000\n"
+"PO-Revision-Date: 2023-04-14 20:49+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -155,28 +155,34 @@ msgid ""
 msgstr ""
 "Er is een klein foutje gemaakt in de laatste uitgave. Er is een nieuwe "
 "gemaakt om er zeker van te zijn dat mensen de juiste branch van het pakket "
-"hebben"
+"hebben."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
 msgstr ""
+"De equalizer-‘sort bands’-functie ordent nu banden op GSettings, zodat het "
+"resultaat kan worden opgeslagen in voorinstellingen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "Improved performance when resetting keys."
-msgstr ""
+msgstr "Verbeterde prestaties bij het resetten van toetsen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:53
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
 msgstr ""
+"Probleem met de selectie van de ‘Grote lege zaal’-voorinstelling in het "
+"nagalmeffect is opgelost."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:54
 msgid ""
 "Fixed some misuses of PipeWire's API that can potentially fix some random "
 "bugs some users are facing."
 msgstr ""
+"Enkele misbruiken van de API van PipeWire opgelost die mogelijk enkele "
+"willekeurige problemen van sommige gebruikers kunnen verhelpen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:55
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
@@ -193,6 +199,8 @@ msgid ""
 "As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
 "been increased."
 msgstr ""
+"Omdat we code verwijderen die door GTK 4.10 is afgeschreven, is de minimale "
+"GTK-versie verhoogd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
@@ -500,12 +508,18 @@ msgid ""
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
+"Om problemen met het scrollen met de muis te voorkomen, tonen de items in de "
+"lijst met apps in het tabblad Spelers/Opnemers geen volumeschaal meer. Meer "
+"details over het probleem en de oplossing zijn te vinden in de issues 1211 "
+"en 1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:160
 msgid ""
 "When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
 msgstr ""
+"Wanneer er geen app beschikbaar is voor weergave in de Spelers/Opnemers "
+"wordt een bericht getoond aan de gebruiker"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
 msgid "Many translation updates"
