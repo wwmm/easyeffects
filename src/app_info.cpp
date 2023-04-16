@@ -86,7 +86,7 @@ auto get_app_icon_name(const NodeInfo& node_info) -> std::string {
   // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
 
   constexpr auto icon_map = std::to_array<std::pair<const char*, const char*>>(
-      {{"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"Nightly","firefox-nightly"}, {"obs", "com.obsproject.Studio"}});
+      {{"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"nightly","firefox-nightly"}, {"obs", "com.obsproject.Studio"}});
 
   std::string icon_name;
 
