@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-13 14:59+0000\n"
+"POT-Creation-Date: 2023-04-17 14:57+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -150,62 +150,62 @@ msgstr "Angkatan Maksimal"
 msgid "Reference"
 msgstr "Referensi"
 
-#: data/ui/autogain.ui:144 data/ui/autogain.ui:185
+#: data/ui/autogain.ui:146 data/ui/autogain.ui:189
 msgid "Momentary"
 msgstr "Efek Sejenak"
 
-#: data/ui/autogain.ui:145 data/ui/autogain.ui:215
+#: data/ui/autogain.ui:147 data/ui/autogain.ui:219
 #, fuzzy
 msgid "Short-Term"
 msgstr "Waktu Singkat"
 
-#: data/ui/autogain.ui:146 data/ui/autogain.ui:245
+#: data/ui/autogain.ui:148 data/ui/autogain.ui:249
 msgid "Integrated"
 msgstr "Terintegrasi"
 
-#: data/ui/autogain.ui:147
+#: data/ui/autogain.ui:149
 #, fuzzy
 msgid "Geometric Mean (MSI)"
 msgstr "Terapkan Gradien warna"
 
-#: data/ui/autogain.ui:148
+#: data/ui/autogain.ui:150
 #, fuzzy
 msgid "Geometric Mean (MS)"
 msgstr "Terapkan Gradien warna"
 
-#: data/ui/autogain.ui:149
+#: data/ui/autogain.ui:151
 #, fuzzy
 msgid "Geometric Mean (MI)"
 msgstr "Terapkan Gradien warna"
 
-#: data/ui/autogain.ui:150
+#: data/ui/autogain.ui:152
 #, fuzzy
 msgid "Geometric Mean (SI)"
 msgstr "Terapkan Gradien warna"
 
-#: data/ui/autogain.ui:165
+#: data/ui/autogain.ui:169
 msgid "Reset History"
 msgstr "Atur Ulang Riwayat"
 
-#: data/ui/autogain.ui:275
+#: data/ui/autogain.ui:279
 msgid "Relative"
 msgstr "Relatif"
 
-#: data/ui/autogain.ui:305
+#: data/ui/autogain.ui:309
 msgid "Range"
 msgstr "Rentang"
 
-#: data/ui/autogain.ui:338 data/ui/bass_loudness.ui:27
+#: data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
 #: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Kelantangan"
 
-#: data/ui/autogain.ui:370
+#: data/ui/autogain.ui:374
 #, fuzzy
 msgid "Output Gain"
 msgstr "Gain Input"
 
-#: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:262
+#: data/ui/autogain.ui:411 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:592
 #: data/ui/compressor.ui:1086 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:191
@@ -220,7 +220,7 @@ msgstr "Gain Input"
 msgid "Input"
 msgstr "Masukan"
 
-#: data/ui/autogain.ui:426 data/ui/bass_enhancer.ui:281
+#: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1105
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:436 data/ui/delay.ui:210 data/ui/echo_canceller.ui:131
@@ -233,7 +233,7 @@ msgstr "Masukan"
 msgid "Plugin Input Gain"
 msgstr "Gain Input"
 
-#: data/ui/autogain.ui:491 data/ui/bass_enhancer.ui:346
+#: data/ui/autogain.ui:495 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1170 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:275
@@ -247,7 +247,7 @@ msgstr "Gain Input"
 msgid "Output"
 msgstr "Output"
 
-#: data/ui/autogain.ui:510 data/ui/bass_enhancer.ui:365
+#: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1189
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:520 data/ui/delay.ui:294 data/ui/echo_canceller.ui:215
@@ -260,7 +260,7 @@ msgstr "Output"
 msgid "Plugin Output Gain"
 msgstr "Gain Input"
 
-#: data/ui/autogain.ui:573 data/ui/bass_enhancer.ui:459
+#: data/ui/autogain.ui:577 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1252
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:285 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:643 data/ui/delay.ui:357 data/ui/echo_canceller.ui:278
@@ -273,7 +273,7 @@ msgstr "Gain Input"
 msgid "Reset"
 msgstr "Atur Ulang"
 
-#: data/ui/autogain.ui:587 data/ui/bass_enhancer.ui:473
+#: data/ui/autogain.ui:591 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1266
 #: data/ui/convolver.ui:406 data/ui/crossfeed.ui:299 data/ui/deesser.ui:657
 #: data/ui/delay.ui:371 data/ui/echo_canceller.ui:292 data/ui/equalizer.ui:552
