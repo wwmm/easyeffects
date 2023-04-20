@@ -43,7 +43,7 @@ struct _StereoToolsBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkComboBoxText* mode;
+  GtkDropDown* mode;
 
   GtkSpinButton *balance_in, *balance_out, *slev, *sbal, *mlev, *mpan, *stereo_base, *delay, *sc_level, *stereo_phase,
       *dry, *wet;
@@ -141,7 +141,7 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 
   g_settings_bind(self->settings, "phaser", self->phaser, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
 }
 
 void dispose(GObject* object) {
