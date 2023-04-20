@@ -129,8 +129,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://breakfastquay.com/files/releases/rubberband-3.2.0.tar.bz2",
-                            "sha256": "7905a9516b5b2138d28ebcab978e7cae3558670d096f812c9688813752e3c119",
+                            "url": "https://breakfastquay.com/files/releases/rubberband-3.2.1.tar.bz2",
+                            "sha256": "82edacd0c50bfe56a6a85db1fcd4ca3346940ffe02843fc50f8b92f99a97d172",
                             "x-checker-data": {
                                 "type": "html",
                                 "url": "https://www.breakfastquay.com/rubberband/",
@@ -149,7 +149,7 @@
                     "type": "git",
                     "url": "https://github.com/xiph/rnnoise.git",
                     "commit": "1cbdbcf1283499bbb2230a6b0f126eb9b236defd",
-                     "x-checker-data": {
+                    "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/xiph/rnnoise/commits",
                         "commit-query": "first( .[].sha )",
@@ -216,8 +216,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.8.0.tar.gz",
-                    "sha256": "eee380323bb7ce864355ed9431f85c43955faaae9e9bce35c62b372d7ffd9f8b",
+                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.9.0.tar.gz",
+                    "sha256": "1ce48f34dada7837f510735ff1172f6e2c261b09460e3bf773b49791d247d24e",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 227581,
@@ -253,7 +253,7 @@
         {
             "name": "zenity",
             "buildsystem": "meson",
-            "build-commands" : [
+            "build-commands": [
                 "mkdir -p /app/share/icons/hicolor"
             ],
             "sources": [
