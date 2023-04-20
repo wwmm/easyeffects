@@ -95,7 +95,12 @@ auto get_app_icon_name(const NodeInfo& node_info) -> std::string {
   } else if (!node_info.media_icon_name.empty()) {
     icon_name = node_info.media_icon_name;
   } else if (!node_info.name.empty()) {
-    icon_name = node_info.name;
+    const std::string prefix = "alsa_playback.";
+    if (node_info.name.substr(0, prefix.size()) == prefix) {
+      icon_name = node_info.name.substr(prefix.size());
+    } else {
+      icon_name = node_info.name;
+    }
 
     // get lowercase name so if it changes in the future, we have a chance to pick the same index
 
