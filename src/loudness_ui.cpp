@@ -43,7 +43,7 @@ struct _LoudnessBox {
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
 
-  GtkComboBoxText *fft_size, *standard;
+  GtkDropDown *fft_size, *standard;
 
   GtkSwitch* clipping;
 
@@ -100,9 +100,9 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  g_settings_bind(self->settings, "fft", self->fft_size, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "fft", self->fft_size);
 
-  g_settings_bind(self->settings, "std", self->standard, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "std", self->standard);
 
   g_settings_bind(self->settings, "volume", gtk_spin_button_get_adjustment(self->volume), "value",
                   G_SETTINGS_BIND_DEFAULT);

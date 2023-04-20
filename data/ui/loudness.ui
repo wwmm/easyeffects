@@ -26,14 +26,18 @@
                                             <object class="AdwActionRow">
                                                 <property name="title" translatable="yes">Standard</property>
                                                 <child>
-                                                    <object class="GtkComboBoxText" id="standard">
+                                                    <object class="GtkDropDown" id="standard">
                                                         <property name="valign">center</property>
-                                                        <items>
-                                                            <item translatable="yes" id="Flat">Flat</item>
-                                                            <item id="ISO226-2003">ISO 226:2003</item>
-                                                            <item id="Fletcher-Munson">Fletcher-Munson</item>
-                                                            <item id="Robinson-Dadson">Robinson-Dadson</item>
-                                                        </items>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item translatable="yes">Flat</item>
+                                                                    <item>ISO 226:2003</item>
+                                                                    <item>Fletcher-Munson</item>
+                                                                    <item>Robinson-Dadson</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
                                                     </object>
                                                 </child>
                                             </object>
@@ -43,17 +47,21 @@
                                             <object class="AdwActionRow">
                                                 <property name="title" translatable="yes">FFT Size</property>
                                                 <child>
-                                                    <object class="GtkComboBoxText" id="fft_size">
+                                                    <object class="GtkDropDown" id="fft_size">
                                                         <property name="valign">center</property>
-                                                        <items>
-                                                            <item id="256">256</item>
-                                                            <item id="512">512</item>
-                                                            <item id="1024">1024</item>
-                                                            <item id="2048">2048</item>
-                                                            <item id="4096">4096</item>
-                                                            <item id="8192">8192</item>
-                                                            <item id="16384">16384</item>
-                                                        </items>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item>256</item>
+                                                                    <item>512</item>
+                                                                    <item>1024</item>
+                                                                    <item>2048</item>
+                                                                    <item>4096</item>
+                                                                    <item>8192</item>
+                                                                    <item>16384</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
                                                     </object>
                                                 </child>
                                             </object>
