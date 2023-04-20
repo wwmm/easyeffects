@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-17 14:57+0000\n"
+"POT-Creation-Date: 2023-04-20 11:59-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -215,27 +215,27 @@ msgstr "Výstupný Zisk"
 #: data/ui/autogain.ui:411 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:592
 #: data/ui/compressor.ui:1086 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
-#: data/ui/crystalizer.ui:46 data/ui/deesser.ui:417 data/ui/delay.ui:191
+#: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:191
 #: data/ui/echo_canceller.ui:112 data/ui/equalizer.ui:372
 #: data/ui/exciter.ui:262 data/ui/filter.ui:145 data/ui/gate.ui:717
-#: data/ui/gate.ui:1197 data/ui/limiter.ui:740 data/ui/loudness.ui:132
+#: data/ui/gate.ui:1197 data/ui/limiter.ui:740 data/ui/loudness.ui:140
 #: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:462
 #: data/ui/multiband_gate.ui:454 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:183 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:625
+#: data/ui/stereo_tools.ui:629
 msgid "Input"
 msgstr "Vstup"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1105
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
-#: data/ui/deesser.ui:436 data/ui/delay.ui:210 data/ui/echo_canceller.ui:131
+#: data/ui/deesser.ui:443 data/ui/delay.ui:210 data/ui/echo_canceller.ui:131
 #: data/ui/equalizer.ui:391 data/ui/exciter.ui:281 data/ui/filter.ui:164
-#: data/ui/gate.ui:1216 data/ui/limiter.ui:759 data/ui/loudness.ui:151
+#: data/ui/gate.ui:1216 data/ui/limiter.ui:759 data/ui/loudness.ui:159
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:481
 #: data/ui/multiband_gate.ui:473 data/ui/pitch.ui:324 data/ui/reverb.ui:385
-#: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:644
+#: data/ui/rnnoise.ui:174 data/ui/speex.ui:202 data/ui/stereo_tools.ui:648
 #, fuzzy
 msgid "Plugin Input Gain"
 msgstr "Výstupný Zisk"
@@ -243,26 +243,26 @@ msgstr "Výstupný Zisk"
 #: data/ui/autogain.ui:495 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1170 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
-#: data/ui/crystalizer.ui:130 data/ui/deesser.ui:501 data/ui/delay.ui:275
+#: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:275
 #: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:456
 #: data/ui/exciter.ui:346 data/ui/filter.ui:229 data/ui/gate.ui:1281
-#: data/ui/limiter.ui:824 data/ui/loudness.ui:216 data/ui/maximizer.ui:193
+#: data/ui/limiter.ui:824 data/ui/loudness.ui:224 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:546 data/ui/multiband_gate.ui:538
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
-#: data/ui/speex.ui:267 data/ui/stereo_tools.ui:381 data/ui/stereo_tools.ui:709
+#: data/ui/speex.ui:267 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
 msgid "Output"
 msgstr "Výstup"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1189
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
-#: data/ui/deesser.ui:520 data/ui/delay.ui:294 data/ui/echo_canceller.ui:215
+#: data/ui/deesser.ui:527 data/ui/delay.ui:294 data/ui/echo_canceller.ui:215
 #: data/ui/equalizer.ui:475 data/ui/exciter.ui:365 data/ui/filter.ui:248
-#: data/ui/gate.ui:1300 data/ui/limiter.ui:843 data/ui/loudness.ui:235
+#: data/ui/gate.ui:1300 data/ui/limiter.ui:843 data/ui/loudness.ui:243
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:565
 #: data/ui/multiband_gate.ui:557 data/ui/pitch.ui:408 data/ui/reverb.ui:469
-#: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:728
+#: data/ui/rnnoise.ui:258 data/ui/speex.ui:286 data/ui/stereo_tools.ui:732
 #, fuzzy
 msgid "Plugin Output Gain"
 msgstr "Výstupný Zisk"
@@ -270,25 +270,25 @@ msgstr "Výstupný Zisk"
 #: data/ui/autogain.ui:577 data/ui/bass_enhancer.ui:459
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1252
 #: data/ui/convolver.ui:392 data/ui/crossfeed.ui:285 data/ui/crystalizer.ui:204
-#: data/ui/deesser.ui:643 data/ui/delay.ui:357 data/ui/echo_canceller.ui:278
+#: data/ui/deesser.ui:650 data/ui/delay.ui:357 data/ui/echo_canceller.ui:278
 #: data/ui/equalizer.ui:538 data/ui/equalizer_band.ui:239
 #: data/ui/equalizer_band.ui:310 data/ui/exciter.ui:458 data/ui/filter.ui:311
-#: data/ui/gate.ui:1393 data/ui/limiter.ui:906 data/ui/loudness.ui:298
+#: data/ui/gate.ui:1393 data/ui/limiter.ui:906 data/ui/loudness.ui:306
 #: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:628
 #: data/ui/multiband_gate.ui:620 data/ui/pitch.ui:471 data/ui/reverb.ui:532
-#: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:791
+#: data/ui/rnnoise.ui:321 data/ui/speex.ui:349 data/ui/stereo_tools.ui:795
 msgid "Reset"
 msgstr "Obnoviť pôvodné hodnoty"
 
 #: data/ui/autogain.ui:591 data/ui/bass_enhancer.ui:473
 #: data/ui/bass_loudness.ui:290 data/ui/compressor.ui:1266
-#: data/ui/convolver.ui:406 data/ui/crossfeed.ui:299 data/ui/deesser.ui:657
+#: data/ui/convolver.ui:406 data/ui/crossfeed.ui:299 data/ui/deesser.ui:664
 #: data/ui/delay.ui:371 data/ui/echo_canceller.ui:292 data/ui/equalizer.ui:552
 #: data/ui/exciter.ui:472 data/ui/filter.ui:325 data/ui/gate.ui:1407
-#: data/ui/limiter.ui:920 data/ui/loudness.ui:312 data/ui/maximizer.ui:321
+#: data/ui/limiter.ui:920 data/ui/loudness.ui:320 data/ui/maximizer.ui:321
 #: data/ui/multiband_compressor.ui:642 data/ui/multiband_gate.ui:634
 #: data/ui/pitch.ui:485 data/ui/reverb.ui:546 data/ui/rnnoise.ui:335
-#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:805
+#: data/ui/speex.ui:363 data/ui/stereo_tools.ui:809
 msgid "Using"
 msgstr ""
 
@@ -385,7 +385,7 @@ msgid "Compressor"
 msgstr "Kompresor"
 
 #: data/ui/compressor.ui:53 data/ui/compressor.ui:507 data/ui/compressor.ui:816
-#: data/ui/deesser.ui:64 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:138
+#: data/ui/deesser.ui:68 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:138
 #: data/ui/filter.ui:27 data/ui/gate.ui:640 data/ui/gate.ui:935
 #: data/ui/limiter.ui:46 data/ui/multiband_compressor_band.ui:461
 #: data/ui/multiband_gate_band.ui:520 data/ui/pitch.ui:32
@@ -428,7 +428,7 @@ msgstr "Nábeh"
 msgid "Time"
 msgstr "V reálnom čase"
 
-#: data/ui/compressor.ui:192 data/ui/deesser.ui:299 data/ui/gate.ui:153
+#: data/ui/compressor.ui:192 data/ui/deesser.ui:307 data/ui/gate.ui:153
 #: data/ui/gate.ui:247 data/ui/limiter.ui:358 data/ui/maximizer.ui:50
 #: data/ui/multiband_compressor_band.ui:181 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
@@ -463,7 +463,7 @@ msgstr "Uvoľnenie"
 msgid "Release Threshold"
 msgstr "Relatívny prah uvoľnenia"
 
-#: data/ui/compressor.ui:304 data/ui/deesser.ui:333
+#: data/ui/compressor.ui:304 data/ui/deesser.ui:341
 #: data/ui/multiband_compressor_band.ui:313
 msgid "Ratio"
 msgstr "Pomer"
@@ -473,7 +473,7 @@ msgstr "Pomer"
 msgid "Knee"
 msgstr "Prechod"
 
-#: data/ui/compressor.ui:376 data/ui/deesser.ui:369 data/ui/gate.ui:428
+#: data/ui/compressor.ui:376 data/ui/deesser.ui:376 data/ui/gate.ui:428
 #: data/ui/multiband_compressor_band.ui:389 data/ui/multiband_gate_band.ui:418
 msgid "Makeup"
 msgstr "Pozdvihnutie"
@@ -481,7 +481,7 @@ msgstr "Pozdvihnutie"
 #: data/ui/compressor.ui:411 data/ui/delay.ui:52 data/ui/delay.ui:127
 #: data/ui/gate.ui:342 data/ui/multiband_compressor.ui:140
 #: data/ui/multiband_gate.ui:132 data/ui/reverb.ui:212
-#: data/ui/stereo_tools.ui:534
+#: data/ui/stereo_tools.ui:538
 #, fuzzy
 msgid "Dry Level"
 msgstr "Úroveň F2"
@@ -489,7 +489,7 @@ msgstr "Úroveň F2"
 #: data/ui/compressor.ui:446 data/ui/delay.ui:75 data/ui/delay.ui:150
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:174
 #: data/ui/multiband_gate.ui:166 data/ui/reverb.ui:246
-#: data/ui/stereo_tools.ui:570
+#: data/ui/stereo_tools.ui:574
 #, fuzzy
 msgid "Wet Level"
 msgstr "Cieľová úroveň"
@@ -499,12 +499,12 @@ msgstr "Cieľová úroveň"
 msgid "Sidechain"
 msgstr "Postranný reťazec"
 
-#: data/ui/compressor.ui:519 data/ui/deesser.ui:48 data/ui/gate.ui:650
+#: data/ui/compressor.ui:519 data/ui/deesser.ui:50 data/ui/gate.ui:650
 #: data/ui/multiband_compressor_band.ui:474 data/ui/multiband_gate_band.ui:531
 msgid "Peak"
 msgstr "Vrchol"
 
-#: data/ui/compressor.ui:520 data/ui/deesser.ui:47 data/ui/gate.ui:651
+#: data/ui/compressor.ui:520 data/ui/deesser.ui:49 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:475 data/ui/multiband_gate_band.ui:532
 msgid "RMS"
 msgstr "RMS"
@@ -542,14 +542,14 @@ msgstr "Postranný"
 #: data/ui/compressor.ui:563 data/ui/delay.ui:28 data/ui/equalizer.ui:219
 #: data/ui/gate.ui:690 data/ui/multiband_compressor_band.ui:508
 #: data/ui/multiband_gate_band.ui:561 data/ui/pipe_manager_box.ui:504
-#: data/ui/stereo_tools.ui:161
+#: data/ui/stereo_tools.ui:165
 msgid "Left"
 msgstr "Ľavý"
 
 #: data/ui/compressor.ui:564 data/ui/delay.ui:103 data/ui/equalizer.ui:246
 #: data/ui/gate.ui:691 data/ui/multiband_compressor_band.ui:509
 #: data/ui/multiband_gate_band.ui:562 data/ui/pipe_manager_box.ui:515
-#: data/ui/stereo_tools.ui:216
+#: data/ui/stereo_tools.ui:220
 msgid "Right"
 msgstr "Pravý"
 
@@ -799,7 +799,7 @@ msgstr "Premostiť"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:336
 #: data/ui/multiband_compressor_band.ui:140 data/ui/multiband_gate_band.ui:109
-#: data/ui/stereo_tools.ui:171 data/ui/stereo_tools.ui:196
+#: data/ui/stereo_tools.ui:175 data/ui/stereo_tools.ui:200
 msgid "Mute"
 msgstr "Stíšený"
 
@@ -807,68 +807,68 @@ msgstr "Stíšený"
 msgid "Detection"
 msgstr "Detekcia"
 
-#: data/ui/deesser.ui:71
+#: data/ui/deesser.ui:77
 msgid "Wide"
 msgstr "Široký"
 
-#: data/ui/deesser.ui:72
+#: data/ui/deesser.ui:78
 msgid "Split"
 msgstr "Rozdeliť"
 
-#: data/ui/deesser.ui:88
+#: data/ui/deesser.ui:96
 msgid "F1 Split"
 msgstr "Rozdeliť F1"
 
-#: data/ui/deesser.ui:108
+#: data/ui/deesser.ui:116
 #, fuzzy
 msgid "Frequency 1 Split"
 msgstr "Frekvencia"
 
-#: data/ui/deesser.ui:121
+#: data/ui/deesser.ui:129
 msgid "F2 Peak"
 msgstr "Vrchol F2"
 
-#: data/ui/deesser.ui:141
+#: data/ui/deesser.ui:149
 #, fuzzy
 msgid "Frequency 2 Peak"
 msgstr "Frekvencia"
 
-#: data/ui/deesser.ui:159
+#: data/ui/deesser.ui:167
 msgid "F1 Gain"
 msgstr "Zisk F1"
 
-#: data/ui/deesser.ui:187
+#: data/ui/deesser.ui:195
 #, fuzzy
 msgid "Frequency 1 Gain"
 msgstr "Frekvencia"
 
-#: data/ui/deesser.ui:194
+#: data/ui/deesser.ui:202
 msgid "F2 Level"
 msgstr "Úroveň F2"
 
-#: data/ui/deesser.ui:222
+#: data/ui/deesser.ui:230
 #, fuzzy
 msgid "Frequency 2 Level"
 msgstr "Frekvencia"
 
-#: data/ui/deesser.ui:229
+#: data/ui/deesser.ui:237
 msgid "F2 Peak Q"
 msgstr "F2 vrchol Q"
 
-#: data/ui/deesser.ui:257
+#: data/ui/deesser.ui:265
 #, fuzzy
 msgid "Frequency 2 Peak Q"
 msgstr "Frekvencia"
 
-#: data/ui/deesser.ui:264
+#: data/ui/deesser.ui:272
 msgid "Laxity"
 msgstr "Nedbanlivosť"
 
-#: data/ui/deesser.ui:579
+#: data/ui/deesser.ui:586
 msgid "Detected"
 msgstr "Zistené"
 
-#: data/ui/deesser.ui:609 data/ui/gate.ui:423 data/ui/gate.ui:1079
+#: data/ui/deesser.ui:616 data/ui/gate.ui:423 data/ui/gate.ui:1079
 #: data/ui/maximizer.ui:271 data/ui/multiband_gate_band.ui:413
 #, fuzzy
 msgid "Reduction"
@@ -918,7 +918,7 @@ msgid "SPM"
 msgstr ""
 
 #: data/ui/equalizer.ui:94 data/ui/stereo_tools.ui:52
-#: data/ui/stereo_tools.ui:393
+#: data/ui/stereo_tools.ui:397
 msgid "Balance"
 msgstr "Vyváženie"
 
@@ -1332,20 +1332,20 @@ msgstr "Postranný reťazec"
 msgid "Standard"
 msgstr "Štandardný"
 
-#: data/ui/loudness.ui:32
+#: data/ui/loudness.ui:34
 msgid "Flat"
 msgstr "Rovný"
 
-#: data/ui/loudness.ui:44
+#: data/ui/loudness.ui:48
 msgid "FFT Size"
 msgstr "Veľkosť FFT"
 
-#: data/ui/loudness.ui:64
+#: data/ui/loudness.ui:72
 #, fuzzy
 msgid "Output Volume"
 msgstr "Výstup"
 
-#: data/ui/loudness.ui:86
+#: data/ui/loudness.ui:94
 #, fuzzy
 msgid "Clipping"
 msgstr "Priradenie kanála"
@@ -1874,66 +1874,66 @@ msgstr "Spektrum"
 msgid "Shape"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:35
+#: data/ui/preferences_spectrum.ui:37
 msgid "Bars"
 msgstr "Pruhy"
 
-#: data/ui/preferences_spectrum.ui:36
+#: data/ui/preferences_spectrum.ui:38
 msgid "Lines"
 msgstr "Čiary"
 
-#: data/ui/preferences_spectrum.ui:37
+#: data/ui/preferences_spectrum.ui:39
 msgid "Dots"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:46
+#: data/ui/preferences_spectrum.ui:50
 msgid "Points"
 msgstr "Body"
 
-#: data/ui/preferences_spectrum.ui:68
+#: data/ui/preferences_spectrum.ui:72
 msgid "Height"
 msgstr "Výška"
 
-#: data/ui/preferences_spectrum.ui:91
+#: data/ui/preferences_spectrum.ui:95
 msgid "Line Width"
 msgstr "Šírka čiary"
 
-#: data/ui/preferences_spectrum.ui:114
+#: data/ui/preferences_spectrum.ui:118
 msgid "Fill"
 msgstr "Výplň"
 
-#: data/ui/preferences_spectrum.ui:126
+#: data/ui/preferences_spectrum.ui:130
 msgid "Show Bars Border"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:138
+#: data/ui/preferences_spectrum.ui:142
 msgid "Rounded Corners"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:152
+#: data/ui/preferences_spectrum.ui:156
 #, fuzzy
 msgid "Color"
 msgstr "Farba osi"
 
-#: data/ui/preferences_spectrum.ui:155
+#: data/ui/preferences_spectrum.ui:159
 msgid "Lines and Bars"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:173
+#: data/ui/preferences_spectrum.ui:177
 msgid "Axis Labels"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:193
+#: data/ui/preferences_spectrum.ui:197
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frekvencia"
 
-#: data/ui/preferences_spectrum.ui:196
+#: data/ui/preferences_spectrum.ui:200
 #, fuzzy
 msgid "Minimum"
 msgstr "Maximálna"
 
-#: data/ui/preferences_spectrum.ui:219
+#: data/ui/preferences_spectrum.ui:223
 msgid "Maximum"
 msgstr "Maximálna"
 
@@ -2187,76 +2187,76 @@ msgstr "Softclip"
 msgid "Stereo Matrix"
 msgstr "Stereo matica"
 
-#: data/ui/stereo_tools.ui:138
+#: data/ui/stereo_tools.ui:140
 msgid "LR > LR (Stereo Default)"
 msgstr "ĽP > PĽ (štandardné Stereo)"
 
-#: data/ui/stereo_tools.ui:139
+#: data/ui/stereo_tools.ui:141
 msgid "LR > MS (Stereo to Mid-Side)"
 msgstr "ĽP > SS (stereo ku strednej strane)"
 
-#: data/ui/stereo_tools.ui:140
+#: data/ui/stereo_tools.ui:142
 msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "SS > ĽP (stredná strana ku stereu)"
 
-#: data/ui/stereo_tools.ui:141
+#: data/ui/stereo_tools.ui:143
 msgid "LR > LL (Mono Left Channel)"
 msgstr "ĽP > ĽĽ (mono ľavý kanál)"
 
-#: data/ui/stereo_tools.ui:142
+#: data/ui/stereo_tools.ui:144
 msgid "LR > RR (Mono Right Channel)"
 msgstr "ĽP > PP (mono pravý kanál)"
 
-#: data/ui/stereo_tools.ui:143
+#: data/ui/stereo_tools.ui:145
 msgid "LR > L+R (Mono Sum L+R)"
 msgstr "ĽP > Ľ+P (mono sčítanie Ľ+P)"
 
-#: data/ui/stereo_tools.ui:144
+#: data/ui/stereo_tools.ui:146
 msgid "LR > RL (Stereo Flip Channels)"
 msgstr "ĽP > PĽ (stereo preklopené Kanály)"
 
-#: data/ui/stereo_tools.ui:147
+#: data/ui/stereo_tools.ui:151
 msgid "Stereo Mode"
 msgstr "Režim sterea"
 
-#: data/ui/stereo_tools.ui:180 data/ui/stereo_tools.ui:205
+#: data/ui/stereo_tools.ui:184 data/ui/stereo_tools.ui:209
 msgid "Invert Phase"
 msgstr "Preklopiť fázu"
 
-#: data/ui/stereo_tools.ui:232
+#: data/ui/stereo_tools.ui:236
 msgid "Side Level"
 msgstr "Úroveň strán"
 
-#: data/ui/stereo_tools.ui:268
+#: data/ui/stereo_tools.ui:272
 msgid "Side Balance"
 msgstr "Vyváženie strán"
 
-#: data/ui/stereo_tools.ui:304
+#: data/ui/stereo_tools.ui:308
 msgid "Middle Level"
 msgstr "Stredová úroveň"
 
-#: data/ui/stereo_tools.ui:340
+#: data/ui/stereo_tools.ui:344
 msgid "Middle Panorama"
 msgstr "Stredná paronáma"
 
-#: data/ui/stereo_tools.ui:420
+#: data/ui/stereo_tools.ui:424
 #, fuzzy
 msgid "Output Balance"
 msgstr "Výstupný Zisk"
 
-#: data/ui/stereo_tools.ui:429
+#: data/ui/stereo_tools.ui:433
 msgid "Delay L/R"
 msgstr "Oneskorenie Ľ/P"
 
-#: data/ui/stereo_tools.ui:456
+#: data/ui/stereo_tools.ui:460
 msgid "Delay Left Right"
 msgstr "Oneskorenie Ľavo/Pravo"
 
-#: data/ui/stereo_tools.ui:465
+#: data/ui/stereo_tools.ui:469
 msgid "Stereo Base"
 msgstr "Základ sterea"
 
-#: data/ui/stereo_tools.ui:501
+#: data/ui/stereo_tools.ui:505
 msgid "Stereo Phase"
 msgstr "Fáza sterea"
 
