@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 11:59-0300\n"
+"POT-Creation-Date: 2023-04-20 15:49+0000\n"
 "PO-Revision-Date: 2022-09-29 01:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2315,7 +2315,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:229
+#: src/app_info.cpp:234
 #, fuzzy
 msgid "channels"
 msgstr "Kanali"

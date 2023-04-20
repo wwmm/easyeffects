@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 11:59-0300\n"
+"POT-Creation-Date: 2023-04-20 15:49+0000\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2116,7 +2116,7 @@ msgstr "Chyba"
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: src/app_info.cpp:229
+#: src/app_info.cpp:234
 msgid "channels"
 msgstr "Kanály"
 
