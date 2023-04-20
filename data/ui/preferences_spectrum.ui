@@ -29,13 +29,17 @@
                         <property name="title" translatable="yes">Shape</property>
 
                         <child>
-                            <object class="GtkComboBoxText" id="type">
+                            <object class="GtkDropDown" id="type">
                                 <property name="valign">center</property>
-                                <items>
-                                    <item translatable="yes" id="Bars">Bars</item>
-                                    <item translatable="yes" id="Lines">Lines</item>
-                                    <item translatable="yes" id="Dots">Dots</item>
-                                </items>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item translatable="yes">Bars</item>
+                                            <item translatable="yes">Lines</item>
+                                            <item translatable="yes">Dots</item>
+                                        </items>
+                                    </object>
+                                </property>
                             </object>
                         </child>
                     </object>

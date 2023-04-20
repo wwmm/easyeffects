@@ -35,7 +35,7 @@ struct _PreferencesSpectrum {
 
   GtkColorDialogButton *color_button, *axis_color_button;
 
-  GtkComboBoxText* type;
+  GtkDropDown* type;
 
   GtkSpinButton *n_points, *height, *line_width, *minimum_frequency, *maximum_frequency;
 
@@ -194,7 +194,7 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
   g_settings_bind(self->settings, "maximum-frequency", gtk_spin_button_get_adjustment(self->maximum_frequency), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "type", self->type, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "type", self->type);
 
   // Spectrum gsettings signals connections
 
