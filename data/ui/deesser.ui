@@ -42,11 +42,15 @@
                                         </child>
 
                                         <child>
-                                            <object class="GtkComboBoxText" id="detection">
-                                                <items>
-                                                    <item translatable="yes" id="RMS">RMS</item>
-                                                    <item translatable="yes" id="Peak">Peak</item>
-                                                </items>
+                                            <object class="GtkDropDown" id="detection">
+                                                <property name="model">
+                                                    <object class="GtkStringList">
+                                                        <items>
+                                                            <item translatable="yes">RMS</item>
+                                                            <item translatable="yes">Peak</item>
+                                                        </items>
+                                                    </object>
+                                                </property>
                                                 <accessibility>
                                                     <relation name="labelled-by">detection_label</relation>
                                                 </accessibility>
@@ -66,11 +70,15 @@
                                         </child>
 
                                         <child>
-                                            <object class="GtkComboBoxText" id="mode">
-                                                <items>
-                                                    <item translatable="yes" id="Wide">Wide</item>
-                                                    <item translatable="yes" id="Split">Split</item>
-                                                </items>
+                                            <object class="GtkDropDown" id="mode">
+                                                <property name="model">
+                                                    <object class="GtkStringList">
+                                                        <items>
+                                                            <item translatable="yes">Wide</item>
+                                                            <item translatable="yes">Split</item>
+                                                        </items>
+                                                    </object>
+                                                </property>
                                                 <accessibility>
                                                     <relation name="labelled-by">mode_label</relation>
                                                 </accessibility>
@@ -362,7 +370,6 @@
                                         </accessibility>
                                     </object>
                                 </child>
-
 
                                 <child>
                                     <object class="GtkLabel" id="makeup_label">

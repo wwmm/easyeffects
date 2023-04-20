@@ -51,7 +51,7 @@ struct _DeesserBox {
 
   GtkToggleButton* sc_listen;
 
-  GtkComboBoxText *detection, *mode;
+  GtkDropDown *detection, *mode;
 
   GSettings* settings;
 
@@ -162,9 +162,9 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   g_settings_bind(self->settings, "sc-listen", self->sc_listen, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "detection", self->detection, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "detection", self->detection);
 
-  g_settings_bind(self->settings, "mode", self->mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
 }
 
 void dispose(GObject* object) {
