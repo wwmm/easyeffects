@@ -163,27 +163,6 @@
             ]
         },
         {
-            "name": "pipewire",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dgstreamer=disabled",
-                "-Dman=disabled",
-                "-Dsystemd=disabled",
-                "-Dudev=disabled",
-                "-Dudevrulesdir=disabled",
-                "-Dsession-managers=[]",
-                "-Djack=enabled"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pipewire/pipewire.git",
-                    "tag": "0.3.41",
-                    "commit": "717fb64e4e4477b5a3bfb2d6f8def273b52b7259"
-                }
-            ]
-        },
-        {
             "name": "nlohmann-json",
             "buildsystem": "cmake-ninja",
             "config-opts": [
