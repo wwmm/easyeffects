@@ -4,7 +4,7 @@
   <name>Easy Effects</name>
   <summary>Audio Effects for PipeWire Applications</summary>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0</project_license>
+  <project_license>GPL-3.0-or-later</project_license>
   <developer_name>Wellington Wallace</developer_name>
   <description>
     <p>Easy Effects is an advanced audio manipulation tool. It includes an equalizer, limiter, compressor and a reverberation tool, just to mention a few. To complement this there is also a built in spectrum analyzer.</p>
@@ -13,10 +13,27 @@
     <p>Besides manipulating sound output, Easy Effects is able to apply effects to an input device, such as a microphone. This is, for example, useful in audio recording, but it also works well during voice conversations.</p>
     <p>When Easy Effects is launched it will conveniently remember the configuration used in the last session. It is also possible to save all the current settings as profiles.</p>
   </description>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>console</control>
+    <control>touch</control>
+  </supports>
+  <recommends>
+    <display_length compare="ge">900</display_length>
+  </recommends>
+  <requires>
+    <internet>offline-only</internet>
+  </requires>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
-  <url type="help">https://github.com/wwmm/easyeffects/blob/master/README.md</url>
+  <url type="faq">https://github.com/wwmm/easyeffects#frequently-asked-questions</url>
+  <url type="help">https://github.com/wwmm/easyeffects#documentation</url>
+  <url type="donation">https://github.com/wwmm/easyeffects#donate</url>
+  <url type="translate">https://github.com/wwmm/easyeffects#translating-easy-effects</url>
+  <url type="vcs-browser">https://github.com/wwmm/easyeffects</url>
+  <url type="contribute">https://github.com/wwmm/easyeffects#installing-from-source</url>
   <translation type="gettext">Easy Effects</translation>
   <screenshots>
     <screenshot type="default">
@@ -373,26 +390,5 @@
       </description>
     </release>
   </releases>
-  <content_rating type="oars-1.0">
-    <content_attribute id="violence-cartoon">none</content_attribute>
-    <content_attribute id="violence-fantasy">none</content_attribute>
-    <content_attribute id="violence-realistic">none</content_attribute>
-    <content_attribute id="violence-bloodshed">none</content_attribute>
-    <content_attribute id="violence-sexual">none</content_attribute>
-    <content_attribute id="drugs-alcohol">none</content_attribute>
-    <content_attribute id="drugs-narcotics">none</content_attribute>
-    <content_attribute id="drugs-tobacco">none</content_attribute>
-    <content_attribute id="sex-nudity">none</content_attribute>
-    <content_attribute id="sex-themes">none</content_attribute>
-    <content_attribute id="language-profanity">none</content_attribute>
-    <content_attribute id="language-humor">none</content_attribute>
-    <content_attribute id="language-discrimination">none</content_attribute>
-    <content_attribute id="social-chat">none</content_attribute>
-    <content_attribute id="social-info">none</content_attribute>
-    <content_attribute id="social-audio">none</content_attribute>
-    <content_attribute id="social-location">none</content_attribute>
-    <content_attribute id="social-contacts">none</content_attribute>
-    <content_attribute id="money-purchasing">none</content_attribute>
-    <content_attribute id="money-gambling">none</content_attribute>
-  </content_rating>
+  <content_rating type="oars-1.1" />
 </component>
