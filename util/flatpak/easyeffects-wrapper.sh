@@ -1,15 +1,16 @@
 #!/bin/bash
 
 # this checks the PipeWire version on the host, and then compares it to what we need.
-# current baseline to compile Easy Effects is 0.3.41, thus the host needs minimum that as well.
 
 # get host's PipeWire version:
 
 # https://stackoverflow.com/a/48066872
-# we can't use jq to parse JSON as that will fail to run with flatpak run or from desktop file; gives "command not found", even though jq is in the runtime/sdk.
+# we can't use jq to parse JSON as that will fail to run with flatpak run or from desktop file; as jq is not in the runtime.
 found_pipewire_version="$(pw-dump | grep -Po '"version":.*?[^\\]",' |  sed 's/"//g' | sed 's/://g' | sed 's/,//g' | cut -c9-18)"
 
-required_pipewire_version="0.3.41" # from Easy Effects' build requirements
+# current baseline to compile Easy Effects (the library) is 0.3.58, but 0.3.44 or newer as the daemon still works.
+# https://github.com/wwmm/easyeffects/issues/2271#issuecomment-1518960279
+required_pipewire_version="0.3.44"
 
 # compare versions
 # from https://unix.stackexchange.com/a/285928
