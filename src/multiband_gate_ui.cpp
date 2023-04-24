@@ -52,7 +52,7 @@ struct _MultibandGateBox {
 
   GtkSpinButton *dry, *wet;
 
-  GtkComboBoxText *gate_mode, *envelope_boost;
+  GtkDropDown *gate_mode, *envelope_boost;
 
   GtkDropDown* dropdown_input_devices;
 
@@ -300,9 +300,9 @@ void setup(MultibandGateBox* self,
 
   g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "gate-mode", self->gate_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "gate-mode", self->gate_mode);
 
-  g_settings_bind(self->settings, "envelope-boost", self->envelope_boost, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, "envelope-boost", self->envelope_boost);
 
   g_settings_bind(self->settings, "enable-band1", self->enable_band1, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "enable-band2", self->enable_band2, "active", G_SETTINGS_BIND_DEFAULT);

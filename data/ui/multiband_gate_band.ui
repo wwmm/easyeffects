@@ -525,14 +525,18 @@
                                     </object>
                                 </child>
                                 <child>
-                                    <object class="GtkComboBoxText" id="sidechain_mode">
+                                    <object class="GtkDropDown" id="sidechain_mode">
                                         <property name="halign">center</property>
-                                        <items>
-                                            <item translatable="yes" id="Peak">Peak</item>
-                                            <item translatable="yes" id="RMS">RMS</item>
-                                            <item translatable="yes" id="LPF">Low-Pass Filter</item>
-                                            <item translatable="yes" id="SMA">Simple Moving Average</item>
-                                        </items>
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item translatable="yes">Peak</item>
+                                                    <item translatable="yes">RMS</item>
+                                                    <item translatable="yes">Low-Pass Filter</item>
+                                                    <item translatable="yes">Simple Moving Average</item>
+                                                </items>
+                                            </object>
+                                        </property>
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">1</property>
@@ -553,16 +557,20 @@
                                     </object>
                                 </child>
                                 <child>
-                                    <object class="GtkComboBoxText" id="sidechain_source">
+                                    <object class="GtkDropDown" id="sidechain_source">
                                         <property name="halign">center</property>
-                                        <items>
-                                            <item translatable="yes" id="Middle">Middle</item>
-                                            <item translatable="yes" id="Side">Side</item>
-                                            <item translatable="yes" id="Left">Left</item>
-                                            <item translatable="yes" id="Right">Right</item>
-                                            <item translatable="yes" id="Min">Min</item>
-                                            <item translatable="yes" id="Max">Max</item>
-                                        </items>
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item translatable="yes">Middle</item>
+                                                    <item translatable="yes">Side</item>
+                                                    <item translatable="yes">Left</item>
+                                                    <item translatable="yes">Right</item>
+                                                    <item translatable="yes">Min</item>
+                                                    <item translatable="yes">Max</item>
+                                                </items>
+                                            </object>
+                                        </property>
                                         <layout>
                                             <property name="column">1</property>
                                             <property name="row">1</property>

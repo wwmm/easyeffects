@@ -43,7 +43,7 @@ struct _MultibandGateBandBox {
 
   GtkCheckButton *lowcut_filter, *highcut_filter;
 
-  GtkComboBoxText *sidechain_mode, *sidechain_source;
+  GtkDropDown *sidechain_mode, *sidechain_source;
 
   GtkBox* split_frequency_box;
 
@@ -158,11 +158,9 @@ void setup(MultibandGateBandBox* self, GSettings* settings, int index) {
   g_settings_bind(self->settings, band_external_sidechain[index].data(), self->external_sidechain, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, band_sidechain_mode[index].data(), self->sidechain_mode, "active-id",
-                  G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, band_sidechain_mode[index].data(), self->sidechain_mode);
 
-  g_settings_bind(self->settings, band_sidechain_source[index].data(), self->sidechain_source, "active-id",
-                  G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_dropdown(self->settings, band_sidechain_source[index].data(), self->sidechain_source);
 
   g_settings_bind(settings, band_lowcut_filter_frequency[index].data(),
                   gtk_spin_button_get_adjustment(self->lowcut_filter_frequency), "value", G_SETTINGS_BIND_DEFAULT);
