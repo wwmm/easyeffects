@@ -109,7 +109,7 @@ auto get_files_name(const std::filesystem::path& dir_path, const std::string& ex
 
 void reset_all_keys_except(GSettings* settings,
                            const std::vector<std::string>& blocklist = std::vector<std::string>(),
-                           bool delay = true);
+                           bool delay = false);
 
 auto str_contains(const std::string& haystack, const std::string& needle) -> bool;
 

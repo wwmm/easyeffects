@@ -325,6 +325,11 @@ void reset_all_keys_except(GSettings* settings, const std::vector<std::string>& 
 
   gchar** keys = g_settings_schema_list_keys(schema);
 
+  /*
+    For some reason the delayed mode breaks the binding between gsettings and the plugins. Until We figure out the
+    reasons delayed mode will be disabled.
+  */
+
   // Gsettings should have a maximum of 256 delayed changes in delay mode (see issue #2215).
   // If surpassed, the whole application crashes (it happens on the Equalizer).
   // Anyway we set the maximum at the half (128) for satefy reasons.
