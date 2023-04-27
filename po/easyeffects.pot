@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 14:59+0000\n"
+"POT-Creation-Date: 2023-04-27 17:57-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2344,6 +2344,12 @@ msgstr ""
 msgid "{} Is Not Installed On The System"
 msgstr ""
 
-#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
+#: src/ui_helpers.cpp:74
+msgid ""
+"{} RNNoise was not available when EasyEffects was compiled. Consider using a "
+"Flatpak package or building your own package."
+msgstr ""
+
+#: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr ""

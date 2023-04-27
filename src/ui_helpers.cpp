@@ -67,7 +67,13 @@ auto missing_plugin_box(const std::string& name, const std::string& package) -> 
     const auto format_title = fmt::runtime(_("{} Not Available"));
 
     // For translators: {} is replaced by the package name.
-    const auto format_descr = fmt::runtime(_("{} Is Not Installed On The System"));
+    auto format_descr = fmt::runtime(_("{} Is Not Installed On The System"));
+
+    if (name == tags::plugin_name::rnnoise) {
+      format_descr =
+          fmt::runtime(_("{} RNNoise was not available when EasyEffects was compiled. Consider using a Flatpak package "
+                         "or building your own package."));
+    }
 
     const std::string translated_name = tags::plugin_name::get_translated().at(name);
 

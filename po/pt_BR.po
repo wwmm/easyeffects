@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 14:59+0000\n"
+"POT-Creation-Date: 2023-04-27 17:57-0300\n"
 "PO-Revision-Date: 2023-04-25 13:19+0000\n"
 "Last-Translator: Rodrigo S <drivador-weblate@yahoo.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -2359,7 +2359,13 @@ msgstr "{} Não Disponível"
 msgid "{} Is Not Installed On The System"
 msgstr "{} Não Está Instalado no Sistema"
 
-#: src/ui_helpers.cpp:108 src/ui_helpers.cpp:128
+#: src/ui_helpers.cpp:74
+msgid ""
+"{} RNNoise was not available when EasyEffects was compiled. Consider using a "
+"Flatpak package or building your own package."
+msgstr ""
+
+#: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr "-inf"
 
