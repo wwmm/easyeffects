@@ -39,7 +39,7 @@ RNNoise::RNNoise(const std::string& tag,
 
                                             self->data_mutex.unlock();
 
-#ifdef RNNOISE_AVAILABLE
+#ifdef ENABLE_RNNOISE
                                             self->free_rnnoise();
 
                                             auto* m = self->get_model_from_file();
@@ -56,7 +56,7 @@ RNNoise::RNNoise(const std::string& tag,
 
   setup_input_output_gain();
 
-#ifdef RNNOISE_AVAILABLE
+#ifdef ENABLE_RNNOISE
 
   auto* m = get_model_from_file();
 
@@ -80,7 +80,7 @@ RNNoise::~RNNoise() {
 
   resampler_ready = false;
 
-#ifdef RNNOISE_AVAILABLE
+#ifdef ENABLE_RNNOISE
   free_rnnoise();
 #endif
 
@@ -136,7 +136,7 @@ void RNNoise::process(std::span<float>& left_in,
       resampled_data_L.resize(0U);
       resampled_data_R.resize(0U);
 
-#ifdef RNNOISE_AVAILABLE
+#ifdef ENABLE_RNNOISE
       remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
 #endif
 
@@ -160,7 +160,7 @@ void RNNoise::process(std::span<float>& left_in,
       }
     }
   } else {
-#ifdef RNNOISE_AVAILABLE
+#ifdef ENABLE_RNNOISE
     remove_noise(left_in, right_in, deque_out_L, deque_out_R);
 #endif
   }
@@ -231,7 +231,7 @@ void RNNoise::process(std::span<float>& left_in,
   }
 }
 
-#ifdef RNNOISE_AVAILABLE
+#ifdef ENABLE_RNNOISE
 
 auto RNNoise::get_model_from_file() -> RNNModel* {
   RNNModel* m = nullptr;
