@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 17:57-0300\n"
+"POT-Creation-Date: 2023-04-28 22:55+0000\n"
 "PO-Revision-Date: 2022-12-23 05:48+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2342,15 +2342,19 @@ msgstr ""
 msgid "{} Not Available"
 msgstr ""
 
-#. For translators: {} is replaced by the package name.
+#. For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
 #: src/ui_helpers.cpp:70
-msgid "{} Is Not Installed On The System"
+msgid ""
+"The software required for the {} effect, \"{}\", is not installed. Consider "
+"using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
 
-#: src/ui_helpers.cpp:74
+#: src/ui_helpers.cpp:75
 msgid ""
-"{} RNNoise was not available when EasyEffects was compiled. Consider using a "
-"Flatpak package or building your own package."
+"The {} effect was disabled when Easy Effects was compiled. This is perhaps "
+"since the software required for this effect, \"{}\", was not available. "
+"Consider using the Easy Effects Flatpak package or building your own Easy "
+"Effects package."
 msgstr ""
 
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
