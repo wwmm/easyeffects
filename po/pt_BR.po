@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-27 17:57-0300\n"
+"POT-Creation-Date: 2023-04-28 22:55+0000\n"
 "PO-Revision-Date: 2023-04-25 13:19+0000\n"
 "Last-Translator: Rodrigo S <drivador-weblate@yahoo.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -2354,20 +2354,27 @@ msgstr "Ferramentas Stereo"
 msgid "{} Not Available"
 msgstr "{} Não Disponível"
 
-#. For translators: {} is replaced by the package name.
+#. For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
 #: src/ui_helpers.cpp:70
-msgid "{} Is Not Installed On The System"
-msgstr "{} Não Está Instalado no Sistema"
-
-#: src/ui_helpers.cpp:74
 msgid ""
-"{} RNNoise was not available when EasyEffects was compiled. Consider using a "
-"Flatpak package or building your own package."
+"The software required for the {} effect, \"{}\", is not installed. Consider "
+"using the Easy Effects Flatpak package or installing the software yourself."
+msgstr ""
+
+#: src/ui_helpers.cpp:75
+msgid ""
+"The {} effect was disabled when Easy Effects was compiled. This is perhaps "
+"since the software required for this effect, \"{}\", was not available. "
+"Consider using the Easy Effects Flatpak package or building your own Easy "
+"Effects package."
 msgstr ""
 
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "{} Is Not Installed On The System"
+#~ msgstr "{} Não Está Instalado no Sistema"
 
 #~ msgid "Bell"
 #~ msgstr "Sino"
