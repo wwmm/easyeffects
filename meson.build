@@ -32,8 +32,8 @@ add_project_arguments (
   language: [ 'c', 'cpp' ],
   )
 
-add_global_arguments('-DG_LOG_DOMAIN="easyeffects"', language : [ 'c', 'cpp' ])
-add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+add_project_arguments('-DG_LOG_DOMAIN="easyeffects"', language : [ 'c', 'cpp' ])
+add_project_arguments('-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
 	language:'c')
 
 gnome_mod = import('gnome')

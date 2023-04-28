@@ -37,7 +37,7 @@ struct _PreferencesGeneral {
 // NOLINTNEXTLINE
 G_DEFINE_TYPE(PreferencesGeneral, preferences_general, ADW_TYPE_PREFERENCES_PAGE)
 
-#ifndef USE_LIBPORTAL
+#ifndef ENABLE_LIBPORTAL
 
 auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> gboolean {
   std::filesystem::path autostart_dir{g_get_user_config_dir() + "/autostart"s};
@@ -83,7 +83,7 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
-#ifdef USE_LIBPORTAL
+#ifdef ENABLE_LIBPORTAL
   g_settings_unbind(self->enable_autostart, "active");
   g_settings_unbind(self->shutdown_on_window_close, "active");
 #endif
@@ -130,7 +130,7 @@ void preferences_general_init(PreferencesGeneral* self) {
       self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->exclude_monitor_streams,
       self->inactivity_timeout, self->meters_update_interval);
 
-#ifdef USE_LIBPORTAL
+#ifdef ENABLE_LIBPORTAL
   libportal::init(self->enable_autostart, self->shutdown_on_window_close);
 #else
   gtk_switch_set_active(self->enable_autostart,
