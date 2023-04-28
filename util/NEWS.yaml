@@ -10,7 +10,7 @@ Description:
 - 
 
 - Other notes∶
-- 
+- Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)
 
 ---
 Version: 7.0.3

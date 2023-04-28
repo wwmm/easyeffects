@@ -19,9 +19,7 @@
 
 #pragma once
 
-#ifdef SPEEX_AVAILABLE
 #include <speex/speex_preprocess.h>
-#endif
 
 #include <deque>
 #include "plugin_base.hpp"
@@ -43,10 +41,6 @@ class Speex : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-#ifndef SPEEX_AVAILABLE
-  bool package_installed = false;
-#endif
-
  private:
   bool speex_ready = false;
 
@@ -59,11 +53,8 @@ class Speex : public PluginBase {
 
   std::vector<spx_int16_t> data_L, data_R;
 
-#ifdef SPEEX_AVAILABLE
-
   SpeexPreprocessState *state_left = nullptr, *state_right = nullptr;
 
   void free_speex();
 
-#endif
 };

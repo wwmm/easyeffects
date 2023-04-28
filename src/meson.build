@@ -133,18 +133,10 @@ zita_convolver = cxx.find_library('zita-convolver', required: true)
 
 rnnoise = dependency('rnnoise', required: false)
 
-speex = dependency('speex', required: false)
-
 if rnnoise.found()
 	add_global_arguments('-DRNNOISE_AVAILABLE=1', language : 'cpp')
 else
 	status += 'The RNNoise library was not found. The calls to its functions will be disabled.'
-endif
-
-if speex.found()
-	add_global_arguments('-DSPEEX_AVAILABLE=1', language : 'cpp')
-else
-	status += 'The Speex library was not found. The calls to its functions will be disabled.'
 endif
 
 easyeffects_deps = [

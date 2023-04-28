@@ -24,9 +24,7 @@
 #include <numeric>
 #include "plugin_base.hpp"
 
-#ifdef SPEEX_AVAILABLE
 #include <speex/speex_preprocess.h>
-#endif
 
 class EchoCanceller : public PluginBase {
  public:
@@ -72,13 +70,11 @@ class EchoCanceller : public PluginBase {
   SpeexEchoState* echo_state_L = nullptr;
   SpeexEchoState* echo_state_R = nullptr;
 
-#ifdef SPEEX_AVAILABLE
 
   SpeexPreprocessState *state_left = nullptr, *state_right = nullptr;
 
   void free_speex();
 
-#endif
 
   void init_speex();
 };

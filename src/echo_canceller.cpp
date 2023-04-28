@@ -44,8 +44,6 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                                           }),
                                           this));
 
-#ifdef SPEEX_AVAILABLE
-
   gconnections.push_back(g_signal_connect(
       settings, "changed::residual-echo-suppression",
       G_CALLBACK(+[](GSettings* settings, char* key, EchoCanceller* self) {
@@ -81,8 +79,6 @@ EchoCanceller::EchoCanceller(const std::string& tag,
       }),
       this));
 
-#endif
-
   setup_input_output_gain();
 }
 
@@ -103,9 +99,7 @@ EchoCanceller::~EchoCanceller() {
     speex_echo_state_destroy(echo_state_R);
   }
 
-#ifdef SPEEX_AVAILABLE
   free_speex();
-#endif
 
   data_mutex.unlock();
 
@@ -158,10 +152,8 @@ void EchoCanceller::process(std::span<float>& left_in,
   speex_echo_cancellation(echo_state_L, data_L.data(), probe_mono.data(), filtered_L.data());
   speex_echo_cancellation(echo_state_R, data_R.data(), probe_mono.data(), filtered_R.data());
 
-#ifdef SPEEX_AVAILABLE
   speex_preprocess_run(state_left, filtered_L.data());
   speex_preprocess_run(state_right, filtered_R.data());
-#endif
 
   for (size_t j = 0U; j < filtered_L.size(); j++) {
     left_out[j] = static_cast<float>(filtered_L[j]) * inv_short_max;
@@ -235,7 +227,6 @@ void EchoCanceller::init_speex() {
     util::warning(log_tag + name + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
   }
 
-#ifdef SPEEX_AVAILABLE
   if (state_left != nullptr) {
     speex_preprocess_state_destroy(state_left);
   }
@@ -263,14 +254,8 @@ void EchoCanceller::init_speex() {
     speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
   }
 
-#else
-  util::warning("The Speex library was not available at compilation time. The noise reduction filter won't work");
-#endif
-
   ready = true;
 }
-
-#ifdef SPEEX_AVAILABLE
 
 void EchoCanceller::free_speex() {
   if (state_left != nullptr) {
@@ -284,8 +269,6 @@ void EchoCanceller::free_speex() {
   state_left = nullptr;
   state_right = nullptr;
 }
-
-#endif
 
 auto EchoCanceller::get_latency_seconds() -> float {
   return latency_value;
