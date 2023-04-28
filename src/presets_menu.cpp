@@ -164,6 +164,7 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
         auto builder = gtk_builder_new_from_resource(tags::resources::preset_row_ui);
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
+        auto* confirmation_box = gtk_builder_get_object(builder, "confirmation_box");
         auto* apply = gtk_builder_get_object(builder, "apply");
         auto* save = gtk_builder_get_object(builder, "save");
         auto* remove = gtk_builder_get_object(builder, "remove");
@@ -172,6 +173,8 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
         g_object_set_data(G_OBJECT(item), "apply", apply);
         g_object_set_data(G_OBJECT(item), "save", save);
         g_object_set_data(G_OBJECT(item), "remove", remove);
+
+        g_object_set_data(G_OBJECT(remove), "confirmation_box", confirmation_box);
 
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
@@ -220,11 +223,15 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
                   string_object != nullptr) {
                 auto* preset_name = gtk_string_object_get_string(string_object);
 
-                if constexpr (preset_type == PresetType::output) {
-                  self->data->application->presets_manager->remove(PresetType::output, preset_name);
-                } else if constexpr (preset_type == PresetType::input) {
-                  self->data->application->presets_manager->remove(PresetType::input, preset_name);
-                }
+                auto* confirmation_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(button), "confirmation_box"));
+
+                gtk_widget_set_visible(GTK_WIDGET(confirmation_box), 1);
+
+                // if constexpr (preset_type == PresetType::output) {
+                //   self->data->application->presets_manager->remove(PresetType::output, preset_name);
+                // } else if constexpr (preset_type == PresetType::input) {
+                //   self->data->application->presets_manager->remove(PresetType::input, preset_name);
+                // }
               }
             }),
             self);
