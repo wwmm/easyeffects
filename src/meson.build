@@ -131,12 +131,12 @@ cxx = meson.get_compiler('cpp')
 
 zita_convolver = cxx.find_library('zita-convolver', required: true)
 
-rnnoise = dependency('rnnoise', required: false)
+rnnoise = dependency('rnnoise', include_type: 'system', required: get_option('enable-rnnoise'))
 
-if rnnoise.found()
+if get_option('enable-rnnoise')
 	add_global_arguments('-DRNNOISE_AVAILABLE=1', language : 'cpp')
 else
-	status += 'The RNNoise library was not found. The calls to its functions will be disabled.'
+	status += 'The RNNoise library is not being used. The calls to its functions will be disabled.'
 endif
 
 easyeffects_deps = [

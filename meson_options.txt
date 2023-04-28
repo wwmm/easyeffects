@@ -18,3 +18,10 @@ option(
   type: 'boolean',
   value: false
 )
+
+option(
+  'enable-rnnoise',
+  description: 'Whether to use RRNNoise for noise cancellation.',
+  type: 'boolean',
+  value: true
+)
