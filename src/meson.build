@@ -122,7 +122,7 @@ easyeffects_sources = [
 libportal = dependency('libportal-gtk4', include_type: 'system', required: get_option('enable-libportal'))
 
 if get_option('enable-libportal')
-  add_global_arguments('-DUSE_LIBPORTAL=1', language : 'cpp')
+  add_project_arguments('-DUSE_LIBPORTAL=1', language : 'cpp')
   easyeffects_sources += 'libportal.cpp'
   status += 'Using libportal to handle autostart files.'
 endif
@@ -134,7 +134,7 @@ zita_convolver = cxx.find_library('zita-convolver', required: true)
 rnnoise = dependency('rnnoise', include_type: 'system', required: get_option('enable-rnnoise'))
 
 if get_option('enable-rnnoise')
-	add_global_arguments('-DRNNOISE_AVAILABLE=1', language : 'cpp')
+	add_project_arguments('-DRNNOISE_AVAILABLE=1', language : 'cpp')
 else
 	status += 'The RNNoise library is not being used. The calls to its functions will be disabled.'
 endif
