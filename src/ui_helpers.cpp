@@ -66,19 +66,19 @@ auto missing_plugin_box(const std::string& name, const std::string& package) -> 
     // For translators: {} is replaced by the effect name.
     const auto format_title = fmt::runtime(_("{} Not Available"));
 
-    // For translators: {} is replaced by the package name.
-    auto format_descr = fmt::runtime(_("{} Is Not Installed On The System"));
+    // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
+    auto format_descr = fmt::runtime(_("The software required for the {} effect, \"{}\", is not installed. Consider using the Easy Effects Flatpak package or installing the software yourself."));
 
     if (name == tags::plugin_name::rnnoise) {
+      // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
       format_descr =
-          fmt::runtime(_("{} RNNoise was not available when EasyEffects was compiled. Consider using a Flatpak package "
-                         "or building your own package."));
+          fmt::runtime(_("The {} effect was disabled when Easy Effects was compiled. This is perhaps since the software required for this effect, \"{}\", was not available. Consider using the Easy Effects Flatpak package or building your own Easy Effects package."));
     }
 
     const std::string translated_name = tags::plugin_name::get_translated().at(name);
 
     adw_status_page_set_title(ADW_STATUS_PAGE(status_page), fmt::format(format_title, translated_name).c_str());
-    adw_status_page_set_description(ADW_STATUS_PAGE(status_page), fmt::format(format_descr, package).c_str());
+    adw_status_page_set_description(ADW_STATUS_PAGE(status_page), fmt::format(format_descr, translated_name, package).c_str());
   } catch (...) {
   }
 

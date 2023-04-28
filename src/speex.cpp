@@ -31,7 +31,6 @@ Speex::Speex(const std::string& tag,
       vad_probability_start(g_settings_get_int(settings, "vad-probability-start")),
       vad_probability_continue(g_settings_get_int(settings, "vad-probability-continue")),
       enable_dereverb(g_settings_get_boolean(settings, "enable-dereverb")) {
-#ifdef SPEEX_AVAILABLE
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::enable-denoise", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
@@ -145,7 +144,6 @@ Speex::Speex(const std::string& tag,
       }),
       this));
 
-#endif
 
   setup_input_output_gain();
 }
@@ -157,9 +155,7 @@ Speex::~Speex() {
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-#ifdef SPEEX_AVAILABLE
   free_speex();
-#endif
 
   util::debug(log_tag + name + " destroyed");
 }
@@ -174,7 +170,6 @@ void Speex::setup() {
   data_L.resize(n_samples);
   data_R.resize(n_samples);
 
-#ifdef SPEEX_AVAILABLE
   if (state_left != nullptr) {
     speex_preprocess_state_destroy(state_left);
   }
@@ -213,9 +208,6 @@ void Speex::setup() {
   }
 
   speex_ready = true;
-#else
-  util::warning("The Speex library was not available at compilation time. The noise reduction filter won't work");
-#endif
 }
 
 void Speex::process(std::span<float>& left_in,
@@ -235,7 +227,6 @@ void Speex::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-#ifdef SPEEX_AVAILABLE
 
   for (size_t i = 0; i < n_samples; i++) {
     data_L[i] = static_cast<spx_int16_t>(left_in[i] * (SHRT_MAX + 1));
@@ -259,7 +250,6 @@ void Speex::process(std::span<float>& left_in,
     std::ranges::fill(right_out, 0.0F);
   }
 
-#endif
 
   if (output_gain != 1.0F) {
     apply_gain(left_out, right_out, output_gain);
@@ -274,7 +264,6 @@ void Speex::process(std::span<float>& left_in,
   }
 }
 
-#ifdef SPEEX_AVAILABLE
 
 void Speex::free_speex() {
   if (state_left != nullptr) {
@@ -289,7 +278,6 @@ void Speex::free_speex() {
   state_right = nullptr;
 }
 
-#endif
 
 auto Speex::get_latency_seconds() -> float {
   return latency_value;

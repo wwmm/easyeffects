@@ -188,7 +188,6 @@ jobs:
         pipewire-dev
         rnnoise-dev
         rubberband-dev
-        speex-dev
         speexdsp-dev
         zita-convolver-dev
         "

@@ -19,7 +19,7 @@
 
 #pragma once
 
-#ifdef RNNOISE_AVAILABLE
+#ifdef ENABLE_RNNOISE
 #include <rnnoise.h>
 #endif
 
@@ -45,7 +45,7 @@ class RNNoise : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-#ifndef RNNOISE_AVAILABLE
+#ifndef ENABLE_RNNOISE
   bool package_installed = false;
 #endif
 
@@ -73,7 +73,7 @@ class RNNoise : public PluginBase {
   std::unique_ptr<Resampler> resampler_inL, resampler_outL;
   std::unique_ptr<Resampler> resampler_inR, resampler_outR;
 
-#ifdef RNNOISE_AVAILABLE
+#ifdef ENABLE_RNNOISE
 
   RNNModel* model = nullptr;
 

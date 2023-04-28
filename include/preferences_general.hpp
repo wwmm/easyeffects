@@ -27,7 +27,7 @@
 #include "ui_helpers.hpp"
 #include "util.hpp"
 
-#ifdef USE_LIBPORTAL
+#ifdef ENABLE_LIBPORTAL
 #include "libportal.hpp"
 #endif
 
