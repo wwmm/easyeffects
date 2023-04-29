@@ -186,6 +186,9 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
         g_object_set_data(G_OBJECT(remove), "confirmation_yes", confirmation_yes);
 
         g_object_set_data(G_OBJECT(confirmation_yes), "confirmation_box", confirmation_box);
+        g_object_set_data(G_OBJECT(confirmation_yes), "confirmation_label", confirmation_label);
+
+        g_object_set_data(G_OBJECT(confirmation_no), "confirmation_label", confirmation_label);
 
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
@@ -223,6 +226,9 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
               auto* confirmation_yes = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(button), "confirmation_yes"));
 
               gtk_label_set_text(confirmation_label, _("Save?"));
+
+              gtk_widget_add_css_class(GTK_WIDGET(confirmation_label), "warning");
+
               gtk_widget_set_visible(GTK_WIDGET(confirmation_box), 1);
 
               g_object_set_data(G_OBJECT(confirmation_yes), "operation", GUINT_TO_POINTER(0));
@@ -239,6 +245,9 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
               auto* confirmation_yes = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(button), "confirmation_yes"));
 
               gtk_label_set_text(confirmation_label, _("Delete?"));
+
+              gtk_widget_add_css_class(GTK_WIDGET(confirmation_label), "error");
+
               gtk_widget_set_visible(GTK_WIDGET(confirmation_box), 1);
 
               g_object_set_data(G_OBJECT(confirmation_yes), "operation", GUINT_TO_POINTER(1));
@@ -247,6 +256,12 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
 
         g_signal_connect(confirmation_no, "clicked", G_CALLBACK(+[](GtkButton* button, GtkBox* box) {
                            gtk_widget_set_visible(GTK_WIDGET(box), 0);
+
+                           auto* confirmation_label =
+                               static_cast<GtkBox*>(g_object_get_data(G_OBJECT(button), "confirmation_label"));
+
+                           gtk_widget_remove_css_class(GTK_WIDGET(confirmation_label), "warning");
+                           gtk_widget_remove_css_class(GTK_WIDGET(confirmation_label), "error");
                          }),
                          confirmation_box);
 
@@ -258,6 +273,9 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
 
                 uint operation = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(button), "operation"));
 
+                auto* confirmation_label =
+                    static_cast<GtkBox*>(g_object_get_data(G_OBJECT(button), "confirmation_label"));
+
                 switch (operation) {
                   case 0: {  // save
                     if constexpr (preset_type == PresetType::output) {
@@ -265,6 +283,8 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
                     } else if constexpr (preset_type == PresetType::input) {
                       self->data->application->presets_manager->save_preset_file(PresetType::input, preset_name);
                     }
+
+                    gtk_widget_remove_css_class(GTK_WIDGET(confirmation_label), "warning");
 
                     break;
                   }
@@ -274,6 +294,8 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
                     } else if constexpr (preset_type == PresetType::input) {
                       self->data->application->presets_manager->remove(PresetType::input, preset_name);
                     }
+
+                    gtk_widget_remove_css_class(GTK_WIDGET(confirmation_label), "error");
 
                     break;
                   }
