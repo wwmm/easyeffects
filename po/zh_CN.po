@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-29 15:34+0000\n"
+"POT-Creation-Date: 2023-04-29 21:06+0000\n"
 "PO-Revision-Date: 2023-03-21 06:41+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -91,8 +91,8 @@ msgid "_About Easy Effects"
 msgstr "关于 EasyEffects (_A)"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:324
-#: src/presets_menu.cpp:325 src/presets_menu.cpp:342 src/presets_menu.cpp:343
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
+#: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
 msgid "Presets"
 msgstr "预设"
 
@@ -2253,11 +2253,11 @@ msgstr "输出设备"
 msgid "Add"
 msgstr "添加"
 
-#: src/presets_menu.cpp:225
+#: src/presets_menu.cpp:228
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:241
+#: src/presets_menu.cpp:247
 msgid "Delete?"
 msgstr ""
 
