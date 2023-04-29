@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-28 22:55+0000\n"
+"POT-Creation-Date: 2023-04-29 12:22-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Spanish (Venezuela) <https://hosted.weblate.org/projects/"
@@ -96,8 +96,8 @@ msgid "_About Easy Effects"
 msgstr "EasyEffects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:269
-#: src/presets_menu.cpp:270 src/presets_menu.cpp:287 src/presets_menu.cpp:288
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:324
+#: src/presets_menu.cpp:325 src/presets_menu.cpp:342 src/presets_menu.cpp:343
 msgid "Presets"
 msgstr "Perfiles"
 
@@ -1933,16 +1933,16 @@ msgstr "Máximo"
 msgid "Maximum"
 msgstr "Máximo"
 
-#: data/ui/preset_row.ui:25 src/convolver_menu_impulses.cpp:193
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:193
 msgid "Load"
 msgstr ""
 
-#: data/ui/preset_row.ui:26
+#: data/ui/preset_row.ui:38
 #, fuzzy
 msgid "Discard the current settings and load this preset"
 msgstr "Guardar esta configuración a este perfil"
 
-#: data/ui/preset_row.ui:35
+#: data/ui/preset_row.ui:47
 msgid "Save current settings to this preset file"
 msgstr "Guardar esta configuración a este perfil"
 
@@ -2454,6 +2454,14 @@ msgstr "Efectos de Salida"
 
 #: src/plugins_menu.cpp:155
 msgid "Add"
+msgstr ""
+
+#: src/presets_menu.cpp:225
+msgid "Save?"
+msgstr ""
+
+#: src/presets_menu.cpp:241
+msgid "Delete?"
 msgstr ""
 
 #: src/rnnoise_ui.cpp:90
