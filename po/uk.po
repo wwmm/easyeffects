@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-29 15:34+0000\n"
+"POT-Creation-Date: 2023-04-29 21:06+0000\n"
 "PO-Revision-Date: 2023-04-25 13:19+0000\n"
 "Last-Translator: Ostap <ostapbataj79@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -100,8 +100,8 @@ msgid "_About Easy Effects"
 msgstr "_Про Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:324
-#: src/presets_menu.cpp:325 src/presets_menu.cpp:342 src/presets_menu.cpp:343
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
+#: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
 #, fuzzy
 msgid "Presets"
 msgstr "Пресети"
@@ -2282,11 +2282,11 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:225
+#: src/presets_menu.cpp:228
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:241
+#: src/presets_menu.cpp:247
 msgid "Delete?"
 msgstr ""
 
