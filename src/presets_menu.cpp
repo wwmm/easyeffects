@@ -164,17 +164,28 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
         auto builder = gtk_builder_new_from_resource(tags::resources::preset_row_ui);
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
-        auto* confirmation_box = gtk_builder_get_object(builder, "confirmation_box");
         auto* apply = gtk_builder_get_object(builder, "apply");
         auto* save = gtk_builder_get_object(builder, "save");
         auto* remove = gtk_builder_get_object(builder, "remove");
 
+        auto* confirmation_box = gtk_builder_get_object(builder, "confirmation_box");
+        auto* confirmation_label = gtk_builder_get_object(builder, "confirmation_label");
+        auto* confirmation_yes = gtk_builder_get_object(builder, "confirmation_yes");
+        auto* confirmation_no = gtk_builder_get_object(builder, "confirmation_no");
+
         g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
         g_object_set_data(G_OBJECT(item), "apply", apply);
-        g_object_set_data(G_OBJECT(item), "save", save);
-        g_object_set_data(G_OBJECT(item), "remove", remove);
+        g_object_set_data(G_OBJECT(item), "confirmation_yes", confirmation_yes);
+
+        g_object_set_data(G_OBJECT(save), "confirmation_box", confirmation_box);
+        g_object_set_data(G_OBJECT(save), "confirmation_label", confirmation_label);
+        g_object_set_data(G_OBJECT(save), "confirmation_yes", confirmation_yes);
 
         g_object_set_data(G_OBJECT(remove), "confirmation_box", confirmation_box);
+        g_object_set_data(G_OBJECT(remove), "confirmation_label", confirmation_label);
+        g_object_set_data(G_OBJECT(remove), "confirmation_yes", confirmation_yes);
+
+        g_object_set_data(G_OBJECT(confirmation_yes), "confirmation_box", confirmation_box);
 
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
@@ -204,35 +215,74 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
 
         g_signal_connect(
             save, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
-              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object"));
-                  string_object != nullptr) {
-                auto* preset_name = gtk_string_object_get_string(string_object);
+              auto* confirmation_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(button), "confirmation_box"));
 
-                if constexpr (preset_type == PresetType::output) {
-                  self->data->application->presets_manager->save_preset_file(PresetType::output, preset_name);
-                } else if constexpr (preset_type == PresetType::input) {
-                  self->data->application->presets_manager->save_preset_file(PresetType::input, preset_name);
-                }
-              }
+              auto* confirmation_label =
+                  static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(button), "confirmation_label"));
+
+              auto* confirmation_yes = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(button), "confirmation_yes"));
+
+              gtk_label_set_text(confirmation_label, _("Save?"));
+              gtk_widget_set_visible(GTK_WIDGET(confirmation_box), 1);
+
+              g_object_set_data(G_OBJECT(confirmation_yes), "operation", GUINT_TO_POINTER(0));
             }),
             self);
 
         g_signal_connect(
             remove, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
+              auto* confirmation_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(button), "confirmation_box"));
+
+              auto* confirmation_label =
+                  static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(button), "confirmation_label"));
+
+              auto* confirmation_yes = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(button), "confirmation_yes"));
+
+              gtk_label_set_text(confirmation_label, _("Delete?"));
+              gtk_widget_set_visible(GTK_WIDGET(confirmation_box), 1);
+
+              g_object_set_data(G_OBJECT(confirmation_yes), "operation", GUINT_TO_POINTER(1));
+            }),
+            self);
+
+        g_signal_connect(confirmation_no, "clicked", G_CALLBACK(+[](GtkButton* button, GtkBox* box) {
+                           gtk_widget_set_visible(GTK_WIDGET(box), 0);
+                         }),
+                         confirmation_box);
+
+        g_signal_connect(
+            confirmation_yes, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
               if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object"));
                   string_object != nullptr) {
                 auto* preset_name = gtk_string_object_get_string(string_object);
 
-                auto* confirmation_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(button), "confirmation_box"));
+                uint operation = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(button), "operation"));
 
-                gtk_widget_set_visible(GTK_WIDGET(confirmation_box), 1);
+                switch (operation) {
+                  case 0: {  // save
+                    if constexpr (preset_type == PresetType::output) {
+                      self->data->application->presets_manager->save_preset_file(PresetType::output, preset_name);
+                    } else if constexpr (preset_type == PresetType::input) {
+                      self->data->application->presets_manager->save_preset_file(PresetType::input, preset_name);
+                    }
 
-                // if constexpr (preset_type == PresetType::output) {
-                //   self->data->application->presets_manager->remove(PresetType::output, preset_name);
-                // } else if constexpr (preset_type == PresetType::input) {
-                //   self->data->application->presets_manager->remove(PresetType::input, preset_name);
-                // }
+                    break;
+                  }
+                  case 1: {  // delete
+                    if constexpr (preset_type == PresetType::output) {
+                      self->data->application->presets_manager->remove(PresetType::output, preset_name);
+                    } else if constexpr (preset_type == PresetType::input) {
+                      self->data->application->presets_manager->remove(PresetType::input, preset_name);
+                    }
+
+                    break;
+                  }
+                }
               }
+
+              auto* confirmation_box = static_cast<GtkBox*>(g_object_get_data(G_OBJECT(button), "confirmation_box"));
+
+              gtk_widget_set_visible(GTK_WIDGET(confirmation_box), 0);
             }),
             self);
 
@@ -240,24 +290,22 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
       }),
       self);
 
-  g_signal_connect(factory, "bind",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
-                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
-                     auto* apply = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "apply"));
-                     auto* save = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "save"));
-                     auto* remove = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "remove"));
+  g_signal_connect(
+      factory, "bind", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
+        auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+        auto* apply = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "apply"));
+        auto* confirmation_yes = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "confirmation_yes"));
 
-                     auto* string_object = GTK_STRING_OBJECT(gtk_list_item_get_item(item));
+        auto* string_object = GTK_STRING_OBJECT(gtk_list_item_get_item(item));
 
-                     g_object_set_data(G_OBJECT(apply), "string-object", string_object);
-                     g_object_set_data(G_OBJECT(save), "string-object", string_object);
-                     g_object_set_data(G_OBJECT(remove), "string-object", string_object);
+        g_object_set_data(G_OBJECT(apply), "string-object", string_object);
+        g_object_set_data(G_OBJECT(confirmation_yes), "string-object", string_object);
 
-                     auto* name = gtk_string_object_get_string(string_object);
+        auto* name = gtk_string_object_get_string(string_object);
 
-                     gtk_label_set_text(label, name);
-                   }),
-                   self);
+        gtk_label_set_text(label, name);
+      }),
+      self);
 
   gtk_list_view_set_factory(listview, factory);
 
