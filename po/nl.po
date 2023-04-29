@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-29 12:22-0300\n"
+"POT-Creation-Date: 2023-04-29 15:34+0000\n"
 "PO-Revision-Date: 2023-03-28 16:43+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -92,8 +92,6 @@ msgstr "_Over Easy Effects"
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:324
 #: src/presets_menu.cpp:325 src/presets_menu.cpp:342 src/presets_menu.cpp:343
-#: src/presets_menu.cpp:269 src/presets_menu.cpp:270 src/presets_menu.cpp:287
-#: src/presets_menu.cpp:288
 msgid "Presets"
 msgstr "Voorinstellingen"
 
@@ -1777,15 +1775,14 @@ msgid "Maximum"
 msgstr "Maximaal"
 
 #: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:193
-#: data/ui/preset_row.ui:25
 msgid "Load"
 msgstr "Laden"
 
-#: data/ui/preset_row.ui:38 data/ui/preset_row.ui:26
+#: data/ui/preset_row.ui:38
 msgid "Discard the current settings and load this preset"
 msgstr "Huidige instellingen verwerpen en deze voorinstelling laden"
 
-#: data/ui/preset_row.ui:47 data/ui/preset_row.ui:35
+#: data/ui/preset_row.ui:47
 msgid "Save current settings to this preset file"
 msgstr "Sla de huidige instellingen op in dit voorinstellingsbestand"
 
