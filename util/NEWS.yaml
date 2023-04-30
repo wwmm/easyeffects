@@ -4,10 +4,10 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- The presets menu now asks for confirmation before saving/deleting a preset file.
 
 - Bug fixes∶
-- 
+- The plugin reset should not make its controls innefective anymore. 
 
 - Other notes∶
 - Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)
