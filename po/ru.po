@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-29 21:06+0000\n"
+"POT-Creation-Date: 2023-04-30 14:00+0000\n"
 "PO-Revision-Date: 2023-04-29 15:33+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -93,8 +93,6 @@ msgstr "_О программе Easy Effects"
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
 #: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
-#: src/presets_menu.cpp:324 src/presets_menu.cpp:325 src/presets_menu.cpp:342
-#: src/presets_menu.cpp:343
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -2308,11 +2306,11 @@ msgstr "Устройство вывода"
 msgid "Add"
 msgstr "Добавить"
 
-#: src/presets_menu.cpp:228 src/presets_menu.cpp:225
+#: src/presets_menu.cpp:228
 msgid "Save?"
 msgstr "Сохранить?"
 
-#: src/presets_menu.cpp:247 src/presets_menu.cpp:241
+#: src/presets_menu.cpp:247
 msgid "Delete?"
 msgstr "Удалить?"
 
