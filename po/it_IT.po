@@ -94,6 +94,8 @@ msgstr "_Info su Easy Effects"
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
 #: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
+#: src/presets_menu.cpp:324 src/presets_menu.cpp:325 src/presets_menu.cpp:342
+#: src/presets_menu.cpp:343
 msgid "Presets"
 msgstr "Profili"
 
@@ -2256,13 +2258,13 @@ msgstr "Dispositivo Uscita"
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/presets_menu.cpp:228
+#: src/presets_menu.cpp:225
 msgid "Save?"
-msgstr ""
+msgstr "Salvare?"
 
-#: src/presets_menu.cpp:247
+#: src/presets_menu.cpp:241
 msgid "Delete?"
-msgstr ""
+msgstr "Eliminare?"
 
 #: src/rnnoise_ui.cpp:90
 msgid ""
@@ -2367,6 +2369,9 @@ msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
+"L'effetto {} richiede la libreria \"{}\" non installata sul sistema. "
+"Considera l'uso del pacchetto Easy Effects Flatpak o installa l'applicazione "
+"dal codice sorgente."
 
 #: src/ui_helpers.cpp:75
 msgid ""
@@ -2375,6 +2380,10 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"L'effetto {} è stato disabilitato quando Easy Effects è stato compilato. "
+"Probabilmente la libreria necessaria, \"{}\", non era disponibile. Considera "
+"l'uso del pacchetto Easy Effects Flatpak o installa l'applicazione dal "
+"codice sorgente."
 
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"

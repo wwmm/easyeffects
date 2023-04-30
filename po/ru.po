@@ -93,6 +93,8 @@ msgstr "_О программе Easy Effects"
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
 #: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
+#: src/presets_menu.cpp:324 src/presets_menu.cpp:325 src/presets_menu.cpp:342
+#: src/presets_menu.cpp:343
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -1873,15 +1875,15 @@ msgstr "Размер комнаты"
 
 #: data/ui/reverb.ui:83
 msgid "Small"
-msgstr "Маленькая"
+msgstr "Малый"
 
 #: data/ui/reverb.ui:84
 msgid "Medium"
-msgstr "Средняя"
+msgstr "Средний"
 
 #: data/ui/reverb.ui:85
 msgid "Large"
-msgstr "Огромная"
+msgstr "Большой"
 
 #: data/ui/reverb.ui:86
 msgid "Tunnel"
@@ -1889,11 +1891,11 @@ msgstr "Туннель"
 
 #: data/ui/reverb.ui:87
 msgid "Large/smooth"
-msgstr "Большой/плавный"
+msgstr "Большой/гладкий"
 
 #: data/ui/reverb.ui:88
 msgid "Experimental"
-msgstr "Экспериментальный"
+msgstr "Опытный"
 
 #: data/ui/reverb.ui:107
 msgid "Diffusion"
@@ -1917,11 +1919,11 @@ msgstr "Срез тембра"
 
 #: data/ui/reverb.ui:584
 msgid "Ambience"
-msgstr "Окр. среда"
+msgstr "Атмосфера"
 
 #: data/ui/reverb.ui:591
 msgid "Empty Walls"
-msgstr "Пустые стены"
+msgstr "Голые стены"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/reverb.ui:604
@@ -1934,7 +1936,7 @@ msgstr "Большой пустой зал"
 
 #: data/ui/reverb.ui:624
 msgid "Disco"
-msgstr "Диско"
+msgstr "Танцзал"
 
 #: data/ui/reverb.ui:631
 msgid "Large Occupied Hall"
@@ -1981,7 +1983,7 @@ msgstr "Открыть руководство Easy Effects"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr "Полноэкраный режим / выйти из полного экрана"
+msgstr "Полноэкраный/неполноэкраный режим"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
@@ -2017,7 +2019,7 @@ msgstr "Начало"
 
 #: data/ui/speex.ui:113
 msgid "Continue"
-msgstr "Продолжать"
+msgstr "Продолжение"
 
 #: data/ui/speex.ui:137
 msgid "Noise Suppression"
@@ -2033,11 +2035,11 @@ msgstr "Баланс входа"
 
 #: data/ui/stereo_tools.ui:88
 msgid "Softclip"
-msgstr "Софтклиппер"
+msgstr "Мягкое усечение"
 
 #: data/ui/stereo_tools.ui:116
 msgid "Softclip Level"
-msgstr "Уровень софтклипа"
+msgstr "Уровень мягкого усечения"
 
 #: data/ui/stereo_tools.ui:128
 msgid "Stereo Matrix"
@@ -2306,11 +2308,11 @@ msgstr "Устройство вывода"
 msgid "Add"
 msgstr "Добавить"
 
-#: src/presets_menu.cpp:228
+#: src/presets_menu.cpp:228 src/presets_menu.cpp:225
 msgid "Save?"
 msgstr "Сохранить?"
 
-#: src/presets_menu.cpp:247
+#: src/presets_menu.cpp:247 src/presets_menu.cpp:241
 msgid "Delete?"
 msgstr "Удалить?"
 

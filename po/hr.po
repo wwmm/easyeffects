@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.14.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -101,6 +101,8 @@ msgstr "EasyEffects"
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
 #: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
+#: src/presets_menu.cpp:324 src/presets_menu.cpp:325 src/presets_menu.cpp:342
+#: src/presets_menu.cpp:343
 msgid "Presets"
 msgstr "Predlošci"
 
@@ -1593,9 +1595,8 @@ msgid "Presets Autoloading"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:232
-#, fuzzy
 msgid "Output Devices"
-msgstr "Pojačanje ulaza"
+msgstr "Izlazni uređaji"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:244
 #, fuzzy
@@ -1616,9 +1617,8 @@ msgid "Output Autoloading Presets List"
 msgstr "Predlošci: "
 
 #: data/ui/pipe_manager_box.ui:329
-#, fuzzy
 msgid "Input Devices"
-msgstr "Ulazni uređaj"
+msgstr "Ulazni uređaji"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:252
 #, fuzzy
@@ -1636,26 +1636,23 @@ msgstr "Učitaj predloške"
 
 #: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
-msgstr ""
+msgstr "Moduli"
 
 #: data/ui/pipe_manager_box.ui:429
 msgid "Modules List"
-msgstr ""
+msgstr "Popis modula"
 
 #: data/ui/pipe_manager_box.ui:443
-#, fuzzy
 msgid "Clients"
-msgstr "Centi"
+msgstr "Klijenti"
 
 #: data/ui/pipe_manager_box.ui:461
-#, fuzzy
 msgid "Clients List"
-msgstr "Centi"
+msgstr "Popis klijenata"
 
 #: data/ui/pipe_manager_box.ui:475
-#, fuzzy
 msgid "Test Signal"
-msgstr "Testni signali"
+msgstr "Testni signal"
 
 #: data/ui/pipe_manager_box.ui:480 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
@@ -1663,13 +1660,12 @@ msgid "State"
 msgstr "Stanje"
 
 #: data/ui/pipe_manager_box.ui:483 data/ui/preferences_spectrum.ui:12
-#, fuzzy
 msgid "Enabled"
-msgstr "Omogući"
+msgstr "Aktivirano"
 
 #: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
-msgstr ""
+msgstr "Svojstva"
 
 #: data/ui/pipe_manager_box.ui:501
 msgid "Channels"
@@ -1677,12 +1673,11 @@ msgstr "Kanali"
 
 #: data/ui/pipe_manager_box.ui:526
 msgid "Both"
-msgstr ""
+msgstr "Oba"
 
 #: data/ui/pipe_manager_box.ui:530
-#, fuzzy
 msgid "Both Channels"
-msgstr "Kanali"
+msgstr "Oba kanala"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
@@ -2022,16 +2017,14 @@ msgid "Room Size"
 msgstr "Veličina sobe"
 
 #: data/ui/reverb.ui:83
-#, fuzzy
 msgid "Small"
 msgstr "Mala"
 
 #: data/ui/reverb.ui:84
 msgid "Medium"
-msgstr "Osrednja"
+msgstr "Srednje velika"
 
 #: data/ui/reverb.ui:85
-#, fuzzy
 msgid "Large"
 msgstr "Velika"
 
@@ -2052,7 +2045,6 @@ msgid "Diffusion"
 msgstr "Difuzija"
 
 #: data/ui/reverb.ui:144
-#, fuzzy
 msgid "Pre Delay"
 msgstr "Prijevremeno kašnjenje"
 
@@ -2074,7 +2066,7 @@ msgstr "Atmosera"
 
 #: data/ui/reverb.ui:591
 msgid "Empty Walls"
-msgstr "Prazna soba"
+msgstr "Prazni zidovi"
 
 #: data/ui/reverb.ui:604
 msgid "Room"
@@ -2487,11 +2479,11 @@ msgstr "Pojačanje ulaza"
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:228
+#: src/presets_menu.cpp:228 src/presets_menu.cpp:225
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:247
+#: src/presets_menu.cpp:247 src/presets_menu.cpp:241
 msgid "Delete?"
 msgstr ""
 
