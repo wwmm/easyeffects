@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -73,8 +73,9 @@ msgid "Application Volume"
 msgstr "Aplicacións"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_Manual"
+#, fuzzy
+msgid "_Help"
+msgstr "Axuda"
 
 #: data/ui/application_window.ui:12
 #, fuzzy
@@ -2083,9 +2084,8 @@ msgid "Overview"
 msgstr "Vista xeral"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
-msgid "Open the Easy Effects Manual"
-msgstr "Restabelecer EasyEffects."
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2559,6 +2559,13 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr ""
+
+#~ msgid "_Manual"
+#~ msgstr "_Manual"
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Restabelecer EasyEffects."
 
 #~ msgid "Bell"
 #~ msgstr "Campaíña"
@@ -3185,9 +3192,6 @@ msgstr ""
 
 #~ msgid "Audio effects for PulseAudio applications"
 #~ msgstr "Efectos de son para as aplicacións de PulseAudio"
-
-#~ msgid "Help"
-#~ msgstr "Axuda"
 
 #~ msgid "Calibration Microphone"
 #~ msgstr "Calibración do micrófono"

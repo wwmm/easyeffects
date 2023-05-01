@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -71,8 +71,9 @@ msgid "Application Volume"
 msgstr "Uygulama Ses Seviyesi"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_Kılavuz"
+#, fuzzy
+msgid "_Help"
+msgstr "Yardım"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1985,8 +1986,8 @@ msgid "Overview"
 msgstr "Genel Görünüm"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the Easy Effects Manual"
-msgstr "Easy Effects Kılavuzunu Aç"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2435,6 +2436,12 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr "-sonsuz"
+
+#~ msgid "_Manual"
+#~ msgstr "_Kılavuz"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Easy Effects Kılavuzunu Aç"
 
 #~ msgid "{} Is Not Installed On The System"
 #~ msgstr "{} Sistemde Kurulu Değil"
@@ -2902,9 +2909,6 @@ msgstr "-sonsuz"
 
 #~ msgid "Jmeier"
 #~ msgstr "Jmeier"
-
-#~ msgid "Help"
-#~ msgstr "Yardım"
 
 #~ msgid "Show Spectrum"
 #~ msgstr "Spektrumu Göster"

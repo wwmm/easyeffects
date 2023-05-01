@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2023-02-18 01:43+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -70,8 +70,8 @@ msgid "Application Volume"
 msgstr "Volumen de aplicación"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_Manual"
+msgid "_Help"
+msgstr ""
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1934,8 +1934,8 @@ msgid "Overview"
 msgstr "Resumen"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the Easy Effects Manual"
-msgstr "Abrir el manual de usuario Easy Effects"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2388,6 +2388,12 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr "infinito"
+
+#~ msgid "_Manual"
+#~ msgstr "_Manual"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Abrir el manual de usuario Easy Effects"
 
 #~ msgid "{} Is Not Installed On The System"
 #~ msgstr "{} no está instalado en el Sistema"

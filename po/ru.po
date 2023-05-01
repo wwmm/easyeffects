@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2023-04-29 15:33+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -71,8 +71,9 @@ msgid "Application Volume"
 msgstr "Громкость приложения"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_Руководство"
+#, fuzzy
+msgid "_Help"
+msgstr "Справка"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1976,8 +1977,8 @@ msgid "Overview"
 msgstr "Описание"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the Easy Effects Manual"
-msgstr "Открыть руководство Easy Effects"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2439,6 +2440,12 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr "∞"
+
+#~ msgid "_Manual"
+#~ msgstr "_Руководство"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Открыть руководство Easy Effects"
 
 #~ msgid "{} Is Not Installed On The System"
 #~ msgstr "{} не установлено в системе"
@@ -3580,9 +3587,6 @@ msgstr "∞"
 
 #~ msgid "Audio effects for PulseAudio applications"
 #~ msgstr "Аудиоэффекты для приложений PulseAudio"
-
-#~ msgid "Help"
-#~ msgstr "Справка"
 
 #~ msgid "Calibration Microphone"
 #~ msgstr "Калибровка корректировки микрофона"

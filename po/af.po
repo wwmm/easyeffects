@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Afrikaans <https://hosted.weblate.org/projects/easyeffects/"
@@ -70,7 +70,7 @@ msgid "Application Volume"
 msgstr ""
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
+msgid "_Help"
 msgstr ""
 
 #: data/ui/application_window.ui:12
@@ -1932,7 +1932,7 @@ msgid "Overview"
 msgstr ""
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the Easy Effects Manual"
+msgid "Show help"
 msgstr ""
 
 #: data/ui/shortcuts.ui:23

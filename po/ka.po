@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -70,8 +70,8 @@ msgid "Application Volume"
 msgstr ""
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_ხელით"
+msgid "_Help"
+msgstr ""
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1930,7 +1930,7 @@ msgid "Overview"
 msgstr "მიმოხილვა"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the Easy Effects Manual"
+msgid "Show help"
 msgstr ""
 
 #: data/ui/shortcuts.ui:23
@@ -2367,6 +2367,9 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr ""
+
+#~ msgid "_Manual"
+#~ msgstr "_ხელით"
 
 #~ msgid "Bell"
 #~ msgstr "ზარი"
