@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-01 14:30+0000\n"
-"PO-Revision-Date: 2023-04-14 20:49+0000\n"
+"PO-Revision-Date: 2023-05-01 20:52+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -125,6 +125,8 @@ msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
 msgstr ""
+"Het voorinstellingenmenu vraagt nu om bevestiging voor het opslaan/"
+"verwijderen van een voorinstellingenbestand."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -155,6 +157,8 @@ msgstr "Foutoplossingen:"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "The plugin reset should not make its controls innefective anymore."
 msgstr ""
+"Het resetten van de plug-in zou zijn bediening niet meer onbruikbaar moeten "
+"maken."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
@@ -172,12 +176,17 @@ msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
+"Speex wordt niet langer ten onrechte vermeld als bouwafhankelijkheid ("
+"speexdsp is nog steeds een bouwafhankelijkheid)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "RNNoise is no longer an autodependency. It is now required by default, if "
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
 msgstr ""
+"RNNoise is niet langer een auto-afhankelijkheid. Het is nu standaard "
+"vereist, indien niet beschikbaar moet het expliciet worden uitgeschakeld met "
+"-Denable-rnnoise=false"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid "Updated translations."
