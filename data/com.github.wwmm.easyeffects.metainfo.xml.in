@@ -13,18 +13,18 @@
     <p>Besides manipulating sound output, Easy Effects is able to apply effects to an input device, such as a microphone. This is, for example, useful in audio recording, but it also works well during voice conversations.</p>
     <p>When Easy Effects is launched it will conveniently remember the configuration used in the last session. It is also possible to save all the current settings as profiles.</p>
   </description>
+  <requires>
+    <internet>offline-only</internet>
+  </requires>
+  <recommends>
+    <display_length>900</display_length>
+  </recommends>
   <supports>
     <control>pointing</control>
     <control>keyboard</control>
     <control>console</control>
     <control>touch</control>
   </supports>
-  <recommends>
-    <display_length compare="ge">900</display_length>
-  </recommends>
-  <requires>
-    <internet>offline-only</internet>
-  </requires>
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
@@ -50,6 +50,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.0.4" date="2023-05-01T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>The presets menu now asks for confirmation before saving/deleting a preset file.</li>
+          <li>Bug fixes:</li>
+          <li>The plugin reset should not make its controls innefective anymore.</li>
+          <li>Other notes:</li>
+          <li>Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)</li>
+          <li>RNNoise is no longer an autodependency. It is now required by default, if not available it must be explicitly disabled with -Denable-rnnoise=false</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.0.3" date="2023-04-06T00:00:00Z">
       <description>
         <ul>
@@ -390,5 +403,5 @@
       </description>
     </release>
   </releases>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
 </component>

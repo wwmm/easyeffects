@@ -1,5 +1,20 @@
 # Changelog
  
+## 7.0.4
+### 2023-05-01
+
+ 
+### Features:
+- The presets menu now asks for confirmation before saving/deleting a preset file.
+
+### Bug fixes:
+- The plugin reset should not make its controls innefective anymore. 
+
+### Other notes:
+- Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)
+- RNNoise is no longer an autodependency. It is now required by default, if not available it must be explicitly disabled with -Denable-rnnoise=false
+
+ 
 ## 7.0.3
 ### 2023-04-06
 
