@@ -28,12 +28,12 @@
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
-  <url type="faq">https://github.com/wwmm/easyeffects#frequently-asked-questions</url>
-  <url type="help">https://github.com/wwmm/easyeffects#documentation</url>
+  <url type="faq">https://github.com/wwmm/easyeffects/wiki/FAQ</url>
+  <url type="help">https://wwmm.github.io/easyeffects</url>
   <url type="donation">https://github.com/wwmm/easyeffects#donate</url>
-  <url type="translate">https://github.com/wwmm/easyeffects#translating-easy-effects</url>
+  <url type="translate">https://github.com/wwmm/easyeffects/wiki/Translating-EasyEffects</url>
   <url type="vcs-browser">https://github.com/wwmm/easyeffects</url>
-  <url type="contribute">https://github.com/wwmm/easyeffects#installing-from-source</url>
+  <url type="contribute">https://github.com/wwmm/easyeffects/wiki/Installation-from-Source</url>
   <translation type="gettext">Easy Effects</translation>
   <screenshots>
     <screenshot type="default">

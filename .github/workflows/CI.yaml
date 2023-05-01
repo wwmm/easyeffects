@@ -60,7 +60,7 @@ jobs:
         jq '.modules[0]."config-opts" += ["-Dwerror=true"]' util/flatpak/com.github.wwmm.easyeffects.Devel.json > "$updated_manifest"
         mv "$updated_manifest" util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
-    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
       with:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
@@ -138,15 +138,15 @@ jobs:
         source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v2.3.2
       with:
         languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+      uses: github/codeql-action/autobuild@v2.3.2
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v2.3.2
 
   clang-tidy:
     name: Clang Tidy
@@ -161,6 +161,9 @@ jobs:
 
     - name: Install deps
       run: |
+        apk update
+        apk upgrade
+
         # install general build deps
         apk add meson clang clang-extra-tools build-base bash
 

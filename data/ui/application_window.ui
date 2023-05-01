@@ -3,7 +3,7 @@
     <menu id="primary_menu">
         <section>
             <item>
-                <attribute name="label" translatable="yes">_Manual</attribute>
+                <attribute name="label" translatable="yes">_Help</attribute>
                 <attribute name="action">app.help</attribute>
             </item>
         </section>
