@@ -13,7 +13,7 @@
                         <child>
                             <object class="GtkShortcutsShortcut">
                                 <property name="accelerator">F1</property>
-                                <property name="title" translatable="yes">Open the Easy Effects Manual</property>
+                                <property name="title" translatable="yes">Show help</property>
                             </object>
                         </child>
 
