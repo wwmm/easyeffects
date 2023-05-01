@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-01 14:30+0000\n"
-"PO-Revision-Date: 2023-04-07 23:50+0000\n"
+"PO-Revision-Date: 2023-05-01 20:52+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -130,6 +130,8 @@ msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
 msgstr ""
+"Il menu dei profili adesso richiede una conferma prima di salvare/eliminare "
+"un file."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -158,10 +160,10 @@ msgid "Bug fixes:"
 msgstr "Bug corretti:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#, fuzzy
 msgid "The plugin reset should not make its controls innefective anymore."
 msgstr ""
-"L'icona di allarma saturazione adesso non sposta più gli oggetti adiacenti"
+"Il comando di reset degli effetti rendeva ineffettivi i controlli. Questo "
+"problema dovrebbe essere stato risolto."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
@@ -179,12 +181,17 @@ msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
+"Speex non è più erroneamente elencato come una dipendenza di compilazione ("
+"speexdsp invece è ancora una dipendenza di compilazione)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "RNNoise is no longer an autodependency. It is now required by default, if "
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
 msgstr ""
+"RNNoise non è più un autodipendenza. Adesso è richiesto in via predefinita "
+"e, se non disponibile, deve essere esplicitamente disabilitato con Denable-"
+"rnnoise=false"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid "Updated translations."
