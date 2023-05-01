@@ -161,6 +161,9 @@ jobs:
 
     - name: Install deps
       run: |
+        apk update
+        apk upgrade
+
         # install general build deps
         apk add meson clang clang-extra-tools build-base bash
 
