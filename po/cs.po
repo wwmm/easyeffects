@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -69,8 +69,9 @@ msgid "Application Volume"
 msgstr "Hlasitost aplikace"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_Manuál"
+#, fuzzy
+msgid "_Help"
+msgstr "Nápověda"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1953,8 +1954,8 @@ msgid "Overview"
 msgstr "Přehled"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the Easy Effects Manual"
-msgstr "Otevřít manuál EasyEffects"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2399,6 +2400,12 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "_Manual"
+#~ msgstr "_Manuál"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Otevřít manuál EasyEffects"
 
 #~ msgid "{} Is Not Installed On The System"
 #~ msgstr "{} Není nainstalováno v systému"
@@ -2945,9 +2952,6 @@ msgstr "-inf"
 
 #~ msgid "Audio effects for PulseAudio applications"
 #~ msgstr "Zvukové efekty pro programy PulseAudio"
-
-#~ msgid "Help"
-#~ msgstr "Nápověda"
 
 #~ msgid "Calibration Microphone"
 #~ msgstr "Kalibrace mikrofonu"

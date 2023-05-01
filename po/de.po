@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2023-03-26 07:37+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -70,8 +70,9 @@ msgid "Application Volume"
 msgstr "Anwendungs-Lautstärke"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_Handbuch"
+#, fuzzy
+msgid "_Help"
+msgstr "Hilfe"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1936,8 +1937,8 @@ msgid "Overview"
 msgstr "Übersicht"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the Easy Effects Manual"
-msgstr "Öffne die Anleitung für Easy Effects"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2380,6 +2381,12 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr ""
+
+#~ msgid "_Manual"
+#~ msgstr "_Handbuch"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Öffne die Anleitung für Easy Effects"
 
 #~ msgid "{} Is Not Installed On The System"
 #~ msgstr "{} ist nicht auf dem System installiert"
@@ -3495,9 +3502,6 @@ msgstr ""
 
 #~ msgid "Audio effects for PulseAudio applications"
 #~ msgstr "Audioeffekte für Pulseaudio-Anwendungen"
-
-#~ msgid "Help"
-#~ msgstr "Hilfe"
 
 #~ msgid "Calibration Microphone"
 #~ msgstr "Kalibrationsmikrofon"

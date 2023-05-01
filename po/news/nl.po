@@ -176,8 +176,8 @@ msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
-"Speex wordt niet langer ten onrechte vermeld als bouwafhankelijkheid ("
-"speexdsp is nog steeds een bouwafhankelijkheid)"
+"Speex wordt niet langer ten onrechte vermeld als bouwafhankelijkheid "
+"(speexdsp is nog steeds een bouwafhankelijkheid)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""

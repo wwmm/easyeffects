@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2023-03-21 06:41+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -71,8 +71,8 @@ msgid "Application Volume"
 msgstr "应用程序音量"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "使用手册(_M)"
+msgid "_Help"
+msgstr ""
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1937,8 +1937,8 @@ msgid "Overview"
 msgstr "概览"
 
 #: data/ui/shortcuts.ui:16
-msgid "Open the Easy Effects Manual"
-msgstr "打开 Easy Effects 手册"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2375,6 +2375,12 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr "-inf"
+
+#~ msgid "_Manual"
+#~ msgstr "使用手册(_M)"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "打开 Easy Effects 手册"
 
 #~ msgid "{} Is Not Installed On The System"
 #~ msgstr "{} 未在系统中安装"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -71,8 +71,8 @@ msgid "Application Volume"
 msgstr "Applikationvolume"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_Manuel"
+msgid "_Help"
+msgstr ""
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1975,9 +1975,8 @@ msgid "Overview"
 msgstr "Tjeneste"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
-msgid "Open the Easy Effects Manual"
-msgstr "Nustli EasyEffects."
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2444,6 +2443,13 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr ""
+
+#~ msgid "_Manual"
+#~ msgstr "_Manuel"
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Nustli EasyEffects."
 
 #~ msgid "Bell"
 #~ msgstr "Klokke"

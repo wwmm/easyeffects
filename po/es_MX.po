@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -74,8 +74,9 @@ msgid "Application Volume"
 msgstr "Aplicaciones"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr ""
+#, fuzzy
+msgid "_Help"
+msgstr "Ayuda"
 
 #: data/ui/application_window.ui:12
 #, fuzzy
@@ -2104,9 +2105,8 @@ msgid "Overview"
 msgstr ""
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
-msgid "Open the Easy Effects Manual"
-msgstr "Restablecer EasyEffects."
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2581,6 +2581,10 @@ msgstr ""
 msgid "-inf"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Restablecer EasyEffects."
+
 #~ msgid "Bell"
 #~ msgstr "Timbre"
 
@@ -2929,9 +2933,6 @@ msgstr ""
 
 #~ msgid "Jmeier"
 #~ msgstr "Jmeier"
-
-#~ msgid "Help"
-#~ msgstr "Ayuda"
 
 #~ msgid "Show Spectrum"
 #~ msgstr "Mostrar Espectro"

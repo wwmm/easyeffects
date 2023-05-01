@@ -185,8 +185,8 @@ msgid ""
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
 msgstr ""
 "RNNoise больше не является автозависимостью. Теперь он требуется по "
-"умолчанию, если он недоступен, его необходимо явно отключить с помощью "
-"-Denable-rnnoise=false"
+"умолчанию, если он недоступен, его необходимо явно отключить с помощью -"
+"Denable-rnnoise=false"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid "Updated translations."
