@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-01 14:30+0000\n"
-"PO-Revision-Date: 2023-04-07 23:50+0000\n"
+"PO-Revision-Date: 2023-05-01 20:52+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -126,6 +126,8 @@ msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
 msgstr ""
+"Меню предустановок теперь запрашивает подтверждение перед сохранением/"
+"удалением файла предустановки."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -154,11 +156,10 @@ msgid "Bug fixes:"
 msgstr "Исправление ошибок:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#, fuzzy
 msgid "The plugin reset should not make its controls innefective anymore."
 msgstr ""
-"Предупреждение о переполнении больше не должно менять расположение соседних "
-"виджетов"
+"Перезагрузка плагина больше не должна делать его элементы управления "
+"неработоспособными."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
@@ -176,12 +177,16 @@ msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
+"Speex больше не является зависимостью сборки (speexdsp по-прежнему является)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "RNNoise is no longer an autodependency. It is now required by default, if "
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
 msgstr ""
+"RNNoise больше не является автозависимостью. Теперь он требуется по "
+"умолчанию, если он недоступен, его необходимо явно отключить с помощью "
+"-Denable-rnnoise=false"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid "Updated translations."
