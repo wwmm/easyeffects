@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -74,8 +74,9 @@ msgid "Application Volume"
 msgstr "Aplikácie"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr ""
+#, fuzzy
+msgid "_Help"
+msgstr "Pomocník"
 
 #: data/ui/application_window.ui:12
 #, fuzzy
@@ -2109,9 +2110,8 @@ msgid "Overview"
 msgstr "Server"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
-msgid "Open the Easy Effects Manual"
-msgstr "Obnoviť PulseEffects"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2583,6 +2583,10 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Obnoviť PulseEffects"
 
 #~ msgid "Bell"
 #~ msgstr "Zvonček"
@@ -3156,9 +3160,6 @@ msgstr ""
 
 #~ msgid "Audio effects for PulseAudio applications"
 #~ msgstr "Zvukové efekty pre aplikácie PulseAudio"
-
-#~ msgid "Help"
-#~ msgstr "Pomocník"
 
 #~ msgid "Calibration Microphone"
 #~ msgstr "Kalibrovať mikrofón"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2023-05-01 06:52+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -76,8 +76,9 @@ msgid "Application Volume"
 msgstr "Aplikacije"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr ""
+#, fuzzy
+msgid "_Help"
+msgstr "Pomoć"
 
 #: data/ui/application_window.ui:12
 #, fuzzy
@@ -2115,9 +2116,8 @@ msgid "Overview"
 msgstr "Ulazni uređaj"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
-msgid "Open the Easy Effects Manual"
-msgstr "EasyEffects"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2603,6 +2603,10 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "EasyEffects"
 
 #, fuzzy
 #~ msgid "High Pass"
@@ -3099,9 +3103,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Audio effects for PulseAudio applications"
 #~ msgstr "Zvučni efekti za Pulseaudio aplikacije"
-
-#~ msgid "Help"
-#~ msgstr "Pomoć"
 
 #, fuzzy
 #~ msgid "Calibration Microphone"

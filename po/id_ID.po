@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 14:30+0000\n"
+"POT-Creation-Date: 2023-05-01 20:48+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -71,8 +71,9 @@ msgid "Application Volume"
 msgstr "Volume Aplikasi"
 
 #: data/ui/application_window.ui:6
-msgid "_Manual"
-msgstr "_Manual"
+#, fuzzy
+msgid "_Help"
+msgstr "Bantuan"
 
 #: data/ui/application_window.ui:12
 #, fuzzy
@@ -2068,9 +2069,8 @@ msgid "Overview"
 msgstr "Ringkasan"
 
 #: data/ui/shortcuts.ui:16
-#, fuzzy
-msgid "Open the Easy Effects Manual"
-msgstr "Buka Manual EasyEffects"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2535,6 +2535,13 @@ msgstr ""
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
 msgstr ""
+
+#~ msgid "_Manual"
+#~ msgstr "_Manual"
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Buka Manual EasyEffects"
 
 #~ msgid "Bell"
 #~ msgstr "Bell"
@@ -3045,9 +3052,6 @@ msgstr ""
 
 #~ msgid "Audio effects for PulseAudio applications"
 #~ msgstr "Terapkan Efek Suara via PulseAudio"
-
-#~ msgid "Help"
-#~ msgstr "Bantuan"
 
 #~ msgid "Calibration Microphone"
 #~ msgstr "Kalibrasikan Mikrofon"
