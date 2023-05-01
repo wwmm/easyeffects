@@ -138,7 +138,7 @@ Easy Effects is designed assuming that your hardware stays as default.
 
 A comprehensive set of help pages are included in the application itself, accessed via the hamburger menu in the top right. If the help pages are inaccessible ensure the [yelp](https://gitlab.gnome.org/GNOME/yelp) package is installed.
 
-A comprehensive manual is included in the application itself, accessed via the hamburger menu in the top right. If the manual is inaccessible ensure the [yelp](https://gitlab.gnome.org/GNOME/yelp) package is installed.
+The latest version of the help pages can also be [seen here](https://wwmm.github.io/easyeffects).
 
 ## Changelog
 
