@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-01 20:48+0000\n"
-"PO-Revision-Date: 2023-03-25 15:40+0000\n"
+"PO-Revision-Date: 2023-05-02 22:49+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -71,7 +71,7 @@ msgstr "Volume de l’application"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
-msgstr ""
+msgstr "_Aide"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1937,7 +1937,7 @@ msgstr "Vue d’ensemble"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Afficher l'aide"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2260,11 +2260,11 @@ msgstr "Ajouter"
 
 #: src/presets_menu.cpp:228
 msgid "Save?"
-msgstr ""
+msgstr "Sauvegarder ?"
 
 #: src/presets_menu.cpp:247
 msgid "Delete?"
-msgstr ""
+msgstr "Effacer ?"
 
 #: src/rnnoise_ui.cpp:90
 msgid ""
@@ -2369,6 +2369,9 @@ msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
+"Le logiciel requis pour l'effet {}, \"{}\", n'est pas installé. Envisagez "
+"d'utiliser le paquet Easy Effects Flatpak ou d'installer le logiciel vous-"
+"même."
 
 #: src/ui_helpers.cpp:75
 msgid ""
@@ -2377,6 +2380,10 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"L'effet {} a été désactivé lorsque Easy Effects a été compilé. C'est peut-"
+"être parce que le logiciel requis pour cet effet, \"{}\", n'était pas "
+"disponible. Envisagez d'utiliser le paquet Easy Effects Flatpak ou de créer "
+"votre propre paquet Easy Effects."
 
 #: src/ui_helpers.cpp:114 src/ui_helpers.cpp:134
 msgid "-inf"
