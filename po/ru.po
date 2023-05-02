@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-01 20:48+0000\n"
-"PO-Revision-Date: 2023-04-29 15:33+0000\n"
+"PO-Revision-Date: 2023-05-02 22:49+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -71,9 +71,8 @@ msgid "Application Volume"
 msgstr "Громкость приложения"
 
 #: data/ui/application_window.ui:6
-#, fuzzy
 msgid "_Help"
-msgstr "Справка"
+msgstr "_Справка"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1978,7 +1977,7 @@ msgstr "Описание"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Показать справку"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
