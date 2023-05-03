@@ -21,7 +21,7 @@
                         <child>
                             <object class="GtkLabel" id="label_file_name">
                                 <property name="wrap">1</property>
-                                <property name="wrap-mode">word-char</property>
+                                <property name="wrap-mode">word</property>
                             </object>
                         </child>
 

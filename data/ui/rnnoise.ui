@@ -120,7 +120,7 @@
                                     <object class="GtkLabel" id="active_model_name">
                                         <property name="halign">start</property>
                                         <property name="wrap">1</property>
-                                        <property name="wrap-mode">word-char</property>
+                                        <property name="wrap-mode">word</property>
                                         <property name="label" translatable="yes">Standard RNNoise Model</property>
 
                                         <binding name="label">

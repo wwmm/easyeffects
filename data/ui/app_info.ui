@@ -54,7 +54,7 @@
                                                 <property name="xalign">0</property>
                                                 <property name="valign">center</property>
                                                 <property name="wrap">1</property>
-                                                <property name="wrap-mode">word-char</property>
+                                                <property name="wrap-mode">word</property>
                                                 <property name="label">App</property>
                                             </object>
                                         </child>
@@ -66,7 +66,7 @@
                                                 <property name="xalign">0</property>
                                                 <property name="valign">center</property>
                                                 <property name="wrap">1</property>
-                                                <property name="wrap-mode">word-char</property>
+                                                <property name="wrap-mode">word</property>
                                                 <property name="label">Description</property>
                                                 <style>
                                                     <class name="dim-label" />
