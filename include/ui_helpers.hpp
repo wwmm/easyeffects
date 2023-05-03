@@ -62,6 +62,8 @@ void save_user_locale();
 
 auto get_user_locale() -> std::locale;
 
+auto get_plugin_credit_translated(const std::string& plugin_package) -> std::string;
+
 void update_level(GtkLevelBar* w_left,
                   GtkLabel* w_left_label,
                   GtkLevelBar* w_right,

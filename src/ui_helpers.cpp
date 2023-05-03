@@ -67,18 +67,23 @@ auto missing_plugin_box(const std::string& name, const std::string& package) -> 
     const auto format_title = fmt::runtime(_("{} Not Available"));
 
     // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
-    auto format_descr = fmt::runtime(_("The software required for the {} effect, \"{}\", is not installed. Consider using the Easy Effects Flatpak package or installing the software yourself."));
+    auto format_descr =
+        fmt::runtime(_("The software required for the {} effect, \"{}\", is not installed. Consider using the Easy "
+                       "Effects Flatpak package or installing the software yourself."));
 
     if (name == tags::plugin_name::rnnoise) {
       // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
       format_descr =
-          fmt::runtime(_("The {} effect was disabled when Easy Effects was compiled. This is perhaps since the software required for this effect, \"{}\", was not available. Consider using the Easy Effects Flatpak package or building your own Easy Effects package."));
+          fmt::runtime(_("The {} effect was disabled when Easy Effects was compiled. This is perhaps since the "
+                         "software required for this effect, \"{}\", was not available. Consider using the Easy "
+                         "Effects Flatpak package or building your own Easy Effects package."));
     }
 
     const std::string translated_name = tags::plugin_name::get_translated().at(name);
 
     adw_status_page_set_title(ADW_STATUS_PAGE(status_page), fmt::format(format_title, translated_name).c_str());
-    adw_status_page_set_description(ADW_STATUS_PAGE(status_page), fmt::format(format_descr, translated_name, package).c_str());
+    adw_status_page_set_description(ADW_STATUS_PAGE(status_page),
+                                    fmt::format(format_descr, translated_name, package).c_str());
   } catch (...) {
   }
 
@@ -210,6 +215,17 @@ void update_level(GtkLevelBar* w_left,
   } else {
     gtk_level_bar_set_value(w_right, 0.0);
     gtk_label_set_text(w_right_label, "-99");
+  }
+}
+
+auto get_plugin_credit_translated(const std::string& plugin_package) -> std::string {
+  try {
+    // For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
+    const auto format = fmt::runtime(_("Using {}"));
+
+    return fmt::format(format, plugin_package);
+  } catch (...) {
+    return plugin_package;
   }
 }
 
