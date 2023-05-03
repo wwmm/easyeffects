@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-01 20:48+0000\n"
-"PO-Revision-Date: 2023-04-30 10:50+0000\n"
+"PO-Revision-Date: 2023-05-02 22:49+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -70,9 +70,8 @@ msgid "Application Volume"
 msgstr "App-volume"
 
 #: data/ui/application_window.ui:6
-#, fuzzy
 msgid "_Help"
-msgstr "Hulp"
+msgstr "_Hulp"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1935,7 +1934,7 @@ msgstr "Overzicht"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Hulp tonen"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
