@@ -41,7 +41,8 @@ struct _BassEnhancerBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkLevelBar* harmonics_levelbar;
 
@@ -117,6 +118,8 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
     });
   }));
 
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->bass_enhancer->package).c_str());
+
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   gsettings_bind_widgets<"amount", "harmonics", "scope", "floor", "blend", "listen", "floor-active">(
@@ -178,6 +181,7 @@ void bass_enhancer_box_class_init(BassEnhancerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, harmonics_levelbar_label);
   gtk_widget_class_bind_template_child(widget_class, BassEnhancerBox, harmonics_levelbar);

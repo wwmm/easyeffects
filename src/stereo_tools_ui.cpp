@@ -41,7 +41,8 @@ struct _StereoToolsBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkDropDown* mode;
 
@@ -98,6 +99,8 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
                    self->output_level_right_label, left, right);
     });
   }));
+
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->stereo_tools->package).c_str());
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
@@ -198,6 +201,7 @@ void stereo_tools_box_class_init(StereoToolsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, mode);
   gtk_widget_class_bind_template_child(widget_class, StereoToolsBox, balance_in);

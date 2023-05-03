@@ -41,7 +41,8 @@ struct _EchoCancellerBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkSpinButton *filter_length, *residual_echo_suppression, *near_end_suppression;
 
@@ -93,6 +94,9 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
                    self->output_level_right_label, left, right);
     });
   }));
+
+  gtk_label_set_text(self->plugin_credit,
+                     ui::get_plugin_credit_translated(self->data->echo_canceller->package).c_str());
 
   gsettings_bind_widgets<"input-gain", "output-gain", "filter-length", "residual-echo-suppression",
                          "near-end-suppression">(self->settings, self->input_gain, self->output_gain,
@@ -154,6 +158,7 @@ void echo_canceller_box_class_init(EchoCancellerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, filter_length);
   gtk_widget_class_bind_template_child(widget_class, EchoCancellerBox, residual_echo_suppression);

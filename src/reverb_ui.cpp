@@ -41,7 +41,8 @@ struct _ReverbBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkDropDown* room_size;
 
@@ -168,6 +169,8 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
     });
   }));
 
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->reverb->package).c_str());
+
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "amount", gtk_spin_button_get_adjustment(self->wet), "value",
@@ -250,6 +253,7 @@ void reverb_box_class_init(ReverbBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, ReverbBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, room_size);
   gtk_widget_class_bind_template_child(widget_class, ReverbBox, predelay);

@@ -43,7 +43,8 @@ struct _MultibandCompressorBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkStack* stack;
 
@@ -282,6 +283,9 @@ void setup(MultibandCompressorBox* self,
     }
   }));
 
+  gtk_label_set_text(self->plugin_credit,
+                     ui::get_plugin_credit_translated(self->data->multiband_compressor->package).c_str());
+
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "dry", gtk_spin_button_get_adjustment(self->dry), "value", G_SETTINGS_BIND_DEFAULT);
@@ -355,6 +359,7 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, stack);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band1);

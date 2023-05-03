@@ -41,7 +41,8 @@ struct _MaximizerBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkSpinButton *release, *threshold, *ceiling;
 
@@ -113,6 +114,8 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
     });
   }));
 
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->maximizer->package).c_str());
+
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "ceiling", gtk_spin_button_get_adjustment(self->ceiling), "value",
@@ -177,6 +180,7 @@ void maximizer_box_class_init(MaximizerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, release);
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, threshold);

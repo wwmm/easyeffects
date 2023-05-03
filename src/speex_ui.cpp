@@ -48,7 +48,7 @@ struct _SpeexBox {
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
-      *noise_suppression_label;
+      *noise_suppression_label, *plugin_credit;
 
   GtkSwitch *enable_denoise, *enable_agc, *enable_vad, *enable_dereverb;
 
@@ -106,6 +106,8 @@ void setup(SpeexBox* self,
                    self->output_level_right_label, left, right);
     });
   }));
+
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->speex->package).c_str());
 
   gsettings_bind_widgets<"input-gain", "output-gain", "enable-denoise", "noise-suppression", "enable-agc", "enable-vad",
                          "vad-probability-start", "vad-probability-continue", "enable-dereverb">(
@@ -169,6 +171,7 @@ void speex_box_class_init(SpeexBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, SpeexBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, enable_denoise);
   gtk_widget_class_bind_template_child(widget_class, SpeexBox, enable_agc);

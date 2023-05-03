@@ -41,7 +41,8 @@ struct _GateBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkLabel *attack_zone_start_label, *attack_threshold_label, *release_zone_start_label, *release_threshold_label;
 
@@ -326,6 +327,8 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
     }
   }));
 
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->gate->package).c_str());
+
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "dry", gtk_spin_button_get_adjustment(self->dry), "value", G_SETTINGS_BIND_DEFAULT);
@@ -442,6 +445,7 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, output_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, gating);
   gtk_widget_class_bind_template_child(widget_class, GateBox, gating_label);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, GateBox, attack_zone_start_label);
   gtk_widget_class_bind_template_child(widget_class, GateBox, attack_threshold_label);

@@ -41,7 +41,8 @@ struct _AutogainBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkSpinButton *target, *silence_threshold, *maximum_history;
 
@@ -149,6 +150,8 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
         });
       }));
 
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->autogain->package).c_str());
+
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   gsettings_bind_widgets<"target", "silence-threshold", "maximum-history">(
@@ -211,6 +214,7 @@ void autogain_box_class_init(AutogainBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, AutogainBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, target);
   gtk_widget_class_bind_template_child(widget_class, AutogainBox, silence_threshold);

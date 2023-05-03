@@ -55,7 +55,8 @@ struct _ConvolverBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkMenuButton *menu_button_impulses, *menu_button_combine;
 
@@ -485,6 +486,8 @@ void setup(ConvolverBox* self,
       }),
       self));
 
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->convolver->package).c_str());
+
   gsettings_bind_widgets<"input-gain", "output-gain", "autogain">(self->settings, self->input_gain, self->output_gain,
                                                                   self->autogain);
 
@@ -562,6 +565,7 @@ void convolver_box_class_init(ConvolverBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, ConvolverBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, menu_button_impulses);
   gtk_widget_class_bind_template_child(widget_class, ConvolverBox, menu_button_combine);
