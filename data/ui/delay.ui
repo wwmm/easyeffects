@@ -29,6 +29,7 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Delay</property>
+                                                        <property name="title-lines">2</property>
                                                         <child>
                                                             <object class="GtkSpinButton" id="time_l">
                                                                 <property name="valign">center</property>
@@ -50,6 +51,7 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Dry Level</property>
+                                                        <property name="title-lines">2</property>
                                                         <child>
                                                             <object class="GtkSpinButton" id="dry_l">
                                                                 <property name="valign">center</property>
@@ -73,6 +75,7 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Wet Level</property>
+                                                        <property name="title-lines">2</property>
                                                         <child>
                                                             <object class="GtkSpinButton" id="wet_l">
                                                                 <property name="valign">center</property>
@@ -104,6 +107,7 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Delay</property>
+                                                        <property name="title-lines">2</property>
                                                         <child>
                                                             <object class="GtkSpinButton" id="time_r">
                                                                 <property name="valign">center</property>
@@ -125,6 +129,7 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Dry Level</property>
+                                                        <property name="title-lines">2</property>
                                                         <child>
                                                             <object class="GtkSpinButton" id="dry_r">
                                                                 <property name="valign">center</property>
@@ -148,6 +153,7 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Wet Level</property>
+                                                        <property name="title-lines">2</property>
                                                         <child>
                                                             <object class="GtkSpinButton" id="wet_r">
                                                                 <property name="valign">center</property>
@@ -343,43 +349,35 @@
 
                         <child>
                             <object class="GtkBox">
+                                <property name="spacing">6</property>
                                 <property name="hexpand">1</property>
-                                <property name="vexpand">0</property>
-                                <property name="layout-manager">
-                                    <object class="GtkBinLayout"></object>
-                                </property>
+                                <property name="homogeneous">1</property>
+
+                                <!-- Empty placeholder used only for layout reason -->
+                                <child>
+                                    <object class="GtkLabel">
+                                    </object>
+                                </child>
 
                                 <child>
                                     <object class="GtkButton" id="reset_button">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="hexpand">1</property>
                                         <property name="label" translatable="yes">Reset</property>
                                         <signal name="clicked" handler="on_reset" object="DelayBox" />
                                     </object>
                                 </child>
 
                                 <child>
-                                    <object class="GtkBox">
+                                    <object class="GtkLabel" id="plugin_credit">
                                         <property name="halign">end</property>
-                                        <property name="hexpand">1</property>
-                                        <property name="vexpand">0</property>
-                                        <property name="spacing">6</property>
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Using</property>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label">Linux Studio Plugins</property>
-                                                <attributes>
-                                                    <attribute name="weight" value="bold" />
-                                                </attributes>
-                                            </object>
-                                        </child>
+                                        <property name="xalign">1</property>
+                                        <property name="valign">center</property>
+                                        <property name="wrap">1</property>
+                                        <property name="wrap-mode">word</property>
+                                        <attributes>
+                                            <attribute name="weight" value="bold" />
+                                        </attributes>
                                     </object>
                                 </child>
                             </object>

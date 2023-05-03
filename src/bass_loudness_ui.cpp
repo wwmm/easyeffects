@@ -41,7 +41,8 @@ struct _BassLoudnessBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkSpinButton *loudness, *output, *link;
 
@@ -93,6 +94,8 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
                    self->output_level_right_label, left, right);
     });
   }));
+
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->bass_loudness->package).c_str());
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
@@ -153,6 +156,7 @@ void bass_loudness_box_class_init(BassLoudnessBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, loudness);
   gtk_widget_class_bind_template_child(widget_class, BassLoudnessBox, output);

@@ -41,7 +41,8 @@ struct _DeesserBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkLevelBar *compression, *detected;
 
@@ -132,6 +133,8 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
     });
   }));
 
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->deesser->package).c_str());
+
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   g_settings_bind(self->settings, "makeup", gtk_spin_button_get_adjustment(self->makeup), "value",
@@ -221,6 +224,7 @@ void deesser_box_class_init(DeesserBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, DeesserBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, compression);
   gtk_widget_class_bind_template_child(widget_class, DeesserBox, compression_label);

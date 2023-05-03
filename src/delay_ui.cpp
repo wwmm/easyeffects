@@ -41,7 +41,8 @@ struct _DelayBox {
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label;
+  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
+      *plugin_credit;
 
   GtkSpinButton *time_l, *time_r, *dry_l, *dry_r, *wet_l, *wet_r;
 
@@ -95,6 +96,8 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
                    self->output_level_right_label, left, right);
     });
   }));
+
+  gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->delay->package).c_str());
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
@@ -171,6 +174,7 @@ void delay_box_class_init(DelayBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, DelayBox, input_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, output_level_right_label);
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, plugin_credit);
 
   gtk_widget_class_bind_template_child(widget_class, DelayBox, time_l);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, time_r);
