@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-03 21:45+0000\n"
-"PO-Revision-Date: 2023-03-26 07:37+0000\n"
+"PO-Revision-Date: 2023-05-05 06:51+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -70,9 +70,8 @@ msgid "Application Volume"
 msgstr "Anwendungs-Lautstärke"
 
 #: data/ui/application_window.ui:6
-#, fuzzy
 msgid "_Help"
-msgstr "Hilfe"
+msgstr "_Hilfe"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"

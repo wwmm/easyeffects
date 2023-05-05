@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-03 21:45+0000\n"
-"PO-Revision-Date: 2023-03-28 16:43+0000\n"
+"PO-Revision-Date: 2023-05-05 06:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -73,7 +73,7 @@ msgstr "Volume Applicazione"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
-msgstr ""
+msgstr "_Aiuto"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -1924,7 +1924,7 @@ msgstr "Sommario"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Mostra aiuto"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2104,7 +2104,7 @@ msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
 #: src/application.cpp:537
 msgid "Reset Easy Effects."
-msgstr "Reset Easy Effects."
+msgstr "Reimposta Easy Effects."
 
 #: src/application.cpp:540
 msgid "Hide the Window."
@@ -2376,9 +2376,8 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:224
-#, fuzzy
 msgid "Using {}"
-msgstr "Utilizzo"
+msgstr "Utilizzo {}"
 
 #~ msgid "_Manual"
 #~ msgstr "_Manuale"
