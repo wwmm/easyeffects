@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-03 21:45+0000\n"
-"PO-Revision-Date: 2023-05-02 22:49+0000\n"
+"PO-Revision-Date: 2023-05-05 06:51+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2378,9 +2378,8 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:224
-#, fuzzy
 msgid "Using {}"
-msgstr "Utilise"
+msgstr "Utilise {}"
 
 #~ msgid "_Manual"
 #~ msgstr "_Manuel"
