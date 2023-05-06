@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-03 21:45+0000\n"
-"PO-Revision-Date: 2023-05-05 06:51+0000\n"
+"PO-Revision-Date: 2023-05-06 06:49+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -77,7 +77,7 @@ msgstr "_Aiuto"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
-msgstr "_Reset Preferenze"
+msgstr "_Reimposta Preferenze"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
@@ -175,7 +175,7 @@ msgstr "Media Geometrica (BI)"
 
 #: data/ui/autogain.ui:169
 msgid "Reset History"
-msgstr "Reset Cronologia"
+msgstr "Reimposta Cronologia"
 
 #: data/ui/autogain.ui:279
 msgid "Relative"
@@ -258,7 +258,7 @@ msgstr "Guadagno in Uscita del Plugin"
 #: data/ui/multiband_gate.ui:630 data/ui/pitch.ui:474 data/ui/reverb.ui:535
 #: data/ui/rnnoise.ui:324 data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
 msgid "Reset"
-msgstr "Reset"
+msgstr "Reimposta"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:615 data/ui/gate.ui:740
 msgid "Device"
@@ -1924,7 +1924,7 @@ msgstr "Sommario"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr "Mostra aiuto"
+msgstr "Mostra Aiuto"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
