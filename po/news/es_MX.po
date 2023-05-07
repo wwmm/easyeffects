@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-03 21:45+0000\n"
-"PO-Revision-Date: 2020-01-09 18:18-0500\n"
-"Last-Translator: Christian\n"
-"Language-Team: \n"
-"Language: es_CO\n"
+"PO-Revision-Date: 2023-05-07 12:49+0000\n"
+"Last-Translator: Azul Walters <silencio43@proton.me>\n"
+"Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
+"easyeffects/changelog/es_MX/>\n"
+"Language: es_MX\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #, fuzzy
@@ -49,6 +50,9 @@ msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Easy Effects es el sucesor de PulseEffects. Easy Effects solo es compatible "
+"con el servidor de audio de PipeWire. En su lugar, los usuarios de "
+"PulseAudio deberían usar PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 #, fuzzy
@@ -87,15 +91,15 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "La página principal que muestra dos aplicaciones de salida de audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "La página del potenciador de graves que muestra los controles de audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "La página de convolver que muestra los controles de audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -122,13 +126,15 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:380
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:393
 msgid "Features:"
-msgstr ""
+msgstr "Características:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
 msgstr ""
+"El menú de ajustes preestablecidos ahora pide confirmación antes de guardar/"
+"eliminar un archivo preestablecido."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -154,7 +160,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:372
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:385
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Corrección de errores:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "The plugin reset should not make its controls innefective anymore."
