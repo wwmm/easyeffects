@@ -64,9 +64,6 @@ class LevelMeter : public PluginBase {
 
   uint old_rate = 0U;
 
-  double target = -23.0;  // target loudness level
-  double silence_threshold = -70.0;
-
   std::vector<float> data;
 
   ebur128_state* ebur_state = nullptr;

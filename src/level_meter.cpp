@@ -216,7 +216,7 @@ void LevelMeter::process(std::span<float>& left_in,
     failed = true;
   }
 
-  if (momentary > silence_threshold && !failed) {
+  if (!failed) {
     double peak_L = 0.0;
     double peak_R = 0.0;
 
