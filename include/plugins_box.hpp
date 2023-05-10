@@ -34,6 +34,7 @@
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
+#include "level_meter_ui.hpp"
 #include "limiter_ui.hpp"
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"

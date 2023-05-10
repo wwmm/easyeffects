@@ -169,6 +169,16 @@ inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/
 
 }  // namespace tags::schema::gate
 
+namespace tags::schema::level_meter {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.levelmeter";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/levelmeter/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/levelmeter/";
+
+}  // namespace tags::schema::level_meter
+
 namespace tags::schema::limiter {
 
 inline constexpr auto id = "com.github.wwmm.easyeffects.limiter";

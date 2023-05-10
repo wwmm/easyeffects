@@ -34,6 +34,7 @@
 #include "exciter.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
+#include "level_meter.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
 #include "maximizer.hpp"

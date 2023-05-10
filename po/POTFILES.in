@@ -31,6 +31,7 @@ data/ui/factory_presets_dropdown.ui
 data/ui/factory_rnnoise_listview.ui
 data/ui/filter.ui
 data/ui/gate.ui
+data/ui/level_meter.ui
 data/ui/limiter.ui
 data/ui/loudness.ui
 data/ui/maximizer.ui

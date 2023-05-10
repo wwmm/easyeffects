@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.easyeffects.levelmeter">
+        <key name="bypass" type="b">
+            <default>false</default>
+        </key>
+        <key name="reset-history" type="b">
+            <default>false</default>
+        </key>
+        <key name="maximum-history" type="i">
+            <range min="6" max="3600" />
+            <default>15</default>
+        </key>
+    </schema>
+</schemalist>

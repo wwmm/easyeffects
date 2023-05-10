@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-03 21:45+0000\n"
+"POT-Creation-Date: 2023-05-10 19:47-0300\n"
 "PO-Revision-Date: 2023-04-12 12:53+0000\n"
 "Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -136,7 +136,7 @@ msgstr "Cel"
 msgid "Silence"
 msgstr "Cisza"
 
-#: data/ui/autogain.ui:98
+#: data/ui/autogain.ui:98 data/ui/level_meter.ui:29
 msgid "Maximum History"
 msgstr "Maksymalna historia"
 
@@ -144,15 +144,15 @@ msgstr "Maksymalna historia"
 msgid "Reference"
 msgstr "Odnośnik"
 
-#: data/ui/autogain.ui:146 data/ui/autogain.ui:189
+#: data/ui/autogain.ui:146 data/ui/autogain.ui:189 data/ui/level_meter.ui:84
 msgid "Momentary"
 msgstr "Tymczasowe"
 
-#: data/ui/autogain.ui:147 data/ui/autogain.ui:219
+#: data/ui/autogain.ui:147 data/ui/autogain.ui:219 data/ui/level_meter.ui:114
 msgid "Short-Term"
 msgstr "Krótkie"
 
-#: data/ui/autogain.ui:148 data/ui/autogain.ui:249
+#: data/ui/autogain.ui:148 data/ui/autogain.ui:249 data/ui/level_meter.ui:144
 msgid "Integrated"
 msgstr "Zintegrowane"
 
@@ -172,24 +172,24 @@ msgstr ""
 msgid "Geometric Mean (SI)"
 msgstr ""
 
-#: data/ui/autogain.ui:169
+#: data/ui/autogain.ui:169 data/ui/level_meter.ui:64
 msgid "Reset History"
 msgstr "Wyczyść historię"
 
-#: data/ui/autogain.ui:279
+#: data/ui/autogain.ui:279 data/ui/level_meter.ui:174
 msgid "Relative"
 msgstr "Relatywne"
 
-#: data/ui/autogain.ui:309
+#: data/ui/autogain.ui:309 data/ui/level_meter.ui:204
 msgid "Range"
 msgstr "Zakres"
 
 #: data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: src/tags_plugin_name.cpp:46
+#: data/ui/level_meter.ui:237 src/tags_plugin_name.cpp:47
 msgid "Loudness"
 msgstr "Głośność"
 
-#: data/ui/autogain.ui:374
+#: data/ui/autogain.ui:374 data/ui/level_meter.ui:269
 msgid "Output Gain"
 msgstr "Wzmocnienie wyjścia"
 
@@ -199,12 +199,12 @@ msgstr "Wzmocnienie wyjścia"
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:197
 #: data/ui/echo_canceller.ui:112 data/ui/equalizer.ui:372
 #: data/ui/exciter.ui:262 data/ui/filter.ui:145 data/ui/gate.ui:717
-#: data/ui/gate.ui:1197 data/ui/limiter.ui:740 data/ui/loudness.ui:140
-#: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:462
-#: data/ui/multiband_gate.ui:461 data/ui/pipe_manager_box.ui:306
-#: data/ui/pitch.ui:305 data/ui/presets_menu.ui:177 data/ui/reverb.ui:366
-#: data/ui/rnnoise.ui:155 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:629
+#: data/ui/gate.ui:1197 data/ui/level_meter.ui:304 data/ui/limiter.ui:740
+#: data/ui/loudness.ui:140 data/ui/maximizer.ui:109
+#: data/ui/multiband_compressor.ui:462 data/ui/multiband_gate.ui:461
+#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:305
+#: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:155
+#: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
 msgid "Input"
 msgstr "Wejście"
 
@@ -227,11 +227,12 @@ msgstr "Wzmocnienie wej."
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:281
 #: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:456
 #: data/ui/exciter.ui:346 data/ui/filter.ui:229 data/ui/gate.ui:1281
-#: data/ui/limiter.ui:824 data/ui/loudness.ui:224 data/ui/maximizer.ui:193
-#: data/ui/multiband_compressor.ui:546 data/ui/multiband_gate.ui:545
-#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
-#: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
+#: data/ui/level_meter.ui:367 data/ui/limiter.ui:824 data/ui/loudness.ui:224
+#: data/ui/maximizer.ui:193 data/ui/multiband_compressor.ui:546
+#: data/ui/multiband_gate.ui:545 data/ui/pipe_manager_box.ui:209
+#: data/ui/pitch.ui:389 data/ui/presets_menu.ui:28 data/ui/reverb.ui:450
+#: data/ui/rnnoise.ui:239 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
+#: data/ui/stereo_tools.ui:713
 msgid "Output"
 msgstr "Wyjście"
 
@@ -254,10 +255,11 @@ msgstr "Wzmocnienie wej."
 #: data/ui/deesser.ui:653 data/ui/delay.ui:366 data/ui/echo_canceller.ui:281
 #: data/ui/equalizer.ui:541 data/ui/equalizer_band.ui:239
 #: data/ui/equalizer_band.ui:310 data/ui/exciter.ui:461 data/ui/filter.ui:314
-#: data/ui/gate.ui:1396 data/ui/limiter.ui:909 data/ui/loudness.ui:309
-#: data/ui/maximizer.ui:310 data/ui/multiband_compressor.ui:631
-#: data/ui/multiband_gate.ui:630 data/ui/pitch.ui:474 data/ui/reverb.ui:535
-#: data/ui/rnnoise.ui:324 data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
+#: data/ui/gate.ui:1396 data/ui/level_meter.ui:432 data/ui/limiter.ui:909
+#: data/ui/loudness.ui:309 data/ui/maximizer.ui:310
+#: data/ui/multiband_compressor.ui:631 data/ui/multiband_gate.ui:630
+#: data/ui/pitch.ui:474 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
+#: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
 msgid "Reset"
 msgstr "Zresetuj"
 
@@ -559,7 +561,7 @@ msgstr "Zewnętrzne"
 msgid "Sidechain Type"
 msgstr "Typ łańcucha bocznego"
 
-#: data/ui/compressor.ui:669 data/ui/gate.ui:788 src/plugins_box.cpp:647
+#: data/ui/compressor.ui:669 data/ui/gate.ui:788 src/plugins_box.cpp:661
 msgid "Input Device"
 msgstr "Urządzenie wejściowe"
 
@@ -2283,11 +2285,11 @@ msgstr "Płaska odpowiedź"
 msgid "Failed To Load The Impulse File"
 msgstr "Nie można załadować pliku Impulse"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:648
+#: src/effects_box.cpp:260 src/plugins_box.cpp:662
 msgid "Recorders"
 msgstr "Rejestratory"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:668
+#: src/effects_box.cpp:283 src/plugins_box.cpp:682
 msgid "Players"
 msgstr "Odtwarzacze"
 
@@ -2338,11 +2340,11 @@ msgstr "Usuń automatyczne wczytywanie szablonu"
 msgid "Output Level Meter"
 msgstr "Wzmocnienie wej."
 
-#: src/plugins_box.cpp:600
+#: src/plugins_box.cpp:614
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/plugins_box.cpp:669
+#: src/plugins_box.cpp:683
 #, fuzzy
 msgid "Output Device"
 msgstr "Wzmocnienie wej."
@@ -2415,40 +2417,45 @@ msgid "Filter"
 msgstr "Filtr"
 
 #: src/tags_plugin_name.cpp:45
+#, fuzzy
+msgid "Level Meter"
+msgstr "Wzmocnienie wej."
+
+#: src/tags_plugin_name.cpp:46
 msgid "Limiter"
 msgstr "Limiter"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Maximizer"
 msgstr "Maximizer"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 #, fuzzy
 msgid "Multiband Compressor"
 msgstr "Kompresor"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 #, fuzzy
 msgid "Multiband Gate"
 msgstr "Kompresor"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Pitch"
 msgstr "Wysokość"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Reverberation"
 msgstr "Pogłos"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Noise Reduction"
 msgstr "Redukcja szumu"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Stereo Tools"
 msgstr "Narzędzia stereo"
 

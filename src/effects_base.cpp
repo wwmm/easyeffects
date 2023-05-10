@@ -158,6 +158,8 @@ void EffectsBase::create_filters_if_necessary() {
       filter = std::make_shared<Filter>(log_tag, tags::schema::filter::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::gate)) {
       filter = std::make_shared<Gate>(log_tag, tags::schema::gate::id, path, pm);
+    } else if (name.starts_with(tags::plugin_name::level_meter)) {
+      filter = std::make_shared<LevelMeter>(log_tag, tags::schema::level_meter::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::limiter)) {
       filter = std::make_shared<Limiter>(log_tag, tags::schema::limiter::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::loudness)) {

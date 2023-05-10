@@ -42,6 +42,7 @@ auto get_translated() -> std::map<std::string, std::string> {
                                                    {exciter, _("Exciter")},
                                                    {filter, _("Filter")},
                                                    {gate, _("Gate")},
+                                                   {level_meter, _("Level Meter")},
                                                    {limiter, _("Limiter")},
                                                    {loudness, _("Loudness")},
                                                    {maximizer, _("Maximizer")},
@@ -111,6 +112,10 @@ auto get_base_name(std::string_view name) -> std::string {
 
   if (name.starts_with(tags::plugin_name::gate)) {
     return tags::plugin_name::gate;
+  }
+
+  if (name.starts_with(tags::plugin_name::level_meter)) {
+    return tags::plugin_name::level_meter;
   }
 
   if (name.starts_with(tags::plugin_name::limiter)) {

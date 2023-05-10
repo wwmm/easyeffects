@@ -81,6 +81,8 @@ inline constexpr auto filter_ui = "/com/github/wwmm/easyeffects/ui/filter.ui";
 
 inline constexpr auto gate_ui = "/com/github/wwmm/easyeffects/ui/gate.ui";
 
+inline constexpr auto level_meter_ui = "/com/github/wwmm/easyeffects/ui/level_meter.ui";
+
 inline constexpr auto limiter_ui = "/com/github/wwmm/easyeffects/ui/limiter.ui";
 
 inline constexpr auto loudness_ui = "/com/github/wwmm/easyeffects/ui/loudness.ui";

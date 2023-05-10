@@ -278,6 +278,20 @@ void add_plugins_to_stack(PluginsBox* self) {
       }
 
       gtk_stack_add_named(self->stack, box, name.c_str());
+    } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::level_meter)) {
+      auto plugin_ptr = effects_base->get_plugin_instance<LevelMeter>(name);
+
+      if (plugin_ptr->package_installed) {
+        auto* plugin_box = ui::level_meter_box::create();
+
+        ui::level_meter_box::setup(plugin_box, plugin_ptr, path);
+
+        box = GTK_WIDGET(plugin_box);
+      } else {
+        box = ui::missing_plugin_box(plugin_ptr->name, plugin_ptr->package);
+      }
+
+      gtk_stack_add_named(self->stack, box, name.c_str());
     } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::limiter)) {
       auto plugin_ptr = effects_base->get_plugin_instance<Limiter>(name);
 
