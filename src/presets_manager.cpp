@@ -932,6 +932,10 @@ auto PresetsManager::create_wrapper(const PresetType& preset_type, std::string_v
     return std::make_unique<GatePreset>(preset_type, instance_id);
   }
 
+  if (filter_name.starts_with(tags::plugin_name::level_meter)) {
+    return std::make_unique<LevelMeterPreset>(preset_type, instance_id);
+  }
+
   if (filter_name.starts_with(tags::plugin_name::limiter)) {
     return std::make_unique<LimiterPreset>(preset_type, instance_id);
   }

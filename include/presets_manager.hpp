@@ -41,6 +41,7 @@
 #include "exciter_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
+#include "level_meter_preset.hpp"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
 #include "maximizer_preset.hpp"
