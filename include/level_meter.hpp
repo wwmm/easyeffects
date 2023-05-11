@@ -43,13 +43,13 @@ class LevelMeter : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(const double,      // momentary
-                    const double,      // shortterm
-                    const double,      // integrated
-                    const double,      // relative
-                    const double,      // range
-                    const double,      // sample_peak_R
-                    const double gain  // sample_peak_R
+  sigc::signal<void(const double,  // momentary
+                    const double,  // shortterm
+                    const double,  // integrated
+                    const double,  // relative
+                    const double,  // range
+                    const double,  // true_peak_R
+                    const double   // true_peak_R
                     )>
       results;  // range
 
@@ -63,10 +63,9 @@ class LevelMeter : public PluginBase {
   double global = 0.0;
   double relative = 0.0;
   double range = 0.0;
-  double loudness = 0.0;
 
-  double sample_peak_L = 0.0;
-  double sample_peak_R = 0.0;
+  double true_peak_L = 0.0;
+  double true_peak_R = 0.0;
 
   std::vector<float> data;
 
@@ -75,6 +74,4 @@ class LevelMeter : public PluginBase {
   std::vector<std::thread> mythreads;
 
   auto init_ebur128() -> bool;
-
-  void set_maximum_history(const int& seconds);
 };

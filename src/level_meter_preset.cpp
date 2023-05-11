@@ -30,12 +30,8 @@ LevelMeterPreset::LevelMeterPreset(PresetType preset_type, const int& index)
 
 void LevelMeterPreset::save(nlohmann::json& json) {
   json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
-
-  json[section][instance_name]["maximum-history"] = g_settings_get_int(settings, "maximum-history");
 }
 
 void LevelMeterPreset::load(const nlohmann::json& json) {
   update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
-
-  update_key<int>(json.at(section).at(instance_name), settings, "maximum-history", "maximum-history");
 }

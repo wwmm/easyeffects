@@ -29,16 +29,6 @@ LevelMeter::LevelMeter(const std::string& tag,
                  schema,
                  schema_path,
                  pipe_manager) {
-  gconnections.push_back(g_signal_connect(settings, "changed::maximum-history",
-                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto* self = static_cast<LevelMeter*>(user_data);
-
-                                            std::scoped_lock<std::mutex> lock(self->data_mutex);
-
-                                            self->set_maximum_history(g_settings_get_int(settings, key));
-                                          }),
-                                          this));
-
   gconnections.push_back(g_signal_connect(
       settings, "changed::reset-history", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto* self = static_cast<LevelMeter*>(user_data);
@@ -93,24 +83,13 @@ auto LevelMeter::init_ebur128() -> bool {
     ebur_state = nullptr;
   }
 
-  ebur_state = ebur128_init(2U, rate, EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK);
+  ebur_state = ebur128_init(
+      2U, rate, EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_TRUE_PEAK | EBUR128_MODE_HISTOGRAM);
 
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
 
-  set_maximum_history(g_settings_get_int(settings, "maximum-history"));
-
   return ebur_state != nullptr;
-}
-
-void LevelMeter::set_maximum_history(const int& seconds) {
-  if (ebur_state == nullptr) {
-    return;
-  }
-
-  // The value given to ebur128_set_max_history must be in milliseconds
-
-  ebur128_set_max_history(ebur_state, static_cast<ulong>(seconds) * 1000UL);
 }
 
 void LevelMeter::setup() {
@@ -185,12 +164,12 @@ void LevelMeter::process(std::span<float>& left_in,
     range = 0.0;
   }
 
-  if (EBUR128_SUCCESS != ebur128_prev_sample_peak(ebur_state, 0U, &sample_peak_L)) {
-    sample_peak_L = 0.0;
+  if (EBUR128_SUCCESS != ebur128_true_peak(ebur_state, 0U, &true_peak_L)) {
+    true_peak_L = 0.0;
   }
 
-  if (EBUR128_SUCCESS != ebur128_prev_sample_peak(ebur_state, 1U, &sample_peak_R)) {
-    sample_peak_R = 0.0;
+  if (EBUR128_SUCCESS != ebur128_true_peak(ebur_state, 1U, &true_peak_R)) {
+    true_peak_R = 0.0;
   }
 
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
@@ -200,7 +179,7 @@ void LevelMeter::process(std::span<float>& left_in,
     get_peaks(left_in, right_in, left_out, right_out);
 
     if (send_notifications) {
-      results.emit(momentary, shortterm, global, relative, range, sample_peak_L, sample_peak_R);
+      results.emit(momentary, shortterm, global, relative, range, true_peak_L, true_peak_R);
 
       notify();
     }

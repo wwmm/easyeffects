@@ -37,16 +37,13 @@ struct Data {
 struct _LevelMeterBox {
   GtkBox parent_instance;
 
-  GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
+  GtkLevelBar *input_level_left, *input_level_right;
 
-  GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
-      *plugin_credit;
+  GtkLabel *input_level_left_label, *input_level_right_label, *plugin_credit;
 
-  GtkSpinButton* maximum_history;
+  GtkLevelBar *m_level, *s_level, *i_level, *r_level, *lra_level;
 
-  GtkLevelBar *m_level, *s_level, *i_level, *r_level, *g_level, *l_level, *lra_level;
-
-  GtkLabel *m_label, *s_label, *i_label, *r_label, *g_label, *l_label, *lra_label;
+  GtkLabel *m_label, *s_label, *i_label, *r_label, *lra_label, *true_peak_left_label, *true_peak_right_label;
 
   GtkButton* reset_history;
 
@@ -97,47 +94,45 @@ void setup(LevelMeterBox* self, std::shared_ptr<LevelMeter> level_meter, const s
 
   self->data->connections.push_back(level_meter->results.connect(
       [=](const double momentary, const double shortterm, const double integrated, const double relative,
-          const double range, const double sample_peak_L, const double sample_peak_R) {
+          const double range, const double true_peak_L, const double true_peak_R) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
           }
 
-          if (!GTK_IS_LEVEL_BAR(self->l_level) || !GTK_IS_LABEL(self->l_label) || !GTK_IS_LEVEL_BAR(self->g_level) ||
-              !GTK_IS_LABEL(self->g_label) || !GTK_IS_LEVEL_BAR(self->m_level) || !GTK_IS_LABEL(self->m_label) ||
-              !GTK_IS_LEVEL_BAR(self->s_level) || !GTK_IS_LABEL(self->s_label) || !GTK_IS_LEVEL_BAR(self->i_level) ||
-              !GTK_IS_LABEL(self->i_label) || !GTK_IS_LEVEL_BAR(self->r_level) || !GTK_IS_LABEL(self->r_label) ||
-              !GTK_IS_LEVEL_BAR(self->lra_level) || !GTK_IS_LABEL(self->lra_label)) {
+          if (!GTK_IS_LEVEL_BAR(self->m_level) || !GTK_IS_LABEL(self->m_label) || !GTK_IS_LEVEL_BAR(self->s_level) ||
+              !GTK_IS_LABEL(self->s_label) || !GTK_IS_LEVEL_BAR(self->i_level) || !GTK_IS_LABEL(self->i_label) ||
+              !GTK_IS_LEVEL_BAR(self->r_level) || !GTK_IS_LABEL(self->r_label) || !GTK_IS_LEVEL_BAR(self->lra_level) ||
+              !GTK_IS_LABEL(self->lra_label) || !GTK_IS_LABEL(self->true_peak_left_label) ||
+              !GTK_IS_LABEL(self->true_peak_right_label)) {
             return;
           }
 
-          // gtk_level_bar_set_value(self->l_level, util::db_to_linear(loudness));
-          // gtk_label_set_text(self->l_label, fmt::format("{0:.0f}", loudness).c_str());
+          // gtk_level_bar_set_value(self->true_peak_left_label, true_peak_L);
 
-          // gtk_level_bar_set_value(self->g_level, gain);
-          // gtk_label_set_text(self->g_label,
-          //                    fmt::format(ui::get_user_locale(), "{0:.2Lf}", util::linear_to_db(gain)).c_str());
+          gtk_label_set_text(self->true_peak_left_label,
+                             fmt::format("{0:.0f} dB", util::linear_to_db(true_peak_L)).c_str());
+          gtk_label_set_text(self->true_peak_right_label,
+                             fmt::format("{0:.0f} dB", util::linear_to_db(true_peak_R)).c_str());
 
           gtk_level_bar_set_value(self->m_level, util::db_to_linear(momentary));
-          gtk_label_set_text(self->m_label, fmt::format("{0:.0f}", momentary).c_str());
+          gtk_label_set_text(self->m_label, fmt::format("{0:.0f} dB", momentary).c_str());
 
           gtk_level_bar_set_value(self->s_level, util::db_to_linear(shortterm));
-          gtk_label_set_text(self->s_label, fmt::format("{0:.0f}", shortterm).c_str());
+          gtk_label_set_text(self->s_label, fmt::format("{0:.0f} dB", shortterm).c_str());
 
           gtk_level_bar_set_value(self->i_level, util::db_to_linear(integrated));
-          gtk_label_set_text(self->i_label, fmt::format("{0:.0f}", integrated).c_str());
+          gtk_label_set_text(self->i_label, fmt::format("{0:.0f} dB", integrated).c_str());
 
           gtk_level_bar_set_value(self->r_level, util::db_to_linear(relative));
-          gtk_label_set_text(self->r_label, fmt::format("{0:.0f}", relative).c_str());
+          gtk_label_set_text(self->r_label, fmt::format("{0:.0f} dB", relative).c_str());
 
           gtk_level_bar_set_value(self->lra_level, util::db_to_linear(range));
-          gtk_label_set_text(self->lra_label, fmt::format("{0:.0f}", range).c_str());
+          gtk_label_set_text(self->lra_label, fmt::format("{0:.0f} dB", range).c_str());
         });
       }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->level_meter->package).c_str());
-
-  gsettings_bind_widgets<"maximum-history">(self->settings, self->maximum_history);
 }
 
 void dispose(GObject* object) {
@@ -186,32 +181,25 @@ void level_meter_box_class_init(LevelMeterBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, input_level_left);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, input_level_right);
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, output_level_left);
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, output_level_right);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, input_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, input_level_right_label);
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, output_level_left_label);
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, output_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, plugin_credit);
 
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, maximum_history);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, reset_history);
 
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, m_level);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, s_level);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, i_level);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, r_level);
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, g_level);
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, l_level);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, lra_level);
 
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, m_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, s_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, i_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, r_label);
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, g_label);
-  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, l_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, lra_label);
+  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, true_peak_left_label);
+  gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, true_peak_right_label);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 
@@ -222,8 +210,6 @@ void level_meter_box_init(LevelMeterBox* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
   self->data = new Data();
-
-  prepare_spinbuttons<"s">(self->maximum_history);
 }
 
 auto create() -> LevelMeterBox* {
