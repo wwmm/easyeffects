@@ -26,9 +26,11 @@ namespace util {
 auto prepare_debug_message(const std::string& message, source_location location) -> std::string {
   auto file_path = std::filesystem::path{location.file_name()};
 
-  std::string msg = "\t" + file_path.filename().string() + ":" + to_string(location.line()) + "\t" + message;
+  std::ostringstream msg_stream;
 
-  return msg;
+  msg_stream << "\t" << file_path.filename().string() << ":" << location.line() << "\t" << message;
+
+  return msg_stream.str();
 }
 
 void debug(const std::string& s, source_location location) {

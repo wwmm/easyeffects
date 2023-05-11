@@ -95,20 +95,9 @@ void setup(LevelMeterBox* self, std::shared_ptr<LevelMeter> level_meter, const s
     });
   }));
 
-  self->data->connections.push_back(level_meter->output_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
-
-      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                   self->output_level_right_label, left, right);
-    });
-  }));
-
   self->data->connections.push_back(level_meter->results.connect(
-      [=](const double loudness, const double gain, const double momentary, const double shortterm,
-          const double integrated, const double relative, const double range) {
+      [=](const double momentary, const double shortterm, const double integrated, const double relative,
+          const double range, const double sample_peak_L, const double sample_peak_R) {
         util::idle_add([=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
@@ -122,12 +111,12 @@ void setup(LevelMeterBox* self, std::shared_ptr<LevelMeter> level_meter, const s
             return;
           }
 
-          gtk_level_bar_set_value(self->l_level, util::db_to_linear(loudness));
-          gtk_label_set_text(self->l_label, fmt::format("{0:.0f}", loudness).c_str());
+          // gtk_level_bar_set_value(self->l_level, util::db_to_linear(loudness));
+          // gtk_label_set_text(self->l_label, fmt::format("{0:.0f}", loudness).c_str());
 
-          gtk_level_bar_set_value(self->g_level, gain);
-          gtk_label_set_text(self->g_label,
-                             fmt::format(ui::get_user_locale(), "{0:.2Lf}", util::linear_to_db(gain)).c_str());
+          // gtk_level_bar_set_value(self->g_level, gain);
+          // gtk_label_set_text(self->g_label,
+          //                    fmt::format(ui::get_user_locale(), "{0:.2Lf}", util::linear_to_db(gain)).c_str());
 
           gtk_level_bar_set_value(self->m_level, util::db_to_linear(momentary));
           gtk_label_set_text(self->m_label, fmt::format("{0:.0f}", momentary).c_str());
