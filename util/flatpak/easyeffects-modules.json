@@ -258,8 +258,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/fmtlib/fmt",
-                    "tag": "9.1.0",
-                    "commit": "a33701196adfad74917046096bf5a2aa0ab0bb50",
+                    "tag": "10.0.0",
+                    "commit": "a0b8a92e3d1532361c2f7feb63babc5c18d00ef2",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/fmtlib/fmt/releases/latest",
