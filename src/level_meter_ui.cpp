@@ -108,8 +108,6 @@ void setup(LevelMeterBox* self, std::shared_ptr<LevelMeter> level_meter, const s
             return;
           }
 
-          // gtk_level_bar_set_value(self->true_peak_left_label, true_peak_L);
-
           gtk_label_set_text(self->true_peak_left_label,
                              fmt::format("{0:.0f} dB", util::linear_to_db(true_peak_L)).c_str());
           gtk_label_set_text(self->true_peak_right_label,
