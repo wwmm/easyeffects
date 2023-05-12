@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-11 15:29-0300\n"
-"PO-Revision-Date: 2023-05-06 06:49+0000\n"
+"PO-Revision-Date: 2023-05-12 23:50+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1020,14 +1020,12 @@ msgid "Gating"
 msgstr "Gate"
 
 #: data/ui/level_meter.ui:39
-#, fuzzy
 msgid "True Peak"
-msgstr "Frequenza 2 Picco"
+msgstr "Picco Effettivo"
 
 #: data/ui/level_meter.ui:91
-#, fuzzy
 msgid "Loudness List"
-msgstr "Loudness"
+msgstr "Elenco Misure Loudness"
 
 #: data/ui/limiter.ui:58
 msgid "Oversampling"
@@ -2320,9 +2318,8 @@ msgid "Filter"
 msgstr "Filtro"
 
 #: src/tags_plugin_name.cpp:45
-#, fuzzy
 msgid "Level Meter"
-msgstr "Misuratore Livello Uscita"
+msgstr "Misuratore Livello"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Limiter"
