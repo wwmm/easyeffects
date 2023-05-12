@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-11 15:29-0300\n"
-"PO-Revision-Date: 2023-05-05 06:51+0000\n"
+"PO-Revision-Date: 2023-05-12 23:50+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1048,14 +1048,12 @@ msgid "Gating"
 msgstr "Гейтирование"
 
 #: data/ui/level_meter.ui:39
-#, fuzzy
 msgid "True Peak"
-msgstr "Частота 2 пик"
+msgstr "Истинный пик"
 
 #: data/ui/level_meter.ui:91
-#, fuzzy
 msgid "Loudness List"
-msgstr "Громкость"
+msgstr "Список громкости"
 
 #: data/ui/limiter.ui:58
 msgid "Oversampling"
@@ -2373,9 +2371,8 @@ msgid "Filter"
 msgstr "Фильтр"
 
 #: src/tags_plugin_name.cpp:45
-#, fuzzy
 msgid "Level Meter"
-msgstr "Уровнемер выхода"
+msgstr "Уровнемер"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Limiter"
