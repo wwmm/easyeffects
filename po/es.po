@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-11 15:29-0300\n"
-"PO-Revision-Date: 2023-05-05 06:51+0000\n"
+"PO-Revision-Date: 2023-05-12 23:50+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -135,7 +135,7 @@ msgstr "Objetivo"
 msgid "Silence"
 msgstr "Silencio"
 
-#: data/ui/autogain.ui:98
+#: data/ui/autogain.ui:98 data/ui/level_meter.ui:29
 msgid "Maximum History"
 msgstr "Historial máximo"
 
@@ -144,14 +144,17 @@ msgid "Reference"
 msgstr "Referencia"
 
 #: data/ui/autogain.ui:146 data/ui/autogain.ui:189 data/ui/level_meter.ui:100
+#: data/ui/level_meter.ui:84
 msgid "Momentary"
 msgstr "Momentánea"
 
 #: data/ui/autogain.ui:147 data/ui/autogain.ui:219 data/ui/level_meter.ui:130
+#: data/ui/level_meter.ui:114
 msgid "Short-Term"
 msgstr "Corto plazo"
 
 #: data/ui/autogain.ui:148 data/ui/autogain.ui:249 data/ui/level_meter.ui:160
+#: data/ui/level_meter.ui:144
 msgid "Integrated"
 msgstr "Integral"
 
@@ -171,24 +174,27 @@ msgstr "Media geométrica (MI)"
 msgid "Geometric Mean (SI)"
 msgstr "Media geométrica (SI)"
 
-#: data/ui/autogain.ui:169 data/ui/level_meter.ui:25
+#: data/ui/autogain.ui:169 data/ui/level_meter.ui:25 data/ui/level_meter.ui:64
 msgid "Reset History"
 msgstr "Restablecer el historial"
 
 #: data/ui/autogain.ui:279 data/ui/level_meter.ui:190
+#: data/ui/level_meter.ui:174
 msgid "Relative"
 msgstr "Relativa"
 
 #: data/ui/autogain.ui:309 data/ui/level_meter.ui:220
+#: data/ui/level_meter.ui:204
 msgid "Range"
 msgstr "Rango"
 
 #: data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:71 src/tags_plugin_name.cpp:47
+#: data/ui/level_meter.ui:237
 msgid "Loudness"
 msgstr "Sonoridad"
 
-#: data/ui/autogain.ui:374
+#: data/ui/autogain.ui:374 data/ui/level_meter.ui:269
 msgid "Output Gain"
 msgstr "Ganancia de salida"
 
@@ -204,6 +210,7 @@ msgstr "Ganancia de salida"
 #: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:305
 #: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:155
 #: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
+#: data/ui/level_meter.ui:304
 msgid "Input"
 msgstr "Entrada"
 
@@ -230,6 +237,7 @@ msgstr "Ganancia de entrada del plugin"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
+#: data/ui/level_meter.ui:367
 msgid "Output"
 msgstr "Salida"
 
@@ -255,7 +263,7 @@ msgstr "Ganancia de salida del plugin"
 #: data/ui/loudness.ui:309 data/ui/maximizer.ui:310
 #: data/ui/multiband_compressor.ui:631 data/ui/multiband_gate.ui:630
 #: data/ui/pitch.ui:474 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
-#: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
+#: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798 data/ui/level_meter.ui:432
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -1018,14 +1026,12 @@ msgid "Gating"
 msgstr "Actividad de la puerta"
 
 #: data/ui/level_meter.ui:39
-#, fuzzy
 msgid "True Peak"
-msgstr "Pico de la frecuencia 2"
+msgstr "Pico real"
 
 #: data/ui/level_meter.ui:91
-#, fuzzy
 msgid "Loudness List"
-msgstr "Sonoridad"
+msgstr "Lista de sonoridad"
 
 #: data/ui/limiter.ui:58
 msgid "Oversampling"
@@ -2322,9 +2328,8 @@ msgid "Filter"
 msgstr "Filtro"
 
 #: src/tags_plugin_name.cpp:45
-#, fuzzy
 msgid "Level Meter"
-msgstr "Medidor del nivel de salida"
+msgstr "Medidor de nivel"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Limiter"
