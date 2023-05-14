@@ -24,91 +24,26 @@ Pitch::Pitch(const std::string& tag,
              const std::string& schema_path,
              PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::pitch, tags::plugin_package::sound_touch, schema, schema_path, pipe_manager) {
-  // mode = parse_mode_key(util::gsettings_get_string(settings, "mode"));
-  // formant = parse_formant_key(util::gsettings_get_string(settings, "formant"));
-  // transients = parse_transients_key(util::gsettings_get_string(settings, "transients"));
-  // detector = parse_detector_key(util::gsettings_get_string(settings, "detector"));
-  // phase = parse_phase_key(util::gsettings_get_string(settings, "phase"));
+  sequence_length_ms = g_settings_get_int(settings, "sequence-length");
+  seek_window_ms = g_settings_get_int(settings, "seek-window");
+  overlap_length_ms = g_settings_get_int(settings, "overlap-length");
+
+  tempo_difference = g_settings_get_double(settings, "tempo-difference");
+  rate_difference = g_settings_get_double(settings, "rate-difference");
 
   octaves = g_settings_get_int(settings, "octaves");
   semitones = g_settings_get_int(settings, "semitones");
   cents = g_settings_get_int(settings, "cents");
-
-  // gconnections.push_back(g_signal_connect(settings, "changed::mode",
-  //                                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                           auto* self = static_cast<Pitch*>(user_data);
-
-  //                                           self->mode = parse_mode_key(util::gsettings_get_string(settings, key));
-
-  //                                           if (!self->soundtouch_ready) {
-  //                                             return;
-  //                                           }
-
-  //                                           self->set_mode();
-  //                                         }),
-  //                                         this));
-
-  // gconnections.push_back(g_signal_connect(
-  //     settings, "changed::formant", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //       auto* self = static_cast<Pitch*>(user_data);
-
-  //       self->formant = parse_formant_key(util::gsettings_get_string(settings, key));
-
-  //       if (!self->soundtouch_ready) {
-  //         return;
-  //       }
-
-  //       self->set_formant();
-  //     }),
-  //     this));
-
-  // gconnections.push_back(g_signal_connect(
-  //     settings, "changed::transients", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //       auto* self = static_cast<Pitch*>(user_data);
-
-  //       self->transients = parse_transients_key(util::gsettings_get_string(settings, key));
-
-  //       if (!self->soundtouch_ready) {
-  //         return;
-  //       }
-
-  //       self->set_transients();
-  //     }),
-  //     this));
-
-  // gconnections.push_back(g_signal_connect(
-  //     settings, "changed::detector", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //       auto* self = static_cast<Pitch*>(user_data);
-
-  //       self->detector = parse_detector_key(util::gsettings_get_string(settings, key));
-
-  //       if (!self->soundtouch_ready) {
-  //         return;
-  //       }
-
-  //       self->set_detector();
-  //     }),
-  //     this));
-
-  // gconnections.push_back(g_signal_connect(settings, "changed::phase",
-  //                                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                           auto* self = static_cast<Pitch*>(user_data);
-
-  //                                           self->phase = parse_phase_key(util::gsettings_get_string(settings, key));
-
-  //                                           if (!self->soundtouch_ready) {
-  //                                             return;
-  //                                           }
-
-  //                                           self->set_phase();
-  //                                         }),
-  //                                         this));
 
   gconnections.push_back(g_signal_connect(settings, "changed::octaves",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto* self = static_cast<Pitch*>(user_data);
 
                                             self->octaves = g_settings_get_int(settings, key);
+
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
 
                                             self->set_pitch_scale();
                                           }),
@@ -120,6 +55,10 @@ Pitch::Pitch(const std::string& tag,
 
                                             self->semitones = g_settings_get_int(settings, key);
 
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+
                                             self->set_pitch_scale();
                                           }),
                                           this));
@@ -129,6 +68,10 @@ Pitch::Pitch(const std::string& tag,
                                             auto* self = static_cast<Pitch*>(user_data);
 
                                             self->cents = g_settings_get_int(settings, key);
+
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
 
                                             self->set_pitch_scale();
                                           }),

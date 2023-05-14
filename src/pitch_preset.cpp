@@ -35,15 +35,15 @@ void PitchPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
+  // json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section][instance_name]["formant"] = util::gsettings_get_string(settings, "formant");
+  // json[section][instance_name]["formant"] = util::gsettings_get_string(settings, "formant");
 
-  json[section][instance_name]["transients"] = util::gsettings_get_string(settings, "transients");
+  // json[section][instance_name]["transients"] = util::gsettings_get_string(settings, "transients");
 
-  json[section][instance_name]["detector"] = util::gsettings_get_string(settings, "detector");
+  // json[section][instance_name]["detector"] = util::gsettings_get_string(settings, "detector");
 
-  json[section][instance_name]["phase"] = util::gsettings_get_string(settings, "phase");
+  // json[section][instance_name]["phase"] = util::gsettings_get_string(settings, "phase");
 
   json[section][instance_name]["cents"] = g_settings_get_int(settings, "cents");
 
@@ -59,15 +59,15 @@ void PitchPreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
+  // update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "formant", "formant");
+  // update_key<gchar*>(json.at(section).at(instance_name), settings, "formant", "formant");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "transients", "transients");
+  // update_key<gchar*>(json.at(section).at(instance_name), settings, "transients", "transients");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "detector", "detector");
+  // update_key<gchar*>(json.at(section).at(instance_name), settings, "detector", "detector");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "phase", "phase");
+  // update_key<gchar*>(json.at(section).at(instance_name), settings, "phase", "phase");
 
   update_key<int>(json.at(section).at(instance_name), settings, "cents", "cents");
 
