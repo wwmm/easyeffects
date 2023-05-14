@@ -334,6 +334,26 @@ void Pitch::set_anti_alias() {
   snd_touch->setSetting(SETTING_USE_AA_FILTER, static_cast<int>(anti_alias));
 }
 
+void Pitch::set_tempo_difference() {
+  if (snd_touch == nullptr) {
+    return;
+  }
+
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  snd_touch->setTempoChange(tempo_difference);
+}
+
+void Pitch::set_rate_difference() {
+  if (snd_touch == nullptr) {
+    return;
+  }
+
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  snd_touch->setRateChange(rate_difference);
+}
+
 void Pitch::init_soundtouch() {
   delete snd_touch;
 
@@ -348,6 +368,8 @@ void Pitch::init_soundtouch() {
   set_sequence_length();
   set_seek_window();
   set_overlap_length();
+  set_tempo_difference();
+  set_rate_difference();
 }
 
 auto Pitch::get_latency_seconds() -> float {
