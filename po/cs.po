@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-13 01:22+0000\n"
+"POT-Creation-Date: 2023-05-14 20:21-0300\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -203,7 +203,7 @@ msgstr "Výstupní zesílení"
 #: data/ui/gate.ui:1197 data/ui/level_meter.ui:268 data/ui/limiter.ui:740
 #: data/ui/loudness.ui:140 data/ui/maximizer.ui:109
 #: data/ui/multiband_compressor.ui:462 data/ui/multiband_gate.ui:461
-#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:305
+#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225
 #: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:155
 #: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
 msgid "Input"
@@ -216,7 +216,7 @@ msgstr "Vstup"
 #: data/ui/equalizer.ui:391 data/ui/exciter.ui:281 data/ui/filter.ui:164
 #: data/ui/gate.ui:1216 data/ui/limiter.ui:759 data/ui/loudness.ui:159
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:481
-#: data/ui/multiband_gate.ui:480 data/ui/pitch.ui:324 data/ui/reverb.ui:385
+#: data/ui/multiband_gate.ui:480 data/ui/pitch.ui:244 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
 msgid "Plugin Input Gain"
 msgstr "Vstupní zesílení pluginu"
@@ -229,7 +229,7 @@ msgstr "Vstupní zesílení pluginu"
 #: data/ui/exciter.ui:346 data/ui/filter.ui:229 data/ui/gate.ui:1281
 #: data/ui/limiter.ui:824 data/ui/loudness.ui:224 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:546 data/ui/multiband_gate.ui:545
-#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:389
+#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
 msgid "Output"
@@ -242,7 +242,7 @@ msgstr "Výstup"
 #: data/ui/equalizer.ui:475 data/ui/exciter.ui:365 data/ui/filter.ui:248
 #: data/ui/gate.ui:1300 data/ui/limiter.ui:843 data/ui/loudness.ui:243
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:565
-#: data/ui/multiband_gate.ui:564 data/ui/pitch.ui:408 data/ui/reverb.ui:469
+#: data/ui/multiband_gate.ui:564 data/ui/pitch.ui:328 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
 msgid "Plugin Output Gain"
 msgstr "Výstupní zesílení pluginu"
@@ -256,7 +256,7 @@ msgstr "Výstupní zesílení pluginu"
 #: data/ui/gate.ui:1396 data/ui/level_meter.ui:333 data/ui/limiter.ui:909
 #: data/ui/loudness.ui:309 data/ui/maximizer.ui:310
 #: data/ui/multiband_compressor.ui:631 data/ui/multiband_gate.ui:630
-#: data/ui/pitch.ui:474 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
+#: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
 #: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
 msgid "Reset"
 msgstr "Vrátit na výchozí"
@@ -350,7 +350,7 @@ msgstr "Kompresor"
 #: data/ui/deesser.ui:68 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:138
 #: data/ui/filter.ui:27 data/ui/gate.ui:640 data/ui/gate.ui:935
 #: data/ui/limiter.ui:46 data/ui/multiband_compressor_band.ui:461
-#: data/ui/multiband_gate_band.ui:520 data/ui/pitch.ui:32
+#: data/ui/multiband_gate_band.ui:520
 msgid "Mode"
 msgstr "Režim"
 
@@ -895,7 +895,7 @@ msgstr "Pásmo sklonu"
 msgid "Width"
 msgstr "Šířka"
 
-#: data/ui/equalizer_band.ui:285
+#: data/ui/equalizer_band.ui:285 data/ui/pitch.ui:28
 msgid "Quality"
 msgstr "Jakost"
 
@@ -1552,86 +1552,46 @@ msgstr "Sinusová vlna"
 msgid "White Noise"
 msgstr "Bílý šum"
 
-#: data/ui/pitch.ui:43
-msgid "High Speed"
-msgstr "Vysoká rychlost"
-
-#: data/ui/pitch.ui:44
-msgid "High Quality"
-msgstr "Vysoká kvalita"
+#: data/ui/pitch.ui:32
+msgid "Quick Seek"
+msgstr ""
 
 #: data/ui/pitch.ui:45
-msgid "High Consistency"
-msgstr "Vysoká konzistence"
+msgid "Anti-aliasing"
+msgstr ""
 
-#: data/ui/pitch.ui:59
-msgid "Formant"
-msgstr "Formant"
-
-#: data/ui/pitch.ui:70
-msgid "Shifted"
-msgstr "Posunutý"
-
-#: data/ui/pitch.ui:71
+#: data/ui/pitch.ui:58
 #, fuzzy
-msgid "Preserved"
-msgstr "Zachovalé"
+msgid "Sequence Length"
+msgstr "Rozsah frekvence"
 
-#: data/ui/pitch.ui:97
-msgid "Transients"
-msgstr "Transienty"
+#: data/ui/pitch.ui:81
+#, fuzzy
+msgid "Seek Window"
+msgstr "Okno"
 
-#: data/ui/pitch.ui:108
-msgid "Crisp"
-msgstr "Crisp"
+#: data/ui/pitch.ui:104
+#, fuzzy
+msgid "Overlap Length"
+msgstr "Délka filtru"
 
-#: data/ui/pitch.ui:109
-msgid "Mixed"
-msgstr "Smíšené"
-
-#: data/ui/pitch.ui:110
-msgid "Smooth"
-msgstr "Hladký"
-
-#: data/ui/pitch.ui:124
-msgid "Detector"
-msgstr "detektor"
-
-#: data/ui/pitch.ui:135
-msgid "Compound"
-msgstr "Složené"
-
-#: data/ui/pitch.ui:136
-msgid "Percussive"
-msgstr "Perkusivní"
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:51
+msgid "Pitch"
+msgstr "Výška tónu"
 
 #: data/ui/pitch.ui:137
-msgid "Soft"
-msgstr "měkké"
-
-#: data/ui/pitch.ui:151
-msgid "Phase"
-msgstr "Fáze"
-
-#: data/ui/pitch.ui:162
-msgid "Laminar"
-msgstr "Laminární"
-
-#: data/ui/pitch.ui:163
-msgid "Independent"
-msgstr "Nezávislý"
-
-#: data/ui/pitch.ui:188
-msgid "Cents"
-msgstr "Centy"
-
-#: data/ui/pitch.ui:222
 msgid "Semitones"
 msgstr "Půltóny"
 
-#: data/ui/pitch.ui:256
-msgid "Octaves"
-msgstr "Oktávy"
+#: data/ui/pitch.ui:160
+#, fuzzy
+msgid "Tempo Difference"
+msgstr "Reference"
+
+#: data/ui/pitch.ui:183
+#, fuzzy
+msgid "Rate Difference"
+msgstr "Reference"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
@@ -2361,10 +2321,6 @@ msgstr "Vícepásmový kompresor"
 msgid "Multiband Gate"
 msgstr "Vícepásmová brána"
 
-#: src/tags_plugin_name.cpp:51
-msgid "Pitch"
-msgstr "Výška tónu"
-
 #: src/tags_plugin_name.cpp:52
 msgid "Reverberation"
 msgstr "Dozvuk"
@@ -2409,6 +2365,64 @@ msgstr "-inf"
 #, fuzzy
 msgid "Using {}"
 msgstr "Použití"
+
+#~ msgid "High Speed"
+#~ msgstr "Vysoká rychlost"
+
+#~ msgid "High Quality"
+#~ msgstr "Vysoká kvalita"
+
+#~ msgid "High Consistency"
+#~ msgstr "Vysoká konzistence"
+
+#~ msgid "Formant"
+#~ msgstr "Formant"
+
+#~ msgid "Shifted"
+#~ msgstr "Posunutý"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "Zachovalé"
+
+#~ msgid "Transients"
+#~ msgstr "Transienty"
+
+#~ msgid "Crisp"
+#~ msgstr "Crisp"
+
+#~ msgid "Mixed"
+#~ msgstr "Smíšené"
+
+#~ msgid "Smooth"
+#~ msgstr "Hladký"
+
+#~ msgid "Detector"
+#~ msgstr "detektor"
+
+#~ msgid "Compound"
+#~ msgstr "Složené"
+
+#~ msgid "Percussive"
+#~ msgstr "Perkusivní"
+
+#~ msgid "Soft"
+#~ msgstr "měkké"
+
+#~ msgid "Phase"
+#~ msgstr "Fáze"
+
+#~ msgid "Laminar"
+#~ msgstr "Laminární"
+
+#~ msgid "Independent"
+#~ msgstr "Nezávislý"
+
+#~ msgid "Cents"
+#~ msgstr "Centy"
+
+#~ msgid "Octaves"
+#~ msgstr "Oktávy"
 
 #~ msgid "_Manual"
 #~ msgstr "_Manuál"
@@ -3005,9 +3019,6 @@ msgstr "Použití"
 
 #~ msgid "Volume"
 #~ msgstr "Hlasitost"
-
-#~ msgid "Window"
-#~ msgstr "Okno"
 
 #~ msgid "Measure Noise"
 #~ msgstr "Změřit šum"

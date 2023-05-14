@@ -24,6 +24,9 @@ Pitch::Pitch(const std::string& tag,
              const std::string& schema_path,
              PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::pitch, tags::plugin_package::sound_touch, schema, schema_path, pipe_manager) {
+  quick_seek = g_settings_get_boolean(settings, "quick-seek") != 0;
+  anti_alias = g_settings_get_boolean(settings, "anti-alias") != 0;
+
   sequence_length_ms = g_settings_get_int(settings, "sequence-length");
   seek_window_ms = g_settings_get_int(settings, "seek-window");
   overlap_length_ms = g_settings_get_int(settings, "overlap-length");
@@ -31,21 +34,127 @@ Pitch::Pitch(const std::string& tag,
   tempo_difference = g_settings_get_double(settings, "tempo-difference");
   rate_difference = g_settings_get_double(settings, "rate-difference");
 
-  octaves = g_settings_get_int(settings, "octaves");
   semitones = g_settings_get_int(settings, "semitones");
-  cents = g_settings_get_int(settings, "cents");
 
-  gconnections.push_back(g_signal_connect(settings, "changed::octaves",
+  // resetting soundtouch when bypass is pressed so its internal data is discarded
+
+  gconnections.push_back(g_signal_connect(settings, "changed::bypass",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto* self = static_cast<Pitch*>(user_data);
 
-                                            self->octaves = g_settings_get_int(settings, key);
+                                            util::idle_add([&, self] {
+                                              self->data_mutex.lock();
+
+                                              self->soundtouch_ready = false;
+
+                                              self->data_mutex.unlock();
+
+                                              self->init_soundtouch();
+
+                                              self->data_mutex.lock();
+
+                                              self->soundtouch_ready = true;
+
+                                              self->data_mutex.unlock();
+                                            });
+                                          }),
+                                          this));
+
+  gconnections.push_back(g_signal_connect(settings, "changed::quick-seek",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+
+                                            self->quick_seek = g_settings_get_boolean(settings, key) != 0;
 
                                             if (!self->soundtouch_ready) {
                                               return;
                                             }
 
-                                            self->set_pitch_scale();
+                                            self->set_quick_seek();
+                                          }),
+                                          this));
+
+  gconnections.push_back(g_signal_connect(settings, "changed::anti-alias",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+
+                                            self->anti_alias = g_settings_get_boolean(settings, key) != 0;
+
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+
+                                            self->set_quick_seek();
+                                          }),
+                                          this));
+
+  gconnections.push_back(g_signal_connect(settings, "changed::sequence-length",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+
+                                            self->sequence_length_ms = g_settings_get_int(settings, key);
+
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+
+                                            self->set_sequence_length();
+                                          }),
+                                          this));
+
+  gconnections.push_back(g_signal_connect(settings, "changed::seek-window",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+
+                                            self->seek_window_ms = g_settings_get_int(settings, key);
+
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+
+                                            self->set_seek_window();
+                                          }),
+                                          this));
+
+  gconnections.push_back(g_signal_connect(settings, "changed::overlap-length",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+
+                                            self->overlap_length_ms = g_settings_get_int(settings, key);
+
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+
+                                            self->set_overlap_length();
+                                          }),
+                                          this));
+
+  gconnections.push_back(g_signal_connect(settings, "changed::tempo-difference",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+
+                                            self->tempo_difference = g_settings_get_double(settings, key);
+
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+
+                                            self->set_tempo_difference();
+                                          }),
+                                          this));
+
+  gconnections.push_back(g_signal_connect(settings, "changed::rate-difference",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+
+                                            self->rate_difference = g_settings_get_double(settings, key);
+
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+
+                                            self->set_rate_difference();
                                           }),
                                           this));
 
@@ -59,21 +168,7 @@ Pitch::Pitch(const std::string& tag,
                                               return;
                                             }
 
-                                            self->set_pitch_scale();
-                                          }),
-                                          this));
-
-  gconnections.push_back(g_signal_connect(settings, "changed::cents",
-                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto* self = static_cast<Pitch*>(user_data);
-
-                                            self->cents = g_settings_get_int(settings, key);
-
-                                            if (!self->soundtouch_ready) {
-                                              return;
-                                            }
-
-                                            self->set_pitch_scale();
+                                            self->set_semitones();
                                           }),
                                           this));
 
@@ -215,16 +310,14 @@ void Pitch::process(std::span<float>& left_in,
   }
 }
 
-void Pitch::set_pitch_scale() {
+void Pitch::set_semitones() {
   if (snd_touch == nullptr) {
     return;
   }
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  const double n_octaves = octaves + (static_cast<double>(semitones) / 12.0) + (static_cast<double>(cents) / 1200.0);
-
-  snd_touch->setPitchOctaves(n_octaves);
+  snd_touch->setPitchSemiTones(semitones);
 }
 
 void Pitch::set_sequence_length() {
@@ -305,7 +398,7 @@ void Pitch::init_soundtouch() {
   snd_touch->setSampleRate(rate);
   snd_touch->setChannels(2);
 
-  set_pitch_scale();
+  set_semitones();
   set_quick_seek();
   set_anti_alias();
   set_sequence_length();

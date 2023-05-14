@@ -44,8 +44,9 @@ struct _PitchBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *plugin_credit;
 
-  GtkSpinButton *cents, *semitones, *octaves, *sequence_length, *seek_window, *overlap_length, *tempo_difference,
-      *rate_difference;
+  GtkSpinButton *semitones, *sequence_length, *seek_window, *overlap_length, *tempo_difference, *rate_difference;
+
+  GtkSwitch *quick_seek, *anti_alias;
 
   GSettings* settings;
 
@@ -100,17 +101,10 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  // gsettings_bind_widgets<"mode", "formant", "transients", "detector", "phase">(
-  //     self->settings, self->mode, self->formant, self->transients, self->detector, self->phase);
-
-  g_settings_bind(self->settings, "cents", gtk_spin_button_get_adjustment(self->cents), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "semitones", gtk_spin_button_get_adjustment(self->semitones), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "octaves", gtk_spin_button_get_adjustment(self->octaves), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"quick-seek", "anti-alias", "sequence-length", "seek-window", "overlap-length",
+                         "tempo-difference", "rate-difference", "semitones">(
+      self->settings, self->quick_seek, self->anti_alias, self->sequence_length, self->seek_window,
+      self->overlap_length, self->tempo_difference, self->rate_difference, self->semitones);
 }
 
 void dispose(GObject* object) {
@@ -169,14 +163,14 @@ void pitch_box_class_init(PitchBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PitchBox, output_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, plugin_credit);
 
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, quick_seek);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, anti_alias);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, sequence_length);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, seek_window);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, overlap_length);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, tempo_difference);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, rate_difference);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, cents);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, semitones);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, octaves);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
@@ -187,8 +181,6 @@ void pitch_box_init(PitchBox* self) {
   self->data = new Data();
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
-
-  prepare_spinbuttons<"">(self->cents, self->semitones, self->octaves);
 
   prepare_spinbuttons<"ms">(self->sequence_length, self->seek_window, self->overlap_length);
 

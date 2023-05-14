@@ -65,9 +65,7 @@ class Pitch : public PluginBase {
   bool anti_alias = false;
   bool quick_seek = false;
 
-  int cents = 0;
   int semitones = 0;
-  int octaves = 0;
   int sequence_length_ms = 40;
   int seek_window_ms = 15;
   int overlap_length_ms = 8;
@@ -75,7 +73,7 @@ class Pitch : public PluginBase {
   double tempo_difference = 0.0;
   double rate_difference = 0.0;
 
-  void set_pitch_scale();
+  void set_semitones();
   void set_sequence_length();
   void set_seek_window();
   void set_overlap_length();

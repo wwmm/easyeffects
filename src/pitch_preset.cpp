@@ -35,21 +35,21 @@ void PitchPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  // json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["quick-seek"] = g_settings_get_boolean(settings, "quick-seek") != 0;
 
-  // json[section][instance_name]["formant"] = util::gsettings_get_string(settings, "formant");
+  json[section][instance_name]["anti-alias"] = g_settings_get_boolean(settings, "anti-alias") != 0;
 
-  // json[section][instance_name]["transients"] = util::gsettings_get_string(settings, "transients");
+  json[section][instance_name]["sequence-length"] = g_settings_get_int(settings, "sequence-length");
 
-  // json[section][instance_name]["detector"] = util::gsettings_get_string(settings, "detector");
+  json[section][instance_name]["seek-window"] = g_settings_get_int(settings, "seek-window");
 
-  // json[section][instance_name]["phase"] = util::gsettings_get_string(settings, "phase");
+  json[section][instance_name]["overlap-length"] = g_settings_get_int(settings, "overlap-length");
 
-  json[section][instance_name]["cents"] = g_settings_get_int(settings, "cents");
+  json[section][instance_name]["tempo-difference"] = g_settings_get_double(settings, "tempo-difference");
+
+  json[section][instance_name]["rate-difference"] = g_settings_get_double(settings, "rate-difference");
 
   json[section][instance_name]["semitones"] = g_settings_get_int(settings, "semitones");
-
-  json[section][instance_name]["octaves"] = g_settings_get_int(settings, "octaves");
 }
 
 void PitchPreset::load(const nlohmann::json& json) {
@@ -59,19 +59,19 @@ void PitchPreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
+  update_key<bool>(json.at(section).at(instance_name), settings, "quick-seek", "quick-seek");
 
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "formant", "formant");
+  update_key<bool>(json.at(section).at(instance_name), settings, "anti-alias", "anti-alias");
 
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "transients", "transients");
+  update_key<int>(json.at(section).at(instance_name), settings, "sequence-length", "sequence-length");
 
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "detector", "detector");
+  update_key<int>(json.at(section).at(instance_name), settings, "seek-window", "seek-window");
 
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "phase", "phase");
+  update_key<int>(json.at(section).at(instance_name), settings, "overlap-length", "overlap-length");
 
-  update_key<int>(json.at(section).at(instance_name), settings, "cents", "cents");
+  update_key<double>(json.at(section).at(instance_name), settings, "tempo-difference", "tempo-difference");
+
+  update_key<double>(json.at(section).at(instance_name), settings, "rate-difference", "rate-difference");
 
   update_key<int>(json.at(section).at(instance_name), settings, "semitones", "semitones");
-
-  update_key<int>(json.at(section).at(instance_name), settings, "octaves", "octaves");
 }
