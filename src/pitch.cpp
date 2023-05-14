@@ -23,86 +23,86 @@ Pitch::Pitch(const std::string& tag,
              const std::string& schema,
              const std::string& schema_path,
              PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::pitch, tags::plugin_package::rubber, schema, schema_path, pipe_manager) {
-  mode = parse_mode_key(util::gsettings_get_string(settings, "mode"));
-  formant = parse_formant_key(util::gsettings_get_string(settings, "formant"));
-  transients = parse_transients_key(util::gsettings_get_string(settings, "transients"));
-  detector = parse_detector_key(util::gsettings_get_string(settings, "detector"));
-  phase = parse_phase_key(util::gsettings_get_string(settings, "phase"));
+    : PluginBase(tag, tags::plugin_name::pitch, tags::plugin_package::sound_touch, schema, schema_path, pipe_manager) {
+  // mode = parse_mode_key(util::gsettings_get_string(settings, "mode"));
+  // formant = parse_formant_key(util::gsettings_get_string(settings, "formant"));
+  // transients = parse_transients_key(util::gsettings_get_string(settings, "transients"));
+  // detector = parse_detector_key(util::gsettings_get_string(settings, "detector"));
+  // phase = parse_phase_key(util::gsettings_get_string(settings, "phase"));
 
   octaves = g_settings_get_int(settings, "octaves");
   semitones = g_settings_get_int(settings, "semitones");
   cents = g_settings_get_int(settings, "cents");
 
-  gconnections.push_back(g_signal_connect(settings, "changed::mode",
-                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto* self = static_cast<Pitch*>(user_data);
+  // gconnections.push_back(g_signal_connect(settings, "changed::mode",
+  //                                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+  //                                           auto* self = static_cast<Pitch*>(user_data);
 
-                                            self->mode = parse_mode_key(util::gsettings_get_string(settings, key));
+  //                                           self->mode = parse_mode_key(util::gsettings_get_string(settings, key));
 
-                                            if (!self->rubberband_ready) {
-                                              return;
-                                            }
+  //                                           if (!self->soundtouch_ready) {
+  //                                             return;
+  //                                           }
 
-                                            self->set_mode();
-                                          }),
-                                          this));
+  //                                           self->set_mode();
+  //                                         }),
+  //                                         this));
 
-  gconnections.push_back(g_signal_connect(
-      settings, "changed::formant", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto* self = static_cast<Pitch*>(user_data);
+  // gconnections.push_back(g_signal_connect(
+  //     settings, "changed::formant", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+  //       auto* self = static_cast<Pitch*>(user_data);
 
-        self->formant = parse_formant_key(util::gsettings_get_string(settings, key));
+  //       self->formant = parse_formant_key(util::gsettings_get_string(settings, key));
 
-        if (!self->rubberband_ready) {
-          return;
-        }
+  //       if (!self->soundtouch_ready) {
+  //         return;
+  //       }
 
-        self->set_formant();
-      }),
-      this));
+  //       self->set_formant();
+  //     }),
+  //     this));
 
-  gconnections.push_back(g_signal_connect(
-      settings, "changed::transients", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto* self = static_cast<Pitch*>(user_data);
+  // gconnections.push_back(g_signal_connect(
+  //     settings, "changed::transients", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+  //       auto* self = static_cast<Pitch*>(user_data);
 
-        self->transients = parse_transients_key(util::gsettings_get_string(settings, key));
+  //       self->transients = parse_transients_key(util::gsettings_get_string(settings, key));
 
-        if (!self->rubberband_ready) {
-          return;
-        }
+  //       if (!self->soundtouch_ready) {
+  //         return;
+  //       }
 
-        self->set_transients();
-      }),
-      this));
+  //       self->set_transients();
+  //     }),
+  //     this));
 
-  gconnections.push_back(g_signal_connect(
-      settings, "changed::detector", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto* self = static_cast<Pitch*>(user_data);
+  // gconnections.push_back(g_signal_connect(
+  //     settings, "changed::detector", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+  //       auto* self = static_cast<Pitch*>(user_data);
 
-        self->detector = parse_detector_key(util::gsettings_get_string(settings, key));
+  //       self->detector = parse_detector_key(util::gsettings_get_string(settings, key));
 
-        if (!self->rubberband_ready) {
-          return;
-        }
+  //       if (!self->soundtouch_ready) {
+  //         return;
+  //       }
 
-        self->set_detector();
-      }),
-      this));
+  //       self->set_detector();
+  //     }),
+  //     this));
 
-  gconnections.push_back(g_signal_connect(settings, "changed::phase",
-                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto* self = static_cast<Pitch*>(user_data);
+  // gconnections.push_back(g_signal_connect(settings, "changed::phase",
+  //                                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+  //                                           auto* self = static_cast<Pitch*>(user_data);
 
-                                            self->phase = parse_phase_key(util::gsettings_get_string(settings, key));
+  //                                           self->phase = parse_phase_key(util::gsettings_get_string(settings, key));
 
-                                            if (!self->rubberband_ready) {
-                                              return;
-                                            }
+  //                                           if (!self->soundtouch_ready) {
+  //                                             return;
+  //                                           }
 
-                                            self->set_phase();
-                                          }),
-                                          this));
+  //                                           self->set_phase();
+  //                                         }),
+  //                                         this));
 
   gconnections.push_back(g_signal_connect(settings, "changed::octaves",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
@@ -146,27 +146,27 @@ Pitch::~Pitch() {
 }
 
 void Pitch::setup() {
-  rubberband_ready = false;
+  soundtouch_ready = false;
 
   latency_n_frames = 0U;
+
+  if (data.size() != static_cast<size_t>(n_samples) * 2) {
+    data.resize(2U * static_cast<size_t>(n_samples));
+  }
 
   deque_out_L.resize(0U);
   deque_out_R.resize(0U);
 
-  /*
-   RubberBand initialization is slow. It is better to do it outside of the plugin realtime thread
- */
-
   util::idle_add([&, this] {
-    if (rubberband_ready) {
+    if (soundtouch_ready) {
       return;
     }
 
-    init_stretcher();
+    init_soundtouch();
 
     std::scoped_lock<std::mutex> lock(data_mutex);
 
-    rubberband_ready = true;
+    soundtouch_ready = true;
   });
 }
 
@@ -176,7 +176,7 @@ void Pitch::process(std::span<float>& left_in,
                     std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass || !rubberband_ready) {
+  if (bypass || !soundtouch_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -187,27 +187,24 @@ void Pitch::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  stretcher_in[0] = left_in.data();
-  stretcher_in[1] = right_in.data();
-
-  stretcher->process(stretcher_in.data(), n_samples, false);
-
-  if (const auto n_available = stretcher->available(); n_available > 0) {
-    // util::debug(log_tag + name + " available: " + util::to_string(n_available));
-
-    data_L.resize(n_available);
-    data_R.resize(n_available);
-
-    stretcher_out[0] = data_L.data();
-    stretcher_out[1] = data_R.data();
-
-    stretcher->retrieve(stretcher_out.data(), n_available);
-
-    for (int n = 0; n < n_available; n++) {
-      deque_out_L.push_back(data_L[n]);
-      deque_out_R.push_back(data_R[n]);
-    }
+  for (size_t n = 0U; n < left_in.size(); n++) {
+    data[n * 2U] = left_in[n];
+    data[n * 2U + 1U] = right_in[n];
   }
+
+  snd_touch->putSamples(data.data(), n_samples);
+
+  uint n_received = 0U;
+
+  do {
+    n_received = snd_touch->receiveSamples(data.data(), n_samples);
+
+    for (size_t n = 0U; n < n_received; n++) {
+      deque_out_L.push_back(data[n * 2U]);
+      deque_out_R.push_back(data[n * 2U + 1U]);
+    }
+
+  } while (n_received != 0);
 
   if (deque_out_L.size() >= left_out.size()) {
     for (float& v : left_out) {
@@ -275,193 +272,8 @@ void Pitch::process(std::span<float>& left_in,
   }
 }
 
-/*
-  Code based on the RubberBand LADSPA plugin
-
-  https://github.com/breakfastquay/rubberband/blob/cc937ebe655fc3c902ad0bc5cb63ce4e782720ee/ladspa/RubberBandPitchShifter.cpp#L377
-*/
-
-auto Pitch::parse_mode_key(const std::string& key) -> Mode {
-  if (key == "HighSpeed") {
-    return Mode::speed;
-  }
-
-  if (key == "HighQuality") {
-    return Mode::quality;
-  }
-
-  if (key == "HighConsistency") {
-    return Mode::consistency;
-  }
-
-  return Mode::speed;
-}
-
-auto Pitch::parse_formant_key(const std::string& key) -> Formant {
-  if (key == "Shifted") {
-    return Formant::shifted;
-  }
-
-  if (key == "Preserved") {
-    return Formant::preserved;
-  }
-
-  return Formant::shifted;
-}
-
-auto Pitch::parse_transients_key(const std::string& key) -> Transients {
-  if (key == "Crisp") {
-    return Transients::crisp;
-  }
-
-  if (key == "Mixed") {
-    return Transients::mixed;
-  }
-
-  if (key == "Smooth") {
-    return Transients::smooth;
-  }
-
-  return Transients::crisp;
-}
-
-auto Pitch::parse_detector_key(const std::string& key) -> Detector {
-  if (key == "Compound") {
-    return Detector::compound;
-  }
-
-  if (key == "Percussive") {
-    return Detector::percussive;
-  }
-
-  if (key == "Soft") {
-    return Detector::soft;
-  }
-
-  return Detector::compound;
-}
-
-auto Pitch::parse_phase_key(const std::string& key) -> Phase {
-  if (key == "Laminar") {
-    return Phase::laminar;
-  }
-
-  if (key == "Independent") {
-    return Phase::independent;
-  }
-
-  return Phase::laminar;
-}
-
-void Pitch::set_mode() {
-  if (stretcher == nullptr) {
-    return;
-  }
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  switch (mode) {
-    case Mode::speed:
-      stretcher->setPitchOption(RubberBand::RubberBandStretcher::OptionPitchHighSpeed);
-
-      break;
-    case Mode::quality:
-      stretcher->setPitchOption(RubberBand::RubberBandStretcher::OptionPitchHighQuality);
-
-      break;
-    case Mode::consistency:
-      stretcher->setPitchOption(RubberBand::RubberBandStretcher::OptionPitchHighConsistency);
-
-      break;
-  }
-}
-
-void Pitch::set_formant() {
-  if (stretcher == nullptr) {
-    return;
-  }
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  switch (formant) {
-    case Formant::shifted:
-      stretcher->setFormantOption(RubberBand::RubberBandStretcher::OptionFormantShifted);
-
-      break;
-    case Formant::preserved:
-      stretcher->setFormantOption(RubberBand::RubberBandStretcher::OptionFormantPreserved);
-
-      break;
-  }
-}
-
-void Pitch::set_transients() {
-  if (stretcher == nullptr) {
-    return;
-  }
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  switch (transients) {
-    case Transients::crisp:
-      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsCrisp);
-
-      break;
-    case Transients::mixed:
-      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsMixed);
-
-      break;
-    case Transients::smooth:
-      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsSmooth);
-
-      break;
-  }
-}
-
-void Pitch::set_detector() {
-  if (stretcher == nullptr) {
-    return;
-  }
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  switch (detector) {
-    case Detector::compound:
-      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorCompound);
-
-      break;
-    case Detector::percussive:
-      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorPercussive);
-
-      break;
-    case Detector::soft:
-      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionDetectorSoft);
-
-      break;
-  }
-}
-
-void Pitch::set_phase() {
-  if (stretcher == nullptr) {
-    return;
-  }
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  switch (phase) {
-    case Phase::laminar:
-      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseLaminar);
-
-      break;
-    case Phase::independent:
-      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseIndependent);
-
-      break;
-  }
-}
-
 void Pitch::set_pitch_scale() {
-  if (stretcher == nullptr) {
+  if (snd_touch == nullptr) {
     return;
   }
 
@@ -469,28 +281,73 @@ void Pitch::set_pitch_scale() {
 
   const double n_octaves = octaves + (static_cast<double>(semitones) / 12.0) + (static_cast<double>(cents) / 1200.0);
 
-  const double ratio = std::pow(2.0, n_octaves);
-
-  stretcher->setPitchScale(ratio);
+  snd_touch->setPitchOctaves(n_octaves);
 }
 
-void Pitch::init_stretcher() {
-  delete stretcher;
+void Pitch::set_sequence_length() {
+  if (snd_touch == nullptr) {
+    return;
+  }
 
-  RubberBand::RubberBandStretcher::Options options =
-      RubberBand::RubberBandStretcher::OptionProcessRealTime | RubberBand::RubberBandStretcher::OptionChannelsTogether;
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
-  stretcher = new RubberBand::RubberBandStretcher(rate, 2, options);
+  snd_touch->setSetting(SETTING_SEQUENCE_MS, sequence_length_ms);
+}
 
-  stretcher->setMaxProcessSize(n_samples);
-  stretcher->setTimeRatio(time_ratio);
+void Pitch::set_seek_window() {
+  if (snd_touch == nullptr) {
+    return;
+  }
+
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  snd_touch->setSetting(SETTING_SEEKWINDOW_MS, seek_window_ms);
+}
+
+void Pitch::set_overlap_length() {
+  if (snd_touch == nullptr) {
+    return;
+  }
+
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  snd_touch->setSetting(SETTING_OVERLAP_MS, overlap_length_ms);
+}
+
+void Pitch::set_quick_seek() {
+  if (snd_touch == nullptr) {
+    return;
+  }
+
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  snd_touch->setSetting(SETTING_USE_QUICKSEEK, static_cast<int>(quick_seek));
+}
+
+void Pitch::set_anti_alias() {
+  if (snd_touch == nullptr) {
+    return;
+  }
+
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  snd_touch->setSetting(SETTING_USE_AA_FILTER, static_cast<int>(anti_alias));
+}
+
+void Pitch::init_soundtouch() {
+  delete snd_touch;
+
+  snd_touch = new soundtouch::SoundTouch();
+
+  snd_touch->setSampleRate(rate);
+  snd_touch->setChannels(2);
 
   set_pitch_scale();
-  set_mode();
-  set_formant();
-  set_transients();
-  set_detector();
-  set_phase();
+  set_quick_seek();
+  set_anti_alias();
+  set_sequence_length();
+  set_seek_window();
+  set_overlap_length();
 }
 
 auto Pitch::get_latency_seconds() -> float {

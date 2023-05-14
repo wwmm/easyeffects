@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Pitch</title>
-    <p>Pitch shifting is a sound recording technique in which the original Pitch of a sound is raised or lowered. Easy Effects uses the pitch shifter from RubberBand.</p>
+    <p>Pitch shifting is a sound recording technique in which the original Pitch of a sound is raised or lowered. Easy Effects uses the pitch shifter from SoundTouch.</p>
     <terms>
         <item>
             <title>
@@ -15,21 +15,15 @@
             <list>
                 <item>
                     <p>
-                        <em style="strong">High Speed</em>
-                        - Uses a method with a CPU cost that is relatively moderate and predictable.
-                    </p>
+                        <em style="strong">High Speed</em> - Uses a method with a CPU cost that is relatively moderate and predictable. </p>
                 </item>
                 <item>
                     <p>
-                        <em style="strong">High Quality</em>
-                        - Uses the highest quality method for pitch shifting. This CPU cost is approximately proportional to the required frequency shift.
-                    </p>
+                        <em style="strong">High Quality</em> - Uses the highest quality method for pitch shifting. This CPU cost is approximately proportional to the required frequency shift. </p>
                 </item>
                 <item>
                     <p>
-                        <em style="strong">High Consistency</em>
-                        - Uses the method that gives greatest consistency when used to create small variations in pitch around the 1.0-ratio level. Unlike the previous two options, this avoids discontinuities when moving across the 1.0 pitch scale. It also consumes more CPU than the others in the case where the pitch scale is exactly 1.0.
-                    </p>
+                        <em style="strong">High Consistency</em> - Uses the method that gives greatest consistency when used to create small variations in pitch around the 1.0-ratio level. Unlike the previous two options, this avoids discontinuities when moving across the 1.0 pitch scale. It also consumes more CPU than the others in the case where the pitch scale is exactly 1.0. </p>
                 </item>
             </list>
         </item>
@@ -41,15 +35,11 @@
             <list>
                 <item>
                     <p>
-                        <em style="strong">Shifted</em>
-                            - Applies no special formant processing. The spectral envelope will be pitch shifted as normal.
-                    </p>
+                        <em style="strong">Shifted</em> - Applies no special formant processing. The spectral envelope will be pitch shifted as normal. </p>
                 </item>
                 <item>
                     <p>
-                        <em style="strong">Preserved</em>
-                            - Preserves the spectral envelope of the unshifted signal. This permits shifting the note frequency without so substantially affecting the perceived pitch profile of the voice or instrument.
-                    </p>
+                        <em style="strong">Preserved</em> - Preserves the spectral envelope of the unshifted signal. This permits shifting the note frequency without so substantially affecting the perceived pitch profile of the voice or instrument. </p>
                 </item>
             </list>
         </item>
@@ -61,21 +51,15 @@
             <list>
                 <item>
                     <p>
-                        <em style="strong">Crisp</em>
-                        - Resets component phases at the peak of each transient (the start of a significant note or percussive event).  This usually results in a clear-sounding output, but it is not always consistent, and may cause interruptions in stable sounds present at the same time as transient events.
-                    </p>
+                        <em style="strong">Crisp</em> - Resets component phases at the peak of each transient (the start of a significant note or percussive event). This usually results in a clear-sounding output, but it is not always consistent, and may cause interruptions in stable sounds present at the same time as transient events. </p>
                 </item>
                 <item>
                     <p>
-                        <em style="strong">Mixed</em>
-                        - Resets component phases at the peak of each transient, outside a frequency range typical of musical fundamental frequencies. The results may be more regular for mixed stable and percussive notes than Crisp option, but with a "phasier" sound. The balance may sound very good for certain types of music and fairly bad for others.
-                    </p>
+                        <em style="strong">Mixed</em> - Resets component phases at the peak of each transient, outside a frequency range typical of musical fundamental frequencies. The results may be more regular for mixed stable and percussive notes than Crisp option, but with a "phasier" sound. The balance may sound very good for certain types of music and fairly bad for others. </p>
                 </item>
                 <item>
                     <p>
-                        <em style="strong">Smooth</em>
-                        - Does not reset component phases at any point. The results will be smoother and more regular but may be less clear than the other transient options.
-                    </p>
+                        <em style="strong">Smooth</em> - Does not reset component phases at any point. The results will be smoother and more regular but may be less clear than the other transient options. </p>
                 </item>
             </list>
         </item>
@@ -87,21 +71,15 @@
             <list>
                 <item>
                     <p>
-                        <em style="strong">Compound</em>
-                        - Uses a general purpose transient detector which is likely to be good for most situations.
-                    </p>
+                        <em style="strong">Compound</em> - Uses a general purpose transient detector which is likely to be good for most situations. </p>
                 </item>
                 <item>
                     <p>
-                        <em style="strong">Percussive</em>
-                        - Detects percussive transients.
-                    </p>
+                        <em style="strong">Percussive</em> - Detects percussive transients. </p>
                 </item>
                 <item>
                     <p>
-                        <em style="strong">Soft</em>
-                        - Uses an onset detector with less of a bias toward percussive transients. This may give better results with certain material (e.g. relatively monophonic piano music).
-                    </p>
+                        <em style="strong">Soft</em> - Uses an onset detector with less of a bias toward percussive transients. This may give better results with certain material (e.g. relatively monophonic piano music). </p>
                 </item>
             </list>
         </item>
@@ -113,15 +91,11 @@
             <list>
                 <item>
                     <p>
-                        <em style="strong">Laminar</em>
-                            - Adjusts phases when stretching in such a way as to try to retain the continuity of phase relationships between adjacent frequency bins whose phases are behaving in similar ways. This should give good results in most situations.
-                    </p>
+                        <em style="strong">Laminar</em> - Adjusts phases when stretching in such a way as to try to retain the continuity of phase relationships between adjacent frequency bins whose phases are behaving in similar ways. This should give good results in most situations. </p>
                 </item>
                 <item>
                     <p>
-                        <em style="strong">Independent</em>
-                            - Adjusts the phase in each frequency bin independently from its neighbours. This usually results in a slightly softer, phasier sound.
-                    </p>
+                        <em style="strong">Independent</em> - Adjusts the phase in each frequency bin independently from its neighbours. This usually results in a slightly softer, phasier sound. </p>
                 </item>
             </list>
         </item>
@@ -154,7 +128,7 @@
             </item>
             <item>
                 <p>
-                    <link href="https://breakfastquay.com/rubberband/why.html" its:translate="no">Rubber Band Audio Time Stretcher Library - Attractive Features</link>
+                    <link href="https://www.surina.net/soundtouch/" its:translate="no">SoundTouch Audio Time Stretcher Library - Attractive Features</link>
                 </p>
             </item>
         </list>

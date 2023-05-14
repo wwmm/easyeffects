@@ -42,7 +42,7 @@ inline constexpr auto mda = "MDA";
 
 inline constexpr auto rnnoise = "RNNoise";
 
-inline constexpr auto rubber = "Rubber Band";
+inline constexpr auto sound_touch = "SoundTouch";
 
 inline constexpr auto speex = "SpeexDSP";
 

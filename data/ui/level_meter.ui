@@ -113,7 +113,7 @@
                                                                 <child>
                                                                     <object class="GtkLabel" id="m_label">
                                                                         <property name="xalign">1</property>
-                                                                        <property name="width-chars">6</property>
+                                                                        <property name="width-chars">8</property>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -143,7 +143,7 @@
                                                                 <child>
                                                                     <object class="GtkLabel" id="s_label">
                                                                         <property name="xalign">1</property>
-                                                                        <property name="width-chars">6</property>
+                                                                        <property name="width-chars">8</property>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -173,7 +173,7 @@
                                                                 <child>
                                                                     <object class="GtkLabel" id="i_label">
                                                                         <property name="xalign">1</property>
-                                                                        <property name="width-chars">6</property>
+                                                                        <property name="width-chars">8</property>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -203,7 +203,7 @@
                                                                 <child>
                                                                     <object class="GtkLabel" id="r_label">
                                                                         <property name="xalign">1</property>
-                                                                        <property name="width-chars">6</property>
+                                                                        <property name="width-chars">8</property>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -235,7 +235,7 @@
                                                                 <child>
                                                                     <object class="GtkLabel" id="lra_label">
                                                                         <property name="xalign">1</property>
-                                                                        <property name="width-chars">6</property>
+                                                                        <property name="width-chars">8</property>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -286,7 +286,7 @@
                                                 <child>
                                                     <object class="GtkLabel" id="input_level_left_label">
                                                         <property name="halign">end</property>
-                                                        <property name="width-chars">6</property>
+                                                        <property name="width-chars">8</property>
                                                         <property name="label">0</property>
                                                     </object>
                                                 </child>
@@ -304,7 +304,7 @@
                                                 <child>
                                                     <object class="GtkLabel" id="input_level_right_label">
                                                         <property name="halign">end</property>
-                                                        <property name="width-chars">6</property>
+                                                        <property name="width-chars">8</property>
                                                         <property name="label">0</property>
                                                     </object>
                                                 </child>

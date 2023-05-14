@@ -44,9 +44,8 @@ struct _PitchBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *plugin_credit;
 
-  GtkComboBoxText *mode, *formant, *transients, *detector, *phase;
-
-  GtkSpinButton *cents, *semitones, *octaves;
+  GtkSpinButton *cents, *semitones, *octaves, *sequence_length, *seek_window, *overlap_length, *tempo_difference,
+      *rate_difference;
 
   GSettings* settings;
 
@@ -101,8 +100,8 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  gsettings_bind_widgets<"mode", "formant", "transients", "detector", "phase">(
-      self->settings, self->mode, self->formant, self->transients, self->detector, self->phase);
+  // gsettings_bind_widgets<"mode", "formant", "transients", "detector", "phase">(
+  //     self->settings, self->mode, self->formant, self->transients, self->detector, self->phase);
 
   g_settings_bind(self->settings, "cents", gtk_spin_button_get_adjustment(self->cents), "value",
                   G_SETTINGS_BIND_DEFAULT);
@@ -170,12 +169,11 @@ void pitch_box_class_init(PitchBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PitchBox, output_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, plugin_credit);
 
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, mode);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, formant);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, transients);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, detector);
-  gtk_widget_class_bind_template_child(widget_class, PitchBox, phase);
-
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, sequence_length);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, seek_window);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, overlap_length);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, tempo_difference);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, rate_difference);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, cents);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, semitones);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, octaves);
@@ -191,6 +189,10 @@ void pitch_box_init(PitchBox* self) {
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
   prepare_spinbuttons<"">(self->cents, self->semitones, self->octaves);
+
+  prepare_spinbuttons<"ms">(self->sequence_length, self->seek_window, self->overlap_length);
+
+  prepare_spinbuttons<"%">(self->tempo_difference, self->rate_difference);
 }
 
 auto create() -> PitchBox* {

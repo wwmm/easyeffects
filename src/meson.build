@@ -157,7 +157,7 @@ easyeffects_deps = [
 	dependency('fftw3', include_type: 'system'),
 	dependency('libebur128',version: '>=1.2.0', include_type: 'system'),
 	dependency('samplerate', include_type: 'system'),
-	dependency('rubberband', include_type: 'system'),
+	dependency('soundtouch', include_type: 'system'),
 	dependency('speexdsp', include_type: 'system'),
 	dependency('nlohmann_json', include_type: 'system'),
 	dependency('fmt', version: '>=8.0.0', include_type: 'system'),

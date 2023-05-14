@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include <rubberband/RubberBandStretcher.h>
 #include <deque>
+#include "SoundTouch.h"
 #include "plugin_base.hpp"
 
 class Pitch : public PluginBase {
@@ -48,44 +48,40 @@ class Pitch : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  bool rubberband_ready = false;
+  bool soundtouch_ready = false;
   bool notify_latency = false;
 
   uint latency_n_frames = 0U;
 
-  std::vector<float> data_L, data_R;
+  std::vector<float> data_L, data_R, data;
 
   std::array<float*, 2U> stretcher_in = {nullptr, nullptr};
   std::array<float*, 2U> stretcher_out = {nullptr, nullptr};
 
   std::deque<float> deque_out_L, deque_out_R;
 
-  RubberBand::RubberBandStretcher* stretcher = nullptr;
+  soundtouch::SoundTouch* snd_touch = nullptr;
 
-  Mode mode = Mode::speed;
-  Formant formant = Formant::shifted;
-  Transients transients = Transients::crisp;
-  Detector detector = Detector::compound;
-  Phase phase = Phase::laminar;
+  bool anti_alias = false;
+  bool quick_seek = false;
 
   int cents = 0;
   int semitones = 0;
   int octaves = 0;
+  int sequence_length_ms = 40;
+  int seek_window_ms = 15;
+  int overlap_length_ms = 8;
 
-  double time_ratio = 1.0;
+  double tempo_difference = 0.0;
+  double rate_difference = 0.0;
 
-  void init_stretcher();
-
-  static auto parse_mode_key(const std::string& key) -> Mode;
-  static auto parse_formant_key(const std::string& key) -> Formant;
-  static auto parse_transients_key(const std::string& key) -> Transients;
-  static auto parse_detector_key(const std::string& key) -> Detector;
-  static auto parse_phase_key(const std::string& key) -> Phase;
-
-  void set_mode();
-  void set_formant();
-  void set_transients();
-  void set_detector();
-  void set_phase();
   void set_pitch_scale();
+  void set_sequence_length();
+  void set_seek_window();
+  void set_overlap_length();
+  void set_quick_seek();
+  void set_anti_alias();
+  void set_tempo_difference();
+  void set_rate_difference();
+  void init_soundtouch();
 };

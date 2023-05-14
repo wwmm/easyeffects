@@ -90,7 +90,7 @@ Plugins needed for effects:
 - [libebur128](https://github.com/jiixyj/libebur128). For Auto Gain.
 - [ZamAudio plugins](http://www.zamaudio.com/). For Maximizer.
 - [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/). For Convolver.
-- [rubberband](https://www.breakfastquay.com/rubberband/). For Pitch Shift.
+- [soundtouch](https://www.surina.net/soundtouch/). For Pitch Shift.
 - [RNNoise](https://github.com/xiph/rnnoise). For Noise Reduction.
 
 Other dependencies include:

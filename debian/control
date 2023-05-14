@@ -16,7 +16,7 @@ Build-Depends:
  libgtk-4-dev,
  liblilv-dev,
  libpipewire-0.3-dev,
- librubberband-dev,
+ libsoundtouch-dev,
  libsamplerate0-dev,
  libsigc++-3.0-dev,
  libsndfile-dev,
