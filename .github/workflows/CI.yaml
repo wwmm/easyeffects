@@ -190,7 +190,7 @@ jobs:
         nlohmann-json
         pipewire-dev
         rnnoise-dev
-        libsoundtouch-dev
+        soundtouch-dev
         speexdsp-dev
         zita-convolver-dev
         "
