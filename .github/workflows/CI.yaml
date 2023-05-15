@@ -153,7 +153,7 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       # since arch linux tends to take time to get the latest clang (we need >= 16), use alpine for now
-      image: alpine:edge
+      image: alpine
 
     steps:
     - name: Checkout repository
@@ -190,7 +190,7 @@ jobs:
         nlohmann-json
         pipewire-dev
         rnnoise-dev
-        libsoundtouch-dev
+        soundtouch-dev
         speexdsp-dev
         zita-convolver-dev
         "
