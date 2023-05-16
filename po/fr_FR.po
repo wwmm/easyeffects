@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-14 20:21-0300\n"
-"PO-Revision-Date: 2023-05-05 06:51+0000\n"
+"PO-Revision-Date: 2023-05-16 02:52+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1018,14 +1018,12 @@ msgid "Gating"
 msgstr "Déclenchement"
 
 #: data/ui/level_meter.ui:39
-#, fuzzy
 msgid "True Peak"
-msgstr "Crête Fréquence 2"
+msgstr "Crête réelle"
 
 #: data/ui/level_meter.ui:91
-#, fuzzy
 msgid "Loudness List"
-msgstr "Sonie"
+msgstr "Liste de sonie"
 
 #: data/ui/limiter.ui:58
 msgid "Oversampling"
@@ -1536,26 +1534,23 @@ msgstr "Bruit blanc"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Recherche rapide"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Anti-crénelage"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Intervalle de fréquences"
+msgstr "Durée de la séquence"
 
 #: data/ui/pitch.ui:81
-#, fuzzy
 msgid "Seek Window"
-msgstr "Fenêtre [s]"
+msgstr "Fenêtre de recherche"
 
 #: data/ui/pitch.ui:104
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Longueur Filtre"
+msgstr "Durée de chevauchement"
 
 #: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:51
 msgid "Pitch"
@@ -1566,14 +1561,12 @@ msgid "Semitones"
 msgstr "Demi-tons"
 
 #: data/ui/pitch.ui:160
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "Référence"
+msgstr "Différence de tempo"
 
 #: data/ui/pitch.ui:183
-#, fuzzy
 msgid "Rate Difference"
-msgstr "Référence"
+msgstr "Différence de débit"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
@@ -2283,9 +2276,8 @@ msgid "Filter"
 msgstr "Filtre"
 
 #: src/tags_plugin_name.cpp:45
-#, fuzzy
 msgid "Level Meter"
-msgstr "Indicateur de niveau de sortie"
+msgstr "Indicateur de niveau"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Limiter"
