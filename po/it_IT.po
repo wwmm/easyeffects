@@ -1562,14 +1562,12 @@ msgid "Semitones"
 msgstr "Semitoni"
 
 #: data/ui/pitch.ui:160
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "Riferimento"
+msgstr "Differenza Tempo"
 
 #: data/ui/pitch.ui:183
-#, fuzzy
 msgid "Rate Difference"
-msgstr "Riferimento"
+msgstr "Differenza Frequenza"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
