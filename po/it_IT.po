@@ -1535,26 +1535,23 @@ msgstr "Rumore Bianco"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Ricerca veloce"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Anti-aliasing"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Gamma Frequenze"
+msgstr "Lunghezza Sequenza"
 
 #: data/ui/pitch.ui:81
-#, fuzzy
 msgid "Seek Window"
-msgstr "Chiudi la Finestra"
+msgstr "Finestra di ricerca"
 
 #: data/ui/pitch.ui:104
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Lunghezza Filtro"
+msgstr "Lunghezza di sovrapposizione"
 
 #: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:51
 msgid "Pitch"
