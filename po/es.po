@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-14 20:21-0300\n"
-"PO-Revision-Date: 2023-05-12 23:50+0000\n"
+"PO-Revision-Date: 2023-05-16 09:50+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -1533,11 +1533,11 @@ msgstr "Ruido blanco"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Búsqueda rápida"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Suavizado"
 
 #: data/ui/pitch.ui:58
 #, fuzzy
