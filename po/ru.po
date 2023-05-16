@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-14 20:21-0300\n"
-"PO-Revision-Date: 2023-05-12 23:50+0000\n"
+"PO-Revision-Date: 2023-05-16 02:52+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1572,26 +1572,23 @@ msgstr "Белый шум"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Быстрая перемотка"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Сглаживание"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Диапазон частот"
+msgstr "Длина последовательности"
 
 #: data/ui/pitch.ui:81
-#, fuzzy
 msgid "Seek Window"
-msgstr "Окно"
+msgstr "Окно перемотки"
 
 #: data/ui/pitch.ui:104
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Длина фильтра"
+msgstr "Длина перекрытия"
 
 #: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:51
 msgid "Pitch"
@@ -1602,14 +1599,12 @@ msgid "Semitones"
 msgstr "Полутона"
 
 #: data/ui/pitch.ui:160
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "База"
+msgstr "Разница в темпе"
 
 #: data/ui/pitch.ui:183
-#, fuzzy
 msgid "Rate Difference"
-msgstr "База"
+msgstr "Разница в частоте"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"

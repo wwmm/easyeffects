@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-14 20:21-0300\n"
-"PO-Revision-Date: 2023-05-12 23:50+0000\n"
+"PO-Revision-Date: 2023-05-16 02:52+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -1533,26 +1533,23 @@ msgstr "Witte ruis"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Snel zoeken"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Anti-aliasing"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Frequentiebereik"
+msgstr "Sequentielengte"
 
 #: data/ui/pitch.ui:81
-#, fuzzy
 msgid "Seek Window"
-msgstr "Venster"
+msgstr "Zoekvenster"
 
 #: data/ui/pitch.ui:104
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Filterlengte"
+msgstr "Overlapslengte"
 
 #: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:51
 msgid "Pitch"
@@ -1563,14 +1560,12 @@ msgid "Semitones"
 msgstr "Halve tonen"
 
 #: data/ui/pitch.ui:160
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "Verwijzing"
+msgstr "Tempoverschil"
 
 #: data/ui/pitch.ui:183
-#, fuzzy
 msgid "Rate Difference"
-msgstr "Verwijzing"
+msgstr "Snelheidsverschil"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
