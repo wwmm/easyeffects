@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 15:00+0000\n"
+"POT-Creation-Date: 2023-05-17 14:03+0000\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -2385,7 +2385,7 @@ msgstr "Eliminar"
 msgid "Output Device"
 msgstr "Saída"
 
-#: src/plugins_menu.cpp:155
+#: src/plugins_menu.cpp:187
 msgid "Add"
 msgstr "Engadir"
 
