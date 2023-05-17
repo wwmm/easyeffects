@@ -1540,19 +1540,16 @@ msgid "Anti-aliasing"
 msgstr "Suavizado"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Rango de frecuencia"
+msgstr "Duración de la secuencia"
 
 #: data/ui/pitch.ui:81
-#, fuzzy
 msgid "Seek Window"
-msgstr "Cerrar la ventana"
+msgstr "Ventana de búsqueda"
 
 #: data/ui/pitch.ui:104
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Longitud del filtro"
+msgstr "Longitud de la superposición"
 
 #: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:51
 msgid "Pitch"
@@ -1563,14 +1560,12 @@ msgid "Semitones"
 msgstr "Semitonos"
 
 #: data/ui/pitch.ui:160
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "Referencia"
+msgstr "Diferencia del tiempo"
 
 #: data/ui/pitch.ui:183
-#, fuzzy
 msgid "Rate Difference"
-msgstr "Referencia"
+msgstr "Diferencia del flujo"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
