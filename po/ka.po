@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 15:00+0000\n"
+"POT-Creation-Date: 2023-05-17 14:03+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2198,7 +2198,7 @@ msgstr "წაშლა"
 msgid "Output Device"
 msgstr "გამოტანის მოწყობილობები"
 
-#: src/plugins_menu.cpp:155
+#: src/plugins_menu.cpp:187
 msgid "Add"
 msgstr "დამატება"
 

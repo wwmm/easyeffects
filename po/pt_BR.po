@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 15:00+0000\n"
+"POT-Creation-Date: 2023-05-17 14:03+0000\n"
 "PO-Revision-Date: 2023-04-25 13:19+0000\n"
 "Last-Translator: Rodrigo S <drivador-weblate@yahoo.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -2214,7 +2214,7 @@ msgstr "Remover"
 msgid "Output Device"
 msgstr "Dispositivo de Saída"
 
-#: src/plugins_menu.cpp:155
+#: src/plugins_menu.cpp:187
 msgid "Add"
 msgstr "Adicionar"
 

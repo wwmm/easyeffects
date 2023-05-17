@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 15:00+0000\n"
+"POT-Creation-Date: 2023-05-17 14:03+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2211,7 +2211,7 @@ msgstr "削除"
 msgid "Output Device"
 msgstr "出力デバイス"
 
-#: src/plugins_menu.cpp:155
+#: src/plugins_menu.cpp:187
 msgid "Add"
 msgstr "追加"
 
