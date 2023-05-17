@@ -57,85 +57,117 @@ struct _PluginsMenu {
 // NOLINTNEXTLINE
 G_DEFINE_TYPE(PluginsMenu, plugins_menu, GTK_TYPE_POPOVER)
 
+void add_new_plugin_to_pipeline(GtkButton* btn, PluginsMenu* self) {
+  auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(btn), "string-object"));
+
+  if (string_object == nullptr) {
+    return;
+  }
+
+  auto* translated_name = gtk_string_object_get_string(string_object);
+
+  std::string base_name;
+
+  for (const auto& [key, value] : self->data->translated) {
+    if (translated_name == value) {
+      base_name = key;
+
+      break;
+    }
+  }
+
+  if (base_name.empty()) {
+    return;
+  }
+
+  auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
+
+  std::vector<uint> index_list;
+
+  for (const auto& name : list) {
+    if (tags::plugin_name::get_base_name(name) == base_name) {
+      index_list.emplace_back(tags::plugin_name::get_id(name));
+    }
+  }
+
+  auto new_id = (index_list.empty()) ? 0 : std::ranges::max(index_list) + 1;
+
+  auto new_name = base_name + "#" + util::to_string(new_id);
+
+  if (list.empty()) {
+    list.push_back(new_name);
+
+    g_settings_set_strv(self->settings, "plugins", util::make_gchar_pointer_vector(list).data());
+
+    return;
+  }
+
+  // If the list is not empty and the user is careful protecting
+  // their device with a plugin of type limiter at the last position
+  // of the filter chain, we follow this behaviour trying to inserting
+  // the new plugin at the second to last position.
+
+  // To do so, we first check if the new plugin is a limiter or the
+  // level meter and place it directly at the last position (those
+  // plugins do not need to be placed elsewhere and in most of the
+  // cases the user wants them at the bottom of the pipeline).
+
+  constexpr auto limiters_and_lm =
+      std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer, tags::plugin_name::level_meter});
+
+  if (std::any_of(limiters_and_lm.begin(), limiters_and_lm.end(),
+                  [&](const auto& str) { return new_name.starts_with(str); })) {
+    list.push_back(new_name);
+
+    g_settings_set_strv(self->settings, "plugins", util::make_gchar_pointer_vector(list).data());
+
+    return;
+  }
+
+  // If the new plugin is not one of the above mentioned, we have
+  // the check the last plugin of the pipeline and if it's a limiter,
+  // we have to place it at the second to last position.
+
+  constexpr auto limiter_plugins = std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer});
+
+  if (std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
+                  [&](const auto& str) { return list.back().starts_with(str); })) {
+    list.insert(list.cend() - 1U, new_name);
+  } else {
+    list.push_back(new_name);
+  }
+
+  g_settings_set_strv(self->settings, "plugins", util::make_gchar_pointer_vector(list).data());
+}
+
 void setup_listview(PluginsMenu* self) {
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
 
-  g_signal_connect(
-      factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PluginsMenu* self) {
-        auto* box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-        auto* label = gtk_label_new(nullptr);
-        auto* button = gtk_button_new_from_icon_name("list-add-symbolic");
+  g_signal_connect(factory, "setup",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PluginsMenu* self) {
+                     auto* box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+                     auto* label = gtk_label_new(nullptr);
+                     auto* button = gtk_button_new_from_icon_name("list-add-symbolic");
 
-        gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
-        gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
+                     gtk_widget_set_halign(GTK_WIDGET(label), GTK_ALIGN_START);
+                     gtk_widget_set_hexpand(GTK_WIDGET(label), 1);
 
-        gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
-        gtk_box_append(GTK_BOX(box), GTK_WIDGET(button));
+                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(label));
+                     gtk_box_append(GTK_BOX(box), GTK_WIDGET(button));
 
-        gtk_widget_add_css_class(GTK_WIDGET(button), "circular");
+                     gtk_widget_add_css_class(GTK_WIDGET(button), "circular");
 
-        gtk_list_item_set_activatable(item, 0);
-        gtk_list_item_set_child(item, GTK_WIDGET(box));
+                     gtk_list_item_set_activatable(item, 0);
+                     gtk_list_item_set_child(item, GTK_WIDGET(box));
 
-        g_object_set_data(G_OBJECT(item), "name", label);
-        g_object_set_data(G_OBJECT(item), "add", button);
+                     g_object_set_data(G_OBJECT(item), "name", label);
+                     g_object_set_data(G_OBJECT(item), "add", button);
 
-        g_signal_connect(
-            button, "clicked", G_CALLBACK(+[](GtkButton* btn, PluginsMenu* self) {
-              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(btn), "string-object"));
-                  string_object != nullptr) {
-                auto* translated_name = gtk_string_object_get_string(string_object);
-
-                std::string base_name;
-
-                for (const auto& [key, value] : self->data->translated) {
-                  if (translated_name == value) {
-                    base_name = key;
-
-                    break;
-                  }
-                }
-
-                if (base_name.empty()) {
-                  return;
-                }
-
-                auto list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
-
-                std::vector<uint> index_list;
-
-                for (const auto& name : list) {
-                  if (tags::plugin_name::get_base_name(name) == base_name) {
-                    index_list.emplace_back(tags::plugin_name::get_id(name));
-                  }
-                }
-
-                auto new_id = (index_list.empty()) ? 0 : std::ranges::max(index_list) + 1;
-
-                auto new_name = base_name + "#" + util::to_string(new_id);
-
-                constexpr auto limiter_plugins =
-                    std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer});
-
-                if (!list.empty() && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
-                                                 [&](const auto& str) { return list.back().starts_with(str); })) {
-                  // If the user is careful protecting his/her device with a plugin of
-                  // type limiter at the last position of the filter chain, we follow
-                  // this behaviour inserting the new plugin at the second last position
-
-                  list.insert(list.cend() - 1U, new_name);
-                } else {
-                  list.push_back(new_name);
-                }
-
-                g_settings_set_strv(self->settings, "plugins", util::make_gchar_pointer_vector(list).data());
-              }
-            }),
-            self);
-      }),
-      self);
+                     g_signal_connect(button, "clicked", G_CALLBACK(add_new_plugin_to_pipeline), self);
+                   }),
+                   self);
 
   g_signal_connect(factory, "bind",
                    G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PluginsMenu* self) {
