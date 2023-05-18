@@ -4,7 +4,9 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- A new `Level Meter` plugin basedon `libebur128` has been added
+- The pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes
+that were happening with Rubbernand are not going to happen anymore.
 
 - Bug fixes∶
 - 

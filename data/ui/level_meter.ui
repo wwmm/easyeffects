@@ -61,40 +61,21 @@
                                 </child>
 
                                 <child>
-                                    <object class="GtkBox">
-                                        <property name="spacing">12</property>
-                                        <property name="orientation">vertical</property>
-
+                                    <object class="AdwPreferencesPage">
                                         <child>
-                                            <object class="GtkLabel">
-                                                <property name="xalign">0</property>
-                                                <property name="label" translatable="yes">Loudness</property>
-
-                                                <attributes>
-                                                    <attribute name="weight" value="PANGO_WEIGHT_BOLD" />
-                                                </attributes>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkListBox">
-                                                <property name="show-separators">1</property>
-                                                <property name="hexpand">1</property>
-                                                <property name="selection-mode">none</property>
-
-                                                <style>
-                                                    <class name="card" />
-                                                    <class name="rich-list" />
-                                                </style>
-
-                                                <accessibility>
-                                                    <property name="label" translatable="yes">Loudness List</property>
-                                                </accessibility>
+                                            <object class="AdwPreferencesGroup">
+                                                <property name="title" translatable="yes">Loudness</property>
 
                                                 <child>
-                                                    <object class="GtkListBoxRow">
+                                                    <object class="AdwPreferencesRow">
                                                         <child>
                                                             <object class="GtkBox">
+                                                                <property name="spacing">12</property>
+                                                                <property name="margin-start">12</property>
+                                                                <property name="margin-end">12</property>
+                                                                <property name="margin-top">12</property>
+                                                                <property name="margin-bottom">12</property>
+
                                                                 <child>
                                                                     <object class="GtkLabel" id="m_title">
                                                                         <property name="label" translatable="yes">Momentary</property>
@@ -118,13 +99,20 @@
                                                                 </child>
                                                             </object>
                                                         </child>
+
                                                     </object>
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkListBoxRow">
+                                                    <object class="AdwPreferencesRow">
                                                         <child>
                                                             <object class="GtkBox">
+                                                                <property name="spacing">12</property>
+                                                                <property name="margin-start">12</property>
+                                                                <property name="margin-end">12</property>
+                                                                <property name="margin-top">12</property>
+                                                                <property name="margin-bottom">12</property>
+
                                                                 <child>
                                                                     <object class="GtkLabel" id="s_title">
                                                                         <property name="label" translatable="yes">Short-Term</property>
@@ -152,9 +140,15 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkListBoxRow">
+                                                    <object class="AdwPreferencesRow">
                                                         <child>
                                                             <object class="GtkBox">
+                                                                <property name="spacing">12</property>
+                                                                <property name="margin-start">12</property>
+                                                                <property name="margin-end">12</property>
+                                                                <property name="margin-top">12</property>
+                                                                <property name="margin-bottom">12</property>
+
                                                                 <child>
                                                                     <object class="GtkLabel" id="i_title">
                                                                         <property name="label" translatable="yes">Integrated</property>
@@ -182,9 +176,15 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkListBoxRow">
+                                                    <object class="AdwPreferencesRow">
                                                         <child>
                                                             <object class="GtkBox">
+                                                                <property name="spacing">12</property>
+                                                                <property name="margin-start">12</property>
+                                                                <property name="margin-end">12</property>
+                                                                <property name="margin-top">12</property>
+                                                                <property name="margin-bottom">12</property>
+
                                                                 <child>
                                                                     <object class="GtkLabel" id="r_title">
                                                                         <property name="label" translatable="yes">Relative</property>
@@ -212,9 +212,15 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkListBoxRow">
+                                                    <object class="AdwPreferencesRow">
                                                         <child>
                                                             <object class="GtkBox">
+                                                                <property name="spacing">12</property>
+                                                                <property name="margin-start">12</property>
+                                                                <property name="margin-end">12</property>
+                                                                <property name="margin-top">12</property>
+                                                                <property name="margin-bottom">12</property>
+
                                                                 <child>
                                                                     <object class="GtkLabel" id="lra_title">
                                                                         <property name="label" translatable="yes">Range</property>
@@ -242,10 +248,8 @@
                                                         </child>
                                                     </object>
                                                 </child>
-
                                             </object>
                                         </child>
-
                                     </object>
                                 </child>
 
