@@ -41,6 +41,7 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Left</property>
+                                                        <property name="title-lines">2</property>
                                                         <child>
                                                             <object class="GtkLabel" id="true_peak_left_label"></object>
                                                         </child>
@@ -50,6 +51,7 @@
                                                 <child>
                                                     <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Right</property>
+                                                        <property name="title-lines">2</property>
                                                         <child>
                                                             <object class="GtkLabel" id="true_peak_right_label"></object>
                                                         </child>
