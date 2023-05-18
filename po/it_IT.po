@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-17 14:03+0000\n"
-"PO-Revision-Date: 2023-05-12 23:50+0000\n"
+"PO-Revision-Date: 2023-05-18 03:53+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1535,7 +1535,7 @@ msgstr "Rumore Bianco"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr "Ricerca veloce"
+msgstr "Rilevamento Veloce"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
@@ -1547,11 +1547,11 @@ msgstr "Lunghezza Sequenza"
 
 #: data/ui/pitch.ui:81
 msgid "Seek Window"
-msgstr "Finestra di ricerca"
+msgstr "Finestra di Rilevazione"
 
 #: data/ui/pitch.ui:104
 msgid "Overlap Length"
-msgstr "Lunghezza di sovrapposizione"
+msgstr "Lunghezza di Sovrapposizione"
 
 #: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:51
 msgid "Pitch"
