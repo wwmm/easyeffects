@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-18 17:26+0000\n"
+"POT-Creation-Date: 2023-05-22 14:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -249,11 +249,10 @@ msgstr ""
 #: data/ui/deesser.ui:653 data/ui/delay.ui:366 data/ui/echo_canceller.ui:281
 #: data/ui/equalizer.ui:541 data/ui/equalizer_band.ui:239
 #: data/ui/equalizer_band.ui:310 data/ui/exciter.ui:461 data/ui/filter.ui:314
-#: data/ui/gate.ui:1396 data/ui/level_meter.ui:339 data/ui/limiter.ui:909
-#: data/ui/loudness.ui:309 data/ui/maximizer.ui:310
-#: data/ui/multiband_compressor.ui:631 data/ui/multiband_gate.ui:630
-#: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
-#: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
+#: data/ui/gate.ui:1396 data/ui/limiter.ui:909 data/ui/loudness.ui:309
+#: data/ui/maximizer.ui:310 data/ui/multiband_compressor.ui:631
+#: data/ui/multiband_gate.ui:630 data/ui/pitch.ui:393 data/ui/reverb.ui:535
+#: data/ui/rnnoise.ui:324 data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
 msgid "Reset"
 msgstr ""
 
