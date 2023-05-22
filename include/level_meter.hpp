@@ -43,6 +43,8 @@ class LevelMeter : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
+  void reset_history();
+
   sigc::signal<void(const double,  // momentary
                     const double,  // shortterm
                     const double,  // integrated

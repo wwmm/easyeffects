@@ -60,10 +60,11 @@ void on_reset(LevelMeterBox* self, GtkButton* btn) {
 }
 
 void on_reset_history(LevelMeterBox* self, GtkButton* btn) {
-  // it is ugly but will ensure that third party tools are able to reset this plugin history
+  // Since there's no reason why someone would want to activate the reset-history
+  // through a third party tool, we do not bind this action to a gsettings key
+  // like it's done in the AutoGain.
 
-  g_settings_set_boolean(self->settings, "reset-history",
-                         static_cast<gboolean>(g_settings_get_boolean(self->settings, "reset-history") == 0));
+  self->data->level_meter->reset_history();
 }
 
 void setup(LevelMeterBox* self, std::shared_ptr<LevelMeter> level_meter, const std::string& schema_path) {
