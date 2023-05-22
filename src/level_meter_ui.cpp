@@ -55,10 +55,6 @@ struct _LevelMeterBox {
 // NOLINTNEXTLINE
 G_DEFINE_TYPE(LevelMeterBox, level_meter_box, GTK_TYPE_BOX)
 
-void on_reset(LevelMeterBox* self, GtkButton* btn) {
-  util::reset_all_keys_except(self->settings);
-}
-
 void on_reset_history(LevelMeterBox* self, GtkButton* btn) {
   // Since there's no reason why someone would want to activate the reset-history
   // through a third party tool, we do not bind this action to a gsettings key
@@ -199,8 +195,6 @@ void level_meter_box_class_init(LevelMeterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, lra_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, true_peak_left_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, true_peak_right_label);
-
-  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset_history);
 }
