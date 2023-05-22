@@ -28,29 +28,7 @@ LevelMeter::LevelMeter(const std::string& tag,
                  tags::plugin_package::ebur128,
                  schema,
                  schema_path,
-                 pipe_manager) {
-  gconnections.push_back(g_signal_connect(
-      settings, "changed::reset-history", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-        auto* self = static_cast<LevelMeter*>(user_data);
-
-        self->mythreads.emplace_back([self]() {  // Using emplace_back here makes sense
-          self->data_mutex.lock();
-
-          self->ebur128_ready = false;
-
-          self->data_mutex.unlock();
-
-          auto status = self->init_ebur128();
-
-          self->data_mutex.lock();
-
-          self->ebur128_ready = status;
-
-          self->data_mutex.unlock();
-        });
-      }),
-      this));
-}
+                 pipe_manager) {}
 
 LevelMeter::~LevelMeter() {
   if (connected_to_pw) {
@@ -188,4 +166,22 @@ void LevelMeter::process(std::span<float>& left_in,
 
 auto LevelMeter::get_latency_seconds() -> float {
   return 0.0F;
+}
+
+void LevelMeter::reset_history() {
+  mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
+    data_mutex.lock();
+
+    ebur128_ready = false;
+
+    data_mutex.unlock();
+
+    auto status = init_ebur128();
+
+    data_mutex.lock();
+
+    ebur128_ready = status;
+
+    data_mutex.unlock();
+  });
 }

@@ -4,8 +4,5 @@
         <key name="bypass" type="b">
             <default>false</default>
         </key>
-        <key name="reset-history" type="b">
-            <default>false</default>
-        </key>
     </schema>
 </schemalist>

@@ -55,15 +55,12 @@ struct _LevelMeterBox {
 // NOLINTNEXTLINE
 G_DEFINE_TYPE(LevelMeterBox, level_meter_box, GTK_TYPE_BOX)
 
-void on_reset(LevelMeterBox* self, GtkButton* btn) {
-  util::reset_all_keys_except(self->settings);
-}
-
 void on_reset_history(LevelMeterBox* self, GtkButton* btn) {
-  // it is ugly but will ensure that third party tools are able to reset this plugin history
+  // Since there's no reason why someone would want to activate the reset-history
+  // through a third party tool, we do not bind this action to a gsettings key
+  // like it's done in the AutoGain.
 
-  g_settings_set_boolean(self->settings, "reset-history",
-                         static_cast<gboolean>(g_settings_get_boolean(self->settings, "reset-history") == 0));
+  self->data->level_meter->reset_history();
 }
 
 void setup(LevelMeterBox* self, std::shared_ptr<LevelMeter> level_meter, const std::string& schema_path) {
@@ -198,8 +195,6 @@ void level_meter_box_class_init(LevelMeterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, lra_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, true_peak_left_label);
   gtk_widget_class_bind_template_child(widget_class, LevelMeterBox, true_peak_right_label);
-
-  gtk_widget_class_bind_template_callback(widget_class, on_reset);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset_history);
 }

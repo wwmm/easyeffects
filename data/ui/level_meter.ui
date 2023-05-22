@@ -327,20 +327,6 @@
                                 <property name="hexpand">1</property>
                                 <property name="homogeneous">1</property>
 
-                                <!-- Empty placeholder used only for layout reason -->
-                                <child>
-                                    <object class="GtkLabel"> </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkButton" id="reset_button">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Reset</property>
-                                        <signal name="clicked" handler="on_reset" object="LevelMeterBox" />
-                                    </object>
-                                </child>
-
                                 <child>
                                     <object class="GtkLabel" id="plugin_credit">
                                         <property name="halign">end</property>
