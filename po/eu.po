@@ -8,186 +8,189 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-22 14:20+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-05-28 06:50+0000\n"
+"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
+"eu/>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "@APP_NAME@"
-msgstr ""
+msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr ""
+msgstr "Ekualizatzailea, konprimatzailea eta beste audio-efektu batzuk"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr ""
+msgstr "mugatzailea;konprimatzailea;durunda;ekualizadorea;bolumen automatikoa;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
 msgid "\"Presets\""
-msgstr ""
+msgstr "\"Aurrezarpenak\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Gaitu/desgaitu aplikazio hau"
 
 #: data/ui/app_info.ui:213
 msgid "Enable"
-msgstr ""
+msgstr "Gaitu"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Baztertu aplikazio-zerrenda: Gehitu/kendu aplikazio hau"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "Baztertu"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
 msgid "Mute Application"
-msgstr ""
+msgstr "Mututu aplikazioa"
 
 #: data/ui/app_info.ui:270
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "Aldatu aplikazio honen bolumena"
 
 #: data/ui/app_info.ui:272
 msgid "Application Volume"
-msgstr ""
+msgstr "Aplikazio-bolumena"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
-msgstr ""
+msgstr "_Laguntza"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
-msgstr ""
+msgstr "_Berrezarri ezarpenak"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
-msgstr ""
+msgstr "_Hobespenak"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
-msgstr ""
+msgstr "L_asterbideak"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
-msgstr ""
+msgstr "Easy Effects aplikazioari _buruz"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
 #: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
 msgid "Presets"
-msgstr ""
+msgstr "Aurrezarpenak"
 
 #: data/ui/application_window.ui:55
 msgid "Presets Menu"
-msgstr ""
+msgstr "Aurrezarpenen menua"
 
 #: data/ui/application_window.ui:62
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "Gaitu/desgaitu bypass globala"
 
 #: data/ui/application_window.ui:67
 msgid "Global Bypass"
-msgstr ""
+msgstr "Bypass globala"
 
 #: data/ui/application_window.ui:77
 msgid "Primary Menu"
-msgstr ""
+msgstr "Menu nagusia"
 
 #: data/ui/application_window.ui:92
 msgid "Easy Effects Window"
-msgstr ""
+msgstr "Easy Effects leihoa"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
-msgstr ""
+msgstr "Aplikazioen zerrenda"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr ""
+msgstr "Zerrenda hutsa"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
-msgstr ""
+msgstr "Ez dago audio-aplikaziorik erabilgarri"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
-msgstr ""
+msgstr "Helburua"
 
 #: data/ui/autogain.ui:63
 msgid "Silence"
-msgstr ""
+msgstr "Isiltasuna"
 
 #: data/ui/autogain.ui:98
 msgid "Maximum History"
-msgstr ""
+msgstr "Gehieneko historia"
 
 #: data/ui/autogain.ui:132
 msgid "Reference"
-msgstr ""
+msgstr "Erreferentzia"
 
 #: data/ui/autogain.ui:146 data/ui/autogain.ui:189 data/ui/level_meter.ui:83
 msgid "Momentary"
-msgstr ""
+msgstr "Behin-behinekoa"
 
 #: data/ui/autogain.ui:147 data/ui/autogain.ui:219 data/ui/level_meter.ui:120
 msgid "Short-Term"
-msgstr ""
+msgstr "Epe laburrekoa"
 
 #: data/ui/autogain.ui:148 data/ui/autogain.ui:249 data/ui/level_meter.ui:156
 msgid "Integrated"
-msgstr ""
+msgstr "Integratua"
 
 #: data/ui/autogain.ui:149
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "Batezbesteko geometrikoa (MSI)"
 
 #: data/ui/autogain.ui:150
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "Batezbesteko geometrikoa (MS)"
 
 #: data/ui/autogain.ui:151
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "Batezbesteko geometrikoa (MI)"
 
 #: data/ui/autogain.ui:152
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "Batezbesteko geometrikoa (SI)"
 
 #: data/ui/autogain.ui:169 data/ui/level_meter.ui:25
 msgid "Reset History"
-msgstr ""
+msgstr "Berrezarri historia"
 
 #: data/ui/autogain.ui:279 data/ui/level_meter.ui:192
 msgid "Relative"
-msgstr ""
+msgstr "Erlatiboa"
 
 #: data/ui/autogain.ui:309 data/ui/level_meter.ui:228
 msgid "Range"
-msgstr ""
+msgstr "Barrutia"
 
 #: data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:47
 msgid "Loudness"
-msgstr ""
+msgstr "Ozentasuna"
 
 #: data/ui/autogain.ui:374
 msgid "Output Gain"
-msgstr ""
+msgstr "Irteerako irabazia"
 
 #: data/ui/autogain.ui:411 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:592
@@ -202,7 +205,7 @@ msgstr ""
 #: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:155
 #: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
 msgid "Input"
-msgstr ""
+msgstr "Sarrera"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1105
@@ -214,7 +217,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:480 data/ui/pitch.ui:244 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
 msgid "Plugin Input Gain"
-msgstr ""
+msgstr "Sarrerako irabaziaren plugina"
 
 #: data/ui/autogain.ui:495 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
@@ -228,7 +231,7 @@ msgstr ""
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
 msgid "Output"
-msgstr ""
+msgstr "Irteera"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1189
@@ -240,7 +243,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:564 data/ui/pitch.ui:328 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
 msgid "Plugin Output Gain"
-msgstr ""
+msgstr "Irteerako irabaziaren plugina"
 
 #: data/ui/autogain.ui:580 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1255
@@ -253,92 +256,92 @@ msgstr ""
 #: data/ui/multiband_gate.ui:630 data/ui/pitch.ui:393 data/ui/reverb.ui:535
 #: data/ui/rnnoise.ui:324 data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
 msgid "Reset"
-msgstr ""
+msgstr "Berrezarri"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:615 data/ui/gate.ui:740
 msgid "Device"
-msgstr ""
+msgstr "Gailua"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:47
 #: data/ui/presets_menu.ui:195
 msgid "Name"
-msgstr ""
+msgstr "Izena"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "Profila"
 
 #: data/ui/autoload_row.ui:89
 msgid "Preset"
-msgstr ""
+msgstr "Aurrezarpena"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr ""
+msgstr "Kendu automatikoki kargatutako aurrezarpen hau"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:539 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/gate.ui:668
 msgid "Listen"
-msgstr ""
+msgstr "Entzun"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "Nahastu harmonikoak"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr ""
+msgstr "3."
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr ""
+msgstr "2."
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr ""
+msgstr "Kantitatea"
 
 #: data/ui/bass_enhancer.ui:142 data/ui/bass_enhancer.ui:424
 #: data/ui/exciter.ui:142 data/ui/exciter.ui:424
 msgid "Harmonics"
-msgstr ""
+msgstr "Harmonikoak"
 
 #: data/ui/bass_enhancer.ui:177 data/ui/exciter.ui:177
 msgid "Scope"
-msgstr ""
+msgstr "Esparrua"
 
 #: data/ui/bass_enhancer.ui:211
 msgid "Floor"
-msgstr ""
+msgstr "Zorua"
 
 #: data/ui/bass_enhancer.ui:240
 msgid "Floor Value"
-msgstr ""
+msgstr "Zoru-balioa"
 
 #: data/ui/bass_loudness.ui:71
 msgid "Link"
-msgstr ""
+msgstr "Esteka"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
-msgstr ""
+msgstr "Aplikazioaren izena"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr ""
+msgstr "Gehitu baztertutako aplikazioei"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr ""
+msgstr "Baztertutako aplikazioen zerrenda"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr ""
+msgstr "Erakutsi baztertutako aplikazioak"
 
 #: data/ui/compressor.ui:41 src/tags_plugin_name.cpp:34
 msgid "Compressor"
-msgstr ""
+msgstr "Konpresorea"
 
 #: data/ui/compressor.ui:53 data/ui/compressor.ui:507 data/ui/compressor.ui:816
 #: data/ui/deesser.ui:68 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:138
@@ -346,15 +349,15 @@ msgstr ""
 #: data/ui/limiter.ui:46 data/ui/multiband_compressor_band.ui:461
 #: data/ui/multiband_gate_band.ui:520
 msgid "Mode"
-msgstr ""
+msgstr "Modua"
 
 #: data/ui/compressor.ui:66 data/ui/multiband_compressor_band.ui:101
 msgid "Downward"
-msgstr ""
+msgstr "Beherantz"
 
 #: data/ui/compressor.ui:67 data/ui/multiband_compressor_band.ui:102
 msgid "Upward"
-msgstr ""
+msgstr "Gorantz"
 
 #: data/ui/compressor.ui:68 data/ui/multiband_compressor_band.ui:103
 msgid "Boosting"
@@ -380,14 +383,14 @@ msgstr ""
 
 #: data/ui/compressor.ui:182 data/ui/multiband_compressor_band.ui:170
 msgid "Time"
-msgstr ""
+msgstr "Denbora"
 
 #: data/ui/compressor.ui:192 data/ui/deesser.ui:307 data/ui/gate.ui:153
 #: data/ui/gate.ui:247 data/ui/limiter.ui:358 data/ui/maximizer.ui:50
 #: data/ui/multiband_compressor_band.ui:181 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
-msgstr ""
+msgstr "Atalasea"
 
 #: data/ui/compressor.ui:218 data/ui/multiband_compressor_band.ui:226
 msgid "Attack Time"
@@ -433,14 +436,14 @@ msgstr ""
 #: data/ui/multiband_gate.ui:140 data/ui/reverb.ui:212
 #: data/ui/stereo_tools.ui:538
 msgid "Dry Level"
-msgstr ""
+msgstr "Maila lehorra"
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:77 data/ui/delay.ui:155
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:174
 #: data/ui/multiband_gate.ui:174 data/ui/reverb.ui:246
 #: data/ui/stereo_tools.ui:574
 msgid "Wet Level"
-msgstr ""
+msgstr "Maila hezea"
 
 #: data/ui/compressor.ui:488 data/ui/compressor.ui:1022 data/ui/gate.ui:621
 #: data/ui/gate.ui:1133
@@ -464,7 +467,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:522 data/ui/multiband_compressor_band.ui:477
 msgid "Uniform"
-msgstr ""
+msgstr "Uniformea"
 
 #: data/ui/compressor.ui:531 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:486 data/ui/multiband_gate_band.ui:545
@@ -474,31 +477,31 @@ msgstr ""
 #: data/ui/compressor.ui:549 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:493 data/ui/multiband_gate_band.ui:552
 msgid "Source"
-msgstr ""
+msgstr "Iturburua"
 
 #: data/ui/compressor.ui:561 data/ui/gate.ui:688
 #: data/ui/multiband_compressor_band.ui:506 data/ui/multiband_gate_band.ui:565
 msgid "Middle"
-msgstr ""
+msgstr "Erdia"
 
 #: data/ui/compressor.ui:562 data/ui/gate.ui:689
 #: data/ui/multiband_compressor_band.ui:507 data/ui/multiband_gate_band.ui:566
 msgid "Side"
-msgstr ""
+msgstr "Alboa"
 
 #: data/ui/compressor.ui:563 data/ui/delay.ui:28 data/ui/equalizer.ui:219
 #: data/ui/gate.ui:690 data/ui/level_meter.ui:43
 #: data/ui/multiband_compressor_band.ui:508 data/ui/multiband_gate_band.ui:567
 #: data/ui/pipe_manager_box.ui:504 data/ui/stereo_tools.ui:165
 msgid "Left"
-msgstr ""
+msgstr "Ezkerra"
 
 #: data/ui/compressor.ui:564 data/ui/delay.ui:106 data/ui/equalizer.ui:246
 #: data/ui/gate.ui:691 data/ui/level_meter.ui:53
 #: data/ui/multiband_compressor_band.ui:509 data/ui/multiband_gate_band.ui:568
 #: data/ui/pipe_manager_box.ui:515 data/ui/stereo_tools.ui:220
 msgid "Right"
-msgstr ""
+msgstr "Eskuina"
 
 #: data/ui/compressor.ui:565 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:510 data/ui/multiband_gate_band.ui:569
