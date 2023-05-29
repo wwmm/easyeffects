@@ -19,6 +19,7 @@
 
 #include "util.hpp"
 
+#include <regex>
 #include <utility>
 
 namespace util {
@@ -377,6 +378,88 @@ auto str_contains(const std::string& haystack, const std::string& needle) -> boo
   }
 
   return (haystack.find(needle) != std::string::npos);
+}
+
+auto compare_versions(const std::string& v0, const std::string& v1) -> std::string {
+  /* This is an util to compare two strings as semver, mainly used to compare
+     two Pipewire versions.
+     The format should adhere to what is defined at `https://semver.org/`.
+     The additional extension label, if present, is ignored and fortunately
+     we don't need to look at it since Pipewire do not use it.
+
+     Given two version strings v0 and v1, this util returns another string:
+     - "0" if the versions are equal;
+     - "1" if v0 is higher than v1;
+     - "-1" if v0 is lower than v1;
+     - An empty string if the comparison fails (i.e. giving one or both strings
+       not respecting the semver format).
+  */
+
+  struct SemVer {
+    int major = -1;
+    int minor = -1;
+    int patch = -1;
+  };
+
+  static const auto re_semver = std::regex(R"(^(\d++)\.?+(\d++)?+\.?+(\d++)?+)");
+
+  std::array<SemVer, 2> sv{};
+  std::array<std::string, 2> v{v0, v1};
+
+  // SemVer struct initialization. Loop the given strings.
+  for (int v_idx = 0; v_idx < 2; v_idx++) {
+    // For both strings, execute the regular expression search,
+    // then loop through the submatches.
+    std::smatch match;
+
+    if (!std::regex_search(v[v_idx], match, re_semver)) {
+      // The given string is not a semver: the comparison failed.
+      return "";
+    }
+
+    // Submatches lookup
+    for (int sub_idx = 0, size = match.size(); sub_idx < size; sub_idx++) {
+      // Fill the structure converting the string to an integer.
+      switch (sub_idx) {
+        case 1:  // major
+          str_to_num(match[sub_idx].str(), sv[v_idx].major);
+          break;
+
+        case 2:  // minor
+          str_to_num(match[sub_idx].str(), sv[v_idx].minor);
+          break;
+
+        case 3:  // patch
+          str_to_num(match[sub_idx].str(), sv[v_idx].patch);
+          break;
+
+        default:
+          // sub_idx = 0: the first group which is the entire match we don't need.
+          break;
+      }
+    }
+  }
+
+  // Now that we are sure to have two valid semver, let's compare each part.
+  if (sv[0].major < sv[1].major) {
+    return "-1";
+  } else if (sv[0].major > sv[1].major) {
+    return "1";
+  }
+
+  if (sv[0].minor < sv[1].minor) {
+    return "-1";
+  } else if (sv[0].minor > sv[1].minor) {
+    return "1";
+  }
+
+  if (sv[0].patch < sv[1].patch) {
+    return "-1";
+  } else if (sv[0].patch > sv[1].patch) {
+    return "1";
+  }
+
+  return "0";
 }
 
 }  // namespace util
