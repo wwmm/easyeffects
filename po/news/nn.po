@@ -8,25 +8,28 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-22 14:20+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-06-02 09:48+0000\n"
+"Last-Translator: Daniel Svindseth <daniel@svindseth.net>\n"
+"Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
+"easyeffects/changelog/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
-msgstr ""
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "Lydeffektar for PipeWire-applikasjonar"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -34,12 +37,17 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"Easy Effects er eit verktøy for avansert ljodmanipulering. Det inkluderer "
+"mellom anna ein equalizer, ljodavgrensar, kompressor og etterklangsverktøy. "
+"I tillegg har det innebygd spektrumsanalysator."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Easy Effects er etterfølgjaren til PulseEffects. Easy Effects støttar berre "
+"PipeWire sin ljodtjenar. PulseAudio-brukarar bør heller nytte PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -47,6 +55,9 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"Sidan Easy Effects nyttar den vanlege PipeWire ljodtjenaren vil det fungere "
+"med nesten alle applikasjonar. Alle som er støtta vil visast i "
+"hovudvindauget, der ein kan slå på kvar einskild individuelt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -54,6 +65,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
+"Utanom manipulering av utgongsljod kan Easy Effects leggje til effektar til "
+"inngongseiningar, som t.d. ein mikrofon. Dette er nyttig til mellom anna "
+"ljodopptak, men det fungerer òg bra for samtalar."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 msgid ""
@@ -61,18 +75,20 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
+"Når Easy Effects vert starta vil den hugse alle innstillingane frå førre "
+"økt. Det er òg mogleg å lagre innstillingane som ulike profiler."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Hovudsida som viser to appar som spelar av ljod"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Bassforbetrar-sida som viser ljodkontrollar"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Convolver-sida viser ljodkontrollar"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -99,13 +115,15 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:380
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:393
 msgid "Features:"
-msgstr ""
+msgstr "Funksjonar:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
 msgstr ""
+"Førehandsinnstillings-menyen vil no spørje om stadfesting før ei "
+"førehandsinnstillings-fil vert lagra/sletta."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -131,11 +149,11 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:372
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:385
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Retta feil:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "The plugin reset should not make its controls innefective anymore."
-msgstr ""
+msgstr "Plugin-resett skal ikkje gjere kontrollane ubruklege lengre."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
