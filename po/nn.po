@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-22 14:20+0000\n"
-"PO-Revision-Date: 2023-06-02 09:48+0000\n"
+"PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Daniel Svindseth <daniel@svindseth.net>\n"
 "Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
 "easyeffects/main/nn/>\n"
@@ -529,7 +529,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:631
 msgid "Feed-back"
-msgstr ""
+msgstr "Respons"
 
 #: data/ui/compressor.ui:632 data/ui/gate.ui:754
 msgid "External"
@@ -712,11 +712,11 @@ msgstr "Standard"
 
 #: data/ui/crossfeed.ui:56
 msgid "Cutoff"
-msgstr ""
+msgstr "Avskjering"
 
 #: data/ui/crossfeed.ui:79
 msgid "Feed"
-msgstr ""
+msgstr "Mat"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
@@ -905,7 +905,7 @@ msgstr "Takverdi"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
@@ -990,7 +990,7 @@ msgstr ""
 
 #: data/ui/gate.ui:326
 msgid "Mix"
-msgstr ""
+msgstr "Miks"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
@@ -1010,7 +1010,7 @@ msgstr ""
 
 #: data/ui/gate.ui:753
 msgid "Internal"
-msgstr ""
+msgstr "Intern"
 
 #: data/ui/gate.ui:1359 data/ui/multiband_gate_band.ui:866
 msgid "Gating"
@@ -1018,11 +1018,11 @@ msgstr ""
 
 #: data/ui/level_meter.ui:39
 msgid "True Peak"
-msgstr ""
+msgstr "Sann topp"
 
 #: data/ui/limiter.ui:58
 msgid "Oversampling"
-msgstr ""
+msgstr "Oversampling"
 
 #: data/ui/limiter.ui:70
 msgid "Dither"
@@ -1062,15 +1062,15 @@ msgstr ""
 
 #: data/ui/limiter.ui:92
 msgid "Line Thin"
-msgstr ""
+msgstr "Linje tynn"
 
 #: data/ui/limiter.ui:93
 msgid "Line Wide"
-msgstr ""
+msgstr "Linje vid"
 
 #: data/ui/limiter.ui:94
 msgid "Line Tail"
-msgstr ""
+msgstr "Linje hale"
 
 #: data/ui/limiter.ui:95
 msgid "Line Duck"
@@ -1079,87 +1079,87 @@ msgstr ""
 #: data/ui/limiter.ui:115 data/ui/multiband_compressor.ui:55
 #: data/ui/multiband_gate.ui:55
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: data/ui/limiter.ui:116
 msgid "Half x2(2L)"
-msgstr ""
+msgstr "Halv x2(2L)"
 
 #: data/ui/limiter.ui:117
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "Halv x2(3L)"
 
 #: data/ui/limiter.ui:118
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "Halv x3(2L)"
 
 #: data/ui/limiter.ui:119
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "Halv x3(3L)"
 
 #: data/ui/limiter.ui:120
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "Halv x4(2L)"
 
 #: data/ui/limiter.ui:121
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "Halv x4(3L)"
 
 #: data/ui/limiter.ui:122
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "Halv x6(2L)"
 
 #: data/ui/limiter.ui:123
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "Halv x6(3L)"
 
 #: data/ui/limiter.ui:124
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "Halv x8(2L)"
 
 #: data/ui/limiter.ui:125
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "Halv x8(3L)"
 
 #: data/ui/limiter.ui:126
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "Full x2(2L)"
 
 #: data/ui/limiter.ui:127
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "Full x2(3L)"
 
 #: data/ui/limiter.ui:128
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "Full x3(2L)"
 
 #: data/ui/limiter.ui:129
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "Full x3(3L)"
 
 #: data/ui/limiter.ui:130
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "Full x4(2L)"
 
 #: data/ui/limiter.ui:131
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "Full x4(3L)"
 
 #: data/ui/limiter.ui:132
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "Full x6(2L)"
 
 #: data/ui/limiter.ui:133
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "Full x6(3L)"
 
 #: data/ui/limiter.ui:134
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "Full x8(2L)"
 
 #: data/ui/limiter.ui:135
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "Full x8(3L)"
 
 #: data/ui/limiter.ui:191
 msgid "SC PreAmp"
@@ -1172,16 +1172,16 @@ msgstr ""
 
 #: data/ui/limiter.ui:395
 msgid "Boost"
-msgstr ""
+msgstr "Forsterking"
 
 #: data/ui/limiter.ui:410
 msgid "Stereo Link"
-msgstr ""
+msgstr "Stereolenkje"
 
 #: data/ui/limiter.ui:455 data/ui/multiband_compressor_band.ui:120
 #: data/ui/multiband_gate_band.ui:89
 msgid "External Sidechain"
-msgstr ""
+msgstr "Ekstern sidekjede"
 
 #: data/ui/limiter.ui:468 data/ui/multiband_compressor.ui:95
 #: data/ui/multiband_gate.ui:95
@@ -1222,27 +1222,27 @@ msgstr ""
 
 #: data/ui/loudness.ui:27
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #: data/ui/loudness.ui:34
 msgid "Flat"
-msgstr ""
+msgstr "Flat"
 
 #: data/ui/loudness.ui:48
 msgid "FFT Size"
-msgstr ""
+msgstr "FFT-storleik"
 
 #: data/ui/loudness.ui:72
 msgid "Output Volume"
-msgstr ""
+msgstr "Utgangsvolum"
 
 #: data/ui/loudness.ui:94
 msgid "Clipping"
-msgstr ""
+msgstr "Klipping"
 
 #: data/ui/maximizer.ui:71
 msgid "Ceiling"
-msgstr ""
+msgstr "Tak"
 
 #: data/ui/multiband_compressor.ui:42 data/ui/multiband_gate.ui:42
 msgid "Sidechain Boost"
@@ -1270,23 +1270,23 @@ msgstr ""
 
 #: data/ui/multiband_compressor.ui:123 data/ui/multiband_gate.ui:123
 msgid "Classic"
-msgstr ""
+msgstr "Klassisk"
 
 #: data/ui/multiband_compressor.ui:124 data/ui/multiband_gate.ui:124
 msgid "Modern"
-msgstr ""
+msgstr "Moderne"
 
 #: data/ui/multiband_compressor.ui:235 data/ui/multiband_gate.ui:234
 msgid "Bands List"
-msgstr ""
+msgstr "Bandliste"
 
 #: data/ui/multiband_compressor.ui:244 data/ui/multiband_gate.ui:243
 msgid "Band 1"
-msgstr ""
+msgstr "Band 1"
 
 #: data/ui/multiband_compressor.ui:261 data/ui/multiband_gate.ui:260
 msgid "Band 2"
-msgstr ""
+msgstr "Band 2"
 
 #: data/ui/multiband_compressor.ui:287 data/ui/multiband_gate.ui:286
 msgid "Band 3"
