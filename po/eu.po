@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-22 14:20+0000\n"
-"PO-Revision-Date: 2023-05-28 06:50+0000\n"
+"PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
 "eu/>\n"
@@ -361,25 +361,25 @@ msgstr "Gorantz"
 
 #: data/ui/compressor.ui:68 data/ui/multiband_compressor_band.ui:103
 msgid "Boosting"
-msgstr ""
+msgstr "Indartzea"
 
 #: data/ui/compressor.ui:77 data/ui/multiband_compressor_band.ui:88
 msgid "Compression Mode"
-msgstr ""
+msgstr "Konpresio-modua"
 
 #: data/ui/compressor.ui:84 data/ui/multiband_compressor_band.ui:758
 msgid "Boost Threshold"
-msgstr ""
+msgstr "Indartze-atalasea"
 
 #: data/ui/compressor.ui:124 data/ui/multiband_compressor_band.ui:714
 msgid "Boost Amount"
-msgstr ""
+msgstr "Indartze kantitatea"
 
 #: data/ui/compressor.ui:171 data/ui/gate.ui:60 data/ui/limiter.ui:274
 #: data/ui/limiter.ui:497 data/ui/multiband_compressor_band.ui:190
 #: data/ui/multiband_gate_band.ui:144
 msgid "Attack"
-msgstr ""
+msgstr "Erasoa"
 
 #: data/ui/compressor.ui:182 data/ui/multiband_compressor_band.ui:170
 msgid "Time"
@@ -394,76 +394,76 @@ msgstr "Atalasea"
 
 #: data/ui/compressor.ui:218 data/ui/multiband_compressor_band.ui:226
 msgid "Attack Time"
-msgstr ""
+msgstr "Eraso-denbora"
 
 #: data/ui/compressor.ui:240 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:251
 msgid "Attack Threshold"
-msgstr ""
+msgstr "Eraso-atalasea"
 
 #: data/ui/compressor.ui:247 data/ui/gate.ui:66 data/ui/limiter.ui:316
 #: data/ui/limiter.ui:534 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:199 data/ui/multiband_gate_band.ui:150
 msgid "Release"
-msgstr ""
+msgstr "Askatzea"
 
 #: data/ui/compressor.ui:273 data/ui/multiband_compressor_band.ui:278
 msgid "Release Time"
-msgstr ""
+msgstr "Askatze-denbora"
 
 #: data/ui/compressor.ui:297 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:306
 msgid "Release Threshold"
-msgstr ""
+msgstr "Askatze-atalasea"
 
 #: data/ui/compressor.ui:304 data/ui/deesser.ui:341
 #: data/ui/multiband_compressor_band.ui:313
 msgid "Ratio"
-msgstr ""
+msgstr "Ratioa"
 
 #: data/ui/compressor.ui:341 data/ui/limiter.ui:570
 #: data/ui/multiband_compressor_band.ui:351
 msgid "Knee"
-msgstr ""
+msgstr "Trantsizioa"
 
 #: data/ui/compressor.ui:376 data/ui/deesser.ui:376 data/ui/gate.ui:428
 #: data/ui/multiband_compressor_band.ui:389 data/ui/multiband_gate_band.ui:418
 msgid "Makeup"
-msgstr ""
+msgstr "Goratzea"
 
 #: data/ui/compressor.ui:411 data/ui/delay.ui:53 data/ui/delay.ui:131
 #: data/ui/gate.ui:342 data/ui/multiband_compressor.ui:140
 #: data/ui/multiband_gate.ui:140 data/ui/reverb.ui:212
 #: data/ui/stereo_tools.ui:538
 msgid "Dry Level"
-msgstr "Maila lehorra"
+msgstr "Lehortze-maila"
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:77 data/ui/delay.ui:155
 #: data/ui/gate.ui:347 data/ui/multiband_compressor.ui:174
 #: data/ui/multiband_gate.ui:174 data/ui/reverb.ui:246
 #: data/ui/stereo_tools.ui:574
 msgid "Wet Level"
-msgstr "Maila hezea"
+msgstr "Hezetasun-maila"
 
 #: data/ui/compressor.ui:488 data/ui/compressor.ui:1022 data/ui/gate.ui:621
 #: data/ui/gate.ui:1133
 msgid "Sidechain"
-msgstr ""
+msgstr "Alboko katea"
 
 #: data/ui/compressor.ui:519 data/ui/deesser.ui:50 data/ui/gate.ui:650
 #: data/ui/multiband_compressor_band.ui:474 data/ui/multiband_gate_band.ui:533
 msgid "Peak"
-msgstr ""
+msgstr "Gailurra"
 
 #: data/ui/compressor.ui:520 data/ui/deesser.ui:49 data/ui/gate.ui:651
 #: data/ui/multiband_compressor_band.ui:475 data/ui/multiband_gate_band.ui:534
 msgid "RMS"
-msgstr ""
+msgstr "RMSa"
 
 #: data/ui/compressor.ui:521 data/ui/compressor.ui:889 data/ui/gate.ui:1004
 #: data/ui/multiband_compressor_band.ui:476
 msgid "Low-Pass"
-msgstr ""
+msgstr "Pasaera baxua"
 
 #: data/ui/compressor.ui:522 data/ui/multiband_compressor_band.ui:477
 msgid "Uniform"
@@ -472,7 +472,7 @@ msgstr "Uniformea"
 #: data/ui/compressor.ui:531 data/ui/gate.ui:660
 #: data/ui/multiband_compressor_band.ui:486 data/ui/multiband_gate_band.ui:545
 msgid "Sidechain Mode"
-msgstr ""
+msgstr "Alboko katearen modua"
 
 #: data/ui/compressor.ui:549 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:493 data/ui/multiband_gate_band.ui:552
@@ -506,389 +506,389 @@ msgstr "Eskuina"
 #: data/ui/compressor.ui:565 data/ui/gate.ui:692
 #: data/ui/multiband_compressor_band.ui:510 data/ui/multiband_gate_band.ui:569
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 #: data/ui/compressor.ui:566 data/ui/gate.ui:693
 #: data/ui/multiband_compressor_band.ui:511 data/ui/multiband_gate_band.ui:570
 msgid "Max"
-msgstr ""
+msgstr "Max"
 
 #: data/ui/compressor.ui:575 data/ui/gate.ui:700
 #: data/ui/multiband_compressor.ui:75 data/ui/multiband_compressor_band.ui:520
 #: data/ui/multiband_gate.ui:75 data/ui/multiband_gate_band.ui:579
 msgid "Sidechain Source"
-msgstr ""
+msgstr "Alboko katearen iturburua"
 
 #: data/ui/compressor.ui:604 data/ui/equalizer_band.ui:102 data/ui/gate.ui:729
 msgid "Type"
-msgstr ""
+msgstr "Mota"
 
 #: data/ui/compressor.ui:630
 msgid "Feed-forward"
-msgstr ""
+msgstr "Aurrelikatzea"
 
 #: data/ui/compressor.ui:631
 msgid "Feed-back"
-msgstr ""
+msgstr "Atzeraelikatzea"
 
 #: data/ui/compressor.ui:632 data/ui/gate.ui:754
 msgid "External"
-msgstr ""
+msgstr "Kanpokoa"
 
 #: data/ui/compressor.ui:641 data/ui/gate.ui:761
 msgid "Sidechain Type"
-msgstr ""
+msgstr "Alboko katearen mota"
 
 #: data/ui/compressor.ui:669 data/ui/gate.ui:788 src/plugins_box.cpp:661
 msgid "Input Device"
-msgstr ""
+msgstr "Sarrerako gailua"
 
 #: data/ui/compressor.ui:676 data/ui/gate.ui:795
 msgid "PreAmplification"
-msgstr ""
+msgstr "Aurreanplifikazioa"
 
 #: data/ui/compressor.ui:713 data/ui/gate.ui:832
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
 msgid "Reactivity"
-msgstr ""
+msgstr "Erreaktibotasuna"
 
 #: data/ui/compressor.ui:750 data/ui/gate.ui:869 data/ui/limiter.ui:232
 #: data/ui/multiband_compressor_band.ui:681 data/ui/multiband_gate_band.ui:738
 msgid "Lookahead"
-msgstr ""
+msgstr "Aurrea hartzea"
 
 #: data/ui/compressor.ui:793 data/ui/gate.ui:912
 msgid "Sidechain Filters"
-msgstr ""
+msgstr "Alboko katearen iragazkiak"
 
 #: data/ui/compressor.ui:803 data/ui/gate.ui:922
 msgid "High-Pass"
-msgstr ""
+msgstr "Pasaera altua"
 
 #: data/ui/compressor.ui:829 data/ui/equalizer_band.ui:213 data/ui/filter.ui:59
 #: data/ui/gate.ui:948 data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
-msgstr ""
+msgstr "Maiztasuna"
 
 #: data/ui/compressor.ui:844 data/ui/compressor.ui:904 data/ui/gate.ui:961
 #: data/ui/gate.ui:1017
 msgid "Off"
-msgstr ""
+msgstr "Desaktibatuta"
 
 #: data/ui/compressor.ui:845 data/ui/compressor.ui:905 data/ui/gate.ui:962
 #: data/ui/gate.ui:1018
 msgid "12 dB/oct"
-msgstr ""
+msgstr "12 dB/zortzidun"
 
 #: data/ui/compressor.ui:846 data/ui/compressor.ui:906 data/ui/gate.ui:963
 #: data/ui/gate.ui:1019
 msgid "24 dB/oct"
-msgstr ""
+msgstr "24 dB/zortzidun"
 
 #: data/ui/compressor.ui:847 data/ui/compressor.ui:907 data/ui/gate.ui:964
 #: data/ui/gate.ui:1020
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 dB/zortzidun"
 
 #: data/ui/compressor.ui:856 data/ui/gate.ui:971
 msgid "High-Pass Filter Mode"
-msgstr ""
+msgstr "Pasaera altuko iragazki-modua"
 
 #: data/ui/compressor.ui:882 data/ui/compressor.ui:942 data/ui/gate.ui:997
 #: data/ui/gate.ui:1053
 msgid "High-Pass Filter Frequency"
-msgstr ""
+msgstr "Pasaera altuko iragazki-maiztasuna"
 
 #: data/ui/compressor.ui:916 data/ui/gate.ui:1027
 msgid "Low-Pass Filter Mode"
-msgstr ""
+msgstr "Pasaera baxuko iragazki-modua"
 
 #: data/ui/compressor.ui:968
 msgid "Gain"
-msgstr ""
+msgstr "Irabazia"
 
 #: data/ui/compressor.ui:995 data/ui/gate.ui:1106
 msgid "Envelope"
-msgstr ""
+msgstr "Inguratzailea"
 
 #: data/ui/compressor.ui:1049 data/ui/gate.ui:137 data/ui/gate.ui:1160
 #: data/ui/multiband_gate_band.ui:221
 msgid "Curve"
-msgstr ""
+msgstr "Kurba"
 
 #: data/ui/convolver.ui:40
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:507
 msgid "Left Channel"
-msgstr ""
+msgstr "Ezkerreko kanala"
 
 #: data/ui/convolver.ui:53
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:518
 msgid "Right Channel"
-msgstr ""
+msgstr "Eskuineko kanala"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
-msgstr ""
+msgstr "Bulkadak"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Konbinatu"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
-msgstr ""
+msgstr "Estereo-zabalera"
 
 #: data/ui/convolver.ui:114 src/plugin_base.cpp:199
 msgid "Spectrum"
-msgstr ""
+msgstr "Espektroa"
 
 #: data/ui/convolver.ui:122
 msgid "Log Scale"
-msgstr ""
+msgstr "Eskala logaritmikoa"
 
 #: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
 msgid "Autogain"
-msgstr ""
+msgstr "Irabazi automatikoa"
 
 #: data/ui/convolver.ui:148
 msgid "Rate"
-msgstr ""
+msgstr "Tasa"
 
 #: data/ui/convolver.ui:169
 msgid "Samples"
-msgstr ""
+msgstr "Laginak"
 
 #: data/ui/convolver.ui:190
 msgid "Duration"
-msgstr ""
+msgstr "Iraupena"
 
 #: data/ui/convolver_menu_combine.ui:15
 msgid "Combine Impulse Responses"
-msgstr ""
+msgstr "Konbinatu bulkada-erantzunak"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "Lehen nukleoa"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "Bigarren nukleoa"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr ""
+msgstr "Irteerako fitxategiaren izena"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "Konbinatutako nukleo-izena"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr ""
+msgstr "Inportatu bulkada"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
 msgid "Search"
-msgstr ""
+msgstr "Bilatu"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
-msgstr ""
+msgstr "Bilatu bulkada-iragazkia"
 
 #: data/ui/convolver_menu_impulses.ui:47
 msgid "Impulse Files List"
-msgstr ""
+msgstr "Bulkada-fitxategien zerrenda"
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
-msgstr ""
+msgstr "Lehenetsia"
 
 #: data/ui/crossfeed.ui:56
 msgid "Cutoff"
-msgstr ""
+msgstr "Atalasea"
 
 #: data/ui/crossfeed.ui:79
 msgid "Feed"
-msgstr ""
+msgstr "Elikatzea"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
-msgstr ""
+msgstr "Deribazioa"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:336
 #: data/ui/multiband_compressor_band.ui:140 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:175 data/ui/stereo_tools.ui:200
 msgid "Mute"
-msgstr ""
+msgstr "Mututu"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
-msgstr ""
+msgstr "Detekzioa"
 
 #: data/ui/deesser.ui:77
 msgid "Wide"
-msgstr ""
+msgstr "Zabala"
 
 #: data/ui/deesser.ui:78
 msgid "Split"
-msgstr ""
+msgstr "Zatitzea"
 
 #: data/ui/deesser.ui:96
 msgid "F1 Split"
-msgstr ""
+msgstr "F1 zatitzea"
 
 #: data/ui/deesser.ui:116
 msgid "Frequency 1 Split"
-msgstr ""
+msgstr "1. maiztasunaren zatitzea"
 
 #: data/ui/deesser.ui:129
 msgid "F2 Peak"
-msgstr ""
+msgstr "F2 gailurra"
 
 #: data/ui/deesser.ui:149
 msgid "Frequency 2 Peak"
-msgstr ""
+msgstr "2. maiztasunaren gailurra"
 
 #: data/ui/deesser.ui:167
 msgid "F1 Gain"
-msgstr ""
+msgstr "F1 irabazia"
 
 #: data/ui/deesser.ui:195
 msgid "Frequency 1 Gain"
-msgstr ""
+msgstr "1. maiztasunaren irabasia"
 
 #: data/ui/deesser.ui:202
 msgid "F2 Level"
-msgstr ""
+msgstr "F2 maila"
 
 #: data/ui/deesser.ui:230
 msgid "Frequency 2 Level"
-msgstr ""
+msgstr "2. maiztasunaren maila"
 
 #: data/ui/deesser.ui:237
 msgid "F2 Peak Q"
-msgstr ""
+msgstr "F2 Q gailurra"
 
 #: data/ui/deesser.ui:265
 msgid "Frequency 2 Peak Q"
-msgstr ""
+msgstr "2. maiztasunaren Q gailurra"
 
 #: data/ui/deesser.ui:272
 msgid "Laxity"
-msgstr ""
+msgstr "Laxotasuna"
 
 #: data/ui/deesser.ui:586
 msgid "Detected"
-msgstr ""
+msgstr "Detektatua"
 
 #: data/ui/deesser.ui:616 data/ui/gate.ui:423 data/ui/gate.ui:1079
 #: data/ui/maximizer.ui:271 data/ui/multiband_gate_band.ui:413
 msgid "Reduction"
-msgstr ""
+msgstr "Murrizketa"
 
 #: data/ui/delay.ui:31 data/ui/delay.ui:109 src/tags_plugin_name.cpp:39
 msgid "Delay"
-msgstr ""
+msgstr "Atzerapena"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
-msgstr ""
+msgstr "Iragazki-luzera"
 
 #: data/ui/echo_canceller.ui:50
 msgid "Residual Echo Suppression"
-msgstr ""
+msgstr "Hondar-oihartzuna kentzea"
 
 #: data/ui/echo_canceller.ui:72
 msgid "Near End Echo Suppression"
-msgstr ""
+msgstr "Amaiera aldeko oihartzuna kentzea"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "Baztertutako aplikazioak"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
-msgstr ""
+msgstr "Bandak"
 
 #: data/ui/equalizer.ui:75
 msgid "IIR"
-msgstr ""
+msgstr "IIRa"
 
 #: data/ui/equalizer.ui:76
 msgid "FIR"
-msgstr ""
+msgstr "FIRa"
 
 #: data/ui/equalizer.ui:77
 msgid "FFT"
-msgstr ""
+msgstr "FFTa"
 
 #: data/ui/equalizer.ui:78
 msgid "SPM"
-msgstr ""
+msgstr "SPMa"
 
 #: data/ui/equalizer.ui:94 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:397
 msgid "Balance"
-msgstr ""
+msgstr "Balantzea"
 
 #: data/ui/equalizer.ui:127
 msgid "Pitch Left"
-msgstr ""
+msgstr "Ezkerreko tonua"
 
 #: data/ui/equalizer.ui:160
 msgid "Pitch Right"
-msgstr ""
+msgstr "Eskuineko tonua"
 
 #: data/ui/equalizer.ui:282
 msgid "Split Channels"
-msgstr ""
+msgstr "Zatitu kanalak"
 
 #: data/ui/equalizer.ui:288
 msgid "Flat Response"
-msgstr ""
+msgstr "Erantzun laua"
 
 #: data/ui/equalizer.ui:296
 msgid "Calculate Frequencies"
-msgstr ""
+msgstr "Kalkulatu maiztasunak"
 
 #: data/ui/equalizer.ui:304
 msgid "Sort Bands"
-msgstr ""
+msgstr "Ordenatu bandak"
 
 #: data/ui/equalizer.ui:319 src/presets_menu.cpp:105
 msgid "Import Preset"
-msgstr ""
+msgstr "Inportatu aurrezarpena"
 
 #: data/ui/equalizer_band.ui:131
 msgid "Band Type"
-msgstr ""
+msgstr "Banda mota"
 
 #: data/ui/equalizer_band.ui:165
 msgid "Band Mode"
-msgstr ""
+msgstr "Banda modua"
 
 #: data/ui/equalizer_band.ui:172
 msgid "Slope"
-msgstr ""
+msgstr "Malda"
 
 #: data/ui/equalizer_band.ui:196
 msgid "Band Slope"
-msgstr ""
+msgstr "Bandaren malda"
 
 #: data/ui/equalizer_band.ui:258
 msgid "Width"
-msgstr ""
+msgstr "Zabalera"
 
 #: data/ui/equalizer_band.ui:285 data/ui/pitch.ui:28
 msgid "Quality"
-msgstr ""
+msgstr "Kalitatea"
 
 #: data/ui/equalizer_band.ui:330 data/ui/multiband_compressor_band.ui:150
 #: data/ui/multiband_gate_band.ui:119
@@ -905,43 +905,43 @@ msgstr ""
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "APIa"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "Sarbidea"
 
 #: data/ui/factory_modules_listview.ui:72
 msgid "Description"
-msgstr ""
+msgstr "Deskribapena"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
-msgstr ""
+msgstr "Kendu eredu-fitxategi hau"
 
 #: data/ui/filter.ui:34
 msgid "12dB/oct Lowpass"
-msgstr ""
+msgstr "12db/zortzidun pasaera baxua"
 
 #: data/ui/filter.ui:35
 msgid "24dB/oct Lowpass"
-msgstr ""
+msgstr "24db/zortzidun pasaera baxua"
 
 #: data/ui/filter.ui:36
 msgid "36dB/oct Lowpass"
-msgstr ""
+msgstr "36db/zortzidun pasaera baxua"
 
 #: data/ui/filter.ui:37
 msgid "12dB/oct Highpass"
-msgstr ""
+msgstr "12db/zortzidun pasaera altua"
 
 #: data/ui/filter.ui:38
 msgid "24dB/oct Highpass"
-msgstr ""
+msgstr "24db/zortzidun pasaera altua"
 
 #: data/ui/filter.ui:39
 msgid "36dB/oct Highpass"
-msgstr ""
+msgstr "36db/zortzidun pasaera altua"
 
 #: data/ui/filter.ui:40
 msgid "6dB/oct Bandpass"
@@ -969,24 +969,24 @@ msgstr ""
 
 #: data/ui/filter.ui:82
 msgid "Resonance"
-msgstr ""
+msgstr "Erresonantzia"
 
 #: data/ui/filter.ui:105
 msgid "Inertia"
-msgstr ""
+msgstr "Inertzia"
 
 #: data/ui/gate.ui:41 src/tags_plugin_name.cpp:44
 msgid "Gate"
-msgstr ""
+msgstr "Atea"
 
 #: data/ui/gate.ui:159 data/ui/gate.ui:252 data/ui/multiband_gate_band.ui:243
 #: data/ui/multiband_gate_band.ui:336
 msgid "Zone"
-msgstr ""
+msgstr "Zona"
 
 #: data/ui/gate.ui:231 data/ui/multiband_gate_band.ui:315
 msgid "Hysteresis"
-msgstr ""
+msgstr "Histeresia"
 
 #: data/ui/gate.ui:326
 msgid "Mix"
