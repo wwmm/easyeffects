@@ -108,10 +108,10 @@ void LevelMeter::process(std::span<float>& left_in,
                          std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass || !ebur128_ready) {
-    std::copy(left_in.begin(), left_in.end(), left_out.begin());
-    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+  std::copy(left_in.begin(), left_in.end(), left_out.begin());
+  std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
+  if (bypass || !ebur128_ready) {
     return;
   }
 
@@ -149,9 +149,6 @@ void LevelMeter::process(std::span<float>& left_in,
   if (EBUR128_SUCCESS != ebur128_true_peak(ebur_state, 1U, &true_peak_R)) {
     true_peak_R = 0.0;
   }
-
-  std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
