@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-22 14:20+0000\n"
+"POT-Creation-Date: 2023-06-10 22:29+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1435,7 +1435,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "გამოტანის მოწყობილობები"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:244
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
 msgid "Output Presets"
 msgstr ""
 
@@ -1455,7 +1455,7 @@ msgstr ""
 msgid "Input Devices"
 msgstr "შემომტანი მოწყობილობები"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:252
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
 msgid "Input Presets"
 msgstr ""
 
@@ -2048,31 +2048,31 @@ msgstr "უცნობი"
 msgid "channels"
 msgstr "არხები"
 
-#: src/application.cpp:441
+#: src/application.cpp:460
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:531
+#: src/application.cpp:550
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:534
+#: src/application.cpp:553
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/application.cpp:537
+#: src/application.cpp:556
 msgid "Reset Easy Effects."
 msgstr ""
 
-#: src/application.cpp:540
+#: src/application.cpp:559
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:543
+#: src/application.cpp:562
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:546
+#: src/application.cpp:565
 msgid "Show available presets."
 msgstr ""
 
