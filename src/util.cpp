@@ -380,19 +380,19 @@ auto str_contains(const std::string& haystack, const std::string& needle) -> boo
   return (haystack.find(needle) != std::string::npos);
 }
 
-auto compare_versions(const std::string& v0, const std::string& v1) -> std::string {
+auto compare_versions(const std::string& v0, const std::string& v1) -> int {
   /* This is an util to compare two strings as semver, mainly used to compare
      two Pipewire versions.
      The format should adhere to what is defined at `https://semver.org/`.
      The additional extension label, if present, is ignored and fortunately
-     we don't need to look at it since Pipewire do not use it.
+     we don't need to look at it since Pipewire does not use it.
 
-     Given two version strings v0 and v1, this util returns another string:
-     - "0" if the versions are equal;
-     - "1" if v0 is higher than v1;
-     - "-1" if v0 is lower than v1;
-     - An empty string if the comparison fails (i.e. giving one or both strings
-       not respecting the semver format).
+     Given two version strings v0 and v1, this util returns an integer:
+     - 0 if the versions are equal;
+     - 1 if v0 is higher than v1;
+     - -1 if v0 is lower than v1;
+     - Whichever other number if the comparison fails (i.e. giving one or
+       both strings not respecting the semver format).
   */
 
   struct SemVer {
@@ -414,7 +414,7 @@ auto compare_versions(const std::string& v0, const std::string& v1) -> std::stri
 
     if (!std::regex_search(v[v_idx], match, re_semver)) {
       // The given string is not a semver: the comparison failed.
-      return "";
+      return 9;
     }
 
     // Submatches lookup
@@ -442,24 +442,24 @@ auto compare_versions(const std::string& v0, const std::string& v1) -> std::stri
 
   // Now that we are sure to have two valid semver, let's compare each part.
   if (sv[0].major < sv[1].major) {
-    return "-1";
+    return -1;
   } else if (sv[0].major > sv[1].major) {
-    return "1";
+    return 1;
   }
 
   if (sv[0].minor < sv[1].minor) {
-    return "-1";
+    return -1;
   } else if (sv[0].minor > sv[1].minor) {
-    return "1";
+    return 1;
   }
 
   if (sv[0].patch < sv[1].patch) {
-    return "-1";
+    return -1;
   } else if (sv[0].patch > sv[1].patch) {
-    return "1";
+    return 1;
   }
 
-  return "0";
+  return 0;
 }
 
 }  // namespace util

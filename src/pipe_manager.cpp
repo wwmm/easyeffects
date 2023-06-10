@@ -1387,6 +1387,8 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 
   pm->core_name = info->name;
 
+  pm->version = info->version;
+
   spa_dict_get_string(info->props, "default.clock.rate", pm->default_clock_rate);
 
   spa_dict_get_string(info->props, "default.clock.min-quantum", pm->default_min_quantum);

@@ -113,7 +113,7 @@ void reset_all_keys_except(GSettings* settings,
 
 auto str_contains(const std::string& haystack, const std::string& needle) -> bool;
 
-auto compare_versions(const std::string& v0, const std::string& v1) -> std::string;
+auto compare_versions(const std::string& v0, const std::string& v1) -> int;
 
 template <typename T>
 void print_type(T v) {
