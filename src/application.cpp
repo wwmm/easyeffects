@@ -214,6 +214,25 @@ void on_startup(GApplication* gapp) {
   if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
     g_application_hold(gapp);
   }
+
+  // Debug check PipeWire minimum version
+  const auto comparison_result = util::compare_versions(self->pm->version, tags::app::minimum_pw_version);
+
+  switch (comparison_result) {
+    case 1:
+    case 0:
+      // Supported version. Nothing to show...
+      break;
+
+    case -1:
+      util::warning("PipeWire version " + self->pm->version + " is lower than " + tags::app::minimum_pw_version +
+                    " minimum supported.");
+      break;
+
+    default:
+      util::debug("Cannot check the current PipeWire version against the minimum supported.");
+      break;
+  }
 }
 
 void application_class_init(ApplicationClass* klass) {
@@ -396,7 +415,7 @@ void application_class_init(ApplicationClass* klass) {
     self->soe = nullptr;
     self->pm = nullptr;
 
-    util::debug("shutting down...");
+    util::debug("Shutting down...");
   };
 }
 
