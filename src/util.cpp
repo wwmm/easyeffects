@@ -385,7 +385,7 @@ auto compare_versions(const std::string& v0, const std::string& v1) -> std::stri
      two Pipewire versions.
      The format should adhere to what is defined at `https://semver.org/`.
      The additional extension label, if present, is ignored and fortunately
-     we don't need to look at it since Pipewire do not use it.
+     we don't need to look at it since Pipewire does not use it.
 
      Given two version strings v0 and v1, this util returns another string:
      - "0" if the versions are equal;
