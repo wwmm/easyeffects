@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-22 14:20+0000\n"
+"POT-Creation-Date: 2023-06-10 22:29+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1565,7 +1565,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Efecte Output"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:244
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
 #, fuzzy
 msgid "Output Presets"
 msgstr "Presetări pentru Output:"
@@ -1588,7 +1588,7 @@ msgstr "Presetări pentru Output:"
 msgid "Input Devices"
 msgstr "Nivel Input"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:252
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
 #, fuzzy
 msgid "Input Presets"
 msgstr "Presetări pentru Input:"
@@ -2232,36 +2232,36 @@ msgstr ""
 msgid "channels"
 msgstr "Canale"
 
-#: src/application.cpp:441
+#: src/application.cpp:460
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:531
+#: src/application.cpp:550
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
 
-#: src/application.cpp:534
+#: src/application.cpp:553
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
 
-#: src/application.cpp:537
+#: src/application.cpp:556
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Resetează EasyEffects."
 
-#: src/application.cpp:540
+#: src/application.cpp:559
 msgid "Hide the Window."
 msgstr "Ascunde Fereastra."
 
-#: src/application.cpp:543
+#: src/application.cpp:562
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Ocolire Globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
 "statusul"
 
-#: src/application.cpp:546
+#: src/application.cpp:565
 msgid "Show available presets."
 msgstr "Arată presetările valabile."
 

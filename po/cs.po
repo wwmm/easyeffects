@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-22 14:20+0000\n"
+"POT-Creation-Date: 2023-06-10 22:29+0000\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1456,7 +1456,7 @@ msgstr "Automatické načítání přednastavení"
 msgid "Output Devices"
 msgstr "Výstupní zařízení"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:244
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
 msgid "Output Presets"
 msgstr "Profily pro výstup"
 
@@ -1476,7 +1476,7 @@ msgstr "Seznam automaticky načítaných profilů pro výstup"
 msgid "Input Devices"
 msgstr "Vstupní zařízení"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:252
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
 msgid "Input Presets"
 msgstr "Profily pro vstup"
 
@@ -2074,31 +2074,31 @@ msgstr "Neznámý"
 msgid "channels"
 msgstr "Kanály"
 
-#: src/application.cpp:441
+#: src/application.cpp:460
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:531
+#: src/application.cpp:550
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Ukončit EasyEffects. Užitečné, při spuštění servisního režimu."
 
-#: src/application.cpp:534
+#: src/application.cpp:553
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
 
-#: src/application.cpp:537
+#: src/application.cpp:556
 msgid "Reset Easy Effects."
 msgstr "Obnovit EasyEffects."
 
-#: src/application.cpp:540
+#: src/application.cpp:559
 msgid "Hide the Window."
 msgstr "Skrýt Okno."
 
-#: src/application.cpp:543
+#: src/application.cpp:562
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání stavu"
 
-#: src/application.cpp:546
+#: src/application.cpp:565
 msgid "Show available presets."
 msgstr "Ukázat dostupná přednastavení."
 

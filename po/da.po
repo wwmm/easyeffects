@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-22 14:20+0000\n"
+"POT-Creation-Date: 2023-06-10 22:29+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1464,7 +1464,7 @@ msgstr "Forindstil Autolæsning"
 msgid "Output Devices"
 msgstr "Udgangsenheder"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:244
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
 msgid "Output Presets"
 msgstr "Udgangsforindstillinger"
 
@@ -1484,7 +1484,7 @@ msgstr "Udgangsautolæsingsforindstillinger Liste"
 msgid "Input Devices"
 msgstr "Indgangsenheder"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:252
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
 msgid "Input Presets"
 msgstr "Indgangsforindstillinger"
 
@@ -2098,34 +2098,34 @@ msgstr ""
 msgid "channels"
 msgstr "Kanaler"
 
-#: src/application.cpp:441
+#: src/application.cpp:460
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:531
+#: src/application.cpp:550
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Afslut EasyEffects. Nyttigt når man kører i servicetilstand."
 
-#: src/application.cpp:534
+#: src/application.cpp:553
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Indlæs en forindstilling. Eksempelvis: easyeffects -l music"
 
-#: src/application.cpp:537
+#: src/application.cpp:556
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Nustli EasyEffects."
 
-#: src/application.cpp:540
+#: src/application.cpp:559
 msgid "Hide the Window."
 msgstr "Skjul Vinduet."
 
-#: src/application.cpp:543
+#: src/application.cpp:562
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Global Omgåelse. 1 for at aktivere, 2 for at deaktivere og 3 for at få status"
 
-#: src/application.cpp:546
+#: src/application.cpp:565
 msgid "Show available presets."
 msgstr "Vis tilgængelige forindstillinger."
 
