@@ -1,14 +1,30 @@
 # Changelog
  
+## 7.0.5
+### 2023-06-11
+
+
+### Features:
+- A new `Level Meter` plugin based on `libebur128` has been added.
+- The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubbernand are not going to happen anymore.
+- Improved compatibility with recent PipeWire versions. More information at https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3196
+
+### Bug fixes:
+- Active Equalizer filters are not set to `Bell` type anymore when the number of bands changes.
+
+### Other notes:
+- Rabberband is not a dependency anymore since it has been replaced by SoundTouch.
+
+ 
 ## 7.0.4
 ### 2023-05-01
 
- 
+
 ### Features:
 - The presets menu now asks for confirmation before saving/deleting a preset file.
 
 ### Bug fixes:
-- The plugin reset should not make its controls innefective anymore. 
+- The plugin reset should not make its controls innefective anymore.
 
 ### Other notes:
 - Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)
@@ -18,7 +34,7 @@
 ## 7.0.3
 ### 2023-04-06
 
- 
+
 ### Features:
 - Updated translations.
 

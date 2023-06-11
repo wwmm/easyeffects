@@ -50,6 +50,20 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.0.5" date="2023-06-11T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>A new Level Meter plugin based on libebur128 has been added.</li>
+          <li>The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubbernand are not going to happen anymore.</li>
+          <li>Improved compatibility with recent PipeWire versions. More information at</li>
+          <li>Bug fixes:</li>
+          <li>Active Equalizer filters are not set to Bell type anymore when the number of bands changes.</li>
+          <li>Other notes:</li>
+          <li>Rabberband is not a dependency anymore since it has been replaced by SoundTouch.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.0.4" date="2023-05-01T00:00:00Z">
       <description>
         <ul>

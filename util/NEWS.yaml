@@ -2,11 +2,25 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
+Description: 
+- Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 7.0.5
+Date: 2023-06-11
+
 Description:
 - Features∶
 - A new `Level Meter` plugin based on `libebur128` has been added.
-- The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes
-that were happening with Rubbernand are not going to happen anymore.
+- The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubbernand are not going to happen anymore.
+- Improved compatibility with recent PipeWire versions. More information at https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3196
 
 - Bug fixes∶
 - Active Equalizer filters are not set to `Bell` type anymore when the number of bands changes.
