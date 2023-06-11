@@ -61,13 +61,7 @@ Equalizer::Equalizer(const std::string& tag,
                                             using namespace tags::equalizer;
 
                                             for (uint n = 0U; n < self->max_bands; n++) {
-                                              if (n < nbands) {
-                                                g_settings_set_enum(self->settings_left, band_type[n].data(), 1);
-
-                                                if (split) {
-                                                  g_settings_set_enum(self->settings_right, band_type[n].data(), 1);
-                                                }
-                                              } else {
+                                              if (n >= nbands) {
                                                 // turn off unused bands
                                                 g_settings_set_enum(self->settings_left, band_type[n].data(), 0);
 
