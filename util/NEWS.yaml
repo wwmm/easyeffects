@@ -9,7 +9,7 @@ Description:
 that were happening with Rubbernand are not going to happen anymore.
 
 - Bug fixes∶
--
+- Active Equalizer filters are not set to `Bell` type anymore when the number of bands changes.
 
 - Other notes∶
 - Rabberband is not a dependency anymore since it has been replaced by SoundTouch.
