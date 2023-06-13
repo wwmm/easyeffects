@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-11 19:58-0300\n"
-"PO-Revision-Date: 2023-05-02 16:49+0000\n"
+"PO-Revision-Date: 2023-06-14 04:51+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -124,7 +124,7 @@ msgstr "Fonctionnalités :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid "A new Level Meter plugin based on libebur128 has been added."
-msgstr ""
+msgstr "Un nouveau greffon 'Level Meter' basé sur libebur128 a été ajouté."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
@@ -132,11 +132,16 @@ msgid ""
 "Hopefully some of the mysterious crashes that were happening with Rubbernand "
 "are not going to happen anymore."
 msgstr ""
+"Le greffon Hauteur utilise maintenant la bibliothèque SoundTouch au lieu de "
+"Rubberband. Il est à espérer que certains des crashs mystérieux qui se "
+"produisaient avec Rubbernand ne se produiront plus."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
 "Improved compatibility with recent PipeWire versions. More information at"
 msgstr ""
+"Compatibilité améliorée avec les versions récentes de PipeWire. Plus "
+"d'informations à l'adresse suivante"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
@@ -170,6 +175,8 @@ msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
 msgstr ""
+"Les filtres de l'égaliseur actif ne sont plus réglés sur le type Bell "
+"lorsque le nombre de bandes change."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -188,6 +195,8 @@ msgid ""
 "Rabberband is not a dependency anymore since it has been replaced by "
 "SoundTouch."
 msgstr ""
+"Rabberband n'est plus une dépendance depuis qu'il a été remplacé par "
+"SoundTouch."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid ""
