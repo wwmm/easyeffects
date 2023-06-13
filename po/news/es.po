@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-11 19:58-0300\n"
-"PO-Revision-Date: 2023-05-02 16:49+0000\n"
+"PO-Revision-Date: 2023-06-13 10:49+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -126,6 +126,7 @@ msgstr "Características:"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid "A new Level Meter plugin based on libebur128 has been added."
 msgstr ""
+"Se ha agregado un nuevo complemento de medidor de nivel basado en libebur128."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
@@ -133,11 +134,16 @@ msgid ""
 "Hopefully some of the mysterious crashes that were happening with Rubbernand "
 "are not going to happen anymore."
 msgstr ""
+"El complemento Pitch ahora usa la biblioteca SoundTouch en lugar de "
+"Rubberband. Con suerte, algunos de los errores raros que estaban ocurriendo "
+"con Rubbernand no volverán a suceder."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
 "Improved compatibility with recent PipeWire versions. More information at"
 msgstr ""
+"Compatibilidad mejorada con las versiones recientes de PipeWire. Mas "
+"información en"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
@@ -171,6 +177,8 @@ msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
 msgstr ""
+"Los filtros del ecualizador que está activo ya no se configuran en tipo Bell "
+"cuando cambia el número de bandas."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -189,6 +197,7 @@ msgid ""
 "Rabberband is not a dependency anymore since it has been replaced by "
 "SoundTouch."
 msgstr ""
+"Rabberband ya no es una dependencia desde que fue reemplazada por SoundTouch."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid ""
