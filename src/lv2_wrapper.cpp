@@ -425,7 +425,15 @@ void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) 
     const LilvNode* binary_node = lilv_ui_get_binary_uri(ui);
     const LilvNode* bundle_node = lilv_ui_get_bundle_uri(ui);
 
-    void* libhandle = dlopen(lilv_file_uri_parse(lilv_node_as_string(binary_node), nullptr), RTLD_NOW | RTLD_LOCAL);
+    void* libhandle = nullptr;
+
+    {
+      auto path = lilv_file_uri_parse(lilv_node_as_string(binary_node), nullptr);
+
+      libhandle = dlopen(path, RTLD_NOW | RTLD_LOCAL);
+
+      lilv_free(path);
+    }
 
     if (libhandle == nullptr) {
       continue;
@@ -481,12 +489,15 @@ void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) 
 
       LV2UI_Widget widget = nullptr;
 
+      auto bundle_path = lilv_file_uri_parse(lilv_node_as_string(bundle_node), nullptr);
+
       handle = static_cast<LV2UI_Handle*>(desc->instantiate(
-          desc, lilv_node_as_uri(lilv_plugin_get_uri(plugin)),
-          lilv_file_uri_parse(lilv_node_as_string(bundle_node), nullptr),
+          desc, lilv_node_as_uri(lilv_plugin_get_uri(plugin)), bundle_path,
           +[](LV2UI_Controller controller, uint32_t port_index, uint32_t buffer_size, uint32_t port_protocol,
               const void* buffer) { util::warning("controller callback"); },
           this, &widget, features.data()));
+
+      lilv_free(bundle_path);
 
       if (handle == nullptr) {
         continue;
