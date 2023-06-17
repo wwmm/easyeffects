@@ -24,6 +24,8 @@ namespace lv2 {
 constexpr auto min_quantum = 32;
 constexpr auto max_quantum = 8192;
 
+using namespace std::string_literals;
+
 auto lv2_printf(LV2_Log_Handle handle, LV2_URID type, const char* format, ...) -> int {
   va_list args;
 
@@ -229,6 +231,8 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   connect_control_ports();
 
+  // util::idle_add([=, this]() { get_native_ui(features); });
+
   activate();
 
   return true;
@@ -246,6 +250,10 @@ void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
                                     std::span<float>& right_in,
                                     std::span<float>& left_out,
                                     std::span<float>& right_out) {
+  if (instance == nullptr) {
+    return;
+  }
+
   int count_input = 0;
   int count_output = 0;
 
@@ -278,6 +286,10 @@ void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
                                     std::span<float>& right_out,
                                     std::span<float>& probe_left,
                                     std::span<float>& probe_right) {
+  if (instance == nullptr) {
+    return;
+  }
+
   int count_input = 0;
   int count_output = 0;
 
@@ -385,6 +397,114 @@ auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {
   map_urid_to_uri[hash] = uri;
 
   return static_cast<LV2_URID>(hash);
+}
+
+void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) {
+  LilvUIs* uis = lilv_plugin_get_uis(plugin);
+
+  if (uis == nullptr) {
+    return;
+  }
+
+  /*
+    Code based on
+    https://github.com/moddevices/mod-host/blob/f36bce78eed80f4f7194c923afd4dcae2c80bc79/src/effects.c#L8203
+  */
+
+  LILV_FOREACH(uis, u, uis) {
+    const LilvUI* ui = lilv_uis_get(uis, u);
+
+    std::string ui_uri = lilv_node_as_uri(lilv_ui_get_uri(ui));
+
+    if (ui_uri.ends_with("gtk2-gui")) {
+      continue;
+    }
+
+    util::debug(plugin_uri + " ui uri: "s + ui_uri);
+
+    const LilvNode* binary_node = lilv_ui_get_binary_uri(ui);
+    const LilvNode* bundle_node = lilv_ui_get_bundle_uri(ui);
+
+    void* libhandle = dlopen(lilv_file_uri_parse(lilv_node_as_string(binary_node), nullptr), RTLD_NOW | RTLD_LOCAL);
+
+    if (libhandle == nullptr) {
+      continue;
+    }
+
+    auto descfn = reinterpret_cast<LV2UI_DescriptorFunction>(dlsym(libhandle, "lv2ui_descriptor"));
+
+    if (descfn == nullptr) {
+      dlclose(libhandle);
+
+      continue;
+    }
+
+    LV2UI_Handle* handle = nullptr;
+
+    const LV2UI_Descriptor* desc = nullptr;
+    const LV2UI_Idle_Interface* idle_iface = nullptr;
+    const LV2UI_Show_Interface* show_iface = nullptr;
+
+    uint32_t index = 0;
+
+    while ((desc = descfn(index++)) != nullptr) {
+      if (desc->extension_data == nullptr) {
+        continue;
+      }
+
+      idle_iface = static_cast<const LV2UI_Idle_Interface*>(desc->extension_data(LV2_UI__idleInterface));
+      show_iface = static_cast<const LV2UI_Show_Interface*>(desc->extension_data(LV2_UI__showInterface));
+
+      if (idle_iface == nullptr) {
+        continue;
+      }
+
+      if (show_iface == nullptr) {
+        // continue;
+      }
+
+      LV2_Extension_Data_Feature extension_data = {instance->lv2_descriptor->extension_data};
+
+      const LV2_Feature feature_dataAccess = {LV2_DATA_ACCESS_URI, &extension_data};
+
+      const LV2_Feature feature_instAccess = {LV2_INSTANCE_ACCESS_URI, instance->lv2_handle};
+
+      std::array<const LV2_Feature*, base_features.size() + 2> features;
+
+      for (size_t n = 0; n < base_features.size(); n++) {
+        features[n] = base_features[n];
+      }
+
+      features[features.size() - 3] = &feature_dataAccess;
+      features[features.size() - 2] = &feature_instAccess;
+      features[features.size() - 1] = nullptr;
+
+      LV2UI_Widget widget = nullptr;
+
+      handle = static_cast<LV2UI_Handle*>(desc->instantiate(
+          desc, lilv_node_as_uri(lilv_plugin_get_uri(plugin)),
+          lilv_file_uri_parse(lilv_node_as_string(bundle_node), nullptr),
+          +[](LV2UI_Controller controller, uint32_t port_index, uint32_t buffer_size, uint32_t port_protocol,
+              const void* buffer) { util::warning("controller callback"); },
+          this, &widget, features.data()));
+
+      if (handle == nullptr) {
+        continue;
+      }
+
+      util::warning("found ui handle for" + ui_uri);
+
+      if (show_iface != nullptr) {
+        if (show_iface->show(handle) != 0) {
+          util::warning("failed to show ui for " + ui_uri);
+        }
+      }
+
+      break;
+    }
+  }
+
+  lilv_uis_free(uis);
 }
 
 }  // namespace lv2
