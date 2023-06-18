@@ -407,8 +407,10 @@ void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) 
   }
 
   /*
-    Code based on
+    Code based on:
+
     https://github.com/moddevices/mod-host/blob/f36bce78eed80f4f7194c923afd4dcae2c80bc79/src/effects.c#L8203
+    https://github.com/zrythm/zrythm/blob/1bc89335ca42b83ce759fd4cd0fd518e43b7983d/src/plugins/lv2/lv2_ui.c#L394
   */
 
   LILV_FOREACH(uis, u, uis) {
@@ -477,15 +479,18 @@ void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) 
 
       const LV2_Feature feature_instAccess = {LV2_INSTANCE_ACCESS_URI, instance->lv2_handle};
 
-      std::array<const LV2_Feature*, base_features.size() + 2> features;
+      const LV2_Feature idle_feature = {LV2_UI__idleInterface, nullptr};
+
+      std::array<const LV2_Feature*, base_features.size() + 3> features;
 
       for (size_t n = 0; n < base_features.size(); n++) {
         features[n] = base_features[n];
       }
 
-      features[features.size() - 3] = &feature_dataAccess;
-      features[features.size() - 2] = &feature_instAccess;
       features[features.size() - 1] = nullptr;
+      features[features.size() - 2] = &feature_instAccess;
+      features[features.size() - 3] = &feature_dataAccess;
+      features[features.size() - 4] = &idle_feature;
 
       LV2UI_Widget widget = nullptr;
 
