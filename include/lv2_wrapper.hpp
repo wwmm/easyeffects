@@ -102,6 +102,14 @@ class Lv2Wrapper {
 
   auto has_instance() -> bool;
 
+  void load_ui();
+
+  void notify_ui();
+
+  void update_ui();
+
+  auto has_ui() -> bool;
+
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_bool(GSettings* settings) {
     set_control_port_value(key_wrapper.msg.data(),
@@ -195,6 +203,12 @@ class Lv2Wrapper {
 
   LilvInstance* instance = nullptr;
 
+  LV2UI_Handle* ui_handle = nullptr;
+
+  const LV2UI_Descriptor* ui_descriptor = nullptr;
+
+  const LV2UI_Idle_Interface* idle_iface = nullptr;
+
   uint n_ports = 0U;
   uint n_audio_in = 0U;
   uint n_audio_out = 0U;
@@ -218,7 +232,7 @@ class Lv2Wrapper {
 
   auto map_urid(const std::string& uri) -> LV2_URID;
 
-  void get_native_ui(std::array<const LV2_Feature*, 6> base_features);
+  auto create_ui_features() -> std::array<const LV2_Feature*, 9>;
 };
 
 }  // namespace lv2

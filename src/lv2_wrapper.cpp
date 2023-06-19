@@ -231,8 +231,6 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   connect_control_ports();
 
-  // util::idle_add([=, this]() { get_native_ui(features); });
-
   activate();
 
   return true;
@@ -399,7 +397,61 @@ auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {
   return static_cast<LV2_URID>(hash);
 }
 
-void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) {
+auto Lv2Wrapper::create_ui_features() -> std::array<const LV2_Feature*, 9> {
+  LV2_Log_Log lv2_log = {this, &lv2_printf, [](LV2_Log_Handle handle, LV2_URID type, const char* fmt, va_list ap) {
+                           return std::vprintf(fmt, ap);
+                         }};
+
+  LV2_URID_Map lv2_map = {this, [](LV2_URID_Map_Handle handle, const char* uri) {
+                            auto* lw = static_cast<Lv2Wrapper*>(handle);
+
+                            return lw->map_urid(uri);
+                          }};
+
+  LV2_URID_Unmap lv2_unmap = {this, [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
+                                auto* lw = static_cast<Lv2Wrapper*>(handle);
+
+                                return lw->map_urid_to_uri[urid].c_str();
+                              }};
+
+  const LV2_Feature lv2_log_feature = {LV2_LOG__log, &lv2_log};
+
+  const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
+
+  const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
+
+  auto options = std::to_array<LV2_Options_Option>(
+      {{LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate), sizeof(float), map_urid(LV2_ATOM__Float), &rate},
+       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__minBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
+        &min_quantum},
+       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__maxBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
+        &max_quantum},
+       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__nominalBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
+        &n_samples},
+       {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}});
+
+  LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
+
+  LV2_Extension_Data_Feature extension_data = {instance->lv2_descriptor->extension_data};
+
+  const LV2_Feature feature_dataAccess = {LV2_DATA_ACCESS_URI, &extension_data};
+
+  const LV2_Feature feature_instAccess = {LV2_INSTANCE_ACCESS_URI, instance->lv2_handle};
+
+  const LV2_Feature idle_feature = {LV2_UI__idleInterface, nullptr};
+
+  const auto features = std::to_array<const LV2_Feature*>(
+      {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, static_features.data(),
+       &feature_dataAccess, &feature_instAccess, &idle_feature, nullptr});
+
+  return features;
+}
+
+void Lv2Wrapper::load_ui() {
+  if (instance == nullptr) {
+    return;
+  }
+
   LilvUIs* uis = lilv_plugin_get_uis(plugin);
 
   if (uis == nullptr) {
@@ -449,21 +501,17 @@ void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) 
       continue;
     }
 
-    LV2UI_Handle* handle = nullptr;
-
-    const LV2UI_Descriptor* desc = nullptr;
-    const LV2UI_Idle_Interface* idle_iface = nullptr;
     const LV2UI_Show_Interface* show_iface = nullptr;
 
     uint32_t index = 0;
 
-    while ((desc = descfn(index++)) != nullptr) {
-      if (desc->extension_data == nullptr || desc->URI != ui_uri) {
+    while ((ui_descriptor = descfn(index++)) != nullptr) {
+      if (ui_descriptor->extension_data == nullptr || ui_descriptor->URI != ui_uri) {
         continue;
       }
 
-      idle_iface = static_cast<const LV2UI_Idle_Interface*>(desc->extension_data(LV2_UI__idleInterface));
-      show_iface = static_cast<const LV2UI_Show_Interface*>(desc->extension_data(LV2_UI__showInterface));
+      idle_iface = static_cast<const LV2UI_Idle_Interface*>(ui_descriptor->extension_data(LV2_UI__idleInterface));
+      show_iface = static_cast<const LV2UI_Show_Interface*>(ui_descriptor->extension_data(LV2_UI__showInterface));
 
       if (idle_iface == nullptr) {
         continue;
@@ -473,59 +521,36 @@ void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) 
         // continue;
       }
 
-      LV2_Extension_Data_Feature extension_data = {instance->lv2_descriptor->extension_data};
-
-      const LV2_Feature feature_dataAccess = {LV2_DATA_ACCESS_URI, &extension_data};
-
-      const LV2_Feature feature_instAccess = {LV2_INSTANCE_ACCESS_URI, instance->lv2_handle};
-
-      const LV2_Feature idle_feature = {LV2_UI__idleInterface, nullptr};
-
-      std::array<const LV2_Feature*, base_features.size() + 3> features;
-
-      for (size_t n = 0; n < base_features.size(); n++) {
-        features[n] = base_features[n];
-      }
-
-      features[features.size() - 1] = nullptr;
-      features[features.size() - 2] = &feature_instAccess;
-      features[features.size() - 3] = &feature_dataAccess;
-      features[features.size() - 4] = &idle_feature;
+      auto features = create_ui_features();
 
       LV2UI_Widget widget = nullptr;
 
       auto bundle_path = lilv_file_uri_parse(lilv_node_as_string(bundle_node), nullptr);
 
-      handle = static_cast<LV2UI_Handle*>(desc->instantiate(
-          desc, plugin_uri.c_str(), bundle_path,
+      ui_handle = static_cast<LV2UI_Handle*>(ui_descriptor->instantiate(
+          ui_descriptor, plugin_uri.c_str(), bundle_path,
           +[](LV2UI_Controller controller, uint32_t port_index, uint32_t buffer_size, uint32_t port_protocol,
-              const void* buffer) { util::warning("controller callback"); },
+              const void* buffer) {
+            // auto self = static_cast<Lv2Wrapper*>(controller);
+
+            // for (const auto& p : self->ports) {
+            //   if (p.index == port_index) {
+            //     util::warning("The user clicked on port: " + p.name);
+            //   }
+            // }
+          },
           this, &widget, features.data()));
 
       lilv_free(bundle_path);
 
-      if (handle == nullptr) {
+      if (ui_handle == nullptr) {
         continue;
       }
 
       util::warning("found ui handle for" + ui_uri);
 
-      // notify UI of current state
-
-      if (desc->port_event != nullptr) {
-        for (const auto& p : ports) {
-          if (p.type == PortType::TYPE_CONTROL) {
-            desc->port_event(handle, p.index, sizeof(float), 0, &p.value);
-          }
-        }
-      }
-
-      for (int k = 0; k < 3; k++) {
-        idle_iface->idle(handle);
-      }
-
       if (show_iface != nullptr) {
-        if (show_iface->show(handle) != 0) {
+        if (show_iface->show(ui_handle) != 0) {
           util::warning("failed to show ui for " + ui_uri);
         }
       }
@@ -535,6 +560,34 @@ void Lv2Wrapper::get_native_ui(std::array<const LV2_Feature*, 6> base_features) 
   }
 
   lilv_uis_free(uis);
+}
+
+void Lv2Wrapper::notify_ui() {
+  if (ui_descriptor == nullptr || ui_handle == nullptr) {
+    return;
+  }
+
+  if (ui_descriptor->port_event == nullptr) {
+    return;
+  }
+
+  for (const auto& p : ports) {
+    if (p.type == PortType::TYPE_CONTROL) {
+      ui_descriptor->port_event(ui_handle, p.index, sizeof(float), 0, &p.value);
+    }
+  }
+}
+
+void Lv2Wrapper::update_ui() {
+  if (idle_iface == nullptr || ui_handle == nullptr) {
+    return;
+  }
+
+  idle_iface->idle(ui_handle);
+}
+
+auto Lv2Wrapper::has_ui() -> bool {
+  return ui_handle != nullptr;
 }
 
 }  // namespace lv2

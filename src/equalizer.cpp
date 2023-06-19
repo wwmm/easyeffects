@@ -78,6 +78,18 @@ Equalizer::Equalizer(const std::string& tag,
       G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) { self->on_split_channels(); }), this));
 
   setup_input_output_gain();
+
+  // g_timeout_add_seconds(1, GSourceFunc(+[](Equalizer* self) {
+  //                         if (!self->lv2_wrapper->has_ui()) {
+  //                           self->lv2_wrapper->load_ui();
+  //                         } else {
+  //                           self->lv2_wrapper->notify_ui();
+  //                           self->lv2_wrapper->update_ui();
+  //                         }
+
+  //                         return 1;
+  //                       }),
+  //                       this);
 }
 
 Equalizer::~Equalizer() {
