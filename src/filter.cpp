@@ -38,6 +38,18 @@ Filter::Filter(const std::string& tag,
   lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
   setup_input_output_gain();
+
+  // g_timeout_add_seconds(1, GSourceFunc(+[](Filter* self) {
+  //                         if (!self->lv2_wrapper->has_ui()) {
+  //                           self->lv2_wrapper->load_ui();
+  //                         } else {
+  //                           self->lv2_wrapper->notify_ui();
+  //                           self->lv2_wrapper->update_ui();
+  //                         }
+
+  //                         return 1;
+  //                       }),
+  //                       this);
 }
 
 Filter::~Filter() {

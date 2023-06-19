@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-11 19:58-0300\n"
+"POT-Creation-Date: 2023-06-19 20:29-0300\n"
 "PO-Revision-Date: 2023-05-16 09:50+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -198,7 +198,7 @@ msgstr "Ganancia de salida"
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:197
 #: data/ui/echo_canceller.ui:112 data/ui/equalizer.ui:372
 #: data/ui/exciter.ui:262 data/ui/filter.ui:145 data/ui/gate.ui:717
-#: data/ui/gate.ui:1197 data/ui/level_meter.ui:274 data/ui/limiter.ui:740
+#: data/ui/gate.ui:1197 data/ui/level_meter.ui:274 data/ui/limiter.ui:750
 #: data/ui/loudness.ui:140 data/ui/maximizer.ui:109
 #: data/ui/multiband_compressor.ui:462 data/ui/multiband_gate.ui:461
 #: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225
@@ -212,7 +212,7 @@ msgstr "Entrada"
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:443 data/ui/delay.ui:216 data/ui/echo_canceller.ui:131
 #: data/ui/equalizer.ui:391 data/ui/exciter.ui:281 data/ui/filter.ui:164
-#: data/ui/gate.ui:1216 data/ui/limiter.ui:759 data/ui/loudness.ui:159
+#: data/ui/gate.ui:1216 data/ui/limiter.ui:769 data/ui/loudness.ui:159
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:481
 #: data/ui/multiband_gate.ui:480 data/ui/pitch.ui:244 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
@@ -225,7 +225,7 @@ msgstr "Ganancia de entrada del plugin"
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:281
 #: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:456
 #: data/ui/exciter.ui:346 data/ui/filter.ui:229 data/ui/gate.ui:1281
-#: data/ui/limiter.ui:824 data/ui/loudness.ui:224 data/ui/maximizer.ui:193
+#: data/ui/limiter.ui:834 data/ui/loudness.ui:224 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:546 data/ui/multiband_gate.ui:545
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
@@ -238,7 +238,7 @@ msgstr "Salida"
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:527 data/ui/delay.ui:300 data/ui/echo_canceller.ui:215
 #: data/ui/equalizer.ui:475 data/ui/exciter.ui:365 data/ui/filter.ui:248
-#: data/ui/gate.ui:1300 data/ui/limiter.ui:843 data/ui/loudness.ui:243
+#: data/ui/gate.ui:1300 data/ui/limiter.ui:853 data/ui/loudness.ui:243
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:565
 #: data/ui/multiband_gate.ui:564 data/ui/pitch.ui:328 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
@@ -251,7 +251,7 @@ msgstr "Ganancia de salida del plugin"
 #: data/ui/deesser.ui:653 data/ui/delay.ui:366 data/ui/echo_canceller.ui:281
 #: data/ui/equalizer.ui:541 data/ui/equalizer_band.ui:239
 #: data/ui/equalizer_band.ui:310 data/ui/exciter.ui:461 data/ui/filter.ui:314
-#: data/ui/gate.ui:1396 data/ui/limiter.ui:909 data/ui/loudness.ui:309
+#: data/ui/gate.ui:1396 data/ui/limiter.ui:918 data/ui/loudness.ui:309
 #: data/ui/maximizer.ui:310 data/ui/multiband_compressor.ui:631
 #: data/ui/multiband_gate.ui:630 data/ui/pitch.ui:393 data/ui/reverb.ui:535
 #: data/ui/rnnoise.ui:324 data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
@@ -346,7 +346,7 @@ msgstr "Compresor"
 #: data/ui/compressor.ui:53 data/ui/compressor.ui:507 data/ui/compressor.ui:816
 #: data/ui/deesser.ui:68 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:138
 #: data/ui/filter.ui:27 data/ui/gate.ui:640 data/ui/gate.ui:935
-#: data/ui/limiter.ui:46 data/ui/multiband_compressor_band.ui:461
+#: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:461
 #: data/ui/multiband_gate_band.ui:520
 msgid "Mode"
 msgstr "Modo"
@@ -375,8 +375,8 @@ msgstr "Umbral de refuerzo"
 msgid "Boost Amount"
 msgstr "Cantidad de refuerzo"
 
-#: data/ui/compressor.ui:171 data/ui/gate.ui:60 data/ui/limiter.ui:274
-#: data/ui/limiter.ui:497 data/ui/multiband_compressor_band.ui:190
+#: data/ui/compressor.ui:171 data/ui/gate.ui:60 data/ui/limiter.ui:284
+#: data/ui/limiter.ui:507 data/ui/multiband_compressor_band.ui:190
 #: data/ui/multiband_gate_band.ui:144
 msgid "Attack"
 msgstr "Ataque"
@@ -386,7 +386,7 @@ msgid "Time"
 msgstr "Tiempo"
 
 #: data/ui/compressor.ui:192 data/ui/deesser.ui:307 data/ui/gate.ui:153
-#: data/ui/gate.ui:247 data/ui/limiter.ui:358 data/ui/maximizer.ui:50
+#: data/ui/gate.ui:247 data/ui/limiter.ui:368 data/ui/maximizer.ui:50
 #: data/ui/multiband_compressor_band.ui:181 data/ui/multiband_gate_band.ui:237
 #: data/ui/multiband_gate_band.ui:331
 msgid "Threshold"
@@ -401,8 +401,8 @@ msgstr "Tiempo de ataque"
 msgid "Attack Threshold"
 msgstr "Umbral de ataque"
 
-#: data/ui/compressor.ui:247 data/ui/gate.ui:66 data/ui/limiter.ui:316
-#: data/ui/limiter.ui:534 data/ui/maximizer.ui:27
+#: data/ui/compressor.ui:247 data/ui/gate.ui:66 data/ui/limiter.ui:326
+#: data/ui/limiter.ui:544 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:199 data/ui/multiband_gate_band.ui:150
 msgid "Release"
 msgstr "Decaimiento"
@@ -421,7 +421,7 @@ msgstr "Umbral de decaimiento"
 msgid "Ratio"
 msgstr "Ratio (n:1)"
 
-#: data/ui/compressor.ui:341 data/ui/limiter.ui:570
+#: data/ui/compressor.ui:341 data/ui/limiter.ui:580
 #: data/ui/multiband_compressor_band.ui:351
 msgid "Knee"
 msgstr "Rótula"
@@ -552,7 +552,7 @@ msgstr "Preamplificación"
 msgid "Reactivity"
 msgstr "Reactividad"
 
-#: data/ui/compressor.ui:750 data/ui/gate.ui:869 data/ui/limiter.ui:232
+#: data/ui/compressor.ui:750 data/ui/gate.ui:869 data/ui/limiter.ui:242
 #: data/ui/multiband_compressor_band.ui:681 data/ui/multiband_gate_band.ui:738
 msgid "Lookahead"
 msgstr "Anticipación"
@@ -1020,203 +1020,208 @@ msgstr "Actividad de la puerta"
 msgid "True Peak"
 msgstr "Pico real"
 
-#: data/ui/limiter.ui:58
+#: data/ui/limiter.ui:25
+#, fuzzy
+msgid "Show Native Window"
+msgstr "Cerrar la ventana"
+
+#: data/ui/limiter.ui:68
 msgid "Oversampling"
 msgstr "Sobremuestreo"
 
-#: data/ui/limiter.ui:70
+#: data/ui/limiter.ui:80
 msgid "Dither"
 msgstr "Distorsión (Dither)"
 
-#: data/ui/limiter.ui:84
+#: data/ui/limiter.ui:94
 msgid "Herm Thin"
 msgstr "Herm delgado"
 
-#: data/ui/limiter.ui:85
+#: data/ui/limiter.ui:95
 msgid "Herm Wide"
 msgstr "Hermite Amplia (Función cúbica de interpolación de Hermite)"
 
-#: data/ui/limiter.ui:86
+#: data/ui/limiter.ui:96
 msgid "Herm Tail"
 msgstr "Herm cola"
 
-#: data/ui/limiter.ui:87
+#: data/ui/limiter.ui:97
 msgid "Herm Duck"
 msgstr "Herm Pato"
 
-#: data/ui/limiter.ui:88
+#: data/ui/limiter.ui:98
 msgid "Exp Thin"
 msgstr "Exp Delgada"
 
-#: data/ui/limiter.ui:89
+#: data/ui/limiter.ui:99
 msgid "Exp Wide"
 msgstr "Exp amplia"
 
-#: data/ui/limiter.ui:90
+#: data/ui/limiter.ui:100
 msgid "Exp Tail"
 msgstr "Exp cola"
 
-#: data/ui/limiter.ui:91
+#: data/ui/limiter.ui:101
 msgid "Exp Duck"
 msgstr "Exp Pato"
 
-#: data/ui/limiter.ui:92
+#: data/ui/limiter.ui:102
 msgid "Line Thin"
 msgstr "línea fina"
 
-#: data/ui/limiter.ui:93
+#: data/ui/limiter.ui:103
 msgid "Line Wide"
 msgstr "Ancho de línea"
 
-#: data/ui/limiter.ui:94
+#: data/ui/limiter.ui:104
 msgid "Line Tail"
 msgstr "Cola de línea"
 
-#: data/ui/limiter.ui:95
+#: data/ui/limiter.ui:105
 msgid "Line Duck"
 msgstr "Pato de línea"
 
-#: data/ui/limiter.ui:115 data/ui/multiband_compressor.ui:55
+#: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:55
 #: data/ui/multiband_gate.ui:55
 msgid "None"
 msgstr "Ninguno"
 
-#: data/ui/limiter.ui:116
+#: data/ui/limiter.ui:126
 msgid "Half x2(2L)"
 msgstr "Parcial x2(2L)"
 
-#: data/ui/limiter.ui:117
+#: data/ui/limiter.ui:127
 msgid "Half x2(3L)"
 msgstr "Parcial x2(3L)"
 
-#: data/ui/limiter.ui:118
+#: data/ui/limiter.ui:128
 msgid "Half x3(2L)"
 msgstr "Parcial x3(2L)"
 
-#: data/ui/limiter.ui:119
+#: data/ui/limiter.ui:129
 msgid "Half x3(3L)"
 msgstr "Parcial x3(3L)"
 
-#: data/ui/limiter.ui:120
+#: data/ui/limiter.ui:130
 msgid "Half x4(2L)"
 msgstr "Parcial x4(2L)"
 
-#: data/ui/limiter.ui:121
+#: data/ui/limiter.ui:131
 msgid "Half x4(3L)"
 msgstr "Parcial x4(3L)"
 
-#: data/ui/limiter.ui:122
+#: data/ui/limiter.ui:132
 msgid "Half x6(2L)"
 msgstr "Parcial x6(2L)"
 
-#: data/ui/limiter.ui:123
+#: data/ui/limiter.ui:133
 msgid "Half x6(3L)"
 msgstr "Parcial x6(3L)"
 
-#: data/ui/limiter.ui:124
+#: data/ui/limiter.ui:134
 msgid "Half x8(2L)"
 msgstr "Parcial x8(2L)"
 
-#: data/ui/limiter.ui:125
+#: data/ui/limiter.ui:135
 msgid "Half x8(3L)"
 msgstr "Parcial x8(3L)"
 
-#: data/ui/limiter.ui:126
+#: data/ui/limiter.ui:136
 msgid "Full x2(2L)"
 msgstr "Completo x2(2L)"
 
-#: data/ui/limiter.ui:127
+#: data/ui/limiter.ui:137
 msgid "Full x2(3L)"
 msgstr "Completo x2(3L)"
 
-#: data/ui/limiter.ui:128
+#: data/ui/limiter.ui:138
 msgid "Full x3(2L)"
 msgstr "Completo x3(2L)"
 
-#: data/ui/limiter.ui:129
+#: data/ui/limiter.ui:139
 msgid "Full x3(3L)"
 msgstr "Completo x3(3L)"
 
-#: data/ui/limiter.ui:130
+#: data/ui/limiter.ui:140
 msgid "Full x4(2L)"
 msgstr "Completo x4(2L)"
 
-#: data/ui/limiter.ui:131
+#: data/ui/limiter.ui:141
 msgid "Full x4(3L)"
 msgstr "Completo x4(3L)"
 
-#: data/ui/limiter.ui:132
+#: data/ui/limiter.ui:142
 msgid "Full x6(2L)"
 msgstr "Completo x6(2L)"
 
-#: data/ui/limiter.ui:133
+#: data/ui/limiter.ui:143
 msgid "Full x6(3L)"
 msgstr "Completo x6(3L)"
 
-#: data/ui/limiter.ui:134
+#: data/ui/limiter.ui:144
 msgid "Full x8(2L)"
 msgstr "Completo x8(2L)"
 
-#: data/ui/limiter.ui:135
+#: data/ui/limiter.ui:145
 msgid "Full x8(3L)"
 msgstr "Completo x8(3L)"
 
-#: data/ui/limiter.ui:191
+#: data/ui/limiter.ui:201
 msgid "SC PreAmp"
 msgstr "SC PreAmp (Preamplificador)"
 
-#: data/ui/limiter.ui:220 data/ui/multiband_compressor_band.ui:640
+#: data/ui/limiter.ui:230 data/ui/multiband_compressor_band.ui:640
 #: data/ui/multiband_gate_band.ui:698
 msgid "Sidechain PreAmplification"
 msgstr "Preamplificaión de la cadena lateral"
 
-#: data/ui/limiter.ui:395
+#: data/ui/limiter.ui:405
 msgid "Boost"
 msgstr "Refuerzo"
 
-#: data/ui/limiter.ui:410
+#: data/ui/limiter.ui:420
 msgid "Stereo Link"
 msgstr "Enlace estéreo"
 
-#: data/ui/limiter.ui:455 data/ui/multiband_compressor_band.ui:120
+#: data/ui/limiter.ui:465 data/ui/multiband_compressor_band.ui:120
 #: data/ui/multiband_gate_band.ui:89
 msgid "External Sidechain"
 msgstr "Cadena lateral externa"
 
-#: data/ui/limiter.ui:468 data/ui/multiband_compressor.ui:95
+#: data/ui/limiter.ui:478 data/ui/multiband_compressor.ui:95
 #: data/ui/multiband_gate.ui:95
 msgid "External Sidechain Source"
 msgstr "Fuente de la cadena lateral externa"
 
-#: data/ui/limiter.ui:487
+#: data/ui/limiter.ui:497
 msgid "Auto Leveling"
 msgstr "Nivelación automática"
 
-#: data/ui/limiter.ui:527
+#: data/ui/limiter.ui:537
 msgid "Auto Leveling Attack"
 msgstr "Ataque de nivelación automática"
 
-#: data/ui/limiter.ui:563
+#: data/ui/limiter.ui:573
 msgid "Auto Leveling Release"
 msgstr "Decaimiento de nivelación automática"
 
-#: data/ui/limiter.ui:598
+#: data/ui/limiter.ui:608
 msgid "Auto Leveling Knee"
 msgstr "Rótula (transición) de nivelación automática"
 
-#: data/ui/limiter.ui:623
+#: data/ui/limiter.ui:633
 msgid "Gain Left"
 msgstr "Ganancia izquierda"
 
-#: data/ui/limiter.ui:650
+#: data/ui/limiter.ui:660
 msgid "Gain Right"
 msgstr "Ganancia derecha"
 
-#: data/ui/limiter.ui:677
+#: data/ui/limiter.ui:687
 msgid "Sidechain Left"
 msgstr "Cadena lateral izquierda"
 
-#: data/ui/limiter.ui:704
+#: data/ui/limiter.ui:714
 msgid "Sidechain Right"
 msgstr "Cadena lateral derecha"
 

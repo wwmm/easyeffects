@@ -41,6 +41,10 @@ namespace lv2 {
 
 using namespace std::string_literals;
 
+#define LV2_UI_makeResident LV2_UI_PREFIX "makeResident"
+
+#define LV2_UI_makeSONameResident LV2_UI_PREFIX "makeSONameResident"
+
 enum PortType { TYPE_CONTROL, TYPE_AUDIO, TYPE_ATOM };
 
 struct Port {
@@ -109,6 +113,8 @@ class Lv2Wrapper {
   void update_ui();
 
   auto has_ui() -> bool;
+
+  void close_ui();
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_bool(GSettings* settings) {
@@ -209,6 +215,8 @@ class Lv2Wrapper {
 
   const LV2UI_Idle_Interface* idle_iface = nullptr;
 
+  void* libhandle = nullptr;
+
   uint n_ports = 0U;
   uint n_audio_in = 0U;
   uint n_audio_out = 0U;
@@ -232,7 +240,7 @@ class Lv2Wrapper {
 
   auto map_urid(const std::string& uri) -> LV2_URID;
 
-  auto create_ui_features() -> std::array<const LV2_Feature*, 9>;
+  auto create_ui_features() -> std::array<const LV2_Feature*, 14>;
 };
 
 }  // namespace lv2

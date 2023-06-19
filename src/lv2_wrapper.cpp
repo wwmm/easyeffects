@@ -397,7 +397,7 @@ auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {
   return static_cast<LV2_URID>(hash);
 }
 
-auto Lv2Wrapper::create_ui_features() -> std::array<const LV2_Feature*, 9> {
+auto Lv2Wrapper::create_ui_features() -> std::array<const LV2_Feature*, 14> {
   LV2_Log_Log lv2_log = {this, &lv2_printf, [](LV2_Log_Handle handle, LV2_URID type, const char* fmt, va_list ap) {
                            return std::vprintf(fmt, ap);
                          }};
@@ -440,9 +440,20 @@ auto Lv2Wrapper::create_ui_features() -> std::array<const LV2_Feature*, 9> {
 
   const LV2_Feature idle_feature = {LV2_UI__idleInterface, nullptr};
 
+  const LV2_Feature parent_feature = {LV2_UI__parent, nullptr};
+
+  const LV2_Feature fixed_size_feature = {LV2_UI__fixedSize, nullptr};
+
+  const LV2_Feature no_user_resize_feature = {LV2_UI__noUserResize, nullptr};
+
+  const LV2_Feature make_resident_feature = {LV2_UI_makeResident, nullptr};
+
+  const LV2_Feature make_soname_resident_feature = {LV2_UI_makeSONameResident, nullptr};
+
   const auto features = std::to_array<const LV2_Feature*>(
       {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, static_features.data(),
-       &feature_dataAccess, &feature_instAccess, &idle_feature, nullptr});
+       &feature_dataAccess, &feature_instAccess, &idle_feature, &parent_feature, &fixed_size_feature,
+       &no_user_resize_feature, &make_resident_feature, &make_soname_resident_feature, nullptr});
 
   return features;
 }
@@ -470,21 +481,15 @@ void Lv2Wrapper::load_ui() {
 
     std::string ui_uri = lilv_node_as_uri(lilv_ui_get_uri(ui));
 
-    if (ui_uri.ends_with("gtk2-gui")) {
-      continue;
-    }
-
     util::debug(plugin_uri + " ui uri: "s + ui_uri);
 
     const LilvNode* binary_node = lilv_ui_get_binary_uri(ui);
     const LilvNode* bundle_node = lilv_ui_get_bundle_uri(ui);
 
-    void* libhandle = nullptr;
-
     {
       auto path = lilv_file_uri_parse(lilv_node_as_string(binary_node), nullptr);
 
-      libhandle = dlopen(path, RTLD_NOW | RTLD_LOCAL);
+      libhandle = dlopen(path, RTLD_NOW);
 
       lilv_free(path);
     }
@@ -547,7 +552,7 @@ void Lv2Wrapper::load_ui() {
         continue;
       }
 
-      util::warning("found ui handle for" + ui_uri);
+      util::debug("found ui handle for" + ui_uri);
 
       if (show_iface != nullptr) {
         if (show_iface->show(ui_handle) != 0) {
@@ -588,6 +593,20 @@ void Lv2Wrapper::update_ui() {
 
 auto Lv2Wrapper::has_ui() -> bool {
   return ui_handle != nullptr;
+}
+
+void Lv2Wrapper::close_ui() {
+  if (ui_descriptor != nullptr && ui_handle != nullptr) {
+    ui_descriptor->cleanup(ui_handle);
+  }
+
+  if (libhandle != nullptr) {
+    dlclose(libhandle);
+  }
+
+  ui_handle = nullptr;
+  ui_descriptor = nullptr;
+  libhandle = nullptr;
 }
 
 }  // namespace lv2

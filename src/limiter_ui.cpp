@@ -71,6 +71,14 @@ void on_reset(LimiterBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
+void on_show_native_window(LimiterBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    self->data->limiter->show_native_ui();
+  } else {
+    self->data->limiter->close_native_ui();
+  }
+}
+
 void setup_dropdown_input_device(LimiterBox* self) {
   auto* selection = gtk_single_selection_new(G_LIST_MODEL(self->input_devices_model));
 
@@ -360,6 +368,7 @@ void limiter_box_class_init(LimiterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, dropdown_input_devices);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
 }
 
 void limiter_box_init(LimiterBox* self) {

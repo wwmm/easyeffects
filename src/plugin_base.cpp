@@ -421,6 +421,10 @@ auto PluginBase::get_latency_seconds() -> float {
   return 0.0F;
 }
 
+void PluginBase::show_native_ui() {}
+
+void PluginBase::close_native_ui() {}
+
 void PluginBase::get_peaks(const std::span<float>& left_in,
                            const std::span<float>& right_in,
                            std::span<float>& left_out,

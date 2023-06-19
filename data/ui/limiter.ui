@@ -19,6 +19,16 @@
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
                         <child>
+                            <object class="GtkToggleButton">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Show Native Window</property>
+
+                                <signal name="toggled" handler="on_show_native_window" object="LimiterBox" />
+                            </object>
+                        </child>
+
+                        <child>
                             <object class="GtkBox">
                                 <property name="margin-bottom">6</property>
                                 <property name="spacing">12</property>
@@ -898,8 +908,7 @@
 
                                 <!-- Empty placeholder used only for layout reason -->
                                 <child>
-                                    <object class="GtkLabel">
-                                    </object>
+                                    <object class="GtkLabel"> </object>
                                 </child>
 
                                 <child>

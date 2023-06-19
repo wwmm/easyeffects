@@ -44,6 +44,10 @@ class Limiter : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
+  void show_native_ui() override;
+
+  void close_native_ui() override;
+
   sigc::signal<void(const float)> gain_left, gain_right, sidechain_left, sidechain_right;
 
   float gain_l_port_value = 0.0F;

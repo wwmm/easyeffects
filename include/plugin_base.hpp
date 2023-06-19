@@ -125,6 +125,10 @@ class PluginBase {
 
   virtual auto get_latency_seconds() -> float;
 
+  virtual void show_native_ui();
+
+  virtual void close_native_ui();
+
   sigc::signal<void(const float, const float)> input_level;
   sigc::signal<void(const float, const float)> output_level;
   sigc::signal<void()> latency;
