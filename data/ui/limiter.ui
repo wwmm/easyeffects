@@ -20,6 +20,7 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkToggleButton">
+                                <property name="visible">0</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Show Native Window</property>
