@@ -77,6 +77,14 @@ void on_reset(GateBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
+void on_show_native_window(GateBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    self->data->gate->show_native_ui();
+  } else {
+    self->data->gate->close_native_ui();
+  }
+}
+
 auto set_dropdown_sensitive(GateBox* self, const char* active_id) -> gboolean {
   if (g_strcmp0(active_id, "External") == 0) {
     return 1;
@@ -394,6 +402,8 @@ void dispose(GObject* object) {
 
   self->data->gate->set_post_messages(false);
 
+  self->data->gate->close_native_ui();
+
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
@@ -480,6 +490,7 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, dropdown_input_devices);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
   gtk_widget_class_bind_template_callback(widget_class, set_dropdown_sensitive);
 }
 

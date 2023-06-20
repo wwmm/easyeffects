@@ -62,6 +62,14 @@ void on_reset(LoudnessBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
+void on_show_native_window(LoudnessBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    self->data->loudness->show_native_ui();
+  } else {
+    self->data->loudness->close_native_ui();
+  }
+}
+
 void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::string& schema_path) {
   auto serial = get_new_filter_serial();
 
@@ -121,6 +129,8 @@ void dispose(GObject* object) {
 
   self->data->loudness->set_post_messages(false);
 
+  self->data->loudness->close_native_ui();
+
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
@@ -179,6 +189,7 @@ void loudness_box_class_init(LoudnessBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, clipping_range);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
 }
 
 void loudness_box_init(LoudnessBox* self) {
