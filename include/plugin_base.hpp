@@ -112,6 +112,8 @@ class PluginBase {
 
   void close_native_ui();
 
+  void set_native_ui_update_frequency(const uint& value);
+
   virtual void setup();
 
   virtual void process(std::span<float>& left_in,

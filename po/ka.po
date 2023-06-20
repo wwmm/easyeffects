@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 20:29-0300\n"
+"POT-Creation-Date: 2023-06-20 12:15-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1646,15 +1646,19 @@ msgstr ""
 msgid "Update Interval (Level Meters and Spectrum)"
 msgstr ""
 
-#: data/ui/preferences_general.ui:138 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:136
+msgid "Update Frequency (LV2 Plugins)"
+msgstr ""
+
+#: data/ui/preferences_general.ui:161 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "სტილი"
 
-#: data/ui/preferences_general.ui:141
+#: data/ui/preferences_general.ui:164
 msgid "Use Dark Theme"
 msgstr ""
 
-#: data/ui/preferences_general.ui:153
+#: data/ui/preferences_general.ui:176
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 

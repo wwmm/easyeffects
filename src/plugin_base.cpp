@@ -439,6 +439,14 @@ void PluginBase::close_native_ui() {
   lv2_wrapper->close_ui();
 }
 
+void PluginBase::set_native_ui_update_frequency(const uint& value) {
+  if (lv2_wrapper == nullptr) {
+    return;
+  }
+
+  lv2_wrapper->set_ui_update_rate(value);
+}
+
 void PluginBase::get_peaks(const std::span<float>& left_in,
                            const std::span<float>& right_in,
                            std::span<float>& left_out,

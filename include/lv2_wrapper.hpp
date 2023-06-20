@@ -221,8 +221,6 @@ class Lv2Wrapper {
 
   void* libhandle = nullptr;
 
-  bool ui_ready = false;
-
   uint n_ports = 0U;
   uint n_audio_in = 0U;
   uint n_audio_out = 0U;
