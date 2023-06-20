@@ -25,7 +25,7 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
-  uint serial = 0;
+  uint serial = 0U;
 
   std::shared_ptr<Exciter> exciter;
 

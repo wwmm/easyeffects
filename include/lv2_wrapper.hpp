@@ -229,7 +229,7 @@ class Lv2Wrapper {
 
   uint rate = 0U;
 
-  uint ui_update_rate = 30;
+  uint ui_update_rate = 30U;
 
   std::vector<Port> ports;
 

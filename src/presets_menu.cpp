@@ -381,7 +381,7 @@ void setup(PresetsMenu* self, app::Application* application) {
           return;
         }
 
-        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
           if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
             return;
           }
@@ -398,7 +398,7 @@ void setup(PresetsMenu* self, app::Application* application) {
           return;
         }
 
-        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
           if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
             gtk_string_list_remove(self->output_string_list, n);
 
@@ -415,7 +415,7 @@ void setup(PresetsMenu* self, app::Application* application) {
           return;
         }
 
-        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
           if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
             return;
           }
@@ -432,7 +432,7 @@ void setup(PresetsMenu* self, app::Application* application) {
           return;
         }
 
-        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
           if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
             gtk_string_list_remove(self->input_string_list, n);
 

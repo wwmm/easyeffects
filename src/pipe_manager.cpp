@@ -1662,7 +1662,7 @@ void PipeManager::set_node_mute(pw_proxy* proxy, const bool& state) {
 }
 
 auto PipeManager::count_node_ports(const uint& node_id) -> uint {
-  uint count = 0;
+  uint count = 0U;
 
   for (const auto& port : list_ports) {
     if (port.node_id == node_id) {

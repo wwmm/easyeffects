@@ -201,7 +201,7 @@ class Crystalizer : public PluginBase {
       data_left[m] = 0.0F;
       data_right[m] = 0.0F;
 
-      for (uint n = 0; n < nbands; n++) {
+      for (uint n = 0U; n < nbands; n++) {
         if (!band_mute.at(n)) {
           data_left[m] += band_data_L.at(n)[m];
           data_right[m] += band_data_R.at(n)[m];

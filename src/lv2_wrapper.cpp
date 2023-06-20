@@ -453,7 +453,7 @@ void Lv2Wrapper::load_ui() {
 
         const LV2UI_Show_Interface* show_iface = nullptr;
 
-        uint32_t index = 0;
+        uint32_t index = 0U;
 
         while ((ui_descriptor = descfn(index++)) != nullptr) {
           if (ui_descriptor->extension_data == nullptr || ui_descriptor->URI != ui_uri) {

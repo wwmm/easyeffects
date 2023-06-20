@@ -37,7 +37,7 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
-  uint serial = 0;
+  uint serial = 0U;
 
   app::Application* application;
 
@@ -255,7 +255,7 @@ void setup(RNNoiseBox* self,
 
         int standard_model_id = 0;
 
-        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->selection_model)); n++) {
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->selection_model)); n++) {
           auto item = g_list_model_get_item(G_LIST_MODEL(self->selection_model), n);
 
           const std::string model_name = gtk_string_object_get_string(GTK_STRING_OBJECT(item));
@@ -407,7 +407,7 @@ void rnnoise_box_init(RNNoiseBox* self) {
 
                      switch (event_type) {
                        case G_FILE_MONITOR_EVENT_CREATED: {
-                         for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
+                         for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
                            if (rnn_filename == gtk_string_list_get_string(self->string_list, n)) {
                              return;
                            }
@@ -419,7 +419,7 @@ void rnnoise_box_init(RNNoiseBox* self) {
                        }
 
                        case G_FILE_MONITOR_EVENT_DELETED: {
-                         for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
+                         for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
                            if (rnn_filename == gtk_string_list_get_string(self->string_list, n)) {
                              gtk_string_list_remove(self->string_list, n);
 
