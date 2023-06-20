@@ -79,9 +79,9 @@ Limiter::Limiter(const std::string& tag,
 
   setup_input_output_gain();
 
-  g_timeout_add_seconds(1, GSourceFunc(+[](Limiter* self) {
-                          std::scoped_lock<std::mutex> lock(self->data_mutex);
+  // This is not ideal... A better approach has to be implemented...
 
+  g_timeout_add_seconds(1, GSourceFunc(+[](Limiter* self) {
                           if (self->lv2_wrapper->has_ui()) {
                             self->lv2_wrapper->notify_ui();
                             self->lv2_wrapper->update_ui();
@@ -218,15 +218,11 @@ auto Limiter::get_latency_seconds() -> float {
 }
 
 void Limiter::show_native_ui() {
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
   if (!lv2_wrapper->has_ui()) {
     lv2_wrapper->load_ui();
   }
 }
 
 void Limiter::close_native_ui() {
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
   lv2_wrapper->close_ui();
 }

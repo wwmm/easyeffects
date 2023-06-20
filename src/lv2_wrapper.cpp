@@ -397,67 +397,6 @@ auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {
   return static_cast<LV2_URID>(hash);
 }
 
-auto Lv2Wrapper::create_ui_features() -> std::array<const LV2_Feature*, 14> {
-  LV2_Log_Log lv2_log = {this, &lv2_printf, [](LV2_Log_Handle handle, LV2_URID type, const char* fmt, va_list ap) {
-                           return std::vprintf(fmt, ap);
-                         }};
-
-  LV2_URID_Map lv2_map = {this, [](LV2_URID_Map_Handle handle, const char* uri) {
-                            auto* lw = static_cast<Lv2Wrapper*>(handle);
-
-                            return lw->map_urid(uri);
-                          }};
-
-  LV2_URID_Unmap lv2_unmap = {this, [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
-                                auto* lw = static_cast<Lv2Wrapper*>(handle);
-
-                                return lw->map_urid_to_uri[urid].c_str();
-                              }};
-
-  const LV2_Feature lv2_log_feature = {LV2_LOG__log, &lv2_log};
-
-  const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
-
-  const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
-
-  auto options = std::to_array<LV2_Options_Option>(
-      {{LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate), sizeof(float), map_urid(LV2_ATOM__Float), &rate},
-       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__minBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
-        &min_quantum},
-       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__maxBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
-        &max_quantum},
-       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__nominalBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
-        &n_samples},
-       {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}});
-
-  LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
-
-  LV2_Extension_Data_Feature extension_data = {instance->lv2_descriptor->extension_data};
-
-  const LV2_Feature feature_dataAccess = {LV2_DATA_ACCESS_URI, &extension_data};
-
-  const LV2_Feature feature_instAccess = {LV2_INSTANCE_ACCESS_URI, instance->lv2_handle};
-
-  const LV2_Feature idle_feature = {LV2_UI__idleInterface, nullptr};
-
-  const LV2_Feature parent_feature = {LV2_UI__parent, nullptr};
-
-  const LV2_Feature fixed_size_feature = {LV2_UI__fixedSize, nullptr};
-
-  const LV2_Feature no_user_resize_feature = {LV2_UI__noUserResize, nullptr};
-
-  const LV2_Feature make_resident_feature = {LV2_UI_makeResident, nullptr};
-
-  const LV2_Feature make_soname_resident_feature = {LV2_UI_makeSONameResident, nullptr};
-
-  const auto features = std::to_array<const LV2_Feature*>(
-      {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, static_features.data(),
-       &feature_dataAccess, &feature_instAccess, &idle_feature, &parent_feature, &fixed_size_feature,
-       &no_user_resize_feature, &make_resident_feature, &make_soname_resident_feature, nullptr});
-
-  return features;
-}
-
 void Lv2Wrapper::load_ui() {
   if (instance == nullptr) {
     return;
@@ -487,7 +426,7 @@ void Lv2Wrapper::load_ui() {
     const LilvNode* bundle_node = lilv_ui_get_bundle_uri(ui);
 
     {
-      auto path = lilv_file_uri_parse(lilv_node_as_string(binary_node), nullptr);
+      auto path = lilv_file_uri_parse(lilv_node_as_uri(binary_node), nullptr);
 
       libhandle = dlopen(path, RTLD_NOW);
 
@@ -522,17 +461,71 @@ void Lv2Wrapper::load_ui() {
         continue;
       }
 
-      if (show_iface == nullptr) {
-        // continue;
-      }
+      // initializing features
 
-      auto features = create_ui_features();
+      LV2_Log_Log lv2_log = {this, &lv2_printf, [](LV2_Log_Handle handle, LV2_URID type, const char* fmt, va_list ap) {
+                               return std::vprintf(fmt, ap);
+                             }};
+
+      LV2_URID_Map lv2_map = {this, [](LV2_URID_Map_Handle handle, const char* uri) {
+                                auto* lw = static_cast<Lv2Wrapper*>(handle);
+
+                                return lw->map_urid(uri);
+                              }};
+
+      LV2_URID_Unmap lv2_unmap = {this, [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
+                                    auto* lw = static_cast<Lv2Wrapper*>(handle);
+
+                                    return lw->map_urid_to_uri[urid].c_str();
+                                  }};
+
+      const LV2_Feature lv2_log_feature = {LV2_LOG__log, &lv2_log};
+
+      const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
+
+      const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
+
+      auto options =
+          std::to_array<LV2_Options_Option>({{LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate),
+                                              sizeof(float), map_urid(LV2_ATOM__Float), &rate},
+                                             {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__minBlockLength),
+                                              sizeof(int32_t), map_urid(LV2_ATOM__Int), &min_quantum},
+                                             {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__maxBlockLength),
+                                              sizeof(int32_t), map_urid(LV2_ATOM__Int), &max_quantum},
+                                             {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__nominalBlockLength),
+                                              sizeof(int32_t), map_urid(LV2_ATOM__Int), &n_samples},
+                                             {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}});
+
+      LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
+
+      LV2_Extension_Data_Feature extension_data = {instance->lv2_descriptor->extension_data};
+
+      const LV2_Feature feature_dataAccess = {LV2_DATA_ACCESS_URI, &extension_data};
+
+      const LV2_Feature feature_instAccess = {LV2_INSTANCE_ACCESS_URI, instance->lv2_handle};
+
+      const LV2_Feature idle_feature = {LV2_UI__idleInterface, nullptr};
+
+      const LV2_Feature parent_feature = {LV2_UI__parent, nullptr};
+
+      const LV2_Feature fixed_size_feature = {LV2_UI__fixedSize, nullptr};
+
+      const LV2_Feature no_user_resize_feature = {LV2_UI__noUserResize, nullptr};
+
+      const LV2_Feature make_resident_feature = {LV2_UI_makeResident, nullptr};
+
+      const LV2_Feature make_soname_resident_feature = {LV2_UI_makeSONameResident, nullptr};
+
+      const auto features = std::to_array<const LV2_Feature*>(
+          {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, static_features.data(),
+           &feature_dataAccess, &feature_instAccess, &idle_feature, &parent_feature, &fixed_size_feature,
+           &no_user_resize_feature, &make_resident_feature, &make_soname_resident_feature, nullptr});
 
       LV2UI_Widget widget = nullptr;
 
-      auto bundle_path = lilv_file_uri_parse(lilv_node_as_string(bundle_node), nullptr);
+      auto bundle_path = lilv_file_uri_parse(lilv_node_as_uri(bundle_node), nullptr);
 
-      ui_handle = static_cast<LV2UI_Handle*>(ui_descriptor->instantiate(
+      ui_handle = ui_descriptor->instantiate(
           ui_descriptor, plugin_uri.c_str(), bundle_path,
           +[](LV2UI_Controller controller, uint32_t port_index, uint32_t buffer_size, uint32_t port_protocol,
               const void* buffer) {
@@ -544,7 +537,7 @@ void Lv2Wrapper::load_ui() {
             //   }
             // }
           },
-          this, &widget, features.data()));
+          this, &widget, features.data());
 
       lilv_free(bundle_path);
 

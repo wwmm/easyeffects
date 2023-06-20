@@ -209,7 +209,7 @@ class Lv2Wrapper {
 
   LilvInstance* instance = nullptr;
 
-  LV2UI_Handle* ui_handle = nullptr;
+  LV2UI_Handle ui_handle = nullptr;
 
   const LV2UI_Descriptor* ui_descriptor = nullptr;
 
@@ -239,8 +239,6 @@ class Lv2Wrapper {
   void connect_control_ports();
 
   auto map_urid(const std::string& uri) -> LV2_URID;
-
-  auto create_ui_features() -> std::array<const LV2_Feature*, 14>;
 };
 
 }  // namespace lv2
