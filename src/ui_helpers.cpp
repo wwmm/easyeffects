@@ -21,7 +21,7 @@
 
 namespace {
 
-uint widget_serial = 0;
+uint widget_serial = 0U;
 
 std::locale user_locale;
 

@@ -27,7 +27,7 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
-  uint serial = 0;
+  uint serial = 0U;
 
   std::shared_ptr<MultibandCompressor> multiband_compressor;
 
@@ -94,7 +94,7 @@ void set_dropdown_input_devices_sensitivity(MultibandCompressorBox* self) {
 }
 
 void create_bands(MultibandCompressorBox* self) {
-  for (uint n = 0; n < tags::multiband_compressor::n_bands; n++) {
+  for (uint n = 0U; n < tags::multiband_compressor::n_bands; n++) {
     auto* band_box = ui::multiband_compressor_band_box::create();
 
     ui::multiband_compressor_band_box::setup(band_box, self->settings, n);

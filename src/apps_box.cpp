@@ -69,7 +69,7 @@ void update_empty_list_overlay(AppsBox* self) {
 void on_app_added(AppsBox* self, const NodeInfo& node_info) {
   // do not add the same stream twice
 
-  for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
     auto* holder =
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
@@ -103,7 +103,7 @@ void on_app_added(AppsBox* self, const NodeInfo& node_info) {
 }
 
 void on_app_removed(AppsBox* self, const uint64_t serial) {
-  for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
     auto* holder =
         static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
@@ -120,7 +120,7 @@ void on_app_removed(AppsBox* self, const uint64_t serial) {
     g_object_unref(holder);
   }
 
-  for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
+  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
     if (holder->info->serial == serial) {
@@ -140,7 +140,7 @@ void on_app_removed(AppsBox* self, const uint64_t serial) {
 }
 
 void on_app_changed(AppsBox* self, const NodeInfo node_info) {
-  for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
+  for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)); n++) {
     auto* holder = static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->apps_model), n));
 
     if (holder->info->serial == node_info.serial) {
@@ -290,7 +290,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
 
         g_list_store_remove_all(self->apps_model);
 
-        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
           auto* holder =
               static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 
@@ -339,7 +339,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
         g_list_store_remove_all(self->apps_model);
 
         if (show_blocklisted_apps) {
-          for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
             auto item = g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n);
 
             g_object_unref(item);
@@ -347,7 +347,7 @@ void setup(AppsBox* self, app::Application* application, PipelineType pipeline_t
             g_list_store_append(self->apps_model, item);
           }
         } else {
-          for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
+          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->all_apps_model)); n++) {
             auto* holder =
                 static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->all_apps_model), n));
 

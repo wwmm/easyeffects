@@ -31,7 +31,7 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
-  uint serial = 0;
+  uint serial = 0U;
 
   app::Application* application;
 
@@ -298,7 +298,7 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   // rescaling between 0 and 1
 
-  for (uint n = 0; n < self->data->left_spectrum.size(); n++) {
+  for (uint n = 0U; n < self->data->left_spectrum.size(); n++) {
     self->data->left_spectrum[n] = (self->data->left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
     self->data->right_spectrum[n] = (self->data->right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }

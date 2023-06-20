@@ -166,15 +166,15 @@ auto get_id(const std::string& name) -> uint {
 
   std::regex_search(name, matches, id_regex);
 
-  if (matches.size() != 2) {
-    return 0;
+  if (matches.size() != 2U) {
+    return 0U;
   }
 
-  if (uint id = 0; util::str_to_num(matches[1], id)) {
+  if (uint id = 0U; util::str_to_num(matches[1], id)) {
     return id;
   }
 
-  return 0;
+  return 0U;
 }
 
 }  // namespace tags::plugin_name

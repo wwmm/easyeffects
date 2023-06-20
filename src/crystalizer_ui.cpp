@@ -27,7 +27,7 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
-  uint serial = 0;
+  uint serial = 0U;
 
   std::shared_ptr<Crystalizer> crystalizer;
 
@@ -60,7 +60,7 @@ void on_reset(CrystalizerBox* self, GtkButton* btn) {
 }
 
 void build_bands(CrystalizerBox* self) {
-  for (uint n = 0; n < nbands; n++) {
+  for (uint n = 0U; n < nbands; n++) {
     auto builder = gtk_builder_new_from_resource(tags::resources::crystalizer_band_ui);
 
     auto* band_box = GTK_BOX(gtk_builder_get_object(builder, "band_box"));
@@ -85,43 +85,43 @@ void build_bands(CrystalizerBox* self) {
     g_settings_bind(self->settings, ("bypass-" + bandn).c_str(), band_bypass, "active", G_SETTINGS_BIND_DEFAULT);
 
     switch (n) {
-      case 0:
+      case 0U:
         gtk_label_set_text(band_label, "250 Hz");
         break;
-      case 1:
+      case 1U:
         gtk_label_set_text(band_label, "750 Hz");
         break;
-      case 2:
+      case 2U:
         gtk_label_set_text(band_label, "1.5 kHz");
         break;
-      case 3:
+      case 3U:
         gtk_label_set_text(band_label, "2.5 kHz");
         break;
-      case 4:
+      case 4U:
         gtk_label_set_text(band_label, "3.5 kHz");
         break;
-      case 5:
+      case 5U:
         gtk_label_set_text(band_label, "4.5 kHz");
         break;
-      case 6:
+      case 6U:
         gtk_label_set_text(band_label, "5.5 kHz");
         break;
-      case 7:
+      case 7U:
         gtk_label_set_text(band_label, "6.5 kHz");
         break;
-      case 8:
+      case 8U:
         gtk_label_set_text(band_label, "7.5 kHz");
         break;
-      case 9:
+      case 9U:
         gtk_label_set_text(band_label, "8.5 kHz");
         break;
-      case 10:
+      case 10U:
         gtk_label_set_text(band_label, "9.5 kHz");
         break;
-      case 11:
+      case 11U:
         gtk_label_set_text(band_label, "12.5 kHz");
         break;
-      case 12:
+      case 12U:
         gtk_label_set_text(band_label, "17.5 kHz");
         break;
     }

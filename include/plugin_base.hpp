@@ -149,7 +149,7 @@ class PluginBase {
 
   bool post_messages = false;
 
-  uint n_ports = 4;
+  uint n_ports = 4U;
 
   float input_gain = 1.0F;
   float output_gain = 1.0F;
