@@ -30,8 +30,9 @@ Equalizer::Equalizer(const std::string& tag,
                      PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::equalizer, tags::plugin_package::lsp, schema, schema_path, pipe_manager),
       settings_left(g_settings_new_with_path(schema_channel.c_str(), schema_channel_left_path.c_str())),
-      settings_right(g_settings_new_with_path(schema_channel.c_str(), schema_channel_right_path.c_str())),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr")) {
+      settings_right(g_settings_new_with_path(schema_channel.c_str(), schema_channel_right_path.c_str())) {
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr");
+
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {

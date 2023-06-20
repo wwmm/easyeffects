@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Exciter : public PluginBase {
@@ -45,5 +44,4 @@ class Exciter : public PluginBase {
   double harmonics_port_value = 0.0;
 
  private:
-  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

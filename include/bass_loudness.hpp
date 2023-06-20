@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class BassLoudness : public PluginBase {
@@ -44,5 +43,4 @@ class BassLoudness : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

@@ -20,7 +20,6 @@
 #pragma once
 
 #include <utility>
-#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 #include "tags_equalizer.hpp"
 
@@ -54,8 +53,6 @@ class Equalizer : public PluginBase {
 
  private:
   GSettings *settings_left = nullptr, *settings_right = nullptr;
-
-  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
   uint latency_n_frames = 0U;
 

@@ -24,6 +24,7 @@
 #include <mutex>
 #include <ranges>
 #include <span>
+#include "lv2_wrapper.hpp"
 #include "pipe_manager.hpp"
 #include "tags_plugin_name.hpp"
 
@@ -107,6 +108,10 @@ class PluginBase {
 
   void reset_settings();
 
+  void show_native_ui();
+
+  void close_native_ui();
+
   virtual void setup();
 
   virtual void process(std::span<float>& left_in,
@@ -124,10 +129,6 @@ class PluginBase {
   virtual void update_probe_links();
 
   virtual auto get_latency_seconds() -> float;
-
-  virtual void show_native_ui();
-
-  virtual void close_native_ui();
 
   sigc::signal<void(const float, const float)> input_level;
   sigc::signal<void(const float, const float)> output_level;
@@ -150,6 +151,8 @@ class PluginBase {
 
   float input_gain = 1.0F;
   float output_gain = 1.0F;
+
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
   std::vector<gulong> gconnections;
 

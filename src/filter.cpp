@@ -23,8 +23,9 @@ Filter::Filter(const std::string& tag,
                const std::string& schema,
                const std::string& schema_path,
                PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::filter, tags::plugin_package::calf, schema, schema_path, pipe_manager),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Filter")) {
+    : PluginBase(tag, tags::plugin_name::filter, tags::plugin_package::calf, schema, schema_path, pipe_manager) {
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Filter");
+
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {

@@ -421,9 +421,23 @@ auto PluginBase::get_latency_seconds() -> float {
   return 0.0F;
 }
 
-void PluginBase::show_native_ui() {}
+void PluginBase::show_native_ui() {
+  if (lv2_wrapper == nullptr) {
+    return;
+  }
 
-void PluginBase::close_native_ui() {}
+  if (!lv2_wrapper->has_ui()) {
+    lv2_wrapper->load_ui();
+  }
+}
+
+void PluginBase::close_native_ui() {
+  if (lv2_wrapper == nullptr) {
+    return;
+  }
+
+  lv2_wrapper->close_ui();
+}
 
 void PluginBase::get_peaks(const std::span<float>& left_in,
                            const std::span<float>& right_in,

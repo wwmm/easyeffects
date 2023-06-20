@@ -23,8 +23,9 @@ Limiter::Limiter(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::limiter, tags::plugin_package::lsp, schema, schema_path, pipe_manager, true),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_limiter_stereo")) {
+    : PluginBase(tag, tags::plugin_name::limiter, tags::plugin_package::lsp, schema, schema_path, pipe_manager, true) {
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_limiter_stereo");
+
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
@@ -78,18 +79,6 @@ Limiter::Limiter(const std::string& tag,
   lv2_wrapper->bind_key_bool<"extsc", "external-sidechain">(settings);
 
   setup_input_output_gain();
-
-  // This is not ideal... A better approach has to be implemented...
-
-  g_timeout_add_seconds(1, GSourceFunc(+[](Limiter* self) {
-                          if (self->lv2_wrapper->has_ui()) {
-                            self->lv2_wrapper->notify_ui();
-                            self->lv2_wrapper->update_ui();
-                          }
-
-                          return 1;
-                        }),
-                        this);
 }
 
 Limiter::~Limiter() {
@@ -215,14 +204,4 @@ void Limiter::update_probe_links() {
 
 auto Limiter::get_latency_seconds() -> float {
   return this->latency_value;
-}
-
-void Limiter::show_native_ui() {
-  if (!lv2_wrapper->has_ui()) {
-    lv2_wrapper->load_ui();
-  }
-}
-
-void Limiter::close_native_ui() {
-  lv2_wrapper->close_ui();
 }

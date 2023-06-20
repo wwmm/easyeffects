@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class StereoTools : public PluginBase {
@@ -46,7 +45,5 @@ class StereoTools : public PluginBase {
   double correlation_port_value = 0.0;
 
  private:
-  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
-
   float dry = 0.0F, wet = 1.0F;
 };

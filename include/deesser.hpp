@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Deesser : public PluginBase {
@@ -46,5 +45,4 @@ class Deesser : public PluginBase {
   double detected_port_value = 0.0;
 
  private:
-  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

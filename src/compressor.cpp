@@ -29,8 +29,9 @@ Compressor::Compressor(const std::string& tag,
                  schema,
                  schema_path,
                  pipe_manager,
-                 true),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_compressor_stereo")) {
+                 true) {
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_compressor_stereo");
+
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {

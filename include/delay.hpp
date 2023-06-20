@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Delay : public PluginBase {
@@ -42,6 +41,4 @@ class Delay : public PluginBase {
 
  private:
   uint latency_n_frames = 0U;
-
-  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

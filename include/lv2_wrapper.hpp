@@ -32,7 +32,9 @@
 #include <lv2/parameters/parameters.h>
 #include <lv2/ui/ui.h>
 #include <array>
+#include <mutex>
 #include <span>
+#include <thread>
 #include <unordered_map>
 #include "string_literal_wrapper.hpp"
 #include "util.hpp"
@@ -115,6 +117,8 @@ class Lv2Wrapper {
   auto has_ui() -> bool;
 
   void close_ui();
+
+  void set_ui_update_rate(const uint& value);
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_bool(GSettings* settings) {
@@ -217,6 +221,8 @@ class Lv2Wrapper {
 
   void* libhandle = nullptr;
 
+  bool ui_ready = false;
+
   uint n_ports = 0U;
   uint n_audio_in = 0U;
   uint n_audio_out = 0U;
@@ -225,12 +231,16 @@ class Lv2Wrapper {
 
   uint rate = 0U;
 
+  uint ui_update_rate = 30;
+
   std::vector<Port> ports;
 
   std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
   std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
 
   const std::array<const LV2_Feature, 1U> static_features{{{LV2_BUF_SIZE__boundedBlockLength, nullptr}}};
+
+  std::mutex ui_mutex;
 
   void check_required_features();
 
