@@ -295,6 +295,8 @@ void dispose(GObject* object) {
 
   self->data->limiter->set_post_messages(false);
 
+  self->data->limiter->close_native_ui();
+
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
