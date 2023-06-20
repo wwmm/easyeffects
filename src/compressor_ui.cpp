@@ -68,6 +68,14 @@ void on_reset(CompressorBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
+void on_show_native_window(CompressorBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    self->data->compressor->show_native_ui();
+  } else {
+    self->data->compressor->close_native_ui();
+  }
+}
+
 auto set_dropdown_sensitive(CompressorBox* self, const guint selected_id) -> gboolean {
   // Sensitive on External Device selected
   return (selected_id == 2U) ? 1 : 0;
@@ -419,6 +427,7 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, dropdown_input_devices);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
   gtk_widget_class_bind_template_callback(widget_class, set_dropdown_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_threshold_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_amount_sensitive);
