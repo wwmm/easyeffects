@@ -96,6 +96,14 @@ void on_reset(EqualizerBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings_right);
 }
 
+void on_show_native_window(EqualizerBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    self->data->equalizer->show_native_ui();
+  } else {
+    self->data->equalizer->close_native_ui();
+  }
+}
+
 void on_flat_response(EqualizerBox* self, GtkButton* btn) {
   const auto& max_bands = self->data->equalizer->max_bands;
   for (uint n = 0U; n < max_bands; n++) {
@@ -805,6 +813,8 @@ void dispose(GObject* object) {
 
   self->data->equalizer->set_post_messages(false);
 
+  self->data->equalizer->close_native_ui();
+
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
@@ -873,6 +883,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 
+  gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
   gtk_widget_class_bind_template_callback(widget_class, on_flat_response);
   gtk_widget_class_bind_template_callback(widget_class, on_calculate_frequencies);
   gtk_widget_class_bind_template_callback(widget_class, on_sort_bands);
