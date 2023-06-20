@@ -1051,9 +1051,8 @@ msgid "True Peak"
 msgstr "Истинный пик"
 
 #: data/ui/limiter.ui:25
-#, fuzzy
 msgid "Show Native Window"
-msgstr "Закрыть окно"
+msgstr "Показать родное окно"
 
 #: data/ui/limiter.ui:68
 msgid "Oversampling"
@@ -1692,14 +1691,15 @@ msgid "Update Frequency (LV2 Plugins)"
 msgstr ""
 
 #: data/ui/preferences_general.ui:161 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:138
 msgid "Style"
 msgstr "Стиль"
 
-#: data/ui/preferences_general.ui:164
+#: data/ui/preferences_general.ui:164 data/ui/preferences_general.ui:141
 msgid "Use Dark Theme"
 msgstr "Использовать тёмную тему"
 
-#: data/ui/preferences_general.ui:176
+#: data/ui/preferences_general.ui:176 data/ui/preferences_general.ui:153
 msgid "Hide Menus on Outside Clicks"
 msgstr "Скрывать меню по щелчку вне фокуса"
 
