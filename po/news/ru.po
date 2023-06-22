@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-20 19:34-0300\n"
-"PO-Revision-Date: 2023-05-01 20:52+0000\n"
+"PO-Revision-Date: 2023-06-22 20:11+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 4.18.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -124,7 +124,7 @@ msgstr "Возможности:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid "A new Level Meter plugin based on libebur128 has been added."
-msgstr ""
+msgstr "Добавлен новый плагин Уровнемер на основе libebur128."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
@@ -132,11 +132,14 @@ msgid ""
 "Hopefully some of the mysterious crashes that were happening with Rubbernand "
 "are not going to happen anymore."
 msgstr ""
+"Плагин Высота тона теперь использует библиотеку SoundTouch вместо "
+"Rubberband. Надеемся, что некоторые загадочные сбои, которые происходили с "
+"Rubbernand, больше не повторятся."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
 "Improved compatibility with recent PipeWire versions. More information at"
-msgstr ""
+msgstr "Улучшена совместимость с последними версиями PipeWire. Подробности в"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
@@ -170,6 +173,8 @@ msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
 msgstr ""
+"Фильтры активного Эквалайзера больше не устанавливаются в тип Колокольчик "
+"при изменении числа полос."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -188,6 +193,8 @@ msgid ""
 "Rabberband is not a dependency anymore since it has been replaced by "
 "SoundTouch."
 msgstr ""
+"Rabberband больше не является зависимостью, поскольку он был заменён на "
+"SoundTouch."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid ""
