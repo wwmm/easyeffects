@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-20 19:34-0300\n"
-"PO-Revision-Date: 2023-06-21 17:52+0000\n"
+"PO-Revision-Date: 2023-06-22 20:11+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -766,7 +766,7 @@ msgstr "Выявление"
 
 #: data/ui/deesser.ui:77
 msgid "Wide"
-msgstr "Ширина"
+msgstr "Широкий"
 
 #: data/ui/deesser.ui:78
 msgid "Split"
