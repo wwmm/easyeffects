@@ -73,6 +73,14 @@ void on_reset(MultibandGateBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
+void on_show_native_window(MultibandGateBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    self->data->multiband_gate->show_native_ui();
+  } else {
+    self->data->multiband_gate->close_native_ui();
+  }
+}
+
 void on_listbox_row_selected(MultibandGateBox* self, GtkListBoxRow* row, GtkListBox* listbox) {
   if (auto* selected_row = gtk_list_box_get_selected_row(listbox); selected_row != nullptr) {
     if (auto index = gtk_list_box_row_get_index(selected_row); index != -1) {
@@ -322,6 +330,8 @@ void dispose(GObject* object) {
 
   self->data->multiband_gate->set_post_messages(false);
 
+  self->data->multiband_gate->close_native_ui();
+
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
@@ -388,6 +398,7 @@ void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, dropdown_input_devices);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
   gtk_widget_class_bind_template_callback(widget_class, on_listbox_row_selected);
 }
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-20 19:34-0300\n"
+"POT-Creation-Date: 2023-06-22 20:07-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -200,7 +200,7 @@ msgstr "გამოტანის გაძლიერება"
 #: data/ui/exciter.ui:262 data/ui/filter.ui:145 data/ui/gate.ui:727
 #: data/ui/gate.ui:1207 data/ui/level_meter.ui:274 data/ui/limiter.ui:750
 #: data/ui/loudness.ui:150 data/ui/maximizer.ui:109
-#: data/ui/multiband_compressor.ui:462 data/ui/multiband_gate.ui:461
+#: data/ui/multiband_compressor.ui:476 data/ui/multiband_gate.ui:476
 #: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225
 #: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:155
 #: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
@@ -213,8 +213,8 @@ msgstr "შეყვანა"
 #: data/ui/deesser.ui:443 data/ui/delay.ui:216 data/ui/echo_canceller.ui:131
 #: data/ui/equalizer.ui:401 data/ui/exciter.ui:281 data/ui/filter.ui:164
 #: data/ui/gate.ui:1226 data/ui/limiter.ui:769 data/ui/loudness.ui:169
-#: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:481
-#: data/ui/multiband_gate.ui:480 data/ui/pitch.ui:244 data/ui/reverb.ui:385
+#: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:495
+#: data/ui/multiband_gate.ui:495 data/ui/pitch.ui:244 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
 msgid "Plugin Input Gain"
 msgstr ""
@@ -226,7 +226,7 @@ msgstr ""
 #: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:466
 #: data/ui/exciter.ui:346 data/ui/filter.ui:229 data/ui/gate.ui:1291
 #: data/ui/limiter.ui:834 data/ui/loudness.ui:234 data/ui/maximizer.ui:193
-#: data/ui/multiband_compressor.ui:546 data/ui/multiband_gate.ui:545
+#: data/ui/multiband_compressor.ui:560 data/ui/multiband_gate.ui:560
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
@@ -239,8 +239,8 @@ msgstr "გამოტანა"
 #: data/ui/deesser.ui:527 data/ui/delay.ui:300 data/ui/echo_canceller.ui:215
 #: data/ui/equalizer.ui:485 data/ui/exciter.ui:365 data/ui/filter.ui:248
 #: data/ui/gate.ui:1310 data/ui/limiter.ui:853 data/ui/loudness.ui:253
-#: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:565
-#: data/ui/multiband_gate.ui:564 data/ui/pitch.ui:328 data/ui/reverb.ui:469
+#: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:579
+#: data/ui/multiband_gate.ui:579 data/ui/pitch.ui:328 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
 msgid "Plugin Output Gain"
 msgstr ""
@@ -252,8 +252,8 @@ msgstr ""
 #: data/ui/equalizer.ui:550 data/ui/equalizer_band.ui:239
 #: data/ui/equalizer_band.ui:310 data/ui/exciter.ui:461 data/ui/filter.ui:314
 #: data/ui/gate.ui:1405 data/ui/limiter.ui:918 data/ui/loudness.ui:318
-#: data/ui/maximizer.ui:310 data/ui/multiband_compressor.ui:631
-#: data/ui/multiband_gate.ui:630 data/ui/pitch.ui:393 data/ui/reverb.ui:535
+#: data/ui/maximizer.ui:310 data/ui/multiband_compressor.ui:644
+#: data/ui/multiband_gate.ui:644 data/ui/pitch.ui:393 data/ui/reverb.ui:535
 #: data/ui/rnnoise.ui:324 data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
 msgid "Reset"
 msgstr "დაბრუნება"
@@ -341,6 +341,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:25 data/ui/equalizer.ui:283 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
+#: data/ui/multiband_compressor.ui:104 data/ui/multiband_gate.ui:104
 msgid "Show Native Window"
 msgstr ""
 
@@ -437,15 +438,15 @@ msgid "Makeup"
 msgstr ""
 
 #: data/ui/compressor.ui:421 data/ui/delay.ui:53 data/ui/delay.ui:131
-#: data/ui/gate.ui:352 data/ui/multiband_compressor.ui:140
-#: data/ui/multiband_gate.ui:140 data/ui/reverb.ui:212
+#: data/ui/gate.ui:352 data/ui/multiband_compressor.ui:155
+#: data/ui/multiband_gate.ui:155 data/ui/reverb.ui:212
 #: data/ui/stereo_tools.ui:538
 msgid "Dry Level"
 msgstr ""
 
 #: data/ui/compressor.ui:456 data/ui/delay.ui:77 data/ui/delay.ui:155
-#: data/ui/gate.ui:357 data/ui/multiband_compressor.ui:174
-#: data/ui/multiband_gate.ui:174 data/ui/reverb.ui:246
+#: data/ui/gate.ui:357 data/ui/multiband_compressor.ui:189
+#: data/ui/multiband_gate.ui:189 data/ui/reverb.ui:246
 #: data/ui/stereo_tools.ui:574
 msgid "Wet Level"
 msgstr ""
@@ -1270,51 +1271,51 @@ msgstr ""
 msgid "Brown MT"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:110 data/ui/multiband_gate.ui:110
+#: data/ui/multiband_compressor.ui:125 data/ui/multiband_gate.ui:125
 msgid "Operating Mode"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:123 data/ui/multiband_gate.ui:123
+#: data/ui/multiband_compressor.ui:138 data/ui/multiband_gate.ui:138
 msgid "Classic"
 msgstr "კლასიკური"
 
-#: data/ui/multiband_compressor.ui:124 data/ui/multiband_gate.ui:124
+#: data/ui/multiband_compressor.ui:139 data/ui/multiband_gate.ui:139
 msgid "Modern"
 msgstr "თანამედროვე"
 
-#: data/ui/multiband_compressor.ui:235 data/ui/multiband_gate.ui:234
+#: data/ui/multiband_compressor.ui:249 data/ui/multiband_gate.ui:249
 msgid "Bands List"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:244 data/ui/multiband_gate.ui:243
+#: data/ui/multiband_compressor.ui:258 data/ui/multiband_gate.ui:258
 msgid "Band 1"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:261 data/ui/multiband_gate.ui:260
+#: data/ui/multiband_compressor.ui:275 data/ui/multiband_gate.ui:275
 msgid "Band 2"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:287 data/ui/multiband_gate.ui:286
+#: data/ui/multiband_compressor.ui:301 data/ui/multiband_gate.ui:301
 msgid "Band 3"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:313 data/ui/multiband_gate.ui:312
+#: data/ui/multiband_compressor.ui:327 data/ui/multiband_gate.ui:327
 msgid "Band 4"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:339 data/ui/multiband_gate.ui:338
+#: data/ui/multiband_compressor.ui:353 data/ui/multiband_gate.ui:353
 msgid "Band 5"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:365 data/ui/multiband_gate.ui:364
+#: data/ui/multiband_compressor.ui:379 data/ui/multiband_gate.ui:379
 msgid "Band 6"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:391 data/ui/multiband_gate.ui:390
+#: data/ui/multiband_compressor.ui:405 data/ui/multiband_gate.ui:405
 msgid "Band 7"
 msgstr ""
 
-#: data/ui/multiband_compressor.ui:417 data/ui/multiband_gate.ui:416
+#: data/ui/multiband_compressor.ui:431 data/ui/multiband_gate.ui:431
 msgid "Band 8"
 msgstr ""
 

@@ -96,6 +96,21 @@
                                                         </accessibility>
                                                     </object>
                                                 </child>
+
+                                                <child>
+                                                    <object class="GtkToggleButton">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="label" translatable="yes">Show Native Window</property>
+
+                                                        <signal name="toggled" handler="on_show_native_window" object="MultibandGateBox" />
+
+                                                        <layout>
+                                                            <property name="column">2</property>
+                                                            <property name="row">1</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
 
@@ -619,8 +634,7 @@
 
                                 <!-- Empty placeholder used only for layout reason -->
                                 <child>
-                                    <object class="GtkLabel">
-                                    </object>
+                                    <object class="GtkLabel"> </object>
                                 </child>
 
                                 <child>
