@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-22 20:07-0300\n"
-"PO-Revision-Date: 2023-06-22 20:11+0000\n"
-"Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2023-06-23 20:35+0000\n"
+"Last-Translator: tachyglossues <tachyglossues@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr_FR\n"
@@ -308,7 +308,6 @@ msgid "Harmonics"
 msgstr "Harmoniques"
 
 #: data/ui/bass_enhancer.ui:177 data/ui/exciter.ui:177
-#, fuzzy
 msgid "Scope"
 msgstr "Portée"
 
@@ -531,7 +530,6 @@ msgid "Type"
 msgstr "Type"
 
 #: data/ui/compressor.ui:640
-#, fuzzy
 msgid "Feed-forward"
 msgstr "Retour d'information"
 
