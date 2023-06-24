@@ -437,6 +437,7 @@ void PluginBase::close_native_ui() {
   }
 
   lv2_wrapper->close_ui();
+  lv2_wrapper->native_ui_to_gsettings(settings);
 }
 
 void PluginBase::set_native_ui_update_frequency(const uint& value) {

@@ -643,4 +643,42 @@ void Lv2Wrapper::ui_port_event(const uint& port_index, const float& value) {
   ui_descriptor->port_event(ui_handle, port_index, sizeof(float), 0, &value);
 }
 
+void Lv2Wrapper::native_ui_to_gsettings(GSettings* settings) {
+  for (auto [type, lv2_key, gkey] : gsettings_mappings) {
+    float value = get_control_port_value(lv2_key);
+
+    switch (type) {
+      case Bool: {
+        g_settings_set_boolean(settings, gkey.c_str(), static_cast<gboolean>(value));
+        break;
+      }
+      case Int: {
+        g_settings_set_int(settings, gkey.c_str(), static_cast<gint>(value));
+        break;
+      }
+      case Enum: {
+        g_settings_set_enum(settings, gkey.c_str(), static_cast<gint>(value));
+        break;
+      }
+      case Double: {
+        g_settings_set_double(settings, gkey.c_str(), static_cast<gdouble>(value));
+        break;
+      }
+      case Double_db_to_linear: {
+        g_settings_set_double(settings, gkey.c_str(), static_cast<gdouble>(util::linear_to_db(value)));
+        break;
+      }
+      default:
+        std::string msg;
+
+        msg.append(gkey);
+        msg.append(" -> ");
+        msg.append(lv2_key);
+
+        util::debug("Unhandled gsettings mapping: "s + msg);
+        break;
+    }
+  }
+}
+
 }  // namespace lv2
