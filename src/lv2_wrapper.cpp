@@ -355,6 +355,8 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
         return;
       }
 
+      ui_port_event(p.index, value);
+
       p.value = value;
 
       found = true;
@@ -535,13 +537,17 @@ void Lv2Wrapper::load_ui() {
               ui_descriptor, plugin_uri.c_str(), bundle_path,
               +[](LV2UI_Controller controller, uint32_t port_index, uint32_t buffer_size, uint32_t port_protocol,
                   const void* buffer) {
-                // auto self = static_cast<Lv2Wrapper*>(controller);
+                auto self = static_cast<Lv2Wrapper*>(controller);
 
-                // for (const auto& p : self->ports) {
-                //   if (p.index == port_index) {
-                //     util::warning("The user clicked on port: " + p.name);
-                //   }
-                // }
+                for (auto& p : self->ports) {
+                  if (p.index == port_index) {
+                    // util::warning("The user clicked on port: " + p.name + " -> " + p.symbol);
+
+                    if (port_protocol == 0) {  // port is a ui:floatProtocol
+                      p.value = *static_cast<const float*>(buffer);
+                    }
+                  }
+                }
               },
               this, &widget, features.data());
 
@@ -591,7 +597,7 @@ void Lv2Wrapper::notify_ui() {
   }
 
   for (const auto& p : ports) {
-    if (p.type == PortType::TYPE_CONTROL) {
+    if (p.type == PortType::TYPE_CONTROL && !p.is_input) {
       ui_descriptor->port_event(ui_handle, p.index, sizeof(float), 0, &p.value);
     }
   }
@@ -627,6 +633,14 @@ void Lv2Wrapper::close_ui() {
 
 void Lv2Wrapper::set_ui_update_rate(const uint& value) {
   ui_update_rate = value;
+}
+
+void Lv2Wrapper::ui_port_event(const uint& port_index, const float& value) {
+  if (ui_descriptor == nullptr || ui_handle == nullptr) {
+    return;
+  }
+
+  ui_descriptor->port_event(ui_handle, port_index, sizeof(float), 0, &value);
 }
 
 }  // namespace lv2

@@ -120,6 +120,8 @@ class Lv2Wrapper {
 
   void set_ui_update_rate(const uint& value);
 
+  void ui_port_event(const uint& port_index, const float& value);
+
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_bool(GSettings* settings) {
     set_control_port_value(key_wrapper.msg.data(),
