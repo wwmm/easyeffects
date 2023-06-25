@@ -35,7 +35,6 @@
 #include <mutex>
 #include <span>
 #include <thread>
-#include <tuple>
 #include <unordered_map>
 #include "string_literal_wrapper.hpp"
 #include "util.hpp"
@@ -229,8 +228,11 @@ class Lv2Wrapper {
                      this);
 
     gsettings_sync_funcs.emplace_back([=, this]() {
-      g_settings_set_double(settings, gkey_wrapper.msg.data(),
-                            static_cast<gdouble>(util::linear_to_db(get_control_port_value(key_wrapper.msg.data()))));
+      const auto linear_v = get_control_port_value(key_wrapper.msg.data());
+
+      const auto db_v = (!lower_bound & (linear_v == 0.0F)) ? util::minimum_db_d_level : util::linear_to_db(linear_v);
+
+      g_settings_set_double(settings, gkey_wrapper.msg.data(), static_cast<gdouble>(db_v));
     });
   }
 

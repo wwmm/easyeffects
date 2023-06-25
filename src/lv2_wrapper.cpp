@@ -572,6 +572,14 @@ void Lv2Wrapper::load_ui() {
       lilv_uis_free(uis);
     }
 
+    // initilizing the ui with the current control values
+
+    for (const auto& p : ports) {
+      if (p.type == PortType::TYPE_CONTROL) {
+        ui_descriptor->port_event(ui_handle, p.index, sizeof(float), 0, &p.value);
+      }
+    }
+
     while (has_ui()) {
       {
         std::scoped_lock<std::mutex> lk(ui_mutex);
