@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-22 20:07-0300\n"
+"POT-Creation-Date: 2023-06-25 11:37-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -197,7 +197,7 @@ msgstr "Çıkış Kazancı"
 #: data/ui/autogain.ui:411 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:602
 #: data/ui/compressor.ui:1096 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
-#: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:197
+#: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:207
 #: data/ui/echo_canceller.ui:112 data/ui/equalizer.ui:382
 #: data/ui/exciter.ui:262 data/ui/filter.ui:145 data/ui/gate.ui:727
 #: data/ui/gate.ui:1207 data/ui/level_meter.ui:274 data/ui/limiter.ui:750
@@ -212,7 +212,7 @@ msgstr "Giriş"
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1115
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
-#: data/ui/deesser.ui:443 data/ui/delay.ui:216 data/ui/echo_canceller.ui:131
+#: data/ui/deesser.ui:443 data/ui/delay.ui:226 data/ui/echo_canceller.ui:131
 #: data/ui/equalizer.ui:401 data/ui/exciter.ui:281 data/ui/filter.ui:164
 #: data/ui/gate.ui:1226 data/ui/limiter.ui:769 data/ui/loudness.ui:169
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:495
@@ -224,7 +224,7 @@ msgstr "Eklenti Giriş Kazancı"
 #: data/ui/autogain.ui:495 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1180 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
-#: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:281
+#: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:291
 #: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:466
 #: data/ui/exciter.ui:346 data/ui/filter.ui:229 data/ui/gate.ui:1291
 #: data/ui/limiter.ui:834 data/ui/loudness.ui:234 data/ui/maximizer.ui:193
@@ -238,7 +238,7 @@ msgstr "Çıkış"
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1199
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
-#: data/ui/deesser.ui:527 data/ui/delay.ui:300 data/ui/echo_canceller.ui:215
+#: data/ui/deesser.ui:527 data/ui/delay.ui:310 data/ui/echo_canceller.ui:215
 #: data/ui/equalizer.ui:485 data/ui/exciter.ui:365 data/ui/filter.ui:248
 #: data/ui/gate.ui:1310 data/ui/limiter.ui:853 data/ui/loudness.ui:253
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:579
@@ -250,7 +250,7 @@ msgstr "Eklenti Çıkış Kazancı"
 #: data/ui/autogain.ui:580 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1264
 #: data/ui/convolver.ui:395 data/ui/crossfeed.ui:288 data/ui/crystalizer.ui:204
-#: data/ui/deesser.ui:653 data/ui/delay.ui:366 data/ui/echo_canceller.ui:281
+#: data/ui/deesser.ui:653 data/ui/delay.ui:375 data/ui/echo_canceller.ui:281
 #: data/ui/equalizer.ui:550 data/ui/equalizer_band.ui:239
 #: data/ui/equalizer_band.ui:310 data/ui/exciter.ui:461 data/ui/filter.ui:314
 #: data/ui/gate.ui:1405 data/ui/limiter.ui:918 data/ui/loudness.ui:318
@@ -341,8 +341,8 @@ msgstr "Hariç Tutulan Uygulamalar Listesi"
 msgid "Show Excluded Applications"
 msgstr "Hariç Tutulan Uygulamaları Göster"
 
-#: data/ui/compressor.ui:25 data/ui/equalizer.ui:283 data/ui/gate.ui:25
-#: data/ui/limiter.ui:25 data/ui/loudness.ui:25
+#: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:283
+#: data/ui/gate.ui:25 data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:104 data/ui/multiband_gate.ui:104
 #, fuzzy
 msgid "Show Native Window"
@@ -440,7 +440,7 @@ msgstr "Oynak"
 msgid "Makeup"
 msgstr "Süs"
 
-#: data/ui/compressor.ui:421 data/ui/delay.ui:53 data/ui/delay.ui:131
+#: data/ui/compressor.ui:421 data/ui/delay.ui:63 data/ui/delay.ui:141
 #: data/ui/gate.ui:352 data/ui/multiband_compressor.ui:155
 #: data/ui/multiband_gate.ui:155 data/ui/reverb.ui:212
 #: data/ui/stereo_tools.ui:538
@@ -448,7 +448,7 @@ msgstr "Süs"
 msgid "Dry Level"
 msgstr "Seviye"
 
-#: data/ui/compressor.ui:456 data/ui/delay.ui:77 data/ui/delay.ui:155
+#: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:165
 #: data/ui/gate.ui:357 data/ui/multiband_compressor.ui:189
 #: data/ui/multiband_gate.ui:189 data/ui/reverb.ui:246
 #: data/ui/stereo_tools.ui:574
@@ -500,14 +500,14 @@ msgstr "Orta"
 msgid "Side"
 msgstr "Yan"
 
-#: data/ui/compressor.ui:573 data/ui/delay.ui:28 data/ui/equalizer.ui:219
+#: data/ui/compressor.ui:573 data/ui/delay.ui:38 data/ui/equalizer.ui:219
 #: data/ui/gate.ui:700 data/ui/level_meter.ui:43
 #: data/ui/multiband_compressor_band.ui:508 data/ui/multiband_gate_band.ui:567
 #: data/ui/pipe_manager_box.ui:504 data/ui/stereo_tools.ui:165
 msgid "Left"
 msgstr "Sol"
 
-#: data/ui/compressor.ui:574 data/ui/delay.ui:106 data/ui/equalizer.ui:246
+#: data/ui/compressor.ui:574 data/ui/delay.ui:116 data/ui/equalizer.ui:246
 #: data/ui/gate.ui:701 data/ui/level_meter.ui:53
 #: data/ui/multiband_compressor_band.ui:509 data/ui/multiband_gate_band.ui:568
 #: data/ui/pipe_manager_box.ui:515 data/ui/stereo_tools.ui:220
@@ -817,7 +817,7 @@ msgstr "Saptanan"
 msgid "Reduction"
 msgstr "Azaltma"
 
-#: data/ui/delay.ui:31 data/ui/delay.ui:109 src/tags_plugin_name.cpp:39
+#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:39
 msgid "Delay"
 msgstr "Gecikme"
 

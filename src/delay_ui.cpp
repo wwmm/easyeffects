@@ -60,6 +60,14 @@ void on_reset(DelayBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
 
+void on_show_native_window(DelayBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    self->data->delay->show_native_ui();
+  } else {
+    self->data->delay->close_native_ui();
+  }
+}
+
 void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& schema_path) {
   self->data->delay = delay;
 
@@ -125,6 +133,8 @@ void dispose(GObject* object) {
 
   self->data->delay->set_post_messages(false);
 
+  self->data->delay->close_native_ui();
+
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {
@@ -184,6 +194,7 @@ void delay_box_class_init(DelayBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, DelayBox, wet_r);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
 }
 
 void delay_box_init(DelayBox* self) {
