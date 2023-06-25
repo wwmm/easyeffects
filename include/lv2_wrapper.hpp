@@ -50,8 +50,6 @@ using namespace std::string_literals;
 
 enum PortType { TYPE_CONTROL, TYPE_AUDIO, TYPE_ATOM };
 
-enum GSettingsMappingType { Bool, Int, Enum, Double, Double_db_to_linear };
-
 struct Port {
   PortType type;  // Datatype
 
@@ -141,7 +139,10 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_mappings.emplace_back(GSettingsMappingType::Bool, key_wrapper.msg.data(), gkey_wrapper.msg.data());
+    gsettings_sync_funcs.emplace_back([=, this]() {
+      g_settings_set_boolean(settings, gkey_wrapper.msg.data(),
+                             static_cast<gboolean>(get_control_port_value(key_wrapper.msg.data())));
+    });
   }
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
@@ -158,7 +159,10 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_mappings.emplace_back(GSettingsMappingType::Enum, key_wrapper.msg.data(), gkey_wrapper.msg.data());
+    gsettings_sync_funcs.emplace_back([=, this]() {
+      g_settings_set_enum(settings, gkey_wrapper.msg.data(),
+                          static_cast<gint>(get_control_port_value(key_wrapper.msg.data())));
+    });
   }
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
@@ -175,7 +179,10 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_mappings.emplace_back(GSettingsMappingType::Int, key_wrapper.msg.data(), gkey_wrapper.msg.data());
+    gsettings_sync_funcs.emplace_back([=, this]() {
+      g_settings_set_int(settings, gkey_wrapper.msg.data(),
+                         static_cast<gint>(get_control_port_value(key_wrapper.msg.data())));
+    });
   }
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
@@ -192,7 +199,10 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_mappings.emplace_back(GSettingsMappingType::Double, key_wrapper.msg.data(), gkey_wrapper.msg.data());
+    gsettings_sync_funcs.emplace_back([=, this]() {
+      g_settings_set_double(settings, gkey_wrapper.msg.data(),
+                            static_cast<gdouble>(get_control_port_value(key_wrapper.msg.data())));
+    });
   }
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper, bool lower_bound = true>
@@ -218,8 +228,10 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_mappings.emplace_back(GSettingsMappingType::Double_db_to_linear, key_wrapper.msg.data(),
-                                    gkey_wrapper.msg.data());
+    gsettings_sync_funcs.emplace_back([=, this]() {
+      g_settings_set_double(settings, gkey_wrapper.msg.data(),
+                            static_cast<gdouble>(util::linear_to_db(get_control_port_value(key_wrapper.msg.data()))));
+    });
   }
 
  private:
@@ -251,7 +263,7 @@ class Lv2Wrapper {
 
   std::vector<Port> ports;
 
-  std::vector<std::tuple<GSettingsMappingType, std::string, std::string>> gsettings_mappings;
+  std::vector<std::function<void()>> gsettings_sync_funcs;
 
   std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
   std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
