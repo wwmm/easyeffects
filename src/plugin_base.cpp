@@ -436,7 +436,7 @@ void PluginBase::close_native_ui() {
     return;
   }
 
-  lv2_wrapper->native_ui_to_gsettings(settings);
+  lv2_wrapper->native_ui_to_gsettings();
   lv2_wrapper->close_ui();
 }
 

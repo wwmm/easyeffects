@@ -643,7 +643,7 @@ void Lv2Wrapper::ui_port_event(const uint& port_index, const float& value) {
   ui_descriptor->port_event(ui_handle, port_index, sizeof(float), 0, &value);
 }
 
-void Lv2Wrapper::native_ui_to_gsettings(GSettings* settings) {
+void Lv2Wrapper::native_ui_to_gsettings() {
   if (ui_descriptor == nullptr || ui_handle == nullptr) {  // only write to the database if the native ui is being used
     return;
   }
