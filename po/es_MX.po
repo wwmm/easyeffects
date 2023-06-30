@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-25 11:37-0300\n"
-"PO-Revision-Date: 2022-08-17 04:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2023-06-30 13:54+0000\n"
+"Last-Translator: Gerardo Femat Delgado <fematdelgado.github@gmail.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
 "easyeffects/main/es_MX/>\n"
 "Language: es_MX\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -29,9 +29,8 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Ecualizador, Compresor y Otros Efectos de Sonido"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efectos de Sonido para las Aplicaciones de PulseAudio"
+msgstr "Efectos de audio para aplicaciones PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
@@ -44,34 +43,31 @@ msgstr "\"Perfiles\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Habilitar/deshabilitar esta aplicación"
 
 #: data/ui/app_info.ui:213
-#, fuzzy
 msgid "Enable"
 msgstr "Habilitar"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Lista Aplicaciones Excluidas: Agregar/Quitar esta aplicación"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "Excluir"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
-#, fuzzy
 msgid "Mute Application"
-msgstr "Aplicaciones"
+msgstr "Silenciar Aplicación"
 
 #: data/ui/app_info.ui:270
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "Cambiar el volumen de esta aplicación"
 
 #: data/ui/app_info.ui:272
-#, fuzzy
 msgid "Application Volume"
-msgstr "Aplicaciones"
+msgstr "Volumen de la Aplicación"
 
 #: data/ui/application_window.ui:6
 #, fuzzy
@@ -85,7 +81,7 @@ msgstr "Ajustes"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
@@ -103,13 +99,13 @@ msgid "Presets"
 msgstr "Perfiles"
 
 #: data/ui/application_window.ui:55
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Perfiles"
+msgstr "Menú de Perfiles"
 
 #: data/ui/application_window.ui:62
+#, fuzzy
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "Habilitar/Deshabilitar"
 
 #: data/ui/application_window.ui:67
 msgid "Global Bypass"
@@ -117,7 +113,7 @@ msgstr "Bypass Global"
 
 #: data/ui/application_window.ui:77
 msgid "Primary Menu"
-msgstr ""
+msgstr "Menú Principal"
 
 #: data/ui/application_window.ui:92
 #, fuzzy
@@ -135,9 +131,8 @@ msgid "Empty List"
 msgstr "Paredes Vacías"
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Aplicaciones"
+msgstr "Sin Aplicaciones de Audio Disponibles"
 
 #: data/ui/autogain.ui:29
 msgid "Target"
@@ -170,24 +165,20 @@ msgid "Integrated"
 msgstr "Integrado"
 
 #: data/ui/autogain.ui:149
-#, fuzzy
 msgid "Geometric Mean (MSI)"
-msgstr "Usar la Media Geométrica"
+msgstr "Usar la Media Geométrica (MSI)"
 
 #: data/ui/autogain.ui:150
-#, fuzzy
 msgid "Geometric Mean (MS)"
-msgstr "Usar la Media Geométrica"
+msgstr "Usar la Media Geométrica (MS)"
 
 #: data/ui/autogain.ui:151
-#, fuzzy
 msgid "Geometric Mean (MI)"
-msgstr "Usar la Media Geométrica"
+msgstr "Usar la Media Geométrica (MI)"
 
 #: data/ui/autogain.ui:152
-#, fuzzy
 msgid "Geometric Mean (SI)"
-msgstr "Usar la Media Geométrica"
+msgstr "Usar la Media Geométrica (SI)"
 
 #: data/ui/autogain.ui:169 data/ui/level_meter.ui:25
 msgid "Reset History"
@@ -281,7 +272,7 @@ msgstr "Restablecer"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:625 data/ui/gate.ui:750
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
@@ -292,7 +283,7 @@ msgstr "Nombre"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: data/ui/autoload_row.ui:89
 #, fuzzy
@@ -339,40 +330,34 @@ msgid "Floor"
 msgstr "Fondo"
 
 #: data/ui/bass_enhancer.ui:240
-#, fuzzy
 msgid "Floor Value"
-msgstr "Fondo"
+msgstr "Valor del Fondo"
 
 #: data/ui/bass_loudness.ui:71
 msgid "Link"
 msgstr "Acoplar"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
-#, fuzzy
 msgid "Application Name"
-msgstr "Aplicaciones"
+msgstr "Nombre de Aplicación"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "Aplicaciones"
+msgstr "Añadir a Aplicaciones Excluidas"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "Aplicaciones"
+msgstr "Aplicaciones Excluidas"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "Aplicaciones"
+msgstr "Mostrar Aplicaciones Excluidas"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:283
 #: data/ui/gate.ui:25 data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:104 data/ui/multiband_gate.ui:104
-#, fuzzy
 msgid "Show Native Window"
-msgstr "Ventana"
+msgstr "Mostrar Ventana Nativa"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:34
 msgid "Compressor"
@@ -448,9 +433,8 @@ msgid "Release"
 msgstr "Liberar"
 
 #: data/ui/compressor.ui:283 data/ui/multiband_compressor_band.ui:278
-#, fuzzy
 msgid "Release Time"
-msgstr "Tiempo Real"
+msgstr "Tiempo decaimiento"
 
 #: data/ui/compressor.ui:307 data/ui/gate.ui:601
 #: data/ui/multiband_compressor_band.ui:306
@@ -1283,9 +1267,8 @@ msgstr "Acoplamiento Estéreo"
 
 #: data/ui/limiter.ui:465 data/ui/multiband_compressor_band.ui:120
 #: data/ui/multiband_gate_band.ui:89
-#, fuzzy
 msgid "External Sidechain"
-msgstr "Cadena Lateral"
+msgstr "Cadena Lateral Externa"
 
 #: data/ui/limiter.ui:478 data/ui/multiband_compressor.ui:95
 #: data/ui/multiband_gate.ui:95
@@ -1310,32 +1293,28 @@ msgid "Auto Leveling Knee"
 msgstr ""
 
 #: data/ui/limiter.ui:633
-#, fuzzy
 msgid "Gain Left"
-msgstr "Ganancia"
+msgstr "Ganancia Izquierda"
 
 #: data/ui/limiter.ui:660
-#, fuzzy
 msgid "Gain Right"
-msgstr "Derecha"
+msgstr "Ganancia Derecha"
 
 #: data/ui/limiter.ui:687
-#, fuzzy
 msgid "Sidechain Left"
-msgstr "Cadena Lateral"
+msgstr "Cadena Lateral Izquierda"
 
 #: data/ui/limiter.ui:714
-#, fuzzy
 msgid "Sidechain Right"
-msgstr "Cadena Lateral"
+msgstr "Cadena Lateral Derecha"
 
 #: data/ui/loudness.ui:37
 msgid "Standard"
-msgstr ""
+msgstr "Estándar"
 
 #: data/ui/loudness.ui:44
 msgid "Flat"
-msgstr ""
+msgstr "Plano"
 
 #: data/ui/loudness.ui:58
 #, fuzzy
@@ -1343,9 +1322,8 @@ msgid "FFT Size"
 msgstr "Tamaño del Marco"
 
 #: data/ui/loudness.ui:82
-#, fuzzy
 msgid "Output Volume"
-msgstr "Salida"
+msgstr "Volumen de Salida"
 
 #: data/ui/loudness.ui:104
 #, fuzzy
@@ -1378,13 +1356,12 @@ msgid "Brown MT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:125 data/ui/multiband_gate.ui:125
-#, fuzzy
 msgid "Operating Mode"
-msgstr "Modo de Compresión"
+msgstr "Modo de Operación"
 
 #: data/ui/multiband_compressor.ui:138 data/ui/multiband_gate.ui:138
 msgid "Classic"
-msgstr ""
+msgstr "Clásico"
 
 #: data/ui/multiband_compressor.ui:139 data/ui/multiband_gate.ui:139
 #, fuzzy
@@ -1392,58 +1369,48 @@ msgid "Modern"
 msgstr "Modo"
 
 #: data/ui/multiband_compressor.ui:249 data/ui/multiband_gate.ui:249
-#, fuzzy
 msgid "Bands List"
 msgstr "Bandas"
 
 #: data/ui/multiband_compressor.ui:258 data/ui/multiband_gate.ui:258
-#, fuzzy
 msgid "Band 1"
-msgstr "Bandas"
+msgstr "Banda 1"
 
 #: data/ui/multiband_compressor.ui:275 data/ui/multiband_gate.ui:275
-#, fuzzy
 msgid "Band 2"
-msgstr "Bandas"
+msgstr "Banda 2"
 
 #: data/ui/multiband_compressor.ui:301 data/ui/multiband_gate.ui:301
-#, fuzzy
 msgid "Band 3"
-msgstr "Bandas"
+msgstr "Banda 3"
 
 #: data/ui/multiband_compressor.ui:327 data/ui/multiband_gate.ui:327
-#, fuzzy
 msgid "Band 4"
-msgstr "Bandas"
+msgstr "Banda 4"
 
 #: data/ui/multiband_compressor.ui:353 data/ui/multiband_gate.ui:353
-#, fuzzy
 msgid "Band 5"
-msgstr "Bandas"
+msgstr "Banda 5"
 
 #: data/ui/multiband_compressor.ui:379 data/ui/multiband_gate.ui:379
-#, fuzzy
 msgid "Band 6"
-msgstr "Bandas"
+msgstr "Banda 6"
 
 #: data/ui/multiband_compressor.ui:405 data/ui/multiband_gate.ui:405
-#, fuzzy
 msgid "Band 7"
-msgstr "Bandas"
+msgstr "Banda 7"
 
 #: data/ui/multiband_compressor.ui:431 data/ui/multiband_gate.ui:431
-#, fuzzy
 msgid "Band 8"
-msgstr "Bandas"
+msgstr "Banda 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "Inicio de banda"
 
 #: data/ui/multiband_compressor_band.ui:57 data/ui/multiband_gate_band.ui:57
-#, fuzzy
 msgid "Band End"
-msgstr "Bandas"
+msgstr "Final de banda"
 
 #: data/ui/multiband_compressor_band.ui:112
 #, fuzzy
@@ -1481,7 +1448,7 @@ msgstr "Calcular Frecuencias"
 
 #: data/ui/multiband_compressor_band.ui:613 data/ui/multiband_gate_band.ui:672
 msgid "PreAmp"
-msgstr ""
+msgstr "Preamplificador"
 
 #: data/ui/multiband_compressor_band.ui:819
 #, fuzzy
@@ -1545,9 +1512,8 @@ msgid "Header Version"
 msgstr "Versión"
 
 #: data/ui/pipe_manager_box.ui:127
-#, fuzzy
 msgid "Library Version"
-msgstr "Versión"
+msgstr "Versión librerías"
 
 #: data/ui/pipe_manager_box.ui:138
 #, fuzzy
@@ -1578,9 +1544,8 @@ msgid "Output Devices"
 msgstr "Efectos de Salida"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
-#, fuzzy
 msgid "Output Presets"
-msgstr "Perfiles de Dispositivos de Salida: "
+msgstr "Perfiles de Dispositivos de Salida"
 
 #: data/ui/pipe_manager_box.ui:256 data/ui/pipe_manager_box.ui:348
 msgid "Create Association"
@@ -1591,9 +1556,8 @@ msgid "Add Autoloading Output Preset"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:290
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "Perfiles de Dispositivos de Salida: "
+msgstr "Perfiles de Dispositivos de Salida"
 
 #: data/ui/pipe_manager_box.ui:329
 #, fuzzy
@@ -1601,41 +1565,36 @@ msgid "Input Devices"
 msgstr "Efectos de Entrada"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
-#, fuzzy
 msgid "Input Presets"
-msgstr "Perfiles de Dispositivos de Entrada: "
+msgstr "Perfiles de Dispositivos de Entrada"
 
 #: data/ui/pipe_manager_box.ui:362
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "Añadir perfil autocargado"
 
 #: data/ui/pipe_manager_box.ui:381
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "Perfiles de Dispositivos de Entrada: "
+msgstr "Perfiles de Dispositivos de Entrada"
 
 #: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
 msgstr "Módulos"
 
 #: data/ui/pipe_manager_box.ui:429
-#, fuzzy
 msgid "Modules List"
-msgstr "Módulos"
+msgstr "Lista de módulos"
 
 #: data/ui/pipe_manager_box.ui:443
 msgid "Clients"
 msgstr "Clientes"
 
 #: data/ui/pipe_manager_box.ui:461
-#, fuzzy
 msgid "Clients List"
-msgstr "Clientes"
+msgstr "Lista de clientes"
 
 #: data/ui/pipe_manager_box.ui:475
-#, fuzzy
 msgid "Test Signal"
-msgstr "Señal de Prueba"
+msgstr "Señal de prueba"
 
 #: data/ui/pipe_manager_box.ui:480 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
@@ -1643,13 +1602,12 @@ msgid "State"
 msgstr "Estado"
 
 #: data/ui/pipe_manager_box.ui:483 data/ui/preferences_spectrum.ui:12
-#, fuzzy
 msgid "Enabled"
-msgstr "Habilitar"
+msgstr "Habilitado"
 
 #: data/ui/pipe_manager_box.ui:498
 msgid "Properties"
-msgstr ""
+msgstr "Propiedades"
 
 #: data/ui/pipe_manager_box.ui:501
 msgid "Channels"
@@ -1657,16 +1615,15 @@ msgstr "Canales"
 
 #: data/ui/pipe_manager_box.ui:526
 msgid "Both"
-msgstr ""
+msgstr "Ambos"
 
 #: data/ui/pipe_manager_box.ui:530
-#, fuzzy
 msgid "Both Channels"
-msgstr "Canales"
+msgstr "Ambos canales"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
-msgstr ""
+msgstr "Forma de onda"
 
 #: data/ui/pipe_manager_box.ui:543
 #, fuzzy
@@ -1731,7 +1688,7 @@ msgstr ""
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
-msgstr ""
+msgstr "Añadir efecto"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
@@ -1766,15 +1723,15 @@ msgstr "Servidor"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Lanzar el servicio al arranque"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "Apagar al cerrar la ventana"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: data/ui/preferences_general.ui:42
 #, fuzzy
@@ -1825,7 +1782,7 @@ msgstr "Espectro"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Forma"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Bars"
@@ -1881,9 +1838,8 @@ msgid "Frequency Range"
 msgstr "Frecuencia"
 
 #: data/ui/preferences_spectrum.ui:200
-#, fuzzy
 msgid "Minimum"
-msgstr "Máximo"
+msgstr "Mínimo"
 
 #: data/ui/preferences_spectrum.ui:223
 msgid "Maximum"
@@ -1907,9 +1863,8 @@ msgid "Remove this preset file"
 msgstr "Borrar este perfil"
 
 #: data/ui/presets_menu.ui:51
-#, fuzzy
 msgid "New Output Preset Name"
-msgstr "Perfiles de Dispositivos de Salida: "
+msgstr "Perfiles de Dispositivos de Salida:"
 
 #: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
 #, fuzzy
@@ -1922,9 +1877,8 @@ msgid "Import a preset"
 msgstr "Importar Perfiles"
 
 #: data/ui/presets_menu.ui:90
-#, fuzzy
 msgid "Search Output Preset"
-msgstr "Perfiles de Dispositivos de Salida: "
+msgstr "Perfiles de Dispositivos de Salida:"
 
 #: data/ui/presets_menu.ui:151
 #, fuzzy
