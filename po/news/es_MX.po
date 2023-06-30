@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-25 11:38-0300\n"
-"PO-Revision-Date: 2023-05-07 12:49+0000\n"
-"Last-Translator: Azul Walters <silencio43@proton.me>\n"
+"PO-Revision-Date: 2023-06-30 13:54+0000\n"
+"Last-Translator: Gerardo Femat Delgado <fematdelgado.github@gmail.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/es_MX/>\n"
 "Language: es_MX\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #, fuzzy
@@ -25,9 +25,8 @@ msgid "Easy Effects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efectos de Sonido para las Aplicaciones de PulseAudio"
+msgstr "Efectos de audio para aplicaciones PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
@@ -144,6 +143,8 @@ msgstr ""
 msgid ""
 "Improved compatibility with recent PipeWire versions. More information at"
 msgstr ""
+"Se mejoró la compatibilidad con versiones recientes de PipeWire. Más "
+"información en"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
@@ -188,7 +189,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:268
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
 msgid "Other notes:"
-msgstr ""
+msgstr "Otras notas:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid ""
@@ -222,19 +223,23 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
 msgid "Updated translations."
-msgstr ""
+msgstr "Actualización de traducciones."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:86
 msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
 msgstr ""
+"Se cometió un pequeño error en la última versión. Esta nueva versión asegura "
+"que todos los involucrados tengan la rama correcta"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
 msgstr ""
+"La función del ecualizador \"ordenar bandas\" ahora ordena las bandas en "
+"GSettings, por tanto el resultado puede ser guardado en los perfiles."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:95
 msgid "Improved performance when resetting keys."
@@ -277,7 +282,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
 msgid "Small improvements to the echo canceller."
-msgstr ""
+msgstr "Pequeñas mejoras a la cancelación de eco."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
 msgid ""
