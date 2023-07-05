@@ -616,6 +616,50 @@ void setup(PipeManagerBox* self, app::Application* application) {
     }
   }));
 
+  // updating the devices dropdown when the default device is changed
+
+  self->data->connections.push_back(pm->new_default_sink_name.connect([=](const std::string new_default_device_name) {
+    if (gtk_switch_get_state(self->use_default_output) != 1) {
+      return;
+    }
+
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_devices_model)); n++) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->output_devices_model), n));
+
+      if (holder->info->name == new_default_device_name) {
+        g_object_unref(holder);
+
+        gtk_drop_down_set_selected(self->dropdown_output_devices, n);
+
+        return;
+      }
+
+      g_object_unref(holder);
+    }
+  }));
+
+  self->data->connections.push_back(pm->new_default_source_name.connect([=](const std::string new_default_device_name) {
+    if (gtk_switch_get_state(self->use_default_input) != 1) {
+      return;
+    }
+
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
+      auto* holder =
+          static_cast<ui::holders::NodeInfoHolder*>(g_list_model_get_item(G_LIST_MODEL(self->input_devices_model), n));
+
+      if (holder->info->name == new_default_device_name) {
+        g_object_unref(holder);
+
+        gtk_drop_down_set_selected(self->dropdown_input_devices, n);
+
+        return;
+      }
+
+      g_object_unref(holder);
+    }
+  }));
+
   // signals related to presets creation/destruction
 
   self->data->connections.push_back(
