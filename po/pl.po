@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 12:02-0300\n"
-"PO-Revision-Date: 2023-04-12 12:53+0000\n"
+"PO-Revision-Date: 2023-07-15 21:52+0000\n"
 "Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -72,7 +72,7 @@ msgstr "Głośność aplikacji"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
-msgstr ""
+msgstr "_Pomoc"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -162,7 +162,7 @@ msgstr "Średnia geometryczna (MSI)"
 
 #: data/ui/autogain.ui:150
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "Średnia geometryczna (MSI)"
 
 #: data/ui/autogain.ui:151
 msgid "Geometric Mean (MI)"
@@ -368,13 +368,12 @@ msgid "Mode"
 msgstr "Tryb"
 
 #: data/ui/compressor.ui:76 data/ui/multiband_compressor_band.ui:101
-#, fuzzy
 msgid "Downward"
-msgstr "Dół"
+msgstr "W dół"
 
 #: data/ui/compressor.ui:77 data/ui/multiband_compressor_band.ui:102
 msgid "Upward"
-msgstr ""
+msgstr "W górę"
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:103
 msgid "Boosting"
@@ -551,7 +550,7 @@ msgstr "Rodzaj"
 
 #: data/ui/compressor.ui:640
 msgid "Feed-forward"
-msgstr ""
+msgstr "Przekazywanie danych"
 
 # Wejście?
 #: data/ui/compressor.ui:641
@@ -571,9 +570,8 @@ msgid "Input Device"
 msgstr "Urządzenie wejściowe"
 
 #: data/ui/compressor.ui:686 data/ui/gate.ui:805
-#, fuzzy
 msgid "PreAmplification"
-msgstr "Programy"
+msgstr "Wzmocnienie wstępne"
 
 #: data/ui/compressor.ui:723 data/ui/gate.ui:842
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
@@ -687,7 +685,7 @@ msgstr "Widmo"
 
 #: data/ui/convolver.ui:122
 msgid "Log Scale"
-msgstr ""
+msgstr "Skala logarytmiczna"
 
 #: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
 msgid "Autogain"
@@ -703,7 +701,6 @@ msgid "Samples"
 msgstr "Sample"
 
 #: data/ui/convolver.ui:190
-#, fuzzy
 msgid "Duration"
 msgstr "Czas trwania"
 
@@ -727,7 +724,7 @@ msgstr "Wyjście"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "Nazwa połączonego jądra"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
@@ -961,7 +958,7 @@ msgstr "Sufit"
 
 #: data/ui/exciter.ui:240
 msgid "Ceil Value"
-msgstr ""
+msgstr "Wartość sufitu"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
@@ -1046,7 +1043,7 @@ msgstr "Strefa"
 
 #: data/ui/gate.ui:241 data/ui/multiband_gate_band.ui:315
 msgid "Hysteresis"
-msgstr ""
+msgstr "Histereza"
 
 #: data/ui/gate.ui:336
 msgid "Mix"
@@ -1076,7 +1073,7 @@ msgstr "Wewnętrzne"
 
 #: data/ui/gate.ui:1369 data/ui/multiband_gate_band.ui:866
 msgid "Gating"
-msgstr ""
+msgstr "Bramka"
 
 #: data/ui/level_meter.ui:39
 #, fuzzy
@@ -1231,7 +1228,7 @@ msgstr "Pełne x8(3L)"
 
 #: data/ui/limiter.ui:201
 msgid "SC PreAmp"
-msgstr ""
+msgstr "Przedwzmacniacz SC"
 
 #: data/ui/limiter.ui:230 data/ui/multiband_compressor_band.ui:640
 #: data/ui/multiband_gate_band.ui:698
@@ -1348,7 +1345,7 @@ msgstr "Importuj profile"
 
 #: data/ui/multiband_compressor.ui:138 data/ui/multiband_gate.ui:138
 msgid "Classic"
-msgstr ""
+msgstr "Klasyczne"
 
 #: data/ui/multiband_compressor.ui:139 data/ui/multiband_gate.ui:139
 msgid "Modern"
@@ -1434,7 +1431,7 @@ msgstr "Filtr górnoprzepustowy"
 
 #: data/ui/multiband_compressor_band.ui:613 data/ui/multiband_gate_band.ui:672
 msgid "PreAmp"
-msgstr ""
+msgstr "Przedwzmacniacz"
 
 #: data/ui/multiband_compressor_band.ui:819
 #, fuzzy
@@ -1459,7 +1456,7 @@ msgstr "Ogólne"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Zarządzanie urządzeniami"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
@@ -1608,7 +1605,7 @@ msgstr "Oba kanały"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
-msgstr ""
+msgstr "Przebieg fali"
 
 #: data/ui/pipe_manager_box.ui:543
 #, fuzzy
@@ -1621,11 +1618,11 @@ msgstr "Biały szum"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Szybkie wyszukiwanie"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Wygładzanie"
 
 #: data/ui/pitch.ui:58
 #, fuzzy
@@ -1678,7 +1675,7 @@ msgstr "Dodaj efekt"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
-msgstr ""
+msgstr "Lista używanych wtyczek"
 
 #: data/ui/plugins_box.ui:129
 msgid "No Effects"
@@ -1734,7 +1731,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "Limit czasu braku aktywności"
 
 #: data/ui/preferences_general.ui:113
 msgid "Update Interval (Level Meters and Spectrum)"
@@ -1762,7 +1759,7 @@ msgstr "Widmo (_S)"
 
 #: data/ui/preferences_spectrum.ui:29
 msgid "Shape"
-msgstr ""
+msgstr "Kształt"
 
 #: data/ui/preferences_spectrum.ui:37
 msgid "Bars"
@@ -1993,15 +1990,15 @@ msgstr "Przegląd"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Pokaż pomoc"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Pełny ekran/Przywracanie z trybu pełnoekranowego"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "Zamknij okno"
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
@@ -2147,7 +2144,7 @@ msgstr "Działające"
 
 #: src/app_info.cpp:67
 msgid "Suspended"
-msgstr ""
+msgstr "Zawieszone"
 
 #: src/app_info.cpp:69
 msgid "Idle"
@@ -2328,11 +2325,11 @@ msgstr "Dodaj"
 
 #: src/presets_menu.cpp:228
 msgid "Save?"
-msgstr ""
+msgstr "Zapisać?"
 
 #: src/presets_menu.cpp:247
 msgid "Delete?"
-msgstr ""
+msgstr "Usunąć?"
 
 #: src/rnnoise_ui.cpp:90
 msgid ""
@@ -2422,7 +2419,7 @@ msgstr "Redukcja szumu"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Speech Processor"
-msgstr ""
+msgstr "Procesor mowy"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Stereo Tools"
