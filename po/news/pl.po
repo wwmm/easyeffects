@@ -8,22 +8,21 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 12:02-0300\n"
-"PO-Revision-Date: 2022-04-18 18:11+0000\n"
-"Last-Translator: Krzysztof Marcinek <krzymar2002@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
-"pl/>\n"
+"PO-Revision-Date: 2023-07-15 14:05+0000\n"
+"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
 msgid "Easy Effects"
-msgstr "EasyEffects"
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -127,7 +126,7 @@ msgstr "Strona konwolwera przedstawiająca elementy sterujące dźwiękiem"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:394
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:407
 msgid "Features:"
-msgstr ""
+msgstr "Funkcje:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid "A new Level Meter plugin based on libebur128 has been added."
@@ -170,7 +169,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:386
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:399
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Poprawki błędów:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
@@ -188,7 +187,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:268
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
 msgid "Other notes:"
-msgstr ""
+msgstr "Inne uwagi:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid ""
