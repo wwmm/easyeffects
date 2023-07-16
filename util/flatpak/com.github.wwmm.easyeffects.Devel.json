@@ -82,20 +82,6 @@
                     "//": "Should be type: git for downstream sources, e.g. when using flatpak-builder with easyeffects as a submodule. This ensures the commit can be found for the build debug info. Type dir works everywhere else I have tested.",
                     "type": "dir",
                     "path": "../../"
-                },
-                {
-                    "type": "file",
-                    "path": "easyeffects-wrapper.sh"
-                },
-                {
-                    "type": "patch",
-                    "path": "patch/easyeffects/002-fix-desktop-file.patch"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "install -Dvm 755 easyeffects-wrapper.sh $FLATPAK_DEST/bin/easyeffects-wrapper"
-                    ]
                 }
             ],
             "post-install": [
