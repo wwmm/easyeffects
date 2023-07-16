@@ -1,4 +1,4 @@
-meson _build --prefix=/tmp/ee -Db_sanitize=address,undefined
+meson setup _build --prefix=/tmp/ee -Db_sanitize=address,undefined
 
 G_SLICE=always-malloc G_DEBUG=gc-friendly ./easyeffects
 
