@@ -34,7 +34,7 @@ Pitch::Pitch(const std::string& tag,
   tempo_difference = g_settings_get_double(settings, "tempo-difference");
   rate_difference = g_settings_get_double(settings, "rate-difference");
 
-  semitones = g_settings_get_int(settings, "semitones");
+  semitones = g_settings_get_double(settings, "semitones");
 
   // resetting soundtouch when bypass is pressed so its internal data is discarded
 
@@ -162,7 +162,7 @@ Pitch::Pitch(const std::string& tag,
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto* self = static_cast<Pitch*>(user_data);
 
-                                            self->semitones = g_settings_get_int(settings, key);
+                                            self->semitones = g_settings_get_double(settings, key);
 
                                             if (!self->soundtouch_ready) {
                                               return;

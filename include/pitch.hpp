@@ -62,11 +62,11 @@ class Pitch : public PluginBase {
   bool anti_alias = false;
   bool quick_seek = false;
 
-  int semitones = 0;
   int sequence_length_ms = 40;
   int seek_window_ms = 15;
   int overlap_length_ms = 8;
 
+  double semitones = 0;
   double tempo_difference = 0.0;
   double rate_difference = 0.0;
 
