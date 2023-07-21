@@ -66,7 +66,7 @@ class Pitch : public PluginBase {
   int seek_window_ms = 15;
   int overlap_length_ms = 8;
 
-  double semitones = 0;
+  double semitones = 0.0;
   double tempo_difference = 0.0;
   double rate_difference = 0.0;
 
