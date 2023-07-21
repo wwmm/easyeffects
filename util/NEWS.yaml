@@ -5,6 +5,7 @@ Date: UNRELEASED_DATE
 Description: 
 - Features∶
 - The native window of the LSP plugins can be used. This is an experimental feature intended only for advanced users. So expect some bugs.
+- Fractional semitone values can now be used in the Pitch Shift effect. 
 
 - Bug fixes∶
 - The input/output device dropdown in our PipeWire tab is updated when the system default device changes and `Use Default` is enabled. This fixes #1989
