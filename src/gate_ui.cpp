@@ -59,7 +59,7 @@ struct _GateBox {
 
   GtkComboBoxText *sidechain_input, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode;
 
-  GtkToggleButton* listen;
+  GtkToggleButton *listen, *show_native_ui;
 
   GtkDropDown* dropdown_input_devices;
 
@@ -395,6 +395,9 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
   g_settings_bind(self->settings, "hpf-mode", self->hpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, "lpf-mode", self->lpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -488,6 +491,8 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, hpf_mode);
   gtk_widget_class_bind_template_child(widget_class, GateBox, listen);
   gtk_widget_class_bind_template_child(widget_class, GateBox, dropdown_input_devices);
+
+  gtk_widget_class_bind_template_child(widget_class, GateBox, show_native_ui);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);

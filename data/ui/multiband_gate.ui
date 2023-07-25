@@ -98,7 +98,7 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkToggleButton">
+                                                    <object class="GtkToggleButton" id="show_native_ui">
                                                         <property name="halign">center</property>
                                                         <property name="valign">center</property>
                                                         <property name="label" translatable="yes">Show Native Window</property>

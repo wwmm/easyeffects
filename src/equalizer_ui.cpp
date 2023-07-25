@@ -78,7 +78,7 @@ struct _EqualizerBox {
 
   GtkDropDown* mode;
 
-  GtkToggleButton* split_channels;
+  GtkToggleButton *split_channels, *show_native_ui;
 
   GSettings *settings, *settings_left, *settings_right;
 
@@ -795,6 +795,9 @@ void setup(EqualizerBox* self,
   g_settings_bind(self->settings, "pitch-right", gtk_spin_button_get_adjustment(self->pitch_right), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
+                  G_SETTINGS_BIND_DEFAULT);
+
   self->data->gconnections.push_back(g_signal_connect(
       self->settings, "changed::num-bands",
       G_CALLBACK(+[](GSettings* settings, char* key, EqualizerBox* self) { build_all_bands(self); }), self));
@@ -880,6 +883,8 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, balance);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, pitch_left);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBox, pitch_right);
+
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBox, show_native_ui);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 

@@ -50,6 +50,8 @@ struct _LoudnessBox {
 
   GtkSpinButton *volume, *clipping_range;
 
+  GtkToggleButton* show_native_ui;
+
   GSettings* settings;
 
   Data* data;
@@ -122,6 +124,9 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 
   g_settings_bind(self->settings, "clipping-range", gtk_spin_button_get_adjustment(self->clipping_range), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -187,6 +192,8 @@ void loudness_box_class_init(LoudnessBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, fft_size);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, clipping);
   gtk_widget_class_bind_template_child(widget_class, LoudnessBox, clipping_range);
+
+  gtk_widget_class_bind_template_child(widget_class, LoudnessBox, show_native_ui);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);

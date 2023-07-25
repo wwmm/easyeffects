@@ -49,7 +49,7 @@ struct _CompressorBox {
   GtkSpinButton *attack, *release, *release_threshold, *threshold, *knee, *ratio, *makeup, *dry, *wet, *boost_threshold,
       *boost_amount, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
 
-  GtkToggleButton* listen;
+  GtkToggleButton *listen, *show_native_ui;
 
   GtkDropDown *compression_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode,
       *dropdown_input_devices;
@@ -339,6 +339,9 @@ void setup(CompressorBox* self,
   ui::gsettings_bind_enum_to_dropdown(self->settings, "hpf-mode", self->hpf_mode);
 
   ui::gsettings_bind_enum_to_dropdown(self->settings, "lpf-mode", self->lpf_mode);
+
+  g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -427,6 +430,7 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, hpf_mode);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, listen);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, dropdown_input_devices);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, show_native_ui);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);

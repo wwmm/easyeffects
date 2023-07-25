@@ -57,6 +57,8 @@ struct _MultibandGateBox {
 
   GtkDropDown* dropdown_input_devices;
 
+  GtkToggleButton* show_native_ui;
+
   GListStore* input_devices_model;
 
   GSettings* settings;
@@ -323,6 +325,9 @@ void setup(MultibandGateBox* self,
   g_settings_bind(self->settings, "enable-band5", self->enable_band5, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "enable-band6", self->enable_band6, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "enable-band7", self->enable_band7, "active", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -396,6 +401,8 @@ void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gate_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, envelope_boost);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, dropdown_input_devices);
+
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, show_native_ui);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);

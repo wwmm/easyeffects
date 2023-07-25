@@ -46,7 +46,7 @@ struct _DelayBox {
 
   GtkSpinButton *time_l, *time_r, *dry_l, *dry_r, *wet_l, *wet_r;
 
-  GtkToggleButton *floor_active, *listen;
+  GtkToggleButton *floor_active, *show_native_ui;
 
   GSettings* settings;
 
@@ -126,6 +126,9 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 
   g_settings_bind(self->settings, "wet-r", gtk_spin_button_get_adjustment(self->wet_r), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -192,6 +195,8 @@ void delay_box_class_init(DelayBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, DelayBox, dry_r);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, wet_l);
   gtk_widget_class_bind_template_child(widget_class, DelayBox, wet_r);
+
+  gtk_widget_class_bind_template_child(widget_class, DelayBox, show_native_ui);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
