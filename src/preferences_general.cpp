@@ -27,7 +27,7 @@ struct _PreferencesGeneral {
   AdwPreferencesPage parent_instance;
 
   GtkSwitch *enable_autostart, *process_all_inputs, *process_all_outputs, *theme_switch, *shutdown_on_window_close,
-      *use_cubic_volumes, *autohide_popovers, *exclude_monitor_streams;
+      *use_cubic_volumes, *autohide_popovers, *exclude_monitor_streams, *show_native_plugin_ui;
 
   GtkSpinButton *inactivity_timeout, *meters_update_interval, *lv2ui_update_frequency;
 
@@ -112,6 +112,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, inactivity_timeout);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, meters_update_interval);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, lv2ui_update_frequency);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, show_native_plugin_ui);
 }
 
 void preferences_general_init(PreferencesGeneral* self) {
@@ -127,14 +128,16 @@ void preferences_general_init(PreferencesGeneral* self) {
 
   gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
                          "use-cubic-volumes", "autohide-popovers", "exclude-monitor-streams", "inactivity-timeout",
-                         "meters-update-interval", "lv2ui-update-frequency">(
+                         "meters-update-interval", "lv2ui-update-frequency", "show-native-plugin-ui">(
       self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
       self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->exclude_monitor_streams,
-      self->inactivity_timeout, self->meters_update_interval, self->lv2ui_update_frequency);
+      self->inactivity_timeout, self->meters_update_interval, self->lv2ui_update_frequency,
+      self->show_native_plugin_ui);
 
 #ifdef ENABLE_LIBPORTAL
   libportal::init(self->enable_autostart, self->shutdown_on_window_close);
 #else
+
   gtk_switch_set_active(self->enable_autostart,
                         static_cast<gboolean>(std::filesystem::is_regular_file(
                             g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));

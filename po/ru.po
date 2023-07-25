@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-20 19:44-0300\n"
+"POT-Creation-Date: 2023-07-25 12:07-0300\n"
 "PO-Revision-Date: 2023-06-22 20:11+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1704,6 +1704,20 @@ msgstr "Использовать тёмную тему"
 msgid "Hide Menus on Outside Clicks"
 msgstr "Скрывать меню по щелчку вне фокуса"
 
+#: data/ui/preferences_general.ui:190
+#, fuzzy
+msgid "Experimental Features"
+msgstr "Опытный"
+
+#: data/ui/preferences_general.ui:193
+#, fuzzy
+msgid "Native Plugin Window"
+msgstr "Показать родное окно"
+
+#: data/ui/preferences_general.ui:194
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr ""
+
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
 msgstr "_Спектр"
@@ -2129,7 +2143,7 @@ msgstr "Глобальный обход. 1 — включить, 2 — откл�
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
-#: src/application_ui.cpp:274
+#: src/application_ui.cpp:278
 msgid "_Output"
 msgstr "Выхо_д"
 
@@ -2143,11 +2157,11 @@ msgstr "Выхо_д"
 # msgid "Influence of integrated measurements"
 # msgstr "Влияние комплексных измерений"
 # ###############################################
-#: src/application_ui.cpp:275
+#: src/application_ui.cpp:279
 msgid "_Input"
 msgstr "Вх_од"
 
-#: src/application_ui.cpp:276
+#: src/application_ui.cpp:280
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
@@ -2368,12 +2382,12 @@ msgid "Stereo Tools"
 msgstr "Стереоналадчики"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:67
+#: src/ui_helpers.cpp:69
 #, c++-format
 msgid "{} Not Available"
 msgstr "Эффект «{}» недоступен"
 
-#: src/ui_helpers.cpp:71
+#: src/ui_helpers.cpp:73
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
@@ -2383,7 +2397,7 @@ msgstr ""
 "Рассмотрите возможность использования пакета Easy Effects Flatpak или "
 "установите программное обеспечение самостоятельно."
 
-#: src/ui_helpers.cpp:77
+#: src/ui_helpers.cpp:79
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2396,12 +2410,12 @@ msgstr ""
 "было недоступно. Рассмотрите возможность использования пакета Easy Effects "
 "Flatpak или сборки собственного пакета Easy Effects."
 
-#: src/ui_helpers.cpp:119 src/ui_helpers.cpp:139
+#: src/ui_helpers.cpp:121 src/ui_helpers.cpp:141
 msgid "-inf"
 msgstr "∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:224
+#: src/ui_helpers.cpp:226
 #, c++-format
 msgid "Using {}"
 msgstr "Используется {}"

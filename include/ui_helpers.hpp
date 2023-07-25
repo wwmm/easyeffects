@@ -80,6 +80,12 @@ void gsettings_bind_enum_to_dropdown(GSettings* settings,
                                      GtkDropDown* dropdown,
                                      GSettingsBindFlags flags = G_SETTINGS_BIND_DEFAULT);
 
+void init_global_app_settings();
+
+void unref_global_app_settings();
+
+auto get_global_app_settings() -> GSettings*;
+
 template <StringLiteralWrapper sl_wrapper, bool lower_bound = true>
 void prepare_spinbutton(GtkSpinButton* button) {
   if (button == nullptr) {

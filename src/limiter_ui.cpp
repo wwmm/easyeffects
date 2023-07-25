@@ -55,7 +55,7 @@ struct _LimiterBox {
 
   GtkCheckButton* gain_boost;
 
-  GtkToggleButton *alr, *external_sidechain;
+  GtkToggleButton *alr, *external_sidechain, *show_native_ui;
 
   GListStore* input_devices_model;
 
@@ -283,6 +283,9 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 
   g_settings_bind(self->settings, "alr", self->alr, "active", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
+                  G_SETTINGS_BIND_DEFAULT);
+
   ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
 
   ui::gsettings_bind_enum_to_dropdown(self->settings, "oversampling", self->oversampling);
@@ -368,6 +371,7 @@ void limiter_box_class_init(LimiterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, sidechain_left);
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, sidechain_right);
   gtk_widget_class_bind_template_child(widget_class, LimiterBox, dropdown_input_devices);
+  gtk_widget_class_bind_template_child(widget_class, LimiterBox, show_native_ui);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);

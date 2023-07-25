@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-20 19:44-0300\n"
+"POT-Creation-Date: 2023-07-25 12:07-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/easyeffects/main/th/"
@@ -1661,6 +1661,18 @@ msgstr ""
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
+#: data/ui/preferences_general.ui:190
+msgid "Experimental Features"
+msgstr ""
+
+#: data/ui/preferences_general.ui:193
+msgid "Native Plugin Window"
+msgstr ""
+
+#: data/ui/preferences_general.ui:194
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr ""
+
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
 msgstr ""
@@ -2083,15 +2095,15 @@ msgstr ""
 msgid "Show available presets."
 msgstr ""
 
-#: src/application_ui.cpp:274
+#: src/application_ui.cpp:278
 msgid "_Output"
 msgstr ""
 
-#: src/application_ui.cpp:275
+#: src/application_ui.cpp:279
 msgid "_Input"
 msgstr ""
 
-#: src/application_ui.cpp:276
+#: src/application_ui.cpp:280
 msgid "_PipeWire"
 msgstr ""
 
@@ -2303,19 +2315,19 @@ msgid "Stereo Tools"
 msgstr ""
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:67
+#: src/ui_helpers.cpp:69
 #, c++-format
 msgid "{} Not Available"
 msgstr ""
 
-#: src/ui_helpers.cpp:71
+#: src/ui_helpers.cpp:73
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
 
-#: src/ui_helpers.cpp:77
+#: src/ui_helpers.cpp:79
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2324,12 +2336,12 @@ msgid ""
 "Effects package."
 msgstr ""
 
-#: src/ui_helpers.cpp:119 src/ui_helpers.cpp:139
+#: src/ui_helpers.cpp:121 src/ui_helpers.cpp:141
 msgid "-inf"
 msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:224
+#: src/ui_helpers.cpp:226
 #, c++-format
 msgid "Using {}"
 msgstr ""

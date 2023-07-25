@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-20 19:44-0300\n"
+"POT-Creation-Date: 2023-07-25 12:07-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1717,6 +1717,20 @@ msgstr "Koyu Tema Kullan"
 msgid "Hide Menus on Outside Clicks"
 msgstr "Dış Tıklamalarda Menüleri Gizle"
 
+#: data/ui/preferences_general.ui:190
+#, fuzzy
+msgid "Experimental Features"
+msgstr "Deneysel"
+
+#: data/ui/preferences_general.ui:193
+#, fuzzy
+msgid "Native Plugin Window"
+msgstr "Pencereyi Kapat"
+
+#: data/ui/preferences_general.ui:194
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr ""
+
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
 msgstr "_Spektrum"
@@ -2144,15 +2158,15 @@ msgstr ""
 msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
-#: src/application_ui.cpp:274
+#: src/application_ui.cpp:278
 msgid "_Output"
 msgstr "_Çıkış"
 
-#: src/application_ui.cpp:275
+#: src/application_ui.cpp:279
 msgid "_Input"
 msgstr "_Giriş"
 
-#: src/application_ui.cpp:276
+#: src/application_ui.cpp:280
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
@@ -2374,19 +2388,19 @@ msgid "Stereo Tools"
 msgstr "Stereo Araçları"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:67
+#: src/ui_helpers.cpp:69
 #, c++-format
 msgid "{} Not Available"
 msgstr "{} Kullanılabilir Değil"
 
-#: src/ui_helpers.cpp:71
+#: src/ui_helpers.cpp:73
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
 
-#: src/ui_helpers.cpp:77
+#: src/ui_helpers.cpp:79
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2395,12 +2409,12 @@ msgid ""
 "Effects package."
 msgstr ""
 
-#: src/ui_helpers.cpp:119 src/ui_helpers.cpp:139
+#: src/ui_helpers.cpp:121 src/ui_helpers.cpp:141
 msgid "-inf"
 msgstr "-sonsuz"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:224
+#: src/ui_helpers.cpp:226
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "Kullanılan"

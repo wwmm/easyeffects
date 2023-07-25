@@ -203,6 +203,8 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
+  ui::unref_global_app_settings();
+
   util::debug("disposed");
 
   G_OBJECT_CLASS(application_window_parent_class)->dispose(object);
@@ -265,6 +267,8 @@ void application_window_init(ApplicationWindow* self) {
   */
 
   ui::save_user_locale();
+
+  ui::init_global_app_settings();
 
   self->presetsMenu = ui::presets_menu::create();
   self->soe_ui = ui::effects_box::create();

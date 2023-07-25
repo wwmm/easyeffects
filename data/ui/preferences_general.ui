@@ -184,5 +184,23 @@
                 </child>
             </object>
         </child>
+
+        <child>
+            <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Experimental Features</property>
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Native Plugin Window</property>
+                        <property name="subtitle" translatable="yes">Allows The Native Plugin Window to be Shown/Hidden</property>
+                        <property name="activatable-widget">show_native_plugin_ui</property>
+                        <child>
+                            <object class="GtkSwitch" id="show_native_plugin_ui">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
     </template>
 </interface>

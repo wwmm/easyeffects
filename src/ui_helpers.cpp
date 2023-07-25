@@ -27,6 +27,8 @@ std::locale user_locale;
 
 std::map<uint, bool> map_ignore_filter_idle_add;
 
+GSettings* global_app_settings = nullptr;
+
 }  // namespace
 
 namespace ui {
@@ -280,6 +282,18 @@ void gsettings_bind_enum_to_dropdown(GSettings* settings,
 
         delete d;
       });
+}
+
+void init_global_app_settings() {
+  global_app_settings = g_settings_new(tags::app::id);
+}
+
+void unref_global_app_settings() {
+  g_object_unref(global_app_settings);
+}
+
+auto get_global_app_settings() -> GSettings* {
+  return global_app_settings;
 }
 
 }  // namespace ui
