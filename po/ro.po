@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-25 12:28-0300\n"
+"POT-Creation-Date: 2023-07-26 12:20-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -140,61 +140,71 @@ msgstr "Pereți Goi"
 msgid "No Audio Application Available"
 msgstr "Aplicații"
 
-#: data/ui/autogain.ui:29
+#: data/ui/autogain.ui:25 data/ui/level_meter.ui:25
+msgid "Reset History"
+msgstr "Resetare Istoric"
+
+#: data/ui/autogain.ui:39
+#, fuzzy
+msgid "Controls"
+msgstr "Controlor de Gain"
+
+#: data/ui/autogain.ui:43
 msgid "Target"
 msgstr "Țintă"
 
-#: data/ui/autogain.ui:63
+#: data/ui/autogain.ui:67
 msgid "Silence"
 msgstr "Liniște"
 
-#: data/ui/autogain.ui:98
+#: data/ui/autogain.ui:92
 #, fuzzy
 msgid "Maximum History"
 msgstr "Maxim"
 
-#: data/ui/autogain.ui:132
+#: data/ui/autogain.ui:116
 msgid "Reference"
 msgstr ""
 
-#: data/ui/autogain.ui:146 data/ui/autogain.ui:189 data/ui/level_meter.ui:83
+#: data/ui/autogain.ui:125 data/ui/autogain.ui:164 data/ui/level_meter.ui:83
 msgid "Momentary"
 msgstr "Momentar"
 
-#: data/ui/autogain.ui:147 data/ui/autogain.ui:219 data/ui/level_meter.ui:120
+#: data/ui/autogain.ui:126 data/ui/autogain.ui:201 data/ui/level_meter.ui:120
 #, fuzzy
 msgid "Short-Term"
 msgstr "Pe Termen Scurt"
 
-#: data/ui/autogain.ui:148 data/ui/autogain.ui:249 data/ui/level_meter.ui:156
+#: data/ui/autogain.ui:127 data/ui/autogain.ui:237 data/ui/level_meter.ui:156
 msgid "Integrated"
 msgstr "Integrat"
 
-#: data/ui/autogain.ui:149
+#: data/ui/autogain.ui:128
 #, fuzzy
 msgid "Geometric Mean (MSI)"
 msgstr "Utilizarea Mijlocului Geometric"
 
-#: data/ui/autogain.ui:150
+#: data/ui/autogain.ui:129
 #, fuzzy
 msgid "Geometric Mean (MS)"
 msgstr "Utilizarea Mijlocului Geometric"
 
-#: data/ui/autogain.ui:151
+#: data/ui/autogain.ui:130
 #, fuzzy
 msgid "Geometric Mean (MI)"
 msgstr "Utilizarea Mijlocului Geometric"
 
-#: data/ui/autogain.ui:152
+#: data/ui/autogain.ui:131
 #, fuzzy
 msgid "Geometric Mean (SI)"
 msgstr "Utilizarea Mijlocului Geometric"
 
-#: data/ui/autogain.ui:169 data/ui/level_meter.ui:25
-msgid "Reset History"
-msgstr "Resetare Istoric"
+#: data/ui/autogain.ui:150 data/ui/autogain.ui:347 data/ui/bass_loudness.ui:27
+#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:47
+msgid "Loudness"
+msgstr "Intensitate"
 
-#: data/ui/autogain.ui:279 data/ui/level_meter.ui:192
+#: data/ui/autogain.ui:273 data/ui/level_meter.ui:192
 msgid "Relative"
 msgstr "Relativ"
 
@@ -202,17 +212,12 @@ msgstr "Relativ"
 msgid "Range"
 msgstr "Gamă"
 
-#: data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:47
-msgid "Loudness"
-msgstr "Intensitate"
-
-#: data/ui/autogain.ui:374
+#: data/ui/autogain.ui:383
 #, fuzzy
 msgid "Output Gain"
 msgstr "Output"
 
-#: data/ui/autogain.ui:411 data/ui/bass_enhancer.ui:262
+#: data/ui/autogain.ui:428 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:602
 #: data/ui/compressor.ui:1096 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:207
@@ -227,7 +232,7 @@ msgstr "Output"
 msgid "Input"
 msgstr "Input"
 
-#: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:281
+#: data/ui/autogain.ui:447 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1115
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:443 data/ui/delay.ui:226 data/ui/echo_canceller.ui:131
@@ -240,7 +245,7 @@ msgstr "Input"
 msgid "Plugin Input Gain"
 msgstr "Input Pipeline"
 
-#: data/ui/autogain.ui:495 data/ui/bass_enhancer.ui:346
+#: data/ui/autogain.ui:512 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1180 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:291
@@ -254,7 +259,7 @@ msgstr "Input Pipeline"
 msgid "Output"
 msgstr "Output"
 
-#: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:365
+#: data/ui/autogain.ui:531 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1199
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:527 data/ui/delay.ui:310 data/ui/echo_canceller.ui:215
@@ -267,7 +272,7 @@ msgstr "Output"
 msgid "Plugin Output Gain"
 msgstr "Output Pipeline"
 
-#: data/ui/autogain.ui:580 data/ui/bass_enhancer.ui:462
+#: data/ui/autogain.ui:596 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1264
 #: data/ui/convolver.ui:395 data/ui/crossfeed.ui:288 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:653 data/ui/delay.ui:375 data/ui/echo_canceller.ui:281
@@ -3214,9 +3219,6 @@ msgstr ""
 
 #~ msgid "Fixed Digital"
 #~ msgstr "Digital Fix"
-
-#~ msgid "Gain Controller"
-#~ msgstr "Controlor de Gain"
 
 #~ msgid "Detection Likelihood"
 #~ msgstr "Probabilitatea Detecției"
