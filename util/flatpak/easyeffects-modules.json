@@ -197,8 +197,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.9.0.tar.gz",
-                    "sha256": "1ce48f34dada7837f510735ff1172f6e2c261b09460e3bf773b49791d247d24e",
+                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.10.0.tar.gz",
+                    "sha256": "487023a955e5a3cc6d3a0d5f89179f9b6c0ae7222613a7185b0227ba0c83700b",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 227581,
