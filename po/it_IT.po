@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-25 12:28-0300\n"
-"PO-Revision-Date: 2023-06-22 20:11+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2023-07-26 05:08+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -925,7 +925,7 @@ msgstr "Descrizione"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
-msgstr "Rimuovi questo profilo"
+msgstr "Rimuovi questo modello"
 
 #: data/ui/filter.ui:34
 msgid "12dB/oct Lowpass"
@@ -1342,19 +1342,19 @@ msgstr "Opzioni Sidechain Banda"
 
 #: data/ui/multiband_compressor_band.ui:529 data/ui/multiband_gate_band.ui:588
 msgid "Low-Cut Filter"
-msgstr "Filtro Passa-Basso"
+msgstr "Filtro Taglia-Basso"
 
 #: data/ui/multiband_compressor_band.ui:557 data/ui/multiband_gate_band.ui:616
 msgid "Low-Cut Filter Frequency"
-msgstr "Frequenza Filtro Passa-Basso"
+msgstr "Frequenza Filtro Taglia-Basso"
 
 #: data/ui/multiband_compressor_band.ui:566 data/ui/multiband_gate_band.ui:625
 msgid "High-Cut Filter"
-msgstr "Filtro Passa-Alto"
+msgstr "Filtro Taglia-Alto"
 
 #: data/ui/multiband_compressor_band.ui:594 data/ui/multiband_gate_band.ui:653
 msgid "High-Cut Filter Frequency"
-msgstr "Frequenza Filtro Passa-Alto"
+msgstr "Frequenza Filtro Taglia-Alto"
 
 #: data/ui/multiband_compressor_band.ui:613 data/ui/multiband_gate_band.ui:672
 msgid "PreAmp"
@@ -1667,18 +1667,17 @@ msgid "Hide Menus on Outside Clicks"
 msgstr "Chiudi Menu con Click Esterno"
 
 #: data/ui/preferences_general.ui:190
-#, fuzzy
 msgid "Experimental Features"
-msgstr "Sperimentale"
+msgstr "Funzionalità Sperimentali"
 
 #: data/ui/preferences_general.ui:193
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "Mostra Interfaccia Nativa"
+msgstr "Finestra Nativa dei Plugin"
 
 #: data/ui/preferences_general.ui:194
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
+"Permette di Visualizzare o Nascondere le Interfacce Native degli Effetti"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
