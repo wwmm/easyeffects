@@ -50,6 +50,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.0.6" date="2023-07-28T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>An "Experimental Features" section was added to our preferences window.</li>
+          <li>The native window of the LSP plugins can be used. This is an experimental feature intended only for advanced users. So expect some bugs.</li>
+          <li>Fractional semitone values can now be used in the Pitch Shift effect.</li>
+          <li>Bug fixes:</li>
+          <li>The input/output device dropdown in our PipeWire tab is updated when the system default device changes and Use Default is enabled. This fixes</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.0.5" date="2023-06-11T00:00:00Z">
       <description>
         <ul>

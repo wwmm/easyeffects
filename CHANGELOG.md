@@ -1,5 +1,20 @@
 # Changelog
  
+## 7.0.6
+### 2023-07-28
+
+ 
+### Features:
+- An "Experimental Features" section was added to our preferences window.
+- The native window of the LSP plugins can be used. This is an experimental feature intended only for advanced users. So expect some bugs.
+- Fractional semitone values can now be used in the Pitch Shift effect. 
+
+### Bug fixes:
+- The input/output device dropdown in our PipeWire tab is updated when the system default device changes and `Use Default` is enabled. This fixes #1989
+
+### Other notes:
+
+ 
 ## 7.0.5
 ### 2023-06-11
 
