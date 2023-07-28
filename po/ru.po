@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-26 12:20-0300\n"
+"POT-Creation-Date: 2023-07-28 16:45+0000\n"
 "PO-Revision-Date: 2023-07-27 13:55+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -129,7 +129,7 @@ msgid "No Audio Application Available"
 msgstr "Нет доступных звуковых приложений"
 
 # #, fuzzy
-#: data/ui/autogain.ui:25 data/ui/level_meter.ui:25 data/ui/autogain.ui:169
+#: data/ui/autogain.ui:25 data/ui/level_meter.ui:25
 msgid "Reset History"
 msgstr "Сброс истории"
 
@@ -137,29 +137,27 @@ msgstr "Сброс истории"
 msgid "Controls"
 msgstr "Элементы управления"
 
-#: data/ui/autogain.ui:43 data/ui/autogain.ui:29
+#: data/ui/autogain.ui:43
 msgid "Target"
 msgstr "Целевая громкость"
 
-#: data/ui/autogain.ui:67 data/ui/autogain.ui:63
+#: data/ui/autogain.ui:67
 msgid "Silence"
 msgstr "Тишина"
 
-#: data/ui/autogain.ui:92 data/ui/autogain.ui:98
+#: data/ui/autogain.ui:92
 msgid "Maximum History"
 msgstr "Исторический максимум"
 
-#: data/ui/autogain.ui:116 data/ui/autogain.ui:132
+#: data/ui/autogain.ui:116
 msgid "Reference"
 msgstr "База"
 
 #: data/ui/autogain.ui:125 data/ui/autogain.ui:164 data/ui/level_meter.ui:83
-#: data/ui/autogain.ui:146 data/ui/autogain.ui:189
 msgid "Momentary"
 msgstr "Моментальные измерения"
 
 #: data/ui/autogain.ui:126 data/ui/autogain.ui:201 data/ui/level_meter.ui:120
-#: data/ui/autogain.ui:147 data/ui/autogain.ui:219
 msgid "Short-Term"
 msgstr "Краткосрочные измерения"
 
@@ -169,33 +167,31 @@ msgstr "Краткосрочные измерения"
 # хотя сам же написал, что это "измерения от начала до конца"
 # Яндекс.Переводчик перевел лучше — "Комплексные измерения"
 #: data/ui/autogain.ui:127 data/ui/autogain.ui:237 data/ui/level_meter.ui:156
-#: data/ui/autogain.ui:148 data/ui/autogain.ui:249
 msgid "Integrated"
 msgstr "Комплексные измерения"
 
-#: data/ui/autogain.ui:128 data/ui/autogain.ui:149
+#: data/ui/autogain.ui:128
 msgid "Geometric Mean (MSI)"
 msgstr "Среднее геометрическое (MSI)"
 
-#: data/ui/autogain.ui:129 data/ui/autogain.ui:150
+#: data/ui/autogain.ui:129
 msgid "Geometric Mean (MS)"
 msgstr "Среднее геометрическое (MS)"
 
-#: data/ui/autogain.ui:130 data/ui/autogain.ui:151
+#: data/ui/autogain.ui:130
 msgid "Geometric Mean (MI)"
 msgstr "Среднее геометрическое (MI)"
 
-#: data/ui/autogain.ui:131 data/ui/autogain.ui:152
+#: data/ui/autogain.ui:131
 msgid "Geometric Mean (SI)"
 msgstr "Среднее геометрическое (SI)"
 
 #: data/ui/autogain.ui:150 data/ui/autogain.ui:347 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:47
-#: data/ui/autogain.ui:342
 msgid "Loudness"
 msgstr "Громкость"
 
-#: data/ui/autogain.ui:273 data/ui/level_meter.ui:192 data/ui/autogain.ui:279
+#: data/ui/autogain.ui:273 data/ui/level_meter.ui:192
 msgid "Relative"
 msgstr "Относительное значение"
 
@@ -204,7 +200,7 @@ msgstr "Относительное значение"
 msgid "Range"
 msgstr "Диапазон"
 
-#: data/ui/autogain.ui:383 data/ui/autogain.ui:374
+#: data/ui/autogain.ui:383
 msgid "Output Gain"
 msgstr "Усиление выхода"
 
@@ -230,7 +226,6 @@ msgstr "Усиление выхода"
 #: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225
 #: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:155
 #: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
-#: data/ui/autogain.ui:411
 msgid "Input"
 msgstr "Вход"
 
@@ -243,7 +238,6 @@ msgstr "Вход"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:495
 #: data/ui/multiband_gate.ui:495 data/ui/pitch.ui:244 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
-#: data/ui/autogain.ui:430
 msgid "Plugin Input Gain"
 msgstr "Плагин усиления входа"
 
@@ -258,7 +252,6 @@ msgstr "Плагин усиления входа"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
-#: data/ui/autogain.ui:495
 msgid "Output"
 msgstr "Выход"
 
@@ -271,7 +264,6 @@ msgstr "Выход"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:579
 #: data/ui/multiband_gate.ui:579 data/ui/pitch.ui:328 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
-#: data/ui/autogain.ui:514
 msgid "Plugin Output Gain"
 msgstr "Плагин усиления выхода"
 
@@ -285,7 +277,6 @@ msgstr "Плагин усиления выхода"
 #: data/ui/maximizer.ui:310 data/ui/multiband_compressor.ui:644
 #: data/ui/multiband_gate.ui:644 data/ui/pitch.ui:393 data/ui/reverb.ui:535
 #: data/ui/rnnoise.ui:324 data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
-#: data/ui/autogain.ui:580
 msgid "Reset"
 msgstr "Сброс"
 
@@ -2394,10 +2385,12 @@ msgstr "Стереоналадчики"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
+#, c++-format
 msgid "{} Not Available"
 msgstr "Эффект «{}» недоступен"
 
 #: src/ui_helpers.cpp:73
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2407,6 +2400,7 @@ msgstr ""
 "установите программное обеспечение самостоятельно."
 
 #: src/ui_helpers.cpp:79
+#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2424,6 +2418,7 @@ msgstr "∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
+#, c++-format
 msgid "Using {}"
 msgstr "Используется {}"
 
