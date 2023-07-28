@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-28 16:37+0000\n"
-"PO-Revision-Date: 2023-06-22 20:11+0000\n"
+"POT-Creation-Date: 2023-07-26 12:20-0300\n"
+"PO-Revision-Date: 2023-07-27 13:55+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -127,64 +127,68 @@ msgstr "Lista vacía"
 msgid "No Audio Application Available"
 msgstr "Ninguna aplicación de audio disponible"
 
-#: data/ui/autogain.ui:25 data/ui/level_meter.ui:25
+#: data/ui/autogain.ui:25 data/ui/level_meter.ui:25 data/ui/autogain.ui:169
 msgid "Reset History"
 msgstr "Restablecer el historial"
 
 #: data/ui/autogain.ui:39
 msgid "Controls"
-msgstr ""
+msgstr "Mandos"
 
-#: data/ui/autogain.ui:43
+#: data/ui/autogain.ui:43 data/ui/autogain.ui:29
 msgid "Target"
 msgstr "Objetivo"
 
-#: data/ui/autogain.ui:67
+#: data/ui/autogain.ui:67 data/ui/autogain.ui:63
 msgid "Silence"
 msgstr "Silencio"
 
-#: data/ui/autogain.ui:92
+#: data/ui/autogain.ui:92 data/ui/autogain.ui:98
 msgid "Maximum History"
 msgstr "Historial máximo"
 
-#: data/ui/autogain.ui:116
+#: data/ui/autogain.ui:116 data/ui/autogain.ui:132
 msgid "Reference"
 msgstr "Referencia"
 
 #: data/ui/autogain.ui:125 data/ui/autogain.ui:164 data/ui/level_meter.ui:83
+#: data/ui/autogain.ui:146 data/ui/autogain.ui:189
 msgid "Momentary"
 msgstr "Momentánea"
 
 #: data/ui/autogain.ui:126 data/ui/autogain.ui:201 data/ui/level_meter.ui:120
+#: data/ui/autogain.ui:147 data/ui/autogain.ui:219
 msgid "Short-Term"
 msgstr "Corto plazo"
 
 #: data/ui/autogain.ui:127 data/ui/autogain.ui:237 data/ui/level_meter.ui:156
+#: data/ui/autogain.ui:148 data/ui/autogain.ui:249
 msgid "Integrated"
 msgstr "Integral"
 
-#: data/ui/autogain.ui:128
+#: data/ui/autogain.ui:128 data/ui/autogain.ui:149
 msgid "Geometric Mean (MSI)"
 msgstr "Media geométrica (MSI)"
 
-#: data/ui/autogain.ui:129
+#: data/ui/autogain.ui:129 data/ui/autogain.ui:150
 msgid "Geometric Mean (MS)"
 msgstr "Media geométrica (MS)"
 
-#: data/ui/autogain.ui:130
+#: data/ui/autogain.ui:130 data/ui/autogain.ui:151
 msgid "Geometric Mean (MI)"
 msgstr "Media geométrica (MI)"
 
-#: data/ui/autogain.ui:131
+#: data/ui/autogain.ui:131 data/ui/autogain.ui:152
 msgid "Geometric Mean (SI)"
 msgstr "Media geométrica (SI)"
 
 #: data/ui/autogain.ui:150 data/ui/autogain.ui:347 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:47
+#: data/ui/autogain.ui:342
 msgid "Loudness"
 msgstr "Sonoridad"
 
-#: data/ui/autogain.ui:273 data/ui/level_meter.ui:192
+#: data/ui/autogain.ui:273 data/ui/level_meter.ui:192 data/ui/autogain.ui:279
 msgid "Relative"
 msgstr "Relativa"
 
@@ -192,7 +196,7 @@ msgstr "Relativa"
 msgid "Range"
 msgstr "Rango"
 
-#: data/ui/autogain.ui:383
+#: data/ui/autogain.ui:383 data/ui/autogain.ui:374
 msgid "Output Gain"
 msgstr "Ganancia de salida"
 
@@ -208,6 +212,7 @@ msgstr "Ganancia de salida"
 #: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225
 #: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:155
 #: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
+#: data/ui/autogain.ui:411
 msgid "Input"
 msgstr "Entrada"
 
@@ -220,6 +225,7 @@ msgstr "Entrada"
 #: data/ui/maximizer.ui:128 data/ui/multiband_compressor.ui:495
 #: data/ui/multiband_gate.ui:495 data/ui/pitch.ui:244 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:174 data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
+#: data/ui/autogain.ui:430
 msgid "Plugin Input Gain"
 msgstr "Ganancia de entrada del plugin"
 
@@ -234,6 +240,7 @@ msgstr "Ganancia de entrada del plugin"
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309
 #: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:239
 #: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
+#: data/ui/autogain.ui:495
 msgid "Output"
 msgstr "Salida"
 
@@ -246,6 +253,7 @@ msgstr "Salida"
 #: data/ui/maximizer.ui:212 data/ui/multiband_compressor.ui:579
 #: data/ui/multiband_gate.ui:579 data/ui/pitch.ui:328 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:258 data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
+#: data/ui/autogain.ui:514
 msgid "Plugin Output Gain"
 msgstr "Ganancia de salida del plugin"
 
@@ -259,6 +267,7 @@ msgstr "Ganancia de salida del plugin"
 #: data/ui/maximizer.ui:310 data/ui/multiband_compressor.ui:644
 #: data/ui/multiband_gate.ui:644 data/ui/pitch.ui:393 data/ui/reverb.ui:535
 #: data/ui/rnnoise.ui:324 data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
+#: data/ui/autogain.ui:580
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -1669,18 +1678,16 @@ msgid "Hide Menus on Outside Clicks"
 msgstr "Ocultar los menús al hacer click fuera"
 
 #: data/ui/preferences_general.ui:190
-#, fuzzy
 msgid "Experimental Features"
-msgstr "Música experimental"
+msgstr "Funciones experimentales"
 
 #: data/ui/preferences_general.ui:193
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "Mostrar la ventana nativa"
+msgstr "Ventana de los complementos nativos"
 
 #: data/ui/preferences_general.ui:194
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "Permite mostrar/ocultar la ventana nativa del plugin"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -2335,12 +2342,10 @@ msgstr "Herramientas estéreo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} No disponible"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2350,7 +2355,6 @@ msgstr ""
 "instalar el software tu mismo."
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2368,7 +2372,6 @@ msgstr "infinito"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, c++-format
 msgid "Using {}"
 msgstr "Usando {}"
 
