@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-28 16:45+0000\n"
-"PO-Revision-Date: 2023-06-13 10:49+0000\n"
+"PO-Revision-Date: 2023-07-30 08:05+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -128,16 +128,23 @@ msgstr "Características:"
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
 msgstr ""
+"Se ha añadido una sección de \"Características experimentales\" a las "
+"preferencias."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
 msgstr ""
+"Se puede utilizar la ventana nativa de los plugins de LSP. Se trata de una "
+"función experimental destinada únicamente a usuarios avanzados. Así que "
+"espera algunos errores."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
 msgstr ""
+"Los valores de los semitonos fraccionarios ahora se pueden usar en el efecto "
+"Pitch Shift."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -172,6 +179,9 @@ msgid ""
 "The input/output device dropdown in our PipeWire tab is updated when the "
 "system default device changes and Use Default is enabled. This fixes"
 msgstr ""
+"El menú desplegable del dispositivo de entrada/salida en nuestra pestaña "
+"PipeWire se actualiza cuando cambia el dispositivo predeterminado del "
+"sistema y se habilita Usar el predeterminado. Esto se arregla"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
