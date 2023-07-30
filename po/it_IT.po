@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-28 16:45+0000\n"
-"PO-Revision-Date: 2023-07-26 05:08+0000\n"
+"PO-Revision-Date: 2023-07-30 08:05+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -135,7 +135,7 @@ msgstr "Reimposta Cronologia"
 
 #: data/ui/autogain.ui:39
 msgid "Controls"
-msgstr ""
+msgstr "Parametri"
 
 #: data/ui/autogain.ui:43
 msgid "Target"
