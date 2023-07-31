@@ -188,6 +188,7 @@ msgstr "Среднее геометрическое (SI)"
 
 #: data/ui/autogain.ui:150 data/ui/autogain.ui:347 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:47
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -595,7 +596,7 @@ msgstr "Тип боковой цепи"
 
 # #, fuzzy
 #: data/ui/compressor.ui:679 data/ui/expander.ui:597 data/ui/gate.ui:798
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:675 src/plugins_box.cpp:661
 msgid "Input Device"
 msgstr "Устройство ввода"
 
@@ -1050,7 +1051,7 @@ msgid "Inertia"
 msgstr "Инертность"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
-#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
+#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45 src/tags_plugin_name.cpp:44
 msgid "Gate"
 msgstr "Пропускной уровень (гейт)"
 
@@ -1626,7 +1627,7 @@ msgstr "Окно перемотки"
 msgid "Overlap Length"
 msgstr "Длина перекрытия"
 
-#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:52
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:52 src/tags_plugin_name.cpp:51
 msgid "Pitch"
 msgstr "Высота тона"
 
@@ -1741,7 +1742,7 @@ msgstr "Скрывать меню по щелчку вне фокуса"
 
 #: data/ui/preferences_general.ui:190
 msgid "Experimental Features"
-msgstr "Пробные возможности"
+msgstr "Испытательные возможности"
 
 #: data/ui/preferences_general.ui:193
 msgid "Native Plugin Window"
@@ -2243,11 +2244,11 @@ msgstr "Нет загруженного файла импульса"
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:676
+#: src/effects_box.cpp:260 src/plugins_box.cpp:676 src/plugins_box.cpp:662
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:696
+#: src/effects_box.cpp:283 src/plugins_box.cpp:696 src/plugins_box.cpp:682
 msgid "Players"
 msgstr "Проигрыватели"
 
@@ -2299,11 +2300,11 @@ msgstr "Удалить автозагрузку предустановки"
 msgid "Output Level Meter"
 msgstr "Уровнемер выхода"
 
-#: src/plugins_box.cpp:628
+#: src/plugins_box.cpp:628 src/plugins_box.cpp:614
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/plugins_box.cpp:697
+#: src/plugins_box.cpp:697 src/plugins_box.cpp:683
 msgid "Output Device"
 msgstr "Устройство вывода"
 
@@ -2374,54 +2375,52 @@ msgstr "Эквалайзер"
 msgid "Exciter"
 msgstr "Гармонический возбудитель"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:44 src/tags_plugin_name.cpp:43
 msgid "Filter"
 msgstr "Фильтр"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:46 src/tags_plugin_name.cpp:45
 msgid "Level Meter"
 msgstr "Уровнемер"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:47 src/tags_plugin_name.cpp:46
 msgid "Limiter"
 msgstr "Ограничитель (лимитер)"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:49 src/tags_plugin_name.cpp:48
 msgid "Maximizer"
 msgstr "Максимизатор"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:50 src/tags_plugin_name.cpp:49
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:51 src/tags_plugin_name.cpp:50
 msgid "Multiband Gate"
 msgstr "Многополосный пропускной уровень"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:53 src/tags_plugin_name.cpp:52
 msgid "Reverberation"
 msgstr "Реверберация"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:54 src/tags_plugin_name.cpp:53
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:55 src/tags_plugin_name.cpp:54
 msgid "Speech Processor"
 msgstr "Речевой процессор"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:56 src/tags_plugin_name.cpp:55
 msgid "Stereo Tools"
 msgstr "Стереоналадчики"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "Эффект «{}» недоступен"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2431,7 +2430,6 @@ msgstr ""
 "установите программное обеспечение самостоятельно."
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2449,7 +2447,6 @@ msgstr "∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, c++-format
 msgid "Using {}"
 msgstr "Используется {}"
 
