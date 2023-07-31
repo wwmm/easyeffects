@@ -161,6 +161,8 @@ void EffectsBase::create_filters_if_necessary() {
       filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::exciter)) {
       filter = std::make_shared<Exciter>(log_tag, tags::schema::exciter::id, path, pm);
+    } else if (name.starts_with(tags::plugin_name::expander)) {
+      filter = std::make_shared<Expander>(log_tag, tags::schema::expander::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::equalizer)) {
       filter =
           std::make_shared<Equalizer>(log_tag, tags::schema::equalizer::id, path, tags::schema::equalizer::channel_id,

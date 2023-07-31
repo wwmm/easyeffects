@@ -40,6 +40,7 @@ auto get_translated() -> std::map<std::string, std::string> {
                                                    {echo_canceller, _("Echo Canceller")},
                                                    {equalizer, _("Equalizer")},
                                                    {exciter, _("Exciter")},
+                                                   {expander, _("Expander")},
                                                    {filter, _("Filter")},
                                                    {gate, _("Gate")},
                                                    {level_meter, _("Level Meter")},
@@ -104,6 +105,10 @@ auto get_base_name(std::string_view name) -> std::string {
 
   if (name.starts_with(tags::plugin_name::exciter)) {
     return tags::plugin_name::exciter;
+  }
+
+  if (name.starts_with(tags::plugin_name::expander)) {
+    return tags::plugin_name::expander;
   }
 
   if (name.starts_with(tags::plugin_name::filter)) {

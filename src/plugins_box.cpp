@@ -236,6 +236,20 @@ void add_plugins_to_stack(PluginsBox* self) {
       }
 
       gtk_stack_add_named(self->stack, box, name.c_str());
+    } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::expander)) {
+      auto plugin_ptr = effects_base->get_plugin_instance<Expander>(name);
+
+      if (plugin_ptr->package_installed) {
+        auto* plugin_box = ui::expander_box::create();
+
+        ui::expander_box::setup(plugin_box, plugin_ptr, path, self->data->application->pm);
+
+        box = GTK_WIDGET(plugin_box);
+      } else {
+        box = ui::missing_plugin_box(plugin_ptr->name, plugin_ptr->package);
+      }
+
+      gtk_stack_add_named(self->stack, box, name.c_str());
     } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::equalizer)) {
       auto plugin_ptr = effects_base->get_plugin_instance<Equalizer>(name);
 

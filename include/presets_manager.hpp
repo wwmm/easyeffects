@@ -39,6 +39,7 @@
 #include "echo_canceller_preset.hpp"
 #include "equalizer_preset.hpp"
 #include "exciter_preset.hpp"
+#include "expander_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
 #include "level_meter_preset.hpp"
