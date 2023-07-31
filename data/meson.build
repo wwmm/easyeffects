@@ -15,6 +15,7 @@ install_data([
   'schemas/com.github.wwmm.easyeffects.equalizer.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.equalizer.channel.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.exciter.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.expander.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.filter.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.gate.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.levelmeter.gschema.xml',

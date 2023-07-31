@@ -77,6 +77,8 @@ inline constexpr auto equalizer_ui = "/com/github/wwmm/easyeffects/ui/equalizer.
 
 inline constexpr auto exciter_ui = "/com/github/wwmm/easyeffects/ui/exciter.ui";
 
+inline constexpr auto expander_ui = "/com/github/wwmm/easyeffects/ui/expander.ui";
+
 inline constexpr auto filter_ui = "/com/github/wwmm/easyeffects/ui/filter.ui";
 
 inline constexpr auto gate_ui = "/com/github/wwmm/easyeffects/ui/gate.ui";

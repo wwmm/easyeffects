@@ -32,6 +32,7 @@
 #include "echo_canceller.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
+#include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
 #include "level_meter.hpp"
@@ -78,6 +79,7 @@ class EffectsBase {
   std::shared_ptr<EchoCanceller> echo_canceller;
   std::shared_ptr<Equalizer> equalizer;
   std::shared_ptr<Exciter> exciter;
+  std::shared_ptr<Expander> expander;
   std::shared_ptr<Filter> filter;
   std::shared_ptr<Gate> gate;
   std::shared_ptr<Limiter> limiter;

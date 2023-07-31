@@ -78,6 +78,8 @@ inline constexpr auto equalizer = "equalizer";
 
 inline constexpr auto exciter = "exciter";
 
+inline constexpr auto expander = "expander";
+
 inline constexpr auto filter = "filter";
 
 inline constexpr auto gate = "gate";
@@ -104,31 +106,13 @@ inline constexpr auto rnnoise = "rnnoise";
 
 inline constexpr auto stereo_tools = "stereo_tools";
 
-inline constexpr auto list = std::to_array({autogain,
-                                            bass_enhancer,
-                                            bass_loudness,
-                                            compressor,
-                                            convolver,
-                                            crossfeed,
-                                            crystalizer,
-                                            deesser,
-                                            delay,
-                                            echo_canceller,
-                                            equalizer,
-                                            exciter,
-                                            filter,
-                                            gate,
-                                            level_meter,
-                                            limiter,
-                                            loudness,
-                                            maximizer,
-                                            multiband_compressor,
-                                            multiband_gate,
-                                            pitch,
-                                            reverb,
-                                            rnnoise,
-                                            speex,
-                                            stereo_tools});
+inline constexpr auto list =
+    std::to_array({autogain,       bass_enhancer, bass_loudness, compressor, convolver,
+                   crossfeed,      crystalizer,   deesser,       delay,      echo_canceller,
+                   equalizer,      exciter,       expander,      filter,     gate,
+                   level_meter,    limiter,       loudness,      maximizer,  multiband_compressor,
+                   multiband_gate, pitch,         reverb,        rnnoise,    speex,
+                   stereo_tools});
 
 auto get_translated() -> std::map<std::string, std::string>;
 

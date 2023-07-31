@@ -924,6 +924,10 @@ auto PresetsManager::create_wrapper(const PresetType& preset_type, std::string_v
     return std::make_unique<ExciterPreset>(preset_type, instance_id);
   }
 
+  if (filter_name.starts_with(tags::plugin_name::expander)) {
+    return std::make_unique<ExpanderPreset>(preset_type, instance_id);
+  }
+
   if (filter_name.starts_with(tags::plugin_name::filter)) {
     return std::make_unique<FilterPreset>(preset_type, instance_id);
   }

@@ -23,6 +23,7 @@ data/ui/effects_box.ui
 data/ui/equalizer.ui
 data/ui/equalizer_band.ui
 data/ui/exciter.ui
+data/ui/expander.ui
 data/ui/factory_clients_listview.ui
 data/ui/factory_input_device_dropdown.ui
 data/ui/factory_modules_listview.ui

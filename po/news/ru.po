@@ -175,8 +175,8 @@ msgid ""
 "system default device changes and Use Default is enabled. This fixes"
 msgstr ""
 "Выпадающий список устройств входа/выхода на вкладке PipeWire обновляется при "
-"изменении системного устройства по умолчанию и включении параметра «"
-"Использовать стандартный». Это исправляет"
+"изменении системного устройства по умолчанию и включении параметра "
+"«Использовать стандартный». Это исправляет"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75

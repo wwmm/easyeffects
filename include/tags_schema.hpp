@@ -149,6 +149,16 @@ inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/
 
 }  // namespace tags::schema::exciter
 
+namespace tags::schema::expander {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.expander";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/expander/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/expander/";
+
+}  // namespace tags::schema::expander
+
 namespace tags::schema::filter {
 
 inline constexpr auto id = "com.github.wwmm.easyeffects.filter";

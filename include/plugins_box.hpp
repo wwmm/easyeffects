@@ -32,6 +32,7 @@
 #include "echo_canceller_ui.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
+#include "expander_ui.hpp"
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
 #include "level_meter_ui.hpp"
