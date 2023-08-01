@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-31 16:56+0000\n"
-"PO-Revision-Date: 2023-06-14 04:51+0000\n"
+"PO-Revision-Date: 2023-08-01 15:07+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -127,16 +127,23 @@ msgstr "Fonctionnalités :"
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
 msgstr ""
+"Une section \"Fonctionnalités expérimentales\" a été ajoutée à notre fenêtre "
+"de préférences."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
 msgstr ""
+"La fenêtre native des greffons LSP peut être utilisée. C'est une "
+"fonctionnalité expérimentale destinée uniquement aux utilisateurs confirmés. "
+"Il faut donc s'attendre à quelques bugs."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
 msgstr ""
+"Les valeurs fractionnaires de demi-tons peuvent maintenant être utilisées "
+"dans l'effet de décalage de hauteur (Pitch Shift)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -171,6 +178,9 @@ msgid ""
 "The input/output device dropdown in our PipeWire tab is updated when the "
 "system default device changes and Use Default is enabled. This fixes"
 msgstr ""
+"Le menu déroulant des périphériques d'entrée/sortie dans notre onglet "
+"PipeWire est mis à jour lorsque le périphérique par défaut du système change "
+"et que l'option 'Utiliser la sortie par défaut' est activée. Ceci corrige"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
@@ -597,7 +607,7 @@ msgstr "Éviter les plantages lorsque pw-mididump est en cours d’exécution"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
 msgid "The interface of the pitch plugin was improved"
-msgstr "L'interface du plugin pitch a été améliorée"
+msgstr "L'interface du greffon hauteur a été améliorée"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid "Our application icon is now compatible with desktops that uses QT"
@@ -1183,7 +1193,7 @@ msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
 msgstr ""
 "Correction d’un bogue qui pouvait empêcher l’initialisation correcte du "
-"plugin \"pitch\""
+"greffon hauteur"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:388
 msgid "The saturation warning should not displace its neighbor widgets anymore"
