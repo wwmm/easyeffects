@@ -35,11 +35,11 @@ struct _EqualizerBandBox {
 
   GtkButton *reset_frequency, *reset_quality;
 
-  GtkToggleButton *band_solo, *band_mute;
+  GtkSwitch *band_solo, *band_mute;
 
   GtkScale* band_scale;
 
-  GtkSpinButton *band_frequency, *band_quality;
+  GtkSpinButton *band_frequency, *band_quality, *band_gain;
 
   GtkPopover* popover_menu;
 
@@ -57,6 +57,10 @@ void on_reset_quality(EqualizerBandBox* self, GtkButton* btn) {
 
 void on_reset_frequency(EqualizerBandBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, tags::equalizer::band_frequency[self->data->index].data());
+}
+
+void on_reset_gain(EqualizerBandBox* self, GtkButton* btn) {
+  g_settings_reset(self->settings, tags::equalizer::band_gain[self->data->index].data());
 }
 
 auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
@@ -163,10 +167,12 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_scale);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_frequency);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_quality);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_gain);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, popover_menu);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset_quality);
   gtk_widget_class_bind_template_callback(widget_class, on_reset_frequency);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset_gain);
   gtk_widget_class_bind_template_callback(widget_class, set_band_scale_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_band_label);
   gtk_widget_class_bind_template_callback(widget_class, set_band_quality_label);
@@ -186,6 +192,7 @@ void equalizer_band_box_init(EqualizerBandBox* self) {
 
   prepare_spinbuttons<"Hz">(self->band_frequency);
   prepare_spinbuttons<"">(self->band_quality);
+  prepare_spinbuttons<"dB">(self->band_gain);
 }
 
 auto create() -> EqualizerBandBox* {

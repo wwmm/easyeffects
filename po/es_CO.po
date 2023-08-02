@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-31 16:56+0000\n"
+"POT-Creation-Date: 2023-08-02 13:10-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Spanish (Colombia) <https://hosted.weblate.org/projects/"
@@ -277,10 +277,9 @@ msgstr "Caudal de Salida"
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1264
 #: data/ui/convolver.ui:395 data/ui/crossfeed.ui:288 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:653 data/ui/delay.ui:375 data/ui/echo_canceller.ui:281
-#: data/ui/equalizer.ui:550 data/ui/equalizer_band.ui:239
-#: data/ui/equalizer_band.ui:310 data/ui/exciter.ui:461
-#: data/ui/expander.ui:1182 data/ui/filter.ui:314 data/ui/gate.ui:1405
-#: data/ui/limiter.ui:918 data/ui/loudness.ui:318 data/ui/maximizer.ui:310
+#: data/ui/equalizer.ui:550 data/ui/exciter.ui:461 data/ui/expander.ui:1182
+#: data/ui/filter.ui:314 data/ui/gate.ui:1405 data/ui/limiter.ui:918
+#: data/ui/loudness.ui:318 data/ui/maximizer.ui:310
 #: data/ui/multiband_compressor.ui:644 data/ui/multiband_gate.ui:644
 #: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
 #: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
@@ -389,7 +388,7 @@ msgid "Compressor"
 msgstr "Compresor"
 
 #: data/ui/compressor.ui:63 data/ui/compressor.ui:517 data/ui/compressor.ui:826
-#: data/ui/deesser.ui:68 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:138
+#: data/ui/deesser.ui:68 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:125
 #: data/ui/expander.ui:63 data/ui/expander.ui:436 data/ui/expander.ui:744
 #: data/ui/filter.ui:27 data/ui/gate.ui:650 data/ui/gate.ui:945
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:461
@@ -586,7 +585,7 @@ msgstr "Máximo"
 msgid "Sidechain Source"
 msgstr "Cadena Lateral"
 
-#: data/ui/compressor.ui:614 data/ui/equalizer_band.ui:102
+#: data/ui/compressor.ui:614 data/ui/equalizer_band.ui:96
 #: data/ui/expander.ui:533 data/ui/gate.ui:739
 msgid "Type"
 msgstr "Tipo"
@@ -641,7 +640,7 @@ msgstr "Cadena Lateral"
 msgid "High-Pass"
 msgstr "Pase Alto"
 
-#: data/ui/compressor.ui:839 data/ui/equalizer_band.ui:213
+#: data/ui/compressor.ui:839 data/ui/equalizer_band.ui:207
 #: data/ui/expander.ui:757 data/ui/filter.ui:59 data/ui/gate.ui:958
 #: data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
@@ -686,7 +685,8 @@ msgstr "Filtro de Pase Alto"
 msgid "Low-Pass Filter Mode"
 msgstr "Filtro de Pase Alto"
 
-#: data/ui/compressor.ui:978 data/ui/expander.ui:896
+#: data/ui/compressor.ui:978 data/ui/equalizer_band.ui:270
+#: data/ui/expander.ui:896
 msgid "Gain"
 msgstr "Ganancia"
 
@@ -813,7 +813,7 @@ msgstr "Alimentar"
 msgid "Bypass"
 msgstr "Derivación"
 
-#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:336
+#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:189
 #: data/ui/multiband_compressor_band.ui:140 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:175 data/ui/stereo_tools.ui:200
 msgid "Mute"
@@ -974,37 +974,22 @@ msgstr "Bandas"
 msgid "Import Preset"
 msgstr "Importar Preajuste"
 
-#: data/ui/equalizer_band.ui:131
-#, fuzzy
-msgid "Band Type"
-msgstr "Tipo"
-
-#: data/ui/equalizer_band.ui:165
-#, fuzzy
-msgid "Band Mode"
-msgstr "Modo"
-
-#: data/ui/equalizer_band.ui:172
+#: data/ui/equalizer_band.ui:152
 msgid "Slope"
 msgstr "Pendiente"
 
-#: data/ui/equalizer_band.ui:196
-#, fuzzy
-msgid "Band Slope"
-msgstr "Pendiente"
-
-#: data/ui/equalizer_band.ui:258
-msgid "Width"
-msgstr "Anchura"
-
-#: data/ui/equalizer_band.ui:285 data/ui/pitch.ui:28
-msgid "Quality"
-msgstr "Calidad"
-
-#: data/ui/equalizer_band.ui:330 data/ui/multiband_compressor_band.ui:150
+#: data/ui/equalizer_band.ui:176 data/ui/multiband_compressor_band.ui:150
 #: data/ui/multiband_gate_band.ui:119
 msgid "Solo"
 msgstr "Solo"
+
+#: data/ui/equalizer_band.ui:239 data/ui/pitch.ui:28
+msgid "Quality"
+msgstr "Calidad"
+
+#: data/ui/equalizer_band.ui:306
+msgid "Width"
+msgstr "Anchura"
 
 #: data/ui/exciter.ui:211
 #, fuzzy
@@ -2383,7 +2368,7 @@ msgstr "Jugadores"
 msgid "Effects"
 msgstr "Efectos"
 
-#: src/equalizer_band_box.cpp:81
+#: src/equalizer_band_box.cpp:85
 msgid "infinity"
 msgstr "infinidad"
 
@@ -2569,6 +2554,18 @@ msgstr ""
 #, c++-format
 msgid "Using {}"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Band Type"
+#~ msgstr "Tipo"
+
+#, fuzzy
+#~ msgid "Band Mode"
+#~ msgstr "Modo"
+
+#, fuzzy
+#~ msgid "Band Slope"
+#~ msgstr "Pendiente"
 
 #, fuzzy
 #~ msgid "Loudness List"

@@ -5,6 +5,7 @@ Date: UNRELEASED_DATE
 Description: 
 - Features∶
 - The expander from Linux Studio Plugins can be used in EasyEffets.
+- The equalizer bands now have an additional gain control that allows for more efficient input of values that are hard to set in the scale. More details at #1383
 
 - Bug fixes∶
 - 

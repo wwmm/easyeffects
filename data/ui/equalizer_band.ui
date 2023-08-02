@@ -67,7 +67,7 @@
                 </binding>
 
                 <property name="adjustment">
-                    <object class="GtkAdjustment">
+                    <object class="GtkAdjustment" id="band_scale_adjustment">
                         <property name="lower">-35</property>
                         <property name="upper">35</property>
                         <property name="step-increment">0.01</property>
@@ -85,140 +85,133 @@
     <object class="GtkPopover" id="popover_menu">
         <child>
             <object class="GtkBox">
-                <property name="margin-start">6</property>
-                <property name="margin-end">6</property>
-                <property name="margin-top">6</property>
-                <property name="margin-bottom">6</property>
                 <property name="spacing">12</property>
-                <property name="orientation">vertical</property>
+                <property name="homogeneous">1</property>
+
                 <child>
-                    <object class="GtkGrid">
-                        <property name="halign">center</property>
-                        <property name="row-spacing">6</property>
-                        <property name="column-spacing">12</property>
-                        <property name="column-homogeneous">1</property>
+                    <object class="AdwPreferencesGroup">
+
                         <child>
-                            <object class="GtkLabel">
-                                <property name="label" translatable="yes">Type</property>
-                                <layout>
-                                    <property name="column">0</property>
-                                    <property name="row">0</property>
-                                </layout>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkDropDown" id="band_type">
-                                <property name="model">
-                                    <object class="GtkStringList">
-                                        <items>
-                                            <item>Off</item>
-                                            <item>Bell</item>
-                                            <item>High Pass</item>
-                                            <item>High Shelf</item>
-                                            <item>Low Pass</item>
-                                            <item>Low Shelf</item>
-                                            <item>Notch</item>
-                                            <item>Resonance</item>
-                                            <item>All Pass</item>
-                                        </items>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Type</property>
+                                <property name="title-lines">2</property>
+
+                                <child>
+                                    <object class="GtkDropDown" id="band_type">
+                                        <property name="valign">center</property>
+
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>Bell</item>
+                                                    <item>High Pass</item>
+                                                    <item>High Shelf</item>
+                                                    <item>Low Pass</item>
+                                                    <item>Low Shelf</item>
+                                                    <item>Notch</item>
+                                                    <item>Resonance</item>
+                                                    <item>All Pass</item>
+                                                </items>
+                                            </object>
+                                        </property>
                                     </object>
-                                </property>
-                                <layout>
-                                    <property name="column">0</property>
-                                    <property name="row">1</property>
-                                </layout>
-                                <accessibility>
-                                    <property name="label" translatable="yes">Band Type</property>
-                                </accessibility>
+                                </child>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkLabel">
-                                <property name="label" translatable="yes">Mode</property>
-                                <layout>
-                                    <property name="column">1</property>
-                                    <property name="row">0</property>
-                                </layout>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkDropDown" id="band_mode">
-                                <property name="model">
-                                    <object class="GtkStringList">
-                                        <items>
-                                            <item>RLC (BT)</item>
-                                            <item>RLC (MT)</item>
-                                            <item>BWC (BT)</item>
-                                            <item>BWC (MT)</item>
-                                            <item>LRX (BT)</item>
-                                            <item>LRX (MT)</item>
-                                            <item>APO (DR)</item>
-                                        </items>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Mode</property>
+                                <property name="title-lines">2</property>
+
+                                <child>
+                                    <object class="GtkDropDown" id="band_mode">
+                                        <property name="valign">center</property>
+
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item>RLC (BT)</item>
+                                                    <item>RLC (MT)</item>
+                                                    <item>BWC (BT)</item>
+                                                    <item>BWC (MT)</item>
+                                                    <item>LRX (BT)</item>
+                                                    <item>LRX (MT)</item>
+                                                    <item>APO (DR)</item>
+                                                </items>
+                                            </object>
+                                        </property>
                                     </object>
-                                </property>
-                                <layout>
-                                    <property name="column">1</property>
-                                    <property name="row">1</property>
-                                </layout>
-                                <accessibility>
-                                    <property name="label" translatable="yes">Band Mode</property>
-                                </accessibility>
+                                </child>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkLabel">
-                                <property name="label" translatable="yes">Slope</property>
-                                <layout>
-                                    <property name="column">2</property>
-                                    <property name="row">0</property>
-                                </layout>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Slope</property>
+                                <property name="title-lines">2</property>
+
+                                <child>
+                                    <object class="GtkDropDown" id="band_slope">
+                                        <property name="valign">center</property>
+
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item>x1</item>
+                                                    <item>x2</item>
+                                                    <item>x3</item>
+                                                    <item>x4</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
                             </object>
                         </child>
+
                         <child>
-                            <object class="GtkDropDown" id="band_slope">
-                                <property name="model">
-                                    <object class="GtkStringList">
-                                        <items>
-                                            <item>x1</item>
-                                            <item>x2</item>
-                                            <item>x3</item>
-                                            <item>x4</item>
-                                        </items>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Solo</property>
+                                <property name="title-lines">2</property>
+
+                                <child>
+                                    <object class="GtkSwitch" id="band_solo">
+                                        <property name="valign">center</property>
                                     </object>
-                                </property>
-                                <layout>
-                                    <property name="column">2</property>
-                                    <property name="row">1</property>
-                                </layout>
-                                <accessibility>
-                                    <property name="label" translatable="yes">Band Slope</property>
-                                </accessibility>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Mute</property>
+                                <property name="title-lines">2</property>
+
+                                <child>
+                                    <object class="GtkSwitch" id="band_mute">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
                             </object>
                         </child>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkBox">
-                        <property name="halign">center</property>
-                        <property name="spacing">12</property>
+                    <object class="AdwPreferencesGroup">
+
                         <child>
-                            <object class="GtkBox">
-                                <property name="spacing">6</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                    <object class="GtkLabel" id="band_frequency_label">
-                                        <property name="label" translatable="yes">Frequency</property>
-                                    </object>
-                                </child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Frequency</property>
+                                <property name="title-lines">2</property>
 
                                 <child>
                                     <object class="GtkSpinButton" id="band_frequency">
+                                        <property name="valign">center</property>
                                         <property name="digits">0</property>
                                         <property name="update-policy">if-valid</property>
-                                        <property name="orientation">vertical</property>
                                         <property name="width-chars">10</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
@@ -228,36 +221,90 @@
                                                 <property name="page-increment">100</property>
                                             </object>
                                         </property>
-                                        <accessibility>
-                                            <relation name="labelled-by">band_frequency_label</relation>
-                                        </accessibility>
                                     </object>
                                 </child>
 
                                 <child>
                                     <object class="GtkButton" id="reset_frequency">
-                                        <property name="label" translatable="yes">Reset</property>
-                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="icon-name">edit-undo-symbolic</property>
                                         <signal name="clicked" handler="on_reset_frequency" object="EqualizerBandBox" />
-                                        <accessibility>
-                                            <relation name="labelled-by">band_frequency_label</relation>
-                                        </accessibility>
                                     </object>
                                 </child>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkBox">
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="spacing">6</property>
-                                <property name="orientation">vertical</property>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Quality</property>
+                                <property name="title-lines">2</property>
+
                                 <child>
-                                    <object class="GtkLabel">
-                                        <property name="label" translatable="yes">Width</property>
+                                    <object class="GtkSpinButton" id="band_quality">
+                                        <property name="valign">center</property>
+                                        <property name="digits">2</property>
+                                        <property name="update-policy">if-valid</property>
+                                        <property name="width-chars">10</property>
+                                        <property name="adjustment">
+                                            <object class="GtkAdjustment">
+                                                <property name="upper">100</property>
+                                                <property name="step-increment">0.01</property>
+                                                <property name="page-increment">0.1</property>
+                                            </object>
+                                        </property>
                                     </object>
                                 </child>
+
+                                <child>
+                                    <object class="GtkButton" id="reset_quality">
+                                        <property name="valign">center</property>
+                                        <property name="icon-name">edit-undo-symbolic</property>
+                                        <signal name="clicked" handler="on_reset_quality" object="EqualizerBandBox" />
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Gain</property>
+                                <property name="title-lines">2</property>
+
+                                <child>
+                                    <object class="GtkSpinButton" id="band_gain">
+                                        <property name="valign">center</property>
+                                        <property name="digits">2</property>
+                                        <property name="update-policy">if-valid</property>
+                                        <property name="width-chars">10</property>
+
+                                        <property name="sensitive" bind-source="band_scale" bind-property="sensitive" bind-flags="sync-create" />
+                                        <property name="value" bind-source="band_scale_adjustment" bind-property="value" bind-flags="sync-create|bidirectional" />
+
+                                        <property name="adjustment">
+                                            <object class="GtkAdjustment">
+                                                <property name="lower">-35</property>
+                                                <property name="upper">35</property>
+                                                <property name="step-increment">0.01</property>
+                                                <property name="page-increment">1.0</property>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkButton" id="reset_gain">
+                                        <property name="valign">center</property>
+                                        <property name="icon-name">edit-undo-symbolic</property>
+                                        <signal name="clicked" handler="on_reset_gain" object="EqualizerBandBox" />
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Width</property>
+                                <property name="title-lines">2</property>
 
                                 <child>
                                     <object class="GtkLabel" id="band_width">
@@ -275,69 +322,9 @@
                                 </child>
                             </object>
                         </child>
-
-                        <child>
-                            <object class="GtkBox">
-                                <property name="spacing">6</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                    <object class="GtkLabel" id="band_quality_spinbutton_label">
-                                        <property name="label" translatable="yes">Quality</property>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkSpinButton" id="band_quality">
-                                        <property name="digits">2</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="upper">100</property>
-                                                <property name="step-increment">0.01</property>
-                                                <property name="page-increment">0.1</property>
-                                            </object>
-                                        </property>
-                                        <accessibility>
-                                            <relation name="labelled-by">band_quality_spinbutton_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkButton" id="reset_quality">
-                                        <property name="label" translatable="yes">Reset</property>
-                                        <property name="halign">center</property>
-                                        <signal name="clicked" handler="on_reset_quality" object="EqualizerBandBox" />
-                                        <accessibility>
-                                            <relation name="labelled-by">band_quality_spinbutton_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
                     </object>
                 </child>
 
-                <child>
-                    <object class="GtkBox">
-                        <property name="margin-top">6</property>
-                        <property name="halign">center</property>
-                        <property name="spacing">24</property>
-                        <child>
-                            <object class="GtkToggleButton" id="band_solo">
-                                <property name="label" translatable="yes">Solo</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkToggleButton" id="band_mute">
-                                <property name="label" translatable="yes">Mute</property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
             </object>
         </child>
     </object>
