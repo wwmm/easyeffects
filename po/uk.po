@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-02 19:27-0300\n"
+"POT-Creation-Date: 2023-08-02 19:32-0300\n"
 "PO-Revision-Date: 2023-04-25 13:19+0000\n"
 "Last-Translator: Ostap <ostapbataj79@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -167,63 +167,63 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
-#: data/ui/autogain.ui:125 data/ui/autogain.ui:164 data/ui/level_meter.ui:83
+#: data/ui/autogain.ui:122 data/ui/autogain.ui:159 data/ui/level_meter.ui:83
 #, fuzzy
 msgid "Momentary"
 msgstr "Миттєве"
 
-#: data/ui/autogain.ui:126 data/ui/autogain.ui:201 data/ui/level_meter.ui:120
+#: data/ui/autogain.ui:123 data/ui/autogain.ui:196 data/ui/level_meter.ui:120
 #, fuzzy
 msgid "Short-Term"
 msgstr "Короткострокові"
 
-#: data/ui/autogain.ui:127 data/ui/autogain.ui:237 data/ui/level_meter.ui:156
+#: data/ui/autogain.ui:124 data/ui/autogain.ui:232 data/ui/level_meter.ui:156
 #, fuzzy
 msgid "Integrated"
 msgstr "Інтегроване"
 
-#: data/ui/autogain.ui:128
+#: data/ui/autogain.ui:125
 #, fuzzy
 msgid "Geometric Mean (MSI)"
 msgstr "Середнє геометричне (MSI)"
 
-#: data/ui/autogain.ui:129
+#: data/ui/autogain.ui:126
 #, fuzzy
 msgid "Geometric Mean (MS)"
 msgstr "Середнє геометричне (MS)"
 
-#: data/ui/autogain.ui:130
+#: data/ui/autogain.ui:127
 #, fuzzy
 msgid "Geometric Mean (MI)"
 msgstr "Середнє геометричне (MI)"
 
-#: data/ui/autogain.ui:131
+#: data/ui/autogain.ui:128
 #, fuzzy
 msgid "Geometric Mean (SI)"
 msgstr "Середнє геометричне (SІ)"
 
-#: data/ui/autogain.ui:150 data/ui/autogain.ui:347 data/ui/bass_loudness.ui:27
+#: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:48
 #, fuzzy
 msgid "Loudness"
 msgstr "Гучність"
 
-#: data/ui/autogain.ui:273 data/ui/level_meter.ui:192
+#: data/ui/autogain.ui:268 data/ui/level_meter.ui:192
 #, fuzzy
 msgid "Relative"
 msgstr "Відносне"
 
-#: data/ui/autogain.ui:309 data/ui/level_meter.ui:228
+#: data/ui/autogain.ui:304 data/ui/level_meter.ui:228
 #, fuzzy
 msgid "Range"
 msgstr "Діапазон"
 
-#: data/ui/autogain.ui:383
+#: data/ui/autogain.ui:378
 #, fuzzy
 msgid "Output Gain"
 msgstr "Вихідний коефіцієнт підсилення"
 
-#: data/ui/autogain.ui:428 data/ui/bass_enhancer.ui:262
+#: data/ui/autogain.ui:423 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:602
 #: data/ui/compressor.ui:1096 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:207
@@ -240,7 +240,7 @@ msgstr "Вихідний коефіцієнт підсилення"
 msgid "Input"
 msgstr "Вхідний пристрій"
 
-#: data/ui/autogain.ui:447 data/ui/bass_enhancer.ui:281
+#: data/ui/autogain.ui:442 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1115
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:443 data/ui/delay.ui:226 data/ui/echo_canceller.ui:131
@@ -253,7 +253,7 @@ msgstr "Вхідний пристрій"
 msgid "Plugin Input Gain"
 msgstr ""
 
-#: data/ui/autogain.ui:512 data/ui/bass_enhancer.ui:346
+#: data/ui/autogain.ui:507 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1180 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:291
@@ -268,7 +268,7 @@ msgstr ""
 msgid "Output"
 msgstr "Вихід"
 
-#: data/ui/autogain.ui:531 data/ui/bass_enhancer.ui:365
+#: data/ui/autogain.ui:526 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1199
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:527 data/ui/delay.ui:310 data/ui/echo_canceller.ui:215
@@ -281,7 +281,7 @@ msgstr "Вихід"
 msgid "Plugin Output Gain"
 msgstr ""
 
-#: data/ui/autogain.ui:596 data/ui/bass_enhancer.ui:462
+#: data/ui/autogain.ui:591 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1264
 #: data/ui/convolver.ui:395 data/ui/crossfeed.ui:288 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:653 data/ui/delay.ui:375 data/ui/echo_canceller.ui:281

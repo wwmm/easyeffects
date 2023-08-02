@@ -112,28 +112,23 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="AdwActionRow">
+                                                    <object class="AdwComboRow" id="reference">
                                                         <property name="title" translatable="yes">Reference</property>
                                                         <property name="title-lines">2</property>
-                                                        <child>
-                                                            <object class="GtkDropDown" id="reference">
-                                                                <property name="halign">center</property>
-                                                                <property name="valign">center</property>
-                                                                <property name="model">
-                                                                    <object class="GtkStringList">
-                                                                        <items>
-                                                                            <item translatable="yes">Momentary</item>
-                                                                            <item translatable="yes">Short-Term</item>
-                                                                            <item translatable="yes">Integrated</item>
-                                                                            <item translatable="yes">Geometric Mean (MSI)</item>
-                                                                            <item translatable="yes">Geometric Mean (MS)</item>
-                                                                            <item translatable="yes">Geometric Mean (MI)</item>
-                                                                            <item translatable="yes">Geometric Mean (SI)</item>
-                                                                        </items>
-                                                                    </object>
-                                                                </property>
+
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item translatable="yes">Momentary</item>
+                                                                    <item translatable="yes">Short-Term</item>
+                                                                    <item translatable="yes">Integrated</item>
+                                                                    <item translatable="yes">Geometric Mean (MSI)</item>
+                                                                    <item translatable="yes">Geometric Mean (MS)</item>
+                                                                    <item translatable="yes">Geometric Mean (MI)</item>
+                                                                    <item translatable="yes">Geometric Mean (SI)</item>
+                                                                </items>
                                                             </object>
-                                                        </child>
+                                                        </property>
                                                     </object>
                                                 </child>
                                             </object>

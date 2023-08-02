@@ -52,7 +52,7 @@ struct _AutogainBox {
 
   GtkButton* reset_history;
 
-  GtkDropDown* reference;
+  AdwComboRow* reference;
 
   GSettings* settings;
 
