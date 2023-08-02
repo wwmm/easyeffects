@@ -92,82 +92,64 @@
                     <object class="AdwPreferencesGroup">
 
                         <child>
-                            <object class="AdwActionRow">
+                            <object class="AdwComboRow" id="band_type">
                                 <property name="title" translatable="yes">Type</property>
                                 <property name="title-lines">2</property>
 
-                                <child>
-                                    <object class="GtkDropDown" id="band_type">
-                                        <property name="valign">center</property>
-
-                                        <property name="model">
-                                            <object class="GtkStringList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>Bell</item>
-                                                    <item>High Pass</item>
-                                                    <item>High Shelf</item>
-                                                    <item>Low Pass</item>
-                                                    <item>Low Shelf</item>
-                                                    <item>Notch</item>
-                                                    <item>Resonance</item>
-                                                    <item>All Pass</item>
-                                                </items>
-                                            </object>
-                                        </property>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item>Off</item>
+                                            <item>Bell</item>
+                                            <item>High Pass</item>
+                                            <item>High Shelf</item>
+                                            <item>Low Pass</item>
+                                            <item>Low Shelf</item>
+                                            <item>Notch</item>
+                                            <item>Resonance</item>
+                                            <item>All Pass</item>
+                                        </items>
                                     </object>
-                                </child>
+                                </property>
                             </object>
                         </child>
 
                         <child>
-                            <object class="AdwActionRow">
+                            <object class="AdwComboRow" id="band_mode">
                                 <property name="title" translatable="yes">Mode</property>
                                 <property name="title-lines">2</property>
 
-                                <child>
-                                    <object class="GtkDropDown" id="band_mode">
-                                        <property name="valign">center</property>
-
-                                        <property name="model">
-                                            <object class="GtkStringList">
-                                                <items>
-                                                    <item>RLC (BT)</item>
-                                                    <item>RLC (MT)</item>
-                                                    <item>BWC (BT)</item>
-                                                    <item>BWC (MT)</item>
-                                                    <item>LRX (BT)</item>
-                                                    <item>LRX (MT)</item>
-                                                    <item>APO (DR)</item>
-                                                </items>
-                                            </object>
-                                        </property>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item>RLC (BT)</item>
+                                            <item>RLC (MT)</item>
+                                            <item>BWC (BT)</item>
+                                            <item>BWC (MT)</item>
+                                            <item>LRX (BT)</item>
+                                            <item>LRX (MT)</item>
+                                            <item>APO (DR)</item>
+                                        </items>
                                     </object>
-                                </child>
+                                </property>
                             </object>
                         </child>
 
                         <child>
-                            <object class="AdwActionRow">
+                            <object class="AdwComboRow" id="band_slope">
                                 <property name="title" translatable="yes">Slope</property>
                                 <property name="title-lines">2</property>
 
-                                <child>
-                                    <object class="GtkDropDown" id="band_slope">
-                                        <property name="valign">center</property>
-
-                                        <property name="model">
-                                            <object class="GtkStringList">
-                                                <items>
-                                                    <item>x1</item>
-                                                    <item>x2</item>
-                                                    <item>x3</item>
-                                                    <item>x4</item>
-                                                </items>
-                                            </object>
-                                        </property>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item>x1</item>
+                                            <item>x2</item>
+                                            <item>x3</item>
+                                            <item>x4</item>
+                                        </items>
                                     </object>
-                                </child>
+                                </property>
                             </object>
                         </child>
 

@@ -165,9 +165,9 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
 
   g_settings_bind(self->settings, "sc-listen", self->sc_listen, "active", G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "detection", self->detection);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "detection", self->detection);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->mode);
 }
 
 void dispose(GObject* object) {

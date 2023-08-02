@@ -251,39 +251,6 @@ void remove_from_string_list(GtkStringList* string_list, const std::string& name
   }
 }
 
-void gsettings_bind_enum_to_dropdown(GSettings* settings,
-                                     const gchar* key,
-                                     GtkDropDown* dropdown,
-                                     GSettingsBindFlags flags) {
-  struct Data {
-    GSettings* settings;
-    const gchar* key;
-  };
-
-  g_settings_bind_with_mapping(
-      settings, key, dropdown, "selected", flags,
-      +[](GValue* value, GVariant* variant, gpointer user_data) {
-        auto* d = static_cast<Data*>(user_data);
-
-        g_value_set_uint(value, static_cast<guint>(g_settings_get_enum(d->settings, d->key)));
-
-        return 1;
-      },
-      +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
-        auto* d = static_cast<Data*>(user_data);
-
-        g_settings_set_enum(d->settings, d->key, static_cast<gint>(g_value_get_uint(value)));
-
-        return g_variant_new_string(g_settings_get_string(d->settings, d->key));
-      },
-      new Data({.settings = settings, .key = key}),
-      +[](gpointer user_data) {
-        auto* d = static_cast<Data*>(user_data);
-
-        delete d;
-      });
-}
-
 void init_global_app_settings() {
   global_app_settings = g_settings_new(tags::app::id);
 }

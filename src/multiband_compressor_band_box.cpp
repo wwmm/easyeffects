@@ -153,7 +153,7 @@ void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
     gtk_box_append(self->split_frequency_box, GTK_WIDGET(label));
   }
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, band_compression_mode[index].data(), self->compression_mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, band_compression_mode[index].data(), self->compression_mode);
 
   g_settings_bind(self->settings, band_compressor_enable[index].data(), self->bypass, "active",
                   G_SETTINGS_BIND_INVERT_BOOLEAN);
@@ -171,9 +171,9 @@ void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
   g_settings_bind(self->settings, band_external_sidechain[index].data(), self->external_sidechain, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, band_sidechain_mode[index].data(), self->sidechain_mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, band_sidechain_mode[index].data(), self->sidechain_mode);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, band_sidechain_source[index].data(), self->sidechain_source);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, band_sidechain_source[index].data(), self->sidechain_source);
 
   g_settings_bind(settings, band_lowcut_filter_frequency[index].data(),
                   gtk_spin_button_get_adjustment(self->lowcut_filter_frequency), "value", G_SETTINGS_BIND_DEFAULT);

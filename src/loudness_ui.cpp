@@ -113,9 +113,9 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "fft", self->fft_size);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "fft", self->fft_size);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "std", self->standard);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "std", self->standard);
 
   g_settings_bind(self->settings, "volume", gtk_spin_button_get_adjustment(self->volume), "value",
                   G_SETTINGS_BIND_DEFAULT);

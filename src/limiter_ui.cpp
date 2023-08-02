@@ -286,11 +286,11 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
   g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
                   G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->mode);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "oversampling", self->oversampling);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "oversampling", self->oversampling);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "dithering", self->dither);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "dithering", self->dither);
 }
 
 void dispose(GObject* object) {

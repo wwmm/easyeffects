@@ -144,7 +144,7 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 
   g_settings_bind(self->settings, "phaser", self->phaser, "active", G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->mode);
 }
 
 void dispose(GObject* object) {

@@ -302,9 +302,9 @@ void setup(MultibandCompressorBox* self,
 
   g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "compressor-mode", self->compressor_mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "compressor-mode", self->compressor_mode);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "envelope-boost", self->envelope_boost);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "envelope-boost", self->envelope_boost);
 
   g_settings_bind(self->settings, "enable-band1", self->enable_band1, "active", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "enable-band2", self->enable_band2, "active", G_SETTINGS_BIND_DEFAULT);

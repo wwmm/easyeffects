@@ -157,7 +157,7 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
   gsettings_bind_widgets<"target", "silence-threshold", "maximum-history">(
       self->settings, self->target, self->silence_threshold, self->maximum_history);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "reference", self->reference);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "reference", self->reference);
 }
 
 void dispose(GObject* object) {

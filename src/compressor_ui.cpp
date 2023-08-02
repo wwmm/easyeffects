@@ -328,17 +328,17 @@ void setup(CompressorBox* self,
 
   g_settings_bind(self->settings, "sidechain-listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "mode", self->compression_mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->compression_mode);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "sidechain-type", self->sidechain_type);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-type", self->sidechain_type);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "sidechain-mode", self->sidechain_mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-mode", self->sidechain_mode);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "sidechain-source", self->sidechain_source);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-source", self->sidechain_source);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "hpf-mode", self->hpf_mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "hpf-mode", self->hpf_mode);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "lpf-mode", self->lpf_mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "lpf-mode", self->lpf_mode);
 
   g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
                   G_SETTINGS_BIND_DEFAULT);

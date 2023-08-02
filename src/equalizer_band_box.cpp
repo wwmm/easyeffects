@@ -31,7 +31,7 @@ struct Data {
 struct _EqualizerBandBox {
   GtkBox parent_instance;
 
-  GtkDropDown *band_type, *band_mode, *band_slope;
+  AdwComboRow *band_type, *band_mode, *band_slope;
 
   GtkButton *reset_frequency, *reset_quality;
 
@@ -121,11 +121,11 @@ void bind(EqualizerBandBox* self, int index) {
   g_settings_bind(self->settings, tags::equalizer::band_mute[index].data(), self->band_mute, "active",
                   G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, tags::equalizer::band_type[index].data(), self->band_type);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, tags::equalizer::band_type[index].data(), self->band_type);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, tags::equalizer::band_mode[index].data(), self->band_mode);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, tags::equalizer::band_mode[index].data(), self->band_mode);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, tags::equalizer::band_slope[index].data(), self->band_slope);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, tags::equalizer::band_slope[index].data(), self->band_slope);
 }
 
 void dispose(GObject* object) {

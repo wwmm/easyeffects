@@ -194,7 +194,7 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
   g_settings_bind(self->settings, "maximum-frequency", gtk_spin_button_get_adjustment(self->maximum_frequency), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_dropdown(self->settings, "type", self->type);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "type", self->type);
 
   // Spectrum gsettings signals connections
 
