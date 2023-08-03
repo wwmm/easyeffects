@@ -120,15 +120,20 @@ void import_preset(PresetsMenu* self) {
 
   g_object_unref(filters);
 
-  gtk_file_dialog_open(
+  gtk_file_dialog_open_multiple(
       dialog, active_window, nullptr,
       +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
         auto* self = static_cast<PresetsMenu*>(user_data);
         auto* dialog = GTK_FILE_DIALOG(source_object);
 
-        auto* file = gtk_file_dialog_open_finish(dialog, result, nullptr);
+        auto* files_list = gtk_file_dialog_open_multiple_finish(dialog, result, nullptr);
 
-        if (file != nullptr) {
+        if (files_list == nullptr) {
+          return;
+        }
+
+        for (guint n = 0U; n < g_list_model_get_n_items(files_list); n++) {
+          auto* file = static_cast<GFile*>(g_list_model_get_item(files_list, n));
           auto* path = g_file_get_path(file);
 
           if constexpr (preset_type == PresetType::output) {
@@ -138,9 +143,9 @@ void import_preset(PresetsMenu* self) {
           }
 
           g_free(path);
-
-          g_object_unref(file);
         }
+
+        g_object_unref(files_list);
       },
       self);
 }
