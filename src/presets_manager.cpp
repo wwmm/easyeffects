@@ -29,29 +29,6 @@ PresetsManager::PresetsManager()
       settings(g_settings_new(tags::app::id)),
       soe_settings(g_settings_new(tags::schema::id_output)),
       sie_settings(g_settings_new(tags::schema::id_input)) {
-  // system presets directories provided by Glib
-
-  for (const auto* scd = g_get_system_config_dirs(); *scd != nullptr; scd++) {
-    system_input_dir.emplace_back(std::string(*scd) +
-                                  "/easyeffects/input");  // it should be fine to use emplace_back in these cases
-    system_output_dir.emplace_back(std::string(*scd) + "/easyeffects/output");
-  }
-
-  // add "/etc" to system config folders array and remove duplicates
-  system_input_dir.emplace_back("/etc/easyeffects/input");
-  system_output_dir.emplace_back("/etc/easyeffects/output");
-  std::sort(system_input_dir.begin(), system_input_dir.end());
-  std::sort(system_output_dir.begin(), system_output_dir.end());
-  system_input_dir.erase(std::unique(system_input_dir.begin(), system_input_dir.end()), system_input_dir.end());
-  system_output_dir.erase(std::unique(system_output_dir.begin(), system_output_dir.end()), system_output_dir.end());
-
-  for (const auto& scd : system_input_dir) {
-    util::debug("system input presets directory: \"" + scd.string() + "\"; ");
-  }
-  for (const auto& scd : system_output_dir) {
-    util::debug("system output presets directory: \"" + scd.string() + "\"; ");
-  }
-
   // user presets directories
 
   create_user_directory(user_presets_dir);
@@ -196,33 +173,10 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
 }
 
 auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<std::string> {
-  std::filesystem::directory_iterator it;
-  std::vector<std::string> names;
-
-  // system directories search
-  std::vector<std::filesystem::path> sys_dirs;
-
-  switch (preset_type) {
-    case PresetType::output:
-      sys_dirs.insert(sys_dirs.end(), system_output_dir.begin(), system_output_dir.end());
-      break;
-    case PresetType::input:
-      sys_dirs.insert(sys_dirs.end(), system_input_dir.begin(), system_input_dir.end());
-      break;
-  }
-
-  for (const auto& dir : sys_dirs) {
-    if (std::filesystem::exists(dir)) {
-      it = std::filesystem::directory_iterator{dir};
-
-      const auto vn = search_names(it);
-      names.insert(names.end(), vn.begin(), vn.end());
-    }
-  }
-
-  // user directory search
   const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
-  it = std::filesystem::directory_iterator{user_dir};
+
+  std::vector<std::string> names;
+  std::filesystem::directory_iterator it = std::filesystem::directory_iterator{user_dir};
 
   const auto vn = search_names(it);
   names.insert(names.end(), vn.begin(), vn.end());
@@ -446,8 +400,6 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
     case PresetType::output: {
       conf_dirs.push_back(user_output_dir);
 
-      conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
-
       for (const auto& dir : conf_dirs) {
         input_file = dir / std::filesystem::path{name + json_ext};
 
@@ -506,8 +458,6 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
     }
     case PresetType::input: {
       conf_dirs.push_back(user_input_dir);
-
-      conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
         input_file = dir / std::filesystem::path{name + json_ext};
@@ -776,8 +726,6 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
     case PresetType::output: {
       conf_dirs.push_back(user_output_dir);
 
-      conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
-
       for (const auto& dir : conf_dirs) {
         input_file = dir / std::filesystem::path{name + json_ext};
 
@@ -790,8 +738,6 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
     }
     case PresetType::input: {
       conf_dirs.push_back(user_input_dir);
-
-      conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
         input_file = dir / std::filesystem::path{name + json_ext};
