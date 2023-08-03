@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-02 19:32-0300\n"
+"POT-Creation-Date: 2023-08-03 16:56+0000\n"
 "PO-Revision-Date: 2023-07-15 03:50+0000\n"
 "Last-Translator: Fernando Lopes <118869201+plasmus777@users.noreply.github."
 "com>\n"
@@ -93,8 +93,8 @@ msgid "_About Easy Effects"
 msgstr "_Sobre Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
-#: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:351
+#: src/presets_menu.cpp:352 src/presets_menu.cpp:369 src/presets_menu.cpp:370
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -1777,7 +1777,7 @@ msgstr "Mínimo"
 msgid "Maximum"
 msgstr "Máximo"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:193
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:196
 msgid "Load"
 msgstr "Carregar"
 
@@ -1910,8 +1910,8 @@ msgid "Models"
 msgstr "Modelos"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:252
-#: src/rnnoise_ui.cpp:286
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:257
+#: src/rnnoise_ui.cpp:291
 msgid "Standard Model"
 msgstr "Modelo Padrão"
 
@@ -2174,11 +2174,11 @@ msgstr "Abrir"
 msgid "Impulse Response"
 msgstr "Resposta de Impulso"
 
-#: src/convolver_menu_impulses.cpp:255
+#: src/convolver_menu_impulses.cpp:258
 msgid "Load Impulse"
 msgstr "Carregar Impulso"
 
-#: src/convolver_menu_impulses.cpp:258
+#: src/convolver_menu_impulses.cpp:261
 msgid "Remove Impulse"
 msgstr "Remover Impulso"
 
@@ -2258,11 +2258,11 @@ msgstr "Dispositivo de Saída"
 msgid "Add"
 msgstr "Adicionar"
 
-#: src/presets_menu.cpp:228
+#: src/presets_menu.cpp:233
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:247
+#: src/presets_menu.cpp:252
 msgid "Delete?"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-02 19:32-0300\n"
+"POT-Creation-Date: 2023-08-03 16:56+0000\n"
 "PO-Revision-Date: 2023-05-16 02:52+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -91,8 +91,8 @@ msgid "_About Easy Effects"
 msgstr "关于 EasyEffects (_A)"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
-#: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:351
+#: src/presets_menu.cpp:352 src/presets_menu.cpp:369 src/presets_menu.cpp:370
 msgid "Presets"
 msgstr "预设"
 
@@ -1776,7 +1776,7 @@ msgstr "最低"
 msgid "Maximum"
 msgstr "最高"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:193
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:196
 msgid "Load"
 msgstr "加载"
 
@@ -1909,8 +1909,8 @@ msgid "Models"
 msgstr "模型"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:252
-#: src/rnnoise_ui.cpp:286
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:257
+#: src/rnnoise_ui.cpp:291
 msgid "Standard Model"
 msgstr "标准模型"
 
@@ -2171,11 +2171,11 @@ msgstr "打开"
 msgid "Impulse Response"
 msgstr "脉冲响应"
 
-#: src/convolver_menu_impulses.cpp:255
+#: src/convolver_menu_impulses.cpp:258
 msgid "Load Impulse"
 msgstr "加载脉冲"
 
-#: src/convolver_menu_impulses.cpp:258
+#: src/convolver_menu_impulses.cpp:261
 msgid "Remove Impulse"
 msgstr "删除脉冲"
 
@@ -2251,11 +2251,11 @@ msgstr "输出设备"
 msgid "Add"
 msgstr "添加"
 
-#: src/presets_menu.cpp:228
+#: src/presets_menu.cpp:233
 msgid "Save?"
 msgstr "是否储存？"
 
-#: src/presets_menu.cpp:247
+#: src/presets_menu.cpp:252
 msgid "Delete?"
 msgstr "是否删除？"
 
