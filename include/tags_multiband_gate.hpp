@@ -304,7 +304,6 @@ constexpr auto rt =
 constexpr auto gr =
     std::to_array({{"gr_0"}, {"gr_1"}, {"gr_2"}, {"gr_3"}, {"gr_4"}, {"gr_5"}, {"gr_6"}, std::to_array("gr_7")});
 
-// TODO
 constexpr auto mk =
     std::to_array({{"mk_0"}, {"mk_1"}, {"mk_2"}, {"mk_3"}, {"mk_4"}, {"mk_5"}, {"mk_6"}, std::to_array("mk_7")});
 
