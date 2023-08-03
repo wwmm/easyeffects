@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-03 16:56+0000\n"
+"POT-Creation-Date: 2023-08-03 21:00+0000\n"
 "PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Daniel Svindseth <daniel@svindseth.net>\n"
 "Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
@@ -90,8 +90,8 @@ msgid "_About Easy Effects"
 msgstr "_Om Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:351
-#: src/presets_menu.cpp:352 src/presets_menu.cpp:369 src/presets_menu.cpp:370
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
+#: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
 msgid "Presets"
 msgstr "Førehandsinnstillingar"
 
@@ -894,7 +894,7 @@ msgstr "Rekn ut frekvensar"
 msgid "Sort Bands"
 msgstr "Sorter band"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106
 msgid "Import Preset"
 msgstr "Importer førehandsinnstillingar"
 
@@ -1764,7 +1764,7 @@ msgstr ""
 msgid "Maximum"
 msgstr ""
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:196
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
 msgid "Load"
 msgstr ""
 
@@ -1897,8 +1897,8 @@ msgid "Models"
 msgstr ""
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:257
-#: src/rnnoise_ui.cpp:291
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:96 src/rnnoise_ui.cpp:264
+#: src/rnnoise_ui.cpp:298
 msgid "Standard Model"
 msgstr ""
 
@@ -2130,40 +2130,40 @@ msgstr ""
 msgid "_PipeWire"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:102
+#: src/convolver_menu_impulses.cpp:103
 msgid "The File Is Not Regular"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:107
+#: src/convolver_menu_impulses.cpp:108
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:112
+#: src/convolver_menu_impulses.cpp:113
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:122
+#: src/convolver_menu_impulses.cpp:123
 msgid "Impulse File Not Imported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:130
+#: src/convolver_menu_impulses.cpp:131
 msgid "Import Impulse File"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:134
+#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
+#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
 msgid "Open"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:137
+#: src/convolver_menu_impulses.cpp:144
 msgid "Impulse Response"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:258
+#: src/convolver_menu_impulses.cpp:265
 msgid "Load Impulse"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:261
+#: src/convolver_menu_impulses.cpp:268
 msgid "Remove Impulse"
 msgstr ""
 
@@ -2239,25 +2239,25 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:233
+#: src/presets_menu.cpp:240
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:252
+#: src/presets_menu.cpp:259
 msgid "Delete?"
 msgstr ""
 
-#: src/rnnoise_ui.cpp:90
+#: src/rnnoise_ui.cpp:91
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
 
-#: src/rnnoise_ui.cpp:133
+#: src/rnnoise_ui.cpp:134
 msgid "Import Model File"
 msgstr ""
 
-#: src/rnnoise_ui.cpp:140
+#: src/rnnoise_ui.cpp:147
 msgid "RNNoise Models"
 msgstr ""
 

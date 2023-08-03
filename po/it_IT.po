@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-03 16:56+0000\n"
+"POT-Creation-Date: 2023-08-03 21:00+0000\n"
 "PO-Revision-Date: 2023-07-30 08:05+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -92,8 +92,8 @@ msgid "_About Easy Effects"
 msgstr "_Info su Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:351
-#: src/presets_menu.cpp:352 src/presets_menu.cpp:369 src/presets_menu.cpp:370
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
+#: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
 msgid "Presets"
 msgstr "Profili"
 
@@ -896,7 +896,7 @@ msgstr "Calcola Frequenze"
 msgid "Sort Bands"
 msgstr "Ordina Bande"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106
 msgid "Import Preset"
 msgstr "Importa Profilo"
 
@@ -1770,7 +1770,7 @@ msgstr "Minima"
 msgid "Maximum"
 msgstr "Massima"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:196
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
 msgid "Load"
 msgstr "Carica"
 
@@ -1903,8 +1903,8 @@ msgid "Models"
 msgstr "Modelli"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:257
-#: src/rnnoise_ui.cpp:291
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:96 src/rnnoise_ui.cpp:264
+#: src/rnnoise_ui.cpp:298
 msgid "Standard Model"
 msgstr "Modello Standard"
 
@@ -2137,40 +2137,40 @@ msgstr "_Ingresso"
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:102
+#: src/convolver_menu_impulses.cpp:103
 msgid "The File Is Not Regular"
 msgstr "Il File È Irregolare"
 
-#: src/convolver_menu_impulses.cpp:107
+#: src/convolver_menu_impulses.cpp:108
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Il File di Risposta Impulsiva Può Essere Corrotto o Non Supportato"
 
-#: src/convolver_menu_impulses.cpp:112
+#: src/convolver_menu_impulses.cpp:113
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Sono Supportati Soltanto File di Risposta Impulsiva in Formato Stereo"
 
-#: src/convolver_menu_impulses.cpp:122
+#: src/convolver_menu_impulses.cpp:123
 msgid "Impulse File Not Imported"
 msgstr "File di Risposta Impulsiva Non Importato"
 
-#: src/convolver_menu_impulses.cpp:130
+#: src/convolver_menu_impulses.cpp:131
 msgid "Import Impulse File"
 msgstr "Importa File di Impulso"
 
-#: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:134
+#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
+#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
 msgid "Open"
 msgstr "Apri"
 
-#: src/convolver_menu_impulses.cpp:137
+#: src/convolver_menu_impulses.cpp:144
 msgid "Impulse Response"
 msgstr "Risposta Impulso"
 
-#: src/convolver_menu_impulses.cpp:258
+#: src/convolver_menu_impulses.cpp:265
 msgid "Load Impulse"
 msgstr "Carica Impulso"
 
-#: src/convolver_menu_impulses.cpp:261
+#: src/convolver_menu_impulses.cpp:268
 msgid "Remove Impulse"
 msgstr "Rimuovi Impulso"
 
@@ -2250,15 +2250,15 @@ msgstr "Dispositivo Uscita"
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/presets_menu.cpp:233
+#: src/presets_menu.cpp:240
 msgid "Save?"
 msgstr "Salvare?"
 
-#: src/presets_menu.cpp:252
+#: src/presets_menu.cpp:259
 msgid "Delete?"
 msgstr "Eliminare?"
 
-#: src/rnnoise_ui.cpp:90
+#: src/rnnoise_ui.cpp:91
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2266,11 +2266,11 @@ msgstr ""
 "Il Modello Selezionato Non È Stato Caricato. Il Formato Potrebbe Essere Non "
 "Supportato. Il Modello Standard È Stato Ripristinato."
 
-#: src/rnnoise_ui.cpp:133
+#: src/rnnoise_ui.cpp:134
 msgid "Import Model File"
 msgstr "Importa File Modello"
 
-#: src/rnnoise_ui.cpp:140
+#: src/rnnoise_ui.cpp:147
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
