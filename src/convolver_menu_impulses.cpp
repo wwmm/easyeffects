@@ -18,6 +18,7 @@
  */
 
 #include "convolver_menu_impulses.hpp"
+#include "config.h"
 
 namespace ui::convolver_menu_impulses {
 
@@ -129,6 +130,12 @@ void on_import_irs_clicked(ConvolverMenuImpulses* self, GtkButton* btn) {
 
   gtk_file_dialog_set_title(dialog, _("Import Impulse File"));
   gtk_file_dialog_set_accept_label(dialog, _("Open"));
+
+  auto* init_folder = g_file_new_for_path(SYSTEM_IRS_DIR);
+
+  gtk_file_dialog_set_initial_folder(dialog, init_folder);
+
+  g_object_unref(init_folder);
 
   GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
 

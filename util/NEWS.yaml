@@ -5,7 +5,7 @@ Date: UNRELEASED_DATE
 Description:
 - Features∶
 - The Expander from Linux Studio Plugins can be used in EasyEffects.
-- The Equalizer bands now have an additional gain control that allows for more efficient input of values that are hard to set in the scale. More details in issue 1383.
+- The Equalizer bands now have an additional gain control that allows for more efficient input of values that are hard to set in the scale. More details at https://github.com/wwmm/easyeffects/issues/1383.
 
 - Bug fixes∶
 -
@@ -24,7 +24,7 @@ Description:
 - Fractional semitone values can now be used in the Pitch Shift effect.
 
 - Bug fixes∶
-- The input/output device dropdown in our PipeWire tab is updated when the system default device changes and `Use Default` is enabled. This fixes issue 1989.
+- The input/output device dropdown in our PipeWire tab is updated when the system default device changes and `Use Default` is enabled. This fixes issue https://github.com/wwmm/easyeffects/issues/1989.
 
 - Other notes∶
 

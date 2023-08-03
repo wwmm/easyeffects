@@ -18,6 +18,7 @@
  */
 
 #include "presets_menu.hpp"
+#include "config.h"
 
 namespace ui::presets_menu {
 
@@ -104,6 +105,12 @@ void import_preset(PresetsMenu* self) {
 
   gtk_file_dialog_set_title(dialog, _("Import Preset"));
   gtk_file_dialog_set_accept_label(dialog, _("Open"));
+
+  auto* init_folder = g_file_new_for_path(SYSTEM_PRESETS_DIR);
+
+  gtk_file_dialog_set_initial_folder(dialog, init_folder);
+
+  g_object_unref(init_folder);
 
   GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
 
