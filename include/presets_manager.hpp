@@ -135,8 +135,6 @@ class PresetsManager {
 
   std::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
 
-  std::vector<std::filesystem::path> system_input_dir, system_output_dir;
-
   GSettings *settings = nullptr, *soe_settings = nullptr, *sie_settings = nullptr;
 
   GFileMonitor *user_output_monitor = nullptr, *user_input_monitor = nullptr;
