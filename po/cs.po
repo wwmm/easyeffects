@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-03 16:56+0000\n"
+"POT-Creation-Date: 2023-08-03 21:00+0000\n"
 "PO-Revision-Date: 2023-01-20 07:50+0000\n"
 "Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -90,8 +90,8 @@ msgid "_About Easy Effects"
 msgstr "_O EasyEffects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:351
-#: src/presets_menu.cpp:352 src/presets_menu.cpp:369 src/presets_menu.cpp:370
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
+#: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
 msgid "Presets"
 msgstr "Přednastavení"
 
@@ -903,7 +903,7 @@ msgstr "Vypočítat Kmitočty"
 msgid "Sort Bands"
 msgstr "Pásma"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106
 msgid "Import Preset"
 msgstr "Importovat přednastavení"
 
@@ -1795,7 +1795,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Nejvýše"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:196
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
 msgid "Load"
 msgstr "Načíst"
 
@@ -1929,8 +1929,8 @@ msgid "Models"
 msgstr "Modely"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:257
-#: src/rnnoise_ui.cpp:291
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:96 src/rnnoise_ui.cpp:264
+#: src/rnnoise_ui.cpp:298
 msgid "Standard Model"
 msgstr "Standardní model"
 
@@ -2162,40 +2162,40 @@ msgstr "_Vstup"
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:102
+#: src/convolver_menu_impulses.cpp:103
 msgid "The File Is Not Regular"
 msgstr "Soubor není standardní"
 
-#: src/convolver_menu_impulses.cpp:107
+#: src/convolver_menu_impulses.cpp:108
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Soubor Impulse může být poškozený nebo nepodporovaný"
 
-#: src/convolver_menu_impulses.cpp:112
+#: src/convolver_menu_impulses.cpp:113
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Podporovány jsou pouze Stereo Impulse soubory"
 
-#: src/convolver_menu_impulses.cpp:122
+#: src/convolver_menu_impulses.cpp:123
 msgid "Impulse File Not Imported"
 msgstr "Impulse soubor nebyl importován"
 
-#: src/convolver_menu_impulses.cpp:130
+#: src/convolver_menu_impulses.cpp:131
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:134
+#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
+#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_menu_impulses.cpp:137
+#: src/convolver_menu_impulses.cpp:144
 msgid "Impulse Response"
 msgstr "Odpověď impulsu"
 
-#: src/convolver_menu_impulses.cpp:258
+#: src/convolver_menu_impulses.cpp:265
 msgid "Load Impulse"
 msgstr "Načíst Impulse"
 
-#: src/convolver_menu_impulses.cpp:261
+#: src/convolver_menu_impulses.cpp:268
 msgid "Remove Impulse"
 msgstr "Odstranit Impuls"
 
@@ -2278,15 +2278,15 @@ msgstr "Výstupní zařízení"
 msgid "Add"
 msgstr "Přidat"
 
-#: src/presets_menu.cpp:233
+#: src/presets_menu.cpp:240
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:252
+#: src/presets_menu.cpp:259
 msgid "Delete?"
 msgstr ""
 
-#: src/rnnoise_ui.cpp:90
+#: src/rnnoise_ui.cpp:91
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2294,11 +2294,11 @@ msgstr ""
 "Vybraný model nebyl načten. Jeho formát nemusí být podporovaný. Návrat ke "
 "standardnímu modelu."
 
-#: src/rnnoise_ui.cpp:133
+#: src/rnnoise_ui.cpp:134
 msgid "Import Model File"
 msgstr "Importovat modelový soubor"
 
-#: src/rnnoise_ui.cpp:140
+#: src/rnnoise_ui.cpp:147
 msgid "RNNoise Models"
 msgstr "RNNoise Modely"
 

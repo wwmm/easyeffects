@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-03 16:56+0000\n"
+"POT-Creation-Date: 2023-08-03 21:00+0000\n"
 "PO-Revision-Date: 2023-08-02 00:10+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -90,8 +90,8 @@ msgid "_About Easy Effects"
 msgstr "_Acerca de Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:351
-#: src/presets_menu.cpp:352 src/presets_menu.cpp:369 src/presets_menu.cpp:370
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
+#: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
 msgid "Presets"
 msgstr "Perfiles"
 
@@ -894,7 +894,7 @@ msgstr "Calcular frecuencias"
 msgid "Sort Bands"
 msgstr "Ordenar las bandas"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106
 msgid "Import Preset"
 msgstr "Importar perfil"
 
@@ -1766,7 +1766,7 @@ msgstr "Mínima"
 msgid "Maximum"
 msgstr "Máximo"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:196
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
 msgid "Load"
 msgstr "Cargar"
 
@@ -1899,8 +1899,8 @@ msgid "Models"
 msgstr "Modelos"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:257
-#: src/rnnoise_ui.cpp:291
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:96 src/rnnoise_ui.cpp:264
+#: src/rnnoise_ui.cpp:298
 msgid "Standard Model"
 msgstr "Modelo estándar"
 
@@ -2134,40 +2134,40 @@ msgstr "_Entrada"
 msgid "_PipeWire"
 msgstr "_Software PipeWire"
 
-#: src/convolver_menu_impulses.cpp:102
+#: src/convolver_menu_impulses.cpp:103
 msgid "The File Is Not Regular"
 msgstr "El archivo no es regular"
 
-#: src/convolver_menu_impulses.cpp:107
+#: src/convolver_menu_impulses.cpp:108
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "El archivo de impulso puede estar dañado o no ser compatible"
 
-#: src/convolver_menu_impulses.cpp:112
+#: src/convolver_menu_impulses.cpp:113
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Sólo se admiten archivos de impulso estéreo"
 
-#: src/convolver_menu_impulses.cpp:122
+#: src/convolver_menu_impulses.cpp:123
 msgid "Impulse File Not Imported"
 msgstr "Archivo de impulso no importado"
 
-#: src/convolver_menu_impulses.cpp:130
+#: src/convolver_menu_impulses.cpp:131
 msgid "Import Impulse File"
 msgstr "Importar archivo de respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:131 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:134
+#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
+#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
 msgid "Open"
 msgstr "Abrir"
 
-#: src/convolver_menu_impulses.cpp:137
+#: src/convolver_menu_impulses.cpp:144
 msgid "Impulse Response"
 msgstr "Respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:258
+#: src/convolver_menu_impulses.cpp:265
 msgid "Load Impulse"
 msgstr "Cargar archivo de respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:261
+#: src/convolver_menu_impulses.cpp:268
 msgid "Remove Impulse"
 msgstr "Eliminar archivo de respuesta a impulsos"
 
@@ -2247,15 +2247,15 @@ msgstr "Dispositivo de salida"
 msgid "Add"
 msgstr "Agregar"
 
-#: src/presets_menu.cpp:233
+#: src/presets_menu.cpp:240
 msgid "Save?"
 msgstr "¿Guardar?"
 
-#: src/presets_menu.cpp:252
+#: src/presets_menu.cpp:259
 msgid "Delete?"
 msgstr "¿Borrar?"
 
-#: src/rnnoise_ui.cpp:90
+#: src/rnnoise_ui.cpp:91
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2263,11 +2263,11 @@ msgstr ""
 "El modelo seleccionado no se ha cargado. Su formato puede no ser compatible. "
 "Vuelva al modelo estándar."
 
-#: src/rnnoise_ui.cpp:133
+#: src/rnnoise_ui.cpp:134
 msgid "Import Model File"
 msgstr "Importar archivo de modelo"
 
-#: src/rnnoise_ui.cpp:140
+#: src/rnnoise_ui.cpp:147
 msgid "RNNoise Models"
 msgstr "Modelos RNNoise"
 
