@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-03 19:54-0300\n"
+"POT-Creation-Date: 2023-08-03 21:00+0000\n"
 "PO-Revision-Date: 2023-07-30 08:05+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -94,6 +94,8 @@ msgstr "_Info su Easy Effects"
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
 #: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
+#: src/presets_menu.cpp:113 src/presets_menu.cpp:351 src/presets_menu.cpp:352
+#: src/presets_menu.cpp:369 src/presets_menu.cpp:370
 msgid "Presets"
 msgstr "Profili"
 
@@ -260,7 +262,7 @@ msgstr "Guadagno in Uscita del Plugin"
 #: data/ui/convolver.ui:395 data/ui/crossfeed.ui:288 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:653 data/ui/delay.ui:375 data/ui/echo_canceller.ui:281
 #: data/ui/equalizer.ui:550 data/ui/exciter.ui:461 data/ui/expander.ui:1182
-#: data/ui/filter.ui:314 data/ui/gate.ui:1375 data/ui/limiter.ui:918
+#: data/ui/filter.ui:314 data/ui/gate.ui:1405 data/ui/limiter.ui:918
 #: data/ui/loudness.ui:318 data/ui/maximizer.ui:310
 #: data/ui/multiband_compressor.ui:644 data/ui/multiband_gate.ui:644
 #: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
@@ -896,7 +898,7 @@ msgstr "Calcola Frequenze"
 msgid "Sort Bands"
 msgstr "Ordina Bande"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106 src/presets_menu.cpp:105
 msgid "Import Preset"
 msgstr "Importa Profilo"
 
@@ -926,13 +928,13 @@ msgid "Ceil Value"
 msgstr "Valore Limite Superiore"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:43
+#, fuzzy
 msgid "Expander"
-msgstr ""
+msgstr "Expander"
 
 #: data/ui/expander.ui:86
-#, fuzzy
 msgid "Expander Mode"
-msgstr "Modalità Banda"
+msgstr "Modalità Expander"
 
 #: data/ui/expander.ui:559 data/ui/gate.ui:763
 msgid "Internal"
@@ -1042,6 +1044,10 @@ msgstr "Filtro Passa-Basso"
 #: data/ui/gate.ui:663 data/ui/multiband_gate_band.ui:536
 msgid "Simple Moving Average"
 msgstr "Media Mobile Semplice"
+
+#: data/ui/gate.ui:1369 data/ui/multiband_gate_band.ui:866
+msgid "Gating"
+msgstr "Gate"
 
 #: data/ui/level_meter.ui:39
 msgid "True Peak"
@@ -1394,10 +1400,6 @@ msgstr "Curva Banda"
 #: data/ui/multiband_gate_band.ui:787
 msgid "Band Reduction"
 msgstr "Riduzione Banda"
-
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "Gate"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1771,6 +1773,7 @@ msgid "Maximum"
 msgstr "Massima"
 
 #: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
+#: src/convolver_menu_impulses.cpp:196
 msgid "Load"
 msgstr "Carica"
 
@@ -1904,7 +1907,8 @@ msgstr "Modelli"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:96 src/rnnoise_ui.cpp:264
-#: src/rnnoise_ui.cpp:298
+#: src/rnnoise_ui.cpp:298 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:257
+#: src/rnnoise_ui.cpp:291
 msgid "Standard Model"
 msgstr "Modello Standard"
 
@@ -2137,40 +2141,42 @@ msgstr "_Ingresso"
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:103
+#: src/convolver_menu_impulses.cpp:103 src/convolver_menu_impulses.cpp:102
 msgid "The File Is Not Regular"
 msgstr "Il File È Irregolare"
 
-#: src/convolver_menu_impulses.cpp:108
+#: src/convolver_menu_impulses.cpp:108 src/convolver_menu_impulses.cpp:107
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Il File di Risposta Impulsiva Può Essere Corrotto o Non Supportato"
 
-#: src/convolver_menu_impulses.cpp:113
+#: src/convolver_menu_impulses.cpp:113 src/convolver_menu_impulses.cpp:112
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Sono Supportati Soltanto File di Risposta Impulsiva in Formato Stereo"
 
-#: src/convolver_menu_impulses.cpp:123
+#: src/convolver_menu_impulses.cpp:123 src/convolver_menu_impulses.cpp:122
 msgid "Impulse File Not Imported"
 msgstr "File di Risposta Impulsiva Non Importato"
 
-#: src/convolver_menu_impulses.cpp:131
+#: src/convolver_menu_impulses.cpp:131 src/convolver_menu_impulses.cpp:130
 msgid "Import Impulse File"
 msgstr "Importa File di Impulso"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
 #: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
+#: src/convolver_menu_impulses.cpp:131 src/presets_menu.cpp:106
+#: src/rnnoise_ui.cpp:134
 msgid "Open"
 msgstr "Apri"
 
-#: src/convolver_menu_impulses.cpp:144
+#: src/convolver_menu_impulses.cpp:144 src/convolver_menu_impulses.cpp:137
 msgid "Impulse Response"
 msgstr "Risposta Impulso"
 
-#: src/convolver_menu_impulses.cpp:265
+#: src/convolver_menu_impulses.cpp:265 src/convolver_menu_impulses.cpp:258
 msgid "Load Impulse"
 msgstr "Carica Impulso"
 
-#: src/convolver_menu_impulses.cpp:268
+#: src/convolver_menu_impulses.cpp:268 src/convolver_menu_impulses.cpp:261
 msgid "Remove Impulse"
 msgstr "Rimuovi Impulso"
 
@@ -2250,15 +2256,15 @@ msgstr "Dispositivo Uscita"
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/presets_menu.cpp:240
+#: src/presets_menu.cpp:240 src/presets_menu.cpp:233
 msgid "Save?"
 msgstr "Salvare?"
 
-#: src/presets_menu.cpp:259
+#: src/presets_menu.cpp:259 src/presets_menu.cpp:252
 msgid "Delete?"
 msgstr "Eliminare?"
 
-#: src/rnnoise_ui.cpp:91
+#: src/rnnoise_ui.cpp:91 src/rnnoise_ui.cpp:90
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2266,11 +2272,11 @@ msgstr ""
 "Il Modello Selezionato Non È Stato Caricato. Il Formato Potrebbe Essere Non "
 "Supportato. Il Modello Standard È Stato Ripristinato."
 
-#: src/rnnoise_ui.cpp:134
+#: src/rnnoise_ui.cpp:134 src/rnnoise_ui.cpp:133
 msgid "Import Model File"
 msgstr "Importa File Modello"
 
-#: src/rnnoise_ui.cpp:147
+#: src/rnnoise_ui.cpp:147 src/rnnoise_ui.cpp:140
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
@@ -2352,12 +2358,10 @@ msgstr "Strumenti Stereo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Non Disponibile"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2367,7 +2371,6 @@ msgstr ""
 "dal codice sorgente."
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2385,7 +2388,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, c++-format
 msgid "Using {}"
 msgstr "Utilizzo {}"
 
