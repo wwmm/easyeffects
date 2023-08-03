@@ -4,14 +4,14 @@ Date: UNRELEASED_DATE
 
 Description:
 - Features∶
-- The expander from Linux Studio Plugins can be used in EasyEffets.
-- The equalizer bands now have an additional gain control that allows for more efficient input of values that are hard to set in the scale. More details in issue 1383.
+- The Expander from Linux Studio Plugins can be used in EasyEffects.
+- The Equalizer bands now have an additional gain control that allows for more efficient input of values that are hard to set in the scale. More details in issue 1383.
 
 - Bug fixes∶
 -
 
 - Other notes∶
--
+- System folders under `/etc` have been deprecated in favor of a new location where Community Presets can be installed.
 
 ---
 Version: 7.0.6
