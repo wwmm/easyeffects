@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-02 19:32-0300\n"
+"POT-Creation-Date: 2023-08-03 16:56+0000\n"
 "PO-Revision-Date: 2023-07-30 08:05+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -92,8 +92,8 @@ msgid "_About Easy Effects"
 msgstr "_Info su Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:346
-#: src/presets_menu.cpp:347 src/presets_menu.cpp:364 src/presets_menu.cpp:365
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:113 src/presets_menu.cpp:351
+#: src/presets_menu.cpp:352 src/presets_menu.cpp:369 src/presets_menu.cpp:370
 msgid "Presets"
 msgstr "Profili"
 
@@ -1770,7 +1770,7 @@ msgstr "Minima"
 msgid "Maximum"
 msgstr "Massima"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:193
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:196
 msgid "Load"
 msgstr "Carica"
 
@@ -1903,8 +1903,8 @@ msgid "Models"
 msgstr "Modelli"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:252
-#: src/rnnoise_ui.cpp:286
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:95 src/rnnoise_ui.cpp:257
+#: src/rnnoise_ui.cpp:291
 msgid "Standard Model"
 msgstr "Modello Standard"
 
@@ -2166,11 +2166,11 @@ msgstr "Apri"
 msgid "Impulse Response"
 msgstr "Risposta Impulso"
 
-#: src/convolver_menu_impulses.cpp:255
+#: src/convolver_menu_impulses.cpp:258
 msgid "Load Impulse"
 msgstr "Carica Impulso"
 
-#: src/convolver_menu_impulses.cpp:258
+#: src/convolver_menu_impulses.cpp:261
 msgid "Remove Impulse"
 msgstr "Rimuovi Impulso"
 
@@ -2250,11 +2250,11 @@ msgstr "Dispositivo Uscita"
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/presets_menu.cpp:228
+#: src/presets_menu.cpp:233
 msgid "Save?"
 msgstr "Salvare?"
 
-#: src/presets_menu.cpp:247
+#: src/presets_menu.cpp:252
 msgid "Delete?"
 msgstr "Eliminare?"
 
