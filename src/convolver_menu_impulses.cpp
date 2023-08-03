@@ -146,27 +146,30 @@ void on_import_irs_clicked(ConvolverMenuImpulses* self, GtkButton* btn) {
 
   g_object_unref(filters);
 
-  gtk_file_dialog_open(
+  gtk_file_dialog_open_multiple(
       dialog, active_window, nullptr,
       +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
         auto* self = static_cast<ConvolverMenuImpulses*>(user_data);
         auto* dialog = GTK_FILE_DIALOG(source_object);
 
-        auto* file = gtk_file_dialog_open_finish(dialog, result, nullptr);
+        auto* files_list = gtk_file_dialog_open_multiple_finish(dialog, result, nullptr);
 
-        if (file != nullptr) {
+        if (files_list == nullptr) {
+          return;
+        }
+
+        for (guint n = 0U; n < g_list_model_get_n_items(files_list); n++) {
+          auto* file = static_cast<GFile*>(g_list_model_get_item(files_list, n));
           auto* path = g_file_get_path(file);
 
-          auto import_state = import_irs_file(path);
-
-          if (import_state != ImpulseImportState::success) {
+          if (auto import_state = import_irs_file(path); import_state != ImpulseImportState::success) {
             notify_import_error(import_state, self);
           }
 
           g_free(path);
-
-          g_object_unref(file);
         }
+
+        g_object_unref(files_list);
       },
       self);
 }
