@@ -70,7 +70,7 @@ void on_preset_default(CrossfeedBox* self, GtkButton* btn) {
 
 void on_preset_jmeier(CrossfeedBox* self, GtkButton* btn) {
   gtk_spin_button_set_value(self->fcut, 650.0);
-  gtk_spin_button_set_value(self->feed, 9.0);
+  gtk_spin_button_set_value(self->feed, 9.5);
 }
 
 void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::string& schema_path) {
