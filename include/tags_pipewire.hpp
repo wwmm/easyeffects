@@ -47,4 +47,4 @@ namespace tags::pipewire::media_role {
 
 inline constexpr auto dsp = "DSP";
 
-}
+}  // namespace tags::pipewire::media_role

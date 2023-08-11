@@ -243,7 +243,7 @@ namespace tags::schema::output_level {
 
 inline constexpr auto id = "com.github.wwmm.easyeffects.outputlevel";
 
-}
+}  // namespace tags::schema::output_level
 
 namespace tags::schema::pitch {
 
