@@ -249,7 +249,7 @@ void AutoGain::process(std::span<float>& left_in,
 
   if (shortterm > 10.0 || std::isinf(shortterm) || std::isnan(shortterm)) {
     /*
-      Sometimes when a stream is started right after EasyEffects has been initialized a very large shorterm value is
+      Sometimes when a stream is started right after Easy Effects has been initialized a very large shorterm value is
       calculated. Probably because of some weird high intensity transient. So it is better to ignore unresonable large
        values. When they happen we just set the shorterm value to the momentary loudness.
     */
@@ -259,7 +259,7 @@ void AutoGain::process(std::span<float>& left_in,
 
   if (global > 10.0 || std::isinf(global) || std::isnan(global)) {
     /*
-      Sometimes when a stream is started right after EasyEffects has been initialized a very large integrated value is
+      Sometimes when a stream is started right after Easy Effects has been initialized a very large integrated value is
       calculated. Probably because of some weird high intensity transient. So it is better to ignore unresonable large
        values. When they happen we just set the global value to the momentary loudness.
     */
