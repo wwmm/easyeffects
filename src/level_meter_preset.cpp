@@ -20,12 +20,12 @@
 #include "level_meter_preset.hpp"
 
 LevelMeterPreset::LevelMeterPreset(PresetType preset_type, const int& index)
-    : PluginPresetBase(tags::schema::autogain::id,
-                       tags::schema::autogain::input_path,
-                       tags::schema::autogain::output_path,
+    : PluginPresetBase(tags::schema::level_meter::id,
+                       tags::schema::level_meter::input_path,
+                       tags::schema::level_meter::output_path,
                        preset_type,
                        index) {
-  instance_name.assign(tags::plugin_name::autogain).append("#").append(util::to_string(index));
+  instance_name.assign(tags::plugin_name::level_meter).append("#").append(util::to_string(index));
 }
 
 void LevelMeterPreset::save(nlohmann::json& json) {
