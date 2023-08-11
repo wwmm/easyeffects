@@ -1,16 +1,32 @@
 # Changelog
  
+## 7.0.7
+### 2023-08-11
+
+
+### Features:
+- The Expander from Linux Studio Plugins can be used in Easy Effects.
+- The Equalizer bands now have an additional gain control that allows for more efficient input of values that are hard to set in the scale. More details at https://github.com/wwmm/easyeffects/issues/1383.
+- Added the ability to select and load multiple files in the opening dialogs for presets, Convolver impulse responses and RNNoise models.
+
+### Bug fixes:
+- Fixed the Solo button in the Equalizer band settings.
+
+### Other notes:
+- Easy Effects folders under `/etc` have been deprecated and presets located there won't be loaded anymore. At the moment only local presets under `~/.config/easyeffects` are automatically loaded in the Presets Menu. In the future we will implement a new system to install, manage and import Community Presets.
+
+ 
 ## 7.0.6
 ### 2023-07-28
 
- 
+
 ### Features:
 - An "Experimental Features" section was added to our preferences window.
 - The native window of the LSP plugins can be used. This is an experimental feature intended only for advanced users. So expect some bugs.
-- Fractional semitone values can now be used in the Pitch Shift effect. 
+- Fractional semitone values can now be used in the Pitch Shift effect.
 
 ### Bug fixes:
-- The input/output device dropdown in our PipeWire tab is updated when the system default device changes and `Use Default` is enabled. This fixes #1989
+- The input/output device dropdown in our PipeWire tab is updated when the system default device changes and `Use Default` is enabled. This fixes issue https://github.com/wwmm/easyeffects/issues/1989.
 
 ### Other notes:
 
