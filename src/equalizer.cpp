@@ -182,6 +182,13 @@ void Equalizer::on_split_channels() {
                                                                              g_settings_get_boolean(settings, key));
                                                     }),
                                                     this));
+
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_solo[n].data()).c_str(),
+                                                    G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                                                      g_settings_set_boolean(self->settings_right, key,
+                                                                             g_settings_get_boolean(settings, key));
+                                                    }),
+                                                    this));
   }
 }
 
