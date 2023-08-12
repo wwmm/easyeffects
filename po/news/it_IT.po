@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-11 21:54+0000\n"
-"PO-Revision-Date: 2023-07-30 08:05+0000\n"
+"PO-Revision-Date: 2023-08-13 06:50+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
@@ -144,6 +144,8 @@ msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"Aggiunta la possibilità di selezionare e caricare più di un file alla volta "
+"per i profili, gli impulsi del Convolver e i modelli di RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -177,6 +179,8 @@ msgstr "Bug corretti:"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid "Fixed the Solo button in the Equalizer band settings."
 msgstr ""
+"Corretto il funzionamento del bottone Solo all'interno delle configurazioni "
+"di banda dell'Equalizzatore."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
@@ -200,6 +204,11 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
+"Le cartelle di Easy Effects in /etc sono d'ora in poi deprecate e i profili "
+"presenti al loro interno non saranno più caricati. Al momento soltanto i "
+"profili in ~/.config/easyeffects sono caricati automaticamente nell'apposito "
+"Menu. In futuro implementeremo un nuovo sistema per installare, gestire e "
+"importare i Profili della Community."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid ""
@@ -224,15 +233,14 @@ msgstr ""
 "Intonazione."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
-#, fuzzy
 msgid ""
 "The input/output device dropdown in our PipeWire tab is updated when the "
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
-"Nella scheda PipeWire, il menù a comparsa dei dispositivi di ingresso/uscita "
-"adesso viene aggiornato quando cambia il dispositivo predefinito del sistema "
-"e \"Usa Predefinito\" è abilitato. Risolve"
+"Il menu a tendina dei dispositivi di input/output nella scheda PipeWire è "
+"correttamente aggiornato quando cambia il dispositivo predefinito del "
+"sistema e l'opzione Usa Predefinito è abilitata. Risolto il bug 1989."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
 msgid "A new Level Meter plugin based on libebur128 has been added."
