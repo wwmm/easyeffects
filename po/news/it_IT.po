@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-11 21:54+0000\n"
 "PO-Revision-Date: 2023-08-13 06:50+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
 "Language: it_IT\n"
@@ -131,6 +131,7 @@ msgstr "Funzionalità:"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
 msgstr ""
+"L'Expander dei plugin di Linux Studio può essere utilizzato in Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
@@ -138,6 +139,9 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"Le bande dell'equalizzatore ora dispongono di un ulteriore controllo del "
+"guadagno che consente un inserimento più efficiente di valori difficili da "
+"impostare nella scala. Maggiori dettagli sui problemi al numero 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
