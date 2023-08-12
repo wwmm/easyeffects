@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-11 21:54+0000\n"
-"PO-Revision-Date: 2023-08-01 15:07+0000\n"
+"PO-Revision-Date: 2023-08-13 06:50+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -127,6 +127,7 @@ msgstr "Fonctionnalités :"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
 msgstr ""
+"L'Expanseur de Linux Studio Plugins peut être utilisé dans Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
@@ -134,12 +135,18 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"Les bandes de l'égaliseur ont désormais un contrôle de gain supplémentaire "
+"qui permet une saisie plus efficace des valeurs qui sont difficiles à "
+"définir à l'échelle. Plus de détails dans le ticket 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"Ajout de la possibilité de sélectionner et de charger plusieurs fichiers "
+"dans les boîtes de dialogue d'ouverture des pré-réglages, les réponses "
+"impulsionnelles du Convolueur et les modèles RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -172,7 +179,7 @@ msgstr "Corrections de bogues :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "Correction du bouton Solo dans les paramètres de bande de l'égaliseur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
@@ -196,6 +203,12 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
+"Les dossiers Easy Effects sous /etc ont été supprimés et les pré-réglages "
+"qui s'y trouvent ne seront plus chargés. Pour le moment, seuls les pré-"
+"réglages locaux sous ~/.config/easyeffects sont automatiquement chargés dans "
+"le menu des pré-réglages. À l'avenir, nous mettrons en place un nouveau "
+"système d'installation, de gestion et d'importation des pré-réglages "
+"communautaires."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid ""
@@ -220,15 +233,15 @@ msgstr ""
 "dans l'effet de décalage de hauteur (Pitch Shift)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
-#, fuzzy
 msgid ""
 "The input/output device dropdown in our PipeWire tab is updated when the "
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
-"Le menu déroulant des périphériques d'entrée/sortie dans notre onglet "
-"PipeWire est mis à jour lorsque le périphérique par défaut du système change "
-"et que l'option 'Utiliser la sortie par défaut' est activée. Ceci corrige"
+"La liste déroulante des périphériques d'entrée/sortie dans notre onglet "
+"PipeWire est mise à jour lorsque le périphérique par défaut du système "
+"change et que l'option 'Utiliser la sortie par défaut' est activée. Ceci "
+"résout le ticket 1989."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
 msgid "A new Level Meter plugin based on libebur128 has been added."
@@ -880,8 +893,8 @@ msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
 msgstr ""
-"Il est maintenant possible de combiner des réponses d’impulsions dans "
-"l’interface de Convolver. Un nouveau fichier d’impulsions est généré et il "
+"Il est maintenant possible de combiner des réponses d’impulsions dans l’"
+"interface du Convolueur. Un nouveau fichier d’impulsions est généré et il "
 "devrait être visible dans la liste des impulsions."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:306
@@ -1219,7 +1232,7 @@ msgid ""
 "where the impulse files was not loaded when only one was available in the "
 "menu, see issue 1011"
 msgstr ""
-"Le menu des réponses impulsionnelles du convolver a été amélioré pour "
+"Le menu des réponses impulsionnelles du convolueur a été amélioré pour "
 "résoudre un problème où les fichiers impulsionnels n’étaient pas chargés "
 "lorsqu’un seul était disponible dans le menu, voir le ticket 1011"
 
