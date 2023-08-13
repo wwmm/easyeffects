@@ -132,9 +132,8 @@ msgid "Reset History"
 msgstr "Geschiedenis wissen"
 
 #: data/ui/autogain.ui:39
-#, fuzzy
 msgid "Controls"
-msgstr "Versterkingsbediening"
+msgstr "Bediening"
 
 #: data/ui/autogain.ui:43
 msgid "Target"
@@ -926,12 +925,11 @@ msgstr "Plafondwaarde"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:43
 msgid "Expander"
-msgstr ""
+msgstr "Uitbreider"
 
 #: data/ui/expander.ui:86
-#, fuzzy
 msgid "Expander Mode"
-msgstr "Bandmodus"
+msgstr "Uitbreider­modus"
 
 #: data/ui/expander.ui:559 data/ui/gate.ui:763
 msgid "Internal"
@@ -1689,18 +1687,17 @@ msgid "Hide Menus on Outside Clicks"
 msgstr "Menu's verbergen bij klikken achtergrond"
 
 #: data/ui/preferences_general.ui:190
-#, fuzzy
 msgid "Experimental Features"
-msgstr "Experimenteel"
+msgstr "Experimentele functies"
 
 #: data/ui/preferences_general.ui:193
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "Inheems venster tonen"
+msgstr "Inheemse plug-ins-venster"
 
 #: data/ui/preferences_general.ui:194
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
+"Staat toe dat het venster voor inheemse plug-ins wordt weergegeven/verborgen"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -2352,12 +2349,10 @@ msgstr "Stereobediening"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} is niet beschikbaar"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2367,7 +2362,6 @@ msgstr ""
 "handmatig te installeren."
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2385,7 +2379,6 @@ msgstr "- ∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, c++-format
 msgid "Using {}"
 msgstr "{} wordt gebruikt"
 
