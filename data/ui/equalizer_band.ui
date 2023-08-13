@@ -68,8 +68,8 @@
 
                 <property name="adjustment">
                     <object class="GtkAdjustment" id="band_scale_adjustment">
-                        <property name="lower">-35</property>
-                        <property name="upper">35</property>
+                        <property name="lower">-36</property>
+                        <property name="upper">36</property>
                         <property name="step-increment">0.01</property>
                         <property name="page-increment">1.0</property>
                     </object>
@@ -264,8 +264,8 @@
 
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
-                                                <property name="lower">-35</property>
-                                                <property name="upper">35</property>
+                                                <property name="lower">-36</property>
+                                                <property name="upper">36</property>
                                                 <property name="step-increment">0.01</property>
                                                 <property name="page-increment">1.0</property>
                                             </object>
