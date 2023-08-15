@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-13 14:11+0000\n"
-"PO-Revision-Date: 2023-07-31 16:23+0000\n"
+"PO-Revision-Date: 2023-08-14 18:49+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -126,7 +126,7 @@ msgstr "Возможности:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
-msgstr ""
+msgstr "Расширитель от Linux Studio Plugins можно использовать в Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
@@ -134,12 +134,17 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"Полосы эквалайзера теперь имеют дополнительный регулятор усиления, "
+"позволяющий более точно вводить значения, которые трудно задать в шкале. "
+"Подробности в проблеме 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"Добавлена возможность выбора и загрузки нескольких файлов в окнах открытия "
+"предустановок, импульсных откликов Convolver и моделей RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -172,7 +177,7 @@ msgstr "Исправление ошибок:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "Исправлена кнопка Соло в настройках полосы эквалайзера."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
@@ -196,6 +201,11 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
+"Папки Easy Effects в каталоге /etc были устаревшими, и расположенные в них "
+"предустановки больше не будут загружаться. Теперь в меню предустановок "
+"автоматически загружаются только локальные предустановки из папки ~/.config/"
+"easyeffects. В будущем будет реализована новая система установки, управления "
+"и импорта предустановок от сообщества."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid ""
@@ -216,15 +226,14 @@ msgstr ""
 "Теперь можно использовать дробные значения полутонов в эффекте Pitch Shift."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
-#, fuzzy
 msgid ""
 "The input/output device dropdown in our PipeWire tab is updated when the "
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
 "Выпадающий список устройств входа/выхода на вкладке PipeWire обновляется при "
-"изменении системного устройства по умолчанию и включении параметра "
-"«Использовать стандартный». Это исправляет"
+"изменении системного устройства по умолчанию и включении параметра «"
+"Использовать стандартный». Это исправляет проблему 1989."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
 msgid "A new Level Meter plugin based on libebur128 has been added."
