@@ -237,8 +237,8 @@ void on_pointer_motion(GtkEventControllerMotion* controller, double xpos, double
   const auto x = xpos;
   const auto y = ypos;
 
-  const auto width = static_cast<double>(gtk_widget_get_allocated_width(GTK_WIDGET(self)));
-  const auto height = static_cast<double>(gtk_widget_get_allocated_height(GTK_WIDGET(self)));
+  const auto width = static_cast<double>(gtk_widget_get_width(GTK_WIDGET(self)));
+  const auto height = static_cast<double>(gtk_widget_get_height(GTK_WIDGET(self)));
 
   const auto usable_height = height - self->data->margin * height - self->data->x_axis_height;
 
