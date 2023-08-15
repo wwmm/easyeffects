@@ -297,8 +297,8 @@
                     "only-arches": [
                         "x86_64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.0.0/mold-2.0.0-x86_64-linux.tar.gz",
-                    "sha256": "fd02d8348ae6411a38b7973e48591dd7fc873b15cdcc58cb2ca0ac264eea8868",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.1.0/mold-2.1.0-x86_64-linux.tar.gz",
+                    "sha256": "67a479bf2eddf10dd223e488ceedddca49174f629f7a4bbaeaab80c5b5702021",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
@@ -312,8 +312,8 @@
                     "only-arches": [
                         "aarch64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.0.0/mold-2.0.0-aarch64-linux.tar.gz",
-                    "sha256": "f12cf788ba2d01faad28b56c0fd5fa39d93a72ff9bfe0a10144a816575cf12f0",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.1.0/mold-2.1.0-aarch64-linux.tar.gz",
+                    "sha256": "3f7d3f7eede50687399b567e5bddfaadd902ea8599185dd159882b3d25184e21",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
