@@ -221,7 +221,7 @@ void show(GtkWidget* widget) {
 
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
-  auto active_window_height = gtk_widget_get_allocated_height(GTK_WIDGET(active_window));
+  auto active_window_height = gtk_widget_get_height(GTK_WIDGET(active_window));
 
   const int menu_height = static_cast<int>(0.5F * static_cast<float>(active_window_height));
 
