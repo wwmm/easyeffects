@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-15 00:32+0000\n"
-"PO-Revision-Date: 2023-01-20 07:50+0000\n"
-"Last-Translator: Nela Kulichová <kulichovaanela@gmail.com>\n"
+"PO-Revision-Date: 2023-08-17 14:53+0000\n"
+"Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1271,7 +1271,7 @@ msgstr "Rovný"
 
 #: data/ui/loudness.ui:58
 msgid "FFT Size"
-msgstr "velikost FFT"
+msgstr "Velikost FFT"
 
 #: data/ui/loudness.ui:82
 msgid "Output Volume"
@@ -2312,7 +2312,7 @@ msgstr "Hlasitost basů"
 
 #: src/tags_plugin_name.cpp:35
 msgid "Convolver"
-msgstr "Svinovač"
+msgstr "Konvolver"
 
 #: src/tags_plugin_name.cpp:36
 msgid "Crossfeed"
