@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-15 00:32+0000\n"
-"PO-Revision-Date: 2023-05-16 02:52+0000\n"
+"PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -134,7 +134,7 @@ msgstr "清除记录"
 
 #: data/ui/autogain.ui:39
 msgid "Controls"
-msgstr ""
+msgstr "控制"
 
 #: data/ui/autogain.ui:43
 msgid "Target"
@@ -354,9 +354,8 @@ msgstr "显示已排除的程序"
 #: data/ui/expander.ui:25 data/ui/gate.ui:25 data/ui/limiter.ui:25
 #: data/ui/loudness.ui:25 data/ui/multiband_compressor.ui:104
 #: data/ui/multiband_gate.ui:104
-#, fuzzy
 msgid "Show Native Window"
-msgstr "关闭窗口"
+msgstr "显示原生窗口"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:34
 msgid "Compressor"
@@ -930,7 +929,7 @@ msgstr "上限值"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:43
 msgid "Expander"
-msgstr ""
+msgstr "扩展器"
 
 #: data/ui/expander.ui:86
 #, fuzzy
@@ -1589,14 +1588,12 @@ msgid "Semitones"
 msgstr "半音"
 
 #: data/ui/pitch.ui:160
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "参考"
+msgstr "拍子差"
 
 #: data/ui/pitch.ui:183
-#, fuzzy
 msgid "Rate Difference"
-msgstr "参考"
+msgstr "速率差"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
@@ -1680,7 +1677,7 @@ msgstr "更新间隔（电平表、频谱）"
 
 #: data/ui/preferences_general.ui:136
 msgid "Update Frequency (LV2 Plugins)"
-msgstr ""
+msgstr "更新频率（LV2插件）"
 
 #: data/ui/preferences_general.ui:161 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -1695,18 +1692,16 @@ msgid "Hide Menus on Outside Clicks"
 msgstr "点击外部时隐藏菜单"
 
 #: data/ui/preferences_general.ui:190
-#, fuzzy
 msgid "Experimental Features"
-msgstr "实验性"
+msgstr "实验性功能"
 
 #: data/ui/preferences_general.ui:193
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "关闭窗口"
+msgstr "原生插件窗口"
 
 #: data/ui/preferences_general.ui:194
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "允许显示或隐藏原生插件窗口"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -2315,9 +2310,8 @@ msgid "Filter"
 msgstr "过滤器"
 
 #: src/tags_plugin_name.cpp:46
-#, fuzzy
 msgid "Level Meter"
-msgstr "输出电平表"
+msgstr "电平表"
 
 #: src/tags_plugin_name.cpp:47
 msgid "Limiter"
