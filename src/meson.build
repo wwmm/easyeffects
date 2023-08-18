@@ -146,6 +146,8 @@ if get_option('enable-libportal')
   status += 'Using libportal to handle autostart files.'
 endif
 
+tbb = cxx.find_library('tbb', required: true)
+
 easyeffects_deps = [
 	dependency('libpipewire-0.3', version: '>=0.3.58', include_type: 'system'),
 	dependency('glib-2.0', version: '>=2.56', include_type: 'system'),
@@ -166,7 +168,7 @@ easyeffects_deps = [
 	dependency('fmt', version: '>=8.0.0', include_type: 'system'),
 	dependency('gsl', include_type: 'system'),
 	dependency('threads'),
-	dependency('tbb', include_type: 'system'),
+	tbb,
 	zita_convolver,
 	rnnoise,
 	libportal,
