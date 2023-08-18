@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-15 00:32+0000\n"
-"PO-Revision-Date: 2023-08-17 14:53+0000\n"
+"PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -69,9 +69,8 @@ msgid "Application Volume"
 msgstr "Hlasitost aplikace"
 
 #: data/ui/application_window.ui:6
-#, fuzzy
 msgid "_Help"
-msgstr "Nápověda"
+msgstr "_Nápověda"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
