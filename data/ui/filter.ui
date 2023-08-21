@@ -24,6 +24,91 @@
                                     <object class="AdwPreferencesGroup">
                                         <child>
                                             <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Type</property>
+                                                <child>
+                                                    <object class="GtkDropDown" id="type">
+                                                        <property name="valign">center</property>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item translatable="yes">Low-pass</item>
+                                                                    <item translatable="yes">High-pass</item>
+                                                                    <item translatable="yes">Low-shelf</item>
+                                                                    <item translatable="yes">High-shelf</item>
+                                                                    <item translatable="yes">Bell</item>
+                                                                    <item translatable="yes">Band-pass</item>
+                                                                    <item translatable="yes">Notch</item>
+                                                                    <item translatable="yes">Resonance</item>
+                                                                    <item translatable="yes">Ladder-pass</item>
+                                                                    <item translatable="yes">Ladder-rejection</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
+                                                        <accessibility>
+                                                            <property name="label">Filter Type</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Mode</property>
+                                                <child>
+                                                    <object class="GtkDropDown" id="mmode">
+                                                        <property name="valign">center</property>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item>RLC (BT)</item>
+                                                                    <item>RLC (MT)</item>
+                                                                    <item>BWC (BT)</item>
+                                                                    <item>BWC (MT)</item>
+                                                                    <item>LRX (BT)</item>
+                                                                    <item>LRX (MT)</item>
+                                                                    <item>APO (DR)</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
+                                                        <accessibility>
+                                                            <property name="label">Filter Mode</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Slope</property>
+                                                <child>
+                                                    <object class="GtkDropDown" id="mmode">
+                                                        <property name="valign">center</property>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item>x1</item>
+                                                                    <item>x2</item>
+                                                                    <item>x3</item>
+                                                                    <item>x4</item>
+                                                                    <item>x6</item>
+                                                                    <item>x8</item>
+                                                                    <item>x12</item>
+                                                                    <item>x16</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
+                                                        <accessibility>
+                                                            <property name="label">Filter Mode</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
                                                 <property name="title" translatable="yes">Mode</property>
                                                 <child>
                                                     <object class="GtkDropDown" id="mode">
@@ -66,7 +151,7 @@
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">10</property>
-                                                                <property name="upper">20000</property>
+                                                                <property name="upper">24000</property>
                                                                 <property name="value">2000</property>
                                                                 <property name="step-increment">1</property>
                                                                 <property name="page-increment">100</property>
@@ -303,8 +388,7 @@
 
                                 <!-- Empty placeholder used only for layout reason -->
                                 <child>
-                                    <object class="GtkLabel">
-                                    </object>
+                                    <object class="GtkLabel"> </object>
                                 </child>
 
                                 <child>
