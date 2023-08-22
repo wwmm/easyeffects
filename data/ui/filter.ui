@@ -83,7 +83,7 @@
                                             <object class="AdwActionRow">
                                                 <property name="title" translatable="yes">Slope</property>
                                                 <child>
-                                                    <object class="GtkDropDown" id="mmode">
+                                                    <object class="GtkDropDown" id="slope">
                                                         <property name="valign">center</property>
                                                         <property name="model">
                                                             <object class="GtkStringList">
@@ -155,6 +155,52 @@
                                                                 <property name="value">2000</property>
                                                                 <property name="step-increment">1</property>
                                                                 <property name="page-increment">100</property>
+                                                            </object>
+                                                        </property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Width</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="width">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">0</property>
+                                                                <property name="upper">12</property>
+                                                                <property name="value">4</property>
+                                                                <property name="step-increment">1</property>
+                                                                <property name="page-increment">2</property>
+                                                            </object>
+                                                        </property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Quality</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="quality">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">0</property>
+                                                                <property name="upper">100</property>
+                                                                <property name="value">0</property>
+                                                                <property name="step-increment">1</property>
+                                                                <property name="page-increment">10</property>
                                                             </object>
                                                         </property>
                                                     </object>
