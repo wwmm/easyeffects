@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include <execution>
+#include <numeric>
 #include "convolver_ui_common.hpp"
 #include "resampler.hpp"
 #include "tags_resources.hpp"
