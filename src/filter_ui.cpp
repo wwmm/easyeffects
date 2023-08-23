@@ -44,9 +44,11 @@ struct _FilterBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *plugin_credit;
 
-  GtkDropDown* mode;
+  GtkDropDown *mode, *type, *slope;
 
-  GtkSpinButton *frequency, *resonance, *inertia;
+  GtkSpinButton *frequency, *width, *quality;
+
+  GtkToggleButton* show_native_ui;
 
   GSettings* settings;
 
@@ -58,6 +60,14 @@ G_DEFINE_TYPE(FilterBox, filter_box, GTK_TYPE_BOX)
 
 void on_reset(FilterBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
+}
+
+void on_show_native_window(FilterBox* self, GtkToggleButton* btn) {
+  if (gtk_toggle_button_get_active(btn) != 0) {
+    self->data->filter->show_native_ui();
+  } else {
+    self->data->filter->close_native_ui();
+  }
 }
 
 void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& schema_path) {
@@ -104,19 +114,25 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
   g_settings_bind(self->settings, "frequency", gtk_spin_button_get_adjustment(self->frequency), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "resonance", gtk_spin_button_get_adjustment(self->resonance), "value",
+  g_settings_bind(self->settings, "width", gtk_spin_button_get_adjustment(self->width), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "inertia", gtk_spin_button_get_adjustment(self->inertia), "value",
+  g_settings_bind(self->settings, "quality", gtk_spin_button_get_adjustment(self->quality), "value",
                   G_SETTINGS_BIND_DEFAULT);
+
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "type", self->type);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->mode);
+
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "slope", self->slope);
 }
 
 void dispose(GObject* object) {
   auto* self = EE_FILTER_BOX(object);
 
   self->data->filter->set_post_messages(false);
+
+  self->data->filter->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);
 
@@ -169,12 +185,17 @@ void filter_box_class_init(FilterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, FilterBox, output_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, plugin_credit);
 
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, type);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, mode);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, slope);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, frequency);
-  gtk_widget_class_bind_template_child(widget_class, FilterBox, resonance);
-  gtk_widget_class_bind_template_child(widget_class, FilterBox, inertia);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, width);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, quality);
+
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, show_native_ui);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
+  gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
 }
 
 void filter_box_init(FilterBox* self) {
@@ -185,8 +206,7 @@ void filter_box_init(FilterBox* self) {
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
   prepare_spinbuttons<"Hz">(self->frequency);
-  prepare_spinbuttons<"dB">(self->resonance);
-  prepare_spinbuttons<"ms">(self->inertia);
+  prepare_spinbuttons<"">(self->width, self->quality);
 }
 
 auto create() -> FilterBox* {
