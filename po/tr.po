@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-15 00:32+0000\n"
+"POT-Creation-Date: 2023-08-24 14:49+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2214,7 +2214,7 @@ msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
+#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
 msgid "Open"
 msgstr "Aç"
 
@@ -2271,15 +2271,15 @@ msgstr ""
 "APO Ön Ayarı Yüklenmedi. Dosya Biçimi Yanlış Olabilir. Lütfen İçeriğini "
 "Gözden Geçirin."
 
-#: src/equalizer_ui.cpp:582
+#: src/equalizer_ui.cpp:577
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
 
-#: src/equalizer_ui.cpp:590
+#: src/equalizer_ui.cpp:585
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ Ön Ayarları"
 
-#: src/equalizer_ui.cpp:615
+#: src/equalizer_ui.cpp:610
 #, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
