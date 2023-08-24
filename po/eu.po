@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-15 00:32+0000\n"
+"POT-Creation-Date: 2023-08-24 14:28+0000\n"
 "PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2151,7 +2151,7 @@ msgid "Import Impulse File"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
+#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
 msgid "Open"
 msgstr ""
 
@@ -2205,15 +2205,15 @@ msgid ""
 "Content."
 msgstr ""
 
-#: src/equalizer_ui.cpp:582
+#: src/equalizer_ui.cpp:577
 msgid "Import GraphicEQ Preset File"
 msgstr ""
 
-#: src/equalizer_ui.cpp:590
+#: src/equalizer_ui.cpp:585
 msgid "GraphicEQ Presets"
 msgstr ""
 
-#: src/equalizer_ui.cpp:615
+#: src/equalizer_ui.cpp:610
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."

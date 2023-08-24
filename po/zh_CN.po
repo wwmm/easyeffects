@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-15 00:32+0000\n"
+"POT-Creation-Date: 2023-08-24 14:28+0000\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2158,7 +2158,7 @@ msgid "Import Impulse File"
 msgstr "导入 Impulse 文件"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
+#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
 msgid "Open"
 msgstr "打开"
 
@@ -2212,15 +2212,15 @@ msgid ""
 "Content."
 msgstr "APO 预设未成功加载。可能是文件格式不受支持。请检查文件内容。"
 
-#: src/equalizer_ui.cpp:582
+#: src/equalizer_ui.cpp:577
 msgid "Import GraphicEQ Preset File"
 msgstr "导入 GraphicEQ 预设文件"
 
-#: src/equalizer_ui.cpp:590
+#: src/equalizer_ui.cpp:585
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ 预设"
 
-#: src/equalizer_ui.cpp:615
+#: src/equalizer_ui.cpp:610
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
