@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-15 00:32+0000\n"
+"POT-Creation-Date: 2023-08-24 12:10-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -223,7 +223,7 @@ msgstr "Output"
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:207
 #: data/ui/echo_canceller.ui:112 data/ui/equalizer.ui:382
 #: data/ui/exciter.ui:262 data/ui/expander.ui:521 data/ui/expander.ui:1014
-#: data/ui/filter.ui:145 data/ui/gate.ui:727 data/ui/gate.ui:1207
+#: data/ui/filter.ui:209 data/ui/gate.ui:727 data/ui/gate.ui:1207
 #: data/ui/level_meter.ui:274 data/ui/limiter.ui:750 data/ui/loudness.ui:150
 #: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:476
 #: data/ui/multiband_gate.ui:476 data/ui/pipe_manager_box.ui:306
@@ -238,7 +238,7 @@ msgstr "Input"
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:443 data/ui/delay.ui:226 data/ui/echo_canceller.ui:131
 #: data/ui/equalizer.ui:401 data/ui/exciter.ui:281 data/ui/expander.ui:1033
-#: data/ui/filter.ui:164 data/ui/gate.ui:1226 data/ui/limiter.ui:769
+#: data/ui/filter.ui:228 data/ui/gate.ui:1226 data/ui/limiter.ui:769
 #: data/ui/loudness.ui:169 data/ui/maximizer.ui:128
 #: data/ui/multiband_compressor.ui:495 data/ui/multiband_gate.ui:495
 #: data/ui/pitch.ui:244 data/ui/reverb.ui:385 data/ui/rnnoise.ui:174
@@ -252,7 +252,7 @@ msgstr "Input Pipeline"
 #: data/ui/compressor.ui:1180 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:291
 #: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:466
-#: data/ui/exciter.ui:346 data/ui/expander.ui:1098 data/ui/filter.ui:229
+#: data/ui/exciter.ui:346 data/ui/expander.ui:1098 data/ui/filter.ui:293
 #: data/ui/gate.ui:1291 data/ui/limiter.ui:834 data/ui/loudness.ui:234
 #: data/ui/maximizer.ui:193 data/ui/multiband_compressor.ui:560
 #: data/ui/multiband_gate.ui:560 data/ui/pipe_manager_box.ui:209
@@ -267,7 +267,7 @@ msgstr "Output"
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:527 data/ui/delay.ui:310 data/ui/echo_canceller.ui:215
 #: data/ui/equalizer.ui:485 data/ui/exciter.ui:365 data/ui/expander.ui:1117
-#: data/ui/filter.ui:248 data/ui/gate.ui:1310 data/ui/limiter.ui:853
+#: data/ui/filter.ui:312 data/ui/gate.ui:1310 data/ui/limiter.ui:853
 #: data/ui/loudness.ui:253 data/ui/maximizer.ui:212
 #: data/ui/multiband_compressor.ui:579 data/ui/multiband_gate.ui:579
 #: data/ui/pitch.ui:328 data/ui/reverb.ui:469 data/ui/rnnoise.ui:258
@@ -281,7 +281,7 @@ msgstr "Output Pipeline"
 #: data/ui/convolver.ui:395 data/ui/crossfeed.ui:288 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:653 data/ui/delay.ui:375 data/ui/echo_canceller.ui:281
 #: data/ui/equalizer.ui:550 data/ui/exciter.ui:461 data/ui/expander.ui:1182
-#: data/ui/filter.ui:314 data/ui/gate.ui:1375 data/ui/limiter.ui:918
+#: data/ui/filter.ui:377 data/ui/gate.ui:1375 data/ui/limiter.ui:918
 #: data/ui/loudness.ui:318 data/ui/maximizer.ui:310
 #: data/ui/multiband_compressor.ui:644 data/ui/multiband_gate.ui:644
 #: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
@@ -379,9 +379,9 @@ msgid "Show Excluded Applications"
 msgstr "Arată programele din Lista de Blocare în Fila Principală"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:283
-#: data/ui/expander.ui:25 data/ui/gate.ui:25 data/ui/limiter.ui:25
-#: data/ui/loudness.ui:25 data/ui/multiband_compressor.ui:104
-#: data/ui/multiband_gate.ui:104
+#: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
+#: data/ui/limiter.ui:25 data/ui/loudness.ui:25
+#: data/ui/multiband_compressor.ui:104 data/ui/multiband_gate.ui:104
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Ascunde Fereastra."
@@ -393,7 +393,7 @@ msgstr "Compresor"
 #: data/ui/compressor.ui:63 data/ui/compressor.ui:517 data/ui/compressor.ui:826
 #: data/ui/deesser.ui:68 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:119
 #: data/ui/expander.ui:63 data/ui/expander.ui:436 data/ui/expander.ui:744
-#: data/ui/filter.ui:27 data/ui/gate.ui:650 data/ui/gate.ui:945
+#: data/ui/filter.ui:67 data/ui/gate.ui:650 data/ui/gate.ui:945
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:461
 #: data/ui/multiband_gate_band.ui:520
 msgid "Mode"
@@ -590,7 +590,7 @@ msgid "Sidechain Source"
 msgstr "Lanț Lateral"
 
 #: data/ui/compressor.ui:614 data/ui/equalizer_band.ui:96
-#: data/ui/expander.ui:533 data/ui/gate.ui:739
+#: data/ui/expander.ui:533 data/ui/filter.ui:37 data/ui/gate.ui:739
 msgid "Type"
 msgstr "Scrie"
 
@@ -645,7 +645,7 @@ msgid "High-Pass"
 msgstr "High Pass"
 
 #: data/ui/compressor.ui:839 data/ui/equalizer_band.ui:189
-#: data/ui/expander.ui:757 data/ui/filter.ui:59 data/ui/gate.ui:958
+#: data/ui/expander.ui:757 data/ui/filter.ui:122 data/ui/gate.ui:958
 #: data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "Frecvență"
@@ -971,7 +971,7 @@ msgstr "Benzi"
 msgid "Import Preset"
 msgstr "Importă Presetări"
 
-#: data/ui/equalizer_band.ui:140
+#: data/ui/equalizer_band.ui:140 data/ui/filter.ui:94
 msgid "Slope"
 msgstr "Pantă"
 
@@ -980,11 +980,11 @@ msgstr "Pantă"
 msgid "Solo"
 msgstr "Solo"
 
-#: data/ui/equalizer_band.ui:221 data/ui/pitch.ui:28
+#: data/ui/equalizer_band.ui:221 data/ui/filter.ui:168 data/ui/pitch.ui:28
 msgid "Quality"
 msgstr "Calitate"
 
-#: data/ui/equalizer_band.ui:288
+#: data/ui/equalizer_band.ui:288 data/ui/filter.ui:145
 msgid "Width"
 msgstr "Lățime"
 
@@ -1029,61 +1029,50 @@ msgstr "Detectare"
 msgid "Remove this model file"
 msgstr "Șterge fișierul de presetări"
 
-#: data/ui/filter.ui:34
-msgid "12dB/oct Lowpass"
-msgstr "12dB/oct Lowpass"
-
-#: data/ui/filter.ui:35
-msgid "24dB/oct Lowpass"
-msgstr "24dB/oct Lowpass"
-
-#: data/ui/filter.ui:36
-msgid "36dB/oct Lowpass"
-msgstr "36dB/oct Lowpass"
-
-#: data/ui/filter.ui:37
-msgid "12dB/oct Highpass"
-msgstr "12dB/oct Highpass"
-
-#: data/ui/filter.ui:38
-msgid "24dB/oct Highpass"
-msgstr "24dB/oct Highpass"
-
-#: data/ui/filter.ui:39
-msgid "36dB/oct Highpass"
-msgstr "36dB/oct Highpass"
-
-#: data/ui/filter.ui:40
-msgid "6dB/oct Bandpass"
-msgstr "6dB/oct Bandpass"
-
-#: data/ui/filter.ui:41
-msgid "12dB/oct Bandpass"
-msgstr "12dB/oct Bandpass"
-
-#: data/ui/filter.ui:42
-msgid "18dB/oct Bandpass"
-msgstr "18dB/oct Bandpass"
-
-#: data/ui/filter.ui:43
-msgid "6dB/oct Bandreject"
-msgstr "6dB/oct Bandreject"
-
 #: data/ui/filter.ui:44
-msgid "12dB/oct Bandreject"
-msgstr "12dB/oct Bandreject"
+#, fuzzy
+msgid "Low-pass"
+msgstr "Low-Pass"
 
 #: data/ui/filter.ui:45
-msgid "18dB/oct Bandreject"
-msgstr "18dB/oct Bandreject"
+#, fuzzy
+msgid "High-pass"
+msgstr "High Pass"
 
-#: data/ui/filter.ui:82
+#: data/ui/filter.ui:46
+#, fuzzy
+msgid "Low-shelf"
+msgstr "Low Shelf"
+
+#: data/ui/filter.ui:47
+#, fuzzy
+msgid "High-shelf"
+msgstr "High Shelf"
+
+#: data/ui/filter.ui:48
+msgid "Bell"
+msgstr "Clopot"
+
+#: data/ui/filter.ui:49
+#, fuzzy
+msgid "Band-pass"
+msgstr "Evitare"
+
+#: data/ui/filter.ui:50
+msgid "Notch"
+msgstr "Crestătură"
+
+#: data/ui/filter.ui:51
 msgid "Resonance"
 msgstr "Rezonanță"
 
-#: data/ui/filter.ui:105
-msgid "Inertia"
-msgstr "Inerție"
+#: data/ui/filter.ui:52
+msgid "Ladder-pass"
+msgstr ""
+
+#: data/ui/filter.ui:53
+msgid "Ladder-rejection"
+msgstr ""
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
 msgid "Gate"
@@ -2348,7 +2337,7 @@ msgid "Import Impulse File"
 msgstr "Importă Fișier Impulse"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:583 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
+#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
 msgid "Open"
 msgstr "Deschide"
 
@@ -2408,17 +2397,17 @@ msgid ""
 "Content."
 msgstr ""
 
-#: src/equalizer_ui.cpp:582
+#: src/equalizer_ui.cpp:577
 #, fuzzy
 msgid "Import GraphicEQ Preset File"
 msgstr "Importă Fișierul de Presetare APO"
 
-#: src/equalizer_ui.cpp:590
+#: src/equalizer_ui.cpp:585
 #, fuzzy
 msgid "GraphicEQ Presets"
 msgstr "Presetări pentru Input:"
 
-#: src/equalizer_ui.cpp:615
+#: src/equalizer_ui.cpp:610
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
@@ -2580,6 +2569,45 @@ msgstr ""
 msgid "Using {}"
 msgstr ""
 
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/oct Lowpass"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/oct Lowpass"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/oct Lowpass"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/oct Highpass"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/oct Highpass"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/oct Highpass"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/oct Bandpass"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/oct Bandpass"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/oct Bandpass"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/oct Bandreject"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/oct Bandreject"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "18dB/oct Bandreject"
+
+#~ msgid "Inertia"
+#~ msgstr "Inerție"
+
 #, fuzzy
 #~ msgid "Band Type"
 #~ msgstr "Scrie"
@@ -2638,23 +2666,11 @@ msgstr ""
 #~ msgid "Open the Easy Effects Manual"
 #~ msgstr "Resetează EasyEffects."
 
-#~ msgid "Bell"
-#~ msgstr "Clopot"
-
 #~ msgid "High Pass"
 #~ msgstr "High Pass"
 
-#~ msgid "High Shelf"
-#~ msgstr "High Shelf"
-
 #~ msgid "Low Pass"
 #~ msgstr "Low Pass"
-
-#~ msgid "Low Shelf"
-#~ msgstr "Low Shelf"
-
-#~ msgid "Notch"
-#~ msgstr "Crestătură"
 
 #~ msgid "All Pass"
 #~ msgstr "All Pass"

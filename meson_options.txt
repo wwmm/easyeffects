@@ -25,3 +25,10 @@ option(
   type: 'boolean',
   value: true
 )
+
+option(
+  'enable-libcpp-workarounds',
+  description: 'Whether to enable code paths need for compilation on libc++.',
+  type: 'boolean',
+  value: false
+)

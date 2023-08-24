@@ -19,10 +19,6 @@
 
 #include "util.hpp"
 
-#include <regex>
-#include <sstream>
-#include <utility>
-
 namespace util {
 
 auto prepare_debug_message(const std::string& message, source_location location) -> std::string {

@@ -146,6 +146,11 @@ if get_option('enable-libportal')
   status += 'Using libportal to handle autostart files.'
 endif
 
+if get_option('enable-libcpp-workarounds')
+  add_project_arguments('-DENABLE_LIBCPP_WORKAROUNDS=1', language : 'cpp')
+  status += 'Using libc++ workarounds.'
+endif
+
 tbb = cxx.find_library('tbb', required: true)
 
 easyeffects_deps = [

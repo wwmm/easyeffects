@@ -24,23 +24,24 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <charconv>
+#include <clocale>
 #include <cmath>
+#include <cstdlib>
 #include <filesystem>
 #include <functional>
 #include <iostream>
 #include <limits>
 #include <ranges>
+#include <regex>
 #include <source_location>
+#include <sstream>
 #include <string>
 #include <thread>
+#include <type_traits>
+#include <utility>
 #include <vector>
 
-#ifdef __clang__
-#include <experimental/source_location>
-#endif
-
 namespace util {
-
 // Minimum dB level reported here has to be used in gsettings and spinbuttons
 // as minimal values for controls that replicates the -infinity state (linear 0).
 constexpr float minimum_db_level = -100.0F;
@@ -48,11 +49,7 @@ constexpr double minimum_db_d_level = -100.0;
 constexpr float minimum_linear_level = 0.00001F;
 constexpr double minimum_linear_d_level = 0.00001;
 
-#ifdef __clang__
-using source_location = std::experimental::source_location;
-#else
 using source_location = std::source_location;
-#endif
 
 void debug(const std::string& s, source_location location = source_location::current());
 void error(const std::string& s, source_location location = source_location::current());
@@ -134,9 +131,39 @@ auto str_to_num(const std::string& str, T& num) -> bool {
     return false;
   }
 
+#ifndef ENABLE_LIBCPP_WORKAROUNDS
+
   const auto result = std::from_chars(str.data() + first_char, str.data() + str.size(), num);
 
   return (result.ec == std::errc());
+
+#else
+
+  if constexpr (std::is_floating_point_v<T>) {
+    char* endp = nullptr;
+
+    /* we're asking for C locale which is preallocated, so no alloc here */
+
+    auto loc = newlocale(LC_ALL_MASK, "C", nullptr);
+
+    if constexpr (std::is_same_v<T, float>) {
+      num = strtof_l(str.data() + first_char, &endp, loc);
+    } else {
+      num = strtod_l(str.data() + first_char, &endp, loc);
+    }
+
+    /* we gotta "free" it anyway */
+
+    freelocale(loc);
+
+    return (endp && !*endp && (endp != (str.data() + first_char)));
+  } else {
+    const auto result = std::from_chars(str.data() + first_char, str.data() + str.size(), num);
+
+    return (result.ec == std::errc());
+  }
+
+#endif
 }
 
 template <typename T>
