@@ -68,7 +68,7 @@ void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::
 
   std::iota(indices.begin(), indices.end(), 0U);
 
-  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), [&](const int n) {
+  auto each = [&](const int n) {
     c[n] = 0.0F;
 
     // Static cast to avoid gcc signedness warning.
@@ -81,7 +81,12 @@ void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::
         c[n] += b[m] * a[z];
       }
     }
-  });
+  };
+#if defined(ENABLE_LIBCPP_WORKAROUNDS) && (_LIBCPP_VERSION < 170000 || defined(_LIBCPP_HAS_NO_INCOMPLETE_PSTL))
+  std::for_each(indices.begin(), indices.end(), each);
+#else
+  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), each);
+#endif
 }
 
 void combine_kernels(ConvolverMenuCombine* self,
