@@ -20,6 +20,7 @@
 #include "util.hpp"
 
 #include <regex>
+#include <sstream>
 #include <utility>
 
 namespace util {
