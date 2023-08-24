@@ -151,7 +151,7 @@ void on_calculate_frequencies(EqualizerBox* self, GtkButton* btn) {
 auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
   std::smatch matches;
 
-  static const auto re_preamp = std::regex(R"(preamp\s*+:\s*+([+-]?+\d++(?:\.\d++)?+)\s*+db)", std::regex::icase);
+  static const auto re_preamp = std::regex(R"(preamp\s*:\s*([+-]?\d+(?:\.\d+)?)\s*db)", std::regex::icase);
 
   std::regex_search(line, matches, re_preamp);
 
@@ -166,7 +166,7 @@ auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::
   std::smatch matches;
 
   static const auto re_filter =
-      std::regex(R"(filter\s*+\d*+\s*+:\s*+on\s++([a-z]++(?:\s++(?:6|12)db)?+))", std::regex::icase);
+      std::regex(R"(filter\s*\d*\s*:\s*on\s+([a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
 
   std::regex_search(line, matches, re_filter);
 
@@ -175,7 +175,7 @@ auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::
   }
 
   // Possible multiple whitespaces are replaced by a single space
-  auto apo_filter = std::regex_replace(matches.str(1), std::regex(R"(\s++)"), " ");
+  auto apo_filter = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
 
   // Filter string needed in uppercase for unordered_map
   std::transform(apo_filter.begin(), apo_filter.end(), apo_filter.begin(),
@@ -193,7 +193,7 @@ auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::
 auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bool {
   std::smatch matches;
 
-  static const auto re_freq = std::regex(R"(fc\s++(\d++(?:,\d++)?+(?:\.\d++)?+)\s*+hz)", std::regex::icase);
+  static const auto re_freq = std::regex(R"(fc\s+(\d+(?:,\d+)?(?:\.\d+)?)\s*hz)", std::regex::icase);
 
   std::regex_search(line, matches, re_freq);
 
@@ -209,7 +209,7 @@ auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bo
 auto parse_apo_gain(const std::string& line, struct APO_Band& filter) -> bool {
   std::smatch matches;
 
-  static const auto re_gain = std::regex(R"(gain\s++([+-]?+\d++(?:\.\d++)?+)\s*+db)", std::regex::icase);
+  static const auto re_gain = std::regex(R"(gain\s+([+-]?\d+(?:\.\d+)?)\s*db)", std::regex::icase);
 
   std::regex_search(line, matches, re_gain);
 
@@ -223,7 +223,7 @@ auto parse_apo_gain(const std::string& line, struct APO_Band& filter) -> bool {
 auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool {
   std::smatch matches;
 
-  static const auto re_quality = std::regex(R"(q\s++(\d++(?:\.\d++)?+))", std::regex::icase);
+  static const auto re_quality = std::regex(R"(q\s+(\d+(?:\.\d+)?))", std::regex::icase);
 
   std::regex_search(line, matches, re_quality);
 
@@ -304,7 +304,7 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   std::vector<struct APO_Band> bands;
   double preamp = 0.0;
 
-  if (const auto re = std::regex(R"(^[ \t]*+#)"); eq_file.is_open()) {
+  if (const auto re = std::regex(R"(^[ \t]*#)"); eq_file.is_open()) {
     for (std::string line; getline(eq_file, line);) {
       if (std::regex_search(line, re)) {  // Avoid commented lines
         continue;
@@ -425,11 +425,6 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 // ### GraphicEQ Section ###
 
 auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ_Band>& bands) -> bool {
-  // Reminder: C++ std::regex supports possessive quantifiers.
-  // There's no reference of <regex> library supporting it inside the documentation, but
-  // std::regex_search("aaab"s, matches, std::regex("(a*+a++b)")) returns FALSE,
-  // which means the capturing without backtracking is supported.
-
   std::smatch full_match;
 
   // The first parsing stage is to ensure the given string contains a
@@ -438,7 +433,7 @@ auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ
 
   // In order to do it, the following regular expression is used:
   static const auto re_geq =
-      std::regex(R"(graphiceq\s*:((?:\s*\d++(?:,\d++)?+(?:\.\d++)?+\s++[+-]?+\d++(?:\.\d++)?+[ \t]*+(?:;|$))++))",
+      std::regex(R"(graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+))",
                  std::regex::icase);
 
   // That regex is quite permissive since:
@@ -469,7 +464,7 @@ auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ
   // and capturing the values will return only the last repeated group (the last band),
   // but we need all of them.
   std::smatch band_match;
-  static const auto re_geq_band = std::regex(R"((\d++(?:,\d++)?+(?:\.\d++)?+)\s++([+-]?+\d++(?:\.\d++)?+))");
+  static const auto re_geq_band = std::regex(R"((\d+(?:,\d+)?(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?))");
 
   // C++ regex does not support the global PCRE flag, so we need to repeat the search in a loop.
   while (std::regex_search(bands_substr, band_match, re_geq_band)) {
@@ -513,7 +508,7 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
 
   std::vector<struct GraphicEQ_Band> bands;
 
-  if (const auto re = std::regex(R"(^[ \t]*+#)"); eq_file.is_open()) {
+  if (const auto re = std::regex(R"(^[ \t]*#)"); eq_file.is_open()) {
     for (std::string line; getline(eq_file, line);) {
       if (std::regex_search(line, re)) {  // Avoid commented lines
         continue;

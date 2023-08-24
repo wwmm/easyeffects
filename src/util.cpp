@@ -401,7 +401,7 @@ auto compare_versions(const std::string& v0, const std::string& v1) -> int {
     int patch = -1;
   };
 
-  static const auto re_semver = std::regex(R"(^(\d++)\.?+(\d++)?+\.?+(\d++)?+)");
+  static const auto re_semver = std::regex(R"(^(\d+)\.?(\d+)?\.?(\d+)?)");
 
   std::array<SemVer, 2> sv{};
   std::array<std::string, 2> v{v0, v1};
