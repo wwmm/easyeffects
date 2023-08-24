@@ -206,7 +206,7 @@ jobs:
       # but because any clang compiler failures will cause clang-tidy to fail later on, so we might as well fail fast
       run: |
         CC=clang CXX=clang++ meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug
-        ninja -C build
+        meson compile -C build
 
     - name: Install ctcache
       run: |
