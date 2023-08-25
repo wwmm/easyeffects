@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2023-07-08 00:53+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1381,10 +1381,6 @@ msgstr "Bandkromme"
 msgid "Band Reduction"
 msgstr "Bandvermindering"
 
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "Dosering"
-
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
 msgstr "Algemeen"
@@ -2374,6 +2370,9 @@ msgstr "- ∞"
 #, c++-format
 msgid "Using {}"
 msgstr "{} wordt gebruikt"
+
+#~ msgid "Gating"
+#~ msgstr "Dosering"
 
 #~ msgid "12dB/oct Lowpass"
 #~ msgstr "12dB/oct low-pass"

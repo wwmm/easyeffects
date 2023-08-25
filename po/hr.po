@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2023-05-01 06:52+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1527,10 +1527,6 @@ msgstr ""
 #, fuzzy
 msgid "Band Reduction"
 msgstr "Ograničenje pojačanja"
-
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr ""
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"

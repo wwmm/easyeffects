@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2023-08-02 00:10+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1383,10 +1383,6 @@ msgstr "Courbe de bande"
 msgid "Band Reduction"
 msgstr "Réduction de la bande"
 
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "Déclenchement"
-
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
 msgstr "Général"
@@ -2378,6 +2374,9 @@ msgstr "-inf"
 #, c++-format
 msgid "Using {}"
 msgstr "Utilise {}"
+
+#~ msgid "Gating"
+#~ msgstr "Déclenchement"
 
 #~ msgid "12dB/oct Lowpass"
 #~ msgstr "12dB/oct passe-bas"

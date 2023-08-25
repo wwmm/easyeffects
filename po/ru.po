@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2023-08-02 00:10+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1418,10 +1418,6 @@ msgstr "Кривая полосы"
 msgid "Band Reduction"
 msgstr "Уменьшение полосы"
 
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "Гейтирование"
-
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
 msgstr "Общие"
@@ -2428,6 +2424,9 @@ msgstr "∞"
 #, c++-format
 msgid "Using {}"
 msgstr "Используется {}"
+
+#~ msgid "Gating"
+#~ msgstr "Гейтирование"
 
 #~ msgid "12dB/oct Lowpass"
 #~ msgstr "12 дБ/окт фильтр НЧ"

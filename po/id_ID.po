@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1485,10 +1485,6 @@ msgstr "Bentuk Kurva"
 msgid "Band Reduction"
 msgstr "Pengurangan Kuatan"
 
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "Gating"
-
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
 msgstr "Umum"
@@ -2525,6 +2521,9 @@ msgstr ""
 #, c++-format
 msgid "Using {}"
 msgstr ""
+
+#~ msgid "Gating"
+#~ msgstr "Gating"
 
 #~ msgid "12dB/oct Lowpass"
 #~ msgstr "Lowpass 12dB/oktaf"
