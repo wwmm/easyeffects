@@ -38,6 +38,8 @@ Filter::Filter(const std::string& tag,
 
   lv2_wrapper->bind_key_double<"q", "quality">(settings);
 
+  lv2_wrapper->bind_key_double<"bal", "balance">(settings);
+
   lv2_wrapper->bind_key_double_db<"g", "gain">(settings);
 
   lv2_wrapper->bind_key_enum<"ft", "type">(settings);

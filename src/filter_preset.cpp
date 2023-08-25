@@ -39,9 +39,11 @@ void FilterPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["width"] = g_settings_get_double(settings, "width");
 
+  json[section][instance_name]["gain"] = g_settings_get_double(settings, "gain");
+
   json[section][instance_name]["quality"] = g_settings_get_double(settings, "quality");
 
-  json[section][instance_name]["gain"] = g_settings_get_double(settings, "gain");
+  json[section][instance_name]["balance"] = g_settings_get_double(settings, "balance");
 
   json[section][instance_name]["type"] = util::gsettings_get_string(settings, "type");
 
@@ -61,9 +63,11 @@ void FilterPreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "width", "width");
 
+  update_key<double>(json.at(section).at(instance_name), settings, "gain", "gain");
+
   update_key<double>(json.at(section).at(instance_name), settings, "quality", "quality");
 
-  update_key<double>(json.at(section).at(instance_name), settings, "gain", "gain");
+  update_key<double>(json.at(section).at(instance_name), settings, "balance", "balance");
 
   update_key<gchar*>(json.at(section).at(instance_name), settings, "type", "type");
 

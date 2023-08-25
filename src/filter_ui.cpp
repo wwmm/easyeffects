@@ -46,7 +46,7 @@ struct _FilterBox {
 
   GtkDropDown *mode, *type, *slope;
 
-  GtkSpinButton *frequency, *width, *gain, *quality;
+  GtkSpinButton *frequency, *width, *gain, *quality, *balance;
 
   GtkToggleButton* show_native_ui;
 
@@ -122,7 +122,8 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
   g_settings_bind(self->settings, "quality", gtk_spin_button_get_adjustment(self->quality), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  // gain is missing
+  g_settings_bind(self->settings, "balance", gtk_spin_button_get_adjustment(self->balance), "value",
+                  G_SETTINGS_BIND_DEFAULT);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "type", self->type);
 
@@ -196,6 +197,7 @@ void filter_box_class_init(FilterBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, FilterBox, width);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, gain);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, quality);
+  gtk_widget_class_bind_template_child(widget_class, FilterBox, balance);
 
   gtk_widget_class_bind_template_child(widget_class, FilterBox, show_native_ui);
 
@@ -213,6 +215,7 @@ void filter_box_init(FilterBox* self) {
   prepare_spinbuttons<"Hz">(self->frequency);
   prepare_spinbuttons<"dB">(self->gain);
   prepare_spinbuttons<"">(self->width, self->quality);
+  prepare_spinbuttons<"%">(self->balance);
 }
 
 auto create() -> FilterBox* {
