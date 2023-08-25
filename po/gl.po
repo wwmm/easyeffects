@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -1491,10 +1491,6 @@ msgstr "Curva"
 msgid "Band Reduction"
 msgstr "Redución de ganancia"
 
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "Limiar dinámico"
-
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
 msgstr "Xeral"
@@ -2552,6 +2548,9 @@ msgstr ""
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "Usando"
+
+#~ msgid "Gating"
+#~ msgstr "Limiar dinámico"
 
 #~ msgid "12dB/oct Lowpass"
 #~ msgstr "Paso baixo 12dB/oct"

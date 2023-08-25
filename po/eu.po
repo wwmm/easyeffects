@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1379,10 +1379,6 @@ msgstr ""
 
 #: data/ui/multiband_gate_band.ui:787
 msgid "Band Reduction"
-msgstr ""
-
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:27

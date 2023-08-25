@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2023-07-15 03:50+0000\n"
 "Last-Translator: Fernando Lopes <118869201+plasmus777@users.noreply.github."
 "com>\n"
@@ -1386,10 +1386,6 @@ msgstr "Curva da Banda"
 msgid "Band Reduction"
 msgstr "Redução da Banda"
 
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "Gating"
-
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
 msgstr "Geral"
@@ -2380,6 +2376,9 @@ msgstr "-inf"
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "Usando"
+
+#~ msgid "Gating"
+#~ msgstr "Gating"
 
 #~ msgid "12dB/oct Lowpass"
 #~ msgstr "12dB/oct Passa-Baixa"
