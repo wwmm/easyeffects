@@ -136,24 +136,21 @@ void MultibandGate::process(std::span<float>& left_in,
         const auto nstr = util::to_string(n);
 
         frequency_range_end_port_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
-        envelope_port_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);
-        curve_port_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + nstr);
-        reduction_port_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
 
-        // Normalize the current band gain reduction amount as a percentage,
-        // where 0% is no gating, and 100% is a fully closed gate.
-        // Double needed for the level bar widget.
-        const double band_max_reduction_port_value =
-            static_cast<double>(lv2_wrapper->get_control_port_value("gr_" + nstr));
-        // no reduction defaults to 1.0; aka db_to_linear(0 dB)
-        gating_array.at(n) = util::normalize(reduction_port_array.at(n), band_max_reduction_port_value);
+        envelope_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("elm_" + nstr + "l") +
+                                            lv2_wrapper->get_control_port_value("elm_" + nstr + "r"));
+
+        curve_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("clm_" + nstr + "l") +
+                                         lv2_wrapper->get_control_port_value("clm_" + nstr + "r"));
+
+        reduction_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("rlm_" + nstr + "l") +
+                                             lv2_wrapper->get_control_port_value("rlm_" + nstr + "r"));
       }
 
       frequency_range.emit(frequency_range_end_port_array);
       envelope.emit(envelope_port_array);
       curve.emit(curve_port_array);
       reduction.emit(reduction_port_array);
-      gating.emit(gating_array);
 
       notify();
     }

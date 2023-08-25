@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1455,10 +1455,6 @@ msgstr ""
 msgid "Band Reduction"
 msgstr "Redukcja pasma"
 
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "Bramka"
-
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
 msgstr "Ogólne"
@@ -2479,6 +2475,9 @@ msgstr "-inf"
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "Używanie"
+
+#~ msgid "Gating"
+#~ msgstr "Bramka"
 
 #~ msgid "12dB/oct Lowpass"
 #~ msgstr "12dB/okt dolnoprzepustowy"

@@ -254,19 +254,6 @@ void setup(MultibandGateBox* self,
         });
       }));
 
-  self->data->connections.push_back(
-      multiband_gate->gating.connect([=](const std::array<double, tags::multiband_gate::n_bands> values) {
-        util::idle_add([=]() {
-          if (get_ignore_filter_idle_add(serial)) {
-            return;
-          }
-
-          for (size_t n = 0U; n < values.size(); n++) {
-            ui::multiband_gate_band_box::set_gating_levelbar(self->bands[n], static_cast<float>(values[n]));
-          }
-        });
-      }));
-
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
     for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_devices_model)); n++) {
       auto* holder =

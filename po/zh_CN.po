@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-24 12:10-0300\n"
+"POT-Creation-Date: 2023-08-25 14:53+0000\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1386,10 +1386,6 @@ msgstr "频段曲线"
 msgid "Band Reduction"
 msgstr "频段衰减"
 
-#: data/ui/multiband_gate_band.ui:866
-msgid "Gating"
-msgstr "门控"
-
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
 msgstr "通用"
@@ -2369,6 +2365,9 @@ msgstr "-inf"
 #, c++-format
 msgid "Using {}"
 msgstr "正在使用 {}"
+
+#~ msgid "Gating"
+#~ msgstr "门控"
 
 #~ msgid "12dB/oct Lowpass"
 #~ msgstr "12dB/oct 低通"
