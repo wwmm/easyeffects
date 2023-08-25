@@ -52,6 +52,7 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -readability-implicit-bool-conversion,
   -performance-inefficient-vector-operation,
   -readability-else-after-return,
+  -bugprone-exception-escape,
   '
 # todo, clang-analyzer-core.NullDereference is also suppressed in the code itself with NOLINT, consider fixing that too
 
