@@ -169,10 +169,18 @@ void Gate::process(std::span<float>& left_in,
       attack_threshold_port_value = lv2_wrapper->get_control_port_value("gt");
       release_zone_start_port_value = lv2_wrapper->get_control_port_value("hts");
       release_threshold_port_value = lv2_wrapper->get_control_port_value("hzs");
-      reduction_port_value = lv2_wrapper->get_control_port_value("rlm");
-      sidechain_port_value = lv2_wrapper->get_control_port_value("slm");
-      curve_port_value = lv2_wrapper->get_control_port_value("clm");
-      envelope_port_value = lv2_wrapper->get_control_port_value("elm");
+
+      reduction_port_value =
+          0.5F * (lv2_wrapper->get_control_port_value("rlm_l") + lv2_wrapper->get_control_port_value("rlm_r"));
+
+      sidechain_port_value =
+          0.5F * (lv2_wrapper->get_control_port_value("slm_l") + lv2_wrapper->get_control_port_value("slm_r"));
+
+      curve_port_value =
+          0.5F * (lv2_wrapper->get_control_port_value("clm_l") + lv2_wrapper->get_control_port_value("clm_r"));
+
+      envelope_port_value =
+          0.5F * (lv2_wrapper->get_control_port_value("elm_l") + lv2_wrapper->get_control_port_value("elm_r"));
 
       attack_zone_start.emit(attack_zone_start_port_value);
       attack_threshold.emit(attack_threshold_port_value);
