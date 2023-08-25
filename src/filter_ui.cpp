@@ -120,6 +120,8 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
   g_settings_bind(self->settings, "quality", gtk_spin_button_get_adjustment(self->quality), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
+  // gain is missing
+
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "type", self->type);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->mode);

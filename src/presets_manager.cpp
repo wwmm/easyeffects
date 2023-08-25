@@ -397,6 +397,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
 
   auto preset_found = false;
 
+  // Load the plugin order based on the input/output pipeline.
   switch (preset_type) {
     case PresetType::output: {
       conf_dirs.push_back(user_output_dir);
@@ -518,6 +519,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
     }
   }
 
+  // After the plugin order list, load the blocklist and then apply the parameters of the loaded plugins.
   if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
     util::debug("successfully loaded preset: " + input_file.string());
 

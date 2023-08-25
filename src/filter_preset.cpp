@@ -37,11 +37,17 @@ void FilterPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["frequency"] = g_settings_get_double(settings, "frequency");
 
-  json[section][instance_name]["resonance"] = g_settings_get_double(settings, "resonance");
+  json[section][instance_name]["width"] = g_settings_get_double(settings, "width");
+
+  json[section][instance_name]["quality"] = g_settings_get_double(settings, "quality");
+
+  json[section][instance_name]["gain"] = g_settings_get_double(settings, "gain");
+
+  json[section][instance_name]["type"] = util::gsettings_get_string(settings, "type");
 
   json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
-  json[section][instance_name]["inertia"] = g_settings_get_double(settings, "inertia");
+  json[section][instance_name]["slope"] = util::gsettings_get_string(settings, "slope");
 }
 
 void FilterPreset::load(const nlohmann::json& json) {
@@ -53,9 +59,15 @@ void FilterPreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "frequency", "frequency");
 
-  update_key<double>(json.at(section).at(instance_name), settings, "resonance", "resonance");
+  update_key<double>(json.at(section).at(instance_name), settings, "width", "width");
+
+  update_key<double>(json.at(section).at(instance_name), settings, "quality", "quality");
+
+  update_key<double>(json.at(section).at(instance_name), settings, "gain", "gain");
+
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "type", "type");
 
   update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
 
-  update_key<double>(json.at(section).at(instance_name), settings, "inertia", "inertia");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "slope", "slope");
 }
