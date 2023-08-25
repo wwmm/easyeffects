@@ -50,7 +50,6 @@ class MultibandGate : public PluginBase {
   void update_probe_links() override;
 
   sigc::signal<void(const std::array<float, n_bands>)> reduction, envelope, curve, frequency_range;
-  sigc::signal<void(const std::array<double, n_bands>)> gating;
 
   float latency_port_value = 0.0F;
 
@@ -58,7 +57,6 @@ class MultibandGate : public PluginBase {
   std::array<float, n_bands> envelope_port_array = {0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F};
   std::array<float, n_bands> curve_port_array = {0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F};
   std::array<float, n_bands> reduction_port_array = {0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F};
-  std::array<double, n_bands> gating_array = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
  private:
   uint latency_n_frames = 0U;

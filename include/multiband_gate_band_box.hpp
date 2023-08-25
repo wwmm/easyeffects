@@ -47,6 +47,4 @@ void set_curve_label(MultibandGateBandBox* self, const float& value);
 
 void set_gain_label(MultibandGateBandBox* self, const float& value);
 
-void set_gating_levelbar(MultibandGateBandBox* self, const float& value);
-
 }  // namespace ui::multiband_gate_band_box
