@@ -110,7 +110,7 @@
                                                             </object>
                                                         </property>
                                                         <accessibility>
-                                                            <property name="label">Filter Mode</property>
+                                                            <property name="label">Filter Slope</property>
                                                         </accessibility>
                                                     </object>
                                                 </child>
@@ -124,7 +124,7 @@
                                                     <object class="GtkSpinButton" id="frequency">
                                                         <property name="valign">center</property>
                                                         <property name="width-chars">10</property>
-                                                        <property name="digits">1</property>
+                                                        <property name="digits">0</property>
                                                         <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
@@ -135,6 +135,9 @@
                                                                 <property name="page-increment">100</property>
                                                             </object>
                                                         </property>
+                                                        <accessibility>
+                                                            <property name="label">Filter Frequency</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -147,7 +150,7 @@
                                                     <object class="GtkSpinButton" id="width">
                                                         <property name="valign">center</property>
                                                         <property name="width-chars">10</property>
-                                                        <property name="digits">1</property>
+                                                        <property name="digits">0</property>
                                                         <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
@@ -158,6 +161,35 @@
                                                                 <property name="page-increment">2</property>
                                                             </object>
                                                         </property>
+                                                        <accessibility>
+                                                            <property name="label">Filter Width</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Gain</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="gain">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">2</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">-36</property>
+                                                                <property name="upper">36</property>
+                                                                <property name="value">1</property>
+                                                                <property name="step-increment">0.01</property>
+                                                                <property name="page-increment">1.0</property>
+                                                            </object>
+                                                        </property>
+                                                        <accessibility>
+                                                            <property name="label">Filter Gain</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -170,17 +202,20 @@
                                                     <object class="GtkSpinButton" id="quality">
                                                         <property name="valign">center</property>
                                                         <property name="width-chars">10</property>
-                                                        <property name="digits">1</property>
+                                                        <property name="digits">2</property>
                                                         <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">0</property>
                                                                 <property name="upper">100</property>
                                                                 <property name="value">0</property>
-                                                                <property name="step-increment">1</property>
-                                                                <property name="page-increment">10</property>
+                                                                <property name="step-increment">0.01</property>
+                                                                <property name="page-increment">0.1</property>
                                                             </object>
                                                         </property>
+                                                        <accessibility>
+                                                            <property name="label">Filter Quality</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
