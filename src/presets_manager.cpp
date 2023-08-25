@@ -158,18 +158,19 @@ PresetsManager::~PresetsManager() {
 }
 
 void PresetsManager::create_user_directory(const std::filesystem::path& path) {
-  if (!std::filesystem::is_directory(path)) {
-    if (std::filesystem::create_directories(path)) {
-      util::debug("user presets directory created: " + path.string());
-
-      return;
-    }
-
-    util::warning("failed to create user presets directory: " + path.string());
-
-  } else {
+  if (std::filesystem::is_directory(path)) {
     util::debug("user presets directory already exists: " + path.string());
+
+    return;
   }
+
+  if (std::filesystem::create_directories(path)) {
+    util::debug("user presets directory created: " + path.string());
+
+    return;
+  }
+
+  util::warning("failed to create user presets directory: " + path.string());
 }
 
 auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<std::string> {
@@ -396,6 +397,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
 
   auto preset_found = false;
 
+  // Load the plugin order based on the input/output pipeline.
   switch (preset_type) {
     case PresetType::output: {
       conf_dirs.push_back(user_output_dir);
@@ -517,6 +519,7 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
     }
   }
 
+  // After the plugin order list, load the blocklist and then apply the parameters of the loaded plugins.
   if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
     util::debug("successfully loaded preset: " + input_file.string());
 
@@ -555,21 +558,25 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
 void PresetsManager::import(const PresetType& preset_type, const std::string& file_path) {
   std::filesystem::path p{file_path};
 
-  if (std::filesystem::is_regular_file(p)) {
-    if (p.extension().c_str() == json_ext) {
-      std::filesystem::path out_path;
-
-      const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
-
-      out_path = user_dir / p.filename();
-
-      std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
-
-      util::debug("imported preset to: " + out_path.string());
-    }
-  } else {
+  if (!std::filesystem::is_regular_file(p)) {
     util::warning(p.string() + " is not a file!");
+
+    return;
   }
+
+  if (p.extension().c_str() != json_ext) {
+    return;
+  }
+
+  std::filesystem::path out_path;
+
+  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+
+  out_path = user_dir / p.filename();
+
+  std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+
+  util::debug("imported preset to: " + out_path.string());
 }
 
 void PresetsManager::add_autoload(const PresetType& preset_type,
@@ -617,18 +624,20 @@ void PresetsManager::remove_autoload(const PresetType& preset_type,
       break;
   }
 
-  if (std::filesystem::is_regular_file(input_file)) {
-    nlohmann::json json;
+  if (!std::filesystem::is_regular_file(input_file)) {
+    return;
+  }
 
-    std::ifstream is(input_file);
+  nlohmann::json json;
 
-    is >> json;
+  std::ifstream is(input_file);
 
-    if (preset_name == json.value("preset-name", "") && device_profile == json.value("device-profile", "")) {
-      std::filesystem::remove(input_file);
+  is >> json;
 
-      util::debug("removed autoload: " + input_file.string());
-    }
+  if (preset_name == json.value("preset-name", "") && device_profile == json.value("device-profile", "")) {
+    std::filesystem::remove(input_file);
+
+    util::debug("removed autoload: " + input_file.string());
   }
 }
 
@@ -646,17 +655,17 @@ auto PresetsManager::find_autoload(const PresetType& preset_type,
       break;
   }
 
-  if (std::filesystem::is_regular_file(input_file)) {
-    nlohmann::json json;
-
-    std::ifstream is(input_file);
-
-    is >> json;
-
-    return json.value("preset-name", "");
+  if (!std::filesystem::is_regular_file(input_file)) {
+    return "";
   }
 
-  return "";
+  nlohmann::json json;
+
+  std::ifstream is(input_file);
+
+  is >> json;
+
+  return json.value("preset-name", "");
 }
 
 void PresetsManager::autoload(const PresetType& preset_type,
@@ -664,16 +673,18 @@ void PresetsManager::autoload(const PresetType& preset_type,
                               const std::string& device_profile) {
   const auto name = find_autoload(preset_type, device_name, device_profile);
 
-  if (!name.empty()) {
-    util::debug("autoloading preset " + name + " for device " + device_name);
+  if (name.empty()) {
+    return;
+  }
 
-    const auto* key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
+  util::debug("autoloading preset " + name + " for device " + device_name);
 
-    if (load_preset_file(preset_type, name)) {
-      g_settings_set_string(settings, key, name.c_str());
-    } else {
-      g_settings_reset(settings, key);
-    }
+  const auto* key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
+
+  if (load_preset_file(preset_type, name)) {
+    g_settings_set_string(settings, key, name.c_str());
+  } else {
+    g_settings_reset(settings, key);
   }
 }
 

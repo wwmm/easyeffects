@@ -59,6 +59,10 @@
             <range min="-36" max="36" />
             <default>0</default>
         </key>
+        <key name="balance" type="d">
+            <range min="-100" max="100" />
+            <default>0</default>
+        </key>
         <key name="type" enum="com.github.wwmm.easyeffects.filter.type.enum">
             <default>"Low-pass"</default>
         </key>

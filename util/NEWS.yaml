@@ -2,15 +2,16 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
-Description: 
+Description:
 - Features∶
-- 
+- The Filter effect has been improved with new parameters since it has been ported from Calf Studio to Linux Studio Plugins.
 
 - Bug fixes∶
-- 
+-
 
 - Other notes∶
-- 
+- This release is intended to work with versions of Linux Studio Plugins equal or greater than "1.2.10".
+- EasyEffects is now buildable also with libc++.
 
 ---
 Version: 7.0.7
