@@ -130,6 +130,9 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->mode);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "slope", self->slope);
+
+  g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
+                  G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
