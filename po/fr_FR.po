@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-25 21:19+0000\n"
-"PO-Revision-Date: 2023-08-02 00:10+0000\n"
+"PO-Revision-Date: 2023-08-26 14:48+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -208,7 +208,7 @@ msgstr "Gain de sortie"
 #: data/ui/multiband_gate.ui:476 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:225 data/ui/presets_menu.ui:177 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:155 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:629
+#: data/ui/stereo_tools.ui:629 data/ui/filter.ui:209
 msgid "Input"
 msgstr "Entrée"
 
@@ -221,7 +221,7 @@ msgstr "Entrée"
 #: data/ui/loudness.ui:169 data/ui/maximizer.ui:128
 #: data/ui/multiband_compressor.ui:495 data/ui/multiband_gate.ui:495
 #: data/ui/pitch.ui:244 data/ui/reverb.ui:385 data/ui/rnnoise.ui:174
-#: data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
+#: data/ui/speex.ui:209 data/ui/stereo_tools.ui:648 data/ui/filter.ui:228
 msgid "Plugin Input Gain"
 msgstr "Gain d’entrée du plugin"
 
@@ -236,7 +236,7 @@ msgstr "Gain d’entrée du plugin"
 #: data/ui/multiband_gate.ui:560 data/ui/pipe_manager_box.ui:209
 #: data/ui/pitch.ui:309 data/ui/presets_menu.ui:28 data/ui/reverb.ui:450
 #: data/ui/rnnoise.ui:239 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
-#: data/ui/stereo_tools.ui:713
+#: data/ui/stereo_tools.ui:713 data/ui/filter.ui:293
 msgid "Output"
 msgstr "Sortie"
 
@@ -249,7 +249,7 @@ msgstr "Sortie"
 #: data/ui/loudness.ui:253 data/ui/maximizer.ui:212
 #: data/ui/multiband_compressor.ui:579 data/ui/multiband_gate.ui:579
 #: data/ui/pitch.ui:328 data/ui/reverb.ui:469 data/ui/rnnoise.ui:258
-#: data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
+#: data/ui/speex.ui:293 data/ui/stereo_tools.ui:732 data/ui/filter.ui:312
 msgid "Plugin Output Gain"
 msgstr "Gain de sortie du plugin"
 
@@ -262,7 +262,7 @@ msgstr "Gain de sortie du plugin"
 #: data/ui/loudness.ui:318 data/ui/maximizer.ui:310
 #: data/ui/multiband_compressor.ui:644 data/ui/multiband_gate.ui:644
 #: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
-#: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
+#: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798 data/ui/filter.ui:377
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -908,10 +908,11 @@ msgid "Solo"
 msgstr "Solo"
 
 #: data/ui/equalizer_band.ui:221 data/ui/filter.ui:200 data/ui/pitch.ui:28
+#: data/ui/filter.ui:168
 msgid "Quality"
 msgstr "Qualité"
 
-#: data/ui/equalizer_band.ui:288 data/ui/filter.ui:148
+#: data/ui/equalizer_band.ui:288 data/ui/filter.ui:148 data/ui/filter.ui:145
 msgid "Width"
 msgstr "Largeur"
 
@@ -952,33 +953,28 @@ msgid "Remove this model file"
 msgstr "Supprimer ce fichier modèle"
 
 #: data/ui/filter.ui:44
-#, fuzzy
 msgid "Low-pass"
 msgstr "Passe-bas"
 
 #: data/ui/filter.ui:45
-#, fuzzy
 msgid "High-pass"
 msgstr "Passe-haut"
 
 #: data/ui/filter.ui:46
-#, fuzzy
 msgid "Low-shelf"
-msgstr "Plateau bas"
+msgstr "Plateau-bas"
 
 #: data/ui/filter.ui:47
-#, fuzzy
 msgid "High-shelf"
-msgstr "Plateau haut"
+msgstr "Plateau-haut"
 
 #: data/ui/filter.ui:48
 msgid "Bell"
 msgstr "Cloche"
 
 #: data/ui/filter.ui:49
-#, fuzzy
 msgid "Band-pass"
-msgstr "Contourner Bande"
+msgstr "Passe-bande"
 
 #: data/ui/filter.ui:50
 msgid "Notch"
@@ -989,13 +985,12 @@ msgid "Resonance"
 msgstr "Résonance"
 
 #: data/ui/filter.ui:52
-#, fuzzy
 msgid "Ladder-pass"
-msgstr "Passe-bas"
+msgstr "Passe-échelonnée"
 
 #: data/ui/filter.ui:53
 msgid "Ladder-rejection"
-msgstr ""
+msgstr "Rejet-échelonnée"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
 msgid "Gate"
@@ -1293,7 +1288,7 @@ msgstr "Moderne"
 
 #: data/ui/multiband_compressor.ui:249 data/ui/multiband_gate.ui:249
 msgid "Bands List"
-msgstr "Liste Bandes"
+msgstr "Liste des Bandes"
 
 #: data/ui/multiband_compressor.ui:258 data/ui/multiband_gate.ui:258
 msgid "Band 1"
@@ -1329,11 +1324,11 @@ msgstr "Bande 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr "Début Bande"
+msgstr "Début de Bande"
 
 #: data/ui/multiband_compressor_band.ui:57 data/ui/multiband_gate_band.ui:57
 msgid "Band End"
-msgstr "Fin Bande"
+msgstr "Fin de Bande"
 
 #: data/ui/multiband_compressor_band.ui:112
 msgid "Band Compression Mode"
@@ -1341,7 +1336,7 @@ msgstr "Mode de Compression"
 
 #: data/ui/multiband_compressor_band.ui:130 data/ui/multiband_gate_band.ui:99
 msgid "Band Bypass"
-msgstr "Contourner Bande"
+msgstr "Contournement de Bande"
 
 #: data/ui/multiband_compressor_band.ui:435 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
@@ -1369,7 +1364,7 @@ msgstr "PréAmp"
 
 #: data/ui/multiband_compressor_band.ui:819
 msgid "Band Gain"
-msgstr "Gain de bande"
+msgstr "Gain de Bande"
 
 #: data/ui/multiband_compressor_band.ui:844 data/ui/multiband_gate_band.ui:812
 msgid "Band Envelope"
@@ -1377,11 +1372,11 @@ msgstr "Enveloppe"
 
 #: data/ui/multiband_compressor_band.ui:869 data/ui/multiband_gate_band.ui:837
 msgid "Band Curve"
-msgstr "Courbe de bande"
+msgstr "Courbe de Bande"
 
 #: data/ui/multiband_gate_band.ui:787
 msgid "Band Reduction"
-msgstr "Réduction de la bande"
+msgstr "Réduction de Bande"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -2338,12 +2333,10 @@ msgstr "Outils stéréo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Indisponible"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2353,7 +2346,6 @@ msgstr ""
 "même."
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2371,7 +2363,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, c++-format
 msgid "Using {}"
 msgstr "Utilise {}"
 
