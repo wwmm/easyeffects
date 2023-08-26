@@ -109,8 +109,10 @@ class RNNoise : public PluginBase {
 
           if (vad_grace_left >= 0) {
             --vad_grace_left;
+
             for (size_t i = 0; i < data_L.size(); i++) {
               data_L[i] = data_L[i] * wet_ratio + data_tmp[i] * (1 - wet_ratio);
+
               data_L[i] *= inv_short_max;
             }
           } else {
@@ -143,8 +145,10 @@ class RNNoise : public PluginBase {
 
           if (vad_grace_right >= 0) {
             --vad_grace_right;
+
             for (size_t i = 0; i < data_R.size(); i++) {
               data_R[i] = data_R[i] * wet_ratio + data_tmp[i] * (1 - wet_ratio);
+
               data_R[i] *= inv_short_max;
             }
           } else {
