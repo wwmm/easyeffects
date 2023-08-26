@@ -41,16 +41,17 @@
                                                         <property name="model">
                                                             <object class="GtkStringList">
                                                                 <items>
-                                                                    <item translatable="yes">Low-pass</item>
-                                                                    <item translatable="yes">High-pass</item>
-                                                                    <item translatable="yes">Low-shelf</item>
-                                                                    <item translatable="yes">High-shelf</item>
+                                                                    <item translatable="yes">Low-Pass</item>
+                                                                    <item translatable="yes">High-Pass</item>
+                                                                    <item translatable="yes">Low-Shelf</item>
+                                                                    <item translatable="yes">High-Shelf</item>
                                                                     <item translatable="yes">Bell</item>
-                                                                    <item translatable="yes">Band-pass</item>
+                                                                    <item translatable="yes">Band-Pass</item>
                                                                     <item translatable="yes">Notch</item>
                                                                     <item translatable="yes">Resonance</item>
-                                                                    <item translatable="yes">Ladder-pass</item>
-                                                                    <item translatable="yes">Ladder-rejection</item>
+                                                                    <item translatable="yes">Ladder-Pass</item>
+                                                                    <item translatable="yes">Ladder-Rejection</item>
+                                                                    <item translatable="yes">All-Pass</item>
                                                                 </items>
                                                             </object>
                                                         </property>

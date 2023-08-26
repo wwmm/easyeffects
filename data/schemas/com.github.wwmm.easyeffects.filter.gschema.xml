@@ -11,6 +11,7 @@
         <value nick="Resonance" value="7" />
         <value nick="Ladder-pass" value="8" />
         <value nick="Ladder-rejection" value="9" />
+        <value nick="Allpass" value="10" />
     </enum>
     <enum id="com.github.wwmm.easyeffects.filter.mode.enum">
         <value nick="RLC (BT)" value="0" />
