@@ -101,13 +101,13 @@
                                         <items>
                                             <item>Off</item>
                                             <item>Bell</item>
-                                            <item>High Pass</item>
-                                            <item>High Shelf</item>
-                                            <item>Low Pass</item>
-                                            <item>Low Shelf</item>
+                                            <item>High-Pass</item>
+                                            <item>High-Shelf</item>
+                                            <item>Low-Pass</item>
+                                            <item>Low-Shelf</item>
                                             <item>Notch</item>
                                             <item>Resonance</item>
-                                            <item>All Pass</item>
+                                            <item>All-Pass</item>
                                         </items>
                                     </object>
                                 </property>
