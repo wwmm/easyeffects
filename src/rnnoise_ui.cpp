@@ -56,6 +56,8 @@ struct _RNNoiseBox {
 
   GtkScale *input_gain, *output_gain;
 
+  GtkSpinButton *vad_thres, *wet_ratio, *release;
+
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
   GtkLabel *active_model_name, *model_active_state, *model_error_state, *input_level_left_label,
@@ -249,8 +251,7 @@ void setup(RNNoiseBox* self,
   }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->rnnoise->package).c_str());
-
-  gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
+  gsettings_bind_widgets<"input-gain", "output-gain", "vad-thres", "wet-ratio", "release">(self->settings, self->input_gain, self->output_gain, self->vad_thres, self->wet_ratio, self->release);
 
   g_settings_bind_with_mapping(
       self->settings, "model-path", self->selection_model, "selected", G_SETTINGS_BIND_DEFAULT,
@@ -368,6 +369,10 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_left_label);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, plugin_credit);
+
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, vad_thres);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, wet_ratio);
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, release);
 
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, string_list);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, selection_model);

@@ -15,5 +15,17 @@
         <key name="model-path" type="s">
             <default>""</default>
         </key>
+        <key name="vad-thres" type="d">
+            <range min="-0.1" max="1.1" />
+            <default>0.95</default>
+        </key>
+        <key name="wet-ratio" type="d">
+            <range min="-0.1" max="1.1" />
+            <default>1.0</default>
+        </key>
+        <key name="release" type="d">
+            <range min="0" max="20000" />
+            <default>20.0</default>
+        </key>
     </schema>
 </schemalist>

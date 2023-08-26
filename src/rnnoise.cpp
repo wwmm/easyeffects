@@ -28,6 +28,7 @@ RNNoise::RNNoise(const std::string& tag,
       data_R(0) {
   data_L.reserve(blocksize);
   data_R.reserve(blocksize);
+  data_tmp.reserve(blocksize);
 
   gconnections.push_back(g_signal_connect(settings, "changed::model-path",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
@@ -57,6 +58,29 @@ RNNoise::RNNoise(const std::string& tag,
   setup_input_output_gain();
 
 #ifdef ENABLE_RNNOISE
+  g_signal_connect(settings, "changed::vad-thres", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<RNNoise*>(user_data);
+
+                     self->vad_thres = g_settings_get_double(settings, key);
+                   }),
+                   this);
+
+  g_signal_connect(settings, "changed::wet-ratio", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<RNNoise*>(user_data);
+
+                     self->wet_ratio = g_settings_get_double(settings, key);
+                   }),
+                   this);
+
+  g_signal_connect(settings, "changed::release", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<RNNoise*>(user_data);
+
+                     auto release = lrint(self->rnnoise_rate * g_settings_get_double(settings, key) / 1000 / self->blocksize);
+                     self->vad_grace_left = self->vad_grace_right = release;
+
+                     std::cerr << "Release: " << release << '\n';
+                   }),
+                   this);
 
   auto* m = get_model_from_file();
 
@@ -64,6 +88,11 @@ RNNoise::RNNoise(const std::string& tag,
 
   state_left = rnnoise_create(model);
   state_right = rnnoise_create(model);
+
+  vad_prob_left = 1.0F;
+  vad_prob_right = 1.0F;
+  vad_grace_left = release;
+  vad_grace_right = release;
 
   rnnoise_ready = true;
 #else
