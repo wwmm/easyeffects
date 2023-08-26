@@ -75,10 +75,9 @@ RNNoise::RNNoise(const std::string& tag,
   g_signal_connect(settings, "changed::release", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<RNNoise*>(user_data);
 
-                     auto release = lrint(self->rnnoise_rate * g_settings_get_double(settings, key) / 1000 / self->blocksize);
+                     auto release =
+                         lrint(self->rnnoise_rate * g_settings_get_double(settings, key) / 1000 / self->blocksize);
                      self->vad_grace_left = self->vad_grace_right = release;
-
-                     std::cerr << "Release: " << release << '\n';
                    }),
                    this);
 
