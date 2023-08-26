@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-25 21:19+0000\n"
+"POT-Creation-Date: 2023-08-26 14:54+0000\n"
 "PO-Revision-Date: 2023-08-02 00:10+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -220,12 +220,12 @@ msgstr "Усиление выхода"
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:207
 #: data/ui/echo_canceller.ui:112 data/ui/equalizer.ui:382
 #: data/ui/exciter.ui:262 data/ui/expander.ui:521 data/ui/expander.ui:1014
-#: data/ui/filter.ui:269 data/ui/gate.ui:727 data/ui/gate.ui:1207
+#: data/ui/filter.ui:270 data/ui/gate.ui:727 data/ui/gate.ui:1207
 #: data/ui/level_meter.ui:274 data/ui/limiter.ui:750 data/ui/loudness.ui:150
 #: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:476
 #: data/ui/multiband_gate.ui:476 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:225 data/ui/presets_menu.ui:177 data/ui/reverb.ui:366
-#: data/ui/rnnoise.ui:155 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
+#: data/ui/rnnoise.ui:265 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:629
 msgid "Input"
 msgstr "Вход"
@@ -235,10 +235,10 @@ msgstr "Вход"
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:443 data/ui/delay.ui:226 data/ui/echo_canceller.ui:131
 #: data/ui/equalizer.ui:401 data/ui/exciter.ui:281 data/ui/expander.ui:1033
-#: data/ui/filter.ui:288 data/ui/gate.ui:1226 data/ui/limiter.ui:769
+#: data/ui/filter.ui:289 data/ui/gate.ui:1226 data/ui/limiter.ui:769
 #: data/ui/loudness.ui:169 data/ui/maximizer.ui:128
 #: data/ui/multiband_compressor.ui:495 data/ui/multiband_gate.ui:495
-#: data/ui/pitch.ui:244 data/ui/reverb.ui:385 data/ui/rnnoise.ui:174
+#: data/ui/pitch.ui:244 data/ui/reverb.ui:385 data/ui/rnnoise.ui:284
 #: data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
 msgid "Plugin Input Gain"
 msgstr "Плагин усиления входа"
@@ -248,12 +248,12 @@ msgstr "Плагин усиления входа"
 #: data/ui/compressor.ui:1180 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:291
 #: data/ui/echo_canceller.ui:196 data/ui/equalizer.ui:466
-#: data/ui/exciter.ui:346 data/ui/expander.ui:1098 data/ui/filter.ui:353
+#: data/ui/exciter.ui:346 data/ui/expander.ui:1098 data/ui/filter.ui:354
 #: data/ui/gate.ui:1291 data/ui/limiter.ui:834 data/ui/loudness.ui:234
 #: data/ui/maximizer.ui:193 data/ui/multiband_compressor.ui:560
 #: data/ui/multiband_gate.ui:560 data/ui/pipe_manager_box.ui:209
 #: data/ui/pitch.ui:309 data/ui/presets_menu.ui:28 data/ui/reverb.ui:450
-#: data/ui/rnnoise.ui:239 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
+#: data/ui/rnnoise.ui:349 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
 #: data/ui/stereo_tools.ui:713
 msgid "Output"
 msgstr "Выход"
@@ -263,10 +263,10 @@ msgstr "Выход"
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:527 data/ui/delay.ui:310 data/ui/echo_canceller.ui:215
 #: data/ui/equalizer.ui:485 data/ui/exciter.ui:365 data/ui/expander.ui:1117
-#: data/ui/filter.ui:372 data/ui/gate.ui:1310 data/ui/limiter.ui:853
+#: data/ui/filter.ui:373 data/ui/gate.ui:1310 data/ui/limiter.ui:853
 #: data/ui/loudness.ui:253 data/ui/maximizer.ui:212
 #: data/ui/multiband_compressor.ui:579 data/ui/multiband_gate.ui:579
-#: data/ui/pitch.ui:328 data/ui/reverb.ui:469 data/ui/rnnoise.ui:258
+#: data/ui/pitch.ui:328 data/ui/reverb.ui:469 data/ui/rnnoise.ui:368
 #: data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
 msgid "Plugin Output Gain"
 msgstr "Плагин усиления выхода"
@@ -276,10 +276,10 @@ msgstr "Плагин усиления выхода"
 #: data/ui/convolver.ui:395 data/ui/crossfeed.ui:288 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:653 data/ui/delay.ui:375 data/ui/echo_canceller.ui:281
 #: data/ui/equalizer.ui:550 data/ui/exciter.ui:461 data/ui/expander.ui:1182
-#: data/ui/filter.ui:437 data/ui/gate.ui:1375 data/ui/limiter.ui:918
+#: data/ui/filter.ui:438 data/ui/gate.ui:1375 data/ui/limiter.ui:918
 #: data/ui/loudness.ui:318 data/ui/maximizer.ui:310
 #: data/ui/multiband_compressor.ui:644 data/ui/multiband_gate.ui:644
-#: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:324
+#: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:434
 #: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
 msgid "Reset"
 msgstr "Сброс"
@@ -381,7 +381,7 @@ msgstr "Компрессор"
 #: data/ui/compressor.ui:63 data/ui/compressor.ui:517 data/ui/compressor.ui:826
 #: data/ui/deesser.ui:68 data/ui/equalizer.ui:62 data/ui/equalizer_band.ui:119
 #: data/ui/expander.ui:63 data/ui/expander.ui:436 data/ui/expander.ui:744
-#: data/ui/filter.ui:67 data/ui/gate.ui:650 data/ui/gate.ui:945
+#: data/ui/filter.ui:68 data/ui/gate.ui:650 data/ui/gate.ui:945
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:461
 #: data/ui/multiband_gate_band.ui:520
 msgid "Mode"
@@ -444,6 +444,7 @@ msgstr "Порог атаки"
 #: data/ui/compressor.ui:257 data/ui/expander.ui:176 data/ui/gate.ui:76
 #: data/ui/limiter.ui:326 data/ui/limiter.ui:544 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:199 data/ui/multiband_gate_band.ui:150
+#: data/ui/rnnoise.ui:177
 msgid "Release"
 msgstr "Восстановление"
 
@@ -506,7 +507,7 @@ msgid "RMS"
 msgstr "Среднеквадратично"
 
 #: data/ui/compressor.ui:531 data/ui/compressor.ui:899 data/ui/expander.ui:450
-#: data/ui/expander.ui:817 data/ui/gate.ui:1014
+#: data/ui/expander.ui:817 data/ui/filter.ui:44 data/ui/gate.ui:1014
 #: data/ui/multiband_compressor_band.ui:476
 msgid "Low-Pass"
 msgstr "Фильтр НЧ"
@@ -618,12 +619,13 @@ msgstr "Упреждение"
 msgid "Sidechain Filters"
 msgstr "Фильтры боковой цепи"
 
-#: data/ui/compressor.ui:813 data/ui/expander.ui:731 data/ui/gate.ui:932
+#: data/ui/compressor.ui:813 data/ui/expander.ui:731 data/ui/filter.ui:45
+#: data/ui/gate.ui:932
 msgid "High-Pass"
 msgstr "Фильтр ВЧ"
 
 #: data/ui/compressor.ui:839 data/ui/equalizer_band.ui:189
-#: data/ui/expander.ui:757 data/ui/filter.ui:122 data/ui/gate.ui:958
+#: data/ui/expander.ui:757 data/ui/filter.ui:123 data/ui/gate.ui:958
 #: data/ui/pipe_manager_box.ui:561
 msgid "Frequency"
 msgstr "Частота"
@@ -662,7 +664,7 @@ msgid "Low-Pass Filter Mode"
 msgstr "Режим низкочастотного фильтра"
 
 #: data/ui/compressor.ui:978 data/ui/equalizer_band.ui:252
-#: data/ui/expander.ui:896 data/ui/filter.ui:174
+#: data/ui/expander.ui:896 data/ui/filter.ui:175
 msgid "Gain"
 msgstr "Усиление"
 
@@ -892,7 +894,7 @@ msgstr "БПФ (FFT)"
 msgid "SPM"
 msgstr "ФСМ (SPM)"
 
-#: data/ui/equalizer.ui:94 data/ui/filter.ui:226 data/ui/stereo_tools.ui:52
+#: data/ui/equalizer.ui:94 data/ui/filter.ui:227 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:397
 msgid "Balance"
 msgstr "Баланс"
@@ -927,7 +929,7 @@ msgstr "Сортировать полосы"
 msgid "Import Preset"
 msgstr "Импорт предустановки"
 
-#: data/ui/equalizer_band.ui:140 data/ui/filter.ui:94
+#: data/ui/equalizer_band.ui:140 data/ui/filter.ui:95
 msgid "Slope"
 msgstr "Наклон"
 
@@ -936,11 +938,11 @@ msgstr "Наклон"
 msgid "Solo"
 msgstr "Соло"
 
-#: data/ui/equalizer_band.ui:221 data/ui/filter.ui:200 data/ui/pitch.ui:28
+#: data/ui/equalizer_band.ui:221 data/ui/filter.ui:201 data/ui/pitch.ui:28
 msgid "Quality"
 msgstr "Качество"
 
-#: data/ui/equalizer_band.ui:288 data/ui/filter.ui:148
+#: data/ui/equalizer_band.ui:288 data/ui/filter.ui:149
 msgid "Width"
 msgstr "Ширина"
 
@@ -980,23 +982,14 @@ msgstr "Описание"
 msgid "Remove this model file"
 msgstr "Удалить этот файл модели"
 
-#: data/ui/filter.ui:44
-msgid "Low-pass"
-msgstr "Низкочастотный фильтр"
-
-#: data/ui/filter.ui:45
-#, fuzzy
-msgid "High-pass"
-msgstr "Фильтр ВЧ"
-
 #: data/ui/filter.ui:46
 #, fuzzy
-msgid "Low-shelf"
+msgid "Low-Shelf"
 msgstr "Низкочастотный полочный фильтр"
 
 #: data/ui/filter.ui:47
 #, fuzzy
-msgid "High-shelf"
+msgid "High-Shelf"
 msgstr "Высокочастотный полочный фильтр"
 
 #: data/ui/filter.ui:48
@@ -1005,7 +998,7 @@ msgstr "Колокол"
 
 #: data/ui/filter.ui:49
 #, fuzzy
-msgid "Band-pass"
+msgid "Band-Pass"
 msgstr "Обход полосы"
 
 #: data/ui/filter.ui:50
@@ -1018,12 +1011,18 @@ msgstr "Резонансы"
 
 #: data/ui/filter.ui:52
 #, fuzzy
-msgid "Ladder-pass"
+msgid "Ladder-Pass"
 msgstr "Низкочастотный фильтр"
 
 #: data/ui/filter.ui:53
-msgid "Ladder-rejection"
-msgstr ""
+#, fuzzy
+msgid "Ladder-Rejection"
+msgstr "Уменьшение полосы"
+
+#: data/ui/filter.ui:54
+#, fuzzy
+msgid "All-Pass"
+msgstr "Фазовый"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
@@ -1926,8 +1925,8 @@ msgid "Models"
 msgstr "Модели"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:96 src/rnnoise_ui.cpp:264
-#: src/rnnoise_ui.cpp:298
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:98 src/rnnoise_ui.cpp:265
+#: src/rnnoise_ui.cpp:299
 msgid "Standard Model"
 msgstr "Стандартная модель"
 
@@ -1935,15 +1934,25 @@ msgstr "Стандартная модель"
 msgid "RNNoise Models List"
 msgstr "Список моделей RNNoise"
 
-#: data/ui/rnnoise.ui:110
+#: data/ui/rnnoise.ui:109
+#, fuzzy
+msgid "VAD Threshold"
+msgstr "Порог"
+
+#: data/ui/rnnoise.ui:143
+#, fuzzy
+msgid "Wet Ratio"
+msgstr "Соотношение"
+
+#: data/ui/rnnoise.ui:220
 msgid "Model Not Loaded"
 msgstr "Модель Не Загружена"
 
-#: data/ui/rnnoise.ui:116
+#: data/ui/rnnoise.ui:226
 msgid "Active Model"
 msgstr "Активная модель"
 
-#: data/ui/rnnoise.ui:124
+#: data/ui/rnnoise.ui:234
 msgid "Standard RNNoise Model"
 msgstr "Стандартная модель RNNoise"
 
@@ -2191,7 +2200,7 @@ msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:135
+#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:137
 msgid "Open"
 msgstr "Открыть"
 
@@ -2291,7 +2300,7 @@ msgstr "Сохранить?"
 msgid "Delete?"
 msgstr "Удалить?"
 
-#: src/rnnoise_ui.cpp:91
+#: src/rnnoise_ui.cpp:93
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2299,11 +2308,11 @@ msgstr ""
 "Выбранная модель не загружена. Данный формат может быть не поддерживаемым. "
 "Возвращение на стандартную модель."
 
-#: src/rnnoise_ui.cpp:134
+#: src/rnnoise_ui.cpp:136
 msgid "Import Model File"
 msgstr "Импорт файла модели"
 
-#: src/rnnoise_ui.cpp:147
+#: src/rnnoise_ui.cpp:149
 msgid "RNNoise Models"
 msgstr "Модели RNNoise"
 
@@ -2424,6 +2433,13 @@ msgstr "∞"
 #, c++-format
 msgid "Using {}"
 msgstr "Используется {}"
+
+#~ msgid "Low-pass"
+#~ msgstr "Низкочастотный фильтр"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Фильтр ВЧ"
 
 #~ msgid "Gating"
 #~ msgstr "Гейтирование"
@@ -2550,9 +2566,6 @@ msgstr "Используется {}"
 
 #~ msgid "Low Pass"
 #~ msgstr "Фильтр низких частот"
-
-#~ msgid "All Pass"
-#~ msgstr "Фазовый"
 
 #~ msgid "Cancel"
 #~ msgstr "Отмена"
