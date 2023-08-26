@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-25 21:19+0000\n"
-"PO-Revision-Date: 2023-07-08 00:53+0000\n"
+"PO-Revision-Date: 2023-08-26 14:48+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -956,17 +956,14 @@ msgid "Low-pass"
 msgstr "Low-pass"
 
 #: data/ui/filter.ui:45
-#, fuzzy
 msgid "High-pass"
 msgstr "High-pass"
 
 #: data/ui/filter.ui:46
-#, fuzzy
 msgid "Low-shelf"
 msgstr "Low-shelf"
 
 #: data/ui/filter.ui:47
-#, fuzzy
 msgid "High-shelf"
 msgstr "High-shelf"
 
@@ -975,9 +972,8 @@ msgid "Bell"
 msgstr "Bel"
 
 #: data/ui/filter.ui:49
-#, fuzzy
 msgid "Band-pass"
-msgstr "Bandomzeiling"
+msgstr "Band-pass"
 
 #: data/ui/filter.ui:50
 msgid "Notch"
@@ -988,13 +984,12 @@ msgid "Resonance"
 msgstr "Resonantie"
 
 #: data/ui/filter.ui:52
-#, fuzzy
 msgid "Ladder-pass"
-msgstr "Low-pass"
+msgstr "Ladder-pass"
 
 #: data/ui/filter.ui:53
 msgid "Ladder-rejection"
-msgstr ""
+msgstr "Ladder-rejection"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
 msgid "Gate"
