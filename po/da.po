@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 15:08+0000\n"
+"POT-Creation-Date: 2023-08-27 14:20+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -218,7 +218,7 @@ msgstr "Udgangsforstærkning"
 #: data/ui/maximizer.ui:109 data/ui/multiband_compressor.ui:476
 #: data/ui/multiband_gate.ui:476 data/ui/pipe_manager_box.ui:306
 #: data/ui/pitch.ui:225 data/ui/presets_menu.ui:177 data/ui/reverb.ui:366
-#: data/ui/rnnoise.ui:265 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
+#: data/ui/rnnoise.ui:264 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:629
 msgid "Input"
 msgstr "Indgang"
@@ -231,7 +231,7 @@ msgstr "Indgang"
 #: data/ui/filter.ui:289 data/ui/gate.ui:1226 data/ui/limiter.ui:769
 #: data/ui/loudness.ui:169 data/ui/maximizer.ui:128
 #: data/ui/multiband_compressor.ui:495 data/ui/multiband_gate.ui:495
-#: data/ui/pitch.ui:244 data/ui/reverb.ui:385 data/ui/rnnoise.ui:284
+#: data/ui/pitch.ui:244 data/ui/reverb.ui:385 data/ui/rnnoise.ui:283
 #: data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
 msgid "Plugin Input Gain"
 msgstr "Plugin-Indgangsforstærkning"
@@ -246,7 +246,7 @@ msgstr "Plugin-Indgangsforstærkning"
 #: data/ui/maximizer.ui:193 data/ui/multiband_compressor.ui:560
 #: data/ui/multiband_gate.ui:560 data/ui/pipe_manager_box.ui:209
 #: data/ui/pitch.ui:309 data/ui/presets_menu.ui:28 data/ui/reverb.ui:450
-#: data/ui/rnnoise.ui:349 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
+#: data/ui/rnnoise.ui:348 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
 #: data/ui/stereo_tools.ui:713
 msgid "Output"
 msgstr "Udgang"
@@ -259,7 +259,7 @@ msgstr "Udgang"
 #: data/ui/filter.ui:373 data/ui/gate.ui:1310 data/ui/limiter.ui:853
 #: data/ui/loudness.ui:253 data/ui/maximizer.ui:212
 #: data/ui/multiband_compressor.ui:579 data/ui/multiband_gate.ui:579
-#: data/ui/pitch.ui:328 data/ui/reverb.ui:469 data/ui/rnnoise.ui:368
+#: data/ui/pitch.ui:328 data/ui/reverb.ui:469 data/ui/rnnoise.ui:367
 #: data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
 msgid "Plugin Output Gain"
 msgstr "Plugin-Udgangsforstærkning"
@@ -272,7 +272,7 @@ msgstr "Plugin-Udgangsforstærkning"
 #: data/ui/filter.ui:438 data/ui/gate.ui:1375 data/ui/limiter.ui:918
 #: data/ui/loudness.ui:318 data/ui/maximizer.ui:310
 #: data/ui/multiband_compressor.ui:644 data/ui/multiband_gate.ui:644
-#: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:434
+#: data/ui/pitch.ui:393 data/ui/reverb.ui:535 data/ui/rnnoise.ui:432
 #: data/ui/speex.ui:359 data/ui/stereo_tools.ui:798
 msgid "Reset"
 msgstr "Nustil"
@@ -442,7 +442,7 @@ msgstr "Angreb Grænseværdi"
 #: data/ui/compressor.ui:257 data/ui/expander.ui:176 data/ui/gate.ui:76
 #: data/ui/limiter.ui:326 data/ui/limiter.ui:544 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:199 data/ui/multiband_gate_band.ui:150
-#: data/ui/rnnoise.ui:177
+#: data/ui/rnnoise.ui:176
 msgid "Release"
 msgstr "Frigør"
 
@@ -1927,34 +1927,34 @@ msgid "Models"
 msgstr "Modeller"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:98 src/rnnoise_ui.cpp:265
-#: src/rnnoise_ui.cpp:299
+#: data/ui/rnnoise.ui:62 src/rnnoise_ui.cpp:98 src/rnnoise_ui.cpp:266
+#: src/rnnoise_ui.cpp:300
 msgid "Standard Model"
 msgstr "Standard Model"
 
-#: data/ui/rnnoise.ui:90
+#: data/ui/rnnoise.ui:89
 msgid "RNNoise Models List"
 msgstr "Liste over RNNoise-Modeller"
 
-#: data/ui/rnnoise.ui:109
+#: data/ui/rnnoise.ui:108
 #, fuzzy
 msgid "VAD Threshold"
 msgstr "Grænseværdi"
 
-#: data/ui/rnnoise.ui:143
+#: data/ui/rnnoise.ui:142
 #, fuzzy
 msgid "Wet Ratio"
 msgstr "Forhold"
 
-#: data/ui/rnnoise.ui:220
+#: data/ui/rnnoise.ui:219
 msgid "Model Not Loaded"
 msgstr ""
 
-#: data/ui/rnnoise.ui:226
+#: data/ui/rnnoise.ui:225
 msgid "Active Model"
 msgstr "Aktive Modeller"
 
-#: data/ui/rnnoise.ui:234
+#: data/ui/rnnoise.ui:233
 msgid "Standard RNNoise Model"
 msgstr "Standard RNNoise-Model"
 
