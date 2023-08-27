@@ -61,14 +61,14 @@ RNNoise::RNNoise(const std::string& tag,
   g_signal_connect(settings, "changed::vad-thres", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<RNNoise*>(user_data);
 
-                     self->vad_thres = g_settings_get_double(settings, key) / 100.0;
+                     self->vad_thres = static_cast<float>(g_settings_get_double(settings, key)) / 100.0F;
                    }),
                    this);
 
-  g_signal_connect(settings, "changed::wet-ratio", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+  g_signal_connect(settings, "changed::wet", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<RNNoise*>(user_data);
 
-                     auto key_v = g_settings_get_double(settings, key);
+                     const auto key_v = g_settings_get_double(settings, key);
 
                      self->wet_ratio =
                          (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
@@ -78,9 +78,17 @@ RNNoise::RNNoise(const std::string& tag,
   g_signal_connect(settings, "changed::release", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<RNNoise*>(user_data);
 
-                     auto release =
-                         lrint(self->rnnoise_rate * g_settings_get_double(settings, key) / 1000 / self->blocksize);
-                     self->vad_grace_left = self->vad_grace_right = release;
+                     const auto key_v = g_settings_get_double(settings, key);
+
+                     const auto rate = static_cast<double>(self->rnnoise_rate);
+
+                     const auto bs = static_cast<double>(self->blocksize);
+
+                     // std::lrint returns a long type
+                     const auto release = static_cast<int>(std::lrint(rate * key_v / 1000.0 / bs));
+
+                     self->vad_grace_left = release;
+                     self->vad_grace_right = release;
                    }),
                    this);
 
