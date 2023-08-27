@@ -19,7 +19,7 @@
             <range min="0" max="100" />
             <default>95</default>
         </key>
-        <key name="wet-ratio" type="d">
+        <key name="wet" type="d">
             <range min="-100" max="20" />
             <default>0.0</default>
         </key>

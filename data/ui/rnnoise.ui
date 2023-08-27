@@ -139,7 +139,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Wet Ratio</property>
+                                        <property name="label" translatable="yes">Wet Level</property>
                                         <layout>
                                             <property name="column">1</property>
                                             <property name="row">0</property>
