@@ -64,19 +64,19 @@ StereoTools::StereoTools(const std::string& tag,
 
   lv2_wrapper->bind_key_enum<"mode", "mode">(settings);
 
-  auto key_v = g_settings_get_double(settings, "dry");
+  const auto key_dry = g_settings_get_double(settings, "dry");
 
-  dry = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+  dry = (key_dry <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_dry));
 
-  key_v = g_settings_get_double(settings, "wet");
+  const auto key_wet = g_settings_get_double(settings, "wet");
 
-  wet = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
+  wet = (key_wet <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_wet));
 
   gconnections.push_back(g_signal_connect(
       settings, "changed::dry", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto* self = static_cast<StereoTools*>(user_data);
 
-        auto key_v = g_settings_get_double(settings, key);
+        const auto key_v = g_settings_get_double(settings, key);
 
         self->dry = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
       }),
@@ -86,7 +86,7 @@ StereoTools::StereoTools(const std::string& tag,
       settings, "changed::wet", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
         auto* self = static_cast<StereoTools*>(user_data);
 
-        auto key_v = g_settings_get_double(settings, key);
+        const auto key_v = g_settings_get_double(settings, key);
 
         self->wet = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
       }),
