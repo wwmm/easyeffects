@@ -147,7 +147,7 @@
                                     </object>
                                 </child>
                                 <child>
-                                    <object class="GtkSpinButton" id="wet_ratio">
+                                    <object class="GtkSpinButton" id="wet">
                                         <property name="halign">center</property>
                                         <property name="orientation">vertical</property>
                                         <property name="width-chars">10</property>
