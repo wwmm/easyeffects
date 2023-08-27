@@ -76,7 +76,6 @@
                                                     </object>
                                                 </property>
 
-
                                                 <property name="factory">
                                                     <object class="GtkBuilderListItemFactory">
                                                         <property name="resource">/com/github/wwmm/easyeffects/ui/factory_rnnoise_listview.ui</property>
@@ -118,15 +117,15 @@
                                         <property name="halign">center</property>
                                         <property name="orientation">vertical</property>
                                         <property name="width-chars">10</property>
-                                        <property name="digits">2</property>
+                                        <property name="digits">0</property>
                                         <property name="update-policy">if-valid</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
                                                 <property name="lower">0</property>
-                                                <property name="upper">1</property>
-                                                <property name="value">0.95</property>
-                                                <property name="step-increment">0.01</property>
-                                                <property name="page-increment">0.1</property>
+                                                <property name="upper">100</property>
+                                                <property name="value">95</property>
+                                                <property name="step-increment">1</property>
+                                                <property name="page-increment">10</property>
                                             </object>
                                         </property>
                                         <layout>
@@ -156,9 +155,9 @@
                                         <property name="update-policy">if-valid</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
-                                                <property name="lower">0</property>
-                                                <property name="upper">1</property>
-                                                <property name="value">1</property>
+                                                <property name="lower">-100</property>
+                                                <property name="upper">20</property>
+                                                <property name="value">0</property>
                                                 <property name="step-increment">0.01</property>
                                                 <property name="page-increment">0.1</property>
                                             </object>
@@ -423,8 +422,7 @@
 
                                 <!-- Empty placeholder used only for layout reason -->
                                 <child>
-                                    <object class="GtkLabel">
-                                    </object>
+                                    <object class="GtkLabel"> </object>
                                 </child>
 
                                 <child>

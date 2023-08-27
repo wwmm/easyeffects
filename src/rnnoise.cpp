@@ -61,14 +61,17 @@ RNNoise::RNNoise(const std::string& tag,
   g_signal_connect(settings, "changed::vad-thres", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<RNNoise*>(user_data);
 
-                     self->vad_thres = g_settings_get_double(settings, key);
+                     self->vad_thres = g_settings_get_double(settings, key) / 100.0;
                    }),
                    this);
 
   g_signal_connect(settings, "changed::wet-ratio", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<RNNoise*>(user_data);
 
-                     self->wet_ratio = g_settings_get_double(settings, key);
+                     auto key_v = g_settings_get_double(settings, key);
+
+                     self->wet_ratio =
+                         (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
                    }),
                    this);
 

@@ -251,7 +251,8 @@ void setup(RNNoiseBox* self,
   }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->rnnoise->package).c_str());
-  gsettings_bind_widgets<"input-gain", "output-gain", "vad-thres", "wet-ratio", "release">(self->settings, self->input_gain, self->output_gain, self->vad_thres, self->wet_ratio, self->release);
+  gsettings_bind_widgets<"input-gain", "output-gain", "vad-thres", "wet-ratio", "release">(
+      self->settings, self->input_gain, self->output_gain, self->vad_thres, self->wet_ratio, self->release);
 
   g_settings_bind_with_mapping(
       self->settings, "model-path", self->selection_model, "selected", G_SETTINGS_BIND_DEFAULT,
@@ -394,6 +395,12 @@ void rnnoise_box_init(RNNoiseBox* self) {
   self->data = new Data();
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
+
+  prepare_spinbutton<"ms">(self->release);
+
+  prepare_spinbutton<"%">(self->vad_thres);
+
+  prepare_spinbutton<"dB">(self->wet_ratio);
 
   // model dir
 
