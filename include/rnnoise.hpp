@@ -65,9 +65,9 @@ class RNNoise : public PluginBase {
 
   float vad_thres = 0.95F;
   float wet_ratio = 1.0F;
-  uint release = 2;
+  uint release = 2U;
 
-  const float inv_short_max = 1.0F / (SHRT_MAX + 1);
+  const float inv_short_max = 1.0F / (SHRT_MAX + 1.0F);
 
   std::deque<float> deque_out_L, deque_out_R;
 
@@ -110,13 +110,13 @@ class RNNoise : public PluginBase {
           if (vad_grace_left >= 0) {
             --vad_grace_left;
 
-            for (size_t i = 0; i < data_L.size(); i++) {
-              data_L[i] = data_L[i] * wet_ratio + data_tmp[i] * (1 - wet_ratio);
+            for (size_t i = 0U; i < data_L.size(); i++) {
+              data_L[i] = data_L[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
 
               data_L[i] *= inv_short_max;
             }
           } else {
-            std::ranges::for_each(data_L, [&](auto& v) { v = 0; });
+            std::ranges::for_each(data_L, [&](auto& v) { v = 0.0F; });
           }
         }
 
@@ -146,13 +146,13 @@ class RNNoise : public PluginBase {
           if (vad_grace_right >= 0) {
             --vad_grace_right;
 
-            for (size_t i = 0; i < data_R.size(); i++) {
-              data_R[i] = data_R[i] * wet_ratio + data_tmp[i] * (1 - wet_ratio);
+            for (size_t i = 0U; i < data_R.size(); i++) {
+              data_R[i] = data_R[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
 
               data_R[i] *= inv_short_max;
             }
           } else {
-            std::ranges::for_each(data_R, [&](auto& v) { v = 0; });
+            std::ranges::for_each(data_R, [&](auto& v) { v = 0.0F; });
           }
         }
 

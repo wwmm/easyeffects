@@ -59,7 +59,7 @@ class EchoCanceller : public PluginBase {
   int residual_echo_suppression = -10;
   int near_end_suppression = -10;
 
-  const float inv_short_max = 1.0F / (SHRT_MAX + 1);
+  const float inv_short_max = 1.0F / (SHRT_MAX + 1.0F);
 
   std::vector<spx_int16_t> data_L;
   std::vector<spx_int16_t> data_R;
@@ -70,11 +70,9 @@ class EchoCanceller : public PluginBase {
   SpeexEchoState* echo_state_L = nullptr;
   SpeexEchoState* echo_state_R = nullptr;
 
-
   SpeexPreprocessState *state_left = nullptr, *state_right = nullptr;
 
   void free_speex();
-
 
   void init_speex();
 };

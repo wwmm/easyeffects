@@ -5,6 +5,8 @@ Date: UNRELEASED_DATE
 Description:
 - Features∶
 - The Filter effect has been improved with new parameters since it has been ported from Calf Studio to Linux Studio Plugins.
+- Noise reduction by RNNoise has been improved with the addition of Release and VAD Threshold controls.
+- Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output to sound too "dry".  
 
 - Bug fixes∶
 -
