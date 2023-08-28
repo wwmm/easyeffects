@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 14:20+0000\n"
+"POT-Creation-Date: 2023-08-28 00:45+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -503,7 +503,7 @@ msgstr "F2 Nivel"
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:165
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:189 data/ui/multiband_gate.ui:189
-#: data/ui/reverb.ui:246 data/ui/stereo_tools.ui:574
+#: data/ui/reverb.ui:246 data/ui/rnnoise.ui:142 data/ui/stereo_tools.ui:574
 #, fuzzy
 msgid "Wet Level"
 msgstr "Nivelul Țintă"
@@ -2065,11 +2065,6 @@ msgstr "Model Standard RNNoise"
 msgid "VAD Threshold"
 msgstr "Prag"
 
-#: data/ui/rnnoise.ui:142
-#, fuzzy
-msgid "Wet Ratio"
-msgstr "Raport"
-
 #: data/ui/rnnoise.ui:219
 msgid "Model Not Loaded"
 msgstr ""
@@ -2573,6 +2568,10 @@ msgstr ""
 #, c++-format
 msgid "Using {}"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Raport"
 
 #, fuzzy
 #~ msgid "Low-pass"

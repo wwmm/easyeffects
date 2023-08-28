@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 14:20+0000\n"
+"POT-Creation-Date: 2023-08-28 00:45+0000\n"
 "PO-Revision-Date: 2023-08-02 00:10+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -484,7 +484,7 @@ msgstr "Уровень ориг."
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:165
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:189 data/ui/multiband_gate.ui:189
-#: data/ui/reverb.ui:246 data/ui/stereo_tools.ui:574
+#: data/ui/reverb.ui:246 data/ui/rnnoise.ui:142 data/ui/stereo_tools.ui:574
 msgid "Wet Level"
 msgstr "Уровень обраб."
 
@@ -1939,11 +1939,6 @@ msgstr "Список моделей RNNoise"
 msgid "VAD Threshold"
 msgstr "Порог"
 
-#: data/ui/rnnoise.ui:142
-#, fuzzy
-msgid "Wet Ratio"
-msgstr "Соотношение"
-
 #: data/ui/rnnoise.ui:219
 msgid "Model Not Loaded"
 msgstr "Модель Не Загружена"
@@ -2433,6 +2428,10 @@ msgstr "∞"
 #, c++-format
 msgid "Using {}"
 msgstr "Используется {}"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Соотношение"
 
 #~ msgid "Low-pass"
 #~ msgstr "Низкочастотный фильтр"
