@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 21:49-0300\n"
+"POT-Creation-Date: 2023-08-27 21:52-0300\n"
 "PO-Revision-Date: 2023-05-01 06:52+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -509,7 +509,7 @@ msgstr "Razina"
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:165
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:189 data/ui/multiband_gate.ui:189
-#: data/ui/reverb.ui:246 data/ui/stereo_tools.ui:574
+#: data/ui/reverb.ui:246 data/ui/rnnoise.ui:74 data/ui/stereo_tools.ui:574
 #, fuzzy
 msgid "Wet Level"
 msgstr "Ciljana razina"
@@ -2062,11 +2062,6 @@ msgstr "Uvezi model"
 msgid "Voice Detection"
 msgstr "Detektor glasa"
 
-#: data/ui/rnnoise.ui:74
-#, fuzzy
-msgid "Wet Ratio"
-msgstr "Omjer"
-
 #: data/ui/rnnoise.ui:130
 #, fuzzy
 msgid "Models"
@@ -2592,6 +2587,10 @@ msgstr ""
 #, c++-format
 msgid "Using {}"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Omjer"
 
 #, fuzzy
 #~ msgid "VAD Threshold"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 21:49-0300\n"
+"POT-Creation-Date: 2023-08-27 21:52-0300\n"
 "PO-Revision-Date: 2022-12-23 05:48+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -467,7 +467,7 @@ msgstr "Сухо ниво"
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:165
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:189 data/ui/multiband_gate.ui:189
-#: data/ui/reverb.ui:246 data/ui/stereo_tools.ui:574
+#: data/ui/reverb.ui:246 data/ui/rnnoise.ui:74 data/ui/stereo_tools.ui:574
 msgid "Wet Level"
 msgstr ""
 
@@ -1878,11 +1878,6 @@ msgstr ""
 msgid "Voice Detection"
 msgstr ""
 
-#: data/ui/rnnoise.ui:74
-#, fuzzy
-msgid "Wet Ratio"
-msgstr "Съотношение"
-
 #: data/ui/rnnoise.ui:130
 msgid "Models"
 msgstr ""
@@ -2355,6 +2350,10 @@ msgstr ""
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "Използвайки"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Съотношение"
 
 #, fuzzy
 #~ msgid "VAD Threshold"

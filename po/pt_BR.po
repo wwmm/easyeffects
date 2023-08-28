@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 21:49-0300\n"
+"POT-Creation-Date: 2023-08-27 21:52-0300\n"
 "PO-Revision-Date: 2023-07-15 03:50+0000\n"
 "Last-Translator: Fernando Lopes <118869201+plasmus777@users.noreply.github."
 "com>\n"
@@ -469,7 +469,7 @@ msgstr "Nível Seco"
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:165
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:189 data/ui/multiband_gate.ui:189
-#: data/ui/reverb.ui:246 data/ui/stereo_tools.ui:574
+#: data/ui/reverb.ui:246 data/ui/rnnoise.ui:74 data/ui/stereo_tools.ui:574
 msgid "Wet Level"
 msgstr "Nível Molhado"
 
@@ -1894,11 +1894,6 @@ msgstr "Importar Modelo"
 msgid "Voice Detection"
 msgstr "Detecção de Voz"
 
-#: data/ui/rnnoise.ui:74
-#, fuzzy
-msgid "Wet Ratio"
-msgstr "Razão"
-
 #: data/ui/rnnoise.ui:130
 msgid "Models"
 msgstr "Modelos"
@@ -2380,6 +2375,10 @@ msgstr "-inf"
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "Usando"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Razão"
 
 #, fuzzy
 #~ msgid "VAD Threshold"

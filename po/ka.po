@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 21:49-0300\n"
+"POT-Creation-Date: 2023-08-27 21:52-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -466,7 +466,7 @@ msgstr ""
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:165
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:189 data/ui/multiband_gate.ui:189
-#: data/ui/reverb.ui:246 data/ui/stereo_tools.ui:574
+#: data/ui/reverb.ui:246 data/ui/rnnoise.ui:74 data/ui/stereo_tools.ui:574
 msgid "Wet Level"
 msgstr ""
 
@@ -1879,11 +1879,6 @@ msgstr ""
 msgid "Voice Detection"
 msgstr ""
 
-#: data/ui/rnnoise.ui:74
-#, fuzzy
-msgid "Wet Ratio"
-msgstr "პროპორციები"
-
 #: data/ui/rnnoise.ui:130
 msgid "Models"
 msgstr "მოდელები"
@@ -2357,6 +2352,10 @@ msgstr ""
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "გამოყენება"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "პროპორციები"
 
 #, fuzzy
 #~ msgid "VAD Threshold"

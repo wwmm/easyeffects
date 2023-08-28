@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 21:49-0300\n"
+"POT-Creation-Date: 2023-08-27 21:52-0300\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Colombia) <https://hosted.weblate.org/projects/"
@@ -501,7 +501,7 @@ msgstr "nivel seco"
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:165
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:189 data/ui/multiband_gate.ui:189
-#: data/ui/reverb.ui:246 data/ui/stereo_tools.ui:574
+#: data/ui/reverb.ui:246 data/ui/rnnoise.ui:74 data/ui/stereo_tools.ui:574
 msgid "Wet Level"
 msgstr "Nivel húmedo"
 
@@ -2042,11 +2042,6 @@ msgstr "Importar Modelo"
 msgid "Voice Detection"
 msgstr "Detector de Voz"
 
-#: data/ui/rnnoise.ui:74
-#, fuzzy
-msgid "Wet Ratio"
-msgstr "Radio"
-
 #: data/ui/rnnoise.ui:130
 msgid "Models"
 msgstr "Modelos"
@@ -2541,6 +2536,10 @@ msgstr ""
 #, c++-format
 msgid "Using {}"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Radio"
 
 #, fuzzy
 #~ msgid "VAD Threshold"
