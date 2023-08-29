@@ -50,6 +50,20 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.0.8" date="2023-08-29T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>The Filter effect has been improved with new parameters since it has been ported from Calf Studio to Linux Studio Plugins.</li>
+          <li>Noise reduction by RNNoise has been improved with the addition of Release and VAD Threshold controls.</li>
+          <li>Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output to sound too "dry".</li>
+          <li>Bug fixes:</li>
+          <li>Other notes:</li>
+          <li>This release is intended to work with versions of Linux Studio Plugins equal or greater than "1.2.10".</li>
+          <li>EasyEffects is now buildable also with libc++.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.0.7" date="2023-08-11T00:00:00Z">
       <description>
         <ul>

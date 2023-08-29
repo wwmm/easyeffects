@@ -1,5 +1,21 @@
 # Changelog
  
+## 7.0.8
+### 2023-08-29
+
+
+### Features:
+- The Filter effect has been improved with new parameters since it has been ported from Calf Studio to Linux Studio Plugins.
+- Noise reduction by RNNoise has been improved with the addition of Release and VAD Threshold controls.
+- Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output to sound too "dry".  
+
+### Bug fixes:
+
+### Other notes:
+- This release is intended to work with versions of Linux Studio Plugins equal or greater than "1.2.10".
+- EasyEffects is now buildable also with libc++.
+
+ 
 ## 7.0.7
 ### 2023-08-11
 
