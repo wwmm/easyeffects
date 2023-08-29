@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 23:21+0000\n"
-"PO-Revision-Date: 2023-08-26 14:48+0000\n"
+"PO-Revision-Date: 2023-08-29 02:12+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -955,23 +955,20 @@ msgid "Remove this model file"
 msgstr "Supprimer ce fichier modèle"
 
 #: data/ui/filter.ui:46
-#, fuzzy
 msgid "Low-Shelf"
-msgstr "Plateau-bas"
+msgstr "Low-Shelf"
 
 #: data/ui/filter.ui:47
-#, fuzzy
 msgid "High-Shelf"
-msgstr "Plateau-haut"
+msgstr "High-Shelf"
 
 #: data/ui/filter.ui:48
 msgid "Bell"
 msgstr "Cloche"
 
 #: data/ui/filter.ui:49
-#, fuzzy
 msgid "Band-Pass"
-msgstr "Passe-bande"
+msgstr "Band-Pass"
 
 #: data/ui/filter.ui:50
 msgid "Notch"
@@ -982,19 +979,16 @@ msgid "Resonance"
 msgstr "Résonance"
 
 #: data/ui/filter.ui:52
-#, fuzzy
 msgid "Ladder-Pass"
-msgstr "Passe-échelonnée"
+msgstr "Ladder-Pass"
 
 #: data/ui/filter.ui:53
-#, fuzzy
 msgid "Ladder-Rejection"
-msgstr "Rejet-échelonnée"
+msgstr "Ladder-Rejection"
 
 #: data/ui/filter.ui:54
-#, fuzzy
 msgid "All-Pass"
-msgstr "Toutes les passes"
+msgstr "All-Pass"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
 msgid "Gate"
