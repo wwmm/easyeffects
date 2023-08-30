@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-29 12:22-0300\n"
-"PO-Revision-Date: 2023-08-13 06:50+0000\n"
+"PO-Revision-Date: 2023-08-30 23:55+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -130,18 +130,24 @@ msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"L'effet Filtre a été amélioré avec de nouveaux paramètres depuis qu'il a été "
+"porté de Calf Studio à Linux Studio Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"La réduction du bruit par RNNoise a été améliorée avec l'ajout des contrôles "
+"de relâchement et de seuil VAD."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"La réduction du bruit par RNNoise peut maintenant mélanger les signaux "
+"originaux et débruités pour éviter que la sortie ne sonne trop \"sèche\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -193,10 +199,12 @@ msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
+"Cette version est destinée à fonctionner avec des versions de Linux Studio "
+"Plugins égales ou supérieures à \"1.2.10\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "EasyEffects is now buildable also with libc++."
-msgstr ""
+msgstr "EasyEffects peut maintenant être construit avec libc++."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
