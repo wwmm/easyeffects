@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-29 12:22-0300\n"
-"PO-Revision-Date: 2023-08-25 05:53+0000\n"
+"PO-Revision-Date: 2023-08-30 23:55+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -955,14 +955,12 @@ msgid "Remove this model file"
 msgstr "Borrar este perfil"
 
 #: data/ui/filter.ui:46
-#, fuzzy
 msgid "Low-Shelf"
-msgstr "Shelving de graves"
+msgstr "Low Shelf"
 
 #: data/ui/filter.ui:47
-#, fuzzy
 msgid "High-Shelf"
-msgstr "Shelving de agudos"
+msgstr "High Shelf"
 
 #: data/ui/filter.ui:48
 msgid "Bell"

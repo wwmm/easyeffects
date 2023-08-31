@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-29 12:22-0300\n"
-"PO-Revision-Date: 2023-08-28 16:52+0000\n"
+"PO-Revision-Date: 2023-08-30 23:55+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1878,7 +1878,7 @@ msgstr "Importa Modello"
 
 #: data/ui/rnnoise.ui:46 data/ui/speex.ui:59
 msgid "Voice Detection"
-msgstr "Rileva Voce"
+msgstr "Rilevamento Voce"
 
 #: data/ui/rnnoise.ui:131
 msgid "Models"

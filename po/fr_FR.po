@@ -39,7 +39,7 @@ msgstr "limiteur ; compresseur ; réverbération ; égaliseur ; autovolume ;"
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
 msgid "\"Presets\""
-msgstr "Préréglage"
+msgstr "\"Préréglages\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -93,7 +93,7 @@ msgstr "_À propos de Easy Effects"
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
 #: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
 msgid "Presets"
-msgstr "Préréglage"
+msgstr "Préréglages"
 
 #: data/ui/application_window.ui:55
 msgid "Presets Menu"
@@ -101,7 +101,7 @@ msgstr "Menu des préréglages"
 
 #: data/ui/application_window.ui:62
 msgid "Enable/disable the global bypass"
-msgstr "Activer/désactiver le by-pass global"
+msgstr "Activer/désactiver le contournement global"
 
 #: data/ui/application_window.ui:67
 msgid "Global Bypass"
@@ -223,7 +223,7 @@ msgstr "Entrée"
 #: data/ui/pitch.ui:244 data/ui/reverb.ui:385 data/ui/rnnoise.ui:268
 #: data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
 msgid "Plugin Input Gain"
-msgstr "Gain d’entrée du plugin"
+msgstr "Gain d’entrée du greffon"
 
 #: data/ui/autogain.ui:507 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
@@ -251,7 +251,7 @@ msgstr "Sortie"
 #: data/ui/pitch.ui:328 data/ui/reverb.ui:469 data/ui/rnnoise.ui:352
 #: data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
 msgid "Plugin Output Gain"
-msgstr "Gain de sortie du plugin"
+msgstr "Gain de sortie du greffon"
 
 #: data/ui/autogain.ui:591 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1264
@@ -428,17 +428,17 @@ msgstr "Seuil d’attaque"
 #: data/ui/multiband_compressor_band.ui:199 data/ui/multiband_gate_band.ui:150
 #: data/ui/rnnoise.ui:100
 msgid "Release"
-msgstr "Relâ­che­ment"
+msgstr "Relâchement"
 
 #: data/ui/compressor.ui:283 data/ui/expander.ui:202
 #: data/ui/multiband_compressor_band.ui:278
 msgid "Release Time"
-msgstr "Temps de relâ­che­ment"
+msgstr "Temps de relâchement"
 
 #: data/ui/compressor.ui:307 data/ui/expander.ui:226 data/ui/gate.ui:601
 #: data/ui/multiband_compressor_band.ui:306
 msgid "Release Threshold"
-msgstr "Seuil de relâ­che­ment"
+msgstr "Seuil de relâchement"
 
 #: data/ui/compressor.ui:314 data/ui/deesser.ui:341 data/ui/expander.ui:233
 #: data/ui/multiband_compressor_band.ui:313
@@ -491,7 +491,7 @@ msgstr "RMS"
 #: data/ui/expander.ui:817 data/ui/filter.ui:44 data/ui/gate.ui:1014
 #: data/ui/multiband_compressor_band.ui:476
 msgid "Low-Pass"
-msgstr "Passe-bas"
+msgstr "Passe-Bas"
 
 #: data/ui/compressor.ui:532 data/ui/expander.ui:451
 #: data/ui/multiband_compressor_band.ui:477
@@ -576,7 +576,7 @@ msgstr "Périphérique d’entrée"
 
 #: data/ui/compressor.ui:686 data/ui/expander.ui:604 data/ui/gate.ui:805
 msgid "PreAmplification"
-msgstr "Préamplification"
+msgstr "Pré amplification"
 
 #: data/ui/compressor.ui:723 data/ui/expander.ui:641 data/ui/gate.ui:842
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
@@ -596,7 +596,7 @@ msgstr "Filtres Chaîne Latérale"
 #: data/ui/compressor.ui:813 data/ui/expander.ui:731 data/ui/filter.ui:45
 #: data/ui/gate.ui:932
 msgid "High-Pass"
-msgstr "Passe-haut"
+msgstr "Passe-Haut"
 
 #: data/ui/compressor.ui:839 data/ui/equalizer_band.ui:189
 #: data/ui/expander.ui:757 data/ui/filter.ui:123 data/ui/gate.ui:958
@@ -626,16 +626,16 @@ msgstr "36 dB/oct"
 
 #: data/ui/compressor.ui:866 data/ui/expander.ui:784 data/ui/gate.ui:981
 msgid "High-Pass Filter Mode"
-msgstr "Mode Filtre Passe-Haut"
+msgstr "Mode du filtre Passe-Haut"
 
 #: data/ui/compressor.ui:892 data/ui/compressor.ui:952 data/ui/expander.ui:810
 #: data/ui/expander.ui:870 data/ui/gate.ui:1007 data/ui/gate.ui:1063
 msgid "High-Pass Filter Frequency"
-msgstr "Fréquence Filtre Passe-Haut"
+msgstr "Fréquence du filtre Passe-Haut"
 
 #: data/ui/compressor.ui:926 data/ui/expander.ui:844 data/ui/gate.ui:1037
 msgid "Low-Pass Filter Mode"
-msgstr "Mode Filtre Passe-Bas"
+msgstr "Mode du filtre Passe-Bas"
 
 #: data/ui/compressor.ui:978 data/ui/equalizer_band.ui:252
 #: data/ui/expander.ui:896 data/ui/filter.ui:175
@@ -834,7 +834,7 @@ msgstr "Retard"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
-msgstr "Longueur Filtre"
+msgstr "Longueur du filtre"
 
 #: data/ui/echo_canceller.ui:50
 msgid "Residual Echo Suppression"
@@ -883,7 +883,7 @@ msgstr "Hauteur Droite"
 
 #: data/ui/equalizer.ui:292
 msgid "Split Channels"
-msgstr "Diviser Canaux"
+msgstr "Diviser les canaux"
 
 #: data/ui/equalizer.ui:298
 msgid "Flat Response"
@@ -1029,7 +1029,7 @@ msgstr "Crête réelle"
 
 #: data/ui/limiter.ui:68
 msgid "Oversampling"
-msgstr "Suréchantillonnage"
+msgstr "Sur-échantillonnage"
 
 #: data/ui/limiter.ui:80
 msgid "Dither"
@@ -1175,7 +1175,7 @@ msgstr "SC PréAmp"
 #: data/ui/limiter.ui:230 data/ui/multiband_compressor_band.ui:640
 #: data/ui/multiband_gate_band.ui:698
 msgid "Sidechain PreAmplification"
-msgstr "Préamplification Chaîne Latérale"
+msgstr "Pré amplification de la Chaîne Latérale"
 
 #: data/ui/limiter.ui:405
 msgid "Boost"
@@ -1205,7 +1205,7 @@ msgstr "Auto-nivellement de l’attaque"
 
 #: data/ui/limiter.ui:573
 msgid "Auto Leveling Release"
-msgstr "Auto-nivellement du relâ­che­ment"
+msgstr "Auto-nivellement du relâchement"
 
 #: data/ui/limiter.ui:608
 msgid "Auto Leveling Knee"
@@ -1254,7 +1254,7 @@ msgstr "Plafonnement"
 
 #: data/ui/multiband_compressor.ui:42 data/ui/multiband_gate.ui:42
 msgid "Sidechain Boost"
-msgstr "Renforcement Chaîne Latérale"
+msgstr "Renforcement de la Chaîne Latérale"
 
 #: data/ui/multiband_compressor.ui:56 data/ui/multiband_gate.ui:56
 msgid "Pink BT"
@@ -1338,7 +1338,7 @@ msgstr "Contournement de Bande"
 
 #: data/ui/multiband_compressor_band.ui:435 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
-msgstr "Options Chaîne Latérale"
+msgstr "Options Chaîne Latérale de la bande"
 
 #: data/ui/multiband_compressor_band.ui:529 data/ui/multiband_gate_band.ui:588
 msgid "Low-Cut Filter"
@@ -1366,7 +1366,7 @@ msgstr "Gain de Bande"
 
 #: data/ui/multiband_compressor_band.ui:844 data/ui/multiband_gate_band.ui:812
 msgid "Band Envelope"
-msgstr "Enveloppe"
+msgstr "Enveloppe de bande"
 
 #: data/ui/multiband_compressor_band.ui:869 data/ui/multiband_gate_band.ui:837
 msgid "Band Curve"
@@ -1588,7 +1588,7 @@ msgstr "Ajouter un effet"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
-msgstr "Liste des plugins utilisés"
+msgstr "Liste des greffons utilisés"
 
 #: data/ui/plugins_box.ui:129
 msgid "No Effects"
@@ -1600,11 +1600,11 @@ msgstr "Flux audio non modifié"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr "Plugin de recherche"
+msgstr "Greffon de recherche"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr "Liste des plugins"
+msgstr "Liste des greffons"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
@@ -1672,11 +1672,11 @@ msgstr "Fonctionnalités expérimentales"
 
 #: data/ui/preferences_general.ui:193
 msgid "Native Plugin Window"
-msgstr "Fenêtre du plugin natif"
+msgstr "Fenêtre du greffon natif"
 
 #: data/ui/preferences_general.ui:194
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr "Permet d'afficher/masquer la fenêtre du plugin natif"
+msgstr "Permet d'afficher/masquer la fenêtre du greffon natif"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1796,7 +1796,7 @@ msgstr "Liste des préréglages d’entrée"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
-msgstr "Atténuation Hautes Fréquences"
+msgstr "Atténuation des Hautes Fréquences"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/reverb.ui:73
@@ -1841,11 +1841,11 @@ msgstr "Temps de Déclin"
 
 #: data/ui/reverb.ui:281
 msgid "Bass Cut"
-msgstr "Couper Basses"
+msgstr "Couper les Basses"
 
 #: data/ui/reverb.ui:316
 msgid "Treble Cut"
-msgstr "Couper Aigües"
+msgstr "Couper les Aiguës"
 
 #: data/ui/reverb.ui:576
 msgid "Ambience"
@@ -1936,7 +1936,7 @@ msgstr "Contrôle automatique du gain"
 
 #: data/ui/speex.ui:72
 msgid "Dereverberation"
-msgstr "Déréverbération"
+msgstr "Dé-réverbération"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
@@ -2215,7 +2215,7 @@ msgstr "Supprimer le préréglage du chargement automatique"
 
 #: src/plugin_base.cpp:197
 msgid "Output Level Meter"
-msgstr "Indicateur de niveau de sortie"
+msgstr "Indicateur Niveau de Sortie"
 
 #: src/plugins_box.cpp:628
 msgid "Remove"
@@ -2319,7 +2319,7 @@ msgstr "Réverbération"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Noise Reduction"
-msgstr "Réduction de bruit"
+msgstr "Réduction du bruit"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Speech Processor"
@@ -2331,12 +2331,10 @@ msgstr "Outils stéréo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Indisponible"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2346,7 +2344,6 @@ msgstr ""
 "même."
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2364,7 +2361,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, c++-format
 msgid "Using {}"
 msgstr "Utilise {}"
 
