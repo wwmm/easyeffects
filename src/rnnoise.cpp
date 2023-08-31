@@ -24,6 +24,7 @@ RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::rnnoise, tags::plugin_package::rnnoise, schema, schema_path, pipe_manager),
+      enable_vad(g_settings_get_boolean(settings, "enable-vad")),
       data_L(0),
       data_R(0) {
   data_L.reserve(blocksize);
@@ -58,6 +59,12 @@ RNNoise::RNNoise(const std::string& tag,
   setup_input_output_gain();
 
 #ifdef ENABLE_RNNOISE
+  gconnections.push_back(g_signal_connect(settings, "changed::enable-vad",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, RNNoise* self) {
+                                            self->enable_vad = g_settings_get_boolean(settings, key);
+                                          }),
+                                          this));
+
   g_signal_connect(settings, "changed::vad-thres", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<RNNoise*>(user_data);
 
@@ -107,6 +114,8 @@ RNNoise::RNNoise(const std::string& tag,
   rnnoise_ready = true;
 #else
   util::warning("The RNNoise library was not available at compilation time. The noise reduction filter won't work");
+
+  enable_vad = false;
 #endif
 }
 

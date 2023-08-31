@@ -58,6 +58,7 @@ class RNNoise : public PluginBase {
   bool notify_latency = false;
   bool rnnoise_ready = false;
   bool resampler_ready = false;
+  bool enable_vad = false;
 
   uint blocksize = 480U;
   uint rnnoise_rate = 48000U;
@@ -107,7 +108,7 @@ class RNNoise : public PluginBase {
             vad_grace_left = release;
           }
 
-          if (vad_grace_left >= 0) {
+          if (vad_grace_left >= 0 || !enable_vad) {
             --vad_grace_left;
 
             for (size_t i = 0U; i < data_L.size(); i++) {
@@ -143,7 +144,7 @@ class RNNoise : public PluginBase {
             vad_grace_right = release;
           }
 
-          if (vad_grace_right >= 0) {
+          if (vad_grace_right >= 0 || !enable_vad) {
             --vad_grace_right;
 
             for (size_t i = 0U; i < data_R.size(); i++) {

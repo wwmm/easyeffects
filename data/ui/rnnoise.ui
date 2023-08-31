@@ -47,6 +47,19 @@
 
                                         <child>
                                             <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Enable</property>
+                                                <property name="title-lines">2</property>
+                                                <property name="activatable-widget">enable_vad</property>
+                                                <child>
+                                                    <object class="GtkSwitch" id="enable_vad">
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
                                                 <property name="title" translatable="yes">Threshold</property>
                                                 <property name="title-lines">2</property>
 
@@ -65,6 +78,8 @@
                                                                 <property name="page-increment">10</property>
                                                             </object>
                                                         </property>
+
+                                                        <property name="sensitive" bind-source="enable_vad" bind-property="active" bind-flags="sync-create" />
                                                     </object>
                                                 </child>
                                             </object>
@@ -90,6 +105,8 @@
                                                                 <property name="page-increment">0.1</property>
                                                             </object>
                                                         </property>
+
+                                                        <property name="sensitive" bind-source="enable_vad" bind-property="active" bind-flags="sync-create" />
                                                     </object>
                                                 </child>
                                             </object>
@@ -115,6 +132,8 @@
                                                                 <property name="page-increment">0.1</property>
                                                             </object>
                                                         </property>
+
+                                                        <property name="sensitive" bind-source="enable_vad" bind-property="active" bind-flags="sync-create" />
                                                     </object>
                                                 </child>
                                             </object>

@@ -15,6 +15,9 @@
         <key name="model-path" type="s">
             <default>""</default>
         </key>
+        <key name="enable-vad" type="b">
+            <default>false</default>
+        </key>
         <key name="vad-thres" type="d">
             <range min="0" max="100" />
             <default>95</default>

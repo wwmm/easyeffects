@@ -63,6 +63,8 @@ struct _RNNoiseBox {
   GtkLabel *active_model_name, *model_active_state, *model_error_state, *input_level_left_label,
       *input_level_right_label, *output_level_left_label, *output_level_right_label, *plugin_credit;
 
+  GtkSwitch* enable_vad;
+
   GtkListView* listview;
 
   GtkStringList* string_list;
@@ -251,8 +253,9 @@ void setup(RNNoiseBox* self,
   }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->rnnoise->package).c_str());
-  gsettings_bind_widgets<"input-gain", "output-gain", "vad-thres", "wet", "release">(
-      self->settings, self->input_gain, self->output_gain, self->vad_thres, self->wet, self->release);
+
+  gsettings_bind_widgets<"input-gain", "output-gain", "enable-vad", "vad-thres", "wet", "release">(
+      self->settings, self->input_gain, self->output_gain, self->enable_vad, self->vad_thres, self->wet, self->release);
 
   g_settings_bind_with_mapping(
       self->settings, "model-path", self->selection_model, "selected", G_SETTINGS_BIND_DEFAULT,
@@ -371,6 +374,7 @@ void rnnoise_box_class_init(RNNoiseBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, output_level_right_label);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, plugin_credit);
 
+  gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, enable_vad);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, vad_thres);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, wet);
   gtk_widget_class_bind_template_child(widget_class, RNNoiseBox, release);
