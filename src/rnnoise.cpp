@@ -25,6 +25,8 @@ RNNoise::RNNoise(const std::string& tag,
                  PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::rnnoise, tags::plugin_package::rnnoise, schema, schema_path, pipe_manager),
       enable_vad(g_settings_get_boolean(settings, "enable-vad")),
+      vad_thres(g_settings_get_double(settings, "vad-thres")),
+      wet_ratio(g_settings_get_double(settings, "wet")),
       data_L(0),
       data_R(0) {
   data_L.reserve(blocksize);
@@ -59,6 +61,9 @@ RNNoise::RNNoise(const std::string& tag,
   setup_input_output_gain();
 
 #ifdef ENABLE_RNNOISE
+
+  init_release();
+
   gconnections.push_back(g_signal_connect(settings, "changed::enable-vad",
                                           G_CALLBACK(+[](GSettings* settings, char* key, RNNoise* self) {
                                             self->enable_vad = g_settings_get_boolean(settings, key);
@@ -85,17 +90,7 @@ RNNoise::RNNoise(const std::string& tag,
   g_signal_connect(settings, "changed::release", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto self = static_cast<RNNoise*>(user_data);
 
-                     const auto key_v = g_settings_get_double(settings, key);
-
-                     const auto rate = static_cast<double>(self->rnnoise_rate);
-
-                     const auto bs = static_cast<double>(self->blocksize);
-
-                     // std::lrint returns a long type
-                     const auto release = static_cast<int>(std::lrint(rate * key_v / 1000.0 / bs));
-
-                     self->vad_grace_left = release;
-                     self->vad_grace_right = release;
+                     self->init_release();
                    }),
                    this);
 
@@ -341,4 +336,18 @@ void RNNoise::free_rnnoise() {
 
 auto RNNoise::get_latency_seconds() -> float {
   return latency_value;
+}
+
+void RNNoise::init_release() {
+  const auto key_v = g_settings_get_double(settings, "release");
+
+  const auto rate = static_cast<double>(rnnoise_rate);
+
+  const auto bs = static_cast<double>(blocksize);
+
+  // std::lrint returns a long type
+  const auto release = static_cast<int>(std::lrint(rate * key_v / 1000.0 / bs));
+
+  vad_grace_left = release;
+  vad_grace_right = release;
 }

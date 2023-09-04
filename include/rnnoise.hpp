@@ -45,6 +45,8 @@ class RNNoise : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
+  void init_release();
+
 #ifndef ENABLE_RNNOISE
   bool package_installed = false;
 #endif
