@@ -26,12 +26,15 @@ RNNoise::RNNoise(const std::string& tag,
     : PluginBase(tag, tags::plugin_name::rnnoise, tags::plugin_package::rnnoise, schema, schema_path, pipe_manager),
       enable_vad(g_settings_get_boolean(settings, "enable-vad")),
       vad_thres(g_settings_get_double(settings, "vad-thres")),
-      wet_ratio(g_settings_get_double(settings, "wet")),
       data_L(0),
       data_R(0) {
   data_L.reserve(blocksize);
   data_R.reserve(blocksize);
   data_tmp.reserve(blocksize);
+
+  const auto key_v = g_settings_get_double(settings, "wet");
+
+  wet_ratio = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
 
   gconnections.push_back(g_signal_connect(settings, "changed::model-path",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {

@@ -106,20 +106,28 @@ class RNNoise : public PluginBase {
 
           vad_prob_left = rnnoise_process_frame(state_left, data_L.data(), data_L.data());
 
-          if (vad_prob_left >= vad_thres) {
-            vad_grace_left = release;
-          }
+          if (enable_vad) {
+            if (vad_prob_left >= vad_thres) {
+              vad_grace_left = release;
+            }
 
-          if (vad_grace_left >= 0 || !enable_vad) {
-            --vad_grace_left;
+            if (vad_grace_left >= 0) {
+              --vad_grace_left;
 
+              for (size_t i = 0U; i < data_L.size(); i++) {
+                data_L[i] = data_L[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
+
+                data_L[i] *= inv_short_max;
+              }
+            } else {
+              std::ranges::for_each(data_L, [&](auto& v) { v = 0.0F; });
+            }
+          } else {
             for (size_t i = 0U; i < data_L.size(); i++) {
               data_L[i] = data_L[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
 
               data_L[i] *= inv_short_max;
             }
-          } else {
-            std::ranges::for_each(data_L, [&](auto& v) { v = 0.0F; });
           }
         }
 
@@ -142,20 +150,28 @@ class RNNoise : public PluginBase {
 
           vad_prob_right = rnnoise_process_frame(state_right, data_R.data(), data_R.data());
 
-          if (vad_prob_right >= vad_thres) {
-            vad_grace_right = release;
-          }
+          if (enable_vad) {
+            if (vad_prob_right >= vad_thres) {
+              vad_grace_right = release;
+            }
 
-          if (vad_grace_right >= 0 || !enable_vad) {
-            --vad_grace_right;
+            if (vad_grace_right >= 0) {
+              --vad_grace_right;
 
+              for (size_t i = 0U; i < data_R.size(); i++) {
+                data_R[i] = data_R[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
+
+                data_R[i] *= inv_short_max;
+              }
+            } else {
+              std::ranges::for_each(data_R, [&](auto& v) { v = 0.0F; });
+            }
+          } else {
             for (size_t i = 0U; i < data_R.size(); i++) {
               data_R[i] = data_R[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
 
               data_R[i] *= inv_short_max;
             }
-          } else {
-            std::ranges::for_each(data_R, [&](auto& v) { v = 0.0F; });
           }
         }
 
