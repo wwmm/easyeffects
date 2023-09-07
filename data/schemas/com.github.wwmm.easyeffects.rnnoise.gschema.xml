@@ -20,7 +20,7 @@
         </key>
         <key name="vad-thres" type="d">
             <range min="0" max="100" />
-            <default>95</default>
+            <default>50</default>
         </key>
         <key name="wet" type="d">
             <range min="-100" max="20" />

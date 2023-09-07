@@ -13,6 +13,18 @@ Description:
 - 
 
 ---
+Version: 7.0.9
+Date: 2023-09-07
+
+Description: 
+- Features∶
+- Added a new control to the noise reduction plugin that allows the voice detection to be disabled.
+
+- Bug fixes∶
+
+- Other notes∶
+
+---
 Version: 7.0.8
 Date: 2023-08-29
 

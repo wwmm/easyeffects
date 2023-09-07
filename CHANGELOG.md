@@ -1,5 +1,17 @@
 # Changelog
  
+## 7.0.9
+### 2023-09-07
+
+ 
+### Features:
+- Added a new control to the noise reduction plugin that allows the voice detection to be disabled.
+
+### Bug fixes:
+
+### Other notes:
+
+ 
 ## 7.0.8
 ### 2023-08-29
 
