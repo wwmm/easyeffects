@@ -213,14 +213,14 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Ddocs=false",
-                "-Dbackends=gtk4"
+                "-Dbackend-gtk4=enabled"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal.git",
-                    "tag": "0.6",
-                    "commit": "13df0b887a7eb7b0f9b14069561a41f62e813155",
+                    "tag": "0.7",
+                    "commit": "fcfd10af0d60b0e5e81aff1db523145a3e2e87aa",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/libportal/releases/latest",
