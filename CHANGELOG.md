@@ -1,5 +1,17 @@
 # Changelog
  
+## 7.1.0
+### 2023-09-07
+
+ 
+### Features:
+
+### Bug fixes:
+- Fixed a small bug the prevented the noise reduction voice activity threshold from being properly initialized.
+
+### Other notes:
+
+ 
 ## 7.0.9
 ### 2023-09-07
 

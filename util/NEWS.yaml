@@ -13,6 +13,18 @@ Description:
 - 
 
 ---
+Version: 7.1.0
+Date: 2023-09-07
+
+Description: 
+- Features∶
+
+- Bug fixes∶
+- Fixed a small bug the prevented the noise reduction voice activity threshold from being properly initialized.
+
+- Other notes∶
+
+---
 Version: 7.0.9
 Date: 2023-09-07
 

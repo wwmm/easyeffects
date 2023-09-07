@@ -25,7 +25,7 @@ RNNoise::RNNoise(const std::string& tag,
                  PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::rnnoise, tags::plugin_package::rnnoise, schema, schema_path, pipe_manager),
       enable_vad(g_settings_get_boolean(settings, "enable-vad")),
-      vad_thres(g_settings_get_double(settings, "vad-thres")),
+      vad_thres(g_settings_get_double(settings, "vad-thres") / 100.0F),
       data_L(0),
       data_R(0) {
   data_L.reserve(blocksize);

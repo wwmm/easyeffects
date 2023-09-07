@@ -50,6 +50,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.1.0" date="2023-09-07T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a small bug the prevented the noise reduction voice activity threshold from being properly initialized.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.0.9" date="2023-09-07T00:00:00Z">
       <description>
         <ul>
