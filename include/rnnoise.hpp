@@ -66,7 +66,7 @@ class RNNoise : public PluginBase {
   uint rnnoise_rate = 48000U;
   uint latency_n_frames = 0U;
 
-  float vad_thres = 0.95F;
+  float vad_thres = 0.0F;
   float wet_ratio = 1.0F;
   uint release = 2U;
 
