@@ -219,7 +219,7 @@ jobs:
         ./install-user-client
 
     - name: Cache Clang Tidy
-      uses: actions/cache@v3.3.1
+      uses: actions/cache@v3.3.2
       with:
         # since the ctcache is just a list of checksums that were checked, we want to write to it every ci run to keep it up to date
         # otherwise github actions just restores some old cache if the key didn't change
