@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-07 11:50-0300\n"
-"PO-Revision-Date: 2023-09-07 20:53+0000\n"
-"Last-Translator: tachyglossues <tachyglossues@gmail.com>\n"
+"PO-Revision-Date: 2023-09-08 16:48+0000\n"
+"Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
 "Language: fr_FR\n"
@@ -38,8 +38,9 @@ msgid ""
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
 "Easy Effects est un outil avancé de manipulation audio. Il inclut, entre "
-"autres, un égaliseur, limiteur, compresseur et effet de réverbération. Pour "
-"compléter le tout, un analyseur de spectre est également intégré."
+"autres, un égaliseur, un limiteur, un compresseur et _un effet de "
+"réverbération. Pour compléter le tout, un analyseur de spectre est également "
+"intégré."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -88,11 +89,11 @@ msgstr "La page principale affichant deux applications en sortie audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The bass enhancer page showing audio controls"
-msgstr "La page de l’amplificateur de basses affichant les commandes audio"
+msgstr "La page de l’amplificateur des basses affichant les commandes audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "The convolver page showing audio controls"
-msgstr "La page du filtre de convolution affichant les commandes audio"
+msgstr "La page du filtre Convolueur affichant les commandes audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
@@ -131,7 +132,7 @@ msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
-"Ajout d'un nouveau contrôle au plugin de réduction de bruit qui permet de "
+"Ajout d'un nouveau contrôle au greffon de réduction de bruit qui permet de "
 "désactiver la détection de la voix."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
@@ -194,8 +195,8 @@ msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
-"La réduction du bruit par RNNoise a été améliorée avec l'ajout des contrôles "
-"de relâchement et de seuil VAD."
+"La réduction du bruit par RNNoise a été améliorée avec l'ajout de contrôles "
+"de relâchement et de seuils VAD."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
 msgid ""
@@ -229,7 +230,7 @@ msgid ""
 "issue 1383."
 msgstr ""
 "Les bandes de l'égaliseur ont désormais un contrôle de gain supplémentaire "
-"qui permet une saisie plus efficace des valeurs qui sont difficiles à "
+"qui permet une saisie plus efficace des valeurs qui sont difficiles de "
 "définir à l'échelle. Plus de détails dans le ticket 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
@@ -243,7 +244,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr "Correction du bouton Solo dans les paramètres de bande de l'égaliseur."
+msgstr ""
+"Correction du bouton Solo dans les paramètres de la bande de l'égaliseur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
 msgid ""
@@ -280,7 +282,7 @@ msgstr ""
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
 msgstr ""
 "Les valeurs fractionnaires de demi-tons peuvent maintenant être utilisées "
-"dans l'effet de décalage de hauteur (Pitch Shift)."
+"dans l'effet Hauteur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:99
 msgid ""
@@ -295,7 +297,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:108
 msgid "A new Level Meter plugin based on libebur128 has been added."
-msgstr "Un nouveau greffon 'Level Meter' basé sur libebur128 a été ajouté."
+msgstr ""
+"Un nouveau greffon Indicateur de niveau basé sur libebur128 a été ajouté."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:109
 msgid ""
@@ -341,7 +344,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
 msgid "The plugin reset should not make its controls innefective anymore."
 msgstr ""
-"La remise à zéro du greffon ne devrait plus rendre ses contrôles inefficaces."
+"La réinitialisation d'un greffon ne devrait plus rendre ses contrôles "
+"inefficaces."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
 msgid ""
@@ -369,9 +373,9 @@ msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
 msgstr ""
-"Une petite erreur a été faite dans la dernière version. Une nouvelle version "
-"a été faite pour s'assurer que les usagers ont la bonne branche dans le "
-"paquet"
+"Une petite erreur a été commise dans la dernière version. Nous en faisons "
+"une nouvelle pour nous assurer que les utilisateurs ont la bonne branche "
+"dans le paquet"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:145
 msgid ""
@@ -433,21 +437,21 @@ msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
-"La valeur du curseur de gain de bande de l'égaliseur peut être mise à jour "
-"par pas plus grands. Le contrôle du grain fin est toujours possible grâce "
-"aux touches haut/bas du clavier."
+"La valeur du curseur de gain de la bande de l'égaliseur peut être mise à "
+"jour par paliers plus importants. Le contrôle du grain fin est toujours "
+"possible grâce aux touches haut/bas du clavier."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
 msgid "Small improvements to the echo canceller."
-msgstr "Petites améliorations de annulateur d'écho."
+msgstr "Petites améliorations de l'annulateur d'écho."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:164
 msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
-"Les sondes de annulateur d'écho n'étaient pas liées à la carte son après le "
-"passage à des instances de filtres multiples. Cela devrait être corrigé "
+"Les sondes de l'annulateur d'écho n'étaient pas liées à la carte son après "
+"le passage à des instances de filtres multiples. Cela devrait être corrigé "
 "maintenant."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
@@ -464,7 +468,7 @@ msgid ""
 "providing noise suppression it also can detect voice activity. It is a "
 "decent alternative to the cases whre the rnnoise library does not work well."
 msgstr ""
-"Un nouveau greffon Speech Processor basé sur la bibliothèque Speex a été "
+"Un nouveau greffon Processeur vocal basé sur la bibliothèque Speex a été "
 "ajouté. En plus de supprimer le bruit, il peut également détecter l'activité "
 "vocale. C'est une alternative décente pour les cas où la bibliothèque "
 "rnnoise ne fonctionne pas bien."
@@ -540,8 +544,8 @@ msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
 msgstr ""
-"L'implémentation du Porte multibande a été migrée de CALF vers Linux Studio "
-"Plugins."
+"L'implémentation de Porte Multibande a été transférée de CALF vers Linux "
+"Studio Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:194
 msgid ""
@@ -595,9 +599,9 @@ msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
 msgstr ""
-"L'état de bypass peut être enregistré dans un fichier de préréglages. La "
-"raison pour laquelle cela fonctionnait avant est expliquée en détail dans le "
-"ticket 1039"
+"L'état de contournement peut être enregistré dans un fichier de préréglages. "
+"La raison pour laquelle cela fonctionnait avant est expliquée en détail dans "
+"le ticket 1039"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:221
 msgid ""
@@ -611,17 +615,17 @@ msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
-"Une fenêtre de dialogue est affichée à l’utilisateur lors de l’échec du "
-"chargement d’un préréglage, ou de l’importation d'un fichier de préréglage / "
-"impulse."
+"Une boîte de dialogue est affichée à l'utilisateur lorsqu'un préréglage ne "
+"se charge pas ou qu'un fichier de préréglage/d'impulsion ne parvient pas à "
+"être importé."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:223
 msgid ""
 "The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
 "the one from Calf Studio."
 msgstr ""
-"Le plugin SideChain Gate de Linux Studio Plugins est maintenant utilisé au "
-"lieu de celui de Calf Studio."
+"Le greffon Porte de la chaîne latérale de Linux Studio Plugins est "
+"maintenant utilisé au lieu de celui de Calf Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:225
 msgid ""
@@ -658,7 +662,7 @@ msgid ""
 msgstr ""
 "Une nouvelle option de configuration a été ajoutée. Elle permet à "
 "EasyEffects d’ignorer les flux dont l’objectif est de surveiller les "
-"périphériques de sink. Cela aidera à corriger certains problèmes pour les "
+"périphériques de sortie. Cela aidera à corriger certains problèmes pour les "
 "utilisateurs qui utilisent OBS."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -697,7 +701,7 @@ msgid ""
 "changed."
 msgstr ""
 "Correction d’un crash qui pouvait se produire lorsque l’historique maximum "
-"de l’autogain était modifié."
+"du gain automatique était modifié."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
 msgid "Avoid crashes when pw-mididump is running"
@@ -705,7 +709,7 @@ msgstr "Éviter les plantages lorsque pw-mididump est en cours d’exécution"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid "The interface of the pitch plugin was improved"
-msgstr "L'interface du greffon hauteur a été améliorée"
+msgstr "L'interface du greffon Hauteur a été améliorée"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:252
 msgid "Our application icon is now compatible with desktops that uses QT"
@@ -742,7 +746,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:256
 msgid "Many translation updates"
-msgstr "Mises à jour des traductions"
+msgstr "Nombreuses mises à jour des traductions"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:258
 msgid ""
@@ -751,8 +755,8 @@ msgid ""
 "widget was visible"
 msgstr ""
 "Correction d’un bug où EasyEffeects plantait lorsque le nombre de points "
-"affichés dans le spectre était modifié pendant que pipeline était actif et "
-"que le widget du spectre était visible"
+"affichés dans le spectre était modifié pendant que le pipeline était actif "
+"et que le widget du spectre était visible"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
 msgid ""
@@ -769,19 +773,19 @@ msgid ""
 "filters will be unlinked after the timeout is reached. This is done to make "
 "sure we do not waste CPU power processing silence."
 msgstr ""
-"Il y a une nouvelle préférence pour permettre à l'utilisateur de "
-"sélectionner une limite d'inactivité pour le pipeline. Quand aucun client ne "
-"joue ou n'enregistre depuis nos périphériques, les filtres sont déconnectés "
-"quand cette limite est atteinte. Cela permet de s'assurer qu'il n'a pas de "
-"ressources CPU gaspillées à traiter du silence."
+"Un nouveau paramètre permet à l'utilisateur de sélectionner un délai "
+"d'inactivité pour le pipeline. Lorsqu'aucun client n'est en train de jouer "
+"ou d'enregistrer sur nos appareils, les filtres seront déconnectés une fois "
+"le délai atteint. Ceci est fait pour s'assurer que nous ne gaspillons pas la "
+"puissance du CPU en traitant le silence."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:268
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
-"Le greffon autogain permet désormais à l’utilisateur de sélectionner "
-"lesquelles des trois \"loudness\" sont utilisées pour calculer la moyenne "
+"Le greffon Gain automatique permet désormais à l'utilisateur de sélectionner "
+"laquelle des trois intensités sonores est utilisée pour calculer la moyenne "
 "géométrique."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:269
@@ -790,8 +794,8 @@ msgid ""
 "use libebur128 histogram mode anymore. This should avoid the cases where the "
 "Integrated loudness gets stuck forever in the same value."
 msgstr ""
-"Le greffon autogain permet désormais de définir l'historique maximal et "
-"n'utilise plus le mode histogramme de libebur128. Cela devrait permettre "
+"Le greffon Gain automatique permet désormais de définir l'historique maximal "
+"et n'utilise plus le mode histogramme de libebur128. Cela devrait permettre "
 "d'éviter les cas où l'intensité sonore intégrée est toujours bloquée à la "
 "même valeur."
 
@@ -807,8 +811,8 @@ msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
 msgstr ""
-"L'option de ligne de commande retournant l’état du bypass global fonctionne "
-"à nouveau."
+"L'option de ligne de commande retournant l’état du contournement global "
+"fonctionne à nouveau."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
 msgid ""
@@ -816,7 +820,7 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
-"Le filtre crossfeed devrait mieux gérer les changements de latence "
+"Le filtre Flux croisé devrait mieux gérer les changements de latence "
 "dynamiques de PipeWire. Les sauts de volume ne devraient plus se produire "
 "dans ces situations."
 
@@ -838,9 +842,9 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
-"Le filtre autogain devrait mieux gérer les changements de latence dynamiques "
-"de PipeWire. Les sauts de volume ne devraient plus se produire dans ces "
-"situations."
+"Le filtre Gain automatique devrait mieux gérer les changements de latence "
+"dynamiques de PipeWire. Les sauts de volume ne devraient plus se produire "
+"dans ces situations."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:292
 msgid ""
@@ -871,8 +875,8 @@ msgid ""
 "Fixed a bug where setting a equalizer band quality to zero would lead to an "
 "application crash."
 msgstr ""
-"Correction d’un bug où le réglage de la qualité d’une bande d’égaliseur sur "
-"zéro entraînait un plantage de l’application."
+"Correction d’un bug où le réglage de la qualité d’une bande de l’égaliseur "
+"sur zéro entraînait un plantage de l’application."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:312
 msgid ""
@@ -893,9 +897,9 @@ msgid ""
 "Bell filter, but also other supported ones (at the moment only the Bandpass "
 "filter is not available in LSP plugin)."
 msgstr ""
-"La fonction d’importation de préréglages de l’égaliseur APO a été améliorée "
+"La fonction d’importation des préréglages de l’égaliseur APO a été améliorée "
 "pour appliquer non seulement le filtre Bell, mais aussi d’autres filtres "
-"pris en charge (pour l'instant, seul le filtre de passe-bande n'est pas "
+"pris en charge (pour l'instant, seul le filtre Passe-bande n'est pas "
 "disponibles dans le greffon LSP)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:315
@@ -911,7 +915,7 @@ msgid ""
 msgstr ""
 "Nous avons une nouvelle option qui permet à l'utilisateur de désactiver le "
 "masquage automatique de nos menus. Cela peut aider à contourner certains "
-"bugs que les menus Popover ont actuellement sur gtk4."
+"bogues que les menus Popover ont actuellement sur gtk4."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:318
 msgid ""
@@ -964,7 +968,7 @@ msgid ""
 msgstr ""
 "La documentation a été mise à jour en tenant compte des nouvelles "
 "fonctionnalités d’EasyEffects. Les anciennes références à PulseEffects ont "
-"été supprimées. Le bouton de documentation a été ajouté dans le menu."
+"été supprimées. Le bouton de la documentation a été ajouté dans le menu."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:333
 msgid ""
@@ -992,24 +996,24 @@ msgid ""
 "The Limiter and the Multiband Compressor plugins can now use an optional "
 "external sidechain."
 msgstr ""
-"Les plugins Limiteur et Compresseur Multibande peuvent désormais utiliser un "
-"sidechain optionnel externe."
+"Les greffons Limiteur et Compresseur multibande peuvent désormais utiliser "
+"une chaîne latérale optionnel externe."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:345
 msgid ""
 "The Autogain plugin now allows the user to select which Loudness is used as "
 "reference for the volume correction."
 msgstr ""
-"Le plugin Autogain permet désormais à l’utilisateur de sélectionner la "
-"Loudness utilisée comme référence pour la correction du volume."
+"Le greffon Gain automatique permet désormais à l’utilisateur de sélectionner "
+"la Sonie utilisée comme référence pour la correction du volume."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:346
 msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
 msgstr ""
-"La fonctionnalité d’import de profil APO du plugin égalisateur utilise "
-"désormais le paramètre de \"Pré-Amplification\"."
+"La fonctionnalité d'importation de profil APO du greffon Égaliseur analyse "
+"désormais le paramètre \"Pré-Amplification\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:347
 msgid "Optional Cubic Volume can be enabled in General Settings."
@@ -1034,9 +1038,9 @@ msgid ""
 "being relinked after changing the order of the plugins in the pipeline. It "
 "should be working now."
 msgstr ""
-"Les sondes utilisées dans certains filtres quand le compresseur ou le "
-"limiteur n'étaient pas reliées après un changement d'ordre dans les greffons "
-"dans le pipeline. Ça devrait fonctionner maintenant."
+"Les sondes utilisées dans certains filtres comme le compresseur et le "
+"limiteur n'étaient pas reliées après avoir changé l'ordre des greffons dans "
+"le pipeline. Cela devrait fonctionner maintenant."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:359
 msgid ""
@@ -1080,9 +1084,10 @@ msgid ""
 "its target preset will be updated. This way we can change the profile preset "
 "without having to remove and recreating it."
 msgstr ""
-"Lors d’un ajout d’un profil automatique pour un appareil déjà dans la liste, "
-"ses presets cibles seront mis à jour. Ainsi, on peut modifier le preset du "
-"profil sans le retirer et la re-créer."
+"Lors de l'ajout d'un profil de chargement automatique pour un appareil déjà "
+"dans la liste, son préréglage cible sera mis à jour. De cette façon, nous "
+"pouvons changer le préréglage du profil sans avoir à le supprimer et à le "
+"recréer."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:380
 msgid ""
@@ -1099,8 +1104,8 @@ msgid ""
 "stack, new plugins are added at the second to last position in order to "
 "prevent hardware damage on eventually high output level."
 msgstr ""
-"Si le limiteur ou le maximizeur sont placés à la dernière position de la "
-"liste des plugins, les nouveaux plugins sont ajoutés à l’avant-dernière "
+"Si le limiteur ou le maximiseur sont placés à la dernière position de la "
+"liste des greffons, les nouveaux greffons sont ajoutés à l’avant-dernière "
 "position afin d’éviter des dommages matériels dû à un niveau de sortie "
 "potentiellement élevé."
 
@@ -1117,7 +1122,7 @@ msgid ""
 "Sometimes when removing imported models from the noise reduction plugin the "
 "current used model was not properly updated. This should be fixed now."
 msgstr ""
-"Parfois, lors de la suppression de modèles importés du plugin de réduction "
+"Parfois, lors de la suppression de modèles importés du greffon de réduction "
 "du bruit, le modèle actuellement utilisé n’était pas correctement mis à "
 "jour. Cela devrait être corrigé maintenant."
 
@@ -1132,16 +1137,16 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:386
 msgid "Now the blocklist is correctly set when switching presets."
 msgstr ""
-"Maintenant, la liste de blocage est correctement définie lors du changement "
-"de préréglage."
+"La liste de blocage est maintenant correctement définie lorsque l'on passe "
+"d'un préréglage à l'autre."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:387
 msgid ""
 "Now the status of the global bypass button is correctly updated when "
 "changing plugin stack."
 msgstr ""
-"Désormais, l’état du bouton de contournement global est correctement mis à "
-"jour lors du changement de pile de plugins."
+"L’état du bouton de contournement global est maintenant correctement mis à "
+"jour lors du changement de pile d'un greffon."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:388
 msgid ""
@@ -1158,8 +1163,8 @@ msgstr ""
 msgid ""
 "Some icons not showing in Plasma DE with Breeze icon theme should appear now."
 msgstr ""
-"Certaines icônes qui n’apparaissaient pas dans Plasma DE avec le thème "
-"d’icônes Breeze devraient maintenant apparaître."
+"Certaines icônes qui n’apparaissaient pas dans le DE Plasma avec le thème d’"
+"icônes Breeze devraient maintenant apparaître."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:397
 msgid "Updated Chinese translation."
@@ -1178,7 +1183,7 @@ msgid ""
 "The multiband compressor plugin now uses the stereo multiband compressor "
 "plugin from Linux Studio Plugins instead of the one from Calf Studio."
 msgstr ""
-"Le plugin de compresseur multibande utilise maintenant le plugin de "
+"Le greffon de compresseur multibande utilise maintenant le greffon de "
 "compresseur multibande stéréo de Linux Studio Plugins au lieu de celui de "
 "Calf Studio."
 
@@ -1187,7 +1192,7 @@ msgid ""
 "The limiter plugin now uses the stereo limiter plugin from Linux Studio "
 "Plugins instead of the one from Calf Studio."
 msgstr ""
-"Le plugin limiteur est désormais celui de Linux Studio Plugins au lieu de "
+"Le greffon limiteur est désormais celui de Linux Studio Plugins au lieu de "
 "celui de Calf Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:402
@@ -1202,7 +1207,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:404
 msgid "The echo canceller sampling rate is now properly set."
 msgstr ""
-"Le taux d’échantillonnage de l’annuleur d’écho est maintenant correctement "
+"Le taux d’échantillonnage de l’annulateur d’écho est maintenant correctement "
 "réglé."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:405
@@ -1210,15 +1215,15 @@ msgid ""
 "The threshold parameter from the deesser plugin is now saved to the preset "
 "file."
 msgstr ""
-"Le paramètre de seuil du plugin Deesser est maintenant enregistré dans le "
-"fichier de présélection."
+"Le paramètre de seuil du greffon Déesseur est maintenant enregistré dans le "
+"fichier de préréglage."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:406
 msgid ""
 "Improved band splitting for crystalizer with new default intensity values."
 msgstr ""
-"Division de bandes améliorée pour le cristalliseur avec de nouvelles valeurs "
-"d’intensité par défaut."
+"Division de bandes améliorée pour le cristallisateur avec de nouvelles "
+"valeurs d’intensité par défaut."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:407
 msgid ""
@@ -1231,7 +1236,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:408
 msgid "When adding more equalizer bands they are set to Bell instead of Off."
 msgstr ""
-"Lorsque vous ajoutez d’autres bandes d’égaliseur, elles sont réglées sur "
+"Lorsque vous ajoutez d’autres bandes à l’égaliseur, elles sont réglées sur "
 "Bell au lieu de Off."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:409
@@ -1239,7 +1244,7 @@ msgid ""
 "Equalizer APO presets loading is now working properly on locales different "
 "than C."
 msgstr ""
-"Le chargement des préréglages de l’Equalizer APO fonctionne désormais "
+"Le chargement des préréglages de l’Égaliseur APO fonctionne désormais "
 "correctement dans les langues autres que C."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:410
@@ -1253,16 +1258,16 @@ msgid ""
 "The crystalizer plugin signal amplification was too high before. It should "
 "be within more reasonable levels now."
 msgstr ""
-"L'amplification du signal du plugin du cristalliseur était trop élevée "
-"avant. Elle devrait se situer dans des niveaux plus raisonnables maintenant."
+"L'amplification du signal du plugin Cristallisateur était trop élevée avant. "
+"Elle devrait se situer dans des niveaux plus raisonnables maintenant."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:419
 msgid ""
 "Improved the resampler used in the plugins that require one(like the rnnoise "
 "plugin)"
 msgstr ""
-"Amélioration du rééchantillonneur utilisé dans les plugins qui en "
-"nécessitent un (comme le plugin rnnoise)"
+"Amélioration du ré-échantillonneur utilisé dans les greffons qui en "
+"nécessitent un (comme le greffon rnnoise)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:422
 msgid "Setting multiple autoloading presets should be fine now"
@@ -1274,7 +1279,7 @@ msgstr ""
 msgid "Transient windows are now properly set for some plugins dialogs"
 msgstr ""
 "Les fenêtres transitoires sont désormais correctement définies pour "
-"certaines boîtes de dialogue de plugins"
+"certaines boîtes de dialogue des greffons"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:424
 msgid ""
@@ -1291,7 +1296,7 @@ msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
 msgstr ""
 "Correction d’un bogue qui pouvait empêcher l’initialisation correcte du "
-"greffon hauteur"
+"greffon Hauteur"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:426
 msgid "The saturation warning should not displace its neighbor widgets anymore"
@@ -1311,7 +1316,7 @@ msgid ""
 "The Loudness plugin is being used again for the reasons described at issue "
 "820. This means that is an optional dependency again."
 msgstr ""
-"Le greffon Loudness est utilisé à nouveau pour les raisons décrites dans le "
+"Le greffon Sonie est utilisé à nouveau pour les raisons décrites dans le "
 "ticket 820. Cela signifie qu’il s’agit à nouveau d’une dépendance "
 "facultative."
 
@@ -1332,8 +1337,9 @@ msgid ""
 "Now we use a sidechain LSP compressor that allows the user to select and "
 "external source as the sidechain input."
 msgstr ""
-"Nous utilisons maintenant un compresseur sidechain LSP qui permet à "
-"l’utilisateur de sélectionner une source externe comme entrée sidechain."
+"Nous utilisons maintenant un compresseur LSP à chaîne latérale qui permet à "
+"l'utilisateur de sélectionner une source externe comme entrée de la chaîne "
+"latérale."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:448
 msgid "We now support the LSP compressor Boosting mode."
@@ -1398,11 +1404,11 @@ msgid ""
 "menu. Now the user can show in the window only the plugins that he/she wants "
 "to use."
 msgstr ""
-"De nombreuses fonctionnalités ont été réimplémentées à partir de zéro. Le "
+"De nombreuses fonctionnalités ont été ré-implémentées à partir de zéro. Le "
 "chargement automatique des préréglages en est un exemple. Un autre "
-"changement remarquable se trouve dans le menu de sélection des plugins. "
+"changement remarquable se trouve dans le menu de sélection des greffons. "
 "Désormais, l’utilisateur peut afficher dans la fenêtre uniquement les "
-"plugins qu’il souhaite utiliser."
+"greffons qu’il souhaite utiliser."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:465
 msgid ""
