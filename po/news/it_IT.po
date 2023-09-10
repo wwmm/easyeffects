@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-09 13:56+0000\n"
-"PO-Revision-Date: 2023-08-13 06:50+0000\n"
+"PO-Revision-Date: 2023-09-10 23:55+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -168,6 +168,8 @@ msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"Risolto un piccolo bug che impediva la corretta inizializzazione della "
+"soglia di attività vocale di riduzione del rumore."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -191,34 +193,45 @@ msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
+"Aggiunto un nuovo controllo al plugin di riduzione del rumore che consente "
+"di disabilitare il rilevamento vocale."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"L'effetto Filtro è stato migliorato con nuovi parametri da quando è stato "
+"portato da Calf Studio ai plugin di Linux Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"La riduzione del rumore tramite RNNoise è stata migliorata con l'aggiunta "
+"dei controlli Release e Soglia VAD."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"La riduzione del rumore tramite RNNoise ora può mescolare i segnali "
+"originali e quelli denoizzati per evitare che l'uscita suoni troppo \"secca\""
+"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
+"Questa versione è progettata per funzionare con versioni dei plugin di Linux "
+"Studio uguali o successive a \"1.2.10\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
 msgid "EasyEffects is now buildable also with libc++."
-msgstr ""
+msgstr "EasyEffects è ora costruibile anche con libc++."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:91
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
