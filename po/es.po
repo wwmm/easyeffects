@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-09 13:56+0000\n"
-"PO-Revision-Date: 2023-09-09 08:50+0000\n"
+"PO-Revision-Date: 2023-09-10 08:54+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -983,7 +983,6 @@ msgid "Ladder-Pass"
 msgstr "Filtro Ladder-Pass"
 
 #: data/ui/filter.ui:53
-#, fuzzy
 msgid "Ladder-Rejection"
 msgstr "Reducción de banda"
 
