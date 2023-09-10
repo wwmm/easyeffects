@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-09 13:56+0000\n"
-"PO-Revision-Date: 2023-09-09 08:50+0000\n"
+"PO-Revision-Date: 2023-09-10 08:54+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -165,6 +165,8 @@ msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"Se ha corregido un pequeño error que impedía inicializar correctamente el "
+"umbral de actividad de la voz y la reducción de ruido."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
