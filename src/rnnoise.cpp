@@ -342,6 +342,8 @@ auto RNNoise::get_latency_seconds() -> float {
 }
 
 void RNNoise::init_release() {
+#ifdef ENABLE_RNNOISE
+
   const auto key_v = g_settings_get_double(settings, "release");
 
   const auto rate = static_cast<double>(rnnoise_rate);
@@ -353,4 +355,6 @@ void RNNoise::init_release() {
 
   vad_grace_left = release;
   vad_grace_right = release;
+
+#endif
 }
