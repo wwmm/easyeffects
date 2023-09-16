@@ -45,7 +45,7 @@
             <default>0</default>
         </key>
         <key name="frequency" type="d">
-            <range min="10" max="20000" />
+            <range min="10" max="24000" />
             <default>2000</default>
         </key>
         <key name="width" type="d">
