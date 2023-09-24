@@ -19,14 +19,12 @@
 
 #pragma once
 
-#include <string>
-#include <span>
-#include <tuple>
-#include <unordered_map>
-
 #include <dlfcn.h>
 #include <ladspa.h>
-
+#include <span>
+#include <string>
+#include <tuple>
+#include <unordered_map>
 #include "string_literal_wrapper.hpp"
 #include "util.hpp"
 
@@ -77,12 +75,12 @@ class LadspaWrapper {
   [[nodiscard]] auto has_instance() const -> bool { return instance != nullptr; }
   [[nodiscard]] auto get_rate() const -> uint { return rate; }
 
-# define set_from_gsettings(this, settings, setting_name, setting_type, val_type, port_name)            \
-  do {                                                                                                  \
-    float value = static_cast<float>(g_settings_get_ ## setting_type((settings), (setting_name)));      \
-    float actual_value = (this)->set_control_port_value_clamp((port_name), value);                      \
-    if (actual_value != value && !(std::isnan(actual_value) && std::isnan(value)))                      \
-      g_settings_set_ ## setting_type((settings), (setting_name), static_cast<val_type>(actual_value)); \
+#define set_from_gsettings(this, settings, setting_name, setting_type, val_type, port_name)           \
+  do {                                                                                                \
+    float value = static_cast<float>(g_settings_get_##setting_type((settings), (setting_name)));      \
+    float actual_value = (this)->set_control_port_value_clamp((port_name), value);                    \
+    if (actual_value != value && !(std::isnan(actual_value) && std::isnan(value)))                    \
+      g_settings_set_##setting_type((settings), (setting_name), static_cast<val_type>(actual_value)); \
   } while (0)
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
@@ -139,15 +137,13 @@ class LadspaWrapper {
 
     auto val = static_cast<float>(key_v);
 
-    auto clamped =
-        (!lower_bound && key_v <= util::minimum_db_d_level)
-        ? -std::numeric_limits<float>::infinity()
-        : val;
+    auto clamped = (!lower_bound && key_v <= util::minimum_db_d_level) ? -std::numeric_limits<float>::infinity() : val;
 
     float new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
 
-    if (new_v != clamped && !(std::isnan(new_v) && std::isnan(clamped)))
+    if (new_v != clamped && !(std::isnan(new_v) && std::isnan(clamped))) {
       g_settings_set_double(settings, gkey_wrapper.msg.data(), new_v);
+    }
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
@@ -157,10 +153,9 @@ class LadspaWrapper {
 
                        auto val = static_cast<float>(key_v);
 
-                       auto clamped =
-                          (!lower_bound && key_v <= util::minimum_db_d_level)
-                          ? -std::numeric_limits<float>::infinity()
-                          : val;
+                       auto clamped = (!lower_bound && key_v <= util::minimum_db_d_level)
+                                          ? -std::numeric_limits<float>::infinity()
+                                          : val;
 
                        float new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
 
@@ -180,8 +175,9 @@ class LadspaWrapper {
 
     float new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
 
-    if (new_v != clamped_v && !(std::isnan(new_v) && std::isnan(clamped_v)))
+    if (new_v != clamped_v && !(std::isnan(new_v) && std::isnan(clamped_v))) {
       g_settings_set_double(settings, gkey_wrapper.msg.data(), util::linear_to_db(new_v));
+    }
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
@@ -201,21 +197,28 @@ class LadspaWrapper {
                      this);
   }
 
-# undef set_from_gsettings
+#undef set_from_gsettings
 
   uint n_samples = 0U;
+
  private:
   std::string plugin_name;
-  void* dl_handle = nullptr;
-  const LADSPA_Descriptor* descriptor = nullptr;
-  LADSPA_Handle instance = nullptr;
-  bool found = false;
 
+  void* dl_handle = nullptr;
+
+  const LADSPA_Descriptor* descriptor = nullptr;
+
+  LADSPA_Handle instance = nullptr;
+
+  bool found = false;
   bool control_ports_initialized = false;
   bool active = false;
+
   uint rate = 0U;
+
   LADSPA_Data* control_ports = nullptr;
+
   std::unordered_map<std::string, unsigned long> map_cp_name_to_idx = std::unordered_map<std::string, unsigned long>();
 };
 
-}
+}  // namespace ladspa

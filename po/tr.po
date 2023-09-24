@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 00:24+0000\n"
+"POT-Creation-Date: 2023-09-24 12:40-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -182,7 +182,7 @@ msgid "Geometric Mean (SI)"
 msgstr "Geometrik Ortalama (SI)"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:48
+#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:49
 msgid "Loudness"
 msgstr "Yüksek Ses"
 
@@ -577,7 +577,7 @@ msgid "Sidechain Type"
 msgstr "Yanzincir Türü"
 
 #: data/ui/compressor.ui:679 data/ui/expander.ui:597 data/ui/gate.ui:798
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:689
 msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
@@ -846,7 +846,7 @@ msgstr "Saptanan"
 msgid "Reduction"
 msgstr "Azaltma"
 
-#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:39
+#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:40
 msgid "Delay"
 msgstr "Gecikme"
 
@@ -950,7 +950,7 @@ msgstr "Tavan"
 msgid "Ceil Value"
 msgstr "Tavan Değeri"
 
-#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:43
+#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
 msgid "Expander"
 msgstr ""
 
@@ -1021,7 +1021,7 @@ msgstr "Azalım"
 msgid "All-Pass"
 msgstr "Düşük Geçiş"
 
-#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
+#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
 msgid "Gate"
 msgstr "Aralık"
 
@@ -1611,7 +1611,7 @@ msgstr "Pencere"
 msgid "Overlap Length"
 msgstr "Süzgeç Uzunluğu"
 
-#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:52
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:53
 msgid "Pitch"
 msgstr "Perde"
 
@@ -2223,11 +2223,11 @@ msgstr "Dürtü Dosyası Yüklenmedi"
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:676
+#: src/effects_box.cpp:260 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:696
+#: src/effects_box.cpp:283 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Oynatıcılar"
 
@@ -2282,11 +2282,11 @@ msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 msgid "Output Level Meter"
 msgstr "Çıkış Aygıtı"
 
-#: src/plugins_box.cpp:628
+#: src/plugins_box.cpp:642
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/plugins_box.cpp:697
+#: src/plugins_box.cpp:711
 msgid "Output Device"
 msgstr "Çıkış Aygıtı"
 
@@ -2339,59 +2339,63 @@ msgid "Crystalizer"
 msgstr "Kristalleştirici"
 
 #: src/tags_plugin_name.cpp:38
+msgid "Deep Noise Remover"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:39
 msgid "Deesser"
 msgstr "Deesser"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:41
 msgid "Echo Canceller"
 msgstr "Yankı Önleyici"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Equalizer"
 msgstr "Ekolayzır"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:43
 msgid "Exciter"
 msgstr "Uyarıcı"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Filter"
 msgstr "Süzgeç"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 #, fuzzy
 msgid "Level Meter"
 msgstr "Çıkış Aygıtı"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Limiter"
 msgstr "Sınırlayıcı"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Maximizer"
 msgstr "Yükseltici"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Multiband Compressor"
 msgstr "Çoklu Bant Şıkıştırıcı"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Multiband Gate"
 msgstr "Çoklu Bant Geçitleme"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Reverberation"
 msgstr "Yankılanma"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Noise Reduction"
 msgstr "Gürültü Azaltma"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Speech Processor"
 msgstr "Konuşma İşleyici"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Stereo Tools"
 msgstr "Stereo Araçları"
 

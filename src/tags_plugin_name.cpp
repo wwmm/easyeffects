@@ -35,7 +35,7 @@ auto get_translated() -> std::map<std::string, std::string> {
                                                    {convolver, _("Convolver")},
                                                    {crossfeed, _("Crossfeed")},
                                                    {crystalizer, _("Crystalizer")},
-                                                   {deepfilternet, _("Noise Remover")},
+                                                   {deepfilternet, _("Deep Noise Remover")},
                                                    {deesser, _("Deesser")},
                                                    {delay, _("Delay")},
                                                    {echo_canceller, _("Echo Canceller")},

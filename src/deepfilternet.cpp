@@ -26,7 +26,12 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
                              const std::string& schema,
                              const std::string& schema_path,
                              PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::deepfilternet, tags::plugin_package::deepfilternet, schema, schema_path, pipe_manager) {
+    : PluginBase(tag,
+                 tags::plugin_name::deepfilternet,
+                 tags::plugin_package::deepfilternet,
+                 schema,
+                 schema_path,
+                 pipe_manager) {
   ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
 
   package_installed = ladspa_wrapper->found_plugin();
@@ -36,10 +41,20 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
   }
 
   ladspa_wrapper->bind_key_double_db_exponential<"Attenuation Limit (dB)", "attenuation-limit", false>(settings);
-  ladspa_wrapper->bind_key_double_db_exponential<"Min processing threshold (dB)", "min-processing-threshold", false>(settings);
-  ladspa_wrapper->bind_key_double_db_exponential<"Max ERB processing threshold (dB)", "max-erb-processing-threshold", false>(settings);
-  ladspa_wrapper->bind_key_double_db_exponential<"Max DF processing threshold (dB)", "max-df-processing-threshold", false>(settings);
+
+  ladspa_wrapper->bind_key_double_db_exponential<"Min processing threshold (dB)", "min-processing-threshold", false>(
+      settings);
+
+  ladspa_wrapper
+      ->bind_key_double_db_exponential<"Max ERB processing threshold (dB)", "max-erb-processing-threshold", false>(
+          settings);
+
+  ladspa_wrapper
+      ->bind_key_double_db_exponential<"Max DF processing threshold (dB)", "max-df-processing-threshold", false>(
+          settings);
+
   ladspa_wrapper->bind_key_int<"Min Processing Buffer (frames)", "min-processing-buffer">(settings);
+
   ladspa_wrapper->bind_key_double<"Post Filter Beta", "post-filter-beta">(settings);
 
   setup_input_output_gain();
@@ -60,28 +75,33 @@ void DeepFilterNet::setup() {
     return;
   }
 
-  ladspa_wrapper->n_samples = n_samples;
+  util::idle_add([&, this] {
+    ladspa_wrapper->n_samples = n_samples;
 
-  if (ladspa_wrapper->get_rate() != 48000) {
-    ladspa_wrapper->create_instance(48000);
-    ladspa_wrapper->activate();
-  }
+    if (ladspa_wrapper->get_rate() != 48000) {
+      ladspa_wrapper->create_instance(48000);
+      ladspa_wrapper->activate();
+    }
 
-  resample = rate != 48000;
-  if (resample) {
-    resampler_inL = std::make_unique<Resampler>(rate, 48000);
-    resampler_inR = std::make_unique<Resampler>(rate, 48000);
-    resampler_outL = std::make_unique<Resampler>(48000, rate);
-    resampler_outR = std::make_unique<Resampler>(48000, rate);
+    resample = rate != 48000;
 
-    std::vector<float> dummy(n_samples);
-    const auto resampled_inL = resampler_inL->process(dummy, false);
-    const auto resampled_inR = resampler_inR->process(dummy, false);
-    resampled_outL.resize(resampled_inL.size());
-    resampled_outR.resize(resampled_inR.size());
-    resampler_outL->process(resampled_inL, false);
-    resampler_outR->process(resampled_inR, false);
-  }
+    if (resample) {
+      resampler_inL = std::make_unique<Resampler>(rate, 48000);
+      resampler_inR = std::make_unique<Resampler>(rate, 48000);
+      resampler_outL = std::make_unique<Resampler>(48000, rate);
+      resampler_outR = std::make_unique<Resampler>(48000, rate);
+
+      std::vector<float> dummy(n_samples);
+
+      const auto resampled_inL = resampler_inL->process(dummy, false);
+      const auto resampled_inR = resampler_inR->process(dummy, false);
+
+      resampled_outL.resize(resampled_inL.size());
+      resampled_outR.resize(resampled_inR.size());
+      resampler_outL->process(resampled_inL, false);
+      resampler_outR->process(resampled_inR, false);
+    }
+  });
 }
 
 void DeepFilterNet::process(std::span<float>& left_in,

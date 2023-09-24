@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 00:24+0000\n"
+"POT-Creation-Date: 2023-09-24 12:40-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Afrikaans <https://hosted.weblate.org/projects/easyeffects/"
@@ -182,7 +182,7 @@ msgid "Geometric Mean (SI)"
 msgstr ""
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:48
+#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:49
 msgid "Loudness"
 msgstr ""
 
@@ -572,7 +572,7 @@ msgid "Sidechain Type"
 msgstr ""
 
 #: data/ui/compressor.ui:679 data/ui/expander.ui:597 data/ui/gate.ui:798
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:689
 msgid "Input Device"
 msgstr ""
 
@@ -830,7 +830,7 @@ msgstr ""
 msgid "Reduction"
 msgstr ""
 
-#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:39
+#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:40
 msgid "Delay"
 msgstr ""
 
@@ -928,7 +928,7 @@ msgstr ""
 msgid "Ceil Value"
 msgstr ""
 
-#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:43
+#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
 msgid "Expander"
 msgstr ""
 
@@ -992,7 +992,7 @@ msgstr ""
 msgid "All-Pass"
 msgstr ""
 
-#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
+#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
 msgid "Gate"
 msgstr ""
 
@@ -1552,7 +1552,7 @@ msgstr ""
 msgid "Overlap Length"
 msgstr ""
 
-#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:52
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:53
 msgid "Pitch"
 msgstr ""
 
@@ -2157,11 +2157,11 @@ msgstr ""
 msgid "Failed To Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:676
+#: src/effects_box.cpp:260 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:696
+#: src/effects_box.cpp:283 src/plugins_box.cpp:710
 msgid "Players"
 msgstr ""
 
@@ -2209,11 +2209,11 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr ""
 
-#: src/plugins_box.cpp:628
+#: src/plugins_box.cpp:642
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:697
+#: src/plugins_box.cpp:711
 msgid "Output Device"
 msgstr ""
 
@@ -2264,58 +2264,62 @@ msgid "Crystalizer"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:38
+msgid "Deep Noise Remover"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:39
 msgid "Deesser"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:41
 msgid "Echo Canceller"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Equalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:43
 msgid "Exciter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Filter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Level Meter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Limiter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Maximizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Multiband Compressor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Multiband Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Reverberation"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Noise Reduction"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Stereo Tools"
 msgstr ""
 

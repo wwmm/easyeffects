@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 00:24+0000\n"
+"POT-Creation-Date: 2023-09-24 12:40-0300\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -181,7 +181,7 @@ msgid "Geometric Mean (SI)"
 msgstr "几何平均 (SI)"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:48
+#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:49
 msgid "Loudness"
 msgstr "响度"
 
@@ -572,7 +572,7 @@ msgid "Sidechain Type"
 msgstr "侧链类型"
 
 #: data/ui/compressor.ui:679 data/ui/expander.ui:597 data/ui/gate.ui:798
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:689
 msgid "Input Device"
 msgstr "输入设备"
 
@@ -832,7 +832,7 @@ msgstr "已侦测到"
 msgid "Reduction"
 msgstr "衰减"
 
-#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:39
+#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:40
 msgid "Delay"
 msgstr "延迟"
 
@@ -930,7 +930,7 @@ msgstr "上限"
 msgid "Ceil Value"
 msgstr "上限值"
 
-#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:43
+#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
 msgid "Expander"
 msgstr "扩展器"
 
@@ -1001,7 +1001,7 @@ msgstr "频段衰减"
 msgid "All-Pass"
 msgstr "全通"
 
-#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
+#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
 msgid "Gate"
 msgstr "门限"
 
@@ -1564,7 +1564,7 @@ msgstr "关闭窗口"
 msgid "Overlap Length"
 msgstr "重叠长度"
 
-#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:52
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:53
 msgid "Pitch"
 msgstr "音高"
 
@@ -2167,11 +2167,11 @@ msgstr "未加载脉冲文件"
 msgid "Failed To Load The Impulse File"
 msgstr "加载脉冲文件失败"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:676
+#: src/effects_box.cpp:260 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:696
+#: src/effects_box.cpp:283 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "播放器"
 
@@ -2219,11 +2219,11 @@ msgstr "删除自动加载预设"
 msgid "Output Level Meter"
 msgstr "输出电平表"
 
-#: src/plugins_box.cpp:628
+#: src/plugins_box.cpp:642
 msgid "Remove"
 msgstr "删除"
 
-#: src/plugins_box.cpp:697
+#: src/plugins_box.cpp:711
 msgid "Output Device"
 msgstr "输出设备"
 
@@ -2275,58 +2275,62 @@ msgid "Crystalizer"
 msgstr "结晶器"
 
 #: src/tags_plugin_name.cpp:38
+msgid "Deep Noise Remover"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:39
 msgid "Deesser"
 msgstr "齿音消除"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:41
 msgid "Echo Canceller"
 msgstr "回音消除"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Equalizer"
 msgstr "均衡器"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:43
 msgid "Exciter"
 msgstr "激励器"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Filter"
 msgstr "过滤器"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Level Meter"
 msgstr "电平表"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Limiter"
 msgstr "限幅器"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Multiband Compressor"
 msgstr "多频段压缩器"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Multiband Gate"
 msgstr "多频段门限"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Reverberation"
 msgstr "混响"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Noise Reduction"
 msgstr "降噪"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Speech Processor"
 msgstr "语音处理器"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Stereo Tools"
 msgstr "立体声工具"
 

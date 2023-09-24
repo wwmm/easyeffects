@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 00:24+0000\n"
+"POT-Creation-Date: 2023-09-24 12:40-0300\n"
 "PO-Revision-Date: 2023-09-10 08:54+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -180,7 +180,7 @@ msgid "Geometric Mean (SI)"
 msgstr "Media geométrica (SI)"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:48
+#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:49
 msgid "Loudness"
 msgstr "Sonoridad"
 
@@ -570,7 +570,7 @@ msgid "Sidechain Type"
 msgstr "Tipo de cadena lateral"
 
 #: data/ui/compressor.ui:679 data/ui/expander.ui:597 data/ui/gate.ui:798
-#: src/plugins_box.cpp:675
+#: src/plugins_box.cpp:689
 msgid "Input Device"
 msgstr "Dispositivo de entrada"
 
@@ -828,7 +828,7 @@ msgstr "Detectado"
 msgid "Reduction"
 msgstr "Reducción"
 
-#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:39
+#: data/ui/delay.ui:41 data/ui/delay.ui:119 src/tags_plugin_name.cpp:40
 msgid "Delay"
 msgstr "Retraso"
 
@@ -926,7 +926,7 @@ msgstr "Límite superior"
 msgid "Ceil Value"
 msgstr "Valor del límite superior"
 
-#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:43
+#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
 msgid "Expander"
 msgstr "Expansor"
 
@@ -990,7 +990,7 @@ msgstr "Reducción de banda"
 msgid "All-Pass"
 msgstr "Filtro All pass"
 
-#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:45
+#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
 msgid "Gate"
 msgstr "Puerta de ruido"
 
@@ -1553,7 +1553,7 @@ msgstr "Ventana de búsqueda"
 msgid "Overlap Length"
 msgstr "Longitud de la superposición"
 
-#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:52
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:53
 msgid "Pitch"
 msgstr "Tono"
 
@@ -2158,11 +2158,11 @@ msgstr "No se ha cargado el archivo de impulsos"
 msgid "Failed To Load The Impulse File"
 msgstr "Fallo en la carga del archivo de impulso"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:676
+#: src/effects_box.cpp:260 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Grabadores"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:696
+#: src/effects_box.cpp:283 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Reproductores"
 
@@ -2214,11 +2214,11 @@ msgstr "Eliminar perfil de carga automática"
 msgid "Output Level Meter"
 msgstr "Medidor del nivel de salida"
 
-#: src/plugins_box.cpp:628
+#: src/plugins_box.cpp:642
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/plugins_box.cpp:697
+#: src/plugins_box.cpp:711
 msgid "Output Device"
 msgstr "Dispositivo de salida"
 
@@ -2271,60 +2271,64 @@ msgid "Crystalizer"
 msgstr "Cristalizador"
 
 #: src/tags_plugin_name.cpp:38
+msgid "Deep Noise Remover"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:39
 msgid "Deesser"
 msgstr ""
 "De-essing (efecto reduce la sibilancia excesiva y se utiliza principalmente "
 "en grabaciones de voz)"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:41
 msgid "Echo Canceller"
 msgstr "Cancelación de eco"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Equalizer"
 msgstr "Ecualizador"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:43
 msgid "Exciter"
 msgstr "Excitador"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Level Meter"
 msgstr "Medidor de nivel"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Limiter"
 msgstr "Limitador"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Maximizer"
 msgstr "Maximizador"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Multiband Compressor"
 msgstr "Compresor multibanda"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Multiband Gate"
 msgstr "Puerta de ruido multibanda"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Reverberation"
 msgstr "Reverberación"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Noise Reduction"
 msgstr "Reducción de ruido"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Speech Processor"
 msgstr "Procesador de voz"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Stereo Tools"
 msgstr "Herramientas estéreo"
 
