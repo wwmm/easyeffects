@@ -152,5 +152,5 @@ void DeepFilterNet::process(std::span<float>& left_in,
 }
 
 auto DeepFilterNet::get_latency_seconds() -> float {
-  return 0.2F;
+  return 0.02F;
 }
