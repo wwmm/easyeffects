@@ -62,6 +62,7 @@ easyeffects_sources = [
 	'gate.cpp',
 	'gate_preset.cpp',
 	'gate_ui.cpp',
+	'ladspa_wrapper.cpp',
 	'level_meter.cpp',
 	'level_meter_preset.cpp',
 	'level_meter_ui.cpp',
