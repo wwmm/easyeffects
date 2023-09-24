@@ -32,6 +32,8 @@ inline constexpr auto bs2b = "bs2b";
 
 inline constexpr auto calf = "Calf Studio Gear";
 
+inline constexpr auto deepfilternet = "DeepFilterNet";
+
 inline constexpr auto ebur128 = "libebur128";
 
 inline constexpr auto ee = "Easy Effects";
@@ -67,6 +69,8 @@ inline constexpr auto convolver = "convolver";
 inline constexpr auto crossfeed = "crossfeed";
 
 inline constexpr auto crystalizer = "crystalizer";
+
+inline constexpr auto deepfilternet = "deepfilternet";
 
 inline constexpr auto deesser = "deesser";
 

@@ -277,6 +277,7 @@ auto LadspaWrapper::create_instance(uint rate) -> bool {
   h.disable();
   this->instance = new_instance;
   this->rate = rate;
+  activate();
   return true;
 }
 

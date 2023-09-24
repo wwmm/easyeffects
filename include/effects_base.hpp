@@ -27,6 +27,7 @@
 #include "convolver.hpp"
 #include "crossfeed.hpp"
 #include "crystalizer.hpp"
+#include "deepfilternet.hpp"
 #include "deesser.hpp"
 #include "delay.hpp"
 #include "echo_canceller.hpp"
@@ -74,6 +75,7 @@ class EffectsBase {
   std::shared_ptr<Convolver> convolver;
   std::shared_ptr<Crossfeed> crossfeed;
   std::shared_ptr<Crystalizer> crystalizer;
+  std::shared_ptr<DeepFilterNet> deepfilternet;
   std::shared_ptr<Deesser> deesser;
   std::shared_ptr<Delay> delay;
   std::shared_ptr<EchoCanceller> echo_canceller;

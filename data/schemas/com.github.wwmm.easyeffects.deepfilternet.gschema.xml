@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.easyeffects.deepfilternet">
+        <key name="bypass" type="b">
+            <default>false</default>
+        </key>
+        <key name="input-gain" type="d">
+            <range min="-36" max="36" />
+            <default>0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36" max="36" />
+            <default>0</default>
+        </key>
+
+        <key name="attenuation-limit" type="d">
+            <range min="0" max="100" />
+            <default>100</default>
+        </key>
+        <key name="min-processing-threshold" type="d">
+            <range min="-15" max="35" />
+            <default>-10</default>
+        </key>
+        <key name="max-erb-processing-threshold" type="d">
+            <range min="-15" max="35" />
+            <default>30</default>
+        </key>
+        <key name="max-df-processing-threshold" type="d">
+            <range min="-15" max="35" />
+            <default>20</default>
+        </key>
+        <key name="min-processing-buffer" type="i">
+            <range min="0" max="10" />
+            <default>0</default>
+        </key>
+        <key name="post-filter-beta" type="d">
+            <range min="0" max="0.05" />
+            <default>0.02</default>
+        </key>
+    </schema>
+</schemalist>

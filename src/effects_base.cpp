@@ -153,6 +153,8 @@ void EffectsBase::create_filters_if_necessary() {
       filter = std::make_shared<Crossfeed>(log_tag, tags::schema::crossfeed::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::crystalizer)) {
       filter = std::make_shared<Crystalizer>(log_tag, tags::schema::crystalizer::id, path, pm);
+    } else if (name.starts_with(tags::plugin_name::deepfilternet)) {
+      filter = std::make_shared<DeepFilterNet>(log_tag, tags::schema::deepfilternet::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::deesser)) {
       filter = std::make_shared<Deesser>(log_tag, tags::schema::deesser::id, path, pm);
     } else if (name.starts_with(tags::plugin_name::delay)) {

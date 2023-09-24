@@ -9,6 +9,7 @@ install_data([
   'schemas/com.github.wwmm.easyeffects.convolver.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.crossfeed.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.crystalizer.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.deepfilternet.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.deesser.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.delay.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.echo_canceller.gschema.xml',

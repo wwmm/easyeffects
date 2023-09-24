@@ -27,6 +27,7 @@
 #include "convolver_ui.hpp"
 #include "crossfeed_ui.hpp"
 #include "crystalizer_ui.hpp"
+#include "deepfilternet_ui.hpp"
 #include "deesser_ui.hpp"
 #include "delay_ui.hpp"
 #include "echo_canceller_ui.hpp"

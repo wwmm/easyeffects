@@ -97,6 +97,16 @@ inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/
 
 }  // namespace tags::schema::crystalizer
 
+namespace tags::schema::deepfilternet {
+
+inline constexpr auto id = "com.github.wwmm.easyeffects.deepfilternet";
+
+inline constexpr auto input_path = "/com/github/wwmm/easyeffects/streaminputs/deepfilternet/";
+
+inline constexpr auto output_path = "/com/github/wwmm/easyeffects/streamoutputs/deepfilternet/";
+
+}  // namespace tags::schema::deepfilternet
+
 namespace tags::schema::deesser {
 
 inline constexpr auto id = "com.github.wwmm.easyeffects.deesser";

@@ -63,6 +63,8 @@ inline constexpr auto crystalizer_ui = "/com/github/wwmm/easyeffects/ui/crystali
 
 inline constexpr auto crystalizer_band_ui = "/com/github/wwmm/easyeffects/ui/crystalizer_band.ui";
 
+inline constexpr auto deepfilternet_ui = "/com/github/wwmm/easyeffects/ui/deepfilternet.ui";
+
 inline constexpr auto deesser_ui = "/com/github/wwmm/easyeffects/ui/deesser.ui";
 
 inline constexpr auto delay_ui = "/com/github/wwmm/easyeffects/ui/delay.ui";

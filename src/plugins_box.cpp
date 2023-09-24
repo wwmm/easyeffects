@@ -186,6 +186,20 @@ void add_plugins_to_stack(PluginsBox* self) {
       ui::crystalizer_box::setup(box, plugin_ptr, path);
 
       gtk_stack_add_named(self->stack, GTK_WIDGET(box), name.c_str());
+    } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::deepfilternet)) {
+      auto plugin_ptr = effects_base->get_plugin_instance<DeepFilterNet>(name);
+
+      if (plugin_ptr->package_installed) {
+        auto* plugin_box = ui::deepfilternet_box::create();
+
+        ui::deepfilternet_box::setup(plugin_box, plugin_ptr, path);
+
+        box = GTK_WIDGET(plugin_box);
+      } else {
+        box = ui::missing_plugin_box(plugin_ptr->name, plugin_ptr->package);
+      }
+
+      gtk_stack_add_named(self->stack, box, name.c_str());
     } else if (GtkWidget* box = nullptr; name.starts_with(tags::plugin_name::deesser)) {
       auto plugin_ptr = effects_base->get_plugin_instance<Deesser>(name);
 

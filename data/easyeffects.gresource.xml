@@ -18,6 +18,7 @@
         <file>ui/crossfeed.ui</file>
         <file>ui/crystalizer.ui</file>
         <file>ui/crystalizer_band.ui</file>
+        <file>ui/deepfilternet.ui</file>
         <file>ui/deesser.ui</file>
         <file>ui/delay.ui</file>
         <file>ui/echo_canceller.ui</file>

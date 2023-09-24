@@ -35,6 +35,7 @@ auto get_translated() -> std::map<std::string, std::string> {
                                                    {convolver, _("Convolver")},
                                                    {crossfeed, _("Crossfeed")},
                                                    {crystalizer, _("Crystalizer")},
+                                                   {deepfilternet, _("Noise Remover")},
                                                    {deesser, _("Deesser")},
                                                    {delay, _("Delay")},
                                                    {echo_canceller, _("Echo Canceller")},
@@ -85,6 +86,10 @@ auto get_base_name(std::string_view name) -> std::string {
 
   if (name.starts_with(tags::plugin_name::crystalizer)) {
     return tags::plugin_name::crystalizer;
+  }
+
+  if (name.starts_with(tags::plugin_name::deepfilternet)) {
+    return tags::plugin_name::deepfilternet;
   }
 
   if (name.starts_with(tags::plugin_name::deesser)) {
