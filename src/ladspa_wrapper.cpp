@@ -18,125 +18,154 @@
  */
 
 #include "ladspa_wrapper.hpp"
-#include "config.h"
-#include "util.hpp"
-
-#include <algorithm>
-#include <limits>
-#include <tuple>
-#include <utility>
-
-#include <cassert>
-#include <cmath>
-#include <cstddef>
-#include <cstdlib>
-#include <cstring>
-
-#include <dlfcn.h>
-#include <math.h>
 
 namespace ladspa {
 
 using namespace std::string_literals;
 
-static inline const char* get_ladspa_path(void) {
+static inline const char* get_ladspa_path() {
   const char* path = std::getenv("LADSPA_PATH");
-  if (path == nullptr || path[0] == '\0')
+
+  if (path == nullptr || path[0] == '\0') {
     path = "/usr/local/lib/ladspa/:" LIB_DIR "/ladspa/:/usr/lib/ladspa/";
+  }
+
   return path;
 }
 
 struct dlhandle {
   dlhandle(void* handle) : dl_handle(handle) {}
+
   ~dlhandle() {
-    if (dl_handle != nullptr)
+    if (dl_handle != nullptr) {
       dlclose(dl_handle);
+    }
   }
+
   dlhandle(const dlhandle&) = delete;
   auto operator=(const dlhandle&) -> dlhandle& = delete;
-  dlhandle(dlhandle&& other) : dl_handle(std::exchange(other.dl_handle, nullptr)) {}
-  auto operator=(dlhandle&& other) -> dlhandle& {
+  dlhandle(dlhandle&& other) noexcept : dl_handle(std::exchange(other.dl_handle, nullptr)) {}
+  auto operator=(dlhandle&& other) noexcept -> dlhandle& {
     std::swap(dl_handle, other.dl_handle);
     return *this;
   }
+
   void disable() { dl_handle = nullptr; }
   void* dl_handle;
 };
 
 static inline bool validate_ports(const LADSPA_Descriptor* descriptor) {
-  unsigned long count_input = 0, count_output = 0;
+  unsigned long count_input = 0;
+  unsigned long count_output = 0;
+
   for (unsigned long i = 0; i < descriptor->PortCount; i++) {
     if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i])) {
-      if (LADSPA_IS_PORT_AUDIO(descriptor->PortDescriptors[i]))
+      if (LADSPA_IS_PORT_AUDIO(descriptor->PortDescriptors[i])) {
         return false;
+      }
     } else if (LADSPA_IS_PORT_AUDIO(descriptor->PortDescriptors[i])) {
       if (LADSPA_IS_PORT_INPUT(descriptor->PortDescriptors[i])) {
-        if (++count_input > 4)
+        if (++count_input > 4) {
           return false;
+        }
       } else if (LADSPA_IS_PORT_OUTPUT(descriptor->PortDescriptors[i])) {
-        if (++count_output > 2)
+        if (++count_output > 2) {
           return false;
+        }
       } else {
         return false;
       }
     }
   }
+
   return true;
 }
 
 LadspaWrapper::LadspaWrapper(const std::string& plugin_filename, const std::string& plugin_label)
     : plugin_name(plugin_label) {
-  const char *ladspa_path = get_ladspa_path(), *p;
+  const char* ladspa_path = get_ladspa_path();
+  const char* p = nullptr;
+
   do {
     p = std::strchr(ladspa_path, ':');
-    if (!p)
+
+    if (!p) {
       p = std::strchr(ladspa_path, '\0');
+    }
+
     std::string path(ladspa_path, p - ladspa_path);
-    if (*p == ':')
+
+    if (*p == ':') {
       p++;
-    if (path.empty() || path[path.length() - 1] != '/')
+    }
+
+    if (path.empty() || path[path.length() - 1] != '/') {
       path.push_back('/');
+    }
+
     path.append(plugin_filename);
 
     void* dl_handle = dlopen(path.c_str(), RTLD_NOW | RTLD_LOCAL);
-    if (dl_handle == nullptr)
+
+    if (dl_handle == nullptr) {
       continue;
+    }
+
     dlhandle h(dl_handle);
-    LADSPA_Descriptor_Function func = (LADSPA_Descriptor_Function)dlsym(dl_handle, "ladspa_descriptor");
-    if (func == nullptr)
+
+    auto func = (LADSPA_Descriptor_Function)dlsym(dl_handle, "ladspa_descriptor");
+
+    if (func == nullptr) {
       continue;
+    }
+
     unsigned long i = 0;
+
     const LADSPA_Descriptor* descriptor = nullptr;
+
     do {
       descriptor = func(i);
-      if (descriptor == nullptr)
+      if (descriptor == nullptr) {
         break;
-      if (std::strcmp(descriptor->Label, plugin_label.c_str()) == 0)
+      }
+
+      if (std::strcmp(descriptor->Label, plugin_label.c_str()) == 0) {
         break;
+      }
     } while (i++ < std::numeric_limits<unsigned long>::max());
+
     if (descriptor != nullptr) {
       if (descriptor->instantiate != nullptr && descriptor->connect_port != nullptr && descriptor->run != nullptr &&
           validate_ports(descriptor)) {
         unsigned long count = 0;
-        for (unsigned long i = 0; i < descriptor->PortCount; i++)
-          if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i]))
+
+        for (unsigned long i = 0; i < descriptor->PortCount; i++) {
+          if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i])) {
             count++;
-        LADSPA_Data* control_ports = new LADSPA_Data[count]();
+          }
+        }
+
+        auto* control_ports = new LADSPA_Data[count]();
+
         h.disable();
+
         this->dl_handle = dl_handle;
         this->descriptor = descriptor;
         this->found = true;
         this->control_ports = control_ports;
-        for (unsigned long i = 0, j = 0; i < descriptor->PortCount; i++)
-          if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i]))
+
+        for (unsigned long i = 0, j = 0; i < descriptor->PortCount; i++) {
+          if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i])) {
             map_cp_name_to_idx.insert(std::make_pair(descriptor->PortNames[i], j++));
+          }
+        }
       }
       break;
     }
   } while (*(ladspa_path = p) != '\0');
 }
 
-LadspaWrapper::~LadspaWrapper(void) {
+LadspaWrapper::~LadspaWrapper() {
   if (active) {
     deactivate();
   }

@@ -44,7 +44,7 @@ struct _DeepFilterNetBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *plugin_credit;
 
-  GtkScale *att_limit;
+  GtkScale* att_limit;
 
   GtkLabel *att_limit_label, *min_processing_thresh_label, *max_erb_processing_thresh_label,
       *max_df_processing_thresh_label, *min_processing_buffer_label, *post_filter_beta_label;
@@ -63,8 +63,6 @@ G_DEFINE_TYPE(DeepFilterNetBox, deepfilternet_box, GTK_TYPE_BOX)
 void on_reset(DeepFilterNetBox* self, GtkButton* btn) {
   util::reset_all_keys_except(self->settings);
 }
-
-#include <stdio.h>
 
 void setup(DeepFilterNetBox* self, std::shared_ptr<DeepFilterNet> deepfilternet, const std::string& schema_path) {
   auto serial = get_new_filter_serial();

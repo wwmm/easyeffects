@@ -21,10 +21,13 @@
 
 #include <dlfcn.h>
 #include <ladspa.h>
+#include <cassert>
+#include <cstring>
 #include <span>
 #include <string>
 #include <tuple>
 #include <unordered_map>
+#include "config.h"
 #include "string_literal_wrapper.hpp"
 #include "util.hpp"
 
