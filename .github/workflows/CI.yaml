@@ -193,6 +193,7 @@ jobs:
         soundtouch-dev
         speexdsp-dev
         zita-convolver-dev
+        ladspa-dev
         "
 
         # install easyeffects deps

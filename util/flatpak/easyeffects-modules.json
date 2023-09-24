@@ -73,6 +73,7 @@
                 "shared-modules/linux-audio/fftw3f.json",
                 "shared-modules/linux-audio/lv2.json",
                 "shared-modules/linux-audio/lilv.json",
+                "shared-modules/linux-audio/ladspa.json",
                 {
                     "name": "bs2b",
                     "rm-configure": true,

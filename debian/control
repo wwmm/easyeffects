@@ -27,6 +27,7 @@ Build-Depends:
  meson,
  nlohmann-json3-dev,
  pkg-config,
+ ladspa-sdk,
 Standards-Version: 4.6.1
 Homepage: https://github.com/wwmm/easyeffects
 
@@ -40,5 +41,6 @@ Depends:
 Recommends:
  mda-lv2,
  zam-plugins,
+ libdeep_filter_ladspa,
 Description: Audio effects for PipeWire applications
  Many sound effects for PipeWire input and output.

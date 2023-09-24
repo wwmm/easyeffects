@@ -1,0 +1,17 @@
+{
+    "name": "ladspa",
+    "no-autogen": true,
+    "subdir": "src",
+    "make-install-args": [
+        "INSTALL_PLUGINS_DIR=/app/lib/ladspa",
+        "INSTALL_INCLUDE_DIR=/app/include",
+        "INSTALL_BINARY_DIR=/app/bin"
+    ],
+    "sources": [
+        {
+            "type": "archive",
+            "url": "http://www.ladspa.org/download/ladspa_sdk_1.17.tgz",
+            "sha256": "27d24f279e4b81bd17ecbdcc38e4c42991bb388826c0b200067ce0eb59d3da5b"
+        }
+    ]
+}

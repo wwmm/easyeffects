@@ -10,7 +10,8 @@
         "--socket=wayland",
         "--device=dri",
         "--filesystem=xdg-run/pipewire-0:ro",
-        "--env=LV2_PATH=/app/lib/lv2:/app/extensions/Plugins/lv2"
+        "--env=LV2_PATH=/app/lib/lv2:/app/extensions/Plugins/lv2",
+        "--env=LADSPA_PATH=/app/lib/ladspa:/app/extensions/Plugins/ladspa"
     ],
     "cleanup": [
         "*.a",
@@ -29,7 +30,7 @@
             "directory": "extensions/Plugins",
             "version": "22.08",
             "add-ld-path": "lib",
-            "merge-dirs": "lv2",
+            "merge-dirs": "lv2;ladspa",
             "subdirectories": true,
             "no-autodownload": true
         },

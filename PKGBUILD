@@ -12,12 +12,13 @@ url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
 depends=('libadwaita' 'pipewire-pulse' 'lilv' 'libsigc++-3.0' 'libsamplerate' 'zita-convolver' 
          'libebur128' 'rnnoise' 'soundtouch' 'libbs2b' 'nlohmann-json' 'tbb' 'fmt' 'gsl' 'speexdsp')
-makedepends=('meson' 'itstool' 'appstream-glib' 'git' 'mold')
+makedepends=('meson' 'itstool' 'appstream-glib' 'git' 'mold' 'ladspa')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'
             'mda.lv2: bass loudness'
-            'yelp: in-app help')
+            'yelp: in-app help'
+            'libdeep_filter_ladspa: noise remover')
 conflicts=(easyeffects)
 provides=(easyeffects)
 replaces=('pulseeffects')
