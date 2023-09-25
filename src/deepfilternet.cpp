@@ -76,6 +76,9 @@ void DeepFilterNet::setup() {
     return;
   }
 
+  resample = rate != 48000;
+  resampler_ready = !resample;
+
   util::idle_add([&, this] {
     ladspa_wrapper->n_samples = n_samples;
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -85,9 +88,7 @@ void DeepFilterNet::setup() {
       ladspa_wrapper->activate();
     }
 
-    resample = rate != 48000;
-
-    if (resample) {
+    if (resample && !resampler_ready) {
       resampler_inL = std::make_unique<Resampler>(rate, 48000);
       resampler_inR = std::make_unique<Resampler>(rate, 48000);
       resampler_outL = std::make_unique<Resampler>(48000, rate);
@@ -102,6 +103,8 @@ void DeepFilterNet::setup() {
       resampled_outR.resize(resampled_inR.size());
       resampler_outL->process(resampled_inL, false);
       resampler_outR->process(resampled_inR, false);
+
+      resampler_ready = true;
     }
   });
 }
