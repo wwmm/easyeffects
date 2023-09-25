@@ -78,6 +78,7 @@ void DeepFilterNet::setup() {
 
   util::idle_add([&, this] {
     ladspa_wrapper->n_samples = n_samples;
+    std::scoped_lock<std::mutex> lock(data_mutex);
 
     if (ladspa_wrapper->get_rate() != 48000) {
       ladspa_wrapper->create_instance(48000);
