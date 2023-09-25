@@ -146,6 +146,7 @@ LadspaWrapper::LadspaWrapper(const std::string& plugin_filename, const std::stri
         }
 
         auto* control_ports = new LADSPA_Data[count]();
+        auto* control_ports_initialized = new bool[count]();
 
         h.disable();
 
@@ -153,6 +154,7 @@ LadspaWrapper::LadspaWrapper(const std::string& plugin_filename, const std::stri
         this->descriptor = descriptor;
         this->found = true;
         this->control_ports = control_ports;
+        this->control_ports_initialized = control_ports_initialized;
 
         for (unsigned long i = 0, j = 0; i < descriptor->PortCount; i++) {
           if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i])) {
@@ -174,6 +176,10 @@ LadspaWrapper::~LadspaWrapper() {
 
   if (instance != nullptr && descriptor->cleanup != nullptr) {
     descriptor->cleanup(instance);
+  }
+
+  if (control_ports_initialized) {
+    delete[] std::exchange(control_ports_initialized, nullptr);
   }
 
   if (control_ports) {
@@ -321,25 +327,23 @@ static inline LADSPA_Data get_port_default(const LADSPA_Descriptor* descriptor, 
   return clamp_port_value(descriptor, port, rate, val);
 }
 
-static inline void init_control_ports(const LADSPA_Descriptor* descriptor, LADSPA_Data* control_ports, uint rate) {
-  for (unsigned long i = 0, j = 0; i < descriptor->PortCount; i++) {
-    if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i])) {
-      control_ports[j++] = get_port_default(descriptor, i, rate);
-    }
-  }
-}
-
 static inline void scale_control_ports(const LADSPA_Descriptor* descriptor,
                                        LADSPA_Data* control_ports,
+                                       bool* control_ports_initialized,
                                        uint old_rate,
                                        uint rate) {
   for (unsigned long i = 0, j = 0; i < descriptor->PortCount; i++) {
     if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i])) {
-      const LADSPA_PortRangeHint* hint = &descriptor->PortRangeHints[i];
+      if (!control_ports_initialized[j]) {
+        control_ports[j] = get_port_default(descriptor, i, rate);
+        control_ports_initialized[j] = true;
+      } else if (old_rate != 0) {
+        const LADSPA_PortRangeHint* hint = &descriptor->PortRangeHints[i];
 
-      if (LADSPA_IS_HINT_SAMPLE_RATE(hint->HintDescriptor)) {
-        LADSPA_Data val = control_ports[j] * rate / old_rate;
-        control_ports[j] = clamp_port_value(descriptor, i, rate, val);
+        if (LADSPA_IS_HINT_SAMPLE_RATE(hint->HintDescriptor)) {
+          LADSPA_Data val = control_ports[j] * rate / old_rate;
+          control_ports[j] = clamp_port_value(descriptor, i, rate, val);
+        }
       }
 
       j++;
@@ -356,13 +360,7 @@ auto LadspaWrapper::create_instance(uint rate) -> bool {
 
   ladspahandle h(new_instance, descriptor->cleanup);
 
-  if (!control_ports_initialized) {
-    init_control_ports(descriptor, control_ports, rate);
-
-    control_ports_initialized = true;
-  } else {
-    scale_control_ports(descriptor, control_ports, this->rate, rate);
-  }
+  scale_control_ports(descriptor, control_ports, control_ports_initialized, this->rate, rate);
 
   for (unsigned long i = 0, j = 0; i < descriptor->PortCount; i++) {
     if (LADSPA_IS_PORT_CONTROL(descriptor->PortDescriptors[i])) {
@@ -745,6 +743,7 @@ auto LadspaWrapper::get_control_port_default(uint index) const -> float {
 
 auto LadspaWrapper::get_control_port_value(uint index) const -> float {
   assert(cp_to_port_idx(descriptor, index) != (unsigned long)-1L);
+  assert(control_ports_initialized[index]);
 
   return control_ports[index];
 }
@@ -778,6 +777,7 @@ void LadspaWrapper::set_control_port_value(uint index, float value) {
 #endif
 
   control_ports[index] = value;
+  control_ports_initialized[index] = true;
 }
 
 void LadspaWrapper::set_control_port_value(const std::string& symbol, float value) {
@@ -800,6 +800,7 @@ auto LadspaWrapper::set_control_port_value_clamp(uint index, float value) -> flo
   value = clamp_port_value(descriptor, i, rate, value);
 
   control_ports[index] = value;
+  control_ports_initialized[index] = true;
 
   return value;
 }
