@@ -127,8 +127,8 @@ void DeepFilterNet::process(std::span<float>& left_in,
   }
 
   if (resample) {
-    const auto resampled_inL = resampler_inL->process(left_in, false);
-    const auto resampled_inR = resampler_inR->process(right_in, false);
+    const auto& resampled_inL = resampler_inL->process(left_in, false);
+    const auto& resampled_inR = resampler_inR->process(right_in, false);
     ladspa_wrapper->connect_data_ports(resampled_inL, resampled_inR, resampled_outL, resampled_outR);
   } else {
     ladspa_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
@@ -137,8 +137,8 @@ void DeepFilterNet::process(std::span<float>& left_in,
   ladspa_wrapper->run();
 
   if (resample) {
-    const auto outL = resampler_outL->process(resampled_outL, false);
-    const auto outR = resampler_outR->process(resampled_outR, false);
+    const auto& outL = resampler_outL->process(resampled_outL, false);
+    const auto& outR = resampler_outR->process(resampled_outR, false);
     std::copy(outL.begin(), outL.begin() + std::min(outL.size(), left_out.size()), left_out.begin());
     std::copy(outR.begin(), outR.begin() + std::min(outR.size(), right_out.size()), right_out.begin());
   }
