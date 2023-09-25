@@ -52,4 +52,5 @@ class DeepFilterNet : public PluginBase {
   std::unique_ptr<Resampler> resampler_inL, resampler_outL;
   std::unique_ptr<Resampler> resampler_inR, resampler_outR;
   std::vector<float> resampled_outL, resampled_outR;
+  std::vector<float> carryover_l, carryover_r;
 };
