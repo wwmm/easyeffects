@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-24 12:40-0300\n"
-"PO-Revision-Date: 2023-08-14 18:49+0000\n"
+"PO-Revision-Date: 2023-09-25 06:59+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -164,6 +164,8 @@ msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"Исправлена небольшая ошибка, из-за которой порог голосовой активности "
+"шумоподавления не инициализировался должным образом."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -187,34 +189,44 @@ msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
+"В плагин шумоподавления добавлен новый элемент управления, позволяющий "
+"отключить определение голоса."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"Эффект фильтрации был расширен новыми параметрами, так как он был перенесён "
+"из Calf Studio в Linux Studio Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"Шумоподавление с помощью RNNoise было улучшено благодаря добавлению "
+"регуляторов Восстановление и Порог определения голосовой активности."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"Шумоподавление с помощью RNNoise теперь позволяет смешивать исходный и "
+"шумоочищенный сигналы, чтобы избежать слишком «сухого» звучания на выходе."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
+"Этот выпуск предназначен для работы с версиями Linux Studio Plugins «1.2.10» "
+"и выше."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
 msgid "EasyEffects is now buildable also with libc++."
-msgstr ""
+msgstr "EasyEffects теперь можно собирать и с помощью libc++."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:91
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
