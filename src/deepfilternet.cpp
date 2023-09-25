@@ -129,6 +129,9 @@ void DeepFilterNet::process(std::span<float>& left_in,
   if (resample) {
     const auto& resampled_inL = resampler_inL->process(left_in, false);
     const auto& resampled_inR = resampler_inR->process(right_in, false);
+    resampled_outL.resize(resampled_inL.size());
+    resampled_outR.resize(resampled_inR.size());
+    ladspa_wrapper->n_samples = resampled_inL.size();
     ladspa_wrapper->connect_data_ports(resampled_inL, resampled_inR, resampled_outL, resampled_outR);
   } else {
     ladspa_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
