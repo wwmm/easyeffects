@@ -214,12 +214,12 @@ class LadspaWrapper {
   LADSPA_Handle instance = nullptr;
 
   bool found = false;
-  bool control_ports_initialized = false;
   bool active = false;
 
   uint rate = 0U;
 
   LADSPA_Data* control_ports = nullptr;
+  bool* control_ports_initialized = nullptr;
 
   std::unordered_map<std::string, unsigned long> map_cp_name_to_idx = std::unordered_map<std::string, unsigned long>();
 };
