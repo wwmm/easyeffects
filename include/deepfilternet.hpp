@@ -19,16 +19,16 @@
 
 #pragma once
 
-#include "plugin_base.hpp"
 #include "ladspa_wrapper.hpp"
+#include "plugin_base.hpp"
 #include "resampler.hpp"
 
 class DeepFilterNet : public PluginBase {
  public:
   DeepFilterNet(const std::string& tag,
-               const std::string& schema,
-               const std::string& schema_path,
-               PipeManager* pipe_manager);
+                const std::string& schema,
+                const std::string& schema_path,
+                PipeManager* pipe_manager);
   DeepFilterNet(const DeepFilterNet&) = delete;
   auto operator=(const DeepFilterNet&) -> DeepFilterNet& = delete;
   DeepFilterNet(const DeepFilterNet&&) = delete;
@@ -49,8 +49,10 @@ class DeepFilterNet : public PluginBase {
 
   bool resample = false;
   bool resampler_ready = true;
+
   std::unique_ptr<Resampler> resampler_inL, resampler_outL;
   std::unique_ptr<Resampler> resampler_inR, resampler_outR;
+
   std::vector<float> resampled_outL, resampled_outR;
   std::vector<float> carryover_l, carryover_r;
 };

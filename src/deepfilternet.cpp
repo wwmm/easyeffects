@@ -31,8 +31,16 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
                  tags::plugin_package::deepfilternet,
                  schema,
                  schema_path,
-                 pipe_manager), ladspa_wrapper(), resampler_inL(), resampler_outL(), resampler_inR(), resampler_outR(),
-      resampled_outL(), resampled_outR(), carryover_l(), carryover_r() {
+                 pipe_manager),
+      ladspa_wrapper(),
+      resampler_inL(),
+      resampler_outL(),
+      resampler_inR(),
+      resampler_outR(),
+      resampled_outL(),
+      resampled_outR(),
+      carryover_l(),
+      carryover_r() {
   ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
 
   package_installed = ladspa_wrapper->found_plugin();
@@ -101,13 +109,14 @@ void DeepFilterNet::setup() {
 
       resampled_outL.resize(resampled_inL.size());
       resampled_outR.resize(resampled_inR.size());
+
       resampler_outL->process(resampled_inL, false);
       resampler_outR->process(resampled_inR, false);
 
       carryover_l.clear();
       carryover_r.clear();
-      carryover_l.reserve(4); // chosen by fair dice roll.
-      carryover_r.reserve(4); // guaranteed to be random.
+      carryover_l.reserve(4);  // chosen by fair dice roll.
+      carryover_r.reserve(4);  // guaranteed to be random.
       carryover_l.push_back(0.0F);
       carryover_r.push_back(0.0F);
 
@@ -136,8 +145,10 @@ void DeepFilterNet::process(std::span<float>& left_in,
   if (resample) {
     const auto& resampled_inL = resampler_inL->process(left_in, false);
     const auto& resampled_inR = resampler_inR->process(right_in, false);
+
     resampled_outL.resize(resampled_inL.size());
     resampled_outR.resize(resampled_inR.size());
+
     ladspa_wrapper->n_samples = resampled_inL.size();
     ladspa_wrapper->connect_data_ports(resampled_inL, resampled_inR, resampled_outL, resampled_outR);
   } else {
@@ -149,22 +160,33 @@ void DeepFilterNet::process(std::span<float>& left_in,
   if (resample) {
     const auto& outL = resampler_outL->process(resampled_outL, false);
     const auto& outR = resampler_outR->process(resampled_outR, false);
+
     auto carryover_end_l = std::min(carryover_l.size(), left_out.size());
     auto carryover_end_r = std::min(carryover_r.size(), right_out.size());
-    auto left_offset = carryover_end_l + outL.size() > left_out.size() ? carryover_end_l : left_out.size() - outL.size();
-    auto right_offset = carryover_end_r + outR.size() > right_out.size() ? carryover_end_r : right_out.size() - outR.size();
+
+    auto left_offset =
+        carryover_end_l + outL.size() > left_out.size() ? carryover_end_l : left_out.size() - outL.size();
+    auto right_offset =
+        carryover_end_r + outR.size() > right_out.size() ? carryover_end_r : right_out.size() - outR.size();
+
     auto left_count = std::min(outL.size(), left_out.size() - left_offset);
     auto right_count = std::min(outR.size(), right_out.size() - right_offset);
+
     std::copy(carryover_l.begin(), carryover_l.begin() + carryover_end_l, left_out.begin());
     std::copy(carryover_r.begin(), carryover_r.begin() + carryover_end_r, right_out.begin());
+
     carryover_l.erase(carryover_l.begin(), carryover_l.begin() + carryover_end_l);
     carryover_r.erase(carryover_r.begin(), carryover_r.begin() + carryover_end_r);
+
     std::fill(left_out.begin() + carryover_end_l, left_out.begin() + left_offset, 0);
     std::fill(right_out.begin() + carryover_end_r, right_out.begin() + right_offset, 0);
+
     std::copy(outL.begin(), outL.begin() + left_count, left_out.begin() + left_offset);
     std::copy(outR.begin(), outR.begin() + right_count, right_out.begin() + right_offset);
+
     carryover_l.insert(carryover_l.end(), outL.begin() + left_count, outL.end());
     carryover_r.insert(carryover_r.end(), outR.begin() + right_count, outR.end());
+
     std::fill(left_out.begin() + left_offset + left_count, left_out.end(), 0);
     std::fill(right_out.begin() + right_offset + right_count, right_out.end(), 0);
   }

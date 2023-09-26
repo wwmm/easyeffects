@@ -669,6 +669,7 @@ void LadspaWrapper::deactivate() {
 void LadspaWrapper::run() const {
   assert(active);
   assert(instance);
+
   descriptor->run(instance, n_samples);
 }
 

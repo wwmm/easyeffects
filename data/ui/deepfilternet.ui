@@ -18,246 +18,176 @@
                     <object class="GtkBox">
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
-                        <child>
-                            <object class="GtkGrid">
-                                <property name="halign">center</property>
-                                <property name="row-spacing">2</property>
-                                <child>
-                                    <object class="GtkLabel" id="att_limit_label">
-                                        <property name="label" translatable="yes">Attenuation Limit</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="column-span">3</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">end</property>
-                                        <property name="label" translatable="yes">0 dB</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkScale" id="att_limit">
-                                        <property name="width-request">640</property>
-                                        <property name="valign">center</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">0</property>
-                                                <property name="upper">100</property>
-                                                <property name="value">100</property>
-                                                <property name="step-increment">1</property>
-                                                <property name="page-increment">10</property>
-                                            </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">att_limit_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">start</property>
-                                        <property name="label" translatable="yes">100 dB</property>
-                                        <layout>
-                                            <property name="column">2</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
+                        <property name="valign">center</property>
 
                         <child>
-                            <object class="GtkGrid">
-                                <property name="halign">center</property>
+                            <object class="AdwPreferencesPage">
                                 <property name="valign">center</property>
-                                <property name="row-spacing">6</property>
-                                <property name="column-spacing">48</property>
-                                <property name="margin-bottom">12</property>
-                                <child>
-                                    <object class="GtkLabel" id="min_processing_thresh_label">
-                                        <property name="label" translatable="yes">Min processing threshold (dB)</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="min_processing_thresh">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">-15</property>
-                                                <property name="upper">35</property>
-                                                <property name="value">-10</property>
-                                                <property name="step-increment">0.1</property>
-                                                <property name="page-increment">1</property>
-                                            </object>
-                                        </property>
-                                        <property name="digits">1</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">min_processing_thresh_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
 
                                 <child>
-                                    <object class="GtkLabel" id="max_erb_processing_thresh_label">
-                                        <property name="label" translatable="yes">Max ERB processing threshold</property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="max_erb_processing_thresh">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">-15</property>
-                                                <property name="upper">35</property>
-                                                <property name="value">30</property>
-                                                <property name="step-increment">0.1</property>
-                                                <property name="page-increment">1</property>
-                                            </object>
-                                        </property>
-                                        <property name="digits">1</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">max_erb_processing_thresh_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
+                                    <object class="AdwPreferencesGroup">
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Attenuation Limit</property>
+                                                <property name="title-lines">2</property>
 
-                                <child>
-                                    <object class="GtkLabel" id="max_df_processing_thresh_label">
-                                        <property name="label" translatable="yes">Max DF processing threshold</property>
-                                        <layout>
-                                            <property name="column">2</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="max_df_processing_thresh">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">-15</property>
-                                                <property name="upper">35</property>
-                                                <property name="value">20</property>
-                                                <property name="step-increment">0.1</property>
-                                                <property name="page-increment">1</property>
+                                                <child>
+                                                    <object class="GtkScale" id="att_limit">
+                                                        <property name="hexpand">1</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="draw-value">1</property>
+                                                        <property name="digits">0</property>
+                                                        <property name="value-pos">right</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">0</property>
+                                                                <property name="upper">100</property>
+                                                                <property name="value">100</property>
+                                                                <property name="step-increment">1</property>
+                                                                <property name="page-increment">10</property>
+                                                            </object>
+                                                        </property>
+                                                        <accessibility>
+                                                            <property name="label">Attenuation Limit</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <property name="digits">1</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <layout>
-                                            <property name="column">2</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">max_df_processing_thresh_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
+                                        </child>
 
-                                <child>
-                                    <object class="GtkLabel" id="min_processing_buffer_label">
-                                        <property name="label" translatable="yes">Min Processing Buffer</property>
-                                        <layout>
-                                            <property name="column">3</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="min_processing_buffer">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">0</property>
-                                                <property name="upper">10</property>
-                                                <property name="value">0</property>
-                                                <property name="step-increment">1</property>
-                                                <property name="page-increment">1</property>
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Minimum Processing Threshold</property>
+                                                <property name="title-lines">2</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="min_processing_thresh">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">-15</property>
+                                                                <property name="upper">35</property>
+                                                                <property name="value">-10</property>
+                                                                <property name="step-increment">0.1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <accessibility>
+                                                            <property name="label">Minimum Processing Threshold</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <property name="update-policy">if-valid</property>
-                                        <layout>
-                                            <property name="column">3</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">min_processing_buffer_label</relation>
-                                        </accessibility>
-                                    </object>
-                                </child>
+                                        </child>
 
-                                <child>
-                                    <object class="GtkLabel" id="post_filter_beta_label">
-                                        <property name="label" translatable="yes">Post Filter Beta</property>
-                                        <layout>
-                                            <property name="column">4</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="post_filter_beta">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">2</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">0</property>
-                                                <property name="upper">0.05</property>
-                                                <property name="value">0.02</property>
-                                                <property name="step-increment">0.01</property>
-                                                <property name="page-increment">0.01</property>
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Maximum ERB Processing threshold</property>
+                                                <property name="title-lines">2</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="max_erb_processing_thresh">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">-15</property>
+                                                                <property name="upper">35</property>
+                                                                <property name="value">30</property>
+                                                                <property name="step-increment">0.1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <accessibility>
+                                                            <property name="label">Maximum ERB Processing Threshold</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
                                             </object>
-                                        </property>
-                                        <property name="update-policy">if-valid</property>
-                                        <layout>
-                                            <property name="column">4</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <relation name="labelled-by">post_filter_beta_label</relation>
-                                        </accessibility>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Maximum DF Processing Threshold</property>
+                                                <property name="title-lines">2</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="max_df_processing_thresh">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">-15</property>
+                                                                <property name="upper">35</property>
+                                                                <property name="value">20</property>
+                                                                <property name="step-increment">0.1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
+                                                        <property name="digits">1</property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <accessibility>
+                                                            <property name="label">Maximum DF Processing Threshold</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Minimum Processing Buffer</property>
+                                                <property name="title-lines">2</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="min_processing_buffer">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">0</property>
+                                                                <property name="upper">10</property>
+                                                                <property name="value">0</property>
+                                                                <property name="step-increment">1</property>
+                                                                <property name="page-increment">1</property>
+                                                            </object>
+                                                        </property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <accessibility>
+                                                            <property name="label">Minimum Processing Buffer</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Post Filter Beta</property>
+                                                <property name="title-lines">2</property>
+                                                <child>
+                                                    <object class="GtkSpinButton" id="post_filter_beta">
+                                                        <property name="valign">center</property>
+                                                        <property name="width-chars">10</property>
+                                                        <property name="digits">2</property>
+                                                        <property name="adjustment">
+                                                            <object class="GtkAdjustment">
+                                                                <property name="lower">0</property>
+                                                                <property name="upper">0.05</property>
+                                                                <property name="value">0.02</property>
+                                                                <property name="step-increment">0.01</property>
+                                                                <property name="page-increment">0.01</property>
+                                                            </object>
+                                                        </property>
+                                                        <property name="update-policy">if-valid</property>
+                                                        <accessibility>
+                                                            <property name="label">Post Filter Beta</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
                             </object>
@@ -439,8 +369,7 @@
 
                                 <!-- Empty placeholder used only for layout reason -->
                                 <child>
-                                    <object class="GtkLabel">
-                                    </object>
+                                    <object class="GtkLabel"> </object>
                                 </child>
 
                                 <child>
