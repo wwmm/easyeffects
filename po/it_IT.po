@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-26 12:40-0300\n"
-"PO-Revision-Date: 2023-08-30 23:55+0000\n"
+"PO-Revision-Date: 2023-09-27 06:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -2274,7 +2274,7 @@ msgstr "Crystalizer"
 
 #: src/tags_plugin_name.cpp:38
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "Rimozione Rumore Profondo"
 
 #: src/tags_plugin_name.cpp:39
 msgid "Deesser"
