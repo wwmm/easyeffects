@@ -62,13 +62,14 @@ class LadspaWrapper {
 
   void run() const;
 
-  auto get_control_port_count() const -> uint;
-  auto get_control_port_name(uint index) const -> std::string;
-  auto is_control_port_output(uint index) const -> bool;
-  auto get_control_port_range(uint index) const -> std::tuple<float, float>;
-  auto get_control_port_default(uint index) const -> float;
-  auto get_control_port_value(uint index) const -> float;
-  auto get_control_port_value(const std::string& symbol) const -> float;
+  [[nodiscard]] auto get_control_port_count() const -> uint;
+  [[nodiscard]] auto get_control_port_name(uint index) const -> std::string;
+  [[nodiscard]] auto is_control_port_output(uint index) const -> bool;
+  [[nodiscard]] auto get_control_port_range(uint index) const -> std::tuple<float, float>;
+  [[nodiscard]] auto get_control_port_default(uint index) const -> float;
+  [[nodiscard]] auto get_control_port_value(uint index) const -> float;
+  [[nodiscard]] auto get_control_port_value(const std::string& symbol) const -> float;
+
   void set_control_port_value(uint index, float value);
   void set_control_port_value(const std::string& symbol, float value);
   auto set_control_port_value_clamp(uint index, float value) -> float;
