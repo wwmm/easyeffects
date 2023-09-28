@@ -172,7 +172,15 @@ void set_margin(Chart* self, const float& v) {
 }
 
 auto get_is_visible(Chart* self) -> bool {
-  return (self->data != nullptr) ? self->data->is_visible : false;
+  if (self == nullptr) {
+    return false;
+  }
+
+  if (self->data == nullptr) {
+    return false;
+  }
+
+  return self->data->is_visible;
 }
 
 void set_x_data(Chart* self, const std::vector<double>& x) {

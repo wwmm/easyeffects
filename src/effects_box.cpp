@@ -351,6 +351,10 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   self->data->connections.push_back(
       self->data->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<double> magnitudes) {
+        if (self == nullptr) {
+          return;
+        }
+
         if (!ui::chart::get_is_visible(self->spectrum_chart)) {
           return;
         }

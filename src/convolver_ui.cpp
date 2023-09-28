@@ -304,6 +304,10 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   }
 
   util::idle_add([=]() {
+    if (self == nullptr) {
+      return;
+    }
+
     if (!ui::chart::get_is_visible(self->chart)) {
       return;
     }
@@ -338,6 +342,10 @@ void get_irs_info(ConvolverBox* self) {
     // warning the user that there is a problem
 
     util::idle_add([=]() {
+      if (self == nullptr) {
+        return;
+      }
+
       if (!ui::chart::get_is_visible(self->chart)) {
         return;
       }
@@ -412,6 +420,10 @@ void get_irs_info(ConvolverBox* self) {
   auto n_samples = kernel_L.size();
 
   util::idle_add([=]() {
+    if (self == nullptr) {
+      return;
+    }
+
     if (!ui::chart::get_is_visible(self->chart)) {
       return;
     }
