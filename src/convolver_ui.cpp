@@ -122,7 +122,7 @@ void plot_fft(ConvolverBox* self) {
 }
 
 void plot_waveform(ConvolverBox* self) {
-  if (self->data->time_axis.empty() || self->data->left_spectrum.empty() || self->data->right_spectrum.empty()) {
+  if (self->data->time_axis.empty() || self->data->left_mag.empty() || self->data->right_mag.empty()) {
     return;
   }
 
