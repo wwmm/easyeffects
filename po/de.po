@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-26 12:40-0300\n"
+"POT-Creation-Date: 2023-09-28 16:55+0000\n"
 "PO-Revision-Date: 2023-07-30 08:05+0000\n"
 "Last-Translator: Simon Hahne <simonhahne@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2171,11 +2171,11 @@ msgstr "Impuls laden"
 msgid "Remove Impulse"
 msgstr "Impuls entfernen"
 
-#: src/convolver_ui.cpp:326
+#: src/convolver_ui.cpp:330
 msgid "No Impulse File Loaded"
 msgstr "Keine Impulsdatei geladen"
 
-#: src/convolver_ui.cpp:348
+#: src/convolver_ui.cpp:356
 msgid "Failed To Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 

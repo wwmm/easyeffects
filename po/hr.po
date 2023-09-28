@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-26 12:40-0300\n"
+"POT-Creation-Date: 2023-09-28 16:55+0000\n"
 "PO-Revision-Date: 2023-05-01 06:52+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2366,12 +2366,12 @@ msgstr "Reakcija impulsa"
 msgid "Remove Impulse"
 msgstr "Učitaj impuls"
 
-#: src/convolver_ui.cpp:326
+#: src/convolver_ui.cpp:330
 #, fuzzy
 msgid "No Impulse File Loaded"
 msgstr "Učitaj impuls datoteku"
 
-#: src/convolver_ui.cpp:348
+#: src/convolver_ui.cpp:356
 #, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
