@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-26 12:40-0300\n"
+"POT-Creation-Date: 2023-09-28 16:55+0000\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -2298,12 +2298,12 @@ msgstr "Importar Archivo Impulse"
 msgid "Remove Impulse"
 msgstr "Importar Archivo Impulse"
 
-#: src/convolver_ui.cpp:326
+#: src/convolver_ui.cpp:330
 #, fuzzy
 msgid "No Impulse File Loaded"
 msgstr "Importar Archivo Impulse"
 
-#: src/convolver_ui.cpp:348
+#: src/convolver_ui.cpp:356
 #, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "No se pudo encontrar el archivo Impulse"

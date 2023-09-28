@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-26 12:40-0300\n"
+"POT-Creation-Date: 2023-09-28 16:55+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2150,11 +2150,11 @@ msgstr ""
 msgid "Remove Impulse"
 msgstr ""
 
-#: src/convolver_ui.cpp:326
+#: src/convolver_ui.cpp:330
 msgid "No Impulse File Loaded"
 msgstr ""
 
-#: src/convolver_ui.cpp:348
+#: src/convolver_ui.cpp:356
 msgid "Failed To Load The Impulse File"
 msgstr ""
 
