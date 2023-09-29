@@ -65,7 +65,8 @@ endif
 if get_option('enable-mold')
   # mold 1.11.0 or later needed due to https://github.com/rui314/mold/issues/1017
   status += 'Using mold linker, so make sure mold 1.11.0 or later is installed on your system.'
-  link_args = ['-fuse-ld=mold']
+  # --no-as-needed temporarily necessary due to the seeming return of https://github.com/rui314/mold/issues/1017
+  link_args = ['-fuse-ld=mold', '-Wl,--no-as-needed']
 else
   link_args = []
 endif
