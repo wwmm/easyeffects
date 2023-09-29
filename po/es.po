@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-28 16:55+0000\n"
-"PO-Revision-Date: 2023-09-25 07:59+0000\n"
+"PO-Revision-Date: 2023-09-29 06:00+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -284,7 +284,7 @@ msgstr "Perfil"
 
 #: data/ui/autoload_row.ui:89
 msgid "Preset"
-msgstr "Perfil"
+msgstr "Preestablecido"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
@@ -318,7 +318,7 @@ msgstr "Harmónicos"
 
 #: data/ui/bass_enhancer.ui:177 data/ui/exciter.ui:177
 msgid "Scope"
-msgstr "Umbral"
+msgstr "Alcance"
 
 #: data/ui/bass_enhancer.ui:211
 msgid "Floor"
@@ -380,7 +380,7 @@ msgstr "Ascendente"
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:103
 msgid "Boosting"
-msgstr "Refuerzo"
+msgstr "Impulsar"
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:88
 msgid "Compression Mode"
@@ -726,7 +726,7 @@ msgstr "Nombre del núcleo combinado"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr "Importar archivo de respuesta a impulsos"
+msgstr "Impulso de la importación"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
