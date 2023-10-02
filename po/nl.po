@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-28 16:55+0000\n"
+"POT-Creation-Date: 2023-10-02 00:26+0000\n"
 "PO-Revision-Date: 2023-09-23 08:02+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2150,11 +2150,11 @@ msgstr "Impuls laden"
 msgid "Remove Impulse"
 msgstr "Impuls verwijderen"
 
-#: src/convolver_ui.cpp:330 src/convolver_ui.cpp:326
+#: src/convolver_ui.cpp:330
 msgid "No Impulse File Loaded"
 msgstr "Geen impulsbestand geladen"
 
-#: src/convolver_ui.cpp:356 src/convolver_ui.cpp:348
+#: src/convolver_ui.cpp:356
 msgid "Failed To Load The Impulse File"
 msgstr "Impulsbestand laden mislukt"
 
@@ -2332,10 +2332,12 @@ msgstr "Stereobediening"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
+#, c++-format
 msgid "{} Not Available"
 msgstr "{} is niet beschikbaar"
 
 #: src/ui_helpers.cpp:73
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2345,6 +2347,7 @@ msgstr ""
 "handmatig te installeren."
 
 #: src/ui_helpers.cpp:79
+#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2362,6 +2365,7 @@ msgstr "- ∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
+#, c++-format
 msgid "Using {}"
 msgstr "{} wordt gebruikt"
 
