@@ -128,6 +128,15 @@ easyeffects_sources = [
 	gresources
 ]
 
+cc = meson.get_compiler('c')
+
+# apparantly this is not available as a standard dependency
+have_ladspa = cc.has_header('ladspa.h')
+
+if not have_ladspa
+	error('Dependency "ladspa" not found, tried looking for ladspa.h')
+endif
+
 cxx = meson.get_compiler('cpp')
 
 zita_convolver = cxx.find_library('zita-convolver', required: true)
