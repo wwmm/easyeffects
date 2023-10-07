@@ -284,9 +284,9 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 
   std::copy(log_axis.begin(), log_axis.end(), freq_axis.begin());
 
-  self->data->freq_axis = freq_axis;
   self->data->left_spectrum = interpolate(self->data->freq_axis, self->data->left_spectrum, freq_axis);
   self->data->right_spectrum = interpolate(self->data->freq_axis, self->data->right_spectrum, freq_axis);
+  self->data->freq_axis = freq_axis;  // it has to be after the two previous lines
 
   // find min and max values
 
@@ -391,9 +391,9 @@ void get_irs_info(ConvolverBox* self) {
 
   std::copy(x_linear.begin(), x_linear.end(), x_axis.begin());
 
-  self->data->time_axis = x_axis;
   self->data->left_mag = interpolate(self->data->time_axis, self->data->left_mag, x_axis);
   self->data->right_mag = interpolate(self->data->time_axis, self->data->right_mag, x_axis);
+  self->data->time_axis = x_axis;  // it has to be after the two previous lines
 
   self->data->time_axis.shrink_to_fit();
   self->data->left_mag.shrink_to_fit();
