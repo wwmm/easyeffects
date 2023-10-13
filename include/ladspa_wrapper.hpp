@@ -79,58 +79,85 @@ class LadspaWrapper {
   [[nodiscard]] auto has_instance() const -> bool { return instance != nullptr; }
   [[nodiscard]] auto get_rate() const -> uint { return rate; }
 
-#define set_from_gsettings(this, settings, setting_name, setting_type, val_type, port_name)           \
-  do {                                                                                                \
-    float value = static_cast<float>(g_settings_get_##setting_type((settings), (setting_name)));      \
-    float actual_value = (this)->set_control_port_value_clamp((port_name), value);                    \
-    if (actual_value != value && !(std::isnan(actual_value) && std::isnan(value)))                    \
-      g_settings_set_##setting_type((settings), (setting_name), static_cast<val_type>(actual_value)); \
-  } while (0)
+  using genum = gint;
+
+  template <typename T>
+  void load_from_gsettings(GSettings* settings, const char* gkey, const char* port_name) {
+    float value = 0.0F;
+
+    if constexpr (std::is_same_v<T, double>) {
+      value = static_cast<float>(g_settings_get_double(settings, gkey));
+    } else if constexpr (std::is_same_v<T, int>) {
+      value = static_cast<float>(g_settings_get_int(settings, gkey));
+    } else if constexpr (std::is_same_v<T, bool>) {
+      value = static_cast<float>(g_settings_get_boolean(settings, gkey));
+    } else if constexpr (std::is_same_v<T, genum>) {
+      value = static_cast<float>(g_settings_get_enum(settings, gkey));
+    }
+
+    float actual_value = set_control_port_value_clamp(port_name, value);
+
+    if (actual_value != value && !(std::isnan(actual_value) && std::isnan(value))) {
+      if constexpr (std::is_same_v<T, double>) {
+        g_settings_set_double(settings, gkey, static_cast<double>(actual_value));
+      } else if constexpr (std::is_same_v<T, int>) {
+        g_settings_set_int(settings, gkey, static_cast<int>(actual_value));
+      } else if constexpr (std::is_same_v<T, bool>) {
+        g_settings_set_boolean(settings, gkey, static_cast<gboolean>(actual_value));
+      } else if constexpr (std::is_same_v<T, genum>) {
+        g_settings_set_enum(settings, gkey, static_cast<genum>(actual_value));
+      }
+    }
+  }
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_bool(GSettings* settings) {
-    set_from_gsettings(this, settings, gkey_wrapper.msg.data(), boolean, gboolean, key_wrapper.msg.data());
+    load_from_gsettings<bool>(settings, gkey_wrapper.msg.data(), key_wrapper.msg.data());
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto* self = static_cast<LadspaWrapper*>(user_data);
-                       set_from_gsettings(self, settings, key, boolean, gboolean, key_wrapper.msg.data());
+
+                       self->load_from_gsettings<bool>(settings, gkey_wrapper.msg.data(), key_wrapper.msg.data());
                      }),
                      this);
   }
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_enum(GSettings* settings) {
-    set_from_gsettings(this, settings, gkey_wrapper.msg.data(), enum, gint, key_wrapper.msg.data());
+    load_from_gsettings<genum>(settings, gkey_wrapper.msg.data(), key_wrapper.msg.data());
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto* self = static_cast<LadspaWrapper*>(user_data);
-                       set_from_gsettings(self, settings, key, enum, gint, key_wrapper.msg.data());
+
+                       self->load_from_gsettings<genum>(settings, gkey_wrapper.msg.data(), key_wrapper.msg.data());
                      }),
                      this);
   }
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_int(GSettings* settings) {
-    set_from_gsettings(this, settings, gkey_wrapper.msg.data(), int, gint, key_wrapper.msg.data());
+    load_from_gsettings<int>(settings, gkey_wrapper.msg.data(), key_wrapper.msg.data());
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto* self = static_cast<LadspaWrapper*>(user_data);
-                       set_from_gsettings(self, settings, key, int, gint, key_wrapper.msg.data());
+
+                       self->load_from_gsettings<int>(settings, gkey_wrapper.msg.data(), key_wrapper.msg.data());
                      }),
                      this);
   }
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   void bind_key_double(GSettings* settings) {
-    set_from_gsettings(this, settings, gkey_wrapper.msg.data(), double, gdouble, key_wrapper.msg.data());
+    load_from_gsettings<double>(settings, gkey_wrapper.msg.data(), key_wrapper.msg.data());
 
     g_signal_connect(settings, ("changed::"s + gkey_wrapper.msg.data()).c_str(),
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto* self = static_cast<LadspaWrapper*>(user_data);
-                       set_from_gsettings(self, settings, key, double, gdouble, key_wrapper.msg.data());
+
+                       self->load_from_gsettings<double>(settings, gkey_wrapper.msg.data(), key_wrapper.msg.data());
                      }),
                      this);
   }
@@ -200,8 +227,6 @@ class LadspaWrapper {
                      }),
                      this);
   }
-
-#undef set_from_gsettings
 
   uint n_samples = 0U;
 
