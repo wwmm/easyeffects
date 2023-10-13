@@ -761,38 +761,6 @@ auto LadspaWrapper::get_control_port_value(const std::string& symbol) const -> f
   return get_control_port_value((uint)iter->second);
 }
 
-void LadspaWrapper::set_control_port_value(uint index, float value) {
-  assert(index < descriptor->PortCount);
-
-#ifndef NDEBUG
-  unsigned long i = cp_to_port_idx(descriptor, index);
-
-  assert(i != (unsigned long)-1L);
-
-  LADSPA_Data min = 0.0F;
-  LADSPA_Data max = 0.0F;
-
-  get_port_bounds(descriptor, i, rate, min, max);
-
-  assert(!(value < min || value > max));
-#endif
-
-  control_ports[index] = value;
-  control_ports_initialized[index] = true;
-}
-
-void LadspaWrapper::set_control_port_value(const std::string& symbol, float value) {
-  auto iter = map_cp_name_to_idx.find(symbol);
-
-  if (iter == map_cp_name_to_idx.end()) {
-    util::warning(plugin_name + " port symbol not found: " + symbol);
-
-    return;
-  }
-
-  set_control_port_value((uint)iter->second, value);
-}
-
 auto LadspaWrapper::set_control_port_value_clamp(uint index, float value) -> float {
   unsigned long i = cp_to_port_idx(descriptor, index);
 

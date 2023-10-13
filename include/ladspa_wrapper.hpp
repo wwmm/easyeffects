@@ -70,8 +70,6 @@ class LadspaWrapper {
   [[nodiscard]] auto get_control_port_value(uint index) const -> float;
   [[nodiscard]] auto get_control_port_value(const std::string& symbol) const -> float;
 
-  void set_control_port_value(uint index, float value);
-  void set_control_port_value(const std::string& symbol, float value);
   auto set_control_port_value_clamp(uint index, float value) -> float;
   auto set_control_port_value_clamp(const std::string& symbol, float value) -> float;
 
