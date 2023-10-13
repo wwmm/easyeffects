@@ -31,16 +31,7 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
                  tags::plugin_package::deepfilternet,
                  schema,
                  schema_path,
-                 pipe_manager),
-      ladspa_wrapper(),
-      resampler_inL(),
-      resampler_outL(),
-      resampler_inR(),
-      resampler_outR(),
-      resampled_outL(),
-      resampled_outR(),
-      carryover_l(),
-      carryover_r() {
+                 pipe_manager) {
   ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
 
   package_installed = ladspa_wrapper->found_plugin();
