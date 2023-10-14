@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-05 14:16+0000\n"
+"POT-Creation-Date: 2023-10-14 11:50-0300\n"
 "PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Daniel Svindseth <daniel@svindseth.net>\n"
 "Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
@@ -1723,27 +1723,31 @@ msgstr ""
 msgid "Rounded Corners"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:156
+#: data/ui/preferences_spectrum.ui:154
+msgid "Dynamic Scale"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:168
 msgid "Color"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:159
+#: data/ui/preferences_spectrum.ui:171
 msgid "Lines and Bars"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:177
+#: data/ui/preferences_spectrum.ui:189
 msgid "Axis Labels"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:197
+#: data/ui/preferences_spectrum.ui:209
 msgid "Frequency Range"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:200
+#: data/ui/preferences_spectrum.ui:212
 msgid "Minimum"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:223
+#: data/ui/preferences_spectrum.ui:235
 msgid "Maximum"
 msgstr ""
 
@@ -2158,15 +2162,15 @@ msgstr ""
 msgid "Failed To Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:690
+#: src/effects_box.cpp:270 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:710
+#: src/effects_box.cpp:293 src/plugins_box.cpp:710
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:316
 msgid "Effects"
 msgstr ""
 

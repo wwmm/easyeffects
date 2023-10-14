@@ -4,7 +4,7 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- The spectrum has a new option that allows the dynamic vertical scale to be disabled.
 
 - Bug fixes∶
 - Fixed an incorrect drawing of the impulse response file characteristics

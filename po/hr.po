@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-05 14:16+0000\n"
+"POT-Creation-Date: 2023-10-14 11:50-0300\n"
 "PO-Revision-Date: 2023-05-01 06:52+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1895,27 +1895,31 @@ msgstr "Prikaži konture traka"
 msgid "Rounded Corners"
 msgstr "Zaobljeni kutovi"
 
-#: data/ui/preferences_spectrum.ui:156
+#: data/ui/preferences_spectrum.ui:154
+msgid "Dynamic Scale"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:168
 msgid "Color"
 msgstr "Boja"
 
-#: data/ui/preferences_spectrum.ui:159
+#: data/ui/preferences_spectrum.ui:171
 msgid "Lines and Bars"
 msgstr "Linije i trake"
 
-#: data/ui/preferences_spectrum.ui:177
+#: data/ui/preferences_spectrum.ui:189
 msgid "Axis Labels"
 msgstr "Oznake osi"
 
-#: data/ui/preferences_spectrum.ui:197
+#: data/ui/preferences_spectrum.ui:209
 msgid "Frequency Range"
 msgstr "Raspon frekvencije"
 
-#: data/ui/preferences_spectrum.ui:200
+#: data/ui/preferences_spectrum.ui:212
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:223
+#: data/ui/preferences_spectrum.ui:235
 msgid "Maximum"
 msgstr "Maksimum"
 
@@ -2376,15 +2380,15 @@ msgstr "Učitaj impuls datoteku"
 msgid "Failed To Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:690
+#: src/effects_box.cpp:270 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:710
+#: src/effects_box.cpp:293 src/plugins_box.cpp:710
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:316
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"

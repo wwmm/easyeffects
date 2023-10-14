@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-05 14:16+0000\n"
+"POT-Creation-Date: 2023-10-14 11:50-0300\n"
 "PO-Revision-Date: 2023-07-30 08:05+0000\n"
 "Last-Translator: Simon Hahne <simonhahne@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1739,27 +1739,31 @@ msgstr "Balkenbegrenzung anzeigen"
 msgid "Rounded Corners"
 msgstr "Abgerundete Ecken"
 
-#: data/ui/preferences_spectrum.ui:156
+#: data/ui/preferences_spectrum.ui:154
+msgid "Dynamic Scale"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:168
 msgid "Color"
 msgstr "Farbe"
 
-#: data/ui/preferences_spectrum.ui:159
+#: data/ui/preferences_spectrum.ui:171
 msgid "Lines and Bars"
 msgstr "Linien und Leisten"
 
-#: data/ui/preferences_spectrum.ui:177
+#: data/ui/preferences_spectrum.ui:189
 msgid "Axis Labels"
 msgstr "Achsentitel"
 
-#: data/ui/preferences_spectrum.ui:197
+#: data/ui/preferences_spectrum.ui:209
 msgid "Frequency Range"
 msgstr "Frequenzspanne"
 
-#: data/ui/preferences_spectrum.ui:200
+#: data/ui/preferences_spectrum.ui:212
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:223
+#: data/ui/preferences_spectrum.ui:235
 msgid "Maximum"
 msgstr "Maximum"
 
@@ -2179,15 +2183,15 @@ msgstr "Keine Impulsdatei geladen"
 msgid "Failed To Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:690
+#: src/effects_box.cpp:270 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Rekorder"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:710
+#: src/effects_box.cpp:293 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Spieler"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:316
 msgid "Effects"
 msgstr "Effekte"
 

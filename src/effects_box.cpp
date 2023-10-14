@@ -119,6 +119,9 @@ void setup_spectrum(EffectsBox* self) {
 
   ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, "fill") != 0);
 
+  ui::chart::set_dynamic_y_scale(self->spectrum_chart,
+                                 g_settings_get_boolean(self->settings_spectrum, "dynamic-y-scale") != 0);
+
   ui::chart::set_rounded_corners(self->spectrum_chart,
                                  g_settings_get_boolean(self->settings_spectrum, "rounded-corners") != 0);
 
@@ -169,6 +172,13 @@ void setup_spectrum(EffectsBox* self) {
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::fill", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
         ui::chart::set_fill_bars(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
+      }),
+      self));
+
+  self->data->gconnections_spectrum.push_back(g_signal_connect(
+      self->settings_spectrum, "changed::dynamic-y-scale",
+      G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
+        ui::chart::set_dynamic_y_scale(self->spectrum_chart, g_settings_get_boolean(self->settings_spectrum, key) != 0);
       }),
       self));
 

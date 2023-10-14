@@ -81,6 +81,8 @@ void set_margin(Chart* self, const float& v);
 
 auto get_is_visible(Chart* self) -> bool;
 
+void set_dynamic_y_scale(Chart* self, const bool& v);
+
 auto create() -> Chart*;
 
 }  // namespace ui::chart

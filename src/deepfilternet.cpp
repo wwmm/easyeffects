@@ -19,9 +19,6 @@
 
 #include "deepfilternet.hpp"
 
-// #include <algorithm>
-// #include <string>
-
 DeepFilterNet::DeepFilterNet(const std::string& tag,
                              const std::string& schema,
                              const std::string& schema_path,

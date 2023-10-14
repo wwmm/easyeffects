@@ -18,6 +18,9 @@
         <key name="rounded-corners" type="b">
             <default>false</default>
         </key>
+        <key name="dynamic-y-scale" type="b">
+            <default>true</default>
+        </key>
         <key name="n-points" type="i">
             <range min="2" max="2048" />
             <default>100</default>

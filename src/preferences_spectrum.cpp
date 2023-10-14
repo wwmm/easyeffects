@@ -31,7 +31,7 @@ struct Data {
 struct _PreferencesSpectrum {
   AdwPreferencesPage parent_instance;
 
-  GtkSwitch *show, *fill, *show_bar_border, *rounded_corners;
+  GtkSwitch *show, *fill, *show_bar_border, *rounded_corners, *dynamic_y_scale;
 
   GtkColorDialogButton *color_button, *axis_color_button;
 
@@ -102,6 +102,7 @@ void preferences_spectrum_class_init(PreferencesSpectrumClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, height);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, show_bar_border);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, rounded_corners);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, dynamic_y_scale);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, color_button);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, axis_color_button);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, minimum_frequency);
@@ -178,21 +179,10 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
 
   // spectrum section gsettings bindings
 
-  g_settings_bind(self->settings, "show", self->show, "active", G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "fill", self->fill, "active", G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "rounded-corners", self->rounded_corners, "active", G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "show-bar-border", self->show_bar_border, "active", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "n-points", gtk_spin_button_get_adjustment(self->n_points), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "height", gtk_spin_button_get_adjustment(self->height), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "line-width", gtk_spin_button_get_adjustment(self->line_width), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "minimum-frequency", gtk_spin_button_get_adjustment(self->minimum_frequency), "value",
-                  G_SETTINGS_BIND_DEFAULT);
-  g_settings_bind(self->settings, "maximum-frequency", gtk_spin_button_get_adjustment(self->maximum_frequency), "value",
-                  G_SETTINGS_BIND_DEFAULT);
+  gsettings_bind_widgets<"show", "fill", "rounded-corners", "show-bar-border", "dynamic-y-scale", "n-points", "height",
+                         "line-width", "minimum-frequency", "maximum-frequency">(
+      self->settings, self->show, self->fill, self->rounded_corners, self->show_bar_border, self->dynamic_y_scale,
+      self->n_points, self->height, self->line_width, self->minimum_frequency, self->maximum_frequency);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "type", self->type);
 

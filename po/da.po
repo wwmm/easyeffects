@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-05 14:16+0000\n"
+"POT-Creation-Date: 2023-10-14 11:50-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1768,27 +1768,31 @@ msgstr "Vis Bjælkerammer"
 msgid "Rounded Corners"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:156
+#: data/ui/preferences_spectrum.ui:154
+msgid "Dynamic Scale"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:168
 msgid "Color"
 msgstr "Farve"
 
-#: data/ui/preferences_spectrum.ui:159
+#: data/ui/preferences_spectrum.ui:171
 msgid "Lines and Bars"
 msgstr "Linjer og Bjælker"
 
-#: data/ui/preferences_spectrum.ui:177
+#: data/ui/preferences_spectrum.ui:189
 msgid "Axis Labels"
 msgstr "Etiketter på akserne"
 
-#: data/ui/preferences_spectrum.ui:197
+#: data/ui/preferences_spectrum.ui:209
 msgid "Frequency Range"
 msgstr "Frekvens Rækkevidde"
 
-#: data/ui/preferences_spectrum.ui:200
+#: data/ui/preferences_spectrum.ui:212
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:223
+#: data/ui/preferences_spectrum.ui:235
 msgid "Maximum"
 msgstr "Maksimum"
 
@@ -2225,15 +2229,15 @@ msgstr "Impulsfiler liste"
 msgid "Failed To Load The Impulse File"
 msgstr "Kunne Ikke Indlæse Impulsfilen"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:690
+#: src/effects_box.cpp:270 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Optagere"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:710
+#: src/effects_box.cpp:293 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Spillere"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:316
 #, fuzzy
 msgid "Effects"
 msgstr "Easyeffects"

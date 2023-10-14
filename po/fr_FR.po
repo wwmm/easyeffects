@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-05 14:16+0000\n"
+"POT-Creation-Date: 2023-10-14 11:50-0300\n"
 "PO-Revision-Date: 2023-09-26 14:02+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1722,27 +1722,31 @@ msgstr "Afficher les bordures des barres"
 msgid "Rounded Corners"
 msgstr "Coins arrondis"
 
-#: data/ui/preferences_spectrum.ui:156
+#: data/ui/preferences_spectrum.ui:154
+msgid "Dynamic Scale"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:168
 msgid "Color"
 msgstr "Couleur"
 
-#: data/ui/preferences_spectrum.ui:159
+#: data/ui/preferences_spectrum.ui:171
 msgid "Lines and Bars"
 msgstr "Lignes et barres"
 
-#: data/ui/preferences_spectrum.ui:177
+#: data/ui/preferences_spectrum.ui:189
 msgid "Axis Labels"
 msgstr "Annotation des axes"
 
-#: data/ui/preferences_spectrum.ui:197
+#: data/ui/preferences_spectrum.ui:209
 msgid "Frequency Range"
 msgstr "Intervalle de fréquences"
 
-#: data/ui/preferences_spectrum.ui:200
+#: data/ui/preferences_spectrum.ui:212
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:223
+#: data/ui/preferences_spectrum.ui:235
 msgid "Maximum"
 msgstr "Maximum"
 
@@ -2161,15 +2165,15 @@ msgstr "Aucun fichier d’impulsion chargé"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossible de charger le fichier d’impulsion"
 
-#: src/effects_box.cpp:260 src/plugins_box.cpp:690
+#: src/effects_box.cpp:270 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/effects_box.cpp:283 src/plugins_box.cpp:710
+#: src/effects_box.cpp:293 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Lecteurs"
 
-#: src/effects_box.cpp:306
+#: src/effects_box.cpp:316
 msgid "Effects"
 msgstr "Effets"
 

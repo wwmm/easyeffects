@@ -27,7 +27,7 @@ struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
 
-  bool draw_bar_border, fill_bars, is_visible, rounded_corners;
+  bool draw_bar_border, fill_bars, is_visible, rounded_corners, dynamic_y_scale = true;
 
   int x_axis_height, n_x_decimals, n_y_decimals;
 
@@ -36,6 +36,8 @@ struct Data {
   double x_min, x_max, y_min, y_max;
 
   double x_min_log, x_max_log;
+
+  double global_min_y = 0.0, global_max_y = 0.0;
 
   ChartType chart_type;
 
@@ -183,6 +185,16 @@ auto get_is_visible(Chart* self) -> bool {
   return self->data->is_visible;
 }
 
+void set_dynamic_y_scale(Chart* self, const bool& v) {
+  if (self->data == nullptr) {
+    return;
+  }
+
+  self->data->dynamic_y_scale = v;
+  self->data->global_min_y = 0.0;
+  self->data->global_max_y = 0.0;
+}
+
 void set_x_data(Chart* self, const std::vector<double>& x) {
   if (self == nullptr || x.empty()) {
     return;
@@ -225,8 +237,19 @@ void set_y_data(Chart* self, const std::vector<double>& y) {
 
   self->data->y_axis = y;
 
-  self->data->y_min = std::ranges::min(y);
-  self->data->y_max = std::ranges::max(y);
+  auto min_y = std::ranges::min(y);
+  auto max_y = std::ranges::max(y);
+
+  if (self->data->dynamic_y_scale) {
+    self->data->y_min = min_y;
+    self->data->y_max = max_y;
+  } else {
+    self->data->global_min_y = (min_y < self->data->global_min_y) ? min_y : self->data->global_min_y;
+    self->data->global_max_y = (max_y > self->data->global_max_y) ? max_y : self->data->global_max_y;
+
+    self->data->y_min = self->data->global_min_y;
+    self->data->y_max = self->data->global_max_y;
+  }
 
   if (std::fabs(self->data->y_max - self->data->y_min) < 0.00001) {
     std::ranges::fill(self->data->y_axis, 0.0);

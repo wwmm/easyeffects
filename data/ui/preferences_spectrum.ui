@@ -148,6 +148,18 @@
                         </child>
                     </object>
                 </child>
+
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Dynamic Scale</property>
+                        <property name="activatable-widget">dynamic_y_scale</property>
+                        <child>
+                            <object class="GtkSwitch" id="dynamic_y_scale">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
 
