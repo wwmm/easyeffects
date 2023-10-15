@@ -13,12 +13,6 @@
         <value nick="Ladder-rejection" value="9" />
         <value nick="Allpass" value="10" />
     </enum>
-    <enum id="com.github.wwmm.easyeffects.filter.equalmode.enum">
-        <value nick="IIR" value="0" />
-        <value nick="FIR" value="1" />
-        <value nick="FFT" value="2" />
-        <value nick="SPM" value="3" />
-    </enum>
     <enum id="com.github.wwmm.easyeffects.filter.mode.enum">
         <value nick="RLC (BT)" value="0" />
         <value nick="RLC (MT)" value="1" />
@@ -75,9 +69,6 @@
         </key>
         <key name="mode" enum="com.github.wwmm.easyeffects.filter.mode.enum">
             <default>"RLC (BT)"</default>
-        </key>
-        <key name="equal-mode" enum="com.github.wwmm.easyeffects.filter.equalmode.enum">
-            <default>"IIR"</default>
         </key>
         <key name="slope" enum="com.github.wwmm.easyeffects.filter.slope.enum">
             <default>"x1"</default>
