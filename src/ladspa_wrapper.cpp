@@ -698,7 +698,7 @@ static inline unsigned long cp_to_port_idx(const LADSPA_Descriptor* descriptor, 
 }
 
 auto LadspaWrapper::get_control_port_name(uint index) const -> std::string {
-  unsigned long i = cp_to_port_idx(descriptor, index);
+  const unsigned long i = cp_to_port_idx(descriptor, index);
 
   if (i == (unsigned long)-1L) {
     return {};
@@ -708,7 +708,7 @@ auto LadspaWrapper::get_control_port_name(uint index) const -> std::string {
 }
 
 auto LadspaWrapper::is_control_port_output(uint index) const -> bool {
-  unsigned long i = cp_to_port_idx(descriptor, index);
+  const unsigned long i = cp_to_port_idx(descriptor, index);
 
   if (i == (unsigned long)-1L) {
     return false;
@@ -718,7 +718,7 @@ auto LadspaWrapper::is_control_port_output(uint index) const -> bool {
 }
 
 auto LadspaWrapper::get_control_port_range(uint index) const -> std::tuple<float, float> {
-  unsigned long i = cp_to_port_idx(descriptor, index);
+  const unsigned long i = cp_to_port_idx(descriptor, index);
 
   if (i == (unsigned long)-1L) {
     return std::make_tuple(0.0F, 0.0F);
@@ -733,7 +733,7 @@ auto LadspaWrapper::get_control_port_range(uint index) const -> std::tuple<float
 }
 
 auto LadspaWrapper::get_control_port_default(uint index) const -> float {
-  unsigned long i = cp_to_port_idx(descriptor, index);
+  const unsigned long i = cp_to_port_idx(descriptor, index);
 
   if (i == (unsigned long)-1L) {
     return 0.0F;
@@ -762,7 +762,7 @@ auto LadspaWrapper::get_control_port_value(const std::string& symbol) const -> f
 }
 
 auto LadspaWrapper::set_control_port_value_clamp(uint index, float value) -> float {
-  unsigned long i = cp_to_port_idx(descriptor, index);
+  const unsigned long i = cp_to_port_idx(descriptor, index);
 
   assert(i != (unsigned long)-1L);
 
