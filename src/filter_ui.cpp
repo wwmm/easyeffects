@@ -44,7 +44,7 @@ struct _FilterBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *plugin_credit;
 
-  GtkDropDown *mode, *equalizer_mode, *type, *slope;
+  GtkDropDown *mode, *type, *slope;
 
   GtkSpinButton *frequency, *width, *gain, *quality, *balance;
 
@@ -129,8 +129,6 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->mode);
 
-  ui::gsettings_bind_enum_to_combo_widget(self->settings, "equal-mode", self->equalizer_mode);
-
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "slope", self->slope);
 
   g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
@@ -197,7 +195,6 @@ void filter_box_class_init(FilterBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, FilterBox, type);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, mode);
-  gtk_widget_class_bind_template_child(widget_class, FilterBox, equalizer_mode);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, slope);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, frequency);
   gtk_widget_class_bind_template_child(widget_class, FilterBox, width);

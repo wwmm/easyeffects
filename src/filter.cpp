@@ -46,8 +46,6 @@ Filter::Filter(const std::string& tag,
 
   lv2_wrapper->bind_key_enum<"fm", "mode">(settings);
 
-  lv2_wrapper->bind_key_enum<"mode", "equal-mode">(settings);
-
   lv2_wrapper->bind_key_enum<"s", "slope">(settings);
 
   setup_input_output_gain();

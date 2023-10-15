@@ -37,8 +37,6 @@
 
                         <child>
                             <object class="GtkBox">
-                                <property name="margin-start">6</property>
-                                <property name="margin-end">6</property>
                                 <property name="spacing">24</property>
                                 <property name="homogeneous">1</property>
 
@@ -149,11 +147,7 @@
                                         <property name="spacing">12</property>
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="halign">start</property>
                                                 <property name="label" translatable="yes">Models</property>
-                                                <attributes>
-                                                    <attribute name="weight" value="bold" />
-                                                </attributes>
                                             </object>
                                         </child>
 
