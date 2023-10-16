@@ -93,7 +93,7 @@ class LadspaWrapper {
       value = static_cast<float>(g_settings_get_enum(settings, gkey));
     }
 
-    float actual_value = set_control_port_value_clamp(port_name, value);
+    const auto actual_value = set_control_port_value_clamp(port_name, value);
 
     if (actual_value != value && !(std::isnan(actual_value) && std::isnan(value))) {
       if constexpr (std::is_same_v<T, double>) {
@@ -162,13 +162,12 @@ class LadspaWrapper {
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper, bool lower_bound = true>
   void bind_key_double_db_exponential(GSettings* settings) {
-    auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
+    const auto val = static_cast<float>(g_settings_get_double(settings, gkey_wrapper.msg.data()));
 
-    auto val = static_cast<float>(key_v);
+    const auto clamped =
+        (!lower_bound && val <= util::minimum_db_level) ? -std::numeric_limits<float>::infinity() : val;
 
-    auto clamped = (!lower_bound && key_v <= util::minimum_db_d_level) ? -std::numeric_limits<float>::infinity() : val;
-
-    float new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
+    const auto new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
 
     if (new_v != clamped && !(std::isnan(new_v) && std::isnan(clamped))) {
       g_settings_set_double(settings, gkey_wrapper.msg.data(), new_v);
@@ -178,15 +177,13 @@ class LadspaWrapper {
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto* self = static_cast<LadspaWrapper*>(user_data);
 
-                       auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
+                       const auto val = static_cast<float>(g_settings_get_double(settings, gkey_wrapper.msg.data()));
 
-                       auto val = static_cast<float>(key_v);
+                       const auto clamped = (!lower_bound && val <= util::minimum_db_level)
+                                                ? -std::numeric_limits<float>::infinity()
+                                                : val;
 
-                       auto clamped = (!lower_bound && key_v <= util::minimum_db_d_level)
-                                          ? -std::numeric_limits<float>::infinity()
-                                          : val;
-
-                       float new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
+                       const auto new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
 
                        if (new_v != clamped && !(std::isnan(new_v) && std::isnan(clamped)))
                          g_settings_set_double(settings, gkey_wrapper.msg.data(), new_v);
@@ -196,13 +193,12 @@ class LadspaWrapper {
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper, bool lower_bound = true>
   void bind_key_double_db(GSettings* settings) {
-    auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
+    const auto linear_v =
+        static_cast<float>(util::db_to_linear(g_settings_get_double(settings, gkey_wrapper.msg.data())));
 
-    auto linear_v = static_cast<float>(util::db_to_linear(key_v));
+    const auto clamped_v = (!lower_bound && linear_v <= util::minimum_db_level) ? 0.0F : linear_v;
 
-    auto clamped_v = (!lower_bound && linear_v <= util::minimum_db_d_level) ? 0.0F : linear_v;
-
-    float new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
+    const auto new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
 
     if (new_v != clamped_v && !(std::isnan(new_v) && std::isnan(clamped_v))) {
       g_settings_set_double(settings, gkey_wrapper.msg.data(), util::linear_to_db(new_v));
@@ -212,13 +208,12 @@ class LadspaWrapper {
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto* self = static_cast<LadspaWrapper*>(user_data);
 
-                       auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
+                       const auto linear_v = static_cast<float>(
+                           util::db_to_linear(g_settings_get_double(settings, gkey_wrapper.msg.data())));
 
-                       auto linear_v = static_cast<float>(util::db_to_linear(key_v));
+                       const auto clamped_v = (!lower_bound && linear_v <= util::minimum_db_level) ? 0.0F : linear_v;
 
-                       auto clamped_v = (!lower_bound && key_v <= util::minimum_db_d_level) ? 0.0F : linear_v;
-
-                       float new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
+                       const auto new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
 
                        if (new_v != clamped_v && !(std::isnan(new_v) && std::isnan(clamped_v)))
                          g_settings_set_double(settings, gkey_wrapper.msg.data(), util::linear_to_db(new_v));

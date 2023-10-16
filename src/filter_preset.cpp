@@ -49,6 +49,8 @@ void FilterPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
 
+  json[section][instance_name]["equal-mode"] = util::gsettings_get_string(settings, "equal-mode");
+
   json[section][instance_name]["slope"] = util::gsettings_get_string(settings, "slope");
 }
 
@@ -72,6 +74,8 @@ void FilterPreset::load(const nlohmann::json& json) {
   update_key<gchar*>(json.at(section).at(instance_name), settings, "type", "type");
 
   update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
+
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "equal-mode", "equal-mode");
 
   update_key<gchar*>(json.at(section).at(instance_name), settings, "slope", "slope");
 }

@@ -92,6 +92,30 @@
 
                                         <child>
                                             <object class="AdwActionRow">
+                                                <property name="title" translatable="yes">Equalizer Mode</property>
+                                                <child>
+                                                    <object class="GtkDropDown" id="equalizer_mode">
+                                                        <property name="valign">center</property>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item>IIR</item>
+                                                                    <item>FIR</item>
+                                                                    <item>FFT</item>
+                                                                    <item>SPM</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
+                                                        <accessibility>
+                                                            <property name="label">Equalizer Mode</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="AdwActionRow">
                                                 <property name="title" translatable="yes">Slope</property>
                                                 <child>
                                                     <object class="GtkDropDown" id="slope">
