@@ -162,9 +162,11 @@ class LadspaWrapper {
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper, bool lower_bound = true>
   void bind_key_double_db_exponential(GSettings* settings) {
-    auto val = static_cast<float>(g_settings_get_double(settings, gkey_wrapper.msg.data()));
+    auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
 
-    auto clamped = (!lower_bound && val <= util::minimum_db_level) ? -std::numeric_limits<float>::infinity() : val;
+    auto val = static_cast<float>(key_v);
+
+    auto clamped = (!lower_bound && key_v <= util::minimum_db_d_level) ? -std::numeric_limits<float>::infinity() : val;
 
     float new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
 
@@ -176,9 +178,11 @@ class LadspaWrapper {
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto* self = static_cast<LadspaWrapper*>(user_data);
 
-                       auto val = static_cast<float>(g_settings_get_double(settings, gkey_wrapper.msg.data()));
+                       auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
 
-                       auto clamped = (!lower_bound && val <= util::minimum_db_level)
+                       auto val = static_cast<float>(key_v);
+
+                       auto clamped = (!lower_bound && key_v <= util::minimum_db_d_level)
                                           ? -std::numeric_limits<float>::infinity()
                                           : val;
 
@@ -192,9 +196,11 @@ class LadspaWrapper {
 
   template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper, bool lower_bound = true>
   void bind_key_double_db(GSettings* settings) {
-    auto linear_v = static_cast<float>(util::db_to_linear(g_settings_get_double(settings, gkey_wrapper.msg.data())));
+    auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
 
-    auto clamped_v = (!lower_bound && linear_v <= util::minimum_db_level) ? 0.0F : linear_v;
+    auto linear_v = static_cast<float>(util::db_to_linear(key_v));
+
+    auto clamped_v = (!lower_bound && linear_v <= util::minimum_db_d_level) ? 0.0F : linear_v;
 
     float new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
 
@@ -206,10 +212,11 @@ class LadspaWrapper {
                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                        auto* self = static_cast<LadspaWrapper*>(user_data);
 
-                       auto linear_v = static_cast<float>(
-                           util::db_to_linear(g_settings_get_double(settings, gkey_wrapper.msg.data())));
+                       auto key_v = g_settings_get_double(settings, gkey_wrapper.msg.data());
 
-                       auto clamped_v = (!lower_bound && linear_v <= util::minimum_db_level) ? 0.0F : linear_v;
+                       auto linear_v = static_cast<float>(util::db_to_linear(key_v));
+
+                       auto clamped_v = (!lower_bound && key_v <= util::minimum_db_d_level) ? 0.0F : linear_v;
 
                        float new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
 
