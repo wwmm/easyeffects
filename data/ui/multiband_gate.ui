@@ -137,6 +137,7 @@
                                                                 <items>
                                                                     <item translatable="yes">Classic</item>
                                                                     <item translatable="yes">Modern</item>
+                                                                    <item translatable="yes">Linear Phase</item>
                                                                 </items>
                                                             </object>
                                                         </property>
