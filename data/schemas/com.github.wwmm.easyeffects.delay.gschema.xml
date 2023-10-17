@@ -36,5 +36,11 @@
             <range min="0" max="1000" />
             <default>0</default>
         </key>
+        <key name="invert-phase-l" type="b">
+            <default>false</default>
+        </key>
+        <key name="invert-phase-r" type="b">
+            <default>false</default>
+        </key>
     </schema>
 </schemalist>
