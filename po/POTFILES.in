@@ -18,6 +18,7 @@ data/ui/crystalizer.ui
 data/ui/crystalizer_band.ui
 data/ui/deesser.ui
 data/ui/delay.ui
+data/ui/deepfilternet.ui
 data/ui/echo_canceller.ui
 data/ui/effects_box.ui
 data/ui/equalizer.ui
