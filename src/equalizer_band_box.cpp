@@ -86,8 +86,17 @@ auto set_band_width_label(EqualizerBandBox* self, double quality, double frequen
 }
 
 auto set_band_scale_sensitive(EqualizerBandBox* self, const guint selected_id) -> gboolean {
-  // Gray out the frequency scale only on the Off mode.
-  return (selected_id == 0U) ? 0 : 1;
+  switch (selected_id) {
+    case 0U:  // Off
+    case 2U:  // High Pass
+    case 4U:  // Low Pass
+      return 0;
+
+    default:
+      break;
+  }
+
+  return 1;
 }
 
 void setup(EqualizerBandBox* self, GSettings* settings) {
