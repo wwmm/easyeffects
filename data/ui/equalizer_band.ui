@@ -108,6 +108,9 @@
                                             <item>Notch</item>
                                             <item>Resonance</item>
                                             <item>All-Pass</item>
+                                            <item>Band-Pass</item>
+                                            <item>Ladder-Pass</item>
+                                            <item>Ladder-Rejection</item>
                                         </items>
                                     </object>
                                 </property>
