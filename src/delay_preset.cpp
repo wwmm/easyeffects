@@ -46,6 +46,10 @@ void DelayPreset::save(nlohmann::json& json) {
   json[section][instance_name]["wet-l"] = g_settings_get_double(settings, "wet-l");
 
   json[section][instance_name]["wet-r"] = g_settings_get_double(settings, "wet-r");
+
+  json[section][instance_name]["invert-phase-l"] = g_settings_get_boolean(settings, "invert-phase-l") != 0;
+
+  json[section][instance_name]["invert-phase-r"] = g_settings_get_boolean(settings, "invert-phase-r") != 0;
 }
 
 void DelayPreset::load(const nlohmann::json& json) {
@@ -66,4 +70,8 @@ void DelayPreset::load(const nlohmann::json& json) {
   update_key<double>(json.at(section).at(instance_name), settings, "wet-l", "wet-l");
 
   update_key<double>(json.at(section).at(instance_name), settings, "wet-r", "wet-r");
+
+  update_key<bool>(json.at(section).at(instance_name), settings, "invert-phase-l", "invert-phase-l");
+
+  update_key<bool>(json.at(section).at(instance_name), settings, "invert-phase-r", "invert-phase-r");
 }

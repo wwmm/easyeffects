@@ -38,6 +38,9 @@ Delay::Delay(const std::string& tag,
   lv2_wrapper->bind_key_double<"time_l", "time-l">(settings);
   lv2_wrapper->bind_key_double<"time_r", "time-r">(settings);
 
+  lv2_wrapper->bind_key_bool<"phase_l", "invert-phase-l">(settings);
+  lv2_wrapper->bind_key_bool<"phase_r", "invert-phase-r">(settings);
+
   // The following controls can assume -inf
   lv2_wrapper->bind_key_double_db<"dry_l", "dry-l", false>(settings);
   lv2_wrapper->bind_key_double_db<"dry_r", "dry-r", false>(settings);

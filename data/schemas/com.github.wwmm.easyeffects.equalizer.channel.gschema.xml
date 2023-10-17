@@ -19,6 +19,9 @@
         <value nick="Notch" value="6" />
         <value nick="Resonance" value="7" />
         <value nick="Allpass" value="8" />
+        <value nick="Bandpass" value="9" />
+        <value nick="Ladder-pass" value="10" />
+        <value nick="Ladder-rej" value="11" />
     </enum>
     <enum id="com.github.wwmm.easyeffects.equalizer.bandslope.enum">
         <value nick="x1" value="0" />
