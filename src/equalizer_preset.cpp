@@ -102,6 +102,8 @@ void EqualizerPreset::save_channel(nlohmann::json& json, GSettings* settings, co
     json[bandn]["frequency"] = g_settings_get_double(settings, band_frequency[n].data());
 
     json[bandn]["q"] = g_settings_get_double(settings, band_q[n].data());
+
+    json[bandn]["width"] = g_settings_get_double(settings, band_width[n].data());
   }
 }
 
@@ -154,5 +156,7 @@ void EqualizerPreset::load_channel(const nlohmann::json& json, GSettings* settin
     update_key<double>(json.at(bandn), settings, band_frequency[n].data(), "frequency");
 
     update_key<double>(json.at(bandn), settings, band_q[n].data(), "q");
+
+    update_key<double>(json.at(bandn), settings, band_width[n].data(), "width");
   }
 }

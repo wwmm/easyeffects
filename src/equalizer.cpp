@@ -129,6 +129,9 @@ void Equalizer::on_split_channels() {
 
     g_settings_set_double(settings_right, band_q[n].data(), g_settings_get_double(settings_left, band_q[n].data()));
 
+    g_settings_set_double(settings_right, band_width[n].data(),
+                          g_settings_get_double(settings_left, band_width[n].data()));
+
     /*
       When in unified mode we want settings applied to the left channel to be propagated to the right channel
       database
@@ -149,6 +152,13 @@ void Equalizer::on_split_channels() {
                                                     this));
 
     gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_q[n].data()).c_str(),
+                                                    G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
+                                                      g_settings_set_double(self->settings_right, key,
+                                                                            g_settings_get_double(settings, key));
+                                                    }),
+                                                    this));
+
+    gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_width[n].data()).c_str(),
                                                     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
                                                       g_settings_set_double(self->settings_right, key,
                                                                             g_settings_get_double(settings, key));
@@ -267,6 +277,7 @@ void Equalizer::sort_bands() {
     gint slope;
     gdouble gain;
     gdouble q;
+    gdouble width;
     gboolean solo;
     gboolean mute;
   };
@@ -296,6 +307,7 @@ void Equalizer::sort_bands() {
                                                 .slope = g_settings_get_enum(channel, band_slope[n].data()),
                                                 .gain = g_settings_get_double(channel, band_gain[n].data()),
                                                 .q = g_settings_get_double(channel, band_q[n].data()),
+                                                .width = g_settings_get_double(channel, band_width[n].data()),
                                                 .solo = g_settings_get_boolean(channel, band_solo[n].data()),
                                                 .mute = g_settings_get_boolean(channel, band_mute[n].data())}));
     }
@@ -307,6 +319,7 @@ void Equalizer::sort_bands() {
       g_settings_set_enum(channel, band_slope[n].data(), p.second.slope);
       g_settings_set_double(channel, band_gain[n].data(), p.second.gain);
       g_settings_set_double(channel, band_q[n].data(), p.second.q);
+      g_settings_set_double(channel, band_width[n].data(), p.second.width);
       g_settings_set_boolean(channel, band_solo[n].data(), p.second.solo);
       g_settings_set_boolean(channel, band_mute[n].data(), p.second.mute);
       n++;

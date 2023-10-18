@@ -62,6 +62,8 @@ class Equalizer : public PluginBase {
   constexpr void bind_band() {
     using namespace tags::equalizer;
 
+    // left channel
+
     lv2_wrapper->bind_key_enum<ftl[n], band_type[n]>(settings_left);
     lv2_wrapper->bind_key_enum<fml[n], band_mode[n]>(settings_left);
     lv2_wrapper->bind_key_enum<sl[n], band_slope[n]>(settings_left);
@@ -71,6 +73,7 @@ class Equalizer : public PluginBase {
 
     lv2_wrapper->bind_key_double<fl[n], band_frequency[n]>(settings_left);
     lv2_wrapper->bind_key_double<ql[n], band_q[n]>(settings_left);
+    lv2_wrapper->bind_key_double<wl[n], band_width[n]>(settings_left);
 
     lv2_wrapper->bind_key_double_db<gl[n], band_gain[n]>(settings_left);
 
@@ -85,6 +88,7 @@ class Equalizer : public PluginBase {
 
     lv2_wrapper->bind_key_double<fr[n], band_frequency[n]>(settings_right);
     lv2_wrapper->bind_key_double<qr[n], band_q[n]>(settings_right);
+    lv2_wrapper->bind_key_double<wr[n], band_width[n]>(settings_right);
 
     lv2_wrapper->bind_key_double_db<gr[n], band_gain[n]>(settings_right);
   }

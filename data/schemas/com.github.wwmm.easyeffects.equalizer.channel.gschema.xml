@@ -417,6 +417,135 @@
             <default>4.36</default>
         </key>
 
+        <key name="band0-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band1-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band2-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band3-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band4-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band5-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band6-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band7-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band8-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band9-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band10-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band11-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band12-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band13-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band14-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band15-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band16-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band17-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band18-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band19-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band20-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band21-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band22-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band23-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band24-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band25-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band26-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band27-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band28-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band29-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band30-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+        <key name="band31-width" type="d">
+            <range min="0" max="12" />
+            <default>4</default>
+        </key>
+
         <key name="band0-type" enum="com.github.wwmm.easyeffects.equalizer.bandtype.enum">
             <default>"Bell"</default>
         </key>
