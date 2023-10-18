@@ -93,7 +93,7 @@ class LadspaWrapper {
       value = static_cast<float>(g_settings_get_enum(settings, gkey));
     }
 
-    float actual_value = set_control_port_value_clamp(port_name, value);
+    auto actual_value = set_control_port_value_clamp(port_name, value);
 
     if (actual_value != value && !(std::isnan(actual_value) && std::isnan(value))) {
       if constexpr (std::is_same_v<T, double>) {
@@ -168,7 +168,7 @@ class LadspaWrapper {
 
     auto clamped = (!lower_bound && key_v <= util::minimum_db_d_level) ? -std::numeric_limits<float>::infinity() : val;
 
-    float new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
+    auto new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
 
     if (new_v != clamped && !(std::isnan(new_v) && std::isnan(clamped))) {
       g_settings_set_double(settings, gkey_wrapper.msg.data(), new_v);
@@ -186,7 +186,7 @@ class LadspaWrapper {
                                           ? -std::numeric_limits<float>::infinity()
                                           : val;
 
-                       float new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
+                       auto new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped);
 
                        if (new_v != clamped && !(std::isnan(new_v) && std::isnan(clamped)))
                          g_settings_set_double(settings, gkey_wrapper.msg.data(), new_v);
@@ -202,7 +202,7 @@ class LadspaWrapper {
 
     auto clamped_v = (!lower_bound && linear_v <= util::minimum_db_d_level) ? 0.0F : linear_v;
 
-    float new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
+    auto new_v = set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
 
     if (new_v != clamped_v && !(std::isnan(new_v) && std::isnan(clamped_v))) {
       g_settings_set_double(settings, gkey_wrapper.msg.data(), util::linear_to_db(new_v));
@@ -218,7 +218,7 @@ class LadspaWrapper {
 
                        auto clamped_v = (!lower_bound && key_v <= util::minimum_db_d_level) ? 0.0F : linear_v;
 
-                       float new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
+                       auto new_v = self->set_control_port_value_clamp(key_wrapper.msg.data(), clamped_v);
 
                        if (new_v != clamped_v && !(std::isnan(new_v) && std::isnan(clamped_v)))
                          g_settings_set_double(settings, gkey_wrapper.msg.data(), util::linear_to_db(new_v));
