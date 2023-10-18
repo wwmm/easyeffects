@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-17 21:24+0000\n"
-"PO-Revision-Date: 2023-09-26 14:02+0000\n"
+"PO-Revision-Date: 2023-10-18 14:15+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -838,30 +838,28 @@ msgid "Invert Phase"
 msgstr "Inverser la phase"
 
 #: data/ui/deepfilternet.ui:31
-#, fuzzy
 msgid "Attenuation Limit"
-msgstr "Atténuation"
+msgstr "Limite d'atténuation"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "Seuil de traitement minimal"
 
 #: data/ui/deepfilternet.ui:87
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "Seuil maximum de traitement ERB"
 
 #: data/ui/deepfilternet.ui:114
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "Seuil maximum de traitement DF"
 
 #: data/ui/deepfilternet.ui:141
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "Tampon de traitement minimal"
 
 #: data/ui/deepfilternet.ui:167
-#, fuzzy
 msgid "Post Filter Beta"
-msgstr "Longueur du filtre"
+msgstr "Filtre postérieur Beta"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
@@ -1006,9 +1004,8 @@ msgid "All-Pass"
 msgstr "All-Pass"
 
 #: data/ui/filter.ui:95
-#, fuzzy
 msgid "Equalizer Mode"
-msgstr "Égaliseur"
+msgstr "Mode Égaliseur"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
 msgid "Gate"
@@ -1305,9 +1302,8 @@ msgid "Modern"
 msgstr "Moderne"
 
 #: data/ui/multiband_compressor.ui:140 data/ui/multiband_gate.ui:140
-#, fuzzy
 msgid "Linear Phase"
-msgstr "Inverser la phase"
+msgstr "Phase linéaire"
 
 #: data/ui/multiband_compressor.ui:250 data/ui/multiband_gate.ui:250
 msgid "Bands List"
@@ -1749,7 +1745,7 @@ msgstr "Coins arrondis"
 
 #: data/ui/preferences_spectrum.ui:154
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "Échelle dynamique"
 
 #: data/ui/preferences_spectrum.ui:168
 msgid "Color"
