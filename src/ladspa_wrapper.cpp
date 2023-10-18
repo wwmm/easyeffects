@@ -766,6 +766,7 @@ auto LadspaWrapper::set_control_port_value_clamp(uint index, float value) -> flo
 
   assert(i != (unsigned long)-1L);
 
+  // If the value is out of bounds, get a new clamped one in LADSPA_Data (float)
   value = clamp_port_value(descriptor, i, rate, value);
 
   control_ports[index] = value;
