@@ -471,27 +471,27 @@ void LadspaWrapper::connect_data_ports(const std::span<const float>& left_in,
     }
   }
 
-  if (left_in_idx == (unsigned long)-1L || right_in_idx == (unsigned long)-1L) {
+  if (left_in_idx == null_ul || right_in_idx == null_ul) {
     left_in_idx = first_in_idx;
     right_in_idx = second_in_idx;
   }
-  if (left_in_idx != (unsigned long)-1L) {
+  if (left_in_idx != null_ul) {
     descriptor->connect_port(instance, left_in_idx, const_cast<LADSPA_Data*>(left_in.data()));
   }
 
-  if (right_in_idx != (unsigned long)-1L) {
+  if (right_in_idx != null_ul) {
     descriptor->connect_port(instance, right_in_idx, const_cast<LADSPA_Data*>(right_in.data()));
   }
 
-  if (left_out_idx == (unsigned long)-1L || right_out_idx == (unsigned long)-1L) {
+  if (left_out_idx == null_ul || right_out_idx == null_ul) {
     left_out_idx = first_out_idx;
     right_out_idx = second_out_idx;
   }
-  if (left_out_idx != (unsigned long)-1L) {
+  if (left_out_idx != null_ul) {
     descriptor->connect_port(instance, left_out_idx, left_out.data());
   }
 
-  if (right_out_idx != (unsigned long)-1L) {
+  if (right_out_idx != null_ul) {
     descriptor->connect_port(instance, right_out_idx, right_out.data());
   }
 }
@@ -585,19 +585,19 @@ void LadspaWrapper::connect_data_ports(const std::span<const float>& left_in,
     }
   }
 
-  if (left_in_idx == (unsigned long)-1L || right_in_idx == (unsigned long)-1L) {
+  if (left_in_idx == null_ul || right_in_idx == null_ul) {
     left_in_idx = first_in_idx;
     right_in_idx = second_in_idx;
   }
-  if (left_in_idx != (unsigned long)-1L) {
+  if (left_in_idx != null_ul) {
     descriptor->connect_port(instance, left_in_idx, const_cast<LADSPA_Data*>(left_in.data()));
   }
 
-  if (right_in_idx != (unsigned long)-1L) {
+  if (right_in_idx != null_ul) {
     descriptor->connect_port(instance, right_in_idx, const_cast<LADSPA_Data*>(left_in.data()));
   }
 
-  if (probe_left_idx == (unsigned long)-1L || probe_right_idx == (unsigned long)-1L) {
+  if (probe_left_idx == null_ul || probe_right_idx == null_ul) {
     if (left_in_idx == first_in_idx) {
       if (right_in_idx == second_in_idx) {
         probe_left_idx = third_in_idx;
@@ -629,23 +629,23 @@ void LadspaWrapper::connect_data_ports(const std::span<const float>& left_in,
       probe_right_idx = second_in_idx;
     }
   }
-  if (probe_left_idx != (unsigned long)-1L) {
+  if (probe_left_idx != null_ul) {
     descriptor->connect_port(instance, probe_left_idx, const_cast<LADSPA_Data*>(probe_left.data()));
   }
 
-  if (probe_right_idx != (unsigned long)-1L) {
+  if (probe_right_idx != null_ul) {
     descriptor->connect_port(instance, probe_right_idx, const_cast<LADSPA_Data*>(probe_right.data()));
   }
 
-  if (left_out_idx == (unsigned long)-1L || right_out_idx == (unsigned long)-1L) {
+  if (left_out_idx == null_ul || right_out_idx == null_ul) {
     left_out_idx = first_out_idx;
     right_out_idx = second_out_idx;
   }
-  if (left_out_idx != (unsigned long)-1L) {
+  if (left_out_idx != null_ul) {
     descriptor->connect_port(instance, left_out_idx, left_out.data());
   }
 
-  if (right_out_idx != (unsigned long)-1L) {
+  if (right_out_idx != null_ul) {
     descriptor->connect_port(instance, right_out_idx, left_out.data());
   }
 }
@@ -700,7 +700,7 @@ static inline unsigned long cp_to_port_idx(const LADSPA_Descriptor* descriptor, 
 auto LadspaWrapper::get_control_port_name(uint index) const -> std::string {
   const unsigned long i = cp_to_port_idx(descriptor, index);
 
-  if (i == (unsigned long)-1L) {
+  if (i == null_ul) {
     return {};
   }
 
@@ -710,7 +710,7 @@ auto LadspaWrapper::get_control_port_name(uint index) const -> std::string {
 auto LadspaWrapper::is_control_port_output(uint index) const -> bool {
   const unsigned long i = cp_to_port_idx(descriptor, index);
 
-  if (i == (unsigned long)-1L) {
+  if (i == null_ul) {
     return false;
   }
 
@@ -720,7 +720,7 @@ auto LadspaWrapper::is_control_port_output(uint index) const -> bool {
 auto LadspaWrapper::get_control_port_range(uint index) const -> std::tuple<float, float> {
   const unsigned long i = cp_to_port_idx(descriptor, index);
 
-  if (i == (unsigned long)-1L) {
+  if (i == null_ul) {
     return std::make_tuple(0.0F, 0.0F);
   }
 
@@ -735,7 +735,7 @@ auto LadspaWrapper::get_control_port_range(uint index) const -> std::tuple<float
 auto LadspaWrapper::get_control_port_default(uint index) const -> float {
   const unsigned long i = cp_to_port_idx(descriptor, index);
 
-  if (i == (unsigned long)-1L) {
+  if (i == null_ul) {
     return 0.0F;
   }
 
@@ -743,7 +743,7 @@ auto LadspaWrapper::get_control_port_default(uint index) const -> float {
 }
 
 auto LadspaWrapper::get_control_port_value(uint index) const -> float {
-  assert(cp_to_port_idx(descriptor, index) != (unsigned long)-1L);
+  assert(cp_to_port_idx(descriptor, index) != null_ul);
   assert(control_ports_initialized[index]);
 
   return control_ports[index];
@@ -758,14 +758,15 @@ auto LadspaWrapper::get_control_port_value(const std::string& symbol) const -> f
     return 0.0F;
   }
 
-  return get_control_port_value((uint)iter->second);
+  return get_control_port_value(static_cast<uint>(iter->second));
 }
 
 auto LadspaWrapper::set_control_port_value_clamp(uint index, float value) -> float {
   const unsigned long i = cp_to_port_idx(descriptor, index);
 
-  assert(i != (unsigned long)-1L);
+  assert(i != null_ul);
 
+  // If the value is out of bounds, get a new clamped one in LADSPA_Data (float)
   value = clamp_port_value(descriptor, i, rate, value);
 
   control_ports[index] = value;
@@ -783,7 +784,7 @@ auto LadspaWrapper::set_control_port_value_clamp(const std::string& symbol, floa
     return value;
   }
 
-  return set_control_port_value_clamp((uint)iter->second, value);
+  return set_control_port_value_clamp(static_cast<uint>(iter->second), value);
 }
 
 }  // namespace ladspa
