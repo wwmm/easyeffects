@@ -758,7 +758,7 @@ auto LadspaWrapper::get_control_port_value(const std::string& symbol) const -> f
     return 0.0F;
   }
 
-  return get_control_port_value((uint)iter->second);
+  return get_control_port_value(static_cast<uint>(iter->second));
 }
 
 auto LadspaWrapper::set_control_port_value_clamp(uint index, float value) -> float {
@@ -783,7 +783,7 @@ auto LadspaWrapper::set_control_port_value_clamp(const std::string& symbol, floa
     return value;
   }
 
-  return set_control_port_value_clamp((uint)iter->second, value);
+  return set_control_port_value_clamp(static_cast<uint>(iter->second), value);
 }
 
 }  // namespace ladspa
