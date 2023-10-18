@@ -99,6 +99,16 @@ constexpr auto band_q = std::to_array({{"band0-q"},  {"band1-q"},  {"band2-q"}, 
                                        {"band24-q"}, {"band25-q"}, {"band26-q"}, {"band27-q"},
                                        {"band28-q"}, {"band29-q"}, {"band30-q"}, std::to_array("band31-q")});
 
+constexpr auto band_width =
+    std::to_array({{"band0-width"},  {"band1-width"},  {"band2-width"},  {"band3-width"},
+                   {"band4-width"},  {"band5-width"},  {"band6-width"},  {"band7-width"},
+                   {"band8-width"},  {"band9-width"},  {"band10-width"}, {"band11-width"},
+                   {"band12-width"}, {"band13-width"}, {"band14-width"}, {"band15-width"},
+                   {"band16-width"}, {"band17-width"}, {"band18-width"}, {"band19-width"},
+                   {"band20-width"}, {"band21-width"}, {"band22-width"}, {"band23-width"},
+                   {"band24-width"}, {"band25-width"}, {"band26-width"}, {"band27-width"},
+                   {"band28-width"}, {"band29-width"}, {"band30-width"}, std::to_array("band31-width")});
+
 constexpr auto band_gain =
     std::to_array({{"band0-gain"},  {"band1-gain"},  {"band2-gain"},  {"band3-gain"},
                    {"band4-gain"},  {"band5-gain"},  {"band6-gain"},  {"band7-gain"},
@@ -146,6 +156,12 @@ constexpr auto ql = std::to_array(
      {"ql_8"},  {"ql_9"},  {"ql_10"}, {"ql_11"}, {"ql_12"}, {"ql_13"}, {"ql_14"}, {"ql_15"},
      {"ql_16"}, {"ql_17"}, {"ql_18"}, {"ql_19"}, {"ql_20"}, {"ql_21"}, {"ql_22"}, {"ql_23"},
      {"ql_24"}, {"ql_25"}, {"ql_26"}, {"ql_27"}, {"ql_28"}, {"ql_29"}, {"ql_30"}, std::to_array("ql_31")});
+
+constexpr auto wl = std::to_array(
+    {{"wl_0"},  {"wl_1"},  {"wl_2"},  {"wl_3"},  {"wl_4"},  {"wl_5"},  {"wl_6"},  {"wl_7"},
+     {"wl_8"},  {"wl_9"},  {"wl_10"}, {"wl_11"}, {"wl_12"}, {"wl_13"}, {"wl_14"}, {"wl_15"},
+     {"wl_16"}, {"wl_17"}, {"wl_18"}, {"wl_19"}, {"wl_20"}, {"wl_21"}, {"wl_22"}, {"wl_23"},
+     {"wl_24"}, {"wl_25"}, {"wl_26"}, {"wl_27"}, {"wl_28"}, {"wl_29"}, {"wl_30"}, std::to_array("wl_31")});
 
 constexpr auto fl = std::to_array(
     {{"fl_0"},  {"fl_1"},  {"fl_2"},  {"fl_3"},  {"fl_4"},  {"fl_5"},  {"fl_6"},  {"fl_7"},
@@ -196,6 +212,12 @@ constexpr auto qr = std::to_array(
      {"qr_8"},  {"qr_9"},  {"qr_10"}, {"qr_11"}, {"qr_12"}, {"qr_13"}, {"qr_14"}, {"qr_15"},
      {"qr_16"}, {"qr_17"}, {"qr_18"}, {"qr_19"}, {"qr_20"}, {"qr_21"}, {"qr_22"}, {"qr_23"},
      {"qr_24"}, {"qr_25"}, {"qr_26"}, {"qr_27"}, {"qr_28"}, {"qr_29"}, {"qr_30"}, std::to_array("qr_31")});
+
+constexpr auto wr = std::to_array(
+    {{"wr_0"},  {"wr_1"},  {"wr_2"},  {"wr_3"},  {"wr_4"},  {"wr_5"},  {"wr_6"},  {"wr_7"},
+     {"wr_8"},  {"wr_9"},  {"wr_10"}, {"wr_11"}, {"wr_12"}, {"wr_13"}, {"wr_14"}, {"wr_15"},
+     {"wr_16"}, {"wr_17"}, {"wr_18"}, {"wr_19"}, {"wr_20"}, {"wr_21"}, {"wr_22"}, {"wr_23"},
+     {"wr_24"}, {"wr_25"}, {"wr_26"}, {"wr_27"}, {"wr_28"}, {"wr_29"}, {"wr_30"}, std::to_array("wr_31")});
 
 constexpr auto fr = std::to_array(
     {{"fr_0"},  {"fr_1"},  {"fr_2"},  {"fr_3"},  {"fr_4"},  {"fr_5"},  {"fr_6"},  {"fr_7"},
