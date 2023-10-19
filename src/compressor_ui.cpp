@@ -352,7 +352,7 @@ void setup(CompressorBox* self,
   // bind source dropdowns sensitive property to split-stereo gsettings boolean
 
   g_settings_bind(self->settings, "stereo-split", self->sidechain_source, "sensitive",
-                  G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN);
+                  static_cast<GSettingsBindFlags>(G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN));
 
   g_settings_bind(self->settings, "stereo-split", self->stereo_split_source, "sensitive", G_SETTINGS_BIND_DEFAULT);
 }
