@@ -39,7 +39,7 @@ struct _EqualizerBandBox {
 
   GtkScale* band_scale;
 
-  GtkSpinButton *band_frequency, *band_quality, *band_gain;
+  GtkSpinButton *band_frequency, *band_gain, *band_quality, *band_width;
 
   GtkPopover* popover_menu;
 
@@ -51,16 +51,20 @@ struct _EqualizerBandBox {
 // NOLINTNEXTLINE
 G_DEFINE_TYPE(EqualizerBandBox, equalizer_band_box, GTK_TYPE_BOX)
 
-void on_reset_quality(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_q[self->data->index].data());
-}
-
 void on_reset_frequency(EqualizerBandBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, tags::equalizer::band_frequency[self->data->index].data());
 }
 
 void on_reset_gain(EqualizerBandBox* self, GtkButton* btn) {
   g_settings_reset(self->settings, tags::equalizer::band_gain[self->data->index].data());
+}
+
+void on_reset_quality(EqualizerBandBox* self, GtkButton* btn) {
+  g_settings_reset(self->settings, tags::equalizer::band_q[self->data->index].data());
+}
+
+void on_reset_width(EqualizerBandBox* self, GtkButton* btn) {
+  g_settings_reset(self->settings, tags::equalizer::band_width[self->data->index].data());
 }
 
 auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
@@ -77,7 +81,7 @@ auto set_band_quality_label(EqualizerBandBox* self, double value) -> const char*
   return g_strdup(fmt::format(ui::get_user_locale(), "Q {0:.2Lf}", value).c_str());
 }
 
-auto set_band_scale_sensitive(EqualizerBandBox* self, const guint selected_id) -> gboolean {
+auto set_band_gain_sensitive(EqualizerBandBox* self, const guint selected_id) -> gboolean {
   switch (selected_id) {
     case 0U:  // Off
     case 2U:  // High Pass
@@ -89,6 +93,20 @@ auto set_band_scale_sensitive(EqualizerBandBox* self, const guint selected_id) -
   }
 
   return 1;
+}
+
+auto set_band_width_sensitive(EqualizerBandBox* self, const guint selected_id) -> gboolean {
+  switch (selected_id) {
+    case 9U:   // Band Pass
+    case 10U:  // Ladder Pass
+    case 11U:  // Ladder Rej
+      return 1;
+
+    default:
+      break;
+  }
+
+  return 0;
 }
 
 void setup(EqualizerBandBox* self, GSettings* settings) {
@@ -106,6 +124,9 @@ void bind(EqualizerBandBox* self, int index) {
 
   g_settings_bind(self->settings, tags::equalizer::band_q[index].data(),
                   gtk_spin_button_get_adjustment(self->band_quality), "value", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(self->settings, tags::equalizer::band_width[index].data(),
+                  gtk_spin_button_get_adjustment(self->band_width), "value", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(self->settings, tags::equalizer::band_solo[index].data(), self->band_solo, "active",
                   G_SETTINGS_BIND_DEFAULT);
@@ -158,14 +179,17 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_mute);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_scale);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_frequency);
-  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_quality);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_gain);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_quality);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_width);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, popover_menu);
 
-  gtk_widget_class_bind_template_callback(widget_class, on_reset_quality);
   gtk_widget_class_bind_template_callback(widget_class, on_reset_frequency);
   gtk_widget_class_bind_template_callback(widget_class, on_reset_gain);
-  gtk_widget_class_bind_template_callback(widget_class, set_band_scale_sensitive);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset_quality);
+  gtk_widget_class_bind_template_callback(widget_class, on_reset_width);
+  gtk_widget_class_bind_template_callback(widget_class, set_band_gain_sensitive);
+  gtk_widget_class_bind_template_callback(widget_class, set_band_width_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_band_label);
   gtk_widget_class_bind_template_callback(widget_class, set_band_quality_label);
 }
@@ -182,8 +206,9 @@ void equalizer_band_box_init(EqualizerBandBox* self) {
   prepare_scales<"">(self->band_scale);
 
   prepare_spinbuttons<"Hz">(self->band_frequency);
-  prepare_spinbuttons<"">(self->band_quality);
   prepare_spinbuttons<"dB">(self->band_gain);
+  prepare_spinbuttons<"">(self->band_quality);
+  prepare_spinbuttons<"oct">(self->band_width);
 }
 
 auto create() -> EqualizerBandBox* {
