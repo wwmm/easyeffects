@@ -286,27 +286,7 @@
                             </object>
                         </child>
 
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Width</property>
-                                <property name="title-lines">2</property>
-
-                                <child>
-                                    <object class="GtkLabel" id="band_width">
-                                        <binding name="label">
-                                            <closure type="gchararray" function="set_band_width_label">
-                                                <lookup name="value">band_quality</lookup>
-                                                <lookup name="value">band_frequency</lookup>
-                                            </closure>
-                                        </binding>
-
-                                        <style>
-                                            <class name="dim-label" />
-                                        </style>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
+                        
                     </object>
                 </child>
 

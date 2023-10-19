@@ -77,14 +77,6 @@ auto set_band_quality_label(EqualizerBandBox* self, double value) -> const char*
   return g_strdup(fmt::format(ui::get_user_locale(), "Q {0:.2Lf}", value).c_str());
 }
 
-auto set_band_width_label(EqualizerBandBox* self, double quality, double frequency) -> const char* {
-  if (quality > 0.0) {
-    return g_strdup(fmt::format(ui::get_user_locale(), "{0:.1Lf} Hz", frequency / quality).c_str());
-  }
-
-  return g_strdup(_("infinity"));
-}
-
 auto set_band_scale_sensitive(EqualizerBandBox* self, const guint selected_id) -> gboolean {
   switch (selected_id) {
     case 0U:  // Off
@@ -176,7 +168,6 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, set_band_scale_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_band_label);
   gtk_widget_class_bind_template_callback(widget_class, set_band_quality_label);
-  gtk_widget_class_bind_template_callback(widget_class, set_band_width_label);
 }
 
 void equalizer_band_box_init(EqualizerBandBox* self) {
