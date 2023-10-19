@@ -161,7 +161,8 @@ void realize(GtkWidget* widget) {
 
   self->data->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
 
-  ui::presets_menu::setup(self->presetsMenu, app::EE_APP(self->data->gapp));
+  ui::presets_menu::setup(self->presetsMenu, app::EE_APP(self->data->gapp), PresetType::output);
+
   ui::effects_box::setup(self->soe_ui, app::EE_APP(self->data->gapp), PipelineType::output, self->data->icon_theme);
   ui::effects_box::setup(self->sie_ui, app::EE_APP(self->data->gapp), PipelineType::input, self->data->icon_theme);
   ui::pipe_manager_box::setup(self->pm_box, app::EE_APP(self->data->gapp));

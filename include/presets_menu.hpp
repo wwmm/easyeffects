@@ -36,6 +36,6 @@ G_END_DECLS
 
 auto create() -> PresetsMenu*;
 
-void setup(PresetsMenu* self, app::Application* application);
+void setup(PresetsMenu* self, app::Application* application, PresetType preset_type);
 
 }  // namespace ui::presets_menu

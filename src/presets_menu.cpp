@@ -28,6 +28,8 @@ struct Data {
 
   app::Application* application;
 
+  PresetType preset_type;
+
   std::vector<sigc::connection> connections;
 
   std::vector<gulong> gconnections;
@@ -377,81 +379,85 @@ void reset_menu_button_label(PresetsMenu* self) {
   g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
 }
 
-void setup(PresetsMenu* self, app::Application* application) {
+void setup(PresetsMenu* self, app::Application* application, PresetType preset_type) {
   self->data->application = application;
 
-  setup_listview<PresetType::output>(self, self->output_listview, self->output_string_list);
-  setup_listview<PresetType::input>(self, self->input_listview, self->input_string_list);
+  if (preset_type == PresetType::output) {
+    setup_listview<PresetType::output>(self, self->output_listview, self->output_string_list);
+
+    self->data->connections.push_back(self->data->application->presets_manager->user_output_preset_created.connect(
+        [=](const std::string& preset_name) {
+          if (preset_name.empty()) {
+            util::warning("can't retrieve information about the preset file");
+
+            return;
+          }
+
+          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
+            if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
+              return;
+            }
+          }
+
+          gtk_string_list_append(self->output_string_list, preset_name.c_str());
+        }));
+
+    self->data->connections.push_back(self->data->application->presets_manager->user_output_preset_removed.connect(
+        [=](const std::string& preset_name) {
+          if (preset_name.empty()) {
+            util::warning("can't retrieve information about the preset file");
+
+            return;
+          }
+
+          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
+            if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
+              gtk_string_list_remove(self->output_string_list, n);
+
+              return;
+            }
+          }
+        }));
+
+  } else if (preset_type == PresetType::input) {
+    setup_listview<PresetType::input>(self, self->input_listview, self->input_string_list);
+
+    self->data->connections.push_back(self->data->application->presets_manager->user_input_preset_created.connect(
+        [=](const std::string& preset_name) {
+          if (preset_name.empty()) {
+            util::warning("can't retrieve information about the preset file");
+
+            return;
+          }
+
+          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
+            if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
+              return;
+            }
+          }
+
+          gtk_string_list_append(self->input_string_list, preset_name.c_str());
+        }));
+
+    self->data->connections.push_back(self->data->application->presets_manager->user_input_preset_removed.connect(
+        [=](const std::string& preset_name) {
+          if (preset_name.empty()) {
+            util::warning("can't retrieve information about the preset file");
+
+            return;
+          }
+
+          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
+            if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
+              gtk_string_list_remove(self->input_string_list, n);
+
+              return;
+            }
+          }
+        }));
+  }
 
   reset_menu_button_label(self);
-
-  self->data->connections.push_back(
-      self->data->application->presets_manager->user_output_preset_created.connect([=](const std::string& preset_name) {
-        if (preset_name.empty()) {
-          util::warning("can't retrieve information about the preset file");
-
-          return;
-        }
-
-        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
-          if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
-            return;
-          }
-        }
-
-        gtk_string_list_append(self->output_string_list, preset_name.c_str());
-      }));
-
-  self->data->connections.push_back(
-      self->data->application->presets_manager->user_output_preset_removed.connect([=](const std::string& preset_name) {
-        if (preset_name.empty()) {
-          util::warning("can't retrieve information about the preset file");
-
-          return;
-        }
-
-        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
-          if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
-            gtk_string_list_remove(self->output_string_list, n);
-
-            return;
-          }
-        }
-      }));
-
-  self->data->connections.push_back(
-      self->data->application->presets_manager->user_input_preset_created.connect([=](const std::string& preset_name) {
-        if (preset_name.empty()) {
-          util::warning("can't retrieve information about the preset file");
-
-          return;
-        }
-
-        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
-          if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
-            return;
-          }
-        }
-
-        gtk_string_list_append(self->input_string_list, preset_name.c_str());
-      }));
-
-  self->data->connections.push_back(
-      self->data->application->presets_manager->user_input_preset_removed.connect([=](const std::string& preset_name) {
-        if (preset_name.empty()) {
-          util::warning("can't retrieve information about the preset file");
-
-          return;
-        }
-
-        for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
-          if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
-            gtk_string_list_remove(self->input_string_list, n);
-
-            return;
-          }
-        }
-      }));
 }
 
 void show(GtkWidget* widget) {
