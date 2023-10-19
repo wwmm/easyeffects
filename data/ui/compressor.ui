@@ -546,12 +546,6 @@
                                                                 </child>
                                                                 <child>
                                                                     <object class="GtkDropDown" id="sidechain_source">
-                                                                        <binding name="sensitive">
-                                                                            <closure type="gboolean"
-                                                                                function="set_sidechain_source_sensitive">
-                                                                                <lookup name="active">stereo_split</lookup>
-                                                                            </closure>
-                                                                        </binding>
                                                                         <property name="model">
                                                                             <object class="GtkStringList">
                                                                                 <items>
@@ -575,12 +569,6 @@
                                                                 </child>
                                                                 <child>
                                                                     <object class="GtkDropDown" id="stereo_split_source">
-                                                                        <binding name="sensitive">
-                                                                            <closure type="gboolean"
-                                                                                function="set_stereo_split_source_sensitive">
-                                                                                <lookup name="active">stereo_split</lookup>
-                                                                            </closure>
-                                                                        </binding>
                                                                         <property name="model">
                                                                             <object class="GtkStringList">
                                                                                 <items>

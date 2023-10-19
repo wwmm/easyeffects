@@ -78,14 +78,6 @@ void on_show_native_window(CompressorBox* self, GtkToggleButton* btn) {
   }
 }
 
-auto set_sidechain_source_sensitive(CompressorBox* self, const gboolean active) -> gboolean {
-  return (active != 0) ? 0 : 1;
-}
-
-auto set_stereo_split_source_sensitive(CompressorBox* self, const gboolean active) -> gboolean {
-  return (active != 0) ? 1 : 0;
-}
-
 auto set_device_sensitive(CompressorBox* self, const guint selected_id) -> gboolean {
   // Sensitive on External Device selected
   return (selected_id == 2U) ? 1 : 0;
@@ -356,6 +348,13 @@ void setup(CompressorBox* self,
 
   g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
                   G_SETTINGS_BIND_DEFAULT);
+
+  // bind source dropdowns sensitive property to split-stereo gsettings boolean
+
+  g_settings_bind(self->settings, "stereo-split", self->sidechain_source, "sensitive",
+                  G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN);
+
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split_source, "sensitive", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -450,8 +449,6 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
-  gtk_widget_class_bind_template_callback(widget_class, set_sidechain_source_sensitive);
-  gtk_widget_class_bind_template_callback(widget_class, set_stereo_split_source_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_device_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_threshold_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_amount_sensitive);
