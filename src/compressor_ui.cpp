@@ -51,8 +51,10 @@ struct _CompressorBox {
 
   GtkToggleButton *listen, *show_native_ui;
 
-  GtkDropDown *compression_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode,
-      *dropdown_input_devices;
+  GtkCheckButton* stereo_split;
+
+  GtkDropDown *compression_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *stereo_split_source, *lpf_mode,
+      *hpf_mode, *dropdown_input_devices;
 
   GListStore* input_devices_model;
 
@@ -76,7 +78,7 @@ void on_show_native_window(CompressorBox* self, GtkToggleButton* btn) {
   }
 }
 
-auto set_dropdown_sensitive(CompressorBox* self, const guint selected_id) -> gboolean {
+auto set_device_sensitive(CompressorBox* self, const guint selected_id) -> gboolean {
   // Sensitive on External Device selected
   return (selected_id == 2U) ? 1 : 0;
 }
@@ -328,6 +330,8 @@ void setup(CompressorBox* self,
 
   g_settings_bind(self->settings, "sidechain-listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split, "active", G_SETTINGS_BIND_DEFAULT);
+
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->compression_mode);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-type", self->sidechain_type);
@@ -336,12 +340,21 @@ void setup(CompressorBox* self,
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-source", self->sidechain_source);
 
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "stereo-split-source", self->stereo_split_source);
+
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "hpf-mode", self->hpf_mode);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "lpf-mode", self->lpf_mode);
 
   g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
                   G_SETTINGS_BIND_DEFAULT);
+
+  // bind source dropdowns sensitive property to split-stereo gsettings boolean
+
+  g_settings_bind(self->settings, "stereo-split", self->sidechain_source, "sensitive",
+                  G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN);
+
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split_source, "sensitive", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -426,6 +439,8 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, sidechain_type);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, sidechain_mode);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, sidechain_source);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, stereo_split_source);
+  gtk_widget_class_bind_template_child(widget_class, CompressorBox, stereo_split);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, lpf_mode);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, hpf_mode);
   gtk_widget_class_bind_template_child(widget_class, CompressorBox, listen);
@@ -434,7 +449,7 @@ void compressor_box_class_init(CompressorBoxClass* klass) {
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
   gtk_widget_class_bind_template_callback(widget_class, on_show_native_window);
-  gtk_widget_class_bind_template_callback(widget_class, set_dropdown_sensitive);
+  gtk_widget_class_bind_template_callback(widget_class, set_device_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_threshold_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_amount_sensitive);
 }

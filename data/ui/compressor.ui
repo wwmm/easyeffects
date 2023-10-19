@@ -505,13 +505,99 @@
                                                 <child>
                                                     <object class="GtkBox">
                                                         <property name="halign">center</property>
-                                                        <property name="homogeneous">1</property>
                                                         <property name="spacing">24</property>
                                                         <child>
                                                             <object class="GtkGrid">
+                                                                <property name="halign">center</property>
                                                                 <property name="row-spacing">6</property>
-                                                                <property name="column-spacing">18</property>
-                                                                <property name="column-homogeneous">1</property>
+                                                                <property name="column-spacing">12</property>
+
+                                                                <child>
+                                                                    <object class="GtkLabel">
+                                                                        <property name="halign">end</property>
+                                                                        <property name="valign">center</property>
+                                                                        <property name="label" translatable="yes">Sidechain</property>
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">1</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+                                                                <child>
+                                                                    <object class="GtkCheckButton" id="stereo_split">
+                                                                        <property name="halign">end</property>
+                                                                        <property name="valign">center</property>
+                                                                        <property name="label" translatable="yes">Stereo Split Mode</property>
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">2</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+
+                                                                <child>
+                                                                    <object class="GtkLabel">
+                                                                        <property name="label" translatable="yes">Source</property>
+                                                                        <layout>
+                                                                            <property name="column">1</property>
+                                                                            <property name="row">0</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+                                                                <child>
+                                                                    <object class="GtkDropDown" id="sidechain_source">
+                                                                        <property name="model">
+                                                                            <object class="GtkStringList">
+                                                                                <items>
+                                                                                    <item translatable="yes">Middle</item>
+                                                                                    <item translatable="yes">Side</item>
+                                                                                    <item translatable="yes">Left</item>
+                                                                                    <item translatable="yes">Right</item>
+                                                                                    <item translatable="yes">Min</item>
+                                                                                    <item translatable="yes">Max</item>
+                                                                                </items>
+                                                                            </object>
+                                                                        </property>
+                                                                        <layout>
+                                                                            <property name="column">1</property>
+                                                                            <property name="row">1</property>
+                                                                        </layout>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Sidechain Source</property>
+                                                                        </accessibility>
+                                                                    </object>
+                                                                </child>
+                                                                <child>
+                                                                    <object class="GtkDropDown" id="stereo_split_source">
+                                                                        <property name="model">
+                                                                            <object class="GtkStringList">
+                                                                                <items>
+                                                                                    <item translatable="yes">Left/Right</item>
+                                                                                    <item translatable="yes">Right/Left</item>
+                                                                                    <item translatable="yes">Mid/Side</item>
+                                                                                    <item translatable="yes">Side/Mid</item>
+                                                                                    <item translatable="yes">Min</item>
+                                                                                    <item translatable="yes">Max</item>
+                                                                                </items>
+                                                                            </object>
+                                                                        </property>
+                                                                        <layout>
+                                                                            <property name="column">1</property>
+                                                                            <property name="row">2</property>
+                                                                        </layout>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Stereo Split Source</property>
+                                                                        </accessibility>
+                                                                    </object>
+                                                                </child>
+                                                            </object>
+                                                        </child>
+
+                                                        <child>
+                                                            <object class="GtkGrid">
+                                                                <property name="halign">center</property>
+                                                                <property name="row-spacing">6</property>
+                                                                <property name="column-spacing">24</property>
                                                                 <child>
                                                                     <object class="GtkLabel">
                                                                         <property name="label" translatable="yes">Mode</property>
@@ -551,38 +637,8 @@
                                                                             <property name="column">1</property>
                                                                             <property name="row">1</property>
                                                                         </layout>
-                                                                    </object>
-                                                                </child>
-
-                                                                <child>
-                                                                    <object class="GtkLabel">
-                                                                        <property name="label" translatable="yes">Source</property>
-                                                                        <layout>
-                                                                            <property name="column">2</property>
-                                                                            <property name="row">0</property>
-                                                                        </layout>
-                                                                    </object>
-                                                                </child>
-                                                                <child>
-                                                                    <object class="GtkDropDown" id="sidechain_source">
-                                                                        <property name="model">
-                                                                            <object class="GtkStringList">
-                                                                                <items>
-                                                                                    <item translatable="yes">Middle</item>
-                                                                                    <item translatable="yes">Side</item>
-                                                                                    <item translatable="yes">Left</item>
-                                                                                    <item translatable="yes">Right</item>
-                                                                                    <item translatable="yes">Min</item>
-                                                                                    <item translatable="yes">Max</item>
-                                                                                </items>
-                                                                            </object>
-                                                                        </property>
-                                                                        <layout>
-                                                                            <property name="column">2</property>
-                                                                            <property name="row">1</property>
-                                                                        </layout>
                                                                         <accessibility>
-                                                                            <property name="label" translatable="yes">Sidechain Source</property>
+                                                                            <property name="label" translatable="yes">Listen Sidechain</property>
                                                                         </accessibility>
                                                                     </object>
                                                                 </child>
@@ -659,7 +715,7 @@
 
                                                                 <binding name="sensitive">
                                                                     <closure type="gboolean"
-                                                                        function="set_dropdown_sensitive">
+                                                                        function="set_device_sensitive">
                                                                         <lookup name="selected">sidechain_type</lookup>
                                                                     </closure>
                                                                 </binding>
