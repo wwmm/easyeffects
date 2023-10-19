@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include "application.hpp"
+#include "config.h"
 #include "preset_type.hpp"
 #include "tags_resources.hpp"
 

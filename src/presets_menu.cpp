@@ -18,7 +18,6 @@
  */
 
 #include "presets_menu.hpp"
-#include "config.h"
 
 namespace ui::presets_menu {
 
@@ -40,15 +39,15 @@ struct _PresetsMenu {
 
   AdwViewStack* stack;
 
-  GtkScrolledWindow *output_scrolled_window, *input_scrolled_window;
+  GtkScrolledWindow* scrolled_window;
 
-  GtkListView *output_listview, *input_listview;
+  GtkListView* listview;
 
-  GtkText *output_name, *input_name;
+  GtkText* name;
 
-  GtkLabel *last_used_output, *last_used_input;
+  GtkLabel* last_used_name;
 
-  GtkStringList *output_string_list, *input_string_list;
+  GtkStringList* string_list;
 
   GSettings* settings;
 
@@ -58,23 +57,14 @@ struct _PresetsMenu {
 // NOLINTNEXTLINE
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
 
-template <PresetType preset_type>
 void create_preset(PresetsMenu* self, GtkButton* button) {
-  GtkText* preset_name_box = nullptr;
-
-  if constexpr (preset_type == PresetType::output) {
-    preset_name_box = self->output_name;
-  } else if constexpr (preset_type == PresetType::input) {
-    preset_name_box = self->input_name;
-  }
-
-  auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(preset_name_box)), -1));
+  auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(self->name)), -1));
 
   if (name.empty()) {
     return;
   }
 
-  gtk_editable_set_text(GTK_EDITABLE(preset_name_box), "");
+  gtk_editable_set_text(GTK_EDITABLE(self->name), "");
 
   // Truncate if longer than 100 characters
 
@@ -88,18 +78,9 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
     return;
   }
 
-  self->data->application->presets_manager->add(preset_type, name);
+  self->data->application->presets_manager->add(self->data->preset_type, name);
 }
 
-void create_output_preset(PresetsMenu* self, GtkButton* button) {
-  create_preset<PresetType::output>(self, button);
-}
-
-void create_input_preset(PresetsMenu* self, GtkButton* button) {
-  create_preset<PresetType::input>(self, button);
-}
-
-template <PresetType preset_type>
 void import_preset(PresetsMenu* self) {
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
@@ -145,9 +126,9 @@ void import_preset(PresetsMenu* self) {
           auto* file = static_cast<GFile*>(g_list_model_get_item(files_list, n));
           auto* path = g_file_get_path(file);
 
-          if constexpr (preset_type == PresetType::output) {
+          if (self->data->preset_type == PresetType::output) {
             self->data->application->presets_manager->import(PresetType::output, path);
-          } else if constexpr (preset_type == PresetType::input) {
+          } else if (self->data->preset_type == PresetType::input) {
             self->data->application->presets_manager->import(PresetType::input, path);
           }
 
@@ -157,14 +138,6 @@ void import_preset(PresetsMenu* self) {
         g_object_unref(files_list);
       },
       self);
-}
-
-void import_output_preset(PresetsMenu* self, GtkButton* button) {
-  import_preset<PresetType::output>(self);
-}
-
-void import_input_preset(PresetsMenu* self, GtkButton* button) {
-  import_preset<PresetType::input>(self);
 }
 
 template <PresetType preset_type>
@@ -352,112 +325,120 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
   }
 }
 
-void reset_menu_button_label(PresetsMenu* self) {
-  const auto names_input = self->data->application->presets_manager->get_names(PresetType::input);
-  const auto names_output = self->data->application->presets_manager->get_names(PresetType::output);
-
-  if (names_input.empty() && names_output.empty()) {
-    g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
-    g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
-
-    return;
-  }
-
-  for (const auto& name : names_input) {
-    if (name == util::gsettings_get_string(self->settings, "last-used-input-preset")) {
-      return;
-    }
-  }
-
-  for (const auto& name : names_output) {
-    if (name == util::gsettings_get_string(self->settings, "last-used-output-preset")) {
-      return;
-    }
-  }
-
-  g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
-  g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
-}
-
 void setup(PresetsMenu* self, app::Application* application, PresetType preset_type) {
   self->data->application = application;
+  self->data->preset_type = preset_type;
+
+  auto add_to_list = [=](const std::string& preset_name) {
+    if (preset_name.empty()) {
+      util::warning("can't retrieve information about the preset file");
+
+      return;
+    }
+
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
+      if (preset_name == gtk_string_list_get_string(self->string_list, n)) {
+        return;
+      }
+    }
+
+    gtk_string_list_append(self->string_list, preset_name.c_str());
+  };
+
+  auto remove_from_list = [=](const std::string& preset_name) {
+    if (preset_name.empty()) {
+      util::warning("can't retrieve information about the preset file");
+
+      return;
+    }
+
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
+      if (preset_name == gtk_string_list_get_string(self->string_list, n)) {
+        gtk_string_list_remove(self->string_list, n);
+
+        return;
+      }
+    }
+  };
 
   if (preset_type == PresetType::output) {
-    setup_listview<PresetType::output>(self, self->output_listview, self->output_string_list);
+    setup_listview<PresetType::output>(self, self->listview, self->string_list);
 
-    self->data->connections.push_back(self->data->application->presets_manager->user_output_preset_created.connect(
-        [=](const std::string& preset_name) {
-          if (preset_name.empty()) {
-            util::warning("can't retrieve information about the preset file");
+    self->data->connections.push_back(
+        self->data->application->presets_manager->user_output_preset_created.connect(add_to_list));
 
-            return;
-          }
+    self->data->connections.push_back(
+        self->data->application->presets_manager->user_output_preset_removed.connect(remove_from_list));
 
-          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
-            if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
-              return;
-            }
-          }
+    self->data->gconnections.push_back(
+        g_signal_connect(self->settings, "changed::last-used-output-preset",
+                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                           auto* self = static_cast<PresetsMenu*>(user_data);
 
-          gtk_string_list_append(self->output_string_list, preset_name.c_str());
-        }));
+                           gtk_label_set_text(self->last_used_name, util::gsettings_get_string(settings, key).c_str());
+                         }),
+                         self));
 
-    self->data->connections.push_back(self->data->application->presets_manager->user_output_preset_removed.connect(
-        [=](const std::string& preset_name) {
-          if (preset_name.empty()) {
-            util::warning("can't retrieve information about the preset file");
+    gtk_label_set_text(self->last_used_name,
+                       util::gsettings_get_string(self->settings, "last-used-output-preset").c_str());
 
-            return;
-          }
+    // reset last used name label
 
-          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
-            if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
-              gtk_string_list_remove(self->output_string_list, n);
+    const auto names_output = self->data->application->presets_manager->get_names(PresetType::output);
 
-              return;
-            }
-          }
-        }));
+    if (names_output.empty()) {
+      g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
+
+      return;
+    }
+
+    for (const auto& name : names_output) {
+      if (name == util::gsettings_get_string(self->settings, "last-used-output-preset")) {
+        return;
+      }
+    }
+
+    g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
 
   } else if (preset_type == PresetType::input) {
-    setup_listview<PresetType::input>(self, self->input_listview, self->input_string_list);
+    setup_listview<PresetType::input>(self, self->listview, self->string_list);
 
-    self->data->connections.push_back(self->data->application->presets_manager->user_input_preset_created.connect(
-        [=](const std::string& preset_name) {
-          if (preset_name.empty()) {
-            util::warning("can't retrieve information about the preset file");
+    self->data->connections.push_back(
+        self->data->application->presets_manager->user_input_preset_created.connect(add_to_list));
 
-            return;
-          }
+    self->data->connections.push_back(
+        self->data->application->presets_manager->user_input_preset_removed.connect(remove_from_list));
 
-          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
-            if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
-              return;
-            }
-          }
+    self->data->gconnections.push_back(
+        g_signal_connect(self->settings, "changed::last-used-input-preset",
+                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                           auto* self = static_cast<PresetsMenu*>(user_data);
 
-          gtk_string_list_append(self->input_string_list, preset_name.c_str());
-        }));
+                           gtk_label_set_text(self->last_used_name, util::gsettings_get_string(settings, key).c_str());
+                         }),
+                         self));
 
-    self->data->connections.push_back(self->data->application->presets_manager->user_input_preset_removed.connect(
-        [=](const std::string& preset_name) {
-          if (preset_name.empty()) {
-            util::warning("can't retrieve information about the preset file");
+    gtk_label_set_text(self->last_used_name,
+                       util::gsettings_get_string(self->settings, "last-used-input-preset").c_str());
 
-            return;
-          }
+    // reset last used name label
 
-          for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
-            if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
-              gtk_string_list_remove(self->input_string_list, n);
+    const auto names_input = self->data->application->presets_manager->get_names(PresetType::input);
 
-              return;
-            }
-          }
-        }));
+    if (names_input.empty()) {
+      g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
+
+      return;
+    }
+
+    for (const auto& name : names_input) {
+      if (name == util::gsettings_get_string(self->settings, "last-used-input-preset")) {
+        return;
+      }
+    }
+
+    g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
   }
-
-  reset_menu_button_label(self);
 }
 
 void show(GtkWidget* widget) {
@@ -469,8 +450,7 @@ void show(GtkWidget* widget) {
 
   const int menu_height = static_cast<int>(0.5F * static_cast<float>(active_window_height));
 
-  gtk_scrolled_window_set_max_content_height(self->output_scrolled_window, menu_height);
-  gtk_scrolled_window_set_max_content_height(self->input_scrolled_window, menu_height);
+  gtk_scrolled_window_set_max_content_height(self->scrolled_window, menu_height);
 
   GTK_WIDGET_CLASS(presets_menu_parent_class)->show(widget);
 }
@@ -517,25 +497,15 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::presets_menu_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_string_list);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_string_list);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, string_list);
 
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, stack);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, name);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_name);
 
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_scrolled_window);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_listview);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_name);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_output);
-
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_scrolled_window);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_listview);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_name);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_input);
-
-  gtk_widget_class_bind_template_callback(widget_class, create_output_preset);
-  gtk_widget_class_bind_template_callback(widget_class, create_input_preset);
-  gtk_widget_class_bind_template_callback(widget_class, import_output_preset);
-  gtk_widget_class_bind_template_callback(widget_class, import_input_preset);
+  gtk_widget_class_bind_template_callback(widget_class, create_preset);
+  gtk_widget_class_bind_template_callback(widget_class, import_preset);
 }
 
 void presets_menu_init(PresetsMenu* self) {
@@ -544,29 +514,6 @@ void presets_menu_init(PresetsMenu* self) {
   self->data = new Data();
 
   self->settings = g_settings_new(tags::app::id);
-
-  gtk_label_set_text(self->last_used_output,
-                     util::gsettings_get_string(self->settings, "last-used-output-preset").c_str());
-  gtk_label_set_text(self->last_used_input,
-                     util::gsettings_get_string(self->settings, "last-used-input-preset").c_str());
-
-  self->data->gconnections.push_back(
-      g_signal_connect(self->settings, "changed::last-used-output-preset",
-                       G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                         auto* self = static_cast<PresetsMenu*>(user_data);
-
-                         gtk_label_set_text(self->last_used_output, util::gsettings_get_string(settings, key).c_str());
-                       }),
-                       self));
-
-  self->data->gconnections.push_back(
-      g_signal_connect(self->settings, "changed::last-used-input-preset",
-                       G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                         auto* self = static_cast<PresetsMenu*>(user_data);
-
-                         gtk_label_set_text(self->last_used_input, util::gsettings_get_string(settings, key).c_str());
-                       }),
-                       self));
 }
 
 auto create() -> PresetsMenu* {
