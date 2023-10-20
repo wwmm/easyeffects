@@ -48,16 +48,15 @@ struct _GateBox {
 
   GtkLabel *gain_label, *sidechain_label, *curve_label, *envelope_label;
 
-  GtkToggleButton* hysteresis;
+  GtkToggleButton *hysteresis, *listen, *show_native_ui;
+
+  GtkCheckButton* stereo_split;
 
   GtkSpinButton *attack, *release, *curve_threshold, *curve_zone, *hysteresis_threshold, *hysteresis_zone, *dry, *wet,
       *reduction, *makeup, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
 
-  GtkComboBoxText *sidechain_input, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode;
-
-  GtkToggleButton *listen, *show_native_ui;
-
-  GtkDropDown* dropdown_input_devices;
+  GtkDropDown *sidechain_source, *stereo_split_source, *sidechain_mode, *dropdown_input_devices, *sidechain_input,
+      *lpf_mode, *hpf_mode;
 
   GListStore* input_devices_model;
 
@@ -81,12 +80,9 @@ void on_show_native_window(GateBox* self, GtkToggleButton* btn) {
   }
 }
 
-auto set_dropdown_sensitive(GateBox* self, const char* active_id) -> gboolean {
-  if (g_strcmp0(active_id, "External") == 0) {
-    return 1;
-  }
-
-  return 0;
+auto set_dropdown_sensitive(GateBox* self, const guint selected_id) -> gboolean {
+  // Sensitive on External Device selected
+  return (selected_id == 0U) ? 0 : 1;
 }
 
 void setup_dropdown_input_device(GateBox* self) {
@@ -367,18 +363,29 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   g_settings_bind(self->settings, "sidechain-listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "sidechain-input", self->sidechain_input, "active-id", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "sidechain-mode", self->sidechain_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-input", self->sidechain_input);
 
-  g_settings_bind(self->settings, "sidechain-source", self->sidechain_source, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-mode", self->sidechain_mode);
 
-  g_settings_bind(self->settings, "hpf-mode", self->hpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-source", self->sidechain_source);
 
-  g_settings_bind(self->settings, "lpf-mode", self->lpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "stereo-split-source", self->stereo_split_source);
+
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "hpf-mode", self->hpf_mode);
+
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "lpf-mode", self->lpf_mode);
 
   g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
                   G_SETTINGS_BIND_DEFAULT);
+
+  // bind source dropdowns sensitive property to split-stereo gsettings boolean
+
+  g_settings_bind(self->settings, "stereo-split", self->sidechain_source, "sensitive",
+                  static_cast<GSettingsBindFlags>(G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN));
+
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split_source, "sensitive", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -466,6 +473,8 @@ void gate_box_class_init(GateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, GateBox, sidechain_input);
   gtk_widget_class_bind_template_child(widget_class, GateBox, sidechain_mode);
   gtk_widget_class_bind_template_child(widget_class, GateBox, sidechain_source);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, stereo_split_source);
+  gtk_widget_class_bind_template_child(widget_class, GateBox, stereo_split);
   gtk_widget_class_bind_template_child(widget_class, GateBox, lpf_mode);
   gtk_widget_class_bind_template_child(widget_class, GateBox, hpf_mode);
   gtk_widget_class_bind_template_child(widget_class, GateBox, listen);

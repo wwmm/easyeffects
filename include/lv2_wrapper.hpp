@@ -58,7 +58,11 @@ struct Port {
 
   std::string symbol;
 
-  float value;  // Control value (if applicable)
+  float value = 0.0F;  // Control value (if applicable)
+
+  float min = -std::numeric_limits<float>::infinity();
+
+  float max = std::numeric_limits<float>::infinity();
 
   bool is_input;  // True if an input port
 

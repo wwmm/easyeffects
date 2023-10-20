@@ -197,6 +197,8 @@ auto gsettings_get_string(GSettings* settings, const char* key) -> std::string {
   return output;
 }
 
+// The following is not used and it was made only for reference. May be removed in the future.
+// GIO recommends to not use g_settings_schema_key_get_range in "normal programs".
 auto gsettings_get_range(GSettings* settings, const char* key) -> std::pair<std::string, std::string> {
   GSettingsSchema* schema = nullptr;
   const gchar* type = nullptr;

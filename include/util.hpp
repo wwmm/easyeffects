@@ -249,4 +249,34 @@ auto linspace(const T& start, const T& stop, const uint& npoints) -> std::vector
   return output;
 }
 
+// The following is not used and it was made only for reference. May be removed in the future.
+template <Number T>
+auto gsettings_key_check_number_range(GSettings* settings, const char* key, const T& v) -> bool {
+  GSettingsSchema* schema = nullptr;
+  GVariant* g_value = nullptr;
+
+  // Get GSettingsSchema
+  g_object_get(settings, "settings-schema", &schema, nullptr);
+
+  auto* schema_key = g_settings_schema_get_key(schema, key);
+
+  // Get GVariant
+  if constexpr (std::is_same_v<T, double>) {
+    g_value = g_variant_new_double(v);
+  } else if constexpr (std::is_same_v<T, int>) {
+    g_value = g_variant_new_int32(v);
+  }
+
+  if (g_value == nullptr) {
+    return false;
+  }
+
+  const auto is_in_range = g_settings_schema_key_range_check(schema_key, g_value);
+
+  g_variant_unref(g_value);
+  g_settings_schema_unref(schema);
+
+  return is_in_range != 0;
+}
+
 }  // namespace util

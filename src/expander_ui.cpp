@@ -51,8 +51,10 @@ struct _ExpanderBox {
 
   GtkToggleButton *listen, *show_native_ui;
 
-  GtkDropDown *expander_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *lpf_mode, *hpf_mode,
-      *dropdown_input_devices;
+  GtkCheckButton* stereo_split;
+
+  GtkDropDown *expander_mode, *sidechain_type, *sidechain_mode, *sidechain_source, *stereo_split_source, *lpf_mode,
+      *hpf_mode, *dropdown_input_devices;
 
   GListStore* input_devices_model;
 
@@ -293,6 +295,8 @@ void setup(ExpanderBox* self, std::shared_ptr<Expander> expander, const std::str
 
   g_settings_bind(self->settings, "sidechain-listen", self->listen, "active", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split, "active", G_SETTINGS_BIND_DEFAULT);
+
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "mode", self->expander_mode);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-type", self->sidechain_type);
@@ -301,12 +305,21 @@ void setup(ExpanderBox* self, std::shared_ptr<Expander> expander, const std::str
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-source", self->sidechain_source);
 
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "stereo-split-source", self->stereo_split_source);
+
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "hpf-mode", self->hpf_mode);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "lpf-mode", self->lpf_mode);
 
   g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
                   G_SETTINGS_BIND_DEFAULT);
+
+  // bind source dropdowns sensitive property to split-stereo gsettings boolean
+
+  g_settings_bind(self->settings, "stereo-split", self->sidechain_source, "sensitive",
+                  static_cast<GSettingsBindFlags>(G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN));
+
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split_source, "sensitive", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -389,6 +402,8 @@ void expander_box_class_init(ExpanderBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ExpanderBox, sidechain_type);
   gtk_widget_class_bind_template_child(widget_class, ExpanderBox, sidechain_mode);
   gtk_widget_class_bind_template_child(widget_class, ExpanderBox, sidechain_source);
+  gtk_widget_class_bind_template_child(widget_class, ExpanderBox, stereo_split_source);
+  gtk_widget_class_bind_template_child(widget_class, ExpanderBox, stereo_split);
   gtk_widget_class_bind_template_child(widget_class, ExpanderBox, lpf_mode);
   gtk_widget_class_bind_template_child(widget_class, ExpanderBox, hpf_mode);
   gtk_widget_class_bind_template_child(widget_class, ExpanderBox, listen);

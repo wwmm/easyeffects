@@ -18,6 +18,14 @@
         <value nick="Min" value="4" />
         <value nick="Max" value="5" />
     </enum>
+    <enum id="com.github.wwmm.easyeffects.gate.sidechain.stereosplit.source.enum">
+        <value nick="Left/Right" value="0" />
+        <value nick="Right/Left" value="1" />
+        <value nick="Mid/Side" value="2" />
+        <value nick="Side/Mid" value="3" />
+        <value nick="Min" value="4" />
+        <value nick="Max" value="5" />
+    </enum>
     <enum id="com.github.wwmm.easyeffects.gate.filter.mode.enum">
         <value nick="off" value="0" />
         <value nick="12 dB/oct" value="1" />
@@ -88,8 +96,15 @@
         <key name="sidechain-mode" enum="com.github.wwmm.easyeffects.gate.sidechain.mode.enum">
             <default>"RMS"</default>
         </key>
+        <key name="stereo-split" type="b">
+            <default>false</default>
+        </key>
         <key name="sidechain-source" enum="com.github.wwmm.easyeffects.gate.sidechain.source.enum">
             <default>"Middle"</default>
+        </key>
+        <key name="stereo-split-source"
+            enum="com.github.wwmm.easyeffects.gate.sidechain.stereosplit.source.enum">
+            <default>"Left/Right"</default>
         </key>
         <key name="sidechain-preamp" type="d">
             <range min="-120" max="40" />

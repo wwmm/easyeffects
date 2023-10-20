@@ -51,9 +51,13 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
 
   lv2_wrapper->bind_key_enum<"scs", "sidechain-source">(settings);
 
+  lv2_wrapper->bind_key_enum<"sscs", "stereo-split-source">(settings);
+
   lv2_wrapper->bind_key_enum<"shpm", "hpf-mode">(settings);
 
   lv2_wrapper->bind_key_enum<"slpm", "lpf-mode">(settings);
+
+  lv2_wrapper->bind_key_bool<"ssplit", "stereo-split">(settings);
 
   lv2_wrapper->bind_key_bool<"scl", "sidechain-listen">(settings);
 
