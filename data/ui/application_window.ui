@@ -85,6 +85,7 @@
                     <object class="AdwViewStack" id="stack">
                         <property name="hexpand">1</property>
                         <property name="vexpand">1</property>
+                        <signal name="notify::visible-child" handler="stack_visible_child_changed" object="ApplicationWindow" />
                     </object>
                 </child>
 

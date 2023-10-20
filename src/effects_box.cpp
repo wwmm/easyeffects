@@ -244,6 +244,7 @@ void setup_spectrum(EffectsBox* self) {
                        }),
                        self));
 }
+
 void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget* stack) {
   const auto* name = adw_view_stack_get_visible_child_name(ADW_VIEW_STACK(stack));
 

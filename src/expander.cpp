@@ -166,10 +166,17 @@ void Expander::process(std::span<float>& left_in,
     get_peaks(left_in, right_in, left_out, right_out);
 
     if (send_notifications) {
-      reduction_port_value = lv2_wrapper->get_control_port_value("rlm");
-      sidechain_port_value = lv2_wrapper->get_control_port_value("slm");
-      curve_port_value = lv2_wrapper->get_control_port_value("clm");
-      envelope_port_value = lv2_wrapper->get_control_port_value("elm");
+      reduction_port_value =
+          0.5F * (lv2_wrapper->get_control_port_value("rlm_l") + lv2_wrapper->get_control_port_value("rlm_r"));
+
+      sidechain_port_value =
+          0.5F * (lv2_wrapper->get_control_port_value("slm_l") + lv2_wrapper->get_control_port_value("slm_r"));
+
+      curve_port_value =
+          0.5F * (lv2_wrapper->get_control_port_value("clm_l") + lv2_wrapper->get_control_port_value("clm_r"));
+
+      envelope_port_value =
+          0.5F * (lv2_wrapper->get_control_port_value("elm_l") + lv2_wrapper->get_control_port_value("elm_r"));
 
       reduction.emit(reduction_port_value);
       sidechain.emit(sidechain_port_value);

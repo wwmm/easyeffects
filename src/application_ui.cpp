@@ -48,7 +48,7 @@ struct _ApplicationWindow {
 
   GtkToggleButton* bypass_button;
 
-  ui::presets_menu::PresetsMenu* presetsMenu;
+  ui::presets_menu::PresetsMenu *input_presets_menu, *output_presets_menu;
   ui::effects_box::EffectsBox* soe_ui;
   ui::effects_box::EffectsBox* sie_ui;
   ui::pipe_manager_box::PipeManagerBox* pm_box;
@@ -100,6 +100,30 @@ void apply_css_style() {
 
   gtk_style_context_add_provider_for_display(gdk_display_get_default(), GTK_STYLE_PROVIDER(provider),
                                              GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+}
+
+void stack_visible_child_changed(ApplicationWindow* self, GParamSpec* pspec, GtkWidget* stack) {
+  if (!GTK_MENU_BUTTON(self->presets_menu_button)) {
+    return;
+  }
+
+  if (!GTK_WIDGET(self->output_presets_menu) || !GTK_WIDGET(self->input_presets_menu)) {
+    return;
+  }
+
+  if (self->data->gapp == nullptr) {
+    return;
+  }
+
+  const auto* name = adw_view_stack_get_visible_child_name(ADW_VIEW_STACK(stack));
+
+  if (g_strcmp0(name, "stream_output") == 0) {
+    gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->output_presets_menu));
+  } else if (g_strcmp0(name, "stream_input") == 0) {
+    gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->input_presets_menu));
+  } else if (g_strcmp0(name, "page_pipewire") == 0) {
+    gtk_menu_button_set_popover(self->presets_menu_button, nullptr);
+  }
 }
 
 void constructed(GObject* object) {
@@ -161,7 +185,8 @@ void realize(GtkWidget* widget) {
 
   self->data->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
 
-  ui::presets_menu::setup(self->presetsMenu, app::EE_APP(self->data->gapp), PresetType::output);
+  ui::presets_menu::setup(self->output_presets_menu, app::EE_APP(self->data->gapp), PresetType::output);
+  ui::presets_menu::setup(self->input_presets_menu, app::EE_APP(self->data->gapp), PresetType::input);
 
   ui::effects_box::setup(self->soe_ui, app::EE_APP(self->data->gapp), PipelineType::output, self->data->icon_theme);
   ui::effects_box::setup(self->sie_ui, app::EE_APP(self->data->gapp), PipelineType::input, self->data->icon_theme);
@@ -204,6 +229,11 @@ void dispose(GObject* object) {
 
   g_object_unref(self->settings);
 
+  // removing the extra reference
+
+  g_object_unref(self->output_presets_menu);
+  g_object_unref(self->input_presets_menu);
+
   ui::unref_global_app_settings();
 
   util::debug("disposed");
@@ -238,6 +268,8 @@ void application_window_class_init(ApplicationWindowClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, presets_menu_button);
   gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, bypass_button);
+
+  gtk_widget_class_bind_template_callback(widget_class, stack_visible_child_changed);
 }
 
 void application_window_init(ApplicationWindow* self) {
@@ -271,7 +303,17 @@ void application_window_init(ApplicationWindow* self) {
 
   ui::init_global_app_settings();
 
-  self->presetsMenu = ui::presets_menu::create();
+  self->output_presets_menu = ui::presets_menu::create();
+  self->input_presets_menu = ui::presets_menu::create();
+
+  /*
+    Adding an extra reference so that the menu sin ´t destroyed when alternating between the input and output effects
+    section
+  */
+
+  g_object_ref(self->output_presets_menu);
+  g_object_ref(self->input_presets_menu);
+
   self->soe_ui = ui::effects_box::create();
   self->sie_ui = ui::effects_box::create();
   self->pm_box = ui::pipe_manager_box::create();
@@ -288,11 +330,12 @@ void application_window_init(ApplicationWindow* self) {
   adw_view_stack_page_set_icon_name(sie_ui_page, "audio-input-microphone-symbolic");
   adw_view_stack_page_set_icon_name(pm_box_page, "network-server-symbolic");
 
-  gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->presetsMenu));
+  gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->output_presets_menu));
 
   g_settings_bind(self->settings, "bypass", self->bypass_button, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "autohide-popovers", self->presetsMenu, "autohide", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "autohide-popovers", self->output_presets_menu, "autohide", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, "autohide-popovers", self->input_presets_menu, "autohide", G_SETTINGS_BIND_DEFAULT);
 
   g_signal_connect(self->settings, "changed::use-dark-theme",
                    G_CALLBACK(+[](GSettings* settings, char* key, ApplicationWindow* self) { init_theme_color(self); }),
