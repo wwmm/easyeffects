@@ -55,9 +55,8 @@ struct _GateBox {
   GtkSpinButton *attack, *release, *curve_threshold, *curve_zone, *hysteresis_threshold, *hysteresis_zone, *dry, *wet,
       *reduction, *makeup, *preamp, *reactivity, *lookahead, *hpf_freq, *lpf_freq;
 
-  GtkComboBoxText *sidechain_input, *lpf_mode, *hpf_mode;
-
-  GtkDropDown *sidechain_source, *stereo_split_source, *sidechain_mode, *dropdown_input_devices;
+  GtkDropDown *sidechain_source, *stereo_split_source, *sidechain_mode, *dropdown_input_devices, *sidechain_input,
+      *lpf_mode, *hpf_mode;
 
   GListStore* input_devices_model;
 
@@ -81,12 +80,9 @@ void on_show_native_window(GateBox* self, GtkToggleButton* btn) {
   }
 }
 
-auto set_dropdown_sensitive(GateBox* self, const char* active_id) -> gboolean {
-  if (g_strcmp0(active_id, "External") == 0) {
-    return 1;
-  }
-
-  return 0;
+auto set_dropdown_sensitive(GateBox* self, const guint selected_id) -> gboolean {
+  // Sensitive on External Device selected
+  return (selected_id == 0U) ? 0 : 1;
 }
 
 void setup_dropdown_input_device(GateBox* self) {
@@ -369,17 +365,17 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 
   g_settings_bind(self->settings, "stereo-split", self->stereo_split, "active", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, "sidechain-input", self->sidechain_input, "active-id", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "hpf-mode", self->hpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, "lpf-mode", self->lpf_mode, "active-id", G_SETTINGS_BIND_DEFAULT);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-input", self->sidechain_input);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-mode", self->sidechain_mode);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "sidechain-source", self->sidechain_source);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "stereo-split-source", self->stereo_split_source);
+
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "hpf-mode", self->hpf_mode);
+
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, "lpf-mode", self->lpf_mode);
 
   g_settings_bind(ui::get_global_app_settings(), "show-native-plugin-ui", self->show_native_ui, "visible",
                   G_SETTINGS_BIND_DEFAULT);

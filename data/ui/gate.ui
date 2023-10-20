@@ -820,13 +820,17 @@
                                                         </child>
 
                                                         <child>
-                                                            <object class="GtkComboBoxText" id="sidechain_input">
+                                                            <object class="GtkDropDown" id="sidechain_input">
                                                                 <property name="valign">center</property>
                                                                 <property name="margin-end">6</property>
-                                                                <items>
-                                                                    <item id="Internal" translatable="yes">Internal</item>
-                                                                    <item id="External" translatable="yes">External</item>
-                                                                </items>
+                                                                <property name="model">
+                                                                    <object class="GtkStringList">
+                                                                        <items>
+                                                                            <item translatable="yes">Internal</item>
+                                                                            <item translatable="yes">External</item>
+                                                                        </items>
+                                                                    </object>
+                                                                </property>
                                                                 <layout>
                                                                     <property name="column">1</property>
                                                                     <property name="row">1</property>
@@ -842,8 +846,9 @@
                                                                 <property name="margin-end">6</property>
 
                                                                 <binding name="sensitive">
-                                                                    <closure type="gboolean" function="set_dropdown_sensitive">
-                                                                        <lookup name="active-id">sidechain_input</lookup>
+                                                                    <closure type="gboolean"
+                                                                        function="set_dropdown_sensitive">
+                                                                        <lookup name="selected">sidechain_input</lookup>
                                                                     </closure>
                                                                 </binding>
 
@@ -1028,15 +1033,19 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkComboBoxText" id="hpf_mode">
+                                                    <object class="GtkDropDown" id="hpf_mode">
                                                         <property name="margin-bottom">6</property>
                                                         <property name="margin-end">6</property>
-                                                        <items>
-                                                            <item translatable="yes" id="off">Off</item>
-                                                            <item translatable="yes" id="12 dB/oct">12 dB/oct</item>
-                                                            <item translatable="yes" id="24 dB/oct">24 dB/oct</item>
-                                                            <item translatable="yes" id="36 dB/oct">36 dB/oct</item>
-                                                        </items>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item translatable="yes">Off</item>
+                                                                    <item translatable="yes">12 dB/oct</item>
+                                                                    <item translatable="yes">24 dB/oct</item>
+                                                                    <item translatable="yes">36 dB/oct</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
                                                         <layout>
                                                             <property name="column">1</property>
                                                             <property name="row">1</property>
@@ -1084,15 +1093,19 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkComboBoxText" id="lpf_mode">
+                                                    <object class="GtkDropDown" id="lpf_mode">
                                                         <property name="margin-bottom">6</property>
                                                         <property name="margin-start">6</property>
-                                                        <items>
-                                                            <item translatable="yes" id="off">Off</item>
-                                                            <item translatable="yes" id="12 dB/oct">12 dB/oct</item>
-                                                            <item translatable="yes" id="24 dB/oct">24 dB/oct</item>
-                                                            <item translatable="yes" id="36 dB/oct">36 dB/oct</item>
-                                                        </items>
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item translatable="yes">Off</item>
+                                                                    <item translatable="yes">12 dB/oct</item>
+                                                                    <item translatable="yes">24 dB/oct</item>
+                                                                    <item translatable="yes">36 dB/oct</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
                                                         <layout>
                                                             <property name="column">2</property>
                                                             <property name="row">1</property>
