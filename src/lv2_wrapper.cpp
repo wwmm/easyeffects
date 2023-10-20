@@ -109,11 +109,13 @@ void Lv2Wrapper::create_ports() {
 
   ports.resize(n_ports);
 
-  // Get default values for all ports
+  // Get min, max and default values for all ports
 
   std::vector<float> values(n_ports);
+  std::vector<float> minimum(n_ports);
+  std::vector<float> maximum(n_ports);
 
-  lilv_plugin_get_port_ranges_float(plugin, nullptr, nullptr, values.data());
+  lilv_plugin_get_port_ranges_float(plugin, minimum.data(), maximum.data(), values.data());
 
   LilvNode* lv2_InputPort = lilv_new_uri(world, LV2_CORE__InputPort);
   LilvNode* lv2_OutputPort = lilv_new_uri(world, LV2_CORE__OutputPort);
@@ -132,8 +134,19 @@ void Lv2Wrapper::create_ports() {
     port->index = n;
     port->name = lilv_node_as_string(port_name);
     port->symbol = lilv_node_as_string(lilv_port_get_symbol(plugin, lilv_port));
-    port->value = std::isnan(values[n]) ? 0.0F : values[n];
     port->optional = lilv_port_has_property(plugin, lilv_port, lv2_connectionOptional);
+
+    // Save port default value
+    if (!std::isnan(values[n])) {
+      port->value = values[n];
+    }
+    // Save min minimum and maximum values
+    if (!std::isnan(minimum[n])) {
+      port->min = minimum[n];
+    }
+    if (!std::isnan(maximum[n])) {
+      port->max = maximum[n];
+    }
 
     // util::warning("port name: " + port->name);
     // util::warning("port symbol: " + port->symbol);
@@ -357,7 +370,18 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
 
       ui_port_event(p.index, value);
 
-      p.value = value;
+      // Check port bounds
+      if (value < p.min) {
+        // util::warning(plugin_uri + " value out of minimum limit for port " + p.symbol + " (" + p.name + ")");
+
+        p.value = p.min;
+      } else if (value > p.max) {
+        // util::warning(plugin_uri + " value out of maximum limit for port " + p.symbol + " (" + p.name + ")");
+
+        p.value = p.max;
+      } else {
+        p.value = value;
+      }
 
       found = true;
 
