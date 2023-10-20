@@ -94,6 +94,8 @@ msgstr "_Info su Easy Effects"
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
 #: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
+#: src/presets_menu.cpp:120 src/presets_menu.cpp:358 src/presets_menu.cpp:359
+#: src/presets_menu.cpp:376 src/presets_menu.cpp:377
 msgid "Presets"
 msgstr "Profili"
 
@@ -113,7 +115,7 @@ msgstr "Bypass Globale"
 msgid "Primary Menu"
 msgstr "Menu Principale"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:93 data/ui/application_window.ui:92
 msgid "Easy Effects Window"
 msgstr "Finestra di Easy Effects"
 
@@ -210,7 +212,7 @@ msgstr "Guadagno Uscita"
 #: data/ui/multiband_compressor.ui:477 data/ui/multiband_gate.ui:477
 #: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:274 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
-#: data/ui/stereo_tools.ui:629
+#: data/ui/stereo_tools.ui:629 data/ui/presets_menu.ui:177
 msgid "Input"
 msgstr "Ingresso"
 
@@ -238,7 +240,7 @@ msgstr "Guadagno in Ingresso del Plugin"
 #: data/ui/multiband_compressor.ui:561 data/ui/multiband_gate.ui:561
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309 data/ui/reverb.ui:450
 #: data/ui/rnnoise.ui:358 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
-#: data/ui/stereo_tools.ui:713
+#: data/ui/stereo_tools.ui:713 data/ui/presets_menu.ui:28
 msgid "Output"
 msgstr "Uscita"
 
@@ -276,6 +278,7 @@ msgstr "Dispositivo Audio"
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:26
+#: data/ui/presets_menu.ui:47 data/ui/presets_menu.ui:195
 msgid "Name"
 msgstr "Nome"
 
@@ -478,9 +481,8 @@ msgid "Sidechain"
 msgstr "Sidechain"
 
 #: data/ui/compressor.ui:530
-#, fuzzy
 msgid "Stereo Split Mode"
-msgstr "Modalità Stereo"
+msgstr "Modalità Divisione Stereo"
 
 #: data/ui/compressor.ui:540 data/ui/expander.ui:478 data/ui/gate.ui:688
 #: data/ui/multiband_compressor_band.ui:493 data/ui/multiband_gate_band.ui:552
@@ -530,29 +532,24 @@ msgid "Sidechain Source"
 msgstr "Sorgente Sidechain"
 
 #: data/ui/compressor.ui:575
-#, fuzzy
 msgid "Left/Right"
-msgstr "Ritardo Sinistro Destro"
+msgstr "Sinistro/Destro"
 
 #: data/ui/compressor.ui:576
-#, fuzzy
 msgid "Right/Left"
-msgstr "Destro"
+msgstr "Destro/Sinistro"
 
 #: data/ui/compressor.ui:577
-#, fuzzy
 msgid "Mid/Side"
-msgstr "Lato"
+msgstr "Mid/Lato"
 
 #: data/ui/compressor.ui:578
-#, fuzzy
 msgid "Side/Mid"
-msgstr "Lato"
+msgstr "Lato/Mid"
 
 #: data/ui/compressor.ui:589
-#, fuzzy
 msgid "Stereo Split Source"
-msgstr "Modalità Stereo"
+msgstr "Sorgente Divisione Stereo"
 
 #: data/ui/compressor.ui:615 data/ui/deesser.ui:50 data/ui/expander.ui:448
 #: data/ui/gate.ui:660 data/ui/multiband_compressor_band.ui:474
@@ -583,9 +580,8 @@ msgid "Sidechain Mode"
 msgstr "Modalità Sidechain"
 
 #: data/ui/compressor.ui:641
-#, fuzzy
 msgid "Listen Sidechain"
-msgstr "Sidechain Esterna"
+msgstr "Ascolta Sidechain"
 
 #: data/ui/compressor.ui:670 data/ui/equalizer_band.ui:96
 #: data/ui/expander.ui:533 data/ui/filter.ui:37 data/ui/gate.ui:739
@@ -768,7 +764,8 @@ msgid "Import Impulse"
 msgstr "Importa Impulso"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:66
+#: data/ui/presets_menu.ui:66 data/ui/presets_menu.ui:88
+#: data/ui/presets_menu.ui:235
 msgid "Search"
 msgstr "Cerca"
 
@@ -949,7 +946,7 @@ msgstr "Calcola Frequenze"
 msgid "Sort Bands"
 msgstr "Ordina Bande"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:89
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:89 src/presets_menu.cpp:106
 msgid "Import Preset"
 msgstr "Importa Profilo"
 
@@ -1831,11 +1828,13 @@ msgstr "Rimuovi questo profilo"
 msgid "New Preset Name"
 msgstr "Nome Nuovo Profilo di Ingresso"
 
-#: data/ui/presets_menu.ui:38
+#: data/ui/presets_menu.ui:38 data/ui/presets_menu.ui:59
+#: data/ui/presets_menu.ui:207
 msgid "Create a new preset"
 msgstr "Crea un nuovo profilo"
 
-#: data/ui/presets_menu.ui:52
+#: data/ui/presets_menu.ui:52 data/ui/presets_menu.ui:73
+#: data/ui/presets_menu.ui:221
 msgid "Import a preset"
 msgstr "Importa un profilo"
 
@@ -2152,15 +2151,15 @@ msgstr ""
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
-#: src/application_ui.cpp:321
+#: src/application_ui.cpp:321 src/application_ui.cpp:278
 msgid "_Output"
 msgstr "_Uscita"
 
-#: src/application_ui.cpp:322
+#: src/application_ui.cpp:322 src/application_ui.cpp:279
 msgid "_Input"
 msgstr "_Ingresso"
 
-#: src/application_ui.cpp:323
+#: src/application_ui.cpp:323 src/application_ui.cpp:280
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
@@ -2186,6 +2185,7 @@ msgstr "Importa File di Impulso"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
 #: src/equalizer_ui.cpp:578 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
+#: src/presets_menu.cpp:107
 msgid "Open"
 msgstr "Apri"
 
@@ -2209,15 +2209,15 @@ msgstr "Nessun File di Risposta Impulsiva Caricato"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossibile Caricare il File di Risposta Impulsiva"
 
-#: src/effects_box.cpp:271 src/plugins_box.cpp:690
+#: src/effects_box.cpp:271 src/plugins_box.cpp:690 src/effects_box.cpp:270
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/effects_box.cpp:294 src/plugins_box.cpp:710
+#: src/effects_box.cpp:294 src/plugins_box.cpp:710 src/effects_box.cpp:293
 msgid "Players"
 msgstr "Riproduttori"
 
-#: src/effects_box.cpp:317
+#: src/effects_box.cpp:317 src/effects_box.cpp:316
 msgid "Effects"
 msgstr "Effetti"
 
@@ -2273,11 +2273,11 @@ msgstr "Dispositivo Uscita"
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/presets_menu.cpp:215
+#: src/presets_menu.cpp:215 src/presets_menu.cpp:240
 msgid "Save?"
 msgstr "Salvare?"
 
-#: src/presets_menu.cpp:234
+#: src/presets_menu.cpp:234 src/presets_menu.cpp:259
 msgid "Delete?"
 msgstr "Eliminare?"
 
@@ -2379,12 +2379,10 @@ msgstr "Strumenti Stereo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Non Disponibile"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2394,7 +2392,6 @@ msgstr ""
 "dal codice sorgente."
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2412,18 +2409,32 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, c++-format
 msgid "Using {}"
 msgstr "Utilizzo {}"
 
-#~ msgid "New Output Preset Name"
-#~ msgstr "Nome Nuovo Profilo di Uscita"
+#: data/ui/presets_menu.ui:51
+msgid "New Output Preset Name"
+msgstr "Nome Nuovo Profilo di Uscita"
 
-#~ msgid "Search Output Preset"
-#~ msgstr "Cerca Profilo di Uscita"
+#: data/ui/presets_menu.ui:90
+msgid "Search Output Preset"
+msgstr "Cerca Profilo di Uscita"
 
-#~ msgid "Output Presets List"
-#~ msgstr "Lista Profili di Uscita"
+#: data/ui/presets_menu.ui:151
+msgid "Output Presets List"
+msgstr "Lista Profili di Uscita"
+
+#: data/ui/presets_menu.ui:199
+msgid "New Input Preset Name"
+msgstr "Nome Nuovo Profilo di Ingresso"
+
+#: data/ui/presets_menu.ui:237
+msgid "Search Input Preset"
+msgstr "Cerca Profilo di Ingresso"
+
+#: data/ui/presets_menu.ui:298
+msgid "Input Presets List"
+msgstr "Lista Profili di Ingresso"
 
 #~ msgid "infinity"
 #~ msgstr "infinito"
