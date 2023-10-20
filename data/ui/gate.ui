@@ -665,6 +665,9 @@
                                                                             <property name="column">0</property>
                                                                             <property name="row">2</property>
                                                                         </layout>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Stereo Split Mode</property>
+                                                                        </accessibility>
                                                                     </object>
                                                                 </child>
 
