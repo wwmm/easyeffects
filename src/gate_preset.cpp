@@ -57,11 +57,16 @@ void GatePreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["makeup"] = g_settings_get_double(settings, "makeup");
 
+  json[section][instance_name]["stereo-split"] = g_settings_get_boolean(settings, "stereo-split") != 0;
+
   json[section][instance_name]["sidechain"]["input"] = util::gsettings_get_string(settings, "sidechain-input");
 
   json[section][instance_name]["sidechain"]["mode"] = util::gsettings_get_string(settings, "sidechain-mode");
 
   json[section][instance_name]["sidechain"]["source"] = util::gsettings_get_string(settings, "sidechain-source");
+
+  json[section][instance_name]["sidechain"]["stereo-split-source"] =
+      util::gsettings_get_string(settings, "stereo-split-source");
 
   json[section][instance_name]["sidechain"]["preamp"] = g_settings_get_double(settings, "sidechain-preamp");
 
@@ -107,9 +112,14 @@ void GatePreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "makeup", "makeup");
 
+  update_key<bool>(json.at(section).at(instance_name), settings, "stereo-split", "stereo-split");
+
   update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-input", "input");
 
   update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-mode", "mode");
+
+  update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "stereo-split-source",
+                     "stereo-split-source");
 
   update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-source", "source");
 
