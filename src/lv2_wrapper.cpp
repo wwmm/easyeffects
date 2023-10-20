@@ -140,7 +140,7 @@ void Lv2Wrapper::create_ports() {
     if (!std::isnan(values[n])) {
       port->value = values[n];
     }
-    // Save min minimum and maximum values
+    // Save minimum and maximum values
     if (!std::isnan(minimum[n])) {
       port->min = minimum[n];
     }
@@ -372,11 +372,13 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
 
       // Check port bounds
       if (value < p.min) {
-        // util::warning(plugin_uri + " value out of minimum limit for port " + p.symbol + " (" + p.name + ")");
+        // util::warning(plugin_uri + ": value " + util::to_string(value) + " is out of minimum limit for port " +
+        //               p.symbol + " (" + p.name + ")");
 
         p.value = p.min;
       } else if (value > p.max) {
-        // util::warning(plugin_uri + " value out of maximum limit for port " + p.symbol + " (" + p.name + ")");
+        // util::warning(plugin_uri + ": value " + util::to_string(value) + " is out of maximum limit for port " +
+        //               p.symbol + " (" + p.name + ")");
 
         p.value = p.max;
       } else {
