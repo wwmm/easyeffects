@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-19 11:30-0300\n"
+"POT-Creation-Date: 2023-10-19 21:40-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -98,8 +98,8 @@ msgid "_About Easy Effects"
 msgstr "EasyEffects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
-#: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
+#: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
 msgid "Presets"
 msgstr "Presetări"
 
@@ -120,7 +120,7 @@ msgstr "Evitare Globală"
 msgid "Primary Menu"
 msgstr ""
 
-#: data/ui/application_window.ui:92
+#: data/ui/application_window.ui:93
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "EasyEffects"
@@ -227,9 +227,9 @@ msgstr "Output"
 #: data/ui/gate.ui:1207 data/ui/level_meter.ui:274 data/ui/limiter.ui:750
 #: data/ui/loudness.ui:150 data/ui/maximizer.ui:109
 #: data/ui/multiband_compressor.ui:477 data/ui/multiband_gate.ui:477
-#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225
-#: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:274
-#: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
+#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225 data/ui/reverb.ui:366
+#: data/ui/rnnoise.ui:274 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
+#: data/ui/stereo_tools.ui:629
 msgid "Input"
 msgstr "Input"
 
@@ -256,9 +256,9 @@ msgstr "Input Pipeline"
 #: data/ui/filter.ui:378 data/ui/gate.ui:1291 data/ui/limiter.ui:834
 #: data/ui/loudness.ui:234 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:561 data/ui/multiband_gate.ui:561
-#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:358
-#: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
+#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309 data/ui/reverb.ui:450
+#: data/ui/rnnoise.ui:358 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
+#: data/ui/stereo_tools.ui:713
 msgid "Output"
 msgstr "Output"
 
@@ -296,8 +296,7 @@ msgstr ""
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
-#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:47
-#: data/ui/presets_menu.ui:195
+#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:26
 msgid "Name"
 msgstr "Nume"
 
@@ -825,7 +824,7 @@ msgid "Import Impulse"
 msgstr "Importă Impuls"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
+#: data/ui/presets_menu.ui:66
 msgid "Search"
 msgstr ""
 
@@ -1022,7 +1021,7 @@ msgstr "Calculează Frecvențele"
 msgid "Sort Bands"
 msgstr "Benzi"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:89
 #, fuzzy
 msgid "Import Preset"
 msgstr "Importă Presetări"
@@ -1991,44 +1990,29 @@ msgstr "Salvează setările curente în acest fișier cu presetări"
 msgid "Remove this preset file"
 msgstr "Șterge fișierul de presetări"
 
-#: data/ui/presets_menu.ui:51
+#: data/ui/presets_menu.ui:30
 #, fuzzy
-msgid "New Output Preset Name"
-msgstr "Presetări pentru Output:"
+msgid "New Preset Name"
+msgstr "Presetări pentru Input:"
 
-#: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
+#: data/ui/presets_menu.ui:38
 #, fuzzy
 msgid "Create a new preset"
 msgstr "Creează Presetare"
 
-#: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
+#: data/ui/presets_menu.ui:52
 #, fuzzy
 msgid "Import a preset"
 msgstr "Importă Presetări"
 
-#: data/ui/presets_menu.ui:90
+#: data/ui/presets_menu.ui:68
 #, fuzzy
-msgid "Search Output Preset"
-msgstr "Presetări pentru Output:"
-
-#: data/ui/presets_menu.ui:151
-#, fuzzy
-msgid "Output Presets List"
-msgstr "Presetări pentru Output:"
-
-#: data/ui/presets_menu.ui:199
-#, fuzzy
-msgid "New Input Preset Name"
+msgid "Search Preset"
 msgstr "Presetări pentru Input:"
 
-#: data/ui/presets_menu.ui:237
+#: data/ui/presets_menu.ui:129
 #, fuzzy
-msgid "Search Input Preset"
-msgstr "Presetări pentru Input:"
-
-#: data/ui/presets_menu.ui:298
-#, fuzzy
-msgid "Input Presets List"
+msgid "Presets List"
 msgstr "Presetări pentru Input:"
 
 #: data/ui/reverb.ui:41
@@ -2359,17 +2343,17 @@ msgstr ""
 msgid "Show available presets."
 msgstr "Arată presetările valabile."
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:321
 #, fuzzy
 msgid "_Output"
 msgstr "Output"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:322
 #, fuzzy
 msgid "_Input"
 msgstr "Input"
 
-#: src/application_ui.cpp:280
+#: src/application_ui.cpp:323
 #, fuzzy
 msgid "_PipeWire"
 msgstr "PipeWire"
@@ -2396,7 +2380,7 @@ msgid "Import Impulse File"
 msgstr "Importă Fișier Impulse"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:139
+#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Deschide"
 
@@ -2424,16 +2408,16 @@ msgstr "Importă Fișier Impulse"
 msgid "Failed To Load The Impulse File"
 msgstr "Nu s-a putut Încărca Fișierul Impulse"
 
-#: src/effects_box.cpp:270 src/plugins_box.cpp:690
+#: src/effects_box.cpp:271 src/plugins_box.cpp:690
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordură"
 
-#: src/effects_box.cpp:293 src/plugins_box.cpp:710
+#: src/effects_box.cpp:294 src/plugins_box.cpp:710
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:316
+#: src/effects_box.cpp:317
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -2491,11 +2475,11 @@ msgstr "Efecte Output"
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:240
+#: src/presets_menu.cpp:215
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:259
+#: src/presets_menu.cpp:234
 msgid "Delete?"
 msgstr ""
 
@@ -2627,6 +2611,18 @@ msgstr ""
 #, c++-format
 msgid "Using {}"
 msgstr ""
+
+#, fuzzy
+#~ msgid "New Output Preset Name"
+#~ msgstr "Presetări pentru Output:"
+
+#, fuzzy
+#~ msgid "Search Output Preset"
+#~ msgstr "Presetări pentru Output:"
+
+#, fuzzy
+#~ msgid "Output Presets List"
+#~ msgstr "Presetări pentru Output:"
 
 #~ msgid "infinity"
 #~ msgstr "infinit"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-19 11:30-0300\n"
+"POT-Creation-Date: 2023-10-19 21:40-0300\n"
 "PO-Revision-Date: 2023-10-18 14:15+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -91,8 +91,8 @@ msgid "_About Easy Effects"
 msgstr "_О программе Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
-#: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
+#: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -112,7 +112,7 @@ msgstr "Общий обход"
 msgid "Primary Menu"
 msgstr "Главное меню"
 
-#: data/ui/application_window.ui:92
+#: data/ui/application_window.ui:93
 msgid "Easy Effects Window"
 msgstr "Окно Easy Effects"
 
@@ -224,9 +224,9 @@ msgstr "Усиление выхода"
 #: data/ui/gate.ui:1207 data/ui/level_meter.ui:274 data/ui/limiter.ui:750
 #: data/ui/loudness.ui:150 data/ui/maximizer.ui:109
 #: data/ui/multiband_compressor.ui:477 data/ui/multiband_gate.ui:477
-#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225
-#: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:274
-#: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
+#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225 data/ui/reverb.ui:366
+#: data/ui/rnnoise.ui:274 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
+#: data/ui/stereo_tools.ui:629
 msgid "Input"
 msgstr "Вход"
 
@@ -252,9 +252,9 @@ msgstr "Плагин усиления входа"
 #: data/ui/filter.ui:378 data/ui/gate.ui:1291 data/ui/limiter.ui:834
 #: data/ui/loudness.ui:234 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:561 data/ui/multiband_gate.ui:561
-#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:358
-#: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
+#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309 data/ui/reverb.ui:450
+#: data/ui/rnnoise.ui:358 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
+#: data/ui/stereo_tools.ui:713
 msgid "Output"
 msgstr "Выход"
 
@@ -292,8 +292,7 @@ msgstr "Устройство"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
-#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:47
-#: data/ui/presets_menu.ui:195
+#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:26
 msgid "Name"
 msgstr "Название"
 
@@ -797,7 +796,7 @@ msgid "Import Impulse"
 msgstr "Импортировать импульс"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
+#: data/ui/presets_menu.ui:66
 msgid "Search"
 msgstr "Поиск"
 
@@ -980,7 +979,7 @@ msgstr "Подсчитать частоты"
 msgid "Sort Bands"
 msgstr "Сортировать полосы"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:89
 msgid "Import Preset"
 msgstr "Импорт предустановки"
 
@@ -1867,36 +1866,27 @@ msgstr "Сохранить текущие настройки в этот фай�
 msgid "Remove this preset file"
 msgstr "Удалить этот файл предустановки"
 
-#: data/ui/presets_menu.ui:51
-msgid "New Output Preset Name"
-msgstr "Имя новой предустановки выхода"
+#: data/ui/presets_menu.ui:30
+#, fuzzy
+msgid "New Preset Name"
+msgstr "Имя новой предустановки входа"
 
-#: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
+#: data/ui/presets_menu.ui:38
 msgid "Create a new preset"
 msgstr "Создать новую предустановку"
 
-#: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
+#: data/ui/presets_menu.ui:52
 msgid "Import a preset"
 msgstr "Импорт предустановки"
 
-#: data/ui/presets_menu.ui:90
-msgid "Search Output Preset"
-msgstr "Поиск предустановки выхода"
-
-#: data/ui/presets_menu.ui:151
-msgid "Output Presets List"
-msgstr "Список предустановок выхода"
-
-#: data/ui/presets_menu.ui:199
-msgid "New Input Preset Name"
-msgstr "Имя новой предустановки входа"
-
-#: data/ui/presets_menu.ui:237
-msgid "Search Input Preset"
+#: data/ui/presets_menu.ui:68
+#, fuzzy
+msgid "Search Preset"
 msgstr "Поиск предустановки входа"
 
-#: data/ui/presets_menu.ui:298
-msgid "Input Presets List"
+#: data/ui/presets_menu.ui:129
+#, fuzzy
+msgid "Presets List"
 msgstr "Список предустановок входа"
 
 #: data/ui/reverb.ui:41
@@ -2204,7 +2194,7 @@ msgstr "Глобальный обход. 1 — включить, 2 — откл�
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:321
 msgid "_Output"
 msgstr "Выхо_д"
 
@@ -2218,11 +2208,11 @@ msgstr "Выхо_д"
 # msgid "Influence of integrated measurements"
 # msgstr "Влияние комплексных измерений"
 # ###############################################
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:322
 msgid "_Input"
 msgstr "Вх_од"
 
-#: src/application_ui.cpp:280
+#: src/application_ui.cpp:323
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
@@ -2247,7 +2237,7 @@ msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:139
+#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Открыть"
 
@@ -2271,15 +2261,15 @@ msgstr "Нет загруженного файла импульса"
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:270 src/plugins_box.cpp:690
+#: src/effects_box.cpp:271 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:293 src/plugins_box.cpp:710
+#: src/effects_box.cpp:294 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/effects_box.cpp:316
+#: src/effects_box.cpp:317
 msgid "Effects"
 msgstr "Эффекты"
 
@@ -2335,11 +2325,11 @@ msgstr "Устройство вывода"
 msgid "Add"
 msgstr "Добавить"
 
-#: src/presets_menu.cpp:240
+#: src/presets_menu.cpp:215
 msgid "Save?"
 msgstr "Сохранить?"
 
-#: src/presets_menu.cpp:259
+#: src/presets_menu.cpp:234
 msgid "Delete?"
 msgstr "Удалить?"
 
@@ -2480,6 +2470,15 @@ msgstr "∞"
 #, c++-format
 msgid "Using {}"
 msgstr "Используется {}"
+
+#~ msgid "New Output Preset Name"
+#~ msgstr "Имя новой предустановки выхода"
+
+#~ msgid "Search Output Preset"
+#~ msgstr "Поиск предустановки выхода"
+
+#~ msgid "Output Presets List"
+#~ msgstr "Список предустановок выхода"
 
 #~ msgid "infinity"
 #~ msgstr "бесконечно"

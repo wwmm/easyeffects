@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-19 11:30-0300\n"
+"POT-Creation-Date: 2023-10-19 21:40-0300\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -94,8 +94,8 @@ msgid "_About Easy Effects"
 msgstr "Tentang EasyEffects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:120 src/presets_menu.cpp:358
-#: src/presets_menu.cpp:359 src/presets_menu.cpp:376 src/presets_menu.cpp:377
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
+#: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
 msgid "Presets"
 msgstr "Preset"
 
@@ -117,7 +117,7 @@ msgstr "Bypass"
 msgid "Primary Menu"
 msgstr ""
 
-#: data/ui/application_window.ui:92
+#: data/ui/application_window.ui:93
 #, fuzzy
 msgid "Easy Effects Window"
 msgstr "EasyEffects"
@@ -220,9 +220,9 @@ msgstr "Gain Input"
 #: data/ui/gate.ui:1207 data/ui/level_meter.ui:274 data/ui/limiter.ui:750
 #: data/ui/loudness.ui:150 data/ui/maximizer.ui:109
 #: data/ui/multiband_compressor.ui:477 data/ui/multiband_gate.ui:477
-#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225
-#: data/ui/presets_menu.ui:177 data/ui/reverb.ui:366 data/ui/rnnoise.ui:274
-#: data/ui/speex.ui:190 data/ui/stereo_tools.ui:40 data/ui/stereo_tools.ui:629
+#: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225 data/ui/reverb.ui:366
+#: data/ui/rnnoise.ui:274 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
+#: data/ui/stereo_tools.ui:629
 msgid "Input"
 msgstr "Masukan"
 
@@ -249,9 +249,9 @@ msgstr "Gain Input"
 #: data/ui/filter.ui:378 data/ui/gate.ui:1291 data/ui/limiter.ui:834
 #: data/ui/loudness.ui:234 data/ui/maximizer.ui:193
 #: data/ui/multiband_compressor.ui:561 data/ui/multiband_gate.ui:561
-#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309
-#: data/ui/presets_menu.ui:28 data/ui/reverb.ui:450 data/ui/rnnoise.ui:358
-#: data/ui/speex.ui:274 data/ui/stereo_tools.ui:385 data/ui/stereo_tools.ui:713
+#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:309 data/ui/reverb.ui:450
+#: data/ui/rnnoise.ui:358 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
+#: data/ui/stereo_tools.ui:713
 msgid "Output"
 msgstr "Output"
 
@@ -290,8 +290,7 @@ msgstr "Pembatas Masukan"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
-#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:47
-#: data/ui/presets_menu.ui:195
+#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:26
 msgid "Name"
 msgstr "Nama"
 
@@ -826,7 +825,7 @@ msgid "Import Impulse"
 msgstr "Muat Impuls"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:88 data/ui/presets_menu.ui:235
+#: data/ui/presets_menu.ui:66
 msgid "Search"
 msgstr ""
 
@@ -1028,7 +1027,7 @@ msgstr "Hitung Frekuensi"
 msgid "Sort Bands"
 msgstr "Jumlah Band"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:106
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:89
 msgid "Import Preset"
 msgstr "Impor Preset"
 
@@ -1967,38 +1966,29 @@ msgstr "Simpan Setelan Saat Ini Ke Berkas Preset"
 msgid "Remove this preset file"
 msgstr "Hapus Berkas Preset Ini"
 
-#: data/ui/presets_menu.ui:51
-msgid "New Output Preset Name"
-msgstr "Nama Preset Keluaran Baru"
+#: data/ui/presets_menu.ui:30
+#, fuzzy
+msgid "New Preset Name"
+msgstr "Nama Preset Input Baru"
 
-#: data/ui/presets_menu.ui:59 data/ui/presets_menu.ui:207
+#: data/ui/presets_menu.ui:38
 #, fuzzy
 msgid "Create a new preset"
 msgstr "Buat Preset"
 
-#: data/ui/presets_menu.ui:73 data/ui/presets_menu.ui:221
+#: data/ui/presets_menu.ui:52
 #, fuzzy
 msgid "Import a preset"
 msgstr "Impor Preset"
 
-#: data/ui/presets_menu.ui:90
-msgid "Search Output Preset"
-msgstr "Cari Preset Keluaran"
-
-#: data/ui/presets_menu.ui:151
-msgid "Output Presets List"
-msgstr "Daftar Preset Keluaran"
-
-#: data/ui/presets_menu.ui:199
-msgid "New Input Preset Name"
-msgstr "Nama Preset Input Baru"
-
-#: data/ui/presets_menu.ui:237
-msgid "Search Input Preset"
+#: data/ui/presets_menu.ui:68
+#, fuzzy
+msgid "Search Preset"
 msgstr "Cari Preset Input"
 
-#: data/ui/presets_menu.ui:298
-msgid "Input Presets List"
+#: data/ui/presets_menu.ui:129
+#, fuzzy
+msgid "Presets List"
 msgstr "Daftar Preset Input"
 
 #: data/ui/reverb.ui:41
@@ -2321,17 +2311,17 @@ msgstr ""
 msgid "Show available presets."
 msgstr "Tampilkan Preset Tersedia."
 
-#: src/application_ui.cpp:278
+#: src/application_ui.cpp:321
 #, fuzzy
 msgid "_Output"
 msgstr "Output"
 
-#: src/application_ui.cpp:279
+#: src/application_ui.cpp:322
 #, fuzzy
 msgid "_Input"
 msgstr "Masukan"
 
-#: src/application_ui.cpp:280
+#: src/application_ui.cpp:323
 #, fuzzy
 msgid "_PipeWire"
 msgstr "PipeWire"
@@ -2358,7 +2348,7 @@ msgid "Import Impulse File"
 msgstr "Impor File Impuls"
 
 #: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:380
-#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:107 src/rnnoise_ui.cpp:139
+#: src/equalizer_ui.cpp:578 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Buka"
 
@@ -2384,15 +2374,15 @@ msgstr "Muat Berkas Impuls"
 msgid "Failed To Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"
 
-#: src/effects_box.cpp:270 src/plugins_box.cpp:690
+#: src/effects_box.cpp:271 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Perekam"
 
-#: src/effects_box.cpp:293 src/plugins_box.cpp:710
+#: src/effects_box.cpp:294 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Pemain"
 
-#: src/effects_box.cpp:316
+#: src/effects_box.cpp:317
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
@@ -2449,11 +2439,11 @@ msgstr "Gain Input"
 msgid "Add"
 msgstr "Tambah"
 
-#: src/presets_menu.cpp:240
+#: src/presets_menu.cpp:215
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:259
+#: src/presets_menu.cpp:234
 msgid "Delete?"
 msgstr ""
 
@@ -2583,6 +2573,15 @@ msgstr ""
 #, c++-format
 msgid "Using {}"
 msgstr ""
+
+#~ msgid "New Output Preset Name"
+#~ msgstr "Nama Preset Keluaran Baru"
+
+#~ msgid "Search Output Preset"
+#~ msgstr "Cari Preset Keluaran"
+
+#~ msgid "Output Presets List"
+#~ msgstr "Daftar Preset Keluaran"
 
 #~ msgid "infinity"
 #~ msgstr "Tak Terbatas"
