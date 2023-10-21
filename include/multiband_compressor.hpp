@@ -81,6 +81,7 @@ class MultibandCompressor : public PluginBase {
     lv2_wrapper->bind_key_bool<bs[n], band_solo[n]>(settings);
     lv2_wrapper->bind_key_bool<bm[n], band_mute[n]>(settings);
 
+    lv2_wrapper->bind_key_enum<sscs[n], band_stereo_split_source[n]>(settings);
     lv2_wrapper->bind_key_enum<scs[n], band_sidechain_source[n]>(settings);
     lv2_wrapper->bind_key_enum<scm[n], band_sidechain_mode[n]>(settings);
     lv2_wrapper->bind_key_enum<cm[n], band_compression_mode[n]>(settings);

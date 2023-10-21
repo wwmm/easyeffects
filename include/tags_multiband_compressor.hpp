@@ -116,6 +116,15 @@ constexpr auto band_sidechain_source = std::to_array({{"sidechain-source0"},
                                                       {"sidechain-source6"},
                                                       std::to_array("sidechain-source7")});
 
+constexpr auto band_stereo_split_source = std::to_array({{"stereo-split-source0"},
+                                                         {"stereo-split-source1"},
+                                                         {"stereo-split-source2"},
+                                                         {"stereo-split-source3"},
+                                                         {"stereo-split-source4"},
+                                                         {"stereo-split-source5"},
+                                                         {"stereo-split-source6"},
+                                                         std::to_array("stereo-split-source7")});
+
 constexpr auto band_lowcut_filter_frequency = std::to_array({{"sidechain-lowcut-frequency0"},
                                                              {"sidechain-lowcut-frequency1"},
                                                              {"sidechain-lowcut-frequency2"},
@@ -240,6 +249,9 @@ constexpr auto cbe = std::to_array(
 
 constexpr auto sf =
     std::to_array({{"sf_0"}, {"sf_1"}, {"sf_2"}, {"sf_3"}, {"sf_4"}, {"sf_5"}, {"sf_6"}, std::to_array("sf_7")});
+
+constexpr auto sscs = std::to_array(
+    {{"sscs_0"}, {"sscs_1"}, {"sscs_2"}, {"sscs_3"}, {"sscs_4"}, {"sscs_5"}, {"sscs_6"}, std::to_array("sscs_7")});
 
 constexpr auto scs = std::to_array(
     {{"scs_0"}, {"scs_1"}, {"scs_2"}, {"scs_3"}, {"scs_4"}, {"scs_5"}, {"scs_6"}, std::to_array("scs_7")});

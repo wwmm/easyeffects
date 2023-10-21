@@ -617,8 +617,8 @@
                                                                                 <items>
                                                                                     <item translatable="yes">Peak</item>
                                                                                     <item translatable="yes">RMS</item>
-                                                                                    <item translatable="yes">Low-Pass</item>
-                                                                                    <item translatable="yes">Uniform</item>
+                                                                                    <item translatable="yes">Low-Pass Filter</item>
+                                                                                    <item translatable="yes">Simple Moving Average</item>
                                                                                 </items>
                                                                             </object>
                                                                         </property>
