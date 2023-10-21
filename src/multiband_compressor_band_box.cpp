@@ -43,7 +43,7 @@ struct _MultibandCompressorBandBox {
 
   GtkCheckButton *lowcut_filter, *highcut_filter;
 
-  GtkDropDown *compression_mode, *sidechain_mode, *sidechain_source;
+  GtkDropDown *compression_mode, *sidechain_mode, *sidechain_source, *stereo_split_source;
 
   GtkBox* split_frequency_box;
 
@@ -175,6 +175,9 @@ void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, band_sidechain_source[index].data(), self->sidechain_source);
 
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, band_stereo_split_source[index].data(),
+                                          self->stereo_split_source);
+
   g_settings_bind(settings, band_lowcut_filter_frequency[index].data(),
                   gtk_spin_button_get_adjustment(self->lowcut_filter_frequency), "value", G_SETTINGS_BIND_DEFAULT);
 
@@ -216,6 +219,13 @@ void setup(MultibandCompressorBandBox* self, GSettings* settings, int index) {
 
   g_settings_bind(settings, band_boost_threshold[index].data(), gtk_spin_button_get_adjustment(self->boost_threshold),
                   "value", G_SETTINGS_BIND_DEFAULT);
+
+  // bind source dropdowns sensitive property to split-stereo gsettings boolean
+
+  g_settings_bind(self->settings, "stereo-split", self->sidechain_source, "sensitive",
+                  static_cast<GSettingsBindFlags>(G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN));
+
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split_source, "sensitive", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -280,6 +290,7 @@ void multiband_compressor_band_box_class_init(MultibandCompressorBandBoxClass* k
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, compression_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, sidechain_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, sidechain_source);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBandBox, stereo_split_source);
 
   gtk_widget_class_bind_template_callback(widget_class, set_boost_amount_sensitive);
   gtk_widget_class_bind_template_callback(widget_class, set_boost_threshold_sensitive);

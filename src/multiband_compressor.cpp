@@ -50,6 +50,8 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
   lv2_wrapper->bind_key_enum<"envb", "envelope-boost">(settings);
 
+  lv2_wrapper->bind_key_bool<"ssplit", "stereo-split">(settings);
+
   // The following controls can assume -inf
   lv2_wrapper->bind_key_double_db<"g_dry", "dry", false>(settings);
 

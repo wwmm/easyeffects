@@ -57,7 +57,7 @@ struct _MultibandCompressorBox {
 
   GtkDropDown* dropdown_input_devices;
 
-  GtkToggleButton* show_native_ui;
+  GtkToggleButton *show_native_ui, *stereo_split;
 
   GListStore* input_devices_model;
 
@@ -302,6 +302,8 @@ void setup(MultibandCompressorBox* self,
 
   g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split, "active", G_SETTINGS_BIND_DEFAULT);
+
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "compressor-mode", self->compressor_mode);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "envelope-boost", self->envelope_boost);
@@ -386,6 +388,7 @@ void multiband_compressor_box_class_init(MultibandCompressorBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, enable_band7);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, dry);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, wet);
+  gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, stereo_split);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, compressor_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, envelope_boost);
   gtk_widget_class_bind_template_child(widget_class, MultibandCompressorBox, dropdown_input_devices);
