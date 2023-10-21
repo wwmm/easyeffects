@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-20 22:13+0000\n"
-"PO-Revision-Date: 2023-10-18 14:15+0000\n"
+"PO-Revision-Date: 2023-10-21 20:02+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1863,9 +1863,8 @@ msgid "Remove this preset file"
 msgstr "Удалить этот файл предустановки"
 
 #: data/ui/presets_menu.ui:30
-#, fuzzy
 msgid "New Preset Name"
-msgstr "Имя новой предустановки входа"
+msgstr "Имя новой предустановки"
 
 #: data/ui/presets_menu.ui:38
 msgid "Create a new preset"
@@ -1876,14 +1875,12 @@ msgid "Import a preset"
 msgstr "Импорт предустановки"
 
 #: data/ui/presets_menu.ui:68
-#, fuzzy
 msgid "Search Preset"
-msgstr "Поиск предустановки входа"
+msgstr "Поиск предустановки"
 
 #: data/ui/presets_menu.ui:129
-#, fuzzy
 msgid "Presets List"
-msgstr "Список предустановок входа"
+msgstr "Список предустановок"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
