@@ -84,6 +84,7 @@ class MultibandGate : public PluginBase {
     lv2_wrapper->bind_key_bool<sclc[n], band_lowcut_filter[n]>(settings);
     lv2_wrapper->bind_key_bool<schc[n], band_highcut_filter[n]>(settings);
 
+    lv2_wrapper->bind_key_enum<sscs[n], band_stereo_split_source[n]>(settings);
     lv2_wrapper->bind_key_enum<scs[n], band_sidechain_source[n]>(settings);
     lv2_wrapper->bind_key_enum<scm[n], band_sidechain_mode[n]>(settings);
 

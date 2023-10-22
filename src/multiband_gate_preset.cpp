@@ -43,6 +43,8 @@ void MultibandGatePreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["envelope-boost"] = util::gsettings_get_string(settings, "envelope-boost");
 
+  json[section][instance_name]["stereo-split"] = g_settings_get_boolean(settings, "stereo-split") != 0;
+
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = util::to_string(n);
     const auto bandn = "band" + nstr;
@@ -95,6 +97,9 @@ void MultibandGatePreset::save(nlohmann::json& json) {
     json[section][instance_name][bandn]["sidechain-source"] =
         util::gsettings_get_string(settings, ("sidechain-source" + nstr).c_str());
 
+    json[section][instance_name][bandn]["stereo-split-source"] =
+        util::gsettings_get_string(settings, ("stereo-split-source" + nstr).c_str());
+
     json[section][instance_name][bandn]["sidechain-lookahead"] =
         g_settings_get_double(settings, ("sidechain-lookahead" + nstr).c_str());
 
@@ -132,6 +137,8 @@ void MultibandGatePreset::load(const nlohmann::json& json) {
   update_key<gchar*>(json.at(section).at(instance_name), settings, "gate-mode", "gate-mode");
 
   update_key<gchar*>(json.at(section).at(instance_name), settings, "envelope-boost", "envelope-boost");
+
+  update_key<bool>(json.at(section).at(instance_name), settings, "stereo-split", "stereo-split");
 
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = util::to_string(n);
@@ -179,6 +186,9 @@ void MultibandGatePreset::load(const nlohmann::json& json) {
 
     update_key<gchar*>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-source" + nstr,
                        "sidechain-source");
+
+    update_key<gchar*>(json.at(section).at(instance_name).at(bandn), settings, "stereo-split-source" + nstr,
+                       "stereo-split-source");
 
     update_key<double>(json.at(section).at(instance_name).at(bandn), settings, "sidechain-lookahead" + nstr,
                        "sidechain-lookahead");

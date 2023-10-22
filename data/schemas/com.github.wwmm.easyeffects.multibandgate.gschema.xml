@@ -26,6 +26,14 @@
         <value nick="Min" value="4" />
         <value nick="Max" value="5" />
     </enum>
+    <enum id="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+        <value nick="Left/Right" value="0" />
+        <value nick="Right/Left" value="1" />
+        <value nick="Mid/Side" value="2" />
+        <value nick="Side/Mid" value="3" />
+        <value nick="Min" value="4" />
+        <value nick="Max" value="5" />
+    </enum>
     <schema id="com.github.wwmm.easyeffects.multibandgate">
         <key name="bypass" type="b">
             <default>false</default>
@@ -47,6 +55,9 @@
             <default>0</default>
         </key>
 
+        <key name="stereo-split" type="b">
+            <default>false</default>
+        </key>
         <key name="gate-mode" enum="com.github.wwmm.easyeffects.multibandgate.gatemode.enum">
             <default>"Modern"</default>
         </key>
@@ -199,6 +210,39 @@
         <key name="sidechain-source7"
             enum="com.github.wwmm.easyeffects.multibandgate.sidechainsource.enum">
             <default>"Middle"</default>
+        </key>
+
+        <key name="stereo-split-source0"
+            enum="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+            <default>"Left/Right"</default>
+        </key>
+        <key name="stereo-split-source1"
+            enum="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+            <default>"Left/Right"</default>
+        </key>
+        <key name="stereo-split-source2"
+            enum="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+            <default>"Left/Right"</default>
+        </key>
+        <key name="stereo-split-source3"
+            enum="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+            <default>"Left/Right"</default>
+        </key>
+        <key name="stereo-split-source4"
+            enum="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+            <default>"Left/Right"</default>
+        </key>
+        <key name="stereo-split-source5"
+            enum="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+            <default>"Left/Right"</default>
+        </key>
+        <key name="stereo-split-source6"
+            enum="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+            <default>"Left/Right"</default>
+        </key>
+        <key name="stereo-split-source7"
+            enum="com.github.wwmm.easyeffects.multibandgate.stereosplit.sidechainsource.enum">
+            <default>"Left/Right"</default>
         </key>
 
         <key name="sidechain-lookahead0" type="d">

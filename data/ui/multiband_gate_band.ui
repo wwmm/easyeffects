@@ -494,10 +494,11 @@
                         <property name="label" translatable="yes">Band Sidechain Options</property>
                     </object>
                 </child>
+
                 <child>
                     <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="spacing">12</property>
+                        <property name="spacing">24</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="margin-top">6</property>
@@ -511,41 +512,10 @@
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="row-spacing">6</property>
-                                <property name="column-spacing">24</property>
+                                <property name="column-spacing">6</property>
                                 <property name="margin-start">6</property>
                                 <property name="margin-end">6</property>
                                 <property name="margin-top">6</property>
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="label" translatable="yes">Mode</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkDropDown" id="sidechain_mode">
-                                        <property name="halign">center</property>
-                                        <property name="model">
-                                            <object class="GtkStringList">
-                                                <items>
-                                                    <item translatable="yes">Peak</item>
-                                                    <item translatable="yes">RMS</item>
-                                                    <item translatable="yes">Low-Pass Filter</item>
-                                                    <item translatable="yes">Simple Moving Average</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <property name="label" translatable="yes">Sidechain Mode</property>
-                                        </accessibility>
-                                    </object>
-                                </child>
 
                                 <child>
                                     <object class="GtkLabel">
@@ -556,9 +526,19 @@
                                         </layout>
                                     </object>
                                 </child>
+
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="yes">Sidechain</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">1</property>
+                                        </layout>
+                                    </object>
+                                </child>
                                 <child>
                                     <object class="GtkDropDown" id="sidechain_source">
-                                        <property name="halign">center</property>
                                         <property name="model">
                                             <object class="GtkStringList">
                                                 <items>
@@ -582,13 +562,94 @@
                                 </child>
 
                                 <child>
-                                    <object class="GtkCheckButton" id="lowcut_filter">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Low-Cut Filter</property>
+                                    <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="yes">Stereo Split</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">2</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkDropDown" id="stereo_split_source">
+                                        <property name="margin-top">6</property>
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item translatable="yes">Left/Right</item>
+                                                    <item translatable="yes">Right/Left</item>
+                                                    <item translatable="yes">Mid/Side</item>
+                                                    <item translatable="yes">Side/Mid</item>
+                                                    <item translatable="yes">Min</item>
+                                                    <item translatable="yes">Max</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">2</property>
+                                        </layout>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Stereo Split Source</property>
+                                        </accessibility>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="margin-start">18</property>
+                                        <property name="margin-end">18</property>
+                                        <property name="label" translatable="yes">Mode</property>
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkDropDown" id="sidechain_mode">
+                                        <property name="halign">center</property>
+                                        <property name="margin-start">18</property>
+                                        <property name="margin-end">18</property>
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item translatable="yes">Peak</item>
+                                                    <item translatable="yes">RMS</item>
+                                                    <item translatable="yes">Low-Pass Filter</item>
+                                                    <item translatable="yes">Simple Moving Average</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                        <layout>
+                                            <property name="column">2</property>
+                                            <property name="row">1</property>
+                                        </layout>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Sidechain Mode</property>
+                                        </accessibility>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="label" translatable="yes">Filter</property>
+                                        <layout>
+                                            <property name="column">3</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkCheckButton" id="lowcut_filter">
+                                        <property name="halign">start</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Low-Cut</property>
+                                        <layout>
+                                            <property name="column">4</property>
+                                            <property name="row">1</property>
                                         </layout>
                                     </object>
                                 </child>
@@ -609,7 +670,7 @@
                                             </object>
                                         </property>
                                         <layout>
-                                            <property name="column">2</property>
+                                            <property name="column">3</property>
                                             <property name="row">1</property>
                                         </layout>
                                         <accessibility>
@@ -620,12 +681,13 @@
 
                                 <child>
                                     <object class="GtkCheckButton" id="highcut_filter">
-                                        <property name="halign">center</property>
+                                        <property name="halign">start</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">High-Cut Filter</property>
+                                        <property name="margin-top">6</property>
+                                        <property name="label" translatable="yes">High-Cut</property>
                                         <layout>
-                                            <property name="column">3</property>
-                                            <property name="row">0</property>
+                                            <property name="column">4</property>
+                                            <property name="row">2</property>
                                         </layout>
                                     </object>
                                 </child>
@@ -633,6 +695,7 @@
                                     <object class="GtkSpinButton" id="highcut_filter_frequency">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-top">6</property>
                                         <property name="digits">0</property>
                                         <property name="width-chars">10</property>
                                         <property name="update-policy">if-valid</property>
@@ -647,7 +710,7 @@
                                         </property>
                                         <layout>
                                             <property name="column">3</property>
-                                            <property name="row">1</property>
+                                            <property name="row">2</property>
                                         </layout>
                                         <accessibility>
                                             <property name="label" translatable="yes">High-Cut Filter Frequency</property>
