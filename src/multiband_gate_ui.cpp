@@ -57,7 +57,7 @@ struct _MultibandGateBox {
 
   GtkDropDown* dropdown_input_devices;
 
-  GtkToggleButton* show_native_ui;
+  GtkToggleButton *show_native_ui, *stereo_split;
 
   GListStore* input_devices_model;
 
@@ -301,6 +301,8 @@ void setup(MultibandGateBox* self,
 
   g_settings_bind(self->settings, "wet", gtk_spin_button_get_adjustment(self->wet), "value", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split, "active", G_SETTINGS_BIND_DEFAULT);
+
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "gate-mode", self->gate_mode);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "envelope-boost", self->envelope_boost);
@@ -385,6 +387,7 @@ void multiband_gate_box_class_init(MultibandGateBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, enable_band7);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, dry);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, wet);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, stereo_split);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, gate_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, envelope_boost);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBox, dropdown_input_devices);

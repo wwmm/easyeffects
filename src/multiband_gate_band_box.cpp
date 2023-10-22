@@ -43,7 +43,7 @@ struct _MultibandGateBandBox {
 
   GtkCheckButton *lowcut_filter, *highcut_filter;
 
-  GtkDropDown *sidechain_mode, *sidechain_source;
+  GtkDropDown *sidechain_mode, *sidechain_source, *stereo_split_source;
 
   GtkBox* split_frequency_box;
 
@@ -147,6 +147,9 @@ void setup(MultibandGateBandBox* self, GSettings* settings, int index) {
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, band_sidechain_source[index].data(), self->sidechain_source);
 
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, band_stereo_split_source[index].data(),
+                                          self->stereo_split_source);
+
   g_settings_bind(settings, band_lowcut_filter_frequency[index].data(),
                   gtk_spin_button_get_adjustment(self->lowcut_filter_frequency), "value", G_SETTINGS_BIND_DEFAULT);
 
@@ -187,6 +190,13 @@ void setup(MultibandGateBandBox* self, GSettings* settings, int index) {
 
   g_settings_bind(settings, band_sidechain_lookahead[index].data(),
                   gtk_spin_button_get_adjustment(self->sidechain_lookahead), "value", G_SETTINGS_BIND_DEFAULT);
+
+  // bind source dropdowns sensitive property to split-stereo gsettings boolean
+
+  g_settings_bind(self->settings, "stereo-split", self->sidechain_source, "sensitive",
+                  static_cast<GSettingsBindFlags>(G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_INVERT_BOOLEAN));
+
+  g_settings_bind(self->settings, "stereo-split", self->stereo_split_source, "sensitive", G_SETTINGS_BIND_DEFAULT);
 }
 
 void dispose(GObject* object) {
@@ -250,6 +260,7 @@ void multiband_gate_band_box_class_init(MultibandGateBandBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, sidechain_lookahead);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, sidechain_mode);
   gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, sidechain_source);
+  gtk_widget_class_bind_template_child(widget_class, MultibandGateBandBox, stereo_split_source);
 }
 
 void multiband_gate_band_box_init(MultibandGateBandBox* self) {
