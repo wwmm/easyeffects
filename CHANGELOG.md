@@ -1,5 +1,19 @@
 # Changelog
  
+## 7.1.1
+### 2023-10-27
+
+ 
+### Features:
+- The spectrum has a new option that allows the dynamic vertical scale to be disabled.
+- Improved compatibility with the latest LSP releases.
+
+### Bug fixes:
+- Fixed an incorrect drawing of the impulse response file characteristics
+
+### Other notes:
+
+ 
 ## 7.1.0
 ### 2023-09-07
 

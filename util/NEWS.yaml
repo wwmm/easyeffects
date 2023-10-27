@@ -4,13 +4,27 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 7.1.1
+Date: 2023-10-27
+
+Description: 
+- Features∶
 - The spectrum has a new option that allows the dynamic vertical scale to be disabled.
+- Improved compatibility with the latest LSP releases.
 
 - Bug fixes∶
 - Fixed an incorrect drawing of the impulse response file characteristics
 
 - Other notes∶
-- 
 
 ---
 Version: 7.1.0
