@@ -11,7 +11,7 @@
         "--device=dri",
         "--filesystem=xdg-run/pipewire-0:ro",
         "--env=LV2_PATH=/app/lib/lv2:/app/extensions/Plugins/lv2",
-        "--env=LADSPA_PATH=/app/lib/ladspa:/app/extensions/Plugins/ladspa"
+        "--env=LADSPA_PATH=/app/lib/ladspa"
     ],
     "cleanup": [
         "*.a",
@@ -30,7 +30,7 @@
             "directory": "extensions/Plugins",
             "version": "22.08",
             "add-ld-path": "lib",
-            "merge-dirs": "lv2;ladspa",
+            "merge-dirs": "lv2",
             "subdirectories": true,
             "no-autodownload": true
         },
