@@ -331,6 +331,45 @@
             "cleanup": [
                 "*"
             ]
+        },
+        {
+            "name": "libdeep_filter_ladspa",
+            "sources": [
+                {
+                    "type": "file",
+                    "dest-filename": "libdeep_filter_ladspa.so",
+                    "only-arches": [
+                        "x86_64"
+                    ],
+                    "url": "https://github.com/Rikorose/DeepFilterNet/releases/download/v0.5.6/libdeep_filter_ladspa-0.5.6-x86_64-unknown-linux-gnu.so",
+                    "sha256": "2ca3205c2911d389604a826a240e745597d50252b5cab81c8248252b335e2236",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/Rikorose/DeepFilterNet/releases/latest",
+                        "version-query": ".tag_name | sub(\"^v\"; \"\")",
+                        "url-query": ".assets[] | select(.name==\"libdeep_filter_ladspa-\" + $version + \"-x86_64-unknown-linux-gnu.so\") | .browser_download_url"
+                    }
+                },
+                {
+                    "type": "file",
+                    "dest-filename": "libdeep_filter_ladspa.so",
+                    "only-arches": [
+                        "aarch64"
+                    ],
+                    "url": "https://github.com/Rikorose/DeepFilterNet/releases/download/v0.5.6/libdeep_filter_ladspa-0.5.6-aarch64-unknown-linux-gnu.so",
+                    "sha256": "7b1fe31e41a4b447e2c7a6fd46397b7cd4456d6acb5a011d4ea125cb9612041e",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/Rikorose/DeepFilterNet/releases/latest",
+                        "version-query": ".tag_name | sub(\"^v\"; \"\")",
+                        "url-query": ".assets[] | select(.name==\"libdeep_filter_ladspa-\" + $version + \"-aarch64-unknown-linux-gnu.so\") | .browser_download_url"
+                    }
+                }
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -m 644 libdeep_filter_ladspa.so $FLATPAK_DEST/lib/ladspa/"
+            ]
         }
     ]
 }
