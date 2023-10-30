@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-27 11:34-0300\n"
-"PO-Revision-Date: 2023-10-05 06:10+0000\n"
-"Last-Translator: Max Digital <mmaks.step@gmail.com>\n"
+"PO-Revision-Date: 2023-10-30 05:15+0000\n"
+"Last-Translator: volkov <d2oo1dle2x@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "@APP_NAME@"
-msgstr "EasyEffects"
+msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -35,18 +35,18 @@ msgstr "Аудіоефекти для додатків PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "обмежувач;компресор;реверберація;еквалайзер;автогучність;"
+msgstr ""
+"limiter;compressor;reverberation;equalizer;autovolume;обмежувач;компресор;рев"
+"ерберація;еквалайзер;автогучність;ефекти;звук;пайп;запис;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
-#, fuzzy
 msgid "\"Presets\""
-msgstr "\"Пресети\""
+msgstr "\"Профілі\""
 
 #: data/ui/app_info.ui:212
-#, fuzzy
 msgid "Enable/disable this application"
-msgstr "Увімкнути / Вимкнути цей додаток"
+msgstr "Увімкнути / вимкнути цей додаток"
 
 #: data/ui/app_info.ui:213 data/ui/rnnoise.ui:52
 msgid "Enable"
@@ -54,61 +54,53 @@ msgstr "Увімкнути"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr "Список виключених програм: Додати/видалити цей додаток"
+msgstr "Список виключених додатків: додати / видалити цей додаток"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
 msgstr "Виключити"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
-#, fuzzy
 msgid "Mute Application"
-msgstr "Вимкнути звук програми"
+msgstr "Вимкнути звук додатку"
 
 #: data/ui/app_info.ui:270
-#, fuzzy
 msgid "Change the volume of this application"
-msgstr "Змініть гучність цієї програми"
+msgstr "Змініть гучність цього додатку"
 
 #: data/ui/app_info.ui:272
 msgid "Application Volume"
-msgstr "Гучність програми"
+msgstr "Гучність додатку"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
 msgstr "_Допомога"
 
 #: data/ui/application_window.ui:12
-#, fuzzy
 msgid "_Reset Settings"
 msgstr "_Скинути налаштування"
 
 #: data/ui/application_window.ui:18
-#, fuzzy
 msgid "_Preferences"
 msgstr "_Налаштування"
 
 #: data/ui/application_window.ui:22
-#, fuzzy
 msgid "_Shortcuts"
-msgstr "_Швидкі команди"
+msgstr "_Клавіатурні скорочення"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
 msgstr "_Про Easy Effects"
 
 #: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
 #: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
-#, fuzzy
 msgid "Presets"
-msgstr "Пресети"
+msgstr "Профілі"
 
 #: data/ui/application_window.ui:55
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Меню пресетів"
+msgstr "Меню профілів"
 
 #: data/ui/application_window.ui:62
 #, fuzzy
@@ -130,7 +122,6 @@ msgid "Easy Effects Window"
 msgstr "Вікно Eassy Effects"
 
 #: data/ui/apps_box.ui:17
-#, fuzzy
 msgid "Applications List"
 msgstr "Список додатків"
 
@@ -183,7 +174,6 @@ msgid "Integrated"
 msgstr "Інтегроване"
 
 #: data/ui/autogain.ui:125
-#, fuzzy
 msgid "Geometric Mean (MSI)"
 msgstr "Середнє геометричне (MSI)"
 
@@ -219,7 +209,6 @@ msgid "Range"
 msgstr "Діапазон"
 
 #: data/ui/autogain.ui:378
-#, fuzzy
 msgid "Output Gain"
 msgstr "Вихідний коефіцієнт підсилення"
 
@@ -236,9 +225,8 @@ msgstr "Вихідний коефіцієнт підсилення"
 #: data/ui/pipe_manager_box.ui:306 data/ui/pitch.ui:225 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:274 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:629
-#, fuzzy
 msgid "Input"
-msgstr "Вхідний пристрій"
+msgstr "Вхід"
 
 #: data/ui/autogain.ui:442 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1174
@@ -296,14 +284,12 @@ msgstr "Скинути"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:684 data/ui/expander.ui:603
 #: data/ui/gate.ui:817
-#, fuzzy
 msgid "Device"
 msgstr "Пристрій"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:26
-#, fuzzy
 msgid "Name"
 msgstr "Назва"
 
