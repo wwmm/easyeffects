@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-27 11:34-0300\n"
-"PO-Revision-Date: 2023-07-15 14:05+0000\n"
-"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"PO-Revision-Date: 2023-11-04 20:34+0000\n"
+"Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -255,7 +255,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
-msgstr ""
+msgstr "Dodano sekcję „Funkcje eksperymentalne” do okna preferencji."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
@@ -739,6 +739,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:323
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
 msgstr ""
+"Menu ustawień zostało przeprojektowane z wykorzystaniem widżetów LibAdwaita."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:324
 msgid ""
@@ -807,7 +808,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:346
 msgid "The tbb library is a new dependency"
-msgstr ""
+msgstr "Biblioteka tbb jest nową zależnością"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:354
 msgid ""
