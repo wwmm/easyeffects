@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-06 00:15+0000\n"
-"PO-Revision-Date: 2023-11-07 03:35+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2023-11-07 16:18+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -1420,7 +1420,7 @@ msgstr "Atenuación de las frecuencias bajas"
 
 #: data/ui/multiband_compressor_band.ui:618 data/ui/multiband_gate_band.ui:677
 msgid "Low-Cut Filter Frequency"
-msgstr "Frecuencia del filtro paso bajo"
+msgstr "Frecuencia del filtro paso alto"
 
 #: data/ui/multiband_compressor_band.ui:628 data/ui/multiband_gate_band.ui:687
 msgid "High-Cut"
@@ -1428,7 +1428,7 @@ msgstr "Atenuación de las frecuencias altas"
 
 #: data/ui/multiband_compressor_band.ui:657 data/ui/multiband_gate_band.ui:716
 msgid "High-Cut Filter Frequency"
-msgstr "Frecuencia del filtro paso alto"
+msgstr "Frecuencia del filtro paso bajo"
 
 #: data/ui/multiband_compressor_band.ui:676 data/ui/multiband_gate_band.ui:735
 msgid "PreAmp"
@@ -2389,12 +2389,10 @@ msgstr "Herramientas estéreo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} No disponible"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2404,7 +2402,6 @@ msgstr ""
 "instalar el software tu mismo."
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2422,7 +2419,6 @@ msgstr "infinito"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, c++-format
 msgid "Using {}"
 msgstr "Usando {}"
 

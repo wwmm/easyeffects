@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-06 00:15+0000\n"
-"PO-Revision-Date: 2023-10-21 20:02+0000\n"
+"PO-Revision-Date: 2023-11-07 16:18+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.1\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -155,11 +155,11 @@ msgstr "База"
 
 #: data/ui/autogain.ui:122 data/ui/autogain.ui:159 data/ui/level_meter.ui:83
 msgid "Momentary"
-msgstr "Моментальные измерения"
+msgstr "Моментальный замер"
 
 #: data/ui/autogain.ui:123 data/ui/autogain.ui:196 data/ui/level_meter.ui:120
 msgid "Short-Term"
-msgstr "Краткосрочные измерения"
+msgstr "Краткосрочный замер"
 
 # Время интеграции — это величина, характеризующая быстродействие измерителя.
 # https://tech.ebu.ch/docs/factsheets/Factsheet-R128-2011-RUS.pdf
@@ -168,7 +168,7 @@ msgstr "Краткосрочные измерения"
 # Яндекс.Переводчик перевел лучше — "Комплексные измерения"
 #: data/ui/autogain.ui:124 data/ui/autogain.ui:232 data/ui/level_meter.ui:156
 msgid "Integrated"
-msgstr "Комплексные измерения"
+msgstr "Комплексный замер"
 
 #: data/ui/autogain.ui:125
 msgid "Geometric Mean (MSI)"
@@ -193,7 +193,7 @@ msgstr "Громкость"
 
 #: data/ui/autogain.ui:268 data/ui/level_meter.ui:192
 msgid "Relative"
-msgstr "Относительное значение"
+msgstr "Относительный замер"
 
 # ??? Не уверен в переводе
 #: data/ui/autogain.ui:304 data/ui/level_meter.ui:228
@@ -479,14 +479,14 @@ msgstr "Усиление вверх"
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:212 data/ui/stereo_tools.ui:538
 msgid "Dry Level"
-msgstr "Уровень ориг."
+msgstr "Ур. оригинала"
 
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:177
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:208 data/ui/multiband_gate.ui:208
 #: data/ui/reverb.ui:246 data/ui/rnnoise.ui:92 data/ui/stereo_tools.ui:574
 msgid "Wet Level"
-msgstr "Уровень обраб."
+msgstr "Ур. обработки"
 
 # #, fuzzy
 #: data/ui/compressor.ui:498 data/ui/compressor.ui:519
@@ -2145,11 +2145,11 @@ msgstr "Задержка левый правый"
 
 #: data/ui/stereo_tools.ui:469
 msgid "Stereo Base"
-msgstr "Стерео база"
+msgstr "База стерео"
 
 #: data/ui/stereo_tools.ui:505
 msgid "Stereo Phase"
-msgstr "Стерео фаза"
+msgstr "Фаза стерео"
 
 #: src/app_info.cpp:65
 msgid "Running"
@@ -2439,7 +2439,7 @@ msgstr "Речевой процессор"
 
 #: src/tags_plugin_name.cpp:57
 msgid "Stereo Tools"
-msgstr "Стереоналадчики"
+msgstr "Наладчики стерео"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
