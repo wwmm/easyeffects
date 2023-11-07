@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-06 00:15+0000\n"
-"PO-Revision-Date: 2023-09-10 08:54+0000\n"
+"PO-Revision-Date: 2023-11-07 03:33+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -130,18 +130,16 @@ msgid "Features:"
 msgstr "Características:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
-#, fuzzy
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
-"Se ha añadido un nuevo control al complemento de reducción de ruido que "
-"permite desactivar el reconocimiento de la voz."
+"El espectro tiene una nueva opción que permite desactivar la escala vertical "
+"dinámica."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
-#, fuzzy
 msgid "Improved compatibility with the latest LSP releases."
-msgstr "Compatibilidad mejorada con Linux Studio Plugins 1.2.3."
+msgstr "Compatibilidad mejorada con las últimas versiones de LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -179,6 +177,8 @@ msgstr "Corrección de errores:"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
 msgstr ""
+"Se ha corregido un dibujo incorrecto de las características del archivo de "
+"respuesta al impulso"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
