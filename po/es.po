@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-06 00:15+0000\n"
-"PO-Revision-Date: 2023-10-18 14:15+0000\n"
+"PO-Revision-Date: 2023-11-07 03:35+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -481,9 +481,8 @@ msgstr "Cadena lateral"
 #: data/ui/expander.ui:455 data/ui/gate.ui:663 data/ui/gate.ui:669
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
-#, fuzzy
 msgid "Stereo Split Mode"
-msgstr "Modo estéreo"
+msgstr "Modo Split para el estéreo"
 
 #: data/ui/compressor.ui:543 data/ui/expander.ui:462 data/ui/gate.ui:676
 #: data/ui/multiband_compressor_band.ui:463 data/ui/multiband_gate_band.ui:522
@@ -1407,9 +1406,8 @@ msgid "Band Sidechain Options"
 msgstr "Opciones de la cadena lateral de la banda"
 
 #: data/ui/multiband_compressor_band.ui:508 data/ui/multiband_gate_band.ui:567
-#, fuzzy
 msgid "Stereo Split"
-msgstr "Modo estéreo"
+msgstr "Split estéreo"
 
 #: data/ui/multiband_compressor_band.ui:578 data/ui/multiband_gate_band.ui:637
 #: src/tags_plugin_name.cpp:45
@@ -1417,18 +1415,16 @@ msgid "Filter"
 msgstr "Filtro"
 
 #: data/ui/multiband_compressor_band.ui:590 data/ui/multiband_gate_band.ui:649
-#, fuzzy
 msgid "Low-Cut"
-msgstr "Filtro paso bajo"
+msgstr "Atenuación de las frecuencias bajas"
 
 #: data/ui/multiband_compressor_band.ui:618 data/ui/multiband_gate_band.ui:677
 msgid "Low-Cut Filter Frequency"
 msgstr "Frecuencia del filtro paso bajo"
 
 #: data/ui/multiband_compressor_band.ui:628 data/ui/multiband_gate_band.ui:687
-#, fuzzy
 msgid "High-Cut"
-msgstr "Filtro paso alto"
+msgstr "Atenuación de las frecuencias altas"
 
 #: data/ui/multiband_compressor_band.ui:657 data/ui/multiband_gate_band.ui:716
 msgid "High-Cut Filter Frequency"
@@ -1857,14 +1853,12 @@ msgid "Import a preset"
 msgstr "Importar un preajuste"
 
 #: data/ui/presets_menu.ui:68
-#, fuzzy
 msgid "Search Preset"
-msgstr "Buscar perfil de entrada"
+msgstr "Búsqueda preestablecida"
 
 #: data/ui/presets_menu.ui:129
-#, fuzzy
 msgid "Presets List"
-msgstr "Lista de perfiles de entrada"
+msgstr "Lista de los preajustes"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
