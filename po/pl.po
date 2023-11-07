@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-06 00:15+0000\n"
-"PO-Revision-Date: 2023-11-04 20:32+0000\n"
+"PO-Revision-Date: 2023-11-07 16:18+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -1103,9 +1103,8 @@ msgid "All-Pass"
 msgstr "Dolnoprzepustowy"
 
 #: data/ui/filter.ui:95
-#, fuzzy
 msgid "Equalizer Mode"
-msgstr "Korektor"
+msgstr "Tryb korektora"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
 msgid "Gate"
