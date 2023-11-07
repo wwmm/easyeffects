@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-06 00:15+0000\n"
-"PO-Revision-Date: 2023-09-10 08:54+0000\n"
-"Last-Translator: tachyglossues <tachyglossues@gmail.com>\n"
+"PO-Revision-Date: 2023-11-07 16:36+0000\n"
+"Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
 "Language: fr_FR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -130,19 +130,16 @@ msgid "Features:"
 msgstr "Fonctionnalités :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
-#, fuzzy
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
-"Ajout d'un nouveau contrôle au greffon de réduction de bruit qui permet de "
-"désactiver la détection de la voix."
+"Le spectre a une nouvelle option qui permet de désactiver l'échelle "
+"verticale dynamique."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
-#, fuzzy
 msgid "Improved compatibility with the latest LSP releases."
-msgstr ""
-"Amélioration de la compatibilité avec les greffons Linux Studio (LSP) 1.2.3."
+msgstr "Amélioration de la compatibilité avec les dernières versions de LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -180,6 +177,8 @@ msgstr "Corrections de bogues :"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
 msgstr ""
+"Correction d'un dessin incorrect des caractéristiques du fichier de réponse "
+"impulsionnelle"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
