@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-06 00:15+0000\n"
-"PO-Revision-Date: 2023-09-25 06:59+0000\n"
+"PO-Revision-Date: 2023-11-07 16:36+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -129,18 +129,16 @@ msgid "Features:"
 msgstr "Возможности:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
-#, fuzzy
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
-"В плагин шумоподавления добавлен новый элемент управления, позволяющий "
-"отключить определение голоса."
+"В спектре появился новый параметр для отключения динамической вертикальной "
+"шкалы."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
-#, fuzzy
 msgid "Improved compatibility with the latest LSP releases."
-msgstr "Улучшена совместимость с Linux Studio Plugins 1.2.3."
+msgstr "Улучшена совместимость с последними версиями LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -177,7 +175,7 @@ msgstr "Исправление ошибок:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
-msgstr ""
+msgstr "Исправлена неверная отрисовка характеристик файла импульсного отклика"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
