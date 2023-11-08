@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-08 11:19-0300\n"
-"PO-Revision-Date: 2023-11-07 03:33+0000\n"
+"PO-Revision-Date: 2023-11-08 14:42+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -172,11 +172,10 @@ msgid "Bug fixes:"
 msgstr "Corrección de errores:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#, fuzzy
 msgid "The DeepFilterNet plugin can now be added to the preset file"
 msgstr ""
-"El parámetro umbral del plugin deesser se guarda ahora en el archivo de "
-"perfil."
+"El complemento DeepFilterNet ahora se puede añadir a los archivos "
+"predeterminados"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
