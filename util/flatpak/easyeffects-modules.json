@@ -233,22 +233,6 @@
             ]
         },
         {
-            "name": "zenity",
-            "buildsystem": "meson",
-            "build-commands": [
-                "mkdir -p /app/share/icons/hicolor"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/zenity",
-                    "tag": "3.44.0",
-                    "commit": "7bf8c8910d34bfb2b883b32118b93b68d44dd77b",
-                    "//": "flatpak-external-data-checker doesn't work well here, since it thinks that 3.90.0 is more recent (despite being an alpha), and 3.91.0 fails to build since it can't install translations properly"
-                }
-            ]
-        },
-        {
             "name": "fmt",
             "buildsystem": "cmake-ninja",
             "config-opts": [
