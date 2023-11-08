@@ -13,6 +13,19 @@ Description:
 - 
 
 ---
+Version: 7.1.2
+Date: 2023-11-08
+
+Description: 
+- Features∶
+- Updated translations
+
+- Bug fixes∶
+- The DeepFilterNet plugin can now be added to the preset file
+
+- Other notes∶
+
+---
 Version: 7.1.1
 Date: 2023-10-27
 

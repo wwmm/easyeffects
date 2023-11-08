@@ -869,6 +869,10 @@ auto PresetsManager::create_wrapper(const PresetType& preset_type, std::string_v
     return std::make_unique<DelayPreset>(preset_type, instance_id);
   }
 
+  if (filter_name.starts_with(tags::plugin_name::deepfilternet)) {
+    return std::make_unique<DeepFilterNetPreset>(preset_type, instance_id);
+  }
+
   if (filter_name.starts_with(tags::plugin_name::echo_canceller)) {
     return std::make_unique<EchoCancellerPreset>(preset_type, instance_id);
   }
