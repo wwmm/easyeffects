@@ -34,6 +34,7 @@
 #include "convolver_preset.hpp"
 #include "crossfeed_preset.hpp"
 #include "crystalizer_preset.hpp"
+#include "deepfilternet_preset.hpp"
 #include "deesser_preset.hpp"
 #include "delay_preset.hpp"
 #include "echo_canceller_preset.hpp"
