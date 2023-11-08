@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-08 11:19-0300\n"
-"PO-Revision-Date: 2023-11-08 14:42+0000\n"
+"PO-Revision-Date: 2023-11-09 19:36+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -1701,7 +1701,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "Fixed a regression introduced in 7.1.2"
-msgstr ""
+msgstr "Corregida una regresión introducida en la versión 7.1.2"
 
 #~ msgid "This release adds the following features:"
 #~ msgstr "Esta versión añade las siguientes características:"
