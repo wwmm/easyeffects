@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-08 11:19-0300\n"
-"PO-Revision-Date: 2023-11-07 16:18+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2023-11-08 14:35+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -906,9 +906,8 @@ msgid "Minimum Processing Buffer"
 msgstr "Buffer mínimo para el procesamiento"
 
 #: data/ui/deepfilternet.ui:167
-#, fuzzy
 msgid "Post Filter Beta"
-msgstr "Longitud del filtro"
+msgstr "Filtro posterior beta"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
