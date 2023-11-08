@@ -1,5 +1,18 @@
 # Changelog
  
+## 7.1.2
+### 2023-11-08
+
+ 
+### Features:
+- Updated translations
+
+### Bug fixes:
+- The DeepFilterNet plugin can now be added to the preset file
+
+### Other notes:
+
+ 
 ## 7.1.1
 ### 2023-10-27
 

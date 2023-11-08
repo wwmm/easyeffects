@@ -50,6 +50,17 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.1.2" date="2023-11-08T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Updated translations</li>
+          <li>Bug fixes:</li>
+          <li>The DeepFilterNet plugin can now be added to the preset file</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.1.1" date="2023-10-27T00:00:00Z">
       <description>
         <ul>
