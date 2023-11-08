@@ -1505,7 +1505,7 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
   pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::virtual_source);
   pw_properties_set(props_source, "audio.position", "FL,FR");
   pw_properties_set(props_source, "monitor.channel-volumes", "false");
-  pw_properties_set(props_sink, "priority.session", "0");
+  pw_properties_set(props_source, "priority.session", "0");
 
   proxy_stream_input_source = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
