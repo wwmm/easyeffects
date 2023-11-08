@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-07 16:22+0000\n"
-"PO-Revision-Date: 2023-11-07 16:18+0000\n"
+"PO-Revision-Date: 2023-11-08 11:34+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -2442,9 +2442,8 @@ msgid "Exciter"
 msgstr "Exciter"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgid "Level Meter"
-msgstr "Wzmocnienie wej."
+msgstr "Miernik poziomu"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Limiter"
