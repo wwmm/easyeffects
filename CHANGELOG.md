@@ -1,5 +1,18 @@
 # Changelog
  
+## 7.1.3
+### 2023-11-08
+
+ 
+### Features:
+- Updated translations
+
+### Bug fixes:
+- Fixed a regression introduced in `7.1.2`
+
+### Other notes:
+
+ 
 ## 7.1.2
 ### 2023-11-08
 
