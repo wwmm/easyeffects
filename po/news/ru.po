@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-08 11:42-0300\n"
-"PO-Revision-Date: 2023-11-07 16:36+0000\n"
+"PO-Revision-Date: 2023-11-09 19:36+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -175,7 +175,7 @@ msgstr "Исправление ошибок:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "Fixed a regression introduced in 7.1.2"
-msgstr ""
+msgstr "Исправлена регрессия, появившаяся в версии 7.1.2"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -198,11 +198,8 @@ msgid "Other notes:"
 msgstr "Другие изменения:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
-#, fuzzy
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
-"Уровень порогового значения в плагине антишипения (деэссера) теперь "
-"сохраняется в файле предустановки."
+msgstr "Плагин DeepFilterNet теперь можно добавить в файл предустановки"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
