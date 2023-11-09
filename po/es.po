@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-08 11:42-0300\n"
-"PO-Revision-Date: 2023-11-08 14:35+0000\n"
+"PO-Revision-Date: 2023-11-09 08:35+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -460,14 +460,14 @@ msgstr "Ganancia de compensación"
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:212 data/ui/stereo_tools.ui:538
 msgid "Dry Level"
-msgstr "Nivel"
+msgstr "Nivel Dry"
 
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:177
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:208 data/ui/multiband_gate.ui:208
 #: data/ui/reverb.ui:246 data/ui/rnnoise.ui:92 data/ui/stereo_tools.ui:574
 msgid "Wet Level"
-msgstr "Nivelado"
+msgstr "Nivel Wet"
 
 #: data/ui/compressor.ui:498 data/ui/compressor.ui:519
 #: data/ui/compressor.ui:1091 data/ui/expander.ui:417 data/ui/expander.ui:438
@@ -1029,7 +1029,7 @@ msgstr "Campana"
 
 #: data/ui/filter.ui:49
 msgid "Band-Pass"
-msgstr "Filtro de paso de banda (Band Pass)"
+msgstr "Paso de banda"
 
 #: data/ui/filter.ui:50
 msgid "Notch"
@@ -1415,7 +1415,7 @@ msgstr "Filtro"
 
 #: data/ui/multiband_compressor_band.ui:590 data/ui/multiband_gate_band.ui:649
 msgid "Low-Cut"
-msgstr "Atenuación de las frecuencias bajas"
+msgstr "Paso-Alto"
 
 #: data/ui/multiband_compressor_band.ui:618 data/ui/multiband_gate_band.ui:677
 msgid "Low-Cut Filter Frequency"
@@ -1423,7 +1423,7 @@ msgstr "Frecuencia del filtro paso alto"
 
 #: data/ui/multiband_compressor_band.ui:628 data/ui/multiband_gate_band.ui:687
 msgid "High-Cut"
-msgstr "Atenuación de las frecuencias altas"
+msgstr "Paso-Bajo"
 
 #: data/ui/multiband_compressor_band.ui:657 data/ui/multiband_gate_band.ui:716
 msgid "High-Cut Filter Frequency"
