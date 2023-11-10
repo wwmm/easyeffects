@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-08 11:42-0300\n"
+"POT-Creation-Date: 2023-11-10 22:50+0000\n"
 "PO-Revision-Date: 2023-11-07 16:18+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -90,29 +90,33 @@ msgstr "_Горячие клавиши"
 msgid "_About Easy Effects"
 msgstr "_О программе Easy Effects"
 
-#: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
+#: data/ui/application_window.ui:32
+msgid "_Quit"
+msgstr ""
+
+#: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
 #: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
 msgid "Presets"
 msgstr "Предустановки"
 
-#: data/ui/application_window.ui:55
+#: data/ui/application_window.ui:61
 msgid "Presets Menu"
 msgstr "Меню предустановок"
 
-#: data/ui/application_window.ui:62
+#: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
 msgstr "Включить/отключить общий обход"
 
-#: data/ui/application_window.ui:67
+#: data/ui/application_window.ui:73
 msgid "Global Bypass"
 msgstr "Общий обход"
 
-#: data/ui/application_window.ui:77
+#: data/ui/application_window.ui:83
 msgid "Primary Menu"
 msgstr "Главное меню"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:99
 msgid "Easy Effects Window"
 msgstr "Окно Easy Effects"
 
@@ -2179,33 +2183,37 @@ msgstr "Неизвестно"
 msgid "channels"
 msgstr "канала(-ов)"
 
-#: src/application.cpp:460
+#: src/application.cpp:466
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:550
+#: src/application.cpp:556
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Выход из Easy Effects. Полезно при работе в режиме службы."
 
-#: src/application.cpp:553
-msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Загрузить предустановку. Пример: easyeffects -l music"
+#: src/application.cpp:559
+msgid "Print the easyeffects version"
+msgstr ""
 
-#: src/application.cpp:556
+#: src/application.cpp:562
 msgid "Reset Easy Effects."
 msgstr "Сбросить Easy Effects."
 
-#: src/application.cpp:559
+#: src/application.cpp:565
 msgid "Hide the Window."
 msgstr "Скрыть окно."
 
-#: src/application.cpp:562
+#: src/application.cpp:568
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получение статуса"
 
-#: src/application.cpp:565
+#: src/application.cpp:571
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
+
+#: src/application.cpp:574
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 
 #: src/application_ui.cpp:321
 msgid "_Output"
