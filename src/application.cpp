@@ -290,12 +290,18 @@ void application_class_init(ApplicationClass* klass) {
 
   application_class->command_line = [](GApplication* gapp, GApplicationCommandLine* cmdline) {
     auto* self = EE_APP(gapp);
-    auto* options = g_application_command_line_get_options_dict(cmdline);
+    GVariantDict* options = g_application_command_line_get_options_dict(cmdline);
 
     if (g_variant_dict_contains(options, "quit") != 0) {
       hide_all_windows(gapp);
 
       g_application_quit(G_APPLICATION(gapp));
+
+      return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "version") != 0) {
+      std::cout << "easyeffects version: " + std::string(VERSION);
 
       return EXIT_SUCCESS;
     }
@@ -549,8 +555,8 @@ auto application_new() -> GApplication* {
   g_application_add_main_option(G_APPLICATION(app), "quit", 'q', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Quit Easy Effects. Useful when running in service mode."), nullptr);
 
-  g_application_add_main_option(G_APPLICATION(app), "load-preset", 'l', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
-                                _("Load a preset. Example: easyeffects -l music"), nullptr);
+  g_application_add_main_option(G_APPLICATION(app), "version", 'v', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
+                                _("Print the easyeffects version"), nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "reset", 'r', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Reset Easy Effects."), nullptr);
@@ -563,6 +569,9 @@ auto application_new() -> GApplication* {
 
   g_application_add_main_option(G_APPLICATION(app), "presets", 'p', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Show available presets."), nullptr);
+
+  g_application_add_main_option(G_APPLICATION(app), "load-preset", 'l', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
+                                _("Load a preset. Example: easyeffects -l music"), nullptr);
 
   return G_APPLICATION(app);
 }
