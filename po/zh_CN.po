@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-08 11:42-0300\n"
+"POT-Creation-Date: 2023-11-10 22:50+0000\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -90,29 +90,33 @@ msgstr "快捷键(_S)"
 msgid "_About Easy Effects"
 msgstr "关于 EasyEffects (_A)"
 
-#: data/ui/application_window.ui:53 data/ui/crossfeed.ui:27
+#: data/ui/application_window.ui:32
+msgid "_Quit"
+msgstr ""
+
+#: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
 #: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
 msgid "Presets"
 msgstr "预设"
 
-#: data/ui/application_window.ui:55
+#: data/ui/application_window.ui:61
 msgid "Presets Menu"
 msgstr "预设菜单"
 
-#: data/ui/application_window.ui:62
+#: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
 msgstr "开启/关闭全局旁通"
 
-#: data/ui/application_window.ui:67
+#: data/ui/application_window.ui:73
 msgid "Global Bypass"
 msgstr "全局旁路"
 
-#: data/ui/application_window.ui:77
+#: data/ui/application_window.ui:83
 msgid "Primary Menu"
 msgstr "主菜单"
 
-#: data/ui/application_window.ui:93
+#: data/ui/application_window.ui:99
 msgid "Easy Effects Window"
 msgstr "EasyEffects 窗口"
 
@@ -2161,33 +2165,37 @@ msgstr "未知"
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:460
+#: src/application.cpp:466
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:550
+#: src/application.cpp:556
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
-#: src/application.cpp:553
-msgid "Load a preset. Example: easyeffects -l music"
-msgstr "加载预设。 示例：easyeffects -l music"
+#: src/application.cpp:559
+msgid "Print the easyeffects version"
+msgstr ""
 
-#: src/application.cpp:556
+#: src/application.cpp:562
 msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
-#: src/application.cpp:559
+#: src/application.cpp:565
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:562
+#: src/application.cpp:568
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:565
+#: src/application.cpp:571
 msgid "Show available presets."
 msgstr "显示可用预设。"
+
+#: src/application.cpp:574
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "加载预设。 示例：easyeffects -l music"
 
 #: src/application_ui.cpp:321
 msgid "_Output"
