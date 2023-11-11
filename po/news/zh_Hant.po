@@ -8,25 +8,28 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-10 22:50+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-11-12 05:02+0000\n"
+"Last-Translator: Wolf yuan <h1030035@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"easyeffects/changelog/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
-msgstr ""
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "PipeWire 音效程式"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -34,12 +37,16 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"Easy Effects 是一個專業音訊處理程式。包含等化器、限幅器 (Limiter)、壓縮器 "
+"(Compressor) 和回音工具。Easy Effects 也包含波形 (Spectrum) 檢驗器。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Easy Effects 是 PulseEffects 的進化版。Easy Effects 僅支援 PipeWire "
+"的音訊服務。PulseAudio 的使用者應該使用 PulseEffects。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -47,32 +54,36 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"由於 Easy Effects 是使用 PipeWire 預設的音訊服務，支援您大部分使用的應用程式"
+"。所有支援的程式會在主畫面中顯示，您可以單一控制每個程式是否要使用音效。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
-msgstr ""
+msgstr "除了處理輸出音訊，Easy Effects 也可以處理輸出裝置，例如麥克風輸入，這項功能不"
+"論在您錄音或是與好友聊天時都很好用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
-msgstr ""
+msgstr "Easy Effects "
+"在啓動時會自動回覆上一次的設定。您也可以將目前的設定存成一個設定檔。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "有兩個輸出程式的主畫面"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "重音加強程式的音訊控制選項"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Convolver (卷積器) 的音訊控制選項"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
@@ -108,7 +119,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:489
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:502
 msgid "Features:"
-msgstr ""
+msgstr "主要功能："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
@@ -116,7 +127,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:338
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:464
 msgid "Updated translations"
-msgstr ""
+msgstr "新的翻譯"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -151,11 +162,11 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:481
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:494
 msgid "Bug fixes:"
-msgstr ""
+msgstr "修復錯誤："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "Fixed a regression introduced in 7.1.2"
-msgstr ""
+msgstr "修復 7.1.2 的遞迴問題"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -175,37 +186,37 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:363
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:379
 msgid "Other notes:"
-msgstr ""
+msgstr "其他更新："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
+msgstr "DeepFilterNet 現在可以被加入 Preset 中"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
-msgstr ""
+msgstr "波形圖現在可以隱藏垂直量表。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid "Improved compatibility with the latest LSP releases."
-msgstr ""
+msgstr "增強與最新 LSP 程式的相容性。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
-msgstr ""
+msgstr "修復脈衝響應 (Impulse) 錯誤的波形圖"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
 msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
-msgstr ""
+msgstr "修復降噪擴充對人聲感測門檻被錯誤地初始化。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
-msgstr ""
+msgstr "降噪擴充現在可以關閉人聲偵測"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
 msgid ""
