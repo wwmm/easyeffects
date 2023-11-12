@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-10 22:50+0000\n"
-"PO-Revision-Date: 2023-11-09 08:35+0000\n"
+"PO-Revision-Date: 2023-11-12 05:02+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -91,7 +91,7 @@ msgstr "_Acerca de Easy Effects"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_Salir"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
@@ -2147,7 +2147,7 @@ msgstr "Deja Easy Effects. Útil cuando se ejecuta en modo de servicio."
 
 #: src/application.cpp:559
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "Mostrar la versión de Easyeffects"
 
 #: src/application.cpp:562
 msgid "Reset Easy Effects."
