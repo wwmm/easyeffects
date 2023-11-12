@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-10 22:50+0000\n"
-"PO-Revision-Date: 2023-11-07 16:36+0000\n"
+"PO-Revision-Date: 2023-11-12 05:02+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -176,7 +176,7 @@ msgstr "Corrections de bogues :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "Fixed a regression introduced in 7.1.2"
-msgstr ""
+msgstr "Correction d'une régression introduite dans la version 7.1.2"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -199,11 +199,9 @@ msgid "Other notes:"
 msgstr "Autres notes :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
-#, fuzzy
 msgid "The DeepFilterNet plugin can now be added to the preset file"
 msgstr ""
-"Le paramètre de seuil du greffon Déesseur est maintenant enregistré dans le "
-"fichier de préréglage."
+"Le greffon DeepFilterNet peut maintenant être ajouté au fichier de préréglage"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
