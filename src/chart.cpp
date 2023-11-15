@@ -174,7 +174,7 @@ void set_margin(Chart* self, const float& v) {
 }
 
 auto get_is_visible(Chart* self) -> bool {
-  if (self == nullptr) {
+  if (!GTK_IS_WIDGET(self)) {
     return false;
   }
 
@@ -196,7 +196,7 @@ void set_dynamic_y_scale(Chart* self, const bool& v) {
 }
 
 void set_x_data(Chart* self, const std::vector<double>& x) {
-  if (self == nullptr || x.empty()) {
+  if (!GTK_IS_WIDGET(self) || x.empty()) {
     return;
   }
 
@@ -231,7 +231,7 @@ void set_x_data(Chart* self, const std::vector<double>& x) {
 }
 
 void set_y_data(Chart* self, const std::vector<double>& y) {
-  if (self == nullptr || y.empty()) {
+  if (!GTK_IS_WIDGET(self) || y.empty()) {
     return;
   }
 

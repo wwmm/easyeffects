@@ -20,7 +20,6 @@
 #pragma once
 
 #include <adwaita.h>
-#define FMT_HEADER_ONLY
 #include <fmt/core.h>
 #include <fmt/format.h>
 #include <sigc++/sigc++.h>
