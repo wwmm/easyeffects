@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-10 22:50+0000\n"
-"PO-Revision-Date: 2023-11-13 11:02+0000\n"
+"PO-Revision-Date: 2023-11-16 03:06+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -1922,7 +1922,7 @@ msgstr "Załaduj"
 
 #: data/ui/preset_row.ui:38
 msgid "Discard the current settings and load this preset"
-msgstr ""
+msgstr "Porzuć obecne ustawienia i załaduj ten profil"
 
 #: data/ui/preset_row.ui:47
 msgid "Save current settings to this preset file"
@@ -2322,9 +2322,8 @@ msgid "No Impulse File Loaded"
 msgstr "Płaska odpowiedź"
 
 #: src/convolver_ui.cpp:356
-#, fuzzy
 msgid "Failed To Load The Impulse File"
-msgstr "Nie można załadować pliku Impulse"
+msgstr "Nie udało się załadować pliku impulsu"
 
 #: src/effects_box.cpp:271 src/plugins_box.cpp:690
 msgid "Recorders"
