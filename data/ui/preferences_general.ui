@@ -97,7 +97,7 @@
                                 <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
-                                        <property name="lower">1</property>
+                                        <property name="lower">0</property>
                                         <property name="upper">3600</property>
                                         <property name="step-increment">1</property>
                                         <property name="page-increment">10</property>

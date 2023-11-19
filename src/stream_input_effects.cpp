@@ -160,17 +160,21 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
   } else {
     int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
 
-    g_timeout_add_seconds(inactivity_timeout, GSourceFunc(+[](StreamInputEffects* self) {
-                            if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
-                              util::debug("No app linked to our device wants to play. Unlinking our filters.");
+    if (inactivity_timeout == 0) {
+      util::debug("No app linked to our device wants to play, but the inactivity timer is set to 0. Leaving filters linked.");
+    } else {
+      g_timeout_add_seconds(inactivity_timeout, GSourceFunc(+[](StreamInputEffects* self) {
+                              if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
+                                util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
-                              self->disconnect_filters();
-                            }
+                                self->disconnect_filters();
+                              }
 
-                            return G_SOURCE_REMOVE;
-                          }),
-                          this);
-  }
+                              return G_SOURCE_REMOVE;
+                            }),
+                            this);
+    };
+  };
 }
 
 void StreamInputEffects::connect_filters(const bool& bypass) {
