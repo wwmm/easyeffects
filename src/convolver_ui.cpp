@@ -303,18 +303,18 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
     self->data->right_spectrum[n] = (self->data->right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }
 
+  g_object_ref(self);
   util::idle_add([=]() {
-    if (self == nullptr) {
-      return;
-    }
-
-    if (!ui::chart::get_is_visible(self->chart)) {
-      return;
-    }
-
-    if (gtk_toggle_button_get_active(self->show_fft) != 0) {
+    
+    if (  
+      ( self == nullptr ) &&
+      ( !ui::chart::get_is_visible(self->chart) ) &&
+      ( gtk_toggle_button_get_active(self->show_fft) != 0 )
+    ) {
       plot_fft(self);
-    }
+    };
+    
+    g_object_unref(self);
   });
 }
 
