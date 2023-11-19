@@ -155,7 +155,9 @@ void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
     int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
 
     if (inactivity_timeout == 0) {
-      util::debug("No app linked to our device wants to play, but the inactivity timer is set to 0. Leaving filters linked.");
+      if (list_proxies.empty()) {
+        util::debug("No app linked to our device wants to play, but the inactivity timer is set to 0. Leaving filters linked.");
+      };
     } else {
       g_timeout_add_seconds(inactivity_timeout, GSourceFunc(+[](StreamOutputEffects* self) {
                               if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
