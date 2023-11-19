@@ -307,8 +307,8 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   util::idle_add([=]() {
     
     if (  
-      ( self == nullptr ) &&
-      ( !ui::chart::get_is_visible(self->chart) ) &&
+      ( self != nullptr ) &&
+      ( ui::chart::get_is_visible(self->chart) ) &&
       ( gtk_toggle_button_get_active(self->show_fft) != 0 )
     ) {
       plot_fft(self);
