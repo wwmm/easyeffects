@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-10 22:50+0000\n"
-"PO-Revision-Date: 2023-05-01 06:52+0000\n"
+"PO-Revision-Date: 2023-11-25 07:02+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.2.1-rc\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -125,7 +125,7 @@ msgstr "Premosnica"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
-msgstr ""
+msgstr "Primarni izbornik"
 
 #: data/ui/application_window.ui:99
 #, fuzzy
@@ -133,53 +133,46 @@ msgid "Easy Effects Window"
 msgstr "EasyEffects"
 
 #: data/ui/apps_box.ui:17
-#, fuzzy
 msgid "Applications List"
-msgstr "Aplikacije"
+msgstr "Popis aplikacija"
 
 #: data/ui/apps_box.ui:27
-#, fuzzy
 msgid "Empty List"
-msgstr "Prazna soba"
+msgstr "Prazan popis"
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Aplikacije"
+msgstr "Nema dostupnih audio aplikacija"
 
 #: data/ui/autogain.ui:25 data/ui/level_meter.ui:25
-#, fuzzy
 msgid "Reset History"
-msgstr "Vrati izvornu kvalitetu"
+msgstr "Resetiraj povijest"
 
 #: data/ui/autogain.ui:39
 msgid "Controls"
-msgstr ""
+msgstr "Kontrole"
 
 #: data/ui/autogain.ui:43
 msgid "Target"
-msgstr "Meta"
+msgstr "Cilj"
 
 #: data/ui/autogain.ui:67
-#, fuzzy
 msgid "Silence"
 msgstr "Tišina"
 
 #: data/ui/autogain.ui:92
-#, fuzzy
 msgid "Maximum History"
-msgstr "Najveće pojačanje"
+msgstr "Maksimalna povijest"
 
 #: data/ui/autogain.ui:116
 msgid "Reference"
-msgstr ""
+msgstr "Referenca"
 
 #: data/ui/autogain.ui:122 data/ui/autogain.ui:159 data/ui/level_meter.ui:83
 msgid "Momentary"
 msgstr "Trenutačno"
 
 #: data/ui/autogain.ui:123 data/ui/autogain.ui:196 data/ui/level_meter.ui:120
-#, fuzzy
 msgid "Short-Term"
 msgstr "Kratkoročno"
 
@@ -189,19 +182,19 @@ msgstr "Integrirano"
 
 #: data/ui/autogain.ui:125
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "Geometrijski prosjek (MSI)"
 
 #: data/ui/autogain.ui:126
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "Geometrijski prosjek (MS)"
 
 #: data/ui/autogain.ui:127
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "Geometrijski prosjek (MI)"
 
 #: data/ui/autogain.ui:128
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "Geometrijski prosjek (SI)"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:49
@@ -217,9 +210,8 @@ msgid "Range"
 msgstr "Raspon"
 
 #: data/ui/autogain.ui:378
-#, fuzzy
 msgid "Output Gain"
-msgstr "Pojačanje ulaza"
+msgstr "Pojačanje izlaza"
 
 #: data/ui/autogain.ui:423 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:661
@@ -295,9 +287,8 @@ msgstr "Vrati na tvorničke postavke"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:684 data/ui/expander.ui:603
 #: data/ui/gate.ui:817
-#, fuzzy
 msgid "Device"
-msgstr "Ulazni uređaj"
+msgstr "Uređaj"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
@@ -307,7 +298,7 @@ msgstr "Naziv"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: data/ui/autoload_row.ui:89
 #, fuzzy
@@ -363,24 +354,20 @@ msgid "Link"
 msgstr ""
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
-#, fuzzy
 msgid "Application Name"
-msgstr "Aplikacije"
+msgstr "Ime aplikacije"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "Aplikacije"
+msgstr "Dodaj u izuzete aplikacije"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "Aplikacije"
+msgstr "Popis izuzetih aplikacija"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "Aplikacije"
+msgstr "Pokaži izuzete aplikacije"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:283
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
@@ -418,9 +405,8 @@ msgid "Boosting"
 msgstr ""
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:88
-#, fuzzy
 msgid "Compression Mode"
-msgstr "Kompresija"
+msgstr "Modus kompresije"
 
 #: data/ui/compressor.ui:94 data/ui/multiband_compressor_band.ui:821
 #, fuzzy
@@ -440,9 +426,8 @@ msgstr "Pokretanje"
 
 #: data/ui/compressor.ui:192 data/ui/expander.ui:111
 #: data/ui/multiband_compressor_band.ui:170
-#, fuzzy
 msgid "Time"
-msgstr "Vrijeme opadanja intenziteta signala"
+msgstr "Vrijeme"
 
 #: data/ui/compressor.ui:202 data/ui/deesser.ui:307 data/ui/expander.ui:121
 #: data/ui/gate.ui:163 data/ui/gate.ui:257 data/ui/limiter.ui:368
@@ -536,19 +521,16 @@ msgstr "Stereo baza"
 
 #: data/ui/compressor.ui:543 data/ui/expander.ui:462 data/ui/gate.ui:676
 #: data/ui/multiband_compressor_band.ui:463 data/ui/multiband_gate_band.ui:522
-#, fuzzy
 msgid "Source"
 msgstr "Izvor"
 
 #: data/ui/compressor.ui:555 data/ui/expander.ui:474 data/ui/gate.ui:688
 #: data/ui/multiband_compressor_band.ui:486 data/ui/multiband_gate_band.ui:545
-#, fuzzy
 msgid "Middle"
-msgstr "Srednji nivo"
+msgstr "Sredina"
 
 #: data/ui/compressor.ui:556 data/ui/expander.ui:475 data/ui/gate.ui:689
 #: data/ui/multiband_compressor_band.ui:487 data/ui/multiband_gate_band.ui:546
-#, fuzzy
 msgid "Side"
 msgstr "Strana"
 
@@ -571,18 +553,16 @@ msgstr "Desno"
 #: data/ui/multiband_compressor_band.ui:490
 #: data/ui/multiband_compressor_band.ui:525 data/ui/multiband_gate_band.ui:549
 #: data/ui/multiband_gate_band.ui:584
-#, fuzzy
 msgid "Min"
-msgstr "Maksimum"
+msgstr "Min."
 
 #: data/ui/compressor.ui:560 data/ui/compressor.ui:583 data/ui/expander.ui:479
 #: data/ui/expander.ui:502 data/ui/gate.ui:693 data/ui/gate.ui:716
 #: data/ui/multiband_compressor_band.ui:491
 #: data/ui/multiband_compressor_band.ui:526 data/ui/multiband_gate_band.ui:550
 #: data/ui/multiband_gate_band.ui:585
-#, fuzzy
 msgid "Max"
-msgstr "Maksimum"
+msgstr "Maks."
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:488 data/ui/gate.ui:702
 #: data/ui/multiband_compressor.ui:77 data/ui/multiband_compressor_band.ui:500
@@ -593,27 +573,23 @@ msgstr "Postranični ulaz"
 
 #: data/ui/compressor.ui:578 data/ui/expander.ui:497 data/ui/gate.ui:711
 #: data/ui/multiband_compressor_band.ui:521 data/ui/multiband_gate_band.ui:580
-#, fuzzy
 msgid "Left/Right"
-msgstr "Kašnjenje L/D"
+msgstr "Lijevo/Desno"
 
 #: data/ui/compressor.ui:579 data/ui/expander.ui:498 data/ui/gate.ui:712
 #: data/ui/multiband_compressor_band.ui:522 data/ui/multiband_gate_band.ui:581
-#, fuzzy
 msgid "Right/Left"
-msgstr "Desno"
+msgstr "Desno/Lijevo"
 
 #: data/ui/compressor.ui:580 data/ui/expander.ui:499 data/ui/gate.ui:713
 #: data/ui/multiband_compressor_band.ui:523 data/ui/multiband_gate_band.ui:582
-#, fuzzy
 msgid "Mid/Side"
-msgstr "Strana"
+msgstr "Sredina/Strana"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:500 data/ui/gate.ui:714
 #: data/ui/multiband_compressor_band.ui:524 data/ui/multiband_gate_band.ui:583
-#, fuzzy
 msgid "Side/Mid"
-msgstr "Strana"
+msgstr "Strana/Sredina"
 
 #: data/ui/compressor.ui:592 data/ui/expander.ui:511 data/ui/gate.ui:725
 #: data/ui/multiband_compressor_band.ui:535 data/ui/multiband_gate_band.ui:594
@@ -658,7 +634,7 @@ msgstr "Postranični ulaz"
 #: data/ui/compressor.ui:673 data/ui/equalizer_band.ui:96
 #: data/ui/expander.ui:592 data/ui/filter.ui:37 data/ui/gate.ui:806
 msgid "Type"
-msgstr ""
+msgstr "Vrsta"
 
 #: data/ui/compressor.ui:699
 msgid "Feed-forward"
@@ -1776,12 +1752,11 @@ msgstr "Oba kanala"
 
 #: data/ui/pipe_manager_box.ui:539
 msgid "Waveform"
-msgstr ""
+msgstr "Oblik krivulje"
 
 #: data/ui/pipe_manager_box.ui:543
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Sinus tablica"
+msgstr "Sinusoida"
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "White Noise"
@@ -1793,7 +1768,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Zaglađivanje rubova"
 
 #: data/ui/pitch.ui:58
 #, fuzzy
@@ -2107,7 +2082,7 @@ msgstr "Odrezivanje basa"
 
 #: data/ui/reverb.ui:316
 msgid "Treble Cut"
-msgstr "Odrezivanje trebla"
+msgstr "Odrezivanje visokog tona"
 
 #: data/ui/reverb.ui:576
 msgid "Ambience"
