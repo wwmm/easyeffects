@@ -156,15 +156,13 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
       util::debug("At least one app linked to our device wants to play. Linking our filters.");
 
       connect_filters();
-    }
+    };
   } else {
-    int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
+    // no apps want to play, check if the inactivity timer is enabled
+    if (g_settings_get_boolean(global_settings, "inactivity-timer-enabled")) {
 
-    if (inactivity_timeout == 0) {
-      if (!list_proxies.empty()) {
-        util::debug("No app linked to our device wants to play, but the inactivity timer is set to 0. Leaving filters linked.");
-      };
-    } else {
+      // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
+      int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
       g_timeout_add_seconds(inactivity_timeout, GSourceFunc(+[](StreamInputEffects* self) {
                               if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
                                 util::debug("No app linked to our device wants to play. Unlinking our filters.");
@@ -175,7 +173,14 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
                               return G_SOURCE_REMOVE;
                             }),
                             this);
+
+    } else {
+      // otherwise, do nothing
+      if (!list_proxies.empty()) {
+        util::debug("No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters linked.");
+      };
     };
+
   };
 }
 
