@@ -159,7 +159,7 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
     };
   } else {
     // no apps want to play, check if the inactivity timer is enabled
-    if (g_settings_get_boolean(global_settings, "inactivity-timer-enabled")) {
+    if (g_settings_get_boolean(global_settings, "inactivity-timer-enable")) {
 
       // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
       int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
