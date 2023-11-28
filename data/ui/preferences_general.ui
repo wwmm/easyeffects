@@ -87,12 +87,19 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Inactivity Timeout</property>
+                        <property name="title" translatable="yes">Enable Inactivity Timer</property>
+                        <property name="activatable-widget">inactivity_timer_enable</property>
                         <child>
                             <object class="GtkSwitch" id="inactivity_timer_enable">
                                 <property name="valign">center</property>
                             </object>
                         </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Inactivity Timeout</property>
                         <child>
                             <object class="GtkSpinButton" id="inactivity_timeout">
                                 <property name="valign">center</property>
