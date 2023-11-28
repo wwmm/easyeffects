@@ -109,6 +109,7 @@ void preferences_general_class_init(PreferencesGeneralClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, shutdown_on_window_close);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, use_cubic_volumes);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, exclude_monitor_streams);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, inactivity_timer_enable);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, inactivity_timeout);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, meters_update_interval);
   gtk_widget_class_bind_template_child(widget_class, PreferencesGeneral, lv2ui_update_frequency);
