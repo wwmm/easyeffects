@@ -1,7 +1,7 @@
 {
     "id": "com.github.wwmm.easyeffects.Devel",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "45",
     "sdk": "org.gnome.Sdk",
     "command": "easyeffects",
     "finish-args": [
