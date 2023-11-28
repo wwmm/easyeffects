@@ -2,6 +2,27 @@
     "name": "easyeffects-modules",
     "modules": [
         {
+            "name": "pipewire",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dgstreamer=disabled",
+                "-Dman=disabled",
+                "-Dsystemd=disabled",
+                "-Dudev=disabled",
+                "-Dudevrulesdir=disabled",
+                "-Dsession-managers=[]",
+                "-Djack=enabled"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pipewire/pipewire.git",
+                    "tag": "0.3.69",
+                    "commit": "cd8be0ba3b27542253f7744b699c2ede159e2d7c"
+                }
+            ]
+        },
+        {
             "name": "libsigc++",
             "buildsystem": "meson",
             "config-opts": [
