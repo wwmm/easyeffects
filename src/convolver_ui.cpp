@@ -307,9 +307,9 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
   util::idle_add([=]() {
     
     if (  
-      ( self != nullptr ) &&
+      ( self ) &&
       ( ui::chart::get_is_visible(self->chart) ) &&
-      ( gtk_toggle_button_get_active(self->show_fft) != 0 )
+      ( gtk_toggle_button_get_active(self->show_fft) )
     ) {
       plot_fft(self);
     };
@@ -340,24 +340,24 @@ void get_irs_info(ConvolverBox* self) {
 
   if (rate == 0) {
     // warning the user that there is a problem
-
+    g_object_ref(self);
     util::idle_add([=]() {
-      if (self == nullptr) {
-        return;
-      }
+      if (
+        ( self ) &&
+        ( self->chart ) &&
+        ( ui::chart::get_is_visible(self->chart) )
+      ) {
+        // Move label to error state
+        gtk_widget_remove_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
+        gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "error");
+        gtk_label_set_text(self->label_file_name, _("Failed To Load The Impulse File"));
 
-      if (!ui::chart::get_is_visible(self->chart)) {
-        return;
-      }
+        gtk_label_set_text(self->label_sampling_rate, "");
+        gtk_label_set_text(self->label_samples, "");
+        gtk_label_set_text(self->label_duration, "");
+      };
 
-      // Move label to error state
-      gtk_widget_remove_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
-      gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "error");
-      gtk_label_set_text(self->label_file_name, _("Failed To Load The Impulse File"));
-
-      gtk_label_set_text(self->label_sampling_rate, "");
-      gtk_label_set_text(self->label_samples, "");
-      gtk_label_set_text(self->label_duration, "");
+      g_object_unref(self);
     });
 
     return;
@@ -419,29 +419,30 @@ void get_irs_info(ConvolverBox* self) {
   auto rate_copy = rate;
   auto n_samples = kernel_L.size();
 
+  g_object_ref(self);
   util::idle_add([=]() {
-    if (self == nullptr) {
-      return;
-    }
+    if (
+      ( self ) &&
+      ( self->chart ) &&
+      ( ui::chart::get_is_visible(self->chart) )
+    ) {
+      const auto fpath = std::filesystem::path{path};
 
-    if (!ui::chart::get_is_visible(self->chart)) {
-      return;
-    }
+      // Set label to ready state and update with filename
+      gtk_widget_remove_css_class(GTK_WIDGET(self->label_file_name), "error");
+      gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
+      gtk_label_set_text(self->label_file_name, fpath.stem().c_str());
 
-    const auto fpath = std::filesystem::path{path};
+      gtk_label_set_text(self->label_sampling_rate, fmt::format(ui::get_user_locale(), "{0:Ld} Hz", rate_copy).c_str());
+      gtk_label_set_text(self->label_samples, fmt::format(ui::get_user_locale(), "{0:Ld}", n_samples).c_str());
+      gtk_label_set_text(self->label_duration, fmt::format(ui::get_user_locale(), "{0:.3Lf}", duration).c_str());
 
-    // Set label to ready state and update with filename
-    gtk_widget_remove_css_class(GTK_WIDGET(self->label_file_name), "error");
-    gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
-    gtk_label_set_text(self->label_file_name, fpath.stem().c_str());
+      if (gtk_toggle_button_get_active(self->show_fft) == 0) {
+        plot_waveform(self);
+      }
+    };
 
-    gtk_label_set_text(self->label_sampling_rate, fmt::format(ui::get_user_locale(), "{0:Ld} Hz", rate_copy).c_str());
-    gtk_label_set_text(self->label_samples, fmt::format(ui::get_user_locale(), "{0:Ld}", n_samples).c_str());
-    gtk_label_set_text(self->label_duration, fmt::format(ui::get_user_locale(), "{0:.3Lf}", duration).c_str());
-
-    if (gtk_toggle_button_get_active(self->show_fft) == 0) {
-      plot_waveform(self);
-    }
+    g_object_unref(self);
   });
 }
 
