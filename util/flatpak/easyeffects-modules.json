@@ -2,6 +2,27 @@
     "name": "easyeffects-modules",
     "modules": [
         {
+            "name": "pipewire",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dgstreamer=disabled",
+                "-Dman=disabled",
+                "-Dsystemd=disabled",
+                "-Dudev=disabled",
+                "-Dudevrulesdir=disabled",
+                "-Dsession-managers=[]",
+                "-Djack=enabled"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pipewire/pipewire.git",
+                    "tag": "0.3.69",
+                    "commit": "cd8be0ba3b27542253f7744b699c2ede159e2d7c"
+                }
+            ]
+        },
+        {
             "name": "libsigc++",
             "buildsystem": "meson",
             "config-opts": [
@@ -176,8 +197,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nlohmann/json",
-                    "tag": "v3.11.2",
-                    "commit": "bc889afb4c5bf1c0d8ee29ef35eaaf4c8bef8a5d",
+                    "tag": "v3.11.3",
+                    "commit": "9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
@@ -198,8 +219,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.10.0.tar.gz",
-                    "sha256": "487023a955e5a3cc6d3a0d5f89179f9b6c0ae7222613a7185b0227ba0c83700b",
+                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.11.0.tar.gz",
+                    "sha256": "782ce0cab62df9ea125cdea253a50534862b563f1d85d4cda7ad4e77550ac363",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 227581,
@@ -282,8 +303,8 @@
                     "only-arches": [
                         "x86_64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.3.3/mold-2.3.3-x86_64-linux.tar.gz",
-                    "sha256": "410f3b868352d7a8a7f489f683737847f165499aa39889444d710871fde9014d",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.4.0/mold-2.4.0-x86_64-linux.tar.gz",
+                    "sha256": "666354f7dbd00982591257cf3729cb7f7967387b7576ac5f0e33262dc6c985ce",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
@@ -297,8 +318,8 @@
                     "only-arches": [
                         "aarch64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.3.3/mold-2.3.3-aarch64-linux.tar.gz",
-                    "sha256": "37cdaa329d3bce4f3717f51c03714dfb971a26a9e2ee871ae76ef055d2cbb8bb",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.4.0/mold-2.4.0-aarch64-linux.tar.gz",
+                    "sha256": "08959d33d0149519fdeb9104b61dc17aa6200f1c6889c343e6b83ffb4833204b",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,

@@ -301,7 +301,7 @@ void application_class_init(ApplicationClass* klass) {
     }
 
     if (g_variant_dict_contains(options, "version") != 0) {
-      std::cout << "easyeffects version: " + std::string(VERSION);
+      std::cout << "easyeffects version: " << std::string(VERSION) << '\n';
 
       return EXIT_SUCCESS;
     }
