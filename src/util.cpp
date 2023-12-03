@@ -278,14 +278,15 @@ void remove_blocklist_entry(GSettings* settings, const std::string& name) {
   util::debug("an entry has been removed from the blocklist");
 }
 
-void idle_add(std::function<void()> cb) {
+void idle_add(std::function<void()> cb, std::function<void()> cleanup_cb) {
   struct Data {
-    std::function<void()> cb;
+    std::function<void()> cb, cleanup_cp;
   };
 
   auto* d = new Data();
 
   d->cb = std::move(cb);
+  d->cleanup_cp = std::move(cleanup_cb);
 
   g_idle_add((GSourceFunc) +
                  [](Data* d) {
@@ -298,6 +299,8 @@ void idle_add(std::function<void()> cb) {
                    }
 
                    d->cb();
+
+                   d->cleanup_cp();
 
                    delete d;
 
