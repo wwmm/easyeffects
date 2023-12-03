@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-28 11:57-0300\n"
+"POT-Creation-Date: 2023-12-03 14:40+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2398,12 +2398,12 @@ msgstr "Muat Impuls"
 msgid "Remove Impulse"
 msgstr "Hapus Impuls"
 
-#: src/convolver_ui.cpp:330
+#: src/convolver_ui.cpp:334
 #, fuzzy
 msgid "No Impulse File Loaded"
 msgstr "Muat Berkas Impuls"
 
-#: src/convolver_ui.cpp:356
+#: src/convolver_ui.cpp:360
 #, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"
