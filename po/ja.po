@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-28 11:57-0300\n"
+"POT-Creation-Date: 2023-12-03 14:40+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2252,11 +2252,11 @@ msgstr "インパルスを読み込み"
 msgid "Remove Impulse"
 msgstr "インパルスを削除"
 
-#: src/convolver_ui.cpp:330
+#: src/convolver_ui.cpp:334
 msgid "No Impulse File Loaded"
 msgstr "読み込まれたインパルスファイルはありません"
 
-#: src/convolver_ui.cpp:356
+#: src/convolver_ui.cpp:360
 msgid "Failed To Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 

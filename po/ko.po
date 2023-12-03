@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-28 11:57-0300\n"
+"POT-Creation-Date: 2023-12-03 14:40+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2300,11 +2300,11 @@ msgstr "Impulse 불러오기"
 msgid "Remove Impulse"
 msgstr "Impulse 제거하기"
 
-#: src/convolver_ui.cpp:330
+#: src/convolver_ui.cpp:334
 msgid "No Impulse File Loaded"
 msgstr "불러온 Impulse 파일 없음"
 
-#: src/convolver_ui.cpp:356
+#: src/convolver_ui.cpp:360
 msgid "Failed To Load The Impulse File"
 msgstr "Impulse 파일을 불러오지 못했습니다"
 

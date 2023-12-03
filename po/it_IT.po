@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-28 11:57-0300\n"
+"POT-Creation-Date: 2023-12-03 14:40+0000\n"
 "PO-Revision-Date: 2023-11-12 05:02+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2222,11 +2222,11 @@ msgstr "Carica Impulso"
 msgid "Remove Impulse"
 msgstr "Rimuovi Impulso"
 
-#: src/convolver_ui.cpp:330
+#: src/convolver_ui.cpp:334
 msgid "No Impulse File Loaded"
 msgstr "Nessun File di Risposta Impulsiva Caricato"
 
-#: src/convolver_ui.cpp:356
+#: src/convolver_ui.cpp:360
 msgid "Failed To Load The Impulse File"
 msgstr "Impossibile Caricare il File di Risposta Impulsiva"
 
