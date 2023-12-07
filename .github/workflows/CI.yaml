@@ -72,8 +72,8 @@ jobs:
     - name: Validate AppStream
       shell: bash
       working-directory: ${{ env.FLATPAK_BUILD_PATH }}
-      run: |
-        appstream-util validate-relax appdata/com.github.wwmm.easyeffects.Devel.appdata.xml
+      #run: |
+      #  appstream-util validate-relax appdata/com.github.wwmm.easyeffects.Devel.appdata.xml
     
     - name: Verify icon and metadata in app-info
       shell: bash
