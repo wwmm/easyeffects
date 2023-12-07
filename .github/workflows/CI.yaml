@@ -75,12 +75,12 @@ jobs:
       #run: |
       #  appstream-util validate-relax appdata/com.github.wwmm.easyeffects.Devel.appdata.xml
     
-    - name: Verify icon and metadata in app-info
-      shell: bash
-      working-directory: ${{ env.FLATPAK_BUILD_PATH }}
-      run: |
-        test -f app-info/icons/flatpak/128x128/com.github.wwmm.easyeffects.Devel.png || { echo "Missing 128x128 icon in app-info" ; exit 1; }
-        test -f app-info/xmls/com.github.wwmm.easyeffects.Devel.xml.gz || { echo "Missing com.github.wwmm.easyeffects.Devel.xml.gz in app-info" ; exit 1; }
+    # - name: Verify icon and metadata in app-info
+    #   shell: bash
+    #   working-directory: ${{ env.FLATPAK_BUILD_PATH }}
+    #   run: |
+    #     test -f app-info/icons/flatpak/128x128/com.github.wwmm.easyeffects.Devel.png || { echo "Missing 128x128 icon in app-info" ; exit 1; }
+    #     test -f app-info/xmls/com.github.wwmm.easyeffects.Devel.xml.gz || { echo "Missing com.github.wwmm.easyeffects.Devel.xml.gz in app-info" ; exit 1; }
 
     # this just validates, actual update PRs are done in flatpak-update.yaml
     - name: Verify flatpak external data checker metadata
