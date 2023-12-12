@@ -337,6 +337,24 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
+  // spa_dict_get_string(props, PW_KEY_APP_PROCESS_BINARY, app_process_binary);
+
+  if (const auto* app_name = spa_dict_lookup(info->props, PW_KEY_APP_NAME)) {
+    if (app_name != nd->nd_info->app_name) {
+      nd->nd_info->app_name = app_name;
+
+      app_info_ui_changed = true;
+    }
+  }
+
+  if (const auto* app_process_binary = spa_dict_lookup(info->props, PW_KEY_APP_PROCESS_BINARY)) {
+    if (app_process_binary != nd->nd_info->app_process_binary) {
+      nd->nd_info->app_process_binary = app_process_binary;
+
+      app_info_ui_changed = true;
+    }
+  }
+
   if (const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME)) {
     if (app_icon_name != nd->nd_info->app_icon_name) {
       nd->nd_info->app_icon_name = app_icon_name;
@@ -1061,9 +1079,7 @@ void on_registry_global(void* data,
 
     std::string node_name;
 
-    if (!spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name) || node_name.empty()) {
-      node_name = "Undefined Name";
-    }
+    spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name);
 
     // At least for now I do not think there is a point in showing the spectrum adn the output level filters in menus
 

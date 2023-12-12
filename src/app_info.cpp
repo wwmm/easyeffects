@@ -85,8 +85,10 @@ auto app_is_blocklisted(AppInfo* self, const std::string& name) -> bool {
 auto get_app_icon_name(const NodeInfo& node_info) -> std::string {
   // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
 
-  constexpr auto icon_map = std::to_array<std::pair<const char*, const char*>>(
-      {{"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"nightly","firefox-nightly"}, {"obs", "com.obsproject.Studio"}});
+  constexpr auto icon_map = std::to_array<std::pair<const char*, const char*>>({{"chromium-browser", "chromium"},
+                                                                                {"firefox", "firefox"},
+                                                                                {"nightly", "firefox-nightly"},
+                                                                                {"obs", "com.obsproject.Studio"}});
 
   std::string icon_name;
 
@@ -225,7 +227,27 @@ void update(AppInfo* self, const NodeInfo node_info) {
 
   self->data->info = node_info;
 
-  gtk_label_set_text(self->app_name, node_info.name.c_str());
+  std::string app_name = node_info.app_name;
+
+  auto isspace = [](std::string_view a) { return std::ranges::all_of(a, [](auto c) { return std::isspace(c); }); };
+
+  if (app_name.empty() || isspace(app_name)) {
+    app_name = node_info.name;
+  }
+
+  if (app_name.empty() || isspace(app_name)) {
+    app_name = node_info.app_process_binary;
+  }
+
+  if (app_name.empty() || isspace(app_name)) {
+    app_name = node_info.app_process_binary;
+  }
+
+  if (app_name.empty()) {
+    app_name = _("Undefined");
+  }
+
+  gtk_label_set_text(self->app_name, app_name.c_str());
   gtk_label_set_text(self->media_name, node_info.media_name.c_str());
   gtk_label_set_text(self->format, node_info.format.c_str());
   gtk_label_set_text(

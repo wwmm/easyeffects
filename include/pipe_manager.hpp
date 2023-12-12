@@ -55,6 +55,10 @@ struct NodeInfo {
 
   std::string media_role;
 
+  std::string app_name;
+
+  std::string app_process_binary;
+
   std::string app_icon_name;
 
   std::string media_icon_name;
