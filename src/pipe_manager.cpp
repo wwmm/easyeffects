@@ -1061,14 +1061,13 @@ void on_registry_global(void* data,
 
     std::string node_name;
 
-    if (!spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name)) {
-      return;
+    if (!spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name) || node_name.empty()) {
+      node_name = "Undefined Name";
     }
 
     // At least for now I do not think there is a point in showing the spectrum adn the output level filters in menus
 
-    if (node_name.empty() || util::str_contains(node_name, "output_level") ||
-        util::str_contains(node_name, "spectrum")) {
+    if (util::str_contains(node_name, "output_level") || util::str_contains(node_name, "spectrum")) {
       return;
     }
 
