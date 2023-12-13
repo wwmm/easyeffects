@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-13 00:00+0000\n"
+"POT-Creation-Date: 2023-12-13 23:16+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -2191,10 +2191,10 @@ msgid "Unknown"
 msgstr "ukjent"
 
 #: src/app_info.cpp:247
-msgid "Undefined"
+msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:256
+#: src/app_info.cpp:257
 #, fuzzy
 msgid "channels"
 msgstr "Kanaler"
