@@ -57,6 +57,8 @@ struct NodeInfo {
 
   std::string app_name;
 
+  std::string app_process_id;
+
   std::string app_process_binary;
 
   std::string app_icon_name;
