@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-03 14:40+0000\n"
+"POT-Creation-Date: 2023-12-13 00:00+0000\n"
 "PO-Revision-Date: 2023-11-12 05:02+0000\n"
 "Last-Translator: Кирч <egorimomo@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2179,7 +2179,11 @@ msgstr "Ошибка"
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: src/app_info.cpp:234
+#: src/app_info.cpp:247
+msgid "Undefined"
+msgstr ""
+
+#: src/app_info.cpp:256
 msgid "channels"
 msgstr "канала(-ов)"
 

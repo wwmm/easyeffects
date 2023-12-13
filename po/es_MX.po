@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-03 14:40+0000\n"
+"POT-Creation-Date: 2023-12-13 00:00+0000\n"
 "PO-Revision-Date: 2023-11-16 03:06+0000\n"
 "Last-Translator: Carlos Batista <cbatista8a@gmail.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -2283,7 +2283,11 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:234
+#: src/app_info.cpp:247
+msgid "Undefined"
+msgstr ""
+
+#: src/app_info.cpp:256
 #, fuzzy
 msgid "channels"
 msgstr "Canales"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-03 14:40+0000\n"
+"POT-Creation-Date: 2023-12-13 00:00+0000\n"
 "PO-Revision-Date: 2023-07-15 03:50+0000\n"
 "Last-Translator: Fernando Lopes <118869201+plasmus777@users.noreply.github."
 "com>\n"
@@ -2167,7 +2167,11 @@ msgstr "Erro"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: src/app_info.cpp:234
+#: src/app_info.cpp:247
+msgid "Undefined"
+msgstr ""
+
+#: src/app_info.cpp:256
 msgid "channels"
 msgstr "canais"
 

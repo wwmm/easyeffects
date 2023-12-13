@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-03 14:40+0000\n"
+"POT-Creation-Date: 2023-12-13 00:00+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2333,7 +2333,11 @@ msgstr "eroare"
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:234
+#: src/app_info.cpp:247
+msgid "Undefined"
+msgstr ""
+
+#: src/app_info.cpp:256
 #, fuzzy
 msgid "channels"
 msgstr "Canale"
