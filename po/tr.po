@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-03 14:40+0000\n"
+"POT-Creation-Date: 2023-12-13 00:00+0000\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2214,7 +2214,11 @@ msgstr "Hata"
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#: src/app_info.cpp:234
+#: src/app_info.cpp:247
+msgid "Undefined"
+msgstr ""
+
+#: src/app_info.cpp:256
 msgid "channels"
 msgstr "kanallar"
 
