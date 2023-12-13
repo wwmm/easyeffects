@@ -244,7 +244,8 @@ void update(AppInfo* self, const NodeInfo node_info) {
   }
 
   if (app_name.empty()) {
-    app_name = _("Undefined");
+    app_name = _("Undefined Name - Process ID ");
+    app_name.append(node_info.app_process_id);
   }
 
   gtk_label_set_text(self->app_name, app_name.c_str());
