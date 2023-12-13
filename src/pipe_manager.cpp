@@ -347,6 +347,14 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
+  if (const auto* app_process_id = spa_dict_lookup(info->props, PW_KEY_APP_PROCESS_ID)) {
+    if (app_process_id != nd->nd_info->app_process_id) {
+      nd->nd_info->app_process_id = app_process_id;
+
+      app_info_ui_changed = true;
+    }
+  }
+
   if (const auto* app_process_binary = spa_dict_lookup(info->props, PW_KEY_APP_PROCESS_BINARY)) {
     if (app_process_binary != nd->nd_info->app_process_binary) {
       nd->nd_info->app_process_binary = app_process_binary;
