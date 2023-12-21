@@ -44,6 +44,12 @@ std::unordered_map<std::string, std::string> const ApoToEasyEffectsFilter = {
     {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"}, {"HS 6DB", "Hi-shelf"}, {"HS 12DB", "Hi-shelf"},
     {"NO", "Notch"},         {"AP", "Allpass"}};
 
+std::unordered_map<std::string, std::string> const EasyEffectsToApoFilter = {
+    {"Bell", "PK"},                                                   {"Lo-pass", "LP"},      {"Lo-pass", "LPQ"},
+    {"Hi-pass", "HP"},       {"Hi-pass", "HPQ"}, {"Lo-shelf", "LS"},  {"Lo-shelf", "LSC"},    {"Lo-shelf", "LS 6DB"},
+    {"Lo-shelf", "LS 12DB"}, {"Hi-shelf", "HS"}, {"Hi-shelf", "HSC"}, {"Hi-shelf", "HS 6DB"}, {"Hi-shelf", "HS 12DB"},
+    {"Notch", "NO"},         {"Allpass", "AP"}};
+
 struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
@@ -439,6 +445,96 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
           g_free(path);
 
+          g_object_unref(file);
+        }
+      },
+      self);
+}
+
+auto export_apo_preset(EqualizerBox* self, GFile* file) {
+  GFileOutputStream* output_stream = g_file_replace(file, nullptr, false, G_FILE_CREATE_NONE, nullptr, nullptr);
+
+  if (output_stream == nullptr) {
+    return false;
+  }
+
+  std::ostringstream write_buffer;
+  double preamp = g_settings_get_double(self->settings, "input-gain");
+
+  write_buffer << "Preamp: " << preamp << "db"
+               << "\n";
+
+  int nbands = gtk_spin_button_get_value_as_int(self->nbands);
+
+  for (int i = 0; i < nbands; ++i) {
+    bool curr_band_mute = g_settings_get_boolean(self->settings_left, tags::equalizer::band_mute[i].data());
+    std::string curr_band_type = g_settings_get_string(self->settings_left, tags::equalizer::band_type[i].data());
+
+    if (curr_band_type == "Off") {
+      continue;
+    }
+
+    APO_Band apo_band;
+    apo_band.on_off = curr_band_mute ? "OFF" : "ON";
+    apo_band.type = EasyEffectsToApoFilter.at(curr_band_type);
+    apo_band.freq = g_settings_get_double(self->settings_left, tags::equalizer::band_frequency[i].data());
+    apo_band.gain = g_settings_get_double(self->settings_left, tags::equalizer::band_gain[i].data());
+    apo_band.quality = g_settings_get_double(self->settings_left, tags::equalizer::band_q[i].data());
+
+    write_buffer << "Filter " << i + 1 << ": " << apo_band.on_off << " " << apo_band.type << " Fc " << apo_band.freq
+                 << " Hz Gain " << apo_band.gain << " dB Q " << apo_band.quality << "\n";
+  }
+
+  if (g_output_stream_write(G_OUTPUT_STREAM(output_stream), write_buffer.str().c_str(), write_buffer.str().size(),
+                            nullptr, nullptr) == -1) {
+    return false;
+  }
+
+  if (!g_output_stream_close(G_OUTPUT_STREAM(output_stream), nullptr, nullptr)) {
+    return false;
+  }
+
+  return true;
+}
+
+void on_export_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
+  if (g_settings_get_boolean(self->settings, "split-channels") == true) {
+    ui::show_fixed_toast(
+        self->toast_overlay,
+        _("Split channels not yet supported when exporting APO presets."));
+    return;
+  }
+
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
+
+  auto* dialog = gtk_file_dialog_new();
+
+  gtk_file_dialog_set_title(dialog, _("Export EqualizerAPO Preset File"));
+  gtk_file_dialog_set_accept_label(dialog, _("Save"));
+
+  GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
+
+  auto* filter = gtk_file_filter_new();
+
+  gtk_file_filter_add_pattern(filter, "*.txt");
+  gtk_file_filter_set_name(filter, _("EqualizerAPO Presets"));
+
+  g_list_store_append(filters, filter);
+
+  g_object_unref(filter);
+
+  gtk_file_dialog_set_filters(dialog, G_LIST_MODEL(filters));
+
+  g_object_unref(filters);
+
+  gtk_file_dialog_save(
+      dialog, active_window, nullptr,
+      +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
+        auto* self = static_cast<EqualizerBox*>(user_data);
+        auto* dialog = GTK_FILE_DIALOG(source_object);
+
+        if (auto* file = gtk_file_dialog_save_finish(dialog, result, nullptr); file != nullptr) {
+          export_apo_preset(self, file);
           g_object_unref(file);
         }
       },
@@ -914,6 +1010,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_sort_bands);
   gtk_widget_class_bind_template_callback(widget_class, on_import_apo_preset_clicked);
   gtk_widget_class_bind_template_callback(widget_class, on_import_geq_preset_clicked);
+  gtk_widget_class_bind_template_callback(widget_class, on_export_apo_preset_clicked);
 }
 
 void equalizer_box_init(EqualizerBox* self) {

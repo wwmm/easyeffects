@@ -357,6 +357,32 @@
                                                         </child>
                                                     </object>
                                                 </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Export Preset</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <property name="orientation">vertical</property>
+                                                        <property name="valign">center</property>
+
+                                                        <style>
+                                                            <class name="linked" />
+                                                        </style>
+
+                                                        <child>
+                                                            <object class="GtkButton" id="export_apo">
+                                                                <property name="label">APO</property>
+                                                                <property name="valign">center</property>
+                                                                <signal name="clicked" handler="on_export_apo_preset_clicked" object="EqualizerBox" />
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
                                     </object>
