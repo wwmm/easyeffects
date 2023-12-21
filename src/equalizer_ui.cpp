@@ -169,7 +169,7 @@ auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
   return util::str_to_num(matches.str(1), preamp);
 }
 
-auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::string {
+auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> bool {
   std::smatch matches;
 
   static const auto re_filter =
@@ -178,7 +178,7 @@ auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::
   std::regex_search(line, matches, re_filter);
 
   if (matches.size() != 2U) {
-    return "";
+    return false;
   }
 
   // Possible multiple whitespaces are replaced by a single space
@@ -188,7 +188,11 @@ auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::
   std::transform(filter.type.begin(), filter.type.end(), filter.type.begin(),
                  [](unsigned char c) { return std::toupper(c); });
 
-  return filter.type;
+  if (filter.type.empty()) {
+    return false;
+  }
+
+  return true;
 }
 
 auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bool {
@@ -255,9 +259,7 @@ auto parse_apo_on_off(const std::string& line, struct APO_Band& filter) -> bool 
 }
 
 auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
-  auto filter_type = parse_apo_filter(line, filter);
-
-  if (filter_type.empty()) {
+  if (!parse_apo_filter(line, filter)) {
     return false;
   }
 
@@ -268,41 +270,41 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
   // Inspired by function "para_equalizer_ui::import_rew_file(const LSPString*)"
   // inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
   // https://github.com/sadko4u/lsp-plugins
-  if (filter_type == "PK" || filter_type == "MODAL" || filter_type == "PEQ") {
+  if (filter.type == "PK" || filter.type == "MODAL" || filter.type == "PEQ") {
     parse_apo_gain(line, filter);
 
     parse_apo_quality(line, filter);
-  } else if (filter_type == "LP" || filter_type == "LPQ" || filter_type == "HP" || filter_type == "HPQ") {
+  } else if (filter.type == "LP" || filter.type == "LPQ" || filter.type == "HP" || filter.type == "HPQ") {
     parse_apo_quality(line, filter);
-  } else if (filter_type == "LS" || filter_type == "LSC" || filter_type == "HS" || filter_type == "HSC") {
+  } else if (filter.type == "LS" || filter.type == "LSC" || filter.type == "HS" || filter.type == "HSC") {
     parse_apo_gain(line, filter);
 
     if (!parse_apo_quality(line, filter)) {
       filter.quality = 2.0F / 3.0F;
     }
-  } else if (filter_type == "LS 6DB") {
+  } else if (filter.type == "LS 6DB") {
     filter.freq = filter.freq * 2.0F / 3.0F;
     filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
 
     parse_apo_gain(line, filter);
-  } else if (filter_type == "LS 12DB") {
+  } else if (filter.type == "LS 12DB") {
     filter.freq = filter.freq * 3.0F / 2.0F;
 
     parse_apo_gain(line, filter);
-  } else if (filter_type == "HS 6DB") {
+  } else if (filter.type == "HS 6DB") {
     filter.freq = filter.freq / (1.0F / std::numbers::sqrt2_v<float>);
     filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
 
     parse_apo_gain(line, filter);
-  } else if (filter_type == "HS 12DB") {
+  } else if (filter.type == "HS 12DB") {
     filter.freq = filter.freq * (1.0F / std::numbers::sqrt2_v<float>);
 
     parse_apo_gain(line, filter);
-  } else if (filter_type == "NO") {
+  } else if (filter.type == "NO") {
     if (!parse_apo_quality(line, filter)) {
       filter.quality = 100.0F / 3.0F;
     }
-  } else if (filter_type == "AP") {
+  } else if (filter.type == "AP") {
     parse_apo_quality(line, filter);
   }
 
