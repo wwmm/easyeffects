@@ -38,7 +38,7 @@ struct GraphicEQ_Band {
   float gain = 0.0F;
 };
 
-std::unordered_map<std::string, std::string> const FilterTypeMap = {
+std::unordered_map<std::string, std::string> const ApoToEasyEffectsFilter = {
     {"PK", "Bell"},          {"MODAL", "Bell"},  {"PEQ", "Bell"},     {"LP", "Lo-pass"},      {"LPQ", "Lo-pass"},
     {"HP", "Hi-pass"},       {"HPQ", "Hi-pass"}, {"LS", "Lo-shelf"},  {"LSC", "Lo-shelf"},    {"LS 6DB", "Lo-shelf"},
     {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"}, {"HS 6DB", "Hi-shelf"}, {"HS 12DB", "Hi-shelf"},
@@ -368,7 +368,7 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
         std::string curr_band_type;
 
         try {
-          curr_band_type = FilterTypeMap.at(bands[n].type);
+          curr_band_type = ApoToEasyEffectsFilter.at(bands[n].type);
         } catch (std::out_of_range const&) {
           curr_band_type = "Off";
         }
