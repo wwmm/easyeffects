@@ -89,31 +89,43 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
   autogain->set_post_messages(true);
 
   self->data->connections.push_back(autogain->input_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                   self->input_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                       self->input_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(autogain->output_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                   self->output_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                       self->output_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
-  self->data->connections.push_back(autogain->results.connect(
-      [=](const double loudness, const double gain, const double momentary, const double shortterm,
-          const double integrated, const double relative, const double range) {
-        util::idle_add([=]() {
+  self->data->connections.push_back(autogain->results.connect([=](const double loudness, const double gain,
+                                                                  const double momentary, const double shortterm,
+                                                                  const double integrated, const double relative,
+                                                                  const double range) {
+    g_object_ref(self);
+
+    util::idle_add(
+        [=]() {
           if (get_ignore_filter_idle_add(serial)) {
             return;
           }
@@ -147,8 +159,9 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 
           gtk_level_bar_set_value(self->lra_level, util::db_to_linear(range));
           gtk_label_set_text(self->lra_label, fmt::format("{0:.0f} LU", range).c_str());
-        });
-      }));
+        },
+        [=]() { g_object_unref(self); });
+  }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->autogain->package).c_str());
 
