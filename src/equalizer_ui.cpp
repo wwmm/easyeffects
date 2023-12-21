@@ -26,6 +26,7 @@ using namespace tags::equalizer;
 enum Channel { left, right };
 
 struct APO_Band {
+  std::string on_off; // Equivalent to EasyEffects `band_mute`. "ON" => mute=false
   std::string type;
   float freq = 1000.0F;
   float gain = 0.0F;
@@ -166,7 +167,7 @@ auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::
   std::smatch matches;
 
   static const auto re_filter =
-      std::regex(R"(filter\s*\d*\s*:\s*on\s+([a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
+      std::regex(R"(filter\s*\d*\s*:\s*(?:on|off)\s+([a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
 
   std::regex_search(line, matches, re_filter);
 
@@ -228,6 +229,25 @@ auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool
   return util::str_to_num(matches.str(1), filter.quality);
 }
 
+auto parse_apo_on_off(const std::string& line, struct APO_Band& filter) -> bool {
+  std::smatch matches;
+
+  static const auto re_on_off = std::regex(R"(Filter\s*\d*\s*:\s*(on|off)(?=\s+[a-z]+(?:\s+(?:6|12)db)?))",
+                                           std::regex::icase);
+
+  std::regex_search(line, matches, re_on_off);
+
+  // using the 2-group match format to comply with other functions, but maybe switch to non-capture groups?
+  if (matches.size() != 2U) {
+    return false;
+  }
+
+  // idk if this is needed; used in parse_apo_filter
+  filter.on_off = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
+
+  return true;
+}
+
 auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
   auto filter_type = parse_apo_filter(line, filter);
 
@@ -237,6 +257,7 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
 
   // The configuration line refers to an existing APO filter, so we try to get the other parameters.
   parse_apo_frequency(line, filter);
+  parse_apo_on_off(line, filter);
 
   // Inspired by function "para_equalizer_ui::import_rew_file(const LSPString*)"
   // inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
@@ -343,6 +364,7 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   for (uint n = 0U, apo_bands = bands.size(); n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
+        auto curr_band_mute = (bands[n].on_off == "OFF"); // mute if band is "OFF"
         std::string curr_band_type;
 
         try {
@@ -351,6 +373,7 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
           curr_band_type = "Off";
         }
 
+        g_settings_set_boolean(channel, band_mute[n].data(), curr_band_mute);
         g_settings_set_string(channel, band_type[n].data(), curr_band_type.c_str());
         g_settings_set_string(channel, band_mode[n].data(), "APO (DR)");
         g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
@@ -358,6 +381,7 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
         g_settings_set_double(channel, band_q[n].data(), bands[n].quality);
       } else {
         g_settings_set_string(channel, band_type[n].data(), "Off");
+        g_settings_reset(channel, band_mute[n].data());
         g_settings_reset(channel, band_mode[n].data());
         g_settings_reset(channel, band_frequency[n].data());
         g_settings_reset(channel, band_gain[n].data());
@@ -366,7 +390,6 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
 
       g_settings_reset(channel, band_slope[n].data());
       g_settings_reset(channel, band_solo[n].data());
-      g_settings_reset(channel, band_mute[n].data());
     }
   }
 
