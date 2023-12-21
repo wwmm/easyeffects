@@ -175,19 +175,13 @@ auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::
   }
 
   // Possible multiple whitespaces are replaced by a single space
-  auto apo_filter = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
+  filter.type = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
 
   // Filter string needed in uppercase for unordered_map
-  std::transform(apo_filter.begin(), apo_filter.end(), apo_filter.begin(),
+  std::transform(filter.type.begin(), filter.type.end(), filter.type.begin(),
                  [](unsigned char c) { return std::toupper(c); });
 
-  try {
-    filter.type = FilterTypeMap.at(apo_filter);
-  } catch (...) {
-    filter.type = "Off";
-  }
-
-  return apo_filter;
+  return filter.type;
 }
 
 auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bool {
@@ -349,7 +343,15 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   for (uint n = 0U, apo_bands = bands.size(); n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
-        g_settings_set_string(channel, band_type[n].data(), bands[n].type.c_str());
+        std::string curr_band_type;
+
+        try {
+          curr_band_type = FilterTypeMap.at(bands[n].type);
+        } catch (std::out_of_range const&) {
+          curr_band_type = "Off";
+        }
+
+        g_settings_set_string(channel, band_type[n].data(), curr_band_type.c_str());
         g_settings_set_string(channel, band_mode[n].data(), "APO (DR)");
         g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
         g_settings_set_double(channel, band_gain[n].data(), bands[n].gain);
