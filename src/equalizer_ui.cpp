@@ -26,6 +26,7 @@ using namespace tags::equalizer;
 enum Channel { left, right };
 
 struct APO_Band {
+  std::string on_off; // Equivalent to EasyEffects `band_mute`. "ON" => mute=false
   std::string type;
   float freq = 1000.0F;
   float gain = 0.0F;
@@ -37,11 +38,17 @@ struct GraphicEQ_Band {
   float gain = 0.0F;
 };
 
-std::unordered_map<std::string, std::string> const FilterTypeMap = {
+std::unordered_map<std::string, std::string> const ApoToEasyEffectsFilter = {
     {"PK", "Bell"},          {"MODAL", "Bell"},  {"PEQ", "Bell"},     {"LP", "Lo-pass"},      {"LPQ", "Lo-pass"},
     {"HP", "Hi-pass"},       {"HPQ", "Hi-pass"}, {"LS", "Lo-shelf"},  {"LSC", "Lo-shelf"},    {"LS 6DB", "Lo-shelf"},
     {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"}, {"HS 6DB", "Hi-shelf"}, {"HS 12DB", "Hi-shelf"},
     {"NO", "Notch"},         {"AP", "Allpass"}};
+
+std::unordered_map<std::string, std::string> const EasyEffectsToApoFilter = {
+    {"Bell", "PK"},                                                   {"Lo-pass", "LP"},      {"Lo-pass", "LPQ"},
+    {"Hi-pass", "HP"},       {"Hi-pass", "HPQ"}, {"Lo-shelf", "LS"},  {"Lo-shelf", "LSC"},    {"Lo-shelf", "LS 6DB"},
+    {"Lo-shelf", "LS 12DB"}, {"Hi-shelf", "HS"}, {"Hi-shelf", "HSC"}, {"Hi-shelf", "HS 6DB"}, {"Hi-shelf", "HS 12DB"},
+    {"Notch", "NO"},         {"Allpass", "AP"}};
 
 struct Data {
  public:
@@ -162,32 +169,30 @@ auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
   return util::str_to_num(matches.str(1), preamp);
 }
 
-auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> std::string {
+auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> bool {
   std::smatch matches;
 
   static const auto re_filter =
-      std::regex(R"(filter\s*\d*\s*:\s*on\s+([a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
+      std::regex(R"(filter\s*\d*\s*:\s*(?:on|off)\s+([a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
 
   std::regex_search(line, matches, re_filter);
 
   if (matches.size() != 2U) {
-    return "";
+    return false;
   }
 
   // Possible multiple whitespaces are replaced by a single space
-  auto apo_filter = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
+  filter.type = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
 
   // Filter string needed in uppercase for unordered_map
-  std::transform(apo_filter.begin(), apo_filter.end(), apo_filter.begin(),
+  std::transform(filter.type.begin(), filter.type.end(), filter.type.begin(),
                  [](unsigned char c) { return std::toupper(c); });
 
-  try {
-    filter.type = FilterTypeMap.at(apo_filter);
-  } catch (...) {
-    filter.type = "Off";
+  if (filter.type.empty()) {
+    return false;
   }
 
-  return apo_filter;
+  return true;
 }
 
 auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bool {
@@ -234,54 +239,72 @@ auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool
   return util::str_to_num(matches.str(1), filter.quality);
 }
 
-auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
-  auto filter_type = parse_apo_filter(line, filter);
+auto parse_apo_on_off(const std::string& line, struct APO_Band& filter) -> bool {
+  std::smatch matches;
 
-  if (filter_type.empty()) {
+  static const auto re_on_off = std::regex(R"(Filter\s*\d*\s*:\s*(on|off)(?=\s+[a-z]+(?:\s+(?:6|12)db)?))",
+                                           std::regex::icase);
+
+  std::regex_search(line, matches, re_on_off);
+
+  // using the 2-group match format to comply with other functions, but maybe switch to non-capture groups?
+  if (matches.size() != 2U) {
+    return false;
+  }
+
+  // idk if this is needed; used in parse_apo_filter
+  filter.on_off = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
+
+  return true;
+}
+
+auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
+  if (!parse_apo_filter(line, filter)) {
     return false;
   }
 
   // The configuration line refers to an existing APO filter, so we try to get the other parameters.
   parse_apo_frequency(line, filter);
+  parse_apo_on_off(line, filter);
 
   // Inspired by function "para_equalizer_ui::import_rew_file(const LSPString*)"
   // inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
   // https://github.com/sadko4u/lsp-plugins
-  if (filter_type == "PK" || filter_type == "MODAL" || filter_type == "PEQ") {
+  if (filter.type == "PK" || filter.type == "MODAL" || filter.type == "PEQ") {
     parse_apo_gain(line, filter);
 
     parse_apo_quality(line, filter);
-  } else if (filter_type == "LP" || filter_type == "LPQ" || filter_type == "HP" || filter_type == "HPQ") {
+  } else if (filter.type == "LP" || filter.type == "LPQ" || filter.type == "HP" || filter.type == "HPQ") {
     parse_apo_quality(line, filter);
-  } else if (filter_type == "LS" || filter_type == "LSC" || filter_type == "HS" || filter_type == "HSC") {
+  } else if (filter.type == "LS" || filter.type == "LSC" || filter.type == "HS" || filter.type == "HSC") {
     parse_apo_gain(line, filter);
 
     if (!parse_apo_quality(line, filter)) {
       filter.quality = 2.0F / 3.0F;
     }
-  } else if (filter_type == "LS 6DB") {
+  } else if (filter.type == "LS 6DB") {
     filter.freq = filter.freq * 2.0F / 3.0F;
     filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
 
     parse_apo_gain(line, filter);
-  } else if (filter_type == "LS 12DB") {
+  } else if (filter.type == "LS 12DB") {
     filter.freq = filter.freq * 3.0F / 2.0F;
 
     parse_apo_gain(line, filter);
-  } else if (filter_type == "HS 6DB") {
+  } else if (filter.type == "HS 6DB") {
     filter.freq = filter.freq / (1.0F / std::numbers::sqrt2_v<float>);
     filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
 
     parse_apo_gain(line, filter);
-  } else if (filter_type == "HS 12DB") {
+  } else if (filter.type == "HS 12DB") {
     filter.freq = filter.freq * (1.0F / std::numbers::sqrt2_v<float>);
 
     parse_apo_gain(line, filter);
-  } else if (filter_type == "NO") {
+  } else if (filter.type == "NO") {
     if (!parse_apo_quality(line, filter)) {
       filter.quality = 100.0F / 3.0F;
     }
-  } else if (filter_type == "AP") {
+  } else if (filter.type == "AP") {
     parse_apo_quality(line, filter);
   }
 
@@ -349,13 +372,24 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   for (uint n = 0U, apo_bands = bands.size(); n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
-        g_settings_set_string(channel, band_type[n].data(), bands[n].type.c_str());
+        auto curr_band_mute = (bands[n].on_off == "OFF"); // mute if band is "OFF"
+        std::string curr_band_type;
+
+        try {
+          curr_band_type = ApoToEasyEffectsFilter.at(bands[n].type);
+        } catch (std::out_of_range const&) {
+          curr_band_type = "Off";
+        }
+
+        g_settings_set_boolean(channel, band_mute[n].data(), curr_band_mute);
+        g_settings_set_string(channel, band_type[n].data(), curr_band_type.c_str());
         g_settings_set_string(channel, band_mode[n].data(), "APO (DR)");
         g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
         g_settings_set_double(channel, band_gain[n].data(), bands[n].gain);
         g_settings_set_double(channel, band_q[n].data(), bands[n].quality);
       } else {
         g_settings_set_string(channel, band_type[n].data(), "Off");
+        g_settings_reset(channel, band_mute[n].data());
         g_settings_reset(channel, band_mode[n].data());
         g_settings_reset(channel, band_frequency[n].data());
         g_settings_reset(channel, band_gain[n].data());
@@ -364,7 +398,6 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
 
       g_settings_reset(channel, band_slope[n].data());
       g_settings_reset(channel, band_solo[n].data());
-      g_settings_reset(channel, band_mute[n].data());
     }
   }
 
@@ -414,6 +447,96 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
           g_free(path);
 
+          g_object_unref(file);
+        }
+      },
+      self);
+}
+
+auto export_apo_preset(EqualizerBox* self, GFile* file) {
+  GFileOutputStream* output_stream = g_file_replace(file, nullptr, false, G_FILE_CREATE_NONE, nullptr, nullptr);
+
+  if (output_stream == nullptr) {
+    return false;
+  }
+
+  std::ostringstream write_buffer;
+  double preamp = g_settings_get_double(self->settings, "input-gain");
+
+  write_buffer << "Preamp: " << preamp << "db"
+               << "\n";
+
+  int nbands = gtk_spin_button_get_value_as_int(self->nbands);
+
+  for (int i = 0; i < nbands; ++i) {
+    bool curr_band_mute = g_settings_get_boolean(self->settings_left, tags::equalizer::band_mute[i].data());
+    std::string curr_band_type = g_settings_get_string(self->settings_left, tags::equalizer::band_type[i].data());
+
+    if (curr_band_type == "Off") {
+      continue;
+    }
+
+    APO_Band apo_band;
+    apo_band.on_off = curr_band_mute ? "OFF" : "ON";
+    apo_band.type = EasyEffectsToApoFilter.at(curr_band_type);
+    apo_band.freq = g_settings_get_double(self->settings_left, tags::equalizer::band_frequency[i].data());
+    apo_band.gain = g_settings_get_double(self->settings_left, tags::equalizer::band_gain[i].data());
+    apo_band.quality = g_settings_get_double(self->settings_left, tags::equalizer::band_q[i].data());
+
+    write_buffer << "Filter " << i + 1 << ": " << apo_band.on_off << " " << apo_band.type << " Fc " << apo_band.freq
+                 << " Hz Gain " << apo_band.gain << " dB Q " << apo_band.quality << "\n";
+  }
+
+  if (g_output_stream_write(G_OUTPUT_STREAM(output_stream), write_buffer.str().c_str(), write_buffer.str().size(),
+                            nullptr, nullptr) == -1) {
+    return false;
+  }
+
+  if (!g_output_stream_close(G_OUTPUT_STREAM(output_stream), nullptr, nullptr)) {
+    return false;
+  }
+
+  return true;
+}
+
+void on_export_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
+  if (g_settings_get_boolean(self->settings, "split-channels") == true) {
+    ui::show_fixed_toast(
+        self->toast_overlay,
+        _("Split channels not yet supported when exporting APO presets."));
+    return;
+  }
+
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
+
+  auto* dialog = gtk_file_dialog_new();
+
+  gtk_file_dialog_set_title(dialog, _("Export EqualizerAPO Preset File"));
+  gtk_file_dialog_set_accept_label(dialog, _("Save"));
+
+  GListStore* filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
+
+  auto* filter = gtk_file_filter_new();
+
+  gtk_file_filter_add_pattern(filter, "*.txt");
+  gtk_file_filter_set_name(filter, _("EqualizerAPO Presets"));
+
+  g_list_store_append(filters, filter);
+
+  g_object_unref(filter);
+
+  gtk_file_dialog_set_filters(dialog, G_LIST_MODEL(filters));
+
+  g_object_unref(filters);
+
+  gtk_file_dialog_save(
+      dialog, active_window, nullptr,
+      +[](GObject* source_object, GAsyncResult* result, gpointer user_data) {
+        auto* self = static_cast<EqualizerBox*>(user_data);
+        auto* dialog = GTK_FILE_DIALOG(source_object);
+
+        if (auto* file = gtk_file_dialog_save_finish(dialog, result, nullptr); file != nullptr) {
+          export_apo_preset(self, file);
           g_object_unref(file);
         }
       },
@@ -889,6 +1012,7 @@ void equalizer_box_class_init(EqualizerBoxClass* klass) {
   gtk_widget_class_bind_template_callback(widget_class, on_sort_bands);
   gtk_widget_class_bind_template_callback(widget_class, on_import_apo_preset_clicked);
   gtk_widget_class_bind_template_callback(widget_class, on_import_geq_preset_clicked);
+  gtk_widget_class_bind_template_callback(widget_class, on_export_apo_preset_clicked);
 }
 
 void equalizer_box_init(EqualizerBox* self) {
