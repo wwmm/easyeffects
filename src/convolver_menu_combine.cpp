@@ -96,7 +96,9 @@ void combine_kernels(ConvolverMenuCombine* self,
   if (output_file_name.empty()) {
     // The method combine_kernels run in a secondary thread. But the widgets have to be used in the main thread.
 
-    util::idle_add([=] { gtk_spinner_stop(self->spinner); });
+    g_object_ref(self);
+
+    util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
 
     return;
   }
@@ -105,7 +107,9 @@ void combine_kernels(ConvolverMenuCombine* self,
   auto [rate2, kernel_2_L, kernel_2_R] = ui::convolver::read_kernel(irs_dir, irs_ext, kernel_2_name);
 
   if (rate1 == 0 || rate2 == 0) {
-    util::idle_add([=] { gtk_spinner_stop(self->spinner); });
+    g_object_ref(self);
+
+    util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
 
     return;
   }
@@ -165,7 +169,9 @@ void combine_kernels(ConvolverMenuCombine* self,
 
   util::debug("combined kernel saved: " + output_file_path.string());
 
-  util::idle_add([=] { gtk_spinner_stop(self->spinner); });
+  g_object_ref(self);
+
+  util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
 }
 
 void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
