@@ -164,81 +164,105 @@ void setup(CompressorBox* self,
   }
 
   self->data->connections.push_back(compressor->input_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                   self->input_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                       self->input_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(compressor->output_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                   self->output_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                       self->output_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(compressor->reduction.connect([=](const float value) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      if (!GTK_IS_LABEL(self->gain_label)) {
-        return;
-      }
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-    });
+          if (!GTK_IS_LABEL(self->gain_label)) {
+            return;
+          }
+
+          gtk_label_set_text(self->gain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(compressor->envelope.connect([=](const float value) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      if (!GTK_IS_LABEL(self->envelope_label)) {
-        return;
-      }
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      gtk_label_set_text(self->envelope_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-    });
+          if (!GTK_IS_LABEL(self->envelope_label)) {
+            return;
+          }
+
+          gtk_label_set_text(self->envelope_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(compressor->sidechain.connect([=](const float value) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      if (!GTK_IS_LABEL(self->sidechain_label)) {
-        return;
-      }
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      gtk_label_set_text(self->sidechain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-    });
+          if (!GTK_IS_LABEL(self->sidechain_label)) {
+            return;
+          }
+
+          gtk_label_set_text(self->sidechain_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(compressor->curve.connect([=](const float value) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      if (!GTK_IS_LABEL(self->curve_label)) {
-        return;
-      }
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-    });
+          if (!GTK_IS_LABEL(self->curve_label)) {
+            return;
+          }
+
+          gtk_label_set_text(self->curve_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(pm->source_added.connect([=](const NodeInfo info) {
