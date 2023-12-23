@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-21 19:43+0000\n"
-"PO-Revision-Date: 2023-12-20 14:06+0000\n"
+"PO-Revision-Date: 2023-12-23 11:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -967,9 +967,8 @@ msgid "Import Preset"
 msgstr "Importer un préréglage"
 
 #: data/ui/equalizer.ui:363
-#, fuzzy
 msgid "Export Preset"
-msgstr "Importer un préréglage"
+msgstr "Exporter le préréglage"
 
 #: data/ui/equalizer_band.ui:143 data/ui/filter.ui:119
 msgid "Slope"
@@ -2271,21 +2270,20 @@ msgstr ""
 #: src/equalizer_ui.cpp:506
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
+"Les canaux séparés ne sont pas encore supportés lors de l'exportation des "
+"préréglages APO."
 
 #: src/equalizer_ui.cpp:514
-#, fuzzy
 msgid "Export EqualizerAPO Preset File"
-msgstr "Importer un fichier de préréglage APO"
+msgstr "Exporter le fichier de préréglage de l'ÉgaliseurAPO"
 
 #: src/equalizer_ui.cpp:515
-#, fuzzy
 msgid "Save"
-msgstr "Sauvegarder ?"
+msgstr "Sauvegarder"
 
 #: src/equalizer_ui.cpp:522
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "Préréglages APO"
+msgstr "Préréglages de l'ÉgaliseurAPO"
 
 #: src/equalizer_ui.cpp:700
 msgid "Import GraphicEQ Preset File"
