@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-21 19:43+0000\n"
-"PO-Revision-Date: 2023-12-23 11:09+0000\n"
+"PO-Revision-Date: 2023-12-24 09:07+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2251,7 +2251,7 @@ msgstr "Нестандартный файл"
 
 #: src/convolver_menu_impulses.cpp:108
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr "Файл импульса повреждён или не поддерживается"
+msgstr "Возможно, файл импульса повреждён или не поддерживается"
 
 #: src/convolver_menu_impulses.cpp:113
 msgid "Only Stereo Impulse Files Are Supported"
@@ -2384,7 +2384,7 @@ msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
-"Выбранная модель не загружена. Данный формат может быть не поддерживаемым. "
+"Выбранная модель не загружена. Её формат может быть не поддерживаемым. "
 "Возвращение на стандартную модель."
 
 #: src/rnnoise_ui.cpp:138
