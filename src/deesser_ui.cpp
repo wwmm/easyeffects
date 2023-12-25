@@ -82,55 +82,71 @@ void setup(DeesserBox* self, std::shared_ptr<Deesser> deesser, const std::string
   deesser->set_post_messages(true);
 
   self->data->connections.push_back(deesser->input_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                   self->input_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                       self->input_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(deesser->output_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                   self->output_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                       self->output_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(deesser->detected.connect([=](const double value) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      if (!GTK_IS_LEVEL_BAR(self->compression) || !GTK_IS_LABEL(self->compression_label)) {
-        return;
-      }
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      gtk_level_bar_set_value(self->compression, 1.0 - value);
-      gtk_label_set_text(self->compression_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-    });
+          if (!GTK_IS_LEVEL_BAR(self->compression) || !GTK_IS_LABEL(self->compression_label)) {
+            return;
+          }
+
+          gtk_level_bar_set_value(self->compression, 1.0 - value);
+          gtk_label_set_text(self->compression_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(deesser->compression.connect([=](const double value) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      if (!GTK_IS_LEVEL_BAR(self->detected) || !GTK_IS_LABEL(self->detected_label)) {
-        return;
-      }
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      gtk_level_bar_set_value(self->detected, value);
-      gtk_label_set_text(self->detected_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-    });
+          if (!GTK_IS_LEVEL_BAR(self->detected) || !GTK_IS_LABEL(self->detected_label)) {
+            return;
+          }
+
+          gtk_level_bar_set_value(self->detected, value);
+          gtk_label_set_text(self->detected_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->deesser->package).c_str());
