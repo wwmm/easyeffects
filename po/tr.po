@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-21 19:43+0000\n"
-"PO-Revision-Date: 2023-02-22 18:30+0000\n"
-"Last-Translator: atahanacar <atahanacar@gmx.com>\n"
+"PO-Revision-Date: 2023-12-25 15:06+0000\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -71,9 +71,8 @@ msgid "Application Volume"
 msgstr "Uygulama Ses Seviyesi"
 
 #: data/ui/application_window.ui:6
-#, fuzzy
 msgid "_Help"
-msgstr "Yardım"
+msgstr "_Yardım"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
@@ -93,7 +92,7 @@ msgstr "Easy Effects _Hakkında"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_Çık"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
@@ -139,7 +138,7 @@ msgstr "Geçmişi Sıfırla"
 
 #: data/ui/autogain.ui:39
 msgid "Controls"
-msgstr ""
+msgstr "Denetimler"
 
 #: data/ui/autogain.ui:43
 msgid "Target"
@@ -357,9 +356,8 @@ msgstr "Hariç Tutulan Uygulamaları Göster"
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
-#, fuzzy
 msgid "Show Native Window"
-msgstr "Pencereyi Kapat"
+msgstr "Yerel Pencereyi Göster"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:34
 msgid "Compressor"
@@ -466,17 +464,15 @@ msgstr "Süs"
 #: data/ui/expander.ui:340 data/ui/gate.ui:352
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:212 data/ui/stereo_tools.ui:538
-#, fuzzy
 msgid "Dry Level"
-msgstr "Seviye"
+msgstr "Kuru Düzey"
 
 #: data/ui/compressor.ui:456 data/ui/delay.ui:87 data/ui/delay.ui:177
 #: data/ui/expander.ui:375 data/ui/gate.ui:357
 #: data/ui/multiband_compressor.ui:208 data/ui/multiband_gate.ui:208
 #: data/ui/reverb.ui:246 data/ui/rnnoise.ui:92 data/ui/stereo_tools.ui:574
-#, fuzzy
 msgid "Wet Level"
-msgstr "Hedef Seviye"
+msgstr "Islak Düzey"
 
 #: data/ui/compressor.ui:498 data/ui/compressor.ui:519
 #: data/ui/compressor.ui:1091 data/ui/expander.ui:417 data/ui/expander.ui:438
@@ -490,9 +486,8 @@ msgstr "Yanzincir"
 #: data/ui/expander.ui:455 data/ui/gate.ui:663 data/ui/gate.ui:669
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
-#, fuzzy
 msgid "Stereo Split Mode"
-msgstr "Stereo Kipi"
+msgstr "Stereo Ayrıştırma Kipi"
 
 #: data/ui/compressor.ui:543 data/ui/expander.ui:462 data/ui/gate.ui:676
 #: data/ui/multiband_compressor_band.ui:463 data/ui/multiband_gate_band.ui:522
@@ -528,7 +523,6 @@ msgstr "Sağ"
 #: data/ui/multiband_compressor_band.ui:490
 #: data/ui/multiband_compressor_band.ui:525 data/ui/multiband_gate_band.ui:549
 #: data/ui/multiband_gate_band.ui:584
-#, fuzzy
 msgid "Min"
 msgstr "Asgari"
 
@@ -537,7 +531,6 @@ msgstr "Asgari"
 #: data/ui/multiband_compressor_band.ui:491
 #: data/ui/multiband_compressor_band.ui:526 data/ui/multiband_gate_band.ui:550
 #: data/ui/multiband_gate_band.ui:585
-#, fuzzy
 msgid "Max"
 msgstr "Azami"
 
@@ -549,15 +542,13 @@ msgstr "Yanzincir Kaynağı"
 
 #: data/ui/compressor.ui:578 data/ui/expander.ui:497 data/ui/gate.ui:711
 #: data/ui/multiband_compressor_band.ui:521 data/ui/multiband_gate_band.ui:580
-#, fuzzy
 msgid "Left/Right"
-msgstr "Gecikme Sol Sağ"
+msgstr "Sol/Sağ"
 
 #: data/ui/compressor.ui:579 data/ui/expander.ui:498 data/ui/gate.ui:712
 #: data/ui/multiband_compressor_band.ui:522 data/ui/multiband_gate_band.ui:581
-#, fuzzy
 msgid "Right/Left"
-msgstr "Sağ"
+msgstr "Sağ/Sol"
 
 #: data/ui/compressor.ui:580 data/ui/expander.ui:499 data/ui/gate.ui:713
 #: data/ui/multiband_compressor_band.ui:523 data/ui/multiband_gate_band.ui:582
@@ -573,9 +564,8 @@ msgstr "Yan"
 
 #: data/ui/compressor.ui:592 data/ui/expander.ui:511 data/ui/gate.ui:725
 #: data/ui/multiband_compressor_band.ui:535 data/ui/multiband_gate_band.ui:594
-#, fuzzy
 msgid "Stereo Split Source"
-msgstr "Öntanımlı Kaynak"
+msgstr "Stereo Ayrıştırma Kaynağı"
 
 #: data/ui/compressor.ui:618 data/ui/deesser.ui:50 data/ui/expander.ui:537
 #: data/ui/gate.ui:751 data/ui/multiband_compressor_band.ui:559
