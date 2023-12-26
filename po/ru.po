@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-21 19:43+0000\n"
-"PO-Revision-Date: 2023-12-24 09:07+0000\n"
+"PO-Revision-Date: 2023-12-26 18:06+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1792,7 +1792,7 @@ msgstr "Скрывать меню по щелчку вне фокуса"
 
 #: data/ui/preferences_general.ui:197
 msgid "Experimental Features"
-msgstr "Испытательные возможности"
+msgstr "Экспериментальные возможности"
 
 #: data/ui/preferences_general.ui:200
 msgid "Native Plugin Window"
