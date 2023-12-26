@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-21 19:43+0000\n"
-"PO-Revision-Date: 2023-12-25 15:06+0000\n"
+"PO-Revision-Date: 2023-12-26 18:06+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -110,7 +110,7 @@ msgstr "Genel atlatmayı etkinleştir/devre dışı bırak"
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
-msgstr "Genel Atla"
+msgstr "Genel Atlama"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
@@ -199,7 +199,7 @@ msgstr "Sınır"
 
 #: data/ui/autogain.ui:378
 msgid "Output Gain"
-msgstr "Çıkış Kazancı"
+msgstr "Çıktı Kazancı"
 
 #: data/ui/autogain.ui:423 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:661
@@ -215,7 +215,7 @@ msgstr "Çıkış Kazancı"
 #: data/ui/rnnoise.ui:274 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:629
 msgid "Input"
-msgstr "Giriş"
+msgstr "Girdi"
 
 #: data/ui/autogain.ui:442 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1174
@@ -228,7 +228,7 @@ msgstr "Giriş"
 #: data/ui/multiband_gate.ui:514 data/ui/pitch.ui:244 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:293 data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
 msgid "Plugin Input Gain"
-msgstr "Eklenti Giriş Kazancı"
+msgstr "Eklenti Girdi Kazancı"
 
 #: data/ui/autogain.ui:507 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
@@ -243,7 +243,7 @@ msgstr "Eklenti Giriş Kazancı"
 #: data/ui/rnnoise.ui:358 data/ui/speex.ui:274 data/ui/stereo_tools.ui:385
 #: data/ui/stereo_tools.ui:713
 msgid "Output"
-msgstr "Çıkış"
+msgstr "Çıktı"
 
 #: data/ui/autogain.ui:526 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1258
@@ -256,7 +256,7 @@ msgstr "Çıkış"
 #: data/ui/multiband_gate.ui:598 data/ui/pitch.ui:328 data/ui/reverb.ui:469
 #: data/ui/rnnoise.ui:377 data/ui/speex.ui:293 data/ui/stereo_tools.ui:732
 msgid "Plugin Output Gain"
-msgstr "Eklenti Çıkış Kazancı"
+msgstr "Eklenti Çıktı Kazancı"
 
 #: data/ui/autogain.ui:591 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1323
@@ -280,7 +280,7 @@ msgstr "Aygıt"
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:26
 msgid "Name"
-msgstr "İsim"
+msgstr "Ad"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
@@ -380,7 +380,7 @@ msgstr "Aşağıya"
 #: data/ui/compressor.ui:77 data/ui/expander.ui:77
 #: data/ui/multiband_compressor_band.ui:102
 msgid "Upward"
-msgstr "Yukarıya"
+msgstr "Yukarı doğru"
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:103
 msgid "Boosting"
@@ -487,7 +487,7 @@ msgstr "Yanzincir"
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
 msgid "Stereo Split Mode"
-msgstr "Stereo Ayrıştırma Kipi"
+msgstr "Stereo Bölme Kipi"
 
 #: data/ui/compressor.ui:543 data/ui/expander.ui:462 data/ui/gate.ui:676
 #: data/ui/multiband_compressor_band.ui:463 data/ui/multiband_gate_band.ui:522
@@ -552,20 +552,18 @@ msgstr "Sağ/Sol"
 
 #: data/ui/compressor.ui:580 data/ui/expander.ui:499 data/ui/gate.ui:713
 #: data/ui/multiband_compressor_band.ui:523 data/ui/multiband_gate_band.ui:582
-#, fuzzy
 msgid "Mid/Side"
-msgstr "Yan"
+msgstr "Orta/Yan"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:500 data/ui/gate.ui:714
 #: data/ui/multiband_compressor_band.ui:524 data/ui/multiband_gate_band.ui:583
-#, fuzzy
 msgid "Side/Mid"
-msgstr "Yan"
+msgstr "Yan/Orta"
 
 #: data/ui/compressor.ui:592 data/ui/expander.ui:511 data/ui/gate.ui:725
 #: data/ui/multiband_compressor_band.ui:535 data/ui/multiband_gate_band.ui:594
 msgid "Stereo Split Source"
-msgstr "Stereo Ayrıştırma Kaynağı"
+msgstr "Stereo Bölme Kaynağı"
 
 #: data/ui/compressor.ui:618 data/ui/deesser.ui:50 data/ui/expander.ui:537
 #: data/ui/gate.ui:751 data/ui/multiband_compressor_band.ui:559
@@ -586,9 +584,8 @@ msgstr "Düşük Geçiş Süzgeci"
 
 #: data/ui/compressor.ui:621 data/ui/expander.ui:540 data/ui/gate.ui:754
 #: data/ui/multiband_compressor_band.ui:562 data/ui/multiband_gate_band.ui:621
-#, fuzzy
 msgid "Simple Moving Average"
-msgstr "Basit Harekelti Ortalama"
+msgstr "Basit Hareketli Ortalama"
 
 #: data/ui/compressor.ui:630 data/ui/expander.ui:549 data/ui/gate.ui:763
 #: data/ui/multiband_compressor_band.ui:571 data/ui/multiband_gate_band.ui:630
@@ -596,9 +593,8 @@ msgid "Sidechain Mode"
 msgstr "Yanzincir Kipi"
 
 #: data/ui/compressor.ui:644 data/ui/expander.ui:563 data/ui/gate.ui:777
-#, fuzzy
 msgid "Listen Sidechain"
-msgstr "Harici Yanzincir"
+msgstr "Yanzincir Dinle"
 
 #: data/ui/compressor.ui:673 data/ui/equalizer_band.ui:96
 #: data/ui/expander.ui:592 data/ui/filter.ui:37 data/ui/gate.ui:806
@@ -700,7 +696,6 @@ msgid "Gain"
 msgstr "Kazanç"
 
 #: data/ui/compressor.ui:1064 data/ui/expander.ui:982 data/ui/gate.ui:1196
-#, fuzzy
 msgid "Envelope"
 msgstr "Eğim"
 
@@ -831,57 +826,47 @@ msgstr "Geniş"
 
 #: data/ui/deesser.ui:78
 msgid "Split"
-msgstr "Ayır"
+msgstr "Böl"
 
 #: data/ui/deesser.ui:96
-#, fuzzy
 msgid "F1 Split"
-msgstr "Ayır"
+msgstr "F2 Bölme"
 
 #: data/ui/deesser.ui:116
-#, fuzzy
 msgid "Frequency 1 Split"
-msgstr "Sıklık"
+msgstr "Frekans 1 Bölme"
 
 #: data/ui/deesser.ui:129
-#, fuzzy
 msgid "F2 Peak"
-msgstr "Doruk"
+msgstr "F2 Doruk"
 
 #: data/ui/deesser.ui:149
-#, fuzzy
 msgid "Frequency 2 Peak"
-msgstr "Sıklık"
+msgstr "Frekans 2 Doruk"
 
 #: data/ui/deesser.ui:167
-#, fuzzy
 msgid "F1 Gain"
-msgstr "Kazanç"
+msgstr "F1 Kazancı"
 
 #: data/ui/deesser.ui:195
-#, fuzzy
 msgid "Frequency 1 Gain"
-msgstr "Sıklık"
+msgstr "Frekans 1 Kazancı"
 
 #: data/ui/deesser.ui:202
-#, fuzzy
 msgid "F2 Level"
-msgstr "Seviye"
+msgstr "F2 Seviye"
 
 #: data/ui/deesser.ui:230
-#, fuzzy
 msgid "Frequency 2 Level"
-msgstr "Sıklık"
+msgstr "Frekans 2 Seviyesi"
 
 #: data/ui/deesser.ui:237
-#, fuzzy
 msgid "F2 Peak Q"
-msgstr "Q Doruk"
+msgstr "F2 Doruk Q"
 
 #: data/ui/deesser.ui:265
-#, fuzzy
 msgid "Frequency 2 Peak Q"
-msgstr "Sıklık"
+msgstr "Frekans 2 Doruk Q"
 
 #: data/ui/deesser.ui:272
 msgid "Laxity"
@@ -906,44 +891,40 @@ msgid "Invert Phase"
 msgstr "Ters Faz"
 
 #: data/ui/deepfilternet.ui:31
-#, fuzzy
 msgid "Attenuation Limit"
-msgstr "Zayıflatma"
+msgstr "Zayıflama Sınırı"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "Asgari İşleme Eşiği"
 
 #: data/ui/deepfilternet.ui:87
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "Azami ERB İşleme eşiği"
 
 #: data/ui/deepfilternet.ui:114
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "Azami DF İşleme Eşiği"
 
 #: data/ui/deepfilternet.ui:141
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "Asgari İşleme Tamponu"
 
 #: data/ui/deepfilternet.ui:167
-#, fuzzy
 msgid "Post Filter Beta"
-msgstr "Süzgeç Uzunluğu"
+msgstr "Süzgeç Sonrası Beta"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
 msgstr "Süzgeç Uzunluğu"
 
 #: data/ui/echo_canceller.ui:50
-#, fuzzy
 msgid "Residual Echo Suppression"
-msgstr "Gürültü Baskılayıcı"
+msgstr "Artık Yankı Bastırma"
 
 #: data/ui/echo_canceller.ui:72
-#, fuzzy
 msgid "Near End Echo Suppression"
-msgstr "Gürültü Baskılayıcı"
+msgstr "Yakın Uç Yankı Bastırma"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -959,14 +940,12 @@ msgid "Balance"
 msgstr "Denge"
 
 #: data/ui/equalizer.ui:127
-#, fuzzy
 msgid "Pitch Left"
-msgstr "Yanzincir"
+msgstr "Sol Perde"
 
 #: data/ui/equalizer.ui:160
-#, fuzzy
 msgid "Pitch Right"
-msgstr "Yanzincir"
+msgstr "Sağ Perde"
 
 #: data/ui/equalizer.ui:292
 msgid "Split Channels"
@@ -981,16 +960,14 @@ msgid "Calculate Frequencies"
 msgstr "Frekansları Hesapla"
 
 #: data/ui/equalizer.ui:314
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Bantlar"
+msgstr "Bantları Sırala"
 
 #: data/ui/equalizer.ui:329 src/presets_menu.cpp:89
 msgid "Import Preset"
 msgstr "Ön Ayarı İçe Aktar"
 
 #: data/ui/equalizer.ui:363
-#, fuzzy
 msgid "Export Preset"
 msgstr "Ön Ayarı İçe Aktar"
 
@@ -1012,7 +989,6 @@ msgid "Width"
 msgstr "Genişlik"
 
 #: data/ui/exciter.ui:211
-#, fuzzy
 msgid "Ceil"
 msgstr "Tavan"
 
@@ -1022,12 +998,11 @@ msgstr "Tavan Değeri"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
 msgid "Expander"
-msgstr ""
+msgstr "Genişletici"
 
 #: data/ui/expander.ui:86
-#, fuzzy
 msgid "Expander Mode"
-msgstr "Bant Kipi"
+msgstr "Genişletici Kipi"
 
 #: data/ui/expander.ui:618 data/ui/gate.ui:832
 msgid "Internal"
@@ -1050,23 +1025,20 @@ msgid "Remove this model file"
 msgstr "Bu model dosyasını kaldır"
 
 #: data/ui/filter.ui:46
-#, fuzzy
 msgid "Low-Shelf"
-msgstr "Düşük Sığlık"
+msgstr "Düşük Raf"
 
 #: data/ui/filter.ui:47
-#, fuzzy
 msgid "High-Shelf"
-msgstr "Yüksek Sığlık"
+msgstr "Yüksek Raf"
 
 #: data/ui/filter.ui:48
 msgid "Bell"
 msgstr "Çan"
 
 #: data/ui/filter.ui:49
-#, fuzzy
 msgid "Band-Pass"
-msgstr "Atla"
+msgstr "Bant-Geçiş"
 
 #: data/ui/filter.ui:50
 msgid "Notch"
@@ -1077,24 +1049,20 @@ msgid "Resonance"
 msgstr "Çınlama"
 
 #: data/ui/filter.ui:52
-#, fuzzy
 msgid "Ladder-Pass"
-msgstr "Düşük Geçiş"
+msgstr "Merdiven-Geçiş"
 
 #: data/ui/filter.ui:53
-#, fuzzy
 msgid "Ladder-Rejection"
-msgstr "Azalım"
+msgstr "Merdiven-Reddetme"
 
 #: data/ui/filter.ui:54
-#, fuzzy
 msgid "All-Pass"
-msgstr "Düşük Geçiş"
+msgstr "Tam-Geçiş"
 
 #: data/ui/filter.ui:95
-#, fuzzy
 msgid "Equalizer Mode"
-msgstr "Ekolayzır"
+msgstr "Ekolayzır Kipi"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
 msgid "Gate"
@@ -1102,7 +1070,6 @@ msgstr "Aralık"
 
 #: data/ui/gate.ui:169 data/ui/gate.ui:262 data/ui/multiband_gate_band.ui:243
 #: data/ui/multiband_gate_band.ui:336
-#, fuzzy
 msgid "Zone"
 msgstr "Bölge"
 
@@ -1111,9 +1078,8 @@ msgid "Hysteresis"
 msgstr "Gecikme"
 
 #: data/ui/gate.ui:336
-#, fuzzy
 msgid "Mix"
-msgstr "Miks"
+msgstr "Karıştır"
 
 #: data/ui/gate.ui:520
 msgid "Attack Zone Start"
@@ -1124,71 +1090,64 @@ msgid "Release Zone Start"
 msgstr "Bırakma Bölgesi Başlangıcı"
 
 #: data/ui/level_meter.ui:39
-#, fuzzy
 msgid "True Peak"
-msgstr "Sıklık"
+msgstr "Gerçek Doruk"
 
 #: data/ui/limiter.ui:68
 msgid "Oversampling"
 msgstr "Aşırı Örnekleme"
 
 #: data/ui/limiter.ui:80
-#, fuzzy
 msgid "Dither"
 msgstr "Titreme"
 
 #: data/ui/limiter.ui:94
 msgid "Herm Thin"
-msgstr ""
+msgstr "Herm İnce"
 
 #: data/ui/limiter.ui:95
-#, fuzzy
 msgid "Herm Wide"
-msgstr "Geniş"
+msgstr "Herm Geniş"
 
 #: data/ui/limiter.ui:96
 msgid "Herm Tail"
-msgstr ""
+msgstr "Herm Kuyruk"
 
 #: data/ui/limiter.ui:97
 msgid "Herm Duck"
-msgstr ""
+msgstr "Herm Ördek"
 
 #: data/ui/limiter.ui:98
 msgid "Exp Thin"
-msgstr ""
+msgstr "Exp İnce"
 
 #: data/ui/limiter.ui:99
-#, fuzzy
 msgid "Exp Wide"
-msgstr "Geniş"
+msgstr "Exp Geniş"
 
 #: data/ui/limiter.ui:100
 msgid "Exp Tail"
-msgstr ""
+msgstr "Exp Kuyruk"
 
 #: data/ui/limiter.ui:101
 msgid "Exp Duck"
-msgstr ""
+msgstr "Exp Ördek"
 
 #: data/ui/limiter.ui:102
-#, fuzzy
 msgid "Line Thin"
-msgstr "Hat Genişliği"
+msgstr "Hat İnce"
 
 #: data/ui/limiter.ui:103
-#, fuzzy
 msgid "Line Wide"
-msgstr "Hat Genişliği"
+msgstr "Hat Geniş"
 
 #: data/ui/limiter.ui:104
-#, fuzzy
 msgid "Line Tail"
-msgstr "Sinüs Tablosu"
+msgstr "Hat Kuyruk"
 
 #: data/ui/limiter.ui:105
 msgid "Line Duck"
-msgstr ""
+msgstr "Hat Ördek"
 
 #: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:56
 #: data/ui/multiband_gate.ui:56
@@ -1197,97 +1156,96 @@ msgstr "Hiçbiri"
 
 #: data/ui/limiter.ui:126
 msgid "Half x2(2L)"
-msgstr ""
+msgstr "Yarım x2(2L)"
 
 #: data/ui/limiter.ui:127
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "Yarım x2(3L)"
 
 #: data/ui/limiter.ui:128
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "Yarım x3(2L)"
 
 #: data/ui/limiter.ui:129
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "Yarım x3(3L)"
 
 #: data/ui/limiter.ui:130
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "Yarım x4(2L)"
 
 #: data/ui/limiter.ui:131
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "Yarım x4(3L)"
 
 #: data/ui/limiter.ui:132
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "Yarım x6(2L)"
 
 #: data/ui/limiter.ui:133
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "Yarım x6(3L)"
 
 #: data/ui/limiter.ui:134
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "Yarım x8(2L)"
 
 #: data/ui/limiter.ui:135
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "Yarım x8(3L)"
 
 #: data/ui/limiter.ui:136
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "Tam x2(2L)"
 
 #: data/ui/limiter.ui:137
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "Tam x2(3L)"
 
 #: data/ui/limiter.ui:138
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "Tam x3(2L)"
 
 #: data/ui/limiter.ui:139
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "Tam x3(3L)"
 
 #: data/ui/limiter.ui:140
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "Tam x4(2L)"
 
 #: data/ui/limiter.ui:141
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "Tam x4(3L)"
 
 #: data/ui/limiter.ui:142
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "Tam x6(2L)"
 
 #: data/ui/limiter.ui:143
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "Tam x6(3L)"
 
 #: data/ui/limiter.ui:144
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "Tam x8(2L)"
 
 #: data/ui/limiter.ui:145
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "Tam x8(3L)"
 
 #: data/ui/limiter.ui:201
 msgid "SC PreAmp"
-msgstr ""
+msgstr "SC Ön Yükseltme"
 
 #: data/ui/limiter.ui:230 data/ui/multiband_compressor_band.ui:703
 #: data/ui/multiband_gate_band.ui:761
-#, fuzzy
 msgid "Sidechain PreAmplification"
-msgstr "Öntanımlı-yükselticiler"
+msgstr "Yanzincir Ön Yükseltmesi"
 
 #: data/ui/limiter.ui:405
 msgid "Boost"
-msgstr ""
+msgstr "Artır"
 
 #: data/ui/limiter.ui:420
 msgid "Stereo Link"
@@ -1304,21 +1262,20 @@ msgid "External Sidechain Source"
 msgstr "Harici Yanzincir Kaynağı"
 
 #: data/ui/limiter.ui:497
-#, fuzzy
 msgid "Auto Leveling"
-msgstr "Otomatik Kazanç"
+msgstr "Otomatik Dengeleme"
 
 #: data/ui/limiter.ui:537
 msgid "Auto Leveling Attack"
-msgstr ""
+msgstr "Otomatik Dengeleme Saldırısı"
 
 #: data/ui/limiter.ui:573
 msgid "Auto Leveling Release"
-msgstr ""
+msgstr "Otomatik Dengeleme Yayını"
 
 #: data/ui/limiter.ui:608
 msgid "Auto Leveling Knee"
-msgstr ""
+msgstr "Otomatik Dengeleme Dizliği"
 
 #: data/ui/limiter.ui:633
 msgid "Gain Left"
@@ -1345,47 +1302,44 @@ msgid "Flat"
 msgstr "Düz"
 
 #: data/ui/loudness.ui:58
-#, fuzzy
 msgid "FFT Size"
-msgstr "Çerçeve Boyutu"
+msgstr "FFT Boyutu"
 
 #: data/ui/loudness.ui:82
 msgid "Output Volume"
 msgstr "Çıkış Ses Seviyesi"
 
 #: data/ui/loudness.ui:104
-#, fuzzy
 msgid "Clipping"
-msgstr "Kanal Eşleme"
+msgstr "Kırpma"
 
 #: data/ui/maximizer.ui:71
 msgid "Ceiling"
 msgstr "Tavan"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
-#, fuzzy
 msgid "Sidechain Boost"
-msgstr "Yanzincir"
+msgstr "Yanzincir Güçlendirme"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Pink BT"
-msgstr ""
+msgstr "Pink BT"
 
 #: data/ui/multiband_compressor.ui:58 data/ui/multiband_gate.ui:58
 msgid "Pink MT"
-msgstr ""
+msgstr "Pink MT"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:59
 msgid "Brown BT"
-msgstr ""
+msgstr "Brown BT"
 
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_gate.ui:60
 msgid "Brown MT"
-msgstr ""
+msgstr "Brown MT"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "Yerel Kullanıcı Arayüzünü Göster"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 msgid "Operating Mode"
@@ -1400,9 +1354,8 @@ msgid "Modern"
 msgstr "Çağdaş"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
-#, fuzzy
 msgid "Linear Phase"
-msgstr "Ters Faz"
+msgstr "Doğrusal Faz"
 
 #: data/ui/multiband_compressor.ui:268 data/ui/multiband_gate.ui:268
 msgid "Bands List"
@@ -1442,30 +1395,27 @@ msgstr "Bant 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "Bant Başlangıcı"
 
 #: data/ui/multiband_compressor_band.ui:57 data/ui/multiband_gate_band.ui:57
-#, fuzzy
 msgid "Band End"
-msgstr "Bantlar"
+msgstr "Bant Sonu"
 
 #: data/ui/multiband_compressor_band.ui:112
 msgid "Band Compression Mode"
 msgstr "Bant Sıkıştırma Kipi"
 
 #: data/ui/multiband_compressor_band.ui:130 data/ui/multiband_gate_band.ui:99
-#, fuzzy
 msgid "Band Bypass"
-msgstr "Atla"
+msgstr "Bant Atlama"
 
 #: data/ui/multiband_compressor_band.ui:435 data/ui/multiband_gate_band.ui:494
 msgid "Band Sidechain Options"
-msgstr ""
+msgstr "Bant Yanzincir Seçenekleri"
 
 #: data/ui/multiband_compressor_band.ui:508 data/ui/multiband_gate_band.ui:567
-#, fuzzy
 msgid "Stereo Split"
-msgstr "Stereo Kipi"
+msgstr "Stereo Bölme"
 
 #: data/ui/multiband_compressor_band.ui:578 data/ui/multiband_gate_band.ui:637
 #: src/tags_plugin_name.cpp:45
@@ -1473,28 +1423,24 @@ msgid "Filter"
 msgstr "Süzgeç"
 
 #: data/ui/multiband_compressor_band.ui:590 data/ui/multiband_gate_band.ui:649
-#, fuzzy
 msgid "Low-Cut"
-msgstr "Süzgeç"
+msgstr "Düşük-Kesim"
 
 #: data/ui/multiband_compressor_band.ui:618 data/ui/multiband_gate_band.ui:677
-#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Frekansları Hesapla"
+msgstr "Düşük-Kesim Süzgeç Frekansı"
 
 #: data/ui/multiband_compressor_band.ui:628 data/ui/multiband_gate_band.ui:687
-#, fuzzy
 msgid "High-Cut"
-msgstr "Yüksek Geçiş Süzgeci"
+msgstr "Yüksek-Kesim"
 
 #: data/ui/multiband_compressor_band.ui:657 data/ui/multiband_gate_band.ui:716
-#, fuzzy
 msgid "High-Cut Filter Frequency"
-msgstr "Frekansları Hesapla"
+msgstr "Yüksek-Kesim Süzgeci Frekansı"
 
 #: data/ui/multiband_compressor_band.ui:676 data/ui/multiband_gate_band.ui:735
 msgid "PreAmp"
-msgstr ""
+msgstr "Ön Yükseltme"
 
 #: data/ui/multiband_compressor_band.ui:882
 msgid "Band Gain"
@@ -1502,16 +1448,15 @@ msgstr "Bant Kazancı"
 
 #: data/ui/multiband_compressor_band.ui:907 data/ui/multiband_gate_band.ui:875
 msgid "Band Envelope"
-msgstr ""
+msgstr "Bant Zarfı"
 
 #: data/ui/multiband_compressor_band.ui:932 data/ui/multiband_gate_band.ui:900
 msgid "Band Curve"
 msgstr "Bant Eğrisi"
 
 #: data/ui/multiband_gate_band.ui:850
-#, fuzzy
 msgid "Band Reduction"
-msgstr "Azalım"
+msgstr "Bant Azaltma"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1564,21 +1509,19 @@ msgstr "Örnekleme Hızı"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Minimum Quantum"
-msgstr ""
+msgstr "Asgari Kuantum"
 
 #: data/ui/pipe_manager_box.ui:160
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Azami Kazanç"
+msgstr "Azami Kuantum"
 
 #: data/ui/pipe_manager_box.ui:171
-#, fuzzy
 msgid "Default Quantum"
-msgstr "Öntanımlı Sink"
+msgstr "Öntanımlı Kuantum"
 
 #: data/ui/pipe_manager_box.ui:191
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "Ön Ayarları Otomatik Yükle"
 
 #: data/ui/pipe_manager_box.ui:232
 msgid "Output Devices"
@@ -1590,15 +1533,15 @@ msgstr "Çıkış Ön Ayarları"
 
 #: data/ui/pipe_manager_box.ui:256 data/ui/pipe_manager_box.ui:348
 msgid "Create Association"
-msgstr ""
+msgstr "Birleşme Oluştur"
 
 #: data/ui/pipe_manager_box.ui:270
 msgid "Add Autoloading Output Preset"
-msgstr ""
+msgstr "Otomatik Yükleme Çıktı Ön Ayarı Ekle"
 
 #: data/ui/pipe_manager_box.ui:290
 msgid "Output Autoloading Presets List"
-msgstr "Çıkış Otomatik Yükleme Ön Ayarları Listesi"
+msgstr "Çıktı Otomatik Yükleme Ön Ayarları Listesi"
 
 #: data/ui/pipe_manager_box.ui:329
 msgid "Input Devices"
@@ -1610,11 +1553,11 @@ msgstr "Giriş Ön Ayarları"
 
 #: data/ui/pipe_manager_box.ui:362
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "Otomatik Yükleme Girdi Ön Ayarı Ekle"
 
 #: data/ui/pipe_manager_box.ui:381
 msgid "Input Autoloading Presets List"
-msgstr "Giriş Otomatik Yükleme Ön Ayarları Listesi"
+msgstr "Girdi Otomatik Yükleme Ön Ayarları Listesi"
 
 #: data/ui/pipe_manager_box.ui:411
 msgid "Modules"
@@ -1675,26 +1618,23 @@ msgstr "Beyaz Gürültü"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Hızlı Arama"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Kenar yumuşatma"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Frekans Aralığı"
+msgstr "Dizi Uzunluğu"
 
 #: data/ui/pitch.ui:81
-#, fuzzy
 msgid "Seek Window"
-msgstr "Pencere"
+msgstr "Arama Penceresi"
 
 #: data/ui/pitch.ui:104
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Süzgeç Uzunluğu"
+msgstr "Örtüşme Uzunluğu"
 
 #: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:53
 msgid "Pitch"
@@ -1705,14 +1645,12 @@ msgid "Semitones"
 msgstr "Yarım Ses"
 
 #: data/ui/pitch.ui:160
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "Referans"
+msgstr "Tempo Farkı"
 
 #: data/ui/pitch.ui:183
-#, fuzzy
 msgid "Rate Difference"
-msgstr "Referans"
+msgstr "Oran Farkı"
 
 #: data/ui/plugin_row.ui:39
 msgid "Remove this effect"
@@ -1784,7 +1722,7 @@ msgstr "Aygıtların Ekranından Gelen Akışları Yoksay"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "Kübik Ses Kullan"
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
@@ -1792,11 +1730,11 @@ msgstr "Tepkisizlik Zaman Aşımı"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval (Level Meters and Spectrum)"
-msgstr ""
+msgstr "Güncelleme Aralığı (Seviye Ölçerler ve Spektrum)"
 
 #: data/ui/preferences_general.ui:143
 msgid "Update Frequency (LV2 Plugins)"
-msgstr ""
+msgstr "Güncelleme Sıklığı (LV2 Eklentileri)"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -1811,18 +1749,16 @@ msgid "Hide Menus on Outside Clicks"
 msgstr "Dış Tıklamalarda Menüleri Gizle"
 
 #: data/ui/preferences_general.ui:197
-#, fuzzy
 msgid "Experimental Features"
-msgstr "Deneysel"
+msgstr "Deneysel özellikler"
 
 #: data/ui/preferences_general.ui:200
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "Pencereyi Kapat"
+msgstr "Yerel Eklenti Penceresi"
 
 #: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "Yerel Eklenti Penceresinin Gösterilmesini/Gizlenmesini Sağlar"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1870,7 +1806,7 @@ msgstr "Yuvarlatılmış Köşeler"
 
 #: data/ui/preferences_spectrum.ui:154
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "Dinamik Ölçek"
 
 #: data/ui/preferences_spectrum.ui:168
 msgid "Color"
@@ -1898,12 +1834,11 @@ msgstr "Azami"
 
 #: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
 msgid "Load"
-msgstr ""
+msgstr "Yük"
 
 #: data/ui/preset_row.ui:38
-#, fuzzy
 msgid "Discard the current settings and load this preset"
-msgstr "Geçerli ayarları bu ön ayar dosyasına kaydet"
+msgstr "Geçerli ayarları gözden çıkar ve bu ön ayarı yükle"
 
 #: data/ui/preset_row.ui:47
 msgid "Save current settings to this preset file"
@@ -1914,9 +1849,8 @@ msgid "Remove this preset file"
 msgstr "Hazır ayar dosyasını kaldır"
 
 #: data/ui/presets_menu.ui:30
-#, fuzzy
 msgid "New Preset Name"
-msgstr "Yeni Giriş Ön Ayarı Adı"
+msgstr "Yeni Ön Ayar Adı"
 
 #: data/ui/presets_menu.ui:38
 msgid "Create a new preset"
@@ -1927,14 +1861,12 @@ msgid "Import a preset"
 msgstr "Bir ön ayarı içe aktar"
 
 #: data/ui/presets_menu.ui:68
-#, fuzzy
 msgid "Search Preset"
-msgstr "Giriş Ön Ayarı Ara"
+msgstr "Ön Ayar Ara"
 
 #: data/ui/presets_menu.ui:129
-#, fuzzy
 msgid "Presets List"
-msgstr "Giriş Ön Ayarları Listesi"
+msgstr "Ön Ayarlar Listesi"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2052,11 +1984,11 @@ msgstr "Genel Görünüm"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Yardımı göster"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr "Tam ekran/Tam ekrandan geri yükle"
+msgstr "Tam ekran/Tam ekrandan çık"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
@@ -2067,18 +1999,16 @@ msgid "Quit Easy Effects"
 msgstr "Easy Effects'ten Çık"
 
 #: data/ui/speex.ui:33
-#, fuzzy
 msgid "Denoise"
-msgstr "Kırmızı Gürültü"
+msgstr "Gürültü Gider"
 
 #: data/ui/speex.ui:46
 msgid "Automatic Gain Control"
 msgstr "Otomatik Kazanç Denetleyicisi"
 
 #: data/ui/speex.ui:72
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Yankılanma"
+msgstr "Dereverberasyon"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
@@ -2097,9 +2027,8 @@ msgid "Noise Suppression"
 msgstr "Gürültü Baskılayıcı"
 
 #: data/ui/speex.ui:147
-#, fuzzy
 msgid "Level"
-msgstr "Seviye"
+msgstr "Düzey"
 
 #: data/ui/stereo_tools.ui:79
 msgid "Input Balance"
@@ -2211,7 +2140,7 @@ msgstr "Bilinmiyor"
 
 #: src/app_info.cpp:247
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "Tanımsız Ad - Süreç Kimliği "
 
 #: src/app_info.cpp:257
 msgid "channels"
@@ -2227,7 +2156,7 @@ msgstr "Easy Effects'ten çık. Servis kipinde çalışırken kullanışlıdır.
 
 #: src/application.cpp:559
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "Easyeffects sürümünü yazdır"
 
 #: src/application.cpp:562
 msgid "Reset Easy Effects."
@@ -2248,7 +2177,7 @@ msgstr "Kullanılabilir hazır ayarları göster."
 
 #: src/application.cpp:574
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
+msgstr "Ön ayar yükle. Örnek: easyeffects -l music"
 
 #: src/application_ui.cpp:321
 msgid "_Output"
@@ -2301,7 +2230,7 @@ msgstr "Dürtüyü Kaldır"
 
 #: src/convolver_ui.cpp:334
 msgid "No Impulse File Loaded"
-msgstr "Dürtü Dosyası Yüklenmedi"
+msgstr "Dürtü Dosyası Yüklenmemiş"
 
 #: src/convolver_ui.cpp:360
 msgid "Failed To Load The Impulse File"
@@ -2328,31 +2257,29 @@ msgid "APO Presets"
 msgstr "APO Ön Ayarları"
 
 #: src/equalizer_ui.cpp:445
-#, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
-"APO Ön Ayarı Yüklenmedi. Dosya Biçimi Yanlış Olabilir. Lütfen İçeriğini "
-"Gözden Geçirin."
+"APO Ön Ayarı Kurulu Değil. Dosya Biçimi Desteklenmiyor Olabilir. Lütfen "
+"İçeriğini Denetleyin."
 
 #: src/equalizer_ui.cpp:506
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
+"APO ön ayarları dışa aktarılırken bölünmüş kanallar henüz desteklenmiyor."
 
 #: src/equalizer_ui.cpp:514
-#, fuzzy
 msgid "Export EqualizerAPO Preset File"
-msgstr "APO Ön Ayar Dosyasını İçe Aktar"
+msgstr "EqualizerAPO Ön Ayar Dosyasını Dışa Aktar"
 
 #: src/equalizer_ui.cpp:515
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #: src/equalizer_ui.cpp:522
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "APO Ön Ayarları"
+msgstr "EqualizerAPO Ön Ayarları"
 
 #: src/equalizer_ui.cpp:700
 msgid "Import GraphicEQ Preset File"
@@ -2363,22 +2290,20 @@ msgid "GraphicEQ Presets"
 msgstr "GraphicEQ Ön Ayarları"
 
 #: src/equalizer_ui.cpp:733
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
-"GraphicEQ Ön Ayarı Yüklenmedi. Dosya Biçimi Yanlış Olabilir. Lütfen "
-"İçeriğini Gözden Geçirin."
+"GraphicEQ Ön Ayarı Yüklü Değil. Dosya Biçimi Desteklenmiyor Olabilir. Lütfen "
+"İçeriğini Denetleyin."
 
 #: src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
 #: src/plugin_base.cpp:197
-#, fuzzy
 msgid "Output Level Meter"
-msgstr "Çıkış Aygıtı"
+msgstr "Çıktı Düzey Ölçer"
 
 #: src/plugins_box.cpp:642
 msgid "Remove"
@@ -2394,11 +2319,11 @@ msgstr "Ekle"
 
 #: src/presets_menu.cpp:215
 msgid "Save?"
-msgstr ""
+msgstr "Kaydedilsin mi?"
 
 #: src/presets_menu.cpp:234
 msgid "Delete?"
-msgstr ""
+msgstr "Silinsin mi?"
 
 #: src/rnnoise_ui.cpp:95
 msgid ""
@@ -2438,7 +2363,7 @@ msgstr "Kristalleştirici"
 
 #: src/tags_plugin_name.cpp:38
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "Derin Gürültü Giderici"
 
 #: src/tags_plugin_name.cpp:39
 msgid "Deesser"
@@ -2457,9 +2382,8 @@ msgid "Exciter"
 msgstr "Uyarıcı"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgid "Level Meter"
-msgstr "Çıkış Aygıtı"
+msgstr "Düzey Ölçer"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Limiter"
@@ -2505,6 +2429,8 @@ msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
+"{} efekti için gerekli olan \"{}\" yazılımı kurulu değil. Easy Effects "
+"Flatpak paketini kullanmayı ya da yazılımı kendiniz kurmayı düşünebilirsiniz."
 
 #: src/ui_helpers.cpp:79
 #, c++-format
@@ -2514,6 +2440,10 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"Easy Effects derlenirken {} efekti devre dışı bırakılmış. Bunun nedeni "
+"muhtemelen bu efekt için gerekli olan \"{}\" yazılımının olmamasıdır. Easy "
+"Effects Flatpak paketini kullanmayı ya da kendi Easy Effects paketinizi "
+"oluşturmayı düşünebilirsiniz."
 
 #: src/ui_helpers.cpp:121 src/ui_helpers.cpp:141
 msgid "-inf"
@@ -2521,9 +2451,9 @@ msgstr "-sonsuz"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, fuzzy, c++-format
+#, c++-format
 msgid "Using {}"
-msgstr "Kullanılan"
+msgstr "{} Kullanıyor"
 
 #, fuzzy
 #~ msgid "Low-Cut Filter"
