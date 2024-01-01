@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-21 19:43+0000\n"
-"PO-Revision-Date: 2023-12-31 05:09+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2024-01-01 21:04+0000\n"
+"Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -563,7 +563,7 @@ msgstr "Seite/Mitte"
 #: data/ui/compressor.ui:592 data/ui/expander.ui:511 data/ui/gate.ui:725
 #: data/ui/multiband_compressor_band.ui:535 data/ui/multiband_gate_band.ui:594
 msgid "Stereo Split Source"
-msgstr ""
+msgstr "Geteilte Stereo Quelle"
 
 #: data/ui/compressor.ui:618 data/ui/deesser.ui:50 data/ui/expander.ui:537
 #: data/ui/gate.ui:751 data/ui/multiband_compressor_band.ui:559
@@ -594,7 +594,7 @@ msgstr "Sidechain-Modus"
 
 #: data/ui/compressor.ui:644 data/ui/expander.ui:563 data/ui/gate.ui:777
 msgid "Listen Sidechain"
-msgstr ""
+msgstr "Sidechain zuhören"
 
 #: data/ui/compressor.ui:673 data/ui/equalizer_band.ui:96
 #: data/ui/expander.ui:592 data/ui/filter.ui:37 data/ui/gate.ui:806
@@ -602,9 +602,8 @@ msgid "Type"
 msgstr "Typ"
 
 #: data/ui/compressor.ui:699
-#, fuzzy
 msgid "Feed-forward"
-msgstr "Feedforward"
+msgstr "Vorsteuerung"
 
 #: data/ui/compressor.ui:700
 msgid "Feed-back"
@@ -697,9 +696,8 @@ msgid "Gain"
 msgstr "Verstärkung"
 
 #: data/ui/compressor.ui:1064 data/ui/expander.ui:982 data/ui/gate.ui:1196
-#, fuzzy
 msgid "Envelope"
-msgstr "Steigung"
+msgstr "Hüllkurve"
 
 #: data/ui/compressor.ui:1118 data/ui/expander.ui:1036 data/ui/gate.ui:147
 #: data/ui/gate.ui:1250 data/ui/multiband_gate_band.ui:221
