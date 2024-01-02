@@ -891,30 +891,30 @@ msgid "Invert Phase"
 msgstr "Phase umkehren"
 
 #: data/ui/deepfilternet.ui:31
-#, fuzzy
 msgid "Attenuation Limit"
-msgstr "Dämpfung"
+msgstr "Dämpfungslimit"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
 msgstr ""
 
 #: data/ui/deepfilternet.ui:87
+#, fuzzy
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "Maximale ERB Verarbeitungsschwelle"
 
 #: data/ui/deepfilternet.ui:114
+#, fuzzy
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "Maximale DF-Verarbeitungsschwelle"
 
 #: data/ui/deepfilternet.ui:141
 msgid "Minimum Processing Buffer"
 msgstr ""
 
 #: data/ui/deepfilternet.ui:167
-#, fuzzy
 msgid "Post Filter Beta"
-msgstr "Filterlänge"
+msgstr "Post Filter Beta"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
@@ -970,9 +970,8 @@ msgid "Import Preset"
 msgstr "Preset importieren"
 
 #: data/ui/equalizer.ui:363
-#, fuzzy
 msgid "Export Preset"
-msgstr "Preset importieren"
+msgstr "Voreinstellung exportieren"
 
 #: data/ui/equalizer_band.ui:143 data/ui/filter.ui:119
 msgid "Slope"
@@ -1001,12 +1000,12 @@ msgstr "Deckenwert"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
 msgid "Expander"
-msgstr ""
+msgstr "Expander"
 
 #: data/ui/expander.ui:86
 #, fuzzy
 msgid "Expander Mode"
-msgstr "Band Modus"
+msgstr "Expander-Modus"
 
 #: data/ui/expander.ui:618 data/ui/gate.ui:832
 msgid "Internal"
@@ -2451,19 +2450,16 @@ msgstr "Stereowerkzeuge"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:69
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} nicht verfügbar"
 
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
 
 #: src/ui_helpers.cpp:79
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2477,7 +2473,7 @@ msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:226
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Using {}"
 msgstr "Nutze"
 
