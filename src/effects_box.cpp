@@ -226,21 +226,27 @@ void setup_spectrum(EffectsBox* self) {
 
   self->data->gconnections_spectrum.push_back(g_signal_connect(
       self->settings_spectrum, "changed::n-points", G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-        util::idle_add([=]() { init_spectrum_frequency_axis(self); });
+        g_object_ref(self);
+
+        util::idle_add([=]() { init_spectrum_frequency_axis(self); }, [=]() { g_object_unref(self); });
       }),
       self));
 
   self->data->gconnections_spectrum.push_back(
       g_signal_connect(self->settings_spectrum, "changed::minimum-frequency",
                        G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-                         util::idle_add([=]() { init_spectrum_frequency_axis(self); });
+                         g_object_ref(self);
+
+                         util::idle_add([=]() { init_spectrum_frequency_axis(self); }, [=]() { g_object_unref(self); });
                        }),
                        self));
 
   self->data->gconnections_spectrum.push_back(
       g_signal_connect(self->settings_spectrum, "changed::maximum-frequency",
                        G_CALLBACK(+[](GSettings* settings, char* key, EffectsBox* self) {
-                         util::idle_add([=]() { init_spectrum_frequency_axis(self); });
+                         g_object_ref(self);
+
+                         util::idle_add([=]() { init_spectrum_frequency_axis(self); }, [=]() { g_object_unref(self); });
                        }),
                        self));
 }
