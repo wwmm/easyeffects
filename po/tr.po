@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-02 00:29+0000\n"
+"POT-Creation-Date: 2024-01-03 14:42+0000\n"
 "PO-Revision-Date: 2023-12-26 18:06+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2211,8 +2211,8 @@ msgstr "Dürtü Dosyası İçe Aktarılmadı"
 msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
-#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:413
-#: src/equalizer_ui.cpp:701 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
+#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:412
+#: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Aç"
 
@@ -2236,27 +2236,27 @@ msgstr "Dürtü Dosyası Yüklenmemiş"
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:271 src/plugins_box.cpp:690
+#: src/effects_box.cpp:277 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:294 src/plugins_box.cpp:710
+#: src/effects_box.cpp:300 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Oynatıcılar"
 
-#: src/effects_box.cpp:317
+#: src/effects_box.cpp:323
 msgid "Effects"
 msgstr "Efektler"
 
-#: src/equalizer_ui.cpp:412
+#: src/equalizer_ui.cpp:411
 msgid "Import APO Preset File"
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/equalizer_ui.cpp:420
+#: src/equalizer_ui.cpp:419
 msgid "APO Presets"
 msgstr "APO Ön Ayarları"
 
-#: src/equalizer_ui.cpp:445
+#: src/equalizer_ui.cpp:444
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2264,32 +2264,32 @@ msgstr ""
 "APO Ön Ayarı Kurulu Değil. Dosya Biçimi Desteklenmiyor Olabilir. Lütfen "
 "İçeriğini Denetleyin."
 
-#: src/equalizer_ui.cpp:506
+#: src/equalizer_ui.cpp:503
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 "APO ön ayarları dışa aktarılırken bölünmüş kanallar henüz desteklenmiyor."
 
-#: src/equalizer_ui.cpp:514
+#: src/equalizer_ui.cpp:511
 msgid "Export EqualizerAPO Preset File"
 msgstr "EqualizerAPO Ön Ayar Dosyasını Dışa Aktar"
 
-#: src/equalizer_ui.cpp:515
+#: src/equalizer_ui.cpp:512
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/equalizer_ui.cpp:522
+#: src/equalizer_ui.cpp:519
 msgid "EqualizerAPO Presets"
 msgstr "EqualizerAPO Ön Ayarları"
 
-#: src/equalizer_ui.cpp:700
+#: src/equalizer_ui.cpp:696
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
 
-#: src/equalizer_ui.cpp:708
+#: src/equalizer_ui.cpp:704
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ Ön Ayarları"
 
-#: src/equalizer_ui.cpp:733
+#: src/equalizer_ui.cpp:729
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."

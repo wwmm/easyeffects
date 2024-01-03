@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-02 00:29+0000\n"
+"POT-Creation-Date: 2024-01-03 14:42+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2244,8 +2244,8 @@ msgstr "インパルスファイルがインポートされていません"
 msgid "Import Impulse File"
 msgstr "インパルスファイルをインポート"
 
-#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:413
-#: src/equalizer_ui.cpp:701 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
+#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:412
+#: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "開く"
 
@@ -2269,27 +2269,27 @@ msgstr "読み込まれたインパルスファイルはありません"
 msgid "Failed To Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/effects_box.cpp:271 src/plugins_box.cpp:690
+#: src/effects_box.cpp:277 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/effects_box.cpp:294 src/plugins_box.cpp:710
+#: src/effects_box.cpp:300 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "プレイヤー"
 
-#: src/effects_box.cpp:317
+#: src/effects_box.cpp:323
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/equalizer_ui.cpp:412
+#: src/equalizer_ui.cpp:411
 msgid "Import APO Preset File"
 msgstr "APO プリセットファイルをインポート"
 
-#: src/equalizer_ui.cpp:420
+#: src/equalizer_ui.cpp:419
 msgid "APO Presets"
 msgstr "APO プリセット"
 
-#: src/equalizer_ui.cpp:445
+#: src/equalizer_ui.cpp:444
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2297,33 +2297,33 @@ msgstr ""
 "APO プリセットが読み込まれていません。ファイル形式が間違っている可能性があり"
 "ます。内容を確認してください。"
 
-#: src/equalizer_ui.cpp:506
+#: src/equalizer_ui.cpp:503
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:514
+#: src/equalizer_ui.cpp:511
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "APO プリセットファイルをインポート"
 
-#: src/equalizer_ui.cpp:515
+#: src/equalizer_ui.cpp:512
 msgid "Save"
 msgstr ""
 
-#: src/equalizer_ui.cpp:522
+#: src/equalizer_ui.cpp:519
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "APO プリセット"
 
-#: src/equalizer_ui.cpp:700
+#: src/equalizer_ui.cpp:696
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ プリセットファイルのインポート"
 
-#: src/equalizer_ui.cpp:708
+#: src/equalizer_ui.cpp:704
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ プリセット"
 
-#: src/equalizer_ui.cpp:733
+#: src/equalizer_ui.cpp:729
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
