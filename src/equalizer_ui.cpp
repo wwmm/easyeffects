@@ -26,7 +26,7 @@ using namespace tags::equalizer;
 enum Channel { left, right };
 
 struct APO_Band {
-  std::string on_off; // Equivalent to EasyEffects `band_mute`. "ON" => mute=false
+  std::string on_off;  // Equivalent to EasyEffects `band_mute`. "ON" => mute=false
   std::string type;
   float freq = 1000.0F;
   float gain = 0.0F;
@@ -45,10 +45,9 @@ std::unordered_map<std::string, std::string> const ApoToEasyEffectsFilter = {
     {"NO", "Notch"},         {"AP", "Allpass"}};
 
 std::unordered_map<std::string, std::string> const EasyEffectsToApoFilter = {
-    {"Bell", "PK"},                                                   {"Lo-pass", "LP"},      {"Lo-pass", "LPQ"},
-    {"Hi-pass", "HP"},       {"Hi-pass", "HPQ"}, {"Lo-shelf", "LS"},  {"Lo-shelf", "LSC"},    {"Lo-shelf", "LS 6DB"},
-    {"Lo-shelf", "LS 12DB"}, {"Hi-shelf", "HS"}, {"Hi-shelf", "HSC"}, {"Hi-shelf", "HS 6DB"}, {"Hi-shelf", "HS 12DB"},
-    {"Notch", "NO"},         {"Allpass", "AP"}};
+    {"Bell", "PK"},      {"Lo-pass", "LP"},      {"Lo-pass", "LPQ"},      {"Hi-pass", "HP"},       {"Hi-pass", "HPQ"},
+    {"Lo-shelf", "LS"},  {"Lo-shelf", "LSC"},    {"Lo-shelf", "LS 6DB"},  {"Lo-shelf", "LS 12DB"}, {"Hi-shelf", "HS"},
+    {"Hi-shelf", "HSC"}, {"Hi-shelf", "HS 6DB"}, {"Hi-shelf", "HS 12DB"}, {"Notch", "NO"},         {"Allpass", "AP"}};
 
 struct Data {
  public:
@@ -242,8 +241,8 @@ auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool
 auto parse_apo_on_off(const std::string& line, struct APO_Band& filter) -> bool {
   std::smatch matches;
 
-  static const auto re_on_off = std::regex(R"(Filter\s*\d*\s*:\s*(on|off)(?=\s+[a-z]+(?:\s+(?:6|12)db)?))",
-                                           std::regex::icase);
+  static const auto re_on_off =
+      std::regex(R"(Filter\s*\d*\s*:\s*(on|off)(?=\s+[a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
 
   std::regex_search(line, matches, re_on_off);
 
@@ -372,7 +371,7 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
   for (uint n = 0U, apo_bands = bands.size(); n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
-        auto curr_band_mute = (bands[n].on_off == "OFF"); // mute if band is "OFF"
+        auto curr_band_mute = (bands[n].on_off == "OFF");  // mute if band is "OFF"
         std::string curr_band_type;
 
         try {
@@ -501,9 +500,7 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
 
 void on_export_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
   if (g_settings_get_boolean(self->settings, "split-channels") == true) {
-    ui::show_fixed_toast(
-        self->toast_overlay,
-        _("Split channels not yet supported when exporting APO presets."));
+    ui::show_fixed_toast(self->toast_overlay, _("Split channels not yet supported when exporting APO presets."));
     return;
   }
 
@@ -555,9 +552,8 @@ auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ
   // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
 
   // In order to do it, the following regular expression is used:
-  static const auto re_geq =
-      std::regex(R"(graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+))",
-                 std::regex::icase);
+  static const auto re_geq = std::regex(
+      R"(graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+))", std::regex::icase);
 
   // That regex is quite permissive since:
   // - It's case insensitive;
@@ -872,25 +868,33 @@ void setup(EqualizerBox* self,
   build_all_bands(self);
 
   self->data->connections.push_back(equalizer->input_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                   self->input_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                       self->input_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(equalizer->output_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                   self->output_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                       self->output_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->equalizer->package).c_str());
