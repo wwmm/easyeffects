@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-02 00:29+0000\n"
+"POT-Creation-Date: 2024-01-03 14:42+0000\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2261,8 +2261,8 @@ msgstr "Impulse soubor nebyl importován"
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:413
-#: src/equalizer_ui.cpp:701 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
+#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:412
+#: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Otevřít"
 
@@ -2286,27 +2286,27 @@ msgstr "Impulse soubor nebyl načten"
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát Impulse soubor"
 
-#: src/effects_box.cpp:271 src/plugins_box.cpp:690
+#: src/effects_box.cpp:277 src/plugins_box.cpp:690
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/effects_box.cpp:294 src/plugins_box.cpp:710
+#: src/effects_box.cpp:300 src/plugins_box.cpp:710
 msgid "Players"
 msgstr "Přehrávače"
 
-#: src/effects_box.cpp:317
+#: src/effects_box.cpp:323
 msgid "Effects"
 msgstr "Efekty"
 
-#: src/equalizer_ui.cpp:412
+#: src/equalizer_ui.cpp:411
 msgid "Import APO Preset File"
 msgstr "Importovat přednastavený soubor APO"
 
-#: src/equalizer_ui.cpp:420
+#: src/equalizer_ui.cpp:419
 msgid "APO Presets"
 msgstr "APO Přednastavení"
 
-#: src/equalizer_ui.cpp:445
+#: src/equalizer_ui.cpp:444
 #, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
@@ -2315,33 +2315,33 @@ msgstr ""
 "Přednastavení APO není načtené. Formát souboru může být chybný. Prosím "
 "zkontrolujte jeho obsah."
 
-#: src/equalizer_ui.cpp:506
+#: src/equalizer_ui.cpp:503
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:514
+#: src/equalizer_ui.cpp:511
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "Importovat přednastavený soubor APO"
 
-#: src/equalizer_ui.cpp:515
+#: src/equalizer_ui.cpp:512
 msgid "Save"
 msgstr ""
 
-#: src/equalizer_ui.cpp:522
+#: src/equalizer_ui.cpp:519
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "APO Přednastavení"
 
-#: src/equalizer_ui.cpp:700
+#: src/equalizer_ui.cpp:696
 msgid "Import GraphicEQ Preset File"
 msgstr "Importovat soubor přednastavení GraphicEQ"
 
-#: src/equalizer_ui.cpp:708
+#: src/equalizer_ui.cpp:704
 msgid "GraphicEQ Presets"
 msgstr "Přednastavení GraphicEQ"
 
-#: src/equalizer_ui.cpp:733
+#: src/equalizer_ui.cpp:729
 #, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
