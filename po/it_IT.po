@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-03 14:42+0000\n"
-"PO-Revision-Date: 2023-12-26 18:06+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2024-01-04 20:06+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -970,7 +970,7 @@ msgstr "Importa Profilo"
 
 #: data/ui/equalizer.ui:363
 msgid "Export Preset"
-msgstr "Esporta preimpostazione"
+msgstr "Esporta Profilo"
 
 #: data/ui/equalizer_band.ui:143 data/ui/filter.ui:119
 msgid "Slope"
@@ -2274,7 +2274,7 @@ msgstr ""
 
 #: src/equalizer_ui.cpp:511
 msgid "Export EqualizerAPO Preset File"
-msgstr "Esporta il file di preselezione EqualizerAPO"
+msgstr "Esporta File di Profilo EqualizerAPO"
 
 #: src/equalizer_ui.cpp:512
 msgid "Save"
@@ -2282,7 +2282,7 @@ msgstr "Salva"
 
 #: src/equalizer_ui.cpp:519
 msgid "EqualizerAPO Presets"
-msgstr "Preimpostazioni APO dell'equalizzatore"
+msgstr "Profili EqualizerAPO"
 
 #: src/equalizer_ui.cpp:696
 msgid "Import GraphicEQ Preset File"
