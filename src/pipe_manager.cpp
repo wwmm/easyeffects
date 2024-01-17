@@ -255,6 +255,35 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     remove_node = true;
   }
 
+  bool ignore_input_stream = false;
+
+  if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream && !pm->input_device.name.empty()) {
+    if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
+      /*
+        target.object can a name or serial number:
+        https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/pipewire/keys.h#L334
+      */
+
+      uint64_t serial = SPA_ID_INVALID;
+
+      util::str_to_num(target_object, serial);
+
+      if (target_object != pm->input_device.name) {
+        ignore_input_stream = true;
+      } else if (serial != SPA_ID_INVALID && serial != pm->input_device.serial) {
+        ignore_input_stream = true;
+      }
+
+      if (ignore_input_stream) {
+        util::debug("The input stream " + nd->nd_info->name +
+                    " does not have as target the same mic used as EE input: " + pm->input_device.name +
+                    "\n The user wants it to record from device " + target_object + ". We will ignore this stream.");
+
+        remove_node = true;
+      }
+    }
+  }
+
   if (remove_node) {
     nd->nd_info->proxy = nullptr;
 
