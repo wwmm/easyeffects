@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-17 01:04-0300\n"
+"POT-Creation-Date: 2024-01-18 18:06+0000\n"
 "PO-Revision-Date: 2024-01-01 21:04+0000\n"
 "Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1542,7 +1542,7 @@ msgstr "automatisch geladene Voreinstellungen"
 msgid "Output Devices"
 msgstr "Ausgabegeräte"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:265
 msgid "Output Presets"
 msgstr "Ausgabe-Voreinstellungen"
 
@@ -1562,7 +1562,7 @@ msgstr "automatisch geladene Ausgabe-Voreinstellungen"
 msgid "Input Devices"
 msgstr "Eingabegeräte"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:273
 msgid "Input Presets"
 msgstr "Eingabe-Voreinstellungen"
 
@@ -1854,7 +1854,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Maximum"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
 msgid "Load"
 msgstr "Laden"
 
@@ -2141,119 +2141,119 @@ msgstr "Stereo Basis"
 msgid "Stereo Phase"
 msgstr "Stereo Phase"
 
-#: src/app_info.cpp:65
+#: src/app_info.cpp:66
 msgid "Running"
 msgstr "läuft"
 
-#: src/app_info.cpp:67
+#: src/app_info.cpp:68
 msgid "Suspended"
 msgstr "pausiert"
 
-#: src/app_info.cpp:69
+#: src/app_info.cpp:70
 msgid "Idle"
 msgstr "Untätig"
 
-#: src/app_info.cpp:71
+#: src/app_info.cpp:72
 msgid "Creating"
 msgstr "Erstellen"
 
-#: src/app_info.cpp:73
+#: src/app_info.cpp:74
 msgid "Error"
 msgstr "Fehler"
 
-#: src/app_info.cpp:75
+#: src/app_info.cpp:76
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/app_info.cpp:247
+#: src/app_info.cpp:248
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:257
+#: src/app_info.cpp:258
 msgid "channels"
 msgstr "Kanäle"
 
-#: src/application.cpp:466
+#: src/application.cpp:468
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:556
+#: src/application.cpp:558
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Easy Effects beenden. Nützlich bei der Ausführung im Dienstmodus."
 
-#: src/application.cpp:559
+#: src/application.cpp:561
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:562
+#: src/application.cpp:564
 msgid "Reset Easy Effects."
 msgstr "Easy Effects zurücksetzen."
 
-#: src/application.cpp:565
+#: src/application.cpp:567
 msgid "Hide the Window."
 msgstr "Fenster verstecken."
 
-#: src/application.cpp:568
+#: src/application.cpp:570
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globale Umleitung. 1 zum Aktivieren, 2 zum Deaktivieren und 3 zum Erhalten "
 "des Status"
 
-#: src/application.cpp:571
+#: src/application.cpp:573
 msgid "Show available presets."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/application.cpp:574
+#: src/application.cpp:576
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Lade ein Preset. Beispiel: easyeffects -l music"
 
-#: src/application_ui.cpp:321
+#: src/application_ui.cpp:326
 msgid "_Output"
 msgstr "_Ausgang"
 
-#: src/application_ui.cpp:322
+#: src/application_ui.cpp:327
 msgid "_Input"
 msgstr "_Eingang"
 
-#: src/application_ui.cpp:323
+#: src/application_ui.cpp:328
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:103
+#: src/convolver_menu_impulses.cpp:104
 msgid "The File Is Not Regular"
 msgstr "Die Datei ist nicht ordnungsgemäß"
 
-#: src/convolver_menu_impulses.cpp:108
+#: src/convolver_menu_impulses.cpp:109
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr ""
 "Die Impulsdatei ist möglicherweise beschädigt oder wird nicht unterstützt"
 
-#: src/convolver_menu_impulses.cpp:113
+#: src/convolver_menu_impulses.cpp:114
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Es werden nur Stereo-Impulsdateien unterstützt"
 
-#: src/convolver_menu_impulses.cpp:123
+#: src/convolver_menu_impulses.cpp:124
 msgid "Impulse File Not Imported"
 msgstr "Impulsdatei nicht importiert"
 
-#: src/convolver_menu_impulses.cpp:131
+#: src/convolver_menu_impulses.cpp:132
 msgid "Import Impulse File"
 msgstr "Impulsdatei importieren"
 
-#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/convolver_menu_impulses.cpp:144
+#: src/convolver_menu_impulses.cpp:145
 msgid "Impulse Response"
 msgstr "Impulsantwort"
 
-#: src/convolver_menu_impulses.cpp:265
+#: src/convolver_menu_impulses.cpp:266
 msgid "Load Impulse"
 msgstr "Impuls laden"
 
-#: src/convolver_menu_impulses.cpp:268
+#: src/convolver_menu_impulses.cpp:269
 msgid "Remove Impulse"
 msgstr "Impuls entfernen"
 
