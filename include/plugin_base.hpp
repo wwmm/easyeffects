@@ -26,7 +26,7 @@
 #include <span>
 #include "lv2_wrapper.hpp"
 #include "pipe_manager.hpp"
-#include "tags_plugin_name.hpp"
+#include "tags_plugin_name.hpp"  // IWYU pragma: export
 
 class PluginBase {
  public:

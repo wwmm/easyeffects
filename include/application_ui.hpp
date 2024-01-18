@@ -20,11 +20,6 @@
 #pragma once
 
 #include <adwaita.h>
-#include "effects_box.hpp"
-#include "pipe_manager_box.hpp"
-#include "presets_menu.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::application_window {
 

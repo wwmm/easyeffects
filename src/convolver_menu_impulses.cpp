@@ -19,6 +19,7 @@
 
 #include "convolver_menu_impulses.hpp"
 #include "config.h"
+#include "tags_resources.hpp"
 
 namespace ui::convolver_menu_impulses {
 

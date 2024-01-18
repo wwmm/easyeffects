@@ -22,8 +22,8 @@
 #include <adwaita.h>
 #include <fmt/core.h>
 #include "application.hpp"
-#include "node_info_holder.hpp"
-#include "tags_resources.hpp"
+#include "node_info_holder.hpp"  // IWYU pragma: export
+#include "tags_resources.hpp"    // IWYU pragma: export
 
 namespace ui::app_info {
 

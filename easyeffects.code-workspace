@@ -85,7 +85,9 @@
     },
     "xml.format.joinContentLines": true,
     "clangd.arguments": [
-      "--header-insertion=never"
+      "--header-insertion=never",
+      "--clang-tidy",
+      "--enable-config"
     ],
     "prettier.enable": false,
     "xml.format.preservedNewlines": 1,

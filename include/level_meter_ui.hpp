@@ -21,7 +21,7 @@
 
 #include <adwaita.h>
 #include "effects_base.hpp"
-#include "tags_resources.hpp"
+#include "level_meter.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::level_meter_box {

@@ -18,6 +18,7 @@
  */
 
 #include "autogain_ui.hpp"
+#include "ui_helpers.hpp"
 
 namespace ui::autogain_box {
 

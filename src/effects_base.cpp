@@ -18,6 +18,7 @@
  */
 
 #include "effects_base.hpp"
+#include "level_meter.hpp"
 
 EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager* pipe_manager)
     : log_tag(std::move(tag)),

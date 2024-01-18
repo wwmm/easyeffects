@@ -36,7 +36,6 @@
 #include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
-#include "level_meter.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
 #include "maximizer.hpp"
@@ -50,7 +49,8 @@
 #include "spectrum.hpp"
 #include "speex.hpp"
 #include "stereo_tools.hpp"
-#include "tags_schema.hpp"
+#include "tags_resources.hpp"  // IWYU pragma: export
+#include "tags_schema.hpp"     // IWYU pragma: export
 
 class EffectsBase {
  public:
