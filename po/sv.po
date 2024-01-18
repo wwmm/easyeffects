@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-17 01:04-0300\n"
+"POT-Creation-Date: 2024-01-18 18:06+0000\n"
 "PO-Revision-Date: 2023-02-20 00:59+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1551,7 +1551,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Utgångsenheter"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:265
 msgid "Output Presets"
 msgstr "Utgångsförinställningar"
 
@@ -1571,7 +1571,7 @@ msgstr "Lista över utgångsförinställningar"
 msgid "Input Devices"
 msgstr "Ingångsenheter"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:273
 msgid "Input Presets"
 msgstr "Ingångsförinställningar"
 
@@ -1860,7 +1860,7 @@ msgstr "Minst"
 msgid "Maximum"
 msgstr ""
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
 msgid "Load"
 msgstr ""
 
@@ -2151,118 +2151,118 @@ msgstr "Stereobas"
 msgid "Stereo Phase"
 msgstr "Stereofas"
 
-#: src/app_info.cpp:65
+#: src/app_info.cpp:66
 msgid "Running"
 msgstr ""
 
-#: src/app_info.cpp:67
+#: src/app_info.cpp:68
 msgid "Suspended"
 msgstr ""
 
-#: src/app_info.cpp:69
+#: src/app_info.cpp:70
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:71
+#: src/app_info.cpp:72
 msgid "Creating"
 msgstr "Skapande"
 
-#: src/app_info.cpp:73
+#: src/app_info.cpp:74
 msgid "Error"
 msgstr ""
 
-#: src/app_info.cpp:75
+#: src/app_info.cpp:76
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:247
+#: src/app_info.cpp:248
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:257
+#: src/app_info.cpp:258
 msgid "channels"
 msgstr "kanaler"
 
-#: src/application.cpp:466
+#: src/application.cpp:468
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:556
+#: src/application.cpp:558
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:559
+#: src/application.cpp:561
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:562
+#: src/application.cpp:564
 msgid "Reset Easy Effects."
 msgstr "Återställ Easy Effects."
 
-#: src/application.cpp:565
+#: src/application.cpp:567
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:568
+#: src/application.cpp:570
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:571
+#: src/application.cpp:573
 msgid "Show available presets."
 msgstr ""
 
-#: src/application.cpp:574
+#: src/application.cpp:576
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/application_ui.cpp:321
+#: src/application_ui.cpp:326
 #, fuzzy
 msgid "_Output"
 msgstr "Utgång"
 
-#: src/application_ui.cpp:322
+#: src/application_ui.cpp:327
 #, fuzzy
 msgid "_Input"
 msgstr "Ingång"
 
-#: src/application_ui.cpp:323
+#: src/application_ui.cpp:328
 msgid "_PipeWire"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:103
+#: src/convolver_menu_impulses.cpp:104
 msgid "The File Is Not Regular"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:108
+#: src/convolver_menu_impulses.cpp:109
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:113
+#: src/convolver_menu_impulses.cpp:114
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:123
+#: src/convolver_menu_impulses.cpp:124
 msgid "Impulse File Not Imported"
 msgstr "Impulsfilen har inte importerats"
 
-#: src/convolver_menu_impulses.cpp:131
+#: src/convolver_menu_impulses.cpp:132
 msgid "Import Impulse File"
 msgstr "Importera impulsfil"
 
-#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:144
+#: src/convolver_menu_impulses.cpp:145
 msgid "Impulse Response"
 msgstr "Impulssvar"
 
-#: src/convolver_menu_impulses.cpp:265
+#: src/convolver_menu_impulses.cpp:266
 msgid "Load Impulse"
 msgstr "Ladda impuls"
 
-#: src/convolver_menu_impulses.cpp:268
+#: src/convolver_menu_impulses.cpp:269
 msgid "Remove Impulse"
 msgstr "Ta bort impuls"
 

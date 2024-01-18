@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-17 01:04-0300\n"
+"POT-Creation-Date: 2024-01-18 18:06+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1673,7 +1673,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Efecte Output"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:265
 #, fuzzy
 msgid "Output Presets"
 msgstr "Presetări pentru Output:"
@@ -1696,7 +1696,7 @@ msgstr "Presetări pentru Output:"
 msgid "Input Devices"
 msgstr "Nivel Input"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:273
 #, fuzzy
 msgid "Input Presets"
 msgstr "Presetări pentru Input:"
@@ -2006,7 +2006,7 @@ msgstr "Maxim"
 msgid "Maximum"
 msgstr "Maxim"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
 msgid "Load"
 msgstr "Încarcă"
 
@@ -2310,131 +2310,131 @@ msgstr "Bază Stereo"
 msgid "Stereo Phase"
 msgstr "Fază Stereo"
 
-#: src/app_info.cpp:65
+#: src/app_info.cpp:66
 #, fuzzy
 msgid "Running"
 msgstr "rulează"
 
-#: src/app_info.cpp:67
+#: src/app_info.cpp:68
 #, fuzzy
 msgid "Suspended"
 msgstr "suspendat"
 
-#: src/app_info.cpp:69
+#: src/app_info.cpp:70
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:71
+#: src/app_info.cpp:72
 #, fuzzy
 msgid "Creating"
 msgstr "se creează"
 
-#: src/app_info.cpp:73
+#: src/app_info.cpp:74
 #, fuzzy
 msgid "Error"
 msgstr "eroare"
 
-#: src/app_info.cpp:75
+#: src/app_info.cpp:76
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:247
+#: src/app_info.cpp:248
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:257
+#: src/app_info.cpp:258
 #, fuzzy
 msgid "channels"
 msgstr "Canale"
 
-#: src/application.cpp:466
+#: src/application.cpp:468
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:556
+#: src/application.cpp:558
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
 
-#: src/application.cpp:559
+#: src/application.cpp:561
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:562
+#: src/application.cpp:564
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Resetează EasyEffects."
 
-#: src/application.cpp:565
+#: src/application.cpp:567
 msgid "Hide the Window."
 msgstr "Ascunde Fereastra."
 
-#: src/application.cpp:568
+#: src/application.cpp:570
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Ocolire Globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
 "statusul"
 
-#: src/application.cpp:571
+#: src/application.cpp:573
 msgid "Show available presets."
 msgstr "Arată presetările valabile."
 
-#: src/application.cpp:574
+#: src/application.cpp:576
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
 
-#: src/application_ui.cpp:321
+#: src/application_ui.cpp:326
 #, fuzzy
 msgid "_Output"
 msgstr "Output"
 
-#: src/application_ui.cpp:322
+#: src/application_ui.cpp:327
 #, fuzzy
 msgid "_Input"
 msgstr "Input"
 
-#: src/application_ui.cpp:323
+#: src/application_ui.cpp:328
 #, fuzzy
 msgid "_PipeWire"
 msgstr "PipeWire"
 
-#: src/convolver_menu_impulses.cpp:103
+#: src/convolver_menu_impulses.cpp:104
 msgid "The File Is Not Regular"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:108
+#: src/convolver_menu_impulses.cpp:109
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:113
+#: src/convolver_menu_impulses.cpp:114
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:123
+#: src/convolver_menu_impulses.cpp:124
 #, fuzzy
 msgid "Impulse File Not Imported"
 msgstr "Importă Fișier Impulse"
 
-#: src/convolver_menu_impulses.cpp:131
+#: src/convolver_menu_impulses.cpp:132
 msgid "Import Impulse File"
 msgstr "Importă Fișier Impulse"
 
-#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Deschide"
 
-#: src/convolver_menu_impulses.cpp:144
+#: src/convolver_menu_impulses.cpp:145
 msgid "Impulse Response"
 msgstr "Răspuns Impuls"
 
-#: src/convolver_menu_impulses.cpp:265
+#: src/convolver_menu_impulses.cpp:266
 #, fuzzy
 msgid "Load Impulse"
 msgstr "Importă Impuls"
 
-#: src/convolver_menu_impulses.cpp:268
+#: src/convolver_menu_impulses.cpp:269
 #, fuzzy
 msgid "Remove Impulse"
 msgstr "Importă Impuls"

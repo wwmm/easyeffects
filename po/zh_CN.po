@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-17 01:04-0300\n"
+"POT-Creation-Date: 2024-01-18 18:06+0000\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1551,7 +1551,7 @@ msgstr "自动加载预设"
 msgid "Output Devices"
 msgstr "输出设备"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:263
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:265
 msgid "Output Presets"
 msgstr "输出预设"
 
@@ -1571,7 +1571,7 @@ msgstr "输出自动加载预设列表"
 msgid "Input Devices"
 msgstr "输入设备"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:271
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:273
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -1857,7 +1857,7 @@ msgstr "最低"
 msgid "Maximum"
 msgstr "最高"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:203
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
 msgid "Load"
 msgstr "加载"
 
@@ -2142,116 +2142,116 @@ msgstr "立体声基线"
 msgid "Stereo Phase"
 msgstr "立体声相位"
 
-#: src/app_info.cpp:65
+#: src/app_info.cpp:66
 msgid "Running"
 msgstr "正在运行"
 
-#: src/app_info.cpp:67
+#: src/app_info.cpp:68
 msgid "Suspended"
 msgstr "已暂停"
 
-#: src/app_info.cpp:69
+#: src/app_info.cpp:70
 msgid "Idle"
 msgstr "空闲"
 
-#: src/app_info.cpp:71
+#: src/app_info.cpp:72
 msgid "Creating"
 msgstr "创建中"
 
-#: src/app_info.cpp:73
+#: src/app_info.cpp:74
 msgid "Error"
 msgstr "错误"
 
-#: src/app_info.cpp:75
+#: src/app_info.cpp:76
 msgid "Unknown"
 msgstr "未知"
 
-#: src/app_info.cpp:247
+#: src/app_info.cpp:248
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:257
+#: src/app_info.cpp:258
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:466
+#: src/application.cpp:468
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:556
+#: src/application.cpp:558
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
-#: src/application.cpp:559
+#: src/application.cpp:561
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:562
+#: src/application.cpp:564
 msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
-#: src/application.cpp:565
+#: src/application.cpp:567
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:568
+#: src/application.cpp:570
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:571
+#: src/application.cpp:573
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
-#: src/application.cpp:574
+#: src/application.cpp:576
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
-#: src/application_ui.cpp:321
+#: src/application_ui.cpp:326
 msgid "_Output"
 msgstr "输出(_O)"
 
-#: src/application_ui.cpp:322
+#: src/application_ui.cpp:327
 msgid "_Input"
 msgstr "输入(_I)"
 
-#: src/application_ui.cpp:323
+#: src/application_ui.cpp:328
 msgid "_PipeWire"
 msgstr "PipeWire(_P)"
 
-#: src/convolver_menu_impulses.cpp:103
+#: src/convolver_menu_impulses.cpp:104
 msgid "The File Is Not Regular"
 msgstr "文件不是普通文件"
 
-#: src/convolver_menu_impulses.cpp:108
+#: src/convolver_menu_impulses.cpp:109
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Impulse文件已损坏或不支持"
 
-#: src/convolver_menu_impulses.cpp:113
+#: src/convolver_menu_impulses.cpp:114
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "仅支持双声道Impulse文件"
 
-#: src/convolver_menu_impulses.cpp:123
+#: src/convolver_menu_impulses.cpp:124
 msgid "Impulse File Not Imported"
 msgstr "脉冲文件未导入"
 
-#: src/convolver_menu_impulses.cpp:131
+#: src/convolver_menu_impulses.cpp:132
 msgid "Import Impulse File"
 msgstr "导入 Impulse 文件"
 
-#: src/convolver_menu_impulses.cpp:132 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "打开"
 
-#: src/convolver_menu_impulses.cpp:144
+#: src/convolver_menu_impulses.cpp:145
 msgid "Impulse Response"
 msgstr "脉冲响应"
 
-#: src/convolver_menu_impulses.cpp:265
+#: src/convolver_menu_impulses.cpp:266
 msgid "Load Impulse"
 msgstr "加载脉冲"
 
-#: src/convolver_menu_impulses.cpp:268
+#: src/convolver_menu_impulses.cpp:269
 msgid "Remove Impulse"
 msgstr "删除脉冲"
 
