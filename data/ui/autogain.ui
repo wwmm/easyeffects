@@ -385,6 +385,7 @@
                                                                     <object class="GtkLevelBar" id="g_level">
                                                                         <property name="valign">center</property>
                                                                         <property name="hexpand">1</property>
+                                                                        <property name="overflow">hidden</property>
                                                                     </object>
                                                                 </child>
 

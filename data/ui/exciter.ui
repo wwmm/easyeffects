@@ -429,6 +429,7 @@
                                     <object class="GtkLevelBar" id="harmonics_levelbar">
                                         <property name="valign">center</property>
                                         <property name="hexpand">1</property>
+                                        <property name="overflow">hidden</property>
                                     </object>
                                 </child>
 
@@ -450,8 +451,7 @@
 
                                 <!-- Empty placeholder used only for layout reason -->
                                 <child>
-                                    <object class="GtkLabel">
-                                    </object>
+                                    <object class="GtkLabel"> </object>
                                 </child>
 
                                 <child>

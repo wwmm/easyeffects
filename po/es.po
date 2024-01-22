@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-18 18:06+0000\n"
+"POT-Creation-Date: 2024-01-22 11:54-0300\n"
 "PO-Revision-Date: 2023-12-23 11:09+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -200,7 +200,7 @@ msgstr "Rango"
 msgid "Output Gain"
 msgstr "Ganancia de salida"
 
-#: data/ui/autogain.ui:423 data/ui/bass_enhancer.ui:262
+#: data/ui/autogain.ui:424 data/ui/bass_enhancer.ui:262
 #: data/ui/bass_loudness.ui:110 data/ui/compressor.ui:661
 #: data/ui/compressor.ui:1155 data/ui/convolver.ui:226 data/ui/crossfeed.ui:119
 #: data/ui/crystalizer.ui:46 data/ui/deesser.ui:424 data/ui/delay.ui:231
@@ -216,7 +216,7 @@ msgstr "Ganancia de salida"
 msgid "Input"
 msgstr "Entrada"
 
-#: data/ui/autogain.ui:442 data/ui/bass_enhancer.ui:281
+#: data/ui/autogain.ui:443 data/ui/bass_enhancer.ui:281
 #: data/ui/bass_loudness.ui:129 data/ui/compressor.ui:1174
 #: data/ui/convolver.ui:245 data/ui/crossfeed.ui:138 data/ui/crystalizer.ui:65
 #: data/ui/deesser.ui:443 data/ui/delay.ui:250 data/ui/deepfilternet.ui:230
@@ -229,7 +229,7 @@ msgstr "Entrada"
 msgid "Plugin Input Gain"
 msgstr "Ganancia de entrada del plugin"
 
-#: data/ui/autogain.ui:507 data/ui/bass_enhancer.ui:346
+#: data/ui/autogain.ui:508 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
 #: data/ui/compressor.ui:1239 data/ui/convolver.ui:310 data/ui/crossfeed.ui:203
 #: data/ui/crystalizer.ui:130 data/ui/deesser.ui:508 data/ui/delay.ui:315
@@ -244,7 +244,7 @@ msgstr "Ganancia de entrada del plugin"
 msgid "Output"
 msgstr "Salida"
 
-#: data/ui/autogain.ui:526 data/ui/bass_enhancer.ui:365
+#: data/ui/autogain.ui:527 data/ui/bass_enhancer.ui:365
 #: data/ui/bass_loudness.ui:213 data/ui/compressor.ui:1258
 #: data/ui/convolver.ui:329 data/ui/crossfeed.ui:222 data/ui/crystalizer.ui:149
 #: data/ui/deesser.ui:527 data/ui/delay.ui:334 data/ui/deepfilternet.ui:314
@@ -257,7 +257,7 @@ msgstr "Salida"
 msgid "Plugin Output Gain"
 msgstr "Ganancia de salida del plugin"
 
-#: data/ui/autogain.ui:591 data/ui/bass_enhancer.ui:462
+#: data/ui/autogain.ui:592 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1323
 #: data/ui/convolver.ui:395 data/ui/crossfeed.ui:288 data/ui/crystalizer.ui:204
 #: data/ui/deesser.ui:653 data/ui/delay.ui:399 data/ui/deepfilternet.ui:379
