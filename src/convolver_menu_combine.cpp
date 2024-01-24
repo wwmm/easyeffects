@@ -18,6 +18,12 @@
  */
 
 #include "convolver_menu_combine.hpp"
+#include <sndfile.hh>
+#include "convolver_ui_common.hpp"
+#include "resampler.hpp"
+#include "tags_app.hpp"
+#include "tags_resources.hpp"
+#include "ui_helpers.hpp"
 
 namespace ui::convolver_menu_combine {
 

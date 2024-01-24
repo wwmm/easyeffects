@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 12:44-0300\n"
+"POT-Creation-Date: 2024-01-24 13:04-0300\n"
 "PO-Revision-Date: 2023-12-26 18:06+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1874,7 +1874,7 @@ msgstr "Минимум"
 msgid "Maximum"
 msgstr "Максимум"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:205
 msgid "Load"
 msgstr "Загрузить"
 
@@ -2245,48 +2245,48 @@ msgstr "Вх_од"
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:104
+#: src/convolver_menu_impulses.cpp:105
 msgid "The File Is Not Regular"
 msgstr "Нестандартный файл"
 
-#: src/convolver_menu_impulses.cpp:109
+#: src/convolver_menu_impulses.cpp:110
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Возможно, файл импульса повреждён или не поддерживается"
 
-#: src/convolver_menu_impulses.cpp:114
+#: src/convolver_menu_impulses.cpp:115
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Поддерживаются только файлы импульса стерео"
 
-#: src/convolver_menu_impulses.cpp:124
+#: src/convolver_menu_impulses.cpp:125
 msgid "Impulse File Not Imported"
 msgstr "Файл импульса не импортирован"
 
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:133
 msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
-#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Открыть"
 
-#: src/convolver_menu_impulses.cpp:145
+#: src/convolver_menu_impulses.cpp:146
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
-#: src/convolver_menu_impulses.cpp:266
+#: src/convolver_menu_impulses.cpp:267
 msgid "Load Impulse"
 msgstr "Загрузить импульс"
 
-#: src/convolver_menu_impulses.cpp:269
+#: src/convolver_menu_impulses.cpp:270
 msgid "Remove Impulse"
 msgstr "Удалить Импульс"
 
-#: src/convolver_ui.cpp:334
+#: src/convolver_ui.cpp:338
 msgid "No Impulse File Loaded"
 msgstr "Нет загруженного файла импульса"
 
-#: src/convolver_ui.cpp:360
+#: src/convolver_ui.cpp:364
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 

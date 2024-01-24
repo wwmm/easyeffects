@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 12:44-0300\n"
+"POT-Creation-Date: 2024-01-24 13:04-0300\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1857,7 +1857,7 @@ msgstr "最低"
 msgid "Maximum"
 msgstr "最高"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:205
 msgid "Load"
 msgstr "加载"
 
@@ -2218,48 +2218,48 @@ msgstr "输入(_I)"
 msgid "_PipeWire"
 msgstr "PipeWire(_P)"
 
-#: src/convolver_menu_impulses.cpp:104
+#: src/convolver_menu_impulses.cpp:105
 msgid "The File Is Not Regular"
 msgstr "文件不是普通文件"
 
-#: src/convolver_menu_impulses.cpp:109
+#: src/convolver_menu_impulses.cpp:110
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Impulse文件已损坏或不支持"
 
-#: src/convolver_menu_impulses.cpp:114
+#: src/convolver_menu_impulses.cpp:115
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "仅支持双声道Impulse文件"
 
-#: src/convolver_menu_impulses.cpp:124
+#: src/convolver_menu_impulses.cpp:125
 msgid "Impulse File Not Imported"
 msgstr "脉冲文件未导入"
 
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:133
 msgid "Import Impulse File"
 msgstr "导入 Impulse 文件"
 
-#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "打开"
 
-#: src/convolver_menu_impulses.cpp:145
+#: src/convolver_menu_impulses.cpp:146
 msgid "Impulse Response"
 msgstr "脉冲响应"
 
-#: src/convolver_menu_impulses.cpp:266
+#: src/convolver_menu_impulses.cpp:267
 msgid "Load Impulse"
 msgstr "加载脉冲"
 
-#: src/convolver_menu_impulses.cpp:269
+#: src/convolver_menu_impulses.cpp:270
 msgid "Remove Impulse"
 msgstr "删除脉冲"
 
-#: src/convolver_ui.cpp:334
+#: src/convolver_ui.cpp:338
 msgid "No Impulse File Loaded"
 msgstr "未加载脉冲文件"
 
-#: src/convolver_ui.cpp:360
+#: src/convolver_ui.cpp:364
 msgid "Failed To Load The Impulse File"
 msgstr "加载脉冲文件失败"
 

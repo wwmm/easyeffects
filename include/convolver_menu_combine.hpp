@@ -22,10 +22,6 @@
 #include <adwaita.h>
 #include <execution>
 #include <numeric>
-#include "convolver_ui_common.hpp"
-#include "resampler.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::convolver_menu_combine {
 

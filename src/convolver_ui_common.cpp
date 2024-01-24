@@ -18,6 +18,8 @@
  */
 
 #include "convolver_ui_common.hpp"
+#include <sndfile.hh>
+#include "util.hpp"
 
 namespace ui::convolver {
 

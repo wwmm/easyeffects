@@ -20,8 +20,7 @@
 #pragma once
 
 #include <filesystem>
-#include <sndfile.hh>
-#include "util.hpp"
+#include <vector>
 
 namespace ui::convolver {
 

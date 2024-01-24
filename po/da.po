@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 12:44-0300\n"
+"POT-Creation-Date: 2024-01-24 13:04-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1893,7 +1893,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Maksimum"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:205
 msgid "Load"
 msgstr "Indlæs"
 
@@ -2273,50 +2273,50 @@ msgstr "Indgang"
 msgid "_PipeWire"
 msgstr "PipeWire"
 
-#: src/convolver_menu_impulses.cpp:104
+#: src/convolver_menu_impulses.cpp:105
 msgid "The File Is Not Regular"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:109
+#: src/convolver_menu_impulses.cpp:110
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:114
+#: src/convolver_menu_impulses.cpp:115
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr ""
 
-#: src/convolver_menu_impulses.cpp:124
+#: src/convolver_menu_impulses.cpp:125
 #, fuzzy
 msgid "Impulse File Not Imported"
 msgstr "Impulsfiler liste"
 
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:133
 msgid "Import Impulse File"
 msgstr "Import Impulsfil"
 
-#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Åben"
 
-#: src/convolver_menu_impulses.cpp:145
+#: src/convolver_menu_impulses.cpp:146
 msgid "Impulse Response"
 msgstr "Impulsrespons"
 
-#: src/convolver_menu_impulses.cpp:266
+#: src/convolver_menu_impulses.cpp:267
 msgid "Load Impulse"
 msgstr "Indlæs Impuls"
 
-#: src/convolver_menu_impulses.cpp:269
+#: src/convolver_menu_impulses.cpp:270
 msgid "Remove Impulse"
 msgstr "Fjern Impuls"
 
-#: src/convolver_ui.cpp:334
+#: src/convolver_ui.cpp:338
 #, fuzzy
 msgid "No Impulse File Loaded"
 msgstr "Impulsfiler liste"
 
-#: src/convolver_ui.cpp:360
+#: src/convolver_ui.cpp:364
 #, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Kunne Ikke Indlæse Impulsfilen"

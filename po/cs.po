@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 12:44-0300\n"
+"POT-Creation-Date: 2024-01-24 13:04-0300\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1879,7 +1879,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Nejvýše"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:205
 msgid "Load"
 msgstr "Načíst"
 
@@ -2241,48 +2241,48 @@ msgstr "_Vstup"
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:104
+#: src/convolver_menu_impulses.cpp:105
 msgid "The File Is Not Regular"
 msgstr "Soubor není standardní"
 
-#: src/convolver_menu_impulses.cpp:109
+#: src/convolver_menu_impulses.cpp:110
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Soubor Impulse může být poškozený nebo nepodporovaný"
 
-#: src/convolver_menu_impulses.cpp:114
+#: src/convolver_menu_impulses.cpp:115
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Podporovány jsou pouze Stereo Impulse soubory"
 
-#: src/convolver_menu_impulses.cpp:124
+#: src/convolver_menu_impulses.cpp:125
 msgid "Impulse File Not Imported"
 msgstr "Impulse soubor nebyl importován"
 
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:133
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_menu_impulses.cpp:145
+#: src/convolver_menu_impulses.cpp:146
 msgid "Impulse Response"
 msgstr "Odpověď impulsu"
 
-#: src/convolver_menu_impulses.cpp:266
+#: src/convolver_menu_impulses.cpp:267
 msgid "Load Impulse"
 msgstr "Načíst Impulse"
 
-#: src/convolver_menu_impulses.cpp:269
+#: src/convolver_menu_impulses.cpp:270
 msgid "Remove Impulse"
 msgstr "Odstranit Impuls"
 
-#: src/convolver_ui.cpp:334
+#: src/convolver_ui.cpp:338
 msgid "No Impulse File Loaded"
 msgstr "Impulse soubor nebyl načten"
 
-#: src/convolver_ui.cpp:360
+#: src/convolver_ui.cpp:364
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát Impulse soubor"
 

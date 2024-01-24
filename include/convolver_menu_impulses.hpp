@@ -23,7 +23,6 @@
 #include <filesystem>
 #include <sndfile.hh>
 #include "application.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::convolver_menu_impulses {
 

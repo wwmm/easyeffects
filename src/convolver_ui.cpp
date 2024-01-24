@@ -18,6 +18,10 @@
  */
 
 #include "convolver_ui.hpp"
+#include "chart.hpp"
+#include "convolver_menu_combine.hpp"
+#include "convolver_menu_impulses.hpp"
+#include "convolver_ui_common.hpp"
 
 namespace ui::convolver_box {
 

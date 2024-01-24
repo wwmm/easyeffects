@@ -27,12 +27,7 @@
 #include <numbers>
 #include <ranges>
 #include "application.hpp"
-#include "chart.hpp"
-#include "convolver_menu_combine.hpp"
-#include "convolver_menu_impulses.hpp"
 #include "effects_base.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::convolver_box {
 

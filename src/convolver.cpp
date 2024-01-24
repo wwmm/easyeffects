@@ -18,6 +18,8 @@
  */
 
 #include "convolver.hpp"
+#include <sndfile.hh>
+#include "resampler.hpp"
 
 namespace {
 

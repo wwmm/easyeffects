@@ -18,6 +18,7 @@
  */
 
 #include "crossfeed_ui.hpp"
+#include "ui_helpers.hpp"
 
 namespace ui::crossfeed_box {
 

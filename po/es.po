@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 12:44-0300\n"
+"POT-Creation-Date: 2024-01-24 13:04-0300\n"
 "PO-Revision-Date: 2023-12-23 11:09+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1831,7 +1831,7 @@ msgstr "Mínima"
 msgid "Maximum"
 msgstr "Máximo"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:204
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:205
 msgid "Load"
 msgstr "Cargar"
 
@@ -2191,48 +2191,48 @@ msgstr "_Entrada"
 msgid "_PipeWire"
 msgstr "_Software PipeWire"
 
-#: src/convolver_menu_impulses.cpp:104
+#: src/convolver_menu_impulses.cpp:105
 msgid "The File Is Not Regular"
 msgstr "El archivo no es regular"
 
-#: src/convolver_menu_impulses.cpp:109
+#: src/convolver_menu_impulses.cpp:110
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "El archivo de impulso puede estar dañado o no ser compatible"
 
-#: src/convolver_menu_impulses.cpp:114
+#: src/convolver_menu_impulses.cpp:115
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Sólo se admiten archivos de impulso estéreo"
 
-#: src/convolver_menu_impulses.cpp:124
+#: src/convolver_menu_impulses.cpp:125
 msgid "Impulse File Not Imported"
 msgstr "Archivo de impulso no importado"
 
-#: src/convolver_menu_impulses.cpp:132
+#: src/convolver_menu_impulses.cpp:133
 msgid "Import Impulse File"
 msgstr "Importar archivo de respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:133 src/equalizer_ui.cpp:412
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:412
 #: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Abrir"
 
-#: src/convolver_menu_impulses.cpp:145
+#: src/convolver_menu_impulses.cpp:146
 msgid "Impulse Response"
 msgstr "Respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:266
+#: src/convolver_menu_impulses.cpp:267
 msgid "Load Impulse"
 msgstr "Cargar archivo de respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:269
+#: src/convolver_menu_impulses.cpp:270
 msgid "Remove Impulse"
 msgstr "Eliminar archivo de respuesta a impulsos"
 
-#: src/convolver_ui.cpp:334
+#: src/convolver_ui.cpp:338
 msgid "No Impulse File Loaded"
 msgstr "No se ha cargado el archivo de impulsos"
 
-#: src/convolver_ui.cpp:360
+#: src/convolver_ui.cpp:364
 msgid "Failed To Load The Impulse File"
 msgstr "Fallo en la carga del archivo de impulso"
 
