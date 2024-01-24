@@ -18,6 +18,8 @@
  */
 
 #include "compressor_ui.hpp"
+#include "node_info_holder.hpp"
+#include "ui_helpers.hpp"
 
 namespace ui::compressor_box {
 

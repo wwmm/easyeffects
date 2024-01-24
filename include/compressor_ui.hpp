@@ -21,9 +21,6 @@
 
 #include <adwaita.h>
 #include "effects_base.hpp"
-#include "node_info_holder.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::compressor_box {
 

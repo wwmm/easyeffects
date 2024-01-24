@@ -18,6 +18,7 @@
  */
 
 #include "chart.hpp"
+#include "tags_resources.hpp"
 
 namespace ui::chart {
 
