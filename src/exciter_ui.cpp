@@ -82,40 +82,52 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
   exciter->set_post_messages(true);
 
   self->data->connections.push_back(exciter->input_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                   self->input_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                       self->input_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(exciter->output_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                   self->output_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                       self->output_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(exciter->harmonics.connect([=](const double value) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      if (!GTK_IS_LEVEL_BAR(self->harmonics_levelbar) || !GTK_IS_LABEL(self->harmonics_levelbar_label)) {
-        return;
-      }
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
 
-      gtk_level_bar_set_value(self->harmonics_levelbar, value);
-      gtk_label_set_text(self->harmonics_levelbar_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
-    });
+          if (!GTK_IS_LEVEL_BAR(self->harmonics_levelbar) || !GTK_IS_LABEL(self->harmonics_levelbar_label)) {
+            return;
+          }
+
+          gtk_level_bar_set_value(self->harmonics_levelbar, value);
+          gtk_label_set_text(self->harmonics_levelbar_label, fmt::format("{0:.0f}", util::linear_to_db(value)).c_str());
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->exciter->package).c_str());
