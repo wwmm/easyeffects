@@ -21,8 +21,6 @@
 
 #include <adwaita.h>
 #include "effects_base.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::bass_loudness_box {
 

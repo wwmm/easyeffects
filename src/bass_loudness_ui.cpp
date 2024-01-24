@@ -18,6 +18,7 @@
  */
 
 #include "bass_loudness_ui.hpp"
+#include "ui_helpers.hpp"
 
 namespace ui::bass_loudness_box {
 
