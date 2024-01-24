@@ -79,52 +79,61 @@ void setup(LevelMeterBox* self, std::shared_ptr<LevelMeter> level_meter, const s
   level_meter->set_post_messages(true);
 
   self->data->connections.push_back(level_meter->input_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                   self->input_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                       self->input_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(level_meter->results.connect(
       [=](const double momentary, const double shortterm, const double integrated, const double relative,
           const double range, const double true_peak_L, const double true_peak_R) {
-        util::idle_add([=]() {
-          if (get_ignore_filter_idle_add(serial)) {
-            return;
-          }
+        g_object_ref(self);
 
-          if (!GTK_IS_LEVEL_BAR(self->m_level) || !GTK_IS_LABEL(self->m_label) || !GTK_IS_LEVEL_BAR(self->s_level) ||
-              !GTK_IS_LABEL(self->s_label) || !GTK_IS_LEVEL_BAR(self->i_level) || !GTK_IS_LABEL(self->i_label) ||
-              !GTK_IS_LEVEL_BAR(self->r_level) || !GTK_IS_LABEL(self->r_label) || !GTK_IS_LEVEL_BAR(self->lra_level) ||
-              !GTK_IS_LABEL(self->lra_label) || !GTK_IS_LABEL(self->true_peak_left_label) ||
-              !GTK_IS_LABEL(self->true_peak_right_label)) {
-            return;
-          }
+        util::idle_add(
+            [=]() {
+              if (get_ignore_filter_idle_add(serial)) {
+                return;
+              }
 
-          gtk_label_set_text(self->true_peak_left_label,
-                             fmt::format("{0:.0f} dB", util::linear_to_db(true_peak_L)).c_str());
-          gtk_label_set_text(self->true_peak_right_label,
-                             fmt::format("{0:.0f} dB", util::linear_to_db(true_peak_R)).c_str());
+              if (!GTK_IS_LEVEL_BAR(self->m_level) || !GTK_IS_LABEL(self->m_label) ||
+                  !GTK_IS_LEVEL_BAR(self->s_level) || !GTK_IS_LABEL(self->s_label) ||
+                  !GTK_IS_LEVEL_BAR(self->i_level) || !GTK_IS_LABEL(self->i_label) ||
+                  !GTK_IS_LEVEL_BAR(self->r_level) || !GTK_IS_LABEL(self->r_label) ||
+                  !GTK_IS_LEVEL_BAR(self->lra_level) || !GTK_IS_LABEL(self->lra_label) ||
+                  !GTK_IS_LABEL(self->true_peak_left_label) || !GTK_IS_LABEL(self->true_peak_right_label)) {
+                return;
+              }
 
-          gtk_level_bar_set_value(self->m_level, util::db_to_linear(momentary));
-          gtk_label_set_text(self->m_label, fmt::format("{0:.0f} LUFS", momentary).c_str());
+              gtk_label_set_text(self->true_peak_left_label,
+                                 fmt::format("{0:.0f} dB", util::linear_to_db(true_peak_L)).c_str());
+              gtk_label_set_text(self->true_peak_right_label,
+                                 fmt::format("{0:.0f} dB", util::linear_to_db(true_peak_R)).c_str());
 
-          gtk_level_bar_set_value(self->s_level, util::db_to_linear(shortterm));
-          gtk_label_set_text(self->s_label, fmt::format("{0:.0f} LUFS", shortterm).c_str());
+              gtk_level_bar_set_value(self->m_level, util::db_to_linear(momentary));
+              gtk_label_set_text(self->m_label, fmt::format("{0:.0f} LUFS", momentary).c_str());
 
-          gtk_level_bar_set_value(self->i_level, util::db_to_linear(integrated));
-          gtk_label_set_text(self->i_label, fmt::format("{0:.0f} LUFS", integrated).c_str());
+              gtk_level_bar_set_value(self->s_level, util::db_to_linear(shortterm));
+              gtk_label_set_text(self->s_label, fmt::format("{0:.0f} LUFS", shortterm).c_str());
 
-          gtk_level_bar_set_value(self->r_level, util::db_to_linear(relative));
-          gtk_label_set_text(self->r_label, fmt::format("{0:.0f} LUFS", relative).c_str());
+              gtk_level_bar_set_value(self->i_level, util::db_to_linear(integrated));
+              gtk_label_set_text(self->i_label, fmt::format("{0:.0f} LUFS", integrated).c_str());
 
-          gtk_level_bar_set_value(self->lra_level, util::db_to_linear(range));
-          gtk_label_set_text(self->lra_label, fmt::format("{0:.0f} LU", range).c_str());
-        });
+              gtk_level_bar_set_value(self->r_level, util::db_to_linear(relative));
+              gtk_label_set_text(self->r_label, fmt::format("{0:.0f} LUFS", relative).c_str());
+
+              gtk_level_bar_set_value(self->lra_level, util::db_to_linear(range));
+              gtk_label_set_text(self->lra_label, fmt::format("{0:.0f} LU", range).c_str());
+            },
+            [=]() { g_object_unref(self); });
       }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->level_meter->package).c_str());
