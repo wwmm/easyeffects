@@ -46,7 +46,7 @@ struct _AppInfo {
 
   GtkToggleButton* mute;
 
-  GtkSpinButton* volume;
+  GtkScale* volume;
 
   GtkCheckButton *blocklist, *enable;
 
@@ -176,8 +176,9 @@ void on_enable(GtkCheckButton* btn, AppInfo* self) {
   }
 }
 
-void on_volume_changed(GtkSpinButton* sbtn, AppInfo* self) {
-  auto vol = static_cast<float>(gtk_spin_button_get_value(sbtn)) / 100.0F;
+void on_volume_changed(GtkRange* gscale, AppInfo* self) {
+  auto vol = static_cast<float>(gtk_range_get_value(gscale)) / 100.0F;
+  
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
     vol = vol * vol * vol;
@@ -276,9 +277,9 @@ void update(AppInfo* self, const NodeInfo node_info) {
   g_signal_handler_block(self->volume, self->data->handler_id_volume);
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
-    gtk_spin_button_set_value(self->volume, 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
+    gtk_range_set_value(reinterpret_cast<GtkRange*>(self->volume), 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
   } else {
-    gtk_spin_button_set_value(self->volume, 100.0 * static_cast<double>(node_info.volume));
+    gtk_range_set_value(reinterpret_cast<GtkRange*>(self->volume), 100.0 * static_cast<double>(node_info.volume));
   }
 
   g_signal_handler_unblock(self->volume, self->data->handler_id_volume);
@@ -385,7 +386,7 @@ void app_info_init(AppInfo* self) {
 
   self->app_settings = g_settings_new(tags::app::id);
 
-  prepare_spinbuttons<"%">(self->volume);
+  prepare_scale<"%">(self->volume);
 
   self->data->handler_id_enable = g_signal_connect(self->enable, "toggled", G_CALLBACK(on_enable), self);
   self->data->handler_id_volume = g_signal_connect(self->volume, "value-changed", G_CALLBACK(on_volume_changed), self);
