@@ -235,6 +235,7 @@
                         <!-- Volume section -->
                         <child>
                             <object class="GtkBox" id="volume_box">
+                                <property name="width-request">300</property>
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
                                 <style>
@@ -254,8 +255,11 @@
                                 <child>
                                     <object class="GtkScale" id="volume">
                                         <property name="sensitive" bind-source="mute" bind-property="active" bind-flags="sync-create|invert-boolean" />
+
                                         <property name="hexpand">1</property>
-                                        <property name="digits">1</property>
+                                        <property name="draw-value">1</property>
+                                        <property name="value-pos">1</property>
+                                        <property name="digits">0</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
                                                 <property name="lower">0</property>
