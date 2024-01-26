@@ -277,9 +277,9 @@ void update(AppInfo* self, const NodeInfo node_info) {
   g_signal_handler_block(self->volume, self->data->handler_id_volume);
 
   if (g_settings_get_boolean(self->app_settings, "use-cubic-volumes") != 0) {
-    gtk_range_set_value(reinterpret_cast<GtkRange*>(self->volume), 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
+    gtk_range_set_value(GTK_RANGE(self->volume), 100.0 * std::cbrt(static_cast<double>(node_info.volume)));
   } else {
-    gtk_range_set_value(reinterpret_cast<GtkRange*>(self->volume), 100.0 * static_cast<double>(node_info.volume));
+    gtk_range_set_value(GTK_RANGE(self->volume), 100.0 * static_cast<double>(node_info.volume));
   }
 
   g_signal_handler_unblock(self->volume, self->data->handler_id_volume);
