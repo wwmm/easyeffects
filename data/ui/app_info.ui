@@ -17,7 +17,6 @@
                 <!-- Application info section -->
                 <child>
                     <object class="GtkBox">
-                        <property name="hexpand">1</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="spacing">6</property>
@@ -192,7 +191,6 @@
 
                 <child>
                     <object class="GtkBox">
-                        <property name="halign">end</property>
                         <property name="valign">center</property>
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
@@ -201,13 +199,12 @@
                         <property name="margin-bottom">6</property>
                         <child>
                             <object class="GtkBox" id="enable_box">
-                                <property name="halign">end</property>
                                 <property name="valign">center</property>
                                 <property name="spacing">8</property>
                                 <!-- Enable section -->
                                 <child>
                                     <object class="GtkCheckButton" id="enable">
-                                        <property name="halign">end</property>
+                                        <property name="halign">start</property>
                                         <property name="valign">center</property>
                                         <property name="tooltip-text" translatable="yes">Enable/disable this application</property>
                                         <property name="label" translatable="yes">Enable</property>
@@ -220,7 +217,7 @@
                                 <!-- Exclude section -->
                                 <child>
                                     <object class="GtkCheckButton" id="blocklist">
-                                        <property name="halign">end</property>
+                                        <property name="halign">start</property>
                                         <property name="valign">center</property>
                                         <property name="tooltip-text" translatable="yes">Excluded App List: Add/remove this application</property>
                                         <property name="label" translatable="yes">Exclude</property>
@@ -235,12 +232,7 @@
                         <!-- Volume section -->
                         <child>
                             <object class="GtkBox" id="volume_box">
-                                <property name="width-request">300</property>
-                                <property name="halign">end</property>
                                 <property name="valign">center</property>
-                                <style>
-                                    <class name="linked" />
-                                </style>
 
                                 <child>
                                     <object class="GtkToggleButton" id="mute">
