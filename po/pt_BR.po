@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 13:04-0300\n"
+"POT-Creation-Date: 2024-01-29 18:40+0000\n"
 "PO-Revision-Date: 2024-01-29 18:29+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -41,8 +41,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""
-"limitador;compressor;reverberação;equalizador;volume "
-"automático;efeitos;sonoros;som;áudio;"
+"limitador;compressor;reverberação;equalizador;volume automático;efeitos;"
+"sonoros;som;áudio;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
