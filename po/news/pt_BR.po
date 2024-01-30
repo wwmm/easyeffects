@@ -272,12 +272,13 @@ msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
-"Esta versão destina-se a funcionar com as versões iguais ou superiores a \"1."
-"2.10\" dos módulos de extensão do Linux Studio."
+"Esta versão destina-se a funcionar com as versões iguais ou superiores a "
+"\"1.2.10\" dos módulos de extensão do Linux Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "EasyEffects is now buildable also with libc++."
-msgstr "O EasyEffects agora também pode ser construído com a biblioteca libc++."
+msgstr ""
+"O EasyEffects agora também pode ser construído com a biblioteca libc++."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:125
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
@@ -535,8 +536,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
 msgstr ""
-"A compatibilidade foi aprimorada com módulo de extensão do Linux Studio 1.2."
-"3."
+"A compatibilidade foi aprimorada com módulo de extensão do Linux Studio "
+"1.2.3."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
@@ -796,8 +797,8 @@ msgid ""
 "When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
 msgstr ""
-"Quando nenhum aplicativo estiver disponível para a exibição na opção `"
-"Reprodutores/Gravadores` uma mensagem será exibida para o usuário"
+"Quando nenhum aplicativo estiver disponível para a exibição na opção "
+"`Reprodutores/Gravadores` uma mensagem será exibida para o usuário"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
 msgid "Many translation updates"
