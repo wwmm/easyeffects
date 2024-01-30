@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-30 14:29+0000\n"
-"PO-Revision-Date: 2024-01-29 18:29+0000\n"
+"PO-Revision-Date: 2024-01-30 16:00+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -600,7 +600,6 @@ msgid "Sidechain Mode"
 msgstr "Modo de Cadeia Lateral"
 
 #: data/ui/compressor.ui:644 data/ui/expander.ui:563 data/ui/gate.ui:777
-#, fuzzy
 msgid "Listen Sidechain"
 msgstr "Cadeia Lateral Externa"
 
@@ -919,7 +918,6 @@ msgid "Minimum Processing Buffer"
 msgstr "Transferência Mínima de Processamento"
 
 #: data/ui/deepfilternet.ui:167
-#, fuzzy
 msgid "Post Filter Beta"
 msgstr "Filtro Beta de Postagem"
 
@@ -1062,17 +1060,14 @@ msgid "Ladder-Pass"
 msgstr "Passagem da Banda"
 
 #: data/ui/filter.ui:53
-#, fuzzy
 msgid "Ladder-Rejection"
 msgstr "Redução da Banda"
 
 #: data/ui/filter.ui:54
-#, fuzzy
 msgid "All-Pass"
 msgstr "Passa-Tudo"
 
 #: data/ui/filter.ui:95
-#, fuzzy
 msgid "Equalizer Mode"
 msgstr "Equalizador"
 
@@ -1637,7 +1632,6 @@ msgid "Anti-aliasing"
 msgstr "Anti-Distorção"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
 msgstr "Escopo de Frequências"
 
@@ -1658,12 +1652,10 @@ msgid "Semitones"
 msgstr "Semitons"
 
 #: data/ui/pitch.ui:160
-#, fuzzy
 msgid "Tempo Difference"
 msgstr "Referência"
 
 #: data/ui/pitch.ui:183
-#, fuzzy
 msgid "Rate Difference"
 msgstr "Referência"
 
@@ -1880,7 +1872,6 @@ msgid "Search Preset"
 msgstr "Pesquisar as Predefinições de Entrada"
 
 #: data/ui/presets_menu.ui:129
-#, fuzzy
 msgid "Presets List"
 msgstr "Lista de Predefinições de Entrada"
 
