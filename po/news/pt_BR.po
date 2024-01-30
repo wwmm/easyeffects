@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-24 13:04-0300\n"
-"PO-Revision-Date: 2024-01-30 02:01+0000\n"
+"PO-Revision-Date: 2024-01-30 13:49+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/pt_BR/>\n"
@@ -22,9 +22,8 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
 msgid "Easy Effects"
-msgstr "Easy Effects"
+msgstr "Equalizador de Áudio Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
@@ -39,71 +38,67 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects é uma ferramenta avançada de edição de áudio. Ele inclui "
-"equalizador, limitador, compressor e um plugin de reverberação. Estas "
-"ferramentas são complementadas por um analisador de espectro."
+"O Easy Effects é uma ferramenta avançada de manipulação de áudio que inclui "
+"as funções de equalizador, limitador, compressor, reverberação e um "
+"analisador de espectro do som."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-#, fuzzy
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects é o sucessor do PulseEffects. EasyEffects suporta apenas o "
-"PipeWire como servidor de áudio. Os usuários do PulseAudio devem usar o "
-"PulseEffects."
+"O Easy Effects é o sucessor do PulseEffects. O Easy Effects é compatível "
+"apenas com o PipeWire como servidor de áudio. Os usuários do PulseAudio "
+"devem utilizar o PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Because Easy Effects uses the default PipeWire sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Como o EasyEffects usa o servidor de som PipeWire, ele funcionará com a "
-"maioria, se não todos os aplicativos que você usa. Todos os aplicativos "
-"suportados são apresentados na janela principal, onde cada um pode ser "
-"ativado individualmente."
+"Como o Easy Effects utiliza o servidor de áudio PipeWire, certamente "
+"funcionará com a maioria ou com quase todos os aplicativos que você utiliza "
+"no seu computador. Todos os aplicativos compatíveis são apresentados na "
+"janela principal permitindo que cada um seja ativado individualmente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Além de manipular a saída de som, o EasyEffects é capaz de aplicar efeitos a "
-"um dispositivo de entrada, como um microfone. Isso é, por exemplo, útil na "
-"gravação de áudio, mas também funciona bem durante conversas de voz."
+"Além de manipular a saída de som, o Easy Effects é capaz de aplicar efeitos "
+"a um dispositivo de entrada, como por exemplo, um microfone. Esta "
+"funcionalidade é útil para a gravação de áudio, mas também funciona bem "
+"durante conversas de voz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"Quando o EasyEffects for iniciado, ele lembrará convenientemente a "
-"configuração usada na última sessão. Também é possível salvar todas as "
-"configurações atuais como perfis."
+"Quando o Easy Effects for iniciado memorizará convenientemente as "
+"configurações utilizadas na última sessão. Também é possível salvar todas as "
+"configurações atuais como perfis do usuário."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "The main page showing two audio output apps"
-msgstr "A página principal mostrando dois aplicativos de saída de áudio"
+msgstr "A página principal exibindo dois aplicativos de saída de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "The bass enhancer page showing audio controls"
-msgstr "A página do aprimoramento de graves mostrando controles de áudio"
+msgstr "A página do aprimoramento de graves exibindo os controles de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "The convolver page showing audio controls"
-msgstr "A página de convolução mostrando os controles de áudio"
+msgstr "A página da convolução exibindo os controles de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
@@ -139,7 +134,7 @@ msgstr "A página de convolução mostrando os controles de áudio"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:489
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:502
 msgid "Features:"
-msgstr ""
+msgstr "Características:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:57
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
@@ -182,11 +177,11 @@ msgstr "Traduções atualizadas"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:481
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:494
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Correções de falhas ou problemas:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "Fixed a regression introduced in 7.1.2"
-msgstr ""
+msgstr "Foi corrigida uma regressão introduzida na versão 7.1.2"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -206,69 +201,89 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:363
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:379
 msgid "Other notes:"
-msgstr ""
+msgstr "Outras observações:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid "The DeepFilterNet plugin can now be added to the preset file"
 msgstr ""
+"O módulo de extensão DeepFilterNet agora pode ser adicionado ao arquivo das "
+"predefinições"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
+"O espectro conta com uma nova opção que permite desativar a escala vertical "
+"dinâmica."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid "Improved compatibility with the latest LSP releases."
-msgstr ""
+msgstr "A compatibilidade foi aprimorada com as versões LSP mais recentes."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
 msgstr ""
+"Foi corrigido um desenho incorreto das características do arquivo de "
+"resposta ao aplicar o impulso"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
 msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"Foi corrigido um pequeno erro que impedia que o limite de atividade da voz "
+"de redução dos ruídos fossem inicializados corretamente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
+"Foi adicionado um novo controle ao módulo de extensão da redução dos ruídos "
+"que permite desativar a detecção da voz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:111
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"O filtro de efeito foi aprimorado com novos parâmetros desde que foi portado "
+"do programa Calf Studio para os módulos de extensão do Linux Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:112
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"A redução dos ruídos foi melhorada por meio do RNNoise com a adição do "
+"lançamento dos controles de detecção da atividade de voz do VAD Threshold."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"A redução dos ruídos por meio do RNNoise agora pode misturar os sinais "
+"originais e sem os ruídos para evitar que a saída soe muito \"seca\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
+"Esta versão destina-se a funcionar com as versões iguais ou superiores a \"1."
+"2.10\" dos módulos de extensão do Linux Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "EasyEffects is now buildable also with libc++."
-msgstr ""
+msgstr "O EasyEffects agora também pode ser construído com a biblioteca libc++."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:125
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
 msgstr ""
+"O expansor dos módulos de extensão do Linux Studio pode ser utilizado no "
+"Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
 msgid ""
@@ -276,16 +291,22 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"As bandas do equalizador agora possuem um controle de ganho adicional que "
+"permite uma entrada mais eficiente dos valores difíceis de serem definidos "
+"na escala. Para obter mais informações consulte a edição 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"Foi adicionada a capacidade de selecionar e carregar vários arquivos das "
+"predefinições nas caixas de diálogo da abertura, bem como as respostas do "
+"impulso da convolução e dos modelos do RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:129
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "Foi corrigido o botão Solo nas configurações da banda do equalizador."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:131
 msgid ""
@@ -295,21 +316,34 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
+"As pastas com as predefinições do Easy Effects que estavam na pasta /etc "
+"foram descontinuadas e as predefinições que estão armazenadas nesta pasta "
+"não serão mais carregadas. No momento, apenas as predefinições que estão "
+"armazenadas na pasta ~/.config/easyeffects são carregados automaticamente no "
+"menu Predefinições. No futuro implementaremos um novo sistema para instalar, "
+"gerenciar e permitir importar as predefinições da comunidade."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
 msgstr ""
+"Uma seção de \"Recursos Experimentais\" foi adicionada à nossa janela de "
+"preferências."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
 msgstr ""
+"A janela nativa dos módulos de extensão do LSP pode ser utilizada. Esta "
+"opção é um recurso experimental destinado apenas a usuários avançados. "
+"Portanto, saiba que podem ocorrer alguns erros."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
 msgstr ""
+"O valores fracionários dos semitons agora podem ser utilizados no efeito "
+"Modificador de Tom."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:143
 msgid ""
@@ -317,10 +351,15 @@ msgid ""
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
+"A lista suspensa dos dispositivos de entrada e/ou saída na aba ou guia "
+"PipeWire é atualizada quando o dispositivo padrão do sistema é alterado e "
+"utiliza por padrão a condição de ativado. Esta opção corrige o problema da "
+"versão 1989."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
 msgid "A new Level Meter plugin based on libebur128 has been added."
 msgstr ""
+"Um novo módulo de extensão Level Meter baseado no libebur128 foi adicionado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:153
 msgid ""
@@ -328,48 +367,66 @@ msgid ""
 "Hopefully some of the mysterious crashes that were happening with Rubbernand "
 "are not going to happen anymore."
 msgstr ""
+"O módulo de extensão Pitch agora utiliza a biblioteca SoundTouch em vez do "
+"Rubberband. Esperançosamente, algumas das falhas misteriosas que estavam "
+"acontecendo com a biblioteca do Rubber Band não acontecerão mais."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
 msgid ""
 "Improved compatibility with recent PipeWire versions. More information at"
 msgstr ""
+"A compatibilidade foi aprimorada com as versões recentes do PipeWire. "
+"Obtenha mais informações na página"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
 msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
 msgstr ""
+"Os filtros do equalizador ativo não são mais configurados para o tipo do "
+"Bell quando o número de bandas for alterado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:158
 msgid ""
 "Rabberband is not a dependency anymore since it has been replaced by "
 "SoundTouch."
 msgstr ""
+"A biblioteca Rabber Band não é mais uma dependência desde que foi "
+"substituído pela biblioteca do SoundTouch."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:166
 msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
 msgstr ""
+"O menu das predefinições agora pede a confirmação antes de salvar ou excluir "
+"um arquivo contendo uma predefinição."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:168
 msgid "The plugin reset should not make its controls innefective anymore."
 msgstr ""
+"A redefinição do módulo de extensão não deve mais tornar os seus controles "
+"ineficazes."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
+"O Speex não está mais listado incorretamente como sendo uma dependência da "
+"compilação e foi atualizado para o SpeexDSP que ainda é uma dependência da "
+"compilação."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
 msgid ""
 "RNNoise is no longer an autodependency. It is now required by default, if "
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
 msgstr ""
+"O RNNoise não é mais uma dependência automática. Agora é obrigatório por "
+"padrão, se não estiver disponível, deve ser explicitamente desativado com o "
+"parâmetro -Denable-rnnoise=false"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:179
-#, fuzzy
 msgid "Updated translations."
 msgstr "Traduções atualizadas"
 
@@ -378,67 +435,91 @@ msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
 msgstr ""
+"Um pequeno erro foi cometido na última versão. Nós estamos criando uma nova "
+"versão para garantir que as pessoas tenham a versão da ramificação correta "
+"no pacote"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
 msgstr ""
+"O recurso \"classificar bandas\" do equalizador agora permite ordenar as "
+"bandas no GSettings para que o resultado possa ser salvo nas predefinições."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:190
 msgid "Improved performance when resetting keys."
-msgstr ""
+msgstr "O desempenho foi aprimorado ao redefinir as chaves."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:192
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
 msgstr ""
+"Foi corrigida a seleção da predefinição \"Grande Salão Vazio\" no efeito da "
+"reverberação."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
 msgid ""
 "Fixed some misuses of PipeWire's API that can potentially fix some random "
 "bugs some users are facing."
 msgstr ""
+"Foi corrigido alguns usos indevidos da API do PipeWire que podem corrigir "
+"alguns erros aleatórios que alguns usuários estão enfrentando."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
 msgid ""
 "As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
 "been increased."
 msgstr ""
+"Como nós estamos removendo o código obsoleto do GTK 4.10, a versão mínima do "
+"GTK foi aumentada."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:203
 msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
 msgstr ""
+"A taxa de atualização do módulo de extensão do espectro foi melhorada. As "
+"taxas de amostragem diferentes devem levar as frequências de atualização "
+"visualmente semelhantes."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:204
 msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
 msgstr ""
+"O intervalo de atualização utilizado pelos medidores do nível e o espectro "
+"podem ser personalizados pelo usuário."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:205
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
+"O valor do controle deslizante do ganho da banda do equalizador pode ser "
+"atualizado em ajustes maiores. O controle refinado ainda é possível por "
+"meio  das teclas para cima ou para baixo do teclado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid "Small improvements to the echo canceller."
-msgstr ""
+msgstr "Pequenas melhorias no cancelador de eco."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:208
 msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
+"As sondas do cancelador do eco não estavam sendo vinculadas à placa de som "
+"após a mudança para várias instâncias dos filtros. Esta situação deve ser "
+"corrigida nesta versão."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
 msgid ""
 "It is now possible to add more than one filter instance to the effects "
 "pipeline."
 msgstr ""
+"Agora é possível adicionar mais de uma instância do filtro ao Pipeline dos "
+"efeitos."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
 msgid ""
@@ -446,49 +527,66 @@ msgid ""
 "providing noise suppression it also can detect voice activity. It is a "
 "decent alternative to the cases whre the rnnoise library does not work well."
 msgstr ""
+"Um novo módulo de extensão Speech Processor baseado na biblioteca do Speex "
+"foi adicionado. Além de fornecer a supressão dos ruídos, também pode "
+"detectar a atividade da voz. É uma boa alternativa para os casos em que a "
+"biblioteca do RNNoise não funciona bem."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
 msgstr ""
+"A compatibilidade foi aprimorada com módulo de extensão do Linux Studio 1.2."
+"3."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
 msgstr ""
+"As predefinições do GraphicEQ podem ser importadas para aplicar efeitos no "
+"equalizador."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:220
 msgid ""
 "The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
+"O nome do aplicativo foi alterado para Easy Effects para aderir às "
+"convenções de nomenclatura das diretrizes de interface humana do GNOME."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:221
 msgid "The documentation has been updated."
-msgstr ""
+msgstr "A documentação foi atualizada."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:222
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Traduções atualizadas"
+msgstr "O carregamento automático das predefinições foi aprimorado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:223
 msgid "The Autogain silence threshold can now be configured by the user."
 msgstr ""
+"O limite de silêncio do ganho automático agora pode ser configurado pelo "
+"usuário."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
 msgid "Dry and wet controls added to the Stereo Tools effect."
 msgstr ""
+"O controles secos e molhados foram adicionados ao efeito das Ferramentas "
+"Estéreo."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:225
 msgid ""
 "The echo canceller now has a residual noise suppression control also based "
 "on the Speex library."
 msgstr ""
+"O cancelador do eco agora possui um controle de supressão de ruído residual "
+"também baseado na biblioteca Speex."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
 msgid ""
 "When the mouse was hovering over a chart the wrong value for the x axis "
 "coordinate was being shown. This regression is fixed."
 msgstr ""
+"Quando o cursor ou a seta passava em cima de um gráfico, o valor errado para "
+"a coordenada do eixo X estava sendo exibido. Esta regressão foi corrigida."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid ""
@@ -497,82 +595,107 @@ msgid ""
 "consideration that saving the current preset will always write it in the new "
 "format."
 msgstr ""
+"Devido ao novo recurso de várias instâncias, o formato predefinido foi "
+"modificado, mas o antigo ainda é compatível para ser carregado. De qualquer "
+"forma, leve em consideração que salvar as predefinições atuais sempre o "
+"gravará no novo formato."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
 msgstr ""
+"A implementação do Multiband Gate foi migrada do CALF para os módulo de "
+"extensão do Linux Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
 msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
 msgstr ""
+"A compatibilidade do código do carregamento automático da predefinição dos "
+"dispositivos bluez5 foi melhorada."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid "Wet/dry controls were added for some plugins"
 msgstr ""
+"Os controles molhado e seco foram adicionados para alguns módulo de extensão"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:240
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
+"A interface de efeitos não é mais carregada quando o módulo de extensão lv2 "
+"relacionado não está instalado no sistema operacional. Em seu lugar é "
+"exibida uma mensagem do estado atual para o usuário."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:241
 msgid "The documentation has been updated"
-msgstr ""
+msgstr "A documentação foi atualizada"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:242
 msgid "Improved debug messages"
-msgstr ""
+msgstr "As mensagens de depuração foram aprimoradas"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
-#, fuzzy
 msgid "Improved translations"
-msgstr "Traduções atualizadas"
+msgstr "As traduções foram atualizadas"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
 msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
 msgstr ""
+"Foi corrigido um erro onde o Easy Effects poderia travar ao fechar a sua "
+"janela enquanto os efeitos estavam sendo aplicados."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
 msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
 msgstr ""
+"O estado de ignorar pode ser salvo no arquivo das predefinições. As razões "
+"pelas quais isto foi feito podem ser verificado na edição 1039"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
 msgid ""
 "The preset autoloading code compatibility with usb devices has been improved."
 msgstr ""
+"A compatibilidade do código do carregamento automático da predefinição para "
+"os dispositivos USB foi melhorada."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
 msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
+"Uma caixa de diálogo é exibida ao usuário quando uma predefinição falha ao "
+"carregar ou um arquivo de predefinição ou de impulso quando não é importado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
 msgid ""
 "The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
 "the one from Calf Studio."
 msgstr ""
+"O módulo de extensão do SideChain Gate do Linux Studio Plugins agora é "
+"utilizado em vez do Calf Studio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:269
 msgid ""
 "EasyEffects should not crash anymore when the user locale is not properly "
 "configured."
 msgstr ""
+"O Easy Effects não deve mais travar quando o idioma do usuário não estiver "
+"configurado corretamente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:270
 msgid ""
 "A workaround was implemented in our icon to deal with the lack of proper SVG "
 "support in QT."
 msgstr ""
+"Uma solução alternativa foi implementada em nosso ícone para lidar com a "
+"falta de suporte ao formato SVG adequado no QT."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
 msgid ""
@@ -580,6 +703,10 @@ msgid ""
 "null. This will allow the media session manager (wireplumber) to properly "
 "move the stream to a new device."
 msgstr ""
+"Quando os efeitos são desativados para um aplicativo, agora definimos seus "
+"metadados de destino como nulos. Este recurso permitirá que o gerenciador da "
+"sessão de mídia (wireplumber) mova adequadamente o fluxo para um novo "
+"dispositivo."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
 msgid ""
@@ -587,21 +714,30 @@ msgid ""
 "streams whose purpose is to monitor sink devices. This will help to fix some "
 "of problems our users were having when using OBS."
 msgstr ""
+"Uma nova opção de configuração foi adicionada. Agora permite que o Easy "
+"Effects ignore os fluxos cujo objetivo é monitorar dispositivos coletores. "
+"Este recurso ajudará a corrigir alguns problemas que nossos usuários estavam "
+"enfrentando ao utilizar o OBS."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
 msgid "The code that shows the stream sample format has been improved"
-msgstr ""
+msgstr "O código que exibe o formato de amostra do fluxo foi melhorado"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build a Debian package. See issue 1000 for more information."
 msgstr ""
+"A biblioteca RNNoise agora é opcional. Este recurso deve ajudar os "
+"mantenedores dos pacotes a construir um pacote para o Debian. Consulte a "
+"edição 1000 para obter mais informações."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
 msgid ""
 "Our logs now show the source code line where the messages are being printed"
 msgstr ""
+"Nossos registros de eventos agora exibem a linha do código fonte onde as "
+"mensagens estão sendo impressas"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
 msgid ""
@@ -609,75 +745,81 @@ msgid ""
 "third party programs like pavucontrol moved the stream away from our virtual "
 "devices. This should be fixed now."
 msgstr ""
+"A caixa de seleção \"Ativar os Efeitos\" na janela não estava sendo "
+"atualizada quando programas de terceiros como o Pavucontrol moveram o fluxo "
+"para longe dos nossos dispositivos virtuais. Este recurso deve ter sido "
+"corrigido nesta versão."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
 msgid ""
 "Fixed a crash that could happen when the maximum autogain history was "
 "changed."
 msgstr ""
+"Foi corrigido um travamento que poderia ocorrer quando o histórico máximo do "
+"ganho automático fosse alterado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:287
 msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
+msgstr "Evite travamentos quando o pw-mididump estiver em execução"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:295
 msgid "The interface of the pitch plugin was improved"
-msgstr "A interface do plugin de tom foi melhorada"
+msgstr "A interface do módulo de extensão do tom foi melhorado"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
 msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr ""
-"O ícone do nosso aplicativo é agora compatível com ambientes que usam QT"
+"O ícone do aplicativo agora é compatível com os ambientes de área de "
+"trabalho que utilizam o QT"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
-#, fuzzy
 msgid ""
 "Our blocklist code will use the application.id tag if the stream sets it"
 msgstr ""
-"Nosso código de lista de bloqueio usará a tag `application.id` se o fluxo a "
-"definir"
+"Nosso código da lista de bloqueio utilizará a o identificador \"application."
+"id\" se o fluxo definir isto"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:298
-#, fuzzy
 msgid ""
 "In order to avoid problems with the mouse scroll the entries in the "
 "applications list shown in our Players/Recorders tab do not show a volume "
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
-"Para evitar problemas com mouse, role as entradas na lista de aplicativos "
-"mostrada em nossos `Reprodutores/Gravadores`"
+"Para evitar problemas com a rolagem do cursor ou a seta na tela, as entradas "
+"da lista dos aplicativos exibidos na aba ou guia Reprodutores/Gravadores não "
+"exibem mais uma escala do volume. Obtenha mais informações sobre o problema "
+"e a solução na edição 1211 e na edição 1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:299
-#, fuzzy
 msgid ""
 "When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
 msgstr ""
-"Quando nenhum aplicativo estiver disponível para exibição em `Reprodutores/"
-"Gravadores` uma mensagem será mostrada ao usuário"
+"Quando nenhum aplicativo estiver disponível para a exibição na opção `"
+"Reprodutores/Gravadores` uma mensagem será exibida para o usuário"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
 msgid "Many translation updates"
-msgstr "Muitas atualizações de tradução"
+msgstr "Muitas atualizações na tradução"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:302
-#, fuzzy
 msgid ""
 "Fixed a bug where EasyEffeects crashed when the number of points displayed "
 "in the spectrum was changed while our pipeline was active and the spectrum "
 "widget was visible"
 msgstr ""
-"Corrigido um bug em que o EasyEffects travava quando o número de pontos "
-"exibidos no espectro era alterado enquanto"
+"Foi corrigido um erro onde o Easy Effeects travava quando o número de pontos "
+"exibidos no espectro era alterado enquanto o Pipeline estava ativo e o "
+"Widget do espectro estava visível"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:303
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
-"O valor de latência do pipeline exibido em nossa janela pode estar errado em "
-"algumas situações. Isso foi corrigido."
+"O valor da latência do pipeline exibido em na janela pode estar errado em "
+"algumas situações. Este recurso foi corrigido."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:311
 msgid ""
@@ -686,6 +828,11 @@ msgid ""
 "filters will be unlinked after the timeout is reached. This is done to make "
 "sure we do not waste CPU power processing silence."
 msgstr ""
+"Há uma nova configuração que permite ao usuário selecionar um tempo limite "
+"de inatividade para o Pipeline. Quando nenhum cliente estiver reproduzindo "
+"ou gravando em nossos dispositivos, os filtros serão desvinculados após o "
+"tempo limite ser atingido. Esta configuração é feita para garantir que não "
+"desperdicemos o silêncio do processamento da energia do processador."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:312
 #, fuzzy
