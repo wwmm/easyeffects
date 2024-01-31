@@ -76,25 +76,33 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
   pitch->set_post_messages(true);
 
   self->data->connections.push_back(pitch->input_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
-                   self->input_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->input_level_left, self->input_level_left_label, self->input_level_right,
+                       self->input_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   self->data->connections.push_back(pitch->output_level.connect([=](const float left, const float right) {
-    util::idle_add([=]() {
-      if (get_ignore_filter_idle_add(serial)) {
-        return;
-      }
+    g_object_ref(self);
 
-      update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
-                   self->output_level_right_label, left, right);
-    });
+    util::idle_add(
+        [=]() {
+          if (get_ignore_filter_idle_add(serial)) {
+            return;
+          }
+
+          update_level(self->output_level_left, self->output_level_left_label, self->output_level_right,
+                       self->output_level_right_label, left, right);
+        },
+        [=]() { g_object_unref(self); });
   }));
 
   gtk_label_set_text(self->plugin_credit, ui::get_plugin_credit_translated(self->data->pitch->package).c_str());
