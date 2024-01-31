@@ -18,7 +18,6 @@
  */
 
 #include "libportal.hpp"
-#include "preferences_general.hpp"
 
 namespace {
 
