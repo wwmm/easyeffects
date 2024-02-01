@@ -1,5 +1,22 @@
 # Changelog
  
+## 7.1.4
+### 2024-02-01
+
+ 
+### Features:
+- EasyEffects will try to avoid moving to its virtual sources streams for which the user has set a custom `target.object` that is different from the mic EE is recording from. THe stream has to be started when EE is already running for this logic to take effect.
+- Updated translations
+- The equalizer can export basic APO preset files
+- Our players/recorders tab will show the audio client binary name in the cases were no app name is defined.
+- EasyEffects version can be shown in the command line through the option `--version`
+
+### Bug fixes:
+- A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept in place until gtk developers fiz things on their side
+
+### Other notes:
+
+ 
 ## 7.1.3
 ### 2023-11-08
 
@@ -8,7 +25,7 @@
 - Updated translations
 
 ### Bug fixes:
-- Fixed a regression introduced in `7.1.2`
+- Fixed a regression introduced in `7.1.2` that could cause EasyEffects to crash
 
 ### Other notes:
 
