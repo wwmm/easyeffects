@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-31 12:36-0300\n"
+"POT-Creation-Date: 2024-02-01 19:30-0300\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1985,8 +1985,8 @@ msgid "Models"
 msgstr "模型"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:100 src/rnnoise_ui.cpp:269
-#: src/rnnoise_ui.cpp:303
+#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:100 src/rnnoise_ui.cpp:281
+#: src/rnnoise_ui.cpp:315
 msgid "Standard Model"
 msgstr "标准模型"
 
