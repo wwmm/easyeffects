@@ -324,6 +324,11 @@ convert_news_to_metainfo() {
   # replace ratio character with colon
   sed -i 's/∶/:/g' "${TEMP_METAINFO_FILE}"
 
+  # add back developer_name which appstreamcli removes since it's deprecated
+  # however flathub needs it
+  # https://docs.flathub.org/docs/for-app-authors/appdata-guidelines/#name-summary-and-developer-name
+  sed -i '8i\  <developer_name>Wellington Wallace</developer_name>' "${TEMP_METAINFO_FILE}"
+
   rm "${TEMP_NEWS_CLEANED:?}"
 
 }
