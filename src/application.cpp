@@ -440,6 +440,22 @@ void application_init(Application* self) {
 
   entries[1] = {"help",
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                  auto xdg_desktop_session = std::getenv("XDG_CURRENT_DESKTOP");
+                  auto desktop_session = std::getenv("DESKTOP_SESSION");
+
+                  /*
+                    It isn't secure to call std::system but it is the only way to make our help to be shown for KDE
+                    users.
+                  */
+
+                  if (g_strcmp0(xdg_desktop_session, "KDE") == 0 || g_strcmp0(desktop_session, "kde") == 0) {
+                    std::thread t([]() { std::system("yelp help:easyeffects"); });
+
+                    t.detach();
+
+                    return;
+                  }
+
                   auto* parent = gtk_application_get_active_window(GTK_APPLICATION(gapp));
 
                   auto* launcher = gtk_uri_launcher_new("help:easyeffects");
