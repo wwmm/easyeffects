@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 15:41+0000\n"
+"POT-Creation-Date: 2024-02-06 18:39-0300\n"
 "PO-Revision-Date: 2024-01-28 04:01+0000\n"
 "Last-Translator: Joakim <joakim.polden@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -2205,37 +2205,37 @@ msgstr ""
 msgid "channels"
 msgstr "Kanaler"
 
-#: src/application.cpp:484
+#: src/application.cpp:485
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:574
+#: src/application.cpp:575
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:577
+#: src/application.cpp:578
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:580
+#: src/application.cpp:581
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Avslutt EasyEffects"
 
-#: src/application.cpp:583
+#: src/application.cpp:584
 #, fuzzy
 msgid "Hide the Window."
 msgstr "Skjul vinduet."
 
-#: src/application.cpp:586
+#: src/application.cpp:587
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:589
+#: src/application.cpp:590
 msgid "Show available presets."
 msgstr "Vis tilgjengelige forhåndsinnstillinger."
 
-#: src/application.cpp:592
+#: src/application.cpp:593
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 

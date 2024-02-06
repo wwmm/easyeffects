@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 15:41+0000\n"
+"POT-Creation-Date: 2024-02-06 18:39-0300\n"
 "PO-Revision-Date: 2023-12-26 18:06+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2191,35 +2191,35 @@ msgstr "Неопределённое имя — идентификатор пр�
 msgid "channels"
 msgstr "канала(-ов)"
 
-#: src/application.cpp:484
+#: src/application.cpp:485
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:574
+#: src/application.cpp:575
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Выход из Easy Effects. Полезно при работе в режиме службы."
 
-#: src/application.cpp:577
+#: src/application.cpp:578
 msgid "Print the easyeffects version"
 msgstr "Вывод версии easyeffects"
 
-#: src/application.cpp:580
+#: src/application.cpp:581
 msgid "Reset Easy Effects."
 msgstr "Сбросить Easy Effects."
 
-#: src/application.cpp:583
+#: src/application.cpp:584
 msgid "Hide the Window."
 msgstr "Скрыть окно."
 
-#: src/application.cpp:586
+#: src/application.cpp:587
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получение статуса"
 
-#: src/application.cpp:589
+#: src/application.cpp:590
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
-#: src/application.cpp:592
+#: src/application.cpp:593
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 

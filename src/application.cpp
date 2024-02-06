@@ -448,7 +448,8 @@ void application_init(Application* self) {
                     users.
                   */
 
-                  if (g_strcmp0(xdg_desktop_session, "KDE") == 0 || g_strcmp0(desktop_session, "kde") == 0) {
+                  if (g_strcmp0(xdg_desktop_session, "KDE") == 0 || g_strcmp0(desktop_session, "plasma") == 0 ||
+                      g_strcmp0(desktop_session, "plasmawayland") == 0) {
                     std::thread t([]() { return std::system("yelp help:easyeffects"); });
 
                     t.detach();
