@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 12:22-0300\n"
+"POT-Creation-Date: 2024-02-06 15:41+0000\n"
 "PO-Revision-Date: 2024-01-30 16:12+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -34,6 +34,7 @@ msgstr ""
 "possui as funções de equalizador, compressor e efeitos de áudio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:17
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
