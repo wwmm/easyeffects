@@ -449,7 +449,7 @@ void application_init(Application* self) {
                   */
 
                   if (g_strcmp0(xdg_desktop_session, "KDE") == 0 || g_strcmp0(desktop_session, "kde") == 0) {
-                    std::thread t([]() { std::system("yelp help:easyeffects"); });
+                    std::thread t([]() { return std::system("yelp help:easyeffects"); });
 
                     t.detach();
 
