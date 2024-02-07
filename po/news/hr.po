@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 21:41+0000\n"
+"POT-Creation-Date: 2024-02-06 21:01-0300\n"
 "PO-Revision-Date: 2022-09-29 07:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -30,7 +30,6 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvučni efekti za PipeWire aplikacije"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:17
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 

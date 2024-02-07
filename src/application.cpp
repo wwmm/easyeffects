@@ -440,16 +440,13 @@ void application_init(Application* self) {
 
   entries[1] = {"help",
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
-                  auto xdg_desktop_session = std::getenv("XDG_CURRENT_DESKTOP");
-                  auto desktop_session = std::getenv("DESKTOP_SESSION");
-
                   /*
                     It isn't secure to call std::system but it is the only way to make our help to be shown for KDE
                     users.
                   */
 
-                  if (g_strcmp0(xdg_desktop_session, "KDE") == 0 || g_strcmp0(desktop_session, "plasma") == 0 ||
-                      g_strcmp0(desktop_session, "plasmawayland") == 0) {
+                  if (g_strcmp0(std::getenv("XDG_SESSION_DESKTOP"), "KDE") == 0 ||
+                      g_strcmp0(std::getenv("XDG_CURRENT_DESKTOP"), "KDE") == 0) {
                     std::thread t([]() { return std::system("yelp help:easyeffects"); });
 
                     t.detach();
