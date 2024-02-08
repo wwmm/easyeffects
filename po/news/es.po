@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-07 00:03+0000\n"
-"PO-Revision-Date: 2024-02-07 16:52+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2024-02-08 05:01+0000\n"
+"Last-Translator: Mc Vash <savelawachin@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
 "Language: es\n"
@@ -173,8 +173,8 @@ msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
-"La versión de EasyEffects puede mostrarse en la línea de comandos mediante "
-"la opción --version"
+"La versión de EasyEffects puede mostrarse en la línea de comando mediante la "
+"opción --version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
@@ -251,9 +251,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
-"El complemento DeepFilterNet ahora se puede añadir a los archivos "
-"predeterminados"
+msgstr "El complemento DeepFilterNet ahora se puede añadir al archivo de perfil"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:97
 msgid ""
@@ -271,23 +269,23 @@ msgstr "Compatibilidad mejorada con las últimas versiones de LSP."
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
 msgstr ""
 "Se ha corregido un dibujo incorrecto de las características del archivo de "
-"respuesta al impulso"
+"impulso de respuesta"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:110
 msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
-"Se ha corregido un pequeño error que impedía inicializar correctamente el "
-"umbral de actividad de la voz y la reducción de ruido."
+"Se ha corregido un pequeño error que impedía iniciar correctamente el umbral "
+"de actividad de voz y la reducción de ruido."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
-"Se ha añadido un nuevo control al complemento de reducción de ruido que "
-"permite desactivar el reconocimiento de la voz."
+"Se ha añadido un nuevo control al plugin de reducción de ruido que permite "
+"desactivar el reconocimiento de voz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:129
 msgid ""
@@ -328,8 +326,7 @@ msgstr "EasyEffects ahora también se puede compilar con libc++."
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:143
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
 msgstr ""
-"El expansor de complementos de Linux Studio se puede utilizar en Easy "
-"Effects."
+"El expansor de plugins de Linux Studio se puede utilizar en Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:144
 msgid ""
