@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-07 00:03+0000\n"
-"PO-Revision-Date: 2023-12-23 11:09+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2024-02-08 05:01+0000\n"
+"Last-Translator: Mc Vash <savelawachin@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -59,7 +59,7 @@ msgstr "Excluir"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
 msgid "Mute Application"
-msgstr "Silenciar la aplicación"
+msgstr "Silenciar aplicación"
 
 #: data/ui/app_info.ui:270
 msgid "Change the volume of this application"
@@ -105,11 +105,11 @@ msgstr "Menú de perfiles"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
-msgstr "Activar/desactivar la derivación global"
+msgstr "Activar/desactivar la supresión global de efectos"
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
-msgstr "Bypass global"
+msgstr "Supresión global"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
@@ -133,11 +133,11 @@ msgstr "Ninguna aplicación de audio disponible"
 
 #: data/ui/autogain.ui:25 data/ui/level_meter.ui:25
 msgid "Reset History"
-msgstr "Restablecer el historial"
+msgstr "Restablecer historial"
 
 #: data/ui/autogain.ui:39
 msgid "Controls"
-msgstr "Mandos"
+msgstr "Controles"
 
 #: data/ui/autogain.ui:43
 msgid "Target"
@@ -157,7 +157,7 @@ msgstr "Referencia"
 
 #: data/ui/autogain.ui:122 data/ui/autogain.ui:159 data/ui/level_meter.ui:83
 msgid "Momentary"
-msgstr "Momentánea"
+msgstr "Momentáneo"
 
 #: data/ui/autogain.ui:123 data/ui/autogain.ui:196 data/ui/level_meter.ui:120
 msgid "Short-Term"
@@ -431,7 +431,7 @@ msgstr "Umbral de ataque"
 #: data/ui/multiband_compressor_band.ui:199 data/ui/multiband_gate_band.ui:150
 #: data/ui/rnnoise.ui:119
 msgid "Release"
-msgstr "Decaimiento"
+msgstr "Release"
 
 #: data/ui/compressor.ui:283 data/ui/expander.ui:202
 #: data/ui/multiband_compressor_band.ui:278
@@ -1244,7 +1244,7 @@ msgstr "Preamplificaión de la cadena lateral"
 
 #: data/ui/limiter.ui:405
 msgid "Boost"
-msgstr "Refuerzo"
+msgstr "Boost"
 
 #: data/ui/limiter.ui:420
 msgid "Stereo Link"
