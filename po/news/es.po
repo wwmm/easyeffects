@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-07 00:03+0000\n"
+"POT-Creation-Date: 2024-02-08 22:21+0000\n"
 "PO-Revision-Date: 2024-02-08 05:01+0000\n"
 "Last-Translator: Mc Vash <savelawachin@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
@@ -251,7 +251,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr "El complemento DeepFilterNet ahora se puede añadir al archivo de perfil"
+msgstr ""
+"El complemento DeepFilterNet ahora se puede añadir al archivo de perfil"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:97
 msgid ""
