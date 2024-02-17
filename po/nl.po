@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-14 15:10+0000\n"
-"PO-Revision-Date: 2023-09-23 08:02+0000\n"
+"PO-Revision-Date: 2024-02-17 03:02+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.4\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -91,7 +91,7 @@ msgstr "_Over Easy Effects"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_Afsluiten"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
@@ -485,9 +485,8 @@ msgstr "Zijketen"
 #: data/ui/expander.ui:455 data/ui/gate.ui:663 data/ui/gate.ui:669
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
-#, fuzzy
 msgid "Stereo Split Mode"
-msgstr "Stereo-mode"
+msgstr "Stereo­split­modus"
 
 #: data/ui/compressor.ui:543 data/ui/expander.ui:462 data/ui/gate.ui:676
 #: data/ui/multiband_compressor_band.ui:463 data/ui/multiband_gate_band.ui:522
@@ -542,33 +541,28 @@ msgstr "Zijketenbron"
 
 #: data/ui/compressor.ui:578 data/ui/expander.ui:497 data/ui/gate.ui:711
 #: data/ui/multiband_compressor_band.ui:521 data/ui/multiband_gate_band.ui:580
-#, fuzzy
 msgid "Left/Right"
-msgstr "Vertraging links/rechts"
+msgstr "Links/rechts"
 
 #: data/ui/compressor.ui:579 data/ui/expander.ui:498 data/ui/gate.ui:712
 #: data/ui/multiband_compressor_band.ui:522 data/ui/multiband_gate_band.ui:581
-#, fuzzy
 msgid "Right/Left"
-msgstr "Rechts"
+msgstr "Rechts/links"
 
 #: data/ui/compressor.ui:580 data/ui/expander.ui:499 data/ui/gate.ui:713
 #: data/ui/multiband_compressor_band.ui:523 data/ui/multiband_gate_band.ui:582
-#, fuzzy
 msgid "Mid/Side"
-msgstr "Zijkant"
+msgstr "Midden/zijkant"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:500 data/ui/gate.ui:714
 #: data/ui/multiband_compressor_band.ui:524 data/ui/multiband_gate_band.ui:583
-#, fuzzy
 msgid "Side/Mid"
-msgstr "Zijkant"
+msgstr "Zijkant/midden"
 
 #: data/ui/compressor.ui:592 data/ui/expander.ui:511 data/ui/gate.ui:725
 #: data/ui/multiband_compressor_band.ui:535 data/ui/multiband_gate_band.ui:594
-#, fuzzy
 msgid "Stereo Split Source"
-msgstr "Standaardbron"
+msgstr "Stereo­split­bron"
 
 #: data/ui/compressor.ui:618 data/ui/deesser.ui:50 data/ui/expander.ui:537
 #: data/ui/gate.ui:751 data/ui/multiband_compressor_band.ui:559
@@ -598,9 +592,8 @@ msgid "Sidechain Mode"
 msgstr "Zijketenmodus"
 
 #: data/ui/compressor.ui:644 data/ui/expander.ui:563 data/ui/gate.ui:777
-#, fuzzy
 msgid "Listen Sidechain"
-msgstr "Externe sidechain"
+msgstr "Luister-sidechain"
 
 #: data/ui/compressor.ui:673 data/ui/equalizer_band.ui:96
 #: data/ui/expander.ui:592 data/ui/filter.ui:37 data/ui/gate.ui:806
@@ -897,30 +890,28 @@ msgid "Invert Phase"
 msgstr "Fase omkeren"
 
 #: data/ui/deepfilternet.ui:31
-#, fuzzy
 msgid "Attenuation Limit"
-msgstr "Verzwakking"
+msgstr "Verzwakkingslimiet"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "Minimale verwerkings­drempel"
 
 #: data/ui/deepfilternet.ui:87
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "Maximale ERB-verwerkings­drempel"
 
 #: data/ui/deepfilternet.ui:114
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "Maximale DF-verwerkings­drempel"
 
 #: data/ui/deepfilternet.ui:141
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "Minimale verwerkings­buffer"
 
 #: data/ui/deepfilternet.ui:167
-#, fuzzy
 msgid "Post Filter Beta"
-msgstr "Filterlengte"
+msgstr "Postfilter­bèta"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
@@ -976,9 +967,8 @@ msgid "Import Preset"
 msgstr "Voorinstelling importeren"
 
 #: data/ui/equalizer.ui:363
-#, fuzzy
 msgid "Export Preset"
-msgstr "Voorinstelling importeren"
+msgstr "Voorinstelling exporteren"
 
 #: data/ui/equalizer_band.ui:143 data/ui/filter.ui:119
 msgid "Slope"
@@ -1070,9 +1060,8 @@ msgid "All-Pass"
 msgstr "All-pass"
 
 #: data/ui/filter.ui:95
-#, fuzzy
 msgid "Equalizer Mode"
-msgstr "Equalizer"
+msgstr "Equalizer-modus"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
 msgid "Gate"
@@ -1349,7 +1338,7 @@ msgstr "Bruin-MT"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "Native-gebruikers­interface weergeven"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 msgid "Operating Mode"
@@ -1364,9 +1353,8 @@ msgid "Modern"
 msgstr "Modern"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
-#, fuzzy
 msgid "Linear Phase"
-msgstr "Fase omkeren"
+msgstr "Lineaire fase"
 
 #: data/ui/multiband_compressor.ui:268 data/ui/multiband_gate.ui:268
 msgid "Bands List"
@@ -1425,9 +1413,8 @@ msgid "Band Sidechain Options"
 msgstr "Band-sidechain-opties"
 
 #: data/ui/multiband_compressor_band.ui:508 data/ui/multiband_gate_band.ui:567
-#, fuzzy
 msgid "Stereo Split"
-msgstr "Stereo-mode"
+msgstr "Stereo­split"
 
 #: data/ui/multiband_compressor_band.ui:578 data/ui/multiband_gate_band.ui:637
 #: src/tags_plugin_name.cpp:45
@@ -1435,18 +1422,16 @@ msgid "Filter"
 msgstr "Filter"
 
 #: data/ui/multiband_compressor_band.ui:590 data/ui/multiband_gate_band.ui:649
-#, fuzzy
 msgid "Low-Cut"
-msgstr "Low-cut-filter"
+msgstr "Low-cut"
 
 #: data/ui/multiband_compressor_band.ui:618 data/ui/multiband_gate_band.ui:677
 msgid "Low-Cut Filter Frequency"
 msgstr "Low-cut-filterfrequentie"
 
 #: data/ui/multiband_compressor_band.ui:628 data/ui/multiband_gate_band.ui:687
-#, fuzzy
 msgid "High-Cut"
-msgstr "High-cut-filter"
+msgstr "High-cut"
 
 #: data/ui/multiband_compressor_band.ui:657 data/ui/multiband_gate_band.ui:716
 msgid "High-Cut Filter Frequency"
@@ -1821,7 +1806,7 @@ msgstr "Afgeronde hoeken"
 
 #: data/ui/preferences_spectrum.ui:154
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "Dynamische schaal"
 
 #: data/ui/preferences_spectrum.ui:168
 msgid "Color"
@@ -1864,9 +1849,8 @@ msgid "Remove this preset file"
 msgstr "Verwijder dit voorinstellingsbestand"
 
 #: data/ui/presets_menu.ui:30
-#, fuzzy
 msgid "New Preset Name"
-msgstr "Nieuwe naam voor invoervoorinstelling"
+msgstr "Naam voor nieuwe voor­instelling"
 
 #: data/ui/presets_menu.ui:38
 msgid "Create a new preset"
@@ -1877,14 +1861,12 @@ msgid "Import a preset"
 msgstr "Voorinstelling importeren"
 
 #: data/ui/presets_menu.ui:68
-#, fuzzy
 msgid "Search Preset"
-msgstr "Invoervoorinstellingen doorzoeken"
+msgstr "Zoek­voorinstelling"
 
 #: data/ui/presets_menu.ui:129
-#, fuzzy
 msgid "Presets List"
-msgstr "Lijst met invoervoorinstellingen"
+msgstr "Lijst met voor­instellingen"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2158,7 +2140,7 @@ msgstr "Onbekend"
 
 #: src/app_info.cpp:248
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "Ongedefinieerde naam - Proces-id "
 
 #: src/app_info.cpp:258
 msgid "channels"
@@ -2174,7 +2156,7 @@ msgstr "Sluit Easy Effects af. Nuttig in dienstmodus."
 
 #: src/application.cpp:575
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "Print de versie van Easy Effects"
 
 #: src/application.cpp:578
 msgid "Reset Easy Effects."
@@ -2285,21 +2267,20 @@ msgstr ""
 #: src/equalizer_ui.cpp:503
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
+"Gesplitste kanalen worden nog niet ondersteund bij het exporteren van APO-"
+"voor­instellingen."
 
 #: src/equalizer_ui.cpp:511
-#, fuzzy
 msgid "Export EqualizerAPO Preset File"
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr "EqualizerAPO-voorinstellings­bestand exporteren"
 
 #: src/equalizer_ui.cpp:512
-#, fuzzy
 msgid "Save"
-msgstr "Opslaan?"
+msgstr "Opslaan"
 
 #: src/equalizer_ui.cpp:519
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "APO-voorinstellingen"
+msgstr "EqualizerAPO-voor­instellingen"
 
 #: src/equalizer_ui.cpp:696
 msgid "Import GraphicEQ Preset File"
