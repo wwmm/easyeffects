@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-14 15:10+0000\n"
-"PO-Revision-Date: 2024-01-28 04:01+0000\n"
-"Last-Translator: Joakim <joakim.polden@gmail.com>\n"
+"PO-Revision-Date: 2024-02-20 11:02+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "easyeffects/main/nb_NO/>\n"
 "Language: nb_NO\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -811,8 +811,9 @@ msgid "Search Impulse File"
 msgstr ""
 
 #: data/ui/convolver_menu_impulses.ui:47
+#, fuzzy
 msgid "Impulse Files List"
-msgstr ""
+msgstr "Impulsfilliste"
 
 #: data/ui/crossfeed.ui:39
 #, fuzzy
@@ -835,7 +836,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:140 data/ui/multiband_gate_band.ui:109
 #: data/ui/stereo_tools.ui:175 data/ui/stereo_tools.ui:200
 msgid "Mute"
-msgstr ""
+msgstr "Forstum"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -1455,8 +1456,9 @@ msgstr "Stereomodus"
 
 #: data/ui/multiband_compressor_band.ui:578 data/ui/multiband_gate_band.ui:637
 #: src/tags_plugin_name.cpp:45
+#, fuzzy
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: data/ui/multiband_compressor_band.ui:590 data/ui/multiband_gate_band.ui:649
 msgid "Low-Cut"
@@ -1709,7 +1711,7 @@ msgstr ""
 
 #: data/ui/plugins_box.ui:19
 msgid "Add Effect"
-msgstr ""
+msgstr "Legg til effekt"
 
 #: data/ui/plugins_box.ui:68
 msgid "Used Plugins List"
@@ -1730,7 +1732,7 @@ msgstr ""
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "Programtilleggsliste"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
@@ -1742,7 +1744,7 @@ msgstr "Tjeneste"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Start tjeneste ved systemoppstart"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
@@ -1770,7 +1772,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "Inaktivitetstidsavbrudd"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval (Level Meters and Spectrum)"
@@ -2441,7 +2443,7 @@ msgstr "Ekkokansellering"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Equalizer"
-msgstr ""
+msgstr "Tonekontroll"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Exciter"
