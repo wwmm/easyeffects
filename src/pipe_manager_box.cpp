@@ -462,6 +462,10 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   g_signal_connect(self->dropdown_input_devices, "notify::selected-item",
                    G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, PipeManagerBox* self) {
+                     if (gtk_switch_get_state(self->use_default_input) != 0) {
+                       return;
+                     }
+
                      if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
                        auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
 
@@ -472,6 +476,10 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   g_signal_connect(self->dropdown_output_devices, "notify::selected-item",
                    G_CALLBACK(+[](GtkDropDown* dropdown, GParamSpec* pspec, PipeManagerBox* self) {
+                     if (gtk_switch_get_state(self->use_default_output) != 0) {
+                       return;
+                     }
+
                      if (auto selected_item = gtk_drop_down_get_selected_item(dropdown); selected_item != nullptr) {
                        auto* holder = static_cast<ui::holders::NodeInfoHolder*>(selected_item);
 
