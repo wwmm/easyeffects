@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-14 15:10+0000\n"
+"POT-Creation-Date: 2024-02-24 14:11+0000\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2238,8 +2238,8 @@ msgstr "脉冲文件未导入"
 msgid "Import Impulse File"
 msgstr "导入 Impulse 文件"
 
-#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:412
-#: src/equalizer_ui.cpp:697 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:420
+#: src/equalizer_ui.cpp:701 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "打开"
 
@@ -2275,48 +2275,48 @@ msgstr "播放器"
 msgid "Effects"
 msgstr "音效"
 
-#: src/equalizer_ui.cpp:411
+#: src/equalizer_ui.cpp:419
 msgid "Import APO Preset File"
 msgstr "加载 APO 预设文件"
 
-#: src/equalizer_ui.cpp:419
+#: src/equalizer_ui.cpp:427
 msgid "APO Presets"
 msgstr "APO 预设"
 
-#: src/equalizer_ui.cpp:444
+#: src/equalizer_ui.cpp:452
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr "APO 预设未成功加载。可能是文件格式不受支持。请检查文件内容。"
 
-#: src/equalizer_ui.cpp:503
+#: src/equalizer_ui.cpp:507
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:511
+#: src/equalizer_ui.cpp:515
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "加载 APO 预设文件"
 
-#: src/equalizer_ui.cpp:512
+#: src/equalizer_ui.cpp:516
 #, fuzzy
 msgid "Save"
 msgstr "是否储存？"
 
-#: src/equalizer_ui.cpp:519
+#: src/equalizer_ui.cpp:523
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "APO 预设"
 
-#: src/equalizer_ui.cpp:696
+#: src/equalizer_ui.cpp:700
 msgid "Import GraphicEQ Preset File"
 msgstr "导入 GraphicEQ 预设文件"
 
-#: src/equalizer_ui.cpp:704
+#: src/equalizer_ui.cpp:708
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ 预设"
 
-#: src/equalizer_ui.cpp:729
+#: src/equalizer_ui.cpp:733
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
