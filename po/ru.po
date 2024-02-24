@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-24 17:49+0000\n"
+"POT-Creation-Date: 2024-02-24 15:05-0300\n"
 "PO-Revision-Date: 2023-12-26 18:06+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2378,6 +2378,37 @@ msgstr "Сохранить?"
 #: src/presets_menu.cpp:234
 msgid "Delete?"
 msgstr "Удалить?"
+
+#: src/presets_manager.cpp:783 src/presets_manager.cpp:790
+#: src/presets_manager.cpp:799 src/presets_manager.cpp:806
+#: src/presets_manager.cpp:815 src/presets_manager.cpp:823
+msgid "Preset Not Loaded Correctly"
+msgstr ""
+
+#: src/presets_manager.cpp:783
+#, fuzzy
+msgid "Wrong Format in Excluded Apps List"
+msgstr "Исключённые приложения"
+
+#: src/presets_manager.cpp:790
+msgid "Generic Error While Loading Excluded Apps List"
+msgstr ""
+
+#: src/presets_manager.cpp:799
+msgid "Wrong Format in Effects List"
+msgstr ""
+
+#: src/presets_manager.cpp:806
+msgid "Generic Error While Loading Effects List"
+msgstr ""
+
+#: src/presets_manager.cpp:816
+msgid "One or More Parameters Have a Wrong Format"
+msgstr ""
+
+#: src/presets_manager.cpp:824
+msgid "Generic Error While Loading The Effect"
+msgstr ""
 
 #: src/rnnoise_ui.cpp:95
 msgid ""
