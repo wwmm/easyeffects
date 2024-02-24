@@ -631,7 +631,7 @@ void setup_listview(PluginsBox* self) {
 
         auto page = GTK_STACK_PAGE(child_item);
         auto page_name = gtk_stack_page_get_name(page);
-        auto base_name = tags::plugin_name::get_base_name(page_name);
+        const auto base_name = tags::plugin_name::get_base_name(page_name);
 
         g_object_set_data(G_OBJECT(top_box), "page-name", const_cast<char*>(page_name));
         g_object_set_data(G_OBJECT(remove), "page-name", const_cast<char*>(page_name));
