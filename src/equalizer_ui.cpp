@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2023 Wellington Wallace
+ *  Copyright © 2017-2024 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -187,11 +187,7 @@ auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> bool 
   std::transform(filter.type.begin(), filter.type.end(), filter.type.begin(),
                  [](unsigned char c) { return std::toupper(c); });
 
-  if (filter.type.empty()) {
-    return false;
-  }
-
-  return true;
+  return !filter.type.empty();
 }
 
 auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bool {
@@ -241,34 +237,49 @@ auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool
 auto parse_apo_on_off(const std::string& line, struct APO_Band& filter) -> bool {
   std::smatch matches;
 
-  static const auto re_on_off =
-      std::regex(R"(Filter\s*\d*\s*:\s*(on|off)(?=\s+[a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
+  static const auto re_on_off = std::regex(R"(filter\s*\d*\s*:\s*(on|off))", std::regex::icase);
 
   std::regex_search(line, matches, re_on_off);
 
-  // using the 2-group match format to comply with other functions, but maybe switch to non-capture groups?
   if (matches.size() != 2U) {
     return false;
   }
 
-  // idk if this is needed; used in parse_apo_filter
-  filter.on_off = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
+  filter.on_off = matches.str(1);
+
+  // The regex is permissive using std::regex::icase flag, but we need
+  // on/off string in uppercase for string comparisons in import operations.
+  std::transform(filter.on_off.begin(), filter.on_off.end(), filter.on_off.begin(),
+                 [](unsigned char c) { return std::toupper(c); });
 
   return true;
 }
 
 auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
+  // Retrieve filter type.
   if (!parse_apo_filter(line, filter)) {
     return false;
   }
 
-  // The configuration line refers to an existing APO filter, so we try to get the other parameters.
-  parse_apo_frequency(line, filter);
-  parse_apo_on_off(line, filter);
+  // Retrieve on/off state.
+  if (!parse_apo_on_off(line, filter)) {
+    return false;
+  }
 
-  // Inspired by function "para_equalizer_ui::import_rew_file(const LSPString*)"
+  // Retrieve frequency.
+  // To make it more permissive, we do not exit on false here (assume default).
+  parse_apo_frequency(line, filter);
+
+  // The following has been inspired by the function
+  // "para_equalizer_ui::import_rew_file(const LSPString*)"
   // inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
   // https://github.com/sadko4u/lsp-plugins
+
+  // Retrieve gain and/or quality parameters based on a specific filter type.
+  // Calculate frequency/quality if needed.
+  // If the APO filter type is different than the ones specified below,
+  // it's set as "Off" and default values are assumed since
+  // it may be not supported by LSP Equalizer.
   if (filter.type == "PK" || filter.type == "MODAL" || filter.type == "PEQ") {
     parse_apo_gain(line, filter);
 
@@ -307,9 +318,6 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
     parse_apo_quality(line, filter);
   }
 
-  // If the APO filter type is different than the ones specified above,
-  // it's set as Off since it's not supported by LSP Equalizer.
-  // Default values are assumed.
   return true;
 }
 
@@ -491,11 +499,7 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
     return false;
   }
 
-  if (!g_output_stream_close(G_OUTPUT_STREAM(output_stream), nullptr, nullptr)) {
-    return false;
-  }
-
-  return true;
+  return (!g_output_stream_close(G_OUTPUT_STREAM(output_stream), nullptr, nullptr)) ? false : true;
 }
 
 void on_export_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
