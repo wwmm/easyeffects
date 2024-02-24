@@ -45,7 +45,7 @@ void show_autohiding_toast(AdwToastOverlay* toast_overlay,
                            const uint& timeout = 5U,
                            const AdwToastPriority& priority = ADW_TOAST_PRIORITY_HIGH);
 
-auto missing_plugin_box(const std::string& name, const std::string& package) -> GtkWidget*;
+auto missing_plugin_box(const std::string& base_name, const std::string& package) -> GtkWidget*;
 
 void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr);
 

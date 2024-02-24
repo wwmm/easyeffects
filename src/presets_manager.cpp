@@ -769,7 +769,8 @@ void PresetsManager::notify_error(const PresetError& preset_error, const std::st
   std::string plugin_translated;
 
   try {
-    plugin_translated = tags::plugin_name::get_translated().at(plugin_name);
+    const auto base_name = tags::plugin_name::get_base_name(plugin_name);
+    plugin_translated = tags::plugin_name::get_translated().at(base_name) + ": ";
   } catch (...) {
   }
 
@@ -812,7 +813,7 @@ void PresetsManager::notify_error(const PresetError& preset_error, const std::st
                     "corrupted. Please check its content.");
 
       preset_load_error.emit(_("Preset Not Loaded Correctly"),
-                             plugin_translated + ": " + _("One or More Parameters Have a Wrong Format"));
+                             plugin_translated + _("One or More Parameters Have a Wrong Format"));
 
       break;
     }
@@ -820,7 +821,7 @@ void PresetsManager::notify_error(const PresetError& preset_error, const std::st
       util::warning("A generic error occurred while trying to load the " + plugin_name + " plugin from the preset.");
 
       preset_load_error.emit(_("Preset Not Loaded Correctly"),
-                             plugin_translated + ": " + _("Generic Error While Loading The Effect"));
+                             plugin_translated + _("Generic Error While Loading The Effect"));
 
       break;
     }

@@ -53,7 +53,11 @@ void show_fixed_toast(AdwToastOverlay* toast_overlay, const std::string& text, c
   show_autohiding_toast(toast_overlay, text, 0U, priority);
 }
 
-auto missing_plugin_box(const std::string& name, const std::string& package) -> GtkWidget* {
+auto missing_plugin_box(const std::string& base_name, const std::string& package) -> GtkWidget* {
+  // Since the plugin name should be translated in the local language,
+  // this function needs the base name as parameter, retrieved from
+  // get_base_name() util.
+
   auto* box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
 
   gtk_widget_set_margin_start(box, 6);
@@ -73,7 +77,7 @@ auto missing_plugin_box(const std::string& name, const std::string& package) -> 
         fmt::runtime(_("The software required for the {} effect, \"{}\", is not installed. Consider using the Easy "
                        "Effects Flatpak package or installing the software yourself."));
 
-    if (name == tags::plugin_name::rnnoise) {
+    if (base_name == tags::plugin_name::rnnoise) {
       // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
       format_descr =
           fmt::runtime(_("The {} effect was disabled when Easy Effects was compiled. This is perhaps since the "
@@ -81,7 +85,7 @@ auto missing_plugin_box(const std::string& name, const std::string& package) -> 
                          "Effects Flatpak package or building your own Easy Effects package."));
     }
 
-    const std::string translated_name = tags::plugin_name::get_translated().at(name);
+    const std::string translated_name = tags::plugin_name::get_translated().at(base_name);
 
     adw_status_page_set_title(ADW_STATUS_PAGE(status_page), fmt::format(format_title, translated_name).c_str());
     adw_status_page_set_description(ADW_STATUS_PAGE(status_page),
