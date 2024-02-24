@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-24 14:11+0000\n"
+"POT-Creation-Date: 2024-02-24 17:49+0000\n"
 "PO-Revision-Date: 2024-02-20 11:02+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -2492,12 +2492,12 @@ msgid "Stereo Tools"
 msgstr "Stereo verktøy"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:69
+#: src/ui_helpers.cpp:73
 #, c++-format
 msgid "{} Not Available"
 msgstr "{} Ikke tilgjengelig"
 
-#: src/ui_helpers.cpp:73
+#: src/ui_helpers.cpp:77
 #, fuzzy, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
@@ -2506,7 +2506,7 @@ msgstr ""
 "Programvaren som kreves for effekten {},  er ikke installert \"{}\".  Vurder "
 "å bruke Easy Effects Flatpak pakken eller installer programvaren på egenhånd."
 
-#: src/ui_helpers.cpp:79
+#: src/ui_helpers.cpp:83
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2519,12 +2519,12 @@ msgstr ""
 "tilgjengelig. Vurder å bruke Easy Effects Flatpak pakken eller installer "
 "programvaren på egenhånd."
 
-#: src/ui_helpers.cpp:121 src/ui_helpers.cpp:141
+#: src/ui_helpers.cpp:125 src/ui_helpers.cpp:145
 msgid "-inf"
 msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:226
+#: src/ui_helpers.cpp:230
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "Bruker {}"

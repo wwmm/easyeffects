@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-24 14:11+0000\n"
+"POT-Creation-Date: 2024-02-24 17:49+0000\n"
 "PO-Revision-Date: 2024-01-30 16:00+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -2430,12 +2430,12 @@ msgid "Stereo Tools"
 msgstr "Ferramentas Estéreo"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:69
+#: src/ui_helpers.cpp:73
 #, c++-format
 msgid "{} Not Available"
 msgstr "O Efeito {} Não Está Disponível"
 
-#: src/ui_helpers.cpp:73
+#: src/ui_helpers.cpp:77
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
@@ -2447,7 +2447,7 @@ msgstr ""
 "Observação: algumas distribuições GNU/Linux não são compatíveis com os "
 "pacotes no formato Flatpak."
 
-#: src/ui_helpers.cpp:79
+#: src/ui_helpers.cpp:83
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2462,12 +2462,12 @@ msgstr ""
 "Observação: algumas distribuições GNU/Linux não são compatíveis com os "
 "pacotes no formato Flatpak."
 
-#: src/ui_helpers.cpp:121 src/ui_helpers.cpp:141
+#: src/ui_helpers.cpp:125 src/ui_helpers.cpp:145
 msgid "-inf"
 msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:226
+#: src/ui_helpers.cpp:230
 #, c++-format
 msgid "Using {}"
 msgstr "Utilizando o {}"
