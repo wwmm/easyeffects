@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-24 15:05-0300\n"
-"PO-Revision-Date: 2024-02-08 05:01+0000\n"
-"Last-Translator: Mc Vash <savelawachin@gmail.com>\n"
+"PO-Revision-Date: 2024-02-25 07:02+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -2328,32 +2328,31 @@ msgstr "¿Borrar?"
 #: src/presets_manager.cpp:799 src/presets_manager.cpp:806
 #: src/presets_manager.cpp:815 src/presets_manager.cpp:823
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "Preajuste no cargado correctamente"
 
 #: src/presets_manager.cpp:783
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Lista de aplicaciones excluidas"
+msgstr "Formato incorrecto en la lista de aplicaciones excluidas"
 
 #: src/presets_manager.cpp:790
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "Error genérico al cargar la lista de aplicaciones excluidas"
 
 #: src/presets_manager.cpp:799
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "Formato incorrecto en la lista de efectos"
 
 #: src/presets_manager.cpp:806
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "Error genérico al cargar la lista de efectos"
 
 #: src/presets_manager.cpp:816
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "Uno o más parámetros tienen un formato incorrecto"
 
 #: src/presets_manager.cpp:824
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "Error genérico al cargar el efecto"
 
 #: src/rnnoise_ui.cpp:95
 msgid ""
