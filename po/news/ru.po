@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-24 15:05-0300\n"
-"PO-Revision-Date: 2023-11-09 19:36+0000\n"
+"PO-Revision-Date: 2024-02-27 18:50+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -150,7 +150,7 @@ msgstr "Обновлены переводы"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "Эквалайзер может экспортировать основные файлы предустановок APO"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid ""
@@ -163,6 +163,8 @@ msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"Версию EasyEffects можно показать в командной строке с помощью параметра "
+"--version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
