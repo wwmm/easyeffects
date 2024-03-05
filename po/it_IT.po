@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: 2024-02-25 07:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -930,6 +930,11 @@ msgstr "Soppressione Eco Vicino Alla Fine"
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
 msgstr "App Escluse"
+
+#: data/ui/effects_box.ui:120
+#, fuzzy
+msgid "Enable/disable input monitoring"
+msgstr "Abilita/disabilita questa applicazione"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"

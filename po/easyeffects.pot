@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -925,6 +925,10 @@ msgstr ""
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
+msgstr ""
+
+#: data/ui/effects_box.ui:120
+msgid "Enable/disable input monitoring"
 msgstr ""
 
 #: data/ui/equalizer.ui:29
