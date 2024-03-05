@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: 2024-01-01 21:04+0000\n"
 "Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -931,6 +931,11 @@ msgstr "Nahechounterdrückung"
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
 msgstr "Ausgeschlossene Anwendungen"
+
+#: data/ui/effects_box.ui:120
+#, fuzzy
+msgid "Enable/disable input monitoring"
+msgstr "Anwendung aktivieren/deaktivieren"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"

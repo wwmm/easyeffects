@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: 2023-11-16 03:06+0000\n"
 "Last-Translator: Carlos Batista <cbatista8a@gmail.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -996,6 +996,11 @@ msgstr "Supresor de Ruido"
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
 msgstr "Aplicaciones excluidas"
+
+#: data/ui/effects_box.ui:120
+#, fuzzy
+msgid "Enable/disable input monitoring"
+msgstr "Habilitar/deshabilitar esta aplicación"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"

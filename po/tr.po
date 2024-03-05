@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: 2023-12-26 18:06+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -929,6 +929,11 @@ msgstr "Yakın Uç Yankı Bastırma"
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
 msgstr "Hariç Tutulan Uygulamalar"
+
+#: data/ui/effects_box.ui:120
+#, fuzzy
+msgid "Enable/disable input monitoring"
+msgstr "Bu uygulamayı etkinleştir/devre dışı bırak"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"

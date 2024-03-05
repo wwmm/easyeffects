@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: 2023-11-25 07:02+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1006,6 +1006,10 @@ msgstr "Supresija buke"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
+msgstr ""
+
+#: data/ui/effects_box.ui:120
+msgid "Enable/disable input monitoring"
 msgstr ""
 
 #: data/ui/equalizer.ui:29

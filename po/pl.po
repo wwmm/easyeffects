@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: 2023-11-16 03:06+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -968,6 +968,11 @@ msgstr "Tłumienie szumu"
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
 msgstr "Wykluczone aplikacje"
+
+#: data/ui/effects_box.ui:120
+#, fuzzy
+msgid "Enable/disable input monitoring"
+msgstr "Włącz/wyłącz tę aplikację"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Daniel Svindseth <daniel@svindseth.net>\n"
 "Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
@@ -935,6 +935,11 @@ msgstr ""
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
 msgstr "Uteletne appar"
+
+#: data/ui/effects_box.ui:120
+#, fuzzy
+msgid "Enable/disable input monitoring"
+msgstr "Slå på/av denne applikasjonen"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"

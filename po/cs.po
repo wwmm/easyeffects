@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-02 00:36+0000\n"
+"POT-Creation-Date: 2024-03-05 00:33+0000\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -944,6 +944,11 @@ msgstr "Potlačení ozvěny blízko konce"
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
 msgstr "Vynechané aplikace"
+
+#: data/ui/effects_box.ui:120
+#, fuzzy
+msgid "Enable/disable input monitoring"
+msgstr "Povolit/zakázat tuto aplikaci"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
