@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-05 00:33+0000\n"
-"PO-Revision-Date: 2023-12-26 18:06+0000\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"PO-Revision-Date: 2024-03-06 06:01+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -931,9 +931,8 @@ msgid "Excluded Apps"
 msgstr "Hariç Tutulan Uygulamalar"
 
 #: data/ui/effects_box.ui:120
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Bu uygulamayı etkinleştir/devre dışı bırak"
+msgstr "Giriş izlemeyi etkinleştir/devre dışı bırak"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
@@ -2334,32 +2333,31 @@ msgstr "Silinsin mi?"
 #: src/presets_manager.cpp:799 src/presets_manager.cpp:806
 #: src/presets_manager.cpp:815 src/presets_manager.cpp:823
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "Ön Ayar Doğru Yüklenmedi"
 
 #: src/presets_manager.cpp:783
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Hariç Tutulan Uygulamalar Listesi"
+msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
 #: src/presets_manager.cpp:790
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
 #: src/presets_manager.cpp:799
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "Efektler Listesinde Yanlış Biçim"
 
 #: src/presets_manager.cpp:806
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
 #: src/presets_manager.cpp:816
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
 #: src/presets_manager.cpp:824
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "Efekt Yüklenirken Genel Hata"
 
 #: src/rnnoise_ui.cpp:95
 msgid ""
