@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-05 00:33+0000\n"
-"PO-Revision-Date: 2023-08-09 08:17+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2024-03-06 06:01+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #, fuzzy
@@ -141,6 +141,10 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects, kullanıcının EE'nin kayıt yaptığı mikrofondan farklı bir özel "
+"target.object ayarladığı sanal kaynak akışlarına geçmekten kaçınmaya "
+"çalışacaktır. Bu mantığın etkili olması için EE zaten çalışırken akışın "
+"başlatılması gerekir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
@@ -153,19 +157,22 @@ msgstr "Çeviriler güncellendi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "Ekolayzer temel APO ön ayar dosyalarını dışa aktarabilir"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Oynatıcılar/kaydediciler sekmemiz, uygulama adının tanımlanmadığı durumlarda "
+"ses istemcisi programı adını gösterecek."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"EasyEffects sürümü --version seçeneği ile komut satırında gösterilebilir"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
@@ -208,6 +215,9 @@ msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"gtk4 GtkLevelBar'daki bir hata için geçici bir çözüm uygulandı ve gtk "
+"geliştiricileri kendi taraflarındaki şeyleri düzeltene kadar yerinde "
+"tutulacak"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
@@ -234,36 +244,44 @@ msgstr "Diğer notlar:"
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
 msgstr ""
+"EasyEffects'in çökmesine neden olabilen 7.1.2 sürümünde ortaya çıkan bir "
+"hata düzeltildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
+msgstr "DeepFilterNet eklentisi artık ön ayar dosyasına eklenebilir"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:97
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
+"Spektrum, dinamik dikey ölçeğin devre dışı bırakılmasını sağlayan yeni bir "
+"seçeneğe sahip."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:98
 msgid "Improved compatibility with the latest LSP releases."
-msgstr ""
+msgstr "En son LSP sürümleri ile uyumluluk iyileştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
-msgstr ""
+msgstr "Dürtü yanıtı dosya özelliklerinin hatalı çizimi düzeltildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:110
 msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"Gürültü azaltma ses etkinliği eşiğinin düzgün bir şekilde başlatılmasını "
+"engelleyen küçük bir hata düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:119
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
+"Gürültü azaltma eklentisine ses algılamanın devre dışı bırakılmasını "
+"sağlayan yeni bir denetim eklendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:129
 msgid ""
@@ -276,22 +294,28 @@ msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"RNNoise ile gürültü azaltma, Bırak ve VAD Eşiği denetimlerinin eklenmesiyle "
+"iyileştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:131
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"RNNoise ile gürültü azaltma artık çıktının çok \"kuru\" olmasını önlemek "
+"için orijinal ve gürültü giderilmiş sinyalleri karıştırabilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:134
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
+"Bu sürüm, Linux Studio Eklentilerinin \"1.2.10\" veya daha yüksek "
+"sürümleriyle çalışacak şekilde hazırlandı."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
 msgid "EasyEffects is now buildable also with libc++."
-msgstr ""
+msgstr "EasyEffects artık libc++ ile de derlenebilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:143
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
