@@ -13,7 +13,7 @@
     <p>Besides manipulating sound output, Easy Effects is able to apply effects to an input device, such as a microphone. This is, for example, useful in audio recording, but it also works well during voice conversations.</p>
     <p>When Easy Effects is launched it will conveniently remember the configuration used in the last session. It is also possible to save all the current settings as profiles.</p>
   </description>
-  <developer>
+  <developer id="com.github.wwmm">
     <name>Wellington Wallace</name>
   </developer>
   <requires>
