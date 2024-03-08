@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-05 00:33+0000\n"
-"PO-Revision-Date: 2024-02-25 20:02+0000\n"
+"PO-Revision-Date: 2024-03-08 22:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -960,9 +960,8 @@ msgid "Excluded Apps"
 msgstr "Исключённые приложения"
 
 #: data/ui/effects_box.ui:120
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Включить/отключить это приложение"
+msgstr "Включить/отключить монитор ввода"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
