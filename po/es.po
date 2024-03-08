@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-05 00:33+0000\n"
-"PO-Revision-Date: 2024-02-25 07:02+0000\n"
+"PO-Revision-Date: 2024-03-08 22:01+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -930,9 +930,8 @@ msgid "Excluded Apps"
 msgstr "Aplicaciones excluidas"
 
 #: data/ui/effects_box.ui:120
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Activar/desactivar esta aplicación"
+msgstr "Activar/desactivar la supervisión de entradas"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
