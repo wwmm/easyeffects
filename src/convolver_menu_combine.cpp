@@ -40,12 +40,12 @@
 #include <string>
 #include <thread>
 #include <vector>
-#include "/home/wallace/myfiles/code/cpp/easyeffects/include/util.hpp"
 #include "convolver_ui_common.hpp"
 #include "resampler.hpp"
 #include "tags_app.hpp"
 #include "tags_resources.hpp"
 #include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::convolver_menu_combine {
 
