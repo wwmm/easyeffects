@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-05 00:33+0000\n"
+"POT-Creation-Date: 2024-03-09 02:13+0000\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -785,7 +785,7 @@ msgstr "Combinar"
 msgid "Stereo Width"
 msgstr "Largura do estéreo"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:199
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
 msgid "Spectrum"
 msgstr "Espectro"
 
@@ -1666,7 +1666,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Saída"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:265
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
 #, fuzzy
 msgid "Output Presets"
 msgstr "Preconfiguracións de saída: "
@@ -1689,7 +1689,7 @@ msgstr "Preconfiguracións de saída: "
 msgid "Input Devices"
 msgstr "Nivel de entrada"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:273
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
 #, fuzzy
 msgid "Input Presets"
 msgstr "Preconfiguracións de entrada: "
@@ -2298,75 +2298,75 @@ msgstr "Base de estéreo"
 msgid "Stereo Phase"
 msgstr "Fase estéreo"
 
-#: src/app_info.cpp:66
+#: src/app_info.cpp:67
 #, fuzzy
 msgid "Running"
 msgstr "en execución"
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:69
 #, fuzzy
 msgid "Suspended"
 msgstr "suspendido"
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:71
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:73
 #, fuzzy
 msgid "Creating"
 msgstr "a crear"
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:75
 #, fuzzy
 msgid "Error"
 msgstr "erro"
 
-#: src/app_info.cpp:76
+#: src/app_info.cpp:77
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:248
+#: src/app_info.cpp:249
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:258
+#: src/app_info.cpp:259
 #, fuzzy
 msgid "channels"
 msgstr "Canles"
 
-#: src/application.cpp:482
+#: src/application.cpp:483
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:572
+#: src/application.cpp:573
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Saír do EasyEffects. É últil cando se executa no modo de servizo."
 
-#: src/application.cpp:575
+#: src/application.cpp:576
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:578
+#: src/application.cpp:579
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Restabelecer EasyEffects."
 
-#: src/application.cpp:581
+#: src/application.cpp:582
 msgid "Hide the Window."
 msgstr "Agochar a xanela."
 
-#: src/application.cpp:584
+#: src/application.cpp:585
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Desvío global. 1 para activar, 2 para desactivar e 3 para coñecer o estado"
 
-#: src/application.cpp:587
+#: src/application.cpp:588
 msgid "Show available presets."
 msgstr "Mostrar preoconfiguracións dispoñíbeis."
 
-#: src/application.cpp:590
+#: src/application.cpp:591
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar unha preconfiguración. Exemplo: pulseefects-l music"
 
@@ -2496,12 +2496,12 @@ msgid ""
 "Its Content."
 msgstr ""
 
-#: src/pipe_manager_box.cpp:329
+#: src/pipe_manager_box.cpp:344
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Retirar este ficheiro de preconfiguracións"
 
-#: src/plugin_base.cpp:197
+#: src/plugin_base.cpp:198
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Saída"

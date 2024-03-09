@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-05 00:33+0000\n"
+"POT-Creation-Date: 2024-03-09 02:13+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -796,7 +796,7 @@ msgstr ""
 msgid "Stereo Width"
 msgstr "Lățime Stereo"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:199
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
 msgid "Spectrum"
 msgstr "Spectru "
 
@@ -1677,7 +1677,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Efecte Output"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:265
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
 #, fuzzy
 msgid "Output Presets"
 msgstr "Presetări pentru Output:"
@@ -1700,7 +1700,7 @@ msgstr "Presetări pentru Output:"
 msgid "Input Devices"
 msgstr "Nivel Input"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:273
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
 #, fuzzy
 msgid "Input Presets"
 msgstr "Presetări pentru Input:"
@@ -2314,77 +2314,77 @@ msgstr "Bază Stereo"
 msgid "Stereo Phase"
 msgstr "Fază Stereo"
 
-#: src/app_info.cpp:66
+#: src/app_info.cpp:67
 #, fuzzy
 msgid "Running"
 msgstr "rulează"
 
-#: src/app_info.cpp:68
+#: src/app_info.cpp:69
 #, fuzzy
 msgid "Suspended"
 msgstr "suspendat"
 
-#: src/app_info.cpp:70
+#: src/app_info.cpp:71
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:72
+#: src/app_info.cpp:73
 #, fuzzy
 msgid "Creating"
 msgstr "se creează"
 
-#: src/app_info.cpp:74
+#: src/app_info.cpp:75
 #, fuzzy
 msgid "Error"
 msgstr "eroare"
 
-#: src/app_info.cpp:76
+#: src/app_info.cpp:77
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:248
+#: src/app_info.cpp:249
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:258
+#: src/app_info.cpp:259
 #, fuzzy
 msgid "channels"
 msgstr "Canale"
 
-#: src/application.cpp:482
+#: src/application.cpp:483
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:572
+#: src/application.cpp:573
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
 
-#: src/application.cpp:575
+#: src/application.cpp:576
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:578
+#: src/application.cpp:579
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Resetează EasyEffects."
 
-#: src/application.cpp:581
+#: src/application.cpp:582
 msgid "Hide the Window."
 msgstr "Ascunde Fereastra."
 
-#: src/application.cpp:584
+#: src/application.cpp:585
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Ocolire Globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
 "statusul"
 
-#: src/application.cpp:587
+#: src/application.cpp:588
 msgid "Show available presets."
 msgstr "Arată presetările valabile."
 
-#: src/application.cpp:590
+#: src/application.cpp:591
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
 
@@ -2515,12 +2515,12 @@ msgid ""
 "Its Content."
 msgstr ""
 
-#: src/pipe_manager_box.cpp:329
+#: src/pipe_manager_box.cpp:344
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Șterge fișierul de presetări"
 
-#: src/plugin_base.cpp:197
+#: src/plugin_base.cpp:198
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Efecte Output"
