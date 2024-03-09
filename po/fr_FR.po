@@ -732,7 +732,7 @@ msgstr "Combiner"
 msgid "Stereo Width"
 msgstr "Amplitude Stéréo"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:200 src/plugin_base.cpp:199
 msgid "Spectrum"
 msgstr "Spectre"
 
@@ -1042,7 +1042,7 @@ msgstr "Cloche"
 
 #: data/ui/filter.ui:49
 msgid "Band-Pass"
-msgstr "Band-Pass"
+msgstr "Passe-bande"
 
 #: data/ui/filter.ui:50
 msgid "Notch"
@@ -1533,6 +1533,7 @@ msgid "Output Devices"
 msgstr "Périphériques de sortie"
 
 #: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
+#: src/application.cpp:265
 msgid "Output Presets"
 msgstr "Préréglages de sortie"
 
@@ -1553,6 +1554,7 @@ msgid "Input Devices"
 msgstr "Périphériques d’entrée"
 
 #: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
+#: src/application.cpp:273
 msgid "Input Presets"
 msgstr "Préréglages d’entrée"
 
@@ -2121,69 +2123,69 @@ msgstr "Base Stéréo"
 msgid "Stereo Phase"
 msgstr "Phase Stéréo"
 
-#: src/app_info.cpp:67
+#: src/app_info.cpp:67 src/app_info.cpp:66
 msgid "Running"
 msgstr "En cours"
 
-#: src/app_info.cpp:69
+#: src/app_info.cpp:69 src/app_info.cpp:68
 msgid "Suspended"
 msgstr "En pause"
 
-#: src/app_info.cpp:71
+#: src/app_info.cpp:71 src/app_info.cpp:70
 msgid "Idle"
 msgstr "Inactif"
 
-#: src/app_info.cpp:73
+#: src/app_info.cpp:73 src/app_info.cpp:72
 msgid "Creating"
 msgstr "Génération"
 
-#: src/app_info.cpp:75
+#: src/app_info.cpp:75 src/app_info.cpp:74
 msgid "Error"
 msgstr "Erreur"
 
-#: src/app_info.cpp:77
+#: src/app_info.cpp:77 src/app_info.cpp:76
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: src/app_info.cpp:249
+#: src/app_info.cpp:249 src/app_info.cpp:248
 msgid "Undefined Name - Process ID "
 msgstr "Nom indéterminé - ID du processus "
 
-#: src/app_info.cpp:259
+#: src/app_info.cpp:259 src/app_info.cpp:258
 msgid "channels"
 msgstr "canaux"
 
-#: src/application.cpp:483
+#: src/application.cpp:483 src/application.cpp:482
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:573
+#: src/application.cpp:573 src/application.cpp:572
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Quitter Easy Effects. Utile en cas de fonctionnement en mode serveur."
 
-#: src/application.cpp:576
+#: src/application.cpp:576 src/application.cpp:575
 msgid "Print the easyeffects version"
 msgstr "Imprimer la version d'easyeffects"
 
-#: src/application.cpp:579
+#: src/application.cpp:579 src/application.cpp:578
 msgid "Reset Easy Effects."
 msgstr "Réinitialiser Easy Effects."
 
-#: src/application.cpp:582
+#: src/application.cpp:582 src/application.cpp:581
 msgid "Hide the Window."
 msgstr "Masquer la Fenêtre."
 
-#: src/application.cpp:585
+#: src/application.cpp:585 src/application.cpp:584
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir le "
 "statut"
 
-#: src/application.cpp:588
+#: src/application.cpp:588 src/application.cpp:587
 msgid "Show available presets."
 msgstr "Afficher les préréglages disponibles."
 
-#: src/application.cpp:591
+#: src/application.cpp:591 src/application.cpp:590
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Chargez un préréglage. Exemple : easyeffects -l musique"
 
@@ -2306,11 +2308,11 @@ msgstr ""
 "Le préréglage GraphicEQ n’a pas été chargé. Le format du fichier peut ne pas "
 "être pris en charge. Veuillez vérifier son contenu."
 
-#: src/pipe_manager_box.cpp:344
+#: src/pipe_manager_box.cpp:344 src/pipe_manager_box.cpp:329
 msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 
-#: src/plugin_base.cpp:198
+#: src/plugin_base.cpp:198 src/plugin_base.cpp:197
 msgid "Output Level Meter"
 msgstr "Indicateur Niveau de Sortie"
 
@@ -2459,12 +2461,10 @@ msgstr "Outils stéréo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:73
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Indisponible"
 
 #: src/ui_helpers.cpp:77
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2474,7 +2474,6 @@ msgstr ""
 "même."
 
 #: src/ui_helpers.cpp:83
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2492,7 +2491,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:230
-#, c++-format
 msgid "Using {}"
 msgstr "Utilise {}"
 
