@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 13:23-0300\n"
+"POT-Creation-Date: 2024-03-09 13:43-0300\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -186,7 +186,7 @@ msgid "Geometric Mean (SI)"
 msgstr "Geometrický průměr (SI)"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:49
+#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:56
 msgid "Loudness"
 msgstr "Hlasitost"
 
@@ -361,7 +361,7 @@ msgstr "Zobrazit vyloučené aplikace"
 msgid "Show Native Window"
 msgstr "Zavřít okno"
 
-#: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:34
+#: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -754,7 +754,7 @@ msgstr "Spektrum"
 msgid "Log Scale"
 msgstr "Logaritmické měřítko"
 
-#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
+#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:38
 msgid "Autogain"
 msgstr "Autogain"
 
@@ -894,7 +894,7 @@ msgstr "Zjištěno"
 msgid "Reduction"
 msgstr "Snížení"
 
-#: data/ui/delay.ui:41 data/ui/delay.ui:131 src/tags_plugin_name.cpp:40
+#: data/ui/delay.ui:41 data/ui/delay.ui:131 src/tags_plugin_name.cpp:47
 msgid "Delay"
 msgstr "Zpoždění"
 
@@ -1018,7 +1018,7 @@ msgstr "Strop"
 msgid "Ceil Value"
 msgstr "Horní mezní hodnota"
 
-#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
+#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
 msgstr ""
 
@@ -1094,7 +1094,7 @@ msgstr "Dolní pásmo"
 msgid "Equalizer Mode"
 msgstr "Ekvalizér"
 
-#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
+#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:53
 msgid "Gate"
 msgstr "Brána"
 
@@ -1461,7 +1461,7 @@ msgid "Stereo Split"
 msgstr "Stereo režim"
 
 #: data/ui/multiband_compressor_band.ui:578 data/ui/multiband_gate_band.ui:637
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:52
 msgid "Filter"
 msgstr "Filtr"
 
@@ -1684,7 +1684,7 @@ msgstr "Okno"
 msgid "Overlap Length"
 msgstr "Délka filtru"
 
-#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:53
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:60
 msgid "Pitch"
 msgstr "Výška tónu"
 
@@ -2431,80 +2431,80 @@ msgstr "Importovat modelový soubor"
 msgid "RNNoise Models"
 msgstr "RNNoise Modely"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:39
 msgid "Bass Enhancer"
 msgstr "Zlepšovač hloubek"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:40
 msgid "Bass Loudness"
 msgstr "Hlasitost basů"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:42
 msgid "Convolver"
 msgstr "Konvolver"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
 msgstr "Prolínání kanálů"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
 msgstr "Krystalizátor"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:46
 msgid "Deesser"
 msgstr "Odstraňovač sykotu"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
 msgstr "Potlačovač echa"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:50
 msgid "Exciter"
 msgstr "Zvukový budič"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:54
 #, fuzzy
 msgid "Level Meter"
 msgstr "Výstupní zařízení"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:55
 msgid "Limiter"
 msgstr "Omezovač"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:57
 msgid "Maximizer"
 msgstr "Zvětšovač"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:58
 msgid "Multiband Compressor"
 msgstr "Vícepásmový kompresor"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:59
 msgid "Multiband Gate"
 msgstr "Vícepásmová brána"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
 msgstr "Dozvuk"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:62
 msgid "Noise Reduction"
 msgstr "Redukce šumu"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
 msgstr "Řečový procesor"
 
-#: src/tags_plugin_name.cpp:57
+#: src/tags_plugin_name.cpp:64
 msgid "Stereo Tools"
 msgstr "Nástroje sterea"
 

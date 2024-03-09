@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 13:23-0300\n"
+"POT-Creation-Date: 2024-03-09 13:43-0300\n"
 "PO-Revision-Date: 2023-11-16 03:06+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -185,7 +185,7 @@ msgid "Geometric Mean (SI)"
 msgstr ""
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:49
+#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:56
 msgid "Loudness"
 msgstr "Głośność"
 
@@ -365,7 +365,7 @@ msgstr "Pokazuj wykluczone programy"
 msgid "Show Native Window"
 msgstr "Pokazuj natytwne okno"
 
-#: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:34
+#: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -760,7 +760,7 @@ msgstr "Widmo"
 msgid "Log Scale"
 msgstr "Skala logarytmiczna"
 
-#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
+#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:38
 msgid "Autogain"
 msgstr "Autowzmocnienie"
 
@@ -915,7 +915,7 @@ msgstr "Wykryto"
 msgid "Reduction"
 msgstr "Redukcja"
 
-#: data/ui/delay.ui:41 data/ui/delay.ui:131 src/tags_plugin_name.cpp:40
+#: data/ui/delay.ui:41 data/ui/delay.ui:131 src/tags_plugin_name.cpp:47
 msgid "Delay"
 msgstr "Opóźnienie"
 
@@ -1045,7 +1045,7 @@ msgstr "Sufit"
 msgid "Ceil Value"
 msgstr "Wartość sufitu"
 
-#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
+#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
 msgstr ""
 
@@ -1120,7 +1120,7 @@ msgstr "Dolnoprzepustowy"
 msgid "Equalizer Mode"
 msgstr "Tryb korektora"
 
-#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
+#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:53
 msgid "Gate"
 msgstr "Bramka"
 
@@ -1495,7 +1495,7 @@ msgid "Stereo Split"
 msgstr "Tryb sterep"
 
 #: data/ui/multiband_compressor_band.ui:578 data/ui/multiband_gate_band.ui:637
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:52
 msgid "Filter"
 msgstr "Filtr"
 
@@ -1728,7 +1728,7 @@ msgstr "Okno"
 msgid "Overlap Length"
 msgstr "Długość filtra"
 
-#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:53
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:60
 msgid "Pitch"
 msgstr "Wysokość"
 
@@ -2472,81 +2472,81 @@ msgstr "Importuj plik modelu"
 msgid "RNNoise Models"
 msgstr "Modele RNNoise"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:39
 msgid "Bass Enhancer"
 msgstr "Wzmacniacz basów"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:40
 msgid "Bass Loudness"
 msgstr "Głośność basu"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:42
 msgid "Convolver"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
 msgstr "Krystalizator"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:46
 msgid "Deesser"
 msgstr "De-Esser"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
 msgstr "Usuwanie echa"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
 msgstr "Korektor"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:50
 msgid "Exciter"
 msgstr "Exciter"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:54
 msgid "Level Meter"
 msgstr "Miernik poziomu"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:55
 msgid "Limiter"
 msgstr "Limiter"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:57
 msgid "Maximizer"
 msgstr "Maximizer"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:58
 #, fuzzy
 msgid "Multiband Compressor"
 msgstr "Kompresor"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:59
 #, fuzzy
 msgid "Multiband Gate"
 msgstr "Kompresor"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
 msgstr "Pogłos"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:62
 msgid "Noise Reduction"
 msgstr "Redukcja szumu"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
 msgstr "Procesor mowy"
 
-#: src/tags_plugin_name.cpp:57
+#: src/tags_plugin_name.cpp:64
 msgid "Stereo Tools"
 msgstr "Narzędzia stereo"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 13:23-0300\n"
+"POT-Creation-Date: 2024-03-09 13:43-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -195,7 +195,7 @@ msgid "Geometric Mean (SI)"
 msgstr "Geometrisk Gennemsnit"
 
 #: data/ui/autogain.ui:145 data/ui/autogain.ui:342 data/ui/bass_loudness.ui:27
-#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:49
+#: data/ui/level_meter.ui:69 src/tags_plugin_name.cpp:56
 msgid "Loudness"
 msgstr "Hørestyrke"
 
@@ -375,7 +375,7 @@ msgstr "Liste over Blokerede Applikationer"
 msgid "Show Native Window"
 msgstr "Skjul Vinduet."
 
-#: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:34
+#: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
 msgstr "Kompressor"
 
@@ -768,7 +768,7 @@ msgstr "Spektrum"
 msgid "Log Scale"
 msgstr ""
 
-#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:31
+#: data/ui/convolver.ui:132 src/tags_plugin_name.cpp:38
 msgid "Autogain"
 msgstr ""
 
@@ -908,7 +908,7 @@ msgstr "Detektet"
 msgid "Reduction"
 msgstr "Reduktion"
 
-#: data/ui/delay.ui:41 data/ui/delay.ui:131 src/tags_plugin_name.cpp:40
+#: data/ui/delay.ui:41 data/ui/delay.ui:131 src/tags_plugin_name.cpp:47
 #, fuzzy
 msgid "Delay"
 msgstr "Pre Forsinkelse"
@@ -1035,7 +1035,7 @@ msgstr "Ceil"
 msgid "Ceil Value"
 msgstr "Ceil Værdi"
 
-#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:44
+#: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
 msgstr ""
 
@@ -1112,7 +1112,7 @@ msgstr "Alle Pas"
 msgid "Equalizer Mode"
 msgstr "Båndtilstand"
 
-#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:46
+#: data/ui/gate.ui:51 src/tags_plugin_name.cpp:53
 msgid "Gate"
 msgstr ""
 
@@ -1470,7 +1470,7 @@ msgid "Stereo Split"
 msgstr "Stereotilstand"
 
 #: data/ui/multiband_compressor_band.ui:578 data/ui/multiband_gate_band.ui:637
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:52
 #, fuzzy
 msgid "Filter"
 msgstr "Filterlængde"
@@ -1692,7 +1692,7 @@ msgstr "Skjul Vinduet."
 msgid "Overlap Length"
 msgstr "Filterlængde"
 
-#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:53
+#: data/ui/pitch.ui:133 src/tags_plugin_name.cpp:60
 msgid "Pitch"
 msgstr ""
 
@@ -2460,87 +2460,87 @@ msgstr "Import Modelfil"
 msgid "RNNoise Models"
 msgstr "RNNoise-modeller"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:39
 #, fuzzy
 msgid "Bass Enhancer"
 msgstr "Balance"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:40
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Hørestyrke"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:42
 msgid "Convolver"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:46
 msgid "Deesser"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:48
 #, fuzzy
 msgid "Echo Canceller"
 msgstr "Annuller"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:43
-msgid "Exciter"
-msgstr ""
-
-#: src/tags_plugin_name.cpp:47
-#, fuzzy
-msgid "Level Meter"
-msgstr "Udgangsenhed"
-
-#: src/tags_plugin_name.cpp:48
-msgid "Limiter"
-msgstr ""
-
 #: src/tags_plugin_name.cpp:50
-#, fuzzy
-msgid "Maximizer"
-msgstr "Maksimum"
-
-#: src/tags_plugin_name.cpp:51
-#, fuzzy
-msgid "Multiband Compressor"
-msgstr "Kompressor"
-
-#: src/tags_plugin_name.cpp:52
-msgid "Multiband Gate"
+msgid "Exciter"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:54
 #, fuzzy
+msgid "Level Meter"
+msgstr "Udgangsenhed"
+
+#: src/tags_plugin_name.cpp:55
+msgid "Limiter"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:57
+#, fuzzy
+msgid "Maximizer"
+msgstr "Maksimum"
+
+#: src/tags_plugin_name.cpp:58
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Kompressor"
+
+#: src/tags_plugin_name.cpp:59
+msgid "Multiband Gate"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:61
+#, fuzzy
 msgid "Reverberation"
 msgstr "Serveroplysninger"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:62
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Reduktion"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:57
+#: src/tags_plugin_name.cpp:64
 #, fuzzy
 msgid "Stereo Tools"
 msgstr "Stereotilstand"
