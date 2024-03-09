@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:13+0000\n"
+"POT-Creation-Date: 2024-03-09 02:29+0000\n"
 "PO-Revision-Date: 2024-01-30 16:00+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -2314,7 +2314,7 @@ msgstr ""
 "O arquivo de predefinição do GraphicEQ não foi carregado. Talvez o formato "
 "do arquivo não seja compatível. Por favor, verifique o conteúdo do arquivo."
 
-#: src/pipe_manager_box.cpp:344
+#: src/pipe_manager_box.cpp:346
 msgid "Remove Autoloading Preset"
 msgstr "Remover as Predefinições Carregadas Automaticamente"
 

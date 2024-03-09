@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:13+0000\n"
+"POT-Creation-Date: 2024-03-09 02:29+0000\n"
 "PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Daniel Svindseth <daniel@svindseth.net>\n"
 "Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
@@ -2310,7 +2310,7 @@ msgid ""
 "Its Content."
 msgstr ""
 
-#: src/pipe_manager_box.cpp:344
+#: src/pipe_manager_box.cpp:346
 msgid "Remove Autoloading Preset"
 msgstr ""
 
