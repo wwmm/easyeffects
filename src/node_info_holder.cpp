@@ -18,6 +18,8 @@
  */
 
 #include "node_info_holder.hpp"
+#include "tags_pipewire.hpp"
+#include "util.hpp"
 
 namespace ui::holders {
 

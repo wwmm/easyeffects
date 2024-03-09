@@ -18,6 +18,7 @@
  */
 
 #include "multiband_gate_ui.hpp"
+#include "tags_pipewire.hpp"
 
 namespace ui::multiband_gate_box {
 

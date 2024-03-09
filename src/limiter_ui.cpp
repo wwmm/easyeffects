@@ -18,6 +18,7 @@
  */
 
 #include "limiter_ui.hpp"
+#include "tags_pipewire.hpp"
 
 namespace ui::limiter_box {
 

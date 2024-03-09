@@ -18,6 +18,7 @@
  */
 
 #include "apps_box.hpp"
+#include "tags_pipewire.hpp"
 
 namespace ui::apps_box {
 

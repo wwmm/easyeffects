@@ -19,24 +19,33 @@
 
 #pragma once
 
+#include <pipewire/context.h>
+#include <pipewire/core.h>
 #include <pipewire/extensions/metadata.h>
-#include <pipewire/pipewire.h>
+#include <pipewire/link.h>         // IWYU pragma: export
+#include <pipewire/node.h>         // IWYU pragma: export
+#include <pipewire/pipewire.h>     // IWYU pragma: export
+#include <pipewire/proxy.h>        // IWYU pragma: export
+#include <pipewire/thread-loop.h>  // IWYU pragma: export
 #include <sigc++/sigc++.h>
+#include <sigc++/signal.h>
 #include <spa/monitor/device.h>
 #include <spa/param/audio/format-utils.h>
 #include <spa/param/audio/type-info.h>
-#include <spa/param/props.h>
+#include <spa/param/param.h>  // IWYU pragma: export
+#include <spa/param/props.h>  // IWYU pragma: export
+#include <spa/utils/defs.h>   // IWYU pragma: export
+#include <spa/utils/hook.h>   // IWYU pragma: export
 #include <spa/utils/json.h>
 #include <spa/utils/keys.h>
 #include <spa/utils/result.h>
-#include <algorithm>
+#include <sys/types.h>  // IWYU pragma: export
 #include <array>
+#include <cstddef>
+#include <cstdint>  // IWYU pragma: export
 #include <map>
-#include <memory>
-#include <span>
-#include "tags_app.hpp"
-#include "tags_pipewire.hpp"
-#include "util.hpp"
+#include <string>
+#include <vector>
 
 struct NodeInfo {
   pw_proxy* proxy = nullptr;

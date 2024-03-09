@@ -18,6 +18,7 @@
  */
 
 #include "app_info.hpp"
+#include "tags_pipewire.hpp"
 #include "ui_helpers.hpp"
 
 namespace ui::app_info {

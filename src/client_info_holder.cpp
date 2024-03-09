@@ -18,6 +18,7 @@
  */
 
 #include "client_info_holder.hpp"
+#include "util.hpp"
 
 namespace ui::holders {
 

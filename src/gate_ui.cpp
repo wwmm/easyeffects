@@ -18,6 +18,7 @@
  */
 
 #include "gate_ui.hpp"
+#include "tags_pipewire.hpp"
 
 namespace ui::gate_box {
 

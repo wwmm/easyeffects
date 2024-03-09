@@ -18,6 +18,8 @@
  */
 
 #include "test_signals.hpp"
+#include "tags_app.hpp"
+#include "util.hpp"
 
 namespace {
 

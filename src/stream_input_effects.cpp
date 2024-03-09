@@ -18,6 +18,8 @@
  */
 
 #include "stream_input_effects.hpp"
+#include <set>
+#include "tags_pipewire.hpp"
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     : EffectsBase("sie: ", tags::schema::id_input, pipe_manager) {
@@ -160,7 +162,6 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
   } else {
     // no apps want to play, check if the inactivity timer is enabled
     if (g_settings_get_boolean(global_settings, "inactivity-timer-enable")) {
-
       // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
       int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
       g_timeout_add_seconds(inactivity_timeout, GSourceFunc(+[](StreamInputEffects* self) {
@@ -177,10 +178,10 @@ void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
     } else {
       // otherwise, do nothing
       if (!list_proxies.empty()) {
-        util::debug("No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters linked.");
+        util::debug(
+            "No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters linked.");
       };
     };
-
   };
 }
 

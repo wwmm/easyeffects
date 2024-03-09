@@ -18,6 +18,46 @@
  */
 
 #include "pipe_manager.hpp"
+#include <bits/basic_string.h>
+#include <glib.h>
+#include <pipewire/client.h>
+#include <pipewire/context.h>
+#include <pipewire/core.h>
+#include <pipewire/device.h>
+#include <pipewire/extensions/metadata.h>
+#include <pipewire/keys.h>
+#include <pipewire/module.h>
+#include <pipewire/port.h>
+#include <pipewire/properties.h>
+#include <pipewire/version.h>
+#include <spa/monitor/device.h>
+#include <spa/param/audio/raw-types.h>
+#include <spa/param/audio/raw.h>
+#include <spa/param/format.h>
+#include <spa/param/route.h>
+#include <spa/pod/builder.h>
+#include <spa/pod/iter.h>
+#include <spa/pod/parser.h>
+#include <spa/pod/pod.h>
+#include <spa/utils/dict.h>
+#include <spa/utils/json.h>
+#include <spa/utils/keys.h>
+#include <spa/utils/result.h>
+#include <spa/utils/type.h>
+#include <algorithm>
+#include <array>
+#include <cerrno>
+#include <chrono>
+#include <cstring>
+#include <ctime>
+#include <span>
+#include <stdexcept>
+#include <string>
+#include <thread>
+#include <vector>
+#include "tags_app.hpp"
+#include "tags_pipewire.hpp"
+#include "util.hpp"
 
 namespace {
 

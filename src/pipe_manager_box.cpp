@@ -18,6 +18,8 @@
  */
 
 #include "pipe_manager_box.hpp"
+#include "tags_pipewire.hpp"
+#include "util.hpp"
 
 namespace ui::pipe_manager_box {
 

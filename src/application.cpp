@@ -22,6 +22,7 @@
 #include "config.h"
 #include "preferences_window.hpp"
 #include "tags_app.hpp"
+#include "tags_pipewire.hpp"
 
 namespace app {
 

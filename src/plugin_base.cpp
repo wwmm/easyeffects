@@ -18,6 +18,7 @@
  */
 
 #include "plugin_base.hpp"
+#include "tags_app.hpp"
 
 namespace {
 

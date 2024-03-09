@@ -18,6 +18,7 @@
  */
 
 #include "expander_ui.hpp"
+#include "tags_pipewire.hpp"
 
 namespace ui::expander_box {
 

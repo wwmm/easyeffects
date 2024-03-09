@@ -19,7 +19,15 @@
 
 #pragma once
 
-#include <set>
+#include <gio/gio.h>
+#include <glib.h>
+#include <pipewire/context.h>
+#include <sigc++/connection.h>
+#include <sigc++/signal.h>
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "bass_loudness.hpp"
@@ -42,8 +50,9 @@
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
 #include "output_level.hpp"
-#include "pipe_manager.hpp"
+#include "pipe_manager.hpp"  // IWYU pragma: export
 #include "pitch.hpp"
+#include "plugin_base.hpp"
 #include "reverb.hpp"
 #include "rnnoise.hpp"
 #include "spectrum.hpp"

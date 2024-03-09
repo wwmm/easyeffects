@@ -18,6 +18,7 @@
  */
 
 #include "multiband_compressor_ui.hpp"
+#include "tags_pipewire.hpp"
 
 namespace ui::multiband_compressor_box {
 
