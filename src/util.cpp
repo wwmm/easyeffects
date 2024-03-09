@@ -18,6 +18,29 @@
  */
 
 #include "util.hpp"
+#include <gdk/gdk.h>
+#include <gio/gio.h>
+#include <gio/gsettingsschema.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gvariant.h>
+#include <glib/gvarianttype.h>
+#include <glibconfig.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <cstring>
+#include <filesystem>
+#include <functional>
+#include <iostream>
+#include <ostream>
+#include <regex>
+#include <sstream>
+#include <string>
+#include <thread>
+#include <utility>
+#include <vector>
 
 namespace util {
 
@@ -52,7 +75,7 @@ void info(const std::string& s, source_location location) {
 }
 
 void print_thread_id() {
-  std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
+  std::cout << "thread id: " << std::this_thread::get_id() << '\n';
 }
 
 auto normalize(const double& x, const double& max, const double& min) -> double {

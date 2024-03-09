@@ -18,6 +18,13 @@
  */
 
 #include "crystalizer_preset.hpp"
+#include <gio/gio.h>
+#include <nlohmann/json_fwd.hpp>
+#include "plugin_preset_base.hpp"
+#include "preset_type.hpp"
+#include "tags_plugin_name.hpp"
+#include "tags_schema.hpp"
+#include "util.hpp"
 
 CrystalizerPreset::CrystalizerPreset(PresetType preset_type, const int& index)
     : PluginPresetBase(tags::schema::crystalizer::id,

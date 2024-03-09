@@ -18,6 +18,16 @@
  */
 
 #include "equalizer_preset.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <nlohmann/json_fwd.hpp>
+#include "plugin_preset_base.hpp"
+#include "preset_type.hpp"
+#include "tags_equalizer.hpp"
+#include "tags_plugin_name.hpp"
+#include "tags_schema.hpp"
+#include "util.hpp"
 
 using namespace tags::equalizer;
 

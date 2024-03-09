@@ -18,6 +18,13 @@
  */
 
 #include "tags_plugin_name.hpp"
+#include <glib/gi18n.h>
+#include <sys/types.h>
+#include <map>
+#include <regex>
+#include <string>
+#include <string_view>
+#include "util.hpp"
 
 namespace {
 

@@ -17,9 +17,20 @@
  *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <gio/gio.h>
+#include <glib-object.h>
 #include <glib-unix.h>
+#include <glib.h>
+#include <libintl.h>
+#include <cerrno>
+#include <cstdlib>
+#include <exception>
+#include <iostream>
+#include <ostream>
+#include <string>
 #include "application.hpp"
 #include "config.h"
+#include "util.hpp"
 
 auto sigterm(void* data) -> int {
   auto* app = G_APPLICATION(data);
