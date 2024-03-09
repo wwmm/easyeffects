@@ -18,7 +18,6 @@
  */
 
 #include "pipe_manager.hpp"
-#include <bits/basic_string.h>
 #include <glib.h>
 #include <pipewire/client.h>
 #include <pipewire/context.h>
