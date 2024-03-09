@@ -21,6 +21,7 @@
 
 #include <glib-object.h>
 #include <glibconfig.h>
+#include <gtk/gtk.h>
 #include "application.hpp"
 #include "pipeline_type.hpp"
 

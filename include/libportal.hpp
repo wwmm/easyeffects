@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include <gtk/gtkswitch.h>
+#include <gtk/gtk.h>
 #include "libportal-gtk4/portal-gtk4.h"
 #include "libportal/portal.h"
 

@@ -18,7 +18,6 @@
  */
 
 #include "test_signals.hpp"
-#include <bits/basic_string.h>
 #include <pipewire/filter.h>
 #include <pipewire/keys.h>
 #include <pipewire/port.h>

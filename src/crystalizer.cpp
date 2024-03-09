@@ -18,7 +18,6 @@
  */
 
 #include "crystalizer.hpp"
-#include <bits/basic_string.h>
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
