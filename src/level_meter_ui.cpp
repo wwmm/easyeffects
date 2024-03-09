@@ -18,6 +18,28 @@
  */
 
 #include "level_meter_ui.hpp"
+#include <STTypes.h>
+#define FMT_HEADER_ONLY
+#include <fmt/core.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklevelbar.h>
+#include <sigc++/connection.h>
+#include <memory>
+#include <string>
+#include <vector>
+#include "level_meter.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::level_meter_box {
 

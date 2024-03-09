@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 16:45-0300\n"
+"POT-Creation-Date: 2024-03-09 18:05-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2143,8 +2143,8 @@ msgid "Models"
 msgstr "Mod"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:100 src/rnnoise_ui.cpp:281
-#: src/rnnoise_ui.cpp:315
+#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:134 src/rnnoise_ui.cpp:315
+#: src/rnnoise_ui.cpp:349
 #, fuzzy
 msgid "Standard Model"
 msgstr "Model Standard RNNoise"
@@ -2425,7 +2425,7 @@ msgid "Import Impulse File"
 msgstr "Importă Fișier Impulse"
 
 #: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
-#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
+#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
 msgid "Open"
 msgstr "Deschide"
 
@@ -2443,12 +2443,12 @@ msgstr "Importă Impuls"
 msgid "Remove Impulse"
 msgstr "Importă Impuls"
 
-#: src/convolver_ui.cpp:338
+#: src/convolver_ui.cpp:377
 #, fuzzy
 msgid "No Impulse File Loaded"
 msgstr "Importă Fișier Impulse"
 
-#: src/convolver_ui.cpp:364
+#: src/convolver_ui.cpp:403
 #, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Nu s-a putut Încărca Fișierul Impulse"
@@ -2577,17 +2577,17 @@ msgstr ""
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
-#: src/rnnoise_ui.cpp:95
+#: src/rnnoise_ui.cpp:129
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
 
-#: src/rnnoise_ui.cpp:138
+#: src/rnnoise_ui.cpp:172
 msgid "Import Model File"
 msgstr "Importă Fișier de Model"
 
-#: src/rnnoise_ui.cpp:151
+#: src/rnnoise_ui.cpp:185
 #, fuzzy
 msgid "RNNoise Models"
 msgstr "Model Standard RNNoise"

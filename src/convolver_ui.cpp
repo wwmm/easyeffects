@@ -18,10 +18,49 @@
  */
 
 #include "convolver_ui.hpp"
+#include <STTypes.h>
+#include <fftw3.h>
+#include <fmt/format.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <gsl/gsl_interp.h>
+#include <gsl/gsl_spline.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtkcheckbutton.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklevelbar.h>
+#include <gtk/gtkmenubutton.h>
+#include <gtk/gtkscale.h>
+#include <gtk/gtkshortcut.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtktogglebutton.h>
+#include <sigc++/connection.h>
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <filesystem>
+#include <memory>
+#include <mutex>
+#include <numbers>
+#include <string>
+#include <thread>
+#include <vector>
+#include "application.hpp"
 #include "chart.hpp"
+#include "convolver.hpp"
 #include "convolver_menu_combine.hpp"
 #include "convolver_menu_impulses.hpp"
 #include "convolver_ui_common.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::convolver_box {
 

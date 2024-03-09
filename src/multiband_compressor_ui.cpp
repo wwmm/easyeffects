@@ -18,7 +18,43 @@
  */
 
 #include "multiband_compressor_ui.hpp"
+#include <STTypes.h>
+#include <gio/gio.h>
+#include <gio/gliststore.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtkcheckbutton.h>
+#include <gtk/gtkdropdown.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklevelbar.h>
+#include <gtk/gtklistbox.h>
+#include <gtk/gtkscale.h>
+#include <gtk/gtksingleselection.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtkstack.h>
+#include <gtk/gtktogglebutton.h>
+#include <sigc++/connection.h>
+#include <array>
+#include <cstddef>
+#include <memory>
+#include <string>
+#include <vector>
+#include "multiband_compressor.hpp"
+#include "multiband_compressor_band_box.hpp"
+#include "node_info_holder.hpp"
+#include "pipe_manager.hpp"
+#include "pipe_objects.hpp"
+#include "tags_multiband_compressor.hpp"
 #include "tags_pipewire.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::multiband_compressor_box {
 

@@ -545,11 +545,11 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
     return false;
   }
 
-  return (!g_output_stream_close(G_OUTPUT_STREAM(output_stream), nullptr, nullptr)) ? false : true;
+  return g_output_stream_close(G_OUTPUT_STREAM(output_stream), nullptr, nullptr) != 0;
 }
 
 void on_export_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
-  if (g_settings_get_boolean(self->settings, "split-channels") == true) {
+  if (static_cast<bool>(g_settings_get_boolean(self->settings, "split-channels"))) {
     ui::show_fixed_toast(self->toast_overlay, _("Split channels not yet supported when exporting APO presets."));
     return;
   }

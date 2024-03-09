@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 16:45-0300\n"
+"POT-Creation-Date: 2024-03-09 18:05-0300\n"
 "PO-Revision-Date: 2024-03-06 06:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1961,8 +1961,8 @@ msgid "Models"
 msgstr "Modeller"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:100 src/rnnoise_ui.cpp:281
-#: src/rnnoise_ui.cpp:315
+#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:134 src/rnnoise_ui.cpp:315
+#: src/rnnoise_ui.cpp:349
 msgid "Standard Model"
 msgstr "Standart Model"
 
@@ -2216,7 +2216,7 @@ msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
 #: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
-#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
+#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
 msgid "Open"
 msgstr "Aç"
 
@@ -2232,11 +2232,11 @@ msgstr "Dürtüyü Yükle"
 msgid "Remove Impulse"
 msgstr "Dürtüyü Kaldır"
 
-#: src/convolver_ui.cpp:338
+#: src/convolver_ui.cpp:377
 msgid "No Impulse File Loaded"
 msgstr "Dürtü Dosyası Yüklenmemiş"
 
-#: src/convolver_ui.cpp:364
+#: src/convolver_ui.cpp:403
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
@@ -2359,7 +2359,7 @@ msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 msgid "Generic Error While Loading The Effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
-#: src/rnnoise_ui.cpp:95
+#: src/rnnoise_ui.cpp:129
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2367,11 +2367,11 @@ msgstr ""
 "Seçilen Model Yüklenmedi. Biçimi Desteklenmiyor Olabilir. Bunun Yerine "
 "Standart Modele Dönüldü."
 
-#: src/rnnoise_ui.cpp:138
+#: src/rnnoise_ui.cpp:172
 msgid "Import Model File"
 msgstr "Model Dosyasını İçe Aktar"
 
-#: src/rnnoise_ui.cpp:151
+#: src/rnnoise_ui.cpp:185
 msgid "RNNoise Models"
 msgstr "RNNoise Modelleri"
 

@@ -18,6 +18,27 @@
  */
 
 #include "crystalizer_ui.hpp"
+#include <STTypes.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklevelbar.h>
+#include <gtk/gtkscale.h>
+#include <sigc++/connection.h>
+#include <memory>
+#include <string>
+#include <vector>
+#include "crystalizer.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::crystalizer_box {
 
@@ -123,6 +144,8 @@ void build_bands(CrystalizerBox* self) {
         break;
       case 12U:
         gtk_label_set_text(band_label, "17.5 kHz");
+        break;
+      default:
         break;
     }
 

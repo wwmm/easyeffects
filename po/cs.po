@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 16:45-0300\n"
+"POT-Creation-Date: 2024-03-09 18:05-0300\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2013,8 +2013,8 @@ msgid "Models"
 msgstr "Modely"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:100 src/rnnoise_ui.cpp:281
-#: src/rnnoise_ui.cpp:315
+#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:134 src/rnnoise_ui.cpp:315
+#: src/rnnoise_ui.cpp:349
 msgid "Standard Model"
 msgstr "Standardní model"
 
@@ -2267,7 +2267,7 @@ msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
 #: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
-#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
+#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
 msgid "Open"
 msgstr "Otevřít"
 
@@ -2283,11 +2283,11 @@ msgstr "Načíst Impulse"
 msgid "Remove Impulse"
 msgstr "Odstranit Impuls"
 
-#: src/convolver_ui.cpp:338
+#: src/convolver_ui.cpp:377
 msgid "No Impulse File Loaded"
 msgstr "Impulse soubor nebyl načten"
 
-#: src/convolver_ui.cpp:364
+#: src/convolver_ui.cpp:403
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát Impulse soubor"
 
@@ -2415,7 +2415,7 @@ msgstr ""
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
-#: src/rnnoise_ui.cpp:95
+#: src/rnnoise_ui.cpp:129
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2423,11 +2423,11 @@ msgstr ""
 "Vybraný model nebyl načten. Jeho formát nemusí být podporovaný. Návrat ke "
 "standardnímu modelu."
 
-#: src/rnnoise_ui.cpp:138
+#: src/rnnoise_ui.cpp:172
 msgid "Import Model File"
 msgstr "Importovat modelový soubor"
 
-#: src/rnnoise_ui.cpp:151
+#: src/rnnoise_ui.cpp:185
 msgid "RNNoise Models"
 msgstr "RNNoise Modely"
 
