@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:29+0000\n"
+"POT-Creation-Date: 2024-03-09 13:23-0300\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -740,7 +740,7 @@ msgstr "コンバイン"
 msgid "Stereo Width"
 msgstr "ステレオ幅"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:232
 msgid "Spectrum"
 msgstr "スペクトラム"
 
@@ -1553,7 +1553,7 @@ msgstr "プリセット自動読み込み"
 msgid "Output Devices"
 msgstr "出力デバイス"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:289
 msgid "Output Presets"
 msgstr "出力プリセット"
 
@@ -1573,7 +1573,7 @@ msgstr "自動読み込み出力プリセットリスト"
 msgid "Input Devices"
 msgstr "入力デバイス"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:297
 msgid "Input Presets"
 msgstr "入力プリセット"
 
@@ -2183,36 +2183,36 @@ msgstr ""
 msgid "channels"
 msgstr "チャンネル"
 
-#: src/application.cpp:483
+#: src/application.cpp:506
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:573
+#: src/application.cpp:596
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Easy Effects を終了します。サービスモードで動作しているときに便利です。"
 
-#: src/application.cpp:576
+#: src/application.cpp:599
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:579
+#: src/application.cpp:602
 msgid "Reset Easy Effects."
 msgstr "Easy Effects をリセット。"
 
-#: src/application.cpp:582
+#: src/application.cpp:605
 msgid "Hide the Window."
 msgstr "ウィンドウを隠す。"
 
-#: src/application.cpp:585
+#: src/application.cpp:608
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "グローバルバイパス。1 で有効、2 で無効、3 でステータス取得"
 
-#: src/application.cpp:588
+#: src/application.cpp:611
 msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 
-#: src/application.cpp:591
+#: src/application.cpp:614
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込む。例: easyeffects -l music"
 
@@ -2336,11 +2336,11 @@ msgstr ""
 "GraphicEQ プリセットが読み込まれていません。ファイル形式がサポートされていな"
 "い可能性があります。内容を確認してください。"
 
-#: src/pipe_manager_box.cpp:346
+#: src/pipe_manager_box.cpp:368
 msgid "Remove Autoloading Preset"
 msgstr "自動読み込みプリセットを削除"
 
-#: src/plugin_base.cpp:198
+#: src/plugin_base.cpp:230
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 

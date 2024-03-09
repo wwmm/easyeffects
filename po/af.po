@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:29+0000\n"
+"POT-Creation-Date: 2024-03-09 13:23-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Afrikaans <https://hosted.weblate.org/projects/easyeffects/"
@@ -734,7 +734,7 @@ msgstr ""
 msgid "Stereo Width"
 msgstr ""
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:232
 msgid "Spectrum"
 msgstr ""
 
@@ -1529,7 +1529,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:289
 msgid "Output Presets"
 msgstr ""
 
@@ -1549,7 +1549,7 @@ msgstr ""
 msgid "Input Devices"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:297
 msgid "Input Presets"
 msgstr ""
 
@@ -2149,36 +2149,36 @@ msgstr ""
 msgid "channels"
 msgstr ""
 
-#: src/application.cpp:483
+#: src/application.cpp:506
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:573
+#: src/application.cpp:596
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:576
+#: src/application.cpp:599
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:579
+#: src/application.cpp:602
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "EasyEffects"
 
-#: src/application.cpp:582
+#: src/application.cpp:605
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:585
+#: src/application.cpp:608
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:588
+#: src/application.cpp:611
 msgid "Show available presets."
 msgstr ""
 
-#: src/application.cpp:591
+#: src/application.cpp:614
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
@@ -2295,11 +2295,11 @@ msgid ""
 "Its Content."
 msgstr ""
 
-#: src/pipe_manager_box.cpp:346
+#: src/pipe_manager_box.cpp:368
 msgid "Remove Autoloading Preset"
 msgstr ""
 
-#: src/plugin_base.cpp:198
+#: src/plugin_base.cpp:230
 msgid "Output Level Meter"
 msgstr ""
 

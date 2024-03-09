@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:29+0000\n"
+"POT-Creation-Date: 2024-03-09 13:23-0300\n"
 "PO-Revision-Date: 2024-03-06 06:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -733,7 +733,7 @@ msgstr "Birleştir"
 msgid "Stereo Width"
 msgstr "Stereo Genişliği"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:232
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1531,7 +1531,7 @@ msgstr "Ön Ayarları Otomatik Yükle"
 msgid "Output Devices"
 msgstr "Çıkış Aygıtları"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:289
 msgid "Output Presets"
 msgstr "Çıkış Ön Ayarları"
 
@@ -1551,7 +1551,7 @@ msgstr "Çıktı Otomatik Yükleme Ön Ayarları Listesi"
 msgid "Input Devices"
 msgstr "Giriş Aygıtları"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:297
 msgid "Input Presets"
 msgstr "Giriş Ön Ayarları"
 
@@ -2150,36 +2150,36 @@ msgstr "Tanımsız Ad - Süreç Kimliği "
 msgid "channels"
 msgstr "kanallar"
 
-#: src/application.cpp:483
+#: src/application.cpp:506
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:573
+#: src/application.cpp:596
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Easy Effects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
-#: src/application.cpp:576
+#: src/application.cpp:599
 msgid "Print the easyeffects version"
 msgstr "Easyeffects sürümünü yazdır"
 
-#: src/application.cpp:579
+#: src/application.cpp:602
 msgid "Reset Easy Effects."
 msgstr "Easy Effects’i Sıfırla."
 
-#: src/application.cpp:582
+#: src/application.cpp:605
 msgid "Hide the Window."
 msgstr "Pencereyi Gizle."
 
-#: src/application.cpp:585
+#: src/application.cpp:608
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Genel atlama. 1 etkinleştirmek, 2 devre dışı bırakmak ve 3 durumu almak için"
 
-#: src/application.cpp:588
+#: src/application.cpp:611
 msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
-#: src/application.cpp:591
+#: src/application.cpp:614
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Ön ayar yükle. Örnek: easyeffects -l music"
 
@@ -2301,11 +2301,11 @@ msgstr ""
 "GraphicEQ Ön Ayarı Yüklü Değil. Dosya Biçimi Desteklenmiyor Olabilir. Lütfen "
 "İçeriğini Denetleyin."
 
-#: src/pipe_manager_box.cpp:346
+#: src/pipe_manager_box.cpp:368
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/plugin_base.cpp:198
+#: src/plugin_base.cpp:230
 msgid "Output Level Meter"
 msgstr "Çıktı Düzey Ölçer"
 

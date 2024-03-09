@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:29+0000\n"
+"POT-Creation-Date: 2024-03-09 13:23-0300\n"
 "PO-Revision-Date: 2024-01-30 16:00+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -740,7 +740,7 @@ msgstr "Combinar"
 msgid "Stereo Width"
 msgstr "Largura do Estéreo"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:232
 msgid "Spectrum"
 msgstr "Espectro"
 
@@ -1539,7 +1539,7 @@ msgstr "Carregamento Automático das Definições"
 msgid "Output Devices"
 msgstr "Dispositivos de Saída"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:289
 msgid "Output Presets"
 msgstr "Predefinições de Saída"
 
@@ -1559,7 +1559,7 @@ msgstr "Lista das Predefinições de Saída"
 msgid "Input Devices"
 msgstr "Dispositivos de Entrada"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:297
 msgid "Input Presets"
 msgstr "Predefinições de Entrada"
 
@@ -2158,40 +2158,40 @@ msgstr "Nome Não Definido para o ID do Processo "
 msgid "channels"
 msgstr "canais"
 
-#: src/application.cpp:483
+#: src/application.cpp:506
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 "Página eletrônica do Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:573
+#: src/application.cpp:596
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Sair do Easy Effects. Esta opção é útil quando estiver sendo executado no "
 "modo de serviço."
 
-#: src/application.cpp:576
+#: src/application.cpp:599
 msgid "Print the easyeffects version"
 msgstr "Exibir a versão do Easy Effects"
 
-#: src/application.cpp:579
+#: src/application.cpp:602
 msgid "Reset Easy Effects."
 msgstr "Redefinir o Easy Effects."
 
-#: src/application.cpp:582
+#: src/application.cpp:605
 msgid "Hide the Window."
 msgstr "Ocultar a Janela."
 
-#: src/application.cpp:585
+#: src/application.cpp:608
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Ignorar Globalmente. Onde serve 1 para ativar, 2 para desativar e 3 para "
 "verificar o estado"
 
-#: src/application.cpp:588
+#: src/application.cpp:611
 msgid "Show available presets."
 msgstr "Exibir as predefinições que estão disponíveis."
 
-#: src/application.cpp:591
+#: src/application.cpp:614
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Por exemplo: easyeffects -l music"
 
@@ -2314,11 +2314,11 @@ msgstr ""
 "O arquivo de predefinição do GraphicEQ não foi carregado. Talvez o formato "
 "do arquivo não seja compatível. Por favor, verifique o conteúdo do arquivo."
 
-#: src/pipe_manager_box.cpp:346
+#: src/pipe_manager_box.cpp:368
 msgid "Remove Autoloading Preset"
 msgstr "Remover as Predefinições Carregadas Automaticamente"
 
-#: src/plugin_base.cpp:198
+#: src/plugin_base.cpp:230
 msgid "Output Level Meter"
 msgstr "Medidor do Nível de Saída"
 

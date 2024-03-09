@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:29+0000\n"
+"POT-Creation-Date: 2024-03-09 13:23-0300\n"
 "PO-Revision-Date: 2024-03-08 09:01+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -734,7 +734,7 @@ msgstr "Combina"
 msgid "Stereo Width"
 msgstr "Ampiezza Stereo"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:232
 msgid "Spectrum"
 msgstr "Spettro"
 
@@ -1532,7 +1532,7 @@ msgstr "Auto Caricamento Profili"
 msgid "Output Devices"
 msgstr "Dispositivi di Uscita"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:289
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
@@ -1552,7 +1552,7 @@ msgstr "Profili di Auto Caricamento in Uscita"
 msgid "Input Devices"
 msgstr "Dispositivi di Ingresso"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:297
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
@@ -2152,36 +2152,36 @@ msgstr "Nome Indefinito - ID Processo "
 msgid "channels"
 msgstr "Canali"
 
-#: src/application.cpp:483
+#: src/application.cpp:506
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:573
+#: src/application.cpp:596
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Chiudi Easy Effects. Utile in esecuzione come servizio."
 
-#: src/application.cpp:576
+#: src/application.cpp:599
 msgid "Print the easyeffects version"
 msgstr "Stampa la versione di easyeffects"
 
-#: src/application.cpp:579
+#: src/application.cpp:602
 msgid "Reset Easy Effects."
 msgstr "Reimposta Easy Effects."
 
-#: src/application.cpp:582
+#: src/application.cpp:605
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra."
 
-#: src/application.cpp:585
+#: src/application.cpp:608
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
 
-#: src/application.cpp:588
+#: src/application.cpp:611
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
-#: src/application.cpp:591
+#: src/application.cpp:614
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
@@ -2304,11 +2304,11 @@ msgstr ""
 "Profilo GraphicEQ Non Caricato. Il Formato Potrebbe Essere Non Supportato. "
 "Si Prega di Controllarne il Contenuto."
 
-#: src/pipe_manager_box.cpp:346
+#: src/pipe_manager_box.cpp:368
 msgid "Remove Autoloading Preset"
 msgstr "Rimuovi Profilo di Auto Caricamento"
 
-#: src/plugin_base.cpp:198
+#: src/plugin_base.cpp:230
 msgid "Output Level Meter"
 msgstr "Misuratore Livello Uscita"
 

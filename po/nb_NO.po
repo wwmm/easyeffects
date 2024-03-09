@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:29+0000\n"
+"POT-Creation-Date: 2024-03-09 13:23-0300\n"
 "PO-Revision-Date: 2024-02-20 11:02+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -752,7 +752,7 @@ msgstr "Kombiner"
 msgid "Stereo Width"
 msgstr "Stereobredde"
 
-#: data/ui/convolver.ui:114 src/plugin_base.cpp:200
+#: data/ui/convolver.ui:114 src/plugin_base.cpp:232
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1570,7 +1570,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Utgangsenheter"
 
-#: data/ui/pipe_manager_box.ui:249 src/application.cpp:266
+#: data/ui/pipe_manager_box.ui:249 src/application.cpp:289
 msgid "Output Presets"
 msgstr "Utgangsforhåndsinnstillinger"
 
@@ -1590,7 +1590,7 @@ msgstr ""
 msgid "Input Devices"
 msgstr "Inngangsenheter"
 
-#: data/ui/pipe_manager_box.ui:341 src/application.cpp:274
+#: data/ui/pipe_manager_box.ui:341 src/application.cpp:297
 msgid "Input Presets"
 msgstr "Inngangsforhåndsinnstillinger"
 
@@ -2212,37 +2212,37 @@ msgstr ""
 msgid "channels"
 msgstr "Kanaler"
 
-#: src/application.cpp:483
+#: src/application.cpp:506
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:573
+#: src/application.cpp:596
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:576
+#: src/application.cpp:599
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:579
+#: src/application.cpp:602
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Avslutt EasyEffects"
 
-#: src/application.cpp:582
+#: src/application.cpp:605
 #, fuzzy
 msgid "Hide the Window."
 msgstr "Skjul vinduet."
 
-#: src/application.cpp:585
+#: src/application.cpp:608
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:588
+#: src/application.cpp:611
 msgid "Show available presets."
 msgstr "Vis tilgjengelige forhåndsinnstillinger."
 
-#: src/application.cpp:591
+#: src/application.cpp:614
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
@@ -2365,11 +2365,11 @@ msgid ""
 "Its Content."
 msgstr ""
 
-#: src/pipe_manager_box.cpp:346
+#: src/pipe_manager_box.cpp:368
 msgid "Remove Autoloading Preset"
 msgstr ""
 
-#: src/plugin_base.cpp:198
+#: src/plugin_base.cpp:230
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Utgangsenhet"
