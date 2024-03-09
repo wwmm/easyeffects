@@ -20,7 +20,13 @@
 #pragma once
 
 #include <adwaita.h>
-#include "effects_base.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
+#include "compressor.hpp"
+#include "pipe_manager.hpp"
 
 namespace ui::compressor_box {
 

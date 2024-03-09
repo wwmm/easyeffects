@@ -25,7 +25,7 @@
 #include <gtk/gtkbox.h>
 #include <memory>
 #include <string>
-#include "effects_base.hpp"
+#include "crossfeed.hpp"
 
 namespace ui::crossfeed_box {
 

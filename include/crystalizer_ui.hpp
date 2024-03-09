@@ -20,9 +20,12 @@
 #pragma once
 
 #include <adwaita.h>
-#include "effects_base.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
+#include "crystalizer.hpp"
 
 namespace ui::crystalizer_box {
 

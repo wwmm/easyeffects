@@ -20,6 +20,8 @@
 #pragma once
 
 #include <filesystem>
+#include <string>
+#include <tuple>
 #include <vector>
 
 namespace ui::convolver {

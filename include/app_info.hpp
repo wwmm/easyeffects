@@ -19,11 +19,17 @@
 
 #pragma once
 
+#include <STTypes.h>
 #include <adwaita.h>
 #include <fmt/core.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkicontheme.h>
+#include <unordered_map>
 #include "application.hpp"
-#include "node_info_holder.hpp"  // IWYU pragma: export
-#include "tags_resources.hpp"    // IWYU pragma: export
+#include "pipe_objects.hpp"
 
 namespace ui::app_info {
 

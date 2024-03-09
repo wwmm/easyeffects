@@ -34,9 +34,11 @@
 #include <thread>
 #include <vector>
 #include "effects_base.hpp"
+#include "pipe_manager.hpp"
 #include "pipe_objects.hpp"
 #include "tags_pipewire.hpp"
 #include "tags_plugin_name.hpp"
+#include "tags_schema.hpp"
 #include "util.hpp"
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)

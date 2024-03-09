@@ -20,7 +20,12 @@
 #pragma once
 
 #include <adwaita.h>
-#include "effects_base.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
+#include "autogain.hpp"
 
 namespace ui::autogain_box {
 

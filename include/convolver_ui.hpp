@@ -21,13 +21,14 @@
 
 #include <adwaita.h>
 #include <fftw3.h>
+#include <glib-object.h>
+#include <glibconfig.h>
 #include <gsl/gsl_spline.h>
-#include <algorithm>
-#include <mutex>
-#include <numbers>
-#include <ranges>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
 #include "application.hpp"
-#include "effects_base.hpp"
+#include "convolver.hpp"
 
 namespace ui::convolver_box {
 

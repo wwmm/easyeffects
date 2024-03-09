@@ -20,11 +20,10 @@
 #pragma once
 
 #include <adwaita.h>
-#include <algorithm>
-#include <ranges>
-#include <string>
-#include <unordered_map>
-#include "app_info.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkicontheme.h>
 #include "application.hpp"
 #include "pipeline_type.hpp"
 

@@ -50,6 +50,7 @@
 #include "pipe_objects.hpp"
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
+#include "tags_resources.hpp"
 #include "ui_helpers.hpp"
 #include "util.hpp"
 

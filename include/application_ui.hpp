@@ -20,6 +20,9 @@
 #pragma once
 
 #include <adwaita.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glibconfig.h>
 
 namespace ui::application_window {
 

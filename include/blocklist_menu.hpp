@@ -20,7 +20,9 @@
 #pragma once
 
 #include <adwaita.h>
-#include <string>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkpopover.h>
 #include "application.hpp"
 #include "pipeline_type.hpp"
 

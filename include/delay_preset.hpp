@@ -19,7 +19,9 @@
 
 #pragma once
 
+#include <nlohmann/json_fwd.hpp>
 #include "plugin_preset_base.hpp"
+#include "preset_type.hpp"
 
 class DelayPreset : public PluginPresetBase {
  public:

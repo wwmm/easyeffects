@@ -20,7 +20,12 @@
 #pragma once
 
 #include <adwaita.h>
-#include "effects_base.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
+#include "bass_loudness.hpp"
 
 namespace ui::bass_loudness_box {
 

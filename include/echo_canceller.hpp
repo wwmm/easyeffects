@@ -20,11 +20,16 @@
 #pragma once
 
 #include <speex/speex_echo.h>
-#include <deque>
-#include <numeric>
+#include <climits>
+#include <span>
+#include <string>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 #include <speex/speex_preprocess.h>
+#include <speex/speexdsp_config_types.h>
+#include <sys/types.h>
 
 class EchoCanceller : public PluginBase {
  public:
