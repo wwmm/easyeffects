@@ -18,8 +18,26 @@
  */
 
 #include "stream_output_effects.hpp"
+#include <STTypes.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <pipewire/link.h>
+#include <sigc++/functors/mem_fun.h>
+#include <spa/utils/defs.h>
+#include <algorithm>
+#include <chrono>
+#include <cstdlib>
+#include <ranges>
 #include <set>
+#include <string>
+#include <thread>
+#include <vector>
+#include "effects_base.hpp"
+#include "pipe_objects.hpp"
 #include "tags_pipewire.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     : EffectsBase("soe: ", tags::schema::id_output, pipe_manager) {
@@ -37,7 +55,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     }
   }
 
-  connections.push_back(pm->sink_added.connect([=, this](const NodeInfo node) {
+  connections.push_back(pm->sink_added.connect([this](const NodeInfo node) {
     if (node.name == util::gsettings_get_string(settings, "output-device")) {
       pm->output_device = node;
 
@@ -51,7 +69,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     }
   }));
 
-  connections.push_back(pm->sink_removed.connect([=, this](const NodeInfo node) {
+  connections.push_back(pm->sink_removed.connect([this](const NodeInfo node) {
     if (g_settings_get_boolean(settings, "use-default-output-device") == 0) {
       if (node.name == util::gsettings_get_string(settings, "output-device")) {
         pm->output_device.id = SPA_ID_INVALID;

@@ -18,6 +18,12 @@
  */
 
 #include "filter.hpp"
+#include <algorithm>
+#include <memory>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Filter::Filter(const std::string& tag,
                const std::string& schema,

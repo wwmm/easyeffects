@@ -22,6 +22,7 @@
 #include <gio/gio.h>
 #include <glib.h>
 #include <pipewire/context.h>
+#include <pipewire/proxy.h>
 #include <sigc++/connection.h>
 #include <sigc++/signal.h>
 #include <map>

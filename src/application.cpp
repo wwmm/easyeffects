@@ -18,11 +18,34 @@
  */
 
 #include "application.hpp"
+#include <adwaita.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
+#include <spa/param/param.h>
+#include <spa/utils/defs.h>
+#include <array>
+#include <cstdlib>
+#include <iostream>
+#include <ostream>
+#include <string>
+#include <thread>
 #include "application_ui.hpp"
 #include "config.h"
+#include "pipe_manager.hpp"
+#include "pipe_objects.hpp"
 #include "preferences_window.hpp"
+#include "preset_type.hpp"
+#include "presets_manager.hpp"
+#include "stream_input_effects.hpp"
+#include "stream_output_effects.hpp"
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "util.hpp"
 
 namespace app {
 
@@ -263,7 +286,7 @@ void application_class_init(ApplicationClass* klass) {
         list += name + ",";
       }
 
-      std::cout << _("Output Presets") + ": "s + list << std::endl;
+      std::cout << _("Output Presets") + ": "s + list << '\n';
 
       list = "";
 
@@ -271,7 +294,7 @@ void application_class_init(ApplicationClass* klass) {
         list += name + ",";
       }
 
-      std::cout << _("Input Presets") + ": "s + list << std::endl;
+      std::cout << _("Input Presets") + ": "s + list << '\n';
 
       return EXIT_SUCCESS;
     }
@@ -279,7 +302,7 @@ void application_class_init(ApplicationClass* klass) {
     if (g_variant_dict_contains(options, "bypass") != 0) {
       if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
         if (bypass_arg == 3) {
-          std::cout << g_settings_get_boolean(self->settings, "bypass") << std::endl;
+          std::cout << g_settings_get_boolean(self->settings, "bypass") << '\n';
 
           return EXIT_SUCCESS;
         }

@@ -18,8 +18,26 @@
  */
 
 #include "convolver.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <sched.h>
+#include <sys/types.h>
+#include <zita-convolver.h>
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <memory>
+#include <mutex>
 #include <sndfile.hh>
+#include <span>
+#include <string>
+#include <vector>
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
 #include "resampler.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 namespace {
 
@@ -243,7 +261,7 @@ void Convolver::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
-    util::idle_add([=, this] { latency.emit(); });
+    util::idle_add([this] { latency.emit(); });
 
     update_filter_params();
 

@@ -18,6 +18,19 @@
  */
 
 #include "stereo_tools.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <algorithm>
+#include <cstddef>
+#include <memory>
+#include <span>
+#include <string>
+#include "lv2_wrapper.hpp"
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 StereoTools::StereoTools(const std::string& tag,
                          const std::string& schema,

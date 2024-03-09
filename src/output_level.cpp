@@ -18,6 +18,13 @@
  */
 
 #include "output_level.hpp"
+#include <algorithm>
+#include <span>
+#include <string>
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 OutputLevel::OutputLevel(const std::string& tag,
                          const std::string& schema,

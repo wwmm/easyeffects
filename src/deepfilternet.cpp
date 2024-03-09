@@ -18,6 +18,14 @@
  */
 
 #include "deepfilternet.hpp"
+#include <algorithm>
+#include <memory>
+#include <mutex>
+#include <span>
+#include <string>
+#include <vector>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 DeepFilterNet::DeepFilterNet(const std::string& tag,
                              const std::string& schema,

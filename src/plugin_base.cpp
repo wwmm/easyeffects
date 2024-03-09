@@ -18,7 +18,39 @@
  */
 
 #include "plugin_base.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <pipewire/filter.h>
+#include <pipewire/keys.h>
+#include <pipewire/loop.h>
+#include <pipewire/port.h>
+#include <pipewire/properties.h>
+#include <pipewire/thread-loop.h>
+#include <spa/node/io.h>
+#include <spa/param/latency-utils.h>
+#include <spa/param/latency.h>
+#include <spa/param/param.h>
+#include <spa/pod/builder.h>
+#include <spa/pod/pod.h>
+#include <spa/support/loop.h>
+#include <spa/utils/defs.h>
+#include <spa/utils/hook.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <array>
+#include <chrono>
+#include <cstddef>
+#include <cstdint>
+#include <span>
+#include <string>
+#include <thread>
+#include <utility>
+#include "pipe_manager.hpp"
 #include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 namespace {
 

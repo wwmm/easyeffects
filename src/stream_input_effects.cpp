@@ -20,6 +20,7 @@
 #include "stream_input_effects.hpp"
 #include <set>
 #include "tags_pipewire.hpp"
+#include "tags_plugin_name.hpp"
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     : EffectsBase("sie: ", tags::schema::id_input, pipe_manager) {

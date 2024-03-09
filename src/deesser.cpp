@@ -18,6 +18,12 @@
  */
 
 #include "deesser.hpp"
+#include <algorithm>
+#include <memory>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Deesser::Deesser(const std::string& tag,
                  const std::string& schema,

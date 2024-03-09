@@ -18,6 +18,20 @@
  */
 
 #include "equalizer.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <map>
+#include <memory>
+#include <span>
+#include <string>
+#include <utility>
+#include <vector>
+#include "tags_equalizer.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 using namespace std::string_literals;
 

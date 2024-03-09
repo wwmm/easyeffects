@@ -18,6 +18,18 @@
  */
 
 #include "speex.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <speex/speex_preprocess.h>
+#include <speex/speexdsp_config_types.h>
+#include <algorithm>
+#include <climits>
+#include <cstddef>
+#include <mutex>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Speex::Speex(const std::string& tag,
              const std::string& schema,
@@ -31,7 +43,6 @@ Speex::Speex(const std::string& tag,
       vad_probability_start(g_settings_get_int(settings, "vad-probability-start")),
       vad_probability_continue(g_settings_get_int(settings, "vad-probability-continue")),
       enable_dereverb(g_settings_get_boolean(settings, "enable-dereverb")) {
-
   gconnections.push_back(g_signal_connect(
       settings, "changed::enable-denoise", G_CALLBACK(+[](GSettings* settings, char* key, Speex* self) {
         std::scoped_lock<std::mutex> lock(self->data_mutex);
@@ -144,7 +155,6 @@ Speex::Speex(const std::string& tag,
       }),
       this));
 
-
   setup_input_output_gain();
 }
 
@@ -227,7 +237,6 @@ void Speex::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-
   for (size_t i = 0; i < n_samples; i++) {
     data_L[i] = static_cast<spx_int16_t>(left_in[i] * (SHRT_MAX + 1));
 
@@ -250,7 +259,6 @@ void Speex::process(std::span<float>& left_in,
     std::ranges::fill(right_out, 0.0F);
   }
 
-
   if (output_gain != 1.0F) {
     apply_gain(left_out, right_out, output_gain);
   }
@@ -264,7 +272,6 @@ void Speex::process(std::span<float>& left_in,
   }
 }
 
-
 void Speex::free_speex() {
   if (state_left != nullptr) {
     speex_preprocess_state_destroy(state_left);
@@ -277,7 +284,6 @@ void Speex::free_speex() {
   state_left = nullptr;
   state_right = nullptr;
 }
-
 
 auto Speex::get_latency_seconds() -> float {
   return latency_value;

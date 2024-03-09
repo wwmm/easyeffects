@@ -18,6 +18,16 @@
  */
 
 #include "gate.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <memory>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Gate::Gate(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager)
     : PluginBase(tag, tags::plugin_name::gate, tags::plugin_package::lsp, schema, schema_path, pipe_manager, true) {

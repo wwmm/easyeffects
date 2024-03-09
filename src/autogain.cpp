@@ -18,6 +18,19 @@
  */
 
 #include "autogain.hpp"
+#include <ebur128.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <mutex>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema,

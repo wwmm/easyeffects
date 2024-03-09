@@ -20,7 +20,10 @@
 #pragma once
 
 #include <adwaita.h>
-#include "application.hpp"  // IWYU pragma: export
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include "application.hpp"
 
 namespace ui::pipe_manager_box {
 

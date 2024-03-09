@@ -20,8 +20,13 @@
 #pragma once
 
 #include <adwaita.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
 #include <glib/gi18n.h>
-#include <string>
+#include <glibconfig.h>
+#include <sigc++/connection.h>
+#include <vector>
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"
 #include "stream_input_effects.hpp"

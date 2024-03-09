@@ -18,6 +18,22 @@
  */
 
 #include "spectrum.hpp"
+#include <fftw3.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <mutex>
+#include <numbers>
+#include <span>
+#include <string>
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Spectrum::Spectrum(const std::string& tag,
                    const std::string& schema,
@@ -124,7 +140,7 @@ void Spectrum::process(std::span<float>& left_in,
   }
 
   if (send_notifications) {
-    util::idle_add([=, this]() {
+    util::idle_add([this]() {
       if (bypass) {
         return;
       }

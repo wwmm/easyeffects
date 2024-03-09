@@ -18,6 +18,16 @@
  */
 
 #include "crossfeed.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <algorithm>
+#include <cstddef>
+#include <mutex>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Crossfeed::Crossfeed(const std::string& tag,
                      const std::string& schema,

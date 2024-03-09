@@ -20,6 +20,11 @@
 #pragma once
 
 #include <adwaita.h>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
 #include "effects_base.hpp"
 
 namespace ui::crossfeed_box {

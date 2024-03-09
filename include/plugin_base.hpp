@@ -19,14 +19,22 @@
 
 #pragma once
 
+#include <gio/gio.h>
+#include <glib.h>
 #include <pipewire/filter.h>
+#include <sigc++/signal.h>
 #include <spa/param/latency-utils.h>
+#include <spa/utils/hook.h>
+#include <sys/types.h>
+#include <chrono>
+#include <memory>
 #include <mutex>
-#include <ranges>
 #include <span>
+#include <string>
+#include <vector>
 #include "lv2_wrapper.hpp"
 #include "pipe_manager.hpp"
-#include "tags_plugin_name.hpp"  // IWYU pragma: export
+#include "util.hpp"
 
 class PluginBase {
  public:

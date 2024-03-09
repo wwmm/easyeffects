@@ -18,6 +18,13 @@
  */
 
 #include "loudness.hpp"
+#include <sys/types.h>
+#include <algorithm>
+#include <memory>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Loudness::Loudness(const std::string& tag,
                    const std::string& schema,

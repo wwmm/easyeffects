@@ -18,6 +18,21 @@
  */
 
 #include "echo_canceller.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <speex/speex_echo.h>
+#include <speex/speex_preprocess.h>
+#include <speex/speexdsp_config_types.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <climits>
+#include <cstddef>
+#include <mutex>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 EchoCanceller::EchoCanceller(const std::string& tag,
                              const std::string& schema,

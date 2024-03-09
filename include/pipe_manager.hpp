@@ -22,184 +22,26 @@
 #include <pipewire/context.h>
 #include <pipewire/core.h>
 #include <pipewire/extensions/metadata.h>
-#include <pipewire/link.h>         // IWYU pragma: export
-#include <pipewire/node.h>         // IWYU pragma: export
-#include <pipewire/pipewire.h>     // IWYU pragma: export
-#include <pipewire/proxy.h>        // IWYU pragma: export
-#include <pipewire/thread-loop.h>  // IWYU pragma: export
+#include <pipewire/pipewire.h>
+#include <pipewire/proxy.h>
+#include <pipewire/thread-loop.h>
 #include <sigc++/sigc++.h>
 #include <sigc++/signal.h>
 #include <spa/monitor/device.h>
 #include <spa/param/audio/format-utils.h>
 #include <spa/param/audio/type-info.h>
-#include <spa/param/param.h>  // IWYU pragma: export
-#include <spa/param/props.h>  // IWYU pragma: export
-#include <spa/utils/defs.h>   // IWYU pragma: export
-#include <spa/utils/hook.h>   // IWYU pragma: export
+#include <spa/utils/hook.h>
 #include <spa/utils/json.h>
 #include <spa/utils/keys.h>
 #include <spa/utils/result.h>
-#include <sys/types.h>  // IWYU pragma: export
+#include <sys/types.h>
 #include <array>
 #include <cstddef>
-#include <cstdint>  // IWYU pragma: export
+#include <cstdint>
 #include <map>
 #include <string>
 #include <vector>
-
-struct NodeInfo {
-  pw_proxy* proxy = nullptr;
-
-  uint id = SPA_ID_INVALID;
-
-  uint device_id = SPA_ID_INVALID;
-
-  uint64_t serial = SPA_ID_INVALID;
-
-  std::string name;
-
-  std::string description;
-
-  std::string media_class;
-
-  std::string media_role;
-
-  std::string app_name;
-
-  std::string app_process_id;
-
-  std::string app_process_binary;
-
-  std::string app_icon_name;
-
-  std::string media_icon_name;
-
-  std::string device_icon_name;
-
-  std::string media_name;
-
-  std::string format;
-
-  std::string application_id;
-
-  int priority = -1;
-
-  pw_node_state state = PW_NODE_STATE_IDLE;
-
-  bool mute = false;
-
-  bool connected = false;
-
-  int n_input_ports = 0;
-
-  int n_output_ports = 0;
-
-  int rate = 1;  // used as divisor to calculate latency, so do not initialize it as 0
-
-  uint n_volume_channels = 0U;
-
-  float latency = 0.0F;
-
-  float volume = 0.0F;
-};
-
-struct LinkInfo {
-  std::string path;
-
-  uint id = SPA_ID_INVALID;
-
-  uint input_node_id = 0U;
-
-  uint input_port_id = 0U;
-
-  uint output_node_id = 0U;
-
-  uint output_port_id = 0U;
-
-  uint64_t serial = SPA_ID_INVALID;
-
-  bool passive = false;  // does not cause the graph to be runnable
-
-  pw_link_state state = PW_LINK_STATE_UNLINKED;
-};
-
-struct PortInfo {
-  std::string path;
-
-  std::string format_dsp;
-
-  std::string audio_channel;
-
-  std::string name;
-
-  std::string direction;
-
-  bool physical = false;
-
-  bool terminal = false;
-
-  bool monitor = false;
-
-  uint id = SPA_ID_INVALID;
-
-  uint node_id = 0U;
-
-  uint port_id = 0U;
-
-  uint64_t serial = SPA_ID_INVALID;
-};
-
-struct ModuleInfo {
-  uint id;
-
-  uint64_t serial = SPA_ID_INVALID;
-
-  std::string name;
-
-  std::string description;
-
-  std::string filename;
-};
-
-struct ClientInfo {
-  uint id;
-
-  uint64_t serial = SPA_ID_INVALID;
-
-  std::string name;
-
-  std::string access;
-
-  std::string api;
-};
-
-struct DeviceInfo {
-  uint id;
-
-  uint64_t serial = SPA_ID_INVALID;
-
-  std::string name;
-
-  std::string description;
-
-  std::string nick;
-
-  std::string media_class;
-
-  std::string api;
-
-  std::string input_route_name;
-
-  std::string output_route_name;
-
-  std::string bus_id;
-
-  std::string bus_path;
-
-  spa_param_availability input_route_available;
-
-  spa_param_availability output_route_available;
-};
+#include "pipe_objects.hpp"
 
 class PipeManager {
  public:

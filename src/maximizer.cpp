@@ -18,6 +18,13 @@
  */
 
 #include "maximizer.hpp"
+#include <sys/types.h>
+#include <algorithm>
+#include <memory>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Maximizer::Maximizer(const std::string& tag,
                      const std::string& schema,

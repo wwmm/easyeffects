@@ -18,6 +18,16 @@
  */
 
 #include "level_meter.hpp"
+#include <ebur128.h>
+#include <algorithm>
+#include <cstddef>
+#include <mutex>
+#include <span>
+#include <string>
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 LevelMeter::LevelMeter(const std::string& tag,
                        const std::string& schema,

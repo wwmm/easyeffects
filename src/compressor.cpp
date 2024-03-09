@@ -18,6 +18,15 @@
  */
 
 #include "compressor.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <memory>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
 
 Compressor::Compressor(const std::string& tag,
                        const std::string& schema,

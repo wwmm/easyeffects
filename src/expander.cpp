@@ -18,6 +18,16 @@
  */
 
 #include "expander.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <memory>
+#include <span>
+#include <string>
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 Expander::Expander(const std::string& tag,
                    const std::string& schema,

@@ -18,6 +18,23 @@
  */
 
 #include "rnnoise.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <rnnoise.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
+#include <memory>
+#include <mutex>
+#include <span>
+#include <string>
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
+#include "resampler.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
