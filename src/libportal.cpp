@@ -24,8 +24,8 @@
 #include <glibconfig.h>
 #include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkswitch.h>
 #include <string>
+#include "tags_app.hpp"
 #include "ui_helpers.hpp"
 #include "util.hpp"
 
