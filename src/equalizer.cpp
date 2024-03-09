@@ -18,6 +18,7 @@
  */
 
 #include "equalizer.hpp"
+#include <bits/basic_string.h>
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
@@ -29,6 +30,9 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include "lv2_wrapper.hpp"
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
 #include "tags_equalizer.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
@@ -263,7 +267,7 @@ void Equalizer::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
-    util::idle_add([=, this]() {
+    util::idle_add([this]() {
       if (!post_messages || latency.empty()) {
         return;
       }

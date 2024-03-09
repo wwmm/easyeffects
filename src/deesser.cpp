@@ -22,6 +22,9 @@
 #include <memory>
 #include <span>
 #include <string>
+#include "lv2_wrapper.hpp"
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

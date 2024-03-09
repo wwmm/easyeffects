@@ -26,6 +26,8 @@
 #include <mutex>
 #include <span>
 #include <string>
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

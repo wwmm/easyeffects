@@ -24,6 +24,10 @@
 #include <span>
 #include <string>
 #include <vector>
+#include "ladspa_wrapper.hpp"
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
+#include "resampler.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

@@ -18,6 +18,24 @@
  */
 
 #include "multiband_gate_band_box.hpp"
+#define FMT_HEADER_ONLY
+#include <fmt/core.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkcheckbutton.h>
+#include <gtk/gtkdropdown.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtktogglebutton.h>
+#include <vector>
+#include "tags_multiband_gate.hpp"
+#include "tags_resources.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::multiband_gate_band_box {
 

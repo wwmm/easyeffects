@@ -18,6 +18,21 @@
  */
 
 #include "preferences_spectrum.hpp"
+#include <adwaita.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkcolordialogbutton.h>
+#include <gtk/gtkdropdown.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtkswitch.h>
+#include <vector>
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::preferences::spectrum {
 

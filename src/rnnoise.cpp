@@ -272,7 +272,7 @@ void RNNoise::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
-    util::idle_add([=, this]() {
+    util::idle_add([this]() {
       if (!post_messages || latency.empty()) {
         return;
       }

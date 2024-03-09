@@ -27,6 +27,10 @@
 #include <span>
 #include <string>
 #include <utility>
+#include "lv2_wrapper.hpp"
+#include "pipe_manager.hpp"
+#include "pipe_objects.hpp"
+#include "plugin_base.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -130,7 +134,7 @@ void MultibandGate::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
-    util::idle_add([=, this]() {
+    util::idle_add([this]() {
       if (!post_messages || latency.empty()) {
         return;
       }

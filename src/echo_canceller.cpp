@@ -31,6 +31,8 @@
 #include <mutex>
 #include <span>
 #include <string>
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -185,7 +187,7 @@ void EchoCanceller::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + util::to_string(latency_value, "") + " s");
 
-    util::idle_add([=, this]() {
+    util::idle_add([this]() {
       if (!post_messages || latency.empty()) {
         return;
       }

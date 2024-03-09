@@ -18,6 +18,7 @@
  */
 
 #include "resampler.hpp"
+#include <samplerate.h>
 
 Resampler::Resampler(const int& input_rate, const int& output_rate) : output(1, 0) {
   resample_ratio = static_cast<double>(output_rate) / static_cast<double>(input_rate);
