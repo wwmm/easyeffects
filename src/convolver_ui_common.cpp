@@ -18,7 +18,12 @@
  */
 
 #include "convolver_ui_common.hpp"
+#include <cstddef>
+#include <filesystem>
 #include <sndfile.hh>
+#include <string>
+#include <tuple>
+#include <vector>
 #include "util.hpp"
 
 namespace ui::convolver {

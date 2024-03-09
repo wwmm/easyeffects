@@ -18,9 +18,37 @@
  */
 
 #include "convolver_menu_impulses.hpp"
+#include <gio/gio.h>
+#include <gio/gliststore.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtkdropdown.h>
+#include <gtk/gtkexpression.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklistitem.h>
+#include <gtk/gtklistview.h>
+#include <gtk/gtknoselection.h>
+#include <gtk/gtkscrolledwindow.h>
+#include <gtk/gtksearchentry.h>
+#include <gtk/gtkshortcut.h>
+#include <gtk/gtksignallistitemfactory.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtkstringlist.h>
+#include <filesystem>
+#include <sndfile.hh>
+#include <string>
+#include "application.hpp"
 #include "config.h"
+#include "tags_app.hpp"
 #include "tags_resources.hpp"
+#include "tags_schema.hpp"
 #include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::convolver_menu_impulses {
 
