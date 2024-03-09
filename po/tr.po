@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 15:41-0300\n"
+"POT-Creation-Date: 2024-03-09 16:45-0300\n"
 "PO-Revision-Date: 2024-03-06 06:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1836,7 +1836,7 @@ msgstr "Asgari"
 msgid "Maximum"
 msgstr "Azami"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:205
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:233
 msgid "Load"
 msgstr "Yük"
 
@@ -2118,35 +2118,35 @@ msgstr "Stereo Taban"
 msgid "Stereo Phase"
 msgstr "Stereo Faz"
 
-#: src/app_info.cpp:98
+#: src/app_info.cpp:99
 msgid "Running"
 msgstr "Çalışıyor"
 
-#: src/app_info.cpp:100
+#: src/app_info.cpp:101
 msgid "Suspended"
 msgstr "Askıya alındı"
 
-#: src/app_info.cpp:102
+#: src/app_info.cpp:103
 msgid "Idle"
 msgstr "Boşta"
 
-#: src/app_info.cpp:104
+#: src/app_info.cpp:105
 msgid "Creating"
 msgstr "Oluşturuluyor"
 
-#: src/app_info.cpp:106
+#: src/app_info.cpp:107
 msgid "Error"
 msgstr "Hata"
 
-#: src/app_info.cpp:108
+#: src/app_info.cpp:109
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#: src/app_info.cpp:280
+#: src/app_info.cpp:281
 msgid "Undefined Name - Process ID "
 msgstr "Tanımsız Ad - Süreç Kimliği "
 
-#: src/app_info.cpp:290
+#: src/app_info.cpp:291
 msgid "channels"
 msgstr "kanallar"
 
@@ -2195,40 +2195,40 @@ msgstr "_Giriş"
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:105
+#: src/convolver_menu_impulses.cpp:133
 msgid "The File Is Not Regular"
 msgstr "Dosya Normal Değil"
 
-#: src/convolver_menu_impulses.cpp:110
+#: src/convolver_menu_impulses.cpp:138
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Dürtü Dosyası Bozuk veya Desteklenmiyor Olabilir"
 
-#: src/convolver_menu_impulses.cpp:115
+#: src/convolver_menu_impulses.cpp:143
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Yalnızca Stereo Dürtü Dosyaları Desteklenir"
 
-#: src/convolver_menu_impulses.cpp:125
+#: src/convolver_menu_impulses.cpp:153
 msgid "Impulse File Not Imported"
 msgstr "Dürtü Dosyası İçe Aktarılmadı"
 
-#: src/convolver_menu_impulses.cpp:133
+#: src/convolver_menu_impulses.cpp:161
 msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
-#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:466
+#: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
 #: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Aç"
 
-#: src/convolver_menu_impulses.cpp:146
+#: src/convolver_menu_impulses.cpp:174
 msgid "Impulse Response"
 msgstr "Dürtü Yanıtı"
 
-#: src/convolver_menu_impulses.cpp:267
+#: src/convolver_menu_impulses.cpp:295
 msgid "Load Impulse"
 msgstr "Dürtüyü Yükle"
 
-#: src/convolver_menu_impulses.cpp:270
+#: src/convolver_menu_impulses.cpp:298
 msgid "Remove Impulse"
 msgstr "Dürtüyü Kaldır"
 

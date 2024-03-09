@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 15:41-0300\n"
+"POT-Creation-Date: 2024-03-09 16:45-0300\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1884,7 +1884,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Nejvýše"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:205
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:233
 msgid "Load"
 msgstr "Načíst"
 
@@ -2170,35 +2170,35 @@ msgstr "Základ sterea"
 msgid "Stereo Phase"
 msgstr "Fáze sterea"
 
-#: src/app_info.cpp:98
+#: src/app_info.cpp:99
 msgid "Running"
 msgstr "Běží"
 
-#: src/app_info.cpp:100
+#: src/app_info.cpp:101
 msgid "Suspended"
 msgstr "Pozastaveno"
 
-#: src/app_info.cpp:102
+#: src/app_info.cpp:103
 msgid "Idle"
 msgstr "Neaktivní"
 
-#: src/app_info.cpp:104
+#: src/app_info.cpp:105
 msgid "Creating"
 msgstr "Tvoření"
 
-#: src/app_info.cpp:106
+#: src/app_info.cpp:107
 msgid "Error"
 msgstr "Chyba"
 
-#: src/app_info.cpp:108
+#: src/app_info.cpp:109
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: src/app_info.cpp:280
+#: src/app_info.cpp:281
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:290
+#: src/app_info.cpp:291
 msgid "channels"
 msgstr "Kanály"
 
@@ -2246,40 +2246,40 @@ msgstr "_Vstup"
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:105
+#: src/convolver_menu_impulses.cpp:133
 msgid "The File Is Not Regular"
 msgstr "Soubor není standardní"
 
-#: src/convolver_menu_impulses.cpp:110
+#: src/convolver_menu_impulses.cpp:138
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Soubor Impulse může být poškozený nebo nepodporovaný"
 
-#: src/convolver_menu_impulses.cpp:115
+#: src/convolver_menu_impulses.cpp:143
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Podporovány jsou pouze Stereo Impulse soubory"
 
-#: src/convolver_menu_impulses.cpp:125
+#: src/convolver_menu_impulses.cpp:153
 msgid "Impulse File Not Imported"
 msgstr "Impulse soubor nebyl importován"
 
-#: src/convolver_menu_impulses.cpp:133
+#: src/convolver_menu_impulses.cpp:161
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:466
+#: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
 #: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_menu_impulses.cpp:146
+#: src/convolver_menu_impulses.cpp:174
 msgid "Impulse Response"
 msgstr "Odpověď impulsu"
 
-#: src/convolver_menu_impulses.cpp:267
+#: src/convolver_menu_impulses.cpp:295
 msgid "Load Impulse"
 msgstr "Načíst Impulse"
 
-#: src/convolver_menu_impulses.cpp:270
+#: src/convolver_menu_impulses.cpp:298
 msgid "Remove Impulse"
 msgstr "Odstranit Impuls"
 

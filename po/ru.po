@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 15:41-0300\n"
+"POT-Creation-Date: 2024-03-09 16:45-0300\n"
 "PO-Revision-Date: 2024-03-08 22:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1878,7 +1878,7 @@ msgstr "Минимум"
 msgid "Maximum"
 msgstr "Максимум"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:205
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:233
 msgid "Load"
 msgstr "Загрузить"
 
@@ -2163,35 +2163,35 @@ msgstr "База стерео"
 msgid "Stereo Phase"
 msgstr "Фаза стерео"
 
-#: src/app_info.cpp:98
+#: src/app_info.cpp:99
 msgid "Running"
 msgstr "Работает"
 
-#: src/app_info.cpp:100
+#: src/app_info.cpp:101
 msgid "Suspended"
 msgstr "Приостановлено"
 
-#: src/app_info.cpp:102
+#: src/app_info.cpp:103
 msgid "Idle"
 msgstr "Простаивает"
 
-#: src/app_info.cpp:104
+#: src/app_info.cpp:105
 msgid "Creating"
 msgstr "Создание"
 
-#: src/app_info.cpp:106
+#: src/app_info.cpp:107
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/app_info.cpp:108
+#: src/app_info.cpp:109
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: src/app_info.cpp:280
+#: src/app_info.cpp:281
 msgid "Undefined Name - Process ID "
 msgstr "Неопределённое имя — идентификатор процесса "
 
-#: src/app_info.cpp:290
+#: src/app_info.cpp:291
 msgid "channels"
 msgstr "канала(-ов)"
 
@@ -2249,40 +2249,40 @@ msgstr "Вх_од"
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:105
+#: src/convolver_menu_impulses.cpp:133
 msgid "The File Is Not Regular"
 msgstr "Нестандартный файл"
 
-#: src/convolver_menu_impulses.cpp:110
+#: src/convolver_menu_impulses.cpp:138
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Возможно, файл импульса повреждён или не поддерживается"
 
-#: src/convolver_menu_impulses.cpp:115
+#: src/convolver_menu_impulses.cpp:143
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Поддерживаются только файлы импульса стерео"
 
-#: src/convolver_menu_impulses.cpp:125
+#: src/convolver_menu_impulses.cpp:153
 msgid "Impulse File Not Imported"
 msgstr "Файл импульса не импортирован"
 
-#: src/convolver_menu_impulses.cpp:133
+#: src/convolver_menu_impulses.cpp:161
 msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
-#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:466
+#: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
 #: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Открыть"
 
-#: src/convolver_menu_impulses.cpp:146
+#: src/convolver_menu_impulses.cpp:174
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
-#: src/convolver_menu_impulses.cpp:267
+#: src/convolver_menu_impulses.cpp:295
 msgid "Load Impulse"
 msgstr "Загрузить импульс"
 
-#: src/convolver_menu_impulses.cpp:270
+#: src/convolver_menu_impulses.cpp:298
 msgid "Remove Impulse"
 msgstr "Удалить Импульс"
 
