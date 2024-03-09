@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 13:43-0300\n"
+"POT-Creation-Date: 2024-03-09 15:41-0300\n"
 "PO-Revision-Date: 2024-03-06 06:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -95,8 +95,8 @@ msgid "_Quit"
 msgstr "_Çık"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
-#: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:133 src/presets_menu.cpp:422
+#: src/presets_menu.cpp:433 src/presets_menu.cpp:461 src/presets_menu.cpp:472
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
@@ -618,7 +618,7 @@ msgid "Sidechain Type"
 msgstr "Yanzincir Türü"
 
 #: data/ui/compressor.ui:738 data/ui/expander.ui:656 data/ui/gate.ui:870
-#: src/plugins_box.cpp:689
+#: src/plugins_box.cpp:784
 msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
@@ -967,7 +967,7 @@ msgstr "Frekansları Hesapla"
 msgid "Sort Bands"
 msgstr "Bantları Sırala"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:89
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:119
 msgid "Import Preset"
 msgstr "Ön Ayarı İçe Aktar"
 
@@ -2118,35 +2118,35 @@ msgstr "Stereo Taban"
 msgid "Stereo Phase"
 msgstr "Stereo Faz"
 
-#: src/app_info.cpp:67
+#: src/app_info.cpp:98
 msgid "Running"
 msgstr "Çalışıyor"
 
-#: src/app_info.cpp:69
+#: src/app_info.cpp:100
 msgid "Suspended"
 msgstr "Askıya alındı"
 
-#: src/app_info.cpp:71
+#: src/app_info.cpp:102
 msgid "Idle"
 msgstr "Boşta"
 
-#: src/app_info.cpp:73
+#: src/app_info.cpp:104
 msgid "Creating"
 msgstr "Oluşturuluyor"
 
-#: src/app_info.cpp:75
+#: src/app_info.cpp:106
 msgid "Error"
 msgstr "Hata"
 
-#: src/app_info.cpp:77
+#: src/app_info.cpp:108
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#: src/app_info.cpp:249
+#: src/app_info.cpp:280
 msgid "Undefined Name - Process ID "
 msgstr "Tanımsız Ad - Süreç Kimliği "
 
-#: src/app_info.cpp:259
+#: src/app_info.cpp:290
 msgid "channels"
 msgstr "kanallar"
 
@@ -2183,15 +2183,15 @@ msgstr "Kullanılabilir hazır ayarları göster."
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Ön ayar yükle. Örnek: easyeffects -l music"
 
-#: src/application_ui.cpp:326
+#: src/application_ui.cpp:347
 msgid "_Output"
 msgstr "_Çıkış"
 
-#: src/application_ui.cpp:327
+#: src/application_ui.cpp:348
 msgid "_Input"
 msgstr "_Giriş"
 
-#: src/application_ui.cpp:328
+#: src/application_ui.cpp:349
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
@@ -2215,8 +2215,8 @@ msgstr "Dürtü Dosyası İçe Aktarılmadı"
 msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
-#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:420
-#: src/equalizer_ui.cpp:701 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:466
+#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Aç"
 
@@ -2240,27 +2240,27 @@ msgstr "Dürtü Dosyası Yüklenmemiş"
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:277 src/plugins_box.cpp:690
+#: src/effects_box.cpp:312 src/plugins_box.cpp:785
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:300 src/plugins_box.cpp:710
+#: src/effects_box.cpp:335 src/plugins_box.cpp:805
 msgid "Players"
 msgstr "Oynatıcılar"
 
-#: src/effects_box.cpp:323
+#: src/effects_box.cpp:358
 msgid "Effects"
 msgstr "Efektler"
 
-#: src/equalizer_ui.cpp:419
+#: src/equalizer_ui.cpp:465
 msgid "Import APO Preset File"
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/equalizer_ui.cpp:427
+#: src/equalizer_ui.cpp:473
 msgid "APO Presets"
 msgstr "APO Ön Ayarları"
 
-#: src/equalizer_ui.cpp:452
+#: src/equalizer_ui.cpp:498
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2268,32 +2268,32 @@ msgstr ""
 "APO Ön Ayarı Kurulu Değil. Dosya Biçimi Desteklenmiyor Olabilir. Lütfen "
 "İçeriğini Denetleyin."
 
-#: src/equalizer_ui.cpp:507
+#: src/equalizer_ui.cpp:553
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 "APO ön ayarları dışa aktarılırken bölünmüş kanallar henüz desteklenmiyor."
 
-#: src/equalizer_ui.cpp:515
+#: src/equalizer_ui.cpp:561
 msgid "Export EqualizerAPO Preset File"
 msgstr "EqualizerAPO Ön Ayar Dosyasını Dışa Aktar"
 
-#: src/equalizer_ui.cpp:516
+#: src/equalizer_ui.cpp:562
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/equalizer_ui.cpp:523
+#: src/equalizer_ui.cpp:569
 msgid "EqualizerAPO Presets"
 msgstr "EqualizerAPO Ön Ayarları"
 
-#: src/equalizer_ui.cpp:700
+#: src/equalizer_ui.cpp:746
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
 
-#: src/equalizer_ui.cpp:708
+#: src/equalizer_ui.cpp:754
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ Ön Ayarları"
 
-#: src/equalizer_ui.cpp:733
+#: src/equalizer_ui.cpp:779
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
@@ -2309,53 +2309,53 @@ msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 msgid "Output Level Meter"
 msgstr "Çıktı Düzey Ölçer"
 
-#: src/plugins_box.cpp:642
+#: src/plugins_box.cpp:737
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/plugins_box.cpp:711
+#: src/plugins_box.cpp:806
 msgid "Output Device"
 msgstr "Çıkış Aygıtı"
 
-#: src/plugins_menu.cpp:187
+#: src/plugins_menu.cpp:217
 msgid "Add"
 msgstr "Ekle"
 
-#: src/presets_menu.cpp:215
+#: src/presets_menu.cpp:245
 msgid "Save?"
 msgstr "Kaydedilsin mi?"
 
-#: src/presets_menu.cpp:234
+#: src/presets_menu.cpp:264
 msgid "Delete?"
 msgstr "Silinsin mi?"
 
-#: src/presets_manager.cpp:783 src/presets_manager.cpp:790
-#: src/presets_manager.cpp:799 src/presets_manager.cpp:806
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:834 src/presets_manager.cpp:841
+#: src/presets_manager.cpp:850 src/presets_manager.cpp:857
+#: src/presets_manager.cpp:866 src/presets_manager.cpp:874
 msgid "Preset Not Loaded Correctly"
 msgstr "Ön Ayar Doğru Yüklenmedi"
 
-#: src/presets_manager.cpp:783
+#: src/presets_manager.cpp:834
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:790
+#: src/presets_manager.cpp:841
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:799
+#: src/presets_manager.cpp:850
 msgid "Wrong Format in Effects List"
 msgstr "Efektler Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:806
+#: src/presets_manager.cpp:857
 msgid "Generic Error While Loading Effects List"
 msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:867
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:875
 msgid "Generic Error While Loading The Effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
@@ -2452,12 +2452,12 @@ msgid "Stereo Tools"
 msgstr "Stereo Araçları"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:73
+#: src/ui_helpers.cpp:96
 #, c++-format
 msgid "{} Not Available"
 msgstr "{} Kullanılabilir Değil"
 
-#: src/ui_helpers.cpp:77
+#: src/ui_helpers.cpp:100
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
@@ -2466,7 +2466,7 @@ msgstr ""
 "{} efekti için gerekli olan \"{}\" yazılımı kurulu değil. Easy Effects "
 "Flatpak paketini kullanmayı ya da yazılımı kendiniz kurmayı düşünebilirsiniz."
 
-#: src/ui_helpers.cpp:83
+#: src/ui_helpers.cpp:106
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2479,12 +2479,12 @@ msgstr ""
 "Effects Flatpak paketini kullanmayı ya da kendi Easy Effects paketinizi "
 "oluşturmayı düşünebilirsiniz."
 
-#: src/ui_helpers.cpp:125 src/ui_helpers.cpp:145
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
 msgstr "-sonsuz"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:230
+#: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
 msgstr "{} Kullanıyor"

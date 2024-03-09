@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 13:43-0300\n"
+"POT-Creation-Date: 2024-03-09 15:41-0300\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -103,8 +103,8 @@ msgid "_Quit"
 msgstr ""
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
-#: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:133 src/presets_menu.cpp:422
+#: src/presets_menu.cpp:433 src/presets_menu.cpp:461 src/presets_menu.cpp:472
 msgid "Presets"
 msgstr "Predvoľby"
 
@@ -671,7 +671,7 @@ msgid "Sidechain Type"
 msgstr "Postranný reťazec"
 
 #: data/ui/compressor.ui:738 data/ui/expander.ui:656 data/ui/gate.ui:870
-#: src/plugins_box.cpp:689
+#: src/plugins_box.cpp:784
 #, fuzzy
 msgid "Input Device"
 msgstr "Obmedzovač na vstupe"
@@ -1051,7 +1051,7 @@ msgstr "Vypočítať frekvencie"
 msgid "Sort Bands"
 msgstr "Pásma"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:89
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:119
 #, fuzzy
 msgid "Import Preset"
 msgstr "Načítať predvoľbu"
@@ -2318,39 +2318,39 @@ msgstr "Základ sterea"
 msgid "Stereo Phase"
 msgstr "Fáza sterea"
 
-#: src/app_info.cpp:67
+#: src/app_info.cpp:98
 #, fuzzy
 msgid "Running"
 msgstr "beží"
 
-#: src/app_info.cpp:69
+#: src/app_info.cpp:100
 #, fuzzy
 msgid "Suspended"
 msgstr "pozastavené"
 
-#: src/app_info.cpp:71
+#: src/app_info.cpp:102
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:73
+#: src/app_info.cpp:104
 #, fuzzy
 msgid "Creating"
 msgstr "vytváram"
 
-#: src/app_info.cpp:75
+#: src/app_info.cpp:106
 #, fuzzy
 msgid "Error"
 msgstr "chyba"
 
-#: src/app_info.cpp:77
+#: src/app_info.cpp:108
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:249
+#: src/app_info.cpp:280
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:259
+#: src/app_info.cpp:290
 #, fuzzy
 msgid "channels"
 msgstr "Kanály"
@@ -2390,17 +2390,17 @@ msgstr "Zobraziť dostupné predvoľby."
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Načítať predvoľby. Napr.: easyffects -l music"
 
-#: src/application_ui.cpp:326
+#: src/application_ui.cpp:347
 #, fuzzy
 msgid "_Output"
 msgstr "Výstup"
 
-#: src/application_ui.cpp:327
+#: src/application_ui.cpp:348
 #, fuzzy
 msgid "_Input"
 msgstr "Vstup"
 
-#: src/application_ui.cpp:328
+#: src/application_ui.cpp:349
 #, fuzzy
 msgid "_PipeWire"
 msgstr "PipeWire"
@@ -2426,8 +2426,8 @@ msgstr "Načítať súbor impulzu"
 msgid "Import Impulse File"
 msgstr "Načítať súbor impulzu"
 
-#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:420
-#: src/equalizer_ui.cpp:701 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:466
+#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Otvoriť"
 
@@ -2454,63 +2454,63 @@ msgstr "Načítať súbor impulzu"
 msgid "Failed To Load The Impulse File"
 msgstr "Nedá sa načítať súbor s impulzom"
 
-#: src/effects_box.cpp:277 src/plugins_box.cpp:690
+#: src/effects_box.cpp:312 src/plugins_box.cpp:785
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:300 src/plugins_box.cpp:710
+#: src/effects_box.cpp:335 src/plugins_box.cpp:805
 msgid "Players"
 msgstr "Prehrávače"
 
-#: src/effects_box.cpp:323
+#: src/effects_box.cpp:358
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/equalizer_ui.cpp:419
+#: src/equalizer_ui.cpp:465
 msgid "Import APO Preset File"
 msgstr "Načítať APO predvoľbu"
 
-#: src/equalizer_ui.cpp:427
+#: src/equalizer_ui.cpp:473
 msgid "APO Presets"
 msgstr "APO predvoľby"
 
-#: src/equalizer_ui.cpp:452
+#: src/equalizer_ui.cpp:498
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
 
-#: src/equalizer_ui.cpp:507
+#: src/equalizer_ui.cpp:553
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:515
+#: src/equalizer_ui.cpp:561
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "Načítať APO predvoľbu"
 
-#: src/equalizer_ui.cpp:516
+#: src/equalizer_ui.cpp:562
 msgid "Save"
 msgstr ""
 
-#: src/equalizer_ui.cpp:523
+#: src/equalizer_ui.cpp:569
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "APO predvoľby"
 
-#: src/equalizer_ui.cpp:700
+#: src/equalizer_ui.cpp:746
 #, fuzzy
 msgid "Import GraphicEQ Preset File"
 msgstr "Načítať APO predvoľbu"
 
-#: src/equalizer_ui.cpp:708
+#: src/equalizer_ui.cpp:754
 #, fuzzy
 msgid "GraphicEQ Presets"
 msgstr "Vstupné predvoľby: "
 
-#: src/equalizer_ui.cpp:733
+#: src/equalizer_ui.cpp:779
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
@@ -2526,55 +2526,55 @@ msgstr "Odstrániť predvoľbu"
 msgid "Output Level Meter"
 msgstr "Výstupné efekty"
 
-#: src/plugins_box.cpp:642
+#: src/plugins_box.cpp:737
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:711
+#: src/plugins_box.cpp:806
 #, fuzzy
 msgid "Output Device"
 msgstr "Výstupné efekty"
 
-#: src/plugins_menu.cpp:187
+#: src/plugins_menu.cpp:217
 msgid "Add"
 msgstr "Pridať"
 
-#: src/presets_menu.cpp:215
+#: src/presets_menu.cpp:245
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:234
+#: src/presets_menu.cpp:264
 msgid "Delete?"
 msgstr ""
 
-#: src/presets_manager.cpp:783 src/presets_manager.cpp:790
-#: src/presets_manager.cpp:799 src/presets_manager.cpp:806
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:834 src/presets_manager.cpp:841
+#: src/presets_manager.cpp:850 src/presets_manager.cpp:857
+#: src/presets_manager.cpp:866 src/presets_manager.cpp:874
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:783
+#: src/presets_manager.cpp:834
 #, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Aplikácie"
 
-#: src/presets_manager.cpp:790
+#: src/presets_manager.cpp:841
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:799
+#: src/presets_manager.cpp:850
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:806
+#: src/presets_manager.cpp:857
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:867
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:875
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
@@ -2673,19 +2673,19 @@ msgid "Stereo Tools"
 msgstr "Stereo nástroje"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:73
+#: src/ui_helpers.cpp:96
 #, c++-format
 msgid "{} Not Available"
 msgstr ""
 
-#: src/ui_helpers.cpp:77
+#: src/ui_helpers.cpp:100
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
 
-#: src/ui_helpers.cpp:83
+#: src/ui_helpers.cpp:106
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2694,12 +2694,12 @@ msgid ""
 "Effects package."
 msgstr ""
 
-#: src/ui_helpers.cpp:125 src/ui_helpers.cpp:145
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
 msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:230
+#: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
 msgstr ""

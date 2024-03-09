@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 13:43-0300\n"
+"POT-Creation-Date: 2024-03-09 15:41-0300\n"
 "PO-Revision-Date: 2023-11-16 03:06+0000\n"
 "Last-Translator: Carlos Batista <cbatista8a@gmail.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -97,8 +97,8 @@ msgid "_Quit"
 msgstr ""
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:103 src/presets_menu.cpp:390
-#: src/presets_menu.cpp:401 src/presets_menu.cpp:429 src/presets_menu.cpp:440
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:133 src/presets_menu.cpp:422
+#: src/presets_menu.cpp:433 src/presets_menu.cpp:461 src/presets_menu.cpp:472
 msgid "Presets"
 msgstr "Perfiles"
 
@@ -653,7 +653,7 @@ msgid "Sidechain Type"
 msgstr "Cadena Lateral"
 
 #: data/ui/compressor.ui:738 data/ui/expander.ui:656 data/ui/gate.ui:870
-#: src/plugins_box.cpp:689
+#: src/plugins_box.cpp:784
 #, fuzzy
 msgid "Input Device"
 msgstr "Efectos de Entrada"
@@ -1038,7 +1038,7 @@ msgstr "Calcular Frecuencias"
 msgid "Sort Bands"
 msgstr "Bandas"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:89
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:119
 #, fuzzy
 msgid "Import Preset"
 msgstr "Importar Perfiles"
@@ -2268,36 +2268,36 @@ msgstr "Base Estéreo"
 msgid "Stereo Phase"
 msgstr "Fase Estéreo"
 
-#: src/app_info.cpp:67
+#: src/app_info.cpp:98
 msgid "Running"
 msgstr ""
 
-#: src/app_info.cpp:69
+#: src/app_info.cpp:100
 msgid "Suspended"
 msgstr ""
 
-#: src/app_info.cpp:71
+#: src/app_info.cpp:102
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:73
+#: src/app_info.cpp:104
 #, fuzzy
 msgid "Creating"
 msgstr "Puerta"
 
-#: src/app_info.cpp:75
+#: src/app_info.cpp:106
 msgid "Error"
 msgstr ""
 
-#: src/app_info.cpp:77
+#: src/app_info.cpp:108
 msgid "Unknown"
 msgstr ""
 
-#: src/app_info.cpp:249
+#: src/app_info.cpp:280
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:259
+#: src/app_info.cpp:290
 #, fuzzy
 msgid "channels"
 msgstr "Canales"
@@ -2339,17 +2339,17 @@ msgstr "Mostrar perfiles disponibles."
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar un perfil. Ejemplo: easyeffects -l music"
 
-#: src/application_ui.cpp:326
+#: src/application_ui.cpp:347
 #, fuzzy
 msgid "_Output"
 msgstr "Salida"
 
-#: src/application_ui.cpp:327
+#: src/application_ui.cpp:348
 #, fuzzy
 msgid "_Input"
 msgstr "Entrada"
 
-#: src/application_ui.cpp:328
+#: src/application_ui.cpp:349
 msgid "_PipeWire"
 msgstr ""
 
@@ -2374,8 +2374,8 @@ msgstr "Importar Archivo Impulse"
 msgid "Import Impulse File"
 msgstr "Importar Archivo Impulse"
 
-#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:420
-#: src/equalizer_ui.cpp:701 src/presets_menu.cpp:90 src/rnnoise_ui.cpp:139
+#: src/convolver_menu_impulses.cpp:134 src/equalizer_ui.cpp:466
+#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:139
 msgid "Open"
 msgstr "Abrir"
 
@@ -2403,65 +2403,65 @@ msgstr "Importar Archivo Impulse"
 msgid "Failed To Load The Impulse File"
 msgstr "No se pudo encontrar el archivo Impulse"
 
-#: src/effects_box.cpp:277 src/plugins_box.cpp:690
+#: src/effects_box.cpp:312 src/plugins_box.cpp:785
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordes"
 
-#: src/effects_box.cpp:300 src/plugins_box.cpp:710
+#: src/effects_box.cpp:335 src/plugins_box.cpp:805
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:323
+#: src/effects_box.cpp:358
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/equalizer_ui.cpp:419
+#: src/equalizer_ui.cpp:465
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Importar Perfiles"
 
-#: src/equalizer_ui.cpp:427
+#: src/equalizer_ui.cpp:473
 #, fuzzy
 msgid "APO Presets"
 msgstr "Perfiles"
 
-#: src/equalizer_ui.cpp:452
+#: src/equalizer_ui.cpp:498
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
 
-#: src/equalizer_ui.cpp:507
+#: src/equalizer_ui.cpp:553
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:515
+#: src/equalizer_ui.cpp:561
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "Importar Perfiles"
 
-#: src/equalizer_ui.cpp:516
+#: src/equalizer_ui.cpp:562
 msgid "Save"
 msgstr ""
 
-#: src/equalizer_ui.cpp:523
+#: src/equalizer_ui.cpp:569
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "Perfiles"
 
-#: src/equalizer_ui.cpp:700
+#: src/equalizer_ui.cpp:746
 #, fuzzy
 msgid "Import GraphicEQ Preset File"
 msgstr "Importar Perfiles"
 
-#: src/equalizer_ui.cpp:708
+#: src/equalizer_ui.cpp:754
 #, fuzzy
 msgid "GraphicEQ Presets"
 msgstr "Perfiles de Dispositivos de Entrada: "
 
-#: src/equalizer_ui.cpp:733
+#: src/equalizer_ui.cpp:779
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
@@ -2477,55 +2477,55 @@ msgstr "Borrar este perfil"
 msgid "Output Level Meter"
 msgstr "Efectos de Salida"
 
-#: src/plugins_box.cpp:642
+#: src/plugins_box.cpp:737
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:711
+#: src/plugins_box.cpp:806
 #, fuzzy
 msgid "Output Device"
 msgstr "Efectos de Salida"
 
-#: src/plugins_menu.cpp:187
+#: src/plugins_menu.cpp:217
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:215
+#: src/presets_menu.cpp:245
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:234
+#: src/presets_menu.cpp:264
 msgid "Delete?"
 msgstr ""
 
-#: src/presets_manager.cpp:783 src/presets_manager.cpp:790
-#: src/presets_manager.cpp:799 src/presets_manager.cpp:806
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:834 src/presets_manager.cpp:841
+#: src/presets_manager.cpp:850 src/presets_manager.cpp:857
+#: src/presets_manager.cpp:866 src/presets_manager.cpp:874
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:783
+#: src/presets_manager.cpp:834
 #, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Aplicaciones Excluidas"
 
-#: src/presets_manager.cpp:790
+#: src/presets_manager.cpp:841
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:799
+#: src/presets_manager.cpp:850
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:806
+#: src/presets_manager.cpp:857
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:867
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:875
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
@@ -2624,19 +2624,19 @@ msgid "Stereo Tools"
 msgstr "Herramientas Estéreo"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:73
+#: src/ui_helpers.cpp:96
 #, c++-format
 msgid "{} Not Available"
 msgstr ""
 
-#: src/ui_helpers.cpp:77
+#: src/ui_helpers.cpp:100
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
 
-#: src/ui_helpers.cpp:83
+#: src/ui_helpers.cpp:106
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2645,12 +2645,12 @@ msgid ""
 "Effects package."
 msgstr ""
 
-#: src/ui_helpers.cpp:125 src/ui_helpers.cpp:145
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
 msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:230
+#: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
 msgstr ""
