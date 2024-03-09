@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 18:05-0300\n"
+"POT-Creation-Date: 2024-03-09 18:49-0300\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Colombia) <https://hosted.weblate.org/projects/"
@@ -2298,35 +2298,35 @@ msgstr "Base Estéreo"
 msgid "Stereo Phase"
 msgstr "Fase Estéreo"
 
-#: src/app_info.cpp:99
+#: src/app_info.cpp:100
 msgid "Running"
 msgstr "Corriendo"
 
-#: src/app_info.cpp:101
+#: src/app_info.cpp:102
 msgid "Suspended"
 msgstr "Suspendido"
 
-#: src/app_info.cpp:103
+#: src/app_info.cpp:104
 msgid "Idle"
 msgstr "Inactivo"
 
-#: src/app_info.cpp:105
+#: src/app_info.cpp:106
 msgid "Creating"
 msgstr "Creando"
 
-#: src/app_info.cpp:107
+#: src/app_info.cpp:108
 msgid "Error"
 msgstr "Error"
 
-#: src/app_info.cpp:109
+#: src/app_info.cpp:110
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: src/app_info.cpp:281
+#: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:291
+#: src/app_info.cpp:292
 msgid "channels"
 msgstr "canales"
 

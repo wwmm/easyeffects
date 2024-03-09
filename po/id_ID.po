@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 18:05-0300\n"
+"POT-Creation-Date: 2024-03-09 18:49-0300\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2285,40 +2285,40 @@ msgstr "Basis Stereo"
 msgid "Stereo Phase"
 msgstr "Phase Stereo"
 
-#: src/app_info.cpp:99
+#: src/app_info.cpp:100
 #, fuzzy
 msgid "Running"
 msgstr "berjalan"
 
-#: src/app_info.cpp:101
+#: src/app_info.cpp:102
 #, fuzzy
 msgid "Suspended"
 msgstr "Ditangguhkan"
 
-#: src/app_info.cpp:103
+#: src/app_info.cpp:104
 msgid "Idle"
 msgstr ""
 
-#: src/app_info.cpp:105
+#: src/app_info.cpp:106
 #, fuzzy
 msgid "Creating"
 msgstr "membuat"
 
-#: src/app_info.cpp:107
+#: src/app_info.cpp:108
 #, fuzzy
 msgid "Error"
 msgstr "error"
 
-#: src/app_info.cpp:109
+#: src/app_info.cpp:110
 #, fuzzy
 msgid "Unknown"
 msgstr "tidak dikenal"
 
-#: src/app_info.cpp:281
+#: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:291
+#: src/app_info.cpp:292
 #, fuzzy
 msgid "channels"
 msgstr "Total Kanal"

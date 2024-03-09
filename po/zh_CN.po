@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 18:05-0300\n"
+"POT-Creation-Date: 2024-03-09 18:49-0300\n"
 "PO-Revision-Date: 2023-08-17 14:53+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2147,35 +2147,35 @@ msgstr "立体声基线"
 msgid "Stereo Phase"
 msgstr "立体声相位"
 
-#: src/app_info.cpp:99
+#: src/app_info.cpp:100
 msgid "Running"
 msgstr "正在运行"
 
-#: src/app_info.cpp:101
+#: src/app_info.cpp:102
 msgid "Suspended"
 msgstr "已暂停"
 
-#: src/app_info.cpp:103
+#: src/app_info.cpp:104
 msgid "Idle"
 msgstr "空闲"
 
-#: src/app_info.cpp:105
+#: src/app_info.cpp:106
 msgid "Creating"
 msgstr "创建中"
 
-#: src/app_info.cpp:107
+#: src/app_info.cpp:108
 msgid "Error"
 msgstr "错误"
 
-#: src/app_info.cpp:109
+#: src/app_info.cpp:110
 msgid "Unknown"
 msgstr "未知"
 
-#: src/app_info.cpp:281
+#: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:291
+#: src/app_info.cpp:292
 msgid "channels"
 msgstr "声道"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 18:05-0300\n"
+"POT-Creation-Date: 2024-03-09 18:49-0300\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2170,35 +2170,35 @@ msgstr "Základ sterea"
 msgid "Stereo Phase"
 msgstr "Fáze sterea"
 
-#: src/app_info.cpp:99
+#: src/app_info.cpp:100
 msgid "Running"
 msgstr "Běží"
 
-#: src/app_info.cpp:101
+#: src/app_info.cpp:102
 msgid "Suspended"
 msgstr "Pozastaveno"
 
-#: src/app_info.cpp:103
+#: src/app_info.cpp:104
 msgid "Idle"
 msgstr "Neaktivní"
 
-#: src/app_info.cpp:105
+#: src/app_info.cpp:106
 msgid "Creating"
 msgstr "Tvoření"
 
-#: src/app_info.cpp:107
+#: src/app_info.cpp:108
 msgid "Error"
 msgstr "Chyba"
 
-#: src/app_info.cpp:109
+#: src/app_info.cpp:110
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: src/app_info.cpp:281
+#: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
 msgstr ""
 
-#: src/app_info.cpp:291
+#: src/app_info.cpp:292
 msgid "channels"
 msgstr "Kanály"
 
