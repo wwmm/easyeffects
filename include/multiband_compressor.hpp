@@ -19,6 +19,19 @@
 
 #pragma once
 
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <pipewire/context.h>
+#include <sigc++/signal.h>
+#include <sys/types.h>
+#include <array>
+#include <cstddef>
+#include <span>
+#include <string>
+#include <utility>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 #include "tags_multiband_compressor.hpp"
 

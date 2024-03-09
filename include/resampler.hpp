@@ -21,7 +21,6 @@
 
 #include <samplerate.h>
 #include <cmath>
-#include <span>
 #include <vector>
 
 class Resampler {

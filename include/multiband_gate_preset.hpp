@@ -19,7 +19,10 @@
 
 #pragma once
 
+#include <sys/types.h>
+#include <nlohmann/json_fwd.hpp>
 #include "plugin_preset_base.hpp"
+#include "preset_type.hpp"
 #include "tags_multiband_gate.hpp"
 
 class MultibandGatePreset : public PluginPresetBase {

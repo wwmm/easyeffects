@@ -19,6 +19,16 @@
 
 #pragma once
 
+#include <sigc++/signal.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <climits>
+#include <cstddef>
+#include <memory>
+#include <span>
+#include <string>
+#include <vector>
+#include "pipe_manager.hpp"
 #ifdef ENABLE_RNNOISE
 #include <rnnoise.h>
 #endif

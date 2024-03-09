@@ -19,8 +19,11 @@
 
 #pragma once
 
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include "util.hpp"
+#include <string>
 
 namespace ui::holders {
 

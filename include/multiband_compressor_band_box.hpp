@@ -20,10 +20,11 @@
 #pragma once
 
 #include <adwaita.h>
+#include <gio/gio.h>
+#include <glib-object.h>
 #include <glib/gi18n.h>
-#include "tags_multiband_compressor.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
 
 namespace ui::multiband_compressor_band_box {
 

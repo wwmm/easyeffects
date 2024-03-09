@@ -19,8 +19,13 @@
 
 #pragma once
 
+#include <STTypes.h>
 #include <deque>
+#include <span>
+#include <string>
+#include <vector>
 #include "SoundTouch.h"
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class Pitch : public PluginBase {

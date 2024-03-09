@@ -20,11 +20,13 @@
 #pragma once
 
 #include <adwaita.h>
-#include "effects_base.hpp"
-#include "multiband_gate_band_box.hpp"
-#include "node_info_holder.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
+#include "multiband_gate.hpp"
+#include "pipe_manager.hpp"
 
 namespace ui::multiband_gate_box {
 

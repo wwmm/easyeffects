@@ -20,10 +20,11 @@
 #pragma once
 
 #include <adwaita.h>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkpopover.h>
 #include "application.hpp"
-#include "config.h"
 #include "preset_type.hpp"
-#include "tags_resources.hpp"
 
 namespace ui::presets_menu {
 

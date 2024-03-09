@@ -20,11 +20,13 @@
 #pragma once
 
 #include <adwaita.h>
-#include <filesystem>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
 #include "application.hpp"
-#include "effects_base.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
+#include "rnnoise.hpp"
 
 namespace ui::rnnoise_box {
 

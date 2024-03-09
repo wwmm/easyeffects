@@ -19,8 +19,6 @@
 
 #pragma once
 
-#include <string>
-
 namespace tags::app {
 
 inline constexpr auto minimum_pw_version = "0.3.44";

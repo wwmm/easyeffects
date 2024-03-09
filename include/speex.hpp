@@ -20,9 +20,15 @@
 #pragma once
 
 #include <speex/speex_preprocess.h>
-
-#include <deque>
+#include <speex/speexdsp_config_types.h>
+#include <sys/types.h>
+#include <climits>
+#include <span>
+#include <string>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
+
 class Speex : public PluginBase {
  public:
   Speex(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
@@ -56,5 +62,4 @@ class Speex : public PluginBase {
   SpeexPreprocessState *state_left = nullptr, *state_right = nullptr;
 
   void free_speex();
-
 };

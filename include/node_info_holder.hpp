@@ -19,8 +19,13 @@
 
 #pragma once
 
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include "pipe_manager.hpp"
+#include <sigc++/signal.h>
+#include <string>
+#include "pipe_objects.hpp"
 
 namespace ui::holders {
 

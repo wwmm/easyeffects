@@ -20,6 +20,8 @@
 #pragma once
 
 #include "effects_base.hpp"
+#include "pipe_manager.hpp"
+#include "pipe_objects.hpp"
 
 class StreamInputEffects : public EffectsBase {
  public:

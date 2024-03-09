@@ -19,8 +19,9 @@
 
 #pragma once
 
-#include "preferences_general.hpp"
-#include "preferences_spectrum.hpp"
+#include <adwaita.h>
+#include <glib-object.h>
+#include <glibconfig.h>
 
 namespace ui::preferences::window {
 

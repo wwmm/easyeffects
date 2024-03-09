@@ -19,6 +19,11 @@
 
 #pragma once
 
+#include <sigc++/signal.h>
+#include <sys/types.h>
+#include <span>
+#include <string>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class Maximizer : public PluginBase {

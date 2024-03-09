@@ -20,11 +20,11 @@
 #pragma once
 
 #include <glib/gi18n.h>
+#include <sys/types.h>
 #include <array>
-#include <iostream>
 #include <map>
-#include <regex>
-#include "util.hpp"
+#include <string>
+#include <string_view>
 
 namespace tags::plugin_package {
 

@@ -20,12 +20,8 @@
 #pragma once
 
 #include <adwaita.h>
-#include <filesystem>
-#include <fstream>
-#include <string>
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
-#include "util.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
 
 #ifdef ENABLE_LIBPORTAL
 #include "libportal.hpp"

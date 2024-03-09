@@ -20,10 +20,8 @@
 #pragma once
 
 #include <adwaita.h>
-#include "tags_resources.hpp"
-#include "tags_schema.hpp"
-#include "ui_helpers.hpp"
-#include "util.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
 
 namespace ui::preferences::spectrum {
 

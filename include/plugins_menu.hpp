@@ -20,13 +20,11 @@
 #pragma once
 
 #include <adwaita.h>
-#include <string>
-#include <unordered_map>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkpopover.h>
 #include "application.hpp"
 #include "pipeline_type.hpp"
-#include "tags_plugin_name.hpp"
-#include "tags_resources.hpp"
-#include "util.hpp"
 
 namespace ui::plugins_menu {
 

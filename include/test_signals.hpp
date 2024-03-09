@@ -19,10 +19,13 @@
 
 #pragma once
 
+#include <pipewire/context.h>
 #include <pipewire/filter.h>
-#include <numbers>
+#include <pipewire/proxy.h>
+#include <spa/utils/hook.h>
+#include <sys/types.h>
 #include <random>
-#include <span>
+#include <vector>
 #include "pipe_manager.hpp"
 
 enum class TestSignalType { sine_wave, gaussian, pink };
