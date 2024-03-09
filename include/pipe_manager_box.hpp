@@ -20,14 +20,7 @@
 #pragma once
 
 #include <adwaita.h>
-#include "application.hpp"
-#include "client_info_holder.hpp"
-#include "module_info_holder.hpp"
-#include "node_info_holder.hpp"
-#include "presets_autoloading_holder.hpp"
-#include "tags_resources.hpp"
-#include "test_signals.hpp"
-#include "ui_helpers.hpp"
+#include "application.hpp"  // IWYU pragma: export
 
 namespace ui::pipe_manager_box {
 

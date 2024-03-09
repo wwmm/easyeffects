@@ -28,38 +28,38 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include "autogain.hpp"
-#include "bass_enhancer.hpp"
-#include "bass_loudness.hpp"
-#include "compressor.hpp"
-#include "convolver.hpp"
-#include "crossfeed.hpp"
-#include "crystalizer.hpp"
-#include "deepfilternet.hpp"
-#include "deesser.hpp"
-#include "delay.hpp"
-#include "echo_canceller.hpp"
-#include "equalizer.hpp"
-#include "exciter.hpp"
-#include "expander.hpp"
-#include "filter.hpp"
-#include "gate.hpp"
-#include "limiter.hpp"
-#include "loudness.hpp"
-#include "maximizer.hpp"
-#include "multiband_compressor.hpp"
-#include "multiband_gate.hpp"
-#include "output_level.hpp"
-#include "pipe_manager.hpp"  // IWYU pragma: export
-#include "pitch.hpp"
-#include "plugin_base.hpp"
-#include "reverb.hpp"
-#include "rnnoise.hpp"
-#include "spectrum.hpp"
-#include "speex.hpp"
-#include "stereo_tools.hpp"
-#include "tags_resources.hpp"  // IWYU pragma: export
-#include "tags_schema.hpp"     // IWYU pragma: export
+#include "autogain.hpp"              // IWYU pragma: export
+#include "bass_enhancer.hpp"         // IWYU pragma: export
+#include "bass_loudness.hpp"         // IWYU pragma: export
+#include "compressor.hpp"            // IWYU pragma: export
+#include "convolver.hpp"             // IWYU pragma: export
+#include "crossfeed.hpp"             // IWYU pragma: export
+#include "crystalizer.hpp"           // IWYU pragma: export
+#include "deepfilternet.hpp"         // IWYU pragma: export
+#include "deesser.hpp"               // IWYU pragma: export
+#include "delay.hpp"                 // IWYU pragma: export
+#include "echo_canceller.hpp"        // IWYU pragma: export
+#include "equalizer.hpp"             // IWYU pragma: export
+#include "exciter.hpp"               // IWYU pragma: export
+#include "expander.hpp"              // IWYU pragma: export
+#include "filter.hpp"                // IWYU pragma: export
+#include "gate.hpp"                  // IWYU pragma: export
+#include "limiter.hpp"               // IWYU pragma: export
+#include "loudness.hpp"              // IWYU pragma: export
+#include "maximizer.hpp"             // IWYU pragma: export
+#include "multiband_compressor.hpp"  // IWYU pragma: export
+#include "multiband_gate.hpp"        // IWYU pragma: export
+#include "output_level.hpp"          // IWYU pragma: export
+#include "pipe_manager.hpp"          // IWYU pragma: export
+#include "pitch.hpp"                 // IWYU pragma: export
+#include "plugin_base.hpp"           // IWYU pragma: export
+#include "reverb.hpp"                // IWYU pragma: export
+#include "rnnoise.hpp"               // IWYU pragma: export
+#include "spectrum.hpp"              // IWYU pragma: export
+#include "speex.hpp"                 // IWYU pragma: export
+#include "stereo_tools.hpp"          // IWYU pragma: export
+#include "tags_resources.hpp"        // IWYU pragma: export
+#include "tags_schema.hpp"           // IWYU pragma: export
 
 class EffectsBase {
  public:

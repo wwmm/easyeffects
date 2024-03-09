@@ -18,7 +18,20 @@
  */
 
 #include "pipe_manager_box.hpp"
+#include <gio/gio.h>
+#include <glib.h>
+#include <gtk/gtkstringlist.h>
+#include <sigc++/connection.h>
+#include <memory>
+#include <vector>
+#include "client_info_holder.hpp"
+#include "module_info_holder.hpp"
+#include "node_info_holder.hpp"
+#include "presets_autoloading_holder.hpp"
 #include "tags_pipewire.hpp"
+#include "tags_resources.hpp"
+#include "test_signals.hpp"
+#include "ui_helpers.hpp"
 #include "util.hpp"
 
 namespace ui::pipe_manager_box {

@@ -18,10 +18,19 @@
  */
 
 #include "effects_base.hpp"
+#include <bits/basic_string.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <algorithm>
+#include <memory>
+#include <ranges>
 #include <string>
 #include <utility>
 #include "level_meter.hpp"
 #include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager* pipe_manager)
     : log_tag(std::move(tag)),

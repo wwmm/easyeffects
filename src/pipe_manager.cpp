@@ -1298,7 +1298,8 @@ void on_registry_global(void* data,
 
       util::debug(output_node.name + " port " + util::to_string(link_info.output_port_id) + " is connected to " +
                   input_node.name + " port " + util::to_string(link_info.input_port_id));
-    } catch (...) {
+    } catch (std::out_of_range& e) {
+      util::debug(e.what());
     }
 
     return;
