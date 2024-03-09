@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:13+0000\n"
+"POT-Creation-Date: 2024-03-09 02:25+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2336,7 +2336,7 @@ msgstr ""
 "GraphicEQ プリセットが読み込まれていません。ファイル形式がサポートされていな"
 "い可能性があります。内容を確認してください。"
 
-#: src/pipe_manager_box.cpp:344
+#: src/pipe_manager_box.cpp:346
 msgid "Remove Autoloading Preset"
 msgstr "自動読み込みプリセットを削除"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 02:13+0000\n"
+"POT-Creation-Date: 2024-03-09 02:25+0000\n"
 "PO-Revision-Date: 2024-02-25 20:02+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2303,7 +2303,7 @@ msgstr ""
 "GraphicEQ-voorinstelling niet geladen. Bestandsformaat wordt mogelijk niet "
 "ondersteund. Controleer de inhoud."
 
-#: src/pipe_manager_box.cpp:344
+#: src/pipe_manager_box.cpp:346
 msgid "Remove Autoloading Preset"
 msgstr "Automatisch ingeladen voorinstelling verwijderen"
 
