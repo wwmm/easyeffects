@@ -18,6 +18,29 @@
  */
 
 #include "ui_helpers.hpp"
+#include <adwaita.h>
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklevelbar.h>
+#include <gtk/gtkshortcut.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtkstringlist.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <locale>
+#include <map>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+#include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
+#include "util.hpp"
 
 namespace {
 
@@ -90,7 +113,8 @@ auto missing_plugin_box(const std::string& base_name, const std::string& package
     adw_status_page_set_title(ADW_STATUS_PAGE(status_page), fmt::format(format_title, translated_name).c_str());
     adw_status_page_set_description(ADW_STATUS_PAGE(status_page),
                                     fmt::format(format_descr, translated_name, package).c_str());
-  } catch (...) {
+  } catch (std::out_of_range& e) {
+    util::debug(e.what());
   }
 
   adw_status_page_set_icon_name(ADW_STATUS_PAGE(status_page), "emblem-music-symbolic");

@@ -20,6 +20,9 @@
 #pragma once
 
 #include <dlfcn.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
 #include <lilv/lilv.h>
 #include <lv2/atom/atom.h>
 #include <lv2/buf-size/buf-size.h>
@@ -31,11 +34,16 @@
 #include <lv2/options/options.h>
 #include <lv2/parameters/parameters.h>
 #include <lv2/ui/ui.h>
+#include <lv2/urid/urid.h>
+#include <sys/types.h>
 #include <array>
+#include <functional>
+#include <limits>
 #include <mutex>
 #include <span>
-#include <thread>
+#include <string>
 #include <unordered_map>
+#include <vector>
 #include "string_literal_wrapper.hpp"
 #include "util.hpp"
 

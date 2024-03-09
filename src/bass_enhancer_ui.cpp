@@ -18,7 +18,30 @@
  */
 
 #include "bass_enhancer_ui.hpp"
+#include <STTypes.h>
+#include <fmt/core.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklevelbar.h>
+#include <gtk/gtkscale.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtktogglebutton.h>
+#include <sigc++/connection.h>
+#include <memory>
+#include <string>
+#include <vector>
+#include "bass_enhancer.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
 #include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::bass_enhancer_box {
 

@@ -19,10 +19,16 @@
 
 #pragma once
 
+#include <sys/types.h>
+#include <algorithm>
+#include <array>
 #include <deque>
-#include "fir_filter_bandpass.hpp"
-#include "fir_filter_highpass.hpp"
-#include "fir_filter_lowpass.hpp"
+#include <memory>
+#include <span>
+#include <string>
+#include <vector>
+#include "fir_filter_base.hpp"
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class Crystalizer : public PluginBase {

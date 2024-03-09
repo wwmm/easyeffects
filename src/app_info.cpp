@@ -18,8 +18,39 @@
  */
 
 #include "app_info.hpp"
+#include <STTypes.h>
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkcheckbutton.h>
+#include <gtk/gtkicontheme.h>
+#include <gtk/gtkimage.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtktogglebutton.h>
+#include <pipewire/node.h>
+#include <algorithm>
+#include <array>
+#include <cctype>
+#include <cmath>
+#include <filesystem>
+#include <string>
+#include <string_view>
+#include <unordered_map>
+#include <utility>
+#include "application.hpp"
+#include "pipe_manager.hpp"
+#include "pipe_objects.hpp"
+#include "tags_app.hpp"
 #include "tags_pipewire.hpp"
 #include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::app_info {
 

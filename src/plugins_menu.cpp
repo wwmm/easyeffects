@@ -18,6 +18,36 @@
  */
 
 #include "plugins_menu.hpp"
+#include <STTypes.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklistitem.h>
+#include <gtk/gtklistview.h>
+#include <gtk/gtkpopover.h>
+#include <gtk/gtkscrolledwindow.h>
+#include <gtk/gtkshortcut.h>
+#include <gtk/gtksignallistitemfactory.h>
+#include <gtk/gtkstringlist.h>
+#include <sigc++/connection.h>
+#include <algorithm>
+#include <array>
+#include <map>
+#include <ranges>
+#include <string>
+#include <vector>
+#include "application.hpp"
+#include "pipeline_type.hpp"
+#include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "util.hpp"
 
 namespace ui::plugins_menu {
 

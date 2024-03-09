@@ -20,13 +20,13 @@
 #pragma once
 
 #include <adwaita.h>
-#include <regex>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
 #include "application.hpp"
 #include "effects_base.hpp"
-#include "equalizer_band_box.hpp"
-#include "tags_equalizer.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::equalizer_box {
 

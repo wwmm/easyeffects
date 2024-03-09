@@ -20,12 +20,13 @@
 #pragma once
 
 #include <gio/gio.h>
+#include <glib.h>
+#include <glib/gvariant.h>
+#include <glibconfig.h>
 #include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <string>
 #include "preset_type.hpp"
-#include "tags_app.hpp"
-#include "tags_plugin_name.hpp"
-#include "tags_schema.hpp"
 #include "util.hpp"
 
 class PluginPresetBase {

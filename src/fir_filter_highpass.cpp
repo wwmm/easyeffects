@@ -18,6 +18,10 @@
  */
 
 #include "fir_filter_highpass.hpp"
+#include <algorithm>
+#include <string>
+#include <utility>
+#include "fir_filter_base.hpp"
 
 FirFilterHighpass::FirFilterHighpass(std::string tag) : FirFilterBase(std::move(tag)) {}
 

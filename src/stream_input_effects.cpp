@@ -18,9 +18,28 @@
  */
 
 #include "stream_input_effects.hpp"
+#include <STTypes.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <pipewire/link.h>
+#include <sigc++/functors/mem_fun.h>
+#include <spa/utils/defs.h>
+#include <algorithm>
+#include <chrono>
+#include <cstdlib>
+#include <ranges>
 #include <set>
+#include <string>
+#include <thread>
+#include <vector>
+#include "effects_base.hpp"
+#include "pipe_manager.hpp"
+#include "pipe_objects.hpp"
 #include "tags_pipewire.hpp"
 #include "tags_plugin_name.hpp"
+#include "tags_schema.hpp"
+#include "util.hpp"
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     : EffectsBase("sie: ", tags::schema::id_input, pipe_manager) {
@@ -38,7 +57,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     }
   }
 
-  connections.push_back(pm->source_added.connect([=, this](const NodeInfo node) {
+  connections.push_back(pm->source_added.connect([this](const NodeInfo node) {
     if (node.name == util::gsettings_get_string(settings, "input-device")) {
       pm->input_device = node;
 
@@ -52,7 +71,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     }
   }));
 
-  connections.push_back(pm->source_removed.connect([=, this](const NodeInfo node) {
+  connections.push_back(pm->source_removed.connect([this](const NodeInfo node) {
     if (g_settings_get_boolean(settings, "use-default-input-device") == 0) {
       if (node.name == util::gsettings_get_string(settings, "input-device")) {
         pm->input_device.id = SPA_ID_INVALID;

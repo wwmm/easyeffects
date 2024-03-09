@@ -18,6 +18,56 @@
  */
 
 #include "presets_manager.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <algorithm>
+#include <exception>
+#include <filesystem>
+#include <fstream>
+#include <iomanip>
+#include <memory>
+#include <nlohmann/json_fwd.hpp>
+#include <optional>
+#include <ostream>
+#include <stdexcept>
+#include <string>
+#include <string_view>
+#include <vector>
+#include "autogain_preset.hpp"
+#include "bass_enhancer_preset.hpp"
+#include "bass_loudness_preset.hpp"
+#include "compressor_preset.hpp"
+#include "convolver_preset.hpp"
+#include "crossfeed_preset.hpp"
+#include "crystalizer_preset.hpp"
+#include "deepfilternet_preset.hpp"
+#include "deesser_preset.hpp"
+#include "delay_preset.hpp"
+#include "echo_canceller_preset.hpp"
+#include "equalizer_preset.hpp"
+#include "exciter_preset.hpp"
+#include "expander_preset.hpp"
+#include "filter_preset.hpp"
+#include "gate_preset.hpp"
+#include "level_meter_preset.hpp"
+#include "limiter_preset.hpp"
+#include "loudness_preset.hpp"
+#include "maximizer_preset.hpp"
+#include "multiband_compressor_preset.hpp"
+#include "multiband_gate_preset.hpp"
+#include "pitch_preset.hpp"
+#include "plugin_preset_base.hpp"
+#include "preset_type.hpp"
+#include "reverb_preset.hpp"
+#include "rnnoise_preset.hpp"
+#include "speex_preset.hpp"
+#include "stereo_tools_preset.hpp"
+#include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
+#include "tags_schema.hpp"
+#include "util.hpp"
 
 PresetsManager::PresetsManager()
     : user_config_dir(g_get_user_config_dir()),
@@ -353,7 +403,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const std::
 
   std::ofstream o(output_file.c_str());
 
-  o << std::setw(4) << json << std::endl;
+  o << std::setw(4) << json << '\n';
 
   // std::cout << std::setw(4) << json << std::endl;
 
@@ -604,7 +654,7 @@ void PresetsManager::add_autoload(const PresetType& preset_type,
   json["device-profile"] = device_profile;
   json["preset-name"] = preset_name;
 
-  o << std::setw(4) << json << std::endl;
+  o << std::setw(4) << json << '\n';
 
   util::debug("added autoload preset file: " + output_file.string());
 }
@@ -771,7 +821,8 @@ void PresetsManager::notify_error(const PresetError& preset_error, const std::st
   try {
     const auto base_name = tags::plugin_name::get_base_name(plugin_name);
     plugin_translated = tags::plugin_name::get_translated().at(base_name) + ": ";
-  } catch (...) {
+  } catch (std::out_of_range& e) {
+    util::debug(e.what());
   }
 
   switch (preset_error) {

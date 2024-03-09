@@ -20,6 +20,10 @@
 #pragma once
 
 #include <bs2bclass.h>
+#include <span>
+#include <string>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class Crossfeed : public PluginBase {

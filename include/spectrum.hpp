@@ -20,7 +20,13 @@
 #pragma once
 
 #include <fftw3.h>
-#include <numbers>
+#include <sigc++/signal.h>
+#include <sys/types.h>
+#include <deque>
+#include <span>
+#include <string>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class Spectrum : public PluginBase {

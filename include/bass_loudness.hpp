@@ -19,6 +19,9 @@
 
 #pragma once
 
+#include <span>
+#include <string>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class BassLoudness : public PluginBase {

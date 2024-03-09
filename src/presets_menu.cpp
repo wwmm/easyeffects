@@ -18,6 +18,36 @@
  */
 
 #include "presets_menu.hpp"
+#include <STTypes.h>
+#include <adwaita.h>
+#include <gio/gio.h>
+#include <gio/gliststore.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklistitem.h>
+#include <gtk/gtklistview.h>
+#include <gtk/gtkpopover.h>
+#include <gtk/gtkscrolledwindow.h>
+#include <gtk/gtkshortcut.h>
+#include <gtk/gtksignallistitemfactory.h>
+#include <gtk/gtkstringlist.h>
+#include <gtk/gtktext.h>
+#include <sigc++/connection.h>
+#include <string>
+#include <vector>
+#include "application.hpp"
+#include "config.h"
+#include "preset_type.hpp"
+#include "tags_app.hpp"
+#include "tags_resources.hpp"
+#include "util.hpp"
 
 namespace ui::presets_menu {
 
@@ -286,6 +316,8 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
 
                     break;
                   }
+                  default:
+                    break;
                 }
               }
 

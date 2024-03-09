@@ -18,7 +18,37 @@
  */
 
 #include "apps_box.hpp"
+#include <STTypes.h>
+#include <adwaita.h>
+#include <gio/gio.h>
+#include <gio/gliststore.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkicontheme.h>
+#include <gtk/gtklistitem.h>
+#include <gtk/gtklistview.h>
+#include <gtk/gtknoselection.h>
+#include <gtk/gtkoverlay.h>
+#include <gtk/gtksignallistitemfactory.h>
+#include <sigc++/connection.h>
+#include <algorithm>
+#include <cstdint>
+#include <string>
+#include <unordered_map>
+#include <vector>
+#include "app_info.hpp"
+#include "application.hpp"
+#include "node_info_holder.hpp"
+#include "pipe_objects.hpp"
+#include "pipeline_type.hpp"
+#include "tags_app.hpp"
 #include "tags_pipewire.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "util.hpp"
 
 namespace ui::apps_box {
 

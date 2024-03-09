@@ -18,6 +18,12 @@
  */
 
 #include "node_info_holder.hpp"
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <spa/utils/defs.h>
+#include "pipe_objects.hpp"
 #include "tags_pipewire.hpp"
 #include "util.hpp"
 

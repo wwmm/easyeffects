@@ -18,6 +18,41 @@
  */
 
 #include "effects_box.hpp"
+#include <STTypes.h>
+#include <adwaita.h>
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gobject/gobject.h>
+#include <gsl/gsl_interp.h>
+#include <gsl/gsl_spline.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkicontheme.h>
+#include <gtk/gtkimage.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtkmenubutton.h>
+#include <gtk/gtkshortcut.h>
+#include <gtk/gtktogglebutton.h>
+#include <sigc++/connection.h>
+#include <algorithm>
+#include <cstddef>
+#include <vector>
+#include "application.hpp"
+#include "apps_box.hpp"
+#include "blocklist_menu.hpp"
+#include "chart.hpp"
+#include "effects_base.hpp"
+#include "pipeline_type.hpp"
+#include "plugins_box.hpp"
+#include "tags_app.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace {
 

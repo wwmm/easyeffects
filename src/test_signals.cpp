@@ -18,6 +18,20 @@
  */
 
 #include "test_signals.hpp"
+#include <bits/basic_string.h>
+#include <pipewire/filter.h>
+#include <pipewire/keys.h>
+#include <pipewire/port.h>
+#include <pipewire/properties.h>
+#include <spa/node/io.h>
+#include <spa/utils/hook.h>
+#include <sys/types.h>
+#include <chrono>
+#include <cmath>
+#include <numbers>
+#include <span>
+#include <thread>
+#include "pipe_manager.hpp"
 #include "tags_app.hpp"
 #include "util.hpp"
 

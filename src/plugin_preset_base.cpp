@@ -18,6 +18,10 @@
  */
 
 #include "plugin_preset_base.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include "preset_type.hpp"
+#include "util.hpp"
 
 PluginPresetBase::PluginPresetBase(const char* schema_id,
                                    const char* schema_path_input,

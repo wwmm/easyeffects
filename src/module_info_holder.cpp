@@ -18,6 +18,12 @@
  */
 
 #include "module_info_holder.hpp"
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <spa/utils/defs.h>
+#include "pipe_objects.hpp"
 #include "util.hpp"
 
 namespace ui::holders {

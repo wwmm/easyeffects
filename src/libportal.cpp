@@ -18,6 +18,16 @@
  */
 
 #include "libportal.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkswitch.h>
+#include <string>
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace {
 

@@ -20,6 +20,13 @@
 #pragma once
 
 #include <ebur128.h>
+#include <sigc++/signal.h>
+#include <sys/types.h>
+#include <span>
+#include <string>
+#include <thread>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class LevelMeter : public PluginBase {

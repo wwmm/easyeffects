@@ -18,6 +18,17 @@
  */
 
 #include "fir_filter_base.hpp"
+#include <sched.h>
+#include <sys/types.h>
+#include <zita-convolver.h>
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <numbers>
+#include <string>
+#include <utility>
+#include <vector>
+#include "util.hpp"
 
 namespace {
 

@@ -19,36 +19,10 @@
 
 #pragma once
 
+#include <glib-object.h>
+#include <glibconfig.h>
 #include "application.hpp"
-#include "autogain_ui.hpp"
-#include "bass_enhancer_ui.hpp"
-#include "bass_loudness_ui.hpp"
-#include "compressor_ui.hpp"
-#include "convolver_ui.hpp"
-#include "crossfeed_ui.hpp"
-#include "crystalizer_ui.hpp"
-#include "deepfilternet_ui.hpp"
-#include "deesser_ui.hpp"
-#include "delay_ui.hpp"
-#include "echo_canceller_ui.hpp"
-#include "equalizer_ui.hpp"
-#include "exciter_ui.hpp"
-#include "expander_ui.hpp"
-#include "filter_ui.hpp"
-#include "gate_ui.hpp"
-#include "level_meter_ui.hpp"
-#include "limiter_ui.hpp"
-#include "loudness_ui.hpp"
-#include "maximizer_ui.hpp"
-#include "multiband_compressor_ui.hpp"
-#include "multiband_gate_ui.hpp"
 #include "pipeline_type.hpp"
-#include "pitch_ui.hpp"
-#include "plugins_menu.hpp"
-#include "reverb_ui.hpp"
-#include "rnnoise_ui.hpp"
-#include "speex_ui.hpp"
-#include "stereo_tools_ui.hpp"
 
 namespace ui::plugins_box {
 

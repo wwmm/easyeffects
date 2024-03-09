@@ -18,6 +18,11 @@
  */
 
 #include "fir_filter_bandpass.hpp"
+#include <algorithm>
+#include <cstddef>
+#include <string>
+#include <utility>
+#include "fir_filter_base.hpp"
 
 FirFilterBandpass::FirFilterBandpass(std::string tag) : FirFilterBase(std::move(tag)) {}
 

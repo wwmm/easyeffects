@@ -18,7 +18,31 @@
  */
 
 #include "autogain_ui.hpp"
+#include <STTypes.h>
+#include <adwaita.h>
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklevelbar.h>
+#include <gtk/gtkscale.h>
+#include <gtk/gtkspinbutton.h>
+#include <sigc++/connection.h>
+#include <memory>
+#include <string>
+#include <vector>
+#include "autogain.hpp"
+#include "tags_resources.hpp"
+#include "tags_schema.hpp"
 #include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::autogain_box {
 

@@ -18,6 +18,9 @@
  */
 
 #include "fir_filter_lowpass.hpp"
+#include <string>
+#include <utility>
+#include "fir_filter_base.hpp"
 
 FirFilterLowpass::FirFilterLowpass(std::string tag) : FirFilterBase(std::move(tag)) {}
 

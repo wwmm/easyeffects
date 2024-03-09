@@ -18,6 +18,7 @@
  */
 
 #include "crystalizer.hpp"
+#include <bits/basic_string.h>
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
@@ -28,6 +29,10 @@
 #include <mutex>
 #include <span>
 #include <string>
+#include "fir_filter_bandpass.hpp"
+#include "fir_filter_base.hpp"
+#include "pipe_manager.hpp"
+#include "plugin_base.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

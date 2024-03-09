@@ -21,22 +21,20 @@
 
 #include <gdk/gdk.h>
 #include <gio/gio.h>
+#include <gio/gsettingsschema.h>
 #include <glib-object.h>
 #include <glib.h>
+#include <sys/types.h>
+#include <array>
 #include <charconv>
-#include <clocale>
 #include <cmath>
 #include <cstdlib>
 #include <filesystem>
 #include <functional>
-#include <iostream>
 #include <limits>
-#include <ranges>
-#include <regex>
 #include <source_location>
-#include <sstream>
 #include <string>
-#include <thread>
+#include <system_error>
 #include <type_traits>
 #include <utility>
 #include <vector>
@@ -192,7 +190,7 @@ auto to_string(const T& num, const std::string def = "0") -> std::string {
 }
 
 template <class T>
-concept Number = std::is_integral<T>::value || std::is_floating_point<T>::value;
+concept Number = std::is_integral_v<T> || std::is_floating_point_v<T>;
 
 template <Number T>
 auto logspace(const T& start, const T& stop, const uint& npoints) -> std::vector<T> {

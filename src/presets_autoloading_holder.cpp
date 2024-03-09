@@ -18,6 +18,10 @@
  */
 
 #include "presets_autoloading_holder.hpp"
+#include <glib-object.h>
+#include <gobject/gobject.h>
+#include <string>
+#include "util.hpp"
 
 namespace ui::holders {
 

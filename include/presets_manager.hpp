@@ -21,42 +21,17 @@
 
 #include <gio/gio.h>
 #include <sigc++/sigc++.h>
-#include <algorithm>
+#include <sigc++/signal.h>
 #include <filesystem>
-#include <fstream>
 #include <memory>
 #include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <optional>
-#include "autogain_preset.hpp"
-#include "bass_enhancer_preset.hpp"
-#include "bass_loudness_preset.hpp"
-#include "compressor_preset.hpp"
-#include "convolver_preset.hpp"
-#include "crossfeed_preset.hpp"
-#include "crystalizer_preset.hpp"
-#include "deepfilternet_preset.hpp"
-#include "deesser_preset.hpp"
-#include "delay_preset.hpp"
-#include "echo_canceller_preset.hpp"
-#include "equalizer_preset.hpp"
-#include "exciter_preset.hpp"
-#include "expander_preset.hpp"
-#include "filter_preset.hpp"
-#include "gate_preset.hpp"
-#include "level_meter_preset.hpp"
-#include "limiter_preset.hpp"
-#include "loudness_preset.hpp"
-#include "maximizer_preset.hpp"
-#include "multiband_compressor_preset.hpp"
-#include "multiband_gate_preset.hpp"
-#include "pitch_preset.hpp"
+#include <string>
+#include <string_view>
+#include <vector>
+#include "plugin_preset_base.hpp"
 #include "preset_type.hpp"
-#include "reverb_preset.hpp"
-#include "rnnoise_preset.hpp"
-#include "speex_preset.hpp"
-#include "stereo_tools_preset.hpp"
-#include "tags_plugin_name.hpp"
-#include "util.hpp"
 
 class PresetsManager {
  public:

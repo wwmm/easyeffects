@@ -19,9 +19,16 @@
 
 #pragma once
 
+#include <sys/types.h>
 #include <zita-convolver.h>
 #include <deque>
+#include <span>
+#include <string>
+#include <thread>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
+#include "util.hpp"
 
 class Convolver : public PluginBase {
  public:

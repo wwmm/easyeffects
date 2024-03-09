@@ -18,12 +18,33 @@
  */
 
 #include "application_ui.hpp"
+#include <adwaita.h>
+#include <gdk/gdk.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkcssprovider.h>
+#include <gtk/gtkicontheme.h>
+#include <gtk/gtkmenubutton.h>
+#include <gtk/gtkshortcut.h>
+#include <gtk/gtktogglebutton.h>
+#include <sigc++/connection.h>
+#include <string>
+#include <vector>
+#include "application.hpp"
 #include "config.h"
 #include "effects_box.hpp"
 #include "pipe_manager_box.hpp"
+#include "pipeline_type.hpp"
+#include "preset_type.hpp"
 #include "presets_menu.hpp"
+#include "tags_app.hpp"
 #include "tags_resources.hpp"
 #include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::application_window {
 
