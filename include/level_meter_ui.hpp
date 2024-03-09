@@ -20,9 +20,12 @@
 #pragma once
 
 #include <adwaita.h>
-#include "effects_base.hpp"
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
+#include <memory>
+#include <string>
 #include "level_meter.hpp"
-#include "ui_helpers.hpp"
 
 namespace ui::level_meter_box {
 

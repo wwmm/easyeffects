@@ -19,11 +19,12 @@
 
 #pragma once
 
+#include <sys/types.h>
 #include <zita-convolver.h>
 #include <algorithm>
-#include <numbers>
-#include <ranges>
 #include <span>
+#include <string>
+#include <vector>
 #include "util.hpp"
 
 class FirFilterBase {

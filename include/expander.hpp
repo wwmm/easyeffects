@@ -19,6 +19,13 @@
 
 #pragma once
 
+#include <pipewire/context.h>
+#include <sigc++/signal.h>
+#include <sys/types.h>
+#include <span>
+#include <string>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class Expander : public PluginBase {

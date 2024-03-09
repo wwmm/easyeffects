@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <string>
 #include "fir_filter_base.hpp"
 
 class FirFilterBandpass : public FirFilterBase {

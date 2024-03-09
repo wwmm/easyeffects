@@ -150,9 +150,11 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_sync_funcs.emplace_back([=, this]() {
-      g_settings_set_boolean(settings, gkey_wrapper.msg.data(),
-                             static_cast<gboolean>(get_control_port_value(key_wrapper.msg.data())));
+    auto gkey = gkey_wrapper.msg.data();
+    auto key = key_wrapper.msg.data();
+
+    gsettings_sync_funcs.emplace_back([settings, gkey, key, this]() {
+      g_settings_set_boolean(settings, gkey, static_cast<gboolean>(get_control_port_value(key)));
     });
   }
 
@@ -170,9 +172,11 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_sync_funcs.emplace_back([=, this]() {
-      g_settings_set_enum(settings, gkey_wrapper.msg.data(),
-                          static_cast<gint>(get_control_port_value(key_wrapper.msg.data())));
+    auto gkey = gkey_wrapper.msg.data();
+    auto key = key_wrapper.msg.data();
+
+    gsettings_sync_funcs.emplace_back([settings, gkey, key, this]() {
+      g_settings_set_enum(settings, gkey, static_cast<gint>(get_control_port_value(key)));
     });
   }
 
@@ -190,9 +194,11 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_sync_funcs.emplace_back([=, this]() {
-      g_settings_set_int(settings, gkey_wrapper.msg.data(),
-                         static_cast<gint>(get_control_port_value(key_wrapper.msg.data())));
+    auto gkey = gkey_wrapper.msg.data();
+    auto key = key_wrapper.msg.data();
+
+    gsettings_sync_funcs.emplace_back([settings, gkey, key, this]() {
+      g_settings_set_int(settings, gkey, static_cast<gint>(get_control_port_value(key)));
     });
   }
 
@@ -210,9 +216,11 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_sync_funcs.emplace_back([=, this]() {
-      g_settings_set_double(settings, gkey_wrapper.msg.data(),
-                            static_cast<gdouble>(get_control_port_value(key_wrapper.msg.data())));
+    auto gkey = gkey_wrapper.msg.data();
+    auto key = key_wrapper.msg.data();
+
+    gsettings_sync_funcs.emplace_back([settings, gkey, key, this]() {
+      g_settings_set_double(settings, gkey, static_cast<gdouble>(get_control_port_value(key)));
     });
   }
 
@@ -239,12 +247,15 @@ class Lv2Wrapper {
                      }),
                      this);
 
-    gsettings_sync_funcs.emplace_back([=, this]() {
-      const auto linear_v = get_control_port_value(key_wrapper.msg.data());
+    auto gkey = gkey_wrapper.msg.data();
+    auto key = key_wrapper.msg.data();
+
+    gsettings_sync_funcs.emplace_back([settings, gkey, key, this]() {
+      const auto linear_v = get_control_port_value(key);
 
       const auto db_v = (!lower_bound & (linear_v == 0.0F)) ? util::minimum_db_d_level : util::linear_to_db(linear_v);
 
-      g_settings_set_double(settings, gkey_wrapper.msg.data(), static_cast<gdouble>(db_v));
+      g_settings_set_double(settings, gkey, static_cast<gdouble>(db_v));
     });
   }
 

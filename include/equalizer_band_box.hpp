@@ -20,10 +20,10 @@
 #pragma once
 
 #include <adwaita.h>
-#include <glib/gi18n.h>
-#include "tags_equalizer.hpp"
-#include "tags_resources.hpp"
-#include "ui_helpers.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkbox.h>
 
 namespace ui::equalizer_band_box {
 

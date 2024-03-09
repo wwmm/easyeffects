@@ -19,8 +19,10 @@
 
 #pragma once
 
+#include <gio/gio.h>
+#include <nlohmann/json_fwd.hpp>
 #include "plugin_preset_base.hpp"
-#include "tags_equalizer.hpp"
+#include "preset_type.hpp"
 
 class EqualizerPreset : public PluginPresetBase {
  public:

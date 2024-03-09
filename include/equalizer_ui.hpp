@@ -26,7 +26,7 @@
 #include <memory>
 #include <string>
 #include "application.hpp"
-#include "effects_base.hpp"
+#include "equalizer.hpp"
 
 namespace ui::equalizer_box {
 

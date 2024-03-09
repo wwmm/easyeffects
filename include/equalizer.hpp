@@ -19,7 +19,15 @@
 
 #pragma once
 
+#include <gio/gio.h>
+#include <glib.h>
+#include <sys/types.h>
+#include <cstddef>
+#include <span>
+#include <string>
 #include <utility>
+#include <vector>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 #include "tags_equalizer.hpp"
 

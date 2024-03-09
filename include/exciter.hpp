@@ -19,6 +19,10 @@
 
 #pragma once
 
+#include <sigc++/signal.h>
+#include <span>
+#include <string>
+#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
 
 class Exciter : public PluginBase {

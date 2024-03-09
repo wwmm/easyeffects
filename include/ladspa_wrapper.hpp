@@ -20,14 +20,17 @@
 #pragma once
 
 #include <dlfcn.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
 #include <ladspa.h>
-#include <cassert>
-#include <cstring>
+#include <sys/types.h>
+#include <cmath>
+#include <limits>
 #include <span>
 #include <string>
 #include <tuple>
 #include <unordered_map>
-#include "config.h"
 #include "string_literal_wrapper.hpp"
 #include "util.hpp"
 

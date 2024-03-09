@@ -18,6 +18,20 @@
  */
 
 #include "ladspa_wrapper.hpp"
+#include <dlfcn.h>
+#include <ladspa.h>
+#include <sys/types.h>
+#include <cassert>
+#include <cmath>
+#include <cstdlib>
+#include <cstring>
+#include <limits>
+#include <span>
+#include <string>
+#include <tuple>
+#include <utility>
+#include "config.h"
+#include "util.hpp"
 
 namespace ladspa {
 

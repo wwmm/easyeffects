@@ -20,15 +20,13 @@
 #pragma once
 
 #include <adwaita.h>
+#include <glib-object.h>
+#include <glibconfig.h>
 #include <gsl/gsl_spline.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkicontheme.h>
 #include "application.hpp"
-#include "apps_box.hpp"
-#include "blocklist_menu.hpp"
-#include "chart.hpp"
-#include "effects_base.hpp"
 #include "pipeline_type.hpp"
-#include "plugins_box.hpp"
-#include "tags_resources.hpp"
 
 namespace ui::effects_box {
 
