@@ -18,7 +18,30 @@
  */
 
 #include "chart.hpp"
+#include <cairo.h>
+#include <fmt/format.h>
+#include <gdk/gdk.h>
+#include <glib-object.h>
+#include <gobject/gobject.h>
+#include <graphene.h>
+#include <gsk/gsk.h>
+#include <gsk/gskroundedrect.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkeventcontrollermotion.h>
+#include <gtk/gtkshortcut.h>
+#include <pango/pango-font.h>
+#include <pango/pango-layout.h>
+#include <sys/types.h>
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <cstddef>
+#include <string>
+#include <vector>
 #include "tags_resources.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::chart {
 

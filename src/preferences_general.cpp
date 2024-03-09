@@ -18,6 +18,20 @@
  */
 
 #include "preferences_general.hpp"
+#include <adwaita.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtkswitch.h>
+#include <filesystem>
+#include <fstream>
+#include "tags_app.hpp"
+#include "tags_resources.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::preferences::general {
 
@@ -27,7 +41,8 @@ struct _PreferencesGeneral {
   AdwPreferencesPage parent_instance;
 
   GtkSwitch *enable_autostart, *process_all_inputs, *process_all_outputs, *theme_switch, *shutdown_on_window_close,
-      *use_cubic_volumes, *inactivity_timer_enable, *autohide_popovers, *exclude_monitor_streams, *show_native_plugin_ui;
+      *use_cubic_volumes, *inactivity_timer_enable, *autohide_popovers, *exclude_monitor_streams,
+      *show_native_plugin_ui;
 
   GtkSpinButton *inactivity_timeout, *meters_update_interval, *lv2ui_update_frequency;
 
@@ -128,12 +143,13 @@ void preferences_general_init(PreferencesGeneral* self) {
   // initializing some widgets
 
   gsettings_bind_widgets<"process-all-inputs", "process-all-outputs", "use-dark-theme", "shutdown-on-window-close",
-                         "use-cubic-volumes", "autohide-popovers", "exclude-monitor-streams", "inactivity-timer-enable", "inactivity-timeout",
-                         "meters-update-interval", "lv2ui-update-frequency", "show-native-plugin-ui">(
+                         "use-cubic-volumes", "autohide-popovers", "exclude-monitor-streams", "inactivity-timer-enable",
+                         "inactivity-timeout", "meters-update-interval", "lv2ui-update-frequency",
+                         "show-native-plugin-ui">(
       self->settings, self->process_all_inputs, self->process_all_outputs, self->theme_switch,
       self->shutdown_on_window_close, self->use_cubic_volumes, self->autohide_popovers, self->exclude_monitor_streams,
-      self->inactivity_timer_enable, self->inactivity_timeout, self->meters_update_interval, self->lv2ui_update_frequency,
-      self->show_native_plugin_ui);
+      self->inactivity_timer_enable, self->inactivity_timeout, self->meters_update_interval,
+      self->lv2ui_update_frequency, self->show_native_plugin_ui);
 
 #ifdef ENABLE_LIBPORTAL
   libportal::init(self->enable_autostart, self->shutdown_on_window_close);

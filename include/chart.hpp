@@ -20,12 +20,14 @@
 #pragma once
 
 #include <adwaita.h>
+#include <gdk/gdk.h>
+#include <glib-object.h>
+#include <glibconfig.h>
+#include <gtk/gtkshortcut.h>
 #define FMT_HEADER_ONLY
 #include <fmt/core.h>
 #include <fmt/format.h>
 #include <sigc++/sigc++.h>
-#include <algorithm>
-#include <ranges>
 #include <string>
 #include <vector>
 #include "ui_helpers.hpp"

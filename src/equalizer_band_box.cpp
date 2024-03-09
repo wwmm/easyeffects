@@ -18,6 +18,25 @@
  */
 
 #include "equalizer_band_box.hpp"
+#include <adwaita.h>
+#include <fmt/core.h>
+#include <fmt/format.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtkpopover.h>
+#include <gtk/gtkscale.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtkswitch.h>
+#include "tags_app.hpp"
+#include "tags_equalizer.hpp"
+#include "tags_resources.hpp"
+#include "ui_helpers.hpp"
+#include "util.hpp"
 
 namespace ui::equalizer_band_box {
 

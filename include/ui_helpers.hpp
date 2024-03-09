@@ -20,18 +20,30 @@
 #pragma once
 
 #include <adwaita.h>
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glib/gvariant.h>
+#include <glib/gvarianttype.h>
+#include <gtk/deprecated/gtkcomboboxtext.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkdropdown.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtklevelbar.h>
+#include <gtk/gtkscale.h>
+#include <gtk/gtkshortcut.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtkstringlist.h>
+#include <gtk/gtkswitch.h>
+#include <gtk/gtktogglebutton.h>
+#include <sys/types.h>
+#include <locale>
 #define FMT_HEADER_ONLY
 #include <fmt/core.h>
 #include <fmt/format.h>
 #include <glib/gi18n.h>
-#include <algorithm>
-#include <iostream>
-#include <map>
-#include <sstream>
 #include <string>
 #include "string_literal_wrapper.hpp"
-#include "tags_app.hpp"
-#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 namespace ui {

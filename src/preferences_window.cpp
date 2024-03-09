@@ -18,7 +18,17 @@
  */
 
 #include "preferences_window.hpp"
+#include <adwaita.h>
+#include <glib-object.h>
+#include <gobject/gobject.h>
+#include <gtk/gtk.h>
+#include <string>
 #include "config.h"
+#include "preferences_general.hpp"
+#include "preferences_spectrum.hpp"
+#include "tags_app.hpp"
+#include "tags_resources.hpp"
+#include "util.hpp"
 
 namespace ui::preferences::window {
 

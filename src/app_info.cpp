@@ -19,6 +19,7 @@
 
 #include "app_info.hpp"
 #include <STTypes.h>
+#define FMT_HEADER_ONLY
 #include <fmt/core.h>
 #include <fmt/format.h>
 #include <gio/gio.h>
