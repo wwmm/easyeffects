@@ -19,10 +19,12 @@
 
 #include "pipe_manager_box.hpp"
 #include <gio/gio.h>
+#include <glib-object.h>
 #include <glib.h>
 #include <gtk/gtkstringlist.h>
 #include <sigc++/connection.h>
 #include <memory>
+#include <string>
 #include <vector>
 #include "client_info_holder.hpp"
 #include "module_info_holder.hpp"
