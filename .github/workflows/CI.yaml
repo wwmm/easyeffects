@@ -152,8 +152,7 @@ jobs:
     name: Clang Tidy
     runs-on: ubuntu-22.04
     container:
-      # since arch linux tends to take time to get the latest clang (we need >= 16), use alpine for now
-      image: alpine
+      image: archlinux
 
     steps:
     - name: Checkout repository
@@ -161,59 +160,24 @@ jobs:
 
     - name: Install deps
       run: |
-        apk update
-        apk upgrade
-
         # install general build deps
-        apk add meson clang clang-extra-tools build-base bash libc++-dev
-
-        # copy pasted from https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
-        depends="lv2"
-        makedepends="
-        appstream-glib-dev
-        desktop-file-utils
-        fftw-dev
-        fmt-dev
-        gsl-dev
-        gtk4.0-dev
-        itstool
-        libadwaita-dev
-        libbs2b-dev
-        libebur128-dev
-        libsamplerate-dev
-        libsigc++3-dev
-        libsndfile-dev
-        libtbb-dev
-        lilv-dev
-        lv2-dev
-        meson
-        nlohmann-json
-        pipewire-dev
-        rnnoise-dev
-        soundtouch-dev
-        speexdsp-dev
-        zita-convolver-dev
-        ladspa-dev
-        "
-
+        pacman -Syu --noconfirm ninja gcc pkgconf python3 python-pip which
         # install easyeffects deps
-        apk add $makedepends $depends
-
+        source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
+        # install clang
+        pacman -S --noconfirm --needed --asdeps clang
         # install libportal since we technically need it for a full check
-        apk add libportal-dev
+        pacman -S --noconfirm --needed --asdeps libportal libportal-gtk4
 
     - name: Build with Clang
       # build with clang not because we strictly need to (we do need to do some kind of build so config.h shows up)
       # but because any clang compiler failures will cause clang-tidy to fail later on, so we might as well fail fast
-      # also use libc++ as that is not the default, and is good to test as some distros like chimera linux use it over libstdc++
       run: |
-        CC=clang CXX=clang++ CXXFLAGS=-stdlib=libc++ meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug -Denable-libcpp-workarounds=true
+        CC=clang CXX=clang++ meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug
         meson compile -C build
 
     - name: Install ctcache
       run: |
-        # we need to install the full tar since the cache action needs it, and it can't use alpine linux's default
-        apk add git tar
         git clone https://github.com/matus-chochlik/ctcache
         cd ctcache
         git checkout bd1620a8609ddaf2f64500820abc8b4d150edeaf # v1.1.0
