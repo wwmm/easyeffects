@@ -118,41 +118,15 @@ jobs:
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
         if-no-files-found: error
 
-  codeql-analyze:
-    name: CodeQL Analyze
+
+  alpine-linux:
+    name: Alpine Linux
     runs-on: ubuntu-22.04
-    permissions:
-      security-events: write
+    strategy:
+      # test also with libc++ as that is not the default, and is good to test as some distros like chimera linux use it over libstdc++
+      matrix:
+        stdlib: [libstdc++, libc++]
     container:
-      image: archlinux
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4.1.1
-
-    - name: Install deps
-      run: |
-        # install general build deps
-        pacman -Syu --noconfirm ninja gcc pkgconf python3 python-pip which
-        # install easyeffects deps
-        source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
-
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3.24.6
-      with:
-        languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
-
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3.24.6
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3.24.6
-
-  clang-tidy:
-    name: Clang Tidy
-    runs-on: ubuntu-22.04
-    container:
-      # since arch linux tends to take time to get the latest clang (we need >= 16), use alpine for now
       image: alpine
 
     steps:
@@ -202,18 +176,71 @@ jobs:
         # install libportal since we technically need it for a full check
         apk add libportal-dev
 
+    - name: Build with Clang and ${{ matrix.stdlib }}
+      run: |
+        CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug ${{ matrix.stdlib == 'libc++' && '-Denable-libcpp-workarounds=true' || '' }}
+        meson compile -C build
+
+  codeql-analyze:
+    name: CodeQL Analyze
+    runs-on: ubuntu-22.04
+    permissions:
+      security-events: write
+    container:
+      image: archlinux
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.1
+
+    - name: Install deps
+      run: |
+        # install general build deps
+        pacman -Syu --noconfirm ninja gcc pkgconf python3 python-pip which
+        # install easyeffects deps
+        source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3.24.6
+      with:
+        languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
+
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3.24.6
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3.24.6
+
+  clang-tidy:
+    name: Clang Tidy
+    runs-on: ubuntu-22.04
+    container:
+      image: archlinux
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.1
+
+    - name: Install deps
+      run: |
+        # install general build deps
+        pacman -Syu --noconfirm ninja gcc pkgconf python3 python-pip which
+        # install easyeffects deps
+        source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
+        # install clang
+        pacman -S --noconfirm --needed --asdeps clang
+        # install libportal since we technically need it for a full check
+        pacman -S --noconfirm --needed --asdeps libportal libportal-gtk4
+
     - name: Build with Clang
       # build with clang not because we strictly need to (we do need to do some kind of build so config.h shows up)
       # but because any clang compiler failures will cause clang-tidy to fail later on, so we might as well fail fast
-      # also use libc++ as that is not the default, and is good to test as some distros like chimera linux use it over libstdc++
       run: |
-        CC=clang CXX=clang++ CXXFLAGS=-stdlib=libc++ meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug -Denable-libcpp-workarounds=true
+        CC=clang CXX=clang++ meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug
         meson compile -C build
 
     - name: Install ctcache
       run: |
-        # we need to install the full tar since the cache action needs it, and it can't use alpine linux's default
-        apk add git tar
         git clone https://github.com/matus-chochlik/ctcache
         cd ctcache
         git checkout bd1620a8609ddaf2f64500820abc8b4d150edeaf # v1.1.0
