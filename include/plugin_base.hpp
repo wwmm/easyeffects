@@ -23,7 +23,6 @@
 #include <glib.h>
 #include <pipewire/filter.h>
 #include <sigc++/signal.h>
-#include <spa/param/latency-utils.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
 #include <chrono>

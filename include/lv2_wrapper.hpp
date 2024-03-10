@@ -19,20 +19,12 @@
 
 #pragma once
 
-#include <dlfcn.h>
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
 #include <lilv/lilv.h>
-#include <lv2/atom/atom.h>
 #include <lv2/buf-size/buf-size.h>
 #include <lv2/core/lv2.h>
-#include <lv2/data-access/data-access.h>
-#include <lv2/instance-access/instance-access.h>
-#include <lv2/lv2plug.in/ns/ext/log/log.h>
-#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
-#include <lv2/options/options.h>
-#include <lv2/parameters/parameters.h>
 #include <lv2/ui/ui.h>
 #include <lv2/urid/urid.h>
 #include <sys/types.h>

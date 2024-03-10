@@ -19,7 +19,7 @@
 
 #pragma once
 
-#include <pipewire/context.h>
+#include <pipewire/proxy.h>
 #include <sigc++/signal.h>
 #include <sys/types.h>
 #include <span>

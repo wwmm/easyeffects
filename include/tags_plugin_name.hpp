@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include <glib/gi18n.h>
 #include <sys/types.h>
 #include <array>
 #include <map>

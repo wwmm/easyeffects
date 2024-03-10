@@ -21,8 +21,6 @@
 
 #include <glib-object.h>
 #include <glibconfig.h>
-#include <gobject/gobject.h>
-#include <gtk/gtk.h>
 #include <sigc++/signal.h>
 #include "pipe_objects.hpp"
 

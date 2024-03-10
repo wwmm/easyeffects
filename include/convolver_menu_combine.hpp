@@ -19,10 +19,9 @@
 
 #pragma once
 
-#include <adwaita.h>
 #include <glib-object.h>
 #include <glibconfig.h>
-#include <gtk/gtkpopover.h>
+#include <gtk/gtk.h>
 #include <string>
 
 namespace ui::convolver_menu_combine {

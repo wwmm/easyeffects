@@ -19,6 +19,7 @@
 
 #include "ui_helpers.hpp"
 #include <adwaita.h>
+#include <glib-object.h>
 #define FMT_HEADER_ONLY
 #include <fmt/core.h>
 #include <fmt/format.h>

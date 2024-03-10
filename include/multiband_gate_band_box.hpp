@@ -22,7 +22,6 @@
 #include <adwaita.h>
 #include <gio/gio.h>
 #include <glib-object.h>
-#include <glib/gi18n.h>
 #include <glibconfig.h>
 #include <gtk/gtkbox.h>
 

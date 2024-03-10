@@ -20,11 +20,9 @@
 #pragma once
 
 #include <gio/gio.h>
-#include <sigc++/sigc++.h>
 #include <sigc++/signal.h>
 #include <filesystem>
 #include <memory>
-#include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
 #include <string>

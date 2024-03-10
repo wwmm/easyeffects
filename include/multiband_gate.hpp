@@ -22,7 +22,7 @@
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
-#include <pipewire/context.h>
+#include <pipewire/proxy.h>
 #include <sigc++/signal.h>
 #include <sys/types.h>
 #include <array>
