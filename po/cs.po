@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 18:49-0300\n"
+"POT-Creation-Date: 2024-03-10 00:06+0000\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1884,7 +1884,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Nejvýše"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:233
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:223
 msgid "Load"
 msgstr "Načíst"
 
@@ -2234,84 +2234,84 @@ msgstr "Ukázat dostupná přednastavení."
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
 
-#: src/application_ui.cpp:347
+#: src/application_ui.cpp:344
 msgid "_Output"
 msgstr "_Výstup"
 
-#: src/application_ui.cpp:348
+#: src/application_ui.cpp:345
 msgid "_Input"
 msgstr "_Vstup"
 
-#: src/application_ui.cpp:349
+#: src/application_ui.cpp:346
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:133
+#: src/convolver_menu_impulses.cpp:123
 msgid "The File Is Not Regular"
 msgstr "Soubor není standardní"
 
-#: src/convolver_menu_impulses.cpp:138
+#: src/convolver_menu_impulses.cpp:128
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Soubor Impulse může být poškozený nebo nepodporovaný"
 
-#: src/convolver_menu_impulses.cpp:143
+#: src/convolver_menu_impulses.cpp:133
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Podporovány jsou pouze Stereo Impulse soubory"
 
-#: src/convolver_menu_impulses.cpp:153
+#: src/convolver_menu_impulses.cpp:143
 msgid "Impulse File Not Imported"
 msgstr "Impulse soubor nebyl importován"
 
-#: src/convolver_menu_impulses.cpp:161
+#: src/convolver_menu_impulses.cpp:151
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
-#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
+#: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_menu_impulses.cpp:174
+#: src/convolver_menu_impulses.cpp:164
 msgid "Impulse Response"
 msgstr "Odpověď impulsu"
 
-#: src/convolver_menu_impulses.cpp:295
+#: src/convolver_menu_impulses.cpp:285
 msgid "Load Impulse"
 msgstr "Načíst Impulse"
 
-#: src/convolver_menu_impulses.cpp:298
+#: src/convolver_menu_impulses.cpp:288
 msgid "Remove Impulse"
 msgstr "Odstranit Impuls"
 
-#: src/convolver_ui.cpp:377
+#: src/convolver_ui.cpp:368
 msgid "No Impulse File Loaded"
 msgstr "Impulse soubor nebyl načten"
 
-#: src/convolver_ui.cpp:403
+#: src/convolver_ui.cpp:394
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát Impulse soubor"
 
-#: src/effects_box.cpp:312 src/plugins_box.cpp:785
+#: src/effects_box.cpp:306 src/plugins_box.cpp:785
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/effects_box.cpp:335 src/plugins_box.cpp:805
+#: src/effects_box.cpp:329 src/plugins_box.cpp:805
 msgid "Players"
 msgstr "Přehrávače"
 
-#: src/effects_box.cpp:358
+#: src/effects_box.cpp:352
 msgid "Effects"
 msgstr "Efekty"
 
-#: src/equalizer_ui.cpp:465
+#: src/equalizer_ui.cpp:453
 msgid "Import APO Preset File"
 msgstr "Importovat přednastavený soubor APO"
 
-#: src/equalizer_ui.cpp:473
+#: src/equalizer_ui.cpp:461
 msgid "APO Presets"
 msgstr "APO Přednastavení"
 
-#: src/equalizer_ui.cpp:498
+#: src/equalizer_ui.cpp:486
 #, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
@@ -2320,33 +2320,33 @@ msgstr ""
 "Přednastavení APO není načtené. Formát souboru může být chybný. Prosím "
 "zkontrolujte jeho obsah."
 
-#: src/equalizer_ui.cpp:553
+#: src/equalizer_ui.cpp:541
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:561
+#: src/equalizer_ui.cpp:549
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "Importovat přednastavený soubor APO"
 
-#: src/equalizer_ui.cpp:562
+#: src/equalizer_ui.cpp:550
 msgid "Save"
 msgstr ""
 
-#: src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:557
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "APO Přednastavení"
 
-#: src/equalizer_ui.cpp:746
+#: src/equalizer_ui.cpp:734
 msgid "Import GraphicEQ Preset File"
 msgstr "Importovat soubor přednastavení GraphicEQ"
 
-#: src/equalizer_ui.cpp:754
+#: src/equalizer_ui.cpp:742
 msgid "GraphicEQ Presets"
 msgstr "Přednastavení GraphicEQ"
 
-#: src/equalizer_ui.cpp:779
+#: src/equalizer_ui.cpp:767
 #, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "

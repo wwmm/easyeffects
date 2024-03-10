@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 18:49-0300\n"
+"POT-Creation-Date: 2024-03-10 00:06+0000\n"
 "PO-Revision-Date: 2024-03-08 22:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1878,7 +1878,7 @@ msgstr "Минимум"
 msgid "Maximum"
 msgstr "Максимум"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:233
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:223
 msgid "Load"
 msgstr "Загрузить"
 
@@ -2227,7 +2227,7 @@ msgstr "Показать доступные предустановки."
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 
-#: src/application_ui.cpp:347
+#: src/application_ui.cpp:344
 msgid "_Output"
 msgstr "Выхо_д"
 
@@ -2241,80 +2241,80 @@ msgstr "Выхо_д"
 # msgid "Influence of integrated measurements"
 # msgstr "Влияние комплексных измерений"
 # ###############################################
-#: src/application_ui.cpp:348
+#: src/application_ui.cpp:345
 msgid "_Input"
 msgstr "Вх_од"
 
-#: src/application_ui.cpp:349
+#: src/application_ui.cpp:346
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:133
+#: src/convolver_menu_impulses.cpp:123
 msgid "The File Is Not Regular"
 msgstr "Нестандартный файл"
 
-#: src/convolver_menu_impulses.cpp:138
+#: src/convolver_menu_impulses.cpp:128
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Возможно, файл импульса повреждён или не поддерживается"
 
-#: src/convolver_menu_impulses.cpp:143
+#: src/convolver_menu_impulses.cpp:133
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Поддерживаются только файлы импульса стерео"
 
-#: src/convolver_menu_impulses.cpp:153
+#: src/convolver_menu_impulses.cpp:143
 msgid "Impulse File Not Imported"
 msgstr "Файл импульса не импортирован"
 
-#: src/convolver_menu_impulses.cpp:161
+#: src/convolver_menu_impulses.cpp:151
 msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
-#: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
-#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
+#: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
 msgid "Open"
 msgstr "Открыть"
 
-#: src/convolver_menu_impulses.cpp:174
+#: src/convolver_menu_impulses.cpp:164
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
-#: src/convolver_menu_impulses.cpp:295
+#: src/convolver_menu_impulses.cpp:285
 msgid "Load Impulse"
 msgstr "Загрузить импульс"
 
-#: src/convolver_menu_impulses.cpp:298
+#: src/convolver_menu_impulses.cpp:288
 msgid "Remove Impulse"
 msgstr "Удалить Импульс"
 
-#: src/convolver_ui.cpp:377
+#: src/convolver_ui.cpp:368
 msgid "No Impulse File Loaded"
 msgstr "Нет загруженного файла импульса"
 
-#: src/convolver_ui.cpp:403
+#: src/convolver_ui.cpp:394
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:312 src/plugins_box.cpp:785
+#: src/effects_box.cpp:306 src/plugins_box.cpp:785
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:335 src/plugins_box.cpp:805
+#: src/effects_box.cpp:329 src/plugins_box.cpp:805
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/effects_box.cpp:358
+#: src/effects_box.cpp:352
 msgid "Effects"
 msgstr "Эффекты"
 
-#: src/equalizer_ui.cpp:465
+#: src/equalizer_ui.cpp:453
 msgid "Import APO Preset File"
 msgstr "Импортировать файл предустановки APO"
 
-#: src/equalizer_ui.cpp:473
+#: src/equalizer_ui.cpp:461
 msgid "APO Presets"
 msgstr "Предустановки APO"
 
-#: src/equalizer_ui.cpp:498
+#: src/equalizer_ui.cpp:486
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2322,32 +2322,32 @@ msgstr ""
 "Предустановка APO не загружена. Возможно, формат файла не поддерживается. "
 "Пожалуйста, проверьте его содержимое."
 
-#: src/equalizer_ui.cpp:553
+#: src/equalizer_ui.cpp:541
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 "Разделение каналов при экспорте предустановок APO пока не поддерживается."
 
-#: src/equalizer_ui.cpp:561
+#: src/equalizer_ui.cpp:549
 msgid "Export EqualizerAPO Preset File"
 msgstr "Экспортировать файл предустановки APO"
 
-#: src/equalizer_ui.cpp:562
+#: src/equalizer_ui.cpp:550
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:557
 msgid "EqualizerAPO Presets"
 msgstr "Предустановки EqualizerAPO"
 
-#: src/equalizer_ui.cpp:746
+#: src/equalizer_ui.cpp:734
 msgid "Import GraphicEQ Preset File"
 msgstr "Импортировать файл предустановки GraphicEQ"
 
-#: src/equalizer_ui.cpp:754
+#: src/equalizer_ui.cpp:742
 msgid "GraphicEQ Presets"
 msgstr "Предустановки GraphicEQ"
 
-#: src/equalizer_ui.cpp:779
+#: src/equalizer_ui.cpp:767
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."

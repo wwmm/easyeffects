@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-09 18:49-0300\n"
+"POT-Creation-Date: 2024-03-10 00:06+0000\n"
 "PO-Revision-Date: 2024-01-01 21:04+0000\n"
 "Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1859,7 +1859,7 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Maximum"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:233
+#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:223
 msgid "Load"
 msgstr "Laden"
 
@@ -2212,118 +2212,118 @@ msgstr "Verfügbare Voreinstellungen anzeigen."
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Lade ein Preset. Beispiel: easyeffects -l music"
 
-#: src/application_ui.cpp:347
+#: src/application_ui.cpp:344
 msgid "_Output"
 msgstr "_Ausgang"
 
-#: src/application_ui.cpp:348
+#: src/application_ui.cpp:345
 msgid "_Input"
 msgstr "_Eingang"
 
-#: src/application_ui.cpp:349
+#: src/application_ui.cpp:346
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
-#: src/convolver_menu_impulses.cpp:133
+#: src/convolver_menu_impulses.cpp:123
 msgid "The File Is Not Regular"
 msgstr "Die Datei ist nicht ordnungsgemäß"
 
-#: src/convolver_menu_impulses.cpp:138
+#: src/convolver_menu_impulses.cpp:128
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr ""
 "Die Impulsdatei ist möglicherweise beschädigt oder wird nicht unterstützt"
 
-#: src/convolver_menu_impulses.cpp:143
+#: src/convolver_menu_impulses.cpp:133
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Es werden nur Stereo-Impulsdateien unterstützt"
 
-#: src/convolver_menu_impulses.cpp:153
+#: src/convolver_menu_impulses.cpp:143
 msgid "Impulse File Not Imported"
 msgstr "Impulsdatei nicht importiert"
 
-#: src/convolver_menu_impulses.cpp:161
+#: src/convolver_menu_impulses.cpp:151
 msgid "Import Impulse File"
 msgstr "Impulsdatei importieren"
 
-#: src/convolver_menu_impulses.cpp:162 src/equalizer_ui.cpp:466
-#: src/equalizer_ui.cpp:747 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
+#: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/convolver_menu_impulses.cpp:174
+#: src/convolver_menu_impulses.cpp:164
 msgid "Impulse Response"
 msgstr "Impulsantwort"
 
-#: src/convolver_menu_impulses.cpp:295
+#: src/convolver_menu_impulses.cpp:285
 msgid "Load Impulse"
 msgstr "Impuls laden"
 
-#: src/convolver_menu_impulses.cpp:298
+#: src/convolver_menu_impulses.cpp:288
 msgid "Remove Impulse"
 msgstr "Impuls entfernen"
 
-#: src/convolver_ui.cpp:377
+#: src/convolver_ui.cpp:368
 msgid "No Impulse File Loaded"
 msgstr "Keine Impulsdatei geladen"
 
-#: src/convolver_ui.cpp:403
+#: src/convolver_ui.cpp:394
 msgid "Failed To Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
-#: src/effects_box.cpp:312 src/plugins_box.cpp:785
+#: src/effects_box.cpp:306 src/plugins_box.cpp:785
 msgid "Recorders"
 msgstr "Rekorder"
 
-#: src/effects_box.cpp:335 src/plugins_box.cpp:805
+#: src/effects_box.cpp:329 src/plugins_box.cpp:805
 msgid "Players"
 msgstr "Spieler"
 
-#: src/effects_box.cpp:358
+#: src/effects_box.cpp:352
 msgid "Effects"
 msgstr "Effekte"
 
-#: src/equalizer_ui.cpp:465
+#: src/equalizer_ui.cpp:453
 msgid "Import APO Preset File"
 msgstr "APO Preset-Datei importieren"
 
-#: src/equalizer_ui.cpp:473
+#: src/equalizer_ui.cpp:461
 msgid "APO Presets"
 msgstr "APO Voreinstellungen"
 
-#: src/equalizer_ui.cpp:498
+#: src/equalizer_ui.cpp:486
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
 
-#: src/equalizer_ui.cpp:553
+#: src/equalizer_ui.cpp:541
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:561
+#: src/equalizer_ui.cpp:549
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "APO Preset-Datei importieren"
 
-#: src/equalizer_ui.cpp:562
+#: src/equalizer_ui.cpp:550
 #, fuzzy
 msgid "Save"
 msgstr "Speichern?"
 
-#: src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:557
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "APO Voreinstellungen"
 
-#: src/equalizer_ui.cpp:746
+#: src/equalizer_ui.cpp:734
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ-Voreinstellungsdatei importieren"
 
-#: src/equalizer_ui.cpp:754
+#: src/equalizer_ui.cpp:742
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ-Voreinstellungen"
 
-#: src/equalizer_ui.cpp:779
+#: src/equalizer_ui.cpp:767
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
