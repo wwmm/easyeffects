@@ -118,6 +118,69 @@ jobs:
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
         if-no-files-found: error
 
+
+  alpine-linux:
+    name: Alpine Linux
+    runs-on: ubuntu-22.04
+    strategy:
+      # test also with libc++ as that is not the default, and is good to test as some distros like chimera linux use it over libstdc++
+      matrix:
+        stdlib: [libstdc++, libc++]
+    container:
+      image: alpine
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.1
+
+    - name: Install deps
+      run: |
+        apk update
+        apk upgrade
+
+        # install general build deps
+        apk add meson clang clang-extra-tools build-base bash libc++-dev
+
+        # copy pasted from https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
+        depends="lv2"
+        makedepends="
+        appstream-glib-dev
+        desktop-file-utils
+        fftw-dev
+        fmt-dev
+        gsl-dev
+        gtk4.0-dev
+        itstool
+        libadwaita-dev
+        libbs2b-dev
+        libebur128-dev
+        libsamplerate-dev
+        libsigc++3-dev
+        libsndfile-dev
+        libtbb-dev
+        lilv-dev
+        lv2-dev
+        meson
+        nlohmann-json
+        pipewire-dev
+        rnnoise-dev
+        soundtouch-dev
+        speexdsp-dev
+        zita-convolver-dev
+        ladspa-dev
+        "
+
+        # install easyeffects deps
+        apk add $makedepends $depends
+
+        # install libportal since we technically need it for a full check
+        apk add libportal-dev
+
+    - name: Build with Clang and ${{ matrix.stdlib }}
+      run: |
+        CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug ${{ matrix.stdlib == 'libc++' && '-Denable-libcpp-workarounds=true' || '' }}
+        meson compile -C build
+
   codeql-analyze:
     name: CodeQL Analyze
     runs-on: ubuntu-22.04
