@@ -20,10 +20,8 @@
 #pragma once
 
 #include <adwaita.h>
-#include <fftw3.h>
 #include <glib-object.h>
 #include <glibconfig.h>
-#include <gsl/gsl_spline.h>
 #include <gtk/gtkbox.h>
 #include <memory>
 #include <string>

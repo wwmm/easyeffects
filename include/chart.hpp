@@ -24,13 +24,8 @@
 #include <glib-object.h>
 #include <glibconfig.h>
 #include <gtk/gtkshortcut.h>
-#define FMT_HEADER_ONLY
-#include <fmt/core.h>
-#include <fmt/format.h>
-#include <sigc++/sigc++.h>
 #include <string>
 #include <vector>
-#include "ui_helpers.hpp"
 
 namespace ui::chart {
 
