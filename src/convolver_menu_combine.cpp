@@ -21,14 +21,8 @@
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
-#include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkbutton.h>
 #include <gtk/gtkdropdown.h>
-#include <gtk/gtkentry.h>
-#include <gtk/gtkspinner.h>
-#include <gtk/gtkstringlist.h>
 #include <sndfile.h>
 #include <algorithm>
 #include <cstddef>

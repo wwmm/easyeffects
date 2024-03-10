@@ -24,10 +24,7 @@
 #include <glib.h>
 #include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkcolordialogbutton.h>
 #include <gtk/gtkdropdown.h>
-#include <gtk/gtkspinbutton.h>
-#include <gtk/gtkswitch.h>
 #include <vector>
 #include "tags_resources.hpp"
 #include "tags_schema.hpp"

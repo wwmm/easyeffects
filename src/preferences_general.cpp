@@ -24,8 +24,6 @@
 #include <glib.h>
 #include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkspinbutton.h>
-#include <gtk/gtkswitch.h>
 #include <filesystem>
 #include <fstream>
 #include "tags_app.hpp"

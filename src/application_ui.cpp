@@ -27,10 +27,7 @@
 #include <gobject/gobject.h>
 #include <gtk/gtk.h>
 #include <gtk/gtkcssprovider.h>
-#include <gtk/gtkicontheme.h>
-#include <gtk/gtkmenubutton.h>
 #include <gtk/gtkshortcut.h>
-#include <gtk/gtktogglebutton.h>
 #include <sigc++/connection.h>
 #include <string>
 #include <vector>

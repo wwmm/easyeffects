@@ -26,13 +26,7 @@
 #include <glib.h>
 #include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkicontheme.h>
-#include <gtk/gtklistitem.h>
-#include <gtk/gtklistview.h>
 #include <gtk/gtknoselection.h>
-#include <gtk/gtkoverlay.h>
-#include <gtk/gtksignallistitemfactory.h>
 #include <sigc++/connection.h>
 #include <algorithm>
 #include <cstdint>

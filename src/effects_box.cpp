@@ -30,13 +30,7 @@
 #include <gsl/gsl_interp.h>
 #include <gsl/gsl_spline.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkicontheme.h>
-#include <gtk/gtkimage.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtkmenubutton.h>
 #include <gtk/gtkshortcut.h>
-#include <gtk/gtktogglebutton.h>
 #include <sigc++/connection.h>
 #include <algorithm>
 #include <cstddef>

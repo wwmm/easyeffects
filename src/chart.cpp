@@ -25,10 +25,7 @@
 #include <gobject/gobject.h>
 #include <graphene.h>
 #include <gsk/gsk.h>
-#include <gsk/gskroundedrect.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkeventcontrollermotion.h>
 #include <gtk/gtkshortcut.h>
 #include <pango/pango-font.h>
 #include <pango/pango-layout.h>

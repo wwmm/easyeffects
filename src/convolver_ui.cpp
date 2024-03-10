@@ -30,16 +30,7 @@
 #include <gsl/gsl_interp.h>
 #include <gsl/gsl_spline.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkbutton.h>
-#include <gtk/gtkcheckbutton.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtklevelbar.h>
-#include <gtk/gtkmenubutton.h>
-#include <gtk/gtkscale.h>
 #include <gtk/gtkshortcut.h>
-#include <gtk/gtkspinbutton.h>
-#include <gtk/gtktogglebutton.h>
 #include <sigc++/connection.h>
 #include <algorithm>
 #include <cmath>
