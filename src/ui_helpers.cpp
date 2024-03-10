@@ -19,18 +19,14 @@
 
 #include "ui_helpers.hpp"
 #include <adwaita.h>
+#define FMT_HEADER_ONLY
 #include <fmt/core.h>
 #include <fmt/format.h>
 #include <gio/gio.h>
-#include <glib-object.h>
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtklevelbar.h>
 #include <gtk/gtkshortcut.h>
-#include <gtk/gtkspinbutton.h>
-#include <gtk/gtkstringlist.h>
 #include <sys/types.h>
 #include <algorithm>
 #include <locale>

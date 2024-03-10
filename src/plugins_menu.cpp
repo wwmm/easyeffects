@@ -25,15 +25,7 @@
 #include <glib/gi18n.h>
 #include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkbutton.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtklistitem.h>
-#include <gtk/gtklistview.h>
-#include <gtk/gtkpopover.h>
-#include <gtk/gtkscrolledwindow.h>
 #include <gtk/gtkshortcut.h>
-#include <gtk/gtksignallistitemfactory.h>
-#include <gtk/gtkstringlist.h>
 #include <sigc++/connection.h>
 #include <algorithm>
 #include <array>

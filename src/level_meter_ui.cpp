@@ -27,10 +27,6 @@
 #include <glibconfig.h>
 #include <gobject/gobject.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkbutton.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtklevelbar.h>
 #include <sigc++/connection.h>
 #include <memory>
 #include <string>
