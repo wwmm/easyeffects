@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-10 00:06+0000\n"
+"POT-Creation-Date: 2024-03-09 21:52-0300\n"
 "PO-Revision-Date: 2024-03-06 06:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -95,8 +95,8 @@ msgid "_Quit"
 msgstr "_Çık"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:133 src/presets_menu.cpp:422
-#: src/presets_menu.cpp:433 src/presets_menu.cpp:461 src/presets_menu.cpp:472
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:121 src/presets_menu.cpp:410
+#: src/presets_menu.cpp:421 src/presets_menu.cpp:449 src/presets_menu.cpp:460
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
@@ -618,7 +618,7 @@ msgid "Sidechain Type"
 msgstr "Yanzincir Türü"
 
 #: data/ui/compressor.ui:738 data/ui/expander.ui:656 data/ui/gate.ui:870
-#: src/plugins_box.cpp:784
+#: src/plugins_box.cpp:771
 msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
@@ -967,7 +967,7 @@ msgstr "Frekansları Hesapla"
 msgid "Sort Bands"
 msgstr "Bantları Sırala"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:119
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:107
 msgid "Import Preset"
 msgstr "Ön Ayarı İçe Aktar"
 
@@ -1961,8 +1961,8 @@ msgid "Models"
 msgstr "Modeller"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:134 src/rnnoise_ui.cpp:315
-#: src/rnnoise_ui.cpp:349
+#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:302
+#: src/rnnoise_ui.cpp:336
 msgid "Standard Model"
 msgstr "Standart Model"
 
@@ -2216,7 +2216,7 @@ msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:108 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Aç"
 
@@ -2240,11 +2240,11 @@ msgstr "Dürtü Dosyası Yüklenmemiş"
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:785
+#: src/effects_box.cpp:306 src/plugins_box.cpp:772
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:805
+#: src/effects_box.cpp:329 src/plugins_box.cpp:792
 msgid "Players"
 msgstr "Oynatıcılar"
 
@@ -2301,7 +2301,7 @@ msgstr ""
 "GraphicEQ Ön Ayarı Yüklü Değil. Dosya Biçimi Desteklenmiyor Olabilir. Lütfen "
 "İçeriğini Denetleyin."
 
-#: src/pipe_manager_box.cpp:368
+#: src/pipe_manager_box.cpp:358
 msgid "Remove Autoloading Preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
@@ -2309,23 +2309,23 @@ msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 msgid "Output Level Meter"
 msgstr "Çıktı Düzey Ölçer"
 
-#: src/plugins_box.cpp:737
+#: src/plugins_box.cpp:724
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/plugins_box.cpp:806
+#: src/plugins_box.cpp:793
 msgid "Output Device"
 msgstr "Çıkış Aygıtı"
 
-#: src/plugins_menu.cpp:217
+#: src/plugins_menu.cpp:209
 msgid "Add"
 msgstr "Ekle"
 
-#: src/presets_menu.cpp:245
+#: src/presets_menu.cpp:233
 msgid "Save?"
 msgstr "Kaydedilsin mi?"
 
-#: src/presets_menu.cpp:264
+#: src/presets_menu.cpp:252
 msgid "Delete?"
 msgstr "Silinsin mi?"
 
@@ -2359,7 +2359,7 @@ msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 msgid "Generic Error While Loading The Effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
-#: src/rnnoise_ui.cpp:129
+#: src/rnnoise_ui.cpp:116
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2367,11 +2367,11 @@ msgstr ""
 "Seçilen Model Yüklenmedi. Biçimi Desteklenmiyor Olabilir. Bunun Yerine "
 "Standart Modele Dönüldü."
 
-#: src/rnnoise_ui.cpp:172
+#: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
 msgstr "Model Dosyasını İçe Aktar"
 
-#: src/rnnoise_ui.cpp:185
+#: src/rnnoise_ui.cpp:172
 msgid "RNNoise Models"
 msgstr "RNNoise Modelleri"
 
@@ -2452,12 +2452,12 @@ msgid "Stereo Tools"
 msgstr "Stereo Araçları"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:96
+#: src/ui_helpers.cpp:92
 #, c++-format
 msgid "{} Not Available"
 msgstr "{} Kullanılabilir Değil"
 
-#: src/ui_helpers.cpp:100
+#: src/ui_helpers.cpp:96
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
@@ -2466,7 +2466,7 @@ msgstr ""
 "{} efekti için gerekli olan \"{}\" yazılımı kurulu değil. Easy Effects "
 "Flatpak paketini kullanmayı ya da yazılımı kendiniz kurmayı düşünebilirsiniz."
 
-#: src/ui_helpers.cpp:106
+#: src/ui_helpers.cpp:102
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2479,12 +2479,12 @@ msgstr ""
 "Effects Flatpak paketini kullanmayı ya da kendi Easy Effects paketinizi "
 "oluşturmayı düşünebilirsiniz."
 
-#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
+#: src/ui_helpers.cpp:145 src/ui_helpers.cpp:165
 msgid "-inf"
 msgstr "-sonsuz"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:254
+#: src/ui_helpers.cpp:250
 #, c++-format
 msgid "Using {}"
 msgstr "{} Kullanıyor"

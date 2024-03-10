@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-10 00:06+0000\n"
+"POT-Creation-Date: 2024-03-09 21:52-0300\n"
 "PO-Revision-Date: 2024-03-08 09:01+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -96,8 +96,8 @@ msgid "_Quit"
 msgstr "_Esci"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:133 src/presets_menu.cpp:422
-#: src/presets_menu.cpp:433 src/presets_menu.cpp:461 src/presets_menu.cpp:472
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:121 src/presets_menu.cpp:410
+#: src/presets_menu.cpp:421 src/presets_menu.cpp:449 src/presets_menu.cpp:460
 msgid "Presets"
 msgstr "Profili"
 
@@ -619,7 +619,7 @@ msgid "Sidechain Type"
 msgstr "Tipo Sidechain"
 
 #: data/ui/compressor.ui:738 data/ui/expander.ui:656 data/ui/gate.ui:870
-#: src/plugins_box.cpp:784
+#: src/plugins_box.cpp:771
 msgid "Input Device"
 msgstr "Dispositivo Ingresso"
 
@@ -968,7 +968,7 @@ msgstr "Calcola Frequenze"
 msgid "Sort Bands"
 msgstr "Ordina Bande"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:119
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:107
 msgid "Import Preset"
 msgstr "Importa Profilo"
 
@@ -1963,8 +1963,8 @@ msgid "Models"
 msgstr "Modelli"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
-#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:134 src/rnnoise_ui.cpp:315
-#: src/rnnoise_ui.cpp:349
+#: data/ui/rnnoise.ui:178 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:302
+#: src/rnnoise_ui.cpp:336
 msgid "Standard Model"
 msgstr "Modello Standard"
 
@@ -2218,7 +2218,7 @@ msgid "Import Impulse File"
 msgstr "Importa File di Impulso"
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:173
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:108 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Apri"
 
@@ -2242,11 +2242,11 @@ msgstr "Nessun File di Risposta Impulsiva Caricato"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossibile Caricare il File di Risposta Impulsiva"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:785
+#: src/effects_box.cpp:306 src/plugins_box.cpp:772
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:805
+#: src/effects_box.cpp:329 src/plugins_box.cpp:792
 msgid "Players"
 msgstr "Riproduttori"
 
@@ -2304,7 +2304,7 @@ msgstr ""
 "Profilo GraphicEQ Non Caricato. Il Formato Potrebbe Essere Non Supportato. "
 "Si Prega di Controllarne il Contenuto."
 
-#: src/pipe_manager_box.cpp:368
+#: src/pipe_manager_box.cpp:358
 msgid "Remove Autoloading Preset"
 msgstr "Rimuovi Profilo di Auto Caricamento"
 
@@ -2312,23 +2312,23 @@ msgstr "Rimuovi Profilo di Auto Caricamento"
 msgid "Output Level Meter"
 msgstr "Misuratore Livello Uscita"
 
-#: src/plugins_box.cpp:737
+#: src/plugins_box.cpp:724
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: src/plugins_box.cpp:806
+#: src/plugins_box.cpp:793
 msgid "Output Device"
 msgstr "Dispositivo Uscita"
 
-#: src/plugins_menu.cpp:217
+#: src/plugins_menu.cpp:209
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/presets_menu.cpp:245
+#: src/presets_menu.cpp:233
 msgid "Save?"
 msgstr "Salvare?"
 
-#: src/presets_menu.cpp:264
+#: src/presets_menu.cpp:252
 msgid "Delete?"
 msgstr "Eliminare?"
 
@@ -2362,7 +2362,7 @@ msgstr "Uno o Più Parametri Hanno un Formato Errato"
 msgid "Generic Error While Loading The Effect"
 msgstr "Errore Generico nel Caricamento dell'Effetto"
 
-#: src/rnnoise_ui.cpp:129
+#: src/rnnoise_ui.cpp:116
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2370,11 +2370,11 @@ msgstr ""
 "Il Modello Selezionato Non È Stato Caricato. Il Formato Potrebbe Essere Non "
 "Supportato. Il Modello Standard È Stato Ripristinato."
 
-#: src/rnnoise_ui.cpp:172
+#: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
 msgstr "Importa File Modello"
 
-#: src/rnnoise_ui.cpp:185
+#: src/rnnoise_ui.cpp:172
 msgid "RNNoise Models"
 msgstr "Modelli RNNoise"
 
@@ -2455,12 +2455,12 @@ msgid "Stereo Tools"
 msgstr "Strumenti Stereo"
 
 #. For translators: {} is replaced by the effect name.
-#: src/ui_helpers.cpp:96
+#: src/ui_helpers.cpp:92
 #, c++-format
 msgid "{} Not Available"
 msgstr "{} Non Disponibile"
 
-#: src/ui_helpers.cpp:100
+#: src/ui_helpers.cpp:96
 #, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
@@ -2470,7 +2470,7 @@ msgstr ""
 "Considera l'uso del pacchetto Easy Effects Flatpak o installa l'applicazione "
 "dal codice sorgente."
 
-#: src/ui_helpers.cpp:106
+#: src/ui_helpers.cpp:102
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2483,12 +2483,12 @@ msgstr ""
 "l'uso del pacchetto Easy Effects Flatpak o installa l'applicazione dal "
 "codice sorgente."
 
-#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
+#: src/ui_helpers.cpp:145 src/ui_helpers.cpp:165
 msgid "-inf"
 msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:254
+#: src/ui_helpers.cpp:250
 #, c++-format
 msgid "Using {}"
 msgstr "Utilizzo {}"
