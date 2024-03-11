@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-11 20:16-0300\n"
-"PO-Revision-Date: 2023-11-12 05:02+0000\n"
+"POT-Creation-Date: 2024-03-10 01:52+0000\n"
+"PO-Revision-Date: 2024-03-11 23:18+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -135,6 +135,11 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects tentera d'éviter de déplacer vers ses sources virtuelles les "
+"flux pour lesquels l'utilisateur a défini un objet cible personnalisé qui "
+"est différent du micro à partir duquel EE enregistre. Le flux doit être "
+"démarré lorsque EE est déjà en cours d'exécution pour que cette logique "
+"prenne effet."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -147,19 +152,23 @@ msgstr "Traductions mises à jour"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "L'égaliseur peut exporter des fichiers de préréglages APO basiques"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Notre onglet lecteurs/enregistreurs affichera le nom binaire du client audio "
+"dans le cas où aucun nom d'application n'est défini."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"La version d'EasyEffects peut être affichée dans la ligne de commande grâce "
+"à l'option --version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
@@ -202,6 +211,9 @@ msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"Une solution de contournement pour un bogue dans GtkLevelBar de gtk4 a été "
+"implémentée et sera maintenue en place jusqu'à ce que les développeurs de "
+"gtk règlent les choses de leur côté"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -225,10 +237,11 @@ msgid "Other notes:"
 msgstr "Autres notes :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
-#, fuzzy
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
-msgstr "Correction d'une régression introduite dans la version 7.1.2"
+msgstr ""
+"Correction d'une régression introduite dans la version 7.1.2 qui pouvait "
+"faire planter EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
 msgid "The DeepFilterNet plugin can now be added to the preset file"
