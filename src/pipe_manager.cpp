@@ -1590,6 +1590,7 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::sink);
   pw_properties_set(props_sink, "audio.position", "FL,FR");
   pw_properties_set(props_sink, "monitor.channel-volumes", "false");
+  pw_properties_set(props_sink, "monitor.passthrough", "true");
   pw_properties_set(props_sink, "priority.session", "0");
 
   proxy_stream_output_sink = static_cast<pw_proxy*>(
@@ -1609,6 +1610,7 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
   pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::virtual_source);
   pw_properties_set(props_source, "audio.position", "FL,FR");
   pw_properties_set(props_source, "monitor.channel-volumes", "false");
+  pw_properties_set(props_source, "monitor.passthrough", "true");
   pw_properties_set(props_source, "priority.session", "0");
 
   proxy_stream_input_source = static_cast<pw_proxy*>(
@@ -1682,7 +1684,7 @@ auto PipeManager::node_map_at_id(const uint& id) -> NodeInfo& {
     }
   }
 
-  throw std::out_of_range("");
+  throw std::out_of_range("No node with id " + util::to_string(id) + " in our node_map");
 }
 
 auto PipeManager::stream_is_connected(const uint& id, const std::string& media_class) -> bool {

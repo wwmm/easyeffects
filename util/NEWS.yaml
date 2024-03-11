@@ -4,7 +4,7 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- We now set `monitor.passthrough =  true` in our virtual devices. This will allow latency offset to be properly applied by video players when PipeWire > 1.0.3 is released.
 
 - Bug fixes∶
 - 
