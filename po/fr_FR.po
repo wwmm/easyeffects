@@ -930,9 +930,8 @@ msgid "Excluded Apps"
 msgstr "Applications exclues"
 
 #: data/ui/effects_box.ui:120
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Autoriser/Interdire cette application"
+msgstr "Activer/désactiver la surveillance des entrées"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
@@ -2338,32 +2337,32 @@ msgstr "Effacer ?"
 #: src/presets_manager.cpp:850 src/presets_manager.cpp:857
 #: src/presets_manager.cpp:866 src/presets_manager.cpp:874
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "Le préréglage n'a pas été chargé correctement"
 
 #: src/presets_manager.cpp:834
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Liste des applications exclues"
+msgstr "Format incorrect dans la liste des applications exclues"
 
 #: src/presets_manager.cpp:841
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
+"Erreur générique lors du chargement de la liste des applications exclues"
 
 #: src/presets_manager.cpp:850
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "Format incorrect dans la liste des effets"
 
 #: src/presets_manager.cpp:857
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "Erreur générique lors du chargement de la liste des effets"
 
 #: src/presets_manager.cpp:867
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "Un ou plusieurs paramètres ont un format incorrect"
 
 #: src/presets_manager.cpp:875
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "Erreur générique lors du chargement de l'effet"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
@@ -2459,12 +2458,10 @@ msgstr "Outils stéréo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Indisponible"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2474,7 +2471,6 @@ msgstr ""
 "même."
 
 #: src/ui_helpers.cpp:103
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2492,7 +2488,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:251
-#, c++-format
 msgid "Using {}"
 msgstr "Utilise {}"
 
