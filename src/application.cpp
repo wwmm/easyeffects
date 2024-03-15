@@ -121,7 +121,7 @@ void on_startup(GApplication* gapp) {
       return;
     }
 
-    util::debug("device "s + device.name + " has changed its input route to: "s + device.input_route_name);
+    util::debug("device " + device.name + " has changed its input route to: " + device.input_route_name);
 
     NodeInfo target_node;
 
@@ -153,7 +153,7 @@ void on_startup(GApplication* gapp) {
       return;
     }
 
-    util::debug("device "s + device.name + " has changed its output route to: "s + device.output_route_name);
+    util::debug("device " + device.name + " has changed its output route to: " + device.output_route_name);
 
     NodeInfo target_node;
 

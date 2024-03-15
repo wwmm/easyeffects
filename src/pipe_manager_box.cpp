@@ -702,7 +702,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->connections.push_back(
       application->presets_manager->user_output_preset_created.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning("can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file");
 
           return;
         }
@@ -719,7 +719,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->connections.push_back(
       application->presets_manager->user_output_preset_removed.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning("can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file");
 
           return;
         }
@@ -736,7 +736,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->connections.push_back(
       application->presets_manager->user_input_preset_created.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning("can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file");
 
           return;
         }
@@ -753,7 +753,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
   self->data->connections.push_back(
       application->presets_manager->user_input_preset_removed.connect([=](const std::string& preset_name) {
         if (preset_name.empty()) {
-          util::warning("can't retrieve information about the preset file"s);
+          util::warning("can't retrieve information about the preset file");
 
           return;
         }
@@ -836,7 +836,7 @@ void dispose(GObject* object) {
   g_object_unref(self->sie_settings);
   g_object_unref(self->soe_settings);
 
-  util::debug("disposed"s);
+  util::debug("disposed");
 
   G_OBJECT_CLASS(pipe_manager_box_parent_class)->dispose(object);
 }
@@ -846,7 +846,7 @@ void finalize(GObject* object) {
 
   delete self->data;
 
-  util::debug("finalized"s);
+  util::debug("finalized");
 
   G_OBJECT_CLASS(pipe_manager_box_parent_class)->finalize(object);
 }

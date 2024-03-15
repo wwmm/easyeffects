@@ -454,7 +454,7 @@ auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {
 void Lv2Wrapper::load_ui() {
   // preparing the thread that loads the native ui and updates it over time
 
-  std::thread ui_updater([=, this]() {
+  std::thread ui_updater([this]() {
     {
       std::scoped_lock<std::mutex> lku(ui_mutex);
 
@@ -480,7 +480,7 @@ void Lv2Wrapper::load_ui() {
 
         std::string ui_uri = lilv_node_as_uri(lilv_ui_get_uri(ui));
 
-        util::debug(plugin_uri + " ui uri: "s + ui_uri);
+        util::debug(plugin_uri + " ui uri: " + ui_uri);
 
         const LilvNode* binary_node = lilv_ui_get_binary_uri(ui);
         const LilvNode* bundle_node = lilv_ui_get_bundle_uri(ui);

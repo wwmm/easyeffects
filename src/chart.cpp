@@ -380,7 +380,7 @@ auto draw_x_labels(Chart* self, GtkSnapshot* snapshot, const int& width, const i
     }
   }
 
-  draw_unit(self, snapshot, width, height, " "s + self->data->x_unit + " "s);
+  draw_unit(self, snapshot, width, height, " " + self->data->x_unit + " ");
 
   /*
     There is no space left in the window to show the last label. So we skip it.

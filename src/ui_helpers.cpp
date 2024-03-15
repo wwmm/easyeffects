@@ -139,7 +139,7 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool
   auto* adjustment = gtk_spin_button_get_adjustment(button);
   auto value = gtk_adjustment_get_value(adjustment);
   auto precision = gtk_spin_button_get_digits(button);
-  auto str_unit = (unit != nullptr) ? (" "s + unit) : ""s;
+  auto str_unit = (unit != nullptr) ? (" "s + unit) : "";
 
   bool minus_infinity = (!lower_bound && value <= util::minimum_db_d_level);
 
