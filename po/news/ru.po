@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-12 00:07+0000\n"
-"PO-Revision-Date: 2024-02-27 18:50+0000\n"
+"PO-Revision-Date: 2024-03-18 01:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -134,6 +134,10 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects попытается избежать перемещения в свои виртуальные источники "
+"потоков, для которых пользователь установил пользовательский target.object, "
+"отличный от микрофона, с которого EE вед`т запись. Чтобы эта логика вступила "
+"в силу, поток должен быть запущен, когда EE уже работает."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -153,6 +157,8 @@ msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Во вкладке «Проигрыватели/рекордеры» будет отображаться имя исполняемого "
+"файла клиента аудио в тех случаях, когда имя приложения не определено."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid ""
@@ -203,6 +209,9 @@ msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"Было реализовано обходное решение для ошибки в gtk4 GtkLevelBar, которое "
+"будет использоваться до тех пор, пока разработчики GTK не исправят ситуацию "
+"на своей стороне"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -226,10 +235,11 @@ msgid "Other notes:"
 msgstr "Другие изменения:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
-#, fuzzy
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
-msgstr "Исправлена регрессия, появившаяся в версии 7.1.2"
+msgstr ""
+"Исправлена регрессия, появившаяся в версии 7.1.2, которая могла привести к "
+"сбою работы EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
 msgid "The DeepFilterNet plugin can now be added to the preset file"
