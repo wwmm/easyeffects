@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-12 00:06+0000\n"
-"PO-Revision-Date: 2023-08-17 14:53+0000\n"
-"Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
+"PO-Revision-Date: 2024-03-19 20:02+0000\n"
+"Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -92,7 +92,7 @@ msgstr "关于 EasyEffects (_A)"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "退出(_Q)"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:121 src/presets_menu.cpp:410
@@ -487,9 +487,8 @@ msgstr "侧链"
 #: data/ui/expander.ui:455 data/ui/gate.ui:663 data/ui/gate.ui:669
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
-#, fuzzy
 msgid "Stereo Split Mode"
-msgstr "立体声模式"
+msgstr "分离立体声模式"
 
 #: data/ui/compressor.ui:543 data/ui/expander.ui:462 data/ui/gate.ui:676
 #: data/ui/multiband_compressor_band.ui:463 data/ui/multiband_gate_band.ui:522
@@ -544,33 +543,28 @@ msgstr "侧链声源"
 
 #: data/ui/compressor.ui:578 data/ui/expander.ui:497 data/ui/gate.ui:711
 #: data/ui/multiband_compressor_band.ui:521 data/ui/multiband_gate_band.ui:580
-#, fuzzy
 msgid "Left/Right"
-msgstr "延迟 L/R"
+msgstr "左/右"
 
 #: data/ui/compressor.ui:579 data/ui/expander.ui:498 data/ui/gate.ui:712
 #: data/ui/multiband_compressor_band.ui:522 data/ui/multiband_gate_band.ui:581
-#, fuzzy
 msgid "Right/Left"
-msgstr "右"
+msgstr "右/左"
 
 #: data/ui/compressor.ui:580 data/ui/expander.ui:499 data/ui/gate.ui:713
 #: data/ui/multiband_compressor_band.ui:523 data/ui/multiband_gate_band.ui:582
-#, fuzzy
 msgid "Mid/Side"
-msgstr "侧边"
+msgstr "中置/侧边"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:500 data/ui/gate.ui:714
 #: data/ui/multiband_compressor_band.ui:524 data/ui/multiband_gate_band.ui:583
-#, fuzzy
 msgid "Side/Mid"
-msgstr "侧边"
+msgstr "侧边/中置"
 
 #: data/ui/compressor.ui:592 data/ui/expander.ui:511 data/ui/gate.ui:725
 #: data/ui/multiband_compressor_band.ui:535 data/ui/multiband_gate_band.ui:594
-#, fuzzy
 msgid "Stereo Split Source"
-msgstr "立体声模式"
+msgstr "分离立体声源"
 
 #: data/ui/compressor.ui:618 data/ui/deesser.ui:50 data/ui/expander.ui:537
 #: data/ui/gate.ui:751 data/ui/multiband_compressor_band.ui:559
@@ -600,9 +594,8 @@ msgid "Sidechain Mode"
 msgstr "侧链模式"
 
 #: data/ui/compressor.ui:644 data/ui/expander.ui:563 data/ui/gate.ui:777
-#, fuzzy
 msgid "Listen Sidechain"
-msgstr "外部侧链"
+msgstr "播放侧链"
 
 #: data/ui/compressor.ui:673 data/ui/equalizer_band.ui:96
 #: data/ui/expander.ui:592 data/ui/filter.ui:37 data/ui/gate.ui:806
@@ -907,19 +900,19 @@ msgstr "衰减"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "最小处理阈值"
 
 #: data/ui/deepfilternet.ui:87
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "最大ERB处理阈值"
 
 #: data/ui/deepfilternet.ui:114
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "最大DF处理阈值"
 
 #: data/ui/deepfilternet.ui:141
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "最小处理缓冲区"
 
 #: data/ui/deepfilternet.ui:167
 #, fuzzy
@@ -1365,7 +1358,7 @@ msgstr "棕噪 匹配变换"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "显示原生 UI"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 msgid "Operating Mode"
@@ -1441,9 +1434,8 @@ msgid "Band Sidechain Options"
 msgstr "频段侧链选项"
 
 #: data/ui/multiband_compressor_band.ui:508 data/ui/multiband_gate_band.ui:567
-#, fuzzy
 msgid "Stereo Split"
-msgstr "立体声模式"
+msgstr "立体声分离"
 
 #: data/ui/multiband_compressor_band.ui:578 data/ui/multiband_gate_band.ui:637
 #: src/tags_plugin_name.cpp:52
@@ -1647,7 +1639,7 @@ msgstr "白噪声"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "快速查找"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
@@ -1836,7 +1828,7 @@ msgstr "圆角"
 
 #: data/ui/preferences_spectrum.ui:154
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "动态比例"
 
 #: data/ui/preferences_spectrum.ui:168
 msgid "Color"
@@ -1879,9 +1871,8 @@ msgid "Remove this preset file"
 msgstr "删除这个预设文件"
 
 #: data/ui/presets_menu.ui:30
-#, fuzzy
 msgid "New Preset Name"
-msgstr "新输入预设名"
+msgstr "新预设名称"
 
 #: data/ui/presets_menu.ui:38
 msgid "Create a new preset"
@@ -1892,14 +1883,12 @@ msgid "Import a preset"
 msgstr "导入预设"
 
 #: data/ui/presets_menu.ui:68
-#, fuzzy
 msgid "Search Preset"
-msgstr "搜索输入预设"
+msgstr "搜索预设"
 
 #: data/ui/presets_menu.ui:129
-#, fuzzy
 msgid "Presets List"
-msgstr "输入预设列表"
+msgstr "预设列表"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2173,7 +2162,7 @@ msgstr "未知"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "未定义名称 - 进程 ID "
 
 #: src/app_info.cpp:292
 msgid "channels"
@@ -2189,7 +2178,7 @@ msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
 #: src/application.cpp:599
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "打印 EasyEffects 版本号"
 
 #: src/application.cpp:602
 msgid "Reset Easy Effects."
@@ -2296,22 +2285,19 @@ msgstr "APO 预设未成功加载。可能是文件格式不受支持。请检�
 
 #: src/equalizer_ui.cpp:541
 msgid "Split channels not yet supported when exporting APO presets."
-msgstr ""
+msgstr "导出 APO 预设时尚不支持分割通道。"
 
 #: src/equalizer_ui.cpp:549
-#, fuzzy
 msgid "Export EqualizerAPO Preset File"
-msgstr "加载 APO 预设文件"
+msgstr "导出 APO 预设文件"
 
 #: src/equalizer_ui.cpp:550
-#, fuzzy
 msgid "Save"
 msgstr "是否储存？"
 
 #: src/equalizer_ui.cpp:557
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "APO 预设"
+msgstr "EqualizerAPO 预设"
 
 #: src/equalizer_ui.cpp:734
 msgid "Import GraphicEQ Preset File"
@@ -2359,38 +2345,37 @@ msgstr "是否删除？"
 #: src/presets_manager.cpp:850 src/presets_manager.cpp:857
 #: src/presets_manager.cpp:866 src/presets_manager.cpp:874
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "预设未成功加载"
 
 #: src/presets_manager.cpp:834
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
-msgstr "已排除程序列表"
+msgstr "已排除程序列表的格式错误"
 
 #: src/presets_manager.cpp:841
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "加载已排除程序列表时出错"
 
 #: src/presets_manager.cpp:850
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "效果列表的格式错误"
 
 #: src/presets_manager.cpp:857
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "加载效果列表时出错"
 
 #: src/presets_manager.cpp:867
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "一个或多个参数格式错误"
 
 #: src/presets_manager.cpp:875
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "加载效果时出错"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
-msgstr "所选模型没加载成功。可能是文件格式不支持。退回到了标准模型。"
+msgstr "所选模型未加载成功，可能是文件格式不支持，已退回到标准模型。"
 
 #: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
@@ -2417,13 +2402,12 @@ msgid "Crossfeed"
 msgstr "交叉反馈"
 
 #: src/tags_plugin_name.cpp:44
-#, fuzzy
 msgid "Crystalizer"
-msgstr "结晶器"
+msgstr "音质晶化器"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "深度降噪"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
