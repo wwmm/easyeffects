@@ -1,4 +1,16 @@
 # Changelog
+ 
+## 7.1.5
+### 2024-03-22
+
+ 
+### Features:
+- We now set `monitor.passthrough = true` in our virtual devices. This will allow latency offset to be properly applied by video players when PipeWire > 1.0.3 is released.
+- Updated translations.
+
+### Bug fixes:
+
+### Other notes:
 
  
 ## 7.1.4

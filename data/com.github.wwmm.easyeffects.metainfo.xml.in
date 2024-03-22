@@ -52,6 +52,17 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.1.5" date="2024-03-22T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>We now set monitor.passthrough = true in our virtual devices. This will allow latency offset to be properly applied by video players when PipeWire &gt; 1.0.3 is released.</li>
+          <li>Updated translations.</li>
+          <li>Bug fixes:</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.1.4" date="2024-02-01T00:00:00Z">
       <description>
         <ul>
