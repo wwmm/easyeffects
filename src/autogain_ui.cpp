@@ -195,8 +195,6 @@ void setup(AutogainBox* self, std::shared_ptr<AutoGain> autogain, const std::str
 void dispose(GObject* object) {
   auto* self = EE_AUTOGAIN_BOX(object);
 
-  self->data->autogain->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

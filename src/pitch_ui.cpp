@@ -134,8 +134,6 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
 void dispose(GObject* object) {
   auto* self = EE_PITCH_BOX(object);
 
-  self->data->pitch->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

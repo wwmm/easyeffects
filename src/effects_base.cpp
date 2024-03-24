@@ -22,6 +22,7 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <algorithm>
+#include <map>
 #include <memory>
 #include <ranges>
 #include <string>
@@ -307,4 +308,8 @@ void EffectsBase::broadcast_pipeline_latency() {
   util::debug(log_tag + "pipeline latency: " + util::to_string(latency_value, "") + " ms");
 
   pipeline_latency.emit(latency_value);
+}
+
+auto EffectsBase::get_plugins_map() -> std::map<std::string, std::shared_ptr<PluginBase>> {
+  return plugins;
 }

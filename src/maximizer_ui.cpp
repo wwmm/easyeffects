@@ -159,8 +159,6 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 void dispose(GObject* object) {
   auto* self = EE_MAXIMIZER_BOX(object);
 
-  self->data->maximizer->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

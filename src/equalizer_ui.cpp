@@ -974,8 +974,6 @@ void setup(EqualizerBox* self,
 void dispose(GObject* object) {
   auto* self = EE_EQUALIZER_BOX(object);
 
-  self->data->equalizer->set_post_messages(false);
-
   self->data->equalizer->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

@@ -34,6 +34,7 @@
 #include <sigc++/connection.h>
 #include <algorithm>
 #include <map>
+#include <ranges>
 #include <string>
 #include <vector>
 #include "application.hpp"
@@ -819,6 +820,22 @@ void unroot(GtkWidget* widget) {
 
 void dispose(GObject* object) {
   auto* self = EE_PLUGINS_BOX(object);
+
+  // Setting post_messages = false for all plugins now that the window is not visible.
+
+  EffectsBase* effects_base = nullptr;
+
+  if (self->data->pipeline_type == PipelineType::input) {
+    effects_base = self->data->application->sie;
+  } else if (self->data->pipeline_type == PipelineType::output) {
+    effects_base = self->data->application->soe;
+  }
+
+  for (auto& plugin : effects_base->get_plugins_map() | std::views::values) {
+    plugin->set_post_messages(false);
+  }
+
+  // Removing gsettings connections
 
   for (auto& c : self->data->connections) {
     c.disconnect();

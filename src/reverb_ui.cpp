@@ -226,8 +226,6 @@ void setup(ReverbBox* self, std::shared_ptr<Reverb> reverb, const std::string& s
 void dispose(GObject* object) {
   auto* self = EE_REVERB_BOX(object);
 
-  self->data->reverb->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

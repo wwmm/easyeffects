@@ -157,8 +157,6 @@ void setup(LoudnessBox* self, std::shared_ptr<Loudness> loudness, const std::str
 void dispose(GObject* object) {
   auto* self = EE_LOUDNESS_BOX(object);
 
-  self->data->loudness->set_post_messages(false);
-
   self->data->loudness->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

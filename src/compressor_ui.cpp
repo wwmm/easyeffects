@@ -408,8 +408,6 @@ void setup(CompressorBox* self,
 void dispose(GObject* object) {
   auto* self = EE_COMPRESSOR_BOX(object);
 
-  self->data->compressor->set_post_messages(false);
-
   self->data->compressor->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

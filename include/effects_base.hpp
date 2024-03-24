@@ -108,6 +108,8 @@ class EffectsBase {
 
   sigc::signal<void(const float&)> pipeline_latency;
 
+  auto get_plugins_map() -> std::map<std::string, std::shared_ptr<PluginBase>>;
+
   template <typename T>
   auto get_plugin_instance(const std::string& name) -> std::shared_ptr<T> {
     return std::dynamic_pointer_cast<T>(plugins[name]);

@@ -144,8 +144,6 @@ void setup(SpeexBox* self,
 void dispose(GObject* object) {
   auto* self = EE_SPEEX_BOX(object);
 
-  self->data->speex->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

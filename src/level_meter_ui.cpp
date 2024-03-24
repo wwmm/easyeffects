@@ -160,8 +160,6 @@ void setup(LevelMeterBox* self, std::shared_ptr<LevelMeter> level_meter, const s
 void dispose(GObject* object) {
   auto* self = EE_LEVEL_METER_BOX(object);
 
-  self->data->level_meter->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

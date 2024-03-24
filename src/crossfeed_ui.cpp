@@ -145,8 +145,6 @@ void setup(CrossfeedBox* self, std::shared_ptr<Crossfeed> crossfeed, const std::
 void dispose(GObject* object) {
   auto* self = EE_CROSSFEED_BOX(object);
 
-  self->data->crossfeed->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

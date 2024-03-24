@@ -129,8 +129,6 @@ void setup(BassLoudnessBox* self, std::shared_ptr<BassLoudness> bass_loudness, c
 void dispose(GObject* object) {
   auto* self = EE_BASS_LOUDNESS_BOX(object);
 
-  self->data->bass_loudness->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

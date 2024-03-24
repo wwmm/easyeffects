@@ -131,8 +131,6 @@ void setup(EchoCancellerBox* self, std::shared_ptr<EchoCanceller> echo_canceller
 void dispose(GObject* object) {
   auto* self = EE_ECHO_CANCELLER_BOX(object);
 
-  self->data->echo_canceller->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

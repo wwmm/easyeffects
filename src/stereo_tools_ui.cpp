@@ -174,8 +174,6 @@ void setup(StereoToolsBox* self, std::shared_ptr<StereoTools> stereo_tools, cons
 void dispose(GObject* object) {
   auto* self = EE_STEREO_TOOLS_BOX(object);
 
-  self->data->stereo_tools->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

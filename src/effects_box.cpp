@@ -497,8 +497,6 @@ void dispose(GObject* object) {
 
   self->data->effects_base->spectrum->bypass = true;
 
-  self->data->effects_base->output_level->set_post_messages(false);
-
   for (auto& c : self->data->connections) {
     c.disconnect();
   }

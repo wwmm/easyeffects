@@ -374,8 +374,6 @@ void setup(ExpanderBox* self, std::shared_ptr<Expander> expander, const std::str
 void dispose(GObject* object) {
   auto* self = EE_EXPANDER_BOX(object);
 
-  self->data->expander->set_post_messages(false);
-
   self->data->expander->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

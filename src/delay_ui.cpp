@@ -164,8 +164,6 @@ void setup(DelayBox* self, std::shared_ptr<Delay> delay, const std::string& sche
 void dispose(GObject* object) {
   auto* self = EE_DELAY_BOX(object);
 
-  self->data->delay->set_post_messages(false);
-
   self->data->delay->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

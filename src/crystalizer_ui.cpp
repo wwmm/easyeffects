@@ -208,8 +208,6 @@ void setup(CrystalizerBox* self, std::shared_ptr<Crystalizer> crystalizer, const
 void dispose(GObject* object) {
   auto* self = EE_CRYSTALIZER_BOX(object);
 
-  self->data->crystalizer->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

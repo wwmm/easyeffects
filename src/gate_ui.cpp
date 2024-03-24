@@ -457,8 +457,6 @@ void setup(GateBox* self, std::shared_ptr<Gate> gate, const std::string& schema_
 void dispose(GObject* object) {
   auto* self = EE_GATE_BOX(object);
 
-  self->data->gate->set_post_messages(false);
-
   self->data->gate->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

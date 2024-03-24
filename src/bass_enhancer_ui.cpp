@@ -166,8 +166,6 @@ void setup(BassEnhancerBox* self, std::shared_ptr<BassEnhancer> bass_enhancer, c
 void dispose(GObject* object) {
   auto* self = EE_BASS_ENHANCER_BOX(object);
 
-  self->data->bass_enhancer->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

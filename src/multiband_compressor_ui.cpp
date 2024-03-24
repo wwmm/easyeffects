@@ -374,8 +374,6 @@ void setup(MultibandCompressorBox* self,
 void dispose(GObject* object) {
   auto* self = EE_MULTIBAND_COMPRESSOR_BOX(object);
 
-  self->data->multiband_compressor->set_post_messages(false);
-
   self->data->multiband_compressor->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

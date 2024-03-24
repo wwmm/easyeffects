@@ -373,8 +373,6 @@ void setup(MultibandGateBox* self,
 void dispose(GObject* object) {
   auto* self = EE_MULTIBAND_GATE_BOX(object);
 
-  self->data->multiband_gate->set_post_messages(false);
-
   self->data->multiband_gate->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

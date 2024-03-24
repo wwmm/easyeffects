@@ -138,8 +138,6 @@ void setup(DeepFilterNetBox* self, std::shared_ptr<DeepFilterNet> deepfilternet,
 void dispose(GObject* object) {
   auto* self = EE_DEEPFILTERNET_BOX(object);
 
-  self->data->deepfilternet->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

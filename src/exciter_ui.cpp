@@ -168,8 +168,6 @@ void setup(ExciterBox* self, std::shared_ptr<Exciter> exciter, const std::string
 void dispose(GObject* object) {
   auto* self = EE_EXCITER_BOX(object);
 
-  self->data->exciter->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   for (auto& c : self->data->connections) {

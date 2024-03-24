@@ -165,8 +165,6 @@ void setup(FilterBox* self, std::shared_ptr<Filter> filter, const std::string& s
 void dispose(GObject* object) {
   auto* self = EE_FILTER_BOX(object);
 
-  self->data->filter->set_post_messages(false);
-
   self->data->filter->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);

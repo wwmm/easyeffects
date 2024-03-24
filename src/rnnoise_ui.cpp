@@ -349,8 +349,6 @@ void setup(RNNoiseBox* self,
 void dispose(GObject* object) {
   auto* self = EE_RNNOISE_BOX(object);
 
-  self->data->rnnoise->set_post_messages(false);
-
   set_ignore_filter_idle_add(self->data->serial, true);
 
   g_file_monitor_cancel(self->folder_monitor);

@@ -345,8 +345,6 @@ void setup(LimiterBox* self, std::shared_ptr<Limiter> limiter, const std::string
 void dispose(GObject* object) {
   auto* self = EE_LIMITER_BOX(object);
 
-  self->data->limiter->set_post_messages(false);
-
   self->data->limiter->close_native_ui();
 
   set_ignore_filter_idle_add(self->data->serial, true);
