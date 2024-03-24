@@ -2,21 +2,21 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
-Description: 
+Description:
 - Features∶
-- 
+- Improved the pipeline management system. Non-limiter effects are placed before the limiter even if the last two plugins in the pipeline are a limiter followed by a level meter.   
 
 - Bug fixes∶
-- 
+-
 
 - Other notes∶
-- 
+-
 
 ---
 Version: 7.1.5
 Date: 2024-03-22
 
-Description: 
+Description:
 - Features∶
 - We now set `monitor.passthrough = true` in our virtual devices. This will allow latency offset to be properly applied by video players when PipeWire > 1.0.3 is released.
 - Updated translations.
@@ -29,7 +29,7 @@ Description:
 Version: 7.1.4
 Date: 2024-02-01
 
-Description: 
+Description:
 - Features∶
 - EasyEffects will try to avoid moving to its virtual sources streams for which the user has set a custom `target.object` that is different from the mic EE is recording from. THe stream has to be started when EE is already running for this logic to take effect.
 - Updated translations
@@ -46,7 +46,7 @@ Description:
 Version: 7.1.3
 Date: 2023-11-08
 
-Description: 
+Description:
 - Features∶
 - Updated translations
 
@@ -59,7 +59,7 @@ Description:
 Version: 7.1.2
 Date: 2023-11-08
 
-Description: 
+Description:
 - Features∶
 - Updated translations
 
@@ -72,7 +72,7 @@ Description:
 Version: 7.1.1
 Date: 2023-10-27
 
-Description: 
+Description:
 - Features∶
 - The spectrum has a new option that allows the dynamic vertical scale to be disabled.
 - Improved compatibility with the latest LSP releases.
@@ -86,7 +86,7 @@ Description:
 Version: 7.1.0
 Date: 2023-09-07
 
-Description: 
+Description:
 - Features∶
 
 - Bug fixes∶
@@ -98,7 +98,7 @@ Description:
 Version: 7.0.9
 Date: 2023-09-07
 
-Description: 
+Description:
 - Features∶
 - Added a new control to the noise reduction plugin that allows the voice detection to be disabled.
 
@@ -114,7 +114,7 @@ Description:
 - Features∶
 - The Filter effect has been improved with new parameters since it has been ported from Calf Studio to Linux Studio Plugins.
 - Noise reduction by RNNoise has been improved with the addition of Release and VAD Threshold controls.
-- Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output to sound too "dry".  
+- Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output to sound too "dry".
 
 - Bug fixes∶
 

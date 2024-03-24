@@ -44,7 +44,6 @@
 
                                 <child>
                                     <object class="AdwPreferencesGroup">
-                                        <property name="valign">center</property>
                                         <property name="title" translatable="yes">Voice Detection</property>
 
                                         <child>
@@ -149,6 +148,8 @@
                                         <property name="spacing">12</property>
                                         <child>
                                             <object class="GtkLabel">
+                                                <property name="margin-top">6</property>
+                                                <property name="margin-bottom">4</property>
                                                 <property name="halign">start</property>
                                                 <property name="label" translatable="yes">Models</property>
                                                 <attributes>

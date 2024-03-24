@@ -19,21 +19,10 @@
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkButton" id="reset_history">
-                                <property name="valign">center</property>
-                                <property name="halign">center</property>
-                                <property name="label" translatable="yes">Reset History</property>
-                                <signal name="clicked" handler="on_reset_history" object="LevelMeterBox" />
-                            </object>
-                        </child>
-
-                        <child>
                             <object class="GtkBox">
                                 <property name="spacing">24</property>
                                 <child>
                                     <object class="AdwPreferencesPage">
-                                        <property name="valign">center</property>
-
                                         <child>
                                             <object class="AdwPreferencesGroup">
                                                 <property name="title" translatable="yes">True Peak</property>
@@ -326,6 +315,20 @@
                                 <property name="spacing">6</property>
                                 <property name="hexpand">1</property>
                                 <property name="homogeneous">1</property>
+
+                                <!-- Empty placeholder used only for layout reason -->
+                                <child>
+                                    <object class="GtkLabel"> </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkButton" id="reset_history">
+                                        <property name="valign">center</property>
+                                        <property name="halign">center</property>
+                                        <property name="label" translatable="yes">Reset History</property>
+                                        <signal name="clicked" handler="on_reset_history" object="LevelMeterBox" />
+                                    </object>
+                                </child>
 
                                 <child>
                                     <object class="GtkLabel" id="plugin_credit">
