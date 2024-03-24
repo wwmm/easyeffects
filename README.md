@@ -59,20 +59,23 @@ GStreamer usage was replaced by native PipeWire filters.
 - Crystalizer
 - De-esser
 - Delay
-- Echo Canceller
+- Deep noise remover
+- Echo canceller
 - Equalizer
 - Exciter
+- Expander
 - Filter (low-pass, high-pass, band-pass and band-reject modes)
 - Gate
+- Level meter
 - Limiter
 - Loudness
 - Maximizer
 - Multiband compressor
 - Multiband gate
 - Noise reduction
-- Pitch
+- Pitch shift
 - Reverberation
-- Speech Processor
+- Speech processor
 - Stereo tools
 
 The user has full control over the effects order. Just use the up/down arrows
@@ -85,13 +88,16 @@ Some packages do not provide all plugin packages by default. In case some effect
 
 Plugins needed for effects:
 
-- [Linux Studio plugins](http://lsp-plug.in/?page=home). Version 1.1.24 or higher.
+- [Linux Studio plugins](https://lsp-plug.in/). Version 1.1.24 or higher.
 - [Calf Studio plugins](https://calf-studio-gear.org/). Version 0.90.1 or higher.
-- [libebur128](https://github.com/jiixyj/libebur128). For Auto Gain.
-- [ZamAudio plugins](http://www.zamaudio.com/). For Maximizer.
-- [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/). For Convolver.
-- [soundtouch](https://www.surina.net/soundtouch/). For Pitch Shift.
-- [RNNoise](https://github.com/xiph/rnnoise). For Noise Reduction.
+- [Libebur128](https://github.com/jiixyj/libebur128). For Auto gain and Level meter.
+- [ZamAudio plugins](https://www.zamaudio.com/). For Maximizer.
+- [Zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/). For Convolver.
+- [MDA](https://gitlab.com/drobilla/mda-lv2). For Bass loudness.
+- [SpeexDSP](https://www.speex.org/). For Speech processor.
+- [SoundTouch](https://www.surina.net/soundtouch/). For Pitch shift.
+- [RNNoise](https://gitlab.xiph.org/xiph/rnnoise). For Noise reduction.
+- [DeepFilterNet](https://github.com/Rikorose/DeepFilterNet). For Deep noise remover.
 
 Other dependencies include:
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
