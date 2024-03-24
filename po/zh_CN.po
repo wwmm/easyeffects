@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-22 11:43-0300\n"
-"PO-Revision-Date: 2024-03-19 20:02+0000\n"
+"PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hans/>\n"
@@ -894,9 +894,8 @@ msgid "Invert Phase"
 msgstr "反转相位"
 
 #: data/ui/deepfilternet.ui:31
-#, fuzzy
 msgid "Attenuation Limit"
-msgstr "衰减"
+msgstr "衰减极限"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
@@ -936,7 +935,6 @@ msgid "Excluded Apps"
 msgstr "排除的应用"
 
 #: data/ui/effects_box.ui:120
-#, fuzzy
 msgid "Enable/disable input monitoring"
 msgstr "启用/禁用此应用程序"
 
@@ -978,9 +976,8 @@ msgid "Import Preset"
 msgstr "导入预设"
 
 #: data/ui/equalizer.ui:363
-#, fuzzy
 msgid "Export Preset"
-msgstr "导入预设"
+msgstr "导出预设"
 
 #: data/ui/equalizer_band.ui:143 data/ui/filter.ui:119
 msgid "Slope"
@@ -1037,12 +1034,10 @@ msgid "Remove this model file"
 msgstr "删除这个模型文件"
 
 #: data/ui/filter.ui:46
-#, fuzzy
 msgid "Low-Shelf"
 msgstr "低架"
 
 #: data/ui/filter.ui:47
-#, fuzzy
 msgid "High-Shelf"
 msgstr "高架"
 
@@ -1074,7 +1069,6 @@ msgid "Ladder-Rejection"
 msgstr "频段衰减"
 
 #: data/ui/filter.ui:54
-#, fuzzy
 msgid "All-Pass"
 msgstr "全通"
 
