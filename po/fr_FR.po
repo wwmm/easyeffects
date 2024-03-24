@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 22:19+0000\n"
+"POT-Creation-Date: 2024-03-24 23:34+0000\n"
 "PO-Revision-Date: 2023-12-23 11:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -620,7 +620,7 @@ msgid "Sidechain Type"
 msgstr "Type Chaîne Latérale"
 
 #: data/ui/compressor.ui:738 data/ui/expander.ui:656 data/ui/gate.ui:870
-#: src/plugins_box.cpp:771
+#: src/plugins_box.cpp:772
 msgid "Input Device"
 msgstr "Périphérique d’entrée"
 
@@ -2250,11 +2250,11 @@ msgstr "Aucun fichier d’impulsion chargé"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossible de charger le fichier d’impulsion"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:772
+#: src/effects_box.cpp:306 src/plugins_box.cpp:773
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:792
+#: src/effects_box.cpp:329 src/plugins_box.cpp:793
 msgid "Players"
 msgstr "Lecteurs"
 
@@ -2320,11 +2320,11 @@ msgstr "Supprimer le préréglage du chargement automatique"
 msgid "Output Level Meter"
 msgstr "Indicateur Niveau de Sortie"
 
-#: src/plugins_box.cpp:724
+#: src/plugins_box.cpp:725
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/plugins_box.cpp:793
+#: src/plugins_box.cpp:794
 msgid "Output Device"
 msgstr "Périphérique de sortie"
 

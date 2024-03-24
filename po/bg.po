@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 22:19+0000\n"
+"POT-Creation-Date: 2024-03-24 23:34+0000\n"
 "PO-Revision-Date: 2022-12-23 05:48+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -625,7 +625,7 @@ msgid "Sidechain Type"
 msgstr "Тип странична връзка"
 
 #: data/ui/compressor.ui:738 data/ui/expander.ui:656 data/ui/gate.ui:870
-#: src/plugins_box.cpp:771
+#: src/plugins_box.cpp:772
 msgid "Input Device"
 msgstr "Входно устройство"
 
@@ -2254,11 +2254,11 @@ msgstr ""
 msgid "Failed To Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:772
+#: src/effects_box.cpp:306 src/plugins_box.cpp:773
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:792
+#: src/effects_box.cpp:329 src/plugins_box.cpp:793
 msgid "Players"
 msgstr ""
 
@@ -2318,11 +2318,11 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr ""
 
-#: src/plugins_box.cpp:724
+#: src/plugins_box.cpp:725
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:793
+#: src/plugins_box.cpp:794
 msgid "Output Device"
 msgstr ""
 
