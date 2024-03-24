@@ -126,7 +126,7 @@ void add_new_plugin_to_pipeline(GtkButton* btn, PluginsMenu* self) {
 
   // If the list is not empty and the user is careful protecting
   // their device with a plugin of type limiter at the last position
-  // of the filter chain, we follow this behaviour trying to inserting
+  // of the filter chain, we follow this behaviour trying to insert
   // the new plugin at the second to last position.
 
   // To do so, we first check if the new plugin is a limiter or the
@@ -134,10 +134,10 @@ void add_new_plugin_to_pipeline(GtkButton* btn, PluginsMenu* self) {
   // plugins do not need to be placed elsewhere and in most of the
   // cases the user wants them at the bottom of the pipeline).
 
-  constexpr auto limiters_and_lm =
+  static constexpr auto limiters_and_meters =
       std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer, tags::plugin_name::level_meter});
 
-  if (std::any_of(limiters_and_lm.begin(), limiters_and_lm.end(),
+  if (std::any_of(limiters_and_meters.begin(), limiters_and_meters.end(),
                   [&](const auto& str) { return new_name.starts_with(str); })) {
     list.push_back(new_name);
 
@@ -146,16 +146,45 @@ void add_new_plugin_to_pipeline(GtkButton* btn, PluginsMenu* self) {
     return;
   }
 
-  // If the new plugin is not one of the above mentioned, we have
-  // the check the last plugin of the pipeline and if it's a limiter,
-  // we have to place it at the second to last position.
+  // If the new plugin is not one of the above mentioned, we have to
+  // check the last plugin of the pipeline handling various cases.
 
-  constexpr auto limiter_plugins = std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer});
+  static constexpr auto limiters = std::to_array({tags::plugin_name::limiter, tags::plugin_name::maximizer});
 
-  if (std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
-                  [&](const auto& str) { return list.back().starts_with(str); })) {
+  if (std::any_of(limiters.begin(), limiters.end(), [&](const auto& str) { return list.back().starts_with(str); })) {
+    // If the last plugin is a limiter, we place the new plugin at
+    // the second to last position.
+
     list.insert(list.cend() - 1U, new_name);
+  } else if (list.back().starts_with(tags::plugin_name::level_meter)) {
+    // If the last plugin is not a limiter, but a level meter, we still
+    // try to place the new plugin before a limiter, if this limiter is in
+    // the second to last position.
+    // The reason is that we still want to preserve the "limiter protection"
+    // in case the last plugins are a limiter followed by a meter.
+
+    // Calculate the position of the second to last element.
+
+    const auto second_to_last_pos = std::max(static_cast<int>(list.size()) - 2, 0);
+
+    // Check if the plugin at the second to last position is a limiter.
+
+    if (std::any_of(limiters.begin(), limiters.end(),
+                    [&](const auto& str) { return list.at(second_to_last_pos).starts_with(str); })) {
+      // It's a limiter, so place the new plugin before it.
+
+      const auto second_to_last_iter = std::max(list.cend() - 2U, list.cbegin());
+
+      list.insert(second_to_last_iter, new_name);
+    } else {
+      // It's not a limiter, so place the new plugin after the level meter.
+
+      list.push_back(new_name);
+    }
   } else {
+    // If the last plugin is neither a limiter nor a meter, just place
+    // the new plugin at the last position.
+
     list.push_back(new_name);
   }
 
