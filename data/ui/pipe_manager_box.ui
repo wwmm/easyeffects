@@ -218,6 +218,28 @@
                                                                 <property name="row-spacing">12</property>
                                                                 <property name="column-spacing">6</property>
                                                                 <child>
+                                                                    <object class="GtkLabel">
+                                                                        <property name="halign">end</property>
+                                                                        <property name="label" translatable="yes">Device</property>
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">0</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+
+                                                                <child>
+                                                                    <object class="GtkLabel">
+                                                                        <property name="halign">end</property>
+                                                                        <property name="label" translatable="yes">Preset</property>
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">1</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+
+                                                                <child>
                                                                     <object class="GtkDropDown" id="dropdown_autoloading_output_devices">
                                                                         <property name="factory">
                                                                             <object class="GtkBuilderListItemFactory">
@@ -225,7 +247,7 @@
                                                                             </object>
                                                                         </property>
                                                                         <layout>
-                                                                            <property name="column">0</property>
+                                                                            <property name="column">1</property>
                                                                             <property name="row">0</property>
                                                                         </layout>
                                                                         <accessibility>
@@ -242,7 +264,7 @@
                                                                             </object>
                                                                         </property>
                                                                         <layout>
-                                                                            <property name="column">0</property>
+                                                                            <property name="column">1</property>
                                                                             <property name="row">1</property>
                                                                         </layout>
                                                                         <accessibility>
@@ -254,14 +276,13 @@
                                                                 <child>
                                                                     <object class="GtkButton" id="autoloading_add_output_profile">
                                                                         <property name="tooltip-text" translatable="yes">Create Association</property>
-                                                                        <property name="halign">center</property>
+                                                                        <property name="halign">start</property>
                                                                         <property name="valign">center</property>
                                                                         <property name="icon-name">list-add-symbolic</property>
                                                                         <signal name="clicked" handler="on_autoloading_add_output_profile" object="PipeManagerBox" />
                                                                         <layout>
-                                                                            <property name="column">1</property>
-                                                                            <property name="row">0</property>
-                                                                            <property name="row-span">2</property>
+                                                                            <property name="column">2</property>
+                                                                            <property name="row">1</property>
                                                                         </layout>
                                                                         <style>
                                                                             <class name="suggested-action" />
@@ -315,6 +336,28 @@
                                                                 <property name="row-spacing">12</property>
                                                                 <property name="column-spacing">6</property>
                                                                 <child>
+                                                                    <object class="GtkLabel">
+                                                                        <property name="halign">end</property>
+                                                                        <property name="label" translatable="yes">Device</property>
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">0</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+
+                                                                <child>
+                                                                    <object class="GtkLabel">
+                                                                        <property name="halign">end</property>
+                                                                        <property name="label" translatable="yes">Preset</property>
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">1</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+
+                                                                <child>
                                                                     <object class="GtkDropDown" id="dropdown_autoloading_input_devices">
                                                                         <property name="factory">
                                                                             <object class="GtkBuilderListItemFactory">
@@ -322,7 +365,7 @@
                                                                             </object>
                                                                         </property>
                                                                         <layout>
-                                                                            <property name="column">0</property>
+                                                                            <property name="column">1</property>
                                                                             <property name="row">0</property>
                                                                         </layout>
                                                                         <accessibility>
@@ -334,7 +377,7 @@
                                                                 <child>
                                                                     <object class="GtkDropDown" id="dropdown_autoloading_input_presets">
                                                                         <layout>
-                                                                            <property name="column">0</property>
+                                                                            <property name="column">1</property>
                                                                             <property name="row">1</property>
                                                                         </layout>
                                                                         <accessibility>
@@ -346,14 +389,13 @@
                                                                 <child>
                                                                     <object class="GtkButton" id="autoloading_add_input_profile">
                                                                         <property name="tooltip-text" translatable="yes">Create Association</property>
-                                                                        <property name="halign">center</property>
+                                                                        <property name="halign">start</property>
                                                                         <property name="valign">center</property>
                                                                         <property name="icon-name">list-add-symbolic</property>
                                                                         <signal name="clicked" handler="on_autoloading_add_input_profile" object="PipeManagerBox" />
                                                                         <layout>
-                                                                            <property name="column">1</property>
-                                                                            <property name="row">0</property>
-                                                                            <property name="row-span">2</property>
+                                                                            <property name="column">2</property>
+                                                                            <property name="row">1</property>
                                                                         </layout>
                                                                         <style>
                                                                             <class name="suggested-action" />
