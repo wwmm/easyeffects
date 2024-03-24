@@ -18,22 +18,12 @@
                     <object class="GtkBox">
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
-                        <child>
-                            <object class="GtkButton" id="reset_history">
-                                <property name="valign">center</property>
-                                <property name="halign">center</property>
-                                <property name="label" translatable="yes">Reset History</property>
-                                <signal name="clicked" handler="on_reset_history" object="AutogainBox" />
-                            </object>
-                        </child>
 
                         <child>
                             <object class="GtkBox">
                                 <property name="spacing">24</property>
                                 <child>
                                     <object class="AdwPreferencesPage">
-                                        <property name="valign">center</property>
-
                                         <child>
                                             <object class="AdwPreferencesGroup">
                                                 <property name="title" translatable="yes">Controls</property>
@@ -131,6 +121,20 @@
                                                         </property>
                                                     </object>
                                                 </child>
+
+                                                <child>
+                                                    <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">History</property>
+                                                        <property name="title-lines">2</property>
+                                                        <child>
+                                                            <object class="GtkButton" id="reset_history">
+                                                                <property name="valign">center</property>
+                                                                <property name="label" translatable="yes">Reset</property>
+                                                                <signal name="clicked" handler="on_reset_history" object="AutogainBox" />
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
                                     </object>
@@ -138,8 +142,6 @@
 
                                 <child>
                                     <object class="AdwPreferencesPage">
-                                        <property name="valign">center</property>
-
                                         <child>
                                             <object class="AdwPreferencesGroup">
                                                 <property name="title" translatable="yes">Loudness</property>
@@ -171,6 +173,7 @@
 
                                                                 <child>
                                                                     <object class="GtkLabel" id="m_label">
+                                                                        <property name="label">0</property>
                                                                         <property name="xalign">1</property>
                                                                         <property name="width-chars">8</property>
                                                                     </object>
@@ -208,6 +211,7 @@
 
                                                                 <child>
                                                                     <object class="GtkLabel" id="s_label">
+                                                                        <property name="label">0</property>
                                                                         <property name="xalign">1</property>
                                                                         <property name="width-chars">8</property>
                                                                     </object>
@@ -244,6 +248,7 @@
 
                                                                 <child>
                                                                     <object class="GtkLabel" id="i_label">
+                                                                        <property name="label">0</property>
                                                                         <property name="xalign">1</property>
                                                                         <property name="width-chars">8</property>
                                                                     </object>
@@ -280,6 +285,7 @@
 
                                                                 <child>
                                                                     <object class="GtkLabel" id="r_label">
+                                                                        <property name="label">0</property>
                                                                         <property name="xalign">1</property>
                                                                         <property name="width-chars">8</property>
                                                                     </object>
@@ -318,6 +324,7 @@
 
                                                                 <child>
                                                                     <object class="GtkLabel" id="lra_label">
+                                                                        <property name="label">0</property>
                                                                         <property name="xalign">1</property>
                                                                         <property name="width-chars">8</property>
                                                                     </object>
@@ -354,6 +361,7 @@
 
                                                                 <child>
                                                                     <object class="GtkLabel" id="l_label">
+                                                                        <property name="label">0</property>
                                                                         <property name="xalign">1</property>
                                                                         <property name="width-chars">8</property>
                                                                     </object>
@@ -391,6 +399,7 @@
 
                                                                 <child>
                                                                     <object class="GtkLabel" id="g_label">
+                                                                        <property name="label">0</property>
                                                                         <property name="xalign">1</property>
                                                                         <property name="width-chars">8</property>
                                                                     </object>
