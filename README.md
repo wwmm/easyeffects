@@ -159,6 +159,10 @@ This page also has instructions for converting PulseEffects presets to Easy Effe
 
 See the wiki: [Command Line Options](https://github.com/wwmm/easyeffects/wiki/Command-Line-Options)
 
+## GNOME Shell extension
+
+See the wiki: [Preset Selector GNOME Extension](https://github.com/wwmm/easyeffects/wiki/Preset-Selector-GNOME-Extension)
+
 ## Reporting bugs
 
 See the wiki: [Reporting Bugs](https://github.com/wwmm/easyeffects/wiki/Reporting-bugs)
