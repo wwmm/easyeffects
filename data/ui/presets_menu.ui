@@ -94,7 +94,7 @@
                                                                 <property name="incremental">1</property>
 
                                                                 <property name="model">
-                                                                    <object class="GtkStringList" id="string_list"></object>
+                                                                    <object class="GtkStringList" id="local_presets_list"></object>
                                                                 </property>
 
                                                                 <property name="filter">

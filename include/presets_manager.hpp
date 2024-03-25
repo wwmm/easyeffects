@@ -52,7 +52,7 @@ class PresetsManager {
   // signal sending title and description strings
   sigc::signal<void(const std::string, const std::string)> preset_load_error;
 
-  auto get_names(const PresetType& preset_type) -> std::vector<std::string>;
+  auto get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string>;
 
   auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
 

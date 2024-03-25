@@ -282,7 +282,7 @@ void application_class_init(ApplicationClass* klass) {
     if (g_variant_dict_contains(options, "presets") != 0) {
       std::string list;
 
-      for (const auto& name : self->presets_manager->get_names(PresetType::output)) {
+      for (const auto& name : self->presets_manager->get_local_presets_name(PresetType::output)) {
         list += name + ",";
       }
 
@@ -290,7 +290,7 @@ void application_class_init(ApplicationClass* klass) {
 
       list = "";
 
-      for (const auto& name : self->presets_manager->get_names(PresetType::input)) {
+      for (const auto& name : self->presets_manager->get_local_presets_name(PresetType::input)) {
         list += name + ",";
       }
 

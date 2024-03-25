@@ -223,7 +223,7 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
   util::warning("failed to create user presets directory: " + path.string());
 }
 
-auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<std::string> {
+auto PresetsManager::get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string> {
   const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
   std::vector<std::string> names;
@@ -260,7 +260,7 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
 }
 
 void PresetsManager::add(const PresetType& preset_type, const std::string& name) {
-  for (const auto& p : get_names(preset_type)) {
+  for (const auto& p : get_local_presets_name(preset_type)) {
     if (p == name) {
       return;
     }

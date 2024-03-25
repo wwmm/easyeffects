@@ -65,7 +65,7 @@ struct _PresetsMenu {
 
   GtkLabel* last_used_name;
 
-  GtkStringList* string_list;
+  GtkStringList* local_presets_list;
 
   GSettings* settings;
 
@@ -159,7 +159,7 @@ void import_preset(PresetsMenu* self) {
 }
 
 template <PresetType preset_type>
-void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* string_list) {
+void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* local_presets_list) {
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -342,8 +342,8 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
 
   g_object_unref(factory);
 
-  for (const auto& name : self->data->application->presets_manager->get_names(preset_type)) {
-    gtk_string_list_append(string_list, name.c_str());
+  for (const auto& name : self->data->application->presets_manager->get_local_presets_name(preset_type)) {
+    gtk_string_list_append(local_presets_list, name.c_str());
   }
 }
 
@@ -358,13 +358,13 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
       return;
     }
 
-    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
-      if (preset_name == gtk_string_list_get_string(self->string_list, n)) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->local_presets_list)); n++) {
+      if (preset_name == gtk_string_list_get_string(self->local_presets_list, n)) {
         return;
       }
     }
 
-    gtk_string_list_append(self->string_list, preset_name.c_str());
+    gtk_string_list_append(self->local_presets_list, preset_name.c_str());
   };
 
   auto remove_from_list = [=](const std::string& preset_name) {
@@ -374,9 +374,9 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
       return;
     }
 
-    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->string_list)); n++) {
-      if (preset_name == gtk_string_list_get_string(self->string_list, n)) {
-        gtk_string_list_remove(self->string_list, n);
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->local_presets_list)); n++) {
+      if (preset_name == gtk_string_list_get_string(self->local_presets_list, n)) {
+        gtk_string_list_remove(self->local_presets_list, n);
 
         return;
       }
@@ -384,7 +384,7 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
   };
 
   if (preset_type == PresetType::output) {
-    setup_listview<PresetType::output>(self, self->listview, self->string_list);
+    setup_local_presets_listview<PresetType::output>(self, self->listview, self->local_presets_list);
 
     self->data->connections.push_back(
         self->data->application->presets_manager->user_output_preset_created.connect(add_to_list));
@@ -406,7 +406,7 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
 
     // reset last used name label
 
-    const auto names_output = self->data->application->presets_manager->get_names(PresetType::output);
+    const auto names_output = self->data->application->presets_manager->get_local_presets_name(PresetType::output);
 
     if (names_output.empty()) {
       g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
@@ -423,7 +423,7 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
     g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
 
   } else if (preset_type == PresetType::input) {
-    setup_listview<PresetType::input>(self, self->listview, self->string_list);
+    setup_local_presets_listview<PresetType::input>(self, self->listview, self->local_presets_list);
 
     self->data->connections.push_back(
         self->data->application->presets_manager->user_input_preset_created.connect(add_to_list));
@@ -445,7 +445,7 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
 
     // reset last used name label
 
-    const auto names_input = self->data->application->presets_manager->get_names(PresetType::input);
+    const auto names_input = self->data->application->presets_manager->get_local_presets_name(PresetType::input);
 
     if (names_input.empty()) {
       g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
@@ -519,7 +519,7 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::presets_menu_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, string_list);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, local_presets_list);
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview);
