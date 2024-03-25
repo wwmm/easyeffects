@@ -436,7 +436,7 @@ void PresetsManager::remove(const PresetType& preset_type, const std::string& na
   }
 }
 
-auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
+auto PresetsManager::load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
   nlohmann::json json;
 
   std::vector<std::string> plugins;
@@ -447,136 +447,87 @@ auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::
 
   auto preset_found = false;
 
-  // Load the plugin order based on the input/output pipeline.
-  switch (preset_type) {
-    case PresetType::output: {
-      conf_dirs.push_back(user_output_dir);
+  // Check preset existence
+  conf_dirs.push_back((preset_type == PresetType::input) ? user_input_dir : user_output_dir);
 
-      for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + json_ext};
+  for (const auto& dir : conf_dirs) {
+    input_file = dir / std::filesystem::path{name + json_ext};
 
-        if (std::filesystem::exists(input_file)) {
-          preset_found = true;
-
-          break;
-        }
-      }
-
-      if (preset_found) {
-        try {
-          std::ifstream is(input_file);
-
-          is >> json;
-
-          for (const auto& p : json.at("output").at("plugins_order").get<std::vector<std::string>>()) {
-            for (const auto& v : tags::plugin_name::list) {
-              if (p.starts_with(v)) {
-                /*
-                  Old format presets do not have the instance id number in the filter names. They are equal to the
-                  base name.
-                */
-
-                if (p != v) {
-                  plugins.push_back(p);
-                } else {
-                  plugins.push_back(p + "#0");
-                }
-
-                break;
-              }
-            }
-          }
-
-        } catch (const nlohmann::json::exception& e) {
-          notify_error(PresetError::pipeline_format);
-
-          util::warning(e.what());
-
-          return false;
-        } catch (...) {
-          notify_error(PresetError::pipeline_generic);
-
-          return false;
-        }
-
-        g_settings_set_strv(soe_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
-      } else {
-        util::debug("can't find the preset " + name + " on the filesystem");
-
-        return false;
-      }
-
-      break;
-    }
-    case PresetType::input: {
-      conf_dirs.push_back(user_input_dir);
-
-      for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + json_ext};
-
-        if (std::filesystem::exists(input_file)) {
-          preset_found = true;
-
-          break;
-        }
-      }
-
-      if (preset_found) {
-        try {
-          std::ifstream is(input_file);
-
-          is >> json;
-
-          for (const auto& p : json.at("input").at("plugins_order").get<std::vector<std::string>>()) {
-            for (const auto& v : tags::plugin_name::list) {
-              if (p.starts_with(v)) {
-                /*
-                  Old format presets do not have the instance id number in the filter names. They are equal to the
-                  base name.
-                */
-
-                if (p != v) {
-                  plugins.push_back(p);
-                } else {
-                  plugins.push_back(p + "#0");
-                }
-
-                break;
-              }
-            }
-          }
-
-        } catch (const nlohmann::json::exception& e) {
-          notify_error(PresetError::pipeline_format);
-
-          util::warning(e.what());
-
-          return false;
-        } catch (...) {
-          notify_error(PresetError::pipeline_generic);
-
-          return false;
-        }
-
-        g_settings_set_strv(sie_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
-      } else {
-        util::debug("can't find the preset " + name + " on the filesystem");
-
-        return false;
-      }
+    if (std::filesystem::exists(input_file)) {
+      preset_found = true;
 
       break;
     }
   }
 
-  // After the plugin order list, load the blocklist and then apply the parameters of the loaded plugins.
+  if (!preset_found) {
+    util::debug("can't find the local preset " + name + " on the filesystem");
+
+    return false;
+  }
+
+  // Read effects_pipeline
+  if (!read_effects_pipeline_from_preset(preset_type, input_file, json, plugins)) {
+    return false;
+  }
+
+  // After the plugin order list, load the blocklist and then
+  // apply the parameters of the loaded plugins.
   if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
-    util::debug("successfully loaded preset: " + input_file.string());
+    util::debug("successfully loaded the local preset: " + input_file.string());
 
     return true;
   }
 
   return false;
+}
+
+auto PresetsManager::read_effects_pipeline_from_preset(const PresetType& preset_type,
+                                                       const std::filesystem::path& input_file,
+                                                       nlohmann::json& json,
+                                                       std::vector<std::string>& plugins) -> bool {
+  const auto preset_type_str = (preset_type == PresetType::input) ? "input" : "output";
+
+  GSettings* settings = (preset_type == PresetType::input) ? sie_settings : soe_settings;
+
+  try {
+    std::ifstream is(input_file);
+
+    is >> json;
+
+    for (const auto& p : json.at(preset_type_str).at("plugins_order").get<std::vector<std::string>>()) {
+      for (const auto& v : tags::plugin_name::list) {
+        if (p.starts_with(v)) {
+          /*
+            Old format presets do not have the instance id number in the filter names. They are equal to the
+            base name.
+          */
+
+          if (p != v) {
+            plugins.push_back(p);
+          } else {
+            plugins.push_back(p + "#0");
+          }
+
+          break;
+        }
+      }
+    }
+  } catch (const nlohmann::json::exception& e) {
+    notify_error(PresetError::pipeline_format);
+
+    util::warning(e.what());
+
+    return false;
+  } catch (...) {
+    notify_error(PresetError::pipeline_generic);
+
+    return false;
+  }
+
+  g_settings_set_strv(settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
+
+  return true;
 }
 
 auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
@@ -731,7 +682,7 @@ void PresetsManager::autoload(const PresetType& preset_type,
 
   const auto* key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
 
-  if (load_preset_file(preset_type, name)) {
+  if (load_local_preset_file(preset_type, name)) {
     g_settings_set_string(settings, key, name.c_str());
   } else {
     g_settings_reset(settings, key);

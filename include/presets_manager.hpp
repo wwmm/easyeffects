@@ -66,7 +66,12 @@ class PresetsManager {
 
   void remove(const PresetType& preset_type, const std::string& name);
 
-  auto load_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
+  auto load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
+
+  auto read_effects_pipeline_from_preset(const PresetType& preset_type,
+                                         const std::filesystem::path& input_file,
+                                         nlohmann::json& json,
+                                         std::vector<std::string>& plugins) -> bool;
 
   auto read_plugins_preset(const PresetType& preset_type,
                            const std::vector<std::string>& plugins,

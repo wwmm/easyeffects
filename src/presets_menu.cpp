@@ -205,13 +205,15 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* str
                 auto* preset_name = gtk_string_object_get_string(string_object);
 
                 if constexpr (preset_type == PresetType::output) {
-                  if (self->data->application->presets_manager->load_preset_file(PresetType::output, preset_name)) {
+                  if (self->data->application->presets_manager->load_local_preset_file(PresetType::output,
+                                                                                       preset_name)) {
                     g_settings_set_string(self->settings, "last-used-output-preset", preset_name);
                   } else {
                     g_settings_reset(self->settings, "last-used-output-preset");
                   }
                 } else if constexpr (preset_type == PresetType::input) {
-                  if (self->data->application->presets_manager->load_preset_file(PresetType::input, preset_name)) {
+                  if (self->data->application->presets_manager->load_local_preset_file(PresetType::input,
+                                                                                       preset_name)) {
                     g_settings_set_string(self->settings, "last-used-input-preset", preset_name);
                   } else {
                     g_settings_reset(self->settings, "last-used-input-preset");
