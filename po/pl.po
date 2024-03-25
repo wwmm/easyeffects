@@ -181,9 +181,8 @@ msgid "Geometric Mean (SI)"
 msgstr ""
 
 #: data/ui/autogain.ui:127
-#, fuzzy
 msgid "History"
-msgstr "Wyczyść historię"
+msgstr "Historia"
 
 #: data/ui/autogain.ui:132 data/ui/autogain.ui:601 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1323
@@ -638,7 +637,7 @@ msgid "Sidechain Type"
 msgstr "Typ łańcucha bocznego"
 
 #: data/ui/compressor.ui:738 data/ui/expander.ui:656 data/ui/gate.ui:870
-#: src/plugins_box.cpp:772
+#: src/plugins_box.cpp:772 src/plugins_box.cpp:771
 msgid "Input Device"
 msgstr "Urządzenie wejściowe"
 
@@ -2346,11 +2345,11 @@ msgstr "Płaska odpowiedź"
 msgid "Failed To Load The Impulse File"
 msgstr "Nie udało się załadować pliku impulsu"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:773
+#: src/effects_box.cpp:306 src/plugins_box.cpp:773 src/plugins_box.cpp:772
 msgid "Recorders"
 msgstr "Rejestratory"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:793
+#: src/effects_box.cpp:329 src/plugins_box.cpp:793 src/plugins_box.cpp:792
 msgid "Players"
 msgstr "Odtwarzacze"
 
@@ -2414,11 +2413,11 @@ msgstr "Usuń automatyczne wczytywanie szablonu"
 msgid "Output Level Meter"
 msgstr "Wzmocnienie wej."
 
-#: src/plugins_box.cpp:725
+#: src/plugins_box.cpp:725 src/plugins_box.cpp:724
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/plugins_box.cpp:794
+#: src/plugins_box.cpp:794 src/plugins_box.cpp:793
 msgid "Output Device"
 msgstr "Urządzenie wyjściowe"
 
@@ -2559,12 +2558,10 @@ msgstr "Narzędzia stereo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} jest niedostępne"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2574,7 +2571,6 @@ msgstr ""
 "wymagane oprogramowanie samodzielnie."
 
 #: src/ui_helpers.cpp:103
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2588,7 +2584,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:251
-#, c++-format
 msgid "Using {}"
 msgstr "Wykorzystuje {}"
 
