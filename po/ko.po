@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-25 23:17+0000\n"
+"POT-Creation-Date: 2024-03-26 15:58+0000\n"
 "PO-Revision-Date: 2023-12-31 05:09+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -96,8 +96,8 @@ msgid "_Quit"
 msgstr "종료(_Q)"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:121 src/presets_menu.cpp:410
-#: src/presets_menu.cpp:421 src/presets_menu.cpp:449 src/presets_menu.cpp:460
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:119 src/presets_menu.cpp:408
+#: src/presets_menu.cpp:419 src/presets_menu.cpp:447 src/presets_menu.cpp:458
 msgid "Presets"
 msgstr "프리셋"
 
@@ -974,7 +974,7 @@ msgstr ""
 msgid "Sort Bands"
 msgstr ""
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:107
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
 msgid "Import Preset"
 msgstr "프리셋 가져오기"
 
@@ -2223,7 +2223,7 @@ msgid "Import Impulse File"
 msgstr "Impulse 파일 가져오기"
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:108 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "열기"
 
@@ -2327,11 +2327,11 @@ msgstr "출력 장치"
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:233
+#: src/presets_menu.cpp:231
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:252
+#: src/presets_menu.cpp:250
 msgid "Delete?"
 msgstr ""
 
