@@ -71,7 +71,6 @@
 
 PresetsManager::PresetsManager()
     : user_config_dir(g_get_user_config_dir()),
-      user_presets_dir(user_config_dir + "/easyeffects/"),
       user_input_dir(user_config_dir + "/easyeffects/input"),
       user_output_dir(user_config_dir + "/easyeffects/output"),
       autoload_input_dir(user_config_dir + "/easyeffects/autoload/input"),
@@ -81,7 +80,6 @@ PresetsManager::PresetsManager()
       sie_settings(g_settings_new(tags::schema::id_input)) {
   // user presets directories
 
-  create_user_directory(user_presets_dir);
   create_user_directory(user_input_dir);
   create_user_directory(user_output_dir);
   create_user_directory(autoload_input_dir);
@@ -226,15 +224,17 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
 auto PresetsManager::get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string> {
   const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  std::vector<std::string> names;
-  std::filesystem::directory_iterator it = std::filesystem::directory_iterator{user_dir};
+  auto it = std::filesystem::directory_iterator{user_dir};
 
-  const auto vn = search_names(it);
-  names.insert(names.end(), vn.begin(), vn.end());
+  auto names = search_names(it);
 
-  // removing duplicates
-  std::sort(names.begin(), names.end());
-  names.erase(std::unique(names.begin(), names.end()), names.end());
+  // Sort alphabetically not needed anymore because
+  // the GtkSortListModel does it already.
+  // std::sort(names.begin(), names.end());
+
+  // Removing duplicates not needed anymore because
+  // we get the presets from a single folder.
+  // names.erase(std::unique(names.begin(), names.end()), names.end());
 
   return names;
 }
@@ -244,10 +244,8 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status())) {
-        if (it->path().extension().c_str() == json_ext) {
-          names.emplace_back(it->path().stem().c_str());
-        }
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
+        names.emplace_back(it->path().stem().c_str());
       }
 
       ++it;
@@ -267,6 +265,71 @@ void PresetsManager::add(const PresetType& preset_type, const std::string& name)
   }
 
   save_preset_file(preset_type, name);
+}
+
+auto PresetsManager::get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string> {
+  const auto cp_dir = (preset_type == PresetType::output) ? output_community_preset_dir : input_community_preset_dir;
+
+  auto it = std::filesystem::directory_iterator{cp_dir};
+
+  std::vector<std::string> cp_paths;
+
+  const auto scan_level = 2U;
+
+  // Scan community package directories for 2 levels (the folder itself and only its subfolders).
+  try {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_directory(it->status())) {
+        auto subdir_it = std::filesystem::directory_iterator{it->path()};
+
+        // When C++23 is available, the following line is enough:
+        // cp_paths.append_range(scan_community_package_recursive(subdir_it, scan_level));
+
+        const auto sub_cp_vect = scan_community_package_recursive(subdir_it, scan_level);
+
+        cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+      }
+
+      ++it;
+    }
+  } catch (const std::exception& e) {
+    util::warning(e.what());
+  }
+
+  return cp_paths;
+}
+
+auto PresetsManager::scan_community_package_recursive(std::filesystem::directory_iterator& it,
+                                                      const uint& top_scan_level,
+                                                      const std::string& origin) -> std::vector<std::string> {
+  const auto scan_level = top_scan_level - 1U;
+
+  std::vector<std::string> cp_paths;
+
+  try {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
+        cp_paths.emplace_back(origin + "/" + it->path().stem().c_str());
+      } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
+        if (auto path = it->path(); !path.empty()) {
+          auto subdir_it = std::filesystem::directory_iterator{path};
+
+          // When C++23 is available, the following line is enough:
+          // cp_paths.append_range(scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str()));
+
+          const auto sub_cp_vect = scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str());
+
+          cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+        }
+      }
+
+      ++it;
+    }
+  } catch (const std::exception& e) {
+    util::warning(e.what());
+  }
+
+  return cp_paths;
 }
 
 void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::json& json) {

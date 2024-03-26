@@ -52,6 +52,12 @@ class PresetsManager {
   // signal sending title and description strings
   sigc::signal<void(const std::string, const std::string)> preset_load_error;
 
+  auto get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string>;
+
+  auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
+                                        const uint& top_scan_level,
+                                        const std::string& origin = "") -> std::vector<std::string>;
+
   auto get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string>;
 
   auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
@@ -112,7 +118,10 @@ class PresetsManager {
 
   std::string user_config_dir;
 
-  std::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
+  std::filesystem::path user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
+
+  const std::filesystem::path input_community_preset_dir = "/usr/share/easyeffects/input";
+  const std::filesystem::path output_community_preset_dir = "/usr/share/easyeffects/output";
 
   GSettings *settings = nullptr, *soe_settings = nullptr, *sie_settings = nullptr;
 
