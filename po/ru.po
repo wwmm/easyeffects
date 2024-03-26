@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 23:34+0000\n"
-"PO-Revision-Date: 2024-03-08 22:01+0000\n"
+"POT-Creation-Date: 2024-03-25 23:17+0000\n"
+"PO-Revision-Date: 2024-03-25 20:02+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -187,9 +187,8 @@ msgstr "Среднее геометрическое (SI)"
 
 # #, fuzzy
 #: data/ui/autogain.ui:127
-#, fuzzy
 msgid "History"
-msgstr "Сброс истории"
+msgstr "История"
 
 #: data/ui/autogain.ui:132 data/ui/autogain.ui:601 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1323

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 23:34+0000\n"
+"POT-Creation-Date: 2024-03-25 23:17+0000\n"
 "PO-Revision-Date: 2023-11-16 03:06+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -181,9 +181,8 @@ msgid "Geometric Mean (SI)"
 msgstr ""
 
 #: data/ui/autogain.ui:127
-#, fuzzy
 msgid "History"
-msgstr "Wyczyść historię"
+msgstr "Historia"
 
 #: data/ui/autogain.ui:132 data/ui/autogain.ui:601 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1323
