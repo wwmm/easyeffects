@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-25 23:17+0000\n"
+"POT-Creation-Date: 2024-03-26 15:58+0000\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -103,8 +103,8 @@ msgid "_Quit"
 msgstr ""
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:121 src/presets_menu.cpp:410
-#: src/presets_menu.cpp:421 src/presets_menu.cpp:449 src/presets_menu.cpp:460
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:119 src/presets_menu.cpp:408
+#: src/presets_menu.cpp:419 src/presets_menu.cpp:447 src/presets_menu.cpp:458
 msgid "Presets"
 msgstr "Predvoľby"
 
@@ -1054,7 +1054,7 @@ msgstr "Vypočítať frekvencie"
 msgid "Sort Bands"
 msgstr "Pásma"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:107
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
 #, fuzzy
 msgid "Import Preset"
 msgstr "Načítať predvoľbu"
@@ -2434,7 +2434,7 @@ msgid "Import Impulse File"
 msgstr "Načítať súbor impulzu"
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:108 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Otvoriť"
 
@@ -2546,11 +2546,11 @@ msgstr "Výstupné efekty"
 msgid "Add"
 msgstr "Pridať"
 
-#: src/presets_menu.cpp:233
+#: src/presets_menu.cpp:231
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:252
+#: src/presets_menu.cpp:250
 msgid "Delete?"
 msgstr ""
 
