@@ -21,7 +21,9 @@
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
+#ifdef ENABLE_RNNOISE
 #include <rnnoise.h>
+#endif
 #include <sys/types.h>
 #include <algorithm>
 #include <cmath>
