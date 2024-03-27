@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-25 23:17+0000\n"
+"POT-Creation-Date: 2024-03-26 15:58+0000\n"
 "PO-Revision-Date: 2024-01-30 16:00+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -102,8 +102,8 @@ msgid "_Quit"
 msgstr "_Sair"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:121 src/presets_menu.cpp:410
-#: src/presets_menu.cpp:421 src/presets_menu.cpp:449 src/presets_menu.cpp:460
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:119 src/presets_menu.cpp:408
+#: src/presets_menu.cpp:419 src/presets_menu.cpp:447 src/presets_menu.cpp:458
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -978,7 +978,7 @@ msgstr "Calcular as Frequências"
 msgid "Sort Bands"
 msgstr "Ordenar as Bandas"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:107
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
 msgid "Import Preset"
 msgstr "Importar as Predefinições"
 
@@ -2235,7 +2235,7 @@ msgid "Import Impulse File"
 msgstr "Importar o Arquivo com a Resposta de Impulso"
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:108 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Abrir"
 
@@ -2341,11 +2341,11 @@ msgstr "Dispositivo de Saída"
 msgid "Add"
 msgstr "Adicionar"
 
-#: src/presets_menu.cpp:233
+#: src/presets_menu.cpp:231
 msgid "Save?"
 msgstr "Você quer salvar?"
 
-#: src/presets_menu.cpp:252
+#: src/presets_menu.cpp:250
 msgid "Delete?"
 msgstr "Você quer excluir?"
 

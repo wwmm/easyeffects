@@ -55,8 +55,6 @@ struct Data {
 struct _PresetsMenu {
   GtkPopover parent_instance;
 
-  AdwViewStack* stack;
-
   GtkScrolledWindow* scrolled_window;
 
   GtkListView* listview;
