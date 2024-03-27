@@ -55,15 +55,15 @@ struct Data {
 struct _PresetsMenu {
   GtkPopover parent_instance;
 
-  GtkScrolledWindow* scrolled_window;
+  GtkScrolledWindow *scrolled_window_local, *scrolled_window_community;
 
-  GtkListView* listview;
+  GtkListView *listview_local, *listview_community;
 
-  GtkText* name;
+  GtkText* new_preset_name;
 
   GtkLabel* last_used_name;
 
-  GtkStringList* local_presets_list;
+  GtkStringList *presets_list_local, *presets_list_community;
 
   GSettings* settings;
 
@@ -74,13 +74,13 @@ struct _PresetsMenu {
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
 
 void create_preset(PresetsMenu* self, GtkButton* button) {
-  auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(self->name)), -1));
+  auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(self->new_preset_name)), -1));
 
   if (name.empty()) {
     return;
   }
 
-  gtk_editable_set_text(GTK_EDITABLE(self->name), "");
+  gtk_editable_set_text(GTK_EDITABLE(self->new_preset_name), "");
 
   // Truncate if longer than 100 characters
 
@@ -157,7 +157,7 @@ void import_preset(PresetsMenu* self) {
 }
 
 template <PresetType preset_type>
-void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* local_presets_list) {
+void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* presets_list_local) {
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -341,7 +341,7 @@ void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview, GtkS
   g_object_unref(factory);
 
   for (const auto& name : self->data->application->presets_manager->get_local_presets_name(preset_type)) {
-    gtk_string_list_append(local_presets_list, name.c_str());
+    gtk_string_list_append(presets_list_local, name.c_str());
   }
 }
 
@@ -356,13 +356,13 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
       return;
     }
 
-    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->local_presets_list)); n++) {
-      if (preset_name == gtk_string_list_get_string(self->local_presets_list, n)) {
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->presets_list_local)); n++) {
+      if (preset_name == gtk_string_list_get_string(self->presets_list_local, n)) {
         return;
       }
     }
 
-    gtk_string_list_append(self->local_presets_list, preset_name.c_str());
+    gtk_string_list_append(self->presets_list_local, preset_name.c_str());
   };
 
   auto remove_from_list = [=](const std::string& preset_name) {
@@ -372,9 +372,9 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
       return;
     }
 
-    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->local_presets_list)); n++) {
-      if (preset_name == gtk_string_list_get_string(self->local_presets_list, n)) {
-        gtk_string_list_remove(self->local_presets_list, n);
+    for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->presets_list_local)); n++) {
+      if (preset_name == gtk_string_list_get_string(self->presets_list_local, n)) {
+        gtk_string_list_remove(self->presets_list_local, n);
 
         return;
       }
@@ -382,7 +382,7 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
   };
 
   if (preset_type == PresetType::output) {
-    setup_local_presets_listview<PresetType::output>(self, self->listview, self->local_presets_list);
+    setup_local_presets_listview<PresetType::output>(self, self->listview_local, self->presets_list_local);
 
     self->data->connections.push_back(
         self->data->application->presets_manager->user_output_preset_created.connect(add_to_list));
@@ -421,7 +421,7 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
     g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
 
   } else if (preset_type == PresetType::input) {
-    setup_local_presets_listview<PresetType::input>(self, self->listview, self->local_presets_list);
+    setup_local_presets_listview<PresetType::input>(self, self->listview_local, self->presets_list_local);
 
     self->data->connections.push_back(
         self->data->application->presets_manager->user_input_preset_created.connect(add_to_list));
@@ -470,7 +470,7 @@ void show(GtkWidget* widget) {
 
   const int menu_height = static_cast<int>(0.5F * static_cast<float>(active_window_height));
 
-  gtk_scrolled_window_set_max_content_height(self->scrolled_window, menu_height);
+  gtk_scrolled_window_set_max_content_height(self->scrolled_window_local, menu_height);
 
   GTK_WIDGET_CLASS(presets_menu_parent_class)->show(widget);
 }
@@ -517,11 +517,13 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::presets_menu_ui);
 
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, local_presets_list);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, presets_list_local);
 
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, name);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window_local);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window_community);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview_local);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview_community);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, new_preset_name);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_name);
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);

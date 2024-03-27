@@ -398,7 +398,7 @@ auto PresetsManager::get_community_preset_info(const PresetType& preset_type, co
     std::regex_search(path.begin() + cp_dir_size, path.cend(), name_match, re_preset_name);
 
     // Skip if the match failed.
-    if (name_match.size() != 2U) {
+    if (name_match.size() != 1U) {
       continue;
     }
 

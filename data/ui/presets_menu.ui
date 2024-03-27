@@ -13,138 +13,228 @@
                 <property name="spacing">12</property>
 
                 <child>
-                    <object class="GtkBox">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                        <property name="css-name">entry</property>
-                        <property name="spacing">3</property>
-
-                        <child>
-                            <object class="GtkText" id="name">
-                                <property name="valign">center</property>
-                                <property name="hexpand">1</property>
-                                <property name="placeholder-text" translatable="yes">Name</property>
-                                <property name="input-purpose">name</property>
-                                <property name="accessible-role">text-box</property>
-                                <accessibility>
-                                    <property name="label" translatable="yes">New Preset Name</property>
-                                </accessibility>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkButton" id="add">
-                                <property name="margin-top">3</property>
-                                <property name="margin-bottom">3</property>
-                                <property name="tooltip-text" translatable="yes">Create a new preset</property>
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="icon-name">list-add-symbolic</property>
-                                <signal name="clicked" handler="create_preset" object="PresetsMenu" />
-                                <style>
-                                    <class name="suggested-action" />
-                                </style>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkButton" id="import">
-                                <property name="margin-top">3</property>
-                                <property name="margin-bottom">3</property>
-                                <property name="tooltip-text" translatable="yes">Import a preset</property>
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="icon-name">document-open-symbolic</property>
-                                <signal name="clicked" handler="import_preset" object="PresetsMenu" />
-                            </object>
-                        </child>
+                    <object class="AdwViewSwitcher" id="switcher">
+                        <property name="stack">stack</property>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkSearchEntry" id="search">
-                        <property name="valign">start</property>
-                        <property name="hexpand">1</property>
-                        <property name="placeholder-text" translatable="yes">Search</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Search Preset</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkFrame">
-                        <property name="hexpand">1</property>
-                        <property name="vexpand">1</property>
+                    <object class="AdwViewStack" id="stack">
                         <child>
-                            <object class="GtkScrolledWindow" id="scrolled_window">
-                                <property name="hexpand">1</property>
-                                <property name="vexpand">1</property>
-                                <property name="propagate-natural-width">1</property>
-                                <property name="propagate-natural-height">1</property>
-                                <child>
-                                    <object class="GtkListView" id="listview">
-                                        <property name="hexpand">1</property>
-                                        <property name="vexpand">1</property>
-                                        <property name="show-separators">1</property>
-                                        <property name="model">
-                                            <object class="GtkNoSelection">
-                                                <property name="model">
-                                                    <object class="GtkSortListModel">
-                                                        <property name="model">
-                                                            <object class="GtkFilterListModel">
-                                                                <property name="incremental">1</property>
+                            <object class="AdwViewStackPage">
+                                <property name="name">local_presets_page</property>
+                                <property name="title" translatable="yes">Local</property>
+                                <property name="icon-name">system-file-manager-symbolic</property>
+                                <property name="child">
+                                    <object class="GtkBox">
+                                        <property name="orientation">vertical</property>
+                                        <property name="spacing">12</property>
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="valign">center</property>
+                                                <property name="hexpand">1</property>
+                                                <property name="css-name">entry</property>
+                                                <property name="spacing">3</property>
 
+                                                <child>
+                                                    <object class="GtkText" id="new_preset_name">
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                        <property name="placeholder-text" translatable="yes">Name</property>
+                                                        <property name="input-purpose">name</property>
+                                                        <property name="accessible-role">text-box</property>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">New Preset Name</property>
+                                                        </accessibility>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="add">
+                                                        <property name="margin-top">3</property>
+                                                        <property name="margin-bottom">3</property>
+                                                        <property name="tooltip-text" translatable="yes">Create a new preset</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="icon-name">list-add-symbolic</property>
+                                                        <signal name="clicked" handler="create_preset" object="PresetsMenu" />
+                                                        <style>
+                                                            <class name="suggested-action" />
+                                                        </style>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="import_from_disk">
+                                                        <property name="margin-top">3</property>
+                                                        <property name="margin-bottom">3</property>
+                                                        <property name="tooltip-text" translatable="yes">Import a preset from the local storage</property>
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="icon-name">document-open-symbolic</property>
+                                                        <signal name="clicked" handler="import_preset" object="PresetsMenu" />
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkSearchEntry" id="search_local">
+                                                <property name="valign">start</property>
+                                                <property name="hexpand">1</property>
+                                                <property name="placeholder-text" translatable="yes">Search</property>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Search Preset</property>
+                                                </accessibility>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkFrame">
+                                                <property name="hexpand">1</property>
+                                                <property name="vexpand">1</property>
+                                                <child>
+                                                    <object class="GtkScrolledWindow" id="scrolled_window_local">
+                                                        <property name="hexpand">1</property>
+                                                        <property name="vexpand">1</property>
+                                                        <property name="propagate-natural-width">1</property>
+                                                        <property name="propagate-natural-height">1</property>
+                                                        <child>
+                                                            <object class="GtkListView" id="listview_local">
+                                                                <property name="hexpand">1</property>
+                                                                <property name="vexpand">1</property>
+                                                                <property name="show-separators">1</property>
                                                                 <property name="model">
-                                                                    <object class="GtkStringList" id="local_presets_list"></object>
-                                                                </property>
+                                                                    <object class="GtkNoSelection">
+                                                                        <property name="model">
+                                                                            <object class="GtkSortListModel">
+                                                                                <property name="model">
+                                                                                    <object class="GtkFilterListModel">
+                                                                                        <property name="incremental">1</property>
 
-                                                                <property name="filter">
-                                                                    <object class="GtkStringFilter">
-                                                                        <property name="search" bind-source="search" bind-property="text" />
+                                                                                        <property name="model">
+                                                                                            <object class="GtkStringList" id="presets_list_local"></object>
+                                                                                        </property>
 
-                                                                        <property name="expression">
-                                                                            <lookup name="string" type="GtkStringObject"></lookup>
+                                                                                        <property name="filter">
+                                                                                            <object class="GtkStringFilter">
+                                                                                                <property name="search" bind-source="search_local" bind-property="text" />
+
+                                                                                                <property name="expression">
+                                                                                                    <lookup name="string" type="GtkStringObject"></lookup>
+                                                                                                </property>
+                                                                                            </object>
+                                                                                        </property>
+                                                                                    </object>
+                                                                                </property>
+
+                                                                                <property name="sorter">
+                                                                                    <object class="GtkStringSorter">
+                                                                                        <property name="expression">
+                                                                                            <lookup name="string" type="GtkStringObject"></lookup>
+                                                                                        </property>
+                                                                                    </object>
+                                                                                </property>
+                                                                            </object>
                                                                         </property>
                                                                     </object>
                                                                 </property>
-                                                            </object>
-                                                        </property>
 
-                                                        <property name="sorter">
-                                                            <object class="GtkStringSorter">
-                                                                <property name="expression">
-                                                                    <lookup name="string" type="GtkStringObject"></lookup>
-                                                                </property>
+                                                                <style>
+                                                                    <class name="rich-list" />
+                                                                </style>
+
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Local Presets List</property>
+                                                                </accessibility>
                                                             </object>
-                                                        </property>
+                                                        </child>
                                                     </object>
-                                                </property>
+                                                </child>
                                             </object>
-                                        </property>
+                                        </child>
 
-                                        <style>
-                                            <class name="rich-list" />
-                                        </style>
-
-                                        <accessibility>
-                                            <property name="label" translatable="yes">Presets List</property>
-                                        </accessibility>
+                                        <child>
+                                            <object class="GtkLabel" id="last_used_name">
+                                                <property name="halign">center</property>
+                                                <property name="valign">end</property>
+                                                <style>
+                                                    <class name="dim-label" />
+                                                </style>
+                                            </object>
+                                        </child>
                                     </object>
-                                </child>
+                                </property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="AdwViewStackPage">
+                                <property name="name">community_presets_page</property>
+                                <property name="title" translatable="yes">Community</property>
+                                <property name="icon-name">system-users-symbolic</property>
+                                <property name="child">
+                                    <object class="GtkBox">
+                                        <property name="orientation">vertical</property>
+                                        <property name="spacing">12</property>
+                                        <child>
+                                            <object class="GtkFrame">
+                                                <property name="hexpand">1</property>
+                                                <property name="vexpand">1</property>
+                                                <child>
+                                                    <object class="GtkScrolledWindow" id="scrolled_window_community">
+                                                        <property name="hexpand">1</property>
+                                                        <property name="vexpand">1</property>
+                                                        <property name="propagate-natural-width">1</property>
+                                                        <property name="propagate-natural-height">1</property>
+                                                        <child>
+                                                            <object class="GtkListView" id="listview_community">
+                                                                <property name="hexpand">1</property>
+                                                                <property name="vexpand">1</property>
+                                                                <property name="show-separators">1</property>
+                                                                <property name="model">
+                                                                    <object class="GtkNoSelection">
+                                                                        <property name="model">
+                                                                            <object class="GtkSortListModel">
+                                                                                <property name="model">
+                                                                                    <object class="GtkFilterListModel">
+                                                                                        <property name="incremental">1</property>
+
+                                                                                        <property name="model">
+                                                                                            <object class="GtkStringList" id="presets_list_community"></object>
+                                                                                        </property>
+                                                                                    </object>
+                                                                                </property>
+
+                                                                                <property name="sorter">
+                                                                                    <object class="GtkStringSorter">
+                                                                                        <property name="expression">
+                                                                                            <lookup name="string" type="GtkStringObject"></lookup>
+                                                                                        </property>
+                                                                                    </object>
+                                                                                </property>
+                                                                            </object>
+                                                                        </property>
+                                                                    </object>
+                                                                </property>
+
+                                                                <style>
+                                                                    <class name="rich-list" />
+                                                                </style>
+
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Community Presets List</property>
+                                                                </accessibility>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </property>
                             </object>
                         </child>
                     </object>
                 </child>
-
-                <child>
-                    <object class="GtkLabel" id="last_used_name">
-                        <property name="halign">center</property>
-                        <property name="valign">end</property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                    </object>
-                </child>
-
             </object>
         </child>
     </template>
