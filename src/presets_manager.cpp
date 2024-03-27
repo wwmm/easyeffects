@@ -31,6 +31,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
 #include <ostream>
+#include <regex>
 #include <stdexcept>
 #include <string>
 #include <string_view>
@@ -78,7 +79,20 @@ PresetsManager::PresetsManager()
       settings(g_settings_new(tags::app::id)),
       soe_settings(g_settings_new(tags::schema::id_output)),
       sie_settings(g_settings_new(tags::schema::id_input)) {
-  // user presets directories
+  // initialize input and output directories for community presets
+
+  const gchar* const* xdg_data_dirs = g_get_system_data_dirs();
+
+  while (*xdg_data_dirs != nullptr) {
+    std::string dir = *xdg_data_dirs++;
+
+    dir += dir.ends_with("/") ? "" : "/";
+
+    system_data_dir_input.push_back(dir + "easyeffects/input");
+    system_data_dir_output.push_back(dir + "easyeffects/output");
+  }
+
+  // create user presets directories
 
   create_user_directory(user_input_dir);
   create_user_directory(user_output_dir);
@@ -268,32 +282,37 @@ void PresetsManager::add(const PresetType& preset_type, const std::string& name)
 }
 
 auto PresetsManager::get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string> {
-  const auto cp_dir = (preset_type == PresetType::output) ? output_community_preset_dir : input_community_preset_dir;
-
-  auto it = std::filesystem::directory_iterator{cp_dir};
-
   std::vector<std::string> cp_paths;
 
   const auto scan_level = 2U;
 
-  // Scan community package directories for 2 levels (the folder itself and only its subfolders).
-  try {
-    while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_directory(it->status())) {
-        auto subdir_it = std::filesystem::directory_iterator{it->path()};
+  const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
 
-        // When C++23 is available, the following line is enough:
-        // cp_paths.append_range(scan_community_package_recursive(subdir_it, scan_level));
+  for (const auto& cp_dir : cp_dir_vect) {
+    auto it = std::filesystem::directory_iterator{cp_dir};
 
-        const auto sub_cp_vect = scan_community_package_recursive(subdir_it, scan_level);
+    // Scan community package directories for 2 levels (the folder itself and only its subfolders).
+    try {
+      while (it != std::filesystem::directory_iterator{}) {
+        if (auto package_path = it->path(); std::filesystem::is_directory(it->status())) {
+          auto package_it = std::filesystem::directory_iterator{package_path};
 
-        cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+          /* When C++23 is available, the following line is enough:
+          cp_paths.append_range(
+              scan_community_package_recursive(package_it, scan_level, package_path.filename().c_str()));
+          */
+
+          const auto sub_cp_vect =
+              scan_community_package_recursive(package_it, scan_level, package_path.filename().c_str());
+
+          cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+        }
+
+        ++it;
       }
-
-      ++it;
+    } catch (const std::exception& e) {
+      util::warning(e.what());
     }
-  } catch (const std::exception& e) {
-    util::warning(e.what());
   }
 
   return cp_paths;
@@ -314,8 +333,9 @@ auto PresetsManager::scan_community_package_recursive(std::filesystem::directory
         if (auto path = it->path(); !path.empty()) {
           auto subdir_it = std::filesystem::directory_iterator{path};
 
-          // When C++23 is available, the following line is enough:
-          // cp_paths.append_range(scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str()));
+          /* When C++23 is available, the following line is enough:
+          cp_paths.append_range(scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str()));
+          */
 
           const auto sub_cp_vect = scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str());
 
@@ -330,6 +350,65 @@ auto PresetsManager::scan_community_package_recursive(std::filesystem::directory
   }
 
   return cp_paths;
+}
+
+auto PresetsManager::get_community_preset_info(const PresetType& preset_type, const std::string& path)
+    -> std::pair<std::string, std::string> {
+  // Given the full path of a community preset, extract and return:
+  // 1. the preset name
+  // 2. the package name
+
+  static const auto re_pack_name = std::regex(R"(^\/([^/]+))");
+  static const auto re_preset_name = std::regex(R"([^/]+$)");
+
+  const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
+
+  for (const auto& cp_dir : cp_dir_vect) {
+    // In order to extract the package name, let's check if
+    // the preset belongs to the selected system data directory.
+
+    const auto cp_dir_size = cp_dir.size();
+
+    // Skip if the lenght of the path is shorter than `cp_dir + "/"`.
+    if (path.size() <= cp_dir_size + 1U) {
+      continue;
+    }
+
+    // Check if the preset is contained in the selected system data directory.
+    if (!path.starts_with(cp_dir)) {
+      continue;
+    }
+
+    // Extract the package name.
+    std::smatch pack_match;
+
+    // Get the subdirectory/package.
+    // - Full match: "/pack_name"
+    // - Group 1: "pack_name"
+    std::regex_search(path.begin() + cp_dir_size, path.cend(), pack_match, re_pack_name);
+
+    // Skip if the match failed.
+    if (pack_match.size() != 2U) {
+      continue;
+    }
+
+    // Extract the preset name.
+    std::smatch name_match;
+
+    std::regex_search(path.begin() + cp_dir_size, path.cend(), name_match, re_preset_name);
+
+    // Skip if the match failed.
+    if (name_match.size() != 2U) {
+      continue;
+    }
+
+    return std::make_pair(name_match.str(0), pack_match.str(1));
+  }
+
+  util::warning("Cannot extract info for the community preset: " + path);
+
+  // Placeholders in case of issues
+  return std::make_pair(std::string(_("Community Preset")), std::string(_("Package")));
 }
 
 void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::json& json) {

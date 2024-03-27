@@ -58,6 +58,9 @@ class PresetsManager {
                                         const uint& top_scan_level,
                                         const std::string& origin = "") -> std::vector<std::string>;
 
+  auto get_community_preset_info(const PresetType& preset_type, const std::string& path)
+      -> std::pair<std::string, std::string>;
+
   auto get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string>;
 
   auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
@@ -120,8 +123,7 @@ class PresetsManager {
 
   std::filesystem::path user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
 
-  const std::filesystem::path input_community_preset_dir = "/usr/share/easyeffects/input";
-  const std::filesystem::path output_community_preset_dir = "/usr/share/easyeffects/output";
+  std::vector<std::string> system_data_dir_input, system_data_dir_output;
 
   GSettings *settings = nullptr, *soe_settings = nullptr, *sie_settings = nullptr;
 
