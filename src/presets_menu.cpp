@@ -186,7 +186,26 @@ void setup_community_presets_listview(PresetsMenu* self,
                      gtk_list_item_set_activatable(item, 0);
                      gtk_list_item_set_child(item, GTK_WIDGET(top_box));
 
-                     // TODO: implement callbacks for "clicked" events related to Try and Import buttons
+                     g_signal_connect(try_bt, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
+                                        if (auto* string_object =
+                                                GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object"));
+                                            string_object != nullptr) {
+                                          auto* preset_path = gtk_string_object_get_string(string_object);
+
+                                          if constexpr (preset_type == PresetType::output) {
+                                            if (self->data->application->presets_manager->load_community_preset_file(
+                                                    PresetType::output, preset_path)) {
+                                              g_settings_reset(self->settings, "last-used-output-preset");
+                                            } else if constexpr (preset_type == PresetType::input) {
+                                              if (self->data->application->presets_manager->load_community_preset_file(
+                                                      PresetType::input, preset_path)) {
+                                                g_settings_reset(self->settings, "last-used-input-preset");
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }),
+                                      self);
 
                      g_object_unref(builder);
                    }),

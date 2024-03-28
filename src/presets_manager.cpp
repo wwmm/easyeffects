@@ -303,7 +303,7 @@ auto PresetsManager::get_all_community_presets_paths(const PresetType& preset_ty
         if (auto package_path = it->path(); std::filesystem::is_directory(it->status())) {
           const auto package_path_name = package_path.string();
 
-          util::debug("Scan directory for community presets: " + package_path_name);
+          util::debug("scan directory for community presets: " + package_path_name);
 
           auto package_it = std::filesystem::directory_iterator{package_path};
 
@@ -414,7 +414,7 @@ auto PresetsManager::get_community_preset_info(const PresetType& preset_type, co
     return std::make_pair(name_match.str(0), pack_match.str(1));
   }
 
-  util::warning("Cannot extract info for the community preset: " + path);
+  util::warning("can't extract info strings for the community preset: " + path);
 
   // Placeholders in case of issues
   return std::make_pair(std::string(_("Community Preset")), std::string(_("Package")));
@@ -588,34 +588,41 @@ void PresetsManager::remove(const PresetType& preset_type, const std::string& na
 }
 
 auto PresetsManager::load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
-  nlohmann::json json;
-
-  std::vector<std::string> plugins;
-
   std::vector<std::filesystem::path> conf_dirs;
 
-  std::filesystem::path input_file;
-
-  auto preset_found = false;
-
-  // Check preset existence
   conf_dirs.push_back((preset_type == PresetType::input) ? user_input_dir : user_output_dir);
 
   for (const auto& dir : conf_dirs) {
-    input_file = dir / std::filesystem::path{name + json_ext};
+    const auto input_file = dir / std::filesystem::path{name + json_ext};
 
+    // Check preset existence
     if (std::filesystem::exists(input_file)) {
-      preset_found = true;
-
-      break;
+      return load_preset_file(preset_type, input_file);
     }
   }
 
-  if (!preset_found) {
-    util::debug("can't find the local preset " + name + " on the filesystem");
+  util::debug("can't find the local preset \"" + name + "\" on the filesystem");
+
+  return false;
+}
+
+auto PresetsManager::load_community_preset_file(const PresetType& preset_type, const std::string& full_path) -> bool {
+  const auto input_file = std::filesystem::path{full_path + json_ext};
+
+  // Check preset existence
+  if (!std::filesystem::exists(input_file)) {
+    util::warning("the community preset \"" + full_path + "\" does not exist on the filesystem");
 
     return false;
   }
+
+  return load_preset_file(preset_type, input_file);
+}
+
+auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool {
+  nlohmann::json json;
+
+  std::vector<std::string> plugins;
 
   // Read effects_pipeline
   if (!read_effects_pipeline_from_preset(preset_type, input_file, json, plugins)) {
@@ -625,7 +632,7 @@ auto PresetsManager::load_local_preset_file(const PresetType& preset_type, const
   // After the plugin order list, load the blocklist and then
   // apply the parameters of the loaded plugins.
   if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
-    util::debug("successfully loaded the local preset: " + input_file.string());
+    util::debug("successfully loaded the preset: " + input_file.string());
 
     return true;
   }

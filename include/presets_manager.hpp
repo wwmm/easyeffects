@@ -77,6 +77,8 @@ class PresetsManager {
 
   auto load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
 
+  auto load_community_preset_file(const PresetType& preset_type, const std::string& full_path) -> bool;
+
   auto read_effects_pipeline_from_preset(const PresetType& preset_type,
                                          const std::filesystem::path& input_file,
                                          nlohmann::json& json,
@@ -132,6 +134,8 @@ class PresetsManager {
   GFileMonitor *autoload_output_monitor = nullptr, *autoload_input_monitor = nullptr;
 
   static void create_user_directory(const std::filesystem::path& path);
+
+  auto load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool;
 
   void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 
