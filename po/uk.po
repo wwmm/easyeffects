@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-26 15:58+0000\n"
-"PO-Revision-Date: 2023-10-30 05:15+0000\n"
-"Last-Translator: volkov <d2oo1dle2x@gmail.com>\n"
+"PO-Revision-Date: 2024-03-28 14:52+0000\n"
+"Last-Translator: sensei1304fcc0f2a8360f4ddc <sensei1304@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -94,7 +94,7 @@ msgstr "_Про Easy Effects"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_Вихід"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:119 src/presets_menu.cpp:408
@@ -134,12 +134,13 @@ msgid "Empty List"
 msgstr "Порожній список"
 
 #: data/ui/apps_box.ui:28
+#, fuzzy
 msgid "No Audio Application Available"
-msgstr ""
+msgstr "Немає доступного додатку з аудіо"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
 msgid "Controls"
-msgstr ""
+msgstr "Керування"
 
 #: data/ui/autogain.ui:33
 msgid "Target"
@@ -151,11 +152,12 @@ msgstr "Тиша"
 
 #: data/ui/autogain.ui:82
 msgid "Maximum History"
-msgstr ""
+msgstr "Максимальний розмір історії"
 
 #: data/ui/autogain.ui:106
+#, fuzzy
 msgid "Reference"
-msgstr ""
+msgstr "Довідка"
 
 #: data/ui/autogain.ui:112 data/ui/autogain.ui:161 data/ui/level_meter.ui:72
 #, fuzzy
@@ -192,9 +194,8 @@ msgid "Geometric Mean (SI)"
 msgstr "Середнє геометричне (SІ)"
 
 #: data/ui/autogain.ui:127
-#, fuzzy
 msgid "History"
-msgstr "Очистити історію"
+msgstr "Історія"
 
 #: data/ui/autogain.ui:132 data/ui/autogain.ui:601 data/ui/bass_enhancer.ui:462
 #: data/ui/bass_loudness.ui:279 data/ui/compressor.ui:1323
@@ -211,17 +212,14 @@ msgstr "Скинути"
 
 #: data/ui/autogain.ui:147 data/ui/autogain.ui:349 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:58 src/tags_plugin_name.cpp:56
-#, fuzzy
 msgid "Loudness"
 msgstr "Гучність"
 
 #: data/ui/autogain.ui:273 data/ui/level_meter.ui:181
-#, fuzzy
 msgid "Relative"
 msgstr "Відносне"
 
 #: data/ui/autogain.ui:310 data/ui/level_meter.ui:217
-#, fuzzy
 msgid "Range"
 msgstr "Діапазон"
 
