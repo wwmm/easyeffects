@@ -236,9 +236,9 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
 }
 
 auto PresetsManager::get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string> {
-  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  auto it = std::filesystem::directory_iterator{user_dir};
+  auto it = std::filesystem::directory_iterator{conf_dir};
 
   auto names = search_names(it);
 
@@ -576,9 +576,9 @@ void PresetsManager::write_plugins_preset(const PresetType& preset_type,
 void PresetsManager::remove(const PresetType& preset_type, const std::string& name) {
   std::filesystem::path preset_file;
 
-  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  preset_file = user_dir / std::filesystem::path{name + json_ext};
+  preset_file = conf_dir / std::filesystem::path{name + json_ext};
 
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
@@ -588,17 +588,13 @@ void PresetsManager::remove(const PresetType& preset_type, const std::string& na
 }
 
 auto PresetsManager::load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
-  std::vector<std::filesystem::path> conf_dirs;
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  conf_dirs.push_back((preset_type == PresetType::input) ? user_input_dir : user_output_dir);
+  const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
 
-  for (const auto& dir : conf_dirs) {
-    const auto input_file = dir / std::filesystem::path{name + json_ext};
-
-    // Check preset existence
-    if (std::filesystem::exists(input_file)) {
-      return load_preset_file(preset_type, input_file);
-    }
+  // Check preset existence
+  if (std::filesystem::exists(input_file)) {
+    return load_preset_file(preset_type, input_file);
   }
 
   util::debug("can't find the local preset \"" + name + "\" on the filesystem");
@@ -714,7 +710,7 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
   return true;
 }
 
-void PresetsManager::import(const PresetType& preset_type, const std::string& file_path) {
+void PresetsManager::import_from_filesystem(const PresetType& preset_type, const std::string& file_path) {
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
@@ -729,9 +725,9 @@ void PresetsManager::import(const PresetType& preset_type, const std::string& fi
 
   std::filesystem::path out_path;
 
-  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  out_path = user_dir / p.filename();
+  out_path = conf_dir / p.filename();
 
   std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
@@ -889,39 +885,11 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
 }
 
 auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool {
-  std::filesystem::path input_file;
-  std::vector<std::filesystem::path> conf_dirs;
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  switch (preset_type) {
-    case PresetType::output: {
-      conf_dirs.push_back(user_output_dir);
+  const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
 
-      for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + json_ext};
-
-        if (std::filesystem::exists(input_file)) {
-          return true;
-        }
-      }
-
-      break;
-    }
-    case PresetType::input: {
-      conf_dirs.push_back(user_input_dir);
-
-      for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + json_ext};
-
-        if (std::filesystem::exists(input_file)) {
-          return true;
-        }
-      }
-
-      break;
-    }
-  }
-
-  return false;
+  return std::filesystem::exists(input_file);
 }
 
 void PresetsManager::notify_error(const PresetError& preset_error, const std::string& plugin_name) {

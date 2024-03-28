@@ -88,7 +88,7 @@ class PresetsManager {
                            const std::vector<std::string>& plugins,
                            const nlohmann::json& json) -> bool;
 
-  void import(const PresetType& preset_type, const std::string& file_path);
+  void import_from_filesystem(const PresetType& preset_type, const std::string& file_path);
 
   void add_autoload(const PresetType& preset_type,
                     const std::string& preset_name,

@@ -107,7 +107,8 @@ void import_preset_from_disk(PresetsMenu* self) {
   gtk_file_dialog_set_title(dialog, _("Import Preset"));
   gtk_file_dialog_set_accept_label(dialog, _("Open"));
 
-  auto* init_folder = g_file_new_for_path(SYSTEM_PRESETS_DIR);
+  // Open the dialog from the user home folder.
+  auto* init_folder = g_file_new_for_path(g_get_home_dir());
 
   gtk_file_dialog_set_initial_folder(dialog, init_folder);
 
@@ -145,9 +146,9 @@ void import_preset_from_disk(PresetsMenu* self) {
           auto* path = g_file_get_path(file);
 
           if (self->data->preset_type == PresetType::output) {
-            self->data->application->presets_manager->import(PresetType::output, path);
+            self->data->application->presets_manager->import_from_filesystem(PresetType::output, path);
           } else if (self->data->preset_type == PresetType::input) {
-            self->data->application->presets_manager->import(PresetType::input, path);
+            self->data->application->presets_manager->import_from_filesystem(PresetType::input, path);
           }
 
           g_free(path);
