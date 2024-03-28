@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="easyeffects">
+    <object class="GtkBox" id="top_box">
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <child>
+            <object class="GtkBox" id="main_box">
+                <property name="valign">center</property>
+                <property name="hexpand">1</property>
+                <property name="spacing">12</property>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                        <property name="spacing">2</property>
+                        <property name="orientation">vertical</property>
+
+                        <child>
+                            <object class="GtkLabel" id="package">
+                                <property name="halign">start</property>
+                                <property name="ellipsize">end</property>
+                                <property name="label">Package</property>
+                                <style>
+                                    <class name="caption" />
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkLabel" id="name">
+                                <property name="halign">start</property>
+                                <property name="ellipsize">end</property>
+                                <property name="label">Name</property>
+                                <style>
+                                    <class name="heading" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <style>
+                            <class name="linked" />
+                        </style>
+
+                        <child>
+                            <object class="GtkButton" id="try">
+                                <property name="label" translatable="yes">Try</property>
+                                <property name="tooltip-text" translatable="yes">Try this community preset</property>
+                                <accessibility>
+                                    <relation name="labelled-by">name</relation>
+                                </accessibility>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkButton" id="import">
+                                <property name="label" translatable="yes">Import</property>
+                                <property name="tooltip-text" translatable="yes">Import this community preset into the local presets list</property>
+                                <accessibility>
+                                    <relation name="labelled-by">name</relation>
+                                </accessibility>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

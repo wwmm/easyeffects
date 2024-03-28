@@ -55,6 +55,8 @@ struct Data {
 struct _PresetsMenu {
   GtkPopover parent_instance;
 
+  AdwViewStack* stack;
+
   GtkScrolledWindow *scrolled_window_local, *scrolled_window_community;
 
   GtkListView *listview_local, *listview_community;
@@ -97,7 +99,7 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
   self->data->application->presets_manager->add(self->data->preset_type, name);
 }
 
-void import_preset(PresetsMenu* self) {
+void import_preset_from_disk(PresetsMenu* self) {
   auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->data->application));
 
   auto* dialog = gtk_file_dialog_new();
@@ -157,7 +159,75 @@ void import_preset(PresetsMenu* self) {
 }
 
 template <PresetType preset_type>
-void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview, GtkStringList* presets_list_local) {
+void setup_community_presets_listview(PresetsMenu* self,
+                                      GtkListView* listview_community,
+                                      GtkStringList* presets_list_community) {
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(factory, "setup",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
+                     auto builder = gtk_builder_new_from_resource(tags::resources::preset_row_community_ui);
+
+                     auto* top_box = gtk_builder_get_object(builder, "top_box");
+
+                     auto* name = gtk_builder_get_object(builder, "name");
+                     auto* package = gtk_builder_get_object(builder, "package");
+
+                     auto* try_bt = gtk_builder_get_object(builder, "try");
+                     auto* import = gtk_builder_get_object(builder, "import");
+
+                     g_object_set_data(G_OBJECT(item), "name", name);
+                     g_object_set_data(G_OBJECT(item), "package", package);
+                     g_object_set_data(G_OBJECT(item), "try", try_bt);
+                     g_object_set_data(G_OBJECT(item), "import", import);
+
+                     gtk_list_item_set_activatable(item, 0);
+                     gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+
+                     // TODO: implement callbacks for "clicked" events related to Try and Import buttons
+
+                     g_object_unref(builder);
+                   }),
+                   self);
+
+  g_signal_connect(factory, "bind",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
+                     auto* name = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+                     auto* package = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "package"));
+
+                     auto* try_bt = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "try"));
+                     auto* import = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "import"));
+
+                     // Get the full path of the community preset item.
+                     auto* string_object = GTK_STRING_OBJECT(gtk_list_item_get_item(item));
+
+                     g_object_set_data(G_OBJECT(try_bt), "string-object", string_object);
+                     g_object_set_data(G_OBJECT(import), "string-object", string_object);
+
+                     auto* full_cp_path = gtk_string_object_get_string(string_object);
+
+                     // Extract package name and preset name from the full path.
+                     const auto cp_info =
+                         self->data->application->presets_manager->get_community_preset_info(preset_type, full_cp_path);
+
+                     gtk_label_set_text(name, cp_info.first.c_str());
+                     gtk_label_set_text(package, cp_info.second.c_str());
+                   }),
+                   self);
+
+  gtk_list_view_set_factory(listview_community, factory);
+
+  g_object_unref(factory);
+
+  for (const auto& path : self->data->application->presets_manager->get_all_community_presets_paths(preset_type)) {
+    gtk_string_list_append(presets_list_community, path.c_str());
+  }
+}
+
+template <PresetType preset_type>
+void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview_local, GtkStringList* presets_list_local) {
   auto* factory = gtk_signal_list_item_factory_new();
 
   // setting the factory callbacks
@@ -336,7 +406,7 @@ void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview, GtkS
       }),
       self);
 
-  gtk_list_view_set_factory(listview, factory);
+  gtk_list_view_set_factory(listview_local, factory);
 
   g_object_unref(factory);
 
@@ -382,6 +452,8 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
   };
 
   if (preset_type == PresetType::output) {
+    setup_community_presets_listview<PresetType::output>(self, self->listview_community, self->presets_list_community);
+
     setup_local_presets_listview<PresetType::output>(self, self->listview_local, self->presets_list_local);
 
     self->data->connections.push_back(
@@ -421,6 +493,8 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
     g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
 
   } else if (preset_type == PresetType::input) {
+    setup_community_presets_listview<PresetType::input>(self, self->listview_community, self->presets_list_community);
+
     setup_local_presets_listview<PresetType::input>(self, self->listview_local, self->presets_list_local);
 
     self->data->connections.push_back(
@@ -518,6 +592,7 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::presets_menu_ui);
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, presets_list_local);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, presets_list_community);
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window_local);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window_community);
@@ -527,7 +602,7 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_name);
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);
-  gtk_widget_class_bind_template_callback(widget_class, import_preset);
+  gtk_widget_class_bind_template_callback(widget_class, import_preset_from_disk);
 }
 
 void presets_menu_init(PresetsMenu* self) {

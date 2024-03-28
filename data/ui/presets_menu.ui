@@ -70,7 +70,7 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="icon-name">document-open-symbolic</property>
-                                                        <signal name="clicked" handler="import_preset" object="PresetsMenu" />
+                                                        <signal name="clicked" handler="import_preset_from_disk" object="PresetsMenu" />
                                                     </object>
                                                 </child>
                                             </object>

@@ -289,21 +289,30 @@ auto PresetsManager::get_all_community_presets_paths(const PresetType& preset_ty
   const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
 
   for (const auto& cp_dir : cp_dir_vect) {
-    auto it = std::filesystem::directory_iterator{cp_dir};
+    auto cp_fs_path = std::filesystem::path{cp_dir};
+
+    if (!std::filesystem::exists(cp_fs_path)) {
+      continue;
+    }
 
     // Scan community package directories for 2 levels (the folder itself and only its subfolders).
+    auto it = std::filesystem::directory_iterator{cp_fs_path};
+
     try {
       while (it != std::filesystem::directory_iterator{}) {
         if (auto package_path = it->path(); std::filesystem::is_directory(it->status())) {
+          const auto package_path_name = package_path.string();
+
+          util::debug("Scan directory for community presets: " + package_path_name);
+
           auto package_it = std::filesystem::directory_iterator{package_path};
 
           /* When C++23 is available, the following line is enough:
           cp_paths.append_range(
-              scan_community_package_recursive(package_it, scan_level, package_path.filename().c_str()));
+              scan_community_package_recursive(package_it, scan_level, package_path_name));
           */
 
-          const auto sub_cp_vect =
-              scan_community_package_recursive(package_it, scan_level, package_path.filename().c_str());
+          const auto sub_cp_vect = scan_community_package_recursive(package_it, scan_level, package_path_name);
 
           cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
         }

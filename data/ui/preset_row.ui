@@ -28,6 +28,7 @@
                         <child>
                             <object class="GtkBox">
                                 <property name="halign">end</property>
+                                <property name="valign">center</property>
                                 <style>
                                     <class name="linked" />
                                 </style>
