@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-26 15:58+0000\n"
 "PO-Revision-Date: 2024-03-28 14:52+0000\n"
-"Last-Translator: sensei1304fcc0f2a8360f4ddc <sensei1304@gmail.com>\n"
+"Last-Translator: Ostap <ostapbataj79@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -254,7 +254,7 @@ msgstr "Вхід"
 #: data/ui/multiband_gate.ui:514 data/ui/pitch.ui:244 data/ui/reverb.ui:385
 #: data/ui/rnnoise.ui:294 data/ui/speex.ui:209 data/ui/stereo_tools.ui:648
 msgid "Plugin Input Gain"
-msgstr ""
+msgstr "Підсилення входу з додатка"
 
 #: data/ui/autogain.ui:517 data/ui/bass_enhancer.ui:346
 #: data/ui/bass_loudness.ui:49 data/ui/bass_loudness.ui:194
