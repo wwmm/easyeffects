@@ -159,7 +159,7 @@ void on_import_model_clicked(RNNoiseBox* self, GtkButton* btn) {
   gtk_file_dialog_set_title(dialog, _("Import Model File"));
   gtk_file_dialog_set_accept_label(dialog, _("Open"));
 
-  auto* init_folder = g_file_new_for_path(SYSTEM_RNNOISE_DIR);
+  auto* init_folder = g_file_new_for_path(g_get_home_dir());
 
   gtk_file_dialog_set_initial_folder(dialog, init_folder);
 

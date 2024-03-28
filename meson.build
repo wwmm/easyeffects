@@ -45,9 +45,6 @@ libdir = join_paths(prefix, get_option('libdir'))
 datadir = join_paths(prefix, get_option('datadir'))
 localedir = join_paths(prefix, get_option('localedir'))
 include_dir = include_directories('include')
-system_presets_dir = join_paths(datadir, meson.project_name() + '/presets')
-system_irs_dir = join_paths(datadir, meson.project_name() + '/irs')
-system_rnnoise_dir = join_paths(datadir, meson.project_name() + '/rnnoise')
 config_h_dir = include_directories('.')
 
 status = []
@@ -81,9 +78,6 @@ conf.set_quoted('APP_NAME', 'Easy Effects' + name_suffix)
 
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALE_DIR', localedir)
-conf.set_quoted('SYSTEM_PRESETS_DIR', system_presets_dir)
-conf.set_quoted('SYSTEM_IRS_DIR', system_irs_dir)
-conf.set_quoted('SYSTEM_RNNOISE_DIR', system_rnnoise_dir)
 conf.set_quoted('LIB_DIR', libdir)
 conf.set_quoted('VERSION', meson.project_version())
 
@@ -105,10 +99,6 @@ subdir('data')
 subdir('po')
 subdir('help')
 subdir('src')
-
-install_emptydir(system_presets_dir)
-install_emptydir(system_irs_dir)
-install_emptydir(system_rnnoise_dir)
 
 gnome_mod.post_install(
   glib_compile_schemas: true,
