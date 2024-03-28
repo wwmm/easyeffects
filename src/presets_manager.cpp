@@ -394,7 +394,7 @@ auto PresetsManager::get_community_preset_info(const PresetType& preset_type, co
     // Get the subdirectory/package.
     // - Full match: "/pack_name"
     // - Group 1: "pack_name"
-    std::regex_search(path.begin() + cp_dir_size, path.cend(), pack_match, re_pack_name);
+    std::regex_search(path.cbegin() + cp_dir_size, path.cend(), pack_match, re_pack_name);
 
     // Skip if the match failed.
     if (pack_match.size() != 2U) {
@@ -404,7 +404,7 @@ auto PresetsManager::get_community_preset_info(const PresetType& preset_type, co
     // Extract the preset name.
     std::smatch name_match;
 
-    std::regex_search(path.begin() + cp_dir_size, path.cend(), name_match, re_preset_name);
+    std::regex_search(path.cbegin() + cp_dir_size, path.cend(), name_match, re_preset_name);
 
     // Skip if the match failed.
     if (name_match.size() != 1U) {

@@ -28,6 +28,7 @@
 #include <gtk/gtk.h>
 #include <gtk/gtkshortcut.h>
 #include <sigc++/connection.h>
+#include <regex>
 #include <string>
 #include <vector>
 #include "application.hpp"
@@ -66,6 +67,10 @@ struct _PresetsMenu {
   GtkLabel* last_used_name;
 
   GtkStringList *presets_list_local, *presets_list_community;
+
+  GtkSearchEntry* search_community;
+
+  GtkStringFilter* filter_string_community;
 
   GSettings* settings;
 
@@ -553,6 +558,26 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
 
     g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
   }
+
+  // TODO: This has to be fixed because it's not working.
+  // Set custom expression to search only on community presets filename ignoring the full path.
+  gtk_string_filter_set_expression(
+      self->filter_string_community,
+      gtk_cclosure_expression_new(
+          G_TYPE_STRING, nullptr, 0, nullptr, G_CALLBACK(+[](gpointer object) {
+            auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(object), "string-object"));
+
+            const std::string preset_path{gtk_string_object_get_string(string_object)};
+
+            static const auto re_preset_name = std::regex(R"([^/]+$)");
+
+            std::smatch name_match;
+
+            std::regex_search(preset_path.cbegin(), preset_path.cend(), name_match, re_preset_name);
+
+            return (name_match.size() == 1U) ? name_match.str(0).c_str() : "";
+          }),
+          nullptr, nullptr));
 }
 
 void show(GtkWidget* widget) {
@@ -618,6 +643,8 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window_community);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview_local);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview_community);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, search_community);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, filter_string_community);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, new_preset_name);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_name);
 

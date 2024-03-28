@@ -82,7 +82,7 @@
                                                 <property name="hexpand">1</property>
                                                 <property name="placeholder-text" translatable="yes">Search</property>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Search Preset</property>
+                                                    <property name="label" translatable="yes">Search Local Preset</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -176,6 +176,17 @@
                                         <property name="orientation">vertical</property>
                                         <property name="spacing">12</property>
                                         <child>
+                                            <object class="GtkSearchEntry" id="search_community">
+                                                <property name="valign">start</property>
+                                                <property name="hexpand">1</property>
+                                                <property name="placeholder-text" translatable="yes">Search</property>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Search Community Preset</property>
+                                                </accessibility>
+                                            </object>
+                                        </child>
+
+                                        <child>
                                             <object class="GtkFrame">
                                                 <property name="hexpand">1</property>
                                                 <property name="vexpand">1</property>
@@ -200,6 +211,12 @@
 
                                                                                         <property name="model">
                                                                                             <object class="GtkStringList" id="presets_list_community"></object>
+                                                                                        </property>
+
+                                                                                        <property name="filter">
+                                                                                            <object class="GtkStringFilter" id="filter_string_community">
+                                                                                                <property name="search" bind-source="search_community" bind-property="text" />
+                                                                                            </object>
                                                                                         </property>
                                                                                     </object>
                                                                                 </property>
