@@ -22,7 +22,7 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <glib/gi18n.h>
-#include <algorithm>
+#include <sys/types.h>
 #include <exception>
 #include <filesystem>
 #include <fstream>
@@ -35,6 +35,7 @@
 #include <stdexcept>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <vector>
 #include "autogain_preset.hpp"
 #include "bass_enhancer_preset.hpp"

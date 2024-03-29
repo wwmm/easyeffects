@@ -26,13 +26,14 @@
 #include <glibconfig.h>
 #include <gobject/gobject.h>
 #include <gtk/gtk.h>
+#include <gtk/gtkexpression.h>
 #include <gtk/gtkshortcut.h>
+#include <gtk/gtkstringfilter.h>
 #include <sigc++/connection.h>
 #include <regex>
 #include <string>
 #include <vector>
 #include "application.hpp"
-#include "config.h"
 #include "preset_type.hpp"
 #include "tags_app.hpp"
 #include "tags_resources.hpp"
@@ -602,7 +603,7 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
 
             std::regex_search(preset_path.cbegin(), preset_path.cend(), name_match, re_preset_name);
 
-            return (name_match.size() == 1U) ? name_match.str(0).c_str() : "";
+            return (name_match.size() == 1U) ? g_strdup(name_match.str(0).c_str()) : "";
           }),
           nullptr, nullptr));
 }
