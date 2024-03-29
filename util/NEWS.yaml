@@ -2,6 +2,20 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
+Description: 
+- Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 7.1.6
+Date: 2024-03-29
+
 Description:
 - Features∶
 - Improved the pipeline management system. Non-limiter effects are placed before the limiter even if the last two plugins in the pipeline are a limiter followed by a level meter.
@@ -10,7 +24,6 @@ Description:
 - Fixed a regression that prevented the level meters to be updated under certain conditions.
 
 - Other notes∶
--
 
 ---
 Version: 7.1.5
