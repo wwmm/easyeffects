@@ -172,50 +172,47 @@ void setup_community_presets_listview(PresetsMenu* self,
 
   // setting the factory callbacks
 
-  g_signal_connect(factory, "setup",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
-                     auto builder = gtk_builder_new_from_resource(tags::resources::preset_row_community_ui);
+  g_signal_connect(
+      factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
+        auto builder = gtk_builder_new_from_resource(tags::resources::preset_row_community_ui);
 
-                     auto* top_box = gtk_builder_get_object(builder, "top_box");
+        auto* top_box = gtk_builder_get_object(builder, "top_box");
 
-                     auto* name = gtk_builder_get_object(builder, "name");
-                     auto* package = gtk_builder_get_object(builder, "package");
+        auto* name = gtk_builder_get_object(builder, "name");
+        auto* package = gtk_builder_get_object(builder, "package");
 
-                     auto* try_bt = gtk_builder_get_object(builder, "try");
-                     auto* import = gtk_builder_get_object(builder, "import");
+        auto* try_bt = gtk_builder_get_object(builder, "try");
+        auto* import = gtk_builder_get_object(builder, "import");
 
-                     g_object_set_data(G_OBJECT(item), "name", name);
-                     g_object_set_data(G_OBJECT(item), "package", package);
-                     g_object_set_data(G_OBJECT(item), "try", try_bt);
-                     g_object_set_data(G_OBJECT(item), "import", import);
+        g_object_set_data(G_OBJECT(item), "name", name);
+        g_object_set_data(G_OBJECT(item), "package", package);
+        g_object_set_data(G_OBJECT(item), "try", try_bt);
+        g_object_set_data(G_OBJECT(item), "import", import);
 
-                     gtk_list_item_set_activatable(item, 0);
-                     gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+        gtk_list_item_set_activatable(item, 0);
+        gtk_list_item_set_child(item, GTK_WIDGET(top_box));
 
-                     g_signal_connect(try_bt, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
-                                        if (auto* string_object =
-                                                GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object"));
-                                            string_object != nullptr) {
-                                          auto* preset_path = gtk_string_object_get_string(string_object);
+        g_signal_connect(
+            try_bt, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
+              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object"));
+                  string_object != nullptr) {
+                auto* preset_path = gtk_string_object_get_string(string_object);
 
-                                          if constexpr (preset_type == PresetType::output) {
-                                            if (self->data->application->presets_manager->load_community_preset_file(
-                                                    PresetType::output, preset_path)) {
-                                              g_settings_reset(self->settings, "last-used-output-preset");
-                                            } else if constexpr (preset_type == PresetType::input) {
-                                              if (self->data->application->presets_manager->load_community_preset_file(
-                                                      PresetType::input, preset_path)) {
-                                                g_settings_reset(self->settings, "last-used-input-preset");
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }),
-                                      self);
+                if (!self->data->application->presets_manager->load_community_preset_file(preset_type, preset_path)) {
+                  return;
+                }
 
-                     g_object_unref(builder);
-                   }),
-                   self);
+                const auto* last_used_key =
+                    (preset_type == PresetType::input) ? "last-used-input-preset" : "last-used-output-preset";
+
+                g_settings_reset(self->settings, last_used_key);
+              }
+            }),
+            self);
+
+        g_object_unref(builder);
+      }),
+      self);
 
   g_signal_connect(factory, "bind",
                    G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, PresetsMenu* self) {
