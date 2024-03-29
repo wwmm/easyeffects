@@ -31,6 +31,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
 #include <ostream>
+#include <regex>
 #include <stdexcept>
 #include <string>
 #include <string_view>
@@ -71,7 +72,6 @@
 
 PresetsManager::PresetsManager()
     : user_config_dir(g_get_user_config_dir()),
-      user_presets_dir(user_config_dir + "/easyeffects/"),
       user_input_dir(user_config_dir + "/easyeffects/input"),
       user_output_dir(user_config_dir + "/easyeffects/output"),
       autoload_input_dir(user_config_dir + "/easyeffects/autoload/input"),
@@ -79,9 +79,21 @@ PresetsManager::PresetsManager()
       settings(g_settings_new(tags::app::id)),
       soe_settings(g_settings_new(tags::schema::id_output)),
       sie_settings(g_settings_new(tags::schema::id_input)) {
-  // user presets directories
+  // initialize input and output directories for community presets
 
-  create_user_directory(user_presets_dir);
+  const gchar* const* xdg_data_dirs = g_get_system_data_dirs();
+
+  while (*xdg_data_dirs != nullptr) {
+    std::string dir = *xdg_data_dirs++;
+
+    dir += dir.ends_with("/") ? "" : "/";
+
+    system_data_dir_input.push_back(dir + "easyeffects/input");
+    system_data_dir_output.push_back(dir + "easyeffects/output");
+  }
+
+  // create user presets directories
+
   create_user_directory(user_input_dir);
   create_user_directory(user_output_dir);
   create_user_directory(autoload_input_dir);
@@ -223,18 +235,20 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
   util::warning("failed to create user presets directory: " + path.string());
 }
 
-auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<std::string> {
-  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+auto PresetsManager::get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string> {
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  std::vector<std::string> names;
-  std::filesystem::directory_iterator it = std::filesystem::directory_iterator{user_dir};
+  auto it = std::filesystem::directory_iterator{conf_dir};
 
-  const auto vn = search_names(it);
-  names.insert(names.end(), vn.begin(), vn.end());
+  auto names = search_names(it);
 
-  // removing duplicates
-  std::sort(names.begin(), names.end());
-  names.erase(std::unique(names.begin(), names.end()), names.end());
+  // Sort alphabetically not needed anymore because
+  // the GtkSortListModel does it already.
+  // std::sort(names.begin(), names.end());
+
+  // Removing duplicates not needed anymore because
+  // we get the presets from a single folder.
+  // names.erase(std::unique(names.begin(), names.end()), names.end());
 
   return names;
 }
@@ -244,10 +258,8 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status())) {
-        if (it->path().extension().c_str() == json_ext) {
-          names.emplace_back(it->path().stem().c_str());
-        }
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
+        names.emplace_back(it->path().stem().c_str());
       }
 
       ++it;
@@ -260,13 +272,152 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
 }
 
 void PresetsManager::add(const PresetType& preset_type, const std::string& name) {
-  for (const auto& p : get_names(preset_type)) {
+  for (const auto& p : get_local_presets_name(preset_type)) {
     if (p == name) {
       return;
     }
   }
 
   save_preset_file(preset_type, name);
+}
+
+auto PresetsManager::get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string> {
+  std::vector<std::string> cp_paths;
+
+  const auto scan_level = 2U;
+
+  const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
+
+  for (const auto& cp_dir : cp_dir_vect) {
+    auto cp_fs_path = std::filesystem::path{cp_dir};
+
+    if (!std::filesystem::exists(cp_fs_path)) {
+      continue;
+    }
+
+    // Scan community package directories for 2 levels (the folder itself and only its subfolders).
+    auto it = std::filesystem::directory_iterator{cp_fs_path};
+
+    try {
+      while (it != std::filesystem::directory_iterator{}) {
+        if (auto package_path = it->path(); std::filesystem::is_directory(it->status())) {
+          const auto package_path_name = package_path.string();
+
+          util::debug("scan directory for community presets: " + package_path_name);
+
+          auto package_it = std::filesystem::directory_iterator{package_path};
+
+          /* When C++23 is available, the following line is enough:
+          cp_paths.append_range(
+              scan_community_package_recursive(package_it, scan_level, package_path_name));
+          */
+
+          const auto sub_cp_vect = scan_community_package_recursive(package_it, scan_level, package_path_name);
+
+          cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+        }
+
+        ++it;
+      }
+    } catch (const std::exception& e) {
+      util::warning(e.what());
+    }
+  }
+
+  return cp_paths;
+}
+
+auto PresetsManager::scan_community_package_recursive(std::filesystem::directory_iterator& it,
+                                                      const uint& top_scan_level,
+                                                      const std::string& origin) -> std::vector<std::string> {
+  const auto scan_level = top_scan_level - 1U;
+
+  std::vector<std::string> cp_paths;
+
+  try {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
+        cp_paths.emplace_back(origin + "/" + it->path().stem().c_str());
+      } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
+        if (auto path = it->path(); !path.empty()) {
+          auto subdir_it = std::filesystem::directory_iterator{path};
+
+          /* When C++23 is available, the following line is enough:
+          cp_paths.append_range(scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str()));
+          */
+
+          const auto sub_cp_vect = scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str());
+
+          cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+        }
+      }
+
+      ++it;
+    }
+  } catch (const std::exception& e) {
+    util::warning(e.what());
+  }
+
+  return cp_paths;
+}
+
+auto PresetsManager::get_community_preset_info(const PresetType& preset_type, const std::string& path)
+    -> std::pair<std::string, std::string> {
+  // Given the full path of a community preset, extract and return:
+  // 1. the preset name
+  // 2. the package name
+
+  static const auto re_pack_name = std::regex(R"(^\/([^/]+))");
+  static const auto re_preset_name = std::regex(R"([^/]+$)");
+
+  const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
+
+  for (const auto& cp_dir : cp_dir_vect) {
+    // In order to extract the package name, let's check if
+    // the preset belongs to the selected system data directory.
+
+    const auto cp_dir_size = cp_dir.size();
+
+    // Skip if the lenght of the path is shorter than `cp_dir + "/"`.
+    if (path.size() <= cp_dir_size + 1U) {
+      continue;
+    }
+
+    // Check if the preset is contained in the selected system data directory.
+    if (!path.starts_with(cp_dir)) {
+      continue;
+    }
+
+    // Extract the package name.
+    std::smatch pack_match;
+
+    // Get the subdirectory/package.
+    // - Full match: "/pack_name"
+    // - Group 1: "pack_name"
+    std::regex_search(path.cbegin() + cp_dir_size, path.cend(), pack_match, re_pack_name);
+
+    // Skip if the match failed.
+    if (pack_match.size() != 2U) {
+      continue;
+    }
+
+    // Extract the preset name.
+    std::smatch name_match;
+
+    std::regex_search(path.cbegin() + cp_dir_size, path.cend(), name_match, re_preset_name);
+
+    // Skip if the match failed.
+    if (name_match.size() != 1U) {
+      continue;
+    }
+
+    return std::make_pair(name_match.str(0), pack_match.str(1));
+  }
+
+  util::warning("can't extract info strings for the community preset: " + path);
+
+  // Placeholders in case of issues
+  return std::make_pair(std::string(_("Community Preset")), std::string(_("Package")));
 }
 
 void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::json& json) {
@@ -425,9 +576,9 @@ void PresetsManager::write_plugins_preset(const PresetType& preset_type,
 void PresetsManager::remove(const PresetType& preset_type, const std::string& name) {
   std::filesystem::path preset_file;
 
-  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  preset_file = user_dir / std::filesystem::path{name + json_ext};
+  preset_file = conf_dir / std::filesystem::path{name + json_ext};
 
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
@@ -436,147 +587,101 @@ void PresetsManager::remove(const PresetType& preset_type, const std::string& na
   }
 }
 
-auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
+auto PresetsManager::load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+
+  const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
+
+  // Check preset existence
+  if (std::filesystem::exists(input_file)) {
+    return load_preset_file(preset_type, input_file);
+  }
+
+  util::debug("can't find the local preset \"" + name + "\" on the filesystem");
+
+  return false;
+}
+
+auto PresetsManager::load_community_preset_file(const PresetType& preset_type, const std::string& full_path) -> bool {
+  const auto input_file = std::filesystem::path{full_path + json_ext};
+
+  // Check preset existence
+  if (!std::filesystem::exists(input_file)) {
+    util::warning("the community preset \"" + full_path + "\" does not exist on the filesystem");
+
+    return false;
+  }
+
+  return load_preset_file(preset_type, input_file);
+}
+
+auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool {
   nlohmann::json json;
 
   std::vector<std::string> plugins;
 
-  std::vector<std::filesystem::path> conf_dirs;
-
-  std::filesystem::path input_file;
-
-  auto preset_found = false;
-
-  // Load the plugin order based on the input/output pipeline.
-  switch (preset_type) {
-    case PresetType::output: {
-      conf_dirs.push_back(user_output_dir);
-
-      for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + json_ext};
-
-        if (std::filesystem::exists(input_file)) {
-          preset_found = true;
-
-          break;
-        }
-      }
-
-      if (preset_found) {
-        try {
-          std::ifstream is(input_file);
-
-          is >> json;
-
-          for (const auto& p : json.at("output").at("plugins_order").get<std::vector<std::string>>()) {
-            for (const auto& v : tags::plugin_name::list) {
-              if (p.starts_with(v)) {
-                /*
-                  Old format presets do not have the instance id number in the filter names. They are equal to the
-                  base name.
-                */
-
-                if (p != v) {
-                  plugins.push_back(p);
-                } else {
-                  plugins.push_back(p + "#0");
-                }
-
-                break;
-              }
-            }
-          }
-
-        } catch (const nlohmann::json::exception& e) {
-          notify_error(PresetError::pipeline_format);
-
-          util::warning(e.what());
-
-          return false;
-        } catch (...) {
-          notify_error(PresetError::pipeline_generic);
-
-          return false;
-        }
-
-        g_settings_set_strv(soe_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
-      } else {
-        util::debug("can't find the preset " + name + " on the filesystem");
-
-        return false;
-      }
-
-      break;
-    }
-    case PresetType::input: {
-      conf_dirs.push_back(user_input_dir);
-
-      for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + json_ext};
-
-        if (std::filesystem::exists(input_file)) {
-          preset_found = true;
-
-          break;
-        }
-      }
-
-      if (preset_found) {
-        try {
-          std::ifstream is(input_file);
-
-          is >> json;
-
-          for (const auto& p : json.at("input").at("plugins_order").get<std::vector<std::string>>()) {
-            for (const auto& v : tags::plugin_name::list) {
-              if (p.starts_with(v)) {
-                /*
-                  Old format presets do not have the instance id number in the filter names. They are equal to the
-                  base name.
-                */
-
-                if (p != v) {
-                  plugins.push_back(p);
-                } else {
-                  plugins.push_back(p + "#0");
-                }
-
-                break;
-              }
-            }
-          }
-
-        } catch (const nlohmann::json::exception& e) {
-          notify_error(PresetError::pipeline_format);
-
-          util::warning(e.what());
-
-          return false;
-        } catch (...) {
-          notify_error(PresetError::pipeline_generic);
-
-          return false;
-        }
-
-        g_settings_set_strv(sie_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
-      } else {
-        util::debug("can't find the preset " + name + " on the filesystem");
-
-        return false;
-      }
-
-      break;
-    }
+  // Read effects_pipeline
+  if (!read_effects_pipeline_from_preset(preset_type, input_file, json, plugins)) {
+    return false;
   }
 
-  // After the plugin order list, load the blocklist and then apply the parameters of the loaded plugins.
+  // After the plugin order list, load the blocklist and then
+  // apply the parameters of the loaded plugins.
   if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
-    util::debug("successfully loaded preset: " + input_file.string());
+    util::debug("successfully loaded the preset: " + input_file.string());
 
     return true;
   }
 
   return false;
+}
+
+auto PresetsManager::read_effects_pipeline_from_preset(const PresetType& preset_type,
+                                                       const std::filesystem::path& input_file,
+                                                       nlohmann::json& json,
+                                                       std::vector<std::string>& plugins) -> bool {
+  const auto preset_type_str = (preset_type == PresetType::input) ? "input" : "output";
+
+  GSettings* settings = (preset_type == PresetType::input) ? sie_settings : soe_settings;
+
+  try {
+    std::ifstream is(input_file);
+
+    is >> json;
+
+    for (const auto& p : json.at(preset_type_str).at("plugins_order").get<std::vector<std::string>>()) {
+      for (const auto& v : tags::plugin_name::list) {
+        if (p.starts_with(v)) {
+          /*
+            Old format presets do not have the instance id number in the filter names. They are equal to the
+            base name.
+          */
+
+          if (p != v) {
+            plugins.push_back(p);
+          } else {
+            plugins.push_back(p + "#0");
+          }
+
+          break;
+        }
+      }
+    }
+  } catch (const nlohmann::json::exception& e) {
+    notify_error(PresetError::pipeline_format);
+
+    util::warning(e.what());
+
+    return false;
+  } catch (...) {
+    notify_error(PresetError::pipeline_generic);
+
+    return false;
+  }
+
+  g_settings_set_strv(settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
+
+  return true;
 }
 
 auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
@@ -605,7 +710,9 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
   return true;
 }
 
-void PresetsManager::import(const PresetType& preset_type, const std::string& file_path) {
+void PresetsManager::import_from_filesystem(const PresetType& preset_type, const std::string& file_path) {
+  // When importing presets from the filesystem, we overwrite the file if it already exists.
+
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
@@ -618,15 +725,75 @@ void PresetsManager::import(const PresetType& preset_type, const std::string& fi
     return;
   }
 
-  std::filesystem::path out_path;
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const std::filesystem::path out_path = conf_dir / p.filename();
 
-  out_path = user_dir / p.filename();
+  try {
+    std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
-  std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+    util::debug("imported preset to: " + out_path.string());
+  } catch (const std::exception& e) {
+    util::warning("can't import preset to: " + out_path.string());
+    util::warning(e.what());
+  }
+}
 
-  util::debug("imported preset to: " + out_path.string());
+void PresetsManager::import_from_community_package(const PresetType& preset_type, const std::string& file_path) {
+  // When importing presets from a community package, we do NOT overwrite
+  // the local preset if it has the same name.
+
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::exists(p)) {
+    util::warning(p.string() + " does not exist! Please reload the community preset list");
+
+    return;
+  }
+
+  if (!std::filesystem::is_regular_file(p)) {
+    util::warning(p.string() + " is not a file! Please reload the community preset list");
+
+    return;
+  }
+
+  if (p.extension().c_str() != json_ext) {
+    return;
+  }
+
+  // We limit the max copy attempts in order to not flood the local directory
+  // if the user keeps clicking the import button.
+  uint i = 0U;
+
+  static const auto max_copy_attempts = 10;
+
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir.string() : user_input_dir.string();
+
+  try {
+    do {
+      // In case of destination file already existing, we try to append
+      // an incremental numeric suffix.
+      const auto suffix = (i == 0U) ? "" : "-" + util::to_string(i);
+
+      const std::filesystem::path out_path = conf_dir + "/" + p.stem().c_str() + suffix + json_ext;
+
+      if (!std::filesystem::exists(out_path)) {
+        std::filesystem::copy_file(p, out_path);
+
+        util::debug("successfully imported the community preset to: " + out_path.string());
+
+        return;
+      }
+    } while (++i < max_copy_attempts);
+
+    util::warning("can't import the community preset: " + p.string());
+
+    util::warning("exceeded the maximum copy attempts; please delete or rename your local preset");
+  } catch (const std::exception& e) {
+    util::warning("can't import the community preset: " + p.string());
+
+    util::warning(e.what());
+  }
 }
 
 void PresetsManager::add_autoload(const PresetType& preset_type,
@@ -731,7 +898,7 @@ void PresetsManager::autoload(const PresetType& preset_type,
 
   const auto* key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
 
-  if (load_preset_file(preset_type, name)) {
+  if (load_local_preset_file(preset_type, name)) {
     g_settings_set_string(settings, key, name.c_str());
   } else {
     g_settings_reset(settings, key);
@@ -780,39 +947,11 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
 }
 
 auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool {
-  std::filesystem::path input_file;
-  std::vector<std::filesystem::path> conf_dirs;
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  switch (preset_type) {
-    case PresetType::output: {
-      conf_dirs.push_back(user_output_dir);
+  const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
 
-      for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + json_ext};
-
-        if (std::filesystem::exists(input_file)) {
-          return true;
-        }
-      }
-
-      break;
-    }
-    case PresetType::input: {
-      conf_dirs.push_back(user_input_dir);
-
-      for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + json_ext};
-
-        if (std::filesystem::exists(input_file)) {
-          return true;
-        }
-      }
-
-      break;
-    }
-  }
-
-  return false;
+  return std::filesystem::exists(input_file);
 }
 
 void PresetsManager::notify_error(const PresetError& preset_error, const std::string& plugin_name) {

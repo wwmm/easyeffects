@@ -282,7 +282,7 @@ void application_class_init(ApplicationClass* klass) {
     if (g_variant_dict_contains(options, "presets") != 0) {
       std::string list;
 
-      for (const auto& name : self->presets_manager->get_names(PresetType::output)) {
+      for (const auto& name : self->presets_manager->get_local_presets_name(PresetType::output)) {
         list += name + ",";
       }
 
@@ -290,7 +290,7 @@ void application_class_init(ApplicationClass* klass) {
 
       list = "";
 
-      for (const auto& name : self->presets_manager->get_names(PresetType::input)) {
+      for (const auto& name : self->presets_manager->get_local_presets_name(PresetType::input)) {
         list += name + ",";
       }
 
@@ -337,7 +337,7 @@ void application_class_init(ApplicationClass* klass) {
 
       if (g_variant_dict_lookup(options, "load-preset", "&s", &name) != 0) {
         if (self->presets_manager->preset_file_exists(PresetType::input, name)) {
-          if (self->presets_manager->load_preset_file(PresetType::input, name)) {
+          if (self->presets_manager->load_local_preset_file(PresetType::input, name)) {
             g_settings_set_string(self->settings, "last-used-input-preset", name);
           } else {
             g_settings_reset(self->settings, "last-used-input-preset");
@@ -347,7 +347,7 @@ void application_class_init(ApplicationClass* klass) {
         }
 
         if (self->presets_manager->preset_file_exists(PresetType::output, name)) {
-          if (self->presets_manager->load_preset_file(PresetType::output, name)) {
+          if (self->presets_manager->load_local_preset_file(PresetType::output, name)) {
             g_settings_set_string(self->settings, "last-used-output-preset", name);
           } else {
             g_settings_reset(self->settings, "last-used-output-preset");

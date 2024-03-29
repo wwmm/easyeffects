@@ -49,10 +49,21 @@ class PresetsManager {
     plugin_generic
   };
 
+  const std::string json_ext = ".json";
+
   // signal sending title and description strings
   sigc::signal<void(const std::string, const std::string)> preset_load_error;
 
-  auto get_names(const PresetType& preset_type) -> std::vector<std::string>;
+  auto get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string>;
+
+  auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
+                                        const uint& top_scan_level,
+                                        const std::string& origin = "") -> std::vector<std::string>;
+
+  auto get_community_preset_info(const PresetType& preset_type, const std::string& path)
+      -> std::pair<std::string, std::string>;
+
+  auto get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string>;
 
   auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
 
@@ -66,13 +77,22 @@ class PresetsManager {
 
   void remove(const PresetType& preset_type, const std::string& name);
 
-  auto load_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
+  auto load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
+
+  auto load_community_preset_file(const PresetType& preset_type, const std::string& full_path) -> bool;
+
+  auto read_effects_pipeline_from_preset(const PresetType& preset_type,
+                                         const std::filesystem::path& input_file,
+                                         nlohmann::json& json,
+                                         std::vector<std::string>& plugins) -> bool;
 
   auto read_plugins_preset(const PresetType& preset_type,
                            const std::vector<std::string>& plugins,
                            const nlohmann::json& json) -> bool;
 
-  void import(const PresetType& preset_type, const std::string& file_path);
+  void import_from_filesystem(const PresetType& preset_type, const std::string& file_path);
+
+  void import_from_community_package(const PresetType& preset_type, const std::string& file_path);
 
   void add_autoload(const PresetType& preset_type,
                     const std::string& preset_name,
@@ -103,11 +123,11 @@ class PresetsManager {
   sigc::signal<void(const std::vector<nlohmann::json>& profiles)> autoload_output_profiles_changed;
 
  private:
-  const std::string json_ext = ".json";
-
   std::string user_config_dir;
 
-  std::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
+  std::filesystem::path user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
+
+  std::vector<std::string> system_data_dir_input, system_data_dir_output;
 
   GSettings *settings = nullptr, *soe_settings = nullptr, *sie_settings = nullptr;
 
@@ -116,6 +136,8 @@ class PresetsManager {
   GFileMonitor *autoload_output_monitor = nullptr, *autoload_input_monitor = nullptr;
 
   static void create_user_directory(const std::filesystem::path& path);
+
+  auto load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool;
 
   void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 

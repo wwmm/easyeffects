@@ -402,7 +402,7 @@ void setup_dropdown_presets(PipeManagerBox* self) {
     string_list = self->input_presets_string_list;
   }
 
-  for (const auto& name : self->data->application->presets_manager->get_names(preset_type)) {
+  for (const auto& name : self->data->application->presets_manager->get_local_presets_name(preset_type)) {
     gtk_string_list_append(string_list, name.c_str());
   }
 

@@ -119,6 +119,8 @@ inline constexpr auto preferences_window_ui = "/com/github/wwmm/easyeffects/ui/p
 
 inline constexpr auto preset_row_ui = "/com/github/wwmm/easyeffects/ui/preset_row.ui";
 
+inline constexpr auto preset_row_community_ui = "/com/github/wwmm/easyeffects/ui/preset_community_row.ui";
+
 inline constexpr auto presets_menu_ui = "/com/github/wwmm/easyeffects/ui/presets_menu.ui";
 
 inline constexpr auto reverb_ui = "/com/github/wwmm/easyeffects/ui/reverb.ui";

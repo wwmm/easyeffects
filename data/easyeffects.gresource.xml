@@ -53,6 +53,7 @@
         <file>ui/preferences_spectrum.ui</file>
         <file>ui/preferences_window.ui</file>
         <file>ui/preset_row.ui</file>
+        <file>ui/preset_community_row.ui</file>
         <file>ui/presets_menu.ui</file>
         <file>ui/reverb.ui</file>
         <file>ui/rnnoise.ui</file>
