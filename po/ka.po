@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-26 15:58+0000\n"
+"POT-Creation-Date: 2024-03-29 19:57-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -94,8 +94,8 @@ msgid "_Quit"
 msgstr ""
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:119 src/presets_menu.cpp:408
-#: src/presets_menu.cpp:419 src/presets_menu.cpp:447 src/presets_menu.cpp:458
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:130 src/presets_menu.cpp:535
+#: src/presets_menu.cpp:546 src/presets_menu.cpp:576 src/presets_menu.cpp:587
 msgid "Presets"
 msgstr "პრესეტები"
 
@@ -223,7 +223,7 @@ msgstr "გამოტანის გაძლიერება"
 #: data/ui/gate.ui:1287 data/ui/level_meter.ui:263 data/ui/limiter.ui:750
 #: data/ui/loudness.ui:150 data/ui/maximizer.ui:109
 #: data/ui/multiband_compressor.ui:495 data/ui/multiband_gate.ui:495
-#: data/ui/pipe_manager_box.ui:327 data/ui/pitch.ui:225 data/ui/reverb.ui:366
+#: data/ui/pipe_manager_box.ui:339 data/ui/pitch.ui:225 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:275 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:629
 msgid "Input"
@@ -271,14 +271,14 @@ msgid "Plugin Output Gain"
 msgstr ""
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:684 data/ui/expander.ui:603
-#: data/ui/gate.ui:817 data/ui/pipe_manager_box.ui:223
-#: data/ui/pipe_manager_box.ui:341
+#: data/ui/gate.ui:817 data/ui/pipe_manager_box.ui:235
+#: data/ui/pipe_manager_box.ui:365
 msgid "Device"
 msgstr "მოწყობილობა"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
-#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:26
+#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:43
 msgid "Name"
 msgstr "სახელი"
 
@@ -286,8 +286,8 @@ msgstr "სახელი"
 msgid "Profile"
 msgstr "პროფილი"
 
-#: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:234
-#: data/ui/pipe_manager_box.ui:352
+#: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:246
+#: data/ui/pipe_manager_box.ui:376
 msgid "Preset"
 msgstr "შაბლონი"
 
@@ -509,14 +509,14 @@ msgstr "გვერდითი"
 #: data/ui/compressor.ui:557 data/ui/delay.ui:38 data/ui/equalizer.ui:219
 #: data/ui/expander.ui:476 data/ui/gate.ui:690 data/ui/level_meter.ui:32
 #: data/ui/multiband_compressor_band.ui:488 data/ui/multiband_gate_band.ui:547
-#: data/ui/pipe_manager_box.ui:546 data/ui/stereo_tools.ui:165
+#: data/ui/pipe_manager_box.ui:570 data/ui/stereo_tools.ui:165
 msgid "Left"
 msgstr "მარცხენა"
 
 #: data/ui/compressor.ui:558 data/ui/delay.ui:128 data/ui/equalizer.ui:246
 #: data/ui/expander.ui:477 data/ui/gate.ui:691 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:489 data/ui/multiband_gate_band.ui:548
-#: data/ui/pipe_manager_box.ui:557 data/ui/stereo_tools.ui:220
+#: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:220
 msgid "Right"
 msgstr "მარჯვენა"
 
@@ -655,7 +655,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:898 data/ui/equalizer_band.ui:192
 #: data/ui/expander.ui:816 data/ui/filter.ui:166 data/ui/gate.ui:1030
-#: data/ui/pipe_manager_box.ui:603
+#: data/ui/pipe_manager_box.ui:627
 msgid "Frequency"
 msgstr "სიხშირე"
 
@@ -715,7 +715,7 @@ msgstr "მრუდი"
 msgid "L"
 msgstr "მხ"
 
-#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:549
+#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:573
 msgid "Left Channel"
 msgstr "მარცხენა არხი"
 
@@ -723,7 +723,7 @@ msgstr "მარცხენა არხი"
 msgid "R"
 msgstr "მჯ"
 
-#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:560
+#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:584
 msgid "Right Channel"
 msgstr "მარჯვენა არხი"
 
@@ -789,7 +789,7 @@ msgid "Import Impulse"
 msgstr ""
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:66
+#: data/ui/presets_menu.ui:83 data/ui/presets_menu.ui:188
 msgid "Search"
 msgstr ""
 
@@ -974,7 +974,7 @@ msgstr ""
 msgid "Sort Bands"
 msgstr ""
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:115
 msgid "Import Preset"
 msgstr "პრესეტის შემოტანა"
 
@@ -1541,96 +1541,102 @@ msgstr ""
 msgid "Presets Autoloading"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:254
+#: data/ui/pipe_manager_box.ui:217 data/ui/pipe_manager_box.ui:347
+msgid ""
+"Only Local Presets can be autoloaded. A Community Preset should be imported "
+"locally in order to be selected and associated to a specific device."
+msgstr ""
+
+#: data/ui/pipe_manager_box.ui:266
 msgid "Output Devices"
 msgstr "გამოტანის მოწყობილობები"
 
-#: data/ui/pipe_manager_box.ui:271 src/application.cpp:289
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:289
 msgid "Output Presets"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:278 data/ui/pipe_manager_box.ui:391
+#: data/ui/pipe_manager_box.ui:290 data/ui/pipe_manager_box.ui:415
 msgid "Create Association"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:291
+#: data/ui/pipe_manager_box.ui:303
 msgid "Add Autoloading Output Preset"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:311
+#: data/ui/pipe_manager_box.ui:323
 msgid "Output Autoloading Presets List"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:372
+#: data/ui/pipe_manager_box.ui:396
 msgid "Input Devices"
 msgstr "შემომტანი მოწყობილობები"
 
-#: data/ui/pipe_manager_box.ui:384 src/application.cpp:297
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:297
 msgid "Input Presets"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:404
+#: data/ui/pipe_manager_box.ui:428
 msgid "Add Autoloading Input Preset"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:423
+#: data/ui/pipe_manager_box.ui:447
 msgid "Input Autoloading Presets List"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:453
+#: data/ui/pipe_manager_box.ui:477
 msgid "Modules"
 msgstr "მოდულები"
 
-#: data/ui/pipe_manager_box.ui:471
+#: data/ui/pipe_manager_box.ui:495
 msgid "Modules List"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:485
+#: data/ui/pipe_manager_box.ui:509
 msgid "Clients"
 msgstr "კლიენტი"
 
-#: data/ui/pipe_manager_box.ui:503
+#: data/ui/pipe_manager_box.ui:527
 msgid "Clients List"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:517
+#: data/ui/pipe_manager_box.ui:541
 msgid "Test Signal"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:522 data/ui/preferences_spectrum.ui:9
+#: data/ui/pipe_manager_box.ui:546 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
 msgid "State"
 msgstr "მდგომარეობა"
 
-#: data/ui/pipe_manager_box.ui:525 data/ui/preferences_spectrum.ui:12
+#: data/ui/pipe_manager_box.ui:549 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr "ჩართულია"
 
-#: data/ui/pipe_manager_box.ui:540
+#: data/ui/pipe_manager_box.ui:564
 msgid "Properties"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:543
+#: data/ui/pipe_manager_box.ui:567
 msgid "Channels"
 msgstr "არხები"
 
-#: data/ui/pipe_manager_box.ui:568
+#: data/ui/pipe_manager_box.ui:592
 msgid "Both"
 msgstr "ორივე"
 
-#: data/ui/pipe_manager_box.ui:572
+#: data/ui/pipe_manager_box.ui:596
 msgid "Both Channels"
 msgstr "ორივე არხი"
 
-#: data/ui/pipe_manager_box.ui:581
+#: data/ui/pipe_manager_box.ui:605
 msgid "Waveform"
 msgstr "ტალღოვანი"
 
-#: data/ui/pipe_manager_box.ui:585
+#: data/ui/pipe_manager_box.ui:609
 msgid "Sine Wave"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:594
+#: data/ui/pipe_manager_box.ui:618
 msgid "White Noise"
 msgstr "თეთრი ხმაური"
 
@@ -1853,43 +1859,79 @@ msgstr "მინიმუმი"
 msgid "Maximum"
 msgstr "მაქსიმუმი"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:223
+#: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:223
 msgid "Load"
 msgstr "ჩატვირთვა"
 
-#: data/ui/preset_row.ui:38
+#: data/ui/preset_row.ui:39
 msgid "Discard the current settings and load this preset"
 msgstr ""
 
-#: data/ui/preset_row.ui:47
+#: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
 msgstr ""
 
-#: data/ui/preset_row.ui:57
+#: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
 msgstr ""
 
-#: data/ui/presets_menu.ui:30
+#: data/ui/presets_menu.ui:26
+msgid "Local"
+msgstr ""
+
+#: data/ui/presets_menu.ui:47
 msgid "New Preset Name"
 msgstr ""
 
-#: data/ui/presets_menu.ui:38
+#: data/ui/presets_menu.ui:55
 msgid "Create a new preset"
 msgstr ""
 
-#: data/ui/presets_menu.ui:52
-msgid "Import a preset"
+#: data/ui/presets_menu.ui:69
+msgid "Import a preset from the local storage"
 msgstr ""
 
-#: data/ui/presets_menu.ui:68
+#: data/ui/presets_menu.ui:85
 #, fuzzy
-msgid "Search Preset"
+msgid "Search Local Preset"
 msgstr "შაბლონი"
 
-#: data/ui/presets_menu.ui:129
+#: data/ui/presets_menu.ui:146
 #, fuzzy
-msgid "Presets List"
+msgid "Local Presets List"
 msgstr "პრესეტები"
+
+#: data/ui/presets_menu.ui:172
+msgid "Community"
+msgstr ""
+
+#: data/ui/presets_menu.ui:190
+#, fuzzy
+msgid "Search Community Preset"
+msgstr "შაბლონი"
+
+#: data/ui/presets_menu.ui:247
+#, fuzzy
+msgid "Community Presets List"
+msgstr "პრესეტები"
+
+#: data/ui/presets_menu.ui:263
+msgid "No Community Presets Installed"
+msgstr ""
+
+#: data/ui/presets_menu.ui:264
+msgid ""
+"Community Presets packages can be installed from Flatpak or the repository "
+"of your favorite distribution."
+msgstr ""
+
+#: data/ui/presets_menu.ui:274
+msgid "Refresh"
+msgstr ""
+
+#: data/ui/presets_menu.ui:275
+msgid "Refresh to show new installed community presets"
+msgstr ""
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2234,7 +2276,7 @@ msgid "Import Impulse File"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:116 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "გახსნა"
 
@@ -2335,41 +2377,51 @@ msgstr "გამოტანის მოწყობილობები"
 msgid "Add"
 msgstr "დამატება"
 
-#: src/presets_menu.cpp:231
+#: src/presets_menu.cpp:356
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:250
+#: src/presets_menu.cpp:375
 msgid "Delete?"
 msgstr ""
 
-#: src/presets_manager.cpp:834 src/presets_manager.cpp:841
-#: src/presets_manager.cpp:850 src/presets_manager.cpp:857
-#: src/presets_manager.cpp:866 src/presets_manager.cpp:874
+#. Placeholders in case of issues
+#: src/presets_manager.cpp:421
+#, fuzzy
+msgid "Community Preset"
+msgstr "პრესეტის შემოტანა"
+
+#: src/presets_manager.cpp:421
+msgid "Package"
+msgstr ""
+
+#: src/presets_manager.cpp:974 src/presets_manager.cpp:981
+#: src/presets_manager.cpp:990 src/presets_manager.cpp:997
+#: src/presets_manager.cpp:1006 src/presets_manager.cpp:1014
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:834
+#: src/presets_manager.cpp:974
 msgid "Wrong Format in Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:841
+#: src/presets_manager.cpp:981
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:850
+#: src/presets_manager.cpp:990
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:857
+#: src/presets_manager.cpp:997
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:867
+#: src/presets_manager.cpp:1007
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:875
+#: src/presets_manager.cpp:1015
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 

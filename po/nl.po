@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-26 15:58+0000\n"
+"POT-Creation-Date: 2024-03-29 19:57-0300\n"
 "PO-Revision-Date: 2024-03-13 07:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -94,8 +94,8 @@ msgid "_Quit"
 msgstr "_Afsluiten"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:119 src/presets_menu.cpp:408
-#: src/presets_menu.cpp:419 src/presets_menu.cpp:447 src/presets_menu.cpp:458
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:130 src/presets_menu.cpp:535
+#: src/presets_menu.cpp:546 src/presets_menu.cpp:576 src/presets_menu.cpp:587
 msgid "Presets"
 msgstr "Voorinstellingen"
 
@@ -224,7 +224,7 @@ msgstr "Uitvoerversterking"
 #: data/ui/gate.ui:1287 data/ui/level_meter.ui:263 data/ui/limiter.ui:750
 #: data/ui/loudness.ui:150 data/ui/maximizer.ui:109
 #: data/ui/multiband_compressor.ui:495 data/ui/multiband_gate.ui:495
-#: data/ui/pipe_manager_box.ui:327 data/ui/pitch.ui:225 data/ui/reverb.ui:366
+#: data/ui/pipe_manager_box.ui:339 data/ui/pitch.ui:225 data/ui/reverb.ui:366
 #: data/ui/rnnoise.ui:275 data/ui/speex.ui:190 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:629
 msgid "Input"
@@ -272,14 +272,14 @@ msgid "Plugin Output Gain"
 msgstr "Plug-in-uitvoerversterking"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:684 data/ui/expander.ui:603
-#: data/ui/gate.ui:817 data/ui/pipe_manager_box.ui:223
-#: data/ui/pipe_manager_box.ui:341
+#: data/ui/gate.ui:817 data/ui/pipe_manager_box.ui:235
+#: data/ui/pipe_manager_box.ui:365
 msgid "Device"
 msgstr "Apparaat"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
-#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:26
+#: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:43
 msgid "Name"
 msgstr "Naam"
 
@@ -287,8 +287,8 @@ msgstr "Naam"
 msgid "Profile"
 msgstr "Profiel"
 
-#: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:234
-#: data/ui/pipe_manager_box.ui:352
+#: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:246
+#: data/ui/pipe_manager_box.ui:376
 msgid "Preset"
 msgstr "Voorinstelling"
 
@@ -509,14 +509,14 @@ msgstr "Zijkant"
 #: data/ui/compressor.ui:557 data/ui/delay.ui:38 data/ui/equalizer.ui:219
 #: data/ui/expander.ui:476 data/ui/gate.ui:690 data/ui/level_meter.ui:32
 #: data/ui/multiband_compressor_band.ui:488 data/ui/multiband_gate_band.ui:547
-#: data/ui/pipe_manager_box.ui:546 data/ui/stereo_tools.ui:165
+#: data/ui/pipe_manager_box.ui:570 data/ui/stereo_tools.ui:165
 msgid "Left"
 msgstr "Links"
 
 #: data/ui/compressor.ui:558 data/ui/delay.ui:128 data/ui/equalizer.ui:246
 #: data/ui/expander.ui:477 data/ui/gate.ui:691 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:489 data/ui/multiband_gate_band.ui:548
-#: data/ui/pipe_manager_box.ui:557 data/ui/stereo_tools.ui:220
+#: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:220
 msgid "Right"
 msgstr "Rechts"
 
@@ -650,7 +650,7 @@ msgstr "High-pass"
 
 #: data/ui/compressor.ui:898 data/ui/equalizer_band.ui:192
 #: data/ui/expander.ui:816 data/ui/filter.ui:166 data/ui/gate.ui:1030
-#: data/ui/pipe_manager_box.ui:603
+#: data/ui/pipe_manager_box.ui:627
 msgid "Frequency"
 msgstr "Frequentie"
 
@@ -710,7 +710,7 @@ msgstr "Kromme"
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:549
+#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:573
 msgid "Left Channel"
 msgstr "Linkerkanaal"
 
@@ -718,7 +718,7 @@ msgstr "Linkerkanaal"
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:560
+#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:584
 msgid "Right Channel"
 msgstr "Rechterkanaal"
 
@@ -784,7 +784,7 @@ msgid "Import Impulse"
 msgstr "Impulse importeren"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:66
+#: data/ui/presets_menu.ui:83 data/ui/presets_menu.ui:188
 msgid "Search"
 msgstr "Zoeken"
 
@@ -969,7 +969,7 @@ msgstr "Frequenties berekenen"
 msgid "Sort Bands"
 msgstr "Banden sorteren"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:105
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:115
 msgid "Import Preset"
 msgstr "Voorinstelling importeren"
 
@@ -1533,96 +1533,102 @@ msgstr "Standaard-quantum"
 msgid "Presets Autoloading"
 msgstr "Automatisch inladen van voorinstellingen"
 
-#: data/ui/pipe_manager_box.ui:254
+#: data/ui/pipe_manager_box.ui:217 data/ui/pipe_manager_box.ui:347
+msgid ""
+"Only Local Presets can be autoloaded. A Community Preset should be imported "
+"locally in order to be selected and associated to a specific device."
+msgstr ""
+
+#: data/ui/pipe_manager_box.ui:266
 msgid "Output Devices"
 msgstr "Uitvoerapparaten"
 
-#: data/ui/pipe_manager_box.ui:271 src/application.cpp:289
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:289
 msgid "Output Presets"
 msgstr "Uitvoervoorinstellingen"
 
-#: data/ui/pipe_manager_box.ui:278 data/ui/pipe_manager_box.ui:391
+#: data/ui/pipe_manager_box.ui:290 data/ui/pipe_manager_box.ui:415
 msgid "Create Association"
 msgstr "Vereniging aanmaken"
 
-#: data/ui/pipe_manager_box.ui:291
+#: data/ui/pipe_manager_box.ui:303
 msgid "Add Autoloading Output Preset"
 msgstr "Automatisch geladen uitvoervoorinstelling toevoegen"
 
-#: data/ui/pipe_manager_box.ui:311
+#: data/ui/pipe_manager_box.ui:323
 msgid "Output Autoloading Presets List"
 msgstr "Lijst van automatisch geladen uitvoervoorinstellingen"
 
-#: data/ui/pipe_manager_box.ui:372
+#: data/ui/pipe_manager_box.ui:396
 msgid "Input Devices"
 msgstr "Invoerapparaten"
 
-#: data/ui/pipe_manager_box.ui:384 src/application.cpp:297
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:297
 msgid "Input Presets"
 msgstr "Invoervoorinstellingen"
 
-#: data/ui/pipe_manager_box.ui:404
+#: data/ui/pipe_manager_box.ui:428
 msgid "Add Autoloading Input Preset"
 msgstr "Automatisch geladen invoervoorinstelling toevoegen"
 
-#: data/ui/pipe_manager_box.ui:423
+#: data/ui/pipe_manager_box.ui:447
 msgid "Input Autoloading Presets List"
 msgstr "Lijst van automatisch geladen invoervoorinstellingen"
 
-#: data/ui/pipe_manager_box.ui:453
+#: data/ui/pipe_manager_box.ui:477
 msgid "Modules"
 msgstr "Modules"
 
-#: data/ui/pipe_manager_box.ui:471
+#: data/ui/pipe_manager_box.ui:495
 msgid "Modules List"
 msgstr "Modulelijst"
 
-#: data/ui/pipe_manager_box.ui:485
+#: data/ui/pipe_manager_box.ui:509
 msgid "Clients"
 msgstr "Cliënten"
 
-#: data/ui/pipe_manager_box.ui:503
+#: data/ui/pipe_manager_box.ui:527
 msgid "Clients List"
 msgstr "Cliëntenlijst"
 
-#: data/ui/pipe_manager_box.ui:517
+#: data/ui/pipe_manager_box.ui:541
 msgid "Test Signal"
 msgstr "Signaal testen"
 
-#: data/ui/pipe_manager_box.ui:522 data/ui/preferences_spectrum.ui:9
+#: data/ui/pipe_manager_box.ui:546 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
 msgid "State"
 msgstr "Status"
 
-#: data/ui/pipe_manager_box.ui:525 data/ui/preferences_spectrum.ui:12
+#: data/ui/pipe_manager_box.ui:549 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: data/ui/pipe_manager_box.ui:540
+#: data/ui/pipe_manager_box.ui:564
 msgid "Properties"
 msgstr "Eigenschappen"
 
-#: data/ui/pipe_manager_box.ui:543
+#: data/ui/pipe_manager_box.ui:567
 msgid "Channels"
 msgstr "Kanalen"
 
-#: data/ui/pipe_manager_box.ui:568
+#: data/ui/pipe_manager_box.ui:592
 msgid "Both"
 msgstr "Beide"
 
-#: data/ui/pipe_manager_box.ui:572
+#: data/ui/pipe_manager_box.ui:596
 msgid "Both Channels"
 msgstr "Beide kanalen"
 
-#: data/ui/pipe_manager_box.ui:581
+#: data/ui/pipe_manager_box.ui:605
 msgid "Waveform"
 msgstr "Golfvorm"
 
-#: data/ui/pipe_manager_box.ui:585
+#: data/ui/pipe_manager_box.ui:609
 msgid "Sine Wave"
 msgstr "Sinusgolf"
 
-#: data/ui/pipe_manager_box.ui:594
+#: data/ui/pipe_manager_box.ui:618
 msgid "White Noise"
 msgstr "Witte ruis"
 
@@ -1843,41 +1849,79 @@ msgstr "Minimaal"
 msgid "Maximum"
 msgstr "Maximaal"
 
-#: data/ui/preset_row.ui:37 src/convolver_menu_impulses.cpp:223
+#: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:223
 msgid "Load"
 msgstr "Laden"
 
-#: data/ui/preset_row.ui:38
+#: data/ui/preset_row.ui:39
 msgid "Discard the current settings and load this preset"
 msgstr "Huidige instellingen verwerpen en deze voorinstelling laden"
 
-#: data/ui/preset_row.ui:47
+#: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
 msgstr "Sla de huidige instellingen op in dit voorinstellingsbestand"
 
-#: data/ui/preset_row.ui:57
+#: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
 msgstr "Verwijder dit voorinstellingsbestand"
 
-#: data/ui/presets_menu.ui:30
+#: data/ui/presets_menu.ui:26
+msgid "Local"
+msgstr ""
+
+#: data/ui/presets_menu.ui:47
 msgid "New Preset Name"
 msgstr "Naam voor nieuwe voor­instelling"
 
-#: data/ui/presets_menu.ui:38
+#: data/ui/presets_menu.ui:55
 msgid "Create a new preset"
 msgstr "Nieuwe voorinstelling aanmaken"
 
-#: data/ui/presets_menu.ui:52
-msgid "Import a preset"
-msgstr "Voorinstelling importeren"
+#: data/ui/presets_menu.ui:69
+msgid "Import a preset from the local storage"
+msgstr ""
 
-#: data/ui/presets_menu.ui:68
-msgid "Search Preset"
+#: data/ui/presets_menu.ui:85
+#, fuzzy
+msgid "Search Local Preset"
 msgstr "Zoek­voorinstelling"
 
-#: data/ui/presets_menu.ui:129
-msgid "Presets List"
+#: data/ui/presets_menu.ui:146
+#, fuzzy
+msgid "Local Presets List"
 msgstr "Lijst met voor­instellingen"
+
+#: data/ui/presets_menu.ui:172
+msgid "Community"
+msgstr ""
+
+#: data/ui/presets_menu.ui:190
+#, fuzzy
+msgid "Search Community Preset"
+msgstr "Uitvoervoorinstellingen doorzoeken"
+
+#: data/ui/presets_menu.ui:247
+#, fuzzy
+msgid "Community Presets List"
+msgstr "Lijst met uitvoervoorinstellingen"
+
+#: data/ui/presets_menu.ui:263
+msgid "No Community Presets Installed"
+msgstr ""
+
+#: data/ui/presets_menu.ui:264
+msgid ""
+"Community Presets packages can be installed from Flatpak or the repository "
+"of your favorite distribution."
+msgstr ""
+
+#: data/ui/presets_menu.ui:274
+msgid "Refresh"
+msgstr ""
+
+#: data/ui/presets_menu.ui:275
+msgid "Refresh to show new installed community presets"
+msgstr ""
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2223,7 +2267,7 @@ msgid "Import Impulse File"
 msgstr "Impulse-bestand importeren"
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:106 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:116 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Openen"
 
@@ -2329,41 +2373,51 @@ msgstr "Uitvoerapparaat"
 msgid "Add"
 msgstr "Toevoegen"
 
-#: src/presets_menu.cpp:231
+#: src/presets_menu.cpp:356
 msgid "Save?"
 msgstr "Opslaan?"
 
-#: src/presets_menu.cpp:250
+#: src/presets_menu.cpp:375
 msgid "Delete?"
 msgstr "Verwijderen?"
 
-#: src/presets_manager.cpp:834 src/presets_manager.cpp:841
-#: src/presets_manager.cpp:850 src/presets_manager.cpp:857
-#: src/presets_manager.cpp:866 src/presets_manager.cpp:874
+#. Placeholders in case of issues
+#: src/presets_manager.cpp:421
+#, fuzzy
+msgid "Community Preset"
+msgstr "Voorinstelling importeren"
+
+#: src/presets_manager.cpp:421
+msgid "Package"
+msgstr ""
+
+#: src/presets_manager.cpp:974 src/presets_manager.cpp:981
+#: src/presets_manager.cpp:990 src/presets_manager.cpp:997
+#: src/presets_manager.cpp:1006 src/presets_manager.cpp:1014
 msgid "Preset Not Loaded Correctly"
 msgstr "Voor­instelling niet correct geladen"
 
-#: src/presets_manager.cpp:834
+#: src/presets_manager.cpp:974
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Verkeerd formaat in lijst met uitgesloten apps"
 
-#: src/presets_manager.cpp:841
+#: src/presets_manager.cpp:981
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Algemene fout bij laden van lijst met uitgesloten apps"
 
-#: src/presets_manager.cpp:850
+#: src/presets_manager.cpp:990
 msgid "Wrong Format in Effects List"
 msgstr "Verkeerd formaat in effecten­lijst"
 
-#: src/presets_manager.cpp:857
+#: src/presets_manager.cpp:997
 msgid "Generic Error While Loading Effects List"
 msgstr "Algemene fout bij laden van effecten­lijst"
 
-#: src/presets_manager.cpp:867
+#: src/presets_manager.cpp:1007
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Een of meer parameters hebben een verkeerd formaat"
 
-#: src/presets_manager.cpp:875
+#: src/presets_manager.cpp:1015
 msgid "Generic Error While Loading The Effect"
 msgstr "Algemene fout bij laden van het effect"
 
@@ -2498,6 +2552,9 @@ msgstr "- ∞"
 msgid "Using {}"
 msgstr "{} wordt gebruikt"
 
+#~ msgid "Import a preset"
+#~ msgstr "Voorinstelling importeren"
+
 #~ msgid "Low-Cut Filter"
 #~ msgstr "Low-cut-filter"
 
@@ -2509,12 +2566,6 @@ msgstr "{} wordt gebruikt"
 
 #~ msgid "New Output Preset Name"
 #~ msgstr "Nieuwe naam voor uitvoervoorinstelling"
-
-#~ msgid "Search Output Preset"
-#~ msgstr "Uitvoervoorinstellingen doorzoeken"
-
-#~ msgid "Output Presets List"
-#~ msgstr "Lijst met uitvoervoorinstellingen"
 
 #~ msgid "infinity"
 #~ msgstr "oneindig"
