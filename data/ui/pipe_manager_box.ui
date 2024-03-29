@@ -209,8 +209,20 @@
                                                 <property name="title" translatable="yes">Output</property>
                                                 <property name="child">
                                                     <object class="GtkBox">
-                                                        <property name="spacing">6</property>
+                                                        <property name="spacing">12</property>
                                                         <property name="orientation">vertical</property>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="halign">center</property>
+                                                                <property name="label" translatable="yes">Only Local Presets can be autoloaded. A Community Preset should be imported locally in order to be selected and associated to a specific device.</property>
+                                                                <property name="wrap">1</property>
+                                                                <property name="wrap-mode">word</property>
+                                                                <style>
+                                                                    <class name="dim-label" />
+                                                                </style>
+                                                            </object>
+                                                        </child>
+
                                                         <child>
                                                             <object class="GtkGrid">
                                                                 <property name="halign">center</property>
@@ -327,8 +339,20 @@
                                                 <property name="title" translatable="yes">Input</property>
                                                 <property name="child">
                                                     <object class="GtkBox">
-                                                        <property name="spacing">6</property>
+                                                        <property name="spacing">12</property>
                                                         <property name="orientation">vertical</property>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="halign">center</property>
+                                                                <property name="label" translatable="yes">Only Local Presets can be autoloaded. A Community Preset should be imported locally in order to be selected and associated to a specific device.</property>
+                                                                <property name="wrap">1</property>
+                                                                <property name="wrap-mode">word</property>
+                                                                <style>
+                                                                    <class name="dim-label" />
+                                                                </style>
+                                                            </object>
+                                                        </child>
+
                                                         <child>
                                                             <object class="GtkGrid">
                                                                 <property name="halign">center</property>
