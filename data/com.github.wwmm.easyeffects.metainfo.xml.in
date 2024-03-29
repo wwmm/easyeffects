@@ -52,6 +52,17 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.1.6" date="2024-03-29T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Improved the pipeline management system. Non-limiter effects are placed before the limiter even if the last two plugins in the pipeline are a limiter followed by a level meter.</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a regression that prevented the level meters to be updated under certain conditions.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.1.5" date="2024-03-22T00:00:00Z">
       <description>
         <ul>

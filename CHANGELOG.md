@@ -1,9 +1,22 @@
 # Changelog
  
+## 7.1.6
+### 2024-03-29
+
+
+### Features:
+- Improved the pipeline management system. Non-limiter effects are placed before the limiter even if the last two plugins in the pipeline are a limiter followed by a level meter.
+
+### Bug fixes:
+- Fixed a regression that prevented the level meters to be updated under certain conditions.
+
+### Other notes:
+
+ 
 ## 7.1.5
 ### 2024-03-22
 
- 
+
 ### Features:
 - We now set `monitor.passthrough = true` in our virtual devices. This will allow latency offset to be properly applied by video players when PipeWire > 1.0.3 is released.
 - Updated translations.
@@ -16,7 +29,7 @@
 ## 7.1.4
 ### 2024-02-01
 
- 
+
 ### Features:
 - EasyEffects will try to avoid moving to its virtual sources streams for which the user has set a custom `target.object` that is different from the mic EE is recording from. THe stream has to be started when EE is already running for this logic to take effect.
 - Updated translations
@@ -33,7 +46,7 @@
 ## 7.1.3
 ### 2023-11-08
 
- 
+
 ### Features:
 - Updated translations
 
@@ -46,7 +59,7 @@
 ## 7.1.2
 ### 2023-11-08
 
- 
+
 ### Features:
 - Updated translations
 
@@ -59,7 +72,7 @@
 ## 7.1.1
 ### 2023-10-27
 
- 
+
 ### Features:
 - The spectrum has a new option that allows the dynamic vertical scale to be disabled.
 - Improved compatibility with the latest LSP releases.
@@ -73,7 +86,7 @@
 ## 7.1.0
 ### 2023-09-07
 
- 
+
 ### Features:
 
 ### Bug fixes:
@@ -85,7 +98,7 @@
 ## 7.0.9
 ### 2023-09-07
 
- 
+
 ### Features:
 - Added a new control to the noise reduction plugin that allows the voice detection to be disabled.
 
@@ -101,7 +114,7 @@
 ### Features:
 - The Filter effect has been improved with new parameters since it has been ported from Calf Studio to Linux Studio Plugins.
 - Noise reduction by RNNoise has been improved with the addition of Release and VAD Threshold controls.
-- Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output to sound too "dry".  
+- Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output to sound too "dry".
 
 ### Bug fixes:
 
