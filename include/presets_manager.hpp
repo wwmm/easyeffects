@@ -49,6 +49,8 @@ class PresetsManager {
     plugin_generic
   };
 
+  const std::string json_ext = ".json";
+
   // signal sending title and description strings
   sigc::signal<void(const std::string, const std::string)> preset_load_error;
 
@@ -90,6 +92,8 @@ class PresetsManager {
 
   void import_from_filesystem(const PresetType& preset_type, const std::string& file_path);
 
+  void import_from_community_package(const PresetType& preset_type, const std::string& file_path);
+
   void add_autoload(const PresetType& preset_type,
                     const std::string& preset_name,
                     const std::string& device_name,
@@ -119,8 +123,6 @@ class PresetsManager {
   sigc::signal<void(const std::vector<nlohmann::json>& profiles)> autoload_output_profiles_changed;
 
  private:
-  const std::string json_ext = ".json";
-
   std::string user_config_dir;
 
   std::filesystem::path user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;

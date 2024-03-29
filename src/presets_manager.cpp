@@ -711,6 +711,8 @@ auto PresetsManager::read_plugins_preset(const PresetType& preset_type,
 }
 
 void PresetsManager::import_from_filesystem(const PresetType& preset_type, const std::string& file_path) {
+  // When importing presets from the filesystem, we overwrite the file if it already exists.
+
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
@@ -723,15 +725,77 @@ void PresetsManager::import_from_filesystem(const PresetType& preset_type, const
     return;
   }
 
-  std::filesystem::path out_path;
-
   const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  out_path = conf_dir / p.filename();
+  const std::filesystem::path out_path = conf_dir / p.filename();
 
-  std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+  try {
+    std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
-  util::debug("imported preset to: " + out_path.string());
+    util::debug("imported preset to: " + out_path.string());
+  } catch (const std::exception& e) {
+    util::warning("can't import preset to: " + out_path.string());
+    util::warning(e.what());
+  }
+}
+
+void PresetsManager::import_from_community_package(const PresetType& preset_type, const std::string& file_path) {
+  // When importing presets from a community package, we do NOT overwrite
+  // the local preset if it has the same name.
+
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::exists(p)) {
+    util::warning(p.string() + " does not exist! Please reload the community preset list");
+
+    return;
+
+    continue;
+  }
+
+  if (!std::filesystem::is_regular_file(p)) {
+    util::warning(p.string() + " is not a file! Please reload the community preset list");
+
+    return;
+  }
+
+  if (p.extension().c_str() != json_ext) {
+    return;
+  }
+
+  // We limit the max copy attempts in order to not flood the local directory
+  // if the user keeps clicking the import button.
+  uint i = 0U;
+
+  static const auto max_copy_attempts = 10;
+
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir.string() : user_input_dir.string();
+
+  try {
+    do {
+      // In case of destination file already existing, we try to append
+      // an incremental numeric suffix.
+      const auto suffix = (i == 0U) ? "" : "-" + util::to_string(i);
+
+      const std::filesystem::path out_path = conf_dir + "/" + p.stem().c_str() + suffix + json_ext;
+
+      if (!std::filesystem::exists(out_path)) {
+        std::filesystem::copy_file(p, out_path);
+
+        util::debug("successfully imported the community preset to: " + out_path.string());
+
+        return;
+      }
+    } while (++i < max_copy_attempts);
+
+    util::warning("can't import the community preset: " + p.string());
+
+    util::warning("exceeded the maximum copy attempts; please delete or rename your local preset");
+  } catch (const std::exception& e) {
+    util::warning("can't import the community preset: " + p.string());
+
+    util::warning(e.what());
+  }
 }
 
 void PresetsManager::add_autoload(const PresetType& preset_type,

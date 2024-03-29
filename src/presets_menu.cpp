@@ -210,6 +210,21 @@ void setup_community_presets_listview(PresetsMenu* self,
             }),
             self);
 
+        g_signal_connect(
+            import, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
+              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object"));
+                  string_object != nullptr) {
+                std::string preset_path = gtk_string_object_get_string(string_object);
+
+                // community presets are indexed by full_path using stem filenames,
+                // so we need to append the json extension.
+                preset_path += self->data->application->presets_manager->json_ext;
+
+                self->data->application->presets_manager->import_from_community_package(preset_type, preset_path);
+              }
+            }),
+            self);
+
         g_object_unref(builder);
       }),
       self);
