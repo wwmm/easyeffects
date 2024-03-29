@@ -72,6 +72,8 @@ struct _PresetsMenu {
 
   GtkStringFilter* filter_string_community;
 
+  GtkButton* refresh_community_list;
+
   GSettings* settings;
 
   Data* data;
@@ -254,13 +256,26 @@ void setup_community_presets_listview(PresetsMenu* self,
                    }),
                    self);
 
+  auto refresh_community_listview = +[](GtkButton* button, PresetsMenu* self) {
+    // Empty the list, if it's populated.
+    if (const auto n_items = g_list_model_get_n_items(G_LIST_MODEL(self->presets_list_community)); n_items != 0U) {
+      gtk_string_list_splice(self->presets_list_community, 0U, n_items, nullptr);
+    }
+
+    // Fill the empty list
+    for (const auto& path : self->data->application->presets_manager->get_all_community_presets_paths(preset_type)) {
+      gtk_string_list_append(self->presets_list_community, path.c_str());
+    }
+  };
+
+  g_signal_connect(self->refresh_community_list, "clicked", G_CALLBACK(refresh_community_listview), self);
+
   gtk_list_view_set_factory(listview_community, factory);
 
   g_object_unref(factory);
 
-  for (const auto& path : self->data->application->presets_manager->get_all_community_presets_paths(preset_type)) {
-    gtk_string_list_append(presets_list_community, path.c_str());
-  }
+  // Initialize the list
+  refresh_community_listview(self->refresh_community_list, self);
 }
 
 template <PresetType preset_type>
@@ -659,6 +674,7 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, filter_string_community);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, new_preset_name);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_name);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, refresh_community_list);
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);
   gtk_widget_class_bind_template_callback(widget_class, import_preset_from_disk);

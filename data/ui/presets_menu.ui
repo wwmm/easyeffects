@@ -266,6 +266,18 @@
                                                     </child>
                                                 </object>
                                             </child>
+
+                                            <child>
+                                                <object class="GtkButton" id="refresh_community_list">
+                                                    <property name="valign">start</property>
+                                                    <property name="halign">center</property>
+                                                    <property name="label" translatable="yes">Refresh</property>
+                                                    <property name="tooltip-text" translatable="yes">Refresh to show new installed community presets</property>
+                                                    <style>
+                                                        <class name="suggested-action" />
+                                                    </style>
+                                                </object>
+                                            </child>
                                     </object>
                                 </property>
                             </object>
