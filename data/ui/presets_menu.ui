@@ -175,77 +175,97 @@
                                     <object class="GtkBox">
                                         <property name="orientation">vertical</property>
                                         <property name="spacing">12</property>
-                                        <child>
-                                            <object class="GtkSearchEntry" id="search_community">
-                                                <property name="valign">start</property>
-                                                <property name="hexpand">1</property>
-                                                <property name="placeholder-text" translatable="yes">Search</property>
-                                                <accessibility>
-                                                    <property name="label" translatable="yes">Search Community Preset</property>
-                                                </accessibility>
-                                            </object>
-                                        </child>
+                                            <child>
+                                                <object class="GtkOverlay" id="overlay_community">
+                                                    <child>
+                                                        <object class="GtkBox">
+                                                            <property name="orientation">vertical</property>
+                                                            <property name="spacing">12</property>
+                                                            <child>
+                                                                <object class="GtkSearchEntry" id="search_community">
+                                                                    <property name="valign">start</property>
+                                                                    <property name="hexpand">1</property>
+                                                                    <property name="placeholder-text" translatable="yes">Search</property>
+                                                                    <accessibility>
+                                                                        <property name="label" translatable="yes">Search Community Preset</property>
+                                                                    </accessibility>
+                                                                </object>
+                                                            </child>
 
-                                        <child>
-                                            <object class="GtkFrame">
-                                                <property name="hexpand">1</property>
-                                                <property name="vexpand">1</property>
-                                                <child>
-                                                    <object class="GtkScrolledWindow" id="scrolled_window_community">
-                                                        <property name="hexpand">1</property>
-                                                        <property name="vexpand">1</property>
-                                                        <property name="propagate-natural-width">1</property>
-                                                        <property name="propagate-natural-height">1</property>
-                                                        <child>
-                                                            <object class="GtkListView" id="listview_community">
-                                                                <property name="hexpand">1</property>
-                                                                <property name="vexpand">1</property>
-                                                                <property name="show-separators">1</property>
-                                                                <property name="model">
-                                                                    <object class="GtkNoSelection">
-                                                                        <property name="model">
-                                                                            <object class="GtkSortListModel">
-                                                                                <property name="model">
-                                                                                    <object class="GtkFilterListModel">
-                                                                                        <property name="incremental">1</property>
+                                                            <child>
+                                                                <object class="GtkFrame">
+                                                                    <property name="hexpand">1</property>
+                                                                    <property name="vexpand">1</property>
+                                                                    <child>
+                                                                        <object class="GtkScrolledWindow" id="scrolled_window_community">
+                                                                            <property name="hexpand">1</property>
+                                                                            <property name="vexpand">1</property>
+                                                                            <property name="propagate-natural-width">1</property>
+                                                                            <property name="propagate-natural-height">1</property>
+                                                                            <child>
+                                                                                <object class="GtkListView" id="listview_community">
+                                                                                    <property name="hexpand">1</property>
+                                                                                    <property name="vexpand">1</property>
+                                                                                    <property name="show-separators">1</property>
+                                                                                    <property name="model">
+                                                                                        <object class="GtkNoSelection">
+                                                                                            <property name="model">
+                                                                                                <object class="GtkSortListModel">
+                                                                                                    <property name="model">
+                                                                                                        <object class="GtkFilterListModel">
+                                                                                                            <property name="incremental">1</property>
 
-                                                                                        <property name="model">
-                                                                                            <object class="GtkStringList" id="presets_list_community"></object>
-                                                                                        </property>
+                                                                                                            <property name="model">
+                                                                                                                <object class="GtkStringList" id="presets_list_community"></object>
+                                                                                                            </property>
 
-                                                                                        <property name="filter">
-                                                                                            <object class="GtkStringFilter" id="filter_string_community">
-                                                                                                <property name="search" bind-source="search_community" bind-property="text" />
-                                                                                            </object>
-                                                                                        </property>
-                                                                                    </object>
-                                                                                </property>
+                                                                                                            <property name="filter">
+                                                                                                                <object class="GtkStringFilter" id="filter_string_community">
+                                                                                                                    <property name="search" bind-source="search_community" bind-property="text" />
+                                                                                                                </object>
+                                                                                                            </property>
+                                                                                                        </object>
+                                                                                                    </property>
 
-                                                                                <property name="sorter">
-                                                                                    <object class="GtkStringSorter">
-                                                                                        <property name="expression">
-                                                                                            <lookup name="string" type="GtkStringObject"></lookup>
-                                                                                        </property>
-                                                                                    </object>
-                                                                                </property>
-                                                                            </object>
-                                                                        </property>
-                                                                    </object>
-                                                                </property>
+                                                                                                    <property name="sorter">
+                                                                                                        <object class="GtkStringSorter">
+                                                                                                            <property name="expression">
+                                                                                                                <lookup name="string" type="GtkStringObject"></lookup>
+                                                                                                            </property>
+                                                                                                        </object>
+                                                                                                    </property>
+                                                                                                </object>
+                                                                                            </property>
+                                                                                        </object>
+                                                                                    </property>
 
-                                                                <style>
-                                                                    <class name="rich-list" />
-                                                                </style>
+                                                                                    <style>
+                                                                                        <class name="rich-list" />
+                                                                                    </style>
 
-                                                                <accessibility>
-                                                                    <property name="label" translatable="yes">Community Presets List</property>
-                                                                </accessibility>
-                                                            </object>
-                                                        </child>
-                                                    </object>
-                                                </child>
-                                            </object>
-                                        </child>
+                                                                                    <accessibility>
+                                                                                        <property name="label" translatable="yes">Community Presets List</property>
+                                                                                    </accessibility>
+                                                                                </object>
+                                                                            </child>
+                                                                        </object>
+                                                                    </child>
+                                                                </object>
+                                                            </child>
+                                                        </object>
+                                                    </child>
+
+                                                    <child type="overlay">
+                                                        <object class="AdwStatusPage" id="overlay_empty_community_list">
+                                                            <!-- TODO: remove visible property when the overlay system is implemented in the C++ code -->
+                                                            <property name="visible">0</property>
+                                                            <property name="icon-name">system-software-install-symbolic</property>
+                                                            <property name="title" translatable="yes">No Community Presets Installed</property>
+                                                            <property name="description" translatable="yes">Community Presets packages can be installed from Flatpak or the repository of your favorite distribution.</property>
+                                                        </object>
+                                                    </child>
+                                                </object>
+                                            </child>
                                     </object>
                                 </property>
                             </object>

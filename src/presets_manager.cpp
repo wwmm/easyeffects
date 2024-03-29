@@ -749,8 +749,6 @@ void PresetsManager::import_from_community_package(const PresetType& preset_type
     util::warning(p.string() + " does not exist! Please reload the community preset list");
 
     return;
-
-    continue;
   }
 
   if (!std::filesystem::is_regular_file(p)) {
