@@ -210,7 +210,7 @@ void setup_listview(RNNoiseBox* self) {
     gtk_string_list_append(self->string_list, name.c_str());
   }
 
-  if (g_list_model_get_n_items(G_LIST_MODEL(self->string_list)) == 0) {
+  if (g_list_model_get_n_items(G_LIST_MODEL(self->string_list)) == 0U) {
     g_settings_set_string(self->settings, "model-path", "");
   }
 }
