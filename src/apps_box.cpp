@@ -88,7 +88,7 @@ auto app_is_blocklisted(AppsBox* self, const std::string& name) -> bool {
 
 void update_empty_list_overlay(AppsBox* self) {
   gtk_widget_set_visible(GTK_WIDGET(self->overlay_empty_list),
-                         (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0) ? 1 : 0);
+                         (g_list_model_get_n_items(G_LIST_MODEL(self->apps_model)) == 0U) ? 1 : 0);
 }
 
 void on_app_added(AppsBox* self, const NodeInfo& node_info) {

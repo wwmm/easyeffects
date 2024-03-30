@@ -61,7 +61,11 @@ struct _PresetsMenu {
 
   GtkScrolledWindow *scrolled_window_local, *scrolled_window_community;
 
+  GtkBox* community_main_box;
+
   GtkListView *listview_local, *listview_community;
+
+  AdwStatusPage* status_page_community_list;
 
   GtkText* new_preset_name;
 
@@ -263,10 +267,23 @@ void setup_community_presets_listview(PresetsMenu* self,
       gtk_string_list_splice(self->presets_list_community, 0U, n_items, nullptr);
     }
 
-    // Fill the empty list
-    for (const auto& path : self->data->application->presets_manager->get_all_community_presets_paths(preset_type)) {
+    const auto cp_paths = self->data->application->presets_manager->get_all_community_presets_paths(preset_type);
+
+    // If there are no paths, show the AdwStatusPage and exit.
+    if (cp_paths.size() == 0U) {
+      gtk_widget_set_visible(GTK_WIDGET(self->community_main_box), 0);
+      gtk_widget_set_visible(GTK_WIDGET(self->status_page_community_list), 1);
+
+      return;
+    }
+
+    // If there are paths, fill the empty list and hide the AdwStatusPage.
+    for (const auto& path : cp_paths) {
       gtk_string_list_append(self->presets_list_community, path.c_str());
     }
+
+    gtk_widget_set_visible(GTK_WIDGET(self->status_page_community_list), 0);
+    gtk_widget_set_visible(GTK_WIDGET(self->community_main_box), 1);
   };
 
   g_signal_connect(self->refresh_community_list, "clicked", G_CALLBACK(refresh_community_listview), self);
@@ -669,13 +686,15 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window_local);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, scrolled_window_community);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview_local);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview_community);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, new_preset_name);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, search_community);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, filter_string_community);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, new_preset_name);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_name);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview_local);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, listview_community);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, community_main_box);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, status_page_community_list);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, refresh_community_list);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_name);
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);
   gtk_widget_class_bind_template_callback(widget_class, import_preset_from_disk);
