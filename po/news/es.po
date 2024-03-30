@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-30 00:22+0000\n"
-"PO-Revision-Date: 2024-03-25 23:01+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"POT-Creation-Date: 2024-03-29 19:57-0300\n"
+"PO-Revision-Date: 2024-03-30 02:32+0000\n"
+"Last-Translator: Eduardo Malaspina <vaio0@swismail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
 "Language: es\n"
@@ -79,6 +79,10 @@ msgstr ""
 "utilizada en la última sesión. También es posible guardar todos los ajustes "
 "actuales como perfiles."
 
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace (wwmm)"
+
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The main page showing two audio output apps"
 msgstr "La página principal mostrando dos aplicaciones de salida de audio"
@@ -136,6 +140,9 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"Se ha mejorado el sistema de gestión de tuberías. Los efectos no limitadores "
+"se colocan antes del limitador, incluso si los dos últimos complementos de "
+"la tubería son un limitador seguido de un medidor de nivel."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
@@ -180,6 +187,8 @@ msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Se ha corregido una regresión que impedía que los medidores de nivel se "
+"actualizaran en determinadas condiciones."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -1534,9 +1543,6 @@ msgid ""
 msgstr ""
 "Se utilizan nuevas bibliotecas y algunas de las que antes eran opcionales "
 "ahora son requeridas"
-
-#~ msgid "Wellington Wallace"
-#~ msgstr "Wellington Wallace (wwmm)"
 
 #~ msgid "This release adds the following features:"
 #~ msgstr "Esta versión añade las siguientes características:"
