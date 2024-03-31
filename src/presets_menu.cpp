@@ -87,6 +87,18 @@ struct _PresetsMenu {
 // NOLINTNEXTLINE
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
 
+auto closure_community_search_filter(PresetsMenu* self, const char* text) -> const char* {
+  const std::string preset_path{text};
+
+  static const auto re_preset_name = std::regex(R"([^/]+$)");
+
+  std::smatch name_match;
+
+  std::regex_search(preset_path.cbegin(), preset_path.cend(), name_match, re_preset_name);
+
+  return (name_match.size() == 1U) ? g_strdup(name_match.str(0).c_str()) : "";
+}
+
 void create_preset(PresetsMenu* self, GtkButton* button) {
   auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(self->new_preset_name)), -1));
 
@@ -270,7 +282,7 @@ void setup_community_presets_listview(PresetsMenu* self,
     const auto cp_paths = self->data->application->presets_manager->get_all_community_presets_paths(preset_type);
 
     // If there are no paths, show the AdwStatusPage and exit.
-    if (cp_paths.size() == 0U) {
+    if (cp_paths.empty()) {
       gtk_widget_set_visible(GTK_WIDGET(self->community_main_box), 0);
       gtk_widget_set_visible(GTK_WIDGET(self->status_page_community_list), 1);
 
@@ -606,23 +618,23 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
 
   // TODO: This has to be fixed because it's not working.
   // Set custom expression to search only on community presets filename ignoring the full path.
-  gtk_string_filter_set_expression(
-      self->filter_string_community,
-      gtk_cclosure_expression_new(
-          G_TYPE_STRING, nullptr, 0, nullptr, G_CALLBACK(+[](gpointer object) {
-            auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(object), "string-object"));
+  // gtk_string_filter_set_expression(
+  //     self->filter_string_community,
+  //     gtk_cclosure_expression_new(
+  //         G_TYPE_STRING, nullptr, 0, nullptr, G_CALLBACK(+[](gpointer object) {
+  //           auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(object), "string-object"));
 
-            const std::string preset_path{gtk_string_object_get_string(string_object)};
+  //           const std::string preset_path{gtk_string_object_get_string(string_object)};
 
-            static const auto re_preset_name = std::regex(R"([^/]+$)");
+  //           static const auto re_preset_name = std::regex(R"([^/]+$)");
 
-            std::smatch name_match;
+  //           std::smatch name_match;
 
-            std::regex_search(preset_path.cbegin(), preset_path.cend(), name_match, re_preset_name);
+  //           std::regex_search(preset_path.cbegin(), preset_path.cend(), name_match, re_preset_name);
 
-            return (name_match.size() == 1U) ? g_strdup(name_match.str(0).c_str()) : "";
-          }),
-          nullptr, nullptr));
+  //           return (name_match.size() == 1U) ? g_strdup(name_match.str(0).c_str()) : "";
+  //         }),
+  //         nullptr, nullptr));
 }
 
 void show(GtkWidget* widget) {
@@ -698,6 +710,7 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);
   gtk_widget_class_bind_template_callback(widget_class, import_preset_from_disk);
+  gtk_widget_class_bind_template_callback(widget_class, closure_community_search_filter);
 }
 
 void presets_menu_init(PresetsMenu* self) {

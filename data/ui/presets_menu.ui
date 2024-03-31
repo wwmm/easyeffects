@@ -221,6 +221,12 @@
                                                                                                 <property name="filter">
                                                                                                     <object class="GtkStringFilter" id="filter_string_community">
                                                                                                         <property name="search" bind-source="search_community" bind-property="text" />
+
+                                                                                                        <property name="expression">
+                                                                                                            <closure type="gchararray" function="closure_community_search_filter">
+                                                                                                                <lookup name="string" type="GtkStringObject"></lookup>
+                                                                                                            </closure>
+                                                                                                        </property>
                                                                                                     </object>
                                                                                                 </property>
                                                                                             </object>
