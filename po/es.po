@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-30 00:22+0000\n"
+"POT-Creation-Date: 2024-03-31 14:19+0000\n"
 "PO-Revision-Date: 2024-03-30 21:01+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -94,8 +94,8 @@ msgid "_Quit"
 msgstr "_Salir"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:130 src/presets_menu.cpp:535
-#: src/presets_menu.cpp:546 src/presets_menu.cpp:576 src/presets_menu.cpp:587
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:134 src/presets_menu.cpp:552
+#: src/presets_menu.cpp:563 src/presets_menu.cpp:593 src/presets_menu.cpp:604
 msgid "Presets"
 msgstr "Perfiles"
 
@@ -783,7 +783,7 @@ msgid "Import Impulse"
 msgstr "Impulso de la importación"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:83 data/ui/presets_menu.ui:188
+#: data/ui/presets_menu.ui:83 data/ui/presets_menu.ui:187
 msgid "Search"
 msgstr "Buscar"
 
@@ -968,7 +968,7 @@ msgstr "Calcular frecuencias"
 msgid "Sort Bands"
 msgstr "Ordenar las bandas"
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:115
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:119
 msgid "Import Preset"
 msgstr "Importar perfil"
 
@@ -1894,19 +1894,19 @@ msgstr "Lista de preajustes locales"
 msgid "Community"
 msgstr "Comunidad"
 
-#: data/ui/presets_menu.ui:190
+#: data/ui/presets_menu.ui:189
 msgid "Search Community Preset"
 msgstr "Buscar configuración preestablecida de la comunidad"
 
-#: data/ui/presets_menu.ui:247
+#: data/ui/presets_menu.ui:246
 msgid "Community Presets List"
 msgstr "Lista de ajustes preestablecidos de la comunidad"
 
-#: data/ui/presets_menu.ui:263
+#: data/ui/presets_menu.ui:261
 msgid "No Community Presets Installed"
 msgstr "No hay Ajustes Preestablecidos de Comunidad Instalados"
 
-#: data/ui/presets_menu.ui:264
+#: data/ui/presets_menu.ui:262
 msgid ""
 "Community Presets packages can be installed from Flatpak or the repository "
 "of your favorite distribution."
@@ -1914,11 +1914,11 @@ msgstr ""
 "Los paquetes de Community Presets se pueden instalar desde Flatpak o desde "
 "el repositorio de su distribución favorita."
 
-#: data/ui/presets_menu.ui:274
+#: data/ui/presets_menu.ui:273
 msgid "Refresh"
 msgstr "Refrescar"
 
-#: data/ui/presets_menu.ui:275
+#: data/ui/presets_menu.ui:274
 msgid "Refresh to show new installed community presets"
 msgstr ""
 "Refresca para mostrar los nuevos ajustes preestablecidos de comunidad "
@@ -2269,7 +2269,7 @@ msgid "Import Impulse File"
 msgstr "Importar archivo de respuesta a impulsos"
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:116 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Abrir"
 
@@ -2373,11 +2373,11 @@ msgstr "Dispositivo de salida"
 msgid "Add"
 msgstr "Agregar"
 
-#: src/presets_menu.cpp:356
+#: src/presets_menu.cpp:373
 msgid "Save?"
 msgstr "¿Guardar?"
 
-#: src/presets_menu.cpp:375
+#: src/presets_menu.cpp:392
 msgid "Delete?"
 msgstr "¿Borrar?"
 
@@ -2516,10 +2516,12 @@ msgstr "Herramientas estéreo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
+#, c++-format
 msgid "{} Not Available"
 msgstr "{} No disponible"
 
 #: src/ui_helpers.cpp:97
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2529,6 +2531,7 @@ msgstr ""
 "instalar el software tu mismo."
 
 #: src/ui_helpers.cpp:103
+#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2546,6 +2549,7 @@ msgstr "infinito"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:251
+#, c++-format
 msgid "Using {}"
 msgstr "Usando {}"
 

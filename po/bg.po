@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-30 00:22+0000\n"
+"POT-Creation-Date: 2024-03-31 14:19+0000\n"
 "PO-Revision-Date: 2022-12-23 05:48+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -94,8 +94,8 @@ msgid "_Quit"
 msgstr ""
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:130 src/presets_menu.cpp:535
-#: src/presets_menu.cpp:546 src/presets_menu.cpp:576 src/presets_menu.cpp:587
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:134 src/presets_menu.cpp:552
+#: src/presets_menu.cpp:563 src/presets_menu.cpp:593 src/presets_menu.cpp:604
 msgid "Presets"
 msgstr "Профили"
 
@@ -789,7 +789,7 @@ msgid "Import Impulse"
 msgstr ""
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:83 data/ui/presets_menu.ui:188
+#: data/ui/presets_menu.ui:83 data/ui/presets_menu.ui:187
 msgid "Search"
 msgstr ""
 
@@ -975,7 +975,7 @@ msgstr ""
 msgid "Sort Bands"
 msgstr ""
 
-#: data/ui/equalizer.ui:329 src/presets_menu.cpp:115
+#: data/ui/equalizer.ui:329 src/presets_menu.cpp:119
 msgid "Import Preset"
 msgstr ""
 
@@ -1901,31 +1901,31 @@ msgstr "Профили"
 msgid "Community"
 msgstr ""
 
-#: data/ui/presets_menu.ui:190
+#: data/ui/presets_menu.ui:189
 #, fuzzy
 msgid "Search Community Preset"
 msgstr "Предварително задаване"
 
-#: data/ui/presets_menu.ui:247
+#: data/ui/presets_menu.ui:246
 #, fuzzy
 msgid "Community Presets List"
 msgstr "Профили"
 
-#: data/ui/presets_menu.ui:263
+#: data/ui/presets_menu.ui:261
 msgid "No Community Presets Installed"
 msgstr ""
 
-#: data/ui/presets_menu.ui:264
+#: data/ui/presets_menu.ui:262
 msgid ""
 "Community Presets packages can be installed from Flatpak or the repository "
 "of your favorite distribution."
 msgstr ""
 
-#: data/ui/presets_menu.ui:274
+#: data/ui/presets_menu.ui:273
 msgid "Refresh"
 msgstr ""
 
-#: data/ui/presets_menu.ui:275
+#: data/ui/presets_menu.ui:274
 msgid "Refresh to show new installed community presets"
 msgstr ""
 
@@ -2272,7 +2272,7 @@ msgid "Import Impulse File"
 msgstr ""
 
 #: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:116 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:120 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr ""
 
@@ -2372,11 +2372,11 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/presets_menu.cpp:356
+#: src/presets_menu.cpp:373
 msgid "Save?"
 msgstr ""
 
-#: src/presets_menu.cpp:375
+#: src/presets_menu.cpp:392
 msgid "Delete?"
 msgstr ""
 
