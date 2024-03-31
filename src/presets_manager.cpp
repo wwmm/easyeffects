@@ -347,7 +347,8 @@ auto PresetsManager::scan_community_package_recursive(std::filesystem::directory
           cp_paths.append_range(scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str()));
           */
 
-          const auto sub_cp_vect = scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str());
+          const auto sub_cp_vect =
+              scan_community_package_recursive(subdir_it, scan_level, origin + "/" + path.filename().c_str());
 
           cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
         }
