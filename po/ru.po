@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-30 00:22+0000\n"
-"PO-Revision-Date: 2024-03-25 20:02+0000\n"
+"PO-Revision-Date: 2024-03-31 13:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1579,6 +1579,9 @@ msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"Автозагрузка работает только для локальных предустановок. Предустановки от "
+"сообщества необходимо сначала импортировать локально, а затем уже выбрать и "
+"привязать к конкретному устройству."
 
 #: data/ui/pipe_manager_box.ui:266
 msgid "Output Devices"
@@ -1909,7 +1912,7 @@ msgstr "Удалить этот файл предустановки"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "Локально"
 
 #: data/ui/presets_menu.ui:47
 msgid "New Preset Name"
@@ -1921,49 +1924,47 @@ msgstr "Создать новую предустановку"
 
 #: data/ui/presets_menu.ui:69
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "Импорт предустановки из локального хранилища"
 
 #: data/ui/presets_menu.ui:85
-#, fuzzy
 msgid "Search Local Preset"
-msgstr "Поиск предустановки"
+msgstr "Поиск локальной предустановки"
 
 #: data/ui/presets_menu.ui:146
-#, fuzzy
 msgid "Local Presets List"
-msgstr "Список предустановок"
+msgstr "Список локальных предустановок"
 
 #: data/ui/presets_menu.ui:172
 msgid "Community"
-msgstr ""
+msgstr "Сообщество"
 
 #: data/ui/presets_menu.ui:190
-#, fuzzy
 msgid "Search Community Preset"
-msgstr "Поиск предустановки входа"
+msgstr "Поиск предустановки от сообщества"
 
 #: data/ui/presets_menu.ui:247
-#, fuzzy
 msgid "Community Presets List"
-msgstr "Список предустановок входа"
+msgstr "Список предустановок от сообщества"
 
 #: data/ui/presets_menu.ui:263
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "Предустановки от сообщества не установлены"
 
 #: data/ui/presets_menu.ui:264
 msgid ""
 "Community Presets packages can be installed from Flatpak or the repository "
 "of your favorite distribution."
 msgstr ""
+"Пакеты предустановок от сообщества можно установить из Flatpak или из "
+"репозитория вашего любимого дистрибутива."
 
 #: data/ui/presets_menu.ui:274
 msgid "Refresh"
-msgstr ""
+msgstr "Обновить"
 
 #: data/ui/presets_menu.ui:275
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "Обновить для показа новых установленных предустановок от сообщества"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2436,13 +2437,12 @@ msgstr "Удалить?"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:421
-#, fuzzy
 msgid "Community Preset"
-msgstr "Импорт предустановки"
+msgstr "Предустановка от сообщества"
 
 #: src/presets_manager.cpp:421
 msgid "Package"
-msgstr ""
+msgstr "Пакет"
 
 #: src/presets_manager.cpp:974 src/presets_manager.cpp:981
 #: src/presets_manager.cpp:990 src/presets_manager.cpp:997

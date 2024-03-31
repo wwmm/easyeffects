@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-30 00:22+0000\n"
-"PO-Revision-Date: 2024-03-28 14:52+0000\n"
+"PO-Revision-Date: 2024-03-31 13:01+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -1421,7 +1421,7 @@ msgstr ""
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "Pokazuj natywny interfejs użytkownika"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 #, fuzzy
