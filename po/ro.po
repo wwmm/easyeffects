@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 15:47+0000\n"
+"POT-Creation-Date: 2024-03-31 20:44+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2595,43 +2595,43 @@ msgid "Delete?"
 msgstr ""
 
 #. Placeholders in case of issues
-#: src/presets_manager.cpp:421
+#: src/presets_manager.cpp:422
 #, fuzzy
 msgid "Community Preset"
 msgstr "Importă Presetări"
 
-#: src/presets_manager.cpp:421
+#: src/presets_manager.cpp:422
 msgid "Package"
 msgstr ""
 
-#: src/presets_manager.cpp:974 src/presets_manager.cpp:981
-#: src/presets_manager.cpp:990 src/presets_manager.cpp:997
-#: src/presets_manager.cpp:1006 src/presets_manager.cpp:1014
+#: src/presets_manager.cpp:975 src/presets_manager.cpp:982
+#: src/presets_manager.cpp:991 src/presets_manager.cpp:998
+#: src/presets_manager.cpp:1007 src/presets_manager.cpp:1015
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:974
+#: src/presets_manager.cpp:975
 #, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Arată programele din Lista de Blocare în Fila Principală"
 
-#: src/presets_manager.cpp:981
+#: src/presets_manager.cpp:982
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:990
+#: src/presets_manager.cpp:991
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:997
+#: src/presets_manager.cpp:998
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:1007
+#: src/presets_manager.cpp:1008
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:1015
+#: src/presets_manager.cpp:1016
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
