@@ -166,7 +166,7 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool
     if (s.starts_with(_("-inf"))) {
       *new_value = util::minimum_db_d_level;
 
-      return 1;
+      return TRUE;
     }
   }
 
@@ -177,7 +177,7 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool
   if (str >> v) {
     *new_value = std::clamp(v, min, max);
 
-    return 1;
+    return TRUE;
   }
 
   return GTK_INPUT_ERROR;

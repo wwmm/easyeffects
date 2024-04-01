@@ -431,9 +431,9 @@ void rnnoise_box_init(RNNoiseBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbutton<"ms">(self->release);
+  prepare_spinbuttons<"ms">(self->release);
 
-  prepare_spinbutton<"%">(self->vad_thres);
+  prepare_spinbuttons<"%">(self->vad_thres);
 
   // The following spinbuttons can assume -inf
   prepare_spinbuttons<"dB", false>(self->wet);
