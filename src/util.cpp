@@ -401,6 +401,15 @@ auto str_contains(const std::string& haystack, const std::string& needle) -> boo
   return (haystack.find(needle) != std::string::npos);
 }
 
+void str_trim(std::string& str) {
+  // This util removes whitespaces from the beginning and the end of
+  // the given string.
+  // No copy involved, the input string is just modified if needed.
+
+  str.erase(0U, str.find_first_not_of(" \n\r\t\v\f"));  // left trim
+  str.erase(str.find_last_not_of(" \n\r\t\v\f") + 1U);  // right trim
+}
+
 auto compare_versions(const std::string& v0, const std::string& v1) -> int {
   /* This is an util to compare two strings as semver, mainly used to compare
      two Pipewire versions.
