@@ -137,11 +137,11 @@ void show_simple_message_dialog(GtkWidget* parent, const std::string& title, con
 
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound) -> bool {
   auto* adjustment = gtk_spin_button_get_adjustment(button);
-  auto value = gtk_adjustment_get_value(adjustment);
-  auto precision = gtk_spin_button_get_digits(button);
-  auto str_unit = (unit != nullptr) ? (" "s + unit) : "";
+  const auto value = gtk_adjustment_get_value(adjustment);
+  const auto precision = gtk_spin_button_get_digits(button);
+  const auto str_unit = (unit != nullptr) ? (" "s + unit) : "";
 
-  bool minus_infinity = (!lower_bound && value <= util::minimum_db_d_level);
+  const bool minus_infinity = (!lower_bound && value <= util::minimum_db_d_level);
 
   auto text = (minus_infinity) ? (_("-inf") + str_unit)
                                // format string: 0 = value, 1 = precision, 2 = unit
@@ -166,7 +166,7 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool
     if (s.starts_with(_("-inf"))) {
       *new_value = util::minimum_db_d_level;
 
-      return 1;
+      return TRUE;
     }
   }
 
@@ -177,7 +177,7 @@ auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool
   if (str >> v) {
     *new_value = std::clamp(v, min, max);
 
-    return 1;
+    return TRUE;
   }
 
   return GTK_INPUT_ERROR;

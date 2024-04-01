@@ -42,8 +42,6 @@
 
 namespace ui::chart {
 
-using namespace std::string_literals;
-
 struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }

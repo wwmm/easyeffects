@@ -134,9 +134,9 @@ void preferences_general_init(PreferencesGeneral* self) {
 
   self->settings = g_settings_new(tags::app::id);
 
-  prepare_spinbutton<"s">(self->inactivity_timeout);
-  prepare_spinbutton<"ms">(self->meters_update_interval);
-  prepare_spinbutton<"Hz">(self->lv2ui_update_frequency);
+  prepare_spinbuttons<"s">(self->inactivity_timeout);
+  prepare_spinbuttons<"ms">(self->meters_update_interval);
+  prepare_spinbuttons<"Hz">(self->lv2ui_update_frequency);
 
   // initializing some widgets
 
