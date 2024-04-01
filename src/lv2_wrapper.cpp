@@ -50,8 +50,6 @@ namespace lv2 {
 constexpr auto min_quantum = 32;
 constexpr auto max_quantum = 8192;
 
-using namespace std::string_literals;
-
 auto lv2_printf(LV2_Log_Handle handle, LV2_URID type, const char* format, ...) -> int {
   va_list args;
 

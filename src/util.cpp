@@ -270,8 +270,6 @@ auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bo
     return false;
   }
 
-  using namespace std::string_literals;
-
   auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
 
   if (std::any_of(list.cbegin(), list.cend(), [&](const auto& str) { return str == name; })) {
@@ -290,8 +288,6 @@ auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bo
 }
 
 void remove_blocklist_entry(GSettings* settings, const std::string& name) {
-  using namespace std::string_literals;
-
   auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
 
   list.erase(std::remove_if(list.begin(), list.end(), [=](const auto& a) { return a == name; }), list.end());

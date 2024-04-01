@@ -35,8 +35,6 @@
 
 namespace ladspa {
 
-using namespace std::string_literals;
-
 static inline const char* get_ladspa_path() {
   const char* path = std::getenv("LADSPA_PATH");
 

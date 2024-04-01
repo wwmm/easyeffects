@@ -29,8 +29,6 @@
 
 namespace ui::holders {
 
-using namespace std::string_literals;
-
 enum { PROP_0, PROP_SERIAL, PROP_ID, PROP_DEVICE_ID, PROP_NAME, PROP_MEDIA_CLASS, PROP_DESCRIPTION, PROP_ICON_NAME };
 
 // NOLINTNEXTLINE

@@ -59,23 +59,26 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
     std::string reason;
     // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
     std::string explanation;
+    // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
+    std::string error_message;
 
     if (error != nullptr) {
-      // 19 seemingly corresponds to the "cancelled" error which actually means the permission is in a revoked state.
+      error_message = error->message;
       if (error->code == 19) {
+        // 19 seemingly corresponds to the "cancelled" error which actually means the permission is in a revoked state.
         reason = "Background access has been denied";
-        explanation = "Please allow Easy Effects to ask again with flatpak permission-reset "s + tags::app::id;
+        explanation = "Please allow Easy Effects to ask again with Flatpak permission-reset "s + tags::app::id;
       } else {
-        reason = "Unknown error";
+        reason = "Generic error";
         explanation = "Please verify your system has a XDG Background Portal implementation running and working.";
       }
     } else {
+      error_message = "unknown reason";
       reason = "Unknown error";
       explanation = "No explanation could be provided, error was null";
     }
 
-    util::debug(std::string("a background request failed: ") +
-                ((error) != nullptr ? error->message : "unknown reason"));
+    util::debug("A background request failed: " + error_message);
     util::warning(reason);
     util::warning(explanation);
 
@@ -90,7 +93,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
         static_cast<bool>(gtk_switch_get_state(enable_autostart))) {
       resetting_autostart = true;
 
-      util::warning(std::string("due to error, setting autostart state and switch to false"));
+      util::warning("due to error, setting autostart state and switch to false");
 
       gtk_switch_set_state(enable_autostart, 0);
       gtk_switch_set_active(enable_autostart, 0);
@@ -101,7 +104,7 @@ void on_request_background_called(GObject* source, GAsyncResult* result, gpointe
         !static_cast<bool>(gtk_switch_get_state(shutdown_on_window_close))) {
       resetting_shutdown = true;
 
-      util::warning(std::string("due to error, setting shutdown on window close state and switch to true"));
+      util::warning("due to error, setting shutdown on window close state and switch to true");
 
       gtk_switch_set_state(shutdown_on_window_close, 1);
       gtk_switch_set_active(shutdown_on_window_close, 1);
@@ -212,21 +215,21 @@ void init(GtkSwitch* g_enable_autostart, GtkSwitch* g_shutdown_on_window_close) 
   auto shutdown_on_window_close_state = gtk_switch_get_active(shutdown_on_window_close);
 
   if ((enable_autostart_state == 0) && (shutdown_on_window_close_state == 0)) {
-    util::debug(std::string("doing portal sanity check, autostart and shutdown switches are disabled"));
+    util::debug("doing portal sanity check, autostart and shutdown switches are disabled");
 
     update_background_portal(false);
   } else if ((enable_autostart_state != 0) && (shutdown_on_window_close_state != 0)) {
-    util::debug(std::string("doing portal sanity check, autostart and shutdown switches are enabled"));
+    util::debug("doing portal sanity check, autostart and shutdown switches are enabled");
 
     update_background_portal(true);
   } else if ((enable_autostart_state != 0) && (shutdown_on_window_close_state == 0)) {
-    util::debug(std::string("doing portal sanity check, autostart switch is enabled and shutdown switch is disabled"));
+    util::debug("doing portal sanity check, autostart switch is enabled and shutdown switch is disabled");
 
     update_background_portal(true);
   } else {
     util::debug(
-        std::string("not doing portal sanity check, autostart switch should be disabled and shutdown switch should be "
-                    "enabled so no background portal access is needed"));
+        "not doing portal sanity check, autostart switch should be disabled and shutdown switch should be enabled so "
+        "no background portal access is needed");
   }
 }
 
