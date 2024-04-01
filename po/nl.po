@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 15:47+0000\n"
+"POT-Creation-Date: 2024-04-01 23:03+0000\n"
 "PO-Revision-Date: 2024-03-13 07:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2382,42 +2382,42 @@ msgid "Delete?"
 msgstr "Verwijderen?"
 
 #. Placeholders in case of issues
-#: src/presets_manager.cpp:421
+#: src/presets_manager.cpp:423
 #, fuzzy
 msgid "Community Preset"
 msgstr "Voorinstelling importeren"
 
-#: src/presets_manager.cpp:421
+#: src/presets_manager.cpp:423
 msgid "Package"
 msgstr ""
 
-#: src/presets_manager.cpp:974 src/presets_manager.cpp:981
-#: src/presets_manager.cpp:990 src/presets_manager.cpp:997
-#: src/presets_manager.cpp:1006 src/presets_manager.cpp:1014
+#: src/presets_manager.cpp:976 src/presets_manager.cpp:983
+#: src/presets_manager.cpp:992 src/presets_manager.cpp:999
+#: src/presets_manager.cpp:1008 src/presets_manager.cpp:1016
 msgid "Preset Not Loaded Correctly"
 msgstr "Voor­instelling niet correct geladen"
 
-#: src/presets_manager.cpp:974
+#: src/presets_manager.cpp:976
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Verkeerd formaat in lijst met uitgesloten apps"
 
-#: src/presets_manager.cpp:981
+#: src/presets_manager.cpp:983
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Algemene fout bij laden van lijst met uitgesloten apps"
 
-#: src/presets_manager.cpp:990
+#: src/presets_manager.cpp:992
 msgid "Wrong Format in Effects List"
 msgstr "Verkeerd formaat in effecten­lijst"
 
-#: src/presets_manager.cpp:997
+#: src/presets_manager.cpp:999
 msgid "Generic Error While Loading Effects List"
 msgstr "Algemene fout bij laden van effecten­lijst"
 
-#: src/presets_manager.cpp:1007
+#: src/presets_manager.cpp:1009
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Een of meer parameters hebben een verkeerd formaat"
 
-#: src/presets_manager.cpp:1015
+#: src/presets_manager.cpp:1017
 msgid "Generic Error While Loading The Effect"
 msgstr "Algemene fout bij laden van het effect"
 
