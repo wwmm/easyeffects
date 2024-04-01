@@ -344,7 +344,8 @@ auto PresetsManager::scan_community_package_recursive(std::filesystem::directory
           auto subdir_it = std::filesystem::directory_iterator{path};
 
           /* When C++23 is available, the following line is enough:
-          cp_paths.append_range(scan_community_package_recursive(subdir_it, scan_level, path.filename().c_str()));
+          cp_paths.append_range(
+              scan_community_package_recursive(subdir_it, scan_level, origin + "/" + path.filename().c_str()));
           */
 
           const auto sub_cp_vect =
