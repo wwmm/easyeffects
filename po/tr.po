@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-01 23:03+0000\n"
+"POT-Creation-Date: 2024-04-02 17:53+0000\n"
 "PO-Revision-Date: 2024-03-30 21:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1748,34 +1748,46 @@ msgid "Inactivity Timeout"
 msgstr "Tepkisizlik Zaman Aşımı"
 
 #: data/ui/preferences_general.ui:120
-msgid "Update Interval (Level Meters and Spectrum)"
+#, fuzzy
+msgid "Update Interval"
+msgstr "Çeviriler güncellendi"
+
+#: data/ui/preferences_general.ui:121
+#, fuzzy
+msgid "Related to Level Meters and Spectrum"
 msgstr "Güncelleme Aralığı (Seviye Ölçerler ve Spektrum)"
 
-#: data/ui/preferences_general.ui:143
-msgid "Update Frequency (LV2 Plugins)"
+#: data/ui/preferences_general.ui:144
+#, fuzzy
+msgid "Update Frequency"
+msgstr "Sıklık"
+
+#: data/ui/preferences_general.ui:145
+#, fuzzy
+msgid "Related to LV2 Plugins"
 msgstr "Güncelleme Sıklığı (LV2 Eklentileri)"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:170 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Görünüm"
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:173
 msgid "Use Dark Theme"
 msgstr "Koyu Tema Kullan"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:185
 msgid "Hide Menus on Outside Clicks"
 msgstr "Dış Tıklamalarda Menüleri Gizle"
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:199
 msgid "Experimental Features"
 msgstr "Deneysel özellikler"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:202
 msgid "Native Plugin Window"
 msgstr "Yerel Eklenti Penceresi"
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:203
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "Yerel Eklenti Penceresinin Gösterilmesini/Gizlenmesini Sağlar"
 
@@ -2539,12 +2551,12 @@ msgstr ""
 "Effects Flatpak paketini kullanmayı ya da kendi Easy Effects paketinizi "
 "oluşturmayı düşünebilirsiniz."
 
-#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:166
+#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:168
 msgid "-inf"
 msgstr "-sonsuz"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:251
+#: src/ui_helpers.cpp:253
 #, c++-format
 msgid "Using {}"
 msgstr "{} Kullanıyor"
@@ -2786,10 +2798,6 @@ msgstr "{} Kullanıyor"
 #~ msgid "Split 1/2"
 #~ msgstr "1/2 Böl"
 
-#, fuzzy
-#~ msgid "Split Frequency 1"
-#~ msgstr "Sıklık"
-
 #~ msgid "Split 2/3"
 #~ msgstr "2/3 Böl"
 
@@ -3021,9 +3029,6 @@ msgstr "{} Kullanıyor"
 
 #~ msgid "Better support for computer suspending."
 #~ msgstr "Bilgisayarın askıya alınması için daha iyi destek."
-
-#~ msgid "Updated translations"
-#~ msgstr "Çeviriler güncellendi"
 
 #~ msgid ""
 #~ "LibAdwaita is used to create some parts of our window and for handling "
