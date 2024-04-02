@@ -61,9 +61,9 @@ auto missing_plugin_box(const std::string& base_name, const std::string& package
 
 void show_simple_message_dialog(GtkWidget* parent, const std::string& title, const std::string& descr);
 
-auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound = true) -> bool;
+auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound = true) -> gboolean;
 
-auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound = true) -> int;
+auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound = true) -> gint;
 
 auto get_new_filter_serial() -> uint;
 

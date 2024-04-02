@@ -117,7 +117,8 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Update Interval (Level Meters and Spectrum)</property>
+                        <property name="title" translatable="yes">Update Interval</property>
+                        <property name="subtitle" translatable="yes">Related to Level Meters and Spectrum</property>
 
                         <child>
                             <object class="GtkSpinButton" id="meters_update_interval">
@@ -140,7 +141,8 @@
 
                 <child>
                     <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Update Frequency (LV2 Plugins)</property>
+                        <property name="title" translatable="yes">Update Frequency</property>
+                        <property name="subtitle" translatable="yes">Related to LV2 Plugins</property>
 
                         <child>
                             <object class="GtkSpinButton" id="lv2ui_update_frequency">

@@ -137,8 +137,8 @@ If your distribution does not yet include packages required to build Easy Effect
 
 ## Warning
 
-**Don't set** Easy Effects' virtual devices as your default audio input/output.
-Easy Effects is designed assuming that your hardware stays as default.
+**Do not set** Easy Effects virtual devices as your default audio input/output.
+Easy Effects is designed assuming that your hardware stays as default device.
 
 ## Help
 
