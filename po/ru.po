@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-01 23:03+0000\n"
+"POT-Creation-Date: 2024-04-02 17:53+0000\n"
 "PO-Revision-Date: 2024-03-31 13:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1791,34 +1791,46 @@ msgid "Inactivity Timeout"
 msgstr "Тайм-аут бездействия"
 
 #: data/ui/preferences_general.ui:120
-msgid "Update Interval (Level Meters and Spectrum)"
+#, fuzzy
+msgid "Update Interval"
+msgstr "Обновление перевода"
+
+#: data/ui/preferences_general.ui:121
+#, fuzzy
+msgid "Related to Level Meters and Spectrum"
 msgstr "Период обновления (уровнемеры и спектр)"
 
-#: data/ui/preferences_general.ui:143
-msgid "Update Frequency (LV2 Plugins)"
+#: data/ui/preferences_general.ui:144
+#, fuzzy
+msgid "Update Frequency"
+msgstr "Частота раздела 1"
+
+#: data/ui/preferences_general.ui:145
+#, fuzzy
+msgid "Related to LV2 Plugins"
 msgstr "Частота обновления (плагины LV2)"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:170 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Стиль"
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:173
 msgid "Use Dark Theme"
 msgstr "Использовать тёмную тему"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:185
 msgid "Hide Menus on Outside Clicks"
 msgstr "Скрывать меню по щелчку вне фокуса"
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:199
 msgid "Experimental Features"
 msgstr "Экспериментальные возможности"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:202
 msgid "Native Plugin Window"
 msgstr "Родное окно плагина"
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:203
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "Позволяет показывать/скрывать родное окно плагина"
 
@@ -2598,12 +2610,12 @@ msgstr ""
 "было недоступно. Рассмотрите возможность использования пакета Easy Effects "
 "Flatpak или сборки собственного пакета Easy Effects."
 
-#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:166
+#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:168
 msgid "-inf"
 msgstr "∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:251
+#: src/ui_helpers.cpp:253
 #, c++-format
 msgid "Using {}"
 msgstr "Используется {}"
@@ -2868,9 +2880,6 @@ msgstr "Используется {}"
 
 #~ msgid "Split 1/2"
 #~ msgstr "Разделение 1/2"
-
-#~ msgid "Split Frequency 1"
-#~ msgstr "Частота раздела 1"
 
 #~ msgid "Split 2/3"
 #~ msgstr "Разделение 2/3"
@@ -3246,9 +3255,6 @@ msgstr "Используется {}"
 
 #~ msgid "Better support for computer suspending."
 #~ msgstr "Улучшена поддержка спящего режима."
-
-#~ msgid "Updated translations"
-#~ msgstr "Обновление перевода"
 
 #~ msgid ""
 #~ "Fixed a bug where trying to create an autoloading profile without having "
