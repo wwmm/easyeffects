@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-01 23:03+0000\n"
-"PO-Revision-Date: 2024-03-25 23:01+0000\n"
+"PO-Revision-Date: 2024-04-02 18:06+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -135,6 +135,9 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"Улучшена система управления каналом обработки. Нелимитирующие эффекты "
+"помещаются перед ограничителем, даже если последние два плагина в канале "
+"обработки — это лимитер, а затем уровнемер."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
@@ -179,6 +182,8 @@ msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Исправлена регрессионная ошибка, из-за которой уровнемеры не обновлялись при "
+"определённых условиях."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
