@@ -135,7 +135,7 @@ void show_simple_message_dialog(GtkWidget* parent, const std::string& title, con
   gtk_window_present(GTK_WINDOW(dialog));
 }
 
-auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound) -> bool {
+auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound) -> gboolean {
   auto* adjustment = gtk_spin_button_get_adjustment(button);
   const auto value = gtk_adjustment_get_value(adjustment);
   const auto precision = gtk_spin_button_get_digits(button);
@@ -149,10 +149,10 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool
 
   gtk_editable_set_text(GTK_EDITABLE(button), text.c_str());
 
-  return true;
+  return TRUE;
 }
 
-auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound) -> int {
+auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound) -> gint {
   auto min = 0.0;
   auto max = 0.0;
 
