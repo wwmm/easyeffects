@@ -161,6 +161,8 @@ See the wiki: [Community presets](https://github.com/wwmm/easyeffects/wiki/Commu
 
 This page also has instructions for converting PulseEffects presets to Easy Effects presets.
 
+Guildelines for package maintainers: [Guidelines](COMMUNITY_PRESETS_GUIDELINES.md)
+
 ## Command-line options
 
 See the wiki: [Command Line Options](https://github.com/wwmm/easyeffects/wiki/Command-Line-Options)
