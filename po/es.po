@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-01 23:03+0000\n"
+"POT-Creation-Date: 2024-04-02 17:53+0000\n"
 "PO-Revision-Date: 2024-03-30 21:01+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1747,34 +1747,46 @@ msgid "Inactivity Timeout"
 msgstr "Tiempo de inactividad"
 
 #: data/ui/preferences_general.ui:120
-msgid "Update Interval (Level Meters and Spectrum)"
+#, fuzzy
+msgid "Update Interval"
+msgstr "Traducciones actualizadas"
+
+#: data/ui/preferences_general.ui:121
+#, fuzzy
+msgid "Related to Level Meters and Spectrum"
 msgstr "Intervalo de actualización (medidores de nivel y espectro)"
 
-#: data/ui/preferences_general.ui:143
-msgid "Update Frequency (LV2 Plugins)"
+#: data/ui/preferences_general.ui:144
+#, fuzzy
+msgid "Update Frequency"
+msgstr "Dividir frecuencia 1"
+
+#: data/ui/preferences_general.ui:145
+#, fuzzy
+msgid "Related to LV2 Plugins"
 msgstr "Frecuencia de la actualización (Complementos LV2)"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:170 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Estilo"
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:173
 msgid "Use Dark Theme"
 msgstr "Usar tema oscuro"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:185
 msgid "Hide Menus on Outside Clicks"
 msgstr "Ocultar los menús al hacer click fuera"
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:199
 msgid "Experimental Features"
 msgstr "Funciones experimentales"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:202
 msgid "Native Plugin Window"
 msgstr "Ventana de los complementos nativos"
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:203
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "Permite mostrar/ocultar la ventana nativa del plugin"
 
@@ -2543,12 +2555,12 @@ msgstr ""
 "disponible. Considera la posibilidad de utilizar el paquete Easy Effects "
 "Flatpak o de crear tu propio paquete de Easy Effects."
 
-#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:166
+#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:168
 msgid "-inf"
 msgstr "infinito"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:251
+#: src/ui_helpers.cpp:253
 #, c++-format
 msgid "Using {}"
 msgstr "Usando {}"
@@ -2814,9 +2826,6 @@ msgstr "Usando {}"
 
 #~ msgid "Split 1/2"
 #~ msgstr "Dividir 1/2"
-
-#~ msgid "Split Frequency 1"
-#~ msgstr "Dividir frecuencia 1"
 
 #~ msgid "Split 2/3"
 #~ msgstr "Dividir 2/3"
@@ -3145,9 +3154,6 @@ msgstr "Usando {}"
 
 #~ msgid "Better support for computer suspending."
 #~ msgstr "Se ha mejorado el soporte para la suspensión del ordenador."
-
-#~ msgid "Updated translations"
-#~ msgstr "Traducciones actualizadas"
 
 #~ msgid ""
 #~ "Fixed a bug where trying to create an autoloading profile without having "

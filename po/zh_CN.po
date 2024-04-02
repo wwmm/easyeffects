@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-01 23:03+0000\n"
+"POT-Creation-Date: 2024-04-02 17:53+0000\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1758,34 +1758,46 @@ msgid "Inactivity Timeout"
 msgstr "空闲超时"
 
 #: data/ui/preferences_general.ui:120
-msgid "Update Interval (Level Meters and Spectrum)"
+#, fuzzy
+msgid "Update Interval"
+msgstr "翻译更新"
+
+#: data/ui/preferences_general.ui:121
+#, fuzzy
+msgid "Related to Level Meters and Spectrum"
 msgstr "更新间隔（电平表、频谱）"
 
-#: data/ui/preferences_general.ui:143
-msgid "Update Frequency (LV2 Plugins)"
+#: data/ui/preferences_general.ui:144
+#, fuzzy
+msgid "Update Frequency"
+msgstr "分割频率 1"
+
+#: data/ui/preferences_general.ui:145
+#, fuzzy
+msgid "Related to LV2 Plugins"
 msgstr "更新频率（LV2插件）"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:170 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "界面风格"
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:173
 msgid "Use Dark Theme"
 msgstr "使用暗色主题"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:185
 msgid "Hide Menus on Outside Clicks"
 msgstr "点击外部时隐藏菜单"
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:199
 msgid "Experimental Features"
 msgstr "实验性功能"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:202
 msgid "Native Plugin Window"
 msgstr "原生插件窗口"
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:203
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "允许显示或隐藏原生插件窗口"
 
@@ -2542,12 +2554,12 @@ msgstr ""
 "{} 效果在编译Easy Effects的时候被禁用了。这可能是这个效果所需的软件\"{}\"在编"
 "译时并不存在。请下载Flatpak版Easy Effects，或者重新编译Easy Effects。"
 
-#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:166
+#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:168
 msgid "-inf"
 msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:251
+#: src/ui_helpers.cpp:253
 #, c++-format
 msgid "Using {}"
 msgstr "正在使用 {}"
@@ -2797,9 +2809,6 @@ msgstr "正在使用 {}"
 #~ msgid "Split 1/2"
 #~ msgstr "分割 1/2"
 
-#~ msgid "Split Frequency 1"
-#~ msgstr "分割频率 1"
-
 #~ msgid "Split 2/3"
 #~ msgstr "分割 2/3"
 
@@ -3016,9 +3025,6 @@ msgstr "正在使用 {}"
 
 #~ msgid "This release adds the following feature:"
 #~ msgstr "此版软件新增了以下功能："
-
-#~ msgid "Updated translations"
-#~ msgstr "翻译更新"
 
 #~ msgid "Average"
 #~ msgstr "平均值"
