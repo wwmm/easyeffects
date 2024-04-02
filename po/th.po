@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-01 23:03+0000\n"
+"POT-Creation-Date: 2024-04-02 17:47+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/easyeffects/main/th/"
@@ -1741,34 +1741,42 @@ msgid "Inactivity Timeout"
 msgstr ""
 
 #: data/ui/preferences_general.ui:120
-msgid "Update Interval (Level Meters and Spectrum)"
+msgid "Update Interval"
 msgstr ""
 
-#: data/ui/preferences_general.ui:143
-msgid "Update Frequency (LV2 Plugins)"
+#: data/ui/preferences_general.ui:121
+msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:144
+msgid "Update Frequency"
+msgstr ""
+
+#: data/ui/preferences_general.ui:145
+msgid "Related to LV2 Plugins"
+msgstr ""
+
+#: data/ui/preferences_general.ui:170 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:173
 msgid "Use Dark Theme"
 msgstr ""
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:185
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:199
 msgid "Experimental Features"
 msgstr ""
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:202
 msgid "Native Plugin Window"
 msgstr ""
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:203
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
@@ -2516,12 +2524,12 @@ msgid ""
 "Effects package."
 msgstr ""
 
-#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:166
+#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:168
 msgid "-inf"
 msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:251
+#: src/ui_helpers.cpp:253
 #, c++-format
 msgid "Using {}"
 msgstr ""
