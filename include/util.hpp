@@ -112,6 +112,9 @@ auto str_contains(const std::string& haystack, const std::string& needle) -> boo
 
 auto compare_versions(const std::string& v0, const std::string& v1) -> int;
 
+void str_trim_start(std::string& str);
+void str_trim_end(std::string& str);
+
 template <typename T>
 void print_type(T v) {
   warning(typeid(v).name());
@@ -125,7 +128,7 @@ auto str_to_num(const std::string& str, T& num) -> bool {
   // A left trim is performed on strings so that the conversion could success
   // even if there are leading whitespaces and/or the plus sign.
 
-  auto first_char = str.find_first_not_of(" +\n\r\t");
+  auto first_char = str.find_first_not_of(" +\n\r\t\v\f");
 
   if (first_char == std::string::npos) {
     return false;

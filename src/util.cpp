@@ -401,13 +401,18 @@ auto str_contains(const std::string& haystack, const std::string& needle) -> boo
   return (haystack.find(needle) != std::string::npos);
 }
 
-void str_trim(std::string& str) {
-  // This util removes whitespaces from the beginning and the end of
-  // the given string.
+void str_trim_start(std::string& str) {
+  // This util removes whitespaces such as simple space " ", new line "\n",
+  // carriage return "\r", tab "\t", vertical tab "\v" and form feed "\f"
+  // at the start of the given string.
   // No copy involved, the input string is just modified if needed.
 
-  str.erase(0U, str.find_first_not_of(" \n\r\t\v\f"));  // left trim
-  str.erase(str.find_last_not_of(" \n\r\t\v\f") + 1U);  // right trim
+  str.erase(0U, str.find_first_not_of(" \n\r\t\v\f"));
+}
+
+void str_trim_end(std::string& str) {
+  // Same as above, but at the end of the given string.
+  str.erase(str.find_last_not_of(" \n\r\t\v\f") + 1U);
 }
 
 auto compare_versions(const std::string& v0, const std::string& v1) -> int {
