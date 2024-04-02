@@ -56,7 +56,6 @@ msgid "Excluded App List: Add/remove this application"
 msgstr "Liste over Ekskluderte App-er: Legg til/ Fjern denne applikasjonen"
 
 #: data/ui/app_info.ui:226
-#, fuzzy
 msgid "Exclude"
 msgstr "Ekskluder"
 
@@ -65,7 +64,6 @@ msgid "Mute Application"
 msgstr "Demp Applikasjonen"
 
 #: data/ui/app_info.ui:270
-#, fuzzy
 msgid "Change the volume of this application"
 msgstr "Endre volumet på applikasjonen"
 
@@ -2443,43 +2441,46 @@ msgid "Delete?"
 msgstr "Slette?"
 
 #. Placeholders in case of issues
-#: src/presets_manager.cpp:423
+#: src/presets_manager.cpp:423 src/presets_manager.cpp:421
 #, fuzzy
 msgid "Community Preset"
 msgstr "Importer forhåndsinnstillinger"
 
-#: src/presets_manager.cpp:423
+#: src/presets_manager.cpp:423 src/presets_manager.cpp:421
 msgid "Package"
 msgstr ""
 
 #: src/presets_manager.cpp:976 src/presets_manager.cpp:983
 #: src/presets_manager.cpp:992 src/presets_manager.cpp:999
 #: src/presets_manager.cpp:1008 src/presets_manager.cpp:1016
+#: src/presets_manager.cpp:974 src/presets_manager.cpp:981
+#: src/presets_manager.cpp:990 src/presets_manager.cpp:997
+#: src/presets_manager.cpp:1006 src/presets_manager.cpp:1014
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:976
+#: src/presets_manager.cpp:976 src/presets_manager.cpp:974
 #, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Svartelistede programmer"
 
-#: src/presets_manager.cpp:983
+#: src/presets_manager.cpp:983 src/presets_manager.cpp:981
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:992
+#: src/presets_manager.cpp:992 src/presets_manager.cpp:990
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:999
+#: src/presets_manager.cpp:999 src/presets_manager.cpp:997
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:1009
+#: src/presets_manager.cpp:1009 src/presets_manager.cpp:1007
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:1017
+#: src/presets_manager.cpp:1017 src/presets_manager.cpp:1015
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
@@ -2587,12 +2588,11 @@ msgstr "Stereo verktøy"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Ikke tilgjengelig"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2601,7 +2601,6 @@ msgstr ""
 "å bruke Easy Effects Flatpak pakken eller installer programvaren på egenhånd."
 
 #: src/ui_helpers.cpp:103
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2619,7 +2618,7 @@ msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:251
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Using {}"
 msgstr "Bruker {}"
 
