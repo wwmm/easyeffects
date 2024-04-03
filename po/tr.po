@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-02 17:53+0000\n"
-"PO-Revision-Date: 2024-03-30 21:01+0000\n"
+"PO-Revision-Date: 2024-04-03 07:01+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -1748,24 +1748,20 @@ msgid "Inactivity Timeout"
 msgstr "Tepkisizlik Zaman Aşımı"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Update Interval"
-msgstr "Çeviriler güncellendi"
+msgstr "Güncelleme Aralığı"
 
 #: data/ui/preferences_general.ui:121
-#, fuzzy
 msgid "Related to Level Meters and Spectrum"
-msgstr "Güncelleme Aralığı (Seviye Ölçerler ve Spektrum)"
+msgstr "Seviye Ölçerler ve Spektrum ile ilgili"
 
 #: data/ui/preferences_general.ui:144
-#, fuzzy
 msgid "Update Frequency"
-msgstr "Sıklık"
+msgstr "Güncelleme Sıklığı"
 
 #: data/ui/preferences_general.ui:145
-#, fuzzy
 msgid "Related to LV2 Plugins"
-msgstr "Güncelleme Sıklığı (LV2 Eklentileri)"
+msgstr "LV2 Eklentileri ile ilgili"
 
 #: data/ui/preferences_general.ui:170 data/ui/preferences_spectrum.ui:26
 msgid "Style"
