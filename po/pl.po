@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-02 17:53+0000\n"
-"PO-Revision-Date: 2024-03-31 13:01+0000\n"
+"PO-Revision-Date: 2024-04-03 16:48+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -1016,9 +1016,8 @@ msgid "Import Preset"
 msgstr "Importuj szablony"
 
 #: data/ui/equalizer.ui:363
-#, fuzzy
 msgid "Export Preset"
-msgstr "Importuj szablony"
+msgstr "Eksportuj profil"
 
 #: data/ui/equalizer_band.ui:143 data/ui/filter.ui:127
 msgid "Slope"
@@ -1848,9 +1847,8 @@ msgid "Update Frequency"
 msgstr "Częstotliwość"
 
 #: data/ui/preferences_general.ui:145
-#, fuzzy
 msgid "Related to LV2 Plugins"
-msgstr "Częstotliwość aktualizacji (wtyczki LV2)"
+msgstr "Powiązane z wtyczkami LV2"
 
 #: data/ui/preferences_general.ui:170 data/ui/preferences_spectrum.ui:26
 msgid "Style"
