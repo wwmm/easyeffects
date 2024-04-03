@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-02 17:53+0000\n"
-"PO-Revision-Date: 2024-03-31 13:01+0000\n"
+"PO-Revision-Date: 2024-04-03 07:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1791,24 +1791,20 @@ msgid "Inactivity Timeout"
 msgstr "Тайм-аут бездействия"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Update Interval"
-msgstr "Обновление перевода"
+msgstr "Период обновления"
 
 #: data/ui/preferences_general.ui:121
-#, fuzzy
 msgid "Related to Level Meters and Spectrum"
-msgstr "Период обновления (уровнемеры и спектр)"
+msgstr "Связанное с уровнемерами и спектром"
 
 #: data/ui/preferences_general.ui:144
-#, fuzzy
 msgid "Update Frequency"
-msgstr "Частота раздела 1"
+msgstr "Частота обновления"
 
 #: data/ui/preferences_general.ui:145
-#, fuzzy
 msgid "Related to LV2 Plugins"
-msgstr "Частота обновления (плагины LV2)"
+msgstr "Связанное с плагинами LV2"
 
 #: data/ui/preferences_general.ui:170 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -2281,7 +2277,7 @@ msgstr "Скрыть окно."
 
 #: src/application.cpp:608
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получение статуса"
+msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получить статус"
 
 #: src/application.cpp:611
 msgid "Show available presets."
@@ -2594,7 +2590,7 @@ msgid ""
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
 "Программное обеспечение, необходимое для эффекта {}, «{}», не установлено. "
-"Рассмотрите возможность использования пакета Easy Effects Flatpak или "
+"Рассмотрите возможность использования пакета Flatpak для Easy Effects или "
 "установите программное обеспечение самостоятельно."
 
 #: src/ui_helpers.cpp:103
