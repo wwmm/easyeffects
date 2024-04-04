@@ -389,7 +389,8 @@ auto PresetsManager::get_community_preset_info(const PresetType& preset_type, co
     }
 
     // Check if the preset is contained in the selected system data directory.
-    if (!path.starts_with(cp_dir)) {
+    // starts_with gets a string_view, so we use the version with character array.
+    if (!path.starts_with(cp_dir.c_str())) {
       continue;
     }
 
