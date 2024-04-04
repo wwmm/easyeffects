@@ -273,6 +273,8 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
 }
 
 void PresetsManager::add(const PresetType& preset_type, const std::string& name) {
+  // This method assumes the filename is valid.
+
   for (const auto& p : get_local_presets_name(preset_type)) {
     if (p == name) {
       return;

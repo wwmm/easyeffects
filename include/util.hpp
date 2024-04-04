@@ -114,6 +114,7 @@ auto compare_versions(const std::string& v0, const std::string& v1) -> int;
 
 void str_trim_start(std::string& str);
 void str_trim_end(std::string& str);
+void str_trim(std::string& str);
 
 template <typename T>
 void print_type(T v) {
