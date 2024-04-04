@@ -63,7 +63,7 @@ void show_simple_message_dialog(GtkWidget* parent, const std::string& title, con
 
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound = true) -> gboolean;
 
-auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound = true) -> gint;
+auto parse_spinbutton_input(GtkSpinButton* button, gdouble* new_value, const bool& lower_bound = true) -> gint;
 
 auto get_new_filter_serial() -> uint;
 
