@@ -42,6 +42,7 @@
                                                         <property name="hexpand">1</property>
                                                         <property name="placeholder-text" translatable="yes">Name</property>
                                                         <property name="input-purpose">name</property>
+                                                        <property name="truncate-multiline">1</property>
                                                         <property name="accessible-role">text-box</property>
                                                         <accessibility>
                                                             <property name="label" translatable="yes">New Preset Name</property>

@@ -414,6 +414,11 @@ void str_trim_end(std::string& str) {
   // Same as above, but at the end of the given string.
   str.erase(str.find_last_not_of(" \n\r\t\v\f") + 1U);
 }
+void str_trim(std::string& str) {
+  // Trim both sides of the given string. See above.
+  str_trim_end(str);
+  str_trim_start(str);
+}
 
 auto compare_versions(const std::string& v0, const std::string& v1) -> int {
   /* This is an util to compare two strings as semver, mainly used to compare

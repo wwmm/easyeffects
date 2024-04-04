@@ -53,7 +53,6 @@
                             <object class="GtkSpinButton" id="n_points">
                                 <property name="valign">center</property>
                                 <property name="digits">0</property>
-                                <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">2</property>
@@ -75,7 +74,6 @@
                             <object class="GtkSpinButton" id="height">
                                 <property name="valign">center</property>
                                 <property name="digits">0</property>
-                                <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">1</property>
@@ -97,7 +95,6 @@
                         <child>
                             <object class="GtkSpinButton" id="line_width">
                                 <property name="valign">center</property>
-                                <property name="update-policy">if-valid</property>
                                 <property name="digits">1</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
@@ -215,7 +212,6 @@
                             <object class="GtkSpinButton" id="minimum_frequency">
                                 <property name="valign">center</property>
                                 <property name="width-chars">10</property>
-                                <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">20</property>
@@ -238,7 +234,6 @@
                             <object class="GtkSpinButton" id="maximum_frequency">
                                 <property name="valign">center</property>
                                 <property name="width-chars">10</property>
-                                <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">20</property>

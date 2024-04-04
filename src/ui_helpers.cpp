@@ -152,7 +152,7 @@ auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool
   return TRUE;
 }
 
-auto parse_spinbutton_input(GtkSpinButton* button, double* new_value, const bool& lower_bound) -> gint {
+auto parse_spinbutton_input(GtkSpinButton* button, gdouble* new_value, const bool& lower_bound) -> gint {
   auto min = 0.0;
   auto max = 0.0;
 

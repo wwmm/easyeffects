@@ -183,7 +183,6 @@
                                                         <property name="valign">center</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">1</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">-100</property>
@@ -217,7 +216,6 @@
                                                         <property name="valign">center</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">1</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">-100</property>

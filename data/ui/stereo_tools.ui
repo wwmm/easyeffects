@@ -62,7 +62,6 @@
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">2</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">-1</property>
@@ -98,7 +97,6 @@
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">2</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">1</property>
@@ -246,7 +244,6 @@
                                                                 <property name="orientation">vertical</property>
                                                                 <property name="width-chars">10</property>
                                                                 <property name="digits">1</property>
-                                                                <property name="update-policy">if-valid</property>
                                                                 <property name="adjustment">
                                                                     <object class="GtkAdjustment">
                                                                         <property name="lower">-36</property>
@@ -282,7 +279,6 @@
                                                                 <property name="orientation">vertical</property>
                                                                 <property name="width-chars">10</property>
                                                                 <property name="digits">2</property>
-                                                                <property name="update-policy">if-valid</property>
                                                                 <property name="adjustment">
                                                                     <object class="GtkAdjustment">
                                                                         <property name="lower">-1</property>
@@ -318,7 +314,6 @@
                                                                 <property name="orientation">vertical</property>
                                                                 <property name="width-chars">10</property>
                                                                 <property name="digits">1</property>
-                                                                <property name="update-policy">if-valid</property>
                                                                 <property name="adjustment">
                                                                     <object class="GtkAdjustment">
                                                                         <property name="lower">-36</property>
@@ -354,7 +349,6 @@
                                                                 <property name="orientation">vertical</property>
                                                                 <property name="width-chars">10</property>
                                                                 <property name="digits">2</property>
-                                                                <property name="update-policy">if-valid</property>
                                                                 <property name="adjustment">
                                                                     <object class="GtkAdjustment">
                                                                         <property name="lower">-1</property>
@@ -407,7 +401,6 @@
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">2</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">-1</property>
@@ -443,7 +436,6 @@
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">2</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">-20</property>
@@ -479,7 +471,6 @@
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">2</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">-1</property>
@@ -515,7 +506,6 @@
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">2</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="upper">360</property>
@@ -548,7 +538,6 @@
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">1</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">-100</property>
@@ -584,7 +573,6 @@
                                                         <property name="orientation">vertical</property>
                                                         <property name="width-chars">10</property>
                                                         <property name="digits">1</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
                                                                 <property name="lower">-100</property>

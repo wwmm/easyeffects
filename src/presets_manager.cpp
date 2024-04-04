@@ -273,6 +273,8 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
 }
 
 void PresetsManager::add(const PresetType& preset_type, const std::string& name) {
+  // This method assumes the filename is valid.
+
   for (const auto& p : get_local_presets_name(preset_type)) {
     if (p == name) {
       return;
@@ -387,7 +389,8 @@ auto PresetsManager::get_community_preset_info(const PresetType& preset_type, co
     }
 
     // Check if the preset is contained in the selected system data directory.
-    if (!path.starts_with(cp_dir)) {
+    // starts_with gets a string_view, so we use the version with character array.
+    if (!path.starts_with(cp_dir.c_str())) {
       continue;
     }
 

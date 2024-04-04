@@ -102,18 +102,31 @@ auto closure_community_search_filter(PresetsMenu* self, const char* text) -> con
 void create_preset(PresetsMenu* self, GtkButton* button) {
   auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(self->new_preset_name)), -1));
 
+  // Reset input field.
+  gtk_editable_set_text(GTK_EDITABLE(self->new_preset_name), "");
+
+  // Remove leading and trailing whitespaces.
+  util::str_trim(name);
+
+  static const auto json_ext_re = std::regex(R"(\.json)", std::regex::icase);
+
+  // Remove the json extension, if present
+  // (it will be added in PresetsManager::add()).
+  if (std::smatch sm; std::regex_search(name, sm, json_ext_re)) {
+    name.resize(name.size() - 5U);
+  }
+
+  // Check if empty.
   if (name.empty()) {
     return;
   }
 
-  gtk_editable_set_text(GTK_EDITABLE(self->new_preset_name), "");
-
-  // Truncate if longer than 100 characters
-
-  if (name.size() > 100U) {
-    name.resize(100U);
+  // Truncate if the name is longer than 100 characters.
+  if (const auto max_length = 100U; name.size() > max_length) {
+    name.resize(max_length);
   }
 
+  // Check for illegal characters.
   if (name.find_first_of("\\/") != std::string::npos) {
     util::debug(" name " + name + " has illegal file name characters. Aborting preset creation!");
 

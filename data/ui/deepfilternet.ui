@@ -73,7 +73,6 @@
                                                             </object>
                                                         </property>
                                                         <property name="digits">1</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <accessibility>
                                                             <property name="label">Minimum Processing Threshold</property>
                                                         </accessibility>
@@ -100,7 +99,6 @@
                                                             </object>
                                                         </property>
                                                         <property name="digits">1</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <accessibility>
                                                             <property name="label">Maximum ERB Processing Threshold</property>
                                                         </accessibility>
@@ -127,7 +125,6 @@
                                                             </object>
                                                         </property>
                                                         <property name="digits">1</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <accessibility>
                                                             <property name="label">Maximum DF Processing Threshold</property>
                                                         </accessibility>
@@ -153,7 +150,6 @@
                                                                 <property name="page-increment">1</property>
                                                             </object>
                                                         </property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <accessibility>
                                                             <property name="label">Minimum Processing Buffer</property>
                                                         </accessibility>
@@ -180,7 +176,6 @@
                                                                 <property name="page-increment">0.01</property>
                                                             </object>
                                                         </property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <accessibility>
                                                             <property name="label">Post Filter Beta</property>
                                                         </accessibility>

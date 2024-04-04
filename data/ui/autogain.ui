@@ -46,7 +46,6 @@
                                                                     </object>
                                                                 </property>
                                                                 <property name="digits">1</property>
-                                                                <property name="update-policy">if-valid</property>
                                                             </object>
                                                         </child>
                                                     </object>
@@ -71,7 +70,6 @@
                                                                     </object>
                                                                 </property>
                                                                 <property name="digits">0</property>
-                                                                <property name="update-policy">if-valid</property>
                                                             </object>
                                                         </child>
                                                     </object>
@@ -95,7 +93,6 @@
                                                                     </object>
                                                                 </property>
                                                                 <property name="digits">0</property>
-                                                                <property name="update-policy">if-valid</property>
                                                             </object>
                                                         </child>
                                                     </object>
