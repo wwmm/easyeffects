@@ -2,15 +2,15 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
-Description: 
+Description:
 - Features∶
-- 
+- Community Presets have been implemented. Users can install packages containing multiple Easy Effects presets to be imported and applied inside the application. These packages will be maintained and shipped by volunteers. You can search them on Flathub or the repositories of your favorite distribution.
 
 - Bug fixes∶
-- 
+- A change in GTK 4.14.1 prevented to apply the values inserted into the text field of our SpinButton widgets. This issue is now resolved.
 
 - Other notes∶
-- 
+- In order for Community Presets to be correctly shipped, packagers are invited to read and follow the guidelines linked inside the README of EasyEffects master branch.
 
 ---
 Version: 7.1.6
