@@ -640,7 +640,6 @@
                                                             </object>
                                                         </property>
                                                         <property name="digits">0</property>
-                                                        <property name="update-policy">if-valid</property>
                                                         <property name="width-chars">10</property>
                                                     </object>
                                                 </child>

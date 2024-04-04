@@ -196,7 +196,6 @@
                                     <object class="GtkSpinButton" id="band_frequency">
                                         <property name="valign">center</property>
                                         <property name="digits">0</property>
-                                        <property name="update-policy">if-valid</property>
                                         <property name="width-chars">10</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
@@ -228,7 +227,6 @@
                                     <object class="GtkSpinButton" id="band_gain">
                                         <property name="valign">center</property>
                                         <property name="digits">2</property>
-                                        <property name="update-policy">if-valid</property>
                                         <property name="width-chars">10</property>
 
                                         <property name="sensitive" bind-source="band_scale" bind-property="sensitive" bind-flags="sync-create" />
@@ -264,7 +262,6 @@
                                     <object class="GtkSpinButton" id="band_quality">
                                         <property name="valign">center</property>
                                         <property name="digits">2</property>
-                                        <property name="update-policy">if-valid</property>
                                         <property name="width-chars">10</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
@@ -295,7 +292,6 @@
                                     <object class="GtkSpinButton" id="band_width">
                                         <property name="valign">center</property>
                                         <property name="digits">2</property>
-                                        <property name="update-policy">if-valid</property>
                                         <property name="width-chars">10</property>
 
                                         <binding name="sensitive">
