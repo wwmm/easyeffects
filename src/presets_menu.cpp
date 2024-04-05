@@ -108,12 +108,12 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
   // Remove leading and trailing whitespaces.
   util::str_trim(name);
 
-  static const auto json_ext_re = std::regex(R"(\.json)", std::regex::icase);
+  static const auto json_ext_re = std::regex(R"((?:\.+json)+$)", std::regex::icase);
 
-  // Remove the json extension, if present
+  // Remove the json extension at the end, if present
   // (it will be added in PresetsManager::add()).
   if (std::smatch sm; std::regex_search(name, sm, json_ext_re)) {
-    name.resize(name.size() - 5U);
+    name = std::regex_replace(name, json_ext_re, "");
   }
 
   // Check if empty.
@@ -128,7 +128,7 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
 
   // Check for illegal characters.
   if (name.find_first_of("\\/") != std::string::npos) {
-    util::debug(" name " + name + " has illegal file name characters. Aborting preset creation!");
+    util::warning(" name " + name + " has illegal file name characters. Aborting preset creation!");
 
     return;
   }
