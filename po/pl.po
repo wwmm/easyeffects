@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-04 13:35+0000\n"
-"PO-Revision-Date: 2024-04-03 16:48+0000\n"
+"PO-Revision-Date: 2024-04-06 23:01+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -1707,9 +1707,8 @@ msgid "Waveform"
 msgstr "Przebieg fali"
 
 #: data/ui/pipe_manager_box.ui:609
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Sinus tabl."
+msgstr ""
 
 #: data/ui/pipe_manager_box.ui:618
 msgid "White Noise"
@@ -2433,9 +2432,8 @@ msgid "Export EqualizerAPO Preset File"
 msgstr "Importuj plik profilu APO"
 
 #: src/equalizer_ui.cpp:550
-#, fuzzy
 msgid "Save"
-msgstr "Zapisać?"
+msgstr "Zapisz"
 
 #: src/equalizer_ui.cpp:557
 #, fuzzy
