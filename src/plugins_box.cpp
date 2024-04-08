@@ -130,6 +130,8 @@ struct Data {
 struct _PluginsBox {
   GtkBox parent_instance;
 
+  GtkToggleButton* toggle_plugins_list;
+
   GtkMenuButton* menubutton_plugins;
 
   GtkOverlay* plugin_overlay;
@@ -797,6 +799,8 @@ void setup(PluginsBox* self, app::Application* application, PipelineType pipelin
     }
   }
 
+  gsettings_bind_widget(self->settings, "show-plugins-list", self->toggle_plugins_list);
+
   ui::plugins_menu::setup(self->plugins_menu, application, pipeline_type);
 
   setup_listview(self);
@@ -890,6 +894,7 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
 
   gtk_widget_class_set_template_from_resource(widget_class, tags::resources::plugins_box_ui);
 
+  gtk_widget_class_bind_template_child(widget_class, PluginsBox, toggle_plugins_list);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, menubutton_plugins);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, plugin_overlay);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, overlay_no_plugins);
