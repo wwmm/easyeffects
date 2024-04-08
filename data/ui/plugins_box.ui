@@ -9,19 +9,43 @@
                 <property name="spacing">6</property>
                 <property name="css-name">listview</property>
                 <child>
-                    <object class="GtkMenuButton" id="menubutton_plugins">
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="margin-start">6</property>
                         <property name="margin-end">6</property>
                         <property name="margin-top">6</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="direction">right</property>
-                        <property name="label" translatable="yes">Add Effect</property>
-                        <property name="cursor">
-                            <object class="GdkCursor">
-                                <property name="name">pointer</property>
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_plugins_list">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="icon-name">sidebar-show-symbolic</property>
+                                <property name="active">1</property>
+                                <property name="active" bind-source="menubutton_plugins" bind-property="visible" bind-flags="sync-create|bidirectional" />
+                                <property name="active" bind-source="plugins_stack_box" bind-property="visible" bind-flags="sync-create|bidirectional" />
+                                <property name="tooltip-text" translatable="yes">Show/hide effects list</property>
+                                <property name="cursor">
+                                    <object class="GdkCursor">
+                                        <property name="name">pointer</property>
+                                    </object>
+                                </property>
                             </object>
-                        </property>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuButton" id="menubutton_plugins">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="direction">right</property>
+                                <property name="label" translatable="yes">Add Effect</property>
+                                <property name="cursor">
+                                    <object class="GdkCursor">
+                                        <property name="name">pointer</property>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
                     </object>
                 </child>
 
@@ -30,7 +54,7 @@
                         <property name="propagate-natural-width">1</property>
                         <property name="propagate-natural-height">1</property>
                         <child>
-                            <object class="GtkBox">
+                            <object class="GtkBox" id="plugins_stack_box">
                                 <property name="orientation">vertical</property>
                                 <child>
                                     <object class="GtkBox" id="startpoint_box">
