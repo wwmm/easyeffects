@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 13:35+0000\n"
+"POT-Creation-Date: 2024-04-08 13:55+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -628,7 +628,7 @@ msgid "Sidechain Type"
 msgstr "サイドチェーンタイプ"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:772
+#: src/plugins_box.cpp:774
 msgid "Input Device"
 msgstr "入力デバイス"
 
@@ -1708,19 +1708,23 @@ msgstr "このエフェクトの有効化/無効化"
 msgid "Change the position of this effect"
 msgstr "このエフェクトの位置を変更する"
 
-#: data/ui/plugins_box.ui:19
+#: data/ui/plugins_box.ui:27
+msgid "Show/hide effects list"
+msgstr ""
+
+#: data/ui/plugins_box.ui:41
 msgid "Add Effect"
 msgstr "エフェクトの追加"
 
-#: data/ui/plugins_box.ui:68
+#: data/ui/plugins_box.ui:92
 msgid "Used Plugins List"
 msgstr "使用プラグインリスト"
 
-#: data/ui/plugins_box.ui:129
+#: data/ui/plugins_box.ui:153
 msgid "No Effects"
 msgstr "エフェクトなし"
 
-#: data/ui/plugins_box.ui:130
+#: data/ui/plugins_box.ui:154
 msgid "Audio Stream Not Modified"
 msgstr "オーディオストリームは変更されていません"
 
@@ -2334,11 +2338,11 @@ msgstr "読み込まれたインパルスファイルはありません"
 msgid "Failed To Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:773
+#: src/effects_box.cpp:306 src/plugins_box.cpp:775
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:793
+#: src/effects_box.cpp:329 src/plugins_box.cpp:795
 msgid "Players"
 msgstr "プレイヤー"
 
@@ -2404,11 +2408,11 @@ msgstr "自動読み込みプリセットを削除"
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 
-#: src/plugins_box.cpp:725
+#: src/plugins_box.cpp:727
 msgid "Remove"
 msgstr "削除"
 
-#: src/plugins_box.cpp:794
+#: src/plugins_box.cpp:796
 msgid "Output Device"
 msgstr "出力デバイス"
 

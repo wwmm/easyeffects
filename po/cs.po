@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 13:35+0000\n"
+"POT-Creation-Date: 2024-04-08 13:55+0000\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -633,7 +633,7 @@ msgid "Sidechain Type"
 msgstr "Druh sidechain"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:772
+#: src/plugins_box.cpp:774
 msgid "Input Device"
 msgstr "Vstupní zařízení"
 
@@ -1727,19 +1727,23 @@ msgstr "Povolit/zakázat tento efekt"
 msgid "Change the position of this effect"
 msgstr "Změna pozice tohoto efektu"
 
-#: data/ui/plugins_box.ui:19
+#: data/ui/plugins_box.ui:27
+msgid "Show/hide effects list"
+msgstr ""
+
+#: data/ui/plugins_box.ui:41
 msgid "Add Effect"
 msgstr "Přidat efekt"
 
-#: data/ui/plugins_box.ui:68
+#: data/ui/plugins_box.ui:92
 msgid "Used Plugins List"
 msgstr "Seznam použitých pluginů"
 
-#: data/ui/plugins_box.ui:129
+#: data/ui/plugins_box.ui:153
 msgid "No Effects"
 msgstr "Žádné efekty"
 
-#: data/ui/plugins_box.ui:130
+#: data/ui/plugins_box.ui:154
 msgid "Audio Stream Not Modified"
 msgstr "Audio Stream není modifikovaný"
 
@@ -2350,11 +2354,11 @@ msgstr "Impulse soubor nebyl načten"
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát Impulse soubor"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:773
+#: src/effects_box.cpp:306 src/plugins_box.cpp:775
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:793
+#: src/effects_box.cpp:329 src/plugins_box.cpp:795
 msgid "Players"
 msgstr "Přehrávače"
 
@@ -2423,11 +2427,11 @@ msgstr "Odstranit předvolbu automatického načítání"
 msgid "Output Level Meter"
 msgstr "Výstupní zařízení"
 
-#: src/plugins_box.cpp:725
+#: src/plugins_box.cpp:727
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/plugins_box.cpp:794
+#: src/plugins_box.cpp:796
 msgid "Output Device"
 msgstr "Výstupní zařízení"
 

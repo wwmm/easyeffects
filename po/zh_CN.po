@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 13:35+0000\n"
+"POT-Creation-Date: 2024-04-08 13:55+0000\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -622,7 +622,7 @@ msgid "Sidechain Type"
 msgstr "侧链类型"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:772
+#: src/plugins_box.cpp:774
 msgid "Input Device"
 msgstr "输入设备"
 
@@ -1693,19 +1693,23 @@ msgstr "启用/禁用此音效"
 msgid "Change the position of this effect"
 msgstr "改变此音效的位置"
 
-#: data/ui/plugins_box.ui:19
+#: data/ui/plugins_box.ui:27
+msgid "Show/hide effects list"
+msgstr ""
+
+#: data/ui/plugins_box.ui:41
 msgid "Add Effect"
 msgstr "添加音效"
 
-#: data/ui/plugins_box.ui:68
+#: data/ui/plugins_box.ui:92
 msgid "Used Plugins List"
 msgstr "使用的插件的列表"
 
-#: data/ui/plugins_box.ui:129
+#: data/ui/plugins_box.ui:153
 msgid "No Effects"
 msgstr "无音效"
 
-#: data/ui/plugins_box.ui:130
+#: data/ui/plugins_box.ui:154
 msgid "Audio Stream Not Modified"
 msgstr "音频流未作修改"
 
@@ -2314,11 +2318,11 @@ msgstr "未加载脉冲文件"
 msgid "Failed To Load The Impulse File"
 msgstr "加载脉冲文件失败"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:773
+#: src/effects_box.cpp:306 src/plugins_box.cpp:775
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:793
+#: src/effects_box.cpp:329 src/plugins_box.cpp:795
 msgid "Players"
 msgstr "播放器"
 
@@ -2378,11 +2382,11 @@ msgstr "删除自动加载预设"
 msgid "Output Level Meter"
 msgstr "输出电平表"
 
-#: src/plugins_box.cpp:725
+#: src/plugins_box.cpp:727
 msgid "Remove"
 msgstr "删除"
 
-#: src/plugins_box.cpp:794
+#: src/plugins_box.cpp:796
 msgid "Output Device"
 msgstr "输出设备"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 13:35+0000\n"
+"POT-Creation-Date: 2024-04-08 13:55+0000\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -674,7 +674,7 @@ msgid "Sidechain Type"
 msgstr "Postranný reťazec"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:772
+#: src/plugins_box.cpp:774
 #, fuzzy
 msgid "Input Device"
 msgstr "Obmedzovač na vstupe"
@@ -1847,21 +1847,25 @@ msgstr ""
 msgid "Change the position of this effect"
 msgstr ""
 
-#: data/ui/plugins_box.ui:19
+#: data/ui/plugins_box.ui:27
+msgid "Show/hide effects list"
+msgstr ""
+
+#: data/ui/plugins_box.ui:41
 #, fuzzy
 msgid "Add Effect"
 msgstr "Vstupné predvoľby: "
 
-#: data/ui/plugins_box.ui:68
+#: data/ui/plugins_box.ui:92
 msgid "Used Plugins List"
 msgstr ""
 
-#: data/ui/plugins_box.ui:129
+#: data/ui/plugins_box.ui:153
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: data/ui/plugins_box.ui:130
+#: data/ui/plugins_box.ui:154
 msgid "Audio Stream Not Modified"
 msgstr ""
 
@@ -2512,12 +2516,12 @@ msgstr "Načítať súbor impulzu"
 msgid "Failed To Load The Impulse File"
 msgstr "Nedá sa načítať súbor s impulzom"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:773
+#: src/effects_box.cpp:306 src/plugins_box.cpp:775
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:793
+#: src/effects_box.cpp:329 src/plugins_box.cpp:795
 msgid "Players"
 msgstr "Prehrávače"
 
@@ -2584,11 +2588,11 @@ msgstr "Odstrániť predvoľbu"
 msgid "Output Level Meter"
 msgstr "Výstupné efekty"
 
-#: src/plugins_box.cpp:725
+#: src/plugins_box.cpp:727
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:794
+#: src/plugins_box.cpp:796
 #, fuzzy
 msgid "Output Device"
 msgstr "Výstupné efekty"

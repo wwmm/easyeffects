@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 13:35+0000\n"
+"POT-Creation-Date: 2024-04-08 13:55+0000\n"
 "PO-Revision-Date: 2023-11-25 07:02+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -658,7 +658,7 @@ msgid "Sidechain Type"
 msgstr "Postranični ulaz"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:772
+#: src/plugins_box.cpp:774
 #, fuzzy
 msgid "Input Device"
 msgstr "Ulazni uređaj"
@@ -1836,21 +1836,25 @@ msgstr ""
 msgid "Change the position of this effect"
 msgstr ""
 
-#: data/ui/plugins_box.ui:19
+#: data/ui/plugins_box.ui:27
+msgid "Show/hide effects list"
+msgstr ""
+
+#: data/ui/plugins_box.ui:41
 #, fuzzy
 msgid "Add Effect"
 msgstr "Ulazni efekti"
 
-#: data/ui/plugins_box.ui:68
+#: data/ui/plugins_box.ui:92
 msgid "Used Plugins List"
 msgstr ""
 
-#: data/ui/plugins_box.ui:129
+#: data/ui/plugins_box.ui:153
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: data/ui/plugins_box.ui:130
+#: data/ui/plugins_box.ui:154
 msgid "Audio Stream Not Modified"
 msgstr ""
 
@@ -2502,11 +2506,11 @@ msgstr "Učitaj impuls datoteku"
 msgid "Failed To Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:773
+#: src/effects_box.cpp:306 src/plugins_box.cpp:775
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:793
+#: src/effects_box.cpp:329 src/plugins_box.cpp:795
 msgid "Players"
 msgstr ""
 
@@ -2574,11 +2578,11 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "Pojačanje ulaza"
 
-#: src/plugins_box.cpp:725
+#: src/plugins_box.cpp:727
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:794
+#: src/plugins_box.cpp:796
 #, fuzzy
 msgid "Output Device"
 msgstr "Pojačanje ulaza"

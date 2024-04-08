@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 13:35+0000\n"
+"POT-Creation-Date: 2024-04-08 13:55+0000\n"
 "PO-Revision-Date: 2024-03-13 07:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -620,7 +620,7 @@ msgid "Sidechain Type"
 msgstr "Sidechain-type"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:772
+#: src/plugins_box.cpp:774
 msgid "Input Device"
 msgstr "Invoerapparaat"
 
@@ -1680,19 +1680,23 @@ msgstr "Effect omschakelen"
 msgid "Change the position of this effect"
 msgstr "Positie van effect aanpassen"
 
-#: data/ui/plugins_box.ui:19
+#: data/ui/plugins_box.ui:27
+msgid "Show/hide effects list"
+msgstr ""
+
+#: data/ui/plugins_box.ui:41
 msgid "Add Effect"
 msgstr "Effect toevoegen"
 
-#: data/ui/plugins_box.ui:68
+#: data/ui/plugins_box.ui:92
 msgid "Used Plugins List"
 msgstr "Lijst met gebruikte plug-ins"
 
-#: data/ui/plugins_box.ui:129
+#: data/ui/plugins_box.ui:153
 msgid "No Effects"
 msgstr "Geen effecten"
 
-#: data/ui/plugins_box.ui:130
+#: data/ui/plugins_box.ui:154
 msgid "Audio Stream Not Modified"
 msgstr "Audio-stream onbewerkt"
 
@@ -2303,11 +2307,11 @@ msgstr "Geen impulsbestand geladen"
 msgid "Failed To Load The Impulse File"
 msgstr "Impulsbestand laden mislukt"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:773
+#: src/effects_box.cpp:306 src/plugins_box.cpp:775
 msgid "Recorders"
 msgstr "Opname-apparaten"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:793
+#: src/effects_box.cpp:329 src/plugins_box.cpp:795
 msgid "Players"
 msgstr "Spelers"
 
@@ -2373,11 +2377,11 @@ msgstr "Automatisch ingeladen voorinstelling verwijderen"
 msgid "Output Level Meter"
 msgstr "Uitvoerniveaumeter"
 
-#: src/plugins_box.cpp:725
+#: src/plugins_box.cpp:727
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: src/plugins_box.cpp:794
+#: src/plugins_box.cpp:796
 msgid "Output Device"
 msgstr "Uitvoerapparaat"
 
