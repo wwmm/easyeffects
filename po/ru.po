@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-08 13:55+0000\n"
-"PO-Revision-Date: 2024-04-03 07:01+0000\n"
+"PO-Revision-Date: 2024-04-09 08:24+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1727,7 +1727,7 @@ msgstr "Изменить позицию эффекта"
 
 #: data/ui/plugins_box.ui:27
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "Показать/скрыть список эффектов"
 
 #: data/ui/plugins_box.ui:41
 msgid "Add Effect"
