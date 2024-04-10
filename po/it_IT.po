@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-08 13:55+0000\n"
-"PO-Revision-Date: 2024-04-03 07:01+0000\n"
+"PO-Revision-Date: 2024-04-09 23:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1686,7 +1686,7 @@ msgstr "Cambia la posizione di questo effetto"
 
 #: data/ui/plugins_box.ui:27
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "Mostra/nascondi la lista degli effetti"
 
 #: data/ui/plugins_box.ui:41
 msgid "Add Effect"
