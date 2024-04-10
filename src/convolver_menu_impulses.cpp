@@ -162,7 +162,7 @@ void on_import_irs_clicked(ConvolverMenuImpulses* self, GtkButton* btn) {
   auto* filter = gtk_file_filter_new();
 
   gtk_file_filter_set_name(filter, _("Impulse Response"));
-  gtk_file_filter_add_pattern(filter, "*.irs");
+  gtk_file_filter_add_pattern(filter, ("*"s + irs_ext).c_str());
   gtk_file_filter_add_pattern(filter, "*.wav");
 
   g_list_store_append(filters, filter);
@@ -243,11 +243,7 @@ void setup_listview(ConvolverMenuImpulses* self) {
                                             string_object != nullptr) {
                                           auto* name = gtk_string_object_get_string(string_object);
 
-                                          auto irs_file = irs_dir / std::filesystem::path{name};
-
-                                          irs_file += irs_ext;
-
-                                          g_settings_set_string(self->settings, "kernel-path", irs_file.c_str());
+                                          g_settings_set_string(self->settings, "kernel-name", name);
                                         }
                                       }),
                                       self);

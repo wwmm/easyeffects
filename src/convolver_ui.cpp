@@ -357,11 +357,25 @@ void get_irs_spectrum(ConvolverBox* self, const int& rate) {
 }
 
 void get_irs_info(ConvolverBox* self) {
-  const std::string path = util::gsettings_get_string(self->settings, "kernel-path");
+  bool can_read_irs = false;
 
-  if (path.empty()) {
-    util::warning(": irs file path is null.");
+  std::string path;
 
+  const auto name = util::gsettings_get_string(self->settings, "kernel-name");
+
+  if (name.empty()) {
+    util::warning("irs name is empty!");
+  } else {
+    path = self->data->convolver->search_irs_path(name);
+
+    if (!path.empty()) {
+      can_read_irs = true;
+    } else {
+      util::warning("irs file path is null!");
+    }
+  }
+
+  if (!can_read_irs) {
     // Set label to initial empty state
     gtk_widget_remove_css_class(GTK_WIDGET(self->label_file_name), "error");
     gtk_widget_add_css_class(GTK_WIDGET(self->label_file_name), "dim-label");
@@ -527,7 +541,7 @@ void setup(ConvolverBox* self,
   }));
 
   self->data->gconnections.push_back(g_signal_connect(
-      self->settings, "changed::kernel-path", G_CALLBACK(+[](GSettings* settings, char* key, ConvolverBox* self) {
+      self->settings, "changed::kernel-name", G_CALLBACK(+[](GSettings* settings, char* key, ConvolverBox* self) {
         self->data->mythreads.emplace_back([=]() {
           std::scoped_lock<std::mutex> lock(self->data->lock_guard_irs_info);
 

@@ -54,6 +54,19 @@ Convolver::Convolver(const std::string& tag,
     : PluginBase(tag, tags::plugin_name::convolver, tags::plugin_package::zita, schema, schema_path, pipe_manager),
       do_autogain(g_settings_get_boolean(settings, "autogain") != 0),
       ir_width(g_settings_get_int(settings, "ir-width")) {
+  // Initialize directories for local and community irs
+  local_irs_dir = std::string{g_get_user_config_dir()} + "/easyeffects/irs";
+
+  const gchar* const* xdg_data_dirs = g_get_system_data_dirs();
+
+  while (*xdg_data_dirs != nullptr) {
+    std::string dir = *xdg_data_dirs++;
+
+    dir += dir.ends_with("/") ? "" : "/";
+
+    system_data_irs_dir.push_back(dir + "easyeffects/irs");
+  }
+
   gconnections.push_back(g_signal_connect(settings, "changed::ir-width",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto* self = static_cast<Convolver*>(user_data);
@@ -72,7 +85,7 @@ Convolver::Convolver(const std::string& tag,
                                           }),
                                           this));
 
-  gconnections.push_back(g_signal_connect(settings, "changed::kernel-path",
+  gconnections.push_back(g_signal_connect(settings, "changed::kernel-name",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto* self = static_cast<Convolver*>(user_data);
 
@@ -277,16 +290,50 @@ void Convolver::process(std::span<float>& left_in,
   }
 }
 
+auto Convolver::search_irs_path(const std::string& name) -> std::string {
+  // Given the irs name without extension, search the full path on the filesystem.
+  const auto irs_filename = name + irs_ext;
+
+  // First check local directory
+  const auto local_irs_file = std::filesystem::path{local_irs_dir + "/" + irs_filename};
+
+  if (std::filesystem::exists(local_irs_file)) {
+    return local_irs_file.c_str();
+  }
+
+  // If the file is not found locally, try to search it under system directories.
+  std::string community_irs_file;
+
+  for (const auto& xdg_irs_dir : system_data_irs_dir) {
+    if (util::search_filename(std::filesystem::path{xdg_irs_dir}, irs_filename, community_irs_file, 3U)) {
+      break;
+    }
+  }
+
+  return community_irs_file;
+}
+
 void Convolver::read_kernel_file() {
   kernel_is_initialized = false;
 
-  const auto path = util::gsettings_get_string(settings, "kernel-path");
+  const auto name = util::gsettings_get_string(settings, "kernel-name");
 
-  if (path.empty()) {
-    util::warning(log_tag + name + ": irs file path is null. Entering passthrough mode...");
+  if (name.empty()) {
+    util::warning(log_tag + name + ": irs filename is null. Entering passthrough mode...");
 
     return;
   }
+
+  const auto path = search_irs_path(name);
+
+  // If the search fails, the path is empty
+  if (path.empty()) {
+    util::warning(log_tag + name + ": irs filename does not exist. Entering passthrough mode...");
+
+    return;
+  }
+
+  util::debug("trying to load irs: " + path);
 
   // SndfileHandle might have issues with std::string, so we provide cstring
 
@@ -341,7 +388,7 @@ void Convolver::read_kernel_file() {
 
   kernel_is_initialized = true;
 
-  util::debug(log_tag + name + ": kernel initialized");
+  util::debug(log_tag + name + ": kernel correctly initialized");
 }
 
 void Convolver::apply_kernel_autogain() {

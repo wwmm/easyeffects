@@ -125,9 +125,10 @@ class PresetsManager {
  private:
   std::string user_config_dir;
 
-  std::filesystem::path user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
+  std::filesystem::path user_input_dir, user_output_dir, user_irs_dir, user_rnnoise_dir, autoload_input_dir,
+      autoload_output_dir;
 
-  std::vector<std::string> system_data_dir_input, system_data_dir_output;
+  std::vector<std::string> system_data_dir_input, system_data_dir_output, system_data_dir_irs, system_data_dir_rnnoise;
 
   GSettings *settings = nullptr, *soe_settings = nullptr, *sie_settings = nullptr;
 
@@ -136,6 +137,8 @@ class PresetsManager {
   GFileMonitor *autoload_output_monitor = nullptr, *autoload_input_monitor = nullptr;
 
   static void create_user_directory(const std::filesystem::path& path);
+
+  auto import_addons_from_community_package(const PresetType& preset_type, const std::filesystem::path& path) -> bool;
 
   auto load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool;
 

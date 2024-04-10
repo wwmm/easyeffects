@@ -170,7 +170,7 @@ void on_import_model_clicked(RNNoiseBox* self, GtkButton* btn) {
   auto* filter = gtk_file_filter_new();
 
   gtk_file_filter_set_name(filter, _("RNNoise Models"));
-  gtk_file_filter_add_pattern(filter, "*.rnnn");
+  gtk_file_filter_add_pattern(filter, ("*"s + rnnn_ext).c_str());
 
   g_list_store_append(filters, filter);
 
@@ -211,7 +211,7 @@ void setup_listview(RNNoiseBox* self) {
   }
 
   if (g_list_model_get_n_items(G_LIST_MODEL(self->string_list)) == 0U) {
-    g_settings_set_string(self->settings, "model-path", "");
+    g_settings_reset(self->settings, "model-name");
   }
 }
 
@@ -235,7 +235,7 @@ void setup(RNNoiseBox* self,
   rnnoise->set_post_messages(true);
 
   // Initialize state labels
-  if (const auto m = util::gsettings_get_string(self->settings, "model-path"); !m.empty() && rnnoise->standard_model) {
+  if (const auto m = util::gsettings_get_string(self->settings, "model-name"); !m.empty() && rnnoise->standard_model) {
     update_model_state(self, true);
   }
 
@@ -291,17 +291,13 @@ void setup(RNNoiseBox* self,
       self->settings, self->input_gain, self->output_gain, self->enable_vad, self->vad_thres, self->wet, self->release);
 
   g_settings_bind_with_mapping(
-      self->settings, "model-path", self->selection_model, "selected", G_SETTINGS_BIND_DEFAULT,
+      self->settings, "model-name", self->selection_model, "selected", G_SETTINGS_BIND_DEFAULT,
       +[](GValue* value, GVariant* variant, gpointer user_data) {
         auto* self = EE_RNNOISE_BOX(user_data);
 
-        const auto* v = g_variant_get_string(variant, nullptr);
-
-        const auto path = std::filesystem::path{v};
-
         const std::string default_model_name = _("Standard Model");
 
-        auto gsettings_model_name = path.stem();
+        const std::string gsettings_model_name = g_variant_get_string(variant, nullptr);
 
         int standard_model_id = 0;
 
@@ -313,14 +309,29 @@ void setup(RNNoiseBox* self,
           g_object_unref(item);
 
           if (gsettings_model_name == model_name) {
+            // Select the local model and exit.
             g_value_set_uint(value, n);
+
+            return 1;
           } else if (model_name == default_model_name) {
+            // Save the position of the standard model.
             standard_model_id = n;
           }
         }
 
+        // If the model name is not in the list, determine if we should
+        // select the standard model or unselect the selection.
+
         if (gsettings_model_name.empty()) {
+          // If the model name is empty, select the standard model.
           g_value_set_uint(value, standard_model_id);
+        } else {
+          // If the model name is not empty, a community preset is being tried,
+          // so we unselect the selection using GTK_INVALID_LIST_POSITION.
+          g_value_set_uint(value, GTK_INVALID_LIST_POSITION);
+
+          // Since no item is selected, we set the active_model_name label manually.
+          gtk_label_set_text(self->active_model_name, gsettings_model_name.c_str());
         }
 
         return 1;
@@ -331,17 +342,13 @@ void setup(RNNoiseBox* self,
         auto string_object =
             GTK_STRING_OBJECT(gtk_single_selection_get_selected_item(GTK_SINGLE_SELECTION(self->selection_model)));
 
-        const std::string name = gtk_string_object_get_string(string_object);
+        const std::string selected_name = gtk_string_object_get_string(string_object);
 
         const std::string default_model_name = _("Standard Model");
 
-        if (name == default_model_name) {
-          return g_variant_new_string("");
-        }
+        const std::string gsettings_model_name = (selected_name == default_model_name) ? "" : selected_name;
 
-        const auto model_file = model_dir / std::filesystem::path{name + rnnn_ext};
-
-        return g_variant_new_string(model_file.c_str());
+        return g_variant_new_string(gsettings_model_name.c_str());
       },
       self, nullptr);
 }

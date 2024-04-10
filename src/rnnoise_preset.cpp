@@ -43,7 +43,7 @@ void RNNoisePreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section][instance_name]["model-path"] = util::gsettings_get_string(settings, "model-path");
+  json[section][instance_name]["model-name"] = util::gsettings_get_string(settings, "model-name");
 
   json[section][instance_name]["enable-vad"] = g_settings_get_boolean(settings, "enable-vad") != 0;
 
@@ -61,7 +61,7 @@ void RNNoisePreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "model-path", "model-path");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "model-name", "model-name");
 
   update_key<bool>(json.at(section).at(instance_name), settings, "enable-vad", "enable-vad");
 

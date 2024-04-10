@@ -167,6 +167,7 @@
 
                                                                 <property name="model">
                                                                     <object class="GtkSingleSelection" id="selection_model">
+                                                                        <property name="autoselect">0</property>
                                                                         <property name="model">
                                                                             <object class="GtkSortListModel">
                                                                                 <property name="model">

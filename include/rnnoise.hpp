@@ -57,15 +57,22 @@ class RNNoise : public PluginBase {
 
   void init_release();
 
+  auto search_model_path(const std::string& name) -> std::string;
+
 #ifndef ENABLE_RNNOISE
   bool package_installed = false;
 #endif
+
+  const std::string rnnn_ext = ".rnnn";
 
   bool standard_model = true;
 
   sigc::signal<void(const bool load_error)> model_changed;
 
  private:
+  std::string local_model_dir;
+  std::vector<std::string> system_data_model_dir;
+
   bool resample = false;
   bool notify_latency = false;
   bool rnnoise_ready = false;
@@ -99,7 +106,7 @@ class RNNoise : public PluginBase {
   float vad_prob_left, vad_prob_right;
   int vad_grace_left, vad_grace_right;
 
-  auto get_model_from_file() -> RNNModel*;
+  auto get_model_from_name() -> RNNModel*;
 
   void free_rnnoise();
 
