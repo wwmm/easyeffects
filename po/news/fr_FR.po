@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-10 23:03+0000\n"
-"PO-Revision-Date: 2024-03-11 23:18+0000\n"
-"Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
+"POT-Creation-Date: 2024-04-08 13:55+0000\n"
+"PO-Revision-Date: 2024-04-10 23:11+0000\n"
+"Last-Translator: tachyglossues <tachyglossues@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
 "Language: fr_FR\n"
@@ -136,6 +136,9 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"Amélioration du système de gestion du pipeline. Les effets non limiteur sont "
+"placés avant le limiteur même si les deux derniers plugins du pipeline sont "
+"un limiteur suivi d'un indicateur de niveau."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
@@ -180,6 +183,8 @@ msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Correction d'une régression qui empêchait la mise à jour des indicateurs de "
+"niveau dans certaines conditions."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -210,6 +215,10 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
+"Nous avons maintenant défini monitor.passthrough = true dans nos "
+"périphériques virtuels. Cela permettra aux lecteurs vidéo d'appliquer "
+"correctement le décalage de latence lorsque PipeWire &gt; 1.0.3 sera "
+"disponible."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
