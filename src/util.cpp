@@ -420,6 +420,53 @@ void str_trim(std::string& str) {
   str_trim_start(str);
 }
 
+auto search_filename(const std::filesystem::path& path,
+                     const std::string& filename,
+                     std::string& full_path_result,
+                     const uint& top_scan_level) -> bool {
+  // Recursive util to search a filename from an origin full path.
+  // The search is performed in subdirectories and it's stopped at a specified
+  // sublevel (top_scan_level = 1 searches only in the path).
+
+  if (!std::filesystem::exists(path)) {
+    return false;
+  }
+
+  const auto scan_level = top_scan_level - 1U;
+
+  auto it = std::filesystem::directory_iterator{path};
+
+  try {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_regular_file(it->status())) {
+        if (const auto path = it->path(); path.filename().c_str() == filename) {
+          // File found, abort the search.
+          full_path_result = path.c_str();
+
+          return true;
+        }
+      } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
+        if (const auto path = it->path(); !path.empty()) {
+          // Continue the search in the subfolder.
+          const auto found = search_filename(path, filename, full_path_result, scan_level);
+
+          if (found) {
+            return true;
+          }
+        }
+      }
+
+      ++it;
+    }
+  } catch (const std::exception& e) {
+    util::warning(e.what());
+
+    return false;
+  }
+
+  return false;
+}
+
 auto compare_versions(const std::string& v0, const std::string& v1) -> int {
   /* This is an util to compare two strings as semver, mainly used to compare
      two Pipewire versions.

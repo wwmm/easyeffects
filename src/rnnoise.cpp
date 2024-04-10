@@ -51,11 +51,24 @@ RNNoise::RNNoise(const std::string& tag,
   data_R.reserve(blocksize);
   data_tmp.reserve(blocksize);
 
+  // Initialize directories for local and community models
+  local_model_dir = std::string{g_get_user_config_dir()} + "/easyeffects/rnnoise";
+
+  const gchar* const* xdg_data_dirs = g_get_system_data_dirs();
+
+  while (*xdg_data_dirs != nullptr) {
+    std::string dir = *xdg_data_dirs++;
+
+    dir += dir.ends_with("/") ? "" : "/";
+
+    system_data_model_dir.push_back(dir + "easyeffects/rnnoise");
+  }
+
   const auto key_v = g_settings_get_double(settings, "wet");
 
   wet_ratio = (key_v <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(key_v));
 
-  gconnections.push_back(g_signal_connect(settings, "changed::model-path",
+  gconnections.push_back(g_signal_connect(settings, "changed::model-name",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto* self = static_cast<RNNoise*>(user_data);
 
@@ -68,7 +81,7 @@ RNNoise::RNNoise(const std::string& tag,
 #ifdef ENABLE_RNNOISE
                                             self->free_rnnoise();
 
-                                            auto* m = self->get_model_from_file();
+                                            auto* m = self->get_model_from_name();
 
                                             self->model = m;
 
@@ -116,7 +129,7 @@ RNNoise::RNNoise(const std::string& tag,
                    }),
                    this);
 
-  auto* m = get_model_from_file();
+  auto* m = get_model_from_name();
 
   model = m;
 
@@ -296,18 +309,54 @@ void RNNoise::process(std::span<float>& left_in,
   }
 }
 
+auto RNNoise::search_model_path(const std::string& name) -> std::string {
+  // Given the model name without extension, search the full path on the filesystem.
+  const auto model_filename = name + rnnn_ext;
+
+  // First check local directory
+  const auto local_model_file = std::filesystem::path{local_model_dir + "/" + model_filename};
+
+  if (std::filesystem::exists(local_model_file)) {
+    return local_model_file.c_str();
+  }
+
+  // If the file is not found locally, try to search it under system directories.
+  std::string community_model_file;
+
+  for (const auto& xdg_model_dir : system_data_model_dir) {
+    if (util::search_filename(std::filesystem::path{xdg_model_dir}, model_filename, community_model_file, 3U)) {
+      break;
+    }
+  }
+
+  return community_model_file;
+}
+
 #ifdef ENABLE_RNNOISE
 
-auto RNNoise::get_model_from_file() -> RNNModel* {
+auto RNNoise::get_model_from_name() -> RNNModel* {
   RNNModel* m = nullptr;
 
-  const auto path = util::gsettings_get_string(settings, "model-path");
+  const auto name = util::gsettings_get_string(settings, "model-name");
+
+  // Standard Model
+  if (name.empty()) {
+    standard_model = true;
+
+    util::warning(log_tag + " empty model name set, using the standard model");
+
+    model_changed.emit(false);
+
+    return m;
+  }
+
+  const auto path = search_model_path(name);
 
   // Standard Model
   if (path.empty()) {
     standard_model = true;
 
-    util::debug(log_tag + name + " using the standard model.");
+    util::debug(log_tag + name + " model does not exist on the filesystem, using the standard model.");
 
     model_changed.emit(false);
 
@@ -315,7 +364,7 @@ auto RNNoise::get_model_from_file() -> RNNModel* {
   }
 
   // Custom Model
-  util::debug(log_tag + name + " loading custom model from file: " + path);
+  util::debug(log_tag + name + " loading custom model from path: " + path);
 
   if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
     m = rnnoise_model_from_file(f);

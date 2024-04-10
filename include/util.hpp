@@ -116,6 +116,11 @@ void str_trim_start(std::string& str);
 void str_trim_end(std::string& str);
 void str_trim(std::string& str);
 
+auto search_filename(const std::filesystem::path& path,
+                     const std::string& filename,
+                     std::string& full_path_result,
+                     const uint& top_scan_level = std::numeric_limits<uint>::max()) -> bool;
+
 template <typename T>
 void print_type(T v) {
   warning(typeid(v).name());

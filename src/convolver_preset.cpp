@@ -43,7 +43,7 @@ void ConvolverPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section][instance_name]["kernel-path"] = util::gsettings_get_string(settings, "kernel-path");
+  json[section][instance_name]["kernel-name"] = util::gsettings_get_string(settings, "kernel-name");
 
   json[section][instance_name]["ir-width"] = g_settings_get_int(settings, "ir-width");
 
@@ -57,7 +57,7 @@ void ConvolverPreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "kernel-path", "kernel-path");
+  update_key<gchar*>(json.at(section).at(instance_name), settings, "kernel-name", "kernel-name");
 
   update_key<int>(json.at(section).at(instance_name), settings, "ir-width", "ir-width");
 
