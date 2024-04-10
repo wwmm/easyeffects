@@ -215,7 +215,11 @@ void on_combine_kernels(ConvolverMenuCombine* self, GtkButton* btn) {
 
   const auto* const kernel_2_name = gtk_string_object_get_string(GTK_STRING_OBJECT(dropdown_2_selection));
 
-  std::string output_name = gtk_editable_get_text(GTK_EDITABLE(self->output_kernel_name));
+  std::string output_name = g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(self->output_kernel_name)), -1);
+
+  gtk_editable_set_text(GTK_EDITABLE(self->output_kernel_name), "");
+
+  util::str_trim(output_name);
 
   if (output_name.empty() || output_name.find_first_of("\\/") != std::string::npos) {
     util::debug(" combined IR filename is empty or has illegal characters.");

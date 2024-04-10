@@ -100,7 +100,7 @@ auto closure_community_search_filter(PresetsMenu* self, const char* text) -> con
 }
 
 void create_preset(PresetsMenu* self, GtkButton* button) {
-  auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(self->new_preset_name)), -1));
+  std::string name = g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(self->new_preset_name)), -1);
 
   // Reset input field.
   gtk_editable_set_text(GTK_EDITABLE(self->new_preset_name), "");
