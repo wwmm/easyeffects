@@ -11,6 +11,7 @@ Description:
 
 - Other notes∶
 - In order for Community Presets to be correctly shipped, packagers are invited to read and follow the guidelines linked inside the README of EasyEffects master branch.
+- Presets with Convolver and/or Noise Reduction (RNNoise) effects created before `7.2.0` version are deprecated. To keep using them correctly, make sure to reload the irs/model file inside the Convolver/RNNoise UI and resave the preset.
 
 ---
 Version: 7.1.6
