@@ -61,8 +61,6 @@ void RNNoisePreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "model-name", "model-name");
-
   update_key<bool>(json.at(section).at(instance_name), settings, "enable-vad", "enable-vad");
 
   update_key<double>(json.at(section).at(instance_name), settings, "vad-thres", "vad-thres");
@@ -70,4 +68,27 @@ void RNNoisePreset::load(const nlohmann::json& json) {
   update_key<double>(json.at(section).at(instance_name), settings, "wet", "wet");
 
   update_key<double>(json.at(section).at(instance_name), settings, "release", "release");
+
+  // model-path deprecation
+  const auto* model_name_key = "model-name";
+
+  std::string new_model_name =
+      json.at(section).at(instance_name).value(model_name_key, get_default<gchar*>(settings, model_name_key));
+
+  if (new_model_name.empty()) {
+    const std::string model_path = json.at(section).at(instance_name).value("model-path", "");
+
+    if (!model_path.empty()) {
+      new_model_name = std::filesystem::path{model_path}.stem().c_str();
+
+      util::warning("using RNNoise model-path is deprecated, please update your preset; fallback to model-name: " +
+                    new_model_name);
+    }
+  }
+
+  auto* current_model_name = g_settings_get_string(settings, model_name_key);
+
+  if (new_model_name != current_model_name) {
+    g_settings_set_string(settings, model_name_key, new_model_name.c_str());
+  }
 }

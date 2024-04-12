@@ -57,9 +57,30 @@ void ConvolverPreset::load(const nlohmann::json& json) {
 
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
-  update_key<gchar*>(json.at(section).at(instance_name), settings, "kernel-name", "kernel-name");
-
   update_key<int>(json.at(section).at(instance_name), settings, "ir-width", "ir-width");
 
   update_key<bool>(json.at(section).at(instance_name), settings, "autogain", "autogain");
+
+  // kernel-path deprecation
+  const auto* kernel_name_key = "kernel-name";
+
+  std::string new_kernel_name =
+      json.at(section).at(instance_name).value(kernel_name_key, get_default<gchar*>(settings, kernel_name_key));
+
+  if (new_kernel_name.empty()) {
+    const std::string kernel_path = json.at(section).at(instance_name).value("kernel-path", "");
+
+    if (!kernel_path.empty()) {
+      new_kernel_name = std::filesystem::path{kernel_path}.stem().c_str();
+
+      util::warning("using Convolver kernel-path is deprecated, please update your preset; fallback to kernel-name: " +
+                    new_kernel_name);
+    }
+  }
+
+  auto* current_kernel_name = g_settings_get_string(settings, kernel_name_key);
+
+  if (new_kernel_name != current_kernel_name) {
+    g_settings_set_string(settings, kernel_name_key, new_kernel_name.c_str());
+  }
 }

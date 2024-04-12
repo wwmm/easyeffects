@@ -326,8 +326,10 @@ void setup(RNNoiseBox* self,
           // If the model name is empty, select the standard model.
           g_value_set_uint(value, standard_model_id);
         } else {
-          // If the model name is not empty, a community preset is being tried,
-          // so we unselect the selection using GTK_INVALID_LIST_POSITION.
+          // If the model name is not empty:
+          // 1. A local preset is loaded, but the model file on the filesystem is missing;
+          // 2. A community preset is being tried and the model file may be correctly loaded.
+          // In both cases we unselect the selection using GTK_INVALID_LIST_POSITION.
           g_value_set_uint(value, GTK_INVALID_LIST_POSITION);
 
           // Since no item is selected, we set the active_model_name label manually.
