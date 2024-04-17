@@ -148,7 +148,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/xiph/rnnoise.git",
-                    "commit": "904a876dce1f9ab8860c0a5000ed151f9f6eef58",
+                    "commit": "372f7b4b76cde4ca1ec4605353dd17898a99de38",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/xiph/rnnoise/commits",
