@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 14:42+0000\n"
+"POT-Creation-Date: 2024-04-22 14:52+0000\n"
 "PO-Revision-Date: 2024-04-06 23:01+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -637,7 +637,7 @@ msgid "Sidechain Type"
 msgstr "Typ łańcucha bocznego"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:774
+#: src/plugins_box.cpp:807
 msgid "Input Device"
 msgstr "Urządzenie wejściowe"
 
@@ -1767,23 +1767,32 @@ msgstr "Włącz/wyłącz ten efekt"
 msgid "Change the position of this effect"
 msgstr "Zmień pozycję tego efektu"
 
-#: data/ui/plugins_box.ui:27
+#: data/ui/plugins_box.ui:26
 msgid "Show/hide effects list"
 msgstr ""
 
-#: data/ui/plugins_box.ui:41
+#: data/ui/plugins_box.ui:40
 msgid "Add Effect"
 msgstr "Dodaj efekt"
 
-#: data/ui/plugins_box.ui:92
+#: data/ui/plugins_box.ui:63
+#, fuzzy
+msgid "Go to the previous effect"
+msgstr "Usuń ten efekt"
+
+#: data/ui/plugins_box.ui:78
+msgid "Go to the next effect"
+msgstr ""
+
+#: data/ui/plugins_box.ui:129
 msgid "Used Plugins List"
 msgstr "Lista używanych wtyczek"
 
-#: data/ui/plugins_box.ui:153
+#: data/ui/plugins_box.ui:190
 msgid "No Effects"
 msgstr "Brak efektów"
 
-#: data/ui/plugins_box.ui:154
+#: data/ui/plugins_box.ui:191
 msgid "Audio Stream Not Modified"
 msgstr ""
 
@@ -2400,11 +2409,11 @@ msgstr "Płaska odpowiedź"
 msgid "Failed To Load The Impulse File"
 msgstr "Nie udało się załadować pliku impulsu"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:775
+#: src/effects_box.cpp:306 src/plugins_box.cpp:808
 msgid "Recorders"
 msgstr "Rejestratory"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:795
+#: src/effects_box.cpp:329 src/plugins_box.cpp:828
 msgid "Players"
 msgstr "Odtwarzacze"
 
@@ -2467,11 +2476,11 @@ msgstr "Usuń automatyczne wczytywanie szablonu"
 msgid "Output Level Meter"
 msgstr "Wzmocnienie wej."
 
-#: src/plugins_box.cpp:727
+#: src/plugins_box.cpp:760
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/plugins_box.cpp:796
+#: src/plugins_box.cpp:829
 msgid "Output Device"
 msgstr "Urządzenie wyjściowe"
 
