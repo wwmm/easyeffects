@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 14:42+0000\n"
+"POT-Creation-Date: 2024-04-22 14:52+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -669,7 +669,7 @@ msgid "Sidechain Type"
 msgstr "Sidechain"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:774
+#: src/plugins_box.cpp:807
 #, fuzzy
 msgid "Input Device"
 msgstr "Pembatas Masukan"
@@ -1827,25 +1827,34 @@ msgstr ""
 msgid "Change the position of this effect"
 msgstr ""
 
-#: data/ui/plugins_box.ui:27
+#: data/ui/plugins_box.ui:26
 msgid "Show/hide effects list"
 msgstr ""
 
-#: data/ui/plugins_box.ui:41
+#: data/ui/plugins_box.ui:40
 #, fuzzy
 msgid "Add Effect"
 msgstr "Efek Input"
 
-#: data/ui/plugins_box.ui:92
+#: data/ui/plugins_box.ui:63
+#, fuzzy
+msgid "Go to the previous effect"
+msgstr "Hapus Berkas Preset Ini"
+
+#: data/ui/plugins_box.ui:78
+msgid "Go to the next effect"
+msgstr ""
+
+#: data/ui/plugins_box.ui:129
 msgid "Used Plugins List"
 msgstr ""
 
-#: data/ui/plugins_box.ui:153
+#: data/ui/plugins_box.ui:190
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: data/ui/plugins_box.ui:154
+#: data/ui/plugins_box.ui:191
 msgid "Audio Stream Not Modified"
 msgstr ""
 
@@ -2484,11 +2493,11 @@ msgstr "Muat Berkas Impuls"
 msgid "Failed To Load The Impulse File"
 msgstr "Tidak dapat Memuat Berkas Impuls"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:775
+#: src/effects_box.cpp:306 src/plugins_box.cpp:808
 msgid "Recorders"
 msgstr "Perekam"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:795
+#: src/effects_box.cpp:329 src/plugins_box.cpp:828
 msgid "Players"
 msgstr "Pemain"
 
@@ -2554,11 +2563,11 @@ msgstr "Hapus Preset Pemuatan Otomatis"
 msgid "Output Level Meter"
 msgstr "Gain Input"
 
-#: src/plugins_box.cpp:727
+#: src/plugins_box.cpp:760
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:796
+#: src/plugins_box.cpp:829
 #, fuzzy
 msgid "Output Device"
 msgstr "Gain Input"

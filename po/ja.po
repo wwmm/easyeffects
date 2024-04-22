@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 14:42+0000\n"
+"POT-Creation-Date: 2024-04-22 14:52+0000\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -628,7 +628,7 @@ msgid "Sidechain Type"
 msgstr "サイドチェーンタイプ"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:774
+#: src/plugins_box.cpp:807
 msgid "Input Device"
 msgstr "入力デバイス"
 
@@ -1708,23 +1708,32 @@ msgstr "このエフェクトの有効化/無効化"
 msgid "Change the position of this effect"
 msgstr "このエフェクトの位置を変更する"
 
-#: data/ui/plugins_box.ui:27
+#: data/ui/plugins_box.ui:26
 msgid "Show/hide effects list"
 msgstr ""
 
-#: data/ui/plugins_box.ui:41
+#: data/ui/plugins_box.ui:40
 msgid "Add Effect"
 msgstr "エフェクトの追加"
 
-#: data/ui/plugins_box.ui:92
+#: data/ui/plugins_box.ui:63
+#, fuzzy
+msgid "Go to the previous effect"
+msgstr "このエフェクトを削除"
+
+#: data/ui/plugins_box.ui:78
+msgid "Go to the next effect"
+msgstr ""
+
+#: data/ui/plugins_box.ui:129
 msgid "Used Plugins List"
 msgstr "使用プラグインリスト"
 
-#: data/ui/plugins_box.ui:153
+#: data/ui/plugins_box.ui:190
 msgid "No Effects"
 msgstr "エフェクトなし"
 
-#: data/ui/plugins_box.ui:154
+#: data/ui/plugins_box.ui:191
 msgid "Audio Stream Not Modified"
 msgstr "オーディオストリームは変更されていません"
 
@@ -2338,11 +2347,11 @@ msgstr "読み込まれたインパルスファイルはありません"
 msgid "Failed To Load The Impulse File"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:775
+#: src/effects_box.cpp:306 src/plugins_box.cpp:808
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:795
+#: src/effects_box.cpp:329 src/plugins_box.cpp:828
 msgid "Players"
 msgstr "プレイヤー"
 
@@ -2408,11 +2417,11 @@ msgstr "自動読み込みプリセットを削除"
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 
-#: src/plugins_box.cpp:727
+#: src/plugins_box.cpp:760
 msgid "Remove"
 msgstr "削除"
 
-#: src/plugins_box.cpp:796
+#: src/plugins_box.cpp:829
 msgid "Output Device"
 msgstr "出力デバイス"
 

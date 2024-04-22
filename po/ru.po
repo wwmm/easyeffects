@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 14:42+0000\n"
+"POT-Creation-Date: 2024-04-22 14:52+0000\n"
 "PO-Revision-Date: 2024-04-09 08:24+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -648,7 +648,7 @@ msgstr "Тип боковой цепи"
 
 # #, fuzzy
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:774
+#: src/plugins_box.cpp:807
 msgid "Input Device"
 msgstr "Устройство ввода"
 
@@ -1725,23 +1725,32 @@ msgstr "Включить/отключить эффект"
 msgid "Change the position of this effect"
 msgstr "Изменить позицию эффекта"
 
-#: data/ui/plugins_box.ui:27
+#: data/ui/plugins_box.ui:26
 msgid "Show/hide effects list"
 msgstr "Показать/скрыть список эффектов"
 
-#: data/ui/plugins_box.ui:41
+#: data/ui/plugins_box.ui:40
 msgid "Add Effect"
 msgstr "Добавить эффект"
 
-#: data/ui/plugins_box.ui:92
+#: data/ui/plugins_box.ui:63
+#, fuzzy
+msgid "Go to the previous effect"
+msgstr "Удалить этот эффект"
+
+#: data/ui/plugins_box.ui:78
+msgid "Go to the next effect"
+msgstr ""
+
+#: data/ui/plugins_box.ui:129
 msgid "Used Plugins List"
 msgstr "Список используемых плагинов"
 
-#: data/ui/plugins_box.ui:153
+#: data/ui/plugins_box.ui:190
 msgid "No Effects"
 msgstr "Без эффектов"
 
-#: data/ui/plugins_box.ui:154
+#: data/ui/plugins_box.ui:191
 msgid "Audio Stream Not Modified"
 msgstr "Аудиопоток не изменён"
 
@@ -2358,11 +2367,11 @@ msgstr "Нет загруженного файла импульса"
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:775
+#: src/effects_box.cpp:306 src/plugins_box.cpp:808
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:795
+#: src/effects_box.cpp:329 src/plugins_box.cpp:828
 msgid "Players"
 msgstr "Проигрыватели"
 
@@ -2427,11 +2436,11 @@ msgstr "Удалить автозагрузку предустановки"
 msgid "Output Level Meter"
 msgstr "Уровнемер выхода"
 
-#: src/plugins_box.cpp:727
+#: src/plugins_box.cpp:760
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/plugins_box.cpp:796
+#: src/plugins_box.cpp:829
 msgid "Output Device"
 msgstr "Устройство вывода"
 

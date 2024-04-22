@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 14:42+0000\n"
+"POT-Creation-Date: 2024-04-22 14:52+0000\n"
 "PO-Revision-Date: 2023-12-23 11:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -620,7 +620,7 @@ msgid "Sidechain Type"
 msgstr "Type Chaîne Latérale"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:774
+#: src/plugins_box.cpp:807
 msgid "Input Device"
 msgstr "Périphérique d’entrée"
 
@@ -1681,23 +1681,32 @@ msgstr "Activer/désactiver cet effet"
 msgid "Change the position of this effect"
 msgstr "Modifier la position de cet effet"
 
-#: data/ui/plugins_box.ui:27
+#: data/ui/plugins_box.ui:26
 msgid "Show/hide effects list"
 msgstr ""
 
-#: data/ui/plugins_box.ui:41
+#: data/ui/plugins_box.ui:40
 msgid "Add Effect"
 msgstr "Ajouter un effet"
 
-#: data/ui/plugins_box.ui:92
+#: data/ui/plugins_box.ui:63
+#, fuzzy
+msgid "Go to the previous effect"
+msgstr "Supprimer cet effet"
+
+#: data/ui/plugins_box.ui:78
+msgid "Go to the next effect"
+msgstr ""
+
+#: data/ui/plugins_box.ui:129
 msgid "Used Plugins List"
 msgstr "Liste des greffons utilisés"
 
-#: data/ui/plugins_box.ui:153
+#: data/ui/plugins_box.ui:190
 msgid "No Effects"
 msgstr "Aucun effet"
 
-#: data/ui/plugins_box.ui:154
+#: data/ui/plugins_box.ui:191
 msgid "Audio Stream Not Modified"
 msgstr "Flux audio non modifié"
 
@@ -2310,11 +2319,11 @@ msgstr "Aucun fichier d’impulsion chargé"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossible de charger le fichier d’impulsion"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:775
+#: src/effects_box.cpp:306 src/plugins_box.cpp:808
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:795
+#: src/effects_box.cpp:329 src/plugins_box.cpp:828
 msgid "Players"
 msgstr "Lecteurs"
 
@@ -2380,11 +2389,11 @@ msgstr "Supprimer le préréglage du chargement automatique"
 msgid "Output Level Meter"
 msgstr "Indicateur Niveau de Sortie"
 
-#: src/plugins_box.cpp:727
+#: src/plugins_box.cpp:760
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/plugins_box.cpp:796
+#: src/plugins_box.cpp:829
 msgid "Output Device"
 msgstr "Périphérique de sortie"
 
