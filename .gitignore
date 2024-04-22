@@ -55,7 +55,7 @@ ppastats
 .autobuild
 
 # exclude flatpak build directories
-build-dir
+build-dir*
 util/flatpak/repo
 .flatpak
 .flatpak-builder

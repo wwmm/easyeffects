@@ -3,6 +3,7 @@
     "runtime": "org.gnome.Platform",
     "runtime-version": "46",
     "sdk": "org.gnome.Sdk",
+    "branch": "stable",
     "command": "easyeffects",
     "finish-args": [
         "--share=ipc",
@@ -26,6 +27,13 @@
         "/share/info"
     ],
     "add-extensions": {
+        "io.github.wwmm.easyeffects.Presets": {
+            "directory": "extensions/Presets",
+            "merge-dirs": "input;output;irs;rnnoise",
+            "subdirectories": true,
+            "no-autodownload": true,
+            "autodelete": true
+        },
         "org.freedesktop.LinuxAudio.Plugins": {
             "directory": "extensions/Plugins",
             "version": "23.08",
@@ -87,6 +95,7 @@
             ],
             "post-install": [
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/$FLATPAK_ID ../LICENSE",
+                "mkdir -pm755 $FLATPAK_DEST/extensions/Presets",
                 "mkdir -pm755 $FLATPAK_DEST/extensions/Plugins"
             ],
             "modules": [
