@@ -170,7 +170,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
   // saving the current visible page name for later usage
 
-  std::string visible_page_name =
+  const std::string visible_page_name =
       (gtk_stack_get_visible_child_name(self->stack) != nullptr) ? gtk_stack_get_visible_child_name(self->stack) : "";
 
   // removing all plugins
@@ -561,6 +561,39 @@ void add_plugins_to_stack(PluginsBox* self) {
   }
 }
 
+void show_adjacent_plugin(PluginsBox* self, const int& increment) {
+  const auto plugins_list = util::gchar_array_to_vector(g_settings_get_strv(self->settings, "plugins"));
+
+  if (plugins_list.empty()) {
+    return;
+  }
+
+  const std::string visible_page_name =
+      (gtk_stack_get_visible_child_name(self->stack) != nullptr) ? gtk_stack_get_visible_child_name(self->stack) : "";
+
+  if (visible_page_name.empty()) {
+    return;
+  }
+
+  auto it = std::ranges::find(plugins_list, visible_page_name);
+
+  if (it == plugins_list.end()) {
+    return;
+  }
+
+  if (auto adj_it = it + increment; adj_it >= plugins_list.begin() && adj_it < plugins_list.end()) {
+    gtk_stack_set_visible_child_name(self->stack, (*adj_it).c_str());
+  }
+}
+
+void on_prev_plugin(PluginsBox* self, GtkButton* button) {
+  show_adjacent_plugin(self, -1);
+}
+
+void on_next_plugin(PluginsBox* self, GtkButton* button) {
+  show_adjacent_plugin(self, 1);
+}
+
 void setup_listview(PluginsBox* self) {
   auto* factory = gtk_signal_list_item_factory_new();
 
@@ -906,6 +939,9 @@ void plugins_box_class_init(PluginsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_box);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_icon);
   gtk_widget_class_bind_template_child(widget_class, PluginsBox, endpoint_name);
+
+  gtk_widget_class_bind_template_callback(widget_class, on_prev_plugin);
+  gtk_widget_class_bind_template_callback(widget_class, on_next_plugin);
 }
 
 void plugins_box_init(PluginsBox* self) {
