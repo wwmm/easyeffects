@@ -170,7 +170,7 @@ void add_plugins_to_stack(PluginsBox* self) {
 
   // saving the current visible page name for later usage
 
-  std::string visible_page_name =
+  const std::string visible_page_name =
       (gtk_stack_get_visible_child_name(self->stack) != nullptr) ? gtk_stack_get_visible_child_name(self->stack) : "";
 
   // removing all plugins
@@ -568,7 +568,7 @@ void show_adjacent_plugin(PluginsBox* self, const int& increment) {
     return;
   }
 
-  std::string visible_page_name =
+  const std::string visible_page_name =
       (gtk_stack_get_visible_child_name(self->stack) != nullptr) ? gtk_stack_get_visible_child_name(self->stack) : "";
 
   if (visible_page_name.empty()) {
