@@ -146,16 +146,21 @@
             "name": "rnnoise",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/xiph/rnnoise.git",
-                    "commit": "372f7b4b76cde4ca1ec4605353dd17898a99de38",
+                    "type": "archive",
+                    "url": "https://github.com/xiph/rnnoise/releases/download/v0.2/rnnoise-0.2.tar.gz",
+                    "sha256": "90fce4b00b9ff24c08dbfe31b82ffd43bae383d85c5535676d28b0a2b11c0d37",
                     "x-checker-data": {
                         "type": "json",
-                        "url": "https://api.github.com/repos/xiph/rnnoise/commits",
-                        "commit-query": "first( .[].sha )",
-                        "version-query": "first( .[].sha )",
-                        "timestamp-query": "first( .[].commit.committer.date )"
+                        "url": "https://api.github.com/repos/xiph/rnnoise/releases/latest",
+                        "version-query": ".tag_name | sub(\"^v\"; \"\")",
+                        "url-query": ".assets[] | select(.name==\"rnnoise-\" + $version + \".tar.gz\") | .browser_download_url"
                     }
+                },
+                {
+                    "//": "downloads the file as found by this script https://github.com/xiph/rnnoise/blob/904a876dce1f9ab8860c0a5000ed151f9f6eef58/download_model.sh",
+                    "type": "archive",
+                    "url": "https://media.xiph.org/rnnoise/models/rnnoise_data-0b50c45.tar.gz",
+                    "sha256": "4ac81c5c0884ec4bd5907026aaae16209b7b76cd9d7f71af582094a2f98f4b43"
                 }
             ],
             "cleanup": [
