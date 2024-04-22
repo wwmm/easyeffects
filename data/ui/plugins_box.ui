@@ -52,7 +52,6 @@
                     <object class="GtkBox" id="navigation_box">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin-top">6</property>
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
@@ -61,6 +60,12 @@
                                 <property name="valign">center</property>
                                 <property name="icon-name">go-up-symbolic</property>
                                 <signal name="clicked" handler="on_prev_plugin" object="PluginsBox" />
+                                <property name="tooltip-text" translatable="yes">Go to the previous effect</property>
+                                <property name="cursor">
+                                    <object class="GdkCursor">
+                                        <property name="name">pointer</property>
+                                    </object>
+                                </property>
                             </object>
                         </child>
 
@@ -70,6 +75,12 @@
                                 <property name="valign">center</property>
                                 <property name="icon-name">go-down-symbolic</property>
                                 <signal name="clicked" handler="on_next_plugin" object="PluginsBox" />
+                                <property name="tooltip-text" translatable="yes">Go to the next effect</property>
+                                <property name="cursor">
+                                    <object class="GdkCursor">
+                                        <property name="name">pointer</property>
+                                    </object>
+                                </property>
                             </object>
                         </child>
                     </object>
