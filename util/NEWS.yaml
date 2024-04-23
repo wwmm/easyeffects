@@ -5,6 +5,7 @@ Date: UNRELEASED_DATE
 Description:
 - Features∶
 - Community Presets have been implemented. Users can install packages containing multiple Easy Effects presets to be imported and applied inside the application. These packages will be maintained and shipped by volunteers. You can search them on Flathub or the repositories of your favorite distribution.
+- Added the ability of collapsing the sidebar to hide the effects list and expand the area of the effects user interface.
 
 - Bug fixes∶
 - A change in GTK 4.14.1 prevented to apply the values inserted into the text field of our SpinButton widgets. This issue is now resolved.

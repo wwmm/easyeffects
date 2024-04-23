@@ -52,16 +52,20 @@ RNNoise::RNNoise(const std::string& tag,
   data_tmp.reserve(blocksize);
 
   // Initialize directories for local and community models
-  local_model_dir = std::string{g_get_user_config_dir()} + "/easyeffects/rnnoise";
+  local_dir_rnnoise = std::string{g_get_user_config_dir()} + "/easyeffects/rnnoise";
 
-  const gchar* const* xdg_data_dirs = g_get_system_data_dirs();
+  // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox)
+  if (std::filesystem::is_regular_file("/.flatpak-info")) {
+    system_data_dir_rnnoise.push_back("/app/extensions/Presets/rnnoise");
+  }
 
-  while (*xdg_data_dirs != nullptr) {
+  // Regular paths
+  for (const gchar* const* xdg_data_dirs = g_get_system_data_dirs(); *xdg_data_dirs != nullptr;) {
     std::string dir = *xdg_data_dirs++;
 
     dir += dir.ends_with("/") ? "" : "/";
 
-    system_data_model_dir.push_back(dir + "easyeffects/rnnoise");
+    system_data_dir_rnnoise.push_back(dir + "easyeffects/rnnoise");
   }
 
   const auto key_v = g_settings_get_double(settings, "wet");
@@ -314,7 +318,7 @@ auto RNNoise::search_model_path(const std::string& name) -> std::string {
   const auto model_filename = name + rnnn_ext;
 
   // First check local directory
-  const auto local_model_file = std::filesystem::path{local_model_dir + "/" + model_filename};
+  const auto local_model_file = std::filesystem::path{local_dir_rnnoise + "/" + model_filename};
 
   if (std::filesystem::exists(local_model_file)) {
     return local_model_file.c_str();
@@ -323,7 +327,7 @@ auto RNNoise::search_model_path(const std::string& name) -> std::string {
   // If the file is not found locally, try to search it under system directories.
   std::string community_model_file;
 
-  for (const auto& xdg_model_dir : system_data_model_dir) {
+  for (const auto& xdg_model_dir : system_data_dir_rnnoise) {
     if (util::search_filename(std::filesystem::path{xdg_model_dir}, model_filename, community_model_file, 3U)) {
       break;
     }

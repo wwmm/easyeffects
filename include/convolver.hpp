@@ -58,8 +58,8 @@ class Convolver : public PluginBase {
   auto search_irs_path(const std::string& name) -> std::string;
 
  private:
-  std::string local_irs_dir;
-  std::vector<std::string> system_data_irs_dir;
+  std::string local_dir_irs;
+  std::vector<std::string> system_data_dir_irs;
 
   bool kernel_is_initialized = false;
   bool n_samples_is_power_of_2 = true;

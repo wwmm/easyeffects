@@ -55,16 +55,20 @@ Convolver::Convolver(const std::string& tag,
       do_autogain(g_settings_get_boolean(settings, "autogain") != 0),
       ir_width(g_settings_get_int(settings, "ir-width")) {
   // Initialize directories for local and community irs
-  local_irs_dir = std::string{g_get_user_config_dir()} + "/easyeffects/irs";
+  local_dir_irs = std::string{g_get_user_config_dir()} + "/easyeffects/irs";
 
-  const gchar* const* xdg_data_dirs = g_get_system_data_dirs();
+  // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox)
+  if (std::filesystem::is_regular_file("/.flatpak-info")) {
+    system_data_dir_irs.push_back("/app/extensions/Presets/irs");
+  }
 
-  while (*xdg_data_dirs != nullptr) {
+  // Regular paths
+  for (const gchar* const* xdg_data_dirs = g_get_system_data_dirs(); *xdg_data_dirs != nullptr;) {
     std::string dir = *xdg_data_dirs++;
 
     dir += dir.ends_with("/") ? "" : "/";
 
-    system_data_irs_dir.push_back(dir + "easyeffects/irs");
+    system_data_dir_irs.push_back(dir + "easyeffects/irs");
   }
 
   gconnections.push_back(g_signal_connect(settings, "changed::ir-width",
@@ -295,7 +299,7 @@ auto Convolver::search_irs_path(const std::string& name) -> std::string {
   const auto irs_filename = name + irs_ext;
 
   // First check local directory
-  const auto local_irs_file = std::filesystem::path{local_irs_dir + "/" + irs_filename};
+  const auto local_irs_file = std::filesystem::path{local_dir_irs + "/" + irs_filename};
 
   if (std::filesystem::exists(local_irs_file)) {
     return local_irs_file.c_str();
@@ -304,7 +308,7 @@ auto Convolver::search_irs_path(const std::string& name) -> std::string {
   // If the file is not found locally, try to search it under system directories.
   std::string community_irs_file;
 
-  for (const auto& xdg_irs_dir : system_data_irs_dir) {
+  for (const auto& xdg_irs_dir : system_data_dir_irs) {
     if (util::search_filename(std::filesystem::path{xdg_irs_dir}, irs_filename, community_irs_file, 3U)) {
       break;
     }
