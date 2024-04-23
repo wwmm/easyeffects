@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 14:52+0000\n"
+"POT-Creation-Date: 2024-04-23 14:11+0000\n"
 "PO-Revision-Date: 2023-12-23 11:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2410,43 +2410,43 @@ msgid "Delete?"
 msgstr "Effacer ?"
 
 #. Placeholders in case of issues
-#: src/presets_manager.cpp:438
+#: src/presets_manager.cpp:436
 #, fuzzy
 msgid "Community Preset"
 msgstr "Importer un préréglage"
 
-#: src/presets_manager.cpp:438
+#: src/presets_manager.cpp:436
 msgid "Package"
 msgstr ""
 
-#: src/presets_manager.cpp:1109 src/presets_manager.cpp:1116
-#: src/presets_manager.cpp:1125 src/presets_manager.cpp:1132
-#: src/presets_manager.cpp:1141 src/presets_manager.cpp:1149
+#: src/presets_manager.cpp:1107 src/presets_manager.cpp:1114
+#: src/presets_manager.cpp:1123 src/presets_manager.cpp:1130
+#: src/presets_manager.cpp:1139 src/presets_manager.cpp:1147
 msgid "Preset Not Loaded Correctly"
 msgstr "Le préréglage n'a pas été chargé correctement"
 
-#: src/presets_manager.cpp:1109
+#: src/presets_manager.cpp:1107
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Format incorrect dans la liste des applications exclues"
 
-#: src/presets_manager.cpp:1116
+#: src/presets_manager.cpp:1114
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 "Erreur générique lors du chargement de la liste des applications exclues"
 
-#: src/presets_manager.cpp:1125
+#: src/presets_manager.cpp:1123
 msgid "Wrong Format in Effects List"
 msgstr "Format incorrect dans la liste des effets"
 
-#: src/presets_manager.cpp:1132
+#: src/presets_manager.cpp:1130
 msgid "Generic Error While Loading Effects List"
 msgstr "Erreur générique lors du chargement de la liste des effets"
 
-#: src/presets_manager.cpp:1142
+#: src/presets_manager.cpp:1140
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Un ou plusieurs paramètres ont un format incorrect"
 
-#: src/presets_manager.cpp:1150
+#: src/presets_manager.cpp:1148
 msgid "Generic Error While Loading The Effect"
 msgstr "Erreur générique lors du chargement de l'effet"
 
