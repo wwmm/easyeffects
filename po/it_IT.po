@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-22 14:52+0000\n"
-"PO-Revision-Date: 2024-04-09 23:01+0000\n"
+"PO-Revision-Date: 2024-04-23 04:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1693,13 +1693,12 @@ msgid "Add Effect"
 msgstr "Aggiungi Effetto"
 
 #: data/ui/plugins_box.ui:63
-#, fuzzy
 msgid "Go to the previous effect"
-msgstr "Rimuovi questo effetto"
+msgstr "Vai al precedente effetto"
 
 #: data/ui/plugins_box.ui:78
 msgid "Go to the next effect"
-msgstr ""
+msgstr "Vai al successivo effetto"
 
 #: data/ui/plugins_box.ui:129
 msgid "Used Plugins List"
