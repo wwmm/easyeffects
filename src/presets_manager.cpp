@@ -82,11 +82,17 @@ PresetsManager::PresetsManager()
       settings(g_settings_new(tags::app::id)),
       soe_settings(g_settings_new(tags::schema::id_output)),
       sie_settings(g_settings_new(tags::schema::id_input)) {
-  // initialize input and output directories for community presets
+  // Initialize input and output directories for community presets.
+  // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).
+  if (std::filesystem::is_regular_file("/.flatpak-info")) {
+    system_data_dir_input.push_back("/app/extensions/Presets/input");
+    system_data_dir_output.push_back("/app/extensions/Presets/output");
+    system_data_dir_irs.push_back("/app/extensions/Presets/irs");
+    system_data_dir_rnnoise.push_back("/app/extensions/Presets/rnnoise");
+  }
 
-  const gchar* const* xdg_data_dirs = g_get_system_data_dirs();
-
-  while (*xdg_data_dirs != nullptr) {
+  // Regular paths.
+  for (const gchar* const* xdg_data_dirs = g_get_system_data_dirs(); *xdg_data_dirs != nullptr;) {
     std::string dir = *xdg_data_dirs++;
 
     dir += dir.ends_with("/") ? "" : "/";
@@ -95,14 +101,6 @@ PresetsManager::PresetsManager()
     system_data_dir_output.push_back(dir + "easyeffects/output");
     system_data_dir_irs.push_back(dir + "easyeffects/irs");
     system_data_dir_rnnoise.push_back(dir + "easyeffects/rnnoise");
-  }
-
-  // flatpak always creates this file for apps running in the flatpak sandbox
-  if (std::filesystem::is_regular_file("/.flatpak-info")) {
-    system_data_dir_input.push_back("/app/extensions/Presets/input");
-    system_data_dir_output.push_back("/app/extensions/Presets/output");
-    system_data_dir_irs.push_back("/app/extensions/Presets/irs");
-    system_data_dir_rnnoise.push_back("/app/extensions/Presets/rnnoise");
   }
 
   // create user presets directories

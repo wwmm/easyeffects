@@ -70,8 +70,8 @@ class RNNoise : public PluginBase {
   sigc::signal<void(const bool load_error)> model_changed;
 
  private:
-  std::string local_model_dir;
-  std::vector<std::string> system_data_model_dir;
+  std::string local_dir_rnnoise;
+  std::vector<std::string> system_data_dir_rnnoise;
 
   bool resample = false;
   bool notify_latency = false;
