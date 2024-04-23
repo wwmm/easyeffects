@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 14:52+0000\n"
+"POT-Creation-Date: 2024-04-23 14:11+0000\n"
 "PO-Revision-Date: 2024-04-23 04:07+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2401,41 +2401,41 @@ msgid "Delete?"
 msgstr "Silinsin mi?"
 
 #. Placeholders in case of issues
-#: src/presets_manager.cpp:438
+#: src/presets_manager.cpp:436
 msgid "Community Preset"
 msgstr "Topluluk Ön Ayarı"
 
-#: src/presets_manager.cpp:438
+#: src/presets_manager.cpp:436
 msgid "Package"
 msgstr "Paket"
 
-#: src/presets_manager.cpp:1109 src/presets_manager.cpp:1116
-#: src/presets_manager.cpp:1125 src/presets_manager.cpp:1132
-#: src/presets_manager.cpp:1141 src/presets_manager.cpp:1149
+#: src/presets_manager.cpp:1107 src/presets_manager.cpp:1114
+#: src/presets_manager.cpp:1123 src/presets_manager.cpp:1130
+#: src/presets_manager.cpp:1139 src/presets_manager.cpp:1147
 msgid "Preset Not Loaded Correctly"
 msgstr "Ön Ayar Doğru Yüklenmedi"
 
-#: src/presets_manager.cpp:1109
+#: src/presets_manager.cpp:1107
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:1116
+#: src/presets_manager.cpp:1114
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:1125
+#: src/presets_manager.cpp:1123
 msgid "Wrong Format in Effects List"
 msgstr "Efektler Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:1132
+#: src/presets_manager.cpp:1130
 msgid "Generic Error While Loading Effects List"
 msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:1142
+#: src/presets_manager.cpp:1140
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
-#: src/presets_manager.cpp:1150
+#: src/presets_manager.cpp:1148
 msgid "Generic Error While Loading The Effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
