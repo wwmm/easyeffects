@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-22 14:52+0000\n"
-"PO-Revision-Date: 2024-04-09 02:14+0000\n"
+"PO-Revision-Date: 2024-04-23 04:07+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -1692,13 +1692,12 @@ msgid "Add Effect"
 msgstr "Efekt Ekle"
 
 #: data/ui/plugins_box.ui:63
-#, fuzzy
 msgid "Go to the previous effect"
-msgstr "Bu efekti kaldır"
+msgstr "Önceki efekte git"
 
 #: data/ui/plugins_box.ui:78
 msgid "Go to the next effect"
-msgstr ""
+msgstr "Sonraki efekte git"
 
 #: data/ui/plugins_box.ui:129
 msgid "Used Plugins List"
