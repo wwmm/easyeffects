@@ -107,6 +107,8 @@ PresetsManager::PresetsManager()
 
   create_user_directory(user_input_dir);
   create_user_directory(user_output_dir);
+  create_user_directory(user_irs_dir);
+  create_user_directory(user_rnnoise_dir);
   create_user_directory(autoload_input_dir);
   create_user_directory(autoload_output_dir);
 
