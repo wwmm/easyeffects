@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 14:11+0000\n"
+"POT-Creation-Date: 2024-04-24 04:22+0000\n"
 "PO-Revision-Date: 2024-04-23 04:07+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2456,41 +2456,41 @@ msgid "Delete?"
 msgstr "Удалить?"
 
 #. Placeholders in case of issues
-#: src/presets_manager.cpp:436
+#: src/presets_manager.cpp:438
 msgid "Community Preset"
 msgstr "Предустановка от сообщества"
 
-#: src/presets_manager.cpp:436
+#: src/presets_manager.cpp:438
 msgid "Package"
 msgstr "Пакет"
 
-#: src/presets_manager.cpp:1107 src/presets_manager.cpp:1114
-#: src/presets_manager.cpp:1123 src/presets_manager.cpp:1130
-#: src/presets_manager.cpp:1139 src/presets_manager.cpp:1147
+#: src/presets_manager.cpp:1109 src/presets_manager.cpp:1116
+#: src/presets_manager.cpp:1125 src/presets_manager.cpp:1132
+#: src/presets_manager.cpp:1141 src/presets_manager.cpp:1149
 msgid "Preset Not Loaded Correctly"
 msgstr "Предустановка загружена неправильно"
 
-#: src/presets_manager.cpp:1107
+#: src/presets_manager.cpp:1109
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Неверный формат в списке исключённых приложений"
 
-#: src/presets_manager.cpp:1114
+#: src/presets_manager.cpp:1116
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Общая ошибка при загрузке списка исключённых приложений"
 
-#: src/presets_manager.cpp:1123
+#: src/presets_manager.cpp:1125
 msgid "Wrong Format in Effects List"
 msgstr "Неверный формат в списке эффектов"
 
-#: src/presets_manager.cpp:1130
+#: src/presets_manager.cpp:1132
 msgid "Generic Error While Loading Effects List"
 msgstr "Общая ошибка при загрузке списка эффектов"
 
-#: src/presets_manager.cpp:1140
+#: src/presets_manager.cpp:1142
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Один или несколько параметров неверного формата"
 
-#: src/presets_manager.cpp:1148
+#: src/presets_manager.cpp:1150
 msgid "Generic Error While Loading The Effect"
 msgstr "Общая ошибка при нагрузке эффекта"
 
