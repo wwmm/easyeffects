@@ -449,16 +449,6 @@ void rnnoise_box_init(RNNoiseBox* self) {
 
   // model dir
 
-  if (!std::filesystem::is_directory(model_dir)) {
-    if (std::filesystem::create_directories(model_dir)) {
-      util::debug("model directory created: " + model_dir.string());
-    } else {
-      util::warning("failed to create model directory: " + model_dir.string());
-    }
-  } else {
-    util::debug("model directory already exists: " + model_dir.string());
-  }
-
   auto gfile = g_file_new_for_path(model_dir.c_str());
 
   self->folder_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);

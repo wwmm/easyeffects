@@ -654,18 +654,6 @@ void convolver_box_init(ConvolverBox* self) {
 
   self->data = new Data();
 
-  // irs dir
-
-  if (!std::filesystem::is_directory(irs_dir)) {
-    if (std::filesystem::create_directories(irs_dir)) {
-      util::debug("irs directory created: " + irs_dir.string());
-    } else {
-      util::warning("failed to create irs directory: " + irs_dir.string());
-    }
-  } else {
-    util::debug("irs directory already exists: " + irs_dir.string());
-  }
-
   prepare_spinbuttons<"%">(self->ir_width);
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
