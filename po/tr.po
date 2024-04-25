@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-24 04:22+0000\n"
+"POT-Creation-Date: 2024-04-25 14:10+0000\n"
 "PO-Revision-Date: 2024-04-23 04:07+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2409,33 +2409,33 @@ msgstr "Topluluk Ön Ayarı"
 msgid "Package"
 msgstr "Paket"
 
-#: src/presets_manager.cpp:1109 src/presets_manager.cpp:1116
-#: src/presets_manager.cpp:1125 src/presets_manager.cpp:1132
-#: src/presets_manager.cpp:1141 src/presets_manager.cpp:1149
+#: src/presets_manager.cpp:1110 src/presets_manager.cpp:1117
+#: src/presets_manager.cpp:1126 src/presets_manager.cpp:1133
+#: src/presets_manager.cpp:1142 src/presets_manager.cpp:1150
 msgid "Preset Not Loaded Correctly"
 msgstr "Ön Ayar Doğru Yüklenmedi"
 
-#: src/presets_manager.cpp:1109
+#: src/presets_manager.cpp:1110
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:1116
+#: src/presets_manager.cpp:1117
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:1125
+#: src/presets_manager.cpp:1126
 msgid "Wrong Format in Effects List"
 msgstr "Efektler Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:1132
+#: src/presets_manager.cpp:1133
 msgid "Generic Error While Loading Effects List"
 msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:1142
+#: src/presets_manager.cpp:1143
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
-#: src/presets_manager.cpp:1150
+#: src/presets_manager.cpp:1151
 msgid "Generic Error While Loading The Effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
