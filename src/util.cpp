@@ -424,31 +424,39 @@ auto search_filename(const std::filesystem::path& path,
                      const std::string& filename,
                      std::string& full_path_result,
                      const uint& top_scan_level) -> bool {
-  // Recursive util to search a filename from an origin full path.
+  // Recursive util to search a filename from an origin full path directory.
   // The search is performed in subdirectories and it's stopped at a specified
   // sublevel (top_scan_level = 1 searches only in the path).
 
-  if (!std::filesystem::exists(path)) {
+  if (!std::filesystem::exists(path) || !std::filesystem::is_directory(path)) {
     return false;
   }
 
+  const auto fn = path / filename;
+
+  // Get the file in this directory, if exists.
+  if (std::filesystem::exists(fn) && std::filesystem::is_regular_file(fn)) {
+    // File found, abort the search.
+    full_path_result = fn.c_str();
+
+    return true;
+  }
+
+  // The file is not in this directory, search in subdirectories.
   const auto scan_level = top_scan_level - 1U;
+
+  if (scan_level == 0U) {
+    return false;
+  }
 
   auto it = std::filesystem::directory_iterator{path};
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status())) {
-        if (const auto path = it->path(); path.filename().c_str() == filename) {
-          // File found, abort the search.
-          full_path_result = path.c_str();
-
-          return true;
-        }
-      } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
-        if (const auto path = it->path(); !path.empty()) {
+      if (std::filesystem::is_directory(it->status())) {
+        if (const auto p = it->path(); !p.empty()) {
           // Continue the search in the subfolder.
-          const auto found = search_filename(path, filename, full_path_result, scan_level);
+          const auto found = search_filename(p, filename, full_path_result, scan_level);
 
           if (found) {
             return true;

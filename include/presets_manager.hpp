@@ -79,7 +79,7 @@ class PresetsManager {
 
   auto load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
 
-  auto load_community_preset_file(const PresetType& preset_type, const std::string& full_path) -> bool;
+  auto load_community_preset_file(const PresetType& preset_type, const std::string& full_path_stem) -> bool;
 
   auto read_effects_pipeline_from_preset(const PresetType& preset_type,
                                          const std::filesystem::path& input_file,
