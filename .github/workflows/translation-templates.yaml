@@ -15,7 +15,7 @@ jobs:
         run: pacman -Syu --noconfirm git
     
       - name: Checkout
-        uses: actions/checkout@v4.1.3
+        uses: actions/checkout@v4.1.4
 
       - name: Install deps
         run: |
