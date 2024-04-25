@@ -620,12 +620,13 @@ auto PresetsManager::load_local_preset_file(const PresetType& preset_type, const
   return false;
 }
 
-auto PresetsManager::load_community_preset_file(const PresetType& preset_type, const std::string& full_path) -> bool {
-  const auto input_file = std::filesystem::path{full_path + json_ext};
+auto PresetsManager::load_community_preset_file(const PresetType& preset_type, const std::string& full_path_stem)
+    -> bool {
+  const auto input_file = std::filesystem::path{full_path_stem + json_ext};
 
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
-    util::warning("the community preset \"" + full_path + "\" does not exist on the filesystem");
+    util::warning("the community preset \"" + input_file.string() + "\" does not exist on the filesystem");
 
     return false;
   }
