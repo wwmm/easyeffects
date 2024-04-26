@@ -299,6 +299,24 @@ void setup(RNNoiseBox* self,
 
         const std::string gsettings_model_name = g_variant_get_string(variant, nullptr);
 
+        const auto* lcp_key = (self->data->rnnoise->pipeline_type == PipelineType::input)
+                                  ? "last-loaded-input-community-package"
+                                  : "last-loaded-output-community-package";
+
+        const auto community_package = util::gsettings_get_string(self->data->application->settings, lcp_key);
+
+        if (!community_package.empty()) {
+          // Model from community package used, so unselect the selection.
+          g_value_set_uint(value, GTK_INVALID_LIST_POSITION);
+
+          // Since no item is selected, we set the community model name in
+          // the active_model_name label manually.
+          gtk_label_set_text(self->active_model_name, gsettings_model_name.c_str());
+
+          return 1;
+        }
+
+        // Local model used.
         int standard_model_id = 0;
 
         for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->selection_model)); n++) {
@@ -319,20 +337,15 @@ void setup(RNNoiseBox* self,
           }
         }
 
-        // If the model name is not in the list, determine if we should
-        // select the standard model or unselect the selection.
-
         if (gsettings_model_name.empty()) {
           // If the model name is empty, select the standard model.
           g_value_set_uint(value, standard_model_id);
         } else {
-          // If the model name is not empty:
-          // 1. A local preset is loaded, but the model file on the filesystem is missing;
-          // 2. A community preset is being tried and the model file may be correctly loaded.
-          // In both cases we unselect the selection using GTK_INVALID_LIST_POSITION.
+          // A local preset is loaded, but the model file on the filesystem is missing.
+          // Unselect the selection.
           g_value_set_uint(value, GTK_INVALID_LIST_POSITION);
 
-          // Since no item is selected, we set the active_model_name label manually.
+          // Update the active_model_name anyway.
           gtk_label_set_text(self->active_model_name, gsettings_model_name.c_str());
         }
 
@@ -340,6 +353,13 @@ void setup(RNNoiseBox* self,
       },
       +[](const GValue* value, const GVariantType* expected_type, gpointer user_data) {
         auto* self = EE_RNNOISE_BOX(user_data);
+
+        const auto* lcp_key = (self->data->rnnoise->pipeline_type == PipelineType::input)
+                                  ? "last-loaded-input-community-package"
+                                  : "last-loaded-output-community-package";
+
+        // irs loaded from the convolver menu are always local.
+        g_settings_reset(self->data->application->settings, lcp_key);
 
         auto string_object =
             GTK_STRING_OBJECT(gtk_single_selection_get_selected_item(GTK_SINGLE_SELECTION(self->selection_model)));

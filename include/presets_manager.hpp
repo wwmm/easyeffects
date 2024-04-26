@@ -79,7 +79,9 @@ class PresetsManager {
 
   auto load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
 
-  auto load_community_preset_file(const PresetType& preset_type, const std::string& full_path_stem) -> bool;
+  auto load_community_preset_file(const PresetType& preset_type,
+                                  const std::string& full_path_stem,
+                                  const std::string& package_name) -> bool;
 
   auto read_effects_pipeline_from_preset(const PresetType& preset_type,
                                          const std::filesystem::path& input_file,
@@ -92,7 +94,9 @@ class PresetsManager {
 
   void import_from_filesystem(const PresetType& preset_type, const std::string& file_path);
 
-  void import_from_community_package(const PresetType& preset_type, const std::string& file_path);
+  void import_from_community_package(const PresetType& preset_type,
+                                     const std::string& file_path,
+                                     const std::string& package);
 
   void add_autoload(const PresetType& preset_type,
                     const std::string& preset_name,
@@ -138,7 +142,13 @@ class PresetsManager {
 
   static void create_user_directory(const std::filesystem::path& path);
 
-  auto import_addons_from_community_package(const PresetType& preset_type, const std::filesystem::path& path) -> bool;
+  auto import_addons_from_community_package(const PresetType& preset_type,
+                                            const std::filesystem::path& path,
+                                            const std::string& package) -> bool;
+
+  void set_last_preset_keys(const PresetType& preset_type,
+                            const std::string& preset_name = "",
+                            const std::string& package_name = "");
 
   auto load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool;
 

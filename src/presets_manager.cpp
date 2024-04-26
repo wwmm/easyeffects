@@ -611,17 +611,26 @@ auto PresetsManager::load_local_preset_file(const PresetType& preset_type, const
   const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
 
   // Check preset existence
-  if (std::filesystem::exists(input_file)) {
-    return load_preset_file(preset_type, input_file);
+  if (!std::filesystem::exists(input_file)) {
+    util::debug("can't find the local preset \"" + name + "\" on the filesystem");
+
+    return false;
   }
 
-  util::debug("can't find the local preset \"" + name + "\" on the filesystem");
+  set_last_preset_keys(preset_type, name);
 
-  return false;
+  const auto loaded = load_preset_file(preset_type, input_file);
+
+  if (!loaded) {
+    set_last_preset_keys(preset_type);
+  }
+
+  return loaded;
 }
 
-auto PresetsManager::load_community_preset_file(const PresetType& preset_type, const std::string& full_path_stem)
-    -> bool {
+auto PresetsManager::load_community_preset_file(const PresetType& preset_type,
+                                                const std::string& full_path_stem,
+                                                const std::string& package_name) -> bool {
   const auto input_file = std::filesystem::path{full_path_stem + json_ext};
 
   // Check preset existence
@@ -631,7 +640,15 @@ auto PresetsManager::load_community_preset_file(const PresetType& preset_type, c
     return false;
   }
 
-  return load_preset_file(preset_type, input_file);
+  set_last_preset_keys(preset_type, input_file.stem().string(), package_name);
+
+  const auto loaded = load_preset_file(preset_type, input_file);
+
+  if (!loaded) {
+    set_last_preset_keys(preset_type);
+  }
+
+  return loaded;
 }
 
 auto PresetsManager::load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool {
@@ -659,7 +676,7 @@ auto PresetsManager::read_effects_pipeline_from_preset(const PresetType& preset_
                                                        const std::filesystem::path& input_file,
                                                        nlohmann::json& json,
                                                        std::vector<std::string>& plugins) -> bool {
-  const auto preset_type_str = (preset_type == PresetType::input) ? "input" : "output";
+  const auto* preset_type_str = (preset_type == PresetType::input) ? "input" : "output";
 
   GSettings* settings = (preset_type == PresetType::input) ? sie_settings : soe_settings;
 
@@ -759,14 +776,15 @@ void PresetsManager::import_from_filesystem(const PresetType& preset_type, const
 }
 
 auto PresetsManager::import_addons_from_community_package(const PresetType& preset_type,
-                                                          const std::filesystem::path& path) -> bool {
+                                                          const std::filesystem::path& path,
+                                                          const std::string& package) -> bool {
   /* Here we parse the json community preset in order to import the list of addons:
    * 1. Convolver Impulse Response Files
    * 2. RNNoise Models
    */
 
-  // This method assumes that the path is valid,
-  // its check has already been made in import_from_community_package();
+  // This method assumes that the path is valid and package string is not empty,
+  // their check has already been made in import_from_community_package();
   std::ifstream is(path);
 
   nlohmann::json json;
@@ -779,7 +797,7 @@ auto PresetsManager::import_addons_from_community_package(const PresetType& pres
 
     std::vector<std::string> conv_irs, rn_models;
 
-    const auto pt_key = (preset_type == PresetType::output) ? "output" : "input";
+    const auto* pt_key = (preset_type == PresetType::output) ? "output" : "input";
 
     // Fill conv_irs and rn_models vectors extracting the addon names from
     // the json preset and append the respective file extension.
@@ -800,7 +818,7 @@ auto PresetsManager::import_addons_from_community_package(const PresetType& pres
       bool found = false;
 
       for (const auto& xdg_dir : system_data_dir_irs) {
-        if (util::search_filename(std::filesystem::path{xdg_dir}, irs_name, path, 3U)) {
+        if (util::search_filename(std::filesystem::path{xdg_dir + "/" + package}, irs_name, path, 3U)) {
           const auto out_path = std::filesystem::path{user_irs_dir} / irs_name;
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
@@ -826,7 +844,7 @@ auto PresetsManager::import_addons_from_community_package(const PresetType& pres
       bool found = false;
 
       for (const auto& xdg_dir : system_data_dir_rnnoise) {
-        if (util::search_filename(std::filesystem::path{xdg_dir}, model_name, path, 3U)) {
+        if (util::search_filename(std::filesystem::path{xdg_dir + "/" + package}, model_name, path, 3U)) {
           const auto out_path = std::filesystem::path{user_rnnoise_dir} / model_name;
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
@@ -854,13 +872,15 @@ auto PresetsManager::import_addons_from_community_package(const PresetType& pres
   }
 }
 
-void PresetsManager::import_from_community_package(const PresetType& preset_type, const std::string& file_path) {
+void PresetsManager::import_from_community_package(const PresetType& preset_type,
+                                                   const std::string& file_path,
+                                                   const std::string& package) {
   // When importing presets from a community package, we do NOT overwrite
   // the local preset if it has the same name.
 
   std::filesystem::path p{file_path};
 
-  if (!std::filesystem::exists(p)) {
+  if (!std::filesystem::exists(p) || package.empty()) {
     util::warning(p.string() + " does not exist! Please reload the community preset list");
 
     return;
@@ -919,7 +939,7 @@ void PresetsManager::import_from_community_package(const PresetType& preset_type
   }
 
   // Now we know that the preset is OK to be copied, but we first check for addons.
-  if (!import_addons_from_community_package(preset_type, p)) {
+  if (!import_addons_from_community_package(preset_type, p, package)) {
     util::warning("can't import addons for the community preset: " + p.string() +
                   "; import stage aborted, please reload the community preset list");
 
@@ -1031,15 +1051,9 @@ void PresetsManager::autoload(const PresetType& preset_type,
     return;
   }
 
-  util::debug("autoloading preset " + name + " for device " + device_name);
+  util::debug("autoloading local preset " + name + " for device " + device_name);
 
-  const auto* key = (preset_type == PresetType::output) ? "last-used-output-preset" : "last-used-input-preset";
-
-  if (load_local_preset_file(preset_type, name)) {
-    g_settings_set_string(settings, key, name.c_str());
-  } else {
-    g_settings_reset(settings, key);
-  }
+  load_local_preset_file(preset_type, name);
 }
 
 auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json> {
@@ -1080,6 +1094,28 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
     util::warning(e.what());
 
     return list;
+  }
+}
+
+void PresetsManager::set_last_preset_keys(const PresetType& preset_type,
+                                          const std::string& preset_name,
+                                          const std::string& package_name) {
+  const auto* lp_key = (preset_type == PresetType::input) ? "last-loaded-input-preset" : "last-loaded-output-preset";
+
+  const auto* lcp_key = (preset_type == PresetType::input) ? "last-loaded-input-community-package"
+                                                           : "last-loaded-output-community-package";
+
+  // In order to avoid race conditions, the community package key should be set before the preset name.
+  if (package_name.empty()) {
+    g_settings_reset(settings, lcp_key);
+  } else {
+    g_settings_set_string(settings, lcp_key, package_name.c_str());
+  }
+
+  if (preset_name.empty()) {
+    g_settings_reset(settings, lp_key);
+  } else {
+    g_settings_set_string(settings, lp_key, preset_name.c_str());
   }
 }
 

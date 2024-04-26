@@ -50,8 +50,15 @@ constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
-                     PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::convolver, tags::plugin_package::zita, schema, schema_path, pipe_manager),
+                     PipeManager* pipe_manager,
+                     PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::convolver,
+                 tags::plugin_package::zita,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type),
       do_autogain(g_settings_get_boolean(settings, "autogain") != 0),
       ir_width(g_settings_get_int(settings, "ir-width")) {
   // Initialize directories for local and community irs
@@ -298,23 +305,31 @@ auto Convolver::search_irs_path(const std::string& name) -> std::string {
   // Given the irs name without extension, search the full path on the filesystem.
   const auto irs_filename = name + irs_ext;
 
-  // First check local directory
-  const auto local_irs_file = std::filesystem::path{local_dir_irs + "/" + irs_filename};
+  const auto* lcp_key = (pipeline_type == PipelineType::input) ? "last-loaded-input-community-package"
+                                                               : "last-loaded-output-community-package";
 
-  if (std::filesystem::exists(local_irs_file)) {
-    return local_irs_file.c_str();
-  }
+  const auto community_package = util::gsettings_get_string(global_settings, lcp_key);
 
-  // If the file is not found locally, try to search it under system directories.
-  std::string community_irs_file;
+  std::string irs_full_path;
 
-  for (const auto& xdg_irs_dir : system_data_dir_irs) {
-    if (util::search_filename(std::filesystem::path{xdg_irs_dir}, irs_filename, community_irs_file, 3U)) {
-      break;
+  if (community_package.empty()) {
+    // Search local irs file.
+    const auto local_irs_file = std::filesystem::path{local_dir_irs + "/" + irs_filename};
+
+    if (std::filesystem::exists(local_irs_file)) {
+      irs_full_path = local_irs_file.c_str();
+    }
+  } else {
+    // Search irs file in community package paths.
+    for (const auto& xdg_irs_dir : system_data_dir_irs) {
+      if (util::search_filename(std::filesystem::path{xdg_irs_dir + "/" + community_package}, irs_filename,
+                                irs_full_path, 3U)) {
+        break;
+      }
     }
   }
 
-  return community_irs_file;
+  return irs_full_path;
 }
 
 void Convolver::read_kernel_file() {

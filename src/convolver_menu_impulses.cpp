@@ -65,6 +65,8 @@ struct _ConvolverMenuImpulses {
 
   GSettings *settings, *app_settings;
 
+  std::shared_ptr<Convolver> convolver;
+
   app::Application* application;
 };
 
@@ -238,13 +240,23 @@ void setup_listview(ConvolverMenuImpulses* self) {
                      g_object_set_data(G_OBJECT(item), "remove", remove);
 
                      g_signal_connect(load, "clicked", G_CALLBACK(+[](GtkButton* btn, ConvolverMenuImpulses* self) {
-                                        if (auto* string_object =
-                                                GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(btn), "string-object"));
-                                            string_object != nullptr) {
-                                          auto* name = gtk_string_object_get_string(string_object);
+                                        auto* string_object =
+                                            GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(btn), "string-object"));
 
-                                          g_settings_set_string(self->settings, "kernel-name", name);
+                                        if (string_object == nullptr) {
+                                          return;
                                         }
+
+                                        const auto* lcp_key = (self->convolver->pipeline_type == PipelineType::input)
+                                                                  ? "last-loaded-input-community-package"
+                                                                  : "last-loaded-output-community-package";
+
+                                        // irs loaded from the convolver menu are always local.
+                                        g_settings_reset(self->app_settings, lcp_key);
+
+                                        auto* name = gtk_string_object_get_string(string_object);
+
+                                        g_settings_set_string(self->settings, "kernel-name", name);
                                       }),
                                       self);
 
@@ -318,8 +330,13 @@ void setup_listview(ConvolverMenuImpulses* self) {
   g_object_unref(selection);
 }
 
-void setup(ConvolverMenuImpulses* self, const std::string& schema_path, app::Application* application) {
+void setup(ConvolverMenuImpulses* self,
+           const std::string& schema_path,
+           app::Application* application,
+           std::shared_ptr<Convolver> convolver) {
   self->application = application;
+
+  self->convolver = convolver;
 
   self->settings = g_settings_new_with_path(tags::schema::convolver::id, schema_path.c_str());
 

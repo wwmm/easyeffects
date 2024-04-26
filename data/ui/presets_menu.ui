@@ -154,12 +154,30 @@
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel" id="last_used_name">
+                                            <object class="GtkBox">
                                                 <property name="halign">center</property>
-                                                <property name="valign">end</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
+                                                <property name="valign">center</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">6</property>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="last_loaded_preset_title">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">center</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel" id="last_loaded_preset_value">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="wrap">1</property>
+                                                        <property name="wrap-mode">word</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                    </object>
+                                                </child>
                                             </object>
                                         </child>
                                     </object>

@@ -69,7 +69,7 @@ struct _PresetsMenu {
 
   GtkText* new_preset_name;
 
-  GtkLabel* last_used_name;
+  GtkLabel *last_loaded_preset_title, *last_loaded_preset_value;
 
   GtkStringList *presets_list_local, *presets_list_community;
 
@@ -224,38 +224,46 @@ void setup_community_presets_listview(PresetsMenu* self,
         gtk_list_item_set_activatable(item, 0);
         gtk_list_item_set_child(item, GTK_WIDGET(top_box));
 
-        g_signal_connect(
-            try_bt, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
-              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object"));
-                  string_object != nullptr) {
-                auto* preset_path = gtk_string_object_get_string(string_object);
+        g_signal_connect(try_bt, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
+                           auto* string_object_preset =
+                               GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object-preset"));
+                           auto* label_package =
+                               GTK_LABEL(g_object_get_data(G_OBJECT(button), "gtk-label-package-name"));
 
-                if (!self->data->application->presets_manager->load_community_preset_file(preset_type, preset_path)) {
-                  return;
-                }
+                           if (string_object_preset == nullptr || label_package == nullptr) {
+                             return;
+                           }
 
-                const auto* last_used_key =
-                    (preset_type == PresetType::input) ? "last-used-input-preset" : "last-used-output-preset";
+                           const std::string preset_path = gtk_string_object_get_string(string_object_preset);
 
-                g_settings_reset(self->settings, last_used_key);
-              }
-            }),
-            self);
+                           const std::string preset_package = gtk_label_get_text(label_package);
 
-        g_signal_connect(
-            import, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
-              if (auto* string_object = GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object"));
-                  string_object != nullptr) {
-                std::string preset_path = gtk_string_object_get_string(string_object);
+                           self->data->application->presets_manager->load_community_preset_file(
+                               preset_type, preset_path, preset_package);
+                         }),
+                         self);
 
-                // community presets are indexed by full_path using stem filenames,
-                // so we need to append the json extension.
-                preset_path += self->data->application->presets_manager->json_ext;
+        g_signal_connect(import, "clicked", G_CALLBACK(+[](GtkButton* button, PresetsMenu* self) {
+                           auto* string_object_preset =
+                               GTK_STRING_OBJECT(g_object_get_data(G_OBJECT(button), "string-object-preset"));
+                           auto* label_package =
+                               GTK_LABEL(g_object_get_data(G_OBJECT(button), "gtk-label-package-name"));
 
-                self->data->application->presets_manager->import_from_community_package(preset_type, preset_path);
-              }
-            }),
-            self);
+                           if (string_object_preset == nullptr || label_package == nullptr) {
+                             return;
+                           }
+
+                           // community presets are indexed by full_path using stem filenames,
+                           // so we need to append the json extension.
+                           const std::string preset_path = gtk_string_object_get_string(string_object_preset) +
+                                                           self->data->application->presets_manager->json_ext;
+
+                           const std::string preset_package = gtk_label_get_text(label_package);
+
+                           self->data->application->presets_manager->import_from_community_package(
+                               preset_type, preset_path, preset_package);
+                         }),
+                         self);
 
         g_object_unref(builder);
       }),
@@ -270,19 +278,25 @@ void setup_community_presets_listview(PresetsMenu* self,
                      auto* import = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "import"));
 
                      // Get the full path of the community preset item.
-                     auto* string_object = GTK_STRING_OBJECT(gtk_list_item_get_item(item));
+                     auto* preset_path = GTK_STRING_OBJECT(gtk_list_item_get_item(item));
 
-                     g_object_set_data(G_OBJECT(try_bt), "string-object", string_object);
-                     g_object_set_data(G_OBJECT(import), "string-object", string_object);
+                     // Save community preset path in try and import buttons.
+                     g_object_set_data(G_OBJECT(try_bt), "string-object-preset", preset_path);
+                     g_object_set_data(G_OBJECT(import), "string-object-preset", preset_path);
 
-                     auto* full_cp_path = gtk_string_object_get_string(string_object);
+                     auto* full_cp_path = gtk_string_object_get_string(preset_path);
 
                      // Extract package name and preset name from the full path.
                      const auto cp_info =
                          self->data->application->presets_manager->get_community_preset_info(preset_type, full_cp_path);
 
+                     // Set labels.
                      gtk_label_set_text(name, cp_info.first.c_str());
                      gtk_label_set_text(package, cp_info.second.c_str());
+
+                     // Save community preset package label in try and import buttons.
+                     g_object_set_data(G_OBJECT(try_bt), "gtk-label-package-name", package);
+                     g_object_set_data(G_OBJECT(import), "gtk-label-package-name", package);
                    }),
                    self);
 
@@ -367,21 +381,7 @@ void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview_local
                   string_object != nullptr) {
                 auto* preset_name = gtk_string_object_get_string(string_object);
 
-                if constexpr (preset_type == PresetType::output) {
-                  if (self->data->application->presets_manager->load_local_preset_file(PresetType::output,
-                                                                                       preset_name)) {
-                    g_settings_set_string(self->settings, "last-used-output-preset", preset_name);
-                  } else {
-                    g_settings_reset(self->settings, "last-used-output-preset");
-                  }
-                } else if constexpr (preset_type == PresetType::input) {
-                  if (self->data->application->presets_manager->load_local_preset_file(PresetType::input,
-                                                                                       preset_name)) {
-                    g_settings_set_string(self->settings, "last-used-input-preset", preset_name);
-                  } else {
-                    g_settings_reset(self->settings, "last-used-input-preset");
-                  }
-                }
+                self->data->application->presets_manager->load_local_preset_file(preset_type, preset_name);
               }
             }),
             self);
@@ -441,13 +441,13 @@ void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview_local
                   string_object != nullptr) {
                 auto* preset_name = gtk_string_object_get_string(string_object);
 
-                uint operation = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(button), "operation"));
+                const uint operation = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(button), "operation"));
 
                 auto* confirmation_label =
                     static_cast<GtkBox*>(g_object_get_data(G_OBJECT(button), "confirmation_label"));
 
                 switch (operation) {
-                  case 0: {  // save
+                  case 0U: {  // save
                     if constexpr (preset_type == PresetType::output) {
                       self->data->application->presets_manager->save_preset_file(PresetType::output, preset_name);
                     } else if constexpr (preset_type == PresetType::input) {
@@ -458,7 +458,7 @@ void setup_local_presets_listview(PresetsMenu* self, GtkListView* listview_local
 
                     break;
                   }
-                  case 1: {  // delete
+                  case 1U: {  // delete
                     if constexpr (preset_type == PresetType::output) {
                       self->data->application->presets_manager->remove(PresetType::output, preset_name);
                     } else if constexpr (preset_type == PresetType::input) {
@@ -546,6 +546,35 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
     }
   };
 
+  auto update_last_used_preset_labels = +[](GSettings* settings, const char* key, gpointer user_data) {
+    auto* self = static_cast<PresetsMenu*>(user_data);
+
+    const std::string preset_name = util::gsettings_get_string(settings, key);
+
+    if (preset_name.empty()) {
+      gtk_widget_set_visible(GTK_WIDGET(self->last_loaded_preset_value), 0);
+
+      gtk_label_set_text(self->last_loaded_preset_value, "");
+      gtk_label_set_text(self->last_loaded_preset_title, _("No Preset Loaded"));
+
+      return;
+    }
+
+    gtk_widget_set_visible(GTK_WIDGET(self->last_loaded_preset_value), 1);
+
+    gtk_label_set_text(self->last_loaded_preset_value, preset_name.c_str());
+
+    const auto* lcp_key = (self->data->preset_type == PresetType::input) ? "last-loaded-input-community-package"
+                                                                         : "last-loaded-output-community-package";
+
+    const std::string community_package = util::gsettings_get_string(settings, lcp_key);
+
+    const std::string preset_title =
+        ((community_package.empty()) ? _("Last Loaded Local Preset") : _("Last Loaded Community Preset"));
+
+    gtk_label_set_text(self->last_loaded_preset_title, preset_title.c_str());
+  };
+
   if (preset_type == PresetType::output) {
     setup_community_presets_listview<PresetType::output>(self, self->listview_community, self->presets_list_community);
 
@@ -557,36 +586,36 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
     self->data->connections.push_back(
         self->data->application->presets_manager->user_output_preset_removed.connect(remove_from_list));
 
-    self->data->gconnections.push_back(
-        g_signal_connect(self->settings, "changed::last-used-output-preset",
-                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                           auto* self = static_cast<PresetsMenu*>(user_data);
+    self->data->gconnections.push_back(g_signal_connect(self->settings, "changed::last-loaded-output-preset",
+                                                        G_CALLBACK(update_last_used_preset_labels), self));
 
-                           gtk_label_set_text(self->last_used_name, util::gsettings_get_string(settings, key).c_str());
-                         }),
-                         self));
-
-    gtk_label_set_text(self->last_used_name,
-                       util::gsettings_get_string(self->settings, "last-used-output-preset").c_str());
-
-    // reset last used name label
+    // reset last loaded preset label
 
     const auto names_output = self->data->application->presets_manager->get_local_presets_name(PresetType::output);
 
-    if (names_output.empty()) {
-      g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
+    const std::string preset_name = util::gsettings_get_string(self->settings, "last-loaded-output-preset");
 
-      return;
-    }
+    bool reset_key = true;
 
-    for (const auto& name : names_output) {
-      if (name == util::gsettings_get_string(self->settings, "last-used-output-preset")) {
-        return;
+    if (!preset_name.empty()) {
+      for (const auto& name : names_output) {
+        if (name == preset_name) {
+          reset_key = false;
+
+          break;
+        }
       }
+    } else {
+      reset_key = false;
     }
 
-    g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
-
+    if (reset_key) {
+      // reset non-empty key and trigger the changed signal
+      g_settings_reset(self->settings, "last-loaded-output-preset");
+    } else {
+      // no need to reset, just update the labels
+      update_last_used_preset_labels(self->settings, "last-loaded-output-preset", self);
+    }
   } else if (preset_type == PresetType::input) {
     setup_community_presets_listview<PresetType::input>(self, self->listview_community, self->presets_list_community);
 
@@ -598,35 +627,36 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
     self->data->connections.push_back(
         self->data->application->presets_manager->user_input_preset_removed.connect(remove_from_list));
 
-    self->data->gconnections.push_back(
-        g_signal_connect(self->settings, "changed::last-used-input-preset",
-                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                           auto* self = static_cast<PresetsMenu*>(user_data);
+    self->data->gconnections.push_back(g_signal_connect(self->settings, "changed::last-loaded-input-preset",
+                                                        G_CALLBACK(update_last_used_preset_labels), self));
 
-                           gtk_label_set_text(self->last_used_name, util::gsettings_get_string(settings, key).c_str());
-                         }),
-                         self));
-
-    gtk_label_set_text(self->last_used_name,
-                       util::gsettings_get_string(self->settings, "last-used-input-preset").c_str());
-
-    // reset last used name label
+    // reset last loaded preset label
 
     const auto names_input = self->data->application->presets_manager->get_local_presets_name(PresetType::input);
 
-    if (names_input.empty()) {
-      g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
+    const std::string preset_name = util::gsettings_get_string(self->settings, "last-loaded-input-preset");
 
-      return;
-    }
+    bool reset_key = true;
 
-    for (const auto& name : names_input) {
-      if (name == util::gsettings_get_string(self->settings, "last-used-input-preset")) {
-        return;
+    if (!preset_name.empty()) {
+      for (const auto& name : names_input) {
+        if (name == preset_name) {
+          reset_key = false;
+
+          break;
+        }
       }
+    } else {
+      reset_key = false;
     }
 
-    g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
+    if (reset_key) {
+      // reset non-empty key and trigger the changed signal
+      g_settings_reset(self->settings, "last-loaded-input-preset");
+    } else {
+      // no need to reset, just update the labels
+      update_last_used_preset_labels(self->settings, "last-loaded-input-preset", self);
+    }
   }
 }
 
@@ -699,7 +729,8 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, community_main_box);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, status_page_community_list);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, refresh_community_list);
-  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_name);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_loaded_preset_title);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_loaded_preset_value);
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);
   gtk_widget_class_bind_template_callback(widget_class, import_preset_from_disk);
