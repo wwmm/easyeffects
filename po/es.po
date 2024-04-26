@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-25 14:10+0000\n"
+"POT-Creation-Date: 2024-04-26 22:47+0000\n"
 "PO-Revision-Date: 2024-04-23 04:07+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -35,11 +35,6 @@ msgstr "Efectos de sonido para las aplicaciones PipeWire"
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "limitador;compresor;reverberación;ecualizador;autovolumen;"
-
-#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
-#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
-msgid "\"Presets\""
-msgstr "\"Perfiles\""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -94,8 +89,7 @@ msgid "_Quit"
 msgstr "_Salir"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
-#: data/ui/reverb.ui:25 src/presets_menu.cpp:159 src/presets_menu.cpp:577
-#: src/presets_menu.cpp:588 src/presets_menu.cpp:618 src/presets_menu.cpp:629
+#: data/ui/reverb.ui:25 src/presets_menu.cpp:159
 msgid "Presets"
 msgstr "Perfiles"
 
@@ -734,7 +728,7 @@ msgstr "Combinar"
 msgid "Stereo Width"
 msgstr "Amplitud estéreo"
 
-#: data/ui/convolver.ui:113 src/plugin_base.cpp:232
+#: data/ui/convolver.ui:113 src/plugin_base.cpp:235
 msgid "Spectrum"
 msgstr "Espectro"
 
@@ -783,7 +777,7 @@ msgid "Import Impulse"
 msgstr "Impulso de la importación"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
-#: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:188
+#: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
 msgid "Search"
 msgstr "Buscar"
 
@@ -1682,31 +1676,31 @@ msgstr "Activar/desactivar este efecto"
 msgid "Change the position of this effect"
 msgstr "Cambiar la posición de este efecto"
 
-#: data/ui/plugins_box.ui:26
+#: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
 msgstr "Mostrar/ocultar la lista de efectos"
 
-#: data/ui/plugins_box.ui:40
+#: data/ui/plugins_box.ui:42
 msgid "Add Effect"
 msgstr "Agregar efecto"
 
-#: data/ui/plugins_box.ui:63
+#: data/ui/plugins_box.ui:65
 msgid "Go to the previous effect"
 msgstr "Ir al efecto anterior"
 
-#: data/ui/plugins_box.ui:78
+#: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
 msgstr "Ir al siguiente efecto"
 
-#: data/ui/plugins_box.ui:129
+#: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
 msgstr "Lista de plugins utilizados"
 
-#: data/ui/plugins_box.ui:190
+#: data/ui/plugins_box.ui:192
 msgid "No Effects"
 msgstr "Sin efectos"
 
-#: data/ui/plugins_box.ui:191
+#: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
 msgstr "Flujo de audio no modificado"
 
@@ -1870,7 +1864,7 @@ msgstr "Mínima"
 msgid "Maximum"
 msgstr "Máximo"
 
-#: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:223
+#: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
 msgstr "Cargar"
 
@@ -1910,23 +1904,23 @@ msgstr "Buscar preajuste local"
 msgid "Local Presets List"
 msgstr "Lista de preajustes locales"
 
-#: data/ui/presets_menu.ui:173
+#: data/ui/presets_menu.ui:191
 msgid "Community"
 msgstr "Comunidad"
 
-#: data/ui/presets_menu.ui:190
+#: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
 msgstr "Buscar configuración preestablecida de la comunidad"
 
-#: data/ui/presets_menu.ui:253
+#: data/ui/presets_menu.ui:271
 msgid "Community Presets List"
 msgstr "Lista de ajustes preestablecidos de la comunidad"
 
-#: data/ui/presets_menu.ui:268
+#: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
 msgstr "No hay Ajustes Preestablecidos de Comunidad Instalados"
 
-#: data/ui/presets_menu.ui:269
+#: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from Flatpak or the repository "
 "of your favorite distribution."
@@ -1934,11 +1928,11 @@ msgstr ""
 "Los paquetes de Community Presets se pueden instalar desde Flatpak o desde "
 "el repositorio de su distribución favorita."
 
-#: data/ui/presets_menu.ui:280
+#: data/ui/presets_menu.ui:298
 msgid "Refresh"
 msgstr "Refrescar"
 
-#: data/ui/presets_menu.ui:281
+#: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
 msgstr ""
 "Refresca para mostrar los nuevos ajustes preestablecidos de comunidad "
@@ -2034,7 +2028,7 @@ msgstr "Modelos"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:177 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:298
-#: src/rnnoise_ui.cpp:349
+#: src/rnnoise_ui.cpp:375
 msgid "Standard Model"
 msgstr "Modelo estándar"
 
@@ -2222,37 +2216,37 @@ msgstr "Nombre indefinido - ID del proceso "
 msgid "channels"
 msgstr "canales"
 
-#: src/application.cpp:506
+#: src/application.cpp:498
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:596
+#: src/application.cpp:588
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Deja Easy Effects. Útil cuando se ejecuta en modo de servicio."
 
-#: src/application.cpp:599
+#: src/application.cpp:591
 msgid "Print the easyeffects version"
 msgstr "Mostrar la versión de Easyeffects"
 
-#: src/application.cpp:602
+#: src/application.cpp:594
 msgid "Reset Easy Effects."
 msgstr "Reiniciar Easy Effects."
 
-#: src/application.cpp:605
+#: src/application.cpp:597
 msgid "Hide the Window."
 msgstr "Ocultar la ventana."
 
-#: src/application.cpp:608
+#: src/application.cpp:600
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass global. 1 para habilitar, 2 para deshabilitar y 3 para obtener el "
 "estado actual"
 
-#: src/application.cpp:611
+#: src/application.cpp:603
 msgid "Show available presets."
 msgstr "Mostrar los perfiles disponibles."
 
-#: src/application.cpp:614
+#: src/application.cpp:606
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar un perfil. Por ejemplo: easyeffects -l musica"
 
@@ -2268,40 +2262,40 @@ msgstr "_Entrada"
 msgid "_PipeWire"
 msgstr "_Software PipeWire"
 
-#: src/convolver_menu_impulses.cpp:123
+#: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
 msgstr "El archivo no es regular"
 
-#: src/convolver_menu_impulses.cpp:128
+#: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "El archivo de impulso puede estar dañado o no ser compatible"
 
-#: src/convolver_menu_impulses.cpp:133
+#: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Sólo se admiten archivos de impulso estéreo"
 
-#: src/convolver_menu_impulses.cpp:143
+#: src/convolver_menu_impulses.cpp:145
 msgid "Impulse File Not Imported"
 msgstr "Archivo de impulso no importado"
 
-#: src/convolver_menu_impulses.cpp:151
+#: src/convolver_menu_impulses.cpp:153
 msgid "Import Impulse File"
 msgstr "Importar archivo de respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:152 src/equalizer_ui.cpp:454
+#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:454
 #: src/equalizer_ui.cpp:735 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Abrir"
 
-#: src/convolver_menu_impulses.cpp:164
+#: src/convolver_menu_impulses.cpp:166
 msgid "Impulse Response"
 msgstr "Respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:281
+#: src/convolver_menu_impulses.cpp:293
 msgid "Load Impulse"
 msgstr "Cargar archivo de respuesta a impulsos"
 
-#: src/convolver_menu_impulses.cpp:284
+#: src/convolver_menu_impulses.cpp:296
 msgid "Remove Impulse"
 msgstr "Eliminar archivo de respuesta a impulsos"
 
@@ -2377,7 +2371,7 @@ msgstr ""
 msgid "Remove Autoloading Preset"
 msgstr "Eliminar perfil de carga automática"
 
-#: src/plugin_base.cpp:230
+#: src/plugin_base.cpp:233
 msgid "Output Level Meter"
 msgstr "Medidor del nivel de salida"
 
@@ -2401,6 +2395,21 @@ msgstr "¿Guardar?"
 msgid "Delete?"
 msgstr "¿Borrar?"
 
+#: src/presets_menu.cpp:558
+#, fuzzy
+msgid "No Preset Loaded"
+msgstr "Nuevo nombre preestablecido"
+
+#: src/presets_menu.cpp:573
+#, fuzzy
+msgid "Last Local Preset Loaded"
+msgstr "Lista de preajustes locales"
+
+#: src/presets_menu.cpp:573
+#, fuzzy
+msgid "Last Community Preset Loaded"
+msgstr "Preajuste comunitario"
+
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:438
 msgid "Community Preset"
@@ -2410,33 +2419,33 @@ msgstr "Preajuste comunitario"
 msgid "Package"
 msgstr "Paquete"
 
-#: src/presets_manager.cpp:1110 src/presets_manager.cpp:1117
-#: src/presets_manager.cpp:1126 src/presets_manager.cpp:1133
-#: src/presets_manager.cpp:1142 src/presets_manager.cpp:1150
+#: src/presets_manager.cpp:1146 src/presets_manager.cpp:1153
+#: src/presets_manager.cpp:1162 src/presets_manager.cpp:1169
+#: src/presets_manager.cpp:1178 src/presets_manager.cpp:1186
 msgid "Preset Not Loaded Correctly"
 msgstr "Preajuste no cargado correctamente"
 
-#: src/presets_manager.cpp:1110
+#: src/presets_manager.cpp:1146
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Formato incorrecto en la lista de aplicaciones excluidas"
 
-#: src/presets_manager.cpp:1117
+#: src/presets_manager.cpp:1153
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Error genérico al cargar la lista de aplicaciones excluidas"
 
-#: src/presets_manager.cpp:1126
+#: src/presets_manager.cpp:1162
 msgid "Wrong Format in Effects List"
 msgstr "Formato incorrecto en la lista de efectos"
 
-#: src/presets_manager.cpp:1133
+#: src/presets_manager.cpp:1169
 msgid "Generic Error While Loading Effects List"
 msgstr "Error genérico al cargar la lista de efectos"
 
-#: src/presets_manager.cpp:1143
+#: src/presets_manager.cpp:1179
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Uno o más parámetros tienen un formato incorrecto"
 
-#: src/presets_manager.cpp:1151
+#: src/presets_manager.cpp:1187
 msgid "Generic Error While Loading The Effect"
 msgstr "Error genérico al cargar el efecto"
 
@@ -2572,6 +2581,9 @@ msgstr "infinito"
 #, c++-format
 msgid "Using {}"
 msgstr "Usando {}"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Perfiles\""
 
 #~ msgid "Import a preset"
 #~ msgstr "Importar un preajuste"
