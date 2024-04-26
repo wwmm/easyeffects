@@ -502,7 +502,7 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
   }
 
   std::ostringstream write_buffer;
-  double preamp = g_settings_get_double(self->settings, "input-gain");
+  const double preamp = g_settings_get_double(self->settings, "input-gain");
 
   write_buffer << "Preamp: " << preamp << "db"
                << "\n";
@@ -510,8 +510,8 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
   int nbands = gtk_spin_button_get_value_as_int(self->nbands);
 
   for (int i = 0; i < nbands; ++i) {
-    bool curr_band_mute = g_settings_get_boolean(self->settings_left, tags::equalizer::band_mute[i].data());
-    std::string curr_band_type = g_settings_get_string(self->settings_left, tags::equalizer::band_type[i].data());
+    const bool curr_band_mute = g_settings_get_boolean(self->settings_left, tags::equalizer::band_mute[i].data());
+    const auto curr_band_type = util::gsettings_get_string(self->settings_left, tags::equalizer::band_type[i].data());
 
     if (curr_band_type == "Off") {
       continue;

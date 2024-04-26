@@ -86,7 +86,7 @@ void RNNoisePreset::load(const nlohmann::json& json) {
     }
   }
 
-  auto* current_model_name = g_settings_get_string(settings, model_name_key);
+  const auto current_model_name = util::gsettings_get_string(settings, model_name_key);
 
   if (new_model_name != current_model_name) {
     g_settings_set_string(settings, model_name_key, new_model_name.c_str());
