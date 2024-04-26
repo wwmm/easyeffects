@@ -570,7 +570,7 @@ void setup(PresetsMenu* self, app::Application* application, PresetType preset_t
     const std::string community_package = util::gsettings_get_string(settings, lcp_key);
 
     const std::string preset_title =
-        ((community_package.empty()) ? _("Last Loaded Local Preset") : _("Last Loaded Community Preset"));
+        ((community_package.empty()) ? _("Last Local Preset Loaded") : _("Last Community Preset Loaded"));
 
     gtk_label_set_text(self->last_loaded_preset_title, preset_title.c_str());
   };
