@@ -322,7 +322,13 @@ void setup(RNNoiseBox* self,
         for (guint n = 0U; n < g_list_model_get_n_items(G_LIST_MODEL(self->selection_model)); n++) {
           auto item = g_list_model_get_item(G_LIST_MODEL(self->selection_model), n);
 
-          const std::string model_name = gtk_string_object_get_string(GTK_STRING_OBJECT(item));
+          auto* string_object = GTK_STRING_OBJECT(item);
+
+          if (string_object == nullptr) {
+            continue;
+          }
+
+          const std::string model_name = gtk_string_object_get_string(string_object);
 
           g_object_unref(item);
 
@@ -364,7 +370,7 @@ void setup(RNNoiseBox* self,
         auto string_object =
             GTK_STRING_OBJECT(gtk_single_selection_get_selected_item(GTK_SINGLE_SELECTION(self->selection_model)));
 
-        const std::string selected_name = gtk_string_object_get_string(string_object);
+        const std::string selected_name = (string_object != nullptr) ? gtk_string_object_get_string(string_object) : "";
 
         const std::string default_model_name = _("Standard Model");
 
