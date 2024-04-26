@@ -39,7 +39,10 @@ G_END_DECLS
 
 auto create() -> ConvolverMenuImpulses*;
 
-void setup(ConvolverMenuImpulses* self, const std::string& schema_path, app::Application* application);
+void setup(ConvolverMenuImpulses* self,
+           const std::string& schema_path,
+           app::Application* application,
+           std::shared_ptr<Convolver> convolver);
 
 void append_to_string_list(ConvolverMenuImpulses* self, const std::string& irs_filename);
 

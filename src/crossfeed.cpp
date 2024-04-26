@@ -34,8 +34,15 @@
 Crossfeed::Crossfeed(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
-                     PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::crossfeed, tags::plugin_package::bs2b, schema, schema_path, pipe_manager) {
+                     PipeManager* pipe_manager,
+                     PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::crossfeed,
+                 tags::plugin_package::bs2b,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type) {
   bs2b.set_level_fcut(g_settings_get_int(settings, "fcut"));
 
   bs2b.set_level_feed(10 * static_cast<int>(g_settings_get_double(settings, "feed")));

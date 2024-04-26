@@ -205,12 +205,15 @@ PluginBase::PluginBase(std::string tag,
                        const std::string& schema,
                        const std::string& schema_path,
                        PipeManager* pipe_manager,
+                       PipelineType pipe_type,
                        const bool& enable_probe)
     : log_tag(std::move(tag)),
       name(std::move(plugin_name)),
       package(std::move(package)),
+      pipeline_type(pipe_type),
       enable_probe(enable_probe),
       settings(g_settings_new_with_path(schema.c_str(), schema_path.c_str())),
+      global_settings(g_settings_new(tags::app::id)),
       pm(pipe_manager) {
   std::string description;
 

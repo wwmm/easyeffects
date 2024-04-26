@@ -516,7 +516,7 @@ void setup(ConvolverBox* self,
 
   convolver->set_post_messages(true);
 
-  ui::convolver_menu_impulses::setup(self->impulses_menu, schema_path, application);
+  ui::convolver_menu_impulses::setup(self->impulses_menu, schema_path, application, convolver);
 
   self->data->connections.push_back(convolver->input_level.connect([=](const float left, const float right) {
     util::idle_add([=]() {

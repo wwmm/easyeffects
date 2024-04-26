@@ -37,8 +37,15 @@
 AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
-                   PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::autogain, tags::plugin_package::ebur128, schema, schema_path, pipe_manager),
+                   PipeManager* pipe_manager,
+                   PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::autogain,
+                 tags::plugin_package::ebur128,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type),
       target(g_settings_get_double(settings, "target")),
       silence_threshold(g_settings_get_double(settings, "silence-threshold")) {
   reference = parse_reference_key(util::gsettings_get_string(settings, "reference"));

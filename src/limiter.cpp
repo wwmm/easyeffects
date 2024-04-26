@@ -36,8 +36,16 @@
 Limiter::Limiter(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
-                 PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::limiter, tags::plugin_package::lsp, schema, schema_path, pipe_manager, true) {
+                 PipeManager* pipe_manager,
+                 PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::limiter,
+                 tags::plugin_package::lsp,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type,
+                 true) {
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_limiter_stereo");
 
   package_installed = lv2_wrapper->found_plugin;

@@ -10,11 +10,17 @@
         <key name="use-dark-theme" type="b">
             <default>false</default>
         </key>
-        <key name="last-used-input-preset" type="s">
-            <default l10n="messages">"Presets"</default>
+        <key name="last-loaded-input-preset" type="s">
+            <default>""</default>
         </key>
-        <key name="last-used-output-preset" type="s">
-            <default l10n="messages">"Presets"</default>
+        <key name="last-loaded-output-preset" type="s">
+            <default>""</default>
+        </key>
+        <key name="last-loaded-input-community-package" type="s">
+            <default>""</default>
+        </key>
+        <key name="last-loaded-output-community-package" type="s">
+            <default>""</default>
         </key>
         <key name="window-maximized" type="b">
             <default>false</default>

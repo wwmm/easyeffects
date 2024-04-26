@@ -27,7 +27,11 @@
 
 class Delay : public PluginBase {
  public:
-  Delay(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
+  Delay(const std::string& tag,
+        const std::string& schema,
+        const std::string& schema_path,
+        PipeManager* pipe_manager,
+        PipelineType pipe_type);
   Delay(const Delay&) = delete;
   auto operator=(const Delay&) -> Delay& = delete;
   Delay(const Delay&&) = delete;

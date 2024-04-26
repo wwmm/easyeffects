@@ -13,6 +13,8 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="margin-top">6</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
                         <property name="spacing">6</property>
                         <child>
                             <object class="GtkToggleButton" id="toggle_plugins_list">

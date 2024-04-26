@@ -31,7 +31,8 @@ class Maximizer : public PluginBase {
   Maximizer(const std::string& tag,
             const std::string& schema,
             const std::string& schema_path,
-            PipeManager* pipe_manager);
+            PipeManager* pipe_manager,
+            PipelineType pipe_type);
   Maximizer(const Maximizer&) = delete;
   auto operator=(const Maximizer&) -> Maximizer& = delete;
   Maximizer(const Maximizer&&) = delete;

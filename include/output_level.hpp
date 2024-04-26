@@ -29,7 +29,8 @@ class OutputLevel : public PluginBase {
   OutputLevel(const std::string& tag,
               const std::string& schema,
               const std::string& schema_path,
-              PipeManager* pipe_manager);
+              PipeManager* pipe_manager,
+              PipelineType pipe_type);
   OutputLevel(const OutputLevel&) = delete;
   auto operator=(const OutputLevel&) -> OutputLevel& = delete;
   OutputLevel(const OutputLevel&&) = delete;

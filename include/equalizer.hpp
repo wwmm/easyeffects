@@ -39,7 +39,8 @@ class Equalizer : public PluginBase {
             const std::string& schema_channel,
             const std::string& schema_channel_left_path,
             const std::string& schema_channel_right_path,
-            PipeManager* pipe_manager);
+            PipeManager* pipe_manager,
+            PipelineType pipe_type);
   Equalizer(const Equalizer&) = delete;
   auto operator=(const Equalizer&) -> Equalizer& = delete;
   Equalizer(const Equalizer&&) = delete;

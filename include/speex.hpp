@@ -31,7 +31,11 @@
 
 class Speex : public PluginBase {
  public:
-  Speex(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
+  Speex(const std::string& tag,
+        const std::string& schema,
+        const std::string& schema_path,
+        PipeManager* pipe_manager,
+        PipelineType pipe_type);
   Speex(const Speex&) = delete;
   auto operator=(const Speex&) -> Speex& = delete;
   Speex(const Speex&&) = delete;

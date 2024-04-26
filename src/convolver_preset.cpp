@@ -78,7 +78,7 @@ void ConvolverPreset::load(const nlohmann::json& json) {
     }
   }
 
-  auto* current_kernel_name = g_settings_get_string(settings, kernel_name_key);
+  const auto current_kernel_name = util::gsettings_get_string(settings, kernel_name_key);
 
   if (new_kernel_name != current_kernel_name) {
     g_settings_set_string(settings, kernel_name_key, new_kernel_name.c_str());

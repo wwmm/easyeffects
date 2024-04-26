@@ -41,8 +41,8 @@
 #include "tags_schema.hpp"
 #include "util.hpp"
 
-StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
-    : EffectsBase("sie: ", tags::schema::id_input, pipe_manager) {
+StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager, PipelineType pipeline_type)
+    : EffectsBase("sie: ", tags::schema::id_input, pipe_manager, pipeline_type) {
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {

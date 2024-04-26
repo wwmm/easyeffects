@@ -39,13 +39,15 @@
 EchoCanceller::EchoCanceller(const std::string& tag,
                              const std::string& schema,
                              const std::string& schema_path,
-                             PipeManager* pipe_manager)
+                             PipeManager* pipe_manager,
+                             PipelineType pipe_type)
     : PluginBase(tag,
                  tags::plugin_name::echo_canceller,
                  tags::plugin_package::speex,
                  schema,
                  schema_path,
                  pipe_manager,
+                 pipe_type,
                  true),
       residual_echo_suppression(g_settings_get_int(settings, "residual-echo-suppression")),
       near_end_suppression(g_settings_get_int(settings, "near-end-suppression")) {

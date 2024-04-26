@@ -33,6 +33,7 @@
 #include <vector>
 #include "lv2_wrapper.hpp"
 #include "pipe_manager.hpp"
+#include "pipeline_type.hpp"
 #include "util.hpp"
 
 class PluginBase {
@@ -43,6 +44,7 @@ class PluginBase {
              const std::string& schema,
              const std::string& schema_path,
              PipeManager* pipe_manager,
+             PipelineType pipe_type,
              const bool& enable_probe = false);
   PluginBase(const PluginBase&) = delete;
   auto operator=(const PluginBase&) -> PluginBase& = delete;
@@ -72,6 +74,8 @@ class PluginBase {
   const std::string log_tag;
 
   std::string name, package;
+
+  PipelineType pipeline_type{};
 
   pw_filter* filter = nullptr;
 
@@ -146,7 +150,7 @@ class PluginBase {
  protected:
   std::mutex data_mutex;
 
-  GSettings* settings = nullptr;
+  GSettings *settings = nullptr, *global_settings = nullptr;
 
   PipeManager* pm = nullptr;
 

@@ -29,7 +29,8 @@ class BassLoudness : public PluginBase {
   BassLoudness(const std::string& tag,
                const std::string& schema,
                const std::string& schema_path,
-               PipeManager* pipe_manager);
+               PipeManager* pipe_manager,
+               PipelineType pipe_type);
   BassLoudness(const BassLoudness&) = delete;
   auto operator=(const BassLoudness&) -> BassLoudness& = delete;
   BassLoudness(const BassLoudness&&) = delete;

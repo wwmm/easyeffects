@@ -40,7 +40,8 @@ class MultibandGate : public PluginBase {
   MultibandGate(const std::string& tag,
                 const std::string& schema,
                 const std::string& schema_path,
-                PipeManager* pipe_manager);
+                PipeManager* pipe_manager,
+                PipelineType pipe_type);
   MultibandGate(const MultibandGate&) = delete;
   auto operator=(const MultibandGate&) -> MultibandGate& = delete;
   MultibandGate(const MultibandGate&&) = delete;

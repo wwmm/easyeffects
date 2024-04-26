@@ -41,8 +41,15 @@
 RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
-                 PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::rnnoise, tags::plugin_package::rnnoise, schema, schema_path, pipe_manager),
+                 PipeManager* pipe_manager,
+                 PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::rnnoise,
+                 tags::plugin_package::rnnoise,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type),
       enable_vad(g_settings_get_boolean(settings, "enable-vad")),
       vad_thres(g_settings_get_double(settings, "vad-thres") / 100.0F),
       data_L(0),
@@ -317,23 +324,31 @@ auto RNNoise::search_model_path(const std::string& name) -> std::string {
   // Given the model name without extension, search the full path on the filesystem.
   const auto model_filename = name + rnnn_ext;
 
-  // First check local directory
-  const auto local_model_file = std::filesystem::path{local_dir_rnnoise + "/" + model_filename};
+  const auto* lcp_key = (pipeline_type == PipelineType::input) ? "last-loaded-input-community-package"
+                                                               : "last-loaded-output-community-package";
 
-  if (std::filesystem::exists(local_model_file)) {
-    return local_model_file.c_str();
-  }
+  const auto community_package = util::gsettings_get_string(global_settings, lcp_key);
 
-  // If the file is not found locally, try to search it under system directories.
-  std::string community_model_file;
+  std::string model_full_path;
 
-  for (const auto& xdg_model_dir : system_data_dir_rnnoise) {
-    if (util::search_filename(std::filesystem::path{xdg_model_dir}, model_filename, community_model_file, 3U)) {
-      break;
+  if (community_package.empty()) {
+    // Search local model
+    const auto local_model_file = std::filesystem::path{local_dir_rnnoise + "/" + model_filename};
+
+    if (std::filesystem::exists(local_model_file)) {
+      model_full_path = local_model_file.c_str();
+    }
+  } else {
+    // Search model in community package paths
+    for (const auto& xdg_model_dir : system_data_dir_rnnoise) {
+      if (util::search_filename(std::filesystem::path{xdg_model_dir + "/" + community_package}, model_filename,
+                                model_full_path, 3U)) {
+        break;
+      }
     }
   }
 
-  return community_model_file;
+  return model_full_path;
 }
 
 #ifdef ENABLE_RNNOISE

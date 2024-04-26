@@ -213,7 +213,9 @@ void gsettings_bind_enum_to_combo_widget(GSettings* settings,
 
         g_settings_set_enum(d->settings, d->key, static_cast<gint>(g_value_get_uint(value)));
 
-        return g_variant_new_string(g_settings_get_string(d->settings, d->key));
+        const auto str_value = util::gsettings_get_string(d->settings, d->key);
+
+        return g_variant_new_string(str_value.c_str());
       },
       new Data({.settings = settings, .key = key}),
       +[](gpointer user_data) {

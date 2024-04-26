@@ -38,8 +38,15 @@
 Crystalizer::Crystalizer(const std::string& tag,
                          const std::string& schema,
                          const std::string& schema_path,
-                         PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::crystalizer, tags::plugin_package::ee, schema, schema_path, pipe_manager) {
+                         PipeManager* pipe_manager,
+                         PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::crystalizer,
+                 tags::plugin_package::ee,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type) {
   for (uint n = 0U; n < nbands; n++) {
     filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name + " band" + util::to_string(n));
   }

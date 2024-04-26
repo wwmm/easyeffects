@@ -34,7 +34,8 @@ class AutoGain : public PluginBase {
   AutoGain(const std::string& tag,
            const std::string& schema,
            const std::string& schema_path,
-           PipeManager* pipe_manager);
+           PipeManager* pipe_manager,
+           PipelineType pipe_type);
   AutoGain(const AutoGain&) = delete;
   auto operator=(const AutoGain&) -> AutoGain& = delete;
   AutoGain(const AutoGain&&) = delete;

@@ -87,8 +87,8 @@ void on_startup(GApplication* gapp) {
   self->soe_settings = g_settings_new(tags::schema::id_output);
 
   self->pm = new PipeManager();
-  self->soe = new StreamOutputEffects(self->pm);
-  self->sie = new StreamInputEffects(self->pm);
+  self->soe = new StreamOutputEffects(self->pm, PipelineType::output);
+  self->sie = new StreamInputEffects(self->pm, PipelineType::input);
 
   if (self->settings == nullptr) {
     self->settings = g_settings_new(tags::app::id);
@@ -337,21 +337,13 @@ void application_class_init(ApplicationClass* klass) {
 
       if (g_variant_dict_lookup(options, "load-preset", "&s", &name) != 0) {
         if (self->presets_manager->preset_file_exists(PresetType::input, name)) {
-          if (self->presets_manager->load_local_preset_file(PresetType::input, name)) {
-            g_settings_set_string(self->settings, "last-used-input-preset", name);
-          } else {
-            g_settings_reset(self->settings, "last-used-input-preset");
-          }
+          self->presets_manager->load_local_preset_file(PresetType::input, name);
 
           return EXIT_SUCCESS;
         }
 
         if (self->presets_manager->preset_file_exists(PresetType::output, name)) {
-          if (self->presets_manager->load_local_preset_file(PresetType::output, name)) {
-            g_settings_set_string(self->settings, "last-used-output-preset", name);
-          } else {
-            g_settings_reset(self->settings, "last-used-output-preset");
-          }
+          self->presets_manager->load_local_preset_file(PresetType::output, name);
 
           return EXIT_SUCCESS;
         }

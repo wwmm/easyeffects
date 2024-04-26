@@ -30,7 +30,11 @@
 
 class Pitch : public PluginBase {
  public:
-  Pitch(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
+  Pitch(const std::string& tag,
+        const std::string& schema,
+        const std::string& schema_path,
+        PipeManager* pipe_manager,
+        PipelineType pipe_type);
   Pitch(const Pitch&) = delete;
   auto operator=(const Pitch&) -> Pitch& = delete;
   Pitch(const Pitch&&) = delete;

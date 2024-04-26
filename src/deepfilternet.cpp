@@ -34,13 +34,15 @@
 DeepFilterNet::DeepFilterNet(const std::string& tag,
                              const std::string& schema,
                              const std::string& schema_path,
-                             PipeManager* pipe_manager)
+                             PipeManager* pipe_manager,
+                             PipelineType pipe_type)
     : PluginBase(tag,
                  tags::plugin_name::deepfilternet,
                  tags::plugin_package::deepfilternet,
                  schema,
                  schema_path,
-                 pipe_manager) {
+                 pipe_manager,
+                 pipe_type) {
   ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
 
   package_installed = ladspa_wrapper->found_plugin();
