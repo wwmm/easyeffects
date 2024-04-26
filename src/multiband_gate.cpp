@@ -37,13 +37,15 @@
 MultibandGate::MultibandGate(const std::string& tag,
                              const std::string& schema,
                              const std::string& schema_path,
-                             PipeManager* pipe_manager)
+                             PipeManager* pipe_manager,
+                             PipelineType pipe_type)
     : PluginBase(tag,
                  tags::plugin_name::multiband_gate,
                  tags::plugin_package::lsp,
                  schema,
                  schema_path,
                  pipe_manager,
+                 pipe_type,
                  true) {
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_mb_gate_stereo");
 

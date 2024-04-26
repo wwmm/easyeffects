@@ -36,8 +36,15 @@
 Pitch::Pitch(const std::string& tag,
              const std::string& schema,
              const std::string& schema_path,
-             PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::pitch, tags::plugin_package::sound_touch, schema, schema_path, pipe_manager) {
+             PipeManager* pipe_manager,
+             PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::pitch,
+                 tags::plugin_package::sound_touch,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type) {
   quick_seek = g_settings_get_boolean(settings, "quick-seek") != 0;
   anti_alias = g_settings_get_boolean(settings, "anti-alias") != 0;
 

@@ -34,7 +34,8 @@ class Spectrum : public PluginBase {
   Spectrum(const std::string& tag,
            const std::string& schema,
            const std::string& schema_path,
-           PipeManager* pipe_manager);
+           PipeManager* pipe_manager,
+           PipelineType pipe_type);
   Spectrum(const Spectrum&) = delete;
   auto operator=(const Spectrum&) -> Spectrum& = delete;
   Spectrum(const Spectrum&&) = delete;

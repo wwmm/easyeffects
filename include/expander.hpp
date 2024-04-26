@@ -33,7 +33,8 @@ class Expander : public PluginBase {
   Expander(const std::string& tag,
            const std::string& schema,
            const std::string& schema_path,
-           PipeManager* pipe_manager);
+           PipeManager* pipe_manager,
+           PipelineType pipe_type);
   Expander(const Expander&) = delete;
   auto operator=(const Expander&) -> Expander& = delete;
   Expander(const Expander&&) = delete;

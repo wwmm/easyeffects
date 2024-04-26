@@ -36,7 +36,8 @@ class EchoCanceller : public PluginBase {
   EchoCanceller(const std::string& tag,
                 const std::string& schema,
                 const std::string& schema_path,
-                PipeManager* pipe_manager);
+                PipeManager* pipe_manager,
+                PipelineType pipe_type);
   EchoCanceller(const EchoCanceller&) = delete;
   auto operator=(const EchoCanceller&) -> EchoCanceller& = delete;
   EchoCanceller(const EchoCanceller&&) = delete;

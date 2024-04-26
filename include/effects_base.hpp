@@ -61,7 +61,7 @@
 
 class EffectsBase {
  public:
-  EffectsBase(std::string tag, const std::string& schema, PipeManager* pipe_manager);
+  EffectsBase(std::string tag, const std::string& schema, PipeManager* pipe_manager, PipelineType pipe_type);
   EffectsBase(const EffectsBase&) = delete;
   auto operator=(const EffectsBase&) -> EffectsBase& = delete;
   EffectsBase(const EffectsBase&&) = delete;
@@ -71,6 +71,8 @@ class EffectsBase {
   const std::string log_tag;
 
   PipeManager* pm = nullptr;
+
+  PipelineType pipeline_type;
 
   std::shared_ptr<OutputLevel> output_level;
   std::shared_ptr<Spectrum> spectrum;

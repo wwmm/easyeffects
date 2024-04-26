@@ -30,7 +30,11 @@
 
 class Limiter : public PluginBase {
  public:
-  Limiter(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
+  Limiter(const std::string& tag,
+          const std::string& schema,
+          const std::string& schema_path,
+          PipeManager* pipe_manager,
+          PipelineType pipe_type);
   Limiter(const Limiter&) = delete;
   auto operator=(const Limiter&) -> Limiter& = delete;
   Limiter(const Limiter&&) = delete;

@@ -34,7 +34,8 @@ class LevelMeter : public PluginBase {
   LevelMeter(const std::string& tag,
              const std::string& schema,
              const std::string& schema_path,
-             PipeManager* pipe_manager);
+             PipeManager* pipe_manager,
+             PipelineType pipe_type);
   LevelMeter(const LevelMeter&) = delete;
   auto operator=(const LevelMeter&) -> LevelMeter& = delete;
   LevelMeter(const LevelMeter&&) = delete;

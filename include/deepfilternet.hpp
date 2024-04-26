@@ -33,7 +33,8 @@ class DeepFilterNet : public PluginBase {
   DeepFilterNet(const std::string& tag,
                 const std::string& schema,
                 const std::string& schema_path,
-                PipeManager* pipe_manager);
+                PipeManager* pipe_manager,
+                PipelineType pipe_type);
   DeepFilterNet(const DeepFilterNet&) = delete;
   auto operator=(const DeepFilterNet&) -> DeepFilterNet& = delete;
   DeepFilterNet(const DeepFilterNet&&) = delete;

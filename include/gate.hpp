@@ -30,7 +30,11 @@
 
 class Gate : public PluginBase {
  public:
-  Gate(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
+  Gate(const std::string& tag,
+       const std::string& schema,
+       const std::string& schema_path,
+       PipeManager* pipe_manager,
+       PipelineType pipe_type);
   Gate(const Gate&) = delete;
   auto operator=(const Gate&) -> Gate& = delete;
   Gate(const Gate&&) = delete;

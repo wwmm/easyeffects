@@ -26,7 +26,11 @@
 
 class Reverb : public PluginBase {
  public:
-  Reverb(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
+  Reverb(const std::string& tag,
+         const std::string& schema,
+         const std::string& schema_path,
+         PipeManager* pipe_manager,
+         PipelineType pipe_type);
   Reverb(const Reverb&) = delete;
   auto operator=(const Reverb&) -> Reverb& = delete;
   Reverb(const Reverb&&) = delete;

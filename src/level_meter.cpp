@@ -32,13 +32,15 @@
 LevelMeter::LevelMeter(const std::string& tag,
                        const std::string& schema,
                        const std::string& schema_path,
-                       PipeManager* pipe_manager)
+                       PipeManager* pipe_manager,
+                       PipelineType pipe_type)
     : PluginBase(tag,
                  tags::plugin_name::level_meter,
                  tags::plugin_package::ebur128,
                  schema,
                  schema_path,
-                 pipe_manager) {}
+                 pipe_manager,
+                 pipe_type) {}
 
 LevelMeter::~LevelMeter() {
   if (connected_to_pw) {

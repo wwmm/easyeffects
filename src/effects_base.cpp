@@ -63,9 +63,10 @@
 #include "tags_schema.hpp"
 #include "util.hpp"
 
-EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager* pipe_manager)
+EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager* pipe_manager, PipelineType pipe_type)
     : log_tag(std::move(tag)),
       pm(pipe_manager),
+      pipeline_type(pipe_type),
       settings(g_settings_new(schema.c_str())),
       global_settings(g_settings_new(tags::app::id)) {
   using namespace std::string_literals;
@@ -74,10 +75,11 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   std::replace(schema_base_path.begin(), schema_base_path.end(), '.', '/');
 
-  output_level =
-      std::make_shared<OutputLevel>(log_tag, tags::schema::output_level::id, schema_base_path + "outputlevel/", pm);
+  output_level = std::make_shared<OutputLevel>(log_tag, tags::schema::output_level::id,
+                                               schema_base_path + "outputlevel/", pm, pipeline_type);
 
-  spectrum = std::make_shared<Spectrum>(log_tag, tags::schema::spectrum::id, tags::app::path + "/spectrum/"s, pm);
+  spectrum = std::make_shared<Spectrum>(log_tag, tags::schema::spectrum::id, tags::app::path + "/spectrum/"s, pm,
+                                        pipeline_type);
 
   if (!output_level->connected_to_pw) {
     output_level->connect_to_pw();
@@ -184,62 +186,63 @@ void EffectsBase::create_filters_if_necessary() {
     std::shared_ptr<PluginBase> filter;
 
     if (name.starts_with(tags::plugin_name::autogain)) {
-      filter = std::make_shared<AutoGain>(log_tag, tags::schema::autogain::id, path, pm);
+      filter = std::make_shared<AutoGain>(log_tag, tags::schema::autogain::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::bass_enhancer)) {
-      filter = std::make_shared<BassEnhancer>(log_tag, tags::schema::bass_enhancer::id, path, pm);
+      filter = std::make_shared<BassEnhancer>(log_tag, tags::schema::bass_enhancer::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::bass_loudness)) {
-      filter = std::make_shared<BassLoudness>(log_tag, tags::schema::bass_loudness::id, path, pm);
+      filter = std::make_shared<BassLoudness>(log_tag, tags::schema::bass_loudness::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::compressor)) {
-      filter = std::make_shared<Compressor>(log_tag, tags::schema::compressor::id, path, pm);
+      filter = std::make_shared<Compressor>(log_tag, tags::schema::compressor::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::convolver)) {
-      filter = std::make_shared<Convolver>(log_tag, tags::schema::convolver::id, path, pm);
+      filter = std::make_shared<Convolver>(log_tag, tags::schema::convolver::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::crossfeed)) {
-      filter = std::make_shared<Crossfeed>(log_tag, tags::schema::crossfeed::id, path, pm);
+      filter = std::make_shared<Crossfeed>(log_tag, tags::schema::crossfeed::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::crystalizer)) {
-      filter = std::make_shared<Crystalizer>(log_tag, tags::schema::crystalizer::id, path, pm);
+      filter = std::make_shared<Crystalizer>(log_tag, tags::schema::crystalizer::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::deepfilternet)) {
-      filter = std::make_shared<DeepFilterNet>(log_tag, tags::schema::deepfilternet::id, path, pm);
+      filter = std::make_shared<DeepFilterNet>(log_tag, tags::schema::deepfilternet::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::deesser)) {
-      filter = std::make_shared<Deesser>(log_tag, tags::schema::deesser::id, path, pm);
+      filter = std::make_shared<Deesser>(log_tag, tags::schema::deesser::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::delay)) {
-      filter = std::make_shared<Delay>(log_tag, tags::schema::delay::id, path, pm);
+      filter = std::make_shared<Delay>(log_tag, tags::schema::delay::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::echo_canceller)) {
-      filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm);
+      filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::exciter)) {
-      filter = std::make_shared<Exciter>(log_tag, tags::schema::exciter::id, path, pm);
+      filter = std::make_shared<Exciter>(log_tag, tags::schema::exciter::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::expander)) {
-      filter = std::make_shared<Expander>(log_tag, tags::schema::expander::id, path, pm);
+      filter = std::make_shared<Expander>(log_tag, tags::schema::expander::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::equalizer)) {
-      filter =
-          std::make_shared<Equalizer>(log_tag, tags::schema::equalizer::id, path, tags::schema::equalizer::channel_id,
-                                      schema_base_path + "equalizer/" + instance_id + "/leftchannel/",
-                                      schema_base_path + "equalizer/" + instance_id + "/rightchannel/", pm);
+      filter = std::make_shared<Equalizer>(
+          log_tag, tags::schema::equalizer::id, path, tags::schema::equalizer::channel_id,
+          schema_base_path + "equalizer/" + instance_id + "/leftchannel/",
+          schema_base_path + "equalizer/" + instance_id + "/rightchannel/", pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::filter)) {
-      filter = std::make_shared<Filter>(log_tag, tags::schema::filter::id, path, pm);
+      filter = std::make_shared<Filter>(log_tag, tags::schema::filter::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::gate)) {
-      filter = std::make_shared<Gate>(log_tag, tags::schema::gate::id, path, pm);
+      filter = std::make_shared<Gate>(log_tag, tags::schema::gate::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::level_meter)) {
-      filter = std::make_shared<LevelMeter>(log_tag, tags::schema::level_meter::id, path, pm);
+      filter = std::make_shared<LevelMeter>(log_tag, tags::schema::level_meter::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::limiter)) {
-      filter = std::make_shared<Limiter>(log_tag, tags::schema::limiter::id, path, pm);
+      filter = std::make_shared<Limiter>(log_tag, tags::schema::limiter::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::loudness)) {
-      filter = std::make_shared<Loudness>(log_tag, tags::schema::loudness::id, path, pm);
+      filter = std::make_shared<Loudness>(log_tag, tags::schema::loudness::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::maximizer)) {
-      filter = std::make_shared<Maximizer>(log_tag, tags::schema::maximizer::id, path, pm);
+      filter = std::make_shared<Maximizer>(log_tag, tags::schema::maximizer::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::multiband_compressor)) {
-      filter = std::make_shared<MultibandCompressor>(log_tag, tags::schema::multiband_compressor::id, path, pm);
+      filter = std::make_shared<MultibandCompressor>(log_tag, tags::schema::multiband_compressor::id, path, pm,
+                                                     pipeline_type);
     } else if (name.starts_with(tags::plugin_name::multiband_gate)) {
-      filter = std::make_shared<MultibandGate>(log_tag, tags::schema::multiband_gate::id, path, pm);
+      filter = std::make_shared<MultibandGate>(log_tag, tags::schema::multiband_gate::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::pitch)) {
-      filter = std::make_shared<Pitch>(log_tag, tags::schema::pitch::id, path, pm);
+      filter = std::make_shared<Pitch>(log_tag, tags::schema::pitch::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::reverb)) {
-      filter = std::make_shared<Reverb>(log_tag, tags::schema::reverb::id, path, pm);
+      filter = std::make_shared<Reverb>(log_tag, tags::schema::reverb::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::rnnoise)) {
-      filter = std::make_shared<RNNoise>(log_tag, tags::schema::rnnoise::id, path, pm);
+      filter = std::make_shared<RNNoise>(log_tag, tags::schema::rnnoise::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::speex)) {
-      filter = std::make_shared<Speex>(log_tag, tags::schema::speex::id, path, pm);
+      filter = std::make_shared<Speex>(log_tag, tags::schema::speex::id, path, pm, pipeline_type);
     } else if (name.starts_with(tags::plugin_name::stereo_tools)) {
-      filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm);
+      filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm, pipeline_type);
     }
 
     connections.push_back(filter->latency.connect([this]() { broadcast_pipeline_latency(); }));

@@ -38,8 +38,10 @@
 Spectrum::Spectrum(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
-                   PipeManager* pipe_manager)
-    : PluginBase(tag, "spectrum", tags::plugin_package::ee, schema, schema_path, pipe_manager), fftw_ready(true) {
+                   PipeManager* pipe_manager,
+                   PipelineType pipe_type)
+    : PluginBase(tag, "spectrum", tags::plugin_package::ee, schema, schema_path, pipe_manager, pipe_type),
+      fftw_ready(true) {
   real_input.resize(n_bands);
   output.resize(n_bands / 2U + 1U);
 

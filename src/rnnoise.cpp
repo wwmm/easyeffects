@@ -41,8 +41,15 @@
 RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
-                 PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::rnnoise, tags::plugin_package::rnnoise, schema, schema_path, pipe_manager),
+                 PipeManager* pipe_manager,
+                 PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::rnnoise,
+                 tags::plugin_package::rnnoise,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type),
       enable_vad(g_settings_get_boolean(settings, "enable-vad")),
       vad_thres(g_settings_get_double(settings, "vad-thres") / 100.0F),
       data_L(0),

@@ -36,8 +36,15 @@
 Speex::Speex(const std::string& tag,
              const std::string& schema,
              const std::string& schema_path,
-             PipeManager* pipe_manager)
-    : PluginBase(tag, tags::plugin_name::speex, tags::plugin_package::speex, schema, schema_path, pipe_manager),
+             PipeManager* pipe_manager,
+             PipelineType pipe_type)
+    : PluginBase(tag,
+                 tags::plugin_name::speex,
+                 tags::plugin_package::speex,
+                 schema,
+                 schema_path,
+                 pipe_manager,
+                 pipe_type),
       enable_denoise(g_settings_get_boolean(settings, "enable-denoise")),
       noise_suppression(g_settings_get_int(settings, "noise-suppression")),
       enable_agc(g_settings_get_boolean(settings, "enable-agc")),

@@ -25,7 +25,7 @@
 
 class StreamInputEffects : public EffectsBase {
  public:
-  StreamInputEffects(PipeManager* pipe_manager);
+  StreamInputEffects(PipeManager* pipe_manager, PipelineType pipeline_type);
   StreamInputEffects(const StreamInputEffects&) = delete;
   auto operator=(const StreamInputEffects&) -> StreamInputEffects& = delete;
   StreamInputEffects(const StreamInputEffects&&) = delete;
