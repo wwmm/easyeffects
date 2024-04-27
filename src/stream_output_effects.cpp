@@ -41,8 +41,8 @@
 #include "tags_schema.hpp"
 #include "util.hpp"
 
-StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager, PipelineType pipeline_type)
-    : EffectsBase("soe: ", tags::schema::id_output, pipe_manager, pipeline_type) {
+StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
+    : EffectsBase("soe: ", tags::schema::id_output, pipe_manager, PipelineType::output) {
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr && PULSE_SINK != tags::pipewire::ee_sink_name) {

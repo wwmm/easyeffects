@@ -87,8 +87,8 @@ void on_startup(GApplication* gapp) {
   self->soe_settings = g_settings_new(tags::schema::id_output);
 
   self->pm = new PipeManager();
-  self->soe = new StreamOutputEffects(self->pm, PipelineType::output);
-  self->sie = new StreamInputEffects(self->pm, PipelineType::input);
+  self->soe = new StreamOutputEffects(self->pm);
+  self->sie = new StreamInputEffects(self->pm);
 
   if (self->settings == nullptr) {
     self->settings = g_settings_new(tags::app::id);
