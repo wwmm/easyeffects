@@ -364,7 +364,7 @@ void setup(RNNoiseBox* self,
                                   ? "last-loaded-input-community-package"
                                   : "last-loaded-output-community-package";
 
-        // irs loaded from the convolver menu are always local.
+        // models loaded from the rnnoise ui are always local.
         g_settings_reset(self->data->application->settings, lcp_key);
 
         auto string_object =
