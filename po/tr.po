@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-26 22:47+0000\n"
-"PO-Revision-Date: 2024-04-23 04:07+0000\n"
+"PO-Revision-Date: 2024-04-27 11:07+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.5.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -2395,19 +2395,16 @@ msgid "Delete?"
 msgstr "Silinsin mi?"
 
 #: src/presets_menu.cpp:558
-#, fuzzy
 msgid "No Preset Loaded"
-msgstr "Yeni Ön Ayar Adı"
+msgstr "Ön Ayar Yüklü Değil"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Local Preset Loaded"
-msgstr "Yerel Ön Ayarlar Listesi"
+msgstr "Yüklenen Son Yerel Ön Ayar"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Community Preset Loaded"
-msgstr "Topluluk Ön Ayarı"
+msgstr "Yüklenen Son Topluluk Ön Ayarı"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:438
