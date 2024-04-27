@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-26 22:47+0000\n"
-"PO-Revision-Date: 2023-11-12 05:02+0000\n"
-"Last-Translator: Wolf yuan <h1030035@gmail.com>\n"
+"PO-Revision-Date: 2024-04-27 11:07+0000\n"
+"Last-Translator: Young <young20050727@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "easyeffects/main/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.5.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -66,11 +66,11 @@ msgstr "音量"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
-msgstr ""
+msgstr "幫助"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
-msgstr ""
+msgstr "重設設定值"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "離開"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
@@ -115,15 +115,15 @@ msgstr ""
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
-msgstr ""
+msgstr "控制列表"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr ""
+msgstr "空白列表"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
-msgstr ""
+msgstr "沒有可用的音訊應用程式"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
 msgid "Controls"
@@ -151,7 +151,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:196 data/ui/level_meter.ui:109
 msgid "Short-Term"
-msgstr ""
+msgstr "短期"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
 msgid "Integrated"
@@ -175,7 +175,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:124
 msgid "History"
-msgstr ""
+msgstr "歷史"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -188,7 +188,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:661 data/ui/pitch.ui:387 data/ui/reverb.ui:527
 #: data/ui/rnnoise.ui:441 data/ui/speex.ui:356 data/ui/stereo_tools.ui:786
 msgid "Reset"
-msgstr ""
+msgstr "重設"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:346 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:58 src/tags_plugin_name.cpp:56
@@ -201,7 +201,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:307 data/ui/level_meter.ui:217
 msgid "Range"
-msgstr ""
+msgstr "範圍"
 
 #: data/ui/autogain.ui:383
 msgid "Output Gain"
@@ -221,7 +221,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:617
 msgid "Input"
-msgstr ""
+msgstr "輸入"
 
 #: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:277
 #: data/ui/bass_loudness.ui:126 data/ui/compressor.ui:1158
@@ -249,7 +249,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
-msgstr ""
+msgstr "輸出"
 
 #: data/ui/autogain.ui:533 data/ui/bass_enhancer.ui:361
 #: data/ui/bass_loudness.ui:210 data/ui/compressor.ui:1242
@@ -268,13 +268,13 @@ msgstr ""
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:235
 #: data/ui/pipe_manager_box.ui:365
 msgid "Device"
-msgstr ""
+msgstr "設備"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:43
 msgid "Name"
-msgstr ""
+msgstr "名稱"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
@@ -292,7 +292,7 @@ msgstr ""
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
 msgid "Listen"
-msgstr ""
+msgstr "聽"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
@@ -300,11 +300,11 @@ msgstr ""
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr ""
+msgstr "第三"
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr ""
+msgstr "第二"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
@@ -333,7 +333,7 @@ msgstr ""
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
-msgstr ""
+msgstr "應用程式名稱"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
@@ -365,7 +365,7 @@ msgstr ""
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:536
 #: data/ui/multiband_gate_band.ui:594
 msgid "Mode"
-msgstr ""
+msgstr "模式"
 
 #: data/ui/compressor.ui:76 data/ui/expander.ui:76
 #: data/ui/multiband_compressor_band.ui:100
@@ -402,7 +402,7 @@ msgstr ""
 #: data/ui/compressor.ui:190 data/ui/expander.ui:111
 #: data/ui/multiband_compressor_band.ui:169
 msgid "Time"
-msgstr ""
+msgstr "時間"
 
 #: data/ui/compressor.ui:200 data/ui/deesser.ui:301 data/ui/expander.ui:121
 #: data/ui/gate.ui:161 data/ui/gate.ui:253 data/ui/limiter.ui:364
@@ -427,12 +427,12 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:198 data/ui/multiband_gate_band.ui:149
 #: data/ui/rnnoise.ui:116
 msgid "Release"
-msgstr ""
+msgstr "釋出"
 
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr ""
+msgstr "釋出時間"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
@@ -504,14 +504,14 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:480 data/ui/multiband_gate_band.ui:538
 #: data/ui/pipe_manager_box.ui:570 data/ui/stereo_tools.ui:163
 msgid "Left"
-msgstr ""
+msgstr "左"
 
 #: data/ui/compressor.ui:547 data/ui/delay.ui:125 data/ui/equalizer.ui:242
 #: data/ui/expander.ui:468 data/ui/gate.ui:681 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:481 data/ui/multiband_gate_band.ui:539
 #: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:218
 msgid "Right"
-msgstr ""
+msgstr "右"
 
 #: data/ui/compressor.ui:548 data/ui/compressor.ui:571 data/ui/expander.ui:469
 #: data/ui/expander.ui:492 data/ui/gate.ui:682 data/ui/gate.ui:705
@@ -519,7 +519,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:540
 #: data/ui/multiband_gate_band.ui:575
 msgid "Min"
-msgstr ""
+msgstr "最小"
 
 #: data/ui/compressor.ui:549 data/ui/compressor.ui:572 data/ui/expander.ui:470
 #: data/ui/expander.ui:493 data/ui/gate.ui:683 data/ui/gate.ui:706
@@ -527,7 +527,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:518 data/ui/multiband_gate_band.ui:541
 #: data/ui/multiband_gate_band.ui:576
 msgid "Max"
-msgstr ""
+msgstr "最大"
 
 #: data/ui/compressor.ui:558 data/ui/expander.ui:479 data/ui/gate.ui:692
 #: data/ui/multiband_compressor.ui:77 data/ui/multiband_compressor_band.ui:492
@@ -650,7 +650,7 @@ msgstr ""
 #: data/ui/compressor.ui:899 data/ui/compressor.ui:958 data/ui/expander.ui:819
 #: data/ui/expander.ui:878 data/ui/gate.ui:1032 data/ui/gate.ui:1091
 msgid "Off"
-msgstr ""
+msgstr "關閉"
 
 #: data/ui/compressor.ui:900 data/ui/compressor.ui:959 data/ui/expander.ui:820
 #: data/ui/expander.ui:879 data/ui/gate.ui:1033 data/ui/gate.ui:1092
@@ -779,7 +779,7 @@ msgstr ""
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
 msgid "Search"
-msgstr ""
+msgstr "搜尋"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
@@ -809,7 +809,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:139 data/ui/multiband_gate_band.ui:108
 #: data/ui/stereo_tools.ui:173 data/ui/stereo_tools.ui:198
 msgid "Mute"
-msgstr ""
+msgstr "靜音"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -982,7 +982,7 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:258 data/ui/filter.ui:244 data/ui/pitch.ui:28
 msgid "Quality"
-msgstr ""
+msgstr "品質"
 
 #: data/ui/equalizer_band.ui:288 data/ui/filter.ui:192
 msgid "Width"
@@ -1018,11 +1018,11 @@ msgstr ""
 
 #: data/ui/factory_modules_listview.ui:72
 msgid "Description"
-msgstr ""
+msgstr "註釋"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
-msgstr ""
+msgstr "刪除此模型的檔案"
 
 #: data/ui/filter.ui:52
 msgid "Low-Shelf"
@@ -1304,11 +1304,11 @@ msgstr ""
 
 #: data/ui/loudness.ui:37
 msgid "Standard"
-msgstr ""
+msgstr "標準"
 
 #: data/ui/loudness.ui:44
 msgid "Flat"
-msgstr ""
+msgstr "平坦"
 
 #: data/ui/loudness.ui:58
 msgid "FFT Size"
@@ -1316,7 +1316,7 @@ msgstr ""
 
 #: data/ui/loudness.ui:82
 msgid "Output Volume"
-msgstr ""
+msgstr "輸出音量"
 
 #: data/ui/loudness.ui:103
 msgid "Clipping"
@@ -1356,11 +1356,11 @@ msgstr ""
 
 #: data/ui/multiband_compressor.ui:156 data/ui/multiband_gate.ui:156
 msgid "Classic"
-msgstr ""
+msgstr "經典"
 
 #: data/ui/multiband_compressor.ui:157 data/ui/multiband_gate.ui:157
 msgid "Modern"
-msgstr ""
+msgstr "現代"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
 msgid "Linear Phase"
@@ -1494,7 +1494,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:112
 msgid "Server Information"
-msgstr ""
+msgstr "伺服器資訊"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
@@ -1552,7 +1552,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:396
 msgid "Input Devices"
-msgstr ""
+msgstr "輸入裝置"
 
 #: data/ui/pipe_manager_box.ui:408 src/application.cpp:297
 msgid "Input Presets"
@@ -1713,27 +1713,27 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:10
 msgid "Service"
-msgstr ""
+msgstr "服務"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "開機時啟動"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "於視窗關閉時結束"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "音訊"
 
 #: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
-msgstr ""
+msgstr "解析所有的輸出"
 
 #: data/ui/preferences_general.ui:54
 msgid "Process All Input Streams"
-msgstr ""
+msgstr "解析所有的輸入"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
@@ -1757,7 +1757,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:142
 msgid "Update Frequency"
-msgstr ""
+msgstr "更新頻率"
 
 #: data/ui/preferences_general.ui:143
 msgid "Related to LV2 Plugins"
@@ -1769,7 +1769,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:170
 msgid "Use Dark Theme"
-msgstr ""
+msgstr "使用深色主題"
 
 #: data/ui/preferences_general.ui:182
 msgid "Hide Menus on Outside Clicks"
@@ -1813,7 +1813,7 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:71
 msgid "Height"
-msgstr ""
+msgstr "高度"
 
 #: data/ui/preferences_spectrum.ui:93
 msgid "Line Width"
@@ -1837,7 +1837,7 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:165
 msgid "Color"
-msgstr ""
+msgstr "顏色"
 
 #: data/ui/preferences_spectrum.ui:168
 msgid "Lines and Bars"
@@ -1853,15 +1853,15 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:209
 msgid "Minimum"
-msgstr ""
+msgstr "最小"
 
 #: data/ui/preferences_spectrum.ui:231
 msgid "Maximum"
-msgstr ""
+msgstr "最大"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
-msgstr ""
+msgstr "讀取"
 
 #: data/ui/preset_row.ui:39
 msgid "Discard the current settings and load this preset"
@@ -1901,7 +1901,7 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "社群"
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
@@ -1939,19 +1939,19 @@ msgstr ""
 
 #: data/ui/reverb.ui:82
 msgid "Small"
-msgstr ""
+msgstr "小"
 
 #: data/ui/reverb.ui:83
 msgid "Medium"
-msgstr ""
+msgstr "中"
 
 #: data/ui/reverb.ui:84
 msgid "Large"
-msgstr ""
+msgstr "大"
 
 #: data/ui/reverb.ui:85
 msgid "Tunnel"
-msgstr ""
+msgstr "通道"
 
 #: data/ui/reverb.ui:86
 msgid "Large/smooth"
@@ -2041,19 +2041,19 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "概覽"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "顯示幫助"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "全螢幕/退出全螢幕"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "關閉視窗"
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
@@ -2077,7 +2077,7 @@ msgstr ""
 
 #: data/ui/speex.ui:95
 msgid "Start"
-msgstr ""
+msgstr "開始"
 
 #: data/ui/speex.ui:117
 msgid "Continue"
@@ -2185,7 +2185,7 @@ msgstr ""
 
 #: src/app_info.cpp:104
 msgid "Idle"
-msgstr ""
+msgstr "閒置"
 
 #: src/app_info.cpp:106
 msgid "Creating"
@@ -2193,11 +2193,11 @@ msgstr ""
 
 #: src/app_info.cpp:108
 msgid "Error"
-msgstr ""
+msgstr "錯誤"
 
 #: src/app_info.cpp:110
 msgid "Unknown"
-msgstr ""
+msgstr "未知"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
@@ -2253,7 +2253,7 @@ msgstr ""
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "此檔案並非一般檔案"
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
@@ -2332,7 +2332,7 @@ msgstr ""
 
 #: src/equalizer_ui.cpp:550
 msgid "Save"
-msgstr ""
+msgstr "儲存"
 
 #: src/equalizer_ui.cpp:557
 msgid "EqualizerAPO Presets"
@@ -2366,19 +2366,19 @@ msgstr ""
 
 #: src/plugins_box.cpp:829
 msgid "Output Device"
-msgstr ""
+msgstr "輸出裝置"
 
 #: src/plugins_menu.cpp:238
 msgid "Add"
-msgstr ""
+msgstr "新增"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
-msgstr ""
+msgstr "儲存？"
 
 #: src/presets_menu.cpp:417
 msgid "Delete?"
-msgstr ""
+msgstr "刪除？"
 
 #: src/presets_menu.cpp:558
 msgid "No Preset Loaded"
@@ -2399,7 +2399,7 @@ msgstr ""
 
 #: src/presets_manager.cpp:438
 msgid "Package"
-msgstr ""
+msgstr "套件"
 
 #: src/presets_manager.cpp:1146 src/presets_manager.cpp:1153
 #: src/presets_manager.cpp:1162 src/presets_manager.cpp:1169
@@ -2511,7 +2511,7 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:62
 msgid "Noise Reduction"
-msgstr ""
+msgstr "降噪"
 
 #: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
