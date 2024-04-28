@@ -2,8 +2,8 @@
 <gresources>
     <gresource prefix="/com/github/wwmm/easyeffects">
         <file>ui/custom.css</file>
-        <file>ui/application_window.ui</file>
         <file>ui/app_info.ui</file>
+        <file>ui/application_window.ui</file>
         <file>ui/apps_box.ui</file>
         <file>ui/autogain.ui</file>
         <file>ui/autoload_row.ui</file>
@@ -13,8 +13,8 @@
         <file>ui/chart.ui</file>
         <file>ui/compressor.ui</file>
         <file>ui/convolver.ui</file>
-        <file>ui/convolver_menu_impulses.ui</file>
         <file>ui/convolver_menu_combine.ui</file>
+        <file>ui/convolver_menu_impulses.ui</file>
         <file>ui/crossfeed.ui</file>
         <file>ui/crystalizer.ui</file>
         <file>ui/crystalizer_band.ui</file>
@@ -28,9 +28,9 @@
         <file>ui/exciter.ui</file>
         <file>ui/expander.ui</file>
         <file>ui/factory_clients_listview.ui</file>
-        <file>ui/factory_node_dropdown.ui</file>
         <file>ui/factory_input_device_dropdown.ui</file>
         <file>ui/factory_modules_listview.ui</file>
+        <file>ui/factory_node_dropdown.ui</file>
         <file>ui/factory_output_device_dropdown.ui</file>
         <file>ui/factory_presets_dropdown.ui</file>
         <file>ui/factory_rnnoise_listview.ui</file>
