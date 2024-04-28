@@ -16,9 +16,9 @@ data/ui/convolver_menu_impulses.ui
 data/ui/crossfeed.ui
 data/ui/crystalizer.ui
 data/ui/crystalizer_band.ui
+data/ui/deepfilternet.ui
 data/ui/deesser.ui
 data/ui/delay.ui
-data/ui/deepfilternet.ui
 data/ui/echo_canceller.ui
 data/ui/effects_box.ui
 data/ui/equalizer.ui
@@ -50,6 +50,7 @@ data/ui/preferences_general.ui
 data/ui/preferences_spectrum.ui
 data/ui/preferences_window.ui
 data/ui/preset_row.ui
+data/ui/preset_community_row.ui
 data/ui/presets_menu.ui
 data/ui/reverb.ui
 data/ui/rnnoise.ui
@@ -67,9 +68,8 @@ src/pipe_manager_box.cpp
 src/plugin_base.cpp
 src/plugins_box.cpp
 src/plugins_menu.cpp
-src/presets_menu.cpp
 src/presets_manager.cpp
+src/presets_menu.cpp
 src/rnnoise_ui.cpp
-src/speex_ui.cpp
 src/tags_plugin_name.cpp
 src/ui_helpers.cpp
