@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-28 15:33+0000\n"
-"PO-Revision-Date: 2024-03-06 06:01+0000\n"
+"POT-Creation-Date: 2024-04-26 22:47+0000\n"
+"PO-Revision-Date: 2024-04-28 15:36+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/tr/>\n"
@@ -17,10 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.5.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
-#, fuzzy
 msgid "Easy Effects"
 msgstr "Easy Effects"
 
@@ -29,24 +28,22 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
-#, fuzzy
 msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects gelişmiş bir ses işleme aracıdır. Ekolayzır, sınırlayıcı, "
+"Easy Effects gelişmiş bir ses işleme aracıdır. Ekolayzır, sınırlayıcı, "
 "sıkıştırıcı ve yankılanma araçları içerir. Bunları tamamlamak için ayrıca "
-"bir spektrum analizörü bulunmaktadır."
+"bir spektrum çözümleyici bulunmaktadır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects, PulseEffects'in devamıdır. EasyEffects yalnızca PipeWire'ın ses "
-"sunucusunu destekler. PulseAudio kullanıcıları bunun yerine PulseEffects "
+"Easy Effects, PulseEffects'in devamıdır. Easy Effects yalnızca PipeWire'ın "
+"ses sunucusunu destekler. PulseAudio kullanıcıları bunun yerine PulseEffects "
 "kullanmalıdır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
@@ -61,25 +58,24 @@ msgstr ""
 "ana pencerede sunulur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Ses çıkışını manipüle etmenin yanı sıra, EasyEffects, mikrofon gibi bir "
-"giriş cihazına da efektler uygulayabilir. Bu özellik ses kaydında da "
-"kullanışlıdır ve sesli konuşmalarda da iyi çalışır."
+"Ses çıkışını değiştirmenin yanı sıra, Easy Effects, mikrofon gibi bir giriş "
+"aygıtına da efektler uygulayabilir. Bu özellik ses kaydında da kullanışlıdır "
+"ve sesli konuşmalarda da iyi çalışır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"EasyEffects başlatıldığında, son oturumda kullanılan ayarlamaları rahatlıkla "
-"hatırlayacaktır. Tüm mevcut ayarları profil olarak kaydetmek de mümkündür."
+"Easy Effects başlatıldığında, son oturumda kullanılan ayarlamaları "
+"rahatlıkla hatırlayacaktır. Tüm geçerli ayarları profil olarak kaydetmek de "
+"mümkündür."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 msgid "Wellington Wallace"
@@ -142,6 +138,9 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"İşlem hattı yönetim sistemi iyileştirildi. İşlem hattındaki son iki eklenti "
+"bir sınırlayıcı ve ardından bir seviye ölçer olsa bile sınırlayıcı olmayan "
+"efektler sınırlayıcıdan önce yerleştirilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
@@ -186,6 +185,8 @@ msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Seviye ölçerlerin belirli koşullar altında güncellenmesini engelleyen bir "
+"hata düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -216,12 +217,14 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
+"Artık sanal aygıtlarımızda monitor.passthrough = true olarak ayarlıyoruz. "
+"Bu, PipeWire &gt; 1.0.3 yayınlandığında gecikme süresinin video oynatıcılar "
+"tarafından düzgün bir şekilde uygulanmasını sağlayacaktır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
-#, fuzzy
 msgid "Updated translations."
-msgstr "Çeviriler güncellendi"
+msgstr "Çeviriler güncellendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
@@ -320,6 +323,8 @@ msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"Süzgeç efekti, Calf Studio'dan Linux Studio Eklentilerine taşındığından beri "
+"yeni parametrelerle iyileştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
 msgid ""
@@ -368,7 +373,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:168
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "Ekolayzer bant ayarlarındaki Tekli düğmesi düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid ""
@@ -378,6 +383,11 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
+"/etc altındaki Easy Effects klasörleri kullanımdan kaldırıldı ve burada "
+"bulunan ön ayarlar artık yüklenmeyecek. Şu anda yalnızca ~/.config/"
+"easyeffects altındaki yerel ön ayarlar Ön Ayarlar Menüsüne otomatik olarak "
+"yüklenir. Gelecekte Topluluk Ön Ayarlarını yüklemek, yönetmek ve içe "
+"aktarmak için yeni bir sistem uygulayacağız."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:178
 msgid ""
@@ -400,6 +410,9 @@ msgid ""
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
+"PipeWire sekmemizdeki giriş/çıkış aygıtı açılır menüsü, sistem öntanımlı "
+"aygıtı değiştiğinde ve Öntanımlı Kullan etkinleştirildiğinde güncelleniyor. "
+"Bu, 1989 numaralı sorunu düzeltir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
 msgid "A new Level Meter plugin based on libebur128 has been added."
@@ -730,9 +743,8 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:339
-#, fuzzy
 msgid "Many translation updates"
-msgstr "Çeviriler güncellendi"
+msgstr "Birçok çeviri güncellemesi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:341
 msgid ""
@@ -1202,13 +1214,11 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:544
-#, fuzzy
 msgid ""
 "The application and its repository have been renamed from PulseEffects to "
 "EasyEffects"
 msgstr ""
-"Uygulama ve deposu, PulseEffects'ten `EasyEffects` olarak yeniden "
-"adlandırıldı"
+"Uygulama ve deposunun PulseEffects olan adı EasyEffects olarak değiştirildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:545
 msgid "gtkmm3 was replaced by gtkmm4"
