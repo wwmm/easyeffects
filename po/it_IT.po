@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-28 15:33+0000\n"
-"PO-Revision-Date: 2024-04-27 11:07+0000\n"
+"PO-Revision-Date: 2024-04-29 04:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1885,22 +1885,19 @@ msgstr "Rimuovi questo profilo"
 
 #: data/ui/preset_community_row.ui:55
 msgid "Try"
-msgstr ""
+msgstr "Prova"
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "Cerca Profili della Community"
+msgstr "Prova questo profilo della community"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "Importa Modello"
+msgstr "Importa"
 
 #: data/ui/preset_community_row.ui:66
-#, fuzzy
 msgid "Import this community preset into the local presets list"
-msgstr "Importa un profilo dall'archiviazione locale"
+msgstr "Importa questo profilo della community nella lista dei profili locali"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
