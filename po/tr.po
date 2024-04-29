@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-28 15:33+0000\n"
-"PO-Revision-Date: 2024-04-27 11:07+0000\n"
+"PO-Revision-Date: 2024-04-29 04:07+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -1882,24 +1882,20 @@ msgid "Remove this preset file"
 msgstr "Hazır ayar dosyasını kaldır"
 
 #: data/ui/preset_community_row.ui:55
-#, fuzzy
 msgid "Try"
-msgstr "Sertlik"
+msgstr "Dene"
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "Topluluk Ön Ayarı Ara"
+msgstr "Bu topluluk ön ayarını dene"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "Modeli İçe Aktar"
+msgstr "İçe aktar"
 
 #: data/ui/preset_community_row.ui:66
-#, fuzzy
 msgid "Import this community preset into the local presets list"
-msgstr "Yerel depolama alanından bir ön ayarı içe aktar"
+msgstr "Bu topluluk ön ayarını yerel ön ayarlar listesine aktar"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
