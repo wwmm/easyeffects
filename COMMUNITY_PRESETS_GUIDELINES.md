@@ -188,8 +188,8 @@ The package may contain also impulse responses and models for presets with
 Convolver and Noise Reduction (RNNoise) effects.
 
 They should be placed in the package structure following the same scheme
-reported above. In example:
-- `XDG_DATA_DIR/easyeffects/irs/wwmm-presets/implues.irs`
+reported above. For example:
+- `XDG_DATA_DIR/easyeffects/irs/wwmm-presets/impulse.irs`
 - `XDG_DATA_DIR/easyeffects/rnnoise/wwmm-presets/model.rnnn`
 
 From version `7.2.0` the mechanism to detect those files has been changed.
@@ -199,7 +199,11 @@ package. But, more importantly, **make sure to build/save the preset with a
 version >=`7.2.0`**.
 
 More in detail, Easy Effects presets does not save the path anymore, but only
-the name of the additional files (without extension). When a preset is loaded,
+the name of the additional files (without extension). 
+Previously, the path was stored in the preset JSON file as `kernel-path`, and now the replacement key which only stores the name is `kernel-name`. 
+So if you see `kernel-path` in a preset JSON file it probably needs to be updated by saving the preset with a version >=`7.2.0`.
+
+When a preset is loaded,
 the application searches the specified file, first in the local directory,
 then in `XDG_DATA_DIR/easyeffects`.
 Therefore it's recommended to use a unique name for additional files. If you
