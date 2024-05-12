@@ -63,7 +63,7 @@ LevelMeter::~LevelMeter() {
 }
 
 auto LevelMeter::init_ebur128() -> bool {
-  if (n_samples == 0 || rate == 0) {
+  if (n_samples == 0U || rate == 0U) {
     return false;
   }
 

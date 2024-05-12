@@ -78,7 +78,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
     -> std::vector<float> {
   std::vector<float> output;
 
-  if (rate == 0) {
+  if (rate == 0U) {
     return output;
   }
 
