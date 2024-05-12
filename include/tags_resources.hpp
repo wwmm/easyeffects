@@ -29,6 +29,10 @@ inline constexpr auto icons = "/com/github/wwmm/easyeffects/icons";
 
 inline constexpr auto css = "/com/github/wwmm/easyeffects/ui/custom.css";
 
+// Flatpak info file
+
+inline constexpr auto flatpak_info_file = "/.flatpak-info";
+
 // Path to the widgets xml files
 
 inline constexpr auto app_info_ui = "/com/github/wwmm/easyeffects/ui/app_info.ui";
