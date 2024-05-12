@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-28 15:33+0000\n"
+"POT-Creation-Date: 2024-05-12 14:45+0000\n"
 "PO-Revision-Date: 2024-02-20 11:02+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -1995,8 +1995,8 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:287
 msgid ""
-"Community Presets packages can be installed from Flatpak or the repository "
-"of your favorite distribution."
+"Community Presets packages can be installed from the repository of your "
+"favorite distribution."
 msgstr ""
 
 #: data/ui/presets_menu.ui:298
@@ -2468,43 +2468,43 @@ msgid "Add"
 msgstr "Legg til"
 
 #. Placeholders in case of issues
-#: src/presets_manager.cpp:438
+#: src/presets_manager.cpp:439
 #, fuzzy
 msgid "Community Preset"
 msgstr "Importer forhåndsinnstillinger"
 
-#: src/presets_manager.cpp:438
+#: src/presets_manager.cpp:439
 msgid "Package"
 msgstr ""
 
-#: src/presets_manager.cpp:1146 src/presets_manager.cpp:1153
-#: src/presets_manager.cpp:1162 src/presets_manager.cpp:1169
-#: src/presets_manager.cpp:1178 src/presets_manager.cpp:1186
+#: src/presets_manager.cpp:1147 src/presets_manager.cpp:1154
+#: src/presets_manager.cpp:1163 src/presets_manager.cpp:1170
+#: src/presets_manager.cpp:1179 src/presets_manager.cpp:1187
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:1146
+#: src/presets_manager.cpp:1147
 #, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Svartelistede programmer"
 
-#: src/presets_manager.cpp:1153
+#: src/presets_manager.cpp:1154
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:1162
+#: src/presets_manager.cpp:1163
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:1169
+#: src/presets_manager.cpp:1170
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:1179
+#: src/presets_manager.cpp:1180
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:1187
+#: src/presets_manager.cpp:1188
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
