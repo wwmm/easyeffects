@@ -153,7 +153,7 @@ class Crystalizer : public PluginBase {
           const float L = band_data_L.at(n)[m];
           const float R = band_data_R.at(n)[m];
 
-          if (m > 0 && m < blocksize - 1) {
+          if (m > 0U && m < blocksize - 1U) {
             const float& L_lower = band_data_L.at(n)[m - 1U];
             const float& R_lower = band_data_R.at(n)[m - 1U];
             const float& L_upper = band_data_L.at(n)[m + 1U];
@@ -164,12 +164,12 @@ class Crystalizer : public PluginBase {
           } else if (m == 0U) {
             const float& L_lower = band_last_L.at(n);
             const float& R_lower = band_last_R.at(n);
-            const float& L_upper = band_data_L.at(n)[m + 1];
-            const float& R_upper = band_data_R.at(n)[m + 1];
+            const float& L_upper = band_data_L.at(n)[m + 1U];
+            const float& R_upper = band_data_R.at(n)[m + 1U];
 
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
-          } else if (m == blocksize - 1) {
+          } else if (m == blocksize - 1U) {
             const float& L_upper = band_next_L.at(n);
             const float& R_upper = band_next_R.at(n);
             const float& L_lower = band_data_L.at(n)[m - 1U];
@@ -197,8 +197,8 @@ class Crystalizer : public PluginBase {
           }
         }
       } else {
-        band_last_L.at(n) = band_data_L.at(n)[blocksize - 1];
-        band_last_R.at(n) = band_data_R.at(n)[blocksize - 1];
+        band_last_L.at(n) = band_data_L.at(n)[blocksize - 1U];
+        band_last_R.at(n) = band_data_R.at(n)[blocksize - 1U];
       }
     }
 

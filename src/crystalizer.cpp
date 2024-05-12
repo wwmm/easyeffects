@@ -113,10 +113,10 @@ void Crystalizer::setup() {
 
     blocksize = n_samples;
 
-    n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
+    n_samples_is_power_of_2 = (n_samples & (n_samples - 1U)) == 0 && n_samples != 0;
 
     if (!n_samples_is_power_of_2) {
-      while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
+      while ((blocksize & (blocksize - 1U)) != 0 && blocksize > 2U) {
         blocksize--;
       }
     }
