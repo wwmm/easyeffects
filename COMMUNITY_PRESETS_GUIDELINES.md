@@ -11,8 +11,8 @@ easily installed since not all users were able to find presets on the internet,
 which were practically reported in one of the subpage of the Github project
 (that linked other repositories where the user should manually download them on
 the local storage).
-Now it should be easier to discover them making a search on Flatpak or the
-repository or your favorite distribution.
+Now it should be easier to discover them making a search on the repository or
+your favorite distribution.
 
 Instead the Local Presets list is intended to save self-made presets and/or a
 selected choice of presets imported by the community list.
@@ -23,7 +23,7 @@ Indeed, Community Presets **cannot be autoloaded**.
 In order to list the Community Presets, the user should install one or more
 packages made and maintained by other Easy Effects users.
 The packages can be shipped by Linux distributions in their specific
-repositories or by extensions available on Flatpak.
+repositories.
 
 # Guidelines for packagers of Easy Effects Community Presets
 
@@ -47,28 +47,55 @@ Noise Reduction effect.
 - The folders above mentioned should contain a subdirectory with the name
 associated to the installed package. In example:
 - - `XDG_DATA_DIR/easyeffects/output/package-name`
-- The name of the package should be something descriptive e.g. `easyeffects-presets-LoudnessEqualizer`. If your package contains a group of presets without a particular "theme", naming a package `easyeffects-USERNAME-presets` is reasonable.
+- The name of the package should be something descriptive e.g.
+`easyeffects-presets-LoudnessEqualizer`. If your package contains a group of
+presets without a particular "theme", naming a package
+`easyeffects-USERNAME-presets` is reasonable.
 
+<!--
 ### Flatpak
 
-Flatpak extension packages do not use `$XDG_DATA_DIRS`, and instead place and search for files under a different directory (detailed in examples below). Besides this detail, Flatpak and distribution packages should behave the same in regard to community presets.
+Flatpak extension packages do not use `$XDG_DATA_DIRS`, and instead place and
+search for files under a different directory (detailed in examples below).
+Besides this detail, Flatpak and distribution packages should behave the same in
+regard to community presets.
 
-In order to publish a Flatpak preset package on Flathub you do the following general steps:
+In order to publish a Flatpak preset package on Flathub you do the following
+general steps:
 
-1. Create AppStream MetaInfo file (should be stored in your preset repository as it is not Flatpak-specific).
+1. Create AppStream MetaInfo file (should be stored in your preset repository as
+it is not Flatpak-specific).
 2. Create Flatpak json manifest file
-3. Submit to Flathub, described following [Flathub's guide](https://docs.flathub.org/docs/for-app-authors/submission/).
+3. Submit to Flathub, described following
+[Flathub's guide](https://docs.flathub.org/docs/for-app-authors/submission/).
 
 #### Step by step instructions
 
-1. Decide on a name. It should be e.g. `io.github.wwmm.easyeffects.Presets.PRESET_PACKAGE_NAME`. For example `io.github.wwmm.easyeffects.Presets.LoudnessEqualizer` for a specific preset or `io.github.wwmm.easyeffects.Presets.wwmm` for a group of presets without a particular "theme". The name must be consistent across the files used for Flatpak otherwise the package will not build/work properly. 
+1. Decide on a name. It should be e.g.
+`io.github.wwmm.easyeffects.Presets.PRESET_PACKAGE_NAME`. For example
+`io.github.wwmm.easyeffects.Presets.LoudnessEqualizer` for a specific preset or
+`io.github.wwmm.easyeffects.Presets.wwmm` for a group of presets without a
+particular "theme". The name must be consistent across the files used for
+Flatpak otherwise the package will not build/work properly.
 
 > [!NOTE]  
-> Flatpak uses `io.github.wwmm.easyeffects.Presets` as the extension point name (which preset packages must use), while `com.github.wwmm.easyeffects` is the name of the Easy Effects package itself. This is necessary since `com.github.*` is only allowed for backwards compatibility reasons on Flathub, and newer packages must use `io.github.*`. 
+> Flatpak uses `io.github.wwmm.easyeffects.Presets` as the extension point name
+(which preset packages must use), while `com.github.wwmm.easyeffects` is the
+name of the Easy Effects package itself. This is necessary since `com.github.*`
+is only allowed for backwards compatibility reasons on Flathub, and newer
+packages must use `io.github.*`.
 
-2. Clone the Flathub repo for new submissions following [Flathub's guide](https://docs.flathub.org/docs/for-app-authors/submission/).
+2. Clone the Flathub repo for new submissions following
+[Flathub's guide](https://docs.flathub.org/docs/for-app-authors/submission/).
 
-3. Create the AppStream MetaInfo file, which should go in your preset repository, not the Flathub repository. Name it `io.github.wwmm.easyeffects.Presets.PRESET_PACKAGE_NAME.metainfo.xml`. Replace `PRESET_PACKAGE_NAME`, `PRESET_PACKAGE_NAME_PRETTY`, `DEVELOPER_NAME_ID`, `DEVELOPER_NAME`, and `REPO_URL`. You may optionally add more information to this file (which may help improve visibility of the package on Flathub/software stores) as described in the [appstream docs](https://www.freedesktop.org/software/appstream/docs/).
+3. Create the AppStream MetaInfo file, which should go in your preset
+repository, not the Flathub repository.
+Name it `io.github.wwmm.easyeffects.Presets.PRESET_PACKAGE_NAME.metainfo.xml`.
+Replace `PRESET_PACKAGE_NAME`, `PRESET_PACKAGE_NAME_PRETTY`,
+`DEVELOPER_NAME_ID`, `DEVELOPER_NAME`, and `REPO_URL`.
+You may optionally add more information to this file (which may help improve
+visibility of the package on Flathub/software stores) as described in the
+[appstream docs](https://www.freedesktop.org/software/appstream/docs/).
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -88,7 +115,17 @@ In order to publish a Flatpak preset package on Flathub you do the following gen
 </component>
 ```
 
-4. Create the Flatpak manifest file named `io.github.wwmm.easyeffects.Presets.PRESET_PACKAGE_NAME.json`, this should go in your Flathub repository. Replace `PRESET_PACKAGE_NAME`, `PRESET_FILE_NAME`, `REPO_NAME`, `REPO_URL`, and `LATEST_COMMIT`. An example of `REPO_NAME` is `wwmm/easyeffects` and `REPO_URL` could be `https://github.com/wwmm/easyeffects.git` You can add more `install` commands in `build-commands` if you want to install multiple presets. Make sure you carefully install to the correct directory for each type of preset, with the options of `input`, `output`, `irs`, and `rnnoise`. If the preset repo is not on GitHub remove or replace the `x-checker-data` section.
+4. Create the Flatpak manifest file named
+`io.github.wwmm.easyeffects.Presets.PRESET_PACKAGE_NAME.json`, this should go in
+your Flathub repository. Replace `PRESET_PACKAGE_NAME`, `PRESET_FILE_NAME`,
+`REPO_NAME`, `REPO_URL`, and `LATEST_COMMIT`.
+An example of `REPO_NAME` is `wwmm/easyeffects` and `REPO_URL` could be
+`https://github.com/wwmm/easyeffects.git`.
+You can add more `install` commands in `build-commands` if you want to install
+multiple presets. Make sure you carefully install to the correct directory for
+each type of preset, with the options of `input`, `output`, `irs`, and
+`rnnoise`. If the preset repo is not on GitHub remove or replace the
+`x-checker-data` section.
 
 ```json
 {
@@ -130,7 +167,12 @@ In order to publish a Flatpak preset package on Flathub you do the following gen
 
 ```
 
-5. It is also necessary to add the following file called `flathub.json` in the Flathub repo. The skip icons check is stricly necessary, since unlike a normal app we are not providing icons. We also recommend enabling a Flathub bot to automatically merge PRs with updates from the upstream repo. Given these are only preset files, this should not be a very risky thing to do and avoids manual maintenance hassle.
+5. It is also necessary to add the following file called `flathub.json` in the
+Flathub repo. The skip icons check is stricly necessary, since unlike a normal
+app we are not providing icons.
+We also recommend enabling a Flathub bot to automatically merge PRs with updates
+from the upstream repo. Given these are only preset files, this should not be a
+very risky thing to do and avoids manual maintenance hassle.
 
 ```json
 {
@@ -140,8 +182,9 @@ In order to publish a Flatpak preset package on Flathub you do the following gen
 
 ```
 
-6. Now you can submit this to Flathub via a PR, following [Flathub's instructions](https://docs.flathub.org/docs/for-app-authors/submission/).
-
+6. Now you can submit this to Flathub via a PR, following
+[Flathub's instructions](https://docs.flathub.org/docs/for-app-authors/submission/).
+-->
 
 ## Guidelines for package directories structure
 
@@ -199,9 +242,11 @@ package. But, more importantly, **make sure to build/save the preset with a
 version >=`7.2.0`**.
 
 More in detail, Easy Effects presets does not save the path anymore, but only
-the name of the additional files (without extension). 
-Previously, the path was stored in the preset JSON file as `kernel-path`, and now the replacement key which only stores the name is `kernel-name`. 
-So if you see `kernel-path` in a preset JSON file it probably needs to be updated by saving the preset with a version >=`7.2.0`.
+the name of the additional files (without extension).
+Previously, the path was stored in the preset JSON file as `kernel-path`, and
+now the replacement key which only stores the name is `kernel-name`.
+So if you see `kernel-path` in a preset JSON file it probably needs to be
+updated by saving the preset with a version >=`7.2.0`.
 
 When a preset is loaded,
 the application searches the specified file, first in the local directory,

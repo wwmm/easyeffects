@@ -37,6 +37,7 @@
 #include "plugin_base.hpp"
 #include "resampler.hpp"
 #include "tags_plugin_name.hpp"
+#include "tags_resources.hpp"
 #include "util.hpp"
 
 namespace {
@@ -65,7 +66,7 @@ Convolver::Convolver(const std::string& tag,
   local_dir_irs = std::string{g_get_user_config_dir()} + "/easyeffects/irs";
 
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox)
-  if (std::filesystem::is_regular_file("/.flatpak-info")) {
+  if (std::filesystem::is_regular_file(tags::resources::flatpak_info_file)) {
     system_data_dir_irs.push_back("/app/extensions/Presets/irs");
   }
 

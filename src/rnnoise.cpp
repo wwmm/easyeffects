@@ -36,6 +36,7 @@
 #include "plugin_base.hpp"
 #include "resampler.hpp"
 #include "tags_plugin_name.hpp"
+#include "tags_resources.hpp"
 #include "util.hpp"
 
 RNNoise::RNNoise(const std::string& tag,
@@ -62,7 +63,7 @@ RNNoise::RNNoise(const std::string& tag,
   local_dir_rnnoise = std::string{g_get_user_config_dir()} + "/easyeffects/rnnoise";
 
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox)
-  if (std::filesystem::is_regular_file("/.flatpak-info")) {
+  if (std::filesystem::is_regular_file(tags::resources::flatpak_info_file)) {
     system_data_dir_rnnoise.push_back("/app/extensions/Presets/rnnoise");
   }
 
