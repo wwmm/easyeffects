@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-12 14:45+0000\n"
-"PO-Revision-Date: 2024-05-03 08:07+0000\n"
+"PO-Revision-Date: 2024-05-13 17:18+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.5.3-dev\n"
+"X-Generator: Weblate 5.5.5\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1983,13 +1983,12 @@ msgid "No Community Presets Installed"
 msgstr "Предустановки от сообщества не установлены"
 
 #: data/ui/presets_menu.ui:287
-#, fuzzy
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
-"Пакеты предустановок от сообщества можно установить из Flatpak или из "
-"репозитория вашего любимого дистрибутива."
+"Пакеты Предустановок от сообщества можно установить из репозитория вашего "
+"любимого дистрибутива."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
