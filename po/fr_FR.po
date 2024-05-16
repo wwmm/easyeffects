@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-12 14:45+0000\n"
-"PO-Revision-Date: 2023-12-23 11:09+0000\n"
+"PO-Revision-Date: 2024-05-16 06:01+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -174,9 +174,8 @@ msgid "Geometric Mean (SI)"
 msgstr "Moyenne géométrique (SI)"
 
 #: data/ui/autogain.ui:124
-#, fuzzy
 msgid "History"
-msgstr "Réinitialiser l’historique"
+msgstr "Historique"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -1533,6 +1532,9 @@ msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"Seulement les préréglages locaux peuvent être chargés automatiquement. Un "
+"préréglage communautaire doit être importé localement afin d'être "
+"sélectionné et associé à un appareil spécifique."
 
 #: data/ui/pipe_manager_box.ui:266
 msgid "Output Devices"
@@ -1677,20 +1679,19 @@ msgstr "Modifier la position de cet effet"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "Afficher/masquer la liste des effets"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
 msgstr "Ajouter un effet"
 
 #: data/ui/plugins_box.ui:65
-#, fuzzy
 msgid "Go to the previous effect"
-msgstr "Supprimer cet effet"
+msgstr "Aller à l'effet précédent"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "Aller à l'effet suivant"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
@@ -1753,24 +1754,20 @@ msgid "Inactivity Timeout"
 msgstr "Délai d’inactivité"
 
 #: data/ui/preferences_general.ui:119
-#, fuzzy
 msgid "Update Interval"
-msgstr "Traductions mises à jour"
+msgstr "Intervalle de mise à jour"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Related to Level Meters and Spectrum"
-msgstr "Intervalle de mise à jour (mesureurs de niveau et spectre)"
+msgstr "En rapport avec les indicateurs de niveau et du spectre"
 
 #: data/ui/preferences_general.ui:142
-#, fuzzy
 msgid "Update Frequency"
-msgstr "Diviser la fréquence 1"
+msgstr "Fréquence de mise à jour"
 
 #: data/ui/preferences_general.ui:143
-#, fuzzy
 msgid "Related to LV2 Plugins"
-msgstr "Fréquence de mise à jour (Greffons LV2)"
+msgstr "En rapport avec les plugins LV2"
 
 #: data/ui/preferences_general.ui:167 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -1886,25 +1883,24 @@ msgstr "Supprimer ce préréglage"
 
 #: data/ui/preset_community_row.ui:55
 msgid "Try"
-msgstr ""
+msgstr "Essayer"
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "Rechercher un préréglage de sortie"
+msgstr "Essayer ce préréglage de la communauté"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "Importer un modèle"
+msgstr "Importer"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
 msgstr ""
+"Importer ce préréglage de la communauté dans la liste des préréglages locaux"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "Local"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
@@ -1916,49 +1912,48 @@ msgstr "Créer un nouveau préréglage"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "Importer un préréglage à partir du stockage local"
 
 #: data/ui/presets_menu.ui:86
-#, fuzzy
 msgid "Search Local Preset"
-msgstr "Rechercher un préréglage"
+msgstr "Rechercher un préréglage local"
 
 #: data/ui/presets_menu.ui:147
-#, fuzzy
 msgid "Local Presets List"
-msgstr "Liste des préréglages"
+msgstr "Liste des préréglages locaux"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "Communité"
 
 #: data/ui/presets_menu.ui:208
-#, fuzzy
 msgid "Search Community Preset"
-msgstr "Rechercher un préréglage de sortie"
+msgstr "Rechercher un préréglage de la communauté"
 
 #: data/ui/presets_menu.ui:271
-#, fuzzy
 msgid "Community Presets List"
-msgstr "Liste des préréglages de sortie"
+msgstr "Liste des préréglages de la communauté"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "Aucun préréglage communautaire n'est installé"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"Les paquets des préréglages de la communauté peuvent être installés à partir "
+"du dépôt de votre distribution préférée."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "Actualiser"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
 msgstr ""
+"Actualiser pour afficher les nouveaux préréglages de la communauté installés"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2415,13 +2410,12 @@ msgstr "Ajouter"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
-#, fuzzy
 msgid "Community Preset"
-msgstr "Importer un préréglage"
+msgstr "Préréglage de la communauté"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
-msgstr ""
+msgstr "Paquet"
 
 #: src/presets_manager.cpp:1147 src/presets_manager.cpp:1154
 #: src/presets_manager.cpp:1163 src/presets_manager.cpp:1170
@@ -2463,19 +2457,16 @@ msgid "Delete?"
 msgstr "Effacer ?"
 
 #: src/presets_menu.cpp:558
-#, fuzzy
 msgid "No Preset Loaded"
-msgstr "Nouveau nom de préréglage"
+msgstr "Pas de préréglage chargé"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Local Preset Loaded"
-msgstr "Liste des préréglages"
+msgstr "Dernier préréglage local chargé"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Community Preset Loaded"
-msgstr "Importer un préréglage"
+msgstr "Dernier préréglage de la communauté chargé"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
