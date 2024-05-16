@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-12 14:45+0000\n"
-"PO-Revision-Date: 2024-05-01 05:07+0000\n"
+"PO-Revision-Date: 2024-05-16 06:01+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5.3-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1939,13 +1939,12 @@ msgid "No Community Presets Installed"
 msgstr "No hay Ajustes Preestablecidos de Comunidad Instalados"
 
 #: data/ui/presets_menu.ui:287
-#, fuzzy
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
-"Los paquetes de Community Presets se pueden instalar desde Flatpak o desde "
-"el repositorio de su distribución favorita."
+"Los paquetes preestablecidos de la comunidad se pueden instalar desde el "
+"repositorio de su distribución favorita."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
