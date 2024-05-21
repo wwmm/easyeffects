@@ -62,7 +62,7 @@ struct _MaximizerBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *plugin_credit;
 
-  GtkSpinButton *release, *threshold, *ceiling;
+  GtkSpinButton *release, *threshold;
 
   GtkLevelBar* reduction_levelbar;
 
@@ -148,8 +148,6 @@ void setup(MaximizerBox* self, std::shared_ptr<Maximizer> maximizer, const std::
 
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
-  g_settings_bind(self->settings, "ceiling", gtk_spin_button_get_adjustment(self->ceiling), "value",
-                  G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "release", gtk_spin_button_get_adjustment(self->release), "value",
                   G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "threshold", gtk_spin_button_get_adjustment(self->threshold), "value",
@@ -212,7 +210,6 @@ void maximizer_box_class_init(MaximizerBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, release);
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, threshold);
-  gtk_widget_class_bind_template_child(widget_class, MaximizerBox, ceiling);
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, reduction_levelbar);
   gtk_widget_class_bind_template_child(widget_class, MaximizerBox, reduction_label);
 
@@ -226,7 +223,7 @@ void maximizer_box_init(MaximizerBox* self) {
 
   prepare_scales<"dB">(self->input_gain, self->output_gain);
 
-  prepare_spinbuttons<"dB">(self->threshold, self->ceiling);
+  prepare_spinbutton<"dB">(self->threshold);
 
   prepare_spinbuttons<"ms">(self->release);
 }

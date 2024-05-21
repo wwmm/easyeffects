@@ -9,6 +9,7 @@ Description:
 
 - Bug fixes∶
 - A change in GTK 4.14.1 prevented to apply the values inserted into the text field of our SpinButton widgets. This issue is now resolved.
+- The latest maximizer plugin releases do not have the ceiling port anymore. So we removed it from our window. 
 
 - Other notes∶
 - In order for Community Presets to be correctly shipped, packagers are invited to read and follow the guidelines linked inside the README of EasyEffects master branch.

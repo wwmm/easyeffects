@@ -64,25 +64,6 @@
                                             </object>
                                         </child>
 
-                                        <child>
-                                            <object class="AdwActionRow">
-                                                <property name="title" translatable="yes">Ceiling</property>
-                                                <child>
-                                                    <object class="GtkSpinButton" id="ceiling">
-                                                        <property name="valign">center</property>
-                                                        <property name="width-chars">10</property>
-                                                        <property name="digits">1</property>
-                                                        <property name="adjustment">
-                                                            <object class="GtkAdjustment">
-                                                                <property name="lower">-30</property>
-                                                                <property name="step-increment">0.1</property>
-                                                                <property name="page-increment">1</property>
-                                                            </object>
-                                                        </property>
-                                                    </object>
-                                                </child>
-                                            </object>
-                                        </child>
                                     </object>
                                 </child>
                             </object>
@@ -296,8 +277,7 @@
 
                                 <!-- Empty placeholder used only for layout reason -->
                                 <child>
-                                    <object class="GtkLabel">
-                                    </object>
+                                    <object class="GtkLabel"> </object>
                                 </child>
 
                                 <child>

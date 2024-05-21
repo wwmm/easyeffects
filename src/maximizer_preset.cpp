@@ -44,8 +44,6 @@ void MaximizerPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["release"] = g_settings_get_double(settings, "release");
 
-  json[section][instance_name]["ceiling"] = g_settings_get_double(settings, "ceiling");
-
   json[section][instance_name]["threshold"] = g_settings_get_double(settings, "threshold");
 }
 
@@ -57,8 +55,6 @@ void MaximizerPreset::load(const nlohmann::json& json) {
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
   update_key<double>(json.at(section).at(instance_name), settings, "release", "release");
-
-  update_key<double>(json.at(section).at(instance_name), settings, "ceiling", "ceiling");
 
   update_key<double>(json.at(section).at(instance_name), settings, "threshold", "threshold");
 }
