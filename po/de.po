@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-12 14:45+0000\n"
+"POT-Creation-Date: 2024-05-21 15:42+0000\n"
 "PO-Revision-Date: 2024-01-01 21:04+0000\n"
 "Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -185,7 +185,7 @@ msgstr "Verlauf löschen"
 #: data/ui/echo_canceller.ui:278 data/ui/equalizer.ui:572
 #: data/ui/exciter.ui:457 data/ui/expander.ui:1227 data/ui/filter.ui:483
 #: data/ui/gate.ui:1440 data/ui/limiter.ui:909 data/ui/loudness.ui:316
-#: data/ui/maximizer.ui:307 data/ui/multiband_compressor.ui:661
+#: data/ui/maximizer.ui:287 data/ui/multiband_compressor.ui:661
 #: data/ui/multiband_gate.ui:661 data/ui/pitch.ui:387 data/ui/reverb.ui:527
 #: data/ui/rnnoise.ui:441 data/ui/speex.ui:356 data/ui/stereo_tools.ui:786
 msgid "Reset"
@@ -216,7 +216,7 @@ msgstr "Ausgangsverstärkung"
 #: data/ui/equalizer.ui:404 data/ui/exciter.ui:258 data/ui/expander.ui:571
 #: data/ui/expander.ui:1059 data/ui/filter.ui:315 data/ui/gate.ui:784
 #: data/ui/gate.ui:1272 data/ui/level_meter.ui:263 data/ui/limiter.ui:741
-#: data/ui/loudness.ui:148 data/ui/maximizer.ui:106
+#: data/ui/loudness.ui:148 data/ui/maximizer.ui:87
 #: data/ui/multiband_compressor.ui:493 data/ui/multiband_gate.ui:493
 #: data/ui/pipe_manager_box.ui:339 data/ui/pitch.ui:219 data/ui/reverb.ui:358
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
@@ -231,7 +231,7 @@ msgstr "Eingabe"
 #: data/ui/echo_canceller.ui:128 data/ui/equalizer.ui:423
 #: data/ui/exciter.ui:277 data/ui/expander.ui:1078 data/ui/filter.ui:334
 #: data/ui/gate.ui:1291 data/ui/limiter.ui:760 data/ui/loudness.ui:167
-#: data/ui/maximizer.ui:125 data/ui/multiband_compressor.ui:512
+#: data/ui/maximizer.ui:106 data/ui/multiband_compressor.ui:512
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:238 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
 msgid "Plugin Input Gain"
@@ -244,7 +244,7 @@ msgstr "Eingangsverstärkungs-Plugin"
 #: data/ui/deesser.ui:499 data/ui/delay.ui:309 data/ui/echo_canceller.ui:193
 #: data/ui/equalizer.ui:488 data/ui/exciter.ui:342 data/ui/expander.ui:1143
 #: data/ui/filter.ui:399 data/ui/gate.ui:1356 data/ui/limiter.ui:825
-#: data/ui/loudness.ui:232 data/ui/maximizer.ui:190
+#: data/ui/loudness.ui:232 data/ui/maximizer.ui:171
 #: data/ui/multiband_compressor.ui:577 data/ui/multiband_gate.ui:577
 #: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:303 data/ui/reverb.ui:442
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
@@ -259,7 +259,7 @@ msgstr "Ausgang"
 #: data/ui/echo_canceller.ui:212 data/ui/equalizer.ui:507
 #: data/ui/exciter.ui:361 data/ui/expander.ui:1162 data/ui/filter.ui:418
 #: data/ui/gate.ui:1375 data/ui/limiter.ui:844 data/ui/loudness.ui:251
-#: data/ui/maximizer.ui:209 data/ui/multiband_compressor.ui:596
+#: data/ui/maximizer.ui:190 data/ui/multiband_compressor.ui:596
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:322 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
@@ -900,7 +900,7 @@ msgid "Detected"
 msgstr "Erkannt"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
-#: data/ui/maximizer.ui:268 data/ui/multiband_gate_band.ui:406
+#: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
 msgid "Reduction"
 msgstr "Senkung"
 
@@ -1336,10 +1336,6 @@ msgstr "Ausgangslautstärke"
 #, fuzzy
 msgid "Clipping"
 msgstr "Kanalzuordnung"
-
-#: data/ui/maximizer.ui:69
-msgid "Ceiling"
-msgstr "Grenze"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
 msgid "Sidechain Boost"
@@ -2625,6 +2621,9 @@ msgstr ""
 #, fuzzy, c++-format
 msgid "Using {}"
 msgstr "Nutze"
+
+#~ msgid "Ceiling"
+#~ msgstr "Grenze"
 
 #~ msgid "\"Presets\""
 #~ msgstr "\"Voreinstellungen\""
