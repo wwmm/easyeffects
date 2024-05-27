@@ -16,6 +16,7 @@ help_pages = [
   'crystalizer.page',
   'deesser.page',
   'delay.page',
+  'deepfilternet.page',
   'echocanceller.page',
   'effectsorder.page',
   'enableapp.page',
