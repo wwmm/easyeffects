@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-21 15:42+0000\n"
+"POT-Creation-Date: 2024-06-03 14:16+0000\n"
 "PO-Revision-Date: 2023-08-18 18:54+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -627,7 +627,7 @@ msgid "Sidechain Type"
 msgstr "Druh sidechain"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:807
+#: src/plugins_box.cpp:806
 msgid "Input Device"
 msgstr "Vstupní zařízení"
 
@@ -1705,15 +1705,15 @@ msgstr "Reference"
 msgid "Rate Difference"
 msgstr "Reference"
 
-#: data/ui/plugin_row.ui:39
+#: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
 msgstr "Odstranit tento efekt"
 
-#: data/ui/plugin_row.ui:51
+#: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
 msgstr "Povolit/zakázat tento efekt"
 
-#: data/ui/plugin_row.ui:63
+#: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
 msgstr "Změna pozice tohoto efektu"
 
@@ -2372,11 +2372,11 @@ msgstr "Impulse soubor nebyl načten"
 msgid "Failed To Load The Impulse File"
 msgstr "Nepodařilo se nahrát Impulse soubor"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:808
+#: src/effects_box.cpp:306 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:828
+#: src/effects_box.cpp:329 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Přehrávače"
 
@@ -2445,11 +2445,11 @@ msgstr "Odstranit předvolbu automatického načítání"
 msgid "Output Level Meter"
 msgstr "Výstupní zařízení"
 
-#: src/plugins_box.cpp:760
+#: src/plugins_box.cpp:759
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/plugins_box.cpp:829
+#: src/plugins_box.cpp:828
 msgid "Output Device"
 msgstr "Výstupní zařízení"
 

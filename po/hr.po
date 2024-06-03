@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-21 15:42+0000\n"
+"POT-Creation-Date: 2024-06-03 14:16+0000\n"
 "PO-Revision-Date: 2023-11-25 07:02+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -651,7 +651,7 @@ msgid "Sidechain Type"
 msgstr "Postranični ulaz"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:807
+#: src/plugins_box.cpp:806
 #, fuzzy
 msgid "Input Device"
 msgstr "Ulazni uređaj"
@@ -1812,16 +1812,16 @@ msgstr ""
 msgid "Rate Difference"
 msgstr ""
 
-#: data/ui/plugin_row.ui:39
+#: data/ui/plugin_row.ui:50
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Kompresija"
 
-#: data/ui/plugin_row.ui:51
+#: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
 msgstr ""
 
-#: data/ui/plugin_row.ui:63
+#: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
 msgstr ""
 
@@ -2523,11 +2523,11 @@ msgstr "Učitaj impuls datoteku"
 msgid "Failed To Load The Impulse File"
 msgstr "Nije bilo moguće učitati impuls datoteku"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:808
+#: src/effects_box.cpp:306 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:828
+#: src/effects_box.cpp:329 src/plugins_box.cpp:827
 msgid "Players"
 msgstr ""
 
@@ -2595,11 +2595,11 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "Pojačanje ulaza"
 
-#: src/plugins_box.cpp:760
+#: src/plugins_box.cpp:759
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:829
+#: src/plugins_box.cpp:828
 #, fuzzy
 msgid "Output Device"
 msgstr "Pojačanje ulaza"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-21 15:42+0000\n"
+"POT-Creation-Date: 2024-06-03 14:16+0000\n"
 "PO-Revision-Date: 2024-05-13 08:00+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -614,7 +614,7 @@ msgid "Sidechain Type"
 msgstr "Yanzincir Türü"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:807
+#: src/plugins_box.cpp:806
 msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
@@ -1661,15 +1661,15 @@ msgstr "Tempo Farkı"
 msgid "Rate Difference"
 msgstr "Oran Farkı"
 
-#: data/ui/plugin_row.ui:39
+#: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
 msgstr "Bu efekti kaldır"
 
-#: data/ui/plugin_row.ui:51
+#: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
 msgstr "Bu efekti etkinleştir/devre dışı bırak"
 
-#: data/ui/plugin_row.ui:63
+#: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
 msgstr "Bu efektin konumunu değiştir"
 
@@ -2317,11 +2317,11 @@ msgstr "Dürtü Dosyası Yüklenmemiş"
 msgid "Failed To Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:808
+#: src/effects_box.cpp:306 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:828
+#: src/effects_box.cpp:329 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Oynatıcılar"
 
@@ -2386,11 +2386,11 @@ msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 msgid "Output Level Meter"
 msgstr "Çıktı Düzey Ölçer"
 
-#: src/plugins_box.cpp:760
+#: src/plugins_box.cpp:759
 msgid "Remove"
 msgstr "Kaldır"
 
-#: src/plugins_box.cpp:829
+#: src/plugins_box.cpp:828
 msgid "Output Device"
 msgstr "Çıkış Aygıtı"
 

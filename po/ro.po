@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-21 15:42+0000\n"
+"POT-Creation-Date: 2024-06-03 14:16+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -667,7 +667,7 @@ msgid "Sidechain Type"
 msgstr "Lanț Lateral"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:807
+#: src/plugins_box.cpp:806
 #, fuzzy
 msgid "Input Device"
 msgstr "Nivel Input"
@@ -1819,16 +1819,16 @@ msgstr ""
 msgid "Rate Difference"
 msgstr ""
 
-#: data/ui/plugin_row.ui:39
+#: data/ui/plugin_row.ui:50
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Șterge fișierul de presetări"
 
-#: data/ui/plugin_row.ui:51
+#: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
 msgstr ""
 
-#: data/ui/plugin_row.ui:63
+#: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
 msgstr ""
 
@@ -2533,12 +2533,12 @@ msgstr "Importă Fișier Impulse"
 msgid "Failed To Load The Impulse File"
 msgstr "Nu s-a putut Încărca Fișierul Impulse"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:808
+#: src/effects_box.cpp:306 src/plugins_box.cpp:807
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordură"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:828
+#: src/effects_box.cpp:329 src/plugins_box.cpp:827
 msgid "Players"
 msgstr ""
 
@@ -2605,11 +2605,11 @@ msgstr "Șterge fișierul de presetări"
 msgid "Output Level Meter"
 msgstr "Efecte Output"
 
-#: src/plugins_box.cpp:760
+#: src/plugins_box.cpp:759
 msgid "Remove"
 msgstr ""
 
-#: src/plugins_box.cpp:829
+#: src/plugins_box.cpp:828
 #, fuzzy
 msgid "Output Device"
 msgstr "Efecte Output"
