@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-21 15:42+0000\n"
+"POT-Creation-Date: 2024-06-03 14:16+0000\n"
 "PO-Revision-Date: 2024-02-20 11:02+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -631,7 +631,7 @@ msgid "Sidechain Type"
 msgstr ""
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:807
+#: src/plugins_box.cpp:806
 msgid "Input Device"
 msgstr "Inndataenhet"
 
@@ -1702,16 +1702,16 @@ msgstr "Referanse"
 msgid "Rate Difference"
 msgstr "Referanse"
 
-#: data/ui/plugin_row.ui:39
+#: data/ui/plugin_row.ui:50
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Fjern denne modellfilen"
 
-#: data/ui/plugin_row.ui:51
+#: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
 msgstr ""
 
-#: data/ui/plugin_row.ui:63
+#: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
 msgstr ""
 
@@ -2383,11 +2383,11 @@ msgstr ""
 msgid "Failed To Load The Impulse File"
 msgstr ""
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:808
+#: src/effects_box.cpp:306 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "Opptakere"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:828
+#: src/effects_box.cpp:329 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Avspillere"
 
@@ -2451,11 +2451,11 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "Utgangsenhet"
 
-#: src/plugins_box.cpp:760
+#: src/plugins_box.cpp:759
 msgid "Remove"
 msgstr "Fjern"
 
-#: src/plugins_box.cpp:829
+#: src/plugins_box.cpp:828
 msgid "Output Device"
 msgstr "Utgangsenhet"
 

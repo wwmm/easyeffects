@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-21 15:42+0000\n"
+"POT-Creation-Date: 2024-06-03 14:16+0000\n"
 "PO-Revision-Date: 2024-05-13 17:18+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -642,7 +642,7 @@ msgstr "Тип боковой цепи"
 
 # #, fuzzy
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
-#: src/plugins_box.cpp:807
+#: src/plugins_box.cpp:806
 msgid "Input Device"
 msgstr "Устройство ввода"
 
@@ -1703,15 +1703,15 @@ msgstr "Разница в темпе"
 msgid "Rate Difference"
 msgstr "Разница в частоте"
 
-#: data/ui/plugin_row.ui:39
+#: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
 msgstr "Удалить этот эффект"
 
-#: data/ui/plugin_row.ui:51
+#: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
 msgstr "Включить/отключить эффект"
 
-#: data/ui/plugin_row.ui:63
+#: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
 msgstr "Изменить позицию эффекта"
 
@@ -2374,11 +2374,11 @@ msgstr "Нет загруженного файла импульса"
 msgid "Failed To Load The Impulse File"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:808
+#: src/effects_box.cpp:306 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:828
+#: src/effects_box.cpp:329 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Проигрыватели"
 
@@ -2443,11 +2443,11 @@ msgstr "Удалить автозагрузку предустановки"
 msgid "Output Level Meter"
 msgstr "Уровнемер выхода"
 
-#: src/plugins_box.cpp:760
+#: src/plugins_box.cpp:759
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/plugins_box.cpp:829
+#: src/plugins_box.cpp:828
 msgid "Output Device"
 msgstr "Устройство вывода"
 
