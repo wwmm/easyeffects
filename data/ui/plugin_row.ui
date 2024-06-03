@@ -2,6 +2,7 @@
 <interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
         <property name="margin-start">6</property>
+        <property name="valign">center</property>
         <property name="spacing">6</property>
 
         <property name="cursor">
@@ -67,6 +68,8 @@
                         <child>
                             <object class="GtkImage">
                                 <property name="margin-start">8</property>
+                                <property name="margin-top">8</property>
+                                <property name="margin-bottom">8</property>
                                 <property name="valign">center</property>
                                 <property name="icon-name">ee-drag-handle-symbolic</property>
                             </object>
