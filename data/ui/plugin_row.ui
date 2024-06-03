@@ -12,10 +12,20 @@
         </property>
 
         <child>
-            <object class="GtkImage" id="plugin_icon">
+            <object class="GtkImage" id="plugin_enabled_icon">
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="icon-name">ee-arrow-down-symbolic</property>
+                <property name="visible" bind-source="enable" bind-property="active" bind-flags="sync-create" />
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkImage" id="plugin_bypassed_icon">
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="icon-name">ee-double-vertical-lines-symbolic</property>
+                <property name="visible" bind-source="enable" bind-property="active" bind-flags="sync-create|invert-boolean" />
             </object>
         </child>
 
