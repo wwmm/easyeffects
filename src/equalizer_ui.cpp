@@ -457,7 +457,7 @@ void on_import_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
   auto* filter = gtk_file_filter_new();
 
-  gtk_file_filter_add_pattern(filter, "*.txt");
+  gtk_file_filter_add_mime_type(filter, "text/plain");
   gtk_file_filter_set_name(filter, _("APO Presets"));
 
   g_list_store_append(filters, filter);
@@ -553,7 +553,7 @@ void on_export_apo_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
   auto* filter = gtk_file_filter_new();
 
-  gtk_file_filter_add_pattern(filter, "*.txt");
+  gtk_file_filter_add_mime_type(filter, "text/plain");
   gtk_file_filter_set_name(filter, _("EqualizerAPO Presets"));
 
   g_list_store_append(filters, filter);
@@ -738,7 +738,7 @@ void on_import_geq_preset_clicked(EqualizerBox* self, GtkButton* btn) {
 
   auto* filter = gtk_file_filter_new();
 
-  gtk_file_filter_add_pattern(filter, "*.txt");
+  gtk_file_filter_add_mime_type(filter, "text/plain");
   gtk_file_filter_set_name(filter, _("GraphicEQ Presets"));
 
   g_list_store_append(filters, filter);

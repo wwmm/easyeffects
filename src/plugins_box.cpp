@@ -604,13 +604,15 @@ void setup_listview(PluginsBox* self) {
         auto builder = gtk_builder_new_from_resource(tags::resources::plugin_row_ui);
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
-        auto* plugin_icon = gtk_builder_get_object(builder, "plugin_icon");
+        auto* plugin_enabled_icon = gtk_builder_get_object(builder, "plugin_enabled_icon");
+        auto* plugin_bypassed_icon = gtk_builder_get_object(builder, "plugin_bypassed_icon");
         auto* remove = gtk_builder_get_object(builder, "remove");
         auto* enable = gtk_builder_get_object(builder, "enable");
         auto* drag_handle = gtk_builder_get_object(builder, "drag_handle");
 
         g_object_set_data(G_OBJECT(item), "top_box", top_box);
-        g_object_set_data(G_OBJECT(item), "plugin_icon", plugin_icon);
+        g_object_set_data(G_OBJECT(item), "plugin_enabled_icon", plugin_enabled_icon);
+        g_object_set_data(G_OBJECT(item), "plugin_bypassed_icon", plugin_bypassed_icon);
         g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
         g_object_set_data(G_OBJECT(item), "remove", remove);
         g_object_set_data(G_OBJECT(item), "enable", enable);
@@ -741,9 +743,6 @@ void setup_listview(PluginsBox* self) {
         auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
         auto* remove = static_cast<GtkButton*>(g_object_get_data(G_OBJECT(item), "remove"));
         auto* enable = static_cast<GtkToggleButton*>(g_object_get_data(G_OBJECT(item), "enable"));
-        auto* plugin_icon = static_cast<GtkImage*>(g_object_get_data(G_OBJECT(item), "plugin_icon"));
-
-        gtk_image_set_from_icon_name(plugin_icon, "ee-arrow-down-symbolic");
 
         auto* child_item = gtk_list_item_get_item(item);
 
