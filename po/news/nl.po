@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-03 14:16+0000\n"
-"PO-Revision-Date: 2023-05-01 20:52+0000\n"
+"PO-Revision-Date: 2024-06-04 06:09+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -33,10 +33,10 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"Easy Effects is een uitgebreide app waarmee u audio zeer gericht kunt "
-"afstellen. Het bevat een equalizer, limiter, compressor, galmhulpmiddel en "
-"nog meer andere hulpmiddelen. Verder bevat de toepassing een ingebouwde "
-"spectrumanalysator."
+"Easy Effects is een geavanceerd hulp­middel voor audio­manipulatie. Het "
+"bevat een equalizer, limiter, compressor en nagalm­hulp­middel, om er maar "
+"een paar te noemen. Als aanvulling hierop is er ook een ingebouwde "
+"spectrum­analysator."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -44,7 +44,7 @@ msgid ""
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
 "Easy Effects is de opvolger van PulseEffects. Easy Effects ondersteunt "
-"alleen de audioserver van PipeWire. Gebruikers van PulseAudio moeten in "
+"alleen de audio­server van PipeWire. Gebruikers van PulseAudio moeten in "
 "plaats daarvan PulseEffects gebruiken."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
@@ -53,9 +53,9 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Omdat Easy Effects de standaard PipeWire-geluidsserver gebruikt werkt het "
-"met de meeste, zo niet alle apps die u gebruikt. Alle ondersteunde apps "
-"worden getoond in het hoofdvenster, waar elke app afzonderlijk kan worden "
+"Omdat Easy Effects de standaard PipeWire-geluids­server gebruikt werkt het "
+"met de meeste, zo niet alle apps die u gebruikt. Alle onder­steunde apps "
+"worden getoond in het hoofd­venster, waar elke app afzonderlijk kan worden "
 "ingeschakeld."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
@@ -64,9 +64,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Naast het manipuleren van geluidsuitvoer kan Easy Effects effecten toepassen "
-"op een invoerapparaat, zoals een microfoon. Dit is bijvoorbeeld handig bij "
-"geluidsopnamen, maar werkt ook goed tijdens spraakgesprekken."
+"Naast het manipuleren van geluids­uitvoer kan Easy Effects effecten "
+"toepassen op een invoer­apparaat, zoals een micro­foon. Dit is bijvoorbeeld "
+"handig bij geluids­opnamen, maar werkt ook goed tijdens spraak­gesprekken."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -79,15 +79,15 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The main page showing two audio output apps"
-msgstr "De hoofdpagina welke twee apps met audio-uitvoer toont"
+msgstr "De hoofd­pagina welke twee apps met audio­uitvoer toont"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid "The bass enhancer page showing audio controls"
-msgstr "De basversterkerpagina welke audiobedieningselementen toont"
+msgstr "De bas­versterker­pagina welke audio­bedienings­elementen toont"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 msgid "The convolver page showing audio controls"
-msgstr "De convolver-pagina welke audiobedieningselementen toont"
+msgstr "De convolver-pagina welke audio­bedienings­elementen toont"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
@@ -171,7 +171,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:520
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:533
 msgid "Bug fixes:"
-msgstr "Foutoplossingen:"
+msgstr "Fout­oplossingen:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
@@ -212,7 +212,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid "Updated translations."
-msgstr "Bijgewerkte vertalingen"
+msgstr "Bijgewerkte vertalingen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
