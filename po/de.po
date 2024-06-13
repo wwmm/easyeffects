@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-04 15:21+0000\n"
+"POT-Creation-Date: 2024-06-13 14:57+0000\n"
 "PO-Revision-Date: 2024-01-01 21:04+0000\n"
 "Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1550,7 +1550,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Ausgabegeräte"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:289
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
 msgid "Output Presets"
 msgstr "Ausgabe-Voreinstellungen"
 
@@ -1570,7 +1570,7 @@ msgstr "automatisch geladene Ausgabe-Voreinstellungen"
 msgid "Input Devices"
 msgstr "Eingabegeräte"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:297
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
 msgid "Input Presets"
 msgstr "Eingabe-Voreinstellungen"
 
@@ -2259,37 +2259,37 @@ msgstr ""
 msgid "channels"
 msgstr "Kanäle"
 
-#: src/application.cpp:498
+#: src/application.cpp:510
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:588
+#: src/application.cpp:600
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Easy Effects beenden. Nützlich bei der Ausführung im Dienstmodus."
 
-#: src/application.cpp:591
+#: src/application.cpp:603
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:594
+#: src/application.cpp:606
 msgid "Reset Easy Effects."
 msgstr "Easy Effects zurücksetzen."
 
-#: src/application.cpp:597
+#: src/application.cpp:609
 msgid "Hide the Window."
 msgstr "Fenster verstecken."
 
-#: src/application.cpp:600
+#: src/application.cpp:612
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globale Umleitung. 1 zum Aktivieren, 2 zum Deaktivieren und 3 zum Erhalten "
 "des Status"
 
-#: src/application.cpp:603
+#: src/application.cpp:615
 msgid "Show available presets."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/application.cpp:606
+#: src/application.cpp:618
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Lade ein Preset. Beispiel: easyeffects -l music"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-04 15:21+0000\n"
+"POT-Creation-Date: 2024-06-13 14:57+0000\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1545,7 +1545,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "输出设备"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:289
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
 msgid "Output Presets"
 msgstr "输出预设"
 
@@ -1565,7 +1565,7 @@ msgstr "输出自动加载预设列表"
 msgid "Input Devices"
 msgstr "输入设备"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:297
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -2247,35 +2247,35 @@ msgstr "未定义名称 - 进程 ID "
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:498
+#: src/application.cpp:510
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:588
+#: src/application.cpp:600
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
-#: src/application.cpp:591
+#: src/application.cpp:603
 msgid "Print the easyeffects version"
 msgstr "打印 EasyEffects 版本号"
 
-#: src/application.cpp:594
+#: src/application.cpp:606
 msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
-#: src/application.cpp:597
+#: src/application.cpp:609
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:600
+#: src/application.cpp:612
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:603
+#: src/application.cpp:615
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
-#: src/application.cpp:606
+#: src/application.cpp:618
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
