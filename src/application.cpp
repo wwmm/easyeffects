@@ -124,26 +124,13 @@ void on_startup(GApplication* gapp) {
     util::debug("input autoloading: device " + device.name + " has changed its input route to \"" +
                 device.input_route_name + "\"");
 
-    // Use a NodeInfo vector trying to fix #3180
-    std::vector<NodeInfo> target_node;
-
-    for (const auto& [serial, node] : self->pm->node_map) {
-      if (node.media_class == tags::pipewire::media_class::source) {
-        if (util::str_contains(node.name, device.bus_path) || util::str_contains(node.name, device.bus_id)) {
-          target_node.push_back(node);
-        }
-      }
-    }
-
     const auto name = util::gsettings_get_string(self->sie_settings, "input-device");
 
-    for (const auto& node : target_node) {
-      if (node.serial == SPA_ID_INVALID) {
-        continue;
-      }
-
-      if (node.name == name) {
-        util::debug("input autoloading: target node " + name + " matches the input device name");
+    for (const auto& [serial, node] : self->pm->node_map) {
+      if (node.media_class == tags::pipewire::media_class::source &&
+          node.device_id == device.id &&
+          node.name == name) {
+        util::debug("input autoloading: target node " + name + " matches the input device id");
 
         self->presets_manager->autoload(PresetType::input, node.name, device.input_route_name);
 
@@ -151,7 +138,7 @@ void on_startup(GApplication* gapp) {
       }
     }
 
-    util::debug("input autoloading: no target nodes match the input device name");
+    util::debug("input autoloading: no target nodes match the input device id");
   }));
 
   self->data->connections.push_back(self->pm->device_output_route_changed.connect([=](const DeviceInfo device) {
@@ -162,26 +149,13 @@ void on_startup(GApplication* gapp) {
     util::debug("output autoloading: device " + device.name + " has changed its output route to \"" +
                 device.output_route_name + "\"");
 
-    // Use a NodeInfo vector trying to fix #3180
-    std::vector<NodeInfo> target_node;
-
-    for (const auto& [serial, node] : self->pm->node_map) {
-      if (node.media_class == tags::pipewire::media_class::sink) {
-        if (util::str_contains(node.name, device.bus_path) || util::str_contains(node.name, device.bus_id)) {
-          target_node.push_back(node);
-        }
-      }
-    }
-
     const auto name = util::gsettings_get_string(self->soe_settings, "output-device");
 
-    for (const auto& node : target_node) {
-      if (node.serial == SPA_ID_INVALID) {
-        continue;
-      }
-
-      if (node.name == name) {
-        util::debug("output autoloading: target node " + name + " matches the output device name");
+    for (const auto& [serial, node] : self->pm->node_map) {
+      if (node.media_class == tags::pipewire::media_class::sink &&
+          node.device_id == device.id &&
+          node.name == name) {
+        util::debug("output autoloading: target node " + name + " matches the output device id");
 
         self->presets_manager->autoload(PresetType::output, node.name, device.output_route_name);
 
@@ -189,7 +163,7 @@ void on_startup(GApplication* gapp) {
       }
     }
 
-    util::debug("output autoloading: no target nodes match the output device name");
+    util::debug("output autoloading: no target nodes match the output device id");
   }));
 
   self->data->gconnections_soe.push_back(g_signal_connect(
@@ -202,9 +176,16 @@ void on_startup(GApplication* gapp) {
           return;
         }
 
-        for (const auto& device : self->pm->list_devices) {
-          if (util::str_contains(name, device.bus_path) || util::str_contains(name, device.bus_id)) {
-            self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
+        for (const auto& [serial, node] : self->pm->node_map) {
+          if (node.media_class == tags::pipewire::media_class::sink &&
+              node.name == name) {
+            for (const auto& device : self->pm->list_devices) {
+              if (device.id == node.device_id) {
+                self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
+
+                return;
+              }
+            }
 
             return;
           }
@@ -222,9 +203,16 @@ void on_startup(GApplication* gapp) {
           return;
         }
 
-        for (const auto& device : self->pm->list_devices) {
-          if (util::str_contains(name, device.bus_path) || util::str_contains(name, device.bus_id)) {
-            self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
+        for (const auto& [serial, node] : self->pm->node_map) {
+          if (node.media_class == tags::pipewire::media_class::source &&
+              node.name == name) {
+            for (const auto& device : self->pm->list_devices) {
+              if (device.id == node.device_id) {
+                self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
+
+                return;
+              }
+            }
 
             return;
           }
