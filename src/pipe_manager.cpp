@@ -308,6 +308,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   }
 
   bool ignore_input_stream = false;
+  bool ignore_output_stream = false;
 
   if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream && !pm->input_device.name.empty()) {
     if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
@@ -330,6 +331,33 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         util::debug("The input stream " + nd->nd_info->name +
                     " does not have as target the same mic used as EE input: " + pm->input_device.name +
                     "\n The user wants it to record from device " + target_object + ". We will ignore this stream.");
+
+        remove_node = true;
+      }
+    }
+  }
+
+  if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream && !pm->output_device.name.empty()) {
+    if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
+      /*
+        target.object can a name or serial number:
+        https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/pipewire/keys.h#L334
+      */
+
+      uint64_t serial = SPA_ID_INVALID;
+
+      util::str_to_num(target_object, serial);
+
+      if (target_object != pm->output_device.name) {
+        ignore_output_stream = true;
+      } else if (serial != SPA_ID_INVALID && serial != pm->output_device.serial) {
+        ignore_output_stream = true;
+      }
+
+      if (ignore_output_stream) {
+        util::debug("The output stream " + nd->nd_info->name +
+                    " does not have as target the same output device used as EE: " + pm->output_device.name +
+                    "\n The user wants it to play to device " + target_object + ". We will ignore this stream.");
 
         remove_node = true;
       }
