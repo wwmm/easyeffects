@@ -34,6 +34,8 @@
 
 namespace ui::equalizer_band_box {
 
+using namespace tags::equalizer;
+
 struct Data {
  public:
   ~Data() { util::debug("data struct destroyed"); }
@@ -56,6 +58,8 @@ struct _EqualizerBandBox {
 
   GtkPopover* popover_menu;
 
+  GtkLabel* band_number_label;
+
   GSettings *settings, *app_settings;
 
   Data* data;
@@ -65,19 +69,19 @@ struct _EqualizerBandBox {
 G_DEFINE_TYPE(EqualizerBandBox, equalizer_band_box, GTK_TYPE_BOX)
 
 void on_reset_frequency(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_frequency[self->data->index].data());
+  g_settings_reset(self->settings, band_frequency[self->data->index].data());
 }
 
 void on_reset_gain(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_gain[self->data->index].data());
+  g_settings_reset(self->settings, band_gain[self->data->index].data());
 }
 
 void on_reset_quality(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_q[self->data->index].data());
+  g_settings_reset(self->settings, band_q[self->data->index].data());
 }
 
 void on_reset_width(EqualizerBandBox* self, GtkButton* btn) {
-  g_settings_reset(self->settings, tags::equalizer::band_width[self->data->index].data());
+  g_settings_reset(self->settings, band_width[self->data->index].data());
 }
 
 auto set_band_label(EqualizerBandBox* self, double value) -> const char* {
@@ -129,29 +133,29 @@ void setup(EqualizerBandBox* self, GSettings* settings) {
 void bind(EqualizerBandBox* self, int index) {
   self->data->index = index;
 
-  g_settings_bind(self->settings, tags::equalizer::band_gain[index].data(),
-                  gtk_range_get_adjustment(GTK_RANGE(self->band_scale)), "value", G_SETTINGS_BIND_DEFAULT);
+  gtk_label_set_text(self->band_number_label, util::to_string(index + 1).c_str());
 
-  g_settings_bind(self->settings, tags::equalizer::band_frequency[index].data(),
-                  gtk_spin_button_get_adjustment(self->band_frequency), "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_gain[index].data(), gtk_range_get_adjustment(GTK_RANGE(self->band_scale)),
+                  "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, tags::equalizer::band_q[index].data(),
-                  gtk_spin_button_get_adjustment(self->band_quality), "value", G_SETTINGS_BIND_DEFAULT);
+  g_settings_bind(self->settings, band_frequency[index].data(), gtk_spin_button_get_adjustment(self->band_frequency),
+                  "value", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, tags::equalizer::band_width[index].data(),
-                  gtk_spin_button_get_adjustment(self->band_width), "value", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(self->settings, tags::equalizer::band_solo[index].data(), self->band_solo, "active",
+  g_settings_bind(self->settings, band_q[index].data(), gtk_spin_button_get_adjustment(self->band_quality), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(self->settings, tags::equalizer::band_mute[index].data(), self->band_mute, "active",
+  g_settings_bind(self->settings, band_width[index].data(), gtk_spin_button_get_adjustment(self->band_width), "value",
                   G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_combo_widget(self->settings, tags::equalizer::band_type[index].data(), self->band_type);
+  g_settings_bind(self->settings, band_solo[index].data(), self->band_solo, "active", G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_combo_widget(self->settings, tags::equalizer::band_mode[index].data(), self->band_mode);
+  g_settings_bind(self->settings, band_mute[index].data(), self->band_mute, "active", G_SETTINGS_BIND_DEFAULT);
 
-  ui::gsettings_bind_enum_to_combo_widget(self->settings, tags::equalizer::band_slope[index].data(), self->band_slope);
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, band_type[index].data(), self->band_type);
+
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, band_mode[index].data(), self->band_mode);
+
+  ui::gsettings_bind_enum_to_combo_widget(self->settings, band_slope[index].data(), self->band_slope);
 }
 
 void dispose(GObject* object) {
@@ -196,6 +200,7 @@ void equalizer_band_box_class_init(EqualizerBandBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_quality);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_width);
   gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, popover_menu);
+  gtk_widget_class_bind_template_child(widget_class, EqualizerBandBox, band_number_label);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset_frequency);
   gtk_widget_class_bind_template_callback(widget_class, on_reset_gain);

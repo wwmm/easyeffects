@@ -7,6 +7,18 @@
         <property name="margin-bottom">6</property>
         <property name="spacing">6</property>
         <property name="orientation">vertical</property>
+
+        <child>
+            <object class="GtkLabel" id="band_number_label">
+                <property name="width-chars">8</property>
+                <property name="label">N</property>
+
+                <style>
+                    <class name="dim-label" />
+                </style>
+            </object>
+        </child>
+
         <child>
             <object class="GtkMenuButton">
                 <property name="margin-bottom">6</property>
