@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-13 14:57+0000\n"
+"POT-Creation-Date: 2024-06-20 21:52+0000\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -362,7 +362,7 @@ msgid "Compressor"
 msgstr "压缩器"
 
 #: data/ui/compressor.ui:63 data/ui/compressor.ui:595 data/ui/compressor.ui:871
-#: data/ui/deesser.ui:68 data/ui/equalizer.ui:61 data/ui/equalizer_band.ui:122
+#: data/ui/deesser.ui:68 data/ui/equalizer.ui:61 data/ui/equalizer_band.ui:134
 #: data/ui/expander.ui:63 data/ui/expander.ui:516 data/ui/expander.ui:791
 #: data/ui/filter.ui:74 data/ui/gate.ui:729 data/ui/gate.ui:1004
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:536
@@ -594,7 +594,7 @@ msgstr "侧链模式"
 msgid "Listen Sidechain"
 msgstr "播放侧链"
 
-#: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:96
+#: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
 msgid "Type"
 msgstr "类型"
@@ -644,7 +644,7 @@ msgstr "侧链过滤器"
 msgid "High-Pass"
 msgstr "高通滤波器"
 
-#: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:192
+#: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:204
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
 #: data/ui/pipe_manager_box.ui:627
 msgid "Frequency"
@@ -688,7 +688,7 @@ msgstr "低通"
 msgid "Low-Pass Filter Mode"
 msgstr "低通滤波模式"
 
-#: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:223
+#: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
 #: data/ui/expander.ui:941 data/ui/filter.ui:218
 msgid "Gain"
 msgstr "增益"
@@ -810,7 +810,7 @@ msgstr "反馈"
 msgid "Bypass"
 msgstr "旁路"
 
-#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:174
+#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:186
 #: data/ui/multiband_compressor_band.ui:139 data/ui/multiband_gate_band.ui:108
 #: data/ui/stereo_tools.ui:173 data/ui/stereo_tools.ui:198
 msgid "Mute"
@@ -976,20 +976,20 @@ msgstr "导入预设"
 msgid "Export Preset"
 msgstr "导出预设"
 
-#: data/ui/equalizer_band.ui:143 data/ui/filter.ui:127
+#: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
 msgstr "斜率"
 
-#: data/ui/equalizer_band.ui:161 data/ui/multiband_compressor_band.ui:149
+#: data/ui/equalizer_band.ui:173 data/ui/multiband_compressor_band.ui:149
 #: data/ui/multiband_gate_band.ui:118
 msgid "Solo"
 msgstr "独奏"
 
-#: data/ui/equalizer_band.ui:258 data/ui/filter.ui:244 data/ui/pitch.ui:28
+#: data/ui/equalizer_band.ui:270 data/ui/filter.ui:244 data/ui/pitch.ui:28
 msgid "Quality"
 msgstr "品质"
 
-#: data/ui/equalizer_band.ui:288 data/ui/filter.ui:192
+#: data/ui/equalizer_band.ui:300 data/ui/filter.ui:192
 msgid "Width"
 msgstr "宽度"
 
@@ -2311,8 +2311,8 @@ msgstr "脉冲文件未导入"
 msgid "Import Impulse File"
 msgstr "导入 Impulse 文件"
 
-#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
+#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:532
+#: src/equalizer_ui.cpp:865 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "打开"
 
@@ -2348,45 +2348,45 @@ msgstr "播放器"
 msgid "Effects"
 msgstr "音效"
 
-#: src/equalizer_ui.cpp:453
+#: src/equalizer_ui.cpp:531
 msgid "Import APO Preset File"
 msgstr "加载 APO 预设文件"
 
-#: src/equalizer_ui.cpp:461
+#: src/equalizer_ui.cpp:539
 msgid "APO Presets"
 msgstr "APO 预设"
 
-#: src/equalizer_ui.cpp:486
+#: src/equalizer_ui.cpp:564
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr "APO 预设未成功加载。可能是文件格式不受支持。请检查文件内容。"
 
-#: src/equalizer_ui.cpp:541
+#: src/equalizer_ui.cpp:627
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr "导出 APO 预设时尚不支持分割通道。"
 
-#: src/equalizer_ui.cpp:549
+#: src/equalizer_ui.cpp:635
 msgid "Export EqualizerAPO Preset File"
 msgstr "导出 APO 预设文件"
 
-#: src/equalizer_ui.cpp:550
+#: src/equalizer_ui.cpp:636
 msgid "Save"
 msgstr "是否储存？"
 
-#: src/equalizer_ui.cpp:557
+#: src/equalizer_ui.cpp:643
 msgid "EqualizerAPO Presets"
 msgstr "EqualizerAPO 预设"
 
-#: src/equalizer_ui.cpp:734
+#: src/equalizer_ui.cpp:864
 msgid "Import GraphicEQ Preset File"
 msgstr "导入 GraphicEQ 预设文件"
 
-#: src/equalizer_ui.cpp:742
+#: src/equalizer_ui.cpp:872
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ 预设"
 
-#: src/equalizer_ui.cpp:767
+#: src/equalizer_ui.cpp:897
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
