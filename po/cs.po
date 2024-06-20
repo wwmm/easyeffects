@@ -85,7 +85,7 @@ msgstr "_O EasyEffects"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_Ukončit"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
@@ -354,9 +354,8 @@ msgstr "Zobrazit vyloučené aplikace"
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
-#, fuzzy
 msgid "Show Native Window"
-msgstr "Zavřít okno"
+msgstr "Zobrazit nativní okno"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
@@ -367,7 +366,7 @@ msgstr "Kompresor"
 #: data/ui/expander.ui:63 data/ui/expander.ui:516 data/ui/expander.ui:791
 #: data/ui/filter.ui:74 data/ui/gate.ui:729 data/ui/gate.ui:1004
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:536
-#: data/ui/multiband_gate_band.ui:594
+#: data/ui/multiband_gate_band.ui:594 data/ui/equalizer_band.ui:122
 msgid "Mode"
 msgstr "Režim"
 
@@ -423,9 +422,8 @@ msgstr "Náběh"
 
 #: data/ui/compressor.ui:246 data/ui/expander.ui:167 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:248
-#, fuzzy
 msgid "Attack Threshold"
-msgstr "Práh attacku"
+msgstr "Prahová hodnota útoku"
 
 #: data/ui/compressor.ui:253 data/ui/expander.ui:174 data/ui/gate.ui:76
 #: data/ui/limiter.ui:323 data/ui/limiter.ui:537 data/ui/maximizer.ui:27
@@ -551,21 +549,18 @@ msgstr "Zpoždění Levá/Pravá"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
-#, fuzzy
 msgid "Right/Left"
-msgstr "Pravý"
+msgstr "Pravý/Levý"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
-#, fuzzy
 msgid "Mid/Side"
-msgstr "Postranní"
+msgstr "Střední/boční"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
-#, fuzzy
 msgid "Side/Mid"
-msgstr "Postranní"
+msgstr "Boční/střední"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
@@ -607,6 +602,7 @@ msgstr "Externí postranní řetězec"
 
 #: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
+#: data/ui/equalizer_band.ui:96
 msgid "Type"
 msgstr "Typ"
 
@@ -658,7 +654,7 @@ msgstr "High-Pass"
 
 #: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:204
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
-#: data/ui/pipe_manager_box.ui:627
+#: data/ui/pipe_manager_box.ui:627 data/ui/equalizer_band.ui:192
 msgid "Frequency"
 msgstr "Kmitočet"
 
@@ -701,7 +697,7 @@ msgid "Low-Pass Filter Mode"
 msgstr "Režim filtrování nízkých frekvencí"
 
 #: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
-#: data/ui/expander.ui:941 data/ui/filter.ui:218
+#: data/ui/expander.ui:941 data/ui/filter.ui:218 data/ui/equalizer_band.ui:223
 msgid "Gain"
 msgstr "Zesílení"
 
@@ -823,6 +819,7 @@ msgstr "Překlenutí"
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:186
 #: data/ui/multiband_compressor_band.ui:139 data/ui/multiband_gate_band.ui:108
 #: data/ui/stereo_tools.ui:173 data/ui/stereo_tools.ui:198
+#: data/ui/equalizer_band.ui:174
 msgid "Mute"
 msgstr "Ztlumit"
 
@@ -991,19 +988,22 @@ msgid "Export Preset"
 msgstr "Importovat přednastavení"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
+#: data/ui/equalizer_band.ui:143
 msgid "Slope"
 msgstr "Sklon"
 
 #: data/ui/equalizer_band.ui:173 data/ui/multiband_compressor_band.ui:149
-#: data/ui/multiband_gate_band.ui:118
+#: data/ui/multiband_gate_band.ui:118 data/ui/equalizer_band.ui:161
 msgid "Solo"
 msgstr "Sólo"
 
 #: data/ui/equalizer_band.ui:270 data/ui/filter.ui:244 data/ui/pitch.ui:28
+#: data/ui/equalizer_band.ui:258
 msgid "Quality"
 msgstr "Jakost"
 
 #: data/ui/equalizer_band.ui:300 data/ui/filter.ui:192
+#: data/ui/equalizer_band.ui:288
 msgid "Width"
 msgstr "Šířka"
 
@@ -2349,6 +2349,7 @@ msgstr "Zavést soubor s impulsem"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:532
 #: src/equalizer_ui.cpp:865 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:454 src/equalizer_ui.cpp:735
 msgid "Open"
 msgstr "Otevřít"
 
@@ -2384,15 +2385,15 @@ msgstr "Přehrávače"
 msgid "Effects"
 msgstr "Efekty"
 
-#: src/equalizer_ui.cpp:531
+#: src/equalizer_ui.cpp:531 src/equalizer_ui.cpp:453
 msgid "Import APO Preset File"
 msgstr "Importovat přednastavený soubor APO"
 
-#: src/equalizer_ui.cpp:539
+#: src/equalizer_ui.cpp:539 src/equalizer_ui.cpp:461
 msgid "APO Presets"
 msgstr "APO Přednastavení"
 
-#: src/equalizer_ui.cpp:564
+#: src/equalizer_ui.cpp:564 src/equalizer_ui.cpp:486
 #, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
@@ -2401,33 +2402,33 @@ msgstr ""
 "Přednastavení APO není načtené. Formát souboru může být chybný. Prosím "
 "zkontrolujte jeho obsah."
 
-#: src/equalizer_ui.cpp:627
+#: src/equalizer_ui.cpp:627 src/equalizer_ui.cpp:541
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:635
+#: src/equalizer_ui.cpp:635 src/equalizer_ui.cpp:549
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "Importovat přednastavený soubor APO"
 
-#: src/equalizer_ui.cpp:636
+#: src/equalizer_ui.cpp:636 src/equalizer_ui.cpp:550
 msgid "Save"
 msgstr ""
 
-#: src/equalizer_ui.cpp:643
+#: src/equalizer_ui.cpp:643 src/equalizer_ui.cpp:557
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "APO Přednastavení"
 
-#: src/equalizer_ui.cpp:864
+#: src/equalizer_ui.cpp:864 src/equalizer_ui.cpp:734
 msgid "Import GraphicEQ Preset File"
 msgstr "Importovat soubor přednastavení GraphicEQ"
 
-#: src/equalizer_ui.cpp:872
+#: src/equalizer_ui.cpp:872 src/equalizer_ui.cpp:742
 msgid "GraphicEQ Presets"
 msgstr "Přednastavení GraphicEQ"
 
-#: src/equalizer_ui.cpp:897
+#: src/equalizer_ui.cpp:897 src/equalizer_ui.cpp:767
 #, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
@@ -2616,25 +2617,28 @@ msgstr "Nástroje sterea"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Není dostupný"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
 msgstr ""
+"Software potřebný pro efekt {}, \"{}\", není nainstalován. Zvažte použití "
+"balíčku Easy Effects Flatpak nebo si software nainstalujte sami."
 
 #: src/ui_helpers.cpp:103
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"Efekt {} byl při kompilaci Easy Effects zakázán. Je to pravděpodobně proto, "
+"že software potřebný pro tento efekt \"{}\" nebyl k dispozici. Zvažte "
+"použití balíčku Easy Effects Flatpak nebo sestavení vlastního balíčku Easy "
+"Effects."
 
 #: src/ui_helpers.cpp:146 src/ui_helpers.cpp:168
 msgid "-inf"
@@ -2642,7 +2646,7 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:253
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Using {}"
 msgstr "Použití"
 
