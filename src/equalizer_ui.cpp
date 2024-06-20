@@ -64,7 +64,7 @@ struct APO_Band {
   std::string type;
   float freq = 1000.0F;
   float gain = 0.0F;
-  float quality = (1.0F / std::numbers::sqrt2_v<float>);
+  float quality = (1.0F / std::numbers::sqrt2_v<float>);  // default in LSP APO import
 };
 
 struct GraphicEQ_Band {
@@ -72,16 +72,15 @@ struct GraphicEQ_Band {
   float gain = 0.0F;
 };
 
-std::unordered_map<std::string, std::string> const ApoToEasyEffectsFilter = {
-    {"PK", "Bell"},          {"MODAL", "Bell"},  {"PEQ", "Bell"},     {"LP", "Lo-pass"},      {"LPQ", "Lo-pass"},
-    {"HP", "Hi-pass"},       {"HPQ", "Hi-pass"}, {"LS", "Lo-shelf"},  {"LSC", "Lo-shelf"},    {"LS 6DB", "Lo-shelf"},
-    {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"}, {"HS 6DB", "Hi-shelf"}, {"HS 12DB", "Hi-shelf"},
-    {"NO", "Notch"},         {"AP", "Allpass"}};
+std::map<std::string, std::string> const ApoToEasyEffectsFilter = {
+    {"PK", "Bell"},          {"MODAL", "Bell"},       {"PEQ", "Bell"},    {"LP", "Lo-pass"},   {"LPQ", "Lo-pass"},
+    {"HP", "Hi-pass"},       {"HPQ", "Hi-pass"},      {"BP", "Bandpass"}, {"LS", "Lo-shelf"},  {"LSC", "Lo-shelf"},
+    {"LS 6DB", "Lo-shelf"},  {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"}, {"HS 6DB", "Hi-shelf"},
+    {"HS 12DB", "Hi-shelf"}, {"NO", "Notch"},         {"AP", "Allpass"}};
 
-std::unordered_map<std::string, std::string> const EasyEffectsToApoFilter = {
-    {"Bell", "PK"},      {"Lo-pass", "LP"},      {"Lo-pass", "LPQ"},      {"Hi-pass", "HP"},       {"Hi-pass", "HPQ"},
-    {"Lo-shelf", "LS"},  {"Lo-shelf", "LSC"},    {"Lo-shelf", "LS 6DB"},  {"Lo-shelf", "LS 12DB"}, {"Hi-shelf", "HS"},
-    {"Hi-shelf", "HSC"}, {"Hi-shelf", "HS 6DB"}, {"Hi-shelf", "HS 12DB"}, {"Notch", "NO"},         {"Allpass", "AP"}};
+std::map<std::string, std::string> const EasyEffectsToApoFilter = {
+    {"Bell", "PK"},      {"Lo-pass", "LPQ"}, {"Hi-pass", "HPQ"}, {"Lo-shelf", "LSC"},
+    {"Hi-shelf", "HSC"}, {"Notch", "NO"},    {"Allpass", "AP"},  {"Bandpass", "BP"}};
 
 struct Data {
  public:
@@ -315,43 +314,61 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
   // Calculate frequency/quality if needed.
   // If the APO filter type is different than the ones specified below,
   // it's set as "Off" and default values are assumed since
-  // it may be not supported by LSP Equalizer.
+  // it may not be supported by LSP Equalizer.
   if (filter.type == "PK" || filter.type == "MODAL" || filter.type == "PEQ") {
+    // Peak/Bell filter
     parse_apo_gain(line, filter);
 
     parse_apo_quality(line, filter);
-  } else if (filter.type == "LP" || filter.type == "LPQ" || filter.type == "HP" || filter.type == "HPQ") {
+  } else if (filter.type == "LP" || filter.type == "LPQ" || filter.type == "HP" || filter.type == "HPQ" ||
+             filter.type == "BP") {
+    // Low-pass, High-pass and Band-pass filters,
+    // (LSP does not import Band-pass, but we do it anyway).
     parse_apo_quality(line, filter);
   } else if (filter.type == "LS" || filter.type == "LSC" || filter.type == "HS" || filter.type == "HSC") {
+    // Low-shelf and High-shelf filters (with center freq., x dB per oct.)
     parse_apo_gain(line, filter);
 
-    if (!parse_apo_quality(line, filter)) {
-      filter.quality = 2.0F / 3.0F;
-    }
+    // Q value is optional for these filters according to APO config documentation,
+    // but LSP import function always sets it to 2/3.
+    filter.quality = 2.0F / 3.0F;
   } else if (filter.type == "LS 6DB") {
+    // Low-shelf filter (6 dB per octave with corner freq.)
+    parse_apo_gain(line, filter);
+
+    // LSP import function sets custom freq and quality for this filter.
     filter.freq = filter.freq * 2.0F / 3.0F;
     filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
-
-    parse_apo_gain(line, filter);
   } else if (filter.type == "LS 12DB") {
-    filter.freq = filter.freq * 3.0F / 2.0F;
-
+    // Low-shelf filter (12 dB per octave with corner freq.)
     parse_apo_gain(line, filter);
+
+    // LSP import function sets custom freq for this filter.
+    filter.freq = filter.freq * 3.0F / 2.0F;
   } else if (filter.type == "HS 6DB") {
+    // High-shelf filter (6 dB per octave with corner freq.)
+    parse_apo_gain(line, filter);
+
+    // LSP import function sets custom freq and quality for this filter.
     filter.freq = filter.freq / (1.0F / std::numbers::sqrt2_v<float>);
     filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
-
-    parse_apo_gain(line, filter);
   } else if (filter.type == "HS 12DB") {
-    filter.freq = filter.freq * (1.0F / std::numbers::sqrt2_v<float>);
-
+    // High-shelf filter (12 dB per octave with corner freq.)
     parse_apo_gain(line, filter);
+
+    // LSP import function sets custom freq for this filter.
+    filter.freq = filter.freq * (1.0F / std::numbers::sqrt2_v<float>);
   } else if (filter.type == "NO") {
-    if (!parse_apo_quality(line, filter)) {
-      filter.quality = 100.0F / 3.0F;
-    }
+    // Notch filter
+    // Q value is optional for this filter according to APO config documentation,
+    // but LSP import function always sets it to 100/3.
+    filter.quality = 100.0F / 3.0F;
   } else if (filter.type == "AP") {
-    parse_apo_quality(line, filter);
+    // All-pass filter
+    // Q value is mandatory for this filter according to APO config documentation,
+    // but LSP import function always sets it to 0,
+    // no matter which quality value the APO config has.
+    filter.quality = 0.0F;
   }
 
   return true;
@@ -585,8 +602,16 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
     apo_band.gain = g_settings_get_double(self->settings_left, band_gain[i].data());
     apo_band.quality = g_settings_get_double(self->settings_left, band_q[i].data());
 
-    write_buffer << "Filter " << i + 1 << ": " << apo_band.on_off << " " << apo_band.type << " Fc " << apo_band.freq
-                 << " Hz Gain " << apo_band.gain << " dB Q " << apo_band.quality << "\n";
+    write_buffer << "Filter " << (i + 1) << ": " << apo_band.on_off << " " << apo_band.type << " Fc " << apo_band.freq
+                 << " Hz";
+
+    if (curr_band_type == "Bell" || curr_band_type == "Lo-shelf" || curr_band_type == "Hi-shelf") {
+      // According to APO config documentation, gain value should only be defined
+      // for Peak, Low-shelf and High-shelf filters.
+      write_buffer << " Gain " << apo_band.gain << " dB";
+    }
+
+    write_buffer << " Q " << apo_band.quality << "\n";
   }
 
   if (g_output_stream_write(G_OUTPUT_STREAM(output_stream), write_buffer.str().c_str(), write_buffer.str().size(),
