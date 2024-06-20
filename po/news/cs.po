@@ -1374,8 +1374,9 @@ msgstr ""
 "Používají se nové knihovny a některé knihovny, které byly dříve nepovinné, "
 "jsou nyní povinné"
 
-#~ msgid "Wellington Wallace"
-#~ msgstr "Wellington Wallace"
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
 
 #, fuzzy
 #~ msgid "and #1427"

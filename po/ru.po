@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-13 14:57+0000\n"
+"POT-Creation-Date: 2024-06-20 21:52+0000\n"
 "PO-Revision-Date: 2024-05-13 17:18+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -378,7 +378,7 @@ msgid "Compressor"
 msgstr "Компрессор"
 
 #: data/ui/compressor.ui:63 data/ui/compressor.ui:595 data/ui/compressor.ui:871
-#: data/ui/deesser.ui:68 data/ui/equalizer.ui:61 data/ui/equalizer_band.ui:122
+#: data/ui/deesser.ui:68 data/ui/equalizer.ui:61 data/ui/equalizer_band.ui:134
 #: data/ui/expander.ui:63 data/ui/expander.ui:516 data/ui/expander.ui:791
 #: data/ui/filter.ui:74 data/ui/gate.ui:729 data/ui/gate.ui:1004
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:536
@@ -618,7 +618,7 @@ msgstr "Режим боковой цепи"
 msgid "Listen Sidechain"
 msgstr "Слушать боковую цепь"
 
-#: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:96
+#: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
 msgid "Type"
 msgstr "Тип"
@@ -671,7 +671,7 @@ msgstr "Фильтры боковой цепи"
 msgid "High-Pass"
 msgstr "Фильтр ВЧ"
 
-#: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:192
+#: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:204
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
 #: data/ui/pipe_manager_box.ui:627
 msgid "Frequency"
@@ -715,7 +715,7 @@ msgstr "Фильтр НЧ"
 msgid "Low-Pass Filter Mode"
 msgstr "Режим низкочастотного фильтра"
 
-#: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:223
+#: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
 #: data/ui/expander.ui:941 data/ui/filter.ui:218
 msgid "Gain"
 msgstr "Усиление"
@@ -835,7 +835,7 @@ msgstr "Подача"
 msgid "Bypass"
 msgstr "Обход"
 
-#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:174
+#: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:186
 #: data/ui/multiband_compressor_band.ui:139 data/ui/multiband_gate_band.ui:108
 #: data/ui/stereo_tools.ui:173 data/ui/stereo_tools.ui:198
 msgid "Mute"
@@ -1002,20 +1002,20 @@ msgstr "Импорт предустановки"
 msgid "Export Preset"
 msgstr "Экспорт предустановки"
 
-#: data/ui/equalizer_band.ui:143 data/ui/filter.ui:127
+#: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
 msgstr "Наклон"
 
-#: data/ui/equalizer_band.ui:161 data/ui/multiband_compressor_band.ui:149
+#: data/ui/equalizer_band.ui:173 data/ui/multiband_compressor_band.ui:149
 #: data/ui/multiband_gate_band.ui:118
 msgid "Solo"
 msgstr "Соло"
 
-#: data/ui/equalizer_band.ui:258 data/ui/filter.ui:244 data/ui/pitch.ui:28
+#: data/ui/equalizer_band.ui:270 data/ui/filter.ui:244 data/ui/pitch.ui:28
 msgid "Quality"
 msgstr "Качество"
 
-#: data/ui/equalizer_band.ui:288 data/ui/filter.ui:192
+#: data/ui/equalizer_band.ui:300 data/ui/filter.ui:192
 msgid "Width"
 msgstr "Ширина"
 
@@ -2349,8 +2349,8 @@ msgstr "Файл импульса не импортирован"
 msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
-#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:454
-#: src/equalizer_ui.cpp:735 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
+#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:532
+#: src/equalizer_ui.cpp:865 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Открыть"
 
@@ -2386,15 +2386,15 @@ msgstr "Проигрыватели"
 msgid "Effects"
 msgstr "Эффекты"
 
-#: src/equalizer_ui.cpp:453
+#: src/equalizer_ui.cpp:531
 msgid "Import APO Preset File"
 msgstr "Импортировать файл предустановки APO"
 
-#: src/equalizer_ui.cpp:461
+#: src/equalizer_ui.cpp:539
 msgid "APO Presets"
 msgstr "Предустановки APO"
 
-#: src/equalizer_ui.cpp:486
+#: src/equalizer_ui.cpp:564
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2402,32 +2402,32 @@ msgstr ""
 "Предустановка APO не загружена. Возможно, формат файла не поддерживается. "
 "Пожалуйста, проверьте его содержимое."
 
-#: src/equalizer_ui.cpp:541
+#: src/equalizer_ui.cpp:627
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 "Разделение каналов при экспорте предустановок APO пока не поддерживается."
 
-#: src/equalizer_ui.cpp:549
+#: src/equalizer_ui.cpp:635
 msgid "Export EqualizerAPO Preset File"
 msgstr "Экспортировать файл предустановки APO"
 
-#: src/equalizer_ui.cpp:550
+#: src/equalizer_ui.cpp:636
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/equalizer_ui.cpp:557
+#: src/equalizer_ui.cpp:643
 msgid "EqualizerAPO Presets"
 msgstr "Предустановки EqualizerAPO"
 
-#: src/equalizer_ui.cpp:734
+#: src/equalizer_ui.cpp:864
 msgid "Import GraphicEQ Preset File"
 msgstr "Импортировать файл предустановки GraphicEQ"
 
-#: src/equalizer_ui.cpp:742
+#: src/equalizer_ui.cpp:872
 msgid "GraphicEQ Presets"
 msgstr "Предустановки GraphicEQ"
 
-#: src/equalizer_ui.cpp:767
+#: src/equalizer_ui.cpp:897
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
