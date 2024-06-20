@@ -178,9 +178,11 @@ void on_calculate_frequencies(EqualizerBox* self, GtkButton* btn) {
 
     g_settings_set_double(self->settings_left, band_frequency[n].data(), freq);
     g_settings_set_double(self->settings_left, band_q[n].data(), q);
+    g_settings_reset(self->settings_left, band_width[n].data());
 
     g_settings_set_double(self->settings_right, band_frequency[n].data(), freq);
     g_settings_set_double(self->settings_right, band_q[n].data(), q);
+    g_settings_reset(self->settings_right, band_width[n].data());
 
     freq0 = freq1;
   }
@@ -410,37 +412,96 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
     settings_channels.push_back(self->settings_right);
   }
 
+  // Retrieve GSettingsSchema* for range check
+  GSettingsSchema* schema = nullptr;
+
+  g_object_get(self->settings_left, "settings-schema", &schema, nullptr);
+
+  if (schema == nullptr) {
+    return false;
+  }
+
+  // Apply APO parameters obtained for each band
   for (uint n = 0U, apo_bands = bands.size(); n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
-        auto curr_band_mute = (bands[n].on_off == "OFF");  // mute if band is "OFF"
-        std::string curr_band_type;
+        // Band frequency and type
+        auto* freq_schema_key = g_settings_schema_get_key(schema, band_frequency[n].data());
+        auto* freq_variant = g_variant_new_double(static_cast<gdouble>(bands[n].freq));
 
-        try {
-          curr_band_type = ApoToEasyEffectsFilter.at(bands[n].type);
-        } catch (std::out_of_range const&) {
-          curr_band_type = "Off";
+        if (g_settings_schema_key_range_check(freq_schema_key, freq_variant) != 0) {
+          g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
+
+          std::string curr_band_type;
+
+          try {
+            curr_band_type = ApoToEasyEffectsFilter.at(bands[n].type);
+          } catch (std::out_of_range const&) {
+            curr_band_type = "Off";
+          }
+
+          g_settings_set_string(channel, band_type[n].data(), curr_band_type.c_str());
+
+        } else {
+          // If the frequency is not in the valid range, we assume the filter is
+          // unsupported or disabled, so reset to default frequency and set type Off.
+          g_settings_reset(channel, band_frequency[n].data());
+
+          g_settings_set_string(channel, band_type[n].data(), "Off");
         }
 
+        g_variant_unref(freq_variant);
+        g_settings_schema_key_unref(freq_schema_key);
+
+        // Band gain
+        auto* gain_schema_key = g_settings_schema_get_key(schema, band_gain[n].data());
+        auto* gain_variant = g_variant_new_double(static_cast<gdouble>(bands[n].gain));
+
+        if (g_settings_schema_key_range_check(gain_schema_key, gain_variant) != 0) {
+          g_settings_set_double(channel, band_gain[n].data(), bands[n].gain);
+        } else {
+          g_settings_reset(channel, band_gain[n].data());
+        }
+
+        g_variant_unref(gain_variant);
+        g_settings_schema_key_unref(gain_schema_key);
+
+        // Band quality
+        auto* q_schema_key = g_settings_schema_get_key(schema, band_q[n].data());
+        auto* q_variant = g_variant_new_double(static_cast<gdouble>(bands[n].quality));
+
+        if (g_settings_schema_key_range_check(q_schema_key, q_variant) != 0) {
+          g_settings_set_double(channel, band_q[n].data(), bands[n].quality);
+        } else {
+          g_settings_reset(channel, band_q[n].data());
+        }
+
+        g_variant_unref(q_variant);
+        g_settings_schema_key_unref(q_schema_key);
+
+        // Band mute
+        auto curr_band_mute = (bands[n].on_off == "OFF");  // mute if band is "OFF"
+
         g_settings_set_boolean(channel, band_mute[n].data(), curr_band_mute);
-        g_settings_set_string(channel, band_type[n].data(), curr_band_type.c_str());
+
+        // Band mode
         g_settings_set_string(channel, band_mode[n].data(), "APO (DR)");
-        g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
-        g_settings_set_double(channel, band_gain[n].data(), bands[n].gain);
-        g_settings_set_double(channel, band_q[n].data(), bands[n].quality);
       } else {
-        g_settings_set_string(channel, band_type[n].data(), "Off");
-        g_settings_reset(channel, band_mute[n].data());
-        g_settings_reset(channel, band_mode[n].data());
         g_settings_reset(channel, band_frequency[n].data());
         g_settings_reset(channel, band_gain[n].data());
         g_settings_reset(channel, band_q[n].data());
+        g_settings_set_string(channel, band_type[n].data(), "Off");
+        g_settings_reset(channel, band_mute[n].data());
+        g_settings_reset(channel, band_mode[n].data());
       }
 
+      g_settings_reset(channel, band_width[n].data());
       g_settings_reset(channel, band_slope[n].data());
       g_settings_reset(channel, band_solo[n].data());
     }
   }
+
+  g_settings_schema_unref(schema);
 
   return true;
 }
@@ -510,8 +571,8 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
   int nbands = gtk_spin_button_get_value_as_int(self->nbands);
 
   for (int i = 0; i < nbands; ++i) {
-    const bool curr_band_mute = g_settings_get_boolean(self->settings_left, tags::equalizer::band_mute[i].data());
-    const auto curr_band_type = util::gsettings_get_string(self->settings_left, tags::equalizer::band_type[i].data());
+    const bool curr_band_mute = g_settings_get_boolean(self->settings_left, band_mute[i].data());
+    const auto curr_band_type = util::gsettings_get_string(self->settings_left, band_type[i].data());
 
     if (curr_band_type == "Off") {
       continue;
@@ -520,9 +581,9 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
     APO_Band apo_band;
     apo_band.on_off = curr_band_mute ? "OFF" : "ON";
     apo_band.type = EasyEffectsToApoFilter.at(curr_band_type);
-    apo_band.freq = g_settings_get_double(self->settings_left, tags::equalizer::band_frequency[i].data());
-    apo_band.gain = g_settings_get_double(self->settings_left, tags::equalizer::band_gain[i].data());
-    apo_band.quality = g_settings_get_double(self->settings_left, tags::equalizer::band_q[i].data());
+    apo_band.freq = g_settings_get_double(self->settings_left, band_frequency[i].data());
+    apo_band.gain = g_settings_get_double(self->settings_left, band_gain[i].data());
+    apo_band.quality = g_settings_get_double(self->settings_left, band_q[i].data());
 
     write_buffer << "Filter " << i + 1 << ": " << apo_band.on_off << " " << apo_band.type << " Fc " << apo_band.freq
                  << " Hz Gain " << apo_band.gain << " dB Q " << apo_band.quality << "\n";
@@ -687,6 +748,9 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
 
   const auto& max_bands = self->data->equalizer->max_bands;
 
+  // Reset preamp
+  g_settings_reset(self->settings, "input-gain");
+
   // Apply GraphicEQ parameters obtained
   g_settings_set_int(self->settings, "num-bands",
                      static_cast<int>(std::min(static_cast<uint>(bands.size()), max_bands)));
@@ -703,25 +767,66 @@ auto import_graphiceq_preset(EqualizerBox* self, const std::string& file_path) -
     settings_channels.push_back(self->settings_right);
   }
 
+  // Retrieve GSettingsSchema* for range check
+  GSettingsSchema* schema = nullptr;
+
+  g_object_get(self->settings_left, "settings-schema", &schema, nullptr);
+
+  if (schema == nullptr) {
+    return false;
+  }
+
+  // Apply GraphicEQ parameters obtained for each band
   for (uint n = 0U, geq_bands = bands.size(); n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < geq_bands) {
-        g_settings_set_string(channel, band_type[n].data(), "Bell");
-        g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
-        g_settings_set_double(channel, band_gain[n].data(), bands[n].gain);
+        // Band frequency and type
+        auto* freq_schema_key = g_settings_schema_get_key(schema, band_frequency[n].data());
+        auto* freq_variant = g_variant_new_double(static_cast<gdouble>(bands[n].freq));
+
+        if (g_settings_schema_key_range_check(freq_schema_key, freq_variant) != 0) {
+          g_settings_set_double(channel, band_frequency[n].data(), bands[n].freq);
+
+          g_settings_set_string(channel, band_type[n].data(), "Bell");
+        } else {
+          // If the frequency is not in the valid range, we assume the filter is
+          // unsupported or disabled, so reset to default frequency and set type Off.
+          g_settings_reset(channel, band_frequency[n].data());
+
+          g_settings_set_string(channel, band_type[n].data(), "Off");
+        }
+
+        g_variant_unref(freq_variant);
+        g_settings_schema_key_unref(freq_schema_key);
+
+        // Band gain
+        auto* gain_schema_key = g_settings_schema_get_key(schema, band_gain[n].data());
+        auto* gain_variant = g_variant_new_double(static_cast<gdouble>(bands[n].gain));
+
+        if (g_settings_schema_key_range_check(gain_schema_key, gain_variant) != 0) {
+          g_settings_set_double(channel, band_gain[n].data(), bands[n].gain);
+        } else {
+          g_settings_reset(channel, band_gain[n].data());
+        }
+
+        g_variant_unref(gain_variant);
+        g_settings_schema_key_unref(gain_schema_key);
       } else {
-        g_settings_set_string(channel, band_type[n].data(), "Off");
         g_settings_reset(channel, band_frequency[n].data());
         g_settings_reset(channel, band_gain[n].data());
+        g_settings_set_string(channel, band_type[n].data(), "Off");
       }
 
       g_settings_reset(channel, band_mode[n].data());
       g_settings_reset(channel, band_q[n].data());
+      g_settings_reset(channel, band_width[n].data());
       g_settings_reset(channel, band_slope[n].data());
       g_settings_reset(channel, band_solo[n].data());
       g_settings_reset(channel, band_mute[n].data());
     }
   }
+
+  g_settings_schema_unref(schema);
 
   return true;
 }
@@ -785,9 +890,9 @@ auto sort_band_widgets(EqualizerBox* self, const int nbands, GSettings* settings
 
   if (sort_by_freq) {
     std::ranges::sort(list, [=](const int& a, const int& b) {
-      const auto freq_a = g_settings_get_double(settings, tags::equalizer::band_frequency[a].data());
+      const auto freq_a = g_settings_get_double(settings, band_frequency[a].data());
 
-      const auto freq_b = g_settings_get_double(settings, tags::equalizer::band_frequency[b].data());
+      const auto freq_b = g_settings_get_double(settings, band_frequency[b].data());
 
       return freq_a < freq_b;
     });
