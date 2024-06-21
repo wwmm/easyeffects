@@ -6,11 +6,13 @@ Description:
 - Features∶
 - Community Presets have been implemented. Users can install packages containing multiple Easy Effects presets to be imported and applied inside the application. These packages will be maintained and shipped by volunteers. You can search them on the repositories of your favorite distribution.
 - Added the ability of collapsing the sidebar to hide the effects list and expand the area of the effects user interface.
-- EasyEffects won't touch streams that define `PW_KEY_TARGET_OBJECT` to an output device that is different from the one EE is using.
+- EasyEffects won't touch streams that define `PW_KEY_TARGET_OBJECT` to an output device that is different from the one EasyEffects is using.
+- Equalizer APO import feature can now apply Band-Pass filters.
 
 - Bug fixes∶
 - A change in GTK 4.14.1 prevented to apply the values inserted into the text field of our SpinButton widgets. This issue is now resolved.
-- The latest maximizer plugin releases do not have the ceiling port anymore. So we removed it from our window. 
+- The latest Maximizer plugin releases do not have the ceiling control anymore. So we removed it from our user interface (you can use the plugin input gain to retrieve the same functionality).
+- Equalizer APO import feature does not crash anymore on Flatpak when invalid values are provided.
 
 - Other notes∶
 - In order for Community Presets to be correctly shipped, packagers are invited to read and follow the guidelines linked inside the README of EasyEffects master branch.
@@ -347,7 +349,7 @@ Description:
 - When no application is available for display in the `Players/Recorders` a message will be shown to the user
 - Many translation updates
 - Bug fixes∶
-- Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while our pipeline was active and the spectrum widget was visible
+- Fixed a bug where EasyEffects crashed when the number of points displayed in the spectrum was changed while our pipeline was active and the spectrum widget was visible
 - The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.
 
 ---
