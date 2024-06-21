@@ -42,7 +42,6 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
-#include <unordered_map>
 #include <vector>
 #include "application.hpp"
 #include "equalizer.hpp"
@@ -60,7 +59,6 @@ using namespace tags::equalizer;
 enum Channel { left, right };
 
 struct APO_Band {
-  std::string on_off;  // Equivalent to EasyEffects `band_mute`. "ON" => mute=false
   std::string type;
   float freq = 1000.0F;
   float gain = 0.0F;
@@ -73,10 +71,10 @@ struct GraphicEQ_Band {
 };
 
 std::map<std::string, std::string> const ApoToEasyEffectsFilter = {
-    {"PK", "Bell"},          {"MODAL", "Bell"},       {"PEQ", "Bell"},    {"LP", "Lo-pass"},   {"LPQ", "Lo-pass"},
-    {"HP", "Hi-pass"},       {"HPQ", "Hi-pass"},      {"BP", "Bandpass"}, {"LS", "Lo-shelf"},  {"LSC", "Lo-shelf"},
-    {"LS 6DB", "Lo-shelf"},  {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"}, {"HS 6DB", "Hi-shelf"},
-    {"HS 12DB", "Hi-shelf"}, {"NO", "Notch"},         {"AP", "Allpass"}};
+    {"OFF", "Off"},         {"PK", "Bell"},          {"MODAL", "Bell"},       {"PEQ", "Bell"},    {"LP", "Lo-pass"},
+    {"LPQ", "Lo-pass"},     {"HP", "Hi-pass"},       {"HPQ", "Hi-pass"},      {"BP", "Bandpass"}, {"LS", "Lo-shelf"},
+    {"LSC", "Lo-shelf"},    {"LS 6DB", "Lo-shelf"},  {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"},
+    {"HS 6DB", "Hi-shelf"}, {"HS 12DB", "Hi-shelf"}, {"NO", "Notch"},         {"AP", "Allpass"}};
 
 std::map<std::string, std::string> const EasyEffectsToApoFilter = {
     {"Bell", "PK"},      {"Lo-pass", "LPQ"}, {"Hi-pass", "HPQ"}, {"Lo-shelf", "LSC"},
@@ -203,22 +201,37 @@ auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
   return util::str_to_num(matches.str(1), preamp);
 }
 
-auto parse_apo_filter(const std::string& line, struct APO_Band& filter) -> bool {
-  std::smatch matches;
+auto parse_apo_filter_type(const std::string& line, struct APO_Band& filter) -> bool {
+  // Look for disabled filter.
+  std::smatch matches_off;
 
-  static const auto re_filter =
-      std::regex(R"(filter\s*\d*\s*:\s*(?:on|off)\s+([a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
+  static const auto re_filter_off = std::regex(R"(filter\s*\d*\s*:\s*off\s)", std::regex::icase);
 
-  std::regex_search(line, matches, re_filter);
+  std::regex_search(line, matches_off, re_filter_off);
 
-  if (matches.size() != 2U) {
+  if (matches_off.size() == 1U) {
+    // If the APO filter is disabled, we assume the "OFF" type.
+    filter.type = "OFF";
+
+    return true;
+  }
+
+  // If the filter is enabled, look for the filter type.
+  std::smatch matches_filter;
+
+  static const auto re_filter_type =
+      std::regex(R"(filter\s*\d*\s*:\s*on\s+([a-z]+(?:\s+(?:6|12)db)?))", std::regex::icase);
+
+  std::regex_search(line, matches_filter, re_filter_type);
+
+  if (matches_filter.size() != 2U) {
     return false;
   }
 
   // Possible multiple whitespaces are replaced by a single space
-  filter.type = std::regex_replace(matches.str(1), std::regex(R"(\s+)"), " ");
+  filter.type = std::regex_replace(matches_filter.str(1), std::regex(R"(\s+)"), " ");
 
-  // Filter string needed in uppercase for unordered_map
+  // Filter string needed in uppercase for lookup in map
   std::transform(filter.type.begin(), filter.type.end(), filter.type.begin(),
                  [](unsigned char c) { return std::toupper(c); });
 
@@ -269,35 +282,11 @@ auto parse_apo_quality(const std::string& line, struct APO_Band& filter) -> bool
   return util::str_to_num(matches.str(1), filter.quality);
 }
 
-auto parse_apo_on_off(const std::string& line, struct APO_Band& filter) -> bool {
-  std::smatch matches;
-
-  static const auto re_on_off = std::regex(R"(filter\s*\d*\s*:\s*(on|off))", std::regex::icase);
-
-  std::regex_search(line, matches, re_on_off);
-
-  if (matches.size() != 2U) {
-    return false;
-  }
-
-  filter.on_off = matches.str(1);
-
-  // The regex is permissive using std::regex::icase flag, but we need
-  // on/off string in uppercase for string comparisons in import operations.
-  std::transform(filter.on_off.begin(), filter.on_off.end(), filter.on_off.begin(),
-                 [](unsigned char c) { return std::toupper(c); });
-
-  return true;
-}
-
 auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
   // Retrieve filter type.
-  if (!parse_apo_filter(line, filter)) {
-    return false;
-  }
-
-  // Retrieve on/off state.
-  if (!parse_apo_on_off(line, filter)) {
+  if (!parse_apo_filter_type(line, filter)) {
+    // If we can't parse the filter type, there's something wrong in the text line,
+    // so exit with false.
     return false;
   }
 
@@ -315,7 +304,13 @@ auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> 
   // If the APO filter type is different than the ones specified below,
   // it's set as "Off" and default values are assumed since
   // it may not be supported by LSP Equalizer.
-  if (filter.type == "PK" || filter.type == "MODAL" || filter.type == "PEQ") {
+  if (filter.type == "OFF") {
+    // On disabled filter state, we still try to retrieve gain and quality,
+    // even if the band won't be processed by LSP equalizer.
+    parse_apo_gain(line, filter);
+
+    parse_apo_quality(line, filter);
+  } else if (filter.type == "PK" || filter.type == "MODAL" || filter.type == "PEQ") {
     // Peak/Bell filter
     parse_apo_gain(line, filter);
 
@@ -496,24 +491,19 @@ auto import_apo_preset(EqualizerBox* self, const std::string& file_path) -> bool
         g_variant_unref(q_variant);
         g_settings_schema_key_unref(q_schema_key);
 
-        // Band mute
-        auto curr_band_mute = (bands[n].on_off == "OFF");  // mute if band is "OFF"
-
-        g_settings_set_boolean(channel, band_mute[n].data(), curr_band_mute);
-
         // Band mode
         g_settings_set_string(channel, band_mode[n].data(), "APO (DR)");
       } else {
         g_settings_reset(channel, band_frequency[n].data());
+        g_settings_set_string(channel, band_type[n].data(), "Off");
         g_settings_reset(channel, band_gain[n].data());
         g_settings_reset(channel, band_q[n].data());
-        g_settings_set_string(channel, band_type[n].data(), "Off");
-        g_settings_reset(channel, band_mute[n].data());
         g_settings_reset(channel, band_mode[n].data());
       }
 
       g_settings_reset(channel, band_width[n].data());
       g_settings_reset(channel, band_slope[n].data());
+      g_settings_reset(channel, band_mute[n].data());
       g_settings_reset(channel, band_solo[n].data());
     }
   }
@@ -582,36 +572,35 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
   std::ostringstream write_buffer;
   const double preamp = g_settings_get_double(self->settings, "input-gain");
 
-  write_buffer << "Preamp: " << preamp << "db"
+  write_buffer << "Preamp: " << util::to_string(preamp) << " db"
                << "\n";
 
-  int nbands = gtk_spin_button_get_value_as_int(self->nbands);
+  const auto nbands = gtk_spin_button_get_value_as_int(self->nbands);
 
-  for (int i = 0; i < nbands; ++i) {
-    const bool curr_band_mute = g_settings_get_boolean(self->settings_left, band_mute[i].data());
+  for (int i = 0, k = 1; i < nbands; ++i) {
     const auto curr_band_type = util::gsettings_get_string(self->settings_left, band_type[i].data());
 
     if (curr_band_type == "Off") {
+      // Skip disabled filters, we only export active ones.
       continue;
     }
 
     APO_Band apo_band;
-    apo_band.on_off = curr_band_mute ? "OFF" : "ON";
     apo_band.type = EasyEffectsToApoFilter.at(curr_band_type);
     apo_band.freq = g_settings_get_double(self->settings_left, band_frequency[i].data());
     apo_band.gain = g_settings_get_double(self->settings_left, band_gain[i].data());
     apo_band.quality = g_settings_get_double(self->settings_left, band_q[i].data());
 
-    write_buffer << "Filter " << (i + 1) << ": " << apo_band.on_off << " " << apo_band.type << " Fc " << apo_band.freq
-                 << " Hz";
+    write_buffer << "Filter " << util::to_string(k++) << ": ON " << apo_band.type << " Fc "
+                 << util::to_string(apo_band.freq) << " Hz";
 
     if (curr_band_type == "Bell" || curr_band_type == "Lo-shelf" || curr_band_type == "Hi-shelf") {
       // According to APO config documentation, gain value should only be defined
       // for Peak, Low-shelf and High-shelf filters.
-      write_buffer << " Gain " << apo_band.gain << " dB";
+      write_buffer << " Gain " << util::to_string(apo_band.gain) << " dB";
     }
 
-    write_buffer << " Q " << apo_band.quality << "\n";
+    write_buffer << " Q " << util::to_string(apo_band.quality) << "\n";
   }
 
   if (g_output_stream_write(G_OUTPUT_STREAM(output_stream), write_buffer.str().c_str(), write_buffer.str().size(),

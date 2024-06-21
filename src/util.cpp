@@ -49,7 +49,7 @@ auto prepare_debug_message(const std::string& message, source_location location)
 
   std::ostringstream msg_stream;
 
-  msg_stream << "\t" << file_path.filename().string() << ":" << location.line() << "\t" << message;
+  msg_stream << "\t" << file_path.filename().string() << ":" << to_string(location.line()) << "\t" << message;
 
   return msg_stream.str();
 }
