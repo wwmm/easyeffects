@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-20 21:52+0000\n"
+"POT-Creation-Date: 2024-06-21 17:26+0000\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2506,8 +2506,8 @@ msgstr "Načítať súbor impulzu"
 msgid "Import Impulse File"
 msgstr "Načítať súbor impulzu"
 
-#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:532
-#: src/equalizer_ui.cpp:865 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
+#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
+#: src/equalizer_ui.cpp:854 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Otvoriť"
 
@@ -2548,49 +2548,49 @@ msgstr "Prehrávače"
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/equalizer_ui.cpp:531
+#: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
 msgstr "Načítať APO predvoľbu"
 
-#: src/equalizer_ui.cpp:539
+#: src/equalizer_ui.cpp:529
 msgid "APO Presets"
 msgstr "APO predvoľby"
 
-#: src/equalizer_ui.cpp:564
+#: src/equalizer_ui.cpp:554
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
 
-#: src/equalizer_ui.cpp:627
+#: src/equalizer_ui.cpp:616
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 
-#: src/equalizer_ui.cpp:635
+#: src/equalizer_ui.cpp:624
 #, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "Načítať APO predvoľbu"
 
-#: src/equalizer_ui.cpp:636
+#: src/equalizer_ui.cpp:625
 msgid "Save"
 msgstr ""
 
-#: src/equalizer_ui.cpp:643
+#: src/equalizer_ui.cpp:632
 #, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "APO predvoľby"
 
-#: src/equalizer_ui.cpp:864
+#: src/equalizer_ui.cpp:853
 #, fuzzy
 msgid "Import GraphicEQ Preset File"
 msgstr "Načítať APO predvoľbu"
 
-#: src/equalizer_ui.cpp:872
+#: src/equalizer_ui.cpp:861
 #, fuzzy
 msgid "GraphicEQ Presets"
 msgstr "Vstupné predvoľby: "
 
-#: src/equalizer_ui.cpp:897
+#: src/equalizer_ui.cpp:886
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
