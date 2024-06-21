@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-20 21:52+0000\n"
+"POT-Creation-Date: 2024-06-21 17:26+0000\n"
 "PO-Revision-Date: 2024-05-03 21:07+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2297,8 +2297,8 @@ msgstr "Impulsbestand niet geïmporteerd"
 msgid "Import Impulse File"
 msgstr "Impulse-bestand importeren"
 
-#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:532
-#: src/equalizer_ui.cpp:865 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
+#: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
+#: src/equalizer_ui.cpp:854 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Openen"
 
@@ -2334,15 +2334,15 @@ msgstr "Spelers"
 msgid "Effects"
 msgstr "Effecten"
 
-#: src/equalizer_ui.cpp:531
+#: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
 msgstr "APO-voorinstellingsbestand importeren"
 
-#: src/equalizer_ui.cpp:539
+#: src/equalizer_ui.cpp:529
 msgid "APO Presets"
 msgstr "APO-voorinstellingen"
 
-#: src/equalizer_ui.cpp:564
+#: src/equalizer_ui.cpp:554
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2350,33 +2350,33 @@ msgstr ""
 "APO-voorinstelling niet geladen. Bestandsformaat wordt mogelijk niet "
 "ondersteund. Controleer de inhoud."
 
-#: src/equalizer_ui.cpp:627
+#: src/equalizer_ui.cpp:616
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 "Gesplitste kanalen worden nog niet ondersteund bij het exporteren van APO-"
 "voor­instellingen."
 
-#: src/equalizer_ui.cpp:635
+#: src/equalizer_ui.cpp:624
 msgid "Export EqualizerAPO Preset File"
 msgstr "EqualizerAPO-voorinstellings­bestand exporteren"
 
-#: src/equalizer_ui.cpp:636
+#: src/equalizer_ui.cpp:625
 msgid "Save"
 msgstr "Opslaan"
 
-#: src/equalizer_ui.cpp:643
+#: src/equalizer_ui.cpp:632
 msgid "EqualizerAPO Presets"
 msgstr "EqualizerAPO-voor­instellingen"
 
-#: src/equalizer_ui.cpp:864
+#: src/equalizer_ui.cpp:853
 msgid "Import GraphicEQ Preset File"
 msgstr "GraphicEQ-voorinstellingsbestand importeren"
 
-#: src/equalizer_ui.cpp:872
+#: src/equalizer_ui.cpp:861
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ-voorinstellingen"
 
-#: src/equalizer_ui.cpp:897
+#: src/equalizer_ui.cpp:886
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
