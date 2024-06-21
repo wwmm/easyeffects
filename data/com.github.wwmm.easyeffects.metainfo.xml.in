@@ -15,6 +15,7 @@
   <developer id="com.github.wwmm">
     <name>Wellington Wallace</name>
   </developer>
+  <developer_name>Wellington Wallace</developer_name>
   <requires>
     <internet>offline-only</internet>
   </requires>
@@ -52,6 +53,24 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.1.7" date="2024-06-21T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Community Presets have been implemented. Users can install packages containing multiple Easy Effects presets to be imported and applied inside the application. These packages will be maintained and shipped by volunteers. You can search them on the repositories of your favorite distribution.</li>
+          <li>Added the ability of collapsing the sidebar to hide the effects list and expand the area of the effects user interface.</li>
+          <li>EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an output device that is different from the one EasyEffects is using.</li>
+          <li>Equalizer APO import feature can now apply Band-Pass filters.</li>
+          <li>Bug fixes:</li>
+          <li>A change in GTK 4.14.1 prevented to apply the values inserted into the text field of our SpinButton widgets. This issue is now resolved.</li>
+          <li>The latest Maximizer plugin releases do not have the ceiling control anymore. So we removed it from our user interface (you can use the plugin input gain to retrieve the same functionality).</li>
+          <li>Equalizer APO import feature does not crash anymore on Flatpak when invalid values are provided.</li>
+          <li>Other notes:</li>
+          <li>In order for Community Presets to be correctly shipped, packagers are invited to read and follow the guidelines linked inside the README of EasyEffects master branch.</li>
+          <li>Presets with Convolver and/or Noise Reduction (RNNoise) effects created before 7.2.0 version are deprecated. Please reload the irs/model file inside the Convolver/RNNoise UI and resave the preset.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.1.6" date="2024-03-29T00:00:00Z">
       <description>
         <ul>
@@ -338,7 +357,7 @@
           <li>When no application is available for display in the Players/Recorders a message will be shown to the user</li>
           <li>Many translation updates</li>
           <li>Bug fixes:</li>
-          <li>Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while our pipeline was active and the spectrum widget was visible</li>
+          <li>Fixed a bug where EasyEffects crashed when the number of points displayed in the spectrum was changed while our pipeline was active and the spectrum widget was visible</li>
           <li>The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.</li>
         </ul>
       </description>

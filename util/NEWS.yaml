@@ -2,6 +2,20 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
+Description: 
+- Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 7.1.7
+Date: 2024-06-21
+
 Description:
 - Features∶
 - Community Presets have been implemented. Users can install packages containing multiple Easy Effects presets to be imported and applied inside the application. These packages will be maintained and shipped by volunteers. You can search them on the repositories of your favorite distribution.
