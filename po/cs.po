@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-21 17:26+0000\n"
-"PO-Revision-Date: 2023-08-18 18:54+0000\n"
-"Last-Translator: Fjuro <ifjuro@proton.me>\n"
+"PO-Revision-Date: 2024-06-22 08:09+0000\n"
+"Last-Translator: Jakub Pavlů <jakubpavlu4@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -828,19 +828,19 @@ msgstr "Tlumení"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "Minimální práh zpracování"
 
 #: data/ui/deepfilternet.ui:86
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "Maximální práh pro zpracování ERB"
 
 #: data/ui/deepfilternet.ui:112
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "Maximální práh zpracování DF"
 
 #: data/ui/deepfilternet.ui:138
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "Minimální vyrovnávací paměť pro zpracování"
 
 #: data/ui/deepfilternet.ui:163
 #, fuzzy
@@ -1012,7 +1012,7 @@ msgstr "Horní mezní hodnota"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
-msgstr ""
+msgstr "Expandér"
 
 #: data/ui/expander.ui:86
 #, fuzzy
@@ -1376,7 +1376,7 @@ msgstr "Hnědá MT"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "Zobrazit nativní uživatelské rozhraní"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 msgid "Operating Mode"
@@ -1564,6 +1564,9 @@ msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"Automaticky lze spouštět pouze místní předvolby. Předvolba Společenství by "
+"měla být importována lokálně, aby mohla být vybrána a přiřazena ke "
+"konkrétnímu zařízení."
 
 #: data/ui/pipe_manager_box.ui:266
 msgid "Output Devices"
@@ -1661,11 +1664,11 @@ msgstr "Bílý šum"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Rychlé hledání"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Vyrovnávání obrazu"
 
 #: data/ui/pitch.ui:58
 #, fuzzy
@@ -1714,7 +1717,7 @@ msgstr "Změna pozice tohoto efektu"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "Zobrazit/skrýt seznam efektů"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
@@ -1727,7 +1730,7 @@ msgstr "Odstranit tento efekt"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "Přejít na další efekt"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
@@ -1796,7 +1799,7 @@ msgstr "Vnitřní"
 
 #: data/ui/preferences_general.ui:120
 msgid "Related to Level Meters and Spectrum"
-msgstr ""
+msgstr "Související s hladinoměry a spektrem"
 
 #: data/ui/preferences_general.ui:142
 #, fuzzy
@@ -1805,7 +1808,7 @@ msgstr "Kmitočet"
 
 #: data/ui/preferences_general.ui:143
 msgid "Related to LV2 Plugins"
-msgstr ""
+msgstr "Související se zásuvnými moduly LV2"
 
 #: data/ui/preferences_general.ui:167 data/ui/preferences_spectrum.ui:26
 msgid "Style"
@@ -1831,7 +1834,7 @@ msgstr "Zavřít okno"
 
 #: data/ui/preferences_general.ui:200
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "Umožňuje zobrazit/skrýt okno nativního pluginu"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1879,7 +1882,7 @@ msgstr "Zaoblené rohy"
 
 #: data/ui/preferences_spectrum.ui:151
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "Dynamická stupnice"
 
 #: data/ui/preferences_spectrum.ui:165
 msgid "Color"
@@ -1939,11 +1942,11 @@ msgstr "Importovat model"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr ""
+msgstr "Import této předvolby komunity do seznamu místních předvoleb"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "Místní"
 
 #: data/ui/presets_menu.ui:48
 #, fuzzy
@@ -1956,7 +1959,7 @@ msgstr "Vytvořit nové přednastavení"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "Import předvolby z místního úložiště"
 
 #: data/ui/presets_menu.ui:86
 #, fuzzy
@@ -1970,7 +1973,7 @@ msgstr "Hledat profil pro vstup"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "Komunita"
 
 #: data/ui/presets_menu.ui:208
 #, fuzzy
@@ -1984,21 +1987,23 @@ msgstr "Seznam profilů pro výstup"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "Nejsou nainstalovány žádné předvolby komunity"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"Balíčky komunitních předvoleb lze nainstalovat z úložiště vaší oblíbené "
+"distribuce."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "Obnovení"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "Obnovit pro zobrazení nově nainstalovaných předvoleb komunity"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2116,7 +2121,7 @@ msgstr "Přehled"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Zobrazit nápovědu"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2272,7 +2277,7 @@ msgstr "Neznámý"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "Neurčitý název - ID procesu "
 
 #: src/app_info.cpp:292
 msgid "channels"
@@ -2288,7 +2293,7 @@ msgstr "Ukončit EasyEffects. Užitečné, při spuštění servisního režimu.
 
 #: src/application.cpp:603
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "Tisk verze easyeffects"
 
 #: src/application.cpp:606
 msgid "Reset Easy Effects."
@@ -2398,7 +2403,7 @@ msgstr ""
 
 #: src/equalizer_ui.cpp:616
 msgid "Split channels not yet supported when exporting APO presets."
-msgstr ""
+msgstr "Při exportu předvoleb APO zatím nejsou podporovány rozdělené kanály."
 
 #: src/equalizer_ui.cpp:624
 #, fuzzy
@@ -2407,7 +2412,7 @@ msgstr "Importovat přednastavený soubor APO"
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
-msgstr ""
+msgstr "Uložit"
 
 #: src/equalizer_ui.cpp:632
 #, fuzzy
@@ -2460,13 +2465,13 @@ msgstr "Importovat přednastavení"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
-msgstr ""
+msgstr "Balíček"
 
 #: src/presets_manager.cpp:1147 src/presets_manager.cpp:1154
 #: src/presets_manager.cpp:1163 src/presets_manager.cpp:1170
 #: src/presets_manager.cpp:1179 src/presets_manager.cpp:1187
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "Předvolba není načtena správně"
 
 #: src/presets_manager.cpp:1147
 #, fuzzy
@@ -2475,46 +2480,43 @@ msgstr "Seznam vyloučených aplikací"
 
 #: src/presets_manager.cpp:1154
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "Obecná chyba při načítání seznamu vyloučených aplikací"
 
 #: src/presets_manager.cpp:1163
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "Chybný formát v seznamu efektů"
 
 #: src/presets_manager.cpp:1170
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "Obecná chyba při načítání seznamu efektů"
 
 #: src/presets_manager.cpp:1180
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "Jeden nebo více parametrů má nesprávný formát"
 
 #: src/presets_manager.cpp:1188
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "Obecná chyba při načítání efektu"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
-msgstr ""
+msgstr "Uložit?"
 
 #: src/presets_menu.cpp:417
 msgid "Delete?"
-msgstr ""
+msgstr "Smazat?"
 
 #: src/presets_menu.cpp:558
-#, fuzzy
 msgid "No Preset Loaded"
-msgstr "Název nového profilu pro vstup"
+msgstr "Není načtena žádná předvolba"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Local Preset Loaded"
-msgstr "Hledat profil pro vstup"
+msgstr "Poslední načtená místní předvolba"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Community Preset Loaded"
-msgstr "Importovat přednastavení"
+msgstr "Poslední načtená předvolba Komunity"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
@@ -2554,7 +2556,7 @@ msgstr "Krystalizátor"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "Hluboký odstraňovač šumu"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
