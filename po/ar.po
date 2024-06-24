@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-21 17:26+0000\n"
-"PO-Revision-Date: 2024-04-20 21:07+0000\n"
+"PO-Revision-Date: 2024-06-24 09:23+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "@APP_NAME@"
-msgstr ""
+msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -35,7 +35,7 @@ msgstr "تأثيرات صوتية لتطبيقات PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr ""
+msgstr "محدد;ضاغط;صدى;معادل;ضبط تلقائي لمستوى الصوت;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -100,7 +100,7 @@ msgstr "قائمة الإعدادات المسبقة"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
-msgstr "تفعيل/تعطيل تجاهل المؤثرات عمومًا"
+msgstr "فعل/عطل تجاهل المؤثرات عمومًا"
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
@@ -148,15 +148,15 @@ msgstr "المرجع"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:158 data/ui/level_meter.ui:72
 msgid "Momentary"
-msgstr ""
+msgstr "لحظي"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:196 data/ui/level_meter.ui:109
 msgid "Short-Term"
-msgstr ""
+msgstr "قصير المدى"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
 msgid "Integrated"
-msgstr ""
+msgstr "متكامل"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
@@ -176,7 +176,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:124
 msgid "History"
-msgstr ""
+msgstr "السجل"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -189,12 +189,12 @@ msgstr ""
 #: data/ui/multiband_gate.ui:661 data/ui/pitch.ui:387 data/ui/reverb.ui:527
 #: data/ui/rnnoise.ui:441 data/ui/speex.ui:356 data/ui/stereo_tools.ui:786
 msgid "Reset"
-msgstr ""
+msgstr "إعادة تعيين"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:346 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:58 src/tags_plugin_name.cpp:56
 msgid "Loudness"
-msgstr ""
+msgstr "الجهارة"
 
 #: data/ui/autogain.ui:270 data/ui/level_meter.ui:181
 msgid "Relative"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:383
 msgid "Output Gain"
-msgstr ""
+msgstr "خرج التضخيم"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:258
 #: data/ui/bass_loudness.ui:107 data/ui/compressor.ui:650
@@ -222,7 +222,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:617
 msgid "Input"
-msgstr ""
+msgstr "الدخل"
 
 #: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:277
 #: data/ui/bass_loudness.ui:126 data/ui/compressor.ui:1158
@@ -235,7 +235,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:238 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
 msgid "Plugin Input Gain"
-msgstr ""
+msgstr "إضافة دخل التضخيم"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:342
 #: data/ui/bass_loudness.ui:48 data/ui/bass_loudness.ui:191
@@ -263,7 +263,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:322 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
-msgstr ""
+msgstr "إضافة خرج التضخيم"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:235
@@ -275,7 +275,7 @@ msgstr "جهاز"
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:43
 msgid "Name"
-msgstr "اسم"
+msgstr "الاسم"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
@@ -616,7 +616,7 @@ msgstr ""
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
 #: src/plugins_box.cpp:806
 msgid "Input Device"
-msgstr ""
+msgstr "جهاز الدخل"
 
 #: data/ui/compressor.ui:734 data/ui/expander.ui:654 data/ui/gate.ui:867
 msgid "PreAmplification"
@@ -689,7 +689,7 @@ msgstr ""
 #: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
 #: data/ui/expander.ui:941 data/ui/filter.ui:218
 msgid "Gain"
-msgstr ""
+msgstr "التضخيم"
 
 #: data/ui/compressor.ui:1048 data/ui/expander.ui:968 data/ui/gate.ui:1181
 msgid "Envelope"
@@ -706,7 +706,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:573
 msgid "Left Channel"
-msgstr ""
+msgstr "القناة اليسرى"
 
 #: data/ui/convolver.ui:53
 msgid "R"
@@ -714,7 +714,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:584
 msgid "Right Channel"
-msgstr ""
+msgstr "القناة اليمنى"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
@@ -739,7 +739,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:131 src/tags_plugin_name.cpp:38
 msgid "Autogain"
-msgstr ""
+msgstr "التضخيم التلقائي"
 
 #: data/ui/convolver.ui:147
 msgid "Rate"
@@ -767,7 +767,7 @@ msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr ""
+msgstr "اسم مِلف الخرج"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
@@ -780,7 +780,7 @@ msgstr ""
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
 msgid "Search"
-msgstr ""
+msgstr "بحث"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
@@ -792,7 +792,7 @@ msgstr ""
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
-msgstr ""
+msgstr "الافتراضي"
 
 #: data/ui/crossfeed.ui:56
 msgid "Cutoff"
@@ -924,11 +924,11 @@ msgstr ""
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "التطبيقات المستثناة"
 
 #: data/ui/effects_box.ui:120
 msgid "Enable/disable input monitoring"
-msgstr ""
+msgstr "مكن/عطل مراقب الدخل"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
@@ -1288,11 +1288,11 @@ msgstr ""
 
 #: data/ui/limiter.ui:624
 msgid "Gain Left"
-msgstr ""
+msgstr "التضخيم الأيسر"
 
 #: data/ui/limiter.ui:651
 msgid "Gain Right"
-msgstr ""
+msgstr "التضخيم الأيمن"
 
 #: data/ui/limiter.ui:678
 msgid "Sidechain Left"
@@ -1316,7 +1316,7 @@ msgstr ""
 
 #: data/ui/loudness.ui:82
 msgid "Output Volume"
-msgstr ""
+msgstr "مستوى صوت الخرج"
 
 #: data/ui/loudness.ui:103
 msgid "Clipping"
@@ -1464,7 +1464,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "إدارة الأجهزة"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
@@ -1474,23 +1474,23 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
-msgstr ""
+msgstr "استخدم الدخل الافتراضي"
 
 #: data/ui/pipe_manager_box.ui:65
 msgid "Custom Input Device"
-msgstr ""
+msgstr "جهاز دخل مخصص"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 msgid "Use Default Output"
-msgstr ""
+msgstr "استخدم الخرج الافتراضي"
 
 #: data/ui/pipe_manager_box.ui:101
 msgid "Custom Output Device"
-msgstr ""
+msgstr "جهاز خرج افتراضي"
 
 #: data/ui/pipe_manager_box.ui:112
 msgid "Server Information"
-msgstr ""
+msgstr "معلومات الخادم"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
@@ -1498,7 +1498,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:127
 msgid "Library Version"
-msgstr ""
+msgstr "إصدار المكتبة"
 
 #: data/ui/pipe_manager_box.ui:138
 msgid "Sampling Rate"
@@ -1528,7 +1528,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:266
 msgid "Output Devices"
-msgstr ""
+msgstr "أجهزة الخرج"
 
 #: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
 msgid "Output Presets"
@@ -1548,19 +1548,19 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:396
 msgid "Input Devices"
-msgstr ""
+msgstr "أجهزة الدخل"
 
 #: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
 msgid "Input Presets"
-msgstr ""
+msgstr "الإعدادات المسبقة للدخل"
 
 #: data/ui/pipe_manager_box.ui:428
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "أضف تحميل تلقائي لإعداد مسبق للدخل"
 
 #: data/ui/pipe_manager_box.ui:447
 msgid "Input Autoloading Presets List"
-msgstr ""
+msgstr "قائمة الإعدادات المسبقة للتحميل التلقائي للدخل"
 
 #: data/ui/pipe_manager_box.ui:477
 msgid "Modules"
@@ -1589,7 +1589,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:549 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
-msgstr ""
+msgstr "ممكن"
 
 #: data/ui/pipe_manager_box.ui:564
 msgid "Properties"
@@ -1597,7 +1597,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:567
 msgid "Channels"
-msgstr ""
+msgstr "قنوات"
 
 #: data/ui/pipe_manager_box.ui:592
 msgid "Both"
@@ -1673,15 +1673,15 @@ msgstr ""
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
-msgstr ""
+msgstr "أضف مؤثر"
 
 #: data/ui/plugins_box.ui:65
 msgid "Go to the previous effect"
-msgstr ""
+msgstr "انتقل للمؤثر السابق"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "انتقل للمؤثر التالي"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
@@ -1689,7 +1689,7 @@ msgstr ""
 
 #: data/ui/plugins_box.ui:192
 msgid "No Effects"
-msgstr ""
+msgstr "بدون مؤثرات"
 
 #: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
@@ -1765,7 +1765,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:170
 msgid "Use Dark Theme"
-msgstr ""
+msgstr "استخدم السمة المظلمة"
 
 #: data/ui/preferences_general.ui:182
 msgid "Hide Menus on Outside Clicks"
@@ -2077,7 +2077,7 @@ msgstr ""
 
 #: data/ui/speex.ui:46
 msgid "Automatic Gain Control"
-msgstr ""
+msgstr "متحكم التضخيم التلقائي"
 
 #: data/ui/speex.ui:72
 msgid "Dereverberation"
@@ -2401,11 +2401,11 @@ msgstr ""
 
 #: src/presets_manager.cpp:1147
 msgid "Wrong Format in Excluded Apps List"
-msgstr ""
+msgstr "صيغة خاطئة في قائمة التطبيقات المستثناة"
 
 #: src/presets_manager.cpp:1154
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "خطأ عام عند تحميل قائمة التطبيقات المستثناة"
 
 #: src/presets_manager.cpp:1163
 msgid "Wrong Format in Effects List"
