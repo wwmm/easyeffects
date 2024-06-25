@@ -98,9 +98,9 @@ class PipeManager {
 
   void disconnect_stream(const uint& id) const;
 
-  static void set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value);
+  void set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value) const;
 
-  static void set_node_mute(pw_proxy* proxy, const bool& state);
+  void set_node_mute(pw_proxy* proxy, const bool& state) const;
 
   auto count_node_ports(const uint& node_id) -> uint;
 

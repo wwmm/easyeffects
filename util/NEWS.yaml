@@ -7,7 +7,7 @@ Description:
 - 
 
 - Bug fixes∶
-- 
+- We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations 
 
 - Other notes∶
 - 

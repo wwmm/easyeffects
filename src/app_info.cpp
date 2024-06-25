@@ -218,7 +218,7 @@ void on_volume_changed(GtkSpinButton* sbtn, AppInfo* self) {
   }
 
   if (self->data->info.proxy != nullptr) {
-    PipeManager::set_node_volume(self->data->info.proxy, self->data->info.n_volume_channels, vol);
+    self->data->application->pm->set_node_volume(self->data->info.proxy, self->data->info.n_volume_channels, vol);
   }
 }
 
@@ -232,7 +232,7 @@ void on_mute(GtkToggleButton* btn, AppInfo* self) {
   }
 
   if (self->data->info.proxy != nullptr) {
-    PipeManager::set_node_mute(self->data->info.proxy, state != 0);
+    self->data->application->pm->set_node_mute(self->data->info.proxy, state != 0);
   }
 }
 
