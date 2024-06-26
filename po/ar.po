@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-25 14:29+0000\n"
-"PO-Revision-Date: 2024-06-24 09:23+0000\n"
+"PO-Revision-Date: 2024-06-26 21:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -160,19 +160,19 @@ msgstr "متكامل"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "المتوسط الهندسي (MSI)"
 
 #: data/ui/autogain.ui:113
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "المتوسط الهندسي (MS)"
 
 #: data/ui/autogain.ui:114
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "المتوسط الهندسي (MI)"
 
 #: data/ui/autogain.ui:115
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "المتوسط الهندسي (SI)"
 
 #: data/ui/autogain.ui:124
 msgid "History"
@@ -198,11 +198,11 @@ msgstr "الجهارة"
 
 #: data/ui/autogain.ui:270 data/ui/level_meter.ui:181
 msgid "Relative"
-msgstr ""
+msgstr "نسبي"
 
 #: data/ui/autogain.ui:307 data/ui/level_meter.ui:217
 msgid "Range"
-msgstr ""
+msgstr "النطاق"
 
 #: data/ui/autogain.ui:383
 msgid "Output Gain"
@@ -250,7 +250,7 @@ msgstr "إضافة دخل التضخيم"
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
-msgstr ""
+msgstr "الخرج"
 
 #: data/ui/autogain.ui:533 data/ui/bass_enhancer.ui:361
 #: data/ui/bass_loudness.ui:210 data/ui/compressor.ui:1242
@@ -284,11 +284,11 @@ msgstr ""
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:246
 #: data/ui/pipe_manager_box.ui:376
 msgid "Preset"
-msgstr ""
+msgstr "إعداد مسبق"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr ""
+msgstr "حذف التحميل التلقائي لهذا الإعداد المسبق"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
@@ -965,11 +965,11 @@ msgstr ""
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
-msgstr ""
+msgstr "استورد إعدادًا مسبقًا"
 
 #: data/ui/equalizer.ui:359
 msgid "Export Preset"
-msgstr ""
+msgstr "صدر إعدادًا مسبقًا"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
@@ -1518,7 +1518,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:191
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "التحميلات التلقائية للإعدادات المسبقة"
 
 #: data/ui/pipe_manager_box.ui:217 data/ui/pipe_manager_box.ui:347
 msgid ""
@@ -1532,7 +1532,7 @@ msgstr "أجهزة الخرج"
 
 #: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
 msgid "Output Presets"
-msgstr ""
+msgstr "إعدادات الخرج المسبقة"
 
 #: data/ui/pipe_manager_box.ui:290 data/ui/pipe_manager_box.ui:415
 msgid "Create Association"
@@ -1540,11 +1540,11 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:303
 msgid "Add Autoloading Output Preset"
-msgstr ""
+msgstr "أضف تحميلًا تلقائيًا لإعدادات الخرج المسبقة"
 
 #: data/ui/pipe_manager_box.ui:323
 msgid "Output Autoloading Presets List"
-msgstr ""
+msgstr "قائمة التحميلات التلقائية لإعدادات الخرج المسبقة"
 
 #: data/ui/pipe_manager_box.ui:396
 msgid "Input Devices"
@@ -1556,11 +1556,11 @@ msgstr "الإعدادات المسبقة للدخل"
 
 #: data/ui/pipe_manager_box.ui:428
 msgid "Add Autoloading Input Preset"
-msgstr "أضف تحميل تلقائي لإعداد مسبق للدخل"
+msgstr "أضف تحميلًا تلقائيًا لإعداد الدخل المسبق"
 
 #: data/ui/pipe_manager_box.ui:447
 msgid "Input Autoloading Presets List"
-msgstr "قائمة الإعدادات المسبقة للتحميل التلقائي للدخل"
+msgstr "قائمة التحميل التلقائي لإعدادات الدخل المسبقة"
 
 #: data/ui/pipe_manager_box.ui:477
 msgid "Modules"
@@ -1865,11 +1865,11 @@ msgstr ""
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
-msgstr ""
+msgstr "احفظ الإعدادات الحالية في مِلَفّ الإعداد المسبق هذا"
 
 #: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
-msgstr ""
+msgstr "احذف مِلَفّ الإعداد المسبق هذا"
 
 #: data/ui/preset_community_row.ui:55
 msgid "Try"
@@ -1893,23 +1893,23 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
-msgstr ""
+msgstr "اسم الإعداد المسبق الجديد"
 
 #: data/ui/presets_menu.ui:56
 msgid "Create a new preset"
-msgstr ""
+msgstr "أنشئ إعدادًا مسبقًا جديدًا"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "استورد إعدادًا مسبقًا من جهاز التخزين المحلي"
 
 #: data/ui/presets_menu.ui:86
 msgid "Search Local Preset"
-msgstr ""
+msgstr "ابحث محليًا عن إعداد مسبق"
 
 #: data/ui/presets_menu.ui:147
 msgid "Local Presets List"
-msgstr ""
+msgstr "قائمة الإعدادات المسبقة المحلية"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
@@ -1917,15 +1917,15 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
-msgstr ""
+msgstr "ابحث في المجتمع عن إعداد مسبق"
 
 #: data/ui/presets_menu.ui:271
 msgid "Community Presets List"
-msgstr ""
+msgstr "قائمة الإعدادات المسبقة المجتمعية"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "لا يوجد إعدادات مسبقة مجتمعية محملة"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
@@ -2366,7 +2366,7 @@ msgstr ""
 
 #: src/pipe_manager_box.cpp:358
 msgid "Remove Autoloading Preset"
-msgstr ""
+msgstr "احذف الإعداد المسبق المحمل تلقائيًا"
 
 #: src/plugin_base.cpp:233
 msgid "Output Level Meter"
@@ -2387,7 +2387,7 @@ msgstr ""
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
 msgid "Community Preset"
-msgstr ""
+msgstr "إعدادات المجتمع المسبقة"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
@@ -2433,15 +2433,15 @@ msgstr ""
 
 #: src/presets_menu.cpp:558
 msgid "No Preset Loaded"
-msgstr ""
+msgstr "لا يوجد إعداد مسبق محمل"
 
 #: src/presets_menu.cpp:573
 msgid "Last Local Preset Loaded"
-msgstr ""
+msgstr "قائمة الإعداد المسبق المحمل محليًا"
 
 #: src/presets_menu.cpp:573
 msgid "Last Community Preset Loaded"
-msgstr ""
+msgstr "قائمة الإعداد المسبق المجتمعية المحملة"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
