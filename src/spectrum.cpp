@@ -131,20 +131,20 @@ void Spectrum::process(std::span<float>& left_in,
     count++;
   }
 
-  fftwf_execute(plan);
-
-  for (uint i = 0U; i < output.size(); i++) {
-    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
-
-    sqr /= static_cast<float>(output.size() * output.size());
-
-    output[i] = static_cast<double>(sqr);
-  }
-
   if (send_notifications) {
     util::idle_add([this]() {
       if (bypass) {
         return;
+      }
+
+      fftwf_execute(plan);
+
+      for (uint i = 0U; i < output.size(); i++) {
+        float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+
+        sqr /= static_cast<float>(output.size() * output.size());
+
+        output[i] = static_cast<double>(sqr);
       }
 
       power.emit(rate, output.size(), output);
