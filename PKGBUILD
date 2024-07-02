@@ -56,15 +56,24 @@ pkgver() {
 }
 
 build() {
-  cd ..
+  # cd ..
   # set werror to true if the CI file exists, otherwise false
   # arch-meson sets --buildtype plain by default, so don't set -Dbuildtype=debug 
-  arch-meson . build -Ddevel=true -Dwerror="$( test -f "./GITHUB_COMMIT_DESC" && echo "true" || echo "false")"
+  # arch-meson . build -Ddevel=true -Dwerror="$( test -f "./GITHUB_COMMIT_DESC" && echo "true" || echo "false")"
 
-  ninja -C build
+  # ninja -C build
+
+  cmake \
+    -B build  \
+    -S fastgame \
+    -G Ninja \
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -Wno-dev
+
+  cmake --build build
 }
 
 package() {
   cd ..
-  DESTDIR="${pkgdir}" ninja install -C build
+  DESTDIR="${pkgdir}" cmake --install build
 }
